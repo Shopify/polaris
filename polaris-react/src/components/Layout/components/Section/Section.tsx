@@ -1,30 +1,32 @@
 import React from 'react';
 
-import {classNames} from '../../../../utilities/css';
-import styles from '../../Layout.scss';
+import {Grid} from '../../../Grid';
+import type {CellProps} from '../../../Grid';
 
 export interface SectionProps {
   children?: React.ReactNode;
-  secondary?: boolean;
-  fullWidth?: boolean;
-  oneHalf?: boolean;
   oneThird?: boolean;
+  oneHalf?: boolean;
+  twoThirds?: boolean;
 }
 
 export function Section({
   children,
-  secondary,
-  fullWidth,
   oneHalf,
   oneThird,
+  twoThirds,
 }: SectionProps) {
-  const className = classNames(
-    styles.Section,
-    secondary && styles['Section-secondary'],
-    fullWidth && styles['Section-fullWidth'],
-    oneHalf && styles['Section-oneHalf'],
-    oneThird && styles['Section-oneThird'],
-  );
+  const gridProps: CellProps = {
+    columnSpan: {xs: 6, lg: 12},
+    ...(oneHalf && {columnSpan: {xs: 6, lg: 6}}),
+    ...(oneThird && {columnSpan: {xs: 6, lg: 4}}),
+    ...(twoThirds && {columnSpan: {xs: 6, lg: 8}}),
+  };
 
-  return <div className={className}>{children}</div>;
+  // secondary && styles['Section-secondary'],
+  // fullWidth && styles['Section-fullWidth'],
+  // oneHalf && styles['Section-oneHalf'],
+  // oneThird && styles['Section-oneThird'],
+
+  return <Grid.Cell {...gridProps}>{children}</Grid.Cell>;
 }

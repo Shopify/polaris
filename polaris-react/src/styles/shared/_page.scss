@@ -3,8 +3,16 @@
   padding: 0;
   max-width: $page-max-width;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
+    padding: 0 var(--p-space-4);
+  }
+
+  @media #{$p-breakpoints-md-up} {
     padding: 0 var(--p-space-6);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    padding: 0 var(--p-space-8);
   }
 }
 

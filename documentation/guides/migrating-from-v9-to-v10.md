@@ -81,3 +81,7 @@ const App = (props) => (
 +  </div>
 )
 ```
+
+### Adapting `Layout` to Grid
+
+`<Layout.Section>` now defaults to full width. To have two columns side by side use the `oneHalf`, `oneThird`, or `twoThirds`props.

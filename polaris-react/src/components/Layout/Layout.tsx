@@ -1,7 +1,8 @@
 import React from 'react';
 
+import {Grid} from '../Grid';
+
 import {AnnotatedSection, Section} from './components';
-import styles from './Layout.scss';
 
 export interface LayoutProps {
   /** Automatically adds sections to layout. */
@@ -15,7 +16,7 @@ export const Layout: React.FunctionComponent<LayoutProps> & {
   Section: typeof Section;
 } = function Layout({sectioned, children}: LayoutProps) {
   const content = sectioned ? <Section>{children}</Section> : children;
-  return <div className={styles.Layout}>{content}</div>;
+  return <Grid>{content}</Grid>;
 };
 
 Layout.AnnotatedSection = AnnotatedSection;
