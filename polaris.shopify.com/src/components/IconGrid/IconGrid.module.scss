@@ -18,6 +18,12 @@
   color: #aaa;
   padding: 1rem;
 
+  img {
+    @include dark-mode {
+      filter: brightness(0) contrast(1) invert(1);
+    }
+  }
+
   &:focus-visible {
     box-shadow: var(--focus-outline);
   }
