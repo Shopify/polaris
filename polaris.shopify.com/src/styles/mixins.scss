@@ -6,7 +6,7 @@
 
 @mixin custom-scrollbars {
   &::-webkit-scrollbar {
-    width: 5px;
+    width: 13px;
   }
 
   &::-webkit-scrollbar-track {
@@ -15,7 +15,9 @@
 
   &::-webkit-scrollbar-thumb {
     background: transparent;
-    border-radius: var(--border-radius-200);
+    border-radius: var(--border-radius-round);
+    // Increases draggable area
+    border: 4px solid var(--surface);
   }
 
   &:hover {
