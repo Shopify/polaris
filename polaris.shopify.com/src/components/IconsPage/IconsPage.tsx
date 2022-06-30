@@ -8,7 +8,6 @@ import styles from "./IconsPage.module.scss";
 import Container from "../Container";
 import IconGrid from "../IconGrid";
 import SearchField from "../SearchField";
-import Longform from "../Longform";
 import Image from "../Image";
 import IconDetails from "../IconDetails";
 import PageMeta from "../PageMeta";
@@ -68,37 +67,6 @@ function IconsPage() {
     router.push({ query });
   };
 
-  const SideBar = () => (
-    <div className={styles.SidebarCard}>
-      {iconMetadata[activeIcon] ? (
-        <IconDetails
-          fileName={activeIcon}
-          name={iconMetadata[activeIcon].name}
-          set={iconMetadata[activeIcon].set}
-          description={iconMetadata[activeIcon].description}
-          keywords={iconMetadata[activeIcon].keywords}
-          query={searchText}
-        />
-      ) : (
-        <div className={styles.SidebarEmptyState}>
-          <p>Select an icon</p>
-        </div>
-      )}
-    </div>
-  );
-
-  const SideBarContainer = () =>
-    useModal ? (
-      <Dialog open={activeIcon !== ""} onClose={() => handleRemoveIcon()}>
-        <div className={styles.ModalBackdrop} aria-hidden="true" />
-        <Dialog.Panel className={styles.Modal}>
-          <SideBar />
-        </Dialog.Panel>
-      </Dialog>
-    ) : (
-      <SideBar />
-    );
-
   return (
     <Container className={styles.IconsPage}>
       <PageMeta title={pageTitle} />
@@ -128,17 +96,17 @@ function IconsPage() {
           )}
           {Object.keys(matchingMajor).length === 0 &&
           Object.keys(matchingMinor).length === 0 ? (
-            <div style={{ textAlign: "center", marginTop: "6rem" }}>
-              <Longform>
-                <span style={{ opacity: 0.25 }}>
-                  <Image
-                    src="/icons/SearchMajor.svg"
-                    width={50}
-                    height={50}
-                    alt=""
-                  />
-                </span>
-                <h2 style={{ marginTop: "2rem" }}>No icon found</h2>
+            <div className={styles.NoSearchResults}>
+              <span style={{ opacity: 0.25 }}>
+                <Image
+                  src="/icons/SearchMajor.svg"
+                  width={20}
+                  height={20}
+                  alt=""
+                />
+              </span>
+              <div>
+                <h2>No icon found</h2>
                 <p>
                   Open a{" "}
                   <Link
@@ -148,12 +116,27 @@ function IconsPage() {
                   </Link>{" "}
                   to send us feedback or propose new icons.
                 </p>
-              </Longform>
+              </div>
             </div>
           ) : null}
         </div>
         <div>
-          <SideBarContainer />
+          {useModal ? (
+            <Dialog open={activeIcon !== ""} onClose={() => handleRemoveIcon()}>
+              <div className={styles.ModalBackdrop} aria-hidden="true" />
+              <Dialog.Panel className={styles.Modal}>
+                <IconDetails
+                  fileName={activeIcon}
+                  iconData={iconMetadata[activeIcon]}
+                />
+              </Dialog.Panel>
+            </Dialog>
+          ) : (
+            <IconDetails
+              fileName={activeIcon}
+              iconData={iconMetadata[activeIcon]}
+            />
+          )}
         </div>
       </div>
     </Container>

@@ -21,7 +21,10 @@ function IconGrid({ title, icons, activeIcon, query = "" }: Props) {
             <Link
               href={{
                 pathname: "/icons",
-                query: { icon: iconFileName, q: query },
+                query: {
+                  icon: iconFileName,
+                  ...(query === "" ? {} : { q: query }),
+                },
               }}
               scroll={false}
             >
@@ -31,16 +34,16 @@ function IconGrid({ title, icons, activeIcon, query = "" }: Props) {
                   activeIcon === iconFileName && styles.IconSelected
                 )}
               >
-                <Image
-                  src={`/icons/${iconFileName}.svg`}
-                  alt={icons[iconFileName].description}
-                  width={20}
-                  height={20}
-                  fadeIn={false}
-                />
-                <span className={styles.IconName}>
-                  {icons[iconFileName].name}
-                </span>
+                <div className={styles.ImageWrapper}>
+                  <Image
+                    src={`/icons/${iconFileName}.svg`}
+                    alt={icons[iconFileName].description}
+                    width={20}
+                    height={20}
+                    fadeIn={false}
+                  />
+                </div>
+                <p>{icons[iconFileName].name}</p>
               </a>
             </Link>
           </li>

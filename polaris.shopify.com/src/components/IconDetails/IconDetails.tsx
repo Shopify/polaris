@@ -6,41 +6,52 @@ import styles from "./IconDetails.module.scss";
 
 interface Props {
   fileName: string;
-  name: string;
-  set: string;
-  description: string;
-  keywords: string[];
-  query: string;
+  iconData: {
+    name: string;
+    set: string;
+    description: string;
+    keywords: string[];
+  };
 }
 
-function IconDetails({
-  fileName,
-  set,
-  description,
-  name,
-  keywords,
-  query,
-}: Props) {
+function IconDetails({ fileName, iconData }: Props) {
+  if (!fileName) {
+    return (
+      <div className={styles.SidebarCard}>
+        <div className={styles.SidebarEmptyState}>
+          <span style={{ opacity: 0.25 }}>
+            <Image
+              width={20}
+              height={20}
+              src="/icons/BehaviorMajor.svg"
+              alt="Cursor suggesting to click an item"
+            />
+          </span>
+          <p>Select an icon</p>
+        </div>
+      </div>
+    );
+  }
+
+  const { set, description, name, keywords } = iconData;
   return (
-    <>
+    <div className={styles.SidebarCard}>
       <div className={className(styles.SidebarSection, styles.IconInfo)}>
         <div className={styles.Preview}>
           <div className={styles.PreviewImage}>
             <Image
               src={`/icons/${fileName}.svg`}
               alt={description}
-              width={60}
-              height={60}
+              width={20}
+              height={20}
               icon
             />
           </div>
         </div>
 
         <h2 className={styles.Title}>
-          {/* {isInModal && (
-            <Dialog.Title>{name}</Dialog.Title>
-          ) */}
-          {name} <div className={styles.IconSet}>{set}</div>
+          <span>{name}</span>
+          <div className={styles.Badge}>{set}</div>
         </h2>
 
         {description !== "N/A" && (
@@ -98,7 +109,7 @@ function IconDetails({
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript" minimalist>
             {`import {
-  ${fileName}
+${fileName}
 } from '@shopify/polaris-icons';`}
           </CodeExample>
         </div>
@@ -112,8 +123,8 @@ function IconDetails({
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript" minimalist>
             {`<Icon
-  source={${fileName}}
-  color="base"
+source={${fileName}}
+color="base"
 />`}
           </CodeExample>
         </div>
@@ -127,7 +138,7 @@ function IconDetails({
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -2,43 +2,41 @@
 
 .IconGrid {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.75rem;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
 }
 
 .Icon {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  gap: 10px;
-  padding-top: 5px;
   aspect-ratio: 5 / 4;
-  border-radius: var(--border-radius-600);
+  border-radius: var(--border-radius-400);
   box-shadow: var(--card-shadow);
   user-select: none;
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  padding: 1rem;
 
   &:focus-visible {
     box-shadow: var(--focus-outline);
   }
 
-  img {
-    @include dark-mode {
-      filter: brightness(0) contrast(1) invert(1);
-    }
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+}
+
+.ImageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .IconSelected {
   background: var(--search-highlight-color);
-}
-
-.IconName {
-  font-size: 12px;
-  color: #aaa;
-  padding: 0 0.5rem;
-  text-align: center;
 }
 
 .SectionHeading {
