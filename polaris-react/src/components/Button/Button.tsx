@@ -227,7 +227,7 @@ export function Button({
       <button
         type="button"
         className={connectedDisclosureClassName}
-        disabled={disabled}
+        aria-disabled={disabled}
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
