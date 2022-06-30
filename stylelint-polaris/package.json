@@ -32,7 +32,8 @@
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
-    "postcss-value-parser": "^4.2.0"
+    "postcss-value-parser": "^4.2.0",
+    "postcss-media-query-parser": "^0.2.3"
   },
   "peerDependencies": {
     "stylelint": "^14.1.0",

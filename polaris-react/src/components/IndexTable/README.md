@@ -970,6 +970,109 @@ function StickyLastCellIndexTableExample() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
+      status: 'Created',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+    },
+    {
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      status: 'Created',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        status,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent', hidden: false},
+          {title: 'Status'},
+          {title: 'Channel'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
+  );
+}
+```
+
+### Index table with row navigation link
+
+Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Link` with the `dataPrimaryLink` prop set to `true`, clicking the row will trigger navigation to the link's `url` instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
+
+```jsx
+function ClickThroughLinkIndexTableExample() {
+  const customers = [
+    {
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
     },
     {
       id: '2561',
@@ -989,7 +1092,7 @@ function StickyLastCellIndexTableExample() {
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    ({id, url, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -997,7 +1100,13 @@ function StickyLastCellIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Link
+            dataPrimaryLink
+            url={url}
+            onClick={() => console.log(`Clicked ${name}`)}
+          >
+            <TextStyle variation="strong">{name}</TextStyle>
+          </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -1021,7 +1130,85 @@ function StickyLastCellIndexTableExample() {
           {title: 'Order count'},
           {title: 'Amount spent', hidden: false},
         ]}
-        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
+  );
+}
+```
+
+### Index table with clickable button column
+
+Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Button` with the `dataPrimaryLink` prop set to `true`, clicking the row will navigate to the `Button` `url` if set instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
+
+```jsx
+function ClickThroughButtonIndexTableExample() {
+  const customers = [
+    {
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, url, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Button
+            dataPrimaryLink
+            url={url}
+            onClick={() => console.log(`Clicked ${name}`)}
+          >
+            <TextStyle variation="strong">{name}</TextStyle>
+          </Button>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent', hidden: false},
+        ]}
       >
         {rowMarkup}
       </IndexTable>

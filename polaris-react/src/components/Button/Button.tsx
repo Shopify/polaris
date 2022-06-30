@@ -50,6 +50,8 @@ export interface ButtonProps extends BaseButton {
   icon?: React.ReactElement | IconSource;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
+  /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
+  dataPrimaryLink?: boolean;
 }
 
 interface CommonButtonProps
@@ -67,6 +69,7 @@ interface CommonButtonProps
   > {
   className: UnstyledButtonProps['className'];
   onMouseUp: MouseUpBlurHandler;
+  'data-primary-link'?: boolean;
 }
 
 type LinkButtonProps = Pick<ButtonProps, 'url' | 'external' | 'download'>;
@@ -125,6 +128,7 @@ export function Button({
   textAlign,
   fullWidth,
   connectedDisclosure,
+  dataPrimaryLink,
 }: ButtonProps) {
   const i18n = useI18n();
 
@@ -267,6 +271,7 @@ export function Button({
     onMouseUp: handleMouseUpByBlurring,
     onMouseEnter,
     onTouchStart,
+    'data-primary-link': dataPrimaryLink,
   };
   const linkProps: LinkButtonProps = {
     url,

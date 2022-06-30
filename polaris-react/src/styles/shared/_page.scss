@@ -12,10 +12,10 @@ $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
 }
 
 @mixin page-content-layout {
-  margin: var(--p-space-2) 0;
+  padding: var(--p-space-2) 0;
 
   @media #{$p-breakpoints-md-up} {
-    margin-top: var(--p-space-5);
+    padding-top: var(--p-space-5);
   }
 }
 
