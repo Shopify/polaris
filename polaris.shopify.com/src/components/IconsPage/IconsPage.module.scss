@@ -9,18 +9,13 @@
     @include heading-1;
     margin-bottom: 1.5rem;
   }
-
-  img {
-    @include dark-mode {
-      filter: brightness(0) contrast(1) invert(1);
-    }
-  }
 }
 
-.SplitLayout {
+.PageLayout {
   display: grid;
   gap: 3rem;
   grid-template-columns: 1fr 22.5rem;
+  align-items: flex-start;
 }
 
 .Modal {
@@ -59,7 +54,24 @@
   display: grid;
   place-items: center center;
   text-align: center;
-  gap: 3rem;
+  gap: 2rem;
+  animation: fade-up 0.25s 0.1s both ease-out;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  h2 {
+    @include heading-2;
+    margin-bottom: 1rem;
+  }
 
   p {
     margin-top: 0.5rem;

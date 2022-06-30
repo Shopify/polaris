@@ -11,6 +11,7 @@ import SearchField from "../SearchField";
 import Image from "../Image";
 import IconDetails from "../IconDetails";
 import PageMeta from "../PageMeta";
+import { className } from "../../utils/various";
 
 const getMatchingIcons = (currentSearch: string, set: string) => {
   const matchingIcons: typeof iconMetadata = {};
@@ -67,18 +68,28 @@ function IconsPage() {
     router.push({ query });
   };
 
+  const matchingMajorCount = Object.keys(matchingMajor).length;
+  const matchingMinorCount = Object.keys(matchingMinor).length;
+
+  const githubIssueTitle = `[polaris.shopify.com] No icon found ${searchText}`;
+  const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?title=${encodeURIComponent(
+    githubIssueTitle
+  )}&labels=Icon`;
   return (
     <Container className={styles.IconsPage}>
       <PageMeta title={pageTitle} />
+
       <h1>Icons</h1>
-      <div className={!useModal ? styles.SplitLayout : ""}>
+
+      <div className={className(!useModal && styles.PageLayout)}>
         <div className={styles.IconGrids}>
           <SearchField
             value={searchText}
             onChange={(value) => handleSearchChange(value)}
             placeholder="Search icons"
           />
-          {Object.keys(matchingMajor).length !== 0 && (
+
+          {matchingMajorCount > 0 && (
             <IconGrid
               title="Major icons"
               icons={matchingMajor}
@@ -86,7 +97,8 @@ function IconsPage() {
               query={searchText}
             />
           )}
-          {Object.keys(matchingMinor).length !== 0 && (
+
+          {matchingMinorCount > 0 && (
             <IconGrid
               title="Minor icons"
               icons={matchingMinor}
@@ -94,50 +106,43 @@ function IconsPage() {
               query={searchText}
             />
           )}
-          {Object.keys(matchingMajor).length === 0 &&
-          Object.keys(matchingMinor).length === 0 ? (
+
+          {matchingMajorCount === 0 && matchingMinorCount === 0 ? (
             <div className={styles.NoSearchResults}>
-              <span style={{ opacity: 0.25 }}>
-                <Image
-                  src="/icons/SearchMajor.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                />
-              </span>
+              <Image
+                src="/icons/SearchMajor.svg"
+                width={40}
+                height={40}
+                alt=""
+                icon
+              />
               <div>
-                <h2>No icon found</h2>
+                <h2>No matches for {`"${searchText}"`}</h2>
                 <p>
-                  Open a{" "}
-                  <Link
-                    href={`https://github.com/Shopify/polaris/issues/new?title=[polaris.shopify.com] No icon found ${searchText}&labels=Icon`}
-                  >
-                    GitHub issue
-                  </Link>{" "}
-                  to send us feedback or propose new icons.
+                  Open a <a href={githubIssueUrl}>GitHub issue</a> to send us
+                  feedback or propose new icons.
                 </p>
               </div>
             </div>
           ) : null}
         </div>
-        <div>
-          {useModal ? (
-            <Dialog open={activeIcon !== ""} onClose={() => handleRemoveIcon()}>
-              <div className={styles.ModalBackdrop} aria-hidden="true" />
-              <Dialog.Panel className={styles.Modal}>
-                <IconDetails
-                  fileName={activeIcon}
-                  iconData={iconMetadata[activeIcon]}
-                />
-              </Dialog.Panel>
-            </Dialog>
-          ) : (
-            <IconDetails
-              fileName={activeIcon}
-              iconData={iconMetadata[activeIcon]}
-            />
-          )}
-        </div>
+
+        {useModal ? (
+          <Dialog open={activeIcon !== ""} onClose={() => handleRemoveIcon()}>
+            <div className={styles.ModalBackdrop} aria-hidden="true" />
+            <Dialog.Panel className={styles.Modal}>
+              <IconDetails
+                fileName={activeIcon}
+                iconData={iconMetadata[activeIcon]}
+              />
+            </Dialog.Panel>
+          </Dialog>
+        ) : (
+          <IconDetails
+            fileName={activeIcon}
+            iconData={iconMetadata[activeIcon]}
+          />
+        )}
       </div>
     </Container>
   );
