@@ -2,12 +2,19 @@ const {messages, ruleName} = require('.');
 
 // Allowed media types and media conditions
 // https://www.w3.org/TR/mediaqueries-5/#media
-const allowedMedia = ['print', '$p-breakpoints-sm-up'];
+const config = {
+  allowedMediaTypes: ['print'],
+  allowedMediaFeatureNames: ['forced-colors'],
+  allowedScssInterpolations: [
+    '#{$p-breakpoints-sm-up}',
+    '#{$p-breakpoints-md-down}',
+  ],
+};
 
 testRule({
   ruleName,
   plugins: [__dirname],
-  config: {allowedMedia},
+  config,
   customSyntax: 'postcss-scss',
   accept: [
     {
@@ -21,6 +28,14 @@ testRule({
     {
       code: '@media not print and #{$p-breakpoints-sm-up} {}',
       description: 'Uses allowed media type and Polaris breakpoints alias',
+    },
+    {
+      code: '@media #{$p-breakpoints-sm-up} and #{$p-breakpoints-md-down} {}',
+      description: 'Uses allowed Polaris breakpoints alias',
+    },
+    {
+      code: '@media (forced-colors: active) {}',
+      description: 'Uses allowed media feature name',
     },
   ],
 
@@ -76,6 +91,11 @@ testRule({
       description:
         'Defining media queries with an allowed media type and min-width',
       message: messages.rejected('not print and (min-width: 0px)'),
+    },
+    {
+      code: '@media screen {}',
+      description: 'Defining media queries an unsupported media type',
+      message: messages.rejected('screen'),
     },
   ],
 });

@@ -16,9 +16,20 @@ The purpose of this plugin is to ensure that we're following our established con
 ```ts
 interface PrimaryOptions {
   /**
-   * A list of string literals to partial match against media conditions.
+   * A list of RegExps or string literals to match against media types.
    */
-  allowedMedia: string[];
+  allowedMediaTypes: (string | RegExp)[];
+  /**
+   * A list of RegExps or string literals to match against media feature names.
+   *
+   * Note: This is passed directly to the built-in `media-feature-name-allowed-list` rule.
+   * https://stylelint.io/user-guide/rules/list/media-feature-name-value-allowed-list
+   */
+  allowedMediaFeatureNames: (string | RegExp)[];
+  /**
+   * A list of RegExps or string literals to match against SCSS interpolations in media queries.
+   */
+  allowedScssInterpolations: (string | RegExp)[];
 }
 ```
 
@@ -28,7 +39,12 @@ interface PrimaryOptions {
 const stylelintConfig = {
   rules: {
     'stylelint-polaris/media-queries-allowed-list': {
-      allowedMedia: ['print', 'screen', '$p-breakpoints-sm-up' /* etc */],
+      allowedMediaTypes: ['print'],
+      allowedMediaFeatureNames: ['forced-colors', 'reduced-motion'],
+      allowedScssInterpolations: [
+        '#{$p-breakpoints-sm-up}',
+        '#{$p-breakpoints-md-up}',
+      ],
     },
   },
 };

@@ -1,6 +1,13 @@
 const stylelint = require('stylelint');
+const mediaParser = require('postcss-media-query-parser').default;
 
-const {isString} = require('../../utils');
+const {
+  hasScssInterpolation,
+  scssInterpolationRegExp,
+  isString,
+  isRegExp,
+  matchesStringOrRegExp,
+} = require('../../utils');
 
 const ruleName = 'stylelint-polaris/media-queries-allowed-list';
 
@@ -11,11 +18,13 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   rejected: (invalidMedia) => `Invalid media query [${invalidMedia}].`,
 });
 
-/** @typedef {string[]} AllowedPatterns */
+/** @typedef {(string | RegExp)[]} AllowedPatterns */
 
 /**
  * @typedef {Object} PrimaryOptions
- * @property {AllowedPatterns} allowedMedia
+ * @property {AllowedPatterns} allowedMediaTypes
+ * @property {AllowedPatterns} allowedMediaFeatureNames
+ * @property {AllowedPatterns} allowedScssInterpolations
  */
 
 const {rule} = stylelint.createPlugin(
@@ -23,10 +32,25 @@ const {rule} = stylelint.createPlugin(
   /** @param {PrimaryOptions} primary */
   (primary) => {
     return (root, result) => {
-      const validOptions = stylelint.utils.validateOptions(result, ruleName, {
-        actual: primary.allowedMedia,
-        possible: isAllowedPatterns,
-      });
+      const validOptions = stylelint.utils.validateOptions(
+        result,
+        ruleName,
+        {
+          actual: primary.allowedMediaTypes,
+          possible: [isString, isRegExp],
+          optional: true,
+        },
+        {
+          actual: primary.allowedMediaFeatureNames,
+          possible: [isString, isRegExp],
+          optional: true,
+        },
+        {
+          actual: primary.allowedScssInterpolations,
+          possible: [isString, isRegExp],
+          optional: true,
+        },
+      );
 
       if (!validOptions) {
         throw new Error(
@@ -34,65 +58,75 @@ const {rule} = stylelint.createPlugin(
         );
       }
 
-      const {allowedMedia} = primary;
+      // Pass `primary.allowedMediaFeatureNames` to the
+      // built-in `media-feature-name-allowed-list` rule
+      stylelint.utils.checkAgainstRule(
+        {
+          ruleName: 'media-feature-name-allowed-list',
+          ruleSettings: [primary.allowedMediaFeatureNames],
+          root,
+        },
+        (warning) =>
+          stylelint.utils.report({
+            message: messages.rejected(warning.node.params),
+            ruleName,
+            result,
+            node: warning.node,
+            line: warning.line,
+            column: warning.column,
+            endLine: warning.endLine,
+            endColumn: warning.endColumn,
+          }),
+      );
 
       root.walkAtRules('media', (atRule) => {
-        const mediaCondition = atRule.params;
+        const media = atRule.params;
 
-        const validMediaCondition = isValidMediaCondition(
-          allowedMedia,
-          mediaCondition,
-        );
+        if (hasScssInterpolation(media)) {
+          const scssInterpolations = [
+            ...media.matchAll(new RegExp(scssInterpolationRegExp, 'g')),
+          ].map((match) => match[0]);
 
-        if (validMediaCondition) return;
+          for (const scssInterpolation of scssInterpolations) {
+            if (
+              !matchesStringOrRegExp(
+                scssInterpolation,
+                primary.allowedScssInterpolations,
+              )
+            ) {
+              stylelint.utils.report({
+                message: messages.rejected(media),
+                node: atRule,
+                result,
+                ruleName,
+              });
+            }
+          }
+        }
 
-        stylelint.utils.report({
-          message: messages.rejected(mediaCondition),
-          node: atRule,
-          result,
-          ruleName,
+        mediaParser(media).walk('media-type', (node) => {
+          const mediaType = node.value;
+
+          if (
+            // Ignore SCSS interpolated media-types as they are handled
+            // in the above scssInterpolationRegExp check
+            hasScssInterpolation(mediaType) ||
+            matchesStringOrRegExp(mediaType, primary.allowedMediaTypes)
+          ) {
+            return;
+          }
+
+          stylelint.utils.report({
+            message: messages.rejected(media),
+            node: atRule,
+            result,
+            ruleName,
+          });
         });
       });
     };
   },
 );
-
-/**
- * @param {NonNullable<PrimaryOptions['allowedMedia']>} allowedMedia
- * @param {string} mediaCondition
- */
-function isValidMediaCondition(allowedMedia, mediaCondition) {
-  if (
-    hasWidthOrHeightInCondition(mediaCondition) ||
-    !allowedMedia.some((media) => mediaCondition.includes(media))
-  ) {
-    return false;
-  }
-
-  return true;
-}
-
-// TODO: Update regex to match new media query range syntax:
-// https://drafts.csswg.org/mediaqueries/#mq-range-context
-function hasWidthOrHeightInCondition(mediaCondition) {
-  // https://regex101.com/r/ka200N/1
-  return /\(\s*(?:min-|max-)?(?:width|height)/.test(mediaCondition);
-}
-
-/**
- * Validates the input is an array of String or RegExp.
- * @param {unknown} allowedPatterns
- * @returns {allowedPatterns is AllowedPatterns}
- */
-function isAllowedPatterns(allowedPatterns) {
-  if (!Array.isArray(allowedPatterns)) return false;
-
-  for (const pattern of allowedPatterns) {
-    if (!isString(pattern)) return false;
-  }
-
-  return true;
-}
 
 module.exports = {
   rule,
