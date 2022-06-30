@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { Dialog } from "@headlessui/react";
 import iconMetadata from "@shopify/polaris-icons/metadata";
 import { useMedia } from "../../utils/hooks";
@@ -75,6 +74,7 @@ function IconsPage() {
   const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?title=${encodeURIComponent(
     githubIssueTitle
   )}&labels=Icon`;
+
   return (
     <Container className={styles.IconsPage}>
       <PageMeta title={pageTitle} />
