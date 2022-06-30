@@ -3,3 +3,22 @@
     @content;
   }
 }
+
+@mixin custom-scrollbars {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--text-subdued);
+    border-radius: var(--border-radius-200);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--text-strong);
+  }
+}

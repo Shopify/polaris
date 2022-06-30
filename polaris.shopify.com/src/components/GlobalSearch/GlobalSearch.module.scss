@@ -126,6 +126,7 @@
   overflow: auto;
   overscroll-behavior: contain;
   flex: 1;
+  @include custom-scrollbars;
 }
 
 .ResultsGroup {
