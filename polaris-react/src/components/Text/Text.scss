@@ -3,30 +3,29 @@
   text-align: inherit;
 }
 
-.truncate {
+.block {
   display: block;
+}
+
+.truncate {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .start {
-  display: block;
   text-align: start;
 }
 
 .center {
-  display: block;
   text-align: center;
 }
 
 .end {
-  display: block;
   text-align: end;
 }
 
 .justify {
-  display: block;
   text-align: justify;
 }
 

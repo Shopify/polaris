@@ -74,6 +74,7 @@ export const Text = ({
     styles.root,
     variant && styles[variant],
     fontWeight && styles[fontWeight],
+    (align || truncate) && styles.block,
     align && styles[align],
     color && styles[color],
     truncate && styles.truncate,
