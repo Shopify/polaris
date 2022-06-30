@@ -4,7 +4,7 @@ const {messages, ruleName} = require('.');
 // https://www.w3.org/TR/mediaqueries-5/#media
 const config = {
   allowedMediaTypes: ['print'],
-  allowedMediaFeatureNames: ['forced-colors'],
+  allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
   allowedScssInterpolations: [
     /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
   ],
@@ -35,6 +35,10 @@ testRule({
     {
       code: '@media (forced-colors: active) {}',
       description: 'Uses allowed media feature name',
+    },
+    {
+      code: '@media (-ms-high-contrast: active) {}',
+      description: 'Uses allowed prefixed media feature name',
     },
   ],
 
