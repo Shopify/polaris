@@ -27,7 +27,7 @@ interface PrimaryOptions {
    */
   allowedMediaFeatureNames: (string | RegExp)[];
   /**
-   * A list of RegExps or string literals to match against SCSS interpolations in media queries.
+   * A list of RegExps or string literals to match against SCSS interpolation expressions in media queries.
    */
   allowedScssInterpolations: (string | RegExp)[];
 }
@@ -42,8 +42,8 @@ const stylelintConfig = {
       allowedMediaTypes: ['print'],
       allowedMediaFeatureNames: ['forced-colors', 'reduced-motion'],
       allowedScssInterpolations: [
-        '#{$p-breakpoints-sm-up}',
-        '#{$p-breakpoints-md-up}',
+        '$p-breakpoints-sm-up',
+        '$p-breakpoints-md-up',
       ],
     },
   },

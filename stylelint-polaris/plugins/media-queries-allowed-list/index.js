@@ -4,6 +4,7 @@ const mediaParser = require('postcss-media-query-parser').default;
 const {
   hasScssInterpolation,
   scssInterpolationRegExp,
+  scssInterpolationExpression,
   isString,
   isRegExp,
   matchesStringOrRegExp,
@@ -88,19 +89,23 @@ const {rule} = stylelint.createPlugin(
           ].map((match) => match[0]);
 
           for (const scssInterpolation of scssInterpolations) {
+            const expression = scssInterpolationExpression(scssInterpolation);
+
             if (
-              !matchesStringOrRegExp(
-                scssInterpolation,
+              matchesStringOrRegExp(
+                expression,
                 primary.allowedScssInterpolations,
               )
             ) {
-              stylelint.utils.report({
-                message: messages.rejected(media),
-                node: atRule,
-                result,
-                ruleName,
-              });
+              return;
             }
+
+            stylelint.utils.report({
+              message: messages.rejected(media),
+              node: atRule,
+              result,
+              ruleName,
+            });
           }
         }
 

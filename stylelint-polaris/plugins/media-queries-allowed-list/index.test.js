@@ -6,8 +6,7 @@ const config = {
   allowedMediaTypes: ['print'],
   allowedMediaFeatureNames: ['forced-colors'],
   allowedScssInterpolations: [
-    '#{$p-breakpoints-sm-up}',
-    '#{$p-breakpoints-md-down}',
+    /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
   ],
 };
 
