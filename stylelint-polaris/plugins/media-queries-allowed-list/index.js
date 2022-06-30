@@ -78,7 +78,7 @@ const {rule} = stylelint.createPlugin(
 
           if (
             // The built-in `media-feature-name-allowed-list` rule
-            // isn't properly handling this case:
+            // doesn't handle this case:
             allowedMediaFeatureNames.includes('-ms-high-contrast') &&
             /^\(\s*-ms-high-contrast:.+?\)$/.test(media)
           ) {
