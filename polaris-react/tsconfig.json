@@ -17,6 +17,7 @@
     "./locales/**/*.json",
     "./tests",
     "./playground",
-    ".storybook/**/*.ts"
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
   ]
 }
