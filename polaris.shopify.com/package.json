@@ -8,7 +8,7 @@
     "start": "next start ",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
-    "lint:styles": "stylelint **/*.{css,scss}",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",

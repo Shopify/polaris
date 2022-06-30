@@ -59,12 +59,18 @@ const {rule} = stylelint.createPlugin(
         );
       }
 
+      const {
+        allowedMediaTypes = [],
+        allowedMediaFeatureNames = [],
+        allowedScssInterpolations = [],
+      } = primary;
+
       // Pass `primary.allowedMediaFeatureNames` to the
       // built-in `media-feature-name-allowed-list` rule
       stylelint.utils.checkAgainstRule(
         {
           ruleName: 'media-feature-name-allowed-list',
-          ruleSettings: [primary.allowedMediaFeatureNames],
+          ruleSettings: allowedMediaFeatureNames,
           root,
         },
         (warning) =>
@@ -91,12 +97,7 @@ const {rule} = stylelint.createPlugin(
           for (const scssInterpolation of scssInterpolations) {
             const expression = scssInterpolationExpression(scssInterpolation);
 
-            if (
-              matchesStringOrRegExp(
-                expression,
-                primary.allowedScssInterpolations,
-              )
-            ) {
+            if (matchesStringOrRegExp(expression, allowedScssInterpolations)) {
               return;
             }
 
@@ -116,7 +117,7 @@ const {rule} = stylelint.createPlugin(
             // Ignore SCSS interpolated media-types as they are handled
             // in the above scssInterpolationRegExp check
             hasScssInterpolation(mediaType) ||
-            matchesStringOrRegExp(mediaType, primary.allowedMediaTypes)
+            matchesStringOrRegExp(mediaType, allowedMediaTypes)
           ) {
             return;
           }
