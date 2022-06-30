@@ -2,7 +2,7 @@
 
 ## 4.24.0
 
-- Added new icon `StatusActiveMajor` ([#6250](https://github.com/Shopify/polaris/issues/6250))
+- New icon `StatusActiveMajor` ([#6250](https://github.com/Shopify/polaris/issues/6250))
 
 ## 4.23.0
 
