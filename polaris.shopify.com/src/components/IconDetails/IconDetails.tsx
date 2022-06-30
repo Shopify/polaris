@@ -109,7 +109,7 @@ function IconDetails({ fileName, iconData }: Props) {
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript" minimalist>
             {`import {
-${fileName}
+  ${fileName}
 } from '@shopify/polaris-icons';`}
           </CodeExample>
         </div>
@@ -123,8 +123,8 @@ ${fileName}
         <div className={styles.CodeExampleWrapper}>
           <CodeExample language="typescript" minimalist>
             {`<Icon
-source={${fileName}}
-color="base"
+  source={${fileName}}
+  color="base"
 />`}
           </CodeExample>
         </div>
