@@ -212,7 +212,7 @@ describe('<Button />', () => {
     it('passes to `button`', () => {
       const button = mountWithApp(<UnstyledButton disabled />);
       expect(button).toContainReactComponent('button', {
-        disabled: true,
+        'aria-disabled': true,
       });
     });
 
@@ -220,7 +220,7 @@ describe('<Button />', () => {
       const button = mountWithApp(<UnstyledButton url={mockUrl} disabled />);
       expect(button).toContainReactComponent('a');
       expect(button).not.toContainReactComponent('button', {
-        disabled: true,
+        'aria-disabled': true,
       });
     });
   });

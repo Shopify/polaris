@@ -86,6 +86,23 @@ describe('<Button />', () => {
 
       expect(button).toContainReactComponent('a', {href: undefined});
     });
+
+    it('prevents default for onClick and onKeyPress events when disabled', () => {
+      const onClick = jest.fn();
+      const onKeyPress = jest.fn();
+      const button = mountWithApp(
+        <Button disabled onClick={onClick} onKeyPress={onKeyPress} />,
+      );
+
+      const mockEvent = {
+        preventDefault: jest.fn(),
+      };
+
+      button.find('button')!.trigger('onClick', mockEvent);
+      button.find('button')!.trigger('onKeyPress', mockEvent);
+
+      expect(mockEvent.preventDefault).toHaveBeenCalledTimes(2);
+    });
   });
 
   describe('loading', () => {
@@ -259,7 +276,9 @@ describe('<Button />', () => {
       const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
       const disclosureButton = button.findAll('button')[1];
 
-      expect(disclosureButton).toHaveReactProps({disabled: true});
+      expect(disclosureButton).toHaveReactProps({
+        'aria-disabled': true,
+      });
     });
 
     it('renders an ActionList with the actions set', () => {

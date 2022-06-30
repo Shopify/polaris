@@ -78,6 +78,7 @@ export function UnstyledButton({
     buttonMarkup = (
       <button
         {...interactiveProps}
+        aria-disabled={disabled}
         type={submit ? 'submit' : 'button'}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
