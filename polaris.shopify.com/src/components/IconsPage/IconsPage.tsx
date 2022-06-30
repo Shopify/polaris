@@ -62,7 +62,7 @@ function IconsPage() {
     router.push({ query });
   };
 
-  const handleRemoveIcon = () => {
+  const handleModalClose = () => {
     const query: { q?: string } = {};
     if (searchText) query.q = searchText;
     router.push({ query });
@@ -128,7 +128,7 @@ function IconsPage() {
         </div>
 
         {useModal ? (
-          <Dialog open={activeIcon !== ""} onClose={() => handleRemoveIcon()}>
+          <Dialog open={activeIcon !== ""} onClose={handleModalClose}>
             <div className={styles.ModalBackdrop} aria-hidden="true" />
             <Dialog.Panel className={styles.Modal}>
               <IconDetails
