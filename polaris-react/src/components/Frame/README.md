@@ -233,12 +233,13 @@ function FrameExample() {
 
   const actualPageMarkup = (
     <Page title="Account">
+      {skipToContentTarget}
       <Layout>
-        {skipToContentTarget}
-        <Layout.AnnotatedSection
-          title="Account details"
-          description="Jaded Pixel will use this as your account information."
-        >
+        <Layout.Section oneThird>
+          title="Account details" description="Jaded Pixel will use this as your
+          account information."
+        </Layout.Section>
+        <Layout.Section twoThirds>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -256,7 +257,7 @@ function FrameExample() {
               />
             </FormLayout>
           </Card>
-        </Layout.AnnotatedSection>
+        </Layout.Section>
       </Layout>
     </Page>
   );
@@ -571,10 +572,11 @@ function FrameExample() {
     <Page title="Account">
       <Layout>
         {skipToContentTarget}
-        <Layout.AnnotatedSection
+        <Layout.Section oneThird>
           title="Account details"
           description="Jaded Pixel will use this as your account information."
-        >
+        </Layout.Seciton>
+        <Layout.Section twoThirds>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -592,7 +594,7 @@ function FrameExample() {
               />
             </FormLayout>
           </Card>
-        </Layout.AnnotatedSection>
+        </Layout.Section>
       </Layout>
     </Page>
   );
