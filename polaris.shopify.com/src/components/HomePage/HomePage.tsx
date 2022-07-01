@@ -7,7 +7,7 @@ import componentsImage from "./components.png";
 import tokensImage from "./tokens.png";
 import iconsImage from "./icons.png";
 import foundationsImage from "./foundations.png";
-import vsCodeImage from "./vscode.png";
+import vsCodeImage from "./vscode.jpg";
 import Image from "../Image";
 import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
@@ -231,7 +231,6 @@ function HomePage({}: Props) {
                     width="2250"
                     height="1440"
                     src={vsCodeImage}
-                    className={styles.Poster_Image}
                     alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
                   />
                 </div>
