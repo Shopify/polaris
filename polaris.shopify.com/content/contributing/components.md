@@ -28,7 +28,7 @@ quickGuides:
         answer: As needed and as early in your project process as possible.
       - where:
         question: Where do I contribute?
-        answer: Code and documentation for prop changes can be contributed to the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. If the prop is UI-related, updates should also be contributed Figma.
+        answer: Code and documentation for prop changes can be contributed in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. If the prop is UI-related, updates should also be contributed in Figma.
       - what:
         question: What resources will my contribution impact?
         answer: Along with impacting the <code>@shopify/polaris</code> npm package and this documentation site, prop changes may also impact the <a href="/contributing/figma-ui-kit">Figma UI Kit</a>.

@@ -154,6 +154,9 @@
     font-family: monospace;
     font-size: var(--font-size-300);
     font-weight: var(--font-weight-500);
+    background: var(--surface-inline-code);
+    border-radius: var(--border-radius-300);
+    padding: 0.15rem 0.25rem;
   }
 
   .usage-list {
