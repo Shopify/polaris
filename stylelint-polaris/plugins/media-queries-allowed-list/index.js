@@ -74,19 +74,17 @@ const {rule} = stylelint.createPlugin(
           root,
         },
         (warning) => {
-          const media = warning.node.params;
-
           if (
             // The built-in `media-feature-name-allowed-list` rule
             // doesn't handle this case:
             allowedMediaFeatureNames.includes('-ms-high-contrast') &&
-            /^\(\s*-ms-high-contrast:.+?\)$/.test(media)
+            warning.text.includes('-ms-high-contrast')
           ) {
             return;
           }
 
           stylelint.utils.report({
-            message: messages.rejected(media),
+            message: messages.rejected(warning.node.params),
             ruleName,
             result,
             node: warning.node,

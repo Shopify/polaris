@@ -100,5 +100,13 @@ testRule({
       description: 'Defining media queries an unsupported media type',
       message: messages.rejected('screen'),
     },
+    {
+      code: '@media (-ms-high-contrast: active) and (min-width: 0px) {}',
+      description:
+        'Uses allowed prefixed media feature name and disallowed min-width',
+      message: messages.rejected(
+        '(-ms-high-contrast: active) and (min-width: 0px)',
+      ),
+    },
   ],
 });
