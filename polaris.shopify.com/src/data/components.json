@@ -17,7 +17,7 @@
         "social media"
       ]
     },
-    "intro": "The account connection component is used so merchants can connect or disconnect\ntheir store to various accounts. For example, if merchants want to use the\nFacebook sales channel, they need to connect their Facebook\naccount to their Shopify store."
+    "intro": "The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store."
   },
   {
     "frontMatter": {
@@ -35,7 +35,7 @@
         "options"
       ]
     },
-    "intro": "Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options."
+    "intro": "Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options."
   },
   {
     "frontMatter": {
@@ -102,7 +102,7 @@
         "android"
       ]
     },
-    "intro": "Avatars are used to show a thumbnail representation of an individual or\nbusiness in the interface."
+    "intro": "Avatars are used to show a thumbnail representation of an individual or business in the interface."
   },
   {
     "frontMatter": {
@@ -168,6 +168,37 @@
   },
   {
     "frontMatter": {
+      "name": "Button group",
+      "category": "Actions",
+      "platforms": [
+        "android",
+        "ios",
+        "web"
+      ],
+      "keywords": [
+        "ButtonGroup",
+        "choices",
+        "decision",
+        "call-to-action",
+        "CTA",
+        "segmented buttons",
+        "divided buttons",
+        "grouped actions",
+        "multiple horizontal buttons",
+        "multiple buttons",
+        "set of buttons",
+        "set of actions",
+        "horizontal arrangement of buttons",
+        "stacked",
+        "segmented control",
+        "ios",
+        "android"
+      ]
+    },
+    "intro": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
+  },
+  {
+    "frontMatter": {
       "name": "Button",
       "category": "Actions",
       "platforms": [
@@ -202,37 +233,6 @@
   },
   {
     "frontMatter": {
-      "name": "Button group",
-      "category": "Actions",
-      "platforms": [
-        "android",
-        "ios",
-        "web"
-      ],
-      "keywords": [
-        "ButtonGroup",
-        "choices",
-        "decision",
-        "call-to-action",
-        "CTA",
-        "segmented buttons",
-        "divided buttons",
-        "grouped actions",
-        "multiple horizontal buttons",
-        "multiple buttons",
-        "set of buttons",
-        "set of actions",
-        "horizontal arrangement of buttons",
-        "stacked",
-        "segmented control",
-        "ios",
-        "android"
-      ]
-    },
-    "intro": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
-  },
-  {
-    "frontMatter": {
       "name": "Callout card",
       "category": "Structure",
       "keywords": [
@@ -257,7 +257,7 @@
         "illustration card"
       ]
     },
-    "intro": "Callout cards are used to encourage merchants to take an action related to a\nnew feature or opportunity. They are most commonly displayed in the\nsales channels section of Shopify."
+    "intro": "Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify."
   },
   {
     "frontMatter": {
@@ -316,7 +316,7 @@
         "call out"
       ]
     },
-    "intro": "Cards are used to group similar concepts and tasks together to make Shopify\neasier for merchants to scan, read, and get things done."
+    "intro": "Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done."
   },
   {
     "frontMatter": {
@@ -422,7 +422,7 @@
         "alpha value selector"
       ]
     },
-    "intro": "The color picker is used to let merchants select a color visually. For\nexample, merchants use the color picker to customize the accent color of the\nemail templates for their shop."
+    "intro": "The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop."
   },
   {
     "frontMatter": {
@@ -469,7 +469,7 @@
       ],
       "omitAppProvider": true
     },
-    "intro": "Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/structure/app-provider) but can be used independently to apply a base color scheme to its children."
+    "intro": "Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children."
   },
   {
     "frontMatter": {
@@ -510,7 +510,7 @@
         "date range selector"
       ]
     },
-    "intro": "Date pickers let merchants choose dates from a visual calendar that’s\nconsistently applied wherever dates need to be selected across Shopify."
+    "intro": "Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
   },
   {
     "frontMatter": {
@@ -571,7 +571,7 @@
         "ios"
       ]
     },
-    "intro": "Display styles make a bold visual statement. Use them to create impact when the\nmain goal is visual storytelling. For example, use display text to convince or\nreassure merchants such as in marketing content or to capture attention during onboarding."
+    "intro": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
   },
   {
     "frontMatter": {
@@ -675,24 +675,6 @@
   },
   {
     "frontMatter": {
-      "name": "Form",
-      "category": "Forms",
-      "keywords": [
-        "form",
-        "forms",
-        "input",
-        "checkbox",
-        "check box",
-        "textfield",
-        "text field",
-        "post",
-        "get"
-      ]
-    },
-    "intro": "A wrapper component that handles the submission of forms."
-  },
-  {
-    "frontMatter": {
       "name": "Form layout",
       "category": "Forms",
       "platforms": [
@@ -733,6 +715,24 @@
   },
   {
     "frontMatter": {
+      "name": "Form",
+      "category": "Forms",
+      "keywords": [
+        "form",
+        "forms",
+        "input",
+        "checkbox",
+        "check box",
+        "textfield",
+        "text field",
+        "post",
+        "get"
+      ]
+    },
+    "intro": "A wrapper component that handles the submission of forms."
+  },
+  {
+    "frontMatter": {
       "name": "Frame",
       "category": "Structure",
       "keywords": [
@@ -753,7 +753,7 @@
       "fullSizeExamples": true,
       "omitAppProvider": true
     },
-    "intro": "The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/structure/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) components."
+    "intro": "The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components."
   },
   {
     "frontMatter": {
@@ -767,7 +767,7 @@
         "app"
       ]
     },
-    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure\na uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
+    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
   },
   {
     "frontMatter": {
@@ -790,7 +790,7 @@
         "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
       }
     },
-    "intro": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)"
+    "intro": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)."
   },
   {
     "frontMatter": {
@@ -817,7 +817,7 @@
         "ios"
       ]
     },
-    "intro": "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/structure/card) generally use headings as their title."
+    "intro": "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title."
   },
   {
     "frontMatter": {
@@ -1092,7 +1092,7 @@
         "side bar"
       ]
     },
-    "intro": "The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application."
+    "intro": "The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application."
   },
   {
     "frontMatter": {
@@ -1110,7 +1110,25 @@
         "list selection"
       ]
     },
-    "intro": "The option list component lets you create a list of grouped items that\nmerchants can pick from. This can include single selection or multiple selection\nof options. Option list usually appears in a popover, and sometimes in a modal\nor a sidebar. Option lists are styled differently than\n[choice lists](https://polaris.shopify.com/components/forms/choice-list) and should not be used within a form, but as a standalone menu."
+    "intro": "The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu."
+  },
+  {
+    "frontMatter": {
+      "name": "Page actions",
+      "category": "Structure",
+      "keywords": [
+        "PageActions",
+        "bottom of page actions",
+        "bottom page actions",
+        "primary action",
+        "primary page actions",
+        "default page actions",
+        "save delete actions",
+        "save actions",
+        "delete actions"
+      ]
+    },
+    "intro": "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page."
   },
   {
     "frontMatter": {
@@ -1143,24 +1161,6 @@
       ]
     },
     "intro": "Use to build the outer wrapper of a page, including the page title and associated actions."
-  },
-  {
-    "frontMatter": {
-      "name": "Page actions",
-      "category": "Structure",
-      "keywords": [
-        "PageActions",
-        "bottom of page actions",
-        "bottom page actions",
-        "primary action",
-        "primary page actions",
-        "default page actions",
-        "save delete actions",
-        "save actions",
-        "delete actions"
-      ]
-    },
-    "intro": "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page."
   },
   {
     "frontMatter": {
@@ -1264,7 +1264,7 @@
         "switch"
       ]
     },
-    "intro": "Use radio buttons to present each item in a list of options where merchants must\nmake a single selection."
+    "intro": "Use radio buttons to present each item in a list of options where merchants must make a single selection."
   },
   {
     "frontMatter": {
@@ -1441,7 +1441,7 @@
         "adjuster"
       ]
     },
-    "intro": "Use to give merchants control over a feature or option that can be turned\non or off."
+    "intro": "Use to give merchants control over a feature or option that can be turned on or off."
   },
   {
     "frontMatter": {
@@ -1580,7 +1580,7 @@
         "layout"
       ]
     },
-    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical\ncentering. A stack is made of flexible items that wrap each of the stack’s\nchildren. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
+    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
   },
   {
     "frontMatter": {
@@ -1744,7 +1744,7 @@
         "android"
       ]
     },
-    "intro": "A text field is an input field that merchants can type into. It has a range of\noptions and supports several text formats including numbers."
+    "intro": "A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers."
   },
   {
     "frontMatter": {
@@ -1844,7 +1844,7 @@
         "tap"
       ]
     },
-    "intro": "Tooltips are floating labels that briefly explain the function of a user\ninterface element. They can be triggered when merchants hover, focus, tap, or\nclick."
+    "intro": "Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click."
   },
   {
     "frontMatter": {
@@ -1866,7 +1866,7 @@
         "logo"
       ]
     },
-    "intro": "The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo."
+    "intro": "The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo."
   },
   {
     "frontMatter": {
