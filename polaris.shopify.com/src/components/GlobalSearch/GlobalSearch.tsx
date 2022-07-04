@@ -276,7 +276,7 @@ function GlobalSearch({}: Props) {
                                       url={result.url}
                                       description={result.meta.description}
                                       name={result.meta.name}
-                                      notice={result.meta.notice}
+                                      status={result.meta.status}
                                       {...getItemProps({ resultIndex })}
                                     />
                                   );

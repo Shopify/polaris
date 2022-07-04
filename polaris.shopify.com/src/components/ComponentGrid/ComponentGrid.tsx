@@ -2,7 +2,7 @@ import Image from "../Image";
 import Link from "next/link";
 import { SearchResultItem } from "../../types";
 import { className, slugify } from "../../utils/various";
-import { ComponentNotice } from "../../types";
+import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
 import StatusBadge from "../StatusBadge";
 
@@ -18,7 +18,7 @@ interface ComponentGridItemProps extends SearchResultItem {
   name: string;
   description: string;
   url: string;
-  notice?: ComponentNotice;
+  status?: Status;
 }
 
 function ComponentGridItem({
@@ -26,7 +26,7 @@ function ComponentGridItem({
   description,
   url,
   searchResultData,
-  notice,
+  status,
 }: ComponentGridItemProps) {
   return (
     <li
@@ -54,10 +54,10 @@ function ComponentGridItem({
           <div className={styles.ComponentDescription}>
             <h4>
               {name}
-              {notice && (
+              {status && (
                 <>
                   {" "}
-                  <StatusBadge notice={notice} />
+                  <StatusBadge status={status} />
                 </>
               )}
             </h4>

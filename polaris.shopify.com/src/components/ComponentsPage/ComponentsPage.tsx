@@ -8,7 +8,7 @@ import {
   slugify,
   getComponentNav,
 } from "../../utils/various";
-import { ComponentNotice } from "../../types";
+import { Status } from "../../types";
 import styles from "./ComponentsPage.module.scss";
 import PageMeta from "../PageMeta";
 
@@ -38,16 +38,16 @@ export default function ComponentsPage({}: Props) {
                     (component) => component.frontMatter.category === category
                   )
                   .map(({ frontMatter, intro }) => {
-                    const { name, notice } = frontMatter;
+                    const { name, status } = frontMatter;
                     const url = `/components/${slugify(name)}`;
-                    let typedNotice = notice as ComponentNotice | undefined;
+                    let typedStatus = status as Status | undefined;
                     return (
                       <ComponentGrid.Item
                         key={name}
                         name={name}
                         description={stripMarkdownLinks(intro)}
                         url={url}
-                        notice={typedNotice}
+                        status={typedStatus}
                       />
                     );
                   })}

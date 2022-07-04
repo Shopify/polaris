@@ -5,11 +5,11 @@
   background: var(--surface-subdued);
   border-radius: var(--border-radius-400);
 
-  &[data-status="Deprecated"] {
+  &[data-value="Deprecated"] {
     background: var(--surface-warning);
   }
 
-  &[data-status="Alpha"] {
+  &[data-value="Alpha"] {
     background: var(--surface-information);
   }
 

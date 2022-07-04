@@ -785,8 +785,8 @@
         "full width containers",
         "css grid"
       ],
-      "notice": {
-        "status": "Alpha",
+      "status": {
+        "value": "Alpha",
         "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
       }
     },
@@ -1461,8 +1461,8 @@
         "web"
       ],
       "fullSizeExamples": true,
-      "notice": {
-        "status": "Deprecated",
+      "status": {
+        "value": "Deprecated",
         "message": "The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions."
       }
     },

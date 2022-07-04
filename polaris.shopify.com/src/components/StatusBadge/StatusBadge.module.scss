@@ -5,11 +5,11 @@
   border-radius: var(--border-radius-round);
   padding: 0 0.5rem;
 
-  &[data-status="Deprecated"] {
+  &[data-value="Deprecated"] {
     background: var(--surface-warning);
   }
 
-  &[data-status="Alpha"] {
+  &[data-value="Alpha"] {
     background: var(--surface-information);
   }
 }
