@@ -90,6 +90,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   fullScreen,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
+  const [backdropClicked, setBackdropClicked] = useState(false);
 
   const headerId = useUniqueId('modal-header');
   const activatorRef = useRef<HTMLDivElement>(null);
@@ -135,6 +136,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     },
     [onIFrameLoad],
   );
+
+  const handleBackdropOnClick = () => {
+    setBackdropClicked(true);
+    onClose();
+  };
 
   if (open) {
     const footerMarkup =
@@ -196,7 +202,12 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         limitHeight={limitHeight}
         fullScreen={fullScreen}
       >
-        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
+        <Header
+          id={headerId}
+          titleHidden={titleHidden}
+          backdropClicked={backdropClicked}
+          onClose={onClose}
+        >
           {title}
         </Header>
         <div className={styles.BodyWrapper}>{bodyMarkup}</div>
@@ -204,7 +215,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop onClick={onClose} />;
+    backdrop = <Backdrop onClick={handleBackdropOnClick} />;
   }
 
   const animated = !instant;

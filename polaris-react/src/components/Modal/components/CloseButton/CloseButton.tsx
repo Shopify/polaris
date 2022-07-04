@@ -9,10 +9,15 @@ import styles from './CloseButton.scss';
 
 export interface CloseButtonProps {
   titleHidden?: boolean;
+  backdropClicked: boolean;
   onClick(): void;
 }
 
-export function CloseButton({titleHidden = false, onClick}: CloseButtonProps) {
+export function CloseButton({
+  titleHidden = false,
+  backdropClicked,
+  onClick,
+}: CloseButtonProps) {
   const i18n = useI18n();
 
   return (
@@ -20,6 +25,7 @@ export function CloseButton({titleHidden = false, onClick}: CloseButtonProps) {
       onClick={onClick}
       className={classNames(
         styles.CloseButton,
+        backdropClicked && styles.BackdropClicked,
         titleHidden && styles.titleHidden,
       )}
       aria-label={i18n.translate('Polaris.Common.close')}
