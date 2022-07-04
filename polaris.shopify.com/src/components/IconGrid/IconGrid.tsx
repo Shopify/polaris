@@ -42,7 +42,6 @@ function IconGridItem({
     >
       <Tooltip
         ariaLabel={icon.description}
-        placement="top"
         renderContent={() => (
           <div>
             <p>

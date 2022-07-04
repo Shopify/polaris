@@ -152,7 +152,6 @@ function TokenListItem({
                 <div className={styles.TokenClipboard}>
                   <Tooltip
                     ariaLabel="Copy to clipboard"
-                    placement="top"
                     renderContent={() => (
                       <div className={styles.TokenToolTip}>
                         <p>{didJustCopy ? "Copied!" : "Copy to clipboard"}</p>
