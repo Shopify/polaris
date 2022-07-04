@@ -41,7 +41,6 @@
   }
 
   &[data-placement="bottom"] {
-    &::after {
       content: "";
       top: -5px;
       bottom: auto;
