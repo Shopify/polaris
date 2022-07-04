@@ -1,4 +1,6 @@
 import { HTMLProps } from "react";
+import Image from "../Image";
+import filterMajor from "./FilterMajor.svg";
 import styles from "./SearchField.module.scss";
 
 interface Props extends Omit<HTMLProps<HTMLInputElement>, "onChange"> {
@@ -7,14 +9,18 @@ interface Props extends Omit<HTMLProps<HTMLInputElement>, "onChange"> {
 
 function SearchField({ onChange, ...props }: Props) {
   return (
-    <input
-      type="search"
-      className={styles.SearchField}
-      onChange={(evt) => {
-        onChange && onChange(evt.target.value);
-      }}
-      {...props}
-    />
+    <div className={styles.SearchField}>
+      <div className={styles.Icon}>
+        <Image src={filterMajor} width={20} height={20} alt="" icon />
+      </div>
+      <input
+        type="search"
+        onChange={(evt) => {
+          onChange && onChange(evt.target.value);
+        }}
+        {...props}
+      />
+    </div>
   );
 }
 

@@ -1,22 +1,27 @@
 @import "../../styles/mixins.scss";
 
 .IconGrid {
+  border-radius: var(--border-radius-600);
+  overflow: hidden;
+  border: 1px solid var(--border-color-light);
+}
+
+.IconGridInner {
   display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  border-radius: var(--border-radius-600);
+  margin-right: -1px;
+  margin-bottom: -1px;
 }
 
 .Icon {
   display: flex;
-  flex-direction: column;
-  aspect-ratio: 5 / 4;
-  border-radius: var(--border-radius-400);
-  box-shadow: var(--card-shadow);
-  user-select: none;
-  text-align: center;
-  font-size: 12px;
-  color: #aaa;
-  padding: 1rem;
+  font-size: var(--font-size-50);
+  color: var(--text-subdued);
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-color-light);
+  border-right: 1px solid var(--border-color-light);
+  gap: 1.125rem;
 
   img {
     @include dark-mode {
@@ -25,24 +30,20 @@
   }
 
   &:focus-visible {
-    box-shadow: var(--focus-outline);
+    box-shadow: var(--focus-outline-inside);
   }
 
   p {
+    flex: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
-}
 
-.ImageWrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.IconSelected {
-  background: var(--search-highlight-color);
+  &.isSelected,
+  &:hover {
+    background: var(--search-highlight-color);
+  }
 }
 
 .SectionHeading {
