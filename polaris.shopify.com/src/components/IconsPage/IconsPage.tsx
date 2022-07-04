@@ -113,7 +113,7 @@ function IconsPage() {
                 src="/icons/SearchMajor.svg"
                 width={40}
                 height={40}
-                alt=""
+                alt="A magnifying glass icon"
                 icon
               />
               <div>

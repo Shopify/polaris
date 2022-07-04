@@ -41,7 +41,6 @@ function IconGrid({ title, icons, activeIcon, query = "" }: Props) {
                     width={20}
                     height={20}
                     fadeIn={false}
-                    title={icons[iconFileName].name}
                   />
                   <p>{icons[iconFileName].name}</p>
                 </a>

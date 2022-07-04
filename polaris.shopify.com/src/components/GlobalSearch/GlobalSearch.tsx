@@ -16,7 +16,6 @@ import Link from "next/link";
 import { className, slugify, stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
-import { type } from "os";
 
 interface Props {}
 
