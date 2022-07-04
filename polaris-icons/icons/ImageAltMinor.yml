@@ -1,4 +1,4 @@
-name: image alt
+name: Image alt
 set: minor
 description: Used to represent the alt text attribute used to describe the appearance and function of an image on a page.
 keywords:

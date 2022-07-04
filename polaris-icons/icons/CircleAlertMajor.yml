@@ -1,4 +1,4 @@
-name: circle alert
+name: Circle alert
 set: major
 description: Used to give merchants more information about something they should be aware of.
 keywords:

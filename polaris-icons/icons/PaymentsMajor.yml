@@ -1,4 +1,4 @@
-name: payments
+name: Payments
 set: major
 description: Used to represent a payment made by credit or debit card.
 keywords:

@@ -1,4 +1,4 @@
-name: favorite
+name: Favorite
 set: major
 description: Used to represent an action to favorite or save an item or resource.
 keywords:

@@ -1,4 +1,4 @@
-name: hide keyboard
+name: Hide keyboard
 set: major
 description: Used to represent an action to hide the keyboard on a mobile device.
 keywords:

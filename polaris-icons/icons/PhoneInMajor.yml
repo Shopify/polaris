@@ -1,4 +1,4 @@
-name: phone in
+name: Phone in
 set: major
 description: Used to represent an incoming phone call.
 keywords:

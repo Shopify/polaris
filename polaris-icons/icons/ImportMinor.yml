@@ -1,4 +1,4 @@
-name: import
+name: Import
 set: minor
 description: Used to denote the action of importing content.
 keywords:

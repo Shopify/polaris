@@ -1,4 +1,4 @@
-name: troubleshoot
+name: Troubleshoot
 set: major
 description: Used to represent an action to troubleshoot or view troubleshooting information.
 keywords:

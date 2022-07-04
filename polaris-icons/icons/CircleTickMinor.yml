@@ -1,4 +1,4 @@
-name: circle tick
+name: Circle tick
 set: minor
 description: Used to represent an action to approve or confirm.
 keywords:

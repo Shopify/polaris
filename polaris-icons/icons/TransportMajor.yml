@@ -1,4 +1,4 @@
-name: transport
+name: Transport
 set: major
 description: Used as a navigation item in our emoji picker for the transport category.
 keywords:
