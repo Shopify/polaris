@@ -23,10 +23,5 @@ export function Section({
     ...(twoThirds && {columnSpan: {xs: 6, lg: 8}}),
   };
 
-  // secondary && styles['Section-secondary'],
-  // fullWidth && styles['Section-fullWidth'],
-  // oneHalf && styles['Section-oneHalf'],
-  // oneThird && styles['Section-oneThird'],
-
   return <Grid.Cell {...gridProps}>{children}</Grid.Cell>;
 }
