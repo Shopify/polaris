@@ -423,8 +423,17 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 <Page fullWidth>
   <Layout>
     <Layout.Section oneThird>
-      id="storeDetails" title="Store details" description="Shopify and your
-      customers will use this information to contact you."
+      <div style={{marginTop: 'var(--p-space-5)'}}>
+        <TextContainer>
+          <Heading id="storeDetails">Store details</Heading>
+          <div>
+            <TextStyle variation="subdued">
+              Shopify and your customers will use this information to contact
+              you.
+            </TextStyle>
+          </div>
+        </TextContainer>
+      </div>
     </Layout.Section>
     <Layout.Section twoThirds>
       <Card sectioned>
@@ -501,10 +510,19 @@ Use for settings pages that need a banner or other content at the top.
       </Banner>
     </Layout.Section>
     <Layout.Section oneThird>
-      id="storeDetails"
-      title="Store details"
-      description="Shopify and your customers will use this information to contact you."
+      <div style={{marginTop: 'var(--p-space-5)'}}>
+        <TextContainer>
+          <Heading id="storeDetails">Store details</Heading>
+          <div>
+            <TextStyle variation="subdued">
+              Shopify and your customers will use this information to contact
+              you.
+            </TextStyle>
+          </div>
+        </TextContainer>
+      </div>
     </Layout.Section>
+    <Layout.Section twoThirds>
       <Card sectioned>
         <FormLayout>
           <TextField

@@ -236,9 +236,18 @@ function FrameExample() {
       {skipToContentTarget}
       <Layout>
         <Layout.Section oneThird>
-          title="Account details" description="Jaded Pixel will use this as your
-          account information."
+          <div style={{marginTop: 'var(--p-space-5)'}}>
+            <TextContainer>
+              <Heading>Account details</Heading>
+              <div>
+                <TextStyle variation="subdued">
+                  Jaded Pixel will use this as your account information.
+                </TextStyle>
+              </div>
+            </TextContainer>
+          </div>
         </Layout.Section>
+
         <Layout.Section twoThirds>
           <Card sectioned>
             <FormLayout>
@@ -570,12 +579,21 @@ function FrameExample() {
 
   const actualPageMarkup = (
     <Page title="Account">
+      {skipToContentTarget}
       <Layout>
-        {skipToContentTarget}
         <Layout.Section oneThird>
-          title="Account details"
-          description="Jaded Pixel will use this as your account information."
-        </Layout.Seciton>
+          <div style={{marginTop: 'var(--p-space-5)'}}>
+            <TextContainer>
+              <Heading>Account details</Heading>
+              <div>
+                <TextStyle variation="subdued">
+                  Jaded Pixel will use this as your account information.
+                </TextStyle>
+              </div>
+            </TextContainer>
+          </div>
+        </Layout.Section>
+
         <Layout.Section twoThirds>
           <Card sectioned>
             <FormLayout>
