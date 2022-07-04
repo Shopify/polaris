@@ -36,7 +36,10 @@ iconPaths.forEach((filename) => {
     .replace(`${iconBasePath}/`, '')
     .replace('.yml', '');
 
-  iconMetadata[exportName] = iconData;
+  iconMetadata[exportName] = {
+    id: exportName,
+    ...iconData,
+  };
   iconExports.push(
     `export {default as ${exportName}} from '../icons/${exportName}.svg';`,
   );
