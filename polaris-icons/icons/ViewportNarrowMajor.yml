@@ -1,4 +1,4 @@
-name: viewport narrow
+name: Viewport narrow
 set: major
 description: Used to represent an action to make a viewport, item or resource narrower.
 keywords:

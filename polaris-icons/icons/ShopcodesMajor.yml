@@ -1,4 +1,4 @@
-name: shopcodes
+name: Shopcodes
 set: major
 description: Used to represent a QR code.
 keywords:

@@ -1,4 +1,4 @@
-name: page
+name: Page
 set: major
 description: Used to represent a blank page or document.
 keywords:

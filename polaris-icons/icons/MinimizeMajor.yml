@@ -1,4 +1,4 @@
-name: minimize
+name: Minimize
 set: major
 description: Used to represent an action to make an item, resource or view smaller.
 keywords:

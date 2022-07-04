@@ -1,4 +1,4 @@
-name: image with text
+name: Image with text
 set: major
 description: Used to represent a layout option of a single column, featuring an image and text.
 keywords:

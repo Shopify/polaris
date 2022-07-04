@@ -1,4 +1,4 @@
-name: add
+name: Add
 set: major
 description: Used as an action to add a new content block or layout component.
 keywords:

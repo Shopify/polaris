@@ -1,4 +1,4 @@
-name: delete
+name: Delete
 set: major
 description: Used to represent a trash can, or an action to remove or delete an item or resource.
 keywords:
