@@ -8,7 +8,7 @@ import {
   slugify,
   getComponentNav,
 } from "../../utils/various";
-import { ComponentNotice as ComponentNoticeType } from "../../types";
+import { ComponentNotice } from "../../types";
 import styles from "./ComponentsPage.module.scss";
 import PageMeta from "../PageMeta";
 
@@ -40,7 +40,7 @@ export default function ComponentsPage({}: Props) {
                   .map(({ frontMatter, intro }) => {
                     const { name, notice } = frontMatter;
                     const url = `/components/${slugify(name)}`;
-                    let typedNotice = notice as ComponentNoticeType | undefined;
+                    let typedNotice = notice as ComponentNotice | undefined;
                     return (
                       <ComponentGrid.Item
                         key={name}

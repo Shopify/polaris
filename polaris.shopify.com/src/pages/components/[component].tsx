@@ -13,8 +13,8 @@ import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 import { getComponentNav } from "../../utils/various";
 import PageMeta from "../../components/PageMeta";
-import { ComponentNotice as ComponentNoticeType } from "../../types";
-import ComponentNotice from "../../components/ComponentNotice";
+import { ComponentNotice } from "../../types";
+import StatusBanner from "../../components/StatusBanner";
 
 interface MarkdownData {
   frontMatter: any;
@@ -24,7 +24,7 @@ interface MarkdownData {
 
 interface Props {
   examples: [Example];
-  notice?: ComponentNoticeType;
+  notice?: ComponentNotice;
   name: string;
   intro: string;
   readme: {
@@ -43,7 +43,7 @@ const Components = ({ examples, intro, name, readme, notice }: Props) => {
       <Longform>
         <h1>{name}</h1>
         <Markdown text={readme.header} skipH1 />
-        {notice && <ComponentNotice notice={notice} />}
+        {notice && <StatusBanner notice={notice} />}
         <Examples examples={examples} />
         <Markdown text={readme.body} skipH1 />
       </Longform>
