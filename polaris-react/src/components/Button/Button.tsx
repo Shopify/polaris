@@ -129,7 +129,7 @@ export function Button({
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
-  const futileEvents = ['onClick', 'onKeyPress'];
+  const eventsToPrevent = ['onClick', 'onKeyPress'];
 
   const className = classNames(
     styles.Button,
@@ -201,7 +201,7 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
-  const preventedInteraction = futileEvents.reduce(
+  const preventedInteraction = eventsToPrevent.reduce(
     (handlers: any, eventToPrevent: any) => ({
       ...handlers,
       [eventToPrevent]: (event: React.SyntheticEvent<HTMLButtonElement>) => {
