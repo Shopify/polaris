@@ -37,6 +37,7 @@ export interface ComponentsSearchResult extends BaseSearchResult {
   meta: {
     name: string;
     description: string;
+    status?: Status;
   };
 }
 
@@ -93,3 +94,8 @@ export enum Breakpoints {
   Desktop = 1400,
   DesktopLarge = 1600,
 }
+
+export type Status = {
+  value: string;
+  message: string;
+};
