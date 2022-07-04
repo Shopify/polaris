@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Fuse from "fuse.js";
 import { useRouter } from "next/router";
 import { Dialog } from "@headlessui/react";
 import iconMetadata from "@shopify/polaris-icons/metadata";
@@ -12,42 +13,36 @@ import IconDetails from "../IconDetails";
 import PageMeta from "../PageMeta";
 import { className } from "../../utils/various";
 
-const getMatchingIcons = (currentSearch: string, set: string) => {
-  const matchingIcons: typeof iconMetadata = {};
-  Object.keys(iconMetadata).forEach((iconName) => {
-    const matchingName = iconMetadata[iconName].name
-      .toLowerCase()
-      .includes(currentSearch.toLowerCase());
-
-    const matchingKeywords = iconMetadata[iconName].keywords.some((keyword) =>
-      keyword.toLowerCase().includes(currentSearch.toLowerCase())
-    );
-
-    const matchingIcon = matchingName || matchingKeywords;
-    const matchingSet = iconMetadata[iconName].set === set;
-
-    if (matchingIcon && matchingSet) {
-      matchingIcons[iconName] = iconMetadata[iconName];
-    }
-  });
-
-  return matchingIcons;
-};
+const fuse = new Fuse(Object.values(iconMetadata), {
+  threshold: 0.25,
+  keys: [
+    { name: "name", weight: 3 },
+    { name: "id", weight: 2 },
+    { name: "keywords", weight: 2 },
+    { name: "set", weight: 1 },
+    { name: "fileName", weight: 1 },
+    { name: "description", weight: 1 },
+  ],
+});
 
 function IconsPage() {
   const router = useRouter();
   const useModal = useMedia("screen and (max-width: 850px)");
   const [searchText, setSearchText] = useState("");
+  const [iconsMajor, setIconsMajor] = useState([]);
+  const [iconsMinor, setIconsMinor] = useState([]);
   const activeIcon = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? "";
 
-  useEffect(() => {
-    setSearchText(router.query.q ? `${router.query.q}` : "");
-  }, [router.query.q]);
+  const filteredIcons = fuse.search(searchText).map((result) => result.item);
 
-  const matchingMinor = getMatchingIcons(searchText, "minor");
-  const matchingMajor = getMatchingIcons(searchText, "major");
+  // useEffect(() => {
+  //   setSearchText(router.query.q ? `${router.query.q}` : "");
+  // }, [router.query.q]);
+
+  const matchingMinor = filteredIcons.filter((x) => x.set === "minor");
+  const matchingMajor = filteredIcons.filter((x) => x.set === "major");
 
   const pageTitle = iconMetadata[activeIcon]
     ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
@@ -66,9 +61,6 @@ function IconsPage() {
     if (searchText) query.q = searchText;
     router.push({ query });
   };
-
-  const matchingMajorCount = Object.keys(matchingMajor).length;
-  const matchingMinorCount = Object.keys(matchingMinor).length;
 
   const githubIssueTitle = `[polaris.shopify.com] No icon found ${searchText}`;
   const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?title=${encodeURIComponent(
@@ -89,7 +81,7 @@ function IconsPage() {
             placeholder="Search icons"
           />
 
-          {matchingMajorCount > 0 && (
+          {matchingMajor.length > 0 && (
             <IconGrid
               title="Major icons"
               icons={matchingMajor}
@@ -98,7 +90,7 @@ function IconsPage() {
             />
           )}
 
-          {matchingMinorCount > 0 && (
+          {matchingMinor.length > 0 && (
             <IconGrid
               title="Minor icons"
               icons={matchingMinor}
@@ -107,7 +99,7 @@ function IconsPage() {
             />
           )}
 
-          {matchingMajorCount === 0 && matchingMinorCount === 0 ? (
+          {matchingMajor.length === 0 && matchingMinor.length === 0 ? (
             <div className={styles.NoSearchResults}>
               <Image
                 src="/icons/SearchMajor.svg"
