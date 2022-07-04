@@ -1,13 +1,13 @@
-import { ComponentNotice } from "../../types";
+import { Status } from "../../types";
 import styles from "./StatusBadge.module.scss";
 
 interface Props {
-  notice: ComponentNotice;
+  status: Status;
 }
-function StatusBadge({ notice }: Props) {
+function StatusBadge({ status }: Props) {
   return (
-    <div className={styles.StatusBadge} data-status={notice.status}>
-      {notice.status}
+    <div className={styles.StatusBadge} data-value={status.value}>
+      {status.value}
     </div>
   );
 }
