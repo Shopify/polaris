@@ -6,6 +6,8 @@ import {IndexTable, IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
 import {Row} from '../Row';
 import {Checkbox} from '../../Checkbox';
+import {Button} from '../../../../Button';
+import {Link} from '../../../../Link';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -219,6 +221,25 @@ describe('<Row />', () => {
 
     expect(onNavigationSpy).toHaveBeenCalledTimes(1);
   });
+
+  it.each([
+    ['<Link>', () => <Link url="/" dataPrimaryLink />],
+    ['<Button>', () => <Button url="/" dataPrimaryLink />],
+  ])(
+    'calls onNavigation when clicked %s',
+    (_: string, renderElement: () => JSX.Element) => {
+      const onNavigationSpy = jest.fn();
+      const row = mountWithTable(
+        <Row {...defaultProps} onNavigation={onNavigationSpy}>
+          <th>{renderElement()}</th>
+        </Row>,
+      );
+
+      triggerOnClick(row, 1, defaultEvent);
+
+      expect(onNavigationSpy).toHaveBeenCalledTimes(1);
+    },
+  );
 
   it('calls onClick when clicked', () => {
     const onClickSpy = jest.fn();

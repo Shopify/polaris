@@ -1,5 +1,4 @@
 import React, {PropsWithChildren} from 'react';
-import {version} from '../../package.json';
 
 interface Data {
   id: string;
@@ -12,34 +11,43 @@ interface Data {
 interface ProfileProps {
   id: string;
   kind: string;
+  printToDOM?: boolean;
 }
-
-const trackRenderPerformance = (data: Data) => {
-  const commitSha = process.env.STORYBOOK_GITHUB_SHA
-    ? process.env.STORYBOOK_GITHUB_SHA
-    : 'localdev';
-
-  console.log({...data, commitSha, version});
-};
 
 export const RenderPerformanceProfiler = ({
   id,
   kind,
   children,
-}: PropsWithChildren<ProfileProps>) => (
-  <React.Profiler
-    id={id}
-    // https://reactjs.org/docs/profiler.html#onrender-callback
-    onRender={(_, phase, actualDuration, baseDuration) => {
-      trackRenderPerformance({
-        id,
-        kind: kind.replace('All Components/', ''),
-        phase,
-        actualDuration,
-        baseDuration,
-      });
-    }}
-  >
-    {children}
-  </React.Profiler>
-);
+  printToDOM,
+}: PropsWithChildren<ProfileProps>) => {
+  function printDataToDOM(data: Data) {
+    const id = 'render-performance-profiler';
+    const container =
+      document.getElementById(id) || document.createElement('div');
+    const prevData = JSON.parse(container.innerHTML || '[]');
+
+    container.id = id;
+    container.style.display = 'none';
+    container.innerHTML = JSON.stringify([...prevData, data]);
+
+    document.body.appendChild(container);
+  }
+
+  return (
+    <React.Profiler
+      id={id}
+      onRender={(_, phase, actualDuration, baseDuration) => {
+        const data = {
+          id,
+          kind: kind.replace('All Components/', ''),
+          phase,
+          actualDuration,
+          baseDuration,
+        };
+        printToDOM ? printDataToDOM(data) : console.log(data);
+      }}
+    >
+      {children}
+    </React.Profiler>
+  );
+};
