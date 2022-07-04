@@ -1,4 +1,4 @@
-name: edit
+name: Edit
 set: minor
 description: Used to represent the action of editing or modifying information.
 keywords:

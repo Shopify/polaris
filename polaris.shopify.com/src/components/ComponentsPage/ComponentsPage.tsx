@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import ComponentGrid from "../ComponentGrid";
 import Layout from "../Layout";
 
@@ -10,6 +8,7 @@ import {
   slugify,
   getComponentNav,
 } from "../../utils/various";
+import { Status } from "../../types";
 import styles from "./ComponentsPage.module.scss";
 import PageMeta from "../PageMeta";
 
@@ -39,14 +38,16 @@ export default function ComponentsPage({}: Props) {
                     (component) => component.frontMatter.category === category
                   )
                   .map(({ frontMatter, intro }) => {
-                    const { name } = frontMatter;
+                    const { name, status } = frontMatter;
                     const url = `/components/${slugify(name)}`;
+                    let typedStatus = status as Status | undefined;
                     return (
                       <ComponentGrid.Item
                         key={name}
                         name={name}
                         description={stripMarkdownLinks(intro)}
                         url={url}
+                        status={typedStatus}
                       />
                     );
                   })}

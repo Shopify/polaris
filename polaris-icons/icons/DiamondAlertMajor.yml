@@ -1,4 +1,4 @@
-name: diamond alert
+name: Diamond alert
 set: major
 description: Used to alert merchants on information they should be aware of.
 keywords:

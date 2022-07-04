@@ -1,4 +1,4 @@
-name: envelope
+name: Envelope
 set: major
 description: Used to represent an envelope that merchants can use to ship orders to their customers.
 keywords:

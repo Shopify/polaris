@@ -35,7 +35,7 @@ const {
 let results: SearchResults = [];
 
 // Add components
-components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
+components.forEach(({ frontMatter: { name, status }, intro }) => {
   results.push({
     category: "Components",
     score: 0,
@@ -43,6 +43,7 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
     meta: {
       name,
       description: stripMarkdownLinks(intro),
+      status,
     },
   });
 });
