@@ -35,17 +35,20 @@ const {
 let results: SearchResults = [];
 
 // Add components
-components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
-  results.push({
-    category: "Components",
-    score: 0,
-    url: `/components/${slugify(name)}`,
-    meta: {
-      name,
-      description: stripMarkdownLinks(intro),
-    },
-  });
-});
+components.forEach(
+  ({ frontMatter: { name, category, keywords, notice }, intro }) => {
+    results.push({
+      category: "Components",
+      score: 0,
+      url: `/components/${slugify(name)}`,
+      meta: {
+        name,
+        description: stripMarkdownLinks(intro),
+        notice,
+      },
+    });
+  }
+);
 
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {

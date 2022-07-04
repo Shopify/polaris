@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 import ComponentGrid from "../ComponentGrid";
 import Layout from "../Layout";
 
@@ -10,8 +8,8 @@ import {
   slugify,
   getComponentNav,
 } from "../../utils/various";
+import { ComponentNotice as ComponentNoticeType } from "../../types";
 import styles from "./ComponentsPage.module.scss";
-import { getTitleTagValue } from "../../utils/various";
 import PageMeta from "../PageMeta";
 
 const componentCategories = getComponentCategories();
@@ -40,14 +38,16 @@ export default function ComponentsPage({}: Props) {
                     (component) => component.frontMatter.category === category
                   )
                   .map(({ frontMatter, intro }) => {
-                    const { name } = frontMatter;
+                    const { name, notice } = frontMatter;
                     const url = `/components/${slugify(name)}`;
+                    let typedNotice = notice as ComponentNoticeType | undefined;
                     return (
                       <ComponentGrid.Item
                         key={name}
                         name={name}
                         description={stripMarkdownLinks(intro)}
                         url={url}
+                        notice={typedNotice}
                       />
                     );
                   })}

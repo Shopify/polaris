@@ -2,6 +2,7 @@ import Image from "../Image";
 import Link from "next/link";
 import { SearchResultItem } from "../../types";
 import { className, slugify } from "../../utils/various";
+import { ComponentNotice as ComponentNoticeType } from "../../types";
 import styles from "./ComponentGrid.module.scss";
 
 interface ComponentGridProps {
@@ -16,6 +17,7 @@ interface ComponentGridItemProps extends SearchResultItem {
   name: string;
   description: string;
   url: string;
+  notice?: ComponentNoticeType;
 }
 
 function ComponentGridItem({
@@ -23,6 +25,7 @@ function ComponentGridItem({
   description,
   url,
   searchResultData,
+  notice,
 }: ComponentGridItemProps) {
   return (
     <li
@@ -48,7 +51,20 @@ function ComponentGridItem({
             />
           </div>
           <div className={styles.ComponentDescription}>
-            <h4>{name}</h4>
+            <h4>
+              {name}
+              {notice && (
+                <>
+                  {" "}
+                  <span
+                    className={styles.NoticeBadge}
+                    data-status={notice.status}
+                  >
+                    {notice.status}
+                  </span>
+                </>
+              )}
+            </h4>
             <p>{description}</p>
           </div>
         </a>

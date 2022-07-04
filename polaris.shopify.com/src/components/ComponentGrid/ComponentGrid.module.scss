@@ -41,6 +41,9 @@
 
   h4 {
     @include heading-4;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   p {
@@ -49,6 +52,22 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  .NoticeBadge {
+    font-size: var(--font-size-50);
+    letter-spacing: 0;
+    font-weight: var(--font-weight-400);
+    border-radius: var(--border-radius-round);
+    padding: 0 0.5rem;
+
+    &[data-status="Deprecated"] {
+      background: var(--surface-warning);
+    }
+
+    &[data-status="Alpha"] {
+      background: var(--surface-information);
+    }
   }
 }
 

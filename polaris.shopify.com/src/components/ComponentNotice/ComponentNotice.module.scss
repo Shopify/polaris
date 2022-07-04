@@ -1,0 +1,24 @@
+@import "../../styles/fonts.scss";
+
+.ComponentNotice {
+  padding: 1.5rem;
+  background: var(--surface-subdued);
+  border-radius: var(--border-radius-400);
+
+  &[data-status="Deprecated"] {
+    background: var(--surface-warning);
+  }
+
+  &[data-status="Alpha"] {
+    background: var(--surface-information);
+  }
+
+  h2 {
+    margin-top: 0;
+    @include heading-3;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
