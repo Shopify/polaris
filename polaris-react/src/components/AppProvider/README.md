@@ -174,6 +174,11 @@ function AppProviderLinkExample() {
       linkComponent={CustomLinkComponent}
       i18n={{
         Polaris: {
+          ActionMenu: {
+            Actions: {
+              moreActions: 'More actions',
+            },
+          },
           Page: {
             Header: {
               rollupButton: 'Actions',

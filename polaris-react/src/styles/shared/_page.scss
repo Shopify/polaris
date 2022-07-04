@@ -1,5 +1,7 @@
-$page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
-  $layout-width-inner-spacing-base;
+$page-max-width: calc(
+  #{$layout-width-primary-max} + #{$layout-width-secondary-max} +
+    var(--p-space-4)
+);
 
 @mixin page-layout {
   margin: 0 auto;

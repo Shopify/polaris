@@ -133,7 +133,6 @@ module.exports = {
         '$easing-data',
         '$color-filter-palette-data',
         '$layout-width-data',
-        '$navigation-width',
         '$shadows-data',
         '$spacing-data',
         '$typography-condensed',
