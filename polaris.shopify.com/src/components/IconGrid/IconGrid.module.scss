@@ -2,16 +2,9 @@
 
 .IconGrid {
   border-radius: var(--border-radius-600);
-  overflow: hidden;
   border: 1px solid var(--border-color-light);
-}
-
-.IconGridInner {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  border-radius: var(--border-radius-600);
-  margin-right: -1px;
-  margin-bottom: -1px;
 }
 
 .Icon {
