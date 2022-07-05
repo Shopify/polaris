@@ -155,7 +155,6 @@ export function search(query: string): GroupedSearchResults {
   };
 
   if (query.length > 0) {
-    console.log(results);
     const fuseResults = fuse.search(query);
 
     const scoredResults: SearchResults = fuseResults.map((result) => ({
