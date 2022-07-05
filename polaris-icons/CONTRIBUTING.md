@@ -12,7 +12,7 @@ This repository is the place to contribute changes to icons and <https://polaris
 
 ## Code of conduct
 
-We expect all participants to read our [code of conduct](./.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
+We expect all participants to read our [code of conduct](https://github.com/Shopify/polaris/blob/main/.github/CODE_OF_CONDUCT.md) to understand which actions are and aren’t tolerated.
 
 ## Icon sets and design guidelines
 
