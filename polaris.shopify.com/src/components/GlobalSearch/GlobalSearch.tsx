@@ -229,8 +229,8 @@ function SearchResults({
               <ResultsGroup category={category}>
                 <div className={styles.FoundationsResults}>
                   {results.map(({ id, url, meta }) => {
-                    if (!meta.Foundations) return null;
-                    const { title, excerpt } = meta.Foundations;
+                    if (!meta.foundations) return null;
+                    const { title, excerpt } = meta.foundations;
                     return (
                       <SearchContext.Provider
                         key={title}
@@ -256,8 +256,8 @@ function SearchResults({
               <ResultsGroup category={category}>
                 <ComponentGrid>
                   {results.map(({ id, url, meta }) => {
-                    if (!meta.Components) return null;
-                    const { name, description, status } = meta.Components;
+                    if (!meta.components) return null;
+                    const { name, description, status } = meta.components;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -291,8 +291,8 @@ function SearchResults({
                   }}
                 >
                   {results.map(({ id, meta }) => {
-                    if (!meta.Tokens) return null;
-                    const { token, category } = meta.Tokens;
+                    if (!meta.tokens) return null;
+                    const { token, category } = meta.tokens;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -312,8 +312,8 @@ function SearchResults({
               <ResultsGroup category={category}>
                 <IconGrid>
                   {results.map(({ id, url, meta }) => {
-                    if (!meta.Icons) return null;
-                    const { icon } = meta.Icons;
+                    if (!meta.icons) return null;
+                    const { icon } = meta.icons;
                     return (
                       <SearchContext.Provider
                         key={id}
