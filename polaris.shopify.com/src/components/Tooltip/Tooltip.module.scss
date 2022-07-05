@@ -41,10 +41,9 @@
   }
 
   &[data-placement="bottom"] {
-      content: "";
-      top: -5px;
-      bottom: auto;
-      transform: rotate(135deg);
-    }
+    content: "";
+    top: -5px;
+    bottom: auto;
+    transform: rotate(135deg);
   }
 }
