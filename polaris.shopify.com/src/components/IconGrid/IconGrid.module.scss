@@ -30,7 +30,7 @@
   }
 
   @media (hover: hover) {
-    &.isHighlighted button,
+    &[data-is-current-result="true"] button,
     &.isSelected button {
       background: var(--search-highlight-color);
 

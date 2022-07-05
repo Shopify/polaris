@@ -20,6 +20,7 @@ export const searchResultCategories = [
 export type SearchResultCategory = typeof searchResultCategories[number];
 
 export interface SearchResult {
+  id: string;
   category: SearchResultCategory;
   url: string;
   score: number;
@@ -34,6 +35,7 @@ export interface SearchResult {
       excerpt: string;
     };
     Tokens: {
+      category: string;
       token: TokenPropertiesWithName;
     };
     Icons: { icon: Icon };
@@ -56,18 +58,6 @@ export type Icon = {
   description: string;
   set: string;
 };
-
-export interface SearchResultItem {
-  searchResultData?: {
-    isHighlighted: boolean;
-    tabIndex: -1;
-    itemAttributes: {
-      id: string;
-      "data-is-active-descendant": boolean;
-    };
-    url: string;
-  };
-}
 
 export enum Breakpoints {
   Mobile = 500,

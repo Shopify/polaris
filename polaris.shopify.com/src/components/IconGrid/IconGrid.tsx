@@ -1,5 +1,5 @@
 import Image from "../Image";
-import { className } from "../../utils/various";
+import { className, slugify } from "../../utils/various";
 import Tooltip from "../Tooltip";
 const importedSvgs = require.context(
   "../../../../polaris-icons/icons",
@@ -7,7 +7,8 @@ const importedSvgs = require.context(
   /\.svg$/
 );
 import styles from "./IconGrid.module.scss";
-import { Icon, SearchResultItem } from "../../types";
+import { Icon } from "../../types";
+import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
 
 interface IconGridProps {
   children: React.ReactNode;
@@ -17,28 +18,20 @@ function IconGrid({ children }: IconGridProps) {
   return <ul className={styles.IconGrid}>{children}</ul>;
 }
 
-interface IconGridItemProps extends SearchResultItem {
+interface IconGridItemProps {
   icon: Icon;
   onClick: (iconName: string) => void;
   isSelected?: boolean;
 }
 
-function IconGridItem({
-  icon,
-  onClick,
-  isSelected,
-  searchResultData,
-}: IconGridItemProps) {
+function IconGridItem({ icon, onClick, isSelected }: IconGridItemProps) {
+  const attributes = useGlobalSearchResult();
+
   return (
     <li
-      key={`${icon.name}+${icon.set}`}
-      className={className(
-        styles.Icon,
-        searchResultData?.isHighlighted && styles.isHighlighted,
-        isSelected && styles.isSelected
-      )}
-      {...searchResultData?.itemAttributes}
-      id={icon.fileName}
+      key={`${icon.name}-${icon.set}`}
+      className={className(styles.Icon, isSelected && styles.isSelected)}
+      {...attributes}
     >
       <Tooltip
         ariaLabel={icon.description}
@@ -52,7 +45,7 @@ function IconGridItem({
       >
         <button
           onClick={() => onClick(icon.name)}
-          tabIndex={searchResultData?.tabIndex}
+          tabIndex={attributes?.tabIndex}
         >
           <div className={styles.SVGWrapper}>
             <Image

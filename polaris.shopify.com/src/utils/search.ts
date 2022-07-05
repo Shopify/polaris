@@ -33,6 +33,7 @@ let results: SearchResults = [];
 // Add components
 components.forEach(({ frontMatter: { name, status }, intro }) => {
   results.push({
+    id: slugify(name),
     category: "Components",
     score: 0,
     url: `/components/${slugify(name)}`,
@@ -49,11 +50,13 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   results.push({
+    id: slugify(tokenName),
     category: "Tokens",
     score: 0,
     url: `/tokens/colors#${tokenName}`,
     meta: {
       Tokens: {
+        category: "colors",
         token: {
           name: tokenName,
           description: tokenValue.description || "",
@@ -70,11 +73,13 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
     ([tokenName, tokenProperties]: [string, TokenProperties]) => {
       results.push({
+        id: slugify(tokenName),
         category: "Tokens",
         score: 0,
         url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
         meta: {
           Tokens: {
+            category: groupSlug,
             token: {
               name: tokenName,
               description: tokenProperties.description || "",
@@ -91,6 +96,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 Object.keys(metadata).forEach((fileName) => {
   const { name, set, description, keywords } = metadata[fileName];
   results.push({
+    id: slugify(fileName),
     category: "Icons",
     url: `/icons?icon=${fileName}`,
     score: 0,
@@ -107,6 +113,7 @@ foundations.forEach(({ frontMatter: { name }, intro, section }) => {
   const url = `/foundations/${section}/${slugify(name)}`;
 
   results.push({
+    id: slugify(name),
     category: "Foundations",
     score: 0,
     url,
@@ -163,10 +170,14 @@ export function search(query: string): GroupedSearchResults {
     }));
 
     searchResultCategories.forEach((category) => {
-      groupedResults[category].results = scoredResults
+      const resultsInCategory = scoredResults
         .filter((result) => result.category === category)
         .map((result) => ({ ...result, score: result.score || 0 }))
         .slice(0, MAX_RESULTS[category]);
+
+      if (resultsInCategory) {
+        groupedResults[category].results = resultsInCategory;
+      }
     });
 
     searchResultCategories.forEach((category) => {
