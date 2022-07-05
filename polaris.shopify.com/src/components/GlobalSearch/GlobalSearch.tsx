@@ -11,7 +11,7 @@ import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
 import Link from "next/link";
-import { slugify, stripMarkdownLinks } from "../../utils/various";
+import { stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
 
@@ -24,14 +24,16 @@ export function useGlobalSearchResult() {
 
   if (!searchContext.id) return null;
 
+  const { id, currentItemId } = searchContext;
+
   let data = {
-    id: slugify(searchContext.id),
+    id,
     "data-is-global-search-result": true,
     "data-is-current-result": false,
     tabIndex: -1,
   };
 
-  if (searchContext.currentItemId === searchContext.id) {
+  if (currentItemId === id) {
     data = {
       ...data,
       "data-is-current-result": true,
