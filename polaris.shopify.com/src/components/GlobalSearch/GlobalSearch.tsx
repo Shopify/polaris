@@ -103,8 +103,8 @@ function GlobalSearch() {
   }, []);
 
   useEffect(() => {
-    setSearchResults(search(searchTerm));
     setCurrentResultIndex(0);
+    setSearchResults(search(searchTerm.trim()));
     scrollToTop();
   }, [searchTerm]);
 
