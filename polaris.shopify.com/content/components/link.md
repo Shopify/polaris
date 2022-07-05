@@ -58,6 +58,14 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 - a more cohesive visual experience for sighted users
 - products that are easier to maintain at scale
 
+### Open a new tab or window only when necessary
+
+Use caution when opening a new tab or window as it can be disorienting. However, there are some cases where it does makes sense to open a new tab or window, for example:
+
+- Navigating to a page with context specific information, like a help center article
+
+When using an external link, use the appropriate props and labels so screen readers can recognize if a link will open in a new tab.
+
 ### Unstyled links
 
 If the existing link styles don’t meet the needs of your project, then use the `UnstyledLink` component to create a custom link style.
@@ -161,10 +169,6 @@ To provide consistency and clarity:
 ```
 
 <!-- end -->
-
-#### External links
-
-The `external` prop adds an icon and a notification that the link opens a new tab. Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Open a page in a new tab only when opening a page in the same tab might disrupt the merchant’s workflow.
 
 ### Keyboard support
 
