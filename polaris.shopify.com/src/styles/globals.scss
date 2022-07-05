@@ -316,6 +316,11 @@ button {
         p {
           background-image: url(/images/icon-dont.svg);
         }
+
+        li > p {
+          background: none;
+          padding-left: 0;
+        }
       }
     }
   }
