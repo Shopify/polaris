@@ -34,7 +34,7 @@ let results: SearchResults = [];
 // Add components
 components.forEach(({ frontMatter: { name, status }, intro }) => {
   results.push({
-    id: slugify(name),
+    id: slugify(`components ${name}`),
     category: "components",
     score: 0,
     url: `/components/${slugify(name)}`,
@@ -51,7 +51,7 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   results.push({
-    id: slugify(tokenName),
+    id: slugify(`tokens ${tokenName}`),
     category: "tokens",
     score: 0,
     url: `/tokens/colors#${tokenName}`,
@@ -74,7 +74,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
     ([tokenName, tokenProperties]: [string, TokenProperties]) => {
       results.push({
-        id: slugify(tokenName),
+        id: slugify(`tokens ${tokenName}`),
         category: "tokens",
         score: 0,
         url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
@@ -97,7 +97,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 Object.keys(metadata).forEach((fileName) => {
   const { name, set, description, keywords } = metadata[fileName];
   results.push({
-    id: slugify(fileName),
+    id: slugify(`icons ${name} ${set}`),
     category: "icons",
     url: `/icons?icon=${fileName}`,
     score: 0,
@@ -114,7 +114,7 @@ foundations.forEach(({ frontMatter: { name }, intro, category }) => {
   const url = `/foundations/${category}/${slugify(name)}`;
 
   results.push({
-    id: slugify(name),
+    id: slugify(`foundations ${name}`),
     category: "foundations",
     score: 0,
     url,
