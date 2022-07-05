@@ -65,7 +65,7 @@ Use this component to compose a loading version of a page where the page title a
 ```jsx
 <SkeletonPage primaryAction>
   <Layout>
-    <Layout.Section>
+    <Layout.Section twoThirds>
       <Card sectioned>
         <SkeletonBodyText />
       </Card>
@@ -82,7 +82,7 @@ Use this component to compose a loading version of a page where the page title a
         </TextContainer>
       </Card>
     </Layout.Section>
-    <Layout.Section secondary>
+    <Layout.Section oneThird>
       <Card>
         <Card.Section>
           <TextContainer>
@@ -117,7 +117,7 @@ Use this component to compose a loading version of a page where the page title a
 ```jsx
 <SkeletonPage title="Products" primaryAction>
   <Layout>
-    <Layout.Section>
+    <Layout.Section twoThirds>
       <Card sectioned>
         <SkeletonBodyText />
       </Card>
@@ -128,7 +128,7 @@ Use this component to compose a loading version of a page where the page title a
         <SkeletonBodyText />
       </Card>
     </Layout.Section>
-    <Layout.Section secondary>
+    <Layout.Section oneThird>
       <Card title="Sales channels">
         <Card.Section>
           <SkeletonBodyText lines={2} />
