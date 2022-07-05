@@ -1,12 +1,12 @@
 import Image from "../Image";
 import { className } from "../../utils/various";
 import styles from "./IconGrid.module.scss";
-import iconMetadata from "@shopify/polaris-icons/metadata";
+import { Icon } from "@shopify/polaris-icons/metadata";
 import Link from "next/link";
 
 interface Props {
   title?: string;
-  icons: typeof iconMetadata;
+  icons: Icon[];
   activeIcon?: string;
   query?: string;
 }
@@ -17,13 +17,13 @@ function IconGrid({ title, icons, activeIcon, query = "" }: Props) {
       {title ? <h2 className={styles.SectionHeading}>{title}</h2> : null}
       <div className={styles.IconGrid}>
         <ul className={styles.IconGridInner}>
-          {Object.keys(icons).map((iconFileName) => (
-            <li key={iconFileName}>
+          {Object.values(icons).map(({ id, description, name }) => (
+            <li key={id}>
               <Link
                 href={{
                   pathname: "/icons",
                   query: {
-                    icon: iconFileName,
+                    icon: id,
                     ...(query === "" ? {} : { q: query }),
                   },
                 }}
@@ -32,17 +32,17 @@ function IconGrid({ title, icons, activeIcon, query = "" }: Props) {
                 <a
                   className={className(
                     styles.Icon,
-                    activeIcon === iconFileName && styles.isSelected
+                    activeIcon === id && styles.isSelected
                   )}
                 >
                   <Image
-                    src={`/icons/${iconFileName}.svg`}
-                    alt={icons[iconFileName].description}
+                    src={`/icons/${id}.svg`}
+                    alt={description}
                     width={20}
                     height={20}
                     fadeIn={false}
                   />
-                  <p>{icons[iconFileName].name}</p>
+                  <p>{name}</p>
                 </a>
               </Link>
             </li>

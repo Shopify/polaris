@@ -1,4 +1,5 @@
 import { TokenProperties } from "@shopify/polaris-tokens";
+import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
   frontMatter: any;
@@ -66,14 +67,6 @@ export type GroupedSearchResults = {
   Components: { results: ComponentsSearchResult[]; maxScore: number };
   Tokens: { results: TokensSearchResult[]; maxScore: number };
   Icons: { results: IconsSearchResult[]; maxScore: number };
-};
-
-type Icon = {
-  fileName: string;
-  keywords: string[];
-  name: string;
-  description: string;
-  set: "major" | "minor";
 };
 
 export interface SearchResultItem {

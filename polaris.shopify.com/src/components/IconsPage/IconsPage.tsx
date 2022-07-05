@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Fuse from "fuse.js";
 import { useRouter } from "next/router";
 import { Dialog } from "@headlessui/react";
-import iconMetadata from "@shopify/polaris-icons/metadata";
+import iconMetadata, { Icon } from "@shopify/polaris-icons/metadata";
 import { useMedia } from "../../utils/hooks";
 import styles from "./IconsPage.module.scss";
 import Container from "../Container";
@@ -25,31 +25,32 @@ const fuse = new Fuse(Object.values(iconMetadata), {
   ],
 });
 
+const getIcons = (currentSearchText: string, set: string) => {
+  const icons = currentSearchText
+    ? fuse.search(currentSearchText).map((result) => result.item)
+    : Object.values(iconMetadata);
+
+  return icons.filter((x) => x.set === set);
+};
+
 function IconsPage() {
   const router = useRouter();
   const useModal = useMedia("screen and (max-width: 850px)");
   const [searchText, setSearchText] = useState("");
-  const [iconsMajor, setIconsMajor] = useState([]);
-  const [iconsMinor, setIconsMinor] = useState([]);
+  const [minorIcons, setMinorIcons] = useState<Icon[]>([]);
+  const [majorIcons, setMajorIcons] = useState<Icon[]>([]);
   const activeIcon = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? "";
+  const currentSearchText = router.query.q ? `${router.query.q}` : "";
 
-  const filteredIcons = fuse.search(searchText).map((result) => result.item);
-
-  // useEffect(() => {
-  //   setSearchText(router.query.q ? `${router.query.q}` : "");
-  // }, [router.query.q]);
-
-  const matchingMinor = filteredIcons.filter((x) => x.set === "minor");
-  const matchingMajor = filteredIcons.filter((x) => x.set === "major");
-
-  const pageTitle = iconMetadata[activeIcon]
-    ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
-    : "Icons";
-
-  const handleSearchChange = (currentSearchText: string) => {
+  useEffect(() => {
+    setMajorIcons(getIcons(currentSearchText, "major"));
+    setMinorIcons(getIcons(currentSearchText, "minor"));
     setSearchText(currentSearchText);
+  }, [currentSearchText]);
+
+  const updateQueryParams = (currentSearchText: string) => {
     const query: { q?: string; icon?: string } = {};
     if (currentSearchText) query.q = currentSearchText;
     if (activeIcon) query.icon = activeIcon;
@@ -61,6 +62,10 @@ function IconsPage() {
     if (searchText) query.q = searchText;
     router.push({ query });
   };
+
+  const pageTitle = iconMetadata[activeIcon]
+    ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
+    : "Icons";
 
   const githubIssueTitle = `[polaris.shopify.com] No icon found ${searchText}`;
   const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?title=${encodeURIComponent(
@@ -77,29 +82,29 @@ function IconsPage() {
         <div className={styles.IconGrids}>
           <SearchField
             value={searchText}
-            onChange={(value) => handleSearchChange(value)}
+            onChange={(value) => updateQueryParams(value)}
             placeholder="Search icons"
           />
 
-          {matchingMajor.length > 0 && (
+          {majorIcons.length > 0 && (
             <IconGrid
               title="Major icons"
-              icons={matchingMajor}
+              icons={majorIcons}
               activeIcon={activeIcon}
               query={searchText}
             />
           )}
 
-          {matchingMinor.length > 0 && (
+          {minorIcons.length > 0 && (
             <IconGrid
               title="Minor icons"
-              icons={matchingMinor}
+              icons={minorIcons}
               activeIcon={activeIcon}
               query={searchText}
             />
           )}
 
-          {matchingMajor.length === 0 && matchingMinor.length === 0 ? (
+          {minorIcons.length === 0 && majorIcons.length === 0 ? (
             <div className={styles.NoSearchResults}>
               <Image
                 src="/icons/SearchMajor.svg"

@@ -92,10 +92,7 @@ Object.keys(iconMetadata).forEach((fileName) => {
     url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
-      icon: {
-        fileName,
-        ...iconMetadata[fileName],
-      },
+      icon: iconMetadata[fileName],
     },
   });
 });

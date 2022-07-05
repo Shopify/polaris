@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import iconMetadata from "@shopify/polaris-icons/metadata";
 import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
@@ -320,18 +319,14 @@ function GlobalSearch({}: Props) {
                         case "Icons": {
                           const results = searchResults[typedCategory].results;
                           if (results.length === 0) return null;
-                          const data: typeof iconMetadata = {};
-                          results.forEach((result) => {
-                            data[result.meta.icon.fileName] = {
-                              name: result.meta.icon.name,
-                              set: result.meta.icon.set,
-                              keywords: result.meta.icon.keywords,
-                              description: result.meta.icon.description,
-                            };
-                          });
+
                           return (
                             <ResultsGroup title={category}>
-                              <IconGrid icons={data} />
+                              <IconGrid
+                                icons={results.map(
+                                  (result) => result.meta.icon
+                                )}
+                              />
                             </ResultsGroup>
                           );
                         }
