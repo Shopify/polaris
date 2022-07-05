@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { parseMarkdown } from "../utils/markdown.mjs";
+import { marked } from "marked";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -23,12 +24,19 @@ for (let i = 0; i < subfolders.length; i++) {
       const fileName = files[j];
       const filePath = path.join(guidelinesDir, dirName, fileName);
 
-      const readmeFileContent = fs.readFileSync(filePath, "utf-8");
-      const parsed = parseMarkdown(readmeFileContent);
+      const content = fs.readFileSync(filePath, "utf-8");
+      const parsed = parseMarkdown(content);
 
-      const { readme, ...rest } = parsed;
+      const cleanedUpContent = marked(parsed.readme).replace(
+        /(<([^>]+)>)/gi,
+        ""
+      );
 
-      guidelines.push({ ...rest, category: dirName });
+      guidelines.push({
+        ...parsed,
+        content: cleanedUpContent,
+        category: dirName,
+      });
     }
   }
 }

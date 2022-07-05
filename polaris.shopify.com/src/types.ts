@@ -34,6 +34,7 @@ export interface SearchResult {
       title: string;
       excerpt: string;
       category: string;
+      content: string;
     };
     tokens: {
       category: string;

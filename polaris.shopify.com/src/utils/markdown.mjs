@@ -9,7 +9,6 @@ export const parseMarkdown = (inputMarkdown) => {
   const frontMatter = yaml.load(frontMatterSection);
 
   // Extract the content of the first paragraph
-
   const intro = readmeSection.split("\n\n").find((paragraph) => {
     const content = paragraph.trim().split("\n").join(" ");
     if (paragraph.startsWith("<!--")) {

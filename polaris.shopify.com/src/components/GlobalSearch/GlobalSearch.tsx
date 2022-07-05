@@ -1,5 +1,4 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import { search } from "../../utils/search";
 import {
   GroupedSearchResults,
   SearchResultCategory,
@@ -103,7 +102,13 @@ function GlobalSearch() {
   }, []);
 
   useEffect(() => {
-    setSearchResults(search(searchTerm));
+    fetch(`/api/v0/search?q=${encodeURIComponent(searchTerm)}`)
+      .then((data) => data.json())
+      .then((json) => {
+        const results = json as GroupedSearchResults;
+        setSearchResults(results);
+      });
+
     setCurrentResultIndex(0);
     scrollToTop();
   }, [searchTerm]);

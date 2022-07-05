@@ -13,7 +13,7 @@ import components from "../data/components.json";
 import foundations from "../data/foundations.json";
 
 const MAX_RESULTS: { [key in SearchResultCategory]: number } = {
-  foundations: 3,
+  foundations: 6,
   components: 3,
   tokens: 5,
   icons: 14,
@@ -110,7 +110,7 @@ Object.keys(metadata).forEach((fileName) => {
 });
 
 // Add foundations
-foundations.forEach(({ frontMatter: { name }, intro, category }) => {
+foundations.forEach(({ frontMatter: { name }, intro, category, content }) => {
   const url = `/foundations/${category}/${slugify(name)}`;
 
   results.push({
@@ -123,6 +123,7 @@ foundations.forEach(({ frontMatter: { name }, intro, category }) => {
         title: name,
         excerpt: intro,
         category,
+        content,
       },
     },
   });
@@ -133,6 +134,7 @@ const fuse = new Fuse(results, {
     // Foundations
     { name: "meta.foundations.title", weight: 100 },
     { name: "meta.foundations.excerpt", weight: 50 },
+    { name: "meta.foundations.content", weight: 100 },
 
     // Components
     { name: "meta.components.name", weight: 100 },
@@ -150,9 +152,12 @@ const fuse = new Fuse(results, {
     { name: "meta.icons.icon.description", weight: 50 },
   ],
   includeScore: true,
-  threshold: 0.5,
+  threshold: 0.015,
   shouldSort: true,
   ignoreLocation: true,
+  minMatchCharLength: 3,
+  distance: 0,
+  ignoreFieldNorm: true,
 });
 
 export function search(query: string): GroupedSearchResults {
@@ -161,8 +166,9 @@ export function search(query: string): GroupedSearchResults {
   if (query.length > 0) {
     const fuseResults = fuse.search(query);
 
-    const scoredResults: SearchResults = fuseResults.map((result) => ({
+    const scoredResults = fuseResults.map((result) => ({
       ...result.item,
+      matches: result.matches,
       score: result.score || 0,
     }));
 
@@ -171,6 +177,32 @@ export function search(query: string): GroupedSearchResults {
         category,
         results: scoredResults
           .filter((result) => result.category === category)
+          .map((result) => {
+            if (category === "foundations") {
+              const content = result.meta.foundations?.content;
+              if (content) {
+                const regex = new RegExp(query, "gi");
+
+                let matchez = Array.from(content.matchAll(regex));
+                if (matchez.length > 0) {
+                  const match = matchez[0];
+                  if (match.index) {
+                    const resultExcerpt = `${content
+                      .slice(match.index - 20, match.index + query.length + 150)
+                      .trim()
+                      .replace(/\n/g, " ")}`;
+                    if (result.meta.foundations && resultExcerpt) {
+                      result.meta.foundations = {
+                        ...result.meta.foundations,
+                        excerpt: resultExcerpt,
+                      };
+                    }
+                  }
+                }
+              }
+            }
+            return result;
+          })
           .map((result) => ({ ...result, score: result.score || 0 }))
           .slice(0, MAX_RESULTS[category]),
       });
