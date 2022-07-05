@@ -307,6 +307,10 @@ button {
         margin-left: 0;
       }
 
+      li:before {
+        display: none;
+      }
+
       &[data-type="dont"] {
         li,
         p {
