@@ -3,7 +3,11 @@ import {mount} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {tokens, getMediaConditions} from '@shopify/polaris-tokens';
 
-import {useBreakpoints, getBreakpointsQueryEntries} from '../breakpoints';
+import {
+  useBreakpoints,
+  getBreakpointsQueryEntries,
+  getMatches,
+} from '../breakpoints';
 
 const mediaConditions = getMediaConditions(tokens.breakpoints);
 
@@ -140,5 +144,45 @@ describe('getBreakpointsQueryEntries', () => {
       'xlDown',
       'xlOnly',
     ]);
+  });
+});
+
+describe('getMatches SSR', () => {
+  const {window} = global;
+
+  beforeAll(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    delete global.window;
+  });
+
+  afterAll(() => {
+    global.window = window;
+  });
+
+  it('applies false as the default value for each breakpoint aliases', () => {
+    const matches = getMatches(false);
+
+    expect(Object.values(matches).every((match) => match === false)).toBe(true);
+  });
+
+  it('applies true as the default value for each breakpoint aliases', () => {
+    const matches = getMatches(true);
+
+    expect(Object.values(matches).every((match) => match === true)).toBe(true);
+  });
+
+  it('applies select defaults to all breakpoint aliases', () => {
+    const matches = getMatches({
+      mdUp: true,
+    });
+
+    expect(
+      Object.entries(matches).every(([aliasDirection, match]) => {
+        if (aliasDirection === 'mdUp') return match === true;
+
+        return match === false;
+      }),
+    ).toBe(true);
   });
 });

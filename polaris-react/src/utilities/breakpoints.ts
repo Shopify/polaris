@@ -1,8 +1,10 @@
 import {useState, useLayoutEffect} from 'react';
 import {
-  tokens,
-  getMediaConditions,
+  BreakpointsAlias,
+  BreakpointsAliasDirection,
   BreakpointsTokenGroup,
+  getMediaConditions,
+  tokens,
 } from '@shopify/polaris-tokens';
 
 const Breakpoints = {
@@ -35,49 +37,96 @@ export function stackedContent() {
     : window.matchMedia(`(max-width: ${Breakpoints.stackedContent})`);
 }
 
+/**
+ * Directional alias for each Polaris `breakpoints` token.
+ *
+ * @example 'smUp' | 'smDown' | 'smOnly' | 'mdUp' | etc.
+ */
+type BreakpointsDirectionAlias =
+  `${BreakpointsAlias}${Capitalize<BreakpointsAliasDirection>}`;
+
+/**
+ * Match results for each directional Polaris `breakpoints` alias.
+ */
+type BreakpointsMatches = {
+  [DirectionAlias in BreakpointsDirectionAlias]: boolean;
+};
+
 const breakpointsQueryEntries = getBreakpointsQueryEntries(tokens.breakpoints);
 
-function getMatches() {
-  // Prevents SSR issues
+export function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
   if (typeof window !== 'undefined') {
     return Object.fromEntries(
-      breakpointsQueryEntries.map(([name, query]) => [
-        name,
+      breakpointsQueryEntries.map(([directionAlias, query]) => [
+        directionAlias,
         window.matchMedia(query).matches,
       ]),
-    );
+    ) as BreakpointsMatches;
+  }
+
+  if (typeof defaults === 'object' && defaults !== null) {
+    return Object.fromEntries(
+      breakpointsQueryEntries.map(([directionAlias]) => [
+        directionAlias,
+        defaults[directionAlias] ?? false,
+      ]),
+    ) as BreakpointsMatches;
   }
 
   return Object.fromEntries(
-    breakpointsQueryEntries.map(([name]) => [name, false]),
-  );
+    breakpointsQueryEntries.map(([directionAlias]) => [
+      directionAlias,
+      defaults ?? false,
+    ]),
+  ) as BreakpointsMatches;
 }
 
-export function useBreakpoints() {
-  const [breakpoints, setBreakpoints] = useState(getMatches());
+export interface UseBreakpointsOptions {
+  /**
+   * Default values applied during SSR. Accepts a single value to use for each
+   * breakpoint alias, or an object for configuring select breakpoints.
+   *
+   * @default false
+   */
+  defaults:
+    | boolean
+    | {
+        [DirectionAlias in BreakpointsDirectionAlias]?: boolean;
+      };
+}
+
+/**
+ * Retrieves media query matches for each directional Polaris `breakpoints` alias.
+ *
+ * @example
+ * const {smUp} = useBreakpoint();
+ * return smUp && 'Hello world';
+ *
+ * @example
+ * const {mdUp} = useBreakpoint({defaults: {mdUp: true}});
+ * // `mdUp` will be will be `true` during SSR
+ *
+ * @example
+ * const breakpoints = useBreakpoint(true);
+ * // All `breakpoints` will be will be `true` during SSR
+ */
+export function useBreakpoints(options?: UseBreakpointsOptions) {
+  const [breakpoints, setBreakpoints] = useState(getMatches(options?.defaults));
 
   useLayoutEffect(() => {
     const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
       window.matchMedia(query),
     );
 
-    const handler = () => setBreakpoints(getMatches);
+    const handler = () => setBreakpoints(getMatches());
 
     mediaQueryLists.forEach((mql) => {
-      if (mql.addListener) {
-        mql.addListener(handler);
-      } else {
-        mql.addEventListener('change', handler);
-      }
+      mql.addEventListener('change', handler);
     });
 
     return () =>
       mediaQueryLists.forEach((mql) => {
-        if (mql.removeListener) {
-          mql.removeListener(handler);
-        } else {
-          mql.removeEventListener('change', handler);
-        }
+        mql.removeEventListener('change', handler);
       });
   }, []);
 
@@ -102,17 +151,17 @@ export function getBreakpointsQueryEntries(breakpoints: BreakpointsTokenGroup) {
   const mediaConditionEntries = Object.entries(getMediaConditions(breakpoints));
 
   return mediaConditionEntries
-    .map(([token, mediaConditions]) =>
+    .map(([breakpointsToken, mediaConditions]) =>
       Object.entries(mediaConditions).map(([direction, mediaCondition]) => {
-        const breakpointAlias = token.split('-')[1];
+        const breakpointsAlias = breakpointsToken.split('-')[1];
 
         // e.g. smUp, smDown, smOnly, etc.
-        const name = `${breakpointAlias}${capitalize(direction)}`;
+        const directionAlias = `${breakpointsAlias}${capitalize(direction)}`;
 
-        return [name, mediaCondition];
+        return [directionAlias, mediaCondition];
       }),
     )
-    .flat();
+    .flat() as [BreakpointsDirectionAlias, string][];
 }
 
 function capitalize(str: string) {
