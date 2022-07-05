@@ -121,17 +121,24 @@ foundations.forEach(({ frontMatter: { name }, intro, section }) => {
 
 const fuse = new Fuse(results, {
   keys: [
-    { name: "meta.title", weight: 100 },
-    { name: "meta.name", weight: 100 },
-    { name: "meta.description", weight: 50 },
-    { name: "meta.excerpt", weight: 50 },
-    { name: "meta.token.name", weight: 200 },
-    // { name: "meta.token.description", weight: 50 },
-    { name: "meta.token.value", weight: 50 },
-    { name: "meta.icon.fileName", weight: 50 },
-    { name: "meta.icon.keywords", weight: 20 },
-    { name: "meta.icon.set", weight: 20 },
-    // { name: "meta.icon.description", weight: 50 },
+    // Foundations
+    { name: "meta.Foundations.title", weight: 100 },
+    { name: "meta.Foundations.excerpt", weight: 50 },
+
+    // Components
+    { name: "meta.Components.name", weight: 100 },
+    { name: "meta.Components.description", weight: 50 },
+
+    // Tokens
+    { name: "meta.Tokens.token.name", weight: 200 },
+    { name: "meta.Tokens.token.value", weight: 50 },
+
+    // Icons
+    { name: "meta.Icons.icon.fileName", weight: 50 },
+    { name: "meta.Icons.icon.name", weight: 50 },
+    { name: "meta.Icons.icon.keywords", weight: 20 },
+    { name: "meta.Icons.icon.set", weight: 20 },
+    { name: "meta.Icons.icon.description", weight: 50 },
   ],
   includeScore: true,
   threshold: 0.5,
@@ -148,6 +155,7 @@ export function search(query: string): GroupedSearchResults {
   };
 
   if (query.length > 0) {
+    console.log(results);
     const fuseResults = fuse.search(query);
 
     const scoredResults: SearchResults = fuseResults.map((result) => ({
