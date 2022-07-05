@@ -39,7 +39,7 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
     score: 0,
     url: `/components/${slugify(name)}`,
     meta: {
-      Components: {
+      components: {
         name,
         description: stripMarkdownLinks(intro),
         status,
@@ -56,7 +56,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
     score: 0,
     url: `/tokens/colors#${tokenName}`,
     meta: {
-      Tokens: {
+      tokens: {
         category: "colors",
         token: {
           name: tokenName,
@@ -79,7 +79,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
         score: 0,
         url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
         meta: {
-          Tokens: {
+          tokens: {
             category: groupSlug,
             token: {
               name: tokenName,
@@ -102,7 +102,7 @@ Object.keys(metadata).forEach((fileName) => {
     url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
-      Icons: {
+      icons: {
         icon: { fileName, keywords, name, description, set },
       },
     },
@@ -119,7 +119,7 @@ foundations.forEach(({ frontMatter: { name }, intro, section }) => {
     score: 0,
     url,
     meta: {
-      Foundations: {
+      foundations: {
         title: name,
         excerpt: intro,
       },
@@ -175,7 +175,9 @@ export function search(query: string): GroupedSearchResults {
       });
     });
 
-    groupedResults.sort((a, b) => a.results[0].score - b.results[0].score);
+    groupedResults.sort(
+      (a, b) => (a.results[0]?.score || 0) - (b.results[0]?.score || 0)
+    );
   }
 
   return groupedResults;

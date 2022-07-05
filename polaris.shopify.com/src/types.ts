@@ -25,20 +25,20 @@ export interface SearchResult {
   url: string;
   score: number;
   meta: Partial<{
-    Components: {
+    components: {
       name: string;
       description: string;
       status?: Status;
     };
-    Foundations: {
+    foundations: {
       title: string;
       excerpt: string;
     };
-    Tokens: {
+    tokens: {
       category: string;
       token: TokenPropertiesWithName;
     };
-    Icons: { icon: Icon };
+    icons: { icon: Icon };
   }>;
 }
 
