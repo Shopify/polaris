@@ -10,8 +10,9 @@ export function Playground() {
     <Page title="Playground">
       {Object.entries(breakpoints).map(([name, value]) => (
         <div key={name} style={{background: value ? 'lightsteelblue' : 'pink'}}>
-          <h3>{name}</h3>
-          <p>{value}</p>
+          <p>
+            {name}: {value.toString()}
+          </p>
         </div>
       ))}
     </Page>
