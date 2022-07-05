@@ -144,7 +144,6 @@ export function search(query: string): GroupedSearchResults {
     scoredResults.forEach((result) => {
       const categoryResults = groupedResults[result.category].results;
       if (categoryResults.length < MAX_RESULTS[result.category]) {
-        if (!result) return;
         // @ts-expect-error
         categoryResults.push({ ...result });
         groupedResults[result.category].maxScore = result.score || 0;
