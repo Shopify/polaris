@@ -6,13 +6,86 @@ keywords:
   - deprecate an icon
   - update an icon
   - how to contribute to polaris icons
+quickGuides:
+  - title: Adding an icon
+    queryParam: adding-an-icon
+    rows:
+      - openSource:
+        question: Are open source contributions accepted?
+        answer: No
+      - who:
+        question: Who should I involve?
+        answer: A designer from the Polaris team.
+      - when:
+        question: When should I contribute?
+        answer: As needed
+      - where:
+        question: Where do I contribute?
+        answer: New icons are contributed in Figma as well as in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. Icon source code and metadata can be found in the <code>polaris-icons/icons</code> directory.
+      - relatedIssues:
+        question: Where should I search for related issues or topics?
+        answer: Along with searching for related issues, pull requests, and discussions in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo, search for related branches of the Polaris Icon Library in Figma.
+      - what:
+        question: What resources will my contribution impact?
+        answer: Icon contributions impact the <code>@shopify/polaris-icons</code> npm package and the Polaris Icons Library in Figma.
+      - how:
+        question: How can I get started?
+        answer: <a href="/contributing/shipping-your-contribution#open-your-first-pr">Open a pull request</a> or submit an <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md"> icon proposal</a> in the Shopify/polaris GitHub repo.
+  - title: Modifying an icon
+    queryParam: modifying-an-icon
+    rows:
+      - openSource:
+        question: Are open source contributions accepted?
+        answer: No, but if you've found an issue with an icon metadata please submit a <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md">bug report</a>.
+      - who:
+        question: Who should I involve?
+        answer: A designer from the Polaris team.
+      - when:
+        question: When should I contribute?
+        answer: As needed, early in your project process.
+      - where:
+        question: Where do I contribute?
+        answer: Updated icons are contributed in Figma as well as in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. Icon source code and metadata can be found in the <code>polaris-icons/icons</code> directory.
+      - relatedIssues:
+        question: Where should I search for related issues or topics?
+        answer: Along with searching for related issues, pull requests, and discussions in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo, search for related branches of the Polaris Icon Library in Figma.
+      - what:
+        question: What resources will my contribution impact?
+        answer: Icon contributions impact the <code>@shopify/polaris-icons</code> npm package and the Polaris Icons Library in Figma.
+      - how:
+        question: How can I get started?
+        answer: <a href="/contributing/shipping-your-contribution#open-your-first-pr">Open a pull request</a> or submit an <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md"> icon proposal</a> in the Shopify/polaris GitHub repo.
+  - title: Deprecating an icon
+    queryParam: deprecating-an-icon
+    rows:
+      - openSource:
+        question: Are open source contributions accepted?
+        answer: No
+      - who:
+        question: Who should I involve?
+        answer: A designer from the Polaris team.
+      - when:
+        question: When should I contribute?
+        answer: As needed, as soon as you have deprecation rationale.
+      - where: Icon deprecations are contributed in Figma as well as in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. Icon source code and metadata can be found in the <code>polaris-icons/icons</code> directory.
+        question: Where do I contribute?
+        answer: Icon deprecations are contributed in Figma as well as in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo. Component code and documentation can be found in the <code>polaris-react/src</code> directory.
+      - relatedIssues:
+        question: Where should I search for related issues or topics?
+        answer: Along with searching for related issues, pull requests, and discussions in the <a href="https://github.com/Shopify/polaris">Shopify/polaris</a> GitHub repo, search for related branches of the Polaris Icon Library in Figma.
+      - what:
+        question: What resources will my contribution impact?
+        answer: Icon contributions impact the <code>@shopify/polaris-icons</code> npm package and the Polaris Icons Library in Figma.
+      - how:
+        question: How can I get started?
+        answer: <a href="/contributing/shipping-your-contribution#open-your-first-pr">Open a pull request</a> or submit an <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md"> icon proposal</a> in the Shopify/polaris GitHub repo.
 ---
 
 # Contributing to Polaris Icons
 
-Icons are important visual aids that carry a lot of impact despite their simplicity. All designers and developers that work at Shopify are encouraged to contribute to the [Polaris icon library](https://www.figma.com/file/mMHFt3kEDNjLMZWowi6gnt/?node-id=753%3A2). Contributions can be in the form of creating a new icon, modifying an existing icon, or deprecating an icon.
+Polaris Icons are important visual aids that help merchants understand actions and concepts across the Shopify Admin. Whether your team needs to add, modify, or deprectate an icon, all designers and developers that work at Shopify are welcome to contribute.
 
-## Quick start guide
+## Quick start guides
 
 <!-- prettier-ignore -->
 | Contribution type | When to contribute and/or collaborate | Where to search for related issues | Who to involve  | Resources impacted  | How to get started |
@@ -29,53 +102,49 @@ To learn about best practices for designing and using Polaris icons, read the [i
 
 ### Design a new icon
 
-1. [Create an issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=NEW_ICON.yml&title=%5BIcon%5D%3A+New+icon+%3Cicon-name%3E) for your proposal to create or modify an icon.
-2. Review design specs in the Polaris Icons library in Figma
-3. If you are designing a new icon
-
-- Design your new icon following the styles and guidance from Polaris. (Feel free to use the [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) channel to get feedback along the way).
-  b. Request review/feedback from Polaris designer. This is to ensure design language adherence so all new contributions fit within the entire icon set.
-  c. Follow process for adding to the [Polaris repo]{link to this section} and [UI kit]{link to this section}.
-
+1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
+2. Review design specs in the Polaris Icons library in Figma.
+3. If you are designing a new icon:
+   <br /> - Draft the new icon following the design language guidance in the Polaris Icon Library in Figma.
+   <br /> - Request feedback from a Polaris designer.
 4. If you need assistance designing the new icon
-   1. Reach out in the #polaris Slack channel requesting a new icon.
-   2. A designer will reach out to get context and information around what you need, deadlines and other relevant information.
-   3. A designer will work with you to design an icon that meets your team’s needs with your feedback along the way.
-   4. Once design is complete, follow the process for adding to the Polaris repo and UI kit
+   <br /> - Reach out in the #polaris Slack channel requesting a new icon.
+   <br /> - A designer will reach out to get context and information around what you need, deadlines and other relevant information.
+   <br /> - A designer will work with you to design an icon that meets your team’s needs with your feedback along the way.
+5. Once alignment on the design is reached, follow the instructions below for adding the icon.
 
-### Add, edit, or deprecate an icon
+### Add or edit an icon
 
-1. Create an issue in the `Shopify/polaris` repo with your proposal
-   1. Add assignees who’ll be working on the contribution
-   2. Ping collaborators so they can follow along
-2. Clone the [Shopify/polaris repo](https://github.com/Shopify/polaris) to your development environment
-3. Create a new feature branch
-4. Run `yarn build && yarn dev` in your terminal
-5. If you are adding an icon:
-   1. Copy and rename the icon template files
-   2. Add the exported icon SVG to the `.svg` file
-   3. Add the icon metadata to the `.yml` file
-6. If you are editing an existing icon:
-   1. Replace the existing icon SVG in the `.svg` file
-   2. Update the relevant metadata in the `.yml` file
-7. If you are deprecating an icon without replacement:
-   1. Add `deprecated: true` to the icon’s `.yml` file
-8. If you are deprecating an icon with replacement:
-   1. Rename the icon’s `.svg` and `.yml` files
-   2. Add `deprecated_aliases` to the `.yml` file
-      1. List each of the icon’s previous names
-      2. For example, if you were to rename `OldMajor` to `NewMajor`, you would add these lines to `NewMajor.yml`:
+1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
+2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up).
+3. If you are adding an icon:
+   <br /> - Copy and rename the icon template files
+   <br /> - Add the exported icon SVG to the `.svg` file
+   <br /> - Add the icon metadata to the `.yml` file
+4. If you are editing an existing icon:
+   <br /> - Replace the existing icon SVG in the `.svg` file
+   <br /> - Update the relevant metadata in the `.yml` file
+5. Run `yarn changeset` to add an entry to the change log and release notes
+6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo.
+7. Update the Polaris Icon Library in Figma.
+
+### Deprecate an icon
+
+1. Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md).
+2. [Set up your development environment](/contributing/shipping-your-contribution#get-set-up).
+3. If you are deprecating an icon without replacement:
+   <br /> - Add `deprecated: true` to the icon’s `.yml` file
+4. If you are deprecating an icon with replacement:
+   <br /> - Rename the icon’s `.svg` and `.yml` files
+   <br /> - Add `deprecated_aliases` to the `.yml` file
+   <br /> - List each of the icon’s previous names. For example, if you were to rename `OldMajor` to `NewMajor`, you would add these lines to `NewMajor.yml`:
+   <br />
+
    ```yml
    deprecated_aliases:
      - OldMajor
    ```
-9. Run `yarn changeset` to add an entry to the change log and release notes
-10. Commit your changes and push up your branch
-11. Create a pull request and request review from your collaborators
-    1. Add `@Shopify/polaris-team` as GitHub reviewers for breaking changes
-    2. Link to the feature proposal issue you submitted
-12. Once the pull request is reviewed, approved, and merged, update the Figma UI Kit:
-    1. Create a branch in the Polaris Icons library in Figma
-    2. Add your SVG and create a new component following the current naming convention
-    3. Request a review from a Polaris designer
-       1. Once approved they will merge and release the new icon
+
+5. Run `yarn changeset` to add an entry to the change log and release notes
+6. Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the Shopify/polaris GitHub repo.
+7. Update the Polaris Icon Library in Figma.

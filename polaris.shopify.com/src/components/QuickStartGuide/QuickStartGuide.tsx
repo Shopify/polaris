@@ -86,15 +86,17 @@ const QuickStartGuide = ({ data }: Props) => {
 
   return (
     <div className={styles.QuickStartGuide}>
-      <Select
-        labelHidden
-        id="Contribution-Type-Select"
-        label="Contribution type"
-        selected={contributionTypes[Number(guideIndex)].value}
-        ariaControls={ariaControlsId}
-        options={contributionTypes}
-        onChange={handleChange}
-      />
+      {contributionTypes.length > 1 ? (
+        <Select
+          labelHidden
+          id="Contribution-Type-Select"
+          label="Contribution type"
+          selected={contributionTypes[Number(guideIndex)].value}
+          ariaControls={ariaControlsId}
+          options={contributionTypes}
+          onChange={handleChange}
+        />
+      ) : null}
 
       <div
         role="region"
