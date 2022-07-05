@@ -1,5 +1,4 @@
-import {Entry, Exact} from 'type-fest';
-
+import type {Entry, Exact} from './types';
 import type {Tokens, TokenGroup} from './tokens';
 import type {breakpoints as breakpointsTokens} from './token-groups/breakpoints';
 

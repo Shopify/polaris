@@ -1,5 +1,4 @@
-import {Exact} from 'type-fest';
-
+import type {Exact} from './types';
 import {breakpoints} from './token-groups/breakpoints';
 import {depth} from './token-groups/depth';
 import {legacy as legacyTokens} from './token-groups/legacy';
