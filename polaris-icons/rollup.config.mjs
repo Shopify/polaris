@@ -64,7 +64,7 @@ const metadataTypes = `export interface Icon {
 }
 
 declare const metadata: {
-  [key: string]: Icon;
+  [iconId: string]: Icon;
 };
 
 export default metadata;
