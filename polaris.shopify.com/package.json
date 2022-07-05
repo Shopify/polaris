@@ -14,7 +14,7 @@
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
     "copy-icons": "node src/scripts/copy-icons.mjs",
-    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/og-images/index.js",
+    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/generate-og-images.js",
     "generate-og-images-skip-sitemap": "node src/scripts/generate-og-images.js"
   },
   "dependencies": {
