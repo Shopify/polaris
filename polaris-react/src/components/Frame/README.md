@@ -235,7 +235,7 @@ function FrameExample() {
     <Page title="Account">
       {skipToContentTarget}
       <Layout>
-        <Layout.Section oneThird>
+        <Layout.Section oneThird condensed>
           <div style={{marginTop: 'var(--p-space-5)'}}>
             <TextContainer>
               <Heading>Account details</Heading>
@@ -248,7 +248,7 @@ function FrameExample() {
           </div>
         </Layout.Section>
 
-        <Layout.Section twoThirds>
+        <Layout.Section twoThirds condensed>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -581,7 +581,7 @@ function FrameExample() {
     <Page title="Account">
       {skipToContentTarget}
       <Layout>
-        <Layout.Section oneThird>
+        <Layout.Section oneThird condensed>
           <div style={{marginTop: 'var(--p-space-5)'}}>
             <TextContainer>
               <Heading>Account details</Heading>
@@ -593,8 +593,7 @@ function FrameExample() {
             </TextContainer>
           </div>
         </Layout.Section>
-
-        <Layout.Section twoThirds>
+        <Layout.Section twoThirds condensed>
           <Card sectioned>
             <FormLayout>
               <TextField

@@ -84,4 +84,4 @@ const App = (props) => (
 
 ### Adapting `Layout` to Grid, and removing annotated section
 
-`<Layout.Section>` now defaults to full width. To have two columns side by side use the `oneHalf`, `oneThird`, or `twoThirds` props.
+`<Layout.Section>` now defaults to full width. To have two columns side by side use the `oneHalf`, `oneThird`, or `twoThirds` props. Use the `condensed` prop for creating layouts that go to two columns at the medium breakpoint instead of large.

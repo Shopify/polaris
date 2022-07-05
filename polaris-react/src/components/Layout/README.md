@@ -422,7 +422,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section oneThird>
+    <Layout.Section oneThird condensed>
       <div style={{marginTop: 'var(--p-space-5)'}}>
         <TextContainer>
           <Heading id="storeDetails">Store details</Heading>
@@ -435,7 +435,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
         </TextContainer>
       </div>
     </Layout.Section>
-    <Layout.Section twoThirds>
+    <Layout.Section twoThirds condensed>
       <Card sectioned>
         <FormLayout>
           <TextField
@@ -509,7 +509,10 @@ Use for settings pages that need a banner or other content at the top.
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
       </Banner>
     </Layout.Section>
-    <Layout.Section oneThird>
+    <Layout.Section>
+      <hr style={{borderTop: 'var(--p-border-divider)', margin: 0}} />
+    </Layout.Section>
+    <Layout.Section oneThird condensed>
       <div style={{marginTop: 'var(--p-space-5)'}}>
         <TextContainer>
           <Heading id="storeDetails">Store details</Heading>
@@ -522,7 +525,7 @@ Use for settings pages that need a banner or other content at the top.
         </TextContainer>
       </div>
     </Layout.Section>
-    <Layout.Section twoThirds>
+    <Layout.Section twoThirds condensed>
       <Card sectioned>
         <FormLayout>
           <TextField

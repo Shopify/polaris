@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Section} from '../components';
+import {Grid} from '../../Grid';
 import {Layout} from '../Layout';
 
 describe('<Layout />', () => {
@@ -15,15 +15,14 @@ describe('<Layout />', () => {
     expect(layout).toContainReactComponent(MyComponent);
   });
 
-  it('renders children wrapped in a section', () => {
+  it('renders a Grid', () => {
     const layout = mountWithApp(
-      <Layout sectioned>
+      <Layout>
         <MyComponent />
       </Layout>,
     );
 
-    expect(layout).toContainReactComponent(Section);
-    expect(layout.find(Section)).toContainReactComponent(MyComponent);
+    expect(layout).toContainReactComponent(Grid);
   });
 });
 
