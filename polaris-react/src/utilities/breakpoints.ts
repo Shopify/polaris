@@ -99,16 +99,16 @@ export interface UseBreakpointsOptions {
  * Retrieves media query matches for each directional Polaris `breakpoints` alias.
  *
  * @example
- * const {smUp} = useBreakpoint();
+ * const {smUp} = useBreakpoints();
  * return smUp && 'Hello world';
  *
  * @example
- * const {mdUp} = useBreakpoint({defaults: {mdUp: true}});
- * // `mdUp` will be will be `true` during SSR
+ * const {mdUp} = useBreakpoints({defaults: {mdUp: true}});
+ * mdUp //=> `true` during SSR
  *
  * @example
- * const breakpoints = useBreakpoint(true);
- * // All `breakpoints` will be will be `true` during SSR
+ * const breakpoints = useBreakpoints({defaults: true});
+ * breakpoints //=> All values will be `true` during SSR
  */
 export function useBreakpoints(options?: UseBreakpointsOptions) {
   const [breakpoints, setBreakpoints] = useState(getMatches(options?.defaults));
