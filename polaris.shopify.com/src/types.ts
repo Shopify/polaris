@@ -19,53 +19,34 @@ export const searchResultCategories = [
 
 export type SearchResultCategory = typeof searchResultCategories[number];
 
-interface BaseSearchResult {
+export interface SearchResult {
+  category: SearchResultCategory;
   url: string;
   score: number;
+  meta: Partial<{
+    Components: {
+      name: string;
+      description: string;
+      status?: Status;
+    };
+    Foundations: {
+      title: string;
+      excerpt: string;
+    };
+    Tokens: {
+      token: TokenPropertiesWithName;
+    };
+    Icons: { icon: Icon };
+  }>;
 }
-
-export interface FoundationsSearchResult extends BaseSearchResult {
-  category: "Foundations";
-  meta: {
-    title: string;
-    excerpt: string;
-  };
-}
-
-export interface ComponentsSearchResult extends BaseSearchResult {
-  category: "Components";
-  meta: {
-    name: string;
-    description: string;
-    status?: Status;
-  };
-}
-
-export interface TokensSearchResult extends BaseSearchResult {
-  category: "Tokens";
-  meta: {
-    token: TokenPropertiesWithName;
-  };
-}
-
-export interface IconsSearchResult extends BaseSearchResult {
-  category: "Icons";
-  meta: { icon: Icon };
-}
-
-export type SearchResult =
-  | FoundationsSearchResult
-  | ComponentsSearchResult
-  | TokensSearchResult
-  | IconsSearchResult;
 
 export type SearchResults = SearchResult[];
 
 export type GroupedSearchResults = {
-  Foundations: { results: FoundationsSearchResult[]; maxScore: number };
-  Components: { results: ComponentsSearchResult[]; maxScore: number };
-  Tokens: { results: TokensSearchResult[]; maxScore: number };
-  Icons: { results: IconsSearchResult[]; maxScore: number };
+  [key in SearchResultCategory]: {
+    results: SearchResult[];
+    topScore: number;
+  };
 };
 
 export type Icon = {

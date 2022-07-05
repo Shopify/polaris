@@ -60,7 +60,7 @@ function GlobalSearch({}: Props) {
 
   if (searchResults) {
     Object.values(searchResults)
-      .sort((a, b) => a.maxScore - b.maxScore)
+      .sort((a, b) => a.topScore - b.topScore)
       .forEach((group) => {
         resultsInRenderedOrder = [...resultsInRenderedOrder, ...group.results];
       });
@@ -217,7 +217,7 @@ function GlobalSearch({}: Props) {
               >
                 {searchResults &&
                   Object.entries(searchResults)
-                    .sort((a, b) => a[1].maxScore - b[1].maxScore)
+                    .sort((a, b) => a[1].topScore - b[1].topScore)
                     .map(([category]) => {
                       const typedCategory = category as SearchResultCategory;
 
@@ -233,9 +233,12 @@ function GlobalSearch({}: Props) {
                                   const { searchResultData } = getItemProps({
                                     resultIndex,
                                   });
+                                  if (!result.meta.Foundations) return null;
+                                  const { title, excerpt } =
+                                    result.meta.Foundations;
                                   return (
                                     <li
-                                      key={result.meta.title}
+                                      key={result.meta.Foundations.title}
                                       className={className(
                                         styles.FoundationsResult,
                                         searchResultData?.isHighlighted &&
@@ -247,12 +250,8 @@ function GlobalSearch({}: Props) {
                                         <a
                                           tabIndex={searchResultData?.tabIndex}
                                         >
-                                          <h4>{result.meta.title}</h4>
-                                          <p>
-                                            {stripMarkdownLinks(
-                                              result.meta.excerpt
-                                            )}
-                                          </p>
+                                          <h4>{title}</h4>
+                                          <p>{stripMarkdownLinks(excerpt)}</p>
                                         </a>
                                       </Link>
                                     </li>
@@ -270,13 +269,17 @@ function GlobalSearch({}: Props) {
                               <ComponentGrid>
                                 {results.map((result) => {
                                   resultIndex++;
+                                  if (!result.meta.Components) return null;
+                                  const { url } = result;
+                                  const { name, description, status } =
+                                    result.meta.Components;
                                   return (
                                     <ComponentGrid.Item
-                                      key={result.meta.name}
-                                      url={result.url}
-                                      description={result.meta.description}
-                                      name={result.meta.name}
-                                      status={result.meta.status}
+                                      key={name}
+                                      url={url}
+                                      description={description}
+                                      name={name}
+                                      status={status}
                                       {...getItemProps({ resultIndex })}
                                     />
                                   );
@@ -303,10 +306,12 @@ function GlobalSearch({}: Props) {
                               >
                                 {results.map((result) => {
                                   resultIndex++;
+                                  if (!result.meta.Tokens) return null;
+                                  const { token } = result.meta.Tokens;
                                   return (
                                     <TokenList.Item
-                                      key={result.meta.token.name}
-                                      token={result.meta.token}
+                                      key={token.name}
+                                      token={token}
                                       {...getItemProps({ resultIndex })}
                                     />
                                   );
@@ -324,10 +329,13 @@ function GlobalSearch({}: Props) {
                               <IconGrid>
                                 {results.map((result) => {
                                   resultIndex++;
+                                  if (!result.meta.Icons) return null;
+                                  const { url } = result;
+                                  const { icon } = result.meta.Icons;
                                   return (
                                     <IconGrid.Item
-                                      key={result.url}
-                                      icon={result.meta.icon}
+                                      key={url}
+                                      icon={icon}
                                       onClick={() => router.push(result.url)}
                                       {...getItemProps({ resultIndex })}
                                     />
