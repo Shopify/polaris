@@ -26,18 +26,12 @@ export function useGlobalSearchResult() {
 
   const { id, currentItemId } = searchContext;
 
-  let data = {
+  return {
     id,
     "data-is-global-search-result": true,
-    "data-is-current-result": false,
+    "data-is-current-result": currentItemId === id,
     tabIndex: -1,
   };
-
-  if (currentItemId === id) {
-    data["data-is-current-result"] = true;
-  }
-
-  return data;
 }
 
 function scrollToTop() {
