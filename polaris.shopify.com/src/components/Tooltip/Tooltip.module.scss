@@ -40,8 +40,7 @@
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
   }
 
-  &[data-placement="bottom"] {
-    content: "";
+  &[data-placement="bottom"]:after {
     top: -5px;
     bottom: auto;
     transform: rotate(135deg);
