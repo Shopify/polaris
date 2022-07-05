@@ -128,14 +128,31 @@ export type BreakpointsTokenGroup = typeof breakpointsTokens;
 
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
-export type BreakpointsDirection = 'up' | 'down' | 'only';
+/**
+ * Alias extracted from each Polaris `breakpoints` token name.
+ *
+ * @example 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+ */
+export type BreakpointsAlias =
+  BreakpointsTokenName extends `${string}-${infer Alias}` ? Alias : never;
 
-export type BreakpointsDirectionMediaConditions = {
-  [Direction in BreakpointsDirection]: string;
+/**
+ * Alias direction used for composing Polaris `breakpoints` utilities.
+ */
+export type BreakpointsAliasDirection = 'up' | 'down' | 'only';
+
+/**
+ * A collection of directional media conditions for a given Polaris `breakpoints` alias.
+ */
+export type BreakpointsAliasDirectionMediaConditions = {
+  [AliasDirection in BreakpointsAliasDirection]: string;
 };
 
+/**
+ * Media conditions for all Polaris `breakpoints` aliases.
+ */
 export type BreakpointsMediaConditions = {
-  [TokenName in BreakpointsTokenName]: BreakpointsDirectionMediaConditions;
+  [TokenName in BreakpointsTokenName]: BreakpointsAliasDirectionMediaConditions;
 };
 
 export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
@@ -147,7 +164,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
       (
         entry,
         index,
-      ): [BreakpointsTokenName, BreakpointsDirectionMediaConditions] => {
+      ): [BreakpointsTokenName, BreakpointsAliasDirectionMediaConditions] => {
         const [breakpointAlias, {value: breakpoint}] =
           entry as Entry<BreakpointsTokenGroup>;
 
