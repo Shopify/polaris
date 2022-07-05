@@ -1,5 +1,5 @@
 name: Template
-set: major
+set: minor
 description: Used to represent templates.
 keywords:
   - template
@@ -8,8 +8,8 @@ keywords:
   - editor
   - online store
 authors:
-  - Rozina Szogyenyi
+  - Demi Peppas
 version: 1
-date_added: 2021-02-03
-date_modified: 2021-02-03
+date_added: 2022-07-05
+date_modified: 2022-07-05
 exclusive_use:
