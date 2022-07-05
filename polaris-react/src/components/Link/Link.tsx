@@ -1,11 +1,10 @@
 import React from 'react';
-import {ExternalSmallMinor} from '@shopify/polaris-icons';
 
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
-import {Icon} from '../Icon';
+import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Link.scss';
 
@@ -45,18 +44,14 @@ export function Link({
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {
-    const iconLabel = i18n.translate(
+    const opensNewWindowLabel = i18n.translate(
       'Polaris.Common.newWindowAccessibilityHint',
     );
 
     childrenMarkup = (
       <>
         {children}
-        <span className={styles.IconLockup}>
-          <span className={styles.IconLayout}>
-            <Icon accessibilityLabel={iconLabel} source={ExternalSmallMinor} />
-          </span>
-        </span>
+        <VisuallyHidden>{opensNewWindowLabel}</VisuallyHidden>
       </>
     );
   }

@@ -46,24 +46,6 @@
   }
 }
 
-.IconLockup {
-  @include recolor-icon(currentColor);
-  display: inline;
-  white-space: nowrap;
-
-  &::before {
-    content: '\2060';
-  }
-}
-
-.IconLayout {
-  display: inline-flex;
-
-  &::before {
-    content: '\2060';
-  }
-}
-
 .monochrome {
   color: inherit;
 

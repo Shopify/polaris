@@ -62,6 +62,12 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 
 If the existing link styles don’t meet the needs of your project, then use the `UnstyledLink` component to create a custom link style.
 
+### Same tab versus new tab
+
+Links are opened in the same tab (or window) if the action does not disrupt a merchant’s workflow and the merchant is taken to another place within the Shopify ecosystem.
+
+Links are opened in a new tab (or window) if the action will disrupt a merchant’s workflow or the merchant is taken to a place outside the Shopify ecosystem. If the merchant is taken to a page outside the Shopify ecosystem, use the external link icon to let them know.
+
 ---
 
 ## Content guidelines
@@ -161,10 +167,6 @@ To provide consistency and clarity:
 ```
 
 <!-- end -->
-
-#### External links
-
-The `external` prop adds an icon and a notification that the link opens a new tab. Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Open a page in a new tab only when opening a page in the same tab might disrupt the merchant’s workflow.
 
 ### Keyboard support
 
