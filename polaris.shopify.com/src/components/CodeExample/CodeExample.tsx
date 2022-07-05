@@ -23,7 +23,6 @@ function CodeExample({ minimalist, children }: Props) {
       <div className={styles.CopyButtonWrapper}>
         <Tooltip
           ariaLabel="Copy to clipboard"
-          placement="top"
           renderContent={() => (
             <div className={styles.IconToolTip}>
               <p>{didJustCopy ? "Copied" : "Copy"}</p>
