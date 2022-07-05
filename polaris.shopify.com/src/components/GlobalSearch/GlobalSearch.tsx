@@ -34,10 +34,7 @@ export function useGlobalSearchResult() {
   };
 
   if (currentItemId === id) {
-    data = {
-      ...data,
-      "data-is-current-result": true,
-    };
+    data["data-is-current-result"] = true;
   }
 
   return data;
