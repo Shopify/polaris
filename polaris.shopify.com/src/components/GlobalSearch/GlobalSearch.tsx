@@ -173,170 +173,174 @@ function GlobalSearch({}: Props) {
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className="dark-mode">
-          <Dialog.Panel className={styles.Results}>
-            {isOpen && (
-              <div className={styles.Header}>
-                <div className={styles.SearchIcon}>
-                  <SearchIcon />
-                </div>
+          <>
+            <Dialog.Panel className={styles.Results}>
+              {isOpen && (
+                <div className={styles.Header}>
+                  <div className={styles.SearchIcon}>
+                    <SearchIcon />
+                  </div>
 
-                <input
-                  type="search"
-                  value={searchTerm}
-                  onChange={(evt) => setSearchTerm(evt.target.value)}
-                  role="combobox"
-                  aria-controls="search-results"
-                  aria-expanded={searchResultsCount > 0}
-                  aria-activedescendant={
-                    searchResultsCount > 0
-                      ? getItemId(activeDescendant)
-                      : undefined
-                  }
-                  onKeyDown={handleKeyboardNavigation}
-                  autoComplete="off"
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  spellCheck={false}
-                  placeholder="Search"
-                />
-                <button
-                  className={styles.MobileCloseButton}
-                  onClick={() => setIsOpen(false)}
-                >
-                  Close
-                </button>
-              </div>
-            )}
-            <div
-              className={styles.ResultsInner}
-              id="search-results"
-              role="listbox"
-              aria-label="Search results"
-            >
-              {searchResults &&
-                Object.entries(searchResults)
-                  .sort((a, b) => a[1].maxScore - b[1].maxScore)
-                  .map(([category]) => {
-                    const typedCategory = category as SearchResultCategory;
-
-                    switch (typedCategory) {
-                      case "Foundations":
-                        const results = searchResults[typedCategory].results;
-                        if (results.length === 0) return null;
-                        return (
-                          <ResultsGroup title={category}>
-                            <div className={styles.FoundationsResults}>
-                              {results.map((result) => {
-                                resultIndex++;
-                                const { searchResultData } = getItemProps({
-                                  resultIndex,
-                                });
-                                return (
-                                  <li
-                                    key={result.meta.title}
-                                    className={className(
-                                      styles.FoundationsResult,
-                                      searchResultData?.isHighlighted &&
-                                        styles.isHighlighted
-                                    )}
-                                    {...searchResultData?.itemAttributes}
-                                  >
-                                    <Link href={result.url} passHref>
-                                      <a tabIndex={searchResultData?.tabIndex}>
-                                        <h4>{result.meta.title}</h4>
-                                        <p>
-                                          {stripMarkdownLinks(
-                                            result.meta.excerpt
-                                          )}
-                                        </p>
-                                      </a>
-                                    </Link>
-                                  </li>
-                                );
-                              })}
-                            </div>
-                          </ResultsGroup>
-                        );
-
-                      case "Components": {
-                        const results = searchResults[typedCategory].results;
-                        if (results.length === 0) return null;
-                        return (
-                          <ResultsGroup title={category}>
-                            <ComponentGrid>
-                              {results.map((result) => {
-                                resultIndex++;
-                                return (
-                                  <ComponentGrid.Item
-                                    key={result.meta.name}
-                                    url={result.url}
-                                    description={result.meta.description}
-                                    name={result.meta.name}
-                                    status={result.meta.status}
-                                    {...getItemProps({ resultIndex })}
-                                  />
-                                );
-                              })}
-                            </ComponentGrid>
-                          </ResultsGroup>
-                        );
-                      }
-
-                      case "Tokens": {
-                        const results = searchResults[typedCategory].results;
-                        if (results.length === 0) return null;
-                        return (
-                          <ResultsGroup title={category}>
-                            <TokenList
-                              showTableHeading={false}
-                              columns={{
-                                preview: true,
-                                name: true,
-                                figmaUsage: false,
-                                value: false,
-                                description: true,
-                              }}
-                            >
-                              {results.map((result) => {
-                                resultIndex++;
-                                return (
-                                  <TokenList.Item
-                                    key={result.meta.token.name}
-                                    token={result.meta.token}
-                                    {...getItemProps({ resultIndex })}
-                                  />
-                                );
-                              })}
-                            </TokenList>
-                          </ResultsGroup>
-                        );
-                      }
-
-                      case "Icons": {
-                        const results = searchResults[typedCategory].results;
-                        if (results.length === 0) return null;
-                        return (
-                          <ResultsGroup title={category}>
-                            <IconGrid>
-                              {results.map((result) => {
-                                resultIndex++;
-                                return (
-                                  <IconGrid.Item
-                                    key={result.url}
-                                    icon={result.meta.icon}
-                                    onClick={() => router.push(result.url)}
-                                    {...getItemProps({ resultIndex })}
-                                  />
-                                );
-                              })}
-                            </IconGrid>
-                          </ResultsGroup>
-                        );
-                      }
+                  <input
+                    type="search"
+                    value={searchTerm}
+                    onChange={(evt) => setSearchTerm(evt.target.value)}
+                    role="combobox"
+                    aria-controls="search-results"
+                    aria-expanded={searchResultsCount > 0}
+                    aria-activedescendant={
+                      searchResultsCount > 0
+                        ? getItemId(activeDescendant)
+                        : undefined
                     }
-                  })}
-            </div>
-          </Dialog.Panel>
+                    onKeyDown={handleKeyboardNavigation}
+                    autoComplete="off"
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    spellCheck={false}
+                    placeholder="Search"
+                  />
+                  <button
+                    className={styles.MobileCloseButton}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              )}
+              <div
+                className={styles.ResultsInner}
+                id="search-results"
+                role="listbox"
+                aria-label="Search results"
+              >
+                {searchResults &&
+                  Object.entries(searchResults)
+                    .sort((a, b) => a[1].maxScore - b[1].maxScore)
+                    .map(([category]) => {
+                      const typedCategory = category as SearchResultCategory;
+
+                      switch (typedCategory) {
+                        case "Foundations":
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <div className={styles.FoundationsResults}>
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  const { searchResultData } = getItemProps({
+                                    resultIndex,
+                                  });
+                                  return (
+                                    <li
+                                      key={result.meta.title}
+                                      className={className(
+                                        styles.FoundationsResult,
+                                        searchResultData?.isHighlighted &&
+                                          styles.isHighlighted
+                                      )}
+                                      {...searchResultData?.itemAttributes}
+                                    >
+                                      <Link href={result.url} passHref>
+                                        <a
+                                          tabIndex={searchResultData?.tabIndex}
+                                        >
+                                          <h4>{result.meta.title}</h4>
+                                          <p>
+                                            {stripMarkdownLinks(
+                                              result.meta.excerpt
+                                            )}
+                                          </p>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                  );
+                                })}
+                              </div>
+                            </ResultsGroup>
+                          );
+
+                        case "Components": {
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <ComponentGrid>
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  return (
+                                    <ComponentGrid.Item
+                                      key={result.meta.name}
+                                      url={result.url}
+                                      description={result.meta.description}
+                                      name={result.meta.name}
+                                      status={result.meta.status}
+                                      {...getItemProps({ resultIndex })}
+                                    />
+                                  );
+                                })}
+                              </ComponentGrid>
+                            </ResultsGroup>
+                          );
+                        }
+
+                        case "Tokens": {
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <TokenList
+                                showTableHeading={false}
+                                columns={{
+                                  preview: true,
+                                  name: true,
+                                  figmaUsage: false,
+                                  value: false,
+                                  description: true,
+                                }}
+                              >
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  return (
+                                    <TokenList.Item
+                                      key={result.meta.token.name}
+                                      token={result.meta.token}
+                                      {...getItemProps({ resultIndex })}
+                                    />
+                                  );
+                                })}
+                              </TokenList>
+                            </ResultsGroup>
+                          );
+                        }
+
+                        case "Icons": {
+                          const results = searchResults[typedCategory].results;
+                          if (results.length === 0) return null;
+                          return (
+                            <ResultsGroup title={category}>
+                              <IconGrid>
+                                {results.map((result) => {
+                                  resultIndex++;
+                                  return (
+                                    <IconGrid.Item
+                                      key={result.url}
+                                      icon={result.meta.icon}
+                                      onClick={() => router.push(result.url)}
+                                      {...getItemProps({ resultIndex })}
+                                    />
+                                  );
+                                })}
+                              </IconGrid>
+                            </ResultsGroup>
+                          );
+                        }
+                      }
+                    })}
+              </div>
+            </Dialog.Panel>
+          </>
         </div>
       </Dialog>
     </>
