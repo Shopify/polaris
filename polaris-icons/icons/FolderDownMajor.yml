@@ -1,4 +1,4 @@
-name: folder down
+name: Folder down
 set: major
 description: Used to represent an action to download a folder.
 keywords:

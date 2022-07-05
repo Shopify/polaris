@@ -23,7 +23,7 @@ export interface CustomPropertiesProps {
  * major version. See the Polaris token documentation for replacing
  * colors relying on dark color scheme values.
  *
- * https://polaris.shopify.com/tokens/all-tokens
+ * https://polaris.shopify.com/tokens
  */
 export function CustomProperties(props: CustomPropertiesProps) {
   const {

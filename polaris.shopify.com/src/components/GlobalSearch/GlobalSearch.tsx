@@ -83,7 +83,7 @@ function GlobalSearch({}: Props) {
   }, []);
 
   useEffect(() => {
-    setSearchResults(search(searchTerm));
+    setSearchResults(search(searchTerm.trim()));
     setActiveDescendant(0);
     scrollToTop();
   }, [searchTerm]);
@@ -102,6 +102,12 @@ function GlobalSearch({}: Props) {
       router.events.off("hashChangeComplete", handler);
     };
   }, [setIsOpen, router.events]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchTerm("");
+    }
+  }, [isOpen]);
 
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
     evt
@@ -270,6 +276,7 @@ function GlobalSearch({}: Props) {
                                       url={result.url}
                                       description={result.meta.description}
                                       name={result.meta.name}
+                                      status={result.meta.status}
                                       {...getItemProps({ resultIndex })}
                                     />
                                   );

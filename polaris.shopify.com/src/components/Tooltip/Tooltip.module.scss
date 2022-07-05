@@ -2,7 +2,7 @@
 
 .Tooltip {
   pointer-events: none;
-  max-width: 300px;
+  max-width: 240px;
   z-index: 2;
   filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.1));
 
@@ -38,5 +38,11 @@
 
   @include dark-mode {
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+  }
+
+  &[data-placement="bottom"]:after {
+    top: -5px;
+    bottom: auto;
+    transform: rotate(135deg);
   }
 }

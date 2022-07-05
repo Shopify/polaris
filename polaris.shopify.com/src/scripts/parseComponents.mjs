@@ -5,46 +5,33 @@ import { parseMarkdown } from "../utils/markdown.mjs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const componentsDir = path.join(
-  __dirname,
-  "../../../polaris-react/src/components"
-);
+const componentReadmesDir = path.join(__dirname, "../../content/components");
 
 let components = [];
 
-const componentDirectories = fs.readdirSync(componentsDir, "utf-8");
+const componentFiles = fs.readdirSync(componentReadmesDir, "utf-8");
 
 // Loop through the components directory
-for (let i = 0; i < componentDirectories.length; i++) {
-  const componentDirectoryName = componentDirectories[i];
-  const componentDirectoryPath = path.join(
-    componentsDir,
-    componentDirectoryName
-  );
-  const isDir = fs.lstatSync(componentDirectoryPath).isDirectory();
+for (let i = 0; i < componentFiles.length; i++) {
+  const file = componentFiles[i];
+  const readmePath = path.join(componentReadmesDir, file);
+  const readmeExists = fs.existsSync(readmePath);
 
-  if (isDir) {
-    // Attempt to find the readme file
-    const readmePath = path.join(componentDirectoryPath, "README.md");
-    const readmeExists = fs.existsSync(readmePath);
+  if (readmeExists) {
+    // Parse the file's markdown content
+    const readmeFileContent = fs.readFileSync(readmePath, "utf-8");
+    const markdownFile = parseMarkdown(readmeFileContent);
 
-    if (readmeExists) {
-      // Parse the file's markdown content
-      const readmeFileContent = fs.readFileSync(readmePath, "utf-8");
-      const markdownFile = parseMarkdown(readmeFileContent);
-
-      components.push(markdownFile);
-    }
+    components.push(markdownFile);
   }
 }
 
 // Write meta file (can be included in next.js bundle)
 const metaFilePath = path.join(__dirname, "../data/components.json");
-fs.writeFileSync(
-  metaFilePath,
-  JSON.stringify(
-    components.map(({ readme, ...rest }) => rest),
-    null,
-    2
-  )
-);
+components = components.map((component) => {
+  const { readme, frontMatter, ...rest } = component;
+  const { examples, ...restFrontMatter } = frontMatter;
+
+  return { frontMatter: restFrontMatter, ...rest };
+});
+fs.writeFileSync(metaFilePath, JSON.stringify(components, null, 2));

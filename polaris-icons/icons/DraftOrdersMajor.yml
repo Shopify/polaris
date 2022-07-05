@@ -1,4 +1,4 @@
-name: draft orders
+name: Draft orders
 set: major
 description: Used to represent an order that is in a Draft state.
 keywords:

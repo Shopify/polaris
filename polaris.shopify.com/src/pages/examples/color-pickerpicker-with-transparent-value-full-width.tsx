@@ -10,7 +10,11 @@ function ColorPickerWithTransparentValueExample() {
     alpha: 0.7,
   });
 
-  return <ColorPicker fullWidth onChange={setColor} color={color} allowAlpha />;
+  return (
+    <div style={{ width: "500px" }}>
+      <ColorPicker fullWidth onChange={setColor} color={color} allowAlpha />
+    </div>
+  );
 }
 
 export default withPolarisExample(ColorPickerWithTransparentValueExample);

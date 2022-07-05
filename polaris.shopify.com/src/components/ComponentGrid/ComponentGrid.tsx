@@ -2,7 +2,9 @@ import Image from "../Image";
 import Link from "next/link";
 import { SearchResultItem } from "../../types";
 import { className, slugify } from "../../utils/various";
+import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
+import StatusBadge from "../StatusBadge";
 
 interface ComponentGridProps {
   children: React.ReactNode;
@@ -16,6 +18,7 @@ interface ComponentGridItemProps extends SearchResultItem {
   name: string;
   description: string;
   url: string;
+  status?: Status;
 }
 
 function ComponentGridItem({
@@ -23,6 +26,7 @@ function ComponentGridItem({
   description,
   url,
   searchResultData,
+  status,
 }: ComponentGridItemProps) {
   return (
     <li
@@ -48,7 +52,15 @@ function ComponentGridItem({
             />
           </div>
           <div className={styles.ComponentDescription}>
-            <h4>{name}</h4>
+            <h4>
+              {name}
+              {status && (
+                <>
+                  {" "}
+                  <StatusBadge status={status} />
+                </>
+              )}
+            </h4>
             <p>{description}</p>
           </div>
         </a>

@@ -1,4 +1,4 @@
-name: images
+name: Images
 set: major
 description: Used to represent multiple images.
 keywords:

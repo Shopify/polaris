@@ -1,4 +1,4 @@
-name: folder minus
+name: Folder minus
 set: major
 description: Used to represent an action to remove a folder.
 keywords:
