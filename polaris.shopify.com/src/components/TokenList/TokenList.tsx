@@ -120,8 +120,8 @@ function TokenListItem({
   const tokenNameWithPrefix = `--p-${name}`;
   const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
-  let attributes = useGlobalSearchResult();
-  const isClickableSearchResult = !!attributes?.tabIndex;
+  const searchAttributes = useGlobalSearchResult();
+  const isClickableSearchResult = !!searchAttributes?.tabIndex;
 
   return (
     <TokenListContext.Consumer>
@@ -129,14 +129,14 @@ function TokenListItem({
         <tr
           key={name}
           className={className(styles.TokenListItem)}
-          {...attributes}
+          {...searchAttributes}
           id={slugify(name)}
         >
           {columns.preview && (
             <td>
               <TokenPreview name={name} value={value} />
               {isClickableSearchResult && (
-                <Link href={`/tokens/${category}#${attributes?.id}`}>
+                <Link href={`/tokens/${category}#${searchAttributes?.id}`}>
                   <a className={styles.ClickableItemLink} tabIndex={-1}>
                     View token
                   </a>
@@ -159,7 +159,10 @@ function TokenListItem({
                       </div>
                     )}
                   >
-                    <button onClick={copy} tabIndex={attributes?.tabIndex}>
+                    <button
+                      onClick={copy}
+                      tabIndex={searchAttributes?.tabIndex}
+                    >
                       <Image
                         src={iconClipboard}
                         alt={"Copy"}

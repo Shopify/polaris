@@ -27,12 +27,16 @@ function ComponentGridItem({
   url,
   status,
 }: ComponentGridItemProps) {
-  const attributes = useGlobalSearchResult();
+  const searchAttributes = useGlobalSearchResult();
 
   return (
-    <li key={name} className={className(styles.Component)} {...attributes}>
+    <li
+      key={name}
+      className={className(styles.Component)}
+      {...searchAttributes}
+    >
       <Link href={url} passHref>
-        <a tabIndex={attributes?.tabIndex}>
+        <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
             <Image
               src={`/component-previews/${slugify(name)}.png`}

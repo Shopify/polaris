@@ -10,10 +10,10 @@ import { useRouter } from "next/router";
 import IconGrid from "../IconGrid";
 import ComponentGrid from "../ComponentGrid";
 import TokenList from "../TokenList";
-import Link from "next/link";
-import { stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
+import FoundationsGrid from "../FoundationsGrid";
+import { foundationsNavItems } from "../../data/navItems";
 
 const CATEGORY_NAMES: { [key in SearchResultCategory]: string } = {
   components: "Components",
@@ -21,6 +21,13 @@ const CATEGORY_NAMES: { [key in SearchResultCategory]: string } = {
   tokens: "Tokens",
   icons: "Icons",
 };
+
+const foundationsIcons: { [title: string]: JSX.Element } = {};
+Object.entries(foundationsNavItems).forEach(([, value]) => {
+  value.children?.forEach((child) => {
+    foundationsIcons[child.title] = child.icon;
+  });
+});
 
 const SearchContext = createContext({ id: "", currentItemId: "" });
 
@@ -161,7 +168,7 @@ function GlobalSearch() {
       </button>
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-        <div className={styles.ModalBackdrop}></div>
+        <div className={styles.PreventBackgroundInteractions}></div>
         <div className="dark-mode">
           <Dialog.Panel className={styles.Results}>
             {isOpen && (
@@ -223,31 +230,32 @@ function SearchResults({
   return (
     <>
       {searchResults.map(({ category, results }) => {
+        if (results.length === 0) return null;
         switch (category) {
           case "foundations":
             return (
               <ResultsGroup category={category}>
-                <div className={styles.FoundationsResults}>
+                <FoundationsGrid>
                   {results.map(({ id, url, meta }) => {
                     if (!meta.foundations) return null;
-                    const { title, excerpt } = meta.foundations;
+                    const { title, excerpt, category } = meta.foundations;
+                    const icon = foundationsIcons[title];
                     return (
                       <SearchContext.Provider
                         key={title}
                         value={{ currentItemId, id }}
                       >
-                        <li className={styles.FoundationsResult}>
-                          <Link href={url} passHref>
-                            <a>
-                              <h4>{title}</h4>
-                              <p>{stripMarkdownLinks(excerpt)}</p>
-                            </a>
-                          </Link>
-                        </li>
+                        <FoundationsGrid.Item
+                          title={title}
+                          excerpt={excerpt}
+                          category={category}
+                          url={url}
+                          icon={icon}
+                        />
                       </SearchContext.Provider>
                     );
                   })}
-                </div>
+                </FoundationsGrid>
               </ResultsGroup>
             );
 

@@ -33,6 +33,7 @@ export interface SearchResult {
     foundations: {
       title: string;
       excerpt: string;
+      category: string;
     };
     tokens: {
       category: string;

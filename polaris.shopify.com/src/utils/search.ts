@@ -110,8 +110,8 @@ Object.keys(metadata).forEach((fileName) => {
 });
 
 // Add foundations
-foundations.forEach(({ frontMatter: { name }, intro, section }) => {
-  const url = `/foundations/${section}/${slugify(name)}`;
+foundations.forEach(({ frontMatter: { name }, intro, headings, category }) => {
+  const url = `/foundations/${category}/${slugify(name)}`;
 
   results.push({
     id: slugify(name),
@@ -122,6 +122,7 @@ foundations.forEach(({ frontMatter: { name }, intro, section }) => {
       foundations: {
         title: name,
         excerpt: intro,
+        category,
       },
     },
   });

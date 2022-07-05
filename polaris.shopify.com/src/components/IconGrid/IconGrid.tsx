@@ -25,13 +25,13 @@ interface IconGridItemProps {
 }
 
 function IconGridItem({ icon, onClick, isSelected }: IconGridItemProps) {
-  const attributes = useGlobalSearchResult();
+  const searchAttributes = useGlobalSearchResult();
 
   return (
     <li
       key={`${icon.name}-${icon.set}`}
       className={className(styles.Icon, isSelected && styles.isSelected)}
-      {...attributes}
+      {...searchAttributes}
     >
       <Tooltip
         ariaLabel={icon.description}
@@ -45,7 +45,7 @@ function IconGridItem({ icon, onClick, isSelected }: IconGridItemProps) {
       >
         <button
           onClick={() => onClick(icon.name)}
-          tabIndex={attributes?.tabIndex}
+          tabIndex={searchAttributes?.tabIndex}
         >
           <div className={styles.SVGWrapper}>
             <Image
