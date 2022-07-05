@@ -15,8 +15,6 @@ import { stripMarkdownLinks } from "../../utils/various";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
 
-interface Props {}
-
 const SearchContext = createContext({ id: "", currentItemId: "" });
 
 export function useGlobalSearchResult() {
@@ -65,7 +63,7 @@ function scrollIntoView() {
   }
 }
 
-function GlobalSearch({}: Props) {
+function GlobalSearch() {
   const [searchResults, setSearchResults] = useState<GroupedSearchResults>();
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
