@@ -1,4 +1,4 @@
-name: clock
+name: Clock
 set: major
 description: Used to represent a clock, or the time.
 keywords:

@@ -1,4 +1,4 @@
-name: cart down
+name: Cart down
 set: major
 description: Used to represent saving the contents of a shopping cart.
 keywords:
