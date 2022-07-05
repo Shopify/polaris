@@ -1,12 +1,4 @@
-import {
-  SearchResultCategory,
-  SearchResults,
-  ComponentsSearchResult,
-  FoundationsSearchResult,
-  IconsSearchResult,
-  TokensSearchResult,
-  GroupedSearchResults,
-} from "../types";
+import { SearchResults, GroupedSearchResults } from "../types";
 import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
@@ -32,7 +24,7 @@ const {
   zIndex,
 } = tokens;
 
-let results: SearchResults = [];
+const results: SearchResults = [];
 
 // Add components
 components.forEach(({ frontMatter: { name, status }, intro }) => {
@@ -149,42 +141,14 @@ export function search(query: string): GroupedSearchResults {
       score: result.score || 0,
     }));
 
-    groupedResults["Foundations"].results = scoredResults
-      .filter((result) => result.category === "Foundations")
-      .map((result) => ({
-        ...result,
-        score: result.score || 0,
-      }))
-      .slice(0, MAX_RESULTS["Foundations"]) as FoundationsSearchResult[];
-
-    groupedResults["Components"].results = scoredResults
-      .filter((result) => result.category === "Components")
-      .map((result) => ({
-        ...result,
-        score: result.score || 0,
-      }))
-      .slice(0, MAX_RESULTS["Components"]) as ComponentsSearchResult[];
-
-    groupedResults["Tokens"].results = scoredResults
-      .filter((result) => result.category === "Tokens")
-      .map((result) => ({
-        ...result,
-        score: result.score || 0,
-      }))
-      .slice(0, MAX_RESULTS["Tokens"]) as TokensSearchResult[];
-
-    groupedResults["Icons"].results = scoredResults
-      .filter((result) => result.category === "Icons")
-      .map((result) => ({
-        ...result,
-        score: result.score || 0,
-      }))
-      .slice(0, MAX_RESULTS["Icons"]) as IconsSearchResult[];
-
-    Object.keys(groupedResults).forEach((category) => {
-      const typedCategory = category as SearchResultCategory;
-      groupedResults[typedCategory].maxScore =
-        groupedResults[typedCategory].results[0]?.score || 0;
+    scoredResults.forEach((result) => {
+      const categoryResults = groupedResults[result.category].results;
+      if (categoryResults.length < MAX_RESULTS[result.category]) {
+        if (!result) return;
+        // @ts-expect-error
+        categoryResults.push({ ...result });
+        groupedResults[result.category].maxScore = result.score || 0;
+      }
     });
   }
 
