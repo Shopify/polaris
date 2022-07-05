@@ -11,10 +11,10 @@ export interface TokenPropertiesWithName extends TokenProperties {
 }
 
 export const searchResultCategories = [
-  "Foundations",
-  "Components",
-  "Tokens",
-  "Icons",
+  "foundations",
+  "components",
+  "tokens",
+  "icons",
 ] as const;
 
 export type SearchResultCategory = typeof searchResultCategories[number];
@@ -45,11 +45,9 @@ export interface SearchResult {
 export type SearchResults = SearchResult[];
 
 export type GroupedSearchResults = {
-  [key in SearchResultCategory]: {
-    results: SearchResult[];
-    topScore: number;
-  };
-};
+  category: SearchResultCategory;
+  results: SearchResult[];
+}[];
 
 export type Icon = {
   fileName: string;
