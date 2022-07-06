@@ -22,7 +22,7 @@ type Align = 'inherit' | 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
-type Color = 'subdued' | '';
+type Color = 'positive' | 'negative' | 'warning' | 'subdued';
 
 export interface TextProps {
   align?: Align;

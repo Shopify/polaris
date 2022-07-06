@@ -29,6 +29,18 @@
   text-align: justify;
 }
 
+.positive {
+  color: var(--p-text-success);
+}
+
+.negative {
+  color: var(--p-text-critical);
+}
+
+.warning {
+  color: var(--p-text-warning);
+}
+
 .subdued {
   color: var(--p-text-subdued);
 }
