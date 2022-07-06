@@ -33,13 +33,13 @@ examples:
     description: Use to indicate there are no search results.
   - fileName: autocomplete-with-action.tsx
     title: Autocomplete with action
-    description: Use to indicate there are no search results.
+    description: Use to help merchants complete an action quickly.
   - fileName: autocomplete-with-wrapping-action.tsx
     title: Autocomplete with wrapping action
-    description: Use to indicate there are no search results.
+    description: Use to help merchants complete an action quickly with wrapping lines of text.
   - fileName: autocomplete-with-destructive-action.tsx
     title: Autocomplete with destructive action
-    description: Use to indicate there are no search results.
+    description: Use to help merchants complete a destructive action quickly.
 ---
 
 # Autocomplete
