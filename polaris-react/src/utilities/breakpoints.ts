@@ -7,6 +7,7 @@ import {
   tokens,
 } from '@shopify/polaris-tokens';
 
+import {isServer} from './target';
 import {useIsomorphicLayoutEffect} from './use-isomorphic-layout-effect';
 
 const Breakpoints = {
@@ -57,7 +58,7 @@ type BreakpointsMatches = {
 const breakpointsQueryEntries = getBreakpointsQueryEntries(tokens.breakpoints);
 
 function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
-  if (typeof window !== 'undefined') {
+  if (!isServer) {
     return Object.fromEntries(
       breakpointsQueryEntries.map(([directionAlias, query]) => [
         directionAlias,
