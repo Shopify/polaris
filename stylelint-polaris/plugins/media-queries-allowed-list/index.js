@@ -73,7 +73,16 @@ const {rule} = stylelint.createPlugin(
           ruleSettings: allowedMediaFeatureNames,
           root,
         },
-        (warning) =>
+        (warning) => {
+          if (
+            // The built-in `media-feature-name-allowed-list` rule
+            // doesn't handle this case:
+            allowedMediaFeatureNames.includes('-ms-high-contrast') &&
+            warning.text.includes('-ms-high-contrast')
+          ) {
+            return;
+          }
+
           stylelint.utils.report({
             message: messages.rejected(warning.node.params),
             ruleName,
@@ -83,7 +92,8 @@ const {rule} = stylelint.createPlugin(
             column: warning.column,
             endLine: warning.endLine,
             endColumn: warning.endColumn,
-          }),
+          });
+        },
       );
 
       root.walkAtRules('media', (atRule) => {
