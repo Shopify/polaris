@@ -51,13 +51,13 @@ function IconsPage() {
   }, [currentSearchText]);
 
   useEffect(() => {
-    if (activeIcon) {
-      const activeElementY = document
-        .querySelector(`#${activeIcon}`)
-        ?.getBoundingClientRect().y;
-      if (activeElementY && activeElementY > 100) {
-        document.documentElement.scrollTo({ top: activeElementY - 100 });
-      }
+    if (!activeIcon) return;
+
+    const activeElementY = document
+      .querySelector(`#${activeIcon}`)
+      ?.getBoundingClientRect().y;
+    if (activeElementY && activeElementY > 100) {
+      document.documentElement.scrollTo({ top: activeElementY - 100 });
     }
   }, [activeIcon]);
 
