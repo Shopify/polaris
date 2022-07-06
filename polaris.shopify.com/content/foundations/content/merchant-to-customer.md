@@ -13,7 +13,7 @@ keywords:
 
 # Merchant-to-customer content
 
-Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s [sale channel](https://polaris.shopify.com/content/vocabulary#definition-s-sales-channel).
+Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.
 
 Merchant-to-customer content represents the merchant, not Shopify, and should optimize the customers’ online or retail store experience.
 
@@ -32,7 +32,7 @@ You’ll find merchant-to-customer content in places such as:
 
 If you write for multiple audiences, it’s important to note that merchant-to-customer content isn’t:
 
-- Shopify-to-buyer (see definition for [buyer](#section-vocabulary-considerations) content, such as Shopify Pay or Arrive)
+- Shopify-to-buyer content, such as Shopify Pay or Arrive
 - Shopify-to-merchant content, such as the Shopify admin
 - Shopify-to-world content, such as shopify.com or blog posts
 
@@ -157,7 +157,7 @@ Read our general [voice and tone guidelines](https://polaris.shopify.com/content
 
 A “buyer” interacts with multiple Shopify stores or has a direct relationship with Shopify, such as through Shopify Pay.
 
-In contrast, a “customer” is a person or organization who interacts with a Shopify merchant or a merchant’s [sale channel](https://polaris.shopify.com/content/vocabulary#definition-s-sales-channel).
+In contrast, a “customer” is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.
 
 In the Shopify admin and Point-of-Sale (POS), a customer appears on the Customers page when they engage with a merchant in an identifiable way. This could be because they:
 
