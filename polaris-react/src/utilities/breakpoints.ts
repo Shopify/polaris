@@ -1,4 +1,4 @@
-import {useState, useLayoutEffect} from 'react';
+import {useState} from 'react';
 import {
   BreakpointsAlias,
   BreakpointsAliasDirection,
@@ -6,6 +6,8 @@ import {
   getMediaConditions,
   tokens,
 } from '@shopify/polaris-tokens';
+
+import {useIsomorphicLayoutEffect} from './use-isomorphic-layout-effect';
 
 const Breakpoints = {
   navigationBarCollapsed: '768px',
@@ -113,7 +115,7 @@ export interface UseBreakpointsOptions {
 export function useBreakpoints(options?: UseBreakpointsOptions) {
   const [breakpoints, setBreakpoints] = useState(getMatches(options?.defaults));
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
       window.matchMedia(query),
     );
