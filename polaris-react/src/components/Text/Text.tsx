@@ -43,19 +43,6 @@ export interface TextProps {
   variant?: Variant;
 }
 
-const VariantMapping: {[V in Variant]: Element} = {
-  displaySm: 'span',
-  displayMd: 'span',
-  displayLg: 'span',
-  headingSm: 'h4',
-  headingMd: 'h3',
-  headingLg: 'h2',
-  headingXl: 'h1',
-  bodySm: 'p',
-  bodyMd: 'p',
-  bodyLg: 'p',
-};
-
 export const Text = ({
   align = 'inherit',
   as,
@@ -65,10 +52,7 @@ export const Text = ({
   truncate = false,
   variant,
 }: TextProps) => {
-  let Component = as || 'span';
-  if (!as && variant) {
-    Component = VariantMapping[variant];
-  }
+  const Component = as || 'span';
 
   const className = classNames(
     styles.root,
