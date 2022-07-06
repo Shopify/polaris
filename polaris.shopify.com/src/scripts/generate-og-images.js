@@ -39,6 +39,10 @@ function getTitleForUrl(url) {
     title = capitalizeFirstLetter(slug.replace(/-/g, " "));
 
     if (url.startsWith("/tokens/")) {
+      if (title.endsWith("s")) {
+        // "Breakpoints tokens" => "Breakpoint tokens"
+        title = title.slice(0, -1);
+      }
       title = `${title} tokens`;
     }
   }

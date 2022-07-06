@@ -148,10 +148,10 @@ body,
 .light-mode {
   --text: #3c4141;
   --text-strong: #111212;
-  --text-subdued: #777;
+  --text-subdued: #767676;
   --text-link: #2e5dba;
   --surface: #fff;
-  --surface-subdued: #fbfbfb;
+  --surface-subdued: #f7f7f7;
   --surface-information: #dcf5f0;
   --surface-warning: #ffeceb;
   --primary: #008060;
@@ -306,10 +306,19 @@ button {
         margin-left: 0;
       }
 
+      li:before {
+        display: none;
+      }
+
       &[data-type="dont"] {
         li,
         p {
           background-image: url(/images/icon-dont.svg);
+        }
+
+        li > p {
+          background: none;
+          padding-left: 0;
         }
       }
     }

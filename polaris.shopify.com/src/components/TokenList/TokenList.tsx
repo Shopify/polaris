@@ -87,7 +87,7 @@ function getFigmaUsageForToken(
   } else if (name.startsWith("shadow")) {
     usage = "Use shadow styles from UI kit";
   } else if (name.includes("breakpoint")) {
-    const artboardWidth = parseInt(value) * REM;
+    const artboardWidth = parseFloat(value) * REM;
     if (artboardWidth > 0) {
       usage = `Set frame width to ${artboardWidth}+ pixels`;
     }
@@ -152,7 +152,6 @@ function TokenListItem({
                 <div className={styles.TokenClipboard}>
                   <Tooltip
                     ariaLabel="Copy to clipboard"
-                    placement="top"
                     renderContent={() => (
                       <div className={styles.TokenToolTip}>
                         <p>{didJustCopy ? "Copied!" : "Copy to clipboard"}</p>
