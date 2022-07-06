@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added `useBreakpoints` hook
+Added internal `useBreakpoints` hook
