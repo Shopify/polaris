@@ -18,42 +18,6 @@ function FullDataTableExample() {
       124689,
       140,
       '$121,500.00',
-    ],
-    [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="mauve-cashmere-scarf"
-      >
-        Mauve Cashmere Scarf
-      </Link>,
-      '$230.00',
-      124533,
-      83,
-      '$19,090.00',
-    ],
-    [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="navy-merino-wool"
-      >
-        Navy Merino Wool Blazer with khaki chinos and yellow belt
-      </Link>,
-      '$445.00',
-      124518,
-      32,
-      '$14,240.00',
-    ],
-    [
-      <Link
-        removeUnderline
-        url="https://www.example.com"
-        key="emerald-silk-gown"
-      >
-        Emerald Silk Gown
-      </Link>,
-      '$875.00',
       124689,
       140,
       '$121,500.00',
@@ -70,6 +34,9 @@ function FullDataTableExample() {
       124533,
       83,
       '$19,090.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -83,6 +50,9 @@ function FullDataTableExample() {
       124518,
       32,
       '$14,240.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -93,6 +63,9 @@ function FullDataTableExample() {
         Emerald Silk Gown
       </Link>,
       '$875.00',
+      124689,
+      140,
+      '$121,500.00',
       124689,
       140,
       '$121,500.00',
@@ -109,6 +82,9 @@ function FullDataTableExample() {
       124533,
       83,
       '$19,090.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -122,6 +98,9 @@ function FullDataTableExample() {
       124518,
       32,
       '$14,240.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -132,6 +111,9 @@ function FullDataTableExample() {
         Emerald Silk Gown
       </Link>,
       '$875.00',
+      124689,
+      140,
+      '$121,500.00',
       124689,
       140,
       '$121,500.00',
@@ -148,6 +130,9 @@ function FullDataTableExample() {
       124533,
       83,
       '$19,090.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -161,6 +146,9 @@ function FullDataTableExample() {
       124518,
       32,
       '$14,240.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -171,6 +159,9 @@ function FullDataTableExample() {
         Emerald Silk Gown
       </Link>,
       '$875.00',
+      124689,
+      140,
+      '$121,500.00',
       124689,
       140,
       '$121,500.00',
@@ -187,6 +178,9 @@ function FullDataTableExample() {
       124533,
       83,
       '$19,090.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -200,6 +194,9 @@ function FullDataTableExample() {
       124518,
       32,
       '$14,240.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -210,6 +207,9 @@ function FullDataTableExample() {
         Emerald Silk Gown
       </Link>,
       '$875.00',
+      124689,
+      140,
+      '$121,500.00',
       124689,
       140,
       '$121,500.00',
@@ -226,6 +226,9 @@ function FullDataTableExample() {
       124533,
       83,
       '$19,090.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
     [
       <Link
@@ -239,6 +242,57 @@ function FullDataTableExample() {
       124518,
       32,
       '$14,240.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+      124689,
+      140,
+      '$121,500.00',
     ],
   ];
 
@@ -258,6 +312,12 @@ function FullDataTableExample() {
             'numeric',
             'numeric',
             'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
           ]}
           headings={[
             'Product',
@@ -265,9 +325,12 @@ function FullDataTableExample() {
             'SKU Number',
             'Net quantity',
             'Net sales',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
           ]}
           rows={rows}
-          totals={['', '', '', 255, '$155,830.00']}
+          totals={['', '', '', 255, '$155,830.00', '', 255, '$155,830.00']}
           sortable={[true, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
@@ -292,11 +355,5 @@ function FullDataTableExample() {
 }
 
 export function Playground() {
-  return (
-    <Page title="Playground">
-      <Card>
-        <FullDataTableExample />
-      </Card>
-    </Page>
-  );
+  return <FullDataTableExample />;
 }

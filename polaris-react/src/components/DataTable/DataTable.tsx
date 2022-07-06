@@ -364,12 +364,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       return;
     }
 
-    console.log('setting CellRef', ref, {
-      index,
-      inStickyHeader,
-      inFixedFirstColumn,
-    });
-
     if (inStickyHeader) {
       this.stickyHeadings[index] = ref;
       const button = ref.querySelector('button');
