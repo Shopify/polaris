@@ -50,13 +50,29 @@ export function UnstyledButton({
   const interactiveProps = {
     ...commonProps,
     role,
-    onClick,
+    onClick: handleClick,
     onFocus,
     onBlur,
     onMouseUp: handleMouseUpByBlurring,
     onMouseEnter,
     onTouchStart,
   };
+
+  function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
+    if (disabled) {
+      event.preventDefault();
+      return;
+    }
+    onClick && onClick();
+  }
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
+    if (['Enter', ' '].includes(event.key) && disabled) {
+      event.preventDefault();
+      return;
+    }
+    onKeyDown && onKeyDown(event);
+  }
 
   if (url) {
     buttonMarkup = disabled ? (
@@ -86,11 +102,10 @@ export function UnstyledButton({
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
         aria-pressed={pressed}
-        onKeyDown={onKeyDown}
+        onKeyDown={handleKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
         {...rest}
-        {...(disabled ? preventedInteraction : null)}
       >
         {children}
       </button>

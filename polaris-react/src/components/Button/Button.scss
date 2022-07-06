@@ -224,7 +224,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus:not(.disabled) {
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
     background: transparent;
@@ -236,7 +236,7 @@
   }
 
   &.pressed,
-  &:active {
+  &:active(.disabled) {
     @include recolor-icon(var(--p-interactive-pressed));
     color: var(--p-interactive-pressed);
     @include high-contrast-button-outline(none);

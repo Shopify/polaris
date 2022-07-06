@@ -363,6 +363,18 @@ describe('<Button />', () => {
       unstyledButton.find(UnstyledLink)!.trigger('onClick');
       expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
+
+    it('prevents default when disabled is true', () => {
+      const onClickSpy = jest.fn();
+      const unstyledButton = mountWithApp(
+        <UnstyledButton onClick={onClickSpy} disabled />,
+      );
+      const mockEvent = {
+        preventDefault: jest.fn(),
+      };
+      unstyledButton.find('button')!.trigger('onClick', mockEvent);
+      expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('onMouseEnter()', () => {
@@ -484,8 +496,24 @@ describe('<Button />', () => {
       const unstyledButton = mountWithApp(
         <UnstyledButton onKeyDown={spy}>Test</UnstyledButton>,
       );
-      unstyledButton.find('button')!.trigger('onKeyDown');
+      const mockEvent = {
+        key: 'Enter',
+      };
+      unstyledButton.find('button')!.trigger('onKeyDown', mockEvent);
       expect(spy).toHaveBeenCalled();
+    });
+
+    it('prevents default when disabled is true and event.keyCode is 13', () => {
+      const spy = jest.fn();
+      const unstyledButton = mountWithApp(
+        <UnstyledButton onKeyDown={spy} disabled />,
+      );
+      const mockEvent = {
+        preventDefault: jest.fn(),
+        key: 'Enter',
+      };
+      unstyledButton.find('button')!.trigger('onKeyDown', mockEvent);
+      expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
     });
   });
 });

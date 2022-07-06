@@ -129,7 +129,6 @@ export function Button({
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
-  const eventsToPrevent = ['onClick', 'onKeyPress'];
 
   const className = classNames(
     styles.Button,
@@ -201,14 +200,23 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
-  const preventedInteraction = eventsToPrevent.reduce(
-    (handlers: any, eventToPrevent: any) => ({
-      ...handlers,
-      [eventToPrevent]: (event: React.SyntheticEvent<HTMLButtonElement>) => {
+  const handleClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      if (disabled) {
         event.preventDefault();
-      },
-    }),
-    {},
+        return;
+      }
+      toggleDisclosureActive();
+    },
+    [disabled, toggleDisclosureActive],
+  );
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (['Enter', ' '].includes(event.key) && disabled) {
+        event.preventDefault();
+      }
+    },
+    [disabled],
   );
 
   let connectedDisclosureMarkup;
@@ -242,9 +250,9 @@ export function Button({
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
-        onClick={toggleDisclosureActive}
+        onClick={handleClick}
         onMouseUp={handleMouseUpByBlurring}
-        {...(disabled ? preventedInteraction : null)}
+        onKeyDown={handleKeyDown}
       >
         <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />
@@ -300,12 +308,7 @@ export function Button({
   };
 
   const buttonMarkup = (
-    <UnstyledButton
-      {...commonProps}
-      {...linkProps}
-      {...actionProps}
-      preventedInteraction={preventedInteraction}
-    >
+    <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
       <span className={styles.Content}>
         {spinnerSVGMarkup}
         {iconMarkup}
