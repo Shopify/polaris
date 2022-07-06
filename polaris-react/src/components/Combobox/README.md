@@ -76,12 +76,12 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ## Examples
 
-### Single select autocomplete
+### Single select autocomplete with automatic selection
 
 Use when merchants can select one option from a predefined or editable list.
 
 ```jsx
-function ComboboxExample() {
+function AutoSelectComboboxExample() {
   const deselectedOptions = useMemo(
     () => [
       {value: 'rustic', label: 'Rustic'},
@@ -168,12 +168,106 @@ function ComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete
+### Single select autocomplete with manual selection
+
+Use when merchants can select one option from a predefined or editable list.
+
+```jsx
+function ManualSelectComboboxExample() {
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
+
+  const [selectedOption, setSelectedOption] = useState();
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
+
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
+
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const matchedOption = options.find((option) => {
+        return option.value.match(selected);
+      });
+
+      setSelectedOption(selected);
+      setInputValue((matchedOption && matchedOption.label) || '');
+    },
+    [options],
+  );
+
+  const optionsMarkup =
+    options.length > 0
+      ? options.map((option) => {
+          const {label, value} = option;
+
+          return (
+            <Listbox.Option
+              key={`${value}`}
+              value={value}
+              selected={selectedOption === value}
+              accessibilityLabel={label}
+            >
+              {label}
+            </Listbox.Option>
+          );
+        })
+      : null;
+
+  return (
+    <div style={{height: '225px'}}>
+      <Combobox
+        activator={
+          <Combobox.TextField
+            prefix={<Icon source={SearchMinor} />}
+            onChange={updateText}
+            label="Search tags"
+            labelHidden
+            value={inputValue}
+            placeholder="Search tags"
+          />
+        }
+      >
+        {options.length > 0 ? (
+          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+            {optionsMarkup}
+          </Listbox>
+        ) : null}
+      </Combobox>
+    </div>
+  );
+}
+```
+
+### Multi-select autocomplete with automatic selection
 
 Use when merchants can select one or more options from a predefined or editable list.
 
 ```jsx
-function MultiComboboxExample() {
+function MultiAutoComboboxExample() {
   const deselectedOptions = useMemo(
     () => [
       {value: 'rustic', label: 'Rustic'},
@@ -276,6 +370,126 @@ function MultiComboboxExample() {
       >
         {optionsMarkup ? (
           <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
+        ) : null}
+      </Combobox>
+      <TextContainer>
+        <Stack>{tagsMarkup}</Stack>
+      </TextContainer>
+    </div>
+  );
+}
+```
+
+### Multi-select autocomplete with manual selection
+
+Use when merchants can select one or more options from a predefined or editable list.
+
+```jsx
+function MultiManualComboboxExample() {
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
+
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
+
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
+
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      if (selectedOptions.includes(selected)) {
+        setSelectedOptions(
+          selectedOptions.filter((option) => option !== selected),
+        );
+      } else {
+        setSelectedOptions([...selectedOptions, selected]);
+      }
+
+      const matchedOption = options.find((option) => {
+        return option.value.match(selected);
+      });
+
+      updateText('');
+    },
+    [options, selectedOptions],
+  );
+
+  const removeTag = useCallback(
+    (tag) => () => {
+      const options = [...selectedOptions];
+      options.splice(options.indexOf(tag), 1);
+      setSelectedOptions(options);
+    },
+    [selectedOptions],
+  );
+
+  const tagsMarkup = selectedOptions.map((option) => (
+    <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+      {option}
+    </Tag>
+  ));
+
+  const optionsMarkup =
+    options.length > 0
+      ? options.map((option) => {
+          const {label, value} = option;
+
+          return (
+            <Listbox.Option
+              key={`${value}`}
+              value={value}
+              selected={selectedOptions.includes(value)}
+              accessibilityLabel={label}
+            >
+              {label}
+            </Listbox.Option>
+          );
+        })
+      : null;
+
+  return (
+    <div style={{height: '225px'}}>
+      <Combobox
+        allowMultiple
+        activator={
+          <Combobox.TextField
+            prefix={<Icon source={SearchMinor} />}
+            onChange={updateText}
+            label="Search tags"
+            labelHidden
+            value={inputValue}
+            placeholder="Search tags"
+          />
+        }
+      >
+        {optionsMarkup ? (
+          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+            {optionsMarkup}
+          </Listbox>
         ) : null}
       </Combobox>
       <TextContainer>
@@ -492,7 +706,7 @@ function LoadingAutocompleteExample() {
         );
         setOptions(resultOptions);
         setLoading(false);
-      }, 300);
+      }, 400);
     },
     [deselectedOptions, loading, options],
   );
@@ -510,7 +724,7 @@ function LoadingAutocompleteExample() {
   );
 
   const optionsMarkup =
-    options.length > 0
+    options.length > 0 && !loading
       ? options.map((option) => {
           const {label, value} = option;
 
@@ -527,12 +741,23 @@ function LoadingAutocompleteExample() {
         })
       : null;
 
-  const loadingMarkup = loading ? <Listbox.Loading /> : null;
+  const loadingMarkup = loading ? (
+    <div
+      style={{
+        height: '220px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Listbox.Loading />
+    </div>
+  ) : null;
 
   const listboxMarkup =
     optionsMarkup || loadingMarkup ? (
       <Listbox onSelect={updateSelection}>
-        {optionsMarkup && !loading ? optionsMarkup : null}
+        {optionsMarkup}
         {loadingMarkup}
       </Listbox>
     ) : null;
@@ -540,6 +765,7 @@ function LoadingAutocompleteExample() {
   return (
     <div style={{height: '225px'}}>
       <Combobox
+        height="220px"
         activator={
           <Combobox.TextField
             prefix={<Icon source={SearchMinor} />}

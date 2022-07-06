@@ -1,80 +1,53 @@
 import fs from "fs";
 import glob from "glob";
-import { marked } from "marked";
-import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Head from "next/head";
 import path from "path";
-import type { ReactElement, ReactNode } from "react";
+import { marked } from "marked";
+import type { GetStaticPaths, GetStaticProps } from "next";
+
+import Examples from "../../components/Examples";
+import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
-import { NavItem } from "../../components/Nav/Nav";
-import NavContentTOCLayout from "../../components/NavContentTOCLayout";
-import LeftNavWithTOCLayout from "../../components/LeftNavWithTOCLayout";
+import type { NavItem } from "../../components/Nav";
+import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import { getComponentNav, getTitleTagValue } from "../../utils/various";
+import { getComponentNav } from "../../utils/various";
+import PageMeta from "../../components/PageMeta";
+import { Status } from "../../types";
+import StatusBanner from "../../components/StatusBanner";
 
 interface MarkdownData {
   frontMatter: any;
+  intro: string;
   readme: string;
 }
 
 interface Props {
+  examples: [Example];
+  status?: Status;
   name: string;
-  readme: string;
+  intro: string;
+  readme: {
+    body: string;
+    header: string;
+  };
 }
 
-const navItems: NavItem[] = getComponentNav();
-
-type NextPageWithLayout = NextPage<Props> & {
-  getLayout?: (page: ReactElement) => ReactNode;
-};
-
-const ComponentsTwo: NextPageWithLayout = ({ name, readme }) => {
+const Components = ({ examples, intro, name, readme, status }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
   return (
-    <>
-      <Head>
-        <title>{getTitleTagValue(name)}</title>
-      </Head>
+    <Layout width="narrow" navItems={navItems}>
+      <PageMeta title={name} description={intro} />
 
-      {name && (
-        <Longform>
-          <h1>{name}</h1>
-        </Longform>
-      )}
       <Longform>
-        <Markdown text={readme} skipH1 />
+        <h1>{name}</h1>
+        <Markdown text={readme.header} skipH1 />
+        {status && <StatusBanner status={status} />}
+        <Examples examples={examples} />
+        <Markdown text={readme.body} skipH1 />
       </Longform>
-    </>
-  );
-};
-
-ComponentsTwo.getLayout = function getLayout(page: ReactElement) {
-  const { readme } = page.props;
-  return (
-    <LeftNavWithTOCLayout navItems={navItems} content={readme}>
-      {page}
-    </LeftNavWithTOCLayout>
-  );
-};
-
-const Components: NextPage<Props> = ({ name, readme }) => {
-  const navItems: NavItem[] = getComponentNav();
-
-  return (
-    <>
-      <Head>
-        <title>{getTitleTagValue(name)}</title>
-      </Head>
-
-      <NavContentTOCLayout
-        navItems={navItems}
-        title={name}
-        showTOC={true}
-        content={readme}
-      />
-    </>
+    </Layout>
   );
 };
 
@@ -83,16 +56,48 @@ export const getStaticProps: GetStaticProps<
   { component: string }
 > = async (context) => {
   const componentSlug = context.params?.component;
-  const mdFilePath = path.join(
+  const mdFilePath = path.resolve(
     process.cwd(),
-    `content/components/${componentSlug}/index.md`
+    `content/components/${componentSlug}.md`
   );
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
-    const readme = marked(data.readme);
-    const props: Props = { ...data.frontMatter, readme };
+    const readmeText = marked(data.readme).split("\n");
+    // Note: Assumes that the first two lines are the title and description
+    const readmeHeader = readmeText.splice(0, 2).join("\n");
+    const readmeBody = readmeText.join("\n");
+    const readme = {
+      header: readmeHeader,
+      body: readmeBody,
+    };
+
+    const examples = (data?.frontMatter?.examples || []).map(
+      (example: Example) => {
+        const examplePath = path.resolve(
+          process.cwd(),
+          `src/pages/examples/${example.fileName}`
+        );
+        let code = "";
+
+        if (fs.existsSync(examplePath)) {
+          code = fs.readFileSync(examplePath, "utf-8");
+          code = code
+            .split("\n")
+            .filter((line) => !line.includes("withPolarisExample"))
+            .join("\n");
+        }
+
+        return { ...example, code };
+      }
+    );
+    const props: Props = {
+      ...data.frontMatter,
+      examples,
+      intro: data.intro,
+      readme,
+    };
 
     return { props };
   } else {
@@ -103,11 +108,11 @@ export const getStaticProps: GetStaticProps<
 export const getStaticPaths: GetStaticPaths = async () => {
   const componentBasePath = path.resolve(process.cwd(), "content/components");
   const paths = glob
-    .sync(path.join(componentBasePath, "**/index.md"))
+    .sync(path.join(componentBasePath, "*.md"))
     .map((fileName: string) => {
       return fileName
         .replace(`${process.cwd()}/content`, "")
-        .replace("/index.md", "");
+        .replace(".md", "");
     });
 
   return {
@@ -116,4 +121,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default ComponentsTwo;
+export default Components;

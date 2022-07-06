@@ -38,51 +38,6 @@ Modals are overlays that require merchants to take an action before they can con
 
 ---
 
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the modal component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-In an embedded application context, not all documented properties are available. Some properties are only available in stand-alone applications.
-
-Properties that are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
-
-The following example shows the modal component in an embedded application context:
-
-```jsx
-function EmbeddedAppModalExample() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleModalClose = useCallback(() => setModalOpen(false), []);
-
-  return (
-    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
-      <Modal
-        src="https://my-app.com/upgrade-to-retail-package"
-        open={modalOpen}
-        title="Upgrade your Shopify POS with the Retail Package"
-        primaryAction={{
-          content: 'Add Retail Package',
-          onAction: handleModalClose,
-        }}
-        secondaryActions={[
-          {
-            content: 'Cancel',
-            onAction: handleModalClose,
-          },
-        ]}
-        onClose={handleModalClose}
-      />
-    </AppProvider>
-  );
-}
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Modal` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Modal`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
-
----
-
 ## Best practices
 
 Use modals for confirmations and conditional changes. They should be thought of as temporary and not be used for information or actions that need to live on in the UI in a persistent way. Don’t use modals to display complex forms or large amounts of information.
@@ -651,7 +606,7 @@ function ModalWithoutTitleExample() {
           },
         ]}
       >
-        <Modal.Section>
+        <Modal.Section titleHidden>
           <TextContainer>
             <p>
               Use Instagram posts to share your products with millions of
@@ -844,7 +799,7 @@ Use to make it clear to the merchant that the action is potentially dangerous. O
 ## Related components
 
 - To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](https://polaris.shopify.com/components/behavior/collapsible) to expand content in place within the page
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/overlays/popover)
 - To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
 
 ---

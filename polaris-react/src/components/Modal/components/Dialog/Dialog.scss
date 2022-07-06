@@ -88,6 +88,13 @@ $dangerous-magic-space-16: 64px;
       max-width: $large-width;
     }
   }
+
+  &.fullScreen {
+    height: 100%;
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      height: unset;
+    }
+  }
 }
 
 .animateFadeUp {

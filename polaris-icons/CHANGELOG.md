@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.23.0
+
+### Minor Changes
+
+- [#6112](https://github.com/Shopify/polaris/pull/6112) [`75f46e50e`](https://github.com/Shopify/polaris/commit/75f46e50e88e1b93ef0075b5474cc632acdfc81d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added toggle, hashtag, behavior, type minor icons and updated design of calendar minor icon
+
 ## 4.22.0
 
 ### Minor Changes

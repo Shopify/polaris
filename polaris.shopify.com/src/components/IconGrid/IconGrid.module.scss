@@ -1,12 +1,13 @@
+@import "../../styles/mixins.scss";
+
 .IconGrid {
   display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.5rem;
+  // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
+  grid-template-columns: repeat(auto-fill, minmax(min(9.5rem, 100%), 1fr));
 }
 
 .Icon {
-  transition: all 0.2s ease;
-
   button {
     appearance: none;
     display: flex;
@@ -16,30 +17,43 @@
     width: 100%;
     gap: 10px;
     cursor: pointer;
-    background: var(--surface-subdued);
+    background: transparent;
     padding-top: 5px;
     aspect-ratio: 5 / 4;
-    border-radius: var(--border-radius-800);
-    transition: background-color 0.05s linear;
+    border-radius: var(--border-radius-600);
     box-shadow: var(--card-shadow);
+    user-select: none;
+    color: var(--text-subdued);
 
-    &:hover {
-      background: var(--surface-subdued);
-      box-shadow: var(--card-shadow-hover);
+    span {
+      font-size: 0.75rem;
+    }
+
+    &:focus-visible {
+      box-shadow: var(--focus-outline);
     }
   }
 
-  &.isHighlighted button,
-  button:focus {
-    box-shadow: var(--focus-outline);
+  @media (hover: hover) {
+    &.isHighlighted button,
+    &.isSelected button {
+      background: var(--search-highlight-color);
+
+      @include dark-mode {
+        .SVGWrapper {
+          filter: brightness(5000%);
+        }
+      }
+    }
   }
 }
 
-.Preview {
-  display: flex;
-  justify-content: center;
-  padding: 3rem 0;
-  animation: icon-in 0.25s 0.05s ease both;
+.SVGWrapper {
+  filter: brightness(0);
+
+  @include dark-mode {
+    filter: brightness(0) contrast(1) invert(1);
+  }
 }
 
 .IconMeta {

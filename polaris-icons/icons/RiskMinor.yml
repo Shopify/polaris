@@ -1,4 +1,4 @@
-name: risk
+name: Risk
 set: minor
 description: Used to represent risk associated with orders.
 keywords:

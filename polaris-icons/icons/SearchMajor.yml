@@ -1,4 +1,4 @@
-name: search
+name: Search
 set: major
 description: Used to represent search or an action to search for an item or resource.
 keywords:

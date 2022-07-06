@@ -12,6 +12,9 @@ export const parseMarkdown = (inputMarkdown) => {
 
   const intro = readmeSection.split("\n\n").find((paragraph) => {
     const content = paragraph.trim().split("\n").join(" ");
+    if (paragraph.startsWith("<!--")) {
+      return false;
+    }
     if (content.length > 0 && content[0] !== "#") {
       return content;
     }
@@ -49,7 +52,9 @@ export const parseMarkdown = (inputMarkdown) => {
 
       const type = match.trim().startsWith("#### Don") ? "dont" : "do";
 
-      return `<div class="usage-list"><div class="usage-list-part" data-type="${type}">${matchWithColumns}</div></div>`;
+      return `<div class="usage-list${
+        match.includes("usageblock") ? " usage-block" : ""
+      }"><div class="usage-list-part" data-type="${type}">${matchWithColumns}</div></div>`;
     });
   }
 

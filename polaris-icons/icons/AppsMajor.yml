@@ -1,4 +1,4 @@
-name: apps
+name: Apps
 set: major
 description: Used to represent partner apps.
 keywords:

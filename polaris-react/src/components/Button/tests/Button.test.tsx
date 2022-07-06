@@ -449,4 +449,28 @@ describe('<Button />', () => {
       });
     });
   });
+
+  describe('dataPrimaryLink', () => {
+    it('adds data-primary-link attribute to the link', () => {
+      const link = mountWithApp(
+        <Button url="https://examp.le" dataPrimaryLink>
+          Test
+        </Button>,
+      );
+
+      const selector: any = {
+        'data-primary-link': true,
+      };
+      expect(link).toContainReactComponent('a', selector);
+    });
+
+    it('adds data-primary-link attribute to the button', () => {
+      const link = mountWithApp(<Button dataPrimaryLink>Test</Button>);
+
+      const selector: any = {
+        'data-primary-link': true,
+      };
+      expect(link).toContainReactComponent('button', selector);
+    });
+  });
 });

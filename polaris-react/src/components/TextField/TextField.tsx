@@ -159,9 +159,9 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
-  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
-  /** Callback fired when focus is removed */
-  onBlur?(): void;
+  onFocus?: (event?: React.FocusEvent) => void;
+  /** Callback fired when input is blurred */
+  onBlur?(event?: React.FocusEvent): void;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -473,11 +473,11 @@ export function TextField({
     }
   };
 
-  const handleOnBlur = () => {
+  const handleOnBlur = (event: React.FocusEvent) => {
     setFocus(false);
 
     if (onBlur) {
-      onBlur();
+      onBlur(event);
     }
   };
 
@@ -585,17 +585,17 @@ export function TextField({
     event.preventDefault();
   }
 
-  function isPrefixOrSuffix(target: HTMLElement | EventTarget) {
+  function isPrefixOrSuffix(target: Element | EventTarget) {
     return (
-      target instanceof HTMLElement &&
+      target instanceof Element &&
       ((prefixRef.current && prefixRef.current.contains(target)) ||
         (suffixRef.current && suffixRef.current.contains(target)))
     );
   }
 
-  function isVerticalContent(target: HTMLElement | EventTarget) {
+  function isVerticalContent(target: Element | EventTarget) {
     return (
-      target instanceof HTMLElement &&
+      target instanceof Element &&
       verticalContentRef.current &&
       (verticalContentRef.current.contains(target) ||
         verticalContentRef.current.contains(document.activeElement))
@@ -629,7 +629,9 @@ export function TextField({
   }
 
   function handleClickChild(event: React.MouseEvent) {
-    event.stopPropagation();
+    if (inputRef.current !== event.target) {
+      event.stopPropagation();
+    }
 
     if (
       isPrefixOrSuffix(event.target) ||

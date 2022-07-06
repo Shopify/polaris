@@ -1,23 +1,29 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "yarn run copy-icons && next build",
+    "dev": "yarn run copy-icons && next dev",
     "start": "next start ",
-    "lint": "TIMING=1 eslint --cache .",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs"
+    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
+    "copy-icons": "node src/scripts/copy-icons.mjs",
+    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/generate-og-images.js",
+    "generate-og-images-skip-sitemap": "node src/scripts/generate-og-images.js"
   },
   "dependencies": {
-    "@headlessui/react": "^1.5.0",
+    "@floating-ui/react-dom-interactions": "^0.6.1",
+    "@headlessui/react": "^1.6.5",
     "@shopify/polaris": "*",
-    "@shopify/polaris-tokens": "*",
     "@shopify/polaris-icons": "*",
-    "downshift": "^6.1.7",
+    "@shopify/polaris-tokens": "*",
+    "codesandbox": "^2.2.3",
     "fuse.js": "^6.5.3",
     "glob": "^7.1.6",
     "next": "12.1.0",
@@ -25,9 +31,8 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^8.0.2",
-    "react-tooltip": "^4.2.21",
     "sass": "^1.49.9",
-    "@floating-ui/react-dom-interactions": "^0.6.1"
+    "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
@@ -42,6 +47,7 @@
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
     "rehype-raw": "^6.1.1",
-    "typescript": "4.5.5"
+    "next-sitemap": "^3.1.5",
+    "puppeteer": "^14.4.1"
   }
 }

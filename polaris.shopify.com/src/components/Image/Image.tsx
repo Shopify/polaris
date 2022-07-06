@@ -4,13 +4,22 @@ import { useState } from "react";
 import { className } from "../../utils/various";
 import styles from "./Image.module.scss";
 
-interface Props extends ImageProps {}
+interface Props extends ImageProps {
+  fadeIn?: boolean;
+  icon?: boolean;
+}
 
-function Image({ ...rest }: Props) {
+function Image({ icon = false, fadeIn = true, ...rest }: Props) {
   const [hasLoaded, setHasLoaded] = useState(false);
+
   return (
     <NextJSImage
-      className={className(styles.Image, hasLoaded && styles.hasLoaded)}
+      className={className(
+        styles.Image,
+        hasLoaded && styles.hasLoaded,
+        fadeIn && styles.fadeIn,
+        icon && styles.icon
+      )}
       alt=""
       onLoad={() => setHasLoaded(true)}
       {...rest}

@@ -61,7 +61,7 @@ You can apply spacing in code in two ways:
 
 ### Applying spacing with stylesheets
 
-When applying spacing in CSS, use these [spacing tokens](/tokens/all-tokens#section-spacing).
+When applying spacing in CSS, use these [spacing tokens](/tokens/spacing).
 
 ### Applying spacing with components
 
@@ -226,8 +226,6 @@ Merchants can more easily perform a task on mobile when interactive elements fol
 - Don’t use adjacent actions (if possible). It will reduce the risk of error.
 
 <!-- end -->
-
-Read the [foundational principles for mobile design](/foundations/mobile).
 
 <div class="NextPage">
 Next<br/>

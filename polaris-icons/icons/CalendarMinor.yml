@@ -1,4 +1,4 @@
-name: calendar
+name: Calendar
 set: minor
 description: Used to denote the action of opening a date picker.
 keywords:
@@ -11,6 +11,6 @@ keywords:
 authors:
   - Adam Whitcroft
 date_added: 2018-11-14
-date_modified: 2018-11-14
+date_modified: 2022-06-13
 version: 1
 exclusive_use:

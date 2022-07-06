@@ -89,7 +89,7 @@ section can be:
 </div>
 </div>
 
-Place page-level [banners](/components/feedback/banner) in a full-width section
+Place page-level [banners](/components/feedback-indicators/banner) in a full-width section
 at the top of the page.
 
 Stack [cards](/components/structure/card) in sections to separate the screen’s
@@ -100,7 +100,7 @@ For screens that represent an individual resource like a product or order, place
 the bottom of the page.
 
 For pages that don’t have footer actions, the
-[footer help component](/components/titles-and-text/footer-help) can offer a
+[footer help component](/components/navigation/footer-help) can offer a
 link to documentation about the current screen.
 
 ### Layout in a card

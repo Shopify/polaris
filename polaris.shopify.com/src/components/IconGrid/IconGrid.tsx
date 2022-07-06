@@ -7,50 +7,41 @@ const importedSvgs = require.context(
   /\.svg$/
 );
 import styles from "./IconGrid.module.scss";
-import { Icon, HighlightableSearchResult } from "../../types";
-import { Children } from "react";
-
-const COLUMN_COUNT = 8;
+import { Icon, SearchResultItem } from "../../types";
 
 interface IconGridProps {
   children: React.ReactNode;
 }
 
 function IconGrid({ children }: IconGridProps) {
-  const childCount = Children.count(children);
-  const extraElements =
-    childCount < COLUMN_COUNT ? COLUMN_COUNT - childCount : 0;
-
-  return (
-    <ul className={styles.IconGrid}>
-      {children}
-      {[...Array(extraElements)].map((i) => (
-        <li key={i}></li>
-      ))}
-    </ul>
-  );
+  return <ul className={styles.IconGrid}>{children}</ul>;
 }
 
-interface IconGridItemProps extends HighlightableSearchResult {
+interface IconGridItemProps extends SearchResultItem {
   icon: Icon;
   onClick: (iconName: string) => void;
+  isSelected?: boolean;
 }
 
 function IconGridItem({
   icon,
   onClick,
-  isHighlighted,
-  getItemProps = () => undefined,
+  isSelected,
+  searchResultData,
 }: IconGridItemProps) {
   return (
     <li
       key={`${icon.name}+${icon.set}`}
-      className={className(styles.Icon, isHighlighted && styles.isHighlighted)}
-      {...getItemProps()}
+      className={className(
+        styles.Icon,
+        searchResultData?.isHighlighted && styles.isHighlighted,
+        isSelected && styles.isSelected
+      )}
+      {...searchResultData?.itemAttributes}
+      id={icon.fileName}
     >
       <Tooltip
         ariaLabel={icon.description}
-        placement="top"
         renderContent={() => (
           <div>
             <p>
@@ -59,16 +50,20 @@ function IconGridItem({
           </div>
         )}
       >
-        <button onClick={() => onClick(icon.name)}>
-          <div style={{ filter: "brightness(-500%)" }}>
+        <button
+          onClick={() => onClick(icon.name)}
+          tabIndex={searchResultData?.tabIndex}
+        >
+          <div className={styles.SVGWrapper}>
             <Image
               src={importedSvgs(`./${icon.fileName}.svg`)}
               alt={icon.description}
-              width={24}
-              height={24}
+              width={20}
+              height={20}
+              fadeIn={false}
             />
           </div>
-          <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
+          <span>{icon.name}</span>
         </button>
       </Tooltip>
     </li>

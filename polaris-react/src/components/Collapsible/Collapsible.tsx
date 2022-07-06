@@ -20,6 +20,8 @@ export interface CollapsibleProps {
   open: boolean;
   /** Assign transition properties to the collapsible */
   transition?: Transition;
+  /** Prevents component from re-measuring when child is updated **/
+  preventMeasuringOnChildrenUpdate?: boolean;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
@@ -31,6 +33,7 @@ export function Collapsible({
   expandOnPrint,
   open,
   transition,
+  preventMeasuringOnChildrenUpdate,
   children,
 }: CollapsibleProps) {
   const [height, setHeight] = useState(0);
@@ -68,6 +71,11 @@ export function Collapsible({
     },
     [open],
   );
+
+  useEffect(() => {
+    if (isFullyClosed || preventMeasuringOnChildrenUpdate) return;
+    setAnimationState('measuring');
+  }, [children, isFullyClosed, preventMeasuringOnChildrenUpdate]);
 
   useEffect(() => {
     if (open !== isOpen) {

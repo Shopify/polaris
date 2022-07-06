@@ -1,4 +1,4 @@
-name: grammar
+name: Grammar
 set: major
 description: Used to represent correct grammar or a spell check.
 keywords:

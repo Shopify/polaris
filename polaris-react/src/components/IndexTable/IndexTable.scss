@@ -283,7 +283,7 @@ $loading-panel-height: 53px;
   .TableCell:last-child,
   .TableHeading-last {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(-1px 0 0 var(--p-border-divider));
+      filter: drop-shadow(-1px 0 0 var(--p-divider));
     }
   }
 }
@@ -435,6 +435,10 @@ $scroll-bar-size: var(--p-space-2);
 .scrollBarContainerCondensed {
   visibility: hidden;
   pointer-events: none;
+}
+
+.scrollBarContainerHidden {
+  display: none;
 }
 
 .ScrollBar {

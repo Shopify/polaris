@@ -24,18 +24,18 @@ export const useCopyToClipboard = (stringToCopy: string) => {
   return [copy, didJustCopy] as const;
 };
 
-type TOCNode = {
+export type TOCItem = {
   name: string;
   element: "H2" | "H3";
-  children: TOCNode[];
+  children: TOCItem[];
 };
 
 export const useTOC = (children: React.ReactNode) => {
-  const [toc, setToc] = useState<TOCNode[]>([]);
+  const [toc, setToc] = useState<TOCItem[]>([]);
 
   useEffect(() => {
-    let tocNodes: TOCNode[] = [];
-    let currentNode: TOCNode | null = null;
+    let tocNodes: TOCItem[] = [];
+    let currentNode: TOCItem | null = null;
 
     const headings = document.querySelectorAll<HTMLHeadingElement>("h2,h3");
     headings.forEach((el, i) => {
@@ -83,3 +83,27 @@ export const useTOC = (children: React.ReactNode) => {
 
   return [toc];
 };
+
+export function useMedia(media: string): boolean {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQueryList = window.matchMedia(media);
+
+      setIsActive(mediaQueryList.matches);
+
+      const listener = (evt: MediaQueryListEvent) => {
+        setIsActive(evt.matches);
+      };
+
+      mediaQueryList.addEventListener("change", listener);
+
+      return () => {
+        mediaQueryList.removeEventListener("change", listener);
+      };
+    }
+  }, [media]);
+
+  return isActive;
+}

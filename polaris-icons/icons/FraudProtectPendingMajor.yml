@@ -1,4 +1,4 @@
-name: fraud protect pending
+name: Fraud protect pending
 set: major
 description: Used to represent that the Fraud Protect status is pending.
 keywords:

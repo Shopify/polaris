@@ -102,6 +102,8 @@ function IndexTableBase({
   const [tableInitialized, setTableInitialized] = useState(false);
   const [isSmallScreenSelectable, setIsSmallScreenSelectable] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
+  const [hideScrollContainer, setHideScrollContainer] =
+    useState<boolean>(false);
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -109,6 +111,7 @@ function IndexTableBase({
   const firstStickyHeaderElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
+  const scrollContainerElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
 
@@ -208,6 +211,11 @@ function IndexTableBase({
       scrollBarElement.current.style.setProperty(
         '--pc-index-table-scroll-bar-content-width',
         `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
+      );
+
+      setHideScrollContainer(
+        scrollContainerElement.current?.offsetWidth ===
+          tableElement.current?.offsetWidth,
       );
     }
   }, [tableInitialized]);
@@ -534,6 +542,7 @@ function IndexTableBase({
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     condensed && styles.scrollBarContainerCondensed,
+    hideScrollContainer && styles.scrollBarContainerHidden,
   );
 
   const scrollBarClassNames = classNames(
@@ -543,7 +552,10 @@ function IndexTableBase({
   const scrollBarMarkup =
     itemCount > 0 ? (
       <AfterInitialMount>
-        <div className={scrollBarWrapperClassNames}>
+        <div
+          className={scrollBarWrapperClassNames}
+          ref={scrollContainerElement}
+        >
           <div
             onScroll={handleScrollBarScroll}
             className={styles.ScrollBar}

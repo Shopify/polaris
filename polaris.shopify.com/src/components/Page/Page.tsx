@@ -1,44 +1,35 @@
 import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import useDarkMode from "use-dark-mode";
 
 import Header from "../Header";
-import { className } from "../../utils/various";
 
 import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
+import SiteLaunchBanner from "../SiteLaunchBanner";
 
 interface Props {
-  skipHeaderAndFooter?: boolean;
   children: React.ReactNode;
 }
 
-function Page({ skipHeaderAndFooter = false, children }: Props) {
+function Page({ children }: Props) {
   const router = useRouter();
-  const hasShadow = router.asPath !== "/";
+  const darkMode = useDarkMode(false);
 
-  const match = router.asPath.match(/^\/\w+/);
-  const currentSection = match ? match[0] : "";
+  const isPolaris = router.asPath.startsWith("/examples");
 
   return (
-    <div className={className(styles.Page)}>
-      {!skipHeaderAndFooter && (
-        <Header currentSection={currentSection} hasShadow={hasShadow} />
-      )}
+    <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+      {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
-      <div className={styles.Content}>{children}</div>
+      {children}
 
-      {!skipHeaderAndFooter && (
-        <>
-          <div className={styles.Footer}>
-            <Image
-              src={shopifyLogo}
-              width={36}
-              height={36}
-              alt="Shopify logo"
-            />
-          </div>
-        </>
+      {!isPolaris && (
+        <div className={styles.Footer}>
+          <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
+          <SiteLaunchBanner />
+        </div>
       )}
     </div>
   );

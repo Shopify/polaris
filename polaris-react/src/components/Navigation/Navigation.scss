@@ -62,6 +62,7 @@ $nav-max-width: 360px;
 
 .LogoContainer {
   display: none;
+
   @include breakpoint-before(
     $breakpoint: $nav-min-window-corrected,
     $inclusive: false
@@ -71,8 +72,16 @@ $nav-max-width: 360px;
     align-items: center;
     height: $top-bar-height;
     padding: 0 var(--p-space-2) 0 var(--p-space-4);
+    background-color: var(--p-surface);
+    box-shadow: var(--p-shadow-top-bar);
+    margin-bottom: var(--p-space-4);
+
     @include safe-area-for(flex-basis, $top-bar-height, left);
     @include safe-area-for(padding-left, var(--p-space-4), left);
+  }
+
+  &.hasLogoSuffix {
+    gap: var(--p-space-2);
   }
 }
 
