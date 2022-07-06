@@ -20,7 +20,12 @@ export interface TooltipOverlayProps {
   activator: HTMLElement;
   accessibilityLabel?: string;
   onClose(): void;
-  transform: TooltipPosition;
+  coordinates: TooltipPosition;
+}
+
+interface WindowSize {
+  width: number;
+  height: number;
 }
 
 export function TooltipOverlay({
@@ -30,27 +35,36 @@ export function TooltipOverlay({
   id,
   children,
   accessibilityLabel,
-  transform,
+  coordinates,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const [tooltipTransform, setTooltipTransform] = useState<string>('');
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const windowSize = useRef({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const windowSize = useRef<WindowSize | null>(null);
+
+  useEffect(() => {
+    function handleWindowResize() {
+      windowSize.current = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    }
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+    () => window.removeEventListener('resize', handleWindowResize);
+  }, []);
 
   useEffect(() => {
     const tooltipRect = getRectForNode(tooltipRef.current);
     const pushSize: number = tooltipRect.width / 2 + 10;
 
-    const {x, y, cursorX} = transform;
-    const hasHitRightBorder =
-      cursorX + tooltipRect.width + 20 > windowSize.current.width;
+    const {x, y, cursorX} = coordinates;
+    const {width: windowsWidth} = windowSize.current || {width: 0, height: 0};
+    const hasHitRightBorder = cursorX + tooltipRect.width + 20 > windowsWidth;
     const transformPositionX = hasHitRightBorder ? x - pushSize : x + pushSize;
 
     setTooltipTransform(`translate(${transformPositionX}px, ${y}px)`);
-  }, [transform]);
+  }, [coordinates]);
 
   const markup = active ? (
     <PositionedOverlay

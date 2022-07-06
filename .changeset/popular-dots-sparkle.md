@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-minor
+Pin tooltip to cursor during hover

@@ -92,7 +92,7 @@ export function Tooltip({
         active={active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
-        transform={positionTooltip}
+        coordinates={positionTooltip}
       >
         {content}
       </TooltipOverlay>
@@ -153,14 +153,14 @@ export function Tooltip({
     const {x, y, width, height} =
       childWrapperContainer.current.getBoundingClientRect();
     const centerX = width / 2;
-    const ceterY = height / 2;
+    const centerY = height / 2;
     const {clientX, clientY} = event;
 
     const tooltipLeft = clientX - x;
     const tooltipTop = clientY - y;
 
     const transformX = tooltipLeft - centerX;
-    const transformY = tooltipTop - ceterY;
+    const transformY = tooltipTop - centerY;
 
     setPositionTooltip({
       x: transformX,
