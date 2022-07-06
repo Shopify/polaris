@@ -1,6 +1,6 @@
 import type {Entry, Exact} from './types';
 import type {Tokens, TokenGroup} from './tokens';
-import type {breakpoints as breakpointsTokens} from './token-groups/breakpoints';
+import type {breakpoints as breakpointsTokenGroup} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -123,7 +123,7 @@ export function getCustomPropertyNames(tokens: Tokens) {
   return customPropertyNames;
 }
 
-export type BreakpointsTokenGroup = typeof breakpointsTokens;
+export type BreakpointsTokenGroup = typeof breakpointsTokenGroup;
 
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
