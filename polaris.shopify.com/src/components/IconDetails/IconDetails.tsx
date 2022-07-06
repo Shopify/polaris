@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import Image from "../Image";
 import CodeExample from "../CodeExample";
@@ -56,7 +57,7 @@ function IconDetails({ fileName, iconData }: Props) {
                 .filter((keyword) => keyword !== "N/A")
                 .map((keyword, i) => {
                   return (
-                    <>
+                    <React.Fragment key={i}>
                       <Link
                         key={keyword}
                         href={{ query: { icon: fileName, q: keyword } }}
@@ -65,7 +66,7 @@ function IconDetails({ fileName, iconData }: Props) {
                         {keyword}
                       </Link>
                       {i < keywords.length - 1 && " "}
-                    </>
+                    </React.Fragment>
                   );
                 })}
             </span>

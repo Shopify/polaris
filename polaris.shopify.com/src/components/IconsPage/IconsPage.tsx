@@ -50,6 +50,17 @@ function IconsPage() {
     setSearchText(currentSearchText);
   }, [currentSearchText]);
 
+  useEffect(() => {
+    if (activeIcon) {
+      const activeElementY = document
+        .querySelector(`#${activeIcon}`)
+        ?.getBoundingClientRect().y;
+      if (activeElementY && activeElementY > 100) {
+        document.documentElement.scrollTo({ top: activeElementY - 100 });
+      }
+    }
+  }, [activeIcon]);
+
   const updateQueryParams = (currentSearchText: string) => {
     const query: { q?: string; icon?: string } = {};
     if (currentSearchText) query.q = currentSearchText;
@@ -87,21 +98,29 @@ function IconsPage() {
           />
 
           {majorIcons.length > 0 && (
-            <IconGrid
-              title="Major icons"
-              icons={majorIcons}
-              activeIcon={activeIcon}
-              query={searchText}
-            />
+            <IconGrid title="Major icons">
+              {majorIcons.map((icon) => (
+                <IconGrid.Item
+                  key={icon.id}
+                  icon={icon}
+                  query={searchText}
+                  activeIcon={activeIcon}
+                />
+              ))}
+            </IconGrid>
           )}
 
           {minorIcons.length > 0 && (
-            <IconGrid
-              title="Minor icons"
-              icons={minorIcons}
-              activeIcon={activeIcon}
-              query={searchText}
-            />
+            <IconGrid title="Minor icons">
+              {minorIcons.map((icon) => (
+                <IconGrid.Item
+                  key={icon.id}
+                  icon={icon}
+                  query={searchText}
+                  activeIcon={activeIcon}
+                />
+              ))}
+            </IconGrid>
           )}
 
           {minorIcons.length === 0 && majorIcons.length === 0 ? (
