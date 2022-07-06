@@ -141,6 +141,7 @@ export function Tooltip({
     mouseEntered.current = false;
     handleBlur();
   }
+
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   function handleMouseEnterFix() {

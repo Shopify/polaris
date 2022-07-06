@@ -133,8 +133,8 @@ export class PositionedOverlay extends PureComponent<
     const {
       render,
       fixed,
-      classNames: propClassNames,
       preventInteraction,
+      classNames: propClassNames,
       zIndexOverride,
       transform,
     } = this.props;
