@@ -54,7 +54,7 @@ type BreakpointsMatches = {
 
 const breakpointsQueryEntries = getBreakpointsQueryEntries(tokens.breakpoints);
 
-export function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
+function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
   if (typeof window !== 'undefined') {
     return Object.fromEntries(
       breakpointsQueryEntries.map(([directionAlias, query]) => [
