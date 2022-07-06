@@ -236,7 +236,7 @@
   }
 
   &.pressed,
-  &:active(.disabled) {
+  &:active {
     @include recolor-icon(var(--p-interactive-pressed));
     color: var(--p-interactive-pressed);
     @include high-contrast-button-outline(none);
