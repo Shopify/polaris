@@ -7,7 +7,11 @@ import {
   getMediaConditions,
 } from '@shopify/polaris-tokens';
 
-import {useBreakpoints, getBreakpointsQueryEntries} from '../breakpoints';
+import {
+  BreakpointsDirectionAlias,
+  useBreakpoints,
+  getBreakpointsQueryEntries,
+} from '../breakpoints';
 
 const mediaConditions = getMediaConditions(tokens.breakpoints);
 
@@ -124,12 +128,13 @@ function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
 }
 
 describe('getBreakpointsQueryEntries', () => {
-  it('converts breakpoints tokens into entries with aliases/direction names', () => {
-    const breakpointsQueryNames = getBreakpointsQueryEntries(
-      tokens.breakpoints,
-    ).map(([name]) => name);
+  it('converts breakpoints tokens into entries with direction/alias names', () => {
+    const directionAliases: BreakpointsDirectionAlias[] =
+      getBreakpointsQueryEntries(tokens.breakpoints).map(
+        ([directionAlias]) => directionAlias,
+      );
 
-    expect(breakpointsQueryNames).toStrictEqual([
+    expect(directionAliases).toStrictEqual([
       'xsUp',
       'xsDown',
       'xsOnly',

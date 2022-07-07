@@ -45,7 +45,7 @@ export function stackedContent() {
  *
  * @example 'smUp' | 'smDown' | 'smOnly' | 'mdUp' | etc.
  */
-type BreakpointsDirectionAlias =
+export type BreakpointsDirectionAlias =
   `${BreakpointsAlias}${Capitalize<BreakpointsAliasDirection>}`;
 
 /**
