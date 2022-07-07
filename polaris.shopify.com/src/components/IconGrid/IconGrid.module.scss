@@ -3,6 +3,11 @@
 .IconGrid {
   border-radius: var(--border-radius-600);
   border: 1px solid var(--border-color-light);
+  overflow: hidden;
+}
+
+.IconGridInner {
+  margin: 0 -1px -1px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
 }

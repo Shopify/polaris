@@ -14,7 +14,9 @@ function IconGrid({ title, children }: IconGridProps) {
   return (
     <>
       {title ? <h2 className={styles.SectionHeading}>{title}</h2> : null}
-      <ul className={styles.IconGrid}>{children}</ul>
+      <div className={styles.IconGrid}>
+        <ul className={styles.IconGridInner}>{children}</ul>
+      </div>
     </>
   );
 }
