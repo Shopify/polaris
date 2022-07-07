@@ -17,7 +17,14 @@ export const PolarisEmoji = '🌌';
 
 export function usePerformanceBenchmark(name: string) {
   const {enablePerformanceBenchmarking} = useFeatures();
-  if (isServer || !enablePerformanceBenchmarking) {
+  if (
+    isServer ||
+    !window ||
+    !window.performance ||
+    !window.performance.mark ||
+    !window.performance.measure ||
+    !enablePerformanceBenchmarking
+  ) {
     return;
   }
 
