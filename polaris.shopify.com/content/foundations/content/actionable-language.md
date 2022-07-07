@@ -471,23 +471,18 @@ Directional language often indicates a lack of visual or content hierarchy. When
 
 Use “Save” when a change is saved immediately to a database and “Done” for [deferred saves](#deferred-saves).
 
-### Saving immediately to a database
-
-Use “Save” for web and iOS as the default for any action that saves immediately to a database. For Android, use a check mark.
-
 #### Saving using the context bar component
 
 When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes,
-like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula. For example, [Save] instead of [Save product].
-In the context bar component, use the verb “Save” for web and iOS, and a check mark in Android.
+like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula.
 
 <!-- usagelist -->
 
 #### Do
 
-For web, use the verb “Save” in the context bar
+Use the verb “Save” in the context bar
 
-![web context bar](/public_images/actionable-language/web-context-bar@2x.png)
+![web context bar](/images/foundations/content/actionable-language/web-context-bar@2x.png)
 
 #### Don’t
 
@@ -514,51 +509,17 @@ Status messages in the context bar should be descriptive and follow the {adjecti
 
 <!-- end -->
 
-<!-- usagelist -->
-
-#### Do
-
-- For Android, use a check mark to indicate “Save” in the context bar.
-
-Note: When merchants press and hold on the “X” in Android, a tooltip appears with “Cancel”. For the check mark, the tooltip displays “Save”.
-
-![android context bar](/public_images/actionable-language/android-context-bar@2x.png)
-
-#### Don’t
-
-- Done
-- Apply
-- Save discount
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-For iOS, use the verb “Save” in the context bar
-
-![iOS context bar](/public_images/actionable-language/ios-context-bar@2x.png)
-
-#### Don’t
-
-- Done
-- Apply
-- Save discount
-
-<!-- end -->
-
 #### Saving in modals and sheets
 
-For web and iOS, use the verb “Save” in modals and sheets when saving directly to the database. For Android, use a check mark to indicate “Save.”
+Use the verb “Save” in modals and sheets when saving directly to the database.
 
 <!-- usagelist -->
 
 #### Do
 
-For web, use the verb “Save” in modals and sheets
+Use the verb “Save” in modals and sheets
 
-![web save modal in edit state](/public_images/actionable-language/web-edit-save@2x.png)
+![web save modal in edit state](/images/foundations/content/actionable-language/web-edit-save@2x.png)
 
 #### Don’t
 
@@ -568,51 +529,17 @@ For web, use the verb “Save” in modals and sheets
 
 <!-- end -->
 
-<!-- usagelist -->
+#### Saving at the bottom of a page
 
-#### Do
+Use the {Save} + {noun} content formula when a save action doesn’t have the surrounding context of a modal or context bar.
 
-- For Android, use a check mark to indicate “Save” in modals and sheets.
-
-Note: When merchants press and holds on the “X” in Android, a tooltip appears with “Cancel”. For the check mark, the tooltip displays “Save”.
-
-![Android save modal in edit state](/public_images/actionable-language/android-save@2x.png)
-
-#### Don’t
-
-- Edit
-- Done
-- Apply
-
-<!-- end -->
+For example, the action at the bottom of the Create discount page uses [Save discount]:
 
 <!-- usagelist -->
 
 #### Do
 
-For iOS, use the verb “Save” in modals and sheets
-
-![iOS save modal in edit state](/public_images/actionable-language/ios-save@2x.png)
-
-#### Don’t
-
-- Edit
-- Done
-- Apply
-
-<!-- end -->
-
-#### Saving at the bottom of a page in web
-
-Use the {Save} + {noun} content formula when a save action doesn’t have the surrounding context of a modal or context bar. This applies to the save action at the bottom of pages in web.
-
-For example, the action at the bottom of the Create discount page in web uses [Save discount]:
-
-<!-- usagelist -->
-
-#### Do
-
-![web save page action](/public_images/actionable-language/web-page-actions@2x.png)
+![web save page action](/images/foundations/content/actionable-language/web-page-actions@2x.png)
 
 #### Don’t
 
@@ -623,35 +550,11 @@ For example, the action at the bottom of the Create discount page in web uses [S
 
 <!-- end -->
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        Android and iOS have one save action at the top of the screen in the nav bar. These platforms don’t use a save           bar at the bottom of a page like in web.
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image">
-
-![Android save modal in edit state](/public_images/actionable-language/android-context-bar@2x.png)
-
-</div>
-<div class="Image">
-
-![iOS save modal in edit state](/public_images/actionable-language/ios-context-bar@2x.png)
-
-</div>
-</div>
-</div>
-
-<a name="deferred-saves"></a>
-
 ### Deferred saves
 
 Sometimes, when merchants confirm a set of changes inside a modal or sheet, these changes are applied as unsaved changes to the current page. In other words, the changes made weren’t immediately saved to the database. When this happens, don’t use the verb “Save” as the call to action because it would be misleading.
 
-Use the adjective “Done” in web, Android, and iOS for deferred saves. When the modal or sheet closes, then merchants can save all of the changes they made.
+Use the adjective “Done”. When the modal or sheet closes, then merchants can save all of the changes they made.
 
 Most deferred saves happen when confirming changes in Add, Edit, Manage, and Select modals and sheets.
 
@@ -659,7 +562,7 @@ Most deferred saves happen when confirming changes in Add, Edit, Manage, and Sel
 
 #### Do
 
-![deferred save modal with done button](/public_images/actionable-language/add-done@2x.png)
+![deferred save modal with done button](/images/foundations/content/actionable-language/add-done@2x.png)
 
 #### Don’t
 
@@ -676,15 +579,13 @@ Most deferred saves happen when confirming changes in Add, Edit, Manage, and Sel
 
 <!-- keywords: date pickers, datepicker copy, date picker copy, datepicker copy, datepicker copy, datepicker buttons, date picker buttons -->
 
-Use the adjective “Done” in web, Android, and iOS for datepickers.
+Use the adjective “Done”.
 
 <!-- usagelist -->
 
 #### Do
 
-Web
-
-![datepicker with done button](/public_images/actionable-language/datepicker@2x.png)
+![datepicker with done button](/images/foundations/content/actionable-language/datepicker@2x.png)
 
 #### Don’t
 
@@ -708,7 +609,7 @@ Use the adjective “OK” when merchants need to confirm they’ve read somethi
 
 #### Do
 
-![modal with okay button spelled with capitalized letter O and K, no punctuation](/public_images/actionable-language/ok@2x.png)
+![modal with okay button spelled with capitalized letter O and K, no punctuation](/images/foundations/content/actionable-language/ok@2x.png)
 
 #### Don’t
 
@@ -743,7 +644,7 @@ Accept
 
 <!-- keywords: exiting copy, exiting content, exiting modals, exiting screens, backing out of changes -->
 
-Use the back arrow button in web, “Close” in iOS, and an “X” in Android, as the call to action for modals and screens when:
+Use the back arrow button as the call to action for modals and screens when:
 
 - the content is in a view-only state
 
@@ -756,36 +657,7 @@ Don’t use “Close” as the call to action when there’s the option for merc
 
 #### Do
 
-![web modal with close button](/public_images/actionable-language/web-close@2x.png)
-
-#### Don’t
-
-- Cancel
-- Exit
-- OK
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-![Android modal with x button](/public_images/actionable-language/android-close@2x.png)
-
-#### Don’t
-
-- Close
-- Cancel
-- Exit
-- OK
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-![iOS modal with close button](/public_images/actionable-language/ios-close@2x.png)
+![web modal with close button](/images/foundations/content/actionable-language/web-close@2x.png)
 
 #### Don’t
 
@@ -801,44 +673,9 @@ Use “Cancel” as the option for merchants to back out of any changes made on 
 
 #### Do
 
-For web, use the verb “Cancel” as the action for merchants to back out of changes
+Use the verb “Cancel” as the action for merchants to back out of changes
 
-![web save modal in edit state](/public_images/actionable-language/web-edit-save@2x.png)
-
-#### Don’t
-
-- Exit
-- Close
-- Done
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-- For Android, use an “X” as the action for merchants to back out of changes
-
-Note: When merchants presses and holds on the “X” in Android, a tooltip appears with “Cancel”. For the check mark, the tooltip displays “Save”.
-
-![Android save modal in edit state](/public_images/actionable-language/android-save@2x.png)
-
-#### Don’t
-
-- Cancel
-- Exit
-- Close
-- Done
-
-<!-- end -->
-
-<!-- usagelist -->
-
-#### Do
-
-For iOS, use the verb “Cancel” as the action for merchants to back out of changes
-
-![iOS save modal in edit state](/public_images/actionable-language/ios-save@2x.png)
+![web save modal in edit state](/images/foundations/content/actionable-language/web-edit-save@2x.png)
 
 #### Don’t
 
@@ -916,8 +753,8 @@ Use the verb “edit” when you can change the input of a field (letters, numbe
 
 #### Do
 
-- In this example, “Edit” is the correct call to action because it opens a modal where merchants update customer contact information ![modal where merchants can edit contact information](/public_images/actionable-language/edit-do@2x.png)
-  Here are the editing actions that become available after the “Edit” button is selected ![modal where merchants can edit customer information](/public_images/actionable-language/edit-do2@2x.png)
+- In this example, “Edit” is the correct call to action because it opens a modal where merchants update customer contact information ![modal where merchants can edit contact information](/images/foundations/content/actionable-language/edit-do@2x.png)
+  Here are the editing actions that become available after the “Edit” button is selected ![modal where merchants can edit customer information](/images/foundations/content/actionable-language/edit-do2@2x.png)
 - Edit an individual blog post
 
 #### Don’t
@@ -935,8 +772,8 @@ Use the verb “manage” at a higher level to convey that multiple actions can 
 
 #### Do
 
-- In this example, “Manage” is the correct call to action because it opens a modal where merchants can select channels to display their products ![manage button on the product page in the product availability section](/public_images/actionable-language/manage-do@2x.png)
-  Here are the options that become available after the “Manage” button is selected ![modal where merchants can select sales channels](/public_images/actionable-language/manage-do2@2x.png)
+- In this example, “Manage” is the correct call to action because it opens a modal where merchants can select channels to display their products ![manage button on the product page in the product availability section](/images/foundations/content/actionable-language/manage-do@2x.png)
+  Here are the options that become available after the “Manage” button is selected ![modal where merchants can select sales channels](/images/foundations/content/actionable-language/manage-do2@2x.png)
 - Manage multiple blog posts and comments
 
 #### Don’t
@@ -958,8 +795,8 @@ Use the verb “change” when merchants can replace an option, but not edit it.
 
 #### Do
 
-- Change image ![change button at the bottom of the image display on the slideshow page of the theme editor](/public_images/actionable-language/change-do@2x.png)
-  Here are the options that become available after the “Change” button is selected ![images library with an upload drop zone](/public_images/actionable-language/change-do2@2x.png)
+- Change image ![change button at the bottom of the image display on the slideshow page of the theme editor](/images/foundations/content/actionable-language/change-do@2x.png)
+  Here are the options that become available after the “Change” button is selected ![images library with an upload drop zone](/images/foundations/content/actionable-language/change-do2@2x.png)
 
 #### Don’t
 
@@ -975,8 +812,8 @@ Use the verb “switch” when it’s important for merchants to know what they�
 
 #### Do
 
-- ![Title that says, switch from your third party provider to shopify payments, with a card below that says, payment processing rate of 2.4% plus 0.25 euros”](/public_images/actionable-language/switch-do@2x.png)
-- ![Modal that says, switch locations to ‘new space’? You will only be able to sell inventory set to this location. Tax rates may also change. At the bottom there are two buttons. One says, cancel and one says, switch.](/public_images/actionable-language/switch-do2@2x.png)
+- ![Title that says, switch from your third party provider to shopify payments, with a card below that says, payment processing rate of 2.4% plus 0.25 euros”](/images/foundations/content/actionable-language/switch-do@2x.png)
+- ![Modal that says, switch locations to ‘new space’? You will only be able to sell inventory set to this location. Tax rates may also change. At the bottom there are two buttons. One says, cancel and one says, switch.](/images/foundations/content/actionable-language/switch-do2@2x.png)
 
 #### Don’t
 

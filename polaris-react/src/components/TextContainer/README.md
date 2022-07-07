@@ -49,18 +49,6 @@ Use this component for default vertical spacing.
 </TextContainer>
 ```
 
-<!-- content-for: android -->
-
-![Default text container](/public_images/components/TextContainer/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default text container](/public_images/components/TextContainer/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Tight text container
 
 Use the tight spacing option to relate content topics to each other.
@@ -74,18 +62,6 @@ Use the tight spacing option to relate content topics to each other.
   </p>
 </TextContainer>
 ```
-
-<!-- content-for: android -->
-
-![Tight text container](/public_images/components/TextContainer/android/tight@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Tight text container](/public_images/components/TextContainer/ios/tight@2x.png)
-
-<!-- /content-for -->
 
 ### Loose text container
 
@@ -104,18 +80,6 @@ Use the loose spacing option to separate concepts that are independent of each o
   </p>
 </TextContainer>
 ```
-
-<!-- content-for: android -->
-
-![Loose text container](/public_images/components/TextContainer/android/loose@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Loose text container](/public_images/components/TextContainer/ios/loose@2x.png)
-
-<!-- /content-for -->
 
 ---
 

@@ -158,18 +158,6 @@ function PopoverWithActionListExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Popover with action list for Android](/public_images/components/Popover/android/action-list@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Popover with action list for iOS](/public_images/components/Popover/ios/action-list@2x.png)
-
-<!-- /content-for -->
-
 ### Popover with content and actions
 
 Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
@@ -218,21 +206,7 @@ function PopoverContentExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Popover with content and actions for Android](/public_images/components/Popover/android/action-content@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Popover with content and actions for iOS](/public_images/components/Popover/ios/action-content@2x.png)
-
-<!-- /content-for -->
-
 ### Popover with form components
-
-<!-- example-for: web -->
 
 Use to present secondary input tasks on demand.
 
@@ -280,8 +254,6 @@ function PopoverFormExample() {
 ```
 
 ### Popover with lazy loaded list
-
-<!-- example-for: web -->
 
 Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
 
@@ -379,18 +351,6 @@ function PopoverLazyLoadExample() {
 }
 ```
 
-### Action sheet
-
-<!-- example-for: ios -->
-
-Use when you have few actions that affects the whole page. Action sheets doesn’t support icons or additional information.
-
-<!-- content-for: ios -->
-
-![iOS action sheet](/public_images/components/Popover/ios/action-sheet@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
@@ -401,26 +361,6 @@ Use when you have few actions that affects the whole page. Action sheets doesn�
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Popovers usually contain an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) or an [action list](https://polaris.shopify.com/components/actions/action-list), but can also contain other controls or content.
 
@@ -434,5 +374,3 @@ Web browsers assign a default value of 'menu' to the `aria-haspopup` role. You c
 - Once focus is in the popover, merchants can access controls in the popover using the <kbd>tab</kbd> key (and <kbd>shift</kbd> + <kbd>tab</kbd> backwards) and standard keystrokes for interacting
 - Merchants can dismiss the popover by tabbing out of it, pressing the <kbd>esc</kbd> key, or clicking outside of it
 - When the popover is closed, focus returns to the element that launched it
-
-<!-- /content-for -->

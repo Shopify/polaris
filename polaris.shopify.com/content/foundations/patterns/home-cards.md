@@ -37,7 +37,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Simple Home card encouraging the merchant to add or learn more about an advertising campaign](/public_images/home-card-page/simple-home-card@2x.png)
+![Simple Home card encouraging the merchant to add or learn more about an advertising campaign](/images/foundations/patterns/home-cards/simple-home-card@2x.png)
 
 </div>
 </div>
@@ -57,7 +57,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Action-list home card showing several suggested discounts the merchant can add, and prompting them to create their own](/public_images/home-card-page/action-list-home-card@2x.png)
+![Action-list home card showing several suggested discounts the merchant can add, and prompting them to create their own](/images/foundations/patterns/home-cards/action-list-home-card@2x.png)
 
 </div>
 </div>
@@ -77,7 +77,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Table card showing shipping services and the holiday dates the merchant can expect for each, with a prompt to see unfulfilled orders](/public_images/home-card-page/table-home-card@2x.png)
+![Table card showing shipping services and the holiday dates the merchant can expect for each, with a prompt to see unfulfilled orders](/images/foundations/patterns/home-cards/table-home-card@2x.png)
 
 </div>
 </div>
@@ -100,7 +100,7 @@ When choosing a home card type, think about the simplest way to present your mes
   <div class="Annotated__Media">
   <div class="Image Image--border">
 
-![Large illustration card encouraging and prompting the merchant to set up gift cards for the holidays](/public_images/home-card-page/large-illustration-home-card@2x.png)
+![Large illustration card encouraging and prompting the merchant to set up gift cards for the holidays](/images/foundations/patterns/home-cards/large-illustration-home-card@2x.png)
 
 </div>
 </div>  
@@ -118,7 +118,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Graph card showing an upward trend in traffic to the merchant’s store from a social media post](/public_images/home-card-page/graph-home-card@2x.png)
+![Graph card showing an upward trend in traffic to the merchant’s store from a social media post](/images/foundations/patterns/home-cards/graph-home-card@2x.png)
 
 </div>
 </div>
@@ -138,7 +138,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Video card showing a video introducing an app, with a call to action to add it to the merchant’s store](/public_images/home-card-page/video-home-card@2x.png)
+![Video card showing a video introducing an app, with a call to action to add it to the merchant’s store](/images/foundations/patterns/home-cards/video-home-card@2x.png)
 
 </div>
 </div>
@@ -158,7 +158,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
   <div class="Image Image--border">
 
-![Blog card showing a short description and link for a blog post relevant to the merchant’s experience](/public_images/home-card-page/blog-home-card@2x.png)
+![Blog card showing a short description and link for a blog post relevant to the merchant’s experience](/images/foundations/patterns/home-cards/blog-home-card@2x.png)
 
 </div>
 </div>
@@ -178,7 +178,7 @@ When choosing a home card type, think about the simplest way to present your mes
 <div class="Annotated__Media">
   <div class="Image Image--border">
 
-![Comparison card showing a brief description of a specific data point, with a comparison between the merchant’s data and an industry standard](/public_images/home-card-page/comparison-home-card@2x.png)
+![Comparison card showing a brief description of a specific data point, with a comparison between the merchant’s data and an industry standard](/images/foundations/patterns/home-cards/comparison-home-card@2x.png)
 
 </div>
 </div>

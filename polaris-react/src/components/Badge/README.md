@@ -87,18 +87,6 @@ Use to give a non-critical status update on a piece of information or action.
 <Badge>Fulfilled</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Default badge with gray background](/public_images/components/Badge/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default badge with gray background](/public_images/components/Badge/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Small badge
 
 Use in layouts with minimal space, like inside of an `IndexTable` cell.
@@ -115,18 +103,6 @@ Use to call out an object or action as having an important attribute. For exampl
 <Badge status="info">Published</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Informational badge with blue background](/public_images/components/Badge/android/informational@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Informational badge with blue background](/public_images/components/Badge/ios/informational@2x.png)
-
-<!-- /content-for -->
-
 ### Success badge
 
 Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to merchants. For example, when merchants successfully dispute a chargeback, a success badge shows that says “Funds recovered”.
@@ -135,18 +111,6 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 <Badge status="success">Funds recovered</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Success badge with green background](/public_images/components/Badge/android/success@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Success badge with green background](/public_images/components/Badge/ios/success@2x.png)
-
-<!-- /content-for -->
-
 ### Attention badge
 
 Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
@@ -154,18 +118,6 @@ Use when something requires merchants’ attention but the issue isn’t critica
 ```jsx
 <Badge status="attention">Inactive</Badge>
 ```
-
-<!-- content-for: android -->
-
-![Attention badge with yellow background](/public_images/components/Badge/android/attention@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Attention badge with yellow background](/public_images/components/Badge/ios/attention@2x.png)
-
-<!-- /content-for -->
 
 ### Warning badge
 
@@ -177,18 +129,6 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 <Badge status="warning">Expired</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Warning badge with orange background](/public_images/components/Badge/android/warning@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Warning badge with orange background](/public_images/components/Badge/ios/warning@2x.png)
-
-<!-- /content-for -->
-
 ### Critical badge
 
 Use for critical and irreversible issues that require merchants’ attention and potential action.
@@ -198,18 +138,6 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 ```jsx
 <Badge status="critical">Action required</Badge>
 ```
-
-<!-- content-for: android -->
-
-![Critical badge with red background](/public_images/components/Badge/android/critical@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Critical badge with red background](/public_images/components/Badge/ios/critical@2x.png)
-
-<!-- /content-for -->
 
 ### Incomplete badge
 
@@ -221,18 +149,6 @@ Use to indicate when a given task has not yet been completed. For example, when 
 </Badge>
 ```
 
-<!-- content-for: android -->
-
-![Incomplete badge. Default badge with incomplete status](/public_images/components/Badge/android/incomplete@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Incomplete badge. Default badge with incomplete status](/public_images/components/Badge/ios/incomplete@2x.png)
-
-<!-- /content-for -->
-
 ### Partially complete badge
 
 Use to indicate when a given task has been partially completed. For example, when merchants have partially fulfilled an order.
@@ -242,18 +158,6 @@ Use to indicate when a given task has been partially completed. For example, whe
   Partially fulfilled
 </Badge>
 ```
-
-<!-- content-for: android -->
-
-![Partially complete badge. Default badge with partially complete status](/public_images/components/Badge/android/partially-complete@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Partially complete badge. Default badge with partially complete status](/public_images/components/Badge/ios/partially-complete@2x.png)
-
-<!-- /content-for -->
 
 ### Complete badge
 
@@ -277,18 +181,6 @@ Use when the status and progress accessibilityLabels are not appropriate to a gi
 </Badge>
 ```
 
-<!-- content-for: android -->
-
-![Complete badge. Default badge with complete status](/public_images/components/Badge/android/complete@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Complete badge. Default badge with complete status](/public_images/components/Badge/ios/complete@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
@@ -299,26 +191,4 @@ Use when the status and progress accessibilityLabels are not appropriate to a gi
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
-
-<!-- /content-for -->

@@ -78,21 +78,7 @@ Used most in the interface. Only use another style if a button requires more or 
 <Button>Add product</Button>
 ```
 
-<!-- content-for: android -->
-
-![Basic button for Android](/public_images/components/Button/android/basic@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Basic button for iOS](/public_images/components/Button/ios/basic@2x.png)
-
-<!-- /content-for -->
-
 ### Outline button
-
-<!-- example-for: web -->
 
 Use against shaded or colorful backgrounds. An outline button will maintain the appropriate visual weight and won’t clash with the background color.
 
@@ -101,8 +87,6 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 ```
 
 ### Outline monochrome button
-
-<!-- example-for: web -->
 
 Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
 
@@ -122,21 +106,7 @@ Use for less important or less commonly used actions since they’re less promin
 <Button plain>View shipping settings</Button>
 ```
 
-<!-- content-for: android -->
-
-![Plain button for Android](/public_images/components/Button/android/plain@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Plain button for iOS](/public_images/components/Button/ios/plain@2x.png)
-
-<!-- /content-for -->
-
 ### Plain monochrome button
-
-<!-- example-for: web -->
 
 Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
@@ -151,8 +121,6 @@ Use for less important or less commonly used actions where matching the current 
 
 ### Plain destructive button
 
-<!-- example-for: online-store-ui -->
-
 Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used destructive actions. For example, plain buttons are used as actions in cards.
 
 ```jsx
@@ -160,18 +128,6 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
   Remove
 </Button>
 ```
-
-<!-- content-for: android -->
-
-![Destructive plain button for Android](/public_images/components/Button/android/plain-destructive@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Destructive plain button for iOS](/public_images/components/Button/ios/plain-destructive@2x.png)
-
-<!-- /content-for -->
 
 ### Primary button
 
@@ -181,18 +137,6 @@ Use to highlight the most important actions in any experience. Don’t use more 
 <Button primary>Save theme</Button>
 ```
 
-<!-- content-for: android -->
-
-![Primary button for Android](/public_images/components/Button/android/primary@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Primary button for iOS](/public_images/components/Button/ios/primary@2x.png)
-
-<!-- /content-for -->
-
 ### Destructive button
 
 Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
@@ -201,21 +145,7 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 <Button destructive>Delete theme</Button>
 ```
 
-<!-- content-for: android -->
-
-![Destructive basic button for Android](/public_images/components/Button/android/basic-destructive@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Destructive basic button for iOS](/public_images/components/Button/ios/basic-destructive@2x.png)
-
-<!-- /content-for -->
-
 ### Slim button
-
-<!-- example-for: web -->
 
 Use when a table or list has a set of actions on each item to avoid making items taller than they need to be. Don’t use slim buttons for primary actions.
 
@@ -225,8 +155,6 @@ Use when a table or list has a set of actions on each item to avoid making items
 
 ### Large button
 
-<!-- example-for: web -->
-
 Use for the main call to action in empty states or for calls to action shown with large illustrations.
 
 ```jsx
@@ -235,8 +163,6 @@ Use for the main call to action in empty states or for calls to action shown wit
 
 ### Full-width button
 
-<!-- example-for: web -->
-
 Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320 px wide.
 
 ```jsx
@@ -244,8 +170,6 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 ```
 
 ### Text-aligned button
-
-<!-- example-for: web -->
 
 Use for plain or monochrome buttons that could have a long length and should be aligned when they potentially overflow onto the next line.
 
@@ -258,8 +182,6 @@ Use for plain or monochrome buttons that could have a long length and should be 
 ```
 
 ### Pressed button
-
-<!-- example-for: web -->
 
 Buttons are sometimes used as a toggle for other parts of the user interface.
 
@@ -292,8 +214,6 @@ function PressedButton() {
 
 ### Plain disclosure button
 
-<!-- example-for: web -->
-
 Use to indicate that more content can be disclosed on click, like text in a collapsible.
 
 ```jsx
@@ -315,8 +235,6 @@ function DisclosureButtion() {
 ```
 
 ### Right-aligned disclosure
-
-<!-- example-for: web -->
 
 When working with `fullWidth + textAlign="left"`, the `disclosure` will align itself to the far right.
 
@@ -341,8 +259,6 @@ function RightAlignedDisclosureButton() {
 
 ### Select disclosure button
 
-<!-- example-for: web -->
-
 Use to indicate that multiple options are available from this control, similar to a `<select />` HTML element.
 
 ```jsx
@@ -354,8 +270,6 @@ Use to indicate that multiple options are available from this control, similar t
 ```
 
 ### Split button
-
-<!-- example-for: web -->
 
 Use when there is only one primary action but other related actions can be taken.
 
@@ -403,21 +317,7 @@ Use for actions that aren’t currently available. The surrounding interface sho
 </ButtonGroup>
 ```
 
-<!-- content-for: android -->
-
-![Disabled primary button for Android](/public_images/components/Button/android/disabled@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Disabled primary button for iOS](/public_images/components/Button/ios/disabled@2x.png)
-
-<!-- /content-for -->
-
 ### Loading state
-
-<!-- example-for: web -->
 
 Use when a button has been pressed and the associated action is in progress.
 
@@ -435,26 +335,6 @@ Use when a button has been pressed and the associated action is in progress.
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Buttons can have different states that are visually and programmatically conveyed to merchants.
 
@@ -555,5 +435,3 @@ Buttons use browser defaults for keyboard interactions.
 Use the `onKeyDown`, `onKeyPress`, and `onKeyUp` props to create custom events for buttons. With these props, you can use buttons to create complex, custom interactions like drag-and-drop interfaces.
 
 Since these props introduce non-standard features to buttons, make sure to include accessible instructions so that merchants can understand how to use these features.
-
-<!-- /content-for -->

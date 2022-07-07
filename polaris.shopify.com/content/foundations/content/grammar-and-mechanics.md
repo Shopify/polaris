@@ -1178,7 +1178,7 @@ of the string.
 
 A button with an ellipsis icon (not the same as text) is used to expand more
 actions. It’s typically used in cards, or for horizontal sets of actions when
-space is limited. Android uses a vertical version (vertically stacked dots).
+space is limited.
 
 ### En-dashes and em-dashes
 
