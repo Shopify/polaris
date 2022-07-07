@@ -120,7 +120,12 @@ export function Cell({
     </span>
   );
 
-  const focusable = hasFixedFirstColumn && firstColumn && !inFixedFirstColumn;
+  const focusable = !(
+    stickyHeadingCell &&
+    hasFixedFirstColumn &&
+    firstColumn &&
+    !inFixedFirstColumn
+  );
 
   const sortableHeadingContent = (
     <button

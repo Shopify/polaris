@@ -353,12 +353,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     ref,
     index,
     inStickyHeader,
-    inFixedFirstColumn,
   }: {
     ref: HTMLTableCellElement | null;
     index: number;
     inStickyHeader: boolean;
-    inFixedFirstColumn: boolean;
   }) => {
     if (ref == null) {
       return;
@@ -662,22 +660,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       firstColumnMinWidth,
     };
 
-    // need two cells for fixed first column (actual cell and the overlapping one)
     if (inFixedFirstColumn && inStickyHeader) {
+      // need two cells for fixed first column (actual cell and the overlapping one)
+      // the sticky cell is second so that the index is associated with the sticky
+      // cell and not the underlying one. This helps `changeHeadingFocus` to put
+      // focus on the right cell when switching from sticky to non-sticky headers
       return [
-        <Cell
-          key={`${id}-sticky`}
-          {...cellProps}
-          setRef={(ref: any) => {
-            this.setCellRef({
-              ref,
-              index: headingIndex,
-              inStickyHeader,
-              inFixedFirstColumn,
-            });
-          }}
-          inFixedFirstColumn
-        />,
         <Cell
           key={id}
           {...cellProps}
@@ -690,6 +678,19 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             });
           }}
           inFixedFirstColumn={false}
+        />,
+        <Cell
+          key={`${id}-sticky`}
+          {...cellProps}
+          setRef={(ref: any) => {
+            this.setCellRef({
+              ref,
+              index: headingIndex,
+              inStickyHeader,
+              inFixedFirstColumn,
+            });
+          }}
+          inFixedFirstColumn
         />,
       ];
     }

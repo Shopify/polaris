@@ -341,6 +341,7 @@
   background: var(--p-surface);
   z-index: 3;
   border-spacing: 0;
+  left: 0;
   @media #{$p-breakpoints-md-down} {
     z-index: 1;
   }
