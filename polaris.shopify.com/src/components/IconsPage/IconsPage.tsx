@@ -41,12 +41,6 @@ function scrollToActiveIcon(activeIcon: string): void {
     const activeElementRect = activeElement?.getBoundingClientRect();
 
     const elementOffsetY = activeElementRect.top - bodyRect.top;
-
-    console.log({
-      elementOffsetY,
-      scrolly: window.scrollY,
-      innerHeight: window.innerHeight,
-    });
     const isOverflowingScreenUpwards = elementOffsetY < window.scrollY;
     const isOverflowingScreenDownwards =
       window.scrollY + window.innerHeight <
