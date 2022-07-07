@@ -55,8 +55,6 @@ iOS and Android pagination should:
 
 ### Default pagination
 
-<!-- example-for: web -->
-
 Use for pagination at the bottom of lists.
 
 ```jsx
@@ -73,8 +71,6 @@ Use for pagination at the bottom of lists.
 ```
 
 ### Pagination with keyboard navigation
-
-<!-- example-for: web -->
 
 Attach standard keyboard shortcuts to important pagination controls.
 
@@ -114,24 +110,6 @@ Add a label between navigation buttons to provide more context of the content be
   }}
 />
 ```
-
-### Infinite scroll
-
-<!-- example-for: ios, android -->
-
-Use for lists longer than 25 items. In mobile apps it’s natural to scroll to the bottom of the screen to load more items.
-
-<!-- content-for: android -->
-
-![Infinite scroll pagination on Android](/public_images/components/Pagination/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Infinite scroll pagination on iOS](/public_images/components/Pagination/ios/default@2x.png)
-
-<!-- /content-for -->
 
 ---
 
