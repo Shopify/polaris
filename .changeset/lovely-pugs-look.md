@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Removed content-for and example-for from .md files
+Removed mobile content and examples from README.md files
