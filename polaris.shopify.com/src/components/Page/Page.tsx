@@ -5,7 +5,6 @@ import useDarkMode from "use-dark-mode";
 
 import Header from "../Header";
 
-import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./Page.module.scss";
 import SiteLaunchBanner from "../SiteLaunchBanner";
 
@@ -27,7 +26,12 @@ function Page({ children }: Props) {
 
       {!isPolaris && (
         <div className={styles.Footer}>
-          <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
+          <Image
+            src="/shopify-logo.svg"
+            width={36}
+            height={36}
+            alt="Shopify logo"
+          />
           <SiteLaunchBanner />
         </div>
       )}
