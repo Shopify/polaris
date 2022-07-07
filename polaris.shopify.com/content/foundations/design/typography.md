@@ -12,30 +12,6 @@ Shopify admin provides a constrained, purposeful set of typographic styles. Thes
 
 By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
 
-## Font stack
-
-This font-stack makes sure all browsers can load platform-specific fonts:
-
-| Token                    | Properties |
-| ------------------------ | ---------- |
-| --p-font-fontfamily-sans | jlkjl      |
-| --p-font-fontfamily-sans | jlkjl      |
-
-## Type scale
-
-All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.
-
-| Token             | Size (px) | Size (rem) |
-| ----------------- | --------- | ---------- |
-| --p-font-size-700 | 40px      | 2          |
-| --p-font-size-600 | 40px      | 2          |
-| --p-font-size-500 | 40px      | 2          |
-| --p-font-size-400 | 40px      | 2          |
-| --p-font-size-300 | 40px      | 2          |
-| --p-font-size-200 | 40px      | 2          |
-| --p-font-size-100 | 40px      | 2          |
-| --p-font-size-75  | 40px      | 2          |
-
 ---
 
 ## Principles
