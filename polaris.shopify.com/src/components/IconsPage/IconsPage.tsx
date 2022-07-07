@@ -33,6 +33,40 @@ const getIcons = (currentSearchText: string, set: string) => {
   return icons.filter((x) => x.set === set);
 };
 
+function scrollToActiveIcon(activeIcon: string): void {
+  const activeElement = document.querySelector(`#${activeIcon}`);
+
+  if (activeElement) {
+    const bodyRect = document.body.getBoundingClientRect();
+    const activeElementRect = activeElement?.getBoundingClientRect();
+
+    const elementOffsetY = activeElementRect.top - bodyRect.top;
+
+    console.log({
+      elementOffsetY,
+      scrolly: window.scrollY,
+      innerHeight: window.innerHeight,
+    });
+    const isOverflowingScreenUpwards = elementOffsetY < window.scrollY;
+    const isOverflowingScreenDownwards =
+      window.scrollY + window.innerHeight <
+      elementOffsetY + activeElementRect.height;
+
+    const isNotFullyVisible =
+      isOverflowingScreenUpwards || isOverflowingScreenDownwards;
+
+    if (isNotFullyVisible) {
+      window.scrollTo({
+        top:
+          elementOffsetY -
+          window.innerHeight / 2 +
+          activeElementRect.height / 2,
+        behavior: "smooth",
+      });
+    }
+  }
+}
+
 function IconsPage() {
   const router = useRouter();
   const useModal = useMedia("screen and (max-width: 850px)");
@@ -45,21 +79,16 @@ function IconsPage() {
   const currentSearchText = router.query.q ? `${router.query.q}` : "";
 
   useEffect(() => {
+    if (router.isReady && activeIcon) {
+      scrollToActiveIcon(activeIcon);
+    }
+  }, [router.isReady, activeIcon]);
+
+  useEffect(() => {
     setMajorIcons(getIcons(currentSearchText, "major"));
     setMinorIcons(getIcons(currentSearchText, "minor"));
     setSearchText(currentSearchText);
   }, [currentSearchText]);
-
-  useEffect(() => {
-    if (!activeIcon) return;
-
-    const activeElementY = document
-      .querySelector(`#${activeIcon}`)
-      ?.getBoundingClientRect().y;
-    if (activeElementY && activeElementY > 100) {
-      document.documentElement.scrollTo({ top: activeElementY - 100 });
-    }
-  }, [activeIcon]);
 
   const updateQueryParams = (currentSearchText: string) => {
     const query: { q?: string; icon?: string } = {};
