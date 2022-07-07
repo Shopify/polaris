@@ -64,8 +64,6 @@ The sheet component is best used in cases where the merchant needs to see elemen
 
 ### Basic sheet
 
-<!-- example-for: web -->
-
 Use as the default option for a sheet.
 
 ```jsx
