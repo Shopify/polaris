@@ -8,7 +8,7 @@ import ReactDOMServer from 'react-dom/server';
 import {useBreakpoints} from '../breakpoints';
 
 describe('useBreakpoints SSR', () => {
-  it('applies false as the default value for each breakpoints alias', () => {
+  it('applies false as the default value for each directional breakpoints alias', () => {
     ReactDOMServer.renderToStaticMarkup(<MockComponent />);
 
     function MockComponent() {
@@ -22,7 +22,7 @@ describe('useBreakpoints SSR', () => {
     }
   });
 
-  it('applies true as the default value for each breakpoints alias', () => {
+  it('applies true as the default value for each directional breakpoints alias', () => {
     ReactDOMServer.renderToStaticMarkup(<MockComponent />);
 
     function MockComponent() {
@@ -36,7 +36,7 @@ describe('useBreakpoints SSR', () => {
     }
   });
 
-  it('applies select defaults to all breakpoint aliases', () => {
+  it('applies select defaults to all directional breakpoint aliases', () => {
     ReactDOMServer.renderToStaticMarkup(<MockComponent />);
 
     function MockComponent() {
@@ -45,8 +45,8 @@ describe('useBreakpoints SSR', () => {
       });
 
       expect(
-        Object.entries(breakpoints).every(([aliasDirection, match]) => {
-          if (aliasDirection === 'mdUp') return match === true;
+        Object.entries(breakpoints).every(([directionAlias, match]) => {
+          if (directionAlias === 'mdUp') return match === true;
 
           return match === false;
         }),
