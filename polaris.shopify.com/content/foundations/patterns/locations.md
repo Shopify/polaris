@@ -26,7 +26,7 @@ The number of locations a merchant has can range dramatically, and the location 
 
 When building a location experience, leverage components and patterns that offer:
 
-- Easy access to known complex data (text search by location name, address, city, and province)
+- Easy access to known complex data (text search by location name, city, province, etc.)
 - Access to incomplete or unfamiliar data (filter contextual to the surface area)
 - The ability to organize and browse data (sort contextual to the surface area)
 - Pagination (load additional locations via infinite scrolling)
@@ -73,8 +73,8 @@ When a merchant has 11 or more locations:
 
 - Apply the same features as 2–10 locations.
 - Add text search at the top of the location picker. This allows merchants to search for locations by specific criteria (location name, city, province, postal code, address, etc.).
-- Directly below the search, show a section with the 3 most recently used locations. For new merchants, hide this section.
-- Show a list of all other locations. As the merchant scrolls, load additional locations at the bottom of the list.
+- Directly below the search, show a section with the 5 most recently used locations. If there are none, show the first 5 locations from the full list.
+- Below recently used locations, show an option to view all locations. Clicking this will show the inactive search state, displaying the full list of locations.
 
 ### Location list
 

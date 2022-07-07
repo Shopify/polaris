@@ -131,7 +131,7 @@ Major system icons are:
 
 <!-- centeredcontent -->
 
-![Smaller icons in a drop-down menu](/images/foundations/design/icons/icons-system-20@2x.png)
+![Smaller icons in a drop-down menu](/images/foundations/design/icons/icons-system-16@2x.png)
 
 ### Minor icons—16×16
 

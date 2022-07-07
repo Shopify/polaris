@@ -3,6 +3,7 @@ import "prismjs/themes/prism-tomorrow.css";
 import Prism from "prismjs";
 import React from "react";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 import { slugify } from "../../utils/various";
 
 interface Props {
@@ -14,6 +15,7 @@ function Markdown({ text, skipH1 }: Props) {
   return (
     <ReactMarkdown
       rehypePlugins={[rehypeRaw]}
+      remarkPlugins={[remarkGfm]}
       components={{
         h1: ({ children }) => {
           return skipH1 ? <></> : <h1>{children}</h1>;

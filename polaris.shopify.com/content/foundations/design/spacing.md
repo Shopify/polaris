@@ -77,7 +77,7 @@ Use the [text container](/components/titles-and-text/text-container) component t
 
 <!-- centeredcontent -->
 
-![A text label, text value and badge arranged in a row, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-text-container@2x.png)
+![A text label, text value and badge arranged in a row, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-stack@2x.png)
 
 The [stack](/components/structure/stack) component can be used to arrange arbitrary components in a horizontal row or vertical stack with space in between. It accepts the same values as the Sass spacing function to control spacing between the items.
 
