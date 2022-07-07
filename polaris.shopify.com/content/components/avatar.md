@@ -1,10 +1,6 @@
 ---
 name: Avatar
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - photo
   - profile

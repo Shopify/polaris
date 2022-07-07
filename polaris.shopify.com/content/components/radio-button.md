@@ -1,10 +1,6 @@
 ---
 name: Radio button
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RadioButton
   - selection

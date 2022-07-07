@@ -1,10 +1,6 @@
 ---
 name: Button
 category: Actions
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - CTA
   - call to action

@@ -1,10 +1,6 @@
 ---
 name: Display text
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DisplayText
   - announcement text
