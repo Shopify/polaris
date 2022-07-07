@@ -8,219 +8,74 @@ keywords:
 
 # Typography
 
-Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.
-
-By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
+Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
 
 ---
 
 ## Principles
 
-### Style with purpose
+**Make text legible.** Adjust the font weight, size, and color as needed to emphasize important information. This will help merchants understand hierarchy and patterns as they navigate the UI.
 
-A disciplined consistency with how you size and style type makes the whole admin more intuitive to use. Merchants who learn how to navigate one experience can apply that same knowledge to each new experience they come across.
+**Make text adaptable to user needs and preferences.** Be mindful of those who use alternative input peripherals or screen readers. Design in a way that works for a wide range of audiences, browsers, and mobile devices.
 
-### Stay flexible
-
-To make things accessible to audiences with different eyesight constraints, across different browsers, and different mobile devices, make sure to design in a way that works no matter what font size the merchant opts to use.
+**Create strong information and visual hierarchy.** Blurb
 
 ---
 
-## Font sizes
+## Fonts
 
-<!-- keywords: type scales, typographic scales, display x-large, display large, display regular, display medium, display small, font size -->
+### Typefaces
 
-We use the typographic scale to communicate visual hierarchy in text.
+The Shopify admin utilizes system fonts, which allow for optimized performance. This design decision takes advantage of retina screens, dynamic kerning, font-weights, and improved readability.
 
-<!-- typescale -->
+The typefaces listed below are the most used system-fonts in the admin UI. Be aware that typographic implementations may vary between browser settings and operating systems.
 
-<!-- end -->
+_add image_
 
----
+- Apple devices will display [San Francisco](https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg)
+- Android devices will display [Roboto](https://fonts.google.com/specimen/Roboto)
+- Devices running Windows will display [Segoe UI](https://developer.microsoft.com/en-us/fabric#/resources)
+- Machines running Linux will display the default sans-serif font for any running distribution [Ubuntu](https://design.ubuntu.com/font/)
+- [SF Mono](https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg) is a monospace typeface that is part of the San Francisco typeface family. SF Mono is not a system font but is used to differentiate information.
 
-## Formatting
-
-<!-- keywords: strong, bold, subdued, greyed-out, grayed-out, grey text, gray text, font weight, text weight -->
-
-Along with the typographic scale, sometimes additional formatting is necessary to illuminate the distinction between smaller-scale relationships. Different formatting styles can be implemented using the text style component.
-
-<!-- centeredcontent -->
-
-![Diagram presenting text that is left aligned](/public_images/design/type/type-left-align@2x.png)
-
-### Left aligned
-
-By default, text is left aligned. Exceptions to this rule include text in tables, and the centered text we use in empty states.
-
-<!-- end -->
-
-<!-- centeredcontent -->
-
-![Diagram presenting text that is emphasised by being bold](/public_images/design/type/type-strong@2x.png)
-
-### Strong
-
-Use this style sparingly and only where strong emphasis is required. In interfaces, strong should be seldom used to enhance visual hierarchy.
-
-<!-- end -->
-
-<!-- centeredcontent -->
-
-![Diagram presenting text that is underlined](/public_images/design/type/type-underline@2x.png)
-
-### Underline
-
-Underline styles are exclusively for text links. Don’t use underline for things like adding emphasis to text within body copy.
-
-<!-- end -->
-
-<!-- centeredcontent -->
-
-![Diagram presenting text that is subdued in a lighter gray color](/public_images/design/type/type-subdued@2x.png)
-
-### Subdued
-
-The subdued style lets you de-emphasize content, and you can use it across all font sizes. Mostly it should be used in contrast to other un-subdued text, vs. on its own. However you can use Subdued with standalone text that’s non-actionable or less important.
-
-<!-- end -->
-
----
-
-## Display styles
-
-<!-- showcasecontent -->
-
-### PageHeading
-
-PageHeading is reserved for the title of a screen.
-
-![An interface showing the title of a page before its contents](/public_images/design/type/type-pageheading@2x.png)
-
-<!-- end -->
-
-<!-- showcasecontent -->
-
-### Display
-
-Display is for titling various interface elements, such as empty states and modals.
-
-![An empty state and a modal with large display headings](/public_images/design/type/type-display@2x.png)
-
-<!-- end -->
-
-<!-- showcasecontent -->
-
-### Heading
-
-Heading should always be used for titles of top-level sections of a screen. If the sections of a screen are represented by cards, each card’s title should use the Heading style.
-
-![Two interface cards with headings](/public_images/design/type/type-heading@2x.png)
-
-<!-- end -->
-
-<!-- showcasecontent -->
-
-### Subheading
-
-If a top-level section of a screen has subsections, use the Subheading style for titling those subsections. Subheading should never appear as the first element in a card. Only use with titles (vs. sections of content).
-
-![An interface card titled with a large heading text size followed by a smaller subheading](/public_images/design/type/type-subheading@2x.png)
-
-<!-- end -->
-
-<!-- showcasecontent -->
-
-### Caption
-
-Caption is for providing details in places where content is compact and space is tight, like when it comes to data visualization.
-
-![A line chart with small, caption-sized labels](/public_images/design/type/type-caption@2x.png)
-
-<!-- end -->
-
----
-
-## Font stack
-
-<!-- keywords: font-family, webfont, system font -->
-
-We use a font stack that adapts to the operating system it runs on, like macOS, iOS, Windows, Android or Linux distributions.
-
-<!-- showcasecontent -->
-
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/public_images/design/type/type-fontstack@2x.png)
-
-<!-- end -->
-
-- Apple devices will display [San Francisco](https://developer.apple.com/fonts/)
-- Android devices will display
-  [Roboto](https://material.io/guidelines/resources/roboto-noto-fonts.html)
-- Devices running Windows will display
-  [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI)
-- Machines running Linux will display the default sans-serif font for any
-  running distribution
+### Font stack
 
 This font-stack makes sure all browsers can load platform-specific fonts:
 
-```
--apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif
-```
+| Token                    | Properties |
+| ------------------------ | ---------- |
+| --p-font-fontfamily-sans | jlkjl      |
+| --p-font-fontfamily-sans | jlkjl      |
 
-Add this to your CSS to preload system fonts and set up browsers for legibility:
+## Type scale
 
-```css
-html {
-  /* Load system fonts */
-  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,
-    Roboto, Helvetica Neue, sans-serif;
+All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.
 
-  /* Make type rendering look crisper */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+| Token             | Size (px) | Size (rem) |
+| ----------------- | --------- | ---------- |
+| --p-font-size-700 | 40        | 2.5        |
+| --p-font-size-600 | 32        | 2          |
+| --p-font-size-500 | 28        | 1.75       |
+| --p-font-size-400 | 24        | 1.5        |
+| --p-font-size-300 | 20        | 1.25       |
+| --p-font-size-200 | 16        | 1          |
+| --p-font-size-100 | 14        | 0.875      |
+| --p-font-size-75  | 12        | 0.75       |
 
-  /* Deactivate auto-enlargement of small text in Safari */
-  text-size-adjust: 100%;
+## Type styles
 
-  /* Enable kerning and optional ligatures */
-  text-rendering: optimizeLegibility;
-}
+Our type styles are organized into thoughtful defaults to help create hierarchy in a task-based UI. They include specific weights, line heights, and sizes. Type styles are defined by three roles: Display, Heading, and Body. They use one scale, so they can be applied to any screen size.
 
-/**
- * Form elements render using OS defaults,
- * so font-family inheritance must be specifically declared
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-}
-```
+### Body
 
----
+Body styles are used within components and blocks of text.
 
-## Mobile considerations
+### Heading
 
-<!-- keywords: mobile typography, native typography, mobile fonts, iOS typography, Android typography, mobile type scale, native type scale -->
+Heading styles are used for page, card, and section titles.
 
-<!-- usagelist -->
+### Display
 
-#### Do
+Display styles are used for numerals and key moments in the merchant’s journey.
 
-- Refer to the platform’s native font scales when designing experiences for native apps
-- Refer to the small-screen scale when designing experiences for mobile browsers
-- Use the platform-specific component library
-
-#### Do
-
-- Use the native font scale
-- Keep in mind that all UI elements containing text will be affected
-- Explore additional content height, width, truncation, and line wraps
-
-<!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/illustrations#navigation">Illustrations</a>
-</div>
+## Designing with type
