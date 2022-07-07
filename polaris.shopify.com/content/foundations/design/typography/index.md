@@ -8,7 +8,9 @@ keywords:
 icon: TypeMajor
 ---
 
-By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
+# Typography
+
+Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
 
 ---
 
@@ -82,11 +84,11 @@ Ambiguous spacing can cause confusion and make it hard to understand the content
 
 ---
 
-## Font sizes
+## Fonts
 
-We use the typographic scale to communicate visual hierarchy in text.
+### Typefaces
 
----
+The Shopify admin utilizes system fonts, which allow for optimized performance. This design decision takes advantage of retina screens, dynamic kerning, font-weights, and improved readability.
 
 ## Display styles
 
@@ -133,62 +135,55 @@ We use a font stack that adapts to the operating system it runs on, like macOS, 
   [Roboto](https://material.io/guidelines/resources/roboto-noto-fonts.html)
 - Devices running Windows will display
   [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI)
-- Machines running Linux will display the default sans-serif font for any running distribution
+- # Machines running Linux will display the default sans-serif font for any running distribution
+  The typefaces listed below are the most used system-fonts in the admin UI. Be aware that typographic implementations may vary between browser settings and operating systems.
+
+_add image_
+
+- Apple devices will display [San Francisco](https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg)
+- Android devices will display [Roboto](https://fonts.google.com/specimen/Roboto)
+- Devices running Windows will display [Segoe UI](https://developer.microsoft.com/en-us/fabric#/resources)
+- Machines running Linux will display the default sans-serif font for any running distribution [Ubuntu](https://design.ubuntu.com/font/)
+- [SF Mono](https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg) is a monospace typeface that is part of the San Francisco typeface family. SF Mono is not a system font but is used to differentiate information.
+
+### Font stack
 
 This font-stack makes sure all browsers can load platform-specific fonts:
 
-```
--apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif
-```
+| Token                    | Properties |
+| ------------------------ | ---------- |
+| --p-font-fontfamily-sans | jlkjl      |
+| --p-font-fontfamily-sans | jlkjl      |
 
-Add this to your CSS to preload system fonts and set up browsers for legibility:
+## Type scale
 
-```css
-html {
-  /* Load system fonts */
-  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,
-    Roboto, Helvetica Neue, sans-serif;
+All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.
 
-  /* Make type rendering look crisper */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+| Token             | Size (px) | Size (rem) |
+| ----------------- | --------- | ---------- |
+| --p-font-size-700 | 40        | 2.5        |
+| --p-font-size-600 | 32        | 2          |
+| --p-font-size-500 | 28        | 1.75       |
+| --p-font-size-400 | 24        | 1.5        |
+| --p-font-size-300 | 20        | 1.25       |
+| --p-font-size-200 | 16        | 1          |
+| --p-font-size-100 | 14        | 0.875      |
+| --p-font-size-75  | 12        | 0.75       |
 
-  /* Deactivate auto-enlargement of small text in Safari */
-  text-size-adjust: 100%;
+## Type styles
 
-  /* Enable kerning and optional ligatures */
-  text-rendering: optimizeLegibility;
-}
+Our type styles are organized into thoughtful defaults to help create hierarchy in a task-based UI. They include specific weights, line heights, and sizes. Type styles are defined by three roles: Display, Heading, and Body. They use one scale, so they can be applied to any screen size.
 
-/**
- * Form elements render using OS defaults,
- * so font-family inheritance must be specifically declared
- */
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: inherit;
-}
-```
+### Body
 
----
+Body styles are used within components and blocks of text.
 
-## Mobile considerations
+### Heading
 
-<!-- dodont -->
+Heading styles are used for page, card, and section titles.
 
-#### Do
+### Display
 
-- Refer to the platform’s native font scales when designing experiences for native apps
-- Refer to the small-screen scale when designing experiences for mobile browsers
-- Use the platform-specific component library
+Display styles are used for numerals and key moments in the merchant’s journey.
 
-#### Do
-
-- Use the native font scale
-- Keep in mind that all UI elements containing text will be affected
-- Explore additional content height, width, truncation, and line wraps
-
-<!-- end -->
+## Designing with type
