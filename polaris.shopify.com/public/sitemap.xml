@@ -295,8 +295,6 @@
 <url><loc>https://polaris.shopify.com/examples/resource-list-with-total-count</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/scrollable-default-container</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/scrollable-scroll-to-child-component</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/section-header-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/section-header-fixed</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/select-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/select-disabled</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/select-with-inline-label</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -490,7 +488,6 @@
 <url><loc>https://polaris.shopify.com/components/resource-item</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/resource-list</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/scrollable</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/components/section-header</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/select</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/setting-toggle</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/sheet</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
