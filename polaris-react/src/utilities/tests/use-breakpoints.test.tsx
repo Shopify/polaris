@@ -1,7 +1,11 @@
 import React from 'react';
 import {mount} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {tokens, getMediaConditions} from '@shopify/polaris-tokens';
+import {
+  BreakpointsTokenName,
+  tokens,
+  getMediaConditions,
+} from '@shopify/polaris-tokens';
 
 import {useBreakpoints, getBreakpointsQueryEntries} from '../breakpoints';
 
@@ -102,11 +106,13 @@ describe('useBreakpoints', () => {
   });
 });
 
-function setMediaWidth(alias: keyof typeof mediaConditions) {
-  const aliasConditions = Object.values(mediaConditions[alias]);
+function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
+  const aliasDirectionConditions = Object.values(
+    mediaConditions[breakpointsTokenName],
+  );
 
   jest.spyOn(window, 'matchMedia').mockImplementation((query) => ({
-    matches: aliasConditions.includes(query),
+    matches: aliasDirectionConditions.includes(query),
     media: '',
     onchange: null,
     addListener: jest.fn(),
