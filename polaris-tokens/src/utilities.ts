@@ -164,7 +164,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
         entry,
         index,
       ): [BreakpointsTokenName, BreakpointsAliasDirectionMediaConditions] => {
-        const [breakpointAlias, {value: breakpoint}] =
+        const [breakpointsTokenName, {value: breakpoint}] =
           entry as Entry<BreakpointsTokenGroup>;
 
         const upMediaCondition = getUpMediaCondition(breakpoint);
@@ -178,7 +178,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
               )}`;
 
         return [
-          breakpointAlias,
+          breakpointsTokenName,
           {
             // Media condition for the current breakpoint and up
             up: upMediaCondition,
