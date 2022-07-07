@@ -617,7 +617,7 @@ function AutocompleteExample() {
 
 ### Autocomplete with action
 
-Use to indicate there are no search results.
+Use to help merchants complete an action quickly.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
@@ -710,7 +710,7 @@ function AutocompleteActionBeforeExample() {
 
 ### Autocomplete with wrapping action
 
-Use to indicate there are no search results.
+Use to help merchants complete an action quickly with wrapping lines of text.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
@@ -805,7 +805,7 @@ function AutocompleteActionBeforeExample() {
 
 ### Autocomplete with destructive action
 
-Use to indicate there are no search results.
+Use to help merchants complete a destructive action quickly.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
