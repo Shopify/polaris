@@ -26,7 +26,7 @@ type Color = 'positive' | 'negative' | 'warning' | 'subdued';
 
 export interface TextProps {
   align?: Align;
-  as?: Element;
+  as: Element;
   children: ReactNode;
   color?: Color;
   fontWeight?: FontWeight;
@@ -41,9 +41,9 @@ export const Text = ({
   color,
   fontWeight = 'regular',
   truncate = false,
-  variant,
+  variant = 'bodyMd',
 }: TextProps) => {
-  const Component = as || 'span';
+  const Component = as || 'p';
 
   const className = classNames(
     styles.root,
