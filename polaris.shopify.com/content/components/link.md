@@ -78,8 +78,6 @@ The link component should follow the content guidelines for [links](https://pola
 
 ## Accessibility
 
-<!-- content-for: web -->
-
 Use the `url` prop to give the link component a valid `href` value. This allows the element to be identified as a link to assistive technologies and gives it default keyboard support.
 
 The Link component is underlined to give interactive elements a shape. This allows links to not rely on color from being the only way users can tell if an element is interactive.
@@ -172,5 +170,3 @@ Links use browser defaults for keyboard interaction.
 
 - Give links keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate links with the <kbd>enter</kbd>/<kbd>return</kbd> key
-
-<!-- /content-for -->
