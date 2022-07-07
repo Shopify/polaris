@@ -58,7 +58,7 @@ function IconGridItem({
             alt={description}
             width={20}
             height={20}
-            fadeIn={false}
+            icon
           />
           <p>{name}</p>
         </a>
