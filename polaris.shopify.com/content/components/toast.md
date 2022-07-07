@@ -159,8 +159,6 @@ Action should:
 
 ## Accessibility
 
- <!-- content-for: web -->
-
 The content of the toast component is implemented as an ARIA live region using `aria-live="polite"`. When the toast appears, screen readers should announce the toast text after any other more pressing announcements.
 
 Avoid using toast for critical information that merchants need to act on immediately. Toast might be difficult for merchants with low vision or low dexterity to access because it:
@@ -174,5 +172,3 @@ Avoid using toast for critical information that merchants need to act on immedia
 Make sure that merchants can also accomplish the action in the toast another way, since the toast action may be difficult to access for some merchants. If the toast action is not available somewhere else on the page, for example a retry action that reloads a section, it should have a fallback action, for example a browser refresh.
 
 Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.
-
- <!-- /content-for -->
