@@ -73,9 +73,21 @@ export function Collapsible({
   );
 
   useEffect(() => {
-    if (isFullyClosed || preventMeasuringOnChildrenUpdate) return;
+    if (
+      isFullyClosed ||
+      preventMeasuringOnChildrenUpdate ||
+      height === collapsibleContainer?.current?.scrollHeight
+    )
+      return;
+    console.log('remeasuring');
     setAnimationState('measuring');
-  }, [children, isFullyClosed, preventMeasuringOnChildrenUpdate]);
+  }, [
+    children,
+    isFullyClosed,
+    preventMeasuringOnChildrenUpdate,
+    collapsibleContainer,
+    height,
+  ]);
 
   useEffect(() => {
     if (open !== isOpen) {
