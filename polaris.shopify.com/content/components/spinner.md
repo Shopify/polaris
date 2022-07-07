@@ -2,10 +2,6 @@
 name: Spinner
 category: Feedback indicators
 releasedIn: 1.7.0
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - spinner
   - loader
