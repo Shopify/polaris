@@ -808,15 +808,6 @@
   },
   {
     "frontMatter": {
-      "name": "Keyboard accessories",
-      "category": "Forms",
-      "platforms": ["android", "ios"],
-      "keywords": ["keyboard", "soft", "virtual", "ios", "android"]
-    },
-    "intro": "On iOS and Android, software keyboards appear on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. For example, when merchants are updating a description and need controls for bolding, italicizing, and underlining."
-  },
-  {
-    "frontMatter": {
       "name": "Keyboard key",
       "category": "Images and icons",
       "keywords": [
