@@ -1227,26 +1227,6 @@
   },
   {
     "frontMatter": {
-      "name": "Section header",
-      "category": "Lists and tables",
-      "platforms": ["android", "ios"],
-      "keywords": [
-        "SectionHeader",
-        "section header",
-        "sticky header",
-        "section divider",
-        "list group",
-        "list grouping",
-        "lists",
-        "sections",
-        "android",
-        "ios"
-      ]
-    },
-    "intro": "Use the section header component to group items in a list. It helps merchants to quickly see what items are related."
-  },
-  {
-    "frontMatter": {
       "name": "Select",
       "category": "Forms",
       "platforms": ["android", "ios", "web"],
