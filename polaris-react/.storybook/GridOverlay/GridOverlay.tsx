@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import debounce from 'lodash/debounce';
+import React, {useState} from 'react';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../src';
 import {classNames} from '../../src/utilities/css';

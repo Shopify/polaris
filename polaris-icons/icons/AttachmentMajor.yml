@@ -1,4 +1,4 @@
-name: attachment
+name: Attachment
 set: major
 description: Used to represent an attachment.
 keywords:

@@ -2,6 +2,9 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
+$video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
+  invert(1);
+
 .HomePage {
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
@@ -280,9 +283,20 @@
     video {
       width: 100%;
       height: auto;
-      filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
-        invert(1);
+      filter: $video-filter;
     }
+  }
+
+  .Poster {
+    position: absolute;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 60%;
+    height: 85%;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(33px);
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
   }
 
   @media screen and (max-width: $breakpointDesktop) {
@@ -299,7 +313,8 @@
       margin: 0 auto;
     }
 
-    .Video {
+    .Video,
+    .Poster {
       position: static;
       transform: none;
       max-width: 100%;

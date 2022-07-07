@@ -1,4 +1,4 @@
-name: calendar
+name: Calendar
 set: minor
 description: Used to denote the action of opening a date picker.
 keywords:

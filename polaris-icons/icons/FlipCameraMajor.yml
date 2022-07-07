@@ -1,4 +1,4 @@
-name: flip camera
+name: Flip camera
 set: major
 description: Used to represent an action to flip a mobile phone camera.
 keywords:

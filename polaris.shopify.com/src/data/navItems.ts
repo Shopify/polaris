@@ -184,17 +184,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sale channel.",
       },
-      // {
-      //   title: "App release notes",
-      //   url: "/foundations/content/release-notes",
-      // },
-      {
-        title: "Vocabulary",
-        url: "/foundations/content/vocabulary",
-        icon: Icons.VocabularyIcon,
-        excerpt:
-          "It’s important to use the same words, spelling, and capitalization consistently, otherwise things start looking messy and confusing for merchants.",
-      },
       {
         title: "Alternative text",
         url: "/foundations/content/alternative-text",

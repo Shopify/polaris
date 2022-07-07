@@ -83,7 +83,7 @@ function GlobalSearch({}: Props) {
   }, []);
 
   useEffect(() => {
-    setSearchResults(search(searchTerm));
+    setSearchResults(search(searchTerm.trim()));
     setActiveDescendant(0);
     scrollToTop();
   }, [searchTerm]);
@@ -276,6 +276,7 @@ function GlobalSearch({}: Props) {
                                       url={result.url}
                                       description={result.meta.description}
                                       name={result.meta.name}
+                                      status={result.meta.status}
                                       {...getItemProps({ resultIndex })}
                                     />
                                   );

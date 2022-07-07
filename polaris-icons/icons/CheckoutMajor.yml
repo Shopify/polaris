@@ -1,4 +1,4 @@
-name: checkout
+name: Checkout
 set: major
 description: Used to represent a shopping cart.
 keywords:

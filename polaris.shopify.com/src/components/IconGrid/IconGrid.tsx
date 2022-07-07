@@ -42,7 +42,6 @@ function IconGridItem({
     >
       <Tooltip
         ariaLabel={icon.description}
-        placement="top"
         renderContent={() => (
           <div>
             <p>
@@ -64,7 +63,7 @@ function IconGridItem({
               fadeIn={false}
             />
           </div>
-          <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
+          <span>{icon.name}</span>
         </button>
       </Tooltip>
     </li>

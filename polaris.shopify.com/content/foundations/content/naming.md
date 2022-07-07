@@ -693,8 +693,7 @@ confusing.
 
 Before naming a new product or feature:
 
-- Conduct an audit of our [vocabulary list](/content/vocabulary#navigation) to
-  narrow down your naming choices
+- Conduct an audit of existing names to narrow down your naming choices
 - Ask the support team to see if they think it’ll conflict with another name
 - Draft a test conversation around similar sounding names
 

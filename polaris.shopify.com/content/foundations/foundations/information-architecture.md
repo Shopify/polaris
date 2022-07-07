@@ -71,7 +71,7 @@ Although we want to give our merchants all the information they need to complete
 
 The content on the [Shopify Capital page](https://www.shopify.com/capital) on Shopify.com summarizes the benefits of receiving capital from Shopify at a high level. After scanning the summary, merchants have the option to access more information about the program with a link to the [docs on the Shopify Help Center](https://help.shopify.com/en/manual/your-account/shopify-capital?itcat=capital&itterm=capital-resources-help-docs). By progressively disclosing information in this way, we help merchants reach decisions faster and avoid the frustration and disorientation of front-loading with too much detail.
 
-![capital page landing page](/public_images/information-architecture/capitalpage-hero@2x.png)
+![capital page landing page](/public_images/information-architecture/capitalpage-hero@2x.jpg)
 
 ![capital page link to docs](/public_images/information-architecture/capitalpage-links@2x.png)
 

@@ -1,4 +1,4 @@
-name: alert
+name: Alert
 set: minor
 description: Used to give merchants more information about something they should be aware of.
 keywords:
