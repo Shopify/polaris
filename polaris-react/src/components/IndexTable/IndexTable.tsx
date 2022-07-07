@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {tokens, toPx} from '@shopify/polaris-tokens';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -18,6 +18,7 @@ import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
+import {useBreakpoints} from '../../utilities/breakpoints';
 import {
   useIndexValue,
   useIndexSelectionChange,
@@ -87,6 +88,7 @@ function IndexTableBase({
   } = useIndexValue();
   const handleSelectionChange = useIndexSelectionChange();
   const i18n = useI18n();
+  const {xsOnly} = useBreakpoints();
 
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
     useToggle(false);
@@ -185,7 +187,7 @@ function IndexTableBase({
           // update sticky header min-widths
           stickyTableHeadings.current.forEach((heading, index) => {
             let minWidth = 0;
-            if (index === 0 && (!isBreakpointsXS() || !selectable)) {
+            if (index === 0 && (!xsOnly || !selectable)) {
               minWidth = calculateFirstHeaderOffset();
             } else if (selectable && tableHeadingRects.current.length > index) {
               minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
@@ -202,7 +204,7 @@ function IndexTableBase({
         SIXTY_FPS,
         {leading: true, trailing: true, maxWait: SIXTY_FPS},
       ),
-    [calculateFirstHeaderOffset, selectable],
+    [calculateFirstHeaderOffset, selectable, xsOnly],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -784,13 +786,6 @@ function IndexTableBase({
     setIsSmallScreenSelectable(val);
   }
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(tokens.breakpoints['breakpoints-sm'].value) ?? '');
-};
 
 export interface IndexTableProps
   extends IndexTableBaseProps,

@@ -8,15 +8,12 @@ import React, {
   Children,
 } from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
-import {tokens, toPx} from '@shopify/polaris-tokens';
 
-import {debounce} from '../../utilities/debounce';
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
+import {useBreakpoints} from '../../utilities/breakpoints';
 import {Button} from '../Button';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
@@ -47,13 +44,6 @@ function getAllItemsOnPage<TItemType>(
     return idForItem(item, index);
   });
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(tokens.breakpoints['breakpoints-sm'].value) ?? '');
-};
 
 function defaultIdForItem<TItemType extends {id?: any}>(
   item: TItemType,
@@ -151,7 +141,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   );
   const [loadingPosition, setLoadingPositionState] = useState(0);
   const [lastSelected, setLastSelected] = useState<number>();
-  const [smallScreen, setSmallScreen] = useState(isBreakpointsXS());
+  const {xsOnly} = useBreakpoints();
   const forceUpdate: (x?: number) => void = useReducer<(x?: number) => number>(
     (x = 0) => x + 1,
     0,
@@ -173,26 +163,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       onSelectionChange([]);
     }
   };
-
-  const handleResize = debounce(
-    () => {
-      const newSmallScreen = isBreakpointsXS();
-      if (
-        selectedItems &&
-        selectedItems.length === 0 &&
-        selectMode &&
-        !newSmallScreen
-      ) {
-        handleSelectMode(false);
-      }
-
-      if (smallScreen !== newSmallScreen) {
-        setSmallScreen(newSmallScreen);
-      }
-    },
-    50,
-    {leading: true, trailing: true, maxWait: 50},
-  );
 
   const isSelectable = Boolean(
     (promotedBulkActions && promotedBulkActions.length > 0) ||
@@ -393,10 +363,10 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     if (selectedItems && selectedItems.length > 0 && !selectMode) {
       setSelectMode(true);
     }
-    if ((!selectedItems || selectedItems.length === 0) && !isBreakpointsXS()) {
+    if ((!selectedItems || selectedItems.length === 0) && !xsOnly) {
       setSelectMode(false);
     }
-  }, [selectedItems, selectMode]);
+  }, [selectedItems, selectMode, xsOnly]);
 
   useEffect(() => {
     forceUpdate();
@@ -482,7 +452,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       }
     }
 
-    if (newlySelectedItems.length === 0 && !isBreakpointsXS()) {
+    if (newlySelectedItems.length === 0 && !xsOnly) {
       handleSelectMode(false);
     } else if (newlySelectedItems.length > 0) {
       handleSelectMode(true);
@@ -507,7 +477,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       });
     }
 
-    if (newlySelectedItems.length === 0 && !isBreakpointsXS()) {
+    if (newlySelectedItems.length === 0 && !xsOnly) {
       handleSelectMode(false);
     } else if (newlySelectedItems.length > 0) {
       handleSelectMode(true);
@@ -515,7 +485,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
 
     let checkbox: CheckboxHandles | undefined;
 
-    if (isBreakpointsXS()) {
+    if (xsOnly) {
       checkbox = checkableButtons.get('bulkSm');
     } else if (newlySelectedItems.length === 0) {
       checkbox = checkableButtons.get('plain');
@@ -547,7 +517,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         paginatedSelectAllText={paginatedSelectAllText()}
         actions={bulkActions}
         disabled={loading}
-        smallScreen={smallScreen}
+        smallScreen={xsOnly}
       />
     </div>
   ) : null;
@@ -561,8 +531,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       <div className={styles.SortWrapper}>
         <Select
           label={i18n.translate('Polaris.ResourceList.sortingLabel')}
-          labelInline={!smallScreen}
-          labelHidden={smallScreen}
+          labelInline={!xsOnly}
+          labelHidden={xsOnly}
           options={sortOptions}
           onChange={onSortChange}
           value={sortValue}
@@ -640,7 +610,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
             );
             return (
               <div className={headerClassName}>
-                <EventListener event="resize" handler={handleResize} />
                 {headerWrapperOverlay}
                 <div className={styles.HeaderContentWrapper}>
                   {headerTitleMarkup}
