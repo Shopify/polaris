@@ -4,7 +4,6 @@ import {
   PortalsManagerContext,
   PortalsContainerElement,
 } from '../../utilities/portals';
-import {usePerformanceBenchmark} from '../../utilities/use-performance-benchmark';
 
 import {PortalsContainer} from './components';
 
@@ -14,7 +13,6 @@ export interface PortalsManagerProps {
 }
 
 export function PortalsManager({children, container}: PortalsManagerProps) {
-  usePerformanceBenchmark('PortalsManager');
   const [portalContainerElement, setPortalContainerElement] =
     useState<PortalsContainerElement>(null);
 

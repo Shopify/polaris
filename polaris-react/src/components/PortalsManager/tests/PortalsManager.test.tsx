@@ -1,5 +1,5 @@
 import React from 'react';
-import {mountWithApp} from 'tests/utilities';
+import {mount, mountWithApp} from 'tests/utilities';
 
 import {usePortalsManager} from '../../../utilities/portals';
 import {PortalsManager} from '../PortalsManager';
@@ -28,7 +28,7 @@ describe('<PortalsManager />', () => {
   it('acccepts a container prop and shares through context', () => {
     const element = document.createElement('div');
     element.id = 'CustomContainer';
-    const manager = mountWithApp(
+    const manager = mount(
       <PortalsManager container={element}>
         <TestConsumer />
       </PortalsManager>,
