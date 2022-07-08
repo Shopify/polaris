@@ -87,7 +87,6 @@ import {
   Combobox,
   Connected,
   ContextualSaveBar,
-  CustomProperties,
   DataTable,
   DatePicker,
   DescriptionList,

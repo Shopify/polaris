@@ -1,4 +1,4 @@
-import { TokenProperties } from "@shopify/polaris-tokens";
+import { MetaTokenProperties } from "@shopify/polaris-tokens";
 import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
@@ -7,7 +7,7 @@ export type MarkdownFile = {
   readme: string;
 };
 
-export interface TokenPropertiesWithName extends TokenProperties {
+export interface TokenPropertiesWithName extends MetaTokenProperties {
   name: string;
 }
 

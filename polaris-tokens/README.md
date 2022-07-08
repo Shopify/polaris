@@ -21,9 +21,16 @@ npm install @shopify/polaris-tokens
 Accessing all of the available token groups
 
 ```js
+// Token values only
 import {tokens} from '@shopify/polaris-tokens';
 
-console.log(tokens.motion);
+console.log(tokens.colors.background); // 'rgba(246, 246, 247, 1)'
+
+// Tokens with metadata
+import {metaTokens} from '@shopify/polaris-tokens';
+
+console.log(metaTokens.colors.background.value); // 'rgba(246, 246, 247, 1)'
+console.log(metaTokens.colors.background.description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
 ```
 
 #### CSS

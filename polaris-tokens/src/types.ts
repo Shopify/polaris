@@ -1,4 +1,38 @@
 export type Entry<T> = [keyof T, T[keyof T]];
+export type Entries<T> = Entry<T>[];
+
+export interface MetaTokenProperties {
+  description?: string;
+  value: string;
+}
+
+export interface MetaTokenGroup {
+  [token: string]: MetaTokenProperties;
+}
+
+export interface TokenGroup {
+  [token: string]: string;
+}
+
+export interface MetaTokens {
+  breakpoints: MetaTokenGroup;
+  colors: MetaTokenGroup;
+  depth: MetaTokenGroup;
+  legacy: MetaTokenGroup;
+  motion: MetaTokenGroup;
+  shape: MetaTokenGroup;
+  spacing: MetaTokenGroup;
+  typography: MetaTokenGroup;
+  zIndex: MetaTokenGroup;
+}
+
+export type Tokens = {
+  [Property in keyof MetaTokens]: TokenGroup;
+};
+
+export type ExtractValues<T extends MetaTokenGroup> = {
+  [K in keyof T]: T[K]['value'];
+};
 
 // The following utility types are copied directly from `type-fest`:
 // https://github.com/sindresorhus/type-fest

@@ -4,7 +4,7 @@ import {
   BreakpointsAliasDirection,
   BreakpointsTokenGroup,
   getMediaConditions,
-  tokens,
+  breakpoints,
 } from '@shopify/polaris-tokens';
 
 import {isServer} from './target';
@@ -55,7 +55,7 @@ type BreakpointsMatches = {
   [DirectionAlias in BreakpointsDirectionAlias]: boolean;
 };
 
-const breakpointsQueryEntries = getBreakpointsQueryEntries(tokens.breakpoints);
+const breakpointsQueryEntries = getBreakpointsQueryEntries(breakpoints);
 
 function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
   if (!isServer) {
