@@ -7,7 +7,7 @@ function CardExample() {
     <Card>
       <Card.Section flush>
         <Image
-          source="https://polaris.shopify.com/bundles/bc7087219578918d62ac40bf4b4f99ce.png"
+          source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
           alt="turtle illustration centered with body text and a button"
         />
       </Card.Section>
