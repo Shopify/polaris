@@ -1,10 +1,6 @@
 ---
 name: Page
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - page
   - breadcrumbs

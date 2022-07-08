@@ -45,7 +45,7 @@
     }
   },
   "scripts": {
-    "build": "run-s gen-media-queries build:types build:types-downlevel build:js build:docs build:validate",
+    "build": "run-s build:types build:types-downlevel build:js build:docs build:validate",
     "build:types": "tsc -b",
     "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
     "build:js": "rollup -c",
@@ -57,10 +57,9 @@
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules build build-internal",
-    "gen-media-queries": "node ./scripts/gen-media-queries.js",
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
-    "storybook": "yarn gen-media-queries && start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn gen-media-queries && build-storybook -o build-internal/storybook/static",
+    "storybook": "start-storybook -p 6006 --quiet",
+    "storybook:build": "build-storybook -o build-internal/storybook/static",
     "version": "node ./scripts/readme-update-version"
   },
   "dependencies": {

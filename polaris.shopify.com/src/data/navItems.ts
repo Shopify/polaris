@@ -42,10 +42,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Everything we create at Shopify has an underlying foundation of information architecture.",
       },
-      // {
-      //   title: "Onboarding flows",
-      //   url: "/foundations/foundations/designing-onboarding-flows",
-      // },
       {
         icon: Icons.CurrencyIcon,
         url: "/foundations/foundations/formatting-localized-currency",
@@ -211,13 +207,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Polaris provides many layout patterns that help you create efficient and familiar interfaces.",
       },
-      // {
-      //   title: "Mobile patterns",
-      //   url: "/foundations/patterns/mobile-patterns",
-      //   icon: Icons.MobilePatternsIcon,
-      //   excerpt:
-      //     "A collection of patterns to help design Shopify’s own iOS and Android apps.",
-      // },
       {
         title: "Home cards",
         url: "/foundations/patterns/home-cards",

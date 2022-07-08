@@ -31,21 +31,7 @@ Use to notify merchants that their requested action is being processed.
 <Spinner accessibilityLabel="Spinner example" size="large" />
 ```
 
-<!-- content-for: android -->
-
-![Material design spinner for Android](/public_images/components/Spinner/android/default@2x.gif)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Apple’s spinner for iOS](/public_images/components/Spinner/ios/default@2x.gif)
-
-<!-- /content-for -->
-
 ### Small spinner
-
-<!-- example-for: web -->
 
 Smaller than the default spinner.
 
@@ -132,13 +118,9 @@ function SpinnerWithFocusManagement() {
 
 ## Accessibility
 
-<!-- content-for: web -->
-
 SVGs are often conveyed inconsistently to assistive technologies. The `Spinner` component’s accessibility is also highly contextual. When the parent component is focusable, you’ll need to set the `hasFocusableParent` prop for the appropriate `role` attribute to be applied.
 
 For optimal user experience, use the `accessibilityLabel` prop to let assistive technology users know the purpose of the spinner.
-
-<!-- /content-for-->
 
 ---
 

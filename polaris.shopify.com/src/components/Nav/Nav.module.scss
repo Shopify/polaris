@@ -9,18 +9,6 @@
 
   ul ul {
     position: relative;
-    // padding-left: 0.75rem;
-
-    // &::before {
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   top: 0.4rem;
-    //   bottom: 0.4rem;
-    //   width: 1px;
-    //   left: 0;
-    //   background: var(--border-color);
-    // }
   }
 
   > ul > li {
@@ -39,7 +27,9 @@
   }
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.33rem;
     padding: 1px 0;
     position: relative;
     color: inherit;

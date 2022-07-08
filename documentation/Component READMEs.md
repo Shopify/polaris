@@ -94,7 +94,6 @@ Restrict an example to a set of platforms:
 
 ````markdown
 ---
-
 ## Examples
 
 ### No example-for meta
@@ -104,32 +103,6 @@ This example is for all platforms (must contain React code).
 ```jsx
 <MyComponent aProp={true} />
 ```
-
-<!-- content-for: android -->
-
-Just for Android.
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-Just for iOS.
-
-<!-- /content-for -->
-
-### This is an iOS-only example
-
-<!-- example-for: ios -->
-
-Example description.
-
-### This is an example for iOS and Android
-
-<!-- example-for: ios, android -->
-
-Example description.
-````
-
 ---
 
 ## Troubleshooting
@@ -158,3 +131,4 @@ A `---` may be missing before the `## Examples` heading. Add it so that our pars
 ```
 
 This error is reported when an example does not contain valid JavaScript. The values at the end denote the line and character offset of the error. In this example `18:20` denotes that the error is on line 18, character 20 of the "Autocomplete with loading" example. Look for typos or other invalid syntax in that area.
+````

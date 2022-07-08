@@ -94,8 +94,6 @@ Options should:
 
 ### Default select
 
-<!-- content-for: web -->
-
 Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
 
 ```jsx
@@ -121,27 +119,7 @@ function SelectExample() {
 }
 ```
 
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-The iOS picker expands in-line. Merchants scroll to select the item they want.
-
-![iOS select, and select with option menu](/public_images/components/Select/ios/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-The Android menu is similar in behavior to the web dropdown.
-
-![Android select, and select with option menu](/public_images/components/Select/android/default@2x.png)
-
-<!-- /content-for -->
-
 ### Select with inline label
-
-<!-- example-for: web -->
 
 Use only for cases where the select must fit on a single line, such as in a toolbar.
 
@@ -188,21 +166,7 @@ Use for selections that aren’t currently available. The surrounding interface 
 />
 ```
 
-<!-- content-for: ios -->
-
-![Disabled select component on iOS](/public_images/components/Select/ios/disabled@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-![Disabled select component on Android](/public_images/components/Select/android/disabled@2x.png)
-
-<!-- /content-for -->
-
 ### Select with prefix
-
-<!-- example-for: web -->
 
 Renders any React element to the left of individual select options. Does not show in the dropdown.
 
@@ -238,8 +202,6 @@ function PrefixExample() {
 
 ### Select with validation error
 
-<!-- example-for: web -->
-
 Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
 
 ```jsx
@@ -261,8 +223,6 @@ function ValidationErrorExample() {
 ```
 
 ### Select with separate validation error
-
-<!-- example-for: web -->
 
 Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 

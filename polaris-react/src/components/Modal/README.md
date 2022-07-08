@@ -222,8 +222,6 @@ Body content should be:
 
 ### Basic modal
 
-<!-- example-for: web -->
-
 Use as the default option for a modal.
 
 ```jsx
@@ -340,18 +338,6 @@ function ModalWithPrimaryActionExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Modal with primary action on Android](/public_images/components/Modal/android/information@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Modal with primary action on iOS](/public_images/components/Modal/ios/information@2x.png)
-
-<!-- /content-for -->
-
 ### Modal with primary and secondary actions
 
 Use to let merchants take key actions at the bottom of the modal.
@@ -443,21 +429,7 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Modal with primary and secondary actions on Android](/public_images/components/Modal/android/basic@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Modal with primary and secondary actions on iOS](/public_images/components/Modal/ios/basic@2x.png)
-
-<!-- /content-for -->
-
 ### Large modal
-
-<!-- example-for: web -->
 
 Use when you need to increase the width of your modal.
 
@@ -516,8 +488,6 @@ function LargeModalExample() {
 
 ### Small modal
 
-<!-- example-for: web -->
-
 Use when you need to decrease the width of your modal.
 
 ```jsx
@@ -575,8 +545,6 @@ function SmallModalExample() {
 
 ### Modal without a title
 
-<!-- example-for: web -->
-
 A title is required for accessibility, but you may hide it.
 
 ```jsx
@@ -623,8 +591,6 @@ function ModalWithoutTitleExample() {
 
 ### Modal with scroll listener
 
-<!-- example-for: web -->
-
 Use to implement infinite scroll of modal content.
 
 ```jsx
@@ -662,8 +628,6 @@ function ModalWithScrollListenerExample() {
 ```
 
 ### Modal with activator ref
-
-<!-- example-for: web -->
 
 Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal.
 See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
@@ -722,8 +686,6 @@ function ModalExample() {
 
 ### Modal without an activator prop
 
-<!-- example-for: web -->
-
 Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
 See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
@@ -776,24 +738,6 @@ function ModalExample() {
 }
 ```
 
-### Warning modal
-
-<!-- example-for: android, ios -->
-
-Use to make it clear to the merchant that the action is potentially dangerous. Only use this option when the merchant is about to perform an action that can’t be undone or is difficult to undo.
-
-<!-- content-for: android -->
-
-![Warning modal on Android](/public_images/components/Modal/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Warning modal on iOS](/public_images/components/Modal/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
@@ -806,26 +750,6 @@ Use to make it clear to the merchant that the action is potentially dangerous. O
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 - Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
 - After a modal is closed, in order to return focus to the button that launched it, pass the button to the modal as an `activator`.
@@ -836,5 +760,3 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 - While the modal is open, keyboard focus shouldn’t leave the modal
 - Merchants can dismiss the modal with the keyboard by activating the `X` button, the `Cancel` button if one is provided, or by pressing the <kbd>Esc</kbd> key
 - After a modal is closed, focus returns to the button that launched it
-
-<!-- /content-for -->
