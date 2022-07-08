@@ -170,7 +170,7 @@ The [card](/components/structure/card) component has this built in.
 
 The The [card](/components/structure/card) component automatically adds vertical space between it and any preceding card.
 
-For horizontal spacing, use the [layout](/components/structure/layout) component to create multi-column layouts.
+For horizontal spacing, use the [layout](/components/layout) component to create multi-column layouts.
 
 <!-- end -->
 
