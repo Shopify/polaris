@@ -38,7 +38,7 @@ export interface TextProps {
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
-  variant?: Variant;
+  variant: Variant;
   /** Visually hide the text */
   visuallyHidden?: boolean;
 }
@@ -50,14 +50,14 @@ export const Text = ({
   color,
   fontWeight = 'regular',
   truncate = false,
-  variant = 'bodyMd',
+  variant,
   visuallyHidden = false,
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
   const className = classNames(
     styles.root,
-    variant && styles[variant],
+    styles[variant],
     fontWeight && styles[fontWeight],
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
