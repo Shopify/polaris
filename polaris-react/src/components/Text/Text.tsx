@@ -32,6 +32,7 @@ export interface TextProps {
   fontWeight?: FontWeight;
   truncate?: boolean;
   variant?: Variant;
+  visuallyHidden?: boolean;
 }
 
 export const Text = ({
@@ -42,8 +43,9 @@ export const Text = ({
   fontWeight = 'regular',
   truncate = false,
   variant = 'bodyMd',
+  visuallyHidden = false,
 }: TextProps) => {
-  const Component = as || 'p';
+  const Component = as || (visuallyHidden ? 'span' : 'p');
 
   const className = classNames(
     styles.root,
@@ -53,6 +55,7 @@ export const Text = ({
     align && styles[align],
     color && styles[color],
     truncate && styles.truncate,
+    visuallyHidden && styles.visuallyHidden,
   );
 
   return <Component className={className}>{children}</Component>;
