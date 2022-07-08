@@ -24,4 +24,15 @@ describe('<PortalsManager />', () => {
     );
     expect(manager.text()).toBe('PolarisPortalsContainer');
   });
+
+  it('acccepts a container prop and shares through context', () => {
+    const element = document.createElement('div');
+    element.id = 'CustomContainer';
+    const manager = mountWithApp(
+      <PortalsManager container={element}>
+        <TestConsumer />
+      </PortalsManager>,
+    );
+    expect(manager.text()).toBe('CustomContainer');
+  });
 });
