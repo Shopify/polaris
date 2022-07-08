@@ -100,11 +100,11 @@ $typography-condensed: 640px;
 @mixin text-style-display-x-large {
   font-size: 27px;
   font-weight: var(--p-font-weight-semibold);
-  line-height: var(--p-line-height-6);
+  line-height: 36px;
 
   @include when-typography-not-condensed {
     font-size: 42px;
-    line-height: var(--p-line-height-7);
+    line-height: 44px;
   }
 }
 

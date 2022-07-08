@@ -74,13 +74,13 @@
 
 .displayMd {
   font-size: var(--p-font-fontsize-600);
-  line-height: 40px;
+  line-height: var(--p-line-height-6);
 }
 
 .displayLg {
   font-size: var(--p-font-fontsize-700);
   font-weight: var(--p-font-weight-semibold);
-  line-height: 48px;
+  line-height: var(--p-line-height-7);
 }
 
 .headingSm {

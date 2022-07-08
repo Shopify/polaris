@@ -8,7 +8,7 @@
 
 @function control-vertical-padding() {
   @return calc(
-    (var(--p-line-height-6) - var(--p-line-height-3) - var(--p-space-05)) / 2
+    (36px - var(--p-line-height-3) - var(--p-space-05)) / 2
   );
 }
 

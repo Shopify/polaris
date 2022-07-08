@@ -59,9 +59,9 @@ export const typography = {
     value: '32px',
   },
   'line-height-6': {
-    value: '36px',
+    value: '40px',
   },
   'line-height-7': {
-    value: '44px',
+    value: '48px',
   },
 };

@@ -22,7 +22,7 @@ $nav-animation-variables: (
   @include unstyled-button;
   font-size: var(--p-font-fontsize-200);
   font-weight: var(--p-font-weight-semibold);
-  line-height: var(--p-line-height-6);
+  line-height: 36px;
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
