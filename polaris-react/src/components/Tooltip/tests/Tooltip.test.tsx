@@ -100,12 +100,14 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    jest.spyOn(geometricUtilities, 'getRectForNode').mockReturnValue({
-      left: 40,
-      top: 10,
-      width: 100,
-      height: 100,
-      center: {x: 20, y: 50},
+    jest.spyOn(geometricUtilities, 'getRectForNode').mockImplementation(() => {
+      return {
+        left: 40,
+        top: 10,
+        width: 100,
+        height: 100,
+        center: {x: 20, y: 50},
+      };
     });
 
     findWrapperComponent(tooltip)!.trigger('onMouseOver');
@@ -114,13 +116,13 @@ describe('<Tooltip />', () => {
 
     childWrapperComponent!.trigger('onMouseMove', {
       clientX: 120,
-      clientY: 60,
+      clientY: 80,
     });
 
     expect(tooltip!.find(TooltipOverlay)!.props.coordinates).toStrictEqual({
       cursorX: 120,
       x: 30,
-      y: 50,
+      y: 20,
     });
   });
 
