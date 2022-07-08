@@ -127,6 +127,7 @@ import {
   ResourceItem,
   ResourceList,
   ResourcePicker,
+  SearchableListbox,
   Scrollable,
   ScrollLock,
   Select,

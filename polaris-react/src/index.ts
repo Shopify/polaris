@@ -290,6 +290,12 @@ export type {ResourceItemProps} from './components/ResourceItem';
 export {ResourceList} from './components/ResourceList';
 export type {ResourceListProps} from './components/ResourceList';
 
+export {
+  SearchableListbox,
+  type SearchableListboxProps,
+  type SearchableListItem,
+} from './components/SearchableListbox';
+
 export {Scrollable} from './components/Scrollable';
 export type {ScrollableProps} from './components/Scrollable';
 
