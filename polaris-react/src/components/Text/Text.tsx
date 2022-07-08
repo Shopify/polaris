@@ -18,25 +18,33 @@ type Variant =
   | 'bodyMd'
   | 'bodyLg';
 
-type Align = 'inherit' | 'start' | 'center' | 'end' | 'justify';
+type Alignment = 'inherit' | 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'positive' | 'negative' | 'warning' | 'subdued';
 
 export interface TextProps {
-  align?: Align;
+  /** Adjust horizontal alignment of text */
+  alignment?: Alignment;
+  /** The element type */
   as: Element;
+  /** Text to display */
   children: ReactNode;
+  /** Adjust color of text */
   color?: Color;
+  /** Adjust weight of text */
   fontWeight?: FontWeight;
+  /** Truncate text overflow with ellipsis */
   truncate?: boolean;
+  /** Typographic style of text */
   variant?: Variant;
+  /** Visually hide the text */
   visuallyHidden?: boolean;
 }
 
 export const Text = ({
-  align = 'inherit',
+  alignment = 'inherit',
   as,
   children,
   color,
@@ -51,8 +59,8 @@ export const Text = ({
     styles.root,
     variant && styles[variant],
     fontWeight && styles[fontWeight],
-    (align || truncate) && styles.block,
-    align && styles[align],
+    (alignment || truncate) && styles.block,
+    alignment && styles[alignment],
     color && styles[color],
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
