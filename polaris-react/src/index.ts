@@ -336,6 +336,9 @@ export type {TabsProps} from './components/Tabs';
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';
 
+export {Text} from './components/Text';
+export type {TextProps} from './components/Text';
+
 export {TextContainer} from './components/TextContainer';
 export type {TextContainerProps} from './components/TextContainer';
 
