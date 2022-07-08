@@ -144,8 +144,4 @@ function AccountConnectionExample() {
 
 ## Accessibility
 
-<!-- content-for: web -->
-
 See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/actions/setting-toggle) to turn connections on and off.
-
-<!-- /content-for-->

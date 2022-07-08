@@ -70,18 +70,6 @@ Use when the merchant has entered information that is not valid into multiple fi
 <InlineError message="Store name is required" fieldID="myFieldID" />
 ```
 
-<!-- content-for: android -->
-
-![Inline error for Android](/public_images/components/InlineError/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Inline error for iOS](/public_images/components/InlineError/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
@@ -92,28 +80,6 @@ Use when the merchant has entered information that is not valid into multiple fi
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 - Use the required `fieldID` prop to give the inline error a unique `id`. This ties the error to a form field using `aria-describedby` so that it's conveyed to screen reader users.
 - Use the required `message` prop to provide the text that describes the error.
 - The inline error [icon](https://polaris.shopify.com/design/icons) helps visually identify the error message for merchants who have difficulty seeing [colors](https://polaris.shopify.com/design/colors) or who use settings that remove color from the page.
-
-<!-- /content-for -->

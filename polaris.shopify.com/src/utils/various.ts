@@ -20,6 +20,7 @@ export const getComponentNav = (): NavItem[] => {
       children: components.map((component) => ({
         title: component.frontMatter.name,
         url: `/components/${slugify(component.frontMatter.name)}`,
+        status: component.frontMatter.status,
       })),
     },
   ];
@@ -58,14 +59,6 @@ export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
   });
 
   return urls;
-};
-
-export const getTitleTagValue = (title?: string) => {
-  const siteName = "Shopify Polaris";
-  if (title) {
-    return `${title} — ${siteName}`;
-  }
-  return siteName;
 };
 
 export const className = (

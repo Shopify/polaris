@@ -2,10 +2,6 @@
 name: Spinner
 category: Feedback indicators
 releasedIn: 1.7.0
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - spinner
   - loader
@@ -37,13 +33,9 @@ Spinners are used to notify merchants that their action is being processed. For 
 
 ## Accessibility
 
-<!-- content-for: web -->
-
 SVGs are often conveyed inconsistently to assistive technologies. The `Spinner` component’s accessibility is also highly contextual. When the parent component is focusable, you’ll need to set the `hasFocusableParent` prop for the appropriate `role` attribute to be applied.
 
 For optimal user experience, use the `accessibilityLabel` prop to let assistive technology users know the purpose of the spinner.
-
-<!-- /content-for-->
 
 ---
 

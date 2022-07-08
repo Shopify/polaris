@@ -50,34 +50,16 @@ You'll find more specific guidelines on how to adapt your tone to different situ
 
 As Shopify’s voice, we should always:
 
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/CustomersMajor.svg)
-
 ### Be real, but not too tough or overly familiar
 
 - Use business casual language—be plain-spoken, not pretentious or overly playful
 - Be upfront and honest with merchants, even if we make a mistake
 - Communicate with clarity and empathy—be direct, not insensitive
 
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/HintMajor.svg)
-
 ### Be proactive, but not needy or pushy
 
 - Offer merchants sincere encouragement and practical advice
 - Clearly explain how merchants are impacted when something goes wrong, but don’t overexplain with redundant content
-
-</div>
-</div>
-
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/WandMajor.svg)
 
 ### Be dynamic, but not scattered or impulsive
 
@@ -85,19 +67,11 @@ As Shopify’s voice, we should always:
 - Avoid words that generalize success like “every,” “all,” and “most”
 - Use language that supports action, movement, and progress
 
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/NavigationMajor.svg)
-
 ### Guide, but don’t handhold or prescribe
 
 - Use expertise to help merchants succeed; don’t talk down to them
 - Be specific when explaining benefits without making things sound better than they are
 - Teach people the “why” and “how” behind actions—don’t just tell them to do something
-
-</div>
-</div>
 
 ---
 

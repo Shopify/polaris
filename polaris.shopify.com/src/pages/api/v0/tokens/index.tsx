@@ -1,6 +1,5 @@
 import { tokens } from "@shopify/polaris-tokens";
 import type { NextApiRequest, NextApiResponse } from "next";
-import { getTitleTagValue } from "../../../../utils/various";
 
 import { staticTokenGroupKeys } from "./[tokens]";
 
@@ -17,7 +16,7 @@ const html = `
 <html>
     <head>
         <meta charset="utf-8">
-        <title>${getTitleTagValue("API")}</title>
+        <title>API - Shopify Polaris</title>
         <style>
             td, th {
                 border: 1px solid #dddddd;

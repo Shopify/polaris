@@ -617,7 +617,7 @@ function AutocompleteExample() {
 
 ### Autocomplete with action
 
-Use to indicate there are no search results.
+Use to help merchants complete an action quickly.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
@@ -710,7 +710,7 @@ function AutocompleteActionBeforeExample() {
 
 ### Autocomplete with wrapping action
 
-Use to indicate there are no search results.
+Use to help merchants complete an action quickly with wrapping lines of text.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
@@ -805,7 +805,7 @@ function AutocompleteActionBeforeExample() {
 
 ### Autocomplete with destructive action
 
-Use to indicate there are no search results.
+Use to help merchants complete a destructive action quickly.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
@@ -903,26 +903,6 @@ function AutocompleteActionBeforeExample() {
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 ### Structure
 
 The autocomplete component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox) and the [Aria 1.2 Listbox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
@@ -948,5 +928,3 @@ Require that merchants make a selection from the autocomplete to complete a task
 - Give the autocomplete text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Access the list of options with the up and down arrow keys
 - Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key
-
-<!-- /content-for -->

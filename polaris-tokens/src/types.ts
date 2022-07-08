@@ -1,3 +1,5 @@
+export type Entry<T> = [keyof T, T[keyof T]];
+
 // The following utility types are copied directly from `type-fest`:
 // https://github.com/sindresorhus/type-fest
 
