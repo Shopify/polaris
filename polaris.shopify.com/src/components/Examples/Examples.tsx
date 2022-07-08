@@ -3,7 +3,6 @@ import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
 import Image from "../Image";
-import iconChevronDown from "../../../public/chevron-down.svg";
 
 export type Example = {
   code: string;
@@ -76,7 +75,7 @@ const Examples = (props: Props) => {
         </select>
         <div className={styles.SelectIcon}>
           <Image
-            src={iconChevronDown}
+            src="/icons/CaretDownMinor.svg"
             alt="Down Arrow"
             width={16}
             height={16}
