@@ -44,165 +44,78 @@ message immediately and as close to the source of the problem as possible.
 
 ### [Text field validation error](#form-validation)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        An error applies to a text field and feedback can
-        be provided while merchants are typing
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
+
+- An error applies to a text field and feedback can be provided while merchants are typing
 
 ![Text field validation](/public_images/errors-page/text-field-validation-error@2x.png)
 
-</div>
-</div>
-</div>
-
 ### [Settings warning](#settings-warning)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        The form input is valid, but you want to warn merchants
-        of a consequence they might not expect
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
+Use when:
 
-<div class="Image Image--border">
+- The form input is valid, but you want to warn merchants of a consequence they might not expect
 
 ![Settings warning error](/public_images/errors-page/settings-warning@2x.png)
 
-</div>
-</div>
-</div>
-
 ### [Page-level banner: critical or warning](#page-level-banners)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>An error applies to the entire page</li>
-      <li>The error is far down the page and it’s critical merchants see the message</li>
-      <li>Multiple validation errors on the page need to be summarized</li>
-      <li>The error was delayed and it’s okay to inform merchants of the problem when they return to the page</li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
+
+- An error applies to the entire page
+- The error is far down the page and it’s critical merchants see the message
+- Multiple validation errors on the page need to be summarized
+- The error was delayed and it’s okay to inform merchants of the problem when they return to the page
 
 ![Yellow page level banner](/public_images/errors-page/page-level-warning-banner@2x.png)
 
-</div>
-<div class="Image Image--border">
-
 ![Red page level banner](/public_images/errors-page/page-level-critical-banner@2x.png)
-
-</div>
-</div>
-</div>
 
 ### [Banner in a card or modal: critical or warning](#banners-in-cards-modals)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>An error applies to a single card within the page, a single section within a card, or a modal</li>
-      <li>You need to direct merchants to a page with multiple sections and you want to visually call out the section with the error</li>
-    </ul>
-  </div>
-  <div class="Annotated__Media">
+Use when:
+
+- An error applies to a single card within the page, a single section within a card, or a modal
+- You need to direct merchants to a page with multiple sections and you want to visually call out the section with the error
 
 ![Yellow section level banner](/public_images/errors-page/section-level-warning@2x.png)
 ![Yellow field level banner](/public_images/errors-page/field-level-warning-02@2x.png)
 
-  </div>
-</div>
-
 ### [Exception list: critical or warning](#exception-list-errors)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>A message placed within or next to a component can help merchants make better decisions about routine tasks</li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image">
+Use when:
+
+- A message placed within or next to a component can help merchants make better decisions about routine tasks
 
 ![Warning exception list error](/public_images/errors-page/exception-list-warning@2x.png)
 
-</div>
-<div class="Image Image--border">
-
 ![Critical exception list error](/public_images/errors-page/high-risk-fraud@2x.png)
-
-</div>
-</div>
-</div>
 
 ### [Home notification: critical or warning](#home-notifications)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Note: Home notifications should rarely be used for errors. Always attempt to display an error close to the source of the problem.<br />Use when:</p>
-    <ul>
-      <li>A high-priority task must be completed immediately to continue using Shopify or avoid losing money</li>
-      <li>A feature doesn’t have a dedicated details page</li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Note: Home notifications should rarely be used for errors. Always attempt to display an error close to the source of the problem.
+
+Use when:
+
+- A high-priority task must be completed immediately to continue using Shopify or avoid losing money
+- A feature doesn’t have a dedicated details page
 
 ![Yellow home notification](/public_images/errors-page/home-notification-warning@2x.png)
 
-</div>
-<div class="Image Image--border">
-
 ![Red home notification](/public_images/errors-page/home-notification-critical@2x.png)
-
-</div>
-</div>
-</div>
 
 ### [Admin unavailable](#admin-unavailable-errors)
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>A server error is preventing an entire page from being displayed, like with 400 or 500-series server errors</li>
-      <li>Account permissions are preventing someone from accessing Shopify</li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
+
+- A server error is preventing an entire page from being displayed, like with 400 or 500-series server errors
+- Account permissions are preventing someone from accessing Shopify
 
 ![Admin page not found error](/public_images/errors-page/page-not-found@2x.png)
 
-</div>
-<div class="Image Image--border">
-
 ![Admin page load error](/public_images/errors-page/admin-error@2x.png)
 
-</div>
-</div>
-</div>
-
 ---
-
-<a name="colors"></a>
 
 ## Error colors
 
@@ -213,8 +126,6 @@ money or their store might be suspended.
 
 Yellow error messages still demand attention, but are more appropriate for
 messages that are part of a daily workflow.
-
-<a name="colors-critical"></a>
 
 ### Red (critical)
 
@@ -258,8 +169,6 @@ standard convention merchants are used to seeing outside of Shopify.
 
 <!-- end -->
 
-<a name="colors-warning"></a>
-
 ### Yellow (warning)
 
 Use warning messages to:
@@ -292,103 +201,53 @@ Examples of warning message types:
 
 ---
 
-<a name="anti-patterns"></a>
-
 ## Anti-patterns
 
 ### Avoid using toast for error messages
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>
-      Although error toast is still available, we discourage its use. Toast messages are too short to adequately explain what went wrong and how to fix the problem. Because the toast component appears at the bottom of the screen and disappears after 3 seconds, it can easily be missed. Reserve toast for errors not caused by merchants, like a connection issue. Always try to use a banner to inform merchants about persistent errors.
-    </p>
-  </div>
-<div class="Annotated__Media">
+Although error toast is still available, we discourage its use. Toast messages are too short to adequately explain what went wrong and how to fix the problem. Because the toast component appears at the bottom of the screen and disappears after 3 seconds, it can easily be missed. Reserve toast for errors not caused by merchants, like a connection issue. Always try to use a banner to inform merchants about persistent errors.
+
 <!-- usageblock -->
 
 #### Don’t
-
-<div class="TypographyUsageBlockImg TypographyUsageBlockImgHeight">
-<div class="Image Image--border">
 
 ![Toast error message](/public_images/errors-page/dont-toast-error@2x.png)
 
-</div>
-</div>
-
-<!-- end -->
-
-</div>
-</div>
-
 ### Don’t use modals for errors
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>
-      Modal dialogs are a good way to ask merchants to confirm a
-      destructive action, but not to tell them an error has occurred.
-      Modals block merchants until a decision is made, which is
-      likely to make merchants feel pressured. Most errors don’t need
-      to block access to the rest of the feature.
-    </p>
-  </div>
-<div class="Annotated__Media">
+Modal dialogs are a good way to ask merchants to confirm a
+destructive action, but not to tell them an error has occurred.
+Modals block merchants until a decision is made, which is
+likely to make merchants feel pressured. Most errors don’t need
+to block access to the rest of the feature.
+
 <!-- usageblock -->
 
 #### Don’t
-
-<div class="TypographyUsageBlockImg TypographyUsageBlockImgHeight">
-<div class="Image Image--border">
 
 ![Modal error message](/public_images/errors-page/dont-modals-for-errors@2x.png)
 
-</div>
-</div>
+### Avoid using [home notifications](#home-notifications) for errors
+
+Home notification errors are for high-priority tasks that merchants
+must complete immediately to continue using Shopify or prevent
+a negative impact to their business, like losing money.
+One exception is errors for features that don‘t have a
+dedicated details page.
 
 <!-- end -->
 
-</div>
-</div>
-
-### Avoid using [home notifications](#home-notifications) for errors
-
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>
-      Home notification errors are for high-priority tasks that merchants
-      must complete immediately to continue using Shopify or prevent
-      a negative impact to their business, like losing money.
-      One exception is errors for features that don‘t have a
-      dedicated details page.
-    </p>
-  </div>
-<div class="Annotated__Media">
 <!-- usageblock -->
 
 #### Don’t
 
-<div class="TypographyUsageBlockImg TypographyUsageBlockImgHeight">
-<div class="Image Image--border">
-
 ![Home notification error message](/public_images/errors-page/dont-home-notification@2x.png)
-
-</div>
-</div>
 
 <!-- end -->
 
-</div>
-</div>
-
 ---
 
-<a name="form-validation"></a>
-
 ## Form validation
-
-<a name="validate-while-typing"></a>
 
 ### Text field validation
 
@@ -407,40 +266,17 @@ Don’t use when:
   [validation after form submission](#validate-on-submit).
 - The field is empty. Merchants might tab through a form before filling it out, and errors on empty fields can cause confusion and frustration.
 
-### Component:
+### Component
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        <a href="/components/forms/text-field">Text field</a>
-      </li>
-    </ul>
-    <h3>Content:</h3>
-    <ul>
-      <li>
-        Use two or three words to explain what’s wrong or what’s
-        needed to fix the problem.
-      </li>
-      <li>
-        Avoid using the word "invalid" to define an error. When appropriate, use "not valid" instead.
-      </li>
-      <li>
-        Since the message is directly below the text field, the copy only
-        needs to explain why the error happened. Optionally, the message can
-        clarify what to do next or offer a one-click fix.
-      </li>
-    </p>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+- [Text field](/components/text-field)
+
+### Content
+
+- Use two or three words to explain what’s wrong or what’s needed to fix the problem.
+- Avoid using the word "invalid" to define an error. When appropriate, use "not valid" instead.
+- Since the message is directly below the text field, the copy only needs to explain why the error happened. Optionally, the message can clarify what to do next or offer a one-click fix.
 
 ![Text field validation error](/public_images/errors-page/text-field-validation-error-no-cursor@2x.png)
-
-</div>
-
-</div>
-</div>
 
 **Usage**
 
@@ -451,49 +287,27 @@ Merchants can be considered to be finished typing only when keyboard focus
 moves away from the field and there is at least one character in the field. This
 helps avoid marking the field as not valid before merchants are really done typing.
 
-<div class="Image">
-
 ![Initial validation check with purple border](/public_images/errors-page/text-field-validation-purple-incorrect-input@2x.png)
-
-</div>
 
 If the validation check fails, show an error message below the field.
 
-<div class="Image">
-
 ![Text field turns red](/public_images/errors-page/text-field-validation-error-no-cursor@2x.png)
-
-</div>
 
 Once a field has an error, complete validation checks after each keystroke.
 
-<div class="Image">
-
 ![Text field validation with cursor by incorrect semi colon](/public_images/errors-page/text-field-validation-cursor@2x.png)
-
-</div>
 
 Remove the error message as soon as the input becomes valid so merchants can
 immediately tell they fixed the issue.
 
-<div class="Image">
-
 ![Text field validation with purple border](/public_images/errors-page/text-field-validation-purple-border-cursor@2x.png)
-
-</div>
 
 If the validation process is less than a second but not instant, show a spinner
 on the field to indicate validation progress.
 
-<div class="Image">
-
 ![Text field validation in loading state with spinner](/public_images/errors-page/text-field-validation-loading@2x.png)
 
-</div>
-
 ---
-
-<a name="validate-on-submit"></a>
 
 ## Validate on submit
 
@@ -516,58 +330,35 @@ Don’t use when:
   data. For example, a search form that returns no results should display an
   empty state, rather than a validation error.
 
-### Component:
+### Component
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        <a href="/components/feedback-indicators/banner#navigation">Banner</a>
-      </li>
-    </ul>
-    <p>And one or more of the following:</p>
-    <ul>
-      <li>[Text field]</li>
-      <li>[Select]</li>
-      <li>[Choice list]</li>
-      <li>[Checkbox]</li>
-      <li>[Radio button]</li>
-    </ul>
-    <h3>Content:</h3>
-    <p>Banner heading:</p>
-    <ul>
-      <li>Use a colon to introduce the list.</li>
-      <li>
-        Make the heading instructional. Don’t just call out that there
-        are {x} number of errors.
-      </li>
-    </ul>
-    <p>Banner body text:</p>
-    <ul>
-      <li>
-        Use the <a href="/components/lists-and-tables/list#navigation">list component</a> to itemize the errors
-      </li>
-      <li>
-        Start each list item with the label of the field that isn't valid,
-        and describe the action needed to fix it
-      </li>
-    </ul>
-    <p>Individual field error messages:<p>
-    <ul>
-      <li>
-        See content guidelines for <a href="#validate-while-typing">validation while typing</a>
-      </li>
-    </ul>
+- [Banner](/components/banner#navigation)
 
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+And one or more of the following:
+
+- [Text field]
+- [Select]
+- [Choice list]
+- [Checkbox]
+- [Radio button]
+
+### Content
+
+Banner heading
+
+- Use a colon to introduce the list.
+- Make the heading instructional. Don’t just call out that there are {x} number of errors.
+
+Banner body text
+
+- Use the [list component](/components/list#navigation) to itemize the errors
+- Start each list item with the label of the field that isn't valid, and describe the action needed to fix it
+
+Individual field error messages:
+
+- See content guidelines for [validation while typing](#validate-while-typing)
 
 ![Red form validation banner](/public_images/errors-page/validation-banner-red@2x.png)
-
-</div>
-</div>
-</div>
 
 Rather than pointing out that there are {x} number of errors, be more
 descriptive. Explain that in order to save or continue, {x} number of fields
@@ -591,11 +382,7 @@ can’t be blank.“
 
 Always indicate submission progress. If the fields aren't valid, don’t clear or alter them on behalf of merchants during validation.
 
-<div class="Image Image--border">
-
 ![Spinner displaying on save](/public_images/errors-page/submission-progress@2x.png)
-
-</div>
 
 If the form submission has a single error:
 
@@ -603,11 +390,7 @@ If the form submission has a single error:
 - Focus the field
 - Show an error message below the field
 
-<div class="Image Image--border">
-
 ![Validation error for a price entry field](/public_images/errors-page/input-validation@2x.png)
-
-</div>
 
 If the form submission has multiple errors:
 
@@ -615,15 +398,9 @@ If the form submission has multiple errors:
 - Use a banner to display a summary of all the errors
 - Show an error message below each field that is not valid so merchants can scroll through and make corrections
 
-<div class="Image Image--border">
-
 ![Red form validation banner](/public_images/errors-page/validation-banner-red@2x.png)
 
-</div>
-
 ---
-
-<a name="settings-warning"></a>
 
 ## Settings warning
 
@@ -641,61 +418,24 @@ Tip: Explore ways to prevent the warning message from showing at all. Look for
 opportunities to add help text or other contextual information to surface or
 highlight potential risks or consequences of taking, or not taking, the action.
 
-### Component:
+### Component
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        <a href="/components/feedback-indicators/banner#navigation">Banner</a>
-        without title
-      </li>
-    </ul>
-    <h3>Content:</h3>
-    <ul>
-      <li>
-        Since the warning message is in close context to the action that
-        triggered the warning, it should be short
-      </li>
-      <li>
-        Explain the risks or consequences of an action that’s just been taken
-      </li>
-      <li>
-        These messages don’t have to start with actionable language, like,
-        “Change currency.” Here are some options:
-        <ul>
-          <li>
-            Start with the word “This” and explain the consequence,
-            for example, “This will affect inventory prices”
-          </li>
-          <li>
-            Start by noting the action, then explain the consequence,
-            “Changing {x} will affect {y}”
-          </li>
-        </ul>
-      </li>
-      <li>
-        If available, link to a resource where merchants can learn more
-      </li>
-    </ul>
+- [Banner](/components/banner) without title
 
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+### Content
+
+- Since the warning message is in close context to the action that triggered the warning, it should be short
+- Explain the risks or consequences of an action that’s just been taken
+- These messages don’t have to start with actionable language, like, “Change currency.” Here are some options
+  - Start with the word “This” and explain the consequence, for example, “This will affect inventory prices”
+  - Start by noting the action, then explain the consequence, “Changing {x} will affect {y}”
+- If available, link to a resource where merchants can learn more
 
 ![In line warning banner below a drop down](/public_images/errors-page/settings-warning@2x.png)
 
-</div>
-</div>
-</div>
-
 ---
 
-<a name="banners"></a>
-
 ## Banners
-
-<a name="page-level-banners"></a>
 
 ### Page-level banners
 
@@ -733,59 +473,35 @@ Page-level banner errors should explain:
 
 <!-- end -->
 
-### Component:
+### Component
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        <a href="/components/feedback-indicators/banner#navigation">Banner</a>
-      </li>
-    </ul>
-    <h3>Content:</h3>
-    <p>Headings should:</p>
-    <ul>
-      <li>Clearly state the problem</li>
-      <li>Not use punctuation</li>
-    </ul>
-    <p>Body content should:</p>
-    <ul>
-      <li>Explain how to solve the problem.</li>
-      <li>
-        Use actionable language like “do x.” Don‘t use permissive language,
-        like “you can x.” Be concise: no longer than 2 sentences.
-      </li>
-      <li>Use periods.</li>
-    </ul>
-    <p>Calls to action should:</p>
-    <ul>
-      <li>Be action-led (verb+noun format)</li>
-      <li>
-        Aim for a one-click fix. If the error can be fixed via a single
-        button or menu, offer that action directly in the error message.
-      </li>
-      <li>
-        Open a dedicated error-correction view for more complex problems
-        such as reviewing a risky order or editing an unverified
-        customer address.
-      </li>
-      <li>
-        Provide a link to documentation for information that may be
-        valuable but can’t fit in a brief error message.
-      </li>
-    </ul>
+- [Banner](/components/banner)
 
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+### Content
+
+Headings should:
+
+- Clearly state the problem
+- Not use punctuation
+
+Body content should:
+
+- Explain how to solve the problem.
+  - Use actionable language like “do x.” Don‘t use permissive language, like “you can x.” Be concise: no longer than 2 sentences.
+  - Use periods.
+
+Calls to action should:
+
+- Be action-led (verb+noun format)
+- Aim for a one-click fix. If the error can be fixed via a single
+  button or menu, offer that action directly in the error message.
+- Open a dedicated error-correction view for more complex problems
+  such as reviewing a risky order or editing an unverified
+  customer address.
+- Provide a link to documentation for information that may be
+  valuable but can’t fit in a brief error message.
 
 ![Page level warning banner](/public_images/errors-page/page-level-warning-banner@2x.png)
-
-</div>
-</div>
-</div>
-
-<a name="banners-in-cards-modals"></a>
 
 ### Banners in cards and modals
 
@@ -805,43 +521,26 @@ Don’t use when:
   doesn’t immediately appear in context. In these cases, use the
   [page-level banner](#page-level-banners)
 
-### Component:
+### Component
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        <a href="/components/feedback-indicators/banner#navigation">Banner</a>
-      </li>
-    </ul>
-    <p>Variant:</p>
-    <ul>
-      <li>Without title</li>
-    </ul>
-    <h3>Content:</h3>
-    <ul>
-      <li>
-        The more contextual the message, the less you need to say,
-        so go straight to explaining what happened and how to fix
-      </li>
-      <li>Keep to one sentence</li>
-      <li>Contextual banners don’t have titles</li>
-      <li>Try to add a next step, whether in a button or link</li>
-      <li>Use when there is more than one call to action</li>
-    </ul>
+- [Banner](/components/banner#navigation)
 
-  </div>
-<div class="Annotated__Media">
+Variant
+
+- Without title
+
+Content:
+
+- The more contextual the message, the less you need to say, so go straight to explaining what happened and how to fix
+- Keep to one sentence
+- Contextual banners don’t have titles
+- Try to add a next step, whether in a button or link
+- Use when there is more than one call to action
 
 ![Warning banner at the top of a card below the card title](/public_images/errors-page/section-level-warning@2x.png)
 ![Small warning banner in a section within a card](/public_images/errors-page/section-level-warning@2x.png)
 
-</div>
-</div>
-
 ---
-
-<a name="exception-list-errors"></a>
 
 ## Exception lists
 
@@ -859,52 +558,31 @@ Don’t use when:
 
 - The source of the problem is an entire card or page
 
-### Component:
+### Component
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>        
-        <a href="/components/lists-and-tables/exception-list#navigation">Exception list</a>
-      </li>
-    </ul>
-    <p>Variant:</p>
-    <ul>
-      <li>Status: critical or warning</li>
-    </ul>
-    <h3>Content:</h3>
-    <p>Content should:</p>
-    <ul>
-      <li>
-        Highlight an exceptional state that encourages clicking on the list item
-      </li>
-      <li>Pair content with a warning or error icon</li>
-      <li>Always lead with what went wrong</li>
-      <li>A description is required</li>
-      <li>A title is optional</li>
-      <li>
-        Links are optional but not common because the list item is actionable
-      </li>
-      <li>Be concise</li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image">
+- [Exception list](/components/exception-list)
+
+Variant
+
+- Status: critical or warning
+
+### Content
+
+Content should:
+
+- Highlight an exceptional state that encourages clicking on the list item
+- Pair content with a warning or error icon
+- Always lead with what went wrong
+- A description is required
+- A title is optional
+- Links are optional but not common because the list item is actionable
+- Be concise
 
 ![Exception list warning](/public_images/errors-page/exception-list-warning@2x.png)
 
-</div>
-<div class="Image Image--border">
-
 ![Exception list error](/public_images/errors-page/high-risk-fraud@2x.png)
 
-</div>
-</div>
-</div>
-
 ---
-
-<a name="home-notifications"></a>
 
 ## Home notifications
 
@@ -935,8 +613,6 @@ Don’t use for:
 
 ![Structure of home notification with a header, body content, and button](/public_images/errors-page/home-notification-anatomy@2x.png)
 
-<a name="warning-home-notifications"></a>
-
 ### Warning home notifications
 
 Warning home notifications are pre-emptive. They let merchants know that their
@@ -958,8 +634,6 @@ that an action can be taken to make money sooner.
 ![Warning home notification with chargeback message](/public_images/errors-page/dont-home-notification@2x.png)
 
 <!-- end -->
-
-<a name="warning-home-notifications"></a>
 
 ### Critical home notifications
 
@@ -992,8 +666,6 @@ Critical home notifications can be used for these message types:
 <!-- end -->
 
 ---
-
-<a name="admin-unavailable-errors"></a>
 
 ## Admin unavailable errors
 
@@ -1038,44 +710,19 @@ Don’t use internal language in error messages and avoid using question formats
 
 ### Component:
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <ul>
-      <li>
-        <a href="/components/structure/empty-state#navigation">Empty state</a>
-      </li>
-    </ul>
-    <p>
-      Note: Use of the empty state component is temporary for admin
-      unavailable errors. This is an opportunity for someone at Shopify to
-      explore a new design and help with creating UX guidelines.
-      If you have ideas,
-      <a href="https://github.com/Shopify/polaris/issues/new>create an issue (private)</a>.
-    </p>
-    <h3>Content:</h3>
-    <p>Headings should:</p>
-    <ul>
-      <li>Heading should explain what went wrong</li>
-      <li>Body should help merchants troubleshoot the problem</li>
-      <li>
-        Call to action should provide the most probable fix,
-        like reloading the page, or going to the previous page or Shopify Home
-      </li>
-    </ul>
+- [Empty state](/components/empty-state)
 
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+### Content
+
+Headings should:
+
+- Heading should explain what went wrong
+- Body should help merchants troubleshoot the problem
+- Call to action should provide the most probable fix, like reloading the page, or going to the previous page or Shopify Home
 
 ![Page not found error](/public_images/errors-page/page-not-found@2x.png)
 
-</div>
-</div>
-</div>
-
 ---
-
-<a name="errors-without-solutions"></a>
 
 ## Errors without solutions
 
@@ -1125,8 +772,6 @@ Don’t use when:
 <!-- end -->
 
 ---
-
-<a name="voice-and-tone"></a>
 
 ## Voice and tone
 

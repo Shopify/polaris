@@ -37,8 +37,3 @@ Being intentional about when the Shopify brand comes forward, and when it takes 
 Defined patterns and guidelines help us design a wide variety of experiences that still always feel&nbsp;like&nbsp;Shopify.
 
 <!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/colors#navigation">Colors</a>
-</div>

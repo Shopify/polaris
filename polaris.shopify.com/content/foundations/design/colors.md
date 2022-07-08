@@ -171,8 +171,3 @@ Highlight colors indicate important elements that don’t require immediate acti
 Decorative colors are for expressive communications that assert the Shopify brand presence.
 
 <!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/typography#navigation">Typography</a>
-</div>

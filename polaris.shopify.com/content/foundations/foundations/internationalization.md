@@ -146,7 +146,7 @@ Merchants in each locale have different cultural sensibilities. Use visuals, con
 
 ![Good example of icon usage](/public_images/internationalization-page/icons-meaning@2x.png)
 
-When possible, use universally known icons. Be mindful of when you use country-specific icons and where they are surfaced. Find out more about <a href="/design/icons#navigation">icons</a>.
+When possible, use universally known icons. Be mindful of when you use country-specific icons and where they are surfaced. Find out more about [icons](/foundations/design/icons).
 
 <!-- end -->
 

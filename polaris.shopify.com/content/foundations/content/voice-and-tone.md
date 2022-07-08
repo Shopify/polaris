@@ -316,8 +316,6 @@ _Your Shopify Payments account is on hold. Please attach your State Tax Exemptio
 
 <!-- end -->
 
-<a name="announcing-features"></a>
-
 ### Announcing new features and updates
 
 It’s exciting to launch a new feature or update, but always consider the audience’s perspective first. While we may be excited about the benefits and capabilities, change can be intimidating or annoying for users.
@@ -330,15 +328,17 @@ When you’re announcing something new, focus on educating and explaining what i
 
 Pitch our product by explaining the specific merchant benefits.
 
-_**Introducing the new Buy Button** <br />
-Make it your own with custom fonts, colors, and styles. It also loads 50% faster so your visitors won’t miss it._
+_**Introducing the new Buy Button**_
+
+_Make it your own with custom fonts, colors, and styles. It also loads 50% faster so your visitors won’t miss it._
 
 #### Don’t
 
 Just talk about ourselves and assume the experience for merchants will be easy.
 
-_**Get Shopify’s new Buy Button** <br />
-It’s never been easier to customize the fonts, colors, and styles of Buy Buttons. It’s also twice as fast._
+_**Get Shopify’s new Buy Button**_
+
+_It’s never been easier to customize the fonts, colors, and styles of Buy Buttons. It’s also twice as fast._
 
 <!-- end -->
 

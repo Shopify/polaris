@@ -12,10 +12,7 @@ single, specific question.
 This section outlines data visualization practices at Shopify and how to
 leverage them.
 
-<div class="Disclaimer">
-<span>Note</span>
-We’re working on updates to the data visualization principles and rules. Stay tuned!
-</div>
+**Note:** We’re working on updates to the data visualization principles and rules. Stay tuned!
 
 ---
 
