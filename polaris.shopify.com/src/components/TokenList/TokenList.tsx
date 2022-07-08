@@ -3,7 +3,6 @@ import { createContext } from "react";
 import { className, slugify } from "../../utils/various";
 import styles from "./TokenList.module.scss";
 import { useCopyToClipboard } from "../../utils/hooks";
-import iconClipboard from "../../../public/icon-clipboard.svg";
 import Image from "../Image";
 import Tooltip from "../Tooltip";
 import { figmaColorNames } from "../../data/figmaColorNames";
