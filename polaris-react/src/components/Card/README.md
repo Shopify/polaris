@@ -566,7 +566,7 @@ Use when you need further control over the spacing of your card sections.
   <Card.Section flush>
     <Image
       source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
-      alt="turtle illustration centered with body text and a button"
+      alt="a sheet with purple and orange stripes"
     />
   </Card.Section>
   <Card.Section subdued>
