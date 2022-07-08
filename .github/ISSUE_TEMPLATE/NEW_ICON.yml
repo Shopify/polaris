@@ -35,10 +35,10 @@ body:
     attributes:
       label: Icon description
       description: |
-        Action: Used to denote <x action>.
-        Wayfinding: Used to help direct merchants to <x>.
-        Concept: Used to represent <x>.
-        Education: Used to give merchants more information about <context x>.
+        **Action:** Used to denote <x action>.
+        **Wayfinding:** Used to help direct merchants to <x>.
+        **Concept:** Used to represent <x>.
+        **Education:** Used to give merchants more information about <context x>.
     validations:
       required: true
       render: shell
@@ -46,13 +46,14 @@ body:
     id: icon-keywords
     attributes:
       label: Icon keywords
-      description: orders, sales, funnel
+      description: Comma-delimited string of keywords, e.g. orders, sales, funnel
     validations:
       required: true
   - type: input
     id: icon-author
     attributes:
       label: Icon author
+      description: Comma-delimited string of authors first and last name, e.g. Sam Rose, Aveline Thelen
   - type: textarea
     id: icon-svg
     attributes:
