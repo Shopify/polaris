@@ -1,0 +1,1 @@
+export const MINIMUM_COUNT_FOR_SEARCH = 11;
