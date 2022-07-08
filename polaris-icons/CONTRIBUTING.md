@@ -20,7 +20,7 @@ To learn about best practices for designing and using Polaris icons in your desi
 
 ## Proposing new icons
 
-If you can’t find the icons you need, you can [propose new icons](https://github.com/Shopify/polaris/issues/new) to be included in the collection.
+If you can’t find the icons you need, you can [propose new icons](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=NEW_ICON.yml&title=%5BIcon%5D%3A+New+icon+%3Cicon-name%3E) to be included in the collection.
 
 ## Proposing updates to existing icons
 
