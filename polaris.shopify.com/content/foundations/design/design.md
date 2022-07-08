@@ -14,7 +14,7 @@ These are the principles that shape how we design all the experiences across the
 
 <!-- showcasecontent -->
 
-![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/public_images/design/design-intro@2x.png)
+![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/design/design-intro@2x.png)
 
 ### Fresh visual style
 

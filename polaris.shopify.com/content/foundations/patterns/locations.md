@@ -47,13 +47,13 @@ While there are many ways to treat locations, two common patterns that use progr
 
 The location picker allows a merchant to select any location they have added in the admin.
 
-![1 location](/public_images/locations-page/1-location@2x.png)
+![1 location](/images/locations-page/1-location@2x.png)
 
 #### 1 location
 
 When a merchant only has one location, the button that opens the location picker should be hidden. There’s no need to access the experience when they can’t switch locations.
 
-![2–10 locations](/public_images/locations-page/2-10-locations@2x.png)
+![2–10 locations](/images/locations-page/2-10-locations@2x.png)
 
 #### 2–10 locations
 
@@ -65,7 +65,7 @@ In the location picker:
 - Show “All locations” at the top of the list.
 - List all other locations in alphabetical order. Each location item shows the location name only.
 
-![11 or more locations](/public_images/locations-page/11-or-more-locations-picker@2x.png)
+![11 or more locations](/images/locations-page/11-or-more-locations-picker@2x.png)
 
 #### 11 or more locations
 
@@ -80,7 +80,7 @@ When a merchant has 11 or more locations:
 
 The location list allows merchants to view all locations they have added in the admin.
 
-![1–10 locations list](/public_images/locations-page/1-10-locations@2x.png)
+![1–10 locations list](/images/locations-page/1-10-locations@2x.png)
 
 #### 1–10 locations
 
@@ -89,7 +89,7 @@ When a merchant has 1–10 locations, show all locations in a simple list. As no
 1. Each list item should include the location name and address
 2. The indicator at the bottom shows the total number of locations
 
-![11 or more locations list](/public_images/locations-page/11-or-more-locations-list@2x.png)
+![11 or more locations list](/images/locations-page/11-or-more-locations-list@2x.png)
 
 #### 11 or more locations
 

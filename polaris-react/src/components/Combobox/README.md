@@ -19,7 +19,7 @@ Combobox is an accessible autocomplete input that enables merchants to filter a 
 
 ## Anatomy
 
-![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/public_images/components/Combobox/combobox-anatomy.png)
+![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/images/components/Combobox/combobox-anatomy.png)
 
 A combobox is made up of the following:
 
