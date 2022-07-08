@@ -29,15 +29,10 @@ const mockMotionTokenGroup = {
   },
 };
 
-const mockColorSchemes = {
-  light: mockTokenGroup,
-  dark: mockTokenGroup,
-};
-
 const mockTokens = {
-  colorSchemes: mockColorSchemes,
-  depth: mockTokenGroup,
+  colors: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
+  depth: {},
   motion: {},
   legacyTokens: {},
   shape: {},
@@ -58,8 +53,6 @@ describe('createVar', () => {
 describe('getCustomPropertyNames', () => {
   it('extracts the token names', () => {
     expect(getCustomPropertyNames(mockTokens)).toStrictEqual([
-      '--p-design-token-1',
-      '--p-design-token-2',
       '--p-design-token-1',
       '--p-design-token-2',
     ]);
@@ -161,8 +154,8 @@ describe('getMediaConditions', () => {
   it('transforms breakpoints tokens into directional media conditions', () => {
     /** @type {TokenGroup} */
     const breakpoints = {
-      breakpoint1: {value: '16px'},
-      breakpoint2: {value: '32px'},
+      breakpoint1: '16px',
+      breakpoint2: '32px',
     };
 
     expect(getMediaConditions(breakpoints)).toStrictEqual({

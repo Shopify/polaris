@@ -1,5 +1,4 @@
 import {readFileSync} from 'fs';
-import * as path from 'path';
 
 import {babel} from '@rollup/plugin-babel';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
@@ -12,18 +11,18 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 /** @type {import('rollup').RollupOptions} */
 export default {
-  input: 'src/index.ts',
+  input: 'build/index.ts',
   output: [
     {
       format: /** @type {const} */ ('cjs'),
       entryFileNames: '[name][assetExtname].js',
-      dir: path.dirname(pkg.main),
+      dir: 'dist/cjs',
       preserveModules: true,
     },
     {
       format: /** @type {const} */ ('es'),
       entryFileNames: '[name][assetExtname].mjs',
-      dir: path.dirname(pkg.module),
+      dir: 'dist/esm',
       preserveModules: true,
     },
   ],
@@ -36,7 +35,7 @@ export default {
     babel({
       extensions,
       rootMode: 'upward',
-      include: ['src/**/*'],
+      include: ['src/**/*', 'build/**/*'],
       babelHelpers: 'bundled',
     }),
   ],
