@@ -35,10 +35,10 @@ body:
     attributes:
       label: Icon description
       description: |
-        **Action:** Used to denote <x action>.
-        **Wayfinding:** Used to help direct merchants to <x>.
-        **Concept:** Used to represent <x>.
-        **Education:** Used to give merchants more information about <context x>.
+        **Action:** Used to denote _x action_.
+        **Wayfinding:** Used to help direct merchants to _x_.
+        **Concept:** Used to represent _x_.
+        **Education:** Used to give merchants more information about _context x_.
     validations:
       required: true
       render: shell
