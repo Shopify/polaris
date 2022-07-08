@@ -1,4 +1,4 @@
-import {tokens} from '../src/tokens';
+import {metaTokens} from '../src/metaTokens';
 import {
   createVar,
   getCustomPropertyNames,
@@ -22,13 +22,13 @@ describe('createVar', () => {
 
 describe('getCustomPropertyNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(tokens)).toHaveLength(273);
+    expect(getCustomPropertyNames(metaTokens)).toHaveLength(273);
   });
 });
 
 describe('getKeyframeNames', () => {
-  it('extracts the keyframe tokens from the motion', () => {
-    expect(getKeyframeNames(tokens.motion)).toHaveLength(4);
+  it('extracts the keyframe metaTokens from the motion', () => {
+    expect(getKeyframeNames(metaTokens.motion)).toHaveLength(4);
   });
 });
 

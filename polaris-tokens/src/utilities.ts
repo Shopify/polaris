@@ -1,5 +1,4 @@
-import type {Entry, Exact} from './types';
-import type {Tokens, TokenGroup} from './tokens';
+import type {Entry, Exact, MetaTokenGroup, Tokens, TokenGroup} from './types';
 import type {breakpoints as breakpointsTokenGroup} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
@@ -70,14 +69,16 @@ export function toRem(value = '') {
   }
 }
 
-function rem(value: string) {
+export function rem(value: string) {
   return value.replace(
     new RegExp(`${DIGIT_REGEX.source}(${UNIT_PX})`, 'g'),
     (px: string) => toRem(px) ?? px,
   );
 }
 
-export function tokensToRems<T extends Exact<TokenGroup, T>>(tokenGroup: T) {
+export function tokensToRems<T extends Exact<MetaTokenGroup, T>>(
+  tokenGroup: T,
+) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, properties]) => [
       token,
@@ -110,17 +111,11 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  * Result: ['--p-background', '--p-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
-  const {colorSchemes, ...restTokenGroups} = tokens;
-  const customPropertyNames = [
-    ...Object.keys(colorSchemes.light).map((token) => createVar(token)),
-    ...Object.entries(restTokenGroups)
-      .map(([_, tokenGroup]: [string, TokenGroup]) =>
-        Object.keys(tokenGroup).map((token) => createVar(token)),
-      )
-      .flat(),
-  ];
-
-  return customPropertyNames;
+  return Object.entries(tokens)
+    .map(([_, tokenGroup]: [string, TokenGroup]) =>
+      Object.keys(tokenGroup).map((token) => createVar(token)),
+    )
+    .flat();
 }
 
 export type BreakpointsTokenGroup = typeof breakpointsTokenGroup;
