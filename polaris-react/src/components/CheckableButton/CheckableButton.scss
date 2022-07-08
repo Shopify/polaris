@@ -41,14 +41,14 @@ $button-vertical-padding: calc(
   }
 
   &.CheckableButton-measuring {
-    font-size: var(--p-font-size-4);
+    font-size: 15px;
     font-weight: var(--p-font-weight-bold);
 
     // simulates measuring with an additional digit (e.g. 00 instead of 0)
     &::before {
       content: '';
       display: inline-block;
-      width: var(--p-font-size-4);
+      width: 15px;
     }
   }
 

@@ -16,7 +16,7 @@ $relative-size: $primary-basis / $secondary-basis;
 
   @media print {
     body & {
-      font-size: var(--p-font-size-1);
+      font-size: var(--p-font-fontsize-75);
       line-height: var(--p-line-height-1);
     }
 
