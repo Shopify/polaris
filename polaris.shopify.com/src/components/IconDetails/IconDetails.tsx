@@ -28,10 +28,10 @@ function IconDetails({ fileName, iconData }: Props) {
   const polarisIconsUrl =
     "https:www.npmjs.com/package/@shopify/polaris-icons#usage";
   const iconComponentUrl = "/components/icon";
-  const githubIssueSubject = `[polaris.shopify.com] Propose change to icon ${fileName}`;
-  const proposeChangeUrl = `https://github.com/Shopify/polaris/issues/new?title=${encodeURIComponent(
+  const githubIssueSubject = `[Icon]: Update icon ${fileName}`;
+  const proposeChangeUrl = `https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=UPDATE_ICON.yml&title=${encodeURIComponent(
     githubIssueSubject
-  )}&labels=Icon`;
+  )}`;
 
   return (
     <div className={styles.IconDetails}>

@@ -24,7 +24,7 @@ If you can’t find the icons you need, you can [propose new icons](https://gith
 
 ## Proposing updates to existing icons
 
-If you notice existing icons that are out-of-date or need improvements, you can [propose an update](https://github.com/Shopify/polaris/issues/new) to these icons.
+If you notice existing icons that are out-of-date or need improvements, you can [propose an update](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=UPDATE_ICON.yml&title=%5BIcon%5D%3A+Update+icon+%3Cicon-name%3E) to these icons.
 
 ## Deprecation guidelines
 
