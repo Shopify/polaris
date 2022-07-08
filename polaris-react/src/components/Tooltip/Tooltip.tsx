@@ -5,6 +5,7 @@ import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {Key} from '../../types';
+import {getRectForNode} from '../../utilities/geometry';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
@@ -51,7 +52,7 @@ export function Tooltip({
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
-  const [positionTooltip, setPositionTooltip] = useState<TooltipPosition>({
+  const [coordinates, setCoordinates] = useState<TooltipPosition>({
     x: 0,
     y: 0,
     cursorX: 0,
@@ -92,7 +93,7 @@ export function Tooltip({
         active={active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
-        coordinates={positionTooltip}
+        coordinates={coordinates}
       >
         {content}
       </TooltipOverlay>
@@ -151,8 +152,12 @@ export function Tooltip({
   function handleMouseMove(event: React.MouseEvent) {
     if (!active) return;
     if (childWrapperContainer.current == null) return;
-    const {x, y, width, height} =
-      childWrapperContainer.current.getBoundingClientRect();
+    const {
+      left: x,
+      top: y,
+      width,
+      height,
+    } = getRectForNode(childWrapperContainer.current) || {};
     const centerX = width / 2;
     const centerY = height / 2;
     const {clientX, clientY} = event;
@@ -163,7 +168,7 @@ export function Tooltip({
     const transformX = tooltipLeft - centerX;
     const transformY = tooltipTop - centerY;
 
-    setPositionTooltip({
+    setCoordinates({
       x: transformX,
       y: transformY,
       cursorX: clientX,

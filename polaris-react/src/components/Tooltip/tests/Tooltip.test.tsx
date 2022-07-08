@@ -5,6 +5,7 @@ import {Link} from '../../Link';
 import {Tooltip} from '../Tooltip';
 import {TooltipOverlay} from '../components';
 import {Key} from '../../../types';
+import * as geometricUtilities from '../../../utilities/geometry';
 
 describe('<Tooltip />', () => {
   it('renders its children', () => {
@@ -90,6 +91,37 @@ describe('<Tooltip />', () => {
 
     findWrapperComponent(tooltip)!.trigger('onMouseLeave');
     expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+  });
+
+  it('updates coordinates passed to overlay onMouseMove', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    jest.spyOn(geometricUtilities, 'getRectForNode').mockReturnValue({
+      left: 40,
+      top: 10,
+      width: 100,
+      height: 100,
+      center: {x: 20, y: 50},
+    });
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
+    const childWrapperComponent = findWrapperComponent(tooltip)!.find('span');
+
+    childWrapperComponent!.trigger('onMouseMove', {
+      clientX: 120,
+      clientY: 60,
+    });
+
+    expect(tooltip!.find(TooltipOverlay)!.props.coordinates).toStrictEqual({
+      cursorX: 120,
+      x: 30,
+      y: 50,
+    });
   });
 
   it('closes itself when escape is pressed on keyup', () => {
