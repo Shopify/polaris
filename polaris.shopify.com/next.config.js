@@ -66,6 +66,11 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: "/foundations/patterns/layout",
+        destination: "/foundations/patterns/page-layouts",
+        permanent: false,
+      },
+      {
         source: "/foundations/foundations/designing-apps",
         destination: "https://shopify.dev/apps/design-guidelines",
         permanent: false,

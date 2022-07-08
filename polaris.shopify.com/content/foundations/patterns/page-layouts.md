@@ -9,7 +9,7 @@ keywords:
   - stack
 ---
 
-# Layout
+# Page Layouts
 
 Layout patterns provide common ways to arrange the content of a screen.
 
