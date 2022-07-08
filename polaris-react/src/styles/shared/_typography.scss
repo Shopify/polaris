@@ -98,7 +98,7 @@ $typography-condensed: 640px;
 }
 
 @mixin text-style-display-x-large {
-  font-size: var(--p-font-fontsize-751);
+  font-size: 27px;
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-line-height-6);
 
@@ -114,7 +114,7 @@ $typography-condensed: 640px;
   line-height: var(--p-line-height-4);
 
   @include when-typography-not-condensed {
-    font-size: var(--p-font-fontsize-752);
+    font-size: var(--p-font-fontsize-500);
     line-height: var(--p-line-height-5);
   }
 }
@@ -125,7 +125,7 @@ $typography-condensed: 640px;
   line-height: var(--p-line-height-4);
 
   @include when-typography-not-condensed {
-    font-size: var(--p-font-fontsize-750);
+    font-size: 26px;
     line-height: var(--p-line-height-5);
   }
 }
