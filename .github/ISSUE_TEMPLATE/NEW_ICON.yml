@@ -21,7 +21,7 @@ body:
     id: icon-name
     attributes:
       label: Icon name
-    value: arrow down
+      value: arrow down
     validations:
       required: true
   - type: dropdown
@@ -38,11 +38,11 @@ body:
     id: icon-description
     attributes:
       label: Icon description
-    value: |
-      Action      | Used to denote <x action>.
-      Wayfinding  | Used to help direct merchants to <x>.
-      Concept     | Used to represent <x>.
-      Education   | Used to give merchants more information about <context x>.
+      value: |
+        Action      | Used to denote <x action>.
+        Wayfinding  | Used to help direct merchants to <x>.
+        Concept     | Used to represent <x>.
+        Education   | Used to give merchants more information about <context x>.
     validations:
       required: true
     render: bash
@@ -50,7 +50,7 @@ body:
     id: icon-keywords
     attributes:
       label: Icon keywords
-    value: orders, sales, funnel
+      value: orders, sales, funnel
     validations:
       required: true
   - type: input
@@ -61,7 +61,7 @@ body:
     id: icon-svg
     attributes:
       label: Icon SVG code
-    value: <svg>[your svg]/svg>
+      value: <svg>[your svg]/svg>
     render: bash
   - type: textarea
     id: icon-other-details
