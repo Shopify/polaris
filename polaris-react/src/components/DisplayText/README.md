@@ -78,21 +78,7 @@ Use this size sparingly and never multiple times on the same page.
 <DisplayText size="extraLarge">Good evening, Dominic.</DisplayText>
 ```
 
-<!-- content-for: android -->
-
-![Extra large display text](/public_images/components/DisplayText/android/extra-large@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Extra large display text](/public_images/components/DisplayText/ios/extra-large@2x.png)
-
-<!-- /content-for -->
-
 ### Large
-
-<!-- example-for: web -->
 
 Use for display text that’s more important than the medium size, but less important than extra large.
 
@@ -108,21 +94,7 @@ Use for display text that’s more important than the small size, but less impor
 <DisplayText size="medium">Good evening, Dominic.</DisplayText>
 ```
 
-<!-- content-for: android -->
-
-![Medium and large display text](/public_images/components/DisplayText/android/medium-large@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Medium and large display text](/public_images/components/DisplayText/ios/medium-large@2x.png)
-
-<!-- /content-for -->
-
 ### Small
-
-<!-- example-for: web -->
 
 Use for text that would otherwise use body text, but that needs to scale with other display text.
 
@@ -133,26 +105,6 @@ Use for text that would otherwise use body text, but that needs to scale with ot
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Although display text creates an interesting visual experience, it doesn’t replace the semantic structure provided by HTML headings.
 
@@ -169,5 +121,3 @@ Use display text to create visual interest along with a meaningful heading struc
 Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/titles-and-text/heading) and [subheading component](https://polaris.shopify.com/components/titles-and-text/subheading) to provide structure.
 
 <!-- end -->
-
-<!-- /content-for -->

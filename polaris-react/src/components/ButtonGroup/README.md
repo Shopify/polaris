@@ -65,18 +65,6 @@ Use when you have multiple buttons to space them out evenly.
 </ButtonGroup>
 ```
 
-<!-- content-for: android -->
-
-![Alt text](/public_images/components/ButtonGroup/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Alt text](/public_images/components/ButtonGroup/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Button group with segmented buttons
 
 Use to emphasize several buttons as a thematically-related set among other controls.
@@ -100,18 +88,6 @@ Use to emphasize several buttons as a thematically-related set among other contr
   <Button outline>Underline</Button>
 </ButtonGroup>
 ```
-
-<!-- content-for: android -->
-
-![Alt text](/public_images/components/ButtonGroup/android/segmented-button@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Alt text](/public_images/components/ButtonGroup/ios/segmented-button@2x.png)
-
-<!-- /content-for -->
 
 ---
 

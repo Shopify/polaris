@@ -164,21 +164,7 @@ Use to explain a single feature before merchants have used it.
 </Card>
 ```
 
-<!-- content-for: android -->
-
-![Default empty state](/public_images/components/EmptyState/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default empty state](/public_images/components/EmptyState/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Empty state with subdued footer context
-
-<!-- example-for: web -->
 
 Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
 
@@ -205,8 +191,6 @@ Use to provide additional but non-critical context for a new product or feature.
 ```
 
 ### Empty state with full width layout
-
-<!-- example-for: web -->
 
 ```jsx
 <Card sectioned>
@@ -237,26 +221,4 @@ Use to provide additional but non-critical context for a new product or feature.
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Empty state illustrations are implemented as decorative images, so they use an empty `alt` attribute and are skipped by technologies like screen readers.
-
-<!-- /content-for -->

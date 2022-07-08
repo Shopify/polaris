@@ -53,18 +53,6 @@ Use for the title of each top-level page section.
 <Heading>Online store dashboard</Heading>
 ```
 
-<!-- content-for: android -->
-
-![Typographic heading](/public_images/components/Heading/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Typographic heading](/public_images/components/Heading/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
@@ -74,26 +62,6 @@ Use for the title of each top-level page section.
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 A clear and consistent heading structure helps merchants who have difficulty with reading or language. It also helps screen reader users to navigate the page using keystrokes that are custom to their screen reader.
 
@@ -112,5 +80,3 @@ Use headings to support the hierarchy and structure of the page.
 Use headings for style alone.
 
 <!-- end -->
-
-<!-- /content-for -->

@@ -172,9 +172,6 @@ In general, if a feature or product isn’t unique to Shopify, don’t capitaliz
 (such as blogs, navigation, pages). If it’s unique to Shopify and marketable as its
 own product, capitalize it (such as Shopify Payments, or Frenzy).
 
-For all terms and definitions, check our full
-[vocabulary list](/content/vocabulary).
-
 <!-- usagelist -->
 
 #### Do

@@ -42,10 +42,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Everything we create at Shopify has an underlying foundation of information architecture.",
       },
-      // {
-      //   title: "Onboarding flows",
-      //   url: "/foundations/foundations/designing-onboarding-flows",
-      // },
       {
         icon: Icons.CurrencyIcon,
         url: "/foundations/foundations/formatting-localized-currency",
@@ -184,17 +180,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sale channel.",
       },
-      // {
-      //   title: "App release notes",
-      //   url: "/foundations/content/release-notes",
-      // },
-      {
-        title: "Vocabulary",
-        url: "/foundations/content/vocabulary",
-        icon: Icons.VocabularyIcon,
-        excerpt:
-          "It’s important to use the same words, spelling, and capitalization consistently, otherwise things start looking messy and confusing for merchants.",
-      },
       {
         title: "Alternative text",
         url: "/foundations/content/alternative-text",
@@ -222,13 +207,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Polaris provides many layout patterns that help you create efficient and familiar interfaces.",
       },
-      // {
-      //   title: "Mobile patterns",
-      //   url: "/foundations/patterns/mobile-patterns",
-      //   icon: Icons.MobilePatternsIcon,
-      //   excerpt:
-      //     "A collection of patterns to help design Shopify’s own iOS and Android apps.",
-      // },
       {
         title: "Home cards",
         url: "/foundations/patterns/home-cards",

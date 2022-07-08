@@ -20,6 +20,7 @@ export const getComponentNav = (): NavItem[] => {
       children: components.map((component) => ({
         title: component.frontMatter.name,
         url: `/components/${slugify(component.frontMatter.name)}`,
+        status: component.frontMatter.status,
       })),
     },
   ];

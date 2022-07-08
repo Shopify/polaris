@@ -222,7 +222,7 @@
         "check out"
       ]
     },
-    "intro": "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s [sale channel](https://polaris.shopify.com/content/vocabulary#definition-s-sales-channel).",
+    "intro": "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.",
     "section": "content"
   },
   {
@@ -289,27 +289,6 @@
       "keywords": ["release", "notes", "app", "updates", "fixes"]
     },
     "intro": "Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.",
-    "section": "content"
-  },
-  {
-    "frontMatter": {
-      "name": "Vocabulary",
-      "keywords": [
-        "spelling",
-        "vocabulary list",
-        "dictionary",
-        "shopify dictionary",
-        "shopify vocabulary",
-        "shopify terms",
-        "caps",
-        "capitalizations",
-        "definitions",
-        "define",
-        "spelling",
-        "terms"
-      ]
-    },
-    "intro": "It’s important to use the same words, spelling, and capitalization consistently,\notherwise things start looking messy and confusing for merchants.",
     "section": "content"
   },
   {

@@ -13,7 +13,7 @@ keywords:
 
 # Merchant-to-customer content
 
-Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s [sale channel](https://polaris.shopify.com/content/vocabulary#definition-s-sales-channel).
+Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.
 
 Merchant-to-customer content represents the merchant, not Shopify, and should optimize the customers’ online or retail store experience.
 
@@ -32,7 +32,7 @@ You’ll find merchant-to-customer content in places such as:
 
 If you write for multiple audiences, it’s important to note that merchant-to-customer content isn’t:
 
-- Shopify-to-buyer (see definition for [buyer](#section-vocabulary-considerations) content, such as Shopify Pay or Arrive)
+- Shopify-to-buyer content, such as Shopify Pay or Arrive
 - Shopify-to-merchant content, such as the Shopify admin
 - Shopify-to-world content, such as shopify.com or blog posts
 
@@ -157,7 +157,7 @@ Read our general [voice and tone guidelines](https://polaris.shopify.com/content
 
 A “buyer” interacts with multiple Shopify stores or has a direct relationship with Shopify, such as through Shopify Pay.
 
-In contrast, a “customer” is a person or organization who interacts with a Shopify merchant or a merchant’s [sale channel](https://polaris.shopify.com/content/vocabulary#definition-s-sales-channel).
+In contrast, a “customer” is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.
 
 In the Shopify admin and Point-of-Sale (POS), a customer appears on the Customers page when they engage with a merchant in an identifiable way. This could be because they:
 
@@ -190,3 +190,85 @@ Word usage to use/avoid:
 - Wrong, fail, failure, error (avoid sounding robotic or negative)
 
 <!-- end -->
+
+### Common terms
+
+Use the following terms to refer to common concepts and actions within the merchant-to-customer experience.
+
+Note: all of these terms should be lowercase, unless they're a proper noun or the first word in a sentence.
+
+#### cart
+
+The page that displays an order summary. Customers see this page before they proceed to checkout.
+
+#### checkout
+
+The customer experience for paying for items and completing an order.
+
+#### delivery
+
+How an order reaches the customer. Delivery covers more than just shipping. For example, customers can choose whether the order is shipped to their delivery address or picked up in-store.
+
+#### discount code
+
+A dollar amount, percentage, or code that dictates how much a product will be reduced in price.
+
+#### duties
+
+Additional costs that may be incurred on orders that are delivered internationally. Duties may be incorporated into the shipping cost.
+
+#### gift card
+
+A type of product with monetary value that merchants can either sell to customers or issue to them as a gift, reward, or incentive.
+
+#### item
+
+One unit of a product on an order.
+
+#### login
+
+The credentials that a customer uses to access their account.
+
+#### order
+
+The term for a purchase. Don’t say package, or add unnecessary words like sales order.
+
+#### payment
+
+Describes a specific way a customer can pay such as Visa, MasterCard, or Apple Pay.
+
+#### pay now
+
+This text is displayed on Call To Action (CTA) buttons that trigger a payment. On free orders, this is replaced with “Complete order”.
+
+#### pickup
+
+A delivery option where customers physically collect an order.
+
+#### return
+
+A transaction where a customer sends a product back to the store for an exchange or refund. A refund is part of a return.
+
+#### refund
+
+The funds that a customer receives from a merchant, for example, when returning an item.
+
+#### shipping
+
+How a merchant sends an order to a customer. Also known as the shipping method.
+
+#### subtotal
+
+The cost of the items on an order before additional charges, such as tax and shipping.
+
+#### total
+
+The cost of the items on an order after additional charges such as tax and shipping.
+
+#### you
+
+A way of referring to the customer that's checking out. Use you, or use the name that the customer has provided.
+
+#### we
+
+A way of referring to the store name. Most of the time, refer to the store by name. However, you can use “we” when using the store name would sound overly wordy or insincere.

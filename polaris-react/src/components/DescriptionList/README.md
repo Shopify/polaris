@@ -129,18 +129,6 @@ Use when you need to present merchants with a list of items or terms alongside d
 />
 ```
 
-<!-- content-for: android -->
-
-![Description list for Android](/public_images/components/DescriptionList/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Description list for iOS](/public_images/components/DescriptionList/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
@@ -151,26 +139,4 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The description list component produces a description list wrapper (`<dl>`), terms (`<dt>`), and definitions (`<dd>`) to convey the relationships between the list items to assistive technology users.
-
-<!-- /content-for -->

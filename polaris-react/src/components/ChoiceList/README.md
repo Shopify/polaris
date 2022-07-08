@@ -198,18 +198,6 @@ function SingleChoiceListExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Single choice list for Android](/public_images/components/ChoiceList/android/single-choice@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Single choice list for iOS](/public_images/components/ChoiceList/ios/single-choice@2x.png)
-
-<!-- /content-for -->
-
 ### Single choice list with error
 
 Allows for accessible error handling by connecting the error message to the field with the error.
@@ -235,18 +223,6 @@ function ChoiceListWithErrorExample() {
   );
 }
 ```
-
-<!-- content-for: android -->
-
-![Single choice list with error for Android](/public_images/components/ChoiceList/android/single-choice-error@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Single choice list with error for iOS](/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
-
-<!-- /content-for -->
 
 ### Multi-choice list
 
@@ -285,21 +261,7 @@ function MultiChoiceListExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Multi choice list for Android](/public_images/components/ChoiceList/android/multi-choice@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Multi choice list for iOS](/public_images/components/ChoiceList/ios/multi-choice@2x.png)
-
-<!-- /content-for -->
-
 ### Single-choice or multi-choice list with children content (always rendered)
-
-<!-- example-for: web -->
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
 
@@ -348,8 +310,6 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
 ```
 
 ### Single-choice or multi-choice list with children content (only rendered when choice is selected)
-
-<!-- example-for: web -->
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 
@@ -412,26 +372,4 @@ function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/forms/checkbox) and [radio button](https://polaris.shopify.com/components/forms/radio-button) components.
-
-<!-- /content-for -->

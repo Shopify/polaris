@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/b44d9f7075203748b7784bd61e88cba1e2d7acde/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
+<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/main/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
 </div>
 
 # Polaris
