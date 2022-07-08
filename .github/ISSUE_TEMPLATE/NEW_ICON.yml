@@ -53,7 +53,7 @@ body:
     id: icon-author
     attributes:
       label: Icon author
-      description: Comma-delimited string of authors first and last name, e.g. Sam Rose, Aveline Thelen
+      description: Comma-delimited string of authors first and last name, e.g. Sam Rose, Lo Kim
   - type: textarea
     id: icon-svg
     attributes:
