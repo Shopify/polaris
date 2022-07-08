@@ -9,7 +9,7 @@ interface Props extends ImageProps {
   icon?: boolean;
 }
 
-function Image({ icon = false, fadeIn = true, ...rest }: Props) {
+function Image({ icon = false, fadeIn = true, alt = "", ...rest }: Props) {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   return (
@@ -20,7 +20,7 @@ function Image({ icon = false, fadeIn = true, ...rest }: Props) {
         fadeIn && styles.fadeIn,
         icon && styles.icon
       )}
-      alt=""
+      alt={alt}
       onLoad={() => setHasLoaded(true)}
       {...rest}
     />

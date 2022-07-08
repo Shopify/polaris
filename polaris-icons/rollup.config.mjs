@@ -55,15 +55,18 @@ const metadataContent = `
 const metadata = ${JSON.stringify(iconMetadata, null, 2)};
 export default metadata;
 `.trim();
-const metadataTypes = `declare const metadata: {
-  [key: string]: {
-    id: string;
-    name: string;
-    set: 'major' | 'minor';
-    description: string;
-    keywords: string[];
-  };
+const metadataTypes = `export interface Icon {
+  id: string;
+  name: string;
+  set: 'major' | 'minor';
+  description: string;
+  keywords: string[];
+}
+
+declare const metadata: {
+  [iconId: string]: Icon;
 };
+
 export default metadata;
 `.trim();
 
