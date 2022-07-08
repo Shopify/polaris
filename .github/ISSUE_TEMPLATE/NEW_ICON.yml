@@ -45,7 +45,7 @@ body:
         Education   | Used to give merchants more information about <context x>.
     validations:
       required: true
-    render: bash
+      render: bash
   - type: input
     id: icon-keywords
     attributes:
@@ -62,7 +62,7 @@ body:
     attributes:
       label: Icon SVG code
       value: <svg>[your svg]/svg>
-    render: bash
+      render: bash
   - type: textarea
     id: icon-other-details
     attributes:
