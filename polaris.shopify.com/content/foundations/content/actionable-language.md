@@ -471,10 +471,15 @@ Directional language often indicates a lack of visual or content hierarchy. When
 
 Use “Save” when a change is saved immediately to a database and “Done” for [deferred saves](#deferred-saves).
 
+### Saving immediately to a database
+
+Use “Save” as the default for any action that saves immediately to a database.
+
 #### Saving using the context bar component
 
 When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes,
-like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula.
+like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula. For example, [Save] instead of [Save product].
+In the context bar component, use the verb “Save”.
 
 <!-- usagelist -->
 
@@ -531,7 +536,7 @@ Use the verb “Save” in modals and sheets
 
 #### Saving at the bottom of a page
 
-Use the {Save} + {noun} content formula when a save action doesn’t have the surrounding context of a modal or context bar.
+Use the {Save} + {noun} content formula when a save action doesn’t have the surrounding context of a modal or context bar. This applies to the save action at the bottom of pages.
 
 For example, the action at the bottom of the Create discount page uses [Save discount]:
 
@@ -554,7 +559,7 @@ For example, the action at the bottom of the Create discount page uses [Save dis
 
 Sometimes, when merchants confirm a set of changes inside a modal or sheet, these changes are applied as unsaved changes to the current page. In other words, the changes made weren’t immediately saved to the database. When this happens, don’t use the verb “Save” as the call to action because it would be misleading.
 
-Use the adjective “Done”. When the modal or sheet closes, then merchants can save all of the changes they made.
+Use the adjective “Done” for deferred saves. When the modal or sheet closes, then merchants can save all of the changes they made.
 
 Most deferred saves happen when confirming changes in Add, Edit, Manage, and Select modals and sheets.
 
@@ -579,7 +584,7 @@ Most deferred saves happen when confirming changes in Add, Edit, Manage, and Sel
 
 <!-- keywords: date pickers, datepicker copy, date picker copy, datepicker copy, datepicker copy, datepicker buttons, date picker buttons -->
 
-Use the adjective “Done”.
+Use the adjective “Done” for datepickers.
 
 <!-- usagelist -->
 
