@@ -202,7 +202,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       },
       {
         title: "Page layouts",
-        url: "/foundations/patterns/layout",
+        url: "/foundations/patterns/page-layouts",
         icon: Icons.PageLayouts,
         excerpt:
           "Polaris provides many layout patterns that help you create efficient and familiar interfaces.",
