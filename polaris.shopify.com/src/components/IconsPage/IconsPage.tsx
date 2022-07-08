@@ -101,10 +101,10 @@ function IconsPage() {
     ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
     : "Icons";
 
-  const githubIssueTitle = `[polaris.shopify.com] No icon found ${searchText}`;
-  const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?title=${encodeURIComponent(
+  const githubIssueTitle = `[Icon] New icon <icon-name> ${searchText}`;
+  const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?labels=Icon&template=NEW_ICON.yml&title=${encodeURIComponent(
     githubIssueTitle
-  )}&labels=Icon`;
+  )}`;
 
   return (
     <Container className={styles.IconsPage}>
