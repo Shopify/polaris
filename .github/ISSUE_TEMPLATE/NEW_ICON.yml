@@ -11,17 +11,13 @@ body:
     id: icon-usage
     attributes:
       label: How will these icons be used?
-      value: |
-        Relevant screenshots or links to Figma files detailing the entire user experience, the reason for creating the new icon(s), and any additional context.
-
-        Have you already explored any possibilities for the new icons? Or do you have any ideas?
+      description: Relevant screenshots or links to design files detailing the user experience, the reason for creating the new icon(s), and any additional context.
     validations:
       required: true
   - type: input
     id: icon-name
     attributes:
       label: Icon name
-      value: arrow down
     validations:
       required: true
   - type: dropdown
@@ -38,11 +34,11 @@ body:
     id: icon-description
     attributes:
       label: Icon description
-      value: |
-        Action      | Used to denote <x action>.
-        Wayfinding  | Used to help direct merchants to <x>.
-        Concept     | Used to represent <x>.
-        Education   | Used to give merchants more information about <context x>.
+      description: |
+        Action: Used to denote <x action>.
+        Wayfinding: Used to help direct merchants to <x>.
+        Concept: Used to represent <x>.
+        Education: Used to give merchants more information about <context x>.
     validations:
       required: true
       render: shell
@@ -50,7 +46,7 @@ body:
     id: icon-keywords
     attributes:
       label: Icon keywords
-      value: orders, sales, funnel
+      description: orders, sales, funnel
     validations:
       required: true
   - type: input
@@ -61,7 +57,7 @@ body:
     id: icon-svg
     attributes:
       label: Icon SVG code
-      value: <svg>[your svg]/svg>
+      value: <svg>...</svg>
       render: shell
   - type: textarea
     id: icon-other-details
