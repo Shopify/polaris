@@ -43,10 +43,10 @@ _add image_
 
 This font-stack makes sure all browsers can load platform-specific fonts:
 
-| Token                    | Properties |
-| ------------------------ | ---------- |
-| --p-font-fontfamily-sans | jlkjl      |
-| --p-font-fontfamily-sans | jlkjl      |
+| Token                    | Properties   |
+| ------------------------ | ------------ |
+| --p-font-fontfamily-sans | font-family: |
+| --p-font-fontfamily-sans | font-family: |
 
 ## Type scale
 
