@@ -162,7 +162,7 @@ function TokenListItem({
                       tabIndex={searchResultData?.tabIndex}
                     >
                       <Image
-                        src="/icons/ClipboardMinor"
+                        src="/icons/ClipboardMinor.svg"
                         alt="Copy"
                         width={14}
                         height={14}
