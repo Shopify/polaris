@@ -101,7 +101,7 @@ function IconsPage() {
     ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
     : "Icons";
 
-  const githubIssueTitle = `[Icon] New icon <icon-name> ${searchText}`;
+  const githubIssueTitle = `[Icon] New icon ${searchText}`;
   const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?labels=Icon&template=NEW_ICON.yml&title=${encodeURIComponent(
     githubIssueTitle
   )}`;
