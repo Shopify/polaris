@@ -103,7 +103,7 @@ export function Cell({
   const direction =
     sorted && sortDirection ? sortDirection : defaultSortDirection;
   const source =
-    direction === 'descending' ? SortAscendingMajor : SortDescendingMajor;
+    direction === 'descending' ? SortDescendingMajor : SortAscendingMajor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 
