@@ -1,6 +1,6 @@
 name: Propose new icon
 description: Propose a new icon to polaris-icons
-title: '[Icon]: '
+title: '[Icon]: New icon <icon-name>'
 labels: ['Icon']
 body:
   - type: markdown
