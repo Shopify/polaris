@@ -1,12 +1,12 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .Layout {
-  --gap: 1rem;
+  --gap: 3rem;
   --nav-width: 16rem;
   --toc-width: 10rem;
   --max-content-width: 62rem;
   --toc-gap: 5rem;
-  margin-top: var(--header-margin);
   display: flex;
   gap: var(--gap);
 
@@ -23,6 +23,14 @@
   min-width: var(--nav-width);
   max-width: var(--nav-width);
   align-self: flex-start;
+  position: sticky;
+  top: var(--header-height);
+  padding: var(--header-margin) 0;
+  height: calc(100vh - var(--header-height));
+  overscroll-behavior: contain;
+  overflow: auto;
+  @include custom-scrollbars;
+  border-right: 1px solid var(--border-color-light);
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
@@ -34,6 +42,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  padding: var(--header-margin) 0;
 
   .CenteredMainContent {
     flex: 1;

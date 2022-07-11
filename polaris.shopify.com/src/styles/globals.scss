@@ -8,7 +8,7 @@
 // we can utilize the .dark-mode class to flip the colors
 body {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 72px;
+  --header-height: 66px;
   --narrow-content-width: 720px;
   --header-margin: 4.5rem;
 
@@ -132,6 +132,10 @@ html {
   @media screen and (max-width: $breakpointMobile) {
     font-size: 100%;
   }
+}
+
+:root {
+  color-scheme: dark;
 }
 
 body {
