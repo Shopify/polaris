@@ -15,6 +15,10 @@
   text-overflow: ellipsis;
 }
 
+.visuallyHidden {
+  @include visually-hidden;
+}
+
 .start {
   text-align: start;
 }
@@ -61,10 +65,6 @@
 
 .bold {
   font-weight: var(--p-font-weight-bold);
-}
-
-.visuallyHidden {
-  @include visually-hidden;
 }
 
 .displaySm {
@@ -116,4 +116,9 @@
 .bodyLg {
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-3);
+}
+
+.monospaced {
+  font-family: var(--p-font-family-mono);
+  font-size: var(--p-font-size-3);
 }

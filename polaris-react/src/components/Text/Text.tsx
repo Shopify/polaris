@@ -16,7 +16,8 @@ type Variant =
   | 'headingXl'
   | 'bodySm'
   | 'bodyMd'
-  | 'bodyLg';
+  | 'bodyLg'
+  | 'monospaced';
 
 type Alignment = 'inherit' | 'start' | 'center' | 'end' | 'justify';
 
