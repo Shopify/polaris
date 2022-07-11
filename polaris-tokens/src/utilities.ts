@@ -1,5 +1,12 @@
-import type {Entry, Exact, MetaTokenGroup, Tokens, TokenGroup} from './types';
-import type {breakpoints as breakpointsTokenGroup} from './token-groups/breakpoints';
+import type {
+  Entry,
+  Exact,
+  ExtractValues,
+  MetaTokenGroup,
+  Tokens,
+  TokenGroup,
+} from './types';
+import type {breakpoints as metaBreakpointsTokenGroup} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -118,7 +125,20 @@ export function getCustomPropertyNames(tokens: Tokens) {
     .flat();
 }
 
-export type BreakpointsTokenGroup = typeof breakpointsTokenGroup;
+export function removeMetadata<T extends Exact<MetaTokenGroup, T>>(
+  tokenGroup: T,
+) {
+  return Object.fromEntries(
+    Object.entries(tokenGroup).map((entry): Entry<TokenGroup> => {
+      const [tokenName, {value}] = entry as Entry<MetaTokenGroup>;
+
+      return [tokenName, value];
+    }),
+  ) as ExtractValues<T>;
+}
+
+export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;
+export type BreakpointsTokenGroup = ExtractValues<MetaBreakpointsTokenGroup>;
 
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
@@ -159,7 +179,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
         entry,
         index,
       ): [BreakpointsTokenName, BreakpointsAliasDirectionMediaConditions] => {
-        const [breakpointsTokenName, {value: breakpoint}] =
+        const [breakpointsTokenName, breakpoint] =
           entry as Entry<BreakpointsTokenGroup>;
 
         const upMediaCondition = getUpMediaCondition(breakpoint);
@@ -168,8 +188,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
           index === lastBreakpointIndex
             ? upMediaCondition
             : `${upMediaCondition} and ${getDownMediaCondition(
-                // Next breakpoint
-                breakpointEntries[index + 1][1].value,
+                breakpointEntries[index + 1][1],
               )}`;
 
         return [

@@ -118,8 +118,8 @@ describe('getMediaConditions', () => {
   it('transforms breakpoints tokens into directional media conditions', () => {
     /** @type {TokenGroup} */
     const breakpoints = {
-      breakpoint1: {value: '16px'},
-      breakpoint2: {value: '32px'},
+      breakpoint1: '16px',
+      breakpoint2: '32px',
     };
 
     expect(getMediaConditions(breakpoints)).toStrictEqual({

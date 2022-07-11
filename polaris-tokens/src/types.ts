@@ -1,4 +1,5 @@
 export type Entry<T> = [keyof T, T[keyof T]];
+export type Entries<T> = Entry<T>[];
 
 export interface MetaTokenProperties {
   description?: string;
@@ -27,6 +28,10 @@ export interface MetaTokens {
 
 export type Tokens = {
   [Property in keyof MetaTokens]: TokenGroup;
+};
+
+export type ExtractValues<T extends MetaTokenGroup> = {
+  [K in keyof T]: T[K]['value'];
 };
 
 // The following utility types are copied directly from `type-fest`:

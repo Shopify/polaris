@@ -1,13 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {MetaTokens, Tokens} from '../src';
+import {removeMetadata} from '../src';
+import type {Entry, Entries, MetaTokens, Tokens} from '../src/types';
 
 const outputDir = path.join(__dirname, '../build');
 const outputFile = path.join(outputDir, 'index.ts');
-
-type Entry<T> = [keyof T, T[keyof T]];
-type Entries<T> = Entry<T>[];
 
 export async function toTokenValues(metaTokens: MetaTokens) {
   if (!fs.existsSync(outputDir)) {
@@ -15,17 +13,10 @@ export async function toTokenValues(metaTokens: MetaTokens) {
   }
 
   const tokensEntries: Entries<Tokens> = Object.entries(metaTokens).map(
-    (entry) => {
+    (entry): Entry<Tokens> => {
       const [tokenGroupName, tokenGroup] = entry as Entry<MetaTokens>;
 
-      const tokenGroupValues = Object.fromEntries(
-        Object.entries(tokenGroup).map(([tokenName, {value}]) => [
-          tokenName,
-          value,
-        ]),
-      );
-
-      return [tokenGroupName, tokenGroupValues];
+      return [tokenGroupName, removeMetadata(tokenGroup)];
     },
   );
 
