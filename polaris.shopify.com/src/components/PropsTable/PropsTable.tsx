@@ -21,51 +21,43 @@ function PropsTable({ props: { interfaceName, props } }: Props) {
       </p>
 
       {props.length > 0 ? (
-        <table>
-          <tbody>
-            {props
-              .sort((a, b) => (a.optional ? 1 : -1))
-              .map((prop) => (
-                <>
-                  <tr key={prop.name}>
-                    <td>
-                      <span className={styles.Name}>
-                        {prop.name}
-                        {prop.optional && "?"}
-                      </span>
-                      {!prop.optional && (
-                        <StatusBadge
-                          status={{
-                            value: "information",
-                            message: "Required",
-                          }}
-                        />
-                      )}
-                      {prop.deprecated ? (
-                        <>
-                          {" "}
-                          <StatusBadge
-                            status={{
-                              value: "deprecated",
-                              message: "Deprecated",
-                            }}
-                          />
-                        </>
-                      ) : (
-                        ""
-                      )}{" "}
-                      <span className={styles.Type}>{prop.type}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={styles.Comment} colSpan={2}>
-                      {prop.comment}
-                    </td>
-                  </tr>
-                </>
-              ))}
-          </tbody>
-        </table>
+        <ul>
+          {props
+            .sort((a, b) => (a.optional ? 1 : -1))
+            .map((prop) => (
+              <li key={prop.name}>
+                <p className={styles.Definition}>
+                  <span className={styles.Name}>
+                    {prop.name}
+                    {prop.optional && "?"}
+                  </span>
+                  {!prop.optional && (
+                    <StatusBadge
+                      status={{
+                        value: "information",
+                        message: "Required",
+                      }}
+                    />
+                  )}
+                  {prop.deprecated ? (
+                    <>
+                      {" "}
+                      <StatusBadge
+                        status={{
+                          value: "deprecated",
+                          message: "Deprecated",
+                        }}
+                      />
+                    </>
+                  ) : (
+                    ""
+                  )}{" "}
+                  <span className={styles.Type}>{prop.type}</span>
+                </p>
+                <p className={styles.Comment}>{prop.comment}</p>
+              </li>
+            ))}
+        </ul>
       ) : (
         <p>This component does not accept any props.</p>
       )}

@@ -1,9 +1,19 @@
 .PropsTable {
-  td {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
+  ul {
+    li {
+      margin-left: 0;
+      list-style-type: none;
+      &:before {
+        display: none;
+      }
+    }
   }
+}
+
+.Definition {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .Name {
