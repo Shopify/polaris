@@ -18,7 +18,7 @@ import {useCallback} from 'react';
  * }
  */
 
-export function useDisableClicks(
+export function useDisableClick(
   disabled = false as boolean,
   handleClick: () => void = () => {},
 ) {

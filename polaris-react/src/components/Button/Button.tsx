@@ -17,7 +17,10 @@ import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
-import {useDisableClicks, useDisableKeyboard} from '../../utilities/use-disable-interaction';
+import {
+  useDisableClick,
+  useDisableKeyboard,
+} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
@@ -201,7 +204,7 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
-  const handleClick = useDisableClicks(disabled, toggleDisclosureActive);
+  const handleClick = useDisableClick(disabled, toggleDisclosureActive);
   const handleKeyDown = useDisableKeyboard(disabled);
 
   let connectedDisclosureMarkup;

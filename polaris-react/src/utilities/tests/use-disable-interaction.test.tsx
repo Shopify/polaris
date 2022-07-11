@@ -1,14 +1,14 @@
 import {mount} from '@shopify/react-testing';
 import React from 'react';
 
-import {useDisableClicks, useDisableKeyboard} from '../use-disable-interaction';
+import {useDisableClick, useDisableKeyboard} from '../use-disable-interaction';
 
-describe('useDisableClicks', () => {
+describe('useDisableClick', () => {
   it('returns click handler passed but prevents interaction if the boolean is true', () => {
     const spy = jest.fn();
 
     function MockComponent() {
-      const mouseHandler = useDisableClicks(true, spy);
+      const mouseHandler = useDisableClick(true, spy);
       return <button onClick={mouseHandler} />;
     }
 
@@ -37,7 +37,7 @@ describe('useDisableClicks', () => {
     const spy = jest.fn();
 
     function MockComponent() {
-      const mouseHandler = useDisableClicks(false, spy);
+      const mouseHandler = useDisableClick(false, spy);
       return <button onClick={mouseHandler} />;
     }
 
@@ -64,7 +64,7 @@ describe('useDisableClicks', () => {
     const spy = jest.fn();
 
     function MockComponent() {
-      const mouseHandler = useDisableClicks(true);
+      const mouseHandler = useDisableClick(true);
       return <button onClick={mouseHandler} />;
     }
 

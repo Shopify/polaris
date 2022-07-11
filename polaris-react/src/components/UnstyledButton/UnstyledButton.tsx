@@ -3,7 +3,7 @@ import React from 'react';
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {
-  useDisableClicks,
+  useDisableClick,
   useDisableKeyboard,
 } from '../../utilities/use-disable-interaction';
 import {UnstyledLink} from '../UnstyledLink';
@@ -62,7 +62,7 @@ export function UnstyledButton({
     onTouchStart,
   };
 
-  const handleClick = useDisableClicks(disabled, onClick);
+  const handleClick = useDisableClick(disabled, onClick);
   const handleKeyboard = useDisableKeyboard(disabled, onKeyDown);
 
   if (url) {
