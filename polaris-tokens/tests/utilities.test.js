@@ -1,4 +1,3 @@
-import {tokens} from '../src/tokens';
 import {
   createVar,
   getCustomPropertyNames,
