@@ -41,6 +41,19 @@ export const getComponentNav = (): NavItem[] => {
   return navItems;
 };
 
+export const getReadableStatusValue = (
+  statusValue: Status["value"]
+): string => {
+  const bannerTitles: { [key in Status["value"]]: string } = {
+    deprecated: "Deprecated",
+    alpha: "Alpha",
+    information: "Information",
+    warning: "Warning",
+  };
+
+  return bannerTitles[statusValue];
+};
+
 export const slugify = (str: string): string => {
   return (
     str

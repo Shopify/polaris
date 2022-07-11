@@ -6,6 +6,7 @@ import {
   IconsSearchResult,
   TokensSearchResult,
   GroupedSearchResults,
+  Status,
 } from "../types";
 import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
@@ -36,6 +37,13 @@ let results: SearchResults = [];
 
 // Add components
 components.forEach(({ frontMatter: { name, status }, intro }) => {
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status["value"],
+        message: status.message,
+      }
+    : undefined;
+
   results.push({
     category: "Components",
     score: 0,
@@ -43,7 +51,7 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
     meta: {
       name,
       description: stripMarkdownLinks(intro),
-      status,
+      status: typedStatus,
     },
   });
 });
