@@ -1,10 +1,6 @@
 ---
 name: Inline error
 category: Forms
-platforms:
-  - web
-  - android
-  - ios
 keywords:
   - InlineError
   - error message

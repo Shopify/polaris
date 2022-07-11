@@ -1,10 +1,6 @@
 ---
 name: Form layout
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - FormLayout
   - Group

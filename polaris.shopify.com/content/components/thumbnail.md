@@ -1,10 +1,6 @@
 ---
 name: Thumbnail
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - photo
   - picture

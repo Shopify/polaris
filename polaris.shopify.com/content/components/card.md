@@ -1,10 +1,6 @@
 ---
 name: Card
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - layout
   - container

@@ -24,6 +24,7 @@ body {
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
   --focus-outline: 0 0 0 2px var(--text-strong);
+  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
     "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
@@ -158,7 +159,6 @@ body,
   --primary: #008060;
   --border-color: #dedede;
   --border-color-light: #ededed;
-  --border-inset-color: #aaa;
   --border: 1px solid var(--border-color);
   --card-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
@@ -183,7 +183,6 @@ body,
   --primary: #1aab87;
   --border-color: #555;
   --border-color-light: #343434;
-  --border-inset-color: #555;
   --border: 1px solid var(--border-color);
   --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
   --card-shadow-hover: 0 4px 7px rgba(255, 255, 255, 0.1),
@@ -326,10 +325,6 @@ button {
       }
     }
   }
-}
-
-.twoColumnsResponsive div img {
-  display: none;
 }
 
 .NextPage {

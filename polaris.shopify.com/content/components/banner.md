@@ -1,10 +1,6 @@
 ---
 name: Banner
 category: Feedback indicators
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - inform
   - update

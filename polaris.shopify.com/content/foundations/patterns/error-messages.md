@@ -1050,7 +1050,7 @@ Don’t use internal language in error messages and avoid using question formats
       unavailable errors. This is an opportunity for someone at Shopify to
       explore a new design and help with creating UX guidelines.
       If you have ideas,
-      <a href="https://github.com/Shopify/polaris-ux/issues/new?template=Component_proposal.md">create an issue (private)</a>.
+      <a href="https://github.com/Shopify/polaris/issues/new>create an issue (private)</a>.
     </p>
     <h3>Content:</h3>
     <p>Headings should:</p>
