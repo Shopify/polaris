@@ -57,9 +57,7 @@ function ComponentGridItem({
               {status && (
                 <>
                   {" "}
-                  <StatusBadge
-                    status={{ message: status.message, value: status.value }}
-                  />
+                  <StatusBadge status={status} />
                 </>
               )}
             </h4>
