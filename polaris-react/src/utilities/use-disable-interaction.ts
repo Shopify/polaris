@@ -1,19 +1,19 @@
 import {useCallback} from 'react';
 
 /**
- * useDisableInteraction provides the original click handler but disables
- * it if the provided boolean is true.
+ * useDisableInteraction provides the original event handler but disables interaction
+ * if the boolean passed is true.
  * @param disabled - A boolean value that determines if the button should
  * be disabled
- * @param handleEvent - The original click handler
- * @returns Function - The original click handler but disabled if the
+ * @param handleEvent - The original event handler
+ * @returns Function - The original event handler but with interactions disabled if the
  * provided boolean is true
  * @example
  * function ComponentExample() {
- * const handleEvent = () => {
+ * const handleClick = () => {
  *  console.log('disable me');
  * };
- * const handleClickWrapper = useDisableInteraction(true, handleEvent);
+ * const handleClickWrapper = useDisableInteraction(true, handleClick);
  * return <button onClick={handleClickWrapper}>Im Disabled</button>;
  * }
  */
