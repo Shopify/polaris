@@ -17,7 +17,7 @@ import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
-import {useDisableClicks} from '../../utilities/use-disable-interaction';
+import {useDisableClicks, useDisableKeyboard} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
@@ -201,26 +201,8 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
-  const handleClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      if (disabled) {
-        event.preventDefault();
-        return;
-      }
-      toggleDisclosureActive();
-    },
-    [disabled, toggleDisclosureActive],
-  );
-  const handleKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (['Enter', ' '].includes(event.key) && disabled) {
-        event.preventDefault();
-      }
-    },
-    [disabled],
-  );
-
-  const handleClickWrapper = useDisableClicks(disabled, toggleDisclosureActive);
+  const handleClick = useDisableClicks(disabled, toggleDisclosureActive);
+  const handleKeyDown = useDisableKeyboard(disabled);
 
   let connectedDisclosureMarkup;
 
@@ -253,7 +235,7 @@ export function Button({
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
-        onClick={handleClickWrapper}
+        onClick={handleClick}
         onMouseUp={handleMouseUpByBlurring}
         onKeyDown={handleKeyDown}
       >

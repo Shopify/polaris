@@ -62,8 +62,8 @@ export function UnstyledButton({
     onTouchStart,
   };
 
-  const handleClickWrapper = useDisableClicks(disabled, onClick);
-  const handleKeyboardWrapper = useDisableKeyboard(disabled, onKeyDown);
+  const handleClick = useDisableClicks(disabled, onClick);
+  const handleKeyboard = useDisableKeyboard(disabled, onKeyDown);
 
   if (url) {
     buttonMarkup = disabled ? (
@@ -93,10 +93,10 @@ export function UnstyledButton({
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
         aria-pressed={pressed}
-        onKeyDown={handleKeyboardWrapper}
+        onKeyDown={handleKeyboard}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
-        onClick={handleClickWrapper}
+        onClick={handleClick}
         {...rest}
       >
         {children}

@@ -5,16 +5,16 @@ import {useCallback} from 'react';
  * it if the provided boolean is true.
  * @param disabled - A boolean value that determines if the button should
  * be disabled
- * @param handleClick - The original click handler
+ * @param handleEvent - The original click handler
  * @returns Function - The original click handler but disabled if the
  * provided boolean is true
  * @example
  * function ComponentExample() {
- * const handleClick = () => {
+ * const handleEvent = () => {
  *  console.log('disable me');
  * };
- * const handleClickWrapper = useDisableInteraction(true, handleClick);
- * return <button onClick={handleClickWrapper}>I'm Disabled</button>;
+ * const handleClickWrapper = useDisableInteraction(true, handleEvent);
+ * return <button onClick={handleClickWrapper}>Im Disabled</button>;
  * }
  */
 
@@ -23,7 +23,7 @@ export function useDisableClicks(
   handleClick: () => void = () => {},
 ) {
   const handleClickWrapper = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>) => {
+    (event?: React.MouseEvent<HTMLButtonElement>) => {
       if (disabled) {
         event?.preventDefault();
         event?.stopPropagation();
@@ -40,12 +40,12 @@ export function useDisableClicks(
 export function useDisableKeyboard(
   disabled = false as boolean,
   handleKeyDown: (
-    event: React.KeyboardEvent<HTMLButtonElement>,
+    event?: React.KeyboardEvent<HTMLButtonElement>,
   ) => void = () => {},
 ) {
   const handleKeyDownWrapper = useCallback(
-    (event: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (['Enter', ' '].includes(event.key) && disabled) {
+    (event?: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (disabled && (event?.key === ' ' || event?.key === 'Enter')) {
         event?.preventDefault();
         event?.stopPropagation();
       } else {
