@@ -118,7 +118,9 @@ export function getCustomPropertyNames(tokens: Tokens) {
     .flat();
 }
 
-export type BreakpointsTokenGroup = typeof breakpointsTokenGroup;
+export type BreakpointsTokenGroup = {
+  [key in keyof typeof breakpointsTokenGroup]: string | TokenGroup;
+};
 
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
@@ -159,8 +161,13 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
         entry,
         index,
       ): [BreakpointsTokenName, BreakpointsAliasDirectionMediaConditions] => {
-        const [breakpointsTokenName, {value: breakpoint}] =
+        const [breakpointsTokenName, tokenGroupOrValue] =
           entry as Entry<BreakpointsTokenGroup>;
+
+        const isTokenGroup = typeof tokenGroupOrValue === 'object';
+        const breakpoint = isTokenGroup
+          ? tokenGroupOrValue.value
+          : tokenGroupOrValue;
 
         const upMediaCondition = getUpMediaCondition(breakpoint);
         const downMediaCondition = getDownMediaCondition(breakpoint);
@@ -168,8 +175,9 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
           index === lastBreakpointIndex
             ? upMediaCondition
             : `${upMediaCondition} and ${getDownMediaCondition(
-                // Next breakpoint
-                breakpointEntries[index + 1][1].value,
+                isTokenGroup
+                  ? (breakpointEntries[index + 1][1] as TokenGroup).value
+                  : (breakpointEntries[index + 1][1] as string),
               )}`;
 
         return [
