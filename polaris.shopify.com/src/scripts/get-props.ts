@@ -15,7 +15,7 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
     }
   }
 
-  const filePath = path.join(__dirname, "../data/props.json");
+  const filePath = path.join(__dirname, "../../../data/props.json");
   fs.writeFileSync(filePath, JSON.stringify(props, undefined, 2));
 
   return;
@@ -75,7 +75,7 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
 }
 
 globby("../polaris-react/src/components/*/*.tsx", {
-  ignore: ["./**/*.test.tsx"],
+  ignore: ["*.test.tsx"],
 }).then((files) => {
   getProps(files, {
     target: ts.ScriptTarget.ES5,

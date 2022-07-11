@@ -16,7 +16,7 @@
     "copy-icons": "node src/scripts/copy-icons.mjs",
     "generate-og-images": "next build && yarn next-sitemap && node src/scripts/generate-og-images.js",
     "generate-og-images-skip-sitemap": "node src/scripts/generate-og-images.js",
-    "get-props": "tsc ./src/scripts/get-props.ts --target esnext --module nodenext --types \"react\" && node ./src/scripts/get-props.js && rm ./src/scripts/get-props.js"
+    "get-props": "tsc ./src/scripts/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./src/scripts/get-props && node ./src/scripts/get-props/scripts/get-props.js && rm -rf ./src/scripts/get-props"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",

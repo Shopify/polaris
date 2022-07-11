@@ -1,5 +1,38 @@
 [
   {
+    "interfaceName": "ActionListProps",
+    "props": [
+      {
+        "name": "items",
+        "type": "readonly ActionListItemDescriptor[]",
+        "comment": "Collection of actions for list",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "sections",
+        "type": "readonly ActionListSection[]",
+        "comment": "Collection of sectioned action items",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "actionRole",
+        "type": "string",
+        "comment": "Defines a specific role attribute for each action in the list",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onActionAnyItem",
+        "type": "() => void",
+        "comment": "Callback when any item is clicked or keypressed",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
     "interfaceName": "AccountConnectionProps",
     "props": [
       {
@@ -48,39 +81,6 @@
         "name": "action",
         "type": "Action",
         "comment": "Action for account connection",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
-    "interfaceName": "ActionListProps",
-    "props": [
-      {
-        "name": "items",
-        "type": "readonly ActionListItemDescriptor[]",
-        "comment": "Collection of actions for list",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "sections",
-        "type": "readonly ActionListSection[]",
-        "comment": "Collection of sectioned action items",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "actionRole",
-        "type": "string",
-        "comment": "Defines a specific role attribute for each action in the list",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "onActionAnyItem",
-        "type": "() => void",
-        "comment": "Callback when any item is clicked or keypressed",
         "optional": true,
         "deprecated": false
       }
@@ -6173,6 +6173,25 @@
     ]
   },
   {
+    "interfaceName": "MessageIndicatorProps",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "comment": "",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "comment": "",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
     "interfaceName": "ModalProps",
     "props": [
       {
@@ -6318,25 +6337,6 @@
     ]
   },
   {
-    "interfaceName": "MessageIndicatorProps",
-    "props": [
-      {
-        "name": "children",
-        "type": "React.ReactNode",
-        "comment": "",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "active",
-        "type": "boolean",
-        "comment": "",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
     "interfaceName": "NavigationProps",
     "props": [
       {
@@ -6378,39 +6378,6 @@
         "name": "logoSuffix",
         "type": "React.ReactNode",
         "comment": "Accepts a component that is used to supplement the logo markup",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
-    "interfaceName": "PageProps",
-    "props": [
-      {
-        "name": "children",
-        "type": "React.ReactNode",
-        "comment": "The contents of the page",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "fullWidth",
-        "type": "boolean",
-        "comment": "Remove the normal max-width on the page",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "narrowWidth",
-        "type": "boolean",
-        "comment": "Decreases the maximum layout width. Intended for single-column layouts",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "divider",
-        "type": "boolean",
-        "comment": "Displays a divider between the page header and the page content",
         "optional": true,
         "deprecated": false
       }
@@ -6487,6 +6454,58 @@
         "type": "(selected: string[]) => void",
         "comment": "Callback when selection is changed",
         "optional": false,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "PageProps",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "comment": "The contents of the page",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "fullWidth",
+        "type": "boolean",
+        "comment": "Remove the normal max-width on the page",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "narrowWidth",
+        "type": "boolean",
+        "comment": "Decreases the maximum layout width. Intended for single-column layouts",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "divider",
+        "type": "boolean",
+        "comment": "Displays a divider between the page header and the page content",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "PageActionsProps",
+    "props": [
+      {
+        "name": "primaryAction",
+        "type": "any",
+        "comment": "The primary action for the page",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "secondaryActions",
+        "type": "any",
+        "comment": "The secondary actions for the page",
+        "optional": true,
         "deprecated": false
       }
     ]
@@ -6588,25 +6607,6 @@
     ]
   },
   {
-    "interfaceName": "PageActionsProps",
-    "props": [
-      {
-        "name": "primaryAction",
-        "type": "any",
-        "comment": "The primary action for the page",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "secondaryActions",
-        "type": "any",
-        "comment": "The secondary actions for the page",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
     "interfaceName": "PolarisTestProviderProps",
     "props": [
       {
@@ -6663,32 +6663,6 @@
         "type": "Partial<any>",
         "comment": "",
         "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
-    "interfaceName": "PortalProps",
-    "props": [
-      {
-        "name": "children",
-        "type": "React.ReactNode",
-        "comment": "",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "idPrefix",
-        "type": "string",
-        "comment": "",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "onPortalCreated",
-        "type": "() => void",
-        "comment": "",
-        "optional": false,
         "deprecated": false
       }
     ]
@@ -6827,6 +6801,32 @@
         "type": "PopoverAutofocusTarget",
         "comment": "The preferred auto focus target defaulting to the popover container",
         "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "PortalProps",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "comment": "",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "idPrefix",
+        "type": "string",
+        "comment": "",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onPortalCreated",
+        "type": "() => void",
+        "comment": "",
+        "optional": false,
         "deprecated": false
       }
     ]
