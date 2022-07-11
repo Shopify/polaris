@@ -18,7 +18,7 @@ table goes here
 
 ## Detailed steps
 
-Before proposing a new icon, search the [icon explorer](https://polaris-icons.shopify.com/). If the icon you're looking for isn't included, create a proposal for the new icon and work with your team to add it. Any additions or changes should also be reflected in the [Figma UI Kit](/contributing/figma-ui-kit).
+Before proposing a new icon, search the [icon explorer](https://polaris.shopify.com/icons). If the icon you're looking for isn't included, create a proposal for the new icon and work with your team to add it. Any additions or changes should also be reflected in the [Figma UI Kit](/contributing/figma-ui-kit).
 
 ### How to contribute
 
