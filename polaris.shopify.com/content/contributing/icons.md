@@ -87,12 +87,15 @@ Polaris Icons are important visual aids that help merchants understand actions a
 
 ## Quick start guides
 
-<!-- prettier-ignore -->
-| Contribution type | When to contribute and/or collaborate | Where to search for related issues | Who to involve  | Resources impacted  | How to get started |
-|---|---|---|---|---|---|
-| Remove an icon | As needed | [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris designer  | [Shopify/polaris repo](https://github.com/Shopify/polaris) Polaris Icons Figma library | Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) |
-| Edit an icon | As needed | [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris designer  | [Shopify/polaris repo](https://github.com/Shopify/polaris) Polaris Icons Figma library | Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)  |
-| Add a new icon | As needed | [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris designer  | [Shopify/polaris repo](https://github.com/Shopify/polaris) Polaris Icons Figma library | Submit an [icon proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md)|
+<!--
+
+This is a placeholder table, quick start guides render here. You can find and edit quick guide content in the metadata (front matter) at the top of this file. The placeholder table is here so the Markdown component that parses these files places the QuickStartGuide component here (see components/Markdown.tsx).
+
+-->
+
+|     |     |
+| --- | --- |
+|     |     |
 
 ## Detailed steps
 

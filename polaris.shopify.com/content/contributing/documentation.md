@@ -109,13 +109,15 @@ Shopify teams create documentation for polaris.shopify.com, but open source cont
 
 ## Quick start guides
 
-<!-- prettier-ignore -->
-| Contribution type | When to contribute and/or collaborate | Where to search for related issues/topics | Who to involve | Resources potentially impacted  | How to get started |
-|---|---|---|---|---|---|
-| Copy editing (grammatical errors, typos, etc.) | As needed | [Shopify/polaris repo](https://github.com/Shopify/polaris) | Polaris team (automatically notified) | Related content sections of this site | Submit PR in @polaris repo  (see detailed steps below) |
-| Updating existing documentation | After you collect feedback from subject matter experts on proposed changes | [Shopify/polaris repo](https://github.com/Shopify/polaris) | Subject matter experts, or those with the most context Polaris team | Related content sections Polaris UI Kit [Shopify/polaris repo](https://github.com/Shopify/polaris) Vault (Shopify’s internal wiki) | Start draft in Google docs, then share with Polaris team. |
-| Creating new documentation | As soon as you have rationale for new guidance | Internally: Vault, Google drive, [Shopify/polaris repo](https://github.com/Shopify/polaris)  Externally: [Shopify/polaris repo](https://github.com/Shopify/polaris)  | Subject matter experts, or those with the most context The Polaris team will make recommendations based on audience and content.  | Related content sections Polaris UI Kit [Shopify/polaris repo](https://github.com/Shopify/polaris) Vault |  Start draft in Google docs, then share with Polaris team. |
-| Removing documentation | As needed | [Shopify/polaris repo](https://github.com/Shopify/polaris) | Subject matter experts, or those with the most context Polaris team (automatically notified) | Anywhere the documentation is referenced, linked, or copied | Submit PR in [Shopify/polaris repo](https://github.com/Shopify/polaris) |
+<!--
+
+This is a placeholder table, quick start guides render here. You can find and edit quick guide content in the metadata (front matter) at the top of this file. The placeholder table is here so the Markdown component that parses these files places the QuickStartGuide component here (see components/Markdown.tsx).
+
+-->
+
+|     |     |
+| --- | --- |
+|     |     |
 
 ## Detailed steps
 

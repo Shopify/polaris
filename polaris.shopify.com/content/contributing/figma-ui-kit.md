@@ -88,12 +88,15 @@ Components, features, or patterns shouldn't be added to the Figma UI Kit if they
 
 ## Quick start guides
 
-<!-- prettier-ignore -->
-| Contribution type | When to contribute and/or collaborate | Where to search for related issues/topics | Who to involve  | Resources potentially impacted  | How to get started (The first step) |
-|---|---|---|---|---|---|
-| Bug fix (visual design or auto layout) | As needed | Polaris UI Kit | Polaris designer | Polaris Components Figma library | Create an issue in `Shopify/polaris` repo |
-| New component variant | When design is mostly complete so there is time to create Figma variants while devs build.  | Polaris UI Kit | Polaris designer | Polaris Components Figma library | Create a branch in Figma and ask for a review |
-| New component | When your design process is between 50%-75% done. | Polaris UI Kit | Polaris designer  | Polaris Components Figma library | Reach out in the #polaris Slack channel, then create a branch in Figma and ask for a review |
+<!--
+
+This is a placeholder table, quick start guides render here. You can find and edit quick guide content in the metadata (front matter) at the top of this file. The placeholder table is here so the Markdown component that parses these files places the QuickStartGuide component here (see components/Markdown.tsx).
+
+-->
+
+|     |     |
+| --- | --- |
+|     |     |
 
 ## Detailed steps
 

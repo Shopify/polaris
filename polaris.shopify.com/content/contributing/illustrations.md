@@ -42,7 +42,12 @@ Each illustration must be submitted for feedback from an illustrator in #illustr
 
 ## Quick start guide
 
-<!-- prettier-ignore -->
-| Contribution type | When to contribute and/or collaborate | Where to search for related issues/topics | Who to involve | Resources potentially impacted | How to get started  |
-|---|---|---|---|---|---|
-| New illustration | Anytime | #illustration-guild | #illustration-guild | Polaris UI Kit [Shopify/polaris repo](https://github.com/Shopify/polaris) Illustration Library Illustration Colors Library Product Illustration Guidelines | If you work at Shopify, reach out to the #illustration-guild |
+<!--
+
+This is a placeholder table, quick start guides render here. You can find and edit quick guide content in the metadata (front matter) at the top of this file. The placeholder table is here so the Markdown component that parses these files places the QuickStartGuide component here (see components/Markdown.tsx).
+
+-->
+
+|     |     |
+| --- | --- |
+|     |     |

@@ -102,12 +102,15 @@ Bug fixes can be as simple as removing a typo, or as complex as refactoring a co
 
 ## Quick start guides
 
-<!-- prettier-ignore -->
-|Type|When|Where|Who|Resources impacted|How to get started|
-|---|---|---|---|---|---|
-|Bug fix|As needed|[GitHub](https://github.com/Shopify/polaris)|Anyone|- [@shopify/polaris](https://www.npmjs.com/package/@shopify/polaris) <br /> - polaris.shopify.com|Submit a [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md), assign yourself to an existing bug report, or open a pull request|
-|Enhancement|As needed|[GitHub](https://github.com/Shopify/polaris) |Anyone|- [@shopify/polaris](https://www.npmjs.com/package/@shopify/polaris) <br /> - Figma UI Kit <br /> - polaris.shopify.com|Submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or open a pull request|
-|New pattern|As needed|[GitHub](https://github.com/Shopify/polaris)|Anyone|- [@shopify/polaris](https://www.npmjs.com/package/@shopify/polaris) <br /> - Polaris UI Kit <br /> - polaris.shopify.com|Submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) early in your project|
+<!--
+
+This is a placeholder table, quick start guides render here. You can find and edit quick guide content in the metadata (front matter) at the top of this file. The placeholder table is here so the Markdown component that parses these files places the QuickStartGuide component here (see components/Markdown.tsx).
+
+-->
+
+|     |     |
+| --- | --- |
+|     |     |
 
 ## Detailed steps
 
