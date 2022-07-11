@@ -229,6 +229,7 @@
     opacity: 1;
     @include recolor-icon(var(--p-icon));
   }
+
   &:hover {
     @include recolor-icon(var(--p-interactive-hovered));
   }
