@@ -41,7 +41,7 @@ const FakeComponent = ({
 };
 
 describe('StopPropagation', () => {
-  it('stops propagation of click event when a StopPropagation component is present in between', async () => {
+  it('stops propagation of click event when a StopPropagation component is present in between', () => {
     const clickSpy = jest.fn();
     const searchWrapper = mountWithApp(
       <FakeComponent bubbleEventSpy={clickSpy} />,
@@ -55,7 +55,7 @@ describe('StopPropagation', () => {
     expect(clickSpy).not.toHaveBeenCalledWith('outer');
   });
 
-  it('stops propagation of touch event when a StopPropagation component is present in between', async () => {
+  it('stops propagation of touch event when a StopPropagation component is present in between', () => {
     const clickSpy = jest.fn();
     const searchWrapper = mountWithApp(
       <FakeComponent bubbleEventSpy={clickSpy} />,
@@ -69,7 +69,7 @@ describe('StopPropagation', () => {
     expect(clickSpy).not.toHaveBeenCalledWith('outer');
   });
 
-  it('does not stops propagation of click event when no StopPropagation is present in between', async () => {
+  it('does not stops propagation of click event when no StopPropagation is present in between', () => {
     const clickSpy = jest.fn();
     const searchWrapper = mountWithApp(
       <FakeComponent bubbleEventSpy={clickSpy} withStopPropagation={false} />,

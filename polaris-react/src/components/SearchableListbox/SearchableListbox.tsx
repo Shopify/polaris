@@ -1,14 +1,13 @@
-import React, {useMemo, useState, ReactNode, ReactElement} from 'react';
-import {createUniqueIDFactory} from '@web-utilities/id';
+import React, {useState, ReactNode, ReactElement} from 'react';
 
 import {Popover} from '../Popover';
 import {Scrollable} from '../Scrollable';
-import {Listbox} from '../Listbox';
+import {AutoSelection, Listbox} from '../Listbox';
+import {useUniqueId} from '../../utilities/unique-id';
 
-import {Search} from './components/Search';
-import {SearchEmptyState} from './components/SearchEmptyState';
-import {StopPropagation} from './components/StopPropagation';
-import styles from './ElementPicker.scss';
+import {StopPropagation, Search, SearchEmptyState} from './components';
+import styles from './SearchableListbox.scss';
+import {MINIMUM_COUNT_FOR_SEARCH} from './constants';
 
 interface ListItem {
   children: string | ReactNode;
@@ -19,23 +18,25 @@ interface ListItem {
 export interface Props {
   activatorNode: ReactElement;
   open: boolean;
+  searchValue: string;
+  searchEmptyStateMessage: string;
+  searchLabel: string;
+  searchPlaceholder?: string;
   listItems?: ListItem[];
   loading?: boolean;
-  action?: ReactElement;
   loadingAccessibilityLabel?: string;
-  searchPlaceholder?: string;
-  searchEmptyStateMessage: string;
+  action?: ReactElement;
   onClose(): void;
   onSearch(search: string): void;
   onOptionSelect(selected: string): void;
   onScrolledToBottom?(): void;
 }
 
-const getUniqueId = createUniqueIDFactory('ElementPicker');
-
-export function ElementPicker({
+export function SearchableListbox({
   activatorNode,
   open,
+  searchValue,
+  searchLabel,
   searchPlaceholder,
   searchEmptyStateMessage,
   loading,
@@ -48,9 +49,9 @@ export function ElementPicker({
   onScrolledToBottom,
 }: Props) {
   const [activeOptionDomId, setActiveOptionDomId] = useState<string>();
-  const listId = useMemo(() => getUniqueId(), []);
+  const listId = useUniqueId('SearchableListbox');
 
-  const showSearch = listItems?.length >= MINIMUM_COUNT_FOR_SEARCH;
+  const showSearch = Number(listItems?.length) >= MINIMUM_COUNT_FOR_SEARCH;
   const showEmptyState = !loading && !listItems?.length;
 
   const handleActiveOptionChange = (_: string, domId: string) => {
@@ -69,9 +70,10 @@ export function ElementPicker({
           <div className={styles.SearchFieldWrapper}>
             <StopPropagation>
               <Search
-                placeholder={searchPlaceholder}
-                value={searchValue}
                 activeOptionDomId={activeOptionDomId}
+                label={searchLabel}
+                value={searchValue}
+                placeholder={searchPlaceholder}
                 listId={listId}
                 onSearch={onSearch}
               />

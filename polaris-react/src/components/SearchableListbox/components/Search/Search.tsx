@@ -1,8 +1,8 @@
 import React from 'react';
 import {SearchMinor} from '@shopify/polaris-icons';
 
-import {TextField} from '../../TextField';
-import {Icon} from '../../Icon';
+import {TextField} from '../../../TextField';
+import {Icon} from '../../../Icon';
 
 interface Props {
   value: string;

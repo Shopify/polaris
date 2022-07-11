@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {TextStyle} from '../../TextStyle';
+import {TextStyle} from '../../../TextStyle';
 
 import styles from './SearchEmptyState.scss';
 

@@ -1,5 +1,5 @@
 ---
-name: Listbox
+name: SearchableListbox
 category: Lists and tables
 keywords:
   - list
