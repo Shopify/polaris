@@ -99,3 +99,14 @@ export type Status = {
   value: string;
   message: string;
 };
+
+export interface PropsForComponent {
+  interfaceName: string;
+  props: {
+    name: string;
+    type: string;
+    comment?: string;
+    optional: boolean;
+    deprecated: boolean;
+  }[];
+}

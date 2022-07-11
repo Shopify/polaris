@@ -3,7 +3,6 @@ import glob from "glob";
 import path from "path";
 import { marked } from "marked";
 import type { GetStaticPaths, GetStaticProps } from "next";
-
 import Examples from "../../components/Examples";
 import type { Example } from "../../components/Examples";
 import Longform from "../../components/Longform";
@@ -15,6 +14,8 @@ import { getComponentNav } from "../../utils/various";
 import PageMeta from "../../components/PageMeta";
 import { Status } from "../../types";
 import StatusBanner from "../../components/StatusBanner";
+import props from "../../data/props.json";
+import PropTable from "../../components/PropTable";
 
 interface MarkdownData {
   frontMatter: any;
@@ -36,6 +37,12 @@ interface Props {
 const Components = ({ examples, intro, name, readme, status }: Props) => {
   const navItems: NavItem[] = getComponentNav();
 
+  const propsForComponent = props.find(
+    (propTable) =>
+      propTable.interfaceName.toLowerCase() ===
+      `${name.replace(/\s/g, "").toLowerCase()}props`
+  );
+
   return (
     <Layout width="narrow" navItems={navItems}>
       <PageMeta title={name} description={intro} />
@@ -45,6 +52,7 @@ const Components = ({ examples, intro, name, readme, status }: Props) => {
         <Markdown text={readme.header} skipH1 />
         {status && <StatusBanner status={status} />}
         <Examples examples={examples} />
+        {propsForComponent && <PropTable props={propsForComponent} />}
         <Markdown text={readme.body} skipH1 />
       </Longform>
     </Layout>
