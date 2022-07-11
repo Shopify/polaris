@@ -46,7 +46,7 @@ export default function ComponentsPage({}: Props) {
                           message: status.value,
                         }
                       : undefined;
-                    console.log(typedStatus);
+
                     return (
                       <ComponentGrid.Item
                         key={name}
