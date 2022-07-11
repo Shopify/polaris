@@ -371,6 +371,7 @@ describe('<Button />', () => {
       );
       const mockEvent = {
         preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
       };
       unstyledButton.find('button')!.trigger('onClick', mockEvent);
       expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
@@ -510,6 +511,7 @@ describe('<Button />', () => {
       );
       const mockEvent = {
         preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
         key: 'Enter',
       };
       unstyledButton.find('button')!.trigger('onKeyDown', mockEvent);

@@ -96,10 +96,12 @@ describe('<Button />', () => {
 
       const mockEvent = {
         preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
       };
 
       const mockKeyEvent = {
         preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
         key: 'Enter',
       };
 
