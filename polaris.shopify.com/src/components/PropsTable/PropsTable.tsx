@@ -1,19 +1,19 @@
 import { PropsForComponent } from "../../types";
-import StatusBadge from "../../components/StatusBadge";
-import styles from "./PropTable.module.scss";
+import StatusBadge from "../StatusBadge";
+import styles from "./PropsTable.module.scss";
 
 interface Props {
   props: PropsForComponent;
 }
 
-function PropTable({ props: { interfaceName, props } }: Props) {
+function PropsTable({ props: { interfaceName, props } }: Props) {
   const feedbackTitle = "[polaris.shopify.com] Props table feedback";
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle
   )}&amp;labels=polaris.shopify.com`;
 
   return (
-    <div className={styles.PropTable}>
+    <div className={styles.PropsTable}>
       <h2 id="properties">Props</h2>
       <p>
         This feature is a work in progress. Please{" "}
@@ -64,4 +64,4 @@ function PropTable({ props: { interfaceName, props } }: Props) {
   );
 }
 
-export default PropTable;
+export default PropsTable;

@@ -12,10 +12,9 @@ import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 import { getComponentNav } from "../../utils/various";
 import PageMeta from "../../components/PageMeta";
-import { Status } from "../../types";
+import { PropsForComponent, Status } from "../../types";
 import StatusBanner from "../../components/StatusBanner";
-import props from "../../data/props.json";
-import PropTable from "../../components/PropTable";
+import PropsTable from "../../components/PropsTable";
 
 interface MarkdownData {
   frontMatter: any;
@@ -32,16 +31,18 @@ interface Props {
     body: string;
     header: string;
   };
+  propsForComponent?: PropsForComponent;
 }
 
-const Components = ({ examples, intro, name, readme, status }: Props) => {
+const Components = ({
+  examples,
+  intro,
+  name,
+  readme,
+  status,
+  propsForComponent,
+}: Props) => {
   const navItems: NavItem[] = getComponentNav();
-
-  const propsForComponent = props.find(
-    (propTable) =>
-      propTable.interfaceName.toLowerCase() ===
-      `${name.replace(/\s/g, "").toLowerCase()}props`
-  );
 
   return (
     <Layout width="narrow" navItems={navItems}>
@@ -52,7 +53,7 @@ const Components = ({ examples, intro, name, readme, status }: Props) => {
         <Markdown text={readme.header} skipH1 />
         {status && <StatusBanner status={status} />}
         <Examples examples={examples} />
-        {propsForComponent && <PropTable props={propsForComponent} />}
+        {propsForComponent && <PropsTable props={propsForComponent} />}
         <Markdown text={readme.body} skipH1 />
       </Longform>
     </Layout>
@@ -63,6 +64,11 @@ export const getStaticProps: GetStaticProps<
   Props,
   { component: string }
 > = async (context) => {
+  const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
+  let propsData: PropsForComponent[] = JSON.parse(
+    fs.readFileSync(propsFilePath, "utf8")
+  );
+
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
     process.cwd(),
@@ -100,11 +106,19 @@ export const getStaticProps: GetStaticProps<
         return { ...example, code };
       }
     );
+
+    const propsForComponent = propsData.find(
+      (PropsTable) =>
+        PropsTable.interfaceName.toLowerCase() ===
+        `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
+    );
+
     const props: Props = {
       ...data.frontMatter,
       examples,
       intro: data.intro,
       readme,
+      propsForComponent,
     };
 
     return { props };
