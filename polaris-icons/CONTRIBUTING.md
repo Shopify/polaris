@@ -1,6 +1,6 @@
 # Polaris icons contribution guidelines
 
-This repository is the place to contribute changes to icons and <https://polaris-icons.shopify.com>.
+This repository is the place to contribute changes to icons and <https://polaris.shopify.com/icons>.
 
 - [Code of conduct](#code-of-conduct)
 - [Icon sets and design guidelines](#icon-sets-and-design-guidelines)
