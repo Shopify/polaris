@@ -23,7 +23,7 @@ function PropsTable({ props: { interfaceName, props } }: Props) {
       {props.length > 0 ? (
         <ul>
           {props
-            .sort((a, b) => (a.optional ? 1 : -1))
+            .sort((a) => (a.optional ? 1 : -1))
             .map((prop) => (
               <li key={prop.name}>
                 <p className={styles.Definition}>
@@ -32,12 +32,15 @@ function PropsTable({ props: { interfaceName, props } }: Props) {
                     {prop.optional && "?"}
                   </span>
                   {!prop.optional && (
-                    <StatusBadge
-                      status={{
-                        value: "information",
-                        message: "Required",
-                      }}
-                    />
+                    <>
+                      {" "}
+                      <StatusBadge
+                        status={{
+                          value: "information",
+                          message: "Required",
+                        }}
+                      />
+                    </>
                   )}
                   {prop.deprecated ? (
                     <>
