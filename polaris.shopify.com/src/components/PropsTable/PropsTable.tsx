@@ -16,7 +16,7 @@ function PropsTable({ props: { interfaceName, props } }: Props) {
     <div className={styles.PropsTable}>
       <h2 id="properties">Props</h2>
       <p>
-        This feature is a work in progress. Please{" "}
+        Want to help make this feature better? Please{" "}
         <a href={feedbackUrl}>share your feedback</a>.
       </p>
 
