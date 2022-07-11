@@ -40,7 +40,13 @@ export default function ComponentsPage({}: Props) {
                   .map(({ frontMatter, intro }) => {
                     const { name, status } = frontMatter;
                     const url = `/components/${slugify(name)}`;
-                    let typedStatus = status as Status | undefined;
+                    let typedStatus = status
+                      ? {
+                          value: status.value.toLowerCase() as Status["value"],
+                          message: status.value,
+                        }
+                      : undefined;
+                    console.log(typedStatus);
                     return (
                       <ComponentGrid.Item
                         key={name}

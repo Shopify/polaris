@@ -31,7 +31,7 @@ interface Props {
     body: string;
     header: string;
   };
-  propsForComponent?: PropsForComponent;
+  propsForComponent: PropsForComponent | null;
 }
 
 const Components = ({
@@ -43,6 +43,12 @@ const Components = ({
   propsForComponent,
 }: Props) => {
   const navItems: NavItem[] = getComponentNav();
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status["value"],
+        message: status.message,
+      }
+    : undefined;
 
   return (
     <Layout width="narrow" navItems={navItems}>
@@ -51,7 +57,7 @@ const Components = ({
       <Longform>
         <h1>{name}</h1>
         <Markdown text={readme.header} skipH1 />
-        {status && <StatusBanner status={status} />}
+        {typedStatus && <StatusBanner status={typedStatus} />}
         <Examples examples={examples} />
         {propsForComponent && <PropsTable props={propsForComponent} />}
         <Markdown text={readme.body} skipH1 />
@@ -65,9 +71,8 @@ export const getStaticProps: GetStaticProps<
   { component: string }
 > = async (context) => {
   const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
-  let propsData: PropsForComponent[] = JSON.parse(
-    fs.readFileSync(propsFilePath, "utf8")
-  );
+  const fileContent = fs.readFileSync(propsFilePath, "utf8");
+  let propsData: PropsForComponent[] = JSON.parse(fileContent);
 
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
@@ -107,11 +112,12 @@ export const getStaticProps: GetStaticProps<
       }
     );
 
-    const propsForComponent = propsData.find(
-      (PropsTable) =>
-        PropsTable.interfaceName.toLowerCase() ===
-        `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
-    );
+    const propsForComponent =
+      propsData.find(
+        (PropsTable) =>
+          PropsTable.interfaceName.toLowerCase() ===
+          `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
+      ) || null;
 
     const props: Props = {
       ...data.frontMatter,

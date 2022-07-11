@@ -29,24 +29,33 @@ function PropsTable({ props: { interfaceName, props } }: Props) {
                 <>
                   <tr key={prop.name}>
                     <td>
-                      {prop.name}
-                      {prop.optional ? "?" : ""}
+                      <span className={styles.Name}>
+                        {prop.name}
+                        {prop.optional && "?"}
+                      </span>
+                      {!prop.optional && (
+                        <StatusBadge
+                          status={{
+                            value: "information",
+                            message: "Required",
+                          }}
+                        />
+                      )}
                       {prop.deprecated ? (
                         <>
                           {" "}
                           <StatusBadge
                             status={{
-                              value: "Deprecated",
+                              value: "deprecated",
                               message: "Deprecated",
                             }}
                           />
                         </>
                       ) : (
                         ""
-                      )}
-                      <br />
+                      )}{" "}
+                      <span className={styles.Type}>{prop.type}</span>
                     </td>
-                    <td>{prop.type}</td>
                   </tr>
                   <tr>
                     <td className={styles.Comment} colSpan={2}>

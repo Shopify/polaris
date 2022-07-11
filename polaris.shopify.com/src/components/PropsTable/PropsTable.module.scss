@@ -1,11 +1,26 @@
 .PropsTable {
-  table {
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-100);
+  td {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
   }
+}
+
+.Name {
+  font-weight: var(--font-weight-500);
+  color: var(--text-strong);
+}
+
+.Type {
+  font-size: var(--font-size-200);
+  font-family: var(--font-family-mono);
+  color: var(--primary);
 }
 
 .Comment {
   font-size: var(--font-size-50);
-  font-family: arial;
+  display: block;
+  margin-top: -0.125rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-subdued);
 }

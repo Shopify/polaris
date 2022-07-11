@@ -96,7 +96,7 @@ export enum Breakpoints {
 }
 
 export type Status = {
-  value: string;
+  value: "deprecated" | "alpha" | "warning" | "information";
   message: string;
 };
 
