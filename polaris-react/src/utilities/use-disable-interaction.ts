@@ -13,8 +13,8 @@ import {useCallback} from 'react';
  * const handleClick = () => {
  *  console.log('disable me');
  * };
- * const handleClickWrapper = useDisableInteraction(true, handleClick);
- * return <button onClick={handleClickWrapper}>Im Disabled</button>;
+ * const handleClickEvent = useDisableInteraction(true, handleClick);
+ * return <button onClick={handleClickEvent}>Im Disabled</button>;
  * }
  */
 
