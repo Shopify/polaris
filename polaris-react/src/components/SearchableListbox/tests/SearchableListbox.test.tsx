@@ -178,7 +178,7 @@ describe('<SearchableListbox />', () => {
       });
     });
 
-    it('renders a Search component with an activeOptionDomId', () => {
+    it('sets activeOptionDomId of <Search /> onActiveOptionChange', () => {
       const searchableListbox = mountWithApp(
         <SearchableListbox
           {...mockProps}
@@ -275,7 +275,7 @@ describe('<SearchableListbox />', () => {
 
   describe('empty state', () => {
     it.each([undefined, []])(
-      'renders with emptyStateMessage when not loading and list items is %s',
+      'renders <SearchEmptyState /> with emptyStateMessage when not loading and list items is %s',
       (listItems) => {
         const mockEmptyStateMessage = 'empty';
         const searchableListbox = mountWithApp(
@@ -293,7 +293,7 @@ describe('<SearchableListbox />', () => {
       },
     );
 
-    it("doesn't render when loading", () => {
+    it("doesn't render <SearchEmptyState /> when loading", () => {
       const searchableListbox = mountWithApp(
         <SearchableListbox
           {...mockProps}
@@ -305,7 +305,7 @@ describe('<SearchableListbox />', () => {
       expect(searchableListbox).not.toContainReactComponent(SearchEmptyState);
     });
 
-    it("doesn't render when listItems exist", () => {
+    it("doesn't render <SearchEmptyState /> when listItems exist", () => {
       const searchableListbox = mountWithApp(
         <SearchableListbox
           {...mockProps}
