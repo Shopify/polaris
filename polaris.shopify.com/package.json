@@ -51,6 +51,6 @@
     "rehype-raw": "^6.1.1",
     "next-sitemap": "^3.1.5",
     "puppeteer": "^14.4.1",
-    "typescript": "next"
+    "typescript": "^4.7.4"
   }
 }
