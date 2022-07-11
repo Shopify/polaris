@@ -58,7 +58,7 @@ const Examples = (props: Props) => {
     return null;
   }
 
-  const options = examples.map(({ fileName, title }, index) => {
+  const options = examples.map(({ title }, index) => {
     return { label: title, value: String(index) };
   });
 

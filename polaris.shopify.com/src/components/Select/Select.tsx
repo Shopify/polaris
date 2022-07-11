@@ -1,4 +1,3 @@
-import React, { useCallback } from "react";
 import { className } from "../../utils/various";
 
 import Image from "../Image";

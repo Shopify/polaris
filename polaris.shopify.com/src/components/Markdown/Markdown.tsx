@@ -57,7 +57,9 @@ function Markdown({ text, skipH1, frontMatter }: Props) {
           return frontMatter && frontMatter.quickGuides ? (
             <QuickStartGuide data={frontMatter.quickGuides} />
           ) : (
-            <table>{children}</table>
+            <div className="table-wrapper">
+              <table>{children}</table>
+            </div>
           );
         },
       }}
