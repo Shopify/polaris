@@ -7,28 +7,28 @@ export const typography = {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
-  'font-fontsize-75': {
+  'font-size-75': {
     value: '12px',
   },
-  'font-fontsize-100': {
+  'font-size-100': {
     value: '14px',
   },
-  'font-fontsize-200': {
+  'font-size-200': {
     value: '16px',
   },
-  'font-fontsize-300': {
+  'font-size-300': {
     value: '20px',
   },
-  'font-fontsize-400': {
+  'font-size-400': {
     value: '24px',
   },
-  'font-fontsize-500': {
+  'font-size-500': {
     value: '28px',
   },
-  'font-fontsize-600': {
+  'font-size-600': {
     value: '32px',
   },
-  'font-fontsize-700': {
+  'font-size-700': {
     value: '40px',
   },
   'font-weight-regular': {
@@ -43,25 +43,25 @@ export const typography = {
   'font-weight-bold': {
     value: '700',
   },
-  'line-height-1': {
+  'font-line-height-1': {
     value: '16px',
   },
-  'line-height-2': {
+  'font-line-height-2': {
     value: '20px',
   },
-  'line-height-3': {
+  'font-line-height-3': {
     value: '24px',
   },
-  'line-height-4': {
+  'font-line-height-4': {
     value: '28px',
   },
-  'line-height-5': {
+  'font-line-height-5': {
     value: '32px',
   },
-  'line-height-6': {
+  'font-line-height-6': {
     value: '40px',
   },
-  'line-height-7': {
+  'font-line-height-7': {
     value: '48px',
   },
 };
