@@ -53,6 +53,10 @@ Links should be:
 
 Clearly labeled: Merchants shouldn’t need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
 
+Links should not be:
+
+Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
+
 <!-- usagelist -->
 
 #### Do
