@@ -18,7 +18,7 @@ table goes here
 
 ## Detailed steps
 
-Before proposing a new icon, search the [icon explorer](https://polaris-icons.shopify.com/). If the icon you're looking for isn't included, create a proposal for the new icon and work with your team to add it. Any additions or changes should also be reflected in the [Figma UI Kit](/contributing/figma-ui-kit).
+Before proposing a new icon, search the [icon explorer](https://polaris.shopify.com/icons). If the icon you're looking for isn't included, create a proposal for the new icon and work with your team to add it. Any additions or changes should also be reflected in the [Figma UI Kit](/contributing/figma-ui-kit).
 
 ### How to contribute
 
@@ -26,7 +26,7 @@ To learn about best practices for designing and using Polaris icons, read the [i
 
 #### Designing a new icon
 
-1. [Create an issue](https://github.com/Shopify/polaris/issues/new/choose) for your proposal to create or modify an icon.
+1. [Create an issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=NEW_ICON.yml&title=%5BIcon%5D%3A+New+icon+%3Cicon-name%3E) for your proposal to create or modify an icon.
 2. Review design specs in the Polaris Icons library in Figma
 3. If you are designing a new icon
 

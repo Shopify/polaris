@@ -135,8 +135,7 @@
   }
 
   pre {
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
+    font-family: var(--font-family-mono);
     font-size: var(--font-size-100);
     padding: 1rem;
     background: #222;
