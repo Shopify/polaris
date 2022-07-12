@@ -18,6 +18,7 @@ interface ListItem {
 export interface Props {
   activatorNode: ReactElement;
   open: boolean;
+  showSearch: boolean;
   searchValue: string;
   searchEmptyStateMessage: string;
   searchLabel: string;
@@ -35,6 +36,7 @@ export interface Props {
 export function SearchableListbox({
   activatorNode,
   open,
+  showSearch,
   searchValue,
   searchLabel,
   searchPlaceholder,
@@ -51,7 +53,6 @@ export function SearchableListbox({
   const [activeOptionDomId, setActiveOptionDomId] = useState<string>();
   const listId = useUniqueId('SearchableListbox');
 
-  const showSearch = Number(listItems?.length) >= MINIMUM_COUNT_FOR_SEARCH;
   const showEmptyState = !loading && !listItems?.length;
 
   const handleActiveOptionChange = (_: string, domId: string) => {

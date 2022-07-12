@@ -140,9 +140,9 @@ describe('<SearchableListbox />', () => {
   });
 
   describe('search', () => {
-    it(`hides <Search /> and fixed <Popover.Pane /> if there are fewer listItems than ${MINIMUM_COUNT_FOR_SEARCH}`, () => {
+    it('hides <Search /> and fixed <Popover.Pane /> if showSearch is false', () => {
       const searchableListbox = mountWithApp(
-        <SearchableListbox {...mockProps} listItems={[]} />,
+        <SearchableListbox {...mockProps} showSearch={false} />,
       );
 
       expect(searchableListbox).not.toContainReactComponent(Popover.Pane, {
@@ -161,7 +161,7 @@ describe('<SearchableListbox />', () => {
       const searchableListbox = mountWithApp(
         <SearchableListbox
           {...mockProps}
-          listItems={getMockListItems(MINIMUM_COUNT_FOR_SEARCH)}
+          showSearch
           searchPlaceholder={placeholder}
           searchValue={value}
         />,
@@ -180,10 +180,7 @@ describe('<SearchableListbox />', () => {
 
     it('sets activeOptionDomId of <Search /> onActiveOptionChange', () => {
       const searchableListbox = mountWithApp(
-        <SearchableListbox
-          {...mockProps}
-          listItems={getMockListItems(MINIMUM_COUNT_FOR_SEARCH)}
-        />,
+        <SearchableListbox {...mockProps} showSearch />,
       );
 
       const nextOptionId = 'my-option-id';
@@ -200,11 +197,7 @@ describe('<SearchableListbox />', () => {
       const value = 'test';
       const onSearchSpy = jest.fn();
       const searchableListbox = mountWithApp(
-        <SearchableListbox
-          {...mockProps}
-          listItems={getMockListItems(MINIMUM_COUNT_FOR_SEARCH)}
-          onSearch={onSearchSpy}
-        />,
+        <SearchableListbox {...mockProps} showSearch onSearch={onSearchSpy} />,
       );
 
       searchableListbox.find(Search)!.trigger('onSearch', value);
@@ -239,12 +232,13 @@ describe('<SearchableListbox />', () => {
   });
 
   describe('action', () => {
-    it('renders inside <StopPropagation /> when not loading and listItems exist', () => {
-      const mockActionChildren = 'action';
+    it.only('renders inside <StopPropagation /> when not loading and listItems exist', () => {
+      const mockAction = <p>action</p>;
       const searchableListbox = mountWithApp(
         <SearchableListbox
           {...mockProps}
-          action={<p>{mockActionChildren}</p>}
+          loading={false}
+          action={mockAction}
           listItems={getMockListItems()}
         />,
       );
@@ -252,23 +246,24 @@ describe('<SearchableListbox />', () => {
       expect(searchableListbox.find(Popover.Pane)).toContainReactComponent(
         StopPropagation,
         {
-          children: mockActionChildren,
+          children: mockAction,
         },
       );
     });
 
     it("doesn't render if loading", () => {
-      const mockActionChildren = 'action';
+      const mockAction = <p>action</p>;
       const searchableListbox = mountWithApp(
         <SearchableListbox
           {...mockProps}
-          action={<p>{mockActionChildren}</p>}
           loading
+          action={mockAction}
+          listItems={getMockListItems()}
         />,
       );
 
       expect(searchableListbox).not.toContainReactComponent('p', {
-        children: mockActionChildren,
+        children: mockAction,
       });
     });
   });
