@@ -422,7 +422,7 @@ function FullDataTableExample() {
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           stickyHeader
-          hasFixedFirstColumn
+          fixedFirstColumn
           truncate
         />
       </Card>
@@ -533,7 +533,7 @@ function DataTableFixedFirstColumnExample() {
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={handleSort}
-          hasFixedFirstColumn
+          fixedFirstColumn
           truncate
         />
       </Card>
