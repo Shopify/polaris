@@ -307,6 +307,42 @@ describe('<Button />', () => {
         items: expect.arrayContaining(actions),
       });
     });
+
+    it('sets tabIndex to -1 on the disclosure button when disabled is true', () => {
+      const disclosure = {
+        disabled: true,
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
+      const disclosureButton = button.findAll('button')[1];
+
+      expect(disclosureButton).toHaveReactProps({
+        tabIndex: -1,
+      });
+    });
+
+    it('sets tabIndex to undefined on the disclosure button when disabled is false', () => {
+      const disclosure = {
+        disabled: false,
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
+      const disclosureButton = button.findAll('button')[1];
+
+      expect(disclosureButton).toHaveReactProps({
+        tabIndex: undefined,
+      });
+    });
   });
 
   describe('onClick()', () => {

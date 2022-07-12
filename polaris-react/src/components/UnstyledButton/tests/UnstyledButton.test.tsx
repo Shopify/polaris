@@ -491,6 +491,22 @@ describe('<Button />', () => {
     });
   });
 
+  describe('tabIndex', () => {
+    it('sets tabIndex to -1 when disabled is true', () => {
+      const unstyledButton = mountWithApp(
+        <UnstyledButton disabled>Test</UnstyledButton>,
+      );
+      expect(unstyledButton.find('button')!.prop('tabIndex')).toBe(-1);
+    });
+
+    it('sets tabIndex to undefined by default', () => {
+      const unstyledButton = mountWithApp(
+        <UnstyledButton>Test</UnstyledButton>,
+      );
+      expect(unstyledButton.find('button')!.prop('tabIndex')).toBeUndefined();
+    });
+  });
+
   describe('onKeyDown()', () => {
     it('is called when a keydown event is registered on the button', () => {
       const spy = jest.fn();

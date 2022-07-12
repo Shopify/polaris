@@ -241,6 +241,7 @@ export function Button({
         onClick={handleClick}
         onMouseUp={handleMouseUpByBlurring}
         onKeyDown={handleKeyDown}
+        tabIndex={disabled ? -1 : undefined}
       >
         <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />

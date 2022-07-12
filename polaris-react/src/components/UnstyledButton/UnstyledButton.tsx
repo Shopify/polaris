@@ -97,6 +97,7 @@ export function UnstyledButton({
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
         onClick={handleClick}
+        tabIndex={disabled ? -1 : undefined}
         {...rest}
       >
         {children}
