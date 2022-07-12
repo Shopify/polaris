@@ -42,6 +42,7 @@ export function TextStyle({variation, children}: TextStyleProps) {
   );
 
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
     console.warn(
       'Deprecation: The `TextStyle` component has been deprecated. Use the `Text` componant instead. See the Polaris componant guide on how to use `Text`. https://polaris.shopify.com/components/text',
     );

@@ -30,6 +30,7 @@ export function Label({children, id, hidden, requiredIndicator}: LabelProps) {
   const className = classNames(styles.Label, hidden && styles.hidden);
 
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
     console.warn(
       'Deprecation: The `Label` component has been deprecated. Use the `Text` componant instead. See the Polaris componant guide on how to use `Text`. https://polaris.shopify.com/components/text',
     );

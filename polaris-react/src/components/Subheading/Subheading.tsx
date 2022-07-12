@@ -28,6 +28,7 @@ export function Subheading({
 
   if (process.env.NODE_ENV === 'development') {
     console.warn(
+      // eslint-disable-next-line no-console
       'Deprecation: The `Subheading` component has been deprecated. Use the `Text` componant instead. See the Polaris componant guide on how to use `Text`. https://polaris.shopify.com/components/text',
     );
   }
