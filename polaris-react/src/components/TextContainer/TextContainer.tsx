@@ -13,10 +13,23 @@ export interface TextContainerProps {
   children?: React.ReactNode;
 }
 
+/**
+ * @deprecated The TextContainer component will be removed in the next
+ * major version. Use the Text componant instead. See the
+ * Polaris componant guide on how to use Text.
+ *
+ * https://polaris.shopify.com/components/text
+ */
 export function TextContainer({spacing, children}: TextContainerProps) {
   const className = classNames(
     styles.TextContainer,
     spacing && styles[variationName('spacing', spacing)],
   );
+
+  if (process.env.NODE_ENV === 'development') {
+    console.warn(
+      'Deprecation: The `TextContainer` component has been deprecated. Use the `Text` componant instead. See the Polaris componant guide on how to use `Text`. https://polaris.shopify.com/components/text',
+    );
+  }
   return <div className={className}>{children}</div>;
 }
