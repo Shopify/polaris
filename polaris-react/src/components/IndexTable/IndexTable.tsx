@@ -252,10 +252,7 @@ function IndexTableBase({
   }, [handleCanScrollRight]);
 
   const handleIsSmallScreen = useCallback(() => {
-    const newSmallScreen = isSmallScreen();
-    if (smallScreen !== newSmallScreen) {
-      setSmallScreen(newSmallScreen);
-    }
+    setSmallScreen(smallScreen);
   }, [smallScreen]);
 
   const handleResize = useCallback(() => {
