@@ -15,7 +15,7 @@ const mockProps = {
 };
 
 describe('<Search />', () => {
-  it('renders a textfield with default props and aria attributes', () => {
+  it('renders <TextField /> with default props and aria attributes', () => {
     const listId = 'my-id';
     const activeOptionId = 'active-option-id';
     const search = mountWithApp(
@@ -42,7 +42,7 @@ describe('<Search />', () => {
     });
   });
 
-  it('renders a textfield with default value', () => {
+  it('renders <TextField />  with value', () => {
     const value = 'test';
     const search = mountWithApp(<Search {...mockProps} value={value} />);
 
@@ -51,7 +51,7 @@ describe('<Search />', () => {
     });
   });
 
-  it('renders a textfield with a placeholder', () => {
+  it('renders <TextField />  with placeholder', () => {
     const placeholder = 'test';
     const search = mountWithApp(
       <Search {...mockProps} placeholder={placeholder} />,
@@ -62,26 +62,26 @@ describe('<Search />', () => {
     });
   });
 
-  it('textField onChange triggers onSearch with updated value', () => {
+  it('triggers onSearch on text field change', () => {
     const value = 'test';
-    const searchSpy = jest.fn();
+    const onSearchSpy = jest.fn();
     const search = mountWithApp(
-      <Search {...mockProps} value="" onSearch={searchSpy} />,
+      <Search {...mockProps} onSearch={onSearchSpy} />,
     );
 
     search.find(TextField)!.trigger('onChange', value);
 
-    expect(searchSpy).toHaveBeenCalledWith(value);
+    expect(onSearchSpy).toHaveBeenCalledWith(value);
   });
 
-  it('textField onClearButtonClick triggers onSearch with empty value', () => {
-    const searchSpy = jest.fn();
+  it('triggers onSearch with empty value onClearButtonClick', () => {
+    const onSearchSpy = jest.fn();
     const search = mountWithApp(
-      <Search {...mockProps} value="" onSearch={searchSpy} />,
+      <Search {...mockProps} value="value" onSearch={onSearchSpy} />,
     );
 
     search.find(TextField)!.trigger('onClearButtonClick', 'textfieldId');
 
-    expect(searchSpy).toHaveBeenCalledWith('');
+    expect(onSearchSpy).toHaveBeenCalledWith('');
   });
 });

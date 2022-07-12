@@ -6,7 +6,6 @@ import {AutoSelection, Listbox} from '../../Listbox';
 import {Popover} from '../../Popover';
 import {Scrollable} from '../../Scrollable';
 import {Search, StopPropagation, SearchEmptyState} from '../components';
-import {MINIMUM_COUNT_FOR_SEARCH} from '../constants';
 import {SearchableListbox} from '../SearchableListbox';
 
 import {noop} from './utilities';
@@ -31,7 +30,7 @@ const mockProps = {
 };
 
 describe('<SearchableListbox />', () => {
-  it('renders a <Popover /> with base props', () => {
+  it('renders <Popover /> with base props', () => {
     const searchableListbox = mountWithApp(
       <SearchableListbox {...mockProps} />,
     );
@@ -44,7 +43,7 @@ describe('<SearchableListbox />', () => {
   });
 
   it.each([true, false])(
-    'renders a <Popover /> with active prop based on open prop',
+    'renders <Popover /> with active prop based on open prop',
     (open) => {
       const searchableListbox = mountWithApp(
         <SearchableListbox {...mockProps} open={open} />,
@@ -80,7 +79,7 @@ describe('<SearchableListbox />', () => {
   });
 
   describe('listItems', () => {
-    it('renders a <ListBox /> with a listId', () => {
+    it('renders <ListBox /> with a listId', () => {
       const onOptionSelectSpy = jest.fn();
 
       const mockCustomListId = 'SearchableListbox';
@@ -180,7 +179,11 @@ describe('<SearchableListbox />', () => {
 
     it('sets activeOptionDomId of <Search /> onActiveOptionChange', () => {
       const searchableListbox = mountWithApp(
-        <SearchableListbox {...mockProps} showSearch />,
+        <SearchableListbox
+          {...mockProps}
+          showSearch
+          listItems={getMockListItems(2)}
+        />,
       );
 
       const nextOptionId = 'my-option-id';
@@ -232,7 +235,7 @@ describe('<SearchableListbox />', () => {
   });
 
   describe('action', () => {
-    it.only('renders inside <StopPropagation /> when not loading and listItems exist', () => {
+    it('renders inside <StopPropagation /> when not loading and listItems exist', () => {
       const mockAction = <p>action</p>;
       const searchableListbox = mountWithApp(
         <SearchableListbox

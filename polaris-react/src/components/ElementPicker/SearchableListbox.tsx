@@ -7,7 +7,6 @@ import {useUniqueId} from '../../utilities/unique-id';
 
 import {StopPropagation, Search, SearchEmptyState} from './components';
 import styles from './SearchableListbox.scss';
-import {MINIMUM_COUNT_FOR_SEARCH} from './constants';
 
 interface ListItem {
   children: string | ReactNode;

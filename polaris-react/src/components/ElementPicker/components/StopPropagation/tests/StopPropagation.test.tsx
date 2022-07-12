@@ -40,36 +40,25 @@ const FakeComponent = ({
   );
 };
 
-describe('StopPropagation', () => {
-  it('stops propagation of click event when a StopPropagation component is present in between', () => {
-    const clickSpy = jest.fn();
-    const searchWrapper = mountWithApp(
-      <FakeComponent bubbleEventSpy={clickSpy} />,
-    );
+describe('<StopPropagation />', () => {
+  it.each(['click', 'touchstart'])(
+    'stops propagation of %s event if <StopPropagation /> is present',
+    (event) => {
+      const clickSpy = jest.fn();
+      const searchWrapper = mountWithApp(
+        <FakeComponent bubbleEventSpy={clickSpy} />,
+      );
 
-    searchWrapper
-      .find('button', {id: 'my-button'})!
-      .domNode!.dispatchEvent(new Event('click', {bubbles: true}));
+      searchWrapper
+        .find('button', {id: 'my-button'})!
+        .domNode!.dispatchEvent(new Event(event, {bubbles: true}));
 
-    expect(clickSpy).toHaveBeenCalledWith('inner');
-    expect(clickSpy).not.toHaveBeenCalledWith('outer');
-  });
+      expect(clickSpy).toHaveBeenCalledWith('inner');
+      expect(clickSpy).not.toHaveBeenCalledWith('outer');
+    },
+  );
 
-  it('stops propagation of touch event when a StopPropagation component is present in between', () => {
-    const clickSpy = jest.fn();
-    const searchWrapper = mountWithApp(
-      <FakeComponent bubbleEventSpy={clickSpy} />,
-    );
-
-    searchWrapper
-      .find('button', {id: 'my-button'})!
-      .domNode!.dispatchEvent(new Event('touchstart', {bubbles: true}));
-
-    expect(clickSpy).toHaveBeenCalledWith('inner');
-    expect(clickSpy).not.toHaveBeenCalledWith('outer');
-  });
-
-  it('does not stops propagation of click event when no StopPropagation is present in between', () => {
+  it("doesn't stop propagation of click event if <StopPropagation /> isn't present", () => {
     const clickSpy = jest.fn();
     const searchWrapper = mountWithApp(
       <FakeComponent bubbleEventSpy={clickSpy} withStopPropagation={false} />,
