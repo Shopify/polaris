@@ -298,7 +298,7 @@ $disabled-fade: 0.6;
     }
 
     @include breakpoint-after($nav-min-window-corrected) {
-      font-size: var(--p-font-fontsize-100);
+      font-size: var(--p-font-size-100);
       line-height: 1;
       padding-left: var(--p-space-10);
     }
@@ -374,7 +374,7 @@ $disabled-fade: 0.6;
     color: var(--p-text-subdued);
 
     @include when-typography-not-condensed {
-      font-size: var(--p-font-fontsize-75);
+      font-size: var(--p-font-size-75);
     }
   }
 

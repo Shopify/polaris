@@ -7,7 +7,7 @@
   background-color: var(--p-surface-neutral);
   border-radius: var(--p-border-radius-5);
   font-size: 13px;
-  line-height: var(--p-line-height-1);
+  line-height: var(--p-font-line-height-1);
   color: var(--p-text);
   font-weight: var(--p-font-weight-regular);
 
@@ -17,7 +17,7 @@
 }
 
 .sizeSmall {
-  font-size: var(--p-font-fontsize-75);
+  font-size: var(--p-font-size-75);
 }
 
 .statusSuccess {
