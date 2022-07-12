@@ -565,8 +565,8 @@ Use when you need further control over the spacing of your card sections.
 <Card>
   <Card.Section flush>
     <Image
-      source="https://polaris.shopify.com/bundles/bc7087219578918d62ac40bf4b4f99ce.png"
-      alt="turtle illustration centered with body text and a button"
+      source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+      alt="a sheet with purple and orange stripes"
     />
   </Card.Section>
   <Card.Section subdued>
