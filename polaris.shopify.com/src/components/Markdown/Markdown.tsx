@@ -34,7 +34,7 @@ function Markdown({ text, skipH1 }: Props) {
             return <h3>{children}</h3>;
           }
         },
-        code: ({ node, inline, className, children, ...props }) => (
+        code: ({ children }) => (
           <span
             dangerouslySetInnerHTML={{
               __html: Prism.highlight(
