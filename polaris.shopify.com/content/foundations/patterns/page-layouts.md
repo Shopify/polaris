@@ -45,14 +45,10 @@ top-level navigation and search.
 
 ![Screen highlighting the top of the page content and the side margins of the page](/public_images/layout-page/page-frame-diagram@2x.png)
 
-<<<<<<< Updated upstream
 </div>
 </div>
 
-The [page component](/components/structure/page):
-=======
 The [page component](/components/page):
->>>>>>> Stashed changes
 
 - Acts as a container for the content of each specific page
 - Controls the horizontal margins of the content area
@@ -71,14 +67,10 @@ Page component variations:
 
 ![Admin screen highlighting a typical layout](/public_images/layout-page/page-layout-diagram@2x.png)
 
-<<<<<<< Updated upstream
 </div>
 </div>
 
-Within the page, the [layout component](/components/structure/layout) groups the
-=======
 Within the page, the [layout component](/components/layout) groups the
->>>>>>> Stashed changes
 content into sections. Sections control how the content flows into columns. Each
 section can be:
 
@@ -94,14 +86,10 @@ section can be:
 
 ![Screen highlighting a layout with: page-level banner up top, primary and secondary sections in the middle, and footer actions below](/public_images/layout-page/cards-in-layout-diagram@2x.png)
 
-<<<<<<< Updated upstream
 </div>
 </div>
 
-Place page-level [banners](/components/feedback-indicators/banner) in a full-width section
-=======
 Place page-level [banners](/components/banner) in a full-width section
->>>>>>> Stashed changes
 at the top of the page.
 
 Stack [cards](/components/card) in sections to separate the screen’s
@@ -122,14 +110,10 @@ link to documentation about the current screen.
 
 ![Diagram showing the anatomy of a card component, showing the card title and header actions at the top, two sections in the middle, and footer below](/public_images/layout-page/card-layout-diagram@2x.png)
 
-<<<<<<< Updated upstream
 </div>
 </div>
 
-[Cards](/components/structure/card) have a similar structure to the page as a
-=======
 [Cards](/components/card) have a similar structure to the page as a
->>>>>>> Stashed changes
 whole.
 
 - Cards often have a header, with a title and card-level actions on the right.
