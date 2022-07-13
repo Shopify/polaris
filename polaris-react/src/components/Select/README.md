@@ -19,8 +19,6 @@ keywords:
   - long list of options
   - long option list
   - separate error message
-  - ios
-  - android
 ---
 
 # Select

@@ -18,8 +18,6 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-  - android
-  - ios
 ---
 
 # Page

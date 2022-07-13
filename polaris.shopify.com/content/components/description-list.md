@@ -11,8 +11,6 @@ keywords:
   - text lists
   - list of terms
   - term explaination
-  - android
-  - ios
 examples:
   - fileName: description-list-default.tsx
     title: Default description list

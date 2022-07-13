@@ -40,8 +40,6 @@ keywords:
   - hidden labels
   - separate error message
   - icon action
-  - ios
-  - android
 ---
 
 # Text field

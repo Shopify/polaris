@@ -18,8 +18,6 @@ keywords:
   - show hide
   - expanding view
   - collapse
-  - ios
-  - android
 ---
 
 # Collapsible

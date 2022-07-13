@@ -24,8 +24,6 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 ---
 
 # Modal

@@ -18,8 +18,6 @@ keywords:
   - previous next buttons
   - previous buttons
   - next buttons
-  - ios
-  - android
 examples:
   - fileName: pagination-default.tsx
     title: Default pagination

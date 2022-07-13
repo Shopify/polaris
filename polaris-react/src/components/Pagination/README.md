@@ -18,8 +18,6 @@ keywords:
   - previous next buttons
   - previous buttons
   - next buttons
-  - ios
-  - android
 ---
 
 # Pagination
