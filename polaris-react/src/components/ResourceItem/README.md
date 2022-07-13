@@ -80,7 +80,7 @@ function ResourceItemExample() {
 
 ### Item with media
 
-The media element can hold an [avatar](https://polaris.shopify.com/components/images-and-icons/avatar), [thumbnail](https://polaris.shopify.com/components/images-and-icons/thumbnail), or other small-format graphic.
+The media element can hold an [avatar](https://polaris.shopify.com/components/avatar), [thumbnail](https://polaris.shopify.com/components/thumbnail), or other small-format graphic.
 
 ```jsx
 <Card>
@@ -215,7 +215,7 @@ Use to adjust the vertical alignment of item content.
 
 ## Required components
 
-The resource item component must be wrapped in the [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list) component.
+The resource item component must be wrapped in the [resource list](https://polaris.shopify.com/components/resource-list) component.
 
 ---
 
@@ -246,7 +246,7 @@ Resource items should:
 
 Resource items can optionally:
 
-- Provide [shortcut actions](https://polaris.shopify.com/components/lists-and-tables/resource-list#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s details page.
+- Provide [shortcut actions](https://polaris.shopify.com/components/resource-list#study-custom-item-shortcut-actions) for quick access to frequent actions from the resource’s details page.
 
 ---
 
@@ -257,10 +257,10 @@ Resource items should:
 - Present the information that merchants need to find the items that they’re looking for.
 - Support merchant tasks for the particular type of resource.
 - Avoid colons.
-- [Shortcut actions](https://polaris.shopify.com/components/lists-and-tables/resource-list#study-custom-item-shortcut-actions) don’t need to follow the full verb + noun formula for buttons.
+- [Shortcut actions](https://polaris.shopify.com/components/resource-list#study-custom-item-shortcut-actions) don’t need to follow the full verb + noun formula for buttons.
 
 ---
 
 ## Related components
 
-To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list).
+To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/list).

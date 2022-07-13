@@ -158,4 +158,4 @@ For very short inputs, the width of the inputs may be reduced in order to fit mo
 
 ## Related components
 
-- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/layout)

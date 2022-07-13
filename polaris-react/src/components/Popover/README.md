@@ -355,16 +355,16 @@ function PopoverLazyLoadExample() {
 
 ## Related components
 
-- To put a list of actions in a popover, [use the action list component](https://polaris.shopify.com/components/actions/action-list)
-- To let merchants select simple options from a list, [use the select component](https://polaris.shopify.com/components/forms/select)
+- To put a list of actions in a popover, [use the action list component](https://polaris.shopify.com/components/action-list)
+- To let merchants select simple options from a list, [use the select component](https://polaris.shopify.com/components/select)
 
 ---
 
 ## Accessibility
 
-Popovers usually contain an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) or an [action list](https://polaris.shopify.com/components/actions/action-list), but can also contain other controls or content.
+Popovers usually contain an [option list](https://polaris.shopify.com/components/option-list) or an [action list](https://polaris.shopify.com/components/action-list), but can also contain other controls or content.
 
-To assist screen readers with sending focus to an [action list](https://polaris.shopify.com/components/actions/action-list), pass `autofocusTarget='first-node'` to `Popover`. This will avoid known issues a screen reader may have with keyboard support once focus is moved off the activator.
+To assist screen readers with sending focus to an [action list](https://polaris.shopify.com/components/action-list), pass `autofocusTarget='first-node'` to `Popover`. This will avoid known issues a screen reader may have with keyboard support once focus is moved off the activator.
 
 Web browsers assign a default value of 'menu' to the `aria-haspopup` role. You can use the prop `ariaHaspopup` to specify a value. Screen readers may fail to send focus to the `Popover` content when they expect the content to be adjacent to the element with `aria-haspopup` in the DOM tree. In this scenario, it is recommended not to provide the `ariaHaspopup` prop.
 

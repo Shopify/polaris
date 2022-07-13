@@ -232,7 +232,7 @@ To render an invalid select and its validation error separately:
 
 - Set a unique identifier to the select component `id` prop
 - Set a boolean to the select component `error` prop
-- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
+- Use an [inline error component](https://polaris.shopify.com/components/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
 
 ```jsx
 function SeparateValidationErrorExample() {
@@ -301,5 +301,5 @@ function SeparateValidationErrorExample() {
 
 ## Related components
 
-- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) inside a [popover](https://polaris.shopify.com/components/overlays/popover)
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/option-list) inside a [popover](https://polaris.shopify.com/components/popover)
