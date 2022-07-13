@@ -43,8 +43,11 @@
   align-items: center;
   justify-content: space-between;
   min-width: 1px;
-  max-width: $layout-width-primary-max + $layout-width-secondary-max +
-    $layout-width-inner-spacing-base;
+  max-width: calc(
+    #{$layout-width-primary-max} + #{$layout-width-secondary-max} +
+      var(--p-space-4)
+  );
+
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--p-space-4);

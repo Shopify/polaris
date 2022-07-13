@@ -233,12 +233,22 @@ function FrameExample() {
 
   const actualPageMarkup = (
     <Page title="Account">
+      {skipToContentTarget}
       <Layout>
-        {skipToContentTarget}
-        <Layout.AnnotatedSection
-          title="Account details"
-          description="Jaded Pixel will use this as your account information."
-        >
+        <Layout.Section oneThird condensed>
+          <div style={{marginTop: 'var(--p-space-5)'}}>
+            <TextContainer>
+              <Heading>Account details</Heading>
+              <div>
+                <TextStyle variation="subdued">
+                  Jaded Pixel will use this as your account information.
+                </TextStyle>
+              </div>
+            </TextContainer>
+          </div>
+        </Layout.Section>
+
+        <Layout.Section twoThirds condensed>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -256,7 +266,7 @@ function FrameExample() {
               />
             </FormLayout>
           </Card>
-        </Layout.AnnotatedSection>
+        </Layout.Section>
       </Layout>
     </Page>
   );
@@ -569,12 +579,21 @@ function FrameExample() {
 
   const actualPageMarkup = (
     <Page title="Account">
+      {skipToContentTarget}
       <Layout>
-        {skipToContentTarget}
-        <Layout.AnnotatedSection
-          title="Account details"
-          description="Jaded Pixel will use this as your account information."
-        >
+        <Layout.Section oneThird condensed>
+          <div style={{marginTop: 'var(--p-space-5)'}}>
+            <TextContainer>
+              <Heading>Account details</Heading>
+              <div>
+                <TextStyle variation="subdued">
+                  Jaded Pixel will use this as your account information.
+                </TextStyle>
+              </div>
+            </TextContainer>
+          </div>
+        </Layout.Section>
+        <Layout.Section twoThirds condensed>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -592,7 +611,7 @@ function FrameExample() {
               />
             </FormLayout>
           </Card>
-        </Layout.AnnotatedSection>
+        </Layout.Section>
       </Layout>
     </Page>
   );

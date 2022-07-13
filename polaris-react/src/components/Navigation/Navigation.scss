@@ -7,10 +7,13 @@ $nav-max-width: 360px;
 
 .Navigation {
   --pc-navigation-icon-size: 20px;
+  --pc-navigation-dismiss-icon-size: 32px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: $mobile-nav-width;
+  width: calc(
+    100vw - (var(--pc-navigation-dismiss-icon-size) + var(--p-space-8))
+  );
   min-width: $layout-width-nav-base;
   max-width: $nav-max-width;
   height: 100%;

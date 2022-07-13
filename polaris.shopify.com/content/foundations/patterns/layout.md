@@ -77,7 +77,6 @@ section can be:
 - Full-width
 - Primary (2/3 width)
 - Secondary (1/3 width)
-- Annotated
 
 ### Arranging content in a layout
 
@@ -278,46 +277,6 @@ such as purchasing shipping labels for an order.
     <Layout.Section secondary>
       {/* Summary and call to action */}
     </Layout.Section>
-  </Layout>
-</Page>
-```
-
-### Annotated
-
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![General settings page, with annotated sections for “Store details” and “Store address” visible](/public_images/layout-page/page-layout-annotated@2x.png)
-
-</div>
-</div>
-
-Annotated layouts group the content of the page into distinct sections that are
-only loosely related. This layout makes it easier to scan the page for a
-particular section.
-
-Use this layout for settings screens. Don’t use this layout when merchants
-need to navigate to more than one section to complete their task.
-
-- Set the page component to its default width.
-- Use an annotated layout section for each independent topic on the page.
-- Avoid combining annotated layouts with other layout types.
-
-```jsx
-<Page title="Annotated layout">
-  <Layout>
-    <Layout.AnnotatedSection
-      title="Store details"
-      description="Shopify and your customers will use this information to contact you."
-    >
-      {/* Details fields */}
-    </Layout.AnnotatedSection>
-    <Layout.AnnotatedSection
-      title="Store address"
-      description="This address will appear on your invoices."
-    >
-      {/* Address fields */}
-    </Layout.AnnotatedSection>
   </Layout>
 </Page>
 ```

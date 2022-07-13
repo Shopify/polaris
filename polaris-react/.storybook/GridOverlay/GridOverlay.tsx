@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../src';
+import React from 'react';
+
 import {classNames} from '../../src/utilities/css';
+import {useBreakpoints} from '../../src/utilities/breakpoints';
 
 import './GridOverlay.css';
 
-const COLUMNS_SMALL = 4;
+const COLUMNS_SMALL = 6;
 const COLUMNS_LARGE = 12;
-const BREAKPOINT = 768;
 
 type Layer = 'above' | 'below';
 interface Props {
@@ -18,12 +17,7 @@ interface Props {
 }
 
 export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
-  const [columns, setColumns] = useState(
-    window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE,
-  );
-
-  const handleResize = () =>
-    setColumns(window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE);
+  const {lgUp} = useBreakpoints();
 
   const className = classNames('GridOverlay', inFrame && 'inFrame');
   const style = {
@@ -33,11 +27,12 @@ export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
 
   return (
     <div className={className} style={style}>
-      {[...Array(columns).keys()].map((key) => (
-        <div key={key} className="Cell" />
-      ))}
+      {Array.from({length: lgUp ? COLUMNS_LARGE : COLUMNS_SMALL}).map(
+        (_, index) => (
+          <div key={index} className="Cell" />
+        ),
+      )}
       {children}
-      <EventListener event="resize" handler={handleResize} />
     </div>
   );
 }
