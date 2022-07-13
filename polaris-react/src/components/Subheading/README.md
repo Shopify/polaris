@@ -1,10 +1,6 @@
 ---
 name: Subheading
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - title bar
   - top-level

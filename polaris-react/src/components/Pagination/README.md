@@ -1,10 +1,6 @@
 ---
 name: Pagination
 category: Navigation
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - lists
   - detail

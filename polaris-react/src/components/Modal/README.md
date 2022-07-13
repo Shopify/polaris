@@ -1,10 +1,6 @@
 ---
 name: Modal
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - modal
   - src

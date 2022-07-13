@@ -1,10 +1,6 @@
 ---
 name: Collapsible
 category: Behavior
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - hide
   - show

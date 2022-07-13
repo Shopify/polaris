@@ -1,10 +1,6 @@
 ---
 name: Choice list
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ChoiceList
   - form
