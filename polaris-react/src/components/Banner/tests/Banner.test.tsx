@@ -9,6 +9,7 @@ import {
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../../Heading';
 import {Icon} from '../../Icon';
 import {Spinner} from '../../Spinner';
@@ -21,11 +22,13 @@ import {Banner, BannerHandles} from '../Banner';
 describe('<Banner />', () => {
   it('renders a title', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
+    // eslint-disable-next-line import/no-deprecated
     expect(banner.find(Heading)).toContainReactText('Banner title');
   });
 
   it('passes a p element to Heading', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
+    // eslint-disable-next-line import/no-deprecated
     expect(banner).toContainReactComponent(Heading, {element: 'p'});
   });
 

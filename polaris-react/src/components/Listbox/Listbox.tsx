@@ -20,6 +20,7 @@ import {
 } from '../../utilities/listbox';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../VisuallyHidden';
 import {scrollable} from '../shared';
 

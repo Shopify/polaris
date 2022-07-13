@@ -7,6 +7,7 @@ import {isInputFocused} from '../../utilities/is-input-focused';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {KeypressListener} from '../KeypressListener';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../TextStyle';
 import {Tooltip} from '../Tooltip';
 

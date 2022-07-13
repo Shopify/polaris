@@ -5,6 +5,7 @@ import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Stack} from '../../../Stack';
 import {ButtonGroup} from '../../../ButtonGroup';
+// eslint-disable-next-line import/no-deprecated
 import {Subheading} from '../../../Subheading';
 import styles from '../../Card.scss';
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Item} from '../Item';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../../../TextStyle';
 import {UnstyledLink} from '../../../../UnstyledLink';
 
@@ -54,6 +55,7 @@ describe('<Item />', () => {
   it('renders helpText when the helpText prop is defined', () => {
     const helpText = 'Foo';
     const item = mountWithApp(<Item helpText={helpText} />);
+    // eslint-disable-next-line import/no-deprecated
     expect(item.find(TextStyle)).toContainReactText(helpText);
   });
 

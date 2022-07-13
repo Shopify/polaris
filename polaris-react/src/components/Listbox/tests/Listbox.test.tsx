@@ -9,6 +9,7 @@ import {
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
 import {Scrollable} from '../../Scrollable';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {Listbox, AutoSelection} from '../Listbox';
 import {ListboxContext} from '../../../utilities/listbox';
@@ -269,12 +270,14 @@ describe('<Listbox>', () => {
     it('render a visually hidden container', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
+      // eslint-disable-next-line import/no-deprecated
       expect(listbox).toContainReactComponentTimes(VisuallyHidden, 1);
     });
 
     it('render an aria-live="polite" container', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
+      // eslint-disable-next-line import/no-deprecated
       expect(listbox.find(VisuallyHidden)).toContainReactComponent('div', {
         'aria-live': 'polite',
       });
@@ -283,6 +286,7 @@ describe('<Listbox>', () => {
     it('renders an empty loading container by default', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
+      // eslint-disable-next-line import/no-deprecated
       expect(listbox.find(VisuallyHidden)).not.toContainReactText(
         loadingMessage,
       );
@@ -295,6 +299,7 @@ describe('<Listbox>', () => {
         </Listbox>,
       );
 
+      // eslint-disable-next-line import/no-deprecated
       expect(listbox.find(VisuallyHidden)).toContainReactText(loadingMessage);
     });
   });

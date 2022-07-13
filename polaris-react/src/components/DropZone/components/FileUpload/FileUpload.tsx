@@ -3,7 +3,9 @@ import React, {useContext} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
 import {Stack} from '../../../Stack';
+// eslint-disable-next-line import/no-deprecated
 import {Caption} from '../../../Caption';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../../TextStyle';
 import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';

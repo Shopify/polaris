@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {buttonsFrom} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../../../../Heading';
 import {Header} from '../Header';
 
@@ -17,12 +18,14 @@ describe('<Header />', () => {
   describe('title', () => {
     it('renders a heading when defined', () => {
       const header = mountWithApp(<Header title="Staff accounts" />);
+      // eslint-disable-next-line import/no-deprecated
       expect(header).toContainReactComponent(Heading);
     });
 
     it('renders the title directly if its a valid React element', () => {
       const title = <div>Staff accounts</div>;
       const header = mountWithApp(<Header title={title} />);
+      // eslint-disable-next-line import/no-deprecated
       expect(header).not.toContainReactComponent(Heading);
       expect(header).toContainReactComponent('div', {
         children: 'Staff accounts',
@@ -32,6 +35,7 @@ describe('<Header />', () => {
     it('is used as the content for the heading', () => {
       const title = 'Staff accounts';
       const header = mountWithApp(<Header title={title} />);
+      // eslint-disable-next-line import/no-deprecated
       expect(header.find(Heading)).toContainReactText(title);
     });
   });

@@ -13,6 +13,7 @@ import {useMediaQuery} from '../../utilities/media-query';
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Button} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {DisplayText} from '../DisplayText';
 import {Collapsible} from '../Collapsible';
 import {Scrollable} from '../Scrollable';
@@ -20,6 +21,7 @@ import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';

@@ -5,6 +5,7 @@ import {Icon} from '../Icon';
 import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Breadcrumbs.scss';

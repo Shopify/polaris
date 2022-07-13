@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Card} from '../../Card';
+// eslint-disable-next-line import/no-deprecated
 import {DisplayText} from '../../DisplayText';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
@@ -38,6 +39,7 @@ describe('<SkeletonPage />', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
+      // eslint-disable-next-line import/no-deprecated
       expect(skeletonPage).not.toContainReactComponent(DisplayText);
     });
 

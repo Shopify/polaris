@@ -4,6 +4,7 @@ import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Stack} from '../../../Stack';
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../../../Heading';
 import styles from '../../Card.scss';
 

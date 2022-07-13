@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {GlobeMinor} from '@shopify/polaris-icons';
 
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {Icon} from '../../Icon';
 import {Badge} from '../Badge';
@@ -14,11 +15,13 @@ describe('<Badge />', () => {
 
   it('accepts a status prop and renders a visually hidden label', () => {
     const badge = mountWithApp(<Badge status="success" />);
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden);
   });
 
   it('accepts a progress prop and renders a visually hidden label', () => {
     const badge = mountWithApp(<Badge progress="incomplete" />);
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden);
   });
 
@@ -27,6 +30,7 @@ describe('<Badge />', () => {
       <Badge progress="incomplete" status="attention" />,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponentTimes(VisuallyHidden, 1, {
       children: 'Attention Incomplete',
     });
@@ -87,6 +91,7 @@ describe('<Badge />', () => {
       />,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: mockAccessibilityLabel,
     });
@@ -102,6 +107,7 @@ describe('<Badge />', () => {
       />,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).not.toContainReactComponent(VisuallyHidden, {
       children: 'Attention Incomplete',
     });
@@ -112,24 +118,28 @@ describe('<Badge />', () => {
       <Badge status="attention" progress="incomplete" />,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Attention Incomplete',
     });
 
     badge = mountWithApp(<Badge progress="incomplete" />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Incomplete',
     });
 
     badge = mountWithApp(<Badge status="attention" />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Attention',
     });
 
     badge = mountWithApp(<Badge />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).not.toContainReactComponent(VisuallyHidden);
   });
 });
@@ -140,24 +150,28 @@ describe('<Badge.Pip />', () => {
       <Badge.Pip status="attention" progress="incomplete" />,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Attention Incomplete',
     });
 
     badge = mountWithApp(<Badge.Pip progress="partiallyComplete" />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Partially complete',
     });
 
     badge = mountWithApp(<Badge.Pip status="attention" />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Attention Complete',
     });
 
     badge = mountWithApp(<Badge.Pip />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(badge).toContainReactComponent(VisuallyHidden, {
       children: 'Complete',
     });

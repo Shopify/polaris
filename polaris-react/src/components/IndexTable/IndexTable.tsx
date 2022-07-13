@@ -18,6 +18,7 @@ import {EventListener} from '../EventListener';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
 import {Tooltip} from '../Tooltip';

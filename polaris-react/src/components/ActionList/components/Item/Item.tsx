@@ -6,6 +6,7 @@ import {Scrollable} from '../../../Scrollable';
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../../TextStyle';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';

@@ -9,6 +9,7 @@ import {Popover} from '../../Popover';
 import {Sheet} from '../../Sheet';
 import {Tag} from '../../Tag';
 import {TextField} from '../../TextField';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../TextStyle';
 import {WithinFilterContext} from '../../../utilities/within-filter-context';
 import {Filters, FiltersProps} from '../Filters';
@@ -640,6 +641,7 @@ describe('<Filters />', () => {
           id: `${filter.key}ToggleButton`,
         });
 
+        // eslint-disable-next-line import/no-deprecated
         expect(toggleButton!).toContainReactComponent(TextStyle, {
           variation: 'subdued',
         });
@@ -673,6 +675,7 @@ describe('<Filters />', () => {
               id: `${filter.key}ToggleButton`,
             });
 
+            // eslint-disable-next-line import/no-deprecated
             expect(toggleButton).toContainReactComponent(TextStyle, {
               variation: 'subdued',
             });
@@ -693,6 +696,7 @@ describe('<Filters />', () => {
               id: `${filter.key}ToggleButton`,
             });
 
+            // eslint-disable-next-line import/no-deprecated
             expect(toggleButton).toContainReactComponent(TextStyle, {
               variation: undefined,
             });
@@ -712,6 +716,7 @@ describe('<Filters />', () => {
         id: 'FiltersHelpText',
       });
       expect(helpTextMarkup).toHaveLength(1);
+      // eslint-disable-next-line import/no-deprecated
       expect(helpTextMarkup[0]).toContainReactComponent(TextStyle, {
         children: helpText,
       });

@@ -6,6 +6,7 @@ import {classNames} from '../../../../utilities/css';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {Listbox} from '../../../Listbox';
 import {Icon} from '../../../Icon';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../../TextStyle';
 import {useI18n} from '../../../../utilities/i18n';
 

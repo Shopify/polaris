@@ -7,6 +7,7 @@ import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor, ComplexAction} from '../../types';
 import {Card} from '../Card';
 import {Button, buttonFrom} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../Heading';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';

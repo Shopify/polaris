@@ -1,7 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {Caption} from '../../../../Caption';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../../../TextStyle';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
@@ -50,7 +52,9 @@ describe('<FileUpload />', () => {
       expect(fileUpload).not.toContainReactComponent('img', {
         src: uploadArrowImage,
       });
+      // eslint-disable-next-line import/no-deprecated
       expect(fileUpload).not.toContainReactComponent(Caption);
+      // eslint-disable-next-line import/no-deprecated
       expect(fileUpload).not.toContainReactComponent(TextStyle);
 
       expect(fileUpload).toContainReactComponent('div', {
@@ -71,7 +75,9 @@ describe('<FileUpload />', () => {
     expect(fileUpload).not.toContainReactComponent('img', {
       src: uploadArrowImage,
     });
+    // eslint-disable-next-line import/no-deprecated
     expect(fileUpload).not.toContainReactComponent(Caption);
+    // eslint-disable-next-line import/no-deprecated
     expect(fileUpload).not.toContainReactComponent(TextStyle);
 
     expect(fileUpload).toContainReactComponent('div', {
@@ -88,7 +94,9 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(fileUpload).not.toContainReactComponent(Caption);
+    // eslint-disable-next-line import/no-deprecated
     expect(fileUpload).not.toContainReactComponent(TextStyle);
 
     expect(fileUpload).toContainReactComponentTimes('img', 1);
@@ -117,7 +125,9 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
+    // eslint-disable-next-line import/no-deprecated
     expect(fileUpload).toContainReactComponent(Caption);
+    // eslint-disable-next-line import/no-deprecated
     expect(fileUpload).toContainReactComponent(TextStyle);
     expect(fileUpload).toContainReactText('Hint');
   });

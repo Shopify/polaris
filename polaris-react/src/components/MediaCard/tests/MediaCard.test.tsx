@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../../Heading';
 import {Popover} from '../../Popover';
 import {Button} from '../../Button';
@@ -24,6 +25,7 @@ describe('<MediaCard>', () => {
     const title = 'Getting Started';
     const videoCard = mountWithApp(<MediaCard {...mockProps} title={title} />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(videoCard).toContainReactComponent(Heading, {children: title});
   });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../../VisuallyHidden';
 
 interface Props {

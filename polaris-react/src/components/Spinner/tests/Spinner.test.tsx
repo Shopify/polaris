@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Spinner} from '../Spinner';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Spinner />', () => {
@@ -10,6 +11,7 @@ describe('<Spinner />', () => {
       const spinner = mountWithApp(
         <Spinner accessibilityLabel="Content is loading" />,
       );
+      // eslint-disable-next-line import/no-deprecated
       expect(spinner.find(VisuallyHidden)).toContainReactText(
         'Content is loading',
       );

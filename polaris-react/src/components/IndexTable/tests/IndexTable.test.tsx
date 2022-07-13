@@ -11,6 +11,7 @@ import {Sticky} from '../../Sticky';
 import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
@@ -327,6 +328,7 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
+      // eslint-disable-next-line import/no-deprecated
       expect(index).toContainReactComponent(VisuallyHidden, {children: title});
     });
 
@@ -376,6 +378,7 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
+      // eslint-disable-next-line import/no-deprecated
       expect(index).toContainReactComponent(VisuallyHidden, {
         children: title,
       });

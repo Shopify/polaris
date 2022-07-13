@@ -15,8 +15,11 @@ import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Stack} from '../Stack';
+// eslint-disable-next-line import/no-deprecated
 import {Caption} from '../Caption';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../TextStyle';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';

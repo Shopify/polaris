@@ -5,6 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../../VisuallyHidden';
 
 import styles from './SearchField.scss';

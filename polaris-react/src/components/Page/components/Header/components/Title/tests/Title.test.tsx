@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Badge} from '../../../../../../Badge';
+// eslint-disable-next-line import/no-deprecated
 import {DisplayText} from '../../../../../../DisplayText';
 import {Title} from '../Title';
 
@@ -20,6 +21,7 @@ describe('<Title />', () => {
 
     it('does not render a title when not defined', () => {
       const pageTitle = mountWithApp(<Title />);
+      // eslint-disable-next-line import/no-deprecated
       expect(pageTitle).not.toContainReactComponent(DisplayText);
     });
   });

@@ -3,6 +3,7 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../Icon';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Icon />', () => {
@@ -13,6 +14,7 @@ describe('<Icon />', () => {
         <Icon source="placeholder" accessibilityLabel={label} />,
       ).find('span');
 
+      // eslint-disable-next-line import/no-deprecated
       expect(element).toContainReactComponent(VisuallyHidden, {
         children: label,
       });

@@ -1,7 +1,9 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
+// eslint-disable-next-line import/no-deprecated
 import {DisplayText} from '../DisplayText';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../TextStyle';
 import {Image} from '../Image';
 import {Stack} from '../Stack';

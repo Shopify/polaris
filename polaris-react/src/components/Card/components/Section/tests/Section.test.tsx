@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 import {Badge} from '../../../../Badge';
 import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
+// eslint-disable-next-line import/no-deprecated
 import {Subheading} from '../../../../Subheading';
 import {Section} from '../Section';
 
@@ -28,6 +29,7 @@ describe('<Card.Section />', () => {
   it('wraps plain string titles in a <Subheading />', () => {
     const titleString = 'Online store';
     const card = mountWithApp(<Section title={titleString} />);
+    // eslint-disable-next-line import/no-deprecated
     expect(card.find(Subheading)).toContainReactText(titleString);
   });
 

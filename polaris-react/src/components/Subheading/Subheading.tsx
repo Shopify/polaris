@@ -27,8 +27,8 @@ export function Subheading({
   const ariaLabel = typeof children === 'string' ? children : undefined;
 
   if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
     console.warn(
-      // eslint-disable-next-line no-console
       'Deprecation: The `Subheading` component has been deprecated. Use the `Text` componant instead. See the Polaris componant guide on how to use `Text`. https://polaris.shopify.com/components/text',
     );
   }

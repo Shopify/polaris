@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {buttonFrom} from '../../../Button';
+import {buttonsFrom} from '../../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../../TextStyle';
 import {Tooltip} from '../../../Tooltip';
 import {useMediaQuery} from '../../../../utilities/media-query';

@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import type {Action, Error} from '../../types';
 import {buttonFrom} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {Label, LabelProps, labelID} from '../Label';
 import {InlineError} from '../InlineError';
 

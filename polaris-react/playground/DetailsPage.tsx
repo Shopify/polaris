@@ -19,6 +19,7 @@ import {
 import {
   ActionList,
   Badge,
+  // eslint-disable-next-line import/no-deprecated
   Caption,
   Card,
   ContextualSaveBar,
@@ -36,6 +37,7 @@ import {
   SkeletonDisplayText,
   SkeletonPage,
   Stack,
+  // eslint-disable-next-line import/no-deprecated
   TextContainer,
   TextField,
   Thumbnail,

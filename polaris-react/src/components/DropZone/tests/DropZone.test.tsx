@@ -3,9 +3,12 @@ import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
 import {mountWithApp, CustomRoot} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {Caption} from '../../Caption';
+// eslint-disable-next-line import/no-deprecated
 import {Label} from '../../Label';
 import {Labelled} from '../../Labelled';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../TextStyle';
 import {DropZone, DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
@@ -194,8 +197,10 @@ describe('<DropZone />', () => {
     const dropZone = mountWithApp(
       <DropZone id={id} label="My DropZone label" />,
     );
+    // eslint-disable-next-line import/no-deprecated
     const label = dropZone.find(Label)!;
 
+    // eslint-disable-next-line import/no-deprecated
     expect(dropZone).toContainReactComponent(Label, {id});
 
     expect(label.prop('id')).toStrictEqual(id);
@@ -237,6 +242,7 @@ describe('<DropZone />', () => {
 
       dropZone.forceUpdate();
 
+      // eslint-disable-next-line import/no-deprecated
       expect(dropZone).toContainReactComponent(TextStyle, {
         children: expectedTextStyle,
       });
@@ -321,7 +327,9 @@ describe('<DropZone />', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       expect(dropZone).not.toContainReactComponent(TextStyle);
+      // eslint-disable-next-line import/no-deprecated
       expect(dropZone).not.toContainReactComponent(Caption);
     });
 
@@ -329,6 +337,7 @@ describe('<DropZone />', () => {
       setBoundingClientRect('medium');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       const captionText = dropZone.find(Caption);
       expect(captionText).toContainReactText(overlayText);
     });
@@ -337,6 +346,7 @@ describe('<DropZone />', () => {
       setBoundingClientRect('large');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       const captionText = dropZone.find(Caption);
       expect(captionText).toContainReactText(overlayText);
     });
@@ -347,6 +357,7 @@ describe('<DropZone />', () => {
         <DropZone overlayText={overlayText} variableHeight />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       const textStyle = dropZone.find(TextStyle);
       expect(textStyle).toContainReactText(overlayText);
     });
@@ -361,7 +372,9 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       expect(dropZone).not.toContainReactComponent(TextStyle);
+      // eslint-disable-next-line import/no-deprecated
       expect(dropZone).not.toContainReactComponent(Caption);
     });
 
@@ -371,6 +384,7 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       const captionText = dropZone.find(Caption);
       expect(captionText).toContainReactText(errorOverlayText);
     });
@@ -381,6 +395,7 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       const captionText = dropZone.find(Caption);
 
       expect(captionText).toContainReactText(errorOverlayText);
@@ -396,6 +411,7 @@ describe('<DropZone />', () => {
         />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
+      // eslint-disable-next-line import/no-deprecated
       const textStyle = dropZone.find(TextStyle);
       expect(textStyle).toContainReactText(errorOverlayText);
     });

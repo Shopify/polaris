@@ -2,9 +2,11 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {DisplayText} from '../../DisplayText';
 import {Image} from '../../Image';
 import {Stack} from '../../Stack';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../TextContainer';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -94,6 +96,7 @@ describe('<EmptyState />', () => {
         <EmptyState image={imgSrc}>{children}</EmptyState>,
       );
 
+      // eslint-disable-next-line import/no-deprecated
       expect(emptyState.find(TextContainer)).toContainReactText(
         expectedContent,
       );
@@ -151,6 +154,7 @@ describe('<EmptyState />', () => {
       const emptyState = mountWithApp(
         <EmptyState heading={expectedHeading} image={imgSrc} />,
       );
+      // eslint-disable-next-line import/no-deprecated
       const displayText = emptyState.find(DisplayText)!;
 
       expect(displayText).toHaveReactProps({size: 'medium'});
@@ -164,6 +168,7 @@ describe('<EmptyState />', () => {
         </WithinContentContext.Provider>,
       );
 
+      // eslint-disable-next-line import/no-deprecated
       expect(emptyStateInContentContext).toContainReactComponent(DisplayText, {
         size: 'small',
       });
@@ -195,6 +200,7 @@ describe('<EmptyState />', () => {
       const emptyState = mountWithApp(
         <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
       );
+      // eslint-disable-next-line import/no-deprecated
       expect(emptyState).toContainReactComponent(TextContainer, {
         children: footerContentMarkup,
       });
@@ -203,6 +209,7 @@ describe('<EmptyState />', () => {
     it('does not create a footer when footerContent is not provided', () => {
       const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
 
+      // eslint-disable-next-line import/no-deprecated
       expect(emptyState).not.toContainReactComponent(TextContainer);
     });
   });

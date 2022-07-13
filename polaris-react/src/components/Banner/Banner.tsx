@@ -19,6 +19,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';

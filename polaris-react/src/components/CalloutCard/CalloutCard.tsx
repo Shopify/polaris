@@ -4,9 +4,11 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
 import {Card} from '../Card';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {Heading} from '../Heading';
 import {Image} from '../Image';
 

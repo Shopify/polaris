@@ -7,6 +7,7 @@ import {Pagination} from '../Pagination';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import {TextField} from '../../TextField';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../../TextStyle';
 import {Tooltip} from '../../Tooltip';
 import en from '../../../../locales/en.json';
@@ -150,6 +151,7 @@ describe('<Pagination />', () => {
     it('has subdued text without next and previous pages', () => {
       const pagination = mountWithApp(<Pagination label="test" />);
 
+      // eslint-disable-next-line import/no-deprecated
       expect(pagination).toContainReactComponent(TextStyle, {
         variation: 'subdued',
       });

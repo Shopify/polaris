@@ -5,6 +5,7 @@ import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';
 import {Stack} from '../Stack';
+// eslint-disable-next-line import/no-deprecated
 import {TextStyle} from '../TextStyle';
 import {SettingAction} from '../SettingAction';
 

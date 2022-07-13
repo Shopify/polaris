@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
+// eslint-disable-next-line import/no-deprecated
 import {VisuallyHidden} from '../../VisuallyHidden';
 
 describe('<Breadcrumbs />', () => {
@@ -103,6 +104,7 @@ describe('<Breadcrumbs />', () => {
   it('renders breadcrumb content as a visually hidden label when the new design language is enabled', () => {
     const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={linkBreadcrumbs} />);
 
+    // eslint-disable-next-line import/no-deprecated
     expect(wrapper).toContainReactComponent(VisuallyHidden, {
       children: 'Products',
     });
