@@ -1,10 +1,6 @@
 ---
 name: Description list
 category: Lists and tables
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DescriptionList
   - glossary

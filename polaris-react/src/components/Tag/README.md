@@ -1,10 +1,6 @@
 ---
 name: Tag
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - indicator
   - label

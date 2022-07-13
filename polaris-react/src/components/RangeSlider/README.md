@@ -1,10 +1,6 @@
 ---
 name: Range slider
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RangeSlider
   - input

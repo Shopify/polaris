@@ -1,10 +1,6 @@
 ---
 name: Text style
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - TextStyle
   - typographic

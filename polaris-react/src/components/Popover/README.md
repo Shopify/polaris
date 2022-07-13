@@ -1,10 +1,6 @@
 ---
 name: Popover
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - interactive
   - container

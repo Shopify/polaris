@@ -1,10 +1,6 @@
 ---
 name: Select
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - on off
   - switch

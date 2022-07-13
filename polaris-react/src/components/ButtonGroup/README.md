@@ -1,10 +1,6 @@
 ---
 name: Button group
 category: Actions
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ButtonGroup
   - choices

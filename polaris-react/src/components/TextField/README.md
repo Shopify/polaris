@@ -1,10 +1,6 @@
 ---
 name: Text field
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - TextField
   - input
