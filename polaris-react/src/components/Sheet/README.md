@@ -1,8 +1,6 @@
 ---
 name: Sheet
 category: Overlays
-platforms:
-  - web
 keywords:
   - sheet
   - modal
