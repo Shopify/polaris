@@ -47,21 +47,13 @@ Secondary actions are always represented with skeleton content. You can change t
 
 Use skeleton loading for dynamic content, and use actual content for content that doesn’t change.
 
-<div class="TypographyUsageBlockImg">
-
 ![Image showing skeleton loading for changing content](/images/components/skeleton-page/do-use-skeleton-for-changing-content@2x.png)
-
-</div>
 
 #### Don’t
 
 Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience.
 
-<div class="TypographyUsageBlockImg">
-
 ![Image showing placeholder content that will change](/images/components/skeleton-page/dont-use-placeholder-content-that-will-change@2x.png)
-
-</div>
 
 <!-- end -->
 

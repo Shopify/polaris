@@ -142,8 +142,3 @@ Announcements let merchants know about something that might help their business.
 In some rare instances, unique spot illustrations can be used to achieve a specific goal, like to draw attention to something important on a busy page, or to explain a technical concept.
 
 <!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/sounds#navigation">Sounds</a>
-</div>

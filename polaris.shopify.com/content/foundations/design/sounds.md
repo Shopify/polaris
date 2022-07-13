@@ -82,8 +82,3 @@ Be creative and intentional with your sound design. And remember:
   - A quieter version for mobile applications where the speakers are smaller and may distort more easily.
 
 Design sounds with as much intentionality as other design aspects of Shopify’s products.
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/icons#navigation">Icons</a>
-</div>

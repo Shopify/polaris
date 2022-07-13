@@ -219,8 +219,3 @@ textarea {
 - Explore additional content height, width, truncation, and line wraps
 
 <!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/illustrations#navigation">Illustrations</a>
-</div>

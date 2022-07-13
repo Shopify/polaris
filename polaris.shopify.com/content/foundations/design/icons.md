@@ -161,8 +161,3 @@ Spot icons reinforce messaging in product experiences that are seen more than on
 - Within a 60×60 bounding box
 
 <!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/interaction-states#navigation">Interaction states</a>
-</div>

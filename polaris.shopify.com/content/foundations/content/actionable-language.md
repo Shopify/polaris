@@ -600,8 +600,6 @@ Use the adjective “Done” for datepickers.
 
 <!-- end -->
 
-<a name="OK-accept"></a>
-
 ---
 
 ## OK vs. accept

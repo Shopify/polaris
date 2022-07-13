@@ -75,13 +75,13 @@ Keep in mind that some content, such as emails, can be personalized by merchants
 - Your payment details couldn’t be verified. Check your card details and try again.
 - All transactions are secure and encrypted.
 - Select the address that matches your card or payment method.
-- Thanks!<br/>
+- Thanks!
 
   This example is when the customer finishes checkout in person (all other examples are from online checkout).
 
 #### Don’t
 
-- A fatal error occurred.<br/>
+- A fatal error occurred.
 
 Whoops! Houston, we have a problem!
 

@@ -154,8 +154,6 @@ Actions should be:
 
 <!-- end -->
 
-<a name="tertiary-actions"></a>
-
 ### Tertiary actions
 
 Tertiary actions should:

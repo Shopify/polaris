@@ -97,8 +97,3 @@ Provide merchants with cues as to what the interface will do if they interact wi
 **For an unsuccessful completion** that requires the merchant to take action, provide information about what prevented the action from completing successfully and what the merchant can do to fix the problem. For example, use the validation error state of the [text field](https://polaris.shopify.com/components/text-field) component.
 
 <!-- end -->
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/spacing#navigation">Spacing</a>
-</div>

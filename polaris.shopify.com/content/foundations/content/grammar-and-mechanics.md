@@ -735,147 +735,32 @@ This table shows the standard abbreviations for commonly-used units of measureme
 
 Use the imperial system for the United States, Liberia, and Myanmar, and use the metric system for all other countries.
 
-<table class="measurement-table">
-  <thead>
-    <tr>
-      <th scope="col" id="measurement"><b>Measurement</b></th>
-      <th scope="col" id="system"><b>System</b></th>
-      <th scope="col" id="unit"><b>Unit</b></th>
-      <th scope="col" id="abbreviation"><b>Abbreviation</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="rowgroup" rowspan="2" id="area" headers="measurement">
-        Area
-      </th>
-      <th scope="rowgroup" rowspan="1" headers="system" id="metric-1">Metric</th>
-      <td headers="area metric-1 unit">square meters</td>
-      <td headers="area metric-1 abbreviation">m²</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="1" headers="system" id="imperial-1">Imperial</th>
-      <td headers="area imperial-1 unit">square feet</td>
-      <td headers="area imperial-1 abbreviation">sq ft</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="2" id="distance" headers="measurement">
-        Distance
-      </th>
-      <th scope="rowgroup" rowspan="1" headers="system" id="metric-2">Metric</th>
-      <td headers="distance metric-2 unit">kilometers</td>
-      <td headers="distance metric-2 abbreviation">km</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="1" headers="system" id="imperial-2">Imperial</th>
-      <td headers="distance imperial-2 unit">miles</td>
-      <td headers="distance imperial-2 abbreviation">mi</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="4" id="image-resolution" headers="measurement">
-        Image resolution
-      </th>
-      <th scope="rowgroup" rowspan="4" headers="system" id="universal-1">Universal</th>
-      <td headers="image-resolution universal-1 unit">pixels</td>
-      <td headers="image-resolution universal-1 abbreviation">px</td>
-    </tr>
-    <tr>
-      <td headers="image-resolution universal-1 unit">megapixels</td>
-      <td headers="image-resolution universal-1 abbreviation">MP</td>
-    </tr>
-    <tr>
-      <td headers="image-resolution universal-1 unit">pixels per inch</td>
-      <td headers="image-resolution universal-1 abbreviation">ppi</td>
-    </tr>
-    <tr>
-      <td headers="image-resolution universal-1 unit">dots per inch</td>
-      <td headers="image-resolution universal-1 abbreviation">dpi</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="5" id="length" headers="measurement">
-        Length
-      </th>
-      <th scope="rowgroup" rowspan="2" headers="system" id="metric-3">Metric</th>
-      <td headers="length metric-3 unit">centimeters</td>
-      <td headers="length metric-3 abbreviation">cm</td>
-    </tr>
-    <tr>
-      <td headers="length metric-3 unit">meters</td>
-      <td headers="length metric-3 abbreviation">m</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="3" headers="system" id="imperial-3">Imperial</th>
-      <td headers="length imperial-3 unit">inches</td>
-      <td headers="length imperial-3 abbreviation">in</td>
-    </tr>
-    <tr>
-      <td headers="length imperial-3 unit">feet</td>
-      <td headers="length imperial-3 abbreviation">ft</td>
-    </tr>
-    <tr>
-      <td headers="length imperial-3 unit">yards</td>
-      <td headers="length imperial-3 abbreviation">yd</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="3" id="storage-size" headers="measurement">
-        Storage size
-      </th>
-      <th scope="rowgroup" rowspan="3" headers="system" id="universal-2">Universal</th>
-      <td headers="storage-size universal-2 unit">kilobytes</td>
-      <td headers="storage-size universal-2 abbreviation">KB</td>
-    </tr>
-    <tr>
-      <td headers="storage-size universal-2 unit">gigabytes</td>
-      <td headers="storage-size universal-2 abbreviation">GB</td>
-    </tr>
-    <tr>
-      <td headers="storage-size universal-2 unit">terabytes</td>
-      <td headers="storage-size universal-2 abbreviation">TB</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="4" id="volume" headers="measurement">
-        Volume
-      </th>
-      <th scope="rowgroup" rowspan="2" headers="system" id="metric-4">Metric</th>
-      <td headers="volume metric-4 unit">centimeters</td>
-      <td headers="volume metric-4 abbreviation">ml</td>
-    </tr>
-    <tr>
-      <td headers="volume metric-4 unit">litres</td>
-      <td headers="volume metric-4 abbreviation">L</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="2" headers="system" id="imperial-4">Imperial</th>
-      <td headers="volume imperial-4 unit">fluid ounces</td>
-      <td headers="volume imperial-4 abbreviation">fl oz</td>
-    </tr>
-    <tr>
-      <td headers="volume imperial-4 unit">gallons</td>
-      <td headers="volume imperial-4 abbreviation">gal</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="4" id="weight" headers="measurement">
-        Weight
-      </th>
-      <th scope="rowgroup" rowspan="2" headers="system" id="metric-5">Metric</th>
-      <td headers="weight metric-5 unit">grams</td>
-      <td headers="weight metric-5 abbreviation">g</td>
-    </tr>
-    <tr>
-      <td headers="weight metric-5 unit">kilograms</td>
-      <td headers="weight metric-5 abbreviation">kg</td>
-    </tr>
-    <tr>
-      <th scope="rowgroup" rowspan="2" headers="system" id="imperial-5">Imperial</th>
-      <td headers="weight imperial-5 unit">ounces</td>
-      <td headers="weight imperial-5 abbreviation">oz</td>
-    </tr>
-    <tr>
-      <td headers="weight imperial-5 unit">pounds</td>
-      <td headers="weight imperial-5 abbreviation">lb</td>
-    </tr>
-  </tbody>
-</table>
+| Measurement          | System          | Unit          | Abbreviation |
+| -------------------- | --------------- | ------------- | ------------ |
+| **Area**             | Metric          | square meters | m²           |
+|                      | Imperial        | square feet   | sq ft        |
+| **Distance**         | Metric          | kilometers    | km           |
+|                      | Imperial        | miles         | mi           |
+| **Image resolution** | Universal       | pixels        | px           |
+|                      | megapixels      | MP            |
+|                      | pixels per inch | ppi           |
+|                      | dots per inch   | dpi           |
+| **Length**           | Metric          | centimeters   | cm           |
+|                      | meters          | m             |
+|                      | Imperial        | inches        | in           |
+|                      | feet            | ft            |
+|                      | yards           | yd            |
+| **Storage size**     | Universal       | kilobytes     | KB           |
+|                      | gigabytes       | GB            |
+|                      | terabytes       | TB            |
+| **Volume**           | Metric          | centimeters   | ml           |
+|                      | litres          | L             |
+|                      | Imperial        | fluid ounces  | fl oz        |
+|                      | gallons         | gal           |
+| **Weight**           | Metric          | grams         | g            |
+|                      | kilograms       | kg            |
+|                      | Imperial        | ounces        | oz           |
+|                      | pounds          | lb            |
 
 ---
 
@@ -1045,25 +930,12 @@ Don’t use colons to introduce radio buttons or checkboxes.
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete
-their order
-
-<p>
-  <label><input type="radio" name="foo"> Never</label><br />
-  <label><input type="radio" name="foo"> 6 hours later</label><br />
-  <label><input type="radio" name="foo"> 24 hours later</label>
-</p>
+If the customer abandons their checkout, send them an email reminder to complete their order
 
 #### Don’t
 
-If the customer abandons their checkout, send them an email reminder to complete
-their order:
+If the customer abandons their checkout, send them an email reminder to complete their order:
 
-<p>
-  <label><input type="radio" name="bar"> Never</label><br />
-  <label><input type="radio" name="bar"> 6 hours later</label><br />
-  <label><input type="radio" name="bar"> 24 hours later</label>
-</p>
 <!-- end -->
 
 Introduce bulleted lists with a colon.
