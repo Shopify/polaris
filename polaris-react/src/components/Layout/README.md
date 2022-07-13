@@ -463,7 +463,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section oneThird>
+    <Layout.Section oneThird condensed>
       <div style={{marginTop: 'var(--p-space-5)'}}>
         <TextContainer>
           <Heading id="storeDetails">Store details</Heading>
@@ -476,7 +476,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
         </TextContainer>
       </div>
     </Layout.Section>
-    <Layout.Section>
+    <Layout.Section twoThirds condensed>
       <Card sectioned>
         <FormLayout>
           <TextField
