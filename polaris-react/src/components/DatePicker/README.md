@@ -1,10 +1,6 @@
 ---
 name: Date picker
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DatePicker
   - month

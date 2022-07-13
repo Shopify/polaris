@@ -1,10 +1,6 @@
 ---
 name: Badge
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - pills
   - status indicators

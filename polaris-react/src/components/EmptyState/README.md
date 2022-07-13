@@ -1,10 +1,6 @@
 ---
 name: Empty state
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - EmptyState
   - lander

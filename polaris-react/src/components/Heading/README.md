@@ -1,10 +1,6 @@
 ---
 name: Heading
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - titles
   - text

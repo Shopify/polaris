@@ -1,10 +1,6 @@
 ---
 name: Caption
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - labels
   - text

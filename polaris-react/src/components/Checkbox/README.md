@@ -1,10 +1,6 @@
 ---
 name: Checkbox
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - accept
   - decline

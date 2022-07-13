@@ -1,10 +1,6 @@
 ---
 name: Text container
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 releasedIn: 1.9.0
 keywords:
   - spacing
