@@ -48,7 +48,7 @@ top-level navigation and search.
 </div>
 </div>
 
-The [page component](/components/structure/page):
+The [page component](/components/page):
 
 - Acts as a container for the content of each specific page
 - Controls the horizontal margins of the content area
@@ -70,7 +70,7 @@ Page component variations:
 </div>
 </div>
 
-Within the page, the [layout component](/components/structure/layout) groups the
+Within the page, the [layout component](/components/layout) groups the
 content into sections. Sections control how the content flows into columns. Each
 section can be:
 
@@ -89,18 +89,18 @@ section can be:
 </div>
 </div>
 
-Place page-level [banners](/components/feedback-indicators/banner) in a full-width section
+Place page-level [banners](/components/banner) in a full-width section
 at the top of the page.
 
-Stack [cards](/components/structure/card) in sections to separate the screen’s
+Stack [cards](/components/card) in sections to separate the screen’s
 main content into meaningful groups.
 
 For screens that represent an individual resource like a product or order, place
-[page actions](/components/structure/page-actions) in a full-width section at
+[page actions](/components/page-actions) in a full-width section at
 the bottom of the page.
 
 For pages that don’t have footer actions, the
-[footer help component](/components/navigation/footer-help) can offer a
+[footer help component](/components/footer-help) can offer a
 link to documentation about the current screen.
 
 ### Layout in a card
@@ -113,7 +113,7 @@ link to documentation about the current screen.
 </div>
 </div>
 
-[Cards](/components/structure/card) have a similar structure to the page as a
+[Cards](/components/card) have a similar structure to the page as a
 whole.
 
 - Cards often have a header, with a title and card-level actions on the right.
@@ -124,7 +124,7 @@ whole.
   actions on the right.
 
 For more details, including when to use header and footer actions, see the
-[card component](/components/structure/card).
+[card component](/components/card).
 
 ---
 
@@ -134,7 +134,7 @@ The structure described above applies to most screens in the Shopify admin, but
 other types of screens exist.
 
 **Embedded Shopify apps**, including sales channels, are contained within the
-normal app frame. However, they display the [page component](/components/structure/page) differently.
+normal app frame. However, they display the [page component](/components/page) differently.
 
 <div class="Spacing">
 <div class="Image Image--radius">
@@ -339,7 +339,7 @@ placed.
 
 ## Small-scale layout
 
-The [stack](/components/structure/stack) component is useful for small-scale
+The [stack](/components/stack) component is useful for small-scale
 layout. It lets you arrange arbitrary components in a horizontal row or vertical
 stack. It’s also a useful component for applying
 [standard spacing](/design/spacing).
@@ -391,7 +391,7 @@ Organizing actions is as important as organizing content.
 If an action applies to the entire page:
 
 - Place it in the page header as a primary or secondary action
-- Use the [page actions](/components/structure/page-actions) component for
+- Use the [page actions](/components/page-actions) component for
   page-level delete and save actions
 
 If an action applies to something more specific, place it at the level of the

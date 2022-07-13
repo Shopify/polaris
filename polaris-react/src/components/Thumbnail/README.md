@@ -115,4 +115,4 @@ Use to render an icon inside of thumbnail.
 
 ## Related components
 
-- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/images-and-icons/avatar)
+- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/avatar)

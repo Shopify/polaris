@@ -278,10 +278,10 @@ Use when vertical screen space is not limited or when the video card is the page
 
 ## Related components
 
-- To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/images-and-icons/video-thumbnail)
-- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
+- To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/video-thumbnail)
+- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/empty-state)
 
 ---
 

@@ -364,12 +364,12 @@ function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
 
 ## Related components
 
-- To present a long list of radio buttons or when space is constrained, [use the select component](https://polaris.shopify.com/components/forms/select)
-- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](https://polaris.shopify.com/components/forms/radio-button) or [checkbox component](https://polaris.shopify.com/components/forms/checkbox)
-- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To present a long list of radio buttons or when space is constrained, [use the select component](https://polaris.shopify.com/components/select)
+- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](https://polaris.shopify.com/components/radio-button) or [checkbox component](https://polaris.shopify.com/components/checkbox)
+- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/list)
 
 ---
 
 ## Accessibility
 
-The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/forms/checkbox) and [radio button](https://polaris.shopify.com/components/forms/radio-button) components.
+The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/checkbox) and [radio button](https://polaris.shopify.com/components/radio-button) components.
