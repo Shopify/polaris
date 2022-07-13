@@ -12,7 +12,7 @@ We use sound to communicate information and to enhance how merchants experience 
 
 <!-- showcasecontent -->
 
-![Visual representation of sound waves as concentric circles](/images/foundations/design/sound/sound-intro@2x.png)
+![Visual representation of sound waves as concentric circles](/images/foundations/design/sounds/sound-intro@2x.png)
 
 <!-- end -->
 
