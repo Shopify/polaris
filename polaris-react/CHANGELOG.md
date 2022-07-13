@@ -1,5 +1,43 @@
 # Changelog
 
+## 9.20.0
+
+### Minor Changes
+
+- [#6550](https://github.com/Shopify/polaris/pull/6550) [`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a) Thanks [@ErickTamayo](https://github.com/ErickTamayo)! - Replaced SortAscendingMajor and SortDescendingMajor icons. Changed sorting icons in the Data Table
+
+* [#6407](https://github.com/Shopify/polaris/pull/6407) [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added internal `useBreakpoints` hook
+
+- [#6401](https://github.com/Shopify/polaris/pull/6401) [`3510fdb87`](https://github.com/Shopify/polaris/commit/3510fdb87fb9677f5e1ba86c33cbbb674bf29f6e) Thanks [@mrcthms](https://github.com/mrcthms)! - Switch the order of the actions in the EmptyState
+
+* [#6399](https://github.com/Shopify/polaris/pull/6399) [`5dd608c6f`](https://github.com/Shopify/polaris/commit/5dd608c6f0799f80ec8b1176113580a56a566710) Thanks [@fmoliveira](https://github.com/fmoliveira)! - Added the `dataPrimaryLink` prop to `Link` and `Button` to support navigation on click of an `IndexTable.Row`
+
+- [#6551](https://github.com/Shopify/polaris/pull/6551) [`bbf0b59f8`](https://github.com/Shopify/polaris/commit/bbf0b59f863dbd7ace49aa1b8981a80c2cf8dd4a) Thanks [@alex-page](https://github.com/alex-page)! - Removed mobile only documentation for SectionHeader component
+
+* [#6434](https://github.com/Shopify/polaris/pull/6434) [`9a4f78808`](https://github.com/Shopify/polaris/commit/9a4f7880833daaee38c9656e25208098be0d2a44) Thanks [@mateus](https://github.com/mateus)! - Prevents the Button disclosure icon from overflowing its container
+
+- [#6536](https://github.com/Shopify/polaris/pull/6536) [`ee487cef2`](https://github.com/Shopify/polaris/commit/ee487cef23ff2ac1ab537368bdc9815b7ec0cb4d) Thanks [@alex-page](https://github.com/alex-page)! - Removed mobile content and examples from README.md files
+
+* [#6431](https://github.com/Shopify/polaris/pull/6431) [`7db7af61c`](https://github.com/Shopify/polaris/commit/7db7af61c343f7229fabf250672025d914ce735f) Thanks [@mrcthms](https://github.com/mrcthms)! - Fix variable name in sticky IndexTable
+
+- [#6344](https://github.com/Shopify/polaris/pull/6344) [`a86272f24`](https://github.com/Shopify/polaris/commit/a86272f248ce2ea61ca8be47f379303c59e92e73) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the ability to capture React.Profiler data
+
+### Patch Changes
+
+- [#6525](https://github.com/Shopify/polaris/pull/6525) [`588c3056d`](https://github.com/Shopify/polaris/commit/588c3056d2d10d9bd2c3d65bc0c4705bc051c25c) Thanks [@alex-page](https://github.com/alex-page)! - Fixed duplicate descriptions for autocomplete examples
+
+* [#6445](https://github.com/Shopify/polaris/pull/6445) [`abb4e40c9`](https://github.com/Shopify/polaris/commit/abb4e40c9695db817f81f3a1525c5bf6c7f31b39) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed `@shopify/stylelint-polaris` errors
+
+- [#6488](https://github.com/Shopify/polaris/pull/6488) [`6cb2ac321`](https://github.com/Shopify/polaris/commit/6cb2ac321950f5e4c3cb706ebe305ccc41d7a089) Thanks [@martenbjork](https://github.com/martenbjork)! - Render component notices on the website
+
+* [#6483](https://github.com/Shopify/polaris/pull/6483) [`3b65101e8`](https://github.com/Shopify/polaris/commit/3b65101e88519cbc992ec417e25ea5c227dd4975) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated Layout.AnnotatedSection
+
+- [#5928](https://github.com/Shopify/polaris/pull/5928) [`2242cfcde`](https://github.com/Shopify/polaris/commit/2242cfcde87dbef2efda54d84341775cfe78a19e) Thanks [@FCalabria](https://github.com/FCalabria)! - Fixed `Page` without header section causing unnecessary scrollbar
+
+- Updated dependencies [[`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a), [`54ba0f716`](https://github.com/Shopify/polaris/commit/54ba0f716088ae36e7fae08d2768d2541b9107b6), [`9269e5ee6`](https://github.com/Shopify/polaris/commit/9269e5ee62171cf7b8ced1b9edef68da3bcd9dd2), [`9426d0108`](https://github.com/Shopify/polaris/commit/9426d01088930c761a4ab14c5a94008f129e70d0), [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624)]:
+  - @shopify/polaris-icons@5.0.0
+  - @shopify/polaris-tokens@5.5.0
+
 ## 9.19.0
 
 ### Minor Changes

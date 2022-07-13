@@ -25,6 +25,8 @@ body {
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
   --focus-outline: 0 0 0 2px var(--text-strong);
   --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
+  --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
+    "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
   // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
