@@ -57,7 +57,7 @@ message immediately and as close to the source of the problem as possible.
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Text field validation](/public_images/errors-page/text-field-validation-error@2x.png)
+![Text field validation](/images/foundations/patterns/error-messages/text-field-validation-error@2x.png)
 
 </div>
 </div>
@@ -79,7 +79,7 @@ message immediately and as close to the source of the problem as possible.
 
 <div class="Image Image--border">
 
-![Settings warning error](/public_images/errors-page/settings-warning@2x.png)
+![Settings warning error](/images/foundations/patterns/error-messages/settings-warning@2x.png)
 
 </div>
 </div>
@@ -100,12 +100,12 @@ message immediately and as close to the source of the problem as possible.
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Yellow page level banner](/public_images/errors-page/page-level-warning-banner@2x.png)
+![Yellow page level banner](/images/foundations/patterns/error-messages/page-level-warning-banner@2x.png)
 
 </div>
 <div class="Image Image--border">
 
-![Red page level banner](/public_images/errors-page/page-level-critical-banner@2x.png)
+![Red page level banner](/images/foundations/patterns/error-messages/page-level-critical-banner@2x.png)
 
 </div>
 </div>
@@ -123,8 +123,8 @@ message immediately and as close to the source of the problem as possible.
   </div>
   <div class="Annotated__Media">
 
-![Yellow section level banner](/public_images/errors-page/section-level-warning@2x.png)
-![Yellow field level banner](/public_images/errors-page/field-level-warning-02@2x.png)
+![Yellow section level banner](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
+![Yellow field level banner](/images/foundations/patterns/error-messages/field-level-warning-02@2x.png)
 
   </div>
 </div>
@@ -141,12 +141,12 @@ message immediately and as close to the source of the problem as possible.
 <div class="Annotated__Media">
 <div class="Image">
 
-![Warning exception list error](/public_images/errors-page/exception-list-warning@2x.png)
+![Warning exception list error](/images/foundations/patterns/error-messages/exception-list-warning@2x.png)
 
 </div>
 <div class="Image Image--border">
 
-![Critical exception list error](/public_images/errors-page/high-risk-fraud@2x.png)
+![Critical exception list error](/images/foundations/patterns/error-messages/high-risk-fraud@2x.png)
 
 </div>
 </div>
@@ -165,12 +165,12 @@ message immediately and as close to the source of the problem as possible.
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Yellow home notification](/public_images/errors-page/home-notification-warning@2x.png)
+![Yellow home notification](/images/foundations/patterns/error-messages/home-notification-warning@2x.png)
 
 </div>
 <div class="Image Image--border">
 
-![Red home notification](/public_images/errors-page/home-notification-critical@2x.png)
+![Red home notification](/images/foundations/patterns/error-messages/home-notification-critical@2x.png)
 
 </div>
 </div>
@@ -189,12 +189,12 @@ message immediately and as close to the source of the problem as possible.
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Admin page not found error](/public_images/errors-page/page-not-found@2x.png)
+![Admin page not found error](/images/foundations/patterns/error-messages/page-not-found@2x.png)
 
 </div>
 <div class="Image Image--border">
 
-![Admin page load error](/public_images/errors-page/admin-error@2x.png)
+![Admin page load error](/images/foundations/patterns/error-messages/admin-error@2x.png)
 
 </div>
 </div>
@@ -235,11 +235,11 @@ Examples of critical message types:
 
 #### Do
 
-![Red banner with high fraud risk message](/public_images/errors-page/red-banner@2x.png)
+![Red banner with high fraud risk message](/images/foundations/patterns/error-messages/red-banner@2x.png)
 
 #### Don’t
 
-![Yellow banner with high fraud risk message](/public_images/errors-page/yellow-banner@2x.png)
+![Yellow banner with high fraud risk message](/images/foundations/patterns/error-messages/yellow-banner@2x.png)
 
 <!-- end -->
 
@@ -250,11 +250,11 @@ standard convention merchants are used to seeing outside of Shopify.
 
 #### Do
 
-![Form validation with red banner](/public_images/errors-page/validation-banner-red@2x.png)
+![Form validation with red banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
 
 #### Don’t
 
-![Form validation with yellow banner](/public_images/errors-page/validation-banner-yellow@2x.png)
+![Form validation with yellow banner](/images/foundations/patterns/error-messages/validation-banner-yellow@2x.png)
 
 <!-- end -->
 
@@ -282,11 +282,11 @@ Examples of warning message types:
 
 #### Do
 
-![Yellow banner with warning message](/public_images/errors-page/yellow-do@2x.png)
+![Yellow banner with warning message](/images/foundations/patterns/error-messages/yellow-do@2x.png)
 
 #### Don’t
 
-![Red banner with warning message](/public_images/errors-page/yellow-dont@2x.png)
+![Red banner with warning message](/images/foundations/patterns/error-messages/yellow-dont@2x.png)
 
 <!-- end -->
 
@@ -312,7 +312,7 @@ Examples of warning message types:
 <div class="TypographyUsageBlockImg TypographyUsageBlockImgHeight">
 <div class="Image Image--border">
 
-![Toast error message](/public_images/errors-page/dont-toast-error@2x.png)
+![Toast error message](/images/foundations/patterns/error-messages/dont-toast-error@2x.png)
 
 </div>
 </div>
@@ -342,7 +342,7 @@ Examples of warning message types:
 <div class="TypographyUsageBlockImg TypographyUsageBlockImgHeight">
 <div class="Image Image--border">
 
-![Modal error message](/public_images/errors-page/dont-modals-for-errors@2x.png)
+![Modal error message](/images/foundations/patterns/error-messages/dont-modals-for-errors@2x.png)
 
 </div>
 </div>
@@ -372,7 +372,7 @@ Examples of warning message types:
 <div class="TypographyUsageBlockImg TypographyUsageBlockImgHeight">
 <div class="Image Image--border">
 
-![Home notification error message](/public_images/errors-page/dont-home-notification@2x.png)
+![Home notification error message](/images/foundations/patterns/error-messages/dont-home-notification@2x.png)
 
 </div>
 </div>
@@ -435,7 +435,7 @@ Don’t use when:
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Text field validation error](/public_images/errors-page/text-field-validation-error-no-cursor@2x.png)
+![Text field validation error](/images/foundations/patterns/error-messages/text-field-validation-error-no-cursor@2x.png)
 
 </div>
 
@@ -453,7 +453,7 @@ helps avoid marking the field as not valid before merchants are really done typi
 
 <div class="Image">
 
-![Initial validation check with purple border](/public_images/errors-page/text-field-validation-purple-incorrect-input@2x.png)
+![Initial validation check with purple border](/images/foundations/patterns/error-messages/text-field-validation-purple-incorrect-input@2x.png)
 
 </div>
 
@@ -461,7 +461,7 @@ If the validation check fails, show an error message below the field.
 
 <div class="Image">
 
-![Text field turns red](/public_images/errors-page/text-field-validation-error-no-cursor@2x.png)
+![Text field turns red](/images/foundations/patterns/error-messages/text-field-validation-error-no-cursor@2x.png)
 
 </div>
 
@@ -469,7 +469,7 @@ Once a field has an error, complete validation checks after each keystroke.
 
 <div class="Image">
 
-![Text field validation with cursor by incorrect semi colon](/public_images/errors-page/text-field-validation-cursor@2x.png)
+![Text field validation with cursor by incorrect semi colon](/images/foundations/patterns/error-messages/text-field-validation-cursor@2x.png)
 
 </div>
 
@@ -478,7 +478,7 @@ immediately tell they fixed the issue.
 
 <div class="Image">
 
-![Text field validation with purple border](/public_images/errors-page/text-field-validation-purple-border-cursor@2x.png)
+![Text field validation with purple border](/images/foundations/patterns/error-messages/text-field-validation-purple-border-cursor@2x.png)
 
 </div>
 
@@ -487,7 +487,7 @@ on the field to indicate validation progress.
 
 <div class="Image">
 
-![Text field validation in loading state with spinner](/public_images/errors-page/text-field-validation-loading@2x.png)
+![Text field validation in loading state with spinner](/images/foundations/patterns/error-messages/text-field-validation-loading@2x.png)
 
 </div>
 
@@ -563,7 +563,7 @@ Don’t use when:
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Red form validation banner](/public_images/errors-page/validation-banner-red@2x.png)
+![Red form validation banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
 
 </div>
 </div>
@@ -579,11 +579,11 @@ can’t be blank.“
 
 #### Do
 
-![Instructional validation banner](/public_images/errors-page/validation-banner-content-do@2x.png)
+![Instructional validation banner](/images/foundations/patterns/error-messages/validation-banner-content-do@2x.png)
 
 #### Don’t
 
-![Validation banner that only points out that there is an error](/public_images/errors-page/validation-banner-content-dont@2x.png)
+![Validation banner that only points out that there is an error](/images/foundations/patterns/error-messages/validation-banner-content-dont@2x.png)
 
 <!-- end -->
 
@@ -593,7 +593,7 @@ Always indicate submission progress. If the fields aren't valid, don’t clear o
 
 <div class="Image Image--border">
 
-![Spinner displaying on save](/public_images/errors-page/submission-progress@2x.png)
+![Spinner displaying on save](/images/foundations/patterns/error-messages/submission-progress@2x.png)
 
 </div>
 
@@ -605,7 +605,7 @@ If the form submission has a single error:
 
 <div class="Image Image--border">
 
-![Validation error for a price entry field](/public_images/errors-page/input-validation@2x.png)
+![Validation error for a price entry field](/images/foundations/patterns/error-messages/input-validation@2x.png)
 
 </div>
 
@@ -617,7 +617,7 @@ If the form submission has multiple errors:
 
 <div class="Image Image--border">
 
-![Red form validation banner](/public_images/errors-page/validation-banner-red@2x.png)
+![Red form validation banner](/images/foundations/patterns/error-messages/validation-banner-red@2x.png)
 
 </div>
 
@@ -683,7 +683,7 @@ highlight potential risks or consequences of taking, or not taking, the action.
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![In line warning banner below a drop down](/public_images/errors-page/settings-warning@2x.png)
+![In line warning banner below a drop down](/images/foundations/patterns/error-messages/settings-warning@2x.png)
 
 </div>
 </div>
@@ -725,7 +725,7 @@ Page-level banner errors should explain:
 
 #### Do
 
-![Error message with arrows pointing at different parts of the message](/public_images/errors-page/banner-breakdown@2x.png)
+![Error message with arrows pointing at different parts of the message](/images/foundations/patterns/error-messages/banner-breakdown@2x.png)
 
 #### Don’t
 
@@ -779,7 +779,7 @@ Page-level banner errors should explain:
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Page level warning banner](/public_images/errors-page/page-level-warning-banner@2x.png)
+![Page level warning banner](/images/foundations/patterns/error-messages/page-level-warning-banner@2x.png)
 
 </div>
 </div>
@@ -833,8 +833,8 @@ Don’t use when:
   </div>
 <div class="Annotated__Media">
 
-![Warning banner at the top of a card below the card title](/public_images/errors-page/section-level-warning@2x.png)
-![Small warning banner in a section within a card](/public_images/errors-page/section-level-warning@2x.png)
+![Warning banner at the top of a card below the card title](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
+![Small warning banner in a section within a card](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
 
 </div>
 </div>
@@ -891,12 +891,12 @@ Don’t use when:
 <div class="Annotated__Media">
 <div class="Image">
 
-![Exception list warning](/public_images/errors-page/exception-list-warning@2x.png)
+![Exception list warning](/images/foundations/patterns/error-messages/exception-list-warning@2x.png)
 
 </div>
 <div class="Image Image--border">
 
-![Exception list error](/public_images/errors-page/high-risk-fraud@2x.png)
+![Exception list error](/images/foundations/patterns/error-messages/high-risk-fraud@2x.png)
 
 </div>
 </div>
@@ -933,7 +933,7 @@ Don’t use for:
 - Error messages that should be displayed in context
 - Task-related errors like a problem with saving a page
 
-![Structure of home notification with a header, body content, and button](/public_images/errors-page/home-notification-anatomy@2x.png)
+![Structure of home notification with a header, body content, and button](/images/foundations/patterns/error-messages/home-notification-anatomy@2x.png)
 
 <a name="warning-home-notifications"></a>
 
@@ -951,11 +951,11 @@ that an action can be taken to make money sooner.
 
 #### Do
 
-![Warning home notification with credit card expiry message](/public_images/errors-page/home-notification-warning@2x.png)
+![Warning home notification with credit card expiry message](/images/foundations/patterns/error-messages/home-notification-warning@2x.png)
 
 #### Don’t
 
-![Warning home notification with chargeback message](/public_images/errors-page/dont-home-notification@2x.png)
+![Warning home notification with chargeback message](/images/foundations/patterns/error-messages/dont-home-notification@2x.png)
 
 <!-- end -->
 
@@ -983,11 +983,11 @@ Critical home notifications can be used for these message types:
 
 #### Do
 
-![Critical home notification with account on hold message](/public_images/errors-page/home-notification-critical@2x.png)
+![Critical home notification with account on hold message](/images/foundations/patterns/error-messages/home-notification-critical@2x.png)
 
 #### Don’t
 
-![Critical home notification with out of stock message](/public_images/errors-page/dont-home-notification-02@2x.png)
+![Critical home notification with out of stock message](/images/foundations/patterns/error-messages/dont-home-notification-02@2x.png)
 
 <!-- end -->
 
@@ -1014,11 +1014,11 @@ Don’t use when:
 
 #### Do
 
-![Page not found error with internet connection message](/public_images/errors-page/page-not-found-02@2x.png)
+![Page not found error with internet connection message](/images/foundations/patterns/error-messages/page-not-found-02@2x.png)
 
 #### Don’t
 
-![Page not found error with oops, something went wrong message](/public_images/errors-page/dont-page-not-found@2x.png)
+![Page not found error with oops, something went wrong message](/images/foundations/patterns/error-messages/dont-page-not-found@2x.png)
 
 <!-- end -->
 
@@ -1028,11 +1028,11 @@ Don’t use internal language in error messages and avoid using question formats
 
 #### Do
 
-![Problem loading page error with troubleshooting tips](/public_images/errors-page/admin-error@2x.png)
+![Problem loading page error with troubleshooting tips](/images/foundations/patterns/error-messages/admin-error@2x.png)
 
 #### Don’t
 
-![Problem loading page error with content that talks about operational engineers](/public_images/errors-page/dont-admin-error@2x.png)
+![Problem loading page error with content that talks about operational engineers](/images/foundations/patterns/error-messages/dont-admin-error@2x.png)
 
 <!-- end -->
 
@@ -1067,7 +1067,7 @@ Don’t use internal language in error messages and avoid using question formats
 <div class="Annotated__Media">
 <div class="Image Image--border">
 
-![Page not found error](/public_images/errors-page/page-not-found@2x.png)
+![Page not found error](/images/foundations/patterns/error-messages/page-not-found@2x.png)
 
 </div>
 </div>
@@ -1099,8 +1099,8 @@ Don’t use when:
 
 #### Do
 
-![Carrier may not be able to pick up package error message](/public_images/errors-page/warning-no-solution@2x.png)
-![Carrier may not be able to pick up package error message](/public_images/errors-page/warning-no-solution-2@2x.png)
+![Carrier may not be able to pick up package error message](/images/foundations/patterns/error-messages/warning-no-solution@2x.png)
+![Carrier may not be able to pick up package error message](/images/foundations/patterns/error-messages/warning-no-solution-2@2x.png)
 
 #### Don’t
 

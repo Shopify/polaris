@@ -99,7 +99,7 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 
 ### Virtual keyboard
 
-![Examples of different number keyboards set with inputMode](/public_images/components/TextField/virtual-keyboards.png)
+![Examples of different number keyboards set with inputMode](/images/components/text-field/virtual-keyboards.png)
 
 The `inputMode` property should be set to select the appropriate virtual keyboard for the type of data expected to be entered by the user. Above are examples of different number keyboards set with `inputMode`.
 
