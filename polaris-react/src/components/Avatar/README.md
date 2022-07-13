@@ -115,7 +115,7 @@ Use a `square` shape when the avatar represents a non-person entity like an app,
 
 ## Related components
 
-- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](https://polaris.shopify.com/components/images-and-icons/thumbnail)
+- To show a thumbnail for an object rather than a person or business, [use the thumbnail component](https://polaris.shopify.com/components/thumbnail)
 
 ---
 
