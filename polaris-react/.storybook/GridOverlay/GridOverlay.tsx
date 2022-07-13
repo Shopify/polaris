@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import {tokens} from '@shopify/polaris-tokens';
 
 import {useEventListener} from '../../src';
 import {classNames} from '../../src/utilities/css';
+import {useBreakpoints} from '../../src/utilities/breakpoints';
 
 import './GridOverlay.css';
 
 const COLUMNS_SMALL = 6;
 const COLUMNS_LARGE = 12;
-const BREAKPOINT = tokens.breakpoints['breakpoints-lg'].value;
 
 type Layer = 'above' | 'below';
 interface Props {
@@ -19,18 +18,10 @@ interface Props {
 }
 
 export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
-  const [columns, setColumns] = useState(
-    window.matchMedia(`(min-width: ${BREAKPOINT})`).matches
-      ? COLUMNS_LARGE
-      : COLUMNS_SMALL,
-  );
+  const {lgUp} = useBreakpoints();
+  const [columns, setColumns] = useState(lgUp ? COLUMNS_LARGE : COLUMNS_SMALL);
 
-  const handleResize = () =>
-    setColumns(
-      window.matchMedia(`(min-width: ${BREAKPOINT})`).matches
-        ? COLUMNS_LARGE
-        : COLUMNS_SMALL,
-    );
+  const handleResize = () => setColumns(lgUp ? COLUMNS_LARGE : COLUMNS_SMALL);
 
   useEventListener('resize', handleResize);
 

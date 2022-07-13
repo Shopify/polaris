@@ -3,13 +3,17 @@ import React from 'react';
 import {Grid} from '../../../Grid';
 import type {CellProps} from '../../../Grid';
 
-export interface SectionProps {
-  children?: React.ReactNode;
-  oneThird?: boolean;
-  oneHalf?: boolean;
-  twoThirds?: boolean;
+interface NonMutuallyExclusiveProps {
   condensed?: boolean;
+  children?: React.ReactNode;
 }
+
+type SectionProps = NonMutuallyExclusiveProps &
+  (
+    | {oneHalf?: true; oneThird?: never; twoThirds?: never}
+    | {oneHalf?: never; oneThird?: true; twoThirds?: never}
+    | {oneHalf?: never; oneThird?: never; twoThirds?: true}
+  );
 
 export function Section({
   children,
