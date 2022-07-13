@@ -29,23 +29,6 @@ examples:
   - fileName: toast-with-custom-duration.tsx
     title: Toast with custom duration
     description: Use to shorten or lengthen the default duration of 5000 milliseconds.
-  # - fileName: toast-with-action.tsx
-  #   title: Toast with action
-  #   description: >-
-  #     Use when a merchant has the ability to act on the message. For example, to
-  #     undo a change or retry an action.
-  # - fileName: toast-default.tsx
-  #   title: Default toast
-  #   description: >-
-  #     Use default toast for informative and neutral feedback.On iOS,
-  #     icons are available for cases where you want to re-inforce the
-  #     message.
-  # - fileName: toast-success.tsx
-  #   title: Success toast
-  #   description: >-
-  #     Use success toast to indicate that something was successful. For example,
-  #     a product was successfully updated.On iOS, icons are available
-  #     for cases where you want to re-inforce the message.
   - fileName: toast-error.tsx
     title: Error toast
     description: >-
