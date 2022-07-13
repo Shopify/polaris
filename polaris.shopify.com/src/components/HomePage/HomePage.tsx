@@ -3,7 +3,6 @@ import Container from "../Container";
 import Link from "next/link";
 import { className } from "../../utils/various";
 import { useMedia } from "../../utils/hooks";
-import vsCodeImage from "./vscode.jpg";
 import Image from "../Image";
 import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
