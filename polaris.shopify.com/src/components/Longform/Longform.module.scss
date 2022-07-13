@@ -138,16 +138,26 @@
     font-family: var(--font-family-mono);
     font-size: var(--font-size-100);
     padding: 1rem;
-    background: #222;
+    background: var(--surface-code);
     color: #fff;
     border-radius: var(--border-radius-500);
     overflow: auto;
     white-space: pre-wrap;
     min-width: 0;
+    margin-top: 0.5rem;
 
     p {
       margin: 0;
     }
+  }
+
+  code {
+    font-family: monospace;
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-500);
+    background: var(--surface-code);
+    border-radius: var(--border-radius-300);
+    padding: 0.15rem 0.25rem;
   }
 
   .usage-list {
@@ -159,6 +169,14 @@
   table {
     font-size: var(--font-size-200);
     border-collapse: collapse;
+
+    p {
+      margin: 0 0 1rem 0;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
 
     th {
       font-weight: var(--font-weight-600);

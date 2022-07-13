@@ -14,8 +14,8 @@ interface Props {
 function Markdown({ text, skipH1 }: Props) {
   return (
     <ReactMarkdown
+      remarkPlugins={[[remarkGfm, { tablePipeAlign: true }]]}
       rehypePlugins={[rehypeRaw]}
-      remarkPlugins={[remarkGfm]}
       components={{
         h1: ({ children }) => {
           return skipH1 ? <></> : <h1>{children}</h1>;
@@ -34,24 +34,26 @@ function Markdown({ text, skipH1 }: Props) {
             return <h3>{children}</h3>;
           }
         },
-        code: ({ children }) => (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: Prism.highlight(
-                String(children),
-                Prism.languages.javascript,
-                "javasript"
-              ),
-            }}
-          ></span>
+        code: ({ inline, children }) =>
+          inline ? (
+            <code>{children}</code>
+          ) : (
+            // Prism auto-wraps code blocks in <pre> and <code> tags
+            <span
+              dangerouslySetInnerHTML={{
+                __html: Prism.highlight(
+                  String(children),
+                  Prism.languages.javascript,
+                  "javasript"
+                ),
+              }}
+            ></span>
+          ),
+        table: ({ children }) => (
+          <div className="table-wrapper">
+            <table>{children}</table>
+          </div>
         ),
-        table: ({ children }) => {
-          return (
-            <div className="table-wrapper">
-              <table>{children}</table>
-            </div>
-          );
-        },
       }}
     >
       {text}
