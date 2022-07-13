@@ -12,8 +12,6 @@ single, specific question.
 This section outlines data visualization practices at Shopify and how to
 leverage them.
 
-**Note:** We’re working on updates to the data visualization principles and rules. Stay tuned!
-
 ---
 
 ## Data visualizations at Shopify

@@ -90,7 +90,7 @@ Pick one
 
 <!-- end -->
 
-### Be concise and scannable:
+### Be concise and scannable
 
 - Use simple, clear language that can be read at a glance
 - Keep list titles to a single sentence
@@ -117,9 +117,15 @@ Shipping Options
 
 If the customer abandons their checkout, send them an email reminder to complete their order
 
+- Option a
+- Option b
+
 #### Don’t
 
 If the customer abandons their checkout, send them an email reminder to complete their order:
+
+- Option a
+- Option b
 
 <!-- end -->
 
@@ -135,15 +141,17 @@ Every item in a choice list should:
 
 #### Do
 
-- List item 1
-- List item 2
-- List item 3
+- Option 1
+- Yellow
+- Item three
 
 #### Don’t
 
-- List Item One;
-- List Item Two;
-- List Item Three.
+- option 1
+- Yellow;
+- Item Three
+
+<!-- end -->
 
 <!-- end -->
 

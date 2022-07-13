@@ -87,8 +87,6 @@ Navigation should:
 
 ---
 
-<a name="subcomponent-section"></a>
-
 ## Navigation section
 
 A navigation section groups together related navigation items. Navigation sections can be clarified by a heading. Merchants can use a section to easily find navigation items within a specific category.
@@ -104,8 +102,6 @@ A navigation section groups together related navigation items. Navigation sectio
 | rollup    | [Rollup](#type-rollup) | An object determining the collapsing behavior of the navigation section                       |
 | action    | [Action](#type-action) | Renders an icon-only action as a supplementary action next to the section title               |
 | separator | boolean                | A boolean property indicating whether the section should have a visual separator              |
-
-<a name="type-item"></a>
 
 ### Navigation section item
 
@@ -132,8 +128,6 @@ The content of the navigation component consists of navigation items. Each item 
 | secondaryAction    | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
 | onClick()          | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
 
-<a name="sub-navigation-item"></a>
-
 ### SubNavigationItem
 
 #### Properties
@@ -151,8 +145,6 @@ The content of the navigation component consists of navigation items. Each item 
 | new          | boolean  | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop) |
 | onClick()    | function | A callback function to handle clicking on a navigation item                                                                                |
 
-<a name="secondary-action"></a>
-
 ### SecondaryAction
 
 #### Properties
@@ -164,10 +156,6 @@ The content of the navigation component consists of navigation items. Each item 
 | icon               | IconProps['source']                                                                | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
 | onClick()          | function                                                                           | A callback function to handle clicking on a navigation item                                                                                             |
 | tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
-
-<a name="type-action"></a>
-
-<a name="type-rollup"></a>
 
 ### Navigation section rollup
 
@@ -181,8 +169,6 @@ Rollup allows items in a navigation section to roll up and be revealed when they
 | view       | string | A string property providing content for the section view action          |
 | hide       | string | A string property providing content for the section hide action          |
 | activePath | string | A string property representing the current URL of your application       |
-
-<a name="type-action"></a>
 
 ### Navigation section action
 

@@ -487,8 +487,8 @@ Headings should:
 Body content should:
 
 - Explain how to solve the problem.
-  - Use actionable language like “do x.” Don‘t use permissive language, like “you can x.” Be concise: no longer than 2 sentences.
-  - Use periods.
+- Use actionable language like “do x.” Don‘t use permissive language, like “you can x.” Be concise: no longer than 2 sentences.
+- Use periods.
 
 Calls to action should:
 
@@ -525,11 +525,11 @@ Don’t use when:
 
 - [Banner](/components/banner#navigation)
 
-Variant
+### Variant
 
 - Without title
 
-Content:
+### Content
 
 - The more contextual the message, the less you need to say, so go straight to explaining what happened and how to fix
 - Keep to one sentence
