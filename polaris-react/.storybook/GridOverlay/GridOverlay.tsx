@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import {useEventListener} from '../../src';
 import {classNames} from '../../src/utilities/css';
 import {useBreakpoints} from '../../src/utilities/breakpoints';
 
@@ -19,11 +18,6 @@ interface Props {
 
 export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
   const {lgUp} = useBreakpoints();
-  const [columns, setColumns] = useState(lgUp ? COLUMNS_LARGE : COLUMNS_SMALL);
-
-  const handleResize = () => setColumns(lgUp ? COLUMNS_LARGE : COLUMNS_SMALL);
-
-  useEventListener('resize', handleResize);
 
   const className = classNames('GridOverlay', inFrame && 'inFrame');
   const style = {
@@ -33,9 +27,11 @@ export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
 
   return (
     <div className={className} style={style}>
-      {[...Array(columns).keys()].map((key) => (
-        <div key={key} className="Cell" />
-      ))}
+      {Array.from({length: lgUp ? COLUMNS_LARGE : COLUMNS_SMALL}).map(
+        (_, index) => (
+          <div key={index} className="Cell" />
+        ),
+      )}
       {children}
     </div>
   );
