@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added new `Text` component
+Added new `Text` and `InlineCode` components
