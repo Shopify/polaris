@@ -13,9 +13,6 @@ keywords:
   - popup
   - iframe
   - duration
-  - ios
-  - android
-  - web
 examples:
   - fileName: toast-basic.tsx
     title: Basic toast

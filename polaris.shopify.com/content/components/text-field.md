@@ -40,8 +40,6 @@ keywords:
   - hidden labels
   - separate error message
   - icon action
-  - ios
-  - android
 examples:
   - fileName: text-field-default.tsx
     title: Default text field

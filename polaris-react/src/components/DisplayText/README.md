@@ -26,8 +26,6 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
-  - android
-  - ios
 ---
 
 # Display text

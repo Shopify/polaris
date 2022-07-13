@@ -24,8 +24,6 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 examples:
   - fileName: modal-basic.tsx
     title: Basic modal

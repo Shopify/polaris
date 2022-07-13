@@ -17,9 +17,6 @@ keywords:
   - popup
   - iframe
   - duration
-  - ios
-  - android
-  - web
 ---
 
 # Toast

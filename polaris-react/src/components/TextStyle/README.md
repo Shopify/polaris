@@ -22,8 +22,6 @@ keywords:
   - decrease
   - input
   - fields
-  - android
-  - ios
 ---
 
 # Text style

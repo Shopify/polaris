@@ -30,8 +30,6 @@ keywords:
   - short text fields
   - layout forms
   - layout input fields
-  - android
-  - ios
 ---
 
 # Form layout

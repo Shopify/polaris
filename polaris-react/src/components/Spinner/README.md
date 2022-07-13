@@ -11,8 +11,6 @@ keywords:
   - loader
   - loading
   - progress indicator
-  - android
-  - ios
 ---
 
 # Spinner

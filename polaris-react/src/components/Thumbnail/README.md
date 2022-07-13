@@ -13,8 +13,6 @@ keywords:
   - medium thumbnail
   - large thumbnail
   - image preview
-  - android
-  - ios
 ---
 
 # Thumbnail

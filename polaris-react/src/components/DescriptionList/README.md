@@ -15,8 +15,6 @@ keywords:
   - text lists
   - list of terms
   - term explaination
-  - android
-  - ios
 ---
 
 # Description list

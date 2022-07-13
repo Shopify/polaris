@@ -13,8 +13,6 @@ keywords:
   - titles of sub-sections
   - subsection titles
   - titles of subsections
-  - android
-  - ios
 ---
 
 # Subheading

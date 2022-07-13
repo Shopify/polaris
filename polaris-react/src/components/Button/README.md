@@ -24,8 +24,6 @@ keywords:
   - link
   - click
   - submit
-  - ios
-  - android
 ---
 
 # Button

@@ -21,8 +21,6 @@ keywords:
   - horizontal arrangement of buttons
   - stacked
   - segmented control
-  - ios
-  - android
 ---
 
 # Button group

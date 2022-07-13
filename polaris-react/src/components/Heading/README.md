@@ -17,8 +17,6 @@ keywords:
   - section headings
   - heading text
   - heading font
-  - android
-  - ios
 ---
 
 # Heading

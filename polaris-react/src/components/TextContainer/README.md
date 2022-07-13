@@ -14,8 +14,6 @@ keywords:
   - vertical
   - margin
   - padding
-  - android
-  - ios
 ---
 
 # Text container

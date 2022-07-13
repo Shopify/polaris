@@ -23,8 +23,6 @@ keywords:
   - popover with action list
   - popover with content and actions
   - action sheet
-  - ios
-  - android
 ---
 
 # Popover

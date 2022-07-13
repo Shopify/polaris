@@ -21,8 +21,6 @@ keywords:
   - business avatar
   - customer thumbnail
   - business thumbnail
-  - ios
-  - android
 ---
 
 # Avatar

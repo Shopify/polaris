@@ -19,8 +19,6 @@ keywords:
   - popover with action list
   - popover with content and actions
   - action sheet
-  - ios
-  - android
 examples:
   - fileName: popover-with-action-list.tsx
     title: Popover with action list
