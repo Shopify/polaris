@@ -268,7 +268,7 @@ export const contributingNavItems = [
       },
       {
         title: "Documentation",
-        url: "/contributing/documention",
+        url: "/contributing/documentation",
       },
     ],
   },

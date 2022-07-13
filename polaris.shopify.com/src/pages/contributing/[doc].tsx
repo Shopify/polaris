@@ -10,30 +10,23 @@ import Markdown from "../../components/Markdown";
 import PageMeta from "../../components/PageMeta";
 import { contributingNavItems } from "../../data/navItems";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import { MarkdownFile, QuickGuide } from "../../types";
+import { MarkdownFile } from "../../types";
 
 interface Props {
   readme: MarkdownFile["readme"];
   title: string;
-  quickGuides?: QuickGuide[];
-  path: string;
 }
 
 const contributingDirectory = path.join(process.cwd(), "content/contributing");
 
-const Contributing: NextPage<Props> = ({
-  readme,
-  title,
-  quickGuides,
-  path,
-}: Props) => {
+const Contributing: NextPage<Props> = ({ readme, title }: Props) => {
   return (
     <Container>
       <Layout navItems={contributingNavItems}>
         <PageMeta title={title} />
 
         <Longform>
-          <Markdown text={readme} frontMatter={{ quickGuides, path }} />
+          <Markdown text={readme} />
         </Longform>
       </Layout>
     </Container>
@@ -51,14 +44,10 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, "utf-8");
     const { readme, frontMatter }: MarkdownFile = parseMarkdown(markdown);
-
-    const { quickGuides = "", name: title = "", path = "" } = frontMatter;
-
+    const { name: title = "" } = frontMatter;
     const props: Props = {
       title,
       readme,
-      quickGuides,
-      path,
     };
 
     return { props };

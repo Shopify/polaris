@@ -5,17 +5,13 @@ import React from "react";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { slugify } from "../../utils/various";
-import { MarkdownFile } from "../../types";
-
-import QuickStartGuide from "../QuickStartGuide";
 
 interface Props {
   text: string;
   skipH1?: boolean;
-  frontMatter?: MarkdownFile["frontMatter"];
 }
 
-function Markdown({ text, skipH1, frontMatter }: Props) {
+function Markdown({ text, skipH1 }: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, { tablePipeAlign: true }]]}
@@ -53,15 +49,11 @@ function Markdown({ text, skipH1, frontMatter }: Props) {
               }}
             ></span>
           ),
-        table: ({ children }) => {
-          return frontMatter && frontMatter.quickGuides ? (
-            <QuickStartGuide data={frontMatter.quickGuides} />
-          ) : (
-            <div className="table-wrapper">
-              <table>{children}</table>
-            </div>
-          );
-        },
+        table: ({ children }) => (
+          <div className="table-wrapper">
+            <table>{children}</table>
+          </div>
+        ),
       }}
     >
       {text}
