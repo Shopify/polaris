@@ -30,8 +30,8 @@ export interface TextStyleProps {
 
 /**
  * @deprecated The TextStyle component will be removed in the next
- * major version. Use the Text componant instead. See the
- * Polaris componant guide on how to use Text.
+ * major version. Use the Text component instead. See the
+ * Polaris component guide on how to use Text.
  *
  * https://polaris.shopify.com/components/text
  */
@@ -44,7 +44,7 @@ export function TextStyle({variation, children}: TextStyleProps) {
   if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
     console.warn(
-      'Deprecation: The `TextStyle` component has been deprecated. Use the `Text` componant instead. See the Polaris componant guide on how to use `Text`. https://polaris.shopify.com/components/text',
+      'Deprecation: The `TextStyle` component has been deprecated. Use the `Text` component instead. See the Polaris component guide on how to use `Text`. https://polaris.shopify.com/components/text',
     );
   }
 
