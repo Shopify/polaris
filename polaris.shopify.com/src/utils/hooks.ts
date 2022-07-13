@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { slugify } from "./various";
 
 const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
 

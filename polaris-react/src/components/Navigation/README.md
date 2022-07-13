@@ -14,13 +14,13 @@ keywords:
 
 # Navigation
 
-The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
 
 ---
 
 ## Required components
 
-The navigation component must be passed to the [frame](https://polaris.shopify.com/components/structure/frame) component. The mobile version of the navigation component appears in the [top bar](https://polaris.shopify.com/components/structure/top-bar) component.
+The navigation component must be passed to the [frame](https://polaris.shopify.com/components/frame) component. The mobile version of the navigation component appears in the [top bar](https://polaris.shopify.com/components/top-bar) component.
 
 ---
 
@@ -149,13 +149,13 @@ The content of the navigation component consists of navigation items. Each item 
 
 #### Properties
 
-| Prop               | Type                                                                               | Description                                                                                                                                             |
-| ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url                | string                                                                             | A location for the navigation item to navigate to when clicked                                                                                          |
-| accessibilityLabel | string                                                                             | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
-| icon               | IconProps['source']                                                                | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
-| onClick()          | function                                                                           | A callback function to handle clicking on a navigation item                                                                                             |
-| tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
+| Prop               | Type                                                                      | Description                                                                                                                                             |
+| ------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                | string                                                                    | A location for the navigation item to navigate to when clicked                                                                                          |
+| accessibilityLabel | string                                                                    | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
+| icon               | IconProps['source']                                                       | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
+| onClick()          | function                                                                  | A callback function to handle clicking on a navigation item                                                                                             |
+| tooltip            | [TooltipProps](https://polaris.shopify.com/components/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
 
 ### Navigation section rollup
 
@@ -176,12 +176,12 @@ Action allows a complementary icon-only action to render next to the section tit
 
 #### Action properties
 
-| Prop               | Type                                                                               | Description                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| icon               | IconProps['source']                                                                | An icon to be displayed as the content of the action                               |
-| accessibilityLabel | string                                                                             | A visually hidden label for screen readers to understand the content of the action |
-| onClick()          | function                                                                           | A callback function to handle clicking on the action                               |
-| tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button             |
+| Prop               | Type                                                                      | Description                                                                        |
+| ------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| icon               | IconProps['source']                                                       | An icon to be displayed as the content of the action                               |
+| accessibilityLabel | string                                                                    | A visually hidden label for screen readers to understand the content of the action |
+| onClick()          | function                                                                  | A callback function to handle clicking on the action                               |
+| tooltip            | [TooltipProps](https://polaris.shopify.com/components/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button             |
 
 ---
 
@@ -189,7 +189,7 @@ Action allows a complementary icon-only action to render next to the section tit
 
 ### Basic navigation
 
-Use to present a navigation menu in the [frame](https://polaris.shopify.com/components/structure/frame).
+Use to present a navigation menu in the [frame](https://polaris.shopify.com/components/frame).
 
 ```jsx
 <Frame>
@@ -720,10 +720,10 @@ This example shows how to use the shouldResizeIcon prop when using Major icons
 
 ## Related components
 
-- To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](https://polaris.shopify.com/components/structure/frame) component.
-- To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](https://polaris.shopify.com/components/structure/frame) component to reflect an application’s brand, use the [top bar](https://polaris.shopify.com/components/structure/top-bar) component.
-- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.
-- To alternate among related views within the same context, use the [tabs](https://polaris.shopify.com/components/navigation/tabs) component.
-- To embed a single action or link within a larger span of text, use the [link](https://polaris.shopify.com/components/navigation/link) component.
+- To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](https://polaris.shopify.com/components/frame) component.
+- To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](https://polaris.shopify.com/components/frame) component to reflect an application’s brand, use the [top bar](https://polaris.shopify.com/components/top-bar) component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/loading) component.
+- To alternate among related views within the same context, use the [tabs](https://polaris.shopify.com/components/tabs) component.
+- To embed a single action or link within a larger span of text, use the [link](https://polaris.shopify.com/components/link) component.

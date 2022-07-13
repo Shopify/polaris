@@ -35,12 +35,12 @@ Show static display text that that never changes on a page. For example, keep pa
 #### Do
 
 Show actual display text for static content and use skeleton display text for dynamic content.
-![Image showing skeleton display text for dynamic content](/public_images/skeleton/do-show-display-text-for-static-content@2x.png)
+![Image showing skeleton display text for dynamic content](/images/components/skeleton-display-text/do-show-display-text-for-static-content@2x.png)
 
 #### Don’t
 
 Use skeleton display text for static content or placeholder content for dynamic content.
-![Image showing skeleton display text for static content and placeholder text for dynamic content](/public_images/skeleton/dont-use-skeleton-for-static-or-placeholder-content-for-dynamic@2x.png)
+![Image showing skeleton display text for static content and placeholder text for dynamic content](/images/components/skeleton-display-text/dont-use-skeleton-for-static-or-placeholder-content-for-dynamic@2x.png)
 
 <!-- end -->
 
@@ -50,7 +50,7 @@ Use skeleton display text for static content or placeholder content for dynamic 
 
 Show skeleton display text for dynamic page titles.
 
-![Image showing skeleton display text for dynamic page title](/public_images/skeleton/do-use-skeleton-for-dynamic-page-titles@2x.png)
+![Image showing skeleton display text for dynamic page title](/images/components/skeleton-display-text/do-use-skeleton-for-dynamic-page-titles@2x.png)
 
 <!-- end -->
 
@@ -86,5 +86,5 @@ Use this component to represent small display text such as content headings.
 
 ## Related components
 
-- Use this component with [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
-- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) or [Spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) component.
+- Use this component with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) to represent the content of a page before it’s loaded.
+- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/progress-bar) or [Spinner](https://polaris.shopify.com/components/spinner) component.

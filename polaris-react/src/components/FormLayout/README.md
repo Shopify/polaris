@@ -1,10 +1,6 @@
 ---
 name: Form layout
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - FormLayout
   - Group
@@ -30,8 +26,6 @@ keywords:
   - short text fields
   - layout forms
   - layout input fields
-  - android
-  - ios
 ---
 
 # Form layout
@@ -158,4 +152,4 @@ For very short inputs, the width of the inputs may be reduced in order to fit mo
 
 ## Related components
 
-- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/layout)

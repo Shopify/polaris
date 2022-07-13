@@ -16,7 +16,7 @@ A Listbox is a vertical list of interactive options, with room for icons, descri
 
 ## Anatomy
 
-![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/public_images/components/Listbox/listbox-anatomy.png)
+![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/listbox/listbox-anatomy.png)
 
 A listbox can be composed of:
 
@@ -148,8 +148,8 @@ function ListboxWithCustomElementExample() {
 
 ## Related components
 
-- For a text field and popover container, [use the combobox component](https://polaris.shopify.com/components/forms/combobox)
-- [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete) can be used as a convenience wrapper in lieu of Combobox and Listbox.
+- For a text field and popover container, [use the combobox component](https://polaris.shopify.com/components/combobox)
+- [Autocomplete](https://polaris.shopify.com/components/autocomplete) can be used as a convenience wrapper in lieu of Combobox and Listbox.
 
 ---
 

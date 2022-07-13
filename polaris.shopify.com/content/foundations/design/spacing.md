@@ -34,7 +34,7 @@ All spacing for components and typography is done in increments of 4 pixels. Thi
 
 <!-- centeredcontent -->
 
-![The mobile interface of the Shopify admin on a 4 pixel grid.](/public_images/design/spacing/spacing-4px-grid@2x.png)
+![The mobile interface of the Shopify admin on a 4 pixel grid.](/images/foundations/design/spacing/spacing-4px-grid@2x.png)
 
 ### 4px grid
 
@@ -44,7 +44,7 @@ Typography doesn’t use a traditional baseline grid. Instead, line heights are 
 
 <!-- centeredcontent -->
 
-![A profile card component on a 4 pixel grid with text placed vertically at 20 pixel intervals](/public_images/design/spacing/spacing-20px-elements@2x.png)
+![A profile card component on a 4 pixel grid with text placed vertically at 20 pixel intervals](/images/foundations/design/spacing/spacing-20px-elements@2x.png)
 
 Many components are sized in increments of 20px to match the line height of body text. This makes it easy to create harmonious arrangements of components and&nbsp;text.
 
@@ -69,17 +69,17 @@ Various components within Polaris enable automatic spacing between elements:
 
 <!-- centeredcontent -->
 
-![Several paragraphs of text with space in between, with their edges and spacing highlighted](/public_images/design/spacing/spacing-text-container@2x.png)
+![Several paragraphs of text with space in between, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-text-container@2x.png)
 
-Use the [text container](/components/titles-and-text/text-container) component to wrap and automatically add the correct spacing between a set of paragraphs, lists, or other textual components.
+Use the [text container](/components/text-container) component to wrap and automatically add the correct spacing between a set of paragraphs, lists, or other textual components.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![A text label, text value and badge arranged in a row, with their edges and spacing highlighted](/public_images/design/spacing/spacing-stack@2x.png)
+![A text label, text value and badge arranged in a row, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-stack@2x.png)
 
-The [stack](/components/structure/stack) component can be used to arrange arbitrary components in a horizontal row or vertical stack with space in between. It accepts the same values as the Sass spacing function to control spacing between the items.
+The [stack](/components/stack) component can be used to arrange arbitrary components in a horizontal row or vertical stack with space in between. It accepts the same values as the Sass spacing function to control spacing between the items.
 
 <!-- end -->
 
@@ -91,7 +91,7 @@ The [stack](/components/structure/stack) component can be used to arrange arbitr
 
 Use less space between small components, or components that share a close functional&nbsp;relationship.
 
-![Two text fields showing spacing within and between them](/public_images/design/spacing/spacing-less-space@2x.png)
+![Two text fields showing spacing within and between them](/images/foundations/design/spacing/spacing-less-space@2x.png)
 
 <!-- end -->
 
@@ -99,7 +99,7 @@ Use less space between small components, or components that share a close functi
 
 Use less space between small components, or components that share a close functional&nbsp;relationship.
 
-![Detail of a screen from Shopify admin, showing space between the page header and cards, between the cards, and the space around the layout](/public_images/design/spacing/spacing-more-space@2x.png)
+![Detail of a screen from Shopify admin, showing space between the page header and cards, between the cards, and the space around the layout](/images/foundations/design/spacing/spacing-more-space@2x.png)
 
 <!-- end -->
 
@@ -114,39 +114,39 @@ The most common spacing sizes are used throughout Polaris for admin as follows:
 
 <!-- centeredcontent -->
 
-![Space between icon and text in buttons and list items](/public_images/design/spacing/spacing-extra-tight@2x.png)
+![Space between icon and text in buttons and list items](/images/foundations/design/spacing/spacing-extra-tight@2x.png)
 
 **4px** (`extra-tight`) between icon and text.
 
-The [button](/components/actions/button) component has this spacing built in.
+The [button](/components/button) component has this spacing built in.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![Two buttons in a row, with annotation showing the space between](/public_images/design/spacing/spacing-tight@2x.png)
+![Two buttons in a row, with annotation showing the space between](/images/foundations/design/spacing/spacing-tight@2x.png)
 
 **8px** (`tight`) between icon and text.
 
-The [button group](/components/actions/button-group) component has this spacing built in.
+The [button group](/components/button-group) component has this spacing built in.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![A form showing horizontal and vertical space between text fields](/public_images/design/spacing/spacing-base-forms@2x.png)
+![A form showing horizontal and vertical space between text fields](/images/foundations/design/spacing/spacing-base-forms@2x.png)
 
 16 or 20px between form fields.
 
 **16px** (`base`) vertically, **20px** (`loose`) horizontally.
 
-The [form layout](/components/forms/form-layout) component has this spacing built in.
+The [form layout](/components/form-layout) component has this spacing built in.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![Detail of a card component from a large screen display, showing padding on the top, sides and between card sections](/public_images/design/spacing/spacing-loose-forms@2x.png)
+![Detail of a card component from a large screen display, showing padding on the top, sides and between card sections](/images/foundations/design/spacing/spacing-loose-forms@2x.png)
 
 **20px** (`loose`) padding in cards.
 
@@ -154,21 +154,21 @@ The [form layout](/components/forms/form-layout) component has this spacing buil
 
 <!-- centeredcontent -->
 
-![Detail of a card on a small screen, showing reduced side padding](/public_images/design/spacing/spacing-loose-mobile@2x.png)
+![Detail of a card on a small screen, showing reduced side padding](/images/foundations/design/spacing/spacing-loose-mobile@2x.png)
 
 **16px** (`base`) side padding on small screen.
 
-The [card](/components/structure/card) component has this built in.
+The [card](/components/card) component has this built in.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![Detail of a screen from the Shopify admin, showing horizontal and vertical spacing between cards](/public_images/design/spacing/spacing-loose-between-cards@2x.png)
+![Detail of a screen from the Shopify admin, showing horizontal and vertical spacing between cards](/images/foundations/design/spacing/spacing-loose-between-cards@2x.png)
 
 **20px** (`loose`) between cards
 
-The The [card](/components/structure/card) component automatically adds vertical space between it and any preceding card.
+The The [card](/components/card) component automatically adds vertical space between it and any preceding card.
 
 For horizontal spacing, use the [layout](/components/layout) component to create multi-column layouts.
 
@@ -182,7 +182,7 @@ In cases where minute alignment adjustments are necessary, some exceptions apply
 
 <!-- centeredcontent -->
 
-![Closeup of a badge component, showing how its internal padding can be arbitrary, but its height is a multiple of 4px and the text within is vertically centered](/public_images/design/spacing/spacing-exception-badge@2x.png)
+![Closeup of a badge component, showing how its internal padding can be arbitrary, but its height is a multiple of 4px and the text within is vertically centered](/images/foundations/design/spacing/spacing-exception-badge@2x.png)
 
 When text is vertically centered inside a component, the top and bottom padding can be any size.
 
@@ -190,7 +190,7 @@ When text is vertically centered inside a component, the top and bottom padding 
 
 <!-- centeredcontent -->
 
-![Three buttons in a row, showing how their width depends on their text content](/public_images/design/spacing/spacing-text-width@2x.png)
+![Three buttons in a row, showing how their width depends on their text content](/images/foundations/design/spacing/spacing-text-width@2x.png)
 
 Allow the length of text to determine the width of components and where they fall horizontally when placed in a row.
 
@@ -198,7 +198,7 @@ Allow the length of text to determine the width of components and where they fal
 
 <!-- centeredcontent -->
 
-![Diagram of a button with optical adjustment for an icon](/public_images/design/spacing/spacing-optical-adjustment@2x.png)
+![Diagram of a button with optical adjustment for an icon](/images/foundations/design/spacing/spacing-optical-adjustment@2x.png)
 
 ### Optical adjustment
 

@@ -143,5 +143,5 @@ Use to create a layout that can be customized at specific breakpoints.
 
 ## Related components
 
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/structure/stack)
-- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/stack)
+- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

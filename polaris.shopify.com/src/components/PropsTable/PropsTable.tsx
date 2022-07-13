@@ -6,7 +6,7 @@ interface Props {
   props: PropsForComponent;
 }
 
-function PropsTable({ props: { interfaceName, props } }: Props) {
+function PropsTable({ props: { props } }: Props) {
   const feedbackTitle = "[polaris.shopify.com] Props table feedback";
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle

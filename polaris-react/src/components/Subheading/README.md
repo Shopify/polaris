@@ -1,10 +1,6 @@
 ---
 name: Subheading
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - title bar
   - top-level
@@ -13,8 +9,6 @@ keywords:
   - titles of sub-sections
   - subsection titles
   - titles of subsections
-  - android
-  - ios
 ---
 
 # Subheading
@@ -29,7 +23,7 @@ Subheadings should:
 
 - Be used to explain and clearly label logical groups in existing sections of a page
 - Not be used without a parent heading
-- Not be used in tables or list items, such as for the primary content in a [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list)
+- Not be used in tables or list items, such as for the primary content in a [resource list](https://polaris.shopify.com/components/resource-list)
 
 ---
 
@@ -53,7 +47,7 @@ Used for the title of any sub-sections in top-level page sections.
 
 ## Related components
 
-- To break up major sections of a page with a title, [use the heading component](https://polaris.shopify.com/components/titles-and-text/heading)
+- To break up major sections of a page with a title, [use the heading component](https://polaris.shopify.com/components/heading)
 
 ---
 

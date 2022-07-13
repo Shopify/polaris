@@ -1,10 +1,6 @@
 ---
 name: Radio button
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RadioButton
   - selection
@@ -133,10 +129,10 @@ function RadioButtonExample() {
 
 ## Related components
 
-- To make simple lists of radio buttons easier to build, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- For long lists of options, [consider the select component](https://polaris.shopify.com/components/forms/select) to avoid overwhelming merchants
-- To present merchants with a list of checkboxes, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list) with the “allow multiple” option
-- To display non-interactive list of related content, [use the content list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To make simple lists of radio buttons easier to build, [use the choice list component](https://polaris.shopify.com/components/choice-list)
+- For long lists of options, [consider the select component](https://polaris.shopify.com/components/select) to avoid overwhelming merchants
+- To present merchants with a list of checkboxes, [use the choice list component](https://polaris.shopify.com/components/choice-list) with the “allow multiple” option
+- To display non-interactive list of related content, [use the content list component](https://polaris.shopify.com/components/list)
 
 ---
 

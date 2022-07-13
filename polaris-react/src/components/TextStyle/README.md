@@ -1,10 +1,6 @@
 ---
 name: Text style
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - TextStyle
   - typographic
@@ -22,8 +18,6 @@ keywords:
   - decrease
   - input
   - fields
-  - android
-  - ios
 ---
 
 # Text style

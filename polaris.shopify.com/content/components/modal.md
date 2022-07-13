@@ -24,8 +24,6 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 examples:
   - fileName: modal-basic.tsx
     title: Basic modal
@@ -54,12 +52,6 @@ examples:
     title: Modal with activator ref
   - fileName: modal-without-an-activator-prop.tsx
     title: Modal without an activator prop
-  # - fileName: modal-warning.tsx
-  #   title: Warning modal
-  #   description: >-
-  #     Use to make it clear to the merchant that the action is potentially
-  #     dangerous. Only use this option when the merchant is about to perform an
-  #     action that can’t be undone or is difficult to undo.
 ---
 
 # Modal
@@ -202,12 +194,12 @@ Tertiary actions should:
 #### Do
 
 - Use a plain button for a tertiary action if needed
-  ![Screenshot of modal with a plain button as a tertiary action](/public_images/components/Modal/do-use-plain-button-for-tertiary-action@2x.png)
+  ![Screenshot of modal with a plain button as a tertiary action](/images/components/modal/do-use-plain-button-for-tertiary-action@2x.png)
 
 #### Don’t
 
 - Use a tertiary action for a destructive action
-  ![Screenshot of modal with a destructive button as a tertiary action](/public_images/components/Modal/dont-use-destructive-tertiary-action@2x.png)
+  ![Screenshot of modal with a destructive button as a tertiary action](/images/components/modal/dont-use-destructive-tertiary-action@2x.png)
 
 <!-- end -->
 

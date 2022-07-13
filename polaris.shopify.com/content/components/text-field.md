@@ -40,8 +40,6 @@ keywords:
   - hidden labels
   - separate error message
   - icon action
-  - ios
-  - android
 examples:
   - fileName: text-field-default.tsx
     title: Default text field
@@ -115,12 +113,6 @@ examples:
       field. If inputting weight as a number and a separate unit of
       measurement, use a text field with a selector (like “kg” or “lb”) as a
       connected field.
-  # - fileName: text-field-with-icon-action.tsx
-  #   title: Text field with icon action
-  #   description: >-
-  #     Use to let merchants take an action within the text field.For example, tap
-  #     on a barcode icon to launch the camera and scan barcode for the barcode
-  #     field. This helps merchants simplify their input.
   - fileName: text-field-with-validation-error.tsx
     title: Text field with validation error
     description: >-

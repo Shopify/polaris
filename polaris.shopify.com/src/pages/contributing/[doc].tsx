@@ -2,7 +2,6 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import fs from "fs";
 import path from "path";
 import glob from "glob";
-import Head from "next/head";
 
 import Layout from "../../components/Layout";
 import Longform from "../../components/Longform";
@@ -16,8 +15,6 @@ interface Props {
   readme: MarkdownFile["readme"];
   title: string;
 }
-
-const contributingDirectory = path.join(process.cwd(), "content/contributing");
 
 const Contributing: NextPage<Props> = ({ readme, title }: Props) => {
   return (

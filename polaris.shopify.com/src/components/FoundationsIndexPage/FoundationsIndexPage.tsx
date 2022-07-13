@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { foundationsNavItems } from "../../data/navItems";
 import styles from "./FoundationsIndexPage.module.scss";
 import Link from "next/link";
