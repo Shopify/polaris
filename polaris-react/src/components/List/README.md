@@ -1,10 +1,6 @@
 ---
 name: List
 category: Lists and tables
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - bulleted lists
   - numbered lists
@@ -12,8 +8,6 @@ keywords:
   - list items
   - text lists
   - text-only lists
-  - ios
-  - android
 ---
 
 # List
@@ -109,9 +103,9 @@ Use for a text-only list of related items when an inherent order, priority, or s
 
 ## Related components
 
-- To create a list of checkboxes or radio buttons, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list)
-- When text labels for each item are useful for describing the content, [use the Description List component](https://polaris.shopify.com/components/lists-and-tables/description-list)
+- To create a list of checkboxes or radio buttons, [use the choice list component](https://polaris.shopify.com/components/choice-list)
+- To present a collection of objects of the same type such as customers, products, or orders, [use the resource list component](https://polaris.shopify.com/components/resource-list)
+- When text labels for each item are useful for describing the content, [use the Description List component](https://polaris.shopify.com/components/description-list)
 
 ---
 
@@ -119,4 +113,4 @@ Use for a text-only list of related items when an inherent order, priority, or s
 
 The list component outputs list items (`<li>`) inside a list wrapper (`<ul>` for bullet lists or `<ol>` for numbered lists). By default, list items are conveyed as a group of related elements to assistive technology users.
 
-To group items for layout only, consider using the [stack component](https://polaris.shopify.com/components/structure/stack).
+To group items for layout only, consider using the [stack component](https://polaris.shopify.com/components/stack).

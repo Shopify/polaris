@@ -9,7 +9,6 @@ keywords:
   - overlay
   - drawer
   - dialog
-  - web
 fullSizeExamples: true
 status:
   value: Deprecated

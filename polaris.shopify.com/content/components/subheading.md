@@ -9,8 +9,6 @@ keywords:
   - titles of sub-sections
   - subsection titles
   - titles of subsections
-  - android
-  - ios
 examples:
   - fileName: subheading-typographic.tsx
     title: Typographic subheading

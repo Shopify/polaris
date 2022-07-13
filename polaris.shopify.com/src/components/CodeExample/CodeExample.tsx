@@ -1,6 +1,4 @@
-import Image from "../Image";
 import Tooltip from "../Tooltip";
-import iconClipboard from "../../../public/icon-clipboard.svg";
 import Prism from "prismjs";
 import { useCopyToClipboard } from "../../utils/hooks";
 import styles from "./CodeExample.module.scss";

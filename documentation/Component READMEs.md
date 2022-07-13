@@ -14,10 +14,6 @@ A component README starts with metadata (in YAML), followed by the component nam
 ---
 name: ComponentName
 category: Category # for example: “Actions”
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - keywords are useful
   - for improving search results

@@ -22,8 +22,6 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
-  - android
-  - ios
 examples:
   - fileName: display-text-extra-large.tsx
     title: Extra large

@@ -1,17 +1,16 @@
 @import "../../styles/mixins.scss";
 
 .CodeExample {
-  line-height: 1.4;
   border-radius: var(--border-radius-400);
   max-width: calc(100vw - 1.5rem);
+  cursor: text;
 
   @include dark-mode {
     box-shadow: var(--card-shadow);
   }
 
   &.minimalist {
-    box-shadow: none;
-    border: 1px solid var(--border-color-light);
+    box-shadow: 0 0 0 1px var(--border-color-light);
 
     .CopyButton svg {
       filter: brightness(-500%);
@@ -39,16 +38,21 @@
   position: absolute;
   padding: 0.5rem;
   background: transparent;
-  opacity: 0.5;
+  opacity: 0.2;
   border-radius: var(--border-radius-200);
+  transition: opacity 0.1s linear;
+
+  .CodeExample:hover & {
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 
   svg {
     width: 16px;
     height: 16px;
-  }
-
-  &:hover {
-    opacity: 1;
   }
 
   &:focus-visible {
@@ -58,8 +62,7 @@
 }
 
 .Code {
-  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-    Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   white-space: pre;
   padding: 0.5rem 0.66rem;
   font-size: 14px;
@@ -68,8 +71,8 @@
 }
 
 .CodeExample.minimalist .Code {
-  font-size: 12px;
-  line-height: 1.4;
+  font-size: var(--font-size-50);
+  line-height: 1.45;
 }
 
 .LineNumber {

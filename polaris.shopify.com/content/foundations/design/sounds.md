@@ -12,7 +12,7 @@ We use sound to communicate information and to enhance how merchants experience 
 
 <!-- showcasecontent -->
 
-![Visual representation of sound waves as concentric circles](/public_images/design/sound/sound-intro@2x.png)
+![Visual representation of sound waves as concentric circles](/images/foundations/design/sounds/sound-intro@2x.png)
 
 <!-- end -->
 
@@ -82,8 +82,3 @@ Be creative and intentional with your sound design. And remember:
   - A quieter version for mobile applications where the speakers are smaller and may distort more easily.
 
 Design sounds with as much intentionality as other design aspects of Shopify’s products.
-
-<div class="NextPage">
-Next<br/>
-<a href="/design/icons#navigation">Icons</a>
-</div>

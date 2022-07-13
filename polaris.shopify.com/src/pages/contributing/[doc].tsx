@@ -2,14 +2,13 @@ import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import fs from "fs";
 import path from "path";
 import glob from "glob";
-import Head from "next/head";
 
 import Layout from "../../components/Layout";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
+import PageMeta from "../../components/PageMeta";
 import { contributingNavItems } from "../../data/navItems";
 import { parseMarkdown } from "../../utils/markdown.mjs";
-import { getTitleTagValue } from "../../utils/various";
 import { MarkdownFile } from "../../types";
 
 interface Props {
@@ -17,15 +16,10 @@ interface Props {
   title: string;
 }
 
-const contributingDirectory = path.join(process.cwd(), "content/contributing");
-
 const Contributing: NextPage<Props> = ({ readme, title }: Props) => {
   return (
     <Layout navItems={contributingNavItems}>
-      <Head>
-        <title>{getTitleTagValue(title)}</title>
-      </Head>
-
+      <PageMeta title={title} />
       <Longform>
         <Markdown text={readme} />
       </Longform>
