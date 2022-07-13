@@ -39,7 +39,7 @@ describe('useFocusManager', () => {
         </UniqueIdFactoryContext.Provider>,
       );
     expect(attemptMount).toThrow(
-      'No FocusManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
+      'No FocusManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
     );
   });
 });

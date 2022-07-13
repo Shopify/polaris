@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Render component notices on the website
+Remove legacy keywords from component documentation

@@ -1,10 +1,6 @@
 ---
 name: Modal
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - modal
   - src
@@ -28,8 +24,6 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 ---
 
 # Modal
@@ -742,9 +736,9 @@ function ModalExample() {
 
 ## Related components
 
-- To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](https://polaris.shopify.com/components/behavior/collapsible) to expand content in place within the page
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/overlays/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
+- To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](https://polaris.shopify.com/components/collapsible) to expand content in place within the page
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/banner)
 
 ---
 

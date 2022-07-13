@@ -104,6 +104,7 @@ function IndexTableBase({
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
   const [hideScrollContainer, setHideScrollContainer] =
     useState<boolean>(false);
+  const [smallScreen, setSmallScreen] = useState(isSmallScreen());
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -250,6 +251,10 @@ function IndexTableBase({
     handleCanScrollRight();
   }, [handleCanScrollRight]);
 
+  const handleIsSmallScreen = useCallback(() => {
+    setSmallScreen(smallScreen);
+  }, [smallScreen]);
+
   const handleResize = useCallback(() => {
     // hide the scrollbar when resizing
     scrollBarElement.current?.style.setProperty(
@@ -260,7 +265,13 @@ function IndexTableBase({
     resizeTableHeadings();
     debounceResizeTableScrollbar();
     handleCanScrollRight();
-  }, [debounceResizeTableScrollbar, resizeTableHeadings, handleCanScrollRight]);
+    handleIsSmallScreen();
+  }, [
+    resizeTableHeadings,
+    debounceResizeTableScrollbar,
+    handleCanScrollRight,
+    handleIsSmallScreen,
+  ]);
 
   const handleScrollContainerScroll = useCallback(
     (canScrollLeft, canScrollRight) => {
@@ -467,7 +478,7 @@ function IndexTableBase({
             <div className={bulkActionClassNames} data-condensed={condensed}>
               {loadingMarkup}
               <BulkActions
-                smallScreen={condensed}
+                smallScreen={smallScreen}
                 label={i18n.translate('Polaris.IndexTable.selected', {
                   selectedItemsCount: selectedItemsCountLabel,
                 })}

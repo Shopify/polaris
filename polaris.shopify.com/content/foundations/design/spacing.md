@@ -71,7 +71,7 @@ Various components within Polaris enable automatic spacing between elements:
 
 ![Several paragraphs of text with space in between, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-text-container@2x.png)
 
-Use the [text container](/components/titles-and-text/text-container) component to wrap and automatically add the correct spacing between a set of paragraphs, lists, or other textual components.
+Use the [text container](/components/text-container) component to wrap and automatically add the correct spacing between a set of paragraphs, lists, or other textual components.
 
 <!-- end -->
 
@@ -79,7 +79,7 @@ Use the [text container](/components/titles-and-text/text-container) component t
 
 ![A text label, text value and badge arranged in a row, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-stack@2x.png)
 
-The [stack](/components/structure/stack) component can be used to arrange arbitrary components in a horizontal row or vertical stack with space in between. It accepts the same values as the Sass spacing function to control spacing between the items.
+The [stack](/components/stack) component can be used to arrange arbitrary components in a horizontal row or vertical stack with space in between. It accepts the same values as the Sass spacing function to control spacing between the items.
 
 <!-- end -->
 
@@ -118,7 +118,7 @@ The most common spacing sizes are used throughout Polaris for admin as follows:
 
 **4px** (`extra-tight`) between icon and text.
 
-The [button](/components/actions/button) component has this spacing built in.
+The [button](/components/button) component has this spacing built in.
 
 <!-- end -->
 
@@ -128,7 +128,7 @@ The [button](/components/actions/button) component has this spacing built in.
 
 **8px** (`tight`) between icon and text.
 
-The [button group](/components/actions/button-group) component has this spacing built in.
+The [button group](/components/button-group) component has this spacing built in.
 
 <!-- end -->
 
@@ -140,7 +140,7 @@ The [button group](/components/actions/button-group) component has this spacing 
 
 **16px** (`base`) vertically, **20px** (`loose`) horizontally.
 
-The [form layout](/components/forms/form-layout) component has this spacing built in.
+The [form layout](/components/form-layout) component has this spacing built in.
 
 <!-- end -->
 
@@ -158,7 +158,7 @@ The [form layout](/components/forms/form-layout) component has this spacing buil
 
 **16px** (`base`) side padding on small screen.
 
-The [card](/components/structure/card) component has this built in.
+The [card](/components/card) component has this built in.
 
 <!-- end -->
 
@@ -168,7 +168,7 @@ The [card](/components/structure/card) component has this built in.
 
 **20px** (`loose`) between cards
 
-The The [card](/components/structure/card) component automatically adds vertical space between it and any preceding card.
+The The [card](/components/card) component automatically adds vertical space between it and any preceding card.
 
 For horizontal spacing, use the [layout](/components/layout) component to create multi-column layouts.
 

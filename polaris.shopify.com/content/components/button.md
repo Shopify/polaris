@@ -20,8 +20,6 @@ keywords:
   - link
   - click
   - submit
-  - ios
-  - android
 examples:
   - fileName: button-basic.tsx
     title: Basic button

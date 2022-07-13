@@ -258,15 +258,6 @@ function parseCodeExamples(data) {
 }
 
 function generateExamples(matter) {
-  if (matter.data.platforms && !matter.data.platforms.includes('web')) {
-    const ignoredPlatforms = matter.data.platforms.join(',');
-    console.log(
-      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (platforms: ${ignoredPlatforms})}`,
-    );
-
-    return [];
-  }
-
   if (matter.data.hidePlayground) {
     console.log(
       chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (hidePlayground: true)}`,

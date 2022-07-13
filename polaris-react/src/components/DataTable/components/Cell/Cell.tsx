@@ -1,5 +1,5 @@
 import React, {FocusEventHandler, useState} from 'react';
-import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -102,7 +102,8 @@ export function Cell({
   const iconClassName = classNames(sortable && styles.Icon);
   const direction =
     sorted && sortDirection ? sortDirection : defaultSortDirection;
-  const source = direction === 'descending' ? CaretDownMinor : CaretUpMinor;
+  const source =
+    direction === 'descending' ? SortDescendingMajor : SortAscendingMajor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 

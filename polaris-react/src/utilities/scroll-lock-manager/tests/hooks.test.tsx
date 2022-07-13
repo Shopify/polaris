@@ -29,7 +29,7 @@ describe('useScrollLockManager', () => {
   it('throws an error if context is not set', () => {
     const attemptMount = () => mount(<Component />);
     expect(attemptMount).toThrow(
-      'No ScrollLockManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
+      'No ScrollLockManager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
     );
   });
 });

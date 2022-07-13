@@ -13,8 +13,6 @@ keywords:
   - section headings
   - heading text
   - heading font
-  - android
-  - ios
 examples:
   - fileName: heading-typographic.tsx
     title: Typographic heading

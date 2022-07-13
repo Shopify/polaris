@@ -24,8 +24,6 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 examples:
   - fileName: modal-basic.tsx
     title: Basic modal
@@ -54,12 +52,6 @@ examples:
     title: Modal with activator ref
   - fileName: modal-without-an-activator-prop.tsx
     title: Modal without an activator prop
-  # - fileName: modal-warning.tsx
-  #   title: Warning modal
-  #   description: >-
-  #     Use to make it clear to the merchant that the action is potentially
-  #     dangerous. Only use this option when the merchant is about to perform an
-  #     action that can’t be undone or is difficult to undo.
 ---
 
 # Modal

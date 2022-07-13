@@ -1,7 +1,11 @@
 import Image from "../Image";
 import Link from "next/link";
 import { SearchResultItem } from "../../types";
-import { className, slugify } from "../../utils/various";
+import {
+  className,
+  getReadableStatusValue,
+  slugify,
+} from "../../utils/various";
 import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
 import StatusBadge from "../StatusBadge";
@@ -57,7 +61,12 @@ function ComponentGridItem({
               {status && (
                 <>
                   {" "}
-                  <StatusBadge status={status} />
+                  <StatusBadge
+                    status={{
+                      value: status.value,
+                      message: getReadableStatusValue(status.value),
+                    }}
+                  />
                 </>
               )}
             </h4>

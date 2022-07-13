@@ -1,10 +1,6 @@
 ---
 name: Text field
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - TextField
   - input
@@ -44,8 +40,6 @@ keywords:
   - hidden labels
   - separate error message
   - icon action
-  - ios
-  - android
 ---
 
 # Text field
@@ -430,7 +424,7 @@ function VerticalContent() {
 
 Use when a text field and several related fields make up a logical unit.
 
-If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/forms/select) (for example “kg”, “lb”) as a connected field.
+If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
 
 ```jsx
 function ConnectedFieldsExample() {
@@ -501,7 +495,7 @@ To render an invalid text field and its validation error separately:
 
 - Set a unique identifier on the text field component `id` prop
 - Set a boolean on the text field component `error` prop
-- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
+- Use an [inline error component](https://polaris.shopify.com/components/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
 
 ```jsx
 function SeparateValidationErrorExample() {
@@ -808,9 +802,9 @@ function TextFieldWithSuggestionExample() {
 
 ## Related components
 
-- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
-- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/forms/inline-error)
-- It’s common to [use a select component](https://polaris.shopify.com/components/forms/select) connected to the left or right of a text field.
+- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/form-layout)
+- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/inline-error)
+- It’s common to [use a select component](https://polaris.shopify.com/components/select) connected to the left or right of a text field.
 
 ---
 

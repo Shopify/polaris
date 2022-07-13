@@ -1,4 +1,3 @@
-import {tokens} from '../src/tokens';
 import {
   createVar,
   getCustomPropertyNames,
@@ -11,6 +10,42 @@ import {
   getMediaConditions,
 } from '../src/utilities';
 
+const mockTokenGroup = {
+  'design-token-1': {
+    value: 'valueA',
+  },
+  'design-token-2': {
+    value: 'valueB',
+  },
+};
+
+const mockMotionTokenGroup = {
+  ...mockTokenGroup,
+  'keyframes-token-1': {
+    value: 'valueA',
+  },
+  'keyframes-token-2': {
+    value: 'valueB',
+  },
+};
+
+const mockColorSchemes = {
+  light: mockTokenGroup,
+  dark: mockTokenGroup,
+};
+
+const mockTokens = {
+  colorSchemes: mockColorSchemes,
+  depth: mockTokenGroup,
+  // Note: We don't need to assign mock values to the remaining static tokens.
+  motion: {},
+  legacyTokens: {},
+  shape: {},
+  spacing: {},
+  typography: {},
+  zIndex: {},
+};
+
 describe('createVar', () => {
   it('converts the token into a polaris css variable name', () => {
     const token = 'foo';
@@ -22,13 +57,21 @@ describe('createVar', () => {
 
 describe('getCustomPropertyNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(tokens)).toHaveLength(273);
+    expect(getCustomPropertyNames(mockTokens)).toStrictEqual([
+      '--p-design-token-1',
+      '--p-design-token-2',
+      '--p-design-token-1',
+      '--p-design-token-2',
+    ]);
   });
 });
 
 describe('getKeyframeNames', () => {
   it('extracts the keyframe tokens from the motion', () => {
-    expect(getKeyframeNames(tokens.motion)).toHaveLength(4);
+    expect(getKeyframeNames(mockMotionTokenGroup)).toStrictEqual([
+      'p-keyframes-token-1',
+      'p-keyframes-token-2',
+    ]);
   });
 });
 

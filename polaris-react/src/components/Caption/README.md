@@ -1,10 +1,6 @@
 ---
 name: Caption
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - labels
   - text
@@ -18,8 +14,6 @@ keywords:
   - time text
   - compact text
   - small text
-  - android
-  - ios
 ---
 
 # Caption

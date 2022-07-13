@@ -14,8 +14,6 @@ keywords:
   - time text
   - compact text
   - small text
-  - android
-  - ios
 examples:
   - fileName: caption-default.tsx
     title: Default caption
