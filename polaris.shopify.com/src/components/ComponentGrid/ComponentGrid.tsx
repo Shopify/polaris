@@ -45,7 +45,7 @@ function ComponentGridItem({
         <a tabIndex={searchResultData?.tabIndex}>
           <div className={styles.Preview}>
             <Image
-              src={`/component-previews/${slugify(name)}.png`}
+              src={`/images/components/${slugify(name)}.png`}
               layout="responsive"
               width={525}
               height={300}
