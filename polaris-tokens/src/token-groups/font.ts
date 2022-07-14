@@ -1,4 +1,4 @@
-export const typography = {
+export const font = {
   'font-family-sans': {
     value:
       "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
