@@ -117,3 +117,9 @@
   font-size: var(--p-font-size-5);
   line-height: var(--p-line-height-3);
 }
+
+.RequiredIndicator::after {
+  content: '*';
+  color: var(--p-text-critical);
+  margin-left: var(--p-space-1);
+}
