@@ -20,9 +20,9 @@
     display: flex;
     flex-wrap: wrap;
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
     // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
-    grid-template-columns: repeat(auto-fill, minmax(min(14rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(12rem, 100%), 1fr));
 
     @media screen and (max-width: $breakpointDesktopLarge) {
       // Foundations section currently has 5 articles. This avoids

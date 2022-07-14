@@ -12,6 +12,7 @@
   border-radius: var(--border-radius-round);
   gap: 0.5rem;
   font-weight: var(--font-weight-500);
+  background: var(--surface);
 
   &:focus-within {
     box-shadow: var(--focus-outline);

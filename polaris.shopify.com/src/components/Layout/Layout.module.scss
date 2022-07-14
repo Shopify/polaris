@@ -2,17 +2,10 @@
 @import "../../styles/mixins.scss";
 
 .Layout {
-  --gap: 3rem;
   --nav-width: 16rem;
-  --toc-width: 10rem;
-  --max-content-width: 62rem;
-  --toc-gap: 5rem;
+  --toc-width: 16rem;
+  --content-padding-x: 3.5rem;
   display: flex;
-  gap: var(--gap);
-
-  @media screen and (max-width: $breakpointDesktop) {
-    --gap: 2rem;
-  }
 
   @media screen and (max-width: $breakpointTablet) {
     display: block;
@@ -20,73 +13,77 @@
 }
 
 .Nav {
-  min-width: var(--nav-width);
-  max-width: var(--nav-width);
   align-self: flex-start;
   position: sticky;
   top: var(--header-height);
   padding: var(--header-margin) 0;
   height: calc(100vh - var(--header-height));
+  min-width: var(--nav-width);
+  max-width: var(--nav-width);
   overscroll-behavior: contain;
   overflow: auto;
-  @include custom-scrollbars;
-  border-right: 1px solid var(--border-color-light);
+  box-shadow: inset -1px 0 var(--border-color-light);
+
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--text-subdued);
+    }
+  }
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
   }
 }
 
-.Main {
-  position: relative;
+.Post {
   flex: 1;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  padding: var(--header-margin) 0;
+  flex-direction: column;
+  align-items: center;
 
-  .CenteredMainContent {
-    flex: 1;
+  .PostInner {
+    padding: var(--header-margin) 0 var(--header-margin)
+      var(--content-padding-x);
 
-    .Layout.narrow & {
-      max-width: var(--max-content-width);
-      padding-right: var(--gap);
-
-      @media screen and (max-width: $breakpointDesktopLarge) {
-        padding-right: 0;
-      }
+    .narrow,
+    .showTOC & {
+      padding: var(--header-margin) var(--content-padding-x);
     }
   }
 }
 
-.Post {
-  position: relative;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: var(--toc-gap);
-
-  .PostContent {
-    flex: 1;
-    position: relative;
-    min-width: 0;
-  }
-}
-
 .TOC {
-  --toc-sticky-top-margin: 2rem;
+  align-self: flex-start;
   position: sticky;
-  top: 2rem;
-  margin-top: 0.5rem;
+  top: var(--header-height);
+  padding: var(--header-margin) 0 var(--header-margin) 2rem;
+  height: calc(100vh - var(--header-height));
   width: var(--toc-width);
-  right: calc((var(--toc-width) + 6rem) * -1);
-  height: 100%;
-  font-size: var(--font-size-50);
+  overscroll-behavior: contain;
+  overflow: auto;
+  border-left: 1px solid var(--border-color-light);
+  font-size: var(--font-size-100);
+  @include custom-scrollbars;
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
   }
 
   > ul > li:not(:first-child) {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
   a {
@@ -96,8 +93,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     width: var(--toc-width);
+    transition: all 0.5s 0.1s ease;
 
     &:hover {
+      color: var(--text-strong);
+    }
+
+    &[data-is-current="true"] {
       color: var(--text-strong);
     }
   }
