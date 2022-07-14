@@ -9,10 +9,7 @@
 
   @media screen and (max-width: $breakpointTablet) {
     display: block;
-  }
-
-  @media screen and (max-width: $breakpointMobile) {
-    padding: 0;
+    --content-padding-x: 0;
   }
 }
 
