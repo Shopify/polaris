@@ -27,7 +27,10 @@ body {
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
     "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
-  // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20design%20system%20built%20for%20commerce&font=Inter&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+  --surface-code-light: #eaeaea;
+  --surface-code-dark: #2e2e30;
+
+  // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
@@ -178,9 +181,9 @@ body,
   --text: #aaa;
   --text-strong: #e7e7e7;
   --text-subdued: #777;
+  --text-link: #6995ee;
   --surface-information: #02382d;
   --surface-warning: #4c250f;
-  --text-link: #6995ee;
   --surface: #202021;
   --surface-subdued: #2e2e30;
   --primary: #1aab87;
@@ -328,8 +331,4 @@ button {
       }
     }
   }
-}
-
-.NextPage {
-  display: none;
 }

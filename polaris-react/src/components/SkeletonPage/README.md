@@ -36,21 +36,13 @@ Secondary actions are always represented with skeleton content. You can change t
 
 Use skeleton loading for dynamic content, and use actual content for content that doesn’t change.
 
-<div class="TypographyUsageBlockImg">
-
-![Image showing skeleton loading for changing content](/public_images/skeleton/do-use-skeleton-for-changing-content@2x.png)
-
-</div>
+![Image showing skeleton loading for changing content](/images/components/skeleton-page/do-use-skeleton-for-changing-content@2x.png)
 
 #### Don’t
 
 Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience.
 
-<div class="TypographyUsageBlockImg">
-
-![Image showing placeholder content that will change](/public_images/skeleton/dont-use-placeholder-content-that-will-change@2x.png)
-
-</div>
+![Image showing placeholder content that will change](/images/components/skeleton-page/dont-use-placeholder-content-that-will-change@2x.png)
 
 <!-- end -->
 
@@ -154,5 +146,5 @@ Use this component to compose a loading version of a page where the page title a
 
 ## Related components
 
-- Use the [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) components to represent blocks of content.
-- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) or [Spinner](https://polaris.shopify.com/components/feedback-indicators/spinner) component.
+- Use the [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/skeleton-display-text) components to represent blocks of content.
+- When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/progress-bar) or [Spinner](https://polaris.shopify.com/components/spinner) component.

@@ -9,8 +9,6 @@ keywords:
   - medium thumbnail
   - large thumbnail
   - image preview
-  - android
-  - ios
 examples:
   - fileName: thumbnail-default.tsx
     title: Default thumbnail

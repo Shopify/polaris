@@ -18,7 +18,7 @@ function Tabs({ items }: Props) {
       <Container>
         <nav aria-label="Breadcrumb">
           <ul>
-            {items.map((item, i) => (
+            {items.map((item) => (
               <li key={item.url}>
                 <a
                   href={item.url}

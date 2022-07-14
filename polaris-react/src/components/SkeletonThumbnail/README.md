@@ -61,4 +61,4 @@ Use this component to represent extra small thumbnails.
 
 ## Related components
 
-- Use this component with [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) to represent the content of a card while it’s loading.
+- Use this component with [Skeleton display text](https://polaris.shopify.com/components/skeleton-display-text) to represent the content of a card while it’s loading.

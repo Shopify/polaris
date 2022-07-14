@@ -6,7 +6,7 @@ interface Props {
   props: PropsForComponent;
 }
 
-function PropsTable({ props: { interfaceName, props } }: Props) {
+function PropsTable({ props: { props } }: Props) {
   const feedbackTitle = "[polaris.shopify.com] Props table feedback";
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle
@@ -14,7 +14,7 @@ function PropsTable({ props: { interfaceName, props } }: Props) {
 
   return (
     <div className={styles.PropsTable}>
-      <h2 id="properties">Props</h2>
+      <h2 id="props">Props</h2>
       <p>
         Want to help make this feature better? Please{" "}
         <a href={feedbackUrl}>share your feedback</a>.

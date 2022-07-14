@@ -7,7 +7,7 @@ export function usePortalsManager() {
 
   if (!portalsManager) {
     throw new Error(
-      'No portals manager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/structure/app-provider for implementation instructions.',
+      'No portals manager was provided. Your application must be wrapped in an <AppProvider> component. See https://polaris.shopify.com/components/app-provider for implementation instructions.',
     );
   }
 

@@ -1,10 +1,6 @@
 ---
 name: Display text
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DisplayText
   - announcement text
@@ -26,8 +22,6 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
-  - android
-  - ios
 ---
 
 # Display text
@@ -118,6 +112,6 @@ Use display text to create visual interest along with a meaningful heading struc
 
 #### Don’t
 
-Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/titles-and-text/heading) and [subheading component](https://polaris.shopify.com/components/titles-and-text/subheading) to provide structure.
+Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/heading) and [subheading component](https://polaris.shopify.com/components/subheading) to provide structure.
 
 <!-- end -->

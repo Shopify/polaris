@@ -3,11 +3,6 @@ import Container from "../Container";
 import Link from "next/link";
 import { className } from "../../utils/various";
 import { useMedia } from "../../utils/hooks";
-import componentsImage from "./components.png";
-import tokensImage from "./tokens.png";
-import iconsImage from "./icons.png";
-import foundationsImage from "./foundations.png";
-import vsCodeImage from "./vscode.jpg";
 import Image from "../Image";
 import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
@@ -61,7 +56,7 @@ function HomePage({}: Props) {
               </div>
               <div className={styles.Image}>
                 <Image
-                  src={foundationsImage}
+                  src="/images/foundations.png"
                   alt="Media card and date picker components"
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -102,7 +97,7 @@ function HomePage({}: Props) {
               </div>
               <div className={styles.Image}>
                 <Image
-                  src={componentsImage}
+                  src="/images/components.png"
                   alt="Media card and date picker components"
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -141,7 +136,7 @@ function HomePage({}: Props) {
 
               <div className={styles.Image}>
                 <Image
-                  src={tokensImage}
+                  src="/images/tokens.png"
                   alt="A card containing a color preview, a token name and a description."
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -180,7 +175,7 @@ function HomePage({}: Props) {
 
               <div className={styles.Image}>
                 <Image
-                  src={iconsImage}
+                  src="/images/icons.png"
                   alt="A grid containing icons from Polaris"
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -230,7 +225,7 @@ function HomePage({}: Props) {
                   <Image
                     width="2250"
                     height="1440"
-                    src={vsCodeImage}
+                    src="/images/vscode.jpg"
                     alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
                   />
                 </div>

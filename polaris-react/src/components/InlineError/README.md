@@ -1,10 +1,6 @@
 ---
 name: Inline error
 category: Forms
-platforms:
-  - web
-  - android
-  - ios
 keywords:
   - InlineError
   - error message
@@ -74,7 +70,7 @@ Use when the merchant has entered information that is not valid into multiple fi
 
 ## Related components
 
-- To create a list of exceptions that describe a resource, [use the exception list component](https://polaris.shopify.com/components/lists-and-tables/exception-list)
+- To create a list of exceptions that describe a resource, [use the exception list component](https://polaris.shopify.com/components/exception-list)
 
 ---
 

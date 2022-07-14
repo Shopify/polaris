@@ -80,6 +80,11 @@ const nextConfig = {
         destination: "https://shopify.dev/apps/design-guidelines",
         permanent: false,
       },
+      {
+        source: "/tokens/all-tokens",
+        destination: "/tokens/colors",
+        permanent: false,
+      },
     ];
   },
 };

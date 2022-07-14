@@ -103,3 +103,14 @@ export interface PropsForComponent {
     deprecated: boolean;
   }[];
 }
+
+export interface QuickGuideRow {
+  question: string;
+  answer: string;
+}
+
+export interface QuickGuide {
+  title: string;
+  queryParam: string;
+  rows: QuickGuideRow[];
+}

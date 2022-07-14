@@ -1,10 +1,6 @@
 ---
 name: Caption
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - labels
   - text
@@ -18,8 +14,6 @@ keywords:
   - time text
   - compact text
   - small text
-  - android
-  - ios
 ---
 
 # Caption
@@ -49,7 +43,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 #### Do
 
 - Use caption for labelling data visualizations
-  ![Diagram of using captions to label graphs and other data content](/public_images/typography/display-styles/do-use-caption-for-labeling-data-visualizations@2x.png)
+  ![Diagram of using captions to label graphs and other data content](/images/components/caption/do-use-caption-for-labeling-data-visualizations@2x.png)
 - Received April 21, 2017
 
 #### Don’t
