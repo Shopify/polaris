@@ -11,8 +11,8 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .DisplayText {
-  --pc-skeleton-display-text-height: var(--p-line-height-2);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-line-height-2);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-2);
+  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-2);
   max-width: $skeleton-display-text-max-width;
 
   display: flex;
@@ -25,25 +25,25 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .sizeSmall {
-  --pc-skeleton-display-text-height: var(--p-line-height-3);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-line-height-4);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-3);
+  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-4);
   @include skeleton-display-text-height;
 }
 
 .sizeMedium {
-  --pc-skeleton-display-text-height: var(--p-line-height-4);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-line-height-5);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-4);
+  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-5);
   @include skeleton-display-text-height;
 }
 
 .sizeLarge {
-  --pc-skeleton-display-text-height: var(--p-line-height-4);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-line-height-5);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-4);
+  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-5);
   @include skeleton-display-text-height;
 }
 
 .sizeExtraLarge {
-  --pc-skeleton-display-text-height: var(--p-line-height-6);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-line-height-7);
+  --pc-skeleton-display-text-height: 36px;
+  --pc-skeleton-display-text-height-not-condensed: 44px;
   @include skeleton-display-text-height;
 }

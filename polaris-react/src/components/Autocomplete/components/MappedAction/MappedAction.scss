@@ -4,7 +4,7 @@
   --pc-mapped-actions-image-size: 20px;
   --pc-mapped-actions-item-min-height: var(--p-space-10);
   --pc-mapped-actions-item-vertical-padding: calc(
-    (var(--pc-mapped-actions-item-min-height) - var(--p-line-height-2)) / 2
+    (var(--pc-mapped-actions-item-min-height) - var(--p-font-line-height-2)) / 2
   );
   margin-bottom: var(--p-space-3);
 }

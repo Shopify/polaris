@@ -271,7 +271,7 @@ $disabled-fade: 0.6;
   }
 
   .Item {
-    font-size: var(--p-font-size-4);
+    font-size: 15px;
     font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
@@ -298,7 +298,7 @@ $disabled-fade: 0.6;
     }
 
     @include breakpoint-after($nav-min-window-corrected) {
-      font-size: var(--p-font-size-3);
+      font-size: var(--p-font-size-100);
       line-height: 1;
       padding-left: var(--p-space-10);
     }
@@ -370,11 +370,11 @@ $disabled-fade: 0.6;
   padding-left: calc(var(--p-space-5) + var(--p-space-05));
 
   .Text {
-    font-size: var(--p-font-size-2);
+    font-size: 13px;
     color: var(--p-text-subdued);
 
     @include when-typography-not-condensed {
-      font-size: var(--p-font-size-1);
+      font-size: var(--p-font-size-75);
     }
   }
 
