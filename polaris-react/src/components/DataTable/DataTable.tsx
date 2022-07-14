@@ -106,6 +106,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private scrollContainer = createRef<HTMLDivElement>();
   private table = createRef<HTMLTableElement>();
   private stickyTable = createRef<HTMLTableElement>();
+  private stickyNav: HTMLDivElement | null = null;
+  private headerNav: HTMLDivElement | null = null;
   private tableHeadings: HTMLTableCellElement[] = [];
   private stickyHeadings: HTMLDivElement[] = [];
   private tableHeadingWidths: number[] = [];
@@ -260,16 +262,24 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       <tfoot>{totalsMarkup}</tfoot>
     ) : null;
 
-    const navigationMarkup = hideScrollIndicator ? null : (
-      <Navigation
-        columnVisibilityData={columnVisibilityData}
-        isScrolledFarthestLeft={isScrolledFarthestLeft}
-        isScrolledFarthestRight={isScrolledFarthestRight}
-        navigateTableLeft={this.navigateTable('left')}
-        navigateTableRight={this.navigateTable('right')}
-        fixedFirstColumn={fixedFirstColumn}
-      />
-    );
+    const navigationMarkup = (location: 'sticky' | 'header') =>
+      hideScrollIndicator ? null : (
+        <Navigation
+          columnVisibilityData={columnVisibilityData}
+          isScrolledFarthestLeft={isScrolledFarthestLeft}
+          isScrolledFarthestRight={isScrolledFarthestRight}
+          navigateTableLeft={this.navigateTable('left')}
+          navigateTableRight={this.navigateTable('right')}
+          fixedFirstColumn={fixedFirstColumn}
+          setRef={(ref: any) => {
+            if (location === 'header') {
+              this.headerNav = ref;
+            } else if (location === 'sticky') {
+              this.stickyNav = ref;
+            }
+          }}
+        />
+      );
 
     const stickyHeaderMarkup = stickyHeader ? (
       <AfterInitialMount>
@@ -293,7 +303,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
               return (
                 <div className={stickyHeaderInnerClassNames}>
-                  <div>{navigationMarkup}</div>
+                  <div>{navigationMarkup('sticky')}</div>
                   <table
                     className={stickyHeaderTableClassNames}
                     ref={this.stickyTable}
@@ -322,7 +332,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     return (
       <div className={wrapperClassName} ref={this.dataTable}>
         {stickyHeaderMarkup}
-        {navigationMarkup}
+        {navigationMarkup('header')}
         <div className={className}>
           <div className={styles.ScrollContainer} ref={this.scrollContainer}>
             <EventListener event="resize" handler={this.handleResize} />
@@ -375,7 +385,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private changeHeadingFocus = () => {
-    const {tableHeadings, stickyHeadings} = this;
+    const {tableHeadings, stickyHeadings, stickyNav, headerNav} = this;
 
     const stickyFocusedItemIndex = stickyHeadings.findIndex(
       (item) => item === document.activeElement?.parentElement,
@@ -385,7 +395,31 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       (item) => item === document.activeElement?.parentElement,
     );
 
-    if (stickyFocusedItemIndex < 0 && tableFocusedItemIndex < 0) {
+    const arrowsInStickyNav = stickyNav?.querySelectorAll('button');
+    const arrowsInHeaderNav = headerNav?.querySelectorAll('button');
+
+    let stickyFocusedNavIndex = -1;
+
+    arrowsInStickyNav?.forEach((item: HTMLButtonElement, index: number) => {
+      if (item === document.activeElement) {
+        stickyFocusedNavIndex = index;
+      }
+    });
+
+    let headerFocusedNavIndex = -1;
+
+    arrowsInHeaderNav?.forEach((item: HTMLButtonElement, index: number) => {
+      if (item === document.activeElement) {
+        headerFocusedNavIndex = index;
+      }
+    });
+
+    if (
+      stickyFocusedItemIndex < 0 &&
+      tableFocusedItemIndex < 0 &&
+      stickyFocusedNavIndex < 0 &&
+      headerFocusedNavIndex < 0
+    ) {
       return null;
     }
 
@@ -395,6 +429,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       button = tableHeadings[stickyFocusedItemIndex].querySelector('button');
     } else if (tableFocusedItemIndex >= 0) {
       button = stickyHeadings[tableFocusedItemIndex].querySelector('button');
+    }
+
+    if (stickyFocusedNavIndex >= 0) {
+      button = arrowsInHeaderNav?.[stickyFocusedNavIndex];
+    } else if (headerFocusedNavIndex >= 0) {
+      button = arrowsInStickyNav?.[headerFocusedNavIndex];
     }
 
     if (button == null) {
