@@ -1,10 +1,6 @@
 ---
 name: Tabs
 category: Navigation
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - layout
   - navigate

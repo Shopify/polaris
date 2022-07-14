@@ -1,4 +1,4 @@
-name: refresh
+name: Refresh
 set: major
 description: Used to represent an action to refresh or sync an item or resource.
 keywords:

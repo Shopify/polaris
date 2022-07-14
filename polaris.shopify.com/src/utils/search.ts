@@ -6,11 +6,12 @@ import {
   IconsSearchResult,
   TokensSearchResult,
   GroupedSearchResults,
+  Status,
 } from "../types";
 import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
-import metadata from "@shopify/polaris-icons/metadata";
+import iconMetadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
@@ -35,7 +36,14 @@ const {
 let results: SearchResults = [];
 
 // Add components
-components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
+components.forEach(({ frontMatter: { name, status }, intro }) => {
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status["value"],
+        message: status.message,
+      }
+    : undefined;
+
   results.push({
     category: "Components",
     score: 0,
@@ -43,6 +51,7 @@ components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
     meta: {
       name,
       description: stripMarkdownLinks(intro),
+      status: typedStatus,
     },
   });
 });
@@ -85,14 +94,13 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 });
 
 // Add icons
-Object.keys(metadata).forEach((fileName) => {
-  const { name, set, description, keywords } = metadata[fileName];
+Object.keys(iconMetadata).forEach((fileName) => {
   results.push({
     category: "Icons",
     url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
-      icon: { fileName, keywords, name, description, set },
+      icon: iconMetadata[fileName],
     },
   });
 });

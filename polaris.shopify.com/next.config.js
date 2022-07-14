@@ -8,6 +8,10 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
   async headers() {
     return [
       {
@@ -62,6 +66,11 @@ const nextConfig = {
         permanent: false,
       },
       {
+        source: "/foundations/patterns/layout",
+        destination: "/foundations/patterns/page-layouts",
+        permanent: false,
+      },
+      {
         source: "/foundations/foundations/designing-apps",
         destination: "https://shopify.dev/apps/design-guidelines",
         permanent: false,
@@ -69,6 +78,11 @@ const nextConfig = {
       {
         source: "/foundations/content/app-release-notes",
         destination: "https://shopify.dev/apps/design-guidelines",
+        permanent: false,
+      },
+      {
+        source: "/tokens/all-tokens",
+        destination: "/tokens/colors",
         permanent: false,
       },
     ];

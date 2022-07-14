@@ -1,10 +1,6 @@
 ---
 name: Checkbox
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - accept
   - decline
@@ -122,49 +118,17 @@ function CheckboxExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Default checkbox on Android](/public_images/components/Checkbox/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default checkbox on iOS](/public_images/components/Checkbox/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
 
-- To present a list of options where merchants can only make a single choice, [use the radio button component](https://polaris.shopify.com/components/forms/radio-button)
-- To display a list of related content, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- To create an ungrouped list, [use the content list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To present a list of options where merchants can only make a single choice, [use the radio button component](https://polaris.shopify.com/components/radio-button)
+- To display a list of related content, [use the choice list component](https://polaris.shopify.com/components/choice-list)
+- To create an ungrouped list, [use the content list component](https://polaris.shopify.com/components/list)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Screen readers convey the state of the checkbox automatically.
 
@@ -183,5 +147,3 @@ Screen readers convey the state of the checkbox automatically.
 
 - Move focus to each checkbox using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - To interact with the checkbox when it has keyboard focus, press the <kbd>space</kbd> key
-
-<!-- /content-for -->

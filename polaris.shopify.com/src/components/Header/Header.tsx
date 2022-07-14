@@ -9,7 +9,6 @@ import MobileNav from "../MobileNav";
 import type { NavItem } from "../Nav";
 
 import styles from "./Header.module.scss";
-import shopifyLogo from "../../../public/shopify-logo.svg";
 
 const headerNavItems: NavItem[] = [
   {
@@ -60,7 +59,7 @@ function Header({ darkMode, currentPath = "" }: Props) {
         <Link href="/">
           <a className={styles.Logo}>
             <Image
-              src={shopifyLogo}
+              src="/shopify-logo.svg"
               layout="fixed"
               width={24}
               height={24}

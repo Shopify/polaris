@@ -1,4 +1,4 @@
-name: abandoned cart
+name: Abandoned cart
 set: major
 description: Used to represent a prospective purchase that a buyer didn’t complete.
 keywords:

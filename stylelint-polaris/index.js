@@ -3,6 +3,10 @@ const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 const {
   ruleName: customPropertiesAllowedListRuleName,
 } = require('./plugins/custom-properties-allowed-list');
+const {
+  ruleName: mediaQueriesAllowedList,
+} = require('./plugins/media-queries-allowed-list');
+
 /**
  * Allowed Polaris token custom properties.
  *
@@ -22,7 +26,10 @@ const userDefinedCustomPropertyNames = /--(?!pc?-).+/;
  */
 module.exports = {
   extends: ['./configs/shared'],
-  plugins: ['./plugins/custom-properties-allowed-list'],
+  plugins: [
+    './plugins/custom-properties-allowed-list',
+    './plugins/media-queries-allowed-list',
+  ],
   rules: {
     /**
      * Custom property constraints:
@@ -40,6 +47,19 @@ module.exports = {
             userDefinedCustomPropertyNames,
           ],
         },
+      },
+      {severity: 'warning'},
+    ],
+    [mediaQueriesAllowedList]: [
+      {
+        // Allowed media types and media conditions
+        // https://www.w3.org/TR/mediaqueries-5/#media
+        allowedMediaTypes: ['print', 'screen'],
+        allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+        allowedScssInterpolations: [
+          // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
+          /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+        ],
       },
       {severity: 'warning'},
     ],

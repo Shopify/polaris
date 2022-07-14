@@ -1,10 +1,6 @@
 ---
 name: Display text
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DisplayText
   - announcement text
@@ -26,8 +22,6 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
-  - android
-  - ios
 examples:
   - fileName: display-text-extra-large.tsx
     title: Extra large
@@ -89,26 +83,6 @@ Display text should be:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Although display text creates an interesting visual experience, it doesn’t replace the semantic structure provided by HTML headings.
 
 By default, the display text component outputs text in an HTML paragraph (`<p>`). If a heading tag is needed for display text, use the `element` prop to set the heading level.
@@ -124,5 +98,3 @@ Use display text to create visual interest along with a meaningful heading struc
 Use display text in place of standard headings. Use the [heading component](https://polaris.shopify.com/components/heading) and [subheading component](https://polaris.shopify.com/components/subheading) to provide structure.
 
 <!-- end -->
-
-<!-- /content-for -->

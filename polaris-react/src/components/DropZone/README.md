@@ -28,7 +28,7 @@ Drop zones should:
 
 - Inform merchants when the file(s) can’t be uploaded:
   - When possible, use validation errors on drag to detect and explain things like file size limits or file types accepted.
-  - Use the [banner component](https://polaris.shopify.com/components/feedback-indicators/banner) with a critical status to communicate errors that happen on the server.
+  - Use the [banner component](https://polaris.shopify.com/components/banner) with a critical status to communicate errors that happen on the server.
 - Provide feedback once the file(s) have been dropped and uploading begins.
 - For convenience, allow files to be dropped anywhere on the page by enabling `dropOnPage`.
 - Provide a file upload button to allow merchants to select files for upload in a traditional way. Do this by using the `DropZone.FileUpload` subcomponent.
@@ -61,7 +61,7 @@ Server-side upload errors give feedback after file submission.
 
 Upload error messages should:
 
-- Be displayed as a [banner](https://polaris.shopify.com/components/feedback-indicators/banner) with a critical status
+- Be displayed as a [banner](https://polaris.shopify.com/components/banner) with a critical status
 - Show the name of the file(s) that were not uploaded successfully
 - Describe why the file(s) couldn’t be uploaded and what merchants should change to upload their file successfully, as seen below
 
@@ -577,32 +577,12 @@ Use file upload with the drop zone component to let merchants select files for u
 
 ## Related components
 
-- To provide context to upload errors when they occur, use the [banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
-- To provide feedback during file upload, use the [spinner component](https://polaris.shopify.com/components/feedback-indicators/spinner)
+- To provide context to upload errors when they occur, use the [banner component](https://polaris.shopify.com/components/banner)
+- To provide feedback during file upload, use the [spinner component](https://polaris.shopify.com/components/spinner)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 The drop zone component builds on the native HTML `<input type="upload">` element. It includes a visual`<button>` as well as a drag and drop area that can receive keyboard focus.
 
@@ -612,5 +592,3 @@ To upload a file with the keyboard, merchants can interact with the drag-and-dro
 
 - To give the input keyboard focus, use the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - To activate the input, use the <kbd>enter</kbd>/<kbd>return</kbd> or <kbd>space</kbd> keys
-
-<!-- /content-for -->

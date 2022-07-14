@@ -1,6 +1,4 @@
-import Image from "../Image";
 import Tooltip from "../Tooltip";
-import iconClipboard from "../../../public/icon-clipboard.svg";
 import Prism from "prismjs";
 import { useCopyToClipboard } from "../../utils/hooks";
 import styles from "./CodeExample.module.scss";
@@ -23,7 +21,6 @@ function CodeExample({ minimalist, children }: Props) {
       <div className={styles.CopyButtonWrapper}>
         <Tooltip
           ariaLabel="Copy to clipboard"
-          placement="top"
           renderContent={() => (
             <div className={styles.IconToolTip}>
               <p>{didJustCopy ? "Copied" : "Copy"}</p>

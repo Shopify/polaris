@@ -1,10 +1,6 @@
 ---
 name: Modal
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - modal
   - src
@@ -28,8 +24,6 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 examples:
   - fileName: modal-basic.tsx
     title: Basic modal
@@ -58,12 +52,6 @@ examples:
     title: Modal with activator ref
   - fileName: modal-without-an-activator-prop.tsx
     title: Modal without an activator prop
-  # - fileName: modal-warning.tsx
-  #   title: Warning modal
-  #   description: >-
-  #     Use to make it clear to the merchant that the action is potentially
-  #     dangerous. Only use this option when the merchant is about to perform an
-  #     action that can’t be undone or is difficult to undo.
 ---
 
 # Modal
@@ -194,8 +182,6 @@ Actions should be:
 
 <!-- end -->
 
-<a name="tertiary-actions"></a>
-
 ### Tertiary actions
 
 Tertiary actions should:
@@ -208,12 +194,12 @@ Tertiary actions should:
 #### Do
 
 - Use a plain button for a tertiary action if needed
-  ![Screenshot of modal with a plain button as a tertiary action](/public_images/components/Modal/do-use-plain-button-for-tertiary-action@2x.png)
+  ![Screenshot of modal with a plain button as a tertiary action](/images/components/modal/do-use-plain-button-for-tertiary-action@2x.png)
 
 #### Don’t
 
 - Use a tertiary action for a destructive action
-  ![Screenshot of modal with a destructive button as a tertiary action](/public_images/components/Modal/dont-use-destructive-tertiary-action@2x.png)
+  ![Screenshot of modal with a destructive button as a tertiary action](/images/components/modal/dont-use-destructive-tertiary-action@2x.png)
 
 <!-- end -->
 
@@ -262,26 +248,6 @@ Body content should be:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 - Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
 - After a modal is closed, in order to return focus to the button that launched it, pass the button to the modal as an `activator`.
@@ -292,5 +258,3 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 - While the modal is open, keyboard focus shouldn’t leave the modal
 - Merchants can dismiss the modal with the keyboard by activating the `X` button, the `Cancel` button if one is provided, or by pressing the <kbd>Esc</kbd> key
 - After a modal is closed, focus returns to the button that launched it
-
-<!-- /content-for -->

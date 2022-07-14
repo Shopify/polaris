@@ -1,4 +1,4 @@
-name: button
+name: Button
 set: minor
 description: Used to represent a button block appearing as a sub-element of a section, page or layout.
 keywords:

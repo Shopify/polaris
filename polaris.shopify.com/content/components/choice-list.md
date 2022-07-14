@@ -1,10 +1,6 @@
 ---
 name: Choice list
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ChoiceList
   - form
@@ -94,11 +90,12 @@ Pick one
 
 <!-- end -->
 
-- Be concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep list titles to a single sentence
-  - It the title introduces the list, it should end with a colon
-  - Should be written in sentence case
+### Be concise and scannable
+
+- Use simple, clear language that can be read at a glance
+- Keep list titles to a single sentence
+- It the title introduces the list, it should end with a colon
+- Should be written in sentence case
 
 <!-- usagelist -->
 
@@ -112,7 +109,7 @@ Shipping Options
 
 <!-- end -->
 
-- Not use colons
+### Not use colons
 
 <!-- usageblock -->
 
@@ -120,21 +117,16 @@ Shipping Options
 
 If the customer abandons their checkout, send them an email reminder to complete their order
 
-<p>
-  <label><input type="radio" name="foo"> Never</label><br />
-  <label><input type="radio" name="foo"> 6 hours later</label><br />
-  <label><input type="radio" name="foo"> 24 hours later</label>
-</p>
+- Option a
+- Option b
 
 #### Don’t
 
 If the customer abandons their checkout, send them an email reminder to complete their order:
 
-<p>
-  <label><input type="radio" name="bar"> Never</label><br />
-  <label><input type="radio" name="bar"> 6 hours later</label><br />
-  <label><input type="radio" name="bar"> 24 hours later</label>
-</p>
+- Option a
+- Option b
+
 <!-- end -->
 
 ### List choices
@@ -142,56 +134,24 @@ If the customer abandons their checkout, send them an email reminder to complete
 Every item in a choice list should:
 
 - Start with a capital letter
-
-<!-- usageblock -->
-
-#### Do
-
-- Option 1
-- Option 2
-- Option 3
-
-#### Don’t
-
-- option 1
-- option 2
-- option 3
-
-<!-- end -->
-
 - Not use commas or semicolons at the end of each line
-
-<!-- usageblock -->
-
-#### Do
-
-- Red
-- Yellow
-- Blue
-
-#### Don’t
-
-- Red;
-- Yellow;
-- Blue.
-
-<!-- end -->
-
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usageblock -->
 
 #### Do
 
-- Item one
-- Item two
+- Option 1
+- Yellow
 - Item three
 
 #### Don’t
 
-- Item One
-- Item Two
+- option 1
+- Yellow;
 - Item Three
+
+<!-- end -->
 
 <!-- end -->
 
@@ -211,26 +171,4 @@ If your list contains helper text, only the description below the list item shou
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/checkbox) and [radio button](https://polaris.shopify.com/components/radio-button) components.
-
-<!-- /content-for -->

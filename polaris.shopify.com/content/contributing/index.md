@@ -15,7 +15,7 @@ Contribution to Polaris looks different depending on whether or not you work at 
 
 ## When to contribute
 
-Figuring out what and when to contribute is not always simple, especially when deciding between adding something new to the system or going with an existing solution. Check out the [Thinking in systems](/contributing/thinking-in-systems) and [When to evolve the system](/contributing/when-to-evolve-the-system) guides to help you make this decision.
+Figuring out what and when to contribute is not always simple, especially when deciding between adding something new to the system or going with an existing solution. Check out the [Designing with a system](/contributing/designing-with-a-system) and [When to contribute new patterns](/contributing/when-to-contribute-new-patterns) guides to help you make this decision.
 
 ## Where to get help
 

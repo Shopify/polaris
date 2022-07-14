@@ -42,7 +42,7 @@ The content that appears in the layout component comes from cards and annotated 
 
 ### Cards
 
-Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/structure/card#section-content-guidelines).
+Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#section-content-guidelines).
 
 ### Annotated section titles
 
@@ -449,6 +449,47 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 </Page>
 ```
 
+### Annotated layout using plain Layout.Sections
+
+Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
+
+```jsx
+<Page fullWidth>
+  <Layout>
+    <Layout.Section oneThird>
+      <div style={{marginTop: 'var(--p-space-5)'}}>
+        <TextContainer>
+          <Heading id="storeDetails">Store details</Heading>
+          <p>
+            <TextStyle variation="subdued">
+              Shopify and your customers will use this information to contact
+              you.
+            </TextStyle>
+          </p>
+        </TextContainer>
+      </div>
+    </Layout.Section>
+    <Layout.Section>
+      <Card sectioned>
+        <FormLayout>
+          <TextField
+            label="Store name"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+          <TextField
+            type="email"
+            label="Account email"
+            onChange={() => {}}
+            autoComplete="email"
+          />
+        </FormLayout>
+      </Card>
+    </Layout.Section>
+  </Layout>
+</Page>
+```
+
 ### Annotated layout with Banner at the top
 
 Use for settings pages that need a banner or other content at the top.
@@ -490,6 +531,6 @@ Use for settings pages that need a banner or other content at the top.
 
 ## Related components
 
-- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/structure/card)
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/structure/stack)
-- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
+- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/card)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/stack)
+- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

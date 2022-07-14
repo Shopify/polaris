@@ -4,6 +4,7 @@ import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
+import {gridOptions} from './manager';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -56,26 +57,27 @@ function ReactRenderProfiler(Story, context) {
 export const globalTypes = {
   strictMode: {
     name: 'React.StrictMode',
-    defaultValue: 'true',
+    defaultValue: true,
     toolbar: {
       items: [
-        {title: 'Disabled', value: 'false'},
-        {title: 'Enabled', value: 'true'},
+        {title: 'Disabled', value: false},
+        {title: 'Enabled', value: true},
       ],
-      showName: 'true',
+      showName: true,
     },
   },
   profiler: {
     name: 'React.Profiler',
-    defaultValue: 'false',
+    defaultValue: false,
     toolbar: {
       items: [
-        {title: 'Disabled', value: 'false'},
-        {title: 'Enabled', value: 'true'},
+        {title: 'Disabled', value: false},
+        {title: 'Enabled', value: true},
       ],
-      showName: 'true',
+      showName: true,
     },
   },
+  ...gridOptions,
 };
 
 export const decorators = [

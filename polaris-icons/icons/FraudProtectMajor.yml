@@ -1,4 +1,4 @@
-name: fraud protect
+name: Fraud protect
 set: major
 description: Used to represent that an order is protected by Fraud Protect from chargebacks due to fraud.
 keywords:

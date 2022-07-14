@@ -17,7 +17,7 @@
         "social media"
       ]
     },
-    "intro": "The account connection component is used so merchants can connect or disconnect\ntheir store to various accounts. For example, if merchants want to use the\nFacebook sales channel, they need to connect their Facebook\naccount to their Shopify store."
+    "intro": "The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store."
   },
   {
     "frontMatter": {
@@ -77,7 +77,6 @@
     "frontMatter": {
       "name": "Avatar",
       "category": "Images and icons",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "photo",
         "profile",
@@ -98,13 +97,12 @@
         "android"
       ]
     },
-    "intro": "Avatars are used to show a thumbnail representation of an individual or\nbusiness in the interface."
+    "intro": "Avatars are used to show a thumbnail representation of an individual or business in the interface."
   },
   {
     "frontMatter": {
       "name": "Badge",
       "category": "Images and icons",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "pills",
         "status indicators",
@@ -127,7 +125,6 @@
     "frontMatter": {
       "name": "Banner",
       "category": "Feedback indicators",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "inform",
         "update",
@@ -156,9 +153,34 @@
   },
   {
     "frontMatter": {
+      "name": "Button group",
+      "category": "Actions",
+      "keywords": [
+        "ButtonGroup",
+        "choices",
+        "decision",
+        "call-to-action",
+        "CTA",
+        "segmented buttons",
+        "divided buttons",
+        "grouped actions",
+        "multiple horizontal buttons",
+        "multiple buttons",
+        "set of buttons",
+        "set of actions",
+        "horizontal arrangement of buttons",
+        "stacked",
+        "segmented control",
+        "ios",
+        "android"
+      ]
+    },
+    "intro": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
+  },
+  {
+    "frontMatter": {
       "name": "Button",
       "category": "Actions",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "CTA",
         "call to action",
@@ -186,33 +208,6 @@
   },
   {
     "frontMatter": {
-      "name": "Button group",
-      "category": "Actions",
-      "platforms": ["android", "ios", "web"],
-      "keywords": [
-        "ButtonGroup",
-        "choices",
-        "decision",
-        "call-to-action",
-        "CTA",
-        "segmented buttons",
-        "divided buttons",
-        "grouped actions",
-        "multiple horizontal buttons",
-        "multiple buttons",
-        "set of buttons",
-        "set of actions",
-        "horizontal arrangement of buttons",
-        "stacked",
-        "segmented control",
-        "ios",
-        "android"
-      ]
-    },
-    "intro": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
-  },
-  {
-    "frontMatter": {
       "name": "Callout card",
       "category": "Structure",
       "keywords": [
@@ -237,13 +232,12 @@
         "illustration card"
       ]
     },
-    "intro": "Callout cards are used to encourage merchants to take an action related to a\nnew feature or opportunity. They are most commonly displayed in the\nsales channels section of Shopify."
+    "intro": "Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify."
   },
   {
     "frontMatter": {
       "name": "Caption",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "labels",
         "text",
@@ -267,7 +261,6 @@
     "frontMatter": {
       "name": "Card",
       "category": "Structure",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "layout",
         "container",
@@ -288,13 +281,12 @@
         "call out"
       ]
     },
-    "intro": "Cards are used to group similar concepts and tasks together to make Shopify\neasier for merchants to scan, read, and get things done."
+    "intro": "Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done."
   },
   {
     "frontMatter": {
       "name": "Checkbox",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "accept",
         "decline",
@@ -315,7 +307,6 @@
     "frontMatter": {
       "name": "Choice list",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "ChoiceList",
         "form",
@@ -340,7 +331,6 @@
     "frontMatter": {
       "name": "Collapsible",
       "category": "Behavior",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "hide",
         "show",
@@ -382,7 +372,7 @@
         "alpha value selector"
       ]
     },
-    "intro": "The color picker is used to let merchants select a color visually. For\nexample, merchants use the color picker to customize the accent color of the\nemail templates for their shop."
+    "intro": "The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop."
   },
   {
     "frontMatter": {
@@ -443,7 +433,6 @@
     "frontMatter": {
       "name": "Date picker",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "DatePicker",
         "month",
@@ -460,13 +449,12 @@
         "date range selector"
       ]
     },
-    "intro": "Date pickers let merchants choose dates from a visual calendar that’s\nconsistently applied wherever dates need to be selected across Shopify."
+    "intro": "Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
   },
   {
     "frontMatter": {
       "name": "Description list",
       "category": "Lists and tables",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "DescriptionList",
         "glossary",
@@ -487,7 +475,6 @@
     "frontMatter": {
       "name": "Display text",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "DisplayText",
         "announcement text",
@@ -513,7 +500,7 @@
         "ios"
       ]
     },
-    "intro": "Display styles make a bold visual statement. Use them to create impact when the\nmain goal is visual storytelling. For example, use display text to convince or\nreassure merchants such as in marketing content or to capture attention during onboarding."
+    "intro": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
   },
   {
     "frontMatter": {
@@ -538,7 +525,6 @@
     "frontMatter": {
       "name": "Empty state",
       "category": "Structure",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "EmptyState",
         "lander",
@@ -608,27 +594,8 @@
   },
   {
     "frontMatter": {
-      "name": "Form",
-      "category": "Forms",
-      "keywords": [
-        "form",
-        "forms",
-        "input",
-        "checkbox",
-        "check box",
-        "textfield",
-        "text field",
-        "post",
-        "get"
-      ]
-    },
-    "intro": "A wrapper component that handles the submission of forms."
-  },
-  {
-    "frontMatter": {
       "name": "Form layout",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "FormLayout",
         "Group",
@@ -662,6 +629,24 @@
   },
   {
     "frontMatter": {
+      "name": "Form",
+      "category": "Forms",
+      "keywords": [
+        "form",
+        "forms",
+        "input",
+        "checkbox",
+        "check box",
+        "textfield",
+        "text field",
+        "post",
+        "get"
+      ]
+    },
+    "intro": "A wrapper component that handles the submission of forms."
+  },
+  {
+    "frontMatter": {
       "name": "Frame",
       "category": "Structure",
       "keywords": [
@@ -690,7 +675,7 @@
       "category": "Navigation",
       "keywords": ["topbar", "top bar", "header", "bar", "app"]
     },
-    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure\na uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
+    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
   },
   {
     "frontMatter": {
@@ -708,18 +693,17 @@
         "full width containers",
         "css grid"
       ],
-      "notice": {
-        "status": "alpha",
+      "status": {
+        "value": "Alpha",
         "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
       }
     },
-    "intro": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)"
+    "intro": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)."
   },
   {
     "frontMatter": {
       "name": "Heading",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "titles",
         "text",
@@ -795,7 +779,6 @@
     "frontMatter": {
       "name": "Inline error",
       "category": "Forms",
-      "platforms": ["web", "android", "ios"],
       "keywords": [
         "InlineError",
         "error message",
@@ -805,15 +788,6 @@
       ]
     },
     "intro": "Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it."
-  },
-  {
-    "frontMatter": {
-      "name": "Keyboard accessories",
-      "category": "Forms",
-      "platforms": ["android", "ios"],
-      "keywords": ["keyboard", "soft", "virtual", "ios", "android"]
-    },
-    "intro": "On iOS and Android, software keyboards appear on the screen when typing. Keyboard accessories allows additional content and actions based on what merchants are doing. For example, when merchants are updating a description and need controls for bolding, italicizing, and underlining."
   },
   {
     "frontMatter": {
@@ -883,7 +857,6 @@
     "frontMatter": {
       "name": "List",
       "category": "Lists and tables",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "bulleted lists",
         "numbered lists",
@@ -935,7 +908,6 @@
     "frontMatter": {
       "name": "Modal",
       "category": "Overlays",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "modal",
         "src",
@@ -998,13 +970,30 @@
         "list selection"
       ]
     },
-    "intro": "The option list component lets you create a list of grouped items that\nmerchants can pick from. This can include single selection or multiple selection\nof options. Option list usually appears in a popover, and sometimes in a modal\nor a sidebar. Option lists are styled differently than\n[choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu."
+    "intro": "The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu."
+  },
+  {
+    "frontMatter": {
+      "name": "Page actions",
+      "category": "Structure",
+      "keywords": [
+        "PageActions",
+        "bottom of page actions",
+        "bottom page actions",
+        "primary action",
+        "primary page actions",
+        "default page actions",
+        "save delete actions",
+        "save actions",
+        "delete actions"
+      ]
+    },
+    "intro": "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page."
   },
   {
     "frontMatter": {
       "name": "Page",
       "category": "Structure",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "page",
         "breadcrumbs",
@@ -1030,27 +1019,8 @@
   },
   {
     "frontMatter": {
-      "name": "Page actions",
-      "category": "Structure",
-      "keywords": [
-        "PageActions",
-        "bottom of page actions",
-        "bottom page actions",
-        "primary action",
-        "primary page actions",
-        "default page actions",
-        "save delete actions",
-        "save actions",
-        "delete actions"
-      ]
-    },
-    "intro": "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page."
-  },
-  {
-    "frontMatter": {
       "name": "Pagination",
       "category": "Navigation",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "lists",
         "detail",
@@ -1078,7 +1048,6 @@
     "frontMatter": {
       "name": "Popover",
       "category": "Overlays",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "interactive",
         "container",
@@ -1121,7 +1090,6 @@
     "frontMatter": {
       "name": "Radio button",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "RadioButton",
         "selection",
@@ -1136,13 +1104,12 @@
         "switch"
       ]
     },
-    "intro": "Use radio buttons to present each item in a list of options where merchants must\nmake a single selection."
+    "intro": "Use radio buttons to present each item in a list of options where merchants must make a single selection."
   },
   {
     "frontMatter": {
       "name": "Range slider",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "RangeSlider",
         "input",
@@ -1236,29 +1203,8 @@
   },
   {
     "frontMatter": {
-      "name": "Section header",
-      "category": "Lists and tables",
-      "platforms": ["android", "ios"],
-      "keywords": [
-        "SectionHeader",
-        "section header",
-        "sticky header",
-        "section divider",
-        "list group",
-        "list grouping",
-        "lists",
-        "sections",
-        "android",
-        "ios"
-      ]
-    },
-    "intro": "Use the section header component to group items in a list. It helps merchants to quickly see what items are related."
-  },
-  {
-    "frontMatter": {
       "name": "Select",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "on off",
         "switch",
@@ -1302,13 +1248,12 @@
         "adjuster"
       ]
     },
-    "intro": "Use to give merchants control over a feature or option that can be turned\non or off."
+    "intro": "Use to give merchants control over a feature or option that can be turned on or off."
   },
   {
     "frontMatter": {
       "name": "Sheet",
       "category": "Overlays",
-      "platforms": ["web"],
       "keywords": [
         "sheet",
         "modal",
@@ -1320,8 +1265,8 @@
         "web"
       ],
       "fullSizeExamples": true,
-      "notice": {
-        "status": "deprecated",
+      "status": {
+        "value": "Deprecated",
         "message": "The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions."
       }
     },
@@ -1377,7 +1322,6 @@
       "name": "Spinner",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "spinner",
         "loader",
@@ -1410,30 +1354,12 @@
         "layout"
       ]
     },
-    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical\ncentering. A stack is made of flexible items that wrap each of the stack’s\nchildren. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
-  },
-  {
-    "frontMatter": {
-      "name": "Stepper",
-      "category": "Forms",
-      "platforms": ["android", "ios"],
-      "keywords": [
-        "stepper",
-        "counter",
-        "numbered field",
-        "numberpicker",
-        "picker",
-        "android",
-        "ios"
-      ]
-    },
-    "intro": "Use stepper to increase or decrease a value in a counter field."
+    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
   },
   {
     "frontMatter": {
       "name": "Subheading",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "title bar",
         "top-level",
@@ -1452,7 +1378,6 @@
     "frontMatter": {
       "name": "Tabs",
       "category": "Navigation",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "layout",
         "navigate",
@@ -1470,7 +1395,6 @@
     "frontMatter": {
       "name": "Tag",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "indicator",
         "label",
@@ -1487,7 +1411,6 @@
     "frontMatter": {
       "name": "Text container",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
       "releasedIn": "1.9.0",
       "keywords": [
         "spacing",
@@ -1507,7 +1430,6 @@
     "frontMatter": {
       "name": "Text field",
       "category": "Forms",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "TextField",
         "input",
@@ -1551,13 +1473,12 @@
         "android"
       ]
     },
-    "intro": "A text field is an input field that merchants can type into. It has a range of\noptions and supports several text formats including numbers."
+    "intro": "A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers."
   },
   {
     "frontMatter": {
       "name": "Text style",
       "category": "Titles and text",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "TextStyle",
         "typographic",
@@ -1585,7 +1506,6 @@
     "frontMatter": {
       "name": "Thumbnail",
       "category": "Images and icons",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "photo",
         "picture",
@@ -1604,7 +1524,6 @@
     "frontMatter": {
       "name": "Toast",
       "category": "Feedback indicators",
-      "platforms": ["android", "ios", "web"],
       "keywords": [
         "toast",
         "flash message",
@@ -1639,7 +1558,7 @@
         "tap"
       ]
     },
-    "intro": "Tooltips are floating labels that briefly explain the function of a user\ninterface element. They can be triggered when merchants hover, focus, tap, or\nclick."
+    "intro": "Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click."
   },
   {
     "frontMatter": {

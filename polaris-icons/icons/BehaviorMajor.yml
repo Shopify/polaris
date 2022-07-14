@@ -1,4 +1,4 @@
-name: behavior
+name: Behavior
 set: major
 description: Used to represent a user clicking, or interacting with something.
 keywords:
