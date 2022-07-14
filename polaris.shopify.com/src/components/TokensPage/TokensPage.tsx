@@ -79,7 +79,7 @@ function TokensPage({ tokenGroup }: Props) {
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shape: tokensToFilteredArray(filter, allTokens.shape),
     spacing: tokensToFilteredArray(filter, allTokens.spacing),
-    typography: tokensToFilteredArray(filter, allTokens.typography),
+    typography: tokensToFilteredArray(filter, allTokens.font),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
 
