@@ -13,6 +13,7 @@ keywords:
   - integrate
   - facebook
   - social media
+  - twitter
 examples:
   - fileName: account-connection.tsx
     title: Default account connection
