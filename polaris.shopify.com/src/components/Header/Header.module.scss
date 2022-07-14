@@ -111,15 +111,17 @@
 
 .DarkModeToggle {
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
-  width: 3rem;
+  width: 2.25rem;
+  height: 2.25rem;
   margin: 0.5rem 0 0.5rem auto;
-  border-radius: var(--border-radius-800);
-  margin-right: -2rem;
+  border-radius: var(--border-radius-round);
+  margin-right: -1rem;
 
   @media screen and (max-width: $breakpointTablet) {
-    padding-right: 4rem;
-    padding-left: 3rem;
+    margin-right: 1rem;
   }
 }
 
