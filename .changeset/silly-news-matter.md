@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Added StatusActiveMajor icon
+Added `StatusActiveMajor` icon
