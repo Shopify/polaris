@@ -28,8 +28,7 @@ body {
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
     "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
-  --surface-code-light: #eaeaea;
-  --surface-code-dark: #2e2e30;
+  --surface-code-block: #2e2e30;
 
   // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
@@ -159,6 +158,7 @@ body,
   --surface-subdued: #f7f7f7;
   --surface-information: #dcf5f0;
   --surface-warning: #ffeceb;
+  --surface-code-inline: #eaeaea;
   --primary: #008060;
   --border-color: #dedede;
   --border-color-light: #ededed;
@@ -183,6 +183,7 @@ body,
   --surface-warning: #4c250f;
   --surface: #202021;
   --surface-subdued: #2e2e30;
+  --surface-code-inline: #3b3b3c;
   --primary: #1aab87;
   --border-color: #555;
   --border-color-light: #343434;
