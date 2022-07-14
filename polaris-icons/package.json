@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "4.23.0",
+  "version": "5.0.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
@@ -43,11 +43,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shopify/polaris-icons.git",
-    "directory": "packages/polaris-icons"
+    "url": "git+https://github.com/Shopify/polaris.git",
+    "directory": "polaris-icons"
   },
   "bugs": {
-    "url": "https://github.com/shopify/polaris-icons/issues"
+    "url": "https://github.com/shopify/polaris/issues"
   },
   "homepage": "https://polaris.shopify.com/icons",
   "devDependencies": {

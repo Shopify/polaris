@@ -1,10 +1,6 @@
 ---
 name: Card
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - layout
   - container
@@ -582,8 +578,8 @@ Use when you need further control over the spacing of your card sections.
 
 ## Related components
 
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/callout-card)
 
 ---
 
@@ -592,8 +588,6 @@ Use when you need further control over the spacing of your card sections.
 The required `title` prop gives the card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
-
-<!-- usageblock -->
 
 #### Do
 

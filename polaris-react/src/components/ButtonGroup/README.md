@@ -1,10 +1,6 @@
 ---
 name: Button group
 category: Actions
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ButtonGroup
   - choices
@@ -21,8 +17,6 @@ keywords:
   - horizontal arrangement of buttons
   - stacked
   - segmented control
-  - ios
-  - android
 ---
 
 # Button group
@@ -36,7 +30,7 @@ Button group displays multiple related actions stacked or in a horizontal row to
 Button groups should:
 
 - Only use buttons that follow the
-  [best practices outlined in the button component](https://polaris.shopify.com/components/actions/button#best-practices)
+  [best practices outlined in the button component](https://polaris.shopify.com/components/button#best-practices)
 - Group together calls to action that have a relationship
 - Be used with consideration that too many calls to action can cause merchants
   to be unsure of what to do next
@@ -93,5 +87,5 @@ Use to emphasize several buttons as a thematically-related set among other contr
 
 ## Related components
 
-- To learn how to use individual buttons, [use the button component](https://polaris.shopify.com/components/actions/button)
-- To embed an action or navigation into a line of text, [use the link component](https://polaris.shopify.com/components/navigation/link)
+- To learn how to use individual buttons, [use the button component](https://polaris.shopify.com/components/button)
+- To embed an action or navigation into a line of text, [use the link component](https://polaris.shopify.com/components/link)

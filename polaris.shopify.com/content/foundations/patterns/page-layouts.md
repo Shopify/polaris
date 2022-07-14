@@ -27,28 +27,16 @@ responsive across all screen sizes.
 
 ### App frame
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Screen from the Shopify admin, highlighting the top bar with logo, search and profile menu, and the navigation sidebar on the left](/public_images/layout-page/app-frame-diagram@2x.png)
-
-</div>
-</div>
+![Screen from the Shopify admin, highlighting the top bar with logo, search and profile menu, and the navigation sidebar on the left](/images/foundations/patterns/page-layouts/app-frame-diagram@2x.png)
 
 The app frame is the outer UI of the application. It holds global features like
 top-level navigation and search.
 
 ### Page component
 
-<div class="Spacing">
-<div class="Image Image--radius">
+![Screen highlighting the top of the page content and the side margins of the page](/images/foundations/patterns/page-layouts/page-frame-diagram@2x.png)
 
-![Screen highlighting the top of the page content and the side margins of the page](/public_images/layout-page/page-frame-diagram@2x.png)
-
-</div>
-</div>
-
-The [page component](/components/structure/page):
+The [page component](/components/page):
 
 - Acts as a container for the content of each specific page
 - Controls the horizontal margins of the content area
@@ -62,15 +50,9 @@ Page component variations:
 
 ### Layout component
 
-<div class="Spacing">
-<div class="Image Image--radius">
+![Admin screen highlighting a typical layout](/images/foundations/patterns/page-layouts/page-layout-diagram@2x.png)
 
-![Admin screen highlighting a typical layout](/public_images/layout-page/page-layout-diagram@2x.png)
-
-</div>
-</div>
-
-Within the page, the [layout component](/components/structure/layout) groups the
+Within the page, the [layout component](/components/layout) groups the
 content into sections. Sections control how the content flows into columns. Each
 section can be:
 
@@ -81,39 +63,27 @@ section can be:
 
 ### Arranging content in a layout
 
-<div class="Spacing">
-<div class="Image Image--radius">
+![Screen highlighting a layout with: page-level banner up top, primary and secondary sections in the middle, and footer actions below](/images/foundations/patterns/page-layouts/cards-in-layout-diagram@2x.png)
 
-![Screen highlighting a layout with: page-level banner up top, primary and secondary sections in the middle, and footer actions below](/public_images/layout-page/cards-in-layout-diagram@2x.png)
-
-</div>
-</div>
-
-Place page-level [banners](/components/feedback-indicators/banner) in a full-width section
+Place page-level [banners](/components/banner) in a full-width section
 at the top of the page.
 
-Stack [cards](/components/structure/card) in sections to separate the screen’s
+Stack [cards](/components/card) in sections to separate the screen’s
 main content into meaningful groups.
 
 For screens that represent an individual resource like a product or order, place
-[page actions](/components/structure/page-actions) in a full-width section at
+[page actions](/components/page-actions) in a full-width section at
 the bottom of the page.
 
 For pages that don’t have footer actions, the
-[footer help component](/components/navigation/footer-help) can offer a
+[footer help component](/components/footer-help) can offer a
 link to documentation about the current screen.
 
 ### Layout in a card
 
-<div class="Spacing">
-<div class="Image Image--radius">
+![Diagram showing the anatomy of a card component, showing the card title and header actions at the top, two sections in the middle, and footer below](/images/foundations/patterns/page-layouts/card-layout-diagram@2x.png)
 
-![Diagram showing the anatomy of a card component, showing the card title and header actions at the top, two sections in the middle, and footer below](/public_images/layout-page/card-layout-diagram@2x.png)
-
-</div>
-</div>
-
-[Cards](/components/structure/card) have a similar structure to the page as a
+[Cards](/components/card) have a similar structure to the page as a
 whole.
 
 - Cards often have a header, with a title and card-level actions on the right.
@@ -124,7 +94,7 @@ whole.
   actions on the right.
 
 For more details, including when to use header and footer actions, see the
-[card component](/components/structure/card).
+[card component](/components/card).
 
 ---
 
@@ -134,37 +104,19 @@ The structure described above applies to most screens in the Shopify admin, but
 other types of screens exist.
 
 **Embedded Shopify apps**, including sales channels, are contained within the
-normal app frame. However, they display the [page component](/components/structure/page) differently.
+normal app frame. However, they display the [page component](/components/page) differently.
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Typical embedded app settings screen, showing the embedded page header with app icon and breadcrumb.](/public_images/layout-page/embedded-page-diagram@2x.png)
-
-</div>
-</div>
+![Typical embedded app settings screen, showing the embedded page header with app icon and breadcrumb.](/images/foundations/patterns/page-layouts/embedded-page-diagram@2x.png)
 
 **Sell screens** present opt-in features that require additional payment.
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Shopify Capital sell screen. The standard app frame and page components contain a layout with a large illustration and introductory heading. This is followed by side-by-side cards with different offers, and a grid of selling points.](/public_images/layout-page/sell-screen@2x.png)
-
-</div>
-</div>
+![Shopify Capital sell screen. The standard app frame and page components contain a layout with a large illustration and introductory heading. This is followed by side-by-side cards with different offers, and a grid of selling points.](/images/foundations/patterns/page-layouts/sell-screen@2x.png)
 
 **Immersive editors** are for complex, interactive editing tasks. Immersive
 editors often show a live preview of what’s being worked on with tools for
 making changes arranged around the edges.
 
-<div class="Spacing">
-<div class="Image Image--radius Image--border">
-
-![Shopify theme editor screen, with specialized top bar and side bar offering edit controls, and a preview of the online store website in the middle](/public_images/layout-page/theme-editor-screen@2x.png)
-
-</div>
-</div>
+![Shopify theme editor screen, with specialized top bar and side bar offering edit controls, and a preview of the online store website in the middle](/images/foundations/patterns/page-layouts/theme-editor-screen@2x.png)
 
 ---
 
@@ -175,13 +127,7 @@ frame and below the page header.
 
 ### Single column, wide
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Generic customers list screen, showing how a wider layout can fit more content about each customer](/public_images/layout-page/page-frame-wide@2x.png)
-
-</div>
-</div>
+![Generic customers list screen, showing how a wider layout can fit more content about each customer](/images/foundations/patterns/page-layouts/page-frame-wide@2x.png)
 
 Use this layout for wide list or table views that benefit from more horizontal
 space.
@@ -201,13 +147,7 @@ space.
 
 ### Single column, narrow
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Example screen showing a complex form in a narrow layout](/public_images/layout-page/page-frame-narrow@2x.png)
-
-</div>
-</div>
+![Example screen showing a complex form in a narrow layout](/images/foundations/patterns/page-layouts/page-frame-narrow@2x.png)
 
 Use this layout to focus merchant attention on a screen dedicated to a single
 task, like filling out a form.
@@ -232,13 +172,7 @@ The main column is usually on the left, but can be on the right.
 The most common use of the primary/secondary layout is for showing the details
 for an individual object, such as an order or product.
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Product details page, with cards for product title, description and images in the left, primary column, and cards for publishing to sales channels and product tags in the secondary column](/public_images/layout-page/page-layout-details@2x.png)
-
-</div>
-</div>
+![Product details page, with cards for product title, description and images in the left, primary column, and cards for publishing to sales channels and product tags in the secondary column](/images/foundations/patterns/page-layouts/page-layout-details@2x.png)
 
 - Set the page component to its default width.
 - Place the most important content in a primary column.
@@ -259,13 +193,7 @@ for an individual object, such as an order or product.
 Another use of this layout is for a focused task where a summary is helpful,
 such as purchasing shipping labels for an order.
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![Create shipping labels screen, with configuration for the labels in the left, primary column, and summary with “Buy shipping labels” button in the secondary column](/public_images/layout-page/page-layout-task-with-summary@2x.png)
-
-</div>
-</div>
+![Create shipping labels screen, with configuration for the labels in the left, primary column, and summary with “Buy shipping labels” button in the secondary column](/images/foundations/patterns/page-layouts/page-layout-task-with-summary@2x.png)
 
 - Set the page component to its default width
 - Place the primary column on the left to hold the main UI
@@ -284,13 +212,7 @@ such as purchasing shipping labels for an order.
 
 ### Annotated
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![General settings page, with annotated sections for “Store details” and “Store address” visible](/public_images/layout-page/page-layout-annotated@2x.png)
-
-</div>
-</div>
+![General settings page, with annotated sections for “Store details” and “Store address” visible](/images/foundations/patterns/page-layouts/page-layout-annotated@2x.png)
 
 Annotated layouts group the content of the page into distinct sections that are
 only loosely related. This layout makes it easier to scan the page for a
@@ -339,30 +261,18 @@ placed.
 
 ## Small-scale layout
 
-The [stack](/components/structure/stack) component is useful for small-scale
+The [stack](/components/stack) component is useful for small-scale
 layout. It lets you arrange arbitrary components in a horizontal row or vertical
 stack. It’s also a useful component for applying
 [standard spacing](/design/spacing).
 
-<div class="Spacing">
-<div class="Image">
-
-![A text label, text value and badge arranged in a row with space between](/public_images/layout-page/stack-horizontal@2x.png)
-
-</div>
-</div>
+![A text label, text value and badge arranged in a row with space between](/images/foundations/patterns/page-layouts/stack-horizontal@2x.png)
 
 Stacks work especially well for a row of components where one item needs to grow
 to fill the available space. When space becomes constrained, the content will
 wrap by default.
 
-<div class="Spacing">
-<div class="Image">
-
-![A custom heading on the left (labeled “fill”) and UI control pushed to the right (labeled “auto”)](/public_images/layout-page/stack-with-fill@2x.png)
-
-</div>
-</div>
+![A custom heading on the left (labeled “fill”) and UI control pushed to the right (labeled “auto”)](/images/foundations/patterns/page-layouts/stack-with-fill@2x.png)
 
 ### Custom small-scale layouts
 
@@ -374,13 +284,7 @@ Custom small-scale layouts can often be done as part of a functional component,
 such as the timeline input shown here. It’s also possible to create dedicated
 small-scale layout components if the layout needs to be reusable.
 
-<div class="Spacing">
-<div class="Image">
-
-![A row of UI elements on a wide screen, showing one element pushing two others to the right. A second state of the same element is shown on a narrower screen. The two smaller elements have wrapped below the first, creating a new row. Now one element stretches to fill the row and pushes last element to the end.](/public_images/layout-page/layout-small-scale-custom@2x.png)
-
-</div>
-</div>
+![A row of UI elements on a wide screen, showing one element pushing two others to the right. A second state of the same element is shown on a narrower screen. The two smaller elements have wrapped below the first, creating a new row. Now one element stretches to fill the row and pushes last element to the end.](/images/foundations/patterns/page-layouts/layout-small-scale-custom@2x.png)
 
 ---
 
@@ -391,7 +295,7 @@ Organizing actions is as important as organizing content.
 If an action applies to the entire page:
 
 - Place it in the page header as a primary or secondary action
-- Use the [page actions](/components/structure/page-actions) component for
+- Use the [page actions](/components/page-actions) component for
   page-level delete and save actions
 
 If an action applies to something more specific, place it at the level of the

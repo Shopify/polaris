@@ -1,10 +1,6 @@
 ---
 name: Banner
 category: Feedback indicators
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - inform
   - update
@@ -65,7 +61,7 @@ Banners should:
   figuring out what they need to know and do.
 - Be limited to a few important calls to action with no more than one primary
   action.
-- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
+- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/callout-card) instead.
 
 To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
@@ -431,8 +427,8 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
 
 ## Related components
 
-- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/structure/callout-card)
-- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/callout-card)
+- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/card)
 
 ---
 
@@ -455,7 +451,7 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](https://polaris.shopify.com/components/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
 To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 

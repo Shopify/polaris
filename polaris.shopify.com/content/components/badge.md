@@ -13,8 +13,6 @@ keywords:
   - object status
   - status
   - alert
-  - ios
-  - android
 examples:
   - fileName: badge-default.tsx
     title: Default badge

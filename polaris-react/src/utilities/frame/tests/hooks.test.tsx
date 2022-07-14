@@ -27,7 +27,7 @@ describe('useFrame', () => {
   it('throws an error if context is not set', () => {
     const fn = () => mount(<Component />);
     expect(fn).toThrow(
-      'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/structure/frame for implementation instructions.',
+      'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/frame for implementation instructions.',
     );
   });
 });
