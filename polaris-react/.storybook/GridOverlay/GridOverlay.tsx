@@ -9,6 +9,7 @@ const COLUMNS_SMALL = 6;
 const COLUMNS_LARGE = 12;
 
 type Layer = 'above' | 'below';
+
 interface Props {
   inFrame?: boolean;
   maxWidth?: string;
@@ -18,20 +19,15 @@ interface Props {
 
 export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
   const {lgUp} = useBreakpoints();
-
+  const length = lgUp ? COLUMNS_LARGE : COLUMNS_SMALL;
   const className = classNames('GridOverlay', inFrame && 'inFrame');
-  const style = {
-    maxWidth,
-    zIndex: layer === 'above' || inFrame ? 1 : -1,
-  } as React.CSSProperties;
+  const style = {maxWidth, zIndex: layer === 'above' || inFrame ? 1 : -1};
 
   return (
     <div className={className} style={style}>
-      {Array.from({length: lgUp ? COLUMNS_LARGE : COLUMNS_SMALL}).map(
-        (_, index) => (
-          <div key={index} className="Cell" />
-        ),
-      )}
+      {Array.from({length}).map((_, index) => (
+        <div key={index} className="Cell" />
+      ))}
       {children}
     </div>
   );
