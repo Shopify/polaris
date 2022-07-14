@@ -70,7 +70,7 @@ const Examples = (props: Props) => {
         label="Component example"
         id="Component-Example-Select"
         options={options}
-        selected={String(options[currentIndex])}
+        selected={options[currentIndex].value}
         onChange={handleSelection}
       />
       {description ? <p>{description}</p> : null}
