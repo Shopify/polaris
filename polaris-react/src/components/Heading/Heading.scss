@@ -5,7 +5,7 @@
   margin: 0;
 
   @media print {
-    font-size: var(--p-font-size-3);
-    line-height: var(--p-line-height-1);
+    font-size: var(--p-font-size-100);
+    line-height: var(--p-font-line-height-1);
   }
 }

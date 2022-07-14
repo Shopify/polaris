@@ -20,9 +20,9 @@ $nav-animation-variables: (
 
 @mixin nav-item-attributes {
   @include unstyled-button;
-  font-size: var(--p-font-size-5);
+  font-size: var(--p-font-size-200);
   font-weight: var(--p-font-weight-semibold);
-  line-height: var(--p-line-height-6);
+  line-height: 36px;
   display: flex;
   flex-grow: 1;
   align-items: flex-start;
@@ -57,9 +57,9 @@ $nav-animation-variables: (
   }
 
   @include breakpoint-after($nav-min-window-corrected) {
-    font-size: var(--p-font-size-5);
+    font-size: var(--p-font-size-200);
     font-weight: var(--p-font-weight-medium);
-    line-height: var(--p-line-height-5);
+    line-height: var(--p-font-line-height-5);
     padding-left: var(--p-space-3);
   }
 
@@ -161,8 +161,8 @@ $nav-animation-variables: (
   flex: 1 1 auto;
   margin-top: calc(var(--p-space-2) + var(--p-space-05));
   margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
-  line-height: var(--p-line-height-2);
-  font-size: var(--p-font-size-3);
+  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-100);
 
   @include breakpoint-after($nav-min-window-corrected) {
     margin-top: var(--p-space-1);
@@ -170,8 +170,8 @@ $nav-animation-variables: (
   }
 
   @include breakpoint-before($nav-min-window-corrected) {
-    font-size: var(--p-font-size-4);
-    line-height: var(--p-line-height-2);
+    font-size: 15px;
+    line-height: var(--p-font-line-height-2);
   }
 }
 

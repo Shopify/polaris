@@ -7,7 +7,7 @@ import {colors as lightColorScheme} from './token-groups/color.light';
 import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
 import {spacing} from './token-groups/spacing';
-import {typography} from './token-groups/typography';
+import {font} from './token-groups/font';
 import {zIndex} from './token-groups/zIndex';
 import {tokensToRems} from './utilities';
 
@@ -61,7 +61,7 @@ export interface Tokens {
   motion: TokenGroup;
   shape: TokenGroup;
   spacing: TokenGroup;
-  typography: TokenGroup;
+  font: TokenGroup;
   zIndex: TokenGroup;
 }
 
@@ -73,7 +73,7 @@ export const tokens = createTokens({
   motion,
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
-  typography: tokensToRems(typography),
+  font: tokensToRems(font),
   zIndex,
 });
 
