@@ -12,19 +12,23 @@ keywords:
 
 # Spacing
 
-Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.
+Space is the distance between objects in your design. It should be used to organize information in a way that is familiar and easy to scan, while helping reinforce its purpose.
 
 ---
 
 ## Principles
 
-### Create visual rhythm
+### Make content easy to understand.
 
-We use incrementally measured spacing to create harmonious arrangements of components and text. This gives the elements a predictable rhythm, which makes the experience as a whole feel intentional and well designed.
+Guides merchants' eyes, rather than expecting them to decipher all the information.
 
-### Precise but flexible
+### Augment the purpose of a page.
 
-Beyond mathematical precision, spacing also reacts to the objects it surrounds, giving more space to larger objects, less to small. Optical adjustments can also be made if an element looks off and the spacing needs a nudge to make things feel right.
+Make sure the information is organized in a way that makes clear its function.
+
+### Make it feel integrated.
+
+Merchants experience pages, space should feel like a small part of a bigger system. Only introduce uniqueness when the benefits massively outweigh the cost of inconsistency.
 
 ---
 
