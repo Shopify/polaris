@@ -3,89 +3,98 @@ import { TOCItem } from "../../utils/hooks";
 import { className, slugify } from "../../utils/various";
 import styles from "./TOC.module.scss";
 
-const HEADING_THRESHOLD = 120;
-
 interface Props {
   items: TOCItem[];
 }
 
-function getHeaderThreshold(): number {
-  const headerHeight = getComputedStyle(
-    document.documentElement
-  ).getPropertyValue("--header-height");
-  const headerMargin = getComputedStyle(
-    document.documentElement
-  ).getPropertyValue("--header-margin");
+function getContentTopMargin(): number {
+  const rootStyles = getComputedStyle(document.documentElement);
+  const headerHeight = rootStyles.getPropertyValue("--header-height");
+  const headerMargin = rootStyles.getPropertyValue("--header-margin");
   const headerThreshold = parseInt(headerHeight) + parseInt(headerMargin);
-  console.log({ headerHeight, headerMargin });
   return headerThreshold;
+}
+
+function scanPageForCurrentHeading(): string | void {
+  const contentTopMargin = getContentTopMargin();
+  const headings = document.querySelectorAll("#main h2, #main h3");
+  let currentHeading: Element | null = null;
+
+  for (let i = headings.length - 1; i >= 0; i--) {
+    const heading = headings[i];
+    const rect = heading.getBoundingClientRect();
+    currentHeading = heading;
+    if (rect.top < contentTopMargin) {
+      break;
+    }
+  }
+
+  if (!currentHeading && headings.length > 0) {
+    currentHeading = headings[0];
+  }
+
+  if (currentHeading) {
+    const id = currentHeading.getAttribute("id");
+    if (id) {
+      return id;
+    }
+  }
 }
 
 function TOC({ items }: Props) {
   const isNested = !!items.find((item) => item.children.length > 0);
   const [idOfCurrentHeading, setIdOfCurrentHeading] = useState<string>();
   const temporarilyIgnoreScrolling = useRef(false);
+  const lastScrollY = useRef(0);
+
+  function waitForScrollToStop() {
+    function checkIfStillScrolling() {
+      if (lastScrollY.current !== window.scrollY) {
+        // Don't check too often (e.g. using animationFrame)
+        // because the scrollY diff between frames might be
+        // less than 1 if rounded.
+        setTimeout(checkIfStillScrolling, 100);
+      } else {
+        temporarilyIgnoreScrolling.current = false;
+      }
+      lastScrollY.current = window.scrollY;
+    }
+    // Give browser some time to start scrolling
+    setTimeout(checkIfStillScrolling, 100);
+  }
 
   function scrollIntoView(id: string) {
-    temporarilyIgnoreScrolling.current = true;
     setIdOfCurrentHeading(id);
-    const headerThreshold = getHeaderThreshold();
+    const contentTopMargin = getContentTopMargin();
     const targetEl = document.getElementById(id);
     if (targetEl) {
-      const top =
-        window.scrollY +
-        targetEl.getBoundingClientRect().top -
-        headerThreshold +
-        1;
-      window.scrollTo({ top, behavior: "smooth" });
+      const { top: distanceFromViewportTop } = targetEl.getBoundingClientRect();
+      const scrollY =
+        window.scrollY + distanceFromViewportTop - contentTopMargin + 1;
 
       history.pushState({}, "", `#${id}`);
 
-      setTimeout(() => {
-        temporarilyIgnoreScrolling.current = false;
-      }, 1000);
-
-      return false;
+      temporarilyIgnoreScrolling.current = true;
+      window.scrollTo({ top: scrollY, behavior: "smooth" });
+      waitForScrollToStop();
     }
   }
 
-  const findCurrentHeading = () => {
-    if (temporarilyIgnoreScrolling.current === true) {
-      return;
+  function detectCurrentHeading() {
+    if (temporarilyIgnoreScrolling.current) return;
+    const id = scanPageForCurrentHeading();
+    if (id) {
+      setIdOfCurrentHeading(id);
     }
-    const headings = document.querySelectorAll("#main h2, #main h3");
-    let currentHeading: Element | null = null;
-
-    for (let i = headings.length - 1; i >= 0; i--) {
-      const heading = headings[i];
-      const rect = heading.getBoundingClientRect();
-      currentHeading = heading;
-      if (rect.top < HEADING_THRESHOLD) {
-        break;
-      }
-    }
-
-    if (!currentHeading && headings.length > 0) {
-      currentHeading = headings[0];
-    }
-
-    if (currentHeading) {
-      const id = currentHeading.getAttribute("id");
-      if (id) {
-        setIdOfCurrentHeading(id);
-      }
-    }
-  };
+  }
 
   useEffect(() => {
-    findCurrentHeading();
-  }, [items]);
-
-  useEffect(() => {
-    findCurrentHeading();
-    window.addEventListener("scroll", findCurrentHeading);
-    return () => window.removeEventListener("scroll", findCurrentHeading);
+    detectCurrentHeading();
+    window.addEventListener("scroll", detectCurrentHeading);
+    return () => window.removeEventListener("scroll", detectCurrentHeading);
   }, []);
+
+  useEffect(() => detectCurrentHeading(), [items]);
 
   return (
     <div className={className(styles.TOC, isNested && styles.isNested)}>
