@@ -118,7 +118,12 @@
   line-height: var(--p-font-line-height-3);
 }
 
-.monospaced {
+.code {
+  display: inline-block;
+  background-color: var(--p-surface-subdued);
+  border-radius: var(--p-border-radius-base);
+  box-shadow: inset 0 0 0 1px var(--p-border-subdued);
   font-family: var(--p-font-family-mono);
   font-size: var(--p-font-size-100);
+  padding: 0 var(--p-space-1);
 }
