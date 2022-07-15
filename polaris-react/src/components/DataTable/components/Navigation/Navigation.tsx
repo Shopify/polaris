@@ -14,6 +14,7 @@ export interface NavigationProps {
   fixedFirstColumn?: boolean;
   navigateTableLeft?(): void;
   navigateTableRight?(): void;
+  setRef?: (ref: HTMLDivElement | null) => void;
 }
 
 export function Navigation({
@@ -23,6 +24,7 @@ export function Navigation({
   navigateTableLeft,
   navigateTableRight,
   fixedFirstColumn,
+  setRef = () => {},
 }: NavigationProps) {
   const i18n = useI18n();
 
@@ -47,7 +49,7 @@ export function Navigation({
   );
 
   return (
-    <div className={styles.Navigation}>
+    <div className={styles.Navigation} ref={setRef}>
       <Button
         plain
         icon={ChevronLeftMinor}
