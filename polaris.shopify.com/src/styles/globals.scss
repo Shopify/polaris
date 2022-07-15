@@ -4,20 +4,18 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-// Place CSS variables on body (instead of :root) so that
-// we can utilize the .dark-mode class to flip the colors
-body {
+:root {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 64px;
   --narrow-content-width: 720px;
-  --header-margin: 4.5rem;
+  --header-height: 64px; // Parsed by JS. Define in px.
+  --header-margin: 76px; // Parsed by JS. Define in px.
 
   @media screen and (max-width: $breakpointDesktopLarge) {
-    --header-margin: 3rem;
+    --header-margin: 48px; // Parsed by JS. Define in px.
   }
 
   @media screen and (max-width: $breakpointDesktop) {
-    --header-margin: 2rem;
+    --header-margin: 32px; // Parsed by JS. Define in px.
   }
 
   --duration-200: 200ms;
