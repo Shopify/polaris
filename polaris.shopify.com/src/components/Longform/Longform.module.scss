@@ -178,10 +178,18 @@
     border-radius: 0.5rem;
     width: 100%;
 
+    tr:nth-child(even) {
+      background: var(--surface-subdued)
+    }
+
+    tr:nth-child(odd) {
+      background: var(--surface)
+    }
+
     th {
       font-weight: var(--font-weight-600);
       text-align: left;
-      background-color: var(--surface-subdued);
+      background-color: var(--p-surface-hovered);
 
       &:first-child {
         border-top-left-radius: 0.5rem;
@@ -194,8 +202,8 @@
 
     th,
     td {
-      padding: 0.6rem 1rem;
-      border-bottom: var(--border);
+      padding: 0.6rem 2.8rem;
+      // border-bottom: var(--border);
     }
 
     tbody {
