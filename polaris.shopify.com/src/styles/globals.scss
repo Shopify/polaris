@@ -10,11 +10,11 @@
   --header-height: 64px; // Parsed by JS. Define in px.
   --header-margin: 76px; // Parsed by JS. Define in px.
 
-  @media screen and (max-width: $breakpointDesktopLarge) {
+  @media screen and (max-width: $breakpointDesktop) {
     --header-margin: 48px; // Parsed by JS. Define in px.
   }
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointMobile) {
     --header-margin: 32px; // Parsed by JS. Define in px.
   }
 

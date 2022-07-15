@@ -27,11 +27,12 @@
   display: flex;
 
   @media screen and (max-width: $breakpointDesktop) {
-    --content-padding-x: 0;
+    --content-padding-x: 2rem;
   }
 
   @media screen and (max-width: $breakpointTablet) {
     display: block;
+    --content-padding-x: 0;
   }
 }
 
@@ -49,7 +50,7 @@
 
   @include layout-scrollbars();
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     display: none;
   }
 }
@@ -68,6 +69,11 @@
     .narrow,
     .showTOC & {
       padding: var(--header-margin) var(--content-padding-x);
+
+      @media screen and (max-width: $breakpointTablet) {
+        padding: var(--header-margin) 0 var(--header-margin)
+          var(--content-padding-x);
+      }
     }
   }
 }
