@@ -199,9 +199,6 @@ export type {IndexTableProps} from './components/IndexTable';
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {InlineCode} from './components/InlineCode';
-export type {InlineCodeProps} from './components/InlineCode';
-
 export {InlineError, errorTextID} from './components/InlineError';
 export type {InlineErrorProps} from './components/InlineError';
 
