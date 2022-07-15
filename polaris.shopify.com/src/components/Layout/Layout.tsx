@@ -36,15 +36,13 @@ function Layout({
         {navItems && <Nav navItems={navItems} />}
       </div>
 
-      <article className={styles.Post}>
-        <div className={styles.PostInner} id="main">
-          {title && (
-            <Longform>
-              <h1>{title}</h1>
-            </Longform>
-          )}
-          {children}
-        </div>
+      <article className={styles.Post} id="main">
+        {title && (
+          <Longform>
+            <h1>{title}</h1>
+          </Longform>
+        )}
+        {children}
       </article>
 
       {showTOC && (
