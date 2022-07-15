@@ -22,7 +22,7 @@ keywords:
 examples:
   - fileName: link-defaults.tsx
     title: Default links
-    description: Use for text links in larger spans of text.
+    description: Use for text links inside a paragraph or standalone text. Default links open in the same browser tab.
   - fileName: link-monochrome.tsx
     title: Monochrome link
     description: Use for text links that are the same color as the surrounding text.
@@ -31,9 +31,7 @@ examples:
   - fileName: link-external.tsx
     title: External link
     description: >-
-      Use for text links that should open in a new browser tab (or window,
-      depending on the merchant’s browser settings). Use this only when opening
-      a page in the same tab might disrupt the merchant’s workflow.
+      Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when using a default link might disrupt the merchants workflow.
 ---
 
 # Link
@@ -58,13 +56,15 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 - a more cohesive visual experience for sighted users
 - products that are easier to maintain at scale
 
-### Open a new tab or window only when necessary
+### Open a new tab only when necessary
 
-Use caution when opening a new tab or window as it can be disorienting. However, there are some cases where it does makes sense to open a new tab or window, for example:
+Use default links whenever possible to avoid disorienting merchants and causing accessibility problems by opening a new tab.
 
-- Navigating to a page with context specific information, like a help center article
+External links should be used when:
 
-When using an external link, use the appropriate props and labels so screen readers can recognize if a link will open in a new tab.
+- Navigating to a page with information that’s specific to a task or workflow, like a help center article
+- If the merchant is in the middle of a task or workflow, like creating a product
+- If the merchant is navigating to a page outside the Shopify admin
 
 ### Unstyled links
 
