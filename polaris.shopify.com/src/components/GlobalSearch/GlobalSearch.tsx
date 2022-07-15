@@ -129,6 +129,7 @@ function GlobalSearch({}: Props) {
 
       case "Enter":
         setIsOpen(false);
+        evt.preventDefault();
         const url = resultsInRenderedOrder[activeDescendant].url;
         router.push(url);
         break;
