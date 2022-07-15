@@ -20,11 +20,13 @@ function scanPageForCurrentHeading(): string | void {
   const headings = document.querySelectorAll("#main h2, #main h3");
   let currentHeading: Element | null = null;
 
+  // Scan the headings from the bottom. The heading that comes first
+  // after the "content top margin" is the current heading.
   for (let i = headings.length - 1; i >= 0; i--) {
     const heading = headings[i];
-    const rect = heading.getBoundingClientRect();
+    const { top } = heading.getBoundingClientRect();
     currentHeading = heading;
-    if (rect.top < contentTopMargin) {
+    if (top < contentTopMargin) {
       break;
     }
   }
@@ -96,6 +98,19 @@ function TOC({ items }: Props) {
 
   useEffect(() => detectCurrentHeading(), [items]);
 
+  const Link = ({ id, name }: { id: string; name: string }) => (
+    <a
+      href={`#${id}`}
+      data-is-current={id === idOfCurrentHeading}
+      onClick={(evt) => {
+        scrollIntoView(id);
+        evt.preventDefault();
+      }}
+    >
+      {name}
+    </a>
+  );
+
   return (
     <div className={className(styles.TOC, isNested && styles.isNested)}>
       <ul>
@@ -103,32 +118,14 @@ function TOC({ items }: Props) {
           const id = slugify(name);
           return (
             <li key={name}>
-              <a
-                href={`#${id}`}
-                data-is-current={id === idOfCurrentHeading}
-                onClick={(evt) => {
-                  scrollIntoView(id);
-                  evt.preventDefault();
-                }}
-              >
-                {name}
-              </a>
+              <Link id={id} name={name} />
               {children.length > 0 && (
                 <ul>
                   {children.map((child) => {
                     const id = slugify(child.name);
                     return (
                       <li key={child.name}>
-                        <a
-                          href={`#${id}`}
-                          data-is-current={id === idOfCurrentHeading}
-                          onClick={(evt) => {
-                            scrollIntoView(id);
-                            evt.preventDefault();
-                          }}
-                        >
-                          {child.name}
-                        </a>
+                        <Link id={id} name={child.name} />
                       </li>
                     );
                   })}
