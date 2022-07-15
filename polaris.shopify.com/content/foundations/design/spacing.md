@@ -32,9 +32,9 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 
 ---
 
-## The spacing system
+## Polaris size units
 
-All spacing for components and typography is done in increments of 4 pixels. This forms the basic unit of measurement for spacing.
+All measurements used across the experience (space, width, height, etc)  must reference Polaris size units to guarantee visual consistency and balance.
 
 <!-- centeredcontent -->
 
