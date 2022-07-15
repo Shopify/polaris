@@ -5,7 +5,10 @@ import { withPolarisExample } from "../../components/PolarisExamplePage";
 function LinkExample() {
   return (
     <FooterHelp>
-      Learn more about <Link url="https://help.shopify.com/manual" external>orders</Link>
+      Learn more about{" "}
+      <Link url="https://help.shopify.com/manual" external>
+        orders
+      </Link>
     </FooterHelp>
   );
 }

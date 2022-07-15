@@ -40,15 +40,6 @@ describe('<Link />', () => {
   });
 
   describe('external link', () => {
-    it('has a trailing icon', () => {
-      const link = mountWithApp(
-        <Link url="https://help.shopify.com/" external>
-          Shopify Help Center
-        </Link>,
-      );
-      expect(link).toContainReactComponent(Icon);
-    });
-
     it('informs screen readers that it opens in a new window', () => {
       const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
