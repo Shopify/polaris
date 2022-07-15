@@ -1,5 +1,21 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- [#6550](https://github.com/Shopify/polaris/pull/6550) [`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a) Thanks [@ErickTamayo](https://github.com/ErickTamayo)! - Replaced SortAscendingMajor and SortDescendingMajor icons. Changed sorting icons in the Data Table
+
+### Minor Changes
+
+- [`54ba0f716`](https://github.com/Shopify/polaris/commit/54ba0f716088ae36e7fae08d2768d2541b9107b6) Thanks [@alex-page](https://github.com/alex-page)! - Added id to the metadata value to reduce need to transform objects
+
+* [#6484](https://github.com/Shopify/polaris/pull/6484) [`9269e5ee6`](https://github.com/Shopify/polaris/commit/9269e5ee62171cf7b8ced1b9edef68da3bcd9dd2) Thanks [@martenbjork](https://github.com/martenbjork)! - Change icon names to start with an uppercase
+
+### Patch Changes
+
+- [#6591](https://github.com/Shopify/polaris/pull/6591) [`9426d0108`](https://github.com/Shopify/polaris/commit/9426d01088930c761a4ab14c5a94008f129e70d0) Thanks [@qw-in](https://github.com/qw-in)! - Update polaris icons website url
+
 ## 4.23.0
 
 ### Minor Changes

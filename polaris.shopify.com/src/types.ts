@@ -89,6 +89,28 @@ export enum Breakpoints {
 }
 
 export type Status = {
-  value: string;
+  value: "deprecated" | "alpha" | "warning" | "information";
   message: string;
 };
+
+export interface PropsForComponent {
+  interfaceName: string;
+  props: {
+    name: string;
+    type: string;
+    comment?: string;
+    optional: boolean;
+    deprecated: boolean;
+  }[];
+}
+
+export interface QuickGuideRow {
+  question: string;
+  answer: string;
+}
+
+export interface QuickGuide {
+  title: string;
+  queryParam: string;
+  rows: QuickGuideRow[];
+}

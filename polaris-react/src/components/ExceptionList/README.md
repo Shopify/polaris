@@ -47,7 +47,7 @@ For error states, exception lists should:
 
 - Either tell merchants how to solve the problem or be attached to an item that lets merchants fix the problem
 
-If placed next to an item in a [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list), exceptions lists should:
+If placed next to an item in a [resource list](https://polaris.shopify.com/components/resource-list), exceptions lists should:
 
 - Make the entire list item clickable because the exception list itself isn’t clickable
 
@@ -55,11 +55,11 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 #### Do
 
-- ![Exception list being used inside a resource list item](/public_images/exception-list/do-exception-list@2x.png)
+- ![Exception list being used inside a resource list item](/images/components/exception-list/do-exception-list@2x.png)
 
 #### Don’t
 
-- ![Exception list being used in place of a banner](/public_images/exception-list/dont-exception-list@2x.png)
+- ![Exception list being used in place of a banner](/images/components/exception-list/dont-exception-list@2x.png)
 
 <!-- end -->
 
@@ -90,8 +90,8 @@ Use icons to add clarity or assist in visualizing the meaning
 
 <!-- * To display an error in a card or section, use the [contextual banner]() component -->
 
-- To display an error at the top of a page, or to indicate multiple errors in a form, use the [banner](https://polaris.shopify.com/components/feedback-indicators/banner) component
-- Exceptions lists are often used in the [resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list) component to display conditional content
+- To display an error at the top of a page, or to indicate multiple errors in a form, use the [banner](https://polaris.shopify.com/components/banner) component
+- Exceptions lists are often used in the [resource list](https://polaris.shopify.com/components/resource-list) component to display conditional content
 
 ---
 

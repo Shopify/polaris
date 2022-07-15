@@ -109,7 +109,7 @@ Alt text should always be written in plain text.
 
 ### Icons
 
-[Icons](/components/images-and-icons/icon) that could be misinterpreted need an
+[Icons](/components/icon) that could be misinterpreted need an
 explanation, so use the `aria-label` attribute.
 
 ```html

@@ -18,8 +18,6 @@ keywords:
   - decrease
   - input
   - fields
-  - android
-  - ios
 examples:
   - fileName: text-style-subdued.tsx
     title: Subdued text style

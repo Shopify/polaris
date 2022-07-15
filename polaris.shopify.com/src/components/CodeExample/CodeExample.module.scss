@@ -62,8 +62,7 @@
 }
 
 .Code {
-  font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-    Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   white-space: pre;
   padding: 0.5rem 0.66rem;
   font-size: 14px;

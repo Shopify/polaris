@@ -1,10 +1,6 @@
 ---
 name: Description list
 category: Lists and tables
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DescriptionList
   - glossary
@@ -15,8 +11,6 @@ keywords:
   - text lists
   - list of terms
   - term explaination
-  - android
-  - ios
 ---
 
 # Description list
@@ -133,7 +127,7 @@ Use when you need to present merchants with a list of items or terms alongside d
 
 ## Related components
 
-- To create a list of actions or navigation, [use the action list component](https://polaris.shopify.com/components/actions/action-list).
+- To create a list of actions or navigation, [use the action list component](https://polaris.shopify.com/components/action-list).
 
 ---
 

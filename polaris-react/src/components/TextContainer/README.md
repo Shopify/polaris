@@ -1,10 +1,6 @@
 ---
 name: Text container
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 releasedIn: 1.9.0
 keywords:
   - spacing
@@ -14,8 +10,6 @@ keywords:
   - vertical
   - margin
   - padding
-  - android
-  - ios
 ---
 
 # Text container
@@ -85,4 +79,4 @@ Use the loose spacing option to separate concepts that are independent of each o
 
 ## Related components
 
-- For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](https://polaris.shopify.com/components/structure/stack).
+- For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](https://polaris.shopify.com/components/stack).

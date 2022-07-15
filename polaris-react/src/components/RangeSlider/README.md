@@ -1,10 +1,6 @@
 ---
 name: Range slider
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RangeSlider
   - input
@@ -356,7 +352,7 @@ function DualThumbRangeSliderExample() {
 
 ## Related components
 
-- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
+- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/text-field)
 
 ---
 

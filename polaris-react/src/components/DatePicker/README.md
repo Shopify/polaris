@@ -1,10 +1,6 @@
 ---
 name: Date picker
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DatePicker
   - month
@@ -210,7 +206,7 @@ function DatePickerExample() {
 
 Some users might find interacting with date pickers to be challenging. When you use the date picker component, always give users the option to enter the date using a text field component as well.
 
-If you use the date picker within a [popover component](/components/overlays/popover), then use a button to trigger the popover instead of displaying the popover when the text input gets focus. This gives users more control over their experience.
+If you use the date picker within a [popover component](/components/popover), then use a button to trigger the popover instead of displaying the popover when the text input gets focus. This gives users more control over their experience.
 
 ### Keyboard support
 

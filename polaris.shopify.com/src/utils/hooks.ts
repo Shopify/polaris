@@ -1,7 +1,7 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { slugify } from "./various";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+import { ParsedUrlQueryInput } from "querystring";
 
 const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
 
@@ -106,4 +106,28 @@ export function useMedia(media: string): boolean {
   }, [media]);
 
   return isActive;
+}
+
+export function useQueryParams() {
+  const router = useRouter();
+
+  const setQueryParams = (queryParams: ParsedUrlQueryInput) => {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          ...queryParams,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+  return {
+    routerIsReady: router.isReady,
+    currentParams: { ...router.query },
+    setQueryParams,
+  };
 }
