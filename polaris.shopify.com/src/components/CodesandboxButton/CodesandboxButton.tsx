@@ -77,7 +77,7 @@ const CodesandboxButton = (props: Props) => {
       <input type="hidden" name="parameters" value={parameters} />
       <input type="hidden" name="query" value="module=App.js" />
       <button type="submit" className={styles.Button}>
-        Edit in Codesandbox
+        Edit in CodeSandbox
       </button>
     </form>
   );
