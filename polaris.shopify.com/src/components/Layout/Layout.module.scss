@@ -26,6 +26,10 @@
   --content-padding-x: 3.5rem;
   display: flex;
 
+  @media screen and (max-width: $breakpointDesktop) {
+    --content-padding-x: 0;
+  }
+
   @media screen and (max-width: $breakpointTablet) {
     display: block;
     --content-padding-x: 0;
