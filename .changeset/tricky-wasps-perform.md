@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Fix mobile padding on mobile devices
+Fix background color of inline code examples
