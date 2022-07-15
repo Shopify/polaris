@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TOCItem } from "../../utils/hooks";
-import { className, getIdGenerator, slugify } from "../../utils/various";
+import { className } from "../../utils/various";
 import styles from "./TOC.module.scss";
 
 interface Props {

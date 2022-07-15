@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
 
 import SiteLaunchBanner from "../SiteLaunchBanner";
 import Header from "../Header";
-
-import styles from "./Page.module.scss";
 
 interface Props {
   children: React.ReactNode;
