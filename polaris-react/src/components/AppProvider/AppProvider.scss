@@ -10,8 +10,12 @@
 
 html,
 body {
-  @include text-style-body;
   @include text-emphasis-normal;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: initial;
+  text-transform: initial;
 }
 
 html,
