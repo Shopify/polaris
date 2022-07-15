@@ -20,8 +20,6 @@
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
-  --focus-outline: 0 0 0 2px var(--text-strong);
-  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
     "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
@@ -99,6 +97,12 @@
   --border-radius-700: 12px;
   --border-radius-800: 14px;
   --border-radius-round: 1000px;
+}
+
+.light-mode,
+.dark-mode {
+  --focus-outline: 0 0 0 2px var(--text-strong);
+  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
 }
 
 * {

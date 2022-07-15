@@ -1,5 +1,24 @@
 @import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+
+@mixin layout-scrollbars {
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--text-subdued);
+    }
+  }
+}
 
 .Layout {
   --nav-width: 16rem;
@@ -25,23 +44,7 @@
   overflow: auto;
   box-shadow: inset -1px 0 var(--border-color-light);
 
-  &::-webkit-scrollbar {
-    width: 1px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: transparent;
-  }
-
-  &:hover {
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--text-subdued);
-    }
-  }
+  @include layout-scrollbars();
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
@@ -76,7 +79,7 @@
   overscroll-behavior: contain;
   overflow: auto;
   border-left: 1px solid var(--border-color-light);
-  @include custom-scrollbars;
+  @include layout-scrollbars();
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;

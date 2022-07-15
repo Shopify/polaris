@@ -4,7 +4,7 @@ import Prism from "prismjs";
 import React from "react";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { slugify } from "../../utils/various";
+import { getIdGenerator, slugify } from "../../utils/various";
 
 interface Props {
   text: string;
@@ -12,6 +12,8 @@ interface Props {
 }
 
 function Markdown({ text, skipH1 }: Props) {
+  const idGenerator = getIdGenerator();
+
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, { tablePipeAlign: true }]]}
@@ -22,14 +24,14 @@ function Markdown({ text, skipH1 }: Props) {
         },
         h2: ({ children }) => {
           if (children.length === 1 && typeof children[0] === "string") {
-            return <h2 id={slugify(children[0])}>{children}</h2>;
+            return <h2 id={idGenerator.get(children[0])}>{children}</h2>;
           } else {
             return <h2>{children}</h2>;
           }
         },
         h3: ({ children }) => {
           if (children.length === 1 && typeof children[0] === "string") {
-            return <h3 id={slugify(children[0])}>{children}</h3>;
+            return <h3 id={idGenerator.get(children[0])}>{children}</h3>;
           } else {
             return <h3>{children}</h3>;
           }

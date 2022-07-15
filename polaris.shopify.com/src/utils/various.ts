@@ -92,3 +92,26 @@ export const className = (
 ): string => {
   return classNames.filter((className) => Boolean(className)).join(" ");
 };
+
+type IdGenerator = {
+  get: (string: string) => string;
+};
+
+export const getIdGenerator = (): IdGenerator => {
+  let cache: { [key: string]: number } = {};
+
+  const idGenerator = {
+    get: function (string: string) {
+      const id = slugify(string);
+      if (typeof cache[id] !== "undefined") {
+        cache[id]++;
+        return `${id}-${cache[id]}`;
+      } else {
+        cache[id] = 1;
+        return id;
+      }
+    },
+  };
+
+  return idGenerator;
+};

@@ -2,8 +2,12 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
-.Banner {
+.TokensPage {
   margin-top: var(--header-margin);
+  margin-bottom: var(--header-margin);
+}
+
+.Banner {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

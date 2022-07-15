@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TOCItem } from "../../utils/hooks";
-import { className, slugify } from "../../utils/various";
+import { className, getIdGenerator, slugify } from "../../utils/various";
 import styles from "./TOC.module.scss";
 
 interface Props {
@@ -98,12 +98,12 @@ function TOC({ items }: Props) {
 
   useEffect(() => detectCurrentHeading(), [items]);
 
-  const Link = ({ id, name }: { id: string; name: string }) => (
+  const Link = ({ toId, name }: { toId: string; name: string }) => (
     <a
-      href={`#${id}`}
-      data-is-current={id === idOfCurrentHeading}
+      href={`#${toId}`}
+      data-is-current={toId === idOfCurrentHeading}
       onClick={(evt) => {
-        scrollIntoView(id);
+        scrollIntoView(toId);
         evt.preventDefault();
       }}
     >
@@ -114,18 +114,16 @@ function TOC({ items }: Props) {
   return (
     <div className={className(styles.TOC, isNested && styles.isNested)}>
       <ul>
-        {items.map(({ name, children }) => {
-          const id = slugify(name);
+        {items.map(({ name, id, children }) => {
           return (
             <li key={name}>
-              <Link id={id} name={name} />
+              <Link toId={id} name={name} />
               {children.length > 0 && (
                 <ul>
                   {children.map((child) => {
-                    const id = slugify(child.name);
                     return (
                       <li key={child.name}>
-                        <Link id={id} name={child.name} />
+                        <Link toId={child.id} name={child.name} />
                       </li>
                     );
                   })}
