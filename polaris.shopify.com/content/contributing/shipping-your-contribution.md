@@ -84,7 +84,7 @@ yarn turbo run dev --filter=@shopify/polaris
 # Open https://localhost:6006 to test Storybook examples and Playground sandboxes
 ```
 
-If your adding or editing documentation, ensure your content displays as expected on the style guide website:
+If you are adding or editing documentation, ensure your content displays as expected on the style guide website:
 
 ```bash
 yarn turbo run dev --filter=polaris.shopify.com
