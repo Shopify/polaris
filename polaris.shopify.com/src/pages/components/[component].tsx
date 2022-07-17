@@ -15,6 +15,7 @@ import PageMeta from "../../components/PageMeta";
 import { PropsForComponent, Status } from "../../types";
 import StatusBanner from "../../components/StatusBanner";
 import PropsTable from "../../components/PropsTable";
+import { Node } from "../../scripts/get-props";
 
 interface MarkdownData {
   frontMatter: any;
@@ -31,7 +32,7 @@ interface Props {
     body: string;
     header: string;
   };
-  propsForComponent: PropsForComponent | null;
+  propsData: { [pos: string]: Node };
 }
 
 const Components = ({
@@ -40,29 +41,64 @@ const Components = ({
   name,
   readme,
   status,
-  propsForComponent,
+  propsData,
 }: Props) => {
-  const navItems: NavItem[] = getComponentNav();
-  const typedStatus: Status | undefined = status
-    ? {
-        value: status.value.toLowerCase() as Status["value"],
-        message: status.message,
-      }
-    : undefined;
+  return (
+    <Layout width="narrow">
+      <ul>
+        {Object.values(propsData).map((node) => {
+          if (!node.name?.endsWith("Props")) return null;
+          return (
+            <NodeComponent key={node.id} node={node} propsData={propsData} />
+          );
+        })}
+      </ul>
+    </Layout>
+  );
+};
+
+const NodeComponent = ({
+  node,
+  propsData,
+  level = 0,
+}: {
+  node: Node;
+  propsData: { [pos: string]: Node };
+  level?: number;
+}) => {
+  if (level > 10) {
+    return null;
+  }
 
   return (
-    <Layout width="narrow" navItems={navItems}>
-      <PageMeta title={name} description={intro} />
-
-      <Longform>
-        <h1>{name}</h1>
-        <Markdown text={readme.header} skipH1 />
-        {typedStatus && <StatusBanner status={typedStatus} />}
-        <Examples examples={examples} />
-        {propsForComponent && <PropsTable props={propsForComponent} />}
-        <Markdown text={readme.body} skipH1 />
-      </Longform>
-    </Layout>
+    <li
+      style={{ paddingLeft: 20, borderLeft: "1px solid #ccc" }}
+      onClick={(evt) => {
+        console.log(node);
+        evt.stopPropagation();
+      }}
+    >
+      <h1>
+        {node.name || node.id}: {node.resolvedValue} — {node.syntaxKind}
+      </h1>
+      <ul>
+        {node.children.map((child) => {
+          const matchingNode = propsData[child];
+          if (!matchingNode) {
+            console.log("child not found", child);
+            return null;
+          }
+          return (
+            <NodeComponent
+              key={child}
+              node={matchingNode}
+              propsData={propsData}
+              level={level + 1}
+            />
+          );
+        })}
+      </ul>
+    </li>
   );
 };
 
@@ -72,7 +108,7 @@ export const getStaticProps: GetStaticProps<
 > = async (context) => {
   const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
   const fileContent = fs.readFileSync(propsFilePath, "utf8");
-  let propsData: PropsForComponent[] = JSON.parse(fileContent);
+  let propsData: { [pos: string]: Node } = JSON.parse(fileContent);
 
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
@@ -112,19 +148,12 @@ export const getStaticProps: GetStaticProps<
       }
     );
 
-    const propsForComponent =
-      propsData.find(
-        (PropsTable) =>
-          PropsTable.interfaceName.toLowerCase() ===
-          `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
-      ) || null;
-
     const props: Props = {
       ...data.frontMatter,
       examples,
       intro: data.intro,
       readme,
-      propsForComponent,
+      propsData,
     };
 
     return { props };
