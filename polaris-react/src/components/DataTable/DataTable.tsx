@@ -212,6 +212,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const firstColumn = rows.map((row) => row.slice(0, 1));
     const firstHeading = headings.slice(0, 1);
     const firstTotal = totals?.slice(0, 1);
+    const tableBodyRows = this.table.current?.children[1].childNodes;
+    const rowHeights: number[] = [];
+    tableBodyRows?.forEach((row: HTMLTableRowElement) => {
+      rowHeights.push(row.clientHeight);
+    });
 
     const fixedFirstColumnMarkup = condensed && fixedFirstColumn && (
       <table
@@ -238,7 +243,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         </thead>
         <tbody>
           {firstColumn.map((row, index) =>
-            this.defaultRenderRow({row, index, inFixedFirstColumn: true}),
+            this.defaultRenderRow({
+              row,
+              index,
+              inFixedFirstColumn: true,
+              rowHeights,
+            }),
           )}
         </tbody>
         {totals && showTotalsInFooter && (
@@ -812,10 +822,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     row,
     index,
     inFixedFirstColumn,
+    rowHeights,
   }: {
     row: TableData[];
     index: number;
     inFixedFirstColumn: boolean;
+    rowHeights?: number[];
   }) => {
     const {
       columnContentTypes,
@@ -835,6 +847,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         className={className}
         onMouseEnter={this.handleHover(index)}
         onMouseLeave={this.handleHover()}
+        style={rowHeights ? {height: `${rowHeights[index]}px`} : {}}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const hovered = index === this.state.rowHovered;
