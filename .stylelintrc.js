@@ -22,6 +22,7 @@ module.exports = {
     '**/node_modules/**/*.{css,scss}',
     '**/dist/**/*.{css,scss}',
     'documentation/guides/legacy-polaris-v8-public-api.scss',
+    'polaris-migrations/**/tests/**/*.{css,scss}',
     'polaris-react/build/**/*.{css,scss}',
     'polaris-react/build-internal/**/*.{css,scss}',
     'stylelint-polaris/tests/**/*.{css,scss}',

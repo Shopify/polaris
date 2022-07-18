@@ -1,0 +1,44 @@
+{
+  "name": "@shopify/polaris-migrator",
+  "version": "0.0.0",
+  "description": "Codemod transformations to help upgrade your Polaris codebase",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "bin": "dist/index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "node ./dist/index.js",
+    "lint": "TIMING=1 eslint --cache .",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/runtime": "^7.18.9",
+    "@babel/helper-plugin-utils": "^7.18.9",
+    "chalk": "^4.1.0",
+    "globby": "11.0.1",
+    "is-git-clean": "^1.1.0",
+    "jscodeshift": "^0.13.1",
+    "meow": "^9.0.0",
+    "p-map": "^4.0.0",
+    "postcss-scss": "^4.0.4",
+    "postcss": "^8.4.14"
+  },
+  "devDependencies": {
+    "@types/babel__helper-plugin-utils": "^7.10.0",
+    "@types/is-git-clean": "^1.1.0",
+    "rollup-plugin-preserve-shebang": "^1.0.1"
+  }
+}

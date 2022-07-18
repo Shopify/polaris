@@ -11,6 +11,7 @@
       "polaris-for-figma",
       "polaris-for-vscode",
       "polaris-icons",
+      "polaris-migrator",
       "polaris-react",
       "stylelint-polaris",
       "polaris.shopify.com"
@@ -36,12 +37,13 @@
     "changeset": "changeset",
     "preversion-packages": "turbo run preversion",
     "version-packages": "yarn preversion-packages && changeset version",
-    "release": "turbo run build --filter=polaris.shopify.com^... && changeset publish",
+    "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
+    "@babel/plugin-transform-runtime": "^7.18.9",
     "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.23.0",
     "@next/eslint-plugin-next": "^12.1.4",
