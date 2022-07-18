@@ -174,22 +174,22 @@
     font-size: var(--font-size-200);
     border-collapse: separate;
     border-spacing: 0;
-    border: var(--border);
+    border: 1px solid var(--border-color-light);
     border-radius: 0.5rem;
     width: 100%;
 
     tr:nth-child(even) {
-      background: var(--surface-subdued)
+      background: var(--table-row);
     }
 
     tr:nth-child(odd) {
-      background: var(--surface)
+      background: var(--surface);
     }
 
     th {
       font-weight: var(--font-weight-600);
       text-align: left;
-      background-color: var(--p-surface-hovered);
+      background-color: var(--table-header);
 
       &:first-child {
         border-top-left-radius: 0.5rem;
@@ -203,7 +203,6 @@
     th,
     td {
       padding: 0.6rem 2.8rem;
-      // border-bottom: var(--border);
     }
 
     tbody {

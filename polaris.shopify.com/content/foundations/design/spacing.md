@@ -14,16 +14,6 @@ keywords:
 
 Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.
 
-| Screen size | Columns    | Margin | Gutter |
-| ----------- | ---------- | ------ | ------ |
-| 0           | --p-size-0 | 0      | 0      |
-| 0           | --p-size-0 | 0      | 0      |
-| 0           | --p-size-0 | 0      | 0      |
-| 0           | --p-size-0 | 0      | 0      |
-| 0           | --p-size-0 | 0      | 0      |
-| 0           | --p-size-0 | 0      | 0      |
-| 0           | --p-size-0 | 0      | 0      |
-
 ---
 
 ## Principles

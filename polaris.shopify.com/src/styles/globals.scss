@@ -155,14 +155,12 @@ body,
   --text-subdued: #767676;
   --text-link: #2e5dba;
   --surface: #fff;
-  --surface-subdued: #FAFBFB;
-  --p-surface-hovered: #F6F6F7;
-  --psurface-pressed: #F1F2F3;
+  --surface-subdued: #f7f7f7;
   --surface-information: #dcf5f0;
   --surface-warning: #ffeceb;
   --surface-code-inline: #eaeaea;
   --primary: #008060;
-  --border-color: #F1F2F3;
+  --border-color: #dedede;
   --border-color-light: #ededed;
   --border: 1px solid var(--border-color);
   --card-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
@@ -174,6 +172,8 @@ body,
   --decorative-4: #dce0f5;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #f4f5f5;
+  --table-header: #f6f6f7;
+  --table-row: #fafafa;
 }
 
 .dark-mode {
