@@ -19,13 +19,8 @@ const useUniqueIdMock = useUniqueId as jest.Mock;
 const mockProps = {
   activatorNode: <span>Activator</span>,
   open: true,
-  searchValue: '',
-  searchLabel: '',
-  searchEmptyStateMessage: '',
   onClose: noop,
   onOptionSelect: noop,
-  onSearch: noop,
-  showSearch: false,
   loading: false,
 };
 
@@ -141,7 +136,22 @@ describe('<SearchableListbox />', () => {
   describe('search', () => {
     it('hides <Search /> and fixed <Popover.Pane /> if showSearch is false', () => {
       const searchableListbox = mountWithApp(
-        <SearchableListbox {...mockProps} showSearch={false} />,
+        <SearchableListbox
+          {...mockProps}
+          showSearch={false}
+          onSearch={() => {}}
+        />,
+      );
+
+      expect(searchableListbox).not.toContainReactComponent(Popover.Pane, {
+        fixed: true,
+      });
+      expect(searchableListbox).not.toContainReactComponent(Search);
+    });
+
+    it('hides <Search /> and fixed <Popover.Pane /> if onSearch is undefined', () => {
+      const searchableListbox = mountWithApp(
+        <SearchableListbox {...mockProps} showSearch onSearch={undefined} />,
       );
 
       expect(searchableListbox).not.toContainReactComponent(Popover.Pane, {
@@ -161,8 +171,10 @@ describe('<SearchableListbox />', () => {
         <SearchableListbox
           {...mockProps}
           showSearch
+          onSearch={() => {}}
           searchPlaceholder={placeholder}
           searchValue={value}
+          searchEmptyStateMessage="no results found"
         />,
       );
 
@@ -182,6 +194,10 @@ describe('<SearchableListbox />', () => {
         <SearchableListbox
           {...mockProps}
           showSearch
+          onSearch={() => {}}
+          searchPlaceholder="placeholder"
+          searchValue=""
+          searchEmptyStateMessage="no results found"
           listItems={getMockListItems(2)}
         />,
       );
@@ -200,7 +216,14 @@ describe('<SearchableListbox />', () => {
       const value = 'test';
       const onSearchSpy = jest.fn();
       const searchableListbox = mountWithApp(
-        <SearchableListbox {...mockProps} showSearch onSearch={onSearchSpy} />,
+        <SearchableListbox
+          {...mockProps}
+          showSearch
+          onSearch={onSearchSpy}
+          searchPlaceholder="placeholder"
+          searchValue=""
+          searchEmptyStateMessage="no results found"
+        />,
       );
 
       searchableListbox.find(Search)!.trigger('onSearch', value);
@@ -246,12 +269,11 @@ describe('<SearchableListbox />', () => {
         />,
       );
 
-      expect(searchableListbox.find(Popover.Pane)).toContainReactComponent(
-        StopPropagation,
-        {
-          children: mockFooterAction,
-        },
-      );
+      expect(
+        searchableListbox.find(Listbox.Action, {value: 'Footer action'}),
+      ).toContainReactComponent(StopPropagation, {
+        children: mockFooterAction,
+      });
     });
 
     it("doesn't render if loading", () => {
@@ -273,7 +295,7 @@ describe('<SearchableListbox />', () => {
 
   describe('empty state', () => {
     it.each([undefined, []])(
-      'renders <SearchEmptyState /> with emptyStateMessage when not loading and list items is %s',
+      'renders <SearchEmptyState /> with emptyStateMessage when showSearch is true, loading is false, and list items is %s',
       (listItems) => {
         const mockEmptyStateMessage = 'empty';
         const searchableListbox = mountWithApp(
@@ -281,6 +303,10 @@ describe('<SearchableListbox />', () => {
             {...mockProps}
             loading={false}
             listItems={listItems}
+            showSearch
+            onSearch={() => {}}
+            searchPlaceholder="placeholder"
+            searchValue=""
             searchEmptyStateMessage={mockEmptyStateMessage}
           />,
         );
@@ -296,6 +322,11 @@ describe('<SearchableListbox />', () => {
         <SearchableListbox
           {...mockProps}
           loading
+          showSearch
+          onSearch={() => {}}
+          searchPlaceholder="placeholder"
+          searchValue=""
+          searchEmptyStateMessage="no results found"
           listItems={getMockListItems()}
         />,
       );
@@ -308,6 +339,11 @@ describe('<SearchableListbox />', () => {
         <SearchableListbox
           {...mockProps}
           listItems={getMockListItems()}
+          showSearch
+          onSearch={() => {}}
+          searchPlaceholder="placeholder"
+          searchValue=""
+          searchEmptyStateMessage="no results found"
           loading={false}
         />,
       );

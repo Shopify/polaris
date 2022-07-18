@@ -17,17 +17,17 @@ export interface SearchableListItem {
 export interface SearchableListboxProps {
   activatorNode: ReactElement;
   open: boolean;
-  showSearch: boolean;
-  searchValue: string;
-  searchEmptyStateMessage: string;
-  searchLabel: string;
-  searchPlaceholder?: string;
   listItems?: SearchableListItem[];
   loading?: boolean;
   loadingAccessibilityLabel?: string;
   footerAction?: ReactElement;
+  showSearch?: boolean;
+  searchValue?: string;
+  searchEmptyStateMessage?: string;
+  searchLabel?: string;
+  searchPlaceholder?: string;
+  onSearch?(search: string): void;
   onClose(): void;
-  onSearch(search: string): void;
   onOptionSelect(selected: string): void;
   onScrolledToBottom?(): void;
 }
@@ -35,11 +35,11 @@ export interface SearchableListboxProps {
 export function SearchableListbox({
   activatorNode,
   open,
-  showSearch,
-  searchValue,
-  searchLabel,
-  searchPlaceholder,
-  searchEmptyStateMessage,
+  showSearch = false,
+  searchValue = '',
+  searchLabel = '',
+  searchPlaceholder = '',
+  searchEmptyStateMessage = '',
   loading,
   loadingAccessibilityLabel,
   listItems,
@@ -52,7 +52,8 @@ export function SearchableListbox({
   const [activeOptionDomId, setActiveOptionDomId] = useState<string>();
   const listId = useUniqueId('SearchableListbox');
 
-  const showEmptyState = !loading && !listItems?.length;
+  const showSearchField = showSearch && onSearch;
+  const showEmptyState = showSearchField && !loading && !listItems?.length;
 
   const handleActiveOptionChange = (_: string, domId: string) => {
     setActiveOptionDomId(domId);
@@ -65,7 +66,7 @@ export function SearchableListbox({
       active={open}
       onClose={onClose}
     >
-      {showSearch && (
+      {showSearchField && (
         <Popover.Pane fixed>
           <div className={styles.SearchFieldWrapper}>
             <StopPropagation>
@@ -87,6 +88,7 @@ export function SearchableListbox({
         <Scrollable shadow onScrolledToBottom={onScrolledToBottom}>
           <div className={styles.ListBoxWrapper}>
             <Listbox
+              enableKeyboardControl
               autoSelection={AutoSelection.None}
               onSelect={onOptionSelect}
               customListId={listId}
@@ -106,13 +108,13 @@ export function SearchableListbox({
                   accessibilityLabel={loadingAccessibilityLabel || ''}
                 />
               )}
+              {!loading && footerAction && (
+                <Listbox.Action value="Footer action">
+                  <StopPropagation>{footerAction}</StopPropagation>
+                </Listbox.Action>
+              )}
             </Listbox>
           </div>
-          {!loading && footerAction && (
-            <div className={styles.FooterActionWrapper}>
-              <StopPropagation>{footerAction}</StopPropagation>
-            </div>
-          )}
         </Scrollable>
       )}
     </Popover>

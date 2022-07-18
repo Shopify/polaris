@@ -23,7 +23,7 @@ A SearchableListbox is a vertical, searchable list of interactive, customisable 
 A SearchableListbox is composed of:
 
 1. **Activator node**: Customisable activator to toggle popover containing list items
-2. **Search field**: Textfield for performing serach that can be toggled via the `showSearch` prop
+2. **Search field**: Textfield for performing search that can be toggled via the `showSearch` prop
 3. **List items:** Customisable options inside the list that users can select or deselect
 4. **Footer action:** Optional footer action placed below the list that can be used for actions such as list expansion
 
@@ -35,6 +35,7 @@ SearchableListboxes should:
 
 - Have clear activator node that toggles popover, and content that indicates selected list item
 - Limit the number of list items displayed at once; use the `footerAction` prop for list expansion
+- Be passed all search related props if `showSearch` prop is true
 - Indicate search empty state to user when search value doesn't match any results
 - Show loading state to user when list data is being generated
 
@@ -68,10 +69,6 @@ function BaseExample() {
         </Button>
       }
       open={open}
-      showSearch={false}
-      searchValue=""
-      searchEmptyStateMessage="No results found"
-      searchLabel="Search"
       listItems={[
         {value: '1', children: 'option 1', selected: true},
         {value: '2', children: 'option 2'},
@@ -79,7 +76,6 @@ function BaseExample() {
       onClose={() => {
         setOpen(false);
       }}
-      onSearch={() => {}}
       onOptionSelect={(value) => {
         console.log(value);
         setOpen(false);
@@ -172,15 +168,10 @@ function LoadingExample() {
       }
       open={open}
       loading
-      showSearch={false}
-      searchValue=""
-      searchEmptyStateMessage="No results found"
-      searchLabel="Search"
       listItems={[]}
       onClose={() => {
         setOpen(false);
       }}
-      onSearch={() => {}}
       onOptionSelect={(value) => {
         console.log(value);
         setOpen(false);
@@ -219,15 +210,10 @@ function FooterActionExample() {
         </Button>
       }
       open={open}
-      showSearch={false}
-      searchValue=""
-      searchEmptyStateMessage="No results found"
-      searchLabel="Search"
       listItems={listItems}
       onClose={() => {
         setOpen(false);
       }}
-      onSearch={() => {}}
       onOptionSelect={(value) => {
         console.log(value);
         setOpen(false);
@@ -280,10 +266,6 @@ function CustomOptionExample() {
         </Button>
       }
       open={open}
-      showSearch={false}
-      searchValue=""
-      searchEmptyStateMessage="No results found"
-      searchLabel="Search"
       listItems={[
         {
           value: '1',
@@ -315,7 +297,6 @@ function CustomOptionExample() {
       onClose={() => {
         setOpen(false);
       }}
-      onSearch={() => {}}
       onOptionSelect={(value) => {
         console.log(value);
         setOpen(false);
