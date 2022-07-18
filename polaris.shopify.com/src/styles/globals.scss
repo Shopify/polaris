@@ -1,7 +1,6 @@
 @import "variables.scss";
 @import "fonts.scss";
 @import "mixins.scss";
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
@@ -121,10 +120,6 @@
   outline: none;
 }
 
-video {
-  display: block;
-}
-
 *:focus-visible {
   box-shadow: var(--focus-outline);
 }
@@ -135,10 +130,6 @@ html {
   @media screen and (max-width: $breakpointMobile) {
     font-size: 100%;
   }
-}
-
-:root {
-  color-scheme: dark;
 }
 
 body {
@@ -202,6 +193,10 @@ body,
   --decorative-4: #342484;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #363636;
+}
+
+video {
+  display: block;
 }
 
 a {
