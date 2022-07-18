@@ -71,13 +71,18 @@ function TOC({ items }: Props) {
     const targetEl = document.getElementById(id);
     if (targetEl) {
       const { top: distanceFromViewportTop } = targetEl.getBoundingClientRect();
-      const scrollY =
+      let newScrollY =
         window.scrollY + distanceFromViewportTop - contentTopMargin + 1;
+
+      const isAlmostAtTheTopOfThePage = newScrollY < contentTopMargin * 1.25;
+      if (isAlmostAtTheTopOfThePage) {
+        newScrollY = 0;
+      }
 
       history.pushState({}, "", `#${id}`);
 
       temporarilyIgnoreScrolling.current = true;
-      window.scrollTo({ top: scrollY, behavior: "smooth" });
+      window.scrollTo({ top: newScrollY, behavior: "smooth" });
       waitForScrollToStop();
     }
   }
