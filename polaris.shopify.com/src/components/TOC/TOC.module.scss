@@ -29,7 +29,6 @@
 
       &::before {
         opacity: 0.2;
-        transition: none;
       }
     }
 
@@ -38,7 +37,6 @@
 
       &::before {
         opacity: 1;
-        transform: scaleX(1);
       }
     }
   }
