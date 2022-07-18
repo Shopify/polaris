@@ -79,8 +79,8 @@ export const Text = ({
     color && styles[color],
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
-    as == 'label' && styles['subdued'],
-    as == 'label' && requiredIndicator && styles.RequiredIndicator,
+    as === 'label' && styles.subdued,
+    as === 'label' && requiredIndicator && styles.RequiredIndicator,
   );
 
   return (
