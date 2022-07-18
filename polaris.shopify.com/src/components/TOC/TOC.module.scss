@@ -12,10 +12,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    &:hover {
-      color: var(--text-strong);
-    }
-
     &::before {
       content: "";
       display: block;
@@ -25,10 +21,16 @@
       width: 3px;
       background: var(--text);
       border-radius: 0 2px 2px 0;
-      transition: all 0.1s linear;
-      transform-origin: 0 50%;
       opacity: 0;
-      transform: scaleX(0);
+    }
+
+    &:hover {
+      color: var(--text-strong);
+
+      &::before {
+        opacity: 0.2;
+        transition: none;
+      }
     }
 
     &[data-is-current="true"] {
