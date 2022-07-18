@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-icons': major
+'@shopify/polaris-icons': minor
 ---
 
 Add new icon `TemplateMinor`
