@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 
 import styles from './Text.scss';
 
-type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'code';
+type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 type Variant =
   | 'displaySm'
@@ -16,8 +16,7 @@ type Variant =
   | 'headingXl'
   | 'bodySm'
   | 'bodyMd'
-  | 'bodyLg'
-  | 'code';
+  | 'bodyLg';
 
 type Alignment = 'inherit' | 'start' | 'center' | 'end' | 'justify';
 
