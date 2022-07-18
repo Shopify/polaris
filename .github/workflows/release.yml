@@ -23,6 +23,15 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Run preversion scripts
+        run: |
+          yarn preversion-packages
+
+      - name: Commit preversion updates
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply preversion changes
+
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1

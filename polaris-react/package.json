@@ -60,7 +60,7 @@
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "build-storybook -o build-internal/storybook/static",
-    "version": "node ./scripts/readme-update-version"
+    "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
     "@shopify/polaris-icons": "*",
