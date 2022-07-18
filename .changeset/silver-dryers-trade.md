@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Add Label support to Text
+Added label support to `Text` component
