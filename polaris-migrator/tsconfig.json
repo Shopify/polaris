@@ -1,0 +1,14 @@
+{
+  "extends": "@shopify/typescript-configs/node-base",
+  "compilerOptions": {
+    "module": "commonjs",
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist/types",
+    "rootDir": "src",
+    "jsx": "react",
+    "types": ["node", "jest"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

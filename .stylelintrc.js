@@ -16,6 +16,12 @@ module.exports = {
         './stylelint-polaris/configs/internal',
       ],
     },
+    {
+      files: ['polaris-migrator/**/tests/*.{css,scss}'],
+      rules: {
+        'declaration-property-value-disallowed-list': 'off',
+      },
+    },
   ],
   ignoreFiles: [
     '**/.next/**/*.{css,scss}',
