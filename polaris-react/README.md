@@ -33,7 +33,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@9.8.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@9.20.0/build/esm/styles.css"
 />
 ```
 

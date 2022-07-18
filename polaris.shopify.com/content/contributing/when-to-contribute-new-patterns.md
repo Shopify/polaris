@@ -1,12 +1,13 @@
 ---
-name: When to evolve the system
+name: When to contribute new patterns
 keywords:
   - when to contribute to polaris
   - when to evolve the system
+  - when to contribute new patterns
   - contribution guide
 ---
 
-# When to evolve the system
+# When to contribute new patterns
 
 There will likely be times where the system and its components fall short of your preferred solution. You have a decision to make---should you stay consistent with what exists, or go with the best possible solution, regardless of consistency?
 
@@ -15,11 +16,11 @@ To help you figure this out, start by plotting out where each solution fits in t
 - Consistency with the rest of the product (x axis)
 - How appropriate the solution is for your specific situation (y axis)
 
-![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-evolve-the-system/01.png)
+![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/01.png)
 
 To practice this framework, let’s imagine some possible scenarios. Consider the more obvious directions:
 
-![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-evolve-the-system/02.png)
+![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/02.png)
 
 When deciding between A or B, go with A. It’s the better solution to the problem, assuming all options are inconsistent.
 A or C? Obviously C. Of two equal solutions, choose the one that is more consistent with the rest of the experience.
@@ -27,13 +28,13 @@ A or D? D is consistent, but A is a much better solution to the problem. In that
 
 Now let’s look at the less obvious directions:
 
-![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-evolve-the-system/03.png)
+![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/03.png)
 
 Go with A if it’s the perfect solution and has the potential to scale to the rest of the system
 
 Deciding between A or E is trickier. If A is clearly better than E, but E is much more consistent, go with A. This is because A has potential to become a system pattern and eventually get closer to E, and maybe even surpass it, in terms of consistency.
 
-![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-evolve-the-system/04.png)
+![Illustration of a graph with "Perfect for situation" on the y-axis and "Consistent" on the x-axis.](/images/contributing/when-to-contribute-new-patterns/04.png)
 
 Go with E when consistency trumps perfection
 
