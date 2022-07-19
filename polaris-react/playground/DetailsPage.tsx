@@ -553,6 +553,7 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
+      fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
       title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
       titleMetadata={<Badge status="success">Success badge</Badge>}
@@ -600,9 +601,9 @@ export function DetailsPage() {
         hasNext: true,
       }}
     >
-      {skipToContentTarget}
       <Layout>
-        <Layout.Section twoThirds>
+        {skipToContentTarget}
+        <Layout.Section>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -627,7 +628,7 @@ export function DetailsPage() {
             </DropZone>
           </Card>
         </Layout.Section>
-        <Layout.Section oneThird>
+        <Layout.Section secondary>
           <Card title="Organization">
             <Card.Section>
               <Select

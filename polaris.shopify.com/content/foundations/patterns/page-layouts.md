@@ -59,6 +59,7 @@ section can be:
 - Full-width
 - Primary (2/3 width)
 - Secondary (1/3 width)
+- Annotated
 
 ### Arranging content in a layout
 
@@ -211,7 +212,13 @@ such as purchasing shipping labels for an order.
 
 ### Annotated
 
-![General settings page, with annotated sections for “Store details” and “Store address” visible](/images/foundations/patterns/page-layouts/page-layout-annotated@2x.png)
+<div class="Spacing">
+<div class="Image Image--radius">
+
+![General settings page, with annotated sections for “Store details” and “Store address” visible](/public_images/layout-page/page-layout-annotated@2x.png)
+
+</div>
+</div>
 
 Annotated layouts group the content of the page into distinct sections that are
 only loosely related. This layout makes it easier to scan the page for a

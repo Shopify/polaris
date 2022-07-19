@@ -6,6 +6,7 @@ keywords:
   - two column
   - three column
   - column
+  - annotated
   - page
   - column layouts
   - containers
@@ -13,11 +14,12 @@ keywords:
   - secondary sections
   - setting page
   - grouped sections
+  - annotated sections
 ---
 
 # Layout
 
-The layout component is used to create the main layout on a page. Layouts sections come in three main configurations: one-column, two-column, and three-column. One and two column layouts can be combined in the same page.
+The layout component is used to create the main layout on a page. Layouts sections come in three main configurations: one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages.
 
 ---
 
@@ -84,7 +86,7 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section twoThirds>
+    <Layout.Section>
       <Card title="Order details" sectioned>
         <p>
           Use to follow a normal section with a secondary section to create a
@@ -94,7 +96,7 @@ Use to follow a normal section with a secondary section to create a 2/3 + 1/3 la
         </p>
       </Card>
     </Layout.Section>
-    <Layout.Section oneThird>
+    <Layout.Section secondary>
       <Card title="Tags" sectioned>
         <p>Add tags to your order.</p>
       </Card>
@@ -422,20 +424,11 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section oneThird condensed>
-      <div style={{marginTop: 'var(--p-space-5)'}}>
-        <TextContainer>
-          <Heading id="storeDetails">Store details</Heading>
-          <div>
-            <TextStyle variation="subdued">
-              Shopify and your customers will use this information to contact
-              you.
-            </TextStyle>
-          </div>
-        </TextContainer>
-      </div>
-    </Layout.Section>
-    <Layout.Section twoThirds condensed>
+    <Layout.AnnotatedSection
+      id="storeDetails"
+      title="Store details"
+      description="Shopify and your customers will use this information to contact you."
+    >
       <Card sectioned>
         <FormLayout>
           <TextField
@@ -451,7 +444,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
           />
         </FormLayout>
       </Card>
-    </Layout.Section>
+    </Layout.AnnotatedSection>
   </Layout>
 </Page>
 ```
@@ -463,7 +456,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 ```jsx
 <Page fullWidth>
   <Layout>
-    <Layout.Section oneThird condensed>
+    <Layout.Section oneThird>
       <div style={{marginTop: 'var(--p-space-5)'}}>
         <TextContainer>
           <Heading id="storeDetails">Store details</Heading>
@@ -476,7 +469,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
         </TextContainer>
       </div>
     </Layout.Section>
-    <Layout.Section twoThirds condensed>
+    <Layout.Section>
       <Card sectioned>
         <FormLayout>
           <TextField
@@ -509,23 +502,11 @@ Use for settings pages that need a banner or other content at the top.
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
       </Banner>
     </Layout.Section>
-    <Layout.Section>
-      <hr style={{borderTop: 'var(--p-border-divider)', margin: 0}} />
-    </Layout.Section>
-    <Layout.Section oneThird condensed>
-      <div style={{marginTop: 'var(--p-space-5)'}}>
-        <TextContainer>
-          <Heading id="storeDetails">Store details</Heading>
-          <div>
-            <TextStyle variation="subdued">
-              Shopify and your customers will use this information to contact
-              you.
-            </TextStyle>
-          </div>
-        </TextContainer>
-      </div>
-    </Layout.Section>
-    <Layout.Section twoThirds condensed>
+    <Layout.AnnotatedSection
+      id="storeDetails"
+      title="Store details"
+      description="Shopify and your customers will use this information to contact you."
+    >
       <Card sectioned>
         <FormLayout>
           <TextField
@@ -541,7 +522,7 @@ Use for settings pages that need a banner or other content at the top.
           />
         </FormLayout>
       </Card>
-    </Layout.Section>
+    </Layout.AnnotatedSection>
   </Layout>
 </Page>
 ```

@@ -1,7 +1,5 @@
-$page-max-width: calc(
-  #{$layout-width-primary-max} + #{$layout-width-secondary-max} +
-    var(--p-space-4)
-);
+$page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
+  $layout-width-inner-spacing-base;
 
 @mixin page-layout {
   margin: 0 auto;
@@ -9,15 +7,7 @@ $page-max-width: calc(
   max-width: $page-max-width;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: 0 var(--p-space-4);
-  }
-
-  @media #{$p-breakpoints-md-up} {
     padding: 0 var(--p-space-6);
-  }
-
-  @media #{$p-breakpoints-xl-up} {
-    padding: 0 var(--p-space-8);
   }
 }
 
