@@ -44,6 +44,8 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 
 All measurements used across the experience (space, width, height, etc) must reference Polaris size units to guarantee visual consistency and balance.
 
+![Polaris unit illustration](/images/foundations/design/spacing/spacing-polaris-units@2x.png)
+
 ### Size scale
 
 | Value    | Size         | px value | rem value |
