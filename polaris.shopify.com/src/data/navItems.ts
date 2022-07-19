@@ -251,6 +251,10 @@ export const contributingNavItems = [
     title: "Contributing to Polaris",
     children: [
       {
+        title: "Introduction",
+        url: "/contributing",
+      },
+      {
         title: "Components",
         url: "/contributing/components",
       },

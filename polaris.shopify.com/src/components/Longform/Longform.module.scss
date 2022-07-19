@@ -25,7 +25,7 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 
     @media screen and (max-width: $breakpointMobile) {
       margin-bottom: 1.5rem;
@@ -138,7 +138,7 @@
     font-family: var(--font-family-mono);
     font-size: var(--font-size-100);
     padding: 1rem;
-    background: var(--surface-code-dark);
+    background: var(--surface-code-block);
     color: #fff;
     border-radius: var(--border-radius-500);
     overflow: auto;
@@ -156,10 +156,10 @@
   }
 
   code {
-    font-family: monospace;
-    font-size: var(--font-size-300);
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
     font-weight: var(--font-weight-500);
-    background: var(--surface-code-light);
+    background: var(--surface-code-inline);
     border-radius: var(--border-radius-300);
     padding: 0.15rem 0.25rem;
   }
@@ -227,7 +227,8 @@
     margin-top: 0;
     margin-bottom: 2rem;
     color: var(--text-strong);
-    font-size: var(--font-size-800);
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-500);
     letter-spacing: var(--letter-spacing-300);
   }
 }

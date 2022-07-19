@@ -16,11 +16,7 @@ interface Props {
 
 const Contributing: NextPage<Props> = ({ readme }) => {
   return (
-    <Layout
-      title="Contributing to Polaris"
-      navItems={contributingNavItems}
-      showTOC={false}
-    >
+    <Layout title="Contributing to Polaris" navItems={contributingNavItems}>
       <PageMeta title="Contributing to Polaris" />
 
       <Longform>
