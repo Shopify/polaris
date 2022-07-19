@@ -14,10 +14,10 @@ import components from "../data/components.json";
 import foundations from "../data/foundations.json";
 
 const MAX_RESULTS: { [key in SearchResultCategory]: number } = {
-  foundations: 3,
-  components: 3,
+  foundations: 8,
+  components: 6,
   tokens: 5,
-  icons: 14,
+  icons: 9,
 };
 
 const {
