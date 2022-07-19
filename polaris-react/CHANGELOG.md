@@ -1264,9 +1264,9 @@ For instructions on updating from v5 to v6, see our [migration guide](https://gi
 
 ## 4.18.0
 
-- Added [`MediaCard`](https://polaris.shopify.com/components/structure/video-card) and [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
-- Added [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
-- Added utilities for parsing video duration (https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added [`MediaCard`](https://polaris.shopify.com/components/video-card) and [`VideoThumbnail`](https://polaris.shopify.com/components/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added [`VideoThumbnail`](https://polaris.shopify.com/components/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added utilities for parsing video duration (https://polaris.shopify.com/components/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
 - Updated polaris-tokens to use new font stack ([#2906](https://github.com/Shopify/polaris-react/pull/2906))
 
 ## 4.17.1
@@ -1698,7 +1698,7 @@ For instructions on updating from v3 to v4, see our [migration guide](https://gi
 - Removed support for `<Icon untrusted>`. Passing a string into `source` will now always load an untrusted icon, you don’t need that additional property. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 - Removed `Navigation.UserMenu`. Use `TopBar.UserMenu` instead. ([#1599](https://github.com/Shopify/polaris-react/pull/1599))
 - Made `title` a required prop on `ChoiceList` to improve accessibility. It can be hidden with `titleHidden`. ([#1575](https://github.com/Shopify/polaris-react/pull/1575))
-- Made `i18n` a required prop on `AppProvider`. [Usage instructions](https://polaris.shopify.com/components/structure/app-provider#using-translations) are included in the `AppProvider` docs. ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
+- Made `i18n` a required prop on `AppProvider`. [Usage instructions](https://polaris.shopify.com/components/app-provider#using-translations) are included in the `AppProvider` docs. ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
 - Upgraded `react` and `react-dom` peer-dependencies to 16.8.6 to enable the use of hooks ([#1525](https://github.com/Shopify/polaris-react/pull/1525))
 - Changed the import method for React to use default imports. Applications consuming Polaris using TypeScript must enable [`esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) in `tsconfig.json`. ([#1523](https://github.com/Shopify/polaris-react/pull/1523))
 - Removed `LinkLikeComponent` type export. Use `AppProviderProps['linkComponent']` instead. ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
@@ -2266,37 +2266,37 @@ Upgraded Storybook to v5 ([#1140](https://github.com/Shopify/polaris-react/pull/
 
 We’ve released a suite of new components that, when combined, form the application frame of a stand-alone (or non-embedded) Polaris app.
 
-#### [Frame](https://polaris.shopify.com/components/structure/frame)
+#### [Frame](https://polaris.shopify.com/components/frame)
 
 The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the following components:
 
-- primary [navigation](https://polaris.shopify.com/components/navigation/navigation)
-- [top bar](https://polaris.shopify.com/components/structure/top-bar)
-- [toast](https://polaris.shopify.com/components/feedback-indicators/toast)
-- [loading](https://polaris.shopify.com/components/feedback-indicators/loading)
-- [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar)
+- primary [navigation](https://polaris.shopify.com/components/navigation)
+- [top bar](https://polaris.shopify.com/components/top-bar)
+- [toast](https://polaris.shopify.com/components/toast)
+- [loading](https://polaris.shopify.com/components/loading)
+- [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar)
 
-#### [Navigation](https://polaris.shopify.com/components/navigation/navigation)
+#### [Navigation](https://polaris.shopify.com/components/navigation)
 
-The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
 
-#### [TopBar](https://polaris.shopify.com/components/structure/top-bar)
+#### [TopBar](https://polaris.shopify.com/components/top-bar)
 
-The top bar component is always visible at the top of a non-embedded application. Its logo and color can be customized using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component to reflect an application’s brand. Merchants can use it to search an application, access menus, and navigate by clicking on the logo.
+The top bar component is always visible at the top of a non-embedded application. Its logo and color can be customized using the [app provider](https://polaris.shopify.com/components/app-provider) component to reflect an application’s brand. Merchants can use it to search an application, access menus, and navigate by clicking on the logo.
 
-#### [Toast](https://polaris.shopify.com/components/feedback-indicators/toast)
+#### [Toast](https://polaris.shopify.com/components/toast)
 
 The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
 
-#### [Loading](https://polaris.shopify.com/components/feedback-indicators/loading)
+#### [Loading](https://polaris.shopify.com/components/loading)
 
 The loading component is used to indicate to merchants that a page is loading or an upload is processing.
 
-#### [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar)
+#### [ContextualSaveBar](https://polaris.shopify.com/components/contextual-save-bar)
 
 The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 
-#### [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete)
+#### [Autocomplete](https://polaris.shopify.com/components/autocomplete)
 
 The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options.
 
@@ -2516,7 +2516,7 @@ Use `withRef` with `compose` to forwardRefs to a component.
 - Added examples for iOS and Android `Avatar`
 - Added `Stepper` component
 
-#### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
+#### [InlineError](https://polaris.shopify.com/components/inline-error)
 
 Use inline errors to describe custom form inputs or form groups when invalid.
 
@@ -2555,7 +2555,7 @@ Use inline errors to describe custom form inputs or form groups when invalid.
 
 ## 2.3.0
 
-#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+#### [Option list](https://polaris.shopify.com/components/option-list)
 
 Use `OptionList` to present a group of selectable items outside of the context of a `Form`.
 
@@ -2580,7 +2580,7 @@ Use `OptionList` to present a group of selectable items outside of the context o
 
 ## 2.2.0
 
-#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
+#### [Range slider](https://polaris.shopify.com/components/range-slider)
 
 Use `RangeSlider` to select a number value between a min and max range.
 
@@ -2608,7 +2608,7 @@ Use `RangeSlider` to select a number value between a min and max range.
 
 ## 2.1.0
 
-#### [Exception list](https://polaris.shopify.com/components/lists-and-tables/exception-list)
+#### [Exception list](https://polaris.shopify.com/components/exception-list)
 
 Use Exception lists to draw the merchant’s attention to important information that adds extra context to a task.
 
@@ -2650,7 +2650,7 @@ We’re removing support for React 15 in order to make full use of some of the n
 
 Upgrade your app to the latest version of React.
 
-#### [App provider](https://polaris.shopify.com/components/structure/app-provider)
+#### [App provider](https://polaris.shopify.com/components/app-provider)
 
 The `AppProvider` component is now required in your app for Polaris components to function properly.
 
@@ -2658,7 +2658,7 @@ The `AppProvider` component is now required in your app for Polaris components t
 
 Wrap your app in the `AppProvider` component.
 
-#### [Collapsible](https://polaris.shopify.com/components/behavior/collapsible) component requires an `id` prop
+#### [Collapsible](https://polaris.shopify.com/components/collapsible) component requires an `id` prop
 
 For accessibility reasons, the `id` prop is now required on the `Collapsible` component.
 
@@ -2674,7 +2674,7 @@ The `EmbeddedApp` component has been removed. The `AppProvider` component now ac
 
 Use the `AppProvider` component with the `apiKey` and `shopOrigin` props.
 
-#### [Resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list#navigation)
+#### [Resource list](https://polaris.shopify.com/components/resource-list#navigation)
 
 Shopify is organized around objects that represent a merchant’s business, such as customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects resources.
 
@@ -2734,23 +2734,23 @@ If you’re using VS Code, here are the exact search / replace instructions to f
 - replace `\bcolor\(([a-z-]+), ([a-z-]+)\)` with `color('$1', '$2')`
 - replace `\bcolor\(([a-z-]+), ([a-z-]+), (.*)\)` with `color('$1', '$2', $3)`
 
-#### [Data table](https://polaris.shopify.com/components/lists-and-tables/data-table)
+#### [Data table](https://polaris.shopify.com/components/data-table)
 
 Since launching Polaris components, we’ve had many people ask why we didn’t include tables. While we have been moving away from using tables for comparisons that aren’t tabular data (resource lists, for example), we recognize that there are still cases to use them.
 
 The data table component is our answer to those cases. While data visualizations represents part of a data set, data tables are used to organize and display all the information from a data set, allowing merchants view details from the entire set. This helps merchants compare and analyze all the data in a unified way.
 
-#### [Drop zone](https://polaris.shopify.com/components/actions/drop-zone#navigation)
+#### [Drop zone](https://polaris.shopify.com/components/drop-zone#navigation)
 
 Currently we have several different interfaces for uploading files across Shopify, which leads to a lack of consistency and some missing features and capabilities. To solve this problem, we’re releasing a new drop zone component.
 
 This new component allows merchants to upload files by dragging and dropping them into an area on a page. The component handles file type validation, dropping onto the window, and more, meaning more ease of use for merchants.
 
-#### [Modal](https://polaris.shopify.com/components/overlays/modal#navigation)
+#### [Modal](https://polaris.shopify.com/components/modal#navigation)
 
 In the original Polaris React, the modal component was only available to embedded apps. No longer. Our new modal component is universal in that it can be used in either stand-alone or embedded apps, and will handle the correct behavior for you.
 
-#### [App provider](https://polaris.shopify.com/components/structure/app-provider#navigation)
+#### [App provider](https://polaris.shopify.com/components/app-provider#navigation)
 
 The app provider is a required component that enables sharing global app config with the components in Polaris. This is used for the internationalization of strings in Polaris components, as well as set other configuration such as a custom link component that all the Polaris components will use. This unlocks new ways for us to share configuration at an app level and have the components react to that configuration.
 

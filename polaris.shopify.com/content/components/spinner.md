@@ -7,8 +7,6 @@ keywords:
   - loader
   - loading
   - progress indicator
-  - android
-  - ios
 examples:
   - fileName: spinner-default.tsx
     title: Default spinner

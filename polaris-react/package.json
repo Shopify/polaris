@@ -63,8 +63,8 @@
     "version": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "*",
-    "@shopify/polaris-tokens": "*",
+    "@shopify/polaris-icons": "^5.0.0",
+    "@shopify/polaris-tokens": "^5.5.0",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",

@@ -19,14 +19,14 @@ Combobox is an accessible autocomplete input that enables merchants to filter a 
 
 ## Anatomy
 
-![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/public_images/components/Combobox/combobox-anatomy.png)
+![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/images/components/combobox/combobox-anatomy.png)
 
 A combobox is made up of the following:
 
 1. **TextField**: A text input that activates a popover displaying a list of options. As merchants type in the text field, the list of options is filtered by the input value. Options replace or add to the input value when selected.
 2. **Popover**: An overlay containing a list of options.
 3. **Listbox**: A list of options to filter and select or deselect.
-4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/forms/listbox) to learn how to compose it with various content.
+4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/listbox) to learn how to compose it with various content.
 
 ---
 
@@ -43,7 +43,7 @@ The `Combobox` component should:
 
 ## Content guidelines
 
-The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/forms/text-field) for text fields.
+The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/text-field) for text fields.
 
 ---
 
@@ -788,8 +788,8 @@ function LoadingAutocompleteExample() {
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
-- For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/lists-and-tables/listbox)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/text-field)
+- For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/listbox)
 
 ---
 
@@ -797,7 +797,7 @@ function LoadingAutocompleteExample() {
 
 ### Structure
 
-The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/lists-and-tables/listbox) component to be used.
+The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/listbox) component to be used.
 
 The `Combobox` popover displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 

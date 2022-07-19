@@ -10,8 +10,6 @@ keywords:
   - vertical
   - margin
   - padding
-  - android
-  - ios
 examples:
   - fileName: text-container-default.tsx
     title: Default text container

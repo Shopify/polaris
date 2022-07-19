@@ -1,10 +1,6 @@
 ---
 name: Empty state
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - EmptyState
   - lander
@@ -214,8 +210,8 @@ Use to provide additional but non-critical context for a new product or feature.
 ## Related components
 
 - To learn more about illustrations for empty states, [read the illustration guidelines](https://polaris.shopify.com/design/illustrations)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/callout-card)
 
 ---
 

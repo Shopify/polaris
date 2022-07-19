@@ -1,6 +1,6 @@
 name: Template
 set: major
-description: Used to represent a Shopify Theme Template.
+description: Used to represent templates.
 keywords:
   - template
   - theme
@@ -12,4 +12,4 @@ authors:
 version: 1
 date_added: 2021-02-03
 date_modified: 2021-02-03
-exclusive_use: Online Store
+exclusive_use:

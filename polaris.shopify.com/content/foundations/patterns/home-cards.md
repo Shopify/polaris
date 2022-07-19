@@ -25,164 +25,68 @@ When choosing a home card type, think about the simplest way to present your mes
 
 ### Simple card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you have one data point or recommendation, and one action. Use of the “Learn more” link is optional.  
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when
 
-![Simple Home card encouraging the merchant to add or learn more about an advertising campaign](/public_images/home-card-page/simple-home-card@2x.png)
+- you have one data point or recommendation, and one action. Use of the “Learn more” link is optional.
 
-</div>
-</div>
-</div>
+![Simple Home card encouraging the merchant to add or learn more about an advertising campaign](/images/foundations/patterns/home-cards/simple-home-card@2x.png)
 
 ### Action-list card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you have one data point and a series of related actions
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
 
-![Action-list home card showing several suggested discounts the merchant can add, and prompting them to create their own](/public_images/home-card-page/action-list-home-card@2x.png)
+- you have one data point and a series of related actions
 
-</div>
-</div>
-</div>
+![Action-list home card showing several suggested discounts the merchant can add, and prompting them to create their own](/images/foundations/patterns/home-cards/action-list-home-card@2x.png)
 
 ### Table card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you have more than one data point but one action
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
 
-![Table card showing shipping services and the holiday dates the merchant can expect for each, with a prompt to see unfulfilled orders](/public_images/home-card-page/table-home-card@2x.png)
+- you have more than one data point but one action
 
-</div>
-</div>
-</div>
+![Table card showing shipping services and the holiday dates the merchant can expect for each, with a prompt to see unfulfilled orders](/images/foundations/patterns/home-cards/table-home-card@2x.png)
 
 ### Large illustration card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you need to introduce an unfamiliar concept, or you want to recognize merchant success
-      </li>
-      <li>
-        you want to announce a new Shopify feature
-      </li>
-    </ul>
-  </div>
-  <div class="Annotated__Media">
-  <div class="Image Image--border">
+Use when:
 
-![Large illustration card encouraging and prompting the merchant to set up gift cards for the holidays](/public_images/home-card-page/large-illustration-home-card@2x.png)
+- you need to introduce an unfamiliar concept, or you want to recognize merchant success
+- you want to announce a new Shopify feature
 
-</div>
-</div>  
-</div>
+![Large illustration card encouraging and prompting the merchant to set up gift cards for the holidays](/images/foundations/patterns/home-cards/large-illustration-home-card@2x.png)
 
 ### Graph card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>you need to show trends over time or compare two datasets</li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
 
-![Graph card showing an upward trend in traffic to the merchant’s store from a social media post](/public_images/home-card-page/graph-home-card@2x.png)
+- you need to show trends over time or compare two datasets
 
-</div>
-</div>
-</div>
+![Graph card showing an upward trend in traffic to the merchant’s store from a social media post](/images/foundations/patterns/home-cards/graph-home-card@2x.png)
 
 ### Video card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you need to communicate an unfamiliar concept or idea, or explain a complex task
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-<div class="Image Image--border">
+Use when:
 
-![Video card showing a video introducing an app, with a call to action to add it to the merchant’s store](/public_images/home-card-page/video-home-card@2x.png)
+- you need to communicate an unfamiliar concept or idea, or explain a complex task
 
-</div>
-</div>
-</div>
+![Video card showing a video introducing an app, with a call to action to add it to the merchant’s store](/images/foundations/patterns/home-cards/video-home-card@2x.png)
 
 ### Blog card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you need to recommend a helpful <a href="https://www.shopify.com/blog">Shopify blog post</a> based on a merchant’s previous activity
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-  <div class="Image Image--border">
+Use when:
 
-![Blog card showing a short description and link for a blog post relevant to the merchant’s experience](/public_images/home-card-page/blog-home-card@2x.png)
+- you need to recommend a helpful [Shopify blog post](https://www.shopify.com/blog) based on a merchant’s previous activity
 
-</div>
-</div>
-</div>
+![Blog card showing a short description and link for a blog post relevant to the merchant’s experience](/images/foundations/patterns/home-cards/blog-home-card@2x.png)
 
 ### Comparison card
 
-<div class="Annotated">
-  <div class="Annotated__Text">
-    <p>Use when:</p>
-    <ul>
-      <li>
-        you need to compare two data points
-      </li>
-    </ul>
-  </div>
-<div class="Annotated__Media">
-  <div class="Image Image--border">
+Use when:
 
-![Comparison card showing a brief description of a specific data point, with a comparison between the merchant’s data and an industry standard](/public_images/home-card-page/comparison-home-card@2x.png)
+- you need to compare two data points
 
-</div>
-</div>
-</div>
+![Comparison card showing a brief description of a specific data point, with a comparison between the merchant’s data and an industry standard](/images/foundations/patterns/home-cards/comparison-home-card@2x.png)
 
 ---
 
@@ -211,20 +115,20 @@ The tone changes depending on the context or situation of a card, but it should 
 
 Recognize milestones that merchants might find significant.
 
-_**Congratulations on your 1st order** <br />
-Sarah Rodriguez bought Rainbow Unicorn Plushie._
+_**Congratulations on your 1st order**_
+_Sarah Rodriguez bought Rainbow Unicorn Plushie._
 
-_**People are subscribing to your mailing list** <br />
-Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products._
+_**People are subscribing to your mailing list**_
+_Your mailing list lets you contact customers or visitors who have shown an interest in your store. Reach out to them with exclusive offers or updates about your products._
 
 #### Don’t
 
 Don’t downplay or over-exaggerate details.
 
-_**You have received your 10th order.** <br />_
+_**You have received your 10th order.**_
 
-_**Congratulations! You’ve received 4 orders today!** <br />
-Fulfill them from your Orders page!_
+_**Congratulations! You’ve received 4 orders today!**_
+_Fulfill them from your Orders page!_
 
 <!-- end -->
 
@@ -236,18 +140,18 @@ Fulfill them from your Orders page!_
 
 Share important information or insights about the merchant’s business.
 
-_**Visitors from these social sites are spending time in your store** <br />
-Here’s how many pages they viewed and how long they stayed._
+_**Visitors from these social sites are spending time in your store**_
+_Here’s how many pages they viewed and how long they stayed._
 
 #### Don’t
 
 Don’t emphasize what Shopify can do for the merchant. Focus on the merchant benefit instead.
 
-_**Use Shopify Payments!** <br />
-We make it easy to accept payments online and won’t charge you any transaction fees._
+_**Use Shopify Payments!**_
+_We make it easy to accept payments online and won’t charge you any transaction fees._
 
-_**Shopify Capital is offering you up to \$10,000 in funding** <br />
-It’s easy to apply and it’ll help your business grow!_
+_**Shopify Capital is offering you up to \$10,000 in funding**_
+_It’s easy to apply and it’ll help your business grow!_
 
 <!-- end -->
 
@@ -259,17 +163,17 @@ It’s easy to apply and it’ll help your business grow!_
 
 Be considerate with sensitive information and offer merchants solutions if something went wrong.
 
-_**Some of your visitors can’t find what they’re looking for** <br />
-You might want to add product descriptions to help them out._
+_**Some of your visitors can’t find what they’re looking for**_
+_You might want to add product descriptions to help them out._
 
 #### Don’t
 
 Don’t blame the merchant or only offer impractical or costly solutions.
 
-_**Your shipping rates are high compared to similar stores** <br />
-Save money on shipping labels with Shopify Shipping._
+_**Your shipping rates are high compared to similar stores**_
+_Save money on shipping labels with Shopify Shipping._
 
-_**Sales are down this week** <br />
-Consider creating a marketing campaign to promote your products._
+_**Sales are down this week**_
+_Consider creating a marketing campaign to promote your products._
 
 <!-- end -->
