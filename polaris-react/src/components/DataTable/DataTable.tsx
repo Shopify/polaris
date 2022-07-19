@@ -212,10 +212,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const firstColumn = rows.map((row) => row.slice(0, 1));
     const firstHeading = headings.slice(0, 1);
     const firstTotal = totals?.slice(0, 1);
+    const tableHeaderRows = this.table.current?.children[0].childNodes;
     const tableBodyRows = this.table.current?.children[1].childNodes;
-    const rowHeights: number[] = [];
+    const headerRowHeights: number[] = [];
+    const bodyRowHeights: number[] = [];
+    tableHeaderRows?.forEach((row: HTMLTableRowElement) => {
+      headerRowHeights.push(row.clientHeight);
+    });
     tableBodyRows?.forEach((row: HTMLTableRowElement) => {
-      rowHeights.push(row.clientHeight);
+      bodyRowHeights.push(row.clientHeight);
     });
 
     const fixedFirstColumnMarkup = condensed && fixedFirstColumn && (
@@ -227,7 +232,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
       >
         <thead>
-          <tr>
+          <tr style={{height: `${headerRowHeights[0]}px`}}>
             {firstHeading.map((heading, index) =>
               this.renderHeading({
                 heading,
@@ -238,7 +243,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             )}
           </tr>
           {totals && !showTotalsInFooter && (
-            <tr>{firstTotal?.map(this.renderTotals)}</tr>
+            <tr style={{height: `${headerRowHeights[1]}px`}}>
+              {firstTotal?.map(this.renderTotals)}
+            </tr>
           )}
         </thead>
         <tbody>
@@ -247,7 +254,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               row,
               index,
               inFixedFirstColumn: true,
-              rowHeights,
+              rowHeights: bodyRowHeights,
             }),
           )}
         </tbody>
