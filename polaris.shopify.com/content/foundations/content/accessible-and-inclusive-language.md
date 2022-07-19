@@ -59,11 +59,11 @@ Write content that centers around the person, not their disability.
 
 Avoid the following words and phrases.
 
-<h4 id="inspire-inspirational">Inspire, inspirational</h4>
+#### Inspire, inspirational
 
 This language and narrative around people with disabilities can be othering and reductive. It can also center an abled perception of those with disabilities (For example, “my life’s not that bad, look at them!”).
 
-<h4 id="enable-disable">Enable, disable</h4>
+#### Enable, disable
 
 Implies that disability is a less-desired or negative state.
 
@@ -104,7 +104,7 @@ The checkbox is disabled.
 
 <!-- end -->
 
-<h4 id="normal-abnormal">Normal, abnormal</h4>
+#### Normal, abnormal
 
 This language can imply that there’s something wrong with anyone outside of the majority.
 
@@ -122,11 +122,11 @@ This language can imply that there’s something wrong with anyone outside of th
 
 <!-- end -->
 
-<h4 id="deaf">Deaf</h4>
+#### Deaf
 
 This language is often used to equate deafness or hearing impairment with ignorance or insensitivity, rather than refer to deafness itself or the Deaf community. Make sure to only use it when referencing actual deafness or the Deaf community, and not as a metaphor.
 
-<h4 id="blind">Blind</h4>
+#### Blind
 
 As a metaphor, this can equate lack of vision to ignorance. Only use the term when referencing the disability itself.
 
@@ -144,7 +144,7 @@ As a metaphor, this can equate lack of vision to ignorance. Only use the term wh
 
 <!-- end -->
 
-<h4 id="insane-crazy">Insane, crazy</h4>
+#### Insane, crazy
 
 This language can stigmatize people with mental disabilities by using these words as modifiers for “unbelievable” or in a negative context.
 
@@ -166,7 +166,7 @@ This language can stigmatize people with mental disabilities by using these word
 
 <!-- end -->
 
-<h4 id="handicap">Handicap, handicapped</h4>
+#### Handicap, handicapped
 
 Handicap implies that the person is the issue, rather than the environment.
 
@@ -183,7 +183,7 @@ Handicap implies that the person is the issue, rather than the environment.
 
 <!-- end -->
 
-<h4 id="wheelchair-bound">Wheelchair-bound</h4>
+#### Wheelchair-bound
 
 This term can reduce a person’s primary identity to using a wheelchair.
 
@@ -200,7 +200,7 @@ This term can reduce a person’s primary identity to using a wheelchair.
 
 <!-- end -->
 
-<h4 id="suffers-from">Suffers from...</h4>
+#### Suffers from...
 
 This phrasing implies that having a disability equates to suffering.
 
@@ -216,7 +216,7 @@ This phrasing implies that having a disability equates to suffering.
 
 <!-- end -->
 
-<h4 id="just-only">Just, only</h4>
+#### Just, only
 
 When we write a task is “only a few steps”, or this should “just take a minute”, it implies the task is easy, quick, or takes a minimal amount of effort. This can discourage people who might struggle with the task, or might take extra time to complete it.
 
@@ -241,11 +241,11 @@ Racist language expresses bias towards or against a particular race, or expresse
 
 Avoid the following words and phrases.
 
-<h4 id="exotic">Exotic</h4>
+#### Exotic
 
 Consider why you need to frame someone or something this way. What is “foreign” or “exotic” to you is familiar for someone else.
 
-<h4 id="grandfather">Grandfather in, grandfather clause</h4>
+#### Grandfather in, grandfather clause
 
 These phrases come from laws meant to circumvent or disenfranchise Black people’s rights. These laws, or “grandfather clauses” originated in the Reconstruction era in the American South.
 
@@ -263,7 +263,7 @@ These phrases come from laws meant to circumvent or disenfranchise Black people�
 
 <!-- end -->
 
-<h4 id="powwow">Powwow</h4>
+#### Powwow
 
 A powwow is a celebration of heritage, art, and community held by Indigenous people, and should only be used to refer to actual powwows. Use other terms to refer to meetings and events that aren’t powwows.
 
@@ -282,11 +282,11 @@ A powwow is a celebration of heritage, art, and community held by Indigenous peo
 
 <!-- end -->
 
-<h4 id="spirit-animal">Spirit animal</h4>
+#### Spirit animal
 
 Indigenous communities use spirit animals as totems and guides. A spirit animal has deep spiritual and cultural meaning, and should only be used in that context. Don’t say spirit animal to mean the animal a non-Indigenous person might identify with the most.
 
-<h4 id="black-hat-white-hat">Black hat, white hat (hacking)</h4>
+#### Black hat, white hat (hacking)
 
 These terms imply that “white is good” and “black is bad”.
 
@@ -304,7 +304,7 @@ These terms imply that “white is good” and “black is bad”.
 
 <!-- end -->
 
-<h4 id="blacklist-whitelist">Blacklist, whitelist</h4>
+#### Blacklist, whitelist
 
 These terms enforce the “white is good” and “black is bad” paradigm.
 
@@ -348,7 +348,7 @@ Add no-reply[at]shopify.com to your email provider’s whitelist.
 
 <!-- end -->
 
-<h4 id="cakewalk">Cakewalk</h4>
+#### Cakewalk
 
 This term originates from a dance contest where enslaved Black people competed for cake.
 
@@ -364,7 +364,7 @@ It’s a cakewalk to file your taxes with our latest features.
 
 <!-- end -->
 
-<h4 id="whitespace">Whitespace</h4>
+#### Whitespace
 
 This term refers to communities and places that are predominantly white and that might make non-white people feel restricted or isolated. Avoid using this term except when referring to the named property in CSS.
 
@@ -382,7 +382,7 @@ This term refers to communities and places that are predominantly white and that
 
 <!-- end -->
 
-<h4 id="long-time-no-see">Long time no see</h4>
+#### Long time no see
 
 This phrase was used to stereotype Indigenous peoples as unintelligent, and shouldn’t be used due to its racist origins.
 
@@ -398,7 +398,7 @@ Long time no see
 
 <!-- end -->
 
-<h4 id="low-hanging-fruit">Low-hanging fruit</h4>
+#### Low-hanging fruit
 
 This metaphor refers to the lynching of Black people, and shouldn’t be used.
 
@@ -443,7 +443,7 @@ When possible, don’t use gendered pronouns. Use the “you” pronoun instead 
 
 Avoid the following words and phrases.
 
-<h4 id="female-adaptor">Female or male adapter or female or male connector</h4>
+#### Female or male adapter or female or male connector
 
 These terms reinforce the idea that gender is binary.
 
@@ -461,7 +461,7 @@ These terms reinforce the idea that gender is binary.
 
 <!-- end -->
 
-<h4 id="businessman">Businessman</h4>
+#### Businessman
 
 This term can exclude people who aren’t men and reinforce the idea that positions of power are only for men. Use a word that’s gender-neutral and inclusive of all people.
 
@@ -477,7 +477,7 @@ This term can exclude people who aren’t men and reinforce the idea that positi
 
 <!-- end -->
 
-<h4 id="manned">Manned</h4>
+#### Manned
 
 This term excludes people who aren’t men. Use a word that’s gender-neutral and inclusive of all people.
 
@@ -494,7 +494,7 @@ This term excludes people who aren’t men. Use a word that’s gender-neutral a
 
 <!-- end -->
 
-<h4 id="man-made">Man-made</h4>
+#### Man-made
 
 This word can exclude people who aren’t men. Use a word that’s gender-neutral and inclusive of all people.
 
@@ -513,7 +513,7 @@ This word can exclude people who aren’t men. Use a word that’s gender-neutra
 
 <!-- end -->
 
-<h4 id="manpower">Manpower</h4>
+#### Manpower
 
 This word can also exclude people who aren’t men.
 
@@ -530,7 +530,7 @@ This word can also exclude people who aren’t men.
 
 <!-- end -->
 
-<h4 id="man-woman">Man, woman</h4>
+#### Man, woman
 
 These terms assume a binary gender which might not be the case. Consider how you use these terms and if they’re necessary in that particular context. If you’re listing genders, make sure to include all genders.
 
@@ -548,7 +548,7 @@ These terms assume a binary gender which might not be the case. Consider how you
 
 <!-- end -->
 
-<h4 id="pronouns">He/him/his, she/her/hers</h4>
+#### He/him/his, she/her/hers
 
 These terms assume a binary gender which might not be the case. Consider how you use these terms and if they’re necessary in that particular context.
 

@@ -226,7 +226,7 @@ function GlobalSearch({}: Props) {
                           const results = searchResults[typedCategory].results;
                           if (results.length === 0) return null;
                           return (
-                            <ResultsGroup title={category}>
+                            <ResultsGroup title={category} key={category}>
                               <div className={styles.FoundationsResults}>
                                 {results.map((result) => {
                                   resultIndex++;
@@ -266,7 +266,7 @@ function GlobalSearch({}: Props) {
                           const results = searchResults[typedCategory].results;
                           if (results.length === 0) return null;
                           return (
-                            <ResultsGroup title={category}>
+                            <ResultsGroup title={category} key={category}>
                               <ComponentGrid>
                                 {results.map((result) => {
                                   resultIndex++;
@@ -290,7 +290,7 @@ function GlobalSearch({}: Props) {
                           const results = searchResults[typedCategory].results;
                           if (results.length === 0) return null;
                           return (
-                            <ResultsGroup title={category}>
+                            <ResultsGroup title={category} key={category}>
                               <TokenList
                                 showTableHeading={false}
                                 columns={{
@@ -319,16 +319,16 @@ function GlobalSearch({}: Props) {
                         case "Icons": {
                           const results = searchResults[typedCategory].results;
                           if (results.length === 0) return null;
+
                           return (
-                            <ResultsGroup title={category}>
+                            <ResultsGroup title={category} key={category}>
                               <IconGrid>
                                 {results.map((result) => {
                                   resultIndex++;
                                   return (
                                     <IconGrid.Item
-                                      key={result.url}
+                                      key={result.meta.icon.id}
                                       icon={result.meta.icon}
-                                      onClick={() => router.push(result.url)}
                                       {...getItemProps({ resultIndex })}
                                     />
                                   );

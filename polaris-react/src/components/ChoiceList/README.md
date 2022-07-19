@@ -1,10 +1,6 @@
 ---
 name: Choice list
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ChoiceList
   - form
@@ -62,11 +58,12 @@ Pick one
 
 <!-- end -->
 
-- Be concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep list titles to a single sentence
-  - It the title introduces the list, it should end with a colon
-  - Should be written in sentence case
+### Be concise and scannable
+
+- Use simple, clear language that can be read at a glance
+- Keep list titles to a single sentence
+- It the title introduces the list, it should end with a colon
+- Should be written in sentence case
 
 <!-- usagelist -->
 
@@ -80,7 +77,7 @@ Shipping Options
 
 <!-- end -->
 
-- Not use colons
+### Not use colons
 
 <!-- usageblock -->
 
@@ -88,21 +85,10 @@ Shipping Options
 
 If the customer abandons their checkout, send them an email reminder to complete their order
 
-<p>
-  <label><input type="radio" name="foo"> Never</label><br />
-  <label><input type="radio" name="foo"> 6 hours later</label><br />
-  <label><input type="radio" name="foo"> 24 hours later</label>
-</p>
-
 #### Don’t
 
-If the customer abandons their checkout, send them an email reminder to complete their order:
+If the customer abandons their checkout, send them an email reminder to complete their order
 
-<p>
-  <label><input type="radio" name="bar"> Never</label><br />
-  <label><input type="radio" name="bar"> 6 hours later</label><br />
-  <label><input type="radio" name="bar"> 24 hours later</label>
-</p>
 <!-- end -->
 
 ### List choices
@@ -110,55 +96,21 @@ If the customer abandons their checkout, send them an email reminder to complete
 Every item in a choice list should:
 
 - Start with a capital letter
-
-<!-- usageblock -->
-
-#### Do
-
-- Option 1
-- Option 2
-- Option 3
-
-#### Don’t
-
-- option 1
-- option 2
-- option 3
-
-<!-- end -->
-
 - Not use commas or semicolons at the end of each line
-
-<!-- usageblock -->
-
-#### Do
-
-- Red
-- Yellow
-- Blue
-
-#### Don’t
-
-- Red;
-- Yellow;
-- Blue.
-
-<!-- end -->
-
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
 <!-- usageblock -->
 
 #### Do
 
-- Item one
-- Item two
+- Option 1
+- Yellow
 - Item three
 
 #### Don’t
 
-- Item One
-- Item Two
+- option 1
+- Yellow;
 - Item Three
 
 <!-- end -->
@@ -198,18 +150,6 @@ function SingleChoiceListExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Single choice list for Android](/public_images/components/ChoiceList/android/single-choice@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Single choice list for iOS](/public_images/components/ChoiceList/ios/single-choice@2x.png)
-
-<!-- /content-for -->
-
 ### Single choice list with error
 
 Allows for accessible error handling by connecting the error message to the field with the error.
@@ -235,18 +175,6 @@ function ChoiceListWithErrorExample() {
   );
 }
 ```
-
-<!-- content-for: android -->
-
-![Single choice list with error for Android](/public_images/components/ChoiceList/android/single-choice-error@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Single choice list with error for iOS](/public_images/components/ChoiceList/ios/single-choice-error@2x.png)
-
-<!-- /content-for -->
 
 ### Multi-choice list
 
@@ -285,21 +213,7 @@ function MultiChoiceListExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Multi choice list for Android](/public_images/components/ChoiceList/android/multi-choice@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Multi choice list for iOS](/public_images/components/ChoiceList/ios/multi-choice@2x.png)
-
-<!-- /content-for -->
-
 ### Single-choice or multi-choice list with children content (always rendered)
-
-<!-- example-for: web -->
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
 
@@ -348,8 +262,6 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
 ```
 
 ### Single-choice or multi-choice list with children content (only rendered when choice is selected)
-
-<!-- example-for: web -->
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 
@@ -404,34 +316,12 @@ function SingleOrMultuChoiceListWithChildrenContextWhenSelectedExample() {
 
 ## Related components
 
-- To present a long list of radio buttons or when space is constrained, [use the select component](https://polaris.shopify.com/components/forms/select)
-- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](https://polaris.shopify.com/components/forms/radio-button) or [checkbox component](https://polaris.shopify.com/components/forms/checkbox)
-- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To present a long list of radio buttons or when space is constrained, [use the select component](https://polaris.shopify.com/components/select)
+- To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](https://polaris.shopify.com/components/radio-button) or [checkbox component](https://polaris.shopify.com/components/checkbox)
+- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/list)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
-The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/forms/checkbox) and [radio button](https://polaris.shopify.com/components/forms/radio-button) components.
-
-<!-- /content-for -->
+The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/checkbox) and [radio button](https://polaris.shopify.com/components/radio-button) components.

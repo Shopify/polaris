@@ -42,10 +42,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         excerpt:
           "Everything we create at Shopify has an underlying foundation of information architecture.",
       },
-      // {
-      //   title: "Onboarding flows",
-      //   url: "/foundations/foundations/designing-onboarding-flows",
-      // },
       {
         icon: Icons.CurrencyIcon,
         url: "/foundations/foundations/formatting-localized-currency",
@@ -206,18 +202,11 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       },
       {
         title: "Page layouts",
-        url: "/foundations/patterns/layout",
+        url: "/foundations/patterns/page-layouts",
         icon: Icons.PageLayouts,
         excerpt:
           "Polaris provides many layout patterns that help you create efficient and familiar interfaces.",
       },
-      // {
-      //   title: "Mobile patterns",
-      //   url: "/foundations/patterns/mobile-patterns",
-      //   icon: Icons.MobilePatternsIcon,
-      //   excerpt:
-      //     "A collection of patterns to help design Shopify’s own iOS and Android apps.",
-      // },
       {
         title: "Home cards",
         url: "/foundations/patterns/home-cards",
@@ -262,6 +251,10 @@ export const contributingNavItems = [
     title: "Contributing to Polaris",
     children: [
       {
+        title: "Introduction",
+        url: "/contributing",
+      },
+      {
         title: "Components",
         url: "/contributing/components",
       },
@@ -279,7 +272,7 @@ export const contributingNavItems = [
       },
       {
         title: "Documentation",
-        url: "/contributing/documention",
+        url: "/contributing/documentation",
       },
     ],
   },
@@ -287,12 +280,12 @@ export const contributingNavItems = [
     title: "Guides",
     children: [
       {
-        title: "Thinking in systems",
-        url: "/contributing/thinking-in-systems",
+        title: "Designing with a system",
+        url: "/contributing/designing-with-a-system",
       },
       {
-        title: "When to evolve the system",
-        url: "/contributing/when-to-evolve-the-system",
+        title: "When to contribute new patterns",
+        url: "/contributing/when-to-contribute-new-patterns",
       },
       {
         title: "Shipping your contribution",

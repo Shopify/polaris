@@ -278,37 +278,15 @@ Use when vertical screen space is not limited or when the video card is the page
 
 ## Related components
 
-- To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/images-and-icons/video-thumbnail)
-- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
+- To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/video-thumbnail)
+- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/empty-state)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The required `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users. It can also accept a ReactNode.
 
 Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the media card is clear to all merchants, including those with issues related to reading and language.
-
-<!-- /content-for -->

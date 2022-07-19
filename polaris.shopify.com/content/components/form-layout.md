@@ -1,10 +1,6 @@
 ---
 name: Form layout
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - FormLayout
   - Group
@@ -30,8 +26,6 @@ keywords:
   - short text fields
   - layout forms
   - layout input fields
-  - android
-  - ios
 examples:
   - fileName: form-layout-default.tsx
     title: Default form layout

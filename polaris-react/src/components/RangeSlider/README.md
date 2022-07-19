@@ -1,10 +1,6 @@
 ---
 name: Range slider
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RangeSlider
   - input
@@ -140,21 +136,7 @@ function RangeSliderExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Range slider for Android](/public_images/components/RangeSlider/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Range slider for iOS](/public_images/components/RangeSlider/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Min and max range control
-
-<!-- example-for: web -->
 
 Use when a single value needs to be selected from a number range with a specific minimum and maximum.
 
@@ -184,8 +166,6 @@ function RangeSliderWithPreciseRangeControlExample() {
 
 ### Step incremented range control
 
-<!-- example-for: web -->
-
 Use when a single value of a specific increment needs to be selected from a range of numbers.
 
 ```jsx
@@ -214,8 +194,6 @@ function RangeSliderWithPreciseRangeControlExample() {
 ```
 
 ### Prefix and suffix elements
-
-<!-- example-for: web -->
 
 Use when the start or end of the range input benefits from additional content.
 
@@ -253,8 +231,6 @@ function RangeSliderWithPrefixAndSuffixExample() {
 ```
 
 ### Dual thumb range slider
-
-<!-- example-for: web -->
 
 Use when two values need to be selected from a range of numbers.
 
@@ -376,31 +352,11 @@ function DualThumbRangeSliderExample() {
 
 ## Related components
 
-- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
+- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/text-field)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 The range slider provides a large click and tap target for the slider thumbs. Merchants can also tap or click on the slider track to move the closest slider thumb.
 
@@ -418,5 +374,3 @@ The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pa
 
 - To move focus to a slider thumb, press the <kbd>tab</kbd> key to move forward and or <kbd>shift</kbd> + <kbd>tab</kbd> to move backward
 - When a thumb has focus, use the up and down or left and right arrow keys to move the thumb and update the associated value.
-
-<!-- /content-for -->

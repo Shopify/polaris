@@ -1,4 +1,5 @@
 import { TokenProperties } from "@shopify/polaris-tokens";
+import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
   frontMatter: any;
@@ -68,14 +69,6 @@ export type GroupedSearchResults = {
   Icons: { results: IconsSearchResult[]; maxScore: number };
 };
 
-export type Icon = {
-  fileName: string;
-  keywords: string[];
-  name: string;
-  description: string;
-  set: string;
-};
-
 export interface SearchResultItem {
   searchResultData?: {
     isHighlighted: boolean;
@@ -96,6 +89,28 @@ export enum Breakpoints {
 }
 
 export type Status = {
-  value: string;
+  value: "deprecated" | "alpha" | "warning" | "information";
   message: string;
 };
+
+export interface PropsForComponent {
+  interfaceName: string;
+  props: {
+    name: string;
+    type: string;
+    comment?: string;
+    optional: boolean;
+    deprecated: boolean;
+  }[];
+}
+
+export interface QuickGuideRow {
+  question: string;
+  answer: string;
+}
+
+export interface QuickGuide {
+  title: string;
+  queryParam: string;
+  rows: QuickGuideRow[];
+}

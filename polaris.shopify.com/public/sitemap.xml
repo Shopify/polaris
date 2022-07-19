@@ -188,8 +188,6 @@
 <url><loc>https://polaris.shopify.com/examples/index-table-with-sticky-last-column</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/index-table-without-checkboxes</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/inline-error-basic</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/keyboard-accessories-with-actions</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/keyboard-accessories-with-text-field</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/keyboard-key-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/keyboard-key-list-of-shortcuts</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/layout-annotated</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -295,8 +293,6 @@
 <url><loc>https://polaris.shopify.com/examples/resource-list-with-total-count</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/scrollable-default-container</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/scrollable-scroll-to-child-component</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/section-header-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/section-header-fixed</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/select-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/select-disabled</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/select-with-inline-label</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -328,8 +324,6 @@
 <url><loc>https://polaris.shopify.com/examples/stack-vertical-centering</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/stack-where-a-single-item-fills-the-remaining-space</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/stack-where-items-fill-space-evenly</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/stepper-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/examples/stepper-disabled</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/subheading-typographic</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/tabs-default</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/examples/tabs-fitted</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -426,7 +420,7 @@
 <url><loc>https://polaris.shopify.com/foundations/content/merchant-to-customer</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/foundations/content/alternative-text</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/foundations/patterns/loading</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/foundations/patterns/layout</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://polaris.shopify.com/foundations/patterns/page-layouts</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/foundations/patterns/home-cards</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/foundations/patterns/error-messages</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/foundations/patterns/text-fields</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -469,7 +463,6 @@
 <url><loc>https://polaris.shopify.com/components/icon</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/index-table</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/inline-error</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/components/keyboard-accessories</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/keyboard-key</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/layout</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/link</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -490,7 +483,6 @@
 <url><loc>https://polaris.shopify.com/components/resource-item</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/resource-list</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/scrollable</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/components/section-header</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/select</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/setting-toggle</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/sheet</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -501,7 +493,6 @@
 <url><loc>https://polaris.shopify.com/components/skeleton-thumbnail</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/spinner</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/stack</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/components/stepper</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/subheading</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/tabs</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/components/tag</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
@@ -516,12 +507,12 @@
 <url><loc>https://polaris.shopify.com/components/visually-hidden</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/code-of-conduct</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/components</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/contributing/documention</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://polaris.shopify.com/contributing/documentation</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/figma-ui-kit</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/icons</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/illustrations</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/index</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 <url><loc>https://polaris.shopify.com/contributing/shipping-your-contribution</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/contributing/thinking-in-systems</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://polaris.shopify.com/contributing/when-to-evolve-the-system</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://polaris.shopify.com/contributing/designing-with-a-system</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://polaris.shopify.com/contributing/when-to-contribute-new-patterns</loc><lastmod>2022-07-05T08:16:51.043Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>

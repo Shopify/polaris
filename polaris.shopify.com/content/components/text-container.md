@@ -1,10 +1,6 @@
 ---
 name: Text container
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 releasedIn: 1.9.0
 keywords:
   - spacing
@@ -14,8 +10,6 @@ keywords:
   - vertical
   - margin
   - padding
-  - android
-  - ios
 examples:
   - fileName: text-container-default.tsx
     title: Default text container

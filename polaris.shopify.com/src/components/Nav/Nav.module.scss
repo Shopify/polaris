@@ -1,26 +1,12 @@
 @import "../../styles/fonts.scss";
 
 .Nav {
-  margin-top: 0.25rem;
-
   ul {
     margin-bottom: 1rem;
   }
 
   ul ul {
     position: relative;
-    // padding-left: 0.75rem;
-
-    // &::before {
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   top: 0.4rem;
-    //   bottom: 0.4rem;
-    //   width: 1px;
-    //   left: 0;
-    //   background: var(--border-color);
-    // }
   }
 
   > ul > li {
@@ -39,7 +25,9 @@
   }
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.33rem;
     padding: 1px 0;
     position: relative;
     color: inherit;
@@ -56,18 +44,10 @@
     &[aria-current="page"],
     &:hover {
       color: var(--text-strong);
+    }
 
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 2px;
-        bottom: 2px;
-        left: -0.75rem;
-        width: 1.5px;
-        border-radius: var(--border-radius-200);
-        background: var(--text-strong);
-      }
+    &[aria-current="page"] {
+      font-weight: var(--font-weight-500);
     }
   }
 }

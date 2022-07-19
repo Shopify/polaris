@@ -21,11 +21,7 @@ export const parseMarkdown = (inputMarkdown) => {
     return false;
   });
 
-  // Replace image paths
-  let markdown = readmeSection.replace(
-    /\/public_images/g,
-    "/images-from-old-styleguide"
-  );
+  let markdown = readmeSection;
 
   // Add some custom HTML to <!-- usagelist --> and <!-- usageblock --> tags
   const usageListRegex = /<!-- (usagelist|usageblock) -->(.*?)<!-- end -->/gis;

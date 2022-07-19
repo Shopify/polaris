@@ -12,11 +12,6 @@ single, specific question.
 This section outlines data visualization practices at Shopify and how to
 leverage them.
 
-<div class="Disclaimer">
-<span>Note</span>
-We’re working on updates to the data visualization principles and rules. Stay tuned!
-</div>
-
 ---
 
 ## Data visualizations at Shopify
@@ -115,12 +110,12 @@ Axis lines should be used as a guideline to show quantitative data, yet be unobt
 #### Do
 
 Ensure axis lines only appear where the data appears.
-![A light grey chart with axis lines](/public_images/data-viz/do/ensure-axis-lines-only-appear-where-data-appears@2x.png)
+![A light grey chart with axis lines](/images/foundations/design/data-visualizations/do/ensure-axis-lines-only-appear-where-data-appears@2x.png)
 
 #### Don’t
 
 Use bleeding axis lines to the edge of the screen.
-![A chart with axis lines filling the screen](/public_images/data-viz/dont/use-bleeding-axis-lines-to-the-edge-of-the-screen@2x.png)
+![A chart with axis lines filling the screen](/images/foundations/design/data-visualizations/dont/use-bleeding-axis-lines-to-the-edge-of-the-screen@2x.png)
 
 <!-- end -->
 
@@ -134,12 +129,12 @@ become more clear in what it represents.
 #### Do
 
 Skip labels in regular intervals.
-![A bar chart plotting time using 12am, 8am, 12pm, and 8pm](/public_images/data-viz/do/skip-labels-in-regular-intervals@2x.png)
+![A bar chart plotting time using 12am, 8am, 12pm, and 8pm](/images/foundations/design/data-visualizations/do/skip-labels-in-regular-intervals@2x.png)
 
 #### Don’t
 
 Try to squeeze all labels together.
-![A chart plotting time with too many axis labels](/public_images/data-viz/dont/squeeze-all-labels-together@2x.png)
+![A chart plotting time with too many axis labels](/images/foundations/design/data-visualizations/dont/squeeze-all-labels-together@2x.png)
 
 <!-- end -->
 
@@ -159,12 +154,12 @@ clutter in visualizations.
 #### Do
 
 Use standard abbreviations for labeling.
-![A chart showing the days of the week abbreviated to Mon, Tues, and so on](/public_images/data-viz/do/use-standard-abbreviations-for-labeling2@2x.png)
+![A chart showing the days of the week abbreviated to Mon, Tues, and so on](/images/foundations/design/data-visualizations/do/use-standard-abbreviations-for-labeling2@2x.png)
 
 #### Don’t
 
 Slant labels to make them fit.
-![A chart with labels slanted at a 45 degree angle](/public_images/data-viz/dont/slant-labels-to-make-them-fit2@2x.png)
+![A chart with labels slanted at a 45 degree angle](/images/foundations/design/data-visualizations/dont/slant-labels-to-make-them-fit2@2x.png)
 
 <!-- end -->
 
@@ -177,12 +172,12 @@ Shopify uses standard monetary abbreviations for the y-axis to reduce clutter.
 #### Do
 
 Abbreviate using ‘k’ for thousand, ‘b’ for billion.
-![A chart with a y-axis representing a thousand dollars as “$1.0k”](/public_images/data-viz/do/abbreviate-using-k-for-thousand-b-for-billion-and-include-the-unit@2x.png)
+![A chart with a y-axis representing a thousand dollars as “$1.0k”](/images/foundations/design/data-visualizations/do/abbreviate-using-k-for-thousand-b-for-billion-and-include-the-unit@2x.png)
 
 #### Don’t
 
 Go over 3 numeric characters, 1 decimal, or 1 letter.
-![A chart with a y-axis that represents the value of a thousand and one dollars as “$1.001k”](/public_images/data-viz/dont/go-over-3-numeric-characters-1-decimal-and-1-single-letter@2x.png)
+![A chart with a y-axis that represents the value of a thousand and one dollars as “$1.001k”](/images/foundations/design/data-visualizations/dont/go-over-3-numeric-characters-1-decimal-and-1-single-letter@2x.png)
 
 <!-- end -->
 
@@ -195,12 +190,12 @@ Labels should be clear and concise.
 #### Do
 
 Center all labels on the bar and the tick mark.
-![A bar chart with the abbreviated days of the week centered on the ticks which are centered on the bars that they represent](/public_images/data-viz/do/center-all-labels-with-the-bar-and-tick2@2x.png)
+![A bar chart with the abbreviated days of the week centered on the ticks which are centered on the bars that they represent](/images/foundations/design/data-visualizations/do/center-all-labels-with-the-bar-and-tick2@2x.png)
 
 #### Don’t
 
 Use decimals on the x-axis labels.
-![A bar chart plotting numbers with decimals on the x-axis](/public_images/data-viz/dont/use-decimals-on-x-axis-labels2@2x.png)
+![A bar chart plotting numbers with decimals on the x-axis](/images/foundations/design/data-visualizations/dont/use-decimals-on-x-axis-labels2@2x.png)
 
 <!-- end -->
 
@@ -213,7 +208,7 @@ Labels should be clear and concise.
 #### Do
 
 Left align labels and keep them above y-axis lines.
-![A chart with a dollar value on the y-axis that’s aligned to the left and raised slightly from the grey axis](/public_images/data-viz/do/left-align-labels-and-keep-them-slightly-above-the-y-axis-lines@2x.png)
+![A chart with a dollar value on the y-axis that’s aligned to the left and raised slightly from the grey axis](/images/foundations/design/data-visualizations/do/left-align-labels-and-keep-them-slightly-above-the-y-axis-lines@2x.png)
 
 <!-- end -->
 
@@ -233,13 +228,13 @@ depending on the intent.
 
 Use when there is a single data series. For example, a bar chart, column chart,
 or a single line chart.
-![A line graph with y-axis and x-axis labels and a single purple line plotting data](/public_images/data-viz/single-data-series@2x.png)
+![A line graph with y-axis and x-axis labels and a single purple line plotting data](/images/foundations/design/data-visualizations/single-data-series@2x.png)
 
 <!-- end -->
 
 <!-- floatedcontent -->
 
-![A line chart with 2 different colors comparing current values to a past value](/public_images/data-viz/single-comparison-to-past@2x.png)
+![A line chart with 2 different colors comparing current values to a past value](/images/foundations/design/data-visualizations/single-comparison-to-past@2x.png)
 
 ### Single comparison to past
 
@@ -255,13 +250,13 @@ the current value will be purple and the past value will be grey.
 
 Used when there are multiple data sets to compare. For example, a multiseries
 line chart. Go down the list as the number of datasets increase.
-![A line chart with multiple data points represented by different colors](/public_images/data-viz/multiseries-data@2x.png)
+![A line chart with multiple data points represented by different colors](/images/foundations/design/data-visualizations/multiseries-data@2x.png)
 
 <!-- end -->
 
 <!-- floatedcontent -->
 
-![One example of an upward trend in percentage sales represented in gren and another example of a downward trend in](/public_images/data-viz/biased-charts@2x.png)
+![One example of an upward trend in percentage sales represented in gren and another example of a downward trend in](/images/foundations/design/data-visualizations/biased-charts@2x.png)
 
 ### Biased
 
@@ -299,12 +294,12 @@ practices, visit axis and label conventions.
 
 Include a label on each bar. If the bar is too small, include it outside of the
 bar.
-![A horizontal bar chart with 2 dollar values within the bar and the lowest value outside of the bar to the right](/public_images/data-viz/do/include-a-label-on-each-bar-if-the-bar-is-too-small-include-it-outside-of-the-bar@2x.png)
+![A horizontal bar chart with 2 dollar values within the bar and the lowest value outside of the bar to the right](/images/foundations/design/data-visualizations/do/include-a-label-on-each-bar-if-the-bar-is-too-small-include-it-outside-of-the-bar@2x.png)
 
 #### Do
 
 Include a label on top of each bar to display what data it’s showing.
-![A horizontal bar chart displaying the country represented by each bar](/public_images/data-viz/do/include-a-label-on-top-of-each-bar-to-display-what-data-it-is-showing@2x.png)
+![A horizontal bar chart displaying the country represented by each bar](/images/foundations/design/data-visualizations/do/include-a-label-on-top-of-each-bar-to-display-what-data-it-is-showing@2x.png)
 
 <!-- end -->
 
@@ -317,12 +312,12 @@ Use one color for all bars.
 #### Do
 
 Give negative bars 60% opacity.
-![A horizontal bar chart with solid purple positive bars and purple negative bars set to 60% opacity](/public_images/data-viz/do/give-negative-bars-60-opacity@2x.png)
+![A horizontal bar chart with solid purple positive bars and purple negative bars set to 60% opacity](/images/foundations/design/data-visualizations/do/give-negative-bars-60-opacity@2x.png)
 
 #### Don’t
 
 Use multiple colors for the bars.
-![A horizontal bar chart using a different color for each bar](/public_images/data-viz/dont/use-multiple-colors-for-the-bars@2x.png)
+![A horizontal bar chart using a different color for each bar](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars@2x.png)
 
 <!-- end -->
 
@@ -376,12 +371,12 @@ All bars should be the same color.
 #### Do
 
 Use one color for all bars.
-![A bar chart showing a data trend with the same bar color](/public_images/data-viz/do/use-one-color-for-all-bars@2x.png)
+![A bar chart showing a data trend with the same bar color](/images/foundations/design/data-visualizations/do/use-one-color-for-all-bars@2x.png)
 
 #### Don’t
 
 Use multiple colors for the bars.
-![A bar chart showing the same data point with different colors](/public_images/data-viz/dont/use-multiple-colors-for-the-bars2@2x.png)
+![A bar chart showing the same data point with different colors](/images/foundations/design/data-visualizations/dont/use-multiple-colors-for-the-bars2@2x.png)
 
 <!-- end -->
 
@@ -395,12 +390,12 @@ space between the bars.
 #### Do
 
 Make the width of each bar about twice as wide as the space between them.
-![A bar chart properly formatted with spaces half the size of each bar](/public_images/data-viz/do/make-the-width-of-each-bar-about-twice-the-space-between-them@2x.png)
+![A bar chart properly formatted with spaces half the size of each bar](/images/foundations/design/data-visualizations/do/make-the-width-of-each-bar-about-twice-the-space-between-them@2x.png)
 
 #### Don’t
 
 Make the bars too skinny.
-![A bar chart with spaces 4 times larger than the bar itself](/public_images/data-viz/dont/make-the-bars-too-skinny@2x.png)
+![A bar chart with spaces 4 times larger than the bar itself](/images/foundations/design/data-visualizations/dont/make-the-bars-too-skinny@2x.png)
 
 <!-- end -->
 
@@ -416,7 +411,7 @@ follow y-axis abbreviation and labelling guidelines.
 #### Do
 
 Include tooltips for x-axis and y-axis values.
-![A bar chart with a tool tip on a bar displaying the date axis point and the dollar value axis point](/public_images/data-viz/do/include-tooltips-with-both-the-x-axis-value-and-y-axis-value@2x.png)
+![A bar chart with a tool tip on a bar displaying the date axis point and the dollar value axis point](/images/foundations/design/data-visualizations/do/include-tooltips-with-both-the-x-axis-value-and-y-axis-value@2x.png)
 
 <!-- end -->
 
@@ -455,14 +450,14 @@ Line graphs work well when multiple datasets need to be compared. Use the
 #### Do
 
 Use contrasting color and include a legend.
-![A line chart with 2 lines using purple and teal to represent the years 2015 and 2016](/public_images/data-viz/do/use-contrasting-colors-and-include-a-legend@2x.png)
+![A line chart with 2 lines using purple and teal to represent the years 2015 and 2016](/images/foundations/design/data-visualizations/do/use-contrasting-colors-and-include-a-legend@2x.png)
 
 #### Don’t
 
 <!-- Label each line with a legend. Label the lines on the actual visualization. -->
 
 Use more than 4 lines.
-![A line chart with 4 lines of different colors](/public_images/data-viz/dont/use-more-than-4-lines-try-to-stick-to-2-lines@2x.png)
+![A line chart with 4 lines of different colors](/images/foundations/design/data-visualizations/dont/use-more-than-4-lines-try-to-stick-to-2-lines@2x.png)
 
 <!-- end -->
 
@@ -494,7 +489,7 @@ Metrics should be scoped to indicate the timeline of the data.
 #### Do
 
 Include a dimension of time to scope the value.
-![Diagram showing “sales this week” with a numeric dollar value](/public_images/data-viz/do/include-a-dimension-of-time-to-scope-the-value@2x.png)
+![Diagram showing “sales this week” with a numeric dollar value](/images/foundations/design/data-visualizations/do/include-a-dimension-of-time-to-scope-the-value@2x.png)
 
 <!-- end -->
 
@@ -508,10 +503,10 @@ previous time or average.
 #### Do
 
 Use green for positive movement.
-![Diagram of green being used to signify an upward trend in data](/public_images/data-viz/do/use-green-to-signify-positive-movement@2x.png)
+![Diagram of green being used to signify an upward trend in data](/images/foundations/design/data-visualizations/do/use-green-to-signify-positive-movement@2x.png)
 
 Use red for negative movement.
-![Diagram of red being used to signify a downward trend in data](/public_images/data-viz/do/use-red-to-signify-negative-movement@2x.png)
+![Diagram of red being used to signify a downward trend in data](/images/foundations/design/data-visualizations/do/use-red-to-signify-negative-movement@2x.png)
 
 <!-- end -->
 
@@ -542,12 +537,12 @@ values in a table.
 #### Do
 
 Left align non-numeric values and right align numeric values.
-![A table showing product inventory with product names aligned to the left and numbers aligned to the right](/public_images/data-viz/do/left-align-non-numeric-values-and-right-align-numeric-values@2x.png)
+![A table showing product inventory with product names aligned to the left and numbers aligned to the right](/images/foundations/design/data-visualizations/do/left-align-non-numeric-values-and-right-align-numeric-values@2x.png)
 
 #### Don’t
 
 Center column headers.
-![A table showing product inventory data with headers, numbers, and titles centered](/public_images/data-viz/dont/center-align-columns@2x.png)
+![A table showing product inventory data with headers, numbers, and titles centered](/images/foundations/design/data-visualizations/dont/center-align-columns@2x.png)
 
 <!-- end -->
 
@@ -561,12 +556,12 @@ row.
 #### Do
 
 Use light lines to indicate separation between rows.
-![A table with three rows separated by light grey lines](/public_images/data-viz/do/separate-rows-with-dividing-lines@2x.png)
+![A table with three rows separated by light grey lines](/images/foundations/design/data-visualizations/do/separate-rows-with-dividing-lines@2x.png)
 
 #### Don’t
 
 Highlight every other row to indicate separation.
-![A table with a white background and grey lines using a darker grey every other row](/public_images/data-viz/dont/separate-rows-by-highlighting-every-other-row@2x.png)
+![A table with a white background and grey lines using a darker grey every other row](/images/foundations/design/data-visualizations/dont/separate-rows-by-highlighting-every-other-row@2x.png)
 
 <!-- end -->
 
@@ -580,7 +575,7 @@ find.
 #### Do
 
 Place totals as the first row beneath the headers, and bold the text.
-![A diagram showing individual product sales underneath the total sales in bold type](/public_images/data-viz/do/place-bold-totals-in-the-first-row@2x.png)
+![A diagram showing individual product sales underneath the total sales in bold type](/images/foundations/design/data-visualizations/do/place-bold-totals-in-the-first-row@2x.png)
 
 <!-- end -->
 

@@ -231,8 +231,6 @@ ${csfExports.join('\n\n')}
 `;
 };
 
-const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
-
 function stripCodeBlock(block) {
   return block
     .replace(/```jsx/, '')
@@ -244,16 +242,6 @@ function pascalCase(str) {
   return (str.match(/[a-zA-Z0-9]+/g) || '')
     .map((m) => m[0].toLocaleUpperCase() + m.slice(1))
     .join('');
-}
-
-function isExampleForPlatform(exampleMarkdown, platform) {
-  const foundExampleFor = exampleMarkdown.match(exampleForRegExp);
-
-  if (!foundExampleFor) {
-    return true;
-  }
-
-  return foundExampleFor[1].includes(platform);
 }
 
 function parseCodeExamples(data) {
@@ -270,15 +258,6 @@ function parseCodeExamples(data) {
 }
 
 function generateExamples(matter) {
-  if (matter.data.platforms && !matter.data.platforms.includes('web')) {
-    const ignoredPlatforms = matter.data.platforms.join(',');
-    console.log(
-      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (platforms: ${ignoredPlatforms})}`,
-    );
-
-    return [];
-  }
-
   if (matter.data.hidePlayground) {
     console.log(
       chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (hidePlayground: true)}`,
@@ -309,29 +288,19 @@ function generateExamples(matter) {
   const nameRegex = /(.)*/;
   const codeRegex = /```jsx(.|\n)*?```/g;
 
-  const examples = allExamples
-    .filter((example) => isExampleForPlatform(example, 'web'))
-    .map((example) => {
-      const nameMatches = example.match(nameRegex);
-      const codeBlock = example.match(codeRegex);
+  const examples = allExamples.map((example) => {
+    const nameMatches = example.match(nameRegex);
+    const codeBlock = example.match(codeRegex);
 
-      const name = nameMatches !== null ? nameMatches[0].trim() : '';
-      const storyName = pascalCase(name);
-      const code =
-        codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
+    const name = nameMatches !== null ? nameMatches[0].trim() : '';
+    const storyName = pascalCase(name);
+    const code =
+      codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
 
-      const description = new MdParser().parse(
-        filterMarkdownForPlatform(
-          example
-            .replace(nameRegex, '')
-            .replace(codeRegex, '')
-            .replace(exampleForRegExp, ''),
-          'web',
-        ).trim(),
-      );
+    const description = new MdParser().parse(example).trim();
 
-      return {name, storyName, code, description};
-    });
+    return {name, storyName, code, description};
+  });
 
   if (examples.filter((example) => example.code).length === 0) {
     console.log(
@@ -348,34 +317,6 @@ function generateExamples(matter) {
   });
 
   return examples;
-}
-
-function filterMarkdownForPlatform(markdown, platform) {
-  const unwrapSinglePlatformContentRegExp = new RegExp(
-    `<!-- content-for: ${platform} -->([\\s\\S]+?)<!-- \\/content-for -->`,
-    'gu',
-  );
-
-  const deleteSinglePlatformContentRegExp = new RegExp(
-    `<!-- content-for: (?:[\\w\\s]*) -->([\\s\\S]+?)<!-- \\/content-for -->`,
-    'gu',
-  );
-
-  const unwrapMultiplatformContentRegExp = new RegExp(
-    `<!-- content-for: (?:[\\w\\s,]*${platform}[\\w\\s,]*) -->([\\s\\S]+?)<!-- \\/content-for -->`,
-    'gu',
-  );
-  const deleteRemainingPlatformsRegExp =
-    /<!-- content-for: [\w\s,]+ -->[\s\S]+?<!-- \/content-for -->/gu;
-
-  return (
-    markdown
-      // Unwrap content in multiple passes to support nested content-for blocks
-      .replace(unwrapSinglePlatformContentRegExp, '$1')
-      .replace(deleteSinglePlatformContentRegExp, '')
-      .replace(unwrapMultiplatformContentRegExp, '$1')
-      .replace(deleteRemainingPlatformsRegExp, '')
-  );
 }
 
 /**
