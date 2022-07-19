@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Add deprecation warnings for existing Text components
+Deprecated `DisplayText`, `Heading`, `Subheading`, `Label`, `Caption`, `TextContainer`, `TextStyle`, and `VisuallyHidden`  components
