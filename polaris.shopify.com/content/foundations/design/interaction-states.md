@@ -19,7 +19,7 @@ Interaction states communicate the status of an element in the interface, establ
 
 <!-- showcasecontent -->
 
-![A collection of buttons in different states](/public_images/design/interaction-states/interaction-states-intro@2x.png)
+![A collection of buttons in different states](/images/foundations/design/interaction-states/interaction-states-intro@2x.png)
 
 <!-- end -->
 
@@ -62,7 +62,7 @@ Provide merchants with cues as to what the interface will do if they interact wi
 
 <!-- centeredcontent -->
 
-![A "sort" button in a default state.](/public_images/design/interaction-states/interaction-states-explicit@2x.png)
+![A "sort" button in a default state.](/images/foundations/design/interaction-states/interaction-states-explicit@2x.png)
 
 **Explicit**, where content directs merchants to do the intended action, such as “Sort” or “Save.”
 
@@ -70,7 +70,7 @@ Provide merchants with cues as to what the interface will do if they interact wi
 
 <!-- centeredcontent -->
 
-![An "edit" button with its underline appearing when the mouse hovers above it.](/public_images/design/interaction-states/interaction-states-hidden@2x.png)
+![An "edit" button with its underline appearing when the mouse hovers above it.](/images/foundations/design/interaction-states/interaction-states-hidden@2x.png)
 
 **Hidden**, where the clue isn’t revealed until the merchant interacts with it, such as hovering or using tab navigation to see if a button is clickable.
 
@@ -78,7 +78,7 @@ Provide merchants with cues as to what the interface will do if they interact wi
 
 <!-- centeredcontent -->
 
-![A "print packing slip" button that is grayed out and inactive.](/public_images/design/interaction-states/interaction-states-negative@2x.png)
+![A "print packing slip" button that is grayed out and inactive.](/images/foundations/design/interaction-states/interaction-states-negative@2x.png)
 
 **Negative**, where the action appears inactive (like the button is grayed out and doesn’t respond to hover) because it isn’t available for the merchant to use.
 
@@ -86,7 +86,7 @@ Provide merchants with cues as to what the interface will do if they interact wi
 
 <!-- showcasecontent -->
 
-![A toast component, a button with a spinner component and a text field component with an error message.](/public_images/design/interaction-states/interaction-states-behavior@2x.png)
+![A toast component, a button with a spinner component and a text field component with an error message.](/images/foundations/design/interaction-states/interaction-states-behavior@2x.png)
 
 ### Behavior
 

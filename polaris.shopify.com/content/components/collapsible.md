@@ -18,8 +18,6 @@ keywords:
   - show hide
   - expanding view
   - collapse
-  - ios
-  - android
 examples:
   - fileName: collapsible-default.tsx
     title: Default collapsible component

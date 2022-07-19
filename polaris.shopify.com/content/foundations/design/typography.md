@@ -46,7 +46,7 @@ Along with the typographic scale, sometimes additional formatting is necessary t
 
 <!-- centeredcontent -->
 
-![Diagram presenting text that is left aligned](/public_images/design/type/type-left-align@2x.png)
+![Diagram presenting text that is left aligned](/images/foundations/design/typography/type-left-align@2x.png)
 
 ### Left aligned
 
@@ -56,7 +56,7 @@ By default, text is left aligned. Exceptions to this rule include text in tables
 
 <!-- centeredcontent -->
 
-![Diagram presenting text that is emphasised by being bold](/public_images/design/type/type-strong@2x.png)
+![Diagram presenting text that is emphasised by being bold](/images/foundations/design/typography/type-strong@2x.png)
 
 ### Strong
 
@@ -66,7 +66,7 @@ Use this style sparingly and only where strong emphasis is required. In interfac
 
 <!-- centeredcontent -->
 
-![Diagram presenting text that is underlined](/public_images/design/type/type-underline@2x.png)
+![Diagram presenting text that is underlined](/images/foundations/design/typography/type-underline@2x.png)
 
 ### Underline
 
@@ -76,7 +76,7 @@ Underline styles are exclusively for text links. Don’t use underline for thing
 
 <!-- centeredcontent -->
 
-![Diagram presenting text that is subdued in a lighter gray color](/public_images/design/type/type-subdued@2x.png)
+![Diagram presenting text that is subdued in a lighter gray color](/images/foundations/design/typography/type-subdued@2x.png)
 
 ### Subdued
 
@@ -94,7 +94,7 @@ The subdued style lets you de-emphasize content, and you can use it across all f
 
 PageHeading is reserved for the title of a screen.
 
-![An interface showing the title of a page before its contents](/public_images/design/type/type-pageheading@2x.png)
+![An interface showing the title of a page before its contents](/images/foundations/design/typography/type-pageheading@2x.png)
 
 <!-- end -->
 
@@ -104,7 +104,7 @@ PageHeading is reserved for the title of a screen.
 
 Display is for titling various interface elements, such as empty states and modals.
 
-![An empty state and a modal with large display headings](/public_images/design/type/type-display@2x.png)
+![An empty state and a modal with large display headings](/images/foundations/design/typography/type-display@2x.png)
 
 <!-- end -->
 
@@ -114,7 +114,7 @@ Display is for titling various interface elements, such as empty states and moda
 
 Heading should always be used for titles of top-level sections of a screen. If the sections of a screen are represented by cards, each card’s title should use the Heading style.
 
-![Two interface cards with headings](/public_images/design/type/type-heading@2x.png)
+![Two interface cards with headings](/images/foundations/design/typography/type-heading@2x.png)
 
 <!-- end -->
 
@@ -124,7 +124,7 @@ Heading should always be used for titles of top-level sections of a screen. If t
 
 If a top-level section of a screen has subsections, use the Subheading style for titling those subsections. Subheading should never appear as the first element in a card. Only use with titles (vs. sections of content).
 
-![An interface card titled with a large heading text size followed by a smaller subheading](/public_images/design/type/type-subheading@2x.png)
+![An interface card titled with a large heading text size followed by a smaller subheading](/images/foundations/design/typography/type-subheading@2x.png)
 
 <!-- end -->
 
@@ -134,7 +134,7 @@ If a top-level section of a screen has subsections, use the Subheading style for
 
 Caption is for providing details in places where content is compact and space is tight, like when it comes to data visualization.
 
-![A line chart with small, caption-sized labels](/public_images/design/type/type-caption@2x.png)
+![A line chart with small, caption-sized labels](/images/foundations/design/typography/type-caption@2x.png)
 
 <!-- end -->
 
@@ -148,7 +148,7 @@ We use a font stack that adapts to the operating system it runs on, like macOS, 
 
 <!-- showcasecontent -->
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/public_images/design/type/type-fontstack@2x.png)
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/type-fontstack@2x.png)
 
 <!-- end -->
 

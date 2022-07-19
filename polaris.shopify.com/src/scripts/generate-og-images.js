@@ -87,7 +87,7 @@ async function main() {
       const segments = url.split("/");
       const componentSlug = segments[segments.length - 1];
       const image = fs.readFileSync(
-        `./public/component-previews/${componentSlug}.png`
+        `./public/images/components/${componentSlug}.png`
       );
       const base64 = Buffer.from(image).toString("base64");
       componentImage = `data:image/jpg;base64,${base64}`;

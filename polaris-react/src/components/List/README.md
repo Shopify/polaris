@@ -8,8 +8,6 @@ keywords:
   - list items
   - text lists
   - text-only lists
-  - ios
-  - android
 ---
 
 # List

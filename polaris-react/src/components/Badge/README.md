@@ -13,8 +13,6 @@ keywords:
   - object status
   - status
   - alert
-  - ios
-  - android
 ---
 
 # Badge
