@@ -189,51 +189,47 @@ function HomePage({}: Props) {
 
         <div className={className(styles.Step, styles.PowerUps)}>
           <Container>
-            <div className={styles.Blocks}>
-              <div className={styles.Block}>
-                <div className={styles.PolarisForVSCode}>
-                  <div className={styles.Text}>
-                    <h3>Polaris for VS Code</h3>
-                    <p className={styles.Description}>
-                      Automatic autocompletion for Polaris tokens, right inside
-                      your favorite code editor.
-                    </p>
-                    <Links
-                      links={[
-                        {
-                          icon: "install",
-                          label: "Get the extension",
-                          url: "https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode",
-                        },
-                      ]}
-                    />
-                  </div>
-
-                  {useMotion ? (
-                    <div className={styles.Video}>
-                      <video
-                        muted
-                        loop
-                        autoPlay
-                        playsInline
-                        width="2250"
-                        height="1440"
-                      >
-                        <source src="/images/vscode.mp4" type="video/mp4" />
-                      </video>
-                    </div>
-                  ) : (
-                    <div className={styles.Poster}>
-                      <Image
-                        width="2250"
-                        height="1440"
-                        src="/images/vscode.jpg"
-                        alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
-                      />
-                    </div>
-                  )}
-                </div>
+            <div className={styles.PolarisForVSCode}>
+              <div className={styles.Text}>
+                <h3>Polaris for VS Code</h3>
+                <p className={styles.Description}>
+                  Automatic autocompletion for Polaris tokens, right inside your
+                  favorite code editor.
+                </p>
+                <Links
+                  links={[
+                    {
+                      icon: "install",
+                      label: "Get the extension",
+                      url: "https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode",
+                    },
+                  ]}
+                />
               </div>
+
+              {useMotion ? (
+                <div className={styles.Video}>
+                  <video
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    width="2250"
+                    height="1440"
+                  >
+                    <source src="/images/vscode.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              ) : (
+                <div className={styles.Poster}>
+                  <Image
+                    width="2250"
+                    height="1440"
+                    src="/images/vscode.jpg"
+                    alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
+                  />
+                </div>
+              )}
             </div>
           </Container>
         </div>
