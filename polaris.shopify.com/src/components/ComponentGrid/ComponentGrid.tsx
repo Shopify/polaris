@@ -1,10 +1,6 @@
 import Image from "../Image";
 import Link from "next/link";
-import {
-  className,
-  getReadableStatusValue,
-  slugify,
-} from "../../utils/various";
+import { getReadableStatusValue, slugify } from "../../utils/various";
 import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
 import StatusBadge from "../StatusBadge";
@@ -34,11 +30,7 @@ function ComponentGridItem({
   const searchAttributes = useGlobalSearchResult();
 
   return (
-    <li
-      key={name}
-      className={className(styles.Component)}
-      {...searchAttributes}
-    >
+    <li key={name} className={styles.Component} {...searchAttributes}>
       <Link href={url} passHref>
         <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
