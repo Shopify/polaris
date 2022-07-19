@@ -47,8 +47,8 @@ export interface TextProps {
   visuallyHidden?: boolean;
 }
 
-export function labelID(id: string, as: Element) {
-  return as === 'label' ? `${id}Label` : undefined;
+export function getLabelID(labelId: string, as: Element) {
+  return as === 'label' ? `${labelId}Label` : undefined;
 }
 
 export const Text = ({
@@ -57,7 +57,7 @@ export const Text = ({
   children,
   color,
   fontWeight = 'regular',
-  id,
+  labelId,
   requiredIndicator,
   truncate = false,
   variant,
@@ -66,8 +66,11 @@ export const Text = ({
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
   const labelProps = {
-    ...(id &&
-      labelID(id, as) !== undefined && {id: labelID(id, as), htmlFor: id}),
+    ...(labelId &&
+      getLabelID(labelId, as) !== undefined && {
+        labelId: getLabelID(labelId, as),
+        htmlFor: labelId,
+      }),
   };
 
   const className = classNames(
