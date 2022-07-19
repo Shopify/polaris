@@ -31,6 +31,17 @@ export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
 
+const getRowClientHeights = (rows: NodeList | undefined) => {
+  const heights: number[] = [];
+  if (!rows) {
+    return heights;
+  }
+  rows.forEach((row: HTMLTableRowElement) => {
+    heights.push(row.clientHeight);
+  });
+  return heights;
+};
+
 export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
@@ -214,14 +225,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const firstTotal = totals?.slice(0, 1);
     const tableHeaderRows = this.table.current?.children[0].childNodes;
     const tableBodyRows = this.table.current?.children[1].childNodes;
-    const headerRowHeights: number[] = [];
-    const bodyRowHeights: number[] = [];
-    tableHeaderRows?.forEach((row: HTMLTableRowElement) => {
-      headerRowHeights.push(row.clientHeight);
-    });
-    tableBodyRows?.forEach((row: HTMLTableRowElement) => {
-      bodyRowHeights.push(row.clientHeight);
-    });
+    const headerRowHeights: number[] = getRowClientHeights(tableHeaderRows);
+    const bodyRowHeights: number[] = getRowClientHeights(tableBodyRows);
 
     const fixedFirstColumnMarkup = condensed && fixedFirstColumn && (
       <table
