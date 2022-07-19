@@ -8,7 +8,6 @@ import { Breakpoints } from "../../types";
 import Button from "../Button";
 import type { NavItem } from "../Nav";
 
-import shopifyLogo from "../../../public/shopify-logo.svg";
 import styles from "./MobileNav.module.scss";
 
 const componentsNavItems = getComponentNav();
@@ -123,7 +122,7 @@ function MobileNav({ currentPath }: Props) {
                 onKeyDown={handleShiftTabPress}
               >
                 <Image
-                  src={shopifyLogo}
+                  src="/shopify-logo.svg"
                   layout="fixed"
                   width={24}
                   height={24}

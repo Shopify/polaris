@@ -1,8 +1,6 @@
 ---
 name: Sheet
 category: Overlays
-platforms:
-  - web
 keywords:
   - sheet
   - modal
@@ -11,7 +9,6 @@ keywords:
   - overlay
   - drawer
   - dialog
-  - web
 fullSizeExamples: true
 status:
   value: Deprecated

@@ -194,8 +194,6 @@ Index tables should:
 
 ---
 
-<a name="index-table-row"></a>
-
 ## IndexTableRow
 
 An `IndexTableRow` is used to render a row representing an item within an `IndexTable`
@@ -209,8 +207,6 @@ An `IndexTableRow` is used to render a row representing an item within an `Index
 | position | number    | The index position of the row                                   |
 | subdued  | boolean   | A boolean property indicating whether the row should be subdued |
 | status   | RowStatus | A property indicating whether the row should have a status      |
-
-<a name="index-table-cell"></a>
 
 ## IndexTableCell
 

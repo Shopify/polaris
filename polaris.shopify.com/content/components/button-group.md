@@ -1,10 +1,6 @@
 ---
 name: Button group
 category: Actions
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ButtonGroup
   - choices
@@ -21,8 +17,6 @@ keywords:
   - horizontal arrangement of buttons
   - stacked
   - segmented control
-  - ios
-  - android
 examples:
   - fileName: button-group-default.tsx
     title: Default button group

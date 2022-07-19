@@ -1,10 +1,6 @@
 ---
 name: Badge
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - pills
   - status indicators
@@ -17,8 +13,6 @@ keywords:
   - object status
   - status
   - alert
-  - ios
-  - android
 examples:
   - fileName: badge-default.tsx
     title: Default badge
@@ -147,26 +141,4 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
-
-<!-- /content-for -->

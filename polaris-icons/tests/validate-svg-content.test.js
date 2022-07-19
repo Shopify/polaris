@@ -83,8 +83,8 @@ allIconFiles.forEach(
         );
       });
 
-      it('only has <path>s that only use the [d, fill, fill-rule] attributes', () => {
-        const allowedAttributes = ['d', 'fill', 'fillRule'];
+      it('only has <path>s that only use the [d, fill, fill-rule, fill-opacity] attributes', () => {
+        const allowedAttributes = ['d', 'fill', 'fillRule', 'fillOpacity'];
 
         const nodesWithDisallowedAttributes = selectAll('path', iconAst).filter(
           (node) => {

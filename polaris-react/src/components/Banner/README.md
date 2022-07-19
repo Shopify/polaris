@@ -1,10 +1,6 @@
 ---
 name: Banner
 category: Feedback indicators
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - inform
   - update
@@ -65,7 +61,7 @@ Banners should:
   figuring out what they need to know and do.
 - Be limited to a few important calls to action with no more than one primary
   action.
-- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
+- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/callout-card) instead.
 
 To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
@@ -232,21 +228,7 @@ including packaging.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Default banner for Android](/public_images/components/Banner/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default banner for iOS](/public_images/components/Banner/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Dismissible banner
-
-<!-- example-for: web -->
 
 Make all banners dismissible, unless they contain critical information or an important action that merchants are required to take.
 
@@ -278,18 +260,6 @@ Use when you want merchants to take an action after reading the banner.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Banner with footer call-to-action for Android](/public_images/components/Banner/android/footer-action@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Banner with footer call-to-action for iOS](/public_images/components/Banner/ios/footer-action@2x.png)
-
-<!-- /content-for -->
-
 ### Informational banners
 
 Use to update merchants about a change or give them advice.
@@ -306,18 +276,6 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Informational banner for Android](/public_images/components/Banner/android/informational@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Informational banner for iOS](/public_images/components/Banner/ios/informational@2x.png)
-
-<!-- /content-for -->
-
 ### Success banner
 
 - Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action
@@ -331,18 +289,6 @@ Use to update merchants about a change or give them advice.
   onDismiss={() => {}}
 />
 ```
-
-<!-- content-for: android -->
-
-![Success banner for Android](/public_images/components/Banner/android/success@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Success banner for iOS](/public_images/components/Banner/ios/success@2x.png)
-
-<!-- /content-for -->
 
 ### Warning banners
 
@@ -364,18 +310,6 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Warning banner for Android](/public_images/components/Banner/android/warning@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Warning banner for iOS](/public_images/components/Banner/ios/warning@2x.png)
-
-<!-- /content-for -->
-
 ### Critical banners
 
 - Use to communicate problems that have to be resolved immediately for merchants to complete a task
@@ -396,21 +330,7 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Critical banner for Android](/public_images/components/Banner/android/critical@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Critical banner for iOS](/public_images/components/Banner/ios/critical@2x.png)
-
-<!-- /content-for -->
-
 ### Banner in a modal
-
-<!-- example-for: web -->
 
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
@@ -460,8 +380,6 @@ function BannerInModalExample() {
 
 ### Banner with focus
 
-<!-- example-for: web -->
-
 Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
 
 ```jsx
@@ -488,8 +406,6 @@ function BannerWithFocusExample() {
 
 ### Banner in a card
 
-<!-- example-for: web -->
-
 Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
@@ -511,32 +427,12 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
 
 ## Related components
 
-- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/structure/callout-card)
-- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/callout-card)
+- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/card)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Banners provide context and assist workflows for merchants with disabilities.
 
@@ -555,7 +451,7 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](https://polaris.shopify.com/components/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
 To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
@@ -573,5 +469,3 @@ To learn about creating helpful and accessible error message text, see the guide
 - Use warning or critical (`role=”alert”`) banners to convey information that the merchant doesn’t need to address immediately
 
 <!-- end -->
-
-<!-- /content-for -->

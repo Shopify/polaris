@@ -1,10 +1,6 @@
 ---
 name: Page
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - page
   - breadcrumbs
@@ -22,8 +18,6 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-  - android
-  - ios
 examples:
   - fileName: page-with-all-header-elements.tsx
     title: Page with all header elements

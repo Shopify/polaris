@@ -226,7 +226,6 @@ function SearchResults({
   searchResults: GroupedSearchResults;
   currentItemId: string;
 }) {
-  const router = useRouter();
   return (
     <>
       {searchResults.map(({ category, results }) => {
@@ -319,7 +318,7 @@ function SearchResults({
             return (
               <ResultsGroup category={category}>
                 <IconGrid>
-                  {results.map(({ id, url, meta }) => {
+                  {results.map(({ id, meta }) => {
                     if (!meta.icons) return null;
                     const { icon } = meta.icons;
                     return (
@@ -327,10 +326,7 @@ function SearchResults({
                         key={id}
                         value={{ currentItemId, id }}
                       >
-                        <IconGrid.Item
-                          icon={icon}
-                          onClick={() => router.push(url)}
-                        />
+                        <IconGrid.Item icon={icon} />
                       </SearchContext.Provider>
                     );
                   })}

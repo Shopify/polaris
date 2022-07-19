@@ -1,64 +1,66 @@
 import Image from "../Image";
-import { className, slugify } from "../../utils/various";
-import Tooltip from "../Tooltip";
-const importedSvgs = require.context(
-  "../../../../polaris-icons/icons",
-  true,
-  /\.svg$/
-);
-import styles from "./IconGrid.module.scss";
-import { Icon } from "../../types";
 import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
+import { className } from "../../utils/various";
+import styles from "./IconGrid.module.scss";
+import { Icon } from "@shopify/polaris-icons/metadata";
+import Link from "next/link";
 
 interface IconGridProps {
+  title?: string;
   children: React.ReactNode;
 }
 
-function IconGrid({ children }: IconGridProps) {
-  return <ul className={styles.IconGrid}>{children}</ul>;
+function IconGrid({ title, children }: IconGridProps) {
+  return (
+    <>
+      {title ? <h2 className={styles.SectionHeading}>{title}</h2> : null}
+      <div className={styles.IconGrid}>
+        <ul className={styles.IconGridInner}>{children}</ul>
+      </div>
+    </>
+  );
 }
 
 interface IconGridItemProps {
   icon: Icon;
-  onClick: (iconName: string) => void;
-  isSelected?: boolean;
+  query?: string;
+  activeIcon?: string;
 }
 
-function IconGridItem({ icon, onClick, isSelected }: IconGridItemProps) {
+function IconGridItem({ icon, activeIcon, query }: IconGridItemProps) {
+  const { id, name, description } = icon;
   const searchAttributes = useGlobalSearchResult();
 
   return (
-    <li
-      key={`${icon.name}-${icon.set}`}
-      className={className(styles.Icon, isSelected && styles.isSelected)}
-      {...searchAttributes}
-    >
-      <Tooltip
-        ariaLabel={icon.description}
-        renderContent={() => (
-          <div>
-            <p>
-              {icon.description === "N/A" ? "No description" : icon.description}
-            </p>
-          </div>
-        )}
+    <li key={id}>
+      <Link
+        href={{
+          pathname: "/icons",
+          query: {
+            icon: id,
+            ...(query === "" ? {} : { q: query }),
+          },
+        }}
+        scroll={false}
+        {...searchAttributes}
       >
-        <button
-          onClick={() => onClick(icon.name)}
-          tabIndex={searchAttributes?.tabIndex}
+        <a
+          className={className(
+            styles.Icon,
+            activeIcon === id && styles.isSelected
+          )}
+          id={icon.id}
         >
-          <div className={styles.SVGWrapper}>
-            <Image
-              src={importedSvgs(`./${icon.fileName}.svg`)}
-              alt={icon.description}
-              width={20}
-              height={20}
-              fadeIn={false}
-            />
-          </div>
-          <span style={{ fontSize: 12, color: "#aaa" }}>{icon.name}</span>
-        </button>
-      </Tooltip>
+          <Image
+            src={`/icons/${id}.svg`}
+            alt={description}
+            width={20}
+            height={20}
+            icon
+          />
+          <p>{name}</p>
+        </a>
+      </Link>
     </li>
   );
 }

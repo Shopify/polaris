@@ -1,6 +1,10 @@
 import Image from "../Image";
 import Link from "next/link";
-import { className, slugify } from "../../utils/various";
+import {
+  className,
+  getReadableStatusValue,
+  slugify,
+} from "../../utils/various";
 import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
 import StatusBadge from "../StatusBadge";
@@ -39,7 +43,7 @@ function ComponentGridItem({
         <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
             <Image
-              src={`/component-previews/${slugify(name)}.png`}
+              src={`/images/components/${slugify(name)}.png`}
               layout="responsive"
               width={525}
               height={300}
@@ -55,7 +59,12 @@ function ComponentGridItem({
               {status && (
                 <>
                   {" "}
-                  <StatusBadge status={status} />
+                  <StatusBadge
+                    status={{
+                      value: status.value,
+                      message: getReadableStatusValue(status.value),
+                    }}
+                  />
                 </>
               )}
             </h4>

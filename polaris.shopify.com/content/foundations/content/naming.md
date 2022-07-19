@@ -132,9 +132,9 @@ picked the format that works for the design, use it consistently.
 
 #### Do
 
-- _Shopify_<br />Product Reviews
-- _Shopify_<br />Order Printer
-- _Shopify_<br />Shopcodes
+- _Shopify_ Product Reviews
+- _Shopify_ Order Printer
+- _Shopify_ Shopcodes
 
 #### Don’t
 
@@ -303,7 +303,7 @@ brand identity and keep “Shopify” out of the name.
 #### Do
 
 - Kylie Jenner Pop-up Shop
-- Kylie<br />_Powered by Shopify_
+- Kylie _Powered by Shopify_
 
 #### Don’t
 
@@ -693,8 +693,7 @@ confusing.
 
 Before naming a new product or feature:
 
-- Conduct an audit of our [vocabulary list](/content/vocabulary#navigation) to
-  narrow down your naming choices
+- Conduct an audit of existing names to narrow down your naming choices
 - Ask the support team to see if they think it’ll conflict with another name
 - Draft a test conversation around similar sounding names
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.5.0
+
+### Minor Changes
+
+- [#6407](https://github.com/Shopify/polaris/pull/6407) [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Exposed SCSS media conditions for the `breakpoints` token group
+
 ## 5.4.0
 
 ### Minor Changes

@@ -50,34 +50,16 @@ You'll find more specific guidelines on how to adapt your tone to different situ
 
 As Shopify’s voice, we should always:
 
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/CustomersMajor.svg)
-
 ### Be real, but not too tough or overly familiar
 
 - Use business casual language—be plain-spoken, not pretentious or overly playful
 - Be upfront and honest with merchants, even if we make a mistake
 - Communicate with clarity and empathy—be direct, not insensitive
 
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/HintMajor.svg)
-
 ### Be proactive, but not needy or pushy
 
 - Offer merchants sincere encouragement and practical advice
 - Clearly explain how merchants are impacted when something goes wrong, but don’t overexplain with redundant content
-
-</div>
-</div>
-
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/WandMajor.svg)
 
 ### Be dynamic, but not scattered or impulsive
 
@@ -85,19 +67,11 @@ As Shopify’s voice, we should always:
 - Avoid words that generalize success like “every,” “all,” and “most”
 - Use language that supports action, movement, and progress
 
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/content/voice-and-tone/NavigationMajor.svg)
-
 ### Guide, but don’t handhold or prescribe
 
 - Use expertise to help merchants succeed; don’t talk down to them
 - Be specific when explaining benefits without making things sound better than they are
 - Teach people the “why” and “how” behind actions—don’t just tell them to do something
-
-</div>
-</div>
 
 ---
 
@@ -121,13 +95,13 @@ When everything is working as it should, our goal is to give people what they ne
 
 Look for the simplest way to communicate information—words aren’t always necessary.
 
-![Images showing icons of an eye representing a “view” action, a picture frame representing the concept of "images" and a spyglass representing the action of "search".](/public_images/content/voice-and-tone/view-icon@2x.png)
+![Images showing icons of an eye representing a “view” action, a picture frame representing the concept of "images" and a spyglass representing the action of "search".](/images/foundations/content/voice-and-tone/view-icon@2x.png)
 
 #### Don’t
 
 Use overly complicated or intimidating language.
 
-![Image showing a toggle switch on a card labeled “Use Biometrics for Authentication”](/public_images/content/voice-and-tone/biometrics-toggle-card@2x.png)
+![Image showing a toggle switch on a card labeled “Use Biometrics for Authentication”](/images/foundations/content/voice-and-tone/biometrics-toggle-card@2x.png)
 
 <!-- end -->
 
@@ -144,7 +118,7 @@ Be consistent for identical actions or destinations when possible.
 
 Add extra text just to fill space.
 
-![Image showing a text field for notes labeled “Add a note” followed by an ellipsis](/public_images/content/voice-and-tone/add-note-field@2x.png)
+![Image showing a text field for notes labeled “Add a note” followed by an ellipsis](/images/foundations/content/voice-and-tone/add-note-field@2x.png)
 
 <!-- end -->
 
@@ -162,7 +136,7 @@ Remember, they may have sought this out specifically or we may have recommended 
 
 Help people understand why they should do something, not just how.
 
-![A home card suggesting to add a shipping policy to your store to build trust with customers](/public_images/content/voice-and-tone/shipping-policy-card@2x.png)
+![A home card suggesting to add a shipping policy to your store to build trust with customers](/images/foundations/content/voice-and-tone/shipping-policy-card@2x.png)
 
 #### Don’t
 
@@ -178,7 +152,7 @@ _Create a new campaign and you could double your sales this holiday season._
 
 Break down complicated tasks into steps that help people focus on one thing at a time.
 
-![A home card with separate tabs for adding a product, customizing a theme, and adding a domain](/public_images/content/voice-and-tone/onboarding-tasks@2x.png)
+![A home card with separate tabs for adding a product, customizing a theme, and adding a domain](/images/foundations/content/voice-and-tone/onboarding-tasks@2x.png)
 
 #### Don’t
 
@@ -218,13 +192,13 @@ _Bad request, forbidden, fatal, expectation failed, unresolved, invalid_
 
 Look for ways to help people resolve problems automatically.
 
-![An email input form element with a typo in the inputted email address and a hint text underneath it guiding the user to fix the typo.](/public_images/content/voice-and-tone/email-error-message@2x.png)
+![An email input form element with a typo in the inputted email address and a hint text underneath it guiding the user to fix the typo.](/images/foundations/content/voice-and-tone/email-error-message@2x.png)
 
 #### Don’t
 
 Use error numbers or code unless they’re easily recognizable by people and help them solve the problem.
 
-![Error modal with a confusing error code stating “200 OK”](/public_images/content/voice-and-tone/channel-not-found-error@2x.png)
+![Error modal with a confusing error code stating “200 OK”](/images/foundations/content/voice-and-tone/channel-not-found-error@2x.png)
 
 <!-- end -->
 
@@ -238,7 +212,7 @@ While we don’t need to celebrate the accomplishment, we should recognize that 
 
 #### Do
 
-If this is a task people do regularly, make it clear that the step is complete in a simple and non-intrusive way, like a [toast](/components/feedback-indicators/toast). Consider ways to confirm completion without words or messaging.
+If this is a task people do regularly, make it clear that the step is complete in a simple and non-intrusive way, like a [toast](/components/toast). Consider ways to confirm completion without words or messaging.
 
 _Product saved_
 
@@ -342,8 +316,6 @@ _Your Shopify Payments account is on hold. Please attach your State Tax Exemptio
 
 <!-- end -->
 
-<a name="announcing-features"></a>
-
 ### Announcing new features and updates
 
 It’s exciting to launch a new feature or update, but always consider the audience’s perspective first. While we may be excited about the benefits and capabilities, change can be intimidating or annoying for users.
@@ -356,15 +328,17 @@ When you’re announcing something new, focus on educating and explaining what i
 
 Pitch our product by explaining the specific merchant benefits.
 
-_**Introducing the new Buy Button** <br />
-Make it your own with custom fonts, colors, and styles. It also loads 50% faster so your visitors won’t miss it._
+_**Introducing the new Buy Button**_
+
+_Make it your own with custom fonts, colors, and styles. It also loads 50% faster so your visitors won’t miss it._
 
 #### Don’t
 
 Just talk about ourselves and assume the experience for merchants will be easy.
 
-_**Get Shopify’s new Buy Button** <br />
-It’s never been easier to customize the fonts, colors, and styles of Buy Buttons. It’s also twice as fast._
+_**Get Shopify’s new Buy Button**_
+
+_It’s never been easier to customize the fonts, colors, and styles of Buy Buttons. It’s also twice as fast._
 
 <!-- end -->
 
@@ -374,7 +348,7 @@ It’s never been easier to customize the fonts, colors, and styles of Buy Butto
 
 If possible, let users dismiss announcements or postpone changes until they’re ready.
 
-![A modal with a secondary button option to “remind me later” for a “single login” feature.](/public_images/content/voice-and-tone/remind-later-button@2x.png)
+![A modal with a secondary button option to “remind me later” for a “single login” feature.](/images/foundations/content/voice-and-tone/remind-later-button@2x.png)
 
 <!-- end -->
 
