@@ -36,7 +36,7 @@ export interface TextProps {
   /** Adjust weight of text */
   fontWeight?: FontWeight;
   /** A unique identifier for label text */
-  id?: string;
+  labelId?: string;
   /** Visual required indicator for label text*/
   requiredIndicator?: boolean;
   /** Truncate text overflow with ellipsis */
