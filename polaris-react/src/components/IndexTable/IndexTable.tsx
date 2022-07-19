@@ -103,7 +103,7 @@ function IndexTableBase({
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
   const [hideScrollContainer, setHideScrollContainer] =
     useState<boolean>(false);
-  const [smallScreen, setSmallScreen] = useState(isSmallScreen());
+  const [smallScreen, setSmallScreen] = useState(isBreakpointsXS());
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
