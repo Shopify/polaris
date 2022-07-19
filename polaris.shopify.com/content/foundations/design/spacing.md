@@ -14,6 +14,12 @@ keywords:
 
 Space is the distance between objects in your design. It should be used to organize information in a way that is familiar and easy to scan, while helping reinforce its purpose.
 
+<!-- showcasecontent -->
+
+![A visual example of a polaris unit](/images/foundations/design/spacing/spacing-polaris-size-units@2x.png)
+
+<!-- end -->
+
 ---
 
 ## Principles
@@ -32,201 +38,185 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 
 ---
 
-## Polaris size units
+## Spacing tools
 
-All measurements used across the experience (space, width, height, etc)  must reference Polaris size units to guarantee visual consistency and balance.
+### Polaris size units
 
-<!-- centeredcontent -->
+All measurements used across the experience (space, width, height, etc) must reference Polaris size units to guarantee visual consistency and balance.
 
-![The mobile interface of the Shopify admin on a 4 pixel grid.](/images/foundations/design/spacing/spacing-4px-grid@2x.png)
+### Size scale
 
-### 4px grid
+| Value    | Size         | px value | rem value |
+| -------- | ------------ | -------- | --------- |
+| 0        | --p-size-0   | 0        | 0         |
+| 0.25     | --p-size-025 | 1        | 0.0625    |
+| 0.5      | --p-size-05  | 2        | 0.03125   |
+| 1 (base) | --p-size-1   | 4        | 0.25      |
+| 2        | --p-size-2   | 8        | 0.5       |
+| 3        | --p-size-3   | 12       | 0.75      |
+| 4        | --p-size-4   | 16       | 1         |
+| 5        | --p-size-5   | 20       | 1.25      |
+| 6        | --p-size-6   | 24       | 1.5       |
+| 8        | --p-size-8   | 32       | 2         |
+| 10       | --p-size-10  | 40       | 2.5       |
+| 12       | --p-size-12  | 48       | 3         |
+| 16       | --p-size-16  | 64       | 4         |
+| 24       | --p-size-24  | 96       | 6         |
+| 32       | --p-size-32  | 128      | 8         |
 
-Typography doesn’t use a traditional baseline grid. Instead, line heights are set in increments of 4px and spacing is measured from the edges of the text boxes.
+Polaris units are more dense at a small scale, and less so as dimensions increase.
+This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different sizes.
 
-<!-- end -->
+### Column grid
 
-<!-- centeredcontent -->
+The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
 
-![A profile card component on a 4 pixel grid with text placed vertically at 20 pixel intervals](/images/foundations/design/spacing/spacing-20px-elements@2x.png)
+### Breakpoints
 
-Many components are sized in increments of 20px to match the line height of body text. This makes it easy to create harmonious arrangements of components and&nbsp;text.
+The grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.
 
-<!-- end -->
+| Screen size                            | Columns | Margin | Gutter | Navigation |
+| -------------------------------------- | ------- | ------ | ------ | ---------- |
+| **XS** <br> 0-489 <br> Phones          | 6       | 16     | 16     | Collapsed  |
+| **SM** <br> 490-767 <br> Small tablets | 6       | 16     | 16     | Collapsed  |
+| **MD** <br> 768-1039 <br> Tablets      | 6       | 24     | 16     | Collapsed  |
+| **LG** <br> 1040-1399 <br> Laptops     | 12      | 24     | 16     | Visible    |
+| **XL** <br> 1440+ <br> Desktops        | 12      | 32     | 16     | Visible    |
 
----
-
-## Spacing in code
-
-You can apply spacing in code in two ways:
-
-- Using stylesheets
-- Using utility components provided by Polaris React
-
-### Applying spacing with stylesheets
-
-When applying spacing in CSS, use these [spacing tokens](/tokens/spacing).
-
-### Applying spacing with components
-
-Various components within Polaris enable automatic spacing between elements:
-
-<!-- centeredcontent -->
-
-![Several paragraphs of text with space in between, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-text-container@2x.png)
-
-Use the [text container](/components/text-container) component to wrap and automatically add the correct spacing between a set of paragraphs, lists, or other textual components.
-
-<!-- end -->
-
-<!-- centeredcontent -->
-
-![A text label, text value and badge arranged in a row, with their edges and spacing highlighted](/images/foundations/design/spacing/spacing-stack@2x.png)
-
-The [stack](/components/stack) component can be used to arrange arbitrary components in a horizontal row or vertical stack with space in between. It accepts the same values as the Sass spacing function to control spacing between the items.
-
-<!-- end -->
+The grid is meant to serve as a point of reference for page level design and alignment, but this doesn’t need to apply to component level layouts.
 
 ---
 
-## How to choose spacing
+## Essentials for designing with space
+
+### Gestalt principles
+
+The perception of any given page goes beyond the individual elements presented, and the space between them. People’s perception is heavily influenced by their own expectations and motivations.
+When designing, it’s key to consider that people look for patterns, and will always perceive things in their simplest form. For instance, a bunch of similar items stacked on top of each other will likely read as a list.
 
 <!-- showcasecontent -->
 
-Use less space between small components, or components that share a close functional&nbsp;relationship.
+![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/spacing/spacing-principles@2x.png)
 
-![Two text fields showing spacing within and between them](/images/foundations/design/spacing/spacing-less-space@2x.png)
+<!-- end -->
+
+#### People look for patterns instinctively, and they lean of visual cues like:
+
+<!-- showcasecontent -->
+
+#### Similarity
+
+Grouping things based on physical appearance (shape, color, size, orientation).
+
+![Index table](/images/foundations/design/spacing/spacing-similarity@2x.png)
 
 <!-- end -->
 
 <!-- showcasecontent -->
 
-Use less space between small components, or components that share a close functional&nbsp;relationship.
+#### Proximity
 
-![Detail of a screen from Shopify admin, showing space between the page header and cards, between the cards, and the space around the layout](/images/foundations/design/spacing/spacing-more-space@2x.png)
+Grouping things based on distance between objects.
 
-<!-- end -->
-
-Coordinate small and large values, along with structural components (like Home cards), to create visual groupings of related things. This helps merchants understand the interface and more easily find what they’re looking for.
-For screens with specialized layouts, adjust overall spacing based on the density of the content. For example, a simple login screen on desktop display has more room to breathe, so more space can be used.
-
----
-
-## Common values
-
-The most common spacing sizes are used throughout Polaris for admin as follows:
-
-<!-- centeredcontent -->
-
-![Space between icon and text in buttons and list items](/images/foundations/design/spacing/spacing-extra-tight@2x.png)
-
-**4px** (`extra-tight`) between icon and text.
-
-The [button](/components/button) component has this spacing built in.
+![Customers and orders page](/images/foundations/design/spacing/spacing-proximity@2x.png)
 
 <!-- end -->
 
-<!-- centeredcontent -->
+#### Continuity
 
-![Two buttons in a row, with annotation showing the space between](/images/foundations/design/spacing/spacing-tight@2x.png)
+Grouping things based on the way they are arranged.
 
-**8px** (`tight`) between icon and text.
+<!-- showcasecontent -->
 
-The [button group](/components/button-group) component has this spacing built in.
+#### Closure
 
-<!-- end -->
+Grouping things that are implicitly enclosed by a larger object.
 
-<!-- centeredcontent -->
-
-![A form showing horizontal and vertical space between text fields](/images/foundations/design/spacing/spacing-base-forms@2x.png)
-
-16 or 20px between form fields.
-
-**16px** (`base`) vertically, **20px** (`loose`) horizontally.
-
-The [form layout](/components/form-layout) component has this spacing built in.
+![Order details page](/images/foundations/design/spacing/spacing-closure@2x.png)
 
 <!-- end -->
 
-<!-- centeredcontent -->
+#### Common fate
 
-![Detail of a card component from a large screen display, showing padding on the top, sides and between card sections](/images/foundations/design/spacing/spacing-loose-forms@2x.png)
+Grouping things based on how they move.
 
-**20px** (`loose`) padding in cards.
+<!-- showcasecontent -->
 
-<!-- end -->
+#### Common Region
 
-<!-- centeredcontent -->
+Grouping things that are explicitly enclosed by a larger object.
 
-![Detail of a card on a small screen, showing reduced side padding](/images/foundations/design/spacing/spacing-loose-mobile@2x.png)
-
-**16px** (`base`) side padding on small screen.
-
-The [card](/components/card) component has this built in.
-
-<!-- end -->
-
-<!-- centeredcontent -->
-
-![Detail of a screen from the Shopify admin, showing horizontal and vertical spacing between cards](/images/foundations/design/spacing/spacing-loose-between-cards@2x.png)
-
-**20px** (`loose`) between cards
-
-The The [card](/components/card) component automatically adds vertical space between it and any preceding card.
-
-For horizontal spacing, use the [layout](/components/layout) component to create multi-column layouts.
+![Customer details card](/images/foundations/design/spacing/spacing-common-region-1@2x.png)
+![Main nav bar](/images/foundations/design/spacing/spacing-common-region-2@2x.png)
 
 <!-- end -->
 
 ---
 
-## Adjustments and exceptions
+### Rhythm
 
-In cases where minute alignment adjustments are necessary, some exceptions apply:
+Alternating between objects and space creates a pattern. Repeated patterns create visual rhythm, which can be used to effectively direct the viewer’s attention.
+Anything can establish rhythm: space, typography, icons, color, shape, and size.
+
+Like in music, different types of rhythm serve a different purpose, in design there’s three worth highlighting:
 
 <!-- centeredcontent -->
 
-![Closeup of a badge component, showing how its internal padding can be arbitrary, but its height is a multiple of 4px and the text within is vertically centered](/images/foundations/design/spacing/spacing-exception-badge@2x.png)
+![Example of data table](/images/foundations/design/spacing/spacing-regular-rhythm-1@2x.png)
+![Example of index table](/images/foundations/design/spacing/spacing-regular-rhythm-2@2x.png)
 
-When text is vertically centered inside a component, the top and bottom padding can be any size.
+**Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![Three buttons in a row, showing how their width depends on their text content](/images/foundations/design/spacing/spacing-text-width@2x.png)
+![Location profile page](/images/foundations/design/spacing/spacing-flowing-rhythm@2x.png)
 
-Allow the length of text to determine the width of components and where they fall horizontally when placed in a row.
+**Flowing rhythm** is organic, and it can bring a high level of scannability to something that would be otherwise a random collection of objects.
 
 <!-- end -->
 
 <!-- centeredcontent -->
 
-![Diagram of a button with optical adjustment for an icon](/images/foundations/design/spacing/spacing-optical-adjustment@2x.png)
+![Home page with progressive disclosure card](/images/foundations/design/spacing/spacing-progressive-rhythm@2x.png)
+
+**Progressive rhythm** is a gradual progression, and is very effective in giving the eye a path to follow, along the progression. This is great to establish hierarchy and aid the user through a series of steps.
+
+<!-- end -->
+
+Rhythm plays another job in designs, it’s the norm that enables the introduction of variation and points of attention, otherwise known as contrast.
+
+---
+
+### Density
+
+The overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.
+
+---
+
+### Contrast
+
+Contrast is meant to create sticking points that help make content easy to scan, highlight important pieces of information, or just to give viewers a moment to breathe.
+
+Contrast can play a role at very different levels, but it must be used sparingly, otherwise its effect gets diluted.
+
+---
 
 ### Optical adjustment
 
-Sometimes an element is larger than it appears. Spacing based on the invisible edges of the element will feel wrong. Correct for these optical effects by adjusting the space in 4px increments until it looks more balanced.
+Sometimes software will say two objects are aligned, or that they have the same size, but visually they don’t feel like that. This happens because computers aren’t great at perceiving visual weight or simultaneous color contrast, so we can’t fully rely on them to create balanced compositions.
+
+That means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:
+
+#### Visual weight ≠ Size
+
+Two things can have the same size, but feel unbalanced.
 
 Without optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived spacing is more balanced.
 
-<!-- end -->
+The square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.
 
----
+#### Colors affect each other
 
-## Touch targets
-
-Merchants can more easily perform a task on mobile when interactive elements follow the recommended touch target sizes and spacing guidelines. Make sure that there’s enough space between links, buttons, and inputs prevents accidental actions. Note: touch target sizes differ across iOS (44px) and Android (48dpi).
-
-<!-- usageblock -->
-
-#### Do
-
-- Assess the content in the surrounding area and position the UI elements accordingly
-- If you work at Shopify, use the components provided in the iOS and Android UI kits
-
-#### Don’t
-
-- Don’t use adjacent actions (if possible). It will reduce the risk of error.
-
-<!-- end -->
+Two things can have the same colour, but feel unbalanced.
