@@ -29,7 +29,7 @@ const {
   motion,
   shape,
   spacing,
-  typography,
+  font,
   zIndex,
 } = tokens;
 
@@ -73,7 +73,7 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 });
 
 // Add other tokens
-const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
+const otherTokenGroups = { depth, motion, shape, spacing, font, zIndex };
 Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
     ([tokenName, tokenProperties]: [string, TokenProperties]) => {
