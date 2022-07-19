@@ -1,36 +1,30 @@
 @import "variables.scss";
 @import "fonts.scss";
 @import "mixins.scss";
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-// Place CSS variables on body (instead of :root) so that
-// we can utilize the .dark-mode class to flip the colors
-body {
+:root {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 72px;
   --narrow-content-width: 720px;
-  --header-margin: 4.5rem;
-
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    --header-margin: 3rem;
-  }
+  --header-height: 64px; // Parsed by JS. Define in px.
+  --header-margin: 76px; // Parsed by JS. Define in px.
 
   @media screen and (max-width: $breakpointDesktop) {
-    --header-height: 60px;
-    --header-margin: 2rem;
+    --header-margin: 48px; // Parsed by JS. Define in px.
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    --header-margin: 32px; // Parsed by JS. Define in px.
   }
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
-  --focus-outline: 0 0 0 2px var(--text-strong);
-  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
     "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
   --surface-code-block: #2e2e30;
 
-  // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+  // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
@@ -103,6 +97,12 @@ body {
   --border-radius-round: 1000px;
 }
 
+.light-mode,
+.dark-mode {
+  --focus-outline: 0 0 0 2px var(--text-strong);
+  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -118,10 +118,6 @@ body {
   border: none;
   appearance: none;
   outline: none;
-}
-
-video {
-  display: block;
 }
 
 *:focus-visible {
@@ -197,6 +193,10 @@ body,
   --decorative-4: #342484;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #363636;
+}
+
+video {
+  display: block;
 }
 
 a {
