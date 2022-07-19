@@ -147,9 +147,11 @@ function GlobalSearch() {
         break;
 
       case "Enter":
-        setIsOpen(false);
-        const url = resultsInRenderedOrder[currentResultIndex].url;
-        router.push(url);
+        if (resultsInRenderedOrder.length > 0) {
+          setIsOpen(false);
+          const url = resultsInRenderedOrder[currentResultIndex].url;
+          router.push(url);
+        }
         break;
     }
   };

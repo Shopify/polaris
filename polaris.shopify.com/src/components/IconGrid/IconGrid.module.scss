@@ -33,7 +33,8 @@
   }
 
   &.isSelected,
-  &:hover {
+  &:hover,
+  &[data-is-current-result="true"] {
     background: var(--search-highlight-color);
   }
 }

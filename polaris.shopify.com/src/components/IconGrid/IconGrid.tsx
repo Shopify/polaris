@@ -42,7 +42,6 @@ function IconGridItem({ icon, activeIcon, query }: IconGridItemProps) {
           },
         }}
         scroll={false}
-        {...searchAttributes}
       >
         <a
           className={className(
@@ -50,6 +49,7 @@ function IconGridItem({ icon, activeIcon, query }: IconGridItemProps) {
             activeIcon === id && styles.isSelected
           )}
           id={icon.id}
+          {...searchAttributes}
         >
           <Image
             src={`/icons/${id}.svg`}

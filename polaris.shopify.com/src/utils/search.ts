@@ -104,7 +104,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 // Add icons
 Object.keys(iconMetadata).forEach((fileName) => {
   results.push({
-    id: slugify(`icons ${name} ${iconMetadata[fileName].set}`),
+    id: slugify(`icons ${fileName} ${iconMetadata[fileName].set}`),
     category: "icons",
     url: `/icons?icon=${fileName}`,
     score: 0,
