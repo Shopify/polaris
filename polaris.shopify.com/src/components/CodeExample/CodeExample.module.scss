@@ -44,7 +44,7 @@
   transition: opacity 0.1s linear;
 
   .CodeExample:hover & {
-    opacity: 0.5;
+    opacity: 0.75;
 
     &:hover {
       opacity: 1;
@@ -65,7 +65,7 @@
 .Code {
   font-family: var(--font-family-mono);
   white-space: pre-wrap;
-  padding: 0.5rem 0.66rem;
+  padding: 0.85rem 1rem;
   font-size: 14px;
   line-height: 1.6;
   overflow: auto;
@@ -77,6 +77,7 @@
 .CodeExample.minimalist .Code {
   font-size: var(--font-size-50);
   line-height: 1.45;
+  padding: 0.5rem 0.66rem;
 }
 
 .LineNumber {

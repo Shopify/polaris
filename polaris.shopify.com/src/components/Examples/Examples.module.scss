@@ -1,4 +1,4 @@
-.Examples {
+.ExamplesList {
   display: flex;
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -32,6 +32,17 @@
   border-radius: var(--border-radius-400);
   overflow: hidden;
   box-shadow: var(--card-shadow);
+
+  .Buttons {
+    display: flex;
+    justify-content: flex-end;
+    border-top: var(--border);
+    color: var(--text-link);
+
+    button {
+      padding: 0.75rem 1rem;
+    }
+  }
 }
 
 .SandboxButton {

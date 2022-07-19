@@ -51,7 +51,7 @@ const Examples = (props: Props) => {
         onChange={setSelectedIndex}
       >
         <Tab.List>
-          <div className={styles.Examples}>
+          <div className={styles.ExamplesList}>
             {examples.map((example) => {
               return (
                 <Tab key={example.fileName}>
@@ -61,7 +61,6 @@ const Examples = (props: Props) => {
             })}
           </div>
         </Tab.List>
-
         <Tab.Panels>
           {examples.map(({ fileName, description, code }) => {
             const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
@@ -77,7 +76,14 @@ const Examples = (props: Props) => {
                     onLoad={handleExampleLoad}
                     ref={iframeRef}
                   />
+                  <div className={styles.Buttons}>
+                    <CodesandboxButton
+                      className={styles.CodesandboxButton}
+                      code={code}
+                    />
+                  </div>
                 </div>
+
                 <CodeExample language="typescript">{code}</CodeExample>
               </Tab.Panel>
             );
