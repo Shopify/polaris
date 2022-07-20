@@ -2680,14 +2680,14 @@
   resolved "https://registry.yarnpkg.com/@shopify/prettier-config/-/prettier-config-1.1.2.tgz#612f87c0cd1196e8b43c85425e587d0fa7f1172d"
   integrity sha512-5ugCL9sPGzmOaZjeRGaWUWhHgAbemrS6z+R7v6gwiD+BiqSeoFhIY+imLpfdFCVpuOGalpHeCv6o3gv++EHs0A==
 
-"@shopify/react-testing@^3.2.4":
-  version "3.2.4"
-  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-3.2.4.tgz#ecc136533270cbb252147318c3c7e300a02d495d"
-  integrity sha512-BhQgroiGA6VhPMAwsy2LVdNR1tv7nWkAL4uvW1SDiQEHhJmWJ1AyDq5UXKdWeDhoH3DoZOjALX1SFfLkSdIoKQ==
+"@shopify/react-testing@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@shopify/react-testing/-/react-testing-4.1.0.tgz#0564c5977f0cfbcda37c4b181b5ff52740ade970"
+  integrity sha512-CfqhcjcDisvQ3tmeL81eMEv0Hqmy8z1etDdqg4J5pgt9JN+TR8w1Thp0hm8N/XvLaOeD4qm6IpzRE7Iyamj2ZQ==
   dependencies:
-    "@shopify/useful-types" "^3.0.4"
+    "@shopify/useful-types" "^5.0.0"
     jest-matcher-utils "^26.6.2"
-    react-reconciler "^0.26.2"
+    react-reconciler "^0.28.0"
 
 "@shopify/storybook-a11y-test@1.0.1":
   version "1.0.1"
@@ -2718,10 +2718,10 @@
   resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.1.0.tgz#f6e8fdd3291bf0a406578b2c6eb21f8c542d3c0a"
   integrity sha512-RywGBTR+nQyJLxcrUcihPkHPIG3pIQI6i0YwMrM5rs9nWJ0+9A5HKEcboyGPLH+8V08EXGfFQ6H820O9ajyk4A==
 
-"@shopify/useful-types@^3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-3.0.4.tgz#6b1f0908f60487550542c75acebea1a4f4eff968"
-  integrity sha512-uHVbNANIdYgWSF+vgL+H7j3ufyNzAbkHIgL0iYPb/C2OreHC1YaQWeMjjPQobzCb5MxultSPgvAbgWuytm3gCA==
+"@shopify/useful-types@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@shopify/useful-types/-/useful-types-5.0.0.tgz#1a06976ecff33de9b36c822c4f2f89a92940f27b"
+  integrity sha512-3T9AZNKK3Tjxz++Z10DFtNnAXfdoE9kPkJTiCfsRcxZ3IVfFORzAUKTv4mgKT5P8IyRbIRtmxfzZzRCxn4fIgQ==
 
 "@sinclair/typebox@^0.23.3":
   version "0.23.4"
@@ -17249,14 +17249,13 @@ react-markdown@^8.0.2:
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-react-reconciler@^0.26.2:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.26.2.tgz#bbad0e2d1309423f76cf3c3309ac6c96e05e9d91"
-  integrity sha512-nK6kgY28HwrMNwDnMui3dvm3rCFjZrcGiuwLc5COUipBK5hWHLOxMJhSnSomirqWwjPBJKV1QcbkI0VJr7Gl1Q==
+react-reconciler@^0.28.0:
+  version "0.28.0"
+  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.28.0.tgz#52ede33c584c9b6d4c9bea02a53d368c5751c9c9"
+  integrity sha512-sGIHDOpgVjRYgsi8NgosDnbkDvvkYFFSF900ZUhUw0+lSBEA5n76TcKFaVkfYMIuYm+7W6mT8Q673DLBfuTxcQ==
   dependencies:
     loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    scheduler "^0.20.2"
+    scheduler "^0.22.0"
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -18173,6 +18172,13 @@ scheduler@^0.20.2:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+scheduler@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.22.0.tgz#83a5d63594edf074add9a7198b1bae76c3db01b8"
+  integrity sha512-6QAm1BgQI88NPYymgGQLCZgvep4FyePDWFpXVK+zNSUgHwlqpJy8VEh8Et0KxTACS4VWwMousBElAZOH9nkkoQ==
+  dependencies:
+    loose-envify "^1.1.0"
 
 scheduler@^0.23.0:
   version "0.23.0"
