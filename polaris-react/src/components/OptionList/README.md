@@ -40,7 +40,7 @@ The option list component should:
 
 Each item in an option list should be clear and descriptive.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

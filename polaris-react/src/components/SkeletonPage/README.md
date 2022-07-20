@@ -30,7 +30,7 @@ Show page titles that never change for a page. For example, keep the title “Pr
 
 Secondary actions are always represented with skeleton content. You can change the number of skeleton actions that best represent the number of actions once loaded.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

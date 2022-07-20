@@ -42,7 +42,7 @@ Terms should be:
 
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -60,7 +60,7 @@ Terms descriptions should be:
 
 - Directly related to the term they’re describing
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +80,7 @@ Terms descriptions should be:
 - Conversational by using articles (the, a, an)
 - Written using plain language
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

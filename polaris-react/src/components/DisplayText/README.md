@@ -104,7 +104,7 @@ Although display text creates an interesting visual experience, it doesn’t rep
 
 By default, the display text component outputs text in an HTML paragraph (`<p>`). If a heading tag is needed for display text, use the `element` prop to set the heading level.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

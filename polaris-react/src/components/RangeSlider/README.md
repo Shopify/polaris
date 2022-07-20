@@ -39,7 +39,7 @@ A label is a short description of the requested input. Labels are not instructio
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -58,7 +58,7 @@ A label is a short description of the requested input. Labels are not instructio
 Try to only ask for information that’s required. If you need to ask merchants
 to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -74,7 +74,7 @@ to provide optional information, mark the field optional by placing the text “
 
 Help text provides extra guidance or instruction to people filling out a form field. It can also be used to clarify how the information will be used. As with all form content, help text should be succinct and easy to read.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,7 +94,7 @@ Error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

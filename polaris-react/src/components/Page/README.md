@@ -69,7 +69,7 @@ Page header action labels should be:
 - Action-led: they should always lead with a strong verb that encourages
   action. To provide enough context to merchants, use the {verb}+{noun} format.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -87,7 +87,7 @@ Page header action labels should be:
 
   In the context of the orders list page:
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -103,7 +103,7 @@ Page header action labels should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

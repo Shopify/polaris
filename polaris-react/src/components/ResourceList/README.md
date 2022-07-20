@@ -1275,7 +1275,7 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- usage -->
+  <!-- dodont -->
 
   #### Do
 
@@ -1290,7 +1290,7 @@ Resource lists should:
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- usage -->
+  <!-- dodont -->
 
   #### Do
 

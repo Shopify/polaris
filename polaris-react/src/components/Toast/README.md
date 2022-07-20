@@ -55,7 +55,7 @@ Toast messages should be:
 - Short and affirmative
 - Written in the pattern of: noun + verb
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -90,7 +90,7 @@ Action should:
 - Not have actions, like [Cancel], for dismissing toast. The [X] to dismiss is already included in the component.
 - Be used with a duration of at least 10,000 milliseconds for accessibility.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

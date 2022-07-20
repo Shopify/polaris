@@ -1714,7 +1714,7 @@ Index tables should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- usage -->
+  <!-- dodont -->
 
   #### Do
 
@@ -1729,7 +1729,7 @@ Index tables should:
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- usage -->
+  <!-- dodont -->
 
   #### Do
 

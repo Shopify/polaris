@@ -54,7 +54,7 @@ The placeholder content for the search field should:
 - Always say "Search"
 - Never include an ellipsis
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

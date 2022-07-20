@@ -1014,7 +1014,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -1052,7 +1052,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

@@ -64,7 +64,7 @@ The filters component should:
 
 The text field should be clearly labeled so it’s obvious to merchants what they should enter into the field.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +80,7 @@ The text field should be clearly labeled so it’s obvious to merchants what the
 
 Use the name of the filter if the purpose of the name is clear on its own. For example, when you see a filter badge that reads **Fulfilled**, it’s intuitive that it falls under the Fulfillment status category.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,7 +94,7 @@ Use the name of the filter if the purpose of the name is clear on its own. For e
 
 If the filter name is ambiguous on its own, add a descriptive word related to the status. For example, **Low** doesn’t make sense out of context. Add the word “risk” so that merchants know it’s from the Risk category.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -108,7 +108,7 @@ If the filter name is ambiguous on its own, add a descriptive word related to th
 
 Group tags from the same category together.
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 
@@ -122,7 +122,7 @@ Group tags from the same category together.
 
 If all tag pills selected: truncate in the middle
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Do
 

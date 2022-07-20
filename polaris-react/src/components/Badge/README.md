@@ -61,7 +61,7 @@ The available badges for fulfillment status are:
 - Unfulfilled
 - Restocked
 
-<!-- usage -->
+<!-- dodont -->
 
 #### Don’t
 
