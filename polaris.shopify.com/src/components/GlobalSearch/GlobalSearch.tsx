@@ -173,7 +173,7 @@ function GlobalSearch({}: Props) {
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className={styles.ModalBackdrop}></div>
-        <div className="dark-mode">
+        <div className="dark-mode non-polaris-styles">
           <>
             <Dialog.Panel className={styles.Results}>
               {isOpen && (
