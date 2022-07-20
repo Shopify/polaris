@@ -14,7 +14,7 @@ Learn about what changes are coming to Polaris typography
 
 ---
 
-This is an Alpha release of the new type system. That means we’re making the new Text component and Figma text styles available to use but there could still be significant changes made. Our goal is to share the work so that you can: understand what’s changing, start using the type updates, and provide feedback to help us improve.
+This is an Alpha release of the new type system. That means we’re making the new Text component and Figma text styles available to use but there could still be significant changes made. Our goal is to share the work so that you can: **understand what’s changing**, **start using the typography updates**, and **provide feedback to help us improve.**
 
 Ready to learn what’s changing? Let’s dive in!
 
@@ -34,46 +34,100 @@ Simplifying our components and improving our foundation will help our product te
 
 Polaris typography is getting a refresh. Currently, there are **4 Display**, **1 Heading**, **1 Subheading**, **1 Button**, **1 Body**, and **1 Caption** variants.
 
-_add image_
-
 The updates will simplify type into three categories: **Display**, **Heading**, and **Body**. Each category has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the UI.
 
-_add image_
+![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-style-updates@2x.png)
 
 ## Type scale
 
+We’ve updated the type scale and we’re moving from two scales to one for both desktop and mobile web. Some values have been removed and others added to cover a wide range of uses in the UI.
+
+All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px. For example, if I take my base value of 14px and multiply it by 1.2 I get a value of 16px as the next increment in the scale.
+
+| New scale | Old scale |      |
+| --------- | --------- | ---- |
+| 12px      | 12px      | 13px |
+| 14px      | 14px      | 15px |
+| 16px      | 16px      | 16px |
+| 20px      | 20px      | 17px |
+| 24px      | 26px      | 21px |
+| 28px      | 28px      | 24px |
+| 32px      | 42px      | 27px |
+| 40px      |           |      |
+
+### Why were values changed or removed?
+
+The lower end of the scale has largely stayed the same with the majority of the changes made to the middle and upper values.
+
+**Changing values**
+The first change we made was updating the values of both size and line-height to be multiples of 4 with the exception of the 14px base size. This helps us be critical about the size values we use for other elements in the UI. This is important because it affects the rhythm of the page.
+
+**Adding values**
+We added 32px to have an extra step at the larger end of the scale. We made this decision after looking at what font sizes are being used across the different pages in the Shopify admin. Pages that are geared towards learning or celebrating key moments, often use the larger sizes in the scale. We also found that additional sizes were being added or adjusted with custom styles.
+
+We considered those common values that we were noticing being added and adjusted the scale to work for those different pages.
+
+### Why one type scale?
+
 We’re moving from two type scales to one for both desktop and mobile web.
 
-We looked at how type changes between the different screen sizes and found that it’s often a difference of 1px. While 1px can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles, just wasn’t worth it. Designers and developers often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
+We looked at how type changes between the different screen sizes and found that it’s often a difference of 1px. While 1px can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles, just wasn’t worth it. They often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
 
-_add image_
+[gif to show difference]
 
-The larger Display styles respond automatically at certain breakpoints but all other sizes will stay the same unless specified otherwise.
-
-_add image_
+However, for the larger sizes in the scale, we believe, in most cases, it makes sense for those sizes to adjust automatically so the sizes look appropriate for the screen size they’re being displayed on. This behavior hasn’t been added yet but, in the next release, we’ll update the Display styles to respond automatically at certain breakpoints with all other sizes staying the same unless specified otherwise.
 
 ## Typography components
 
 We’re moving from seven type components to a singular Text component.
 
-Notes on why:
-One component to learn and read documentation on
-Autocompleting props helps developers to learn the different typography options quickly
-Less complexity in code
-Decouples layout from type
-Easier to make sweeping changes to type
-Sets us up for more flexibility in how type is used within components
-Sets us up for future override work
-Low usage of a lot of the components
-One way to control typography
+## Why one component?
+
+To start, the team prototyped both a singular and multiple component approach. We then tested these prototypes with developers and the response was overwhelmingly in favor of the singular Text component.
+
+Overall, developers perceived the singular component as easier to use and understand. They could type in a property and see all the possible options right from their code editor. They didn’t have to import 7+ components and figure out the right one to use.
+
+Other benefits of the singular component:
+
+- One component to learn and read documentation on
+- Autocompleting props helps developers to learn the different typography options quickly
+- Less complexity in code
+- Decouples layout from type
+- Easier to make sweeping changes to type
+- Provides us with a more flexible way to control type within components
+- Sets us up for future style override work to provide even more flexibility
+- Provides one way to control typography
+- There is low usage of a lot of the old typography components
 
 ## Typography tokens
 
 We have updated and streamlined token values, and updated token names to reflect a token naming convention that makes tokens easier to use and understand.
 
-_comparison table_
+| New token          | Old token              | px value | rem value |
+| ------------------ | ---------------------- | -------- | --------- |
+| --p-font-size-75   | --p-font-size-1        | 12       | 0.75      |
+|                    | --p-font-size-2        | 13       | 0.8125    |
+| --p-font-size-100  | --p-font-size-3        | 14       | 0.875     |
+|                    | --p-font-size-4        | 15       | 0.9375    |
+| --p-font-size-200  | --p-font-size-5        | 16       | 1         |
+|                    | --p-font-size-6        | 17       | 1.0625    |
+| --p-font-size-300  | --p-font-size-7        | 20       | 1.25      |
+|                    | --p-font-size-8        | 21       | 1.3125    |
+| --p-font-size-400  | --p-font-size-9        | 24       | 1.50      |
+|                    | --p-font-size-10       | 26       | 1.625     |
+|                    | --p-font-size-11       | 27       | 1.6875    |
+| --p-font-size-600  | --p-font-size-12       | 28       | 1.75      |
+| --p-font-size-500  |                        | 32       | 2         |
+| --p-font-size-700  |                        | 40       | 2.5       |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
+| --p-line-height-75 | --p-font-line-height-1 |          |           |
 
-## Using the new component and text styles
+## Using the typography updates
 
 The new Text component and Figma text styles are available in alpha. You can start using the new component and styles now but be aware they’re still in development and there could be breaking changes. The existing type components will continue to be available for use until the new Text component is finalized.
 
@@ -85,15 +139,14 @@ Next, we’ll be releasing the beta version of the component. The beta release w
 
 - Updating Polaris components to use the new Text component
 - Adding a deprecation warning to the old type components
+- Adding responsive Display styles
 - Updating components in the Figma UI Kit to use the new text styles
-- Updated Typography documentation
+- Updating design and API documentation
 
 Don’t worry, we’ll also provide a timeline and guidance for migration.
 
 ## Resources
 
-Add links for:
-Text component
-Any other related technical documentation
-Figma Text styles
-Figma guides
+[Text component]()
+[Figma Text styles]()
+[Figma guides]()
