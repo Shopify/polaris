@@ -270,10 +270,11 @@ export const contributingNavItems = [
         title: "Icons",
         url: "/contributing/icons",
       },
-      {
-        title: "Illustrations",
-        url: "/contributing/illustrations",
-      },
+      // add illustrations back in when we have more helpful content
+      // {
+      //   title: "Illustrations",
+      //   url: "/contributing/illustrations",
+      // },
       {
         title: "Documentation",
         url: "/contributing/documentation",
