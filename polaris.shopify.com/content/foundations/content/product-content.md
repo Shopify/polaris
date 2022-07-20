@@ -1,5 +1,6 @@
 ---
-name: Product content keywords:
+name: Product content
+keywords:
   - content standards
   - content guidelines
   - content strategy practices
