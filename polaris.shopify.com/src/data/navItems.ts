@@ -255,6 +255,10 @@ export const contributingNavItems = [
         url: "/contributing",
       },
       {
+        title: "Code of Conduct",
+        url: "/contributing/code-of-conduct",
+      },
+      {
         title: "Components",
         url: "/contributing/components",
       },
