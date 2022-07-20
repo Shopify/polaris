@@ -7,18 +7,18 @@ import {colors} from './token-groups/colors';
 import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
 import {spacing} from './token-groups/spacing';
-import {typography} from './token-groups/typography';
+import {font} from './token-groups/font';
 import {zIndex} from './token-groups/zIndex';
 
 export const metaTokens = createMetaTokens({
   breakpoints: tokensToRems(breakpoints),
   colors,
   depth,
+  font: tokensToRems(font),
   legacy: tokensToRems(legacy),
   motion,
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
-  typography: tokensToRems(typography),
   zIndex,
 });
 

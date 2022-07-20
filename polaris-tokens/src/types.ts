@@ -18,11 +18,11 @@ export interface MetaTokens {
   breakpoints: MetaTokenGroup;
   colors: MetaTokenGroup;
   depth: MetaTokenGroup;
+  font: MetaTokenGroup;
   legacy: MetaTokenGroup;
   motion: MetaTokenGroup;
   shape: MetaTokenGroup;
   spacing: MetaTokenGroup;
-  typography: MetaTokenGroup;
   zIndex: MetaTokenGroup;
 }
 

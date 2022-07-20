@@ -33,11 +33,11 @@ const mockTokens = {
   colors: mockTokenGroup,
   // Note: We don't need to assign mock values to the remaining static tokens.
   depth: {},
+  font: {},
   motion: {},
   legacyTokens: {},
   shape: {},
   spacing: {},
-  typography: {},
   zIndex: {},
 };
 

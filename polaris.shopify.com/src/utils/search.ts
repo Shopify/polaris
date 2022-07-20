@@ -23,8 +23,7 @@ const MAX_RESULTS: { [key: string]: number } = {
   Icons: 14,
 };
 
-const { colors, depth, motion, shape, spacing, typography, zIndex } =
-  metaTokens;
+const { colors, depth, font, motion, shape, spacing, zIndex } = metaTokens;
 
 let results: SearchResults = [];
 
@@ -52,10 +51,10 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
 const tokenGroups = {
   colors,
   depth,
+  font,
   motion,
   shape,
   spacing,
-  typography,
   zIndex,
 };
 Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
