@@ -65,6 +65,30 @@ Replace with
 >Good evening, Dominic.</Text>
 ```
 ### Heading
+```jsx
+<Heading>Online store dashboard</Heading>
+```
+
+Replace with
+```jsx
+<Text variant="headingLg">Online store dashboard</Text>
+```
 ### Subheading
+```jsx
+<Subheading>Accounts</Subheading>
+```
+
+Replace with
+```jsx
+<Text variant="headingSm">Accounts</Text>
+```
 ### Caption
+```jsx
+<Caption>Received April 21, 2017</Caption>
+```
+
+Replace with
+```jsx
+<Text variant="bodySm">Received April 21, 2017</Text>
+```
 ### TextStyle
