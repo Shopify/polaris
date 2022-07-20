@@ -24,14 +24,6 @@ The exception list component should:
 - Used sparingly, so that it has more impact and doesn’t add clutter
 - Only use an icon if it adds clarity to the content or helps merchants visualize the meaning
 
-<!-- improvement -->
-
-### Opportunity for improvement
-
-Exception lists aren’t clickable. If you have an idea that could make this component better, please [open an issue](https://github.com/shopify/polaris/issues).
-
-<!-- end -->
-
 ---
 
 ## Content guidelines
@@ -85,10 +77,6 @@ Use icons to add clarity or assist in visualizing the meaning
 ---
 
 ## Related components
-
-<!-- remove comment and adjust link when component is built -->
-
-<!-- * To display an error in a card or section, use the [contextual banner]() component -->
 
 - To display an error at the top of a page, or to indicate multiple errors in a form, use the [banner](https://polaris.shopify.com/components/banner) component
 - Exceptions lists are often used in the [resource list](https://polaris.shopify.com/components/resource-list) component to display conditional content

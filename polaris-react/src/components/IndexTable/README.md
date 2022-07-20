@@ -1663,11 +1663,7 @@ Using an index table in a project involves combining the following components an
 - [Filters](https://polaris.shopify.com/components/filters) (optional)
 - Pagination component (optional)
 
-<!-- hint -->
-
 The index table component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
-
-<!-- end -->
 
 ---
 

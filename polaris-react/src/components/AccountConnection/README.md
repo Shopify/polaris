@@ -64,6 +64,8 @@ merchants can connect to, followed by the word “account”. Write account conn
 - Connect your Account
 - Instagram Account
 
+<!-- end -->
+
 ### Terms and conditions
 
 Clearly link to your terms and conditions and let merchants know about any additional costs of your service.
