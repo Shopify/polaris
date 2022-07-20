@@ -18,17 +18,14 @@ import {useCallback} from 'react';
  * }
  */
 
-export function useDisableClick(
-  disabled = false as boolean,
-  handleClick: () => void = () => {},
-) {
+export function useDisableClick(disabled?: boolean, handleClick?: () => void) {
   const handleClickWrapper = useCallback(
-    (event?: React.MouseEvent<HTMLButtonElement>) => {
+    (event: React.MouseEvent<HTMLButtonElement>) => {
       if (disabled) {
-        event?.preventDefault();
-        event?.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       } else {
-        handleClick();
+        handleClick && handleClick();
       }
     },
     [disabled, handleClick],
@@ -38,18 +35,16 @@ export function useDisableClick(
 }
 
 export function useDisableKeyboard(
-  disabled = false as boolean,
-  handleKeyDown: (
-    event?: React.KeyboardEvent<HTMLButtonElement>,
-  ) => void = () => {},
+  disabled?: boolean,
+  handleKeyDown?: (event: React.KeyboardEvent<HTMLButtonElement>) => void,
 ) {
   const handleKeyDownWrapper = useCallback(
-    (event?: React.KeyboardEvent<HTMLButtonElement>) => {
-      if (disabled && (event?.key === ' ' || event?.key === 'Enter')) {
-        event?.preventDefault();
-        event?.stopPropagation();
+    (event: React.KeyboardEvent<HTMLButtonElement>) => {
+      if (disabled && (event?.key === ' ' || event.key === 'Enter')) {
+        event.preventDefault();
+        event.stopPropagation();
       } else {
-        handleKeyDown(event);
+        handleKeyDown && handleKeyDown(event);
       }
     },
     [disabled, handleKeyDown],

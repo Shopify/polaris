@@ -41,7 +41,6 @@ export function UnstyledButton({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
-  preventedInteraction,
   ...rest
 }: UnstyledButtonProps) {
   let buttonMarkup;

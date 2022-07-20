@@ -205,7 +205,7 @@ export function Button({
   }, []);
 
   const handleClick = useDisableClick(disabled, toggleDisclosureActive);
-  const handleKeyDown = useDisableKeyboard(disabled);
+  const handleKeyDown = useDisableKeyboard(disabled, onKeyDown);
 
   let connectedDisclosureMarkup;
 
