@@ -7,7 +7,6 @@ keywords:
   - color scheme
   - light mode
   - dark mode
-omitAppProvider: true
 examples:
   - fileName: custom-properties-rendered-by-the-app-provider.tsx
     title: Custom properties rendered by the app provider

@@ -21,9 +21,9 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "*",
-    "@shopify/polaris-icons": "*",
-    "@shopify/polaris-tokens": "*",
+    "@shopify/polaris": "^9.20.0",
+    "@shopify/polaris-icons": "^5.0.0",
+    "@shopify/polaris-tokens": "^5.5.0",
     "codesandbox": "^2.2.3",
     "fuse.js": "^6.5.3",
     "glob": "^7.1.6",
