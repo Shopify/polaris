@@ -71,8 +71,8 @@
     "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
-    "react": "^16.14.0 || ^17.0.0",
-    "react-dom": "^16.14.0 || ^17.0.0"
+    "react": "^16.14.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
@@ -89,8 +89,8 @@
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@types/node": "^16.11.11",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "ajv-cli": "^5.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
@@ -107,8 +107,8 @@
     "postcss-modules": "^4.2.2",
     "postcss-pxtorem": "^5.1.1",
     "puppeteer": "^14.4.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-is": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.0",
