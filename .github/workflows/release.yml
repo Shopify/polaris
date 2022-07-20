@@ -12,10 +12,15 @@ jobs:
     name: Release
     runs-on: ubuntu-latest
     env:
-      isReleaseBranch: ${{ github.ref == 'refs/heads/changeset-release/main' }}
+      RELEASE_BRANCH: 'refs/heads/changeset-release/main'
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+
+      - name: 'Log branch and env info'
+        run: |
+          echo "github.ref: ${{ github.ref }}"
+          echo "RELEASE_BRANCH: ${{ env.RELEASE_BRANCH }}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -26,11 +31,11 @@ jobs:
         run: yarn --frozen-lockfile
 
       - name: Run preversion scripts
-        if: env.isReleaseBranch
+        if: ${{ github.ref == env.RELEASE_BRANCH }}
         run: yarn preversion-packages
 
       - name: Commit preversion updates
-        if: env.isReleaseBranch
+        if: ${{ github.ref == env.RELEASE_BRANCH }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply preversion changes
