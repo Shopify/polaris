@@ -219,16 +219,12 @@ button {
 }
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
-.usage {
+.dodont {
   margin: 1.25rem 0 2rem;
   font-size: var(--font-size-200);
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  + .usage-list {
-    margin-top: -1rem;
-  }
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -236,17 +232,13 @@ button {
     gap: 1rem;
   }
 
-  .usage-part {
+  .dodont-part {
     position: relative;
     flex: 1;
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
     border-radius: var(--border-radius-400);
     overflow: hidden;
-
-    &:empty {
-      display: none;
-    }
 
     h4:first-child {
       background-image: url(/images/icon-do.svg);
