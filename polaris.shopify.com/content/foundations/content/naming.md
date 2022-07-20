@@ -1,5 +1,6 @@
 ---
-name: Naming keywords:
+name: Naming
+keywords:
   - names
   - caps
   - capitalizations
