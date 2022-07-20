@@ -85,9 +85,15 @@ Shipping Options
 
 If the customer abandons their checkout, send them an email reminder to complete their order
 
+- Option a
+- Option b
+
 #### Don’t
 
-If the customer abandons their checkout, send them an email reminder to complete their order
+If the customer abandons their checkout, send them an email reminder to complete their order:
+
+- Option a
+- Option b
 
 <!-- end -->
 
