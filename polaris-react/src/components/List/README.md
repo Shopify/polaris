@@ -75,7 +75,7 @@ Every item in a list should:
 
 ## Examples
 
-### Bulleted list
+### Bulleted
 
 Use for a text-only list of related items that don’t need to be in a specific order and don’t require an icon or other indicator.
 
@@ -87,7 +87,7 @@ Use for a text-only list of related items that don’t need to be in a specific 
 </List>
 ```
 
-### Numbered list
+### Numbered
 
 Use for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
 

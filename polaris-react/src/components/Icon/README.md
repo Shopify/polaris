@@ -23,7 +23,7 @@ Icons are used to visually communicate core parts of the product and available a
 
 ## Examples
 
-### Default icon
+### Default
 
 Use to visually communicate core parts of the product and available actions.
 
@@ -31,7 +31,7 @@ Use to visually communicate core parts of the product and available actions.
 <Icon source={CirclePlusMinor} />
 ```
 
-### Colored icon
+### Colored
 
 Apply a color to the icon.
 
@@ -47,7 +47,7 @@ Apply a color to the icon.
 </div>
 ```
 
-### Icon with backdrop
+### With backdrop
 
 Apply a backdrop to the icon.
 

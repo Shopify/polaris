@@ -39,7 +39,7 @@ Date pickers should:
 
 ## Examples
 
-### Default date picker
+### Default
 
 Use when merchants need to select a single day close to today (today is the default starting position for the date picker).
 
@@ -68,7 +68,7 @@ function DatePickerExample() {
 }
 ```
 
-### Ranged date picker
+### Ranged
 
 Use when merchants need to select a range of days close to today (today is the default starting position for the date picker).
 
@@ -98,7 +98,7 @@ function DatePickerExample() {
 }
 ```
 
-### Multi-month ranged date picker
+### Multi-month ranged
 
 Use multi-month mode to show two months at a time.
 
@@ -129,7 +129,7 @@ function DatePickerExample() {
 }
 ```
 
-### Date picker with disabled date ranges
+### With disabled date ranges
 
 Date ranges may be disabed if you do not want them to be selectable
 
@@ -161,7 +161,7 @@ function DatePickerExample() {
 }
 ```
 
-### Date picker with specific disabled dates
+### With specific disabled dates
 
 Dates may be disabed if you do not want them to be selectable
 

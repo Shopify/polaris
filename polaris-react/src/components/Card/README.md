@@ -169,7 +169,7 @@ Links should be:
 
 ## Examples
 
-### Default card
+### Default
 
 Use when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
 
@@ -179,7 +179,7 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
-### Card with header actions
+### With header actions
 
 Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
 
@@ -192,7 +192,7 @@ Use for less important card actions, or actions merchants may do before reviewin
 </Card>
 ```
 
-### Card with footer actions
+### With footer actions
 
 Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information. Footer actions can be left or right aligned with the `footerActionAlignment` prop.
 
@@ -211,7 +211,7 @@ Use footer actions for a card’s most important actions, or actions merchants s
 </Card>
 ```
 
-### Card with multiple footer actions
+### With multiple footer actions
 
 When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
 
@@ -233,7 +233,7 @@ When multiple secondary footer actions are provided, they will render in an acti
 </Card>
 ```
 
-### Card with custom footer actions
+### With custom footer actions
 
 Use to present actionable content that is optional or not the primary purpose of the page.
 
@@ -257,7 +257,7 @@ Use to present actionable content that is optional or not the primary purpose of
 </Card>
 ```
 
-### Card with destructive footer action
+### With destructive footer action
 
 Use when a card action will delete merchant data or be otherwise difficult to recover from.
 
@@ -276,7 +276,7 @@ Use when a card action will delete merchant data or be otherwise difficult to re
 </Card>
 ```
 
-### Card with multiple sections
+### With multiple sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants. Multiple sections can help break up complicated concepts to make them easier to scan and understand.
 
@@ -295,7 +295,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-### Card with multiple titled sections
+### With multiple titled sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
 
@@ -314,7 +314,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-### Card section with action
+### With sections and actions
 
 Use when your card section has actions that apply only to that section.
 
@@ -329,7 +329,7 @@ Use when your card section has actions that apply only to that section.
 </Card>
 ```
 
-### Card with subsection
+### With subsection
 
 Use when your card sections need further categorization.
 
@@ -362,7 +362,7 @@ Use when your card sections need further categorization.
 </Card>
 ```
 
-### Card section with destructive action
+### With destructive action
 
 Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
 
@@ -380,7 +380,7 @@ Use when a card action applies only to one section and will delete merchant data
 </Card>
 ```
 
-### Card with a subdued section
+### With a subdued section
 
 Use to indicate when one of the sections in your card contains inactive or disabled content.
 
@@ -402,7 +402,7 @@ Use to indicate when one of the sections in your card contains inactive or disab
 </Card>
 ```
 
-### Subdued card for secondary content
+### With subdued for secondary content
 
 Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
 
@@ -415,7 +415,7 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
 </Card>
 ```
 
-### Card with separate header
+### With separate header
 
 Use to be able to use custom React elements as header content.
 
@@ -450,7 +450,7 @@ Use to be able to use custom React elements as header content.
 </Card>
 ```
 
-### Card section with custom React Node title
+### With custom React Node title
 
 Use to render custom content such as icons, links, or buttons in a card section’s header.
 
@@ -472,7 +472,7 @@ Use to render custom content such as icons, links, or buttons in a card section�
 </Card>
 ```
 
-### Card with all of its elements
+### With all of its elements
 
 Use as a broad example that includes most props available to card.
 
@@ -553,7 +553,7 @@ Use as a broad example that includes most props available to card.
 </Card>
 ```
 
-### Card with flushed sections
+### With flushed sections
 
 Use when you need further control over the spacing of your card sections.
 

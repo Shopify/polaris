@@ -143,7 +143,7 @@ primary buttons.
 
 ## Examples
 
-### Default empty state
+### Default
 
 Use to explain a single feature before merchants have used it.
 
@@ -160,7 +160,7 @@ Use to explain a single feature before merchants have used it.
 </Card>
 ```
 
-### Empty state with subdued footer context
+### With subdued footer context
 
 Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
 
@@ -186,7 +186,7 @@ Use to provide additional but non-critical context for a new product or feature.
 </Card>
 ```
 
-### Empty state with full width layout
+### With full width layout
 
 ```jsx
 <Card sectioned>

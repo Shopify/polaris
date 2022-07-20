@@ -27,7 +27,7 @@ Tags should:
 
 ## Examples
 
-### Default tag
+### Default
 
 Use to signify the attributes of an object.
 
@@ -35,7 +35,7 @@ Use to signify the attributes of an object.
 <Tag>Wholesale</Tag>
 ```
 
-### Removable tag
+### Removable
 
 Use to allow merchants to remove attributes from an object.
 
@@ -68,7 +68,7 @@ function RemovableTagExample() {
 }
 ```
 
-### Clickable tag
+### Clickable
 
 Use to allow merchants to add attributes to an object.
 
@@ -76,7 +76,7 @@ Use to allow merchants to add attributes to an object.
 <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
 ```
 
-### Tag with link
+### With link
 
 Use to allow merchants to navigate to a resource. For example a customer segment or a smart collection
 
@@ -86,7 +86,7 @@ function URLTagExample() {
 }
 ```
 
-### Tag with custom content
+### With custom content
 
 Use when a tag needs to be visually distinguished from others, like when it's added automatically.
 
@@ -99,7 +99,7 @@ Use when a tag needs to be visually distinguished from others, like when it's ad
 </Tag>
 ```
 
-### Removable tag with link
+### Removable with link
 
 A removable attribute to an object that allows merchants to navigate to a resource.
 

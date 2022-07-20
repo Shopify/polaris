@@ -123,7 +123,7 @@ If your list contains helper text, only the description below the list item shou
 
 ## Examples
 
-### Single choice list
+### Default
 
 Allows merchants to select one option from a list.
 
@@ -150,7 +150,7 @@ function SingleChoiceListExample() {
 }
 ```
 
-### Single choice list with error
+### With error
 
 Allows for accessible error handling by connecting the error message to the field with the error.
 
@@ -176,7 +176,7 @@ function ChoiceListWithErrorExample() {
 }
 ```
 
-### Multi-choice list
+### With multi-choice
 
 Allows merchants to select multiple options from a list.
 
@@ -213,9 +213,9 @@ function MultiChoiceListExample() {
 }
 ```
 
-### Single-choice or multi-choice list with children content (always rendered)
+### With children content
 
-Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
+Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered.
 
 ```jsx
 function SingleOrMultiChoiceListWithChildrenContextExample() {
@@ -261,7 +261,7 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
 }
 ```
 
-### Single-choice or multi-choice list with children content (only rendered when choice is selected)
+### With dynamic children content
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 

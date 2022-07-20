@@ -80,7 +80,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 ## Examples
 
-### Action list in a popover
+### In a popover
 
 Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
@@ -133,7 +133,7 @@ function ActionListInPopoverExample() {
 }
 ```
 
-### Action list with icons or image
+### With icons or image
 
 Use when the items benefit from an associated action or image, such as a list of products.
 
@@ -170,7 +170,7 @@ function ActionListWithMediaExample() {
 }
 ```
 
-### Action list with an icon and a suffix
+### With an icon and a suffix
 
 Use when the items benefit from an associated action or image, such as a list of products.
 
@@ -212,7 +212,7 @@ function ActionListWithSuffixExample() {
 }
 ```
 
-### Sectioned action list
+### With sections
 
 Use when the items benefit from sections to help differentiate actions.
 
@@ -261,7 +261,7 @@ function SectionedActionListExample() {
 }
 ```
 
-### Action list with destructive item
+### With destructive item
 
 Use to visually indicate that an action list item is destructive.
 
@@ -312,7 +312,7 @@ function ActionListWithDestructiveItemExample() {
 }
 ```
 
-### Action list with help text
+### With help text
 
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
@@ -359,7 +359,7 @@ function ActionListWithHelpTextExample() {
 }
 ```
 
-### Action list with a prefix and a suffix
+### With a prefix and a suffix
 
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 

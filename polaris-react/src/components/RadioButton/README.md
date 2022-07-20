@@ -89,7 +89,7 @@ Toggle values should:
 
 ## Examples
 
-### Default radio button
+### Default
 
 Use radio buttons where merchants must make a single selection.
 

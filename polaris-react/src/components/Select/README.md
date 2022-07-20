@@ -86,7 +86,7 @@ Options should:
 
 ## Examples
 
-### Default select
+### Default
 
 Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
 
@@ -113,7 +113,7 @@ function SelectExample() {
 }
 ```
 
-### Select with inline label
+### With inline label
 
 Use only for cases where the select must fit on a single line, such as in a toolbar.
 
@@ -144,7 +144,7 @@ function InlineLabelExample() {
 }
 ```
 
-### Disabled select
+### Disabled
 
 Use for selections that aren’t currently available. The surrounding interface should make it clear why the select box is disabled and how to activate it.
 
@@ -160,7 +160,7 @@ Use for selections that aren’t currently available. The surrounding interface 
 />
 ```
 
-### Select with prefix
+### With prefix
 
 Renders any React element to the left of individual select options. Does not show in the dropdown.
 
@@ -194,7 +194,7 @@ function PrefixExample() {
 }
 ```
 
-### Select with validation error
+### With validation error
 
 Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
 
@@ -216,7 +216,7 @@ function ValidationErrorExample() {
 }
 ```
 
-### Select with separate validation error
+### With separate validation error
 
 Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 

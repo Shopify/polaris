@@ -101,7 +101,7 @@ Connect to app
 
 ## Examples
 
-### Default account connection
+### Default
 
 Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
 

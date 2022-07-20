@@ -113,7 +113,7 @@ For text field content guidelines, reference the [text fields experience](https:
 
 ## Examples
 
-### Default text field
+### Default
 
 Use to allow merchants to provide text input when the expected input is short. For longer input, use the auto grow or multiline options.
 
@@ -134,7 +134,7 @@ function TextFieldExample() {
 }
 ```
 
-### Number field
+### Number
 
 Use when input text should be a number.
 
@@ -156,7 +156,7 @@ function NumberFieldExample() {
 }
 ```
 
-### Email field
+### Email
 
 Use when the text input should be an email address.
 
@@ -178,7 +178,7 @@ function EmailFieldExample() {
 }
 ```
 
-### Multiline text field
+### Multiline
 
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
 
@@ -200,7 +200,7 @@ function MultilineFieldExample() {
 }
 ```
 
-### Text field with hidden label
+### With hidden label
 
 Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
 
@@ -248,7 +248,7 @@ function HiddenLabelExample() {
 }
 ```
 
-### Text field with label action
+### With label action
 
 Use when an optional, secondary action is closely associated with a text field. For example, on a field for entering a customs tariff code, a label action might be to look up the appropriate code from a table.
 
@@ -273,7 +273,7 @@ function LabelActionExample() {
 }
 ```
 
-### TextField with right aligned text
+### With right aligned text
 
 Use when input text should be aligned right.
 
@@ -302,7 +302,7 @@ function RightAlignExample() {
 }
 ```
 
-### Text field with placeholder text
+### With placeholder text
 
 Use to provide a short, non-essential hint about the expected input. Placeholder text is low-contrast, so don’t rely on it for important information.
 
@@ -327,7 +327,7 @@ function PlaceholderExample() {
 }
 ```
 
-### Text field with help text
+### With help text
 
 Use to show short instructional content below the text field. Help text works to help merchants understand how to fix errors that result from incorrect formatting (such as dates or passwords with specific character requirements). If more explanation is needed, link to the Shopify Help Center.
 
@@ -355,7 +355,7 @@ function HelpTextExample() {
 }
 ```
 
-### Text field with prefix or suffix
+### With prefix or suffix
 
 Use as a special form of help text that works best inline.
 
@@ -384,7 +384,7 @@ function PrefixExample() {
 }
 ```
 
-### Text field with vertical content
+### With vertical content
 
 Use to include custom vertical content above the input value, like selected tags.
 
@@ -420,7 +420,7 @@ function VerticalContent() {
 }
 ```
 
-### Text field with connected fields
+### With connected fields
 
 Use when a text field and several related fields make up a logical unit.
 
@@ -460,7 +460,7 @@ function ConnectedFieldsExample() {
 }
 ```
 
-### Text field with validation error
+### With validation error
 
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as merchants have finished interacting with a field (but not before). If a field already has an error, validate and remove errors as merchants type so they can immediately see when an error has been fixed.
 
@@ -485,7 +485,7 @@ function ValidationErrorExample() {
 }
 ```
 
-### Text field with separate validation error
+### With separate validation error
 
 Use to let merchants know when their text field input is invalid in the context of a group of form inputs that the text field depends on.
 
@@ -579,7 +579,7 @@ function SeparateValidationErrorExample() {
 }
 ```
 
-### Disabled text field
+### Disabled
 
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
@@ -587,7 +587,7 @@ Use to show that a textfield is not available for interaction. Most often used i
 <TextField label="Store name" disabled autoComplete="off" />
 ```
 
-### Text field with character count
+### With character count
 
 Use to display the current number of characters in a text field. Use in conjunction with max length to display the current remaining number of characters in the text field.
 
@@ -613,7 +613,7 @@ function TextFieldWithCharacterCountExample() {
 }
 ```
 
-### Text field with clear button
+### With clear button
 
 Use to allow merchants to clear the content from a text field.
 
@@ -641,7 +641,7 @@ function TextFieldWithClearButtonExample() {
 }
 ```
 
-### Text field with monospaced font
+### With monospaced font
 
 Use to apply a monospaced font to the TextField
 
@@ -665,7 +665,7 @@ function TextFieldWithMonospacedFontExample() {
 }
 ```
 
-### Text field with value selected on focus
+### With value selected on focus
 
 Use to select all text inside TextField on focus.
 
@@ -689,7 +689,7 @@ function TextFieldWithSelectTextOnFocusExample() {
 }
 ```
 
-### Text field with inline suggestion
+### With inline suggestion
 
 Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
 

@@ -17,7 +17,7 @@ Data tables are used to organize and display all information from a data set. Wh
 
 ## Examples
 
-### Default data table
+### Default
 
 Use to present small amounts of data for merchants to view statically.
 
@@ -62,7 +62,7 @@ function DataTableExample() {
 }
 ```
 
-### Sortable data table
+### Sortable
 
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
@@ -128,7 +128,7 @@ function SortableDataTableExample() {
 }
 ```
 
-### Data table with footer
+### With footer
 
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
@@ -174,7 +174,7 @@ function DataTableFooterExample() {
 }
 ```
 
-### Data table with custom totals heading
+### With custom totals heading
 
 Use to provide a custom heading for the totals row.
 
@@ -224,7 +224,7 @@ function DataTableExample() {
 }
 ```
 
-### Data table with totals in footer
+### With totals in footer
 
 Use to reposition the totals row in a more appropriate location based on the data stored in the
 table for merchants to better understand its meaning.
@@ -271,7 +271,7 @@ function DataTableExample() {
 }
 ```
 
-### Data table with row heading links
+### With row heading links
 
 Use to help merchants find relevant, finer grained data sets.
 
@@ -340,7 +340,7 @@ function DataTableLinkExample() {
 }
 ```
 
-### Data table with all of its elements
+### With all of its elements
 
 Use as a broad example that includes most props available to data table.
 
@@ -440,7 +440,7 @@ function FullDataTableExample() {
 }
 ```
 
-### Data table with fixed first column
+### With fixed first column
 
 Use when the table contains many columns and it would benefit the merchant to see the first column when scrolling to the right.
 
@@ -584,7 +584,7 @@ function DataTableFixedFirstColumnExample() {
 }
 ```
 
-### Data table with increased density and zebra striping
+### With increased density and zebra striping
 
 Use as a broad example that includes most props available to data table.
 
@@ -683,7 +683,7 @@ function FullDataTableExample() {
 }
 ```
 
-### Data table with sticky header enabled
+### With sticky header enabled
 
 Use as a broad example that includes most props available to data table.
 

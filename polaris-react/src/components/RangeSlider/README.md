@@ -110,7 +110,7 @@ Error messages should:
 
 ## Examples
 
-### Default range slider
+### Default
 
 Use when a single value between `0 and 100` needs to be selected.
 
@@ -230,7 +230,7 @@ function RangeSliderWithPrefixAndSuffixExample() {
 }
 ```
 
-### Dual thumb range slider
+### Dual thumb
 
 Use when two values need to be selected from a range of numbers.
 

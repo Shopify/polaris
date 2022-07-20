@@ -76,7 +76,7 @@ say “Activate” to allow merchants to turn it on.
 
 ## Examples
 
-### Default setting toggle
+### Default
 
 Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
 

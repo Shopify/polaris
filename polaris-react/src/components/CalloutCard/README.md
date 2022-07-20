@@ -141,7 +141,7 @@ Add a menu item
 
 ## Examples
 
-### Default callout card
+### Default
 
 Use to let merchants know about a feature or opportunity where there is a clear, single action they need to take to move to the next step.
 
@@ -158,7 +158,7 @@ Use to let merchants know about a feature or opportunity where there is a clear,
 </CalloutCard>
 ```
 
-### Callout card with secondary action
+### With secondary action
 
 Use to let merchants know about a feature or opportunity where there are two distinct actions they can take on the information.
 
@@ -173,7 +173,7 @@ Use to let merchants know about a feature or opportunity where there are two dis
 </CalloutCard>
 ```
 
-### Dismissable callout card
+### Dismissable
 
 Make all callout cards dismissible so merchants can get rid of cards about features they’re not interested in.
 

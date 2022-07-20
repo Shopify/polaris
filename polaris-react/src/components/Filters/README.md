@@ -138,7 +138,7 @@ If all tag pills selected: truncate in the middle
 
 ## Examples
 
-### Filtering with a resource list
+### With a resource list
 
 ```jsx
 function ResourceListFiltersExample() {
@@ -337,7 +337,7 @@ function ResourceListFiltersExample() {
 }
 ```
 
-### Filtering with a data table
+### With a data table
 
 ```jsx
 function DataTableFiltersExample() {
@@ -525,7 +525,7 @@ function DataTableFiltersExample() {
 }
 ```
 
-### Filters with children content
+### With children content
 
 ```jsx
 function FiltersExample() {
@@ -652,7 +652,7 @@ function FiltersExample() {
 }
 ```
 
-### All filters disabled
+### Disabled
 
 ```jsx
 function DisableAllFiltersExample() {
@@ -783,7 +783,7 @@ function DisableAllFiltersExample() {
 }
 ```
 
-### Some filters disabled
+### Some disabled
 
 ```jsx
 function DisableSomeFiltersExample() {
@@ -933,7 +933,7 @@ function DisableSomeFiltersExample() {
 }
 ```
 
-### Filters without clear button
+### Without clear button
 
 ```jsx
 function Playground() {
@@ -1065,7 +1065,7 @@ function Playground() {
 }
 ```
 
-### Filters with help text
+### With help text
 
 ```jsx
 function ResourceListFiltersExample() {
@@ -1266,7 +1266,7 @@ function ResourceListFiltersExample() {
 }
 ```
 
-### Filters with query field hidden
+### With query field hidden
 
 ```jsx
 function ResourceListFiltersExample() {
@@ -1466,7 +1466,7 @@ function ResourceListFiltersExample() {
 }
 ```
 
-### Filters with query field disabled
+### With query field disabled
 
 ```jsx
 function ResourceListFiltersExample() {

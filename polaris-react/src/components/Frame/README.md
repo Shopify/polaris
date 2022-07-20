@@ -39,7 +39,7 @@ For the best experience when creating an application frame, use the following co
 
 ## Examples
 
-### Frame in an application
+### In an application
 
 Use to present the frame structure and all of its elements.
 
@@ -375,7 +375,7 @@ function FrameExample() {
 }
 ```
 
-### Frame with an offset
+### With an offset
 
 Use to present the frame structure and all of its elements with an offset provided to the theme.
 
