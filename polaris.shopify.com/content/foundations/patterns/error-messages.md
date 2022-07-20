@@ -302,7 +302,8 @@ immediately tell they fixed the issue.
 
 ![Text field validation with purple border](/images/foundations/patterns/error-messages/text-field-validation-purple-border-cursor@2x.png)
 
-If the validation process is less than a second but not instant, show a spinner on the field to indicate validation progress.
+If the validation process is less than a second but not instant, show a spinner
+on the field to indicate validation progress.
 ![Text field validation in loading state with spinner](/images/foundations/patterns/error-messages/text-field-validation-loading@2x.png)
 
 ---
