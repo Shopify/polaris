@@ -2,47 +2,54 @@ import * as ts from "typescript";
 import * as fs from "fs";
 import path from "path";
 import globby from "globby";
-import { PropsForComponent } from "../types";
 
 export type BaseNode = {
+  id: string;
   kind: number;
   syntaxKind: string;
   name: string;
-  UNSOLVED?: boolean;
-};
-
-type Member = {
-  name: string;
-  type: string;
   description: string;
   tags: { name: string; text: string }[];
 };
-export interface TypeOrInterfaceNode extends BaseNode {
-  members: Member[];
+
+export interface NodeWithMembers extends BaseNode {
+  members: NodeWithType[];
 }
 
-type Node = TypeOrInterfaceNode;
+export interface NodeWithType extends BaseNode {
+  type: string;
+  isOptional?: boolean;
+}
 
-export type Tree = {
-  [id: string]: Node;
-};
+type Node = NodeWithMembers | NodeWithType;
+
+export type TypeList = Node[];
 
 function getProps(fileNames: string[], options: ts.CompilerOptions): void {
   let program = ts.createProgram(fileNames, options);
   let checker = program.getTypeChecker();
-  let tree: Tree = {};
+  let typeList: TypeList = [];
+
+  let currentFile = "";
 
   for (const sourceFile of program.getSourceFiles()) {
     if (!sourceFile.isDeclarationFile) {
       ts.forEachChild(sourceFile, (child) => {
-        // console.log(sourceFile.fileName);
+        currentFile = sourceFile.fileName;
         visit(child);
       });
     }
   }
 
-  const filePath = path.join(__dirname, "../../../data/props.json");
-  fs.writeFileSync(filePath, JSON.stringify(tree, undefined, 2));
+  function naivelyGetQualifiedName(symbol: ts.Symbol): string {
+    const fullyQualifiedName = program
+      .getTypeChecker()
+      .getFullyQualifiedName(symbol);
+    return `${currentFile}#${fullyQualifiedName}`;
+  }
+
+  const filePath = path.join(__dirname, "../../data/props.json");
+  fs.writeFileSync(filePath, JSON.stringify(typeList, undefined, 2));
 
   function visit(
     node: ts.Node | ts.Declaration,
@@ -58,8 +65,8 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
       const symbol = checker.getSymbolAtLocation(interfaceDeclaration.name);
 
       if (symbol) {
-        const members: Member[] = [];
-        const fullyQualifiedName = checker.getFullyQualifiedName(symbol);
+        const members: NodeWithType[] = [];
+        const fullyQualifiedName = naivelyGetQualifiedName(symbol);
 
         for (const prop of type.getProperties()) {
           if (prop.valueDeclaration) {
@@ -84,19 +91,25 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
               };
             });
 
-            if (propType.aliasSymbol) {
-              console.log("alias symbol");
-              const x = propType.aliasSymbol.getName();
-              const y = propType.aliasSymbol.valueDeclaration;
-              const sis = checker.getSymbolsInScope(node, ts.SymbolFlags.Type);
-              console.log({
-                x,
-                y,
-                sis: sis.find((symbol) => symbol.name === name),
-              });
+            let isOptional = false;
+            if (
+              prop.valueDeclaration.kind === ts.SyntaxKind.PropertySignature
+            ) {
+              const propertySignature =
+                prop.valueDeclaration as ts.PropertyDeclaration;
+              isOptional = propertySignature.questionToken !== undefined;
             }
 
-            members.push({ name, type, description, tags });
+            members.push({
+              id: fullyQualifiedName,
+              kind: prop.valueDeclaration.kind,
+              syntaxKind: ts.SyntaxKind[prop.valueDeclaration.kind],
+              name,
+              type,
+              isOptional,
+              description,
+              tags,
+            });
           }
 
           // We only end up in this else branch for the Button component
@@ -106,8 +119,6 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
             const declarations = prop.getDeclarations();
             if (declarations) {
               declarations.forEach((declaration) => {
-                console.log(">>", declaration.getText());
-                console.log(">>", declaration.kind);
                 visit(declaration, level + 1);
               });
             } else {
@@ -117,12 +128,15 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
           }
         }
 
-        tree[fullyQualifiedName] = {
+        typeList.push({
+          id: fullyQualifiedName,
           kind: node.kind,
           syntaxKind: ts.SyntaxKind[node.kind],
           name: interfaceDeclaration.name.escapedText.toString(),
+          description: "",
+          tags: [],
           members,
-        };
+        });
       } else {
         throw new Error("Expected interface declaration to have symbol");
       }
@@ -130,12 +144,10 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
       const typeAliasDeclaration = node as ts.TypeAliasDeclaration;
       const type = checker.getTypeAtLocation(typeAliasDeclaration.name);
       const symbol = checker.getSymbolAtLocation(typeAliasDeclaration.name);
+      const typeName = checker.typeToString(type);
 
       if (symbol) {
-        const fullyQualifiedName = program
-          .getTypeChecker()
-          .getFullyQualifiedName(symbol);
-        const text = typeAliasDeclaration.getFullText();
+        const fullyQualifiedName = naivelyGetQualifiedName(symbol);
 
         if (typeAliasDeclaration.type.kind === ts.SyntaxKind.UnionType) {
           const unionType = typeAliasDeclaration.type as ts.UnionTypeNode;
@@ -144,9 +156,16 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
               return type.getText();
             })
             .join(" | ");
-          if (fullyQualifiedName.includes("Alignment")) {
-            console.log({ fullyQualifiedName, text, unfurled });
-          }
+
+          typeList.push({
+            id: fullyQualifiedName,
+            kind: node.kind,
+            syntaxKind: ts.SyntaxKind[node.kind],
+            name: typeName,
+            type: unfurled,
+            description: "",
+            tags: [],
+          });
         } else if (
           typeAliasDeclaration.type.kind === ts.SyntaxKind.IntersectionType
         ) {
@@ -156,9 +175,18 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
               return type.getText();
             })
             .join(" & ");
-          if (fullyQualifiedName.includes("Alignment")) {
-            console.log({ fullyQualifiedName, text, unfurled });
-          }
+
+          typeList.push({
+            id: fullyQualifiedName,
+            kind: node.kind,
+            syntaxKind: ts.SyntaxKind[node.kind],
+            name: typeName,
+            type: unfurled,
+            description: "",
+            tags: [],
+          });
+        } else {
+          // TBD: Resolve more types
         }
       }
     }
