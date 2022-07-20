@@ -258,14 +258,6 @@ function parseCodeExamples(data) {
 }
 
 function generateExamples(matter) {
-  if (matter.data.hidePlayground) {
-    console.log(
-      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (hidePlayground: true)}`,
-    );
-
-    return [];
-  }
-
   const introAndComponentSections = matter.content
     .split(/(\n---\n)/)
     .map((content) => content.replace('---\n', '').trim())
