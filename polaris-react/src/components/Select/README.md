@@ -49,7 +49,7 @@ Labels should:
 - Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -61,7 +61,7 @@ Labels should:
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 

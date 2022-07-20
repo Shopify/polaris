@@ -36,7 +36,7 @@ Buttons should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -52,7 +52,7 @@ Buttons should be:
 
 - Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -68,7 +68,7 @@ Buttons should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 

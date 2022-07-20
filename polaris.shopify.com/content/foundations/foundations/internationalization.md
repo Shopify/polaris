@@ -27,7 +27,7 @@ We aim to build one experience that works for all merchants in all of our market
 
 ---
 
-## Definitions <!-- nav:skipsection -->
+## Definitions
 
 ### Internationalization
 
@@ -52,7 +52,7 @@ French-France (fr-FR); French-Canada (fr-CA); Portuguese-Brazil (pt-BR). Note th
 
 When interfaces are localized, the content will often expand in length. In most languages, text is up to 50% longer on average than English. Some non-Latin languages, such as Japanese, take up more vertical space. For character-based languages, text wrapping and line breaking can’t always rely on spaces to separate words. Your interface needs to be flexible enough to accommodate language-specific formatting and text expansion without changing its context of use.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -68,7 +68,7 @@ Don’t rely on responsive stacking alone. It can often change the hierarchy of 
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -97,7 +97,7 @@ Avoid using narrow columns in smaller components. Ensure the right amount of pad
 
 Word order can change dramatically in translation. If the layout and functionality of your interface is dependent on a certain word order, it’s likely to break when localized.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -113,7 +113,7 @@ Don’t place elements with a fixed position inside a sentence. The order of thi
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -142,21 +142,13 @@ Don’t use full phrases as links. Word order changes might break the link into 
 
 Merchants in each locale have different cultural sensibilities. Use visuals, content, and interface formats that are useful and meaningful to merchants in all parts of the world.
 
-<!-- centeredcontent -->
-
 ![Good example of icon usage](/images/foundations/foundations/internationalization/icons-meaning@2x.png)
 
 When possible, use universally known icons. Be mindful of when you use country-specific icons and where they are surfaced. Find out more about [icons](/foundations/design/icons).
 
-<!-- end -->
-
-<!-- centeredcontent -->
-
 ![Bad example of text fields](/images/foundations/foundations/internationalization/colors-cultural-context@2x.png)
 
 Be mindful of using colors to represent meaning. Colors can hold discrete connotations in different cultures. For example, in North America, green is used to indicate success and red for failure, as opposed to China, where red symbolizes prosperity and good fortune.
-
-<!-- end -->
 
 ### Tips
 

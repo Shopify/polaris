@@ -56,7 +56,7 @@ For example, if the setting toggle is on, the button should say “Deactivate”
 allow merchants to turn it off. If the setting toggle is off, the button should
 say “Activate” to allow merchants to turn it on.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 

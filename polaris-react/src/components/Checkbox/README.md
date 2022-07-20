@@ -46,7 +46,7 @@ Lists that use checkboxes should:
 
 - Start with a capital letter
 
-<!-- usageblock -->
+<!-- usage -->
 
 #### Do
 
@@ -64,7 +64,7 @@ Lists that use checkboxes should:
 
 - Not use commas or semicolons at the end of each line
 
-<!-- usageblock -->
+<!-- usage -->
 
 #### Do
 
@@ -83,7 +83,7 @@ Lists that use checkboxes should:
 - In the rare case where the checkbox is asking merchants to agree to terms
   or service, use the first person
 
-<!-- usageblock -->
+<!-- usage -->
 
 #### Do
 

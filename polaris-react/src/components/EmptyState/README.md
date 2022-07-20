@@ -57,7 +57,7 @@ Empty state titles should:
 
 - Be action-oriented: encourage merchants to take the step required to activate the product or feature
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -87,7 +87,7 @@ They should be:
   happen when they click a button. Never deceive merchants by using misleading
   titles.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -105,7 +105,7 @@ They should be:
   action. To provide enough context to merchants use the {verb}+{noun} format on
   buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -121,7 +121,7 @@ They should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 

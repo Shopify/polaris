@@ -46,7 +46,7 @@ Tooltips should:
 - Be concise and scannable
 - Not be used to communicate error messages or important account information
 
-<!-- usageblock -->
+<!-- usage -->
 
 #### Do
 

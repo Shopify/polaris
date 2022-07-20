@@ -52,7 +52,7 @@ merchants can connect to, followed by the word “account”. Write account conn
 - Mailchimp account
 - Instagram account
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -68,7 +68,7 @@ merchants can connect to, followed by the word “account”. Write account conn
 
 Clearly link to your terms and conditions and let merchants know about any additional costs of your service.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
@@ -85,7 +85,7 @@ Learn about terms, conditions, and payment details.
 
 Always use the verb Connect in the button of the account connection component. When merchants click or tap “Connect” it should open up your platform or service’s authorization page in a new browser window.
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 

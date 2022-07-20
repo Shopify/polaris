@@ -53,12 +53,10 @@ Display styles make a bold visual statement. Use them to create impact when the 
 
 ## Best practices
 
-- Use when the primary goal of the page is communication rather than
-  interaction.
+- Use when the primary goal of the page is communication rather than interaction.
 - Use larger display text sizes when a page is focused around a single message.
   In these cases it may be paired with an illustration.
-- Use smaller display text to pair with larger text, or alone as part of more
-  complex data displays such as dashboards.
+- Use smaller display text to pair with larger text, or alone as part of more complex data displays such as dashboards.
 
 ---
 
@@ -68,8 +66,7 @@ Display styles make a bold visual statement. Use them to create impact when the 
 
 Display text should be:
 
-- Benefits-driven and focused on information that is most important to
-  merchants
+- Benefits-driven and focused on information that is most important to merchants
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
   - Keep display text content to a short sentence that’s just a few words in
@@ -87,7 +84,7 @@ Although display text creates an interesting visual experience, it doesn’t rep
 
 By default, the display text component outputs text in an HTML paragraph (`<p>`). If a heading tag is needed for display text, use the `element` prop to set the heading level.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

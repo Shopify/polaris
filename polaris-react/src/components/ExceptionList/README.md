@@ -51,7 +51,7 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 - Make the entire list item clickable because the exception list itself isn’t clickable
 
-<!-- usagelist -->
+<!-- usage -->
 
 #### Do
 
