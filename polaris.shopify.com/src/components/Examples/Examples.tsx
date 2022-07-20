@@ -15,26 +15,61 @@ interface Props {
   examples: [Example];
 }
 
+// https://stackoverflow.com/a/60338028
+function formatHTML(html: string): string {
+  const tab = "  ";
+  let result = "";
+  let indent = "";
+
+  html.split(/>\s*</).forEach(function (element) {
+    if (element.match(/^\/\w/)) {
+      indent = indent.substring(tab.length);
+    }
+
+    result += indent + "<" + element + ">\r\n";
+
+    if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith("input")) {
+      indent += tab;
+    }
+  });
+
+  return result.substring(1, result.length - 3);
+}
+
 const Examples = (props: Props) => {
   const { examples } = props;
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [htmlCode, setHTMLCode] = useState("");
 
   const [iframeHeight, setIframeHeight] = useState("400px");
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleExampleLoad = () => {
-    const exampleElement =
-      iframeRef?.current?.contentWindow?.document?.getElementById(
-        "polaris-example"
-      );
-    const padding = 192;
-    let newHeight = padding;
+    const waitForExampleContent = setInterval(() => {
+      const exampleElement =
+        iframeRef?.current?.contentWindow?.document?.getElementById(
+          "polaris-example"
+        );
+      const padding = 192;
+      let newHeight = padding;
 
-    if (exampleElement) {
-      newHeight += exampleElement?.offsetHeight;
-    }
+      if (exampleElement) {
+        newHeight += exampleElement?.offsetHeight;
+      }
 
-    setIframeHeight(`${newHeight}px`);
+      if (exampleElement) {
+        setHTMLCode(formatHTML(exampleElement.innerHTML));
+        clearInterval(waitForExampleContent);
+      } else {
+        console.log("no example element");
+      }
+
+      setIframeHeight(`${newHeight}px`);
+    }, 100);
+
+    return () => {
+      clearInterval(waitForExampleContent);
+    };
   };
 
   useEffect(() => {
@@ -84,6 +119,7 @@ const Examples = (props: Props) => {
                   </div>
                 </div>
 
+                <CodeExample language="html">{htmlCode}</CodeExample>
                 <CodeExample language="typescript">{code}</CodeExample>
               </Tab.Panel>
             );

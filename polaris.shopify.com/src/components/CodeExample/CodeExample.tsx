@@ -5,7 +5,7 @@ import styles from "./CodeExample.module.scss";
 import { className } from "../../utils/various";
 
 interface Props {
-  language: "terminal" | "typescript";
+  language: "terminal" | "typescript" | "html";
   title?: string;
   minimalist?: boolean;
   children: string;
