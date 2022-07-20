@@ -56,7 +56,7 @@ examples:
     title: Warning banners
     description: >-
       Use to display information that needs attention or that merchants need to
-      take action onSeeing these banners can be stressful for merchants so be
+      take action on. Seeing these banners can be stressful for merchants so be
       cautious about using them
   - fileName: banner-critical.tsx
     title: Critical banners
