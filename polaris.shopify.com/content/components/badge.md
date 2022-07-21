@@ -123,7 +123,7 @@ The available badges for fulfillment status are:
 - Unfulfilled
 - Restocked
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Don’t
 

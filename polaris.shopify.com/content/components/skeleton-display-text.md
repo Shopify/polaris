@@ -44,7 +44,7 @@ Skeleton display text component should:
 
 Show static display text that that never changes on a page. For example, keep page titles, such as Products on the product list page, but use skeleton loading for page titles that change on the product details page.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -58,7 +58,7 @@ Use skeleton display text for static content or placeholder content for dynamic 
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

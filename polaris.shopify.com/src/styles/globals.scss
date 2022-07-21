@@ -230,16 +230,12 @@ button {
 }
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
-.usage-list {
+.dodont {
   margin: 1.25rem 0 2rem;
   font-size: var(--font-size-200);
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  + .usage-list {
-    margin-top: -1rem;
-  }
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -247,17 +243,13 @@ button {
     gap: 1rem;
   }
 
-  .usage-list-part {
+  .dodont-part {
     position: relative;
     flex: 1;
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
     border-radius: var(--border-radius-400);
     overflow: hidden;
-
-    &:empty {
-      display: none;
-    }
 
     h4:first-child {
       background-image: url(/images/icon-do.svg);
@@ -300,44 +292,6 @@ button {
     h3 {
       font-size: var(--font-size-300);
       color: var(--text);
-    }
-  }
-
-  &.usage-block {
-    .usage-list-part {
-      padding-top: 1.75rem;
-
-      h4 {
-        display: none;
-      }
-
-      li,
-      p {
-        background-image: url(/images/icon-do.svg);
-        background-repeat: no-repeat;
-        background-position: left 0.15rem;
-        padding-left: 34px;
-        background-size: auto 1.25rem;
-        letter-spacing: var(--letter-spacing-200);
-        list-style: none;
-        margin-left: 0;
-      }
-
-      li:before {
-        display: none;
-      }
-
-      &[data-type="dont"] {
-        li,
-        p {
-          background-image: url(/images/icon-dont.svg);
-        }
-
-        li > p {
-          background: none;
-          padding-left: 0;
-        }
-      }
     }
   }
 }

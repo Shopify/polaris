@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Remove legacy keywords from component documentation
+Removed comments and cleaned up markdown files

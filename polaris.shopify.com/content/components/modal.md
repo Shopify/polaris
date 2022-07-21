@@ -81,7 +81,7 @@ Modal titles should:
 - Use a clear {verb}+{noun} question or statement
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -103,7 +103,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,7 +120,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -138,7 +138,7 @@ Actions should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -154,7 +154,7 @@ Actions should be:
 
 - Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -170,7 +170,7 @@ Actions should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -189,7 +189,7 @@ Tertiary actions should:
 - Only be used when the action requires the context of the content in the modal
 - Never be used to dismiss the modal
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -209,7 +209,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -224,7 +224,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
