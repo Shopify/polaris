@@ -1,8 +1,8 @@
-import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
-import Select from "../Select";
+import { Tab } from "@headlessui/react";
 
 export type Example = {
   code: string;
@@ -17,19 +17,7 @@ interface Props {
 
 const Examples = (props: Props) => {
   const { examples } = props;
-  const [currentIndex, setIndex] = useState(0);
-  const [showPreview, setShowPreview] = useState(true);
-  const {
-    code = "",
-    description,
-    fileName = "",
-  } = examples[currentIndex] || {};
-  const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
-  const handleSelection = (ev: ChangeEvent<HTMLSelectElement>) => {
-    const value = ev.target.value;
-
-    setIndex(parseInt(value, 10));
-  };
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const [iframeHeight, setIframeHeight] = useState("400px");
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -50,65 +38,58 @@ const Examples = (props: Props) => {
   };
 
   useEffect(() => {
-    setIndex(0);
-    setShowPreview(true);
+    setSelectedIndex(0);
   }, [examples]);
-
-  if (!examples?.length || !examples[currentIndex]) {
-    return null;
-  }
-
-  const options = examples.map(({ title }, index) => {
-    return { label: title, value: String(index) };
-  });
 
   return (
     <>
       <h2 id="examples">Examples</h2>
-      <Select
-        labelHidden
-        label="Component example"
-        id="Component-Example-Select"
-        options={options}
-        selected={options[currentIndex].value}
-        onChange={handleSelection}
-      />
-      {description ? <p>{description}</p> : null}
 
-      <div className={styles.Buttons}>
-        <div>
-          <button
-            className={`${styles.Button} ${
-              showPreview ? styles.ButtonSelected : ""
-            }`}
-            onClick={() => setShowPreview(true)}
-          >
-            Preview
-          </button>
-          <button
-            className={`${styles.Button} ${
-              showPreview ? "" : styles.ButtonSelected
-            }`}
-            onClick={() => setShowPreview(false)}
-          >
-            Code
-          </button>
-        </div>
-        <CodesandboxButton className={styles.SandboxButton} code={code} />
-      </div>
-      {showPreview ? (
-        <div className={styles.ExampleFrame}>
-          <iframe
-            src={exampleUrl}
-            height={iframeHeight}
-            width="100%"
-            onLoad={handleExampleLoad}
-            ref={iframeRef}
-          />
-        </div>
-      ) : (
-        <CodeExample language="typescript">{code}</CodeExample>
-      )}
+      <Tab.Group
+        defaultIndex={0}
+        selectedIndex={selectedIndex}
+        onChange={setSelectedIndex}
+      >
+        <Tab.List>
+          <div className={styles.ExamplesList}>
+            {examples.map((example) => {
+              return (
+                <Tab key={example.fileName}>
+                  <span>{example.title}</span>
+                </Tab>
+              );
+            })}
+          </div>
+        </Tab.List>
+        <Tab.Panels>
+          {examples.map(({ fileName, description, code }) => {
+            const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
+
+            return (
+              <Tab.Panel key={fileName}>
+                {description ? <p>{description}</p> : null}
+                <div className={styles.ExampleFrame}>
+                  <iframe
+                    src={exampleUrl}
+                    height={iframeHeight}
+                    width="100%"
+                    onLoad={handleExampleLoad}
+                    ref={iframeRef}
+                  />
+                  <div className={styles.Buttons}>
+                    <CodesandboxButton
+                      className={styles.CodesandboxButton}
+                      code={code}
+                    />
+                  </div>
+                </div>
+
+                <CodeExample language="typescript">{code}</CodeExample>
+              </Tab.Panel>
+            );
+          })}
+        </Tab.Panels>
+      </Tab.Group>
     </>
   );
 };
