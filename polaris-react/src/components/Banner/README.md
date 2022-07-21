@@ -80,7 +80,7 @@ Body content should:
 - Explain how to resolve the issue, particularly for warning and critical
   banners
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -101,7 +101,7 @@ Buttons and links should be:
   happen when they click a button. Never deceive merchants by mislabeling a
   button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -117,7 +117,7 @@ Buy
   action. To provide enough context to merchants use the {verb}+{noun} format on
   buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -131,7 +131,7 @@ Try Apple Pay
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -147,7 +147,7 @@ Link text should:
 
 - Set the expectation of where merchants will be taken
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -162,7 +162,7 @@ Order
 - Use consistent content to label navigation. For example, if a navigational
   link leads to a page called Orders, label the link Orders.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -182,7 +182,7 @@ Body content should be:
   what actions are available to them (especially something new). Don’t use
   permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -199,7 +199,7 @@ Now you can get performance data for all your sales channels.
 - Clear: use the verb “need” to help merchants understand when they’re required
   to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -455,7 +455,7 @@ Always include [inline error](https://polaris.shopify.com/components/inline-erro
 
 To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

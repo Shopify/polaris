@@ -45,7 +45,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling merchants what actions are available to them, especially something new. Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -62,7 +62,7 @@ Now you can get performance data for all of your sales channels.
 - Clear: use the verb “need” to help merchants understand when they’re required
   to do something
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -82,7 +82,7 @@ Buttons should be:
 
 Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -98,7 +98,7 @@ Buy
   action. To provide enough context to merchants use the {verb}+{noun} format on
   buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -112,7 +112,7 @@ View your settings
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

@@ -88,7 +88,7 @@ Navigation should:
 
 - Use sentence case for primary and secondary navigation items
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -102,7 +102,7 @@ Navigation should:
 
 - Use as few words as possible to describe each item label
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -116,7 +116,7 @@ Navigation should:
 
 - Use all caps for section labels
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 

@@ -8,11 +8,7 @@ keywords:
 
 # Design
 
-<!-- keywords: design, new design, new polaris, changes, changing, update, design language -->
-
 These are the principles that shape how we design all the experiences across the Shopify admin.
-
-<!-- showcasecontent -->
 
 ![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)
 
@@ -35,5 +31,3 @@ Being intentional about when the Shopify brand comes forward, and when it takes 
 ### Familiarity across experiences
 
 Defined patterns and guidelines help us design a wide variety of experiences that still always feel&nbsp;like&nbsp;Shopify.
-
-<!-- end -->

@@ -82,7 +82,7 @@ Use the `url` prop to give the link component a valid `href` value. This allows 
 
 The Link component is underlined to give interactive elements a shape. This allows links to not rely on color from being the only way users can tell if an element is interactive.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,7 +120,7 @@ To provide consistency and clarity:
 - Use the same text for links that navigate to the same content
 - Use different text for links that navigate to different content
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -136,7 +136,7 @@ To provide consistency and clarity:
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
