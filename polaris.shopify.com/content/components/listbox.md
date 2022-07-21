@@ -7,17 +7,17 @@ keywords:
   - list box
   - interactive list
 examples:
-  - fileName: listbox-basic-listbox.tsx
-    title: Basic Listbox
+  - fileName: listbox-default.tsx
+    title: Default
     description: Basic implementation of a control element used to let merchants select options
-  - fileName: listbox-listbox-with-loading.tsx
-    title: Listbox with Loading
+  - fileName: listbox-with-loading.tsx
+    title: With Loading
     description: Implementation of a control element showing a loading indicator to let merchants know more options are being loaded
-  - fileName: listbox-listbox-with-action.tsx
-    title: Listbox with Action
+  - fileName: listbox-with-action.tsx
+    title: With Action
     description: Implementation of a control element used to let merchants take an action
-  - fileName: listbox-listbox-with-custom-element.tsx
-    title: Listbox with custom element
+  - fileName: listbox-with-custom-element.tsx
+    title: With custom element
     description: Implementation of a control with custom rendering of options
 ---
 
