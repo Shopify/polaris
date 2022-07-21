@@ -732,7 +732,9 @@ describe('<DualThumb />', () => {
         'onMouseDown',
         new MouseEvent('mouseDown', {button}),
       );
-      eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      component.act(() => {
+        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      });
     }
 
     function moveUpperThumb(
@@ -747,7 +749,9 @@ describe('<DualThumb />', () => {
         'onMouseDown',
         new MouseEvent('mouseDown', {button}),
       );
-      eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      component.act(() => {
+        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      });
     }
   });
 
@@ -955,7 +959,9 @@ describe('<DualThumb />', () => {
       } as TouchEventInit);
       Object.assign(event, {preventDefault: noop});
 
-      findTrack(component, className).domNode.dispatchEvent(event);
+      component.act(() => {
+        findTrack(component, className).domNode!.dispatchEvent(event);
+      });
     }
 
     function moveLowerThumb(
@@ -971,9 +977,11 @@ describe('<DualThumb />', () => {
           'onTouchStart',
           new TouchEvent('touchStart'),
         );
-      eventMap.touchmove({
-        touches: [{clientX: trackWidth * percentageOfTrackX}],
-        preventDefault: noop,
+      component.act(() => {
+        eventMap.touchmove({
+          touches: [{clientX: trackWidth * percentageOfTrackX}],
+          preventDefault: noop,
+        });
       });
     }
 
@@ -991,9 +999,11 @@ describe('<DualThumb />', () => {
           'onTouchStart',
           new TouchEvent('touchStart'),
         );
-      eventMap.touchmove({
-        touches: [{clientX: trackWidth * percentageOfTrackX}],
-        preventDefault: noop,
+      component.act(() => {
+        eventMap.touchmove({
+          touches: [{clientX: trackWidth * percentageOfTrackX}],
+          preventDefault: noop,
+        });
       });
     }
   });
