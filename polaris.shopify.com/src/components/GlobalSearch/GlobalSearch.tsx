@@ -171,7 +171,7 @@ function GlobalSearch() {
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className={styles.PreventBackgroundInteractions}></div>
-        <div className="dark-mode">
+        <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
             {isOpen && (
               <div className={styles.Header}>
