@@ -2,6 +2,5 @@
 'polaris-for-figma': patch
 ---
 
-docs(polaris-for-figma/README.md): Fix yarn script
-
-Fix polaris-for-figma/readme.md
+- Modification of the documentation mentioning the use of a non-existent script<br>
+- Added documentation for a build script
