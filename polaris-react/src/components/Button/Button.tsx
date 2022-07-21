@@ -17,10 +17,7 @@ import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
-import {
-  useDisableClick,
-  useDisableKeyboard,
-} from '../../utilities/use-disable-interaction';
+import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
