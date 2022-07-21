@@ -97,7 +97,7 @@ Use to display inline snippets of code or code-like text.
 
 Don’t rely on text style alone to convey information to merchants. Ensure that text styles are used to enhance the information provided in text.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

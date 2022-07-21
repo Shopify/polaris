@@ -31,7 +31,7 @@
   }
 
   @media (hover: hover) {
-    &.isHighlighted a {
+    &[data-is-current-result="true"] a {
       background: var(--search-highlight-color);
     }
   }

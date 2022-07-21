@@ -36,7 +36,7 @@ These values are at the heart of how we build experiences at Shopify. They’re 
 
 ---
 
-## Our approach <!-- nav:skipsection -->
+## Our approach
 
 The best part of this shared set of values is the conversations they enable. They are fantastic lenses through which to view, critique, and improve our work.
 
