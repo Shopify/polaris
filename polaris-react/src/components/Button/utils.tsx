@@ -1,6 +1,7 @@
 import React from 'react';
 
 import type {ComplexAction} from '../../types';
+import {tooltipFrom} from '../Tooltip';
 
 import {Button, ButtonProps} from './Button';
 
@@ -25,13 +26,15 @@ export function buttonsFrom(
 }
 
 export function buttonFrom(
-  {content, onAction, ...action}: ComplexAction,
+  {content, onAction, tooltip, ...action}: ComplexAction,
   overrides?: Partial<ButtonProps>,
   key?: any,
 ) {
-  return (
+  const button = (
     <Button key={key} onClick={onAction} {...action} {...overrides}>
       {content}
     </Button>
   );
+
+  return tooltip ? tooltipFrom(tooltip, button) : button;
 }

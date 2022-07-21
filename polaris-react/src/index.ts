@@ -354,7 +354,7 @@ export type {ThumbnailProps} from './components/Thumbnail';
 export {Toast} from './components/Toast';
 export type {ToastProps} from './components/Toast';
 
-export {Tooltip} from './components/Tooltip';
+export {Tooltip, tooltipFrom} from './components/Tooltip';
 export type {TooltipProps} from './components/Tooltip';
 
 export {TopBar} from './components/TopBar';

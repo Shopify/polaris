@@ -10,12 +10,13 @@ import {
   ConditionalWrapper,
 } from '../../../../utilities/components';
 import type {
-  MenuGroupDescriptor,
-  MenuActionDescriptor,
+  ActionWithTooltip,
   DestructableAction,
   DisableableAction,
-  LoadableAction,
   IconableAction,
+  LoadableAction,
+  MenuActionDescriptor,
+  MenuGroupDescriptor,
 } from '../../../../types';
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 import {Pagination, PaginationProps} from '../../../Pagination';
@@ -32,7 +33,8 @@ interface PrimaryAction
   extends DestructableAction,
     DisableableAction,
     LoadableAction,
-    IconableAction {
+    IconableAction,
+    ActionWithTooltip {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }
