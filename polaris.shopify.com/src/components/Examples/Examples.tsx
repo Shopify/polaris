@@ -75,9 +75,7 @@ const Examples = (props: Props) => {
         onChange={handleSelection}
       />
       {description ? (
-        <p>
-          <Markdown text={description} />
-        </p>
+        <Markdown text={description} />
       ) : null}
 
       <div className={styles.Buttons}>
