@@ -4,7 +4,7 @@ import { useCopyToClipboard } from "../../utils/hooks";
 import styles from "./Code.module.scss";
 import { Tab } from "@headlessui/react";
 import Image from "../Image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   tabs: {
