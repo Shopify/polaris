@@ -226,8 +226,7 @@ function DataTableExample() {
 
 ### Data table with totals in footer
 
-Use to reposition the totals row in a more appropriate location based on the data stored in the
-table for merchants to better understand its meaning.
+Use to reposition the totals row in a more appropriate location based on the data stored in the table for merchants to better understand its meaning.
 
 ```jsx
 function DataTableExample() {
@@ -422,7 +421,7 @@ function FullDataTableExample() {
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           stickyHeader
-          hasFixedFirstColumn
+          fixedFirstColumn
           truncate
         />
       </Card>
@@ -533,7 +532,7 @@ function DataTableFixedFirstColumnExample() {
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={handleSort}
-          hasFixedFirstColumn
+          fixedFirstColumn
           truncate
         />
       </Card>
@@ -1014,7 +1013,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1052,7 +1051,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

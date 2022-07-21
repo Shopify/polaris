@@ -36,8 +36,6 @@ Use font weight, size, and color to help establish clear hierarchy and guide mer
 
 The Shopify admin uses system fonts. This means the typeface will change based on the operating system it runs on, like macOS, iOS, Windows, Android or Linux.
 
-<!-- showcasecontent -->
-
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/type-fontstack@2x.png)
 
 <!-- end -->

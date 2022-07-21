@@ -22,7 +22,7 @@ Field labels act as a title for the text field. Labels should typically be short
 
 ![field-label-highlighted](/images/foundations/patterns/text-fields/field-label-highlighted@2x.png)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -36,7 +36,7 @@ Field labels act as a title for the text field. Labels should typically be short
 
 Edge case: When a text field isn’t part of a form and is placed individually on a page (like a comment field), then you can write the field label as a call to action. For example, “Leave a comment”. This is because there’s no surrounding context and using “Comment” alone could be confusing.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -82,7 +82,7 @@ Best practices:
 
 ![help-text](/images/foundations/patterns/text-fields/help-text@2x.png)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -136,7 +136,7 @@ Modeled text inputs are text field inputs that require text to be formatted in a
 - If there’s not enough room to include both an instructional call to action and an example, then include only the example
 - Use the word “Example” followed by a colon to introduce the example (instead of e.g.)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -184,7 +184,7 @@ If the text field label isn’t clear about where the user can find the informat
 
 Don’t use placeholder text for free input titles, names, and descriptions; use help text instead.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -204,7 +204,7 @@ Don’t use placeholder text for codes or tracking numbers; use help text instea
 
 Choose clear names for the field label, and don’t repeat it in the help text if possible. Instead, offer context that will help the user understand and complete the task quickly.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -239,7 +239,7 @@ Multiline inputs hold things like product and collection descriptions, notes abo
 
 We usually don’t know what will go in multiline fields, so providing example text isn’t helpful. Instead, include help text that explains how the text will be used and who can view it.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -257,7 +257,7 @@ Don’t use placeholder text for comments and notes; use help text instead. Comm
 
 Some comments and notes are not visible to customers, but some are. In the help text, describe clearly who will be able to view the note.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

@@ -49,7 +49,7 @@ Using icons can be a great help to merchants who have difficulties with reading,
 
 If the icon appears without text, then use the `accessibilityLabel` prop to give the icon a text alternative. This adds an `aria-label` that’s conveyed to screen reader users.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

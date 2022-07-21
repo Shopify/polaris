@@ -48,11 +48,9 @@ Button groups should:
 - Only use buttons that follow the
   [best practices outlined in the button component](https://polaris.shopify.com/components/button#best-practices)
 - Group together calls to action that have a relationship
-- Be used with consideration that too many calls to action can cause merchants
-  to be unsure of what to do next
+- Be used with consideration that too many calls to action can cause merchants to be unsure of what to do next
 - Be thoughtful about how multiple buttons will look and work on small screens
-- Only be used in groups of up to six buttons if the buttons contain an icon
-  with no text
+- Only be used in groups of up to six buttons if the buttons contain an icon with no text
 
 ---
 

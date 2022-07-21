@@ -43,6 +43,9 @@ examples:
   - fileName: data-table-with-sticky-header-enabled.tsx
     title: Data table with sticky header enabled
     description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-fixed-first-column-enabled.tsx
+    title: Data table with fixed first column enabled
+    description: Use to fix the first column when horizontal scrolling becomes necessary. Keeps the context of the row as the user scrolls.
 ---
 
 # Data table
@@ -85,7 +88,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -123,7 +126,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

@@ -21,9 +21,7 @@ keywords:
 
 # Choice list
 
-A choice list lets you create a list of grouped radio buttons or checkboxes.
-Use this component if you need to group together a related list of interactive
-choices.
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 
 ---
 
@@ -43,10 +41,9 @@ Choice lists should:
 
 List titles should:
 
-- Help merchants understand how the items in the list are grouped together, or
-  should explain what kind of choice merchants are making
+- Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -65,7 +62,7 @@ Pick one
 - It the title introduces the list, it should end with a colon
 - Should be written in sentence case
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -79,15 +76,21 @@ Shipping Options
 
 ### Not use colons
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete their order
+If the customer abandons their checkout, send them an email reminder to complete their order:
+
+- Option a
+- Option b
 
 #### Don’t
 
 If the customer abandons their checkout, send them an email reminder to complete their order
+
+- Option a
+- Option b
 
 <!-- end -->
 
@@ -99,7 +102,7 @@ Every item in a choice list should:
 - Not use commas or semicolons at the end of each line
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -125,9 +128,7 @@ If your list contains helper text, only the description below the list item shou
 
 ### Single choice list
 
-Allows merchants to select one option from a list.
-
-- Make sure all options are an either/or choice.
+Allows merchants to select one option from a list. Make sure all options are an either/or choice.
 
 ```jsx
 function SingleChoiceListExample() {
@@ -178,9 +179,7 @@ function ChoiceListWithErrorExample() {
 
 ### Multi-choice list
 
-Allows merchants to select multiple options from a list.
-
-- Avoid options that are an either/or choice.
+Allows merchants to select multiple options from a list. Avoid options that are an either/or choice.
 
 ```jsx
 function MultiChoiceListExample() {

@@ -31,8 +31,6 @@ keywords:
 
 # Accessible and inclusive language
 
-<!-- keywords: inclusivity, inclusive content, inclusive language, word list -->
-
 Our mission is to make commerce better for _everyone_. Building products for everyone means creating inclusive content.
 
 The words we use have power. Writing for everyone, everywhere means that we don’t exclude or harm any of our merchants, even if these words have been normalized.
@@ -46,8 +44,6 @@ Test your content with a diverse audience by recruiting merchants from a variety
 ---
 
 ## Accessible content
-
-<!-- keywords: accessibility, accessible, a11y, disability, ableist, ableism -->
 
 Using anti-ableist language is just one part of making accessible content at Shopify. Ableist language is content that holds bias towards the nondisabled experience, or discriminates against the disabled community.
 
@@ -67,7 +63,7 @@ This language and narrative around people with disabilities can be othering and 
 
 Implies that disability is a less-desired or negative state.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -79,7 +75,7 @@ Accounts are disabled.
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -96,7 +92,7 @@ Accounts are disabled.
 
 _Note: Because `disabled` is a valid state for HTML elements, usage of “disabled” is appropriate when talking about specific element states, just not overall feature functionality._
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -108,7 +104,7 @@ The checkbox is disabled.
 
 This language can imply that there’s something wrong with anyone outside of the majority.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -130,7 +126,7 @@ This language is often used to equate deafness or hearing impairment with ignora
 
 As a metaphor, this can equate lack of vision to ignorance. Only use the term when referencing the disability itself.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -148,7 +144,7 @@ As a metaphor, this can equate lack of vision to ignorance. Only use the term wh
 
 This language can stigmatize people with mental disabilities by using these words as modifiers for “unbelievable” or in a negative context.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -170,7 +166,7 @@ This language can stigmatize people with mental disabilities by using these word
 
 Handicap implies that the person is the issue, rather than the environment.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -187,7 +183,7 @@ Handicap implies that the person is the issue, rather than the environment.
 
 This term can reduce a person’s primary identity to using a wheelchair.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -204,7 +200,7 @@ This term can reduce a person’s primary identity to using a wheelchair.
 
 This phrasing implies that having a disability equates to suffering.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -223,8 +219,6 @@ When we write a task is “only a few steps”, or this should “just take a mi
 ---
 
 ## Anti-racist content
-
-<!-- keywords: anti-racist, racism, racist, race, racial -->
 
 Racist language expresses bias towards or against a particular race, or expresses the belief that some races are inferior to others. Always prioritize our merchants, partners, and buyers experience over perceived barriers to using anti-racist language.
 
@@ -249,7 +243,7 @@ Consider why you need to frame someone or something this way. What is “foreign
 
 These phrases come from laws meant to circumvent or disenfranchise Black people’s rights. These laws, or “grandfather clauses” originated in the Reconstruction era in the American South.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -267,7 +261,7 @@ These phrases come from laws meant to circumvent or disenfranchise Black people�
 
 A powwow is a celebration of heritage, art, and community held by Indigenous people, and should only be used to refer to actual powwows. Use other terms to refer to meetings and events that aren’t powwows.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -290,7 +284,7 @@ Indigenous communities use spirit animals as totems and guides. A spirit animal 
 
 These terms imply that “white is good” and “black is bad”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -308,7 +302,7 @@ These terms imply that “white is good” and “black is bad”.
 
 These terms enforce the “white is good” and “black is bad” paradigm.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -324,7 +318,7 @@ These terms enforce the “white is good” and “black is bad” paradigm.
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -336,7 +330,7 @@ Learn how to secure a compromised account and reset blacklisted credentials.
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -352,7 +346,7 @@ Add no-reply[at]shopify.com to your email provider’s whitelist.
 
 This term originates from a dance contest where enslaved Black people competed for cake.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -368,7 +362,7 @@ It’s a cakewalk to file your taxes with our latest features.
 
 This term refers to communities and places that are predominantly white and that might make non-white people feel restricted or isolated. Avoid using this term except when referring to the named property in CSS.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -386,7 +380,7 @@ This term refers to communities and places that are predominantly white and that
 
 This phrase was used to stereotype Indigenous peoples as unintelligent, and shouldn’t be used due to its racist origins.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -402,7 +396,7 @@ Long time no see
 
 This metaphor refers to the lynching of Black people, and shouldn’t be used.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -417,8 +411,6 @@ This metaphor refers to the lynching of Black people, and shouldn’t be used.
 ---
 
 ## Ungendered content
-
-<!-- keywords: gender, gendered, ungendered, sex, gender identity, gender binary, they, gender-neutral, gender-inclusive, pronouns -->
 
 Gendered language is language biased towards a particular sex or gender. Language that relies on stereotypes, or makes broad assumptions about its audiences’ sex or gender identities is likely gendered.
 
@@ -447,7 +439,7 @@ Avoid the following words and phrases.
 
 These terms reinforce the idea that gender is binary.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -465,7 +457,7 @@ These terms reinforce the idea that gender is binary.
 
 This term can exclude people who aren’t men and reinforce the idea that positions of power are only for men. Use a word that’s gender-neutral and inclusive of all people.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -481,7 +473,7 @@ This term can exclude people who aren’t men and reinforce the idea that positi
 
 This term excludes people who aren’t men. Use a word that’s gender-neutral and inclusive of all people.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -498,7 +490,7 @@ This term excludes people who aren’t men. Use a word that’s gender-neutral a
 
 This word can exclude people who aren’t men. Use a word that’s gender-neutral and inclusive of all people.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -517,7 +509,7 @@ This word can exclude people who aren’t men. Use a word that’s gender-neutra
 
 This word can also exclude people who aren’t men.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -534,7 +526,7 @@ This word can also exclude people who aren’t men.
 
 These terms assume a binary gender which might not be the case. Consider how you use these terms and if they’re necessary in that particular context. If you’re listing genders, make sure to include all genders.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -552,7 +544,7 @@ These terms assume a binary gender which might not be the case. Consider how you
 
 These terms assume a binary gender which might not be the case. Consider how you use these terms and if they’re necessary in that particular context.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

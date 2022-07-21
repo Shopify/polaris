@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Fix dropdown on Examples page
+Move foundations icons to a component
