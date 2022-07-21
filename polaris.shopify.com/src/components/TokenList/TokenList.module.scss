@@ -57,7 +57,7 @@
     position: relative;
 
     @media (hover: hover) {
-      &.isHighlighted {
+      &[data-is-current-result="true"] {
         &,
         &:hover {
           background: var(--search-highlight-color);
