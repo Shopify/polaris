@@ -573,6 +573,41 @@ export function TextField({
     </Labelled>
   );
 
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    onChange && onChange(event.currentTarget.value, id);
+  }
+
+  function handleClick({target}: React.MouseEvent) {
+    if (
+      isPrefixOrSuffix(target) ||
+      isVerticalContent(target) ||
+      isInput(target) ||
+      isSpinner(target) ||
+      focus
+    ) {
+      return;
+    }
+
+    inputRef.current?.focus();
+  }
+
+  function handleClickChild(event: React.MouseEvent) {
+    if (!isSpinner(event.target) && !isInput(event.target)) {
+      event.stopPropagation();
+    }
+
+    if (
+      isPrefixOrSuffix(event.target) ||
+      isVerticalContent(event.target) ||
+      isInput(event.target) ||
+      focus
+    ) {
+      return;
+    }
+
+    setFocus(true);
+  }
+
   function handleClearButtonPress() {
     onClearButtonClick && onClearButtonClick(id);
   }
@@ -620,40 +655,12 @@ export function TextField({
         verticalContentRef.current.contains(document.activeElement))
     );
   }
+}
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange && onChange(event.currentTarget.value, id);
-  }
+function getRows(multiline?: boolean | number) {
+  if (!multiline) return undefined;
 
-  function handleClick({target}: React.MouseEvent) {
-    if (
-      isPrefixOrSuffix(target) ||
-      isVerticalContent(target) ||
-      isInput(target) ||
-      focus
-    ) {
-      return;
-    }
-
-    inputRef.current?.focus();
-  }
-
-  function handleClickChild(event: React.MouseEvent) {
-    if (!isInput(event.target) && !isSpinner(event.target)) {
-      event.stopPropagation();
-    }
-
-    if (
-      isPrefixOrSuffix(event.target) ||
-      isVerticalContent(event.target) ||
-      isInput(event.target) ||
-      focus
-    ) {
-      return;
-    }
-
-    setFocus(true);
-  }
+  return typeof multiline === 'number' ? multiline : 1;
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
@@ -662,10 +669,4 @@ function normalizeAriaMultiline(multiline?: boolean | number) {
   return Boolean(multiline) || multiline > 0
     ? {'aria-multiline': true}
     : undefined;
-}
-
-function getRows(multiline?: boolean | number) {
-  if (!multiline) return undefined;
-
-  return typeof multiline === 'number' ? multiline : 1;
 }

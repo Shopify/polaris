@@ -12,6 +12,7 @@ export interface SpinnerProps {
   onMouseDown(onChange: HandleStepFn): void;
   onMouseUp(): void;
 }
+
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
   function Spinner({onChange, onClick, onMouseDown, onMouseUp}, ref) {
     function handleStep(step: number) {
