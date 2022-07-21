@@ -4,6 +4,7 @@ import { useCopyToClipboard } from "../../utils/hooks";
 import styles from "./Code.module.scss";
 import { Tab } from "@headlessui/react";
 import Image from "../Image";
+import { useEffect, useState } from "react";
 
 interface Props {
   tabs: {
@@ -13,6 +14,8 @@ interface Props {
 }
 
 function Code({ tabs }: Props) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   return (
     <div className={styles.Code}>
       {tabs.length === 1 ? (
@@ -26,7 +29,7 @@ function Code({ tabs }: Props) {
           <HighlightedCode code={tabs[0].code} />
         </>
       ) : (
-        <Tab.Group>
+        <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           <div className={styles.TopBar}>
             <Tab.List className={styles.Tabs}>
               {tabs.map(({ title }) => (
@@ -35,7 +38,9 @@ function Code({ tabs }: Props) {
                 </Tab>
               ))}
             </Tab.List>
-            <CopyButton code={"TODO"} />
+            {tabs[selectedIndex] && (
+              <CopyButton code={tabs[selectedIndex].code} />
+            )}
           </div>
 
           <Tab.Panels>
