@@ -195,7 +195,10 @@ export function search(query: string): GroupedSearchResults {
                   const match = matchez[0];
                   if (match.index) {
                     const resultExcerpt = `${content
-                      .slice(match.index - 20, match.index + query.length + 150)
+                      .slice(
+                        match.index - 500,
+                        match.index + query.length + 250
+                      )
                       .trim()
                       .replace(/\n/g, " ")}`;
                     if (result.meta.foundations && resultExcerpt) {

@@ -24,17 +24,13 @@ for (let i = 0; i < subfolders.length; i++) {
       const fileName = files[j];
       const filePath = path.join(guidelinesDir, dirName, fileName);
 
-      const content = fs.readFileSync(filePath, "utf-8");
-      const parsed = parseMarkdown(content);
-
-      const cleanedUpContent = marked(parsed.readme).replace(
-        /(<([^>]+)>)/gi,
-        ""
-      );
+      const rawContent = fs.readFileSync(filePath, "utf-8");
+      const parsed = parseMarkdown(rawContent);
+      const { readme } = parsed;
 
       guidelines.push({
         ...parsed,
-        content: cleanedUpContent,
+        content: readme,
         category: dirName,
       });
     }

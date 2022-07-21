@@ -13,6 +13,8 @@ import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
 import FoundationsGrid from "../FoundationsGrid";
 import { foundationsNavItems } from "../../data/navItems";
+import Markdown from "../Markdown";
+import Longform from "../Longform";
 
 const CATEGORY_NAMES: { [key in SearchResultCategory]: string } = {
   components: "Components",
@@ -242,27 +244,30 @@ function SearchResults({
           case "foundations":
             return (
               <ResultsGroup category={category}>
-                <FoundationsGrid>
-                  {results.map(({ id, url, meta }) => {
-                    if (!meta.foundations) return null;
-                    const { title, excerpt, category } = meta.foundations;
-                    const icon = foundationsIcons[title];
-                    return (
-                      <SearchContext.Provider
-                        key={title}
-                        value={{ currentItemId, id }}
-                      >
-                        <FoundationsGrid.Item
-                          title={title}
-                          excerpt={excerpt}
-                          category={category}
-                          url={url}
-                          icon={icon}
-                        />
-                      </SearchContext.Provider>
-                    );
-                  })}
-                </FoundationsGrid>
+                {/* <FoundationsGrid> */}
+                {results.map(({ id, url, meta }) => {
+                  if (!meta.foundations) return null;
+                  const { title, excerpt, category } = meta.foundations;
+                  const icon = foundationsIcons[title];
+                  return (
+                    <SearchContext.Provider
+                      key={title}
+                      value={{ currentItemId, id }}
+                    >
+                      {/* <FoundationsGrid.Item
+                        title={title}
+                        excerpt={excerpt}
+                        category={category}
+                        url={url}
+                        icon={icon}
+                      /> */}
+                      <Longform>
+                        <Markdown text={excerpt} />
+                      </Longform>
+                    </SearchContext.Provider>
+                  );
+                })}
+                {/* </FoundationsGrid> */}
               </ResultsGroup>
             );
 
