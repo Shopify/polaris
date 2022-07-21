@@ -26,8 +26,8 @@ examples:
   - fileName: badge-success.tsx
     title: Success
     description: Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to merchants. For example, when merchants successfully dispute a chargeback, a success badge shows that says “Funds recovered”.
-  - fileName: badge-attention-badge.tsx
-    title: Attention badge
+  - fileName: badge-attention.tsx
+    title: Attention
     description: Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
   - fileName: badge-warning.tsx
     title: Warning

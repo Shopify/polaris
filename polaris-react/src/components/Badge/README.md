@@ -105,7 +105,7 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 <Badge status="success">Funds recovered</Badge>
 ```
 
-### Attention badge
+### Attention
 
 Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
 

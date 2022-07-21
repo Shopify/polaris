@@ -10,14 +10,14 @@ keywords:
   - listbox
   - list box
 examples:
-  - fileName: combobox-with-single-select-and-automatic-selection.tsx
-    title: With single select and automatic selection
+  - fileName: combobox-default.tsx
+    title: Default
     description: Use when merchants can select one option from a predefined or editable list.
-  - fileName: combobox-with-single-select-and-manual-selection.tsx
-    title: With single select and manual selection
+  - fileName: combobox-with-manual-selection.tsx
+    title: With manual selection
     description: Use when merchants can select one option from a predefined or editable list.
-  - fileName: combobox-with-multi-select-and-automatic-selection.tsx
-    title: With multi-select and automatic selection
+  - fileName: combobox-with-multi-select.tsx
+    title: With multi-select
     description: Use when merchants can select one or more options from a predefined or editable list.
   - fileName: combobox-with-multi-select-and-manual-selection.tsx
     title: With multi-select and manual selection
@@ -25,8 +25,8 @@ examples:
   - fileName: combobox-with-multi-select-and-vertical-content.tsx
     title: With multi-select and vertical content
     description: Use to display selected options above the input value.
-  - fileName: combobox-with-autocomplete-and-loading.tsx
-    title: With autocomplete and loading
+  - fileName: combobox-with-loading.tsx
+    title: With loading
     description: Use to indicate to merchants that the list data is being fetched.
 ---
 

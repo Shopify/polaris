@@ -76,7 +76,7 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ## Examples
 
-### With single select and automatic selection
+### Default
 
 Use when merchants can select one option from a predefined or editable list.
 
@@ -168,7 +168,7 @@ function AutoSelectComboboxExample() {
 }
 ```
 
-### With single select and manual selection
+### With manual selection
 
 Use when merchants can select one option from a predefined or editable list.
 
@@ -262,7 +262,7 @@ function ManualSelectComboboxExample() {
 }
 ```
 
-### With multi-select and automatic selection
+### With multi-select
 
 Use when merchants can select one or more options from a predefined or editable list.
 
@@ -664,7 +664,7 @@ function MultiselectTagComboboxExample() {
 }
 ```
 
-### With autocomplete and loading
+### With loading
 
 Use to indicate to merchants that the list data is being fetched.
 
