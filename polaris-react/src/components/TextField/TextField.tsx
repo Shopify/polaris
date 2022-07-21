@@ -239,6 +239,7 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
+  const spinnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -405,6 +406,7 @@ export function TextField({
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
+        ref={spinnerRef}
       />
     ) : null;
 
@@ -585,11 +587,28 @@ export function TextField({
     event.preventDefault();
   }
 
+  function isInput(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      inputRef.current &&
+      (inputRef.current.contains(target) ||
+        inputRef.current.contains(document.activeElement))
+    );
+  }
+
   function isPrefixOrSuffix(target: Element | EventTarget) {
     return (
       target instanceof Element &&
       ((prefixRef.current && prefixRef.current.contains(target)) ||
         (suffixRef.current && suffixRef.current.contains(target)))
+    );
+  }
+
+  function isSpinner(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      spinnerRef.current &&
+      spinnerRef.current.contains(target)
     );
   }
 
@@ -599,15 +618,6 @@ export function TextField({
       verticalContentRef.current &&
       (verticalContentRef.current.contains(target) ||
         verticalContentRef.current.contains(document.activeElement))
-    );
-  }
-
-  function isInput(target: HTMLElement | EventTarget) {
-    return (
-      target instanceof HTMLElement &&
-      inputRef.current &&
-      (inputRef.current.contains(target) ||
-        inputRef.current.contains(document.activeElement))
     );
   }
 
@@ -629,7 +639,7 @@ export function TextField({
   }
 
   function handleClickChild(event: React.MouseEvent) {
-    if (inputRef.current !== event.target) {
+    if (!isInput(event.target) && !isSpinner(event.target)) {
       event.stopPropagation();
     }
 
