@@ -370,7 +370,7 @@ function ResourceListWithLoadingExample() {
 }
 ```
 
-### With total resource count
+### With total count
 
 Use to indicate that the number of resources shown is a subset of the total number of resources in the list.
 

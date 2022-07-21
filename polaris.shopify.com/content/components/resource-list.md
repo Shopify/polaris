@@ -39,8 +39,8 @@ examples:
   - fileName: resource-list-with-loading-state.tsx
     title: With loading state
     description: Notifies merchants that list items are being processed.
-  - fileName: resource-list-with-total-resource-count.tsx
-    title: With total resource count
+  - fileName: resource-list-with-total-count.tsx
+    title: With total count
     description: Use to indicate that the number of resources shown is a subset of the total number of resources in the list.
   - fileName: resource-list-with-sorting.tsx
     title: With sorting
