@@ -115,9 +115,7 @@ Use when something requires merchants’ attention but the issue isn’t critica
 
 ### Warning
 
-Use for critical and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+Use for warnings and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="warning">Expired</Badge>
@@ -125,9 +123,7 @@ Keep in mind that seeing this badge can feel stressful for merchants so it shoul
 
 ### Critical
 
-Use for critical and irreversible issues that require merchants’ attention and potential action.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+Use for critical and irreversible issues that require merchants’ attention and potential action. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="critical">Action required</Badge>

@@ -203,8 +203,7 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 
 ### Default
 
-- Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback.
-- Default banners contain lower priority information and should always be dismissible.
+Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
 ```jsx
 <Banner title="Order archived" onDismiss={() => {}}>
@@ -262,8 +261,7 @@ Use to update merchants about a change or give them advice.
 
 ### Success
 
-- Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action
-- Include next steps if applicable
+Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action. Include next steps if applicable.
 
 ```jsx
 <Banner
@@ -276,8 +274,7 @@ Use to update merchants about a change or give them advice.
 
 ### Warning
 
-- Use to display information that needs attention or that merchants need to take action on
-- Seeing these banners can be stressful for merchants so be cautious about using them
+Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
 <Banner
@@ -296,9 +293,7 @@ Use to update merchants about a change or give them advice.
 
 ### Critical
 
-- Use to communicate problems that have to be resolved immediately for merchants to complete a task
-- For example, you will show this banner for orders with high fraud risk
-- Seeing these banners can be stressful for merchants so be cautious about using them
+Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
 <Banner

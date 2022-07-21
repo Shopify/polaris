@@ -31,14 +31,10 @@ examples:
     description: Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
   - fileName: badge-warning.tsx
     title: Warning
-    description: Use for critical and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+    description: Use for warnings and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
   - fileName: badge-critical.tsx
     title: Critical
-    description: Use for critical and irreversible issues that require merchants’ attention and potential action.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+    description: Use for critical and irreversible issues that require merchants’ attention and potential action. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
   - fileName: badge-incomplete.tsx
     title: Incomplete
     description: Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.
