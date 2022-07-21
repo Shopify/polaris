@@ -18,8 +18,7 @@ keywords:
 
 # Setting toggle
 
-Use to give merchants control over a feature or option that can be turned
-on or off.
+Use to give merchants control over a feature or option that can be turned on or off.
 
 ---
 
@@ -28,11 +27,8 @@ on or off.
 Settings toggles should:
 
 - Include different body content for the activated and deactivated states.
-- Clearly indicate whether the setting is activated or deactivated and explain the
-  implications of the state of the setting to merchants. (“Automatic messages
-  are deactivated. Your customers won’t receive automatic shipping updates.”)
-- Clearly state when a setting or feature is not available and why. Provide
-  actionable steps for merchants to unlock the functionality.
+- Clearly indicate whether the setting is activated or deactivated and explain the implications of the state of the setting to merchants. (“Automatic messages are deactivated. Your customers won’t receive automatic shipping updates.”)
+- Clearly state when a setting or feature is not available and why. Provide actionable steps for merchants to unlock the functionality.
 
 ---
 
@@ -43,18 +39,13 @@ Settings toggles should:
 Toggle descriptions should:
 
 - Clearly indicate whether the setting is activated or deactivated
-- Explain the implications of the state of the setting to merchants
-  (“Automatic messages are deactivated. Your customers won’t receive automatic
-  shipping updates.”)
+- Explain the implications of the state of the setting to merchants (“Automatic messages are deactivated. Your customers won’t receive automatic shipping updates.”)
 
 ### Primary button
 
-The primary buttons for the setting toggle should always say either “Activate” or
-“Deactivate” depending on whether the setting can be turned on or off.
+The primary buttons for the setting toggle should always say either “Activate” or “Deactivate” depending on whether the setting can be turned on or off.
 
-For example, if the setting toggle is on, the button should say “Deactivate” to
-allow merchants to turn it off. If the setting toggle is off, the button should
-say “Activate” to allow merchants to turn it on.
+For example, if the setting toggle is on, the button should say “Deactivate” to allow merchants to turn it off. If the setting toggle is off, the button should say “Activate” to allow merchants to turn it on.
 
 <!-- dodont -->
 

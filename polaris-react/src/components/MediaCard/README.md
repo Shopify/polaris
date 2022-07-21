@@ -57,22 +57,18 @@ Now you can get performance data for all of your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something
+- Structured for merchant success: always put the most critical information first
+- Clear: use the verb “need” to help merchants understand when they’re required to do something
 
 <!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -94,9 +90,7 @@ Buy
 
 <!-- end -->
 
-- Action-led: buttons should always lead with a strong verb that encourages
-  action. To provide enough context to merchants use the {verb}+{noun} format on
-  buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 <!-- dodont -->
 
