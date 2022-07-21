@@ -16,7 +16,10 @@ function CodeExample({ minimalist, children }: Props) {
 
   return (
     <div
-      className={className(styles.CodeExample, minimalist && styles.minimalist)}
+      className={className(
+        styles.CodeExample,
+        minimalist ? styles.minimalist : "dark-mode"
+      )}
     >
       <div className={styles.CopyButtonWrapper}>
         <Tooltip

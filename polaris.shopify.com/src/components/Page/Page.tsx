@@ -4,6 +4,7 @@ import useDarkMode from "use-dark-mode";
 
 import SiteLaunchBanner from "../SiteLaunchBanner";
 import Header from "../Header";
+import { className } from "../../utils/various";
 
 interface Props {
   children: React.ReactNode;
@@ -23,7 +24,12 @@ function Page({ children }: Props) {
   }, [darkMode.value]);
 
   return (
-    <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
+    <div
+      style={{ background: isPolaris ? "#fafafa" : "unset" }}
+      className={className(
+        !isPolaris && "styles-for-site-but-not-polaris-examples"
+      )}
+    >
       {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
       {children}
