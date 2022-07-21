@@ -586,7 +586,7 @@ function IndexTableBase({
 
   const scrollBarMarkup =
     itemCount > 0 ? (
-      <AfterInitialMount>
+      <AfterInitialMount onMount={resizeTableScrollBar}>
         <div
           className={scrollBarWrapperClassNames}
           ref={scrollContainerElement}
