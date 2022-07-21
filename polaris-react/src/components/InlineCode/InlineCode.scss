@@ -1,8 +1,8 @@
 .Code {
-  background-color: var(--p-surface-subdued);
-  border-radius: var(--p-border-radius-base);
-  border: var(--p-border-base);
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-05);
   font-family: var(--p-font-family-mono);
-  font-size: 0.9em;
-  padding: 0 var(--p-space-1);
+  font-size: 0.85em;
+  font-weight: var(--p-font-weight-medium);
+  padding: var(--p-space-025) var(--p-space-1);
 }
