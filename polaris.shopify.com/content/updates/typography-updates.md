@@ -1,5 +1,5 @@
 ---
-name: Typography udpates
+name: Typography updates
 keywords:
   - typography
   - type
