@@ -53,7 +53,7 @@ All font sizes have a ratio of 1.2, known as the major third type scale. This me
 | 24px      | 26px      | 21px |
 | 28px      | 28px      | 24px |
 | 32px      | 42px      | 27px |
-| 40px      |           |      |
+| 40px      | -         | -    |
 
 ### Why were values changed or removed?
 
@@ -63,7 +63,7 @@ The lower end of the scale has largely stayed the same with the majority of the 
 The first change we made was updating the values of both size and line-height to be multiples of 4 with the exception of the 14px base size. This helps us be critical about the size values we use for other elements in the UI. This is important because it affects the rhythm of the page.
 
 **Adding values**
-We added 32px to have an extra step at the larger end of the scale. We made this decision after looking at what font sizes are being used across the different pages in the Shopify admin. Pages that are geared towards learning or celebrating key moments, often use the larger sizes in the scale. We also found that additional sizes were being added or adjusted with custom styles.
+We added `32px` to have an extra step at the larger end of the scale. We made this decision after looking at what font sizes are being used across the different pages in the Shopify admin. Pages that are geared towards learning or celebrating key moments, often use the larger sizes in the scale. We also found that additional sizes were being added or adjusted with custom styles.
 
 We considered those common values that we were noticing being added and adjusted the scale to work for those different pages.
 
@@ -71,7 +71,7 @@ We considered those common values that we were noticing being added and adjusted
 
 We’re moving from two type scales to one for both desktop and mobile web.
 
-We looked at how type changes between the different screen sizes and found that it’s often a difference of 1px. While 1px can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles, just wasn’t worth it. They often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
+We looked at how type changes between the different screen sizes and found that it’s often a difference of `1px`. While `1px` can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles, just wasn’t worth it. They often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
 
 [gif to show difference]
 
