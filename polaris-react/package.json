@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "9.20.0",
+  "version": "9.21.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -60,10 +60,10 @@
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "build-storybook -o build-internal/storybook/static",
-    "version": "node ./scripts/readme-update-version"
+    "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "^5.0.0",
+    "@shopify/polaris-icons": "^5.2.0",
     "@shopify/polaris-tokens": "^5.5.0",
     "@types/react": "*",
     "@types/react-dom": "*",

@@ -121,7 +121,11 @@ function TokensPage({ tokenGroup }: Props) {
                   : 1
               )
               .map((token) => (
-                <TokenList.Item key={token.name} token={token} />
+                <TokenList.Item
+                  key={token.name}
+                  category={tokenGroup}
+                  token={token}
+                />
               ))}
           </TokenList>
         </div>

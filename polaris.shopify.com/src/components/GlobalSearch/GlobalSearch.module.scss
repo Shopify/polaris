@@ -160,41 +160,6 @@
   }
 }
 
-.FoundationsResults {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.FoundationsResult {
-  position: relative;
-  padding: 1rem;
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius-600);
-
-  @media (hover: hover) {
-    &.isHighlighted {
-      background: var(--search-highlight-color);
-    }
-  }
-
-  a {
-    display: block;
-    color: inherit;
-  }
-
-  h4 {
-    font-weight: var(--font-weight-500);
-    font-size: var(--font-size-300);
-    color: var(--text-strong);
-  }
-
-  p {
-    margin-top: 0.1rem;
-    font-size: var(--font-size-100);
-  }
-}
-
 @keyframes search-results-enter {
   from {
     transform: scale(0.98);
@@ -207,7 +172,7 @@
   }
 }
 
-.ModalBackdrop {
+.PreventBackgroundInteractions {
   position: fixed;
   top: 0;
   right: 0;

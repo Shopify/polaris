@@ -1,6 +1,6 @@
 import Image from "../Image";
+import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
 import { className } from "../../utils/various";
-import { SearchResultItem } from "../../types";
 import styles from "./IconGrid.module.scss";
 import { Icon } from "@shopify/polaris-icons/metadata";
 import Link from "next/link";
@@ -21,19 +21,16 @@ function IconGrid({ title, children }: IconGridProps) {
   );
 }
 
-interface IconGridItemProps extends SearchResultItem {
+interface IconGridItemProps {
   icon: Icon;
   query?: string;
   activeIcon?: string;
 }
 
-function IconGridItem({
-  icon,
-  activeIcon,
-  query,
-  searchResultData,
-}: IconGridItemProps) {
+function IconGridItem({ icon, activeIcon, query }: IconGridItemProps) {
   const { id, name, description } = icon;
+  const searchAttributes = useGlobalSearchResult();
+
   return (
     <li key={id}>
       <Link
@@ -49,11 +46,10 @@ function IconGridItem({
         <a
           className={className(
             styles.Icon,
-            activeIcon === id && styles.isSelected,
-            searchResultData?.isHighlighted && styles.isSelected
+            activeIcon === id && styles.isSelected
           )}
-          {...searchResultData?.itemAttributes}
           id={icon.id}
+          {...searchAttributes}
         >
           <Image
             src={`/icons/${id}.svg`}

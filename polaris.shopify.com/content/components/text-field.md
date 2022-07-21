@@ -211,6 +211,12 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 - Turning off **browser autocomplete** (previously submitted values) in Chrome
   - If you don't have `name` attribute and the field is not a typical autofill input (address, email, etc), use `autocomplete=off`.
 
+### Virtual keyboard
+
+![Examples of different number keyboards set with inputMode](/images/components/text-field/virtual-keyboards.png)
+
+The `inputMode` property should be set to select the appropriate virtual keyboard for the type of data expected to be entered by the user. Above are examples of different number keyboards set with `inputMode`.
+
 ---
 
 ## Content guidelines
@@ -249,7 +255,7 @@ When you provide help text via the `helpText` prop or an inline error message vi
 
 Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to all merchants.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

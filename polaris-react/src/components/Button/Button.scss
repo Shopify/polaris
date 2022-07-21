@@ -224,7 +224,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus:not(.disabled) {
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
     background: transparent;
