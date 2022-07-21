@@ -1,10 +1,6 @@
 ---
 name: Pagination
 category: Navigation
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - lists
   - detail
@@ -22,8 +18,6 @@ keywords:
   - previous next buttons
   - previous buttons
   - next buttons
-  - ios
-  - android
 examples:
   - fileName: pagination-default.tsx
     title: Default pagination
@@ -36,11 +30,6 @@ examples:
     description: >-
       Add a label between navigation buttons to provide more context of the
       content being viewed by the user.
-  # - fileName: pagination-infinite-scroll.tsx
-  #   title: Infinite scroll
-  #   description: >-
-  #     Use for lists longer than 25 items. In mobile apps it’s natural to scroll
-  #     to the bottom of the screen to load more items.
 ---
 
 # Pagination

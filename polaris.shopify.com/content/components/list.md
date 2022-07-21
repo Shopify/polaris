@@ -1,10 +1,6 @@
 ---
 name: List
 category: Lists and tables
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - bulleted lists
   - numbered lists
@@ -12,8 +8,6 @@ keywords:
   - list items
   - text lists
   - text-only lists
-  - ios
-  - android
 examples:
   - fileName: list-bulleted.tsx
     title: Bulleted list
@@ -38,10 +32,8 @@ Lists display a set of related text-only content. Each list item begins with a b
 
 Lists should:
 
-- Break up chunks of related content to make the information easier for
-  merchants to scan
-- Be phrased consistently (try to start each item with a noun or a
-  verb and be consistent with each item)
+- Break up chunks of related content to make the information easier for merchants to scan
+- Be phrased consistently (try to start each item with a noun or a verb and be consistent with each item)
 - Not be used for lists where the entire item represents an action
 
 ---
@@ -55,7 +47,7 @@ Every item in a list should:
 - Start with a capital letter
 - Not use commas or semicolons at the end of each line
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -73,7 +65,7 @@ Every item in a list should:
 
 - Be written in sentence case
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -101,28 +93,6 @@ Every item in a list should:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The list component outputs list items (`<li>`) inside a list wrapper (`<ul>` for bullet lists or `<ol>` for numbered lists). By default, list items are conveyed as a group of related elements to assistive technology users.
 
 To group items for layout only, consider using the [stack component](https://polaris.shopify.com/components/stack).
-
-<!-- /content-for -->

@@ -43,6 +43,9 @@ examples:
   - fileName: data-table-with-sticky-header-enabled.tsx
     title: Data table with sticky header enabled
     description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-fixed-first-column-enabled.tsx
+    title: Data table with fixed first column enabled
+    description: Use to fix the first column when horizontal scrolling becomes necessary. Keeps the context of the row as the user scrolls.
 ---
 
 # Data table
@@ -85,7 +88,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -117,33 +120,13 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 ### Structure
 
 Native HTML tables provide a large amount of structural information to screen reader users. Merchants who rely on screen readers can navigate tables and identify relationships between data cells (`<td>`) and headers (`<th>`) using keys specific to their screen reader.
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -161,5 +144,3 @@ Sorting controls for the data table component are implemented with native HTML b
 
 - Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys
-
-<!-- /content-for -->

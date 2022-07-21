@@ -1,10 +1,6 @@
 ---
 name: Thumbnail
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - photo
   - picture
@@ -13,8 +9,6 @@ keywords:
   - medium thumbnail
   - large thumbnail
   - image preview
-  - android
-  - ios
 ---
 
 # Thumbnail
@@ -67,21 +61,7 @@ Use as the default size.
 />
 ```
 
-<!-- content-for: android -->
-
-![Default thumbnail](/public_images/components/Thumbnail/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default thumbnail](/public_images/components/Thumbnail/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Extra small thumbnail
-
-<!-- example-for: web -->
 
 Use to present a thumbnail in a condensed layout, such as a data table cell or an action list item.
 
@@ -94,8 +74,6 @@ Use to present a thumbnail in a condensed layout, such as a data table cell or a
 ```
 
 ### Small thumbnail
-
-<!-- example-for: web -->
 
 Use when the default size is too large for the layout, or when the thumbnail has less importance.
 
@@ -127,20 +105,8 @@ Use to render an icon inside of thumbnail.
 <Thumbnail source={NoteMinor} size="large" alt="Small document" />
 ```
 
-<!-- content-for: android -->
-
-![Large thumbnail](/public_images/components/Thumbnail/android/large@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Large thumbnail](/public_images/components/Thumbnail/ios/large@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
 
-- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/images-and-icons/avatar)
+- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/avatar)

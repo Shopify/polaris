@@ -1,5 +1,74 @@
 # Changelog
 
+## 9.20.1
+
+### Patch Changes
+
+- [#6617](https://github.com/Shopify/polaris/pull/6617) [`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632) Thanks [@alex-page](https://github.com/alex-page)! - Update component links so they no longer hit the redirect
+
+* [#6660](https://github.com/Shopify/polaris/pull/6660) [`9a8c8a68b`](https://github.com/Shopify/polaris/commit/9a8c8a68bc48db03153c67d5c202a4ea9510f985) Thanks [@JeremyLudwigDev](https://github.com/JeremyLudwigDev)! - [Datatable] Fix alignment issue with fixed first column when a cell is empty
+
+- [#6682](https://github.com/Shopify/polaris/pull/6682) [`2aaed571f`](https://github.com/Shopify/polaris/commit/2aaed571ffc1b6ec458a86186840ee473578a729) Thanks [@alex-page](https://github.com/alex-page)! - Remove fullSizeExample, omitAppProvider and hidePlayground frontmatter
+
+* [#6667](https://github.com/Shopify/polaris/pull/6667) [`8892dcc94`](https://github.com/Shopify/polaris/commit/8892dcc94b38968449863a7ad1bee4b56a9bd9bf) Thanks [@samrose3](https://github.com/samrose3)! - Use exact versions for Polaris workspace dependencies.
+
+- [#6619](https://github.com/Shopify/polaris/pull/6619) [`398186117`](https://github.com/Shopify/polaris/commit/398186117be9a4bc7d0248dd7ea339f0a0f34779) Thanks [@alex-page](https://github.com/alex-page)! - Remove legacy keywords from component documentation
+
+* [#6532](https://github.com/Shopify/polaris/pull/6532) [`89d40028a`](https://github.com/Shopify/polaris/commit/89d40028a251a06464f039ae5f26defea8e715b9) Thanks [@philschoefer](https://github.com/philschoefer)! - - Updates `DataTable` to fix console warning about improperly nested HTML
+  - Updates `DataTable` to ensure focus states remain on the same header element when switching between sticky and regular header.
+  - Improves `DataTable` tooltip when using `truncate` prop.
+
+- [#6583](https://github.com/Shopify/polaris/pull/6583) [`ae0bb762b`](https://github.com/Shopify/polaris/commit/ae0bb762bacca9b4d268c708e43c2facc9d4b763) Thanks [@FCalabria](https://github.com/FCalabria)! - Fixed `IndexTable` bulk action visibility on small screens
+
+* [#6671](https://github.com/Shopify/polaris/pull/6671) [`ab10494bc`](https://github.com/Shopify/polaris/commit/ab10494bcb2624656205bf04afcc6ed0f2692225) Thanks [@aveline](https://github.com/aveline)! - Update legacy sass file to use Polaris typography tokens
+
+- [#6663](https://github.com/Shopify/polaris/pull/6663) [`b3e027c9b`](https://github.com/Shopify/polaris/commit/b3e027c9b45fa44d1137fd409b2f8a10687c90ef) Thanks [@martenbjork](https://github.com/martenbjork)! - Update stylesheet url in Readme
+
+* [#6618](https://github.com/Shopify/polaris/pull/6618) [`1cbc1eba7`](https://github.com/Shopify/polaris/commit/1cbc1eba7a3a2d354b4cbf9dedb01862a77f5070) Thanks [@alex-page](https://github.com/alex-page)! - Remove unused and duplicate platform documentation
+
+- [#6604](https://github.com/Shopify/polaris/pull/6604) [`b5427eac2`](https://github.com/Shopify/polaris/commit/b5427eac2a4851e715954dcdce2900781839a316) Thanks [@dustinfirman](https://github.com/dustinfirman)! - Use different focus helper for the popover autofocus
+
+- Updated dependencies [[`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632), [`a6a972f7f`](https://github.com/Shopify/polaris/commit/a6a972f7f186bbc03c60f925755056a9de1b056f), [`327a73381`](https://github.com/Shopify/polaris/commit/327a73381ffb9a3f0ac3de4b76632d08070b8720), [`4c0301bbb`](https://github.com/Shopify/polaris/commit/4c0301bbbb0612afaa5111fc579f52175c8b3ada), [`b541f5449`](https://github.com/Shopify/polaris/commit/b541f54498462ce513b9903dfcfcb966f43e0038)]:
+  - @shopify/polaris-icons@5.1.0
+
+## 9.20.0
+
+### Minor Changes
+
+- [#6550](https://github.com/Shopify/polaris/pull/6550) [`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a) Thanks [@ErickTamayo](https://github.com/ErickTamayo)! - Replaced SortAscendingMajor and SortDescendingMajor icons. Changed sorting icons in the Data Table
+
+* [#6407](https://github.com/Shopify/polaris/pull/6407) [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added internal `useBreakpoints` hook
+
+- [#6401](https://github.com/Shopify/polaris/pull/6401) [`3510fdb87`](https://github.com/Shopify/polaris/commit/3510fdb87fb9677f5e1ba86c33cbbb674bf29f6e) Thanks [@mrcthms](https://github.com/mrcthms)! - Switch the order of the actions in the EmptyState
+
+* [#6399](https://github.com/Shopify/polaris/pull/6399) [`5dd608c6f`](https://github.com/Shopify/polaris/commit/5dd608c6f0799f80ec8b1176113580a56a566710) Thanks [@fmoliveira](https://github.com/fmoliveira)! - Added the `dataPrimaryLink` prop to `Link` and `Button` to support navigation on click of an `IndexTable.Row`
+
+- [#6551](https://github.com/Shopify/polaris/pull/6551) [`bbf0b59f8`](https://github.com/Shopify/polaris/commit/bbf0b59f863dbd7ace49aa1b8981a80c2cf8dd4a) Thanks [@alex-page](https://github.com/alex-page)! - Removed mobile only documentation for SectionHeader component
+
+* [#6434](https://github.com/Shopify/polaris/pull/6434) [`9a4f78808`](https://github.com/Shopify/polaris/commit/9a4f7880833daaee38c9656e25208098be0d2a44) Thanks [@mateus](https://github.com/mateus)! - Prevents the Button disclosure icon from overflowing its container
+
+- [#6536](https://github.com/Shopify/polaris/pull/6536) [`ee487cef2`](https://github.com/Shopify/polaris/commit/ee487cef23ff2ac1ab537368bdc9815b7ec0cb4d) Thanks [@alex-page](https://github.com/alex-page)! - Removed mobile content and examples from README.md files
+
+* [#6431](https://github.com/Shopify/polaris/pull/6431) [`7db7af61c`](https://github.com/Shopify/polaris/commit/7db7af61c343f7229fabf250672025d914ce735f) Thanks [@mrcthms](https://github.com/mrcthms)! - Fix variable name in sticky IndexTable
+
+- [#6344](https://github.com/Shopify/polaris/pull/6344) [`a86272f24`](https://github.com/Shopify/polaris/commit/a86272f248ce2ea61ca8be47f379303c59e92e73) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the ability to capture React.Profiler data
+
+### Patch Changes
+
+- [#6525](https://github.com/Shopify/polaris/pull/6525) [`588c3056d`](https://github.com/Shopify/polaris/commit/588c3056d2d10d9bd2c3d65bc0c4705bc051c25c) Thanks [@alex-page](https://github.com/alex-page)! - Fixed duplicate descriptions for autocomplete examples
+
+* [#6445](https://github.com/Shopify/polaris/pull/6445) [`abb4e40c9`](https://github.com/Shopify/polaris/commit/abb4e40c9695db817f81f3a1525c5bf6c7f31b39) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed `@shopify/stylelint-polaris` errors
+
+- [#6488](https://github.com/Shopify/polaris/pull/6488) [`6cb2ac321`](https://github.com/Shopify/polaris/commit/6cb2ac321950f5e4c3cb706ebe305ccc41d7a089) Thanks [@martenbjork](https://github.com/martenbjork)! - Render component notices on the website
+
+* [#6483](https://github.com/Shopify/polaris/pull/6483) [`3b65101e8`](https://github.com/Shopify/polaris/commit/3b65101e88519cbc992ec417e25ea5c227dd4975) Thanks [@kyledurand](https://github.com/kyledurand)! - Deprecated Layout.AnnotatedSection
+
+- [#5928](https://github.com/Shopify/polaris/pull/5928) [`2242cfcde`](https://github.com/Shopify/polaris/commit/2242cfcde87dbef2efda54d84341775cfe78a19e) Thanks [@FCalabria](https://github.com/FCalabria)! - Fixed `Page` without header section causing unnecessary scrollbar
+
+- Updated dependencies [[`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a), [`54ba0f716`](https://github.com/Shopify/polaris/commit/54ba0f716088ae36e7fae08d2768d2541b9107b6), [`9269e5ee6`](https://github.com/Shopify/polaris/commit/9269e5ee62171cf7b8ced1b9edef68da3bcd9dd2), [`9426d0108`](https://github.com/Shopify/polaris/commit/9426d01088930c761a4ab14c5a94008f129e70d0), [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624)]:
+  - @shopify/polaris-icons@5.0.0
+  - @shopify/polaris-tokens@5.5.0
+
 ## 9.19.0
 
 ### Minor Changes
@@ -595,7 +664,7 @@ Bumped polaris-icons to v4.10.0 ([#4569](https://github.com/Shopify/polaris-reac
 
 ## 7.2.0
 
-- Updated the primary and secondary action type on `MediaCard` to `ComplexAction` ([#4546](https://github.com/shopify/polaris-react/pull/4546))
+- Updated the primary and secondary action type on `MediaCard` to `ComplexAction` ([#4546](https://github.com/shopify/polaris/pull/4546))
 - Fixed `Stack.Item` having margin when empty ([#4556](https://github.com/Shopify/polaris-react/pull/4556))
 - Fixed `Stack` not wrapping valid children in `Stack.Item` ([#4556](https://github.com/Shopify/polaris-react/pull/4556)) (thanks [@benjamindoe](https://github.com/benjamindoe) for the [original issue](https://github.com/Shopify/polaris-react/issues/4555))
 
@@ -1129,7 +1198,7 @@ For instructions on updating from v5 to v6, see our [migration guide](https://gi
 - Fixed alignment of `ResourceItem` when there is no media ([#3080](https://github.com/Shopify/polaris-react/pull/3080))
 - Fixed stacking order of `CloseButton` on `Modal` without a title ([#3077](https://github.com/Shopify/polaris-react/pull/3077))
 - Updated AppProvider test component information (thanks to [@jprosevear](https://github.com/jprosevear) for the [pull request](https://github.com/Shopify/polaris-react/pull/3104))
-- Updated sewing-kit to v0.132.2 and storybook to v5.3.19 ([#3072](https://github.com/shopify/polaris-react/pull/3072))
+- Updated sewing-kit to v0.132.2 and storybook to v5.3.19 ([#3072](https://github.com/shopify/polaris/pull/3072))
 - Migrated tests using document.activeElement to use react-testing ([#3070](https://github.com/Shopify/polaris-react/pull/3070))
 - Reduced file size of the empty search SVG by 50% (from 12k to 6k gzipped) ([#3105](https://github.com/Shopify/polaris-react/pull/3105))
 
@@ -1226,9 +1295,9 @@ For instructions on updating from v5 to v6, see our [migration guide](https://gi
 
 ## 4.18.0
 
-- Added [`MediaCard`](https://polaris.shopify.com/components/structure/video-card) and [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
-- Added [`VideoThumbnail`](https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
-- Added utilities for parsing video duration (https://polaris.shopify.com/components/images-and-icons/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added [`MediaCard`](https://polaris.shopify.com/components/video-card) and [`VideoThumbnail`](https://polaris.shopify.com/components/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added [`VideoThumbnail`](https://polaris.shopify.com/components/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
+- Added utilities for parsing video duration (https://polaris.shopify.com/components/video-thumbnail) ([#2725](https://github.com/Shopify/polaris-react/pull/2725))
 - Updated polaris-tokens to use new font stack ([#2906](https://github.com/Shopify/polaris-react/pull/2906))
 
 ## 4.17.1
@@ -1660,7 +1729,7 @@ For instructions on updating from v3 to v4, see our [migration guide](https://gi
 - Removed support for `<Icon untrusted>`. Passing a string into `source` will now always load an untrusted icon, you don’t need that additional property. ([#1604](https://github.com/Shopify/polaris-react/pull/1604)).
 - Removed `Navigation.UserMenu`. Use `TopBar.UserMenu` instead. ([#1599](https://github.com/Shopify/polaris-react/pull/1599))
 - Made `title` a required prop on `ChoiceList` to improve accessibility. It can be hidden with `titleHidden`. ([#1575](https://github.com/Shopify/polaris-react/pull/1575))
-- Made `i18n` a required prop on `AppProvider`. [Usage instructions](https://polaris.shopify.com/components/structure/app-provider#using-translations) are included in the `AppProvider` docs. ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
+- Made `i18n` a required prop on `AppProvider`. [Usage instructions](https://polaris.shopify.com/components/app-provider#using-translations) are included in the `AppProvider` docs. ([#1530](https://github.com/Shopify/polaris-react/pull/1530))
 - Upgraded `react` and `react-dom` peer-dependencies to 16.8.6 to enable the use of hooks ([#1525](https://github.com/Shopify/polaris-react/pull/1525))
 - Changed the import method for React to use default imports. Applications consuming Polaris using TypeScript must enable [`esModuleInterop`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-7.html#support-for-import-d-from-cjs-from-commonjs-modules-with---esmoduleinterop) in `tsconfig.json`. ([#1523](https://github.com/Shopify/polaris-react/pull/1523))
 - Removed `LinkLikeComponent` type export. Use `AppProviderProps['linkComponent']` instead. ([#1864](https://github.com/Shopify/polaris-react/pull/1864))
@@ -2171,9 +2240,9 @@ Upgraded Storybook to v5 ([#1140](https://github.com/Shopify/polaris-react/pull/
 - Improved `Avatar` so it falls back to `initials` when the image fails to load ([#557](https://github.com/Shopify/polaris-react/pull/557))
 - Added `onScrolledToBottom` prop to `Scrollable` ([#568](https://github.com/Shopify/polaris-react/pull/568))
 - Fixed `Action`’s selector in `Page`’s `Header` component ([#523](https://github.com/Shopify/polaris-react/pull/523))
-- Fixed `Card` spacing in small devices ([#608](https://github.com/shopify/polaris-react/pull/608))
+- Fixed `Card` spacing in small devices ([#608](https://github.com/shopify/polaris/pull/608))
 - Fixed `ResourceList` `BulkActions` that were remaining in fixed position outside the `boundingElement` ([#627](https://github.com/Shopify/polaris-react/pull/627))
-- Improved readability of `Badge` with `size` small and `status` new for navigation ([#633](https://github.com/shopify/polaris-react/pull/633))
+- Improved readability of `Badge` with `size` small and `status` new for navigation ([#633](https://github.com/shopify/polaris/pull/633))
 
 ## 3.0.1
 
@@ -2228,37 +2297,37 @@ Upgraded Storybook to v5 ([#1140](https://github.com/Shopify/polaris-react/pull/
 
 We’ve released a suite of new components that, when combined, form the application frame of a stand-alone (or non-embedded) Polaris app.
 
-#### [Frame](https://polaris.shopify.com/components/structure/frame)
+#### [Frame](https://polaris.shopify.com/components/frame)
 
 The frame component, while not visible in the user interface itself, provides the structure for any non-embedded application. It wraps the main elements and houses the following components:
 
-- primary [navigation](https://polaris.shopify.com/components/navigation/navigation)
-- [top bar](https://polaris.shopify.com/components/structure/top-bar)
-- [toast](https://polaris.shopify.com/components/feedback-indicators/toast)
-- [loading](https://polaris.shopify.com/components/feedback-indicators/loading)
-- [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar)
+- primary [navigation](https://polaris.shopify.com/components/navigation)
+- [top bar](https://polaris.shopify.com/components/top-bar)
+- [toast](https://polaris.shopify.com/components/toast)
+- [loading](https://polaris.shopify.com/components/loading)
+- [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar)
 
-#### [Navigation](https://polaris.shopify.com/components/navigation/navigation)
+#### [Navigation](https://polaris.shopify.com/components/navigation)
 
-The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of any non-embedded application. Navigation includes a list of links that merchants use to move between sections of the application.
 
-#### [TopBar](https://polaris.shopify.com/components/structure/top-bar)
+#### [TopBar](https://polaris.shopify.com/components/top-bar)
 
-The top bar component is always visible at the top of a non-embedded application. Its logo and color can be customized using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component to reflect an application’s brand. Merchants can use it to search an application, access menus, and navigate by clicking on the logo.
+The top bar component is always visible at the top of a non-embedded application. Its logo and color can be customized using the [app provider](https://polaris.shopify.com/components/app-provider) component to reflect an application’s brand. Merchants can use it to search an application, access menus, and navigate by clicking on the logo.
 
-#### [Toast](https://polaris.shopify.com/components/feedback-indicators/toast)
+#### [Toast](https://polaris.shopify.com/components/toast)
 
 The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
 
-#### [Loading](https://polaris.shopify.com/components/feedback-indicators/loading)
+#### [Loading](https://polaris.shopify.com/components/loading)
 
 The loading component is used to indicate to merchants that a page is loading or an upload is processing.
 
-#### [ContextualSaveBar](https://polaris.shopify.com/components/forms/contextual-save-bar)
+#### [ContextualSaveBar](https://polaris.shopify.com/components/contextual-save-bar)
 
 The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 
-#### [Autocomplete](https://polaris.shopify.com/components/forms/autocomplete)
+#### [Autocomplete](https://polaris.shopify.com/components/autocomplete)
 
 The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options.
 
@@ -2478,7 +2547,7 @@ Use `withRef` with `compose` to forwardRefs to a component.
 - Added examples for iOS and Android `Avatar`
 - Added `Stepper` component
 
-#### [InlineError](https://polaris.shopify.com/components/forms/inline-error)
+#### [InlineError](https://polaris.shopify.com/components/inline-error)
 
 Use inline errors to describe custom form inputs or form groups when invalid.
 
@@ -2517,7 +2586,7 @@ Use inline errors to describe custom form inputs or form groups when invalid.
 
 ## 2.3.0
 
-#### [Option list](https://polaris.shopify.com/components/lists-and-tables/option-list)
+#### [Option list](https://polaris.shopify.com/components/option-list)
 
 Use `OptionList` to present a group of selectable items outside of the context of a `Form`.
 
@@ -2542,7 +2611,7 @@ Use `OptionList` to present a group of selectable items outside of the context o
 
 ## 2.2.0
 
-#### [Range slider](https://polaris.shopify.com/components/forms/range-slider)
+#### [Range slider](https://polaris.shopify.com/components/range-slider)
 
 Use `RangeSlider` to select a number value between a min and max range.
 
@@ -2570,7 +2639,7 @@ Use `RangeSlider` to select a number value between a min and max range.
 
 ## 2.1.0
 
-#### [Exception list](https://polaris.shopify.com/components/lists-and-tables/exception-list)
+#### [Exception list](https://polaris.shopify.com/components/exception-list)
 
 Use Exception lists to draw the merchant’s attention to important information that adds extra context to a task.
 
@@ -2612,7 +2681,7 @@ We’re removing support for React 15 in order to make full use of some of the n
 
 Upgrade your app to the latest version of React.
 
-#### [App provider](https://polaris.shopify.com/components/structure/app-provider)
+#### [App provider](https://polaris.shopify.com/components/app-provider)
 
 The `AppProvider` component is now required in your app for Polaris components to function properly.
 
@@ -2620,7 +2689,7 @@ The `AppProvider` component is now required in your app for Polaris components t
 
 Wrap your app in the `AppProvider` component.
 
-#### [Collapsible](https://polaris.shopify.com/components/behavior/collapsible) component requires an `id` prop
+#### [Collapsible](https://polaris.shopify.com/components/collapsible) component requires an `id` prop
 
 For accessibility reasons, the `id` prop is now required on the `Collapsible` component.
 
@@ -2636,7 +2705,7 @@ The `EmbeddedApp` component has been removed. The `AppProvider` component now ac
 
 Use the `AppProvider` component with the `apiKey` and `shopOrigin` props.
 
-#### [Resource list](https://polaris.shopify.com/components/lists-and-tables/resource-list#navigation)
+#### [Resource list](https://polaris.shopify.com/components/resource-list#navigation)
 
 Shopify is organized around objects that represent a merchant’s business, such as customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects resources.
 
@@ -2696,23 +2765,23 @@ If you’re using VS Code, here are the exact search / replace instructions to f
 - replace `\bcolor\(([a-z-]+), ([a-z-]+)\)` with `color('$1', '$2')`
 - replace `\bcolor\(([a-z-]+), ([a-z-]+), (.*)\)` with `color('$1', '$2', $3)`
 
-#### [Data table](https://polaris.shopify.com/components/lists-and-tables/data-table)
+#### [Data table](https://polaris.shopify.com/components/data-table)
 
 Since launching Polaris components, we’ve had many people ask why we didn’t include tables. While we have been moving away from using tables for comparisons that aren’t tabular data (resource lists, for example), we recognize that there are still cases to use them.
 
 The data table component is our answer to those cases. While data visualizations represents part of a data set, data tables are used to organize and display all the information from a data set, allowing merchants view details from the entire set. This helps merchants compare and analyze all the data in a unified way.
 
-#### [Drop zone](https://polaris.shopify.com/components/actions/drop-zone#navigation)
+#### [Drop zone](https://polaris.shopify.com/components/drop-zone#navigation)
 
 Currently we have several different interfaces for uploading files across Shopify, which leads to a lack of consistency and some missing features and capabilities. To solve this problem, we’re releasing a new drop zone component.
 
 This new component allows merchants to upload files by dragging and dropping them into an area on a page. The component handles file type validation, dropping onto the window, and more, meaning more ease of use for merchants.
 
-#### [Modal](https://polaris.shopify.com/components/overlays/modal#navigation)
+#### [Modal](https://polaris.shopify.com/components/modal#navigation)
 
 In the original Polaris React, the modal component was only available to embedded apps. No longer. Our new modal component is universal in that it can be used in either stand-alone or embedded apps, and will handle the correct behavior for you.
 
-#### [App provider](https://polaris.shopify.com/components/structure/app-provider#navigation)
+#### [App provider](https://polaris.shopify.com/components/app-provider#navigation)
 
 The app provider is a required component that enables sharing global app config with the components in Polaris. This is used for the internationalization of strings in Polaris components, as well as set other configuration such as a custom link component that all the Polaris components will use. This unlocks new ways for us to share configuration at an app level and have the components react to that configuration.
 

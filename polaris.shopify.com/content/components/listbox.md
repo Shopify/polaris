@@ -33,7 +33,7 @@ A Listbox is a vertical list of interactive options, with room for icons, descri
 
 ## Anatomy
 
-![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/public_images/components/Listbox/listbox-anatomy.png)
+![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/listbox/listbox-anatomy.png)
 
 A listbox can be composed of:
 
@@ -59,7 +59,7 @@ Listboxes should:
 
 Each item in a `Listbox` should be clear and descriptive.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -86,34 +86,13 @@ Location picker
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 ### Structure
 
 The `Listbox` component is based on the [Aria 1.2 Listbox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
 
-It is important to not present interactive elements inside of list box options as they can interfere with navigation
-for assistive technology users.
+It is important to not present interactive elements inside of list box options as they can interfere with navigation for assistive technology users.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -129,5 +108,3 @@ for assistive technology users.
 
 - Access the list of options with the up and down arrow keys
 - Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key
-
-<!-- /content-for -->

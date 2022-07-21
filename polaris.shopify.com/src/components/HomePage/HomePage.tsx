@@ -2,10 +2,7 @@ import { BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon } from "./icons";
 import Container from "../Container";
 import Link from "next/link";
 import { className } from "../../utils/various";
-import componentsImage from "./components.png";
-import tokensImage from "./tokens.png";
-import iconsImage from "./icons.png";
-import foundationsImage from "./foundations.png";
+import { useMedia } from "../../utils/hooks";
 import Image from "../Image";
 import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
@@ -13,6 +10,8 @@ import styles from "./HomePage.module.scss";
 interface Props {}
 
 function HomePage({}: Props) {
+  const useMotion = useMedia("(prefers-reduced-motion: no-preference)");
+
   return (
     <div className={styles.HomePage}>
       <PageMeta description="A starter kit for reimagining commerce." />
@@ -57,7 +56,7 @@ function HomePage({}: Props) {
               </div>
               <div className={styles.Image}>
                 <Image
-                  src={foundationsImage}
+                  src="/images/foundations.png"
                   alt="Media card and date picker components"
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -98,7 +97,7 @@ function HomePage({}: Props) {
               </div>
               <div className={styles.Image}>
                 <Image
-                  src={componentsImage}
+                  src="/images/components.png"
                   alt="Media card and date picker components"
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -137,7 +136,7 @@ function HomePage({}: Props) {
 
               <div className={styles.Image}>
                 <Image
-                  src={tokensImage}
+                  src="/images/tokens.png"
                   alt="A card containing a color preview, a token name and a description."
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -176,7 +175,7 @@ function HomePage({}: Props) {
 
               <div className={styles.Image}>
                 <Image
-                  src={iconsImage}
+                  src="/images/icons.png"
                   alt="A grid containing icons from Polaris"
                   width={555 * 1.5}
                   height={430 * 1.5}
@@ -208,18 +207,29 @@ function HomePage({}: Props) {
                 />
               </div>
 
-              <div className={styles.Video}>
-                <video
-                  width="2250"
-                  height="1440"
-                  loop
-                  autoPlay
-                  muted
-                  playsInline
-                >
-                  <source src="/images/vscode.mp4" type="video/mp4" />
-                </video>
-              </div>
+              {useMotion ? (
+                <div className={styles.Video}>
+                  <video
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    width="2250"
+                    height="1440"
+                  >
+                    <source src="/images/vscode.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              ) : (
+                <div className={styles.Poster}>
+                  <Image
+                    width="2250"
+                    height="1440"
+                    src="/images/vscode.jpg"
+                    alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
+                  />
+                </div>
+              )}
             </div>
           </Container>
         </div>

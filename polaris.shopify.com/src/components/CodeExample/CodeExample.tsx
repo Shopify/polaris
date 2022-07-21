@@ -1,6 +1,4 @@
-import Image from "../Image";
 import Tooltip from "../Tooltip";
-import iconClipboard from "../../../public/icon-clipboard.svg";
 import Prism from "prismjs";
 import { useCopyToClipboard } from "../../utils/hooks";
 import styles from "./CodeExample.module.scss";
@@ -18,7 +16,10 @@ function CodeExample({ minimalist, children }: Props) {
 
   return (
     <div
-      className={className(styles.CodeExample, minimalist && styles.minimalist)}
+      className={className(
+        styles.CodeExample,
+        minimalist ? styles.minimalist : "dark-mode"
+      )}
     >
       <div className={styles.CopyButtonWrapper}>
         <Tooltip

@@ -1,31 +1,30 @@
 @import "variables.scss";
 @import "fonts.scss";
 @import "mixins.scss";
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-// Place CSS variables on body (instead of :root) so that
-// we can utilize the .dark-mode class to flip the colors
-body {
+:root {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 72px;
   --narrow-content-width: 720px;
-  --header-margin: 4.5rem;
-
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    --header-margin: 3rem;
-  }
+  --header-height: 64px; // Parsed by JS. Define in px.
+  --header-margin: 76px; // Parsed by JS. Define in px.
 
   @media screen and (max-width: $breakpointDesktop) {
-    --header-height: 60px;
-    --header-margin: 2rem;
+    --header-margin: 48px; // Parsed by JS. Define in px.
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    --header-margin: 32px; // Parsed by JS. Define in px.
   }
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
-  --focus-outline: 0 0 0 2px var(--text-strong);
+  --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
+    "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
-  // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+  --surface-code-block: #2e2e30;
+
+  // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
@@ -98,29 +97,42 @@ body {
   --border-radius-round: 1000px;
 }
 
-* {
+.light-mode,
+.dark-mode {
+  --focus-outline: 0 0 0 2px var(--text-strong);
+  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
+}
+
+// Resets for both the site and polaris examples
+body,
+html {
   margin: 0;
   padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: 100%;
-  line-height: inherit;
-  text-decoration: none;
-  box-sizing: border-box;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-  border: none;
-  appearance: none;
-  outline: none;
 }
 
-video {
-  display: block;
-}
+// Resets and styles that should not affect Polaris examples
+.styles-for-site-but-not-polaris-examples {
+  &,
+  * {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 100%;
+    line-height: inherit;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    border: none;
+    appearance: none;
+    outline: none;
 
-*:focus-visible {
-  box-shadow: var(--focus-outline);
+    *:focus-visible {
+      box-shadow: var(--focus-outline);
+    }
+  }
 }
 
 html {
@@ -147,16 +159,16 @@ body,
 .light-mode {
   --text: #3c4141;
   --text-strong: #111212;
-  --text-subdued: #777;
+  --text-subdued: #767676;
   --text-link: #2e5dba;
   --surface: #fff;
-  --surface-subdued: #fbfbfb;
+  --surface-subdued: #f7f7f7;
   --surface-information: #dcf5f0;
   --surface-warning: #ffeceb;
+  --surface-code-inline: #eaeaea;
   --primary: #008060;
   --border-color: #dedede;
   --border-color-light: #ededed;
-  --border-inset-color: #aaa;
   --border: 1px solid var(--border-color);
   --card-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
@@ -173,15 +185,15 @@ body,
   --text: #aaa;
   --text-strong: #e7e7e7;
   --text-subdued: #777;
+  --text-link: #6995ee;
   --surface-information: #02382d;
   --surface-warning: #4c250f;
-  --text-link: #6995ee;
   --surface: #202021;
   --surface-subdued: #2e2e30;
+  --surface-code-inline: #3b3b3c;
   --primary: #1aab87;
   --border-color: #555;
   --border-color-light: #343434;
-  --border-inset-color: #555;
   --border: 1px solid var(--border-color);
   --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
   --card-shadow-hover: 0 4px 7px rgba(255, 255, 255, 0.1),
@@ -192,6 +204,10 @@ body,
   --decorative-4: #342484;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #363636;
+}
+
+video {
+  display: block;
 }
 
 a {
@@ -214,16 +230,12 @@ button {
 }
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
-.usage-list {
+.dodont {
   margin: 1.25rem 0 2rem;
   font-size: var(--font-size-200);
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  + .usage-list {
-    margin-top: -1rem;
-  }
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -231,17 +243,13 @@ button {
     gap: 1rem;
   }
 
-  .usage-list-part {
+  .dodont-part {
     position: relative;
     flex: 1;
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
     border-radius: var(--border-radius-400);
     overflow: hidden;
-
-    &:empty {
-      display: none;
-    }
 
     h4:first-child {
       background-image: url(/images/icon-do.svg);
@@ -286,41 +294,4 @@ button {
       color: var(--text);
     }
   }
-
-  &.usage-block {
-    .usage-list-part {
-      padding-top: 1.75rem;
-
-      h4 {
-        display: none;
-      }
-
-      li,
-      p {
-        background-image: url(/images/icon-do.svg);
-        background-repeat: no-repeat;
-        background-position: left 0.15rem;
-        padding-left: 34px;
-        background-size: auto 1.25rem;
-        letter-spacing: var(--letter-spacing-200);
-        list-style: none;
-        margin-left: 0;
-      }
-
-      &[data-type="dont"] {
-        li,
-        p {
-          background-image: url(/images/icon-dont.svg);
-        }
-      }
-    }
-  }
-}
-
-.twoColumnsResponsive div img {
-  display: none;
-}
-
-.NextPage {
-  display: none;
 }

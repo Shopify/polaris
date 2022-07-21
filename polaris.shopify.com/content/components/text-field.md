@@ -1,10 +1,6 @@
 ---
 name: Text field
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - TextField
   - input
@@ -44,8 +40,6 @@ keywords:
   - hidden labels
   - separate error message
   - icon action
-  - ios
-  - android
 examples:
   - fileName: text-field-default.tsx
     title: Default text field
@@ -119,12 +113,6 @@ examples:
       field. If inputting weight as a number and a separate unit of
       measurement, use a text field with a selector (like “kg” or “lb”) as a
       connected field.
-  # - fileName: text-field-with-icon-action.tsx
-  #   title: Text field with icon action
-  #   description: >-
-  #     Use to let merchants take an action within the text field.For example, tap
-  #     on a barcode icon to launch the camera and scan barcode for the barcode
-  #     field. This helps merchants simplify their input.
   - fileName: text-field-with-validation-error.tsx
     title: Text field with validation error
     description: >-
@@ -241,26 +229,6 @@ For text field content guidelines, reference the [text fields experience](https:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 ### Structure
 
 Screen readers convey information about text fields automatically through native HTML.
@@ -281,7 +249,7 @@ When you provide help text via the `helpText` prop or an inline error message vi
 
 Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to all merchants.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -307,5 +275,3 @@ Text fields have standard keyboard support.
 #### Automatically focusing
 
 Although you can use the `autoFocus` prop to automatically move focus to the text field, it’s generally best to avoid focusing on fields automatically. The `autoFocus` prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or greater importance.
-
-<!-- /content-for -->

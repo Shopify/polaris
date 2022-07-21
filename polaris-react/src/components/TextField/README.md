@@ -1,10 +1,6 @@
 ---
 name: Text field
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - TextField
   - input
@@ -44,14 +40,11 @@ keywords:
   - hidden labels
   - separate error message
   - icon action
-  - ios
-  - android
 ---
 
 # Text field
 
-A text field is an input field that merchants can type into. It has a range of
-options and supports several text formats including numbers.
+A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 
 ---
 
@@ -105,7 +98,7 @@ Chrome does seem to turn autocomplete off when using the value nope (or any non 
 
 ### Virtual keyboard
 
-![Examples of different number keyboards set with inputMode](/public_images/components/TextField/virtual-keyboards.png)
+![Examples of different number keyboards set with inputMode](/images/components/text-field/virtual-keyboards.png)
 
 The `inputMode` property should be set to select the appropriate virtual keyboard for the type of data expected to be entered by the user. Above are examples of different number keyboards set with `inputMode`.
 
@@ -140,18 +133,6 @@ function TextFieldExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Default text field](/public_images/components/TextField/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default text field](/public_images/components/TextField/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Number field
 
 Use when input text should be a number.
@@ -173,22 +154,6 @@ function NumberFieldExample() {
   );
 }
 ```
-
-<!-- content-for: android -->
-
-This will display the right keyboard on mobile devices.
-
-![Number text field with numeric keyboard](/public_images/components/TextField/android/number@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-This will display the right keyboard on mobile devices.
-
-![Number text field with numeric keyboard](/public_images/components/TextField/ios/number@2x.png)
-
-<!-- /content-for -->
 
 ### Email field
 
@@ -212,22 +177,6 @@ function EmailFieldExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-This will display the right keyboard on mobile devices.
-
-![Email field with email keyboard](/public_images/components/TextField/android/email@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-This will display the right keyboard on mobile devices.
-
-![Email field with email keyboard](/public_images/components/TextField/ios/email@2x.png)
-
-<!-- /content-for -->
-
 ### Multiline text field
 
 Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
@@ -250,21 +199,7 @@ function MultilineFieldExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Multi-line text field](/public_images/components/TextField/android/multi-line@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Multi-line text field](/public_images/components/TextField/ios/multi-line@2x.png)
-
-<!-- /content-for -->
-
 ### Text field with hidden label
-
-<!-- example-for: web -->
 
 Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
 
@@ -314,8 +249,6 @@ function HiddenLabelExample() {
 
 ### Text field with label action
 
-<!-- example-for: web -->
-
 Use when an optional, secondary action is closely associated with a text field. For example, on a field for entering a customs tariff code, a label action might be to look up the appropriate code from a table.
 
 ```jsx
@@ -340,8 +273,6 @@ function LabelActionExample() {
 ```
 
 ### TextField with right aligned text
-
-<!-- example-for: web -->
 
 Use when input text should be aligned right.
 
@@ -395,18 +326,6 @@ function PlaceholderExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Default text field with placeholder text hint](/public_images/components/TextField/android/placeholder-text@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default text field with placeholder text hint](/public_images/components/TextField/ios/placeholder-text@2x.png)
-
-<!-- /content-for -->
-
 ### Text field with help text
 
 Use to show short instructional content below the text field. Help text works to help merchants understand how to fix errors that result from incorrect formatting (such as dates or passwords with specific character requirements). If more explanation is needed, link to the Shopify Help Center.
@@ -434,18 +353,6 @@ function HelpTextExample() {
   );
 }
 ```
-
-<!-- content-for: android -->
-
-![Default text field with help text](/public_images/components/TextField/android/help-text@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default text field with help text](/public_images/components/TextField/ios/help-text@2x.png)
-
-<!-- /content-for -->
 
 ### Text field with prefix or suffix
 
@@ -475,18 +382,6 @@ function PrefixExample() {
   );
 }
 ```
-
-<!-- content-for: android -->
-
-![Default text field with prefix and suffix](/public_images/components/TextField/android/prefix-suffix@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default text field with prefix and suffix](/public_images/components/TextField/ios/prefix-suffix@2x.png)
-
-<!-- /content-for -->
 
 ### Text field with vertical content
 
@@ -528,11 +423,7 @@ function VerticalContent() {
 
 Use when a text field and several related fields make up a logical unit.
 
-<!-- content-for: web -->
-
-If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/forms/select) (for example “kg”, “lb”) as a connected field.
-
-<!-- /content-for -->
+If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
 
 ```jsx
 function ConnectedFieldsExample() {
@@ -568,42 +459,6 @@ function ConnectedFieldsExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
-
-![Text field with connected selector](/public_images/components/TextField/android/connected-fields@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-If inputting weight as a number and a separate unit of measurement, use a text field with a selector (like “kg” or “lb”) as a connected field.
-
-![Text field with connected selector](/public_images/components/TextField/ios/connected-fields@2x.png)
-
-<!-- /content-for -->
-
-### Text field with icon action
-
-<!-- example-for: android, ios -->
-
-Use to let merchants take an action within the text field.
-
-For example, tap on a barcode icon to launch the camera and scan barcode for the barcode field. This helps merchants simplify their input.
-
-<!-- content-for: android -->
-
-![Text field with icon action inside the text field](/public_images/components/TextField/android/accessory@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Text field with icon action inside the text field](/public_images/components/TextField/ios/accessory@2x.png)
-
-<!-- /content-for -->
-
 ### Text field with validation error
 
 Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as merchants have finished interacting with a field (but not before). If a field already has an error, validate and remove errors as merchants type so they can immediately see when an error has been fixed.
@@ -629,21 +484,7 @@ function ValidationErrorExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Text field with error](/public_images/components/TextField/android/error@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Text field with error](/public_images/components/TextField/ios/error@2x.png)
-
-<!-- /content-for -->
-
 ### Text field with separate validation error
-
-<!-- example-for: web -->
 
 Use to let merchants know when their text field input is invalid in the context of a group of form inputs that the text field depends on.
 
@@ -653,7 +494,7 @@ To render an invalid text field and its validation error separately:
 
 - Set a unique identifier on the text field component `id` prop
 - Set a boolean on the text field component `error` prop
-- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
+- Use an [inline error component](https://polaris.shopify.com/components/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
 
 ```jsx
 function SeparateValidationErrorExample() {
@@ -739,8 +580,6 @@ function SeparateValidationErrorExample() {
 
 ### Disabled text field
 
-<!-- example-for: web -->
-
 Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
 
 ```jsx
@@ -748,8 +587,6 @@ Use to show that a textfield is not available for interaction. Most often used i
 ```
 
 ### Text field with character count
-
-<!-- example-for: web -->
 
 Use to display the current number of characters in a text field. Use in conjunction with max length to display the current remaining number of characters in the text field.
 
@@ -776,8 +613,6 @@ function TextFieldWithCharacterCountExample() {
 ```
 
 ### Text field with clear button
-
-<!-- example-for: web -->
 
 Use to allow merchants to clear the content from a text field.
 
@@ -807,8 +642,6 @@ function TextFieldWithClearButtonExample() {
 
 ### Text field with monospaced font
 
-<!-- example-for: web -->
-
 Use to apply a monospaced font to the TextField
 
 ```jsx
@@ -833,8 +666,6 @@ function TextFieldWithMonospacedFontExample() {
 
 ### Text field with value selected on focus
 
-<!-- example-for: web -->
-
 Use to select all text inside TextField on focus.
 
 ```jsx
@@ -858,8 +689,6 @@ function TextFieldWithSelectTextOnFocusExample() {
 ```
 
 ### Text field with inline suggestion
-
-<!-- example-for: web -->
 
 Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
 
@@ -972,33 +801,13 @@ function TextFieldWithSuggestionExample() {
 
 ## Related components
 
-- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
-- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/forms/inline-error)
-- It’s common to [use a select component](https://polaris.shopify.com/components/forms/select) connected to the left or right of a text field.
+- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/form-layout)
+- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/inline-error)
+- It’s common to [use a select component](https://polaris.shopify.com/components/select) connected to the left or right of a text field.
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 ### Structure
 
@@ -1020,7 +829,7 @@ When you provide help text via the `helpText` prop or an inline error message vi
 
 Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to all merchants.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1046,5 +855,3 @@ Text fields have standard keyboard support.
 #### Automatically focusing
 
 Although you can use the `autoFocus` prop to automatically move focus to the text field, it’s generally best to avoid focusing on fields automatically. The `autoFocus` prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or greater importance.
-
-<!-- /content-for -->

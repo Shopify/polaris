@@ -152,9 +152,11 @@ function GlobalSearch() {
         break;
 
       case "Enter":
-        setIsOpen(false);
-        const url = resultsInRenderedOrder[currentResultIndex].url;
-        router.push(url);
+        if (resultsInRenderedOrder.length > 0) {
+          setIsOpen(false);
+          const url = resultsInRenderedOrder[currentResultIndex].url;
+          router.push(url);
+        }
         break;
     }
   };
@@ -174,7 +176,7 @@ function GlobalSearch() {
 
       <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
         <div className={styles.PreventBackgroundInteractions}></div>
-        <div className="dark-mode">
+        <div className="dark-mode styles-for-site-but-not-polaris-examples">
           <Dialog.Panel className={styles.Results}>
             {isOpen && (
               <div className={styles.Header}>
@@ -324,7 +326,7 @@ function SearchResults({
             return (
               <ResultsGroup category={category}>
                 <IconGrid>
-                  {results.map(({ id, url, meta }) => {
+                  {results.map(({ id, meta }) => {
                     if (!meta.icons) return null;
                     const { icon } = meta.icons;
                     return (
@@ -332,10 +334,7 @@ function SearchResults({
                         key={id}
                         value={{ currentItemId, id }}
                       >
-                        <IconGrid.Item
-                          icon={icon}
-                          onClick={() => router.push(url)}
-                        />
+                        <IconGrid.Item icon={icon} />
                       </SearchContext.Provider>
                     );
                   })}

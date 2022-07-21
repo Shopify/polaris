@@ -226,8 +226,7 @@ function DataTableExample() {
 
 ### Data table with totals in footer
 
-Use to reposition the totals row in a more appropriate location based on the data stored in the
-table for merchants to better understand its meaning.
+Use to reposition the totals row in a more appropriate location based on the data stored in the table for merchants to better understand its meaning.
 
 ```jsx
 function DataTableExample() {
@@ -422,7 +421,7 @@ function FullDataTableExample() {
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           stickyHeader
-          hasFixedFirstColumn
+          fixedFirstColumn
           truncate
         />
       </Card>
@@ -533,7 +532,7 @@ function DataTableFixedFirstColumnExample() {
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={handleSort}
-          hasFixedFirstColumn
+          fixedFirstColumn
           truncate
         />
       </Card>
@@ -1014,7 +1013,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1040,31 +1039,11 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Related components
 
-- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 ### Structure
 
@@ -1072,7 +1051,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1080,7 +1059,7 @@ Use tables for tabular data.
 
 #### Don’t
 
-Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
+Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 <!-- end -->
 
@@ -1090,5 +1069,3 @@ Sorting controls for the data table component are implemented with native HTML b
 
 - Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys
-
-<!-- /content-for -->

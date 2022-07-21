@@ -19,7 +19,7 @@ The contextual save bar tells merchants their options once they have made change
 
 ## Required components
 
-The contextual save bar component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.
+The contextual save bar component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.
 
 ---
 
@@ -30,7 +30,7 @@ The contextual save bar component should:
 - Become visible when a form on the page has unsaved changes
 - Be used to save or discard in-progress changes
 - Provide brief and helpful context on the nature of in-progress changes
-- Save all changes on the page. Avoid scenarios where multiple forms on a single page can be edited at the same time. If specific sections of a page need to be independently editable, use an Edit button to launch a [modal dialog](https://polaris.shopify.com/components/overlays/modal) for each section where changes can be made and saved.
+- Save all changes on the page. Avoid scenarios where multiple forms on a single page can be edited at the same time. If specific sections of a page need to be independently editable, use an Edit button to launch a [modal dialog](https://polaris.shopify.com/components/modal) for each section where changes can be made and saved.
 
 ---
 
@@ -43,7 +43,7 @@ The standard message content is
 - “Unsaved changes” when editing existing content
 - “Unsaved {resource name}” when creating a new object
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -59,7 +59,7 @@ The standard message content is
 
 Actions in the contextual save bar component should consist of a strong verb that encourages action. They should not include a noun.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -135,8 +135,7 @@ Use the save action to provide an opportunity to save a newly-created resource. 
 
 ### Contextual save bar with flush contents
 
-Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and
-repurpose that space to extend the message contents fully to the left side of the container.
+Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and repurpose that space to extend the message contents fully to the left side of the container.
 
 ```jsx
 <div style={{height: '250px'}}>
@@ -194,6 +193,6 @@ Use the fullWidth flag when you want to remove the default max-width set on the 
 
 ## Related components
 
-- To wrap your entire application, [use the frame component](https://polaris.shopify.com/components/structure/frame)
-- To build the outer wrapper of a page, including page title and associated actions, [use the page component](https://polaris.shopify.com/components/structure/page)
-- To wrap form elements and handle the submission of a form, [use the form component](https://polaris.shopify.com/components/forms/form)
+- To wrap your entire application, [use the frame component](https://polaris.shopify.com/components/frame)
+- To build the outer wrapper of a page, including page title and associated actions, [use the page component](https://polaris.shopify.com/components/page)
+- To wrap form elements and handle the submission of a form, [use the form component](https://polaris.shopify.com/components/form)

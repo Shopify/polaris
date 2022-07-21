@@ -36,7 +36,7 @@ Combobox is an accessible autocomplete input that enables merchants to filter a 
 
 ## Anatomy
 
-![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/public_images/components/Combobox/combobox-anatomy.png)
+![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/images/components/combobox/combobox-anatomy.png)
 
 A combobox is made up of the following:
 
@@ -100,26 +100,6 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 ### Structure
 
 The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/listbox) component to be used.
@@ -128,7 +108,7 @@ The `Combobox` popover displays below the text field or other control by default
 
 `Combobox` features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the combobox.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -143,5 +123,3 @@ The `Combobox` popover displays below the text field or other control by default
 ### Keyboard support
 
 - Give the combobox's text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
-
-<!-- /content-for -->

@@ -14,13 +14,13 @@ keywords:
 
 # Navigation
 
-The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/structure/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
 
 ---
 
 ## Required components
 
-The navigation component must be passed to the [frame](https://polaris.shopify.com/components/structure/frame) component. The mobile version of the navigation component appears in the [top bar](https://polaris.shopify.com/components/structure/top-bar) component.
+The navigation component must be passed to the [frame](https://polaris.shopify.com/components/frame) component. The mobile version of the navigation component appears in the [top bar](https://polaris.shopify.com/components/top-bar) component.
 
 ---
 
@@ -45,7 +45,7 @@ Navigation should:
 
 - Use sentence case for primary and secondary navigation items
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -59,7 +59,7 @@ Navigation should:
 
 - Use as few words as possible to describe each item label
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -73,7 +73,7 @@ Navigation should:
 
 - Use all caps for section labels
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -86,8 +86,6 @@ Navigation should:
   <!-- end -->
 
 ---
-
-<a name="subcomponent-section"></a>
 
 ## Navigation section
 
@@ -104,8 +102,6 @@ A navigation section groups together related navigation items. Navigation sectio
 | rollup    | [Rollup](#type-rollup) | An object determining the collapsing behavior of the navigation section                       |
 | action    | [Action](#type-action) | Renders an icon-only action as a supplementary action next to the section title               |
 | separator | boolean                | A boolean property indicating whether the section should have a visual separator              |
-
-<a name="type-item"></a>
 
 ### Navigation section item
 
@@ -132,8 +128,6 @@ The content of the navigation component consists of navigation items. Each item 
 | secondaryAction    | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
 | onClick()          | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
 
-<a name="sub-navigation-item"></a>
-
 ### SubNavigationItem
 
 #### Properties
@@ -151,23 +145,17 @@ The content of the navigation component consists of navigation items. Each item 
 | new          | boolean  | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop) |
 | onClick()    | function | A callback function to handle clicking on a navigation item                                                                                |
 
-<a name="secondary-action"></a>
-
 ### SecondaryAction
 
 #### Properties
 
-| Prop               | Type                                                                               | Description                                                                                                                                             |
-| ------------------ | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url                | string                                                                             | A location for the navigation item to navigate to when clicked                                                                                          |
-| accessibilityLabel | string                                                                             | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
-| icon               | IconProps['source']                                                                | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
-| onClick()          | function                                                                           | A callback function to handle clicking on a navigation item                                                                                             |
-| tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
-
-<a name="type-action"></a>
-
-<a name="type-rollup"></a>
+| Prop               | Type                                                                      | Description                                                                                                                                             |
+| ------------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                | string                                                                    | A location for the navigation item to navigate to when clicked                                                                                          |
+| accessibilityLabel | string                                                                    | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
+| icon               | IconProps['source']                                                       | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
+| onClick()          | function                                                                  | A callback function to handle clicking on a navigation item                                                                                             |
+| tooltip            | [TooltipProps](https://polaris.shopify.com/components/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button                                                                                  |
 
 ### Navigation section rollup
 
@@ -182,20 +170,18 @@ Rollup allows items in a navigation section to roll up and be revealed when they
 | hide       | string | A string property providing content for the section hide action          |
 | activePath | string | A string property representing the current URL of your application       |
 
-<a name="type-action"></a>
-
 ### Navigation section action
 
 Action allows a complementary icon-only action to render next to the section title.
 
 #### Action properties
 
-| Prop               | Type                                                                               | Description                                                                        |
-| ------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| icon               | IconProps['source']                                                                | An icon to be displayed as the content of the action                               |
-| accessibilityLabel | string                                                                             | A visually hidden label for screen readers to understand the content of the action |
-| onClick()          | function                                                                           | A callback function to handle clicking on the action                               |
-| tooltip            | [TooltipProps](https://polaris.shopify.com/components/overlays/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button             |
+| Prop               | Type                                                                      | Description                                                                        |
+| ------------------ | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| icon               | IconProps['source']                                                       | An icon to be displayed as the content of the action                               |
+| accessibilityLabel | string                                                                    | A visually hidden label for screen readers to understand the content of the action |
+| onClick()          | function                                                                  | A callback function to handle clicking on the action                               |
+| tooltip            | [TooltipProps](https://polaris.shopify.com/components/tooltip#navigation) | Options for displaying a tooltip when you hover over the action button             |
 
 ---
 
@@ -203,7 +189,7 @@ Action allows a complementary icon-only action to render next to the section tit
 
 ### Basic navigation
 
-Use to present a navigation menu in the [frame](https://polaris.shopify.com/components/structure/frame).
+Use to present a navigation menu in the [frame](https://polaris.shopify.com/components/frame).
 
 ```jsx
 <Frame>
@@ -734,10 +720,10 @@ This example shows how to use the shouldResizeIcon prop when using Major icons
 
 ## Related components
 
-- To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](https://polaris.shopify.com/components/structure/frame) component.
-- To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](https://polaris.shopify.com/components/structure/frame) component to reflect an application’s brand, use the [top bar](https://polaris.shopify.com/components/structure/top-bar) component.
-- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.
-- To alternate among related views within the same context, use the [tabs](https://polaris.shopify.com/components/navigation/tabs) component.
-- To embed a single action or link within a larger span of text, use the [link](https://polaris.shopify.com/components/navigation/link) component.
+- To provide the structure for the navigation component, including the left sidebar and the top bar use the [frame](https://polaris.shopify.com/components/frame) component.
+- To display the navigation component on small screens, to provide search and a user menu, or to theme the [frame](https://polaris.shopify.com/components/frame) component to reflect an application’s brand, use the [top bar](https://polaris.shopify.com/components/top-bar) component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/loading) component.
+- To alternate among related views within the same context, use the [tabs](https://polaris.shopify.com/components/tabs) component.
+- To embed a single action or link within a larger span of text, use the [link](https://polaris.shopify.com/components/link) component.

@@ -113,11 +113,7 @@ Using a resource list in a project involves combining the following components a
 - [Filters](https://polaris.shopify.com/components/filters) (optional)
 - Pagination component (optional)
 
-<!-- hint -->
-
 The resource list component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
-
-<!-- end -->
 
 ---
 
@@ -139,15 +135,7 @@ Resource lists function as:
 
 Because a details page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these details pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
-<div class="TypeContainerImage TypeContainerImage--PageBackground">
-
-![Schematic showing content from a details page being surfaced on a resource list](/public_images/resource-list/list-surfacing-show@2x.png)
-
-</div>
-
-<!-- hint -->
-
-#### Hint
+![Schematic showing content from a details page being surfaced on a resource list](/images/components/resource-list/list-surfacing-show@2x.png)
 
 #### A resource list isn’t a data table
 
@@ -156,8 +144,6 @@ On wide screens, a resource list often looks like a table, especially if some co
 A data table is a form of data visualization. It works best to present highly structured data for comparison and analysis.
 
 If your use case is more about visualizing or analyzing data, use the [data table component](https://polaris.shopify.com/components/data-table). If your use case is more about finding and taking action on objects, use a resource list.
-
-<!-- end -->
 
 ---
 
@@ -186,7 +172,7 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -201,7 +187,7 @@ Resource lists should:
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 

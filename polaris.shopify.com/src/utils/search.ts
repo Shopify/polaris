@@ -3,20 +3,21 @@ import {
   GroupedSearchResults,
   searchResultCategories,
   SearchResultCategory,
+  Status,
 } from "../types";
 import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
-import metadata from "@shopify/polaris-icons/metadata";
+import iconMetadata from "@shopify/polaris-icons/metadata";
 
 import components from "../data/components.json";
 import foundations from "../data/foundations.json";
 
 const MAX_RESULTS: { [key in SearchResultCategory]: number } = {
-  foundations: 6,
-  components: 3,
+  foundations: 8,
+  components: 6,
   tokens: 5,
-  icons: 14,
+  icons: 9,
 };
 
 const {
@@ -33,8 +34,15 @@ let results: SearchResults = [];
 
 // Add components
 components.forEach(({ frontMatter: { name, status }, intro }) => {
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status["value"],
+        message: status.message,
+      }
+    : undefined;
+
   results.push({
-    id: slugify(name),
+    id: slugify(`components ${name}`),
     category: "components",
     score: 0,
     url: `/components/${slugify(name)}`,
@@ -42,7 +50,7 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
       components: {
         name,
         description: stripMarkdownLinks(intro),
-        status,
+        status: typedStatus,
       },
     },
   });
@@ -51,7 +59,7 @@ components.forEach(({ frontMatter: { name, status }, intro }) => {
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   results.push({
-    id: slugify(tokenName),
+    id: slugify(`tokens ${tokenName}`),
     category: "tokens",
     score: 0,
     url: `/tokens/colors#${tokenName}`,
@@ -74,7 +82,7 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
     ([tokenName, tokenProperties]: [string, TokenProperties]) => {
       results.push({
-        id: slugify(tokenName),
+        id: slugify(`tokens ${tokenName}`),
         category: "tokens",
         score: 0,
         url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
@@ -94,16 +102,15 @@ Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
 });
 
 // Add icons
-Object.keys(metadata).forEach((fileName) => {
-  const { name, set, description, keywords } = metadata[fileName];
+Object.keys(iconMetadata).forEach((fileName) => {
   results.push({
-    id: slugify(fileName),
+    id: slugify(`icons ${fileName} ${iconMetadata[fileName].set}`),
     category: "icons",
     url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
       icons: {
-        icon: { fileName, keywords, name, description, set },
+        icon: iconMetadata[fileName],
       },
     },
   });
@@ -114,7 +121,7 @@ foundations.forEach(({ frontMatter: { name }, intro, category, content }) => {
   const url = `/foundations/${category}/${slugify(name)}`;
 
   results.push({
-    id: slugify(name),
+    id: slugify(`foundations ${name}`),
     category: "foundations",
     score: 0,
     url,
@@ -122,7 +129,7 @@ foundations.forEach(({ frontMatter: { name }, intro, category, content }) => {
       foundations: {
         title: name,
         excerpt: intro,
-        category,
+        category: category || "",
         content,
       },
     },

@@ -34,7 +34,8 @@
     "format": "prettier . --write",
     "type-check": "tsc --build",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "preversion-packages": "turbo run preversion",
+    "version-packages": "yarn preversion-packages && changeset version",
     "release": "turbo run build --filter=polaris.shopify.com^... && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1"
   },

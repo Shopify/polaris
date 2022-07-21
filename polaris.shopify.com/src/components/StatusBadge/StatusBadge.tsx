@@ -7,7 +7,7 @@ interface Props {
 function StatusBadge({ status }: Props) {
   return (
     <div className={styles.StatusBadge} data-value={status.value}>
-      {status.value}
+      {status.message}
     </div>
   );
 }

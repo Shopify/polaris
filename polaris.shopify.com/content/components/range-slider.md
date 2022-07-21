@@ -1,10 +1,6 @@
 ---
 name: Range slider
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RangeSlider
   - input
@@ -65,7 +61,7 @@ A label is a short description of the requested input. Labels are not instructio
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -81,10 +77,9 @@ A label is a short description of the requested input. Labels are not instructio
 
 ### Designating optional fields
 
-Try to only ask for information that’s required. If you need to ask merchants
-to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
+Try to only ask for information that’s required. If you need to ask merchants to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -100,7 +95,7 @@ to provide optional information, mark the field optional by placing the text “
 
 Help text provides extra guidance or instruction to people filling out a form field. It can also be used to clarify how the information will be used. As with all form content, help text should be succinct and easy to read.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,7 +115,7 @@ Error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -142,26 +137,6 @@ Error messages should:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The range slider provides a large click and tap target for the slider thumbs. Merchants can also tap or click on the slider track to move the closest slider thumb.
 
 ### Single-thumb slider
@@ -178,5 +153,3 @@ The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pa
 
 - To move focus to a slider thumb, press the <kbd>tab</kbd> key to move forward and or <kbd>shift</kbd> + <kbd>tab</kbd> to move backward
 - When a thumb has focus, use the up and down or left and right arrow keys to move the thumb and update the associated value.
-
-<!-- /content-for -->

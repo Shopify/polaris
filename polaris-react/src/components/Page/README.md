@@ -1,10 +1,6 @@
 ---
 name: Page
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - page
   - breadcrumbs
@@ -22,8 +18,6 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-  - android
-  - ios
 ---
 
 # Page
@@ -69,13 +63,11 @@ The content of each breadcrumb link should be the title of the page to which it 
 
 Page header action labels should be:
 
-- Clear and predictable: merchants should be able to anticipate what will
-  happen when they click a page action. Never deceive merchants by mislabeling an action.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a page action. Never deceive merchants by mislabeling an action.
 
-- Action-led: they should always lead with a strong verb that encourages
-  action. To provide enough context to merchants, use the {verb}+{noun} format.
+- Action-led: they should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb}+{noun} format.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -93,7 +85,7 @@ Page header action labels should be:
 
   In the context of the orders list page:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -109,7 +101,7 @@ Page header action labels should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -126,8 +118,6 @@ Add a menu item
 ## Examples
 
 ### Page with all header elements
-
-<!-- content-for: web -->
 
 Use for detail pages, which should have pagination and breadcrumbs, and also often have several actions.
 
@@ -174,31 +164,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 </Page>
 ```
 
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-Use for detail pages, which should have breadcrumbs, and also often have several actions.
-
-Use for building any page on Android.
-
-![Page on Android](/public_images/components/Page/android/with-header@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-Use for detail pages, which should have breadcrumbs, and also often have several actions.
-
-Use for building any page on iOS.
-
-![Page on iOS](/public_images/components/Page/ios/with-header@2x.png)
-
-<!-- /content-for -->
-
 ### Page with custom primary action
-
-<!-- example-for: web -->
 
 Use to create a custom primary action.
 
@@ -225,8 +191,6 @@ Use to create a custom primary action.
 ```
 
 ### Page without primary action in header
-
-<!-- example-for: web -->
 
 Use when a primary action functions better as part of the page content instead of in the page header.
 
@@ -257,8 +221,6 @@ Use when a primary action functions better as part of the page content instead o
 
 ### Page with destructive secondary action
 
-<!-- example-for: web -->
-
 Used to visually indicate that the secondary page action is destructive.
 
 ```jsx
@@ -271,8 +233,6 @@ Used to visually indicate that the secondary page action is destructive.
 ```
 
 ### Page with custom secondary action
-
-<!-- example-for: web -->
 
 Use to create a custom secondary action.
 
@@ -296,8 +256,6 @@ Use to create a custom secondary action.
 
 ### Page with subtitle
 
-<!-- example-for: web -->
-
 Use when the page title benefits from secondary content.
 
 ```jsx
@@ -314,8 +272,6 @@ Use when the page title benefits from secondary content.
 ```
 
 ### Page with external link
-
-<!-- example-for: web -->
 
 Use when a secondary action links to another website. Actions marked external open in a new browser tab.
 
@@ -340,8 +296,6 @@ Use when a secondary action links to another website. Actions marked external op
 
 ### Page without pagination
 
-<!-- example-for: web -->
-
 Use when the page doesn’t represent a list of objects or a detail view for an object.
 
 ```jsx
@@ -357,8 +311,6 @@ Use when the page doesn’t represent a list of objects or a detail view for an 
 ```
 
 ### Full-width page
-
-<!-- example-for: web -->
 
 Use for layouts that benefit from more screen width, such as wide tables or lists.
 
@@ -380,8 +332,6 @@ Use for layouts that benefit from more screen width, such as wide tables or list
 
 ### Narrow width page
 
-<!-- example-for: web -->
-
 Use a narrow width layout if the page supports a single unified task. When merchants must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
 
 ```jsx
@@ -402,8 +352,6 @@ Use a narrow width layout if the page supports a single unified task. When merch
 ```
 
 ### Page with action groups
-
-<!-- example-for: web -->
 
 Use action groups for sets of actions that relate to one another, particularly when there are too many to display as secondary actions. Note that these groups will be further rolled up into a single action for smaller displays so that actions do not wrap or overflow the page bounds.
 
@@ -443,8 +391,6 @@ Use action groups for sets of actions that relate to one another, particularly w
 
 ### Page with content after title (title metadata)
 
-<!-- example-for: web -->
-
 Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
 
 ```jsx
@@ -467,8 +413,6 @@ Title metadata appears immediately after the page’s title. Use it to communica
 
 ### Page with divider
 
-<!-- example-for: web -->
-
 Use when the page needs visual separation between the page header and the content.
 
 ```jsx
@@ -487,6 +431,6 @@ Use when the page needs visual separation between the page header and the conten
 
 ## Related components
 
-- To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/structure/layout)
-- To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
-- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/structure/page-actions)
+- To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/layout)
+- To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/pagination)
+- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/page-actions)

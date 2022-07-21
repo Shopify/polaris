@@ -40,9 +40,7 @@ The option list component lets you create a list of grouped items that merchants
 
 The option list component should:
 
-- Be placed on its own inside a container. Usually the container behaves like a
-  menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t
-  place other components within the same container.
+- Be placed on its own inside a container. Usually the container behaves like a menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t place other components within the same container.
 - Not be used when a [select component](https://polaris.shopify.com/components/select) will do.
 
 ---
@@ -53,7 +51,7 @@ The option list component should:
 
 Each item in an option list should be clear and descriptive.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,26 +78,6 @@ Each item in an option list should be clear and descriptive.
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Items in an option list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users.
 
 Controls in simple option lists are [buttons](https://polaris.shopify.com/components/button), and controls in multiple option lists are [checkboxes](https://polaris.shopify.com/components/checkbox).
@@ -108,5 +86,3 @@ If you customize the option list, you can provide ARIA roles that fit the contex
 
 - The `role` prop adds an ARIA role to the option list wrapper
 - The `optionRole` prop adds an ARIA role to the option list items
-
-<!-- /content-for -->

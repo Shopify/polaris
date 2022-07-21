@@ -1,10 +1,6 @@
 ---
 name: Select
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - on off
   - switch
@@ -23,8 +19,6 @@ keywords:
   - long list of options
   - long option list
   - separate error message
-  - ios
-  - android
 examples:
   - fileName: select-default.tsx
     title: Default select
@@ -91,7 +85,7 @@ Labels should:
 - Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -103,7 +97,7 @@ Labels should:
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
