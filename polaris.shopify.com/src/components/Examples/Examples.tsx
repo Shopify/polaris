@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
-import CodeExample from "../CodeExample";
+import Code from "../Code";
 import { Tab } from "@headlessui/react";
 
 export type Example = {
@@ -21,11 +21,10 @@ function formatHTML(html: string): string {
   let result = "";
   let indent = "";
 
-  html.split(/>\s*</).forEach(function (element) {
+  html.split(/>\s*</).forEach((element) => {
     if (element.match(/^\/\w/)) {
       indent = indent.substring(tab.length);
     }
-
     result += indent + "<" + element + ">\r\n";
 
     if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith("input")) {
@@ -42,29 +41,32 @@ const Examples = (props: Props) => {
   const [htmlCode, setHTMLCode] = useState("");
 
   const [iframeHeight, setIframeHeight] = useState("400px");
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleExampleLoad = () => {
+    let attempts = 0;
+
     const waitForExampleContent = setInterval(() => {
-      const exampleElement =
-        iframeRef?.current?.contentWindow?.document?.getElementById(
-          "polaris-example"
-        );
+      const exampleIframe = document.getElementById(
+        "examples-iframe"
+      ) as HTMLIFrameElement;
+      const exampleElement = exampleIframe?.contentDocument;
+      const exampleWrapper = exampleElement?.getElementById("polaris-example");
+
       const padding = 192;
       let newHeight = padding;
 
-      if (exampleElement) {
-        newHeight += exampleElement?.offsetHeight;
-      }
-
-      if (exampleElement) {
-        setHTMLCode(formatHTML(exampleElement.innerHTML));
+      if (exampleWrapper) {
+        newHeight += exampleWrapper?.offsetHeight;
+        setIframeHeight(`${newHeight}px`);
+        setHTMLCode(formatHTML(exampleWrapper.innerHTML));
         clearInterval(waitForExampleContent);
-      } else {
-        console.log("no example element");
       }
 
-      setIframeHeight(`${newHeight}px`);
+      attempts++;
+
+      if (attempts > 10) {
+        clearInterval(waitForExampleContent);
+      }
     }, 100);
 
     return () => {
@@ -96,6 +98,7 @@ const Examples = (props: Props) => {
             })}
           </div>
         </Tab.List>
+
         <Tab.Panels>
           {examples.map(({ fileName, description, code }) => {
             const exampleUrl = `/examples/${fileName.replace(".tsx", "")}`;
@@ -109,7 +112,7 @@ const Examples = (props: Props) => {
                     height={iframeHeight}
                     width="100%"
                     onLoad={handleExampleLoad}
-                    ref={iframeRef}
+                    id="examples-iframe"
                   />
                   <div className={styles.Buttons}>
                     <CodesandboxButton
@@ -119,8 +122,12 @@ const Examples = (props: Props) => {
                   </div>
                 </div>
 
-                <CodeExample language="html">{htmlCode}</CodeExample>
-                <CodeExample language="typescript">{code}</CodeExample>
+                <Code
+                  tabs={[
+                    { title: "React", code: code.trim() },
+                    { title: "HTML", code: htmlCode },
+                  ]}
+                />
               </Tab.Panel>
             );
           })}

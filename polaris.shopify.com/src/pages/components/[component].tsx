@@ -1,7 +1,6 @@
 import fs from "fs";
 import glob from "glob";
 import path from "path";
-import { marked } from "marked";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import Examples from "../../components/Examples";
 import type { Example } from "../../components/Examples";
@@ -50,12 +49,13 @@ const Components = ({
       }
     : undefined;
 
+  console.log(readme);
   return (
     <Layout width="narrow" navItems={navItems} title={name}>
       <PageMeta title={name} description={intro} />
 
       <Longform>
-        <Markdown text={readme.header} skipH1 />
+        <Markdown text={intro} skipH1 />
         {typedStatus && <StatusBanner status={typedStatus} />}
         <Examples examples={examples} />
         {propsForComponent && <PropsTable props={propsForComponent} />}
@@ -82,13 +82,15 @@ export const getStaticProps: GetStaticProps<
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
-    const readmeText = marked(data.readme).split("\n");
-    // Note: Assumes that the first two lines are the title and description
-    const readmeHeader = readmeText.splice(0, 2).join("\n");
-    const readmeBody = readmeText.join("\n");
+    const readmeText = data.readme;
+    const readmeTextParts = readmeText.split(/\n\n/);
+    const intro = readmeTextParts.length > 2 ? readmeTextParts[2].trim() : "";
+    const body =
+      readmeTextParts.length > 3 ? readmeTextParts.slice(3).join("\n\n") : "";
+
     const readme = {
-      header: readmeHeader,
-      body: readmeBody,
+      intro,
+      body,
     };
 
     const examples = (data?.frontMatter?.examples || []).map(
@@ -121,7 +123,7 @@ export const getStaticProps: GetStaticProps<
     const props: Props = {
       ...data.frontMatter,
       examples,
-      intro: data.intro,
+      intro,
       readme,
       propsForComponent,
     };
