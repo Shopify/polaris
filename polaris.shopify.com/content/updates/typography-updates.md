@@ -12,6 +12,8 @@ keywords:
 
 Learn about what changes are coming to Polaris typography
 
+![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-updates@2x.png)
+
 ---
 
 This is an Alpha release of the new type system. That means we’re making the new Text component and Figma text styles available to use but there could still be significant changes made. Our goal is to share the work so that you can: **understand what’s changing**, **start using the typography updates**, and **provide feedback to help us improve.**
@@ -36,7 +38,7 @@ Polaris typography is getting a refresh. Currently, there are **4 Display**, **1
 
 The updates will simplify type into two categories: **Heading** and **Body**. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the UI.
 
-<!-- ![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-style-updates@2x.png) -->
+![Screen showing the differences between the new type styles and the old type styles](/images/updates/new-to-old@2x.png)
 
 ## Type scale
 
