@@ -205,7 +205,6 @@ export function Button({
   }, []);
 
   const handleClick = useDisableClick(disabled, toggleDisclosureActive);
-  const handleKeyDown = useDisableKeyboard(disabled, onKeyDown);
 
   let connectedDisclosureMarkup;
 
@@ -240,7 +239,6 @@ export function Button({
         aria-checked={ariaChecked}
         onClick={handleClick}
         onMouseUp={handleMouseUpByBlurring}
-        onKeyDown={handleKeyDown}
         tabIndex={disabled ? -1 : undefined}
       >
         <span className={styles.Icon}>

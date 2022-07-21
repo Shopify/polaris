@@ -519,20 +519,6 @@ describe('<Button />', () => {
       unstyledButton.find('button')!.trigger('onKeyDown', mockEvent);
       expect(spy).toHaveBeenCalled();
     });
-
-    it('prevents default when disabled is true and event.keyCode is 13', () => {
-      const spy = jest.fn();
-      const unstyledButton = mountWithApp(
-        <UnstyledButton onKeyDown={spy} disabled />,
-      );
-      const mockEvent = {
-        preventDefault: jest.fn(),
-        stopPropagation: jest.fn(),
-        key: 'Enter',
-      };
-      unstyledButton.find('button')!.trigger('onKeyDown', mockEvent);
-      expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
-    });
   });
 });
 

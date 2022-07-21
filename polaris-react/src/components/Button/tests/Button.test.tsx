@@ -87,29 +87,19 @@ describe('<Button />', () => {
       expect(button).toContainReactComponent('a', {href: undefined});
     });
 
-    it('prevents default for onClick and onKeyDown events when disabled', () => {
+    it('prevents default for onClick event when disabled', () => {
       const onClick = jest.fn();
-      const onKeyDown = jest.fn();
-      const button = mountWithApp(
-        <Button disabled onClick={onClick} onKeyDown={onKeyDown} />,
-      );
+      const button = mountWithApp(<Button disabled onClick={onClick} />);
 
       const mockEvent = {
         preventDefault: jest.fn(),
         stopPropagation: jest.fn(),
       };
 
-      const mockKeyEvent = {
-        preventDefault: jest.fn(),
-        stopPropagation: jest.fn(),
-        key: 'Enter',
-      };
-
       button.find('button')!.trigger('onClick', mockEvent);
-      button.find('button')!.trigger('onKeyDown', mockKeyEvent);
 
       expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
-      expect(mockKeyEvent.preventDefault).toHaveBeenCalledTimes(1);
+      expect(mockEvent.stopPropagation).toHaveBeenCalledTimes(1);
     });
   });
 
