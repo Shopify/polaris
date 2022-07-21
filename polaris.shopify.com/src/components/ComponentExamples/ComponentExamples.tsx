@@ -36,8 +36,7 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-const ComponentExamples = (props: Props) => {
-  const { examples } = props;
+const ComponentExamples = ({examples}: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState("");
 
