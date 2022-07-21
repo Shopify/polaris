@@ -135,7 +135,7 @@ function RangeSliderExample() {
 }
 ```
 
-### Min and max range control
+### With min and max
 
 Use when a single value needs to be selected from a number range with a specific minimum and maximum.
 
@@ -163,7 +163,7 @@ function RangeSliderWithPreciseRangeControlExample() {
 }
 ```
 
-### Step incremented range control
+### With steps
 
 Use when a single value of a specific increment needs to be selected from a range of numbers.
 
@@ -192,7 +192,7 @@ function RangeSliderWithPreciseRangeControlExample() {
 }
 ```
 
-### Prefix and suffix elements
+### With prefix and suffix
 
 Use when the start or end of the range input benefits from additional content.
 
@@ -229,7 +229,7 @@ function RangeSliderWithPrefixAndSuffixExample() {
 }
 ```
 
-### Dual thumb
+### With dual thumb
 
 Use when two values need to be selected from a range of numbers.
 
