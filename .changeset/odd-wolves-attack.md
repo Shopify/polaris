@@ -2,4 +2,4 @@
 'polaris.shopify.com': minor
 ---
 
-Example descriptions support for markdown content
+Added support for markdown content in component examples' descriptions
