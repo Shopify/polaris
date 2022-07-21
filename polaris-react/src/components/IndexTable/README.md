@@ -116,7 +116,7 @@ function SimpleIndexTableExample() {
 }
 ```
 
-### Flush index table
+### Flush
 
 A index table with simple items and no bulk actions, sorting, or filtering.
 
@@ -189,7 +189,7 @@ function SimpleFlushIndexTableExample() {
 }
 ```
 
-### Small screen index table
+### Small screen
 
 A small screen index table with simple items and no bulk actions, sorting, or filtering.
 

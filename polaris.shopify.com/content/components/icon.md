@@ -23,11 +23,11 @@ examples:
   - fileName: icon-with-backdrop.tsx
     title: With backdrop
     description: Apply a backdrop to the icon.
-  - fileName: icon-user-provided-icon.tsx
-    title: User provided icon
+  - fileName: icon-with-custom-svg.tsx
+    title: With custom SVG
     description: Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.
-  - fileName: icon-user-provided-icon-with-color-and-current-color.tsx
-    title: User provided icon with color and currentColor
+  - fileName: icon-with-custom-svg-and-color.tsx
+    title: With custom SVG and color
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
 ---
 

@@ -16,17 +16,17 @@ status:
   value: Alpha
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
-  - fileName: grid-two-column-wrapping-layout.tsx
-    title: Two column wrapping layout
+  - fileName: grid-two-column.tsx
+    title: Two column
     description: Use to create a two column layout that wraps at a breakpoint and aligns to a twelve column grid.
-  - fileName: grid-two-thirds-column-one-third-column-wrapping-layout.tsx
-    title: Two-thirds column one-third column wrapping layout
+  - fileName: grid-two-thirds-and-one-third-column.tsx
+    title: Two-thirds and one-third column
     description: Use to create a two-thirds, one-third column layout that wraps at a breakpoint and aligns to a twelve column grid.
-  - fileName: grid-three-one-third-column-wrapping-layout-with-a-custom-column-count.tsx
-    title: Three one-third column wrapping layout with a custom column count
+  - fileName: grid-three-one-third-column.tsx
+    title: Three one-third column
     description: Use to create a three column layout that wrap at a breakpoint and aligns to a twelve column grid.
-  - fileName: grid-custom-layout-using-grid-areas-and-custom-columns.tsx
-    title: Custom layout using grid areas and custom columns
+  - fileName: grid-custom-layout.tsx
+    title: Custom layout
     description: Use to create a layout that can be customized at specific breakpoints.
 ---
 
