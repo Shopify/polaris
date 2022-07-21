@@ -1,5 +1,22 @@
 # Changelog
 
+## 9.21.0
+
+### Minor Changes
+
+- [#6461](https://github.com/Shopify/polaris/pull/6461) [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Make disabled buttons more accessible
+
+### Patch Changes
+
+- [`720d10e79`](https://github.com/Shopify/polaris/commit/720d10e79c9080efccb4c1d3e41ac322b58b7977) Thanks [@alex-page](https://github.com/alex-page)! - `DataTable` revert accidental rename of `hasFixedFirstColumn` to `fixedFirstColumn`
+
+* [#6703](https://github.com/Shopify/polaris/pull/6703) [`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad) Thanks [@alex-page](https://github.com/alex-page)! - Clean up README.md files, removing 80 character limit and unused content
+
+- [#6681](https://github.com/Shopify/polaris/pull/6681) [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353) Thanks [@alex-page](https://github.com/alex-page)! - Removed comments and cleaned up markdown files
+
+- Updated dependencies [[`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb)]:
+  - @shopify/polaris-icons@5.2.0
+
 ## 9.20.1
 
 ### Patch Changes
