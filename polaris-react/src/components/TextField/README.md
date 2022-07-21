@@ -830,7 +830,7 @@ When you provide help text via the `helpText` prop or an inline error message vi
 
 Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to all merchants.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

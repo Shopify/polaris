@@ -59,7 +59,7 @@ Listboxes should:
 
 Each item in a `Listbox` should be clear and descriptive.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -90,10 +90,9 @@ Location picker
 
 The `Listbox` component is based on the [Aria 1.2 Listbox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
 
-It is important to not present interactive elements inside of list box options as they can interfere with navigation
-for assistive technology users.
+It is important to not present interactive elements inside of list box options as they can interfere with navigation for assistive technology users.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

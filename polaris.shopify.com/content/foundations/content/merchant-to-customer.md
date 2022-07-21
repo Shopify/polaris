@@ -68,7 +68,7 @@ Too much personality is inappropriate for some stores. Customers aren’t going 
 
 Keep in mind that some content, such as emails, can be personalized by merchants. You’re providing a default for them to work from.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -95,7 +95,7 @@ Whoops! Houston, we have a problem!
 
 Avoid technical or ecommerce terms. Customers are interested in their order and their delivery, not in inventory and fulfillment. They might want to sign up for news and exclusive offers, but not marketing emails.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -113,7 +113,7 @@ Avoid technical or ecommerce terms. Customers are interested in their order and 
 
 It’s important that any purchase flow is efficient. Use short, easy-to-understand words and phrases. For example:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -131,7 +131,7 @@ It’s important that any purchase flow is efficient. Use short, easy-to-underst
 
 But remember that clear beats short. Don’t use content that can be interpreted in different ways. For example, does “bi-weekly” mean twice a week or every two weeks? It’s clearer to say “Every 2 weeks.” Using more words is okay if it provides clarity.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -169,7 +169,7 @@ In the Shopify admin and Point-of-Sale (POS), a customer appears on the Customer
 
 Word usage to use/avoid:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

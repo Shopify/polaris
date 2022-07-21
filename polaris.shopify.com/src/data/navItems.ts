@@ -255,6 +255,10 @@ export const contributingNavItems = [
         url: "/contributing",
       },
       {
+        title: "Code of Conduct",
+        url: "/contributing/code-of-conduct",
+      },
+      {
         title: "Components",
         url: "/contributing/components",
       },
@@ -266,10 +270,11 @@ export const contributingNavItems = [
         title: "Icons",
         url: "/contributing/icons",
       },
-      {
-        title: "Illustrations",
-        url: "/contributing/illustrations",
-      },
+      // add illustrations back in when we have more helpful content
+      // {
+      //   title: "Illustrations",
+      //   url: "/contributing/illustrations",
+      // },
       {
         title: "Documentation",
         url: "/contributing/documentation",

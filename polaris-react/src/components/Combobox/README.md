@@ -803,7 +803,7 @@ The `Combobox` popover displays below the text field or other control by default
 
 `Combobox` features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the combobox.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

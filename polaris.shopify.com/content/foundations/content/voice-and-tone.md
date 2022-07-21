@@ -14,14 +14,11 @@ keywords:
 
 # Voice and tone
 
-Learn how to apply Shopify’s voice and choose the right tone, no matter what
-product, feature, or app you’re building.
+Learn how to apply Shopify’s voice and choose the right tone, no matter what product, feature, or app you’re building.
 
 ---
 
 ## What are voice and tone?
-
-<!-- keywords: difference between voice and tone, what is voice, what is tone, what does voice mean?, what does tone mean? -->
 
 Shopify’s voice is a reflection of who we are. We should always sound like
 Shopify.
@@ -45,8 +42,6 @@ You'll find more specific guidelines on how to adapt your tone to different situ
 ---
 
 ## Voice guidelines
-
-<!-- keywords: confident not arrogant, empathetic not overprotective, transparent not blunt, what is shopifys voice, what is shopify’s voice, what does shopify sound like, sound like, shopifys personality, shopify’s personality, voice writing, confident, empathetic, transparent, not arrogant, not overprotective, not blunt, arrogant, overprotective, blunt -->
 
 As Shopify’s voice, we should always:
 
@@ -77,8 +72,6 @@ As Shopify’s voice, we should always:
 
 ## Adapting tone by situation
 
-<!-- keywords: tone examples, error message tone, tone of an error messages, positive tones, neutral tones, negative tones, change in tones, changing tones, tone of messages, message tones, tone guidelines -->
-
 Our tone adapts to the context. We’ll use certain voice attributes more or less based on the situation.
 
 Often people frame tone guidance around adapting to the emotional state of the audience. The reality is we never know a person’s emotional state. Even when things seem the most positive, we can’t be sure.
@@ -89,7 +82,7 @@ While it’s helpful to consider how your audience is likely to feel, don’t as
 
 When everything is working as it should, our goal is to give people what they need to get work done, without getting in the way or drawing attention to ourselves. We want the audience to know what something is or that something has happened as expected.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -105,7 +98,7 @@ Use overly complicated or intimidating language.
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -130,7 +123,7 @@ Some people will want to be guided step-by-step through the process, while other
 
 Remember, they may have sought this out specifically or we may have recommended it to them, so don’t assume that they want or need to use it.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -146,7 +139,7 @@ _Create a new campaign and you could double your sales this holiday season._
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -170,7 +163,7 @@ In this case, our job is to help people understand what happened so that they ca
 
 Read the [error message guidelines](https://polaris.shopify.com/patterns/error-messages) for more detailed guidance.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -186,7 +179,7 @@ _Bad request, forbidden, fatal, expectation failed, unresolved, invalid_
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -208,7 +201,7 @@ There are situations where we want to acknowledge that someone completed a compl
 
 While we don’t need to celebrate the accomplishment, we should recognize that they put in the time and effort. Depending on the level of effort, these may be simple confirmations or more active recognition that they completed something difficult.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -224,7 +217,7 @@ _Congrats! You set up your single login for Shopify._
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -246,7 +239,7 @@ These are situations when we want to keep people moving along a desired path. In
 
 We don’t want to be too overzealous or action-driven here—it’s more about helping people understand the next step and giving them the context they need to take it.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -262,7 +255,7 @@ _You’re just a few steps away from receiving your first order._
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -280,7 +273,7 @@ In this case, there’s a serious risk of damaging trust and hurting our relatio
 
 Read the [error message guidelines](https://polaris.shopify.com/patterns/error-messages) for more detailed guidance.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -296,7 +289,7 @@ _Today’s sales data might not be accurate, but don’t worry—it’s just tem
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -306,7 +299,7 @@ _All systems are now fully operational. We recognize and apologize for the stres
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -322,7 +315,7 @@ It’s exciting to launch a new feature or update, but always consider the audie
 
 When you’re announcing something new, focus on educating and explaining what it is, what it’s used for, and what the user can expect.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -342,7 +335,7 @@ _It’s never been easier to customize the fonts, colors, and styles of Buy Butt
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -360,7 +353,7 @@ Let audiences know that we understand that it’s an important moment and we’r
 
 Remember, this is about celebrating their accomplishments, not ours. Launching something new? You probably don’t need to celebrate with them. Read our guidance around [announcing new features and updates](#announcing-features).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -376,7 +369,7 @@ _You set up your payment providers, congrats!_
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

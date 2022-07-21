@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.3
+
+### Patch Changes
+
+- [#6667](https://github.com/Shopify/polaris/pull/6667) [`8892dcc94`](https://github.com/Shopify/polaris/commit/8892dcc94b38968449863a7ad1bee4b56a9bd9bf) Thanks [@samrose3](https://github.com/samrose3)! - Use exact versions for Polaris workspace dependencies.
+
+- Updated dependencies [[`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632), [`9a8c8a68b`](https://github.com/Shopify/polaris/commit/9a8c8a68bc48db03153c67d5c202a4ea9510f985), [`2aaed571f`](https://github.com/Shopify/polaris/commit/2aaed571ffc1b6ec458a86186840ee473578a729), [`8892dcc94`](https://github.com/Shopify/polaris/commit/8892dcc94b38968449863a7ad1bee4b56a9bd9bf), [`398186117`](https://github.com/Shopify/polaris/commit/398186117be9a4bc7d0248dd7ea339f0a0f34779), [`89d40028a`](https://github.com/Shopify/polaris/commit/89d40028a251a06464f039ae5f26defea8e715b9), [`ae0bb762b`](https://github.com/Shopify/polaris/commit/ae0bb762bacca9b4d268c708e43c2facc9d4b763), [`ab10494bc`](https://github.com/Shopify/polaris/commit/ab10494bcb2624656205bf04afcc6ed0f2692225), [`b3e027c9b`](https://github.com/Shopify/polaris/commit/b3e027c9b45fa44d1137fd409b2f8a10687c90ef), [`1cbc1eba7`](https://github.com/Shopify/polaris/commit/1cbc1eba7a3a2d354b4cbf9dedb01862a77f5070), [`b5427eac2`](https://github.com/Shopify/polaris/commit/b5427eac2a4851e715954dcdce2900781839a316)]:
+  - @shopify/polaris@9.20.1
+
 ## 0.0.2
 
 ### Patch Changes

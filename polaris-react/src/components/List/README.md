@@ -37,7 +37,7 @@ Every item in a list should:
 - Start with a capital letter
 - Not use commas or semicolons at the end of each line
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -55,7 +55,7 @@ Every item in a list should:
 
 - Be written in sentence case
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

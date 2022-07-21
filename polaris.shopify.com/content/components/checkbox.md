@@ -32,16 +32,12 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 
 Checkboxes should:
 
-- Work independently from each other: selecting one checkbox shouldn’t change
-  the selection status of another checkbox in the list. The exception is when a
-  checkbox is used to make a bulk selection of multiple items.
+- Work independently from each other: selecting one checkbox shouldn’t change the selection status of another checkbox in the list. The exception is when a checkbox is used to make a bulk selection of multiple items.
 - Be framed positively: for example, `Turn on notifications` instead of
   `Turn off notifications`
 - Always have a label when being used to toggling a setting on or off
-- Be listed according to a logical order, whether it’s alphabetical, numerical,
-  time-based, or some other clear system.
-- Link to more information or include a subtitle as required to provide more
-  explanation. Don’t rely on tooltips to explain a checkbox.
+- Be listed according to a logical order, whether it’s alphabetical, numerical, time-based, or some other clear system.
+- Link to more information or include a subtitle as required to provide more explanation. Don’t rely on tooltips to explain a checkbox.
 
 ---
 
@@ -53,7 +49,7 @@ Lists that use checkboxes should:
 
 - Start with a capital letter
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -71,7 +67,7 @@ Lists that use checkboxes should:
 
 - Not use commas or semicolons at the end of each line
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -87,10 +83,9 @@ Lists that use checkboxes should:
 
 <!-- end -->
 
-- In the rare case where the checkbox is asking merchants to agree to terms
-  or service, use the first person
+- In the rare case where the checkbox is asking merchants to agree to terms or service, use the first person
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

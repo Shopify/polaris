@@ -48,7 +48,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -62,7 +62,7 @@ Radio button labels should:
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
