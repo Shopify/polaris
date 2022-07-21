@@ -24,6 +24,19 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Color = 'success' | 'critical' | 'warning' | 'subdued';
 
+const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
+  displaySm: 'semibold',
+  displayMd: 'semibold',
+  displayLg: 'bold',
+  headingSm: 'bold',
+  headingMd: 'semibold',
+  headingLg: 'semibold',
+  headingXl: 'semibold',
+  bodySm: 'regular',
+  bodyMd: 'regular',
+  bodyLg: 'regular',
+};
+
 export interface TextProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
@@ -48,7 +61,7 @@ export const Text = ({
   as,
   children,
   color,
-  fontWeight = 'regular',
+  fontWeight,
   truncate = false,
   variant,
   visuallyHidden = false,
@@ -58,7 +71,7 @@ export const Text = ({
   const className = classNames(
     styles.root,
     styles[variant],
-    fontWeight && styles[fontWeight],
+    fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
     color && styles[color],
