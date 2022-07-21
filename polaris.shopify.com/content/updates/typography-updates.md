@@ -34,9 +34,9 @@ Simplifying our components and improving our foundation will help our product te
 
 Polaris typography is getting a refresh. Currently, there are **4 Display**, **1 Heading**, **1 Subheading**, **1 Button**, **1 Body**, and **1 Caption** variants.
 
-The updates will simplify type into three categories: **Display**, **Heading**, and **Body**. Each category has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the UI.
+The updates will simplify type into two categories: **Heading** and **Body**. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the UI.
 
-![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-style-updates@2x.png)
+<!-- ![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-style-updates@2x.png) -->
 
 ## Type scale
 
@@ -75,7 +75,9 @@ We looked at how type changes between the different screen sizes and found that 
 
 [gif to show difference]
 
-However, for the larger sizes in the scale, we believe, in most cases, it makes sense for those sizes to adjust automatically so the sizes look appropriate for the screen size they’re being displayed on. This behavior hasn’t been added yet but, in the next release, we’ll update the Display styles to respond automatically at certain breakpoints with all other sizes staying the same unless specified otherwise.
+However, for the larger sizes in the scale, we believe, in most cases, it makes sense for those sizes to adjust automatically so the sizes look appropriate for the screen size they’re being displayed on. This behavior hasn’t been added yet but, in the next release, we’ll update the larger styles to respond automatically at certain breakpoints with all other sizes staying the same unless specified otherwise.
+
+![Screen showing the differences between the new type styles and the old type styles](/images/updates/responsive-styles@2x.png)
 
 ## Typography components
 
@@ -104,6 +106,8 @@ Other benefits of the singular component:
 We have updated and streamlined token values, and updated token names to reflect a token naming convention that makes tokens easier to use and understand.
 
 ### Font-size tokens
+
+We updated the size tokens to use increments of 100 for the variants. This allows us to set `--p-font-size-100` as the base and go lower (` --p-font-size-75` ) or higher (`--p-font-size-200`) as needed numerically.
 
 | New token         | Old token        | px value | rem value |
 | ----------------- | ---------------- | -------- | --------- |
@@ -146,7 +150,7 @@ Next, we’ll be releasing the beta version of the component. The beta release w
 
 - Updating Polaris components to use the new Text component
 - Adding a deprecation warning to the old type components
-- Adding responsive Display styles
+- Adding responsive styles
 - Updating components in the Figma UI Kit to use the new text styles
 - Updating design and API documentation
 
