@@ -74,11 +74,11 @@ examples:
     title: Align Center
     description: >-
       Use to align text at center of horizontal line.
-  - fileName: text-aling-end.tsx
+  - fileName: text-align-end.tsx
     title: Align End
     description: >-
       Use to align text at end of horizontal line.
-  - fileName: text-aling-justify.tsx
+  - fileName: text-align-justify.tsx
     title: Align Justify
     description: >-
       Use to align text on a horizontal line.
