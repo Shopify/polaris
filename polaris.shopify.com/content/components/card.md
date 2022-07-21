@@ -65,8 +65,8 @@ examples:
   - fileName: card-with-custom-react-node-title.tsx
     title: With custom React Node title
     description: Use to render custom content such as icons, links, or buttons in a card section’s header.
-  - fileName: card-with-all-of-its-elements.tsx
-    title: With all of its elements
+  - fileName: card-with-all-elements.tsx
+    title: With all elements
     description: Use as a broad example that includes most props available to card.
   - fileName: card-with-flushed-sections.tsx
     title: With flushed sections

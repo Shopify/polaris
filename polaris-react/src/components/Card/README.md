@@ -450,7 +450,7 @@ Use to render custom content such as icons, links, or buttons in a card sectionâ
 </Card>
 ```
 
-### With all of its elements
+### With all elements
 
 Use as a broad example that includes most props available to card.
 
