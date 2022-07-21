@@ -85,9 +85,6 @@ If the customer abandons their checkout, send them an email reminder to complete
 - Option a
 - Option b
 
-- Option a
-- Option b
-
 #### Don’t
 
 If the customer abandons their checkout, send them an email reminder to complete their order:
