@@ -49,7 +49,6 @@ const Components = ({
       }
     : undefined;
 
-  console.log(readme);
   return (
     <Layout width="narrow" navItems={navItems} title={name}>
       <PageMeta title={name} description={intro} />
