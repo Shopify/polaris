@@ -14,7 +14,6 @@ keywords:
   - application wrapper
   - wrapper
   - sdk
-omitAppProvider: true
 examples:
   - fileName: app-provider-default.tsx
     title: Default

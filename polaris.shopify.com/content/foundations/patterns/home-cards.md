@@ -109,7 +109,7 @@ The tone changes depending on the context or situation of a card, but it should 
 
 ### Positive situation
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -134,7 +134,7 @@ _Fulfill them from your Orders page!_
 
 ### Neutral situation
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -157,7 +157,7 @@ _It’s easy to apply and it’ll help your business grow!_
 
 ### Negative situation
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

@@ -9,11 +9,11 @@ keywords:
 
 # Documenting in Polaris
 
-From fixing typos to drafting new pattern guidance, everyone that works at Shopify is encouraged to contribute to Polaris documentation.
+From fixing typos to drafting new pattern guidance, everyone is encouraged to contribute to Polaris documentation.
 
 Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
 
-To write effectively, use a cross-discipline lens. Make sure your content meets both UX and development needs. Before starting, check out our [style guide to the style guide](https://docs.google.com/document/d/1zVDsHIWhoir2svRjdtSdRbD_ruTz3K1nAJcQLGPVQwM/edit#heading=h.ni67tdntu9cr).
+To write effectively as a Shopify employee, use a cross-discipline lens. Make sure your content meets both UX and development needs. Before starting, check out our [style guide to the style guide](https://docs.google.com/document/d/1zVDsHIWhoir2svRjdtSdRbD_ruTz3K1nAJcQLGPVQwM/edit#heading=h.ni67tdntu9cr).
 
 Most documentation about the design system is meant for polaris.shopify.com. However, there may be a reason for the content to live elsewhere. If you're not sure if something should live on this site, the Polaris team can help you figure that out.
 

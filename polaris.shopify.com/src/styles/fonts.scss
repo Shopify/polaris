@@ -4,7 +4,7 @@
 
 @mixin heading-1 {
   color: var(--text-strong);
-  font-size: var(--font-size-1300);
+  font-size: var(--font-size-1200);
   font-weight: var(--font-weight-600);
   letter-spacing: var(--letter-spacing-700);
   line-height: 1.15;
@@ -20,7 +20,7 @@
 
 @mixin heading-3 {
   color: var(--text-strong);
-  font-size: var(--font-size-600);
+  font-size: var(--font-size-500);
   font-weight: var(--font-weight-600);
   letter-spacing: var(--letter-spacing-100);
   line-height: 1.25;
