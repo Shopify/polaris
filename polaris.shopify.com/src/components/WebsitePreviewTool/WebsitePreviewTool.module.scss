@@ -1,0 +1,35 @@
+@import "../../styles/fonts.scss";
+
+.WebsitePreviewTool {
+  min-height: 100vh;
+  background: var(--surface-subdued);
+  text-align: center;
+
+  h2 {
+    @include heading-1;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.Page {
+  padding: var(--header-margin) 0;
+
+  h2 {
+    margin-bottom: 3rem;
+  }
+
+  &:nth-of-type(2n) {
+    background: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.Previews {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+
+  iframe {
+    border-radius: var(--border-radius-400);
+  }
+}

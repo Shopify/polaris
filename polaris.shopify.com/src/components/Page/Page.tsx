@@ -9,6 +9,17 @@ interface Props {
   children: React.ReactNode;
 }
 
+let forceDarkMode = false;
+
+if (typeof window !== "undefined") {
+  let url = new URL(window.location.href);
+  let params = new URLSearchParams(url.search);
+  let darkModeParam = params.get("darkmode");
+  if (darkModeParam) {
+    forceDarkMode = true;
+  }
+}
+
 function Page({ children }: Props) {
   const router = useRouter();
   const darkMode = useDarkMode(false);
@@ -21,6 +32,12 @@ function Page({ children }: Props) {
       darkMode.value ? "dark" : "light"
     );
   }, [darkMode.value]);
+
+  useEffect(() => {
+    if (forceDarkMode) {
+      darkMode.enable();
+    }
+  }, [darkMode]);
 
   return (
     <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
