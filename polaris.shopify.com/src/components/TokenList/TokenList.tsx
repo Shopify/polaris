@@ -1,4 +1,4 @@
-import { SearchResultItem, TokenPropertiesWithName } from "../../types";
+import { TokenPropertiesWithName } from "../../types";
 import { createContext } from "react";
 import { className, slugify } from "../../utils/various";
 import styles from "./TokenList.module.scss";
@@ -7,6 +7,7 @@ import Image from "../Image";
 import Tooltip from "../Tooltip";
 import { figmaColorNames } from "../../data/figmaColorNames";
 import Link from "next/link";
+import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
 
 interface ColumnsConfig {
   preview: boolean;
@@ -105,36 +106,36 @@ function getFigmaUsageForToken(
   return usage;
 }
 
-interface TokenListItemProps extends SearchResultItem {
+interface TokenListItemProps {
+  category: string;
   token: TokenPropertiesWithName;
 }
 
 function TokenListItem({
+  category,
   token: { name, value, description },
-  searchResultData,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
   const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
+
+  const searchAttributes = useGlobalSearchResult();
+  const isClickableSearchResult = !!searchAttributes?.tabIndex;
 
   return (
     <TokenListContext.Consumer>
       {({ columns }) => (
         <tr
           key={name}
-          className={className(
-            styles.TokenListItem,
-            !!searchResultData && styles.renderedInSearchResults,
-            searchResultData?.isHighlighted && styles.isHighlighted
-          )}
-          {...searchResultData?.itemAttributes}
+          className={className(styles.TokenListItem)}
+          {...searchAttributes}
           id={slugify(name)}
         >
           {columns.preview && (
             <td>
               <TokenPreview name={name} value={value} />
-              {searchResultData?.url && (
-                <Link href={searchResultData.url}>
+              {isClickableSearchResult && (
+                <Link href={`/tokens/${category}#${searchAttributes?.id}`}>
                   <a className={styles.ClickableItemLink} tabIndex={-1}>
                     View token
                   </a>
@@ -159,7 +160,7 @@ function TokenListItem({
                   >
                     <button
                       onClick={copy}
-                      tabIndex={searchResultData?.tabIndex}
+                      tabIndex={searchAttributes?.tabIndex}
                     >
                       <Image
                         src="/icons/ClipboardMinor.svg"

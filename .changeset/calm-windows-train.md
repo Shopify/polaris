@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Fix mobile padding on mobile devices
+Move foundations icons to a component

@@ -54,8 +54,7 @@
         "application wrapper",
         "wrapper",
         "sdk"
-      ],
-      "omitAppProvider": true
+      ]
     },
     "intro": "App provider is a required component that enables sharing global settings throughout the hierarchy of your application."
   },
@@ -404,8 +403,7 @@
         "color scheme",
         "light mode",
         "dark mode"
-      ],
-      "omitAppProvider": true
+      ]
     },
     "intro": "Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children."
   },
@@ -656,9 +654,7 @@
         "top bar",
         "menu",
         "toast"
-      ],
-      "fullSizeExamples": true,
-      "omitAppProvider": true
+      ]
     },
     "intro": "The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components."
   },
@@ -1258,7 +1254,6 @@
         "drawer",
         "dialog"
       ],
-      "fullSizeExamples": true,
       "status": {
         "value": "Deprecated",
         "message": "The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions."

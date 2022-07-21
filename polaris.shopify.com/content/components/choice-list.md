@@ -54,8 +54,7 @@ examples:
 # Choice list
 
 A choice list lets you create a list of grouped radio buttons or checkboxes.
-Use this component if you need to group together a related list of interactive
-choices.
+Use this component if you need to group together a related list of interactive choices.
 
 ---
 
@@ -75,10 +74,9 @@ Choice lists should:
 
 List titles should:
 
-- Help merchants understand how the items in the list are grouped together, or
-  should explain what kind of choice merchants are making
+- Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -97,7 +95,7 @@ Pick one
 - It the title introduces the list, it should end with a colon
 - Should be written in sentence case
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -111,7 +109,7 @@ Shipping Options
 
 ### Not use colons
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -137,7 +135,7 @@ Every item in a choice list should:
 - Not use commas or semicolons at the end of each line
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
