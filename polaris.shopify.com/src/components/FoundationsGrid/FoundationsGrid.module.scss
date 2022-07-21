@@ -65,6 +65,7 @@
     color: inherit;
     border-radius: var(--border-radius-800);
     box-shadow: var(--card-shadow);
+    background: var(--surface);
 
     &[data-is-current-result="true"] {
       background: var(--search-highlight-color);

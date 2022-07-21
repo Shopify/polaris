@@ -254,16 +254,38 @@ function SearchResults({
                       key={title}
                       value={{ currentItemId, id }}
                     >
-                      {/* <FoundationsGrid.Item
-                        title={title}
-                        excerpt={excerpt}
-                        category={category}
-                        url={url}
-                        icon={icon}
-                      /> */}
-                      <Longform>
-                        <Markdown text={excerpt} />
-                      </Longform>
+                      <div
+                        style={{
+                          position: "absolute",
+                          maxWidth: 300,
+                          zIndex: 1,
+                          transform: `scale(.66) rotate(-2deg) translate3d(-50px, -50px, 0)`,
+                          boxShadow: "0 20px 40px rgba(0,0,0,.2",
+                        }}
+                      >
+                        <FoundationsGrid.Item
+                          title={title}
+                          excerpt={excerpt}
+                          category={category}
+                          url={url}
+                          icon={icon}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          marginBottom: 20,
+                          opacity: 0.9,
+                          borderRadius: 16,
+                          padding: "20px 20px 20px 240px",
+                          filter: "brightness(120%)",
+                          background: "var(--surface)",
+                          transform: `scale(.8)`,
+                        }}
+                      >
+                        <Longform>
+                          <Markdown text={excerpt} />
+                        </Longform>
+                      </div>
                     </SearchContext.Provider>
                   );
                 })}

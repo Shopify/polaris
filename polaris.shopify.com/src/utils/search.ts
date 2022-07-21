@@ -194,13 +194,10 @@ export function search(query: string): GroupedSearchResults {
                 if (matchez.length > 0) {
                   const match = matchez[0];
                   if (match.index) {
-                    const resultExcerpt = `${content
-                      .slice(
-                        match.index - 500,
-                        match.index + query.length + 250
-                      )
-                      .trim()
-                      .replace(/\n/g, " ")}`;
+                    const resultExcerpt = `${content.slice(
+                      match.index - 500,
+                      match.index + query.length + 250
+                    )}`;
                     if (result.meta.foundations && resultExcerpt) {
                       result.meta.foundations = {
                         ...result.meta.foundations,

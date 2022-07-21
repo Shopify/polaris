@@ -21,6 +21,7 @@ function Markdown({ text, skipH1 }: Props) {
           return skipH1 ? <></> : <h1>{children}</h1>;
         },
         h2: ({ children }) => {
+          if (!children) return null;
           if (children.length === 1 && typeof children[0] === "string") {
             return <h2 id={slugify(children[0])}>{children}</h2>;
           } else {
@@ -28,6 +29,7 @@ function Markdown({ text, skipH1 }: Props) {
           }
         },
         h3: ({ children }) => {
+          if (!children) return null;
           if (children.length === 1 && typeof children[0] === "string") {
             return <h3 id={slugify(children[0])}>{children}</h3>;
           } else {
