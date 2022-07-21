@@ -151,8 +151,6 @@ Every item in a choice list should:
 
 <!-- end -->
 
-<!-- end -->
-
 ### Helper text and descriptions
 
 If your list contains helper text, only the description below the list item should contain punctuation.
