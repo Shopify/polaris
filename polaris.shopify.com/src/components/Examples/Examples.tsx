@@ -3,6 +3,7 @@ import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
 import Select from "../Select";
+import Markdown from "../Markdown";
 
 export type Example = {
   code: string;
@@ -73,7 +74,11 @@ const Examples = (props: Props) => {
         selected={options[currentIndex].value}
         onChange={handleSelection}
       />
-      {description ? <p>{description}</p> : null}
+      {description ? (
+        <p>
+          <Markdown text={description} />
+        </p>
+      ) : null}
 
       <div className={styles.Buttons}>
         <div>
