@@ -83,7 +83,7 @@ function CopyButton({ code }: { code: string }) {
         >
           <Image
             src="/icons/ClipboardMinor.svg"
-            alt=""
+            alt="Clipboard icon"
             width={16}
             height={16}
             icon
