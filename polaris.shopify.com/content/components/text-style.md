@@ -28,8 +28,8 @@ examples:
   - fileName: text-style-positive.tsx
     title: Positive
     description: Use in combination with a symbol showing an increasing value to indicate an upward trend.
-  - fileName: text-style-negative-text-style.tsx
-    title: Negative text style
+  - fileName: text-style-negative.tsx
+    title: Negative
     description: Use in combination with a symbol showing a decreasing value to indicate a downward trend.
   - fileName: text-style-warning.tsx
     title: Warning

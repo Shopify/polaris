@@ -64,7 +64,7 @@ Use in combination with a symbol showing an increasing value to indicate an upwa
 <TextStyle variation="positive">Orders increased</TextStyle>
 ```
 
-### Negative text style
+### Negative
 
 Use in combination with a symbol showing a decreasing value to indicate a downward trend.
 
