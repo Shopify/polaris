@@ -26,7 +26,9 @@ function Page({ children }: Props) {
   return (
     <div
       style={{ background: isPolaris ? "#fafafa" : "unset" }}
-      className={className(!isPolaris && "not-polaris-examples")}
+      className={className(
+        !isPolaris && "styles-for-site-but-not-polaris-examples"
+      )}
     >
       {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
