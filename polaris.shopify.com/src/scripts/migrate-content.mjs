@@ -39,12 +39,17 @@ const migrateFile = async (filePath) => {
     const description = example.replace(title, "").split("```")[0].trim();
     const code = example.split("```jsx").at(-1).replace("```", "").trim();
 
-    exampleFrontMatter += `\n  - fileName: ${exampleId}.tsx\n    title: ${title}\n    description:>-\n      ${description}`;
+    exampleFrontMatter += `\n  - fileName: ${exampleId}.tsx\n    title: ${title}`;
+    if (description) {
+      exampleFrontMatter += `\n    description: ${description}`;
+    }
     examples[`${exampleId}.tsx`] = `${code}`;
   });
 
   const contentNoExample = fileContent
-    .replace(`## Examples${exampleContent}---\n\n`, "")
+    .replace(exampleContent, "")
+    .replace("---\n\n## Examples", "")
+    .replace("\nomitAppProvider: true", "")
     .replace("\n---", `\n${exampleFrontMatter}\n---`);
 
   fs.writeFileSync(fileDir, contentNoExample);
