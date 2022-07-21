@@ -64,7 +64,7 @@ The standard message content is
 - “Unsaved changes” when editing existing content
 - “Unsaved {resource name}” when creating a new object
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +80,7 @@ The standard message content is
 
 Actions in the contextual save bar component should consist of a strong verb that encourages action. They should not include a noun.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

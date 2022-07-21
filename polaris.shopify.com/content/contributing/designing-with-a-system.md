@@ -1,13 +1,14 @@
 ---
-name: Thinking in systems
+name: Designing with a system
 keywords:
   - systems thinking
   - contribution guide
+  - designing with a system
 ---
 
-# Thinking in systems
+# Designing with a system
 
-![Illustration of dozens of chairs of the same kind and a single chair of a diverent kind.](/images/contributing/thinking-in-systems/01.png)
+![Illustration of dozens of chairs of the same kind and a single chair of a diverent kind.](/images/contributing/designing-with-a-system/01.png)
 
 At Shopify, we often say, "Polaris is the floor, not the ceiling." The design system provides you with building blocks, and it's up to you to construct them in a way that best meets your user's needs. The idea behind Polaris not being a ceiling is that you shouldn't limit your ideas to fit into existing system pieces too early. Zoom out, figure out the best design solution to the problem, and then see if Polaris has all the pieces for you to design that solution. If there's a gap, then [contribute](link to top of contribution page) to the system to make it better.
 
@@ -19,7 +20,7 @@ For instance, if you work on Orders, you should have a holistic understanding of
 
 Merchants don't care about Shopify's internal organization. They use the admin as a whole, so we must design with the whole experience in mind.
 
-![Illustration of three tag autocomplete inputs implementing the same pattern, but using different components.](/images/contributing/thinking-in-systems/02.png)
+![Illustration of three tag autocomplete inputs implementing the same pattern, but using different components.](/images/contributing/designing-with-a-system/02.png)
 
 The Deliver team identified a need to consolidate 6 different tag components with varying UX that were doing the same job in different sections of the admin. The redundancy in components was causing a fractured user experience.
 
@@ -27,7 +28,7 @@ The Deliver team identified a need to consolidate 6 different tag components wit
 
 When you understand the product as a whole, you should be well equipped to explore without constraints. That means don't start from our UI kit, component library, or patterns you see in the product---start with a blank sheet of paper instead. Solve the problem, preferably in more than one way, before you start worrying about consistency.
 
-![Illustration of three different ways to improve the design and experience of the tag autocomplete input.](/images/contributing/thinking-in-systems/03.png)
+![Illustration of three different ways to improve the design and experience of the tag autocomplete input.](/images/contributing/designing-with-a-system/03.png)
 
 As the Deliver team was working on consolidating the 6 components, they also identified an opportunity to improve the overall usability for adding tags. The team explored several different ideas and approaches to understand which approach would best solve the problem.
 
@@ -35,7 +36,7 @@ As the Deliver team was working on consolidating the 6 components, they also ide
 
 Once you understand the problem and potential solutions, you can start aligning more closely with the design system.
 
-![Illustration of before and after improving the design of the tag autocomplete.](/images/contributing/thinking-in-systems/04.png)
+![Illustration of before and after improving the design of the tag autocomplete.](/images/contributing/designing-with-a-system/04.png)
 
 The team made updates to the Polaris foundational pieces like the tag, icon, and interactions so that they could use those pieces to build a more opinionated component.
 

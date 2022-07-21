@@ -77,26 +77,25 @@ Merchants use Shopify to get things done. Content should be written and structur
 
 ## Headings and subheadings
 
-<!-- keywords: articles, conversational headings, conversational subheadings, sub-headings, microcopy headings, microcopy subheadings, microcopy sub-headings, heading capitalization, subheading capitalization, sub-heading capitalization, heading punctuation, punctuating headings -->
-
 Headings and subheadings are titles and subtitles that refer to sections of the interface.
 
 ### Basic structure
 
 Headings and subheadings should be:
 
-- Informative and descriptive:
+**Informative and descriptive:**
 
-  - Highlight the most important concept or piece of information for merchants
-  - Help merchants understand what they’ll find in the section below
+- Highlight the most important concept or piece of information for merchants
+- Help merchants understand what they’ll find in the section below
 
-- Concise and scannable:
-  - Use simple, clear language
-  - Keep headings to a single sentence
-  - Avoid using punctuation such as periods, commas, or semicolons
-  - Write in sentence case (capitalize the first word and proper nouns only)
+**Concise and scannable:**
 
-<!-- usagelist -->
+- Use simple, clear language
+- Keep headings to a single sentence
+- Avoid using punctuation such as periods, commas, or semicolons
+- Write in sentence case (capitalize the first word and proper nouns only)
+
+<!-- dodont -->
 
 #### Do
 
@@ -120,7 +119,7 @@ Whether or not to use articles (“the,” “a,” “an”) in headings and su
 
 For more conversational areas of the product, like Home cards, sell pages, and empty states, use articles. It makes the language more approachable and helps people to understand new, complex concepts.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -136,7 +135,7 @@ For more conversational areas of the product, like Home cards, sell pages, and e
 
 For labels, titles, and microcopy, avoid articles to keep content short and actionable. This increases readability and encourages immediate action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -156,7 +155,7 @@ Start sentences with imperative verbs when telling merchants what actions they c
 
 When a merchant reads a sentence that starts with an imperative verb it should sound like they’re being instructed what to do. Don’t use permissive language like “you can.”
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -176,14 +175,11 @@ Add your first product and see how it looks in your store.
 
 <!--- keywords: buttons, button copy, button text, button content, links, actions, calls to action, call to actions, action-led, action led, scannable, articles, choose , select, choose vs select, select vs choose, need, must, need vs must, must vs need -->
 
-Buttons need to be clear and predictable. Merchants should be able to
-anticipate what will happen when they select a button. Never mislead
-someone by mislabeling a button.
+Buttons need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a button. Never mislead someone by mislabeling a button.
 
-Buttons should always lead with a strong verb that encourages action.
-To provide enough context to merchants, use the {verb} + {noun} content formula on buttons except in the case of common actions like “Done,” “Close,” “Cancel,” or “OK.”
+Buttons should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb} + {noun} content formula on buttons except in the case of common actions like “Done,” “Close,” “Cancel,” or “OK.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -201,7 +197,7 @@ To provide enough context to merchants, use the {verb} + {noun} content formula 
 
 Always write button text in sentence case, which means the first word is capitalized and the rest are lowercase (unless a term is a proper noun).
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -215,7 +211,7 @@ Always write button text in sentence case, which means the first word is capital
 
 Avoid unnecessary words and articles such as “the,” “an,” or “a.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -231,11 +227,9 @@ Add a menu item
 
 ## Links
 
-Links need to be clear and predictable. Merchants should be able to
-anticipate what will happen when they select a link. Never mislead
-someone by mislabeling a link.
+Links need to be clear and predictable. Merchants should be able to anticipate what will happen when they select a link. Never mislead someone by mislabeling a link.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -257,7 +251,7 @@ Links in full sentences shouldn’t link the entire sentence, only the text that
 
 It’s better for [internationalization](/foundations/internationalization) to have only single terms or small parts of phrases linked. Linking a full phrase is problematic because the word order might change, which would break the link into two parts.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -275,7 +269,7 @@ It’s better for [internationalization](/foundations/internationalization) to h
 
 Links that aren’t in full sentences should use the {verb + noun} pattern and not be punctuated, with the exception of question marks.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -308,7 +302,7 @@ Confirmation titles should:
 - Avoid articles (the, a, an) to keep content short and actionable
 - Be written in sentence case (the first word is capitalized, and the rest is lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -331,7 +325,7 @@ Confirmation body content should:
 - Clearly explain if the action is irreversible or difficult to undo, using [plain language](https://polaris.shopify.com/content/product-content#write-for-a-grade-7-reading-level).
 - Be concise: use only one line of text. Don’t start the sentence with “Are you sure?”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -360,7 +354,7 @@ Before merchants can delete objects like collections, transfers, products, and v
 
 Primary action:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -376,7 +370,7 @@ Primary action:
 
 Secondary action:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -392,7 +386,7 @@ Secondary action:
 
 Primary action:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -406,7 +400,7 @@ Primary action:
 
 Secondary action:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -423,7 +417,7 @@ Secondary action:
 
 Primary action:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -438,7 +432,7 @@ Primary action:
 
 Secondary action:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -467,8 +461,6 @@ Directional language often indicates a lack of visual or content hierarchy. When
 
 ## Save vs. done
 
-<!-- keywords: save states, deferred save, deferred saving, saving in sheets, saving in modals, saving on a page, saving on pages, delayed saves, delayed saving, context bar copy, page actions, edit states, manage states -->
-
 Use “Save” when a change is saved immediately to a database and “Done” for [deferred saves](#deferred-saves).
 
 ### Saving immediately to a database
@@ -477,11 +469,9 @@ Use “Save” as the default for any action that saves immediately to a databas
 
 #### Saving using the context bar component
 
-When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes,
-like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula. For example, [Save] instead of [Save product].
-In the context bar component, use the verb “Save”.
+When merchants make changes on a page they’re sometimes presented with a context bar at the top. This context bar displays a status message on the left to indicate the state of the changes, like “Unsaved discount.” Since the status message provides context around the action being taken, the button doesn’t need to follow the common {verb} + {noun} content formula. For example, [Save] instead of [Save product]. In the context bar component, use the verb “Save”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -499,7 +489,7 @@ Use the verb “Save” in the context bar
 
 Status messages in the context bar should be descriptive and follow the {adjective} + {noun} content formula.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -518,7 +508,7 @@ Status messages in the context bar should be descriptive and follow the {adjecti
 
 Use the verb “Save” in modals and sheets when saving directly to the database.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -540,7 +530,7 @@ Use the {Save} + {noun} content formula when a save action doesn’t have the su
 
 For example, the action at the bottom of the Create discount page uses [Save discount]:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -563,7 +553,7 @@ Use the adjective “Done” for deferred saves. When the modal or sheet closes,
 
 Most deferred saves happen when confirming changes in Add, Edit, Manage, and Select modals and sheets.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -582,11 +572,9 @@ Most deferred saves happen when confirming changes in Add, Edit, Manage, and Sel
 
 ### Datepickers
 
-<!-- keywords: date pickers, datepicker copy, date picker copy, datepicker copy, datepicker copy, datepicker buttons, date picker buttons -->
-
 Use the adjective “Done” for datepickers.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -604,11 +592,9 @@ Use the adjective “Done” for datepickers.
 
 ## OK vs. accept
 
-<!-- keywords: confirmations okay, o.k., accept conditions, read only states -->
-
 Use the adjective “OK” when merchants need to confirm they’ve read something, but aren’t required to legally accept terms of service before continuing. For example, use “OK” when presenting a security notification in a modal or sheet.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -627,7 +613,7 @@ Use the adjective “OK” when merchants need to confirm they’ve read somethi
 
 Use the adjective “Accept” when terms of service require legal confirmation before merchants can continue.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -645,8 +631,6 @@ Accept
 
 ## Close vs. cancel
 
-<!-- keywords: exiting copy, exiting content, exiting modals, exiting screens, backing out of changes -->
-
 Use the back arrow button as the call to action for modals and screens when:
 
 - the content is in a view-only state
@@ -656,7 +640,7 @@ Don’t use “Close” as the call to action when there’s the option for merc
 - make any changes to the modal or screen
 - confirm they’ve read something or accept terms of service (see [OK vs. accept](#OK-accept))
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -672,7 +656,7 @@ Don’t use “Close” as the call to action when there’s the option for merc
 
 Use “Cancel” as the option for merchants to back out of any changes made on a page, modal, or sheet. When the cancel button is pressed, changes automatically get discarded. “Cancel” is often paired with “Save” and “Done” actions (and is always placed to the left).
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -692,20 +676,16 @@ Use the verb “Cancel” as the action for merchants to back out of changes
 
 ## Select vs. choose
 
-<!-- keywords: pick -->
-
 Use the verb “select”:
 
-- When telling merchants to pick something from a limited number of options of
-  the same kind
-- When merchants need to make an easy or obvious decision that doesn’t require
-  deep reflection or analysis
+- When telling merchants to pick something from a limited number of options of the same kind
+- When merchants need to make an easy or obvious decision that doesn’t require deep reflection or analysis
 - For defined lists and dropdown menus
 - When merchants are given the option to pick from a list of already existing objects, like products
 
 Pair Select modals and screens with the “Done” call to action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -722,12 +702,10 @@ Pair Select modals and screens with the “Done” call to action.
 
 Use the verb “choose” when:
 
-- Encouraging merchants to make a decision that is more subjective, strategic,
-  emotional, or open-ended
-- Merchants have to pick from a large inventory of items, like themes, or
-  options that require strategic decision making, like pricing plans
+- Encouraging merchants to make a decision that is more subjective, strategic, emotional, or open-ended
+- Merchants have to pick from a large inventory of items, like themes, or options that require strategic decision making, like pricing plans
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -748,11 +726,9 @@ Use the verb “choose” when:
 
 ## Edit vs. manage
 
-<!-- keywords: edit -->
-
 Use the verb “edit” when you can change the input of a field (letters, numbers, properties). Place as link text next to the field or area that is being edited. There’s no need for a noun unless it’s unclear what’s being edited.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -767,11 +743,9 @@ Use the verb “edit” when you can change the input of a field (letters, numbe
 
 <!-- end -->
 
-<!-- keywords: manage -->
-
 Use the verb “manage” at a higher level to convey that multiple actions can be done, or sections and settings can be updated. Pair this verb with a noun if it’s in a button or if it’s unclear what is being managed.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -790,11 +764,9 @@ Use the verb “manage” at a higher level to convey that multiple actions can 
 
 ## Change vs. switch
 
-<!-- keywords: change -->
-
 Use the verb “change” when merchants can replace an option, but not edit it. For example, they can change an image or theme, but the action doesn’t include editing its properties. Place as link text next to the field or area that is being changed. There’s no need for a noun unless it’s unclear what is being changed.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -807,11 +779,9 @@ Use the verb “change” when merchants can replace an option, but not edit it.
 
 <!-- end -->
 
-<!-- keywords: switch -->
-
 Use the verb “switch” when it’s important for merchants to know what they’re switching between, like users, accounts, locations, or modes. When the switch happens, the previous option is turned off, logged out, or deactivated. Always pair with a noun to prevent confusion.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -828,12 +798,9 @@ Use the verb “switch” when it’s important for merchants to know what they�
 
 ## Create vs. add
 
-<!-- keywords: new items, creation states, addition states, new objects -->
+Use the verb “create” when you’re encouraging merchants to generate something from scratch, like a collection.
 
-Use the verb “create” when you’re encouraging merchants to generate something
-from scratch, like a collection.
-
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -849,10 +816,9 @@ from scratch, like a collection.
 
 <!-- end -->
 
-Use the verb “add” when you’re encouraging merchants to bring something that
-already exists into Shopify, like a product.
+Use the verb “add” when you’re encouraging merchants to bring something that already exists into Shopify, like a product.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -870,13 +836,9 @@ already exists into Shopify, like a product.
 
 ## View vs. see
 
-<!-- keywords: viewing, view all, see all -->
+Use the verb “view” when you’re encouraging merchants to go to a specific page or section for more details, or to reveal more information. Use “view” in buttons, calls to action, and link text.
 
-Use the verb “view” when you’re encouraging merchants to go to a specific
-page or section for more details, or to reveal more information. Use “view” in
-buttons, calls to action, and link text.
-
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -895,10 +857,9 @@ buttons, calls to action, and link text.
 
 <!-- end -->
 
-Use the verb “see” in more general, conversational descriptions without a
-specific call to action.
+Use the verb “see” in more general, conversational descriptions without a specific call to action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -916,22 +877,17 @@ specific call to action.
 
 ## Need vs. must
 
-<!-- keywords: required actions -->
+Use the verb “need” when you’re telling merchants something they’re required to do or should do.
 
-Use the verb “need” when you’re telling merchants something they’re required
-to do or should do.
-
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -939,12 +895,9 @@ including packaging.
 
 ## Export vs. download
 
-<!-- keywords: exporting, downloading -->
+Use “export” as the call to action when merchants needs to transfer data from Shopify and convert it into a different format.
 
-Use “export” as the call to action when merchants needs to transfer data from
-Shopify and convert it into a different format.
-
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -956,10 +909,9 @@ Shopify and convert it into a different format.
 
 <!-- end -->
 
-Use “download” as the call to action when merchants need to copy data (of the
-same format) from Shopify to a computer system.
+Use “download” as the call to action when merchants need to copy data (of the same format) from Shopify to a computer system.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -977,12 +929,9 @@ same format) from Shopify to a computer system.
 
 ## Import vs. upload
 
-<!-- keywords: importing, uploading -->
+Use “import” as the call to action when merchants need to transfer data and convert it into a different format so it can be used in Shopify.
 
-Use “import” as the call to action when merchants need to transfer data and
-convert it into a different format so it can be used in Shopify.
-
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -994,10 +943,9 @@ convert it into a different format so it can be used in Shopify.
 
 <!-- end -->
 
-Use “upload” as the call to action when merchants need to copy data of the same
-format from a computer system into Shopify.
+Use “upload” as the call to action when merchants need to copy data of the same format from a computer system into Shopify.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

@@ -51,11 +51,10 @@ const Components = ({
     : undefined;
 
   return (
-    <Layout width="narrow" navItems={navItems}>
+    <Layout width="narrow" navItems={navItems} title={name}>
       <PageMeta title={name} description={intro} />
 
       <Longform>
-        <h1>{name}</h1>
         <Markdown text={readme.header} skipH1 />
         {typedStatus && <StatusBanner status={typedStatus} />}
         <Examples examples={examples} />

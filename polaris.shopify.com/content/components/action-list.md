@@ -67,7 +67,7 @@ Actions lists should:
 
 Each item in an action list should be clear and predictable. Merchants should be able to anticipate what will happen when they click on an action item.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -81,7 +81,7 @@ Buy
 
 Each item in an action list should always lead with a strong verb that encourages action. To provide enough context use the {verb}+{noun} format unless the action is clear with a single verb.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -97,7 +97,7 @@ Each item in an action list should always lead with a strong verb that encourage
 
 Each item in an action list should be scannable avoiding unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

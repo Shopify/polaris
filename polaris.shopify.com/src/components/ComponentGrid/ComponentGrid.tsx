@@ -1,14 +1,10 @@
 import Image from "../Image";
 import Link from "next/link";
-import { SearchResultItem } from "../../types";
-import {
-  className,
-  getReadableStatusValue,
-  slugify,
-} from "../../utils/various";
+import { getReadableStatusValue, slugify } from "../../utils/various";
 import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
 import StatusBadge from "../StatusBadge";
+import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
 
 interface ComponentGridProps {
   children: React.ReactNode;
@@ -18,7 +14,7 @@ function ComponentGrid({ children }: ComponentGridProps) {
   return <ul className={styles.ComponentGrid}>{children}</ul>;
 }
 
-interface ComponentGridItemProps extends SearchResultItem {
+interface ComponentGridItemProps {
   name: string;
   description: string;
   url: string;
@@ -29,20 +25,14 @@ function ComponentGridItem({
   name,
   description,
   url,
-  searchResultData,
   status,
 }: ComponentGridItemProps) {
+  const searchAttributes = useGlobalSearchResult();
+
   return (
-    <li
-      key={name}
-      className={className(
-        styles.Component,
-        searchResultData?.isHighlighted && styles.isHighlighted
-      )}
-      {...searchResultData?.itemAttributes}
-    >
+    <li key={name} className={styles.Component} {...searchAttributes}>
       <Link href={url} passHref>
-        <a tabIndex={searchResultData?.tabIndex}>
+        <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
             <Image
               src={`/images/components/${slugify(name)}.png`}
