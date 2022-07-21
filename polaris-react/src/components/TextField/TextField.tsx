@@ -577,7 +577,7 @@ export function TextField({
 
   function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
-    const numbersSpec = /[\d.eE+-]$/;
+    const numbersSpec = /[\d.,eE+-]$/;
     if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
