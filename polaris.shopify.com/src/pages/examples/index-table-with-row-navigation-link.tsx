@@ -2,6 +2,7 @@ import {
   IndexTable,
   TextStyle,
   Card,
+  Link,
   useIndexResourceState,
 } from "@shopify/polaris";
 import React from "react";

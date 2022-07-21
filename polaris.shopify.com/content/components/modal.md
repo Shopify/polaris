@@ -48,12 +48,10 @@ examples:
     description: Use to implement infinite scroll of modal content.
   - fileName: modal-with-activator-ref.tsx
     title: With activator ref
-    description: Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+    description: Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
   - fileName: modal-without-an-activator-prop.tsx
     title: Without an activator prop
-    description: Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+    description: Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 ---
 
 # Modal

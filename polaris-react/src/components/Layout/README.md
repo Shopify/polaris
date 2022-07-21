@@ -449,7 +449,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 </Page>
 ```
 
-### Annotated using plain Layout.Sections
+### Annotated with sections
 
 Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
 

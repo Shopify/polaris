@@ -356,10 +356,7 @@ function HelpTextExample() {
 
 ### With prefix or suffix
 
-Use as a special form of help text that works best inline.
-
-- Use a prefix for things like currency symbols (“\$”, “¥”, “£”).
-- Use suffix for things like units of measure (“in”, “cm”).
+Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (“\$”, “¥”, “£”). Use suffix for things like units of measure (“in”, “cm”).
 
 ```jsx
 function PrefixExample() {
@@ -421,9 +418,7 @@ function VerticalContent() {
 
 ### With connected fields
 
-Use when a text field and several related fields make up a logical unit.
-
-If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
+Use when a text field and several related fields make up a logical unit. If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
 
 ```jsx
 function ConnectedFieldsExample() {

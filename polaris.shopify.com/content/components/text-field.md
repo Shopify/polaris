@@ -70,18 +70,13 @@ examples:
     description: Use to show short instructional content below the text field. Help text works to help merchants understand how to fix errors that result from incorrect formatting (such as dates or passwords with specific character requirements). If more explanation is needed, link to the Shopify Help Center.
   - fileName: text-field-with-prefix-or-suffix.tsx
     title: With prefix or suffix
-    description: Use as a special form of help text that works best inline.
-
-- Use a prefix for things like currency symbols (“\$”, “¥”, “£”).
-- Use suffix for things like units of measure (“in”, “cm”).
+    description: Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (“\$”, “¥”, “£”). Use suffix for things like units of measure (“in”, “cm”).
   - fileName: text-field-with-vertical-content.tsx
     title: With vertical content
     description: Use to include custom vertical content above the input value, like selected tags.
   - fileName: text-field-with-connected-fields.tsx
     title: With connected fields
-    description: Use when a text field and several related fields make up a logical unit.
-
-If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
+    description: Use when a text field and several related fields make up a logical unit. If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
   - fileName: text-field-with-validation-error.tsx
     title: With validation error
     description: Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as merchants have finished interacting with a field (but not before). If a field already has an error, validate and remove errors as merchants type so they can immediately see when an error has been fixed.

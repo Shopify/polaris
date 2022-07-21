@@ -31,8 +31,8 @@ examples:
   - fileName: layout-annotated.tsx
     title: Annotated
     description: Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
-  - fileName: layout-annotated-using-plain-layout.sections.tsx
-    title: Annotated using plain Layout.Sections
+  - fileName: layout-annotated-with-sections.tsx
+    title: Annotated with sections
     description: Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
   - fileName: layout-annotated-with-banner-at-the-top.tsx
     title: Annotated with Banner at the top

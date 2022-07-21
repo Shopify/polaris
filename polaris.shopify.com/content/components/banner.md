@@ -41,10 +41,10 @@ examples:
     description: Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action. Include next steps if applicable.
   - fileName: banner-warning.tsx
     title: Warning
-    description: Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them
+    description: Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
   - fileName: banner-critical.tsx
     title: Critical
-    description: Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them
+    description: Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
   - fileName: banner-in-a-modal.tsx
     title: In a modal
     description: Banners inside of modals render with less spacing and a pared-back design to fit within a content context.

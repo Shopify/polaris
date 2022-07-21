@@ -47,8 +47,7 @@ function ColorPickerExample() {
 
 ### With transparent value
 
-Use when attached to a visual builder to allow the designated object to have a
-transparent background that allows underlying objects to show through.
+Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 
 ```jsx
 function ColorPickerWithTransparentValueExample() {
@@ -65,8 +64,7 @@ function ColorPickerWithTransparentValueExample() {
 
 ### With transparent value full width
 
-Use when attached to a visual builder to allow the designated object to have a
-transparent background that allows underlying objects to show through.
+Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 
 ```jsx
 function ColorPickerWithTransparentValueExample() {

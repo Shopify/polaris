@@ -21,9 +21,7 @@ examples:
     description: Use when a single value of a specific increment needs to be selected from a range of numbers.
   - fileName: range-slider-with-prefix-and-suffix.tsx
     title: With prefix and suffix
-    description: Use when the start or end of the range input benefits from additional content.
-
-The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
+    description: Use when the start or end of the range input benefits from additional content. The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
   - fileName: range-slider-with-dual-thumb.tsx
     title: With dual thumb
     description: Use when two values need to be selected from a range of numbers.

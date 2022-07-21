@@ -1,4 +1,13 @@
-import { Stack, Tag, Listbox, Combobox } from "@shopify/polaris";
+import {
+  Stack,
+  Tag,
+  Listbox,
+  Combobox,
+  Icon,
+  TextContainer,
+} from "@shopify/polaris";
+
+import { SearchMinor } from "@shopify/polaris-icons";
 
 import { useState, useCallback, useMemo } from "react";
 
