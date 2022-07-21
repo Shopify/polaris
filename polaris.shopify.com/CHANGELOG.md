@@ -1,5 +1,41 @@
 # polaris.shopify.com
 
+## 0.8.0
+
+### Minor Changes
+
+- [#6692](https://github.com/Shopify/polaris/pull/6692) [`a88b93d15`](https://github.com/Shopify/polaris/commit/a88b93d15c5ea48442225565ea2a2ff1eb5d6678) Thanks [@yurm04](https://github.com/yurm04)! - Updated Contributing page nav links and Documentation page content
+
+* [#6676](https://github.com/Shopify/polaris/pull/6676) [`365ef2cca`](https://github.com/Shopify/polaris/commit/365ef2ccae4451958be02587d5f07b40a8cacfc1) Thanks [@yurm04](https://github.com/yurm04)! - Updated 404ing tokens link in the VS Code readme
+
+- [#6704](https://github.com/Shopify/polaris/pull/6704) [`9080b5d52`](https://github.com/Shopify/polaris/commit/9080b5d523031c05a802c092b5015506f472b8da) Thanks [@alex-page](https://github.com/alex-page)! - Added support for markdown content in component examples' descriptions
+
+* [#6502](https://github.com/Shopify/polaris/pull/6502) [`ef46503e2`](https://github.com/Shopify/polaris/commit/ef46503e235c399bb83b6185a06aa7b11cf79e06) Thanks [@martenbjork](https://github.com/martenbjork)! - Major refactor of site search
+
+### Patch Changes
+
+- [#6684](https://github.com/Shopify/polaris/pull/6684) [`4c9a0b7f3`](https://github.com/Shopify/polaris/commit/4c9a0b7f3fb282101d58ce135bf411564373e654) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved CSS to prevent site styles from leaking into Polaris examples
+
+* [#6679](https://github.com/Shopify/polaris/pull/6679) [`5b69a25e4`](https://github.com/Shopify/polaris/commit/5b69a25e4e30524ee42d598a3ac8e5d62f91b478) Thanks [@alex-page](https://github.com/alex-page)! - Add missing content from polaris-react
+
+- [#6683](https://github.com/Shopify/polaris/pull/6683) [`0b1970864`](https://github.com/Shopify/polaris/commit/0b197086430123eb30f373252fad84e773234ece) Thanks [@alex-page](https://github.com/alex-page)! - Move foundations icons to a component
+
+* [#6696](https://github.com/Shopify/polaris/pull/6696) [`146631b39`](https://github.com/Shopify/polaris/commit/146631b39dfb27f994a8056c5466f33d49cab3a9) Thanks [@ashancock](https://github.com/ashancock)! - Fix missing period typo in Warning banners description
+
+- [#6716](https://github.com/Shopify/polaris/pull/6716) [`35b260673`](https://github.com/Shopify/polaris/commit/35b2606736e162eee1876cbafa46bd71d073dc7a) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved website's CSS reset so that its specificity was lowered, making it easier to add new styles on top of the reset.
+
+* [#6681](https://github.com/Shopify/polaris/pull/6681) [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353) Thanks [@alex-page](https://github.com/alex-page)! - Removed comments and cleaned up markdown files
+
+- [#6713](https://github.com/Shopify/polaris/pull/6713) [`7c788cdab`](https://github.com/Shopify/polaris/commit/7c788cdabd5968d1147b42361be346cfa9e2a349) Thanks [@martenbjork](https://github.com/martenbjork)! - Fixed an issue which accidentally made links be the same colors as regular text
+
+* [#6674](https://github.com/Shopify/polaris/pull/6674) [`6657ba4c5`](https://github.com/Shopify/polaris/commit/6657ba4c54ff4fba8d4350602afc68ed316a16d0) Thanks [@adrianefong](https://github.com/adrianefong)! - Fixed home page "Polaris for Vs Code" section background on smaller breakpoints
+
+- [#6668](https://github.com/Shopify/polaris/pull/6668) [`407dd205b`](https://github.com/Shopify/polaris/commit/407dd205b2d048594bae77b80744cfc754a7a411) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved examples browsing experience so that it's easier to see all examples at the same time.
+
+- Updated dependencies [[`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad), [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353), [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097), [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb)]:
+  - @shopify/polaris@9.21.0
+  - @shopify/polaris-icons@5.2.0
+
 ## 0.7.0
 
 ### Minor Changes
