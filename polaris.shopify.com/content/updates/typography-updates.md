@@ -12,7 +12,7 @@ keywords:
 
 Learn about what changes are coming to Polaris typography
 
-![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-updates@2x.png)
+![Screen showing the new type styles](/images/updates/type-updates@2x.png)
 
 ---
 
@@ -74,8 +74,6 @@ We considered those common values that we were noticing being added and adjusted
 We’re moving from two type scales to one for both desktop and mobile web.
 
 We looked at how type changes between the different screen sizes and found that it’s often a difference of `1px`. While `1px` can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles, just wasn’t worth it. They often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
-
-[gif to show difference]
 
 However, for the larger sizes in the scale, we believe, in most cases, it makes sense for those sizes to adjust automatically so the sizes look appropriate for the screen size they’re being displayed on. This behavior hasn’t been added yet but, in the next release, we’ll update the larger styles to respond automatically at certain breakpoints with all other sizes staying the same unless specified otherwise.
 
@@ -160,6 +158,6 @@ Don’t worry, we’ll also provide a timeline and guidance for migration.
 
 ## Resources
 
-[Text component]()
-[Figma Text styles]()
-[Figma guides]()
+- [Text component](http://localhost:3000/components/text)
+- [Figma text styles](https://www.figma.com/file/tbm3yEIZsOuHS7xJu9zy6Q/text-styles?node-id=5457%3A5710)
+- [Figma guides](https://www.figma.com/file/tbm3yEIZsOuHS7xJu9zy6Q/text-styles?node-id=5523%3A51)
