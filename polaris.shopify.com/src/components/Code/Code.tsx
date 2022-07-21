@@ -69,11 +69,7 @@ function CopyButton({ code }: { code: string }) {
     <div className={styles.CopyButtonWrapper}>
       <Tooltip
         ariaLabel="Copy to clipboard"
-        renderContent={() => (
-          <div className={styles.IconToolTip}>
-            <p>{didJustCopy ? "Copied" : "Copy"}</p>
-          </div>
-        )}
+        renderContent={() => <p>{didJustCopy ? "Copied" : "Copy"}</p>}
       >
         <button
           type="button"
