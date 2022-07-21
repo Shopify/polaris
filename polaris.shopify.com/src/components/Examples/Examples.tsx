@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import CodeExample from "../CodeExample";
+import Markdown from "../Markdown";
 import { Tab } from "@headlessui/react";
 
 export type Example = {
@@ -67,7 +68,7 @@ const Examples = (props: Props) => {
 
             return (
               <Tab.Panel key={fileName}>
-                {description ? <p>{description}</p> : null}
+                {description ? <Markdown text={description} /> : null}
                 <div className={styles.ExampleFrame}>
                   <iframe
                     src={exampleUrl}
