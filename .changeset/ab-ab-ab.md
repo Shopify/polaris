@@ -1,5 +1,5 @@
 ---
-'polaris': patch
+'@shopify/polaris': patch
 ---
 
 `DataTable` revert accidental rename of `hasFixedFirstColumn` to `fixedFirstColumn`
