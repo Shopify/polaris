@@ -93,7 +93,7 @@ export const getStaticProps: GetStaticProps<
     };
 
     const examples = (data?.frontMatter?.examples || []).map(
-      (example: Example) => {
+      (example: ComponentExample) => {
         const examplePath = path.resolve(
           process.cwd(),
           `src/pages/examples/${example.fileName}`
