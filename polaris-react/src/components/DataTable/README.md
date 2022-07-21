@@ -226,8 +226,7 @@ function DataTableExample() {
 
 ### With totals in footer
 
-Use to reposition the totals row in a more appropriate location based on the data stored in the
-table for merchants to better understand its meaning.
+Use to reposition the totals row in a more appropriate location based on the data stored in the table for merchants to better understand its meaning.
 
 ```jsx
 function DataTableExample() {

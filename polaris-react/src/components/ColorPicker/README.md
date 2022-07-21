@@ -17,16 +17,13 @@ keywords:
 
 # Color picker
 
-The color picker is used to let merchants select a color visually. For
-example, merchants use the color picker to customize the accent color of the
-email templates for their shop.
+The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop.
 
 ---
 
 ## Best practices
 
-- Use the alpha slider if you want to allow merchants to be able to select a
-  transparent color
+- Use the alpha slider if you want to allow merchants to be able to select a transparent color
 
 ---
 
@@ -34,8 +31,7 @@ email templates for their shop.
 
 ### Default
 
-Use when merchants need to select a color to make the selection a visual
-task rather than a technical one.
+Use when merchants need to select a color to make the selection a visual task rather than a technical one.
 
 ```jsx
 function ColorPickerExample() {

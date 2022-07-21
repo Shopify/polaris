@@ -25,10 +25,8 @@ The scrollable component is a container for long form content, such as terms of 
 
 Scrollable containers should:
 
-- Be used when it’s helpful to provide an extra visual cue to let merchants
-  know that content exists below or above the fold
-- Only be used for length text such as terms of service or other legal
-  disclaimers and never for instructional or action-oriented text
+- Be used when it’s helpful to provide an extra visual cue to let merchants know that content exists below or above the fold
+- Only be used for length text such as terms of service or other legal disclaimers and never for instructional or action-oriented text
 
 ---
 

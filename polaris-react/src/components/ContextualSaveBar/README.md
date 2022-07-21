@@ -107,8 +107,7 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 
 ### With flush contents
 
-Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and
-repurpose that space to extend the message contents fully to the left side of the container.
+Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and repurpose that space to extend the message contents fully to the left side of the container.
 
 ```jsx
 <div style={{height: '250px'}}>

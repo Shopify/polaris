@@ -36,10 +36,8 @@ Buttons should:
 
 - Be clearly and accurately labeled.
 - Lead with a strong, actionable verb.
-- Use established button colors appropriately. For example, only use a red
-  button for an action that’s difficult or impossible to undo.
-- Prioritize the most important actions. Too many calls to action can cause
-  confusion and make merchants unsure of what to do next.
+- Use established button colors appropriately. For example, only use a red button for an action that’s difficult or impossible to undo.
+- Prioritize the most important actions. Too many calls to action can cause confusion and make merchants unsure of what to do next.
 - Be positioned in consistent locations in the interface.
 
 ### Buttons versus links

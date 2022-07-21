@@ -220,14 +220,6 @@ function ValidationErrorExample() {
 
 Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 
-When the `error` prop has a boolean value of `true`, the select component indicates to merchants that their input is invalid without rendering an error message directly below it. It anticipates that an inline error component exists separately within the form.
-
-To render an invalid select and its validation error separately:
-
-- Set a unique identifier to the select component `id` prop
-- Set a boolean to the select component `error` prop
-- Use an [inline error component](https://polaris.shopify.com/components/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
-
 ```jsx
 function SeparateValidationErrorExample() {
   const [weight, setWeight] = useState('12');
