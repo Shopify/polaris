@@ -3,6 +3,7 @@ import styles from "./Examples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import Code from "../Code";
 import { Tab } from "@headlessui/react";
+import { className } from "../../utils/various";
 
 export type Example = {
   code: string;
@@ -114,7 +115,7 @@ const Examples = (props: Props) => {
                     onLoad={handleExampleLoad}
                     id="examples-iframe"
                   />
-                  <div className={styles.Buttons}>
+                  <div className={className(styles.Buttons, "light-mode")}>
                     <CodesandboxButton
                       className={styles.CodesandboxButton}
                       code={code}
