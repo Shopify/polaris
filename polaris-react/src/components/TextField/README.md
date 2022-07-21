@@ -488,14 +488,6 @@ function ValidationErrorExample() {
 
 Use to let merchants know when their text field input is invalid in the context of a group of form inputs that the text field depends on.
 
-When the `error` prop has a boolean value of `true`, the text field component indicates to merchants that their input is invalid without rendering an error message directly below it. It anticipates that an inline error component exists separately within the form.
-
-To render an invalid text field and its validation error separately:
-
-- Set a unique identifier on the text field component `id` prop
-- Set a boolean on the text field component `error` prop
-- Use an [inline error component](https://polaris.shopify.com/components/inline-error) to describe the invalid text field input, and set its `fieldID` prop to be the same unique indentifier as the text field component’s `id`
-
 ```jsx
 function SeparateValidationErrorExample() {
   const [textFieldValue, setTextFieldValue] = useState('');
