@@ -21,9 +21,7 @@ keywords:
 
 # Choice list
 
-A choice list lets you create a list of grouped radio buttons or checkboxes.
-Use this component if you need to group together a related list of interactive
-choices.
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 
 ---
 
@@ -43,8 +41,7 @@ Choice lists should:
 
 List titles should:
 
-- Help merchants understand how the items in the list are grouped together, or
-  should explain what kind of choice merchants are making
+- Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
 <!-- dodont -->
 
@@ -83,11 +80,17 @@ Shipping Options
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete their order
+If the customer abandons their checkout, send them an email reminder to complete their order:
+
+- Option a
+- Option b
 
 #### Don’t
 
 If the customer abandons their checkout, send them an email reminder to complete their order
+
+- Option a
+- Option b
 
 <!-- end -->
 
@@ -125,9 +128,7 @@ If your list contains helper text, only the description below the list item shou
 
 ### Single choice list
 
-Allows merchants to select one option from a list.
-
-- Make sure all options are an either/or choice.
+Allows merchants to select one option from a list. Make sure all options are an either/or choice.
 
 ```jsx
 function SingleChoiceListExample() {
@@ -178,9 +179,7 @@ function ChoiceListWithErrorExample() {
 
 ### Multi-choice list
 
-Allows merchants to select multiple options from a list.
-
-- Avoid options that are an either/or choice.
+Allows merchants to select multiple options from a list. Avoid options that are an either/or choice.
 
 ```jsx
 function MultiChoiceListExample() {
