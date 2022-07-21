@@ -25,7 +25,7 @@
     "codesandbox": "^2.2.3",
     "fuse.js": "^6.5.3",
     "gray-matter": "^4.0.3",
-    "next": "12.1.0",
+    "next": "12.1.6",
     "prismjs": "^1.27.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
