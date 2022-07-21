@@ -10,7 +10,7 @@ keywords:
   - padding
 ---
 
-# Spacing
+# Space
 
 Space is the distance between objects in your design. It should be used to organize information in a way that is familiar and easy to scan, while helping reinforce its purpose.
 
