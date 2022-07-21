@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import styles from "./Examples.module.scss";
+import styles from "./ComponentExamples.module.scss";
 import CodesandboxButton from "../CodesandboxButton";
 import Code from "../Code";
 import { Tab } from "@headlessui/react";
 import { className } from "../../utils/various";
 
-export type Example = {
+export type ComponentExample = {
   code: string;
   description: string;
   fileName: string;
@@ -13,7 +13,7 @@ export type Example = {
 };
 
 interface Props {
-  examples: [Example];
+  examples: ComponentExample[];
 }
 
 // https://stackoverflow.com/a/60338028
@@ -36,7 +36,7 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-const Examples = (props: Props) => {
+const ComponentExamples = (props: Props) => {
   const { examples } = props;
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState("");
@@ -138,4 +138,4 @@ const Examples = (props: Props) => {
   );
 };
 
-export default Examples;
+export default ComponentExamples;

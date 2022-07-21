@@ -2,8 +2,8 @@ import fs from "fs";
 import glob from "glob";
 import path from "path";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import Examples from "../../components/Examples";
-import type { Example } from "../../components/Examples";
+import ComponentExamples from "../../components/ComponentExamples";
+import type { ComponentExample } from "../../components/ComponentExamples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
 import type { NavItem } from "../../components/Nav";
@@ -22,7 +22,7 @@ interface MarkdownData {
 }
 
 interface Props {
-  examples: [Example];
+  examples: ComponentExample[];
   status?: Status;
   name: string;
   intro: string;
@@ -56,7 +56,7 @@ const Components = ({
       <Longform>
         <Markdown text={intro} skipH1 />
         {typedStatus && <StatusBanner status={typedStatus} />}
-        <Examples examples={examples} />
+        <ComponentExamples examples={examples} />
         {propsForComponent && <PropsTable props={propsForComponent} />}
         <Markdown text={readme.body} skipH1 />
       </Longform>
