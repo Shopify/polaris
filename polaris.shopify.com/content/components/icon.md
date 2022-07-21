@@ -15,26 +15,20 @@ keywords:
   - alert
 examples:
   - fileName: icon-default.tsx
-    title: Default icon
-    description: >-
-      Use to visually communicate core parts of the product and available
-      actions.
+    title: Default
+    description: Use to visually communicate core parts of the product and available actions.
   - fileName: icon-colored.tsx
-    title: Colored icon
+    title: Colored
     description: Apply a color to the icon.
   - fileName: icon-with-backdrop.tsx
-    title: Icon with backdrop
+    title: With backdrop
     description: Apply a backdrop to the icon.
-  - fileName: icon-user-provided.tsx
+  - fileName: icon-user-provided-icon.tsx
     title: User provided icon
-    description: >-
-      Specify an SVG as a string to render it in an image tag, instead of an
-      inline SVG to prevent script injection.
-  - fileName: icon-user-provided-with-color-and-current-color.tsx
+    description: Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.
+  - fileName: icon-user-provided-icon-with-color-and-current-color.tsx
     title: User provided icon with color and currentColor
-    description: >-
-      When using changing color of an svg and it uses currentColor, the white
-      color is applied.
+    description: When using changing color of an svg and it uses currentColor, the white color is applied.
 ---
 
 # Icon
