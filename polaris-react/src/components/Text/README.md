@@ -253,7 +253,7 @@ Use to denote something that needs attention, or that merchants need to take act
 </Text>
 ```
 
-### Subdued text color
+### With color subdued
 
 Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
 
