@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Prism from "prismjs";
+import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import { Tab } from "@headlessui/react";
 
 import Tooltip from "../Tooltip";
@@ -14,11 +14,12 @@ interface Props {
     title: string;
     code: string;
   }[];
-
+  /** @default 'jsx' */
+  language?: Language;
   children?: React.ReactNode;
 }
 
-function Code({ tabs, children }: Props) {
+function Code({ tabs, children, language = "jsx" }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const plainCodeSample = children ? (
@@ -26,7 +27,7 @@ function Code({ tabs, children }: Props) {
       <div className={styles.CopyButtonOverlay}>
         <CopyButton code={children as string} />
       </div>
-      <HighlightedCode code={children as string} />
+      <HighlightedCode language={language} code={children as string} />
     </div>
   ) : null;
 
@@ -39,7 +40,7 @@ function Code({ tabs, children }: Props) {
           </div>
           <CopyButton code={tabs[0].code} />
         </div>
-        <HighlightedCode code={tabs[0].code} />
+        <HighlightedCode language={language} code={tabs[0].code} />
       </>
     ) : null;
 
@@ -60,7 +61,7 @@ function Code({ tabs, children }: Props) {
         <Tab.Panels>
           {tabs.map(({ title, code }) => (
             <Tab.Panel key={title}>
-              <HighlightedCode code={code} />
+              <HighlightedCode language={language} code={code} />
             </Tab.Panel>
           ))}
         </Tab.Panels>
@@ -76,14 +77,37 @@ function Code({ tabs, children }: Props) {
   );
 }
 
-function HighlightedCode({ code }: { code: string }) {
+function HighlightedCode({
+  code,
+  language,
+}: {
+  code: string;
+  language: Language;
+}) {
   return (
-    <div
-      className={styles.HighlightedCode}
-      dangerouslySetInnerHTML={{
-        __html: Prism.highlight(code, Prism.languages.javascript, "javasript"),
-      }}
-    ></div>
+    <div className={styles.HighlightedCode}>
+      <Highlight
+        {...defaultProps}
+        theme={undefined}
+        code={code}
+        language={language}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className} style={style}>
+            {tokens.map((line, index) => (
+              <div
+                key={`line-${index}`}
+                {...getLineProps({ line, key: index })}
+              >
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+    </div>
   );
 }
 

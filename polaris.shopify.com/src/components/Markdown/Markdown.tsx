@@ -2,7 +2,10 @@ import ReactMarkdown from "react-markdown";
 import React from "react";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
+import { Language } from "prism-react-renderer";
+
 import { slugify } from "../../utils/various";
+
 import Code from "../Code";
 
 interface Props {
@@ -33,8 +36,15 @@ function Markdown({ text, skipH1 }: Props) {
             return <h3>{children}</h3>;
           }
         },
-        code: ({ inline, children }) =>
-          inline ? <code>{children}</code> : <Code>{children}</Code>,
+        code: ({ inline, children, className }) => {
+          const match = /language-(\w+)/.exec(className || "");
+          const lang = match ? (match[1] as Language) : undefined;
+          return inline ? (
+            <code>{children}</code>
+          ) : (
+            <Code language={lang}>{children}</Code>
+          );
+        },
         table: ({ children }) => (
           <div className="table-wrapper">
             <table>{children}</table>
