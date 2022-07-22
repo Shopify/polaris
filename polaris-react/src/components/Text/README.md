@@ -75,7 +75,7 @@ Use to create a medium heading text.
 </Text>
 ```
 
-### Heading Large
+### Heading large
 
 Use to create a large heading text.
 
