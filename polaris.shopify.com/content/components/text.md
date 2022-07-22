@@ -23,95 +23,95 @@ status:
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
   - fileName: text-display-small.tsx
-    title: Display Small
+    title: Display small
     description: >-
       Use to create a small display text.
   - fileName: text-display-medium.tsx
-    title: Display Medium
+    title: Display medium
     description: >-
       Use to create a medium display text.
   - fileName: text-display-large.tsx
-    title: Display Large
+    title: Display large
     description: >-
       Use to create a large display text.
   - fileName: text-heading-small.tsx
-    title: Heading Small
+    title: Heading small
     description: >-
       Use to create a small heading text.
   - fileName: text-heading-medium.tsx
-    title: Heading Medium
+    title: Heading medium
     description: >-
       Use to create a medium heading text.
   - fileName: text-heading-large.tsx
-    title: Heading Large
+    title: Heading large
     description: >-
       Use to create a large heading text.
   - fileName: text-heading-extra-large.tsx
-    title: Heading Extra Large
+    title: Heading extra large
     description: >-
       Use to create an extra large heading text.
   - fileName: text-body-small.tsx
-    title: Body Small
+    title: Body small
     description: >-
       Use to create a small body text.
   - fileName: text-body-medium.tsx
-    title: Body Medium
+    title: Body medium
     description: >-
       Use to create a medium body text.
   - fileName: text-body-large.tsx
-    title: Body Large
+    title: Body large
     description: >-
       Use to create a large body text.
-  - fileName: text-align-inherit.tsx
-    title: Align Inherit
+  - fileName: text-with-align-inherit.tsx
+    title: With align inherit
     description: >-
       Use to inherit parent alignment.
-  - fileName: text-align-start.tsx
-    title: Align Start
+  - fileName: text-with-align-start.tsx
+    title: With align start
     description: >-
       Use to align text at start of horizontal line.
-  - fileName: text-align-center.tsx
-    title: Align Center
+  - fileName: text-with-align-center.tsx
+    title: With align center
     description: >-
       Use to align text at center of horizontal line.
-  - fileName: text-align-end.tsx
-    title: Align End
+  - fileName: text-with-align-end.tsx
+    title: With align end
     description: >-
       Use to align text at end of horizontal line.
-  - fileName: text-align-justify.tsx
-    title: Align Justify
+  - fileName: text-with-align-justify.tsx
+    title: With align justify
     description: >-
       Use to align text on a vertical line.
-  - fileName: text-font-weight-regular.tsx
-    title: Font Weight Regular
+  - fileName: text-with-font-weight-regular.tsx
+    title: With font weight regular
     description: >-
       Use to give text a regular font weight.
-  - fileName: text-font-weight-medium.tsx
-    title: Font Weight Medium
+  - fileName: text-with-font-weight-medium.tsx
+    title: With font weight medium
     description: >-
       Use to give text a medium font weight.
-  - fileName: text-font-weight-semi-bold.tsx
-    title: Font Weight Semi-bold
+  - fileName: text-with-font-weight-semibold.tsx
+    title: With font weight semibold
     description: >-
       Use to give text a semi-bold font weight.
-  - fileName: text-font-weight-bold.tsx
-    title: Font Weight Bold
+  - fileName: text-with-font-weight-bold.tsx
+    title: With font weight bold
     description: >-
       Use to give text a bold font weight.
-  - fileName: text-color-success.tsx
-    title: Success text color
+  - fileName: text-with-color-success.tsx
+    title: With color success
     description: >-
       Use in combination with a symbol showing an increasing value to indicate an upward trend.
-  - fileName: text-color-critical.tsx
-    title: Critical text color
+  - fileName: text-with-color-critical.tsx
+    title: With color critical
     description: >-
       Use in combination with a symbol showing a decreasing value to indicate a downward trend.
-  - fileName: text-color-warning.tsx
-    title: Warning text color
+  - fileName: text-with-color-warning.tsx
+    title: With color warning
     description: >-
       Use to denote something that needs attention, or that merchants need to take action on.
-  - fileName: text-color-subdued.tsx
-    title: Subdued text color
+  - fileName: text-with-color-subdued.tsx
+    title: With color subdued
     description: >-
       Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
 ---
