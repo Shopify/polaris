@@ -183,7 +183,7 @@ Use to align text on a vertical line.
 </Text>
 ```
 
-### Font Weight Regular
+### With font weight regular
 
 Use to give text a regular font weight.
 
