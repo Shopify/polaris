@@ -1,0 +1,113 @@
+function LoadingAutocompleteExample() {
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
+
+  const [selectedOption, setSelectedOption] = useState();
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
+
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
+
+      if (!loading) {
+        setLoading(true);
+      }
+
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = options.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 400);
+    },
+    [deselectedOptions, loading, options],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const matchedOption = options.find((option) => {
+        return option.value.match(selected);
+      });
+
+      setSelectedOption(selected);
+      setInputValue((matchedOption && matchedOption.label) || '');
+    },
+    [options],
+  );
+
+  const optionsMarkup =
+    options.length > 0 && !loading
+      ? options.map((option) => {
+          const {label, value} = option;
+
+          return (
+            <Listbox.Option
+              key={`${value}`}
+              value={value}
+              selected={selectedOption === value}
+              accessibilityLabel={label}
+            >
+              {label}
+            </Listbox.Option>
+          );
+        })
+      : null;
+
+  const loadingMarkup = loading ? (
+    <div
+      style={{
+        height: '220px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Listbox.Loading />
+    </div>
+  ) : null;
+
+  const listboxMarkup =
+    optionsMarkup || loadingMarkup ? (
+      <Listbox onSelect={updateSelection}>
+        {optionsMarkup}
+        {loadingMarkup}
+      </Listbox>
+    ) : null;
+
+  return (
+    <div style={{height: '225px'}}>
+      <Combobox
+        height="220px"
+        activator={
+          <Combobox.TextField
+            prefix={<Icon source={SearchMinor} />}
+            onChange={updateText}
+            label="Search tags"
+            labelHidden
+            value={inputValue}
+            placeholder="Search tags"
+          />
+        }
+      >
+        {listboxMarkup}
+      </Combobox>
+    </div>
+  );
+}

@@ -1,0 +1,1 @@
+<ProgressBar progress={40} size="small" />

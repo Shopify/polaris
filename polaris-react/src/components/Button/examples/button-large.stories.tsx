@@ -1,0 +1,1 @@
+<Button size="large">Create store</Button>

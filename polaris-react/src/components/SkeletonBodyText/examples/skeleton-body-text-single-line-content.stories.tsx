@@ -1,0 +1,1 @@
+<SkeletonBodyText lines={1} />

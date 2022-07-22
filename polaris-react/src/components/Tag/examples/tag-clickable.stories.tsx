@@ -1,0 +1,1 @@
+<Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>

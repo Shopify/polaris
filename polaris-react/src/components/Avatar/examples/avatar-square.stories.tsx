@@ -1,0 +1,1 @@
+<Avatar name="Shop One" shape="square" />

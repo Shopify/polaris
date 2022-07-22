@@ -1,0 +1,3 @@
+<Card>
+  <SkeletonTabs />
+</Card>

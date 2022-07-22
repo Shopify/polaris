@@ -1,0 +1,22 @@
+function RightAlignExample() {
+  const [textFieldValue, setTextFieldValue] = useState('1');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  return (
+    <Stack>
+      <Stack.Item fill>Price</Stack.Item>
+      <TextField
+        label="Price"
+        labelHidden
+        value={textFieldValue}
+        onChange={handleTextFieldChange}
+        autoComplete="off"
+        align="right"
+      />
+    </Stack>
+  );
+}

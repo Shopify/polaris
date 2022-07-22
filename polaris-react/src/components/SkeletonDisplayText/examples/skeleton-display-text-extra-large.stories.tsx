@@ -1,0 +1,1 @@
+<SkeletonDisplayText size="extraLarge" />

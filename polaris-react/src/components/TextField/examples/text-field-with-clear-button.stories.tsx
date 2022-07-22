@@ -1,0 +1,21 @@
+function TextFieldWithClearButtonExample() {
+  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const handleClearButtonClick = useCallback(() => setTextFieldValue(''), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={textFieldValue}
+      onChange={handleTextFieldChange}
+      clearButton
+      onClearButtonClick={handleClearButtonClick}
+      autoComplete="off"
+    />
+  );
+}
