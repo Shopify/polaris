@@ -223,7 +223,7 @@ Use to give text a bold font weight.
 </Text>
 ```
 
-### Success text color
+### With color success
 
 Use in combination with a symbol showing an increasing value to indicate an upward trend.
 
