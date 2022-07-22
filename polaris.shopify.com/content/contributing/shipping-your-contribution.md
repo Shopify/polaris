@@ -18,16 +18,15 @@ While Figma is used to host and maintain the Polaris UI Kit, all other resources
 
 Polaris is structured as a monorepo, which means it’s a single repository with multiple projects. The Polaris monorepo includes:
 
-```plaintext
-polaris/
-├── polaris-for-figma           # Figma plugin for Polaris components
-├── polaris-for-vscode          # VS Code extension for Polaris Design Token autocomplete suggestions
-├── polaris-icons               # npm SVG icon library `@shopify/polaris-icons`
-├── polaris-react               # npm React component library `@shopify/polaris`
-├── polaris-tokens              # npm Design Token library `@shopify/polaris-tokens`
-├── polaris.shopify.com         # The style guide to the Polaris Design System
-└── stylelint-polaris           # Linting rules for using Polaris Design Tokens through CSS custom properties
-```
+| polaris/            |                                                                             |
+| ------------------- | --------------------------------------------------------------------------- |
+| polaris-for-figma   | Figma plugin for Polaris components                                         |
+| polaris-for-vscode  | VS Code extension for Polaris Design Token autocomplete suggestions         |
+| polaris-icons       | npm SVG icon library `@shopify/polaris-icons`                               |
+| polaris-react       | npm React component library `@shopify/polaris`                              |
+| polaris-tokens      | npm Design Token library `@shopify/polaris-tokens`                          |
+| polaris.shopify.com | This site, the style guide to the Polaris Design System                     |
+| stylelint-polaris   | Linting rules for using Polaris Design Tokens through CSS custom properties |
 
 ### Technologies we use
 
@@ -66,7 +65,7 @@ yarn && yarn build
 ### 3. Create a new branch
 
 ```bash
-git checkout -b new-branch-name
+git checkout -b branch-name
 ```
 
 ## Open your first PR
@@ -88,6 +87,8 @@ If you are adding or editing documentation, ensure your content displays as expe
 
 ```bash
 yarn turbo run dev --filter=polaris.shopify.com
+
+# Open https://localhost:3000 to test documentation
 ```
 
 ### 2. Commit your changes
@@ -101,7 +102,7 @@ git commit -m “descriptive message”
 Push up your branch up to GitHub
 
 ```bash
-git push origin new-branch-name
+git push origin branch-name
 ```
 
 ### 3. Create a pull request

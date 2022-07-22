@@ -58,13 +58,6 @@
   }
 }
 
-.CopyButtonWrapper {
-  height: 0;
-  display: flex;
-  justify-content: flex-end;
-  z-index: -1;
-}
-
 .CopyButton {
   padding: 0.5rem 1rem;
   background: transparent;
@@ -72,15 +65,6 @@
   opacity: 0.5;
   display: flex;
   align-items: center;
-
-  &.Plain {
-    position: absolute;
-    padding: 0.75rem;
-    background: transparent;
-    opacity: 0.2;
-    border-radius: var(--border-radius-200);
-    transition: opacity 0.1s linear;
-  }
 
   &:hover,
   &:focus {
@@ -98,7 +82,24 @@
   }
 }
 
+.CopyButtonOverlay {
+  height: 0;
+  display: flex;
+  justify-content: flex-end;
+  z-index: -1;
+
+  .CopyButton {
+    position: absolute;
+    padding: 0.75rem;
+    transition: opacity 0.1s linear;
+  }
+}
+
 .PlainCode {
+  border-radius: var(--border-radius-400);
+  max-width: calc(100vw - 1.5rem);
+  cursor: text;
+  overflow: hidden;
 }
 
 .HighlightedCode {
