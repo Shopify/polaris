@@ -7,13 +7,13 @@ import styles from './Text.scss';
 type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 type Variant =
-  | 'displaySm'
-  | 'displayMd'
-  | 'displayLg'
   | 'headingSm'
   | 'headingMd'
   | 'headingLg'
   | 'headingXl'
+  | 'heading2xl'
+  | 'heading3xl'
+  | 'heading4xl'
   | 'bodySm'
   | 'bodyMd'
   | 'bodyLg';
@@ -25,13 +25,13 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 type Color = 'success' | 'critical' | 'warning' | 'subdued';
 
 const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
-  displaySm: 'semibold',
-  displayMd: 'semibold',
-  displayLg: 'bold',
   headingSm: 'bold',
   headingMd: 'semibold',
   headingLg: 'semibold',
   headingXl: 'semibold',
+  heading2xl: 'semibold',
+  heading3xl: 'semibold',
+  heading4xl: 'bold',
   bodySm: 'regular',
   bodyMd: 'regular',
   bodyLg: 'regular',
