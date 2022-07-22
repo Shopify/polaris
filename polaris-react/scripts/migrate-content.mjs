@@ -19,8 +19,8 @@ const kebabize = (str) => {
 };
 
 const migrateFile = async (filePath) => {
-  const fileTitle = kebabize(filePath.split('/').at(-2));
   const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const fileTitle = filePath.split('/').at(-2);
   const exampleContent = fileContent
     .split('---')
     .filter((fileChunk) => fileChunk.startsWith('\n\n## Examples'))[0]
@@ -30,10 +30,17 @@ const migrateFile = async (filePath) => {
   exampleContent.split('\n\n### ').forEach((example) => {
     const title = example.split('\n')[0].trim();
     if (title === '') return;
-    const kebabTitle = kebabize(title);
-    const exampleId = `${fileTitle}-${kebabTitle}`;
+    const exampleId = kebabize(title);
     const code = example.split('```jsx').at(-1).replace('```', '').trim();
-    examples[`${exampleId}.stories.tsx`] = `${code}`;
+    const fileName = `${exampleId}.stories.tsx`;
+    examples[
+      fileName
+    ] = `import React, {useCallback, useState, useMemo} from 'react';\nimport type { ComponentMeta } from '@storybook/react';\n\n`;
+    examples[fileName] += `import {${fileTitle}} from '../${fileTitle}';\n\n`;
+    examples[fileName] += `${code}`;
+    examples[
+      fileName
+    ] += `\n\nexport default {\n  title: '${fileTitle}/${title}',\n  component: ${fileTitle}Example,\n} as ComponentMeta<typeof ${fileTitle}>;`;
   });
 
   Object.entries(examples).map(([fileName, fileContent]) => {
@@ -45,6 +52,8 @@ const migrateFile = async (filePath) => {
   fs.rmSync(filePath);
 };
 
-const migrateFiles = readmeFiles.map((filePath) => migrateFile(filePath));
+const migrateFiles = readmeFiles
+  .slice(0, 1)
+  .map((filePath) => migrateFile(filePath));
 
 await Promise.all(migrateFiles);
