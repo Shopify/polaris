@@ -70,7 +70,7 @@ function HighlightedCode({ code }: { code: string }) {
           __html: Prism.highlight(
             code,
             Prism.languages.javascript,
-            "javasript"
+            "javascript"
           ),
         }}
       ></code>
