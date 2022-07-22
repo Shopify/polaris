@@ -91,9 +91,7 @@
         "customer avatar",
         "business avatar",
         "customer thumbnail",
-        "business thumbnail",
-        "ios",
-        "android"
+        "business thumbnail"
       ]
     },
     "intro": "Avatars are used to show a thumbnail representation of an individual or business in the interface."
@@ -113,9 +111,7 @@
         "critical badge",
         "object status",
         "status",
-        "alert",
-        "ios",
-        "android"
+        "alert"
       ]
     },
     "intro": "Badges are used to inform merchants of the status of an object or of an action that’s been taken."
@@ -169,9 +165,7 @@
         "set of actions",
         "horizontal arrangement of buttons",
         "stacked",
-        "segmented control",
-        "ios",
-        "android"
+        "segmented control"
       ]
     },
     "intro": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
@@ -198,9 +192,7 @@
         "button",
         "link",
         "click",
-        "submit",
-        "ios",
-        "android"
+        "submit"
       ]
     },
     "intro": "Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”."
@@ -249,9 +241,7 @@
         "smaller than reading size text",
         "time text",
         "compact text",
-        "small text",
-        "android",
-        "ios"
+        "small text"
       ]
     },
     "intro": "Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items."
@@ -346,9 +336,7 @@
         "show all button",
         "show hide",
         "expanding view",
-        "collapse",
-        "ios",
-        "android"
+        "collapse"
       ]
     },
     "intro": "The collapsible component is used to put long sections of information under a block that merchants can expand or collapse."
@@ -462,9 +450,7 @@
         "item lists",
         "text lists",
         "list of terms",
-        "term explaination",
-        "android",
-        "ios"
+        "term explaination"
       ]
     },
     "intro": "Description lists are a way to organize and explain related information.\nThey’re particularly useful when you need to list and define terms such as in a\nglossary."
@@ -493,9 +479,7 @@
         "small display text",
         "visual story telling",
         "visual storytelling",
-        "visual statements",
-        "android",
-        "ios"
+        "visual statements"
       ]
     },
     "intro": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
@@ -618,9 +602,7 @@
         "short input fields",
         "short text fields",
         "layout forms",
-        "layout input fields",
-        "android",
-        "ios"
+        "layout input fields"
       ]
     },
     "intro": "Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields."
@@ -711,9 +693,7 @@
         "section titles",
         "section headings",
         "heading text",
-        "heading font",
-        "android",
-        "ios"
+        "heading font"
       ]
     },
     "intro": "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title."
@@ -859,9 +839,7 @@
         "icon lists",
         "list items",
         "text lists",
-        "text-only lists",
-        "ios",
-        "android"
+        "text-only lists"
       ]
     },
     "intro": "Lists display a set of related text-only content. Each list item begins with a bullet or a number."
@@ -926,9 +904,7 @@
         "iframe",
         "overlay",
         "dialog",
-        "alert",
-        "android",
-        "ios"
+        "alert"
       ]
     },
     "intro": "Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly."
@@ -1006,9 +982,7 @@
         "page with action groups",
         "outer wrapper",
         "page actions",
-        "page layouts",
-        "android",
-        "ios"
+        "page layouts"
       ]
     },
     "intro": "Use to build the outer wrapper of a page, including the page title and associated actions."
@@ -1033,9 +1007,7 @@
         "list pages",
         "previous next buttons",
         "previous buttons",
-        "next buttons",
-        "ios",
-        "android"
+        "next buttons"
       ]
     },
     "intro": "Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling."
@@ -1061,9 +1033,7 @@
         "popover with form components",
         "popover with action list",
         "popover with content and actions",
-        "action sheet",
-        "ios",
-        "android"
+        "action sheet"
       ]
     },
     "intro": "Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page."
@@ -1218,9 +1188,7 @@
         "field label",
         "long list of options",
         "long option list",
-        "separate error message",
-        "ios",
-        "android"
+        "separate error message"
       ]
     },
     "intro": "Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface."
@@ -1257,8 +1225,7 @@
         "title",
         "overlay",
         "drawer",
-        "dialog",
-        "web"
+        "dialog"
       ],
       "status": {
         "value": "Deprecated",
@@ -1317,14 +1284,7 @@
       "name": "Spinner",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": [
-        "spinner",
-        "loader",
-        "loading",
-        "progress indicator",
-        "android",
-        "ios"
-      ]
+      "keywords": ["spinner", "loader", "loading", "progress indicator"]
     },
     "intro": "Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts."
   },
@@ -1362,9 +1322,7 @@
         "sub-section titles",
         "titles of sub-sections",
         "subsection titles",
-        "titles of subsections",
-        "android",
-        "ios"
+        "titles of subsections"
       ]
     },
     "intro": "Subheadings are used for the title of any sub-sections in top-level page sections."
@@ -1414,9 +1372,7 @@
         "layout",
         "vertical",
         "margin",
-        "padding",
-        "android",
-        "ios"
+        "padding"
       ]
     },
     "intro": "A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing."
@@ -1463,9 +1419,7 @@
         "label actions",
         "hidden labels",
         "separate error message",
-        "icon action",
-        "ios",
-        "android"
+        "icon action"
       ]
     },
     "intro": "A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers."
@@ -1490,9 +1444,7 @@
         "increase",
         "decrease",
         "input",
-        "fields",
-        "android",
-        "ios"
+        "fields"
       ]
     },
     "intro": "Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text."
@@ -1508,9 +1460,7 @@
         "small thumbnail",
         "medium thumbnail",
         "large thumbnail",
-        "image preview",
-        "android",
-        "ios"
+        "image preview"
       ]
     },
     "intro": "Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context."
@@ -1530,10 +1480,7 @@
         "overlay",
         "popup",
         "iframe",
-        "duration",
-        "ios",
-        "android",
-        "web"
+        "duration"
       ]
     },
     "intro": "The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action."
