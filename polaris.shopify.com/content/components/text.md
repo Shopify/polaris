@@ -81,7 +81,7 @@ examples:
   - fileName: text-align-justify.tsx
     title: Align Justify
     description: >-
-      Use to align text on a horizontal line.
+      Use to align text on a vertical line.
   - fileName: text-font-weight-regular.tsx
     title: Font Weight Regular
     description: >-
