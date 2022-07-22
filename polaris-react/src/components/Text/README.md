@@ -30,39 +30,39 @@ These are suggested replacements for existing text style components, but ultimat
 #### Small
 
 ```jsx
-<DisplayText size="small">Good evening, Dominic.</DisplayText>
+<DisplayText size="small">Sales this year</DisplayText>
 ```
 Replace with
 ```jsx
 <Text variant="headingXl"
->Good evening, Dominic.</Text>
+>Sales this year</Text>
 ```
 #### Medium
 ```jsx
-<DisplayText size="medium">Good evening, Dominic.</DisplayText>
+<DisplayText size="medium">Sales this year</DisplayText>
 ```
 Replace with
 ```jsx
-<Text variant="displaySm"
->Good evening, Dominic.</Text>
+<Text variant="heading2xl"
+>Sales this year</Text>
 ```
 #### Large
 ```jsx
-<DisplayText size="large">Good evening, Dominic.</DisplayText>
+<DisplayText size="large">Sales this year</DisplayText>
 ```
 Replace with
 ```jsx
-<Text variant="displayMd"
->Good evening, Dominic.</Text>
+<Text variant="heading3xl"
+>Sales this year</Text>
 ```
 #### Extra large
 ```jsx
-<DisplayText size="extraLarge">Good evening, Dominic.</DisplayText>
+<DisplayText size="extraLarge">Sales this year</DisplayText>
 ```
 Replace with
 ```jsx
-<Text variant="displayLg"
->Good evening, Dominic.</Text>
+<Text variant="heading4xl"
+>Sales this year</Text>
 ```
 ### Heading
 ```jsx
