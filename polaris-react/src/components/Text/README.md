@@ -106,7 +106,7 @@ Use to create a small body text.
 </Text>
 ```
 
-### Body Medium
+### Body medium
 
 Use to create a medium body text.
 
