@@ -139,7 +139,7 @@ Use to inherit parent alignment.
 </Text>
 ```
 
-### Align Start
+### With align start
 
 Use to align text at start of horizontal line.
 
