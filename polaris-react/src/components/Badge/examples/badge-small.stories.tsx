@@ -1,1 +1,0 @@
-<Badge size="small">Fulfilled</Badge>

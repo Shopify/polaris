@@ -1,1 +1,0 @@
-<Button size="slim">Save variant</Button>

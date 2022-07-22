@@ -1,1 +1,0 @@
-<TextStyle variation="strong">Total</TextStyle>

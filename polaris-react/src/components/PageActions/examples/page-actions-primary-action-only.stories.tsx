@@ -1,5 +1,0 @@
-<PageActions
-  primaryAction={{
-    content: 'Save',
-  }}
-/>

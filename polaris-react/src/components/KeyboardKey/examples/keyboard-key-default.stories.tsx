@@ -1,1 +1,0 @@
-<KeyboardKey>Ctrl</KeyboardKey>

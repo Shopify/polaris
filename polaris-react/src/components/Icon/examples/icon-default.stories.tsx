@@ -1,1 +1,0 @@
-<Icon source={CirclePlusMinor} />

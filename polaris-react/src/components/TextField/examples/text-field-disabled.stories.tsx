@@ -1,1 +1,0 @@
-<TextField label="Store name" disabled autoComplete="off" />

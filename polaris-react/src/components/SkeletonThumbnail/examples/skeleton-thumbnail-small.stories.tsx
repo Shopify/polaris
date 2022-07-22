@@ -1,1 +1,0 @@
-<SkeletonThumbnail size="small" />

@@ -1,1 +1,0 @@
-<ProgressBar progress={80} animated={false} />

@@ -1,1 +1,0 @@
-<Button destructive>Delete theme</Button>

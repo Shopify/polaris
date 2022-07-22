@@ -1,1 +1,0 @@
-<Spinner accessibilityLabel="Spinner example" size="large" />

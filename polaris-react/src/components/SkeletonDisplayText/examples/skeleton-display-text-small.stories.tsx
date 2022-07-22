@@ -1,1 +1,0 @@
-<SkeletonDisplayText size="small" />

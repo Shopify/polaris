@@ -1,1 +1,0 @@
-<Button loading>Save product</Button>

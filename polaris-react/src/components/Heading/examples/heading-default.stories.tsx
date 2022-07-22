@@ -1,1 +1,0 @@
-<Heading>Online store dashboard</Heading>

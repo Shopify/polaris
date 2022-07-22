@@ -1,1 +1,0 @@
-<TextStyle variation="subdued">No supplier listed</TextStyle>

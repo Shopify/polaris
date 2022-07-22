@@ -1,1 +1,0 @@
-<Avatar customer name="Farrah" />

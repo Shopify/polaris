@@ -1,1 +1,0 @@
-<Button outline>Add product</Button>
