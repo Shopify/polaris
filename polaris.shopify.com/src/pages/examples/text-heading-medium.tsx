@@ -5,7 +5,6 @@ import { withPolarisExample } from "../../components/PolarisExamplePage";
 function TextExample() {
   return (
     <Text variant="headingMd" as="h6">
-      {" "}
       Online store dashboard
     </Text>
   );
