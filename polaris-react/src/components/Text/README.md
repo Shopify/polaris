@@ -47,7 +47,7 @@ Use to create a medium display text.
 <Text variant="displayMd">Good evening, Dominic.</Text>
 ```
 
-### Display Large
+### Display large
 
 Use to create a large display text.
 
