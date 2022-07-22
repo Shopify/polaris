@@ -51,11 +51,11 @@ The following is an example of help content that was originally a card descripti
 
 #### Before
 
-![Before: help text as a card description](/images/foundations/patterns/help-content/Before.png)
+![Before: help text as a card description](/images/foundations/patterns/help-content/before.png)
 
 #### After
 
-![After: help text close to the upload action](/images/foundations/patterns/help-content/After.png)
+![After: help text close to the upload action](/images/foundations/patterns/help-content/after.png)
 
 ---
 
