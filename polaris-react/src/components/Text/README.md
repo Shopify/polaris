@@ -55,7 +55,7 @@ Use to create a large display text.
 <Text variant="displayLg">Good evening, Dominic.</Text>
 ```
 
-### Heading Small
+### heading small
 
 Use to create a small heading text.
 
