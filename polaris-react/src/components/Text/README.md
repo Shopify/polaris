@@ -95,7 +95,7 @@ Use to create an extra large heading text.
 </Text>
 ```
 
-### Body Small
+### Body small
 
 Use to create a small body text.
 
