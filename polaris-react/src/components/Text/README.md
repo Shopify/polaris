@@ -243,7 +243,7 @@ Use in combination with a symbol showing a decreasing value to indicate a downwa
 </Text>
 ```
 
-### Warning text color
+### With color warning
 
 Use to denote something that needs attention, or that merchants need to take action on.
 
