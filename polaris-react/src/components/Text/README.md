@@ -31,7 +31,7 @@ Typography helps establish hierarchy and communicate important content by creati
 
 ## Examples
 
-### Display Small
+### Display small
 
 Use to create a small display text.
 
