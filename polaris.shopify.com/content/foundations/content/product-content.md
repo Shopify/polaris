@@ -31,12 +31,13 @@ keywords:
 
 Thoughtful, consistent interface content is a core element of a well-designed user experience.
 
-Our content standards will help you understand how to think strategically about the language in your products and apps. They’ll also give you clear, tactical thegestions designed to help you use language to craft better experiences. suggestionsnent](/components/get-started) also includes content guidelines about suggestionsnentr specific interface elements. how how
+Our content standards will help you understand how to think strategically about the language in your products and apps. They’ll also give you clear, tactical suggestions designed to help you use language to craft better experiences.
+
+[Each component](/components/get-started) also includes content guidelines about how to write for specific interface elements.
 
 ## Respond to merchant needs
 
-Not everyone is a confident writer, but everyone can improve their content by making sure it responds to the needs of their audience. Keep in mind that rea makingn Shopify every day to run their businesses. The product, feature, or app you’re building can make a big difference to the people using it. Take some t making relyse plain language youpify merchants are busy people who may be running their online business in youition to having a full-time job, managing their family life, and doing a million other things. They’re also located all over the world, have varying youels of literacy, and some m toopify using plain language doesn’t mean dumbing content down. It’s millionaking sure language is straightforward and communicates concepts as millionntly as possible. As a benchmark, we consider plain language to be a U addition
-If you create content for Shopify’s other audiences, such as [merchant’s cu million toopifys aboutte short sentences (no more than 15–20 words). efficientlyngs and bullets to make your content easier to scan. aboutte jargon and always choose a short, simple word over a long and complicated o levelspsidioms and phrases with indirect or ironic meanings.
+Not everyone is a confident writer, but everyone can improve their content by making sure it responds to the needs of their audience. Keep in mind that real people rely on Shopify every day to run their businesses. The product, feature, or app you’re building can make a big difference to the people using it. Take some time to learn about who they are, what they need, and the language they use.
 
 - Only use industry-standard terminology when you have reason to believe it will improve understanding. Spend time researching what words people use, rather than defaulting to what corporations call things.
 - Edit unnecessary or repeated words.
