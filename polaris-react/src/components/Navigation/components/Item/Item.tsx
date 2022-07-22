@@ -106,7 +106,7 @@ export function Item({
   }, [expanded, isNavigationCollapsed, onToggleExpandedState]);
 
   const handleKeyUp = useCallback(
-    (event) => {
+    (event: React.KeyboardEvent) => {
       if (event.keyCode === Key.Tab) {
         !keyFocused && setKeyFocused(true);
       }
