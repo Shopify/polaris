@@ -117,7 +117,7 @@ Use to create a medium body text.
 </Text>
 ```
 
-### Body Large
+### Body large
 
 Use to create a large body text.
 
