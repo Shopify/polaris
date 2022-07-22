@@ -92,3 +92,75 @@ Replace with
 <Text variant="bodySm">Received April 21, 2017</Text>
 ```
 ### TextStyle
+
+#### Subdued
+```jsx
+<TextStyle variation="subdued">No supplier listed</TextStyle>
+```
+
+Replace with
+```jsx
+<Text variant="bodyMd" as="p" color="subdued">
+  No supplier listed
+</Text>
+```
+
+#### Strong
+```jsx
+<TextStyle variation="strong">No supplier listed</TextStyle>
+```
+
+Replace with
+```jsx
+<Text variant="bodyMd" as="p" fontWeight="semibold" >
+  No supplier listed
+</Text>
+```
+#### Positive
+```jsx
+<TextStyle variation="positive">No supplier listed</TextStyle>
+```
+
+Replace with
+```jsx
+<Text variant="bodyMd" as="p" color="success">
+  No supplier listed
+</Text>
+```
+
+#### Negative
+```jsx
+<TextStyle variation="negative">No supplier listed</TextStyle>
+```
+
+Replace with
+```jsx
+<Text variant="bodyMd" as="p" color="critical">
+  No supplier listed
+</Text>
+```
+
+#### Warning
+```jsx
+<TextStyle variation="warning">No supplier listed</TextStyle>
+```
+
+Replace with
+```jsx
+<Text variant="bodyMd" as="p" color="warning">
+  No supplier listed
+</Text>
+```
+
+#### Code
+```jsx
+<TextStyle variation="code">No supplier listed</TextStyle>
+```
+
+Replace with
+```jsx
+<Text variant="bodyMd" as="p">
+  <InlineCode>No supplier listed</InlineCode>
+</Text>
+
+```
