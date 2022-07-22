@@ -1,57 +1,62 @@
-import Tooltip from "../Tooltip";
-import Prism from "prismjs";
-import { useCopyToClipboard } from "../../utils/hooks";
-import styles from "./Code.module.scss";
-import { Tab } from "@headlessui/react";
-import Image from "../Image";
 import { useState } from "react";
+import Prism from "prismjs";
+import { Tab } from "@headlessui/react";
+
+import Tooltip from "../Tooltip";
+import Image from "../Image";
+
+import { useCopyToClipboard } from "../../utils/hooks";
+
+import styles from "./Code.module.scss";
 
 interface Props {
-  tabs: {
+  tabs?: {
     title: string;
     code: string;
   }[];
+
+  children?: React.ReactNode;
 }
 
-function Code({ tabs }: Props) {
+function Code({ tabs, children }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const tabMarkup = tabs ? (
+    <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
+      <div className={styles.TopBar}>
+        <Tab.List className={styles.Tabs}>
+          {tabs.map(({ title }) => (
+            <Tab key={title} className={styles.Tab}>
+              {title}
+            </Tab>
+          ))}
+        </Tab.List>
+        <CopyButton code={tabs[selectedIndex].code} />
+      </div>
+
+      <Tab.Panels>
+        {tabs.map(({ title, code }) => (
+          <Tab.Panel key={title}>
+            <HighlightedCode code={code} />
+          </Tab.Panel>
+        ))}
+      </Tab.Panels>
+    </Tab.Group>
+  ) : null;
+
+  const plainCodeSnippet = children ? (
+    <div className={styles.PlainCode}>
+      <HighlightedCode code={children as string} />
+      <div className={styles.CopyButtonWrapper}>
+        <CopyButton code={children as string} />
+      </div>
+    </div>
+  ) : null;
 
   return (
     <div className={styles.Code}>
-      {tabs.length === 1 ? (
-        <>
-          <div className={styles.TopBar}>
-            <div className={styles.Tabs}>
-              <div className={styles.Tab}>{tabs[0].title}</div>
-            </div>
-            <CopyButton code={tabs[0].code} />
-          </div>
-          <HighlightedCode code={tabs[0].code} />
-        </>
-      ) : (
-        <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-          <div className={styles.TopBar}>
-            <Tab.List className={styles.Tabs}>
-              {tabs.map(({ title }) => (
-                <Tab key={title} className={styles.Tab}>
-                  {title}
-                </Tab>
-              ))}
-            </Tab.List>
-            {tabs[selectedIndex] && (
-              <CopyButton code={tabs[selectedIndex].code} />
-            )}
-          </div>
-
-          <Tab.Panels>
-            {tabs.map(({ title, code }) => (
-              <Tab.Panel key={title}>
-                <HighlightedCode code={code} />
-              </Tab.Panel>
-            ))}
-          </Tab.Panels>
-        </Tab.Group>
-      )}
+      {tabMarkup}
+      {plainCodeSnippet}
     </div>
   );
 }
@@ -59,7 +64,7 @@ function Code({ tabs }: Props) {
 function HighlightedCode({ code }: { code: string }) {
   return (
     <div
-      className={styles.ActualCode}
+      className={styles.HightlightedCode}
       dangerouslySetInnerHTML={{
         __html: Prism.highlight(code, Prism.languages.javascript, "javasript"),
       }}

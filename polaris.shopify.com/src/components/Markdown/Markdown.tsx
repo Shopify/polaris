@@ -34,11 +34,7 @@ function Markdown({ text, skipH1 }: Props) {
           }
         },
         code: ({ inline, children }) =>
-          inline ? (
-            <code>{children}</code>
-          ) : (
-            <Code tabs={[{ title: "Example", code: children.toString() }]} />
-          ),
+          inline ? <code>{children}</code> : <Code>{children}</Code>,
         table: ({ children }) => (
           <div className="table-wrapper">
             <table>{children}</table>
