@@ -213,7 +213,7 @@ Use to give text a semibold font weight.
 </Text>
 ```
 
-### Font Weight Bold
+### With font weight bold
 
 Use to give text a bold font weight.
 
