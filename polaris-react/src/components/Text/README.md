@@ -172,7 +172,7 @@ Use to align text at end of horizontal line.
 </Text>
 ```
 
-### Align Justify
+### With align justify
 
 Use to align text on a vertical line.
 
