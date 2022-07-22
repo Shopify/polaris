@@ -65,7 +65,7 @@ Use to create a small heading text.
 </Text>
 ```
 
-### Heading Medium
+### Heading medium
 
 Use to create a medium heading text.
 
