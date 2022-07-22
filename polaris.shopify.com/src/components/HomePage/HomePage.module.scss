@@ -59,24 +59,30 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
   padding-top: 6rem;
 
   .Text {
-    position: relative;
     z-index: 1;
     text-align: center;
+    padding: 2rem 0;
   }
 
   h1 {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1rem;
     color: var(--primary);
     font-size: var(--font-size-1900);
     letter-spacing: var(--letter-spacing-1000);
     font-weight: var(--font-weight-600);
     line-height: 1.1;
+
+    @media screen and (max-width: $breakpointDesktop) {
+      span {
+        display: block;
+      }
+    }
   }
 
   p {
     font-size: var(--font-size-800);
+    font-weight: var(--font-weight-500);
     letter-spacing: var(--letter-spacing-500);
-    max-width: 36rem;
     margin: 0 auto;
     color: var(--text-strong);
   }
