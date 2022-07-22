@@ -84,7 +84,7 @@ The Help Center is a rich resource, but for a merchant it’s not always a conve
 ​
 “Learn more” badges show an information icon that takes you to the Help Center. These are different from tooltips. On large screens, they expand on hover to reveal a “Learn more” link.
 
-![“Learn more” badge interaction pattern](/images/foundations/patterns/help-content/learn-more-badges-interaction.png)
+![“Learn more” badge interaction pattern](/images/foundations/patterns/help-content/learn-more-badges.png)
 
 Use “learn more” badges:
 ​
