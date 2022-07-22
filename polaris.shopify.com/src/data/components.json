@@ -1419,7 +1419,7 @@
         "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
       }
     },
-    "intro": "A component for displaying Text"
+    "intro": "Typography helps establish hierarchy and communicate important content by creating clear visual patterns."
   },
   {
     "frontMatter": {
