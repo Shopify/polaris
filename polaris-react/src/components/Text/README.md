@@ -85,7 +85,7 @@ Use to create a large heading text.
 </Text>
 ```
 
-### Heading Extra Large
+### Heading extra large
 
 Use to create an extra large heading text.
 
