@@ -233,7 +233,7 @@ Use in combination with a symbol showing an increasing value to indicate an upwa
 </Text>
 ```
 
-### Critical text color
+### With color critical
 
 Use in combination with a symbol showing a decreasing value to indicate a downward trend.
 
