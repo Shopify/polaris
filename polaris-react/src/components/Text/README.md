@@ -203,9 +203,9 @@ Use to give text a medium font weight.
 </Text>
 ```
 
-### Font Weight Semi-bold
+### With font weight semibold
 
-Use to give text a semi-bold font weight.
+Use to give text a semibold font weight.
 
 ```jsx
 <Text variant="bodyMd" as="p" fontWeight="semibold">
