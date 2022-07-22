@@ -128,7 +128,7 @@ Use to create a large body text.
 </Text>
 ```
 
-### Align Inherit
+### With align inherit
 
 Use to inherit parent alignment.
 
