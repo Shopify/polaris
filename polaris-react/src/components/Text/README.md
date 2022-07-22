@@ -193,7 +193,7 @@ Use to give text a regular font weight.
 </Text>
 ```
 
-### Font Weight Medium
+### With font weight medium
 
 Use to give text a medium font weight.
 
