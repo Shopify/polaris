@@ -323,10 +323,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   };
 }
 
-function renderPopoverContent(
-  children: React.ReactNode,
-  props?: Partial<PaneProps>,
-) {
+function renderPopoverContent(children: React.ReactNode, props: PaneProps) {
   const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
     return childrenArray;
