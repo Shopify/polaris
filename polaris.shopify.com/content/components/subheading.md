@@ -10,11 +10,9 @@ keywords:
   - subsection titles
   - titles of subsections
 examples:
-  - fileName: subheading-typographic.tsx
-    title: Typographic subheading
-    description: >-
-      Used for the title of any sub-sections in top-level page
-      sections.
+  - fileName: subheading-default.tsx
+    title: Default
+    description: Used for the title of any sub-sections in top-level page sections.
 ---
 
 # Subheading

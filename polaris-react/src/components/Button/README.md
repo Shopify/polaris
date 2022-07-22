@@ -62,7 +62,7 @@ Buttons should follow the content guidelines for [buttons](https://polaris.shopi
 
 ## Examples
 
-### Basic button
+### Default
 
 Used most in the interface. Only use another style if a button requires more or less visual weight.
 
@@ -70,7 +70,7 @@ Used most in the interface. Only use another style if a button requires more or 
 <Button>Add product</Button>
 ```
 
-### Outline button
+### Outline
 
 Use against shaded or colorful backgrounds. An outline button will maintain the appropriate visual weight and won’t clash with the background color.
 
@@ -78,7 +78,7 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 <Button outline>Add product</Button>
 ```
 
-### Outline monochrome button
+### Outline monochrome
 
 Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
 
@@ -90,7 +90,7 @@ Use against shaded or colorful backgrounds where matching the current text color
 </div>
 ```
 
-### Plain button
+### Plain
 
 Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
 
@@ -98,7 +98,7 @@ Use for less important or less commonly used actions since they’re less promin
 <Button plain>View shipping settings</Button>
 ```
 
-### Plain monochrome button
+### Plain monochrome
 
 Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
@@ -111,7 +111,7 @@ Use for less important or less commonly used actions where matching the current 
 </div>
 ```
 
-### Plain destructive button
+### Plain destructive
 
 Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used destructive actions. For example, plain buttons are used as actions in cards.
 
@@ -121,7 +121,7 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 </Button>
 ```
 
-### Primary button
+### Primary
 
 Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
 
@@ -129,7 +129,7 @@ Use to highlight the most important actions in any experience. Don’t use more 
 <Button primary>Save theme</Button>
 ```
 
-### Destructive button
+### Destructive
 
 Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
 
@@ -137,7 +137,7 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 <Button destructive>Delete theme</Button>
 ```
 
-### Slim button
+### Slim
 
 Use when a table or list has a set of actions on each item to avoid making items taller than they need to be. Don’t use slim buttons for primary actions.
 
@@ -145,7 +145,7 @@ Use when a table or list has a set of actions on each item to avoid making items
 <Button size="slim">Save variant</Button>
 ```
 
-### Large button
+### Large
 
 Use for the main call to action in empty states or for calls to action shown with large illustrations.
 
@@ -153,7 +153,7 @@ Use for the main call to action in empty states or for calls to action shown wit
 <Button size="large">Create store</Button>
 ```
 
-### Full-width button
+### Full-width
 
 Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320 px wide.
 
@@ -161,7 +161,7 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 <Button fullWidth>Add customer</Button>
 ```
 
-### Text-aligned button
+### Text-aligned
 
 Use for plain or monochrome buttons that could have a long length and should be aligned when they potentially overflow onto the next line.
 
@@ -173,7 +173,7 @@ Use for plain or monochrome buttons that could have a long length and should be 
 </Button>
 ```
 
-### Pressed button
+### Pressed
 
 Buttons are sometimes used as a toggle for other parts of the user interface.
 
@@ -204,7 +204,7 @@ function PressedButton() {
 }
 ```
 
-### Plain disclosure button
+### Plain disclosure
 
 Use to indicate that more content can be disclosed on click, like text in a collapsible.
 
@@ -249,7 +249,7 @@ function RightAlignedDisclosureButton() {
 }
 ```
 
-### Select disclosure button
+### Select disclosure
 
 Use to indicate that multiple options are available from this control, similar to a `<select />` HTML element.
 
@@ -261,7 +261,7 @@ Use to indicate that multiple options are available from this control, similar t
 </div>
 ```
 
-### Split button
+### Split
 
 Use when there is only one primary action but other related actions can be taken.
 

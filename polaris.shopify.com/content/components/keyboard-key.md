@@ -11,7 +11,7 @@ keywords:
   - hotkey combinations
 examples:
   - fileName: keyboard-key-default.tsx
-    title: List of keyboard shortcuts
+    title: Default
     description: Use to list a related set of keyboard shortcuts.
 ---
 

@@ -10,16 +10,11 @@ keywords:
   - text-only lists
 examples:
   - fileName: list-bulleted.tsx
-    title: Bulleted list
-    description: >-
-      Use for a text-only list of related items that don’t need to be in a
-      specific order and don’t require an icon or other
-      indicator.
+    title: Bulleted
+    description: Use for a text-only list of related items that don’t need to be in a specific order and don’t require an icon or other indicator.
   - fileName: list-numbered.tsx
-    title: Numbered list
-    description: >-
-      Use for a text-only list of related items when an inherent order,
-      priority, or sequence needs to be communicated.
+    title: Numbered
+    description: Use for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
 ---
 
 # List

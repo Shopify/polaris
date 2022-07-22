@@ -11,25 +11,19 @@ keywords:
   - range form
 examples:
   - fileName: range-slider-default.tsx
-    title: Default range slider
-    description:
-  - fileName: range-slider-min-and-max-control.tsx
-    title: Min and max range control
-    description: >-
-      Use when a single value needs to be selected from a number range with a
-      specific minimum and maximum.
-  - fileName: range-slider-step-incremented-control.tsx
-    title: Step incremented range control
-    description: >-
-      Use when a single value of a specific increment needs to be selected from
-      a range of numbers.
-  - fileName: range-slider-prefix-and-suffix-elements.tsx
-    title: Prefix and suffix elements
-    description: >-
-      Use when the start or end of the range input benefits from additional
-      content.
-  - fileName: range-slider-dual-thumb.tsx
-    title: Dual thumb range slider
+    title: Default
+    description: Use when a single value between `0 and 100` needs to be selected.
+  - fileName: range-slider-with-min-and-max.tsx
+    title: With min and max
+    description: Use when a single value needs to be selected from a number range with a specific minimum and maximum.
+  - fileName: range-slider-with-steps.tsx
+    title: With steps
+    description: Use when a single value of a specific increment needs to be selected from a range of numbers.
+  - fileName: range-slider-with-prefix-and-suffix.tsx
+    title: With prefix and suffix
+    description: Use when the start or end of the range input benefits from additional content. The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
+  - fileName: range-slider-with-dual-thumb.tsx
+    title: With dual thumb
     description: Use when two values need to be selected from a range of numbers.
 ---
 

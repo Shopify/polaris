@@ -18,43 +18,26 @@ keywords:
   - multi-choice list
   - single-choice list
 examples:
-  - fileName: choice-list-single.tsx
-    title: Single choice list
-    description: >-
-      Allows merchants to select one option from a list.Make sure all options
-      are an either/or choice.
-  - fileName: choice-list-single-with-error.tsx
-    title: Single choice list with error
-    description: >-
-      Allows for accessible error handling by connecting the error message to
-      the field with the error.
-  - fileName: choice-list-multi.tsx
-    title: Multi-choice list
-    description: >-
-      Allows merchants to select multiple options from a list.Avoid options that
-      are an either/or choice.
-  - fileName: >-
-      choice-list-single-choice-or-multi-with-children-content-always-rendered.tsx
-    title: Single-choice or multi-choice list with children content (always rendered)
-    description: >-
-      Use when you need merchants to view and/or interact with additional
-      content under a choice. The content will always be rendered. Works for
-      both single-choice and multi-choice list.
-  - fileName: >-
-      choice-list-single-choice-or-multi-with-children-content-only-rendered-when-choice-is-selected.tsx
-    title: >-
-      Single-choice or multi-choice list with children content (only rendered
-      when choice is selected)
-    description: >-
-      Use when you need merchants to view and/or interact with additional
-      content under a choice. The content is only rendered when the choice is
-      selected. Works for both single-choice and multi-choice list.
+  - fileName: choice-list-default.tsx
+    title: Default
+    description: Allows merchants to select one option from a list. Make sure all options are an either/or choice.
+  - fileName: choice-list-with-error.tsx
+    title: With error
+    description: Allows for accessible error handling by connecting the error message to the field with the error.
+  - fileName: choice-list-with-multi-choice.tsx
+    title: With multi-choice
+    description: Allows merchants to select multiple options from a list. Avoid options that are an either/or choice.
+  - fileName: choice-list-with-children-content.tsx
+    title: With children content
+    description: Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered.
+  - fileName: choice-list-with-dynamic-children-content.tsx
+    title: With dynamic children content
+    description: Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 ---
 
 # Choice list
 
-A choice list lets you create a list of grouped radio buttons or checkboxes.
-Use this component if you need to group together a related list of interactive choices.
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 
 ---
 
@@ -113,14 +96,14 @@ Shipping Options
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete their order
+If the customer abandons their checkout, send them an email reminder to complete their order:
 
 - Option a
 - Option b
 
 #### Don’t
 
-If the customer abandons their checkout, send them an email reminder to complete their order:
+If the customer abandons their checkout, send them an email reminder to complete their order
 
 - Option a
 - Option b

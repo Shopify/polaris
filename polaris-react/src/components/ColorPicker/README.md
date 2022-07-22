@@ -29,7 +29,7 @@ The color picker is used to let merchants select a color visually. For example, 
 
 ## Examples
 
-### Default color picker
+### Default
 
 Use when merchants need to select a color to make the selection a visual task rather than a technical one.
 
@@ -45,10 +45,9 @@ function ColorPickerExample() {
 }
 ```
 
-### Colorpicker with transparent value
+### With transparent value
 
-Use when attached to a visual builder to allow the designated object to have a
-transparent background that allows underlying objects to show through.
+Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 
 ```jsx
 function ColorPickerWithTransparentValueExample() {
@@ -63,10 +62,9 @@ function ColorPickerWithTransparentValueExample() {
 }
 ```
 
-### Colorpicker with transparent value full width
+### With transparent value full width
 
-Use when attached to a visual builder to allow the designated object to have a
-transparent background that allows underlying objects to show through.
+Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 
 ```jsx
 function ColorPickerWithTransparentValueExample() {

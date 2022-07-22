@@ -40,7 +40,7 @@ Text style should be:
 
 ## Examples
 
-### Subdued text style
+### Subdued
 
 Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
 
@@ -48,7 +48,7 @@ Use to de-emphasize a piece of text that is less important to merchants than oth
 <TextStyle variation="subdued">No supplier listed</TextStyle>
 ```
 
-### Strong text style
+### Strong
 
 Use to mark text representing user input, or to emphasize the totals row in a price table.
 
@@ -56,7 +56,7 @@ Use to mark text representing user input, or to emphasize the totals row in a pr
 <TextStyle variation="strong">Total</TextStyle>
 ```
 
-### Positive text style
+### Positive
 
 Use in combination with a symbol showing an increasing value to indicate an upward trend.
 
@@ -64,7 +64,7 @@ Use in combination with a symbol showing an increasing value to indicate an upwa
 <TextStyle variation="positive">Orders increased</TextStyle>
 ```
 
-### Negative text style
+### Negative
 
 Use in combination with a symbol showing a decreasing value to indicate a downward trend.
 
@@ -72,7 +72,7 @@ Use in combination with a symbol showing a decreasing value to indicate a downwa
 <TextStyle variation="negative">Orders decreased</TextStyle>
 ```
 
-### Warning text style
+### Warning
 
 Use to denote something that needs attention, or that merchants need to take action on.
 
@@ -80,7 +80,7 @@ Use to denote something that needs attention, or that merchants need to take act
 <TextStyle variation="warning">Scheduled maintenance</TextStyle>
 ```
 
-### Code text style
+### Code
 
 Use to display inline snippets of code or code-like text.
 
