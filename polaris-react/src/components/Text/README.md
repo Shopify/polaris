@@ -122,7 +122,7 @@ Use to create a medium body text.
 Use to create a large body text.
 
 ```jsx
-<Text variant="bodyLd" as="p">
+<Text variant="bodyLg" as="p">
   Shopify POS is the easiest way to sell your products in person. Available for
   iPad, iPhone, and Android.
 </Text>
@@ -133,7 +133,7 @@ Use to create a large body text.
 Use to inherit parent alignment.
 
 ```jsx
-<Text variant="bodyLd" as="p" align="inherit">
+<Text variant="bodyLg" as="p" alignment="inherit">
   Manage your Shopify store on-the-go with real-time notifications, access to
   your dashboard, and order management, all from your smartphone.
 </Text>
@@ -144,7 +144,7 @@ Use to inherit parent alignment.
 Use to align text at start of horizontal line.
 
 ```jsx
-<Text variant="bodyLd" as="p" align="start">
+<Text variant="bodyLg" as="p" alignment="start">
   Manage your Shopify store on-the-go with real-time notifications, access to
   your dashboard, and order management, all from your smartphone.
 </Text>
@@ -155,7 +155,7 @@ Use to align text at start of horizontal line.
 Use to align text at center of horizontal line.
 
 ```jsx
-<Text variant="bodyLd" as="p" align="center">
+<Text variant="bodyLg" as="p" alignment="center">
   Manage your Shopify store on-the-go with real-time notifications, access to
   your dashboard, and order management, all from your smartphone.
 </Text>
@@ -166,7 +166,7 @@ Use to align text at center of horizontal line.
 Use to align text at end of horizontal line.
 
 ```jsx
-<Text variant="bodyLd" as="p" align="end">
+<Text variant="bodyLg" as="p" alignment="end">
   Manage your Shopify store on-the-go with real-time notifications, access to
   your dashboard, and order management, all from your smartphone.
 </Text>
@@ -174,10 +174,10 @@ Use to align text at end of horizontal line.
 
 ### Align Justify
 
-Use to align text on a horizontal line.
+Use to align text on a vertical line.
 
 ```jsx
-<Text variant="bodyLd" as="p" align="justify">
+<Text variant="bodyLg" as="p" alignment="justify">
   Manage your Shopify store on-the-go with real-time notifications, access to
   your dashboard, and order management, all from your smartphone.
 </Text>
