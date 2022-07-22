@@ -150,7 +150,7 @@ Use to align text at start of horizontal line.
 </Text>
 ```
 
-### Align Center
+### With align center
 
 Use to align text at center of horizontal line.
 
