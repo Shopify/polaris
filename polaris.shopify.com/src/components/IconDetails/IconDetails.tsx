@@ -97,7 +97,7 @@ function IconDetails({ fileName, iconData }: Props) {
         </p>
 
         <div className={styles.CodeWrapper}>
-          <Code tabs={[{ title: "Import", code: reactExamples.imports }]} />
+          <Code code={{ title: "Import", code: reactExamples.imports }} />
         </div>
 
         <p className={styles.SmallParagraph}>
@@ -107,9 +107,10 @@ function IconDetails({ fileName, iconData }: Props) {
 
         <div className={styles.CodeWrapper}>
           <Code
-            tabs={[
-              { title: "React component", code: reactExamples.componentUsage },
-            ]}
+            code={{
+              title: "React component",
+              code: reactExamples.componentUsage,
+            }}
           />
         </div>
       </div>

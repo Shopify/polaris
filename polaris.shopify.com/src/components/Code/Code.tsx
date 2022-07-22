@@ -7,50 +7,55 @@ import Image from "../Image";
 import { useState } from "react";
 
 interface Props {
-  tabs: {
-    title: string;
-    code: string;
-  }[];
+  code:
+    | {
+        title: string;
+        code: string;
+      }
+    | {
+        title: string;
+        code: string;
+      }[];
 }
 
-function Code({ tabs }: Props) {
+function Code({ code }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <div className={styles.Code}>
-      {tabs.length === 1 ? (
-        <>
-          <div className={styles.TopBar}>
-            <div className={styles.Tabs}>
-              <div className={styles.Tab}>{tabs[0].title}</div>
-            </div>
-            <CopyButton code={tabs[0].code} />
-          </div>
-          <HighlightedCode code={tabs[0].code} />
-        </>
-      ) : (
+      {Array.isArray(code) ? (
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           <div className={styles.TopBar}>
             <Tab.List className={styles.Tabs}>
-              {tabs.map(({ title }) => (
+              {code.map(({ title }) => (
                 <Tab key={title} className={styles.Tab}>
                   {title}
                 </Tab>
               ))}
             </Tab.List>
-            {tabs[selectedIndex] && (
-              <CopyButton code={tabs[selectedIndex].code} />
+            {code[selectedIndex] && (
+              <CopyButton code={code[selectedIndex].code} />
             )}
           </div>
 
           <Tab.Panels>
-            {tabs.map(({ title, code }) => (
+            {code.map(({ title, code }) => (
               <Tab.Panel key={title}>
                 <HighlightedCode code={code} />
               </Tab.Panel>
             ))}
           </Tab.Panels>
         </Tab.Group>
+      ) : (
+        <>
+          <div className={styles.TopBar}>
+            <div className={styles.Tabs}>
+              <div className={styles.Tab}>{code.title}</div>
+            </div>
+            <CopyButton code={code.code} />
+          </div>
+          <HighlightedCode code={code.code} />
+        </>
       )}
     </div>
   );

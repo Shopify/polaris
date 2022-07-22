@@ -5,6 +5,9 @@ import Code from "../Code";
 import { Tab } from "@headlessui/react";
 import { className } from "../../utils/various";
 
+const exampleIframeId = "example-iframe";
+const iframePadding = 192;
+
 export type ComponentExample = {
   code: string;
   description: string;
@@ -36,42 +39,38 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-const ComponentExamples = ({examples}: Props) => {
+const ComponentExamples = ({ examples }: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState("");
 
-  const [iframeHeight, setIframeHeight] = useState("400px");
+  const [iframeHeight, setIframeHeight] = useState(400);
 
   const handleExampleLoad = () => {
     let attempts = 0;
 
-    const waitForExampleContent = setInterval(() => {
+    const waitForExampleContentToRender = setInterval(() => {
       const exampleIframe = document.getElementById(
-        "examples-iframe"
+        exampleIframeId
       ) as HTMLIFrameElement;
-      const exampleElement = exampleIframe?.contentDocument;
-      const exampleWrapper = exampleElement?.getElementById("polaris-example");
-
-      const padding = 192;
-      let newHeight = padding;
+      const exampleIframeDOM = exampleIframe?.contentDocument;
+      const exampleWrapper =
+        exampleIframeDOM?.getElementById("polaris-example");
 
       if (exampleWrapper) {
-        newHeight += exampleWrapper?.offsetHeight;
-        setIframeHeight(`${newHeight}px`);
+        const newHeight = iframePadding + exampleWrapper.offsetHeight;
+        setIframeHeight(newHeight);
         setHTMLCode(formatHTML(exampleWrapper.innerHTML));
-        clearInterval(waitForExampleContent);
+        clearInterval(waitForExampleContentToRender);
       }
 
       attempts++;
 
       if (attempts > 10) {
-        clearInterval(waitForExampleContent);
+        clearInterval(waitForExampleContentToRender);
       }
     }, 100);
 
-    return () => {
-      clearInterval(waitForExampleContent);
-    };
+    return () => clearInterval(waitForExampleContentToRender);
   };
 
   useEffect(() => {
@@ -112,7 +111,7 @@ const ComponentExamples = ({examples}: Props) => {
                     height={iframeHeight}
                     width="100%"
                     onLoad={handleExampleLoad}
-                    id="examples-iframe"
+                    id={exampleIframeId}
                   />
                   <div className={className(styles.Buttons, "light-mode")}>
                     <CodesandboxButton
@@ -123,7 +122,7 @@ const ComponentExamples = ({examples}: Props) => {
                 </div>
 
                 <Code
-                  tabs={[
+                  code={[
                     { title: "React", code: code.trim() },
                     { title: "HTML", code: htmlCode },
                   ]}
