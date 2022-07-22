@@ -134,28 +134,7 @@
     display: none;
   }
 
-  pre {
-    font-family: var(--font-family-mono);
-    font-size: var(--font-size-100);
-    padding: 1rem;
-    background: var(--surface-code-block);
-    color: #fff;
-    border-radius: var(--border-radius-500);
-    overflow: auto;
-    white-space: pre-wrap;
-    min-width: 0;
-    margin-top: 0.5rem;
-
-    code {
-      background: transparent;
-    }
-
-    p {
-      margin: 0;
-    }
-  }
-
-  code {
+  p code {
     font-family: var(--font-family-mono);
     font-size: 0.9em;
     font-weight: var(--font-weight-500);
