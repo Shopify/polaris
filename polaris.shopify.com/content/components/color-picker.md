@@ -15,17 +15,14 @@ keywords:
   - alpha value selector
 examples:
   - fileName: color-picker-default.tsx
-    title: Default color picker
-    description: |-
-      Use when merchants need to select a color to make the selection a visual task rather than a technical one.
-  - fileName: color-pickerpicker-with-transparent-value.tsx
-    title: Colorpicker with transparent value
-    description: >-
-      Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
-  - fileName: color-pickerpicker-with-transparent-value-full-width.tsx
-    title: Colorpicker with transparent value full width
-    description: >-
-      Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
+    title: Default
+    description: Use when merchants need to select a color to make the selection a visual task rather than a technical one.
+  - fileName: color-picker-with-transparent-value.tsx
+    title: With transparent value
+    description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
+  - fileName: color-picker-with-transparent-value-full-width.tsx
+    title: With transparent value full width
+    description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 ---
 
 # Color picker
@@ -38,4 +35,3 @@ The color picker is used to let merchants select a color visually. For example, 
 
 - Use the alpha slider if you want to allow merchants to be able to select a transparent color
 
----

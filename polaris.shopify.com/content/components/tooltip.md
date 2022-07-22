@@ -12,12 +12,11 @@ keywords:
   - tap
 examples:
   - fileName: tooltip-default.tsx
-    title: Default tooltip
-    description: >-
-      Use only when necessary to provide an explanation for an interface
-      element.
+    title: Default
+    description: Use only when necessary to provide an explanation for an interface element.
   - fileName: tooltip-visible-only-with-child-interaction.tsx
-    title: Tooltip visible only with child interaction
+    title: Visible only with child interaction
+    description: Use when the tooltip overlays interactive elements when active, for example a form input. The `dismissOnMouseOut` prop prevents the tooltip from remaining active when mouse hover or focus leaves its `children` and enters the tooltip's content.
 ---
 
 # Tooltip

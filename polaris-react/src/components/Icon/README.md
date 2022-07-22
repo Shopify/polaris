@@ -23,7 +23,7 @@ Icons are used to visually communicate core parts of the product and available a
 
 ## Examples
 
-### Default icon
+### Default
 
 Use to visually communicate core parts of the product and available actions.
 
@@ -31,7 +31,7 @@ Use to visually communicate core parts of the product and available actions.
 <Icon source={CirclePlusMinor} />
 ```
 
-### Colored icon
+### Colored
 
 Apply a color to the icon.
 
@@ -47,7 +47,7 @@ Apply a color to the icon.
 </div>
 ```
 
-### Icon with backdrop
+### With backdrop
 
 Apply a backdrop to the icon.
 
@@ -61,7 +61,7 @@ Apply a backdrop to the icon.
 </div>
 ```
 
-### User provided icon
+### With custom SVG
 
 Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.
 
@@ -69,7 +69,7 @@ Specify an SVG as a string to render it in an image tag, instead of an inline SV
 <Icon source="<svg viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'><path d='M10.707 17.707l5-5a.999.999 0 1 0-1.414-1.414L11 14.586V3a1 1 0 1 0-2 0v11.586l-3.293-3.293a.999.999 0 1 0-1.414 1.414l5 5a.999.999 0 0 0 1.414 0' /></svg>" />
 ```
 
-### User provided icon with color and currentColor
+### With custom SVG and color
 
 When using changing color of an svg and it uses currentColor, the white color is applied.
 

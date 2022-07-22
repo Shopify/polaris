@@ -90,7 +90,7 @@ Help text provides extra guidance to people filling out a form field. This text 
 
 ## Examples
 
-### Default form layout
+### Default
 
 Use to stack form fields vertically, which makes them easier to scan and complete.
 

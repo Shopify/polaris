@@ -411,13 +411,7 @@
     "frontMatter": {
       "name": "Data table",
       "category": "Lists and tables",
-      "keywords": [
-        "DataTable",
-        "data",
-        "table",
-        "tabular",
-        "index"
-      ]
+      "keywords": ["DataTable", "data", "table", "tabular", "index"]
     },
     "intro": "Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data."
   },
@@ -540,12 +534,7 @@
     "frontMatter": {
       "name": "Exception list",
       "category": "Lists and tables",
-      "keywords": [
-        "exception list",
-        "exceptions",
-        "list",
-        "list exceptions"
-      ]
+      "keywords": ["exception list", "exceptions", "list", "list exceptions"]
     },
     "intro": "Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front."
   },
@@ -662,13 +651,7 @@
     "frontMatter": {
       "name": "Fullscreen bar",
       "category": "Navigation",
-      "keywords": [
-        "topbar",
-        "top bar",
-        "header",
-        "bar",
-        "app"
-      ]
+      "keywords": ["topbar", "top bar", "header", "bar", "app"]
     },
     "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
   },
@@ -865,12 +848,7 @@
     "frontMatter": {
       "name": "Listbox",
       "category": "Lists and tables",
-      "keywords": [
-        "list",
-        "listbox",
-        "list box",
-        "interactive list"
-      ]
+      "keywords": ["list", "listbox", "list box", "interactive list"]
     },
     "intro": "A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements."
   },
@@ -878,12 +856,7 @@
     "frontMatter": {
       "name": "Loading",
       "category": "Feedback indicators",
-      "keywords": [
-        "spinner",
-        "loader",
-        "loading",
-        "loading bar"
-      ]
+      "keywords": ["spinner", "loader", "loading", "loading bar"]
     },
     "intro": "The loading component is used to indicate to merchants that a page is loading or an upload is processing."
   },
@@ -1266,12 +1239,7 @@
       "name": "Skeleton body text",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": [
-        "SkeletonBodyText",
-        "skeleton",
-        "loading",
-        "page"
-      ]
+      "keywords": ["SkeletonBodyText", "skeleton", "loading", "page"]
     },
     "intro": "Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
@@ -1280,12 +1248,7 @@
       "name": "Skeleton display text",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": [
-        "SkeletonDisplayText",
-        "skeleton",
-        "loading",
-        "page"
-      ]
+      "keywords": ["SkeletonDisplayText", "skeleton", "loading", "page"]
     },
     "intro": "Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
@@ -1294,12 +1257,7 @@
       "name": "Skeleton page",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": [
-        "SkeletonPage",
-        "skeleton",
-        "loading",
-        "page"
-      ]
+      "keywords": ["SkeletonPage", "skeleton", "loading", "page"]
     },
     "intro": "Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants."
   },
@@ -1308,12 +1266,7 @@
       "name": "Skeleton tabs",
       "category": "Feedback indicators",
       "releasedIn": 9,
-      "keywords": [
-        "SkeletonTabs",
-        "skeleton",
-        "loading",
-        "page"
-      ]
+      "keywords": ["SkeletonTabs", "skeleton", "loading", "page"]
     },
     "intro": "Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
@@ -1322,12 +1275,7 @@
       "name": "Skeleton thumbnail",
       "category": "Feedback indicators",
       "releasedIn": "3.7.2",
-      "keywords": [
-        "SkeletonThumbnail",
-        "skeleton",
-        "loading",
-        "page"
-      ]
+      "keywords": ["SkeletonThumbnail", "skeleton", "loading", "page"]
     },
     "intro": "Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card."
   },
@@ -1336,12 +1284,7 @@
       "name": "Spinner",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
-      "keywords": [
-        "spinner",
-        "loader",
-        "loading",
-        "progress indicator"
-      ]
+      "keywords": ["spinner", "loader", "loading", "progress indicator"]
     },
     "intro": "Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts."
   },

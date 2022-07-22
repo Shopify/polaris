@@ -17,7 +17,7 @@ Spinners are used to notify merchants that their action is being processed. For 
 
 ## Examples
 
-### Default spinner
+### Default
 
 Use to notify merchants that their requested action is being processed.
 
@@ -25,7 +25,7 @@ Use to notify merchants that their requested action is being processed.
 <Spinner accessibilityLabel="Spinner example" size="large" />
 ```
 
-### Small spinner
+### Small
 
 Smaller than the default spinner.
 
@@ -33,7 +33,7 @@ Smaller than the default spinner.
 <Spinner accessibilityLabel="Small spinner example" size="small" />
 ```
 
-### Spinner with focus management
+### With focus management
 
 Use to direct the focus state from the control to the spinner, to the content.
 

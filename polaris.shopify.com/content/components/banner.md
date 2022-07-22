@@ -25,61 +25,35 @@ keywords:
   - full-width alert
 examples:
   - fileName: banner-default.tsx
-    title: Default banners
-    description: >-
-      Use to convey general information or actions that aren’t critical. For
-      example, you might show a banner that asks for merchant feedback.Default
-      banners contain lower priority information and should always be
-      dismissible.
+    title: Default
+    description: Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
   - fileName: banner-dismissible.tsx
-    title: Dismissible banner
-    description: >-
-      Make all banners dismissible, unless they contain critical information or
-      an important action that merchants are required to take.
+    title: Dismissible
+    description: Make all banners dismissible, unless they contain critical information or an important action that merchants are required to take.
   - fileName: banner-with-footer-call-to-action.tsx
-    title: Banner with footer call-to-action
-    description: >-
-      Use when you want merchants to take an action after reading the
-      banner.
+    title: With footer call-to-action
+    description: Use when you want merchants to take an action after reading the banner.
   - fileName: banner-informational.tsx
-    title: Informational banners
-    description: >-
-      Use to update merchants about a change or give them
-      advice.
+    title: Informational
+    description: Use to update merchants about a change or give them advice.
   - fileName: banner-success.tsx
-    title: Success banner
-    description: >-
-      Default to using toasts for success messages, unless the feedback is
-      delayed, persistent, or has a call to actionInclude next steps if
-      applicable
+    title: Success
+    description: Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action. Include next steps if applicable.
   - fileName: banner-warning.tsx
-    title: Warning banners
-    description: >-
-      Use to display information that needs attention or that merchants need to
-      take action on. Seeing these banners can be stressful for merchants so be
-      cautious about using them
+    title: Warning
+    description: Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
   - fileName: banner-critical.tsx
-    title: Critical banners
-    description: >-
-      Use to communicate problems that have to be resolved immediately for
-      merchants to complete a taskFor example, you will show this banner for
-      orders with high fraud riskSeeing these banners can be stressful for
-      merchants so be cautious about using them
+    title: Critical
+    description: Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
   - fileName: banner-in-a-modal.tsx
-    title: Banner in a modal
-    description: >-
-      Banners inside of modals render with less spacing and a pared-back design
-      to fit within a content context.
+    title: In a modal
+    description: Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
   - fileName: banner-with-focus.tsx
-    title: Banner with focus
-    description: >-
-      Banner can programmatically receive focus. Use this functionality to draw
-      the merchant’s attention to the banner.
+    title: With focus
+    description: Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
   - fileName: banner-in-a-card.tsx
-    title: Banner in a card
-    description: >-
-      Banners inside of cards render with less spacing and a pared-back design
-      to fit within a content context.
+    title: In a card
+    description: Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 ---
 
 # Banner

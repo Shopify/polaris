@@ -16,7 +16,7 @@ examples:
     title: Custom onSubmit
     description: Use onSubmit as a callback for when your form is submitted.
   - fileName: form-without-native-validation.tsx
-    title: Form without native validation
+    title: Without native validation
     description: Use in forms to toggle native form validation.
 ---
 

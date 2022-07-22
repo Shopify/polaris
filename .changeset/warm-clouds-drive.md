@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Removed comments and cleaned up markdown files
+Migrate content to polaris.shopify.com, automate example titles

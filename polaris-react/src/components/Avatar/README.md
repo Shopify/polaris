@@ -50,7 +50,7 @@ For avatars, we recommend using a format that describes what will show in the im
 
 ## Examples
 
-### Default avatar
+### Default
 
 Use to present an avatar for a merchant, customer, or business.
 
@@ -58,7 +58,7 @@ Use to present an avatar for a merchant, customer, or business.
 <Avatar customer name="Farrah" />
 ```
 
-### Extra small avatar
+### Extra small
 
 Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
 
@@ -95,7 +95,7 @@ function ExtraSmallAvatarExample() {
 }
 ```
 
-### Square avatar
+### Square
 
 Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
 
