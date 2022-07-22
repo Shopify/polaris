@@ -36,9 +36,6 @@ module.exports = {
               ),
             },
           },
-          {
-            loader: `${__dirname}/polaris-readme-loader.js`,
-          },
         ],
       },
       {
