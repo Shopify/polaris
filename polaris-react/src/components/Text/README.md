@@ -39,7 +39,7 @@ Use to create a small display text.
 <Text variant="displaySm">Good evening, Dominic.</Text>
 ```
 
-### Display Medium
+### Display medium
 
 Use to create a medium display text.
 
