@@ -13,7 +13,7 @@ describe('<KonamiCode />', () => {
     (console.error as jest.Mock).mockRestore();
   });
 
-  it('calls the handler when the Konami Code is entered', async () => {
+  it('calls the handler when the Konami Code is entered', () => {
     const spy = jest.fn();
 
     mountWithApp(<KonamiCode handler={spy} />);
