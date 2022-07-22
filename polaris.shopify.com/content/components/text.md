@@ -22,18 +22,6 @@ status:
   value: Alpha
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
-  - fileName: text-display-small.tsx
-    title: Display small
-    description: >-
-      Use to create a small display text.
-  - fileName: text-display-medium.tsx
-    title: Display medium
-    description: >-
-      Use to create a medium display text.
-  - fileName: text-display-large.tsx
-    title: Display large
-    description: >-
-      Use to create a large display text.
   - fileName: text-heading-small.tsx
     title: Heading small
     description: >-
@@ -50,6 +38,18 @@ examples:
     title: Heading extra large
     description: >-
       Use to create an extra large heading text.
+  - fileName: text-heading-2xl.tsx
+    title: Heading 2xl
+    description: >-
+      Use to create a 2xl heading text.
+  - fileName: text-heading-3xl.tsx
+    title: Heading 3xl
+    description: >-
+      Use to create a 3xl heading text.
+  - fileName: text-heading-4xl.tsx
+    title: Heading 4xl
+    description: >-
+      Use to create a 4xl heading text.
   - fileName: text-body-small.tsx
     title: Body small
     description: >-

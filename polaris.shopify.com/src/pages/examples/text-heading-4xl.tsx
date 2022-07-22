@@ -4,8 +4,9 @@ import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function TextExample() {
   return (
-    <Text variant="displaySm" as="h1">
-      Good evening, Dominic.
+    <Text variant="heading4xl" as="h1">
+      {" "}
+      Online store dashboard
     </Text>
   );
 }

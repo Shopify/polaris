@@ -31,30 +31,6 @@ Typography helps establish hierarchy and communicate important content by creati
 
 ## Examples
 
-### Display small
-
-Use to create a small display text.
-
-```jsx
-<Text variant="displaySm">Good evening, Dominic.</Text>
-```
-
-### Display medium
-
-Use to create a medium display text.
-
-```jsx
-<Text variant="displayMd">Good evening, Dominic.</Text>
-```
-
-### Display large
-
-Use to create a large display text.
-
-```jsx
-<Text variant="displayLg">Good evening, Dominic.</Text>
-```
-
 ### Heading small
 
 Use to create a small heading text.
@@ -70,7 +46,7 @@ Use to create a small heading text.
 Use to create a medium heading text.
 
 ```jsx
-<Text variant="headingMd" as="h5">
+<Text variant="headingMd" as="h6">
   Online store dashboard
 </Text>
 ```
@@ -80,7 +56,7 @@ Use to create a medium heading text.
 Use to create a large heading text.
 
 ```jsx
-<Text variant="headingLg" as="h4">
+<Text variant="headingLg" as="h5">
   Online store dashboard
 </Text>
 ```
@@ -90,7 +66,37 @@ Use to create a large heading text.
 Use to create an extra large heading text.
 
 ```jsx
-<Text variant="headingXl" as="h3">
+<Text variant="headingXl" as="h4">
+  Online store dashboard
+</Text>
+```
+
+### Heading 2xl
+
+Use to create a 2xl heading text.
+
+```jsx
+<Text variant="heading2xl" as="h3">
+  Online store dashboard
+</Text>
+```
+
+### Heading 3xl
+
+Use to create a 3xl heading text.
+
+```jsx
+<Text variant="heading3xl" as="h2">
+  Online store dashboard
+</Text>
+```
+
+### Heading 4xl
+
+Use to create a 4xl heading text.
+
+```jsx
+<Text variant="heading4xl" as="h1">
   Online store dashboard
 </Text>
 ```
