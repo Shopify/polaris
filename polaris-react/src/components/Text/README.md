@@ -161,7 +161,7 @@ Use to align text at center of horizontal line.
 </Text>
 ```
 
-### Align End
+### With align end
 
 Use to align text at end of horizontal line.
 
