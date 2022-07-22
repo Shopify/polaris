@@ -63,12 +63,18 @@ function Code({ code }: Props) {
 
 function HighlightedCode({ code }: { code: string }) {
   return (
-    <div
-      className={styles.ActualCode}
-      dangerouslySetInnerHTML={{
-        __html: Prism.highlight(code, Prism.languages.javascript, "javasript"),
-      }}
-    ></div>
+    <pre>
+      <code
+        className={styles.ActualCode}
+        dangerouslySetInnerHTML={{
+          __html: Prism.highlight(
+            code,
+            Prism.languages.javascript,
+            "javasript"
+          ),
+        }}
+      ></code>
+    </pre>
   );
 }
 
