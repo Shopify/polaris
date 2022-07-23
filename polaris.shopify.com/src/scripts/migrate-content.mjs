@@ -49,7 +49,6 @@ const migrateFile = async (filePath) => {
   const contentNoExample = fileContent
     .replace(exampleContent, "")
     .replace("---\n\n## Examples", "")
-    .replace("\nomitAppProvider: true", "")
     .replace("\n---", `\n${exampleFrontMatter}\n---`);
 
   fs.writeFileSync(fileDir, contentNoExample);

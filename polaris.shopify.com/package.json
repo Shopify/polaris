@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "yarn run copy-icons && next build",
-    "dev": "yarn run copy-icons && next dev",
+    "dev": "yarn run copy-icons && open http://localhost:3000 && next dev",
     "start": "next start ",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
