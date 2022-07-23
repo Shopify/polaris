@@ -99,6 +99,11 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
                 prop.valueDeclaration as ts.PropertyDeclaration;
               isOptional = propertySignature.questionToken !== undefined;
             }
+            if (prop.valueDeclaration.kind === ts.SyntaxKind.MethodSignature) {
+              const methodSignature =
+                prop.valueDeclaration as ts.MethodSignature;
+              isOptional = methodSignature.questionToken !== undefined;
+            }
 
             members.push({
               id: fullyQualifiedName,
