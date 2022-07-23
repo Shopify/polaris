@@ -41,7 +41,7 @@ export function ${example.storyName}() {
 }
 
 ${example.storyName}.storyName = ${JSON.stringify(example.name)};
-${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};
+${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};
 ${example.storyName}.parameters = {
   layout: '${hasFullscreenLayout ? 'fullscreen' : 'padded'}',
   docs: {
