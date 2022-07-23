@@ -1,10 +1,12 @@
 import { useState } from "react";
 import {
+  BaseNode,
   NodeWithMembers,
   NodeWithType,
   TypeList,
 } from "../../scripts/get-props";
 import StatusBadge from "../StatusBadge";
+import { Disclosure } from "@headlessui/react";
 import styles from "./PropsTable.module.scss";
 
 interface Props {
@@ -21,7 +23,6 @@ function findReferencedType({
   typeName: string;
   fileName: string;
 }): TypeList[number] | null {
-  console.log({ typeName });
   const typesWithSameName = allTypes.filter((type) => type.name === typeName);
   if (typesWithSameName.length === 0) {
     console.log("No types found");
@@ -62,7 +63,7 @@ function resolveMember(
     });
     if (referencedType) {
       if ("type" in referencedType) {
-        return `🪄 ${referencedType.type}`;
+        return `${referencedType.type} 🪄`;
       } else {
         return referencedType;
       }
@@ -76,13 +77,32 @@ function resolveMember(
     });
     if (referencedType) {
       if ("type" in referencedType) {
-        return `🪄 (${referencedType.type})[]`;
+        return `(${referencedType.type})[] 🪄`;
       } else {
         return referencedType;
       }
     }
   }
   return node.type;
+}
+
+function highlightType(type: string): React.ReactNode {
+  if (type === "string") {
+    return <span className={styles.SyntaxString}>{type}</span>;
+  } else if (type === "boolean") {
+    return <span className={styles.SyntaxBoolean}>{type}</span>;
+  } else if (type === "React.ReactNode") {
+    return <span className={styles.SyntaxReactNode}>{type}</span>;
+  }
+  return <span>{type}</span>;
+}
+
+function getDefaultValue(type: BaseNode): string | null {
+  const defaultTag = type.tags.find((tag) => tag.name === "default");
+  if (defaultTag) {
+    return defaultTag.text;
+  }
+  return null;
 }
 
 function PropsTable({ types, componentName }: Props) {
@@ -118,36 +138,70 @@ function PropsTable({ types, componentName }: Props) {
 function InterfaceList({
   allTypes,
   node,
+  level = 0,
 }: {
   allTypes: TypeList;
   node: TypeList[number];
+  level?: number;
 }) {
   if (!("members" in node)) return null;
 
-  return (
-    <div
-      className={styles.InterfaceList}
-      style={{ background: `rgba(0,0,0,.1)`, borderRadius: 8, padding: 20 }}
-    >
-      <p>
-        <strong>{node.name}</strong>
-      </p>
+  if (node.members.length === 0) {
+    return <p>{`This component doesn't have any props.`}</p>;
+  }
 
-      <ul>
-        {node.members.map((type) => {
-          const memberType = resolveMember(allTypes, type);
-          return (
-            <li key={type.name}>
-              {type.name}:{" "}
-              {typeof memberType === "string" ? (
-                resolveMember(allTypes, type)
-              ) : (
-                <InterfaceList allTypes={allTypes} node={memberType} />
-              )}
-            </li>
-          );
-        })}
-      </ul>
+  return (
+    <div className={styles.InterfaceList}>
+      <Disclosure defaultOpen={level === 0}>
+        <Disclosure.Button className={styles.InterfaceListHeader}>
+          {node.name}
+        </Disclosure.Button>
+
+        <Disclosure.Panel className={styles.InterfaceListContent}>
+          <ul>
+            {node.members.map((type) => {
+              const memberType = resolveMember(allTypes, type);
+              return (
+                <li key={type.name}>
+                  <span className={styles.KeyValue}>
+                    <span className={styles.Key}>
+                      {type.name}{" "}
+                      {type.isOptional ? (
+                        ""
+                      ) : (
+                        <>
+                          {" "}
+                          <StatusBadge
+                            status={{ value: "warning", message: "Required" }}
+                          />
+                        </>
+                      )}
+                    </span>
+                    <span className={styles.Value}>
+                      <span className={styles.Description}>
+                        {type.description}
+                      </span>
+
+                      {typeof memberType === "string" ? (
+                        highlightType(memberType)
+                      ) : (
+                        <InterfaceList
+                          allTypes={allTypes}
+                          node={memberType}
+                          level={level + 1}
+                        />
+                      )}
+                      <span className={styles.Default}>
+                        {getDefaultValue(type)}
+                      </span>
+                    </span>
+                  </span>
+                </li>
+              );
+            })}
+          </ul>
+        </Disclosure.Panel>
+      </Disclosure>
     </div>
   );
 }

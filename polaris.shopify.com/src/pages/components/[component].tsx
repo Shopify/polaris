@@ -57,8 +57,10 @@ const Components = ({
       <Longform>
         <Markdown text={intro} skipH1 />
         {typedStatus && <StatusBanner status={typedStatus} />}
-        {types && <PropsTable types={types} componentName={name} />}
-        <ComponentExamples examples={examples} />
+      </Longform>
+      <ComponentExamples examples={examples} />
+      {types && <PropsTable types={types} componentName={name} />}
+      <Longform>
         <Markdown text={readme.body} skipH1 />
       </Longform>
     </Layout>

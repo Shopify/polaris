@@ -1,14 +1,4 @@
 .PropsTable {
-  ul {
-    margin-top: 1.5rem;
-    li {
-      margin-left: 0;
-      list-style-type: none;
-      &:before {
-        display: none;
-      }
-    }
-  }
 }
 
 .Definition {
@@ -31,4 +21,76 @@
 .Comment {
   font-size: var(--font-size-50);
   color: var(--text-subdued);
+}
+
+.InterfaceList {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: var(--border-radius-400);
+  border: var(--border);
+  font-size: var(--font-size-200);
+  display: inline-block;
+
+  .InterfaceListHeader {
+    border-bottom: var(--border);
+    font-weight: var(--font-weight-500);
+    padding: 0.5em 1em;
+    background: transparent;
+    width: 100%;
+  }
+
+  .InterfaceListHeader[aria-expanded="false"] {
+    padding: 0.25em 0.5rem;
+    border-bottom: none;
+  }
+
+  li {
+    padding: 0.666em 1em;
+
+    &:nth-of-type(even) {
+      background: rgba(255, 255, 255, 0.025);
+    }
+  }
+
+  .InterfaceList {
+    font-size: var(--font-size-100);
+  }
+
+  .Description {
+    display: block;
+    font-size: var(--font-size-50);
+    color: var(--text-subdued);
+  }
+
+  .KeyValue {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .Key {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    min-width: 10em;
+  }
+
+  .Value {
+    margin-left: 0.4rem;
+    word-break: break-word;
+  }
+
+  .Default {
+    background: purple;
+  }
+}
+
+.SyntaxString {
+  color: yellow;
+}
+
+.SyntaxBoolean {
+  color: purple;
+}
+
+.SyntaxReactNode {
+  color: green;
 }
