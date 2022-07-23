@@ -42,13 +42,10 @@ module.exports = function loader(source) {
 const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
   return <${example.storyName}Component />;
-}
-
-// ${example.storyName}.storyName = ${JSON.stringify(example.name)};
-`;
+}`;
 
     if (readme.omitAppProvider) {
-      code += `${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};\n`;
+      code += `${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};\n`;
     }
 
     if (hasFullscreenLayout) {
@@ -262,7 +259,6 @@ function parseCodeExamples(data) {
     category: matter.data.category,
     component: examples.length ? toPascalCase(matter.data.name) : undefined,
     examples,
-    omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
 

@@ -7,7 +7,6 @@ keywords:
   - color scheme
   - light mode
   - dark mode
-omitAppProvider: true
 ---
 
 # Custom Properties

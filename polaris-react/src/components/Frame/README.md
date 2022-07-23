@@ -15,7 +15,6 @@ keywords:
   - top bar
   - menu
   - toast
-omitAppProvider: true
 ---
 
 # Frame
