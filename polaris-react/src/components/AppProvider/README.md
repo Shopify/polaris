@@ -14,7 +14,6 @@ keywords:
   - application wrapper
   - wrapper
   - sdk
-omitAppProvider: true
 ---
 
 # App provider
