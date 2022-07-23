@@ -28,7 +28,7 @@ for (let i = 0; i < subfolders.length; i++) {
 
       const { readme, ...rest } = parsed;
 
-      guidelines.push({ ...rest, section: dirName });
+      guidelines.push({ ...rest, category: dirName });
     }
   }
 }

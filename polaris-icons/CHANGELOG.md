@@ -1,5 +1,27 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- [#6690](https://github.com/Shopify/polaris/pull/6690) [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb) Thanks [@vladabee](https://github.com/vladabee)! - Making the descriptions and use cases for diamond and circle alert icons clearer.
+
+## 5.1.0
+
+### Minor Changes
+
+- [#6649](https://github.com/Shopify/polaris/pull/6649) [`a6a972f7f`](https://github.com/Shopify/polaris/commit/a6a972f7f186bbc03c60f925755056a9de1b056f) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Added PlanMajor and PlanMinor icons, which are for use on the Settings sheet for Plan
+
+* [#6514](https://github.com/Shopify/polaris/pull/6514) [`327a73381`](https://github.com/Shopify/polaris/commit/327a73381ffb9a3f0ac3de4b76632d08070b8720) Thanks [@james-a-c](https://github.com/james-a-c)! - Add new icon `TemplateMinor`
+
+- [#6457](https://github.com/Shopify/polaris/pull/6457) [`b541f5449`](https://github.com/Shopify/polaris/commit/b541f54498462ce513b9903dfcfcb966f43e0038) Thanks [@brandonlawshop](https://github.com/brandonlawshop)! - Added `StatusActiveMajor` icon
+
+### Patch Changes
+
+- [#6617](https://github.com/Shopify/polaris/pull/6617) [`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632) Thanks [@alex-page](https://github.com/alex-page)! - Update component links so they no longer hit the redirect
+
+* [#6633](https://github.com/Shopify/polaris/pull/6633) [`4c0301bbb`](https://github.com/Shopify/polaris/commit/4c0301bbbb0612afaa5111fc579f52175c8b3ada) Thanks [@sambostock](https://github.com/sambostock)! - Update GitHub repo references in package.json
+
 ## 5.0.0
 
 ### Major Changes

@@ -12,21 +12,17 @@ keywords:
   - collection lists
   - list selection
 examples:
-  - fileName: option-list-simple.tsx
-    title: Simple option list
-    description: >-
-      Use for a group of similar selectable items when only one should be
-      selectable at once.
+  - fileName: option-list-default.tsx
+    title: Default
+    description: Use for a group of similar selectable items when only one should be selectable at once.
   - fileName: option-list-multiple.tsx
-    title: Multiple option list
-    description: >-
-      Use when you have a group of similar selectable items and more than one
-      item can be selected at once.
+    title: Multiple
+    description: Use when you have a group of similar selectable items and more than one item can be selected at once.
   - fileName: option-list-with-sections.tsx
-    title: Option list with sections
+    title: With sections
     description: Use sections when you have multiple groups of similar selectable items.
   - fileName: option-list-in-a-popover.tsx
-    title: Option list in a popover
+    title: In a popover
     description: Use when a set of selections won’t fit in the available screen space.
 ---
 
@@ -40,9 +36,7 @@ The option list component lets you create a list of grouped items that merchants
 
 The option list component should:
 
-- Be placed on its own inside a container. Usually the container behaves like a
-  menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t
-  place other components within the same container.
+- Be placed on its own inside a container. Usually the container behaves like a menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t place other components within the same container.
 - Not be used when a [select component](https://polaris.shopify.com/components/select) will do.
 
 ---
@@ -53,7 +47,7 @@ The option list component should:
 
 Each item in an option list should be clear and descriptive.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

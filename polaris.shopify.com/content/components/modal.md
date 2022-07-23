@@ -25,33 +25,33 @@ keywords:
   - dialog
   - alert
 examples:
-  - fileName: modal-basic.tsx
-    title: Basic modal
+  - fileName: modal-default.tsx
+    title: Default
     description: Use as the default option for a modal.
   - fileName: modal-with-primary-action.tsx
-    title: Modal with primary action
+    title: With primary action
     description: Use to let merchants take a key action.
   - fileName: modal-with-primary-and-secondary-actions.tsx
-    title: Modal with primary and secondary actions
-    description: >-
-      Use to let merchants take key actions at the bottom of the
-      modal.
+    title: With primary and secondary actions
+    description: Use to let merchants take key actions at the bottom of the modal.
   - fileName: modal-large.tsx
-    title: Large modal
+    title: Large
     description: Use when you need to increase the width of your modal.
   - fileName: modal-small.tsx
-    title: Small modal
+    title: Small
     description: Use when you need to decrease the width of your modal.
   - fileName: modal-without-a-title.tsx
-    title: Modal without a title
+    title: Without a title
     description: A title is required for accessibility, but you may hide it.
   - fileName: modal-with-scroll-listener.tsx
-    title: Modal with scroll listener
+    title: With scroll listener
     description: Use to implement infinite scroll of modal content.
   - fileName: modal-with-activator-ref.tsx
-    title: Modal with activator ref
+    title: With activator ref
+    description: Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
   - fileName: modal-without-an-activator-prop.tsx
-    title: Modal without an activator prop
+    title: Without an activator prop
+    description: Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 ---
 
 # Modal
@@ -67,7 +67,7 @@ Use modals for confirmations and conditional changes. They should be thought of 
 Modals should:
 
 - Require that merchants take an action.
-- Close when merchants press the `X` button, the `Cancel` button, or the <kbd>Esc</kbd> key, not when merchants click or tap the area outside the modal.
+- Close when merchants press the `X` button, the `Cancel` button, the <kbd>Esc</kbd> key, or when merchants click or tap the area outside the modal.
 - Not have more than two buttons (primary and secondary) at the bottom. This prevents unclear action hierarchy and crowding on mobile screens. Since modals are for focused tasks, they should have focused actions. In some cases however, a [tertiary action](#tertiary-actions) may be appropriate.
 
 ---
@@ -81,7 +81,7 @@ Modal titles should:
 - Use a clear {verb}+{noun} question or statement
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -103,7 +103,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,7 +120,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -138,7 +138,7 @@ Actions should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -154,7 +154,7 @@ Actions should be:
 
 - Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -170,7 +170,7 @@ Actions should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -189,7 +189,7 @@ Tertiary actions should:
 - Only be used when the action requires the context of the content in the modal
 - Never be used to dismiss the modal
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -209,7 +209,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -224,7 +224,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

@@ -43,7 +43,7 @@ The standard message content is
 - “Unsaved changes” when editing existing content
 - “Unsaved {resource name}” when creating a new object
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -59,7 +59,7 @@ The standard message content is
 
 Actions in the contextual save bar component should consist of a strong verb that encourages action. They should not include a noun.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -77,7 +77,7 @@ Actions in the contextual save bar component should consist of a strong verb tha
 
 ## Examples
 
-### Default contextual save bar
+### Default
 
 Use the save action to provide an opportunity to save changes. Use the discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
 
@@ -105,38 +105,9 @@ Use the save action to provide an opportunity to save changes. Use the discard a
 </div>
 ```
 
-### Contextual save bar during creation
+### With flush contents
 
-Use the save action to provide an opportunity to save a newly-created resource. Use the discard action to allow merchants the option to discard a new resource. Use the message to provide helpful context on the nature of the new resource.
-
-```jsx
-<div style={{height: '250px'}}>
-  <Frame
-    logo={{
-      width: 124,
-      contextualSaveBarSource:
-        'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    }}
-  >
-    <ContextualSaveBar
-      message="Unsaved product"
-      saveAction={{
-        onAction: () => console.log('add form submit logic'),
-        loading: false,
-        disabled: false,
-      }}
-      discardAction={{
-        onAction: () => console.log('add clear form logic'),
-      }}
-    />
-  </Frame>
-</div>
-```
-
-### Contextual save bar with flush contents
-
-Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and
-repurpose that space to extend the message contents fully to the left side of the container.
+Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and repurpose that space to extend the message contents fully to the left side of the container.
 
 ```jsx
 <div style={{height: '250px'}}>
@@ -161,7 +132,7 @@ repurpose that space to extend the message contents fully to the left side of th
 </div>
 ```
 
-### Contextual save bar full width
+### With full width
 
 Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
 

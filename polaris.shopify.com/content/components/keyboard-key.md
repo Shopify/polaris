@@ -11,7 +11,7 @@ keywords:
   - hotkey combinations
 examples:
   - fileName: keyboard-key-default.tsx
-    title: List of keyboard shortcuts
+    title: Default
     description: Use to list a related set of keyboard shortcuts.
 ---
 
@@ -59,7 +59,7 @@ The shortcut description should describe what action is taken when merchants tap
 
 The text of the keyboard key component is read by screen readers, but the visual formatting isn’t conveyed. Ensure that merchants are able to understand information about keyboard shortcuts without relying on the visual style of the component.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

@@ -29,7 +29,7 @@ The closer the spacing, the closer the relationship between content topics. The 
 
 ## Examples
 
-### Default text container
+### Default
 
 Use this component for default vertical spacing.
 
@@ -43,7 +43,7 @@ Use this component for default vertical spacing.
 </TextContainer>
 ```
 
-### Tight text container
+### Tight
 
 Use the tight spacing option to relate content topics to each other.
 
@@ -57,7 +57,7 @@ Use the tight spacing option to relate content topics to each other.
 </TextContainer>
 ```
 
-### Loose text container
+### Loose
 
 Use the loose spacing option to separate concepts that are independent of each other.
 

@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: var(--p-space-4) var(--p-space-2) 0;
+    padding: var(--p-space-4) var(--p-space-2);
 
     @media #{$p-breakpoints-md-up} {
       justify-content: flex-end;
@@ -165,7 +165,8 @@
   display: flex;
   align-self: flex-end;
   opacity: 0;
-  transition: opacity var(--p-duration-200) var(--p-ease);
+  transition: opacity var(--p-duration-200) var(--p-ease),
+    fill var(--p-duration-200) var(--p-ease);
 }
 
 .Heading {
@@ -175,7 +176,7 @@
   display: inline-flex;
   justify-content: flex-end;
   align-items: baseline;
-  @include recolor-icon(var(--p-icon-disabled));
+  @include recolor-icon(var(--p-icon));
   color: var(--p-text);
   transition: color var(--p-duration-200) var(--p-ease);
   cursor: pointer;
@@ -186,7 +187,7 @@
     visibility: hidden;
   }
 
-  .StickyHeaderEnabled [data-sticky-active] .StickyHeaderWrapper & {
+  .StickyHeaderEnabled [data-sticky-active] .StickyTable & {
     visibility: visible;
   }
 
@@ -199,10 +200,15 @@
   }
 
   &:hover {
+    @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
 
     .Icon {
       opacity: 1;
+
+      svg {
+        fill: var(--p-icon-disabled);
+      }
     }
   }
 
@@ -227,11 +233,6 @@
 .Cell-sorted {
   .Icon {
     opacity: 1;
-    @include recolor-icon(var(--p-icon));
-  }
-
-  &:hover {
-    @include recolor-icon(var(--p-interactive-hovered));
   }
 
   .Heading:focus:not(:active) {
@@ -284,7 +285,7 @@
 }
 
 .StickyHeaderEnabled {
-  .StickyHeaderWrapper {
+  .StickyTable {
     position: relative;
     top: 0;
     left: 0;
@@ -293,7 +294,7 @@
     z-index: var(--p-z-1);
   }
 
-  .StickyHeaderInner {
+  .StickyTableHeader {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -301,23 +302,9 @@
     overflow: hidden;
     border-spacing: 0;
 
-    &:not(.StickyHeaderInner-isSticky) {
+    &:not(.StickyTableHeader-isSticky) {
       top: -9999px;
       left: -9999px;
-    }
-  }
-
-  .StickyHeaderTable {
-    border-collapse: collapse;
-    display: block;
-    overflow-x: auto;
-    width: 100%;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      appearance: none;
-      height: 0;
-      width: 0;
     }
   }
 
@@ -327,10 +314,18 @@
   }
 
   .StickyTableHeadingsRow {
+    overflow-x: auto;
     background-color: var(--p-surface);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      appearance: none;
+      height: 0;
+      width: 0;
+    }
   }
 
-  .StickyHeaderInner-isSticky {
+  .StickyTableHeader-isSticky {
     visibility: visible;
     background-color: var(--p-surface);
     box-shadow: var(--p-shadow-base);
@@ -342,13 +337,11 @@
   background: var(--p-surface);
   z-index: 3;
   border-spacing: 0;
-  left: 0;
   @media #{$p-breakpoints-md-down} {
     z-index: 1;
   }
 
-  &.separate:is(table) th,
-  &.separate:is(th) {
+  &.separate th {
     border-right: var(--p-border-divider);
   }
 }

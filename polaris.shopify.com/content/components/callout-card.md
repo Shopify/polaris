@@ -23,20 +23,14 @@ keywords:
   - illustration card
 examples:
   - fileName: callout-card-default.tsx
-    title: Default callout card
-    description: >-
-      Use to let merchants know about a feature or opportunity where there is a
-      clear, single action they need to take to move to the next step.
+    title: Default
+    description: Use to let merchants know about a feature or opportunity where there is a clear, single action they need to take to move to the next step.
   - fileName: callout-card-with-secondary-action.tsx
-    title: Callout card with secondary action
-    description: >-
-      Use to let merchants know about a feature or opportunity where there are
-      two distinct actions they can take on the information.
+    title: With secondary action
+    description: Use to let merchants know about a feature or opportunity where there are two distinct actions they can take on the information.
   - fileName: callout-card-dismissable.tsx
-    title: Dismissable callout card
-    description: >-
-      Make all callout cards dismissible so merchants can get rid of cards about
-      features they’re not interested in.
+    title: Dismissable
+    description: Make all callout cards dismissible so merchants can get rid of cards about features they’re not interested in.
 ---
 
 # Callout card
@@ -52,8 +46,7 @@ Callout cards should:
 - Clearly articulate the benefit of the feature and what it does
 - Provide merchants with a clear call to action
 - Be targeted to merchants who will most benefit from the feature
-- Be dismissable so merchants can get rid of cards about features they’re not
-  interested in
+- Be dismissable so merchants can get rid of cards about features they’re not interested in
 - Use an illustration that helps to communicate the subject or merchant benefit
 
 ---
@@ -68,11 +61,9 @@ Callout card titles should follow the content guidelines for [headings and subhe
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling merchants
-  what actions are available to them (especially something new). Don’t use
-  permissive language like “you can”.
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -84,22 +75,18 @@ Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something
+- Structured for merchant success: always put the most critical information first
+- Clear: use the verb “need” to help merchants understand when they’re required to do something
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -109,7 +96,7 @@ Buttons should be:
 
 Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -121,11 +108,9 @@ Buy
 
 <!-- end -->
 
-- Action-led: buttons should always lead with a strong verb that encourages
-  action. To provide enough context to merchants use the {verb}+{noun} format on
-  buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -139,7 +124,7 @@ View your settings
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
