@@ -237,10 +237,10 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       },
       {
         title: "Locations",
-        url: "/foundations/patterns/locations",
+        url: "/foundations/patterns/resource-picking",
         icon: FoundationsIcons.LocationsIcon,
         excerpt:
-          "The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.",
+          "Resource picking experiences let merchants browse, find, and select items in a list to perform an action. The picking feature can help them navigate to a new page, filter an index table, or input one or more values in a form.",
       },
     ],
   },

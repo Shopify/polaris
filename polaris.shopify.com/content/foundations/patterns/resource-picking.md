@@ -1,24 +1,43 @@
 ---
 name: Resource picking
 keywords:
-  - breakpoint
+  - customer segments
   - locations
   - location picker
-  - segment picker
-  - picker
-  - segments
-  - segementation
-  - customer segments
-  - searchable list
-  - single select
   - multiselect
   - multi-select
   - multi select
+  - picker
+  - resource picker
+  - searchable listbox
+  - searchable list
+  - segment picker
+  - segments
+  - segementation
+  - single select
+examples:
+  - fileName: listbox-with-search.tsx
+    title: Searchable listbox
+    description: Use to help merchants browse, filter, and choose from a list of options.
+  - fileName: popover-with-segment-picker.tsx
+    title: Popover with segment picker
+    description: Use to help merchants quickly browse, find, and navigate from a list of customer segments.
+  - fileName: sheet-with-segment-picker.tsx
+    title: Sheet with segment picker
+    description: Use to help merchants quickly find and select from a list of customer segments.
 ---
 
 # Resource picking
 
 Resource picking experiences let merchants browse, find, and select items in a list to perform an action. The picking feature can help them navigate to a new page, filter an index table, or input one or more values in a form.
+
+![Searchable listbox pattern disected to illustrate how it's composed](/images/foundations/patterns/resource-picking/searchable-listbox.png)
+
+The primary building blocks of a picker experience are the listbox and text field components. Depending on what merchant problem you’re solving, the components may be hidden and revealed with an overlay, such as a popover or modal, or used directly inside of a container on the page. See the [customer segment picker](#customer-segments) and [location picker](#locations) examples for resource specific implementation details.
+
+CODE SAMPLE
+
+Include guidance about how to pick what container: The searchable listbox should be rendered directly.
 
 ---
 
@@ -58,17 +77,15 @@ While there are many ways to treat a resource depending on the use case, two com
 
 The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.
 
-#### Popover list
-
 The location picker popover allows a merchant to select any location they have added in the admin.
 
-![1 location](/images/foundations/patterns/resource-picking/1-location@2x.png)
+![1 location](/images/foundations/patterns/resource-picking/locations-1.png)
 
 #### 1 location
 
 When a merchant only has one location, the button that opens the location picker should be hidden. There’s no need to access the experience when they can’t switch locations.
 
-![2–10 locations](/images/foundations/patterns/resource-picking/2-10-locations@2x.png)
+![2–10 locations](/images/foundations/patterns/resource-picking/locations-2-to-10.png)
 
 #### 2–10 locations
 
@@ -80,7 +97,7 @@ In the location picker:
 - Show “All locations” at the top of the list.
 - List all other locations in alphabetical order. Each location item shows the location name only.
 
-![11 or more locations](/images/foundations/patterns/resource-picking/11-or-more-locations-picker@2x.png)
+![11 or more locations](/images/foundations/patterns/resource-picking/locations-11-or-more.png)
 
 #### 11 or more locations
 
@@ -90,55 +107,25 @@ When a merchant has 11 or more locations:
 - Add text search at the top of the location picker. This allows merchants to search for locations by specific criteria (location name, city, province, postal code, address, etc.).
 - Directly below the search, show a section with the 5 most recently used locations. If there are none, show the first 5 locations from the full list.
 - Below recently used locations, show an option to view all locations. Clicking this will show the inactive search state, displaying the full list of locations.
-
-#### Location list
-
-The location list allows merchants to view all locations they have added in the admin.
-
-![1–10 locations list](/images/foundations/patterns/resource-picking/1-10-locations@2x.png)
-
-##### 1–10 locations
-
-When a merchant has 1–10 locations, show all locations in a simple list. As notated in the image above:
-
-1. Each list item should include the location name and address
-2. The indicator at the bottom shows the total number of locations
-
-![11 or more locations list](/images/foundations/patterns/resource-picking/11-or-more-locations-list@2x.png)
-
-##### 11 or more locations
-
-When a merchant has 11 or more locations:
-
-- Apply the same features as 1–10 locations
-- Show text search, filters, and sorting at the top of the list
-
-Notated in the image above, location list functionality at this level includes:
-
-1. **Search**. Allow merchants to find locations via specific criteria (location name, city, province, postal code, address, etc.).
-2. **Sort**. This will be contextual to the use case (alphabetical sort, date created, date edited, etc.).
-3. **Filter**. This is also contextual to the use case. For example, merchants could filter by subscription type.
-4. **Pagination**. Allow the merchant to load and view additional sets of locations. Trigger loading with a “Load more” button.
+-
 
 ### Customer segments
 
 The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.
 
-#### Popover list
-
 The location picker popover allows a merchant to select any location they have added in the admin.
 
-![1 location](/images/foundations/patterns/resource-picking/1-location@2x.png)
+![1 location](/images/foundations/patterns/resource-picking/customer-segments-1-to-10.png)
 
 #### 1 - 10 segments
 
-When a merchant only has one location, the button that opens the location picker should be hidden. There’s no need to access the experience when they can’t switch locations.
+When a merchant less than 11 segments, ...
 
-![2–10 locations](/images/foundations/patterns/resource-picking/2-10-locations@2x.png)
+![2–10 locations](/images/foundations/patterns/resource-picking/customer-segments-11-or-more.png)
 
 #### 11 or more segments
 
-When a merchant has 11 or more locations:
+When a merchant has 11 or more customer segments:
 
 - Apply the same features as 2–10 locations.
 - Add text search at the top of the location picker. This allows merchants to search for locations by specific criteria (location name, city, province, postal code, address, etc.).
