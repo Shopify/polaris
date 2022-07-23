@@ -6,6 +6,7 @@ import { useMedia } from "../../utils/hooks";
 import Image from "../Image";
 import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
+import { AppProvider, Avatar, DatePicker } from "@shopify/polaris";
 
 interface Props {}
 
@@ -29,6 +30,13 @@ function HomePage({}: Props) {
           </div>
         </div>
       </Container>
+
+      <div className="Polaris" style={{ maxWidth: 500 }}>
+        <AppProvider i18n={{}}>
+          <Avatar />
+          <DatePicker month={1} year={2023} />
+        </AppProvider>
+      </div>
 
       <div className={styles.Line}></div>
 
