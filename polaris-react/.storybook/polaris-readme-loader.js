@@ -25,28 +25,37 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
+  const hasFullscreenLayout = [
+    'App provider',
+    'Frame',
+    'Navigation',
+    'Sheet',
+    'Grid',
+  ].includes(readme.name);
+
+  const omitAppProvider = ['Frame', 'AppProvider', 'CustomProperties'].includes(
     readme.name,
   );
 
   const csfExports = readme.examples.map((example) => {
-    return `
+    let code = `
 const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
-  return <div data-omit-app-provider="${readme.omitAppProvider}"><${
-      example.storyName
-    }Component /></div>;
+  return <${example.storyName}Component />;
 }
 
-${example.storyName}.storyName = ${JSON.stringify(example.name)};
-${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};
-${example.storyName}.parameters = {
-  layout: '${hasFullscreenLayout ? 'fullscreen' : 'padded'}',
-  docs: {
-    description: {story: ${JSON.stringify(example.description)}},
-  },
-};
-`.trim();
+// ${example.storyName}.storyName = ${JSON.stringify(example.name)};
+`;
+
+    if (readme.omitAppProvider) {
+      code += `${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};\n`;
+    }
+
+    if (hasFullscreenLayout) {
+      code += `${example.storyName}.parameters = {layout: 'fullscreen'};\n`;
+    }
+
+    return code.trim();
   });
 
   const hooks = Object.keys(React)
