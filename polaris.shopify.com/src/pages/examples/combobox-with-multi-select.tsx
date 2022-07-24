@@ -63,7 +63,7 @@ function MultiAutoComboboxExample() {
 
       updateText("");
     },
-    [options, selectedOptions]
+    [options, selectedOptions, updateText]
   );
 
   const removeTag = useCallback(

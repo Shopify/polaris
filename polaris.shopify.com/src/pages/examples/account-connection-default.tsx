@@ -8,7 +8,7 @@ function AccountConnectionExample() {
 
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
-  }, [connected]);
+  }, []);
 
   const buttonText = connected ? "Disconnect" : "Connect";
   const details = connected ? "Account connected" : "No account connected";
