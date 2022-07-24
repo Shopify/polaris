@@ -57,7 +57,7 @@ The link component should follow the content guidelines for [links](https://pola
 
 ## Examples
 
-### Default links
+### Default
 
 Use for text links in larger spans of text.
 
@@ -65,7 +65,7 @@ Use for text links in larger spans of text.
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
-### Monochrome link
+### Monochrome
 
 Use for text links that are the same color as the surrounding text.
 
@@ -75,7 +75,7 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-### Monochrome link in a banner
+### Monochrome in a banner
 
 Monochrome styles will be applied to links rendered within a `Banner`.
 
@@ -86,7 +86,7 @@ Monochrome styles will be applied to links rendered within a `Banner`.
 </Banner>
 ```
 
-### External link
+### External
 
 Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
 
@@ -110,7 +110,7 @@ Use the `url` prop to give the link component a valid `href` value. This allows 
 
 The Link component is underlined to give interactive elements a shape. This allows links to not rely on color from being the only way users can tell if an element is interactive.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -148,7 +148,7 @@ To provide consistency and clarity:
 - Use the same text for links that navigate to the same content
 - Use different text for links that navigate to different content
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -164,7 +164,7 @@ To provide consistency and clarity:
 
 <!-- end -->
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

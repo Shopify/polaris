@@ -4,6 +4,7 @@
 
 .IconsPage {
   padding-top: var(--header-margin);
+  padding-bottom: var(--header-margin);
 
   h1 {
     @include heading-1;

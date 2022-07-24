@@ -21,8 +21,7 @@ keywords:
 
 # Avatar
 
-Avatars are used to show a thumbnail representation of an individual or
-business in the interface.
+Avatars are used to show a thumbnail representation of an individual or business in the interface.
 
 ---
 
@@ -41,8 +40,7 @@ Avatars should be one of 4 sizes:
 
 Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](https://polaris.shopify.com/content/alternative-text). Doing this is important for [accessibility](https://polaris.shopify.com/foundations/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
 
-For avatars, we recommend using a format that describes what will show in the
-image:
+For avatars, we recommend using a format that describes what will show in the image:
 
 - `alt="Person’s name"` if the avatar represents a person
 - `alt="Business’s name"` if the avatar represents a business
@@ -52,7 +50,7 @@ image:
 
 ## Examples
 
-### Default avatar
+### Default
 
 Use to present an avatar for a merchant, customer, or business.
 
@@ -60,7 +58,7 @@ Use to present an avatar for a merchant, customer, or business.
 <Avatar customer name="Farrah" />
 ```
 
-### Extra small avatar
+### Extra small
 
 Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
 
@@ -97,7 +95,7 @@ function ExtraSmallAvatarExample() {
 }
 ```
 
-### Square avatar
+### Square
 
 Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
 

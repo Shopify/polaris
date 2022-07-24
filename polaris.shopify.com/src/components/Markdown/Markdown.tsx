@@ -1,10 +1,9 @@
 import ReactMarkdown from "react-markdown";
-import "prismjs/themes/prism-tomorrow.css";
-import Prism from "prismjs";
 import React from "react";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { slugify } from "../../utils/various";
+import Code from "../Code";
 
 interface Props {
   text: string;
@@ -38,16 +37,7 @@ function Markdown({ text, skipH1 }: Props) {
           inline ? (
             <code>{children}</code>
           ) : (
-            // Prism auto-wraps code blocks in <pre> and <code> tags
-            <span
-              dangerouslySetInnerHTML={{
-                __html: Prism.highlight(
-                  String(children),
-                  Prism.languages.javascript,
-                  "javasript"
-                ),
-              }}
-            ></span>
+            <Code code={{ title: "Example", code: children.toString() }} />
           ),
         table: ({ children }) => (
           <div className="table-wrapper">

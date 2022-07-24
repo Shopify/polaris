@@ -8,12 +8,9 @@ keywords:
   - invalid input
   - form group
 examples:
-  - fileName: inline-error-basic.tsx
-    title: Basic inline error
-    description: >-
-      Use when the merchant has entered information that is not valid into
-      multiple fields inside of a form, or needs to be displayed in a
-      non-standard position in the form layout.
+  - fileName: inline-error-default.tsx
+    title: Default
+    description: Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 ---
 
 # Inline error
@@ -49,7 +46,7 @@ Inline error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

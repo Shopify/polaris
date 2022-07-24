@@ -9,12 +9,10 @@ keywords:
   - app
 examples:
   - fileName: fullscreen-bar-with-children.tsx
-    title: Fullscreen bar with children
-    description: >-
-      Use to provide structure for the top of an application while in fullscreen
-      mode.
+    title: With children
+    description: Use to provide structure for the top of an application while in fullscreen mode.
   - fileName: fullscreen-bar-no-children.tsx
-    title: Fullscreen bar no children
+    title: No children
     description: Use this default to show ONLY the Back button.
 ---
 

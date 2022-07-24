@@ -17,6 +17,7 @@ import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
+import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
@@ -204,6 +205,8 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
+  const handleClick = useDisableClick(disabled, toggleDisclosureActive);
+
   let connectedDisclosureMarkup;
 
   if (connectedDisclosure) {
@@ -231,12 +234,13 @@ export function Button({
       <button
         type="button"
         className={connectedDisclosureClassName}
-        disabled={disabled}
+        aria-disabled={disabled}
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
-        onClick={toggleDisclosureActive}
+        onClick={handleClick}
         onMouseUp={handleMouseUpByBlurring}
+        tabIndex={disabled ? -1 : undefined}
       >
         <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />

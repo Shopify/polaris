@@ -38,7 +38,7 @@ Caption text size is smaller than the recommended size for general reading. On w
 
 Captions are primarily used in [data visualizations](https://polaris.shopify.com/design/data-visualizations). Stick to a few words and don’t use this component for complete sentences or longer content.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -57,7 +57,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 
 ## Examples
 
-### Default caption
+### Default
 
 Use to provide details in situations where content is compact and space is tight.
 

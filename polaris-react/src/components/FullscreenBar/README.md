@@ -11,8 +11,7 @@ keywords:
 
 # Fullscreen bar
 
-The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure
-a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
+The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
 
 ---
 
@@ -27,7 +26,7 @@ The Fullscreen bar component should:
 
 ## Examples
 
-### Fullscreen bar with children
+### With children
 
 Use to provide structure for the top of an application while in fullscreen mode.
 
@@ -79,7 +78,7 @@ function FullscreenBarExample() {
 }
 ```
 
-### Fullscreen bar no children
+### No children
 
 Use this default to show ONLY the Back button.
 

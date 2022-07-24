@@ -17,8 +17,7 @@ keywords:
 
 # Radio button
 
-Use radio buttons to present each item in a list of options where merchants must
-make a single selection.
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
 
 ---
 
@@ -48,7 +47,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -62,7 +61,7 @@ Radio button labels should:
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -89,7 +88,7 @@ Toggle values should:
 
 ## Examples
 
-### Default radio button
+### Default
 
 Use radio buttons where merchants must make a single selection.
 

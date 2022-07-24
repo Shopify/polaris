@@ -32,11 +32,9 @@ Button groups should:
 - Only use buttons that follow the
   [best practices outlined in the button component](https://polaris.shopify.com/components/button#best-practices)
 - Group together calls to action that have a relationship
-- Be used with consideration that too many calls to action can cause merchants
-  to be unsure of what to do next
+- Be used with consideration that too many calls to action can cause merchants to be unsure of what to do next
 - Be thoughtful about how multiple buttons will look and work on small screens
-- Only be used in groups of up to six buttons if the buttons contain an icon
-  with no text
+- Only be used in groups of up to six buttons if the buttons contain an icon with no text
 
 ---
 
@@ -48,7 +46,7 @@ Button groups should follow the [content guidelines](https://polaris.shopify.com
 
 ## Examples
 
-### Default button group
+### Default
 
 Use when you have multiple buttons to space them out evenly.
 
@@ -59,7 +57,7 @@ Use when you have multiple buttons to space them out evenly.
 </ButtonGroup>
 ```
 
-### Button group with segmented buttons
+### With segmented buttons
 
 Use to emphasize several buttons as a thematically-related set among other controls.
 
@@ -71,7 +69,7 @@ Use to emphasize several buttons as a thematically-related set among other contr
 </ButtonGroup>
 ```
 
-### Outline button group with segmented buttons
+### Outline with segmented buttons
 
 Use to emphasize several buttons as a thematically-related set among other controls.
 

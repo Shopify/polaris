@@ -15,11 +15,7 @@ keywords:
 
 # Option list
 
-The option list component lets you create a list of grouped items that
-merchants can pick from. This can include single selection or multiple selection
-of options. Option list usually appears in a popover, and sometimes in a modal
-or a sidebar. Option lists are styled differently than
-[choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
+The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
 
 ---
 
@@ -27,9 +23,7 @@ or a sidebar. Option lists are styled differently than
 
 The option list component should:
 
-- Be placed on its own inside a container. Usually the container behaves like a
-  menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t
-  place other components within the same container.
+- Be placed on its own inside a container. Usually the container behaves like a menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t place other components within the same container.
 - Not be used when a [select component](https://polaris.shopify.com/components/select) will do.
 
 ---
@@ -40,7 +34,7 @@ The option list component should:
 
 Each item in an option list should be clear and descriptive.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -56,7 +50,7 @@ Each item in an option list should be clear and descriptive.
 
 ## Examples
 
-### Simple option list
+### Default
 
 Use for a group of similar selectable items when only one should be selectable at once.
 
@@ -83,7 +77,7 @@ function OptionListExample() {
 }
 ```
 
-### Multiple option list
+### Multiple
 
 Use when you have a group of similar selectable items and more than one item can be selected at once.
 
@@ -111,7 +105,7 @@ function MultipleOptionListExample() {
 }
 ```
 
-### Option list with sections
+### With sections
 
 Use sections when you have multiple groups of similar selectable items.
 
@@ -147,7 +141,7 @@ function OptionListWithSectionsExample() {
 }
 ```
 
-### Option list in a popover
+### In a popover
 
 Use when a set of selections won’t fit in the available screen space.
 
