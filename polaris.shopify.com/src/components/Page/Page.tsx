@@ -15,6 +15,8 @@ function Page({ children }: Props) {
   const darkMode = useDarkMode(false);
 
   const isPolaris = router.asPath.startsWith("/examples");
+  const isPlayground = router.asPath.startsWith("/playground");
+  const showHeader = !isPolaris && !isPlayground;
 
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -30,7 +32,9 @@ function Page({ children }: Props) {
         !isPolaris && "styles-for-site-but-not-polaris-examples"
       )}
     >
-      {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
+      {!isPolaris && showHeader && (
+        <Header currentPath={router.asPath} darkMode={darkMode} />
+      )}
 
       {children}
 

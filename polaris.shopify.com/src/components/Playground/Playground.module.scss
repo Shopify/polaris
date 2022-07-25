@@ -1,0 +1,30 @@
+.Playground {
+  display: flex;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+.Layers {
+  min-width: 14rem;
+  max-width: 14rem;
+  border-right: var(--border);
+}
+
+.Canvas {
+  flex: 1;
+}
+
+.ComponentPicker {
+  position: fixed;
+  top: 200px;
+  bottom: 200px;
+  width: 50rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.25);
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  z-index: 10;
+}
