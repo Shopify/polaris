@@ -1,11 +1,9 @@
 import fs from "fs";
 import glob from "glob";
 import path from "path";
-import { marked } from "marked";
 import type { GetStaticPaths, GetStaticProps } from "next";
-
-import Examples from "../../components/Examples";
-import type { Example } from "../../components/Examples";
+import ComponentExamples from "../../components/ComponentExamples";
+import type { ComponentExample } from "../../components/ComponentExamples";
 import Longform from "../../components/Longform";
 import Markdown from "../../components/Markdown";
 import type { NavItem } from "../../components/Nav";
@@ -13,6 +11,9 @@ import Layout from "../../components/Layout";
 import { parseMarkdown } from "../../utils/markdown.mjs";
 import { getComponentNav } from "../../utils/various";
 import PageMeta from "../../components/PageMeta";
+import { PropsForComponent, Status } from "../../types";
+import StatusBanner from "../../components/StatusBanner";
+import PropsTable from "../../components/PropsTable";
 
 interface MarkdownData {
   frontMatter: any;
@@ -21,26 +22,42 @@ interface MarkdownData {
 }
 
 interface Props {
-  examples: [Example];
+  examples: ComponentExample[];
+  status?: Status;
   name: string;
   intro: string;
   readme: {
     body: string;
     header: string;
   };
+  propsForComponent: PropsForComponent | null;
 }
 
-const Components = ({ examples, intro, name, readme }: Props) => {
+const Components = ({
+  examples,
+  intro,
+  name,
+  readme,
+  status,
+  propsForComponent,
+}: Props) => {
   const navItems: NavItem[] = getComponentNav();
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status["value"],
+        message: status.message,
+      }
+    : undefined;
 
   return (
-    <Layout width="narrow" navItems={navItems}>
+    <Layout width="narrow" navItems={navItems} title={name}>
       <PageMeta title={name} description={intro} />
 
       <Longform>
-        <h1>{name}</h1>
-        <Markdown text={readme.header} skipH1 />
-        <Examples examples={examples} />
+        <Markdown text={intro} skipH1 />
+        {typedStatus && <StatusBanner status={typedStatus} />}
+        <ComponentExamples examples={examples} />
+        {propsForComponent && <PropsTable props={propsForComponent} />}
         <Markdown text={readme.body} skipH1 />
       </Longform>
     </Layout>
@@ -51,6 +68,10 @@ export const getStaticProps: GetStaticProps<
   Props,
   { component: string }
 > = async (context) => {
+  const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
+  const fileContent = fs.readFileSync(propsFilePath, "utf8");
+  let propsData: PropsForComponent[] = JSON.parse(fileContent);
+
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
     process.cwd(),
@@ -60,17 +81,19 @@ export const getStaticProps: GetStaticProps<
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
-    const readmeText = marked(data.readme).split("\n");
-    // Note: Assumes that the first two lines are the title and description
-    const readmeHeader = readmeText.splice(0, 2).join("\n");
-    const readmeBody = readmeText.join("\n");
+    const readmeText = data.readme;
+    const readmeTextParts = readmeText.split(/\n\n/);
+    const intro = readmeTextParts.length > 2 ? readmeTextParts[2].trim() : "";
+    const body =
+      readmeTextParts.length > 3 ? readmeTextParts.slice(3).join("\n\n") : "";
+
     const readme = {
-      header: readmeHeader,
-      body: readmeBody,
+      intro,
+      body,
     };
 
     const examples = (data?.frontMatter?.examples || []).map(
-      (example: Example) => {
+      (example: ComponentExample) => {
         const examplePath = path.resolve(
           process.cwd(),
           `src/pages/examples/${example.fileName}`
@@ -88,11 +111,20 @@ export const getStaticProps: GetStaticProps<
         return { ...example, code };
       }
     );
+
+    const propsForComponent =
+      propsData.find(
+        (PropsTable) =>
+          PropsTable.interfaceName.toLowerCase() ===
+          `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
+      ) || null;
+
     const props: Props = {
       ...data.frontMatter,
       examples,
-      intro: data.intro,
+      intro,
       readme,
+      propsForComponent,
     };
 
     return { props };

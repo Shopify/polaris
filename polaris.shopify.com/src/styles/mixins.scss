@@ -3,3 +3,28 @@
     @content;
   }
 }
+
+@mixin custom-scrollbars {
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: var(--border-radius-round);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--border-color);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--text-subdued);
+    }
+  }
+}

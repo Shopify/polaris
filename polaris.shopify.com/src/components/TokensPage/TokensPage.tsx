@@ -1,6 +1,5 @@
 import styles from "./TokensPage.module.scss";
 import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
-import { useState } from "react";
 import Container from "../Container";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
@@ -70,7 +69,7 @@ function tokensToFilteredArray(
 }
 
 function TokensPage({ tokenGroup }: Props) {
-  const [filter, setFilter] = useState("");
+  const filter = "";
   const router = useRouter();
 
   const tokens = {
@@ -122,7 +121,11 @@ function TokensPage({ tokenGroup }: Props) {
                   : 1
               )
               .map((token) => (
-                <TokenList.Item key={token.name} token={token} />
+                <TokenList.Item
+                  key={token.name}
+                  category={tokenGroup}
+                  token={token}
+                />
               ))}
           </TokenList>
         </div>

@@ -9,19 +9,16 @@ keywords:
   - app
 examples:
   - fileName: fullscreen-bar-with-children.tsx
-    title: Fullscreen bar with children
-    description: >-
-      Use to provide structure for the top of an application while in fullscreen
-      mode.
+    title: With children
+    description: Use to provide structure for the top of an application while in fullscreen mode.
   - fileName: fullscreen-bar-no-children.tsx
-    title: Fullscreen bar no children
+    title: No children
     description: Use this default to show ONLY the Back button.
 ---
 
 # Fullscreen bar
 
-The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure
-a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
+The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
 
 ---
 

@@ -1,7 +1,16 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .Header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--border-color-light);
+
+  @include dark-mode {
+    background: rgba(28, 28, 28, 0.9);
+  }
 }
 
 .HeaderInner {
@@ -23,7 +32,7 @@
           color: inherit;
           white-space: pre;
           display: block;
-          padding: 0.5px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
+          padding: 1px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
 
           span {
             display: block;
@@ -43,7 +52,7 @@
           &[aria-current="page"],
           &:hover {
             span {
-              background: rgba(0, 0, 0, 0.03);
+              background: var(--surface-subdued);
               border-radius: var(--border-radius-800);
               color: var(--text-strong);
             }
@@ -70,7 +79,7 @@
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-inherit);
+  color: inherit;
   gap: 0.7rem;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-100);
@@ -111,15 +120,17 @@
 
 .DarkModeToggle {
   display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
-  width: 3rem;
+  width: 2.25rem;
+  height: 2.25rem;
   margin: 0.5rem 0 0.5rem auto;
-  border-radius: var(--border-radius-800);
-  margin-right: -2rem;
+  border-radius: var(--border-radius-round);
+  margin-right: -1rem;
 
   @media screen and (max-width: $breakpointTablet) {
-    padding-right: 4rem;
-    padding-left: 3rem;
+    margin-right: 1rem;
   }
 }
 

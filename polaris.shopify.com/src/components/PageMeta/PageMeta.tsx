@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { getTitleTagValue } from "../../utils/various";
 
 interface Props {
   title?: string;
@@ -7,9 +6,15 @@ interface Props {
 }
 
 function PageMeta({ title, description }: Props) {
+  let siteName = "Shopify Polaris";
+
+  if (title) {
+    siteName = `${title} — ${siteName}`;
+  }
+
   return (
     <Head>
-      <title>{getTitleTagValue(title)}</title>
+      <title>{siteName}</title>
       {description && <meta name="description" content={description} />}
     </Head>
   );

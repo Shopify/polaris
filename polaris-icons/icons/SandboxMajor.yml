@@ -1,4 +1,4 @@
-name: sandbox
+name: Sandbox
 set: major
 description: Used to represent a development store (feature exclusive to Shopify Plus Partners).
 keywords:

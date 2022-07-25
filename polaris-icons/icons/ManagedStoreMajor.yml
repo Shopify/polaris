@@ -1,4 +1,4 @@
-name: managed store
+name: Managed store
 set: major
 description: Used to represent a managed or approved store.
 keywords:

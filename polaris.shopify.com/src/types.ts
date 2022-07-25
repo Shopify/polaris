@@ -1,4 +1,5 @@
 import { TokenProperties } from "@shopify/polaris-tokens";
+import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
   frontMatter: any;
@@ -11,69 +12,44 @@ export interface TokenPropertiesWithName extends TokenProperties {
 }
 
 export const searchResultCategories = [
-  "Foundations",
-  "Components",
-  "Tokens",
-  "Icons",
+  "foundations",
+  "components",
+  "tokens",
+  "icons",
 ] as const;
 
 export type SearchResultCategory = typeof searchResultCategories[number];
 
-interface BaseSearchResult {
+export interface SearchResult {
+  id: string;
+  category: SearchResultCategory;
   url: string;
   score: number;
+  meta: Partial<{
+    components: {
+      name: string;
+      description: string;
+      status?: Status;
+    };
+    foundations: {
+      title: string;
+      excerpt: string;
+      category: string;
+    };
+    tokens: {
+      category: string;
+      token: TokenPropertiesWithName;
+    };
+    icons: { icon: Icon };
+  }>;
 }
-
-export interface FoundationsSearchResult extends BaseSearchResult {
-  category: "Foundations";
-  meta: {
-    title: string;
-    excerpt: string;
-  };
-}
-
-export interface ComponentsSearchResult extends BaseSearchResult {
-  category: "Components";
-  meta: {
-    name: string;
-    description: string;
-  };
-}
-
-export interface TokensSearchResult extends BaseSearchResult {
-  category: "Tokens";
-  meta: {
-    token: TokenPropertiesWithName;
-  };
-}
-
-export interface IconsSearchResult extends BaseSearchResult {
-  category: "Icons";
-  meta: { icon: Icon };
-}
-
-export type SearchResult =
-  | FoundationsSearchResult
-  | ComponentsSearchResult
-  | TokensSearchResult
-  | IconsSearchResult;
 
 export type SearchResults = SearchResult[];
 
 export type GroupedSearchResults = {
-  Foundations: { results: FoundationsSearchResult[]; maxScore: number };
-  Components: { results: ComponentsSearchResult[]; maxScore: number };
-  Tokens: { results: TokensSearchResult[]; maxScore: number };
-  Icons: { results: IconsSearchResult[]; maxScore: number };
-};
-
-export type Icon = {
-  fileName: string;
-  keywords: string[];
-  name: string;
-  description: string;
-  set: string;
-};
+  category: SearchResultCategory;
+  results: SearchResult[];
+}[];
 
 export interface SearchResultItem {
   searchResultData?: {
@@ -92,4 +68,31 @@ export enum Breakpoints {
   Tablet = 768,
   Desktop = 1400,
   DesktopLarge = 1600,
+}
+
+export type Status = {
+  value: "deprecated" | "alpha" | "warning" | "information";
+  message: string;
+};
+
+export interface PropsForComponent {
+  interfaceName: string;
+  props: {
+    name: string;
+    type: string;
+    comment?: string;
+    optional: boolean;
+    deprecated: boolean;
+  }[];
+}
+
+export interface QuickGuideRow {
+  question: string;
+  answer: string;
+}
+
+export interface QuickGuide {
+  title: string;
+  queryParam: string;
+  rows: QuickGuideRow[];
 }

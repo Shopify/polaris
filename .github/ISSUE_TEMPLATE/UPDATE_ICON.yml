@@ -1,0 +1,42 @@
+name: Propose updates to an existing icon
+description: For modifications to an existing icon in polaris-icons
+title: '[Icon]: Update icon <icon-name>'
+labels: ['Icon']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out the proposal to update an icon!
+  - type: textarea
+    id: icon-usage
+    attributes:
+      label: Why are you proposing this update?
+      description: The reason for updating the icons, and any additional context.
+    validations:
+      required: true
+  - type: input
+    id: icon-name
+    attributes:
+      label: Icon name
+    validations:
+      required: true
+  - type: dropdown
+    id: icon-set
+    attributes:
+      label: What type of icon set?
+      options:
+        - Major (20x20)
+        - Minor (16x16)
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: icon-svg
+    attributes:
+      label: Icon SVG code
+      value: <svg>...</svg>
+      render: shell
+  - type: textarea
+    id: icon-other-details
+    attributes:
+      label: Are there any other important details?

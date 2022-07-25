@@ -2,8 +2,12 @@
 @import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
+$video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
+  invert(1);
+
 .HomePage {
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  padding-bottom: var(--header-margin);
 
   h2 {
     @include heading-2;
@@ -55,24 +59,30 @@
   padding-top: 6rem;
 
   .Text {
-    position: relative;
     z-index: 1;
     text-align: center;
+    padding: 2rem 0;
   }
 
   h1 {
-    margin-bottom: 1.75rem;
+    margin-bottom: 1rem;
     color: var(--primary);
     font-size: var(--font-size-1900);
     letter-spacing: var(--letter-spacing-1000);
     font-weight: var(--font-weight-600);
     line-height: 1.1;
+
+    @media screen and (max-width: $breakpointDesktop) {
+      span {
+        display: block;
+      }
+    }
   }
 
   p {
     font-size: var(--font-size-800);
+    font-weight: var(--font-weight-500);
     letter-spacing: var(--letter-spacing-500);
-    max-width: 36rem;
     margin: 0 auto;
     color: var(--text-strong);
   }
@@ -280,16 +290,26 @@
     video {
       width: 100%;
       height: auto;
-      filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
-        invert(1);
+      filter: $video-filter;
     }
+  }
+
+  .Poster {
+    position: absolute;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 60%;
+    height: 85%;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(33px);
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
   }
 
   @media screen and (max-width: $breakpointDesktop) {
     display: flex;
     flex-direction: column-reverse;
-    background: transparent;
-    padding: 0;
+    padding: 2rem 1.25rem;
     gap: 2rem;
 
     .Text {
@@ -299,7 +319,8 @@
       margin: 0 auto;
     }
 
-    .Video {
+    .Video,
+    .Poster {
       position: static;
       transform: none;
       max-width: 100%;

@@ -1,10 +1,14 @@
-name: diamond alert
+name: Diamond alert
 set: major
-description: Used to alert merchants on information they should be aware of.
+description: Used to alert merchants of a critical error.
 keywords:
   - alert
   - attention
   - critical
+  - diamond
+  - error
+  - exclamation
+  - bang
 authors:
   - Jesse Bennett-Chamberlain
 version: 1

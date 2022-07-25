@@ -1,8 +1,10 @@
 import Image from "../Image";
 import Link from "next/link";
-import { SearchResultItem } from "../../types";
-import { className, slugify } from "../../utils/various";
+import { getReadableStatusValue, slugify } from "../../utils/various";
+import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
+import StatusBadge from "../StatusBadge";
+import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
 
 interface ComponentGridProps {
   children: React.ReactNode;
@@ -12,32 +14,28 @@ function ComponentGrid({ children }: ComponentGridProps) {
   return <ul className={styles.ComponentGrid}>{children}</ul>;
 }
 
-interface ComponentGridItemProps extends SearchResultItem {
+interface ComponentGridItemProps {
   name: string;
   description: string;
   url: string;
+  status?: Status;
 }
 
 function ComponentGridItem({
   name,
   description,
   url,
-  searchResultData,
+  status,
 }: ComponentGridItemProps) {
+  const searchAttributes = useGlobalSearchResult();
+
   return (
-    <li
-      key={name}
-      className={className(
-        styles.Component,
-        searchResultData?.isHighlighted && styles.isHighlighted
-      )}
-      {...searchResultData?.itemAttributes}
-    >
+    <li key={name} className={styles.Component} {...searchAttributes}>
       <Link href={url} passHref>
-        <a tabIndex={searchResultData?.tabIndex}>
+        <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
             <Image
-              src={`/component-previews/${slugify(name)}.png`}
+              src={`/images/components/${slugify(name)}.png`}
               layout="responsive"
               width={525}
               height={300}
@@ -48,7 +46,20 @@ function ComponentGridItem({
             />
           </div>
           <div className={styles.ComponentDescription}>
-            <h4>{name}</h4>
+            <h4>
+              {name}
+              {status && (
+                <>
+                  {" "}
+                  <StatusBadge
+                    status={{
+                      value: status.value,
+                      message: getReadableStatusValue(status.value),
+                    }}
+                  />
+                </>
+              )}
+            </h4>
             <p>{description}</p>
           </div>
         </a>

@@ -28,7 +28,7 @@ Drop zones should:
 
 - Inform merchants when the file(s) can’t be uploaded:
   - When possible, use validation errors on drag to detect and explain things like file size limits or file types accepted.
-  - Use the [banner component](https://polaris.shopify.com/components/feedback-indicators/banner) with a critical status to communicate errors that happen on the server.
+  - Use the [banner component](https://polaris.shopify.com/components/banner) with a critical status to communicate errors that happen on the server.
 - Provide feedback once the file(s) have been dropped and uploading begins.
 - For convenience, allow files to be dropped anywhere on the page by enabling `dropOnPage`.
 - Provide a file upload button to allow merchants to select files for upload in a traditional way. Do this by using the `DropZone.FileUpload` subcomponent.
@@ -61,7 +61,7 @@ Server-side upload errors give feedback after file submission.
 
 Upload error messages should:
 
-- Be displayed as a [banner](https://polaris.shopify.com/components/feedback-indicators/banner) with a critical status
+- Be displayed as a [banner](https://polaris.shopify.com/components/banner) with a critical status
 - Show the name of the file(s) that were not uploaded successfully
 - Describe why the file(s) couldn’t be uploaded and what merchants should change to upload their file successfully, as seen below
 
@@ -77,7 +77,7 @@ The following images couldn’t be uploaded:
 
 ## Examples
 
-### Drop zone with file upload
+### Default
 
 Use to allow merchants to upload files. They can drag and drop files into the dashed area, or upload traditionally by clicking the “Add file” button or anywhere inside the dashed area.
 
@@ -126,7 +126,7 @@ function DropZoneExample() {
 }
 ```
 
-### Drop zone with a label
+### With a label
 
 Use to pair with a label for better accessibility.
 
@@ -136,7 +136,7 @@ Use to pair with a label for better accessibility.
 </DropZone>
 ```
 
-### Drop zone with image file upload
+### With image file upload
 
 Use for cases that accept image file formats.
 
@@ -199,7 +199,7 @@ function DropZoneWithImageFileUpload() {
 }
 ```
 
-### Drop zone with single file upload
+### With single file upload
 
 Use to accept only one file.
 
@@ -242,7 +242,7 @@ function DropZoneExample() {
 }
 ```
 
-### Drop zone with drop on page
+### With drop on page
 
 Use to accept files for upload when dropped anywhere on the page.
 
@@ -304,7 +304,7 @@ function DropZoneWithDropOnPageExample() {
 }
 ```
 
-### Drop zone accepts only SVG files
+### Accepts only SVG files
 
 Use to accept only SVG files.
 
@@ -370,7 +370,7 @@ function DropZoneAcceptingSVGFilesExample() {
 }
 ```
 
-### Nested drop zone
+### Nested
 
 Use to allow merchants to upload files in a wider area than the visible drop zone.
 
@@ -421,7 +421,7 @@ function NestedDropZoneExample() {
 }
 ```
 
-### Medium-sized drop zone
+### Medium-sized
 
 Use for cases with limited space. To improve usability, nest medium-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
 
@@ -433,7 +433,7 @@ Use for cases with limited space. To improve usability, nest medium-sized drop z
 </div>
 ```
 
-### Small-sized drop zone
+### Small-sized
 
 Use for cases with tight space constraints, such as variant thumbnails on the Product details page. To improve usability, nest small-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
 
@@ -445,7 +445,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
-### Drop zone with custom FileUpload text
+### With custom FileUpload text
 
 Use for cases where you want the child contents of the dropzone to determine its height.
 
@@ -495,7 +495,7 @@ function DropZoneExample() {
 }
 ```
 
-### Drop zone with custom file dialog trigger
+### With custom file dialog trigger
 
 Use to trigger the file dialog from an action somewhere else on the page.
 
@@ -577,32 +577,12 @@ Use file upload with the drop zone component to let merchants select files for u
 
 ## Related components
 
-- To provide context to upload errors when they occur, use the [banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
-- To provide feedback during file upload, use the [spinner component](https://polaris.shopify.com/components/feedback-indicators/spinner)
+- To provide context to upload errors when they occur, use the [banner component](https://polaris.shopify.com/components/banner)
+- To provide feedback during file upload, use the [spinner component](https://polaris.shopify.com/components/spinner)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 The drop zone component builds on the native HTML `<input type="upload">` element. It includes a visual`<button>` as well as a drag and drop area that can receive keyboard focus.
 
@@ -612,5 +592,3 @@ To upload a file with the keyboard, merchants can interact with the drag-and-dro
 
 - To give the input keyboard focus, use the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - To activate the input, use the <kbd>enter</kbd>/<kbd>return</kbd> or <kbd>space</kbd> keys
-
-<!-- /content-for -->

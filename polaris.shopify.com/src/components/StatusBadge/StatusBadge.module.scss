@@ -1,0 +1,17 @@
+.StatusBadge {
+  font-size: var(--font-size-50);
+  letter-spacing: 0;
+  font-weight: var(--font-weight-400);
+  border-radius: var(--border-radius-round);
+  padding: 0 0.5rem;
+
+  &[data-value="warning"],
+  &[data-value="deprecated"] {
+    background: var(--surface-warning);
+  }
+
+  &[data-value="information"],
+  &[data-value="alpha"] {
+    background: var(--surface-information);
+  }
+}

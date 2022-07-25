@@ -1,10 +1,6 @@
 ---
 name: Select
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - on off
   - switch
@@ -23,8 +19,6 @@ keywords:
   - long list of options
   - long option list
   - separate error message
-  - ios
-  - android
 ---
 
 # Select
@@ -55,7 +49,7 @@ Labels should:
 - Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -67,7 +61,7 @@ Labels should:
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -92,9 +86,7 @@ Options should:
 
 ## Examples
 
-### Default select
-
-<!-- content-for: web -->
+### Default
 
 Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
 
@@ -121,27 +113,7 @@ function SelectExample() {
 }
 ```
 
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-The iOS picker expands in-line. Merchants scroll to select the item they want.
-
-![iOS select, and select with option menu](/public_images/components/Select/ios/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-The Android menu is similar in behavior to the web dropdown.
-
-![Android select, and select with option menu](/public_images/components/Select/android/default@2x.png)
-
-<!-- /content-for -->
-
-### Select with inline label
-
-<!-- example-for: web -->
+### With inline label
 
 Use only for cases where the select must fit on a single line, such as in a toolbar.
 
@@ -172,7 +144,7 @@ function InlineLabelExample() {
 }
 ```
 
-### Disabled select
+### Disabled
 
 Use for selections that aren’t currently available. The surrounding interface should make it clear why the select box is disabled and how to activate it.
 
@@ -188,21 +160,7 @@ Use for selections that aren’t currently available. The surrounding interface 
 />
 ```
 
-<!-- content-for: ios -->
-
-![Disabled select component on iOS](/public_images/components/Select/ios/disabled@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-![Disabled select component on Android](/public_images/components/Select/android/disabled@2x.png)
-
-<!-- /content-for -->
-
-### Select with prefix
-
-<!-- example-for: web -->
+### With prefix
 
 Renders any React element to the left of individual select options. Does not show in the dropdown.
 
@@ -236,9 +194,7 @@ function PrefixExample() {
 }
 ```
 
-### Select with validation error
-
-<!-- example-for: web -->
+### With validation error
 
 Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
 
@@ -260,19 +216,9 @@ function ValidationErrorExample() {
 }
 ```
 
-### Select with separate validation error
-
-<!-- example-for: web -->
+### With separate validation error
 
 Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
-
-When the `error` prop has a boolean value of `true`, the select component indicates to merchants that their input is invalid without rendering an error message directly below it. It anticipates that an inline error component exists separately within the form.
-
-To render an invalid select and its validation error separately:
-
-- Set a unique identifier to the select component `id` prop
-- Set a boolean to the select component `error` prop
-- Use an [inline error component](https://polaris.shopify.com/components/forms/inline-error) to describe the invalid select input and set its `fieldID` prop to the same unique identifier used for the text field `id`
 
 ```jsx
 function SeparateValidationErrorExample() {
@@ -341,5 +287,5 @@ function SeparateValidationErrorExample() {
 
 ## Related components
 
-- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) inside a [popover](https://polaris.shopify.com/components/overlays/popover)
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/option-list) inside a [popover](https://polaris.shopify.com/components/popover)

@@ -6,22 +6,22 @@ body {
 }
 
 body {
-  background-color: white;
+  background-color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
 .layout {
-  background-color: #fff;
-  padding: 10px 20px 20px 20px;
+  background-color: #ffffff;
+  padding: 10px 20px 20px;
 }
 
 .loadingBar {
-  z-index: 11;
-  padding: 10px 0px 10px 0px;
-  width: 102.1%;
   position: absolute;
   top: -10px;
   left: -10px;
+  z-index: 11;
+  padding: 10px 0;
+  width: 102.1%;
 }
 
 .layer {
@@ -58,20 +58,20 @@ body {
     Menlo, Consolas, monospace;
 }
 
-.old-color:before {
+.old-color::before {
   content: '';
   position: absolute;
-  width: 100%;
   top: 50%;
+  z-index: 1;
+  width: 100%;
   height: 1px;
   background: black;
-  z-index: 1;
 }
 
 .fill-preview,
 .stroke-preview {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: 16px;
   height: 16px;
 }
@@ -98,7 +98,7 @@ body {
   bottom: 0;
   left: 5px;
   width: 100%;
-  padding: 20px 15px 20px 15px;
+  padding: 20px 15px;
   background-color: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: blur(10px);
 }

@@ -1,4 +1,4 @@
-name: color none
+name: Color none
 set: minor
 description: Used to represent a lack of color, or that a color is not allowed or available.
 keywords:

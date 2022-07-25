@@ -1,4 +1,4 @@
-name: view
+name: View
 set: major
 description: Used to represent an action to view something, or to represent an openly viewable item or resource.
 keywords:

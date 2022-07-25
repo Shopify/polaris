@@ -12,20 +12,20 @@ keywords:
   - containers
   - full width containers
   - css grid
-notice:
-  status: alpha
+status:
+  value: Alpha
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 ---
 
 # Grid
 
-Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)
+Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 
 ---
 
 ## Examples
 
-### Two column wrapping layout
+### Two column
 
 Use to create a two column layout that wraps at a breakpoint and aligns to a twelve column grid.
 
@@ -46,7 +46,7 @@ Use to create a two column layout that wraps at a breakpoint and aligns to a twe
 </Page>
 ```
 
-### Two-thirds column one-third column wrapping layout
+### Two-thirds and one-third column
 
 Use to create a two-thirds, one-third column layout that wraps at a breakpoint and aligns to a twelve column grid.
 
@@ -67,7 +67,7 @@ Use to create a two-thirds, one-third column layout that wraps at a breakpoint a
 </Page>
 ```
 
-### Three one-third column wrapping layout with a custom column count
+### Three one-third column
 
 Use to create a three column layout that wrap at a breakpoint and aligns to a twelve column grid.
 
@@ -93,7 +93,7 @@ Use to create a three column layout that wrap at a breakpoint and aligns to a tw
 </Page>
 ```
 
-### Custom layout using grid areas and custom columns
+### Custom layout
 
 Use to create a layout that can be customized at specific breakpoints.
 
@@ -143,5 +143,5 @@ Use to create a layout that can be customized at specific breakpoints.
 
 ## Related components
 
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/structure/stack)
-- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/stack)
+- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

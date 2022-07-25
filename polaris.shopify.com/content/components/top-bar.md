@@ -16,10 +16,12 @@ keywords:
   - menu
   - logo
 examples:
-  - fileName: top-bar-with-all-of-its-elements.tsx
-    title: Top bar with all of its elements
-  - fileName: top-bar-themed-with-color-scheme.tsx
-    title: Top bar themed with colorScheme
+  - fileName: top-bar-default.tsx
+    title: Default
+    description: Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
+  - fileName: top-bar-with-color-scheme.tsx
+    title: With colorScheme
+    description: Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
 ---
 
 # Top bar
@@ -59,7 +61,7 @@ The placeholder content for the search field should:
 - Always say "Search"
 - Never include an ellipsis
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -72,8 +74,6 @@ The placeholder content for the search field should:
 <!-- end -->
 
 ---
-
-<a name="subcomponent-menu"></a>
 
 ## Top bar menu
 
@@ -89,8 +89,6 @@ A component that composes together an activator and a popover containing an acti
 | open             | boolean                       | A boolean property indicating whether the menu is currently open                                   |
 | onOpen()         | function                      | A callback function to handle opening the menu popover                                             |
 | onClose()        | function                      | A callback function to handle closing the menu popover                                             |
-
-<a name="subcomponent-user-menu"></a>
 
 ## Top bar user menu
 
@@ -109,8 +107,6 @@ A specialized menu component that is activated by a user avatar.
 | open       | boolean                       | A boolean property indicating whether the user menu is currently open                                   |
 | onToggle() | function                      | A callback function to handle opening and closing the user menu                                         |
 
-<a name="type-message"></a>
-
 ### Top bar menu message
 
 #### Message properties
@@ -124,8 +120,6 @@ A specialized menu component that is activated by a user avatar.
 | badge       | {content: string; status: BadgeProps['status']} | A badge to render near the message        |
 
 ---
-
-<a name="subcomponent-search-field"></a>
 
 ## Top bar search field
 

@@ -24,14 +24,11 @@ Making commerce better for everyone means caring deeply about making quality pro
 - A beautiful and functional design
 - Consistent and useful [copy](/content/product-content)
 - Principles of
-  [universal design](https://en.wikipedia.org/wiki/Universal_design) and
-  inclusivity
+  [universal design](https://en.wikipedia.org/wiki/Universal_design) and inclusivity
 
 ---
 
 ## Usable for everyone
-
-<!-- keywords: vision trouble, visual impairments, color blind, hearing trouble, physical disabilities, physical functioning difficulty, cognitive disabilities, people with disabilities, persons with disabilities, limited vision, loss of vision, low vision, disability, disabilities, diverse, diversity, inclusivity, inclusive experiences, deaf, deafness, blind, blindness, dexterity, mobility, cognitive, learning disability, learning disabilities, speech -->
 
 It’s important that Shopify products—and [Partner](https://www.shopify.ca/partners) products—are usable and useful to everyone.
 
@@ -46,10 +43,7 @@ In the United States, as many as 1 in 4 adults has at least 1 disability [Source
 
 ## Building inclusive experiences
 
-<!-- keywords: accessible markup, accessible mark up, accessible code, alternative text, alt text, accesibility feedback, accessible components, inclusivity, assistive tech, assistive technology, wcag, web content accessibility guidelines -->
-
-Using our [components](/components/get-started) is a way to improve
-accessibility and consistency when building products for Shopify.
+Using our [components](/components/get-started) is a way to improve accessibility and consistency when building products for Shopify.
 
 - The component library in this style guide includes code we can use across applications
 - This component code includes accessible markup
@@ -63,7 +57,7 @@ Many accessibility features come free in the components. But, it’s important t
 
 Don’t programmatically move focus to new content without merchant input. Polaris components that use controls to display overlays, such as modals and popovers, manage focus automatically.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -126,5 +120,4 @@ For more information, see the following resources:
 ### Feedback
 
 Sometimes, building accessible and inclusive experiences can be difficult. If we’ve made any mistakes in this style guide, please
-[reach out by creating a GitHub issue](https://github.com/Shopify/polaris-react/issues)
-and help us make it better.
+[reach out by creating a GitHub issue](https://github.com/Shopify/polaris-react/issues) and help us make it better.

@@ -1,4 +1,4 @@
-name: tools
+name: Tools
 set: major
 description: Used to represent an action to customize an item or resource.
 keywords:

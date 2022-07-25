@@ -280,8 +280,8 @@ $loading-panel-height: 53px;
 .Table-sticky-scrolling {
   .TableCell:last-child,
   .TableHeading-last {
-    @media #{$p-breakpoints-sm-up} {
-      filter: drop-shadow(-1px 0 0 var(--p-border-divider));
+    @include breakpoint-after($breakpoint-small) {
+      filter: drop-shadow(-1px 0 0 var(--p-divider));
     }
   }
 }

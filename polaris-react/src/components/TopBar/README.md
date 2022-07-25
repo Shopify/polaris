@@ -19,13 +19,13 @@ keywords:
 
 # Top bar
 
-The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/structure/app-provider) component and are required to use their own logo.
+The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.
 
 ---
 
 ## Required components
 
-The top bar component must be passed to the [frame](https://polaris.shopify.com/components/structure/frame) component.
+The top bar component must be passed to the [frame](https://polaris.shopify.com/components/frame) component.
 
 ---
 
@@ -34,10 +34,10 @@ The top bar component must be passed to the [frame](https://polaris.shopify.com/
 The top bar component should:
 
 - Not provide global navigation for an application
-  - Use the [navigation component](https://polaris.shopify.com/components/structure/navigation) instead
+  - Use the [navigation component](https://polaris.shopify.com/components/navigation) instead
 - Include search to help merchants find resources and navigate an application
 - Include a user menu component to indicate the logged-in merchant and provide them with global actions
-- Provide a color through the [app provider](https://polaris.shopify.com/components/structure/app-provider) component to style the background
+- Provide a color through the [app provider](https://polaris.shopify.com/components/app-provider) component to style the background
 - The global menu text should contrast with the rest of the top bar and pass the minimum contrast ratio of the WCAG 2.0 guidelines
 - Use an SVG file for the logo
 - Use a logo that passes the minimum contrast ratio of the WCAG 2.0 guidelines when compared to the top bar background color
@@ -54,7 +54,7 @@ The placeholder content for the search field should:
 - Always say "Search"
 - Never include an ellipsis
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -67,8 +67,6 @@ The placeholder content for the search field should:
 <!-- end -->
 
 ---
-
-<a name="subcomponent-menu"></a>
 
 ## Top bar menu
 
@@ -84,8 +82,6 @@ A component that composes together an activator and a popover containing an acti
 | open             | boolean                       | A boolean property indicating whether the menu is currently open                                   |
 | onOpen()         | function                      | A callback function to handle opening the menu popover                                             |
 | onClose()        | function                      | A callback function to handle closing the menu popover                                             |
-
-<a name="subcomponent-user-menu"></a>
 
 ## Top bar user menu
 
@@ -104,8 +100,6 @@ A specialized menu component that is activated by a user avatar.
 | open       | boolean                       | A boolean property indicating whether the user menu is currently open                                   |
 | onToggle() | function                      | A callback function to handle opening and closing the user menu                                         |
 
-<a name="type-message"></a>
-
 ### Top bar menu message
 
 #### Message properties
@@ -119,8 +113,6 @@ A specialized menu component that is activated by a user avatar.
 | badge       | {content: string; status: BadgeProps['status']} | A badge to render near the message        |
 
 ---
-
-<a name="subcomponent-search-field"></a>
 
 ## Top bar search field
 
@@ -142,7 +134,7 @@ A text field component that is tailor-made for a search use-case.
 
 ## Examples
 
-### Top bar with all of its elements
+### Default
 
 Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
 
@@ -258,7 +250,7 @@ function TopBarExample() {
 }
 ```
 
-### Top bar themed with colorScheme
+### With colorScheme
 
 Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
 
@@ -351,8 +343,8 @@ function TopBarExample() {
 
 ## Related components
 
-- To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/structure/frame) component.
-- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/structure/navigation) component.
-- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/forms/contextual-save-bar) component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/feedback-indicators/loading) component.
+- To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/frame) component.
+- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/navigation) component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/loading) component.

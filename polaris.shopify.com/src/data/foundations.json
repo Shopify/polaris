@@ -32,7 +32,7 @@
       ]
     },
     "intro": "Our mission is to make commerce better for _everyone_. Building products for everyone means creating inclusive content.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -107,7 +107,7 @@
       ]
     },
     "intro": "Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -147,7 +147,7 @@
       ]
     },
     "intro": "Shopify aims to provide an [inclusive experience](/foundations/accessibility).\nAlternative text (alt text) helps people with low or loss of vision use our\nproducts.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -171,7 +171,7 @@
       ]
     },
     "intro": "This guide is to help designers, developers, recruiters, UX-ers, product\nmanagers, support advisors, or anyone who writes public-facing text for Shopify.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -206,7 +206,7 @@
       ]
     },
     "intro": "After you build an app or other integration, writing help documentation will\nshow merchants how to use it.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -222,7 +222,7 @@
         "check out"
       ]
     },
-    "intro": "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s [sale channel](https://polaris.shopify.com/content/vocabulary#definition-s-sales-channel).",
+    "intro": "Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.",
     "section": "content"
   },
   {
@@ -248,7 +248,7 @@
       ]
     },
     "intro": "The names we give our products and features teach merchants how to use Shopify\nand how to find the things they need to run their business.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -281,7 +281,7 @@
       ]
     },
     "intro": "Thoughtful, consistent interface content is a core element of a well-designed\nuser experience.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -289,28 +289,7 @@
       "keywords": ["release", "notes", "app", "updates", "fixes"]
     },
     "intro": "Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.",
-    "section": "content"
-  },
-  {
-    "frontMatter": {
-      "name": "Vocabulary",
-      "keywords": [
-        "spelling",
-        "vocabulary list",
-        "dictionary",
-        "shopify dictionary",
-        "shopify vocabulary",
-        "shopify terms",
-        "caps",
-        "capitalizations",
-        "definitions",
-        "define",
-        "spelling",
-        "terms"
-      ]
-    },
-    "intro": "It’s important to use the same words, spelling, and capitalization consistently,\notherwise things start looking messy and confusing for merchants.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -328,7 +307,7 @@
       ]
     },
     "intro": "Learn how to apply Shopify’s voice and choose the right tone, no matter what\nproduct, feature, or app you’re building.",
-    "section": "content"
+    "category": "content"
   },
   {
     "frontMatter": {
@@ -336,7 +315,7 @@
       "keywords": ["visual patterns", "color strategy", "color use"]
     },
     "intro": "Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -344,7 +323,7 @@
       "keywords": ["data viz"]
     },
     "intro": "Visualizations surface patterns in data, and provide immediate answers to a\nsingle, specific question.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -352,7 +331,7 @@
       "keywords": ["visual design", "design language", "design"]
     },
     "intro": "These are the principles that shape how we design all the experiences across the Shopify admin.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -377,7 +356,7 @@
       ]
     },
     "intro": "Icons in the Shopify admin act as visual aids to help merchants complete tasks. They’re simple, informative, and build on the visual language of the design system.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -385,7 +364,7 @@
       "keywords": ["drawings", "pictures"]
     },
     "intro": "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -404,7 +383,7 @@
       ]
     },
     "intro": "Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -412,7 +391,7 @@
       "keywords": ["audio", "sonic", "noise"]
     },
     "intro": "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -428,7 +407,7 @@
       ]
     },
     "intro": "Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -436,7 +415,7 @@
       "keywords": ["type styles", "font sizes", "fonts"]
     },
     "intro": "Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.",
-    "section": "design"
+    "category": "design"
   },
   {
     "frontMatter": {
@@ -459,7 +438,7 @@
       ]
     },
     "intro": "Making commerce better for everyone means caring deeply about making quality products. A quality product should have a fantastic user experience (UX), including:",
-    "section": "foundations"
+    "category": "foundations"
   },
   {
     "frontMatter": {
@@ -478,7 +457,7 @@
       ]
     },
     "intro": "Well-designed onboarding flows increase engagement with a product or feature. They’re efficient and they gradually\nintroduce merchants to tasks that have a clearly defined goal and benefit.",
-    "section": "foundations"
+    "category": "foundations"
   },
   {
     "frontMatter": {
@@ -512,7 +491,7 @@
       ]
     },
     "intro": "At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.",
-    "section": "foundations"
+    "category": "foundations"
   },
   {
     "frontMatter": {
@@ -538,7 +517,7 @@
       ]
     },
     "intro": "Currencies are formatted differently in different countries and languages. There’s a currency formatting framework to:",
-    "section": "foundations"
+    "category": "foundations"
   },
   {
     "frontMatter": {
@@ -552,7 +531,7 @@
       ]
     },
     "intro": "Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.",
-    "section": "foundations"
+    "category": "foundations"
   },
   {
     "frontMatter": {
@@ -575,7 +554,7 @@
       ]
     },
     "intro": "Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.",
-    "section": "foundations"
+    "category": "foundations"
   },
   {
     "frontMatter": {
@@ -583,7 +562,7 @@
       "keywords": ["error states", "invalid", 500, 400, 404, "error pages"]
     },
     "intro": "Error messages can be scary. Make errors visible to merchants, easy to\nunderstand, and helpful.",
-    "section": "patterns"
+    "category": "patterns"
   },
   {
     "frontMatter": {
@@ -591,7 +570,7 @@
       "keywords": ["help text", "learn more", "help center", "help"]
     },
     "intro": "​\nHelp content is educational text that describes interactive elements or offers information about concepts in the UI.",
-    "section": "patterns"
+    "category": "patterns"
   },
   {
     "frontMatter": {
@@ -599,7 +578,7 @@
       "keywords": ["home cards", "insights", "milestones"]
     },
     "intro": "Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.",
-    "section": "patterns"
+    "category": "patterns"
   },
   {
     "frontMatter": {
@@ -607,7 +586,7 @@
       "keywords": ["layout", "page", "columns", "hierarchy", "spacing", "stack"]
     },
     "intro": "Layout patterns provide common ways to arrange the content of a screen.",
-    "section": "patterns"
+    "category": "patterns"
   },
   {
     "frontMatter": {
@@ -626,7 +605,7 @@
       ]
     },
     "intro": "Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.",
-    "section": "patterns"
+    "category": "patterns"
   },
   {
     "frontMatter": {
@@ -639,7 +618,7 @@
       ]
     },
     "intro": "The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.",
-    "section": "patterns"
+    "category": "patterns"
   },
   {
     "frontMatter": {
@@ -647,6 +626,6 @@
       "keywords": ["text fields", "search", "placeholder text"]
     },
     "intro": "Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.",
-    "section": "patterns"
+    "category": "patterns"
   }
 ]

@@ -8,7 +8,7 @@ Official VS Code extension for building with the Shopify [Polaris Design System]
 
 ### Design Token Autocomplete
 
-Get code autocomplete suggestions for the [Polaris Design Tokens](https://polaris.shopify.com/tokens/all-tokens#navigation)
+Get code autocomplete suggestions for the [Polaris Design Tokens](https://polaris.shopify.com/tokens/colors#navigation)
 
 - 🗄️ Automatically works for CSS and Sass files
 - 🔍 Preview design token values in autocomplete description

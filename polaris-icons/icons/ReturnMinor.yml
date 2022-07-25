@@ -1,4 +1,4 @@
-name: return
+name: Return
 set: minor
 description: Used to represent an action to create a new line, sometimes referred to as a carriage return.
 keywords:

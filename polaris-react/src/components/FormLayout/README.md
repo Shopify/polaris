@@ -1,10 +1,6 @@
 ---
 name: Form layout
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - FormLayout
   - Group
@@ -30,8 +26,6 @@ keywords:
   - short text fields
   - layout forms
   - layout input fields
-  - android
-  - ios
 ---
 
 # Form layout
@@ -64,7 +58,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -76,7 +70,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -96,7 +90,7 @@ Help text provides extra guidance to people filling out a form field. This text 
 
 ## Examples
 
-### Default form layout
+### Default
 
 Use to stack form fields vertically, which makes them easier to scan and complete.
 
@@ -112,25 +106,9 @@ Use to stack form fields vertically, which makes them easier to scan and complet
 </FormLayout>
 ```
 
-<!-- content-for: android -->
-
-![Default form layout for Android](/public_images/components/FormLayout/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default form layout for iOS](/public_images/components/FormLayout/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ### Field group
 
-Use field groups to arrange multiple fields in a row.
-
-Works best for familiar layouts such as a row of city, state, and zip code fields. Use caution when arranging unrelated fields next to each other as this makes fields easier to miss.
-
-Field groups will wrap automatically on smaller screens.
+Use field groups to arrange multiple fields in a row. Works best for familiar layouts such as a row of city, state, and zip code fields. Use caution when arranging unrelated fields next to each other as this makes fields easier to miss. Field groups will wrap automatically on smaller screens.
 
 ```jsx
 <FormLayout>
@@ -151,21 +129,7 @@ Field groups will wrap automatically on smaller screens.
 </FormLayout>
 ```
 
-<!-- content-for: android -->
-
-![Form layout with field group for Android](/public_images/components/FormLayout/android/field-group@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Form layout with field group for iOS](/public_images/components/FormLayout/ios/field-group@2x.png)
-
-<!-- /content-for -->
-
 ### Condensed field group
-
-<!-- example-for: web -->
 
 For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 
@@ -184,4 +148,4 @@ For very short inputs, the width of the inputs may be reduced in order to fit mo
 
 ## Related components
 
-- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/structure/layout)
+- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/layout)

@@ -36,7 +36,10 @@ iconPaths.forEach((filename) => {
     .replace(`${iconBasePath}/`, '')
     .replace('.yml', '');
 
-  iconMetadata[exportName] = iconData;
+  iconMetadata[exportName] = {
+    id: exportName,
+    ...iconData,
+  };
   iconExports.push(
     `export {default as ${exportName}} from '../icons/${exportName}.svg';`,
   );
@@ -52,14 +55,18 @@ const metadataContent = `
 const metadata = ${JSON.stringify(iconMetadata, null, 2)};
 export default metadata;
 `.trim();
-const metadataTypes = `declare const metadata: {
-  [key: string]: {
-    name: string;
-    set: 'major' | 'minor';
-    description: string;
-    keywords: string[];
-  };
+const metadataTypes = `export interface Icon {
+  id: string;
+  name: string;
+  set: 'major' | 'minor';
+  description: string;
+  keywords: string[];
+}
+
+declare const metadata: {
+  [iconId: string]: Icon;
 };
+
 export default metadata;
 `.trim();
 

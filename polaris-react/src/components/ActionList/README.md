@@ -15,7 +15,7 @@ keywords:
 
 # Action list
 
-Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
+Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options.
 
 ---
 
@@ -34,7 +34,7 @@ Actions lists should:
 
 Each item in an action list should be clear and predictable. Merchants should be able to anticipate what will happen when they click on an action item.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -48,7 +48,7 @@ Buy
 
 Each item in an action list should always lead with a strong verb that encourages action. To provide enough context use the {verb}+{noun} format unless the action is clear with a single verb.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -64,7 +64,7 @@ Each item in an action list should always lead with a strong verb that encourage
 
 Each item in an action list should be scannable avoiding unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +80,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 ## Examples
 
-### Action list in a popover
+### In a popover
 
 Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
@@ -133,7 +133,7 @@ function ActionListInPopoverExample() {
 }
 ```
 
-### Action list with icons or image
+### With icons or image
 
 Use when the items benefit from an associated action or image, such as a list of products.
 
@@ -170,7 +170,7 @@ function ActionListWithMediaExample() {
 }
 ```
 
-### Action list with an icon and a suffix
+### With an icon and a suffix
 
 Use when the items benefit from an associated action or image, such as a list of products.
 
@@ -212,7 +212,7 @@ function ActionListWithSuffixExample() {
 }
 ```
 
-### Sectioned action list
+### With sections
 
 Use when the items benefit from sections to help differentiate actions.
 
@@ -261,7 +261,7 @@ function SectionedActionListExample() {
 }
 ```
 
-### Action list with destructive item
+### With destructive item
 
 Use to visually indicate that an action list item is destructive.
 
@@ -312,7 +312,7 @@ function ActionListWithDestructiveItemExample() {
 }
 ```
 
-### Action list with help text
+### With help text
 
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
@@ -359,7 +359,7 @@ function ActionListWithHelpTextExample() {
 }
 ```
 
-### Action list with a prefix and a suffix
+### With a prefix and a suffix
 
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
@@ -397,34 +397,14 @@ function ActionListWithPrefixSuffixExample() {
 
 ## Related components
 
-- To combine more than one button in a single layout, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
-- To display a list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To combine more than one button in a single layout, [use the button group component](https://polaris.shopify.com/components/button-group)
+- To display a list of related content, [use the list component](https://polaris.shopify.com/components/list)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
-Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](https://polaris.shopify.com/components/actions/button).
+Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](https://polaris.shopify.com/components/button).
 
 ### Keyboard support
 
@@ -436,5 +416,3 @@ Items in an action list are organized as list items (`<li>`) in an unordered lis
 
 - Each item is clearly discernible in high contrast mode
 - Each item that is focused and hovered is clearly discernible in high contrast mode
-
-<!-- /content-for -->

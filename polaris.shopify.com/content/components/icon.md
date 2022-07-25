@@ -15,26 +15,20 @@ keywords:
   - alert
 examples:
   - fileName: icon-default.tsx
-    title: Default icon
-    description: >-
-      Use to visually communicate core parts of the product and available
-      actions.
+    title: Default
+    description: Use to visually communicate core parts of the product and available actions.
   - fileName: icon-colored.tsx
-    title: Colored icon
+    title: Colored
     description: Apply a color to the icon.
   - fileName: icon-with-backdrop.tsx
-    title: Icon with backdrop
+    title: With backdrop
     description: Apply a backdrop to the icon.
-  - fileName: icon-user-provided.tsx
-    title: User provided icon
-    description: >-
-      Specify an SVG as a string to render it in an image tag, instead of an
-      inline SVG to prevent script injection.
-  - fileName: icon-user-provided-with-color-and-current-color.tsx
-    title: User provided icon with color and currentColor
-    description: >-
-      When using changing color of an svg and it uses currentColor, the white
-      color is applied.
+  - fileName: icon-with-custom-svg.tsx
+    title: With custom SVG
+    description: Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.
+  - fileName: icon-with-custom-svg-and-color.tsx
+    title: With custom SVG and color
+    description: When using changing color of an svg and it uses currentColor, the white color is applied.
 ---
 
 # Icon
@@ -45,31 +39,11 @@ Icons are used to visually communicate core parts of the product and available a
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Using icons can be a great help to merchants who have difficulties with reading, language, attention, and low vision.
 
 If the icon appears without text, then use the `accessibilityLabel` prop to give the icon a text alternative. This adds an `aria-label` that’s conveyed to screen reader users.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -98,8 +72,6 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 ```
 
 <!-- end -->
-
-<!-- /content-for -->
 
 ---
 

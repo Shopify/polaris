@@ -1,8 +1,6 @@
 ---
 name: Sheet
 category: Overlays
-platforms:
-  - web
 keywords:
   - sheet
   - modal
@@ -11,10 +9,8 @@ keywords:
   - overlay
   - drawer
   - dialog
-  - web
-fullSizeExamples: true
-notice:
-  status: deprecated
+status:
+  value: Deprecated
   message: The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions.
 ---
 
@@ -62,9 +58,7 @@ The sheet component is best used in cases where the merchant needs to see elemen
 
 ## Examples
 
-### Basic sheet
-
-<!-- example-for: web -->
+### Default
 
 Use as the default option for a sheet.
 
@@ -208,5 +202,5 @@ function SheetExample() {
 
 ## Related components
 
-- To offer an action before merchants can go to the next step in the flow, use the [modal component](https://polaris.shopify.com/components/overlays/modal)
-- To present a small amount of content or a menu of actions in a non-blocking overlay, use the [popover component](https://polaris.shopify.com/components/overlays/popover)
+- To offer an action before merchants can go to the next step in the flow, use the [modal component](https://polaris.shopify.com/components/modal)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, use the [popover component](https://polaris.shopify.com/components/popover)

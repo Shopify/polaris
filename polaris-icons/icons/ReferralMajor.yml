@@ -1,4 +1,4 @@
-name: referral
+name: Referral
 set: major
 description: Used to represent the source of a referral.
 keywords:
