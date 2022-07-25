@@ -3,14 +3,12 @@ import ReactWebComponent from 'react-web-component';
 
 import {TextStyle, Card} from '../src';
 
-ReactWebComponent.create(<TextStyle />, 'text-style');
-ReactWebComponent.create(<Card />, 'ui-card');
+ReactWebComponent.create(<TextStyle />, 'text-style2');
 
 export function WebComponents2() {
   return (
     <div>
-      <ui-card title="test title">card content </ui-card>
-      <text-style variation="positive">text style content</text-style>
+      <text-style2 variation="positive">text style content</text-style2>
     </div>
   );
 }

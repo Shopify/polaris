@@ -29,7 +29,6 @@ export interface TextStyleProps {
 }
 
 export function TextStyle({variation, children}: TextStyleProps) {
-  console.log('variation', variation);
   const className = classNames(
     variation && styles[variationName('variation', variation)],
     variation === VariationValue.Code && styles.code,
