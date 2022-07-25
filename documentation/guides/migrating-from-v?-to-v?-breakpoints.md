@@ -4,17 +4,79 @@ Polaris v?.0.0 ([full release notes](https://github.com/Shopify/polaris/releases
 
 ## Table of Contents
 
-- [Sass functions and mixins](#sass-functions-and-mixins)
-- [Replacing function and mixin instances with suggested values](#replacing-function-and-mixin-instances-with-suggested-values)
-  - [`page-content-breakpoint-before()`](#page-content-breakpoint-before)
-- [Adding the functions and mixins to your repo](#adding-the-functions-and-mixins-to-your-repo)
-- [Sass global variables](#sass-global-variables)
+- [Migrating from v? to v? (Breakpoints)](#migrating-from-v-to-v-breakpoints)
+  - [Table of Contents](#table-of-contents)
+  - [Sass functions and mixins](#sass-functions-and-mixins)
+    - [Replacing function and mixin instances with suggested values](#replacing-function-and-mixin-instances-with-suggested-values)
+      - [`page-content-breakpoint-after()`](#page-content-breakpoint-after)
+      - [`page-content-breakpoint-before()`](#page-content-breakpoint-before)
+    - [Adding the functions and mixins to your repo](#adding-the-functions-and-mixins-to-your-repo)
+  - [Sass global variables](#sass-global-variables)
 
 ## Sass functions and mixins
 
 The following Sass functions and mixins have been removed. If you wish to continue using them you will need to either add them directly to your repo or replace any instances with a value equivalent.
 
 ### Replacing function and mixin instances with suggested values
+
+#### `page-content-breakpoint-after()`
+
+Use `console.log()` to get the function output and hard code the value you need.
+
+Otherwise, you can copy the function definition and use it locally.
+
+| Deprecated Function               | Source          |
+| --------------------------------- | --------------- |
+| `page-content-breakpoint-after()` | [definition](#) |
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-breakpoint-after($size) {
+  $size: breakpoint($size);
+
+  @if $size < $partially-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size}),
+        (min-width: #{$nav-size + $size}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size}) {
+      @content;
+    }
+  } @else if $size < $not-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size + $partially-condensed-outer-spacing}) {
+      @content;
+    }
+  } @else {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size + $not-condensed-outer-spacing}) {
+      @content;
+    }
+  }
+}
+```
+
+</details>
 
 #### `page-content-breakpoint-before()`
 
@@ -74,13 +136,6 @@ Otherwise, you can copy the function definition and use it locally.
 ```
 
 </details>
-
-| Deprecated Function          | Replacement Value        |
-| ---------------------------- | ------------------------ |
-| `border()`<br>`border(base)` | `--p-border-base`        |
-| `border(dark)`               | `--p-border-dark`        |
-| `border(transparent)`        | `--p-border-transparent` |
-| `border(divider)`            | `--p-border-divider`     |
 
 ### Adding the functions and mixins to your repo
 
