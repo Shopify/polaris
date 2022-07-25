@@ -45,7 +45,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling merchants what actions are available to them, especially something new. Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -57,22 +57,18 @@ Now you can get performance data for all of your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something
+- Structured for merchant success: always put the most critical information first
+- Clear: use the verb “need” to help merchants understand when they’re required to do something
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -82,7 +78,7 @@ Buttons should be:
 
 Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,11 +90,9 @@ Buy
 
 <!-- end -->
 
-- Action-led: buttons should always lead with a strong verb that encourages
-  action. To provide enough context to merchants use the {verb}+{noun} format on
-  buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -112,7 +106,7 @@ View your settings
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -128,7 +122,7 @@ Add a menu item
 
 ## Examples
 
-### Basic media card
+### Default
 
 Use to surface educational information about a feature or opportunity.
 
@@ -155,7 +149,7 @@ Use to surface educational information about a feature or opportunity.
 </MediaCard>
 ```
 
-### Basic media card with small visual
+### With small visual
 
 Use when there are limited vertical space, or when the card should be less prominent.
 
@@ -183,7 +177,7 @@ Use when there are limited vertical space, or when the card should be less promi
 </MediaCard>
 ```
 
-### Media card with secondary action
+### With secondary action
 
 Use when there are two distinct actions merchants can take on the information in the card.
 
@@ -211,7 +205,7 @@ Use when there are two distinct actions merchants can take on the information in
 </MediaCard>
 ```
 
-### Media card with no actions
+### With no actions
 
 Use when media card does not require any actions.
 

@@ -23,8 +23,7 @@ keywords:
 
 # Card
 
-Cards are used to group similar concepts and tasks together to make Shopify
-easier for merchants to scan, read, and get things done.
+Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 
 ---
 
@@ -33,15 +32,10 @@ easier for merchants to scan, read, and get things done.
 Cards should:
 
 - Use headings that set clear expectations about the card’s purpose
-- Prioritize information so the content merchants most need to know comes
-  first
-- Stick to single user flows or break more complicated flows into multiple
-  sections
-- Avoid too many call-to-action buttons or links and only one primary call to
-  action per card
-- Use calls to action on the bottom of the card for next steps and use the
-  space in the upper right corner of the card for persistent, optional actions
-  (such as an Edit link)
+- Prioritize information so the content merchants most need to know comes first
+- Stick to single user flows or break more complicated flows into multiple sections
+- Avoid too many call-to-action buttons or links and only one primary call to action per card
+- Use calls to action on the bottom of the card for next steps and use the space in the upper right corner of the card for persistent, optional actions (such as an Edit link)
 
 ---
 
@@ -55,11 +49,9 @@ Card titles should follow the content guidelines for [headings and subheadings](
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling merchants what
-  actions are available to them (especially something new). Don’t use permissive
-  language like “you can”.
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -71,22 +63,18 @@ Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first.
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something.
+- Structured for merchant success: always put the most critical information first.
+- Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -94,10 +82,9 @@ including packaging.
 
 Buttons should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen
-  when they click a button. Never deceive merchants by mislabeling a button.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -111,11 +98,9 @@ Buttons should be:
 
 <!-- end -->
 
-Action-led: buttons should always lead with a strong verb that encourages
-action. To provide enough context to merchants use the {verb}+{noun} format on
-buttons except in the case of common actions like Save, Close, Cancel, or OK.
+Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -131,7 +116,7 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 Scannable: Avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -147,29 +132,22 @@ Add a menu item
 
 Section titles should be:
 
-- Informative: they should label the type of content grouped in the body
-  content below
-- Like headings: follow the same content guidelines as when you’re writing
-  headings
+- Informative: they should label the type of content grouped in the body content below
+- Like headings: follow the same content guidelines as when you’re writing headings
 
 ### Action links
 
 Links should be:
 
-- Used for secondary or persistent actions: links should be used to represent
-  lower priority actions than buttons, or persistent actions that merchants may
-  take at any time (such as a persistent Edit link).
-- Clearly labeled: merchants should not need to guess where they’ll end up if
-  they click on an action link. Never use “click here” as a link because it
-  doesn’t set expectations about what’s next.
-- Similar to buttons: Follow the same content guidelines as when you’re writing
-  text for buttons.
+- Used for secondary or persistent actions: links should be used to represent lower priority actions than buttons, or persistent actions that merchants may take at any time (such as a persistent Edit link).
+- Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+- Similar to buttons: Follow the same content guidelines as when you’re writing text for buttons.
 
 ---
 
 ## Examples
 
-### Default card
+### Default
 
 Use when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
 
@@ -179,7 +157,7 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
-### Card with header actions
+### With header actions
 
 Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
 
@@ -192,7 +170,7 @@ Use for less important card actions, or actions merchants may do before reviewin
 </Card>
 ```
 
-### Card with footer actions
+### With footer actions
 
 Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information. Footer actions can be left or right aligned with the `footerActionAlignment` prop.
 
@@ -211,7 +189,7 @@ Use footer actions for a card’s most important actions, or actions merchants s
 </Card>
 ```
 
-### Card with multiple footer actions
+### With multiple footer actions
 
 When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
 
@@ -233,7 +211,7 @@ When multiple secondary footer actions are provided, they will render in an acti
 </Card>
 ```
 
-### Card with custom footer actions
+### With custom footer actions
 
 Use to present actionable content that is optional or not the primary purpose of the page.
 
@@ -257,7 +235,7 @@ Use to present actionable content that is optional or not the primary purpose of
 </Card>
 ```
 
-### Card with destructive footer action
+### With destructive footer action
 
 Use when a card action will delete merchant data or be otherwise difficult to recover from.
 
@@ -276,7 +254,7 @@ Use when a card action will delete merchant data or be otherwise difficult to re
 </Card>
 ```
 
-### Card with multiple sections
+### With multiple sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants. Multiple sections can help break up complicated concepts to make them easier to scan and understand.
 
@@ -295,7 +273,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-### Card with multiple titled sections
+### With multiple titled sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
 
@@ -314,7 +292,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-### Card section with action
+### With sections and actions
 
 Use when your card section has actions that apply only to that section.
 
@@ -329,7 +307,7 @@ Use when your card section has actions that apply only to that section.
 </Card>
 ```
 
-### Card with subsection
+### With subsection
 
 Use when your card sections need further categorization.
 
@@ -362,7 +340,7 @@ Use when your card sections need further categorization.
 </Card>
 ```
 
-### Card section with destructive action
+### With destructive action
 
 Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
 
@@ -380,7 +358,7 @@ Use when a card action applies only to one section and will delete merchant data
 </Card>
 ```
 
-### Card with a subdued section
+### With a subdued section
 
 Use to indicate when one of the sections in your card contains inactive or disabled content.
 
@@ -402,7 +380,7 @@ Use to indicate when one of the sections in your card contains inactive or disab
 </Card>
 ```
 
-### Subdued card for secondary content
+### With subdued for secondary content
 
 Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
 
@@ -415,7 +393,7 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
 </Card>
 ```
 
-### Card with separate header
+### With separate header
 
 Use to be able to use custom React elements as header content.
 
@@ -450,7 +428,7 @@ Use to be able to use custom React elements as header content.
 </Card>
 ```
 
-### Card section with custom React Node title
+### With custom React Node title
 
 Use to render custom content such as icons, links, or buttons in a card section’s header.
 
@@ -472,7 +450,7 @@ Use to render custom content such as icons, links, or buttons in a card section�
 </Card>
 ```
 
-### Card with all of its elements
+### With all elements
 
 Use as a broad example that includes most props available to card.
 
@@ -553,7 +531,7 @@ Use as a broad example that includes most props available to card.
 </Card>
 ```
 
-### Card with flushed sections
+### With flushed sections
 
 Use when you need further control over the spacing of your card sections.
 
@@ -588,6 +566,8 @@ Use when you need further control over the spacing of your card sections.
 The required `title` prop gives the card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
+
+<!-- dodont -->
 
 #### Do
 

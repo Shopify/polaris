@@ -66,7 +66,7 @@ Where possible, follow this pattern when writing tabs.
 
 ## Examples
 
-### Default tabs
+### Default
 
 Use for most cases, especially when the number of tabs may be more than three.
 
@@ -115,7 +115,7 @@ function TabsExample() {
 }
 ```
 
-### Fitted tabs
+### Fitted
 
 Use when tabs contain a few (2 or 3) items within a narrow column.
 
@@ -154,7 +154,7 @@ function FittedTabsExample() {
 }
 ```
 
-### Tabs with badge content
+### With badge content
 
 Use to inform a piece of information about the tabs.
 
@@ -201,7 +201,7 @@ function TabsWithBadgeExample() {
 }
 ```
 
-### Tabs with custom disclosure
+### With custom disclosure
 
 Use to provide information about the popover contents
 

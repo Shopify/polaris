@@ -47,7 +47,7 @@ The shortcut description should describe what action is taken when merchants tap
 
 ## Examples
 
-### List of keyboard shortcuts
+### Default
 
 Use to list a related set of keyboard shortcuts.
 
@@ -67,7 +67,7 @@ Use to list a related set of keyboard shortcuts.
 
 The text of the keyboard key component is read by screen readers, but the visual formatting isn’t conveyed. Ensure that merchants are able to understand information about keyboard shortcuts without relying on the visual style of the component.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

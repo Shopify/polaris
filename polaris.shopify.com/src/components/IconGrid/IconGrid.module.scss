@@ -2,12 +2,24 @@
 
 .IconGrid {
   border-radius: var(--border-radius-600);
-  border: 1px solid var(--border-color-light);
-  overflow: hidden;
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset 0 0 0 1px var(--border-color-light),
+      0 0 0 5px var(--surface);
+    pointer-events: none;
+    border-radius: var(--border-radius-600);
+  }
 }
 
 .IconGridInner {
-  margin: 0 -1px -1px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
 }
@@ -21,10 +33,6 @@
   border-right: 1px solid var(--border-color-light);
   gap: 1.125rem;
 
-  &:focus-visible {
-    box-shadow: var(--focus-outline-inside);
-  }
-
   p {
     flex: 1;
     white-space: nowrap;
@@ -32,9 +40,18 @@
     text-overflow: ellipsis;
   }
 
+  &:focus-visible,
   &.isSelected,
   &:hover {
     background: var(--search-highlight-color);
+    box-shadow: none;
+  }
+
+  @media (hover: hover) {
+    &[data-is-current-result="true"] {
+      background: var(--search-highlight-color);
+      box-shadow: none;
+    }
   }
 }
 

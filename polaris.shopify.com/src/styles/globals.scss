@@ -1,36 +1,31 @@
 @import "variables.scss";
 @import "fonts.scss";
 @import "mixins.scss";
-
+@import "prism.scss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-// Place CSS variables on body (instead of :root) so that
-// we can utilize the .dark-mode class to flip the colors
-body {
+:root {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 72px;
   --narrow-content-width: 720px;
-  --header-margin: 4.5rem;
-
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    --header-margin: 3rem;
-  }
+  --header-height: 64px; // Parsed by JS. Define in px.
+  --header-margin: 76px; // Parsed by JS. Define in px.
 
   @media screen and (max-width: $breakpointDesktop) {
-    --header-height: 60px;
-    --header-margin: 2rem;
+    --header-margin: 48px; // Parsed by JS. Define in px.
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    --header-margin: 32px; // Parsed by JS. Define in px.
   }
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
-  --focus-outline: 0 0 0 2px var(--text-strong);
-  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
   --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
     "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
   --surface-code-block: #2e2e30;
 
-  // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+  // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
@@ -103,7 +98,21 @@ body {
   --border-radius-round: 1000px;
 }
 
-* {
+.light-mode,
+.dark-mode {
+  --focus-outline: 0 0 0 2px var(--text-strong);
+  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
+}
+
+// Resets for both the site and polaris examples
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+// Resets and styles that should not affect Polaris examples
+*:where(.styles-for-site-but-not-polaris-examples *) {
   margin: 0;
   padding: 0;
   color: inherit;
@@ -118,14 +127,10 @@ body {
   border: none;
   appearance: none;
   outline: none;
-}
 
-video {
-  display: block;
-}
-
-*:focus-visible {
-  box-shadow: var(--focus-outline);
+  *:focus-visible {
+    box-shadow: var(--focus-outline);
+  }
 }
 
 html {
@@ -199,6 +204,10 @@ body,
   --search-highlight-color: #363636;
 }
 
+video {
+  display: block;
+}
+
 a {
   color: var(--text-link);
 }
@@ -219,16 +228,12 @@ button {
 }
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
-.usage-list {
+.dodont {
   margin: 1.25rem 0 2rem;
   font-size: var(--font-size-200);
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  + .usage-list {
-    margin-top: -1rem;
-  }
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -236,17 +241,13 @@ button {
     gap: 1rem;
   }
 
-  .usage-list-part {
+  .dodont-part {
     position: relative;
     flex: 1;
     background: var(--surface-subdued);
     padding: 0.25rem 1.25rem;
     border-radius: var(--border-radius-400);
     overflow: hidden;
-
-    &:empty {
-      display: none;
-    }
 
     h4:first-child {
       background-image: url(/images/icon-do.svg);
@@ -289,44 +290,6 @@ button {
     h3 {
       font-size: var(--font-size-300);
       color: var(--text);
-    }
-  }
-
-  &.usage-block {
-    .usage-list-part {
-      padding-top: 1.75rem;
-
-      h4 {
-        display: none;
-      }
-
-      li,
-      p {
-        background-image: url(/images/icon-do.svg);
-        background-repeat: no-repeat;
-        background-position: left 0.15rem;
-        padding-left: 34px;
-        background-size: auto 1.25rem;
-        letter-spacing: var(--letter-spacing-200);
-        list-style: none;
-        margin-left: 0;
-      }
-
-      li:before {
-        display: none;
-      }
-
-      &[data-type="dont"] {
-        li,
-        p {
-          background-image: url(/images/icon-dont.svg);
-        }
-
-        li > p {
-          background: none;
-          padding-left: 0;
-        }
-      }
     }
   }
 }

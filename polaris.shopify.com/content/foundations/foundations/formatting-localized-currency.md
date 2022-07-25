@@ -90,7 +90,7 @@ Because CLDR formatting is limited, these guidelines will help you choose the ap
 
 #### Store currency
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -127,7 +127,7 @@ This example illustrates the use of short format for non-total amounts and expli
 
 Always place the negative symbol before the currency and amount in either format.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

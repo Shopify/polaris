@@ -31,6 +31,17 @@ export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
 
+const getRowClientHeights = (rows: NodeList | undefined) => {
+  const heights: number[] = [];
+  if (!rows) {
+    return heights;
+  }
+  rows.forEach((row: HTMLTableRowElement) => {
+    heights.push(row.clientHeight);
+  });
+  return heights;
+};
+
 export interface DataTableProps {
   /** List of data types, which determines content alignment for each column. Data types are "text," which aligns left, or "numeric," which aligns right. */
   columnContentTypes: ColumnContentType[];
@@ -84,7 +95,7 @@ export interface DataTableProps {
   /** Header becomes sticky and pins to top of table when scrolling  */
   stickyHeader?: boolean;
   /** Add a fixed first column on horizontal scroll. */
-  fixedFirstColumn?: boolean;
+  hasFixedFirstColumn?: boolean;
   /** Specify a min width for the first column if neccessary */
   firstColumnMinWidth?: string;
 }
@@ -165,7 +176,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       increasedTableDensity = false,
       hasZebraStripingOnData = false,
       stickyHeader = false,
-      fixedFirstColumn = false,
+      hasFixedFirstColumn: fixedFirstColumn = false,
     } = this.props;
     const {
       condensed,
@@ -212,6 +223,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const firstColumn = rows.map((row) => row.slice(0, 1));
     const firstHeading = headings.slice(0, 1);
     const firstTotal = totals?.slice(0, 1);
+    const tableHeaderRows = this.table.current?.children[0].childNodes;
+    const tableBodyRows = this.table.current?.children[1].childNodes;
+    const headerRowHeights: number[] = getRowClientHeights(tableHeaderRows);
+    const bodyRowHeights: number[] = getRowClientHeights(tableBodyRows);
 
     const fixedFirstColumnMarkup = condensed && fixedFirstColumn && (
       <table
@@ -222,7 +237,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
       >
         <thead>
-          <tr>
+          <tr style={{height: `${headerRowHeights[0]}px`}}>
             {firstHeading.map((heading, index) =>
               this.renderHeading({
                 heading,
@@ -233,12 +248,19 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             )}
           </tr>
           {totals && !showTotalsInFooter && (
-            <tr>{firstTotal?.map(this.renderTotals)}</tr>
+            <tr style={{height: `${headerRowHeights[1]}px`}}>
+              {firstTotal?.map(this.renderTotals)}
+            </tr>
           )}
         </thead>
         <tbody>
           {firstColumn.map((row, index) =>
-            this.defaultRenderRow({row, index, inFixedFirstColumn: true}),
+            this.defaultRenderRow({
+              row,
+              index,
+              inFixedFirstColumn: true,
+              rowHeights: bodyRowHeights,
+            }),
           )}
         </tbody>
         {totals && showTotalsInFooter && (
@@ -455,7 +477,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     if (condensed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(headerCell.selector);
-      const {fixedFirstColumn} = this.props;
+      const {hasFixedFirstColumn: fixedFirstColumn} = this.props;
       const firstColumnWidth = fixedFirstColumn
         ? headerCells[0].clientWidth
         : 0;
@@ -605,7 +627,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     const handleScroll = () => {
       let newScrollLeft = 0;
-      if (this.props.fixedFirstColumn) {
+      if (this.props.hasFixedFirstColumn) {
         newScrollLeft =
           direction === 'right'
             ? prevWidths - firstColumnWidth + currentColumn.width
@@ -674,8 +696,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortable: isSortable,
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
-        fixedFirstColumn: this.props.fixedFirstColumn,
-        inFixedFirstColumn: this.props.fixedFirstColumn && inFixedFirstColumn,
+        fixedFirstColumn: this.props.hasFixedFirstColumn,
+        inFixedFirstColumn:
+          this.props.hasFixedFirstColumn && inFixedFirstColumn,
       };
     }
 
@@ -812,10 +835,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     row,
     index,
     inFixedFirstColumn,
+    rowHeights,
   }: {
     row: TableData[];
     index: number;
     inFixedFirstColumn: boolean;
+    rowHeights?: number[];
   }) => {
     const {
       columnContentTypes,
@@ -835,6 +860,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         className={className}
         onMouseEnter={this.handleHover(index)}
         onMouseLeave={this.handleHover()}
+        style={rowHeights ? {height: `${rowHeights[index]}px`} : {}}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const hovered = index === this.state.rowHovered;

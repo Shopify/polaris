@@ -13,51 +13,38 @@ keywords:
   - upload placeholder
   - drop placeholder
 examples:
-  - fileName: drop-zone-with-file-upload.tsx
-    title: Drop zone with file upload
-    description: >-
-      Use to allow merchants to upload files. They can drag and drop files into
-      the dashed area, or upload traditionally by clicking the “Add file” button
-      or anywhere inside the dashed area.
+  - fileName: drop-zone-default.tsx
+    title: Default
+    description: Use to allow merchants to upload files. They can drag and drop files into the dashed area, or upload traditionally by clicking the “Add file” button or anywhere inside the dashed area.
   - fileName: drop-zone-with-a-label.tsx
-    title: Drop zone with a label
+    title: With a label
     description: Use to pair with a label for better accessibility.
   - fileName: drop-zone-with-image-file-upload.tsx
-    title: Drop zone with image file upload
+    title: With image file upload
     description: Use for cases that accept image file formats.
   - fileName: drop-zone-with-single-file-upload.tsx
-    title: Drop zone with single file upload
+    title: With single file upload
     description: Use to accept only one file.
   - fileName: drop-zone-with-drop-on-page.tsx
-    title: Drop zone with drop on page
+    title: With drop on page
     description: Use to accept files for upload when dropped anywhere on the page.
   - fileName: drop-zone-accepts-only-svg-files.tsx
-    title: Drop zone accepts only SVG files
+    title: Accepts only SVG files
     description: Use to accept only SVG files.
   - fileName: drop-zone-nested.tsx
-    title: Nested drop zone
-    description: >-
-      Use to allow merchants to upload files in a wider area than the visible
-      drop zone.
+    title: Nested
+    description: Use to allow merchants to upload files in a wider area than the visible drop zone.
   - fileName: drop-zone-medium-sized.tsx
-    title: Medium-sized drop zone
-    description: >-
-      Use for cases with limited space. To improve usability, nest medium-sized
-      drop zone in a larger drop zone with no outline. See the nested dropzone
-      example.
+    title: Medium-sized
+    description: Use for cases with limited space. To improve usability, nest medium-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
   - fileName: drop-zone-small-sized.tsx
-    title: Small-sized drop zone
-    description: >-
-      Use for cases with tight space constraints, such as variant thumbnails on
-      the Product details page. To improve usability, nest small-sized drop zone
-      in a larger drop zone with no outline. See the nested dropzone example.
+    title: Small-sized
+    description: Use for cases with tight space constraints, such as variant thumbnails on the Product details page. To improve usability, nest small-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
   - fileName: drop-zone-with-custom-file-upload-text.tsx
-    title: Drop zone with custom FileUpload text
-    description: >-
-      Use for cases where you want the child contents of the dropzone to
-      determine its height.
+    title: With custom FileUpload text
+    description: Use for cases where you want the child contents of the dropzone to determine its height.
   - fileName: drop-zone-with-custom-file-dialog-trigger.tsx
-    title: Drop zone with custom file dialog trigger
+    title: With custom file dialog trigger
     description: Use to trigger the file dialog from an action somewhere else on the page.
 ---
 

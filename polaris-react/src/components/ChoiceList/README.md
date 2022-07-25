@@ -21,9 +21,7 @@ keywords:
 
 # Choice list
 
-A choice list lets you create a list of grouped radio buttons or checkboxes.
-Use this component if you need to group together a related list of interactive
-choices.
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 
 ---
 
@@ -43,10 +41,9 @@ Choice lists should:
 
 List titles should:
 
-- Help merchants understand how the items in the list are grouped together, or
-  should explain what kind of choice merchants are making
+- Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -65,7 +62,7 @@ Pick one
 - It the title introduces the list, it should end with a colon
 - Should be written in sentence case
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -79,15 +76,21 @@ Shipping Options
 
 ### Not use colons
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete their order
+If the customer abandons their checkout, send them an email reminder to complete their order:
+
+- Option a
+- Option b
 
 #### Don’t
 
 If the customer abandons their checkout, send them an email reminder to complete their order
+
+- Option a
+- Option b
 
 <!-- end -->
 
@@ -99,7 +102,7 @@ Every item in a choice list should:
 - Not use commas or semicolons at the end of each line
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -123,11 +126,9 @@ If your list contains helper text, only the description below the list item shou
 
 ## Examples
 
-### Single choice list
+### Default
 
-Allows merchants to select one option from a list.
-
-- Make sure all options are an either/or choice.
+Allows merchants to select one option from a list. Make sure all options are an either/or choice.
 
 ```jsx
 function SingleChoiceListExample() {
@@ -150,7 +151,7 @@ function SingleChoiceListExample() {
 }
 ```
 
-### Single choice list with error
+### With error
 
 Allows for accessible error handling by connecting the error message to the field with the error.
 
@@ -176,11 +177,9 @@ function ChoiceListWithErrorExample() {
 }
 ```
 
-### Multi-choice list
+### With multi-choice
 
-Allows merchants to select multiple options from a list.
-
-- Avoid options that are an either/or choice.
+Allows merchants to select multiple options from a list. Avoid options that are an either/or choice.
 
 ```jsx
 function MultiChoiceListExample() {
@@ -213,9 +212,9 @@ function MultiChoiceListExample() {
 }
 ```
 
-### Single-choice or multi-choice list with children content (always rendered)
+### With children content
 
-Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered. Works for both single-choice and multi-choice list.
+Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered.
 
 ```jsx
 function SingleOrMultiChoiceListWithChildrenContextExample() {
@@ -261,7 +260,7 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
 }
 ```
 
-### Single-choice or multi-choice list with children content (only rendered when choice is selected)
+### With dynamic children content
 
 Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 

@@ -219,7 +219,6 @@ Sometimes software will say two objects are aligned, or that they have the same 
 
 That means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:
 
-
 #### Visual weight ≠ Size
 
 Two things can have the same size, but feel unbalanced.

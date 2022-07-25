@@ -14,11 +14,9 @@ keywords:
   - educating
   - teaching
 examples:
-  - fileName: footer-help-box.tsx
-    title: Footer help box
-    description: >-
-      Use to direct merchants to more information related to the product or
-      feature they’re working on.
+  - fileName: footer-help-default.tsx
+    title: Default
+    description: Use to direct merchants to more information related to the product or feature they’re working on.
 ---
 
 # Footer help
@@ -57,7 +55,7 @@ Links should not be:
 
 Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

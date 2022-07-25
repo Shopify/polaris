@@ -51,7 +51,7 @@ Links should not be:
 
 Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -69,7 +69,7 @@ Marked as external: Do not set the `external` prop on the `Link` component to fo
 
 ## Examples
 
-### Footer help box
+### Default
 
 Use to direct merchants to more information related to the product or feature they’re working on.
 

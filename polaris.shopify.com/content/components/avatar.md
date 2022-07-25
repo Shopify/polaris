@@ -19,15 +19,14 @@ keywords:
   - business thumbnail
 examples:
   - fileName: avatar-default.tsx
-    title: Default avatar
-    description: >-
-      Use to present an avatar for a merchant, customer, or
-      business.
+    title: Default
+    description: Use to present an avatar for a merchant, customer, or business.
   - fileName: avatar-extra-small.tsx
-    title: Extra small avatar
-    description: >-
-      Use to present an avatar in a condensed layout, such as a data table cell
-      or an action list item.
+    title: Extra small
+    description: Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
+  - fileName: avatar-square.tsx
+    title: Square
+    description: Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
 ---
 
 # Avatar
@@ -51,8 +50,7 @@ Avatars should be one of 4 sizes:
 
 Any time you use an image to communicate a concept on Shopify, it’s important to use descriptive [alt text](https://polaris.shopify.com/content/alternative-text). Doing this is important for [accessibility](https://polaris.shopify.com/foundations/accessibility) because it allows screen readers to describe what’s in the image to people who may not be able to see it.
 
-For avatars, we recommend using a format that describes what will show in the
-image:
+For avatars, we recommend using a format that describes what will show in the image:
 
 - `alt="Person’s name"` if the avatar represents a person
 - `alt="Business’s name"` if the avatar represents a business
