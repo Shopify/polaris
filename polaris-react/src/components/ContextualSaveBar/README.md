@@ -43,7 +43,7 @@ The standard message content is
 - “Unsaved changes” when editing existing content
 - “Unsaved {resource name}” when creating a new object
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -59,7 +59,7 @@ The standard message content is
 
 Actions in the contextual save bar component should consist of a strong verb that encourages action. They should not include a noun.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -135,8 +135,7 @@ Use the save action to provide an opportunity to save a newly-created resource. 
 
 ### Contextual save bar with flush contents
 
-Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and
-repurpose that space to extend the message contents fully to the left side of the container.
+Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and repurpose that space to extend the message contents fully to the left side of the container.
 
 ```jsx
 <div style={{height: '250px'}}>

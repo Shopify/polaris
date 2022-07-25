@@ -1,5 +1,51 @@
 # Changelog
 
+## 9.21.0
+
+### Minor Changes
+
+- [#6461](https://github.com/Shopify/polaris/pull/6461) [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Make disabled buttons more accessible
+
+### Patch Changes
+
+- [#6703](https://github.com/Shopify/polaris/pull/6703) [`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad) Thanks [@alex-page](https://github.com/alex-page)! - Clean up README.md files, removing 80 character limit and unused content
+
+* [#6681](https://github.com/Shopify/polaris/pull/6681) [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353) Thanks [@alex-page](https://github.com/alex-page)! - Removed comments and cleaned up markdown files
+
+* Updated dependencies [[`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb)]:
+  - @shopify/polaris-icons@5.2.0
+
+## 9.20.1
+
+### Patch Changes
+
+- [#6617](https://github.com/Shopify/polaris/pull/6617) [`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632) Thanks [@alex-page](https://github.com/alex-page)! - Update component links so they no longer hit the redirect
+
+* [#6660](https://github.com/Shopify/polaris/pull/6660) [`9a8c8a68b`](https://github.com/Shopify/polaris/commit/9a8c8a68bc48db03153c67d5c202a4ea9510f985) Thanks [@JeremyLudwigDev](https://github.com/JeremyLudwigDev)! - [Datatable] Fix alignment issue with fixed first column when a cell is empty
+
+- [#6682](https://github.com/Shopify/polaris/pull/6682) [`2aaed571f`](https://github.com/Shopify/polaris/commit/2aaed571ffc1b6ec458a86186840ee473578a729) Thanks [@alex-page](https://github.com/alex-page)! - Remove fullSizeExample, omitAppProvider and hidePlayground frontmatter
+
+* [#6667](https://github.com/Shopify/polaris/pull/6667) [`8892dcc94`](https://github.com/Shopify/polaris/commit/8892dcc94b38968449863a7ad1bee4b56a9bd9bf) Thanks [@samrose3](https://github.com/samrose3)! - Use exact versions for Polaris workspace dependencies.
+
+- [#6619](https://github.com/Shopify/polaris/pull/6619) [`398186117`](https://github.com/Shopify/polaris/commit/398186117be9a4bc7d0248dd7ea339f0a0f34779) Thanks [@alex-page](https://github.com/alex-page)! - Remove legacy keywords from component documentation
+
+* [#6532](https://github.com/Shopify/polaris/pull/6532) [`89d40028a`](https://github.com/Shopify/polaris/commit/89d40028a251a06464f039ae5f26defea8e715b9) Thanks [@philschoefer](https://github.com/philschoefer)! - - Updates `DataTable` to fix console warning about improperly nested HTML
+  - Updates `DataTable` to ensure focus states remain on the same header element when switching between sticky and regular header.
+  - Improves `DataTable` tooltip when using `truncate` prop.
+
+- [#6583](https://github.com/Shopify/polaris/pull/6583) [`ae0bb762b`](https://github.com/Shopify/polaris/commit/ae0bb762bacca9b4d268c708e43c2facc9d4b763) Thanks [@FCalabria](https://github.com/FCalabria)! - Fixed `IndexTable` bulk action visibility on small screens
+
+* [#6671](https://github.com/Shopify/polaris/pull/6671) [`ab10494bc`](https://github.com/Shopify/polaris/commit/ab10494bcb2624656205bf04afcc6ed0f2692225) Thanks [@aveline](https://github.com/aveline)! - Update legacy sass file to use Polaris typography tokens
+
+- [#6663](https://github.com/Shopify/polaris/pull/6663) [`b3e027c9b`](https://github.com/Shopify/polaris/commit/b3e027c9b45fa44d1137fd409b2f8a10687c90ef) Thanks [@martenbjork](https://github.com/martenbjork)! - Update stylesheet url in Readme
+
+* [#6618](https://github.com/Shopify/polaris/pull/6618) [`1cbc1eba7`](https://github.com/Shopify/polaris/commit/1cbc1eba7a3a2d354b4cbf9dedb01862a77f5070) Thanks [@alex-page](https://github.com/alex-page)! - Remove unused and duplicate platform documentation
+
+- [#6604](https://github.com/Shopify/polaris/pull/6604) [`b5427eac2`](https://github.com/Shopify/polaris/commit/b5427eac2a4851e715954dcdce2900781839a316) Thanks [@dustinfirman](https://github.com/dustinfirman)! - Use different focus helper for the popover autofocus
+
+- Updated dependencies [[`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632), [`a6a972f7f`](https://github.com/Shopify/polaris/commit/a6a972f7f186bbc03c60f925755056a9de1b056f), [`327a73381`](https://github.com/Shopify/polaris/commit/327a73381ffb9a3f0ac3de4b76632d08070b8720), [`4c0301bbb`](https://github.com/Shopify/polaris/commit/4c0301bbbb0612afaa5111fc579f52175c8b3ada), [`b541f5449`](https://github.com/Shopify/polaris/commit/b541f54498462ce513b9903dfcfcb966f43e0038)]:
+  - @shopify/polaris-icons@5.1.0
+
 ## 9.20.0
 
 ### Minor Changes

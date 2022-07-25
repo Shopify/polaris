@@ -57,7 +57,7 @@ Links should not be:
 
 Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

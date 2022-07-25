@@ -1,8 +1,6 @@
 @import "../../styles/fonts.scss";
 
 .Nav {
-  margin-top: 0.25rem;
-
   ul {
     margin-bottom: 1rem;
   }
@@ -46,18 +44,10 @@
     &[aria-current="page"],
     &:hover {
       color: var(--text-strong);
+    }
 
-      &:after {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 2px;
-        bottom: 2px;
-        left: -0.75rem;
-        width: 1.5px;
-        border-radius: var(--border-radius-200);
-        background: var(--text-strong);
-      }
+    &[aria-current="page"] {
+      font-weight: var(--font-weight-500);
     }
   }
 }

@@ -15,8 +15,6 @@ keywords:
   - top bar
   - menu
   - toast
-fullSizeExamples: true
-omitAppProvider: true
 examples:
   - fileName: frame-in-an-application.tsx
     title: Frame in an application

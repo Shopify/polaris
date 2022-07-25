@@ -7,6 +7,7 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
 
 .HomePage {
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  padding-bottom: var(--header-margin);
 
   h2 {
     @include heading-2;
@@ -302,8 +303,7 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
   @media screen and (max-width: $breakpointDesktop) {
     display: flex;
     flex-direction: column-reverse;
-    background: transparent;
-    padding: 0;
+    padding: 2rem 1.25rem;
     gap: 2rem;
 
     .Text {
