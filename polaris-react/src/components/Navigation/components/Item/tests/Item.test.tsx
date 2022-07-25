@@ -13,7 +13,6 @@ import {NavigationContext} from '../../../context';
 import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
 import {Key} from '../../../../../types';
-import en from '../../../../../../locales/en.json';
 import {Tooltip} from '../../../../Tooltip';
 
 describe('<Nav.Item />', () => {
@@ -140,27 +139,6 @@ describe('<Nav.Item />', () => {
   });
 
   describe('with secondaryAction', () => {
-    it('renders an external icon', () => {
-      const item = mountWithNavigationProvider(
-        <Item
-          label="some label"
-          url="foo"
-          secondaryAction={{
-            url: 'bar',
-            icon: PlusMinor,
-            accessibilityLabel: 'label',
-          }}
-        />,
-        {
-          location: 'bar',
-        },
-      );
-
-      expect(item).toContainReactComponent(Icon, {
-        source: PlusMinor,
-      });
-    });
-
     it('renders an UnstyledLink with props delegated', () => {
       const item = mountWithNavigationProvider(
         <Item
