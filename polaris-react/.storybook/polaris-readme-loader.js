@@ -33,9 +33,11 @@ module.exports = function loader(source) {
     'Grid',
   ].includes(readme.name);
 
-  const omitAppProvider = ['Frame', 'AppProvider', 'CustomProperties'].includes(
-    readme.name,
-  );
+  const omitAppProvider = [
+    'Frame',
+    'App provider',
+    'Custom properties',
+  ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
     let code = example.code + '\n';
