@@ -142,6 +142,7 @@ import {
   Subheading,
   Tabs,
   Tag,
+  Text,
   TextContainer,
   TextField,
   TextStyle,
