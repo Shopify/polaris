@@ -12,7 +12,7 @@ keywords:
 
 Learn about what changes are coming to Polaris typography
 
-![Screen showing the new type styles](/images/updates/type-updates@2x.png)
+![Screen showing the new type styles](/images/updates/type-updates-feature@2x.png)
 
 ---
 
@@ -38,7 +38,7 @@ Polaris typography is getting a refresh. Currently, there are **4 Display**, **1
 
 The updates will simplify type into two categories: **Heading** and **Body**. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the UI.
 
-![Screen showing the differences between the new type styles and the old type styles](/images/updates/new-to-old@2x.png)
+![Screen showing the differences between the new type styles and the old type styles](/images/updates/type-new-to-old@2x.png)
 
 ## Type scale
 
@@ -77,7 +77,7 @@ We looked at how type changes between the different screen sizes and found that 
 
 However, for the larger sizes in the scale, we believe, in most cases, it makes sense for those sizes to adjust automatically so the sizes look appropriate for the screen size they’re being displayed on. This behavior hasn’t been added yet but, in the next release, we’ll update the larger styles to respond automatically at certain breakpoints with all other sizes staying the same unless specified otherwise.
 
-![Screen showing the differences between the new type styles and the old type styles](/images/updates/responsive-styles@2x.png)
+![Screen showing how type styles adapt at different screen sizes](/images/updates/type-responsive-styles@2x.png)
 
 ## Typography components
 
