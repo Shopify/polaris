@@ -164,7 +164,7 @@ $range-output-size: 32px;
   .Thumbs:focus + .Output & {
     transform: translateY(calc(-1 * var(--pc-range-slider-output-spacing)));
 
-    @include page-content-when-not-partially-condensed {
+    @media #{$p-breakpoints-md-up} {
       transform: translateY(
         calc(-1 * (var(--pc-range-slider-output-spacing) * 0.5))
       );

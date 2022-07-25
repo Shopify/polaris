@@ -1,13 +1,11 @@
 @import '../../styles/common';
 
-$breakpoint: 550px;
-
 .DescriptionList {
   margin: 0;
   padding: 0;
   word-break: break-word;
 
-  @include page-content-breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-sm-up} {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -22,7 +20,7 @@ $breakpoint: 550px;
     padding: var(--p-space-2) 0 var(--p-space-1);
   }
 
-  @include page-content-breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-sm-up} {
     flex: 0 1 25%;
     padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
 
@@ -49,7 +47,7 @@ $breakpoint: 550px;
     border-top: var(--p-border-divider);
   }
 
-  @include page-content-breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-sm-up} {
     flex: 1 1 51%;
     padding: var(--p-space-4) 0;
 

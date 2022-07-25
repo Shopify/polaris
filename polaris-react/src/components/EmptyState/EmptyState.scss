@@ -45,7 +45,7 @@ $centered-illustration-width: 226px;
   align-items: center;
   justify-content: center;
 
-  @include page-content-when-not-partially-condensed {
+  @media #{$p-breakpoints-md-up} {
     left: var(--p-space-5);
   }
 }
@@ -56,7 +56,7 @@ $centered-illustration-width: 226px;
   flex-direction: column;
   align-items: center;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     max-width: $detail-width;
   }
 }
@@ -72,7 +72,7 @@ $centered-illustration-width: 226px;
   padding: 0;
   margin: 0;
 
-  @include page-content-when-not-partially-condensed {
+  @media #{$p-breakpoints-md-up} {
     flex-basis: 50%;
   }
 }
@@ -95,7 +95,7 @@ $centered-illustration-width: 226px;
     flex-direction: column;
     align-items: center;
 
-    @include page-content-when-not-fully-condensed {
+    @media #{$p-breakpoints-sm-up} {
       max-width: $detail-width;
     }
   }
@@ -113,7 +113,7 @@ $centered-illustration-width: 226px;
 
 .imageContained {
   .Image {
-    @include page-content-when-not-partially-condensed {
+    @media #{$p-breakpoints-md-up} {
       position: initial;
       width: 100%;
     }

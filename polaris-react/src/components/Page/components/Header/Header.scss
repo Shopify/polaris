@@ -1,8 +1,5 @@
 @import '../../../../styles/common';
 
-$mobile-layout: 468px;
-$medium-layout: 860px;
-$desktop-layout: 1080px;
 $action-menu-rollup-computed-width: 40px;
 
 .Header {
@@ -20,7 +17,7 @@ $action-menu-rollup-computed-width: 40px;
   align-self: center;
   flex: 1 1 auto;
 
-  @include breakpoint-after($mobile-layout) {
+  @media #{$p-breakpoints-sm-up} {
     margin-top: 0;
   }
 }
@@ -172,14 +169,14 @@ $action-menu-rollup-computed-width: 40px;
   white-space: nowrap;
 
   .noBreadcrumbs & {
-    @include breakpoint-before($mobile-layout) {
+    @media #{$p-breakpoints-sm-down} {
       margin-left: 0;
     }
   }
 }
 
 .AdditionalMetaData {
-  @include breakpoint-after($mobile-layout) {
+  @media #{$p-breakpoints-sm-up} {
     margin-left: calc(
       var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
     );
@@ -221,13 +218,13 @@ $action-menu-rollup-computed-width: 40px;
 }
 
 .longTitle {
-  @include breakpoint-before($desktop-layout) {
+  @media #{$p-breakpoints-lg-down} {
     @include condensed-layout;
   }
 }
 
 .mediumTitle:not(.noBreadcrumbs) {
-  @include breakpoint-before($medium-layout) {
+  @media #{$p-breakpoints-md-down} {
     @include condensed-layout;
   }
 }
@@ -240,14 +237,14 @@ $action-menu-rollup-computed-width: 40px;
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: var(--p-space-1);
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$p-breakpoints-md-up} {
       margin-bottom: 0;
     }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {
     flex-wrap: wrap-reverse;
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$p-breakpoints-md-up} {
       flex-wrap: nowrap;
     }
   }
