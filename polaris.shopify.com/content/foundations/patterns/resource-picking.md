@@ -15,29 +15,17 @@ keywords:
   - segments
   - segementation
   - single select
-examples:
-  - fileName: listbox-with-search.tsx
-    title: Searchable listbox
-    description: Use to help merchants browse, filter, and choose from a list of options.
-  - fileName: popover-with-segment-picker.tsx
-    title: Popover with segment picker
-    description: Use to help merchants quickly browse, find, and navigate from a list of customer segments.
-  - fileName: sheet-with-segment-picker.tsx
-    title: Sheet with segment picker
-    description: Use to help merchants quickly find and select from a list of customer segments.
 ---
 
 # Resource picking
 
 Resource picking experiences let merchants browse, find, and select items in a list to perform an action. The picking feature can help them navigate to a new page, filter an index table, or input one or more values in a form.
 
-![Searchable listbox pattern disected to illustrate how it's composed](/images/foundations/patterns/resource-picking/searchable-listbox.png)
+![Searchable listbox pattern disected to illustrate how it's composed using the text field, listbox, listbox option, and listbox action components.](/images/foundations/patterns/resource-picking/searchable-listbox.png)
 
-The primary building blocks of a picker experience are the listbox and text field components. Depending on what merchant problem you’re solving, the components may be hidden and revealed with an overlay, such as a popover or modal, or used directly inside of a container on the page. See the [customer segment picker](#customer-segments) and [location picker](#locations) examples for resource specific implementation details.
+The primary building block of a picker experience is the searchable listbox pattern, composed of the listbox and text field components. Depending on what merchant problem you’re solving, the components may be used directly inside of a container on the page or hidden and revealed with an overlay, such as a popover or modal. See the [customer segment picker](#customer-segments) and [location picker](#locations) examples for context specific implementation details.
 
-CODE SAMPLE
-
-Include guidance about how to pick what container: The searchable listbox should be rendered directly.
+Display the resource picker directly on the page if picking from the list is part of the primary action merchants need to take, such as completing a form. If the purpose of the resource picker is secondary to the action merchants should take on the page, such as in page navigation or list filtering, use progressive disclosure to present the list.
 
 ---
 

@@ -32,6 +32,9 @@ examples:
   - fileName: popover-with-lazy-loaded-list.tsx
     title: With lazy loaded list
     description: Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
+  - fileName: popover-with-searchable-listbox.tsx
+    title: With segment picker
+    description: Use to help merchants quickly browse, find, and navigate from a list of customer segments.
 ---
 
 # Popover
