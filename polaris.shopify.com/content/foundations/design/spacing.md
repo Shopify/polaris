@@ -53,7 +53,7 @@ All measurements used across the experience (space, width, height, etc) must ref
 | 0        | --p-size-0   | 0        | 0         |
 | 0.25     | --p-size-025 | 1        | 0.0625    |
 | 0.5      | --p-size-05  | 2        | 0.03125   |
-| 1 (base) | --p-size-1   | 4        | 0.25      |
+| **1 (base)** | --p-size-1   | 4        | 0.25      |
 | 2        | --p-size-2   | 8        | 0.5       |
 | 3        | --p-size-3   | 12       | 0.75      |
 | 4        | --p-size-4   | 16       | 1         |
