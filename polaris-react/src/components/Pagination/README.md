@@ -47,7 +47,7 @@ iOS and Android pagination should:
 
 ## Examples
 
-### Default pagination
+### Default
 
 Use for pagination at the bottom of lists.
 
@@ -64,7 +64,7 @@ Use for pagination at the bottom of lists.
 />
 ```
 
-### Pagination with keyboard navigation
+### With keyboard navigation
 
 Attach standard keyboard shortcuts to important pagination controls.
 
@@ -87,7 +87,7 @@ Attach standard keyboard shortcuts to important pagination controls.
 </div>
 ```
 
-### Pagination with label
+### With label
 
 Add a label between navigation buttons to provide more context of the content being viewed by the user.
 

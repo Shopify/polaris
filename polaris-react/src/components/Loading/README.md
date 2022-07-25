@@ -16,7 +16,7 @@ The loading component is used to indicate to merchants that a page is loading or
 
 ## Examples
 
-### Default loading
+### Default
 
 Use to indicate that the page is loading.
 

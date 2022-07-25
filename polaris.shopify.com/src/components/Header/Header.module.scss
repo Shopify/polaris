@@ -79,7 +79,7 @@
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-inherit);
+  color: inherit;
   gap: 0.7rem;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-100);

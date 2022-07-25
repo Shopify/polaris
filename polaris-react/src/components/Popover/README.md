@@ -46,7 +46,7 @@ If a popover contains actions, they should:
 
 - Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive merchants by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -62,7 +62,7 @@ If a popover contains actions, they should:
 
 - Be action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +80,7 @@ If a popover contains actions, they should:
 
 - Be scannable, especially when the popover contains a list of actions or options. Avoid unnecessary words and articles such as “the”, “an”, or “a”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -96,7 +96,7 @@ If the popover includes a series of navigational links, each item should:
 
 - Be concise but still give merchants enough information so they can easily find and accurately navigate to the path they want.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -115,7 +115,7 @@ If the popover includes a series of navigational links, each item should:
 
 ## Examples
 
-### Popover with action list
+### With action list
 
 Use when presenting a set of actions in a disclosable menu.
 
@@ -152,7 +152,7 @@ function PopoverWithActionListExample() {
 }
 ```
 
-### Popover with content and actions
+### With content and actions
 
 Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
 
@@ -200,7 +200,7 @@ function PopoverContentExample() {
 }
 ```
 
-### Popover with form components
+### With form components
 
 Use to present secondary input tasks on demand.
 
@@ -247,7 +247,7 @@ function PopoverFormExample() {
 }
 ```
 
-### Popover with lazy loaded list
+### With lazy loaded list
 
 Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
 

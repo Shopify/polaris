@@ -10,13 +10,12 @@
   }
 
   &::-webkit-scrollbar-track {
-    background-color: var(--surface);
+    background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background: transparent;
     border-radius: var(--border-radius-round);
-    // Increases draggable area
   }
 
   &:hover {

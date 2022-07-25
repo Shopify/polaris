@@ -53,7 +53,7 @@ Modal titles should:
 - Use a clear {verb}+{noun} question or statement
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -75,7 +75,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -92,7 +92,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -110,7 +110,7 @@ Actions should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -126,7 +126,7 @@ Actions should be:
 
 - Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -142,7 +142,7 @@ Actions should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -161,7 +161,7 @@ Tertiary actions should:
 - Only be used when the action requires the context of the content in the modal
 - Never be used to dismiss the modal
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -181,7 +181,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -196,7 +196,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -212,7 +212,7 @@ Body content should be:
 
 ## Examples
 
-### Basic modal
+### Default
 
 Use as the default option for a modal.
 
@@ -257,7 +257,7 @@ function ModalExample() {
 }
 ```
 
-### Modal with primary action
+### With primary action
 
 Use to let merchants take a key action.
 
@@ -330,7 +330,7 @@ function ModalWithPrimaryActionExample() {
 }
 ```
 
-### Modal with primary and secondary actions
+### With primary and secondary actions
 
 Use to let merchants take key actions at the bottom of the modal.
 
@@ -421,7 +421,7 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
 }
 ```
 
-### Large modal
+### Large
 
 Use when you need to increase the width of your modal.
 
@@ -478,7 +478,7 @@ function LargeModalExample() {
 }
 ```
 
-### Small modal
+### Small
 
 Use when you need to decrease the width of your modal.
 
@@ -535,7 +535,7 @@ function SmallModalExample() {
 }
 ```
 
-### Modal without a title
+### Without a title
 
 A title is required for accessibility, but you may hide it.
 
@@ -581,7 +581,7 @@ function ModalWithoutTitleExample() {
 }
 ```
 
-### Modal with scroll listener
+### With scroll listener
 
 Use to implement infinite scroll of modal content.
 
@@ -619,10 +619,9 @@ function ModalWithScrollListenerExample() {
 }
 ```
 
-### Modal with activator ref
+### With activator ref
 
-Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
 function ModalExample() {
@@ -676,10 +675,9 @@ function ModalExample() {
 }
 ```
 
-### Modal without an activator prop
+### Without an activator prop
 
-Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
 function ModalExample() {

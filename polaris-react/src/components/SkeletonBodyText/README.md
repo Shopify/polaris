@@ -31,7 +31,7 @@ Skeleton body text component should:
 
 Show static content that never changes on a page and use skeleton loading for dynamic content. Skeleton body text can sometimes be used to represent non-typographic content such as forms. Don’t use placeholder content that will change when the page fully loads.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -49,7 +49,7 @@ Use skeleton body text for static content or use placeholder content for dynamic
 
 ## Examples
 
-### Default paragraph
+### Default
 
 Use this component to represent a block of content being loaded. For example, you could use it to represent an entire product description card on the product page.
 

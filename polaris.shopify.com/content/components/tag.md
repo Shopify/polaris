@@ -11,29 +11,23 @@ keywords:
   - keywords
 examples:
   - fileName: tag-default.tsx
-    title: Default tag
+    title: Default
     description: Use to signify the attributes of an object.
   - fileName: tag-removable.tsx
-    title: Removable tag
+    title: Removable
     description: Use to allow merchants to remove attributes from an object.
   - fileName: tag-clickable.tsx
-    title: Clickable tag
+    title: Clickable
     description: Use to allow merchants to add attributes to an object.
   - fileName: tag-with-link.tsx
-    title: Tag with link
-    description: >-
-      Use to allow merchants to navigate to a resource. For example a customer
-      segment or a smart collection
+    title: With link
+    description: Use to allow merchants to navigate to a resource. For example a customer segment or a smart collection
   - fileName: tag-with-custom-content.tsx
-    title: Tag with custom content
-    description: >-
-      Use when a tag needs to be visually distinguished from others, like when
-      it's added automatically.
+    title: With custom content
+    description: Use when a tag needs to be visually distinguished from others, like when it's added automatically.
   - fileName: tag-removable-with-link.tsx
-    title: Removable tag with link
-    description: >-
-      A removable attribute to an object that allows merchants to navigate to a
-      resource.
+    title: Removable with link
+    description: A removable attribute to an object that allows merchants to navigate to a resource.
 ---
 
 # Tag
