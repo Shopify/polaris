@@ -118,7 +118,7 @@ examples:
 
 # Text
 
-A component for displaying Text
+Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 
 ---
 
