@@ -7,21 +7,17 @@ keywords:
   - list box
   - interactive list
 examples:
-  - fileName: listbox-basic.tsx
-    title: Basic Listbox
-    description: >-
-      Basic implementation of a control element used to let merchants select
-      options
+  - fileName: listbox-default.tsx
+    title: Default
+    description: Basic implementation of a control element used to let merchants select options
   - fileName: listbox-with-loading.tsx
-    title: Listbox with Loading
-    description: >-
-      Implementation of a control element showing a loading indicator to let
-      merchants know more options are being loaded
+    title: With Loading
+    description: Implementation of a control element showing a loading indicator to let merchants know more options are being loaded
   - fileName: listbox-with-action.tsx
-    title: Listbox with Action
+    title: With Action
     description: Implementation of a control element used to let merchants take an action
   - fileName: listbox-with-custom-element.tsx
-    title: Listbox with custom element
+    title: With custom element
     description: Implementation of a control with custom rendering of options
 ---
 
@@ -59,7 +55,7 @@ Listboxes should:
 
 Each item in a `Listbox` should be clear and descriptive.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -90,10 +86,9 @@ Location picker
 
 The `Listbox` component is based on the [Aria 1.2 Listbox pattern](https://www.w3.org/TR/wai-aria-practices-1.2/#Listbox).
 
-It is important to not present interactive elements inside of list box options as they can interfere with navigation
-for assistive technology users.
+It is important to not present interactive elements inside of list box options as they can interfere with navigation for assistive technology users.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

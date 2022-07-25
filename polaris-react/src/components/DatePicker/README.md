@@ -19,8 +19,7 @@ keywords:
 
 # Date picker
 
-Date pickers let merchants choose dates from a visual calendar that’s
-consistently applied wherever dates need to be selected across Shopify.
+Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
 
 ---
 
@@ -30,8 +29,7 @@ Date pickers should:
 
 - Use smart defaults and highlight common selections
 - Close after a single date is selected unless a range with a start and end date is required
-- Set the start date on first click or tap and the end date on second click or tap if a range
-  is required
+- Set the start date on first click or tap and the end date on second click or tap if a range is required
 - Not be used to enter a date that is many years in the future or the past
 - Follow [date format guidelines](https://polaris.shopify.com/content/grammar-and-mechanics#section-dates-numbers-and-addresses)
 
@@ -39,7 +37,7 @@ Date pickers should:
 
 ## Examples
 
-### Default date picker
+### Default
 
 Use when merchants need to select a single day close to today (today is the default starting position for the date picker).
 
@@ -68,7 +66,7 @@ function DatePickerExample() {
 }
 ```
 
-### Ranged date picker
+### Ranged
 
 Use when merchants need to select a range of days close to today (today is the default starting position for the date picker).
 
@@ -98,7 +96,7 @@ function DatePickerExample() {
 }
 ```
 
-### Multi-month ranged date picker
+### Multi-month ranged
 
 Use multi-month mode to show two months at a time.
 
@@ -129,7 +127,7 @@ function DatePickerExample() {
 }
 ```
 
-### Date picker with disabled date ranges
+### With disabled date ranges
 
 Date ranges may be disabed if you do not want them to be selectable
 
@@ -161,7 +159,7 @@ function DatePickerExample() {
 }
 ```
 
-### Date picker with specific disabled dates
+### With specific disabled dates
 
 Dates may be disabed if you do not want them to be selectable
 

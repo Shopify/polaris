@@ -15,10 +15,8 @@ keywords:
   - switch
 examples:
   - fileName: radio-button-default.tsx
-    title: Default radio button
-    description: >-
-      Use radio buttons where merchants must make a single
-      selection.
+    title: Default
+    description: Use radio buttons where merchants must make a single selection.
 ---
 
 # Radio button
@@ -53,7 +51,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -67,7 +65,7 @@ Radio button labels should:
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

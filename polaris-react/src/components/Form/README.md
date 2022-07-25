@@ -81,7 +81,7 @@ function FormOnSubmitExample() {
 }
 ```
 
-### Form without native validation
+### Without native validation
 
 Use in forms to toggle native form validation.
 

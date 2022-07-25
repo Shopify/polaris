@@ -11,11 +11,17 @@ Polaris thrives on contribution and community support. Anyone, regardless of dis
 
 ## Who can contribute
 
-Contribution to Polaris looks different depending on whether or not you work at Shopify. Shopifolk can contribute to any Polaris project, including the Figma UI Kit. Open source contributions are welcome for [Polaris React components](contributing/components) and their [documentation](/contributing/documentation).
+Contribution to Polaris looks different depending on whether you work at Shopify. Shopify employees can contribute to any Polaris project, including the Figma UI Kit. Open source contributions are welcome for [Polaris React components](contributing/components) and their [documentation](/contributing/documentation).
 
 ## When to contribute
 
-Figuring out what and when to contribute is not always simple, especially when deciding between adding something new to the system or going with an existing solution. Check out the [Designing with a system](/contributing/designing-with-a-system) and [When to contribute new patterns](/contributing/when-to-contribute-new-patterns) guides to help you make this decision.
+Figuring out what and when to contribute is not always simple, but it doesn't have to be! Here are some common scenarios for deciding when to contribute:
+
+| Use the System                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
+| _When available resources can solve a design problem_                        | _When a change or addition can solve a shared problem_                                  | _When a unique problem requires a unique solution_                                              |     |     |
+| Read [ Designing with a system ](/contributing/designing-with-a-system)      | Read [ When to contribute new patterns ](/contributing/when-to-contribute-new-patterns) | Share ideas in [ #admin-ux ](https://shopify.slack.com/archives/C039ZAKQ5AA)(Shopify employees) |     |     |
+| [ Review App Design Guidelines ](https://shopify.dev/apps/design-guidelines) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | Build with Polaris [ tokens ](https://polaris.shopify.com/tokens/colors)                        |     |     |
 
 ## Where to get help
 
