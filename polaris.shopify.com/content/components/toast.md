@@ -14,23 +14,21 @@ keywords:
   - iframe
   - duration
 examples:
-  - fileName: toast-basic.tsx
-    title: Basic toast
-    description: >-
-      Use to convey general confirmation or actions that aren’t critical. For
-      example, you might show a toast message to inform the merchant that their
-      recent action was successful.
+  - fileName: toast-default.tsx
+    title: Default
+    description: Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
   - fileName: toast-multiple-messages.tsx
-    title: Multiple toast messages
+    title: Multiple messages
     description: Use multiple toast messages to inform the merchant about distinct actions.
   - fileName: toast-with-custom-duration.tsx
-    title: Toast with custom duration
+    title: With custom duration
     description: Use to shorten or lengthen the default duration of 5000 milliseconds.
+  - fileName: toast-with-action.tsx
+    title: With action
+    description: Use when a merchant has the ability to act on the message. For example, to undo a change or retry an action.
   - fileName: toast-error.tsx
-    title: Error toast
-    description: >-
-      On iOS, icons are available for cases where you want to
-      re-inforce the message.
+    title: Error
+    description: Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 ---
 
 # Toast

@@ -16,10 +16,8 @@ keywords:
   - small text
 examples:
   - fileName: caption-default.tsx
-    title: Default caption
-    description: >-
-      Use to provide details in situations where content is compact and space is
-      tight.
+    title: Default
+    description: Use to provide details in situations where content is compact and space is tight.
 ---
 
 # Caption

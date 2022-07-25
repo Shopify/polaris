@@ -11,48 +11,36 @@ keywords:
   - sidebar
   - side bar
 examples:
-  - fileName: navigation-basic.tsx
-    title: Basic navigation
+  - fileName: navigation-default.tsx
+    title: Default
+    description: Use to present a navigation menu in the [frame](https://polaris.shopify.com/components/frame).
   - fileName: navigation-with-multiple-secondary-navigations.tsx
-    title: Navigation with multiple secondary navigations
-    description: >-
-      Use to present a secondary action, related to a section and to title the
-      section.
-  - fileName: navigation-with-an-active-root-item-with-secondary-items.tsx
-    title: Navigation with an active root item with secondary navigation items
-    description: >-
-      Use to present a secondary action, related to a section and to title the
-      section.
+    title: With multiple secondary navigations
+    description: Use to present a secondary action, related to a section and to title the section.
+  - fileName: navigation-with-an-active-root-item-with-secondary-navigation-items.tsx
+    title: With an active root item with secondary navigation items
+    description: Use to present a secondary action, related to a section and to title the section.
   - fileName: navigation-with-a-secondary-action-for-a-section-and-a-section-title.tsx
-    title: Navigation with a secondary action for a section and a section title
-    description: >-
-      Use to present a secondary action, related to a section and to title the
-      section.
+    title: With a secondary action for a section and a section title
+    description: Use to present a secondary action, related to a section and to title the section.
   - fileName: navigation-with-a-secondary-action-for-an-item.tsx
-    title: Navigation with a secondary action for an item
-    description: >-
-      Use to add a different action for an item than the main action, like to
-      view or add something.
+    title: With a secondary action for an item
+    description: Use to add a different action for an item than the main action, like to view or add something.
   - fileName: navigation-with-section-rollup.tsx
-    title: Navigation with section rollup
-    description: >-
-      Use to show a limited number of items in a section with an option to
-      expand the remaining items.
+    title: With section rollup
+    description: Use to show a limited number of items in a section with an option to expand the remaining items.
   - fileName: navigation-with-section-separator.tsx
-    title: Navigation with section separator
+    title: With section separator
     description: Use to add a horizontal line below the section.
   - fileName: navigation-with-various-states-and-secondary-elements.tsx
-    title: Navigation with various states and secondary elements
-    description: >-
-      This example showcases the many elements that can compose a navigation,
-      especially useful for testing purposes.
+    title: With various states and secondary elements
+    description: This example showcases the many elements that can compose a navigation, especially useful for testing purposes.
   - fileName: navigation-with-aria-labelledby.tsx
-    title: Navigation with aria-labelledby
+    title: With aria-labelledby
+    description: This example shows how to add an aria-labelledby to add a hidden label to the `nav` element.
   - fileName: navigation-using-major-icons.tsx
-    title: Navigation using Major icons
-    description: >-
-      This example shows how to use the shouldResizeIcon prop when using Major
-      icons
+    title: Using Major icons
+    description: This example shows how to use the shouldResizeIcon prop when using Major icons
 ---
 
 # Navigation

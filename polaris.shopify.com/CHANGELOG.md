@@ -32,7 +32,7 @@
 
 - [#6668](https://github.com/Shopify/polaris/pull/6668) [`407dd205b`](https://github.com/Shopify/polaris/commit/407dd205b2d048594bae77b80744cfc754a7a411) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved examples browsing experience so that it's easier to see all examples at the same time.
 
-- Updated dependencies [[`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad), [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353), [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097), [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb)]:
+- Updated dependencies [[`720d10e79`](https://github.com/Shopify/polaris/commit/720d10e79c9080efccb4c1d3e41ac322b58b7977), [`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad), [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353), [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097), [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb)]:
   - @shopify/polaris@9.21.0
   - @shopify/polaris-icons@5.2.0
 

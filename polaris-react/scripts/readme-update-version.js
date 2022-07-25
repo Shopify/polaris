@@ -5,9 +5,11 @@ const {execSync} = require('child_process');
 const {writeFileSync, readFileSync} = require('fs');
 
 const {version: newVersion} = require('../package.json');
-const {semverRegExp, readmes} = require('../scripts/utilities');
+const {semverRegExp} = require('../scripts/utilities');
 
 const root = resolve(__dirname, '..');
+
+export const readmes = Object.freeze(['README.md', 'src/components/README.md']);
 
 console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
 readmes

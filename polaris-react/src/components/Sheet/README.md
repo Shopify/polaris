@@ -58,7 +58,7 @@ The sheet component is best used in cases where the merchant needs to see elemen
 
 ## Examples
 
-### Basic sheet
+### Default
 
 Use as the default option for a sheet.
 

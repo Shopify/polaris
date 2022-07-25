@@ -24,10 +24,11 @@ examples:
     title: Default links
     description: Use for text links inside a paragraph or standalone text. Default links open in the same browser tab.
   - fileName: link-monochrome.tsx
-    title: Monochrome link
+    title: Monochrome
     description: Use for text links that are the same color as the surrounding text.
   - fileName: link-monochrome-in-a-banner.tsx
-    title: Monochrome link in a banner
+    title: Monochrome in a banner
+    description: Monochrome styles will be applied to links rendered within a `Banner`.
   - fileName: link-external.tsx
     title: External link
     description: >-

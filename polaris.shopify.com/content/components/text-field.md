@@ -42,119 +42,65 @@ keywords:
   - icon action
 examples:
   - fileName: text-field-default.tsx
-    title: Default text field
-    description: >-
-      Use to allow merchants to provide text input when the expected input is
-      short. For longer input, use the auto grow or multiline
-      options.
-  - fileName: text-field-number-field.tsx
-    title: Number field
-    description: >-
-      Use when input text should be a number.This will display the right
-      keyboard on mobile devices. This will display the right keyboard
-      on mobile devices.
-  - fileName: text-field-email-field.tsx
-    title: Email field
-    description: >-
-      Use when the text input should be an email address.This will display the
-      right keyboard on mobile devices. This will display the right
-      keyboard on mobile devices.
+    title: Default
+    description: Use to allow merchants to provide text input when the expected input is short. For longer input, use the auto grow or multiline options.
+  - fileName: text-field-number.tsx
+    title: Number
+    description: Use when input text should be a number.
+  - fileName: text-field-email.tsx
+    title: Email
+    description: Use when the text input should be an email address.
   - fileName: text-field-multiline.tsx
-    title: Multiline text field
-    description: >-
-      Use when the expected input could be more than one line. The field will
-      automatically grow to accommodate additional text.
+    title: Multiline
+    description: Use when the expected input could be more than one line. The field will automatically grow to accommodate additional text.
   - fileName: text-field-with-hidden-label.tsx
-    title: Text field with hidden label
-    description: >-
-      Use to visually hide the label when the text field’s purpose is clear from
-      context. The label will remain available to screen readers. Use this
-      option with care. In almost all cases, show the label.
+    title: With hidden label
+    description: Use to visually hide the label when the text field’s purpose is clear from context. The label will remain available to screen readers. Use this option with care. In almost all cases, show the label.
   - fileName: text-field-with-label-action.tsx
-    title: Text field with label action
-    description: >-
-      Use when an optional, secondary action is closely associated with a text
-      field. For example, on a field for entering a customs tariff code, a label
-      action might be to look up the appropriate code from a table.
+    title: With label action
+    description: Use when an optional, secondary action is closely associated with a text field. For example, on a field for entering a customs tariff code, a label action might be to look up the appropriate code from a table.
   - fileName: text-field-with-right-aligned-text.tsx
-    title: TextField with right aligned text
+    title: With right aligned text
     description: Use when input text should be aligned right.
   - fileName: text-field-with-placeholder-text.tsx
-    title: Text field with placeholder text
-    description: >-
-      Use to provide a short, non-essential hint about the expected input.
-      Placeholder text is low-contrast, so don’t rely on it for important
-      information.
+    title: With placeholder text
+    description: Use to provide a short, non-essential hint about the expected input. Placeholder text is low-contrast, so don’t rely on it for important information.
   - fileName: text-field-with-help-text.tsx
-    title: Text field with help text
-    description: >-
-      Use to show short instructional content below the text field. Help text
-      works to help merchants understand how to fix errors that result from
-      incorrect formatting (such as dates or passwords with specific character
-      requirements). If more explanation is needed, link to the Shopify Help
-      Center.
+    title: With help text
+    description: Use to show short instructional content below the text field. Help text works to help merchants understand how to fix errors that result from incorrect formatting (such as dates or passwords with specific character requirements). If more explanation is needed, link to the Shopify Help Center.
   - fileName: text-field-with-prefix-or-suffix.tsx
-    title: Text field with prefix or suffix
-    description: >-
-      Use as a special form of help text that works best inline.Use a prefix for
-      things like currency symbols (“$”, “¥”, “£”).Use suffix for things like
-      units of measure (“in”, “cm”).
+    title: With prefix or suffix
+    description: Use as a special form of help text that works best inline. Use a prefix for things like currency symbols (“\$”, “¥”, “£”). Use suffix for things like units of measure (“in”, “cm”).
   - fileName: text-field-with-vertical-content.tsx
-    title: Text field with vertical content
-    description: >-
-      Use to include custom vertical content above the input value, like
-      selected tags.
+    title: With vertical content
+    description: Use to include custom vertical content above the input value, like selected tags.
   - fileName: text-field-with-connected-fields.tsx
-    title: Text field with connected fields
-    description: >-
-      Use when a text field and several related fields make up a logical unit.If
-      inputting weight as a number and a separate unit of measurement, use a
-      text field with a selector (like “kg” or “lb”) as a connected
-      field. If inputting weight as a number and a separate unit of
-      measurement, use a text field with a selector (like “kg” or “lb”) as a
-      connected field.
+    title: With connected fields
+    description: Use when a text field and several related fields make up a logical unit. If inputting weight as a number and a separate unit of measurement, use a text field with a [select dropdown menu](https://polaris.shopify.com/components/select) (for example “kg”, “lb”) as a connected field.
   - fileName: text-field-with-validation-error.tsx
-    title: Text field with validation error
-    description: >-
-      Use to let merchants know if their input is valid or if there’s an error.
-      Whenever possible, validate input as soon as merchants have finished
-      interacting with a field (but not before). If a field already has an
-      error, validate and remove errors as merchants type so they can
-      immediately see when an error has been fixed.
+    title: With validation error
+    description: Use to let merchants know if their input is valid or if there’s an error. Whenever possible, validate input as soon as merchants have finished interacting with a field (but not before). If a field already has an error, validate and remove errors as merchants type so they can immediately see when an error has been fixed.
   - fileName: text-field-with-separate-validation-error.tsx
-    title: Text field with separate validation error
-    description: >-
-      Use to let merchants know when their text field input is invalid in the
-      context of a group of form inputs that the text field depends on.To render
-      an invalid text field and its validation error separately:
+    title: With separate validation error
+    description: Use to let merchants know when their text field input is invalid in the context of a group of form inputs that the text field depends on.
   - fileName: text-field-disabled.tsx
-    title: Disabled text field
-    description: >-
-      Use to show that a textfield is not available for interaction. Most often
-      used in forms when information is required only in a particular state. For
-      example, the text field next to Other in a choice list when Other is not
-      selected.
+    title: Disabled
+    description: Use to show that a textfield is not available for interaction. Most often used in forms when information is required only in a particular state. For example, the text field next to Other in a choice list when Other is not selected.
   - fileName: text-field-with-character-count.tsx
-    title: Text field with character count
-    description: >-
-      Use to display the current number of characters in a text field. Use in
-      conjunction with max length to display the current remaining number of
-      characters in the text field.
+    title: With character count
+    description: Use to display the current number of characters in a text field. Use in conjunction with max length to display the current remaining number of characters in the text field.
   - fileName: text-field-with-clear-button.tsx
-    title: Text field with clear button
+    title: With clear button
     description: Use to allow merchants to clear the content from a text field.
   - fileName: text-field-with-monospaced-font.tsx
-    title: Text field with monospaced font
+    title: With monospaced font
     description: Use to apply a monospaced font to the TextField
   - fileName: text-field-with-value-selected-on-focus.tsx
-    title: Text field with value selected on focus
+    title: With value selected on focus
     description: Use to select all text inside TextField on focus.
   - fileName: text-field-with-inline-suggestion.tsx
-    title: Text field with inline suggestion
-    description: >-
-      Use to provide an autocomplete suggestion inline with the input value. See
-      the combobox component's tag multi-select example for full implementation
-      of the inline autocomplete pattern.
+    title: With inline suggestion
+    description: Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
 ---
 
 # Text field

@@ -11,11 +11,11 @@ keywords:
   - education
   - contextual learning system
 examples:
-  - fileName: video-thumbnail-basic.tsx
-    title: Basic video thumbnail
+  - fileName: video-thumbnail-default.tsx
+    title: Default
     description: Use as a play button for a video player within a media card.
   - fileName: video-thumbnail-with-progress.tsx
-    title: Video thumbnail with progress
+    title: With progress
     description: Use to indicate the video’s play progress in relation to its duration.
 ---
 
