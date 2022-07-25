@@ -16,8 +16,7 @@ keywords:
 # Description list
 
 Description lists are a way to organize and explain related information.
-They’re particularly useful when you need to list and define terms such as in a
-glossary.
+They’re particularly useful when you need to list and define terms such as in a glossary.
 
 ---
 
@@ -27,9 +26,7 @@ Description lists should:
 
 - Contain terms and associated explanations, or descriptions for each term.
 - Provide information that isn’t action-oriented.
-- Not be an excuse for using unnecessarily complicated or jargon-filled
-  language. Generally, if merchants need a description list to understand the
-  language in Shopify, we should look for opportunities to simplify the language.
+- Not be an excuse for using unnecessarily complicated or jargon-filled language. Generally, if merchants need a description list to understand the language in Shopify, we should look for opportunities to simplify the language.
 - Not be used to upsell merchants on a feature or service.
 
 ---
@@ -42,7 +39,7 @@ Terms should be:
 
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -60,12 +57,11 @@ Terms descriptions should be:
 
 - Directly related to the term they’re describing
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Discount code: A series of numbers and/or letters that an online shopper may enter at checkout
-  to get a discount or special offer.
+- Discount code: A series of numbers and/or letters that an online shopper may enter at checkout to get a discount or special offer.
 
 #### Don’t
 
@@ -75,17 +71,15 @@ Terms descriptions should be:
 
 - Written to describe the merchant benefit or utility
 - No more than one or two short sentences in length
-- Written in sentence case with all appropriate punctuation, including ending
-  each sentence with a period
+- Written in sentence case with all appropriate punctuation, including ending each sentence with a period
 - Conversational by using articles (the, a, an)
 - Written using plain language
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Abandoned checkout: The details of a checkout that was started but not completed, including the
-  products added and the customer’s details.
+- Abandoned checkout: The details of a checkout that was started but not completed, including the products added and the customer’s details.
 
 #### Don’t
 
@@ -97,7 +91,7 @@ Terms descriptions should be:
 
 ## Examples
 
-### Default description list
+### Default
 
 Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
 

@@ -14,8 +14,8 @@ keywords:
   - heading text
   - heading font
 examples:
-  - fileName: heading-typographic.tsx
-    title: Typographic heading
+  - fileName: heading-default.tsx
+    title: Default
     description: Use for the title of each top-level page section.
 ---
 
@@ -55,7 +55,7 @@ Use the `element` prop to determine the specific HTML element that’s output fo
 
 Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

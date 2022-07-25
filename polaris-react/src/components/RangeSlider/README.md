@@ -39,7 +39,7 @@ A label is a short description of the requested input. Labels are not instructio
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -55,10 +55,9 @@ A label is a short description of the requested input. Labels are not instructio
 
 ### Designating optional fields
 
-Try to only ask for information that’s required. If you need to ask merchants
-to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
+Try to only ask for information that’s required. If you need to ask merchants to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -74,7 +73,7 @@ to provide optional information, mark the field optional by placing the text “
 
 Help text provides extra guidance or instruction to people filling out a form field. It can also be used to clarify how the information will be used. As with all form content, help text should be succinct and easy to read.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,7 +93,7 @@ Error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -110,7 +109,7 @@ Error messages should:
 
 ## Examples
 
-### Default range slider
+### Default
 
 Use when a single value between `0 and 100` needs to be selected.
 
@@ -136,7 +135,7 @@ function RangeSliderExample() {
 }
 ```
 
-### Min and max range control
+### With min and max
 
 Use when a single value needs to be selected from a number range with a specific minimum and maximum.
 
@@ -164,7 +163,7 @@ function RangeSliderWithPreciseRangeControlExample() {
 }
 ```
 
-### Step incremented range control
+### With steps
 
 Use when a single value of a specific increment needs to be selected from a range of numbers.
 
@@ -193,11 +192,9 @@ function RangeSliderWithPreciseRangeControlExample() {
 }
 ```
 
-### Prefix and suffix elements
+### With prefix and suffix
 
-Use when the start or end of the range input benefits from additional content.
-
-The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
+Use when the start or end of the range input benefits from additional content. The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
 
 ```jsx
 function RangeSliderWithPrefixAndSuffixExample() {
@@ -230,7 +227,7 @@ function RangeSliderWithPrefixAndSuffixExample() {
 }
 ```
 
-### Dual thumb range slider
+### With dual thumb
 
 Use when two values need to be selected from a range of numbers.
 

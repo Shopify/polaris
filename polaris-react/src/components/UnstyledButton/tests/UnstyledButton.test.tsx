@@ -212,7 +212,7 @@ describe('<Button />', () => {
     it('passes to `button`', () => {
       const button = mountWithApp(<UnstyledButton disabled />);
       expect(button).toContainReactComponent('button', {
-        disabled: true,
+        'aria-disabled': true,
       });
     });
 
@@ -220,7 +220,7 @@ describe('<Button />', () => {
       const button = mountWithApp(<UnstyledButton url={mockUrl} disabled />);
       expect(button).toContainReactComponent('a');
       expect(button).not.toContainReactComponent('button', {
-        disabled: true,
+        'aria-disabled': true,
       });
     });
   });
@@ -363,6 +363,19 @@ describe('<Button />', () => {
       unstyledButton.find(UnstyledLink)!.trigger('onClick');
       expect(onClickSpy).toHaveBeenCalledTimes(1);
     });
+
+    it('prevents default when disabled is true', () => {
+      const onClickSpy = jest.fn();
+      const unstyledButton = mountWithApp(
+        <UnstyledButton onClick={onClickSpy} disabled />,
+      );
+      const mockEvent = {
+        preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
+      };
+      unstyledButton.find('button')!.trigger('onClick', mockEvent);
+      expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('onMouseEnter()', () => {
@@ -478,13 +491,32 @@ describe('<Button />', () => {
     });
   });
 
+  describe('tabIndex', () => {
+    it('sets tabIndex to -1 when disabled is true', () => {
+      const unstyledButton = mountWithApp(
+        <UnstyledButton disabled>Test</UnstyledButton>,
+      );
+      expect(unstyledButton.find('button')!.prop('tabIndex')).toBe(-1);
+    });
+
+    it('sets tabIndex to undefined by default', () => {
+      const unstyledButton = mountWithApp(
+        <UnstyledButton>Test</UnstyledButton>,
+      );
+      expect(unstyledButton.find('button')!.prop('tabIndex')).toBeUndefined();
+    });
+  });
+
   describe('onKeyDown()', () => {
     it('is called when a keydown event is registered on the button', () => {
       const spy = jest.fn();
       const unstyledButton = mountWithApp(
         <UnstyledButton onKeyDown={spy}>Test</UnstyledButton>,
       );
-      unstyledButton.find('button')!.trigger('onKeyDown');
+      const mockEvent = {
+        key: 'Enter',
+      };
+      unstyledButton.find('button')!.trigger('onKeyDown', mockEvent);
       expect(spy).toHaveBeenCalled();
     });
   });

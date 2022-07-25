@@ -43,7 +43,7 @@ Index tables can also:
 
 ## Examples
 
-### Simple index table
+### Default
 
 A index table with simple items and no bulk actions, sorting, or filtering.
 
@@ -116,7 +116,7 @@ function SimpleIndexTableExample() {
 }
 ```
 
-### Simple flush index table
+### Flush
 
 A index table with simple items and no bulk actions, sorting, or filtering.
 
@@ -189,7 +189,7 @@ function SimpleFlushIndexTableExample() {
 }
 ```
 
-### Simple small screen index table
+### Small screen
 
 A small screen index table with simple items and no bulk actions, sorting, or filtering.
 
@@ -267,7 +267,7 @@ function SimpleSmallScreenIndexTableExample() {
 }
 ```
 
-### IndexTable with empty state
+### With empty state
 
 Use to explain the purpose of a index table when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
 
@@ -332,7 +332,7 @@ function IndexTableWithCustomEmptyStateExample() {
 }
 ```
 
-### IndexTable with bulk actions
+### With bulk actions
 
 Allows merchants to select items and perform an action on the selection.
 
@@ -428,7 +428,7 @@ function IndexTableWithBulkActionsExample() {
 }
 ```
 
-### IndexTable with multiple promoted bulk actions
+### With multiple promoted bulk actions
 
 Allows merchants to select items and perform different actions on the selection.
 
@@ -550,7 +550,7 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
 }
 ```
 
-### IndexTable with bulk actions and selection across pages
+### With bulk actions and selection across pages
 
 Allows merchants to select items, perform an action on the selection and select resources across pages.
 
@@ -647,7 +647,7 @@ function IndexTableWithBulkActionsAndSelectionAcrossPagesExample() {
 }
 ```
 
-### IndexTable with loading state
+### With loading state
 
 Notifies merchants that index table items are being processed.
 
@@ -721,7 +721,7 @@ function IndexTableWithLoadingExample() {
 }
 ```
 
-### IndexTable with filtering
+### With filtering
 
 Allows merchants to narrow the index table to a subset of the original items.
 
@@ -880,7 +880,7 @@ function IndexTableWithFilteringExample() {
 }
 ```
 
-### Index table with row status
+### With row status
 
 An index table with rows differentiated by status.
 
@@ -956,7 +956,7 @@ function IndexTableWithRowStatusExample() {
 }
 ```
 
-### Index table with sticky last column
+### With sticky last column
 
 An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden.
 
@@ -1059,7 +1059,7 @@ function StickyLastCellIndexTableExample() {
 }
 ```
 
-### Index table with row navigation link
+### With row navigation link
 
 Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Link` with the `dataPrimaryLink` prop set to `true`, clicking the row will trigger navigation to the link's `url` instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
 
@@ -1138,7 +1138,7 @@ function ClickThroughLinkIndexTableExample() {
 }
 ```
 
-### Index table with clickable button column
+### With clickable button column
 
 Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Button` with the `dataPrimaryLink` prop set to `true`, clicking the row will navigate to the `Button` `url` if set instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
 
@@ -1217,7 +1217,7 @@ function ClickThroughButtonIndexTableExample() {
 }
 ```
 
-### Index table without checkboxes
+### Without checkboxes
 
 An index table without checkboxes and bulk actions.
 
@@ -1279,7 +1279,7 @@ function IndexTableWithoutCheckboxesExample() {
 }
 ```
 
-### IndexTable with all of its elements
+### With all of its elements
 
 Use as a broad example that includes most of the elements and props available to index table.
 
@@ -1463,7 +1463,7 @@ function IndexTableWithAllElementsExample() {
 }
 ```
 
-### Small screen IndexTable with all of its elements
+### Small screen with all of its elements
 
 Use as a broad example that includes most of the elements and props available to index table.
 
@@ -1663,11 +1663,7 @@ Using an index table in a project involves combining the following components an
 - [Filters](https://polaris.shopify.com/components/filters) (optional)
 - Pagination component (optional)
 
-<!-- hint -->
-
 The index table component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
-
-<!-- end -->
 
 ---
 
@@ -1714,7 +1710,7 @@ Index tables should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -1729,7 +1725,7 @@ Index tables should:
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 

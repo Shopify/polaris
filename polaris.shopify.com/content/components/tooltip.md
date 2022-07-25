@@ -12,12 +12,11 @@ keywords:
   - tap
 examples:
   - fileName: tooltip-default.tsx
-    title: Default tooltip
-    description: >-
-      Use only when necessary to provide an explanation for an interface
-      element.
+    title: Default
+    description: Use only when necessary to provide an explanation for an interface element.
   - fileName: tooltip-visible-only-with-child-interaction.tsx
-    title: Tooltip visible only with child interaction
+    title: Visible only with child interaction
+    description: Use when the tooltip overlays interactive elements when active, for example a form input. The `dismissOnMouseOut` prop prevents the tooltip from remaining active when mouse hover or focus leaves its `children` and enters the tooltip's content.
 ---
 
 # Tooltip
@@ -32,13 +31,10 @@ Tooltips should:
 
 - Provide useful, additional information or clarification.
 - Succinctly describe or expand on the element they point to.
-- Be provided for icon-only buttons or a button with an associated keyboard
-  shortcut.
-- Not be used to communicate critical information, including errors in forms or
-  other interaction feedback.
+- Be provided for icon-only buttons or a button with an associated keyboard shortcut.
+- Not be used to communicate critical information, including errors in forms or other interaction feedback.
 - Not contain any links or buttons.
-- Be used sparingly. If you’re building something that requires a lot of
-  tooltips, work on clarifying the design and the language in the experience.
+- Be used sparingly. If you’re building something that requires a lot of tooltips, work on clarifying the design and the language in the experience.
 
 ---
 
@@ -52,7 +48,7 @@ Tooltips should:
 - Be concise and scannable
 - Not be used to communicate error messages or important account information
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

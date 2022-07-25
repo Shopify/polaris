@@ -20,10 +20,8 @@ keywords:
   - collapse
 examples:
   - fileName: collapsible-default.tsx
-    title: Default collapsible component
-    description: >-
-      Use for a basic “show more” interaction when you need to display more
-      content.
+    title: Default
+    description: Use for a basic “show more” interaction when you need to display more content.
 ---
 
 # Collapsible
@@ -36,10 +34,8 @@ The collapsible component is used to put long sections of information under a bl
 
 The collapsible component should:
 
-- Be used for information that is lower priority or that merchants don’t need
-  to see all the time
-- Not be used to hide error messages or other critical information that requires
-  an immediate action
+- Be used for information that is lower priority or that merchants don’t need to see all the time
+- Not be used to hide error messages or other critical information that requires an immediate action
 
 ---
 

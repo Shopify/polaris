@@ -50,6 +50,10 @@
     &[aria-current="page"] {
       background: var(--surface-subdued);
     }
+
+    &:focus-visible {
+      box-shadow: var(--focus-outline-inside);
+    }
   }
 
   li:last-child a {

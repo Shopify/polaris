@@ -10,16 +10,11 @@ keywords:
   - text-only lists
 examples:
   - fileName: list-bulleted.tsx
-    title: Bulleted list
-    description: >-
-      Use for a text-only list of related items that don’t need to be in a
-      specific order and don’t require an icon or other
-      indicator.
+    title: Bulleted
+    description: Use for a text-only list of related items that don’t need to be in a specific order and don’t require an icon or other indicator.
   - fileName: list-numbered.tsx
-    title: Numbered list
-    description: >-
-      Use for a text-only list of related items when an inherent order,
-      priority, or sequence needs to be communicated.
+    title: Numbered
+    description: Use for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
 ---
 
 # List
@@ -32,10 +27,8 @@ Lists display a set of related text-only content. Each list item begins with a b
 
 Lists should:
 
-- Break up chunks of related content to make the information easier for
-  merchants to scan
-- Be phrased consistently (try to start each item with a noun or a
-  verb and be consistent with each item)
+- Break up chunks of related content to make the information easier for merchants to scan
+- Be phrased consistently (try to start each item with a noun or a verb and be consistent with each item)
 - Not be used for lists where the entire item represents an action
 
 ---
@@ -49,7 +42,7 @@ Every item in a list should:
 - Start with a capital letter
 - Not use commas or semicolons at the end of each line
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -67,7 +60,7 @@ Every item in a list should:
 
 - Be written in sentence case
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

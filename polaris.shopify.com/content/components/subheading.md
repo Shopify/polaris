@@ -10,11 +10,9 @@ keywords:
   - subsection titles
   - titles of subsections
 examples:
-  - fileName: subheading-typographic.tsx
-    title: Typographic subheading
-    description: >-
-      Used for the title of any sub-sections in top-level page
-      sections.
+  - fileName: subheading-default.tsx
+    title: Default
+    description: Used for the title of any sub-sections in top-level page sections.
 ---
 
 # Subheading
@@ -53,7 +51,7 @@ Use the `element` prop to determine the specific HTML element that’s output fo
 
 Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

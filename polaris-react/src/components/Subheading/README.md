@@ -35,7 +35,7 @@ Subheadings should follow the content guidelines for [headings and subheadings](
 
 ## Examples
 
-### Typographic subheading
+### Default
 
 Used for the title of any sub-sections in top-level page sections.
 
@@ -59,7 +59,7 @@ Use the `element` prop to determine the specific HTML element that’s output fo
 
 Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 

@@ -20,13 +20,11 @@ function HomePage({}: Props) {
         <div className={styles.Hero}>
           <div className={styles.Text}>
             <h1>
-              A starter kit
-              <br /> for reimagining
-              <br /> commerce.
+              <span>Build.</span> <span>Contribute.</span> <span>Evolve.</span>
             </h1>
             <p>
-              Our design system helps us work together to build a great
-              experience for all of Shopify’s merchants.
+              Shape the merchant experience for Shopify’s core product, the
+              admin.
             </p>
           </div>
         </div>
