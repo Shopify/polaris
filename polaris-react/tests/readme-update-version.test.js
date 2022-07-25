@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 
 const {semverRegExp} = require('../scripts/utilities');
-const {readmes} = require('../scripts/readme-update-version');
+const readmes = require('../scripts/readme-update-version');
 
 describe('readme-update-version', () => {
   it('matches 4 semver numbers in READMEs', () => {
