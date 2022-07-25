@@ -1,23 +1,11 @@
-.Definition {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
-.Name {
-  font-weight: var(--font-weight-500);
-  color: var(--text-strong);
-}
-
-.Type {
-  font-size: var(--font-size-200);
-  font-family: var(--font-family-mono);
-  color: var(--primary);
-}
-
-.Comment {
-  font-size: var(--font-size-50);
-  color: var(--text-subdued);
+.UnparsablePropsWarning {
+  p {
+    margin-bottom: 1rem;
+  }
+  pre {
+    font-family: var(--font-family-mono);
+    white-space: pre-line;
+  }
 }
 
 .InterfaceList {
@@ -40,14 +28,15 @@
     width: 100%;
     text-align: left;
     color: var(--code-keyword);
+    font-family: var(--font-family-mono);
 
     &:hover {
       background: var(--surface-subdued);
     }
-  }
 
-  .InterfaceListHeader[aria-expanded="false"] {
-    border-bottom: none;
+    &[aria-expanded="false"] {
+      border-bottom: none;
+    }
   }
 
   li {

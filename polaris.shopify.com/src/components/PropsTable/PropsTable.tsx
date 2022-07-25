@@ -87,7 +87,6 @@ function resolveMember(
 }
 
 function highlightType(type: string, prev: string = ""): React.ReactNode {
-  console.log(type);
   if (
     type === "string" ||
     type.match(/^['][^']+'$/) !== null ||
@@ -154,9 +153,15 @@ function PropsTable({ types, componentName }: Props) {
           <a href={feedbackUrl}>share your feedback</a>.
         </p>
       </Longform>
-
-      {propsAreDefinedUsingInterface && (
+      {propsAreDefinedUsingInterface ? (
         <InterfaceList allTypes={types} node={propsForComponent} />
+      ) : (
+        <div className={styles.UnparsablePropsWarning}>
+          <p>{`This component uses prop types that our website can't automatically parse.`}</p>
+          <pre>
+            type {propsForComponent?.name} = {propsForComponent?.type};
+          </pre>
+        </div>
       )}
     </div>
   );
@@ -166,12 +171,14 @@ function InterfaceList({
   allTypes,
   node,
   level = 0,
+  isArrayed = false,
 }: {
   allTypes: TypeList;
   node: TypeList[number];
   level?: number;
+  isArrayed?: boolean;
 }) {
-  if (!("members" in node)) return null;
+  if (!("members" in node)) return <p>Hmmm</p>;
 
   if (node.members.length === 0) {
     return <p>{`This component doesn't have any props.`}</p>;
@@ -182,6 +189,7 @@ function InterfaceList({
       <Disclosure defaultOpen={level === 0}>
         <Disclosure.Button className={styles.InterfaceListHeader}>
           {node.name}
+          {isArrayed && "[]"}
         </Disclosure.Button>
 
         <Disclosure.Panel className={styles.InterfaceListContent}>
@@ -224,11 +232,14 @@ function InterfaceList({
                           {highlightType(memberType)}
                         </span>
                       ) : (
-                        <InterfaceList
-                          allTypes={allTypes}
-                          node={memberType}
-                          level={level + 1}
-                        />
+                        <>
+                          <InterfaceList
+                            allTypes={allTypes}
+                            node={memberType}
+                            level={level + 1}
+                            isArrayed={type.type.endsWith("[]")}
+                          />
+                        </>
                       )}
                     </span>
                   </span>
