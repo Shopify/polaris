@@ -1,6 +1,5 @@
 import React from 'react';
 import {html, LitElement} from 'lit';
-
 // eslint-disable-next-line import/extensions
 import {customElement} from 'lit/decorators.js';
 
