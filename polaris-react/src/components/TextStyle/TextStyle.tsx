@@ -4,7 +4,7 @@ import {classNames, variationName} from '../../utilities/css';
 
 import styles from './TextStyle.scss';
 
-type Variation =
+export type Variation =
   | 'positive'
   | 'negative'
   | 'warning'
@@ -12,7 +12,7 @@ type Variation =
   | 'subdued'
   | 'code';
 
-enum VariationValue {
+export enum VariationValue {
   Positive = 'positive',
   Negative = 'negative',
   Warning = 'warning',
