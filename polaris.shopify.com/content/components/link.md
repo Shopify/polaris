@@ -22,7 +22,7 @@ keywords:
 examples:
   - fileName: link-defaults.tsx
     title: Default links
-    description: Use for text links inside a paragraph or standalone text. Default links open in the same browser tab.
+    description: Use for text links inside a paragraph or for standalone text. Default links open in the same browser tab.
   - fileName: link-monochrome.tsx
     title: Monochrome
     description: Use for text links that are the same color as the surrounding text.
@@ -31,8 +31,7 @@ examples:
     description: Monochrome styles will be applied to links rendered within a `Banner`.
   - fileName: link-external.tsx
     title: External link
-    description: >-
-      Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when using a default link might disrupt the merchants workflow.
+    description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when a default link might disrupt the merchant’s workflow.
 ---
 
 # Link
@@ -63,9 +62,30 @@ Use default links whenever possible to avoid disorienting merchants and causing 
 
 External links should be used when:
 
-- Navigating to a page with information that’s specific to a task or workflow, like a help center article
 - If the merchant is in the middle of a task or workflow, like creating a product
 - If the merchant is navigating to a page outside the Shopify admin
+
+### No icon
+
+Avoid using this icon [ ], as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
+
+Edge case: icon can be used very sparingly as a stylistic/symbolic icon, not as an indicator of a new tab being opened.
+
+<!-- dodont -->
+
+#### Do
+
+Use as standalone, identifying icon only
+
+![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)
+
+#### Don’t
+
+Do not use beside link text
+
+{image}
+
+<!-- end -->
 
 ### Unstyled links
 

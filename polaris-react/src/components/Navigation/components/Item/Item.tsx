@@ -6,7 +6,6 @@ import React, {
   ReactNode,
   useCallback,
 } from 'react';
-import {ExternalMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
@@ -139,20 +138,6 @@ export function Item({
       )}
     >
       <Icon source={icon} />
-    </div>
-  ) : null;
-
-  const externalIconLabel = i18n.translate(
-    'Polaris.Common.newWindowAccessibilityHint',
-  );
-
-  const externalLinkIconMarkup = external ? (
-    <div className={styles.ExternalIcon}>
-      <Icon
-        accessibilityLabel={externalIconLabel}
-        source={ExternalMinor}
-        color="base"
-      />
     </div>
   ) : null;
 
@@ -343,7 +328,6 @@ export function Item({
           )}
         >
           {itemContentMarkup}
-          {externalLinkIconMarkup}
         </UnstyledLink>
         {secondaryActionMarkup}
       </div>
