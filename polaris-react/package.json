@@ -125,7 +125,8 @@
     "webpack": "5",
     "react-to-webcomponent": "^1.6.1",
     "prop-types": "^15.8.1",
-    "react-web-component": "2.0.2"
+    "react-web-component": "2.0.2",
+    "lit": "2.2.8"
   },
   "browserslist": [
     "last 3 chrome versions",
