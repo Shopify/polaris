@@ -2,9 +2,7 @@ import React from 'react';
 
 import {BannerContext} from '../../utilities/banner-context';
 import {classNames} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
 import {UnstyledLink} from '../UnstyledLink';
-import {VisuallyHidden} from '../VisuallyHidden';
 
 import styles from './Link.scss';
 
@@ -40,22 +38,6 @@ export function Link({
   accessibilityLabel,
   dataPrimaryLink,
 }: LinkProps) {
-  const i18n = useI18n();
-  let childrenMarkup = children;
-
-  if (external && typeof children === 'string') {
-    const opensNewWindowLabel = i18n.translate(
-      'Polaris.Common.newWindowAccessibilityHint',
-    );
-
-    childrenMarkup = (
-      <>
-        {children}
-        <VisuallyHidden>{opensNewWindowLabel}</VisuallyHidden>
-      </>
-    );
-  }
-
   return (
     <BannerContext.Consumer>
       {(BannerContext) => {
@@ -77,7 +59,7 @@ export function Link({
             aria-label={accessibilityLabel}
             data-primary-link={dataPrimaryLink}
           >
-            {childrenMarkup}
+            {children}
           </UnstyledLink>
         ) : (
           <button
@@ -88,7 +70,7 @@ export function Link({
             aria-label={accessibilityLabel}
             data-primary-link={dataPrimaryLink}
           >
-            {childrenMarkup}
+            {children}
           </button>
         );
       }}

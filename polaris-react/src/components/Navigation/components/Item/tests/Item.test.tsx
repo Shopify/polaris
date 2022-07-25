@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
+import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
@@ -136,20 +136,6 @@ describe('<Nav.Item />', () => {
 
       expect(item).toContainReactComponentTimes(Badge, 1);
       expect(item.find(Badge)).toContainReactText('New');
-    });
-
-    it('renders an external icon if the prop is provided with an element', () => {
-      const item = mountWithNavigationProvider(
-        <Item label="some label" url="foo" external disabled={false} />,
-        {
-          location: 'bar',
-        },
-      );
-
-      expect(item).toContainReactComponent(Icon, {
-        accessibilityLabel: en.Polaris.Common.newWindowAccessibilityHint,
-        source: ExternalMinor,
-      });
     });
   });
 

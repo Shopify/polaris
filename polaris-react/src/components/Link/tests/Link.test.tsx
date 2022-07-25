@@ -3,8 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Banner} from '../../Banner';
 import {UnstyledLink} from '../../UnstyledLink';
-import {Icon} from '../../Icon';
-import en from '../../../../locales/en.json';
 import {Link} from '../Link';
 
 describe('<Link />', () => {
@@ -40,26 +38,16 @@ describe('<Link />', () => {
   });
 
   describe('external link', () => {
-    it('informs screen readers that it opens in a new window', () => {
+    it('adds target blank and noopener noreferrer if external', () => {
       const link = mountWithApp(
         <Link url="https://help.shopify.com/" external>
           Shopify Help Center
         </Link>,
       );
-      const hintText = en.Polaris.Common.newWindowAccessibilityHint;
+      const htmlLink = link.find('a');
 
-      expect(link).toContainReactComponent(Icon, {
-        accessibilityLabel: hintText,
-      });
-    });
-
-    it('doesn’t have a trailing icon for non-string children', () => {
-      const link = mountWithApp(
-        <Link url="https://help.shopify.com/" external>
-          <span>Shopify Help Center</span>
-        </Link>,
-      );
-      expect(link).not.toContainReactComponent(Icon);
+      expect(htmlLink?.props.target).toBe('_blank');
+      expect(htmlLink?.props.rel).toBe('noopener noreferrer');
     });
   });
 
