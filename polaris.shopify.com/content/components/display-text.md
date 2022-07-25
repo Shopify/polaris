@@ -25,24 +25,16 @@ keywords:
 examples:
   - fileName: display-text-extra-large.tsx
     title: Extra large
-    description: >-
-      Use this size sparingly and never multiple times on the same
-      page.
+    description: Use this size sparingly and never multiple times on the same page.
   - fileName: display-text-large.tsx
     title: Large
-    description: >-
-      Use for display text that’s more important than the medium size, but less
-      important than extra large.
+    description: Use for display text that’s more important than the medium size, but less important than extra large.
   - fileName: display-text-medium.tsx
     title: Medium
-    description: >-
-      Use for display text that’s more important than the small size, but less
-      important than large.
+    description: Use for display text that’s more important than the small size, but less important than large.
   - fileName: display-text-small.tsx
     title: Small
-    description: >-
-      Use for text that would otherwise use body text, but that needs to scale
-      with other display text.
+    description: Use for text that would otherwise use body text, but that needs to scale with other display text.
 ---
 
 # Display text
@@ -54,8 +46,7 @@ Display styles make a bold visual statement. Use them to create impact when the 
 ## Best practices
 
 - Use when the primary goal of the page is communication rather than interaction.
-- Use larger display text sizes when a page is focused around a single message.
-  In these cases it may be paired with an illustration.
+- Use larger display text sizes when a page is focused around a single message. In these cases it may be paired with an illustration.
 - Use smaller display text to pair with larger text, or alone as part of more complex data displays such as dashboards.
 
 ---
@@ -69,11 +60,9 @@ Display text should be:
 - Benefits-driven and focused on information that is most important to merchants
 - Concise and scannable:
   - Use simple, clear language that can be read at a glance
-  - Keep display text content to a short sentence that’s just a few words in
-    length
+  - Keep display text content to a short sentence that’s just a few words in length
   - Avoid using punctuation such as periods, commas, or semicolons
-  - Avoid using exclamation marks—display text already makes enough of a
-    statement without an exclamation mark
+  - Avoid using exclamation marks—display text already makes enough of a statement without an exclamation mark
   - Write in sentence case
 
 ---

@@ -58,7 +58,7 @@ Show skeleton display text for dynamic page titles.
 
 ## Examples
 
-### Medium and large display text
+### Medium and large
 
 Use this component to represent medium and large display text such as large metrics on the reports list page, or for page titles.
 
@@ -66,7 +66,7 @@ Use this component to represent medium and large display text such as large metr
 <SkeletonDisplayText size="medium" />
 ```
 
-### Extra large display text
+### Extra large
 
 Use this component to represent extra large display text.
 
@@ -74,7 +74,7 @@ Use this component to represent extra large display text.
 <SkeletonDisplayText size="extraLarge" />
 ```
 
-### Small display text
+### Small
 
 Use this component to represent small display text such as content headings.
 

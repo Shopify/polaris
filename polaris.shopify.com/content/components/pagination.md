@@ -20,16 +20,14 @@ keywords:
   - next buttons
 examples:
   - fileName: pagination-default.tsx
-    title: Default pagination
+    title: Default
     description: Use for pagination at the bottom of lists.
   - fileName: pagination-with-keyboard-navigation.tsx
-    title: Pagination with keyboard navigation
+    title: With keyboard navigation
     description: Attach standard keyboard shortcuts to important pagination controls.
   - fileName: pagination-with-label.tsx
-    title: Pagination with label
-    description: >-
-      Add a label between navigation buttons to provide more context of the
-      content being viewed by the user.
+    title: With label
+    description: Add a label between navigation buttons to provide more context of the content being viewed by the user.
 ---
 
 # Pagination

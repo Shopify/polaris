@@ -14,8 +14,8 @@ keywords:
   - heading text
   - heading font
 examples:
-  - fileName: heading-typographic.tsx
-    title: Typographic heading
+  - fileName: heading-default.tsx
+    title: Default
     description: Use for the title of each top-level page section.
 ---
 

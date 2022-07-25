@@ -19,72 +19,45 @@ keywords:
   - page actions
   - page layouts
 examples:
-  - fileName: page-with-all-header-elements.tsx
-    title: Page with all header elements
-    description: >-
-      Use for detail pages, which should have pagination and breadcrumbs, and
-      also often have several actions.Use for detail pages, which should have
-      breadcrumbs, and also often have several actions.Use for building any page
-      on Android. Use for detail pages, which should have breadcrumbs,
-      and also often have several actions.Use for building any page on
-      iOS.
+  - fileName: page-default.tsx
+    title: Default
+    description: Use for detail pages, which should have pagination and breadcrumbs, and also often have several actions.
   - fileName: page-with-custom-primary-action.tsx
-    title: Page with custom primary action
+    title: With custom primary action
     description: Use to create a custom primary action.
   - fileName: page-without-primary-action-in-header.tsx
-    title: Page without primary action in header
-    description: >-
-      Use when a primary action functions better as part of the page content
-      instead of in the page header.
+    title: Without primary action in header
+    description: Use when a primary action functions better as part of the page content instead of in the page header.
   - fileName: page-with-destructive-secondary-action.tsx
-    title: Page with destructive secondary action
+    title: With destructive secondary action
     description: Used to visually indicate that the secondary page action is destructive.
   - fileName: page-with-custom-secondary-action.tsx
-    title: Page with custom secondary action
+    title: With custom secondary action
     description: Use to create a custom secondary action.
   - fileName: page-with-subtitle.tsx
-    title: Page with subtitle
+    title: With subtitle
     description: Use when the page title benefits from secondary content.
   - fileName: page-with-external-link.tsx
-    title: Page with external link
-    description: >-
-      Use when a secondary action links to another website. Actions marked
-      external open in a new browser tab.
+    title: With external link
+    description: Use when a secondary action links to another website. Actions marked external open in a new browser tab.
   - fileName: page-without-pagination.tsx
-    title: Page without pagination
-    description: >-
-      Use when the page doesn’t represent a list of objects or a detail view for
-      an object.
+    title: Without pagination
+    description: Use when the page doesn’t represent a list of objects or a detail view for an object.
   - fileName: page-full-width.tsx
-    title: Full-width page
-    description: >-
-      Use for layouts that benefit from more screen width, such as wide tables
-      or lists.
+    title: Full-width
+    description: Use for layouts that benefit from more screen width, such as wide tables or lists.
   - fileName: page-narrow-width.tsx
-    title: Narrow width page
-    description: >-
-      Use a narrow width layout if the page supports a single unified task. When
-      merchants must review the entire page contents to complete their goal,
-      this layout helps focus their attention in a single path from top to
-      bottom.
+    title: Narrow width
+    description: Use a narrow width layout if the page supports a single unified task. When merchants must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
   - fileName: page-with-action-groups.tsx
-    title: Page with action groups
-    description: >-
-      Use action groups for sets of actions that relate to one another,
-      particularly when there are too many to display as secondary actions. Note
-      that these groups will be further rolled up into a single action for
-      smaller displays so that actions do not wrap or overflow the page bounds.
-  - fileName: page-with-content-after-title-title-metadata.tsx
-    title: Page with content after title (title metadata)
-    description: >-
-      Title metadata appears immediately after the page’s title. Use it to
-      communicate brief, important and non-interactive status information about
-      an entire page.
+    title: With action groups
+    description: Use action groups for sets of actions that relate to one another, particularly when there are too many to display as secondary actions. Note that these groups will be further rolled up into a single action for smaller displays so that actions do not wrap or overflow the page bounds.
+  - fileName: page-with-content-after-title.tsx
+    title: With content after title
+    description: Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
   - fileName: page-with-divider.tsx
-    title: Page with divider
-    description: >-
-      Use when the page needs visual separation between the page header and the
-      content.
+    title: With divider
+    description: Use when the page needs visual separation between the page header and the content.
 ---
 
 # Page

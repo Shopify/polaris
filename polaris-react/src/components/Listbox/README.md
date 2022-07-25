@@ -62,7 +62,7 @@ Location picker
 
 ## Examples
 
-### Basic Listbox
+### Default
 
 Basic implementation of a control element used to let merchants select options
 
@@ -78,7 +78,7 @@ function BaseListboxExample() {
 }
 ```
 
-### Listbox with Loading
+### With Loading
 
 Implementation of a control element showing a loading indicator to let merchants know more options are being loaded
 
@@ -95,7 +95,7 @@ function ListboxWithLoadingExample() {
 }
 ```
 
-### Listbox with Action
+### With Action
 
 Implementation of a control element used to let merchants take an action
 
@@ -118,7 +118,7 @@ function ListboxWithActionExample() {
 }
 ```
 
-### Listbox with custom element
+### With custom element
 
 Implementation of a control with custom rendering of options
 

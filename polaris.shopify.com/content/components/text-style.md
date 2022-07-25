@@ -20,37 +20,23 @@ keywords:
   - fields
 examples:
   - fileName: text-style-subdued.tsx
-    title: Subdued text style
-    description: >-
-      Use to de-emphasize a piece of text that is less important to merchants
-      than other nearby text. May also be used to indicate when normal content
-      is absent, for example, “No supplier listed”. Don’t use only for aesthetic
-      effect.
+    title: Subdued
+    description: Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
   - fileName: text-style-strong.tsx
-    title: Strong text style
-    description: >-
-      Use to mark text representing user input, or to emphasize the totals row
-      in a price table.
+    title: Strong
+    description: Use to mark text representing user input, or to emphasize the totals row in a price table.
   - fileName: text-style-positive.tsx
-    title: Positive text style
-    description: >-
-      Use in combination with a symbol showing an increasing value to indicate
-      an upward trend.
+    title: Positive
+    description: Use in combination with a symbol showing an increasing value to indicate an upward trend.
   - fileName: text-style-negative.tsx
-    title: Negative text style
-    description: >-
-      Use in combination with a symbol showing a decreasing value to indicate a
-      downward trend.
+    title: Negative
+    description: Use in combination with a symbol showing a decreasing value to indicate a downward trend.
   - fileName: text-style-warning.tsx
-    title: Warning text style
-    description: >-
-      Use to denote something that needs attention, or that merchants need to
-      take action on.
+    title: Warning
+    description: Use to denote something that needs attention, or that merchants need to take action on.
   - fileName: text-style-code.tsx
-    title: Code text style
-    description: >-
-      Use to display inline snippets of code or code-like
-      text.
+    title: Code
+    description: Use to display inline snippets of code or code-like text.
 ---
 
 # Text style

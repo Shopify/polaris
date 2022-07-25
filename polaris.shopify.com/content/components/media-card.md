@@ -12,32 +12,24 @@ keywords:
   - card with thumbnail
   - thumbnail card
 examples:
-  - fileName: media-card-basic.tsx
-    title: Basic media card
+  - fileName: media-card-default.tsx
+    title: Default
     description: Use to surface educational information about a feature or opportunity.
-  - fileName: media-card-basic-with-small-visual.tsx
-    title: Basic media card with small visual
-    description: >-
-      Use when there are limited vertical space, or when the card should be less
-      prominent.
+  - fileName: media-card-with-small-visual.tsx
+    title: With small visual
+    description: Use when there are limited vertical space, or when the card should be less prominent.
   - fileName: media-card-with-secondary-action.tsx
-    title: Media card with secondary action
-    description: >-
-      Use when there are two distinct actions merchants can take on the
-      information in the card.
+    title: With secondary action
+    description: Use when there are two distinct actions merchants can take on the information in the card.
   - fileName: media-card-with-no-actions.tsx
-    title: Media card with no actions
+    title: With no actions
     description: Use when media card does not require any actions.
   - fileName: media-card-video-card.tsx
     title: Video card
-    description: >-
-      Use to provide a consistent layout for contextual learning content. Use to
-      wrap thumbnails of educational videos about Shopify features in context.
+    description: Use to provide a consistent layout for contextual learning content. Use to wrap thumbnails of educational videos about Shopify features in context.
   - fileName: media-card-portrait-video-card.tsx
     title: Portrait video card
-    description: >-
-      Use when vertical screen space is not limited or when the video card is
-      the page’s primary content. For example, in an empty state.
+    description: Use when vertical screen space is not limited or when the video card is the page’s primary content. For example, in an empty state.
 ---
 
 # Media card

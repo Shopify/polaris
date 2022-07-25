@@ -8,17 +8,12 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: skeleton-body-text-default-paragraph.tsx
-    title: Default paragraph
-    description: >-
-      Use this component to represent a block of content being loaded. For
-      example, you could use it to represent an entire product description card
-      on the product page.
+  - fileName: skeleton-body-text-default.tsx
+    title: Default
+    description: Use this component to represent a block of content being loaded. For example, you could use it to represent an entire product description card on the product page.
   - fileName: skeleton-body-text-single-line-content.tsx
     title: Single line content
-    description: >-
-      Use this component to represent a short, single line of text, like a
-      timestamp.
+    description: Use this component to represent a short, single line of text, like a timestamp.
 ---
 
 # Skeleton body text
