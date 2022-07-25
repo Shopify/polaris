@@ -275,14 +275,9 @@ These are suggested replacements for existing text style components, but ultimat
 
 #### Small
 
-```jsx
-<DisplayText size="small">Sales this year</DisplayText>
-```
-Replace with
-```jsx
-<Text variant="headingXl"
->Sales this year</Text>
-```
+```diff
+- <DisplayText size="small">Sales this year</DisplayText>
++ <Text variant="headingXl">Sales this year</Text>
 #### Medium
 ```jsx
 <DisplayText size="medium">Sales this year</DisplayText>
