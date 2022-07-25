@@ -122,7 +122,10 @@
     "semver": "^6.3.0",
     "shx": "^0.3.2",
     "svgo": "^2.8.0",
-    "webpack": "5"
+    "webpack": "5",
+    "react-to-webcomponent": "^1.6.1",
+    "prop-types": "^15.8.1",
+    "react-web-component": "2.0.2"
   },
   "browserslist": [
     "last 3 chrome versions",

@@ -4512,6 +4512,16 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@webcomponents/custom-elements@^1.2.1":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/custom-elements/-/custom-elements-1.5.0.tgz#7d07ff4979312dda167cc0a2b7586e76dc1cf6ab"
+  integrity sha512-c+7jPQCs9h/BYVcZ2Kna/3tsl3A/9EyXfvWjp5RiTDm1OpTcbZaCa1z4RNcTe/hUtXaqn64JjNW1yrWT+rZ8gg==
+
+"@webcomponents/shadydom@^1.4.3":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@webcomponents/shadydom/-/shadydom-1.9.0.tgz#fac8ce835763f17d38b5cad818e2c90a96b2dcc3"
+  integrity sha512-1VoziSoBBsuGM3gk2nlOgLYOQLT9iG5s9ud6CxpdkYxJyGl3YWIVCsRPCXpJpdYp4/8ACkVcuD6GajRtIoJm1w==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -15847,6 +15857,11 @@ react-router@6.3.0, react-router@^6.0.0:
   dependencies:
     history "^5.2.0"
 
+react-shadow-dom-retarget-events@^1.0.8:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-shadow-dom-retarget-events/-/react-shadow-dom-retarget-events-1.1.0.tgz#ffe3a9dc4e6287b5239e863d0e5f1e392de0410a"
+  integrity sha512-hI/naZ8fUARf5He4PpvQtqhs/VWoocfg3ULeCOE3ccWiXGEsFpshlx2iB1XNtm2SFDdvZYoSo25a8JViYdAcgQ==
+
 react-shallow-renderer@^16.13.1:
   version "16.15.0"
   resolved "https://registry.yarnpkg.com/react-shallow-renderer/-/react-shallow-renderer-16.15.0.tgz#48fb2cf9b23d23cde96708fe5273a7d3446f4457"
@@ -15895,6 +15910,11 @@ react-textarea-autosize@^8.3.0:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
+react-to-webcomponent@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-to-webcomponent/-/react-to-webcomponent-1.6.1.tgz#5da17eb12825b2a4a947af313ad04389159141a5"
+  integrity sha512-5lJmfLp4Bk8IojKZxrAx67HaI62NIkaWSToi3j436y6VnYQeVFOYHA3uHiSQt5acdTEcxes/q5KKzNCweenjvw==
+
 react-transition-group@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
@@ -15904,6 +15924,15 @@ react-transition-group@^4.4.2:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-web-component@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-web-component/-/react-web-component-2.0.2.tgz#ee2f023f7dfd463fad85431f72959655fc7cd141"
+  integrity sha512-ewk1QPaeHEsymOH8H2AvY7tBjYDehE9+6af49bFzdsxONwaDqvu7wuDe9anFuJs5OQKvlKpWJ9psU+g8P730Vw==
+  dependencies:
+    "@webcomponents/custom-elements" "^1.2.1"
+    "@webcomponents/shadydom" "^1.4.3"
+    react-shadow-dom-retarget-events "^1.0.8"
 
 react@17.0.2, react@^17.0.2:
   version "17.0.2"
