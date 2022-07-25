@@ -29,9 +29,11 @@ module.exports = function loader(source) {
     readme.name,
   );
 
-  const omitAppProvider = ['Frame', 'AppProvider', 'CustomProperties'].includes(
-    readme.name,
-  );
+  const omitAppProvider = [
+    'Frame',
+    'App provider',
+    'Custom properties',
+  ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
     return `
