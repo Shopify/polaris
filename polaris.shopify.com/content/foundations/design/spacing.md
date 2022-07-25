@@ -69,6 +69,14 @@ All measurements used across the experience (space, width, height, etc) must ref
 Polaris units are more dense at a small scale, and less so as dimensions increase.
 This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different sizes.
 
+<!-- centeredcontent -->
+
+![Examples of different variations of spacing](/images/foundations/design/spacing/spacing-scale-examples@4x.png)
+
+Repeating the same amount of spacing. Using more variation.
+
+<!-- end -->
+
 ### Column grid
 
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
@@ -211,14 +219,31 @@ Sometimes software will say two objects are aligned, or that they have the same 
 
 That means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:
 
+
 #### Visual weight ≠ Size
 
 Two things can have the same size, but feel unbalanced.
 
+<!-- centeredcontent -->
+
+![Before and after comparison of optical adjustment applied to a button](/images/foundations/design/spacing/spacing-weight-buttons@2x.png)
+
 Without optical adjustment, the disclosure icon appears too far from the right edge of the button. After optical correction, the perceived spacing is more balanced.
 
+<!-- end -->
+
+<!-- centeredcontent -->
+
+![Before and after comparison of optical adjustment applied to an icon](/images/foundations/design/spacing/spacing-weight-icon@2x.png)
+
 The square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.
+
+<!-- showcasecontent -->
 
 #### Colors affect each other
 
 Two things can have the same colour, but feel unbalanced.
+
+![Before and after comparison of applying the same colour versus slightly different colours to a banner component](/images/foundations/design/spacing/spacing-colour@2x.png)
+
+<!-- end -->
