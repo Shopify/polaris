@@ -8022,6 +8022,67 @@
     ]
   },
   {
+    "interfaceName": "TextProps",
+    "props": [
+      {
+        "name": "alignment",
+        "type": "Alignment",
+        "comment": "Adjust horizontal alignment of text",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "as",
+        "type": "Element",
+        "comment": "The element type",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "comment": "Text to display",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "comment": "Adjust color of text",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "fontWeight",
+        "type": "FontWeight",
+        "comment": "Adjust weight of text",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "truncate",
+        "type": "boolean",
+        "comment": "Truncate text overflow with ellipsis",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "comment": "Typographic style of text",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "visuallyHidden",
+        "type": "boolean",
+        "comment": "Visually hide the text",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
     "interfaceName": "NonMutuallyExclusiveProps",
     "props": [
       {
