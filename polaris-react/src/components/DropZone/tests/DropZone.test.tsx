@@ -196,10 +196,8 @@ describe('<DropZone />', () => {
     const dropZone = mountWithApp(
       <DropZone id={id} label="My DropZone label" />,
     );
-    // eslint-disable-next-line import/no-deprecated
     const label = dropZone.find(Label)!;
 
-    // eslint-disable-next-line import/no-deprecated
     expect(dropZone).toContainReactComponent(Label, {id});
 
     expect(label.prop('id')).toStrictEqual(id);

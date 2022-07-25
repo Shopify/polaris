@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
 import {InlineError} from '../../InlineError';
-// eslint-disable-next-line import/no-deprecated
 import {Label} from '../../Label';
 import {Labelled} from '..';
 
@@ -14,7 +13,6 @@ describe('<Labelled />', () => {
       <Labelled id="my-label" action={action} label="Label" />,
     );
 
-    // eslint-disable-next-line import/no-deprecated
     expect(element).toContainReactComponent(Label, {
       id: 'my-label',
       children: 'Label',
@@ -26,7 +24,6 @@ describe('<Labelled />', () => {
       <Labelled id="my-label" label="Label" requiredIndicator />,
     );
 
-    // eslint-disable-next-line import/no-deprecated
     expect(element).toContainReactComponent(Label, {requiredIndicator: true});
   });
 
