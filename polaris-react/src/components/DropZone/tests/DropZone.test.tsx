@@ -5,7 +5,6 @@ import {mountWithApp, CustomRoot} from 'tests/utilities';
 
 // eslint-disable-next-line import/no-deprecated
 import {Caption} from '../../Caption';
-// eslint-disable-next-line import/no-deprecated
 import {Label} from '../../Label';
 import {Labelled} from '../../Labelled';
 // eslint-disable-next-line import/no-deprecated
