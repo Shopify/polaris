@@ -14,10 +14,10 @@ module.exports = {
   },
   // Added to work around https://github.com/storybookjs/storybook/issues/15336
   // The line below can be removed in @storybook/react v6.5.0
-  typescript: {reactDocgen: false},
+  typescript: { reactDocgen: false },
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
   addons: [
-    {name: '@storybook/addon-essentials', options: {docs: enableDocs}},
+    { name: '@storybook/addon-essentials', options: { docs: enableDocs } },
     '@storybook/addon-a11y',
   ],
   webpackFinal: (config) => {
@@ -43,34 +43,40 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader',
+        // use: [
+        //   {
+        //     loader: 'style-loader',
+        //   },
+        //   {
+        //     loader: 'css-loader',
+        //     options: {
+        //       importLoaders: 1,
+        //       modules: {
+        //         localIdentName: '[name]-[local]_[hash:base64:5]',
+        //         auto: (resourcePath) => {
+        //           return !resourcePath.includes('CustomProperties');
+        //         },
+        //       },
+        //     },
+        //   },
+        //   {
+        //     loader: 'postcss-loader',
+        //     options: {
+        //       postcssOptions: {
+        //         plugins: postcssPlugins,
+        //       },
+        //     },
+        //   },
+        //   {
+        //     loader: 'sass-loader',
+        //   },
+        // ],
+        use: [{
+          loader: 'lit-scss-loader',
+          options: {
+            minify: true, // defaults to false
           },
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 1,
-              modules: {
-                localIdentName: '[name]-[local]_[hash:base64:5]',
-                auto: (resourcePath) => {
-                  return !resourcePath.includes('CustomProperties');
-                },
-              },
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: postcssPlugins,
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-          },
-        ],
+        }, 'extract-loader', 'css-loader', 'sass-loader'],
       },
     ];
 
