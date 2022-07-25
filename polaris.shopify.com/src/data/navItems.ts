@@ -236,11 +236,11 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           "​Help content is educational text that describes interactive elements or offers information about concepts in the UI.",
       },
       {
-        title: "Locations",
-        url: "/foundations/patterns/resource-picking",
+        title: "Pickers",
+        url: "/foundations/patterns/pickers",
         icon: FoundationsIcons.LocationsIcon,
         excerpt:
-          "Resource picking experiences let merchants browse, find, and select items in a list to perform an action. The picking feature can help them navigate to a new page, filter an index table, or input one or more values in a form.",
+          "Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.",
       },
     ],
   },
