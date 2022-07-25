@@ -18,6 +18,33 @@ interface Props {
       }[];
 }
 
+function naivelyGetLanguage(code: string): {
+  grammar: Prism.Grammar;
+  language: string;
+} {
+  let language: {
+    grammar: Prism.Grammar;
+    language: string;
+  } = {
+    grammar: Prism.languages.javascript,
+    language: "javascript",
+  };
+
+  const codeWithoutComments = code.replace(/\/\*[^/]+\//gm, "").trim();
+  const startsWithSelector =
+    codeWithoutComments.match(/^[a-z-]+\s\{/gi) !== null &&
+    !code.startsWith("import");
+
+  if (startsWithSelector) {
+    language = {
+      grammar: Prism.languages.css,
+      language: "css",
+    };
+  }
+
+  return language;
+}
+
 function Code({ code }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -62,16 +89,14 @@ function Code({ code }: Props) {
 }
 
 function HighlightedCode({ code }: { code: string }) {
+  const language = naivelyGetLanguage(code);
+
   return (
     <pre>
       <code
         className={styles.ActualCode}
         dangerouslySetInnerHTML={{
-          __html: Prism.highlight(
-            code,
-            Prism.languages.javascript,
-            "javascript"
-          ),
+          __html: Prism.highlight(code, language.grammar, language.language),
         }}
       ></code>
     </pre>

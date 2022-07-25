@@ -84,13 +84,17 @@
 }
 
 .SyntaxString {
-  color: yellow;
+  color: var(--code-string);
 }
 
 .SyntaxBoolean {
-  color: purple;
+  color: var(--code-boolean);
 }
 
 .SyntaxReactNode {
-  color: green;
+  color: var(--code-keyword);
+}
+
+.SyntaxNumber {
+  color: var(--code-number);
 }
