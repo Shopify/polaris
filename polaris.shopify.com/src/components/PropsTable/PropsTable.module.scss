@@ -1,6 +1,3 @@
-.PropsTable {
-}
-
 .Definition {
   display: flex;
   align-items: center;
@@ -26,20 +23,30 @@
 .InterfaceList {
   background: rgba(0, 0, 0, 0.03);
   border-radius: var(--border-radius-400);
-  border: var(--border);
+  border: 1px solid var(--border-color-light);
   font-size: var(--font-size-200);
-  display: inline-block;
+  display: block;
+
+  .InterfaceList {
+    margin-top: 0.5rem;
+    display: inline-block;
+  }
 
   .InterfaceListHeader {
-    border-bottom: var(--border);
+    border-bottom: 1px solid var(--border-color-light);
     font-weight: var(--font-weight-500);
     padding: 0.5em 1em;
     background: transparent;
     width: 100%;
+    text-align: left;
+    color: var(--code-keyword);
+
+    &:hover {
+      background: var(--surface-subdued);
+    }
   }
 
   .InterfaceListHeader[aria-expanded="false"] {
-    padding: 0.25em 0.5rem;
     border-bottom: none;
   }
 
@@ -58,7 +65,6 @@
   .Description {
     display: block;
     font-size: var(--font-size-50);
-    color: var(--text-subdued);
   }
 
   .KeyValue {
@@ -71,6 +77,7 @@
     gap: 0.4rem;
     align-items: center;
     min-width: 10em;
+    color: var(--text-strong);
   }
 
   .Value {
@@ -78,8 +85,9 @@
     word-break: break-word;
   }
 
-  .Default {
-    background: purple;
+  .ValueText {
+    font-family: var(--font-family-mono);
+    color: var(--text-strong);
   }
 }
 
@@ -98,3 +106,7 @@
 .SyntaxNumber {
   color: var(--code-number);
 }
+
+// .SyntaxKeyword {
+//   color: var(--code-keyword);
+// }

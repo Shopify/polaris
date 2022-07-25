@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   BaseNode,
   NodeWithMembers,
@@ -8,6 +7,7 @@ import {
 import StatusBadge from "../StatusBadge";
 import { Disclosure } from "@headlessui/react";
 import styles from "./PropsTable.module.scss";
+import Longform from "../Longform";
 
 interface Props {
   componentName: string;
@@ -86,15 +86,40 @@ function resolveMember(
   return node.type;
 }
 
-function highlightType(type: string): React.ReactNode {
-  if (type === "string") {
+function highlightType(type: string, prev: string = ""): React.ReactNode {
+  console.log(type);
+  if (
+    type === "string" ||
+    type.match(/^['][^']+'$/) !== null ||
+    type.match(/^["][^"]+"$/) !== null
+  ) {
     return <span className={styles.SyntaxString}>{type}</span>;
   } else if (type === "boolean") {
     return <span className={styles.SyntaxBoolean}>{type}</span>;
-  } else if (type === "React.ReactNode") {
+  } else if (type === "number") {
+    return <span className={styles.SyntaxNumber}>{type}</span>;
+  } else if (type.endsWith("ReactNode") || type.endsWith("ReactElement")) {
     return <span className={styles.SyntaxReactNode}>{type}</span>;
+  } else if (type === "void") {
+    return <span className={styles.SyntaxReactNode}>{type}</span>;
+  } else if (type.match(/^[A-Z][A-Za-z]+$/) || type === "any") {
+    return <span className={styles.SyntaxReactNode}>{type}</span>;
+  } else if (type.match(/^[a-z]+$/gi) !== null) {
+    return <span className={styles.SyntaxKeyword}>{type}</span>;
+  } else {
+    if (prev === type) {
+      return <>{type}</>;
+    }
+    const tokenRegex = /([^a-z0-9'"/-]+)/gi;
+    const tokens = type.split(tokenRegex);
+    return (
+      <>
+        {tokens.map((token) => {
+          return <>{highlightType(token, type)}</>;
+        })}
+      </>
+    );
   }
-  return <span>{type}</span>;
 }
 
 function getDefaultValue(type: BaseNode): string | null {
@@ -122,11 +147,13 @@ function PropsTable({ types, componentName }: Props) {
 
   return (
     <div className={styles.PropsTable}>
-      <h2 id="props">Props</h2>
-      <p>
-        Want to help make this feature better? Please{" "}
-        <a href={feedbackUrl}>share your feedback</a>.
-      </p>
+      <Longform>
+        <h2 id="props">Props</h2>
+        <p>
+          Want to help make this feature better? Please{" "}
+          <a href={feedbackUrl}>share your feedback</a>.
+        </p>
+      </Longform>
 
       {propsAreDefinedUsingInterface && (
         <InterfaceList allTypes={types} node={propsForComponent} />
@@ -161,6 +188,7 @@ function InterfaceList({
           <ul>
             {node.members.map((type) => {
               const memberType = resolveMember(allTypes, type);
+              const defaultValue = getDefaultValue(type);
               return (
                 <li key={type.name}>
                   <span className={styles.KeyValue}>
@@ -180,10 +208,21 @@ function InterfaceList({
                     <span className={styles.Value}>
                       <span className={styles.Description}>
                         {type.description}
+                        {defaultValue && (
+                          <>
+                            {". Defaults to "}
+                            <span className={styles.Default}>
+                              {highlightType(defaultValue)}
+                            </span>
+                            .
+                          </>
+                        )}
                       </span>
 
                       {typeof memberType === "string" ? (
-                        highlightType(memberType)
+                        <span className={styles.ValueText}>
+                          {highlightType(memberType)}
+                        </span>
                       ) : (
                         <InterfaceList
                           allTypes={allTypes}
@@ -191,9 +230,6 @@ function InterfaceList({
                           level={level + 1}
                         />
                       )}
-                      <span className={styles.Default}>
-                        {getDefaultValue(type)}
-                      </span>
                     </span>
                   </span>
                 </li>
