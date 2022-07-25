@@ -38,11 +38,7 @@ module.exports = function loader(source) {
   );
 
   const csfExports = readme.examples.map((example) => {
-    let code = `
-const ${example.storyName}Component = (${example.code})();
-export function ${example.storyName}() {
-  return <${example.storyName}Component />;
-}`;
+    let code = example.code + '\n';
 
     if (readme.omitAppProvider) {
       code += `${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};\n`;
@@ -61,6 +57,7 @@ export function ${example.storyName}() {
 
   return `
 import React, {${hooks}} from 'react';
+import type {ComponentMeta, ComponentStory} from '@storybook/react';
 import {
   AccountConnection,
   ActionList,
@@ -229,9 +226,8 @@ import {
 } from '@shopify/polaris-icons';
 
 export default {
-  title: ${JSON.stringify(`All Components/${readme.name}`)},
   component: ${readme.component},
-};
+} as ComponentMeta<typeof ${readme.component}>;
 
 ${csfExports.join('\n\n')}
 `;
@@ -291,8 +287,7 @@ function generateExamples(matter) {
 
     const name = nameMatches !== null ? nameMatches[0].trim() : '';
     const storyName = pascalCase(name);
-    const code =
-      codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
+    const code = stripCodeBlock(codeBlock[0]);
 
     const description = new MdParser().parse(example).trim();
 
@@ -314,37 +309,6 @@ function generateExamples(matter) {
   });
 
   return examples;
-}
-
-/**
- * Wraps example code in a function so that we encapsulate each example.
- *
- * Returns a string representation of a function that returns a React Component
- * If the example is a function or class then we return that function or class.
- * If the example is plain JSX then return a function component that renders
- * that JSX .
- */
-function wrapExample(code) {
-  const classPattern = /class (\w+) extends React.Component/g;
-  const functionPattern = /^function (\w+)/g;
-  const fullComponentDefinitionMatch =
-    classPattern.exec(code) || functionPattern.exec(code);
-
-  if (fullComponentDefinitionMatch) {
-    return `function() {
-    ${code}
-    return ${fullComponentDefinitionMatch[1]};
-  }`;
-  } else {
-    return `function() {
-    function JsxOnlyExample() {
-      return (
-        ${code}
-      );
-    }
-    return JsxOnlyExample;
-  }`;
-  }
 }
 
 function toPascalCase(str) {
