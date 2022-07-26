@@ -140,7 +140,9 @@ module.exports = {
       rules: {
         'react/react-in-jsx-scope': 'off',
         '@shopify/jsx-no-hardcoded-content': 'off',
+        'import/no-extraneous-dependencies': 'off',
         'import/no-default-export': 'off',
+        'no-console': 'off',
       },
     },
     {
