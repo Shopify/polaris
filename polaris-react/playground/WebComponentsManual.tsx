@@ -26,7 +26,7 @@ export class ToastController implements ReactiveController {
     return this;
   }
 
-  showToast(toast: any) {
+  show(toast: any) {
     this.toasts.push(toast);
     this.host?.requestUpdate();
   }
@@ -38,36 +38,23 @@ export class ToastController implements ReactiveController {
   }
 }
 
-const toastController = new ToastController();
+// How do we ensure that this is a singleton?
+const toast = new ToastController();
 
-@customElement('ui-toast')
-export class UIToast extends LitElement {
-  private toastController = toastController.addHost(this);
+@customElement('ui-frame')
+export class UIFrame extends LitElement {
+  static styles = [theme];
+  private toast = toast.addHost(this);
 
-  render() {
-    console.log(this.toastController.toasts);
+  getToasts() {
     return html`<div>
-      ${this.toastController.toasts.map(
-        (toast) => html`<div>${toast.message}</div>`,
-      )}
+      ${this.toast.toasts.map((toast) => html`<div>${toast.message}</div>`)}
     </div>`;
   }
-}
-
-@customElement('ui-theme')
-export class UITheme extends LitElement {
-  static styles = [theme];
 
   render() {
     return html`<div>
-      <button
-        @click="${() => {
-          toastController.showToast({message: 'hello'});
-        }}"
-      >
-        Show toast
-      </button>
-      <ui-toast></ui-toast>
+      ${this.getToasts()}
       <slot />
     </div>`;
   }
@@ -95,15 +82,25 @@ export class UIText extends LitElement {
         ><slot
       /></code>`;
     }
-    return html`<span class="${this.getVariationClass(variation)}"
-      ><slot
+    return html`<span class="${this.getVariationClass(variation)}">
+      <button
+        @click="${() => {
+          toast.show({message: 'show toast from ui-text'});
+        }}"
+      >
+        Show toast
+      </button>
+      <slot
     /></span>`;
   }
 }
 
 export function WebComponentsManual() {
   return (
-    <ui-theme>
+    <ui-frame>
+      <button onClick={() => toast.show({message: 'show toast from ui-text'})}>
+        Show Toast
+      </button>
       <p>
         <ui-text variation="positive">positive text style content</ui-text>
       </p>
@@ -116,6 +113,6 @@ export function WebComponentsManual() {
       <p>
         <ui-text variation="code">code text style content</ui-text>
       </p>
-    </ui-theme>
+    </ui-frame>
   );
 }
