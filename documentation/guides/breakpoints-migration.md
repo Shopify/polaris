@@ -506,6 +506,99 @@ _After_
 
 </details>
 
+#### `frame-when-nav-displayed()`
+
+_Before_
+
+```scss
+@include frame-when-nav-displayed() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-md-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin frame-when-nav-displayed() {
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    @content;
+  }
+}
+```
+
+</details>
+
+#### `frame-when-nav-hidden()`
+
+_Before_
+
+```scss
+@include frame-when-nav-hidden() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-md-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin frame-when-nav-hidden() {
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    @content;
+  }
+}
+```
+
+</details>
+
+#### `frame-with-nav-when-not-max-width()`
+
+_Before_
+
+```scss
+@include frame-with-nav-when-not-max-width() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-xl-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin frame-with-nav-when-not-max-width() {
+  @include breakpoint-before($frame-with-nav-max-width) {
+    @content;
+  }
+}
+```
+
+</details>
+
 ### Adding the functions and mixins to your repo
 
 Any functions or mixins that were being consumed from `???` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
