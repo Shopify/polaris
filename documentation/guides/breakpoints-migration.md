@@ -444,6 +444,68 @@ _After_
 
 </details>
 
+### `when-typography-condensed()`
+
+_Before_
+
+```scss
+@include when-typography-condensed() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-md-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin when-typography-condensed {
+  @include breakpoint-before($typography-condensed) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `when-typography-not-condensed()`
+
+_Before_
+
+```scss
+@include when-typography-not-condensed() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-md-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin when-typography-not-condensed {
+  @include breakpoint-after($typography-condensed) {
+    @content;
+  }
+}
+```
+
+</details>
+
 ### Adding the functions and mixins to your repo
 
 Any functions or mixins that were being consumed from `???` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
