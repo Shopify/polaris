@@ -444,6 +444,37 @@ _After_
 
 </details>
 
+#### `page-when-not-max-width()`
+
+_Before_
+
+```scss
+@include page-when-not-max-width() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-lg-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-when-not-max-width() {
+  @include breakpoint-before($page-max-width) {
+    @content;
+  }
+}
+```
+
+</details>
+
 #### `when-typography-condensed()`
 
 _Before_
@@ -592,6 +623,37 @@ _After_
 ```scss
 @mixin frame-with-nav-when-not-max-width() {
   @include breakpoint-before($frame-with-nav-max-width) {
+    @content;
+  }
+}
+```
+
+</details>
+
+#### `after-topbar-sheet()`
+
+_Before_
+
+```scss
+@include after-topbar-sheet() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-sm-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin after-topbar-sheet {
+  @include breakpoint-after(450px) {
     @content;
   }
 }
