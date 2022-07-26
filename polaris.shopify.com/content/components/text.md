@@ -200,3 +200,10 @@ These are suggested replacements for existing text style components, but ultimat
 + <Text variant="bodyMd" as="p"><InlineCode>No supplier listed</InlineCode></Text>
 ```
 
+### VisuallyHidden
+```diff
+- <VisuallyHidden>
+-   <Heading>Title and description</Heading>
+- </VisuallyHidden>
++ <Text visuallyHidden variant="bodySm" as="h2">Title and description</Text>
+```
