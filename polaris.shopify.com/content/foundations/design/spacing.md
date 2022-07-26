@@ -71,7 +71,7 @@ This is intentional to provide a good range to work with, but you must be delibe
 
 <!-- centeredcontent -->
 
-![Examples of different variations of spacing](/images/foundations/design/spacing/spacing-scale-examples@4x.png)
+![Examples of different variations of spacing](/images/foundations/design/spacing/spacing-scale-examples@2x.png)
 
 Repeating the same amount of spacing. Using more variation.
 
@@ -156,10 +156,11 @@ Grouping things based on how they move.
 
 Grouping things that are explicitly enclosed by a larger object.
 
-![Customer details card](/images/foundations/design/spacing/spacing-common-region-1@2x.png)
-![Main nav bar](/images/foundations/design/spacing/spacing-common-region-2@2x.png)
+![Customer details card](/images/foundations/design/spacing/spacing-common-region@2x.png)
 
 <!-- end -->
+
+Because people perceive these instinctively, we can use them as tools to create hierarchy, visual rhythm, and guide the user's eye to what’s important.
 
 ---
 
@@ -172,8 +173,7 @@ Like in music, different types of rhythm serve a different purpose, in design th
 
 <!-- centeredcontent -->
 
-![Example of data table](/images/foundations/design/spacing/spacing-regular-rhythm-1@2x.png)
-![Example of index table](/images/foundations/design/spacing/spacing-regular-rhythm-2@2x.png)
+![Example of data table](/images/foundations/design/spacing/spacing-regular-rhythm@2x.png)
 
 **Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.
 
