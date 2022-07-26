@@ -4,6 +4,7 @@ const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
 const React = require('react');
 const lodash = require('lodash');
+const {omit} = require('lodash');
 
 const HOOK_PREFIX = 'use';
 
@@ -40,20 +41,17 @@ module.exports = function loader(source) {
   ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
-    let code = `export const ${example.storyName}: ComponentStory<typeof ${
-      readme.component
-    }> = () => {\n${example.code
-      .split('\n')
-      .map((line) => `  ${line}`)
-      .join('\n')}\n};\n`;
-
-    if (readme.omitAppProvider) {
-      code += `${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};\n`;
-    }
-
-    if (hasFullscreenLayout) {
-      code += `${example.storyName}.parameters = {layout: 'fullscreen'};\n`;
-    }
+    let code = `export function ${example.storyName}() {\n${
+      example.code.startsWith('<')
+        ? example.code
+        : example.code
+            .split('\n')
+            .slice(1, -1)
+            .join('\n')
+            .split('\n')
+            .map((line) => `  ${line}`)
+            .join('\n')
+    }\n};\n`;
 
     return code.trim();
   });
@@ -231,10 +229,19 @@ import {
   WandMinor,
 } from '@shopify/polaris-icons';`;
 
+  let storybookSettings = '';
+  if (omitAppProvider) {
+    storybookSettings += `\n  args: {omitAppProvider: ${omitAppProvider}},`;
+  }
+
+  if (hasFullscreenLayout) {
+    storybookSettings += `\n  parameters: {layout: 'fullscreen'},`;
+  }
+
   return `${imports}
 
 export default {
-  component: ${readme.component},
+  component: ${readme.component},${storybookSettings}
 } as ComponentMeta<typeof ${readme.component}>;
 
 ${csfExports.join('\n\n')}
