@@ -320,6 +320,68 @@ _After_
 
 </details>
 
+### `page-content-when-layout-stacked()`
+
+_Before_
+
+```scss
+@include page-content-when-layout-stacked() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-md-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-when-layout-stacked() {
+  @include page-content-breakpoint-before($stacked-content) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `page-content-when-layout-not-stacked()`
+
+_Before_
+
+```scss
+@include page-content-when-layout-not-stacked() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-md-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-when-layout-not-stacked() {
+  @include page-content-breakpoint-after($stacked-content) {
+    @content;
+  }
+}
+```
+
+</details>
+
 ### Adding the functions and mixins to your repo
 
 Any functions or mixins that were being consumed from `???` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
