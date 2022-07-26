@@ -2,6 +2,78 @@
 
 The following Sass functions and mixins have been removed. If you wish to continue using them you will need to either add them directly to your repo or replace any instances with a value equivalent.
 
+### `breakpoint-after()`
+
+Use `console.log()` to get the function output and hard code the value you need.
+If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
+
+**Before**
+
+```scss
+@include breakpoint-after(490) {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-sm-up} {
+  padding: 1em;
+}
+```
+
+Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin breakpoint-after($breakpoint, $inclusive: true) {
+  @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `breakpoint-before()`
+
+Use `console.log()` to get the function output and hard code the value you need.
+If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
+
+**Before**
+
+```scss
+@include breakpoint-before(490) {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-sm-down} {
+  padding: 1em;
+}
+```
+
+Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin breakpoint-before($breakpoint, $inclusive: true) {
+  @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
+    @content;
+  }
+}
+```
+
+</details>
+
 ### `page-content-breakpoint-after()`
 
 Use `console.log()` to get the function output and hard code the value you need.
@@ -26,7 +98,7 @@ If the end value of is close to one of [Polaris’ tokens](https://polaris.shopi
 Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
 
 <details>
-<summary>Deprecated "page-content-breakpoint-after()" definition</summary>
+<summary>Deprecated Mixin Definition</summary>
 
 ```scss
 @mixin page-content-breakpoint-after($size) {
@@ -94,7 +166,7 @@ If the end value of is close to one of [Polaris’ tokens](https://polaris.shopi
 Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
 
 <details>
-<summary>Deprecated "page-content-breakpoint-before" Definition</summary>
+<summary>Deprecated Mixin Definition</summary>
 
 ```scss
 @mixin page-content-breakpoint-before($size) {
