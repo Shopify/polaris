@@ -103,6 +103,8 @@ Location pickers are composed using the [button](/components/button), [icon](/co
 
 Segment pickers allow merchants to select from or navigate to all of the customer segments they've created. Merchants start with one default customer segment: "All customers". From the query builder at the top of the segment detail page, merchants can add filters and conditions to create new segments.
 
+![Illustration of segment picker best practices](/images/foundations/patterns/pickers/segment-picker-best-practices.png)
+
 Similar to the location picker, customer segment pickers introduce features only as merchants need them. All segment picking experiences should:
 
 - Pin the "All customers" segment to the top of the list so merchants can easily navigate to or select their entire customer base
