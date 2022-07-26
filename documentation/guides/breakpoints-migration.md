@@ -382,6 +382,68 @@ _After_
 
 </details>
 
+### `page-after-resource-list-small()`
+
+_Before_
+
+```scss
+@include page-after-resource-list-small() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-sm-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-after-resource-list-small() {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `page-before-resource-list-small()`
+
+_Before_
+
+```scss
+@include page-before-resource-list-small() {
+  padding: 1em;
+}
+```
+
+_After_
+
+```scss
+@media #{$p-breakpoints-sm-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-before-resource-list-small() {
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    @content;
+  }
+}
+```
+
+</details>
+
 ### Adding the functions and mixins to your repo
 
 Any functions or mixins that were being consumed from `???` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
