@@ -22,7 +22,7 @@ describe('<PortalsManager />', () => {
         <TestConsumer />
       </PortalsManager>,
     );
-    expect(manager.text()).toBe('PolarisPortalsContainer');
+    expect(manager.text()).toContain('PolarisPortalsContainer');
   });
 
   it('acccepts a container prop and shares through context', () => {

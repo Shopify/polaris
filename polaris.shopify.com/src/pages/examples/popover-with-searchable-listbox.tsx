@@ -250,9 +250,9 @@ function PopoverWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <Button plain onClick={handleClickShowAll}>
+      <span style={{ color: "var(--p-interactive)" }}>
         Show all 111 segments
-      </Button>
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -276,6 +276,8 @@ function PopoverWithSearchableListboxExample() {
     <Listbox
       enableKeyboardControl
       autoSelection={AutoSelection.FirstSelected}
+      accessibilityLabel="Search for and select a customer segment"
+      customListId={listboxId}
       onSelect={handleSegmentSelect}
       onActiveOptionChange={handleActiveOptionChange}
     >

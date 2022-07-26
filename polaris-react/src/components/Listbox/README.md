@@ -342,9 +342,7 @@ function ListboxWithSearchExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <Button plain onClick={handleClickShowAll}>
-        Show all 111 segments
-      </Button>
+      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
     </Listbox.Action>
   ) : null;
 
@@ -368,6 +366,8 @@ function ListboxWithSearchExample() {
     <Listbox
       enableKeyboardControl
       autoSelection="FIRST_SELECTED"
+      customListId={listboxId}
+      accessibilityLabel="Search for and select a customer segment"
       onSelect={handleSegmentSelect}
       onActiveOptionChange={handleActiveOptionChange}
     >

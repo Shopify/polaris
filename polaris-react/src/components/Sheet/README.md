@@ -370,7 +370,7 @@ function SheetWithSearchableListboxExample() {
     }
   };
 
-  const listboxId = 'SearchableListboxInPopover';
+  const listboxId = 'SearchableListboxInSheet';
 
   /* Your app's feature/context specific activator here */
   const activator = (
@@ -429,9 +429,7 @@ function SheetWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <Button plain onClick={handleClickShowAll}>
-        Show all 111 segments
-      </Button>
+      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
     </Listbox.Action>
   ) : null;
 
@@ -462,6 +460,8 @@ function SheetWithSearchableListboxExample() {
       <Listbox
         enableKeyboardControl
         autoSelection="FIRST_SELECTED"
+        customListId={listboxId}
+        accessibilityLabel="Search for and select a customer segment"
         onSelect={handleSegmentSelect}
         onActiveOptionChange={handleActiveOptionChange}
       >
