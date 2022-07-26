@@ -41,17 +41,15 @@ module.exports = function loader(source) {
   ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
-    let code = `export function ${example.storyName}() {\n${
-      example.code.startsWith('<')
-        ? example.code
-        : example.code
-            .split('\n')
-            .slice(1, -1)
-            .join('\n')
-            .split('\n')
-            .map((line) => `  ${line}`)
-            .join('\n')
-    }\n};\n`;
+    let code = `export function ${
+      example.storyName
+    }() {\n${(example.code.startsWith('<')
+      ? `return (${example.code});`
+      : example.code.split('\n').slice(1, -1).join('\n')
+    )
+      .split('\n')
+      .map((line) => `  ${line}`)
+      .join('\n')}\n};\n`;
 
     return code.trim();
   });
