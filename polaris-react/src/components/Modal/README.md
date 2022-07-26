@@ -263,7 +263,7 @@ Use to let merchants take a key action.
 
 ```jsx
 function ModalWithPrimaryActionExample() {
-  const DISCOUNT_LINK = 'https://polaris.shopify.com/';
+  const discountLink = 'https://polaris.shopify.com/';
 
   const [active, setActive] = useState(true);
   const node = useRef(null);
@@ -312,7 +312,7 @@ function ModalWithPrimaryActionExample() {
                 ref={node}
                 label="Discount link"
                 onFocus={handleFocus}
-                value={DISCOUNT_LINK}
+                value={discountLink}
                 onChange={() => {}}
                 autoComplete="off"
                 connectedRight={
@@ -336,11 +336,11 @@ Use to let merchants take key actions at the bottom of the modal.
 
 ```jsx
 function ModalWithPrimaryAndSecondaryActionsExample() {
-  const CURRENT_PAGE = 'current_page';
-  const ALL_CUSTOMERS = 'all_customers';
-  const SELECTED_CUSTOMERS = 'selected_customers';
-  const CSV_EXCEL = 'csv_excel';
-  const CSV_PLAIN = 'csv_plain';
+  const currentPage = 'current_page';
+  const allCustomers = 'all_customers';
+  const selectedCustomers = 'selected_customers';
+  const csvExcel = 'csv_excel';
+  const csvPlain = 'csv_plain';
 
   const [active, setActive] = useState(true);
   const [selectedExport, setSelectedExport] = useState([]);
@@ -390,9 +390,9 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
               <ChoiceList
                 title="Export"
                 choices={[
-                  {label: 'Current page', value: CURRENT_PAGE},
-                  {label: 'All customers', value: ALL_CUSTOMERS},
-                  {label: 'Selected customers', value: SELECTED_CUSTOMERS},
+                  {label: 'Current page', value: currentPage},
+                  {label: 'All customers', value: allCustomers},
+                  {label: 'Selected customers', value: selectedCustomers},
                 ]}
                 selected={selectedExport}
                 onChange={handleSelectedExport}
@@ -405,9 +405,9 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
                   {
                     label:
                       'CSV for Excel, Numbers, or other spreadsheet programs',
-                    value: CSV_EXCEL,
+                    value: csvExcel,
                   },
-                  {label: 'Plain CSV file', value: CSV_PLAIN},
+                  {label: 'Plain CSV file', value: csvPlain},
                 ]}
                 selected={selectedExportAs}
                 onChange={handleSelectedExportAs}
@@ -591,7 +591,10 @@ function ModalWithScrollListenerExample() {
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
-  const handleScrollBottom = useCallback(() => alert('Scrolled to bottom'), []);
+  const handleScrollBottom = useCallback(
+    () => console.log('Scrolled to bottom'),
+    [],
+  );
 
   const activator = <Button onClick={handleChange}>Open</Button>;
 
@@ -608,7 +611,7 @@ function ModalWithScrollListenerExample() {
           <Modal.Section key={index}>
             <TextContainer>
               <p>
-                Item <a href="#">#{index}</a>
+                Item <a href="#Content">#{index}</a>
               </p>
             </TextContainer>
           </Modal.Section>
