@@ -20,7 +20,7 @@ keywords:
   - secondary cta
   - secondary call to action
 examples:
-  - fileName: link-defaults.tsx
+  - fileName: link-default.tsx
     title: Default links
     description: Use for text links inside a paragraph or for standalone text. Default links open in the same browser tab.
   - fileName: link-monochrome.tsx
