@@ -317,7 +317,7 @@ function MultiAutoComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -435,7 +435,7 @@ function MultiManualComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
