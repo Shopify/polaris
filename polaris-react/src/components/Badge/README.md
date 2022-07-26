@@ -78,7 +78,7 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 Use to give a non-critical status update on a piece of information or action.
 
 ```jsx
-return <Badge>Fulfilled</Badge>;
+<Badge>Fulfilled</Badge>
 ```
 
 ### Small
@@ -86,7 +86,7 @@ return <Badge>Fulfilled</Badge>;
 Use in layouts with minimal space, like inside of an `IndexTable` cell.
 
 ```jsx
-return <Badge size="small">Fulfilled</Badge>;
+<Badge size="small">Fulfilled</Badge>
 ```
 
 ### Informational
@@ -94,7 +94,7 @@ return <Badge size="small">Fulfilled</Badge>;
 Use to call out an object or action as having an important attribute. For example, marking an option as “Recommended” or marking a theme as “Published”.
 
 ```jsx
-return <Badge status="info">Published</Badge>;
+<Badge status="info">Published</Badge>
 ```
 
 ### Success
@@ -102,7 +102,7 @@ return <Badge status="info">Published</Badge>;
 Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to merchants. For example, when merchants successfully dispute a chargeback, a success badge shows that says “Funds recovered”.
 
 ```jsx
-return <Badge status="success">Funds recovered</Badge>;
+<Badge status="success">Funds recovered</Badge>
 ```
 
 ### Attention
@@ -110,7 +110,7 @@ return <Badge status="success">Funds recovered</Badge>;
 Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
 
 ```jsx
-return <Badge status="attention">Inactive</Badge>;
+<Badge status="attention">Inactive</Badge>
 ```
 
 ### Warning
@@ -118,7 +118,7 @@ return <Badge status="attention">Inactive</Badge>;
 Use for warnings and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
-return <Badge status="warning">Expired</Badge>;
+<Badge status="warning">Expired</Badge>
 ```
 
 ### Critical
@@ -126,7 +126,7 @@ return <Badge status="warning">Expired</Badge>;
 Use for critical and irreversible issues that require merchants’ attention and potential action. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
-return <Badge status="critical">Action required</Badge>;
+<Badge status="critical">Action required</Badge>
 ```
 
 ### Incomplete
@@ -134,11 +134,9 @@ return <Badge status="critical">Action required</Badge>;
 Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.
 
 ```jsx
-return (
-  <Badge progress="incomplete" status="warning">
-    Unfulfilled
-  </Badge>
-);
+<Badge progress="incomplete" status="warning">
+  Unfulfilled
+</Badge>
 ```
 
 ### Partially complete
@@ -146,11 +144,9 @@ return (
 Use to indicate when a given task has been partially completed. For example, when merchants have partially fulfilled an order.
 
 ```jsx
-return (
-  <Badge progress="partiallyComplete" status="attention">
-    Partially fulfilled
-  </Badge>
-);
+<Badge progress="partiallyComplete" status="attention">
+  Partially fulfilled
+</Badge>
 ```
 
 ### Complete
@@ -158,7 +154,7 @@ return (
 Use to indicate when a given task has been completed. For example, when merchants have fulfilled an order.
 
 ```jsx
-return <Badge progress="complete">Fulfilled</Badge>;
+<Badge progress="complete">Fulfilled</Badge>
 ```
 
 ### With statusAndProgressLabelOverride
@@ -166,15 +162,13 @@ return <Badge progress="complete">Fulfilled</Badge>;
 Use when the status and progress accessibilityLabels are not appropriate to a given context.
 
 ```jsx
-return (
-  <Badge
-    status="success"
-    progress="complete"
-    statusAndProgressLabelOverride="Status: Published. Your online store is visible."
-  >
-    Published
-  </Badge>
-);
+<Badge
+  status="success"
+  progress="complete"
+  statusAndProgressLabelOverride="Status: Published. Your online store is visible."
+>
+  Published
+</Badge>
 ```
 
 ---

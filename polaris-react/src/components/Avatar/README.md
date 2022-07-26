@@ -55,7 +55,7 @@ For avatars, we recommend using a format that describes what will show in the im
 Use to present an avatar for a merchant, customer, or business.
 
 ```jsx
-return <Avatar customer name="Farrah" />;
+<Avatar customer name="Farrah" />
 ```
 
 ### Extra small
@@ -63,32 +63,36 @@ return <Avatar customer name="Farrah" />;
 Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
 
 ```jsx
-const [active, setActive] = useState(true);
-const toggleActive = useCallback(() => setActive((active) => !active), []);
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    Manage staff
-  </Button>
-);
+function ExtraSmallAvatarExample() {
+  const [active, setActive] = useState(true);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      Manage staff
+    </Button>
+  );
 
-return (
-  <div style={{height: '250px'}}>
-    <Popover active={active} activator={activator} onClose={toggleActive}>
-      <ActionList
-        items={[
-          {
-            content: 'Chet Baker',
-            prefix: <Avatar customer size="extraSmall" name="Chet Baker" />,
-          },
-          {
-            content: 'Farrah Fawcett',
-            prefix: <Avatar customer size="extraSmall" name="Farrah Fawcett" />,
-          },
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '250px'}}>
+      <Popover active={active} activator={activator} onClose={toggleActive}>
+        <ActionList
+          items={[
+            {
+              content: 'Chet Baker',
+              prefix: <Avatar customer size="extraSmall" name="Chet Baker" />,
+            },
+            {
+              content: 'Farrah Fawcett',
+              prefix: (
+                <Avatar customer size="extraSmall" name="Farrah Fawcett" />
+              ),
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### Square
@@ -96,7 +100,7 @@ return (
 Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
 
 ```jsx
-return <Avatar name="Shop One" shape="square" />;
+<Avatar name="Shop One" shape="square" />
 ```
 
 ---

@@ -85,50 +85,52 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
-const [active, setActive] = useState(true);
+function InAPopover() {
+  const [active, setActive] = useState(true);
 
-const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-const handleImportedAction = useCallback(
-  () => console.log('Imported action'),
-  [],
-);
+  const handleImportedAction = useCallback(
+    () => console.log('Imported action'),
+    [],
+  );
 
-const handleExportedAction = useCallback(
-  () => console.log('Exported action'),
-  [],
-);
+  const handleExportedAction = useCallback(
+    () => console.log('Exported action'),
+    [],
+  );
 
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    More actions
-  </Button>
-);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-return (
-  <div style={{height: '250px'}}>
-    <Popover
-      active={active}
-      activator={activator}
-      autofocusTarget="first-node"
-      onClose={toggleActive}
-    >
-      <ActionList
-        actionRole="menuitem"
-        items={[
-          {
-            content: 'Import file',
-            onAction: handleImportedAction,
-          },
-          {
-            content: 'Export file',
-            onAction: handleExportedAction,
-          },
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={[
+            {
+              content: 'Import file',
+              onAction: handleImportedAction,
+            },
+            {
+              content: 'Export file',
+              onAction: handleExportedAction,
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### With icons or image
@@ -136,34 +138,36 @@ return (
 Use when the items benefit from an associated action or image, such as a list of products.
 
 ```jsx
-const [active, setActive] = useState(true);
+function WithIconsOrImage() {
+  const [active, setActive] = useState(true);
 
-const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    More actions
-  </Button>
-);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-return (
-  <div style={{height: '200px'}}>
-    <Popover
-      active={active}
-      activator={activator}
-      autofocusTarget="first-node"
-      onClose={toggleActive}
-    >
-      <ActionList
-        actionRole="menuitem"
-        items={[
-          {content: 'Import file', icon: ImportMinor},
-          {content: 'Export file', icon: ExportMinor},
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '200px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={[
+            {content: 'Import file', icon: ImportMinor},
+            {content: 'Export file', icon: ExportMinor},
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### With an icon and a suffix
@@ -171,39 +175,41 @@ return (
 Use when the items benefit from an associated action or image, such as a list of products.
 
 ```jsx
-const [active, setActive] = useState(true);
+function WithAnIconAndASuffix() {
+  const [active, setActive] = useState(true);
 
-const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    More actions
-  </Button>
-);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-return (
-  <div style={{height: '200px'}}>
-    <Popover
-      active={active}
-      activator={activator}
-      autofocusTarget="first-node"
-      onClose={toggleActive}
-    >
-      <ActionList
-        actionRole="menuitem"
-        items={[
-          {
-            active: true,
-            content: 'Import file',
-            icon: ImportMinor,
-            suffix: <Icon source={TickSmallMinor} />,
-          },
-          {content: 'Export file', icon: ExportMinor},
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '200px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={[
+            {
+              active: true,
+              content: 'Import file',
+              icon: ImportMinor,
+              suffix: <Icon source={TickSmallMinor} />,
+            },
+            {content: 'Export file', icon: ExportMinor},
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### With sections
@@ -211,46 +217,48 @@ return (
 Use when the items benefit from sections to help differentiate actions.
 
 ```jsx
-const [active, setActive] = useState(true);
+function WithSections() {
+  const [active, setActive] = useState(true);
 
-const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    More actions
-  </Button>
-);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-return (
-  <div style={{height: '250px'}}>
-    <Popover
-      active={active}
-      activator={activator}
-      autofocusTarget="first-node"
-      onClose={toggleActive}
-    >
-      <ActionList
-        actionRole="menuitem"
-        sections={[
-          {
-            title: 'File options',
-            items: [
-              {content: 'Import file', icon: ImportMinor},
-              {content: 'Export file', icon: ExportMinor},
-            ],
-          },
-          {
-            title: 'Bulk actions',
-            items: [
-              {content: 'Edit', icon: EditMinor},
-              {content: 'Delete', icon: DeleteMinor},
-            ],
-          },
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          sections={[
+            {
+              title: 'File options',
+              items: [
+                {content: 'Import file', icon: ImportMinor},
+                {content: 'Export file', icon: ExportMinor},
+              ],
+            },
+            {
+              title: 'Bulk actions',
+              items: [
+                {content: 'Edit', icon: EditMinor},
+                {content: 'Delete', icon: DeleteMinor},
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### With destructive item
@@ -258,48 +266,50 @@ return (
 Use to visually indicate that an action list item is destructive.
 
 ```jsx
-const [active, setActive] = useState(true);
+function WithDestructiveItem() {
+  const [active, setActive] = useState(true);
 
-const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    More actions
-  </Button>
-);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-return (
-  <div style={{height: '250px'}}>
-    <Popover
-      active={active}
-      activator={activator}
-      autofocusTarget="first-node"
-      onClose={toggleActive}
-    >
-      <ActionList
-        actionRole="menuitem"
-        sections={[
-          {
-            title: 'File options',
-            items: [
-              {
-                active: true,
-                content: 'Import file',
-                icon: ImportMinor,
-              },
-              {content: 'Export file', icon: ExportMinor},
-              {
-                destructive: true,
-                content: 'Delete file',
-                icon: DeleteMinor,
-              },
-            ],
-          },
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          sections={[
+            {
+              title: 'File options',
+              items: [
+                {
+                  active: true,
+                  content: 'Import file',
+                  icon: ImportMinor,
+                },
+                {content: 'Export file', icon: ExportMinor},
+                {
+                  destructive: true,
+                  content: 'Delete file',
+                  icon: DeleteMinor,
+                },
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### With help text
@@ -307,44 +317,46 @@ return (
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
 ```jsx
-const [active, setActive] = useState(true);
+function WithHelpText() {
+  const [active, setActive] = useState(true);
 
-const toggleActive = useCallback(() => setActive((active) => !active), []);
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
 
-const activator = (
-  <Button onClick={toggleActive} disclosure>
-    More actions
-  </Button>
-);
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
 
-return (
-  <div style={{height: '250px'}}>
-    <Popover
-      active={active}
-      activator={activator}
-      autofocusTarget="first-node"
-      onClose={toggleActive}
-    >
-      <ActionList
-        actionRole="menuitem"
-        sections={[
-          {
-            items: [
-              {
-                content: 'Blog posts',
-                helpText: 'Manage your blog articles',
-              },
-              {
-                content: 'Blogs',
-                helpText: 'Manage blogs published to your Online Store',
-              },
-            ],
-          },
-        ]}
-      />
-    </Popover>
-  </div>
-);
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          sections={[
+            {
+              items: [
+                {
+                  content: 'Blog posts',
+                  helpText: 'Manage your blog articles',
+                },
+                {
+                  content: 'Blogs',
+                  helpText: 'Manage blogs published to your Online Store',
+                },
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
 ```
 
 ### With a prefix and a suffix

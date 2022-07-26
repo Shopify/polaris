@@ -39,70 +39,72 @@ The input field for autocomplete should follow the [content guidelines](https://
 Use to help merchants complete text input quickly from a list of options.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
+function AutocompleteExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (value === '') {
-      setOptions(deselectedOptions);
-      return;
-    }
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
 
-    const filterRegex = new RegExp(value, 'i');
-    const resultOptions = deselectedOptions.filter((option) =>
-      option.label.match(filterRegex),
-    );
-    setOptions(resultOptions);
-  },
-  [deselectedOptions],
-);
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
 
-const updateSelection = useCallback(
-  (selected) => {
-    const selectedValue = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedValue = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
 
-    setSelectedOptions(selected);
-    setInputValue(selectedValue[0]);
-  },
-  [options],
-);
+      setSelectedOptions(selected);
+      setInputValue(selectedValue[0]);
+    },
+    [options],
+  );
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} color="base" />}
-    placeholder="Search"
-  />
-);
-
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      options={options}
-      selected={selectedOptions}
-      onSelect={updateSelection}
-      textField={textField}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="base" />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        textField={textField}
+      />
+    </div>
+  );
+}
 ```
 
 ### With multiple tags
@@ -110,99 +112,101 @@ return (
 Use to help merchants select multiple options from a list curated by the text input.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState(['rustic']);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
+function MultiAutocompleteExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState(['rustic']);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (value === '') {
-      setOptions(deselectedOptions);
-      return;
-    }
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
+      }
 
-    const filterRegex = new RegExp(value, 'i');
-    const resultOptions = deselectedOptions.filter((option) =>
-      option.label.match(filterRegex),
-    );
-    let endIndex = resultOptions.length - 1;
-    if (resultOptions.length === 0) {
-      endIndex = 0;
-    }
-    setOptions(resultOptions);
-  },
-  [deselectedOptions],
-);
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      let endIndex = resultOptions.length - 1;
+      if (resultOptions.length === 0) {
+        endIndex = 0;
+      }
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
 
-const handleSelect = useCallback((selected) => {
-  setSelectedOptions(selected);
-  updateText('');
-}, []);
+  const handleSelect = useCallback((selected) => {
+    setSelectedOptions(selected);
+    updateText('');
+  }, []);
 
-const removeTag = useCallback(
-  (tag) => (event) => {
-    event.stopPropagation();
-    const options = [...selectedOptions];
-    options.splice(options.indexOf(tag), 1);
-    setSelectedOptions(options);
-  },
-  [selectedOptions],
-);
+  const removeTag = useCallback(
+    (tag) => (event) => {
+      event.stopPropagation();
+      const options = [...selectedOptions];
+      options.splice(options.indexOf(tag), 1);
+      setSelectedOptions(options);
+    },
+    [selectedOptions],
+  );
 
-const verticalContentMarkup =
-  selectedOptions.length > 0 ? (
-    <Stack spacing="extraTight" alignment="center">
-      {selectedOptions.map((option) => {
-        let tagLabel = '';
-        tagLabel = option.replace('_', ' ');
-        tagLabel = titleCase(tagLabel);
-        return (
-          <Tag key={`option${option}`} onRemove={removeTag(option)}>
-            {tagLabel}
-          </Tag>
-        );
-      })}
-    </Stack>
-  ) : null;
+  const verticalContentMarkup =
+    selectedOptions.length > 0 ? (
+      <Stack spacing="extraTight" alignment="center">
+        {selectedOptions.map((option) => {
+          let tagLabel = '';
+          tagLabel = option.replace('_', ' ');
+          tagLabel = titleCase(tagLabel);
+          return (
+            <Tag key={`option${option}`} onRemove={removeTag(option)}>
+              {tagLabel}
+            </Tag>
+          );
+        })}
+      </Stack>
+    ) : null;
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    placeholder="Vintage, cotton, summer"
-    verticalContent={verticalContentMarkup}
-  />
-);
-
-return (
-  <div style={{height: '325px'}}>
-    <Autocomplete
-      allowMultiple
-      options={options}
-      selected={selectedOptions}
-      textField={textField}
-      onSelect={handleSelect}
-      listTitle="Suggested Tags"
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      placeholder="Vintage, cotton, summer"
+      verticalContent={verticalContentMarkup}
     />
-  </div>
-);
+  );
 
-function titleCase(string) {
-  return string
-    .toLowerCase()
-    .split(' ')
-    .map((word) => word.replace(word[0], word[0].toUpperCase()))
-    .join('');
+  return (
+    <div style={{height: '325px'}}>
+      <Autocomplete
+        allowMultiple
+        options={options}
+        selected={selectedOptions}
+        textField={textField}
+        onSelect={handleSelect}
+        listTitle="Suggested Tags"
+      />
+    </div>
+  );
+
+  function titleCase(string) {
+    return string
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.replace(word[0], word[0].toUpperCase()))
+      .join('');
+  }
 }
 ```
 
@@ -211,99 +215,103 @@ function titleCase(string) {
 Use to help merchants complete text input quickly from a multiple sections list of options.
 
 ```jsx
-const deselectedOptions = useMemo(
-  () => [
-    {
-      title: 'Frequently used',
-      options: [
-        {value: 'ups', label: 'UPS'},
-        {value: 'usps', label: 'USPS'},
-      ],
-    },
-    {
-      title: 'All carriers',
-      options: [
-        {value: 'dhl', label: 'DHL Express'},
-        {value: 'canada_post', label: 'Canada Post'},
-      ],
-    },
-  ],
-  [],
-);
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
+function AutocompleteExample() {
+  const deselectedOptions = useMemo(
+    () => [
+      {
+        title: 'Frequently used',
+        options: [
+          {value: 'ups', label: 'UPS'},
+          {value: 'usps', label: 'USPS'},
+        ],
+      },
+      {
+        title: 'All carriers',
+        options: [
+          {value: 'dhl', label: 'DHL Express'},
+          {value: 'canada_post', label: 'Canada Post'},
+        ],
+      },
+    ],
+    [],
+  );
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (value === '') {
-      setOptions(deselectedOptions);
-      return;
-    }
-
-    const filterRegex = new RegExp(value, 'i');
-    const resultOptions = [];
-
-    deselectedOptions.forEach((opt) => {
-      const lol = opt.options.filter((option) =>
-        option.label.match(filterRegex),
-      );
-
-      resultOptions.push({
-        title: opt.title,
-        options: lol,
-      });
-    });
-
-    setOptions(resultOptions);
-  },
-  [deselectedOptions],
-);
-
-const updateSelection = useCallback(
-  ([selected]) => {
-    let selectedValue;
-
-    options.forEach(({options: opt}) => {
-      if (selectedValue) {
+      if (value === '') {
+        setOptions(deselectedOptions);
         return;
       }
 
-      const matchedOption = opt.find((option) => option.value.match(selected));
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = [];
 
-      if (matchedOption) {
-        selectedValue = matchedOption.label;
-      }
-    });
+      deselectedOptions.forEach((opt) => {
+        const lol = opt.options.filter((option) =>
+          option.label.match(filterRegex),
+        );
 
-    setSelectedOptions([selected]);
-    setInputValue(String(selectedValue) ? String(selectedValue) : '');
-  },
-  [options],
-);
+        resultOptions.push({
+          title: opt.title,
+          options: lol,
+        });
+      });
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} color="base" />}
-    placeholder="Search"
-  />
-);
+      setOptions(resultOptions);
+    },
+    [deselectedOptions],
+  );
 
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      textField={textField}
-      selected={selectedOptions}
-      options={options}
-      onSelect={updateSelection}
+  const updateSelection = useCallback(
+    ([selected]) => {
+      let selectedValue;
+
+      options.forEach(({options: opt}) => {
+        if (selectedValue) {
+          return;
+        }
+
+        const matchedOption = opt.find((option) =>
+          option.value.match(selected),
+        );
+
+        if (matchedOption) {
+          selectedValue = matchedOption.label;
+        }
+      });
+
+      setSelectedOptions([selected]);
+      setInputValue(String(selectedValue) ? String(selectedValue) : '');
+    },
+    [options],
+  );
+
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="base" />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        textField={textField}
+        selected={selectedOptions}
+        options={options}
+        onSelect={updateSelection}
+      />
+    </div>
+  );
+}
 ```
 
 ### With loading
@@ -311,204 +319,208 @@ return (
 Use to indicate loading state to merchants while option data is processing.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
-const [loading, setLoading] = useState(false);
+function AutocompleteExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (!loading) {
-      setLoading(true);
-    }
-
-    setTimeout(() => {
-      if (value === '') {
-        setOptions(deselectedOptions);
-        setLoading(false);
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      setOptions(resultOptions);
-      setLoading(false);
-    }, 300);
-  },
-  [deselectedOptions, options, loading],
-);
 
-const updateSelection = useCallback(
-  (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = deselectedOptions.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions, options, loading],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText[0]);
-  },
-  [options],
-);
+      setSelectedOptions(selected);
+      setInputValue(selectedText[0]);
+    },
+    [options],
+  );
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} color="base" />}
-    placeholder="Search"
-  />
-);
-
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      options={options}
-      selected={selectedOptions}
-      onSelect={updateSelection}
-      loading={loading}
-      textField={textField}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="base" />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
+}
 ```
 
 ### With lazy loading
 
 ```jsx
-const paginationInterval = 25;
-const deselectedOptions = Array.from(Array(100)).map((_, index) => ({
-  value: `rustic ${index + 1}`,
-  label: `Rustic ${index + 1}`,
-}));
+function AutoCompleteLazyLoadExample() {
+  const paginationInterval = 25;
+  const deselectedOptions = Array.from(Array(100)).map((_, index) => ({
+    value: `rustic ${index + 1}`,
+    label: `Rustic ${index + 1}`,
+  }));
 
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
-const [isLoading, setIsLoading] = useState(false);
-const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
-const [visibleOptionIndex, setVisibleOptionIndex] =
-  useState(paginationInterval);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [isLoading, setIsLoading] = useState(false);
+  const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
+  const [visibleOptionIndex, setVisibleOptionIndex] =
+    useState(paginationInterval);
 
-const handleLoadMoreResults = useCallback(() => {
-  if (willLoadMoreResults) {
-    setIsLoading(true);
+  const handleLoadMoreResults = useCallback(() => {
+    if (willLoadMoreResults) {
+      setIsLoading(true);
 
-    setTimeout(() => {
-      const remainingOptionCount = options.length - visibleOptionIndex;
-      const nextVisibleOptionIndex =
-        remainingOptionCount >= paginationInterval
-          ? visibleOptionIndex + paginationInterval
-          : visibleOptionIndex + remainingOptionCount;
+      setTimeout(() => {
+        const remainingOptionCount = options.length - visibleOptionIndex;
+        const nextVisibleOptionIndex =
+          remainingOptionCount >= paginationInterval
+            ? visibleOptionIndex + paginationInterval
+            : visibleOptionIndex + remainingOptionCount;
 
-      setIsLoading(false);
-      setVisibleOptionIndex(nextVisibleOptionIndex);
+        setIsLoading(false);
+        setVisibleOptionIndex(nextVisibleOptionIndex);
 
-      if (remainingOptionCount <= paginationInterval) {
-        setWillLoadMoreResults(false);
+        if (remainingOptionCount <= paginationInterval) {
+          setWillLoadMoreResults(false);
+        }
+      }, 1000);
+    }
+  }, [willLoadMoreResults, visibleOptionIndex, options.length]);
+
+  const removeTag = useCallback(
+    (tag) => () => {
+      const options = [...selectedOptions];
+      options.splice(options.indexOf(tag), 1);
+      setSelectedOptions(options);
+    },
+    [selectedOptions],
+  );
+
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
+
+      if (value === '') {
+        setOptions(deselectedOptions);
+        return;
       }
-    }, 1000);
-  }
-}, [willLoadMoreResults, visibleOptionIndex, options.length]);
 
-const removeTag = useCallback(
-  (tag) => () => {
-    const options = [...selectedOptions];
-    options.splice(options.indexOf(tag), 1);
-    setSelectedOptions(options);
-  },
-  [selectedOptions],
-);
-
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
-
-    if (value === '') {
-      setOptions(deselectedOptions);
-      return;
-    }
-
-    const filterRegex = new RegExp(value, 'i');
-    const resultOptions = deselectedOptions.filter((option) =>
-      option.label.match(filterRegex),
-    );
-
-    let endIndex = resultOptions.length - 1;
-    if (resultOptions.length === 0) {
-      endIndex = 0;
-    }
-    setOptions(resultOptions);
-    setInputValue;
-  },
-  [deselectedOptions, options],
-);
-
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    placeholder="Vintage, cotton, summer"
-  />
-);
-
-const hasSelectedOptions = selectedOptions.length > 0;
-
-const tagsMarkup = hasSelectedOptions
-  ? selectedOptions.map((option) => {
-      let tagLabel = '';
-      tagLabel = option.replace('_', ' ');
-      tagLabel = titleCase(tagLabel);
-      return (
-        <Tag key={`option${option}`} onRemove={removeTag(option)}>
-          {tagLabel}
-        </Tag>
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = deselectedOptions.filter((option) =>
+        option.label.match(filterRegex),
       );
-    })
-  : null;
-const optionList = options.slice(0, visibleOptionIndex);
-const selectedTagMarkup = hasSelectedOptions ? (
-  <Stack spacing="extraTight">{tagsMarkup}</Stack>
-) : null;
 
-return (
-  <Stack vertical>
-    {selectedTagMarkup}
-    <Autocomplete
-      allowMultiple
-      options={optionList}
-      selected={selectedOptions}
-      textField={textField}
-      onSelect={setSelectedOptions}
-      listTitle="Suggested Tags"
-      loading={isLoading}
-      onLoadMoreResults={handleLoadMoreResults}
-      willLoadMoreResults={willLoadMoreResults}
+      let endIndex = resultOptions.length - 1;
+      if (resultOptions.length === 0) {
+        endIndex = 0;
+      }
+      setOptions(resultOptions);
+      setInputValue;
+    },
+    [deselectedOptions, options],
+  );
+
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      placeholder="Vintage, cotton, summer"
     />
-  </Stack>
-);
+  );
 
-function titleCase(string) {
-  return string
-    .toLowerCase()
-    .split(' ')
-    .map((word) => {
-      return word.replace(word[0], word[0].toUpperCase());
-    })
-    .join(' ');
+  const hasSelectedOptions = selectedOptions.length > 0;
+
+  const tagsMarkup = hasSelectedOptions
+    ? selectedOptions.map((option) => {
+        let tagLabel = '';
+        tagLabel = option.replace('_', ' ');
+        tagLabel = titleCase(tagLabel);
+        return (
+          <Tag key={`option${option}`} onRemove={removeTag(option)}>
+            {tagLabel}
+          </Tag>
+        );
+      })
+    : null;
+  const optionList = options.slice(0, visibleOptionIndex);
+  const selectedTagMarkup = hasSelectedOptions ? (
+    <Stack spacing="extraTight">{tagsMarkup}</Stack>
+  ) : null;
+
+  return (
+    <Stack vertical>
+      {selectedTagMarkup}
+      <Autocomplete
+        allowMultiple
+        options={optionList}
+        selected={selectedOptions}
+        textField={textField}
+        onSelect={setSelectedOptions}
+        listTitle="Suggested Tags"
+        loading={isLoading}
+        onLoadMoreResults={handleLoadMoreResults}
+        willLoadMoreResults={willLoadMoreResults}
+      />
+    </Stack>
+  );
+
+  function titleCase(string) {
+    return string
+      .toLowerCase()
+      .split(' ')
+      .map((word) => {
+        return word.replace(word[0], word[0].toUpperCase());
+      })
+      .join(' ');
+  }
 }
 ```
 
@@ -517,88 +529,90 @@ function titleCase(string) {
 Use to indicate there are no search results.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
-const [loading, setLoading] = useState(false);
+function AutocompleteExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (!loading) {
-      setLoading(true);
-    }
-
-    setTimeout(() => {
-      if (value === '') {
-        setOptions(deselectedOptions);
-        setLoading(false);
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = deselectedOptions.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      setOptions(resultOptions);
-      setLoading(false);
-    }, 300);
-  },
-  [deselectedOptions, loading, options],
-);
 
-const updateSelection = useCallback(
-  (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = deselectedOptions.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions, loading, options],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText[0]);
-  },
-  [options],
-);
+      setSelectedOptions(selected);
+      setInputValue(selectedText[0]);
+    },
+    [options],
+  );
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} color="base" />}
-    placeholder="Search"
-  />
-);
-
-const emptyState = (
-  <React.Fragment>
-    <Icon source={SearchMinor} />
-    <div style={{textAlign: 'center'}}>
-      <TextContainer>Could not find any results</TextContainer>
-    </div>
-  </React.Fragment>
-);
-
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      options={options}
-      selected={selectedOptions}
-      onSelect={updateSelection}
-      emptyState={emptyState}
-      loading={loading}
-      textField={textField}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} color="base" />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  const emptyState = (
+    <React.Fragment>
+      <Icon source={SearchMinor} />
+      <div style={{textAlign: 'center'}}>
+        <TextContainer>Could not find any results</TextContainer>
+      </div>
+    </React.Fragment>
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        emptyState={emptyState}
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
+}
 ```
 
 ### With action
@@ -606,90 +620,92 @@ return (
 Use to help merchants complete an action quickly.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
-const [loading, setLoading] = useState(false);
+function AutocompleteActionBeforeExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (!loading) {
-      setLoading(true);
-    }
-
-    setTimeout(() => {
-      if (value === '') {
-        setOptions(deselectedOptions);
-        setLoading(false);
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = options.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      setOptions(resultOptions);
-      setLoading(false);
-    }, 300);
-  },
-  [deselectedOptions, loading, options],
-);
 
-const updateSelection = useCallback(
-  (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = options.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions, loading, options],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText[0]);
-  },
-  [options],
-);
+      setSelectedOptions(selected);
+      setInputValue(selectedText[0]);
+    },
+    [options],
+  );
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} />}
-    placeholder="Search"
-  />
-);
-
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      actionBefore={{
-        accessibilityLabel: 'Action label',
-        badge: {
-          status: 'new',
-          content: 'New!',
-        },
-        content: 'Action with long name',
-        ellipsis: true,
-        helpText: 'Help text',
-        icon: CirclePlusMinor,
-      }}
-      options={options}
-      selected={selectedOptions}
-      onSelect={updateSelection}
-      listTitle="Suggested tags"
-      loading={loading}
-      textField={textField}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        actionBefore={{
+          accessibilityLabel: 'Action label',
+          badge: {
+            status: 'new',
+            content: 'New!',
+          },
+          content: 'Action with long name',
+          ellipsis: true,
+          helpText: 'Help text',
+          icon: CirclePlusMinor,
+        }}
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        listTitle="Suggested tags"
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
+}
 ```
 
 ### With wrapping action
@@ -697,92 +713,94 @@ return (
 Use to help merchants complete an action quickly with wrapping lines of text.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
-const [loading, setLoading] = useState(false);
+function AutocompleteActionBeforeExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (!loading) {
-      setLoading(true);
-    }
-
-    setTimeout(() => {
-      if (value === '') {
-        setOptions(deselectedOptions);
-        setLoading(false);
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = options.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      setOptions(resultOptions);
-      setLoading(false);
-    }, 300);
-  },
-  [deselectedOptions, loading, options],
-);
 
-const updateSelection = useCallback(
-  (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = options.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions, loading, options],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText[0]);
-  },
-  [options],
-);
+      setSelectedOptions(selected);
+      setInputValue(selectedText[0]);
+    },
+    [options],
+  );
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} />}
-    placeholder="Search"
-  />
-);
-
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      actionBefore={{
-        accessibilityLabel: 'Action label',
-        badge: {
-          status: 'new',
-          content: 'New!',
-        },
-        content:
-          'Action with long name that will need to wrap on small display in order to have a nice display',
-        ellipsis: true,
-        helpText: 'Help text',
-        icon: CirclePlusMinor,
-        wrapOverflow: true,
-      }}
-      options={options}
-      selected={selectedOptions}
-      onSelect={updateSelection}
-      listTitle="Suggested tags"
-      loading={loading}
-      textField={textField}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        actionBefore={{
+          accessibilityLabel: 'Action label',
+          badge: {
+            status: 'new',
+            content: 'New!',
+          },
+          content:
+            'Action with long name that will need to wrap on small display in order to have a nice display',
+          ellipsis: true,
+          helpText: 'Help text',
+          icon: CirclePlusMinor,
+          wrapOverflow: true,
+        }}
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        listTitle="Suggested tags"
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
+}
 ```
 
 ### With destructive action
@@ -790,85 +808,87 @@ return (
 Use to help merchants complete a destructive action quickly.
 
 ```jsx
-const deselectedOptions = [
-  {value: 'rustic', label: 'Rustic'},
-  {value: 'antique', label: 'Antique'},
-  {value: 'vinyl', label: 'Vinyl'},
-  {value: 'vintage', label: 'Vintage'},
-  {value: 'refurbished', label: 'Refurbished'},
-];
-const [selectedOptions, setSelectedOptions] = useState([]);
-const [inputValue, setInputValue] = useState('');
-const [options, setOptions] = useState(deselectedOptions);
-const [loading, setLoading] = useState(false);
+function AutocompleteActionBeforeExample() {
+  const deselectedOptions = [
+    {value: 'rustic', label: 'Rustic'},
+    {value: 'antique', label: 'Antique'},
+    {value: 'vinyl', label: 'Vinyl'},
+    {value: 'vintage', label: 'Vintage'},
+    {value: 'refurbished', label: 'Refurbished'},
+  ];
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(deselectedOptions);
+  const [loading, setLoading] = useState(false);
 
-const updateText = useCallback(
-  (value) => {
-    setInputValue(value);
+  const updateText = useCallback(
+    (value) => {
+      setInputValue(value);
 
-    if (!loading) {
-      setLoading(true);
-    }
-
-    setTimeout(() => {
-      if (value === '') {
-        setOptions(deselectedOptions);
-        setLoading(false);
-        return;
+      if (!loading) {
+        setLoading(true);
       }
-      const filterRegex = new RegExp(value, 'i');
-      const resultOptions = options.filter((option) =>
-        option.label.match(filterRegex),
-      );
-      setOptions(resultOptions);
-      setLoading(false);
-    }, 300);
-  },
-  [deselectedOptions, loading, options],
-);
 
-const updateSelection = useCallback(
-  (selected) => {
-    const selectedText = selected.map((selectedItem) => {
-      const matchedOption = options.find((option) => {
-        return option.value.match(selectedItem);
+      setTimeout(() => {
+        if (value === '') {
+          setOptions(deselectedOptions);
+          setLoading(false);
+          return;
+        }
+        const filterRegex = new RegExp(value, 'i');
+        const resultOptions = options.filter((option) =>
+          option.label.match(filterRegex),
+        );
+        setOptions(resultOptions);
+        setLoading(false);
+      }, 300);
+    },
+    [deselectedOptions, loading, options],
+  );
+
+  const updateSelection = useCallback(
+    (selected) => {
+      const selectedText = selected.map((selectedItem) => {
+        const matchedOption = options.find((option) => {
+          return option.value.match(selectedItem);
+        });
+        return matchedOption && matchedOption.label;
       });
-      return matchedOption && matchedOption.label;
-    });
-    setSelectedOptions(selected);
-    setInputValue(selectedText[0]);
-  },
-  [options],
-);
+      setSelectedOptions(selected);
+      setInputValue(selectedText[0]);
+    },
+    [options],
+  );
 
-const textField = (
-  <Autocomplete.TextField
-    onChange={updateText}
-    label="Tags"
-    value={inputValue}
-    prefix={<Icon source={SearchMinor} />}
-    placeholder="Search"
-  />
-);
-
-return (
-  <div style={{height: '225px'}}>
-    <Autocomplete
-      actionBefore={{
-        accessibilityLabel: 'Destructive action label',
-        content: 'Destructive action',
-        destructive: true,
-        icon: DeleteMinor,
-      }}
-      options={options}
-      selected={selectedOptions}
-      onSelect={updateSelection}
-      listTitle="Suggested tags"
-      loading={loading}
-      textField={textField}
+  const textField = (
+    <Autocomplete.TextField
+      onChange={updateText}
+      label="Tags"
+      value={inputValue}
+      prefix={<Icon source={SearchMinor} />}
+      placeholder="Search"
     />
-  </div>
-);
+  );
+
+  return (
+    <div style={{height: '225px'}}>
+      <Autocomplete
+        actionBefore={{
+          accessibilityLabel: 'Destructive action label',
+          content: 'Destructive action',
+          destructive: true,
+          icon: DeleteMinor,
+        }}
+        options={options}
+        selected={selectedOptions}
+        onSelect={updateSelection}
+        listTitle="Suggested tags"
+        loading={loading}
+        textField={textField}
+      />
+    </div>
+  );
+}
 ```
 
 ---
