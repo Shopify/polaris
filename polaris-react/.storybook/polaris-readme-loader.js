@@ -25,9 +25,13 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
-    readme.name,
-  );
+  const hasFullscreenLayout = [
+    'App provider',
+    'Frame',
+    'Navigation',
+    'Sheet',
+    'Grid',
+  ].includes(readme.name);
 
   const omitAppProvider = [
     'Frame',
