@@ -28,6 +28,7 @@ module.exports = function loader(source) {
   const hasFullscreenLayout = [
     'App provider',
     'Frame',
+    'Fullscreen bar',
     'Navigation',
     'Sheet',
     'Grid',
