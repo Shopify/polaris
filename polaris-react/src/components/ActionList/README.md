@@ -85,7 +85,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
 
 ```jsx
-function InAPopover() {
+function ActionListInPopoverExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -138,7 +138,7 @@ function InAPopover() {
 Use when the items benefit from an associated action or image, such as a list of products.
 
 ```jsx
-function WithIconsOrImage() {
+function ActionListWithMediaExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -175,7 +175,7 @@ function WithIconsOrImage() {
 Use when the items benefit from an associated action or image, such as a list of products.
 
 ```jsx
-function WithAnIconAndASuffix() {
+function ActionListWithSuffixExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -217,7 +217,7 @@ function WithAnIconAndASuffix() {
 Use when the items benefit from sections to help differentiate actions.
 
 ```jsx
-function WithSections() {
+function SectionedActionListExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -266,7 +266,7 @@ function WithSections() {
 Use to visually indicate that an action list item is destructive.
 
 ```jsx
-function WithDestructiveItem() {
+function ActionListWithDestructiveItemExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -317,7 +317,7 @@ function WithDestructiveItem() {
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
 ```jsx
-function WithHelpText() {
+function ActionListWithHelpTextExample() {
   const [active, setActive] = useState(true);
 
   const toggleActive = useCallback(() => setActive((active) => !active), []);
@@ -364,31 +364,33 @@ function WithHelpText() {
 Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 
 ```jsx
-return (
-  <div style={{height: '250px', maxWidth: '350px'}}>
-    <ActionList
-      actionRole="menuitem"
-      items={[
-        {
-          content: 'Go here',
-          prefix: (
-            <Thumbnail
-              source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-              size="small"
-              alt="Black leather pet collar"
-            />
-          ),
-          suffix: <Icon source={ChevronRightMinor} />,
-        },
-        {
-          content: 'Or there',
-          prefix: <Avatar customer name="Farrah" size="small" />,
-          suffix: <Icon source={ChevronRightMinor} />,
-        },
-      ]}
-    />
-  </div>
-);
+function ActionListWithPrefixSuffixExample() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        actionRole="menuitem"
+        items={[
+          {
+            content: 'Go here',
+            prefix: (
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="small"
+                alt="Black leather pet collar"
+              />
+            ),
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+          {
+            content: 'Or there',
+            prefix: <Avatar customer name="Farrah" size="small" />,
+            suffix: <Icon source={ChevronRightMinor} />,
+          },
+        ]}
+      />
+    </div>
+  );
+}
 ```
 
 ---
