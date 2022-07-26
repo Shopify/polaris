@@ -1,16 +1,19 @@
 import { Autocomplete, Icon } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
 
 function AutocompleteExample() {
-  const deselectedOptions = [
-    { value: "rustic", label: "Rustic" },
-    { value: "antique", label: "Antique" },
-    { value: "vinyl", label: "Vinyl" },
-    { value: "vintage", label: "Vintage" },
-    { value: "refurbished", label: "Refurbished" },
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      { value: "rustic", label: "Rustic" },
+      { value: "antique", label: "Antique" },
+      { value: "vinyl", label: "Vinyl" },
+      { value: "vintage", label: "Vintage" },
+      { value: "refurbished", label: "Refurbished" },
+    ],
+    []
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);
@@ -38,7 +41,7 @@ function AutocompleteExample() {
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, options, loading]
+    [deselectedOptions, loading]
   );
 
   const updateSelection = useCallback(
