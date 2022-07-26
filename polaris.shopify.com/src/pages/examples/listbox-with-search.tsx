@@ -23,6 +23,8 @@ interface CustomerSegment {
   value: string;
 }
 
+const actionValue = "__ACTION__";
+
 const segments: CustomerSegment[] = [
   {
     label: "All customers",
@@ -88,9 +90,9 @@ const segments: CustomerSegment[] = [
 
 const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
   (_, index) => ({
-    label: `Other customers ${index + 13}`,
-    id: `gid://shopify/CustomerSegment/${index + 13}`,
-    value: `${index + 11}`,
+    label: `Other customers ${index + 12}`,
+    id: `gid://shopify/CustomerSegment/${index + 12}`,
+    value: `${index + 12}`,
   })
 );
 
@@ -99,17 +101,21 @@ segments.push(...lazyLoadSegments);
 const interval = 25;
 
 function ListboxWithSearchExample() {
-  const [pickerOpen, setPickerOpen] = useState(false);
+  const [showFooterAction, setShowFooterAction] = useState(true);
   const [query, setQuery] = useState("");
   const [lazyLoading, setLazyLoading] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
-  const [visibleOptionIndex, setVisibleOptionIndex] = useState(interval);
+  const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
   const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
     []
   );
+
+  const handleClickShowAll = () => {
+    setShowFooterAction(false);
+    setVisibleOptionIndex(segments.length);
+  };
 
   const handleFilterSegments = (query: string) => {
     const nextFilteredSegments = segments.filter((segment: CustomerSegment) => {
@@ -135,19 +141,12 @@ function ListboxWithSearchExample() {
     setVisibleOptionIndex(interval);
   };
 
-  const handleOpenPicker = () => {
-    setPickerOpen(true);
-  };
-
-  const handleClosePicker = () => {
-    setPickerOpen(false);
-    handleQueryChange("");
-    handleResetVisibleOptionIndex();
-  };
-
   const handleSegmentSelect = (segmentIndex: string) => {
+    if (segmentIndex === actionValue) {
+      return handleClickShowAll();
+    }
+
     setSelectedSegmentIndex(Number(segmentIndex));
-    handleClosePicker();
   };
 
   const handleActiveOptionChange = (_: string, domId: string) => {
@@ -157,7 +156,7 @@ function ListboxWithSearchExample() {
   /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
 
   const handleLazyLoadSegments = () => {
-    if (willLoadMoreResults) {
+    if (willLoadMoreResults && !showFooterAction) {
       setLazyLoading(true);
 
       const options = query ? filteredSegments : segments;
@@ -184,7 +183,7 @@ function ListboxWithSearchExample() {
   const textFieldMarkup = (
     <div style={{ padding: "12px" }}>
       <TextField
-        focused
+        focused={showFooterAction}
         clearButton
         labelHidden
         label="Customer segments"
@@ -219,6 +218,14 @@ function ListboxWithSearchExample() {
           })
       : null;
 
+  const showAllMarkup = showFooterAction ? (
+    <Listbox.Action value={actionValue}>
+      <Button plain onClick={handleClickShowAll}>
+        Show all 111 segments
+      </Button>
+    </Listbox.Action>
+  ) : null;
+
   const lazyLoadingMarkup = lazyLoading ? (
     <Listbox.Loading
       accessibilityLabel={`${
@@ -243,6 +250,7 @@ function ListboxWithSearchExample() {
       onActiveOptionChange={handleActiveOptionChange}
     >
       {segmentList}
+      {showAllMarkup}
       {noResultsMarkup}
       {lazyLoadingMarkup}
     </Listbox>
@@ -250,14 +258,30 @@ function ListboxWithSearchExample() {
 
   return (
     <Card>
-      <div style={{ height: "265px", overflow: "hidden" }}>
+      <div
+        style={{
+          alignItems: "stretch",
+          borderTop: "1px solid #DFE3E8",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "stretch",
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          overflow: "hidden",
+        }}
+      >
         {textFieldMarkup}
+
         <Scrollable
           shadow
           style={{
-            height: "205px",
+            position: "relative",
             width: "310px",
-            padding: "4px 0 12px",
+            height: "292px",
+            padding: "var(--p-space-2) 0",
+            borderBottomLeftRadius: "var(--p-border-radius-2)",
+            borderBottomRightRadius: "var(--p-border-radius-2)",
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >

@@ -13,6 +13,7 @@ import {
   Icon,
   Button,
   EmptySearchResult,
+  TextContainer,
 } from "@shopify/polaris";
 import { MobileCancelMajor, SearchMinor } from "@shopify/polaris-icons";
 
@@ -23,6 +24,8 @@ interface CustomerSegment {
   label: string;
   value: string;
 }
+
+const actionValue = "__ACTION__";
 
 const segments: CustomerSegment[] = [
   {
@@ -89,9 +92,9 @@ const segments: CustomerSegment[] = [
 
 const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
   (_, index) => ({
-    label: `Other customers ${index + 13}`,
-    id: `gid://shopify/CustomerSegment/${index + 13}`,
-    value: `${index + 11}`,
+    label: `Other customers ${index + 12}`,
+    id: `gid://shopify/CustomerSegment/${index + 12}`,
+    value: `${index + 12}`,
   })
 );
 
@@ -101,16 +104,21 @@ const interval = 25;
 
 function SheetWithSearchableListboxExample() {
   const [sheetOpen, setSheetOpen] = useState(true);
+  const [showFooterAction, setShowFooterAction] = useState(true);
   const [query, setQuery] = useState("");
   const [lazyLoading, setLazyLoading] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
-  const [visibleOptionIndex, setVisibleOptionIndex] = useState(interval);
+  const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
   const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
     []
   );
+
+  const handleClickShowAll = () => {
+    setShowFooterAction(false);
+    setVisibleOptionIndex(segments.length);
+  };
 
   const handleFilterSegments = (query: string) => {
     const nextFilteredSegments = segments.filter((segment: CustomerSegment) => {
@@ -147,6 +155,10 @@ function SheetWithSearchableListboxExample() {
   };
 
   const handleSegmentSelect = (segmentIndex: string) => {
+    if (segmentIndex === actionValue) {
+      return handleClickShowAll();
+    }
+
     setSelectedSegmentIndex(Number(segmentIndex));
     handleCloseSheet();
   };
@@ -158,7 +170,7 @@ function SheetWithSearchableListboxExample() {
   /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
 
   const handleLazyLoadSegments = () => {
-    if (willLoadMoreResults) {
+    if (willLoadMoreResults && !showFooterAction) {
       setLazyLoading(true);
 
       const options = query ? filteredSegments : segments;
@@ -184,28 +196,28 @@ function SheetWithSearchableListboxExample() {
 
   /* Your app's feature/context specific activator here */
   const activator = (
-    <div
-      style={{
-        fontSize: "var(--p-font-size-7)",
-        color: "var(--p-text)",
-        borderBottom: "1px dashed var(--p-border)",
-      }}
-    >
-      <Button monochrome onClick={handleOpenSheet}>
-        {segments[selectedSegmentIndex].label}
-      </Button>
-    </div>
+    <Button onClick={handleOpenSheet}>
+      {segments[selectedSegmentIndex].label}
+    </Button>
   );
 
   const textFieldMarkup = (
-    <div style={{ padding: "12px" }}>
+    <div
+      style={{
+        padding: "var(--p-space-4) var(--p-space-2)",
+        position: "sticky",
+        zIndex: "var(--p-z-12)",
+        width: "100%",
+        background: "var(--p-surface)",
+      }}
+    >
       <StopPropagation>
         <TextField
-          focused
+          focused={showFooterAction}
           clearButton
           labelHidden
           label="Customer segments"
-          placeholder="Type to search or filter segments"
+          placeholder="Search segments"
           autoComplete="off"
           value={query}
           prefix={<Icon source={SearchMinor} />}
@@ -237,6 +249,14 @@ function SheetWithSearchableListboxExample() {
           })
       : null;
 
+  const showAllMarkup = showFooterAction ? (
+    <Listbox.Action value={actionValue}>
+      <Button plain onClick={handleClickShowAll}>
+        Show all 111 segments
+      </Button>
+    </Listbox.Action>
+  ) : null;
+
   const lazyLoadingMarkup = lazyLoading ? (
     <Listbox.Loading
       accessibilityLabel={`${
@@ -254,47 +274,59 @@ function SheetWithSearchableListboxExample() {
     ) : null;
 
   const listboxMarkup = (
-    <Listbox
-      enableKeyboardControl
-      autoSelection={AutoSelection.FirstSelected}
-      onSelect={handleSegmentSelect}
-      onActiveOptionChange={handleActiveOptionChange}
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100%",
+      }}
     >
-      {segmentList}
-      {noResultsMarkup}
-      {lazyLoadingMarkup}
-    </Listbox>
+      <Listbox
+        enableKeyboardControl
+        autoSelection={AutoSelection.FirstSelected}
+        onSelect={handleSegmentSelect}
+        onActiveOptionChange={handleActiveOptionChange}
+      >
+        {segmentList}
+        {showAllMarkup}
+        {noResultsMarkup}
+        {lazyLoadingMarkup}
+      </Listbox>
+    </div>
   );
 
   return (
-    <Page narrowWidth>
+    <div style={{ height: "265px" }}>
       {activator}
-      <Sheet open accessibilityLabel="Flow action" onClose={() => {}}>
+      <Sheet
+        open={sheetOpen}
+        accessibilityLabel="Flow action"
+        onClose={handleCloseSheet}
+      >
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            height: "100%",
           }}
         >
           <div
             style={{
-              alignItems: "center",
+              alignItems: "flex-start",
               borderBottom: "1px solid #DFE3E8",
               display: "flex",
+              flexDirection: "column",
               justifyContent: "space-between",
-              padding: "1rem",
               width: "100%",
+              padding: "var(--p-space-4)",
             }}
           >
             <div
               style={{
                 alignItems: "center",
-                borderBottom: "1px solid #DFE3E8",
                 display: "flex",
                 justifyContent: "space-between",
-                padding: "1rem",
                 width: "100%",
+                marginBottom: "var(--p-space-2)",
               }}
             >
               <TextStyle variation="subdued">
@@ -303,26 +335,48 @@ function SheetWithSearchableListboxExample() {
               <Button
                 accessibilityLabel="Cancel"
                 icon={MobileCancelMajor}
-                onClick={() => {}}
+                onClick={handleCloseSheet}
                 plain
               />
             </div>
-            <Heading></Heading>
+            <TextContainer>
+              <Heading>Look up customer segmentation membership</Heading>
+              <TextStyle variation="subdued">
+                Look up whether a customer is included in a segment.
+              </TextStyle>
+            </TextContainer>
           </div>
-          <Scrollable style={{ padding: "1rem", height: "100%" }}></Scrollable>
           <div
             style={{
-              alignItems: "center",
+              alignItems: "stretch",
               borderTop: "1px solid #DFE3E8",
               display: "flex",
-              justifyContent: "space-between",
-              padding: "1rem",
+              flexDirection: "column",
+              justifyContent: "stretch",
+              position: "relative",
               width: "100%",
+              height: "100%",
+              overflow: "hidden",
             }}
-          ></div>
+          >
+            {textFieldMarkup}
+
+            <Scrollable
+              shadow
+              style={{
+                position: "relative",
+                width: "100%",
+                height: "292px",
+                padding: "var(--p-space-2) 0",
+              }}
+              onScrolledToBottom={handleLazyLoadSegments}
+            >
+              {listboxMarkup}
+            </Scrollable>
+          </div>
         </div>
       </Sheet>
-    </Page>
+    </div>
   );
 }
 

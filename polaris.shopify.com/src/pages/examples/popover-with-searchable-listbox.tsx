@@ -10,6 +10,7 @@ import {
   Scrollable,
   EmptySearchResult,
   DisplayText,
+  Button,
 } from "@shopify/polaris";
 import { SearchMinor } from "@shopify/polaris-icons";
 
@@ -20,6 +21,8 @@ interface CustomerSegment {
   label: string;
   value: string;
 }
+
+const actionValue = "__ACTION__";
 
 const segments: CustomerSegment[] = [
   {
@@ -86,9 +89,9 @@ const segments: CustomerSegment[] = [
 
 const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
   (_, index) => ({
-    label: `Other customers ${index + 13}`,
-    id: `gid://shopify/CustomerSegment/${index + 13}`,
-    value: `${index + 11}`,
+    label: `Other customers ${index + 12}`,
+    id: `gid://shopify/CustomerSegment/${index + 12}`,
+    value: `${index + 12}`,
   })
 );
 
@@ -98,16 +101,21 @@ const interval = 25;
 
 function PopoverWithSearchableListboxExample() {
   const [pickerOpen, setPickerOpen] = useState(false);
+  const [showFooterAction, setShowFooterAction] = useState(true);
   const [query, setQuery] = useState("");
   const [lazyLoading, setLazyLoading] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
-  const [visibleOptionIndex, setVisibleOptionIndex] = useState(interval);
+  const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
   const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
     []
   );
+
+  const handleClickShowAll = () => {
+    setShowFooterAction(false);
+    setVisibleOptionIndex(segments.length);
+  };
 
   const handleFilterSegments = (query: string) => {
     const nextFilteredSegments = segments.filter((segment: CustomerSegment) => {
@@ -144,6 +152,10 @@ function PopoverWithSearchableListboxExample() {
   };
 
   const handleSegmentSelect = (segmentIndex: string) => {
+    if (segmentIndex === actionValue) {
+      return handleClickShowAll();
+    }
+
     setSelectedSegmentIndex(Number(segmentIndex));
     handleClosePicker();
   };
@@ -155,7 +167,7 @@ function PopoverWithSearchableListboxExample() {
   /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
 
   const handleLazyLoadSegments = () => {
-    if (willLoadMoreResults) {
+    if (willLoadMoreResults && !showFooterAction) {
       setLazyLoading(true);
 
       const options = query ? filteredSegments : segments;
@@ -200,11 +212,11 @@ function PopoverWithSearchableListboxExample() {
     <div style={{ padding: "12px" }}>
       <StopPropagation>
         <TextField
-          focused
+          focused={showFooterAction}
           clearButton
           labelHidden
           label="Customer segments"
-          placeholder="Type to search or filter segments"
+          placeholder="Search segments"
           autoComplete="off"
           value={query}
           prefix={<Icon source={SearchMinor} />}
@@ -236,6 +248,14 @@ function PopoverWithSearchableListboxExample() {
           })
       : null;
 
+  const showAllMarkup = showFooterAction ? (
+    <Listbox.Action value={actionValue}>
+      <Button plain onClick={handleClickShowAll}>
+        Show all 111 segments
+      </Button>
+    </Listbox.Action>
+  ) : null;
+
   const lazyLoadingMarkup = lazyLoading ? (
     <Listbox.Loading
       accessibilityLabel={`${
@@ -260,32 +280,54 @@ function PopoverWithSearchableListboxExample() {
       onActiveOptionChange={handleActiveOptionChange}
     >
       {segmentList}
+      {showAllMarkup}
       {noResultsMarkup}
       {lazyLoadingMarkup}
     </Listbox>
   );
 
   return (
-    <div style={{ height: "265px" }}>
+    <div style={{ height: "400px" }}>
       <Popover
         active={pickerOpen}
         activator={activator}
-        preferredAlignment="center"
+        ariaHaspopup="listbox"
+        preferredAlignment="left"
         autofocusTarget="first-node"
         onClose={handleClosePicker}
       >
-        <Popover.Pane fixed>{textFieldMarkup}</Popover.Pane>
-        <Scrollable
-          shadow
-          style={{
-            height: "265px",
-            width: "310px",
-            padding: "4px 0 12px",
-          }}
-          onScrolledToBottom={handleLazyLoadSegments}
-        >
-          {listboxMarkup}
-        </Scrollable>
+        <Popover.Pane fixed>
+          <div
+            style={{
+              alignItems: "stretch",
+              borderTop: "1px solid #DFE3E8",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "stretch",
+              position: "relative",
+              width: "100%",
+              height: "100%",
+              overflow: "hidden",
+            }}
+          >
+            {textFieldMarkup}
+
+            <Scrollable
+              shadow
+              style={{
+                position: "relative",
+                width: "310px",
+                height: "292px",
+                padding: "var(--p-space-2) 0",
+                borderBottomLeftRadius: "var(--p-border-radius-2)",
+                borderBottomRightRadius: "var(--p-border-radius-2)",
+              }}
+              onScrolledToBottom={handleLazyLoadSegments}
+            >
+              {listboxMarkup}
+            </Scrollable>
+          </div>
+        </Popover.Pane>
       </Popover>
     </div>
   );
