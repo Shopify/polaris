@@ -206,9 +206,11 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
 ```jsx
-<Banner title="Order archived" onDismiss={() => {}}>
-  <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
-</Banner>
+return (
+  <Banner title="Order archived" onDismiss={() => {}}>
+    <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+  </Banner>
+);
 ```
 
 ### Dismissible
@@ -216,12 +218,14 @@ Use to convey general information or actions that aren’t critical. For example
 Make all banners dismissible, unless they contain critical information or an important action that merchants are required to take.
 
 ```jsx
-<Banner onDismiss={() => {}}>
-  <p>
-    Use your finance report to get detailed information about your business.{' '}
-    <Link url="">Let us know what you think</Link>
-  </p>
-</Banner>
+return (
+  <Banner onDismiss={() => {}}>
+    <p>
+      Use your finance report to get detailed information about your business.{' '}
+      <Link url="">Let us know what you think</Link>
+    </p>
+  </Banner>
+);
 ```
 
 ### With footer call-to-action
@@ -229,18 +233,20 @@ Make all banners dismissible, unless they contain critical information or an imp
 Use when you want merchants to take an action after reading the banner.
 
 ```jsx
-<Banner
-  title="Some of your product variants are missing weights"
-  status="warning"
-  action={{content: 'Edit variant weights', url: ''}}
-  secondaryAction={{content: 'Learn more', url: ''}}
-  onDismiss={() => {}}
->
-  <p>
-    Add weights to show accurate rates at checkout and when buying shipping
-    labels in Shopify.
-  </p>
-</Banner>
+return (
+  <Banner
+    title="Some of your product variants are missing weights"
+    status="warning"
+    action={{content: 'Edit variant weights', url: ''}}
+    secondaryAction={{content: 'Learn more', url: ''}}
+    onDismiss={() => {}}
+  >
+    <p>
+      Add weights to show accurate rates at checkout and when buying shipping
+      labels in Shopify.
+    </p>
+  </Banner>
+);
 ```
 
 ### Informational
@@ -248,15 +254,17 @@ Use when you want merchants to take an action after reading the banner.
 Use to update merchants about a change or give them advice.
 
 ```jsx
-<Banner
-  title="USPS has updated their rates"
-  action={{content: 'Update rates', url: ''}}
-  secondaryAction={{content: 'Learn more'}}
-  status="info"
-  onDismiss={() => {}}
->
-  <p>Make sure you know how these changes affect your store.</p>
-</Banner>
+return (
+  <Banner
+    title="USPS has updated their rates"
+    action={{content: 'Update rates', url: ''}}
+    secondaryAction={{content: 'Learn more'}}
+    status="info"
+    onDismiss={() => {}}
+  >
+    <p>Make sure you know how these changes affect your store.</p>
+  </Banner>
+);
 ```
 
 ### Success
@@ -264,12 +272,14 @@ Use to update merchants about a change or give them advice.
 Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action. Include next steps if applicable.
 
 ```jsx
-<Banner
-  title="Your shipping label is ready to print."
-  status="success"
-  action={{content: 'Print label'}}
-  onDismiss={() => {}}
-/>
+return (
+  <Banner
+    title="Your shipping label is ready to print."
+    status="success"
+    action={{content: 'Print label'}}
+    onDismiss={() => {}}
+  />
+);
 ```
 
 ### Warning
@@ -277,18 +287,20 @@ Default to using toasts for success messages, unless the feedback is delayed, pe
 Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
-<Banner
-  title="Before you can purchase a shipping label, this change needs to be made:"
-  action={{content: 'Edit address'}}
-  status="warning"
->
-  <List>
-    <List.Item>
-      The name of the city you’re shipping to has characters that aren’t
-      allowed. City name can only include spaces and hyphens.
-    </List.Item>
-  </List>
-</Banner>
+return (
+  <Banner
+    title="Before you can purchase a shipping label, this change needs to be made:"
+    action={{content: 'Edit address'}}
+    status="warning"
+  >
+    <List>
+      <List.Item>
+        The name of the city you’re shipping to has characters that aren’t
+        allowed. City name can only include spaces and hyphens.
+      </List.Item>
+    </List>
+  </Banner>
+);
 ```
 
 ### Critical
@@ -296,17 +308,19 @@ Use to display information that needs attention or that merchants need to take a
 Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
-<Banner
-  title="High risk of fraud detected"
-  action={{content: 'Review risk analysis'}}
-  status="critical"
->
-  <p>
-    Before fulfilling this order or capturing payment, please{' '}
-    <Link url="">review the Risk Analysis</Link> and determine if this order is
-    fraudulent.
-  </p>
-</Banner>
+return (
+  <Banner
+    title="High risk of fraud detected"
+    action={{content: 'Review risk analysis'}}
+    status="critical"
+  >
+    <p>
+      Before fulfilling this order or capturing payment, please{' '}
+      <Link url="">review the Risk Analysis</Link> and determine if this order
+      is fraudulent.
+    </p>
+  </Banner>
+);
 ```
 
 ### In a modal
@@ -314,47 +328,44 @@ Use to communicate problems that have to be resolved immediately for merchants t
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
-function BannerInModalExample() {
-  const [active, setActive] = useState(false);
+const [active, setActive] = useState(false);
 
-  const handleChange = useCallback(() => setActive(!active), [active]);
+const handleChange = useCallback(() => setActive(!active), [active]);
 
-  return (
-    <div style={{height: '500px'}}>
-      <Button onClick={handleChange}>Open</Button>
-      <Modal
-        open={active}
-        onClose={handleChange}
-        title="Reach more shoppers with Instagram product tags"
-        primaryAction={{
-          content: 'Add Instagram',
+return (
+  <div style={{height: '500px'}}>
+    <Button onClick={handleChange}>Open</Button>
+    <Modal
+      open={active}
+      onClose={handleChange}
+      title="Reach more shoppers with Instagram product tags"
+      primaryAction={{
+        content: 'Add Instagram',
+        onAction: handleChange,
+      }}
+      secondaryActions={[
+        {
+          content: 'Learn more',
           onAction: handleChange,
-        }}
-        secondaryActions={[
-          {
-            content: 'Learn more',
-            onAction: handleChange,
-          },
-        ]}
-      >
-        <Modal.Section>
-          <TextContainer>
-            <Banner action={{content: 'Connect account'}} status="warning">
-              <p>
-                Connect your instagram account to your shop before proceeding.
-              </p>
-            </Banner>
+        },
+      ]}
+    >
+      <Modal.Section>
+        <TextContainer>
+          <Banner action={{content: 'Connect account'}} status="warning">
             <p>
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
+              Connect your instagram account to your shop before proceeding.
             </p>
-          </TextContainer>
-        </Modal.Section>
-      </Modal>
-    </div>
-  );
-}
+          </Banner>
+          <p>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
+          </p>
+        </TextContainer>
+      </Modal.Section>
+    </Modal>
+  </div>
+);
 ```
 
 ### With focus
@@ -362,25 +373,23 @@ function BannerInModalExample() {
 Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
 
 ```jsx
-function BannerWithFocusExample() {
-  const banner = useRef();
+const banner = useRef();
 
-  useEffect(() => banner.current.focus(), []);
+useEffect(() => banner.current.focus(), []);
 
-  return (
-    <Banner
-      title="High risk of fraud detected"
-      onDismiss={() => {}}
-      status="critical"
-      ref={banner}
-    >
-      <p>
-        Before fulfilling this order or capturing payment, please review the
-        fraud analysis and determine if this order is fraudulent
-      </p>
-    </Banner>
-  );
-}
+return (
+  <Banner
+    title="High risk of fraud detected"
+    onDismiss={() => {}}
+    status="critical"
+    ref={banner}
+  >
+    <p>
+      Before fulfilling this order or capturing payment, please review the fraud
+      analysis and determine if this order is fraudulent
+    </p>
+  </Banner>
+);
 ```
 
 ### In a card
@@ -388,18 +397,20 @@ function BannerWithFocusExample() {
 Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 
 ```jsx
-<Card title="Online store dashboard" sectioned>
-  <TextContainer>
-    <Banner onDismiss={() => {}}>
-      <p>
-        Use your finance report to get detailed information about your business.{' '}
-        <Link url="">Let us know what you think</Link>
-      </p>
-    </Banner>
+return (
+  <Card title="Online store dashboard" sectioned>
+    <TextContainer>
+      <Banner onDismiss={() => {}}>
+        <p>
+          Use your finance report to get detailed information about your
+          business. <Link url="">Let us know what you think</Link>
+        </p>
+      </Banner>
 
-    <p>View a summary of your online store’s performance.</p>
-  </TextContainer>
-</Card>
+      <p>View a summary of your online store’s performance.</p>
+    </TextContainer>
+  </Card>
+);
 ```
 
 ---
