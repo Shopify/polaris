@@ -186,7 +186,7 @@ function GlobalSearch() {
                   aria-controls="search-results"
                   aria-expanded={searchResultsCount > 0}
                   aria-activedescendant={currentItemId}
-                  onKeyDown={handleKeyboardNavigation}
+                  onKeyUp={handleKeyboardNavigation}
                   autoComplete="off"
                   autoCorrect="off"
                   autoCapitalize="off"

@@ -37,7 +37,7 @@ Stacks should:
 
 ## Examples
 
-### Default behavior
+### Default
 
 Use to quickly lay out a horizontal row of components and maintain their relative sizes. On small screens, children rows wrap down to additional rows as needed.
 
@@ -50,7 +50,7 @@ Use to quickly lay out a horizontal row of components and maintain their relativ
 </Stack>
 ```
 
-### Non-wrapping Stacks
+### Non-wrapping
 
 Use to create a stack where the children will not wrap to new rows on small screens. As noted above, the wrap option defaults to true. This means you must explicitly set it to false to turn it off.
 
@@ -63,7 +63,7 @@ Use to create a stack where the children will not wrap to new rows on small scre
 </Stack>
 ```
 
-### Spacing options
+### Spacing
 
 Use to control spacing of items in a stack in standard increments. Use tight for less spacing, loose for more spacing, or none to remove normal spacing altogether.
 
@@ -74,7 +74,7 @@ Use to control spacing of items in a stack in standard increments. Use tight for
 </Stack>
 ```
 
-### Vertical centering with a stack
+### Vertical centering
 
 Use to vertically center a set of items that have different heights.
 
@@ -104,7 +104,7 @@ Use to have the stack’s items fill the horizontal space in the container but m
 </Stack>
 ```
 
-### Stack where items fill space evenly
+### Where items fill space evenly
 
 Use to have the stack’s items fill the horizontal space in the container and be equal widths, regardless of their content.
 
@@ -116,7 +116,7 @@ Use to have the stack’s items fill the horizontal space in the container and b
 </Stack>
 ```
 
-### Stack where a single item fills the remaining space
+### Where a single item fills the remaining space
 
 Use for aligning buttons or secondary content to the right edge of another element, allowing it to wrap below on small screens.
 

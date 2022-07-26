@@ -50,7 +50,7 @@ Use placeholder content that will change when the page fully loads. This will co
 
 ## Examples
 
-### Page with dynamic content
+### With dynamic content
 
 Use this component to compose a loading version of a page where the page title and header content are dynamic, meaning, the content changes.
 
@@ -102,7 +102,7 @@ Use this component to compose a loading version of a page where the page title a
 </SkeletonPage>
 ```
 
-### Page with static content
+### With static content
 
 Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 

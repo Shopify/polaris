@@ -29,17 +29,21 @@ module.exports = function loader(source) {
     readme.name,
   );
 
+  const omitAppProvider = [
+    'Frame',
+    'App provider',
+    'Custom properties',
+  ].includes(readme.name);
+
   const csfExports = readme.examples.map((example) => {
     return `
 const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
-  return <div data-omit-app-provider="${readme.omitAppProvider}"><${
-      example.storyName
-    }Component /></div>;
+  return <${example.storyName}Component />;
 }
 
 ${example.storyName}.storyName = ${JSON.stringify(example.name)};
-${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};
+${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};
 ${example.storyName}.parameters = {
   layout: '${hasFullscreenLayout ? 'fullscreen' : 'padded'}',
   docs: {
@@ -253,7 +257,6 @@ function parseCodeExamples(data) {
     category: matter.data.category,
     component: examples.length ? toPascalCase(matter.data.name) : undefined,
     examples,
-    omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
 

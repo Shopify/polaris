@@ -7,7 +7,6 @@ keywords:
   - color scheme
   - light mode
   - dark mode
-omitAppProvider: true
 ---
 
 # Custom Properties
@@ -18,7 +17,7 @@ Use the custom properties component to share global theme settings throughout th
 
 ## Examples
 
-### Custom properties rendered by the app provider
+### Rendered by the app provider
 
 The app provider component renders a CustomProperties component with the default color scheme.
 
@@ -39,7 +38,7 @@ The app provider component renders a CustomProperties component with the default
 </AppProvider>
 ```
 
-### Custom properties with a color scheme rendered by the app provider
+### With a color scheme rendered by the app provider
 
 A color scheme can be passed to the app provider to determine what color scheme is globally applied to the application.
 
@@ -60,7 +59,7 @@ A color scheme can be passed to the app provider to determine what color scheme 
 </AppProvider>
 ```
 
-### Custom properties with a different color scheme nested within an app provider
+### With a different color scheme nested within an app provider
 
 Custom properties can be nested within the custom properties rendered by the app provider in order to override the color scheme at a local level.
 

@@ -9,15 +9,11 @@ keywords:
   - page
 examples:
   - fileName: skeleton-page-with-dynamic-content.tsx
-    title: Page with dynamic content
-    description: >-
-      Use this component to compose a loading version of a page where the page
-      title and header content are dynamic, meaning, the content changes.
+    title: With dynamic content
+    description: Use this component to compose a loading version of a page where the page title and header content are dynamic, meaning, the content changes.
   - fileName: skeleton-page-with-static-content.tsx
-    title: Page with static content
-    description: >-
-      Use this component to compose a loading version of a page where the page
-      title and header content are known and stay the same.
+    title: With static content
+    description: Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 ---
 
 # Skeleton page

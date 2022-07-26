@@ -43,7 +43,7 @@ Collapsible containers are cards with expandable and collapsible functionality, 
 
 ## Examples
 
-### Default collapsible component
+### Default
 
 Use for a basic “show more” interaction when you need to display more content.
 

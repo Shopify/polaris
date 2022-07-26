@@ -23,19 +23,17 @@ keywords:
   - secondary actions in a list
   - list of resources
 examples:
-  - fileName: resource-item-simple.tsx
-    title: Simple resource item
+  - fileName: resource-item-default.tsx
+    title: Default
     description: A basic resource item with its details filled in at the point of use.
-  - fileName: resource-item-item-with-media.tsx
-    title: Item with media
-  - fileName: resource-item-item-with-shortcut-actions.tsx
-    title: Item with shortcut actions
-    description: >-
-      Shortcut actions present popular actions from the resource’s details page
-      for easy access. A shortcut action should be available on every item in
-      the list.
-  - fileName: resource-item-item-with-vertical-alignment.tsx
-    title: Item with vertical alignment
+  - fileName: resource-item-with-media.tsx
+    title: With media
+    description: The media element can hold an [avatar](https://polaris.shopify.com/components/avatar), [thumbnail](https://polaris.shopify.com/components/thumbnail), or other small-format graphic.
+  - fileName: resource-item-with-shortcut-actions.tsx
+    title: With shortcut actions
+    description: Shortcut actions present popular actions from the resource’s details page for easy access. A shortcut action should be available on every item in the list.
+  - fileName: resource-item-with-vertical-alignment.tsx
+    title: With vertical alignment
     description: Use to adjust the vertical alignment of item content.
 ---
 

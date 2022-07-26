@@ -25,7 +25,7 @@ Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/d
 
 ## Examples
 
-### Two column wrapping layout
+### Two column
 
 Use to create a two column layout that wraps at a breakpoint and aligns to a twelve column grid.
 
@@ -46,7 +46,7 @@ Use to create a two column layout that wraps at a breakpoint and aligns to a twe
 </Page>
 ```
 
-### Two-thirds column one-third column wrapping layout
+### Two-thirds and one-third column
 
 Use to create a two-thirds, one-third column layout that wraps at a breakpoint and aligns to a twelve column grid.
 
@@ -67,7 +67,7 @@ Use to create a two-thirds, one-third column layout that wraps at a breakpoint a
 </Page>
 ```
 
-### Three one-third column wrapping layout with a custom column count
+### Three one-third column
 
 Use to create a three column layout that wrap at a breakpoint and aligns to a twelve column grid.
 
@@ -93,7 +93,7 @@ Use to create a three column layout that wrap at a breakpoint and aligns to a tw
 </Page>
 ```
 
-### Custom layout using grid areas and custom columns
+### Custom layout
 
 Use to create a layout that can be customized at specific breakpoints.
 
