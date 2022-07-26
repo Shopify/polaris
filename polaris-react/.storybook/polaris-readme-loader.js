@@ -4,7 +4,6 @@ const grayMatter = require('gray-matter');
 const MdParser = require('./md-parser');
 const React = require('react');
 const lodash = require('lodash');
-const {omit} = require('lodash');
 
 const HOOK_PREFIX = 'use';
 
