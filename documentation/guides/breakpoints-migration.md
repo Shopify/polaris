@@ -10,7 +10,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `breakpoint-after()`
 
-**Before**
+_Before_
 
 ```scss
 @include breakpoint-after(490) {
@@ -18,7 +18,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-sm-up} {
@@ -41,7 +41,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `breakpoint-before()`
 
-**Before**
+_Before_
 
 ```scss
 @include breakpoint-before(490) {
@@ -49,7 +49,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-sm-down} {
@@ -72,7 +72,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `page-content-breakpoint-after()`
 
-**Before**
+_Before_
 
 ```scss
 @include page-content-breakpoint-after(490) {
@@ -80,7 +80,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-sm-up} {
@@ -135,7 +135,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `page-content-breakpoint-before()`
 
-**Before**
+_Before_
 
 ```scss
 @include page-content-breakpoint-before(490) {
@@ -143,7 +143,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-sm-down} {
@@ -198,7 +198,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `page-content-when-partially-condensed()`
 
-**Before**
+_Before_
 
 ```scss
 @include page-content-when-partially-condensed() {
@@ -206,7 +206,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-md-down} {
@@ -229,7 +229,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `page-content-when-not-partially-condensed()`
 
-**Before**
+_Before_
 
 ```scss
 @include page-content-when-not-partially-condensed() {
@@ -237,7 +237,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-md-up} {
@@ -260,7 +260,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `page-content-when-fully-condensed()`
 
-**Before**
+_Before_
 
 ```scss
 @include page-content-when-fully-condensed() {
@@ -268,7 +268,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-sm-down} {
@@ -291,7 +291,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 
 ### `page-content-when-not-fully-condensed()`
 
-**Before**
+_Before_
 
 ```scss
 @include page-content-when-not-fully-condensed() {
@@ -299,7 +299,7 @@ Otherwise, if you really need to keep the old mixin, you can copy its definition
 }
 ```
 
-**After**
+_After_
 
 ```scss
 @media #{$p-breakpoints-sm-up} {
