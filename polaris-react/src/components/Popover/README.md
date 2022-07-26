@@ -115,7 +115,7 @@ If the popover includes a series of navigational links, each item should:
 
 ## Examples
 
-### Popover with action list
+### With action list
 
 Use when presenting a set of actions in a disclosable menu.
 
@@ -152,7 +152,7 @@ function PopoverWithActionListExample() {
 }
 ```
 
-### Popover with content and actions
+### With content and actions
 
 Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
 
@@ -200,7 +200,7 @@ function PopoverContentExample() {
 }
 ```
 
-### Popover with form components
+### With form components
 
 Use to present secondary input tasks on demand.
 
@@ -247,7 +247,7 @@ function PopoverFormExample() {
 }
 ```
 
-### Popover with lazy loaded list
+### With lazy loaded list
 
 Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
 

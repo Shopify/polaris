@@ -22,18 +22,13 @@ keywords:
   - landing layouts
 examples:
   - fileName: empty-state-default.tsx
-    title: Default empty state
-    description: >-
-      Use to explain a single feature before merchants have used
-      it.
+    title: Default
+    description: Use to explain a single feature before merchants have used it.
   - fileName: empty-state-with-subdued-footer-context.tsx
-    title: Empty state with subdued footer context
-    description: >-
-      Use to provide additional but non-critical context for a new product or
-      feature. Can also be used to include a subdued call to action for
-      secondary or tertiary actions.
+    title: With subdued footer context
+    description: Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
   - fileName: empty-state-with-full-width-layout.tsx
-    title: Empty state with full width layout
+    title: With full width layout
 ---
 
 # Empty state
@@ -53,8 +48,7 @@ Empty states should:
 - Explain the steps merchants need to take to activate a product or feature
 - Use illustrations thoughtfully as outlined in our [illustration guidelines](https://polaris.shopify.com/design/illustrations)
 - Use only one primary call-to-action button
-- Provide extra spacing at the bottom of an empty state that is within content
-  (card, modal, or navigation) to match the image that was passed into the component with a white space above it of 40px
+- Provide extra spacing at the bottom of an empty state that is within content (card, modal, or navigation) to match the image that was passed into the component with a white space above it of 40px
 
 ---
 
@@ -140,8 +134,7 @@ They should be:
 
 ### Secondary action
 
-Secondary actions are used for less important actions such as “Learn more” or
-“Close” buttons. They should follow all the other content rules outlined for primary buttons.
+Secondary actions are used for less important actions such as “Learn more” or “Close” buttons. They should follow all the other content rules outlined for primary buttons.
 
 ---
 

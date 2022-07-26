@@ -17,13 +17,11 @@ keywords:
   - toast
 examples:
   - fileName: frame-in-an-application.tsx
-    title: Frame in an application
+    title: In an application
     description: Use to present the frame structure and all of its elements.
   - fileName: frame-with-an-offset.tsx
-    title: Frame with an offset
-    description: >-
-      Use to present the frame structure and all of its elements with an offset
-      provided to the theme.
+    title: With an offset
+    description: Use to present the frame structure and all of its elements with an offset provided to the theme.
 ---
 
 # Frame

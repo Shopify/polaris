@@ -6,7 +6,8 @@
 
 - [#6711](https://github.com/Shopify/polaris/pull/6711) [`c2ffb9762`](https://github.com/Shopify/polaris/commit/c2ffb976216bfaded2c3b8d4ea0e5c82543a5cd6) Thanks [@SimonLeclercq](https://github.com/SimonLeclercq)! - - Modification of the documentation mentioning the use of a non-existent script
   - Added documentation for a build script
-- Updated dependencies [[`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad), [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353), [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097)]:
+
+- Updated dependencies [[`720d10e79`](https://github.com/Shopify/polaris/commit/720d10e79c9080efccb4c1d3e41ac322b58b7977), [`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad), [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353), [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097)]:
   - @shopify/polaris@9.21.0
 
 ## 0.0.3

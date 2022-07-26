@@ -84,7 +84,7 @@ Buttons should be:
 
 ## Examples
 
-### Default page actions
+### Default
 
 Used on a resource page (such as an individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
 
@@ -114,7 +114,7 @@ Not all page actions require a secondary action.
 />
 ```
 
-### Page actions with custom primary action
+### With custom primary action
 
 Use to create a custom primary action.
 
@@ -140,7 +140,7 @@ Use to create a custom primary action.
 />
 ```
 
-### Page actions with custom secondary action
+### With custom secondary action
 
 Use to create a custom secondary action.
 

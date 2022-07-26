@@ -35,7 +35,7 @@ Subheadings should follow the content guidelines for [headings and subheadings](
 
 ## Examples
 
-### Typographic subheading
+### Default
 
 Used for the title of any sub-sections in top-level page sections.
 

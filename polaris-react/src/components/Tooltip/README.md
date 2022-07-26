@@ -57,7 +57,7 @@ To continue using Shopify, this amount must be paid immediately.
 
 ## Examples
 
-### Default tooltip
+### Default
 
 Use only when necessary to provide an explanation for an interface element.
 
@@ -69,7 +69,7 @@ Use only when necessary to provide an explanation for an interface element.
 </div>
 ```
 
-### Tooltip visible only with child interaction
+### Visible only with child interaction
 
 Use when the tooltip overlays interactive elements when active, for example a form input. The `dismissOnMouseOut` prop prevents the tooltip from remaining active when mouse hover or focus leaves its `children` and enters the tooltip's content.
 

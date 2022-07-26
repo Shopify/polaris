@@ -33,7 +33,7 @@ Video thumbnails should:
 
 ## Examples
 
-### Basic video thumbnail
+### Default
 
 Use as a play button for a video player within a media card.
 
@@ -54,7 +54,7 @@ Use as a play button for a video player within a media card.
 </MediaCard>
 ```
 
-### Video thumbnail with progress
+### With progress
 
 Use to indicate the video’s play progress in relation to its duration.
 

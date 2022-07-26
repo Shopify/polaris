@@ -16,10 +16,8 @@ keywords:
   - adjuster
 examples:
   - fileName: setting-toggle-default.tsx
-    title: Default setting toggle
-    description: >-
-      Use on settings pages to allow merchants to toggle a setting that has an
-      activated or a deactivated state.
+    title: Default
+    description: Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
 ---
 
 # Setting toggle
@@ -45,13 +43,11 @@ Settings toggles should:
 Toggle descriptions should:
 
 - Clearly indicate whether the setting is activated or deactivated
-- Explain the implications of the state of the setting to merchants
-  (“Automatic messages are deactivated. Your customers won’t receive automatic shipping updates.”)
+- Explain the implications of the state of the setting to merchants (“Automatic messages are deactivated. Your customers won’t receive automatic shipping updates.”)
 
 ### Primary button
 
-The primary buttons for the setting toggle should always say either “Activate” or
-“Deactivate” depending on whether the setting can be turned on or off.
+The primary buttons for the setting toggle should always say either “Activate” or “Deactivate” depending on whether the setting can be turned on or off.
 
 For example, if the setting toggle is on, the button should say “Deactivate” to allow merchants to turn it off. If the setting toggle is off, the button should say “Activate” to allow merchants to turn it on.
 

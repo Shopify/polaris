@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "../Image";
-import CodeExample from "../CodeExample";
+import Code from "../Code";
 import styles from "./IconDetails.module.scss";
 
 interface Props {
@@ -96,10 +96,8 @@ function IconDetails({ fileName, iconData }: Props) {
           Import the icon from <a href={polarisIconsUrl}>polaris-icons</a>:
         </p>
 
-        <div className={styles.CodeExampleWrapper}>
-          <CodeExample language="typescript" minimalist>
-            {reactExamples.imports}
-          </CodeExample>
+        <div className={styles.CodeWrapper}>
+          <Code code={{ title: "Import", code: reactExamples.imports }} />
         </div>
 
         <p className={styles.SmallParagraph}>
@@ -107,10 +105,13 @@ function IconDetails({ fileName, iconData }: Props) {
           <Link href={iconComponentUrl}>icon component</Link>:
         </p>
 
-        <div className={styles.CodeExampleWrapper}>
-          <CodeExample language="typescript" minimalist>
-            {reactExamples.componentUsage}
-          </CodeExample>
+        <div className={styles.CodeWrapper}>
+          <Code
+            code={{
+              title: "React component",
+              code: reactExamples.componentUsage,
+            }}
+          />
         </div>
       </div>
       <div className={styles.Section}>

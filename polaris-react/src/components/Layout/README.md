@@ -63,7 +63,7 @@ Annotated section descriptions should:
 
 ## Examples
 
-### One-column layout
+### One-column
 
 Use to have a single section on its own in a full-width container. Use for simple pages and as a container for banners and other full-width content.
 
@@ -417,7 +417,7 @@ Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal 
 </Page>
 ```
 
-### Annotated layout
+### Annotated
 
 Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
 
@@ -449,7 +449,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 </Page>
 ```
 
-### Annotated layout using plain Layout.Sections
+### Annotated with sections
 
 Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
 
@@ -490,7 +490,7 @@ Use for settings pages. When settings are grouped thematically in annotated sect
 </Page>
 ```
 
-### Annotated layout with Banner at the top
+### Annotated with Banner at the top
 
 Use for settings pages that need a banner or other content at the top.
 

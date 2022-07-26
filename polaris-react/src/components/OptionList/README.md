@@ -50,7 +50,7 @@ Each item in an option list should be clear and descriptive.
 
 ## Examples
 
-### Simple option list
+### Default
 
 Use for a group of similar selectable items when only one should be selectable at once.
 
@@ -77,7 +77,7 @@ function OptionListExample() {
 }
 ```
 
-### Multiple option list
+### Multiple
 
 Use when you have a group of similar selectable items and more than one item can be selected at once.
 
@@ -105,7 +105,7 @@ function MultipleOptionListExample() {
 }
 ```
 
-### Option list with sections
+### With sections
 
 Use sections when you have multiple groups of similar selectable items.
 
@@ -141,7 +141,7 @@ function OptionListWithSectionsExample() {
 }
 ```
 
-### Option list in a popover
+### In a popover
 
 Use when a set of selections won’t fit in the available screen space.
 

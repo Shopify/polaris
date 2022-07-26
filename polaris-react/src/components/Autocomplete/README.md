@@ -34,7 +34,7 @@ The input field for autocomplete should follow the [content guidelines](https://
 
 ## Examples
 
-### Basic autocomplete
+### Default
 
 Use to help merchants complete text input quickly from a list of options.
 
@@ -107,7 +107,7 @@ function AutocompleteExample() {
 }
 ```
 
-### Multiple tags autocomplete
+### With multiple tags
 
 Use to help merchants select multiple options from a list curated by the text input.
 
@@ -210,7 +210,7 @@ function MultiAutocompleteExample() {
 }
 ```
 
-### Multiple sections autocomplete
+### With multiple sections
 
 Use to help merchants complete text input quickly from a multiple sections list of options.
 
@@ -314,7 +314,7 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with loading
+### With loading
 
 Use to indicate loading state to merchants while option data is processing.
 
@@ -395,7 +395,7 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with lazy loading
+### With lazy loading
 
 ```jsx
 function AutoCompleteLazyLoadExample() {
@@ -524,7 +524,7 @@ function AutoCompleteLazyLoadExample() {
 }
 ```
 
-### Autocomplete with empty state
+### With empty state
 
 Use to indicate there are no search results.
 
@@ -615,7 +615,7 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with action
+### With action
 
 Use to help merchants complete an action quickly.
 
@@ -708,7 +708,7 @@ function AutocompleteActionBeforeExample() {
 }
 ```
 
-### Autocomplete with wrapping action
+### With wrapping action
 
 Use to help merchants complete an action quickly with wrapping lines of text.
 
@@ -803,7 +803,7 @@ function AutocompleteActionBeforeExample() {
 }
 ```
 
-### Autocomplete with destructive action
+### With destructive action
 
 Use to help merchants complete a destructive action quickly.
 

@@ -11,6 +11,7 @@ To perform a release:
 
 - Comment `/snapit` in the **"Version Packages"** PR to cut a snapshot release
 - Create a draft pull request in `Shopify/web` for the upgrade using the snapshot
+    - Tag all contributors to the release on the `Shopify/web` pull request and also create a group message tagging all contributors to nudge them for reviews, as well as to verify the changes within `Shopify/web` work as expected.
 - Once CI passes, merge the **"Version Packages"** PR
 - Once the release is available in npm, update the draft PR to the new version and request review from the folks whose changes are part of the release as listed in the release notes 
 

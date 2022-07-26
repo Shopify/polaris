@@ -20,20 +20,18 @@ keywords:
   - secondary cta
   - secondary call to action
 examples:
-  - fileName: link-defaults.tsx
-    title: Default links
+  - fileName: link-default.tsx
+    title: Default
     description: Use for text links in larger spans of text.
   - fileName: link-monochrome.tsx
-    title: Monochrome link
+    title: Monochrome
     description: Use for text links that are the same color as the surrounding text.
   - fileName: link-monochrome-in-a-banner.tsx
-    title: Monochrome link in a banner
+    title: Monochrome in a banner
+    description: Monochrome styles will be applied to links rendered within a `Banner`.
   - fileName: link-external.tsx
-    title: External link
-    description: >-
-      Use for text links that should open in a new browser tab (or window,
-      depending on the merchant’s browser settings). Use this only when opening
-      a page in the same tab might disrupt the merchant’s workflow.
+    title: External
+    description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
 ---
 
 # Link

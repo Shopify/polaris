@@ -64,13 +64,16 @@ export function Cell({
   const numeric = contentType === 'numeric';
 
   const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipContent, setTooltipContent] = useState('');
 
   function setTooltip(ref: HTMLTableCellElement | null) {
     if (!ref) {
       return;
     }
-    if (ref.scrollWidth > ref.offsetWidth && inFixedFirstColumn) {
+    // Since the cell can accept any React node, we'll only show a tooltip when the cell content has an innerText
+    if (ref.scrollWidth > ref.offsetWidth && ref.innerText) {
       setShowTooltip(true);
+      setTooltipContent(ref.innerText);
     }
   }
 
@@ -118,7 +121,12 @@ export function Cell({
     </span>
   );
 
-  const focusable = inFixedFirstColumn || !(hasFixedFirstColumn && firstColumn);
+  const focusable = !(
+    stickyHeadingCell &&
+    hasFixedFirstColumn &&
+    firstColumn &&
+    !inFixedFirstColumn
+  );
 
   const sortableHeadingContent = (
     <button
@@ -177,7 +185,7 @@ export function Cell({
       }}
     >
       {showTooltip ? (
-        <Tooltip content={content}>
+        <Tooltip content={tooltipContent}>
           <span className={styles.TooltipContent}>{content}</span>
         </Tooltip>
       ) : (

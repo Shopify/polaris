@@ -15,10 +15,8 @@ keywords:
   - switch
 examples:
   - fileName: radio-button-default.tsx
-    title: Default radio button
-    description: >-
-      Use radio buttons where merchants must make a single
-      selection.
+    title: Default
+    description: Use radio buttons where merchants must make a single selection.
 ---
 
 # Radio button

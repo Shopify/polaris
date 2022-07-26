@@ -187,7 +187,7 @@ Action allows a complementary icon-only action to render next to the section tit
 
 ## Examples
 
-### Basic navigation
+### Default
 
 Use to present a navigation menu in the [frame](https://polaris.shopify.com/components/frame).
 
@@ -218,7 +218,7 @@ Use to present a navigation menu in the [frame](https://polaris.shopify.com/comp
 </Frame>
 ```
 
-### Navigation with multiple secondary navigations
+### With multiple secondary navigations
 
 Use to present a secondary action, related to a section and to title the section.
 
@@ -296,7 +296,7 @@ Use to present a secondary action, related to a section and to title the section
 </Frame>
 ```
 
-### Navigation with an active root item with secondary navigation items
+### With an active root item with secondary navigation items
 
 Use to present a secondary action, related to a section and to title the section.
 
@@ -342,7 +342,7 @@ Use to present a secondary action, related to a section and to title the section
 </Frame>
 ```
 
-### Navigation with a secondary action for a section and a section title
+### With a secondary action for a section and a section title
 
 Use to present a secondary action, related to a section and to title the section.
 
@@ -387,7 +387,7 @@ Use to present a secondary action, related to a section and to title the section
 </Frame>
 ```
 
-### Navigation with a secondary action for an item
+### With a secondary action for an item
 
 Use to add a different action for an item than the main action, like to view or add something.
 
@@ -425,7 +425,7 @@ Use to add a different action for an item than the main action, like to view or 
 </Frame>
 ```
 
-### Navigation with section rollup
+### With section rollup
 
 Use to show a limited number of items in a section with an option to expand the remaining items.
 
@@ -461,7 +461,7 @@ Use to show a limited number of items in a section with an option to expand the 
 </Frame>
 ```
 
-### Navigation with section separator
+### With section separator
 
 Use to add a horizontal line below the section.
 
@@ -501,7 +501,7 @@ Use to add a horizontal line below the section.
 </Frame>
 ```
 
-### Navigation with various states and secondary elements
+### With various states and secondary elements
 
 This example showcases the many elements that can compose a navigation, especially useful for testing purposes.
 
@@ -646,7 +646,7 @@ This example showcases the many elements that can compose a navigation, especial
 </Frame>
 ```
 
-### Navigation with aria-labelledby
+### With aria-labelledby
 
 This example shows how to add an aria-labelledby to add a hidden label to the `nav` element.
 
@@ -680,7 +680,7 @@ This example shows how to add an aria-labelledby to add a hidden label to the `n
 </Frame>
 ```
 
-### Navigation using Major icons
+### Using Major icons
 
 This example shows how to use the shouldResizeIcon prop when using Major icons
 

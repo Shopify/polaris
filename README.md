@@ -42,10 +42,10 @@ yarn && yarn build
 
 Run commands from a selected workspace using [`turbo run <command> --filter=<workspace>...`](https://turborepo.org/docs/core-concepts/filtering) flag.
 
-| Command                                              | Runs                                 |
-| ---------------------------------------------------- | ------------------------------------ |
-| `yarn turbo run dev --filter=@shopify/polaris...`    | Open the react component storybook   |
-| `yarn turbo run dev --filter=polaris.shopify.com...` | Open polaris.shopify.com NextJS site |
+| Command                                           | Runs                                 |
+| ------------------------------------------------- | ------------------------------------ |
+| `yarn turbo run dev --filter=@shopify/polaris`    | Open the react component storybook   |
+| `yarn turbo run dev --filter=polaris.shopify.com` | Open polaris.shopify.com NextJS site |
 
 **All workspaces**
 

@@ -26,7 +26,7 @@ The Fullscreen bar component should:
 
 ## Examples
 
-### Fullscreen bar with children
+### With children
 
 Use to provide structure for the top of an application while in fullscreen mode.
 
@@ -78,7 +78,7 @@ function FullscreenBarExample() {
 }
 ```
 
-### Fullscreen bar no children
+### No children
 
 Use this default to show ONLY the Back button.
 

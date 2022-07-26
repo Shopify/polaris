@@ -93,9 +93,9 @@ You agree to the Terms of Service
 
 ## Examples
 
-### Default checkboxes
+### Default
 
-Use in forms to toggle the state of something on or off. Default checkboxes can appear in two states: selected and disabled, or unselected.
+Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
 
 ```jsx
 function CheckboxExample() {

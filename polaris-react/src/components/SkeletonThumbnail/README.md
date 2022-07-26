@@ -25,7 +25,7 @@ Skeleton thumbnail component should:
 
 ## Examples
 
-### Medium thumbnail
+### Medium
 
 Use this component to represent medium thumbnails.
 
@@ -33,7 +33,7 @@ Use this component to represent medium thumbnails.
 <SkeletonThumbnail size="medium" />
 ```
 
-### Large thumbnail
+### Large
 
 Use this component to represent large thumbnails.
 
@@ -41,7 +41,7 @@ Use this component to represent large thumbnails.
 <SkeletonThumbnail size="large" />
 ```
 
-### Small thumbnail
+### Small
 
 Use this component to represent small thumbnails.
 
@@ -49,7 +49,7 @@ Use this component to represent small thumbnails.
 <SkeletonThumbnail size="small" />
 ```
 
-### Extra small thumbnail
+### Extra small
 
 Use this component to represent extra small thumbnails.
 

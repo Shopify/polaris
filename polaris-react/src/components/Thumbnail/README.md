@@ -50,7 +50,7 @@ For thumbnails, we recommend using a format that describes what will show in the
 
 ## Examples
 
-### Default thumbnail
+### Default
 
 Use as the default size.
 
@@ -61,7 +61,7 @@ Use as the default size.
 />
 ```
 
-### Extra small thumbnail
+### Extra small
 
 Use to present a thumbnail in a condensed layout, such as a data table cell or an action list item.
 
@@ -73,7 +73,7 @@ Use to present a thumbnail in a condensed layout, such as a data table cell or a
 />
 ```
 
-### Small thumbnail
+### Small
 
 Use when the default size is too large for the layout, or when the thumbnail has less importance.
 
@@ -85,7 +85,7 @@ Use when the default size is too large for the layout, or when the thumbnail has
 />
 ```
 
-### Large thumbnail
+### Large
 
 Use when a thumbnail is a major focal point. Avoid this size in lists of like items.
 
@@ -97,7 +97,7 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 />
 ```
 
-### Thumbnail with component source
+### With component source
 
 Use to render an icon inside of thumbnail.
 

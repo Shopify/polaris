@@ -39,7 +39,7 @@ Headings should follow the content guidelines for [headings and subheadings](htt
 
 ## Examples
 
-### Typographic heading
+### Default
 
 Use for the title of each top-level page section.
 

@@ -114,7 +114,7 @@ Action should:
 
 ## Examples
 
-### Basic toast
+### Default
 
 Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
 
@@ -141,7 +141,7 @@ function ToastExample() {
 }
 ```
 
-### Multiple toast messages
+### Multiple messages
 
 Use multiple toast messages to inform the merchant about distinct actions.
 
@@ -185,7 +185,7 @@ function MultipleToastExample() {
 }
 ```
 
-### Toast with custom duration
+### With custom duration
 
 Use to shorten or lengthen the default duration of 5000 milliseconds.
 
@@ -212,7 +212,7 @@ function ToastWithCustomDurationExample() {
 }
 ```
 
-### Toast with action
+### With action
 
 Use when a merchant has the ability to act on the message. For example, to undo a change or retry an action.
 
@@ -247,7 +247,7 @@ function ToastWithActionExample() {
 }
 ```
 
-### Error toast
+### Error
 
 Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 

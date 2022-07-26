@@ -8,19 +8,15 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: skeleton-display-text-medium-and-large-display-text.tsx
-    title: Medium and large display text
-    description: >-
-      Use this component to represent medium and large display text such as
-      large metrics on the reports list page, or for page titles.
-  - fileName: skeleton-display-text-extra-large-display-text.tsx
-    title: Extra large display text
+  - fileName: skeleton-display-text-medium-and-large.tsx
+    title: Medium and large
+    description: Use this component to represent medium and large display text such as large metrics on the reports list page, or for page titles.
+  - fileName: skeleton-display-text-extra-large.tsx
+    title: Extra large
     description: Use this component to represent extra large display text.
-  - fileName: skeleton-display-text-small-display-text.tsx
-    title: Small display text
-    description: >-
-      Use this component to represent small display text such as content
-      headings.
+  - fileName: skeleton-display-text-small.tsx
+    title: Small
+    description: Use this component to represent small display text such as content headings.
 ---
 
 # Skeleton display text

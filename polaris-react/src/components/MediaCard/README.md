@@ -122,7 +122,7 @@ Add a menu item
 
 ## Examples
 
-### Basic media card
+### Default
 
 Use to surface educational information about a feature or opportunity.
 
@@ -149,7 +149,7 @@ Use to surface educational information about a feature or opportunity.
 </MediaCard>
 ```
 
-### Basic media card with small visual
+### With small visual
 
 Use when there are limited vertical space, or when the card should be less prominent.
 
@@ -177,7 +177,7 @@ Use when there are limited vertical space, or when the card should be less promi
 </MediaCard>
 ```
 
-### Media card with secondary action
+### With secondary action
 
 Use when there are two distinct actions merchants can take on the information in the card.
 
@@ -205,7 +205,7 @@ Use when there are two distinct actions merchants can take on the information in
 </MediaCard>
 ```
 
-### Media card with no actions
+### With no actions
 
 Use when media card does not require any actions.
 

@@ -32,11 +32,12 @@ export const parseMarkdown = (inputMarkdown) => {
         .replace(/<!-- end -->$/, "");
 
       let i = 0;
+
       const matchWithColumns = matchWithoutComments.replaceAll(
         /#### ([^\n]+)/g,
         (match, captured) => {
           if (i === 1) {
-            const type = match.startsWith("#### Don") ? "dont" : "do";
+            const type = match.trim().startsWith("#### Don") ? "dont" : "do";
 
             return `</div><div class="dodont-part" data-type="${type}">\n\n#### ${captured}`;
           }
@@ -45,7 +46,9 @@ export const parseMarkdown = (inputMarkdown) => {
         }
       );
 
-      const type = match.trim().startsWith("#### Don") ? "dont" : "do";
+      const type = matchWithoutComments.trim().startsWith("#### Don")
+        ? "dont"
+        : "do";
 
       return `<div class="dodont"><div class="dodont-part" data-type="${type}">${matchWithColumns}</div></div>`;
     });

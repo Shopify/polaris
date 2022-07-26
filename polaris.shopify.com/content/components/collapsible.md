@@ -20,10 +20,8 @@ keywords:
   - collapse
 examples:
   - fileName: collapsible-default.tsx
-    title: Default collapsible component
-    description: >-
-      Use for a basic “show more” interaction when you need to display more
-      content.
+    title: Default
+    description: Use for a basic “show more” interaction when you need to display more content.
 ---
 
 # Collapsible

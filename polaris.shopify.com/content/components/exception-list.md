@@ -7,8 +7,8 @@ keywords:
   - list
   - list exceptions
 examples:
-  - fileName: exception-list-with-icon.tsx
-    title: Exception list with icon
+  - fileName: exception-list-default.tsx
+    title: Default
     description: Use icons to add clarity or assist in visualizing the meaning
 ---
 

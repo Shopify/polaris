@@ -109,7 +109,7 @@ Error messages should:
 
 ## Examples
 
-### Default range slider
+### Default
 
 Use when a single value between `0 and 100` needs to be selected.
 
@@ -135,7 +135,7 @@ function RangeSliderExample() {
 }
 ```
 
-### Min and max range control
+### With min and max
 
 Use when a single value needs to be selected from a number range with a specific minimum and maximum.
 
@@ -163,7 +163,7 @@ function RangeSliderWithPreciseRangeControlExample() {
 }
 ```
 
-### Step incremented range control
+### With steps
 
 Use when a single value of a specific increment needs to be selected from a range of numbers.
 
@@ -192,11 +192,9 @@ function RangeSliderWithPreciseRangeControlExample() {
 }
 ```
 
-### Prefix and suffix elements
+### With prefix and suffix
 
-Use when the start or end of the range input benefits from additional content.
-
-The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
+Use when the start or end of the range input benefits from additional content. The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
 
 ```jsx
 function RangeSliderWithPrefixAndSuffixExample() {
@@ -229,7 +227,7 @@ function RangeSliderWithPrefixAndSuffixExample() {
 }
 ```
 
-### Dual thumb range slider
+### With dual thumb
 
 Use when two values need to be selected from a range of numbers.
 
