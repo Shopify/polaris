@@ -116,6 +116,10 @@ Grouping things based on distance between objects.
 
 Grouping things based on the way they are arranged.
 
+![Tag multiselect popover and media card](/images/foundations/design/spacing/spacing-continuity@2x.png)
+
+Shadows inside popovers act as visual cues to indicate additional content when scrolled (right). Cards placed horizontally in a media carousel communicates related topics (left).
+
 #### Closure
 
 Grouping things that are implicitly enclosed by a larger object.
@@ -163,13 +167,28 @@ Rhythm plays another job in designs, it’s the norm that enables the introducti
 
 The overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.
 
+![Examples showign tigher versus looser spacing](/images/foundations/design/spacing/spacing-density@2x.png)
+
+Tighter spacing (left) makes it easier to scan and comprehend large sets of data, like lists and tables. It also naturally enables one to fit more elements in a given page.
+Looser space (right) can help attract the user attention and make a layout feel more user-friendly.
+
 ---
 
 ### Contrast
 
 Contrast is meant to create sticking points that help make content easy to scan, highlight important pieces of information, or just to give viewers a moment to breathe.
 
+![Marketing page and empty state](/images/foundations/design/spacing/spacing-contrast@2x.png)
+
+**Highlights (left)**: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. 
+
+**Breather moment (right)**: Empty states provide explanation or guidance to help merchants progress. 
+
 Contrast can play a role at very different levels, but it must be used sparingly, otherwise its effect gets diluted.
+
+![Examples on the analytics page to show contrast](/images/foundations/design/spacing/spacing-analytics@2x.png)
+
+Home feed overview (left) and location profile analytics (right).
 
 ---
 
