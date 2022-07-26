@@ -7,14 +7,25 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  stories: ['../playground/stories.tsx', '../src/components/**/*.stories.tsx'],
+  stories: [
+    {
+      directory: '../playground/',
+      files: 'stories.tsx',
+    },
+    {
+      directory: '../src/components/',
+      titlePrefix: 'All components',
+      files: '**/*.stories.tsx',
+    },
+  ],
   addons: [
-    {name: '@storybook/addon-essentials', options: {docs: false}},
+    {
+      name: '@storybook/addon-essentials',
+      options: {docs: false},
+    },
     '@storybook/addon-a11y',
   ],
   webpackFinal: (config) => {
-    const isProduction = config.mode === 'production';
-
     const extraRules = [
       {
         test: /\.scss$/,

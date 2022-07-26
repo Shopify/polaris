@@ -40,7 +40,12 @@ module.exports = function loader(source) {
   ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
-    let code = example.code + '\n';
+    let code = `export const ${example.storyName}: ComponentStory<typeof ${
+      readme.component
+    }> = () => {\n${example.code
+      .split('\n')
+      .map((line) => `  ${line}`)
+      .join('\n')}\n};\n`;
 
     if (readme.omitAppProvider) {
       code += `${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};\n`;
@@ -57,8 +62,7 @@ module.exports = function loader(source) {
     .filter((key) => key.startsWith(HOOK_PREFIX))
     .join(', ');
 
-  return `
-import React, {${hooks}} from 'react';
+  const imports = `import React, {${hooks}} from 'react';
 import type {ComponentMeta, ComponentStory} from '@storybook/react';
 import {
   AccountConnection,
@@ -225,7 +229,9 @@ import {
   ViewMinor,
   EditMinor,
   WandMinor,
-} from '@shopify/polaris-icons';
+} from '@shopify/polaris-icons';`;
+
+  return `${imports}
 
 export default {
   component: ${readme.component},
