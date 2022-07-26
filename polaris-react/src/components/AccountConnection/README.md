@@ -104,6 +104,7 @@ Use to let merchants connect or disconnect their store to their third-party acco
 function AccountConnectionExample() {
   const [connected, setConnected] = useState(false);
   const accountName = connected ? 'Jane Appleseed' : '';
+
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
   }, []);
@@ -117,6 +118,7 @@ function AccountConnectionExample() {
       commission rate of 15% on sales made through Sample App.
     </p>
   );
+
   return (
     <AccountConnection
       accountName={accountName}
