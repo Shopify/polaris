@@ -8,7 +8,7 @@ Use `console.log()` to get the function output and hard code the value you need.
 If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token (see the following examples).
 Otherwise, if you really need to keep the old mixin, you can copy its definition and use it locally.
 
-### `breakpoint-after()`
+#### `breakpoint-after()`
 
 _Before_
 
@@ -39,7 +39,7 @@ _After_
 
 </details>
 
-### `breakpoint-before()`
+#### `breakpoint-before()`
 
 _Before_
 
@@ -70,7 +70,7 @@ _After_
 
 </details>
 
-### `page-content-breakpoint-after()`
+#### `page-content-breakpoint-after()`
 
 _Before_
 
@@ -133,7 +133,7 @@ _After_
 
 </details>
 
-### `page-content-breakpoint-before()`
+#### `page-content-breakpoint-before()`
 
 _Before_
 
@@ -196,7 +196,7 @@ _After_
 
 </details>
 
-### `page-content-when-partially-condensed()`
+#### `page-content-when-partially-condensed()`
 
 _Before_
 
@@ -227,7 +227,7 @@ _After_
 
 </details>
 
-### `page-content-when-not-partially-condensed()`
+#### `page-content-when-not-partially-condensed()`
 
 _Before_
 
@@ -258,7 +258,7 @@ _After_
 
 </details>
 
-### `page-content-when-fully-condensed()`
+#### `page-content-when-fully-condensed()`
 
 _Before_
 
@@ -289,7 +289,7 @@ _After_
 
 </details>
 
-### `page-content-when-not-fully-condensed()`
+#### `page-content-when-not-fully-condensed()`
 
 _Before_
 
@@ -320,7 +320,7 @@ _After_
 
 </details>
 
-### `page-content-when-layout-stacked()`
+#### `page-content-when-layout-stacked()`
 
 _Before_
 
@@ -351,7 +351,7 @@ _After_
 
 </details>
 
-### `page-content-when-layout-not-stacked()`
+#### `page-content-when-layout-not-stacked()`
 
 _Before_
 
@@ -382,7 +382,7 @@ _After_
 
 </details>
 
-### `page-after-resource-list-small()`
+#### `page-after-resource-list-small()`
 
 _Before_
 
@@ -413,7 +413,7 @@ _After_
 
 </details>
 
-### `page-before-resource-list-small()`
+#### `page-before-resource-list-small()`
 
 _Before_
 
@@ -444,7 +444,7 @@ _After_
 
 </details>
 
-### `when-typography-condensed()`
+#### `when-typography-condensed()`
 
 _Before_
 
@@ -475,7 +475,7 @@ _After_
 
 </details>
 
-### `when-typography-not-condensed()`
+#### `when-typography-not-condensed()`
 
 _Before_
 
