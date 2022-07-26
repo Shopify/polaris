@@ -67,7 +67,7 @@ Buttons should follow the content guidelines for [buttons](https://polaris.shopi
 Used most in the interface. Only use another style if a button requires more or less visual weight.
 
 ```jsx
-<Button>Add product</Button>
+return <Button>Add product</Button>;
 ```
 
 ### Outline
@@ -75,7 +75,7 @@ Used most in the interface. Only use another style if a button requires more or 
 Use against shaded or colorful backgrounds. An outline button will maintain the appropriate visual weight and won’t clash with the background color.
 
 ```jsx
-<Button outline>Add product</Button>
+return <Button outline>Add product</Button>;
 ```
 
 ### Outline monochrome
@@ -83,11 +83,13 @@ Use against shaded or colorful backgrounds. An outline button will maintain the 
 Use against shaded or colorful backgrounds where matching the current text colors is more appropriate than the current outline theme.
 
 ```jsx
-<div style={{color: '#bf0711'}}>
-  <Button monochrome outline>
-    Retry
-  </Button>
-</div>
+return (
+  <div style={{color: '#bf0711'}}>
+    <Button monochrome outline>
+      Retry
+    </Button>
+  </div>
+);
 ```
 
 ### Plain
@@ -95,7 +97,7 @@ Use against shaded or colorful backgrounds where matching the current text color
 Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
 
 ```jsx
-<Button plain>View shipping settings</Button>
+return <Button plain>View shipping settings</Button>;
 ```
 
 ### Plain monochrome
@@ -103,12 +105,14 @@ Use for less important or less commonly used actions since they’re less promin
 Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
 
 ```jsx
-<div>
-  Could not retrieve data.{' '}
-  <Button plain monochrome>
-    Try again
-  </Button>
-</div>
+return (
+  <div>
+    Could not retrieve data.{' '}
+    <Button plain monochrome>
+      Try again
+    </Button>
+  </div>
+);
 ```
 
 ### Plain destructive
@@ -116,9 +120,11 @@ Use for less important or less commonly used actions where matching the current 
 Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used destructive actions. For example, plain buttons are used as actions in cards.
 
 ```jsx
-<Button plain destructive>
-  Remove
-</Button>
+return (
+  <Button plain destructive>
+    Remove
+  </Button>
+);
 ```
 
 ### Primary
@@ -126,7 +132,7 @@ Use for actions that will delete merchant data or be otherwise difficult to reco
 Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
 
 ```jsx
-<Button primary>Save theme</Button>
+return <Button primary>Save theme</Button>;
 ```
 
 ### Destructive
@@ -134,7 +140,7 @@ Use to highlight the most important actions in any experience. Don’t use more 
 Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
 
 ```jsx
-<Button destructive>Delete theme</Button>
+return <Button destructive>Delete theme</Button>;
 ```
 
 ### Slim
@@ -142,7 +148,7 @@ Use when the action will delete merchant data or be otherwise difficult to recov
 Use when a table or list has a set of actions on each item to avoid making items taller than they need to be. Don’t use slim buttons for primary actions.
 
 ```jsx
-<Button size="slim">Save variant</Button>
+return <Button size="slim">Save variant</Button>;
 ```
 
 ### Large
@@ -150,7 +156,7 @@ Use when a table or list has a set of actions on each item to avoid making items
 Use for the main call to action in empty states or for calls to action shown with large illustrations.
 
 ```jsx
-<Button size="large">Create store</Button>
+return <Button size="large">Create store</Button>;
 ```
 
 ### Full-width
@@ -158,7 +164,7 @@ Use for the main call to action in empty states or for calls to action shown wit
 Use for buttons placed in a narrow column (especially when stacking multiple buttons) or for creating a set of buttons of equal width. Full-width buttons should rarely exceed 320 px wide.
 
 ```jsx
-<Button fullWidth>Add customer</Button>
+return <Button fullWidth>Add customer</Button>;
 ```
 
 ### Text-aligned
@@ -166,11 +172,13 @@ Use for buttons placed in a narrow column (especially when stacking multiple but
 Use for plain or monochrome buttons that could have a long length and should be aligned when they potentially overflow onto the next line.
 
 ```jsx
-<Button plain textAlign="left">
-  This is a really long string of text that overflows onto the next line we need
-  to put in a lot of words now you can see the alignment. It is very long but a
-  customer could potentially name something this long.
-</Button>
+return (
+  <Button plain textAlign="left">
+    This is a really long string of text that overflows onto the next line we
+    need to put in a lot of words now you can see the alignment. It is very long
+    but a customer could potentially name something this long.
+  </Button>
+);
 ```
 
 ### Pressed
@@ -178,30 +186,28 @@ Use for plain or monochrome buttons that could have a long length and should be 
 Buttons are sometimes used as a toggle for other parts of the user interface.
 
 ```jsx
-function PressedButton() {
-  const [isFirstButtonActive, setIsFirstButtonActive] = useState(true);
+const [isFirstButtonActive, setIsFirstButtonActive] = useState(true);
 
-  const handleFirstButtonClick = useCallback(() => {
-    if (isFirstButtonActive) return;
-    setIsFirstButtonActive(true);
-  }, [isFirstButtonActive]);
+const handleFirstButtonClick = useCallback(() => {
+  if (isFirstButtonActive) return;
+  setIsFirstButtonActive(true);
+}, [isFirstButtonActive]);
 
-  const handleSecondButtonClick = useCallback(() => {
-    if (!isFirstButtonActive) return;
-    setIsFirstButtonActive(false);
-  }, [isFirstButtonActive]);
+const handleSecondButtonClick = useCallback(() => {
+  if (!isFirstButtonActive) return;
+  setIsFirstButtonActive(false);
+}, [isFirstButtonActive]);
 
-  return (
-    <ButtonGroup segmented>
-      <Button pressed={isFirstButtonActive} onClick={handleFirstButtonClick}>
-        First button
-      </Button>
-      <Button pressed={!isFirstButtonActive} onClick={handleSecondButtonClick}>
-        Second button
-      </Button>
-    </ButtonGroup>
-  );
-}
+return (
+  <ButtonGroup segmented>
+    <Button pressed={isFirstButtonActive} onClick={handleFirstButtonClick}>
+      First button
+    </Button>
+    <Button pressed={!isFirstButtonActive} onClick={handleSecondButtonClick}>
+      Second button
+    </Button>
+  </ButtonGroup>
+);
 ```
 
 ### Plain disclosure
@@ -209,21 +215,19 @@ function PressedButton() {
 Use to indicate that more content can be disclosed on click, like text in a collapsible.
 
 ```jsx
-function DisclosureButtion() {
-  const [expanded, setExpanded] = useState(false);
+const [expanded, setExpanded] = useState(false);
 
-  return (
-    <Button
-      plain
-      disclosure={expanded ? 'up' : 'down'}
-      onClick={() => {
-        setExpanded(!expanded);
-      }}
-    >
-      {expanded ? 'Show less' : 'Show more'}
-    </Button>
-  );
-}
+return (
+  <Button
+    plain
+    disclosure={expanded ? 'up' : 'down'}
+    onClick={() => {
+      setExpanded(!expanded);
+    }}
+  >
+    {expanded ? 'Show less' : 'Show more'}
+  </Button>
+);
 ```
 
 ### Right-aligned disclosure
@@ -231,22 +235,20 @@ function DisclosureButtion() {
 When working with `fullWidth + textAlign="left"`, the `disclosure` will align itself to the far right.
 
 ```jsx
-function RightAlignedDisclosureButton() {
-  const [expanded, setExpanded] = useState(false);
+const [expanded, setExpanded] = useState(false);
 
-  return (
-    <div style={{width: '200px'}}>
-      <Button
-        fullWidth
-        textAlign="left"
-        disclosure={expanded ? 'up' : 'down'}
-        onClick={() => setExpanded(!expanded)}
-      >
-        {expanded ? 'Show less' : 'Show more'}
-      </Button>
-    </div>
-  );
-}
+return (
+  <div style={{width: '200px'}}>
+    <Button
+      fullWidth
+      textAlign="left"
+      disclosure={expanded ? 'up' : 'down'}
+      onClick={() => setExpanded(!expanded)}
+    >
+      {expanded ? 'Show less' : 'Show more'}
+    </Button>
+  </div>
+);
 ```
 
 ### Select disclosure
@@ -254,11 +256,13 @@ function RightAlignedDisclosureButton() {
 Use to indicate that multiple options are available from this control, similar to a `<select />` HTML element.
 
 ```jsx
-<div style={{height: '100px'}}>
-  <Button disclosure="select" onClick={() => console.log('Open Popover')}>
-    Select options
-  </Button>
-</div>
+return (
+  <div style={{height: '100px'}}>
+    <Button disclosure="select" onClick={() => console.log('Open Popover')}>
+      Select options
+    </Button>
+  </div>
+);
 ```
 
 ### Split
@@ -266,17 +270,19 @@ Use to indicate that multiple options are available from this control, similar t
 Use when there is only one primary action but other related actions can be taken.
 
 ```jsx
-<div style={{height: '100px'}}>
-  <Button
-    primary
-    connectedDisclosure={{
-      accessibilityLabel: 'Other save actions',
-      actions: [{content: 'Save as draft'}],
-    }}
-  >
-    Save
-  </Button>
-</div>
+return (
+  <div style={{height: '100px'}}>
+    <Button
+      primary
+      connectedDisclosure={{
+        accessibilityLabel: 'Other save actions',
+        actions: [{content: 'Save as draft'}],
+      }}
+    >
+      Save
+    </Button>
+  </div>
+);
 ```
 
 ### Disabled state
@@ -284,29 +290,31 @@ Use when there is only one primary action but other related actions can be taken
 Use for actions that aren’t currently available. The surrounding interface should make it clear why the button is disabled and what needs to be done to enable it.
 
 ```jsx
-<ButtonGroup>
-  <Button disabled>Buy shipping label</Button>
-  <Button primary disabled>
-    Buy shipping label
-  </Button>
-  <Button destructive disabled>
-    Buy shipping label
-  </Button>
-  <Button outline disabled>
-    Buy shipping label
-  </Button>
-  <span style={{color: '#bf0711'}}>
-    <Button outline monochrome disabled>
+return (
+  <ButtonGroup>
+    <Button disabled>Buy shipping label</Button>
+    <Button primary disabled>
       Buy shipping label
     </Button>
-  </span>
-  <Button plain disabled>
-    Buy shipping label
-  </Button>
-  <Button plain destructive disabled>
-    Buy shipping label
-  </Button>
-</ButtonGroup>
+    <Button destructive disabled>
+      Buy shipping label
+    </Button>
+    <Button outline disabled>
+      Buy shipping label
+    </Button>
+    <span style={{color: '#bf0711'}}>
+      <Button outline monochrome disabled>
+        Buy shipping label
+      </Button>
+    </span>
+    <Button plain disabled>
+      Buy shipping label
+    </Button>
+    <Button plain destructive disabled>
+      Buy shipping label
+    </Button>
+  </ButtonGroup>
+);
 ```
 
 ### Loading state
@@ -314,7 +322,7 @@ Use for actions that aren’t currently available. The surrounding interface sho
 Use when a button has been pressed and the associated action is in progress.
 
 ```jsx
-<Button loading>Save product</Button>
+return <Button loading>Save product</Button>;
 ```
 
 ---
