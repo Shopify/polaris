@@ -5,7 +5,7 @@ import {
   SearchResultCategory,
   Status,
 } from "../types";
-import { metaTokens, MetaTokenProperties } from "@shopify/polaris-tokens";
+import { metadata, MetadataProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
 import iconMetadata from "@shopify/polaris-icons/metadata";
@@ -20,8 +20,7 @@ const MAX_RESULTS: { [key in SearchResultCategory]: number } = {
   icons: 9,
 };
 
-const { colors, depth, motion, shape, spacing, typography, zIndex } =
-  metaTokens;
+const { colors, depth, motion, shape, spacing, typography, zIndex } = metadata;
 
 let results: SearchResults = [];
 
@@ -60,7 +59,7 @@ const tokenGroups = {
 };
 Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
   Object.entries(tokenGroup).forEach(
-    ([tokenName, tokenProperties]: [string, MetaTokenProperties]) => {
+    ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
       results.push({
         id: slugify(`tokens ${tokenName}`),
         category: "tokens",

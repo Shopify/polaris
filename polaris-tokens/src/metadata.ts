@@ -1,4 +1,4 @@
-import type {Exact, MetaTokens} from './types';
+import type {Exact, Metadata} from './types';
 import {tokensToRems} from './utilities';
 import {breakpoints} from './token-groups/breakpoints';
 import {depth} from './token-groups/depth';
@@ -10,7 +10,7 @@ import {spacing} from './token-groups/spacing';
 import {typography} from './token-groups/typography';
 import {zIndex} from './token-groups/zIndex';
 
-export const metaTokens = createMetaTokens({
+export const metadata = createMetadata({
   breakpoints: tokensToRems(breakpoints),
   colors,
   depth,
@@ -23,9 +23,9 @@ export const metaTokens = createMetaTokens({
 });
 
 /**
- * Identity function that simply returns the provided tokens, but additionally
- * validates the input matches the `Tokens` type exactly and infers all members.
+ * Identity function that simply returns the provided tokens with metadata, but additionally
+ * validates the input matches the `Metadata` type exactly and infers all members.
  */
-export function createMetaTokens<T extends Exact<MetaTokens, T>>(tokens: T) {
-  return tokens;
+export function createMetadata<T extends Exact<Metadata, T>>(metadata: T) {
+  return metadata;
 }

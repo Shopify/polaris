@@ -27,10 +27,10 @@ import {tokens} from '@shopify/polaris-tokens';
 console.log(tokens.colors.background); // 'rgba(246, 246, 247, 1)'
 
 // Tokens with metadata
-import {metaTokens} from '@shopify/polaris-tokens';
+import {metadata} from '@shopify/polaris-tokens';
 
-console.log(metaTokens.colors.background.value); // 'rgba(246, 246, 247, 1)'
-console.log(metaTokens.colors.background.description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
+console.log(metadata.colors.background.value); // 'rgba(246, 246, 247, 1)'
+console.log(metadata.colors.background.description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
 ```
 
 #### CSS
