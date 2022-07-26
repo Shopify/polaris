@@ -2,20 +2,31 @@
 
 The following Sass functions and mixins have been removed. If you wish to continue using them you will need to either add them directly to your repo or replace any instances with a value equivalent.
 
-### Replacing function and mixin instances with suggested values
-
-#### `page-content-breakpoint-after()`
+### `page-content-breakpoint-after()`
 
 Use `console.log()` to get the function output and hard code the value you need.
+If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
 
-Otherwise, you can copy the function definition and use it locally.
+**Before**
 
-| Deprecated Function               | Source          |
-| --------------------------------- | --------------- |
-| `page-content-breakpoint-after()` | [definition](#) |
+```scss
+@include page-content-breakpoint-after(490) {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-sm-up} {
+  padding: 1em;
+}
+```
+
+Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
 
 <details>
-<summary>Deprecated Mixin Definition</summary>
+<summary>Deprecated "page-content-breakpoint-after()" definition</summary>
 
 ```scss
 @mixin page-content-breakpoint-after($size) {
@@ -59,18 +70,31 @@ Otherwise, you can copy the function definition and use it locally.
 
 </details>
 
-#### `page-content-breakpoint-before()`
+### `page-content-breakpoint-before()`
 
 Use `console.log()` to get the function output and hard code the value you need.
+If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
 
-Otherwise, you can copy the function definition and use it locally.
+**Before**
 
-| Deprecated Function                | Source          |
-| ---------------------------------- | --------------- |
-| `page-content-breakpoint-before()` | [definition](#) |
+```scss
+@include page-content-breakpoint-before(490) {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-sm-down} {
+  padding: 1em;
+}
+```
+
+Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
 
 <details>
-<summary>Deprecated Mixin Definition</summary>
+<summary>Deprecated "page-content-breakpoint-before" Definition</summary>
 
 ```scss
 @mixin page-content-breakpoint-before($size) {
@@ -126,7 +150,7 @@ The following Sass global variables have been removed because the functions usin
 
 | Deprecated Variable                  | Value                                                                                                    |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `$frame-with-nav-max-width`          | `$layout-width-nav-base + $page-max-width)`                                                              |
+| `$frame-with-nav-max-width`          | `$layout-width-nav-base + $page-max-width`                                                               |
 | `$nav-min-window`                    | `breakpoint($layout-width-page-with-nav-base)`                                                           |
 | `$nav-size`                          | `breakpoint($layout-width-nav-base)`                                                                     |
 | `$not-condensed-content`             | `breakpoint($layout-width-page-content-not-condensed)`                                                   |
