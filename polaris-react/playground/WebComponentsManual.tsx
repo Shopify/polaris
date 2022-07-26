@@ -1,7 +1,12 @@
 /* eslint-disable import/extensions */
 /* eslint-disable @shopify/strict-component-boundaries */
 import React from 'react';
-import {html, LitElement} from 'lit';
+import {
+  html,
+  LitElement,
+  ReactiveController,
+  ReactiveControllerHost,
+} from 'lit';
 import {customElement} from 'lit/decorators.js';
 
 import {Variation, VariationValue} from '../src/components/TextStyle/TextStyle';
@@ -10,12 +15,61 @@ import styles from '../src/components/TextStyle/TextStyle.scss';
 
 import theme from './theme.scss';
 
+export class ToastController implements ReactiveController {
+  host?: ReactiveControllerHost;
+  public toasts: {message: string}[] = [];
+
+  addHost(host: ReactiveControllerHost) {
+    this.host = host;
+    this.host.addController(this);
+
+    return this;
+  }
+
+  showToast(toast: any) {
+    this.toasts.push(toast);
+    this.host?.requestUpdate();
+  }
+
+  hostConnected() {}
+
+  hostDisconnected() {
+    this.toasts.length = 0;
+  }
+}
+
+const toastController = new ToastController();
+
+@customElement('ui-toast')
+export class UIToast extends LitElement {
+  private toastController = toastController.addHost(this);
+
+  render() {
+    console.log(this.toastController.toasts);
+    return html`<div>
+      ${this.toastController.toasts.map(
+        (toast) => html`<div>${toast.message}</div>`,
+      )}
+    </div>`;
+  }
+}
+
 @customElement('ui-theme')
 export class UITheme extends LitElement {
   static styles = [theme];
 
   render() {
-    return html`<slot />`;
+    return html`<div>
+      <button
+        @click="${() => {
+          toastController.showToast({message: 'hello'});
+        }}"
+      >
+        Show toast
+      </button>
+      <ui-toast></ui-toast>
+      <slot />
+    </div>`;
   }
 }
 
