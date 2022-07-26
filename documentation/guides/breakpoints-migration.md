@@ -2,10 +2,13 @@
 
 The following Sass functions and mixins have been removed. If you wish to continue using them you will need to either add them directly to your repo or replace any instances with a value equivalent.
 
-### `breakpoint-after()`
+### Mixins
 
 Use `console.log()` to get the function output and hard code the value you need.
-If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
+If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token (see the following examples).
+Otherwise, if you really need to keep the old mixin, you can copy its definition and use it locally.
+
+### `breakpoint-after()`
 
 **Before**
 
@@ -23,8 +26,6 @@ If the end value of is close to one of [Polaris’ tokens](https://polaris.shopi
 }
 ```
 
-Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
-
 <details>
 <summary>Deprecated Mixin Definition</summary>
 
@@ -39,9 +40,6 @@ Otherwise, if you really need to keep the old mixin here's the function definiti
 </details>
 
 ### `breakpoint-before()`
-
-Use `console.log()` to get the function output and hard code the value you need.
-If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
 
 **Before**
 
@@ -59,8 +57,6 @@ If the end value of is close to one of [Polaris’ tokens](https://polaris.shopi
 }
 ```
 
-Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
-
 <details>
 <summary>Deprecated Mixin Definition</summary>
 
@@ -75,9 +71,6 @@ Otherwise, if you really need to keep the old mixin here's the function definiti
 </details>
 
 ### `page-content-breakpoint-after()`
-
-Use `console.log()` to get the function output and hard code the value you need.
-If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
 
 **Before**
 
@@ -94,8 +87,6 @@ If the end value of is close to one of [Polaris’ tokens](https://polaris.shopi
   padding: 1em;
 }
 ```
-
-Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
 
 <details>
 <summary>Deprecated Mixin Definition</summary>
@@ -144,9 +135,6 @@ Otherwise, if you really need to keep the old mixin here's the function definiti
 
 ### `page-content-breakpoint-before()`
 
-Use `console.log()` to get the function output and hard code the value you need.
-If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token. For example:
-
 **Before**
 
 ```scss
@@ -162,8 +150,6 @@ If the end value of is close to one of [Polaris’ tokens](https://polaris.shopi
   padding: 1em;
 }
 ```
-
-Otherwise, if you really need to keep the old mixin here's the function definition for you to copy and use it locally.
 
 <details>
 <summary>Deprecated Mixin Definition</summary>
@@ -204,6 +190,130 @@ Otherwise, if you really need to keep the old mixin here's the function definiti
     @media (max-width: #{$size + $not-condensed-outer-spacing}) {
       @content;
     }
+  }
+}
+```
+
+</details>
+
+### `page-content-when-partially-condensed()`
+
+**Before**
+
+```scss
+@include page-content-when-partially-condensed() {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-md-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-when-partially-condensed() {
+  @include page-content-breakpoint-before($not-condensed-content) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `page-content-when-not-partially-condensed()`
+
+**Before**
+
+```scss
+@include page-content-when-not-partially-condensed() {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-md-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-when-not-partially-condensed() {
+  @include page-content-breakpoint-after($not-condensed-content) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `page-content-when-fully-condensed()`
+
+**Before**
+
+```scss
+@include page-content-when-fully-condensed() {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-sm-down} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-when-fully-condensed() {
+  @include page-content-breakpoint-before($partially-condensed-content) {
+    @content;
+  }
+}
+```
+
+</details>
+
+### `page-content-when-not-fully-condensed()`
+
+**Before**
+
+```scss
+@include page-content-when-not-fully-condensed() {
+  padding: 1em;
+}
+```
+
+**After**
+
+```scss
+@media #{$p-breakpoints-sm-up} {
+  padding: 1em;
+}
+```
+
+<details>
+<summary>Deprecated Mixin Definition</summary>
+
+```scss
+@mixin page-content-when-not-fully-condensed() {
+  @include page-content-breakpoint-after($partially-condensed-content) {
+    @content;
   }
 }
 ```
