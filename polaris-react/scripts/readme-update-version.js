@@ -9,7 +9,7 @@ const {semverRegExp} = require('../scripts/utilities');
 
 const root = resolve(__dirname, '..');
 
-export const readmes = Object.freeze(['README.md', 'src/components/README.md']);
+const readmes = Object.freeze(['README.md', 'src/components/README.md']);
 
 console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
 readmes
@@ -24,3 +24,5 @@ readmes
 console.log(`🏃‍♂️ Running \`git add -A ${readmes.join(' ')}\`...`);
 const execOpts = {stdio: 'inherit'};
 execSync(`git add -A ${readmes.join(' ')}`, execOpts);
+
+module.exports = readmes;
