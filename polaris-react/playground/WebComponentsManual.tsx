@@ -95,6 +95,12 @@ export class UIText extends LitElement {
   }
 }
 
+// Example of how a React wrapper for frame would work
+export function Frame({children}) {
+  return <ui-frame>{children}</ui-frame>;
+}
+
+// Example of raw web component usage
 export function WebComponentsManual() {
   return (
     <ui-frame>
