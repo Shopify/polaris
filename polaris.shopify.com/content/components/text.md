@@ -26,18 +26,10 @@ examples:
     title: Heading
     description: >-
       Use to create a range of headings.
-  - fileName: text-body-small.tsx
-    title: Body small
+  - fileName: text-body.tsx
+    title: Body
     description: >-
-      Use to create a small body text.
-  - fileName: text-body-medium.tsx
-    title: Body medium
-    description: >-
-      Use to create a medium body text.
-  - fileName: text-body-large.tsx
-    title: Body large
-    description: >-
-      Use to create a large body text.
+      Use to create a range of body text.
   - fileName: text-with-align-inherit.tsx
     title: With align inherit
     description: >-
