@@ -1,5 +1,5 @@
 ---
-name: Spacing
+name: Space
 keywords:
   - spacing
   - space
@@ -10,7 +10,7 @@ keywords:
   - padding
 ---
 
-<!-- inline css styling for html video and hero img -->
+<!-- inline css styling for html video and images -->
 <style>
 .space-hero {
   margin: 40px -30px 40px -30px;
@@ -159,7 +159,7 @@ Grouping things based on the way they are arranged.
 
 ![Tag multiselect popover and media card](/images/foundations/design/spacing/spacing-continuity@2x.png)
 
-Shadows inside popovers act as visual cues to indicate additional content when scrolled (right). Cards placed horizontally in a media carousel communicates related topics (left).
+Shadows inside popovers act as visual cues to indicate additional content when scrolled (left). Cards placed horizontally in a media carousel communicates related topics (right).
 
 #### Closure
 
