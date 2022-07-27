@@ -54,13 +54,7 @@ export function useEventListener<
   useEffect(() => {
     const targetElement = target || window;
 
-    if (
-      !(
-        Boolean(targetElement) &&
-        targetElement.addEventListener &&
-        typeof eventName === 'string'
-      )
-    ) {
+    if (!(Boolean(targetElement) && typeof eventName === 'string')) {
       return;
     }
 
