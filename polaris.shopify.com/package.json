@@ -19,7 +19,7 @@
     "get-props": "tsc ./src/scripts/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./src/scripts/get-props && node ./src/scripts/get-props/scripts/get-props.js && rm -rf ./src/scripts/get-props"
   },
   "dependencies": {
-    "@floating-ui/react-dom-interactions": "^0.6.1",
+    "@floating-ui/react-dom-interactions": "0.6.1",
     "@headlessui/react": "^1.6.5",
     "@shopify/polaris": "^9.21.1",
     "@shopify/polaris-icons": "^5.2.0",

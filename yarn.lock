@@ -1849,19 +1849,19 @@
   resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.47.0.tgz#cc6345b1611a156228655c0869c87953cd1ec868"
   integrity sha512-DwMHzjDvks2cRWOTz4JRXqh+PZ2YP71MAdegw6qTqjjpACIWQGfuiFPrO2duoqB8pY1mMZsBK8xqozF2LIr7Kw==
 
-"@floating-ui/core@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.7.1.tgz#022710066a8facd4613b86a1b2b78ac2bc79b77d"
-  integrity sha512-grcqEmI8DTIolufpxhJagVeJmvloxBXE6xxSrVnSXz/Wz1uUIsC85ad+UNBqAoBOvzLxE42wvDj3YkmSGqWRxA==
+"@floating-ui/core@^0.7.3":
+  version "0.7.3"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-0.7.3.tgz#d274116678ffae87f6b60e90f88cc4083eefab86"
+  integrity sha512-buc8BXHmG9l82+OQXOFU3Kr2XQx9ys01U/Q9HMIrZ300iLc8HLMgh7dcCqgYzAzf4BkoQvDcXf5Y+CuEZ5JBYg==
 
-"@floating-ui/dom@^0.5.1":
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-0.5.1.tgz#c420503fc6c93b935ce8903c3fb737d3bd00ca0d"
-  integrity sha512-dkPSy5JPiQEtljc3VpG9lauYctxfLlqj/8N9f+lmsR92gQaSVMAWuBbFBH2keY5DmdQn3p4Dv1dQd+e8osH+/g==
+"@floating-ui/dom@^0.5.3":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-0.5.4.tgz#4eae73f78bcd4bd553ae2ade30e6f1f9c73fe3f1"
+  integrity sha512-419BMceRLq0RrmTSDxn8hf9R3VCJv2K9PUfugh5JyEFmdjzDo+e8U5EdR8nzKq8Yj1htzLm3b6eQEEam3/rrtg==
   dependencies:
-    "@floating-ui/core" "^0.7.1"
+    "@floating-ui/core" "^0.7.3"
 
-"@floating-ui/react-dom-interactions@^0.6.1":
+"@floating-ui/react-dom-interactions@0.6.1":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@floating-ui/react-dom-interactions/-/react-dom-interactions-0.6.1.tgz#8040683b1726fdd1499fba3918da0260f2035908"
   integrity sha512-ECPKOGyhMD+LFTVqAl8N4NU9PBWuEipY/M72x0WUx/Xt1OJMbmVOJ4HxQAHKVjbzpF0zinmHTQBcaiUKNpCIcg==
@@ -1871,11 +1871,11 @@
     use-isomorphic-layout-effect "^1.1.1"
 
 "@floating-ui/react-dom@^0.7.1":
-  version "0.7.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-0.7.1.tgz#e0eb57cb05c7762d4c904bfbae73148684578d66"
-  integrity sha512-Dd7e8AupUjzcjeGf1g3EItf/QRtEWKF5GGyEs5WA5n3zlHvEgZ4XrZM6ANhUnzgE3pUQAaXkcXLnibgFp1YBRw==
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-0.7.2.tgz#0bf4ceccb777a140fc535c87eb5d6241c8e89864"
+  integrity sha512-1T0sJcpHgX/u4I1OzIEhlcrvkUN8ln39nz7fMoE/2HDHrPiMFoOGR7++GYyfUmIQHkkrTinaeQsO3XWubjSvGg==
   dependencies:
-    "@floating-ui/dom" "^0.5.1"
+    "@floating-ui/dom" "^0.5.3"
     use-isomorphic-layout-effect "^1.1.1"
 
 "@gar/promisify@^1.0.1":
