@@ -212,7 +212,7 @@ Body content should be:
 
 ## Examples
 
-### Basic modal
+### Default
 
 Use as the default option for a modal.
 
@@ -257,7 +257,7 @@ function ModalExample() {
 }
 ```
 
-### Modal with primary action
+### With primary action
 
 Use to let merchants take a key action.
 
@@ -330,7 +330,7 @@ function ModalWithPrimaryActionExample() {
 }
 ```
 
-### Modal with primary and secondary actions
+### With primary and secondary actions
 
 Use to let merchants take key actions at the bottom of the modal.
 
@@ -421,7 +421,7 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
 }
 ```
 
-### Large modal
+### Large
 
 Use when you need to increase the width of your modal.
 
@@ -478,7 +478,7 @@ function LargeModalExample() {
 }
 ```
 
-### Small modal
+### Small
 
 Use when you need to decrease the width of your modal.
 
@@ -535,7 +535,7 @@ function SmallModalExample() {
 }
 ```
 
-### Modal without a title
+### Without a title
 
 A title is required for accessibility, but you may hide it.
 
@@ -581,7 +581,7 @@ function ModalWithoutTitleExample() {
 }
 ```
 
-### Modal with scroll listener
+### With scroll listener
 
 Use to implement infinite scroll of modal content.
 
@@ -591,7 +591,10 @@ function ModalWithScrollListenerExample() {
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
-  const handleScrollBottom = useCallback(() => alert('Scrolled to bottom'), []);
+  const handleScrollBottom = useCallback(
+    () => console.log('Scrolled to bottom'),
+    [],
+  );
 
   const activator = <Button onClick={handleChange}>Open</Button>;
 
@@ -619,10 +622,9 @@ function ModalWithScrollListenerExample() {
 }
 ```
 
-### Modal with activator ref
+### With activator ref
 
-Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
 function ModalExample() {
@@ -676,10 +678,9 @@ function ModalExample() {
 }
 ```
 
-### Modal without an activator prop
+### Without an activator prop
 
-Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
 function ModalExample() {

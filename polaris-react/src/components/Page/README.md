@@ -117,7 +117,7 @@ Add a menu item
 
 ## Examples
 
-### Page with all header elements
+### Default
 
 Use for detail pages, which should have pagination and breadcrumbs, and also often have several actions.
 
@@ -133,11 +133,11 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     {
       content: 'Duplicate',
       accessibilityLabel: 'Secondary action label',
-      onAction: () => alert('Duplicate action'),
+      onAction: () => console.log('Duplicate action'),
     },
     {
       content: 'View on your store',
-      onAction: () => alert('View on your store action'),
+      onAction: () => console.log('View on your store action'),
     },
   ]}
   actionGroups={[
@@ -148,7 +148,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
         {
           content: 'Share on Facebook',
           accessibilityLabel: 'Individual action label',
-          onAction: () => alert('Share on Facebook action'),
+          onAction: () => console.log('Share on Facebook action'),
         },
       ],
     },
@@ -164,7 +164,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
 </Page>
 ```
 
-### Page with custom primary action
+### With custom primary action
 
 Use to create a custom primary action.
 
@@ -190,7 +190,7 @@ Use to create a custom primary action.
 </Page>
 ```
 
-### Page without primary action in header
+### Without primary action in header
 
 Use when a primary action functions better as part of the page content instead of in the page header.
 
@@ -219,7 +219,7 @@ Use when a primary action functions better as part of the page content instead o
 </Page>
 ```
 
-### Page with destructive secondary action
+### With destructive secondary action
 
 Used to visually indicate that the secondary page action is destructive.
 
@@ -232,7 +232,7 @@ Used to visually indicate that the secondary page action is destructive.
 </Page>
 ```
 
-### Page with custom secondary action
+### With custom secondary action
 
 Use to create a custom secondary action.
 
@@ -254,7 +254,7 @@ Use to create a custom secondary action.
 </Page>
 ```
 
-### Page with subtitle
+### With subtitle
 
 Use when the page title benefits from secondary content.
 
@@ -271,7 +271,7 @@ Use when the page title benefits from secondary content.
 </Page>
 ```
 
-### Page with external link
+### With external link
 
 Use when a secondary action links to another website. Actions marked external open in a new browser tab.
 
@@ -294,7 +294,7 @@ Use when a secondary action links to another website. Actions marked external op
 </Page>
 ```
 
-### Page without pagination
+### Without pagination
 
 Use when the page doesn’t represent a list of objects or a detail view for an object.
 
@@ -310,7 +310,7 @@ Use when the page doesn’t represent a list of objects or a detail view for an 
 </Page>
 ```
 
-### Full-width page
+### Full-width
 
 Use for layouts that benefit from more screen width, such as wide tables or lists.
 
@@ -330,7 +330,7 @@ Use for layouts that benefit from more screen width, such as wide tables or list
 </Page>
 ```
 
-### Narrow width page
+### Narrow width
 
 Use a narrow width layout if the page supports a single unified task. When merchants must review the entire page contents to complete their goal, this layout helps focus their attention in a single path from top to bottom.
 
@@ -351,7 +351,7 @@ Use a narrow width layout if the page supports a single unified task. When merch
 </Page>
 ```
 
-### Page with action groups
+### With action groups
 
 Use action groups for sets of actions that relate to one another, particularly when there are too many to display as secondary actions. Note that these groups will be further rolled up into a single action for smaller displays so that actions do not wrap or overflow the page bounds.
 
@@ -362,7 +362,7 @@ Use action groups for sets of actions that relate to one another, particularly w
     {
       title: 'Copy',
       onClick: (openActions) => {
-        alert('Copy action');
+        console.log('Copy action');
         openActions();
       },
       actions: [{content: 'Copy to clipboard'}],
@@ -389,7 +389,7 @@ Use action groups for sets of actions that relate to one another, particularly w
 </Page>
 ```
 
-### Page with content after title (title metadata)
+### With content after title
 
 Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
 
@@ -411,7 +411,7 @@ Title metadata appears immediately after the page’s title. Use it to communica
 </Page>
 ```
 
-### Page with divider
+### With divider
 
 Use when the page needs visual separation between the page header and the content.
 

@@ -134,7 +134,7 @@ A text field component that is tailor-made for a search use-case.
 
 ## Examples
 
-### Top bar with all of its elements
+### Default
 
 Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
 
@@ -250,7 +250,7 @@ function TopBarExample() {
 }
 ```
 
-### Top bar themed with colorScheme
+### With colorScheme
 
 Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
 

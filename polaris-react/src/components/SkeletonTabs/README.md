@@ -25,7 +25,7 @@ Skeleton tabs component should:
 
 ## Examples
 
-### Simple skeleton tabs
+### Default
 
 ```jsx
 <Card>
@@ -33,7 +33,7 @@ Skeleton tabs component should:
 </Card>
 ```
 
-### Skeleton tabs with a custom count
+### With a custom count
 
 ```jsx
 <Card>

@@ -1,5 +1,38 @@
 # Changelog
 
+## 9.21.1
+
+### Patch Changes
+
+- [#6753](https://github.com/Shopify/polaris/pull/6753) [`e17db88b2`](https://github.com/Shopify/polaris/commit/e17db88b275d2c4070d22d9c2c3bf903f12739db) Thanks [@alex-page](https://github.com/alex-page)! - Remove omitAppProvider front matter
+
+* [#6749](https://github.com/Shopify/polaris/pull/6749) [`45f45883a`](https://github.com/Shopify/polaris/commit/45f45883ac975b89e1df53f651748319223e1f2c) Thanks [@alex-page](https://github.com/alex-page)! - Adjust some of the internal scripts so they are simpler
+
+- [#6722](https://github.com/Shopify/polaris/pull/6722) [`b4053553d`](https://github.com/Shopify/polaris/commit/b4053553d9fb0079a957e31df48893d90ce766b0) Thanks [@philschoefer](https://github.com/philschoefer)! - Updated `DataTable` to fix console warning about improperly nested HTML, ensure focus states remain on the same header element when switching between sticky and regular header and improved tooltip when using `truncate` prop.
+
+* [#6695](https://github.com/Shopify/polaris/pull/6695) [`ceff5fb6c`](https://github.com/Shopify/polaris/commit/ceff5fb6c015706192c8e451ad33078238e01eb8) Thanks [@aveline](https://github.com/aveline)! - Added guidance to the Releasing docs around tagging contributors for reviews
+
+- [#6756](https://github.com/Shopify/polaris/pull/6756) [`fdf4d836d`](https://github.com/Shopify/polaris/commit/fdf4d836dccedd4578d094fa216c5460780064cc) Thanks [@mrkldshv](https://github.com/mrkldshv)! - Fixed react hook errors across examples
+
+* [#6678](https://github.com/Shopify/polaris/pull/6678) [`51798772a`](https://github.com/Shopify/polaris/commit/51798772a04f6afb51ef11ef41a7ca573617275c) Thanks [@alex-page](https://github.com/alex-page)! - Migrate content to polaris.shopify.com, automate example titles
+
+## 9.21.0
+
+### Minor Changes
+
+- [#6461](https://github.com/Shopify/polaris/pull/6461) [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097) Thanks [@zakwarsame](https://github.com/zakwarsame)! - Make disabled buttons more accessible
+
+### Patch Changes
+
+- [`720d10e79`](https://github.com/Shopify/polaris/commit/720d10e79c9080efccb4c1d3e41ac322b58b7977) Thanks [@alex-page](https://github.com/alex-page)! - `DataTable` revert accidental rename of `hasFixedFirstColumn` to `fixedFirstColumn`
+
+* [#6703](https://github.com/Shopify/polaris/pull/6703) [`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad) Thanks [@alex-page](https://github.com/alex-page)! - Clean up README.md files, removing 80 character limit and unused content
+
+- [#6681](https://github.com/Shopify/polaris/pull/6681) [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353) Thanks [@alex-page](https://github.com/alex-page)! - Removed comments and cleaned up markdown files
+
+- Updated dependencies [[`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb)]:
+  - @shopify/polaris-icons@5.2.0
+
 ## 9.20.1
 
 ### Patch Changes
@@ -14,7 +47,8 @@
 
 - [#6619](https://github.com/Shopify/polaris/pull/6619) [`398186117`](https://github.com/Shopify/polaris/commit/398186117be9a4bc7d0248dd7ea339f0a0f34779) Thanks [@alex-page](https://github.com/alex-page)! - Remove legacy keywords from component documentation
 
-* [#6532](https://github.com/Shopify/polaris/pull/6532) [`89d40028a`](https://github.com/Shopify/polaris/commit/89d40028a251a06464f039ae5f26defea8e715b9) Thanks [@philschoefer](https://github.com/philschoefer)! - - Updates `DataTable` to fix console warning about improperly nested HTML
+* [#6722](https://github.com/Shopify/polaris/pull/6722) [`b405355`](https://github.com/Shopify/polaris/commit/b4053553d9fb0079a957e31df48893d90ce766b0) Thanks [@philschoefer](https://github.com/philschoefer):
+  - Updates `DataTable` to fix console warning about improperly nested HTML
   - Updates `DataTable` to ensure focus states remain on the same header element when switching between sticky and regular header.
   - Improves `DataTable` tooltip when using `truncate` prop.
 

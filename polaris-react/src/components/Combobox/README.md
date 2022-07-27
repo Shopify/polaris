@@ -76,7 +76,7 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ## Examples
 
-### Single select autocomplete with automatic selection
+### Default
 
 Use when merchants can select one option from a predefined or editable list.
 
@@ -168,7 +168,7 @@ function AutoSelectComboboxExample() {
 }
 ```
 
-### Single select autocomplete with manual selection
+### With manual selection
 
 Use when merchants can select one option from a predefined or editable list.
 
@@ -262,7 +262,7 @@ function ManualSelectComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete with automatic selection
+### With multi-select
 
 Use when merchants can select one or more options from a predefined or editable list.
 
@@ -317,7 +317,7 @@ function MultiAutoComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -380,7 +380,7 @@ function MultiAutoComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete with manual selection
+### With multi-select and manual selection
 
 Use when merchants can select one or more options from a predefined or editable list.
 
@@ -435,7 +435,7 @@ function MultiManualComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -500,7 +500,7 @@ function MultiManualComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete with vertical content
+### With multi-select and vertical content
 
 Use to display selected options above the input value.
 
@@ -558,8 +558,14 @@ function MultiselectTagComboboxExample() {
       if (!value || matchIndex === -1) return option;
 
       const start = option.slice(0, matchIndex);
-      const highlight = option.slice(matchIndex, matchIndex + trimValue.length);
-      const end = option.slice(matchIndex + trimValue.length, option.length);
+      const highlight = option.slice(
+        matchIndex,
+        `${matchIndex}${trimValue.length}`,
+      );
+      const end = option.slice(
+        `${matchIndex}${trimValue.length}`,
+        option.length,
+      );
 
       return (
         <p>
@@ -664,7 +670,7 @@ function MultiselectTagComboboxExample() {
 }
 ```
 
-### Autocomplete with loading
+### With loading
 
 Use to indicate to merchants that the list data is being fetched.
 

@@ -67,7 +67,7 @@ For example, if the setting toggle is on, the button should say “Deactivate”
 
 ## Examples
 
-### Default setting toggle
+### Default
 
 Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
 

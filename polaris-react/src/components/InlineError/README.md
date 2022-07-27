@@ -58,7 +58,7 @@ Inline error messages should:
 
 ## Examples
 
-### Basic inline error
+### Default
 
 Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 

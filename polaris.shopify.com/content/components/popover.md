@@ -21,25 +21,20 @@ keywords:
   - action sheet
 examples:
   - fileName: popover-with-action-list.tsx
-    title: Popover with action list
-    description: >-
-      Use when presenting a set of actions in a disclosable
-      menu.
+    title: With action list
+    description: Use when presenting a set of actions in a disclosable menu.
   - fileName: popover-with-content-and-actions.tsx
-    title: Popover with content and actions
-    description: >-
-      Use to present a combination of content, instructions, and actions in a
-      panel for tasks that are of low or secondary importance to the current
-      page. When used this way, popovers provide useful entry points to related
-      features without overwhelming merchants.
+    title: With content and actions
+    description: Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
   - fileName: popover-with-form-components.tsx
-    title: Popover with form components
+    title: With form components
     description: Use to present secondary input tasks on demand.
   - fileName: popover-with-lazy-loaded-list.tsx
-    title: Popover with lazy loaded list
-    description: >-
-      Use to present merchants with a list that dynamically loads more items on
-      scroll or arrow down.
+    title: With lazy loaded list
+    description: Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
+  - fileName: popover-with-searchable-listbox.tsx
+    title: With searchable listbox
+    description: Use to help merchants browse, filter, and choose from a list of options.
 ---
 
 # Popover

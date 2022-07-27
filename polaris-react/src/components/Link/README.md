@@ -57,7 +57,7 @@ The link component should follow the content guidelines for [links](https://pola
 
 ## Examples
 
-### Default links
+### Default
 
 Use for text links in larger spans of text.
 
@@ -65,7 +65,7 @@ Use for text links in larger spans of text.
 <Link url="https://help.shopify.com/manual">fulfilling orders</Link>
 ```
 
-### Monochrome link
+### Monochrome
 
 Use for text links that are the same color as the surrounding text.
 
@@ -75,7 +75,7 @@ Use for text links that are the same color as the surrounding text.
 </Link>
 ```
 
-### Monochrome link in a banner
+### Monochrome in a banner
 
 Monochrome styles will be applied to links rendered within a `Banner`.
 
@@ -86,7 +86,7 @@ Monochrome styles will be applied to links rendered within a `Banner`.
 </Banner>
 ```
 
-### External link
+### External
 
 Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
 

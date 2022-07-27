@@ -2,10 +2,8 @@ import { Link, Page, Card, DataTable } from "@shopify/polaris";
 import { useState, useCallback } from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
 
-function FullDataTableExample() {
-  const [sortedRows, setSortedRows] = useState(null);
-
-  const initiallySortedRows = [
+function DataTableWithFixedFirstColumnExample() {
+  const rows = [
     [
       <Link
         removeUnderline
@@ -241,12 +239,7 @@ function FullDataTableExample() {
       "$14,240.00",
     ],
   ];
-
-  const rows = sortedRows ? sortedRows : initiallySortedRows;
-  const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
-    [rows]
-  );
+  const [sortedRows, setSortedRows] = useState<any[]>(rows);
 
   return (
     <Page title="Sales by product">
@@ -266,30 +259,38 @@ function FullDataTableExample() {
             "Net quantity",
             "Net sales",
           ]}
-          rows={rows}
+          rows={sortedRows}
           totals={["", "", "", 255, "$155,830.00"]}
-          sortable={[false, true, false, false, true]}
+          sortable={[true, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
-          onSort={handleSort}
-          footerContent={`Showing ${rows.length} of ${rows.length} results`}
-          hasZebraStripingOnData
-          increasedTableDensity
+          onSort={(index, direction) => {
+            setSortedRows(
+              [...rows].sort((rowA, rowB) => {
+                const amountA = rowA[index]?.props?.children
+                  ? rowA[index]?.props?.children
+                  : parseFloat(rowA[index].substring(1));
+                const amountB = rowB[index]?.props?.children
+                  ? rowB[index]?.props?.children
+                  : parseFloat(rowB[index].substring(1));
+
+                return (
+                  direction === "descending"
+                    ? amountA > amountB
+                    : amountB > amountA
+                )
+                  ? 1
+                  : -1;
+              })
+            );
+          }}
+          footerContent={`Showing ${sortedRows.length} of ${sortedRows.length} results`}
           stickyHeader
-          fixedFirstColumn
+          hasFixedFirstColumn
         />
       </Card>
     </Page>
   );
-
-  function sortCurrency(rows, index, direction) {
-    return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
-
-      return direction === "descending" ? amountB - amountA : amountA - amountB;
-    });
-  }
 }
 
-export default withPolarisExample(FullDataTableExample);
+export default withPolarisExample(DataTableWithFixedFirstColumnExample);

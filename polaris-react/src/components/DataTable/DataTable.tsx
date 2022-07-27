@@ -95,7 +95,7 @@ export interface DataTableProps {
   /** Header becomes sticky and pins to top of table when scrolling  */
   stickyHeader?: boolean;
   /** Add a fixed first column on horizontal scroll. */
-  fixedFirstColumn?: boolean;
+  hasFixedFirstColumn?: boolean;
   /** Specify a min width for the first column if neccessary */
   firstColumnMinWidth?: string;
 }
@@ -176,7 +176,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       increasedTableDensity = false,
       hasZebraStripingOnData = false,
       stickyHeader = false,
-      fixedFirstColumn = false,
+      hasFixedFirstColumn: fixedFirstColumn = false,
     } = this.props;
     const {
       condensed,
@@ -477,7 +477,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     if (condensed && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll(headerCell.selector);
-      const {fixedFirstColumn} = this.props;
+      const {hasFixedFirstColumn: fixedFirstColumn} = this.props;
       const firstColumnWidth = fixedFirstColumn
         ? headerCells[0].clientWidth
         : 0;
@@ -627,7 +627,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     const handleScroll = () => {
       let newScrollLeft = 0;
-      if (this.props.fixedFirstColumn) {
+      if (this.props.hasFixedFirstColumn) {
         newScrollLeft =
           direction === 'right'
             ? prevWidths - firstColumnWidth + currentColumn.width
@@ -696,8 +696,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortable: isSortable,
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
-        fixedFirstColumn: this.props.fixedFirstColumn,
-        inFixedFirstColumn: this.props.fixedFirstColumn && inFixedFirstColumn,
+        fixedFirstColumn: this.props.hasFixedFirstColumn,
+        inFixedFirstColumn:
+          this.props.hasFixedFirstColumn && inFixedFirstColumn,
       };
     }
 

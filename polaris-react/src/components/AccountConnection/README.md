@@ -96,7 +96,7 @@ Connect to app
 
 ## Examples
 
-### Default account connection
+### Default
 
 Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
 
@@ -107,7 +107,7 @@ function AccountConnectionExample() {
 
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
-  }, [connected]);
+  }, []);
 
   const buttonText = connected ? 'Disconnect' : 'Connect';
   const details = connected ? 'Account connected' : 'No account connected';

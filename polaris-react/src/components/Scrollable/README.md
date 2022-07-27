@@ -38,7 +38,7 @@ Scrollable containers are cards with scrolling functionality, and should follow 
 
 ## Examples
 
-### Default scrollable container
+### Default
 
 Use when you need to make a region within the page independently scrollable. It’s often used in modals and other panes where it’s helpful to provide an extra visual cue that content exists below or above the fold.
 
@@ -64,7 +64,7 @@ Use when you need to make a region within the page independently scrollable. It�
 </Card>
 ```
 
-### Scroll to child component
+### To child component
 
 Use when you need to programmatically scroll a child component into view in the scrollable container.
 

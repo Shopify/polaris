@@ -46,7 +46,7 @@ Button groups should follow the [content guidelines](https://polaris.shopify.com
 
 ## Examples
 
-### Default button group
+### Default
 
 Use when you have multiple buttons to space them out evenly.
 
@@ -57,7 +57,7 @@ Use when you have multiple buttons to space them out evenly.
 </ButtonGroup>
 ```
 
-### Button group with segmented buttons
+### With segmented buttons
 
 Use to emphasize several buttons as a thematically-related set among other controls.
 
@@ -69,7 +69,7 @@ Use to emphasize several buttons as a thematically-related set among other contr
 </ButtonGroup>
 ```
 
-### Outline button group with segmented buttons
+### Outline with segmented buttons
 
 Use to emphasize several buttons as a thematically-related set among other controls.
 

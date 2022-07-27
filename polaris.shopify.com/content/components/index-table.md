@@ -27,64 +27,54 @@ keywords:
   - filter
   - sort
 examples:
-  - fileName: index-table-simple.tsx
-    title: Simple index table
-    description: >-
-      A index table with simple items and no bulk actions, sorting, or
-      filtering.
-  - fileName: index-table-simple-small-screen.tsx
-    title: Simple small screen index table
-    description: >-
-      A small screen index table with simple items and no bulk actions, sorting,
-      or filtering.
+  - fileName: index-table-default.tsx
+    title: Default
+    description: A index table with simple items and no bulk actions, sorting, or filtering.
+  - fileName: index-table-flush.tsx
+    title: Flush
+    description: A index table with simple items and no bulk actions, sorting, or filtering.
+  - fileName: index-table-small-screen.tsx
+    title: Small screen
+    description: A small screen index table with simple items and no bulk actions, sorting, or filtering.
   - fileName: index-table-with-empty-state.tsx
-    title: IndexTable with empty state
-    description: >-
-      Use to explain the purpose of a index table when no resources exist yet.
-      This allows a smooth transition from a list in a loading state to a list
-      where zero, one, or many resources exist.
+    title: With empty state
+    description: Use to explain the purpose of a index table when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
   - fileName: index-table-with-bulk-actions.tsx
-    title: IndexTable with bulk actions
+    title: With bulk actions
     description: Allows merchants to select items and perform an action on the selection.
   - fileName: index-table-with-multiple-promoted-bulk-actions.tsx
-    title: IndexTable with multiple promoted bulk actions
-    description: >-
-      Allows merchants to select items and perform different actions on the
-      selection.
+    title: With multiple promoted bulk actions
+    description: Allows merchants to select items and perform different actions on the selection.
   - fileName: index-table-with-bulk-actions-and-selection-across-pages.tsx
-    title: IndexTable with bulk actions and selection across pages
-    description: >-
-      Allows merchants to select items, perform an action on the selection and
-      select resources across pages.
+    title: With bulk actions and selection across pages
+    description: Allows merchants to select items, perform an action on the selection and select resources across pages.
   - fileName: index-table-with-loading-state.tsx
-    title: IndexTable with loading state
+    title: With loading state
     description: Notifies merchants that index table items are being processed.
   - fileName: index-table-with-filtering.tsx
-    title: IndexTable with filtering
-    description: >-
-      Allows merchants to narrow the index table to a subset of the original
-      items.
+    title: With filtering
+    description: Allows merchants to narrow the index table to a subset of the original items.
   - fileName: index-table-with-row-status.tsx
-    title: Index table with row status
+    title: With row status
     description: An index table with rows differentiated by status.
   - fileName: index-table-with-sticky-last-column.tsx
-    title: Index table with sticky last column
-    description: >-
-      An index table with a sticky last column that stays visible on scroll. The
-      last heading will also be sticky if not hidden.
+    title: With sticky last column
+    description: An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden.
+  - fileName: index-table-with-row-navigation-link.tsx
+    title: With row navigation link
+    description: Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Link` with the `dataPrimaryLink` prop set to `true`, clicking the row will trigger navigation to the link's `url` instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
+  - fileName: index-table-with-clickable-button-column.tsx
+    title: With clickable button column
+    description: Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Button` with the `dataPrimaryLink` prop set to `true`, clicking the row will navigate to the `Button` `url` if set instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
   - fileName: index-table-without-checkboxes.tsx
-    title: Index table without checkboxes
+    title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
   - fileName: index-table-with-all-of-its-elements.tsx
-    title: IndexTable with all of its elements
-    description: >-
-      Use as a broad example that includes most of the elements and props
-      available to index table.
+    title: With all of its elements
+    description: Use as a broad example that includes most of the elements and props available to index table.
   - fileName: index-table-small-screen-with-all-of-its-elements.tsx
-    title: Small screen IndexTable with all of its elements
-    description: >-
-      Use as a broad example that includes most of the elements and props
-      available to index table.
+    title: Small screen with all of its elements
+    description: Use as a broad example that includes most of the elements and props available to index table.
 ---
 
 # Index table
@@ -196,13 +186,14 @@ An `IndexTableRow` is used to render a row representing an item within an `Index
 
 ### IndexTableRow properties
 
-| Prop     | Type      | Description                                                     |
-| -------- | --------- | --------------------------------------------------------------- |
-| id       | string    | A unique identifier for the row                                 |
-| selected | boolean   | A boolean property indicating whether the row is selected       |
-| position | number    | The index position of the row                                   |
-| subdued  | boolean   | A boolean property indicating whether the row should be subdued |
-| status   | RowStatus | A property indicating whether the row should have a status      |
+| Prop     | Type       | Description                                                     |
+| -------- | ---------- | --------------------------------------------------------------- |
+| id       | string     | A unique identifier for the row                                 |
+| selected | boolean    | A boolean property indicating whether the row is selected       |
+| position | number     | The index position of the row                                   |
+| subdued  | boolean    | A boolean property indicating whether the row should be subdued |
+| status   | RowStatus  | A property indicating whether the row should have a status      |
+| onClick  | () => void | A function which overrides the default click behaviour          |
 
 ## IndexTableCell
 
@@ -210,9 +201,10 @@ An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
 
 ### IndexTableCell properties
 
-| Prop  | Type    | Description                                                                      |
-| ----- | ------- | -------------------------------------------------------------------------------- |
-| flush | boolean | A boolean property indicating whether the cell should remove the default padding |
+| Prop      | Type    | Description                                                                      |
+| --------- | ------- | -------------------------------------------------------------------------------- |
+| flush     | boolean | A boolean property indicating whether the cell should remove the default padding |
+| className | string  | Adds a class to the cell, used for setting widths of a cell                      |
 
 ---
 

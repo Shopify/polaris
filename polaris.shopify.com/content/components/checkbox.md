@@ -14,12 +14,9 @@ keywords:
   - form selections
   - multi-choice lists
 examples:
-  - fileName: checkboxes-default.tsx
-    title: Default checkboxes
-    description: >-
-      Use in forms to toggle the state of something on or off. Default
-      checkboxes can appear in two states: selected and disabled, or
-      unselected.
+  - fileName: checkbox-default.tsx
+    title: Default
+    description: Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
 ---
 
 # Checkbox
@@ -33,8 +30,7 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 Checkboxes should:
 
 - Work independently from each other: selecting one checkbox shouldn’t change the selection status of another checkbox in the list. The exception is when a checkbox is used to make a bulk selection of multiple items.
-- Be framed positively: for example, `Turn on notifications` instead of
-  `Turn off notifications`
+- Be framed positively: for example, `Turn on notifications` instead of `Turn off notifications`
 - Always have a label when being used to toggling a setting on or off
 - Be listed according to a logical order, whether it’s alphabetical, numerical, time-based, or some other clear system.
 - Link to more information or include a subtitle as required to provide more explanation. Don’t rely on tooltips to explain a checkbox.

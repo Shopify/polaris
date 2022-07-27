@@ -59,7 +59,7 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 ## Examples
 
-### Exception list with icon
+### Default
 
 Use icons to add clarity or assist in visualizing the meaning
 

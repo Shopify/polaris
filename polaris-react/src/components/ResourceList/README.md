@@ -40,7 +40,7 @@ Resource lists can also:
 
 ## Examples
 
-### Simple resource list
+### Default
 
 A resource list with simple items and no bulk actions, sorting, or filtering.
 
@@ -84,7 +84,7 @@ A resource list with simple items and no bulk actions, sorting, or filtering.
 </Card>
 ```
 
-### Resource list with empty state
+### With empty state
 
 Use to explain the purpose of a list of resources when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
 
@@ -137,7 +137,7 @@ function ResourceListWithEmptyStateExample() {
 }
 ```
 
-### Resource list with selection and no bulk actions
+### With selection and no bulk actions
 
 A resource list with simple items and selection.
 
@@ -199,7 +199,7 @@ function ResourceListWithSelectionExample() {
 }
 ```
 
-### Resource list with bulk actions
+### With bulk actions
 
 Allows merchants to select items and perform an action on the selection.
 
@@ -284,7 +284,7 @@ function ResourceListWithBulkActionsExample() {
 }
 ```
 
-### Resource list with loading state
+### With loading state
 
 Notifies merchants that list items are being processed.
 
@@ -370,7 +370,7 @@ function ResourceListWithLoadingExample() {
 }
 ```
 
-### Resource list with total resource count
+### With total count
 
 Use to indicate that the number of resources shown is a subset of the total number of resources in the list.
 
@@ -420,7 +420,7 @@ function ResourceListWithTotalItemsCount() {
 }
 ```
 
-### Resource list with sorting
+### With sorting
 
 Allows merchants to change the way the list is sorted by selecting one of several options from a [Select](https://polaris.shopify.com/components/select) control.
 
@@ -488,7 +488,7 @@ function ResourceListWithSortingExample() {
 }
 ```
 
-### Resource list with alternate tool
+### With alternate tool
 
 Allows merchants to add an alternate tool in the current sort option location when sort may not be the most relevant action for the current list.
 
@@ -546,7 +546,7 @@ function ResourceListWithAlternateToolExample() {
 }
 ```
 
-### Resource list with filtering
+### With filtering
 
 Allows merchants to narrow the resource list to a subset of the original items.
 
@@ -672,7 +672,7 @@ function ResourceListWithFilteringExample() {
 }
 ```
 
-### Resource list with a custom empty search result state
+### With a custom empty search result state
 
 Allows merchants to narrow the resource list to a subset of the original items. If the filters or search applied return no results, then display a custom empty search state.
 
@@ -789,7 +789,7 @@ function ResourceListWithFilteringExample() {
 }
 ```
 
-### Resource list with item shortcut actions
+### With item shortcut actions
 
 Shortcut actions are intended to provide quick access to popular actions from the resource’s details page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way.
 
@@ -845,7 +845,7 @@ Shortcut actions are intended to provide quick access to popular actions from th
 </Card>
 ```
 
-### Resource list with persistent item shortcut actions
+### With persistent item shortcut actions
 
 Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s details page. Persistent shortcut actions roll up into an overflow menu on small screens.
 
@@ -902,7 +902,7 @@ Use persistent shortcut actions in rare cases when the action cannot be made ava
 </Card>
 ```
 
-### Resource list with multiselect
+### With multiselect
 
 Allows merchants to select or deselect multiple items at once.
 
@@ -1017,7 +1017,7 @@ function ResourceListExample() {
 }
 ```
 
-### Resource list with all of its elements
+### With all of its elements
 
 Use as a broad example that includes most props available to resource list.
 

@@ -8,12 +8,9 @@ keywords:
   - invalid input
   - form group
 examples:
-  - fileName: inline-error-basic.tsx
-    title: Basic inline error
-    description: >-
-      Use when the merchant has entered information that is not valid into
-      multiple fields inside of a form, or needs to be displayed in a
-      non-standard position in the form layout.
+  - fileName: inline-error-default.tsx
+    title: Default
+    description: Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 ---
 
 # Inline error

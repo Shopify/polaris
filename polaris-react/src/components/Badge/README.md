@@ -73,7 +73,7 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 
 ## Examples
 
-### Default badge
+### Default
 
 Use to give a non-critical status update on a piece of information or action.
 
@@ -81,7 +81,7 @@ Use to give a non-critical status update on a piece of information or action.
 <Badge>Fulfilled</Badge>
 ```
 
-### Small badge
+### Small
 
 Use in layouts with minimal space, like inside of an `IndexTable` cell.
 
@@ -89,7 +89,7 @@ Use in layouts with minimal space, like inside of an `IndexTable` cell.
 <Badge size="small">Fulfilled</Badge>
 ```
 
-### Informational badge
+### Informational
 
 Use to call out an object or action as having an important attribute. For example, marking an option as “Recommended” or marking a theme as “Published”.
 
@@ -97,7 +97,7 @@ Use to call out an object or action as having an important attribute. For exampl
 <Badge status="info">Published</Badge>
 ```
 
-### Success badge
+### Success
 
 Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to merchants. For example, when merchants successfully dispute a chargeback, a success badge shows that says “Funds recovered”.
 
@@ -105,7 +105,7 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 <Badge status="success">Funds recovered</Badge>
 ```
 
-### Attention badge
+### Attention
 
 Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
 
@@ -113,27 +113,23 @@ Use when something requires merchants’ attention but the issue isn’t critica
 <Badge status="attention">Inactive</Badge>
 ```
 
-### Warning badge
+### Warning
 
-Use for critical and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+Use for warnings and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="warning">Expired</Badge>
 ```
 
-### Critical badge
+### Critical
 
-Use for critical and irreversible issues that require merchants’ attention and potential action.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+Use for critical and irreversible issues that require merchants’ attention and potential action. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="critical">Action required</Badge>
 ```
 
-### Incomplete badge
+### Incomplete
 
 Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.
 
@@ -143,7 +139,7 @@ Use to indicate when a given task has not yet been completed. For example, when 
 </Badge>
 ```
 
-### Partially complete badge
+### Partially complete
 
 Use to indicate when a given task has been partially completed. For example, when merchants have partially fulfilled an order.
 
@@ -153,7 +149,7 @@ Use to indicate when a given task has been partially completed. For example, whe
 </Badge>
 ```
 
-### Complete badge
+### Complete
 
 Use to indicate when a given task has been completed. For example, when merchants have fulfilled an order.
 
@@ -161,7 +157,7 @@ Use to indicate when a given task has been completed. For example, when merchant
 <Badge progress="complete">Fulfilled</Badge>
 ```
 
-### Badge with statusAndProgressLabelOverride
+### With statusAndProgressLabelOverride
 
 Use when the status and progress accessibilityLabels are not appropriate to a given context.
 

@@ -9,18 +9,14 @@ keywords:
   - progress indicator
 examples:
   - fileName: spinner-default.tsx
-    title: Default spinner
-    description: >-
-      Use to notify merchants that their requested action is being
-      processed.
+    title: Default
+    description: Use to notify merchants that their requested action is being processed.
   - fileName: spinner-small.tsx
-    title: Small spinner
+    title: Small
     description: Smaller than the default spinner.
   - fileName: spinner-with-focus-management.tsx
-    title: Spinner with focus management
-    description: >-
-      Use to direct the focus state from the control to the spinner, to the
-      content.
+    title: With focus management
+    description: Use to direct the focus state from the control to the spinner, to the content.
 ---
 
 # Spinner

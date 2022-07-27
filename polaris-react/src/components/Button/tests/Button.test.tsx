@@ -86,6 +86,21 @@ describe('<Button />', () => {
 
       expect(button).toContainReactComponent('a', {href: undefined});
     });
+
+    it('prevents default for onClick event when disabled', () => {
+      const onClick = jest.fn();
+      const button = mountWithApp(<Button disabled onClick={onClick} />);
+
+      const mockEvent = {
+        preventDefault: jest.fn(),
+        stopPropagation: jest.fn(),
+      };
+
+      button.find('button')!.trigger('onClick', mockEvent);
+
+      expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
+      expect(mockEvent.stopPropagation).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('loading', () => {
@@ -259,7 +274,9 @@ describe('<Button />', () => {
       const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
       const disclosureButton = button.findAll('button')[1];
 
-      expect(disclosureButton).toHaveReactProps({disabled: true});
+      expect(disclosureButton).toHaveReactProps({
+        'aria-disabled': true,
+      });
     });
 
     it('renders an ActionList with the actions set', () => {
@@ -278,6 +295,42 @@ describe('<Button />', () => {
       const actionList = button.find(Popover)!.find(ActionList);
       expect(actionList).toHaveReactProps({
         items: expect.arrayContaining(actions),
+      });
+    });
+
+    it('sets tabIndex to -1 on the disclosure button when disabled is true', () => {
+      const disclosure = {
+        disabled: true,
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
+      const disclosureButton = button.findAll('button')[1];
+
+      expect(disclosureButton).toHaveReactProps({
+        tabIndex: -1,
+      });
+    });
+
+    it('sets tabIndex to undefined on the disclosure button when disabled is false', () => {
+      const disclosure = {
+        disabled: false,
+        actions: [
+          {
+            content: 'Save and mark as ordered',
+          },
+        ],
+      };
+
+      const button = mountWithApp(<Button connectedDisclosure={disclosure} />);
+      const disclosureButton = button.findAll('button')[1];
+
+      expect(disclosureButton).toHaveReactProps({
+        tabIndex: undefined,
       });
     });
   });

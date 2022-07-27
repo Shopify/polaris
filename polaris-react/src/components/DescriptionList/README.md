@@ -91,7 +91,7 @@ Terms descriptions should be:
 
 ## Examples
 
-### Default description list
+### Default
 
 Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
 

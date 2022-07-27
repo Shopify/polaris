@@ -77,7 +77,7 @@ The following images couldn’t be uploaded:
 
 ## Examples
 
-### Drop zone with file upload
+### Default
 
 Use to allow merchants to upload files. They can drag and drop files into the dashed area, or upload traditionally by clicking the “Add file” button or anywhere inside the dashed area.
 
@@ -104,7 +104,8 @@ function DropZoneExample() {
               alt={file.name}
               source={
                 validImageTypes.includes(file.type)
-                  ? window.URL.createObjectURL(file)
+                  ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                    window.URL.createObjectURL(file)
                   : NoteMinor
               }
             />
@@ -126,7 +127,7 @@ function DropZoneExample() {
 }
 ```
 
-### Drop zone with a label
+### With a label
 
 Use to pair with a label for better accessibility.
 
@@ -136,7 +137,7 @@ Use to pair with a label for better accessibility.
 </DropZone>
 ```
 
-### Drop zone with image file upload
+### With image file upload
 
 Use for cases that accept image file formats.
 
@@ -162,6 +163,7 @@ function DropZoneWithImageFileUpload() {
           <Thumbnail
             size="small"
             alt={file.name}
+            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -199,7 +201,7 @@ function DropZoneWithImageFileUpload() {
 }
 ```
 
-### Drop zone with single file upload
+### With single file upload
 
 Use to accept only one file.
 
@@ -223,7 +225,8 @@ function DropZoneExample() {
         alt={file.name}
         source={
           validImageTypes.includes(file.type)
-            ? window.URL.createObjectURL(file)
+            ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+              window.URL.createObjectURL(file)
             : NoteMinor
         }
       />
@@ -242,7 +245,7 @@ function DropZoneExample() {
 }
 ```
 
-### Drop zone with drop on page
+### With drop on page
 
 Use to accept files for upload when dropped anywhere on the page.
 
@@ -267,7 +270,8 @@ function DropZoneWithDropOnPageExample() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -304,7 +308,7 @@ function DropZoneWithDropOnPageExample() {
 }
 ```
 
-### Drop zone accepts only SVG files
+### Accepts only SVG files
 
 Use to accept only SVG files.
 
@@ -329,6 +333,7 @@ function DropZoneAcceptingSVGFilesExample() {
           <Thumbnail
             size="small"
             alt={file.name}
+            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -370,7 +375,7 @@ function DropZoneAcceptingSVGFilesExample() {
 }
 ```
 
-### Nested drop zone
+### Nested
 
 Use to allow merchants to upload files in a wider area than the visible drop zone.
 
@@ -396,7 +401,8 @@ function NestedDropZoneExample() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -421,7 +427,7 @@ function NestedDropZoneExample() {
 }
 ```
 
-### Medium-sized drop zone
+### Medium-sized
 
 Use for cases with limited space. To improve usability, nest medium-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
 
@@ -433,7 +439,7 @@ Use for cases with limited space. To improve usability, nest medium-sized drop z
 </div>
 ```
 
-### Small-sized drop zone
+### Small-sized
 
 Use for cases with tight space constraints, such as variant thumbnails on the Product details page. To improve usability, nest small-sized drop zone in a larger drop zone with no outline. See the nested dropzone example.
 
@@ -445,7 +451,7 @@ Use for cases with tight space constraints, such as variant thumbnails on the Pr
 </div>
 ```
 
-### Drop zone with custom FileUpload text
+### With custom FileUpload text
 
 Use for cases where you want the child contents of the dropzone to determine its height.
 
@@ -474,7 +480,8 @@ function DropZoneExample() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -495,7 +502,7 @@ function DropZoneExample() {
 }
 ```
 
-### Drop zone with custom file dialog trigger
+### With custom file dialog trigger
 
 Use to trigger the file dialog from an action somewhere else on the page.
 
@@ -525,7 +532,8 @@ function DropZoneWithCustomFileDialogExample() {
             alt={file.name}
             source={
               validImageTypes.indexOf(file.type) > -1
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />

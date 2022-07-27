@@ -57,7 +57,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 
 ## Examples
 
-### Default caption
+### Default
 
 Use to provide details in situations where content is compact and space is tight.
 

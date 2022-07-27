@@ -8,37 +8,31 @@ keywords:
   - combobox
   - listbox
 examples:
-  - fileName: autocomplete-basic.tsx
-    title: Basic autocomplete
+  - fileName: autocomplete-default.tsx
+    title: Default
     description: Use to help merchants complete text input quickly from a list of options.
-  - fileName: autocomplete-multiple-tags.tsx
-    title: Multiple tags autocomplete
-    description: >-
-      Use to help merchants select multiple options from a list curated by the
-      text input.
-  - fileName: autocomplete-multiple-sections.tsx
-    title: Multiple sections autocomplete
-    description: >-
-      Use to help merchants complete text input quickly from a multiple sections
-      list of options.
+  - fileName: autocomplete-with-multiple-tags.tsx
+    title: With multiple tags
+    description: Use to help merchants select multiple options from a list curated by the text input.
+  - fileName: autocomplete-with-multiple-sections.tsx
+    title: With multiple sections
+    description: Use to help merchants complete text input quickly from a multiple sections list of options.
   - fileName: autocomplete-with-loading.tsx
-    title: Autocomplete with loading
-    description: >-
-      Use to indicate loading state to merchants while option data is
-      processing.
+    title: With loading
+    description: Use to indicate loading state to merchants while option data is processing.
   - fileName: autocomplete-with-lazy-loading.tsx
-    title: Autocomplete with lazy loading
+    title: With lazy loading
   - fileName: autocomplete-with-empty-state.tsx
-    title: Autocomplete with empty state
+    title: With empty state
     description: Use to indicate there are no search results.
   - fileName: autocomplete-with-action.tsx
-    title: Autocomplete with action
+    title: With action
     description: Use to help merchants complete an action quickly.
   - fileName: autocomplete-with-wrapping-action.tsx
-    title: Autocomplete with wrapping action
+    title: With wrapping action
     description: Use to help merchants complete an action quickly with wrapping lines of text.
   - fileName: autocomplete-with-destructive-action.tsx
-    title: Autocomplete with destructive action
+    title: With destructive action
     description: Use to help merchants complete a destructive action quickly.
 ---
 

@@ -24,71 +24,48 @@ keywords:
   - filter
   - sort
 examples:
-  - fileName: resource-list-simple.tsx
-    title: Simple resource list
-    description: >-
-      A resource list with simple items and no bulk actions, sorting, or
-      filtering.
+  - fileName: resource-list-default.tsx
+    title: Default
+    description: A resource list with simple items and no bulk actions, sorting, or filtering.
   - fileName: resource-list-with-empty-state.tsx
-    title: Resource list with empty state
-    description: >-
-      Use to explain the purpose of a list of resources when no resources exist
-      yet. This allows a smooth transition from a list in a loading state to a
-      list where zero, one, or many resources exist.
+    title: With empty state
+    description: Use to explain the purpose of a list of resources when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
   - fileName: resource-list-with-selection-and-no-bulk-actions.tsx
-    title: Resource list with selection and no bulk actions
+    title: With selection and no bulk actions
     description: A resource list with simple items and selection.
   - fileName: resource-list-with-bulk-actions.tsx
-    title: Resource list with bulk actions
+    title: With bulk actions
     description: Allows merchants to select items and perform an action on the selection.
   - fileName: resource-list-with-loading-state.tsx
-    title: Resource list with loading state
+    title: With loading state
     description: Notifies merchants that list items are being processed.
   - fileName: resource-list-with-total-count.tsx
-    title: Resource list with total resource count
-    description: >-
-      Use to indicate that the number of resources shown is a subset of the
-      total number of resources in the list.
+    title: With total count
+    description: Use to indicate that the number of resources shown is a subset of the total number of resources in the list.
   - fileName: resource-list-with-sorting.tsx
-    title: Resource list with sorting
+    title: With sorting
+    description: Allows merchants to change the way the list is sorted by selecting one of several options from a [Select](https://polaris.shopify.com/components/select) control.
   - fileName: resource-list-with-alternate-tool.tsx
-    title: Resource list with alternate tool
-    description: >-
-      Allows merchants to add an alternate tool in the current sort option
-      location when sort may not be the most relevant action for the current
-      list.
+    title: With alternate tool
+    description: Allows merchants to add an alternate tool in the current sort option location when sort may not be the most relevant action for the current list.
   - fileName: resource-list-with-filtering.tsx
-    title: Resource list with filtering
-    description: >-
-      Allows merchants to narrow the resource list to a subset of the original
-      items.
+    title: With filtering
+    description: Allows merchants to narrow the resource list to a subset of the original items.
   - fileName: resource-list-with-a-custom-empty-search-result-state.tsx
-    title: Resource list with a custom empty search result state
-    description: >-
-      Allows merchants to narrow the resource list to a subset of the original
-      items. If the filters or search applied return no results, then display a
-      custom empty search state.
+    title: With a custom empty search result state
+    description: Allows merchants to narrow the resource list to a subset of the original items. If the filters or search applied return no results, then display a custom empty search state.
   - fileName: resource-list-with-item-shortcut-actions.tsx
-    title: Resource list with item shortcut actions
-    description: >-
-      Shortcut actions are intended to provide quick access to popular actions
-      from the resource’s details page. They are shown when the mouse is hovered
-      over the list item, and are not shown on small screen devices, so the
-      action must also be accessible in another way.
+    title: With item shortcut actions
+    description: Shortcut actions are intended to provide quick access to popular actions from the resource’s details page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way.
   - fileName: resource-list-with-persistent-item-shortcut-actions.tsx
-    title: Resource list with persistent item shortcut actions
-    description: >-
-      Use persistent shortcut actions in rare cases when the action cannot be
-      made available on the item’s details page. Persistent shortcut actions
-      roll up into an overflow menu on small screens.
+    title: With persistent item shortcut actions
+    description: Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s details page. Persistent shortcut actions roll up into an overflow menu on small screens.
   - fileName: resource-list-with-multiselect.tsx
-    title: Resource list with multiselect
+    title: With multiselect
     description: Allows merchants to select or deselect multiple items at once.
   - fileName: resource-list-with-all-of-its-elements.tsx
-    title: Resource list with all of its elements
-    description: >-
-      Use as a broad example that includes most props available to resource
-      list.
+    title: With all of its elements
+    description: Use as a broad example that includes most props available to resource list.
 ---
 
 # Resource list

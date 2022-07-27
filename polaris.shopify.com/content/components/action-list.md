@@ -13,37 +13,26 @@ keywords:
   - options
 examples:
   - fileName: action-list-in-a-popover.tsx
-    title: Action list in a popover
-    description: >-
-      Use for the least important actions so merchants aren’t distracted by
-      secondary tasks. Can also be used for a set of actions that won’t fit in
-      the available screen space.
+    title: In a popover
+    description: Use for the least important actions so merchants aren’t distracted by secondary tasks. Can also be used for a set of actions that won’t fit in the available screen space.
   - fileName: action-list-with-icons-or-image.tsx
-    title: Action list with icons or image
-    description: >-
-      Use when the items benefit from an associated action or image, such as a
-      list of products.
+    title: With icons or image
+    description: Use when the items benefit from an associated action or image, such as a list of products.
   - fileName: action-list-with-an-icon-and-a-suffix.tsx
-    title: Action list with an icon and a suffix
-    description: >-
-      Use when the items benefit from an associated action or image, such as a
-      list of products.
-  - fileName: action-list-sectioned.tsx
-    title: Sectioned action list
+    title: With an icon and a suffix
+    description: Use when the items benefit from an associated action or image, such as a list of products.
+  - fileName: action-list-with-sections.tsx
+    title: With sections
     description: Use when the items benefit from sections to help differentiate actions.
   - fileName: action-list-with-destructive-item.tsx
-    title: Action list with destructive item
+    title: With destructive item
     description: Use to visually indicate that an action list item is destructive.
   - fileName: action-list-with-help-text.tsx
-    title: Action list with help text
-    description: >-
-      Use help text when the normal Verb noun syntax for the actions does not
-      provide sufficient context for the merchant.
+    title: With help text
+    description: Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
   - fileName: action-list-with-a-prefix-and-a-suffix.tsx
-    title: Action list with a prefix and a suffix
-    description: >-
-      Use help text when the normal Verb noun syntax for the actions does not
-      provide sufficient context for the merchant.
+    title: With a prefix and a suffix
+    description: Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 ---
 
 # Action list

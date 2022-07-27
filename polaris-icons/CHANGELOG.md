@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- [#6690](https://github.com/Shopify/polaris/pull/6690) [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb) Thanks [@vladabee](https://github.com/vladabee)! - Making the descriptions and use cases for diamond and circle alert icons clearer.
+
 ## 5.1.0
 
 ### Minor Changes

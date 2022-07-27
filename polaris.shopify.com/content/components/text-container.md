@@ -12,18 +12,14 @@ keywords:
   - padding
 examples:
   - fileName: text-container-default.tsx
-    title: Default text container
+    title: Default
     description: Use this component for default vertical spacing.
   - fileName: text-container-tight.tsx
-    title: Tight text container
-    description: >-
-      Use the tight spacing option to relate content topics to each
-      other.
+    title: Tight
+    description: Use the tight spacing option to relate content topics to each other.
   - fileName: text-container-loose.tsx
-    title: Loose text container
-    description: >-
-      Use the loose spacing option to separate concepts that are independent of
-      each other.
+    title: Loose
+    description: Use the loose spacing option to separate concepts that are independent of each other.
 ---
 
 # Text container

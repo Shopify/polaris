@@ -47,7 +47,7 @@ The shortcut description should describe what action is taken when merchants tap
 
 ## Examples
 
-### List of keyboard shortcuts
+### Default
 
 Use to list a related set of keyboard shortcuts.
 

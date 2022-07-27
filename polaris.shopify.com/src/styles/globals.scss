@@ -1,6 +1,7 @@
 @import "variables.scss";
 @import "fonts.scss";
 @import "mixins.scss";
+@import "prism.scss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 :root {
@@ -111,26 +112,24 @@ html {
 }
 
 // Resets and styles that should not affect Polaris examples
-.styles-for-site-but-not-polaris-examples {
-  &,
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: 100%;
-    line-height: inherit;
-    text-decoration: none;
-    box-sizing: border-box;
-    list-style-type: none;
-    -webkit-font-smoothing: antialiased;
-    border: none;
-    appearance: none;
-    outline: none;
+*:where(.styles-for-site-but-not-polaris-examples *) {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 100%;
+  line-height: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  border: none;
+  appearance: none;
+  outline: none;
 
-    *:focus-visible {
-      box-shadow: var(--focus-outline);
-    }
+  *:focus-visible {
+    box-shadow: var(--focus-outline);
   }
 }
 

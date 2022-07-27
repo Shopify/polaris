@@ -11,25 +11,14 @@ keywords:
   - logo
 examples:
   - fileName: contextual-save-bar-default.tsx
-    title: Default contextual save bar
-    description: >-
-      Use the save action to provide an opportunity to save changes. Use the
-      discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
-  - fileName: contextual-save-bar-during-creation.tsx
-    title: Contextual save bar during creation
-    description: >-
-      Use the save action to provide an opportunity to save a newly-created
-      resource. Use the discard action to allow merchants the option to discard a new resource. Use the message to provide helpful context on the nature of the new resource.
+    title: Default
+    description: Use the save action to provide an opportunity to save changes. Use the discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
   - fileName: contextual-save-bar-with-flush-contents.tsx
-    title: Contextual save bar with flush contents
-    description: >-
-      Use the alignContentFlush flag when you want to omit the logo from the
-      contextual save bar and repurpose that space to extend the message contents fully to the left side
-      of the container.
-  - fileName: contextual-save-bar-full-width.tsx
-    title: Contextual save bar full width
-    description: >-
-      Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
+    title: With flush contents
+    description: Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and repurpose that space to extend the message contents fully to the left side of the container.
+  - fileName: contextual-save-bar-with-full-width.tsx
+    title: With full width
+    description: Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
 ---
 
 # Contextual Save Bar

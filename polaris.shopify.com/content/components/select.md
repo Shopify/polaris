@@ -21,40 +21,23 @@ keywords:
   - separate error message
 examples:
   - fileName: select-default.tsx
-    title: Default select
-    description: >-
-      Presents a classic dropdown menu or equivalent picker as determined by
-      merchants’ browsers.The iOS picker expands in-line. Merchants scroll to
-      select the item they want. The Android menu is similar in behavior
-      to the web dropdown.
+    title: Default
+    description: Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
   - fileName: select-with-inline-label.tsx
-    title: Select with inline label
-    description: >-
-      Use only for cases where the select must fit on a single line, such as in
-      a toolbar.
+    title: With inline label
+    description: Use only for cases where the select must fit on a single line, such as in a toolbar.
   - fileName: select-disabled.tsx
-    title: Disabled select
-    description: >-
-      Use for selections that aren’t currently available. The surrounding
-      interface should make it clear why the select box is disabled and how to
-      activate it.
+    title: Disabled
+    description: Use for selections that aren’t currently available. The surrounding interface should make it clear why the select box is disabled and how to activate it.
   - fileName: select-with-prefix.tsx
-    title: Select with prefix
-    description: >-
-      Renders any React element to the left of individual select options. Does
-      not show in the dropdown.
+    title: With prefix
+    description: Renders any React element to the left of individual select options. Does not show in the dropdown.
   - fileName: select-with-validation-error.tsx
-    title: Select with validation error
-    description: >-
-      Use to let merchants know if there’s a problem with their selection. For
-      selects, a selection is typically invalid only when using a placeholder
-      option (“Select”) and no other selection has been made.
+    title: With validation error
+    description: Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
   - fileName: select-with-separate-validation-error.tsx
-    title: Select with separate validation error
-    description: >-
-      Use to let merchants know when their select input is invalid in the
-      context of a group of form inputs that the select depends on.To render an
-      invalid select and its validation error separately:
+    title: With separate validation error
+    description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 ---
 
 # Select

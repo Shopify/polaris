@@ -201,10 +201,9 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 
 ## Examples
 
-### Default banners
+### Default
 
-- Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback.
-- Default banners contain lower priority information and should always be dismissible.
+Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
 ```jsx
 <Banner title="Order archived" onDismiss={() => {}}>
@@ -212,7 +211,7 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 </Banner>
 ```
 
-### Dismissible banner
+### Dismissible
 
 Make all banners dismissible, unless they contain critical information or an important action that merchants are required to take.
 
@@ -225,7 +224,7 @@ Make all banners dismissible, unless they contain critical information or an imp
 </Banner>
 ```
 
-### Banner with footer call-to-action
+### With footer call-to-action
 
 Use when you want merchants to take an action after reading the banner.
 
@@ -244,7 +243,7 @@ Use when you want merchants to take an action after reading the banner.
 </Banner>
 ```
 
-### Informational banners
+### Informational
 
 Use to update merchants about a change or give them advice.
 
@@ -260,10 +259,9 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-### Success banner
+### Success
 
-- Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action
-- Include next steps if applicable
+Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action. Include next steps if applicable.
 
 ```jsx
 <Banner
@@ -274,10 +272,9 @@ Use to update merchants about a change or give them advice.
 />
 ```
 
-### Warning banners
+### Warning
 
-- Use to display information that needs attention or that merchants need to take action on
-- Seeing these banners can be stressful for merchants so be cautious about using them
+Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
 <Banner
@@ -294,11 +291,9 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-### Critical banners
+### Critical
 
-- Use to communicate problems that have to be resolved immediately for merchants to complete a task
-- For example, you will show this banner for orders with high fraud risk
-- Seeing these banners can be stressful for merchants so be cautious about using them
+Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
 <Banner
@@ -314,7 +309,7 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-### Banner in a modal
+### In a modal
 
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
@@ -362,7 +357,7 @@ function BannerInModalExample() {
 }
 ```
 
-### Banner with focus
+### With focus
 
 Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
 
@@ -388,7 +383,7 @@ function BannerWithFocusExample() {
 }
 ```
 
-### Banner in a card
+### In a card
 
 Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 

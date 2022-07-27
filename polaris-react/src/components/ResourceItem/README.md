@@ -32,7 +32,7 @@ Resource items represent specific objects within a collection, such as products 
 
 ## Examples
 
-### Simple resource item
+### Default
 
 A basic resource item with its details filled in at the point of use.
 
@@ -78,7 +78,7 @@ function ResourceItemExample() {
 }
 ```
 
-### Item with media
+### With media
 
 The media element can hold an [avatar](https://polaris.shopify.com/components/avatar), [thumbnail](https://polaris.shopify.com/components/thumbnail), or other small-format graphic.
 
@@ -120,7 +120,7 @@ The media element can hold an [avatar](https://polaris.shopify.com/components/av
 </Card>
 ```
 
-### Item with shortcut actions
+### With shortcut actions
 
 Shortcut actions present popular actions from the resource’s details page for easy access. A shortcut action should be available on every item in the list.
 
@@ -167,7 +167,7 @@ Shortcut actions present popular actions from the resource’s details page for 
 </Card>
 ```
 
-### Item with vertical alignment
+### With vertical alignment
 
 Use to adjust the vertical alignment of item content.
 
