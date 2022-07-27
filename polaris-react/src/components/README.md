@@ -78,7 +78,9 @@ Create an element using the Polaris React `AppProvider` component. The `AppProvi
 ```js
 const app = (
   <AppProvider i18n={enTranslations}>
-    <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+    <Button onClick={() => console.log('Button clicked!')}>
+      Example button
+    </Button>
   </AppProvider>
 );
 ```

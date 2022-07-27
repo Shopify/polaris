@@ -591,7 +591,10 @@ function ModalWithScrollListenerExample() {
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
-  const handleScrollBottom = useCallback(() => alert('Scrolled to bottom'), []);
+  const handleScrollBottom = useCallback(
+    () => console.log('Scrolled to bottom'),
+    [],
+  );
 
   const activator = <Button onClick={handleChange}>Open</Button>;
 
