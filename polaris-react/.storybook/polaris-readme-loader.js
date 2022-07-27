@@ -32,7 +32,7 @@ module.exports = function loader(source) {
   const omitAppProvider = [
     'Frame',
     'App provider',
-    'Custom properties',
+    'CustomProperties',
   ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
