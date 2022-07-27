@@ -218,6 +218,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $not-condensed-content
+
 @mixin page-content-when-partially-condensed() {
   @include page-content-breakpoint-before($not-condensed-content) {
     @content;
@@ -249,6 +251,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $not-condensed-content
+
 @mixin page-content-when-not-partially-condensed() {
   @include page-content-breakpoint-after($not-condensed-content) {
     @content;
@@ -280,6 +284,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $partially-condensed-content
+
 @mixin page-content-when-fully-condensed() {
   @include page-content-breakpoint-before($partially-condensed-content) {
     @content;
@@ -311,6 +317,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $partially-condensed-content
+
 @mixin page-content-when-not-fully-condensed() {
   @include page-content-breakpoint-after($partially-condensed-content) {
     @content;
@@ -342,6 +350,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $stacked-content
+
 @mixin page-content-when-layout-stacked() {
   @include page-content-breakpoint-before($stacked-content) {
     @content;
@@ -373,6 +383,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $stacked-content
+
 @mixin page-content-when-layout-not-stacked() {
   @include page-content-breakpoint-after($stacked-content) {
     @content;
@@ -405,7 +417,7 @@ _After_
 
 ```scss
 @mixin page-after-resource-list-small() {
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @include breakpoint-after(458px) {
     @content;
   }
 }
@@ -436,7 +448,7 @@ _After_
 
 ```scss
 @mixin page-before-resource-list-small() {
-  @include breakpoint-before(resource-list(breakpoint-small)) {
+  @include breakpoint-before(458px) {
     @content;
   }
 }
@@ -466,6 +478,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $page-max-width
+
 @mixin page-when-not-max-width() {
   @include breakpoint-before($page-max-width) {
     @content;
@@ -497,6 +511,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $typography-condensed
+
 @mixin when-typography-condensed {
   @include breakpoint-before($typography-condensed) {
     @content;
@@ -528,6 +544,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $typography-condensed
+
 @mixin when-typography-not-condensed {
   @include breakpoint-after($typography-condensed) {
     @content;
@@ -560,7 +578,7 @@ _After_
 
 ```scss
 @mixin frame-when-nav-displayed() {
-  @include breakpoint-after(layout-width(page-with-nav)) {
+  @include breakpoint-after(48.0625rem) {
     @content;
   }
 }
@@ -591,7 +609,7 @@ _After_
 
 ```scss
 @mixin frame-when-nav-hidden() {
-  @include breakpoint-before(layout-width(page-with-nav), false) {
+  @include breakpoint-before(48.0625rem, false) {
     @content;
   }
 }
@@ -621,6 +639,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// Check the Variables section for the value of $frame-with-nav-max-width
+
 @mixin frame-with-nav-when-not-max-width() {
   @include breakpoint-before($frame-with-nav-max-width) {
     @content;
@@ -671,15 +691,17 @@ Any functions or mixins that were being consumed from `???` have been removed. I
 
 The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
 
-| Deprecated Variable                  | Value                                                                                                    |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------- |
-| `$frame-with-nav-max-width`          | `$layout-width-nav-base + $page-max-width`                                                               |
-| `$nav-min-window`                    | `breakpoint($layout-width-page-with-nav-base)`                                                           |
-| `$nav-size`                          | `breakpoint($layout-width-nav-base)`                                                                     |
-| `$not-condensed-content`             | `breakpoint($layout-width-page-content-not-condensed)`                                                   |
-| `$not-condensed-min-page`            | `$not-condensed-content + $not-condensed-outer-spacing`                                                  |
-| `$not-condensed-outer-spacing`       | `breakpoint(2 * $layout-width-outer-spacing-max)`                                                        |
-| `$partially-condensed-content`       | `breakpoint($layout-width-page-content-partially-condensed`                                              |
-| `$partially-condensed-min-page`      | `$partially-condensed-content + $partially-condensed-outer-spacing`                                      |
-| `$partially-condensed-outer-spacing` | `breakpoint(2 *$layout-width-outer-spacing-min)`                                                         |
-| `$stacked-content`                   | `breakpoint($layout-width-primary-min + $layout-width-secondary-min + $layout-width-inner-spacing-base)` |
+| Deprecated Variable                  | Value                                                                                         | Default Value |
+| ------------------------------------ | --------------------------------------------------------------------------------------------- | ------------- |
+| `$frame-with-nav-max-width`          | `layout-width(nav) + $page-max-width`                                                         | `77.375rem`   |
+| `$nav-min-window`                    | `breakpoint($layout-width-page-with-nav-base)`                                                |
+| `$nav-size`                          | `breakpoint($layout-width-nav-base)`                                                          |
+| `$not-condensed-content`             | `em(layout-width(page-content, not-condensed))`                                               | `42.5em`      |
+| `$not-condensed-min-page`            | `$not-condensed-content + $not-condensed-outer-spacing`                                       |
+| `$not-condensed-outer-spacing`       | `breakpoint(2 * $layout-width-outer-spacing-max)`                                             |
+| `$partially-condensed-content`       | `em(layout-width(page-content, partially-condensed))`                                         | `28.125em`    |
+| `$partially-condensed-min-page`      | `$partially-condensed-content + $partially-condensed-outer-spacing`                           |
+| `$partially-condensed-outer-spacing` | `breakpoint(2 *$layout-width-outer-spacing-min)`                                              |
+| `$page-max-width`                    | `layout-width(primary, max) + layout-width(secondary, max) +layout-width(inner-spacing)`      | `62.375rem`   |
+| `$stacked-content`                   | `em(layout-width(primary, min) + layout-width(secondary, min) + layout-width(inner-spacing))` | `46em`        |
+| `$typography-condensed`              | `em(640px)`                                                                                   | `40em`        |
