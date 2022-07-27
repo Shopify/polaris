@@ -1,6 +1,83 @@
+## New breakpoints
+
+TODO: write about the 5 new breakpoints
+
+### Media queries variables
+
+We created some Sass variables to handle the new breakpoints and most of the migration you need to do is replacing old media-queries or mixins with them in your code.
+
+```scss
+$p-breakpoints-xs-up: '(min-width: 0em)';
+$p-breakpoints-xs-down: '(max-width: -0.003125em)';
+$p-breakpoints-xs-only: '(min-width: 0em) and (max-width: 30.621875em)';
+
+$p-breakpoints-sm-up: '(min-width: 30.625em)';
+$p-breakpoints-sm-down: '(max-width: 30.621875em)';
+$p-breakpoints-sm-only: '(min-width: 30.625em) and (max-width: 47.996875em)';
+
+$p-breakpoints-md-up: '(min-width: 48em)';
+$p-breakpoints-md-down: '(max-width: 47.996875em)';
+$p-breakpoints-md-only: '(min-width: 48em) and (max-width: 64.996875em)';
+
+$p-breakpoints-lg-up: '(min-width: 65em)';
+$p-breakpoints-lg-down: '(max-width: 64.996875em)';
+$p-breakpoints-lg-only: '(min-width: 65em) and (max-width: 89.996875em)';
+
+$p-breakpoints-xl-up: '(min-width: 90em)';
+$p-breakpoints-xl-down: '(max-width: 89.996875em)';
+$p-breakpoints-xl-only: '(min-width: 90em)';
+```
+
 ## Sass functions and mixins
 
 The following Sass functions and mixins have been removed. If you wish to continue using them you will need to either add them directly to your repo or replace any instances with a value equivalent.
+
+### Functions
+
+These functions were removed because the mixins using them were also removed ([see the Mixins section](#mixins)). In case you need to use those mixins you will find the fucntions necessary to make them work them here.
+
+#### `breakpoint()`
+
+<details>
+<summary>Deprecated Function Definition</summary>
+
+```scss
+$default-browser-font-size: 16px;
+$base-font-size: 16px;
+
+@function em($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'em' {
+    @return $value;
+  } @else if $unit == 'rem' {
+    @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
+  } @else if $unit == 'px' {
+    @return $value / $default-browser-font-size * 1em;
+  } @else {
+    @error 'Value must be in px, rem, or em.';
+  }
+}
+
+@function breakpoint($value, $adjustment: 0) {
+  $adjusted-value: em($adjustment);
+
+  // Reduces chances to have a style void
+  // between two media queries
+  // See https://github.com/sass-mq/sass-mq/issues/6
+  @if $adjustment == -1px {
+    $adjusted-value: -0.01em;
+  } @else if $adjustment == 1px {
+    $adjusted-value: 0.01em;
+  }
+
+  @return em($value) + $adjusted-value;
+}
+```
+
+</details>
 
 ### Mixins
 
@@ -30,6 +107,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// check the Functions section for the definition of the `breakpoint()` function used here
+
 @mixin breakpoint-after($breakpoint, $inclusive: true) {
   @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
     @content;
@@ -61,6 +140,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// check the Functions section for the definition of the `breakpoint()` function used here
+
 @mixin breakpoint-before($breakpoint, $inclusive: true) {
   @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
     @content;
@@ -92,6 +173,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// check the Functions section for the definition of the Sass functions used here
+
 @mixin page-content-breakpoint-after($size) {
   $size: breakpoint($size);
   @if $size < $partially-condensed-content {
@@ -155,6 +238,8 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
+// check the Functions section for the definition of the Sass functions used here
+
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
   @if $size < $partially-condensed-content {
