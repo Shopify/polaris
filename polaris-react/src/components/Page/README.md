@@ -133,11 +133,11 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
     {
       content: 'Duplicate',
       accessibilityLabel: 'Secondary action label',
-      onAction: () => alert('Duplicate action'),
+      onAction: () => console.log('Duplicate action'),
     },
     {
       content: 'View on your store',
-      onAction: () => alert('View on your store action'),
+      onAction: () => console.log('View on your store action'),
     },
   ]}
   actionGroups={[
@@ -148,7 +148,7 @@ Use for detail pages, which should have pagination and breadcrumbs, and also oft
         {
           content: 'Share on Facebook',
           accessibilityLabel: 'Individual action label',
-          onAction: () => alert('Share on Facebook action'),
+          onAction: () => console.log('Share on Facebook action'),
         },
       ],
     },
@@ -362,7 +362,7 @@ Use action groups for sets of actions that relate to one another, particularly w
     {
       title: 'Copy',
       onClick: (openActions) => {
-        alert('Copy action');
+        console.log('Copy action');
         openActions();
       },
       actions: [{content: 'Copy to clipboard'}],
