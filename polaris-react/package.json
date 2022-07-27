@@ -84,6 +84,7 @@
     "@shopify/react-testing": "^3.2.4",
     "@shopify/storybook-a11y-test": "1.0.1",
     "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-toolbars": "^6.5.9",
     "@storybook/builder-webpack5": "^6.5.9",
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",

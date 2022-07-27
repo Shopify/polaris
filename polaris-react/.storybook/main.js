@@ -8,7 +8,7 @@ module.exports = {
     builder: 'webpack5',
   },
   stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
-  addons: ['@storybook/addon-a11y'],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-toolbars'],
   webpackFinal: (config) => {
     const isProduction = config.mode === 'production';
 
