@@ -16,6 +16,9 @@ examples:
   - fileName: sheet-default.tsx
     title: Default
     description: Use as the default option for a sheet.
+  - fileName: sheet-with-searchable-listbox.tsx
+    title: With searchable listbox
+    description: Use to help merchants browse, filter, and choose from a list of options.
 ---
 
 # Sheet
