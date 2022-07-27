@@ -67,13 +67,33 @@ This is intentional to provide a good range to work with, but you must be delibe
 
 ![Examples of different variations of spacing](/images/foundations/design/spacing/spacing-scale-examples@2x.png)
 
-Repeating the same amount of spacing. Using more variation.
+Repeating the same amount of spacing (left) and using more variation (right).
 
 ### Column grid
 
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
 
+<style>
+.video-wrap{
+  border: 1px solid #E1E3E5;
+  border-radius: 8px; 
+  overflow: hidden;
+}
+</style>
+
+<div class="video-wrap">
+  <video width="100%" height="auto" controls autoplay muted loop>
+    <source src="/images/foundations/design/spacing/column.mp4" type="video/mp4">
+  </video>
+</div>
+
 ### Breakpoints
+
+<div class="video-wrap">
+  <video width="100%" height="auto" controls autoplay muted loop>
+    <source src="/images/foundations/design/spacing/breakpoints.mp4" type="video/mp4">
+  </video>
+</div>
 
 The grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.
 
