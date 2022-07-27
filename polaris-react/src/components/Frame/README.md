@@ -226,12 +226,16 @@ function FrameExample() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a
-      id="SkipToContentTarget"
-      ref={skipToContentRef}
-      tabIndex={-1}
-      href="#SkipLink"
-    />
+    <VisuallyHidden>
+      <a
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+        href="#SkipLink"
+      >
+        Account details
+      </a>
+    </VisuallyHidden>
   );
 
   const actualPageMarkup = (
@@ -567,12 +571,16 @@ function FrameExample() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a
-      id="SkipToContentTarget"
-      ref={skipToContentRef}
-      tabIndex={-1}
-      href="#SkipLink"
-    />
+    <VisuallyHidden>
+      <a
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+        href="#SkipLink"
+      >
+        Account details
+      </a>
+    </VisuallyHidden>
   );
 
   const actualPageMarkup = (
