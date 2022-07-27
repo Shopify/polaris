@@ -1,4 +1,4 @@
-name: column with text
+name: Column with text
 set: major
 description: Used to represent a layout option of two columns, each featuring an image and text.
 keywords:

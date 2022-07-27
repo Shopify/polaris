@@ -2,31 +2,21 @@
 name: Spinner
 category: Feedback indicators
 releasedIn: 1.7.0
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - spinner
   - loader
   - loading
   - progress indicator
-  - android
-  - ios
 examples:
   - fileName: spinner-default.tsx
-    title: Default spinner
-    description: >-
-      Use to notify merchants that their requested action is being
-      processed.
+    title: Default
+    description: Use to notify merchants that their requested action is being processed.
   - fileName: spinner-small.tsx
-    title: Small spinner
+    title: Small
     description: Smaller than the default spinner.
   - fileName: spinner-with-focus-management.tsx
-    title: Spinner with focus management
-    description: >-
-      Use to direct the focus state from the control to the spinner, to the
-      content.
+    title: With focus management
+    description: Use to direct the focus state from the control to the spinner, to the content.
 ---
 
 # Spinner
@@ -37,13 +27,9 @@ Spinners are used to notify merchants that their action is being processed. For 
 
 ## Accessibility
 
-<!-- content-for: web -->
-
 SVGs are often conveyed inconsistently to assistive technologies. The `Spinner` component’s accessibility is also highly contextual. When the parent component is focusable, you’ll need to set the `hasFocusableParent` prop for the appropriate `role` attribute to be applied.
 
 For optimal user experience, use the `accessibilityLabel` prop to let assistive technology users know the purpose of the spinner.
-
-<!-- /content-for-->
 
 ---
 
@@ -71,5 +57,5 @@ Spinner accessibility label should:
 
 ## Related components
 
-- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](https://polaris.shopify.com/components/feedback-indicators/progress-bar) component.
-- To better represent loading content, use [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) along with [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) components.
+- To improve user experience and reduce the appearance of long loading times, use the [Progress bar](https://polaris.shopify.com/components/progress-bar) component.
+- To better represent loading content, use [Skeleton page](https://polaris.shopify.com/components/skeleton-page) along with [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) and [Skeleton display text](https://polaris.shopify.com/components/skeleton-display-text) components.

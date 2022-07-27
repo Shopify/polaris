@@ -9,40 +9,38 @@ keywords:
   - index
 examples:
   - fileName: data-table-default.tsx
-    title: Default data table
+    title: Default
     description: Use to present small amounts of data for merchants to view statically.
   - fileName: data-table-sortable.tsx
-    title: Sortable data table
-    description: >-
-      Use when clarity of the table’s content is needed. For example, to note
-      the number of rows currently shown in a data table with pagination.
+    title: Sortable
+    description: Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
   - fileName: data-table-with-footer.tsx
-    title: Data table with footer
-    description: >-
-      Use when clarity of the table’s content is needed. For example, to note
-      the number of rows currently shown in a data table with pagination.
+    title: With footer
+    description: Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
   - fileName: data-table-with-custom-totals-heading.tsx
-    title: Data table with custom totals heading
+    title: With custom totals heading
     description: Use to provide a custom heading for the totals row.
   - fileName: data-table-with-totals-in-footer.tsx
-    title: Data table with totals in footer
-    description: >-
-      Use to reposition the totals row in a more appropriate location based on
-      the data stored in the
-
-      table for merchants to better understand its meaning.
+    title: With totals in footer
+    description: Use to reposition the totals row in a more appropriate location based on the data stored in the table for merchants to better understand its meaning.
   - fileName: data-table-with-row-heading-links.tsx
-    title: Data table with row heading links
+    title: With row heading links
     description: Use to help merchants find relevant, finer grained data sets.
   - fileName: data-table-with-all-of-its-elements.tsx
-    title: Data table with all of its elements
+    title: With all of its elements
     description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-fixed-first-column.tsx
+    title: With fixed first column
+    description: Use when the table contains many columns and it would benefit the merchant to see the first column when scrolling to the right.
   - fileName: data-table-with-increased-density-and-zebra-striping.tsx
-    title: Data table with increased density and zebra striping
+    title: With increased density and zebra striping
     description: Use as a broad example that includes most props available to data table.
   - fileName: data-table-with-sticky-header-enabled.tsx
-    title: Data table with sticky header enabled
+    title: With sticky header enabled
     description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-fixed-first-column-enabled.tsx
+    title: Data table with fixed first column enabled
+    description: Use to fix the first column when horizontal scrolling becomes necessary. Keeps the context of the row as the user scrolls.
 ---
 
 # Data table
@@ -85,7 +83,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -111,31 +109,11 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Related components
 
-- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 ### Structure
 
@@ -143,7 +121,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -151,7 +129,7 @@ Use tables for tabular data.
 
 #### Don’t
 
-Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
+Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 <!-- end -->
 
@@ -161,5 +139,3 @@ Sorting controls for the data table component are implemented with native HTML b
 
 - Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys
-
-<!-- /content-for -->

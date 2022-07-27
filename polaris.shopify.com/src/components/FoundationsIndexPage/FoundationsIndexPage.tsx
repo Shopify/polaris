@@ -1,18 +1,18 @@
-import Head from "next/head";
 import { foundationsNavItems } from "../../data/navItems";
-import { getTitleTagValue } from "../../utils/various";
 import styles from "./FoundationsIndexPage.module.scss";
-import Link from "next/link";
 import Layout from "../Layout";
+import PageMeta from "../PageMeta";
+import FoundationsGrid from "../FoundationsGrid";
 
 interface Props {}
 
 function FoundationsIndexPage({}: Props) {
   return (
     <div className={styles.FoundationsIndexPage}>
-      <Head>
-        <title>{getTitleTagValue("Foundations")}</title>
-      </Head>
+      <PageMeta
+        title="Foundations"
+        description="Our design foundations offer fundamental design elements and guidance for creating good merchant experiences."
+      />
 
       <Layout
         title="Foundations"
@@ -21,30 +21,23 @@ function FoundationsIndexPage({}: Props) {
       >
         <div className={styles.Categories}>
           {foundationsNavItems.map((category) => {
-            const url = category.children && category.children[0].url;
-            if (!url) return null;
+            if (!category.children) return null;
             return (
-              <div key={category.title} className={styles.Category}>
-                <div className={styles.Text}>
-                  <h2>{category.title}</h2>
-                  <ul>
-                    {category.children?.map((child) => {
-                      if (!child.url) return null;
-                      return (
-                        <li key={child.title}>
-                          <Link href={child.url} passHref>
-                            <a>
-                              <div className={styles.Icon}>{child.icon}</div>
-                              <h4>{child.title}</h4>
-                              <p>{child.excerpt}</p>
-                            </a>
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </div>
+              <FoundationsGrid key={category.title} title={category.title}>
+                {category.children.map((child) => {
+                  if (!child.url) return null;
+                  return (
+                    <FoundationsGrid.Item
+                      key={category.title}
+                      title={child.title}
+                      excerpt={child.excerpt}
+                      icon={child.icon}
+                      url={child.url}
+                      category={category.title.toLowerCase()}
+                    />
+                  );
+                })}
+              </FoundationsGrid>
             );
           })}
         </div>

@@ -1,16 +1,18 @@
 {
   "name": "polaris-for-figma",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "private": true,
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",
-    "lint": "TIMING=1 eslint --cache .",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@shopify/polaris": "*",
+    "@shopify/polaris": "^9.21.0",
     "antd": "^4.20.4",
     "lodash": "^4.17.15",
     "react": "^16.0.0",

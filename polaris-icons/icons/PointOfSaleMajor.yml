@@ -1,4 +1,4 @@
-name: point of sale
+name: Point of sale
 set: major
 description: Used to represent a point of sale or sales register.
 keywords:

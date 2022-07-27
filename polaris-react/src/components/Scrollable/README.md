@@ -25,22 +25,20 @@ The scrollable component is a container for long form content, such as terms of 
 
 Scrollable containers should:
 
-- Be used when it’s helpful to provide an extra visual cue to let merchants
-  know that content exists below or above the fold
-- Only be used for length text such as terms of service or other legal
-  disclaimers and never for instructional or action-oriented text
+- Be used when it’s helpful to provide an extra visual cue to let merchants know that content exists below or above the fold
+- Only be used for length text such as terms of service or other legal disclaimers and never for instructional or action-oriented text
 
 ---
 
 ## Content guidelines
 
-Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/structure/card#section-content-guidelines) for cards.
+Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/card#section-content-guidelines) for cards.
 
 ---
 
 ## Examples
 
-### Default scrollable container
+### Default
 
 Use when you need to make a region within the page independently scrollable. It’s often used in modals and other panes where it’s helpful to provide an extra visual cue that content exists below or above the fold.
 
@@ -66,7 +64,7 @@ Use when you need to make a region within the page independently scrollable. It�
 </Card>
 ```
 
-### Scroll to child component
+### To child component
 
 Use when you need to programmatically scroll a child component into view in the scrollable container.
 

@@ -26,7 +26,7 @@ The number of locations a merchant has can range dramatically, and the location 
 
 When building a location experience, leverage components and patterns that offer:
 
-- Easy access to known complex data (text search by location name, address, city, and province)
+- Easy access to known complex data (text search by location name, city, province, etc.)
 - Access to incomplete or unfamiliar data (filter contextual to the surface area)
 - The ability to organize and browse data (sort contextual to the surface area)
 - Pagination (load additional locations via infinite scrolling)
@@ -47,13 +47,13 @@ While there are many ways to treat locations, two common patterns that use progr
 
 The location picker allows a merchant to select any location they have added in the admin.
 
-![1 location](/public_images/locations-page/1-location@2x.png)
+![1 location](/images/foundations/patterns/locations/1-location@2x.png)
 
 #### 1 location
 
 When a merchant only has one location, the button that opens the location picker should be hidden. There’s no need to access the experience when they can’t switch locations.
 
-![2–10 locations](/public_images/locations-page/2-10-locations@2x.png)
+![2–10 locations](/images/foundations/patterns/locations/2-10-locations@2x.png)
 
 #### 2–10 locations
 
@@ -65,7 +65,7 @@ In the location picker:
 - Show “All locations” at the top of the list.
 - List all other locations in alphabetical order. Each location item shows the location name only.
 
-![11 or more locations](/public_images/locations-page/11-or-more-locations-picker@2x.png)
+![11 or more locations](/images/foundations/patterns/locations/11-or-more-locations-picker@2x.png)
 
 #### 11 or more locations
 
@@ -73,14 +73,14 @@ When a merchant has 11 or more locations:
 
 - Apply the same features as 2–10 locations.
 - Add text search at the top of the location picker. This allows merchants to search for locations by specific criteria (location name, city, province, postal code, address, etc.).
-- Directly below the search, show a section with the 3 most recently used locations. For new merchants, hide this section.
-- Show a list of all other locations. As the merchant scrolls, load additional locations at the bottom of the list.
+- Directly below the search, show a section with the 5 most recently used locations. If there are none, show the first 5 locations from the full list.
+- Below recently used locations, show an option to view all locations. Clicking this will show the inactive search state, displaying the full list of locations.
 
 ### Location list
 
 The location list allows merchants to view all locations they have added in the admin.
 
-![1–10 locations list](/public_images/locations-page/1-10-locations@2x.png)
+![1–10 locations list](/images/foundations/patterns/locations/1-10-locations@2x.png)
 
 #### 1–10 locations
 
@@ -89,7 +89,7 @@ When a merchant has 1–10 locations, show all locations in a simple list. As no
 1. Each list item should include the location name and address
 2. The indicator at the bottom shows the total number of locations
 
-![11 or more locations list](/public_images/locations-page/11-or-more-locations-list@2x.png)
+![11 or more locations list](/images/foundations/patterns/locations/11-or-more-locations-list@2x.png)
 
 #### 11 or more locations
 

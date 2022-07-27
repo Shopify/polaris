@@ -17,10 +17,7 @@ keywords:
 
 # Account connection
 
-The account connection component is used so merchants can connect or disconnect
-their store to various accounts. For example, if merchants want to use the
-Facebook sales channel, they need to connect their Facebook
-account to their Shopify store.
+The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.
 
 ---
 
@@ -31,11 +28,8 @@ The account component should:
 - Be placed at the top of the Account page for the relevant sales channel
 - Identify the name of the platform or service merchants can connect to
 - Show whether the account is connected or disconnected so that merchants can easily connect or disconnect an account
-- Include a link to the relevant sales channel or platform terms and conditions,
-  including information about any charges or fees that merchants may incur by
-  using the channel or platform
-- Link to terms and conditions, which should open up on the sales channel
-  developer’s website in a new browser window
+- Include a link to the relevant sales channel or platform terms and conditions, including information about any charges or fees that merchants may incur by using the channel or platform
+- Link to terms and conditions, which should open up on the sales channel developer’s website in a new browser window
 
 ---
 
@@ -43,8 +37,7 @@ The account component should:
 
 ### Title
 
-The account connection title should be the name of the platform or service that
-merchants can connect to, followed by the word “account”. Write account connection titles in sentence case (capitalize the first word and proper nouns only).
+The account connection title should be the name of the platform or service that merchants can connect to, followed by the word “account”. Write account connection titles in sentence case (capitalize the first word and proper nouns only).
 
 #### For example:
 
@@ -52,7 +45,7 @@ merchants can connect to, followed by the word “account”. Write account conn
 - Mailchimp account
 - Instagram account
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -64,11 +57,13 @@ merchants can connect to, followed by the word “account”. Write account conn
 - Connect your Account
 - Instagram Account
 
+<!-- end -->
+
 ### Terms and conditions
 
 Clearly link to your terms and conditions and let merchants know about any additional costs of your service.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -85,7 +80,7 @@ Learn about terms, conditions, and payment details.
 
 Always use the verb Connect in the button of the account connection component. When merchants click or tap “Connect” it should open up your platform or service’s authorization page in a new browser window.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -101,7 +96,7 @@ Connect to app
 
 ## Examples
 
-### Default account connection
+### Default
 
 Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
 
@@ -112,7 +107,7 @@ function AccountConnectionExample() {
 
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
-  }, [connected]);
+  }, []);
 
   const buttonText = connected ? 'Disconnect' : 'Connect';
   const details = connected ? 'Account connected' : 'No account connected';
@@ -144,8 +139,4 @@ function AccountConnectionExample() {
 
 ## Accessibility
 
-<!-- content-for: web -->
-
-See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/actions/setting-toggle) to turn connections on and off.
-
-<!-- /content-for-->
+See accessibility guidance for the [setting toggle component](https://polaris.shopify.com/components/setting-toggle) to turn connections on and off.

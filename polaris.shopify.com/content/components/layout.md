@@ -17,35 +17,25 @@ keywords:
   - annotated sections
 examples:
   - fileName: layout-one-column.tsx
-    title: One-column layout
-    description: >-
-      Use to have a single section on its own in a full-width container. Use for
-      simple pages and as a container for banners and other full-width content.
+    title: One-column
+    description: Use to have a single section on its own in a full-width container. Use for simple pages and as a container for banners and other full-width content.
   - fileName: layout-two-columns-with-primary-and-secondary-widths.tsx
     title: Two columns with primary and secondary widths
-    description: >-
-      Use to follow a normal section with a secondary section to create a 2/3 +
-      1/3 layout on detail pages (such as individual product or order pages).
-      Can also be used on any page that needs to structure a lot of content.
-      This layout stacks the columns on small screens.
+    description: Use to follow a normal section with a secondary section to create a 2/3 + 1/3 layout on detail pages (such as individual product or order pages). Can also be used on any page that needs to structure a lot of content. This layout stacks the columns on small screens.
   - fileName: layout-two-columns-with-equal-width.tsx
     title: Two columns with equal width
-    description: >-
-      Use to create a ½ + ½ layout. Can be used to display content of equal
-      importance. This layout will stack the columns on small screens.
+    description: Use to create a ½ + ½ layout. Can be used to display content of equal importance. This layout will stack the columns on small screens.
   - fileName: layout-three-columns-with-equal-width.tsx
     title: Three columns with equal width
-    description: >-
-      Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal
-      importance. This layout will stack the columns on small screens.
+    description: Use to create a ⅓ + ⅓ + ⅓ layout. Can be used to display content of equal importance. This layout will stack the columns on small screens.
   - fileName: layout-annotated.tsx
-    title: Annotated layout
-    description: >-
-      Use for settings pages. When settings are grouped thematically in
-      annotated sections, the title and description on each section helps
-      merchants quickly find the setting they’re looking for.
+    title: Annotated
+    description: Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
+  - fileName: layout-annotated-with-sections.tsx
+    title: Annotated with sections
+    description: Use for settings pages. When settings are grouped thematically in annotated sections, the title and description on each section helps merchants quickly find the setting they’re looking for.
   - fileName: layout-annotated-with-banner-at-the-top.tsx
-    title: Annotated layout with Banner at the top
+    title: Annotated with Banner at the top
     description: Use for settings pages that need a banner or other content at the top.
 ---
 
@@ -74,7 +64,7 @@ The content that appears in the layout component comes from cards and annotated 
 
 ### Cards
 
-Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/structure/card#section-content-guidelines).
+Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#section-content-guidelines).
 
 ### Annotated section titles
 
@@ -95,6 +85,6 @@ Annotated section descriptions should:
 
 ## Related components
 
-- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/structure/card)
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/structure/stack)
-- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/forms/form-layout)
+- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/card)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/stack)
+- To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

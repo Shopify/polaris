@@ -10,7 +10,7 @@ export interface AnnotatedSectionProps {
   description?: React.ReactNode;
   id?: string;
 }
-
+/** @deprecated Annotated sections can be composed. See examples for styling */
 export function AnnotatedSection(props: AnnotatedSectionProps) {
   const {children, title, description, id} = props;
 

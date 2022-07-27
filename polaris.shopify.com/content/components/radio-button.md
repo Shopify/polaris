@@ -1,10 +1,6 @@
 ---
 name: Radio button
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RadioButton
   - selection
@@ -19,21 +15,13 @@ keywords:
   - switch
 examples:
   - fileName: radio-button-default.tsx
-    title: Default radio button
-    description: >-
-      Use radio buttons where merchants must make a single
-      selection.
-  - fileName: radio-button-toggle.tsx
-    title: Toggle
-    description: >-
-      Use toggles when merchants need to make a binary choice (on or
-      off).
+    title: Default
+    description: Use radio buttons where merchants must make a single selection.
 ---
 
 # Radio button
 
-Use radio buttons to present each item in a list of options where merchants must
-make a single selection.
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
 
 ---
 
@@ -63,7 +51,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -77,7 +65,7 @@ Radio button labels should:
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -104,34 +92,14 @@ Toggle values should:
 
 ## Related components
 
-- To make simple lists of radio buttons easier to build, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- For long lists of options, [consider the select component](https://polaris.shopify.com/components/forms/select) to avoid overwhelming merchants
-- To present merchants with a list of checkboxes, [use the choice list component](https://polaris.shopify.com/components/forms/choice-list) with the “allow multiple” option
-- To display non-interactive list of related content, [use the content list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To make simple lists of radio buttons easier to build, [use the choice list component](https://polaris.shopify.com/components/choice-list)
+- For long lists of options, [consider the select component](https://polaris.shopify.com/components/select) to avoid overwhelming merchants
+- To present merchants with a list of checkboxes, [use the choice list component](https://polaris.shopify.com/components/choice-list) with the “allow multiple” option
+- To display non-interactive list of related content, [use the content list component](https://polaris.shopify.com/components/list)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Screen readers convey the state of the radio button automatically.
 
@@ -148,5 +116,3 @@ Screen readers convey the state of the radio button automatically.
 
 - Move focus to the radio button group using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Use the up and down arrow keys to change which radio button is selected
-
-<!-- /content-for -->

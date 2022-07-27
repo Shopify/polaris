@@ -1,4 +1,4 @@
-name: credit card percent
+name: Credit card percent
 set: major
 description: Used to represent a credit card interest.
 keywords:

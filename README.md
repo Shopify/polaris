@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/b44d9f7075203748b7784bd61e88cba1e2d7acde/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
+<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/main/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
 </div>
 
 # Polaris
@@ -42,10 +42,10 @@ yarn && yarn build
 
 Run commands from a selected workspace using [`turbo run <command> --filter=<workspace>...`](https://turborepo.org/docs/core-concepts/filtering) flag.
 
-| Command                                              | Runs                                 |
-| ---------------------------------------------------- | ------------------------------------ |
-| `yarn turbo run dev --filter=@shopify/polaris...`    | Open the react component storybook   |
-| `yarn turbo run dev --filter=polaris.shopify.com...` | Open polaris.shopify.com NextJS site |
+| Command                                           | Runs                                 |
+| ------------------------------------------------- | ------------------------------------ |
+| `yarn turbo run dev --filter=@shopify/polaris`    | Open the react component storybook   |
+| `yarn turbo run dev --filter=polaris.shopify.com` | Open polaris.shopify.com NextJS site |
 
 **All workspaces**
 

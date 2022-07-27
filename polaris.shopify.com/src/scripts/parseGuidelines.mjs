@@ -5,7 +5,7 @@ import { parseMarkdown } from "../utils/markdown.mjs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const guidelinesDir = path.join(__dirname, "../../content");
+const guidelinesDir = path.join(__dirname, "../../content/foundations");
 
 let guidelines = [];
 
@@ -28,7 +28,7 @@ for (let i = 0; i < subfolders.length; i++) {
 
       const { readme, ...rest } = parsed;
 
-      guidelines.push(rest);
+      guidelines.push({ ...rest, category: dirName });
     }
   }
 }

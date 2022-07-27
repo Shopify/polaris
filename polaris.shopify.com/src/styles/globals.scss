@@ -1,75 +1,31 @@
 @import "variables.scss";
 @import "fonts.scss";
 @import "mixins.scss";
-
+@import "prism.scss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-// Place CSS variables on body so that we can
-// utilize the .dark-mode class to flip the colors
-body {
+:root {
   --page-max-width: #{$pageMaxWidth};
-  --header-height: 72px;
   --narrow-content-width: 720px;
-  --header-margin: 4.5rem;
-
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    --header-margin: 3rem;
-  }
+  --header-height: 64px; // Parsed by JS. Define in px.
+  --header-margin: 76px; // Parsed by JS. Define in px.
 
   @media screen and (max-width: $breakpointDesktop) {
-    --header-height: 60px;
-    --header-margin: 2rem;
+    --header-margin: 48px; // Parsed by JS. Define in px.
   }
 
-  --focus-outline: 0 0 0 2px var(--text-strong);
-  --text: #3c4141;
-  --text-strong: #111212;
-  --text-subdued: #777;
-  --text-link: #2e5dba;
-  --surface: #fff;
-  --surface-subdued: #f6f6f6;
-  --surface-subdued: #fbfbfb;
-  --primary: #008060;
-  --border-color: #dedede;
-  --border-color-light: #ededed;
-  --border-inset-color: #aaa;
-  --border: 1px solid var(--border-color);
-  --card-shadow: inset 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
-  --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
-    0 0 0 0.5px var(--border-color);
-  --decorative-1: #dfefd2;
-  --decorative-2: #ffe6cd;
-  --decorative-3: #f8dff1;
-  --decorative-4: #dce0f5;
-  --backdrop: rgba(0, 0, 0, 0.5);
-
-  &.dark-mode {
-    --text: #aaa;
-    --text-strong: #e7e7e7;
-    --text-subdued: #777;
-    --text-link: #6995ee;
-    --surface: #202021;
-    --surface-subdued: #2e2e30;
-    --primary: #1aab87;
-    --border-color: #555;
-    --border-color-light: #343434;
-    --border-inset-color: #555;
-    --border: 1px solid var(--border-color);
-    --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 10%),
-      0 1px 2px rgb(255 255 255 / 4%);
-    --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
-      0 0 0 0.5px var(--border-color);
-    --decorative-1: #204400;
-    --decorative-2: #5d3701;
-    --decorative-3: #004a54;
-    --decorative-4: #110065;
-    --backdrop: rgba(0, 0, 0, 0.5);
+  @media screen and (max-width: $breakpointMobile) {
+    --header-margin: 32px; // Parsed by JS. Define in px.
   }
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --font-family-mono: "SF Mono", SFMono-Regular, ui-monospace,
+    "DejaVu Sans Mono", Menlo, Consolas, monospace;
 
-  // Based on: https://type-scale.com/?size=16&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+  --surface-code-block: #2e2e30;
+
+  // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
   --font-size-50: 0.75rem;
   --font-size-100: 0.85rem;
   --font-size-200: 0.9rem;
@@ -142,7 +98,21 @@ body {
   --border-radius-round: 1000px;
 }
 
-* {
+.light-mode,
+.dark-mode {
+  --focus-outline: 0 0 0 2px var(--text-strong);
+  --focus-outline-inside: inset 0 0 0 2px var(--text-strong);
+}
+
+// Resets for both the site and polaris examples
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+// Resets and styles that should not affect Polaris examples
+*:where(.styles-for-site-but-not-polaris-examples *) {
   margin: 0;
   padding: 0;
   color: inherit;
@@ -157,33 +127,85 @@ body {
   border: none;
   appearance: none;
   outline: none;
-}
 
-video {
-  display: block;
-}
-
-*:focus-visible {
-  box-shadow: var(--focus-outline);
+  *:focus-visible {
+    box-shadow: var(--focus-outline);
+  }
 }
 
 html {
-  font-size: 17px;
+  font-size: 106.25%;
 
   @media screen and (max-width: $breakpointMobile) {
-    font-size: 16px;
+    font-size: 100%;
   }
 }
 
 body {
-  background: var(--surface);
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-variant-ligatures: common-ligatures contextual discretionary-ligatures;
-  font-feature-settings: "kern", "liga", "clig", "calt", "dlig";
   line-height: 1.6;
-  color: var(--text);
   font-weight: var(--font-weight-400);
+}
+
+body,
+.theme {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.light-mode {
+  --text: #3c4141;
+  --text-strong: #111212;
+  --text-subdued: #767676;
+  --text-link: #2e5dba;
+  --surface: #fff;
+  --surface-subdued: #f7f7f7;
+  --surface-information: #dcf5f0;
+  --surface-warning: #ffeceb;
+  --surface-code-inline: #eaeaea;
+  --primary: #008060;
+  --border-color: #dedede;
+  --border-color-light: #ededed;
+  --border: 1px solid var(--border-color);
+  --card-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
+  --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
+    0 0 0 0.5px var(--border-color);
+  --decorative-1: #dfefd2;
+  --decorative-2: #ffe6cd;
+  --decorative-3: #f8dff1;
+  --decorative-4: #dce0f5;
+  --backdrop: rgba(0, 0, 0, 0.5);
+  --search-highlight-color: #f4f5f5;
+}
+
+.dark-mode {
+  --text: #aaa;
+  --text-strong: #e7e7e7;
+  --text-subdued: #777;
+  --text-link: #6995ee;
+  --surface-information: #02382d;
+  --surface-warning: #4c250f;
+  --surface: #202021;
+  --surface-subdued: #2e2e30;
+  --surface-code-inline: #3b3b3c;
+  --primary: #1aab87;
+  --border-color: #555;
+  --border-color-light: #343434;
+  --border: 1px solid var(--border-color);
+  --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
+  --card-shadow-hover: 0 4px 7px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgb(255 255 255 / 12%);
+  --decorative-1: #224700;
+  --decorative-2: #603900;
+  --decorative-3: #601249;
+  --decorative-4: #342484;
+  --backdrop: rgba(0, 0, 0, 0.5);
+  --search-highlight-color: #363636;
+}
+
+video {
+  display: block;
 }
 
 a {
@@ -206,10 +228,10 @@ button {
 }
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
-.usage-list {
-  margin: 1.25rem 0;
+.dodont {
+  margin: 1.25rem 0 2rem;
   font-size: var(--font-size-200);
-  gap: 1rem 0.75rem;
+  gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
 
@@ -219,7 +241,7 @@ button {
     gap: 1rem;
   }
 
-  .usage-list-part {
+  .dodont-part {
     position: relative;
     flex: 1;
     background: var(--surface-subdued);
@@ -236,6 +258,7 @@ button {
       font-size: var(--font-size-400);
       font-weight: var(--font-weight-500);
       letter-spacing: var(--letter-spacing-200);
+      margin-bottom: 1.33rem;
     }
 
     &::before {
@@ -245,7 +268,7 @@ button {
       top: 0;
       right: 0;
       left: 0;
-      height: 2px;
+      height: 3px;
       background: #13b288;
     }
 
@@ -253,6 +276,7 @@ button {
       h4 {
         background-image: url(/images/icon-dont.svg);
       }
+
       &::before {
         background: #ea5945;
       }
@@ -260,7 +284,7 @@ button {
 
     img {
       width: auto;
-      max-width: 300px;
+      max-width: 100%;
     }
 
     h3 {
@@ -268,12 +292,4 @@ button {
       color: var(--text);
     }
   }
-}
-
-.twoColumnsResponsive div img {
-  display: none;
-}
-
-.NextPage {
-  display: none;
 }

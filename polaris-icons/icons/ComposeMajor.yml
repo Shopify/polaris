@@ -1,4 +1,4 @@
-name: compose
+name: Compose
 set: major
 description: Used to denote the action of composing a new message.
 keywords:

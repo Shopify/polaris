@@ -36,7 +36,7 @@ Buttons should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -52,7 +52,7 @@ Buttons should be:
 
 - Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -68,7 +68,7 @@ Buttons should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -84,7 +84,7 @@ Buttons should be:
 
 ## Examples
 
-### Default page actions
+### Default
 
 Used on a resource page (such as an individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
 
@@ -114,7 +114,7 @@ Not all page actions require a secondary action.
 />
 ```
 
-### Page actions with custom primary action
+### With custom primary action
 
 Use to create a custom primary action.
 
@@ -140,7 +140,7 @@ Use to create a custom primary action.
 />
 ```
 
-### Page actions with custom secondary action
+### With custom secondary action
 
 Use to create a custom secondary action.
 
@@ -166,6 +166,6 @@ Use to create a custom secondary action.
 
 ## Related components
 
-- To add actions to the top of a page, see the [page component’s](https://polaris.shopify.com/components/structure/page) action props
-- To create a call to action within the context of other page content, use the [button component](https://polaris.shopify.com/components/actions/button)
-- To let merchants move through a collection of items that spans multiple pages, see the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
+- To add actions to the top of a page, see the [page component’s](https://polaris.shopify.com/components/page) action props
+- To create a call to action within the context of other page content, use the [button component](https://polaris.shopify.com/components/button)
+- To let merchants move through a collection of items that spans multiple pages, see the [pagination component](https://polaris.shopify.com/components/pagination)

@@ -6,7 +6,7 @@ import {
   CustomProperties,
   CustomPropertiesProps,
 } from '../../../CustomProperties';
-import {findFirstFocusableNode} from '../../../../utilities/focus';
+import {findFirstKeyboardFocusableNode} from '../../../../utilities/focus';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -189,7 +189,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         return;
       }
 
-      const focusableChild = findFirstFocusableNode(this.contentNode.current);
+      const focusableChild = findFirstKeyboardFocusableNode(
+        this.contentNode.current,
+      );
 
       if (focusableChild && autofocusTarget === 'first-node') {
         focusableChild.focus({

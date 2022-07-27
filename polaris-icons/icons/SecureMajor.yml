@@ -1,4 +1,4 @@
-name: secure
+name: Secure
 set: major
 description: Used to represent a secure or protected item or resource, or than an item or resource can be trusted.
 keywords:

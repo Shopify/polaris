@@ -1,4 +1,4 @@
-name: fraud protect unprotected
+name: Fraud protect unprotected
 set: major
 description: Used to represent that an order is not protected by Fraud Protect from chargebacks due to fraud.
 keywords:

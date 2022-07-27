@@ -1,81 +1,65 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import useDarkMode from "use-dark-mode";
+import { DarkMode } from "use-dark-mode";
 
-import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
 import Container from "../Container";
-import Button from "../Button";
-import SideNav from "../SideNav";
-import NavItems from "../NavItems";
+import MobileNav from "../MobileNav";
+import type { NavItem } from "../Nav";
 
 import styles from "./Header.module.scss";
-import shopifyLogo from "../../../public/shopify-logo.svg";
-import { useRouter } from "next/router";
+
+const headerNavItems: NavItem[] = [
+  {
+    title: "Foundations",
+    url: "/foundations",
+  },
+  {
+    title: "Components",
+    url: "/components",
+  },
+  {
+    title: "Tokens",
+    url: "/tokens/colors",
+  },
+  {
+    title: "Icons",
+    url: "/icons",
+  },
+  // {
+  //   title: "Contributing",
+  //   url: "/contributing",
+  // },
+];
 
 interface Props {
-  currentSection?: string;
+  darkMode: DarkMode;
+  currentPath?: string;
 }
 
-function Header({ currentSection }: Props) {
-  const router = useRouter();
-  const [showMenu, setShowMenu] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const darkMode = useDarkMode(false);
+function Header({ darkMode, currentPath = "" }: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
-
-  useEffect(() => {
-    function hideSideNavOnResize() {
-      if (window.innerWidth > Breakpoints.SMALL && showMenu) {
-        setShowMenu(false);
-      }
-    }
-
-    window.addEventListener("resize", hideSideNavOnResize);
-
-    return () => window.removeEventListener("resize", hideSideNavOnResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const mainContent = document.querySelector("#main");
     setShowSkipToContentLink(mainContent !== null);
-  }, [router.asPath]);
+  }, [currentPath]);
 
-  const handleCloseMenu = () => {
-    setShowMenu(false);
-    menuButtonRef.current?.focus();
-  };
+  const match = currentPath.match(/^\/\w+/);
+  const currentSection = match ? match[0] : "";
 
   return (
     <div className={styles.Header}>
       <Container className={styles.HeaderInner}>
-        <nav className={styles.SideNavContainer}>
-          <Button
-            id="menu-button"
-            aria-label="Open menu"
-            aria-controls="side-menu"
-            aria-expanded={showMenu}
-            onClick={() => setShowMenu(true)}
-            ref={menuButtonRef}
-          >
-            <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 11h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0-7h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0 14h-18a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2z" />
-            </svg>
-          </Button>
-
-          <SideNav
-            currentSection={currentSection}
-            showMenu={showMenu}
-            handleCloseMenu={handleCloseMenu}
-          />
-        </nav>
+        <div className={styles.MobileNavContainer}>
+          <MobileNav currentPath={currentPath} />
+        </div>
 
         <Link href="/">
           <a className={styles.Logo}>
             <Image
-              src={shopifyLogo}
+              src="/shopify-logo.svg"
               layout="fixed"
               width={24}
               height={24}
@@ -93,7 +77,22 @@ function Header({ currentSection }: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            <NavItems currentSection={currentSection} />
+            {headerNavItems.map(({ url, title }) => {
+              const isCurrent =
+                currentSection && url?.startsWith(currentSection)
+                  ? "page"
+                  : false;
+
+              return url ? (
+                <li key={url}>
+                  <Link href={url} passHref>
+                    <a aria-current={isCurrent}>
+                      <span>{title}</span>
+                    </a>
+                  </Link>
+                </li>
+              ) : null;
+            })}
           </ul>
         </nav>
 
@@ -105,13 +104,7 @@ function Header({ currentSection }: Props) {
           )}
         </button>
 
-        <div className={styles.SearchWrapper}>
-          <GlobalSearch />
-        </div>
-
-        {showMenu && (
-          <div className={styles.Backdrop} onClick={handleCloseMenu} />
-        )}
+        <GlobalSearch />
       </Container>
     </div>
   );

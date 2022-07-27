@@ -1,137 +1,271 @@
-import Link from "next/link";
+import { BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon } from "./icons";
 import Container from "../Container";
+import Link from "next/link";
+import { className } from "../../utils/various";
+import { useMedia } from "../../utils/hooks";
+import Image from "../Image";
+import PageMeta from "../PageMeta";
 import styles from "./HomePage.module.scss";
 
 interface Props {}
 
 function HomePage({}: Props) {
+  const useMotion = useMedia("(prefers-reduced-motion: no-preference)");
+
   return (
     <div className={styles.HomePage}>
-      <div className={styles.Intro}>
-        <Container className={styles.IntroContent}>
-          <h1>A design system built for commerce</h1>
-          <Link href="/resources">Explore the system</Link>
+      <PageMeta description="A starter kit for reimagining commerce." />
 
-          <svg
-            width={718 * 1.5}
-            height={440 * 1.5}
-            viewBox="0 0 718 440"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={styles.Hero}
-          >
-            <g clipPath="url(#clip0_34_1756)">
-              <mask id="path-1-inside-1_34_1756" fill="white">
-                <path d="M0 70H718V73H0V70Z" />
-              </mask>
-              <path
-                d="M0 71H718V69H0V71Z"
-                fill="rgba(0,0,0,.1)"
-                mask="url(#path-1-inside-1_34_1756)"
-              />
-              <mask id="path-3-inside-2_34_1756" fill="white">
-                <path d="M0 126H718V129H0V126Z" />
-              </mask>
-              <path
-                d="M0 127H718V125H0V127Z"
-                fill="rgba(0,0,0,.1)"
-                mask="url(#path-3-inside-2_34_1756)"
-              />
-              <mask id="path-5-inside-3_34_1756" fill="white">
-                <path d="M0 367H718V370H0V367Z" />
-              </mask>
-              <path
-                d="M0 368H718V366H0V368Z"
-                fill="rgba(0,0,0,.1)"
-                mask="url(#path-5-inside-3_34_1756)"
-              />
-              <mask id="path-7-inside-4_34_1756" fill="white">
-                <path d="M109 440L109 0L112 -7.67283e-08L112 440L109 440Z" />
-              </mask>
-              <path
-                d="M110 440L110 -2.55758e-08L108 2.55758e-08L108 440L110 440Z"
-                fill="rgba(0,0,0,.1)"
-                mask="url(#path-7-inside-4_34_1756)"
-              />
-              <mask id="path-9-inside-5_34_1756" fill="white">
-                <path d="M608 440L608 0L611 -7.67283e-08L611 440L608 440Z" />
-              </mask>
-              <path
-                d="M609 440L609 -2.55758e-08L607 2.55758e-08L607 440L609 440Z"
-                fill="rgba(0,0,0,.1)"
-                mask="url(#path-9-inside-5_34_1756)"
-              />
-              <rect
-                x="110.5"
-                y="71.5"
-                width="497"
-                height="297"
-                rx="18.5"
-                stroke="black"
-                strokeWidth="3"
-                strokeLinejoin="round"
-                pathLength="1"
-              />
-              <rect
-                x="564.5"
-                y="85.5"
-                width="28"
-                height="28"
-                rx="14"
-                stroke="black"
-                strokeWidth="3"
-                strokeLinejoin="round"
-                pathLength="1"
-              />
-              <rect
-                x="253.5"
-                y="85.5"
-                width="109"
-                height="28"
-                rx="14"
-                stroke="black"
-                strokeWidth="3"
-                strokeLinejoin="round"
-                pathLength="1"
-              />
-              <path
-                d="M260 127.5H479C482.59 127.5 485.5 130.41 485.5 134V368.5H253.5V134C253.5 130.41 256.41 127.5 260 127.5Z"
-                stroke="black"
-                strokeWidth="3"
-                strokeLinejoin="round"
-                pathLength="1"
-              />
-              <rect
-                x="495.5"
-                y="127.5"
-                width="97"
-                height="169"
-                rx="6.5"
-                stroke="black"
-                strokeWidth="3"
-                strokeLinejoin="round"
-                pathLength="1"
-              />
-              <line
-                x1="235.5"
-                y1="70"
-                x2="235.5"
-                y2="367"
-                stroke="black"
-                strokeWidth="3"
-                pathLength="1"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_34_1756">
-                <rect width="718" height="440" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
+      <Container>
+        <div className={styles.Hero}>
+          <div className={styles.Text}>
+            <h1>
+              <span>Build.</span> <span>Contribute.</span> <span>Evolve.</span>
+            </h1>
+            <p>
+              Shape the merchant experience for Shopify’s core product, the
+              admin.
+            </p>
+          </div>
+        </div>
+      </Container>
+
+      <div className={styles.Line}></div>
+
+      <div className={className(styles.Step, styles.BuildingBlocks)}>
+        <Container>
+          <div className={styles.Blocks}>
+            <div className={styles.Block}>
+              <div className={styles.Text}>
+                <h3>Foundations</h3>
+                <p className={styles.Description}>
+                  Our design foundations offer fundamental design elements and
+                  guidance for creating good merchant experiences.
+                </p>
+                <Links
+                  links={[
+                    {
+                      icon: "browse",
+                      label: "Start reading",
+                      url: "/foundations",
+                    },
+                  ]}
+                />
+              </div>
+              <div className={styles.Image}>
+                <Image
+                  src="/images/foundations.png"
+                  alt="Media card and date picker components"
+                  width={555 * 1.5}
+                  height={430 * 1.5}
+                />
+              </div>
+            </div>
+
+            <div className={styles.Line}></div>
+
+            <div className={styles.Block}>
+              <div className={styles.Text}>
+                <h3>Components</h3>
+                <p className={styles.Description}>
+                  Components are reusable building blocks made of interface
+                  elements and styles, packaged through code. Piece them
+                  together, improve them, and create new ones to solve merchant
+                  problems.
+                </p>
+                <Links
+                  links={[
+                    {
+                      icon: "browse",
+                      label: "Browse components",
+                      url: "/components",
+                    },
+                    {
+                      icon: "github",
+                      label: "Repo",
+                      url: "https://github.com/Shopify/polaris/tree/main/polaris-react",
+                    },
+                    {
+                      icon: "figma",
+                      label: "Library",
+                      url: "https://www.figma.com/community/file/1111360433678236702",
+                    },
+                  ]}
+                />
+              </div>
+              <div className={styles.Image}>
+                <Image
+                  src="/images/components.png"
+                  alt="Media card and date picker components"
+                  width={555 * 1.5}
+                  height={430 * 1.5}
+                />
+              </div>
+            </div>
+
+            <div className={styles.Block}>
+              <div className={styles.Text}>
+                <h3>Tokens</h3>
+                <p className={styles.Description}>
+                  Design tokens are coded names that represent design decisions
+                  for elements like color, spacing, and typography. Applying
+                  them to our designs unifies merchant experiences.
+                </p>
+                <Links
+                  links={[
+                    {
+                      icon: "browse",
+                      label: "Browse tokens",
+                      url: "/tokens/colors",
+                    },
+                    {
+                      icon: "github",
+                      label: "Repo",
+                      url: "https://github.com/Shopify/polaris/tree/main/polaris-tokens",
+                    },
+                    {
+                      icon: "figma",
+                      label: "Library",
+                      url: "https://www.figma.com/community/file/1111359207966840858",
+                    },
+                  ]}
+                />
+              </div>
+
+              <div className={styles.Image}>
+                <Image
+                  src="/images/tokens.png"
+                  alt="A card containing a color preview, a token name and a description."
+                  width={555 * 1.5}
+                  height={430 * 1.5}
+                />
+              </div>
+            </div>
+
+            <div className={styles.Block}>
+              <div className={styles.Text}>
+                <h3>Icons</h3>
+                <p className={styles.Description}>
+                  The Polaris icon library has 400+ carefully designed icons
+                  focused on commerce and entrepreneurship. Use them as visual
+                  aids to help merchants complete tasks.
+                </p>
+                <Links
+                  links={[
+                    {
+                      icon: "browse",
+                      label: "Browse icons",
+                      url: "/icons",
+                    },
+                    {
+                      icon: "github",
+                      label: "Repo",
+                      url: "https://github.com/Shopify/polaris/tree/main/polaris-icons",
+                    },
+                    {
+                      icon: "figma",
+                      label: "Library",
+                      url: "https://www.figma.com/community/file/1110993965108325096",
+                    },
+                  ]}
+                />
+              </div>
+
+              <div className={styles.Image}>
+                <Image
+                  src="/images/icons.png"
+                  alt="A grid containing icons from Polaris"
+                  width={555 * 1.5}
+                  height={430 * 1.5}
+                />
+              </div>
+            </div>
+          </div>
         </Container>
+
+        <div className={styles.Line}></div>
+
+        <div className={className(styles.Step, styles.PowerUps)}>
+          <Container>
+            <div className={styles.PolarisForVSCode}>
+              <div className={styles.Text}>
+                <h3>Polaris for VS Code</h3>
+                <p className={styles.Description}>
+                  Automatic autocompletion for Polaris tokens, right inside your
+                  favorite code editor.
+                </p>
+                <Links
+                  links={[
+                    {
+                      icon: "install",
+                      label: "Get the extension",
+                      url: "https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode",
+                    },
+                  ]}
+                />
+              </div>
+
+              {useMotion ? (
+                <div className={styles.Video}>
+                  <video
+                    muted
+                    loop
+                    autoPlay
+                    playsInline
+                    width="2250"
+                    height="1440"
+                  >
+                    <source src="/images/vscode.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              ) : (
+                <div className={styles.Poster}>
+                  <Image
+                    width="2250"
+                    height="1440"
+                    src="/images/vscode.jpg"
+                    alt="Screen shot of the Polaris VS Code extension actively autocompleting the value of a background CSS rule with the surface success design token."
+                  />
+                </div>
+              )}
+            </div>
+          </Container>
+        </div>
       </div>
     </div>
   );
 }
+
+interface ResourceListItemProps {
+  links: {
+    icon: "browse" | "github" | "figma" | "install" | "other";
+    label: string;
+    url: string;
+  }[];
+}
+
+export const Links = ({ links }: ResourceListItemProps) => {
+  return (
+    <ul className={styles.Links}>
+      {links.map((link) => (
+        <li key={link.url}>
+          <Link href={link.url}>
+            <a data-icon={link.icon}>
+              {link.icon === "browse" && <BrowseIcon />}
+
+              {link.icon === "github" && <GitHubIcon />}
+
+              {link.icon === "figma" && <FigmaIcon />}
+
+              {link.icon === "install" && <InstallIcon />}
+
+              {link.label}
+            </a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 export default HomePage;

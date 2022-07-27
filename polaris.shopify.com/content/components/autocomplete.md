@@ -8,38 +8,32 @@ keywords:
   - combobox
   - listbox
 examples:
-  - fileName: autocomplete-basic.tsx
-    title: Basic autocomplete
+  - fileName: autocomplete-default.tsx
+    title: Default
     description: Use to help merchants complete text input quickly from a list of options.
-  - fileName: autocomplete-multiple-tags.tsx
-    title: Multiple tags autocomplete
-    description: >-
-      Use to help merchants select multiple options from a list curated by the
-      text input.
-  - fileName: autocomplete-multiple-sections.tsx
-    title: Multiple sections autocomplete
-    description: >-
-      Use to help merchants complete text input quickly from a multiple sections
-      list of options.
+  - fileName: autocomplete-with-multiple-tags.tsx
+    title: With multiple tags
+    description: Use to help merchants select multiple options from a list curated by the text input.
+  - fileName: autocomplete-with-multiple-sections.tsx
+    title: With multiple sections
+    description: Use to help merchants complete text input quickly from a multiple sections list of options.
   - fileName: autocomplete-with-loading.tsx
-    title: Autocomplete with loading
-    description: >-
-      Use to indicate loading state to merchants while option data is
-      processing.
+    title: With loading
+    description: Use to indicate loading state to merchants while option data is processing.
   - fileName: autocomplete-with-lazy-loading.tsx
-    title: Autocomplete with lazy loading
+    title: With lazy loading
   - fileName: autocomplete-with-empty-state.tsx
-    title: Autocomplete with empty state
+    title: With empty state
     description: Use to indicate there are no search results.
   - fileName: autocomplete-with-action.tsx
-    title: Autocomplete with action
-    description: Use to indicate there are no search results.
+    title: With action
+    description: Use to help merchants complete an action quickly.
   - fileName: autocomplete-with-wrapping-action.tsx
-    title: Autocomplete with wrapping action
-    description: Use to indicate there are no search results.
+    title: With wrapping action
+    description: Use to help merchants complete an action quickly with wrapping lines of text.
   - fileName: autocomplete-with-destructive-action.tsx
-    title: Autocomplete with destructive action
-    description: Use to indicate there are no search results.
+    title: With destructive action
+    description: Use to help merchants complete a destructive action quickly.
 ---
 
 # Autocomplete
@@ -61,39 +55,19 @@ The autocomplete component should:
 
 ## Content guidelines
 
-The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/forms/text-field) for text fields.
+The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/text-field) for text fields.
 
 ---
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
-- For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/lists-and-tables/option-list)
-- For a text field that triggers a popover, [use the combo box component](https://polaris.shopify.com/components/forms/combobox)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/text-field)
+- For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/option-list)
+- For a text field that triggers a popover, [use the combo box component](https://polaris.shopify.com/components/combobox)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 ### Structure
 
@@ -103,7 +77,7 @@ The autocomplete list displays below the text field or other control by default 
 
 Autocomplete features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,5 +94,3 @@ Require that merchants make a selection from the autocomplete to complete a task
 - Give the autocomplete text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Access the list of options with the up and down arrow keys
 - Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key
-
-<!-- /content-for -->

@@ -1,4 +1,5 @@
 import { getParameters } from "codesandbox/lib/api/define";
+import styles from "./CodesandboxButton.module.scss";
 
 const getAppCode = (code: string) => {
   const lineWithFunctionName = code
@@ -75,7 +76,9 @@ const CodesandboxButton = (props: Props) => {
     >
       <input type="hidden" name="parameters" value={parameters} />
       <input type="hidden" name="query" value="module=App.js" />
-      <button type="submit">Edit in Codesandbox</button>
+      <button type="submit" className={styles.Button}>
+        Edit in CodeSandbox
+      </button>
     </form>
   );
 };

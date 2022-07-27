@@ -1,8 +1,10 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
 
 .IconsPage {
   padding-top: var(--header-margin);
+  padding-bottom: var(--header-margin);
 
   h1 {
     @include heading-1;
@@ -10,163 +12,71 @@
   }
 }
 
-.Filter {
-  .TextField {
-    margin-top: 1.5rem;
-  }
-}
-
-.SectionHeading {
-  font-size: var(--font-size-200);
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  color: var(--text-strong);
-
-  b {
-    font-weight: var(--font-weight-500);
-  }
-}
-
-.Sidebar {
-  .SidebarSection {
-    padding: 1.75rem;
-    border-bottom: 1px solid var(--border-color-light);
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
-  .IconInfo {
-    p {
-      font-size: var(--font-size-200);
-    }
-  }
-
-  .Preview {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-
-    .PreviewImage {
-      transform: translateY(0.25rem);
-    }
-  }
-
-  .IconSet {
-    display: inline-block;
-    border: 1px solid var(--border-color-light);
-    border-radius: var(--border-radius-400);
-    padding: 0 0.333rem;
-    background: var(--surface);
-    font-size: var(--font-size-50);
-  }
-
-  .IconName {
-    font-size: var(--font-size-1000);
-    letter-spacing: var(--letter-spacing-700);
-    font-weight: var(--font-weight-400);
-    line-height: 1.25;
-    color: var(--text-strong);
-  }
-
-  .ActionButtons {
-    margin-top: 1.5rem;
-  }
-
-  .IconDescription {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .SmallParagraph {
-    margin-bottom: 1rem;
-    font-size: var(--font-size-200);
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .CodeExampleWrapper {
-    margin: 1rem 0;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .Keywords {
-    display: flex;
-    flex-wrap: wrap;
-    font-size: var(--font-size-50);
-    gap: 0.5rem;
-    line-height: 1;
-
-    button {
-      background: transparent;
-      color: var(--text-subdued);
-      border-radius: var(--border-radius-400);
-    }
-  }
-
-  h3 {
-    @include heading-4;
-    margin: 0 0 0.125rem;
-  }
-}
-
-.SplitLayout {
-  display: flex;
+.PageLayout {
+  display: grid;
   gap: 3rem;
+  grid-template-columns: 1fr 22.5rem;
+  align-items: flex-start;
+}
 
-  .IconGrids {
-    flex: 1;
-  }
+.Modal {
+  position: fixed;
+  top: 2rem;
+  right: 0;
+  bottom: 2rem;
+  left: 0;
+  max-width: 30rem;
+  max-height: 50rem;
+  margin: auto;
+  z-index: 3;
+  overflow: auto;
 
-  .Sidebar {
-    align-self: flex-start;
-    position: sticky;
-    top: 2rem;
-    width: 22.5rem;
-    border-radius: 32px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.06);
-
-    @include dark-mode {
-      box-shadow: var(--card-shadow);
-    }
+  @media screen and (max-width: $breakpointMobile) {
+    top: auto;
+    bottom: 0;
+    max-width: 100%;
+    max-height: 80vh;
   }
 }
 
-.ProposeChange {
-  display: flex;
-  justify-content: center;
+.ModalBackdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
 
-  a {
+.NoSearchResults {
+  padding: 10rem 0;
+  min-height: 12rem;
+  display: grid;
+  place-items: center center;
+  text-align: center;
+  gap: 2rem;
+  animation: fade-up 0.25s 0.1s both ease-out;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: scale(0.99);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  h2 {
+    @include heading-2;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-top: 0.5rem;
     font-size: var(--font-size-100);
     color: var(--text-subdued);
-  }
-}
-
-.DownloadIconButton {
-  align-items: center;
-  appearance: none;
-  background: var(--primary);
-  color: var(--surface);
-  padding: 0.75rem 0.66rem;
-  border: none;
-  font-size: var(--font-size-100);
-  font-weight: var(--font-weight-500);
-  border-radius: var(--border-radius-400);
-  user-select: none;
-  box-shadow: inset 0 -2px rgba(0, 0, 0, 0.075);
-  display: block;
-  text-align: center;
-  cursor: pointer;
-
-  &:focus-visible {
-    box-shadow: var(--focus-outline);
   }
 }

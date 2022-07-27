@@ -35,13 +35,9 @@ Currencies are formatted differently in different countries and languages. There
 
 A store can have more than one type of currency and currency format.
 
-<a name="store-currency"></a>
-
 ### Store currency
 
 The main currency of the store and the Shopify default. All sales and reports are shown in the store currency.
-
-<a name="non-store-currency"></a>
 
 ### Non-store currency
 
@@ -51,15 +47,11 @@ Any other type of currency is called “non-store currency”. Types of non-stor
 - Payout currency: The type of currency used to pay merchants for their sales. For multi-currency stores, it can be different from store currency.
 - Billing currency: The type of currency used to bill merchants for themes, app purchases, and monthly subscriptions. Billing currency is in USD only, but might include local currencies for tax purposes.
 
-<a name="short-format"></a>
-
 ### Short format
 
 Includes the currency symbol and currency value. This format is used for currency that merchants are familiar with.
 
 Examples: \$12.50; 12,50 €
-
-<a name="explicit-format"></a>
 
 ### Explicit format
 
@@ -98,19 +90,19 @@ Because CLDR formatting is limited, these guidelines will help you choose the ap
 
 #### Store currency
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
 Default to [short format](#short-format).
 
-![Short format in today’s sales card](/public_images/internationalization-page/do-use-short-format@2x.png)
+![Short format in today’s sales card](/images/foundations/foundations/internationalization/do-use-short-format@2x.png)
 
 #### Don’t
 
 Use [explicit format](#explicit-format) except when presenting store currency within in a mixed-currency context.
 
-![Incorrect explicit format in today’s sales card](/public_images/internationalization-page/dont-use-explicit-format@2x.png)
+![Incorrect explicit format in today’s sales card](/images/foundations/foundations/internationalization/dont-use-explicit-format@2x.png)
 
 <!-- end -->
 
@@ -119,47 +111,23 @@ Use [explicit format](#explicit-format) except when presenting store currency wi
 - Use explicit format when showing total amounts, an amount within a button, or in a paragraph
 - Use short format when showing non-total amounts with total amounts
 
-<div class="Spacing">
-<figure>
+![](/images/foundations/foundations/internationalization/paid-status-explicit@2x.png)
 
-![](/public_images/internationalization-page/paid-status-explicit@2x.png)
-
-<figcaption>
 This example shows a scenario where the presentment currency is in USD, which is different than the store currency. The non-total amounts in the paid status card are in short format, and the total amounts are in explicit format.
-</figcaption>
 
-</figure>
-</div>
+![](/images/foundations/foundations/internationalization/refund-non-store-currency@2x.png)
 
-<div class="Spacing">
-<figure>
-
-![](/public_images/internationalization-page/refund-non-store-currency@2x.png)
-
-<figcaption>
 This example shows a scenario refunding an order that’s in a non-store currency.
-</figcaption>
 
-</figure>
-</div>
+![](/images/foundations/foundations/internationalization/short-format-non-total@2x.png)
 
-<div class="Spacing">
-<figure>
-
-![](/public_images/internationalization-page/short-format-non-total@2x.png)
-
-<figcaption>
 This example illustrates the use of short format for non-total amounts and explicit format for total amounts in a data table.
-</figcaption>
-
-</figure>
-</div>
 
 #### Negative amount display
 
 Always place the negative symbol before the currency and amount in either format.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -178,41 +146,17 @@ Always place the negative symbol before the currency and amount in either format
 - Default to explicit format whenever prices are customer-facing. Use short format for unit prices, itemized prices, and installment prices.
 - If there are enough indicators to let customers know which currency they’re looking at, short format may be sufficient. When using short format, make sure to always use explicit format for cart total, checkout total, and notification totals.
 
-<div class="Spacing">
-<figure>
+![](/images/foundations/foundations/internationalization/short-format-installment-prices@2x.png)
 
-![](/public_images/internationalization-page/short-format-installment-prices@2x.png)
-
-<figcaption>
 This example shows the use of short format for installment prices.
-</figcaption>
 
-</figure>
-</div>
+![](/images/foundations/foundations/internationalization/short-format-unit-prices@2x.png)
 
-<div class="Spacing">
-<figure>
-
-![](/public_images/internationalization-page/short-format-unit-prices@2x.png)
-
-<figcaption>
 This example shows the use of short format for unit prices.
-</figcaption>
 
-</figure>
-</div>
+![](/images/foundations/foundations/internationalization/short-format-itemized-prices@2x.png)
 
-<div class="Spacing">
-<figure>
-
-![](/public_images/internationalization-page/short-format-itemized-prices@2x.png)
-
-<figcaption>
 This example shows the use of short format for itemized prices.
-</figcaption>
-
-</figure>
-</div>
 
 ---
 
@@ -264,117 +208,21 @@ The guiding questions are meant to help make merchant-focused decisions about wh
 
 This table shows commonly-used currencies in short and explicit formats.
 
-<div style="overflow-x: auto;">
-  <style>
-    td {white-space: nowrap;}
-    th [scope='rowgroup'] {vertical-align: top;}
-  </style>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" id="currency">Currency</th>
-        <th scope="col" id="locale">Locale</th>
-        <th scope="col" id="short">Short format</th>
-        <th scope="col" id="explicit">Explicit format</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" id="usd" headers="currency">US Dollar ($, USD)</th>
-        <td headers="locale usd">en-US</td>
-        <td headers="short usd">$12.50</td>
-        <td headers="explicit usd">$12.50 USD</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="2" id="cad" headers="currency">
-          Canadian Dollar ($, CAD)
-        </th>
-        <td headers="locale cad">en-CA</td>
-        <td headers="short cad">$12.50</td>
-        <td headers="explicit cad">$12.50 CAD</td>
-      </tr>
-      <tr>
-        <td headers="locale cad" style="padding: 2.4rem;">fr-CA</td>
-        <td headers="short cad">12,50 $</td>
-        <td headers="explicit cad">12,50 $ CAD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="aud" headers="currency">
-          Australian Dollar ($, AUD)
-        </th>
-        <td headers="locale aud">en-AU</td>
-        <td headers="short aud">$12.50</td>
-        <td headers="explicit aud">$12.50 AUD</td>
-      </tr>
-      <tr>
-        <th
-          scope="rowgroup"
-          rowspan="3"
-          headers="currency"
-          style="vertical-align: top;"
-          id="eur"
-        >
-          Euro (€, EUR)
-        </th>
-        <td headers="locale eur">de-DE, fr-FR</td>
-        <td headers="short eur">12,50 €</td>
-        <td headers="explicit eur">12,50 € EUR</td>
-      </tr>
-      <tr>
-        <td headers="locale eur" style="padding: 2.4rem;">en-IE</td>
-        <td headers="short eur">€12.50</td>
-        <td headers="explicit eur">€12.50 EUR</td>
-      </tr>
-      <tr>
-        <td headers="locale eur" style="padding: 2.4rem;">nl-NL</td>
-        <td headers="short eur">€12,50</td>
-        <td headers="explicit eur">€12,50 EUR</td>
-      </tr>
-      <tr>
-        <th scope="row" id="gbp" headers="currency">British Pounds (£, GBP)</th>
-        <td headers="locale gbp">en-GB</td>
-        <td headers="short gbp">£12.50</td>
-        <td headers="explicit gbp">£12.50 GBP</td>
-      </tr>
-      <tr>
-        <th scope="row" id="jpy" headers="currency">Japanese Yen (¥, JPY)</th>
-        <td headers="locale jpy">ja-JP</td>
-        <td headers="short jpy">¥1250</td>
-        <td headers="explicit jpy">¥1250 JPY</td>
-      </tr>
-      <tr>
-        <th scope="row" id="nzd" headers="currency">
-          New Zealand Dollar ($, NZD)
-        </th>
-        <td headers="locale nzd">en-NZ</td>
-        <td headers="short nzd">$12.50</td>
-        <td headers="explicit nzd">$12.50 NZD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="hkd" headers="currency">
-          Hong Kong Dollar ($, HKD)
-        </th>
-        <td headers="locale hkd">zh-HK</td>
-        <td headers="short hkd">$12.50</td>
-        <td headers="explicit hkd">$12.50 HKD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="sgd" headers="currency">
-          Singapore Dollar ($, SGD)
-        </th>
-        <td headers="locale sgd">zh-SG</td>
-        <td headers="short sgd">$12.50</td>
-        <td headers="explicit sgd">$12.50 SGD</td>
-      </tr>
-      <tr>
-        <th scope="row" id="dkk" headers="currency">Danish Krone (Kr, DKK)</th>
-        <td headers="locale dkk">da-DK</td>
-        <td headers="short dkk">12,50 kr.</td>
-        <td headers="explicit dkk">12,50 kr. DKK</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Currency                        | Locale       | Short format | Explicit format |
+| ------------------------------- | ------------ | ------------ | --------------- |
+| **US Dollar ($, USD)**          | en-US        | $12.50       | $12.50 USD      |
+| **Canadian Dollar ($, CAD)**    | en-CA        | $12.50       | $12.50 CAD      |
+|                                 | fr-CA        | 12,50 $      | 12,50 $ CAD     |
+| **Australian Dollar ($, AUD)**  | en-AU        | $12.50       | $12.50 AUD      |
+| **Euro (€, EUR)**               | de-DE, fr-FR | 12,50 €      | 12,50 € EUR     |
+|                                 | en-IE        | €12.50       | €12.50 EUR      |
+|                                 | nl-NL        | €12,50       | €12,50 EUR      |
+| **British Pounds (£, GBP)**     | en-GB        | £12.50       | £12.50 GBP      |
+| **Japanese Yen (¥, JPY)**       | ja-JP        | ¥1250        | ¥1250 JPY       |
+| **New Zealand Dollar ($, NZD)** | en-NZ        | $12.50       | $12.50 NZD      |
+| **Hong Kong Dollar ($, HKD)**   | zh-HK        | $12.50       | $12.50 HKD      |
+| **Singapore Dollar ($, SGD)**   | zh-SG        | $12.50       | $12.50 SGD      |
+| **Danish Krone (Kr, DKK)**      | da-DK        | 12,50 kr.    | 12,50 kr. DKK   |
 
 ---
 

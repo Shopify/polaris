@@ -1,6 +1,4 @@
 import React, {PropsWithChildren} from 'react';
-import isChromatic from 'chromatic/isChromatic';
-import {version} from '../../package.json';
 
 interface Data {
   id: string;
@@ -13,48 +11,43 @@ interface Data {
 interface ProfileProps {
   id: string;
   kind: string;
+  printToDOM?: boolean;
 }
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+export const RenderPerformanceProfiler = ({
+  id,
+  kind,
+  children,
+  printToDOM,
+}: PropsWithChildren<ProfileProps>) => {
+  function printDataToDOM(data: Data) {
+    const id = 'render-performance-profiler';
+    const container =
+      document.getElementById(id) || document.createElement('div');
+    const prevData = JSON.parse(container.innerHTML || '[]');
 
-const trackRenderPerformance = (data: Data) => {
-  const commitSha = process.env.STORYBOOK_GITHUB_SHA
-    ? process.env.STORYBOOK_GITHUB_SHA
-    : 'localdev';
+    container.id = id;
+    container.style.display = 'none';
+    container.innerHTML = JSON.stringify([...prevData, data]);
 
-  const body = JSON.stringify({...data, commitSha, version});
+    document.body.appendChild(container);
+  }
 
-  const target = isDevelopment
-    ? '//localhost:3000/api/profiler'
-    : 'https://polaris-coverage.shopifycloud.com/api/profiler';
-
-  fetch(target, {
-    method: 'POST',
-    keepalive: true,
-    mode: 'no-cors',
-    body,
-  });
+  return (
+    <React.Profiler
+      id={id}
+      onRender={(_, phase, actualDuration, baseDuration) => {
+        const data = {
+          id,
+          kind: kind.replace('All Components/', ''),
+          phase,
+          actualDuration,
+          baseDuration,
+        };
+        printToDOM ? printDataToDOM(data) : console.log(data);
+      }}
+    >
+      {children}
+    </React.Profiler>
+  );
 };
-
-const Profiler = ({id, kind, children}: PropsWithChildren<ProfileProps>) => (
-  <React.Profiler
-    id={id}
-    // https://reactjs.org/docs/profiler.html#onrender-callback
-    onRender={(_, phase, actualDuration, baseDuration) => {
-      trackRenderPerformance({
-        id,
-        kind,
-        phase,
-        actualDuration,
-        baseDuration,
-      });
-    }}
-  >
-    {children}
-  </React.Profiler>
-);
-
-const Component = ({children}: PropsWithChildren<{}>) => <>{children}</>;
-
-export const RenderPerformanceProfiler =
-  isDevelopment || isChromatic() ? Profiler : Component;

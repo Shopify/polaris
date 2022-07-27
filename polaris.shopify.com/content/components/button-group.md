@@ -1,10 +1,6 @@
 ---
 name: Button group
 category: Actions
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ButtonGroup
   - choices
@@ -21,24 +17,16 @@ keywords:
   - horizontal arrangement of buttons
   - stacked
   - segmented control
-  - ios
-  - android
 examples:
   - fileName: button-group-default.tsx
-    title: Default button group
-    description: >-
-      Use when you have multiple buttons to space them out
-      evenly.
+    title: Default
+    description: Use when you have multiple buttons to space them out evenly.
   - fileName: button-group-with-segmented-buttons.tsx
-    title: Button group with segmented buttons
-    description: >-
-      Use to emphasize several buttons as a thematically-related set among other
-      controls.
+    title: With segmented buttons
+    description: Use to emphasize several buttons as a thematically-related set among other controls.
   - fileName: button-group-outline-with-segmented-buttons.tsx
-    title: Outline button group with segmented buttons
-    description: >-
-      Use to emphasize several buttons as a thematically-related set among other
-      controls.
+    title: Outline with segmented buttons
+    description: Use to emphasize several buttons as a thematically-related set among other controls.
 ---
 
 # Button group
@@ -52,13 +40,11 @@ Button group displays multiple related actions stacked or in a horizontal row to
 Button groups should:
 
 - Only use buttons that follow the
-  [best practices outlined in the button component](https://polaris.shopify.com/components/actions/button#best-practices)
+  [best practices outlined in the button component](https://polaris.shopify.com/components/button#best-practices)
 - Group together calls to action that have a relationship
-- Be used with consideration that too many calls to action can cause merchants
-  to be unsure of what to do next
+- Be used with consideration that too many calls to action can cause merchants to be unsure of what to do next
 - Be thoughtful about how multiple buttons will look and work on small screens
-- Only be used in groups of up to six buttons if the buttons contain an icon
-  with no text
+- Only be used in groups of up to six buttons if the buttons contain an icon with no text
 
 ---
 
@@ -70,5 +56,5 @@ Button groups should follow the [content guidelines](https://polaris.shopify.com
 
 ## Related components
 
-- To learn how to use individual buttons, [use the button component](https://polaris.shopify.com/components/actions/button)
-- To embed an action or navigation into a line of text, [use the link component](https://polaris.shopify.com/components/navigation/link)
+- To learn how to use individual buttons, [use the button component](https://polaris.shopify.com/components/button)
+- To embed an action or navigation into a line of text, [use the link component](https://polaris.shopify.com/components/link)

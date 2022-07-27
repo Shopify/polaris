@@ -25,7 +25,7 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 
     @media screen and (max-width: $breakpointMobile) {
       margin-bottom: 1.5rem;
@@ -52,15 +52,6 @@
     + ul,
     + ol {
       margin-top: -0.5rem;
-    }
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    &:target {
-      background: #d5ffe1;
     }
   }
 
@@ -143,26 +134,69 @@
     display: none;
   }
 
-  pre {
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
-    font-size: var(--font-size-100);
-    padding: 1rem;
-    background: var(--surface-subdued);
-    color: var(--text-strong);
-    border-radius: var(--border-radius-500);
-    overflow: auto;
-    white-space: pre-wrap;
-    min-width: 0;
-
-    p {
-      margin: 0;
-    }
+  p code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    font-weight: var(--font-weight-500);
+    background: var(--surface-code-inline);
+    border-radius: var(--border-radius-300);
+    padding: 0.15rem 0.25rem;
   }
 
   .usage-list {
     + h3 {
       margin-top: 2.5rem !important;
+    }
+  }
+
+  table {
+    font-size: var(--font-size-200);
+    border-collapse: separate;
+    border-spacing: 0;
+    border: var(--border);
+    border-radius: 0.5rem;
+    width: 100%;
+
+    th {
+      font-weight: var(--font-weight-600);
+      text-align: left;
+      background-color: var(--surface-subdued);
+
+      &:first-child {
+        border-top-left-radius: 0.5rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.5rem;
+      }
+    }
+
+    th,
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: var(--border);
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 0.5rem;
+      }
+    }
+  }
+
+  :global {
+    .table-wrapper {
+      overflow: auto;
+      max-width: calc(100vw - 1.25rem);
+      width: 100%;
     }
   }
 }
@@ -172,7 +206,8 @@
     margin-top: 0;
     margin-bottom: 2rem;
     color: var(--text-strong);
-    font-size: var(--font-size-800);
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-500);
     letter-spacing: var(--letter-spacing-300);
   }
 }

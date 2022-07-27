@@ -159,9 +159,9 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
-  onFocus?: (event: React.FocusEvent) => void;
+  onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
-  onBlur?(event: React.FocusEvent): void;
+  onBlur?(event?: React.FocusEvent): void;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -629,7 +629,9 @@ export function TextField({
   }
 
   function handleClickChild(event: React.MouseEvent) {
-    event.stopPropagation();
+    if (inputRef.current !== event.target) {
+      event.stopPropagation();
+    }
 
     if (
       isPrefixOrSuffix(event.target) ||

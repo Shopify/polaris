@@ -37,7 +37,7 @@ Visually hidden should:
 
 ## Examples
 
-### Visually hidden heading
+### Default
 
 Always provide a heading for a major page section such as a card. In rare cases the heading is visually redundant and the meaning is conveyed by context. Rather than omit the heading, wrap the heading in the visually hidden component.
 
@@ -63,7 +63,7 @@ Always provide a heading for a major page section such as a card. In rare cases 
 </Card>
 ```
 
-### Visually hidden table headers
+### Table headers
 
 Whenever one or more table columns has no need for a visible header, hide the header content rather than omitting it. Note that due to browser quirks the visually hidden component must go inside each `<th>`.
 
@@ -100,28 +100,6 @@ Whenever one or more table columns has no need for a visible header, hide the he
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The visually hidden component styles text so that it’s not visible, but it is available to assistive technologies like screen readers and other text to speech programs.
 
 The component shouldn’t be used to hide interactive content.
-
-<!-- /content-for -->

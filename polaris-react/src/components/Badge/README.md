@@ -1,10 +1,6 @@
 ---
 name: Badge
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - pills
   - status indicators
@@ -17,8 +13,6 @@ keywords:
   - object status
   - status
   - alert
-  - ios
-  - android
 ---
 
 # Badge
@@ -67,7 +61,7 @@ The available badges for fulfillment status are:
 - Unfulfilled
 - Restocked
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Don’t
 
@@ -79,7 +73,7 @@ Don’t use alternatives to existing badge options. Only create a new badge opti
 
 ## Examples
 
-### Default badge
+### Default
 
 Use to give a non-critical status update on a piece of information or action.
 
@@ -87,19 +81,7 @@ Use to give a non-critical status update on a piece of information or action.
 <Badge>Fulfilled</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Default badge with gray background](/public_images/components/Badge/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default badge with gray background](/public_images/components/Badge/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Small badge
+### Small
 
 Use in layouts with minimal space, like inside of an `IndexTable` cell.
 
@@ -107,7 +89,7 @@ Use in layouts with minimal space, like inside of an `IndexTable` cell.
 <Badge size="small">Fulfilled</Badge>
 ```
 
-### Informational badge
+### Informational
 
 Use to call out an object or action as having an important attribute. For example, marking an option as “Recommended” or marking a theme as “Published”.
 
@@ -115,19 +97,7 @@ Use to call out an object or action as having an important attribute. For exampl
 <Badge status="info">Published</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Informational badge with blue background](/public_images/components/Badge/android/informational@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Informational badge with blue background](/public_images/components/Badge/ios/informational@2x.png)
-
-<!-- /content-for -->
-
-### Success badge
+### Success
 
 Use to indicate a successful, completed, or desirable state when it’s important to provide positive reinforcement to merchants. For example, when merchants successfully dispute a chargeback, a success badge shows that says “Funds recovered”.
 
@@ -135,19 +105,7 @@ Use to indicate a successful, completed, or desirable state when it’s importan
 <Badge status="success">Funds recovered</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Success badge with green background](/public_images/components/Badge/android/success@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Success badge with green background](/public_images/components/Badge/ios/success@2x.png)
-
-<!-- /content-for -->
-
-### Attention badge
+### Attention
 
 Use when something requires merchants’ attention but the issue isn’t critical. For example, this badge would show next to an order that needs to be reviewed by merchants.
 
@@ -155,63 +113,23 @@ Use when something requires merchants’ attention but the issue isn’t critica
 <Badge status="attention">Inactive</Badge>
 ```
 
-<!-- content-for: android -->
+### Warning
 
-![Attention badge with yellow background](/public_images/components/Badge/android/attention@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Attention badge with yellow background](/public_images/components/Badge/ios/attention@2x.png)
-
-<!-- /content-for -->
-
-### Warning badge
-
-Use for critical and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+Use for warnings and time-sensitive issues that require merchants’ attention and potential action. Warning events are often reversible. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="warning">Expired</Badge>
 ```
 
-<!-- content-for: android -->
+### Critical
 
-![Warning badge with orange background](/public_images/components/Badge/android/warning@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Warning badge with orange background](/public_images/components/Badge/ios/warning@2x.png)
-
-<!-- /content-for -->
-
-### Critical badge
-
-Use for critical and irreversible issues that require merchants’ attention and potential action.
-
-Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
+Use for critical and irreversible issues that require merchants’ attention and potential action. Keep in mind that seeing this badge can feel stressful for merchants so it should only be used when absolutely necessary.
 
 ```jsx
 <Badge status="critical">Action required</Badge>
 ```
 
-<!-- content-for: android -->
-
-![Critical badge with red background](/public_images/components/Badge/android/critical@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Critical badge with red background](/public_images/components/Badge/ios/critical@2x.png)
-
-<!-- /content-for -->
-
-### Incomplete badge
+### Incomplete
 
 Use to indicate when a given task has not yet been completed. For example, when merchants haven’t fulfilled an order.
 
@@ -221,19 +139,7 @@ Use to indicate when a given task has not yet been completed. For example, when 
 </Badge>
 ```
 
-<!-- content-for: android -->
-
-![Incomplete badge. Default badge with incomplete status](/public_images/components/Badge/android/incomplete@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Incomplete badge. Default badge with incomplete status](/public_images/components/Badge/ios/incomplete@2x.png)
-
-<!-- /content-for -->
-
-### Partially complete badge
+### Partially complete
 
 Use to indicate when a given task has been partially completed. For example, when merchants have partially fulfilled an order.
 
@@ -243,19 +149,7 @@ Use to indicate when a given task has been partially completed. For example, whe
 </Badge>
 ```
 
-<!-- content-for: android -->
-
-![Partially complete badge. Default badge with partially complete status](/public_images/components/Badge/android/partially-complete@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Partially complete badge. Default badge with partially complete status](/public_images/components/Badge/ios/partially-complete@2x.png)
-
-<!-- /content-for -->
-
-### Complete badge
+### Complete
 
 Use to indicate when a given task has been completed. For example, when merchants have fulfilled an order.
 
@@ -263,7 +157,7 @@ Use to indicate when a given task has been completed. For example, when merchant
 <Badge progress="complete">Fulfilled</Badge>
 ```
 
-### Badge with statusAndProgressLabelOverride
+### With statusAndProgressLabelOverride
 
 Use when the status and progress accessibilityLabels are not appropriate to a given context.
 
@@ -277,48 +171,14 @@ Use when the status and progress accessibilityLabels are not appropriate to a gi
 </Badge>
 ```
 
-<!-- content-for: android -->
-
-![Complete badge. Default badge with complete status](/public_images/components/Badge/android/complete@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Complete badge. Default badge with complete status](/public_images/components/Badge/ios/complete@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
 
-- To represent an interactive list of categories provided by merchants, [use tags](https://polaris.shopify.com/components/forms/tag)
+- To represent an interactive list of categories provided by merchants, [use tags](https://polaris.shopify.com/components/tag)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
-Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/titles-and-text/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.
-
-<!-- /content-for -->
+Badges that convey information with icons or color include text provided by the [visually hidden component](https://polaris.shopify.com/components/visually-hidden#navigation). This text is read out by assistive technologies like screen readers so that merchants with vision issues can access the meaning of the badge in context.

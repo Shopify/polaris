@@ -16,4 +16,4 @@ function Example() {
   );
 }
 
-export default withPolarisExample(() => <p />);
+export default withPolarisExample(() => <Example />);

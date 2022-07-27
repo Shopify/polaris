@@ -36,16 +36,11 @@ These values are at the heart of how we build experiences at Shopify. They’re 
 
 ---
 
-## Our approach <!-- nav:skipsection -->
+## Our approach
 
 The best part of this shared set of values is the conversations they enable. They are fantastic lenses through which to view, critique, and improve our work.
 
 We always aspire for Shopify experiences to feel:
-
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/shopify-experience-values/spot-customer-experience.svg)
 
 ### Considerate
 
@@ -54,10 +49,6 @@ Above all else, we show care for the people who use our tools and products. We�
 - Build experiences that work on every screen, on every platform, in every language, and in every country.
 - Take time to understand where we can build for a general audience, and where we should offer different paths for different needs.
 - Respect the reality of this work – don’t assume the perfect situation, preparation, or usage.
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/shopify-experience-values/spot-boost.svg)
 
 ### Empowering
 
@@ -67,14 +58,6 @@ We want people to feel like they can accomplish whatever they’re trying to do.
 - Optimize for the most important tasks without blocking people from doing the rest.
 - Hide complexity where you can, but give people access to more sophistication if they need it.
 
-</div>
-</div>
-
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/shopify-experience-values/spot-noname.svg)
-
 ### Crafted
 
 Shopify experiences should feel like they were created with the highest level of craftsmanship. Through thoughtful details and small touches, we combine the power of professional tools with the simplicity of consumer products.
@@ -82,11 +65,6 @@ Shopify experiences should feel like they were created with the highest level of
 - Work to understand the complex problems users face, then find clear and approachable solutions to those problems.
 - Delight people with how powerful and effective an experience is, not with extra decoration or flair.
 - Look for meaningful ways to make experiences more natural, friendly, and thoughtful.
-
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/shopify-experience-values/spot-maximum-gauge.svg)
 
 ### Efficient
 
@@ -96,14 +74,6 @@ Shopify experiences should help people achieve their goals quickly, accurately, 
 - Use friction to highlight important decisions, then let users get back to work.
 - Give users the ability to reduce and optimize their workloads through automation and bulk actions.
 
-</div>
-</div>
-
-<div class="twoColumnsResponsive twoColumnsResponsiveLoose">
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/shopify-experience-values/spot-guarantee.svg)
-
 ### Trustworthy
 
 We constantly work to recharge our users’ trust batteries. We sweat the details. We’re genuine and transparent to show users that we’re always acting in their best interest.
@@ -112,11 +82,6 @@ We constantly work to recharge our users’ trust batteries. We sweat the detail
 - Be transparent about what a feature or tool can do and what it can’t.
 - Make safe and positive actions frictionless. If they’re risky, give clear instructions and greater control. Make it easy to recover from mistakes.
 
-</div>
-<div markdown="1" class="twoColumnsItem">
-
-![](/public_images/shopify-experience-values/spot-group.svg)
-
 ### Familiar
 
 We want people to feel comfortable using our products, whether it’s their first time using them or their hundredth. Our experiences should embody the same principles, act the same way, and fit together seamlessly.
@@ -124,6 +89,3 @@ We want people to feel comfortable using our products, whether it’s their firs
 - Think bigger than any individual task or product. Understand the context users are working in.
 - Use familiar patterns to make experiences intuitive and recognizable.
 - Evolve experiences seamlessly. They should keep getting better with time and information.
-
-</div>
-</div>

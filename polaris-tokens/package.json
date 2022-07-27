@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.3.0",
+  "version": "5.5.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.mjs",
@@ -21,7 +21,9 @@
     "build:assets": "ts-node --skip-project scripts/index.ts",
     "build:types": "tsc -b",
     "dev": "rollup -c -w",
-    "lint": "TIMING=1 eslint --cache .",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },

@@ -8,10 +8,10 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: skeleton-tabs-simple.tsx
-    title: Simple skeleton tabs
+  - fileName: skeleton-tabs-default.tsx
+    title: Default
   - fileName: skeleton-tabs-with-a-custom-count.tsx
-    title: Skeleton tabs with a custom count
+    title: With a custom count
 ---
 
 # Skeleton tabs
@@ -30,4 +30,4 @@ Skeleton tabs component should:
 
 ## Related components
 
-- Use this component with [Skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
+- Use this component with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) to represent the content of a page before it’s loaded.

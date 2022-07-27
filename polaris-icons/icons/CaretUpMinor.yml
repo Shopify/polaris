@@ -1,4 +1,4 @@
-name: caret up
+name: Caret up
 set: minor
 description: Used to denote the action of contracting a section to hide additional content, like an accordion. Also used to represent sorting order.
 keywords:

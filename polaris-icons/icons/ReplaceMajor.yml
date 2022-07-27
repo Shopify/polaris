@@ -1,4 +1,4 @@
-name: replace
+name: Replace
 set: major
 description: Used to represent an action to replace an item or resource with another.
 keywords:

@@ -1,10 +1,6 @@
 ---
 name: Select
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - on off
   - switch
@@ -23,44 +19,25 @@ keywords:
   - long list of options
   - long option list
   - separate error message
-  - ios
-  - android
 examples:
   - fileName: select-default.tsx
-    title: Default select
-    description: >-
-      Presents a classic dropdown menu or equivalent picker as determined by
-      merchants’ browsers.The iOS picker expands in-line. Merchants scroll to
-      select the item they want.undefinedThe Android menu is similar in behavior
-      to the web dropdown.undefined
+    title: Default
+    description: Presents a classic dropdown menu or equivalent picker as determined by merchants’ browsers.
   - fileName: select-with-inline-label.tsx
-    title: Select with inline label
-    description: >-
-      Use only for cases where the select must fit on a single line, such as in
-      a toolbar.
+    title: With inline label
+    description: Use only for cases where the select must fit on a single line, such as in a toolbar.
   - fileName: select-disabled.tsx
-    title: Disabled select
-    description: >-
-      Use for selections that aren’t currently available. The surrounding
-      interface should make it clear why the select box is disabled and how to
-      activate it.
+    title: Disabled
+    description: Use for selections that aren’t currently available. The surrounding interface should make it clear why the select box is disabled and how to activate it.
   - fileName: select-with-prefix.tsx
-    title: Select with prefix
-    description: >-
-      Renders any React element to the left of individual select options. Does
-      not show in the dropdown.
+    title: With prefix
+    description: Renders any React element to the left of individual select options. Does not show in the dropdown.
   - fileName: select-with-validation-error.tsx
-    title: Select with validation error
-    description: >-
-      Use to let merchants know if there’s a problem with their selection. For
-      selects, a selection is typically invalid only when using a placeholder
-      option (“Select”) and no other selection has been made.
+    title: With validation error
+    description: Use to let merchants know if there’s a problem with their selection. For selects, a selection is typically invalid only when using a placeholder option (“Select”) and no other selection has been made.
   - fileName: select-with-separate-validation-error.tsx
-    title: Select with separate validation error
-    description: >-
-      Use to let merchants know when their select input is invalid in the
-      context of a group of form inputs that the select depends on.To render an
-      invalid select and its validation error separately:
+    title: With separate validation error
+    description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 ---
 
 # Select
@@ -91,7 +68,7 @@ Labels should:
 - Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -103,7 +80,7 @@ Labels should:
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -128,5 +105,5 @@ Options should:
 
 ## Related components
 
-- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/forms/choice-list)
-- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) inside a [popover](https://polaris.shopify.com/components/overlays/popover)
+- To let merchants select one option from a list with less than 4 options, use [the choice list component](https://polaris.shopify.com/components/choice-list)
+- To create a select where merchants can make multiple selections, or to allow advanced formatting of option text, use an [option list](https://polaris.shopify.com/components/option-list) inside a [popover](https://polaris.shopify.com/components/popover)

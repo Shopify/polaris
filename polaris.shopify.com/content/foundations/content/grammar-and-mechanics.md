@@ -20,14 +20,11 @@ keywords:
 
 # Grammar and mechanics
 
-This guide is to help designers, developers, recruiters, UX-ers, product
-managers, support advisors, or anyone who writes public-facing text for Shopify.
+This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify.
 
 ---
 
 ## Basics
-
-<!-- keywords: active voice, passive voice, contractions, plain language, reading levels, past tense, your, referring to yourself , referring to Shopify, abbreviated words, abbreviating words, empathy -->
 
 ### Active voice
 
@@ -35,10 +32,9 @@ You should (almost) always write in the active voice:
 
 - Subject (person/thing acting) verb (the action) object (receives the action)
 
-Use the active voice if merchants need to do something. It should be clear
-that the subject is the one doing the action.
+Use the active voice if merchants need to do something. It should be clear that the subject is the one doing the action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -54,20 +50,17 @@ Details were added to the product
 
 To tell if you’re using the passive voice, look out for:
 
-- When the object comes before the subject (“the item was purchased by the
-  customer”)
+- When the object comes before the subject (“the item was purchased by the customer”)
 - Past tense verbs (“was added,” “was created,” and so on)
 - Forms of the verb “to be” (“was,” “is,” “were,” and so on)
 
-You should almost always write in the active voice, but here’s when to use the
-passive voice:
+You should almost always write in the active voice, but here’s when to use the passive voice:
 
 - To avoid referring to yourself or Shopify
 - To make it clear that you didn’t personally take an action or make a decision
-- If the object (thing being done) is more important than the subject (person
-  doing the thing)
+- If the object (thing being done) is more important than the subject (person doing the thing)
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -83,12 +76,9 @@ Shopify creates and emails your invoices monthly to
 
 ### Contractions
 
-Contractions are abbreviated words. We use them to set a light and casual tone
-in the interface. The goal is to sound human, so avoid contracting verbs that
-sound awkward when you say them out loud, or have been phased out of modern day
-speech.
+Contractions are abbreviated words. We use them to set a light and casual tone in the interface. The goal is to sound human, so avoid contracting verbs that sound awkward when you say them out loud, or have been phased out of modern day speech.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,17 +110,14 @@ speech.
 
 ### Plain language
 
-Use words and language that our merchants use. Avoid jargon or technical
-terminology. Make sure each sentence has a single focus and keep them short. Aim
-for a Grade 7 reading level.
+Use words and language that our merchants use. Avoid jargon or technical terminology. Make sure each sentence has a single focus and keep them short. Aim for a Grade 7 reading level.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
 - We’ve made some changes to improve your store’s security
-- These products aren’t getting a lot of views, but visitors are adding them to
-  their carts
+- These products aren’t getting a lot of views, but visitors are adding them to their carts
 
 #### Don’t
 
@@ -143,18 +130,15 @@ for a Grade 7 reading level.
 
 ## Capitalization
 
-<!-- keywords: heading capitalization, proper nouns, product names, feature names, job titles, position titles, position names, roles, slashes, forward slashes, sentence case, title case, lowercase, lower case, uppercase, upper case, what words are capitalized?, trademarks, third party brands, third-party brands -->
-
 ### Headings
 
 Use sentence case for all headings:
 
 - Capitalize the first word of a heading
-- Capitalize proper or trademarked nouns (names of products, countries, or
-  people)
+- Capitalize proper or trademarked nouns (names of products, countries, or people)
 - Lowercase for everything else
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -168,14 +152,9 @@ Create Purchase Order
 
 ### Product and feature names
 
-In general, if a feature or product isn’t unique to Shopify, don’t capitalize it
-(such as blogs, navigation, pages). If it’s unique to Shopify and marketable as its
-own product, capitalize it (such as Shopify Payments, or Frenzy).
+In general, if a feature or product isn’t unique to Shopify, don’t capitalize it (such as blogs, navigation, pages). If it’s unique to Shopify and marketable as its own product, capitalize it (such as Shopify Payments, or Frenzy).
 
-For all terms and definitions, check our full
-[vocabulary list](/content/vocabulary).
-
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -193,20 +172,15 @@ For all terms and definitions, check our full
 
 ### Trademarks
 
-Respect the usage guidelines of any third-party intellectual property. For
-example, in US communications, Apple Pay requires you to include the trademark
-symbol (™) the first time Apple Pay appears in body copy.
+Respect the usage guidelines of any third-party intellectual property. For example, in US communications, Apple Pay requires you to include the trademark symbol (™) the first time Apple Pay appears in body copy.
 
-Review the third party’s brand usage guidelines to make sure you are using the
-company’s name and logo correctly.
+Review the third party’s brand usage guidelines to make sure you are using the company’s name and logo correctly.
 
 ### Job titles
 
-Job titles should be capitalized when they come before or after a person’s name. When
-referring to a job title without referencing a name, don’t capitalize the job
-title.
+Job titles should be capitalized when they come before or after a person’s name. When referring to a job title without referencing a name, don’t capitalize the job title.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -228,7 +202,7 @@ title.
 
 The first letter following a slash shouldn’t be capitalized.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -250,14 +224,11 @@ See the content guidelines for [headings and subheadings](/content/actionable-la
 
 ## Lists
 
-<!-- keywords: bulleted lists, numbered lists, dropdown menu lists, drop down menu lists, action lists, menu actions, menu nouns, nouns in a menu, nouns in menu, list capitalization, list punctuation, list help text, list descriptions, menu lists, list in a menu, list in a drop down, list in a dropdown, list in drop downs, list in dropdowns -->
-
 ### Bulleted
 
-Use a bulleted list when items are related but sequence or priority doesn’t
-matter.
+Use a bulleted list when items are related but sequence or priority doesn’t matter.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -281,7 +252,7 @@ Use Shopify payments to
 
 Use a numbered list when item sequence or priority does matter, such as step-by-step instructions.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -304,13 +275,11 @@ To set up Shopify Payments:
 
 #### Actions in a menu
 
-Menu lists give users a horizontal set of actions when space is limited. The
-order of actions is often based on logic such as most popular actions.
+Menu lists give users a horizontal set of actions when space is limited. The order of actions is often based on logic such as most popular actions.
 
-Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context,
-only a verb might be required.
+Actions in a menu follow a {verb}+{noun} pattern. If there’s enough context, only a verb might be required.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -330,13 +299,11 @@ only a verb might be required.
 
 #### Nouns in a menu
 
-Menu lists give users a horizontal set of nouns when space is limited. The order
-of nouns is often based on logic such as most recent orders.
+Menu lists give users a horizontal set of nouns when space is limited. The order of nouns is often based on logic such as most recent orders.
 
-Nouns in a menu should be concise but still give the user enough information so
-they can easily find and accurately select the item they want.
+Nouns in a menu should be concise but still give the user enough information so they can easily find and accurately select the item they want.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -359,10 +326,9 @@ Select filter
 ### Capitalization
 
 - List items always start with a capital letter.
-- Capitalization and punctuation rules apply to both bulleted and numbered
-  lists.
+- Capitalization and punctuation rules apply to both bulleted and numbered lists.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -395,17 +361,13 @@ Company name
 
 ## Dates, numbers, and measurements
 
-<!-- keywords: date format, ordinal indicators, time, 12 hour clock, 12-hour clock, 24-hour clock, 24 hour clock, currency format, number format, phone number format, phone numbers format, numbers format, dates format, hyphens, en dashes, dashes, ranges, downward ranges, upward ranges, units of measurements, unit of measurement, time stamp, timezone -->
-
 These guidelines are for American English, which is the language we use as a base before translating to other languages. However, dates, numbers, and measurements may be formatted differently in other languages. You can use [helpers](https://github.com/Shopify/quilt) to ensure they are localized automatically.
 
 ### Date
 
-When possible, use the month’s full name, for example, October. If there are
-space constraints, use 3-letter abbreviations, for example, Oct. Don’t write
-dates numerically, for example, 07-02-14.
+When possible, use the month’s full name, for example, October. If there are space constraints, use 3-letter abbreviations, for example, Oct. Don’t write dates numerically, for example, 07-02-14.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -421,10 +383,9 @@ dates numerically, for example, 07-02-14.
 
 <!-- end -->
 
-Don’t use ordinal indicators, which are words representing position or rank in a
-sequential order (1st, 2nd, 3rd, and so on).
+Don’t use ordinal indicators, which are words representing position or rank in a sequential order (1st, 2nd, 3rd, and so on).
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -439,11 +400,9 @@ January 23rd–April 1st
 ### Time:
 
 - Use the 12-hour clock, followed by am or pm.
-- Include a space after the last number. For example, “Your package will
-  arrive at 12:35 pm.” Adding the space helps with formatting for English-speaking markets outside of North America, so we use it for North American usage as well.
+- Include a space after the last number. For example, “Your package will arrive at 12:35 pm.” Adding the space helps with formatting for English-speaking markets outside of North America, so we use it for North American usage as well.
 - Use the browser time of the logged in user.
-- To show a time range, use an en dash and include the am/pm after both times,
-  for example, 3:00 pm–4:00 pm.
+- To show a time range, use an en dash and include the am/pm after both times, for example, 3:00 pm–4:00 pm.
 - If indicating both the date and time, separate them with the word “at” instead of a comma.
 
 #### Time zones
@@ -455,7 +414,7 @@ January 23rd–April 1st
 
 For all translations, the time format is automatically localized by the `Intl.DateTimeFormat` JavaScript object.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -469,7 +428,7 @@ Thursday, October 15, 2015 at 2:00 pm EDT
 
 Use consistent timestamp formats by following these examples:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -495,10 +454,9 @@ Use consistent timestamp formats by following these examples:
 
 ### Currency
 
-When including currency with a price, the currency comes after the dollar
-amount. Learn more about [formatting localized currency](/foundations/formatting-localized-currency).
+When including currency with a price, the currency comes after the dollar amount. Learn more about [formatting localized currency](/foundations/formatting-localized-currency).
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -516,7 +474,7 @@ amount. Learn more about [formatting localized currency](/foundations/formatting
 
 In general, use numerals. If the number is below 10 and not integral to the sentence, spell it out in full.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -537,10 +495,9 @@ In general, use numerals. If the number is below 10 and not integral to the sent
 
 <!-- end -->
 
-Use commas for numbers with four or more digits. Whenever possible, don’t
-truncate numbers:
+Use commas for numbers with four or more digits. Whenever possible, don’t truncate numbers:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -556,10 +513,9 @@ truncate numbers:
 
 <!-- end -->
 
-Use hyphens when writing phone numbers. Don’t use brackets, spaces, periods, or
-plus signs:
+Use hyphens when writing phone numbers. Don’t use brackets, spaces, periods, or plus signs:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -577,7 +533,7 @@ plus signs:
 
 Use an en dash without a space on either side for number ranges:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -599,10 +555,9 @@ Use an en dash without a space on either side for number ranges:
 
 <!-- end -->
 
-Use “to” instead of an en dash if a number range is preceded by “from” in a
-phrase. Use “and” if a range is preceded by “between.”
+Use “to” instead of an en dash if a number range is preceded by “from” in a phrase. Use “and” if a range is preceded by “between.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -620,7 +575,7 @@ phrase. Use “and” if a range is preceded by “between.”
 
 For undefined upward ranges, use “and up” or “or more.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -636,7 +591,7 @@ For undefined upward ranges, use “and up” or “or more.”
 
 For downward ranges, be specific.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -652,7 +607,7 @@ $0.00–$49.99
 
 In all cases, include a space between the number and the unit.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -671,7 +626,7 @@ In all cases, include a space between the number and the unit.
 
 Never pluralize unit of measurement abbreviations.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -685,10 +640,9 @@ Never pluralize unit of measurement abbreviations.
 
 <!-- end -->
 
-When listing out multiple measurements in a row, put the unit of measurement at the end
-instead of after each number (and include a space).
+When listing out multiple measurements in a row, put the unit of measurement at the end instead of after each number (and include a space).
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -702,7 +656,7 @@ instead of after each number (and include a space).
 
 For pricing by measurement, don’t add a space before or after a slash.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -718,7 +672,7 @@ For pricing by measurement, don’t add a space before or after a slash.
 
 For units of measurement, use decimals instead of fractions:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -738,161 +692,36 @@ This table shows the standard abbreviations for commonly-used units of measureme
 
 Use the imperial system for the United States, Liberia, and Myanmar, and use the metric system for all other countries.
 
-<div style="overflow-x: auto;">
-  <style>
-    .measurement-table td { white-space: nowrap; }
-    .measurement-table tr { border-bottom-width: 0.1rem !important; }
-    .measurement-table [scope='rowgroup'] { vertical-align: top; }
-    .measurement-table [headers] { padding: 2.4rem; }
-  </style>
-  <table class="measurement-table">
-    <thead>
-      <tr>
-        <th scope="col" id="measurement"><b>Measurement</b></th>
-        <th scope="col" id="system"><b>System</b></th>
-        <th scope="col" id="unit"><b>Unit</b></th>
-        <th scope="col" id="abbreviation"><b>Abbreviation</b></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="rowgroup" rowspan="2" id="area" headers="measurement">
-          Area
-        </th>
-        <th scope="rowgroup" rowspan="1" headers="system" id="metric-1">Metric</th>
-        <td headers="area metric-1 unit">square meters</td>
-        <td headers="area metric-1 abbreviation">m²</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="1" headers="system" id="imperial-1">Imperial</th>
-        <td headers="area imperial-1 unit">square feet</td>
-        <td headers="area imperial-1 abbreviation">sq ft</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="2" id="distance" headers="measurement">
-          Distance
-        </th>
-        <th scope="rowgroup" rowspan="1" headers="system" id="metric-2">Metric</th>
-        <td headers="distance metric-2 unit">kilometers</td>
-        <td headers="distance metric-2 abbreviation">km</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="1" headers="system" id="imperial-2">Imperial</th>
-        <td headers="distance imperial-2 unit">miles</td>
-        <td headers="distance imperial-2 abbreviation">mi</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="4" id="image-resolution" headers="measurement">
-          Image resolution
-        </th>
-        <th scope="rowgroup" rowspan="4" headers="system" id="universal-1">Universal</th>
-        <td headers="image-resolution universal-1 unit">pixels</td>
-        <td headers="image-resolution universal-1 abbreviation">px</td>
-      </tr>
-      <tr>
-        <td headers="image-resolution universal-1 unit">megapixels</td>
-        <td headers="image-resolution universal-1 abbreviation">MP</td>
-      </tr>
-      <tr>
-        <td headers="image-resolution universal-1 unit">pixels per inch</td>
-        <td headers="image-resolution universal-1 abbreviation">ppi</td>
-      </tr>
-      <tr>
-        <td headers="image-resolution universal-1 unit">dots per inch</td>
-        <td headers="image-resolution universal-1 abbreviation">dpi</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="5" id="length" headers="measurement">
-          Length
-        </th>
-        <th scope="rowgroup" rowspan="2" headers="system" id="metric-3">Metric</th>
-        <td headers="length metric-3 unit">centimeters</td>
-        <td headers="length metric-3 abbreviation">cm</td>
-      </tr>
-      <tr>
-        <td headers="length metric-3 unit">meters</td>
-        <td headers="length metric-3 abbreviation">m</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="3" headers="system" id="imperial-3">Imperial</th>
-        <td headers="length imperial-3 unit">inches</td>
-        <td headers="length imperial-3 abbreviation">in</td>
-      </tr>
-      <tr>
-        <td headers="length imperial-3 unit">feet</td>
-        <td headers="length imperial-3 abbreviation">ft</td>
-      </tr>
-      <tr>
-        <td headers="length imperial-3 unit">yards</td>
-        <td headers="length imperial-3 abbreviation">yd</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="3" id="storage-size" headers="measurement">
-          Storage size
-        </th>
-        <th scope="rowgroup" rowspan="3" headers="system" id="universal-2">Universal</th>
-        <td headers="storage-size universal-2 unit">kilobytes</td>
-        <td headers="storage-size universal-2 abbreviation">KB</td>
-      </tr>
-      <tr>
-        <td headers="storage-size universal-2 unit">gigabytes</td>
-        <td headers="storage-size universal-2 abbreviation">GB</td>
-      </tr>
-      <tr>
-        <td headers="storage-size universal-2 unit">terabytes</td>
-        <td headers="storage-size universal-2 abbreviation">TB</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="4" id="volume" headers="measurement">
-          Volume
-        </th>
-        <th scope="rowgroup" rowspan="2" headers="system" id="metric-4">Metric</th>
-        <td headers="volume metric-4 unit">centimeters</td>
-        <td headers="volume metric-4 abbreviation">ml</td>
-      </tr>
-      <tr>
-        <td headers="volume metric-4 unit">litres</td>
-        <td headers="volume metric-4 abbreviation">L</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="2" headers="system" id="imperial-4">Imperial</th>
-        <td headers="volume imperial-4 unit">fluid ounces</td>
-        <td headers="volume imperial-4 abbreviation">fl oz</td>
-      </tr>
-      <tr>
-        <td headers="volume imperial-4 unit">gallons</td>
-        <td headers="volume imperial-4 abbreviation">gal</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="4" id="weight" headers="measurement">
-          Weight
-        </th>
-        <th scope="rowgroup" rowspan="2" headers="system" id="metric-5">Metric</th>
-        <td headers="weight metric-5 unit">grams</td>
-        <td headers="weight metric-5 abbreviation">g</td>
-      </tr>
-      <tr>
-        <td headers="weight metric-5 unit">kilograms</td>
-        <td headers="weight metric-5 abbreviation">kg</td>
-      </tr>
-      <tr>
-        <th scope="rowgroup" rowspan="2" headers="system" id="imperial-5">Imperial</th>
-        <td headers="weight imperial-5 unit">ounces</td>
-        <td headers="weight imperial-5 abbreviation">oz</td>
-      </tr>
-      <tr>
-        <td headers="weight imperial-5 unit">pounds</td>
-        <td headers="weight imperial-5 abbreviation">lb</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+| Measurement          | System          | Unit          | Abbreviation |
+| -------------------- | --------------- | ------------- | ------------ |
+| **Area**             | Metric          | square meters | m²           |
+|                      | Imperial        | square feet   | sq ft        |
+| **Distance**         | Metric          | kilometers    | km           |
+|                      | Imperial        | miles         | mi           |
+| **Image resolution** | Universal       | pixels        | px           |
+|                      | megapixels      | MP            |              |
+|                      | pixels per inch | ppi           |              |
+|                      | dots per inch   | dpi           |              |
+| **Length**           | Metric          | centimeters   | cm           |
+|                      | meters          | m             |              |
+|                      | Imperial        | inches        | in           |
+|                      | feet            | ft            |              |
+|                      | yards           | yd            |              |
+| **Storage size**     | Universal       | kilobytes     | KB           |
+|                      | gigabytes       | GB            |              |
+|                      | terabytes       | TB            |              |
+| **Volume**           | Metric          | centimeters   | ml           |
+|                      | litres          | L             |              |
+|                      | Imperial        | fluid ounces  | fl oz        |
+|                      | gallons         | gal           |              |
+| **Weight**           | Metric          | grams         | g            |
+|                      | kilograms       | kg            |              |
+|                      | Imperial        | ounces        | oz           |
+|                      | pounds          | lb            |              |
 
 ---
 
 ## Addresses and places
-
-<!-- keywords: country, countries, provinces, states, country adjectives, abbreviated country, country punctuation, country abbreviations, address, address format, address line 1, address line 2, shipping address, delivery address -->
 
 ### Address
 
@@ -906,16 +735,13 @@ City
 Country            Province           Postal code
 ```
 
-Please note, “optional” in `Apartment, suite, etc. (optional)` means that the
-field is optional for customers to complete, but we should always include it in
-the form.
+Please note, “optional” in `Apartment, suite, etc. (optional)` means that the field is optional for customers to complete, but we should always include it in the form.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Use locale-specific alternatives for province and postal code, for example,
-  the US uses State and ZIP code
+- Use locale-specific alternatives for province and postal code, for example, the US uses State and ZIP code
 
 #### Don’t
 
@@ -928,7 +754,7 @@ the form.
 
 Use a nation’s proper name when referring to it as a noun.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -942,7 +768,7 @@ Your store must be located in the US.
 
 When using a country as an adjective (such as when referring to currency), use the abbreviated form without punctuation.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -956,23 +782,18 @@ U.S. currency
 
 Things to watch out for:
 
-- Don’t use colloquial forms of a nation or state name, for example, America instead of the
-  United States
-- Search online to see whether nations commonly use “the” before their name, for example, the
-  Philippines or the Falkland Islands
+- Don’t use colloquial forms of a nation or state name, for example, America instead of the United States
+- Search online to see whether nations commonly use “the” before their name, for example, the Philippines or the Falkland Islands
 
 ---
 
 ## Punctuation
 
-<!-- keywords: ampersands, apostrophes, omitted numbers, omitted letters, verb contractions, possessives, colons, commas, ellipses, truncation, truncating, exclamation marks, en-dashes, em-dashes, en dashes, em dashes, hyphens, periods, question marks, quotes, quoting, quotation marks, semicolons, semi colons, semi-colons, smart quotes, smart apostrophes -->
-
 ### Ampersands
 
-Don’t use ampersands (&). They attract attention to the least important part of
-the sentence. Spell out the word “and.”
+Don’t use ampersands (&). They attract attention to the least important part of the sentence. Spell out the word “and.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -994,14 +815,13 @@ Use apostrophes to represent omitted letters or numbers:
 
 Use apostrophes to form possessives:
 
-- Singular nouns: add _’s_, even if they end in _s_ (merchant’s,
-  bus’s)
+- Singular nouns: add _’s_, even if they end in _s_ (merchant’s, bus’s)
 - Plural nouns that don’t end in s: add _’s_ (women’s, men’s)
 - Plural nouns that end in s: add an apostrophe (boxes’, customers’)
 
 Don’t use apostrophes to form possessive pronouns such as hers or his.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1019,12 +839,11 @@ Don’t use apostrophes to form possessive pronouns such as hers or his.
 
 Always use apostrophes, not vertical (straight) quotes.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">’</span>
-  <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
+- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">’</span> <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
 
 #### Don’t
 
@@ -1034,10 +853,9 @@ Always use apostrophes, not vertical (straight) quotes.
 
 ### Colons
 
-Avoid using colons in sentences. If you need to use one, don’t capitalize the
-first word after the colon unless it’s a proper noun.
+Avoid using colons in sentences. If you need to use one, don’t capitalize the first word after the colon unless it’s a proper noun.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1045,41 +863,27 @@ Your store accepts payments with GoCoin and Shopify Payments.
 
 #### Don’t
 
-Your store accepts payments with: GoCoin and Shopify Payments. Merchants store,
-womens clothing, customers credit cards
+Your store accepts payments with: GoCoin and Shopify Payments. Merchants store, womens clothing, customers credit cards
 
 <!-- end -->
 
 Don’t use colons to introduce radio buttons or checkboxes.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete
-their order
-
-<p>
-  <label><input type="radio" name="foo"> Never</label><br />
-  <label><input type="radio" name="foo"> 6 hours later</label><br />
-  <label><input type="radio" name="foo"> 24 hours later</label>
-</p>
+If the customer abandons their checkout, send them an email reminder to complete their order
 
 #### Don’t
 
-If the customer abandons their checkout, send them an email reminder to complete
-their order:
+If the customer abandons their checkout, send them an email reminder to complete their order:
 
-<p>
-  <label><input type="radio" name="bar"> Never</label><br />
-  <label><input type="radio" name="bar"> 6 hours later</label><br />
-  <label><input type="radio" name="bar"> 24 hours later</label>
-</p>
 <!-- end -->
 
 Introduce bulleted lists with a colon.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1101,27 +905,23 @@ Correct the following payment information to continue.
 
 ### Commas
 
-Use the oxford comma (also known as the serial comma) in sentences. There should
-be a comma after every list of 3 or more items (unless you’re using a bulleted or numbered
-list).
+Use the oxford comma (also known as the serial comma) in sentences. There should be a comma after every list of 3 or more items (unless you’re using a bulleted or numbered list).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
-Kit is an app that handles your online advertising, email marketing, and social
-media.
+Kit is an app that handles your online advertising, email marketing, and social media.
 
 #### Don’t
 
-Kit is an app that handles your online advertising, email marketing and social
-media.
+Kit is an app that handles your online advertising, email marketing and social media.
 
 <!-- end -->
 
 Don’t use commas to separate bulleted or numbered list items.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1139,9 +939,7 @@ Don’t use commas to separate bulleted or numbered list items.
 
 ### Ellipses
 
-The ellipses (…) can be used in place of a missing piece of text (most commonly
-to show the deletion of words from a direct quotation). Avoid using ellipses in
-text.
+The ellipses (…) can be used in place of a missing piece of text (most commonly to show the deletion of words from a direct quotation). Avoid using ellipses in text.
 
 Use ellipses for:
 
@@ -1152,7 +950,7 @@ Don’t use ellipses for:
 - Placeholder copy
 - Trailing off a sentence
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1166,7 +964,7 @@ Start typing to search for files…
 
 Always use the ellipsis character, not three periods.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1180,22 +978,17 @@ Always use the ellipsis character, not three periods.
 
 #### Truncation
 
-Consider constraints of the space in the interface when deciding to use
-truncation. Think about what part of the string merchants needs most. It’s
-usually the beginning or end, which means you might have to truncate the middle
-of the string.
+Consider constraints of the space in the interface when deciding to use truncation. Think about what part of the string merchants needs most. It’s usually the beginning or end, which means you might have to truncate the middle of the string.
 
 #### Ellipses button component
 
-A button with an ellipsis icon (not the same as text) is used to expand more
-actions. It’s typically used in cards, or for horizontal sets of actions when
-space is limited. Android uses a vertical version (vertically stacked dots).
+A button with an ellipsis icon (not the same as text) is used to expand more actions. It’s typically used in cards, or for horizontal sets of actions when space is limited.
 
 ### En-dashes and em-dashes
 
 Use an en dash with no spaces in between (–) for a fixed range of numbers
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1207,10 +1000,9 @@ Use an en dash with no spaces in between (–) for a fixed range of numbers
 
 <!-- end -->
 
-Use an em dash only if you can’t make your message clearer by splitting it into
-two sentences. Use an em dash without a space on either side (—).
+Use an em dash only if you can’t make your message clearer by splitting it into two sentences. Use an em dash without a space on either side (—).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1222,19 +1014,15 @@ Choose your theme’s design—colors, typography, and pictures—all in one pla
 
 <!-- end -->
 
-Depending on the font or appearance, you may want to include a hair space on
-either side of the en or em dash. HTML entity code for hair space is `&hairsp;`
-or `&#8202;`.
+Depending on the font or appearance, you may want to include a hair space on either side of the en or em dash. HTML entity code for hair space is `&hairsp;` or `&#8202;`.
 
-Tip: On Mac the keyboard shortcuts are option - for en dash and shift option -
-for em dash.
+Tip: On Mac the keyboard shortcuts are option - for en dash and shift option - for em dash.
 
 ### Exclamation marks
 
-Avoid exclamation marks—only use them for really really exciting things. If you
-absolutely have to, limit yourself to one exclamation mark per page.
+Avoid exclamation marks—only use them for really really exciting things. If you absolutely have to, limit yourself to one exclamation mark per page.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1250,10 +1038,9 @@ You’ve updated your product title!
 
 Use hyphens to:
 
-- Form compound modifiers: two words that combine to modify or describe the noun
-  that follows
+- Form compound modifiers: two words that combine to modify or describe the noun that follows
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1272,10 +1059,9 @@ Use hyphens to:
 
 <!-- end -->
 
-- Join prefixes and suffixes only if there are two vowels beside each other.
-  Never use hyphens in the words ecommerce and email.
+- Join prefixes and suffixes only if there are two vowels beside each other. Never use hyphens in the words ecommerce and email.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1292,13 +1078,11 @@ Use hyphens to:
 
 ### Periods
 
-Periods often end up in places they shouldn’t, and are omitted at strange times.
-In general, don’t use periods in interface copy unless it’s a full sentence
-description.
+Periods often end up in places they shouldn’t, and are omitted at strange times. In general, don’t use periods in interface copy unless it’s a full sentence description.
 
 When to use periods:
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1322,16 +1106,14 @@ When to use periods:
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Description example: Add this product to a collection so it’s easy to find in
-  your store.
+- Description example: Add this product to a collection so it’s easy to find in your store.
 - Placeholder example: Search products
 - Timeline example: \$50.41 USD was authorized.
-- Footer help box example: Learn more about
-  [products](https://help.shopify.com/manual/products)
+- Footer help box example: Learn more about [products](https://help.shopify.com/manual/products)
 
 #### Don’t
 
@@ -1344,12 +1126,11 @@ When to use periods:
 
 #### Periods for bulleted, numbered, and lists of links
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Use when a list item has two or more full sentences, then also add periods to
-  the whole list
+- Use when a list item has two or more full sentences, then also add periods to the whole list
 - Use for the description or helper text below a bulleted or numbered list item
 
 #### Don’t
@@ -1361,8 +1142,7 @@ When to use periods:
 
 ### Question marks
 
-Avoid question marks wherever possible. Reword into affirmative statements
-wherever you can, but there are exceptions:
+Avoid question marks wherever possible. Reword into affirmative statements wherever you can, but there are exceptions:
 
 It’s okay to use question marks if you don’t know the result of the question:
 
@@ -1374,7 +1154,7 @@ Don’t use question marks if:
 - It’s the only option available: “Reset password”
 - It’s an on/off option: “Show quantity box”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1395,7 +1175,7 @@ Use quotation marks to:
 
 When it’s helpful to the merchant, use quotation marks to indicate input that the merchant has provided, such as a product title or file name. Use this indication only when the input appears in running text.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1411,7 +1191,7 @@ When it’s helpful to the merchant, use quotation marks to indicate input that 
 
 In general, place commas and periods inside quotation marks. When working with literal strings like typed commands or merchant inputs, place punctuation outside the quotation marks.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1429,7 +1209,7 @@ In general, place commas and periods inside quotation marks. When working with l
 
 Always use smart (curly) quotes, not vertical (straight) quotes.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1444,9 +1224,7 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 
 #### Don’t
 
-- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">"</span>
-  or
-  <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">'</span>
+- <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">"</span> or <span style="font-size: 5rem; line-height: 0; vertical-align: bottom">'</span>
 
 <!-- end -->
 
@@ -1454,11 +1232,10 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 
 Avoid semicolons if possible. If you really need them, use semicolons to:
 
-- Connect two closely related ideas, as long as they are both independent
-  clauses (full sentences that could stand on their own).
+- Connect two closely related ideas, as long as they are both independent clauses (full sentences that could stand on their own).
 - Replace a comma or the word “and” between two closely related ideas.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -1474,15 +1251,11 @@ The unicorn was hungry; the grass was brown.
 
 ## Spelling and formatting
 
-<!-- keywords: american spelling, us spelling, u.s. spelling, usa spelling, english spelling, canadian spelling, bolding, spell check -->
-
 ### American spelling
 
-Use American spelling for all external-facing Shopify content. When in doubt,
-check the [Merriam-Webster dictionary](https://www.merriam-webster.com/) for the
-preferred spelling of specific terms.
+Use American spelling for all external-facing Shopify content. When in doubt, check the [Merriam-Webster dictionary](https://www.merriam-webster.com/) for the preferred spelling of specific terms.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1498,27 +1271,23 @@ preferred spelling of specific terms.
 
 <!-- end -->
 
-Tip: it’s easy to miss Canadian spelling. Switch your laptop language settings
-to American English and turn spell check on. It will highlight any Canadianisms
-you might have missed.
+Tip: it’s easy to miss Canadian spelling. Switch your laptop language settings to American English and turn spell check on. It will highlight any Canadianisms you might have missed.
 
 ### Bold
 
 When in doubt, don’t bold.
 
-Use bold sparingly and only where strong emphasis is required.
-Don’t use bold to create a heading or emphasize:
+Use bold sparingly and only where strong emphasis is required. Don’t use bold to create a heading or emphasize:
 
 - Proper nouns
 - Merchant input
 - Checkbox titles
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
-After your first sale, PayPal will email you at **merchant&#64;email.com** with
-instructions.
+After your first sale, PayPal will email you at **merchant&#64;email.com** with instructions.
 
 #### Don’t
 
@@ -1530,14 +1299,11 @@ Are you sure you want to delete **Sunset T-shirt**?
 
 ## You, we, and other personal pronouns
 
-<!-- keywords: addressing merchants, referring to shopify, talking about shopify, talking about merchants, messaging to merchants -->
-
 ### Addressing merchants
 
-Always refer to merchants as “you.” Don’t speak for merchants
-with phrases that use “I” or “my.”
+Always refer to merchants as “you.” Don’t speak for merchants with phrases that use “I” or “my.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1549,10 +1315,9 @@ Change your email address in My Profile.
 
 <!-- end -->
 
-In some cases (such as getting merchant consent or granting permissions) you
-should refer to merchants as “I.”
+In some cases (such as getting merchant consent or granting permissions) you should refer to merchants as “I.”
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -1565,11 +1330,9 @@ should refer to merchants as “I.”
 
 ### Referring to Shopify
 
-Always refer to Shopify as “we,” but avoid inserting Shopify into the content as
-much as possible (except when a human is taking action, such as reviewing a
-request).
+Always refer to Shopify as “we,” but avoid inserting Shopify into the content as much as possible (except when a human is taking action, such as reviewing a request).
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

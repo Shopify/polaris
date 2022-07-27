@@ -1,118 +1,89 @@
 @import "../../styles/variables.scss";
 
+@mixin layout-scrollbars {
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--text-subdued);
+    }
+  }
+}
+
 .Layout {
-  --gap: 1rem;
   --nav-width: 16rem;
-  --toc-width: 10rem;
-  --max-content-width: 62rem;
-  --toc-gap: 5rem;
-  margin-top: var(--header-margin);
+  --toc-width: 16rem;
+  --content-padding-x: 3.5rem;
   display: flex;
-  gap: var(--gap);
 
   @media screen and (max-width: $breakpointDesktop) {
-    --gap: 2rem;
+    --content-padding-x: 2rem;
   }
 
   @media screen and (max-width: $breakpointTablet) {
     display: block;
+    --content-padding-x: 0;
   }
 }
 
 .Nav {
+  align-self: flex-start;
+  position: sticky;
+  top: var(--header-height);
+  padding: var(--header-margin) 0;
+  height: calc(100vh - var(--header-height));
   min-width: var(--nav-width);
   max-width: var(--nav-width);
-  align-self: flex-start;
+  overscroll-behavior: contain;
+  overflow: auto;
+  box-shadow: inset -1px 0 var(--border-color-light);
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @include layout-scrollbars();
+
+  @media screen and (max-width: $breakpointTablet) {
     display: none;
-  }
-}
-
-.Main {
-  position: relative;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-
-  .CenteredMainContent {
-    flex: 1;
-
-    .Layout.narrow & {
-      max-width: var(--max-content-width);
-      padding-right: var(--gap);
-
-      @media screen and (max-width: $breakpointDesktopLarge) {
-        padding-right: 0;
-      }
-    }
   }
 }
 
 .Post {
-  position: relative;
-  display: flex;
-  flex-direction: row-reverse;
-  gap: var(--toc-gap);
+  flex: 1;
+  width: 100%;
+  padding: var(--header-margin) 0 var(--header-margin) var(--content-padding-x);
 
-  .PostContent {
-    flex: 1;
-    position: relative;
+  .narrow &,
+  .showTOC & {
+    padding: var(--header-margin) var(--content-padding-x);
+
+    @media screen and (max-width: $breakpointTablet) {
+      padding: var(--header-margin) 0 var(--header-margin)
+        var(--content-padding-x);
+    }
   }
 }
 
-.TOC {
-  --toc-sticky-top-margin: 2rem;
+.TOCWrapper {
+  align-self: flex-start;
   position: sticky;
-  top: 2rem;
-  margin-top: 0.5rem;
+  top: var(--header-height);
+  padding: var(--header-margin) 0 var(--header-margin) 2rem;
+  height: calc(100vh - var(--header-height));
   width: var(--toc-width);
-  right: calc((var(--toc-width) + 6rem) * -1);
-  height: 100%;
-  font-size: var(--font-size-50);
+  overscroll-behavior: contain;
+  overflow: auto;
+  border-left: 1px solid var(--border-color-light);
+  @include layout-scrollbars();
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
-  }
-
-  > ul > li:not(:first-child) {
-    margin-top: 0.5rem;
-  }
-
-  a {
-    color: inherit;
-    display: block;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: var(--toc-width);
-
-    &:hover {
-      color: var(--text-strong);
-    }
-  }
-
-  &.isNested {
-    ul ul {
-      position: relative;
-      margin-top: 0.25rem;
-      font-size: var(--font-size-50);
-      padding-left: 0.75rem;
-
-      &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0.4rem;
-        bottom: 0.4rem;
-        width: 1px;
-        left: 0;
-        background: var(--border-color);
-      }
-
-      a {
-        padding: 0.1em 0;
-      }
-    }
   }
 }

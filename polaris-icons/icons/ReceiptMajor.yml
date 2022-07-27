@@ -1,4 +1,4 @@
-name: receipt
+name: Receipt
 set: major
 description: Used to represent a sales receipt or invoice.
 keywords:

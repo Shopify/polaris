@@ -27,64 +27,54 @@ keywords:
   - filter
   - sort
 examples:
-  - fileName: index-table-simple.tsx
-    title: Simple index table
-    description: >-
-      A index table with simple items and no bulk actions, sorting, or
-      filtering.
-  - fileName: index-table-simple-small-screen.tsx
-    title: Simple small screen index table
-    description: >-
-      A small screen index table with simple items and no bulk actions, sorting,
-      or filtering.
+  - fileName: index-table-default.tsx
+    title: Default
+    description: A index table with simple items and no bulk actions, sorting, or filtering.
+  - fileName: index-table-flush.tsx
+    title: Flush
+    description: A index table with simple items and no bulk actions, sorting, or filtering.
+  - fileName: index-table-small-screen.tsx
+    title: Small screen
+    description: A small screen index table with simple items and no bulk actions, sorting, or filtering.
   - fileName: index-table-with-empty-state.tsx
-    title: IndexTable with empty state
-    description: >-
-      Use to explain the purpose of a index table when no resources exist yet.
-      This allows a smooth transition from a list in a loading state to a list
-      where zero, one, or many resources exist.
+    title: With empty state
+    description: Use to explain the purpose of a index table when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
   - fileName: index-table-with-bulk-actions.tsx
-    title: IndexTable with bulk actions
+    title: With bulk actions
     description: Allows merchants to select items and perform an action on the selection.
   - fileName: index-table-with-multiple-promoted-bulk-actions.tsx
-    title: IndexTable with multiple promoted bulk actions
-    description: >-
-      Allows merchants to select items and perform different actions on the
-      selection.
+    title: With multiple promoted bulk actions
+    description: Allows merchants to select items and perform different actions on the selection.
   - fileName: index-table-with-bulk-actions-and-selection-across-pages.tsx
-    title: IndexTable with bulk actions and selection across pages
-    description: >-
-      Allows merchants to select items, perform an action on the selection and
-      select resources across pages.
+    title: With bulk actions and selection across pages
+    description: Allows merchants to select items, perform an action on the selection and select resources across pages.
   - fileName: index-table-with-loading-state.tsx
-    title: IndexTable with loading state
+    title: With loading state
     description: Notifies merchants that index table items are being processed.
   - fileName: index-table-with-filtering.tsx
-    title: IndexTable with filtering
-    description: >-
-      Allows merchants to narrow the index table to a subset of the original
-      items.
+    title: With filtering
+    description: Allows merchants to narrow the index table to a subset of the original items.
   - fileName: index-table-with-row-status.tsx
-    title: Index table with row status
+    title: With row status
     description: An index table with rows differentiated by status.
   - fileName: index-table-with-sticky-last-column.tsx
-    title: Index table with sticky last column
-    description: >-
-      An index table with a sticky last column that stays visible on scroll. The
-      last heading will also be sticky if not hidden.
+    title: With sticky last column
+    description: An index table with a sticky last column that stays visible on scroll. The last heading will also be sticky if not hidden.
+  - fileName: index-table-with-row-navigation-link.tsx
+    title: With row navigation link
+    description: Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Link` with the `dataPrimaryLink` prop set to `true`, clicking the row will trigger navigation to the link's `url` instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
+  - fileName: index-table-with-clickable-button-column.tsx
+    title: With clickable button column
+    description: Use when clicking the row should navigate merchants to another page, like the row item's detail page. When a row contains a `Button` with the `dataPrimaryLink` prop set to `true`, clicking the row will navigate to the `Button` `url` if set instead of selecting the row as well as trigger the callback set on the `IndexTable` `onNavigation` prop if provided.
   - fileName: index-table-without-checkboxes.tsx
-    title: Index table without checkboxes
+    title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
   - fileName: index-table-with-all-of-its-elements.tsx
-    title: IndexTable with all of its elements
-    description: >-
-      Use as a broad example that includes most of the elements and props
-      available to index table.
+    title: With all of its elements
+    description: Use as a broad example that includes most of the elements and props available to index table.
   - fileName: index-table-small-screen-with-all-of-its-elements.tsx
-    title: Small screen IndexTable with all of its elements
-    description: >-
-      Use as a broad example that includes most of the elements and props
-      available to index table.
+    title: Small screen with all of its elements
+    description: Use as a broad example that includes most of the elements and props available to index table.
 ---
 
 # Index table
@@ -93,9 +83,9 @@ An index table displays a collection of objects of the same type, like orders or
 
 Index tables can also:
 
-- Support [customized index rows and columns](https://polaris.shopify.com/components/lists-and-tables/resource-item)
+- Support [customized index rows and columns](https://polaris.shopify.com/components/resource-item)
 - Include bulk actions so merchants can act on multiple objects at once
-- Support sorting and [filtering](https://polaris.shopify.com/components/lists-and-tables/filters) of long lists
+- Support sorting and [filtering](https://polaris.shopify.com/components/filters) of long lists
 - Be paired with pagination to make long lists digestible
 
 ---
@@ -107,14 +97,10 @@ Using an index table in a project involves combining the following components an
 - IndexTable
 - [IndexTableRow](#index-table-row)
 - [IndexTableCell](#index-table-cell)
-- [Filters](https://polaris.shopify.com/components/lists-and-tables/filters) (optional)
+- [Filters](https://polaris.shopify.com/components/filters) (optional)
 - Pagination component (optional)
 
-<!-- hint -->
-
 The index table component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
-
-<!-- end -->
 
 ---
 
@@ -143,11 +129,11 @@ Because a details page displays all the content and actions for an individual re
 Index tables should:
 
 - Have items that perform an action when clicked. The action should navigate to the resource’s details page or otherwise provide more detail about the item.
-- [Customize the content and layout](https://polaris.shopify.com/components/lists-and-tables/resource-item) of their items rows to surface information to support merchants’ needs.
+- [Customize the content and layout](https://polaris.shopify.com/components/resource-item) of their items rows to surface information to support merchants’ needs.
 - Support sorting if the list can be long, and especially if different merchant tasks benefit from different sort orders.
-- Support [filtering](https://polaris.shopify.com/components/lists-and-tables/filters) if the list can be long.
+- Support [filtering](https://polaris.shopify.com/components/filters) if the list can be long.
 - Paginate when the current list contains more than 50 items.
-- Use the [skeleton page](https://polaris.shopify.com/components/feedback-indicators/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
+- Use the [skeleton page](https://polaris.shopify.com/components/skeleton-page) component on initial page load for the rest of the page if the loading prop is true and items are processing.
 
 Index tables can optionally:
 
@@ -161,7 +147,7 @@ Index tables should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -176,7 +162,7 @@ Index tables should:
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- usagelist -->
+  <!-- dodont -->
 
   #### Do
 
@@ -190,11 +176,9 @@ Index tables should:
 
 - Follow the verb + noun formula for bulk actions
 
-- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/lists-and-tables/filters#section-content-guidelines)
+- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#section-content-guidelines)
 
 ---
-
-<a name="index-table-row"></a>
 
 ## IndexTableRow
 
@@ -202,15 +186,14 @@ An `IndexTableRow` is used to render a row representing an item within an `Index
 
 ### IndexTableRow properties
 
-| Prop     | Type      | Description                                                     |
-| -------- | --------- | --------------------------------------------------------------- |
-| id       | string    | A unique identifier for the row                                 |
-| selected | boolean   | A boolean property indicating whether the row is selected       |
-| position | number    | The index position of the row                                   |
-| subdued  | boolean   | A boolean property indicating whether the row should be subdued |
-| status   | RowStatus | A property indicating whether the row should have a status      |
-
-<a name="index-table-cell"></a>
+| Prop     | Type       | Description                                                     |
+| -------- | ---------- | --------------------------------------------------------------- |
+| id       | string     | A unique identifier for the row                                 |
+| selected | boolean    | A boolean property indicating whether the row is selected       |
+| position | number     | The index position of the row                                   |
+| subdued  | boolean    | A boolean property indicating whether the row should be subdued |
+| status   | RowStatus  | A property indicating whether the row should have a status      |
+| onClick  | () => void | A function which overrides the default click behaviour          |
 
 ## IndexTableCell
 
@@ -218,14 +201,15 @@ An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
 
 ### IndexTableCell properties
 
-| Prop  | Type    | Description                                                                      |
-| ----- | ------- | -------------------------------------------------------------------------------- |
-| flush | boolean | A boolean property indicating whether the cell should remove the default padding |
+| Prop      | Type    | Description                                                                      |
+| --------- | ------- | -------------------------------------------------------------------------------- |
+| flush     | boolean | A boolean property indicating whether the cell should remove the default padding |
+| className | string  | Adds a class to the cell, used for setting widths of a cell                      |
 
 ---
 
 ## Related components
 
-- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list)
-- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/lists-and-tables/data-table)
-- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists-and-tables/list)
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/resource-list)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/data-table)
+- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/list)

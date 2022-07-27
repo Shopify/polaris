@@ -22,7 +22,8 @@ export const depth = {
     value: '0 0 5px rgba(23, 24, 24, 0.05), 0 1px 2px rgba(0, 0, 0, 0.15)',
   },
   'shadow-popover': {
-    value: '-1px 0 20px rgba(23, 24, 24, 0.05), 0 1px 5px rgba(0, 0, 0, 0.15)',
+    value:
+      '0 3px 6px -3px rgba(23, 24, 24, 0.08), 0 8px 20px -4px rgba(23, 24, 24, 0.12)',
   },
   'shadow-layer': {
     value:

@@ -1,10 +1,6 @@
 ---
 name: Range slider
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RangeSlider
   - input
@@ -15,25 +11,19 @@ keywords:
   - range form
 examples:
   - fileName: range-slider-default.tsx
-    title: Default range slider
-    description: undefinedundefined
-  - fileName: range-slider-min-and-max-control.tsx
-    title: Min and max range control
-    description: >-
-      Use when a single value needs to be selected from a number range with a
-      specific minimum and maximum.
-  - fileName: range-slider-step-incremented-control.tsx
-    title: Step incremented range control
-    description: >-
-      Use when a single value of a specific increment needs to be selected from
-      a range of numbers.
-  - fileName: range-slider-prefix-and-suffix-elements.tsx
-    title: Prefix and suffix elements
-    description: >-
-      Use when the start or end of the range input benefits from additional
-      content.
-  - fileName: range-slider-dual-thumb.tsx
-    title: Dual thumb range slider
+    title: Default
+    description: Use when a single value between `0 and 100` needs to be selected.
+  - fileName: range-slider-with-min-and-max.tsx
+    title: With min and max
+    description: Use when a single value needs to be selected from a number range with a specific minimum and maximum.
+  - fileName: range-slider-with-steps.tsx
+    title: With steps
+    description: Use when a single value of a specific increment needs to be selected from a range of numbers.
+  - fileName: range-slider-with-prefix-and-suffix.tsx
+    title: With prefix and suffix
+    description: Use when the start or end of the range input benefits from additional content. The height of the range slider component varies based on the presence or absence of props like `label` and `helpText`. Setting a React element on the `prefix` and `suffix` props is supported to enable control of spacing and alignment.
+  - fileName: range-slider-with-dual-thumb.tsx
+    title: With dual thumb
     description: Use when two values need to be selected from a range of numbers.
 ---
 
@@ -65,7 +55,7 @@ A label is a short description of the requested input. Labels are not instructio
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -81,10 +71,9 @@ A label is a short description of the requested input. Labels are not instructio
 
 ### Designating optional fields
 
-Try to only ask for information that’s required. If you need to ask merchants
-to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
+Try to only ask for information that’s required. If you need to ask merchants to provide optional information, mark the field optional by placing the text “(optional)” at the end of the field’s label. Don’t mark required fields with asterisks.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -100,7 +89,7 @@ to provide optional information, mark the field optional by placing the text “
 
 Help text provides extra guidance or instruction to people filling out a form field. It can also be used to clarify how the information will be used. As with all form content, help text should be succinct and easy to read.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -120,7 +109,7 @@ Error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -136,31 +125,11 @@ Error messages should:
 
 ## Related components
 
-- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
+- To collect a number value as a text input, [use the text field component](https://polaris.shopify.com/components/text-field)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 The range slider provides a large click and tap target for the slider thumbs. Merchants can also tap or click on the slider track to move the closest slider thumb.
 
@@ -178,5 +147,3 @@ The dual-thumb range slider component uses the [ARIA 1.1 slider (multi-thumb) pa
 
 - To move focus to a slider thumb, press the <kbd>tab</kbd> key to move forward and or <kbd>shift</kbd> + <kbd>tab</kbd> to move backward
 - When a thumb has focus, use the up and down or left and right arrow keys to move the thumb and update the associated value.
-
-<!-- /content-for -->

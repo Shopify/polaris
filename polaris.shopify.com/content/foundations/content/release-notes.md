@@ -100,7 +100,7 @@ The Shopify mobile app now uses {x} to do {y}.
 
 Releases should always be specific enough to avoid general or generic messaging.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -151,7 +151,7 @@ Bug fix: Swapping from one store and into another no longer causes the app to cr
 
 For everyday fixes and updates, specify what was changed in a simple way.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -165,7 +165,7 @@ For everyday fixes and updates, specify what was changed in a simple way.
 
 For infrastructure updates, explain the merchant benefit.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -179,7 +179,7 @@ For infrastructure updates, explain the merchant benefit.
 
 For technical updates, be specific but keep the language simple.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -193,7 +193,7 @@ For technical updates, be specific but keep the language simple.
 
 Avoid humour.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

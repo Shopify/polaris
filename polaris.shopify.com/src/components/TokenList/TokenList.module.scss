@@ -14,9 +14,6 @@
   }
 
   thead {
-    position: sticky;
-    top: 0;
-    z-index: 1;
     th {
       box-shadow: inset 0 -1px 0 var(--table-border-color);
     }
@@ -29,7 +26,10 @@
 
   td {
     padding: 1rem;
-    height: 3.2rem;
+
+    &:not(.renderedInSearchResults) & {
+      height: 3.2rem;
+    }
   }
 
   th {
@@ -39,8 +39,8 @@
   }
 
   td {
-    border-bottom: 1px solid var(--table-border-color);
     vertical-align: middle;
+    box-shadow: inset 0 -1px 0 var(--table-border-color);
   }
 
   th,
@@ -54,11 +54,64 @@
   }
 
   tr {
-    &.isHighlighted {
-      position: relative;
-      z-index: 1;
-      box-shadow: var(--focus-outline);
-      border-radius: var(--border-radius-400);
+    position: relative;
+
+    @media (hover: hover) {
+      &[data-is-current-result="true"] {
+        &,
+        &:hover {
+          background: var(--search-highlight-color);
+          color: var(--text-strong);
+        }
+
+        .TokenName {
+          color: var(--text-strong);
+        }
+
+        @media screen and (max-width: $breakpointDesktop) {
+          box-shadow: 0 0 0 2px var(--text);
+        }
+
+        td {
+          box-shadow: none;
+        }
+
+        td:first-child {
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -0.5rem;
+            width: 0.5rem;
+            background: var(--search-highlight-color);
+            border-radius: var(--border-radius-800) 0 0 var(--border-radius-800);
+
+            @media screen and (max-width: $breakpointDesktop) {
+              display: none;
+            }
+          }
+        }
+
+        td:last-child {
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -0.5rem;
+            width: 0.5rem;
+            background: var(--search-highlight-color);
+            border-radius: 0 var(--border-radius-800) var(--border-radius-800) 0;
+
+            @media screen and (max-width: $breakpointDesktop) {
+              display: none;
+            }
+          }
+        }
+      }
     }
   }
 
@@ -80,7 +133,7 @@
     }
   }
 
-  @media screen and (max-width: $breakpointMobile) {
+  @media screen and (max-width: $breakpointDesktop) {
     &,
     tr,
     td,
@@ -88,7 +141,7 @@
       display: block;
       width: auto;
       height: auto;
-      border: none;
+      box-shadow: none;
       padding: 0;
     }
 
@@ -99,8 +152,32 @@
     tr {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
-      margin-bottom: 1rem;
+    }
+
+    td {
+      margin-bottom: 0.5rem;
+
+      &:nth-child(1) {
+        margin-bottom: 1.25rem;
+        width: 100%;
+        padding: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    tbody {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
+
+      tr {
+        box-shadow: var(--card-shadow);
+        padding: 1.25rem;
+        border-radius: var(--border-radius-600);
+      }
     }
 
     .TokenContainer {
@@ -116,7 +193,6 @@
   padding: 0.2rem 0.5rem;
   background: var(--decorative-2);
   border-radius: var(--border-radius-400);
-  box-shadow: var(--card-shadow);
   gap: 0.3rem;
   float: left;
   max-width: 100%;
@@ -144,4 +220,22 @@
 .TokenDescription {
   line-height: 1.45;
   font-size: var(--font-size-50);
+}
+
+.ClickableItemLink {
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: -0.5rem;
+  right: -0.5rem;
+  height: 100%;
+  text-indent: -1000px;
+  overflow: hidden;
+  border-radius: var(--border-radius-500);
+
+  @media screen and (max-width: $breakpointDesktop) {
+    left: 0;
+    right: 0;
+  }
 }

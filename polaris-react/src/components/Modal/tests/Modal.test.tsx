@@ -187,7 +187,7 @@ describe('<Modal>', () => {
       expect(modal).toContainReactComponent(Dialog, {small: true});
     });
 
-    it('does not pass small to Dialog be default', () => {
+    it('does not pass small to Dialog by default', () => {
       const modal = mountWithApp(
         <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
@@ -209,7 +209,7 @@ describe('<Modal>', () => {
       expect(modal).toContainReactComponent(Dialog, {limitHeight: true});
     });
 
-    it('does not pass limitHeight to Dialog be default', () => {
+    it('does not pass limitHeight to Dialog by default', () => {
       const modal = mountWithApp(
         <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
@@ -217,6 +217,28 @@ describe('<Modal>', () => {
       );
 
       expect(modal).toContainReactComponent(Dialog, {limitHeight: undefined});
+    });
+  });
+
+  describe('fullScreen', () => {
+    it('passes fullScreen to Dialog if true', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" fullScreen onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).toContainReactComponent(Dialog, {fullScreen: true});
+    });
+
+    it('does not pass fullScreen to Dialog be default', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).toContainReactComponent(Dialog, {fullScreen: undefined});
     });
   });
 

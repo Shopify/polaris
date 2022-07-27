@@ -19,14 +19,14 @@ Combobox is an accessible autocomplete input that enables merchants to filter a 
 
 ## Anatomy
 
-![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/public_images/components/Combobox/combobox-anatomy.png)
+![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/images/components/combobox/combobox-anatomy.png)
 
 A combobox is made up of the following:
 
 1. **TextField**: A text input that activates a popover displaying a list of options. As merchants type in the text field, the list of options is filtered by the input value. Options replace or add to the input value when selected.
 2. **Popover**: An overlay containing a list of options.
 3. **Listbox**: A list of options to filter and select or deselect.
-4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/forms/listbox) to learn how to compose it with various content.
+4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/listbox) to learn how to compose it with various content.
 
 ---
 
@@ -43,7 +43,7 @@ The `Combobox` component should:
 
 ## Content guidelines
 
-The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/forms/text-field) for text fields.
+The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/text-field) for text fields.
 
 ---
 
@@ -76,7 +76,7 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ## Examples
 
-### Single select autocomplete with automatic selection
+### Default
 
 Use when merchants can select one option from a predefined or editable list.
 
@@ -168,7 +168,7 @@ function AutoSelectComboboxExample() {
 }
 ```
 
-### Single select autocomplete with manual selection
+### With manual selection
 
 Use when merchants can select one option from a predefined or editable list.
 
@@ -262,7 +262,7 @@ function ManualSelectComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete with automatic selection
+### With multi-select
 
 Use when merchants can select one or more options from a predefined or editable list.
 
@@ -317,7 +317,7 @@ function MultiAutoComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -380,7 +380,7 @@ function MultiAutoComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete with manual selection
+### With multi-select and manual selection
 
 Use when merchants can select one or more options from a predefined or editable list.
 
@@ -435,7 +435,7 @@ function MultiManualComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -500,7 +500,7 @@ function MultiManualComboboxExample() {
 }
 ```
 
-### Multi-select autocomplete with vertical content
+### With multi-select and vertical content
 
 Use to display selected options above the input value.
 
@@ -558,8 +558,14 @@ function MultiselectTagComboboxExample() {
       if (!value || matchIndex === -1) return option;
 
       const start = option.slice(0, matchIndex);
-      const highlight = option.slice(matchIndex, matchIndex + trimValue.length);
-      const end = option.slice(matchIndex + trimValue.length, option.length);
+      const highlight = option.slice(
+        matchIndex,
+        `${matchIndex}${trimValue.length}`,
+      );
+      const end = option.slice(
+        `${matchIndex}${trimValue.length}`,
+        option.length,
+      );
 
       return (
         <p>
@@ -664,7 +670,7 @@ function MultiselectTagComboboxExample() {
 }
 ```
 
-### Autocomplete with loading
+### With loading
 
 Use to indicate to merchants that the list data is being fetched.
 
@@ -788,42 +794,22 @@ function LoadingAutocompleteExample() {
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
-- For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/lists-and-tables/listbox)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/text-field)
+- For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/listbox)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 ### Structure
 
-The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/lists-and-tables/listbox) component to be used.
+The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/listbox) component to be used.
 
 The `Combobox` popover displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 
 `Combobox` features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the combobox.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -838,5 +824,3 @@ The `Combobox` popover displays below the text field or other control by default
 ### Keyboard support
 
 - Give the combobox's text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
-
-<!-- /content-for -->

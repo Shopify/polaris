@@ -1,4 +1,4 @@
-name: mobile accept
+name: Mobile accept
 set: major
 description: Used to represent a confirm action. Most commonly used in the toolbar in an _edit_ context.
 keywords:

@@ -1,11 +1,12 @@
 import styles from "./TokensPage.module.scss";
 import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
-import { useState } from "react";
 import Container from "../Container";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
-import { NavItem } from "../Nav/Nav";
+import type { NavItem } from "../Nav";
 import Link from "next/link";
+import { slugify } from "../../utils/various";
+import { useRouter } from "next/router";
 
 interface Props {
   tokenGroup:
@@ -68,7 +69,8 @@ function tokensToFilteredArray(
 }
 
 function TokensPage({ tokenGroup }: Props) {
-  const [filter, setFilter] = useState("");
+  const filter = "";
+  const router = useRouter();
 
   const tokens = {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
@@ -98,10 +100,13 @@ function TokensPage({ tokenGroup }: Props) {
             <ul>
               {navItems.map((item) => {
                 if (!item.url) return null;
+                const isCurrent = router.asPath.endsWith(slugify(item.title));
                 return (
                   <li key={item.title}>
                     <Link href={item.url} passHref>
-                      <a>{item.title}</a>
+                      <a aria-current={isCurrent ? "page" : undefined}>
+                        {item.title}
+                      </a>
                     </Link>
                   </li>
                 );
@@ -116,7 +121,11 @@ function TokensPage({ tokenGroup }: Props) {
                   : 1
               )
               .map((token) => (
-                <TokenList.Item key={token.name} token={token} />
+                <TokenList.Item
+                  key={token.name}
+                  category={tokenGroup}
+                  token={token}
+                />
               ))}
           </TokenList>
         </div>

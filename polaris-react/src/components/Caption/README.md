@@ -1,10 +1,6 @@
 ---
 name: Caption
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - labels
   - text
@@ -18,8 +14,6 @@ keywords:
   - time text
   - compact text
   - small text
-  - android
-  - ios
 ---
 
 # Caption
@@ -44,12 +38,12 @@ Caption text size is smaller than the recommended size for general reading. On w
 
 Captions are primarily used in [data visualizations](https://polaris.shopify.com/design/data-visualizations). Stick to a few words and don’t use this component for complete sentences or longer content.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
 - Use caption for labelling data visualizations
-  ![Diagram of using captions to label graphs and other data content](/public_images/typography/display-styles/do-use-caption-for-labeling-data-visualizations@2x.png)
+  ![Diagram of using captions to label graphs and other data content](/images/components/caption/do-use-caption-for-labeling-data-visualizations@2x.png)
 - Received April 21, 2017
 
 #### Don’t
@@ -63,7 +57,7 @@ Captions are primarily used in [data visualizations](https://polaris.shopify.com
 
 ## Examples
 
-### Default caption
+### Default
 
 Use to provide details in situations where content is compact and space is tight.
 
@@ -78,42 +72,8 @@ Use to provide details in situations where content is compact and space is tight
 </List>
 ```
 
-<!-- content-for: android -->
-
-![Default caption](/public_images/components/Caption/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default caption](/public_images/components/Caption/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Follow best practices for [data visualizations](https://polaris.shopify.com/design/data-visualizations) to ensure that the purpose of captions is clear to all merchants, including those with issues related to seeing or understanding data and complex information.
-
-<!-- /content-for -->

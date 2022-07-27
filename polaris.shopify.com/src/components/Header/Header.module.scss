@@ -1,11 +1,21 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .Header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--border-color-light);
+
+  @include dark-mode {
+    background: rgba(28, 28, 28, 0.9);
+  }
 }
 
 .HeaderInner {
   display: flex;
+  align-items: center;
   gap: 3em;
   height: var(--header-height);
 
@@ -14,7 +24,6 @@
 
     ul {
       display: flex;
-      align-items: center;
       font-size: var(--font-size-100);
       font-weight: var(--font-weight-500);
 
@@ -23,7 +32,7 @@
           color: inherit;
           white-space: pre;
           display: block;
-          padding: 0.5px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
+          padding: 1px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
 
           span {
             display: block;
@@ -43,10 +52,9 @@
           &[aria-current="page"],
           &:hover {
             span {
-              background: rgba(0, 0, 0, 0.03);
+              background: var(--surface-subdued);
               border-radius: var(--border-radius-800);
               color: var(--text-strong);
-              box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
             }
           }
         }
@@ -57,12 +65,12 @@
       }
     }
 
-    @media screen and (max-width: $breakpointDesktop) {
+    @media screen and (max-width: $breakpointTablet) {
       display: none;
     }
   }
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     gap: 0.5rem;
     justify-content: space-between;
   }
@@ -71,7 +79,7 @@
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-inherit);
+  color: inherit;
   gap: 0.7rem;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-100);
@@ -84,7 +92,7 @@
     transform: translate3d(0, -1px, 0);
   }
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     display: none;
   }
 }
@@ -111,11 +119,19 @@
 }
 
 .DarkModeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: transparent;
-  width: 3rem;
+  width: 2.25rem;
+  height: 2.25rem;
   margin: 0.5rem 0 0.5rem auto;
-  border-radius: var(--border-radius-800);
-  margin-right: -2rem;
+  border-radius: var(--border-radius-round);
+  margin-right: -1rem;
+
+  @media screen and (max-width: $breakpointTablet) {
+    margin-right: 1rem;
+  }
 }
 
 .LightModeIcon {
@@ -148,58 +164,19 @@
   }
 }
 
-.SearchWrapper {
-  display: flex;
-  align-items: center;
-  width: 18.25rem;
-
-  @media screen and (max-width: $breakpointDesktop) {
-    width: 100%;
-  }
-
-  .Icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.25rem;
-    border-radius: 100%;
-  }
-}
-
-.SideNavContainer {
+.MobileNavContainer {
   visibility: hidden;
   display: none;
-  fill: var(--text-strong);
 
   svg {
+    fill: var(--text-strong);
     width: 20px;
     height: 20px;
   }
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     visibility: visible;
     display: flex;
     align-items: center;
-  }
-}
-
-.Backdrop {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--backdrop);
-  opacity: 0;
-  animation-name: FadeIn;
-  animation-duration: var(--duration-200);
-  animation-fill-mode: forwards;
-  z-index: 1;
-}
-
-@keyframes FadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

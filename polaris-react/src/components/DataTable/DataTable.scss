@@ -12,7 +12,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: var(--p-space-4) var(--p-space-2);
+    padding: var(--p-space-4) var(--p-space-2) 0;
 
     @media #{$p-breakpoints-md-up} {
       justify-content: flex-end;
@@ -165,8 +165,7 @@
   display: flex;
   align-self: flex-end;
   opacity: 0;
-  transition: opacity var(--p-duration-200) var(--p-ease),
-    fill var(--p-duration-200) var(--p-ease);
+  transition: opacity var(--p-duration-200) var(--p-ease);
 }
 
 .Heading {
@@ -176,7 +175,7 @@
   display: inline-flex;
   justify-content: flex-end;
   align-items: baseline;
-  @include recolor-icon(var(--p-icon));
+  @include recolor-icon(var(--p-icon-disabled));
   color: var(--p-text);
   transition: color var(--p-duration-200) var(--p-ease);
   cursor: pointer;
@@ -187,7 +186,7 @@
     visibility: hidden;
   }
 
-  .StickyHeaderEnabled [data-sticky-active] .StickyTable & {
+  .StickyHeaderEnabled [data-sticky-active] .StickyHeaderWrapper & {
     visibility: visible;
   }
 
@@ -200,15 +199,10 @@
   }
 
   &:hover {
-    @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
 
     .Icon {
       opacity: 1;
-
-      svg {
-        fill: var(--p-icon-disabled);
-      }
     }
   }
 
@@ -233,6 +227,11 @@
 .Cell-sorted {
   .Icon {
     opacity: 1;
+    @include recolor-icon(var(--p-icon));
+  }
+
+  &:hover {
+    @include recolor-icon(var(--p-interactive-hovered));
   }
 
   .Heading:focus:not(:active) {
@@ -285,7 +284,7 @@
 }
 
 .StickyHeaderEnabled {
-  .StickyTable {
+  .StickyHeaderWrapper {
     position: relative;
     top: 0;
     left: 0;
@@ -294,7 +293,7 @@
     z-index: var(--p-z-1);
   }
 
-  .StickyTableHeader {
+  .StickyHeaderInner {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -302,20 +301,17 @@
     overflow: hidden;
     border-spacing: 0;
 
-    &:not(.StickyTableHeader-isSticky) {
+    &:not(.StickyHeaderInner-isSticky) {
       top: -9999px;
       left: -9999px;
     }
   }
 
-  .StickyTableColumnHeader-isScrolling {
-    box-shadow: 1px 1px 0 0 var(--p-border-divider),
-      1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
-  }
-
-  .StickyTableHeadingsRow {
+  .StickyHeaderTable {
+    border-collapse: collapse;
+    display: block;
     overflow-x: auto;
-    background-color: var(--p-surface);
+    width: 100%;
     scrollbar-width: none;
 
     &::-webkit-scrollbar {
@@ -325,7 +321,16 @@
     }
   }
 
-  .StickyTableHeader-isSticky {
+  .StickyTableColumnHeader-isScrolling {
+    box-shadow: 1px 1px 0 0 var(--p-border-divider),
+      1px 0 1px 1px rgba(63, 63, 68, 0.05), 1px 0 3px 0 rgba(63, 63, 68, 0.15);
+  }
+
+  .StickyTableHeadingsRow {
+    background-color: var(--p-surface);
+  }
+
+  .StickyHeaderInner-isSticky {
     visibility: visible;
     background-color: var(--p-surface);
     box-shadow: var(--p-shadow-base);
@@ -337,11 +342,13 @@
   background: var(--p-surface);
   z-index: 3;
   border-spacing: 0;
+  left: 0;
   @media #{$p-breakpoints-md-down} {
     z-index: 1;
   }
 
-  &.separate th {
+  &.separate:is(table) th,
+  &.separate:is(th) {
     border-right: var(--p-border-divider);
   }
 }

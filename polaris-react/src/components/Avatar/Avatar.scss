@@ -24,6 +24,10 @@
   }
 }
 
+.shapeSquare {
+  border-radius: var(--p-border-radius-05);
+}
+
 .hidden {
   visibility: hidden;
 }

@@ -1,25 +1,30 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.3.0",
+  "version": "0.8.0",
   "private": true,
   "scripts": {
     "build": "yarn run copy-icons && next build",
-    "dev": "yarn run copy-icons && next dev",
+    "dev": "yarn run copy-icons && open http://localhost:3000 && next dev",
     "start": "next start ",
-    "lint": "TIMING=1 eslint --cache .",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
-    "copy-icons": "node src/scripts/copy-icons.mjs"
+    "copy-icons": "node src/scripts/copy-icons.mjs",
+    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/generate-og-images.js",
+    "generate-og-images-skip-sitemap": "node src/scripts/generate-og-images.js",
+    "get-props": "tsc ./src/scripts/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./src/scripts/get-props && node ./src/scripts/get-props/scripts/get-props.js && rm -rf ./src/scripts/get-props"
   },
   "dependencies": {
-    "@headlessui/react": "^1.5.0",
-    "@shopify/polaris": "*",
-    "@shopify/polaris-tokens": "*",
-    "@shopify/polaris-icons": "*",
+    "@floating-ui/react-dom-interactions": "^0.6.1",
+    "@headlessui/react": "^1.6.5",
+    "@shopify/polaris": "^9.21.0",
+    "@shopify/polaris-icons": "^5.2.0",
+    "@shopify/polaris-tokens": "^5.5.0",
     "codesandbox": "^2.2.3",
-    "downshift": "^6.1.7",
     "fuse.js": "^6.5.3",
     "glob": "^7.1.6",
     "next": "12.1.0",
@@ -27,10 +32,9 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-markdown": "^8.0.2",
-    "react-tooltip": "^4.2.21",
     "sass": "^1.49.9",
-    "@floating-ui/react-dom-interactions": "^0.6.1",
-    "use-dark-mode": "^2.3.1"
+    "use-dark-mode": "^2.3.1",
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
@@ -44,6 +48,9 @@
     "generact": "^0.4.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
-    "rehype-raw": "^6.1.1"
+    "rehype-raw": "^6.1.1",
+    "next-sitemap": "^3.1.5",
+    "puppeteer": "^14.4.1",
+    "typescript": "^4.7.4"
   }
 }

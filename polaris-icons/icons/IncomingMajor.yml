@@ -1,4 +1,4 @@
-name: incoming
+name: Incoming
 set: major
 description: Used to represent an incoming item or resource, or importing an item or resource.
 keywords:

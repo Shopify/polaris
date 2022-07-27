@@ -1,10 +1,6 @@
 ---
 name: Text container
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 releasedIn: 1.9.0
 keywords:
   - spacing
@@ -14,22 +10,16 @@ keywords:
   - vertical
   - margin
   - padding
-  - android
-  - ios
 examples:
   - fileName: text-container-default.tsx
-    title: Default text container
+    title: Default
     description: Use this component for default vertical spacing.
   - fileName: text-container-tight.tsx
-    title: Tight text container
-    description: >-
-      Use the tight spacing option to relate content topics to each
-      other.
+    title: Tight
+    description: Use the tight spacing option to relate content topics to each other.
   - fileName: text-container-loose.tsx
-    title: Loose text container
-    description: >-
-      Use the loose spacing option to separate concepts that are independent of
-      each other.
+    title: Loose
+    description: Use the loose spacing option to separate concepts that are independent of each other.
 ---
 
 # Text container
@@ -49,4 +39,4 @@ The closer the spacing, the closer the relationship between content topics. The 
 
 ## Related components
 
-- For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](https://polaris.shopify.com/components/structure/stack).
+- For more layout variations, or if you’re looking to vertically space components other than text, use [Stack](https://polaris.shopify.com/components/stack).

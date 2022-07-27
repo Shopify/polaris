@@ -1,8 +1,13 @@
 @import "../../styles/fonts.scss";
 @import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
+
+.TokensPage {
+  margin-top: var(--header-margin);
+  margin-bottom: var(--header-margin);
+}
 
 .Banner {
-  margin-top: var(--header-margin);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -25,7 +30,9 @@
   ul {
     display: flex;
     box-shadow: var(--card-shadow);
-    border-radius: var(--border-radius-600);
+    border-radius: var(--border-radius-400);
+    font-size: var(--font-size-100);
+    overflow: hidden;
   }
 
   li {
@@ -33,15 +40,74 @@
   }
 
   a {
-    padding: 1.25rem 2rem;
+    padding: 0.75rem 2rem;
     display: block;
     color: var(--text-strong);
     border-right: 1px solid var(--border-color-light);
     text-align: center;
     font-weight: var(--font-weight-500);
+
+    &[aria-current="page"] {
+      background: var(--surface-subdued);
+    }
+
+    &:focus-visible {
+      box-shadow: var(--focus-outline-inside);
+    }
   }
 
   li:last-child a {
     border-right: none;
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    margin-bottom: 2rem;
+
+    ul {
+      flex-wrap: wrap;
+
+      li {
+        min-width: 25%;
+
+        &:nth-child(4n) a {
+          border-right: none;
+        }
+      }
+
+      a {
+        border-bottom: var(--border);
+        padding: 0.66rem 0;
+      }
+
+      li:nth-last-child(1),
+      li:nth-last-child(2),
+      li:nth-last-child(3),
+      li:nth-last-child(4) {
+        a {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $breakpointTablet) {
+    ul {
+      li {
+        min-width: 50%;
+
+        &:nth-child(2n) a {
+          border-right: none;
+        }
+      }
+
+      a,
+      li:nth-last-child(3) a,
+      li:nth-last-child(4) a {
+        border-bottom: var(--border);
+      }
+    }
+  }
+
+  @media screen and (max-width: $breakpointTablet) {
+    margin-bottom: 0.75rem;
   }
 }

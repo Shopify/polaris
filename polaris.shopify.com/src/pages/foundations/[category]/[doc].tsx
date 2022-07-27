@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 
 import { parseMarkdown } from "../../../utils/markdown.mjs";
-import { getUrlsFromNavItems, getTitleTagValue } from "../../../utils/various";
+import { getUrlsFromNavItems } from "../../../utils/various";
 import { MarkdownFile } from "../../../types";
 import { foundationsNavItems } from "../../../data/navItems";
 import FoundationsPage from "../../../components/FoundationsPage";

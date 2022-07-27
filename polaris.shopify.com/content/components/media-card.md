@@ -12,32 +12,24 @@ keywords:
   - card with thumbnail
   - thumbnail card
 examples:
-  - fileName: media-card-basic.tsx
-    title: Basic media card
+  - fileName: media-card-default.tsx
+    title: Default
     description: Use to surface educational information about a feature or opportunity.
-  - fileName: media-card-basic-with-small-visual.tsx
-    title: Basic media card with small visual
-    description: >-
-      Use when there are limited vertical space, or when the card should be less
-      prominent.
+  - fileName: media-card-with-small-visual.tsx
+    title: With small visual
+    description: Use when there are limited vertical space, or when the card should be less prominent.
   - fileName: media-card-with-secondary-action.tsx
-    title: Media card with secondary action
-    description: >-
-      Use when there are two distinct actions merchants can take on the
-      information in the card.
+    title: With secondary action
+    description: Use when there are two distinct actions merchants can take on the information in the card.
   - fileName: media-card-with-no-actions.tsx
-    title: Media card with no actions
+    title: With no actions
     description: Use when media card does not require any actions.
   - fileName: media-card-video-card.tsx
     title: Video card
-    description: >-
-      Use to provide a consistent layout for contextual learning content. Use to
-      wrap thumbnails of educational videos about Shopify features in context.
+    description: Use to provide a consistent layout for contextual learning content. Use to wrap thumbnails of educational videos about Shopify features in context.
   - fileName: media-card-portrait-video-card.tsx
     title: Portrait video card
-    description: >-
-      Use when vertical screen space is not limited or when the video card is
-      the page’s primary content. For example, in an empty state.
+    description: Use when vertical screen space is not limited or when the video card is the page’s primary content. For example, in an empty state.
 ---
 
 # Media card
@@ -72,7 +64,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling merchants what actions are available to them, especially something new. Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -84,22 +76,18 @@ Now you can get performance data for all of your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something
+- Structured for merchant success: always put the most critical information first
+- Clear: use the verb “need” to help merchants understand when they’re required to do something
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -109,7 +97,7 @@ Buttons should be:
 
 Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -121,11 +109,9 @@ Buy
 
 <!-- end -->
 
-- Action-led: buttons should always lead with a strong verb that encourages
-  action. To provide enough context to merchants use the {verb}+{noun} format on
-  buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -139,7 +125,7 @@ View your settings
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -155,37 +141,15 @@ Add a menu item
 
 ## Related components
 
-- To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/images-and-icons/video-thumbnail)
-- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/structure/card)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/structure/empty-state)
+- To create a video card, [use the video thumbnail component](https://polaris.shopify.com/components/video-thumbnail)
+- To group similar concepts and tasks together, [use the card component](https://polaris.shopify.com/components/card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To explain a feature that merchants haven’t tried yet, [use the empty state component](https://polaris.shopify.com/components/empty-state)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The required `title` prop gives the media card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users. It can also accept a ReactNode.
 
 Use [actionable language](https://polaris.shopify.com/content/actionable-language#navigation) to ensure that the purpose of the media card is clear to all merchants, including those with issues related to reading and language.
-
-<!-- /content-for -->

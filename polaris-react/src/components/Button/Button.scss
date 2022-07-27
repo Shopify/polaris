@@ -21,6 +21,7 @@
   --pc-button-spinner-size: 20px;
   --pc-button-segment: 10;
   --pc-button-focused: 20;
+  --pc-button-disclosure-icon-offset: -6px;
   @include button-base;
 
   &.disabled {
@@ -105,9 +106,8 @@
 
   &:last-child {
     // This compensates for the disclosure icon, which is substantially
-    // inset within the viewbox (and makes it look like there is too much
-    // spacing on the right of the button)
-    margin-right: calc(-1 * (var(--p-space-2)));
+    // inset within the viewbox
+    margin-right: var(--pc-button-disclosure-icon-offset);
     margin-left: var(--p-space-1);
   }
 
@@ -224,7 +224,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus:not(.disabled) {
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
     background: transparent;

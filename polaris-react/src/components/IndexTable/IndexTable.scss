@@ -283,7 +283,7 @@ $loading-panel-height: 53px;
   .TableCell:last-child,
   .TableHeading-last {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(-1px 0 0 var(--p-border-divider));
+      filter: drop-shadow(-1px 0 0 var(--p-divider));
     }
   }
 }

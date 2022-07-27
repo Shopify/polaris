@@ -1,10 +1,6 @@
 ---
 name: Popover
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - interactive
   - container
@@ -23,34 +19,19 @@ keywords:
   - popover with action list
   - popover with content and actions
   - action sheet
-  - ios
-  - android
 examples:
   - fileName: popover-with-action-list.tsx
-    title: Popover with action list
-    description: >-
-      Use when presenting a set of actions in a disclosable
-      menu.
+    title: With action list
+    description: Use when presenting a set of actions in a disclosable menu.
   - fileName: popover-with-content-and-actions.tsx
-    title: Popover with content and actions
-    description: >-
-      Use to present a combination of content, instructions, and actions in a
-      panel for tasks that are of low or secondary importance to the current
-      page. When used this way, popovers provide useful entry points to related
-      features without overwhelming merchants.
+    title: With content and actions
+    description: Use to present a combination of content, instructions, and actions in a panel for tasks that are of low or secondary importance to the current page. When used this way, popovers provide useful entry points to related features without overwhelming merchants.
   - fileName: popover-with-form-components.tsx
-    title: Popover with form components
+    title: With form components
     description: Use to present secondary input tasks on demand.
   - fileName: popover-with-lazy-loaded-list.tsx
-    title: Popover with lazy loaded list
-    description: >-
-      Use to present merchants with a list that dynamically loads more items on
-      scroll or arrow down.
-  - fileName: popover-action-sheet.tsx
-    title: Action sheet
-    description: >-
-      Use when you have few actions that affects the whole page. Action sheets
-      doesn’t support icons or additional information.undefined
+    title: With lazy loaded list
+    description: Use to present merchants with a list that dynamically loads more items on scroll or arrow down.
 ---
 
 # Popover
@@ -78,7 +59,7 @@ If a popover contains actions, they should:
 
 - Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive merchants by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,7 +75,7 @@ If a popover contains actions, they should:
 
 - Be action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -112,7 +93,7 @@ If a popover contains actions, they should:
 
 - Be scannable, especially when the popover contains a list of actions or options. Avoid unnecessary words and articles such as “the”, “an”, or “a”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -128,7 +109,7 @@ If the popover includes a series of navigational links, each item should:
 
 - Be concise but still give merchants enough information so they can easily find and accurately navigate to the path they want.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -147,36 +128,16 @@ If the popover includes a series of navigational links, each item should:
 
 ## Related components
 
-- To put a list of actions in a popover, [use the action list component](https://polaris.shopify.com/components/actions/action-list)
-- To let merchants select simple options from a list, [use the select component](https://polaris.shopify.com/components/forms/select)
+- To put a list of actions in a popover, [use the action list component](https://polaris.shopify.com/components/action-list)
+- To let merchants select simple options from a list, [use the select component](https://polaris.shopify.com/components/select)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
+Popovers usually contain an [option list](https://polaris.shopify.com/components/option-list) or an [action list](https://polaris.shopify.com/components/action-list), but can also contain other controls or content.
 
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
-Popovers usually contain an [option list](https://polaris.shopify.com/components/lists-and-tables/option-list) or an [action list](https://polaris.shopify.com/components/actions/action-list), but can also contain other controls or content.
-
-To assist screen readers with sending focus to an [action list](https://polaris.shopify.com/components/actions/action-list), pass `autofocusTarget='first-node'` to `Popover`. This will avoid known issues a screen reader may have with keyboard support once focus is moved off the activator.
+To assist screen readers with sending focus to an [action list](https://polaris.shopify.com/components/action-list), pass `autofocusTarget='first-node'` to `Popover`. This will avoid known issues a screen reader may have with keyboard support once focus is moved off the activator.
 
 Web browsers assign a default value of 'menu' to the `aria-haspopup` role. You can use the prop `ariaHaspopup` to specify a value. Screen readers may fail to send focus to the `Popover` content when they expect the content to be adjacent to the element with `aria-haspopup` in the DOM tree. In this scenario, it is recommended not to provide the `ariaHaspopup` prop.
 
@@ -186,5 +147,3 @@ Web browsers assign a default value of 'menu' to the `aria-haspopup` role. You c
 - Once focus is in the popover, merchants can access controls in the popover using the <kbd>tab</kbd> key (and <kbd>shift</kbd> + <kbd>tab</kbd> backwards) and standard keystrokes for interacting
 - Merchants can dismiss the popover by tabbing out of it, pressing the <kbd>esc</kbd> key, or clicking outside of it
 - When the popover is closed, focus returns to the element that launched it
-
-<!-- /content-for -->

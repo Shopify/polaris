@@ -14,7 +14,6 @@ keywords:
   - application wrapper
   - wrapper
   - sdk
-omitAppProvider: true
 ---
 
 # App provider
@@ -93,7 +92,7 @@ AppProvider works by default without any additional options passed to it.
 
 ### With i18n
 
-With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](https://polaris.shopify.com/components/structure/app-provider#using-translations)
+With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](https://polaris.shopify.com/components/app-provider#using-translations)
 
 ```jsx
 <AppProvider
@@ -200,7 +199,7 @@ function AppProviderLinkExample() {
 
 ### With color scheme
 
-With a `colorScheme`, the app provider component will set the root color scheme for the App (such as: light or dark).For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/structure/customproperties) component documentation.
+With a `colorScheme`, the app provider component will set the root color scheme for the App (such as light or dark). For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/custom-properties) component documentation.
 
 ```jsx
 function AppProviderThemeExample() {

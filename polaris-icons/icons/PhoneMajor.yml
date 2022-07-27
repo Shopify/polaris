@@ -1,4 +1,4 @@
-name: phone
+name: Phone
 set: major
 description: Used to represent a phone or phone call.
 keywords:

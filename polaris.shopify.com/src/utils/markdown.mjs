@@ -12,44 +12,45 @@ export const parseMarkdown = (inputMarkdown) => {
 
   const intro = readmeSection.split("\n\n").find((paragraph) => {
     const content = paragraph.trim().split("\n").join(" ");
+    if (paragraph.startsWith("<!--")) {
+      return false;
+    }
     if (content.length > 0 && content[0] !== "#") {
       return content;
     }
     return false;
   });
 
-  // Replace image paths
-  let markdown = readmeSection.replace(
-    /\/public_images/g,
-    "/images-from-old-styleguide"
-  );
+  let markdown = readmeSection;
 
-  // Add some custom HTML to <!-- usagelist --> and <!-- usageblock --> tags
-  const usageListRegex = /<!-- (usagelist|usageblock) -->(.*?)<!-- end -->/gis;
-  if (markdown.match(usageListRegex)) {
-    markdown = markdown.replaceAll(usageListRegex, (match) => {
+  // Add some custom HTML to <!-- dodont --> tags
+  const dodontRegex = /<!-- (dodont) -->(.*?)<!-- end -->/gis;
+  if (markdown.match(dodontRegex)) {
+    markdown = markdown.replaceAll(dodontRegex, (match) => {
       const matchWithoutComments = match
-        .replace(/^<!-- usagelist -->/, "")
-        .replace(/^<!-- usageblock -->/, "")
+        .replace(/^<!-- dodont -->/, "")
         .replace(/<!-- end -->$/, "");
 
       let i = 0;
+
       const matchWithColumns = matchWithoutComments.replaceAll(
         /#### ([^\n]+)/g,
         (match, captured) => {
           if (i === 1) {
-            const type = match.startsWith("#### Don") ? "dont" : "do";
+            const type = match.trim().startsWith("#### Don") ? "dont" : "do";
 
-            return `</div><div class="usage-list-part" data-type="${type}">\n\n#### ${captured}`;
+            return `</div><div class="dodont-part" data-type="${type}">\n\n#### ${captured}`;
           }
           i++;
           return match;
         }
       );
 
-      const type = match.trim().startsWith("#### Don") ? "dont" : "do";
+      const type = matchWithoutComments.trim().startsWith("#### Don")
+        ? "dont"
+        : "do";
 
-      return `<div class="usage-list"><div class="usage-list-part" data-type="${type}">${matchWithColumns}</div></div>`;
+      return `<div class="dodont"><div class="dodont-part" data-type="${type}">${matchWithColumns}</div></div>`;
     });
   }
 

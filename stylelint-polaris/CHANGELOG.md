@@ -1,5 +1,23 @@
 # Changelog
 
+## 4.0.0
+
+### Minor Changes
+
+- [#6438](https://github.com/Shopify/polaris/pull/6438) [`3c313704a`](https://github.com/Shopify/polaris/commit/3c313704a0ca86ba9e37d985c3cc20eed3b17f1a) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `stylelint-polaris/media-queries-allowed-list` plugin
+
+### Patch Changes
+
+- Updated dependencies [[`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624)]:
+  - @shopify/polaris-tokens@5.5.0
+
+## 3.0.0
+
+### Patch Changes
+
+- Updated dependencies [[`78285533c`](https://github.com/Shopify/polaris/commit/78285533c921c8b438d4e8881d794716d8316690)]:
+  - @shopify/polaris-tokens@5.4.0
+
 ## 2.0.0
 
 ### Patch Changes

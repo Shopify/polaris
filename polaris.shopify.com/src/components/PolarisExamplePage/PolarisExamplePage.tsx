@@ -16,7 +16,9 @@ function PolarisExamplePage(props: ExampleProps) {
       <link rel="stylesheet" href={stylesheetHref} />
       <AppProvider i18n={translations}>
         <CustomProperties>
-          <div className={styles.Container}>{props.children}</div>
+          <div className={styles.Container}>
+            <div id="polaris-example">{props.children}</div>
+          </div>
         </CustomProperties>
       </AppProvider>
     </>

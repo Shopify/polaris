@@ -62,7 +62,7 @@ Include the CSS in your HTML. We suggest copying the styles file into your own p
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@9.8.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@9.20.1/build/esm/styles.css"
 />
 ```
 
@@ -78,7 +78,9 @@ Create an element using the Polaris React `AppProvider` component. The `AppProvi
 ```js
 const app = (
   <AppProvider i18n={enTranslations}>
-    <Button onClick={() => alert('Button clicked!')}>Example button</Button>
+    <Button onClick={() => console.log('Button clicked!')}>
+      Example button
+    </Button>
   </AppProvider>
 );
 ```
@@ -96,7 +98,7 @@ Include the CSS stylesheet in your HTML. We suggest copying the styles file into
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@9.8.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@9.20.1/build/esm/styles.css"
 />
 ```
 

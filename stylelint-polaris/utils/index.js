@@ -1,3 +1,33 @@
+const scssInterpolationRegExp = /#\{.+?\}/;
+
+/**
+ * Check whether a string has scss interpolation
+ * https://github.com/stylelint/stylelint/blob/main/lib/utils/hasScssInterpolation.js
+ *
+ * @param {string} string
+ */
+function hasScssInterpolation(string) {
+  return scssInterpolationRegExp.test(string);
+}
+
+/**
+ * Returns the expression extracted from a scss interpolation string.
+ *
+ * @param {string} string
+ * @returns {string}
+ *
+ * @example
+ * scssInterpolationExpression('#{1 + 1}') //=> '1 + 1'
+ * scssInterpolationExpression('1 + 1')    //=> ''
+ */
+function scssInterpolationExpression(string) {
+  if (isScssInterpolation(string)) {
+    return string.slice(2, -1);
+  }
+
+  return '';
+}
+
 /**
  * Returns the vendor prefix extracted from an input string.
  *
@@ -161,6 +191,15 @@ function isRegExp(value) {
 }
 
 /**
+ * Check whether a string is a scss interpolation
+ *
+ * @param {string} string
+ */
+function isScssInterpolation(string) {
+  return new RegExp(`^${scssInterpolationRegExp.source}$`).test(string);
+}
+
+/**
  * Checks if the value is a string or a String object.
  * @param {unknown} value
  * @returns {value is string}
@@ -169,11 +208,15 @@ function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
 
-module.exports.vendorPrefix = vendorPrefix;
-module.exports.vendorUnprefixed = vendorUnprefixed;
-module.exports.matchesStringOrRegExp = matchesStringOrRegExp;
-module.exports.isCustomProperty = isCustomProperty;
+module.exports.hasScssInterpolation = hasScssInterpolation;
 module.exports.isBoolean = isBoolean;
+module.exports.isCustomProperty = isCustomProperty;
 module.exports.isNumber = isNumber;
 module.exports.isRegExp = isRegExp;
+module.exports.isScssInterpolation = isScssInterpolation;
 module.exports.isString = isString;
+module.exports.matchesStringOrRegExp = matchesStringOrRegExp;
+module.exports.scssInterpolationExpression = scssInterpolationExpression;
+module.exports.scssInterpolationRegExp = scssInterpolationRegExp;
+module.exports.vendorPrefix = vendorPrefix;
+module.exports.vendorUnprefixed = vendorUnprefixed;

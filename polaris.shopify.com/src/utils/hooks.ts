@@ -1,7 +1,7 @@
-import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { slugify } from "./various";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
+import { ParsedUrlQueryInput } from "querystring";
 
 const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
 
@@ -27,6 +27,7 @@ export const useCopyToClipboard = (stringToCopy: string) => {
 export type TOCItem = {
   name: string;
   element: "H2" | "H3";
+  id: string;
   children: TOCItem[];
 };
 
@@ -37,34 +38,35 @@ export const useTOC = (children: React.ReactNode) => {
     let tocNodes: TOCItem[] = [];
     let currentNode: TOCItem | null = null;
 
-    const headings = document.querySelectorAll<HTMLHeadingElement>("h2,h3");
+    const headings =
+      document.querySelectorAll<HTMLHeadingElement>("h2[id], h3[id]");
     headings.forEach((el, i) => {
-      if (currentNode === null) {
-        if (el.tagName === "H2") {
-          if (typeof el.textContent === "string") {
+      const id = el.getAttribute("id");
+      if (typeof el.textContent === "string" && id) {
+        if (currentNode === null) {
+          if (el.tagName === "H2") {
             currentNode = {
               name: el.textContent,
+              id,
               element: "H2",
               children: [],
             };
           }
-        }
-      } else {
-        if (el.tagName === "H2") {
-          if (typeof el.textContent === "string") {
+        } else {
+          if (el.tagName === "H2") {
             tocNodes.push(currentNode);
             currentNode = {
               name: el.textContent,
+              id,
               element: "H2",
               children: [],
             };
-          }
-        } else if (el.tagName === "H3") {
-          if (typeof el.textContent === "string") {
+          } else if (el.tagName === "H3") {
             if (currentNode.element === "H2") {
               if (el.closest(".usage-list") === null) {
                 currentNode.children.push({
                   name: el.textContent,
+                  id,
                   element: "H3",
                   children: [],
                 });
@@ -72,8 +74,11 @@ export const useTOC = (children: React.ReactNode) => {
             }
           }
         }
-        if (i === headings.length - 1) {
-          tocNodes.push(currentNode);
+        const isLastIterationOfLoop = i === headings.length - 1;
+        if (isLastIterationOfLoop) {
+          if (currentNode !== null) {
+            tocNodes.push(currentNode);
+          }
         }
       }
     });
@@ -83,3 +88,51 @@ export const useTOC = (children: React.ReactNode) => {
 
   return [toc];
 };
+
+export function useMedia(media: string): boolean {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const mediaQueryList = window.matchMedia(media);
+
+      setIsActive(mediaQueryList.matches);
+
+      const listener = (evt: MediaQueryListEvent) => {
+        setIsActive(evt.matches);
+      };
+
+      mediaQueryList.addEventListener("change", listener);
+
+      return () => {
+        mediaQueryList.removeEventListener("change", listener);
+      };
+    }
+  }, [media]);
+
+  return isActive;
+}
+
+export function useQueryParams() {
+  const router = useRouter();
+
+  const setQueryParams = (queryParams: ParsedUrlQueryInput) => {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...router.query,
+          ...queryParams,
+        },
+      },
+      undefined,
+      { shallow: true }
+    );
+  };
+
+  return {
+    routerIsReady: router.isReady,
+    currentParams: { ...router.query },
+    setQueryParams,
+  };
+}

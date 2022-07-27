@@ -1,4 +1,4 @@
-name: maximize
+name: Maximize
 set: major
 description: Used to represent an action to make an item, resource or view larger.
 keywords:

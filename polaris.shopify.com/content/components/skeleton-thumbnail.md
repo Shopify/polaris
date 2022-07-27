@@ -8,17 +8,17 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: skeleton-thumbnail-medium-thumbnail.tsx
-    title: Medium thumbnail
+  - fileName: skeleton-thumbnail-medium.tsx
+    title: Medium
     description: Use this component to represent medium thumbnails.
-  - fileName: skeleton-thumbnail-large-thumbnail.tsx
-    title: Large thumbnail
+  - fileName: skeleton-thumbnail-large.tsx
+    title: Large
     description: Use this component to represent large thumbnails.
-  - fileName: skeleton-thumbnail-small-thumbnail.tsx
-    title: Small thumbnail
+  - fileName: skeleton-thumbnail-small.tsx
+    title: Small
     description: Use this component to represent small thumbnails.
-  - fileName: skeleton-thumbnail-extra-small-thumbnail.tsx
-    title: Extra small thumbnail
+  - fileName: skeleton-thumbnail-extra-small.tsx
+    title: Extra small
     description: Use this component to represent extra small thumbnails.
 ---
 
@@ -38,4 +38,4 @@ Skeleton thumbnail component should:
 
 ## Related components
 
-- Use this component with [Skeleton display text](https://polaris.shopify.com/components/feedback-indicators/skeleton-display-text) to represent the content of a card while it’s loading.
+- Use this component with [Skeleton display text](https://polaris.shopify.com/components/skeleton-display-text) to represent the content of a card while it’s loading.

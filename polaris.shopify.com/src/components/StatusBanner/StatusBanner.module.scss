@@ -1,0 +1,26 @@
+@import "../../styles/fonts.scss";
+
+.StatusBanner {
+  padding: 1.5rem;
+  background: var(--surface-subdued);
+  border-radius: var(--border-radius-400);
+
+  &[data-value="warning"],
+  &[data-value="deprecated"] {
+    background: var(--surface-warning);
+  }
+
+  &[data-value="information"],
+  &[data-value="alpha"] {
+    background: var(--surface-information);
+  }
+
+  h2 {
+    margin-top: 0;
+    @include heading-3;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}

@@ -1,9 +1,9 @@
 import ReactMarkdown from "react-markdown";
-import "prismjs/themes/prism-tomorrow.css";
-import Prism from "prismjs";
 import React from "react";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 import { slugify } from "../../utils/various";
+import Code from "../Code";
 
 interface Props {
   text: string;
@@ -13,6 +13,7 @@ interface Props {
 function Markdown({ text, skipH1 }: Props) {
   return (
     <ReactMarkdown
+      remarkPlugins={[[remarkGfm, { tablePipeAlign: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
         h1: ({ children }) => {
@@ -32,16 +33,16 @@ function Markdown({ text, skipH1 }: Props) {
             return <h3>{children}</h3>;
           }
         },
-        code: ({ node, inline, className, children, ...props }) => (
-          <span
-            dangerouslySetInnerHTML={{
-              __html: Prism.highlight(
-                String(children),
-                Prism.languages.javascript,
-                "javasript"
-              ),
-            }}
-          ></span>
+        code: ({ inline, children }) =>
+          inline ? (
+            <code>{children}</code>
+          ) : (
+            <Code code={{ title: "Example", code: children.toString() }} />
+          ),
+        table: ({ children }) => (
+          <div className="table-wrapper">
+            <table>{children}</table>
+          </div>
         ),
       }}
     >

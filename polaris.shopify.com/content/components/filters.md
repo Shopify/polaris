@@ -11,23 +11,23 @@ keywords:
   - table
 examples:
   - fileName: filters-with-a-resource-list.tsx
-    title: Filtering with a resource list
+    title: With a resource list
   - fileName: filters-with-a-data-table.tsx
-    title: Filtering with a data table
+    title: With a data table
   - fileName: filters-with-children-content.tsx
-    title: Filters with children content
-  - fileName: filters-all-disabled.tsx
-    title: All filters disabled
+    title: With children content
+  - fileName: filters-disabled.tsx
+    title: Disabled
   - fileName: filters-some-disabled.tsx
-    title: Some filters disabled
+    title: Some disabled
   - fileName: filters-without-clear-button.tsx
-    title: Filters without clear button
+    title: Without clear button
   - fileName: filters-with-help-text.tsx
-    title: Filters with help text
+    title: With help text
   - fileName: filters-with-query-field-hidden.tsx
-    title: Filters with query field hidden
+    title: With query field hidden
   - fileName: filters-with-query-field-disabled.tsx
-    title: Filters with query field disabled
+    title: With query field disabled
 ---
 
 # Filters
@@ -40,7 +40,7 @@ Merchants use filters to:
 - filter by typing into a text field
 - filter by selecting filters or promoted filters
 
-The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/overlays/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
+The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
 
 ---
 
@@ -48,11 +48,11 @@ The way that merchants interact with filters depends on the components that you 
 
 The filters component relies on the accessibility features of multiple other components:
 
-- [Text field](https://polaris.shopify.com/components/forms/text-field)
-- [Button](https://polaris.shopify.com/components/actions/button)
-- [Popover](https://polaris.shopify.com/components/overlays/popover)
-- [Sheet](https://polaris.shopify.com/components/overlays/sheet)
-- [Collapsible](https://polaris.shopify.com/components/behavior/collapsible)
+- [Text field](https://polaris.shopify.com/components/text-field)
+- [Button](https://polaris.shopify.com/components/button)
+- [Popover](https://polaris.shopify.com/components/popover)
+- [Sheet](https://polaris.shopify.com/components/sheet)
+- [Collapsible](https://polaris.shopify.com/components/collapsible)
 
 ### Maintain accessibility with custom features
 
@@ -83,7 +83,7 @@ The filters component should:
 
 The text field should be clearly labeled so it’s obvious to merchants what they should enter into the field.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -99,7 +99,7 @@ The text field should be clearly labeled so it’s obvious to merchants what the
 
 Use the name of the filter if the purpose of the name is clear on its own. For example, when you see a filter badge that reads **Fulfilled**, it’s intuitive that it falls under the Fulfillment status category.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -113,7 +113,7 @@ Use the name of the filter if the purpose of the name is clear on its own. For e
 
 If the filter name is ambiguous on its own, add a descriptive word related to the status. For example, **Low** doesn’t make sense out of context. Add the word “risk” so that merchants know it’s from the Risk category.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -127,7 +127,7 @@ If the filter name is ambiguous on its own, add a descriptive word related to th
 
 Group tags from the same category together.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -141,7 +141,7 @@ Group tags from the same category together.
 
 If all tag pills selected: truncate in the middle
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -153,4 +153,3 @@ If all tag pills selected: truncate in the middle
 
 <!-- end -->
 
----

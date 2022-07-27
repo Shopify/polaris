@@ -295,9 +295,6 @@ describe('<Header />', () => {
     expect(
       header.findAll('div', {className: 'PrimaryActionWrapper'}),
     ).toHaveLength(1);
-    expect(
-      header.findAll('div', {className: 'ActionMenuWrapper'}),
-    ).toHaveLength(0);
   });
 
   it('renders a compact mobile layout with icon-only primary action', () => {

@@ -1,4 +1,4 @@
-name: credit card secure
+name: Credit card secure
 set: major
 description: Used to represent a secured credit card.
 keywords:

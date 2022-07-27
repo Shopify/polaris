@@ -1,4 +1,4 @@
-name: embed
+name: Embed
 set: minor
 description: Used to represent an object embedded from a web resource.
 keywords:

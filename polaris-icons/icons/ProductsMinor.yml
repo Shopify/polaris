@@ -1,4 +1,4 @@
-name: products
+name: Products
 set: minor
 description: Used to represent products or a price tag.
 keywords:

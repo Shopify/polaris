@@ -1,4 +1,4 @@
-name: note
+name: Note
 set: minor
 description: Used to represent a document or note.
 keywords:

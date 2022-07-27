@@ -1,4 +1,4 @@
-name: checklist
+name: Checklist
 set: major
 description: Used to represent a completed checklist.
 keywords:
