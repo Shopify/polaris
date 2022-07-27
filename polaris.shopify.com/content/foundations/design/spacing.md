@@ -10,11 +10,36 @@ keywords:
   - padding
 ---
 
+<!-- inline css styling for html video and hero img -->
+<style>
+.space-hero {
+  margin: 40px -30px 40px -30px;
+}
+
+.punit-img {
+  display: block;
+  margin: 40px auto 40px auto;
+  width: 50%;
+}
+
+.video-wrap {
+  border: 1px solid #E1E3E5;
+  border-radius: 8px; 
+  overflow: hidden;
+}
+</style>
+
+---
+
 # Space
 
 Space is the distance between objects in your design. It should be used to organize information in a way that is familiar and easy to scan, while helping reinforce its purpose.
 
-![A visual example of a polaris unit](/images/foundations/design/spacing/spacing-polaris-size-units@2x.png)
+<div class="space-hero">
+  <img src="/images/foundations/design/spacing/spacing-polaris-size-units@2x.png" alt="A visual example of a polaris unit">
+</div>
+
+<!-- ![A visual example of a polaris unit](/images/foundations/design/spacing/spacing-polaris-size-units@2x.png) -->
 
 ---
 
@@ -40,7 +65,11 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 
 All measurements used across the experience (space, width, height, etc) must reference Polaris size units to guarantee visual consistency and balance.
 
-![Polaris unit illustration](/images/foundations/design/spacing/spacing-polaris-units@2x.png)
+<div class="punit-img">
+  <img src="/images/foundations/design/spacing/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
+</div>
+
+<!-- ![Polaris unit illustration](/images/foundations/design/spacing/spacing-polaris-units@2x.png) -->
 
 ### Size scale
 
@@ -72,14 +101,6 @@ Repeating the same amount of spacing (left) and using more variation (right).
 ### Column grid
 
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
-
-<style>
-.video-wrap{
-  border: 1px solid #E1E3E5;
-  border-radius: 8px; 
-  overflow: hidden;
-}
-</style>
 
 <div class="video-wrap">
   <video width="100%" height="auto" controls autoplay muted loop>
@@ -149,6 +170,12 @@ Grouping things that are implicitly enclosed by a larger object.
 #### Common fate
 
 Grouping things based on how they move.
+
+<div class="video-wrap">
+  <video width="100%" height="auto" controls autoplay muted loop>
+    <source src="/images/foundations/design/spacing/common-fate.mp4" type="video/mp4">
+  </video>
+</div>
 
 #### Common Region
 
