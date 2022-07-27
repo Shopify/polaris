@@ -41,6 +41,7 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  VisuallyHidden,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -459,12 +460,16 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a
-      href="#SkipToContent"
-      id="SkipToContentTarget"
-      ref={skipToContentRef}
-      tabIndex={-1}
-    />
+    <VisuallyHidden>
+      <a
+        href="#SkipToContent"
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+      >
+        Page content
+      </a>
+    </VisuallyHidden>
   );
 
   // ---- Description ----
