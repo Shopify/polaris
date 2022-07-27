@@ -30,26 +30,10 @@ examples:
     title: Body
     description: >-
       Use to create a range of body text.
-  - fileName: text-with-align-inherit.tsx
-    title: With align inherit
+  - fileName: text-align.tsx
+    title: Align
     description: >-
-      Use to inherit parent alignment.
-  - fileName: text-with-align-start.tsx
-    title: With align start
-    description: >-
-      Use to align text at start of horizontal line.
-  - fileName: text-with-align-center.tsx
-    title: With align center
-    description: >-
-      Use to align text at center of horizontal line.
-  - fileName: text-with-align-end.tsx
-    title: With align end
-    description: >-
-      Use to align text at end of horizontal line.
-  - fileName: text-with-align-justify.tsx
-    title: With align justify
-    description: >-
-      Use to align text on a vertical line.
+      Use to set text alignment.
   - fileName: text-with-font-weight-regular.tsx
     title: With font weight regular
     description: >-
