@@ -27,10 +27,11 @@ module.exports = function loader(source) {
 
   const hasFullscreenLayout = [
     'App provider',
+    'Contextual save bar',
     'Frame',
+    'Fullscreen bar',
     'Navigation',
     'Sheet',
-    'Grid',
   ].includes(readme.name);
 
   const omitAppProvider = [
