@@ -52,12 +52,9 @@ export function useEventListener<
   }, [options]);
 
   useEffect(() => {
+    if (!(target !== null && typeof eventName === 'string')) return;
+
     const targetElement = target || window;
-
-    if (!(Boolean(targetElement) && typeof eventName === 'string')) {
-      return;
-    }
-
     const eventOptions = optionsRef.current;
 
     const eventListener = (event: Event) =>
