@@ -268,5 +268,3 @@ Use to de-emphasize a piece of text that is less important to merchants than oth
   No supplier listed
 </Text>
 ```
-
----
