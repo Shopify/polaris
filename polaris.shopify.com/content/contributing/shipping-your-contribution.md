@@ -73,7 +73,7 @@ git checkout -b new-branch-name
 
 ### 1. Test your changes
 
-As you work commit and test your changes:
+As you work, commit and test your changes:
 
 If your changes affect Polaris React components, you'll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
 
@@ -98,7 +98,7 @@ Save the changes you've made to your branch.
 git commit -m “descriptive message”
 ```
 
-Push up your branch up to GitHub
+Push up your branch to GitHub
 
 ```bash
 git push origin new-branch-name
