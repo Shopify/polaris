@@ -1,11 +1,10 @@
-// eslint-disable-next-line @shopify/strict-component-boundaries
+import type React from 'react';
+
+/* eslint-disable @shopify/strict-component-boundaries */
 import type {AvatarProps} from './components/Avatar';
-// eslint-disable-next-line @shopify/strict-component-boundaries
 import type {IconProps} from './components/Icon';
-// eslint-disable-next-line @shopify/strict-component-boundaries
 import type {ThumbnailProps} from './components/Thumbnail';
-// eslint-disable-next-line @shopify/strict-component-boundaries
-import type {TooltipProps} from './components/Tooltip';
+/* eslint-enable @shopify/strict-component-boundaries */
 
 export interface OptionDescriptor {
   /** Value of the option */
@@ -157,12 +156,6 @@ export interface IconableAction extends Action {
   icon?: IconSource;
 }
 
-export type ActionTooltip = Omit<TooltipProps, 'children'>;
-
-export interface ActionWithTooltip extends Action {
-  tooltip?: React.ReactNode | ActionTooltip;
-}
-
 export interface LoadableAction extends Action {
   /** Should a spinner be displayed */
   loading?: boolean;
@@ -178,6 +171,11 @@ export interface PlainAction extends Action {
   plain?: boolean;
 }
 
+export interface TooltipAction {
+  /** Text content to render in a tooltip */
+  helpText?: React.ReactNode;
+}
+
 export interface ActionListItemDescriptor
   extends DisableableAction,
     DestructableAction {
@@ -189,7 +187,7 @@ export interface ActionListItemDescriptor
     content: string;
   };
   /** Additional hint text to display with item */
-  helpText?: string;
+  helpText?: React.ReactNode;
   /** @deprecated Source of the icon */
   icon?: IconSource;
   /** @deprecated Image source */
@@ -220,10 +218,9 @@ export interface ComplexAction
     IconableAction,
     OutlineableAction,
     LoadableAction,
-    ActionWithTooltip,
     PlainAction {}
 
-export interface MenuActionDescriptor extends ComplexAction {
+export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
 }

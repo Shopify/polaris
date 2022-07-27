@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Support tooltip for Page component's primary & secondary actions
+Added `Tooltip` support for `Page` `primaryAction` and `secondaryActions`

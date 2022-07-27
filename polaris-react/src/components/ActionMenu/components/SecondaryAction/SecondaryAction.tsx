@@ -1,14 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
+import {Tooltip} from '../../../Tooltip';
 import {Button} from '../../../Button';
-import {tooltipFrom} from '../../../Tooltip';
 import type {ButtonProps} from '../../../Button';
-import type {ActionWithTooltip} from '../../../../types';
 
 import styles from './SecondaryAction.scss';
 
-interface SecondaryAction extends ButtonProps, ActionWithTooltip {
+interface SecondaryAction extends ButtonProps {
+  helpText?: React.ReactNode;
   onAction?(): void;
   getOffsetWidth?(width: number): void;
 }
@@ -16,9 +16,9 @@ interface SecondaryAction extends ButtonProps, ActionWithTooltip {
 export function SecondaryAction({
   children,
   destructive,
+  helpText,
   onAction,
   getOffsetWidth,
-  tooltip,
   ...rest
 }: SecondaryAction) {
   const secondaryActionsRef = useRef<HTMLSpanElement>(null);
@@ -29,15 +29,17 @@ export function SecondaryAction({
     getOffsetWidth(secondaryActionsRef.current?.offsetWidth);
   }, [getOffsetWidth]);
 
-  let button = (
+  const buttonMarkup = (
     <Button onClick={onAction} {...rest}>
       {children}
     </Button>
   );
 
-  if (tooltip != null) {
-    button = tooltipFrom(tooltip, button);
-  }
+  const actionMarkup = helpText ? (
+    <Tooltip content={helpText}>{buttonMarkup}</Tooltip>
+  ) : (
+    buttonMarkup
+  );
 
   return (
     <span
@@ -47,7 +49,7 @@ export function SecondaryAction({
       )}
       ref={secondaryActionsRef}
     >
-      {button}
+      {actionMarkup}
     </span>
   );
 }

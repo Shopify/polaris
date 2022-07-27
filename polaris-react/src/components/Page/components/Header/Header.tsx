@@ -1,8 +1,9 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import {buttonsFrom} from '../../../Button';
+import {buttonFrom} from '../../../Button';
 import {TextStyle} from '../../../TextStyle';
+import {Tooltip} from '../../../Tooltip';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useI18n} from '../../../../utilities/i18n';
 import {
@@ -10,13 +11,13 @@ import {
   ConditionalWrapper,
 } from '../../../../utilities/components';
 import type {
-  ActionWithTooltip,
   DestructableAction,
   DisableableAction,
   IconableAction,
   LoadableAction,
   MenuActionDescriptor,
   MenuGroupDescriptor,
+  TooltipAction,
 } from '../../../../types';
 import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
 import {Pagination, PaginationProps} from '../../../Pagination';
@@ -34,7 +35,7 @@ interface PrimaryAction
     DisableableAction,
     LoadableAction,
     IconableAction,
-    ActionWithTooltip {
+    TooltipAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
 }
@@ -231,20 +232,26 @@ function PrimaryActionMarkup({
   primaryAction: PrimaryAction | React.ReactNode;
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
-  let content = primaryAction;
-  if (isInterface(primaryAction)) {
-    const primary =
-      primaryAction.primary === undefined ? true : primaryAction.primary;
 
-    content = buttonsFrom(
+  let actionMarkup = primaryAction;
+  if (isInterface(primaryAction)) {
+    const {primary: isPrimary, helpText} = primaryAction;
+    const primary = isPrimary === undefined ? true : isPrimary;
+    const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         primary,
       },
     );
+
+    actionMarkup = helpText ? (
+      <Tooltip content={helpText}>{content}</Tooltip>
+    ) : (
+      content
+    );
   }
 
-  return <div className={styles.PrimaryActionWrapper}>{content}</div>;
+  return <div className={styles.PrimaryActionWrapper}>{actionMarkup}</div>;
 }
 
 function shouldShowIconOnly(

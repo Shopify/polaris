@@ -3,10 +3,8 @@ import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import type {ActionMenuProps} from '../../ActionMenu';
-import type {ActionTooltip} from '../../../types';
 import {Badge} from '../../Badge';
 import {Card} from '../../Card';
-import {Tooltip} from '../../Tooltip';
 import {Page, PageProps} from '../Page';
 import {Header} from '../components';
 
@@ -290,47 +288,6 @@ describe('<Page />', () => {
     it('is not rendered when there is no header content', () => {
       const page = mountWithApp(<Page title="" />);
       expect(page).not.toContainReactComponent(Header);
-    });
-  });
-
-  describe('<Tooltip />', () => {
-    const saveTooltip: ActionTooltip = {
-      content: 'Save tooltip',
-      dismissOnMouseOut: true,
-    };
-
-    it('is rendered when available for primary action', () => {
-      const page = mountWithApp(
-        <Page
-          {...mockProps}
-          primaryAction={{content: 'Save', tooltip: saveTooltip}}
-        />,
-      );
-      expect(page).toContainReactComponent(Tooltip, saveTooltip);
-    });
-
-    it('is rendered when available for secondary actions', () => {
-      const page = mountWithApp(
-        <Page
-          {...mockProps}
-          secondaryActions={[{content: 'Save', tooltip: saveTooltip.content}]}
-        />,
-      );
-      expect(page).toContainReactComponent(Tooltip, {
-        content: saveTooltip.content,
-      });
-    });
-
-    it('will NOT be rendered when primary & secondary actions have no tooltip passed', () => {
-      const page = mountWithApp(
-        <Page
-          {...mockProps}
-          primaryAction={{content: 'Save'}}
-          secondaryActions={[{content: 'Load'}]}
-        />,
-      );
-
-      expect(page).not.toContainReactComponent(Tooltip);
     });
   });
 });

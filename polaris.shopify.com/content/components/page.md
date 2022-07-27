@@ -34,6 +34,9 @@ examples:
   - fileName: page-with-custom-secondary-action.tsx
     title: With custom secondary action
     description: Use to create a custom secondary action.
+  - fileName: page-with-tooltip-action.tsx
+    title: With tooltip action
+    description: Use when merchants or their staff will benefit from context on why a page action is disabled.
   - fileName: page-with-subtitle.tsx
     title: With subtitle
     description: Use when the page title benefits from secondary content.
