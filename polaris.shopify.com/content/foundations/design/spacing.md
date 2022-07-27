@@ -19,7 +19,7 @@ keywords:
 .punit-img {
   display: block;
   margin: 40px auto 40px auto;
-  width: 50%;
+  width: 75%;
 }
 
 .video-wrap {
