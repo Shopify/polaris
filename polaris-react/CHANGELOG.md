@@ -31,7 +31,8 @@
 
 - [#6619](https://github.com/Shopify/polaris/pull/6619) [`398186117`](https://github.com/Shopify/polaris/commit/398186117be9a4bc7d0248dd7ea339f0a0f34779) Thanks [@alex-page](https://github.com/alex-page)! - Remove legacy keywords from component documentation
 
-* [#6532](https://github.com/Shopify/polaris/pull/6532) [`89d40028a`](https://github.com/Shopify/polaris/commit/89d40028a251a06464f039ae5f26defea8e715b9) Thanks [@philschoefer](https://github.com/philschoefer)! - - Updates `DataTable` to fix console warning about improperly nested HTML
+* [#6722](https://github.com/Shopify/polaris/pull/6722) [`b405355`](https://github.com/Shopify/polaris/commit/b4053553d9fb0079a957e31df48893d90ce766b0) Thanks [@philschoefer](https://github.com/philschoefer):
+  - Updates `DataTable` to fix console warning about improperly nested HTML
   - Updates `DataTable` to ensure focus states remain on the same header element when switching between sticky and regular header.
   - Improves `DataTable` tooltip when using `truncate` prop.
 
