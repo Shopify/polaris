@@ -22,34 +22,10 @@ status:
   value: Alpha
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
-  - fileName: text-heading-small.tsx
-    title: Heading small
+  - fileName: text-heading.tsx
+    title: Heading
     description: >-
-      Use to create a small heading text.
-  - fileName: text-heading-medium.tsx
-    title: Heading medium
-    description: >-
-      Use to create a medium heading text.
-  - fileName: text-heading-large.tsx
-    title: Heading large
-    description: >-
-      Use to create a large heading text.
-  - fileName: text-heading-extra-large.tsx
-    title: Heading extra large
-    description: >-
-      Use to create an extra large heading text.
-  - fileName: text-heading-2xl.tsx
-    title: Heading 2xl
-    description: >-
-      Use to create a 2xl heading text.
-  - fileName: text-heading-3xl.tsx
-    title: Heading 3xl
-    description: >-
-      Use to create a 3xl heading text.
-  - fileName: text-heading-4xl.tsx
-    title: Heading 4xl
-    description: >-
-      Use to create a 4xl heading text.
+      Use to create a range of headings.
   - fileName: text-body-small.tsx
     title: Body small
     description: >-
