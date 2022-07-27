@@ -15,9 +15,9 @@ Contribution to Polaris looks different depending on whether you work at Shopify
 
 ## When to contribute
 
-Figuring out what and when to contribute is not always simple, but it doesn't have to be! Here are some common scenarios for deciding when to contribute:
+Contributions can seem intimidating, but they don't have to be! Here are some common scenarios for deciding when to contribute:
 
-| Use the System                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
+| Use the system                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
 | _When available resources can solve a design problem_                        | _When a change or addition can solve a shared problem_                                  | _When a unique problem requires a unique solution_                                              |     |     |
 | Read [ Designing with a system ](/contributing/designing-with-a-system)      | Read [ When to contribute new patterns ](/contributing/when-to-contribute-new-patterns) | Share ideas in [ #admin-ux ](https://shopify.slack.com/archives/C039ZAKQ5AA)(Shopify employees) |     |     |
