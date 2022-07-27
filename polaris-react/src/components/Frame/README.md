@@ -227,7 +227,12 @@ function FrameExample() {
 
   const skipToContentTarget = (
     <VisuallyHidden>
-      <a id="SkipToContentTarget" ref={skipToContentRef} tabIndex={-1}>
+      <a
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+        href="#SkipLink"
+      >
         Account details
       </a>
     </VisuallyHidden>
@@ -567,7 +572,12 @@ function FrameExample() {
 
   const skipToContentTarget = (
     <VisuallyHidden>
-      <a id="SkipToContentTarget" ref={skipToContentRef} tabIndex={-1}>
+      <a
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+        href="#SkipLink"
+      >
         Account details
       </a>
     </VisuallyHidden>
