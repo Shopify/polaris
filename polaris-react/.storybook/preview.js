@@ -31,12 +31,7 @@ function GridOverlayDecorator(Story, context) {
   const {showGrid, gridInFrame, gridWidth, gridLayer} = context.globals;
 
   const gridOverlay = showGrid ? (
-    <GridOverlay
-      inFrame={gridInFrame}
-      maxWidth={gridWidth}
-      layer={gridLayer}
-      componentLayout={context.parameters.layout}
-    />
+    <GridOverlay inFrame={gridInFrame} maxWidth={gridWidth} layer={gridLayer} />
   ) : null;
 
   return (

@@ -15,16 +15,9 @@ interface Props {
   maxWidth?: string;
   layer?: Layer;
   children?: React.ReactNode;
-  componentLayout: 'padded' | 'centered' | 'fullscreen';
 }
 
-export function GridOverlay({
-  inFrame,
-  maxWidth,
-  layer,
-  children,
-  componentLayout,
-}: Props) {
+export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
   const [columns, setColumns] = useState(
     window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE,
   );
@@ -35,7 +28,6 @@ export function GridOverlay({
   const className = classNames('GridOverlay', inFrame && 'inFrame');
   const style = {
     maxWidth,
-    margin: componentLayout === 'padded' ? '0 1rem' : '',
     zIndex: layer === 'above' || inFrame ? 1 : -1,
   } as React.CSSProperties;
 
