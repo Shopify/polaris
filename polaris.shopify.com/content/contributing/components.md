@@ -8,6 +8,9 @@ keywords:
   - how to add a new component
   - bug fix
   - ux improvement
+  - improve component
+  - improve ux
+  - improve accessibility
   - open source
 ---
 
@@ -81,7 +84,7 @@ If you're just getting started with contributing to Polaris React, look for issu
 
 ---
 
-## Improve components
+## Add or improve a component
 
 ### Considerations
 
