@@ -3,7 +3,7 @@ import React from 'react';
 import {RenderPerformanceProfiler} from '../.storybook/RenderPerformanceProfiler';
 
 interface Stories {
-  [key: string]: React.ComponentClass;
+  [key: string]: React.ComponentType;
 }
 
 const stories: Stories = {};
