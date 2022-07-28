@@ -254,6 +254,30 @@ Use to create a custom secondary action.
 </Page>
 ```
 
+### With tooltip action
+
+Use when merchants or their staff will benefit from context on why a page action is disabled.
+
+```jsx
+<Page
+  title="Product"
+  primaryAction={{
+    content: 'Save',
+  }}
+  secondaryActions={[
+    {
+      content: 'Import',
+      disabled: true,
+      helpText: 'You need permission to import products.',
+    },
+  ]}
+>
+  <Card title="Product X" sectioned>
+    <p>Product X information</p>
+  </Card>
+</Page>
+```
+
 ### With subtitle
 
 Use when the page title benefits from secondary content.
