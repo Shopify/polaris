@@ -729,17 +729,17 @@ _After_
 
 The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
 
-| Deprecated Variable                  | Value                                                                                         | Default Value |
-| ------------------------------------ | --------------------------------------------------------------------------------------------- | ------------- |
-| `$frame-with-nav-max-width`          | `layout-width(nav) + $page-max-width`                                                         | `77.375rem`   |
-| `$nav-min-window`                    | `breakpoint($layout-width-page-with-nav-base)`                                                |
-| `$nav-size`                          | `breakpoint($layout-width-nav-base)`                                                          |
-| `$not-condensed-content`             | `em(layout-width(page-content, not-condensed))`                                               | `42.5em`      |
-| `$not-condensed-min-page`            | `$not-condensed-content + $not-condensed-outer-spacing`                                       |
-| `$not-condensed-outer-spacing`       | `breakpoint(2 * $layout-width-outer-spacing-max)`                                             |
-| `$partially-condensed-content`       | `em(layout-width(page-content, partially-condensed))`                                         | `28.125em`    |
-| `$partially-condensed-min-page`      | `$partially-condensed-content + $partially-condensed-outer-spacing`                           |
-| `$partially-condensed-outer-spacing` | `breakpoint(2 *$layout-width-outer-spacing-min)`                                              |
-| `$page-max-width`                    | `layout-width(primary, max) + layout-width(secondary, max) +layout-width(inner-spacing)`      | `62.375rem`   |
-| `$stacked-content`                   | `em(layout-width(primary, min) + layout-width(secondary, min) + layout-width(inner-spacing))` | `46em`        |
-| `$typography-condensed`              | `em(640px)`                                                                                   | `40em`        |
+| Deprecated Variable                  | Default Value |
+| ------------------------------------ | ------------- |
+| `$frame-with-nav-max-width`          | `77.375rem`   |
+| `$nav-min-window`                    |
+| `$nav-size`                          |
+| `$not-condensed-content`             | `42.5em`      |
+| `$not-condensed-min-page`            |
+| `$not-condensed-outer-spacing`       |
+| `$partially-condensed-content`       | `28.125em`    |
+| `$partially-condensed-min-page`      |
+| `$partially-condensed-outer-spacing` |
+| `$page-max-width`                    | `62.375rem`   |
+| `$stacked-content`                   | `46em`        |
+| `$typography-condensed`              | `40em`        |
