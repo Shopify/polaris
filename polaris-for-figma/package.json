@@ -21,8 +21,8 @@
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.19.1",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2",
+    "@types/react": "*",
+    "@types/react-dom": "*",
     "@types/node": "^17.0.23",
     "babel-loader": "^8.2.3",
     "css-loader": "^3.4.2",
