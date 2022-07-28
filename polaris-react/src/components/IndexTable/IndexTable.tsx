@@ -800,7 +800,7 @@ const isBreakpointsXS = () => {
   return typeof window === 'undefined'
     ? false
     : window.innerWidth <
-        parseFloat(toPx(tokens.breakpoints['breakpoints-sm'].value) ?? '');
+        parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
 export interface IndexTableProps
