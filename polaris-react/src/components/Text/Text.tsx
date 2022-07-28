@@ -72,7 +72,7 @@ export const Text = ({
     styles.root,
     styles[variant],
     fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
-    (alignment || truncate) && styles.block,
+    (alignment || truncate) && as !== 'span' && styles.block,
     alignment && styles[alignment],
     color && styles[color],
     truncate && styles.truncate,
