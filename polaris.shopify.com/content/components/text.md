@@ -25,11 +25,11 @@ examples:
   - fileName: text-heading.tsx
     title: Heading
     description: >-
-      Use to create a range of headings.
+      Use to create various levels of hierarchy on the page.
   - fileName: text-body.tsx
     title: Body
     description: >-
-      Use to create a range of body text.
+      Use to create a range of body text. These styles are primarily used within components and blocks of text.
   - fileName: text-align.tsx
     title: Align
     description: >-
