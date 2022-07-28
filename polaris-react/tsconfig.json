@@ -19,5 +19,6 @@
     "./playground",
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx"
-  ]
+  ],
+  "exclude": ["./src/components/**/*.stories.tsx"]
 }
