@@ -30,7 +30,7 @@ $p-breakpoints-xl-only: '(min-width: 90em)';
 
 ## Sass functions and mixins
 
-The following Sass functions and mixins have been removed. If you wish to continue using them you will need to either add them directly to your repo or replace any instances with a value equivalent.
+The following Sass functions and mixins have been removed. You will need to replace any instances with the closest media query variable (listed above) or hard code the one off media query value you need.
 
 ### Functions
 
