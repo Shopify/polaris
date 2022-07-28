@@ -12,9 +12,11 @@ type UseEventListenerTarget =
   | RefObject<HTMLElement>;
 
 /**
- * Extracts the target element from a React `ref` or returns the input element.
+ * Extracts the target element from a React `RefObject` or returns the input element.
  */
-type ExtractTargetElement<T> = T extends RefObject<infer U> ? U : T;
+type ExtractTargetElement<Target> = Target extends RefObject<infer Element>
+  ? Element
+  : Target;
 
 /**
  * Extracts a (lib.dom.ts) EventMap for a given target element.
@@ -63,17 +65,18 @@ export function useEventListener<
   }, [options]);
 
   useEffect(() => {
-    const targetElement =
-      target && 'current' in target ? target.current : target || window;
+    if (typeof eventName !== 'string') return;
 
-    if (
-      !(
-        typeof eventName === 'string' &&
-        targetElement &&
-        !('current' in targetElement)
-      )
-    ) {
-      return;
+    let targetElement: Exclude<UseEventListenerTarget, RefObject<HTMLElement>>;
+
+    if (typeof target === 'undefined') {
+      targetElement = window;
+    } else if ('current' in target) {
+      if (target.current === null) return;
+
+      targetElement = target.current;
+    } else {
+      targetElement = target;
     }
 
     const eventOptions = optionsRef.current;
