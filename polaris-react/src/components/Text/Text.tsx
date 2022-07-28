@@ -38,7 +38,7 @@ const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
 };
 
 export interface TextProps {
-  /** Adjust horizontal alignment of text */
+  /** Adjust horizontal alignment of text when `as` prop is set to a block element */
   alignment?: Alignment;
   /** The element type */
   as: Element;
@@ -48,7 +48,7 @@ export interface TextProps {
   color?: Color;
   /** Adjust weight of text */
   fontWeight?: FontWeight;
-  /** Truncate text overflow with ellipsis */
+  /** Truncate text overflow with ellipsis when `as` prop is set to a block element */
   truncate?: boolean;
   /** Typographic style of text */
   variant: Variant;
