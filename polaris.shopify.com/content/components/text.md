@@ -38,22 +38,10 @@ examples:
     title: Weight
     description: >-
       Use to give text a range of font weights.
-  - fileName: text-with-color-success.tsx
-    title: With color success
+  - fileName: text-color.tsx
+    title: Color
     description: >-
-      Use in combination with a symbol showing an increasing value to indicate an upward trend.
-  - fileName: text-with-color-critical.tsx
-    title: With color critical
-    description: >-
-      Use in combination with a symbol showing a decreasing value to indicate a downward trend.
-  - fileName: text-with-color-warning.tsx
-    title: With color warning
-    description: >-
-      Use to denote something that needs attention, or that merchants need to take action on.
-  - fileName: text-with-color-subdued.tsx
-    title: With color subdued
-    description: >-
-      Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
+      Use to set text color.
 ---
 
 # Text
