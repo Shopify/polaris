@@ -725,12 +725,6 @@ _After_
 
 </details>
 
-### Adding the functions and mixins to your repo
-
-Any functions or mixins that were being consumed from `???` have been removed. If you wish to continue using them you can add them directly to your repo. All of the removed functions and mixins can found in the following file:
-
-[File Name](#)
-
 ## Sass global variables
 
 The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
