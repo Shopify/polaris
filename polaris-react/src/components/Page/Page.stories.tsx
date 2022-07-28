@@ -134,6 +134,28 @@ export function WithCustomSecondaryAction() {
   );
 }
 
+export function WithToolTipAction() {
+  return (
+    <Page
+      title="Product"
+      primaryAction={{
+        content: 'Save',
+      }}
+      secondaryActions={[
+        {
+          content: 'Import',
+          disabled: true,
+          helpText: 'You need permission to import products.',
+        },
+      ]}
+    >
+      <Card title="Product X" sectioned>
+        <p>Product X information</p>
+      </Card>
+    </Page>
+  );
+}
+
 export function WithSubtitle() {
   return (
     <Page
