@@ -1,5 +1,21 @@
 # Changelog
 
+## 9.21.1
+
+### Patch Changes
+
+- [#6753](https://github.com/Shopify/polaris/pull/6753) [`e17db88b2`](https://github.com/Shopify/polaris/commit/e17db88b275d2c4070d22d9c2c3bf903f12739db) Thanks [@alex-page](https://github.com/alex-page)! - Remove omitAppProvider front matter
+
+* [#6749](https://github.com/Shopify/polaris/pull/6749) [`45f45883a`](https://github.com/Shopify/polaris/commit/45f45883ac975b89e1df53f651748319223e1f2c) Thanks [@alex-page](https://github.com/alex-page)! - Adjust some of the internal scripts so they are simpler
+
+- [#6722](https://github.com/Shopify/polaris/pull/6722) [`b4053553d`](https://github.com/Shopify/polaris/commit/b4053553d9fb0079a957e31df48893d90ce766b0) Thanks [@philschoefer](https://github.com/philschoefer)! - Updated `DataTable` to fix console warning about improperly nested HTML, ensure focus states remain on the same header element when switching between sticky and regular header and improved tooltip when using `truncate` prop.
+
+* [#6695](https://github.com/Shopify/polaris/pull/6695) [`ceff5fb6c`](https://github.com/Shopify/polaris/commit/ceff5fb6c015706192c8e451ad33078238e01eb8) Thanks [@aveline](https://github.com/aveline)! - Added guidance to the Releasing docs around tagging contributors for reviews
+
+- [#6756](https://github.com/Shopify/polaris/pull/6756) [`fdf4d836d`](https://github.com/Shopify/polaris/commit/fdf4d836dccedd4578d094fa216c5460780064cc) Thanks [@mrkldshv](https://github.com/mrkldshv)! - Fixed react hook errors across examples
+
+* [#6678](https://github.com/Shopify/polaris/pull/6678) [`51798772a`](https://github.com/Shopify/polaris/commit/51798772a04f6afb51ef11ef41a7ca573617275c) Thanks [@alex-page](https://github.com/alex-page)! - Migrate content to polaris.shopify.com, automate example titles
+
 ## 9.21.0
 
 ### Minor Changes
@@ -31,7 +47,8 @@
 
 - [#6619](https://github.com/Shopify/polaris/pull/6619) [`398186117`](https://github.com/Shopify/polaris/commit/398186117be9a4bc7d0248dd7ea339f0a0f34779) Thanks [@alex-page](https://github.com/alex-page)! - Remove legacy keywords from component documentation
 
-* [#6532](https://github.com/Shopify/polaris/pull/6532) [`89d40028a`](https://github.com/Shopify/polaris/commit/89d40028a251a06464f039ae5f26defea8e715b9) Thanks [@philschoefer](https://github.com/philschoefer)! - - Updates `DataTable` to fix console warning about improperly nested HTML
+* [#6722](https://github.com/Shopify/polaris/pull/6722) [`b405355`](https://github.com/Shopify/polaris/commit/b4053553d9fb0079a957e31df48893d90ce766b0) Thanks [@philschoefer](https://github.com/philschoefer):
+  - Updates `DataTable` to fix console warning about improperly nested HTML
   - Updates `DataTable` to ensure focus states remain on the same header element when switching between sticky and regular header.
   - Improves `DataTable` tooltip when using `truncate` prop.
 

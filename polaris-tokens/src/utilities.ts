@@ -1,6 +1,12 @@
-import type {Entry, Exact} from './types';
-import type {Tokens, TokenGroup} from './tokens';
-import type {breakpoints as breakpointsTokenGroup} from './token-groups/breakpoints';
+import type {
+  Entry,
+  Exact,
+  ExtractValues,
+  MetadataGroup,
+  Tokens,
+  TokenGroup,
+} from './types';
+import type {breakpoints as metaBreakpointsTokenGroup} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -70,14 +76,14 @@ export function toRem(value = '') {
   }
 }
 
-function rem(value: string) {
+export function rem(value: string) {
   return value.replace(
     new RegExp(`${DIGIT_REGEX.source}(${UNIT_PX})`, 'g'),
     (px: string) => toRem(px) ?? px,
   );
 }
 
-export function tokensToRems<T extends Exact<TokenGroup, T>>(tokenGroup: T) {
+export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, properties]) => [
       token,
@@ -110,20 +116,27 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  * Result: ['--p-background', '--p-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
-  const {colorSchemes, ...restTokenGroups} = tokens;
-  const customPropertyNames = [
-    ...Object.keys(colorSchemes.light).map((token) => createVar(token)),
-    ...Object.entries(restTokenGroups)
-      .map(([_, tokenGroup]: [string, TokenGroup]) =>
-        Object.keys(tokenGroup).map((token) => createVar(token)),
-      )
-      .flat(),
-  ];
-
-  return customPropertyNames;
+  return Object.entries(tokens)
+    .map(([_, tokenGroup]: [string, TokenGroup]) =>
+      Object.keys(tokenGroup).map((token) => createVar(token)),
+    )
+    .flat();
 }
 
-export type BreakpointsTokenGroup = typeof breakpointsTokenGroup;
+export function removeMetadata<T extends Exact<MetadataGroup, T>>(
+  tokenGroup: T,
+) {
+  return Object.fromEntries(
+    Object.entries(tokenGroup).map((entry): Entry<TokenGroup> => {
+      const [tokenName, {value}] = entry as Entry<MetadataGroup>;
+
+      return [tokenName, value];
+    }),
+  ) as ExtractValues<T>;
+}
+
+export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;
+export type BreakpointsTokenGroup = ExtractValues<MetaBreakpointsTokenGroup>;
 
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
@@ -164,7 +177,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
         entry,
         index,
       ): [BreakpointsTokenName, BreakpointsAliasDirectionMediaConditions] => {
-        const [breakpointsTokenName, {value: breakpoint}] =
+        const [breakpointsTokenName, breakpoint] =
           entry as Entry<BreakpointsTokenGroup>;
 
         const upMediaCondition = getUpMediaCondition(breakpoint);
@@ -173,8 +186,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
           index === lastBreakpointIndex
             ? upMediaCondition
             : `${upMediaCondition} and ${getDownMediaCondition(
-                // Next breakpoint
-                breakpointEntries[index + 1][1].value,
+                breakpointEntries[index + 1][1],
               )}`;
 
         return [

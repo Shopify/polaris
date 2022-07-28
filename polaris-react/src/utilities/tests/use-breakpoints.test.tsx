@@ -3,7 +3,7 @@ import {mount} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {
   BreakpointsTokenName,
-  tokens,
+  breakpoints,
   getMediaConditions,
 } from '@shopify/polaris-tokens';
 
@@ -13,7 +13,7 @@ import {
   getBreakpointsQueryEntries,
 } from '../breakpoints';
 
-const mediaConditions = getMediaConditions(tokens.breakpoints);
+const mediaConditions = getMediaConditions(breakpoints);
 
 describe('useBreakpoints', () => {
   beforeEach(() => {
@@ -130,7 +130,7 @@ function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
 describe('getBreakpointsQueryEntries', () => {
   it('converts breakpoints tokens into entries with direction/alias names', () => {
     const directionAliases: BreakpointsDirectionAlias[] =
-      getBreakpointsQueryEntries(tokens.breakpoints).map(
+      getBreakpointsQueryEntries(breakpoints).map(
         ([directionAlias]) => directionAlias,
       );
 

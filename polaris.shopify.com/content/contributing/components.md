@@ -8,6 +8,9 @@ keywords:
   - how to add a new component
   - bug fix
   - ux improvement
+  - improve component
+  - improve ux
+  - improve accessibility
   - open source
 ---
 
@@ -71,17 +74,17 @@ If you're just getting started with contributing to Polaris React, look for issu
 2. [Prepare your development environment](/contributing/shipping-your-contribution#setting-up-your-local-developement-environment).
 3. Assess the time and difficulty of finding and fixing the problem code.
 4. If you discover that fixing the bug is too complex or will take longer than you’re able to commit, that’s okay! Your findings will help the next developer move the needle on shipping a fix.
-   <br /> - Update the issue with a comment detailing your findings. Describe the problem code and share permalinks to the lines involved
+   <br /> - Update the issue with a comment detailing your findings. Describe the problem code and share permalinks to the lines involved.
    <br /> - If you have a potential fix locally, commit and push your changes and open a draft pull request that links to the bug report.
-   <br /> - Add or update the issue’s labels to indicate level of difficulty
-   <br /> - Unassign yourself from the issue
+   <br /> - Add or update the issue’s labels to indicate level of difficulty.
+   <br /> - Unassign yourself from the issue.
 5. If after investigating you arrive at a solution to the issue:
-   <br /> - Update the issue so everyone knows a fix is on the way
-   <br /> - Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr)
+   <br /> - Update the issue so everyone knows a fix is on the way.
+   <br /> - Commit your changes and [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr).
 
 ---
 
-## Add a new pattern
+## Add or improve a component
 
 ### Considerations
 

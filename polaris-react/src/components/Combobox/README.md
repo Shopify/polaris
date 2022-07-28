@@ -317,7 +317,7 @@ function MultiAutoComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -435,7 +435,7 @@ function MultiManualComboboxExample() {
 
       updateText('');
     },
-    [options, selectedOptions],
+    [options, selectedOptions, updateText],
   );
 
   const removeTag = useCallback(
@@ -558,8 +558,14 @@ function MultiselectTagComboboxExample() {
       if (!value || matchIndex === -1) return option;
 
       const start = option.slice(0, matchIndex);
-      const highlight = option.slice(matchIndex, matchIndex + trimValue.length);
-      const end = option.slice(matchIndex + trimValue.length, option.length);
+      const highlight = option.slice(
+        matchIndex,
+        `${matchIndex}${trimValue.length}`,
+      );
+      const end = option.slice(
+        `${matchIndex}${trimValue.length}`,
+        option.length,
+      );
 
       return (
         <p>

@@ -19,6 +19,9 @@ examples:
   - fileName: listbox-with-custom-element.tsx
     title: With custom element
     description: Implementation of a control with custom rendering of options
+  - fileName: listbox-with-search.tsx
+    title: With search
+    description: Use to help merchants browse, filter, and choose from a list of options.
 ---
 
 # Listbox

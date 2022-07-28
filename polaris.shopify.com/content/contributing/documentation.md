@@ -53,5 +53,5 @@ It's important that inaccurate or outdated information be removed as soon as pos
 
 To remove documentation:
 
-1. Reach out to subject matter experts, or someone with high context around the existing content, to confirm its relevance and accuracy.
-2. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+1. Reach out to subject matter experts, or someone with high context around the existing content, to confirm its relevance and accuracy
+2. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo

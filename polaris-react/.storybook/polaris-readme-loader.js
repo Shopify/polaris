@@ -25,14 +25,19 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
-    readme.name,
-  );
+  const hasFullscreenLayout = [
+    'App provider',
+    'Contextual save bar',
+    'Frame',
+    'Fullscreen bar',
+    'Navigation',
+    'Sheet',
+  ].includes(readme.name);
 
   const omitAppProvider = [
     'Frame',
     'App provider',
-    'Custom properties',
+    'CustomProperties',
   ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
@@ -82,7 +87,6 @@ import {
   Combobox,
   Connected,
   ContextualSaveBar,
-  CustomProperties,
   DataTable,
   DatePicker,
   DescriptionList,

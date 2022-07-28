@@ -1,4 +1,4 @@
-import {createVar, tokens, TokenProperties} from '@shopify/polaris-tokens';
+import {createVar, metadata, MetadataGroup} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
@@ -12,12 +12,9 @@ import {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const {colorSchemes, legacyTokens, ...restTokenGroups} = tokens;
+const {legacy, ...restTokenGroups} = metadata;
 
-const groupedCompletionItemTokenGroups = {
-  color: colorSchemes.light,
-  ...restTokenGroups,
-};
+const groupedCompletionItemTokenGroups = restTokenGroups;
 
 type GroupedCompletionItemsKey = keyof typeof groupedCompletionItemTokenGroups;
 
@@ -30,14 +27,11 @@ type GroupedCompletionItems = {
  */
 const groupedCompletionItems = Object.fromEntries(
   Object.entries(groupedCompletionItemTokenGroups).map(
-    ([groupedCompletionItemsKey, tokenGroup]) => {
+    ([groupedCompletionItemsKey, tokenGroup]: [string, MetadataGroup]) => {
       const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
         tokenGroup,
       ).map(
-        ([tokenName, tokenProperties]: [
-          string,
-          TokenProperties,
-        ]): CompletionItem => ({
+        ([tokenName, tokenProperties]): CompletionItem => ({
           label: createVar(tokenName),
           insertText: `${createVar(tokenName)}`,
           detail: tokenProperties.value,
@@ -72,7 +66,7 @@ type GroupedCompletionItemPatterns = {
 
 const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   breakpoints: /width/,
-  color:
+  colors:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
   typography: /font|line-height/,

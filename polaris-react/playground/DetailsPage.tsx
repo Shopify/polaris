@@ -41,6 +41,7 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  VisuallyHidden,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -186,7 +187,6 @@ export function DetailsPage() {
       initials="D"
       open={userMenuActive}
       onToggle={toggleUserMenuActive}
-      colorScheme="dark"
       accessibilityLabel="User menu"
     />
   );
@@ -459,12 +459,16 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a
-      href="#SkipToContent"
-      id="SkipToContentTarget"
-      ref={skipToContentRef}
-      tabIndex={-1}
-    />
+    <VisuallyHidden>
+      <a
+        href="#SkipToContent"
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+      >
+        Page content
+      </a>
+    </VisuallyHidden>
   );
 
   // ---- Description ----

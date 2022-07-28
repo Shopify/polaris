@@ -104,7 +104,8 @@ function DropZoneExample() {
               alt={file.name}
               source={
                 validImageTypes.includes(file.type)
-                  ? window.URL.createObjectURL(file)
+                  ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                    window.URL.createObjectURL(file)
                   : NoteMinor
               }
             />
@@ -162,6 +163,7 @@ function DropZoneWithImageFileUpload() {
           <Thumbnail
             size="small"
             alt={file.name}
+            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -223,7 +225,8 @@ function DropZoneExample() {
         alt={file.name}
         source={
           validImageTypes.includes(file.type)
-            ? window.URL.createObjectURL(file)
+            ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+              window.URL.createObjectURL(file)
             : NoteMinor
         }
       />
@@ -267,7 +270,8 @@ function DropZoneWithDropOnPageExample() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -329,6 +333,7 @@ function DropZoneAcceptingSVGFilesExample() {
           <Thumbnail
             size="small"
             alt={file.name}
+            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
@@ -396,7 +401,8 @@ function NestedDropZoneExample() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -474,7 +480,8 @@ function DropZoneExample() {
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
@@ -525,7 +532,8 @@ function DropZoneWithCustomFileDialogExample() {
             alt={file.name}
             source={
               validImageTypes.indexOf(file.type) > -1
-                ? window.URL.createObjectURL(file)
+                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
+                  window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
