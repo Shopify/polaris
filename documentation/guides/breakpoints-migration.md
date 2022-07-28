@@ -262,7 +262,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $not-condensed-content
+$not-condensed-content: 42.5em;
 
 @mixin page-content-when-partially-condensed() {
   @include page-content-breakpoint-before($not-condensed-content) {
@@ -295,7 +295,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $not-condensed-content
+$not-condensed-content: 42.5em;
 
 @mixin page-content-when-not-partially-condensed() {
   @include page-content-breakpoint-after($not-condensed-content) {
@@ -328,7 +328,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $partially-condensed-content
+$partially-condensed-content: 28.125em;
 
 @mixin page-content-when-fully-condensed() {
   @include page-content-breakpoint-before($partially-condensed-content) {
@@ -361,7 +361,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $partially-condensed-content
+$partially-condensed-content: 28.125em;
 
 @mixin page-content-when-not-fully-condensed() {
   @include page-content-breakpoint-after($partially-condensed-content) {
@@ -394,7 +394,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $stacked-content
+$stacked-content: 46em;
 
 @mixin page-content-when-layout-stacked() {
   @include page-content-breakpoint-before($stacked-content) {
@@ -427,7 +427,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $stacked-content
+$stacked-content: 46em;
 
 @mixin page-content-when-layout-not-stacked() {
   @include page-content-breakpoint-after($stacked-content) {
@@ -522,7 +522,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $page-max-width
+$page-max-width: 62.375rem;
 
 @mixin page-when-not-max-width() {
   @include breakpoint-before($page-max-width) {
@@ -555,7 +555,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $typography-condensed
+$typography-condensed: 40em;
 
 @mixin when-typography-condensed {
   @include breakpoint-before($typography-condensed) {
@@ -588,7 +588,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $typography-condensed
+$typography-condensed: 40em;
 
 @mixin when-typography-not-condensed {
   @include breakpoint-after($typography-condensed) {
@@ -683,7 +683,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// Check the Variables section for the value of $frame-with-nav-max-width
+$frame-with-nav-max-width: 77.375rem;
 
 @mixin frame-with-nav-when-not-max-width() {
   @include breakpoint-before($frame-with-nav-max-width) {
