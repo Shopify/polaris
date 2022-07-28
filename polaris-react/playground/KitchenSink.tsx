@@ -2,7 +2,11 @@ import React from 'react';
 
 import {RenderPerformanceProfiler} from '../.storybook/RenderPerformanceProfiler';
 
-const stories: any = {};
+interface Stories {
+  [key: string]: React.ComponentClass;
+}
+
+const stories: Stories = {};
 const req = require.context('../src/components', true, /.stories.tsx$/);
 req.keys().forEach((filePath) =>
   req(filePath).__namedExportsOrder.forEach((namedExport: string) => {
