@@ -32,9 +32,6 @@ $p-breakpoints-xl-only: '(min-width: 90em)';
 
 The following Sass functions and mixins have been removed. You will need to replace any instances with the closest media query variable (listed above) or hard code the one off media query value you need.
 
-### Functions
-
-These functions were removed because the mixins using them were also removed ([see the Mixins section](#mixins)). In case you need to use those mixins you will find the fucntions necessary to make them work them here.
 
 #### `breakpoint()`
 
