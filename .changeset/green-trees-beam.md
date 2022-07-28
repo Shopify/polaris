@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': patch
+'@shopify/polaris': minor
 ---
 
-Bump storybook versions and clean up main.js
+Remove all README.md files from components, migrate them to polaris.shopify.com and storybook examples
