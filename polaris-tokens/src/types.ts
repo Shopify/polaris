@@ -1,36 +1,36 @@
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
 
-export interface MetaTokenProperties {
+export interface MetadataProperties {
   description?: string;
   value: string;
 }
 
-export interface MetaTokenGroup {
-  [token: string]: MetaTokenProperties;
+export interface MetadataGroup {
+  [token: string]: MetadataProperties;
+}
+
+export interface Metadata {
+  breakpoints: MetadataGroup;
+  colors: MetadataGroup;
+  depth: MetadataGroup;
+  legacy: MetadataGroup;
+  motion: MetadataGroup;
+  shape: MetadataGroup;
+  spacing: MetadataGroup;
+  typography: MetadataGroup;
+  zIndex: MetadataGroup;
 }
 
 export interface TokenGroup {
   [token: string]: string;
 }
 
-export interface MetaTokens {
-  breakpoints: MetaTokenGroup;
-  colors: MetaTokenGroup;
-  depth: MetaTokenGroup;
-  legacy: MetaTokenGroup;
-  motion: MetaTokenGroup;
-  shape: MetaTokenGroup;
-  spacing: MetaTokenGroup;
-  typography: MetaTokenGroup;
-  zIndex: MetaTokenGroup;
-}
-
 export type Tokens = {
-  [Property in keyof MetaTokens]: TokenGroup;
+  [Property in keyof MetadataGroup]: TokenGroup;
 };
 
-export type ExtractValues<T extends MetaTokenGroup> = {
+export type ExtractValues<T extends MetadataGroup> = {
   [K in keyof T]: T[K]['value'];
 };
 

@@ -2,7 +2,7 @@ import type {
   Entry,
   Exact,
   ExtractValues,
-  MetaTokenGroup,
+  MetadataGroup,
   Tokens,
   TokenGroup,
 } from './types';
@@ -83,9 +83,7 @@ export function rem(value: string) {
   );
 }
 
-export function tokensToRems<T extends Exact<MetaTokenGroup, T>>(
-  tokenGroup: T,
-) {
+export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, properties]) => [
       token,
@@ -125,12 +123,12 @@ export function getCustomPropertyNames(tokens: Tokens) {
     .flat();
 }
 
-export function removeMetadata<T extends Exact<MetaTokenGroup, T>>(
+export function removeMetadata<T extends Exact<MetadataGroup, T>>(
   tokenGroup: T,
 ) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map((entry): Entry<TokenGroup> => {
-      const [tokenName, {value}] = entry as Entry<MetaTokenGroup>;
+      const [tokenName, {value}] = entry as Entry<MetadataGroup>;
 
       return [tokenName, value];
     }),

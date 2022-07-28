@@ -1,7 +1,7 @@
-import { Tokens, TokenGroup, createVar, tokens } from "@shopify/polaris-tokens";
+import { createVar, tokens, TokenGroup } from "@shopify/polaris-tokens";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-type TokenGroupKey = keyof Tokens;
+type TokenGroupKey = keyof typeof tokens;
 
 export const tokenGroupKeys = Object.keys(tokens) as TokenGroupKey[];
 

@@ -1,9 +1,9 @@
-export * from './metaTokens';
+export * from './metadata';
 export * from './utilities';
 export type {
-  MetaTokenGroup,
-  MetaTokenProperties,
-  MetaTokens,
   TokenGroup,
   Tokens,
+  MetadataProperties,
+  MetadataGroup,
+  Metadata,
 } from './types';

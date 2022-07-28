@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {MetaTokens, MetaTokenGroup} from '../src';
+import {Metadata, MetadataGroup} from '../src';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
 const sassOutputDir = path.join(__dirname, '../dist/scss');
@@ -12,16 +12,16 @@ const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
  * Creates static CSS custom properties.
  * Note: These values don't vary by color-scheme.
  */
-export function getStaticCustomProperties(metaTokens: MetaTokens) {
-  return Object.entries(metaTokens)
+export function getStaticCustomProperties(metadata: Metadata) {
+  return Object.entries(metadata)
     .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
     .join('');
 }
 
 /**
- * Creates CSS custom properties for a given metaTokens object.
+ * Creates CSS custom properties for a given metadata object.
  */
-export function getCustomProperties(tokenGroup: MetaTokenGroup) {
+export function getCustomProperties(tokenGroup: MetadataGroup) {
   return Object.entries(tokenGroup)
     .map(([token, {value}]) =>
       token.startsWith('keyframes')
@@ -34,14 +34,14 @@ export function getCustomProperties(tokenGroup: MetaTokenGroup) {
 /**
  * Concatenates the `keyframes` token-group into a single string.
  */
-export function getKeyframes(motion: MetaTokenGroup) {
+export function getKeyframes(motion: MetadataGroup) {
   return Object.entries(motion)
     .filter(([token]) => token.startsWith('keyframes'))
     .map(([token, {value}]) => `@keyframes p-${token}${value}`)
     .join('');
 }
 
-export async function toStyleSheet(metaTokens: MetaTokens) {
+export async function toStyleSheet(metadata: Metadata) {
   if (!fs.existsSync(cssOutputDir)) {
     await fs.promises.mkdir(cssOutputDir, {recursive: true});
   }
@@ -50,8 +50,8 @@ export async function toStyleSheet(metaTokens: MetaTokens) {
   }
 
   const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(metaTokens)}}
-  ${getKeyframes(metaTokens.motion)}
+  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
+  ${getKeyframes(metadata.motion)}
 `;
 
   await fs.promises.writeFile(cssOutputPath, styles);

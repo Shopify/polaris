@@ -1,4 +1,4 @@
-import {createVar, metaTokens, MetaTokenGroup} from '@shopify/polaris-tokens';
+import {createVar, metadata, MetadataGroup} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
@@ -12,7 +12,7 @@ import {
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const {legacy, ...restTokenGroups} = metaTokens;
+const {legacy, ...restTokenGroups} = metadata;
 
 const groupedCompletionItemTokenGroups = restTokenGroups;
 
@@ -27,7 +27,7 @@ type GroupedCompletionItems = {
  */
 const groupedCompletionItems = Object.fromEntries(
   Object.entries(groupedCompletionItemTokenGroups).map(
-    ([groupedCompletionItemsKey, tokenGroup]: [string, MetaTokenGroup]) => {
+    ([groupedCompletionItemsKey, tokenGroup]: [string, MetadataGroup]) => {
       const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
         tokenGroup,
       ).map(
