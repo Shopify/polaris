@@ -34,22 +34,10 @@ examples:
     title: Align
     description: >-
       Use to set text alignment.
-  - fileName: text-with-font-weight-regular.tsx
-    title: With font weight regular
+  - fileName: text-weight.tsx
+    title: Weight
     description: >-
-      Use to give text a regular font weight.
-  - fileName: text-with-font-weight-medium.tsx
-    title: With font weight medium
-    description: >-
-      Use to give text a medium font weight.
-  - fileName: text-with-font-weight-semibold.tsx
-    title: With font weight semibold
-    description: >-
-      Use to give text a semi-bold font weight.
-  - fileName: text-with-font-weight-bold.tsx
-    title: With font weight bold
-    description: >-
-      Use to give text a bold font weight.
+      Use to give text a range of font weights.
   - fileName: text-with-color-success.tsx
     title: With color success
     description: >-
