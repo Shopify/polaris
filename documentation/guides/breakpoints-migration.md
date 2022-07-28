@@ -1,6 +1,20 @@
 ## New breakpoints
 
-TODO: write about the 5 new breakpoints
+As part of our project to reduce the total number of unique breakpoints in Polaris and Shopify’s admin we've created the follow set of mobile first breakpoint tokens: 
+
+* `xs`: 0px
+* `sm`: 490px
+* `md`: 768px
+* `lg`: 1040px
+* `xl`: 1440px
+
+A transform takes these values and generates Sass variables (which can be used in media conditions) for eahc breakpoint in `up`, `down`, and `only` directions. 
+
+Example of generated output for `breakpoints-md`:
+
+@media #{$p-breakpoints-md-up} {/*...*/}
+@media #{$p-breakpoints-md-down} {/*...*/}
+@media #{$p-breakpoints-md-only} {/*...*/}
 
 ### Media queries variables
 
