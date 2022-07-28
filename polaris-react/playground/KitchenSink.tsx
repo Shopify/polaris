@@ -2,51 +2,45 @@ import React from 'react';
 
 import {RenderPerformanceProfiler} from '../.storybook/RenderPerformanceProfiler';
 
-interface ReadmeModule {
-  [key: string]: any;
-}
-
-const readmeReq = require.context(
-  '../src/components',
-  true,
-  /\/.+\/README.md$/,
+const stories: any = {};
+const req = require.context('../src/components', true, /.stories.tsx$/);
+req.keys().forEach((filePath) =>
+  req(filePath).__namedExportsOrder.forEach((namedExport: string) => {
+    const componentName = `${filePath.split('/')[1]}:${namedExport}`;
+    stories[componentName] = req(filePath)[namedExport];
+  }),
 );
-const readmeModules = readmeReq
-  .keys()
-  .map((filename): ReadmeModule => readmeReq(filename));
 
 export function KitchenSink() {
-  return readmeModules.reduce((memo, readmeModule) => {
-    const stories = Object.entries(readmeModule)
-      .filter(filterExports)
-      .map(([storyName, Story]) => {
-        const id = `${readmeModule.default.title}:${storyName}`;
-        return (
-          <div key={id}>
-            <RenderPerformanceProfiler
-              id={id.replace('All Components/', '')}
-              kind={storyName}
-              printToDOM
-            >
-              <Story />
-            </RenderPerformanceProfiler>
-            <hr
-              style={{
-                border: 'none',
-                margin: 10,
-              }}
-            />
-          </div>
-        );
-      });
-
-    memo.push(...stories);
-    return memo;
-  }, []);
-}
-
-function filterExports([exportName]: [string, any]) {
-  const excludedStoryNames =
-    /AllExamples|frame|theme|ContextualSaveBar|topbar|defaultloading|modal|sheet/i;
-  return exportName !== 'default' && !excludedStoryNames.test(exportName);
+  return Object.entries(stories)
+    .filter(
+      ([id]) =>
+        ![
+          'Modal',
+          'ContextualSaveBar',
+          'TopBar',
+          'Sheet',
+          'Frame',
+          'Loading',
+        ].includes(id.split(':')[0]),
+    )
+    .map(([id, Story]) => {
+      return (
+        <div key={id}>
+          <RenderPerformanceProfiler
+            id={id.replace('All Components/', '')}
+            kind={id}
+            printToDOM
+          >
+            <Story />
+          </RenderPerformanceProfiler>
+          <hr
+            style={{
+              border: 'none',
+              margin: 10,
+            }}
+          />
+        </div>
+      );
+    });
 }
