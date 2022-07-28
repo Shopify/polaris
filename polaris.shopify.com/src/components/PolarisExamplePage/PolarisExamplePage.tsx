@@ -8,7 +8,7 @@ interface ExampleProps {
 }
 
 const stylesheetHref =
-  "https://unpkg.com/@shopify/polaris@9.9.0-next.1/build/esm/styles.css";
+  "https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css";
 
 function PolarisExamplePage(props: ExampleProps) {
   return (
