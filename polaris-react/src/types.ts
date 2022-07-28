@@ -1,9 +1,10 @@
-// eslint-disable-next-line @shopify/strict-component-boundaries
+import type React from 'react';
+
+/* eslint-disable @shopify/strict-component-boundaries */
 import type {AvatarProps} from './components/Avatar';
-// eslint-disable-next-line @shopify/strict-component-boundaries
 import type {IconProps} from './components/Icon';
-// eslint-disable-next-line @shopify/strict-component-boundaries
 import type {ThumbnailProps} from './components/Thumbnail';
+/* eslint-enable @shopify/strict-component-boundaries */
 
 export interface OptionDescriptor {
   /** Value of the option */
@@ -170,6 +171,11 @@ export interface PlainAction extends Action {
   plain?: boolean;
 }
 
+export interface TooltipAction {
+  /** Text content to render in a tooltip */
+  helpText?: React.ReactNode;
+}
+
 export interface ActionListItemDescriptor
   extends DisableableAction,
     DestructableAction {
@@ -181,7 +187,7 @@ export interface ActionListItemDescriptor
     content: string;
   };
   /** Additional hint text to display with item */
-  helpText?: string;
+  helpText?: React.ReactNode;
   /** @deprecated Source of the icon */
   icon?: IconSource;
   /** @deprecated Image source */
@@ -214,7 +220,7 @@ export interface ComplexAction
     LoadableAction,
     PlainAction {}
 
-export interface MenuActionDescriptor extends ComplexAction {
+export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
 }
