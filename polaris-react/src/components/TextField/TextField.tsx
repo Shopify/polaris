@@ -239,6 +239,7 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
+  const spinnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -405,6 +406,7 @@ export function TextField({
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
+        ref={spinnerRef}
       />
     ) : null;
 
@@ -571,46 +573,6 @@ export function TextField({
     </Labelled>
   );
 
-  function handleClearButtonPress() {
-    onClearButtonClick && onClearButtonClick(id);
-  }
-
-  function handleKeyPress(event: React.KeyboardEvent) {
-    const {key, which} = event;
-    const numbersSpec = /[\d.eE+-]$/;
-    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
-      return;
-    }
-
-    event.preventDefault();
-  }
-
-  function isPrefixOrSuffix(target: Element | EventTarget) {
-    return (
-      target instanceof Element &&
-      ((prefixRef.current && prefixRef.current.contains(target)) ||
-        (suffixRef.current && suffixRef.current.contains(target)))
-    );
-  }
-
-  function isVerticalContent(target: Element | EventTarget) {
-    return (
-      target instanceof Element &&
-      verticalContentRef.current &&
-      (verticalContentRef.current.contains(target) ||
-        verticalContentRef.current.contains(document.activeElement))
-    );
-  }
-
-  function isInput(target: HTMLElement | EventTarget) {
-    return (
-      target instanceof HTMLElement &&
-      inputRef.current &&
-      (inputRef.current.contains(target) ||
-        inputRef.current.contains(document.activeElement))
-    );
-  }
-
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     onChange && onChange(event.currentTarget.value, id);
   }
@@ -620,6 +582,7 @@ export function TextField({
       isPrefixOrSuffix(target) ||
       isVerticalContent(target) ||
       isInput(target) ||
+      isSpinner(target) ||
       focus
     ) {
       return;
@@ -629,7 +592,7 @@ export function TextField({
   }
 
   function handleClickChild(event: React.MouseEvent) {
-    if (inputRef.current !== event.target) {
+    if (!isSpinner(event.target) && !isInput(event.target)) {
       event.stopPropagation();
     }
 
@@ -644,6 +607,60 @@ export function TextField({
 
     setFocus(true);
   }
+
+  function handleClearButtonPress() {
+    onClearButtonClick && onClearButtonClick(id);
+  }
+
+  function handleKeyPress(event: React.KeyboardEvent) {
+    const {key, which} = event;
+    const numbersSpec = /[\d.eE+-]$/;
+    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
+      return;
+    }
+
+    event.preventDefault();
+  }
+
+  function isInput(target: HTMLElement | EventTarget) {
+    return (
+      target instanceof HTMLElement &&
+      inputRef.current &&
+      (inputRef.current.contains(target) ||
+        inputRef.current.contains(document.activeElement))
+    );
+  }
+
+  function isPrefixOrSuffix(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      ((prefixRef.current && prefixRef.current.contains(target)) ||
+        (suffixRef.current && suffixRef.current.contains(target)))
+    );
+  }
+
+  function isSpinner(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      spinnerRef.current &&
+      spinnerRef.current.contains(target)
+    );
+  }
+
+  function isVerticalContent(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      verticalContentRef.current &&
+      (verticalContentRef.current.contains(target) ||
+        verticalContentRef.current.contains(document.activeElement))
+    );
+  }
+}
+
+function getRows(multiline?: boolean | number) {
+  if (!multiline) return undefined;
+
+  return typeof multiline === 'number' ? multiline : 1;
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
@@ -652,10 +669,4 @@ function normalizeAriaMultiline(multiline?: boolean | number) {
   return Boolean(multiline) || multiline > 0
     ? {'aria-multiline': true}
     : undefined;
-}
-
-function getRows(multiline?: boolean | number) {
-  if (!multiline) return undefined;
-
-  return typeof multiline === 'number' ? multiline : 1;
 }

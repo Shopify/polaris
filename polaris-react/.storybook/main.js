@@ -18,13 +18,7 @@ module.exports = {
       files: '**/*.stories.tsx',
     },
   ],
-  addons: [
-    {
-      name: '@storybook/addon-essentials',
-      options: {docs: false},
-    },
-    '@storybook/addon-a11y',
-  ],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-toolbars'],
   webpackFinal: (config) => {
     const extraRules = [
       {
