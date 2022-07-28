@@ -96,7 +96,6 @@
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
     "chromatic": "^6.5.4",
-    "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",
     "create-file-webpack": "^1.0.2",
     "glob": "^7.1.6",
