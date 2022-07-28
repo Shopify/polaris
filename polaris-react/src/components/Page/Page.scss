@@ -28,7 +28,7 @@ body {
 }
 
 .narrowWidth {
-  max-width: layout-width(primary, max);
+  max-width: $layout-width-primary-max;
 }
 
 .Content {
@@ -37,5 +37,5 @@ body {
 
 .divider {
   border-top: var(--p-border-divider);
-  padding-top: var(--p-space-4);
+  padding-top: var(--p-space-8);
 }

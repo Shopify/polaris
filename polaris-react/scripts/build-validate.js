@@ -44,6 +44,8 @@ function validateStandardBuild() {
   const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar {'));
   assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton {'));
+  assert.ok(cssContent.includes('@keyframes p-keyframes-bounce {'));
+  assert.ok(cssContent.includes('--p-keyframes-bounce:p-keyframes-bounce;'));
 }
 
 function validateEsNextBuild() {
@@ -51,13 +53,26 @@ function validateEsNextBuild() {
   assert.ok(fs.existsSync('./build/esnext/index.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
+  assert.ok(
+    fs.existsSync(
+      './build/esnext/components/CustomProperties/CustomProperties.css',
+    ),
+  );
 
   // ESnext build css contains namespaced classes, and
   const cssContent = fs.readFileSync(
     './build/esnext/components/Avatar/Avatar.css',
     'utf-8',
   );
+  const cssKeyframesContent = fs.readFileSync(
+    './build/esnext/components/CustomProperties/CustomProperties.css',
+    'utf-8',
+  );
   assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
+  assert.ok(cssKeyframesContent.includes('@keyframes p-keyframes-spin {'));
+  assert.ok(
+    cssKeyframesContent.includes('--p-keyframes-spin:p-keyframes-spin;'),
+  );
 
   const jsContent = fs.readFileSync(
     './build/esnext/components/Avatar/Avatar.scss.esnext',

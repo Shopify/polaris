@@ -1,0 +1,64 @@
+@import "../../styles/mixins.scss";
+
+.IconGrid {
+  border-radius: var(--border-radius-600);
+  position: relative;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    box-shadow: inset 0 0 0 1px var(--border-color-light),
+      0 0 0 5px var(--surface);
+    pointer-events: none;
+    border-radius: var(--border-radius-600);
+  }
+}
+
+.IconGridInner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+}
+
+.Icon {
+  display: flex;
+  font-size: var(--font-size-50);
+  color: var(--text-subdued);
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border-color-light);
+  border-right: 1px solid var(--border-color-light);
+  gap: 1.125rem;
+
+  p {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:focus-visible,
+  &.isSelected,
+  &:hover {
+    background: var(--search-highlight-color);
+    box-shadow: none;
+  }
+
+  @media (hover: hover) {
+    &[data-is-current-result="true"] {
+      background: var(--search-highlight-color);
+      box-shadow: none;
+    }
+  }
+}
+
+.SectionHeading {
+  font-size: var(--font-size-200);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-strong);
+  font-weight: var(--font-weight-500);
+}

@@ -6,7 +6,7 @@ import {Icon} from '../Icon';
 
 import styles from './Thumbnail.scss';
 
-type Size = 'small' | 'medium' | 'large';
+type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 
 export interface ThumbnailProps {
   /**

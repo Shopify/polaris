@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - next
+  pull_request:
+
+jobs:
+  build:
+    name: 'Validate with Node v${{ matrix.node_version }}'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: ['14.17.0', '16.13.0']
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Setup Node with v${{ matrix.node_version }}
+        uses: actions/setup-node@v3
+        with:
+          node_version: ${{ matrix.node_version }}
+          cache: yarn
+
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/.eslintcache
+            **/.turbo
+            node_modules/.cache/turbo
+            polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Type check
+        run: yarn type-check
+
+      - name: Test
+        run: yarn test

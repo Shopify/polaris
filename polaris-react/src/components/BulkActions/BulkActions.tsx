@@ -1,8 +1,8 @@
 import React, {PureComponent, createRef} from 'react';
 import {CSSTransition, Transition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import {tokens} from '../../tokens';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {clamp} from '../../utilities/clamp';
@@ -17,8 +17,9 @@ import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
-import {EventListener} from '../EventListener';
 import {CheckableButton} from '../CheckableButton';
+// eslint-disable-next-line import/no-deprecated
+import {EventListener} from '../EventListener';
 
 import {BulkActionButton, BulkActionMenu} from './components';
 import styles from './BulkActions.scss';
@@ -424,7 +425,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                   <CSSTransition
                     nodeRef={this.checkableWrapperNode}
                     in={selectMode}
-                    timeout={parseInt(tokens.motion['duration-200'], 10)}
+                    timeout={parseInt(tokens.motion['duration-200'].value, 10)}
                     classNames={slideClasses}
                     appear={!selectMode}
                   >

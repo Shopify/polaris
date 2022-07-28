@@ -42,7 +42,13 @@
 }
 
 .Backdrop {
+  --pc-icon-size-small: var(--p-icon-size-small);
+
   // ::before is the selected dot, ::after the focus-ring
+
+  @include when-typography-condensed {
+    --pc-icon-size-small: 10px;
+  }
   position: relative;
   top: 0;
   left: 0;
@@ -62,8 +68,8 @@
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.1);
     transform-origin: 50% 50%;
-    height: var(--p-icon-size-small);
-    width: var(--p-icon-size-small);
+    height: var(--pc-icon-size-small);
+    width: var(--pc-icon-size-small);
     background-color: var(--p-interactive);
     border-radius: var(--p-border-radius-half);
     transition: opacity var(--p-duration-100) var(--p-ease),

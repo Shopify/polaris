@@ -47,7 +47,7 @@ The shortcut description should describe what action is taken when merchants tap
 
 ## Examples
 
-### List of keyboard shortcuts
+### Default
 
 Use to list a related set of keyboard shortcuts.
 
@@ -65,29 +65,9 @@ Use to list a related set of keyboard shortcuts.
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The text of the keyboard key component is read by screen readers, but the visual formatting isn’t conveyed. Ensure that merchants are able to understand information about keyboard shortcuts without relying on the visual style of the component.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -107,5 +87,3 @@ Use <KeyboardKey>Ctrl</KeyboardKey>
 ```
 
 <!-- end -->
-
-<!-- /content-for -->

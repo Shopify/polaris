@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "查看用于 {title} 的操作"
       }
+    },
+    "FullscreenBar": {
+      "back": "上一步",
+      "accessibilityLabel": "退出全屏模式"
     }
   }
 }

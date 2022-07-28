@@ -1,11 +1,14 @@
 .YoutubeVideo {
   position: relative;
   padding-bottom: 56.25%;
+  padding-bottom: 56%; // Caps some stray pixels caused by rounding errors
   height: 0;
   overflow: hidden;
   max-width: 100%;
-  border-radius: var(--border-radius-300);
+  border-radius: var(--border-radius-400);
+  background: var(--text);
 
+  img,
   iframe,
   object,
   embed {

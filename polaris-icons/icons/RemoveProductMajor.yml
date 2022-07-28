@@ -1,4 +1,4 @@
-name: remove product
+name: Remove product
 set: major
 description: Used to represent an action to remove a product.
 keywords:

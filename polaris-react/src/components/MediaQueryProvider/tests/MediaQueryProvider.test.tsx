@@ -3,6 +3,7 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {act} from 'react-dom/test-utils';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {useMediaQuery} from '../../../utilities/media-query';
@@ -18,6 +19,7 @@ describe('MediaQueryProvider', () => {
 
   it('renders EventListener with the resize event', () => {
     const mediaQueryProvider = mountWithApp(<MediaQueryProvider />);
+    // eslint-disable-next-line import/no-deprecated
     expect(mediaQueryProvider).toContainReactComponentTimes(EventListener, 1, {
       event: 'resize',
     });

@@ -1,4 +1,4 @@
-name: select
+name: Select
 set: minor
 description: Used to denote the action opening a select.
 keywords:

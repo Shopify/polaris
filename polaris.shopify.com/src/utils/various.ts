@@ -1,5 +1,6 @@
-import { NavItem } from "../components/Nav/Nav";
+import type { NavItem } from "../components/Nav";
 import components from "../data/components.json";
+import { Status } from "../types";
 
 export const getComponentCategories = (): string[] => {
   const tempComponentCategories: { [key: string]: boolean } = {};
@@ -13,7 +14,47 @@ export const getComponentCategories = (): string[] => {
   return componentCategories;
 };
 
-export const slugify = (str: string) => {
+export const getComponentNav = (): NavItem[] => {
+  const navItems: NavItem[] = [
+    {
+      title: "All",
+      children: components.map((component) => {
+        const statusValue =
+          component.frontMatter.status?.value.toLowerCase() as
+            | Status["value"]
+            | undefined;
+        return {
+          title: component.frontMatter.name,
+          url: `/components/${slugify(component.frontMatter.name)}`,
+          status:
+            component.frontMatter.status && statusValue
+              ? {
+                  value: statusValue,
+                  message: component.frontMatter.status.value,
+                }
+              : undefined,
+        };
+      }),
+    },
+  ];
+
+  return navItems;
+};
+
+export const getReadableStatusValue = (
+  statusValue: Status["value"]
+): string => {
+  const bannerTitles: { [key in Status["value"]]: string } = {
+    deprecated: "Deprecated",
+    alpha: "Alpha",
+    information: "Information",
+    warning: "Warning",
+  };
+
+  return bannerTitles[statusValue];
+};
+
+export const slugify = (str: string): string => {
   return (
     str
       // Camel to hyphen case
@@ -44,14 +85,6 @@ export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
   });
 
   return urls;
-};
-
-export const getTitleForTitleTag = (title?: string) => {
-  const siteName = "Shopify Polaris";
-  if (title) {
-    return `${title} — ${siteName}`;
-  }
-  return siteName;
 };
 
 export const className = (

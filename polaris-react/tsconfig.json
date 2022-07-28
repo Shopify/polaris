@@ -1,25 +1,23 @@
 {
   "extends": "@shopify/typescript-configs/library",
   "compilerOptions": {
-    "rootDir": "./",
-    "noEmit": false,
-    "emitDeclarationOnly": true,
     "composite": true,
-    "incremental": true,
-    "outDir": "build/ts/latest",
-    "isolatedModules": true,
+    "emitDeclarationOnly": true,
     "importsNotUsedAsValues": "error",
+    "outDir": "build/ts/latest",
+    "rootDir": "./",
     "strictFunctionTypes": false,
     "paths": {
       "tests/*": ["./tests/*"]
     }
   },
   "include": [
-    "./config/typescript",
     "./src",
     "./src/**/*.json",
     "./locales/**/*.json",
     "./tests",
-    "./playground"
+    "./playground",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
   ]
 }

@@ -10,12 +10,14 @@ import {
   Tabs,
   Typography,
 } from 'antd';
-const {Text} = Typography;
-const {TabPane} = Tabs;
 import {ToolOutlined} from '@ant-design/icons';
+
 import {Token, LintedLayer, PluginMessage, UIMessage} from './types';
 import {rgbaToHex} from './utils';
 import './styles.css';
+
+const {Text} = Typography;
+const {TabPane} = Tabs;
 
 type PostMessageFunction = (message: UIMessage) => void;
 
@@ -132,7 +134,7 @@ function App() {
               />
 
               <div>
-                {lintedLayers.map((layer, i) => (
+                {lintedLayers.map((layer) => (
                   <div className="layer" key={layer.id}>
                     <div
                       className="layerNameWrapper"
@@ -164,7 +166,7 @@ function App() {
             </>
           ) : (
             <Alert
-              message={`All layers in this file are using Polaris tokens. Good job!`}
+              message="All layers in this file are using Polaris tokens. Good job!"
               type="success"
             />
           )}
@@ -202,8 +204,8 @@ function ReplacementSuggestion({
   layer: LintedLayer;
   postMessage: PostMessageFunction;
 }) {
-  let color: RGBA | undefined = undefined;
-  let closestToken: Token | undefined = undefined;
+  let color: RGBA | undefined;
+  let closestToken: Token | undefined;
 
   if (type === 'fill' && layer.fill && layer.fill.closestToken) {
     color = layer.fill.color;
@@ -237,7 +239,7 @@ function ReplacementSuggestion({
                 }
           }
           data-c={currentHexValue}
-        ></div>
+        />
         {currentHexValue}
       </div>
       <div>&rarr;</div>
@@ -247,7 +249,7 @@ function ReplacementSuggestion({
           style={{
             background: `rgba(${closestToken.value.r}, ${closestToken.value.g}, ${closestToken.value.b}, ${closestToken.value.a})`,
           }}
-        ></div>{' '}
+        />{' '}
         {closestToken.figmaName}
       </div>
       <Button

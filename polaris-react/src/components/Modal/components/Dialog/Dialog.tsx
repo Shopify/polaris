@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
+import {tokens} from '@shopify/polaris-tokens';
 
-import {tokens} from '../../../../tokens';
 import {classNames} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {Key} from '../../../../types';
@@ -21,6 +21,7 @@ export interface DialogProps {
   onEntered?(): void;
   onExited?(): void;
   in?: boolean;
+  fullScreen?: boolean;
 }
 
 export function Dialog({
@@ -33,6 +34,7 @@ export function Dialog({
   large,
   small,
   limitHeight,
+  fullScreen,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
@@ -41,6 +43,7 @@ export function Dialog({
     small && styles.sizeSmall,
     large && styles.sizeLarge,
     limitHeight && styles.limitHeight,
+    fullScreen && styles.fullScreen,
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
@@ -56,7 +59,7 @@ export function Dialog({
       nodeRef={containerNode}
       mountOnEnter
       unmountOnExit
-      timeout={parseInt(tokens.motion['duration-200'], 10)}
+      timeout={parseInt(tokens.motion['duration-200'].value, 10)}
       onEntered={onEntered}
       onExited={onExited}
     >

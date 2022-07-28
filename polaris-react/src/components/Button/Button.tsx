@@ -17,6 +17,7 @@ import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
+import {useDisableClick} from '../../utilities/use-disable-interaction';
 
 import styles from './Button.scss';
 
@@ -33,7 +34,7 @@ export interface ButtonProps extends BaseButton {
    */
   size?: 'slim' | 'medium' | 'large';
   /** Changes the inner text alignment of the button */
-  textAlign?: 'left' | 'right' | 'center';
+  textAlign?: 'left' | 'right' | 'center' | 'start' | 'end';
   /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
   outline?: boolean;
   /** Allows the button to grow to the width of its container */
@@ -50,6 +51,8 @@ export interface ButtonProps extends BaseButton {
   icon?: React.ReactElement | IconSource;
   /** Disclosure button connected right of the button. Toggles a popover action list. */
   connectedDisclosure?: ConnectedDisclosure;
+  /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
+  dataPrimaryLink?: boolean;
 }
 
 interface CommonButtonProps
@@ -67,6 +70,7 @@ interface CommonButtonProps
   > {
   className: UnstyledButtonProps['className'];
   onMouseUp: MouseUpBlurHandler;
+  'data-primary-link'?: boolean;
 }
 
 type LinkButtonProps = Pick<ButtonProps, 'url' | 'external' | 'download'>;
@@ -78,10 +82,12 @@ type ActionButtonProps = Pick<
   | 'loading'
   | 'ariaControls'
   | 'ariaExpanded'
+  | 'ariaChecked'
   | 'pressed'
   | 'onKeyDown'
   | 'onKeyUp'
   | 'onKeyPress'
+  | 'onPointerDown'
 >;
 
 const DEFAULT_SIZE = 'medium';
@@ -101,6 +107,7 @@ export function Button({
   ariaControls,
   ariaExpanded,
   ariaDescribedBy,
+  ariaChecked,
   onClick,
   onFocus,
   onBlur,
@@ -109,6 +116,7 @@ export function Button({
   onKeyUp,
   onMouseEnter,
   onTouchStart,
+  onPointerDown,
   icon,
   primary,
   outline,
@@ -121,6 +129,7 @@ export function Button({
   textAlign,
   fullWidth,
   connectedDisclosure,
+  dataPrimaryLink,
 }: ButtonProps) {
   const i18n = useI18n();
 
@@ -196,6 +205,8 @@ export function Button({
     setDisclosureActive((disclosureActive) => !disclosureActive);
   }, []);
 
+  const handleClick = useDisableClick(disabled, toggleDisclosureActive);
+
   let connectedDisclosureMarkup;
 
   if (connectedDisclosure) {
@@ -223,11 +234,13 @@ export function Button({
       <button
         type="button"
         className={connectedDisclosureClassName}
-        disabled={disabled}
+        aria-disabled={disabled}
         aria-label={disclosureLabel}
         aria-describedby={ariaDescribedBy}
-        onClick={toggleDisclosureActive}
+        aria-checked={ariaChecked}
+        onClick={handleClick}
         onMouseUp={handleMouseUpByBlurring}
+        tabIndex={disabled ? -1 : undefined}
       >
         <span className={styles.Icon}>
           <Icon source={CaretDownMinor} />
@@ -262,6 +275,7 @@ export function Button({
     onMouseUp: handleMouseUpByBlurring,
     onMouseEnter,
     onTouchStart,
+    'data-primary-link': dataPrimaryLink,
   };
   const linkProps: LinkButtonProps = {
     url,
@@ -274,10 +288,12 @@ export function Button({
     loading,
     ariaControls,
     ariaExpanded,
+    ariaChecked,
     pressed,
     onKeyDown,
     onKeyUp,
     onKeyPress,
+    onPointerDown,
   };
 
   const buttonMarkup = (

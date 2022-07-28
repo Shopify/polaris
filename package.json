@@ -5,39 +5,97 @@
   "engines": {
     "node": "^14.17.0 || ^16.13.0"
   },
-  "workspaces": [
-    "polaris-tokens",
-    "polaris-for-vscode",
-    "polaris-icons",
-    "polaris-react",
-    "stylelint-polaris",
-    "polaris.shopify.com"
-  ],
+  "workspaces": {
+    "packages": [
+      "polaris-tokens",
+      "polaris-for-figma",
+      "polaris-for-vscode",
+      "polaris-icons",
+      "polaris-react",
+      "stylelint-polaris",
+      "polaris.shopify.com"
+    ],
+    "nohoist": [
+      "**/vscode-languageclient",
+      "**/vscode-languageclient/**",
+      "**/vscode-languageserver",
+      "**/vscode-languageserver/**",
+      "**/vscode-languageserver-textdocument",
+      "**/vscode-languageserver-textdocument/**"
+    ]
+  },
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue --filter=@shopify/polaris",
+    "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "test:watch": "jest --watch",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier . --write",
     "type-check": "tsc --build",
-    "preversion": "echo \"Error: do not run yarn version from root\" && exit 1"
+    "changeset": "changeset",
+    "preversion-packages": "turbo run preversion",
+    "version-packages": "yarn preversion-packages && changeset version",
+    "release": "turbo run build --filter=polaris.shopify.com^... && changeset publish",
+    "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
+    "@changesets/changelog-github": "^0.4.4",
+    "@changesets/cli": "^2.23.0",
     "@next/eslint-plugin-next": "^12.1.4",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.1.0",
+    "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@rollup/plugin-virtual": "^2.0.3",
+    "@rollup/pluginutils": "^4.1.0",
     "@shopify/babel-preset": "^24.1.2",
-    "@shopify/eslint-plugin": "^41.0.1",
+    "@shopify/eslint-plugin": "^42.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",
     "@shopify/typescript-configs": "^5.1.0",
+    "@size-limit/preset-small-lib": "^5.0.3",
+    "@types/jest": "^27.5.1",
+    "downlevel-dts": "^0.6.0",
     "eslint": "^8.3.0",
+    "execa": "^5.0.0",
+    "jest": "^27.5.1",
+    "jest-preset-stylelint": "^5.0.3",
+    "jest-watch-typeahead": "^1.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
+    "rollup": "^2.70.2",
+    "rollup-plugin-node-externals": "^4.0.0",
+    "size-limit": "^5.0.3",
     "stylelint": "^14.1.0",
-    "turbo": "^1.2.6",
-    "typescript": ">=3.0.0"
+    "turbo": "^1.2.8",
+    "typescript": "^4.6.3"
   },
-  "prettier": "@shopify/prettier-config"
+  "prettier": "@shopify/prettier-config",
+  "size-limit": [
+    {
+      "name": "polaris-react-cjs",
+      "path": "polaris-react/build/cjs/index.js",
+      "limit": "205 kB"
+    },
+    {
+      "name": "polaris-react-esm",
+      "path": "polaris-react/build/esm/index.js",
+      "limit": "140 kB"
+    },
+    {
+      "name": "polaris-react-esnext",
+      "path": "polaris-react/build/esnext/index.esnext",
+      "limit": "195 kB"
+    },
+    {
+      "name": "polaris-react-css",
+      "path": "polaris-react/build/esm/styles.css",
+      "limit": "45 kB"
+    }
+  ]
 }

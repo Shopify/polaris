@@ -1,10 +1,6 @@
 ---
 name: Modal
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - modal
   - src
@@ -28,58 +24,11 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 ---
 
 # Modal
 
 Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
-
----
-
-## Use in an embedded application (deprecated)
-
-Passing an API key to the [app provider component](https://polaris.shopify.com/components/structure/app-provider#section-initializing-the-shopify-app-bridge) causes the modal component to delegate to the [Shopify App Bridge](https://help.shopify.com/en/api/embedded-apps/app-bridge) instead of rendering as it would in a stand-alone application.
-
-In an embedded application context, not all documented properties are available. Some properties are only available in stand-alone applications.
-
-Properties that are available only in a stand-alone context are documented as `(stand-alone app use only)`. For instance the `children` property is documented as `(stand-alone app use only)`.
-
-The following example shows the modal component in an embedded application context:
-
-```jsx
-function EmbeddedAppModalExample() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleModalClose = useCallback(() => setModalOpen(false), []);
-
-  return (
-    <AppProvider apiKey="YOUR_API_KEY" i18n={{}} shopOrigin="YOUR_SHOP_ORIGIN">
-      <Modal
-        src="https://my-app.com/upgrade-to-retail-package"
-        open={modalOpen}
-        title="Upgrade your Shopify POS with the Retail Package"
-        primaryAction={{
-          content: 'Add Retail Package',
-          onAction: handleModalClose,
-        }}
-        secondaryActions={[
-          {
-            content: 'Cancel',
-            onAction: handleModalClose,
-          },
-        ]}
-        onClose={handleModalClose}
-      />
-    </AppProvider>
-  );
-}
-```
-
-#### Deprecation rationale
-
-As of v3.17.0, using `Modal` in an embedded app is deprecated. Support for this will be removed in v5.0 as the underlying Shopify App Bridge library will be removed from Polaris React. Learn more about the [deprecation rationale](https://github.com/Shopify/polaris-react/issues/814). Use [`Modal`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components/modal) from [`@shopify/app-bridge-react`](https://help.shopify.com/en/api/embedded-apps/app-bridge/react-components) instead.
 
 ---
 
@@ -90,7 +39,7 @@ Use modals for confirmations and conditional changes. They should be thought of 
 Modals should:
 
 - Require that merchants take an action.
-- Close when merchants press the `X` button, the `Cancel` button, or the <kbd>Esc</kbd> key, not when merchants click or tap the area outside the modal.
+- Close when merchants press the `X` button, the `Cancel` button, the <kbd>Esc</kbd> key, or when merchants click or tap the area outside the modal.
 - Not have more than two buttons (primary and secondary) at the bottom. This prevents unclear action hierarchy and crowding on mobile screens. Since modals are for focused tasks, they should have focused actions. In some cases however, a [tertiary action](#tertiary-actions) may be appropriate.
 
 ---
@@ -104,7 +53,7 @@ Modal titles should:
 - Use a clear {verb}+{noun} question or statement
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -126,7 +75,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -143,7 +92,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -161,7 +110,7 @@ Actions should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -177,7 +126,7 @@ Actions should be:
 
 - Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -193,7 +142,7 @@ Actions should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -205,8 +154,6 @@ Actions should be:
 
 <!-- end -->
 
-<a name="tertiary-actions"></a>
-
 ### Tertiary actions
 
 Tertiary actions should:
@@ -214,17 +161,17 @@ Tertiary actions should:
 - Only be used when the action requires the context of the content in the modal
 - Never be used to dismiss the modal
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
 - Use a plain button for a tertiary action if needed
-  ![Screenshot of modal with a plain button as a tertiary action](/public_images/components/Modal/do-use-plain-button-for-tertiary-action@2x.png)
+  ![Screenshot of modal with a plain button as a tertiary action](/images/components/modal/do-use-plain-button-for-tertiary-action@2x.png)
 
 #### Don’t
 
 - Use a tertiary action for a destructive action
-  ![Screenshot of modal with a destructive button as a tertiary action](/public_images/components/Modal/dont-use-destructive-tertiary-action@2x.png)
+  ![Screenshot of modal with a destructive button as a tertiary action](/images/components/modal/dont-use-destructive-tertiary-action@2x.png)
 
 <!-- end -->
 
@@ -234,7 +181,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -249,7 +196,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -265,9 +212,7 @@ Body content should be:
 
 ## Examples
 
-### Basic modal
-
-<!-- example-for: web -->
+### Default
 
 Use as the default option for a modal.
 
@@ -312,7 +257,7 @@ function ModalExample() {
 }
 ```
 
-### Modal with primary action
+### With primary action
 
 Use to let merchants take a key action.
 
@@ -385,19 +330,7 @@ function ModalWithPrimaryActionExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Modal with primary action on Android](/public_images/components/Modal/android/information@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Modal with primary action on iOS](/public_images/components/Modal/ios/information@2x.png)
-
-<!-- /content-for -->
-
-### Modal with primary and secondary actions
+### With primary and secondary actions
 
 Use to let merchants take key actions at the bottom of the modal.
 
@@ -488,21 +421,7 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
 }
 ```
 
-<!-- content-for: android -->
-
-![Modal with primary and secondary actions on Android](/public_images/components/Modal/android/basic@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Modal with primary and secondary actions on iOS](/public_images/components/Modal/ios/basic@2x.png)
-
-<!-- /content-for -->
-
-### Large modal
-
-<!-- example-for: web -->
+### Large
 
 Use when you need to increase the width of your modal.
 
@@ -559,9 +478,7 @@ function LargeModalExample() {
 }
 ```
 
-### Small modal
-
-<!-- example-for: web -->
+### Small
 
 Use when you need to decrease the width of your modal.
 
@@ -618,9 +535,7 @@ function SmallModalExample() {
 }
 ```
 
-### Modal without a title
-
-<!-- example-for: web -->
+### Without a title
 
 A title is required for accessibility, but you may hide it.
 
@@ -651,7 +566,7 @@ function ModalWithoutTitleExample() {
           },
         ]}
       >
-        <Modal.Section>
+        <Modal.Section titleHidden>
           <TextContainer>
             <p>
               Use Instagram posts to share your products with millions of
@@ -666,9 +581,7 @@ function ModalWithoutTitleExample() {
 }
 ```
 
-### Modal with scroll listener
-
-<!-- example-for: web -->
+### With scroll listener
 
 Use to implement infinite scroll of modal content.
 
@@ -678,7 +591,10 @@ function ModalWithScrollListenerExample() {
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
-  const handleScrollBottom = useCallback(() => alert('Scrolled to bottom'), []);
+  const handleScrollBottom = useCallback(
+    () => console.log('Scrolled to bottom'),
+    [],
+  );
 
   const activator = <Button onClick={handleChange}>Open</Button>;
 
@@ -706,12 +622,9 @@ function ModalWithScrollListenerExample() {
 }
 ```
 
-### Modal with activator ref
+### With activator ref
 
-<!-- example-for: web -->
-
-Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
 function ModalExample() {
@@ -765,12 +678,9 @@ function ModalExample() {
 }
 ```
 
-### Modal without an activator prop
+### Without an activator prop
 
-<!-- example-for: web -->
-
-Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach.
-See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
+Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 
 ```jsx
 function ModalExample() {
@@ -821,55 +731,17 @@ function ModalExample() {
 }
 ```
 
-### Warning modal
-
-<!-- example-for: android, ios -->
-
-Use to make it clear to the merchant that the action is potentially dangerous. Only use this option when the merchant is about to perform an action that can’t be undone or is difficult to undo.
-
-<!-- content-for: android -->
-
-![Warning modal on Android](/public_images/components/Modal/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Warning modal on iOS](/public_images/components/Modal/ios/default@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
 
-- To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](https://polaris.shopify.com/components/behavior/collapsible) to expand content in place within the page
+- To present large amounts of additional information or actions that don’t require confirmation, [use the collapsible component](https://polaris.shopify.com/components/collapsible) to expand content in place within the page
 - To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/banner)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 - Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
@@ -881,5 +753,3 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 - While the modal is open, keyboard focus shouldn’t leave the modal
 - Merchants can dismiss the modal with the keyboard by activating the `X` button, the `Cancel` button if one is provided, or by pressing the <kbd>Esc</kbd> key
 - After a modal is closed, focus returns to the button that launched it
-
-<!-- /content-for -->

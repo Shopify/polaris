@@ -1,11 +1,12 @@
 import React, {PureComponent, Children, createRef} from 'react';
+import {tokens} from '@shopify/polaris-tokens';
 
-import {tokens} from '../../../../tokens';
 import {
+  // eslint-disable-next-line import/no-deprecated
   CustomProperties,
   CustomPropertiesProps,
 } from '../../../CustomProperties';
-import {findFirstFocusableNode} from '../../../../utilities/focus';
+import {findFirstKeyboardFocusableNode} from '../../../../utilities/focus';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -13,6 +14,7 @@ import {
 } from '../../../../utilities/components';
 import {Key} from '../../../../types';
 import {overlay} from '../../../shared';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {KeypressListener} from '../../../KeypressListener';
 import {
@@ -105,7 +107,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, parseInt(tokens.motion['duration-100'], 10));
+        }, parseInt(tokens.motion['duration-100'].value, 10));
       });
     }
 
@@ -114,7 +116,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
-        }, parseInt(tokens.motion['duration-100'], 10));
+        }, parseInt(tokens.motion['duration-100'].value, 10));
       });
     }
   }
@@ -187,7 +189,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         return;
       }
 
-      const focusableChild = findFirstFocusableNode(this.contentNode.current);
+      const focusableChild = findFirstKeyboardFocusableNode(
+        this.contentNode.current,
+      );
 
       if (focusableChild && autofocusTarget === 'first-node') {
         focusableChild.focus({

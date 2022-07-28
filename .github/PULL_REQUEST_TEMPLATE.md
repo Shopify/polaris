@@ -35,7 +35,7 @@ Fixes #0000 <!-- link to issue if one exists -->
 
 🖥 [Local development instructions](https://github.com/Shopify/polaris/blob/main/README.md#local-development)
 🗒 [General tophatting guidelines](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md)
-📄 [Changelog guidelines](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md)
+📄 [Changelog guidelines](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#changelog)
 
 <!--
   Give as much information as needed to experiment with the component
@@ -67,8 +67,3 @@ export function Playground() {
 - [ ] Tested for [accessibility](https://github.com/Shopify/polaris/blob/main/documentation/Accessibility%20testing.md)
 - [ ] Updated the component's `README.md` with documentation changes
 - [ ] [Tophatted documentation](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting%20documentation.md) changes in the style guide
-- [ ] For visual design changes, ping @ sarahill to update the Polaris UI kit
-
-<!--
-  When tophatting, please check the UNRELEASED entry for consistency, as per the [guidelines](https://github.com/Shopify/polaris/blob/main/documentation/Versioning%20and%20changelog.md).
--->

@@ -1,4 +1,4 @@
-name: play circle
+name: Play circle
 set: major
 description: Used to represent an action to play or resume something.
 keywords:

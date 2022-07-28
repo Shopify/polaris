@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "ย้อนกลับ",
+      "accessibilityLabel": "ออกจากโหมดเต็มหน้าจอ"
     }
   }
 }

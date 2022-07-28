@@ -1,13 +1,6 @@
 {
+  "extends": "@shopify/typescript-configs/dom",
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "es2017",
-    "lib": ["es2017", "dom"],
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "typeRoots": ["./node_modules/@types", "./node_modules/@figma"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "strict": true
+    "target": "es5"
   }
 }

@@ -59,6 +59,8 @@ export interface ModalProps extends FooterProps {
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
+  /** Sets modal to the height of the viewport on small screens */
+  fullScreen?: boolean;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -85,6 +87,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onIFrameLoad,
   onTransitionEnd,
   noScroll,
+  fullScreen,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
@@ -145,7 +148,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       );
 
     const content = sectioned
-      ? wrapWithComponent(children, Section, {})
+      ? wrapWithComponent(children, Section, {titleHidden})
       : children;
 
     const body = loading ? (
@@ -191,6 +194,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         large={large}
         small={small}
         limitHeight={limitHeight}
+        fullScreen={fullScreen}
       >
         <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
           {title}
@@ -200,7 +204,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop />;
+    backdrop = <Backdrop onClick={onClose} />;
   }
 
   const animated = !instant;

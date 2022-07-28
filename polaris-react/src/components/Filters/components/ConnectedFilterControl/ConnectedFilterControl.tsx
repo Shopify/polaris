@@ -5,6 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import type {DisableableAction} from '../../../../types';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 
 import {Item} from './components';

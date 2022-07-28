@@ -17,7 +17,7 @@ Data tables are used to organize and display all information from a data set. Wh
 
 ## Examples
 
-### Default data table
+### Default
 
 Use to present small amounts of data for merchants to view statically.
 
@@ -62,7 +62,7 @@ function DataTableExample() {
 }
 ```
 
-### Sortable data table
+### Sortable
 
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
@@ -128,7 +128,7 @@ function SortableDataTableExample() {
 }
 ```
 
-### Data table with footer
+### With footer
 
 Use when clarity of the table’s content is needed. For example, to note the number of rows currently shown in a data table with pagination.
 
@@ -174,7 +174,7 @@ function DataTableFooterExample() {
 }
 ```
 
-### Data table with custom totals heading
+### With custom totals heading
 
 Use to provide a custom heading for the totals row.
 
@@ -224,10 +224,9 @@ function DataTableExample() {
 }
 ```
 
-### Data table with totals in footer
+### With totals in footer
 
-Use to reposition the totals row in a more appropriate location based on the data stored in the
-table for merchants to better understand its meaning.
+Use to reposition the totals row in a more appropriate location based on the data stored in the table for merchants to better understand its meaning.
 
 ```jsx
 function DataTableExample() {
@@ -271,7 +270,7 @@ function DataTableExample() {
 }
 ```
 
-### Data table with row heading links
+### With row heading links
 
 Use to help merchants find relevant, finer grained data sets.
 
@@ -340,7 +339,7 @@ function DataTableLinkExample() {
 }
 ```
 
-### Data table with all of its elements
+### With all of its elements
 
 Use as a broad example that includes most props available to data table.
 
@@ -421,6 +420,9 @@ function FullDataTableExample() {
           initialSortColumnIndex={4}
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
+          stickyHeader
+          hasFixedFirstColumn
+          truncate
         />
       </Card>
     </Page>
@@ -437,7 +439,151 @@ function FullDataTableExample() {
 }
 ```
 
-### Data table with increased density and zebra striping
+### With fixed first column
+
+Use when the table contains many columns and it would benefit the merchant to see the first column when scrolling to the right.
+
+```jsx
+function DataTableFixedFirstColumnExample() {
+  const [sortedRows, setSortedRows] = useState(null);
+
+  const initiallySortedRows = [
+    [
+      'Emerald Silk Gown',
+      'Formalwear',
+      "Jill's formal",
+      10,
+      '$875.00',
+      124689,
+      140,
+      '$426.00',
+      '$122,500.00',
+    ],
+    [
+      'Mauve Cashmere Scarf',
+      'Accessories',
+      "Jack's Accessories",
+      253,
+      '$230.00',
+      124533,
+      83,
+      '$620.00',
+      '$19,090.00',
+    ],
+    [
+      'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+      'Ensembles',
+      'Avocado Fashions',
+      23,
+      '$445.00',
+      124518,
+      32,
+      '$353.00',
+      '$14,240.00',
+    ],
+    [
+      'Socks',
+      'Essentials',
+      'Avocado Fashions',
+      465,
+      '$4.00',
+      124518,
+      32,
+      '$3.00',
+      '$140.00',
+    ],
+  ];
+  const rows = sortedRows ? sortedRows : initiallySortedRows;
+
+  const handleSort = useCallback(
+    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
+    [rows],
+  );
+
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'text',
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Category',
+            'Vendor',
+            'Orders',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Shipping',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', '', '', '', 255, '$1399', '$155,830.00']}
+          sortable={[true, true, true, true, true, true, true, true, true]}
+          defaultSortDirection="descending"
+          initialSortColumnIndex={4}
+          onSort={handleSort}
+          hasFixedFirstColumn
+          truncate
+        />
+      </Card>
+    </Page>
+  );
+
+  function sortRows(rows, index, direction) {
+    return [...rows].sort((rowA, rowB) => {
+      let type;
+      if (rowA[index].length > 1) {
+        if (!isNaN(parseFloat(rowA[index]))) {
+          type = 'number';
+        } else if (!isNaN(parseFloat(rowA[index].substring(1)))) {
+          type = 'currency';
+        } else type = 'string';
+      } else {
+        type = !isNaN(parseFloat(rowA[index])) ? 'number' : 'string';
+      }
+
+      let itemA;
+      let itemB;
+      if (type === 'number') {
+        itemA = parseInt(rowA[index], 10);
+      } else if (type === 'currency') {
+        itemA = parseFloat(rowA[index].substring(1));
+      } else {
+        itemA = rowA[index];
+      }
+      if (type === 'number') {
+        itemB = parseInt(rowB[index], 10);
+      } else if (type === 'currency') {
+        itemB = parseFloat(rowA[index].substring(1));
+      } else {
+        itemB = rowA[index];
+      }
+      if (type === 'string') {
+        let result;
+
+        if (itemA > itemB) result = 1;
+        else if (itemB > itemA) result = -1;
+        else result = 0;
+        return direction === 'descending' ? result * -1 : result;
+      }
+
+      return direction === 'descending' ? itemB - itemA : itemA - itemB;
+    });
+  }
+}
+```
+
+### With increased density and zebra striping
 
 Use as a broad example that includes most props available to data table.
 
@@ -536,6 +682,301 @@ function FullDataTableExample() {
 }
 ```
 
+### With sticky header enabled
+
+Use as a broad example that includes most props available to data table.
+
+```jsx
+function FullDataTableExample() {
+  const [sortedRows, setSortedRows] = useState(null);
+
+  const initiallySortedRows = [
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="emerald-silk-gown"
+      >
+        Emerald Silk Gown
+      </Link>,
+      '$875.00',
+      124689,
+      140,
+      '$121,500.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="mauve-cashmere-scarf"
+      >
+        Mauve Cashmere Scarf
+      </Link>,
+      '$230.00',
+      124533,
+      83,
+      '$19,090.00',
+    ],
+    [
+      <Link
+        removeUnderline
+        url="https://www.example.com"
+        key="navy-merino-wool"
+      >
+        Navy Merino Wool Blazer with khaki chinos and yellow belt
+      </Link>,
+      '$445.00',
+      124518,
+      32,
+      '$14,240.00',
+    ],
+  ];
+
+  const rows = sortedRows ? sortedRows : initiallySortedRows;
+  const handleSort = useCallback(
+    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    [rows],
+  );
+
+  return (
+    <Page title="Sales by product">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
+          ]}
+          rows={rows}
+          totals={['', '', '', 255, '$155,830.00']}
+          sortable={[false, true, false, false, true]}
+          defaultSortDirection="descending"
+          initialSortColumnIndex={4}
+          onSort={handleSort}
+          footerContent={`Showing ${rows.length} of ${rows.length} results`}
+          hasZebraStripingOnData
+          increasedTableDensity
+          stickyHeader
+        />
+      </Card>
+    </Page>
+  );
+
+  function sortCurrency(rows, index, direction) {
+    return [...rows].sort((rowA, rowB) => {
+      const amountA = parseFloat(rowA[index].substring(1));
+      const amountB = parseFloat(rowB[index].substring(1));
+
+      return direction === 'descending' ? amountB - amountA : amountA - amountB;
+    });
+  }
+}
+```
+
 ---
 
 ## Best practices
@@ -572,7 +1013,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -598,31 +1039,11 @@ Keep decimals consistent. For example, don’t use 3 decimals in one row and 2 i
 
 ## Related components
 
-- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 ### Structure
 
@@ -630,7 +1051,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -638,7 +1059,7 @@ Use tables for tabular data.
 
 #### Don’t
 
-Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/lists-and-tables/resource-list).
+Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 <!-- end -->
 
@@ -648,5 +1069,3 @@ Sorting controls for the data table component are implemented with native HTML b
 
 - Give buttons keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Activate buttons with the <kbd>enter</kbd>/<kbd>return</kbd> and <kbd>space</kbd> keys
-
-<!-- /content-for -->

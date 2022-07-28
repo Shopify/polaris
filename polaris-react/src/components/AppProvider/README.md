@@ -14,7 +14,6 @@ keywords:
   - application wrapper
   - wrapper
   - sdk
-omitAppProvider: true
 ---
 
 # App provider
@@ -93,7 +92,7 @@ AppProvider works by default without any additional options passed to it.
 
 ### With i18n
 
-With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](https://polaris.shopify.com/components/structure/app-provider#using-translations)
+With an `i18n`, `AppProvider` will provide these translations to polaris components. See [using translations](https://polaris.shopify.com/components/app-provider#using-translations)
 
 ```jsx
 <AppProvider
@@ -200,7 +199,7 @@ function AppProviderLinkExample() {
 
 ### With color scheme
 
-With a `colorScheme`, the app provider component will set the root color scheme for the App (such as: light or dark).For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/structure/custom-properties) component documentation.
+With a `colorScheme`, the app provider component will set the root color scheme for the App (such as light or dark). For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/custom-properties) component documentation.
 
 ```jsx
 function AppProviderThemeExample() {
@@ -288,7 +287,7 @@ Translations are provided in the locales folder. When using Polaris, you are abl
 If a project has only one locale, then you can pass the JSON content from the locale file into `AppProvider`.
 
 ```jsx
-import AppProvider from '@shopify/polaris';
+import {AppProvider} from '@shopify/polaris';
 // en.json is English. Replace with fr.json for French, etc
 import translations from '@shopify/polaris/locales/en.json';
 
@@ -300,7 +299,7 @@ function App() {
 If a project supports multiple locales, then load them dynamically using [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n#translation). This ensures that you load only the translations you need.
 
 ```jsx
-import AppProvider from '@shopify/polaris';
+import {AppProvider} from '@shopify/polaris';
 // en.json is English. Replace with fr.json for French, etc
 import translations from '@shopify/polaris/locales/en.json';
 import {useI18n} from '@shopify/react-i18n';

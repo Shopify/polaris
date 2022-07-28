@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {Slidable, AlphaPicker} from '../components';
 import {ColorPicker} from '../ColorPicker';
@@ -118,7 +119,7 @@ describe('<ColorPicker />', () => {
         clientX: 1,
         clientY: 1,
       });
-
+      // eslint-disable-next-line import/no-deprecated
       expect(colorPicker).toContainReactComponent(EventListener, {
         event: 'mousemove',
         passive: false,
@@ -136,7 +137,7 @@ describe('<ColorPicker />', () => {
         clientX: 1,
         clientY: 1,
       });
-
+      // eslint-disable-next-line import/no-deprecated
       expect(colorPicker).toContainReactComponent(EventListener, {
         event: 'touchmove',
         passive: false,

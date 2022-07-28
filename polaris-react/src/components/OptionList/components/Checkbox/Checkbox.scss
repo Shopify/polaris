@@ -4,7 +4,6 @@
   position: relative;
   width: 100%;
   margin: var(--p-choice-margin);
-
   // stylelint-disable-next-line selector-max-class
   &.active .Backdrop {
     @include focus-ring($style: 'focused');

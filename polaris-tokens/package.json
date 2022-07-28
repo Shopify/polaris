@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.0.1",
+  "version": "5.5.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.mjs",
@@ -19,20 +19,16 @@
     "build": "run-s build:*",
     "build:js": "rollup -c",
     "build:assets": "ts-node --skip-project scripts/index.ts",
-    "build:types": "tsc --emitDeclarationOnly",
-    "dev": "rollup -cw",
-    "lint": "TIMING=1 eslint src",
+    "build:types": "tsc -b",
+    "dev": "rollup -c -w",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist"
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.3.1",
-    "@rollup/plugin-commonjs": "^21.1.0",
-    "@rollup/plugin-node-resolve": "^13.2.1",
     "@shopify/browserslist-config": "^3.0.0",
-    "babel-jest": "^24.9.0",
-    "jest": "^27.5.1",
-    "rollup": "^2.70.2",
     "ts-node": "^10.7.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",

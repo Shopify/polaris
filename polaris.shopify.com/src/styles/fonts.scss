@@ -1,0 +1,34 @@
+@mixin heading {
+  color: var(--text-strong);
+}
+
+@mixin heading-1 {
+  color: var(--text-strong);
+  font-size: var(--font-size-1200);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--letter-spacing-700);
+  line-height: 1.15;
+}
+
+@mixin heading-2 {
+  color: var(--text-strong);
+  font-size: var(--font-size-900);
+  letter-spacing: var(--letter-spacing-600);
+  font-weight: var(--font-weight-500);
+  line-height: 1.25;
+}
+
+@mixin heading-3 {
+  color: var(--text-strong);
+  font-size: var(--font-size-500);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--letter-spacing-100);
+  line-height: 1.25;
+}
+
+@mixin heading-4 {
+  color: var(--text-strong);
+  font-size: var(--font-size-300);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--letter-spacing-200);
+}

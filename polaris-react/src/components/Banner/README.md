@@ -1,10 +1,6 @@
 ---
 name: Banner
 category: Feedback indicators
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - inform
   - update
@@ -59,15 +55,12 @@ Banners should be placed in the appropriate context:
 
 Banners should:
 
-- Focus on a single theme, piece of information, or required action to avoid
-  overwhelming merchants.
-- Be concise and scannable—merchants shouldn’t need to spend a lot of time
-  figuring out what they need to know and do.
-- Be limited to a few important calls to action with no more than one primary
-  action.
-- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/structure/callout-card) instead.
+- Focus on a single theme, piece of information, or required action to avoid overwhelming merchants.
+- Be concise and scannable—merchants shouldn’t need to spend a lot of time figuring out what they need to know and do.
+- Be limited to a few important calls to action with no more than one primary action.
+- Not be used for marketing information or upsell—[use callout cards](https://polaris.shopify.com/components/callout-card) instead.
 
-To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
+To learn about writing helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
 ### Title
 
@@ -81,10 +74,9 @@ Body content should:
 - Clarify the benefit of the main task
 - Be written in sentence case and use appropriate punctuation
 - Avoid repeating the heading
-- Explain how to resolve the issue, particularly for warning and critical
-  banners
+- Explain how to resolve the issue, particularly for warning and critical banners
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -92,8 +84,7 @@ Your online store has a maximum of 20 themes. Delete unused themes to add more.
 
 #### Don’t
 
-You have reached your theme limit. Your online store has reached its maximum
-of 20 themes. To add more themes, delete themes you’re no longer using.
+You have reached your theme limit. Your online store has reached its maximum of 20 themes. To add more themes, delete themes you’re no longer using.
 
 <!-- end -->
 
@@ -101,11 +92,9 @@ of 20 themes. To add more themes, delete themes you’re no longer using.
 
 Buttons and links should be:
 
-- Clear and predictable: merchants should be able to anticipate what will
-  happen when they click a button. Never deceive merchants by mislabeling a
-  button.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -117,11 +106,9 @@ Buy
 
 <!-- end -->
 
-- Action-led: buttons should always lead with a strong verb that encourages
-  action. To provide enough context to merchants use the {verb}+{noun} format on
-  buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -135,7 +122,7 @@ Try Apple Pay
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -151,7 +138,7 @@ Link text should:
 
 - Set the expectation of where merchants will be taken
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -163,10 +150,9 @@ Order
 
 <!-- end -->
 
-- Use consistent content to label navigation. For example, if a navigational
-  link leads to a page called Orders, label the link Orders.
+- Use consistent content to label navigation. For example, if a navigational link leads to a page called Orders, label the link Orders.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -182,11 +168,9 @@ Finance section
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling merchants
-  what actions are available to them (especially something new). Don’t use
-  permissive language like “you can”.
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -198,22 +182,18 @@ Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first.
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something.
+- Structured for merchant success: always put the most critical information first.
+- Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -221,10 +201,9 @@ including packaging.
 
 ## Examples
 
-### Default banners
+### Default
 
-- Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback.
-- Default banners contain lower priority information and should always be dismissible.
+Use to convey general information or actions that aren’t critical. For example, you might show a banner that asks for merchant feedback. Default banners contain lower priority information and should always be dismissible.
 
 ```jsx
 <Banner title="Order archived" onDismiss={() => {}}>
@@ -232,21 +211,7 @@ including packaging.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Default banner for Android](/public_images/components/Banner/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default banner for iOS](/public_images/components/Banner/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Dismissible banner
-
-<!-- example-for: web -->
+### Dismissible
 
 Make all banners dismissible, unless they contain critical information or an important action that merchants are required to take.
 
@@ -259,7 +224,7 @@ Make all banners dismissible, unless they contain critical information or an imp
 </Banner>
 ```
 
-### Banner with footer call-to-action
+### With footer call-to-action
 
 Use when you want merchants to take an action after reading the banner.
 
@@ -278,19 +243,7 @@ Use when you want merchants to take an action after reading the banner.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Banner with footer call-to-action for Android](/public_images/components/Banner/android/footer-action@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Banner with footer call-to-action for iOS](/public_images/components/Banner/ios/footer-action@2x.png)
-
-<!-- /content-for -->
-
-### Informational banners
+### Informational
 
 Use to update merchants about a change or give them advice.
 
@@ -306,22 +259,9 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-<!-- content-for: android -->
+### Success
 
-![Informational banner for Android](/public_images/components/Banner/android/informational@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Informational banner for iOS](/public_images/components/Banner/ios/informational@2x.png)
-
-<!-- /content-for -->
-
-### Success banner
-
-- Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action
-- Include next steps if applicable
+Default to using toasts for success messages, unless the feedback is delayed, persistent, or has a call to action. Include next steps if applicable.
 
 ```jsx
 <Banner
@@ -332,22 +272,9 @@ Use to update merchants about a change or give them advice.
 />
 ```
 
-<!-- content-for: android -->
+### Warning
 
-![Success banner for Android](/public_images/components/Banner/android/success@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Success banner for iOS](/public_images/components/Banner/ios/success@2x.png)
-
-<!-- /content-for -->
-
-### Warning banners
-
-- Use to display information that needs attention or that merchants need to take action on
-- Seeing these banners can be stressful for merchants so be cautious about using them
+Use to display information that needs attention or that merchants need to take action on. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
 <Banner
@@ -364,23 +291,9 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-<!-- content-for: android -->
+### Critical
 
-![Warning banner for Android](/public_images/components/Banner/android/warning@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Warning banner for iOS](/public_images/components/Banner/ios/warning@2x.png)
-
-<!-- /content-for -->
-
-### Critical banners
-
-- Use to communicate problems that have to be resolved immediately for merchants to complete a task
-- For example, you will show this banner for orders with high fraud risk
-- Seeing these banners can be stressful for merchants so be cautious about using them
+Use to communicate problems that have to be resolved immediately for merchants to complete a task. For example, you will show this banner for orders with high fraud risk. Seeing these banners can be stressful for merchants so be cautious about using them.
 
 ```jsx
 <Banner
@@ -396,21 +309,7 @@ Use to update merchants about a change or give them advice.
 </Banner>
 ```
 
-<!-- content-for: android -->
-
-![Critical banner for Android](/public_images/components/Banner/android/critical@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Critical banner for iOS](/public_images/components/Banner/ios/critical@2x.png)
-
-<!-- /content-for -->
-
-### Banner in a modal
-
-<!-- example-for: web -->
+### In a modal
 
 Banners inside of modals render with less spacing and a pared-back design to fit within a content context.
 
@@ -458,9 +357,7 @@ function BannerInModalExample() {
 }
 ```
 
-### Banner with focus
-
-<!-- example-for: web -->
+### With focus
 
 Banner can programmatically receive focus. Use this functionality to draw the merchant’s attention to the banner.
 
@@ -486,9 +383,7 @@ function BannerWithFocusExample() {
 }
 ```
 
-### Banner in a card
-
-<!-- example-for: web -->
+### In a card
 
 Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 
@@ -511,32 +406,12 @@ Banners inside of cards render with less spacing and a pared-back design to fit 
 
 ## Related components
 
-- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/structure/callout-card)
-- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/structure/card)
+- To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/callout-card)
+- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/card)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 Banners provide context and assist workflows for merchants with disabilities.
 
@@ -555,11 +430,11 @@ When merchants submit long or complex forms with errors, use a critical banner t
 
 #### Inline errors
 
-Always include [inline error](https://polaris.shopify.com/components/forms/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
+Always include [inline error](https://polaris.shopify.com/components/inline-error) messages for specific form fields so that merchants know what to do in context as they correct their mistakes.
 
-To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/experiences/error-messages).
+To learn about creating helpful and accessible error message text, see the guidelines for [error messages](https://polaris.shopify.com/patterns/error-messages).
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -573,5 +448,3 @@ To learn about creating helpful and accessible error message text, see the guide
 - Use warning or critical (`role=”alert”`) banners to convey information that the merchant doesn’t need to address immediately
 
 <!-- end -->
-
-<!-- /content-for -->

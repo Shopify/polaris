@@ -1,10 +1,6 @@
 ---
 name: Thumbnail
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - photo
   - picture
@@ -13,8 +9,6 @@ keywords:
   - medium thumbnail
   - large thumbnail
   - image preview
-  - android
-  - ios
 ---
 
 # Thumbnail
@@ -27,7 +21,8 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 
 On web, thumbnails should:
 
-- Be one of 3 sizes:
+- Be one of 4 sizes:
+  - Extra small (24 x 24 px): use in tightly condensed layouts
   - Small (40 × 40 px): use when the medium size is too large for the layout, or when the thumbnail has less importance.
   - Medium (60 × 60 px): use as the default size.
   - Large (80 × 80 px): use when an thumbnail is a major focal point. Avoid this size in lists of like items.
@@ -55,7 +50,7 @@ For thumbnails, we recommend using a format that describes what will show in the
 
 ## Examples
 
-### Default thumbnail
+### Default
 
 Use as the default size.
 
@@ -66,21 +61,19 @@ Use as the default size.
 />
 ```
 
-<!-- content-for: android -->
+### Extra small
 
-![Default thumbnail](/public_images/components/Thumbnail/android/default@2x.png)
+Use to present a thumbnail in a condensed layout, such as a data table cell or an action list item.
 
-<!-- /content-for -->
+```jsx
+<Thumbnail
+  source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+  size="extraSmall"
+  alt="Black choker necklace"
+/>
+```
 
-<!-- content-for: ios -->
-
-![Default thumbnail](/public_images/components/Thumbnail/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Small thumbnail
-
-<!-- example-for: web -->
+### Small
 
 Use when the default size is too large for the layout, or when the thumbnail has less importance.
 
@@ -92,7 +85,7 @@ Use when the default size is too large for the layout, or when the thumbnail has
 />
 ```
 
-### Large thumbnail
+### Large
 
 Use when a thumbnail is a major focal point. Avoid this size in lists of like items.
 
@@ -104,7 +97,7 @@ Use when a thumbnail is a major focal point. Avoid this size in lists of like it
 />
 ```
 
-### Thumbnail with component source
+### With component source
 
 Use to render an icon inside of thumbnail.
 
@@ -112,20 +105,8 @@ Use to render an icon inside of thumbnail.
 <Thumbnail source={NoteMinor} size="large" alt="Small document" />
 ```
 
-<!-- content-for: android -->
-
-![Large thumbnail](/public_images/components/Thumbnail/android/large@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Large thumbnail](/public_images/components/Thumbnail/ios/large@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
 
-- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/images-and-icons/avatar)
+- To present a thumbnail representation of an individual or business in the interface, [use the avatar component](https://polaris.shopify.com/components/avatar)

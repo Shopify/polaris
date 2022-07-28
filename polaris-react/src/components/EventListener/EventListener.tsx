@@ -10,7 +10,7 @@ export interface EventListenerProps extends BaseEventProps {
   passive?: boolean;
 }
 
-// see https://github.com/oliviertassinari/react-event-listener/
+/** @deprecated Use the useEventListener hook instead. */
 export class EventListener extends PureComponent<EventListenerProps, never> {
   componentDidMount() {
     this.attachListener();

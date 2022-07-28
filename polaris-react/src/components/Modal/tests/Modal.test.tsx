@@ -7,6 +7,7 @@ import {Button} from '../../Button';
 import {Scrollable} from '../../Scrollable';
 import {Spinner} from '../../Spinner';
 import {Portal} from '../../Portal';
+import {Backdrop} from '../../Backdrop';
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -186,7 +187,7 @@ describe('<Modal>', () => {
       expect(modal).toContainReactComponent(Dialog, {small: true});
     });
 
-    it('does not pass small to Dialog be default', () => {
+    it('does not pass small to Dialog by default', () => {
       const modal = mountWithApp(
         <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
@@ -208,7 +209,7 @@ describe('<Modal>', () => {
       expect(modal).toContainReactComponent(Dialog, {limitHeight: true});
     });
 
-    it('does not pass limitHeight to Dialog be default', () => {
+    it('does not pass limitHeight to Dialog by default', () => {
       const modal = mountWithApp(
         <Modal title="foo" onClose={jest.fn()} open>
           <Badge />
@@ -216,6 +217,28 @@ describe('<Modal>', () => {
       );
 
       expect(modal).toContainReactComponent(Dialog, {limitHeight: undefined});
+    });
+  });
+
+  describe('fullScreen', () => {
+    it('passes fullScreen to Dialog if true', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" fullScreen onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).toContainReactComponent(Dialog, {fullScreen: true});
+    });
+
+    it('does not pass fullScreen to Dialog be default', () => {
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={jest.fn()} open>
+          <Badge />
+        </Modal>,
+      );
+
+      expect(modal).toContainReactComponent(Dialog, {fullScreen: undefined});
     });
   });
 
@@ -262,6 +285,14 @@ describe('<Modal>', () => {
       );
 
       expect(modal).not.toContainReactComponent(Badge);
+    });
+
+    it('closes the modal when backdrop is clicked', () => {
+      const spy = jest.fn();
+      const modal = mountWithApp(<Modal title="foo" open onClose={spy} />);
+
+      modal.find(Backdrop)!.trigger('onClick');
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 

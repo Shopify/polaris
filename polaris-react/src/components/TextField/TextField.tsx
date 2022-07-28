@@ -159,9 +159,9 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
-  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
-  /** Callback fired when focus is removed */
-  onBlur?(): void;
+  onFocus?: (event?: React.FocusEvent) => void;
+  /** Callback fired when input is blurred */
+  onBlur?(event?: React.FocusEvent): void;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -239,12 +239,13 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
+  const spinnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const input = inputRef.current;
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
-  }, [focused]);
+  }, [focused, verticalContent]);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -319,6 +320,7 @@ export function TextField({
         aria-label={characterCountLabel}
         aria-live={focus ? 'polite' : 'off'}
         aria-atomic="true"
+        onClick={handleClickChild}
       >
         {characterCountText}
       </div>
@@ -327,22 +329,20 @@ export function TextField({
 
   const clearButtonVisible = normalizedValue !== '';
 
-  const clearButtonClassNames = classNames(
-    styles.ClearButton,
-    !clearButtonVisible && styles.Hidden,
-  );
-
-  const clearButtonMarkup = clearButton ? (
-    <button
-      type="button"
-      className={clearButtonClassNames}
-      onClick={handleClearButtonPress}
-      disabled={disabled}
-    >
-      <VisuallyHidden>{i18n.translate('Polaris.Common.clear')}</VisuallyHidden>
-      <Icon source={CircleCancelMinor} color="base" />
-    </button>
-  ) : null;
+  const clearButtonMarkup =
+    clearButton && clearButtonVisible ? (
+      <button
+        type="button"
+        className={styles.ClearButton}
+        onClick={handleClearButtonPress}
+        disabled={disabled}
+      >
+        <VisuallyHidden>
+          {i18n.translate('Polaris.Common.clear')}
+        </VisuallyHidden>
+        <Icon source={CircleCancelMinor} color="base" />
+      </button>
+    ) : null;
 
   const handleNumberChange = useCallback(
     (steps: number) => {
@@ -402,9 +402,11 @@ export function TextField({
   const spinnerMarkup =
     type === 'number' && step !== 0 && !disabled && !readOnly ? (
       <Spinner
+        onClick={handleClickChild}
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
+        ref={spinnerRef}
       />
     ) : null;
 
@@ -461,6 +463,8 @@ export function TextField({
   );
 
   const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
+    setFocus(true);
+
     if (selectTextOnFocus && !suggestion) {
       const input = multiline ? textAreaRef.current : inputRef.current;
       input?.select();
@@ -468,6 +472,14 @@ export function TextField({
 
     if (onFocus) {
       onFocus(event);
+    }
+  };
+
+  const handleOnBlur = (event: React.FocusEvent) => {
+    setFocus(false);
+
+    if (onBlur) {
+      onBlur(event);
     }
   };
 
@@ -505,7 +517,8 @@ export function TextField({
     'aria-required': requiredIndicator,
     ...normalizeAriaMultiline(multiline),
     onFocus: handleOnFocus,
-    onBlur,
+    onBlur: handleOnBlur,
+    onClick: handleClickChild,
     onKeyPress: handleKeyPress,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
@@ -516,6 +529,7 @@ export function TextField({
       className={styles.VerticalContent}
       id={`${id}-VerticalContent`}
       ref={verticalContentRef}
+      onClick={handleClickChild}
     >
       {verticalContent}
       {input}
@@ -524,10 +538,14 @@ export function TextField({
 
   const inputMarkup = verticalContent ? inputWithVerticalContentMarkup : input;
 
-  const backdropClassName = classNames(
-    styles.Backdrop,
-    connectedLeft && styles['Backdrop-connectedLeft'],
-    connectedRight && styles['Backdrop-connectedRight'],
+  const backdropMarkup = (
+    <div
+      className={classNames(
+        styles.Backdrop,
+        connectedLeft && styles['Backdrop-connectedLeft'],
+        connectedRight && styles['Backdrop-connectedRight'],
+      )}
+    />
   );
 
   return (
@@ -541,24 +559,54 @@ export function TextField({
       requiredIndicator={requiredIndicator}
     >
       <Connected left={connectedLeft} right={connectedRight}>
-        <div
-          className={className}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onClick={handleClick}
-        >
+        <div className={className} onClick={handleClick}>
           {prefixMarkup}
           {inputMarkup}
           {suffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
-          <div className={backdropClassName} />
+          {backdropMarkup}
           {resizer}
         </div>
       </Connected>
     </Labelled>
   );
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    onChange && onChange(event.currentTarget.value, id);
+  }
+
+  function handleClick({target}: React.MouseEvent) {
+    if (
+      isPrefixOrSuffix(target) ||
+      isVerticalContent(target) ||
+      isInput(target) ||
+      isSpinner(target) ||
+      focus
+    ) {
+      return;
+    }
+
+    inputRef.current?.focus();
+  }
+
+  function handleClickChild(event: React.MouseEvent) {
+    if (!isSpinner(event.target) && !isInput(event.target)) {
+      event.stopPropagation();
+    }
+
+    if (
+      isPrefixOrSuffix(event.target) ||
+      isVerticalContent(event.target) ||
+      isInput(event.target) ||
+      focus
+    ) {
+      return;
+    }
+
+    setFocus(true);
+  }
 
   function handleClearButtonPress() {
     onClearButtonClick && onClearButtonClick(id);
@@ -574,35 +622,45 @@ export function TextField({
     event.preventDefault();
   }
 
-  function containsAffix(target: HTMLElement | EventTarget) {
+  function isInput(target: HTMLElement | EventTarget) {
     return (
       target instanceof HTMLElement &&
+      inputRef.current &&
+      (inputRef.current.contains(target) ||
+        inputRef.current.contains(document.activeElement))
+    );
+  }
+
+  function isPrefixOrSuffix(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
       ((prefixRef.current && prefixRef.current.contains(target)) ||
         (suffixRef.current && suffixRef.current.contains(target)))
     );
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange && onChange(event.currentTarget.value, id);
+  function isSpinner(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      spinnerRef.current &&
+      spinnerRef.current.contains(target)
+    );
   }
 
-  function handleFocus({target}: React.FocusEvent) {
-    if (containsAffix(target)) {
-      return;
-    }
-    setFocus(true);
+  function isVerticalContent(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      verticalContentRef.current &&
+      (verticalContentRef.current.contains(target) ||
+        verticalContentRef.current.contains(document.activeElement))
+    );
   }
+}
 
-  function handleBlur() {
-    setFocus(false);
-  }
+function getRows(multiline?: boolean | number) {
+  if (!multiline) return undefined;
 
-  function handleClick({target}: React.MouseEvent) {
-    if (containsAffix(target) || focus) {
-      return;
-    }
-    inputRef.current?.focus();
-  }
+  return typeof multiline === 'number' ? multiline : 1;
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
@@ -611,10 +669,4 @@ function normalizeAriaMultiline(multiline?: boolean | number) {
   return Boolean(multiline) || multiline > 0
     ? {'aria-multiline': true}
     : undefined;
-}
-
-function getRows(multiline?: boolean | number) {
-  if (!multiline) return undefined;
-
-  return typeof multiline === 'number' ? multiline : 1;
 }

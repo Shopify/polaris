@@ -1,4 +1,4 @@
-name: tick small
+name: Tick small
 set: minor
 description: Used to denote the action of checking a Polaris checkbox.
 keywords:
@@ -10,7 +10,8 @@ keywords:
   - tick
 authors:
   - Adam Whitcroft
-version: 1
+  - Nayeob Kim
+version: 2
 date_added: 2018-11-14
-date_modified: 2018-11-14
+date_modified: 2022-05-18
 exclusive_use: Checkbox

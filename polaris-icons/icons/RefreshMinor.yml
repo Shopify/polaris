@@ -1,4 +1,4 @@
-name: refresh
+name: Refresh
 set: minor
 description: Used to denote the action of resetting a customer’s account password on their customer page.
 keywords:

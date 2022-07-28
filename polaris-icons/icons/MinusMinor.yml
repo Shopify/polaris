@@ -1,4 +1,4 @@
-name: minus
+name: Minus
 set: minor
 description: Used to denote the action of removing an item.
 keywords:
@@ -12,7 +12,8 @@ keywords:
   - less
 authors:
   - Adam Whitcroft
-version: 1
+  - Nayeob Kim
+version: 2
 date_added: 2018-11-14
-date_modified: 2018-11-14
+date_modified: 2022-05-20
 exclusive_use:

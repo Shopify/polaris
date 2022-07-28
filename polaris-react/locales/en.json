@@ -144,6 +144,10 @@
         "closeMobileNavigationLabel": "Close navigation"
       }
     },
+    "FullscreenBar": {
+      "back": "Back",
+      "accessibilityLabel": "Exit fullscreen mode"
+    },
     "Filters": {
       "moreFilters": "More filters",
       "moreFiltersWithCount": "More filters ({count})",

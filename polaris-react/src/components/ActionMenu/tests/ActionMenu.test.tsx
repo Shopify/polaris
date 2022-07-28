@@ -5,7 +5,7 @@ import type {
   MenuGroupDescriptor,
   ActionListItemDescriptor,
 } from '../../../types';
-import {MenuGroup, RollupActions} from '../components';
+import {MenuGroup, RollupActions, Actions} from '../components';
 import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
@@ -44,6 +44,14 @@ describe('<ActionMenu />', () => {
       },
     ];
 
+    const mockDisabledGroup = {
+      title: 'Disabled group',
+      disabled: true,
+      actions: [...mockActions],
+    };
+
+    const mockGroupsWithDisabledGroup = [...mockGroups, mockDisabledGroup];
+
     it('renders as <MenuGroup /> when `rollup` is `false`', () => {
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
@@ -52,12 +60,48 @@ describe('<ActionMenu />', () => {
       expect(wrapper.findAll(MenuGroup)).toHaveLength(mockGroups.length);
     });
 
+    it('renders disabled groups when `rollup` is `false`', () => {
+      const wrapper = mountWithApp(
+        <ActionMenu {...mockProps} groups={mockGroupsWithDisabledGroup} />,
+      );
+
+      expect(wrapper.findAll(MenuGroup)).toHaveLength(
+        mockGroupsWithDisabledGroup.length,
+      );
+      expect(wrapper).toContainReactComponent(MenuGroup, {disabled: true});
+    });
+
     it('renders as <RollupActions /> `sections` when `rollup` is `true`', () => {
       const convertedSections = mockGroups.map((group) => {
         return {title: group.title, items: group.actions};
       });
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} rollup />,
+      );
+
+      expect(wrapper).toContainReactComponent(RollupActions, {
+        sections: convertedSections,
+      });
+    });
+
+    it('shows action group items as disabled when `rollup` is `true` and action group is disabled', () => {
+      const convertedSections = mockGroupsWithDisabledGroup.map((group) => {
+        return {
+          title: group.title,
+          items: group.disabled
+            ? group.actions.map((action) => ({
+                ...action,
+                disabled: group.disabled,
+              }))
+            : group.actions,
+        };
+      });
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          groups={mockGroupsWithDisabledGroup}
+          rollup
+        />,
       );
 
       expect(wrapper).toContainReactComponent(RollupActions, {
@@ -135,27 +179,44 @@ describe('<ActionMenu />', () => {
     });
   });
 
-  it('uses Button and ButtonGroup as subcomponents', () => {
-    const wrapper = mountWithApp(
-      <ActionMenu {...mockProps} actions={mockActions} />,
-    );
+  describe('<Actions />', () => {
+    it('uses Button and ButtonGroup as subcomponents', () => {
+      const wrapper = mountWithApp(
+        <ActionMenu {...mockProps} actions={mockActions} />,
+      );
 
-    expect(wrapper.findAll(Button)).toHaveLength(2);
-    expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
-  });
+      expect(wrapper.findAll(Button)).toHaveLength(2);
+      expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
+    });
 
-  it('action callbacks are passed through to Button', () => {
-    const spy = jest.fn();
-    const wrapper = mountWithApp(
-      <ActionMenu
-        {...mockProps}
-        actions={[{content: 'mock', onAction: spy}]}
-      />,
-    );
+    it('passes action callbacks through to Button', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock', onAction: spy}]}
+        />,
+      );
 
-    wrapper.find(Button)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
 
-    expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('passes `onActionRollup` if set', () => {
+      const onActionRollup = jest.fn();
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock'}]}
+          onActionRollup={onActionRollup}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(Actions, {
+        onActionRollup,
+      });
+    });
   });
 });
 

@@ -1,10 +1,6 @@
 ---
 name: Card
 category: Structure
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - layout
   - container
@@ -27,8 +23,7 @@ keywords:
 
 # Card
 
-Cards are used to group similar concepts and tasks together to make Shopify
-easier for merchants to scan, read, and get things done.
+Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 
 ---
 
@@ -37,15 +32,10 @@ easier for merchants to scan, read, and get things done.
 Cards should:
 
 - Use headings that set clear expectations about the card’s purpose
-- Prioritize information so the content merchants most need to know comes
-  first
-- Stick to single user flows or break more complicated flows into multiple
-  sections
-- Avoid too many call-to-action buttons or links and only one primary call to
-  action per card
-- Use calls to action on the bottom of the card for next steps and use the
-  space in the upper right corner of the card for persistent, optional actions
-  (such as an Edit link)
+- Prioritize information so the content merchants most need to know comes first
+- Stick to single user flows or break more complicated flows into multiple sections
+- Avoid too many call-to-action buttons or links and only one primary call to action per card
+- Use calls to action on the bottom of the card for next steps and use the space in the upper right corner of the card for persistent, optional actions (such as an Edit link)
 
 ---
 
@@ -59,11 +49,9 @@ Card titles should follow the content guidelines for [headings and subheadings](
 
 Body content should be:
 
-- Actionable: start sentences with imperative verbs when telling merchants what
-  actions are available to them (especially something new). Don’t use permissive
-  language like “you can”.
+- Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -75,22 +63,18 @@ Now you can get performance data for all your sales channels.
 
 <!-- end -->
 
-- Structured for merchant success: always put the most critical information
-  first.
-- Clear: use the verb “need” to help merchants understand when they’re required
-  to do something.
+- Structured for merchant success: always put the most critical information first.
+- Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-To buy a shipping label, you need to enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you need to enter the total weight of your shipment, including packaging.
 
 #### Don’t
 
-To buy a shipping label, you must enter the total weight of your shipment,
-including packaging.
+To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
 <!-- end -->
 
@@ -98,10 +82,9 @@ including packaging.
 
 Buttons should be:
 
-- Clear and predictable: merchants should be able to anticipate what will happen
-  when they click a button. Never deceive merchants by mislabeling a button.
+- Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -115,11 +98,9 @@ Buttons should be:
 
 <!-- end -->
 
-Action-led: buttons should always lead with a strong verb that encourages
-action. To provide enough context to merchants use the {verb}+{noun} format on
-buttons except in the case of common actions like Save, Close, Cancel, or OK.
+Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -135,7 +116,7 @@ buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
 Scannable: Avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -151,29 +132,22 @@ Add a menu item
 
 Section titles should be:
 
-- Informative: they should label the type of content grouped in the body
-  content below
-- Like headings: follow the same content guidelines as when you’re writing
-  headings
+- Informative: they should label the type of content grouped in the body content below
+- Like headings: follow the same content guidelines as when you’re writing headings
 
 ### Action links
 
 Links should be:
 
-- Used for secondary or persistent actions: links should be used to represent
-  lower priority actions than buttons, or persistent actions that merchants may
-  take at any time (such as a persistent Edit link).
-- Clearly labeled: merchants should not need to guess where they’ll end up if
-  they click on an action link. Never use “click here” as a link because it
-  doesn’t set expectations about what’s next.
-- Similar to buttons: Follow the same content guidelines as when you’re writing
-  text for buttons.
+- Used for secondary or persistent actions: links should be used to represent lower priority actions than buttons, or persistent actions that merchants may take at any time (such as a persistent Edit link).
+- Clearly labeled: merchants should not need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
+- Similar to buttons: Follow the same content guidelines as when you’re writing text for buttons.
 
 ---
 
 ## Examples
 
-### Default card
+### Default
 
 Use when you have a simple message to communicate to merchants that doesn’t require any secondary steps.
 
@@ -183,25 +157,9 @@ Use when you have a simple message to communicate to merchants that doesn’t re
 </Card>
 ```
 
-<!-- content-for: android -->
-
-![Default card with a title and a short body](/public_images/components/Card/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default card with a title and a short body](/public_images/components/Card/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Card with header actions
-
-<!-- content-for: web -->
+### With header actions
 
 Use for less important card actions, or actions merchants may do before reviewing the contents of the card. For example, merchants may want to add items to a card containing a long list, or enter a customer’s new address.
-
-<!-- /content-for -->
 
 ```jsx
 <Card sectioned title="Variants" actions={[{content: 'Add variant'}]}>
@@ -212,34 +170,9 @@ Use for less important card actions, or actions merchants may do before reviewin
 </Card>
 ```
 
-<!-- content-for: ios, android -->
-
-Use for less important card actions, or actions merchants may do before reviewing the contents of the card.
-
-- Use an icon for the action, if possible
-- Include no more than 2 actions
-
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-![Card with a title (Conditions), a short body and a header action to add a condition](/public_images/components/Card/android/header-actions@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Card with a title (Conditions), a short body and a header action to add a condition](/public_images/components/Card/ios/header-actions@2x.png)
-
-<!-- /content-for -->
-
-### Card with footer actions
-
-<!-- content-for: web -->
+### With footer actions
 
 Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card. For example, merchants should review the contents of a shipment before an important action like adding tracking information. Footer actions can be left or right aligned with the `footerActionAlignment` prop.
-
-<!-- /content-for -->
 
 ```jsx
 <Card
@@ -256,30 +189,7 @@ Use footer actions for a card’s most important actions, or actions merchants s
 </Card>
 ```
 
-<!-- content-for: android, ios -->
-
-Use footer actions for a card’s most important actions, or actions merchants should do after reviewing the contents of the card.
-
-- Use buttons with labels
-- If you have more than 2 actions, consider using an overflow menu on the card
-
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-![Card featuring footer actions: add variant, edit options](/public_images/components/Card/android/footer-actions@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Card featuring footer actions: add variant, edit options](/public_images/components/Card/ios/footer-actions@2x.png)
-
-<!-- /content-for -->
-
-### Card with multiple footer actions
-
-<!-- example-for: web -->
+### With multiple footer actions
 
 When multiple secondary footer actions are provided, they will render in an action list popover activated by a disclosure button. The disclosure button text can be customized with the `secondaryFooterActionsDisclosureText` prop.
 
@@ -301,9 +211,7 @@ When multiple secondary footer actions are provided, they will render in an acti
 </Card>
 ```
 
-### Card with custom footer actions
-
-<!-- example-for: web -->
+### With custom footer actions
 
 Use to present actionable content that is optional or not the primary purpose of the page.
 
@@ -327,9 +235,7 @@ Use to present actionable content that is optional or not the primary purpose of
 </Card>
 ```
 
-### Card with destructive footer action
-
-<!-- example-for: web -->
+### With destructive footer action
 
 Use when a card action will delete merchant data or be otherwise difficult to recover from.
 
@@ -348,7 +254,7 @@ Use when a card action will delete merchant data or be otherwise difficult to re
 </Card>
 ```
 
-### Card with multiple sections
+### With multiple sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants. Multiple sections can help break up complicated concepts to make them easier to scan and understand.
 
@@ -367,21 +273,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-<!-- content-for: android -->
-
-![Shipping costs card with multiple sections: domestic, international](/public_images/components/Card/android/multiple-sections@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Shipping costs card with multiple sections: domestic, international](/public_images/components/Card/ios/multiple-sections@2x.png)
-
-<!-- /content-for -->
-
-### Card with multiple titled sections
-
-<!-- example-for: web -->
+### With multiple titled sections
 
 Use when you have two related but distinct pieces of information to communicate to merchants that are complex enough to require a title to introduce them.
 
@@ -400,9 +292,7 @@ Use when you have two related but distinct pieces of information to communicate 
 </Card>
 ```
 
-### Card section with action
-
-<!-- example-for: web -->
+### With sections and actions
 
 Use when your card section has actions that apply only to that section.
 
@@ -417,9 +307,7 @@ Use when your card section has actions that apply only to that section.
 </Card>
 ```
 
-### Card with subsection
-
-<!-- example-for: web -->
+### With subsection
 
 Use when your card sections need further categorization.
 
@@ -452,13 +340,9 @@ Use when your card sections need further categorization.
 </Card>
 ```
 
-### Card section with destructive action
-
-<!-- content-for: web -->
+### With destructive action
 
 Use when a card action applies only to one section and will delete merchant data or be otherwise difficult to recover from.
-
-<!-- /content-for -->
 
 ```jsx
 <Card title="Customer">
@@ -474,21 +358,7 @@ Use when a card action applies only to one section and will delete merchant data
 </Card>
 ```
 
-<!-- content-for: android -->
-
-![Customer card with multiple titled sections: note, shipping address](/public_images/components/Card/android/multiple-titled-sections@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Customer card with multiple titled sections: note, shipping address](/public_images/components/Card/ios/multiple-titled-sections@2x.png)
-
-<!-- /content-for -->
-
-### Card with a subdued section
-
-<!-- example-for: web -->
+### With a subdued section
 
 Use to indicate when one of the sections in your card contains inactive or disabled content.
 
@@ -510,9 +380,7 @@ Use to indicate when one of the sections in your card contains inactive or disab
 </Card>
 ```
 
-### Subdued card for secondary content
-
-<!-- example-for: web -->
+### With subdued for secondary content
 
 Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
 
@@ -525,9 +393,7 @@ Use for content that you want to deprioritize. Subdued cards don’t stand out a
 </Card>
 ```
 
-### Card with separate header
-
-<!-- example-for: web -->
+### With separate header
 
 Use to be able to use custom React elements as header content.
 
@@ -562,9 +428,7 @@ Use to be able to use custom React elements as header content.
 </Card>
 ```
 
-### Card section with custom React Node title
-
-<!-- example-for: web -->
+### With custom React Node title
 
 Use to render custom content such as icons, links, or buttons in a card section’s header.
 
@@ -586,9 +450,7 @@ Use to render custom content such as icons, links, or buttons in a card section�
 </Card>
 ```
 
-### Card with all of its elements
-
-<!-- example-for: web -->
+### With all elements
 
 Use as a broad example that includes most props available to card.
 
@@ -669,9 +531,7 @@ Use as a broad example that includes most props available to card.
 </Card>
 ```
 
-### Card with flushed sections
-
-<!-- example-for: web -->
+### With flushed sections
 
 Use when you need further control over the spacing of your card sections.
 
@@ -679,8 +539,8 @@ Use when you need further control over the spacing of your card sections.
 <Card>
   <Card.Section flush>
     <Image
-      source="https://polaris.shopify.com/bundles/bc7087219578918d62ac40bf4b4f99ce.png"
-      alt="turtle illustration centered with body text and a button"
+      source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+      alt="a sheet with purple and orange stripes"
     />
   </Card.Section>
   <Card.Section subdued>
@@ -696,38 +556,18 @@ Use when you need further control over the spacing of your card sections.
 
 ## Related components
 
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/structure/layout)
-- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/structure/callout-card)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/callout-card)
 
 ---
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The required `title` prop gives the card a level 2 heading (`<h2>`). This helps with readability and provides structure to screen reader users.
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -752,5 +592,3 @@ If you use the `subdued` prop on a card or section, make sure that the card or s
 ```
 
 <!-- end -->
-
-<!-- /content-for -->

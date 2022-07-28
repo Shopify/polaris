@@ -1,4 +1,4 @@
-name: profile
+name: Profile
 set: minor
 description: Used to represent a staff member.
 keywords:

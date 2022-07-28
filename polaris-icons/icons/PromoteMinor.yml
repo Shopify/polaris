@@ -1,4 +1,4 @@
-name: promote
+name: Promote
 set: minor
 description: Used to represent an action to open an external resource, or promote an item or resource.
 keywords:

@@ -20,4 +20,8 @@
   &:focus:not(:active) {
     @include focus-ring($style: 'focused');
   }
+
+  &.titleHidden {
+    margin: var(--p-space-2);
+  }
 }

@@ -1,0 +1,76 @@
+@import '../../../../styles/common';
+
+.Cell {
+  // Remap custom properties as mobile first fallbacks for grid-row and grid-column
+  --pc-row-xs: initial;
+  --pc-row-sm: var(--pc-row-xs);
+  --pc-row-md: var(--pc-row-sm);
+  --pc-row-lg: var(--pc-row-md);
+  --pc-row-xl: var(--pc-row-lg);
+  --pc-column-xs: initial;
+  --pc-column-sm: var(--pc-column-xs);
+  --pc-column-md: var(--pc-column-sm);
+  --pc-column-lg: var(--pc-column-md);
+  --pc-column-xl: var(--pc-column-lg);
+  min-width: 0;
+  grid-row: var(--pc-row-xs);
+  grid-column: var(--pc-column-xs);
+
+  @media #{$p-breakpoints-sm-up} {
+    grid-row: var(--pc-row-sm);
+    grid-column: var(--pc-column-sm);
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    grid-row: var(--pc-row-md);
+    grid-column: var(--pc-column-md);
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    grid-row: var(--pc-row-lg);
+    grid-column: var(--pc-column-lg);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    grid-row: var(--pc-row-xl);
+    grid-column: var(--pc-column-xl);
+  }
+}
+
+@for $i from 1 through 6 {
+  .Cell-#{$i}-column-xs {
+    grid-column-end: span #{$i};
+  }
+}
+
+@media #{$p-breakpoints-sm-up} {
+  @for $i from 1 through 6 {
+    .Cell-#{$i}-column-sm {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media #{$p-breakpoints-md-up} {
+  @for $i from 1 through 6 {
+    .Cell-#{$i}-column-md {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media #{$p-breakpoints-lg-up} {
+  @for $i from 1 through 12 {
+    .Cell-#{$i}-column-lg {
+      grid-column-end: span #{$i};
+    }
+  }
+}
+
+@media #{$p-breakpoints-xl-up} {
+  @for $i from 1 through 12 {
+    .Cell-#{$i}-column-xl {
+      grid-column-end: span #{$i};
+    }
+  }
+}

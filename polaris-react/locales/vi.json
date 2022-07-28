@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Xem thao tác đối với {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Quay lại",
+      "accessibilityLabel": "Thoát chế độ toàn màn hình"
     }
   }
 }

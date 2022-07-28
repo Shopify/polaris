@@ -1,4 +1,5 @@
 const path = require('path');
+
 const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -9,29 +10,19 @@ module.exports = (env, argv) => ({
 
   entry: {
     ui: './src/ui.tsx',
-    code: './src/plugin.ts',
+    plugin: './src/plugin.ts',
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['babel-loader', {loader: 'ts-loader'}],
+        use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
       },
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['babel-preset-shopify/web'],
-          },
-        },
-      },
-      {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader'],
       },
       {test: /\.(png|jpg|gif|webp|svg)$/, loader: [{loader: 'url-loader'}]},
     ],
@@ -39,18 +30,15 @@ module.exports = (env, argv) => ({
   resolve: {extensions: ['.tsx', '.ts', '.jsx', '.js']},
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/ui.html',
-      filename: 'ui.html',
+      template: './src/index.html',
+      filename: 'index.html',
       inlineSource: '.(js)$',
       chunks: ['ui'],
     }),
     new HtmlWebpackInlineSourcePlugin(),
   ],
-  node: {
-    fs: "empty"
-  }
 });

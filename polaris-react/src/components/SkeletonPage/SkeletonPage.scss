@@ -13,7 +13,7 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .narrowWidth {
-  max-width: layout-width(primary, max);
+  max-width: $layout-width-primary-max;
 }
 
 .Content {

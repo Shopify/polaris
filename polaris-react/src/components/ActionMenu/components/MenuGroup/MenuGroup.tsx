@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 
-import type {MenuGroupDescriptor} from '../../../../types';
+import type {ActionListSection, MenuGroupDescriptor} from '../../../../types';
 import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {SecondaryAction} from '../SecondaryAction';
@@ -12,12 +12,16 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   accessibilityLabel?: string;
   /** Whether or not the menu is open */
   active?: boolean;
+  /** Callback when the menu is clicked */
+  onClick?(openActions: () => void): void;
   /** Callback for opening the MenuGroup by title */
   onOpen(title: string): void;
   /** Callback for closing the MenuGroup by title */
   onClose(title: string): void;
   /** Callback for getting the offsetWidth of the MenuGroup */
   getOffsetWidth?(width: number): void;
+  /** Collection of sectioned action items */
+  sections?: readonly ActionListSection[];
 }
 
 export function MenuGroup({
@@ -27,9 +31,12 @@ export function MenuGroup({
   details,
   title,
   icon,
+  disabled,
+  onClick,
   onClose,
   onOpen,
   getOffsetWidth,
+  sections,
 }: MenuGroupProps) {
   const handleClose = useCallback(() => {
     onClose(title);
@@ -38,6 +45,14 @@ export function MenuGroup({
   const handleOpen = useCallback(() => {
     onOpen(title);
   }, [onOpen, title]);
+
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick(handleOpen);
+    } else {
+      handleOpen();
+    }
+  }, [onClick, handleOpen]);
 
   const handleOffsetWidth = useCallback(
     (width: number) => {
@@ -50,9 +65,10 @@ export function MenuGroup({
   const popoverActivator = (
     <SecondaryAction
       disclosure
+      disabled={disabled}
       icon={icon}
       accessibilityLabel={accessibilityLabel}
-      onClick={handleOpen}
+      onClick={handleClick}
       getOffsetWidth={handleOffsetWidth}
     >
       {title}
@@ -67,7 +83,11 @@ export function MenuGroup({
       onClose={handleClose}
       hideOnPrint
     >
-      <ActionList items={actions} onActionAnyItem={handleClose} />
+      <ActionList
+        items={actions}
+        sections={sections}
+        onActionAnyItem={handleClose}
+      />
       {details && <div className={styles.Details}>{details}</div>}
     </Popover>
   );

@@ -7,6 +7,7 @@ import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
+// eslint-disable-next-line import/no-deprecated
 import {CustomProperties} from '../../../CustomProperties';
 
 import styles from './Toast.scss';

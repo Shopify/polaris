@@ -1,10 +1,24 @@
-import { SearchResult } from "../types";
-import { createVar, tokens } from "@shopify/polaris-tokens";
-import components from "../data/components.json";
-import icons from "../data/icons.json";
-import guidelines from "../data/guidelines.json";
+import {
+  SearchResults,
+  GroupedSearchResults,
+  searchResultCategories,
+  SearchResultCategory,
+  Status,
+} from "../types";
+import { tokens, TokenProperties } from "@shopify/polaris-tokens";
 import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
+import iconMetadata from "@shopify/polaris-icons/metadata";
+
+import components from "../data/components.json";
+import foundations from "../data/foundations.json";
+
+const MAX_RESULTS: { [key in SearchResultCategory]: number } = {
+  foundations: 8,
+  components: 6,
+  tokens: 5,
+  icons: 9,
+};
 
 const {
   colorSchemes: { light: colorLight },
@@ -16,30 +30,48 @@ const {
   zIndex,
 } = tokens;
 
-let results: SearchResult = [];
+let results: SearchResults = [];
 
 // Add components
-components.forEach(({ frontMatter: { name, category, keywords }, intro }) => {
+components.forEach(({ frontMatter: { name, status }, intro }) => {
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status["value"],
+        message: status.message,
+      }
+    : undefined;
+
   results.push({
-    category: "Components",
-    title: name,
-    excerpt: stripMarkdownLinks(intro),
-    url: `/components/${slugify(category)}/${slugify(name)}`,
-    keywords,
-    meta: {},
+    id: slugify(`components ${name}`),
+    category: "components",
+    score: 0,
+    url: `/components/${slugify(name)}`,
+    meta: {
+      components: {
+        name,
+        description: stripMarkdownLinks(intro),
+        status: typedStatus,
+      },
+    },
   });
 });
 
 // Add color tokens
 Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
   results.push({
-    category: "Tokens",
-    title: `--p-${tokenName}`,
-    excerpt: "",
+    id: slugify(`tokens ${tokenName}`),
+    category: "tokens",
+    score: 0,
     url: `/tokens/colors#${tokenName}`,
-    keywords: [],
     meta: {
-      colorToken: { value: tokenValue.value },
+      tokens: {
+        category: "colors",
+        token: {
+          name: tokenName,
+          description: tokenValue.description || "",
+          value: tokenValue.value,
+        },
+      },
     },
   });
 });
@@ -47,94 +79,114 @@ Object.entries(colorLight).forEach(([tokenName, tokenValue]) => {
 // Add other tokens
 const otherTokenGroups = { depth, motion, shape, spacing, typography, zIndex };
 Object.entries(otherTokenGroups).forEach(([groupSlug, tokenGroup]) => {
-  Object.entries(tokenGroup).forEach(([tokenName, tokenValue]) => {
-    results.push({
-      category: "Tokens",
-      title: createVar(tokenName),
-      excerpt: "",
-      url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
-      keywords: [],
-      meta: {},
-    });
-  });
+  Object.entries(tokenGroup).forEach(
+    ([tokenName, tokenProperties]: [string, TokenProperties]) => {
+      results.push({
+        id: slugify(`tokens ${tokenName}`),
+        category: "tokens",
+        score: 0,
+        url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
+        meta: {
+          tokens: {
+            category: groupSlug,
+            token: {
+              name: tokenName,
+              description: tokenProperties.description || "",
+              value: tokenProperties.value,
+            },
+          },
+        },
+      });
+    }
+  );
 });
 
 // Add icons
-icons.forEach(({ name, set, description, keywords, fileName }) => {
+Object.keys(iconMetadata).forEach((fileName) => {
   results.push({
-    category: "Icons",
-    title: `${name} (${set})`,
-    excerpt: description,
-    url: `/icons#${name}-${set}`,
-    keywords,
+    id: slugify(`icons ${fileName} ${iconMetadata[fileName].set}`),
+    category: "icons",
+    url: `/icons?icon=${fileName}`,
+    score: 0,
     meta: {
-      icon: { fileName },
+      icons: {
+        icon: iconMetadata[fileName],
+      },
     },
   });
 });
 
-// Add guidelines
-guidelines.forEach(({ frontMatter: { name, keywords, slug }, intro }) => {
-  const parts = name.split("/");
-  if (parts.length >= 2) {
-    const sectionSlug = slugify(parts[0]);
+// Add foundations
+foundations.forEach(({ frontMatter: { name }, intro, category }) => {
+  const url = `/foundations/${category}/${slugify(name)}`;
 
-    const allowedSections = ["patterns", "foundations", "design", "content"];
-    if (allowedSections.includes(sectionSlug)) {
-      const title = parts[parts.length - 1];
-
-      const url = `/guidelines/${sectionSlug}/${slug}`;
-
-      results.push({
-        category: "Guidelines",
-        title,
+  results.push({
+    id: slugify(`foundations ${name}`),
+    category: "foundations",
+    score: 0,
+    url,
+    meta: {
+      foundations: {
+        title: name,
         excerpt: intro,
-        url,
-        keywords: keywords as string[],
-        meta: {},
-      });
-    }
-  }
+        category: category || "",
+      },
+    },
+  });
 });
 
 const fuse = new Fuse(results, {
-  keys: [{ name: "title", weight: 50 }, "excerpt", "url", "keywords"],
+  keys: [
+    // Foundations
+    { name: "meta.foundations.title", weight: 100 },
+    { name: "meta.foundations.excerpt", weight: 50 },
+
+    // Components
+    { name: "meta.components.name", weight: 100 },
+    { name: "meta.components.description", weight: 50 },
+
+    // Tokens
+    { name: "meta.tokens.token.name", weight: 200 },
+    { name: "meta.tokens.token.value", weight: 50 },
+
+    // Icons
+    { name: "meta.icons.icon.fileName", weight: 50 },
+    { name: "meta.icons.icon.name", weight: 50 },
+    { name: "meta.icons.icon.keywords", weight: 20 },
+    { name: "meta.icons.icon.set", weight: 20 },
+    { name: "meta.icons.icon.description", weight: 50 },
+  ],
   includeScore: true,
-  threshold: 0.1,
+  threshold: 0.5,
+  shouldSort: true,
+  ignoreLocation: true,
 });
 
-export function search(query: string): SearchResult {
-  let topScores: {
-    [key in SearchResult[number]["category"]]: number;
-  } = {
-    Components: 0,
-    Guidelines: 0,
-    Icons: 0,
-    Tokens: 0,
-  };
+export function search(query: string): GroupedSearchResults {
+  const groupedResults: GroupedSearchResults = [];
 
   if (query.length > 0) {
     const fuseResults = fuse.search(query);
 
-    fuseResults.forEach((result) => {
-      const category = result.item.category;
-      if (
-        result.score &&
-        (topScores[category] === null || topScores[category] < result.score)
-      ) {
-        topScores[category] = result.score;
-      }
+    const scoredResults: SearchResults = fuseResults.map((result) => ({
+      ...result.item,
+      score: result.score || 0,
+    }));
+
+    searchResultCategories.forEach((category) => {
+      groupedResults.push({
+        category,
+        results: scoredResults
+          .filter((result) => result.category === category)
+          .map((result) => ({ ...result, score: result.score || 0 }))
+          .slice(0, MAX_RESULTS[category]),
+      });
     });
 
-    const groupedResults = fuseResults
-      .map((item) => item.item)
-      .sort((a, b) => {
-        return topScores[a.category] - topScores[b.category];
-      })
-      .slice(0, 20);
-
-    return groupedResults;
+    groupedResults.sort(
+      (a, b) => (a.results[0]?.score || 0) - (b.results[0]?.score || 0)
+    );
   }
 
-  return [];
+  return groupedResults;
 }

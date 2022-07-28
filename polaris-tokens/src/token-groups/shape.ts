@@ -56,4 +56,7 @@ export const shape = {
   'border-divider': {
     value: 'var(--p-border-width-1) solid var(--p-divider)',
   },
+  'border-divider-on-dark': {
+    value: 'var(--p-border-width-1) solid var(--p-divider-dark)',
+  },
 };

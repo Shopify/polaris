@@ -1,4 +1,4 @@
-name: exit
+name: Exit
 set: major
 description: Used to denote the action of exiting an app, channel, or workflow.
 keywords:

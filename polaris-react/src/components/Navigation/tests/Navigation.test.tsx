@@ -25,6 +25,17 @@ describe('<Navigation />', () => {
     });
   });
 
+  it('will render logo suffix when `logoSuffix` is provided', () => {
+    const LogoSuffix = () => <div>Suffix</div>;
+    const navigation = mountWithApp(
+      <Navigation location="/" logoSuffix={<LogoSuffix />} />,
+      {
+        frame: {logo: {url: 'https://shopify.com/logo'}},
+      },
+    );
+    expect(navigation).toContainReactComponent(LogoSuffix);
+  });
+
   describe('context', () => {
     it('passes location context', () => {
       const Child: React.FunctionComponent = (_props) => {

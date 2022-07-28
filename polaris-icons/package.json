@@ -1,16 +1,35 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "4.19.0",
+  "version": "5.2.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "metadata": [
+        "./dist/metadata.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -cw",
+    "dev": "rollup -c -w",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./metadata": {
+      "types": "./dist/metadata.d.ts",
+      "default": "./dist/metadata.js"
+    },
+    "./dist/svg/*.svg": "./dist/svg/*.svg"
   },
   "publishConfig": {
     "access": "public",
@@ -24,24 +43,19 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shopify/polaris-icons.git",
-    "directory": "packages/polaris-icons"
+    "url": "git+https://github.com/Shopify/polaris.git",
+    "directory": "polaris-icons"
   },
   "bugs": {
-    "url": "https://github.com/shopify/polaris-icons/issues"
+    "url": "https://github.com/shopify/polaris/issues"
   },
-  "homepage": "https://polaris-icons.shopify.com/",
+  "homepage": "https://polaris.shopify.com/icons",
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-virtual": "^2.0.3",
-    "@rollup/pluginutils": "^4.1.0",
     "@svgr/core": "^4.3.3",
     "glob": "^7.1.6",
     "hast-util-select": "^3.0.0",
-    "jest": "^27.5.1",
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
-    "rollup": "^2.28.1",
     "svgo": "^2.8.0",
     "unified": "^9.2.1"
   }

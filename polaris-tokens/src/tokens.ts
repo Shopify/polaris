@@ -1,3 +1,4 @@
+import type {Exact} from './types';
 import {breakpoints} from './token-groups/breakpoints';
 import {depth} from './token-groups/depth';
 import {legacy as legacyTokens} from './token-groups/legacy';
@@ -64,7 +65,7 @@ export interface Tokens {
   zIndex: TokenGroup;
 }
 
-export const tokens: Tokens = {
+export const tokens = createTokens({
   breakpoints: tokensToRems(breakpoints),
   colorSchemes,
   depth,
@@ -74,4 +75,12 @@ export const tokens: Tokens = {
   spacing: tokensToRems(spacing),
   typography: tokensToRems(typography),
   zIndex,
-};
+});
+
+/**
+ * Identity function that simply returns the provided tokens, but additionally
+ * validates the input matches the `Tokens` type exactly and infers all members.
+ */
+function createTokens<T extends Exact<Tokens, T>>(tokens: T) {
+  return tokens;
+}

@@ -25,21 +25,30 @@ module.exports = function loader(source) {
 
   const readme = parseCodeExamples(source);
 
-  const hasFullscreenLayout = ['App provider', 'Frame', 'Navigation'].includes(
-    readme.name,
-  );
+  const hasFullscreenLayout = [
+    'App provider',
+    'Contextual save bar',
+    'Frame',
+    'Fullscreen bar',
+    'Navigation',
+    'Sheet',
+  ].includes(readme.name);
+
+  const omitAppProvider = [
+    'Frame',
+    'App provider',
+    'CustomProperties',
+  ].includes(readme.name);
 
   const csfExports = readme.examples.map((example) => {
     return `
 const ${example.storyName}Component = (${example.code})();
 export function ${example.storyName}() {
-  return <div data-omit-app-provider="${readme.omitAppProvider}"><${
-      example.storyName
-    }Component /></div>;
+  return <${example.storyName}Component />;
 }
 
 ${example.storyName}.storyName = ${JSON.stringify(example.name)};
-${example.storyName}.args = {omitAppProvider: ${readme.omitAppProvider}};
+${example.storyName}.args = {omitAppProvider: ${omitAppProvider}};
 ${example.storyName}.parameters = {
   layout: '${hasFullscreenLayout ? 'fullscreen' : 'padded'}',
   docs: {
@@ -94,6 +103,8 @@ import {
   Form,
   FormLayout,
   Frame,
+  FullscreenBar,
+  Grid,
   Heading,
   Icon,
   Image,
@@ -229,8 +240,6 @@ ${csfExports.join('\n\n')}
 `;
 };
 
-const exampleForRegExp = /<!-- example-for: ([\w\s,]+) -->/u;
-
 function stripCodeBlock(block) {
   return block
     .replace(/```jsx/, '')
@@ -244,16 +253,6 @@ function pascalCase(str) {
     .join('');
 }
 
-function isExampleForPlatform(exampleMarkdown, platform) {
-  const foundExampleFor = exampleMarkdown.match(exampleForRegExp);
-
-  if (!foundExampleFor) {
-    return true;
-  }
-
-  return foundExampleFor[1].includes(platform);
-}
-
 function parseCodeExamples(data) {
   const matter = grayMatter(data);
   const examples = generateExamples(matter);
@@ -263,28 +262,10 @@ function parseCodeExamples(data) {
     category: matter.data.category,
     component: examples.length ? toPascalCase(matter.data.name) : undefined,
     examples,
-    omitAppProvider: matter.data.omitAppProvider || false,
   };
 }
 
 function generateExamples(matter) {
-  if (matter.data.platforms && !matter.data.platforms.includes('web')) {
-    const ignoredPlatforms = matter.data.platforms.join(',');
-    console.log(
-      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (platforms: ${ignoredPlatforms})}`,
-    );
-
-    return [];
-  }
-
-  if (matter.data.hidePlayground) {
-    console.log(
-      chalk`ℹ️  {grey [${matter.data.name}] Component examples are ignored (hidePlayground: true)}`,
-    );
-
-    return [];
-  }
-
   const introAndComponentSections = matter.content
     .split(/(\n---\n)/)
     .map((content) => content.replace('---\n', '').trim())
@@ -307,29 +288,19 @@ function generateExamples(matter) {
   const nameRegex = /(.)*/;
   const codeRegex = /```jsx(.|\n)*?```/g;
 
-  const examples = allExamples
-    .filter((example) => isExampleForPlatform(example, 'web'))
-    .map((example) => {
-      const nameMatches = example.match(nameRegex);
-      const codeBlock = example.match(codeRegex);
+  const examples = allExamples.map((example) => {
+    const nameMatches = example.match(nameRegex);
+    const codeBlock = example.match(codeRegex);
 
-      const name = nameMatches !== null ? nameMatches[0].trim() : '';
-      const storyName = pascalCase(name);
-      const code =
-        codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
+    const name = nameMatches !== null ? nameMatches[0].trim() : '';
+    const storyName = pascalCase(name);
+    const code =
+      codeBlock !== null ? wrapExample(stripCodeBlock(codeBlock[0])) : '';
 
-      const description = new MdParser().parse(
-        filterMarkdownForPlatform(
-          example
-            .replace(nameRegex, '')
-            .replace(codeRegex, '')
-            .replace(exampleForRegExp, ''),
-          'web',
-        ).trim(),
-      );
+    const description = new MdParser().parse(example).trim();
 
-      return {name, storyName, code, description};
-    });
+    return {name, storyName, code, description};
+  });
 
   if (examples.filter((example) => example.code).length === 0) {
     console.log(
@@ -346,34 +317,6 @@ function generateExamples(matter) {
   });
 
   return examples;
-}
-
-function filterMarkdownForPlatform(markdown, platform) {
-  const unwrapSinglePlatformContentRegExp = new RegExp(
-    `<!-- content-for: ${platform} -->([\\s\\S]+?)<!-- \\/content-for -->`,
-    'gu',
-  );
-
-  const deleteSinglePlatformContentRegExp = new RegExp(
-    `<!-- content-for: (?:[\\w\\s]*) -->([\\s\\S]+?)<!-- \\/content-for -->`,
-    'gu',
-  );
-
-  const unwrapMultiplatformContentRegExp = new RegExp(
-    `<!-- content-for: (?:[\\w\\s,]*${platform}[\\w\\s,]*) -->([\\s\\S]+?)<!-- \\/content-for -->`,
-    'gu',
-  );
-  const deleteRemainingPlatformsRegExp =
-    /<!-- content-for: [\w\s,]+ -->[\s\S]+?<!-- \/content-for -->/gu;
-
-  return (
-    markdown
-      // Unwrap content in multiple passes to support nested content-for blocks
-      .replace(unwrapSinglePlatformContentRegExp, '$1')
-      .replace(deleteSinglePlatformContentRegExp, '')
-      .replace(unwrapMultiplatformContentRegExp, '$1')
-      .replace(deleteRemainingPlatformsRegExp, '')
-  );
 }
 
 /**

@@ -1,10 +1,9 @@
 import { tokens } from "@shopify/polaris-tokens";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { getTitleForTitleTag } from "../../../../utils/various";
+import type { NextApiResponse } from "next";
 
 import { staticTokenGroupKeys } from "./[tokens]";
 
-const getGithubUrl = (file: string, isRaw: boolean) => {
+const getGithubUrl = (file: string) => {
   const fileName = `${file}.ts`;
   const githubUrl = "https://github.com/Shopify/polaris/blob";
   const filePath = `/main/polaris-tokens/src/token-groups/${fileName}`;
@@ -16,7 +15,8 @@ const html = `
 <!DOCTYPE>
 <html>
     <head>
-        <title>${getTitleForTitleTag("API")}</title>
+        <meta charset="utf-8">
+        <title>API - Shopify Polaris</title>
         <style>
             td, th {
                 border: 1px solid #dddddd;
@@ -30,7 +30,7 @@ const html = `
         </style>
     </head>
     <body>
-        <h1>Admin Design Systems Token API v0</h1>
+        <h1>Polaris Token API</h1>
         <p>
             This API allows users to query for and build applications with the <a href="https://polaris.shopify.com/tokens/getting-started-with-tokens">Polaris Tokens</a>.
         </p>
@@ -83,8 +83,7 @@ const html = `
                         </td>
                         <td>
                             <a href="${getGithubUrl(
-                              `color.${scheme}`,
-                              false
+                              `color.${scheme}`
                             )}">File</a>
                         </td>
                     </tr>
@@ -106,10 +105,7 @@ const html = `
                             <a href="${cssUrl}">${cssUrl}</a>
                         </td>
                         <td>
-                            <a href="${getGithubUrl(
-                              tokenGroup,
-                              false
-                            )}">File</a>
+                            <a href="${getGithubUrl(tokenGroup)}">File</a>
                         </td>
                     </tr>
                 `;
@@ -121,7 +117,7 @@ const html = `
 </html>
 `;
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (res: NextApiResponse) => {
   res.setHeader("content-type", "text/html");
   res.send(html);
 };

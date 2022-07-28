@@ -1,79 +1,53 @@
+@import "../../styles/fonts.scss";
+
 .Nav {
-  flex: 1;
-  font-size: var(--font-size-300);
-  padding: 2.75rem 3rem 3rem;
-  min-width: 16rem;
-  display: flex;
-  border-right: 0.5px solid #ddd;
-
-  > ul {
-    flex: 1;
-  }
-
-  span {
-    font-weight: var(--font-weight-500);
-    font-size: var(--font-size-200);
-  }
-
-  a {
-    position: relative;
-    display: inline-block;
-    padding: 1px 0;
-    padding-left: 1.15rem;
-    color: var(--text-strong);
-
-    &:hover {
-      color: inherit;
-
-      &::before {
-        background: #dddddd;
-      }
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      display: block;
-      width: 7px;
-      height: 7px;
-      margin: auto;
-      border-radius: 3.5px;
-      background: #ccc;
-    }
-
-    &[aria-current="page"] {
-      color: var(--primary);
-
-      &::before {
-        background: var(--primary);
-      }
-    }
-  }
-
   ul {
-    margin-top: 0.25rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  ul ul {
+    position: relative;
   }
 
   > ul > li {
-    margin-bottom: 2rem;
-
+    margin-bottom: 1rem;
     &:last-child {
-      margin-bottom: 0;
-      ul {
-        margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  span {
+    display: inline-block;
+    font-size: var(--font-size-300);
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
+    margin-bottom: 0.25rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.33rem;
+    padding: 1px 0;
+    position: relative;
+    color: inherit;
+    font-size: var(--font-size-100);
+
+    &:hover {
+      color: var(--text-strong);
+
+      &:after {
+        animation: nav-item-in 0.25s 1 linear both;
       }
     }
 
-    > span {
-      display: inline-block;
-      margin-bottom: 0.25rem;
-      font-size: var(--font-size-600);
-      font-weight: var(--font-weight-600);
+    &[aria-current="page"],
+    &:hover {
       color: var(--text-strong);
+    }
+
+    &[aria-current="page"] {
+      font-weight: var(--font-weight-500);
     }
   }
 }

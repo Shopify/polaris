@@ -1,7 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-  "version": "9.5.2",
+  "version": "9.21.1",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -45,23 +45,29 @@
     }
   },
   "scripts": {
-    "build": "node ./scripts/build.js",
+    "build": "run-s build:types build:types-downlevel build:js build:docs build:validate",
+    "build:types": "tsc -b",
+    "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
+    "build:js": "rollup -c",
+    "build:docs": "copyfiles './src/**/*.md' './build/docs' --up=1",
+    "build:validate": "node scripts/build-validate.js",
     "dev": "yarn run storybook",
-    "gen-media-queries": "node ./scripts/gen-media-queries.js",
-    "prepublishOnly": "yarn run build",
+    "lint": "run-p lint:*",
+    "lint:js": "TIMING=1 eslint --cache .",
+    "lint:styles": "stylelint '**/*.{css,scss}'",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules build build-internal",
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
-    "storybook": "yarn gen-media-queries && start-storybook -p 6006 --quiet",
-    "storybook:build": "yarn gen-media-queries && build-storybook -o build-internal/storybook/static",
-    "test": "loom test --no-watch",
-    "validate-tokens": "ajv validate -s src/tokens/schemas/token-group.json -d 'src/tokens/token-groups/*.json'",
-    "version": "node ./scripts/readme-update-version"
+    "storybook": "start-storybook -p 6006 --quiet",
+    "storybook:build": "build-storybook -o build-internal/storybook/static",
+    "preversion": "node ./scripts/readme-update-version"
   },
   "dependencies": {
-    "@shopify/polaris-icons": "*",
+    "@shopify/polaris-icons": "^5.2.0",
+    "@shopify/polaris-tokens": "^5.5.0",
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
-    "focus-visible": "^5.2.0",
     "react-fast-compare": "^3.2.0",
     "react-transition-group": "^4.4.2"
   },
@@ -70,40 +76,31 @@
     "react-dom": "^16.14.0 || ^17.0.0"
   },
   "devDependencies": {
-    "@luigiminardim/storybook-addon-globals-controls": "^0.1.3",
-    "@rollup/plugin-image": "^2.0.5",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-replace": "^2.3.3",
-    "@rollup/pluginutils": "^3.1.0",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
-    "@shopify/loom": "^1.0.0",
-    "@shopify/loom-cli": "^1.0.0",
-    "@shopify/loom-plugin-build-library": "^1.0.0",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-testing": "^3.2.4",
     "@shopify/storybook-a11y-test": "0.4.3",
-    "@size-limit/preset-small-lib": "^5.0.3",
-    "@storybook/addon-a11y": "^6.4.19",
-    "@storybook/addon-console": "^1.2.3",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/builder-webpack5": "^6.4.19",
-    "@storybook/manager-webpack5": "^6.4.19",
-    "@storybook/react": "^6.4.19",
+    "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-toolbars": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/react": "^6.5.9",
     "@types/node": "^16.11.11",
-    "@types/react": "^17.0.19",
-    "@types/react-dom": "^17.0.9",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "ajv-cli": "^5.0.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "^8.1.0",
     "chalk": "^2.4.2",
     "change-case": "^3.1.0",
+    "chromatic": "^6.5.4",
     "copyfiles": "^2.1.1",
     "core-js": "^3.6.5",
     "create-file-webpack": "^1.0.2",
-    "downlevel-dts": "^0.6.0",
-    "fs-extra": "^7.0.1",
-    "glob": "^7.1.4",
+    "glob": "^7.1.6",
     "gray-matter": "^4.0.2",
     "lodash": "^4.17.21",
     "marked": "^4.0.10",
@@ -114,6 +111,7 @@
     "postcss-loader": "^4.2.0",
     "postcss-modules": "^4.2.2",
     "postcss-pxtorem": "^5.1.1",
+    "puppeteer": "^14.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-is": "^17.0.2",
@@ -121,12 +119,8 @@
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
     "semver": "^6.3.0",
-    "shelljs": "^0.8.3",
     "shx": "^0.3.2",
-    "size-limit": "^5.0.3",
-    "storybook-addon-performance": "^0.16.1",
     "svgo": "^2.8.0",
-    "typescript": "~4.3.5",
     "webpack": "5"
   },
   "browserslist": [
@@ -138,27 +132,5 @@
     "last 3 chromeandroid versions",
     "last 1 firefoxandroid versions",
     "ios >= 13.4"
-  ],
-  "size-limit": [
-    {
-      "name": "cjs",
-      "path": "build/cjs/index.js",
-      "limit": "180 kB"
-    },
-    {
-      "name": "esm",
-      "path": "build/esm/index.js",
-      "limit": "105 kB"
-    },
-    {
-      "name": "esnext",
-      "path": "build/esnext/index.esnext",
-      "limit": "160 kB"
-    },
-    {
-      "name": "css",
-      "path": "build/esm/styles.css",
-      "limit": "45 kB"
-    }
   ]
 }

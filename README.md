@@ -1,5 +1,5 @@
 <div align="center">
-<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/b44d9f7075203748b7784bd61e88cba1e2d7acde/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
+<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/main/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
 </div>
 
 # Polaris
@@ -30,31 +30,35 @@ polaris/
 
 ## Commands
 
-**1. Install dependencies**
+### Install dependencies and build workspaces
 
 ```sh
-yarn
+yarn && yarn build
 ```
 
-**2. Build the packages**
+### Run a command
 
-```sh
-yarn build
-```
+**One workspace**
 
-**3. Start a local development environment**
+Run commands from a selected workspace using [`turbo run <command> --filter=<workspace>...`](https://turborepo.org/docs/core-concepts/filtering) flag.
 
-Start a **storybook** server for the polaris-react components
+| Command                                           | Runs                                 |
+| ------------------------------------------------- | ------------------------------------ |
+| `yarn turbo run dev --filter=@shopify/polaris`    | Open the react component storybook   |
+| `yarn turbo run dev --filter=polaris.shopify.com` | Open polaris.shopify.com NextJS site |
 
-```sh
-yarn workspace @shopify/polaris dev
-```
+**All workspaces**
 
-Start a **NextJS** server for polaris.shopify.com
+Run commands across all workspaces. This uses [`turbo run <command>`](https://turborepo.org/docs/reference/command-line-reference#turbo-run-task).
 
-```sh
-yarn workspace polaris-shopify-com dev
-```
+| Command           | Runs                                                                                                                  |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `yarn changeset`  | Adds a new [changelog entry](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset) |
+| `yarn lint`       | Lints all workspaces                                                                                                  |
+| `yarn test`       | Tests all workspaces                                                                                                  |
+| `yarn type-check` | Build types and check for type errors                                                                                 |
+| `yarn clean`      | Remove generated files                                                                                                |
+| `yarn format`     | Format files with prettier                                                                                            |
 
 ## Contribute to this repo
 

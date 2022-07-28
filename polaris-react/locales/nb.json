@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Vis handlinger for {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Tilbake",
+      "accessibilityLabel": "Avslutt fullskjermmodus"
     }
   }
 }

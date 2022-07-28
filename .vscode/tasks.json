@@ -7,14 +7,13 @@
       "group": "build",
       "problemMatcher": [],
       "label": "npm: build",
-      "detail": "yarn workspaces run build"
+      "detail": "yarn build"
     },
     {
       "label": "polaris-for-vscode: start-dev",
       "type": "shell",
       "command": "yarn workspace polaris-for-vscode run dev",
       "group": "build",
-      "problemMatcher": ["$tsc-watch"],
       "isBackground": true,
       "presentation": {
         "panel": "dedicated",

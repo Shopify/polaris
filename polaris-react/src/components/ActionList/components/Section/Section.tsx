@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {Item} from '../Item';
 import type {
   ActionListItemDescriptor,
@@ -15,8 +14,6 @@ export interface SectionProps {
   hasMultipleSections: boolean;
   /** Defines a specific role attribute for each action in the list */
   actionRole?: 'option' | 'menuitem' | string;
-  /** Whether or not the section is the first to appear */
-  firstSection?: boolean;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
@@ -25,7 +22,6 @@ export function Section({
   section,
   hasMultipleSections,
   actionRole,
-  firstSection,
   onActionAnyItem,
 }: SectionProps) {
   const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
@@ -41,26 +37,26 @@ export function Section({
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
       return (
-        <Item
+        <li
           key={`${content}-${index}`}
-          content={content}
-          helpText={helpText}
-          role={actionRole}
-          onAction={handleAction(onAction)}
-          {...item}
-        />
+          role={actionRole === 'menuitem' ? 'presentation' : undefined}
+        >
+          <Item
+            content={content}
+            helpText={helpText}
+            role={actionRole}
+            onAction={handleAction(onAction)}
+            {...item}
+          />
+        </li>
       );
     },
   );
 
   const className = section.title ? undefined : styles['Section-withoutTitle'];
-  const titleClassName = classNames(
-    styles.Title,
-    firstSection && styles.firstSectionWithTitle,
-  );
 
   const titleMarkup = section.title ? (
-    <p className={titleClassName}>{section.title}</p>
+    <p className={styles.Title}>{section.title}</p>
   ) : null;
 
   let sectionRole;

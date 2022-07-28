@@ -1,4 +1,4 @@
-name: image with text overlay
+name: Image with text overlay
 set: major
 description: Used to represent a layout option of text overlaid on an image.
 keywords:

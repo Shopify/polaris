@@ -1,6 +1,7 @@
 import React, {useRef, useEffect, useState} from 'react';
 
 import {Key} from '../../types';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {KeypressListener} from '../KeypressListener';
 import {Focus} from '../Focus';

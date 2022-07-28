@@ -1,4 +1,4 @@
-name: transaction
+name: Transaction
 set: major
 description: Used to represent an action to customize an item or resource.
 keywords:

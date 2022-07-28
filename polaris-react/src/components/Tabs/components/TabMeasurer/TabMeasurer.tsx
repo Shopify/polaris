@@ -1,5 +1,6 @@
 import React, {memo, useEffect, useRef, useCallback} from 'react';
 
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {classNames} from '../../../../utilities/css';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';

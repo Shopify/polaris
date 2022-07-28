@@ -6,7 +6,7 @@ export const legacy = {
     value: '20px',
   },
   'icon-size-small': {
-    value: '10px',
+    value: '8px',
   },
   'icon-size-medium': {
     value: '20px',

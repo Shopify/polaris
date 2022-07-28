@@ -1,4 +1,4 @@
-name: update inventory
+name: Update inventory
 set: major
 description: Used to represent updated inventory at a warehouse.
 keywords:

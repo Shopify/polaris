@@ -3,7 +3,7 @@
 $breakpoint-small: 458px;
 
 .IndexTable {
-  --pc-index-table-translate-offset: calc(50px - var(--p-space-4));
+  --pc-index-table-translate-offset: 35px;
   --pc-index-table-table-header-offset: 52px;
   --pc-index-table-cell: 1;
   --pc-index-table-sticky-cell: 31;
@@ -179,13 +179,18 @@ $loading-panel-height: 53px;
   border: 0;
 }
 
+.TableHeading-flush {
+  padding: 0;
+}
+
 .TableHeading-first {
-  --pc-index-table-checkbox-offset-left: 14px;
+  --pc-index-table-checkbox-offset-left: 16px;
   --pc-index-table-checkbox-offset-right: 18px;
   position: sticky;
   left: 0;
   padding-left: var(--pc-index-table-checkbox-offset-left);
   padding-right: var(--pc-index-table-checkbox-offset-right);
+  width: var(--p-space-5);
 }
 
 .ColumnHeaderCheckboxWrapper {
@@ -230,7 +235,8 @@ $loading-panel-height: 53px;
   position: sticky;
   left: 0;
   z-index: var(--pc-index-table-sticky-cell);
-  padding: 0;
+  padding: var(--p-space-2) 0;
+  vertical-align: middle;
 }
 
 .TableCell-first + .TableCell {
@@ -240,7 +246,6 @@ $loading-panel-height: 53px;
   @include breakpoint-after($breakpoint-small) {
     position: sticky;
     z-index: var(--pc-index-table-sticky-cell);
-    padding: 0;
   }
 }
 
@@ -278,7 +283,7 @@ $loading-panel-height: 53px;
   .TableCell:last-child,
   .TableHeading-last {
     @include breakpoint-after($breakpoint-small) {
-      filter: drop-shadow(-1px 0 0 var(--p-border-divider));
+      filter: drop-shadow(-1px 0 0 var(--p-divider));
     }
   }
 }
@@ -422,15 +427,18 @@ $scroll-bar-size: var(--p-space-2);
   z-index: var(--pc-index-table-scroll-bar);
   bottom: 0;
   padding: var(--p-space-05);
-  border-top: var(--p-border-divider);
   background-color: var(--p-surface);
-  border-bottom-right-radius: var(--p-border-radius-1);
-  border-bottom-left-radius: var(--p-border-radius-1);
+  border-bottom-right-radius: var(--p-border-radius-2);
+  border-bottom-left-radius: var(--p-border-radius-2);
 }
 
 .scrollBarContainerCondensed {
   visibility: hidden;
   pointer-events: none;
+}
+
+.scrollBarContainerHidden {
+  display: none;
 }
 
 .ScrollBar {

@@ -1,13 +1,16 @@
 export {};
-// Mocks for scrolling
-window.scroll = () => {};
 
-window.open = (
-  _url?: string,
-  _target?: string,
-  _features?: string,
-  _replace?: boolean,
-) => null;
+if (typeof window !== 'undefined') {
+  // Mocks for scrolling
+  window.scroll = () => {};
+
+  window.open = (
+    _url?: string,
+    _target?: string,
+    _features?: string,
+    _replace?: boolean,
+  ) => null;
+}
 
 const IGNORE_ERROR_REGEXES = [
   /React does not recognize the `%s` prop on a DOM element/,

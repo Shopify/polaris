@@ -5,11 +5,15 @@ import {
   CirclePlusMinor,
   CustomersMajor,
   DiscountsMajor,
+  ExternalMinor,
+  GlobeMinor,
   HomeMajor,
   MarketingMajor,
   OrdersMajor,
   ProductsMajor,
+  ProductsMinor,
   SettingsMajor,
+  WifiMajor,
 } from '@shopify/polaris-icons';
 
 import {
@@ -37,6 +41,7 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  VisuallyHidden,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -366,6 +371,9 @@ export function DetailsPage() {
           icon: CirclePlusMinor,
           accessibilityLabel: 'Add sales channel',
           onClick: toggleModalActive,
+          tooltip: {
+            content: 'Add sales channel',
+          },
         }}
         items={[
           {
@@ -404,8 +412,36 @@ export function DetailsPage() {
                   setNavItemActive('pos');
                 },
                 matches: navItemActive === 'pos',
+                external: true,
               },
             ],
+          },
+          {
+            label: 'Updog Marketplace',
+            icon: ProductsMinor,
+            onClick: () => {},
+            matches: navItemActive === 'pos',
+            url: '#',
+            secondaryAction: {
+              url: '#',
+              accessibilityLabel: 'OLp',
+              icon: ExternalMinor,
+              tooltip: {
+                content: 'Open Updog Marketplace',
+              },
+            },
+          },
+          {
+            label: 'Radio',
+            icon: WifiMajor,
+            onClick: () => {},
+            matches: navItemActive === 'pos',
+            url: '#',
+            secondaryAction: {
+              url: '#',
+              accessibilityLabel: 'radio',
+              icon: GlobeMinor,
+            },
           },
         ]}
       />
@@ -424,12 +460,16 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a
-      href="#SkipToContent"
-      id="SkipToContentTarget"
-      ref={skipToContentRef}
-      tabIndex={-1}
-    />
+    <VisuallyHidden>
+      <a
+        href="#SkipToContent"
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+      >
+        Page content
+      </a>
+    </VisuallyHidden>
   );
 
   // ---- Description ----

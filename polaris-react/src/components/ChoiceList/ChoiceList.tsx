@@ -97,7 +97,7 @@ export function ChoiceList({
     ) : null;
 
     return (
-      <li key={value}>
+      <li key={value} className={styles.ChoiceItem}>
         <ControlComponent
           name={finalName}
           value={value}

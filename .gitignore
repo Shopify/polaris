@@ -3,13 +3,13 @@
 *.vsix
 .DS_Store
 .eslintcache
-.loom
 .next
 .shadowenv.d
 .turbo
 dist
 node_modules
-/polaris-for-figma/build
 /polaris-react/build
 /polaris-react/build-internal
 /polaris-react/src/styles/_media-queries.scss
+/polaris.shopify.com/public/icons
+/polaris.shopify.com/.env.local

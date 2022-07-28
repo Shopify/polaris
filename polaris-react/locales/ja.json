@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "{title}のアクションを表示"
       }
+    },
+    "FullscreenBar": {
+      "back": "戻る",
+      "accessibilityLabel": "フルスクリーンモードを閉じる"
     }
   }
 }

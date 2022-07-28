@@ -3,6 +3,10 @@ up:
   - node:
       yarn: v1.22.18
       version: v16.13.0 # to be kept in sync with .nvmrc and .github/workflows/ci.yml
+  - custom:
+      name: Build monorepo
+      met?: yarn build --output-logs=none
+      meet: 'true'
 
 commands:
-  server: yarn workspace @shopify/polaris dev
+  server: yarn dev

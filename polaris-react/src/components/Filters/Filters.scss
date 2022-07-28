@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$list-filters-header-height: top-bar-height();
+$list-filters-header-height: $top-bar-height;
 $list-filters-footer-height: 70px;
 
 .Filters {

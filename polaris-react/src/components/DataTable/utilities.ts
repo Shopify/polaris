@@ -1,4 +1,4 @@
-import type {DataTableState} from './types';
+import type {ColumnVisibilityData, DataTableState} from './types';
 
 interface TableMeasurements {
   firstVisibleColumnIndex: number;
@@ -7,7 +7,7 @@ interface TableMeasurements {
 }
 
 export function measureColumn(tableData: TableMeasurements) {
-  return function (column: HTMLElement, index: number) {
+  return function (column: HTMLElement, index: number): ColumnVisibilityData {
     const {
       firstVisibleColumnIndex,
       tableLeftVisibleEdge: tableStart,
@@ -16,9 +16,15 @@ export function measureColumn(tableData: TableMeasurements) {
 
     const leftEdge = column.offsetLeft;
     const rightEdge = leftEdge + column.offsetWidth;
-    const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd);
-    const isVisibleRight = isEdgeVisible(rightEdge, tableStart, tableEnd);
+    const isVisibleLeft = isEdgeVisible(leftEdge, tableStart, tableEnd, 'left');
+    const isVisibleRight = isEdgeVisible(
+      rightEdge,
+      tableStart,
+      tableEnd,
+      'right',
+    );
     const isVisible = isVisibleLeft || isVisibleRight;
+    const width = column.offsetWidth;
 
     if (isVisible) {
       tableData.firstVisibleColumnIndex = Math.min(
@@ -26,16 +32,21 @@ export function measureColumn(tableData: TableMeasurements) {
         index,
       );
     }
-
-    return {leftEdge, rightEdge, isVisible};
+    return {leftEdge, rightEdge, isVisible, width, index};
   };
 }
 
-export function isEdgeVisible(position: number, start: number, end: number) {
+export function isEdgeVisible(
+  position: number,
+  start: number,
+  end: number,
+  edgeType: string,
+) {
   const minVisiblePixels = 30;
 
   return (
-    position >= start + minVisiblePixels && position <= end - minVisiblePixels
+    position >= start + (edgeType === 'left' ? 0 : minVisiblePixels) &&
+    position <= end - minVisiblePixels
   );
 }
 

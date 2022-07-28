@@ -1,4 +1,4 @@
-name: plus
+name: Plus
 set: minor
 description: Used to denote the action of adding an item and zooming into a map.
 keywords:
@@ -8,7 +8,8 @@ keywords:
   - math
 authors:
   - Adam Whitcroft
-version: 1
-date_added: 2018-11-14
-date_modified: 2018-11-14
+  - Marc Thomas
+version: 2
+date_added: 2022-05-05
+date_modified: 2022-05-05
 exclusive_use:

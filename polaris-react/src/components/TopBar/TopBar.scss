@@ -8,7 +8,7 @@ $context-control-expand-after: 1400px;
 .TopBar {
   position: relative;
   display: flex;
-  height: top-bar-height();
+  height: $top-bar-height;
   box-shadow: var(--p-shadow-top-bar);
   background-color: var(--p-surface);
   transition: var(--p-duration-200) background-color var(--p-ease-in-out);
@@ -24,7 +24,7 @@ $context-control-expand-after: 1400px;
 
 .LogoDisplayControl {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     display: flex;
   }
 }
@@ -34,12 +34,16 @@ $context-control-expand-after: 1400px;
 }
 
 .LogoContainer {
-  flex: 0 0 layout-width(nav);
+  flex: 0 0 $layout-width-nav-base;
   align-items: center;
   height: 100%;
   padding: 0 var(--p-space-2) 0 var(--p-space-4);
-  @include safe-area-for(flex-basis, layout-width(nav), left);
+  @include safe-area-for(flex-basis, $layout-width-nav-base, left);
   @include safe-area-for(padding-left, var(--p-space-4), left);
+
+  &.hasLogoSuffix {
+    gap: var(--p-space-2);
+  }
 }
 
 .Logo,
@@ -49,13 +53,13 @@ $context-control-expand-after: 1400px;
 
 .ContextControl {
   display: none;
-  @include breakpoint-after(nav-min-window-corrected()) {
-    width: layout-width(nav);
+  @include breakpoint-after($nav-min-window-corrected) {
+    width: $layout-width-nav-base;
     display: block;
   }
 
   @include breakpoint-after($context-control-expand-after) {
-    width: layout-width(nav);
+    width: $layout-width-nav-base;
   }
 }
 
@@ -86,7 +90,7 @@ $context-control-expand-after: 1400px;
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @include breakpoint-after(nav-min-window-corrected()) {
+  @include breakpoint-after($nav-min-window-corrected) {
     display: none;
   }
 

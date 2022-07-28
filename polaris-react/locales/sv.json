@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Visa åtgärder för {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Tillbaka",
+      "accessibilityLabel": "Lämna helskärmsläget"
     }
   }
 }

@@ -1,4 +1,4 @@
-name: pin
+name: Pin
 set: major
 description: Used to represent a pin or an action to pin or save something.
 keywords:

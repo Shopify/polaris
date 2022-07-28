@@ -38,16 +38,16 @@ The `.nvmrc` file for local development. This should match the `dev.yml` file.
 v16.13.0
 ```
 
-The `shipit.yml` files. This should point towards the GitHub actions the packages require to pass before publishing.
+The `shipit.yml` files. This should point towards the GitHub Actions the packages require to pass before publishing.
 
 ```yml
 ci:
   require:
-    - 'Test with node v14.17.0'
-    - 'Test with node v16.13.0'
+    - 'Validate with Node v14.17.0'
+    - 'Validate with Node v16.13.0'
 
 merge:
   require:
-    - 'Test with node v14.17.0'
-    - 'Test with node v16.13.0'
+    - 'Validate with Node v14.17.0'
+    - 'Validate with Node v16.13.0'
 ```

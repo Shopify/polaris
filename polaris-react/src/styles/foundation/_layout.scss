@@ -9,64 +9,26 @@ $dangerous-magic-space-8: 32px;
 /// @group foundation/layout
 ////
 
-$layout-width-data: (
-  primary: (
-    min: 480px,
-    max: 662px,
-  ),
-  secondary: (
-    min: 240px,
-    max: 320px,
-  ),
-  one-half-width: (
-    base: 450px,
-  ),
-  one-third-width: (
-    base: 240px,
-  ),
-  nav: (
-    base: $navigation-width,
-  ),
-  page-with-nav: (
-    base: 769px,
-  ),
-  page-content: (
-    not-condensed: 680px,
-    partially-condensed: 450px,
-  ),
-  inner-spacing: (
-    base: $dangerous-magic-space-4,
-  ),
-  outer-spacing: (
-    min: $dangerous-magic-space-5,
-    max: $dangerous-magic-space-8,
-  ),
-);
-
-/// Returns the widths of the specified column.
-/// @param {String} $name - The column name.
-/// @return {Number} The width for the column.
-
-@function layout-width($name, $value: base) {
-  $fetched-value: map-get(map-get($layout-width-data, $name), $value);
-
-  @if type-of($fetched-value) {
-    @return $fetched-value;
-  } @else {
-    @error 'Column `#{$name} - #{$value}` not found. Available columns:\a       - primary (min, max)\a       - secondary (min, max)\a       - one-half-width (base)\a       - one-third-width (base)\a       - nav (base)\a       - page-with-nav (base)\a       - page-content (not-condensed, partially-condensed)\a       - inner-spacing (base)\a       - outer-spacing (min, max)';
-  }
-}
+$layout-width-primary-min: 480px;
+$layout-width-primary-max: 662px;
+$layout-width-secondary-min: 240px;
+$layout-width-secondary-max: 320px;
+$layout-width-one-half-width-base: 450px;
+$layout-width-one-third-width-base: 240px;
+$layout-width-nav-base: $navigation-width;
+$layout-width-page-with-nav-base: 769px;
+$layout-width-page-content-not-condensed: 680px;
+$layout-width-page-content-partially-condensed: 450px;
+$layout-width-inner-spacing-base: $dangerous-magic-space-4;
+$layout-width-outer-spacing-min: $dangerous-magic-space-5;
+$layout-width-outer-spacing-max: $dangerous-magic-space-8;
 
 $dismiss-icon-size: 32px;
 
-@function top-bar-height() {
-  @return 56px;
-}
+$top-bar-height: 56px;
 
-@function mobile-nav-width() {
-  @return calc(100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8}));
-}
+$mobile-nav-width: calc(
+  100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8})
+);
 
-@function nav-min-window-corrected() {
-  @return 769px;
-}
+$nav-min-window-corrected: 769px;

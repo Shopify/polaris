@@ -4,6 +4,7 @@ import {PortalsManager} from '../PortalsManager';
 import {FocusManager} from '../FocusManager';
 import {merge} from '../../utilities/merge';
 import {FrameContext} from '../../utilities/frame';
+// eslint-disable-next-line import/no-deprecated
 import {CustomProperties, CustomPropertiesProps} from '../CustomProperties';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {
@@ -37,6 +38,7 @@ export interface WithPolarisTestProviderOptions {
   // Contexts provided by AppProvider
   i18n?: ConstructorParameters<typeof I18n>[0];
   link?: LinkLikeComponent;
+  /** @deprecated */
   colorScheme?: CustomPropertiesProps['colorScheme'];
   mediaQuery?: Partial<MediaQueryContextType>;
   features?: FeaturesConfig;

@@ -3,6 +3,7 @@ import React, {useEffect, useState, useCallback, useMemo} from 'react';
 import {debounce} from '../../utilities/debounce';
 import {MediaQueryContext} from '../../utilities/media-query';
 import {navigationBarCollapsed} from '../../utilities/breakpoints';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
 interface Props {

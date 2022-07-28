@@ -84,6 +84,66 @@ describe('<TextField />', () => {
     });
   });
 
+  describe('click events', () => {
+    it('bubbles up to the parent element when it occurs in the input', () => {
+      const onClick = jest.fn();
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField type="text" label="TextField" autoComplete="off" />
+        </div>,
+      );
+
+      textField.find('input')!.domNode?.dispatchEvent(event);
+      expect(onClick).toHaveBeenCalled();
+    });
+
+    it('bubbles up to the parent element when it occurs in the spinner', () => {
+      const onClick = jest.fn();
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField type="number" label="TextField" autoComplete="off" />
+        </div>,
+      );
+
+      textField.find(Spinner)!.domNode?.dispatchEvent(event);
+      expect(onClick).toHaveBeenCalled();
+    });
+
+    it('does not bubble up to the parent element when it occurs in an element other than the input', () => {
+      const onClick = jest.fn();
+      const children = 'vertical-content-children';
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      const verticalContent = <span>{children}</span>;
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField
+            type="text"
+            label="TextField"
+            autoComplete="off"
+            verticalContent={verticalContent}
+          />
+        </div>,
+      );
+
+      textField.find('span', {children})!.domNode?.dispatchEvent(event);
+      expect(onClick).not.toHaveBeenCalled();
+    });
+  });
+
   describe('onChange()', () => {
     it('is called with the new value', () => {
       const spy = jest.fn();
@@ -448,29 +508,6 @@ describe('<TextField />', () => {
         className: expect.stringContaining(styles.focus),
       });
     });
-
-    it('does not set focus `onFocus` for the <input /> if the `target` is the `prefix`', () => {
-      const mockButtonId = 'MockPrefix';
-      const mockPrefixButton = <button id={mockButtonId} onClick={noop} />;
-      const textField = mountWithApp(
-        <TextField
-          label="TextField"
-          prefix={mockPrefixButton}
-          onChange={noop}
-          autoComplete="off"
-        />,
-      );
-
-      const button = textField.find('button', {id: mockButtonId})!.domNode!;
-
-      textField
-        .find('div', {className: styles.TextField})!
-        .trigger('onFocus', {target: button});
-
-      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
-        className: expect.stringContaining(styles.focus),
-      });
-    });
   });
 
   describe('suffix', () => {
@@ -521,29 +558,6 @@ describe('<TextField />', () => {
 
       expect(textField.find(Connected)!).not.toContainReactComponent('div', {
         className: expect.stringContaining(styles.focus),
-      });
-    });
-
-    it('does not set focus `onFocus` for the <input /> if the `target` is the `suffix`', () => {
-      const mockButtonId = 'MockSuffix';
-      const mockSuffixButton = <button id={mockButtonId} onClick={noop} />;
-      const textField = mountWithApp(
-        <TextField
-          label="TextField"
-          suffix={mockSuffixButton}
-          onChange={noop}
-          autoComplete="off"
-        />,
-      );
-
-      const button = textField.find('button', {id: mockButtonId})!.domNode!;
-
-      textField
-        .find('div', {className: styles.TextField})!
-        .trigger('onFocus', {target: button});
-
-      expect(textField.find(Connected)!).not.toContainReactComponent('div', {
-        className: expect.stringContaining('focus'),
       });
     });
   });

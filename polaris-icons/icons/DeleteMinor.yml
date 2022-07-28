@@ -1,4 +1,4 @@
-name: delete
+name: Delete
 set: minor
 description: Used to denote a destructive action to delete an item.
 keywords:

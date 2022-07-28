@@ -5,7 +5,7 @@ import { parseMarkdown } from "../utils/markdown.mjs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const guidelinesDir = path.join(__dirname, "../pages-from-old-website");
+const guidelinesDir = path.join(__dirname, "../../content/foundations");
 
 let guidelines = [];
 
@@ -28,13 +28,13 @@ for (let i = 0; i < subfolders.length; i++) {
 
       const { readme, ...rest } = parsed;
 
-      guidelines.push(rest);
+      guidelines.push({ ...rest, category: dirName });
     }
   }
 }
 
 // Write meta file (can be included in next.js bundle)
-const metaFilePath = path.join(__dirname, "../data/guidelines.json");
+const metaFilePath = path.join(__dirname, "../data/foundations.json");
 fs.writeFileSync(
   metaFilePath,
   JSON.stringify(

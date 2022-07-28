@@ -1,10 +1,6 @@
 ---
 name: Toast
 category: Feedback indicators
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - toast
   - flash message
@@ -17,9 +13,6 @@ keywords:
   - popup
   - iframe
   - duration
-  - ios
-  - android
-  - web
 ---
 
 # Toast
@@ -30,7 +23,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Required components
 
-The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/structure/frame) component.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.
 
 ---
 
@@ -62,7 +55,7 @@ Toast messages should be:
 - Short and affirmative
 - Written in the pattern of: noun + verb
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -97,7 +90,7 @@ Action should:
 - Not have actions, like [Cancel], for dismissing toast. The [X] to dismiss is already included in the component.
 - Be used with a duration of at least 10,000 milliseconds for accessibility.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -121,9 +114,7 @@ Action should:
 
 ## Examples
 
-### Basic toast
-
-<!-- example-for: web -->
+### Default
 
 Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
 
@@ -150,9 +141,7 @@ function ToastExample() {
 }
 ```
 
-### Multiple toast messages
-
-<!-- example-for: web -->
+### Multiple messages
 
 Use multiple toast messages to inform the merchant about distinct actions.
 
@@ -196,9 +185,7 @@ function MultipleToastExample() {
 }
 ```
 
-### Toast with custom duration
-
-<!-- example-for: web -->
+### With custom duration
 
 Use to shorten or lengthen the default duration of 5000 milliseconds.
 
@@ -225,9 +212,7 @@ function ToastWithCustomDurationExample() {
 }
 ```
 
-### Toast with action
-
-<!-- example-for: web -->
+### With action
 
 Use when a merchant has the ability to act on the message. For example, to undo a change or retry an action.
 
@@ -262,53 +247,9 @@ function ToastWithActionExample() {
 }
 ```
 
-### Default toast
+### Error
 
-<!-- example-for: android, ios -->
-
-Use default toast for informative and neutral feedback.
-
-<!-- content-for: android -->
-
-![Default toast with neutral color](/public_images/components/Toast/android/default@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-On iOS, icons are available for cases where you want to re-inforce the message.
-
-![Default toast with neutral color](/public_images/components/Toast/ios/default@2x.png)
-
-<!-- /content-for -->
-
-### Success toast
-
-<!-- example-for: android, ios -->
-
-Use success toast to indicate that something was successful. For example, a product was successfully updated.
-
-<!-- content-for: android -->
-
-![Success toast](/public_images/components/Toast/android/success@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-On iOS, icons are available for cases where you want to re-inforce the message.
-
-![Success toast](/public_images/components/Toast/ios/success@2x.png)
-
-<!-- /content-for -->
-
-### Error toast
-
-<!-- example-for: android, ios, web -->
-
-Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/experiences/error-messages).
-
-<!-- content-for: web -->
+Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 
 ```jsx
 function ErrorToastExample() {
@@ -333,52 +274,16 @@ function ErrorToastExample() {
 }
 ```
 
-<!-- /content-for -->
-
-<!-- content-for: android -->
-
-![Error toast](/public_images/components/Toast/android/error@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-On iOS, icons are available for cases where you want to re-inforce the message.
-
-![Error toast](/public_images/components/Toast/ios/error@2x.png)
-
-<!-- /content-for -->
-
-### With action
-
-<!-- example-for: android, ios -->
-
-Use action when merchants have the ability to act on the message. For example, to undo a change or retry an action. Keep the action label short, preferably 1 verb action.
-
-<!-- content-for: android -->
-
-![Default toast with action to undo](/public_images/components/Toast/android/default-action@2x.png)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-![Default toast with action to undo](/public_images/components/Toast/ios/default-action@2x.png)
-
-<!-- /content-for -->
-
 ---
 
 ## Related components
 
-- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/overlays/popover)
-- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/feedback-indicators/banner)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, [use the popover component](https://polaris.shopify.com/components/popover)
+- To communicate a change or condition that needs the merchant’s attention within the context of a page, [use the banner component](https://polaris.shopify.com/components/banner)
 
 ---
 
 ## Accessibility
-
- <!-- content-for: web -->
 
 The content of the toast component is implemented as an ARIA live region using `aria-live="polite"`. When the toast appears, screen readers should announce the toast text after any other more pressing announcements.
 
@@ -393,5 +298,3 @@ Avoid using toast for critical information that merchants need to act on immedia
 Make sure that merchants can also accomplish the action in the toast another way, since the toast action may be difficult to access for some merchants. If the toast action is not available somewhere else on the page, for example a retry action that reloads a section, it should have a fallback action, for example a browser refresh.
 
 Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.
-
- <!-- /content-for -->

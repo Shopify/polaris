@@ -304,6 +304,10 @@
       "Header": {
         "rollupActionsLabel": "Afficher les actions pour {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Retour",
+      "accessibilityLabel": "Quitter le mode plein écran"
     }
   }
 }

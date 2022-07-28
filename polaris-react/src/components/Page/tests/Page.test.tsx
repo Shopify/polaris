@@ -208,9 +208,18 @@ describe('<Page />', () => {
       const actionGroups = [
         {
           title: 'Preview',
+          disabled: true,
           actions: [
             {
               content: 'URL',
+            },
+          ],
+        },
+        {
+          title: 'More actions',
+          actions: [
+            {
+              content: 'Copy',
             },
           ],
         },

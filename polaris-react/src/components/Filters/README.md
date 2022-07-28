@@ -21,7 +21,7 @@ Merchants use filters to:
 - filter by typing into a text field
 - filter by selecting filters or promoted filters
 
-The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/overlays/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
+The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
 
 ---
 
@@ -29,11 +29,11 @@ The way that merchants interact with filters depends on the components that you 
 
 The filters component relies on the accessibility features of multiple other components:
 
-- [Text field](https://polaris.shopify.com/components/forms/text-field)
-- [Button](https://polaris.shopify.com/components/actions/button)
-- [Popover](https://polaris.shopify.com/components/overlays/popover)
-- [Sheet](https://polaris.shopify.com/components/overlays/sheet)
-- [Collapsible](https://polaris.shopify.com/components/behavior/collapsible)
+- [Text field](https://polaris.shopify.com/components/text-field)
+- [Button](https://polaris.shopify.com/components/button)
+- [Popover](https://polaris.shopify.com/components/popover)
+- [Sheet](https://polaris.shopify.com/components/sheet)
+- [Collapsible](https://polaris.shopify.com/components/collapsible)
 
 ### Maintain accessibility with custom features
 
@@ -64,7 +64,7 @@ The filters component should:
 
 The text field should be clearly labeled so it’s obvious to merchants what they should enter into the field.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +80,7 @@ The text field should be clearly labeled so it’s obvious to merchants what the
 
 Use the name of the filter if the purpose of the name is clear on its own. For example, when you see a filter badge that reads **Fulfilled**, it’s intuitive that it falls under the Fulfillment status category.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,7 +94,7 @@ Use the name of the filter if the purpose of the name is clear on its own. For e
 
 If the filter name is ambiguous on its own, add a descriptive word related to the status. For example, **Low** doesn’t make sense out of context. Add the word “risk” so that merchants know it’s from the Risk category.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -108,7 +108,7 @@ If the filter name is ambiguous on its own, add a descriptive word related to th
 
 Group tags from the same category together.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -122,7 +122,7 @@ Group tags from the same category together.
 
 If all tag pills selected: truncate in the middle
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -138,7 +138,7 @@ If all tag pills selected: truncate in the middle
 
 ## Examples
 
-### Filtering with a resource list
+### With a resource list
 
 ```jsx
 function ResourceListFiltersExample() {
@@ -337,7 +337,7 @@ function ResourceListFiltersExample() {
 }
 ```
 
-### Filtering with a data table
+### With a data table
 
 ```jsx
 function DataTableFiltersExample() {
@@ -525,7 +525,7 @@ function DataTableFiltersExample() {
 }
 ```
 
-### Filters with children content
+### With children content
 
 ```jsx
 function FiltersExample() {
@@ -652,7 +652,7 @@ function FiltersExample() {
 }
 ```
 
-### All filters disabled
+### Disabled
 
 ```jsx
 function DisableAllFiltersExample() {
@@ -783,7 +783,7 @@ function DisableAllFiltersExample() {
 }
 ```
 
-### Some filters disabled
+### Some disabled
 
 ```jsx
 function DisableSomeFiltersExample() {
@@ -933,7 +933,7 @@ function DisableSomeFiltersExample() {
 }
 ```
 
-### Filters without clear button
+### Without clear button
 
 ```jsx
 function Playground() {
@@ -1065,7 +1065,7 @@ function Playground() {
 }
 ```
 
-### Filters with help text
+### With help text
 
 ```jsx
 function ResourceListFiltersExample() {
@@ -1266,7 +1266,7 @@ function ResourceListFiltersExample() {
 }
 ```
 
-### Filters with query field hidden
+### With query field hidden
 
 ```jsx
 function ResourceListFiltersExample() {
@@ -1404,6 +1404,206 @@ function ResourceListFiltersExample() {
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
               hideQueryField
+            />
+          }
+          items={[
+            {
+              id: 341,
+              url: 'customers/341',
+              name: 'Mae Jemison',
+              location: 'Decatur, USA',
+            },
+            {
+              id: 256,
+              url: 'customers/256',
+              name: 'Ellen Ochoa',
+              location: 'Los Angeles, USA',
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, location} = item;
+            const media = <Avatar customer size="medium" name={name} />;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <h3>
+                  <TextStyle variation="strong">{name}</TextStyle>
+                </h3>
+                <div>{location}</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </Card>
+    </div>
+  );
+
+  function disambiguateLabel(key, value) {
+    switch (key) {
+      case 'moneySpent':
+        return `Money spent is between $${value[0]} and $${value[1]}`;
+      case 'taggedWith':
+        return `Tagged with ${value}`;
+      case 'accountStatus':
+        return value.map((val) => `Customer ${val}`).join(', ');
+      default:
+        return value;
+    }
+  }
+
+  function isEmpty(value) {
+    if (Array.isArray(value)) {
+      return value.length === 0;
+    } else {
+      return value === '' || value == null;
+    }
+  }
+}
+```
+
+### With query field disabled
+
+```jsx
+function ResourceListFiltersExample() {
+  const [accountStatus, setAccountStatus] = useState(null);
+  const [moneySpent, setMoneySpent] = useState(null);
+  const [taggedWith, setTaggedWith] = useState(null);
+  const [queryValue, setQueryValue] = useState(null);
+
+  const handleAccountStatusChange = useCallback(
+    (value) => setAccountStatus(value),
+    [],
+  );
+  const handleMoneySpentChange = useCallback(
+    (value) => setMoneySpent(value),
+    [],
+  );
+  const handleTaggedWithChange = useCallback(
+    (value) => setTaggedWith(value),
+    [],
+  );
+  const handleFiltersQueryChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+  const handleAccountStatusRemove = useCallback(
+    () => setAccountStatus(null),
+    [],
+  );
+  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleFiltersClearAll = useCallback(() => {
+    handleAccountStatusRemove();
+    handleMoneySpentRemove();
+    handleTaggedWithRemove();
+    handleQueryValueRemove();
+  }, [
+    handleAccountStatusRemove,
+    handleMoneySpentRemove,
+    handleQueryValueRemove,
+    handleTaggedWithRemove,
+  ]);
+
+  const filters = [
+    {
+      key: 'accountStatus',
+      label: 'Account status',
+      filter: (
+        <ChoiceList
+          title="Account status"
+          titleHidden
+          choices={[
+            {label: 'Enabled', value: 'enabled'},
+            {label: 'Not invited', value: 'not invited'},
+            {label: 'Invited', value: 'invited'},
+            {label: 'Declined', value: 'declined'},
+          ]}
+          selected={accountStatus || []}
+          onChange={handleAccountStatusChange}
+          allowMultiple
+        />
+      ),
+      shortcut: true,
+    },
+    {
+      key: 'taggedWith',
+      label: 'Tagged with',
+      filter: (
+        <TextField
+          label="Tagged with"
+          value={taggedWith}
+          onChange={handleTaggedWithChange}
+          autoComplete="off"
+          labelHidden
+        />
+      ),
+      shortcut: true,
+    },
+    {
+      key: 'moneySpent',
+      label: 'Money spent',
+      filter: (
+        <RangeSlider
+          label="Money spent is between"
+          labelHidden
+          value={moneySpent || [0, 500]}
+          prefix="$"
+          output
+          min={0}
+          max={2000}
+          step={1}
+          onChange={handleMoneySpentChange}
+        />
+      ),
+    },
+  ];
+
+  const appliedFilters = [];
+  if (!isEmpty(accountStatus)) {
+    const key = 'accountStatus';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, accountStatus),
+      onRemove: handleAccountStatusRemove,
+    });
+  }
+  if (!isEmpty(moneySpent)) {
+    const key = 'moneySpent';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, moneySpent),
+      onRemove: handleMoneySpentRemove,
+    });
+  }
+  if (!isEmpty(taggedWith)) {
+    const key = 'taggedWith';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, taggedWith),
+      onRemove: handleTaggedWithRemove,
+    });
+  }
+
+  return (
+    <div style={{height: '568px'}}>
+      <Card>
+        <ResourceList
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          filterControl={
+            <Filters
+              queryValue={queryValue}
+              filters={filters}
+              appliedFilters={appliedFilters}
+              onQueryChange={handleFiltersQueryChange}
+              onQueryClear={handleQueryValueRemove}
+              onClearAll={handleFiltersClearAll}
+              disableQueryField
             />
           }
           items={[

@@ -303,6 +303,10 @@
       "Header": {
         "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja"
       }
+    },
+    "FullscreenBar": {
+      "back": "Takaisin",
+      "accessibilityLabel": "Poistu koko näytön tilasta"
     }
   }
 }

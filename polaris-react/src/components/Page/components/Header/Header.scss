@@ -132,32 +132,6 @@ $action-menu-rollup-computed-width: 40px;
   }
 }
 
-.ActionMenuWrapper {
-  margin-top: 0;
-
-  .mobileView & {
-    position: absolute;
-    // BOOKMARKS
-    top: calc(var(--p-space-5) + (#{control-height()} / 4));
-    right: var(--p-space-5);
-    margin-top: 0;
-
-    @include page-content-when-not-fully-condensed {
-      right: calc(-1 * (var(--p-space-2)));
-    }
-  }
-
-  // stylelint-disable-next-line selector-max-class
-  .mobileView.hasNavigation & {
-    top: control-height() * 0.5;
-  }
-
-  @media print {
-    // stylelint-disable-next-line declaration-no-important
-    display: none !important;
-  }
-}
-
 .Row {
   display: flex;
   justify-content: space-between;
@@ -266,14 +240,14 @@ $action-menu-rollup-computed-width: 40px;
   // stylelint-disable-next-line selector-max-class
   .RightAlign {
     margin-bottom: var(--p-space-1);
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       margin-bottom: 0;
     }
   }
   // stylelint-disable-next-line selector-max-class
   .Row {
     flex-wrap: wrap-reverse;
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       flex-wrap: nowrap;
     }
   }

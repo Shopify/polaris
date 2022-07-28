@@ -1,4 +1,4 @@
-name: risk
+name: Risk
 set: major
 description: Used to represent elevated risk on a payment or order, usually the risk of credit card fraud.
 keywords:

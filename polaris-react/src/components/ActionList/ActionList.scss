@@ -1,11 +1,6 @@
 @import '../../styles/common';
 
 .ActionList {
-  --pc-action-list-image-size: 20px;
-  --pc-action-list-item-min-height: var(--p-space-10);
-  --pc-action-list-item-vertical-padding: calc(
-    (var(--pc-action-list-item-min-height) - var(--p-line-height-2)) / 2
-  );
   outline: none;
   list-style: none;
   margin: 0;
@@ -34,14 +29,19 @@
 
 .Title {
   @include text-style-subheading;
-  padding: var(--p-space-1) var(--p-space-4) var(--p-space-3) var(--p-space-4);
+  padding: var(--p-space-3) var(--p-space-4) var(--p-space-3) var(--p-space-4);
+}
 
-  &.firstSectionWithTitle {
-    padding-top: var(--p-space-3);
-  }
+.Section:not(:first-child) .Title {
+  padding-top: var(--p-space-1);
 }
 
 .Item {
+  --pc-action-list-image-size: 20px;
+  --pc-action-list-item-min-height: var(--p-space-10);
+  --pc-action-list-item-vertical-padding: calc(
+    (var(--pc-action-list-item-min-height) - var(--p-line-height-2)) / 2
+  );
   @include unstyled-button;
   @include focus-ring;
   display: block;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 
 interface SourceSet {
   source: string;
@@ -16,23 +16,34 @@ export interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   onError?(): void;
 }
 
-export function Image({sourceSet, source, crossOrigin, ...rest}: ImageProps) {
+export function Image({
+  alt,
+  sourceSet,
+  source,
+  crossOrigin,
+  onLoad,
+  className,
+  ...rest
+}: ImageProps) {
   const finalSourceSet = sourceSet
     ? sourceSet
         .map(({source: subSource, descriptor}) => `${subSource} ${descriptor}`)
         .join(',')
     : null;
 
-  return finalSourceSet ? (
-    // eslint-disable-next-line jsx-a11y/alt-text
+  const handleLoad = useCallback(() => {
+    if (onLoad) onLoad();
+  }, [onLoad]);
+
+  return (
     <img
+      alt={alt}
       src={source}
-      srcSet={finalSourceSet}
       crossOrigin={crossOrigin}
+      className={className}
+      onLoad={handleLoad}
+      {...(finalSourceSet ? {srcSet: finalSourceSet} : {})}
       {...rest}
     />
-  ) : (
-    // eslint-disable-next-line jsx-a11y/alt-text
-    <img src={source} {...rest} crossOrigin={crossOrigin} />
   );
 }

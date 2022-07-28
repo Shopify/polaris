@@ -1,10 +1,10 @@
 import React from 'react';
-import {withPerformance} from 'storybook-addon-performance';
-import {withGlobals} from '@luigiminardim/storybook-addon-globals-controls';
 
 import {AppProvider} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
+import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
+import {gridOptions} from './manager';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -42,49 +42,47 @@ function GridOverlayDecorator(Story, context) {
   );
 }
 
+function ReactRenderProfiler(Story, context) {
+  const {profiler} = context.globals;
+  const Wrapper = profiler ? RenderPerformanceProfiler : React.Fragment;
+  const props = profiler ? {id: context.id, kind: context.kind} : {};
+
+  return (
+    <Wrapper {...props}>
+      <Story {...context} />
+    </Wrapper>
+  );
+}
+
 export const globalTypes = {
   strictMode: {
     name: 'React.StrictMode',
-    defaultValue: false,
+    defaultValue: true,
     toolbar: {
       items: [
-        {title: 'Disabled', value: 'false'},
-        {title: 'Enabled', value: 'true'},
+        {title: 'Disabled', value: false},
+        {title: 'Enabled', value: true},
       ],
       showName: true,
     },
   },
-  showGrid: {
-    name: 'Show grid overlay',
-    description: 'Show or hide a 4 / 12 column grid, overlaying components',
+  profiler: {
+    name: 'React.Profiler',
     defaultValue: false,
-    control: {type: 'boolean'},
+    toolbar: {
+      items: [
+        {title: 'Disabled', value: false},
+        {title: 'Enabled', value: true},
+      ],
+      showName: true,
+    },
   },
-  gridInFrame: {
-    name: 'Grid in frame',
-    description: 'Show grid within app frame context',
-    defaultValue: false,
-    control: {type: 'boolean'},
-  },
-  gridWidth: {
-    name: 'Grid width',
-    description: 'Set a max width for the grid overlay',
-    default: '1080',
-    control: {type: 'select'},
-    options: ['560px', '768px', '1008px', '100%'],
-  },
-  gridLayer: {
-    name: 'Grid layer',
-    description: 'Set the grid layer above or below content',
-    default: 'below',
-    control: {type: 'select'},
-    options: ['above', 'below'],
-  },
+  ...gridOptions,
 };
 
 export const decorators = [
+  GridOverlayDecorator,
   StrictModeDecorator,
   AppProviderDecorator,
-  withPerformance,
-  GridOverlayDecorator,
+  ReactRenderProfiler,
 ];

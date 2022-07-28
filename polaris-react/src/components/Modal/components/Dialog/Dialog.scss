@@ -19,8 +19,11 @@ $dangerous-magic-space-16: 64px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  // Allow passthrough of click events to dismiss modal on backdrop click
+  // Resume pointer-events on .Modal below
+  pointer-events: none;
 
-  @include breakpoint-after(layout-width(page-with-nav)) {
+  @include breakpoint-after($layout-width-page-with-nav-base) {
     justify-content: center;
   }
 }
@@ -30,7 +33,7 @@ $dangerous-magic-space-16: 64px;
 }
 
 .Modal {
-  --pc-dialog-horizontal-spacing: var(--p-space-16);
+  pointer-events: initial;
   position: fixed;
   right: 0;
   bottom: 0;
@@ -51,7 +54,7 @@ $dangerous-magic-space-16: 64px;
     max-height: 100%;
   }
 
-  @include breakpoint-after(layout-width(page-with-nav)) {
+  @include breakpoint-after($layout-width-page-with-nav-base) {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -59,7 +62,7 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.limitHeight {
-    @include breakpoint-after(layout-width(page-with-nav)) {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
       @media (min-height: $height-limit + $vertical-spacing) {
         max-height: $height-limit;
       }
@@ -67,8 +70,8 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.sizeSmall {
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      max-width: calc(100% - var(--p-space-16));
     }
 
     @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
@@ -77,12 +80,19 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.sizeLarge {
-    @include breakpoint-after(layout-width(page-with-nav)) {
-      max-width: calc(100% - var(--pc-dialog-horizontal-spacing));
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      max-width: calc(100% - var(--p-space-16));
     }
 
     @include breakpoint-after($large-width + $dangerous-magic-space-16) {
       max-width: $large-width;
+    }
+  }
+
+  &.fullScreen {
+    height: 100%;
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      height: unset;
     }
   }
 }

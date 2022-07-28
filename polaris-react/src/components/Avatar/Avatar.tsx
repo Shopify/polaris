@@ -9,6 +9,8 @@ import styles from './Avatar.scss';
 
 type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 
+type Shape = 'square' | 'round';
+
 enum Status {
   Pending = 'PENDING',
   Loaded = 'LOADED',
@@ -23,6 +25,11 @@ export interface AvatarProps {
    * @default 'medium'
    */
   size?: Size;
+  /**
+   * Shape of avatar
+   * @default 'round'
+   */
+  shape?: Shape;
   /** The name of the person */
   name?: string;
   /** Initials of person to display */
@@ -44,6 +51,7 @@ export function Avatar({
   initials,
   customer,
   size = 'medium',
+  shape = 'round',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
@@ -95,16 +103,19 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     !customer && styles[variationName('style', styleClass(nameString))],
-    (hasImage || (initials && initials.length === 0)) &&
-      status !== Status.Loaded &&
-      styles.hidden,
-    hasImage && styles.hasImage,
+    hasImage && status === Status.Loaded && styles.imageHasLoaded,
+    shape && styles[variationName('shape', shape)],
+  );
+
+  const imageClassName = classNames(
+    styles.Image,
+    status !== Status.Loaded && styles.hidden,
   );
 
   const imageMarkUp =
     source && isAfterInitialMount && status !== Status.Errored ? (
       <Image
-        className={styles.Image}
+        className={imageClassName}
         source={source}
         alt=""
         role="presentation"
@@ -112,7 +123,6 @@ export function Avatar({
         onError={handleError}
       />
     ) : null;
-
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
@@ -128,20 +138,21 @@ export function Avatar({
         y="50%"
         dy={verticalOffset}
         fill="currentColor"
-        fontSize="20"
+        fontSize={shape === 'square' ? '15.5' : '20'}
+        fontWeight={shape === 'square' ? '600' : '400'}
         textAnchor="middle"
       >
         {initials}
       </text>
     );
 
-  const svgMarkup = !hasImage ? (
+  const svgMarkup = hasImage ? null : (
     <span className={styles.Initials}>
       <svg className={styles.Svg} viewBox="0 0 40 40">
         {avatarBody}
       </svg>
     </span>
-  ) : null;
+  );
 
   return (
     <span aria-label={label} role="img" className={className}>

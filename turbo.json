@@ -7,16 +7,19 @@
       "dependsOn": ["^build"]
     },
     "test": {
-      "outputs": [".loom/**"],
+      "outputs": [],
       "dependsOn": []
     },
     "lint": {
-      "outputs": []
+      "outputs": [".eslintcache"]
     },
     "dev": {
       "cache": false
     },
     "clean": {
+      "cache": false
+    },
+    "preversion": {
       "cache": false
     }
   }

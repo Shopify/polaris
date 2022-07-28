@@ -304,6 +304,10 @@
       "Header": {
         "rollupActionsLabel": "Ver ações para {title}"
       }
+    },
+    "FullscreenBar": {
+      "back": "Voltar",
+      "accessibilityLabel": "Sair do modo de tela cheia"
     }
   }
 }

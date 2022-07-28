@@ -28,25 +28,28 @@ The autocomplete component should:
 
 ## Content guidelines
 
-The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/forms/text-field) for text fields.
+The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/text-field) for text fields.
 
 ---
 
 ## Examples
 
-### Basic autocomplete
+### Default
 
 Use to help merchants complete text input quickly from a list of options.
 
 ```jsx
 function AutocompleteExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -107,19 +110,22 @@ function AutocompleteExample() {
 }
 ```
 
-### Multiple tags autocomplete
+### With multiple tags
 
 Use to help merchants select multiple options from a list curated by the text input.
 
 ```jsx
 function MultiAutocompleteExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState(['rustic']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -146,8 +152,17 @@ function MultiAutocompleteExample() {
     [deselectedOptions],
   );
 
+  const handleSelect = useCallback(
+    (selected) => {
+      setSelectedOptions(selected);
+      updateText('');
+    },
+    [updateText],
+  );
+
   const removeTag = useCallback(
-    (tag) => () => {
+    (tag) => (event) => {
+      event.stopPropagation();
       const options = [...selectedOptions];
       options.splice(options.indexOf(tag), 1);
       setSelectedOptions(options);
@@ -188,7 +203,7 @@ function MultiAutocompleteExample() {
         options={options}
         selected={selectedOptions}
         textField={textField}
-        onSelect={setSelectedOptions}
+        onSelect={handleSelect}
         listTitle="Suggested Tags"
       />
     </div>
@@ -204,7 +219,7 @@ function MultiAutocompleteExample() {
 }
 ```
 
-### Multiple sections autocomplete
+### With multiple sections
 
 Use to help merchants complete text input quickly from a multiple sections list of options.
 
@@ -308,19 +323,22 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with loading
+### With loading
 
 Use to indicate loading state to merchants while option data is processing.
 
 ```jsx
 function AutocompleteExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -348,7 +366,7 @@ function AutocompleteExample() {
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, options, loading],
+    [deselectedOptions, loading],
   );
 
   const updateSelection = useCallback(
@@ -389,7 +407,7 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with lazy loading
+### With lazy loading
 
 ```jsx
 function AutoCompleteLazyLoadExample() {
@@ -458,7 +476,7 @@ function AutoCompleteLazyLoadExample() {
       setOptions(resultOptions);
       setInputValue;
     },
-    [deselectedOptions, options],
+    [deselectedOptions],
   );
 
   const textField = (
@@ -518,19 +536,22 @@ function AutoCompleteLazyLoadExample() {
 }
 ```
 
-### Autocomplete with empty state
+### With empty state
 
 Use to indicate there are no search results.
 
 ```jsx
 function AutocompleteExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -558,7 +579,7 @@ function AutocompleteExample() {
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, loading, options],
+    [deselectedOptions, loading],
   );
 
   const updateSelection = useCallback(
@@ -609,19 +630,22 @@ function AutocompleteExample() {
 }
 ```
 
-### Autocomplete with action
+### With action
 
-Use to indicate there are no search results.
+Use to help merchants complete an action quickly.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -702,19 +726,22 @@ function AutocompleteActionBeforeExample() {
 }
 ```
 
-### Autocomplete with wrapping action
+### With wrapping action
 
-Use to indicate there are no search results.
+Use to help merchants complete an action quickly with wrapping lines of text.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -797,19 +824,22 @@ function AutocompleteActionBeforeExample() {
 }
 ```
 
-### Autocomplete with destructive action
+### With destructive action
 
-Use to indicate there are no search results.
+Use to help merchants complete a destructive action quickly.
 
 ```jsx
 function AutocompleteActionBeforeExample() {
-  const deselectedOptions = [
-    {value: 'rustic', label: 'Rustic'},
-    {value: 'antique', label: 'Antique'},
-    {value: 'vinyl', label: 'Vinyl'},
-    {value: 'vintage', label: 'Vintage'},
-    {value: 'refurbished', label: 'Refurbished'},
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
+    ],
+    [],
+  );
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
@@ -889,33 +919,13 @@ function AutocompleteActionBeforeExample() {
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/forms/text-field)
-- For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/lists-and-tables/option-list)
-- For a text field that triggers a popover, [use the combo box component](https://polaris.shopify.com/components/forms/combobox)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/text-field)
+- For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/option-list)
+- For a text field that triggers a popover, [use the combo box component](https://polaris.shopify.com/components/combobox)
 
 ---
 
 ## Accessibility
-
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
 
 ### Structure
 
@@ -925,7 +935,7 @@ The autocomplete list displays below the text field or other control by default 
 
 Autocomplete features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -942,5 +952,3 @@ Require that merchants make a selection from the autocomplete to complete a task
 - Give the autocomplete text input keyboard focus with the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Access the list of options with the up and down arrow keys
 - Select an option that has focus with the <kbd>enter</kbd>/<kbd>return</kbd> key
-
-<!-- /content-for -->

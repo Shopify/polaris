@@ -1,4 +1,4 @@
-name: hide
+name: Hide
 set: minor
 description: Used to represent an action to hide something, or to represent a hidden item or resource.
 keywords:

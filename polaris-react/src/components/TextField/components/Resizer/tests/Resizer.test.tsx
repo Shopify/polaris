@@ -3,6 +3,7 @@ import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {Resizer} from '../Resizer';
+// eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../../EventListener';
 
 describe('<Resizer />', () => {
@@ -33,6 +34,7 @@ describe('<Resizer />', () => {
     );
 
     resizer.setProps({currentHeight: 2});
+    // eslint-disable-next-line import/no-deprecated
     resizer.find(EventListener)!.trigger('handler');
 
     expect(cancelAnimationFrameSpy).toHaveBeenCalled();
@@ -155,6 +157,7 @@ describe('<Resizer />', () => {
         />,
       );
       resizer.setProps({currentHeight: 1});
+      // eslint-disable-next-line import/no-deprecated
       resizer.find(EventListener)?.trigger('handler');
       animationFrame.runFrame();
       expect(spy).toHaveBeenCalledWith(30);
@@ -171,6 +174,7 @@ describe('<Resizer />', () => {
         />,
       );
       resizer.setProps({currentHeight: 1});
+      // eslint-disable-next-line import/no-deprecated
       resizer.find(EventListener)?.trigger('handler');
       animationFrame.runFrame();
       expect(spy).toHaveBeenCalledTimes(0);
@@ -188,7 +192,7 @@ describe('<Resizer />', () => {
       />,
     );
     resizer.setProps({currentHeight: 1});
-
+    // eslint-disable-next-line import/no-deprecated
     resizer.find(EventListener)?.trigger('handler');
     animationFrame.runFrame();
     expect(spy).toHaveBeenCalledTimes(0);

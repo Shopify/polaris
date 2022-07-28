@@ -11,7 +11,7 @@
 }
 
 .statusInfo {
-  --pc-pip-color: var(--p-icon);
+  --pc-pip-color: var(--p-icon-highlight);
 }
 
 .statusSuccess {
@@ -19,7 +19,7 @@
 }
 
 .statusNew {
-  --pc-pip-color: var(--p-icon-highlight);
+  --pc-pip-color: var(--p-icon);
 }
 
 .statusAttention {

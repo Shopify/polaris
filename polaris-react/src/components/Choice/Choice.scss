@@ -37,11 +37,16 @@
 }
 
 .Control {
+  --pc-choice-size: var(--p-choice-size);
+
+  @include when-typography-condensed {
+    --pc-choice-size: 22px;
+  }
   display: flex;
   flex: 0 0 auto;
   align-items: stretch;
-  width: var(--p-choice-size);
-  height: var(--p-choice-size);
+  width: var(--pc-choice-size);
+  height: var(--pc-choice-size);
   margin-right: var(--p-space-2);
 
   > * {
@@ -59,7 +64,12 @@
 }
 
 .Descriptions {
-  padding-left: calc(var(--p-space-2) + var(--p-choice-size));
+  --pc-choice-size: var(--p-choice-size);
+
+  @include when-typography-condensed {
+    --pc-choice-size: 22px;
+  }
+  padding-left: calc(var(--p-space-2) + var(--pc-choice-size));
 }
 
 .HelpText {

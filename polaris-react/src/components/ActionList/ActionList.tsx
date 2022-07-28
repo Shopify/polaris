@@ -8,7 +8,8 @@ import {KeypressListener} from '../KeypressListener';
 import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
 import {classNames} from '../../utilities/css';
 
-import {Section} from './components';
+import {Section, Item} from './components';
+import type {ItemProps} from './components';
 import styles from './ActionList.scss';
 
 export interface ActionListProps {
@@ -21,6 +22,8 @@ export interface ActionListProps {
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
+
+export type ActionListItemProps = ItemProps;
 
 export function ActionList({
   items,
@@ -50,7 +53,6 @@ export function ActionList({
     return section.items.length > 0 ? (
       <Section
         key={section.title || index}
-        firstSection={index === 0}
         section={section}
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}
@@ -111,3 +113,5 @@ export function ActionList({
     </Element>
   );
 }
+
+ActionList.Item = Item;

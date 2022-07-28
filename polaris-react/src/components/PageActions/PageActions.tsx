@@ -15,7 +15,7 @@ import styles from './PageActions.scss';
 
 export interface PageActionsProps {
   /** The primary action for the page */
-  primaryAction?: DisableableAction & LoadableAction;
+  primaryAction?: (DisableableAction & LoadableAction) | React.ReactNode;
   /** The secondary actions for the page */
   secondaryActions?: ComplexAction[] | React.ReactNode;
 }
@@ -26,9 +26,12 @@ export function PageActions({
   primaryAction,
   secondaryActions,
 }: PageActionsProps) {
-  const primaryActionMarkup = primaryAction
-    ? buttonsFrom(primaryAction, {primary: true})
-    : null;
+  let primaryActionMarkup: MaybeJSX = null;
+  if (isReactElement(primaryAction)) {
+    primaryActionMarkup = <>{primaryAction}</>;
+  } else if (primaryAction) {
+    primaryActionMarkup = buttonsFrom(primaryAction, {primary: true});
+  }
 
   let secondaryActionsMarkup: MaybeJSX = null;
   if (isInterface(secondaryActions) && secondaryActions.length > 0) {

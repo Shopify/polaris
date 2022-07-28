@@ -1,4 +1,4 @@
-name: circle disable
+name: Circle disable
 set: minor
 description: Used to denote the action of disabling something, like a discount code.
 keywords:

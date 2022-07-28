@@ -19,6 +19,8 @@ export interface ActionMenuProps {
   rollup?: boolean;
   /** Label for rolled up actions activator */
   rollupActionsLabel?: string;
+  /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
+  onActionRollup?(hasRolledUp: boolean): void;
 }
 
 export function ActionMenu({
@@ -26,6 +28,7 @@ export function ActionMenu({
   groups = [],
   rollup,
   rollupActionsLabel,
+  onActionRollup,
 }: ActionMenuProps) {
   if (actions.length === 0 && groups.length === 0) {
     return null;
@@ -47,7 +50,11 @@ export function ActionMenu({
           sections={rollupSections}
         />
       ) : (
-        <Actions actions={actions} groups={groups} />
+        <Actions
+          actions={actions}
+          groups={groups}
+          onActionRollup={onActionRollup}
+        />
       )}
     </div>
   );
@@ -62,6 +69,13 @@ export function hasGroupsWithActions(groups: ActionMenuProps['groups'] = []) {
 function convertGroupToSection({
   title,
   actions,
+  disabled,
 }: MenuGroupDescriptor): ActionListSection {
-  return {title, items: actions};
+  return {
+    title,
+    items: actions.map((action) => ({
+      ...action,
+      disabled: disabled || action.disabled,
+    })),
+  };
 }
