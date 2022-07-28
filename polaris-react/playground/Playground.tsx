@@ -4,7 +4,7 @@ import {Page} from '../src';
 import {useEventListener} from '../src/utilities/use-event-listener';
 
 export function Playground() {
-  const [element, ref] = useElementRef<HTMLParagraphElement>();
+  const ref = React.useRef<HTMLParagraphElement>(null);
 
   const [coords, setCoords] = React.useState({x: 0, y: 0});
 
@@ -23,7 +23,7 @@ export function Playground() {
   useEventListener('copy', (event) => event, document);
 
   // eslint-disable-next-line no-alert
-  useEventListener('dblclick', (_event) => alert('double clicked'), element);
+  useEventListener('dblclick', (_event) => alert('double clicked'), ref);
 
   return (
     <Page title="Playground">
@@ -32,14 +32,4 @@ export function Playground() {
       <p>Mouse Y: {coords.y}</p>
     </Page>
   );
-}
-
-function useElementRef<T extends HTMLElement>() {
-  const [node, setNode] = React.useState<T | null>(null);
-
-  const ref: React.RefCallback<T> = React.useCallback((node) => {
-    if (node !== null) setNode(node);
-  }, []);
-
-  return [node, ref] as const;
 }
