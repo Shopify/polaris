@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Bump storybook versions and clean up main.js
+Bumped storybook versions and cleaned up main.js
