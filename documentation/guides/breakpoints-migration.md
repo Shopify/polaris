@@ -76,11 +76,6 @@ $base-font-size: 16px;
 
 </details>
 
-### Mixins
-
-Use `console.log()` to get the function output and hard code the value you need.
-If the end value of is close to one of [Polaris’ tokens](https://polaris.shopify.com/tokens/breakpoints), we recommend replacing the mixin with the proper token (see the following examples).
-Otherwise, if you really need to keep the old mixin, you can copy its definition and use it locally.
 
 #### `breakpoint-after()`
 
