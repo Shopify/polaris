@@ -25,7 +25,7 @@ examples:
   - fileName: text-heading.tsx
     title: Heading
     description: >-
-      Use to create a range of headings.
+      Use to create various levels of hierarchy on the page.
   - fileName: text-body.tsx
     title: Body
     description: >-
