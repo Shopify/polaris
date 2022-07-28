@@ -209,7 +209,7 @@ function PressedButton() {
 Use to indicate that more content can be disclosed on click, like text in a collapsible.
 
 ```jsx
-function DisclosureButton() {
+function DisclosureButtion() {
   const [expanded, setExpanded] = useState(false);
 
   return (
