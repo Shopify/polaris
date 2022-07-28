@@ -1,20 +1,26 @@
 ## New breakpoints
 
-As part of our project to reduce the total number of unique breakpoints in Polaris and Shopify’s admin we've created the follow set of mobile first breakpoint tokens: 
+As part of our project to reduce the total number of unique breakpoints in Polaris and Shopify’s admin we've created the follow set of mobile first breakpoint tokens:
 
-* `xs`: 0px
-* `sm`: 490px
-* `md`: 768px
-* `lg`: 1040px
-* `xl`: 1440px
+- `xs`: 0px
+- `sm`: 490px
+- `md`: 768px
+- `lg`: 1040px
+- `xl`: 1440px
 
-A transform takes these values and generates Sass variables (which can be used in media conditions) for eahc breakpoint in `up`, `down`, and `only` directions. 
+A transform takes these values and generates Sass variables (which can be used in media conditions) for each breakpoint in `up`, `down`, and `only` directions.
 
 Example of generated output for `breakpoints-md`:
 
-@media #{$p-breakpoints-md-up} {/*...*/}
-@media #{$p-breakpoints-md-down} {/*...*/}
-@media #{$p-breakpoints-md-only} {/*...*/}
+- `@media #{$p-breakpoints-md-up} {/*...*/}`
+- `@media #{$p-breakpoints-md-down} {/*...*/}`
+- `@media #{$p-breakpoints-md-only} {/*...*/}`
+
+To use these Sass variables you will need to import the Polaris’ scss file into your project from the package in `node_modules`:
+
+```scss
+@import 'path/to/node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
+```
 
 ### Media queries variables
 
@@ -42,54 +48,9 @@ $p-breakpoints-xl-down: '(max-width: 89.996875em)';
 $p-breakpoints-xl-only: '(min-width: 90em)';
 ```
 
-## Sass functions and mixins
+## Sass mixins
 
-The following Sass functions and mixins have been removed. You will need to replace any instances with the closest media query variable (listed above) or hard code the one off media query value you need.
-
-
-#### `breakpoint()`
-
-<details>
-<summary>Deprecated Function Definition</summary>
-
-```scss
-$default-browser-font-size: 16px;
-$base-font-size: 16px;
-
-@function em($value) {
-  $unit: unit($value);
-
-  @if $value == 0 {
-    @return 0;
-  } @else if $unit == 'em' {
-    @return $value;
-  } @else if $unit == 'rem' {
-    @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
-  } @else if $unit == 'px' {
-    @return $value / $default-browser-font-size * 1em;
-  } @else {
-    @error 'Value must be in px, rem, or em.';
-  }
-}
-
-@function breakpoint($value, $adjustment: 0) {
-  $adjusted-value: em($adjustment);
-
-  // Reduces chances to have a style void
-  // between two media queries
-  // See https://github.com/sass-mq/sass-mq/issues/6
-  @if $adjustment == -1px {
-    $adjusted-value: -0.01em;
-  } @else if $adjustment == 1px {
-    $adjusted-value: 0.01em;
-  }
-
-  @return em($value) + $adjusted-value;
-}
-```
-
-</details>
-
+The following Sass mixins have been removed. You will need to replace any instances with the closest media query variable (listed above) or hard code the one off media query value you need.
 
 #### `breakpoint-after()`
 
@@ -113,8 +74,6 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// check the Functions section for the definition of the `breakpoint()` function used here
-
 @mixin breakpoint-after($breakpoint, $inclusive: true) {
   @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
     @content;
@@ -146,8 +105,6 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// check the Functions section for the definition of the `breakpoint()` function used here
-
 @mixin breakpoint-before($breakpoint, $inclusive: true) {
   @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
     @content;
@@ -179,8 +136,6 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// check the Functions section for the definition of the Sass functions used here
-
 @mixin page-content-breakpoint-after($size) {
   $size: breakpoint($size);
   @if $size < $partially-condensed-content {
@@ -244,8 +199,6 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-// check the Functions section for the definition of the Sass functions used here
-
 @mixin page-content-breakpoint-before($size) {
   $size: breakpoint($size);
   @if $size < $partially-condensed-content {
