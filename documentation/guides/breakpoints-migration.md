@@ -4,7 +4,7 @@ TODO: write about the 5 new breakpoints
 
 ### Media queries variables
 
-We created some Sass variables to handle the new breakpoints and most of the migration you need to do is replacing old media-queries or mixins with them in your code.
+We've created a collection of Sass variables for applying responsive styles at each breakpoint alias. A majority of the migration will involve replacing legacy media-queries or mixins with the following values:
 
 ```scss
 $p-breakpoints-xs-up: '(min-width: 0em)';
