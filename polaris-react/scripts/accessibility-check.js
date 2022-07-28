@@ -12,7 +12,11 @@ const iframePath = path.join(
 (async () => {
   const storyIds = await getCurrentStoryIds({
     iframePath,
-    skippedStoryIds: ['playground-playground'],
+    skippedStoryIds: [
+      'playground--details-page',
+      'playground--kitchen-sink',
+      'playground--playground',
+    ],
   });
 
   const results = await testPages({
