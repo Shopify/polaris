@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': patch
+'@shopify/polaris': major
 ---
 
-Convert breakpoints mixins to scss variables
+Removed all legacy breakpoint SCSS functions, mixins, and variables. Updated all component styles to use the new Polaris breakpoint aliases.
