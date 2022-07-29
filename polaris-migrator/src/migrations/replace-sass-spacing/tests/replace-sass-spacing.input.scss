@@ -1,0 +1,10 @@
+.Card {
+  padding: spacing(loose) spacing(extra-loose);
+  border-radius: var(--p-border-radius-2, border-radius());
+  box-shadow: var(--p-shadow-card, shadow());
+}
+
+.ButtonContainer {
+  right: spacing();
+  top: spacing(loose);
+}

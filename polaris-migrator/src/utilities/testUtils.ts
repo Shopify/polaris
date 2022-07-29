@@ -1,45 +1,53 @@
-import {API, FileInfo, Options} from 'jscodeshift';
+import fs from 'fs';
+import path from 'path';
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const applyTransform = require('jscodeshift/dist/testUtils').applyTransform;
+import globby from 'globby';
 
 interface TestArgs {
   it: string;
-  original: string;
-  expected: string;
-  migration: (file: FileInfo, jscodeshift: API, options: Options) => void;
+  migration: (fileContent: string) => string;
+  fixture: string;
   mode?: 'only' | 'skip' | 'standard';
   before?: () => void;
   after?: () => void;
 }
 
-export function check({
-  it: name,
-  original,
-  expected,
-  migration,
-  before = () => {},
-  after = () => {},
-  mode = 'standard',
-}: TestArgs) {
-  // eslint-disable-next-line no-nested-ternary
-  const run = mode === 'only' ? it.only : mode === 'skip' ? it.skip : it;
+export function createCheckFn(testDir: string) {
+  return check(testDir);
+}
 
-  run(name, () => {
-    before();
-    try {
-      const output = applyTransform(
-        {default: migration, parser: 'tsx'},
-        {},
-        {source: original},
-      );
-      expect(output).toBe(expected.trim());
-    } catch (error: any) {
-      // a failed assertion will throw
+function check(testDir: string) {
+  return ({
+    it: name,
+    migration,
+    fixture,
+    before = () => {},
+    after = () => {},
+    mode = 'standard',
+  }: TestArgs) => {
+    // eslint-disable-next-line no-nested-ternary
+    const run = mode === 'only' ? it.only : mode === 'skip' ? it.skip : it;
+
+    const originalPath = globby.sync(
+      path.join(testDir, `${fixture}.input.*`),
+    )[0];
+    const expectedPath = globby.sync(
+      path.join(testDir, `${fixture}.output.*`),
+    )[0];
+
+    const original = fs.readFileSync(originalPath, 'utf8');
+    const expected = fs.readFileSync(expectedPath, 'utf8');
+
+    run(name, () => {
+      before();
+      try {
+        const output = migration(original);
+        expect(output).toBe(expected);
+      } catch (error: any) {
+        after();
+        throw error;
+      }
       after();
-      throw error;
-    }
-    // will only be hit if we don't throw
-    after();
-  });
+    });
+  };
 }

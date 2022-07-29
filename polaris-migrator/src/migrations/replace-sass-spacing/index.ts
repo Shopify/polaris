@@ -1,4 +1,3 @@
-import {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 
 import {createRegexFromMap} from '../../utilities/regex';
@@ -24,8 +23,8 @@ const plugin = (): Plugin => ({
   },
 });
 
-export default function migration(file: FileInfo) {
-  return postcss(plugin()).process(file.source, {
+export function migration(fileContent: string) {
+  return postcss(plugin()).process(fileContent, {
     parser: require('postcss-scss'),
   }).css;
 }

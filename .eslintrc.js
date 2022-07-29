@@ -88,9 +88,11 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-migrator/src/**/*.{ts,tsx}'],
+      files: ['polaris-migrator/**/tests/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        '@shopify/jsx-no-hardcoded-content': 'off',
       },
     },
     {

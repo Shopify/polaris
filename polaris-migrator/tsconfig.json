@@ -4,6 +4,7 @@
     "module": "commonjs",
     "composite": true,
     "emitDeclarationOnly": true,
+    "jsx": "react",
     "outDir": "dist",
     "rootDir": "src"
   },

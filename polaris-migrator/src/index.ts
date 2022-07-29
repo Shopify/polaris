@@ -1,3 +1,1 @@
-import {run} from './cli';
-
-run();
+export {run} from './cli';
