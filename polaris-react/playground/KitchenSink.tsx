@@ -1,9 +1,9 @@
-import React from 'react';
+import type {ComponentType} from 'react';
 
 import {RenderPerformanceProfiler} from '../.storybook/RenderPerformanceProfiler';
 
 interface Stories {
-  [key: string]: React.ComponentType;
+  [key: string]: ComponentType;
 }
 
 const stories: Stories = {};
