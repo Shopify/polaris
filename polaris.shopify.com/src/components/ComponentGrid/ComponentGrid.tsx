@@ -1,64 +1,65 @@
 import Image from "../Image";
 import Link from "next/link";
-import { Children } from "react";
-import { HighlightableSearchResult } from "../../types";
-import { className, slugify } from "../../utils/various";
+import { getReadableStatusValue, slugify } from "../../utils/various";
+import { Status } from "../../types";
 import styles from "./ComponentGrid.module.scss";
-
-const COLUMN_COUNT = 4;
+import StatusBadge from "../StatusBadge";
+import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
 
 interface ComponentGridProps {
   children: React.ReactNode;
 }
 
 function ComponentGrid({ children }: ComponentGridProps) {
-  const childCount = Children.count(children);
-  const extraElements =
-    childCount < COLUMN_COUNT ? COLUMN_COUNT - childCount : 0;
-
-  return (
-    <ul className={styles.ComponentGrid}>
-      {children}
-      {[...Array(extraElements)].map((i) => (
-        <li key={i}></li>
-      ))}
-    </ul>
-  );
+  return <ul className={styles.ComponentGrid}>{children}</ul>;
 }
 
-interface ComponentGridItemProps extends HighlightableSearchResult {
+interface ComponentGridItemProps {
   name: string;
   description: string;
   url: string;
+  status?: Status;
 }
 
 function ComponentGridItem({
   name,
   description,
   url,
-  isHighlighted,
+  status,
 }: ComponentGridItemProps) {
+  const searchAttributes = useGlobalSearchResult();
+
   return (
-    <li
-      className={className(
-        styles.Component,
-        isHighlighted && styles.isHighlighted
-      )}
-      key={name}
-    >
+    <li key={name} className={styles.Component} {...searchAttributes}>
       <Link href={url} passHref>
-        <a>
+        <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
             <Image
-              src={`/component-previews/${slugify(name)}.png`}
+              src={`/images/components/${slugify(name)}.png`}
               layout="responsive"
-              width={525 * 2}
-              height={300 * 2}
-              alt=""
+              width={525}
+              height={300}
+              quality={70}
+              sizes="300px"
+              alt={`Screenshot of the ${name} component`}
+              lazyBoundary="1000px"
             />
           </div>
           <div className={styles.ComponentDescription}>
-            <h4>{name}</h4>
+            <h4>
+              {name}
+              {status && (
+                <>
+                  {" "}
+                  <StatusBadge
+                    status={{
+                      value: status.value,
+                      message: getReadableStatusValue(status.value),
+                    }}
+                  />
+                </>
+              )}
+            </h4>
             <p>{description}</p>
           </div>
         </a>

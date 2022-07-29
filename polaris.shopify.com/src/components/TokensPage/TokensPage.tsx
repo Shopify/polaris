@@ -1,11 +1,12 @@
 import styles from "./TokensPage.module.scss";
 import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
-import { useState } from "react";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import Container from "../Container";
 import { TokenPropertiesWithName } from "../../types";
 import TokenList from "../TokenList";
-import { NavItem } from "../Nav/Nav";
+import type { NavItem } from "../Nav";
 import Link from "next/link";
+import { slugify } from "../../utils/various";
+import { useRouter } from "next/router";
 
 interface Props {
   tokenGroup:
@@ -68,7 +69,8 @@ function tokensToFilteredArray(
 }
 
 function TokensPage({ tokenGroup }: Props) {
-  const [filter, setFilter] = useState("");
+  const filter = "";
+  const router = useRouter();
 
   const tokens = {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
@@ -87,53 +89,50 @@ function TokensPage({ tokenGroup }: Props) {
     .join("\n");
 
   return (
-    <MaxPageWidthDiv>
+    <Container>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
-          <h1>Build with Tokens</h1>
-          <p>
-            Build anything you want on top of Polaris. By using tokens, your
-            design becomes future proof. When Polaris evolves, your design
-            automatically updates with the latest values.
-          </p>
+          <h1>Tokens</h1>
         </div>
 
-        <nav className={styles.TokensNav}>
-          <ul>
-            {navItems.map((item) => {
-              if (!item.url) return null;
-              return (
-                <li key={item.title}>
-                  <Link href={item.url} passHref>
-                    <a>{item.title}</a>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
         <div className={styles.Tokens}>
-          <div className={styles.Group}>
-            <TokenList>
-              {tokens[tokenGroup]
-                .sort((token) =>
-                  token.name.includes("ease") || token.name.includes("linear")
-                    ? -1
-                    : 1
-                )
-                .map((token) => (
-                  <TokenList.Item key={token.name} token={token} />
-                ))}
-            </TokenList>
-          </div>
-
-          <p>Temporary: Icons from FeatherIcons (https://feathericons.com/).</p>
+          <nav className={styles.TokensNav}>
+            <ul>
+              {navItems.map((item) => {
+                if (!item.url) return null;
+                const isCurrent = router.asPath.endsWith(slugify(item.title));
+                return (
+                  <li key={item.title}>
+                    <Link href={item.url} passHref>
+                      <a aria-current={isCurrent ? "page" : undefined}>
+                        {item.title}
+                      </a>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+          <TokenList>
+            {tokens[tokenGroup]
+              .sort((token) =>
+                token.name.includes("ease") || token.name.includes("linear")
+                  ? -1
+                  : 1
+              )
+              .map((token) => (
+                <TokenList.Item
+                  key={token.name}
+                  category={tokenGroup}
+                  token={token}
+                />
+              ))}
+          </TokenList>
         </div>
 
         <style jsx>{keyframeStyles}</style>
       </div>
-    </MaxPageWidthDiv>
+    </Container>
   );
 }
 

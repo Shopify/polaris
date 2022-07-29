@@ -7,10 +7,12 @@ on:
       - next
     paths:
       - 'polaris-react/src/**'
+      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
   pull_request:
     paths:
       - 'polaris-react/src/**'
+      - 'polaris-react/playground/**'
       - 'polaris-tokens/src/**'
 
 jobs:
@@ -96,3 +98,5 @@ jobs:
           storybookBuildDir: 'polaris-react/build-internal/storybook/static'
           exitZeroOnChanges: true
           exitOnceUploaded: true
+        env:
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}

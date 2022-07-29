@@ -18,6 +18,9 @@
     },
     "clean": {
       "cache": false
+    },
+    "preversion": {
+      "cache": false
     }
   }
 }

@@ -2,18 +2,13 @@
 
 .ComponentsPage {
   h1 {
-    margin-bottom: 2rem;
     @include heading-1;
+    margin-bottom: 2.5rem;
   }
 
   h2 {
-    font-size: var(--font-size-700);
+    @include heading-2;
   }
-}
-
-.Post {
-  position: relative;
-  flex: 1;
 }
 
 .Filters {
@@ -36,8 +31,5 @@
 
 .CategoryName {
   margin-bottom: 1rem;
-  background: url(./BehaviorMajor.svg) no-repeat left 40%;
-  background-size: 20px auto;
-  padding-left: 28px;
   @include heading-2;
 }

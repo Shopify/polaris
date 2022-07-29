@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
+import Container from "../Container";
 import styles from "./Tabs.module.scss";
 
 interface Props {
@@ -15,10 +15,10 @@ function Tabs({ items }: Props) {
   const currentPath = router.asPath;
   return (
     <div className={styles.Tabs}>
-      <MaxPageWidthDiv>
+      <Container>
         <nav aria-label="Breadcrumb">
           <ul>
-            {items.map((item, i) => (
+            {items.map((item) => (
               <li key={item.url}>
                 <a
                   href={item.url}
@@ -34,7 +34,7 @@ function Tabs({ items }: Props) {
             ))}
           </ul>
         </nav>
-      </MaxPageWidthDiv>
+      </Container>
     </div>
   );
 }

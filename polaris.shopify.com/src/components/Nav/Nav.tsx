@@ -1,10 +1,14 @@
 import Link from "next/link";
+import { Status } from "../../types";
 import { useRouter } from "next/router";
+
 import styles from "./Nav.module.scss";
+import StatusBadge from "../StatusBadge";
 
 export type NavItem = {
   title: string;
   url?: string;
+  status?: Status;
   children?: NavItem[];
 };
 
@@ -24,7 +28,7 @@ function Nav({ navItems }: Props) {
             {navItem.children && (
               <ul>
                 {navItem.children.map((child) => (
-                  <NavItem
+                  <NavListItem
                     key={`${child.url}-${child.title}`}
                     navItem={child}
                     currentPath={currentPath}
@@ -39,7 +43,7 @@ function Nav({ navItems }: Props) {
   );
 }
 
-function NavItem({
+function NavListItem({
   navItem,
   currentPath,
 }: {
@@ -47,11 +51,17 @@ function NavItem({
   currentPath: string;
 }) {
   return (
-    <li className={styles.NavItem}>
+    <li>
       {navItem.url ? (
         <Link href={navItem.url} passHref>
           <a aria-current={navItem.url === currentPath ? "page" : "false"}>
             {navItem.title}
+            {navItem.status && (
+              <>
+                {" "}
+                <StatusBadge status={navItem.status} />
+              </>
+            )}
           </a>
         </Link>
       ) : (
@@ -61,7 +71,7 @@ function NavItem({
       {navItem.children && (
         <ul>
           {navItem.children.map((child) => (
-            <NavItem
+            <NavListItem
               key={`${child.url}-${child.title}`}
               navItem={child}
               currentPath={currentPath}

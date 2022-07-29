@@ -4,6 +4,7 @@ import {Scrollable} from '../Scrollable';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
+import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
 import {useFrame} from '../../utilities/frame';
 
@@ -18,6 +19,8 @@ export interface NavigationProps {
   onDismiss?(): void;
   /** id of the element used as aria-labelledby */
   ariaLabelledBy?: string;
+  /** Accepts a component that is used to supplement the logo markup */
+  logoSuffix?: React.ReactNode;
 }
 
 export const Navigation: React.FunctionComponent<NavigationProps> & {
@@ -29,12 +32,18 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
   location,
   onDismiss,
   ariaLabelledBy,
+  logoSuffix,
 }: NavigationProps) {
   const {logo} = useFrame();
   const width = getWidth(logo, 104);
 
   const logoMarkup = logo ? (
-    <div className={styles.LogoContainer}>
+    <div
+      className={classNames(
+        styles.LogoContainer,
+        logoSuffix && styles.hasLogoSuffix,
+      )}
+    >
       <UnstyledLink
         url={logo.url || ''}
         className={styles.LogoLink}
@@ -47,6 +56,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
           style={{width}}
         />
       </UnstyledLink>
+      {logoSuffix}
     </div>
   ) : null;
 

@@ -1,4 +1,4 @@
-name: categories
+name: Categories
 set: major
 description: Used to represent either list of categories or files.
 keywords:

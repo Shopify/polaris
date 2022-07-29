@@ -1,4 +1,4 @@
-name: orders
+name: Orders
 set: major
 description: Used to represent an inbox or an item or resource arriving in an inbox.
 keywords:

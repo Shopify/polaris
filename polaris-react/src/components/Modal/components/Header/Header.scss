@@ -10,8 +10,11 @@
 
 .titleHidden {
   position: absolute;
-  right: var(--p-space-2);
+  right: 0;
   z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 
   .Title {
     display: none;

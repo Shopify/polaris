@@ -16,10 +16,6 @@ export const staticTokenGroupKeys = Object.keys(tokens).filter(
   (token) => token !== "colorSchemes"
 ) as StaticTokenGroupKey[];
 
-const tokenGroupKeys = ["all", "colors", ...staticTokenGroupKeys] as const;
-
-type TokenGroupKey = typeof tokenGroupKeys[number];
-
 const formats = ["json", "css"] as const;
 
 type Format = typeof formats[number];

@@ -1,10 +1,9 @@
 import { tokens } from "@shopify/polaris-tokens";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { getTitleTagValue } from "../../../../utils/various";
+import type { NextApiResponse } from "next";
 
 import { staticTokenGroupKeys } from "./[tokens]";
 
-const getGithubUrl = (file: string, isRaw: boolean) => {
+const getGithubUrl = (file: string) => {
   const fileName = `${file}.ts`;
   const githubUrl = "https://github.com/Shopify/polaris/blob";
   const filePath = `/main/polaris-tokens/src/token-groups/${fileName}`;
@@ -17,7 +16,7 @@ const html = `
 <html>
     <head>
         <meta charset="utf-8">
-        <title>${getTitleTagValue("API")}</title>
+        <title>API - Shopify Polaris</title>
         <style>
             td, th {
                 border: 1px solid #dddddd;
@@ -84,8 +83,7 @@ const html = `
                         </td>
                         <td>
                             <a href="${getGithubUrl(
-                              `color.${scheme}`,
-                              false
+                              `color.${scheme}`
                             )}">File</a>
                         </td>
                     </tr>
@@ -107,10 +105,7 @@ const html = `
                             <a href="${cssUrl}">${cssUrl}</a>
                         </td>
                         <td>
-                            <a href="${getGithubUrl(
-                              tokenGroup,
-                              false
-                            )}">File</a>
+                            <a href="${getGithubUrl(tokenGroup)}">File</a>
                         </td>
                     </tr>
                 `;
@@ -122,7 +117,7 @@ const html = `
 </html>
 `;
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = async (res: NextApiResponse) => {
   res.setHeader("content-type", "text/html");
   res.send(html);
 };

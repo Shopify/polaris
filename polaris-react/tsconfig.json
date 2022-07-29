@@ -16,6 +16,9 @@
     "./src/**/*.json",
     "./locales/**/*.json",
     "./tests",
-    "./playground"
-  ]
+    "./playground",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx"
+  ],
+  "exclude": ["./src/components/**/*.stories.tsx"]
 }

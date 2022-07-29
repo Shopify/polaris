@@ -39,9 +39,11 @@ You can use the following mapping to port CSS custom properties to the newly add
 | `--p-surface`                  | `--p-surface-dark`                  |
 | `--p-surface-neutral-subdued`  | `--p-surface-neutral-subdued-dark`  |
 | `--p-surface-hovered`          | `--p-surface-hovered-dark`          |
+| `--p-surface-pressed`          | `--p-surface-pressed-dark`          |
 | `--p-surface-search-field`     | `--p-surface-search-field-dark`     |
 | `--p-border`                   | `--p-border-on-dark`                |
 | `--p-divider`                  | `--p-divider-dark`                  |
+| `--p-border-divider`           | `--p-border-divider-on-dark`        |
 | `--p-icon`                     | `--p-icon-on-dark`                  |
 | `--p-text`                     | `--p-text-on-dark`                  |
 | `--p-text-subdued`             | `--p-text-subdued-on-dark`          |

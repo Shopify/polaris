@@ -8,6 +8,7 @@ import {Breadcrumbs} from '../../../../Breadcrumbs';
 import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
 import {Pagination} from '../../../../Pagination';
+import {Tooltip} from '../../../../Tooltip';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';
 
@@ -105,6 +106,19 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(PrimaryAction);
+    });
+
+    it('renders a <Tooltip /> when helpText is provided', () => {
+      const primaryAction = {
+        content: 'Save',
+        helpText: 'Helpful text',
+      };
+      const header = mountWithApp(
+        <Header {...mockProps} primaryAction={primaryAction} />,
+      );
+      expect(header).toContainReactComponent(Tooltip, {
+        content: primaryAction.helpText,
+      });
     });
   });
 
@@ -250,6 +264,21 @@ describe('<Header />', () => {
 
       expect(wrapper).toContainReactComponent(CustomSecondaryActions);
     });
+
+    it('renders <ActionMenu /> passing `onActionRollup` as prop if it exists', () => {
+      const onActionRollup = jest.fn();
+      const wrapper = mountWithApp(
+        <Header
+          {...mockProps}
+          secondaryActions={mockSecondaryActions}
+          onActionRollup={onActionRollup}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(ActionMenu, {
+        onActionRollup,
+      });
+    });
   });
 
   const primaryAction: HeaderProps['primaryAction'] = {
@@ -280,9 +309,6 @@ describe('<Header />', () => {
     expect(
       header.findAll('div', {className: 'PrimaryActionWrapper'}),
     ).toHaveLength(1);
-    expect(
-      header.findAll('div', {className: 'ActionMenuWrapper'}),
-    ).toHaveLength(0);
   });
 
   it('renders a compact mobile layout with icon-only primary action', () => {

@@ -1,4 +1,4 @@
-name: reset
+name: Reset
 set: minor
 description: Used to represent an action to reset or restart something.
 keywords:

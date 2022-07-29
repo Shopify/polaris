@@ -1,5 +1,45 @@
 # Changelog
 
+## 5.5.0
+
+### Minor Changes
+
+- [#6407](https://github.com/Shopify/polaris/pull/6407) [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Exposed SCSS media conditions for the `breakpoints` token group
+
+## 5.4.0
+
+### Minor Changes
+
+- [#6216](https://github.com/Shopify/polaris/pull/6216) [`78285533c`](https://github.com/Shopify/polaris/commit/78285533c921c8b438d4e8881d794716d8316690) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Changed popover shadow token to be a little stronger and provide more visual distinction with background
+
+## 5.3.0
+
+### Minor Changes
+
+- [#6108](https://github.com/Shopify/polaris/pull/6108) [`b7160b861`](https://github.com/Shopify/polaris/commit/b7160b86107f8466bb275122cf08aad0bed8bbd2) Thanks [@samrose3](https://github.com/samrose3)! - Added color and shape tokens for dark UI: `border-divider-on-dark` and `surface-pressed-dark`.
+
+### Patch Changes
+
+- [#6110](https://github.com/Shopify/polaris/pull/6110) [`738e31e13`](https://github.com/Shopify/polaris/commit/738e31e1320b289fbf68a2468bcb208b9a629edf) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added CSS unit utilities
+
+* [#5803](https://github.com/Shopify/polaris/pull/5803) [`a19fe4f9f`](https://github.com/Shopify/polaris/commit/a19fe4f9f2982ff74d5c34a597dea34ef6519b4a) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved TypeScript declarations for `@shopify/polaris-tokens`
+
+## 5.2.1
+
+### Patch Changes
+
+- [#6062](https://github.com/Shopify/polaris/pull/6062) [`1d2f51ee9`](https://github.com/Shopify/polaris/commit/1d2f51ee98a3ce8fc7948a50953900ae29aa0b2f) Thanks [@chazdean](https://github.com/chazdean)! - Add keyboard shortcut
+
+## 5.2.0
+
+### Minor Changes
+
+- [#6004](https://github.com/Shopify/polaris/pull/6004) [`27a0fba87`](https://github.com/Shopify/polaris/commit/27a0fba877789a3becb10c6e60d78921d71e6887) Thanks [@samrose3](https://github.com/samrose3)! - Added dark variants for the light scheme color tokens
+
+### Patch Changes
+
+- [#6054](https://github.com/Shopify/polaris/pull/6054) [`f63177602`](https://github.com/Shopify/polaris/commit/f63177602b2bdd447dabd930dcb3187344f9a5e6) Thanks [@chazdean](https://github.com/chazdean)! - Implement icons modal
+
 ## 5.1.1
 
 ### Patch Changes

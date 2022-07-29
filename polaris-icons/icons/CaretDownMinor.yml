@@ -1,4 +1,4 @@
-name: caret down
+name: Caret down
 set: minor
 description: Used to denote the action of expanding a section to reveal more content, like a popover or an accordion. Also used to represent sorting order.
 keywords:

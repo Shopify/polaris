@@ -1,197 +1,189 @@
-import Head from "next/head";
-import Image from "../Image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Fuse from "fuse.js";
+import { useRouter } from "next/router";
+import { Dialog } from "@headlessui/react";
+import iconMetadata, { Icon } from "@shopify/polaris-icons/metadata";
+import { useMedia } from "../../utils/hooks";
 import styles from "./IconsPage.module.scss";
-import Longform from "../Longform";
-import { Tab } from "@headlessui/react";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import metadata from "@shopify/polaris-icons/metadata";
-const importedSvgs = require.context(
-  "../../../../polaris-icons/icons",
-  true,
-  /\.svg$/
-);
-import { getTitleTagValue } from "../../utils/various";
+import Container from "../Container";
 import IconGrid from "../IconGrid";
-import TextField from "../TextField";
+import SearchField from "../SearchField";
+import Image from "../Image";
+import IconDetails from "../IconDetails";
+import PageMeta from "../PageMeta";
+import { className } from "../../utils/various";
 
-let icons = Object.entries(metadata).map(([fileName, icon]) => ({
-  ...icon,
-  fileName,
-}));
-
-const fuse = new Fuse(Object.values(icons), {
+const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
   keys: [
     { name: "name", weight: 3 },
+    { name: "id", weight: 2 },
+    { name: "keywords", weight: 2 },
     { name: "set", weight: 1 },
     { name: "fileName", weight: 1 },
     { name: "description", weight: 1 },
-    { name: "keywords", weight: 2 },
   ],
 });
 
+const getIcons = (currentSearchText: string, set: string) => {
+  const icons = currentSearchText
+    ? fuse.search(currentSearchText).map((result) => result.item)
+    : Object.values(iconMetadata);
+
+  return icons.filter((x) => x.set === set);
+};
+
+function scrollToActiveIcon(activeIcon: string): void {
+  const activeElement = document.querySelector(`#${activeIcon}`);
+
+  if (activeElement) {
+    const bodyRect = document.body.getBoundingClientRect();
+    const activeElementRect = activeElement?.getBoundingClientRect();
+
+    const elementOffsetY = activeElementRect.top - bodyRect.top;
+    const isOverflowingScreenUpwards = elementOffsetY < window.scrollY;
+    const isOverflowingScreenDownwards =
+      window.scrollY + window.innerHeight <
+      elementOffsetY + activeElementRect.height;
+
+    const isNotFullyVisible =
+      isOverflowingScreenUpwards || isOverflowingScreenDownwards;
+
+    if (isNotFullyVisible) {
+      window.scrollTo({
+        top:
+          elementOffsetY -
+          window.innerHeight / 2 +
+          activeElementRect.height / 2,
+        behavior: "smooth",
+      });
+    }
+  }
+}
+
 function IconsPage() {
-  const [filterString, setFilterString] = useState("");
-  const [selectedIconName, setSelectedIconName] = useState<string>();
+  const router = useRouter();
+  const useModal = useMedia("screen and (max-width: 850px)");
+  const [searchText, setSearchText] = useState("");
+  const [minorIcons, setMinorIcons] = useState<Icon[]>([]);
+  const [majorIcons, setMajorIcons] = useState<Icon[]>([]);
+  const activeIcon = Array.isArray(router.query.icon)
+    ? router.query.icon[0]
+    : router.query.icon ?? "";
+  const currentSearchText = router.query.q ? `${router.query.q}` : "";
 
-  let filteredIcons = [...icons];
+  useEffect(() => {
+    if (router.isReady && activeIcon) {
+      scrollToActiveIcon(activeIcon);
+    }
+  }, [router.isReady, activeIcon]);
 
-  if (filterString) {
-    const fuseResults = fuse.search(filterString);
-    filteredIcons = fuseResults.map((result) => result.item);
-  }
-  const majorIcons = filteredIcons.filter((icon) => icon.set === "major");
-  const minorIcons = filteredIcons.filter((icon) => icon.set === "minor");
+  useEffect(() => {
+    setMajorIcons(getIcons(currentSearchText, "major"));
+    setMinorIcons(getIcons(currentSearchText, "minor"));
+    setSearchText(currentSearchText);
+  }, [currentSearchText]);
 
-  const selectedIcon = filteredIcons.find(
-    (icon) => icon.name === selectedIconName
-  );
+  const updateQueryParams = (currentSearchText: string) => {
+    const query: { q?: string; icon?: string } = {};
+    if (currentSearchText) query.q = currentSearchText;
+    if (activeIcon) query.icon = activeIcon;
+    router.push({ query });
+  };
 
-  if (selectedIconName && !selectedIcon) {
-    throw new Error(`Could not find icon ${selectedIconName}`);
-  }
+  const handleModalClose = () => {
+    const query: { q?: string } = {};
+    if (searchText) query.q = searchText;
+    router.push({ query });
+  };
+
+  const pageTitle = iconMetadata[activeIcon]
+    ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
+    : "Icons";
+
+  const githubIssueTitle = `[Icon] New icon ${searchText}`;
+  const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?labels=Icon&template=NEW_ICON.yml&title=${encodeURIComponent(
+    githubIssueTitle
+  )}`;
 
   return (
-    <MaxPageWidthDiv className={styles.IconsPage}>
-      <Head>
-        <title>{getTitleTagValue("Icons")}</title>
-      </Head>
+    <Container className={styles.IconsPage}>
+      <PageMeta title={pageTitle} />
 
-      <div className={styles.Filter}>
-        <h1>Icons</h1>
-        <div className={styles.TextField}>
-          <TextField
-            value={filterString}
-            onChange={(value) => setFilterString(value)}
-            placeholder="Filter icons"
+      <h1>Icons</h1>
+
+      <div className={className(!useModal && styles.PageLayout)}>
+        <div className={styles.IconGrids}>
+          <SearchField
+            value={searchText}
+            onChange={(value) => updateQueryParams(value)}
+            placeholder="Search icons"
           />
-        </div>
-      </div>
 
-      <div className={styles.IconGrids}>
-        {majorIcons.length > 0 && (
-          <>
-            <div className={styles.SectionHeading}>
-              <p>
-                <b>Major icons.</b> Used for things like lorem ipsum dolor et
-                amet consecteur
-              </p>
-            </div>
-            <IconGrid>
+          {majorIcons.length > 0 && (
+            <IconGrid title="Major icons">
               {majorIcons.map((icon) => (
                 <IconGrid.Item
-                  key={icon.name}
+                  key={icon.id}
                   icon={icon}
-                  onClick={() => {
-                    setSelectedIconName(icon.name);
-                  }}
-                  isHighlighted={false}
+                  query={searchText}
+                  activeIcon={activeIcon}
                 />
               ))}
             </IconGrid>
-          </>
-        )}
+          )}
 
-        {minorIcons.length > 0 && (
-          <>
-            <div className={styles.SectionHeading}>
-              <p>
-                <b>Minor icons.</b> Used for things like lorem ipsum dolor et
-                amet consecteur
-              </p>
-            </div>
-            <IconGrid>
+          {minorIcons.length > 0 && (
+            <IconGrid title="Minor icons">
               {minorIcons.map((icon) => (
                 <IconGrid.Item
-                  key={icon.name}
+                  key={icon.id}
                   icon={icon}
-                  onClick={() => {}}
-                  isHighlighted={false}
+                  query={searchText}
+                  activeIcon={activeIcon}
                 />
               ))}
             </IconGrid>
-          </>
+          )}
+
+          {minorIcons.length === 0 && majorIcons.length === 0 ? (
+            <div className={styles.NoSearchResults}>
+              <Image
+                src="/icons/SearchMajor.svg"
+                width={40}
+                height={40}
+                alt="A magnifying glass icon"
+                icon
+              />
+              <div>
+                <h2>No matches for {`"${searchText}"`}</h2>
+                <p>
+                  Open a <a href={githubIssueUrl}>GitHub issue</a> to send us
+                  feedback or propose new icons.
+                </p>
+              </div>
+            </div>
+          ) : null}
+        </div>
+
+        {useModal ? (
+          <Dialog open={activeIcon !== ""} onClose={handleModalClose}>
+            <div className={styles.ModalBackdrop} aria-hidden="true" />
+            <Dialog.Panel className={styles.Modal}>
+              <IconDetails
+                fileName={activeIcon}
+                iconData={iconMetadata[activeIcon]}
+              />
+            </Dialog.Panel>
+          </Dialog>
+        ) : (
+          <IconDetails
+            fileName={activeIcon}
+            iconData={iconMetadata[activeIcon]}
+          />
         )}
       </div>
-
-      {selectedIcon && (
-        <div className={styles.Modal}>
-          <div className={styles.ModalInner}>
-            <div
-              className={styles.Preview}
-              style={{ filter: "brightness(-500%)" }}
-            >
-              <Image
-                src={importedSvgs(`./${selectedIcon.fileName}.svg`)}
-                alt={metadata[selectedIcon.fileName].description}
-                width={48}
-                height={48}
-              />
-            </div>
-
-            <div className={styles.IconMeta}>
-              {metadata[selectedIcon.fileName].description}
-            </div>
-
-            <Tab.Group>
-              <Tab.List className={styles.Tabs}>
-                <Tab className={styles.Tab}>React</Tab>
-                <Tab className={styles.Tab}>Figma</Tab>
-                <Tab className={styles.Tab}>Download</Tab>
-              </Tab.List>
-
-              <Tab.Panels>
-                <Tab.Panel>
-                  <Longform>
-                    <p>Install the dependencies:</p>
-                    <pre>{`yarn add polaris polaris-icons`}</pre>
-
-                    <p>
-                      Import the Icon component and the{" "}
-                      {metadata[selectedIcon.fileName].name} icon:
-                    </p>
-                    <pre>{`import { Icon } from "@shopify/polaris";
-import { ${selectedIcon} } from "@shopify/polaris-icons";
-
-<Icon source={${selectedIcon}} color="base" />`}</pre>
-                  </Longform>
-                </Tab.Panel>
-
-                <Tab.Panel>
-                  <Longform>
-                    <p>
-                      From inside Figma, enable{" "}
-                      <a href="https://www.figma.com/community/file/930503928500000754">
-                        the Polaris icon library
-                      </a>
-                      . The add the file from the assets pane.
-                    </p>
-                  </Longform>
-                </Tab.Panel>
-
-                <Tab.Panel>
-                  <Longform>
-                    <p>
-                      <a
-                        href={
-                          importedSvgs(`./${selectedIcon.fileName}.svg`).default
-                            .src
-                        }
-                        download
-                      >
-                        {selectedIcon.fileName}.svg
-                      </a>
-                    </p>
-                  </Longform>
-                </Tab.Panel>
-              </Tab.Panels>
-            </Tab.Group>
-          </div>
-        </div>
-      )}
-    </MaxPageWidthDiv>
+    </Container>
   );
 }
 

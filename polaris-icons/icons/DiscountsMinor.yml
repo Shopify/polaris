@@ -1,4 +1,4 @@
-name: discounts
+name: Discounts
 set: minor
 description: Used to represent a discount.
 keywords:

@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionMenuProps, ActionMenu} from '../../..';
 import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
+import {Tooltip} from '../../../../Tooltip';
 
 describe('<Actions />', () => {
   const mockProps: ActionMenuProps = {
@@ -38,6 +39,21 @@ describe('<Actions />', () => {
       );
 
       expect(wrapper.findAll(SecondaryAction)).toHaveLength(3);
+    });
+
+    it('renders a <Tooltip /> when helpText is set on an action', () => {
+      const toolTipAction = {
+        content: 'Refund',
+        helpText:
+          'You need permission from your store administrator to issue refunds.',
+      };
+
+      const wrapper = mountWithApp(<ActionMenu actions={[toolTipAction]} />);
+      const action = wrapper.find(SecondaryAction);
+
+      expect(action).toContainReactComponent(Tooltip, {
+        content: toolTipAction.helpText,
+      });
     });
 
     it('renders a MenuGroup', () => {

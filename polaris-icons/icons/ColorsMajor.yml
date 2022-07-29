@@ -1,4 +1,4 @@
-name: colors
+name: Colors
 set: major
 description: Used to represent a color swatch, or palette of colors.
 keywords:

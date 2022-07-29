@@ -1,4 +1,4 @@
-name: collections
+name: Collections
 set: major
 description: Used to represent a collection of products.
 keywords:

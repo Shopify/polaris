@@ -3,7 +3,6 @@
 *.vsix
 .DS_Store
 .eslintcache
-.loom
 .next
 .shadowenv.d
 .turbo
@@ -12,3 +11,5 @@ node_modules
 /polaris-react/build
 /polaris-react/build-internal
 /polaris-react/src/styles/_media-queries.scss
+/polaris.shopify.com/public/icons
+/polaris.shopify.com/.env.local

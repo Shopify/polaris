@@ -1,4 +1,4 @@
-name: balance
+name: Balance
 set: major
 description: The account’s current balance. This amount is comprised of any transaction not yet included in a payout.
 keywords:

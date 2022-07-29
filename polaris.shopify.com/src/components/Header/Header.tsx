@@ -1,76 +1,65 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { DarkMode } from "use-dark-mode";
 
-import { Breakpoints } from "../../types";
 import GlobalSearch from "../GlobalSearch";
-import MaxPageWidthDiv from "../MaxPageWidthDiv";
-import Button from "../Button";
-import SideNav from "../SideNav";
-import NavItems from "../NavItems";
+import Container from "../Container";
+import MobileNav from "../MobileNav";
+import type { NavItem } from "../Nav";
 
 import styles from "./Header.module.scss";
-import shopifyLogo from "../../../public/shopify-logo.svg";
-import hamburguerIcon from "../../../public/images/icon-hamburguer.svg";
+
+const headerNavItems: NavItem[] = [
+  {
+    title: "Foundations",
+    url: "/foundations",
+  },
+  {
+    title: "Components",
+    url: "/components",
+  },
+  {
+    title: "Tokens",
+    url: "/tokens/colors",
+  },
+  {
+    title: "Icons",
+    url: "/icons",
+  },
+  // {
+  //   title: "Contributing",
+  //   url: "/contributing",
+  // },
+];
 
 interface Props {
-  currentSection?: string;
+  darkMode: DarkMode;
+  currentPath?: string;
 }
 
-function Header({ currentSection }: Props) {
-  const [showMenu, setShowMenu] = useState(false);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
+function Header({ darkMode, currentPath = "" }: Props) {
+  const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
-    function hideSideNavOnResize() {
-      if (window.innerWidth > Breakpoints.SMALL && showMenu) {
-        setShowMenu(false);
-      }
-    }
+    const mainContent = document.querySelector("#main");
+    setShowSkipToContentLink(mainContent !== null);
+  }, [currentPath]);
 
-    window.addEventListener("resize", hideSideNavOnResize);
-
-    return () => window.removeEventListener("resize", hideSideNavOnResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleCloseMenu = () => {
-    setShowMenu(false);
-    menuButtonRef.current?.focus();
-  };
+  const match = currentPath.match(/^\/\w+/);
+  const currentSection = match ? match[0] : "";
 
   return (
     <div className={styles.Header}>
-      <MaxPageWidthDiv className={styles.HeaderInner}>
-        <nav className={styles.SideNavContainer}>
-          <Button
-            id="menu-button"
-            aria-label="Open menu"
-            aria-controls="side-menu"
-            aria-expanded={showMenu}
-            onClick={() => setShowMenu(true)}
-            ref={menuButtonRef}
-          >
-            <Image
-              src={hamburguerIcon}
-              layout="fixed"
-              width={24}
-              height={24}
-              alt=""
-            />
-          </Button>
-
-          <SideNav
-            currentSection={currentSection}
-            showMenu={showMenu}
-            handleCloseMenu={handleCloseMenu}
-          />
-        </nav>
+      <Container className={styles.HeaderInner}>
+        <div className={styles.MobileNavContainer}>
+          <MobileNav currentPath={currentPath} />
+        </div>
 
         <Link href="/">
           <a className={styles.Logo}>
             <Image
-              src={shopifyLogo}
+              src="/shopify-logo.svg"
               layout="fixed"
               width={24}
               height={24}
@@ -80,20 +69,43 @@ function Header({ currentSection }: Props) {
           </a>
         </Link>
 
+        {showSkipToContentLink && (
+          <a className={styles.SkipToContentLink} href="#main">
+            Skip to content
+          </a>
+        )}
+
         <nav className={styles.Nav}>
           <ul>
-            <NavItems currentSection={currentSection} />
+            {headerNavItems.map(({ url, title }) => {
+              const isCurrent =
+                currentSection && url?.startsWith(currentSection)
+                  ? "page"
+                  : false;
+
+              return url ? (
+                <li key={url}>
+                  <Link href={url} passHref>
+                    <a aria-current={isCurrent}>
+                      <span>{title}</span>
+                    </a>
+                  </Link>
+                </li>
+              ) : null;
+            })}
           </ul>
         </nav>
 
-        <div className={styles.SearchWrapper}>
-          <GlobalSearch />
-        </div>
+        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+          {darkMode.value ? (
+            <div className={styles.LightModeIcon}>💡</div>
+          ) : (
+            <div className={styles.DarkModeIcon}>🌙</div>
+          )}
+        </button>
 
-        {showMenu && (
-          <div className={styles.Backdrop} onClick={handleCloseMenu} />
-        )}
-      </MaxPageWidthDiv>
+        <GlobalSearch />
+      </Container>
     </div>
   );
 }

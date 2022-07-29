@@ -5,7 +5,7 @@ import type {
   MenuGroupDescriptor,
   ActionListItemDescriptor,
 } from '../../../types';
-import {MenuGroup, RollupActions} from '../components';
+import {MenuGroup, RollupActions, Actions} from '../components';
 import {ActionMenu, ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
@@ -84,11 +84,16 @@ describe('<ActionMenu />', () => {
       });
     });
 
-    it('hides disabled action group items when `rollup` is `true`', () => {
+    it('shows action group items as disabled when `rollup` is `true` and action group is disabled', () => {
       const convertedSections = mockGroupsWithDisabledGroup.map((group) => {
         return {
           title: group.title,
-          items: group.disabled ? [] : group.actions,
+          items: group.disabled
+            ? group.actions.map((action) => ({
+                ...action,
+                disabled: group.disabled,
+              }))
+            : group.actions,
         };
       });
       const wrapper = mountWithApp(
@@ -174,27 +179,44 @@ describe('<ActionMenu />', () => {
     });
   });
 
-  it('uses Button and ButtonGroup as subcomponents', () => {
-    const wrapper = mountWithApp(
-      <ActionMenu {...mockProps} actions={mockActions} />,
-    );
+  describe('<Actions />', () => {
+    it('uses Button and ButtonGroup as subcomponents', () => {
+      const wrapper = mountWithApp(
+        <ActionMenu {...mockProps} actions={mockActions} />,
+      );
 
-    expect(wrapper.findAll(Button)).toHaveLength(2);
-    expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
-  });
+      expect(wrapper.findAll(Button)).toHaveLength(2);
+      expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
+    });
 
-  it('action callbacks are passed through to Button', () => {
-    const spy = jest.fn();
-    const wrapper = mountWithApp(
-      <ActionMenu
-        {...mockProps}
-        actions={[{content: 'mock', onAction: spy}]}
-      />,
-    );
+    it('passes action callbacks through to Button', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock', onAction: spy}]}
+        />,
+      );
 
-    wrapper.find(Button)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
 
-    expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('passes `onActionRollup` if set', () => {
+      const onActionRollup = jest.fn();
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock'}]}
+          onActionRollup={onActionRollup}
+        />,
+      );
+
+      expect(wrapper).toContainReactComponent(Actions, {
+        onActionRollup,
+      });
+    });
   });
 });
 

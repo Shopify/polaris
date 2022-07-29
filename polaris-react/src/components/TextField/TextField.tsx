@@ -159,9 +159,9 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
-  onFocus?: (event?: React.FocusEvent<HTMLElement>) => void;
-  /** Callback fired when focus is removed */
-  onBlur?(): void;
+  onFocus?: (event?: React.FocusEvent) => void;
+  /** Callback fired when input is blurred */
+  onBlur?(event?: React.FocusEvent): void;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -239,6 +239,7 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
+  const spinnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -405,6 +406,7 @@ export function TextField({
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
+        ref={spinnerRef}
       />
     ) : null;
 
@@ -473,11 +475,11 @@ export function TextField({
     }
   };
 
-  const handleOnBlur = () => {
+  const handleOnBlur = (event: React.FocusEvent) => {
     setFocus(false);
 
     if (onBlur) {
-      onBlur();
+      onBlur(event);
     }
   };
 
@@ -571,6 +573,41 @@ export function TextField({
     </Labelled>
   );
 
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    onChange && onChange(event.currentTarget.value, id);
+  }
+
+  function handleClick({target}: React.MouseEvent) {
+    if (
+      isPrefixOrSuffix(target) ||
+      isVerticalContent(target) ||
+      isInput(target) ||
+      isSpinner(target) ||
+      focus
+    ) {
+      return;
+    }
+
+    inputRef.current?.focus();
+  }
+
+  function handleClickChild(event: React.MouseEvent) {
+    if (!isSpinner(event.target) && !isInput(event.target)) {
+      event.stopPropagation();
+    }
+
+    if (
+      isPrefixOrSuffix(event.target) ||
+      isVerticalContent(event.target) ||
+      isInput(event.target) ||
+      focus
+    ) {
+      return;
+    }
+
+    setFocus(true);
+  }
+
   function handleClearButtonPress() {
     onClearButtonClick && onClearButtonClick(id);
   }
@@ -585,23 +622,6 @@ export function TextField({
     event.preventDefault();
   }
 
-  function isPrefixOrSuffix(target: HTMLElement | EventTarget) {
-    return (
-      target instanceof HTMLElement &&
-      ((prefixRef.current && prefixRef.current.contains(target)) ||
-        (suffixRef.current && suffixRef.current.contains(target)))
-    );
-  }
-
-  function isVerticalContent(target: HTMLElement | EventTarget) {
-    return (
-      target instanceof HTMLElement &&
-      verticalContentRef.current &&
-      (verticalContentRef.current.contains(target) ||
-        verticalContentRef.current.contains(document.activeElement))
-    );
-  }
-
   function isInput(target: HTMLElement | EventTarget) {
     return (
       target instanceof HTMLElement &&
@@ -611,37 +631,36 @@ export function TextField({
     );
   }
 
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    onChange && onChange(event.currentTarget.value, id);
+  function isPrefixOrSuffix(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      ((prefixRef.current && prefixRef.current.contains(target)) ||
+        (suffixRef.current && suffixRef.current.contains(target)))
+    );
   }
 
-  function handleClick({target}: React.MouseEvent) {
-    if (
-      isPrefixOrSuffix(target) ||
-      isVerticalContent(target) ||
-      isInput(target) ||
-      focus
-    ) {
-      return;
-    }
-
-    inputRef.current?.focus();
+  function isSpinner(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      spinnerRef.current &&
+      spinnerRef.current.contains(target)
+    );
   }
 
-  function handleClickChild(event: React.MouseEvent) {
-    event.stopPropagation();
-
-    if (
-      isPrefixOrSuffix(event.target) ||
-      isVerticalContent(event.target) ||
-      isInput(event.target) ||
-      focus
-    ) {
-      return;
-    }
-
-    setFocus(true);
+  function isVerticalContent(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      verticalContentRef.current &&
+      (verticalContentRef.current.contains(target) ||
+        verticalContentRef.current.contains(document.activeElement))
+    );
   }
+}
+
+function getRows(multiline?: boolean | number) {
+  if (!multiline) return undefined;
+
+  return typeof multiline === 'number' ? multiline : 1;
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
@@ -650,10 +669,4 @@ function normalizeAriaMultiline(multiline?: boolean | number) {
   return Boolean(multiline) || multiline > 0
     ? {'aria-multiline': true}
     : undefined;
-}
-
-function getRows(multiline?: boolean | number) {
-  if (!multiline) return undefined;
-
-  return typeof multiline === 'number' ? multiline : 1;
 }

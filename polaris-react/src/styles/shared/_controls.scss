@@ -19,7 +19,7 @@
 @mixin control-backdrop($style: base) {
   @if $style == base {
     position: relative;
-    border: var(--p-control-border-width) solid var(--p-border-subdued);
+    border: var(--p-control-border-width) solid var(--p-border);
     background-color: var(--p-surface);
     border-radius: var(--p-border-radius-1);
 

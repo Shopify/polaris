@@ -8,20 +8,24 @@ interface Props {
   small?: boolean;
   pill?: boolean;
   primary?: boolean;
+  fill?: boolean;
 }
 
 interface ButtonProps extends Props, HTMLProps<HTMLButtonElement> {}
-interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {}
+interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
+  download?: boolean;
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ small, pill, primary, children, ...rest }, ref) => {
+  ({ small, pill, primary, fill, children, ...rest }, ref) => {
     return (
       <button
         className={className(
           styles.Button,
           small && styles.small,
           pill && styles.pill,
-          primary && styles.primary
+          primary && styles.primary,
+          fill && styles.fill
         )}
         {...rest}
         type="button"
@@ -39,6 +43,8 @@ export function LinkButton({
   pill,
   href,
   primary,
+  download,
+  fill,
   children,
   ...rest
 }: LinkButtonProps) {
@@ -49,8 +55,10 @@ export function LinkButton({
           styles.Button,
           small && styles.small,
           pill && styles.pill,
-          primary && styles.primary
+          primary && styles.primary,
+          fill && styles.fill
         )}
+        download={download}
         {...rest}
       >
         {children}

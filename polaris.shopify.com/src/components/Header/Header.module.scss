@@ -1,11 +1,21 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 .Header {
-  border-bottom: var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border-color-light);
+
+  @include dark-mode {
+    background: rgba(28, 28, 28, 0.9);
+  }
 }
 
 .HeaderInner {
   display: flex;
+  align-items: center;
   gap: 3em;
   height: var(--header-height);
 
@@ -14,15 +24,20 @@
 
     ul {
       display: flex;
-      align-items: center;
       font-size: var(--font-size-100);
-      font-weight: 500;
-      margin-right: auto;
+      font-weight: var(--font-weight-500);
 
       li {
         a {
           color: inherit;
-          padding: 0.85rem 1rem;
+          white-space: pre;
+          display: block;
+          padding: 1px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
+
+          span {
+            display: block;
+            padding: 0.75rem 0.8rem;
+          }
 
           &:focus-within {
             position: relative;
@@ -34,9 +49,13 @@
             color: var(--text-strong);
           }
 
-          &[aria-current="page"] {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius-800);
+          &[aria-current="page"],
+          &:hover {
+            span {
+              background: var(--surface-subdued);
+              border-radius: var(--border-radius-800);
+              color: var(--text-strong);
+            }
           }
         }
 
@@ -46,14 +65,13 @@
       }
     }
 
-    @media screen and (max-width: $smallBreakpoint) {
+    @media screen and (max-width: $breakpointTablet) {
       display: none;
     }
   }
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointTablet) {
     gap: 0.5rem;
-    padding: 0 0.5rem;
     justify-content: space-between;
   }
 }
@@ -61,9 +79,9 @@
 .Logo {
   display: flex;
   align-items: center;
-  color: var(--text-inherit);
+  color: inherit;
   gap: 0.7rem;
-  font-weight: 500;
+  font-weight: var(--font-weight-500);
   font-size: var(--font-size-100);
 
   p {
@@ -74,54 +92,91 @@
     transform: translate3d(0, -1px, 0);
   }
 
-  @media screen and (max-width: $smallBreakpoint) {
+  @media screen and (max-width: $breakpointTablet) {
     display: none;
   }
 }
 
-.SearchWrapper {
+.SkipToContentLink {
+  top: 2px;
+  right: 2px;
+  left: 2px;
+  height: calc(var(--header-height) - 4px);
   display: flex;
   align-items: center;
-  width: 18.25rem; // Align with TOC on guidelines pages
-  margin-left: auto;
-
-  .Icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1.25rem;
-    border-radius: 100%;
-  }
-}
-
-.SideNavContainer {
-  visibility: hidden;
-  display: none;
-
-  @media screen and (max-width: $smallBreakpoint) {
-    visibility: visible;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.Backdrop {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--backdrop);
-  opacity: 0;
-  animation-name: FadeIn;
-  animation-duration: var(--duration-200);
-  animation-fill-mode: forwards;
+  justify-content: center;
+  font-size: var(--font-size-500);
+  background-color: var(--surface);
+  color: var(--text-strong);
+  font-weight: var(--font-weight-500);
   z-index: 1;
+  position: absolute;
+  transform: translateY(-115%);
+
+  &:focus {
+    transform: translateY(0%);
+  }
 }
 
-@keyframes FadeIn {
+.DarkModeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: 0.5rem 0 0.5rem auto;
+  border-radius: var(--border-radius-round);
+  margin-right: -1rem;
+
+  @media screen and (max-width: $breakpointTablet) {
+    margin-right: 1rem;
+  }
+}
+
+.LightModeIcon {
+  animation: slide-up 0.3s;
+}
+
+.DarkModeIcon {
+  animation: slide-down 0.3s;
+}
+
+@keyframes slide-up {
   from {
     opacity: 0;
+    transform: translateY(30%);
   }
   to {
     opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30%);
+  }
+  to {
+    opacity: 1 linear;
+    transform: translateY(0%);
+  }
+}
+
+.MobileNavContainer {
+  visibility: hidden;
+  display: none;
+
+  svg {
+    fill: var(--text-strong);
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: $breakpointTablet) {
+    visibility: visible;
+    display: flex;
+    align-items: center;
   }
 }

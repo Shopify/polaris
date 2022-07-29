@@ -1,4 +1,4 @@
-name: filter
+name: Filter
 set: major
 description: Used to represent an action to filter a list of items or resources.
 keywords:

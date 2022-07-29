@@ -1,16 +1,24 @@
+@import "../../styles/mixins.scss";
+
 .Tooltip {
   pointer-events: none;
-  max-width: 300px;
+  max-width: 240px;
   z-index: 2;
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.1));
 
   .Content {
     overflow: hidden;
-    border-radius: var(--border-radius-500);
-    background: var(--text);
+    border-radius: var(--border-radius-400);
+    background: var(--text-strong);
+    color: var(--surface);
     text-align: center;
-    color: white;
-    font-size: 14px;
-    padding: 0.33rem 0.5rem;
+    font-size: var(--font-size-50);
+    padding: 0.25rem 0.5rem;
+    line-height: 1.4;
+
+    p {
+      margin: 0;
+    }
   }
 
   &::after {
@@ -23,8 +31,18 @@
     width: 10px;
     height: 10px;
     margin: 0 auto;
-    background: var(--text);
+    background: var(--text-strong);
     transform: rotate(45deg);
     z-index: 0;
+  }
+
+  @include dark-mode {
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+  }
+
+  &[data-placement="bottom"]:after {
+    top: -5px;
+    bottom: auto;
+    transform: rotate(135deg);
   }
 }

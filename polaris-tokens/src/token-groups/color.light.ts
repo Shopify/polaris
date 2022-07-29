@@ -77,6 +77,11 @@ export const colors = {
     description:
       'For use as a surface color on interactive elements such as resource list items and action list items when in a pressed state.',
   },
+  'surface-pressed-dark': {
+    value: 'rgba(62, 64, 67, 1)',
+    description:
+      'For use as a dark surface color on interactive elements such as resource list items and action list items when in a pressed state.',
+  },
   'surface-depressed': {
     value: 'rgba(237, 238, 239, 1)',
     description:

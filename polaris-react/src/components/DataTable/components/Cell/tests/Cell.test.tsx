@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../../../Icon';
@@ -104,7 +104,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+          source: SortDescendingMajor,
         });
       });
 
@@ -120,7 +120,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
     });
@@ -132,7 +132,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
 
@@ -160,7 +160,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+          source: SortDescendingMajor,
         });
       });
 
@@ -197,7 +197,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
     });
@@ -215,7 +215,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
     });
@@ -233,7 +233,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+          source: SortDescendingMajor,
         });
       });
     });

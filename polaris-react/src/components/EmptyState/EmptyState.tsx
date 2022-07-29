@@ -106,8 +106,8 @@ export function EmptyState({
     primaryActionMarkup || secondaryActionMarkup ? (
       <div className={styles.Actions}>
         <Stack alignment="center" distribution="center" spacing="tight">
-          {primaryActionMarkup}
           {secondaryActionMarkup}
+          {primaryActionMarkup}
         </Stack>
       </div>
     ) : null;

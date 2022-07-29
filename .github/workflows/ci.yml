@@ -31,7 +31,6 @@ jobs:
             **/.eslintcache
             **/.turbo
             node_modules/.cache/turbo
-            polaris-react/.loom/cache
             polaris.shopify.com/.next/cache
           key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
           restore-keys: |

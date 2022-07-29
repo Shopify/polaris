@@ -263,6 +263,22 @@ describe('<IndexTable>', () => {
 
       expect(scrollContainerScrollLeft).toBe(updatedScrollLeft);
     });
+
+    it('sets scrollBarContainerHidden class on scroll container when table is not scrollable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={1}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      const afterInitialMounts = index.findAll(AfterInitialMount);
+
+      expect(
+        afterInitialMounts[afterInitialMounts.length - 1],
+      ).toContainReactComponent('div', {
+        className: expect.stringContaining('scrollBarContainerHidden'),
+      });
+    });
   });
 
   describe('headings', () => {

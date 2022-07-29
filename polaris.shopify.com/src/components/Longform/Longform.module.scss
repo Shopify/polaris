@@ -1,11 +1,16 @@
 @import "../../styles/fonts.scss";
+@import "../../styles/mixins.scss";
+@import "../../styles/variables.scss";
 
 .Longform {
   img {
     border-radius: var(--border-radius-200);
     width: 100%;
     height: auto;
-    background: white;
+  }
+
+  ul li {
+    list-style-type: disc;
   }
 
   h2,
@@ -20,12 +25,16 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+
+    @media screen and (max-width: $breakpointMobile) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   h2 {
     @include heading-2;
-    margin-top: 2rem;
+    margin-top: 3.25rem;
   }
 
   h3 {
@@ -46,21 +55,16 @@
     }
   }
 
-  h1,
-  h2,
-  h3,
-  h4 {
-    &:target {
-      background: #d5ffe1;
+  ul {
+    li {
+      margin-left: 0.95em;
     }
   }
 
-  ul {
-    margin-left: 0.95em;
-  }
-
   ol {
-    margin-left: 1.15em;
+    li {
+      padding-left: 1.35em;
+    }
   }
 
   ul,
@@ -77,11 +81,30 @@
   }
 
   ul li {
-    list-style-type: disc;
+    position: relative;
+    &::marker {
+      color: #999;
+
+      @include dark-mode {
+        color: #555;
+      }
+    }
   }
 
-  ol li {
-    list-style-type: decimal;
+  ol {
+    counter-reset: list;
+    li {
+      position: relative;
+      counter-increment: list;
+      &::before {
+        content: counter(list) ".";
+        display: block;
+        position: absolute;
+        left: 0;
+        border-radius: var(--border-radius-round);
+        opacity: 0.75;
+      }
+    }
   }
 
   li {
@@ -97,7 +120,8 @@
   }
 
   strong {
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
   }
 
   hr {
@@ -110,19 +134,13 @@
     display: none;
   }
 
-  pre {
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
-    font-size: var(--font-size-100);
-    padding: 1rem;
-    background: var(--text-strong);
-    color: var(--surface);
-    border-radius: var(--border-radius-200);
-    overflow: auto;
-
-    p {
-      margin: 0;
-    }
+  p code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    font-weight: var(--font-weight-500);
+    background: var(--surface-code-inline);
+    border-radius: var(--border-radius-300);
+    padding: 0.15rem 0.25rem;
   }
 
   .usage-list {
@@ -130,13 +148,66 @@
       margin-top: 2.5rem !important;
     }
   }
+
+  table {
+    font-size: var(--font-size-200);
+    border-collapse: separate;
+    border-spacing: 0;
+    border: var(--border);
+    border-radius: 0.5rem;
+    width: 100%;
+
+    th {
+      font-weight: var(--font-weight-600);
+      text-align: left;
+      background-color: var(--surface-subdued);
+
+      &:first-child {
+        border-top-left-radius: 0.5rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.5rem;
+      }
+    }
+
+    th,
+    td {
+      padding: 0.6rem 1rem;
+      border-bottom: var(--border);
+    }
+
+    tbody {
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 0.5rem;
+      }
+    }
+  }
+
+  :global {
+    .table-wrapper {
+      overflow: auto;
+      max-width: calc(100vw - 1.25rem);
+      width: 100%;
+    }
+  }
 }
 
 .Content {
   > p:first-of-type {
+    margin-top: 0;
     margin-bottom: 2rem;
-    font-size: var(--font-size-700);
     color: var(--text-strong);
+    font-size: var(--font-size-700);
+    font-weight: var(--font-weight-500);
     letter-spacing: var(--letter-spacing-300);
   }
 }

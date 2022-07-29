@@ -1,4 +1,4 @@
-name: report
+name: Report
 set: minor
 description: Used to represent analytics or a report.
 keywords:

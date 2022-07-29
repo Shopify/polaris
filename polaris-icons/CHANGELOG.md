@@ -1,5 +1,49 @@
 # Changelog
 
+## 5.2.0
+
+### Minor Changes
+
+- [#6690](https://github.com/Shopify/polaris/pull/6690) [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb) Thanks [@vladabee](https://github.com/vladabee)! - Making the descriptions and use cases for diamond and circle alert icons clearer.
+
+## 5.1.0
+
+### Minor Changes
+
+- [#6649](https://github.com/Shopify/polaris/pull/6649) [`a6a972f7f`](https://github.com/Shopify/polaris/commit/a6a972f7f186bbc03c60f925755056a9de1b056f) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Added PlanMajor and PlanMinor icons, which are for use on the Settings sheet for Plan
+
+* [#6514](https://github.com/Shopify/polaris/pull/6514) [`327a73381`](https://github.com/Shopify/polaris/commit/327a73381ffb9a3f0ac3de4b76632d08070b8720) Thanks [@james-a-c](https://github.com/james-a-c)! - Add new icon `TemplateMinor`
+
+- [#6457](https://github.com/Shopify/polaris/pull/6457) [`b541f5449`](https://github.com/Shopify/polaris/commit/b541f54498462ce513b9903dfcfcb966f43e0038) Thanks [@brandonlawshop](https://github.com/brandonlawshop)! - Added `StatusActiveMajor` icon
+
+### Patch Changes
+
+- [#6617](https://github.com/Shopify/polaris/pull/6617) [`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632) Thanks [@alex-page](https://github.com/alex-page)! - Update component links so they no longer hit the redirect
+
+* [#6633](https://github.com/Shopify/polaris/pull/6633) [`4c0301bbb`](https://github.com/Shopify/polaris/commit/4c0301bbbb0612afaa5111fc579f52175c8b3ada) Thanks [@sambostock](https://github.com/sambostock)! - Update GitHub repo references in package.json
+
+## 5.0.0
+
+### Major Changes
+
+- [#6550](https://github.com/Shopify/polaris/pull/6550) [`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a) Thanks [@ErickTamayo](https://github.com/ErickTamayo)! - Replaced SortAscendingMajor and SortDescendingMajor icons. Changed sorting icons in the Data Table
+
+### Minor Changes
+
+- [`54ba0f716`](https://github.com/Shopify/polaris/commit/54ba0f716088ae36e7fae08d2768d2541b9107b6) Thanks [@alex-page](https://github.com/alex-page)! - Added id to the metadata value to reduce need to transform objects
+
+* [#6484](https://github.com/Shopify/polaris/pull/6484) [`9269e5ee6`](https://github.com/Shopify/polaris/commit/9269e5ee62171cf7b8ced1b9edef68da3bcd9dd2) Thanks [@martenbjork](https://github.com/martenbjork)! - Change icon names to start with an uppercase
+
+### Patch Changes
+
+- [#6591](https://github.com/Shopify/polaris/pull/6591) [`9426d0108`](https://github.com/Shopify/polaris/commit/9426d01088930c761a4ab14c5a94008f129e70d0) Thanks [@qw-in](https://github.com/qw-in)! - Update polaris icons website url
+
+## 4.23.0
+
+### Minor Changes
+
+- [#6112](https://github.com/Shopify/polaris/pull/6112) [`75f46e50e`](https://github.com/Shopify/polaris/commit/75f46e50e88e1b93ef0075b5474cc632acdfc81d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added toggle, hashtag, behavior, type minor icons and updated design of calendar minor icon
+
 ## 4.22.0
 
 ### Minor Changes

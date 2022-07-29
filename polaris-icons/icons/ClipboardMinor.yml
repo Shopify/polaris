@@ -1,4 +1,4 @@
-name: clipboard
+name: Clipboard
 set: minor
 description: Used to represent a clipboard, usually accompanying a copy action.
 keywords:

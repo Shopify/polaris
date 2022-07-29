@@ -1,4 +1,4 @@
-name: add product
+name: Add product
 set: major
 description: Used as an action to add a new product.
 keywords:
