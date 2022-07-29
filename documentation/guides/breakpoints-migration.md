@@ -57,7 +57,7 @@ The following Sass mixins have been removed. You will need to replace any instan
 _Before_
 
 ```scss
-@include breakpoint-after(490) {
+@include breakpoint-after(490px) {
   padding: 1em;
 }
 ```
@@ -119,7 +119,7 @@ _After_
 _Before_
 
 ```scss
-@include page-content-breakpoint-after(490) {
+@include page-content-breakpoint-after(490px) {
   padding: 1em;
 }
 ```
@@ -182,7 +182,7 @@ _After_
 _Before_
 
 ```scss
-@include page-content-breakpoint-before(490) {
+@include page-content-breakpoint-before(490px) {
   padding: 1em;
 }
 ```
@@ -262,7 +262,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-$not-condensed-content: 42.5em;
+$not-condensed-content: 46.5em;
 
 @mixin page-content-when-partially-condensed() {
   @include page-content-breakpoint-before($not-condensed-content) {
@@ -295,7 +295,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-$not-condensed-content: 42.5em;
+$not-condensed-content: 46.5em;
 
 @mixin page-content-when-not-partially-condensed() {
   @include page-content-breakpoint-after($not-condensed-content) {
@@ -328,7 +328,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-$partially-condensed-content: 28.125em;
+$partially-condensed-content: 30.625em;
 
 @mixin page-content-when-fully-condensed() {
   @include page-content-breakpoint-before($partially-condensed-content) {
@@ -361,7 +361,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-$partially-condensed-content: 28.125em;
+$partially-condensed-content: 30.625em;
 
 @mixin page-content-when-not-fully-condensed() {
   @include page-content-breakpoint-after($partially-condensed-content) {
@@ -394,7 +394,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-$stacked-content: 46em;
+$stacked-content: 50em;
 
 @mixin page-content-when-layout-stacked() {
   @include page-content-breakpoint-before($stacked-content) {
@@ -427,7 +427,7 @@ _After_
 <summary>Deprecated Mixin Definition</summary>
 
 ```scss
-$stacked-content: 46em;
+$stacked-content: 50em;
 
 @mixin page-content-when-layout-not-stacked() {
   @include page-content-breakpoint-after($stacked-content) {
@@ -729,17 +729,17 @@ _After_
 
 The following Sass global variables have been removed because the functions using them have been removed. If you wish to continue using them you can add them directly to your repo.
 
-| Deprecated Variable                  | Default Value |
-| ------------------------------------ | ------------- |
-| `$frame-with-nav-max-width`          | `77.375rem`   |
-| `$nav-min-window`                    |
-| `$nav-size`                          |
-| `$not-condensed-content`             | `42.5em`      |
-| `$not-condensed-min-page`            |
-| `$not-condensed-outer-spacing`       |
-| `$partially-condensed-content`       | `28.125em`    |
-| `$partially-condensed-min-page`      |
-| `$partially-condensed-outer-spacing` |
-| `$page-max-width`                    | `62.375rem`   |
-| `$stacked-content`                   | `46em`        |
-| `$typography-condensed`              | `40em`        |
+| Deprecated Variable                  | Value (assuming 1em = 16px) |
+| ------------------------------------ | --------------------------- |
+| `$frame-with-nav-max-width`          | `77.375rem`                 |
+| `$nav-min-window`                    | `48.0625em`                 |
+| `$nav-size`                          | `15em`                      |
+| `$not-condensed-content`             | `46.5em`                    |
+| `$not-condensed-min-page`            | `46.5em`                    |
+| `$not-condensed-outer-spacing`       | `4em`                       |
+| `$page-max-width`                    | `62.375rem`                 |
+| `$partially-condensed-content`       | `30.625em`                  |
+| `$partially-condensed-min-page`      | `30.625em`                  |
+| `$partially-condensed-outer-spacing` | `2.5em`                     |
+| `$stacked-content`                   | `50em`                      |
+| `$typography-condensed`              | `40em`                      |
