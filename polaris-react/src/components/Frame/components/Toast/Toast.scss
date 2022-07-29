@@ -1,6 +1,5 @@
 @import '../../../../styles/common';
 
-$breakpoint: 640px;
 $Backdrop-opacity: 0.88;
 
 .Toast {
@@ -13,7 +12,7 @@ $Backdrop-opacity: 0.88;
   color: var(--p-text-on-dark);
   margin-bottom: var(--p-space-5);
 
-  @include breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-md-up} {
     padding: var(--p-space-4);
   }
 
@@ -50,7 +49,7 @@ $Backdrop-opacity: 0.88;
   @include recolor-icon(currentColor);
   cursor: pointer;
 
-  @include breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-md-up} {
     align-self: flex-start;
     margin: calc(-1 * var(--p-space-2)) calc(-1 * var(--p-space-4))
       calc(-1 * var(--p-space-2)) 0;

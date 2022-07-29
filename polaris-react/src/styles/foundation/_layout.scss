@@ -16,8 +16,6 @@ $layout-width-secondary-max: 320px;
 $layout-width-one-half-width-base: 450px;
 $layout-width-one-third-width-base: 240px;
 $layout-width-nav-base: $navigation-width;
-$layout-width-page-with-nav-base: 769px;
-$layout-width-page-content-not-condensed: 680px;
 $layout-width-page-content-partially-condensed: 450px;
 $layout-width-inner-spacing-base: $dangerous-magic-space-4;
 $layout-width-outer-spacing-min: $dangerous-magic-space-5;
@@ -30,5 +28,3 @@ $top-bar-height: 56px;
 $mobile-nav-width: calc(
   100vw - (#{$dismiss-icon-size} + #{$dangerous-magic-space-8})
 );
-
-$nav-min-window-corrected: 769px;

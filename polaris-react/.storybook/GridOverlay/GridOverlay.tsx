@@ -10,6 +10,7 @@ const COLUMNS_LARGE = 12;
 const BREAKPOINT = 768;
 
 type Layer = 'above' | 'below';
+
 interface Props {
   inFrame?: boolean;
   maxWidth?: string;
@@ -26,10 +27,7 @@ export function GridOverlay({inFrame, maxWidth, layer, children}: Props) {
     setColumns(window.innerWidth < BREAKPOINT ? COLUMNS_SMALL : COLUMNS_LARGE);
 
   const className = classNames('GridOverlay', inFrame && 'inFrame');
-  const style = {
-    maxWidth,
-    zIndex: layer === 'above' || inFrame ? 1 : -1,
-  } as React.CSSProperties;
+  const style = {maxWidth, zIndex: layer === 'above' || inFrame ? 1 : -1};
 
   return (
     <div className={className} style={style}>

@@ -56,7 +56,7 @@ $nav-animation-variables: (
     @include no-focus-ring;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-200);
     font-weight: var(--p-font-weight-medium);
     line-height: var(--p-font-line-height-5);
@@ -107,7 +107,7 @@ $nav-animation-variables: (
   margin-top: calc(var(--p-space-2) + var(--p-space-05));
   margin-right: var(--p-space-3);
   margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     margin-top: var(--p-space-1);
     margin-right: var(--p-space-2);
     margin-bottom: var(--p-space-1);
@@ -164,13 +164,13 @@ $nav-animation-variables: (
   line-height: var(--p-font-line-height-2);
   font-size: var(--p-font-size-100);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     margin-top: var(--p-space-1);
     margin-bottom: var(--p-space-1);
   }
 
-  @include breakpoint-before($nav-min-window-corrected) {
-    font-size: 15px;
+  @media #{$p-breakpoints-md-down} {
+    font-size: var(--p-font-size-4);
     line-height: var(--p-font-line-height-2);
   }
 }

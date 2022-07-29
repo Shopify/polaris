@@ -6,7 +6,7 @@
   font-size: var(--p-font-size-400);
   line-height: var(--p-font-line-height-4);
 
-  @include when-typography-not-condensed {
+  @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-300);
   }
 }

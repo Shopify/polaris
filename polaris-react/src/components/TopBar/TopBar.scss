@@ -2,8 +2,6 @@
 @import './variables';
 
 $icon-size: 20px;
-$page-left-alignment-breakpoint-max: 1238px;
-$context-control-expand-after: 1400px;
 
 .TopBar {
   position: relative;
@@ -24,7 +22,7 @@ $context-control-expand-after: 1400px;
 
 .LogoDisplayControl {
   display: none;
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     display: flex;
   }
 }
@@ -53,12 +51,12 @@ $context-control-expand-after: 1400px;
 
 .ContextControl {
   display: none;
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     width: $layout-width-nav-base;
     display: block;
   }
 
-  @include breakpoint-after($context-control-expand-after) {
+  @media #{$p-breakpoints-xl-up} {
     width: $layout-width-nav-base;
   }
 }
@@ -90,7 +88,7 @@ $context-control-expand-after: 1400px;
     width: calc(100% + var(--p-space-5));
     height: calc(100% + var(--p-space-5));
   }
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     display: none;
   }
 
@@ -115,7 +113,7 @@ $context-control-expand-after: 1400px;
   justify-content: flex-end;
   height: 100%;
 
-  @include breakpoint-after($not-condensed-content) {
+  @media #{$p-breakpoints-md-up} {
     position: relative;
   }
 }
@@ -126,11 +124,10 @@ $context-control-expand-after: 1400px;
   width: 100%;
   margin: 0;
   max-width: none;
-  margin-left: calc((100% - #{$page-max-width}) / 2);
+  margin-right: var(--p-space-1);
 
-  @media (max-width: $page-left-alignment-breakpoint-max) {
-    margin-left: 0;
-    margin-right: var(--p-space-1);
+  @media #{$p-breakpoints-xl-up} {
+    margin-left: calc((100% - #{$page-max-width}) / 2);
   }
 }
 
