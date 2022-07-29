@@ -2,7 +2,7 @@ import { Button } from "@shopify/polaris";
 import { useState } from "react";
 import { withPolarisExample } from "../../components/PolarisExamplePage";
 
-function DisclosureButtion() {
+function DisclosureButton() {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -18,4 +18,4 @@ function DisclosureButtion() {
   );
 }
 
-export default withPolarisExample(DisclosureButtion);
+export default withPolarisExample(DisclosureButton);
