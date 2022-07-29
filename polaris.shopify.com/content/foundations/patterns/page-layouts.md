@@ -189,13 +189,7 @@ Another use of this layout is for a focused task where a summary is helpful, suc
 
 ### Annotated
 
-<div class="Spacing">
-<div class="Image Image--radius">
-
-![General settings page, with annotated sections for “Store details” and “Store address” visible](/public_images/layout-page/page-layout-annotated@2x.png)
-
-</div>
-</div>
+![General settings page, with annotated sections for “Store details” and “Store address” visible](/images/foundations/patterns/page-layouts/page-layout-annotated@2x.png)
 
 Annotated layouts group the content of the page into distinct sections that are only loosely related. This layout makes it easier to scan the page for a particular section.
 
