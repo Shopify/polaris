@@ -50,7 +50,7 @@ export function useEventListener<
 >(
   eventName: TargetEventName,
   handler: (event: TargetEvent) => void,
-  target?: Target,
+  target?: null | Target,
   options?: AddEventListenerOptions,
 ): void {
   const handlerRef = useRef(handler);
@@ -65,7 +65,7 @@ export function useEventListener<
   }, [options]);
 
   useEffect(() => {
-    if (typeof eventName !== 'string') return;
+    if (!(typeof eventName === 'string' && target !== null)) return;
 
     let targetElement: Exclude<UseEventListenerTarget, RefObject<HTMLElement>>;
 
