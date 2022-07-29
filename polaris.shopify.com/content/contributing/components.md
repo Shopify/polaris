@@ -8,6 +8,9 @@ keywords:
   - how to add a new component
   - bug fix
   - ux improvement
+  - improve component
+  - improve ux
+  - improve accessibility
   - open source
 ---
 
@@ -25,7 +28,7 @@ Often the changes you make to a component's code impact the [documentation](/con
 
 ### Considerations
 
-There are many ways to make a Polaris component more flexible. Updating or adding props is the most common way to add flexibility to the way a component looks or works. Sometimes refactoring the component is [a better path](#add-a-new-pattern).
+There are many ways to make a Polaris component more flexible. Updating or adding props is the most common way to add flexibility to the way a component looks or works. Sometimes refactoring the component is [a better path](#add-or-improve-a-component).
 
 Components should be performant, accessible, and maintainable. When contributing a new prop or updating the types of an existing prop, ask yourself how your change might:
 
@@ -81,7 +84,7 @@ If you're just getting started with contributing to Polaris React, look for issu
 
 ---
 
-## Improve components
+## Add or improve a component
 
 ### Considerations
 

@@ -10,7 +10,12 @@ const {A11yTestRunner} = require('@shopify/storybook-a11y-test');
   try {
     const allStoryIds = await testRunner.collectEnabledStoryIdsFromIFrame();
     const storyIds = allStoryIds.filter(
-      (id) => !id.includes('playground-playground'),
+      (id) =>
+        ![
+          'playground--details-page',
+          'playground--kitchen-sink',
+          'playground--playground',
+        ].includes(id),
     );
 
     const results = await testRunner.testStories({

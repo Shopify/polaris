@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.9.1
+
+### Patch Changes
+
+- [#6744](https://github.com/Shopify/polaris/pull/6744) [`6365532a1`](https://github.com/Shopify/polaris/commit/6365532a12e9b9a2101cf4f5047b7459310d5835) Thanks [@chloerice](https://github.com/chloerice)! - - Updated the Locations pattern documentation to document picker patterns.
+  - Added searchable listbox examples to `Listbox`, `Popover`, and `Sheet` documentation.
+
+* [#6789](https://github.com/Shopify/polaris/pull/6789) [`391a7e412`](https://github.com/Shopify/polaris/commit/391a7e412cf21bb9ef5497e03b9444506b0ef418) Thanks [@jjgali](https://github.com/jjgali)! - copy edits to contribution guidance
+
+* Updated dependencies [[`47e8244d5`](https://github.com/Shopify/polaris/commit/47e8244d573e0e34a71379733bcc5aa7788d8d5c), [`51be08e37`](https://github.com/Shopify/polaris/commit/51be08e371bc2090346cdc9695d44437023bb20a), [`b5ff69e44`](https://github.com/Shopify/polaris/commit/b5ff69e44a57824fef7ccccac314d2594db4d514), [`b75bc19ed`](https://github.com/Shopify/polaris/commit/b75bc19edf260af8fa20ec9f9c995990c8a3e4dd), [`6f50cb1dc`](https://github.com/Shopify/polaris/commit/6f50cb1dceb2f3ac3bb558c4da748d890de30543)]:
+  - @shopify/polaris@9.22.0
+
 ## 0.9.0
 
 ### Minor Changes

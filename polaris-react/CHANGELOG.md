@@ -1,5 +1,21 @@
 # Changelog
 
+## 9.22.0
+
+### Minor Changes
+
+- [#6709](https://github.com/Shopify/polaris/pull/6709) [`47e8244d5`](https://github.com/Shopify/polaris/commit/47e8244d573e0e34a71379733bcc5aa7788d8d5c) Thanks [@aminpaks](https://github.com/aminpaks)! - Added `Tooltip` support for `Page` `primaryAction` and `secondaryActions`
+
+### Patch Changes
+
+- [#6792](https://github.com/Shopify/polaris/pull/6792) [`51be08e37`](https://github.com/Shopify/polaris/commit/51be08e371bc2090346cdc9695d44437023bb20a) Thanks [@alex-page](https://github.com/alex-page)! - Bumped storybook versions and cleaned up main.js
+
+* [#6771](https://github.com/Shopify/polaris/pull/6771) [`b5ff69e44`](https://github.com/Shopify/polaris/commit/b5ff69e44a57824fef7ccccac314d2594db4d514) Thanks [@alex-page](https://github.com/alex-page)! - Add spacing around components in storybook, adjust grid if there is spacing
+
+- [#6719](https://github.com/Shopify/polaris/pull/6719) [`b75bc19ed`](https://github.com/Shopify/polaris/commit/b75bc19edf260af8fa20ec9f9c995990c8a3e4dd) Thanks [@ginabak](https://github.com/ginabak)! - Allow click events for spinner in [TextField]
+
+* [#6781](https://github.com/Shopify/polaris/pull/6781) [`6f50cb1dc`](https://github.com/Shopify/polaris/commit/6f50cb1dceb2f3ac3bb558c4da748d890de30543) Thanks [@philschoefer](https://github.com/philschoefer)! - Fixed console error in `DataTable` that is triggered by sorting data via table headers
+
 ## 9.21.1
 
 ### Patch Changes
