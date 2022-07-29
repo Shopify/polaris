@@ -69,7 +69,7 @@ const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   colors:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   spacing: /margin|padding|gap|top|left|right|bottom/,
-  typography: /font|line-height/,
+  font: /font|line-height/,
   zIndex: /z-index/,
   shape: /border/,
   depth: /shadow/,

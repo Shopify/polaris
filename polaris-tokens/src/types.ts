@@ -14,11 +14,11 @@ export interface Metadata {
   breakpoints: MetadataGroup;
   colors: MetadataGroup;
   depth: MetadataGroup;
+  font: MetadataGroup;
   legacy: MetadataGroup;
   motion: MetadataGroup;
   shape: MetadataGroup;
   spacing: MetadataGroup;
-  typography: MetadataGroup;
   zIndex: MetadataGroup;
 }
 

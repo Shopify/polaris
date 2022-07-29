@@ -1348,6 +1348,35 @@
   },
   {
     "frontMatter": {
+      "name": "Text",
+      "category": "Titles and text",
+      "keywords": [
+        "titles",
+        "text",
+        "typographic",
+        "spacing",
+        "display",
+        "heading",
+        "body",
+        "success",
+        "critical",
+        "warning",
+        "subdued",
+        "regular",
+        "medium",
+        "semibold",
+        "bold",
+        "list"
+      ],
+      "status": {
+        "value": "Alpha",
+        "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
+      }
+    },
+    "intro": "Typography helps establish hierarchy and communicate important content by creating clear visual patterns."
+  },
+  {
+    "frontMatter": {
       "name": "Text container",
       "category": "Titles and text",
       "releasedIn": "1.9.0",
