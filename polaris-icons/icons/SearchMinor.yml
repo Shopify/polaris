@@ -1,0 +1,13 @@
+name: Search
+set: minor
+description: Used to denote the action of searching throughout the admin.
+keywords:
+  - search
+  - find
+  - glass
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

@@ -1,0 +1,23 @@
+/// Used to hide an element visually, but keeping it accessible for
+/// accessibility tools.
+
+/// styles referenced from GOV.UK design system
+/// https://github.com/h5bp/main.css/issues/12#issuecomment-451965809
+@mixin visually-hidden {
+  // Need to make sure we override any existing styles.
+  // stylelint-disable declaration-no-important
+  position: absolute !important;
+  // Top position is required to prevent unexpected
+  // scrolling with Sheet component
+  // https://github.com/Shopify/polaris-react/pull/5208
+  top: 0;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  // stylelint-enable declaration-no-important
+}

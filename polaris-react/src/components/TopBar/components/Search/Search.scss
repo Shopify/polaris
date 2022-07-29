@@ -1,0 +1,47 @@
+@import '../../../../styles/common';
+@import '../../variables';
+
+.Search {
+  position: fixed;
+  visibility: hidden;
+  z-index: var(--p-z-8);
+  pointer-events: none;
+  top: $top-bar-height;
+  left: 0;
+  right: 0;
+  box-shadow: var(--p-shadow-modal);
+  overflow: hidden;
+
+  @include page-content-when-not-fully-condensed {
+    position: absolute;
+    top: 100%;
+    max-width: $search-max-width;
+    margin: var(--p-space-1) var(--p-space-5) 0;
+    border-radius: var(--p-border-radius-2);
+  }
+
+  @include page-content-when-not-partially-condensed {
+    margin: var(--p-space-1) var(--p-space-8) 0;
+  }
+}
+
+.SearchContent {
+  background-color: var(--p-surface);
+}
+
+.visible {
+  visibility: initial;
+  pointer-events: all;
+}
+
+.Results {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - #{$top-bar-height});
+  margin: 0;
+
+  @include page-content-when-not-fully-condensed {
+    max-height: 60vh;
+  }
+}

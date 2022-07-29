@@ -1,0 +1,16 @@
+name: Profile
+set: minor
+description: Used to represent a staff member.
+keywords:
+  - avatar
+  - user
+  - profile
+  - me
+  - portrait
+  - staff
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

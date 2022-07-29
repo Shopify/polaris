@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Baş harfleri {initials} olan avatar"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Yükleniyor:",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Tamamlanmadı",
+        "partiallyComplete": "Kısmen tamamlandı",
+        "complete": "Tamamlandı"
+      },
+      "STATUS_LABELS": {
+        "info": "Bilgi",
+        "success": "Başarılı",
+        "warning": "Uyarı",
+        "attention": "Dikkat",
+        "new": "Yeni",
+        "critical": "Kritik"
+      },
+      "progressAndStatus": "{statusLabel} - {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Yükleniyor",
+      "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
+    },
+    "Common": {
+      "checkbox": "onay kutusu",
+      "undo": "Geri al",
+      "cancel": "İptal et",
+      "newWindowAccessibilityHint": "(yeni bir pencere açar)",
+      "clear": "Temizle",
+      "close": "Kapat",
+      "submit": "Gönder",
+      "more": "Daha fazla"
+    },
+    "ContextualSaveBar": {
+      "save": "Kaydet",
+      "discard": "Sil"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "{direction} tarafı şuna göre sırala:",
+      "navAccessibilityLabel": "Tabloyu bir sütun {direction} tarafa kaydır",
+      "totalsRowHeading": "Toplamlar",
+      "totalRowHeading": "Toplam"
+    },
+    "DatePicker": {
+      "previousMonth": "Önceki ayı ({previousMonthName} {showPreviousYear}) göster",
+      "nextMonth": "Sonraki ayı ({nextMonth} {nextYear}) göster",
+      "today": "Bugün ",
+      "months": {
+        "january": "Ocak",
+        "february": "Şubat",
+        "march": "Mart",
+        "april": "Nisan",
+        "may": "Mayıs",
+        "june": "Haziran",
+        "july": "Temmuz",
+        "august": "Ağustos",
+        "september": "Eylül",
+        "october": "Ekim",
+        "november": "Kasım",
+        "december": "Aralık"
+      },
+      "daysAbbreviated": {
+        "monday": "Pzt",
+        "tuesday": "Sal",
+        "wednesday": "Çar",
+        "thursday": "Per",
+        "friday": "Cum",
+        "saturday": "Cmt",
+        "sunday": "Paz"
+      },
+      "days": {
+        "monday": "Pazartesi",
+        "tuesday": "Salı",
+        "wednesday": "Çarşamba",
+        "thursday": "Perşembe",
+        "friday": "Cuma",
+        "saturday": "Cumartesi",
+        "sunday": "Pazar"
+      },
+      "start": "Aralık başlangıcı",
+      "end": "Aralık bitişi"
+    },
+    "DiscardConfirmationModal": {
+      "title": "Kaydedilmemiş tüm değişiklikleri silin",
+      "message": "Değişiklikleri silerseniz son kaydetme işleminizden itibaren yaptığınız düzenlemeler uygulanmaz.",
+      "primaryAction": "Değişiklikleri sil",
+      "secondaryAction": "Düzenlemeye devam et"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "Dosya türü geçerli değil",
+      "errorOverlayTextImage": "Görsel türü geçerli değil",
+      "single": {
+        "overlayTextFile": "Yüklenecek dosyayı sürükleyip bırakın",
+        "overlayTextImage": "Yüklenecek görseli sürükleyip bırakın",
+        "actionTitleFile": "Dosya ekleyin",
+        "actionTitleImage": "Görsel ekleyin",
+        "actionHintFile": "veya yüklenecek dosyayı sürükleyip bırakın",
+        "actionHintImage": "veya yüklenecek görseli sürükleyip bırakın",
+        "labelFile": "Dosya yükle",
+        "labelImage": "Görsel yükle",
+        "overlayTextVideo": "Yüklemek için videoyu sürükleyip bırakın",
+        "actionTitleVideo": "Video ekle",
+        "actionHintVideo": "veya yüklemek için videoyu sürükleyip bırakın",
+        "labelVideo": "Video yükle"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Yüklenecek dosyaları sürükleyip bırakın",
+        "overlayTextImage": "Yüklenecek görselleri sürükleyip bırakın",
+        "actionTitleFile": "Dosya ekleyin",
+        "actionTitleImage": "Görsel ekleyin",
+        "actionHintFile": "veya yüklenecek dosyaları sürükleyip bırakın",
+        "actionHintImage": "veya yüklenecek görselleri sürükleyip bırakın",
+        "labelFile": "Dosya yükle",
+        "labelImage": "Görsel yükle",
+        "overlayTextVideo": "Yüklemek için videoları sürükleyip bırakın",
+        "actionTitleVideo": "Video ekle",
+        "actionHintVideo": "veya yüklemek için videoları sürükleyip bırakın",
+        "labelVideo": "Video yükle"
+      },
+      "errorOverlayTextVideo": "Video türü geçerli değil"
+    },
+    "EmptySearchResult": {
+      "altText": "Boş arama sonuçları"
+    },
+    "Frame": {
+      "skipToContent": "İçeriğe atla",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Gezinmeyi kapat"
+      },
+      "navigationLabel": "Gezinme"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "İşlemleri görüntüle"
+      },
+      "Actions": {
+        "moreActions": "Diğer işlemler"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Daha fazla filtre",
+      "filter": "Şunu filtrele: {resourceName}",
+      "noFiltersApplied": "Filtre uygulanmadı",
+      "cancel": "İptal et",
+      "done": "Bitti",
+      "clearAllFilters": "Tüm filtreleri temizle",
+      "clear": "Temizle",
+      "clearLabel": "{filterName} filtresini temizle",
+      "moreFiltersWithCount": "Daha fazla filtre ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "gövde işaretlemesi",
+      "modalWarning": "Şu gerekli özellikler Modda yok: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "pagination": "Sayfalara ayırma"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "İlerleme özelliğine geçirilen değerler negatif olmamalıdır. {progress} sıfırlanıyor.",
+      "exceedWarningMessage": "İlerleme özelliğine geçirilen değerler 100'ü aşmamalıdır. {progress} 100 olarak ayarlanıyor."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sıralama ölçütü",
+      "defaultItemSingular": "ürün",
+      "defaultItemPlural": "ürünler",
+      "showing": "{itemsCount} {resource} gösteriliyor",
+      "loading": "{resource} yükleniyor",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "allItemsSelected": "Mağazanızdaki şu kaynakların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "selectAllItems": "Mağazanızdaki şu kaynakların tümünü seçin: {itemsLength}+ {resourceNamePlural}",
+      "emptySearchResultTitle": "{resourceNamePlural} bulunamadı",
+      "emptySearchResultDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
+      "selectButtonText": "Seç",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kaynağının seçimini kaldır",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
+      "a11yCheckboxDeselectAllMultiple": "Şunların tümünün seçimini kaldır: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Şunların tümünü seç: {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} ürün",
+      "ariaLivePlural": "{itemsLength} ürün",
+      "Item": {
+        "actionsDropdownLabel": "{accessibilityLabel} ile ilgili işlemler",
+        "actionsDropdown": "İşlemler açılır listesi",
+        "viewItem": "{itemName} ile ilgili ayrıntıları görüntüle"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "İşlemler",
+        "moreActionsActivatorLabel": "Diğer işlemler",
+        "warningMessage": "Daha iyi bir kullanıcı deneyimi sunmak için. Öne çıkarılan işlemlerin sayısı en fazla {maxPromotedActions} olmalıdır."
+      },
+      "showingTotalCount": "{totalItemsCount} {resource} içinden {itemsCount} tanesi gösteriliyor",
+      "allFilteredItemsSelected": "Mevcut filtreyle gösterilen şu kaynakların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "selectAllFilteredItems": "Mevcut filtreyle gösterilen şu kaynakların tümünü seçin: {itemsLength}+ {resourceNamePlural}"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Sayfa yükleniyor"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Daha fazla sekme"
+    },
+    "Tag": {
+      "ariaLabel": "Şunu kaldır: {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} karakter",
+      "characterCountWithMaxLength": "{count}/{limit} karakter kullanıldı"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Menüyü aç/kapat",
+      "SearchField": {
+        "clearButtonLabel": "Temizle",
+        "search": "Ara"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "İşlemler"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Videoyu oynat",
+        "defaultWithDuration": "{duration} uzunluğundaki videoyu oynat",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} saat",
+              "andMinutes": "{hourCount} saat {minuteCount} dakika",
+              "andMinute": "{hourCount} saat {minuteCount} dakika",
+              "minutesAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minutesAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "andSeconds": "{hourCount} saat {secondCount} saniye",
+              "andSecond": "{hourCount} saat {secondCount} saniye"
+            },
+            "one": {
+              "only": "{hourCount} saat",
+              "andMinutes": "{hourCount} saat {minuteCount} dakika",
+              "andMinute": "{hourCount} saat {minuteCount} dakika",
+              "minutesAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minutesAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSeconds": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "minuteAndSecond": "{hourCount} saat {minuteCount} dakika {secondCount} saniye",
+              "andSeconds": "{hourCount} saat {secondCount} saniye",
+              "andSecond": "{hourCount} saat {secondCount} saniye"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} dakika",
+              "andSeconds": "{minuteCount} dakika {secondCount} saniye",
+              "andSecond": "{minuteCount} dakika {secondCount} saniye"
+            },
+            "one": {
+              "only": "{minuteCount} dakika",
+              "andSeconds": "{minuteCount} dakika {secondCount} saniye",
+              "andSecond": "{minuteCount} dakika {secondCount} saniye"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} saniye",
+            "one": "{secondCount} saniye"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "Sayfa yüklenme çubuğu"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "İpucu: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Ürün",
+      "defaultItemPlural": "Ürünler",
+      "allItemsSelected": "Şunların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kaynağının seçimini kaldır",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
+      "a11yCheckboxDeselectAllMultiple": "Şunların tümünün seçimini kaldır: {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Şunların tümünü seç: {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} bulunamadı",
+      "emptySearchDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
+      "onboardingBadgeText": "Yeni",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} yükleniyor…",
+      "selectAllLabel": "{resourceNamePlural} kaynaklarının tümünü seç",
+      "selected": "{selectedItemsCount} adet seçildi",
+      "undo": "Geri al",
+      "selectAllItems": "Şunların tümünü seç: {itemsLength}+ {resourceNamePlural}",
+      "selectItem": "{resourceName} kaynağını seç",
+      "selectButtonText": "Seç"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title} ile ilgili işlemleri görüntüle"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Geri",
+      "accessibilityLabel": "Tam ekran modundan çık"
+    }
+  }
+}

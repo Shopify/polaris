@@ -1,0 +1,14 @@
+name: Order status
+set: minor
+description: Used to represent the activity of an inbox.
+keywords:
+  - activity
+  - inbox
+  - status
+  - orders
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

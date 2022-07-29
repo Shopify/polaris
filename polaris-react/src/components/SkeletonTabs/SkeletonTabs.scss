@@ -1,0 +1,33 @@
+.Tabs {
+  display: flex;
+  width: 100%;
+  border-bottom: var(--p-border-divider);
+}
+
+.Tab {
+  position: relative;
+  padding: calc(var(--p-space-5) + var(--p-space-05)) var(--p-space-4);
+
+  &:first-child::before {
+    background-color: var(--p-border-hovered);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: var(--p-space-3);
+    right: var(--p-space-3);
+    height: var(--p-border-width-3);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-top-right-radius: var(--p-border-radius-1);
+  }
+}
+
+.Tab-short {
+  width: 80px;
+}
+
+.Tab-long {
+  width: 100px;
+}

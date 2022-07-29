@@ -6,22 +6,9 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "files.exclude": {
-    "**/.DS_Store": true,
-    "**/.git": true,
-    "**/node_modules": true,
-    ".{dev,shadowenv.d,loom}": true,
-    "{build,build-internal}/": true,
-    "examples/*/build": true
-  },
   "javascript.validate.enable": false,
-  "jest.autoEnable": false,
+  "jest.autoRun": "off",
   "scss.validate": false,
-  "search.exclude": {
-    "**/node_modules": true,
-    ".{dev,shadowenv.d}": true,
-    "{build,build-internal}/": true,
-    "examples/*/build": true
-  },
+  "stylelint.validate": ["scss", "css"],
   "typescript.tsdk": "./node_modules/typescript/lib"
 }

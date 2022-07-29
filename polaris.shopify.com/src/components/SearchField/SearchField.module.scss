@@ -1,0 +1,26 @@
+.SearchField {
+  position: relative;
+
+  .Icon {
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    font-size: var(--font-size-300);
+    padding: 0.66rem 0.6rem 0.66rem 2.75rem;
+    width: 100%;
+    background: transparent;
+    border-radius: var(--border-radius-round);
+    border: 1px solid var(--border-color);
+
+    &:focus-within {
+      border-color: transparent;
+    }
+  }
+}

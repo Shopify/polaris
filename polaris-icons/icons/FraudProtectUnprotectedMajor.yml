@@ -1,0 +1,16 @@
+name: Fraud protect unprotected
+set: major
+description: Used to represent that an order is not protected by Fraud Protect from chargebacks due to fraud.
+keywords:
+  - fraud protect
+  - chargebacks
+  - unprotected
+  - not protected
+  - risk
+  - fraud
+authors:
+  - Money UX team
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

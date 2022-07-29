@@ -1,0 +1,15 @@
+name: Text alignment center
+set: major
+description: Icon indicating alignment of text at the center
+keywords:
+  - align
+  - alignment
+  - center
+  - rte
+  - text
+authors:
+  - Arthur Gouveia
+version: 1
+date_added: 2019-08-07
+date_modified: 2019-08-07
+exclusive_use:

@@ -1,0 +1,18 @@
+name: Image with text overlay
+set: major
+description: Used to represent a layout option of text overlaid on an image.
+keywords:
+  - image
+  - picture
+  - photo
+  - text
+  - content
+  - overlay
+  - layout
+  - section
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-02-25
+date_modified: 2019-02-25
+exclusive_use:

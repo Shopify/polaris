@@ -1,0 +1,109 @@
+.Stack {
+  --pc-stack-spacing: var(--p-space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-top: calc(-1 * var(--pc-stack-spacing));
+  margin-left: calc(-1 * var(--pc-stack-spacing));
+
+  > .Item {
+    margin-top: var(--pc-stack-spacing);
+    margin-left: var(--pc-stack-spacing);
+    max-width: 100%;
+  }
+}
+
+.noWrap {
+  flex-wrap: nowrap;
+}
+
+.spacingNone {
+  --pc-stack-spacing: var(--p-space-0);
+}
+
+.spacingExtraTight {
+  --pc-stack-spacing: var(--p-space-1);
+}
+
+.spacingTight {
+  --pc-stack-spacing: var(--p-space-2);
+}
+
+.spacingBaseTight {
+  --pc-stack-spacing: var(--p-space-3);
+}
+
+.spacingLoose {
+  --pc-stack-spacing: var(--p-space-5);
+}
+
+.spacingExtraLoose {
+  --pc-stack-spacing: var(--p-space-8);
+}
+
+.distributionLeading {
+  justify-content: flex-start;
+}
+
+.distributionTrailing {
+  justify-content: flex-end;
+}
+
+.distributionCenter {
+  justify-content: center;
+}
+
+.distributionEqualSpacing {
+  justify-content: space-between;
+}
+
+.distributionFill > .Item {
+  flex: 1 1 auto;
+}
+
+.distributionFillEvenly > .Item {
+  flex: 1 1 auto;
+
+  @supports (min-width: fit-content) {
+    flex: 1 0 0%;
+    min-width: fit-content;
+  }
+}
+
+.alignmentLeading {
+  align-items: flex-start;
+}
+
+.alignmentTrailing {
+  align-items: flex-end;
+}
+
+.alignmentCenter {
+  align-items: center;
+}
+
+.alignmentFill {
+  align-items: stretch;
+}
+
+.alignmentBaseline {
+  align-items: baseline;
+}
+
+.vertical {
+  flex-direction: column;
+  margin-left: var(--p-space-0);
+
+  > .Item {
+    margin-left: var(--p-space-0);
+  }
+}
+
+.Item {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.Item-fill {
+  flex: 1 1 auto;
+}

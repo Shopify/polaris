@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "ตัวแทน",
+      "labelWithInitials": "ตัวแทนพร้อมอักษรย่อ {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "กำลังโหลด",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "ยังไม่เสร็จสมบูรณ์",
+        "partiallyComplete": "เสร็จสมบูรณ์แล้วบางส่วน",
+        "complete": "เสร็จสมบูรณ์"
+      },
+      "STATUS_LABELS": {
+        "info": "ข้อมูล",
+        "success": "สำเร็จ",
+        "warning": "คำเตือน",
+        "attention": "ระวัง",
+        "new": "ใหม่",
+        "critical": "ร้ายแรง"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "กำลังโหลด",
+      "connectedDisclosureAccessibilityLabel": "การดำเนินการที่เกี่ยวข้อง"
+    },
+    "Common": {
+      "checkbox": "ช่องทำเครื่องหมาย",
+      "undo": "เลิกทำ",
+      "cancel": "ยกเลิก",
+      "newWindowAccessibilityHint": "(เปิดหน้าต่างใหม่)",
+      "clear": "ล้าง",
+      "close": "ปิด",
+      "submit": "ส่ง",
+      "more": "อื่นๆ"
+    },
+    "ContextualSaveBar": {
+      "save": "บันทึก",
+      "discard": "ละทิ้ง"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "จัดเรียง {direction} ตาม",
+      "navAccessibilityLabel": "เลื่อนตาราง {direction} หนึ่งคอลัมน์",
+      "totalsRowHeading": "ยอดทั้งหมด",
+      "totalRowHeading": "ยอดทั้งหมด"
+    },
+    "DatePicker": {
+      "previousMonth": "แสดงเดือนก่อนหน้า ซึ่งคือ {previousMonthName} {showPreviousYear}",
+      "nextMonth": "แสดงเดือนถัดไป ซึ่งคือ {nextMonth} {nextYear}",
+      "today": "วันนี้ ",
+      "months": {
+        "january": "มกราคม",
+        "february": "กุมภาพันธ์",
+        "march": "มีนาคม",
+        "april": "เมษายน",
+        "may": "พฤษภาคม",
+        "june": "มิถุนายน",
+        "july": "กรกฎาคม",
+        "august": "สิงหาคม",
+        "september": "กันยายน",
+        "october": "ตุลาคม",
+        "november": "พฤศจิกายน",
+        "december": "ธันวาคม"
+      },
+      "daysAbbreviated": {
+        "monday": "จ.",
+        "tuesday": "อ.",
+        "wednesday": "พ.",
+        "thursday": "พฤ.",
+        "friday": "ศ.",
+        "saturday": "ส.",
+        "sunday": "อา."
+      },
+      "days": {
+        "monday": "วันจันทร์",
+        "tuesday": "วันอังคาร",
+        "wednesday": "วันพุธ",
+        "thursday": "วันพฤหัสบดี",
+        "friday": "วันศุกร์",
+        "saturday": "วันเสาร์",
+        "sunday": "วันอาทิตย์"
+      },
+      "start": "จุดเริ่มของช่วง",
+      "end": "จุดสิ้นสุดของช่วง"
+    },
+    "DiscardConfirmationModal": {
+      "title": "ละทิ้งการเปลี่ยนแปลงที่ไม่ได้บันทึกทั้งหมด",
+      "message": "หากคุณละทิ้งการเปลี่ยนแปลง คุณจะลบการแก้ไขทั้งหมดที่คุณทำหลังการบันทึกครั้งล่าสุด",
+      "primaryAction": "ละทิ้งการเปลี่ยนแปลง",
+      "secondaryAction": "ดำเนินการแก้ไขต่อ"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "ประเภทของไฟล์ไม่ถูกต้อง",
+      "errorOverlayTextImage": "ประเภทของรูปภาพไม่ถูกต้อง",
+      "single": {
+        "overlayTextFile": "วางไฟล์เพื่ออัปโหลด",
+        "overlayTextImage": "วางรูปภาพเพื่ออัปโหลด",
+        "actionTitleFile": "เพิ่มไฟล์",
+        "actionTitleImage": "เพิ่มรูปภาพ",
+        "actionHintFile": "หรือวางไฟล์เพื่ออัปโหลด",
+        "actionHintImage": "หรือวางรูปภาพเพื่ออัปโหลด",
+        "labelFile": "อัปโหลดไฟล์",
+        "labelImage": "อัปโหลดรูปภาพ",
+        "overlayTextVideo": "วางวิดีโอเพื่ออัปโหลด",
+        "actionTitleVideo": "เพิ่มวิดีโอ",
+        "actionHintVideo": "หรือวางวิดีโอเพื่ออัปโหลด",
+        "labelVideo": "อัปโหลดวิดีโอ"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "วางไฟล์เพื่ออัปโหลด",
+        "overlayTextImage": "วางรูปภาพเพื่ออัปโหลด",
+        "actionTitleFile": "เพิ่มไฟล์",
+        "actionTitleImage": "เพิ่มรูปภาพ",
+        "actionHintFile": "หรือวางไฟล์เพื่ออัปโหลด",
+        "actionHintImage": "หรือวางรูปภาพเพื่ออัปโหลด",
+        "labelFile": "อัปโหลดไฟล์",
+        "labelImage": "อัปโหลดรูปภาพ",
+        "overlayTextVideo": "วางวิดีโอเพื่ออัปโหลด",
+        "actionTitleVideo": "เพิ่มวิดีโอ",
+        "actionHintVideo": "หรือวางวิดีโอเพื่ออัปโหลด",
+        "labelVideo": "อัปโหลดวิดีโอ"
+      },
+      "errorOverlayTextVideo": "ประเภทวิดีโอไม่ถูกต้อง"
+    },
+    "EmptySearchResult": {
+      "altText": "ล้างผลลัพธ์การค้นหา"
+    },
+    "Frame": {
+      "skipToContent": "ข้ามไปยังเนื้อหา",
+      "Navigation": {
+        "closeMobileNavigationLabel": "ปิดการนำทาง"
+      },
+      "navigationLabel": "การนำทาง"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "ดูการดำเนินการ"
+      },
+      "Actions": {
+        "moreActions": "การดำเนินการเพิ่มเติม"
+      }
+    },
+    "Filters": {
+      "moreFilters": "ตัวกรองเพิ่มเติม",
+      "filter": "กรอง {resourceName}",
+      "noFiltersApplied": "ไม่ได้ใช้ตัวกรอง",
+      "cancel": "ยกเลิก",
+      "done": "เสร็จสิ้น",
+      "clearAllFilters": "ล้างตัวกรองทั้งหมด",
+      "clear": "ล้าง",
+      "clearLabel": "ล้าง {filterName}",
+      "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "มาร์กอัปเนื้อหา",
+      "modalWarning": "คุณสมบัติที่จำเป็นเหล่านี้ไม่มีอยู่ใน Modal: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "ก่อนหน้า",
+      "next": "ถัดไป",
+      "pagination": "การแบ่งหน้า"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "ค่าที่ส่งไปยังคุณสมบัติความคืบหน้าไม่ควรเป็นลบ กำลังรีเซ็ต {progress} เป็น 0",
+      "exceedWarningMessage": "ค่าที่ส่งไปยังคุณสมบัติความคืบหน้าไม่ควรเกิน 100 กำลังตั้ง {progress} เป็น 100"
+    },
+    "ResourceList": {
+      "sortingLabel": "จัดเรียงตาม",
+      "defaultItemSingular": "รายการ",
+      "defaultItemPlural": "รายการ",
+      "showing": "แสดง {resource} จำนวน {itemsCount} รายการ",
+      "loading": "กำลังโหลด {resource}",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "allItemsSelected": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการในร้านค้าของคุณแล้ว",
+      "selectAllItems": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการในร้านค้าของคุณ",
+      "emptySearchResultTitle": "ไม่พบ {resourceNamePlural}",
+      "emptySearchResultDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
+      "selectButtonText": "เลือก",
+      "a11yCheckboxDeselectAllSingle": "ยกเลิกการเลือก {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
+      "a11yCheckboxSelectAllMultiple": "เลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
+      "ariaLiveSingular": "{itemsLength} รายการ",
+      "ariaLivePlural": "{itemsLength} รายการ",
+      "Item": {
+        "actionsDropdownLabel": "การดำเนินการสำหรับ {accessibilityLabel}",
+        "actionsDropdown": "เมนูดรอปดาวน์ของการดำเนินการ",
+        "viewItem": "ดูรายละเอียดของ {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "การดำเนินการ",
+        "moreActionsActivatorLabel": "การดำเนินการเพิ่มเติม",
+        "warningMessage": "หากต้องการมอบประสบการณ์ใช้งานที่ดียิ่งขึ้นแก่ผู้ใช้ การดำเนินการที่ได้รับการโปรโมทไม่ควรมีมากเกิน {maxPromotedActions} รายการ"
+      },
+      "showingTotalCount": "แสดง {resource} จำนวน {itemsCount} จาก {totalItemsCount} รายการ",
+      "allFilteredItemsSelected": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการในตัวกรองนี้แล้ว",
+      "selectAllFilteredItems": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการทั้งหมดในตัวกรองนี้"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "กำลังโหลดหน้า"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "แท็บเพิ่มเติม"
+    },
+    "Tag": {
+      "ariaLabel": "ลบ {children} ออก"
+    },
+    "TextField": {
+      "characterCount": "{count} อักขระ",
+      "characterCountWithMaxLength": "ใช้อักขระไปแล้ว {count} จาก {limit}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "สลับเมนู",
+      "SearchField": {
+        "clearButtonLabel": "ล้าง",
+        "search": "ค้นหา"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "การดำเนินการ"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "เล่นวิดีโอ",
+        "defaultWithDuration": "เล่นวิดีโอความยาว {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} ชั่วโมง",
+              "andMinutes": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "andMinute": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "minutesAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minutesAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "andSeconds": "{hourCount} ชั่วโมง {secondCount} วินาที",
+              "andSecond": "{hourCount} ชั่วโมง {secondCount} วินาที"
+            },
+            "one": {
+              "only": "{hourCount} ชั่วโมง",
+              "andMinutes": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "andMinute": "{hourCount} ชั่วโมง {minuteCount} นาที",
+              "minutesAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minutesAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSeconds": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "minuteAndSecond": "{hourCount} ชั่วโมง {minuteCount} นาที {secondCount} วินาที",
+              "andSeconds": "{hourCount} ชั่วโมง {secondCount} วินาที",
+              "andSecond": "{hourCount} ชั่วโมง {secondCount} วินาที"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} นาที",
+              "andSeconds": "{minuteCount} นาที {secondCount} วินาที",
+              "andSecond": "{minuteCount} นาที {secondCount} วินาที"
+            },
+            "one": {
+              "only": "{minuteCount} นาที",
+              "andSeconds": "{minuteCount} นาที {secondCount} วินาที",
+              "andSecond": "{minuteCount} นาที {secondCount} วินาที"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} วินาที",
+            "one": "{secondCount} วินาที"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "แถบแสดงการโหลดหน้า"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "เคล็ดลับเกี่ยวกับเครื่องมือ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "รายการ",
+      "defaultItemPlural": "รายการ",
+      "allItemsSelected": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการแล้ว",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "a11yCheckboxDeselectAllSingle": "ยกเลิกการเลือก {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
+      "a11yCheckboxSelectAllMultiple": "เลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "ไม่พบ {resourceNamePlural}",
+      "emptySearchDescription": "ลองเปลี่ยนตัวกรองหรือคำค้นหา",
+      "onboardingBadgeText": "ใหม่",
+      "resourceLoadingAccessibilityLabel": "กำลังโหลด {resourceNamePlural}...",
+      "selectAllLabel": "เลือก {resourceNamePlural} ทั้งหมด",
+      "selected": "เลือกแล้ว {selectedItemsCount} รายการ",
+      "undo": "เลิกทำ",
+      "selectAllItems": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการ",
+      "selectItem": "เลือก {resourceName}",
+      "selectButtonText": "เลือก"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
+      }
+    },
+    "FullscreenBar": {
+      "back": "ย้อนกลับ",
+      "accessibilityLabel": "ออกจากโหมดเต็มหน้าจอ"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+name: Save
+set: minor
+description: Used to denote the action of saving.
+keywords:
+  - save
+  - saving
+  - store
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

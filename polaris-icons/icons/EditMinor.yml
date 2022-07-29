@@ -1,0 +1,19 @@
+name: Edit
+set: minor
+description: Used to represent the action of editing or modifying information.
+keywords:
+  - pencil
+  - pen
+  - paper
+  - edit
+  - page
+  - change
+authors:
+  # - Sasha Oliveira
+  # - Co-author’s name (optional)
+  # (delete this comment block)
+  - N/A
+version: 1
+date_added: 2019-03-01
+date_modified: 2019-03-01
+exclusive_use:

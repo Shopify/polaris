@@ -1,0 +1,51 @@
+@import '../../styles/common';
+
+.ChoiceList {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.ChoiceItem:not(:last-child) {
+  @include when-typography-condensed {
+    margin-bottom: var(--p-space-4);
+  }
+}
+
+.titleHidden > .Title {
+  @include visually-hidden;
+}
+
+.Choices {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ChoiceChildren {
+  @include when-typography-condensed {
+    margin-top: var(--p-space-4);
+  }
+  margin-bottom: var(--p-space-2);
+  padding-left: calc(var(--p-space-2) + var(--p-choice-size));
+}
+
+.ChoiceError {
+  margin-top: var(--p-space-1);
+  margin-bottom: var(--p-space-2);
+
+  @include when-typography-condensed {
+    margin-top: var(--p-space-4);
+  }
+}
+
+.Title {
+  @include text-style-body;
+  display: block;
+  margin: 0 0 var(--p-space-1);
+  padding: 0;
+
+  @include when-typography-condensed {
+    margin-bottom: var(--p-space-5);
+  }
+}

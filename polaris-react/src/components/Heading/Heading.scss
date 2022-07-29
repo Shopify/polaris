@@ -1,0 +1,11 @@
+@import '../../styles/common';
+
+.Heading {
+  @include text-style-heading;
+  margin: 0;
+
+  @media print {
+    font-size: var(--p-font-size-3);
+    line-height: var(--p-line-height-1);
+  }
+}

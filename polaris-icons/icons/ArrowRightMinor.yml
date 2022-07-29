@@ -1,0 +1,13 @@
+name: Arrow right
+set: minor
+authors:
+  - Adam Whitcroft
+description: Used to indicate that merchants will be directed to the next page.
+keywords:
+  - arrow
+  - right
+  - next
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

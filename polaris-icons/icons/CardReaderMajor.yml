@@ -1,0 +1,16 @@
+name: Card reader
+set: major
+description: Used to represent the Shopify Tap and Chip reader.
+keywords:
+  - chip and swipe
+  - card reader
+  - POS
+authors:
+  # - Sasha Oliveira
+  # - Co-author’s name (optional)
+  # (delete this comment block)
+  - N/A
+version: 1
+date_added: 2019-03-12
+date_modified: 2019-03-12
+exclusive_use:

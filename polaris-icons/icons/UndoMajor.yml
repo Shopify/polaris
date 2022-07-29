@@ -1,0 +1,17 @@
+name: Undo
+set: major
+description: Used to indicate undoing an action in an editor context.
+keywords:
+  - redo
+  - undo
+  - return
+  - cancel
+authors:
+  # - Sasha Oliveira
+  # - Co-author’s name (optional)
+  # (delete this comment block)
+  - N/A
+version: 1
+date_added: 2019-03-11
+date_modified: 2019-03-11
+exclusive_use:

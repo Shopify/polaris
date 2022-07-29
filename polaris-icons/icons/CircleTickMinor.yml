@@ -1,0 +1,16 @@
+name: Circle tick
+set: minor
+description: Used to represent an action to approve or confirm.
+keywords:
+  - good
+  - positive
+  - checkmark
+  - circle
+  - round
+  - approve
+authors:
+  - Anne Michel
+version: 1
+date_added: 2021-11-11
+date_modified: 2021-11-11
+exclusive_use:

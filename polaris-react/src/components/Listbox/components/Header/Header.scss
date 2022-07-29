@@ -1,0 +1,7 @@
+@import '../../../../styles/common';
+
+.Header {
+  @include text-style-subheading;
+  padding: var(--p-space-2) var(--p-space-4);
+  color: var(--p-text-subdued);
+}

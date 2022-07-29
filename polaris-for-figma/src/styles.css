@@ -1,0 +1,139 @@
+@import '~antd/dist/antd.css';
+
+html,
+body {
+  max-width: 100%;
+}
+
+body {
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+.layout {
+  background-color: #ffffff;
+  padding: 10px 20px 20px;
+}
+
+.loadingBar {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: 11;
+  padding: 10px 0;
+  width: 102.1%;
+}
+
+.layer {
+  margin-bottom: 12px;
+}
+
+.layer:first-of-type {
+  margin-top: 16px;
+}
+
+.replaceStroke {
+  position: relative;
+  margin-right: 10px;
+}
+
+.suggestion {
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  cursor: default;
+}
+
+.old-color,
+.new-color {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.old-color {
+  font-family: 'SF Mono', SFMono-Regular, ui-monospace, 'DejaVu Sans Mono',
+    Menlo, Consolas, monospace;
+}
+
+.old-color::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  width: 100%;
+  height: 1px;
+  background: black;
+}
+
+.fill-preview,
+.stroke-preview {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.stroke-preview {
+  border-style: solid;
+  border-width: 2px;
+}
+
+.token-preview {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+}
+
+.suggestion button {
+  margin-left: auto;
+}
+
+.footer {
+  z-index: 11;
+  position: fixed;
+  bottom: 0;
+  left: 5px;
+  width: 100%;
+  padding: 20px 15px;
+  background-color: hsla(0, 0%, 100%, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.footer button {
+  width: 100%;
+}
+
+.layerNameWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.layerName {
+  max-width: 80%;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+.crosshair {
+  display: none;
+  transform: translateX(4px);
+}
+
+.layerNameWrapper:hover {
+  cursor: pointer;
+}
+
+.layerNameWrapper:hover .crosshair {
+  display: block;
+}
+
+.layerNameWrapper:hover .layerName {
+  color: #1890ff;
+}

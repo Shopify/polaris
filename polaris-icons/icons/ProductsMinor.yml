@@ -1,0 +1,13 @@
+name: Products
+set: minor
+description: Used to represent products or a price tag.
+keywords:
+  - tag
+  - products
+  - price
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2022-01-17
+date_modified: 2022-01-17
+exclusive_use:

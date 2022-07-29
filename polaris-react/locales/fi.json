@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar alkukirjaimilla {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Ladataan",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Keskeneräinen",
+        "partiallyComplete": "Osittain valmis",
+        "complete": "Valmis"
+      },
+      "STATUS_LABELS": {
+        "info": "Tiedot",
+        "success": "Onnistui",
+        "warning": "Varoitus",
+        "attention": "Huomio",
+        "new": "Uusi",
+        "critical": "Kriittinen"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Ladataan",
+      "connectedDisclosureAccessibilityLabel": "Aiheeseen liittyvät toimenpiteet"
+    },
+    "Common": {
+      "checkbox": "valintaruutu",
+      "undo": "Peru",
+      "cancel": "Peruuta",
+      "newWindowAccessibilityHint": "(avaa uuden ikkunan)",
+      "clear": "Tyhjennä",
+      "close": "Sulje",
+      "submit": "Lähetä",
+      "more": "Enemmän"
+    },
+    "ContextualSaveBar": {
+      "save": "Tallenna",
+      "discard": "Hylkää"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "lajittele {direction}:",
+      "navAccessibilityLabel": "Selaa taulukkoa {direction} yksi sarake",
+      "totalsRowHeading": "Yhteenlasketut",
+      "totalRowHeading": "Yhteensä"
+    },
+    "DatePicker": {
+      "previousMonth": "Näytä edellinen kuukausi, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Näytä seuraava kuukausi, {nextMonth} {nextYear}",
+      "today": "Tänään ",
+      "months": {
+        "january": "Tammikuu",
+        "february": "Helmikuu",
+        "march": "Maaliskuu",
+        "april": "Huhtikuu",
+        "may": "Toukokuu",
+        "june": "Kesäkuu",
+        "july": "Heinäkuu",
+        "august": "Elokuu",
+        "september": "Syyskuu",
+        "october": "Lokakuu",
+        "november": "Marraskuu",
+        "december": "Joulukuu"
+      },
+      "daysAbbreviated": {
+        "monday": "Ma",
+        "tuesday": "Ti",
+        "wednesday": "Ke",
+        "thursday": "To",
+        "friday": "Pe",
+        "saturday": "La",
+        "sunday": "Su"
+      },
+      "days": {
+        "monday": "maanantai",
+        "tuesday": "tiistai",
+        "wednesday": "keskiviikko",
+        "thursday": "torstai",
+        "friday": "perjantai",
+        "saturday": "Lauantai",
+        "sunday": "Sunnuntai"
+      },
+      "start": "Alueen alku",
+      "end": "Alueen loppu"
+    },
+    "DiscardConfirmationModal": {
+      "title": "Hylkää kaikki tallentamattomat muutokset",
+      "message": "Jos hylkäät muutokset, poistat kaikki edellisen tallennuksen jälkeen tekemäsi muokkaukset.",
+      "primaryAction": "Hylkää muutokset",
+      "secondaryAction": "Jatka muokkausta"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "Tiedostotyyppi ei kelpaa",
+      "errorOverlayTextImage": "Kuvan tyyppi ei kelpaa",
+      "single": {
+        "overlayTextFile": "Pudota ladattava tiedosto",
+        "overlayTextImage": "Lataa kuva pudottamalla",
+        "actionTitleFile": "Lisää tiedosto",
+        "actionTitleImage": "Lisää kuva",
+        "actionHintFile": "tai pudota tiedosto ladattavaksi",
+        "actionHintImage": "tai pudota kuva ladattavaksi",
+        "labelFile": "Lataa tiedosto",
+        "labelImage": "Lataa kuva",
+        "overlayTextVideo": "Pudota ladattava video",
+        "actionTitleVideo": "Lisää video",
+        "actionHintVideo": "tai pudota ladattava video",
+        "labelVideo": "Lataa videoita laitteeltasi"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Pudota ladattavat tiedostot",
+        "overlayTextImage": "Pudota ladattavat kuvat",
+        "actionTitleFile": "Lisää tiedostoja",
+        "actionTitleImage": "Lisää kuvia",
+        "actionHintFile": "tai pudota ladattavat tiedostot",
+        "actionHintImage": "tai lataa kuvat pudottamalla",
+        "labelFile": "Lataa tiedostoja",
+        "labelImage": "Lataa kuvia",
+        "overlayTextVideo": "Lataa video pudottamalla",
+        "actionTitleVideo": "Lisää videoita",
+        "actionHintVideo": "tai pudota ladattavat videot",
+        "labelVideo": "Lataa videoita laitteeltasi"
+      },
+      "errorOverlayTextVideo": "Videon tiedostotyyppi ei kelpaa"
+    },
+    "EmptySearchResult": {
+      "altText": "Tyhjennä hakutulokset"
+    },
+    "Frame": {
+      "skipToContent": "Ohita ja siirry sisältöön",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Sulje navigointi"
+      },
+      "navigationLabel": "Navigointi"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Tarkastele toimintoja"
+      },
+      "Actions": {
+        "moreActions": "Lisää toimintoja"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Lisää suodattimia",
+      "filter": "Suodata {resourceName}",
+      "noFiltersApplied": "Suodattimia ei ole käytetty",
+      "cancel": "Peruuta",
+      "done": "Valmis",
+      "clearAllFilters": "Tyhjennä kaikki suodattimet",
+      "clear": "Tyhjennä",
+      "clearLabel": "Tyhjennä {filterName}",
+      "moreFiltersWithCount": "Lisää suodattimia ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "tekstin merkintä",
+      "modalWarning": "Nämä vaaditut ominaisuudet puuttuvat Modalista: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Edellinen",
+      "next": "Seuraava",
+      "pagination": "Sivunumerointi"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Edistymistietoihin siirretyt arvot eivät saa olla negatiivisia. Palautetaan {progress} arvoon 0.",
+      "exceedWarningMessage": "Edistymistietoihin siirretyt arvot eivät saa olla suurempia kuin 100. Asetetaan {progress} arvoon 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Lajitteluperuste",
+      "defaultItemSingular": "tuote",
+      "defaultItemPlural": "tuotetta",
+      "showing": "Näytetään {itemsCount} {resource}",
+      "loading": "Ladataan {resource}",
+      "selected": "{selectedItemsCount} valittu",
+      "allItemsSelected": "Kaikki {itemsLength} ja {resourceNamePlural} kaupassasi on valittu.",
+      "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural} kaupassasi",
+      "emptySearchResultTitle": "{resourceNamePlural} ei löytynyt",
+      "emptySearchResultDescription": "Yritä vaihtaa suodattimia tai hakusanaa",
+      "selectButtonText": "Valitse",
+      "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} tuote",
+      "ariaLivePlural": "{itemsLength} tuotetta",
+      "Item": {
+        "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
+        "actionsDropdown": "Toiminnat-pudotusvalikko",
+        "viewItem": "Näytä tiedot kohteesta {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Toiminnat",
+        "moreActionsActivatorLabel": "Lisää toimintoja",
+        "warningMessage": "Paremman käyttäjäkokemuksen tarjoamiseksi. Mainostettavia toimintoja saa olla enintään {maxPromotedActions}."
+      },
+      "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength} ja {resourceNamePlural} on valittu.",
+      "selectAllFilteredItems": "Valitse kaikki tämän suodattimen {itemsLength} ja {resourceNamePlural}"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Sivu latautuu"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Lisää välilehtiä"
+    },
+    "Tag": {
+      "ariaLabel": "Poista {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} merkkiä",
+      "characterCountWithMaxLength": "{count}/{limit} merkkiä käytetty"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Vaihda valikkoa",
+      "SearchField": {
+        "clearButtonLabel": "Tyhjennä",
+        "search": "Hae"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Toiminnat"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Toista video",
+        "defaultWithDuration": "Toista video, joka on kestoltaan {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} tuntia",
+              "andMinutes": "{hourCount} tuntia ja {minuteCount} minuuttia",
+              "andMinute": "{hourCount} tuntia ja {minuteCount} minuutti",
+              "minutesAndSeconds": "{hourCount} tuntia, {minuteCount} minuuttia ja {secondCount} sekuntia",
+              "minutesAndSecond": "{hourCount} tuntia, {minuteCount} minuuttia ja {secondCount} sekunti",
+              "minuteAndSeconds": "{hourCount} tuntia, {minuteCount} minuutti ja {secondCount} sekuntia",
+              "minuteAndSecond": "{hourCount} tuntia, {minuteCount} minuutti ja {secondCount} sekunti",
+              "andSeconds": "{hourCount} tuntia ja {secondCount} sekuntia",
+              "andSecond": "{hourCount} tuntia ja {secondCount} sekunti"
+            },
+            "one": {
+              "only": "{hourCount} tunti",
+              "andMinutes": "{hourCount} tunti ja {minuteCount} minuuttia",
+              "andMinute": "{hourCount} tunti ja {minuteCount} minuutti",
+              "minutesAndSeconds": "{hourCount} tunti, {minuteCount} minuuttia ja {secondCount} sekuntia",
+              "minutesAndSecond": "{hourCount} tunti, {minuteCount} minuuttia ja {secondCount} sekunti",
+              "minuteAndSeconds": "{hourCount} tunti, {minuteCount} minuutti ja {secondCount} sekuntia",
+              "minuteAndSecond": "{hourCount} tunti, {minuteCount} minuutti ja {secondCount} sekunti",
+              "andSeconds": "{hourCount} tunti ja {secondCount} sekuntia",
+              "andSecond": "{hourCount} tunti ja {secondCount} sekunti"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minuuttia",
+              "andSeconds": "{minuteCount} minuuttia ja {secondCount} sekuntia",
+              "andSecond": "{minuteCount} minuuttia ja {secondCount} sekunti"
+            },
+            "one": {
+              "only": "{minuteCount} minuutti",
+              "andSeconds": "{minuteCount} minuutti ja {secondCount} sekuntia",
+              "andSecond": "{minuteCount} minuutti ja {secondCount} sekunti"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} sekuntia",
+            "one": "{secondCount} sekunti"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "Sivun latautumisen palkki"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Työkaluvihje: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Tuote",
+      "defaultItemPlural": "Tuotteet",
+      "allItemsSelected": "Kaikki {itemsLength} ja {resourceNamePlural} on valittu.",
+      "selected": "{selectedItemsCount} valittu",
+      "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural} ei löytynyt",
+      "emptySearchDescription": "Yritä vaihtaa suodattimia tai hakusanaa",
+      "onboardingBadgeText": "Uusi",
+      "resourceLoadingAccessibilityLabel": "Ladataan {resourceNamePlural}…",
+      "selectAllLabel": "Valitse kaikki {resourceNamePlural}",
+      "selected": "{selectedItemsCount} valittu",
+      "undo": "Peru",
+      "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
+      "selectItem": "Valitse {resourceName}",
+      "selectButtonText": "Valitse"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Takaisin",
+      "accessibilityLabel": "Poistu koko näytön tilasta"
+    }
+  }
+}

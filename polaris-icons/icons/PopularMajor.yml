@@ -1,0 +1,13 @@
+name: Popular
+set: major
+description: Used to represent activity or something increasing in popularity.
+keywords:
+  - activity
+  - graph
+  - popular
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

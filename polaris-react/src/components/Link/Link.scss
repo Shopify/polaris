@@ -1,0 +1,83 @@
+@import '../../styles/common';
+
+.Link {
+  appearance: none;
+  display: inline;
+  text-align: inherit;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--p-interactive);
+  text-decoration: underline;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--p-interactive-hovered);
+    text-decoration: none;
+  }
+
+  &:focus:not(:active) {
+    outline: var(--p-focused) auto var(--p-border-width-1);
+  }
+
+  &:active {
+    position: relative;
+    color: var(--p-interactive-pressed);
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      // this mimics the box model of the plain button backdrop
+      top: -2px;
+      right: -5px;
+      bottom: -2px;
+      left: -5px;
+      display: block;
+
+      border-radius: var(--p-border-radius-base);
+    }
+  }
+
+  @media print {
+    text-decoration-color: var(--p-border-neutral-subdued);
+  }
+}
+
+.IconLockup {
+  @include recolor-icon(currentColor);
+  display: inline;
+  white-space: nowrap;
+
+  &::before {
+    content: '\2060';
+  }
+}
+
+.IconLayout {
+  display: inline-flex;
+
+  &::before {
+    content: '\2060';
+  }
+}
+
+.monochrome {
+  color: inherit;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
+  }
+}
+
+.removeUnderline {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,577 @@
+@import '../../styles/common';
+
+.Button {
+  --pc-button-slim-min-height: var(--p-line-height-4);
+  --pc-button-large-min-height: var(--p-line-height-7);
+  --pc-button-vertical-padding: calc(
+    (var(--p-line-height-6) - var(--p-line-height-2) - var(--p-space-05)) / 2
+  );
+  --pc-button-slim-vertical-padding: calc(
+    (
+        var(--pc-button-slim-min-height) - var(--p-line-height-2) -
+          var(--p-space-05)
+      ) / 2
+  );
+  --pc-button-large-vertical-padding: calc(
+    (
+        var(--pc-button-large-min-height) - var(--p-line-height-2) -
+          var(--p-space-05)
+      ) / 2
+  );
+  --pc-button-spinner-size: 20px;
+  --pc-button-segment: 10;
+  --pc-button-focused: 20;
+  --pc-button-disclosure-icon-offset: -6px;
+  @include button-base;
+
+  &.disabled {
+    @include base-button-disabled;
+  }
+
+  &.connectedDisclosure {
+    z-index: var(--pc-button-segment);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &::after {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:focus {
+      z-index: var(--pc-button-focused);
+    }
+  }
+}
+
+.Content {
+  @include text-style-button;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 1px;
+  min-height: 1px;
+
+  .Button:not(.plain) & {
+    width: 100%;
+  }
+}
+
+.textAlignLeft {
+  justify-content: flex-start;
+  text-align: left;
+
+  .Content {
+    justify-content: flex-start;
+  }
+}
+
+.textAlignStart {
+  justify-content: flex-start;
+  text-align: start;
+
+  .Content {
+    justify-content: flex-start;
+  }
+}
+
+.textAlignCenter {
+  justify-content: center;
+  text-align: center;
+}
+
+.textAlignRight {
+  justify-content: flex-end;
+  text-align: right;
+
+  .Content {
+    justify-content: flex-end;
+  }
+}
+
+.textAlignEnd {
+  justify-content: flex-end;
+  text-align: end;
+
+  .Content {
+    justify-content: flex-end;
+  }
+}
+
+.Icon {
+  // This compensates for the typical icon used in buttons being
+  // inset within its bounding box.
+  margin-left: calc(-1 * (var(--p-space-1)));
+
+  &:last-child {
+    // This compensates for the disclosure icon, which is substantially
+    // inset within the viewbox
+    margin-right: var(--pc-button-disclosure-icon-offset);
+    margin-left: var(--p-space-1);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .fullWidth.textAlignLeft &:last-child:not(:only-child) {
+    margin-left: auto;
+  }
+
+  + *:not(.Icon) {
+    margin-left: var(--p-space-1);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.Spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: calc(-1 * (var(--pc-button-spinner-size) / 2));
+  margin-left: calc(-1 * (var(--pc-button-spinner-size) / 2));
+}
+
+.primary,
+.destructive {
+  @include button-filled;
+
+  &.disabled {
+    @include recolor-icon(var(--p-icon-disabled));
+    color: var(--p-text-disabled);
+    box-shadow: none;
+    border-color: transparent;
+  }
+}
+
+.primary {
+  --pc-button-color: var(--p-action-primary);
+  --pc-button-text: var(--p-text-on-primary);
+  --pc-button-color-hover: var(--p-action-primary-hovered);
+  --pc-button-color-active: var(--p-action-primary-pressed);
+  --pc-button-color-depressed: var(--p-action-primary-depressed);
+  @include recolor-icon(var(--p-icon-on-primary));
+
+  &.disabled {
+    background: var(--p-action-primary-disabled);
+  }
+}
+
+.destructive {
+  --pc-button-color: var(--p-action-critical);
+  --pc-button-text: var(--p-text-on-critical);
+  --pc-button-color-hover: var(--p-action-critical-hovered);
+  --pc-button-color-active: var(--p-action-critical-pressed);
+  --pc-button-color-depressed: var(--p-action-critical-depressed);
+  @include recolor-icon(var(--p-icon-on-critical));
+
+  &.disabled {
+    background: var(--p-action-critical-disabled);
+  }
+}
+
+.outline {
+  @include button-outline(var(--p-border));
+
+  &.disabled {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+
+.destructive.outline {
+  @include button-outline(var(--p-border-critical));
+}
+
+.disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.loading {
+  position: relative;
+
+  &,
+  &:hover,
+  &.disabled {
+    color: transparent;
+  }
+}
+
+.loading.disabled svg {
+  fill: var(--p-icon-subdued);
+}
+
+// The way the designs work, we need to do lots of reaching down to
+// target the content in pseudo-selectors, so we need higher specificity
+// in this case.
+// stylelint-disable selector-max-specificity, selector-max-class
+.plain {
+  @include recolor-icon(var(--p-interactive));
+  margin: calc(-1 * var(--pc-button-vertical-padding))
+    calc(-1 * var(--p-space-2));
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: var(--p-interactive);
+
+  > .Content {
+    font-weight: var(--p-font-weight-regular);
+    @include focus-ring;
+  }
+
+  &:hover,
+  &:focus:not(.disabled) {
+    @include recolor-icon(var(--p-interactive-hovered));
+    color: var(--p-interactive-hovered);
+    background: transparent;
+    box-shadow: none;
+
+    &:not(.removeUnderline) {
+      text-decoration: underline;
+    }
+  }
+
+  &.pressed,
+  &:active {
+    @include recolor-icon(var(--p-interactive-pressed));
+    color: var(--p-interactive-pressed);
+    @include high-contrast-button-outline(none);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  &:focus {
+    @include no-focus-ring;
+    @include high-contrast-button-outline(none);
+
+    > .Content {
+      @include high-contrast-button-outline;
+    }
+  }
+
+  &:focus:not(:active) {
+    > .Content {
+      @include focus-ring($style: 'focused');
+    }
+  }
+
+  &:active:not(.iconOnly) > .Content,
+  &.pressed:not(.iconOnly) > .Content {
+    @include plain-button-backdrop;
+  }
+
+  &.fullWidth {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &.disabled {
+    color: var(--p-text-disabled);
+    background: none;
+
+    &.loading {
+      color: transparent;
+    }
+  }
+
+  &.destructive {
+    @include recolor-icon(var(--p-interactive-critical));
+    color: var(--p-interactive-critical);
+
+    &:hover {
+      color: var(--p-interactive-critical-hovered);
+    }
+
+    &:active,
+    &.pressed {
+      color: var(--p-interactive-critical-pressed);
+    }
+
+    &.disabled {
+      color: var(--p-interactive-critical-disabled);
+    }
+  }
+
+  &.sizeSlim {
+    margin-top: calc(-1 * var(--pc-button-slim-vertical-padding));
+    margin-bottom: calc(-1 * var(--pc-button-slim-vertical-padding));
+  }
+
+  &.sizeLarge {
+    margin: calc(-1 * var(--pc-button-large-vertical-padding))
+      calc(-1 * var(--p-space-5));
+  }
+
+  &.iconOnly {
+    @include recolor-icon(var(--p-icon));
+    margin: calc(-0.5 * (var(--p-line-height-6) - var(--p-icon-size-medium)));
+
+    &:hover {
+      @include recolor-icon(var(--p-icon-hovered));
+    }
+
+    &:active,
+    &.pressed {
+      @include recolor-icon(var(--p-icon-pressed));
+    }
+
+    &.disabled {
+      @include recolor-icon(var(--p-icon-disabled));
+    }
+  }
+
+  &.destructive.iconOnly {
+    @include recolor-icon(var(--p-action-critical));
+
+    &:hover {
+      @include recolor-icon(var(--p-action-critical-hovered));
+    }
+
+    &:active,
+    &.pressed {
+      @include recolor-icon(var(--p-action-critical-pressed));
+    }
+
+    &.disabled {
+      @include recolor-icon(var(--p-action-critical-disabled));
+    }
+  }
+
+  .Icon {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+// stylelint-enable selector-max-specificity, selector-max-class
+
+.fullWidth {
+  @include button-full-width;
+}
+
+.iconOnly {
+  padding-left: var(--p-space-2);
+  padding-right: var(--p-space-2);
+
+  &.sizeLarge {
+    padding-left: var(--p-space-3);
+    padding-right: var(--p-space-3);
+  }
+
+  .Icon:first-child {
+    margin-left: 0;
+  }
+
+  .Icon:last-child {
+    margin-right: calc(-1 * var(--p-space-1));
+  }
+
+  .Icon:only-child {
+    margin-right: 0;
+  }
+}
+
+.sizeSlim {
+  min-height: var(--pc-button-slim-min-height);
+  padding: var(--pc-button-slim-vertical-padding) var(--p-space-3);
+}
+
+.sizeLarge {
+  min-height: var(--pc-button-large-min-height);
+  min-width: var(--pc-button-large-min-height);
+  padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
+
+  .Content {
+    @include text-style-button-large;
+  }
+}
+
+// stylelint-disable selector-max-specificity
+.monochrome {
+  &.outline,
+  &.plain {
+    @include recolor-icon(currentColor);
+    color: currentColor;
+
+    &:hover,
+    &:focus,
+    &:active {
+      @include recolor-icon(currentColor);
+      color: currentColor;
+    }
+
+    // stylelint-disable selector-max-class
+    &.disabled {
+      color: currentColor;
+      @include recolor-icon(currentColor);
+      opacity: 0.4;
+    }
+
+    // Prevents the loading spinner from overlapping the button’s text, while retaining its width.
+    &.loading .Text {
+      visibility: hidden;
+    }
+
+    &.iconOnly {
+      @include recolor-icon(currentColor);
+
+      &:focus,
+      &:active {
+        @include recolor-icon(currentColor);
+      }
+
+      &.disabled {
+        @include recolor-icon(currentColor);
+      }
+    }
+    // stylelint-enable selector-max-class
+  }
+
+  &.plain {
+    // stylelint-disable selector-max-class
+    .Text:not(.removeUnderline) {
+      text-decoration: underline;
+    }
+    // stylelint-enable selector-max-class
+  }
+
+  &.outline {
+    position: relative;
+    border-color: currentColor;
+    // stylelint-disable selector-max-class
+    box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
+    @include focus-ring($border-width: 2px);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: currentColor;
+      opacity: 0;
+      z-index: 0;
+    }
+
+    &.pressed {
+      background: transparent;
+      box-shadow: none;
+      color: currentColor;
+
+      &::before {
+        opacity: 0.2;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+      border-color: currentColor;
+
+      &::before {
+        opacity: 0.07;
+      }
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active::after {
+      box-shadow: none;
+    }
+
+    &:hover,
+    &:active {
+      &::before {
+        opacity: 0.05;
+      }
+    }
+    // stylelint-enable selector-max-class
+  }
+}
+// stylelint-enable selector-max-specificity
+
+.ConnectedDisclosureWrapper {
+  display: flex;
+}
+
+.ConnectedDisclosure {
+  z-index: var(--pc-button-segment);
+  margin-left: calc(-1 * var(--p-space-025));
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 100%;
+
+  &:focus,
+  &:active {
+    z-index: var(--pc-button-focused);
+  }
+
+  &.primary,
+  &.destructive {
+    margin-left: var(--p-space-025);
+
+    // stylelint-disable-next-line selector-max-class
+    &.outline {
+      margin-left: 0;
+      border-left: 0;
+    }
+  }
+
+  &::after {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+// stylelint-disable selector-max-combinators, selector-max-specificity
+[data-buttongroup-segmented='true'] {
+  .Button,
+  .Button::after {
+    border-radius: 0;
+  }
+
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-radius: 0;
+    border-top-left-radius: var(--p-border-radius-1);
+    border-bottom-left-radius: var(--p-border-radius-1);
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-radius: 0;
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
+  }
+
+  > :last-child:first-child .Button,
+  > :last-child:first-child .Button::after {
+    border-radius: var(--p-border-radius-1);
+  }
+}
+
+[data-buttongroup-connected-top='true'] {
+  > :first-child .Button,
+  > :first-child .Button::after {
+    border-top-left-radius: 0;
+  }
+
+  > :last-child .Button,
+  > :last-child .Button::after {
+    border-top-right-radius: 0;
+  }
+}
+
+[data-buttongroup-full-width='true'] {
+  .Button {
+    @include button-full-width;
+  }
+}
+// stylelint-enable selector-max-combinators, selector-max-specificity

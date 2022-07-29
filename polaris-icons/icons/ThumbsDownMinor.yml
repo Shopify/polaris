@@ -1,0 +1,18 @@
+name: Thumbs down
+set: minor
+description: Used to represent an action to dislike or disapprove of something.
+keywords:
+  - down
+  - thumbs down
+  - no
+  - downvote
+  - dislike
+  - disapprove
+  - negative
+  - social
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

@@ -1,0 +1,126 @@
+@import '../../styles/common';
+
+$arrow-size: 14px;
+$visible-portion-of-arrow: 5px;
+$content-max-height: 500px;
+$content-max-width: 400px;
+$vertical-motion-offset: -5px;
+
+.Popover {
+  max-width: calc(100vw - var(--p-space-8));
+  margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
+  box-shadow: var(--p-shadow-popover);
+  border-radius: var(--p-border-radius-2);
+  will-change: left, top;
+}
+
+.PopoverOverlay {
+  opacity: 0;
+  transition: opacity var(--p-duration-100) var(--p-ease),
+    transform var(--p-duration-100) var(--p-ease);
+  transform: translateY($vertical-motion-offset);
+}
+
+.PopoverOverlay-entering {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.PopoverOverlay-open {
+  opacity: 1;
+  transform: none;
+}
+
+.PopoverOverlay-exiting {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: var(--p-duration-0);
+}
+
+.measuring:not(.PopoverOverlay-exiting) {
+  opacity: 0;
+  transform: translateY($vertical-motion-offset);
+}
+
+.fullWidth {
+  margin: $visible-portion-of-arrow auto 0 auto;
+
+  .Content {
+    max-width: none;
+  }
+}
+
+.positionedAbove {
+  margin: var(--p-space-4) var(--p-space-2) $visible-portion-of-arrow;
+
+  &.fullWidth {
+    margin: 0 auto $visible-portion-of-arrow auto;
+  }
+}
+
+.Wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--p-surface);
+  border-radius: var(--p-border-radius-2);
+  outline: var(--p-border-width-1) solid transparent;
+}
+
+.Content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--p-border-radius-1);
+  max-width: $content-max-width;
+  max-height: $content-max-height;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Content-fullHeight {
+  max-height: none;
+}
+
+.Content-fluidContent {
+  max-height: none;
+  max-width: none;
+}
+
+.Pane {
+  flex: 1 1 0%;
+  max-width: 100%;
+
+  + .Pane {
+    border-top: var(--p-border-divider);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Pane-fixed {
+  overflow: visible;
+  flex: 0 0 auto;
+}
+
+.Section {
+  padding: var(--p-space-4);
+
+  + .Section {
+    border-top: var(--p-border-divider);
+  }
+}
+
+.FocusTracker {
+  @include visually-hidden;
+}
+
+.PopoverOverlay-hideOnPrint {
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}

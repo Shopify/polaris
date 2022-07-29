@@ -1,6 +1,6 @@
 # Migrating from v4 to v5
 
-Polaris v5.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v5.0.0)) removes most features deprecated in v4.x.x releases. This file describes all code updates required to stay up to date.
+Polaris v5.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v5.0.0)) removes most features deprecated in v4.x.x releases. This file describes all code updates required to stay up to date.
 
 ## AppBridge integrations removed
 

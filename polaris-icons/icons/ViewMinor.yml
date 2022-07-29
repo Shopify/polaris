@@ -1,0 +1,18 @@
+name: View
+set: minor
+description: Used to denote the action of previewing an online store.
+keywords:
+  - view
+  - preview
+  - eye
+  - eyeball
+  - look
+  - see
+  - show
+  - reveal
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

@@ -1,0 +1,14 @@
+name: Column 1
+set: major
+description: Used to represent a 1 column layout.
+keywords:
+  - single column
+  - column
+  - layout
+  - email
+authors:
+  - Laura Forbes
+exclusive_use: Shopify Email
+date_added: 2021-01-12
+date_modified: 2021-01-12
+version: 1

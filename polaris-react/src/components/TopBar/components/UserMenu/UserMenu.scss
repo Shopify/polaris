@@ -1,0 +1,27 @@
+@import '../../../../styles/common';
+
+.Details {
+  max-width: 160px;
+  margin-left: var(--p-space-2);
+
+  @include breakpoint-before($layout-width-page-with-nav-base, false) {
+    display: none;
+  }
+}
+
+.Name {
+  @include truncate;
+  @include text-style-body;
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-line-height-1);
+  color: var(--p-text);
+  text-align: left;
+}
+
+.Detail {
+  @include text-style-caption;
+  @include truncate;
+  opacity: 0.7;
+  color: var(--p-text);
+  text-align: left;
+}

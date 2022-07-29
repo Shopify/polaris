@@ -1,0 +1,13 @@
+name: Refresh
+set: major
+description: Used to represent an action to refresh or sync an item or resource.
+keywords:
+  - refresh
+  - reload
+  - sync
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

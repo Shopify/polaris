@@ -1,0 +1,26 @@
+@import '../../styles/common';
+
+.FullscreenBar {
+  position: relative;
+  display: flex;
+  height: $top-bar-height;
+  box-shadow: var(--p-shadow-top-bar);
+  background-color: var(--p-surface);
+}
+
+.BackAction {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  padding-left: var(--p-space-3);
+  padding-right: var(--p-space-3);
+  border-width: 0;
+  border-right: var(--p-border-base);
+  background-color: var(--p-surface);
+  font-weight: var(--p-font-weight-medium);
+  cursor: pointer;
+}
+
+.BackAction :first-child {
+  padding-right: var(--p-space-05);
+}

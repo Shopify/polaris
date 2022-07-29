@@ -1,0 +1,13 @@
+name: Add product
+set: major
+description: Used as an action to add a new product.
+keywords:
+  - add
+  - product
+  - price tag
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

@@ -2,12 +2,12 @@
 
 # Comment to be posted to on first time issues
 newIssueWelcomeComment: >
-  👋 Thanks for opening your first issue. A contributor should give feedback soon. If you haven’t already, please check out the [contributing guidelines](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md).
+  👋 Thanks for opening your first issue. A contributor should give feedback soon. If you haven’t already, please check out the [contributing guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md).
 
 # Comment to be posted to on PRs from first time contributors in your repository
 newPRWelcomeComment: >
-  👋 Thanks for opening your first pull request. A contributor should give feedback soon. If you haven’t already, please check out the [contributing guidelines](https://github.com/Shopify/polaris-react/blob/master/.github/CONTRIBUTING.md).
+  👋 Thanks for opening your first pull request. A contributor should give feedback soon. If you haven’t already, please check out the [contributing guidelines](https://github.com/Shopify/polaris/blob/master/.github/CONTRIBUTING.md).
 
 # Comment to be posted to on pull requests merged by a first time user
 firstPRMergeComment: >
-  🎉 Thanks for your contribution to Polaris React!
+  🎉 Thanks for your contribution to Polaris!

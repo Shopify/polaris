@@ -1,0 +1,41 @@
+@import '../../styles/common';
+
+$navigation-elements-height: 36px;
+$title-height: var(--p-line-height-5);
+$stacking-order: (
+  title: 10,
+  breadcrumbs: 20,
+);
+
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+}
+
+.Page {
+  @include page-layout;
+
+  // Ensure bottom margins of any children are contained
+  &::after {
+    content: '';
+    display: table;
+  }
+}
+
+.fullWidth {
+  max-width: none;
+}
+
+.narrowWidth {
+  max-width: $layout-width-primary-max;
+}
+
+.Content {
+  @include page-content-layout;
+}
+
+.divider {
+  border-top: var(--p-border-divider);
+  padding-top: var(--p-space-8);
+}

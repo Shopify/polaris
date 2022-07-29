@@ -1,0 +1,13 @@
+name: Store
+set: minor
+description: Used to represent a store or shop.
+keywords:
+  - store
+  - shop
+authors:
+  - Dan Ross
+  - Adam Whitcroft
+version: 1
+date_added: 2021-02-22
+date_modified: 2021-02-22
+exclusive_use:

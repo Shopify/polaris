@@ -1,0 +1,12 @@
+name: Dropdown
+set: minor
+description: Used to represent there is dropdown content
+keywords:
+  - dropdown
+  - select
+authors:
+  - Jordan Ouellette
+version: 3
+date_added: 2019-03-15
+date_modified: 2021-11-03
+exclusive_use:

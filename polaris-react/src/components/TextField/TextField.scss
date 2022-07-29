@@ -1,0 +1,330 @@
+@import '../../styles/common';
+
+$textfield-backdrop-offset: calc(-1 * var(--p-space-05));
+$spinner-icon-size: 12px;
+
+.TextField {
+  --pc-text-field-contents: 20;
+  --pc-text-field-backdrop: 10;
+  @include text-style-input;
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--p-text);
+  cursor: text;
+
+  svg {
+    fill: var(--p-icon);
+  }
+}
+
+.multiline {
+  padding: 0;
+  flex-wrap: wrap;
+
+  > .Input {
+    overflow: auto;
+    padding-left: var(--p-space-3);
+    padding-right: var(--p-space-3);
+    resize: none;
+  }
+}
+
+.hasValue {
+  color: var(--p-text);
+}
+
+.focus > .Input,
+.focus > .VerticalContent,
+.Input:focus {
+  outline: none;
+
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  ~ .Backdrop {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+.error {
+  .Input::placeholder {
+    // This is the only place this color is used.
+    color: #9c9798;
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  > .Input ~ .Backdrop {
+    background-color: var(--p-surface-critical-subdued);
+    border-color: var(--p-border-critical);
+
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+    &::after {
+      border-color: var(--p-focused);
+    }
+  }
+}
+
+.readOnly > .Backdrop {
+  background-color: var(--p-action-secondary-disabled);
+}
+
+.disabled {
+  color: var(--p-text-disabled);
+  cursor: initial;
+
+  > .Backdrop {
+    background-color: var(--p-surface-disabled);
+    border-top-color: var(--p-border-disabled);
+  }
+
+  svg {
+    fill: var(--p-icon-disabled);
+  }
+}
+
+.Input {
+  @include text-style-input;
+  position: relative;
+  z-index: var(--pc-text-field-contents);
+  display: block;
+  flex: 1 1 0%;
+  width: 100%;
+  min-width: 0;
+  min-height: control-height();
+  margin: 0;
+  padding: control-vertical-padding() var(--p-space-3);
+  background: none;
+  border: var(--p-border-transparent);
+  font-family: var(--p-font-family-sans);
+  appearance: none;
+  caret-color: var(--p-text);
+  color: var(--p-text);
+
+  .Prefix + & {
+    padding-left: 0;
+  }
+
+  &:disabled {
+    opacity: 1;
+    background: none;
+    color: var(--p-text-disabled);
+    -webkit-text-fill-color: var(--p-text-disabled);
+  }
+
+  // remove the box shadow in Firefox when the input is invalid
+  &:invalid {
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: var(--p-text-subdued);
+  }
+
+  // These properties are used to remove the default "spinner" controls
+  // for number fields, since we add our own, custom versions instead.
+  &[type='number'] {
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      appearance: none;
+      margin: 0;
+    }
+  }
+
+  &:-webkit-autofill {
+    border-radius: var(--p-border-radius-1);
+  }
+
+  &.suggestion {
+    &::selection {
+      color: var(--p-text-disabled);
+      background: transparent;
+    }
+  }
+}
+
+.Input-hasClearButton {
+  // Hide webkit search input clear button
+  &[type='search'] {
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+  }
+}
+
+.Input-suffixed {
+  padding-right: 0;
+}
+
+.Input-alignRight {
+  text-align: right;
+}
+
+.Input-alignLeft {
+  text-align: left;
+}
+
+.Input-alignCenter {
+  text-align: center;
+}
+
+.Backdrop {
+  @include focus-ring($border-width: 1px);
+  position: absolute;
+  z-index: var(--pc-text-field-backdrop);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--p-surface);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border-top-color: var(--p-border-shadow);
+  border-radius: var(--p-border-radius-1);
+  pointer-events: none;
+}
+
+.Prefix,
+.Suffix {
+  position: relative;
+  z-index: var(--pc-text-field-contents);
+  flex: 0 0 auto;
+  color: var(--p-text-subdued);
+  user-select: none;
+}
+
+.Prefix {
+  margin-left: var(--p-space-3);
+  margin-right: var(--p-space-2);
+}
+
+.Suffix {
+  margin-left: var(--p-space-1);
+  margin-right: var(--p-space-3);
+}
+
+.VerticalContent {
+  position: relative;
+  z-index: var(--pc-text-field-contents);
+  color: var(--p-text-subdued);
+  padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
+  max-height: 140px;
+  overflow: scroll;
+  border: var(--p-border-transparent);
+  width: 100%;
+
+  > .Input {
+    padding-left: var(--p-space-0);
+    padding-right: var(--p-space-0);
+  }
+
+  @include breakpoint-after(490px) {
+    max-height: 328px;
+  }
+}
+
+.CharacterCount {
+  @include text-emphasis-subdued;
+  z-index: var(--pc-text-field-contents);
+  margin: 0 var(--p-space-3) 0 var(--p-space-1);
+  pointer-events: none;
+  text-align: right;
+}
+
+.AlignFieldBottom {
+  align-self: flex-end;
+  width: 100%;
+  padding-bottom: var(--p-space-2);
+}
+
+.ClearButton {
+  @include focus-ring;
+  @include unstyled-button;
+  z-index: var(--pc-text-field-contents);
+  margin: 0 var(--p-space-3) 0 var(--p-space-1);
+
+  &:focus:enabled {
+    @include focus-ring($style: 'focused');
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.Spinner {
+  --pc-text-field-spinner-offset-large: calc(
+    var(--p-text-field-spinner-offset) + var(--p-border-width-1)
+  );
+  z-index: var(--pc-text-field-contents);
+  margin: var(--pc-text-field-spinner-offset-large);
+  color: var(--p-icon);
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  width: 22px;
+  cursor: pointer;
+}
+
+.SpinnerIcon {
+  height: $spinner-icon-size;
+  width: $spinner-icon-size;
+}
+
+.Resizer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  visibility: hidden;
+  overflow: hidden;
+}
+
+.DummyInput {
+  @include text-style-input;
+  padding: control-vertical-padding() var(--p-space-3);
+
+  // We need the following properties in order to have long, unbroken
+  // strings wrap in the same way they do in textareas.
+  @include text-breakword;
+  white-space: pre-wrap;
+}
+
+.Segment {
+  --pc-text-field-spinner-border-radius: calc(
+    var(--p-border-radius-1) - var(--p-text-field-spinner-offset)
+  );
+  background: var(--p-surface-neutral);
+  border-radius: var(--pc-text-field-spinner-border-radius);
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    background: var(--p-surface-neutral-pressed);
+  }
+
+  &:first-child {
+    border-top-right-radius: var(--pc-text-field-spinner-border-radius);
+    margin-bottom: var(--p-text-field-spinner-offset);
+  }
+
+  &:last-child {
+    border-bottom-right-radius: var(--pc-text-field-spinner-border-radius);
+  }
+
+  &:not(:first-child) {
+    margin-top: 0;
+  }
+}
+
+.monospaced {
+  font-family: var(--p-font-family-mono);
+}

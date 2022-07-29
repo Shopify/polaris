@@ -1,0 +1,12 @@
+name: Categories
+set: major
+description: Used to represent either list of categories or files.
+keywords:
+  - categories
+  - files
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

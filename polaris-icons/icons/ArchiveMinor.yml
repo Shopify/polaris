@@ -1,0 +1,12 @@
+name: Archive
+set: minor
+authors:
+  - Adam Whitcroft
+description: Used to denote the action of archiving an item or resource.
+keywords:
+  - archive
+  - box
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

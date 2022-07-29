@@ -1,0 +1,118 @@
+@import '../../../../styles/common';
+
+$top-offset-slide-in-start: 200px;
+$vertical-spacing: 60px;
+$height-limit: 600px;
+$xsmall-width: 380px;
+$small-width: 620px;
+$large-width: 980px;
+// @TODO simplify media queries so this isn't needed
+$dangerous-magic-space-16: 64px;
+
+.Container {
+  position: fixed;
+  z-index: var(--p-z-11);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // Allow passthrough of click events to dismiss modal on backdrop click
+  // Resume pointer-events on .Modal below
+  pointer-events: none;
+
+  @include breakpoint-after($layout-width-page-with-nav-base) {
+    justify-content: center;
+  }
+}
+
+.Dialog:focus {
+  outline: 0;
+}
+
+.Modal {
+  pointer-events: initial;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-height: calc(100vh - #{$vertical-spacing});
+  background: var(--p-surface);
+  box-shadow: var(--p-shadow-modal);
+
+  @media (forced-colors: active) {
+    border: var(--p-border-width-1) solid transparent;
+  }
+
+  @include frame-when-nav-hidden {
+    bottom: 0;
+    max-height: 100%;
+  }
+
+  @include breakpoint-after($layout-width-page-with-nav-base) {
+    position: relative;
+    max-width: $small-width;
+    margin: 0 auto;
+    border-radius: var(--p-border-radius-2);
+  }
+
+  &.limitHeight {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      @media (min-height: $height-limit + $vertical-spacing) {
+        max-height: $height-limit;
+      }
+    }
+  }
+
+  &.sizeSmall {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      max-width: calc(100% - var(--p-space-16));
+    }
+
+    @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
+      max-width: $xsmall-width;
+    }
+  }
+
+  &.sizeLarge {
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      max-width: calc(100% - var(--p-space-16));
+    }
+
+    @include breakpoint-after($large-width + $dangerous-magic-space-16) {
+      max-width: $large-width;
+    }
+  }
+
+  &.fullScreen {
+    height: 100%;
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      height: unset;
+    }
+  }
+}
+
+.animateFadeUp {
+  will-change: transform, opacity;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform var(--p-ease) var(--p-duration-200),
+    opacity var(--p-ease) var(--p-duration-200);
+
+  &.entering,
+  &.exiting,
+  &.exited {
+    opacity: 0;
+    transform: translateY($top-offset-slide-in-start);
+  }
+
+  &.entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,231 @@
+@mixin high-contrast-button-outline($outline: var(--p-border-width-2) dotted) {
+  @media (-ms-high-contrast: active) {
+    outline: $outline;
+  }
+}
+
+@mixin button-base {
+  $vertical-padding: calc(
+    (var(--p-line-height-6) - var(--p-line-height-2) - var(--p-space-05)) / 2
+  );
+
+  @include recolor-icon(var(--p-icon));
+  @include focus-ring($border-width: var(--p-border-width-1));
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--p-line-height-6);
+  min-width: var(--p-line-height-6);
+  margin: 0;
+  padding: $vertical-padding var(--p-space-4);
+  background: var(--p-surface);
+  box-shadow: var(--p-shadow-button);
+  border-radius: var(--p-border-radius-1);
+  color: var(--p-text);
+  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
+  border-top-color: var(--p-border-subdued);
+  border-bottom-color: var(--p-border-shadow-subdued);
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: var(--p-action-secondary-hovered);
+    outline: var(--p-border-width-1) solid transparent;
+  }
+
+  &:focus {
+    box-shadow: var(--p-shadow-button);
+    outline: 0;
+
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active {
+    background: var(--p-action-secondary-pressed);
+    box-shadow: var(--p-shadow-button);
+
+    &::after {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &.pressed {
+    background: var(--p-action-secondary-depressed);
+    box-shadow: var(--p-shadows-inset-button-pressed);
+    color: var(--p-text-on-primary);
+    border-color: var(--p-border-depressed);
+    @include recolor-icon(currentColor);
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: var(--p-border-width-1) solid windowText;
+  }
+}
+
+@mixin base-button-disabled {
+  @include recolor-icon(var(--p-icon-disabled));
+  transition: none;
+  box-shadow: none;
+  border-color: var(--p-border-disabled);
+  background: var(--p-surface-disabled);
+  color: var(--p-text-disabled);
+}
+
+@mixin button-filled() {
+  @include focus-ring($border-width: 0);
+  background: var(--pc-button-color);
+  border-width: 0;
+  border-color: transparent;
+  box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  color: var(--pc-button-text);
+
+  &:hover {
+    background: var(--pc-button-color-hover);
+    border-color: transparent;
+    color: var(--pc-button-text);
+  }
+
+  &:focus {
+    border-color: transparent;
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  }
+
+  &:active {
+    background: var(--pc-button-color-active);
+    border-color: transparent;
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  }
+
+  &.pressed {
+    color: var(--pc-button-text);
+    background: var(--pc-button-color-depressed);
+    border-color: transparent;
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+
+    &:hover,
+    &:focus {
+      background: var(--pc-button-color-depressed);
+      box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+    }
+  }
+}
+
+@mixin button-outline($outline-color, $background-color: transparent) {
+  background: transparent;
+  border: var(--p-border-width-1) solid var(--p-border);
+  box-shadow: none;
+  color: var(--p-text);
+  @include focus-ring($border-width: 1px);
+
+  &:hover {
+    border: var(--p-border-width-1) solid var(--p-border);
+    box-shadow: none;
+    background: var(--p-surface-hovered);
+  }
+
+  &:focus {
+    border: var(--p-border-width-1) solid var(--p-border);
+    box-shadow: none;
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active {
+    border: var(--p-border-width-1) solid var(--p-border);
+    box-shadow: none;
+    background: var(--p-surface-pressed);
+
+    &::after {
+      box-shadow: none;
+    }
+  }
+
+  &.pressed {
+    background: var(--p-action-secondary-pressed);
+    border: var(--p-border-width-1) solid var(--p-border);
+    box-shadow: none;
+    color: var(--pc-button-text);
+  }
+
+  &.disabled {
+    border: var(--p-border-width-1) solid var(--p-border-disabled);
+    box-shadow: none;
+    background: transparent;
+    color: var(--p-text-disabled);
+  }
+
+  &.destructive {
+    background: transparent;
+    border: var(--p-border-width-1) solid var(--p-border-critical);
+    box-shadow: none;
+    color: var(--p-interactive-critical);
+    @include recolor-icon(var(--p-icon-critical));
+
+    &:hover {
+      border: var(--p-border-width-1) solid var(--p-border-critical);
+      background: var(--p-surface-critical-subdued);
+    }
+
+    &:focus {
+      border: var(--p-border-width-1) solid var(--p-border-critical);
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      border: var(--p-border-width-1) solid var(--p-border-critical);
+      background: var(--p-surface-critical-subdued);
+    }
+
+    &.disabled {
+      border: var(--p-border-width-1) solid var(--p-border-critical-disabled);
+      background: transparent;
+      color: var(--p-interactive-critical-disabled);
+    }
+
+    &.pressed {
+      border: var(--p-border-width-1) solid var(--p-border-critical);
+      background: var(--p-surface-critical-subdued);
+      color: var(--p-interactive-critical);
+    }
+  }
+}
+
+@mixin button-outline-disabled($outline-color) {
+  background: transparent;
+  box-shadow: none;
+}
+
+@mixin button-full-width {
+  display: flex;
+  width: 100%;
+}
+
+// Background color has been removed as a fix until plain buttons are revisited.
+// As a result, this mixin doesn't visually add a backdrop anymore.
+@mixin plain-button-backdrop {
+  padding: var(--p-space-05) var(--p-space-1);
+  margin: calc(-1 * var(--p-space-05)) calc(-1 * var(--p-space-1));
+  background: transparent;
+  border-radius: var(--p-border-radius-base);
+}
+
+@mixin unstyled-button() {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -1,0 +1,73 @@
+.Badge {
+  --pc-badge-horizontal-padding: var(--p-space-2);
+  --pc-badge-vertical-padding: var(--p-space-05);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-5);
+  font-size: var(--p-font-size-2);
+  line-height: var(--p-line-height-1);
+  color: var(--p-text);
+  font-weight: var(--p-font-weight-regular);
+
+  @media print {
+    border: solid var(--p-border-width-1) var(--p-border);
+  }
+}
+
+.sizeSmall {
+  font-size: var(--p-font-size-1);
+}
+
+.statusSuccess {
+  background-color: var(--p-surface-success);
+  color: var(--p-text);
+}
+
+.statusInfo {
+  background-color: var(--p-surface-highlight);
+  color: var(--p-text);
+}
+
+.statusAttention {
+  background-color: var(--p-surface-attention);
+  color: var(--p-text);
+}
+
+.statusWarning {
+  background-color: var(--p-surface-warning);
+  color: var(--p-text);
+}
+
+.statusCritical {
+  background-color: var(--p-surface-critical);
+  color: var(--p-text);
+}
+
+.statusNew {
+  color: var(--p-text);
+  font-weight: var(--p-font-weight-medium);
+  border: none;
+}
+
+.withinFilter {
+  border-radius: var(--p-border-radius-1);
+}
+
+.Icon {
+  // This compensates for the typical icon used in badges being inset within
+  // its bounding box.
+  margin-left: calc(-1 * (var(--p-space-1)));
+
+  + *:not(.Icon) {
+    margin-left: var(--p-space-1);
+  }
+}
+
+.PipContainer {
+  display: grid;
+  align-items: center;
+  margin-left: calc(-1 * var(--p-space-05));
+  margin-right: var(--p-space-1);
+}

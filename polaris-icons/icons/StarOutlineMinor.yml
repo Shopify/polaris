@@ -1,0 +1,24 @@
+name: Star outline
+set: minor
+description:
+  # Icon type   | Example description
+  # ----------- | --------------------------
+  # Action      | Used to denote <x action>.
+  # Wayfinding  | Used to help direct merchants to <x>.
+  # Concept     | Used to represent <x>.
+  # Education   | Used to give merchants more information about <context x>.
+  #
+  # Full guidelines: https://bit.ly/2GdMpmg
+  # (delete this comment block)
+  N/A
+keywords:
+  - favorite
+  - favourite
+  - starred
+  - star
+authors:
+  - Sara Hill
+version: 1
+date_added: 2019-03-01
+date_modified: 2019-03-01
+exclusive_use:

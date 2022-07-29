@@ -1,0 +1,13 @@
+name: Refresh
+set: minor
+description: Used to denote the action of resetting a customer’s account password on their customer page.
+keywords:
+  - refresh
+  - reload
+  - sync
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

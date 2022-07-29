@@ -1,0 +1,16 @@
+name: Type
+set: major
+description: Used to represent a typeface or an action to change the properties of a typeface or body of text.
+keywords:
+  - typography
+  - font
+  - typeface
+  - type
+  - letter
+  - text
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-02-25
+date_modified: 2019-02-25
+exclusive_use:

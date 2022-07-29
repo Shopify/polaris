@@ -1,0 +1,14 @@
+name: Caret up
+set: minor
+description: Used to denote the action of contracting a section to hide additional content, like an accordion. Also used to represent sorting order.
+keywords:
+  - caret
+  - up
+  - close
+authors:
+  - Adam Whitcroft
+  - Jordan Ouellette
+version: 2
+date_added: 2018-11-14
+date_modified: 2021-11-02
+exclusive_use:

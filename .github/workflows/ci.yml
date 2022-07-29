@@ -1,59 +1,52 @@
 name: CI
 
-on: push
+on:
+  push:
+    branches:
+      - main
+      - next
+  pull_request:
 
 jobs:
-  test:
-    name: 'Test'
+  build:
+    name: 'Validate with Node v${{ matrix.node_version }}'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node_version: ['14.17.0', '16.13.0']
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout branch
+        uses: actions/checkout@v2
+
+      - name: Setup Node with v${{ matrix.node_version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 12
+          node_version: ${{ matrix.node_version }}
           cache: yarn
 
-      - run: yarn --frozen-lockfile
-      - run: yarn run type-check && yarn run build
-      - run: yarn run lint
-      - run: yarn run test
-
-  accessibility_test:
-    name: 'Accessibility test'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Restore cache
+        uses: actions/cache@v2
         with:
-          node-version: 12
-          cache: yarn
+          path: |
+            **/.eslintcache
+            **/.turbo
+            node_modules/.cache/turbo
+            polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
 
-      - run: yarn --frozen-lockfile
-      - run: yarn run storybook:build --quiet
-      - run: node ./scripts/accessibility-check.js
-        env:
-          STORYBOOK_DISABLE_DOCS: 1
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
 
-  visual_regression_test:
-    name: 'Visual regression test'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # Chromatic git history to track changes
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 12
-          cache: yarn
+      - name: Build packages
+        run: yarn build
 
-      - run: yarn --frozen-lockfile
-      - run: yarn storybook:build --quiet
+      - name: Lint
+        run: yarn lint
 
-      - uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: 'build-internal/storybook/static'
-          autoAcceptChanges: 'main'
-          exitZeroOnChanges: true
-          exitOnceUploaded: true
+      - name: Type check
+        run: yarn type-check
+
+      - name: Test
+        run: yarn test

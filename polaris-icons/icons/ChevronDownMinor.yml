@@ -1,0 +1,12 @@
+name: Chevron down
+set: minor
+description: Used to denote the action of expanding a section to reveal more content.
+keywords:
+  - chevron
+  - down
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

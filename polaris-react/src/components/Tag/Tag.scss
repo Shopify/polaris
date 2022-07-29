@@ -1,0 +1,170 @@
+@import '../../styles/common';
+
+$height: 20px;
+$button-size: 20px;
+$breakpoint: 490px;
+
+.Tag {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 var(--p-space-2);
+  background-color: var(--p-surface-neutral);
+  border-radius: var(--p-border-radius-1);
+  color: var(--p-text);
+
+  &.disabled {
+    @include recolor-icon(var(--p-icon-disabled));
+    transition: none;
+    background: var(--p-surface-neutral-disabled);
+    color: var(--p-text-disabled);
+  }
+
+  &.clickable {
+    @include unstyled-button;
+    cursor: pointer;
+    padding: var(--p-space-1) var(--p-space-2);
+    background-color: var(--p-surface-neutral);
+    outline: var(--p-border-width-1) solid transparent;
+    font-size: var(--p-font-size-2);
+    line-height: var(--p-line-height-2);
+
+    &:hover {
+      background: var(--p-surface-neutral-hovered);
+    }
+
+    @include focus-ring;
+    // stylelint-disable selector-max-specificity
+
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      background: var(--p-surface-neutral-pressed);
+    }
+
+    &:disabled {
+      background: var(--p-surface-neutral-disabled);
+      cursor: default;
+      pointer-events: none;
+      color: var(--p-text-disabled);
+    }
+
+    @include breakpoint-after($breakpoint) {
+      padding: var(--p-space-05) var(--p-space-2);
+      font-size: var(--p-font-size-1);
+    }
+  }
+
+  &.removable {
+    padding-right: 0;
+  }
+
+  &.linkable {
+    padding: 0;
+  }
+
+  @include breakpoint-after($breakpoint) {
+    min-height: 24px;
+  }
+}
+
+.TagText {
+  font-size: var(--p-font-size-2);
+  line-height: var(--p-line-height-2);
+  min-height: $height;
+  padding: var(--p-space-1) 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  @include breakpoint-after($breakpoint) {
+    font-size: var(--p-font-size-1);
+    padding: var(--p-space-05) 0;
+  }
+}
+
+.Button {
+  @include recolor-icon(var(--p-icon));
+  @include unstyled-button;
+  display: block;
+  flex-shrink: 0;
+  height: $button-size;
+  width: $button-size;
+  margin: 0 var(--p-space-1);
+  border-radius: var(--p-border-radius-half);
+
+  &:hover {
+    background: var(--p-surface-neutral-hovered);
+    outline: var(--p-border-width-1) solid transparent;
+  }
+
+  @include focus-ring;
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active {
+    background: var(--p-surface-neutral-pressed);
+  }
+
+  &:disabled {
+    @include recolor-icon(var(--p-icon-disabled));
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &.segmented {
+    margin-left: calc(-1 * var(--p-space-1));
+  }
+}
+
+.Link {
+  display: inline-grid;
+  color: var(--p-text);
+  outline: none;
+  border-radius: var(--p-border-radius-base);
+  text-decoration: none;
+  min-height: $height;
+  padding: 0 var(--p-space-2);
+
+  .LinkText {
+    @include truncate;
+    font-size: var(--p-font-size-2);
+    line-height: var(--p-line-height-2);
+    padding-top: var(--p-space-1);
+    padding-bottom: var(--p-space-1);
+
+    @include breakpoint-after($breakpoint) {
+      font-size: var(--p-font-size-1);
+      padding-top: var(--p-space-05);
+      padding-bottom: var(--p-space-05);
+    }
+  }
+
+  @include focus-ring;
+
+  &:focus:not(:active) {
+    @include focus-ring($style: 'focused');
+    text-decoration: underline;
+  }
+
+  &:hover {
+    background: var(--p-surface-neutral-hovered);
+    text-decoration: underline;
+  }
+
+  &.segmented {
+    &:hover {
+      background: none;
+    }
+
+    &::after {
+      margin-right: var(--p-space-1);
+    }
+  }
+}

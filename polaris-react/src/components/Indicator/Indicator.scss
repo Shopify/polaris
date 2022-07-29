@@ -1,0 +1,28 @@
+.Indicator {
+  --pc-indicator-size: 10px;
+  --pc-indicator-base-position: calc(-1 * var(--p-space-1));
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: var(--p-border-highlight);
+    right: var(--pc-indicator-base-position);
+    top: var(--pc-indicator-base-position);
+    width: var(--pc-indicator-size);
+    height: var(--pc-indicator-size);
+    border-radius: var(--p-border-radius-half);
+    border: calc(var(--pc-indicator-size) / 2) solid transparent;
+  }
+}
+
+.pulseIndicator::before {
+  z-index: 1;
+  animation: var(--p-keyframes-bounce) var(--p-duration-5000) ease infinite;
+}
+
+.pulseIndicator::after {
+  right: var(--pc-indicator-base-position);
+  top: var(--pc-indicator-base-position);
+  animation: var(--p-keyframes-pulse) var(--p-duration-5000) ease infinite;
+}

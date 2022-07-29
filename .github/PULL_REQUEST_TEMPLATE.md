@@ -29,13 +29,13 @@ Fixes #0000 <!-- link to issue if one exists -->
     </details>
 -->
 
-## <!-- ℹ️ Delete the following for small / trivial changes -->
+<!-- ℹ️ Delete the following for small / trivial changes -->
 
 ### How to 🎩
 
-🖥 [Local development instructions](https://github.com/Shopify/polaris-react/blob/master/README.md#development)
-🗒 [General tophatting guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md)
-📄 [Changelog guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md)
+🖥 [Local development instructions](https://github.com/Shopify/polaris/blob/main/README.md#local-development)
+🗒 [General tophatting guidelines](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md)
+📄 [Changelog guidelines](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#changelog)
 
 <!--
   Give as much information as needed to experiment with the component
@@ -62,13 +62,8 @@ export function Playground() {
 
 ### 🎩 checklist
 
-- [ ] Tested on [mobile](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting.md#cross-browser-testing)
-- [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/intro-to-shopify/shopify-admin/supported-browsers)
-- [ ] Tested for [accessibility](https://github.com/Shopify/polaris-react/blob/master/documentation/Accessibility%20testing.md)
+- [ ] Tested on [mobile](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md#cross-browser-testing)
+- [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/shopify-admin/supported-browsers)
+- [ ] Tested for [accessibility](https://github.com/Shopify/polaris/blob/main/documentation/Accessibility%20testing.md)
 - [ ] Updated the component's `README.md` with documentation changes
-- [ ] [Tophatted documentation](https://github.com/Shopify/polaris-react/blob/master/documentation/Tophatting%20documentation.md) changes in the style guide
-- [ ] For visual design changes, ping @ sarahill to update the Polaris UI kit
-
-<!--
-  When tophatting, please check the UNRELEASED entry for consistency, as per the [guidelines](https://github.com/Shopify/polaris-react/blob/master/documentation/Versioning%20and%20changelog.md).
--->
+- [ ] [Tophatted documentation](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting%20documentation.md) changes in the style guide

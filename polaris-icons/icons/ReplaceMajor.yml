@@ -1,0 +1,19 @@
+name: Replace
+set: major
+description: Used to represent an action to replace an item or resource with another.
+keywords:
+  - replace
+  - image
+  - picture
+  - photo
+  - switch
+  - swap
+  - arrow
+  - arrows
+  - square
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-02-25
+date_modified: 2019-02-25
+exclusive_use:

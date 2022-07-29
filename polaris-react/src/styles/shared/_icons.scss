@@ -1,0 +1,14 @@
+@mixin recolor-icon(
+  $fill-color: null,
+  $secondary-color: null,
+  $filter-color: null
+) {
+  svg {
+    fill: $fill-color;
+    color: $secondary-color;
+  }
+
+  img {
+    filter: $filter-color;
+  }
+}

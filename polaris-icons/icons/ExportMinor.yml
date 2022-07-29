@@ -1,0 +1,13 @@
+name: Export
+set: minor
+description: Used to denote the action of exporting content.
+keywords:
+  - export
+  - take out
+  - resource
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

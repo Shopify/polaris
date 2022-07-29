@@ -1,0 +1,16 @@
+name: Adjust
+set: minor
+description: Used to denote that an adjustment can be made.
+keywords:
+  - adjust
+  - adjustment
+  - controls
+  - dials
+authors:
+  - James Findlater
+  - Chris Poirier
+  - Lauren Mayers
+version: 1
+date_added: 2022-02-02
+date_modified: 2022-02-02
+exclusive_use:

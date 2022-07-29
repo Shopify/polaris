@@ -1,0 +1,25 @@
+.Tabs {
+  margin-bottom: 2rem;
+
+  ul {
+    display: flex;
+    gap: 0.33rem;
+  }
+
+  a {
+    display: block;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.75rem 1.25rem;
+    font-weight: var(--font-weight-600);
+    gap: 0.6rem;
+    background: var(--surface-subdued);
+    border-radius: var(--border-radius-800);
+    color: var(--text);
+
+    &[aria-current="page"] {
+      background-color: var(--text-strong);
+      color: white;
+    }
+  }
+}

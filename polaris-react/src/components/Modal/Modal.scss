@@ -1,0 +1,30 @@
+@import '../../styles/common';
+
+$small-width: 620px;
+
+.BodyWrapper {
+  display: flex;
+  flex-grow: 1;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.Body {
+  width: 100%;
+}
+
+.IFrame {
+  display: block;
+  width: $small-width;
+  max-width: 100vw;
+  border: none;
+
+  @include breakpoint-after($layout-width-page-with-nav-base) {
+    max-width: $small-width;
+  }
+}
+
+.Spinner {
+  margin: var(--p-space-4);
+  text-align: center;
+}

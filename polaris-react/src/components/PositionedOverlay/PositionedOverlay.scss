@@ -1,0 +1,16 @@
+.PositionedOverlay {
+  position: absolute;
+  z-index: var(--p-z-2);
+}
+
+.fixed {
+  position: fixed;
+}
+
+.calculating {
+  visibility: hidden;
+}
+
+.preventInteraction {
+  pointer-events: none;
+}

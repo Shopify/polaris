@@ -1,0 +1,43 @@
+.sb-main-padded .GridOverlay {
+  margin: 0 1rem;
+}
+
+.GridOverlay {
+  --pc-top-bar-height: 56px;
+  --pc-nav-width: 240px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: grid;
+  gap: var(--p-space-3);
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 var(--p-space-3);
+  margin: 0 auto;
+  background-color: var(--p-action-critical);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  .GridOverlay {
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 var(--p-space-8);
+  }
+}
+
+.Cell {
+  height: 100%;
+  background-color: var(--p-surface);
+}
+
+.inFrame {
+  top: var(--pc-top-bar-height);
+}
+
+@media screen and (min-width: 768px) {
+  .inFrame {
+    left: var(--pc-nav-width);
+  }
+}

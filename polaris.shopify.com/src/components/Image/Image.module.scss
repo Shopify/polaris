@@ -1,0 +1,22 @@
+@import "../../styles/mixins.scss";
+
+.Image {
+  opacity: 0;
+
+  &.fadeIn:not(.icon) {
+    transition: all 0.2s 0.1s linear;
+  }
+
+  &.hasLoaded {
+    opacity: 1;
+  }
+
+  &.icon {
+    filter: contrast(0) brightness(-5000%);
+    opacity: 0.85;
+
+    @include dark-mode {
+      filter: contrast(0) brightness(5000%);
+    }
+  }
+}

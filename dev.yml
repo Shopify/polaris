@@ -1,23 +1,12 @@
-name: polaris-react
+name: polaris
 up:
   - node:
-      yarn: v1.13.0
-      version: v12.22.0 # to be kept in sync with .nvmrc and ci.yml
-  - git_hooks:
-      pre-commit: pre-commit
-
-open:
-  app: http://localhost:6006/
-  shipit: https://shipit.shopify.io/shopify/polaris-react/production
+      yarn: v1.22.18
+      version: v16.13.0 # to be kept in sync with .nvmrc and .github/workflows/ci.yml
+  - custom:
+      name: Build monorepo
+      met?: yarn build --output-logs=none
+      meet: 'true'
 
 commands:
-  # People new to the project might be tempted to run some
-  # common commands, so let’s have them in here.
-  # For a list of Common Commands in Projects, check out:
-  # https://development.shopify.io/tools/dev/getting_started/Common-Commands-in-Projects
-  build: yarn run build
-  start: yarn run start
-  server: yarn run dev
-  style: yarn run lint
-  test: yarn run test
-  type-check: yarn run type-check
+  server: yarn dev

@@ -1,0 +1,14 @@
+name: Markets
+set: major
+description: Used to represent Markets, Shopify's international commerce product.
+keywords:
+  - markets
+  - international
+  - commerce
+  - global
+authors:
+  - Justina Chua
+version: 1
+date_added: 2022-03-09
+date_modified: 2022-03-09
+exclusive_use:

@@ -1,0 +1,13 @@
+name: Vocabulary
+set: major
+description: Used to represent a book, dictionary or thesaurus.
+keywords:
+  - book
+  - thesaurus
+  - dictionary
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-01
+date_modified: 2019-03-01
+exclusive_use:

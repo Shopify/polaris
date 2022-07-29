@@ -1,0 +1,14 @@
+name: Credit card percent
+set: major
+description: Used to represent a credit card interest.
+keywords:
+  - card
+  - credit card
+  - interest
+  - payment
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

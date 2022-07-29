@@ -1,0 +1,163 @@
+@import '../../styles/common';
+
+@mixin checkers {
+  background: repeating-conic-gradient(
+      var(--p-surface) 0% 25%,
+      var(--p-surface-neutral-subdued) 0% 50%
+    )
+    50% / var(--p-space-4) var(--p-space-4);
+}
+
+.ColorPicker {
+  --pc-color-picker-size: 160px;
+  --pc-color-picker-dragger-size: 18px;
+  --pc-color-picker-z-index: 10;
+  --pc-color-picker-adjustments: 20;
+  --pc-color-picker-dragger: 30;
+  --pc-color-picker-inner-shadow: inset 0 0 2px 0 var(--p-shadow-color-picker);
+  --pc-color-picker-dragger-shadow: inset 0 1px 2px 0
+      var(--p-shadow-color-picker-dragger),
+    0 1px 2px 0 var(--p-shadow-color-picker-dragger);
+  user-select: none;
+  display: flex;
+}
+
+.MainColor {
+  @include checkers;
+  position: relative;
+  overflow: hidden;
+  height: var(--pc-color-picker-size);
+  width: var(--pc-color-picker-size);
+
+  .fullWidth & {
+    width: auto;
+    flex-grow: 1;
+  }
+
+  // Need an extra pixel to avoid a small color bleed from happening
+  border-radius: var(--p-border-radius-1);
+  cursor: pointer;
+
+  .Dragger {
+    right: calc(0.5 * var(--pc-color-picker-dragger-size));
+    margin: 0;
+    box-shadow: var(--pc-color-picker-dragger-shadow);
+  }
+
+  .ColorLayer {
+    border-radius: var(--p-border-radius-1);
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    z-index: var(--pc-color-picker-adjustments);
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-radius: var(--p-border-radius-1);
+  }
+
+  &::before {
+    background: linear-gradient(to right, white, transparent);
+  }
+
+  &::after {
+    background-image: linear-gradient(to top, black, transparent);
+    box-shadow: var(--pc-color-picker-inner-shadow);
+  }
+
+  @media (-ms-high-contrast: active) {
+    outline: var(--p-border-width-1) solid windowText;
+  }
+}
+
+.Dragger {
+  position: relative;
+  z-index: var(--pc-color-picker-dragger);
+  bottom: calc(0.5 * var(--pc-color-picker-dragger-size));
+  transform: none;
+  height: var(--pc-color-picker-dragger-size);
+  width: var(--pc-color-picker-dragger-size);
+  margin: 0 auto;
+  will-change: transform;
+  background: transparent;
+  border: var(--p-border-radius-1) solid var(--p-surface);
+  border-radius: var(--p-border-radius-half);
+  pointer-events: none;
+  box-shadow: var(--pc-color-picker-dragger-shadow);
+}
+
+$green: rgb(0, 255, 0);
+$purple: rgb(255, 0, 255);
+$huepicker-padding: var(--pc-color-picker-dragger-size);
+$huepicker-bottom-padding-start: calc(
+  var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size)
+);
+$vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
+
+.HuePicker,
+.AlphaPicker {
+  position: relative;
+  overflow: hidden;
+  height: var(--pc-color-picker-size);
+  width: var(--p-space-6);
+  margin-left: var(--p-space-2);
+  border-width: var(--p-border-radius-1);
+  border-radius: $vertical-picker-border-radius;
+
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: var(--pc-color-picker-adjustments);
+    top: 0;
+    left: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    border-radius: $vertical-picker-border-radius;
+    box-shadow: var(--pc-color-picker-inner-shadow);
+  }
+
+  @media (-ms-high-contrast: active) {
+    outline: var(--p-border-width-1) solid windowText;
+  }
+}
+
+.HuePicker {
+  background-image: linear-gradient(
+    to bottom,
+    red var(--pc-color-picker-dragger-size),
+    yellow,
+    $green,
+    cyan,
+    blue,
+    $purple,
+    red $huepicker-bottom-padding-start
+  );
+}
+
+.AlphaPicker {
+  @include checkers;
+}
+
+.ColorLayer {
+  position: absolute;
+  z-index: var(--pc-color-picker-z-index);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+}
+
+.Slidable {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}

@@ -1,0 +1,13 @@
+name: Delete
+set: major
+description: Used to represent a trash can, or an action to remove or delete an item or resource.
+keywords:
+  - delete
+  - remove
+  - trash
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

@@ -1,0 +1,94 @@
+@import '../../styles/common';
+
+.RadioButton {
+  position: relative;
+  margin: var(--p-choice-margin);
+}
+
+.Input {
+  @include visually-hidden;
+
+  // stylelint-disable-next-line selector-max-class
+  &.keyFocused + .Backdrop {
+    @include focus-ring($style: 'focused');
+
+    // stylelint-disable-next-line selector-max-specificity, selector-max-class
+    &::after {
+      border-radius: var(--p-border-radius-half);
+    }
+  }
+
+  &:checked + .Backdrop {
+    border-color: var(--p-interactive);
+
+    // stylelint-disable-next-line selector-max-specificity
+    &::before {
+      transition: opacity var(--p-duration-150) var(--p-ease),
+        transform var(--p-duration-150) var(--p-ease);
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  &:disabled + .Backdrop {
+    border-color: var(--p-border-disabled);
+    cursor: default;
+
+    // stylelint-disable-next-line selector-max-specificity
+    &::before {
+      background-color: var(--p-border-disabled);
+    }
+  }
+}
+
+.Backdrop {
+  --pc-icon-size-small: var(--p-icon-size-small);
+
+  // ::before is the selected dot, ::after the focus-ring
+
+  @include when-typography-condensed {
+    --pc-icon-size-small: 10px;
+  }
+  position: relative;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: var(--p-control-border-width) solid var(--p-border);
+  border-radius: var(--p-border-radius-half);
+  background-color: var(--p-surface);
+  transition: border-color var(--p-duration-100) var(--p-ease);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.1);
+    transform-origin: 50% 50%;
+    height: var(--pc-icon-size-small);
+    width: var(--pc-icon-size-small);
+    background-color: var(--p-interactive);
+    border-radius: var(--p-border-radius-half);
+    transition: opacity var(--p-duration-100) var(--p-ease),
+      transform var(--p-duration-100) var(--p-ease);
+
+    @media (forced-colors: active) {
+      border: var(--p-border-width-5) solid transparent;
+    }
+  }
+
+  @include focus-ring($border-width: var(--p-control-border-width));
+
+  &::after {
+    border-radius: var(--p-border-radius-half);
+  }
+
+  &.hover,
+  &:hover {
+    cursor: pointer;
+    border-color: var(--p-border-hovered);
+  }
+}

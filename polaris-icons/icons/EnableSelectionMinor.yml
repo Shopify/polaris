@@ -1,0 +1,22 @@
+name: Enable selection
+set: minor
+description:
+  # Icon type   | Example description
+  # ----------- | --------------------------
+  # Action      | Used to denote <x action>.
+  # Wayfinding  | Used to help direct merchants to <x>.
+  # Concept     | Used to represent <x>.
+  # Education   | Used to give merchants more information about <context x>.
+  #
+  # Full guidelines: https://bit.ly/2GdMpmg
+  # (delete this comment block)
+  N/A
+keywords:
+  - checkmark
+  - select
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-02-21
+date_modified: 2019-02-21
+exclusive_use:

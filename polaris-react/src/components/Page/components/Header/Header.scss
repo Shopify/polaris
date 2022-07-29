@@ -1,0 +1,258 @@
+@import '../../../../styles/common';
+
+$mobile-layout: 468px;
+$medium-layout: 860px;
+$desktop-layout: 1080px;
+$action-menu-rollup-computed-width: 40px;
+
+.Header {
+  @include page-header-layout;
+  position: relative;
+}
+
+.titleHidden {
+  @include visually-hidden;
+}
+
+.TitleWrapper {
+  grid-area: title;
+  margin-top: var(--p-space-1);
+  align-self: center;
+  flex: 1 1 auto;
+
+  @include breakpoint-after($mobile-layout) {
+    margin-top: 0;
+  }
+}
+
+///
+/// Navigation
+
+.Navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--p-space-1);
+
+  // stylelint-disable-next-line selector-max-class
+  .hasActionMenu.mobileView & {
+    padding-right: $action-menu-rollup-computed-width;
+  }
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+.BreadcrumbWrapper {
+  flex: 0 0 auto;
+  grid-area: breadcrumbs;
+  max-width: 100%;
+  margin-right: var(--p-space-4);
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+.PaginationWrapper {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: var(--p-space-1);
+  line-height: 1;
+
+  button {
+    // stylelint-disable declaration-no-important
+    border: var(--p-border-width-1) solid var(--p-border-neutral-subdued) !important;
+    box-shadow: none !important;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: var(--p-border-width-1) solid var(--p-border-neutral-subdued) !important;
+      // stylelint-enable declaration-no-important
+    }
+  }
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+.AdditionalNavigationWrapper {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+///
+/// Main content
+
+.MainContent {
+  .Header:not(.mobileView) & {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.TitleActionMenuWrapper {
+  flex: 1 1 auto;
+
+  .Header:not(.mobileView) & {
+    padding-right: var(--p-space-5);
+  }
+
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity
+  .hasActionMenu.mobileView:not(.hasNavigation) & {
+    padding-right: $action-menu-rollup-computed-width;
+  }
+}
+
+.PrimaryActionWrapper {
+  flex: 0 0 auto;
+  margin-top: 0;
+  margin-left: var(--p-space-1);
+
+  @media #{$p-breakpoints-md-up} {
+    margin-left: var(--p-space-4);
+  }
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+.Row {
+  display: flex;
+  justify-content: space-between;
+
+  &:first-child {
+    min-height: 36px;
+  }
+
+  + .Row {
+    margin-top: var(--p-space-1);
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .mobileView & {
+      margin-top: var(--p-space-2);
+    }
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class
+    .RightAlign {
+      margin-left: 0;
+    }
+  }
+}
+
+.LeftAlign {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.RightAlign {
+  grid-area: actions;
+  display: flex;
+  align-content: flex-end;
+  flex: 1 1 auto;
+  align-items: center;
+  align-self: flex-start;
+  justify-content: flex-end;
+  margin-left: var(--p-space-4);
+  // Necessary for flex to realize this container doesn't want to wrap
+  white-space: nowrap;
+
+  .noBreadcrumbs & {
+    @include breakpoint-before($mobile-layout) {
+      margin-left: 0;
+    }
+  }
+}
+
+.AdditionalMetaData {
+  @include breakpoint-after($mobile-layout) {
+    margin-left: calc(
+      var(--p-space-5) * 2 + var(--p-space-2) + var(--p-space-1)
+    );
+  }
+
+  .noBreadcrumbs & {
+    margin-left: 0;
+  }
+
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    margin-left: 0 !important;
+  }
+}
+
+.Actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+@mixin condensed-layout {
+  .AdditionalMetaData {
+    margin-left: 0;
+  }
+
+  .Row {
+    display: grid;
+    gap: var(--p-space-2) var(--p-space-4);
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 'breadcrumbs actions' 'title title';
+
+    + .Row {
+      gap: 0;
+    }
+  }
+}
+
+.longTitle {
+  @include breakpoint-before($desktop-layout) {
+    @include condensed-layout;
+  }
+}
+
+.mediumTitle:not(.noBreadcrumbs) {
+  @include breakpoint-before($medium-layout) {
+    @include condensed-layout;
+  }
+}
+
+.mediumTitle.noBreadcrumbs {
+  // stylelint-disable-next-line selector-max-class
+  .TitleWrapper {
+    margin-top: 0;
+  }
+  // stylelint-disable-next-line selector-max-class
+  .RightAlign {
+    margin-bottom: var(--p-space-1);
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      margin-bottom: 0;
+    }
+  }
+  // stylelint-disable-next-line selector-max-class
+  .Row {
+    flex-wrap: wrap-reverse;
+    @include breakpoint-after($layout-width-page-with-nav-base) {
+      flex-wrap: nowrap;
+    }
+  }
+}
+
+.isSingleRow .Row {
+  gap: 0;
+}

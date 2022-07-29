@@ -1,0 +1,12 @@
+name: Dispute
+set: minor
+description: Used to represent a dispute or important conversation or notification.
+keywords:
+  - dispute
+  - claim
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

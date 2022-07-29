@@ -1,0 +1,15 @@
+name: Text alignment left
+set: major
+description: Icon indicating alignment of text on the left side
+keywords:
+  - align
+  - alignment
+  - left
+  - rte
+  - text
+authors:
+  - Arthur Gouveia
+version: 1
+date_added: 2019-08-07
+date_modified: 2019-08-07
+exclusive_use:

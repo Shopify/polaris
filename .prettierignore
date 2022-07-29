@@ -1,11 +1,5 @@
+.next
+dist
 node_modules
-/.loom
-/build
-/build-internal
-/src/styles/polaris-tokens
-
-/package.json
-
-index.esnext
-index.js
-index.mjs
+/polaris-react/build
+/polaris-react/build-internal

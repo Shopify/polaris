@@ -1,0 +1,14 @@
+name: Columns 3
+set: minor
+description: Used to represent a 3 column layout or an action to hide or show columns
+keywords:
+  - three columns
+  - column
+  - options
+  - layout
+authors:
+  - Andrea Crouch
+version: 2
+date_added: 2022-01-05
+date_modified: 2022-01-14
+exclusive_use:

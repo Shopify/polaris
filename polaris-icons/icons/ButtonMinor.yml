@@ -1,0 +1,15 @@
+name: Button
+set: minor
+description: Used to represent a button block appearing as a sub-element of a section, page or layout.
+keywords:
+  - button
+  - press
+  - click
+  - buy button
+  - block
+authors:
+  - Rozina Szogyenyi
+version: 1
+date_added: 2021-08-18
+date_modified: 2021-08-18
+exclusive_use:

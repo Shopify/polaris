@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "头像",
+      "labelWithInitials": "头像和姓名缩写 {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "正在加载",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "未完成",
+        "partiallyComplete": "部分完成",
+        "complete": "完成"
+      },
+      "STATUS_LABELS": {
+        "info": "信息",
+        "success": "成功",
+        "warning": "警告",
+        "attention": "注意",
+        "new": "新",
+        "critical": "重要信息"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "正在加载",
+      "connectedDisclosureAccessibilityLabel": "相关操作"
+    },
+    "Common": {
+      "checkbox": "复选框",
+      "undo": "撤销",
+      "cancel": "取消",
+      "newWindowAccessibilityHint": "（打开新窗口）",
+      "clear": "清除",
+      "close": "关闭",
+      "submit": "提交",
+      "more": "更多"
+    },
+    "ContextualSaveBar": {
+      "save": "保存",
+      "discard": "放弃"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "向 {direction} 排序",
+      "navAccessibilityLabel": "将表向 {direction} 滚动一列",
+      "totalsRowHeading": "总计",
+      "totalRowHeading": "总计"
+    },
+    "DatePicker": {
+      "previousMonth": "显示上个月，{showPreviousYear} 年 {previousMonthName}",
+      "nextMonth": "显示下个月，{nextYear} 年 {nextMonth}",
+      "today": "今天 ",
+      "months": {
+        "january": "一月",
+        "february": "二月",
+        "march": "三月",
+        "april": "四月",
+        "may": "五月",
+        "june": "六月",
+        "july": "七月",
+        "august": "八月",
+        "september": "九月",
+        "october": "十月",
+        "november": "十一月",
+        "december": "十二月"
+      },
+      "daysAbbreviated": {
+        "monday": "周一",
+        "tuesday": "周二",
+        "wednesday": "周三",
+        "thursday": "周四",
+        "friday": "周五",
+        "saturday": "周六",
+        "sunday": "周日"
+      },
+      "days": {
+        "monday": "星期一",
+        "tuesday": "星期二",
+        "wednesday": "星期三",
+        "thursday": "星期四",
+        "friday": "星期五",
+        "saturday": "星期六",
+        "sunday": "星期日"
+      },
+      "start": "起始日期",
+      "end": "结束日期"
+    },
+    "DiscardConfirmationModal": {
+      "title": "放弃所有未保存的更改",
+      "message": "如果放弃更改，您将删除自上次保存以来所做的所有编辑。",
+      "primaryAction": "放弃更改",
+      "secondaryAction": "继续编辑"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "文件类型无效",
+      "errorOverlayTextImage": "图片类型无效",
+      "single": {
+        "overlayTextFile": "拖放上传文件",
+        "overlayTextImage": "拖放上传图片",
+        "actionTitleFile": "添加文件",
+        "actionTitleImage": "添加图片",
+        "actionHintFile": "或拖放上传文件",
+        "actionHintImage": "或拖放上传图片",
+        "labelFile": "上传文件",
+        "labelImage": "上传图片",
+        "overlayTextVideo": "拖放上传视频",
+        "actionTitleVideo": "添加视频",
+        "actionHintVideo": "或拖放上传视频",
+        "labelVideo": "上传视频"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "拖放上传文件",
+        "overlayTextImage": "拖放上传图片",
+        "actionTitleFile": "添加文件",
+        "actionTitleImage": "添加图片",
+        "actionHintFile": "或拖放上传文件",
+        "actionHintImage": "或拖放上传图片",
+        "labelFile": "上传文件",
+        "labelImage": "上传图片",
+        "overlayTextVideo": "拖放上传视频",
+        "actionTitleVideo": "添加视频",
+        "actionHintVideo": "或拖放上传视频",
+        "labelVideo": "上传视频"
+      },
+      "errorOverlayTextVideo": "视频类型无效"
+    },
+    "EmptySearchResult": {
+      "altText": "没有搜索结果"
+    },
+    "Frame": {
+      "skipToContent": "跳到内容",
+      "Navigation": {
+        "closeMobileNavigationLabel": "关闭导航"
+      },
+      "navigationLabel": "导航"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "查看操作"
+      },
+      "Actions": {
+        "moreActions": "其他操作"
+      }
+    },
+    "Filters": {
+      "moreFilters": "更多筛选条件",
+      "filter": "筛选 {resourceName}",
+      "noFiltersApplied": "未应用筛选条件",
+      "cancel": "取消",
+      "done": "完成",
+      "clearAllFilters": "清除所有筛选条件",
+      "clear": "清除",
+      "clearLabel": "清除 {filterName}",
+      "moreFiltersWithCount": "更多筛选条件（{count} 个）"
+    },
+    "Modal": {
+      "iFrameTitle": "正文标记",
+      "modalWarning": "模态窗口缺少这些必需的属性：{missingProps}"
+    },
+    "Pagination": {
+      "previous": "上一页",
+      "next": "下一步",
+      "pagination": "分页"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "传递给进度条的值不可为负数。将 {progress} 重置为 0。",
+      "exceedWarningMessage": "传递给进度条的值不可超过 100。将 {progress} 设置为 100。"
+    },
+    "ResourceList": {
+      "sortingLabel": "排序依据",
+      "defaultItemSingular": "项",
+      "defaultItemPlural": "项",
+      "showing": "显示 {itemsCount} 个 {resource}",
+      "loading": "正在加载 {resource}",
+      "selected": "已选择 {selectedItemsCount} 个",
+      "allItemsSelected": "已选择您商店中所有 {itemsLength}+ 个 {resourceNamePlural}。",
+      "selectAllItems": "选择商店中所有 {itemsLength}+ 个 {resourceNamePlural}",
+      "emptySearchResultTitle": "找不到 {resourceNamePlural}",
+      "emptySearchResultDescription": "请尝试更改筛选条件或搜索词",
+      "selectButtonText": "选择",
+      "a11yCheckboxDeselectAllSingle": "取消选择 {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 个 {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} 个项",
+      "ariaLivePlural": "{itemsLength} 个项",
+      "Item": {
+        "actionsDropdownLabel": "{accessibilityLabel} 的操作",
+        "actionsDropdown": "操作下拉菜单",
+        "viewItem": "查看 {itemName} 的详细信息"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "编辑",
+        "moreActionsActivatorLabel": "其他操作",
+        "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
+      },
+      "showingTotalCount": "显示 {itemsCount} 个 {resource}（共 {totalItemsCount} 个）",
+      "allFilteredItemsSelected": "已选择此筛选器中所有 {itemsLength}+ 个{resourceNamePlural}。",
+      "selectAllFilteredItems": "选择此筛选器中的所有 {itemsLength}+ 个 {resourceNamePlural}"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "页面加载"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "更多标签"
+    },
+    "Tag": {
+      "ariaLabel": "删除 {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} 个字符",
+      "characterCountWithMaxLength": "已使用 {count}/{limit} 个字符"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "切换菜单",
+      "SearchField": {
+        "clearButtonLabel": "清除",
+        "search": "搜索"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "编辑"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "播放视频",
+        "defaultWithDuration": "播放时长为 {duration} 的视频",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} 小时",
+              "andMinutes": "{hourCount} 小时 {minuteCount} 分",
+              "andMinute": "{hourCount} 小时 {minuteCount} 分",
+              "minutesAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minutesAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "andSeconds": "{hourCount} 小时 {secondCount} 秒",
+              "andSecond": "{hourCount} 小时 {secondCount} 秒"
+            },
+            "one": {
+              "only": "{hourCount} 小时",
+              "andMinutes": "{hourCount} 小时 {minuteCount} 分",
+              "andMinute": "{hourCount} 小时 {minuteCount} 分",
+              "minutesAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minutesAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSeconds": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "minuteAndSecond": "{hourCount} 小时 {minuteCount} 分 {secondCount} 秒",
+              "andSeconds": "{hourCount} 小时 {secondCount} 秒",
+              "andSecond": "{hourCount} 小时 {secondCount} 秒"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} 分",
+              "andSeconds": "{minuteCount} 分 {secondCount} 秒",
+              "andSecond": "{minuteCount} 分 {secondCount} 秒"
+            },
+            "one": {
+              "only": "{minuteCount} 分",
+              "andSeconds": "{minuteCount} 分 {secondCount} 秒",
+              "andSecond": "{minuteCount} 分 {secondCount} 秒"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} 秒",
+            "one": "{secondCount} 秒"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "页面加载条"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "工具提示：{label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "项",
+      "defaultItemPlural": "项",
+      "allItemsSelected": "已选择所有 {itemsLength}+ 个 {resourceNamePlural}。",
+      "selected": "已选择 {selectedItemsCount} 个",
+      "a11yCheckboxDeselectAllSingle": "取消选择 {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 个 {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "找不到 {resourceNamePlural}",
+      "emptySearchDescription": "请尝试更改筛选条件或搜索词",
+      "onboardingBadgeText": "新",
+      "resourceLoadingAccessibilityLabel": "正在加载 {resourceNamePlural}…",
+      "selectAllLabel": "选择所有 {resourceNamePlural}",
+      "selected": "已选择 {selectedItemsCount} 个",
+      "undo": "撤销",
+      "selectAllItems": "选择所有 {itemsLength}+ 个 {resourceNamePlural}",
+      "selectItem": "选择 {resourceName}",
+      "selectButtonText": "选择"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "查看用于 {title} 的操作"
+      }
+    },
+    "FullscreenBar": {
+      "back": "上一步",
+      "accessibilityLabel": "退出全屏模式"
+    }
+  }
+}

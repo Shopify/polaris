@@ -1,0 +1,12 @@
+name: Clipboard
+set: minor
+description: Used to represent a clipboard, usually accompanying a copy action.
+keywords:
+  - clipboard
+  - copy
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

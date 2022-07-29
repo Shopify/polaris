@@ -1,0 +1,34 @@
+name: Release Polaris for VS Code
+
+on:
+  push:
+    tags:
+      - 'vscode*' # Push events to matching vscode*
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout
+
+      - uses: actions/setup-node@v2
+        name: Use Node.js 16.x
+        with:
+          node-version: 16
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build extension
+        run: yarn turbo run build --filter=polaris-for-vscode
+
+      - name: Run Tests
+        run: yarn turbo run test --filter=polaris-for-vscode
+
+      - name: Publish extension in the marketplace
+        run: yarn workspace polaris-for-vscode vsce publish
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}

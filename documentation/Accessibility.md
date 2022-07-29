@@ -2,7 +2,7 @@
 
 At Shopify, we want to create inclusive experiences for all our users. We don’t want to limit who can use our product, and who can access our merchant’s products. We should set a high standard for usability.
 
-**Looking for a testing checklist before you submit a pull request? See our [accessibility testing guide](https://github.com/Shopify/polaris-react/blob/main/documentation/Accessibility%20testing.md)**.
+**Looking for a testing checklist before you submit a pull request? See our [accessibility testing guide](https://github.com/Shopify/polaris/blob/main/documentation/Accessibility%20testing.md)**.
 
 Did you know that:
 

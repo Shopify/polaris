@@ -1,0 +1,12 @@
+name: Circle right
+set: major
+description: Used to represent forwards naviagation, or that something is after it.
+keywords:
+  - arrow
+  - forward
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

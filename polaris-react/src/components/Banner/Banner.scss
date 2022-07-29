@@ -1,0 +1,282 @@
+@import '../../styles/common';
+
+@mixin banner-variants($in-page) {
+  --pc-banner-background: var(--p-background);
+  --pc-banner-border: var(--p-banner-border-default);
+  transition: box-shadow var(--p-duration-200) var(--p-ease);
+  transition-delay: var(--p-duration-100);
+  box-shadow: var(--pc-banner-border);
+  outline: var(--p-border-width-1) solid transparent;
+
+  @if $in-page {
+    @include focus-ring('wide');
+    border-radius: var(--p-border-radius-2);
+    background-color: var(--pc-banner-background);
+  } @else {
+    @include focus-ring('base');
+    border-radius: var(--p-border-radius-1);
+    background-color: var(--pc-banner-background);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.keyFocused {
+    box-shadow: var(--pc-banner-border);
+    @include focus-ring('wide', $style: 'focused');
+  }
+
+  &.statusSuccess {
+    --pc-banner-background: var(--p-surface-success-subdued);
+    --pc-banner-border: var(--p-banner-border-success);
+  }
+
+  &.statusInfo {
+    --pc-banner-background: var(--p-surface-highlight-subdued);
+    --pc-banner-border: var(--p-banner-border-highlight);
+  }
+
+  &.statusWarning {
+    --pc-banner-background: var(--p-surface-warning-subdued);
+    --pc-banner-border: var(--p-banner-border-warning);
+  }
+
+  &.statusCritical {
+    --pc-banner-background: var(--p-surface-critical-subdued);
+    --pc-banner-border: var(--p-banner-border-critical);
+  }
+}
+
+.Banner {
+  --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
+  --pc-banner-secondary-action-vertical-padding: calc(
+    0.5 * (var(--p-line-height-6) - var(--p-line-height-2))
+  );
+  position: relative;
+  display: flex;
+
+  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
+  &.statusCritical .PrimaryAction .Button {
+    border-color: var(--p-border-critical-subdued);
+    background: var(--p-surface-critical-subdued);
+
+    &:hover {
+      border-color: var(--p-border-critical-subdued);
+      background: var(--p-surface-critical-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-critical-subdued);
+      background: var(--p-surface-critical-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-critical-subdued);
+      background: var(--p-surface-critical-subdued);
+    }
+  }
+
+  &.statusWarning .PrimaryAction .Button {
+    border-color: var(--p-border-warning-subdued);
+    background: var(--p-surface-warning-subdued);
+
+    &:hover {
+      border-color: var(--p-border-warning-subdued);
+      background: var(--p-surface-warning-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-warning-subdued);
+      background: var(--p-surface-warning-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-warning-subdued);
+      background: var(--p-surface-warning-subdued);
+    }
+  }
+
+  &.statusInfo .PrimaryAction .Button {
+    border-color: var(--p-border-highlight-subdued);
+    background: var(--p-surface-highlight-subdued);
+
+    &:hover {
+      border-color: var(--p-border-highlight-subdued);
+      background: var(--p-surface-highlight-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-highlight-subdued);
+      background: var(--p-surface-highlight-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-highlight-subdued);
+      background: var(--p-surface-highlight-subdued);
+    }
+  }
+
+  &.statusSuccess .PrimaryAction .Button {
+    border-color: var(--p-border-success-subdued);
+    background: var(--p-surface-success-subdued);
+
+    &:hover {
+      border-color: var(--p-border-success-subdued);
+      background: var(--p-surface-success-subdued-hovered);
+    }
+
+    &:active {
+      border-color: var(--p-border-success-subdued);
+      background: var(--p-surface-success-subdued-pressed);
+    }
+
+    &:focus:not(:active) {
+      border-color: var(--p-border-success-subdued);
+      background: var(--p-surface-success-subdued);
+    }
+  }
+  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
+}
+
+.ContentWrapper {
+  margin-top: calc(-1 * var(--p-space-05));
+  flex: 1 1 auto;
+}
+
+.withinContentContainer {
+  padding: var(--p-space-4);
+
+  .Dismiss {
+    top: var(--p-space-4);
+    right: var(--p-space-3);
+    position: absolute;
+  }
+
+  .Ribbon {
+    padding-right: var(--p-space-4);
+  }
+
+  @include banner-variants($in-page: false);
+
+  + .Banner {
+    margin-top: var(--p-space-2);
+  }
+
+  .Actions {
+    padding: var(--p-space-3) 0 var(--p-space-1) 0;
+  }
+}
+
+.withinPage {
+  border-radius: 0 0 var(--p-border-radius-base) var(--p-border-radius-base);
+  padding: var(--p-space-5);
+
+  @include banner-variants(true);
+
+  + .Banner {
+    margin-top: var(--p-space-5);
+  }
+
+  .Ribbon {
+    padding-right: var(--p-space-4);
+  }
+
+  .Actions {
+    padding-top: var(--p-space-4);
+  }
+
+  .Dismiss {
+    right: var(--p-space-4);
+    top: var(--p-space-5);
+    position: absolute;
+  }
+}
+
+.hasDismiss {
+  padding-right: calc(var(--p-space-8) + var(--p-icon-size-small));
+}
+
+.Heading {
+  word-break: break-word;
+}
+
+.Content {
+  @include text-breakword;
+  padding: var(--p-space-05) 0;
+}
+
+.Ribbon {
+  flex: 0 0 var(--p-space-8);
+}
+
+.PrimaryAction {
+  margin-right: var(--p-space-2);
+}
+
+// We need pretty high specificity to do the descendant selectors
+// onto the text, which needs to be the relative positioned wrapper
+// so that the borders/ backgrounds do not extend outside of it.
+
+.SecondaryAction {
+  @include unstyled-button;
+  display: inline-block;
+  text-align: left;
+  text-decoration: none;
+  margin: calc(-1 * var(--pc-banner-secondary-action-vertical-padding))
+    calc(-0.5 * var(--pc-banner-secondary-action-horizontal-padding));
+  padding: var(--pc-banner-secondary-action-vertical-padding)
+    var(--pc-banner-secondary-action-horizontal-padding);
+  color: var(--p-text);
+  padding-left: var(--p-space-2);
+
+  &:hover > .Text {
+    text-decoration: underline;
+  }
+
+  &:active > .Text {
+    text-decoration: underline;
+  }
+
+  &:focus > .Text {
+    @include plain-button-backdrop;
+    @include high-contrast-button-outline;
+    @include focus-ring($style: 'focused');
+    box-shadow: none;
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.Text {
+  @include focus-ring;
+}
+
+.Button {
+  @include button-base;
+  @include text-style-button;
+  @include focus-ring($border-width: 2px);
+  color: var(--p-text);
+
+  &:focus {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+.loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.Spinner {
+  --pc-spinner-size: var(--p-space-5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: calc(-1 * (var(--pc-spinner-size) / 2));
+  margin-left: calc(-1 * (var(--pc-spinner-size) / 2));
+}

@@ -1,0 +1,228 @@
+@import '../../../../styles/common';
+@import '../../RangeSlider';
+
+.SingleThumb {
+  display: flex;
+  align-items: center;
+
+  &.disabled {
+    opacity: 0.8;
+  }
+}
+
+.InputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  height: var(--pc-range-slider-thumb-size);
+
+  input {
+    padding: var(--p-space-3) 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &::after {
+    @include track-dashed;
+  }
+}
+
+.disabled {
+  input {
+    cursor: not-allowed;
+  }
+}
+
+.Prefix {
+  flex: 0 0 auto;
+  margin-right: var(--p-space-2);
+}
+
+.Suffix {
+  flex: 0 0 auto;
+  margin-left: var(--p-space-2);
+}
+
+.Input {
+  --pc-single-thumb-progress-lower: var(--p-interactive);
+  --pc-single-thumb-progress-upper: transparent;
+  // create-react-app v2 leverages postcss-preset-env to transpile modern CSS
+  // into something kinda supported by older browsers. Unfortunately its
+  // custom properties transpiler has a bug that means it doesn't like multiple
+  // custom properties inside a linear gradient (but one is OK). Define the
+  // gradient color scheme here instead of inline in the below linear-gradient
+  // so that we only use one custom-property in the linear-gradient.
+  // See https://github.com/Shopify/polaris-react/issues/441 and
+  // https://github.com/postcss/postcss-custom-properties/issues/150
+  --pc-single-thumb-gradient-colors: var(--pc-single-thumb-progress-lower) 0%,
+    var(--pc-single-thumb-progress-lower) var(--pc-range-slider-progress),
+    var(--pc-single-thumb-progress-upper) var(--pc-range-slider-progress),
+    var(--pc-single-thumb-progress-upper) 100%;
+
+  @mixin rangeSliderThumbPosition($size) {
+    margin-top: calc(-1 * (#{$size} - var(--pc-range-slider-track-height)) / 2);
+  }
+
+  &::-ms-tooltip {
+    display: none;
+  }
+
+  @include unstyled-input;
+  position: relative;
+  z-index: var(--pc-range-slider-input);
+  flex: 1 1 auto;
+
+  @include range-track-selectors {
+    cursor: pointer;
+    width: 100%;
+    height: var(--pc-range-slider-track-height);
+    background-image: linear-gradient(
+      to right,
+      var(--pc-single-thumb-gradient-colors)
+    );
+    border: none;
+    border-radius: var(--pc-range-slider-track-height);
+  }
+
+  @include range-thumb-selectors {
+    // stylelint-disable-next-line value-no-vendor-prefix
+    cursor: -webkit-grab;
+    width: var(--pc-range-slider-thumb-size);
+    height: var(--pc-range-slider-thumb-size);
+    border: var(--p-border-transparent);
+    border-radius: var(--p-border-radius-half);
+    background: linear-gradient(var(--p-interactive), var(--p-interactive));
+    box-shadow: 0 0 0 0 var(--p-focused);
+    appearance: none;
+    transition: box-shadow var(--p-duration-100) var(--p-ease);
+    transition-property: border-color, box-shadow, transform;
+    transition-duration: var(--p-duration-200);
+    transition-timing-function: var(--p-ease);
+
+    @include rangeSliderThumbPosition(var(--pc-range-slider-thumb-size));
+
+    &:hover {
+      background: linear-gradient(var(--p-interactive), var(--p-interactive));
+    }
+  }
+
+  &::-ms-thumb {
+    margin-top: 0;
+    transform: translateY(calc(var(--pc-range-slider-thumb-size) * 0.2))
+      scale(0.4);
+  }
+
+  &::-webkit-slider-thumb {
+    margin-top: calc(
+      (var(--pc-range-slider-thumb-size) - var(--pc-range-slider-track-height)) *
+        -0.5
+    );
+  }
+
+  &:active {
+    @include range-thumb-selectors {
+      transform: scale(1.5);
+    }
+  }
+
+  &:focus {
+    outline: var(--p-border-width-1) solid transparent;
+    @include range-thumb-selectors {
+      border-color: var(--p-surface);
+      box-shadow: 0 0 0 var(--p-border-width-2) var(--p-focused);
+    }
+  }
+
+  .error & {
+    --pc-single-thumb-progress-lower: var(--p-action-critical);
+
+    @include range-thumb-selectors {
+      border-color: var(--p-action-critical);
+      background: var(--p-action-critical);
+    }
+  }
+
+  .disabled & {
+    @include range-track-selectors {
+      cursor: auto;
+      background-image: none;
+      background-color: var(--p-border-disabled);
+    }
+
+    @include range-thumb-selectors {
+      cursor: not-allowed;
+      border-color: var(--p-border-disabled);
+      background: var(--p-border-disabled);
+    }
+  }
+}
+
+/// Output value indicator
+$range-output-size: 32px;
+$range-output-translate-x: calc(
+  -50% + var(--pc-range-slider-output-factor) * var(--pc-range-slider-thumb-size)
+);
+
+.Output {
+  --pc-range-slider-output-spacing: var(--p-space-4);
+  position: absolute;
+  z-index: var(--pc-range-slider-output);
+  bottom: var(--pc-range-slider-thumb-size);
+  left: var(--pc-range-slider-progress);
+  transform: translateX($range-output-translate-x);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition-property: opacity, visibility, bottom;
+  transition-duration: var(--p-duration-200);
+  transition-timing-function: var(--p-ease);
+
+  .Input:active + & {
+    $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -
+      var(--p-range-slider-thumb-size-base);
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(
+      var(--pc-range-slider-thumb-size) + #{$range-thumb-size-difference}
+    );
+  }
+}
+
+.OutputBubble {
+  position: relative;
+  display: flex;
+  box-shadow: var(--p-shadow-popover);
+  padding: 0 var(--p-space-2);
+  min-width: $range-output-size;
+  height: $range-output-size;
+  background-color: var(--p-surface);
+  border-radius: var(--p-border-radius-base);
+  transition-property: transform;
+  transition-duration: var(--p-duration-200);
+  transition-timing-function: var(--p-ease);
+  outline: var(--p-border-width-1) solid transparent;
+
+  // stylelint-disable selector-max-specificity, selector-max-combinators, selector-max-class
+  .Input:hover + .Output &,
+  .Input:active + .Output &,
+  .Input:focus + .Output & {
+    transform: translateY(calc(-1 * var(--pc-range-slider-output-spacing)));
+
+    @include page-content-when-not-partially-condensed {
+      transform: translateY(
+        calc(-1 * (var(--pc-range-slider-output-spacing) * 0.4))
+      );
+    }
+  }
+  // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
+}
+
+.OutputText {
+  @include text-style-subheading;
+  display: block;
+  flex: 1 1 auto;
+  margin: auto;
+  text-align: center;
+  color: var(--p-text);
+}

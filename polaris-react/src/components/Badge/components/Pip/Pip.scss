@@ -1,0 +1,73 @@
+.Pip {
+  --pc-pip-size: var(--p-space-2);
+  --pc-pip-color: var(--p-icon);
+  display: inline-block;
+  color: var(--pc-pip-color);
+  height: var(--pc-pip-size);
+  width: var(--pc-pip-size);
+  border: var(--p-border-width-2) solid var(--pc-pip-color);
+  border-radius: var(--p-border-radius-half);
+  flex-shrink: 0;
+}
+
+.statusInfo {
+  --pc-pip-color: var(--p-icon-highlight);
+}
+
+.statusSuccess {
+  --pc-pip-color: var(--p-icon-success);
+}
+
+.statusNew {
+  --pc-pip-color: var(--p-icon);
+}
+
+.statusAttention {
+  --pc-pip-color: var(--p-icon-attention);
+}
+
+.statusWarning {
+  --pc-pip-color: var(--p-icon-warning);
+}
+
+.statusCritical {
+  --pc-pip-color: var(--p-icon-critical);
+}
+
+.progressIncomplete {
+  background: transparent;
+}
+
+.progressPartiallyComplete {
+  background: linear-gradient(
+    to top,
+    currentColor,
+    currentColor 50%,
+    transparent 50%,
+    transparent
+  );
+
+  // Background colors may be stripped when printing, but box-shadow is not.
+  // We don't want to use box-shadow as the screen style as it gives a very
+  // slight halo effect
+  @media print {
+    background: none;
+    // 100px is an arbitrarily large number so that you can't see the curvature
+    // of the box shadow. y-offset is 2px larger than the spread to make it look
+    // like it is half-way down the pip (which is 4px tall)
+    box-shadow: 0 -102px 0 -100px currentColor inset;
+  }
+}
+
+.progressComplete {
+  background: currentColor;
+  // Background colors may be stripped when printing, but box-shadow is not.
+  // We don't want to use box-shadow as the screen style as it gives a very
+  // slight halo effect
+  @media print {
+    background: none;
+    // 100px is an arbitrarily large number so that you can't see the curvature
+    // of the box shadow.
+    box-shadow: 0 0 0 100px currentColor inset;
+  }
+}

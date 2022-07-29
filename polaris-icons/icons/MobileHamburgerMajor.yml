@@ -1,0 +1,13 @@
+name: Mobile hamburger
+set: major
+description: Used to help direct merchants to navigation on mobile.
+keywords:
+  - hamburger
+  - menu
+  - burger
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

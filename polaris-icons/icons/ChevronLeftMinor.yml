@@ -1,0 +1,12 @@
+name: Chevron left
+set: minor
+description: Used to indicate that merchants will be directed to their previous location or to navigate to a previous item.
+keywords:
+  - chevron
+  - left
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

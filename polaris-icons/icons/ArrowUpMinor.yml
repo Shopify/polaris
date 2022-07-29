@@ -1,0 +1,12 @@
+name: Arrow up
+set: minor
+authors:
+  - Adam Whitcroft
+description: Used to represent a positive trend when looking at analytical information.
+keywords:
+  - arrow
+  - up
+version: 1
+date_added: 2018-11-14
+date_modified: 2018-11-14
+exclusive_use:

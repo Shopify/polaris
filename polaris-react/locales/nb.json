@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar med initialene {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Laster inn",
+      "ellipsis": "{content} …"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Ufullstendig",
+        "partiallyComplete": "Delvis fullført",
+        "complete": "Ferdig"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Vellykket",
+        "warning": "Advarsel",
+        "attention": "Obs",
+        "new": "Ny",
+        "critical": "Kritisk"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Laster inn",
+      "connectedDisclosureAccessibilityLabel": "Relaterte handlinger"
+    },
+    "Common": {
+      "checkbox": "avmerkingsboks",
+      "undo": "Angre",
+      "cancel": "Avbryt",
+      "newWindowAccessibilityHint": "(åpner et nytt vindu)",
+      "clear": "Fjern",
+      "close": "Lukk",
+      "submit": "Send inn",
+      "more": "Mer"
+    },
+    "ContextualSaveBar": {
+      "save": "Lagre",
+      "discard": "Forkast"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "sortere {direction} etter",
+      "navAccessibilityLabel": "Rull tabell {direction} en kolonne",
+      "totalsRowHeading": "Totalt",
+      "totalRowHeading": "Total"
+    },
+    "DatePicker": {
+      "previousMonth": "Vis forrige måned, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Vis neste måned, {nextMonth} {nextYear}",
+      "today": "I dag ",
+      "months": {
+        "january": "Januar",
+        "february": "Februar",
+        "march": "Mars",
+        "april": "April",
+        "may": "Mai",
+        "june": "Juni",
+        "july": "Juli",
+        "august": "August",
+        "september": "September",
+        "october": "Oktober",
+        "november": "November",
+        "december": "Desember"
+      },
+      "daysAbbreviated": {
+        "monday": "man",
+        "tuesday": "tir",
+        "wednesday": "ons",
+        "thursday": "tor",
+        "friday": "fre",
+        "saturday": "lør",
+        "sunday": "søn"
+      },
+      "days": {
+        "monday": "Mandag",
+        "tuesday": "Tirsdag",
+        "wednesday": "Onsdag",
+        "thursday": "Torsdag",
+        "friday": "Fredag",
+        "saturday": "Lørdag",
+        "sunday": "Søndag"
+      },
+      "start": "Start av intervall",
+      "end": "Slutt på intervall"
+    },
+    "DiscardConfirmationModal": {
+      "title": "Forkast alle ulagrede endringer",
+      "message": "Hvis du forkaster endringer, sletter du alt du har gjort siden du sist gang du lagret.",
+      "primaryAction": "Forkast endringer",
+      "secondaryAction": "Fortsett redigering"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "Filtypen er ikke gyldig",
+      "errorOverlayTextImage": "Bildetypen er ikke gyldig",
+      "single": {
+        "overlayTextFile": "Slipp fil for å laste opp",
+        "overlayTextImage": "Slipp bilde for å laste opp",
+        "actionTitleFile": "Legg til en fil",
+        "actionTitleImage": "Legg til bilde",
+        "actionHintFile": "eller slipp filen for å laste den opp",
+        "actionHintImage": "eller slipp bildet for å laste opp",
+        "labelFile": "Last opp fil",
+        "labelImage": "Last opp bilde",
+        "overlayTextVideo": "Slipp video for å laste opp",
+        "actionTitleVideo": "Legg til video",
+        "actionHintVideo": "eller slipp video for å laste opp",
+        "labelVideo": "Last opp video"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Slipp filer for å laste opp",
+        "overlayTextImage": "Slipp bilder for å laste opp",
+        "actionTitleFile": "Legg til filer",
+        "actionTitleImage": "Legg til bilder",
+        "actionHintFile": "eller slipp filer for å laste opp",
+        "actionHintImage": "eller slipp bilder for å laste opp",
+        "labelFile": "Last opp filer",
+        "labelImage": "Laste opp bilder",
+        "overlayTextVideo": "Slipp videoer for å laste opp",
+        "actionTitleVideo": "Legg til videoer",
+        "actionHintVideo": "eller slipp videoer for å laste opp",
+        "labelVideo": "Last opp videoer"
+      },
+      "errorOverlayTextVideo": "Videotypen er ugyldig"
+    },
+    "EmptySearchResult": {
+      "altText": "Tøm søkeresultater"
+    },
+    "Frame": {
+      "skipToContent": "Gå videre til innholdet",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Lukk navigasjon"
+      },
+      "navigationLabel": "Navigasjon"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Vis handlinger"
+      },
+      "Actions": {
+        "moreActions": "Flere handlinger"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Flere filtre",
+      "filter": "Filter {resourceName}",
+      "noFiltersApplied": "Ingen filtre ble brukt",
+      "cancel": "Avbryt",
+      "done": "Ferdig",
+      "clearAllFilters": "Fjern alle filtre",
+      "clear": "Fjern",
+      "clearLabel": "Fjern {filterName}",
+      "moreFiltersWithCount": "Flere filtre ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "brødtekstpåslag",
+      "modalWarning": "Disse nødvendige egenskapene mangler fra Modal: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Forrige",
+      "next": "Neste",
+      "pagination": "Sideinndeling"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Verdier som er overført til fremgangsrekvisitten, bør ikke være negative. Tilbakestiller {progress} til 0.",
+      "exceedWarningMessage": "Verdier som er overført til fremgangsrekvisitten, bør ikke overstige 100. Setter {progress} til 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sorter etter",
+      "defaultItemSingular": "vare",
+      "defaultItemPlural": "varer",
+      "showing": "Viser {itemsCount} {resource}",
+      "loading": "Laster inn {resource}",
+      "selected": "{selectedItemsCount} valgt",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i butikken din er valgt.",
+      "selectAllItems": "Velg alle {itemsLength}+ {resourceNamePlural} i butikken din",
+      "emptySearchResultTitle": "Fant ingen {resourceNamePlural}",
+      "emptySearchResultDescription": "Prøv å endre filtrene eller søkeord",
+      "selectButtonText": "Velg",
+      "a11yCheckboxDeselectAllSingle": "Opphev valg av {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Velg alle {itemsLength} {resourceNamePlural}",
+      "ariaLiveSingular": "{itemsLength} vare",
+      "ariaLivePlural": "{itemsLength} varer",
+      "Item": {
+        "actionsDropdownLabel": "Handlinger for {accessibilityLabel}",
+        "actionsDropdown": "Handlinger-rullegardin",
+        "viewItem": "Vis detaljer for {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Handlinger",
+        "moreActionsActivatorLabel": "Flere handlinger",
+        "warningMessage": "For å gi en bedre brukeropplevelse. Det bør ikke være mer enn {maxPromotedActions} promoterte handlinger."
+      },
+      "showingTotalCount": "Viser {itemsCount} av {totalItemsCount} {resource}",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} i dette filteret er valgt.",
+      "selectAllFilteredItems": "Velg alle {itemsLength}+ {resourceNamePlural} i dette filteret"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Siden laster"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Flere faner"
+    },
+    "Tag": {
+      "ariaLabel": "Fjern {children}"
+    },
+    "TextField": {
+      "characterCount": "{count} tegn",
+      "characterCountWithMaxLength": "{count} av {limit} tegn brukt"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Aktiver/deaktiver meny",
+      "SearchField": {
+        "clearButtonLabel": "Fjern",
+        "search": "Søk"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Handlinger"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Spill av video",
+        "defaultWithDuration": "Spill video med lengde {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} timer",
+              "andMinutes": "{hourCount} timer og {minuteCount} minutter",
+              "andMinute": "{hourCount} timer og {minuteCount} minutt",
+              "minutesAndSeconds": "{hourCount} timer, {minuteCount} minutter og {secondCount} sekunder",
+              "minutesAndSecond": "{hourCount} timer, {minuteCount} minutter og {secondCount} sekund",
+              "minuteAndSeconds": "{hourCount} timer, {minuteCount} minutt og {secondCount} sekunder",
+              "minuteAndSecond": "{hourCount} timer, {minuteCount} minutt og {secondCount} sekund",
+              "andSeconds": "{hourCount} timer og {secondCount} sekunder",
+              "andSecond": "{hourCount} timer og {secondCount} sekund"
+            },
+            "one": {
+              "only": "{hourCount} time",
+              "andMinutes": "{hourCount} time og {minuteCount} minutter",
+              "andMinute": "{hourCount} time og {minuteCount} minutt",
+              "minutesAndSeconds": "{hourCount} time, {minuteCount} minutter og {secondCount} sekunder",
+              "minutesAndSecond": "{hourCount} time, {minuteCount} minutter og {secondCount} sekund",
+              "minuteAndSeconds": "{hourCount} time, {minuteCount} minutt og {secondCount} sekunder",
+              "minuteAndSecond": "{hourCount} time, {minuteCount} minutt og {secondCount} sekund",
+              "andSeconds": "{hourCount} time og {secondCount} sekunder",
+              "andSecond": "{hourCount} time og {secondCount} sekund"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minutter",
+              "andSeconds": "{minuteCount} minutter og {secondCount} sekunder",
+              "andSecond": "{minuteCount} minutter og {secondCount} sekund"
+            },
+            "one": {
+              "only": "{minuteCount} minutt",
+              "andSeconds": "{minuteCount} minutt og {secondCount} sekunder",
+              "andSecond": "{minuteCount} minutt og {secondCount} sekund"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} sekunder",
+            "one": "{secondCount} sekund"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "Sidelastingslinje"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Verktøytips: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Vare",
+      "defaultItemPlural": "Varer",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} er valgt.",
+      "selected": "{selectedItemsCount} valgt",
+      "a11yCheckboxDeselectAllSingle": "Opphev valg av {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Velg {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Opphev alle valg av {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxSelectAllMultiple": "Velg alle {itemsLength} {resourceNamePlural}"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Fant ingen {resourceNamePlural}",
+      "emptySearchDescription": "Prøv å endre filtrene eller søkeord",
+      "onboardingBadgeText": "Ny",
+      "resourceLoadingAccessibilityLabel": "Laster inn {resourceNamePlural} …",
+      "selectAllLabel": "Velg alle {resourceNamePlural}",
+      "selected": "{selectedItemsCount} valgt",
+      "undo": "Angre",
+      "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
+      "selectItem": "Velg {resourceName}",
+      "selectButtonText": "Velg"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Vis handlinger for {title}"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Tilbake",
+      "accessibilityLabel": "Avslutt fullskjermmodus"
+    }
+  }
+}

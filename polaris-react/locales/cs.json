@@ -1,0 +1,314 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar s iniciálami {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Načítání",
+      "ellipsis": "{content}…"
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Nedokončeno",
+        "partiallyComplete": "Částečně dokončeno",
+        "complete": "Dokončeno"
+      },
+      "STATUS_LABELS": {
+        "info": "Informace",
+        "success": "Úspěch",
+        "warning": "Varování",
+        "attention": "Upozornění",
+        "new": "Novinka",
+        "critical": "Kritické"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Načítání",
+      "connectedDisclosureAccessibilityLabel": "Související akce"
+    },
+    "Common": {
+      "checkbox": "zaškrtávací pole",
+      "undo": "Vrátit zpět",
+      "cancel": "Zrušit",
+      "newWindowAccessibilityHint": "(otevře nové okno)",
+      "clear": "Vymazat",
+      "close": "Zavřít",
+      "submit": "Odeslat",
+      "more": "Více"
+    },
+    "ContextualSaveBar": {
+      "save": "Uložit",
+      "discard": "Zahodit"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "seřadit {direction} podle",
+      "navAccessibilityLabel": "Posunout tabulku o jeden sloupec {direction}",
+      "totalsRowHeading": "Celkem",
+      "totalRowHeading": "Celkem"
+    },
+    "DatePicker": {
+      "previousMonth": "Zobrazit předchozí měsíc, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Zobrazit příští měsíc, {nextMonth} {nextYear}",
+      "today": "Dnes ",
+      "months": {
+        "january": "Leden",
+        "february": "Únor",
+        "march": "Březen",
+        "april": "Duben",
+        "may": "Květen",
+        "june": "Červen",
+        "july": "Červenec",
+        "august": "Srpen",
+        "september": "Září",
+        "october": "Říjen",
+        "november": "Listopad",
+        "december": "Prosinec"
+      },
+      "daysAbbreviated": {
+        "monday": "Po",
+        "tuesday": "Út",
+        "wednesday": "St",
+        "thursday": "Čt",
+        "friday": "Pá",
+        "saturday": "So",
+        "sunday": "Ne"
+      },
+      "days": {
+        "monday": "pondělí",
+        "tuesday": "úterý",
+        "wednesday": "středa",
+        "thursday": "čtvrtek",
+        "friday": "pátek",
+        "saturday": "sobota",
+        "sunday": "neděle"
+      },
+      "start": "Začátek rozmezí",
+      "end": "Konec rozmezí"
+    },
+    "DiscardConfirmationModal": {
+      "title": "Zahodit všechny neuložené změny",
+      "message": "Pokud zahodíte změny, odstraníte všechny úpravy provedené od posledního uložení.",
+      "primaryAction": "Zahodit změny",
+      "secondaryAction": "Pokračovat v úpravách"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "Typ souboru není platný",
+      "errorOverlayTextImage": "Typ obrázku není platný",
+      "single": {
+        "overlayTextFile": "Soubor nahrajete přetažením",
+        "overlayTextImage": "Obrázek nahrajete přetažením",
+        "actionTitleFile": "Přidejte soubor",
+        "actionTitleImage": "Přidejte obrázek",
+        "actionHintFile": "nebo ho nahrajte přetažením",
+        "actionHintImage": "nebo ho nahrajte přetažením",
+        "labelFile": "Nahrát soubor",
+        "labelImage": "Nahrát obrázek",
+        "overlayTextVideo": "Video nahrajete přetažením",
+        "actionTitleVideo": "Přidejte video",
+        "actionHintVideo": "nebo ho nahrajte přetažením",
+        "labelVideo": "Nahrát video"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Soubory nahrajete přetažením",
+        "overlayTextImage": "Obrázky nahrajete přetažením",
+        "actionTitleFile": "Přidejte soubory",
+        "actionTitleImage": "Přidejte obrázky",
+        "actionHintFile": "nebo je nahrajte přetažením",
+        "actionHintImage": "nebo je nahrajte přetažením",
+        "labelFile": "Nahrát soubory",
+        "labelImage": "Nahrát obrázky",
+        "overlayTextVideo": "Nahrajte videa přetažením",
+        "actionTitleVideo": "Přidejte videa",
+        "actionHintVideo": "nebo je nahrajte přetažením",
+        "labelVideo": "Nahrát videa"
+      },
+      "errorOverlayTextVideo": "Typ videa není platný"
+    },
+    "EmptySearchResult": {
+      "altText": "Žádné výsledky hledání"
+    },
+    "Frame": {
+      "skipToContent": "Přeskočit na obsah",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Zavřít navigaci"
+      },
+      "navigationLabel": "Navigace"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Zobrazit akce"
+      },
+      "Actions": {
+        "moreActions": "Další akce"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Další filtry",
+      "filter": "Filtr: {resourceName}",
+      "noFiltersApplied": "Nejsou použity žádné filtry",
+      "cancel": "Zrušit",
+      "done": "Hotovo",
+      "clearAllFilters": "Vymazat všechny filtry",
+      "clear": "Vymazat",
+      "clearLabel": "Vymazat {filterName}",
+      "moreFiltersWithCount": "Další filtry ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "kód hlavní části",
+      "modalWarning": "V modálním parametru chybí následující povinné vlastnosti: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Předchozí",
+      "next": "Další",
+      "pagination": "Stránkování"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Hodnoty předané vlastnosti průběhu by neměly být záporné. Hodnota {progress} se resetuje na 0.",
+      "exceedWarningMessage": "Hodnoty předané vlastnosti průběhu by neměly být vyšší než 100. Hodnota {progress} se nastavuje na 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Seřadit podle",
+      "defaultItemSingular": "položka",
+      "defaultItemPlural": "položky",
+      "showing": "Zobrazuje se tento počet: {itemsCount} ({resource})",
+      "loading": "Načítání: {resource}",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "allItemsSelected": "V obchodě bylo vybráno vše typu {resourceNamePlural}: {itemsLength} a více.",
+      "selectAllItems": "Vybrat v obchodě vše typu {resourceNamePlural}: {itemsLength} a více",
+      "emptySearchResultTitle": "Nepovedlo se najít: {resourceNamePlural}",
+      "emptySearchResultDescription": "Zkuste změnit filtry nebo hledaný termín",
+      "selectButtonText": "Vybrat",
+      "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
+      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})",
+      "ariaLiveSingular": "{itemsLength} položka",
+      "ariaLivePlural": "{itemsLength} polož.",
+      "Item": {
+        "actionsDropdownLabel": "Akce pro: {accessibilityLabel}",
+        "actionsDropdown": "Rozevírací nabídka akcí",
+        "viewItem": "Zobrazit podrobnosti pro: {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Akce",
+        "moreActionsActivatorLabel": "Další akce",
+        "warningMessage": "Chceme zlepšit uživatelské zkušenosti. Propagačních akcí by mělo být maximálně {maxPromotedActions}."
+      },
+      "showingTotalCount": "Zobrazuje se tento počet: {itemsCount} z {totalItemsCount} ({resource})",
+      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru.",
+      "selectAllFilteredItems": "Vybrat všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Stránka se načítá"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Více karet"
+    },
+    "Tag": {
+      "ariaLabel": "Odebrat: {children}"
+    },
+    "TextField": {
+      "characterCount": "Počet znaků: {count}",
+      "characterCountWithMaxLength": "Použité znaky: {count} z {limit}"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Přepnout nabídku",
+      "SearchField": {
+        "clearButtonLabel": "Vymazat",
+        "search": "Hledání"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Akce"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Přehrát video",
+        "defaultWithDuration": "Přehrát video o délce: {duration}",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} h",
+              "andMinutes": "{hourCount} h a {minuteCount} min",
+              "andMinute": "{hourCount} h a {minuteCount} min",
+              "minutesAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minutesAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "andSeconds": "{hourCount} h a {secondCount} s",
+              "andSecond": "{hourCount} h a {secondCount} s"
+            },
+            "one": {
+              "only": "{hourCount} h",
+              "andMinutes": "{hourCount} h a {minuteCount} min",
+              "andMinute": "{hourCount} h a {minuteCount} min",
+              "minutesAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minutesAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSeconds": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "minuteAndSecond": "{hourCount} h {minuteCount} min a {secondCount} s",
+              "andSeconds": "{hourCount} h a {secondCount} s",
+              "andSecond": "{hourCount} h a {secondCount} s"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} min",
+              "andSeconds": "{minuteCount} min a {secondCount} s",
+              "andSecond": "{minuteCount} min a {secondCount} s"
+            },
+            "one": {
+              "only": "{minuteCount} min",
+              "andSeconds": "{minuteCount} min a {secondCount} s",
+              "andSecond": "{minuteCount} min a {secondCount} s"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} s",
+            "one": "{secondCount} s",
+            "few": "{secondCount} s",
+            "many": "{secondCount} s"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "Panel načítání stránky"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tip s vysvětlením: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Položka",
+      "defaultItemPlural": "Položky",
+      "allItemsSelected": "Bylo vybráno vše typu {resourceNamePlural} ({itemsLength} a více).",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
+      "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
+      "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
+      "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Nepovedlo se najít: {resourceNamePlural}",
+      "emptySearchDescription": "Zkuste změnit filtry nebo hledaný termín",
+      "onboardingBadgeText": "Novinka",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} se načítají…",
+      "selectAllLabel": "Vybrat vše: {resourceNamePlural}",
+      "selected": "Vybráno: {selectedItemsCount}",
+      "undo": "Vrátit zpět",
+      "selectAllItems": "Vybrat vše typu {resourceNamePlural} ({itemsLength} a více)",
+      "selectItem": "Vybrat: {resourceName}",
+      "selectButtonText": "Vybrat"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Zobrazte akce pro: {title}"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Zpět",
+      "accessibilityLabel": "Ukončit režim celé obrazovky"
+    }
+  }
+}

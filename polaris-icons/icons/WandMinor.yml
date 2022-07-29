@@ -1,0 +1,13 @@
+name: Wand
+set: minor
+description: Used to represent an action to perform an automatic process or series of processes.
+keywords:
+  - magic
+  - wand
+  - automatic
+authors:
+  - Jordan Ouellette
+version: 1
+date_added: 2021-12-13
+date_modified: 2021-12-13
+exclusive_use:

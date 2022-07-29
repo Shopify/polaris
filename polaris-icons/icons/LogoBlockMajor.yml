@@ -1,0 +1,16 @@
+name: Logo block
+set: major
+description: Used to represent a layout option of one or more logos.
+keywords:
+  - logo
+  - list
+  - layout
+  - section
+  - circle
+  - dotted
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-02-25
+date_modified: 2019-02-25
+exclusive_use:

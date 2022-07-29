@@ -1,0 +1,28 @@
+name: Refund
+set: minor
+description:
+  # Icon type   | Example description
+  # ----------- | --------------------------
+  # Action      | Used to denote <x action>.
+  # Wayfinding  | Used to help direct merchants to <x>.
+  # Concept     | Used to represent <x>.
+  # Education   | Used to give merchants more information about <context x>.
+  #
+  # Full guidelines: https://bit.ly/2GdMpmg
+  # (delete this comment block)
+  N/A
+keywords:
+  # - synonym
+  # - another synonym
+  # - related shape or symbol
+  # (delete this comment block)
+  - N/A
+authors:
+  # - Sasha Oliveira
+  # - Co-author’s name (optional)
+  # (delete this comment block)
+  - N/A
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

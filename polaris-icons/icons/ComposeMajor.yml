@@ -1,0 +1,16 @@
+name: Compose
+set: major
+description: Used to denote the action of composing a new message.
+keywords:
+  - compose
+  - message
+  - write
+  - pencil
+  - pen
+authors:
+  - Anthony Menecola
+  - Jesse Bennett-Chamberlain
+version: 1
+date_added: 2020-07-13
+date_modified: 2020-07-13
+exclusive_use:

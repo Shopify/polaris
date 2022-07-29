@@ -1,0 +1,29 @@
+$resource-list-variables: (
+  breakpoint-small: 458px,
+  header-min-height: 56px,
+  header-vertical-padding: var(--p-space-2),
+  header-content-min-height: control-height(),
+  list-stacking-order: 1,
+  content-wrapper-stacking-order: 1,
+  bulk-actions-wrapper-stacking-order: 2,
+  header-outer-wrapper-stacking-order: 2,
+  overlay-stacking-order: 3,
+  header-overlay-stacking-order: 4,
+  spinner-stacking-order: 4,
+);
+
+@function resource-list($variable) {
+  @return map-get($resource-list-variables, $variable);
+}
+
+@mixin page-before-resource-list-small() {
+  @include breakpoint-before(resource-list(breakpoint-small)) {
+    @content;
+  }
+}
+
+@mixin page-after-resource-list-small() {
+  @include breakpoint-after(resource-list(breakpoint-small)) {
+    @content;
+  }
+}

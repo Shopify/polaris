@@ -1,0 +1,105 @@
+.Avatar {
+  --pc-avatar-extra-small-size: 24px;
+  --pc-avatar-small-size: 32px;
+  --pc-avatar-medium-size: 40px;
+  --pc-avatar-large-size: 60px;
+  position: relative;
+  display: block;
+  overflow: hidden;
+  min-width: var(--pc-avatar-extra-small-size);
+  max-width: 100%;
+  background: var(--p-surface-neutral);
+  color: var(--p-icon-subdued);
+  border-radius: var(--p-border-radius-half);
+  user-select: none;
+
+  @media (forced-colors: active) {
+    border: var(--p-border-width-1) solid transparent;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.shapeSquare {
+  border-radius: var(--p-border-radius-05);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.sizeExtraSmall {
+  width: var(--pc-avatar-extra-small-size);
+}
+
+.sizeSmall {
+  width: var(--pc-avatar-small-size);
+}
+
+.sizeMedium {
+  width: var(--pc-avatar-medium-size);
+}
+
+.sizeLarge {
+  width: var(--pc-avatar-large-size);
+}
+
+.styleOne {
+  color: var(--p-decorative-one-text);
+  background: var(--p-decorative-one-surface);
+}
+
+.styleTwo {
+  color: var(--p-decorative-two-text);
+  background: var(--p-decorative-two-surface);
+}
+
+.styleThree {
+  color: var(--p-decorative-three-text);
+  background: var(--p-decorative-three-surface);
+}
+
+.styleFour {
+  color: var(--p-decorative-four-text);
+  background: var(--p-decorative-four-surface);
+}
+
+.styleFive {
+  color: var(--p-decorative-five-text);
+  background: var(--p-decorative-five-surface);
+}
+
+.imageHasLoaded {
+  background: transparent;
+}
+
+.Image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--p-border-radius-half);
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.Initials {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.Svg {
+  width: 100%;
+  height: 100%;
+}

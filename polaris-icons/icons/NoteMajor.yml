@@ -1,0 +1,17 @@
+name: Note
+set: major
+description: Used to represent a document or note.
+keywords:
+  - annotations
+  - document
+  - note
+  - notes
+  - page
+  - paper
+  - tags
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-12
+date_modified: 2019-03-12
+exclusive_use:

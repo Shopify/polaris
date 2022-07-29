@@ -1,0 +1,13 @@
+name: Print
+set: major
+description: Used to represent a printer or an action to print something.
+keywords:
+  - desktop
+  - label
+  - printer
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

@@ -1,0 +1,12 @@
+name: Customers
+set: minor
+description: Used to represent a customer, or user.
+keywords:
+  - customer
+  - user
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-11-19
+date_modified: 2022-01-17
+exclusive_use:

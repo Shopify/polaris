@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "Avatar",
+      "labelWithInitials": "Avatar met initialen {initials}"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "Laden",
+      "ellipsis": "{content}..."
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "Onvolledig",
+        "partiallyComplete": "Gedeeltelijk voltooid",
+        "complete": "Voltooid"
+      },
+      "STATUS_LABELS": {
+        "info": "Info",
+        "success": "Geslaagd",
+        "warning": "Waarschuwing",
+        "attention": "Attentie",
+        "new": "Nieuw",
+        "critical": "Kritiek"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "Laden",
+      "connectedDisclosureAccessibilityLabel": "Gerelateerde acties"
+    },
+    "Common": {
+      "checkbox": "selectievakje",
+      "undo": "Ongedaan maken",
+      "cancel": "Annuleren",
+      "newWindowAccessibilityHint": "(opent een nieuw venster)",
+      "clear": "Wissen",
+      "close": "Sluiten",
+      "submit": "Indienen",
+      "more": "Meer"
+    },
+    "ContextualSaveBar": {
+      "save": "Opslaan",
+      "discard": "Verwijderen"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "sorteer {direction} op",
+      "navAccessibilityLabel": "Scroll tabel {direction} één kolom",
+      "totalsRowHeading": "Totalen",
+      "totalRowHeading": "Totaal"
+    },
+    "DatePicker": {
+      "previousMonth": "Vorige maand weergeven, {previousMonthName} {showPreviousYear}",
+      "nextMonth": "Volgende maand weergeven, {nextMonth} {nextYear}",
+      "today": "Vandaag ",
+      "months": {
+        "january": "januari",
+        "february": "februari",
+        "march": "maart",
+        "april": "april",
+        "may": "mei",
+        "june": "juni",
+        "july": "juli",
+        "august": "augustus",
+        "september": "september",
+        "october": "oktober",
+        "november": "november",
+        "december": "december"
+      },
+      "daysAbbreviated": {
+        "monday": "ma.",
+        "tuesday": "di.",
+        "wednesday": "wo.",
+        "thursday": "do.",
+        "friday": "vr.",
+        "saturday": "za.",
+        "sunday": "zo."
+      },
+      "days": {
+        "monday": "maandag",
+        "tuesday": "dinsdag",
+        "wednesday": "woensdag",
+        "thursday": "donderdag",
+        "friday": "vrijdag",
+        "saturday": "zaterdag",
+        "sunday": "zondag"
+      },
+      "start": "Begin van reeks",
+      "end": "Einde van reeks"
+    },
+    "DiscardConfirmationModal": {
+      "title": "Alle niet-opgeslagen wijzigingen verwijderen",
+      "message": "Als je alle niet-opgeslagen wijzigingen verwijdert, wis je alle bewerkingen die je aanbracht sinds je voor het laatst opsloeg.",
+      "primaryAction": "Wijzigingen verwijderen",
+      "secondaryAction": "Doorgaan met bewerken"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "Ongeldig bestandstype",
+      "errorOverlayTextImage": "Ongeldig afbeeldingsbestand",
+      "single": {
+        "overlayTextFile": "Zet een bestand neer om het te uploaden",
+        "overlayTextImage": "Zet een afbeelding neer om deze te uploaden",
+        "actionTitleFile": "Bestand toevoegen",
+        "actionTitleImage": "Afbeelding toevoegen",
+        "actionHintFile": "of zet een bestand neer om het te uploaden",
+        "actionHintImage": "of zet een afbeelding neer om deze te uploaden",
+        "labelFile": "Bestand uploaden",
+        "labelImage": "Afbeelding uploaden",
+        "overlayTextVideo": "Zet video neer om deze te uploaden",
+        "actionTitleVideo": "Voeg de video toe",
+        "actionHintVideo": "of zet de video neer om deze te uploaden",
+        "labelVideo": "Video uploaden"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "Zet bestanden neer om ze te uploaden",
+        "overlayTextImage": "Zet afbeeldingen neer om ze te uploaden",
+        "actionTitleFile": "Bestanden toevoegen",
+        "actionTitleImage": "Afbeeldingen toevoegen",
+        "actionHintFile": "of zet bestanden neer om ze te uploaden",
+        "actionHintImage": "of zet afbeeldingen neer om ze te uploaden",
+        "labelFile": "Bestanden uploaden",
+        "labelImage": "Afbeeldingen uploaden",
+        "overlayTextVideo": "Zet video's neer om ze te uploaden",
+        "actionTitleVideo": "Voeg de video's toe",
+        "actionHintVideo": "of zet ze neer om ze te uploaden",
+        "labelVideo": "Video's uploaden"
+      },
+      "errorOverlayTextVideo": "Ongeldig videotype"
+    },
+    "EmptySearchResult": {
+      "altText": "Geen zoekresultaten"
+    },
+    "Frame": {
+      "skipToContent": "Meteen naar de content",
+      "Navigation": {
+        "closeMobileNavigationLabel": "Navigatie sluiten"
+      },
+      "navigationLabel": "Navigatie"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "Acties bekijken"
+      },
+      "Actions": {
+        "moreActions": "Meer acties"
+      }
+    },
+    "Filters": {
+      "moreFilters": "Meer filters",
+      "filter": "Filter {resourceName}",
+      "noFiltersApplied": "Geen filters toegepast",
+      "cancel": "Annuleren",
+      "done": "Gereed",
+      "clearAllFilters": "Alle filters wissen",
+      "clear": "Wissen",
+      "clearLabel": "{filterName} wissen",
+      "moreFiltersWithCount": "Meer filters ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "opmaak hoofdtekst",
+      "modalWarning": "Deze verplichte onderdelen ontbreken in het modale venster: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "pagination": "Paginering"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet negatief zijn. {progress} opnieuw instellen op 0.",
+      "exceedWarningMessage": "Waardes die worden doorgegeven naar de voortgangsinstelling mogen niet de 100 overschrijden. {progress} instellen op 100."
+    },
+    "ResourceList": {
+      "sortingLabel": "Sorteren op",
+      "defaultItemSingular": "artikel",
+      "defaultItemPlural": "artikelen",
+      "showing": "Weergave van {itemsCount} {resource}",
+      "loading": "{resource} aan het laden",
+      "selected": "{selectedItemsCount} geselecteerd",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd.",
+      "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in je winkel",
+      "emptySearchResultTitle": "Geen {resourceNamePlural} gevonden",
+      "emptySearchResultDescription": "Probeer de filters of zoekterm te wijzigen",
+      "selectButtonText": "Selecteren",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} deselecteren",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
+      "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
+      "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} selecteren",
+      "ariaLiveSingular": "{itemsLength} artikel",
+      "ariaLivePlural": "{itemsLength} artikelen",
+      "Item": {
+        "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
+        "actionsDropdown": "Acties vervolgkeuzelijst",
+        "viewItem": "Details weergeven voor {itemName}"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "Acties",
+        "moreActionsActivatorLabel": "Meer acties",
+        "warningMessage": "Om een betere gebruikerservaring te bieden, zouden er maximaal {maxPromotedActions} gepromote acties moeten zijn."
+      },
+      "showingTotalCount": "{itemsCount} van {totalItemsCount} {resource} zichtbaar",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
+      "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."
+    },
+    "SkeletonPage": {
+      "loadingLabel": "Pagina is aan het laden"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "Meer tabbladen"
+    },
+    "Tag": {
+      "ariaLabel": "{children} verwijderen"
+    },
+    "TextField": {
+      "characterCount": "{count} tekens",
+      "characterCountWithMaxLength": "{count} van {limit} tekens gebruikt"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "Schakelen tussen menu's",
+      "SearchField": {
+        "clearButtonLabel": "Wissen",
+        "search": "Zoeken"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "Acties"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "Video afspelen",
+        "defaultWithDuration": "Video van {duration} afspelen",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount} uur",
+              "andMinutes": "{hourCount} uur en {minuteCount} minuten",
+              "andMinute": "{hourCount} uur en {minuteCount} minuut",
+              "minutesAndSeconds": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconden",
+              "minutesAndSecond": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconde",
+              "minuteAndSeconds": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconden",
+              "minuteAndSecond": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconde",
+              "andSeconds": "{hourCount} uur en {secondCount} seconden",
+              "andSecond": "{hourCount} uur en {secondCount} seconde"
+            },
+            "one": {
+              "only": "{hourCount} uur",
+              "andMinutes": "{hourCount} uur en {minuteCount} minuten",
+              "andMinute": "{hourCount} uur en {minuteCount} minuut",
+              "minutesAndSeconds": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconden",
+              "minutesAndSecond": "{hourCount} uur, {minuteCount} minuten en {secondCount} seconde",
+              "minuteAndSeconds": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconden",
+              "minuteAndSecond": "{hourCount} uur, {minuteCount} minuut en {secondCount} seconde",
+              "andSeconds": "{hourCount} uur en {secondCount} seconden",
+              "andSecond": "{hourCount} uur en {secondCount} seconde"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount} minuten",
+              "andSeconds": "{minuteCount} minuten en {secondCount} seconden",
+              "andSecond": "{minuteCount} minuten en {secondCount} seconde"
+            },
+            "one": {
+              "only": "{minuteCount} minuut",
+              "andSeconds": "{minuteCount} minuut en {secondCount} seconden",
+              "andSecond": "{minuteCount} minuut en {secondCount} seconde"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount} seconden",
+            "one": "{secondCount} seconde"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "Pagina laadbalk"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "Tooltip: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "Artikel",
+      "defaultItemPlural": "Artikelen",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd.",
+      "selected": "{selectedItemsCount} geselecteerd",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} deselecteren",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
+      "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
+      "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} selecteren"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "Geen {resourceNamePlural} gevonden",
+      "emptySearchDescription": "Probeer de filters of zoekterm te wijzigen",
+      "onboardingBadgeText": "Nieuw",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural} laden...",
+      "selectAllLabel": "Alle {resourceNamePlural} selecteren",
+      "selected": "{selectedItemsCount} geselecteerd",
+      "undo": "Ongedaan maken",
+      "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} selecteren",
+      "selectItem": "{resourceName} selecteren",
+      "selectButtonText": "Selecteren"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "Acties voor {title} bekijken"
+      }
+    },
+    "FullscreenBar": {
+      "back": "Terug",
+      "accessibilityLabel": "Volledig scherm-modus afsluiten"
+    }
+  }
+}

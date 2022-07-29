@@ -1,0 +1,312 @@
+{
+  "Polaris": {
+    "Avatar": {
+      "label": "アバター",
+      "labelWithInitials": "頭文字が{initials}のアバター"
+    },
+    "Autocomplete": {
+      "spinnerAccessibilityLabel": "読み込み中",
+      "ellipsis": "{content}..."
+    },
+    "Badge": {
+      "PROGRESS_LABELS": {
+        "incomplete": "未完了",
+        "partiallyComplete": "一部完了済み",
+        "complete": "完了"
+      },
+      "STATUS_LABELS": {
+        "info": "情報",
+        "success": "成功しました",
+        "warning": "警告",
+        "attention": "注意",
+        "new": "新規",
+        "critical": "クリティカル"
+      },
+      "progressAndStatus": "{statusLabel} {progressLabel}"
+    },
+    "Button": {
+      "spinnerAccessibilityLabel": "読み込み中",
+      "connectedDisclosureAccessibilityLabel": "関連したアクション"
+    },
+    "Common": {
+      "checkbox": "チェックボックス",
+      "undo": "元に戻す",
+      "cancel": "キャンセル",
+      "newWindowAccessibilityHint": "(新しいウィンドウを開く)",
+      "clear": "クリア",
+      "close": "閉じる",
+      "submit": "送信",
+      "more": "その他"
+    },
+    "ContextualSaveBar": {
+      "save": "保存",
+      "discard": "破棄"
+    },
+    "DataTable": {
+      "sortAccessibilityLabel": "で{direction}を並び替える",
+      "navAccessibilityLabel": "表{direction}を1列スクロールする",
+      "totalsRowHeading": "合計",
+      "totalRowHeading": "合計"
+    },
+    "DatePicker": {
+      "previousMonth": "先月 ({showPreviousYear}{previousMonthName}) を表示",
+      "nextMonth": "来月 ({nextYear}{nextMonth}) を表示",
+      "today": "今日 ",
+      "months": {
+        "january": "1月",
+        "february": "2月",
+        "march": "3月",
+        "april": "4月",
+        "may": "5月",
+        "june": "6月",
+        "july": "7月",
+        "august": "8月",
+        "september": "9月",
+        "october": "10月",
+        "november": "11月",
+        "december": "12月"
+      },
+      "daysAbbreviated": {
+        "monday": "月曜日",
+        "tuesday": "火曜日",
+        "wednesday": "水曜日",
+        "thursday": "木曜日",
+        "friday": "金曜日",
+        "saturday": "土曜日",
+        "sunday": "日曜日"
+      },
+      "days": {
+        "monday": "月曜日",
+        "tuesday": "火曜日",
+        "wednesday": "水曜日",
+        "thursday": "木曜日",
+        "friday": "金曜日",
+        "saturday": "土曜日",
+        "sunday": "日曜日"
+      },
+      "start": "範囲の開始",
+      "end": "範囲の終了"
+    },
+    "DiscardConfirmationModal": {
+      "title": "保存されていないすべての変更を破棄",
+      "message": "変更を破棄すると、最後に保存した後に編集した内容が削除されます。",
+      "primaryAction": "変更を破棄",
+      "secondaryAction": "編集を続ける"
+    },
+    "DropZone": {
+      "errorOverlayTextFile": "ファイルタイプが有効ではありません",
+      "errorOverlayTextImage": "画像タイプが有効ではありません",
+      "single": {
+        "overlayTextFile": "ファイルをドロップしてアップロード",
+        "overlayTextImage": "画像をドロップしてアップロード",
+        "actionTitleFile": "ファイルを追加",
+        "actionTitleImage": "画像を追加",
+        "actionHintFile": "またはファイルをドロップしてアップロード",
+        "actionHintImage": "または、画像をドロップしてアップロード",
+        "labelFile": "ファイルをアップロード",
+        "labelImage": "画像をアップロード",
+        "overlayTextVideo": "ビデオをドロップしてアップロードする",
+        "actionTitleVideo": "ビデオを追加する",
+        "actionHintVideo": "または、ビデオをドロップしてアップロードする",
+        "labelVideo": "ビデオをアップロード"
+      },
+      "allowMultiple": {
+        "overlayTextFile": "ファイルをドロップしてアップロード",
+        "overlayTextImage": "画像をドロップしてアップロード",
+        "actionTitleFile": "ファイルを追加する",
+        "actionTitleImage": "画像を追加",
+        "actionHintFile": "または、ファイルをドロップしてアップロードする",
+        "actionHintImage": "または、画像をドロップしてアップロード",
+        "labelFile": "ファイルをアップロード",
+        "labelImage": "画像をアップロード",
+        "overlayTextVideo": "ビデオをドロップしてアップロードする",
+        "actionTitleVideo": "ビデオを追加する",
+        "actionHintVideo": "または、ビデオをドロップしてアップロードする",
+        "labelVideo": "ビデオをアップロード"
+      },
+      "errorOverlayTextVideo": "ビデオタイプが有効ではありません"
+    },
+    "EmptySearchResult": {
+      "altText": "空の検索結果"
+    },
+    "Frame": {
+      "skipToContent": "コンテンツにスキップ",
+      "Navigation": {
+        "closeMobileNavigationLabel": "メニューを閉じる"
+      },
+      "navigationLabel": "メニュー"
+    },
+    "ActionMenu": {
+      "RollupActions": {
+        "rollupButton": "アクションを表示"
+      },
+      "Actions": {
+        "moreActions": "その他の操作"
+      }
+    },
+    "Filters": {
+      "moreFilters": "詳細な絞り込み",
+      "filter": "フィルター{resourceName}",
+      "noFiltersApplied": "絞り込みが適用されていません",
+      "cancel": "キャンセル",
+      "done": "完了",
+      "clearAllFilters": "すべての絞り込みをクリアする",
+      "clear": "クリア",
+      "clearLabel": "{filterName}をクリアする",
+      "moreFiltersWithCount": "詳細な絞り込み ({count})"
+    },
+    "Modal": {
+      "iFrameTitle": "ボディマークアップ",
+      "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
+    },
+    "Pagination": {
+      "previous": "前へ",
+      "next": "次へ",
+      "pagination": "ページネーション"
+    },
+    "ProgressBar": {
+      "negativeWarningMessage": "進行中のプロパティに渡される値に負数は使用できません。{progress}を0にリセットする。",
+      "exceedWarningMessage": "進行中のプロパティに渡される値は100を超えることはできません。{progress}を100に設定する。"
+    },
+    "ResourceList": {
+      "sortingLabel": "並び替え",
+      "defaultItemSingular": "個",
+      "defaultItemPlural": "アイテム",
+      "showing": "{itemsCount}個の{resource}を表示中",
+      "loading": "{resource}を読み込んでいます",
+      "selected": "{selectedItemsCount}を選択済み",
+      "allItemsSelected": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}が選択されています。",
+      "selectAllItems": "ストアにあるすべての{itemsLength}以上の{resourceNamePlural}を選択する",
+      "emptySearchResultTitle": "{resourceNamePlural}が見つかりませんでした",
+      "emptySearchResultDescription": "絞り込みや検索ワードを変更してみてください",
+      "selectButtonText": "選択",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
+      "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
+      "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}を選択する",
+      "ariaLiveSingular": "アイテム数: {itemsLength}",
+      "ariaLivePlural": "アイテム数: {itemsLength}",
+      "Item": {
+        "actionsDropdownLabel": "{accessibilityLabel}のアクション",
+        "actionsDropdown": "アクションドロップダウン",
+        "viewItem": "{itemName}の詳細を表示する"
+      },
+      "BulkActions": {
+        "actionsActivatorLabel": "アクション",
+        "moreActionsActivatorLabel": "その他の操作",
+        "warningMessage": "さらに優れたユーザーエクスペリエンスのために。プロモートアクションは最大で{maxPromotedActions}回までです。"
+      },
+      "showingTotalCount": "{totalItemsCount}の{itemsCount}、{resource}を表示中",
+      "allFilteredItemsSelected": "この絞り込み内の{itemsLength}と{resourceNamePlural}がすべて選択されます。",
+      "selectAllFilteredItems": "この絞り込みの{itemsLength}と{resourceNamePlural}をすべて選択する"
+    },
+    "SkeletonPage": {
+      "loadingLabel": "ページを読み込み中"
+    },
+    "Tabs": {
+      "toggleTabsLabel": "その他のタブ"
+    },
+    "Tag": {
+      "ariaLabel": "{children}を削除"
+    },
+    "TextField": {
+      "characterCount": "{count}文字",
+      "characterCountWithMaxLength": "{limit}中{count}の文字を使用"
+    },
+    "TopBar": {
+      "toggleMenuLabel": "メニューを切り替える",
+      "SearchField": {
+        "clearButtonLabel": "クリア",
+        "search": "検索"
+      }
+    },
+    "MediaCard": {
+      "popoverButton": "アクション"
+    },
+    "VideoThumbnail": {
+      "playButtonA11yLabel": {
+        "default": "ビデオを再生",
+        "defaultWithDuration": "長さ{duration}の動画を再生する",
+        "duration": {
+          "hours": {
+            "other": {
+              "only": "{hourCount}時間",
+              "andMinutes": "{hourCount}時間{minuteCount}分",
+              "andMinute": "{hourCount}時間{minuteCount}分",
+              "minutesAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minutesAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "andSeconds": "{hourCount}時間{secondCount}秒",
+              "andSecond": "{hourCount}時間{secondCount}秒"
+            },
+            "one": {
+              "only": "{hourCount}時間",
+              "andMinutes": "{hourCount}時間{minuteCount}分",
+              "andMinute": "{hourCount}時間{minuteCount}分",
+              "minutesAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minutesAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSeconds": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "minuteAndSecond": "{hourCount}時間{minuteCount}分{secondCount}秒",
+              "andSeconds": "{hourCount}時間{secondCount}秒",
+              "andSecond": "{hourCount}時間{secondCount}秒"
+            }
+          },
+          "minutes": {
+            "other": {
+              "only": "{minuteCount}分",
+              "andSeconds": "{minuteCount}分{secondCount}秒",
+              "andSecond": "{minuteCount}分{secondCount}秒"
+            },
+            "one": {
+              "only": "{minuteCount}分",
+              "andSeconds": "{minuteCount}分{secondCount}秒",
+              "andSecond": "{minuteCount}分{secondCount}秒"
+            }
+          },
+          "seconds": {
+            "other": "{secondCount}秒",
+            "one": "{secondCount}秒"
+          }
+        }
+      }
+    },
+    "Loading": {
+      "label": "ページの読み込み表示バー"
+    },
+    "TooltipOverlay": {
+      "accessibilityLabel": "ツールチップ: {label}"
+    },
+    "IndexProvider": {
+      "defaultItemSingular": "アイテム",
+      "defaultItemPlural": "アイテム",
+      "allItemsSelected": "すべての{itemsLength}+{resourceNamePlural}が選択されています。",
+      "selected": "{selectedItemsCount}を選択済み",
+      "a11yCheckboxDeselectAllSingle": "{resourceNameSingular}の選択を解除する",
+      "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
+      "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
+      "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}を選択する"
+    },
+    "IndexTable": {
+      "emptySearchTitle": "{resourceNamePlural}が見つかりませんでした",
+      "emptySearchDescription": "絞り込みや検索ワードを変更してみてください",
+      "onboardingBadgeText": "新規",
+      "resourceLoadingAccessibilityLabel": "{resourceNamePlural}を読み込んでいます...",
+      "selectAllLabel": "すべての{resourceNamePlural}を選択する",
+      "selected": "{selectedItemsCount}を選択済み",
+      "undo": "元に戻す",
+      "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
+      "selectItem": "{resourceName}を選択する",
+      "selectButtonText": "選択"
+    },
+    "Page": {
+      "Header": {
+        "rollupActionsLabel": "{title}のアクションを表示"
+      }
+    },
+    "FullscreenBar": {
+      "back": "戻る",
+      "accessibilityLabel": "フルスクリーンモードを閉じる"
+    }
+  }
+}

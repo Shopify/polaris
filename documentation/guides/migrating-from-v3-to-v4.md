@@ -1,6 +1,6 @@
 # Migrating from v3 to v4
 
-Polaris v4.0.0 ([full release notes](https://github.com/Shopify/polaris-react/releases/tag/v4.0.0)) removes most features deprecated in v3.x.x releases. This file describes all code updates required to stay up to date.
+Polaris v4.0.0 ([full release notes](https://github.com/Shopify/polaris/releases/tag/v4.0.0)) removes most features deprecated in v3.x.x releases. This file describes all code updates required to stay up to date.
 
 ## Table of contents
 
@@ -27,7 +27,7 @@ Polaris v4.0.0 ([full release notes](https://github.com/Shopify/polaris-react/re
 
 Polaris React was migrated to [React’s new context API](https://reactjs.org/docs/context.html) while restructuring its entire context structure. Polaris React now exposes all internal contexts required for testing within a single `PolarisTestProvider` component.
 
-**Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used, as shown in [these examples](https://github.com/Shopify/polaris-react/tree/main/examples).
+**Note:** These examples use [Enzyme](https://airbnb.io/enzyme/). Other testing libraries can also be used.
 
 In v3, you could hook into Polaris React’s legacy contexts using `createPolarisContext` and `polarisContextTypes`.
 
@@ -65,7 +65,7 @@ export function mountWithPolaris(node, context = {}) {
 
 ### AppProvider <a name="polaris-appprovider"></a>
 
-Polaris now supports multiple languages and ships with [many translations](https://github.com/Shopify/polaris-react/blob/main/locales) to support internationalization. The `i18n` prop is now required to specify the translations you wish to use.
+Polaris now supports multiple languages and ships with [many translations](https://github.com/Shopify/polaris/blob/main/polaris-react/locales) to support internationalization. The `i18n` prop is now required to specify the translations you wish to use.
 
 ```jsx
 // old
@@ -76,7 +76,7 @@ import translations from '@shopify/polaris/locales/en.json';
 <AppProvider i18n={translations}>
 ```
 
-If you use [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) and want to dynamically load translations based on a provided locale, see the [AppProvider README](https://github.com/Shopify/polaris-react/blob/main/src/components/AppProvider/README.md#using-translations) for more information.
+If you use [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/main/packages/react-i18n) and want to dynamically load translations based on a provided locale, see the [AppProvider README](https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/AppProvider/README.md#using-translations) for more information.
 
 ### Autocomplete <a name="polaris-autocomplete"></a>
 

@@ -1,0 +1,68 @@
+@mixin page-layout {
+  margin: 0 auto;
+  padding: 0;
+  max-width: $page-max-width;
+
+  @include page-content-when-not-fully-condensed {
+    padding: 0 var(--p-space-6);
+  }
+}
+
+@mixin page-content-layout {
+  padding: var(--p-space-2) 0;
+
+  @include page-content-when-not-partially-condensed {
+    padding-top: var(--p-space-5);
+  }
+}
+
+@mixin page-title-layout {
+  @include layout-flex-fix;
+  @include text-breakword;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--p-space-2));
+  margin-left: calc(-1 * var(--p-space-2));
+
+  > * {
+    margin-top: var(--p-space-2);
+    margin-left: var(--p-space-2);
+  }
+}
+
+@mixin page-header-layout {
+  padding: var(--p-space-4);
+
+  @include page-content-when-not-fully-condensed {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    padding: var(--p-space-5) 0;
+  }
+}
+
+@mixin page-header-has-navigation {
+  padding-top: var(--p-space-4);
+}
+
+@mixin page-header-without-navigation {
+  margin-top: unset;
+}
+
+@mixin page-header-has-secondary-actions {
+  padding-top: var(--p-space-4);
+}
+
+@mixin page-actions-layout {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: var(--p-space-4);
+
+  @include page-content-when-not-fully-condensed {
+    margin-top: var(--p-space-2);
+  }
+}

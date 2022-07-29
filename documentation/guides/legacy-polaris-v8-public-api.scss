@@ -1,0 +1,2162 @@
+// Deprecated scss functions and mixins
+
+//
+// Polaris Tokens: colors.color-map
+//
+
+$polaris-colors: (
+  'purple': (
+    'text': rgb(80, 73, 90),
+    'darker': rgb(35, 0, 81),
+    'dark': rgb(80, 36, 143),
+    'base': rgb(156, 106, 222),
+    'light': rgb(227, 208, 255),
+    'lighter': rgb(246, 240, 253),
+  ),
+  'indigo': (
+    'text': rgb(62, 65, 85),
+    'darker': rgb(0, 6, 57),
+    'dark': rgb(32, 46, 120),
+    'base': rgb(92, 106, 196),
+    'light': rgb(179, 188, 245),
+    'lighter': rgb(244, 245, 250),
+  ),
+  'blue': (
+    'text': rgb(62, 78, 87),
+    'darker': rgb(0, 20, 41),
+    'dark': rgb(8, 78, 138),
+    'base': rgb(0, 111, 187),
+    'light': rgb(180, 225, 250),
+    'lighter': rgb(235, 245, 250),
+  ),
+  'teal': (
+    'text': rgb(64, 83, 82),
+    'darker': rgb(0, 49, 53),
+    'dark': rgb(0, 132, 142),
+    'base': rgb(71, 193, 191),
+    'light': rgb(183, 236, 236),
+    'lighter': rgb(224, 245, 245),
+  ),
+  'green': (
+    'text': rgb(65, 79, 62),
+    'darker': rgb(23, 54, 48),
+    'dark': rgb(16, 128, 67),
+    'base': rgb(80, 184, 60),
+    'light': rgb(187, 229, 179),
+    'lighter': rgb(227, 241, 223),
+  ),
+  'yellow': (
+    'text': rgb(89, 81, 48),
+    'darker': rgb(87, 59, 0),
+    'dark': rgb(138, 97, 22),
+    'base': rgb(238, 194, 0),
+    'light': rgb(255, 234, 138),
+    'lighter': rgb(252, 241, 205),
+  ),
+  'orange': (
+    'text': rgb(89, 68, 48),
+    'darker': rgb(74, 21, 4),
+    'dark': rgb(192, 87, 23),
+    'base': rgb(244, 147, 66),
+    'light': rgb(255, 197, 139),
+    'lighter': rgb(252, 235, 219),
+  ),
+  'red': (
+    'text': rgb(88, 60, 53),
+    'darker': rgb(51, 1, 1),
+    'dark': rgb(191, 7, 17),
+    'base': rgb(222, 54, 24),
+    'light': rgb(254, 173, 154),
+    'lighter': rgb(251, 234, 229),
+  ),
+  'ink': (
+    'base': rgb(33, 43, 54),
+    'light': rgb(69, 79, 91),
+    'lighter': rgb(99, 115, 129),
+    'lightest': rgb(145, 158, 171),
+  ),
+  'sky': (
+    'dark': rgb(196, 205, 213),
+    'base': rgb(223, 227, 232),
+    'light': rgb(244, 246, 248),
+    'lighter': rgb(249, 250, 251),
+  ),
+  'black': (
+    'base': rgb(0, 0, 0),
+  ),
+  'white': (
+    'base': rgb(255, 255, 255),
+  ),
+);
+
+//
+// Polaris Tokens: color-filters.color-map
+//
+
+$polaris-color-filters: (
+  'purple': (
+    'text': brightness(0) saturate(100%) invert(29%) sepia(3%) saturate(2843%)
+      hue-rotate(223deg) brightness(92%) contrast(86%),
+    'darker': brightness(0) saturate(100%) invert(8%) sepia(38%) saturate(6605%)
+      hue-rotate(265deg) brightness(99%) contrast(124%),
+    'dark': brightness(0) saturate(100%) invert(12%) sepia(46%) saturate(4964%)
+      hue-rotate(258deg) brightness(101%) contrast(93%),
+    'base': brightness(0) saturate(100%) invert(49%) sepia(77%) saturate(1864%)
+      hue-rotate(229deg) brightness(91%) contrast(91%),
+    'light': brightness(0) saturate(100%) invert(82%) sepia(13%) saturate(1535%)
+      hue-rotate(203deg) brightness(103%) contrast(104%),
+    'lighter': brightness(0) saturate(100%) invert(84%) sepia(15%)
+      saturate(135%) hue-rotate(219deg) brightness(110%) contrast(98%),
+  ),
+  'indigo': (
+    'text': brightness(0) saturate(100%) invert(24%) sepia(11%) saturate(1035%)
+      hue-rotate(195deg) brightness(97%) contrast(94%),
+    'darker': brightness(0) saturate(100%) invert(5%) sepia(81%) saturate(5060%)
+      hue-rotate(229deg) brightness(72%) contrast(111%),
+    'dark': brightness(0) saturate(100%) invert(17%) sepia(28%) saturate(4409%)
+      hue-rotate(218deg) brightness(87%) contrast(98%),
+    'base': brightness(0) saturate(100%) invert(45%) sepia(17%) saturate(1966%)
+      hue-rotate(194deg) brightness(88%) contrast(84%),
+    'light': brightness(0) saturate(100%) invert(82%) sepia(37%) saturate(4261%)
+      hue-rotate(194deg) brightness(111%) contrast(92%),
+    'lighter': brightness(0) saturate(100%) invert(100%) sepia(25%)
+      saturate(1090%) hue-rotate(179deg) brightness(100%) contrast(96%),
+  ),
+  'blue': (
+    'text': brightness(0) saturate(100%) invert(27%) sepia(13%) saturate(709%)
+      hue-rotate(158deg) brightness(96%) contrast(89%),
+    'darker': brightness(0) saturate(100%) invert(5%) sepia(33%) saturate(5606%)
+      hue-rotate(195deg) brightness(97%) contrast(102%),
+    'dark': brightness(0) saturate(100%) invert(22%) sepia(70%) saturate(1308%)
+      hue-rotate(182deg) brightness(94%) contrast(101%),
+    'base': brightness(0) saturate(100%) invert(19%) sepia(98%) saturate(2885%)
+      hue-rotate(190deg) brightness(99%) contrast(101%),
+    'light': brightness(0) saturate(100%) invert(80%) sepia(7%) saturate(1832%)
+      hue-rotate(178deg) brightness(108%) contrast(96%),
+    'lighter': brightness(0) saturate(100%) invert(100%) sepia(94%)
+      saturate(686%) hue-rotate(175deg) brightness(103%) contrast(96%),
+  ),
+  'teal': (
+    'text': brightness(0) saturate(100%) invert(31%) sepia(11%) saturate(665%)
+      hue-rotate(128deg) brightness(94%) contrast(93%),
+    'darker': brightness(0) saturate(100%) invert(15%) sepia(23%)
+      saturate(2237%) hue-rotate(141deg) brightness(96%) contrast(104%),
+    'dark': brightness(0) saturate(100%) invert(28%) sepia(83%) saturate(3919%)
+      hue-rotate(168deg) brightness(93%) contrast(101%),
+    'base': brightness(0) saturate(100%) invert(72%) sepia(8%) saturate(2838%)
+      hue-rotate(130deg) brightness(92%) contrast(87%),
+    'light': brightness(0) saturate(100%) invert(95%) sepia(12%) saturate(683%)
+      hue-rotate(122deg) brightness(97%) contrast(91%),
+    'lighter': brightness(0) saturate(100%) invert(87%) sepia(5%)
+      saturate(1124%) hue-rotate(173deg) brightness(114%) contrast(92%),
+  ),
+  'green': (
+    'text': brightness(0) saturate(100%) invert(30%) sepia(8%) saturate(1010%)
+      hue-rotate(63deg) brightness(91%) contrast(91%),
+    'darker': brightness(0) saturate(100%) invert(15%) sepia(32%) saturate(727%)
+      hue-rotate(118deg) brightness(93%) contrast(91%),
+    'dark': brightness(0) saturate(100%) invert(18%) sepia(75%) saturate(6649%)
+      hue-rotate(155deg) brightness(97%) contrast(87%),
+    'base': brightness(0) saturate(100%) invert(56%) sepia(10%) saturate(2637%)
+      hue-rotate(64deg) brightness(106%) contrast(91%),
+    'light': brightness(0) saturate(100%) invert(93%) sepia(15%) saturate(599%)
+      hue-rotate(52deg) brightness(93%) contrast(93%),
+    'lighter': brightness(0) saturate(100%) invert(92%) sepia(51%)
+      saturate(187%) hue-rotate(46deg) brightness(108%) contrast(89%),
+  ),
+  'yellow': (
+    'text': brightness(0) saturate(100%) invert(28%) sepia(42%) saturate(413%)
+      hue-rotate(11deg) brightness(97%) contrast(91%),
+    'darker': brightness(0) saturate(100%) invert(19%) sepia(75%) saturate(981%)
+      hue-rotate(17deg) brightness(103%) contrast(103%),
+    'dark': brightness(0) saturate(100%) invert(37%) sepia(51%) saturate(709%)
+      hue-rotate(0deg) brightness(93%) contrast(89%),
+    'base': brightness(0) saturate(100%) invert(65%) sepia(91%) saturate(530%)
+      hue-rotate(5deg) brightness(100%) contrast(100%),
+    'light': brightness(0) saturate(100%) invert(77%) sepia(72%) saturate(246%)
+      hue-rotate(355deg) brightness(103%) contrast(107%),
+    'lighter': brightness(0) saturate(100%) invert(88%) sepia(27%)
+      saturate(234%) hue-rotate(357deg) brightness(103%) contrast(98%),
+  ),
+  'orange': (
+    'text': brightness(0) saturate(100%) invert(23%) sepia(18%) saturate(1092%)
+      hue-rotate(348deg) brightness(99%) contrast(84%),
+    'darker': brightness(0) saturate(100%) invert(9%) sepia(83%) saturate(1926%)
+      hue-rotate(356deg) brightness(98%) contrast(99%),
+    'dark': brightness(0) saturate(100%) invert(29%) sepia(94%) saturate(1431%)
+      hue-rotate(5deg) brightness(96%) contrast(82%),
+    'base': brightness(0) saturate(100%) invert(54%) sepia(86%) saturate(416%)
+      hue-rotate(340deg) brightness(105%) contrast(91%),
+    'light': brightness(0) saturate(100%) invert(77%) sepia(39%) saturate(483%)
+      hue-rotate(335deg) brightness(101%) contrast(103%),
+    'lighter': brightness(0) saturate(100%) invert(93%) sepia(11%)
+      saturate(918%) hue-rotate(312deg) brightness(107%) contrast(98%),
+  ),
+  'red': (
+    'text': brightness(0) saturate(100%) invert(22%) sepia(9%) saturate(2068%)
+      hue-rotate(325deg) brightness(92%) contrast(83%),
+    'darker': brightness(0) saturate(100%) invert(12%) sepia(100%)
+      saturate(5699%) hue-rotate(353deg) brightness(75%) contrast(101%),
+    'dark': brightness(0) saturate(100%) invert(12%) sepia(100%) saturate(5699%)
+      hue-rotate(353deg) brightness(75%) contrast(101%),
+    'base': brightness(0) saturate(100%) invert(28%) sepia(67%) saturate(3622%)
+      hue-rotate(353deg) brightness(89%) contrast(95%),
+    'light': brightness(0) saturate(100%) invert(80%) sepia(9%) saturate(2561%)
+      hue-rotate(313deg) brightness(101%) contrast(99%),
+    'lighter': brightness(0) saturate(100%) invert(89%) sepia(21%)
+      saturate(137%) hue-rotate(324deg) brightness(102%) contrast(97%),
+  ),
+  'ink': (
+    'base': brightness(0) saturate(100%) invert(10%) sepia(10%) saturate(2259%)
+      hue-rotate(171deg) brightness(99%) contrast(84%),
+    'light': brightness(0) saturate(100%) invert(32%) sepia(9%) saturate(1069%)
+      hue-rotate(173deg) brightness(83%) contrast(84%),
+    'lighter': brightness(0) saturate(100%) invert(45%) sepia(8%) saturate(825%)
+      hue-rotate(166deg) brightness(95%) contrast(90%),
+    'lightest': brightness(0) saturate(100%) invert(68%) sepia(18%)
+      saturate(246%) hue-rotate(169deg) brightness(88%) contrast(90%),
+  ),
+  'sky': (
+    'dark': brightness(0) saturate(100%) invert(86%) sepia(4%) saturate(502%)
+      hue-rotate(167deg) brightness(96%) contrast(91%),
+    'base': brightness(0) saturate(100%) invert(100%) sepia(95%) saturate(336%)
+      hue-rotate(175deg) brightness(97%) contrast(87%),
+    'light': brightness(0) saturate(100%) invert(99%) sepia(12%) saturate(467%)
+      hue-rotate(174deg) brightness(99%) contrast(96%),
+    'lighter': brightness(0) saturate(100%) invert(99%) sepia(1%) saturate(159%)
+      hue-rotate(170deg) brightness(99%) contrast(99%),
+  ),
+  'black': (
+    'base': brightness(0) saturate(100%),
+  ),
+  'white': (
+    'base': brightness(0) saturate(100%) invert(100%),
+  ),
+  'icon': (
+    'base': brightness(0) saturate(100%) invert(36%) sepia(13%) saturate(137%)
+      hue-rotate(169deg) brightness(95%) contrast(87%),
+  ),
+  'action': (
+    'base': brightness(0) saturate(100%) invert(20%) sepia(59%) saturate(5557%)
+      hue-rotate(162deg) brightness(95%) contrast(101%),
+  ),
+);
+
+//
+// Polaris Tokens: duration.map
+//
+
+$polaris-duration-map: (
+  'duration-none': (
+    0,
+  ),
+  'duration-fast': (
+    100ms,
+  ),
+  'duration-base': (
+    200ms,
+  ),
+  'duration-slow': (
+    300ms,
+  ),
+  'duration-slower': (
+    400ms,
+  ),
+  'duration-slowest': (
+    500ms,
+  ),
+);
+
+//
+// Polaris Tokens: spacing.spacing-map
+//
+
+$polaris-spacing: (
+  'none': 0,
+  'extra-tight': 4px,
+  'tight': 8px,
+  'base-tight': 12px,
+  'base': 16px,
+  'loose': 20px,
+  'extra-loose': 32px,
+);
+
+//
+// FOUNDATION: accessibility
+//
+
+@mixin high-contrast-outline($border-width: border-width()) {
+  outline: $border-width solid transparent;
+  @content;
+}
+
+@mixin high-contrast-border($border-width: border-width()) {
+  border: $border-width solid transparent;
+  @content;
+}
+
+//
+// FOUNDATION: utilities
+//
+
+$default-browser-font-size: 16px;
+$base-font-size: 16px;
+
+/// Returns the value in rem for a given pixel value.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in rem.
+
+@function rem($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'rem' {
+    @return $value;
+  } @else if $unit == 'px' {
+    @return $value / $base-font-size * 1rem;
+  } @else if $unit == 'em' {
+    @return $unit / 1em * 1rem;
+  } @else {
+    @error 'Value must be in px, em, or rem.';
+  }
+}
+
+/// Returns the value in pixels for a given rem value.
+/// @param {Number} $value - The rem value to be converted.
+/// @return {Number} The converted value in pixels.
+
+@function px($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'px' {
+    @return $value;
+  } @else if $unit == 'em' {
+    @return ($value / 1em) * $base-font-size;
+  } @else if $unit == 'rem' {
+    @return ($value / 1rem) * $base-font-size;
+  } @else {
+    @error 'Value must be in rem, em, or px.';
+  }
+}
+
+/// Returns the value in ems for a given pixel value. Note that this
+/// only works for elements that have had no font-size changes.
+/// @param {Number} $value - The pixel value to be converted.
+/// @return {Number} The converted value in ems.
+
+@function em($value) {
+  $unit: unit($value);
+
+  @if $value == 0 {
+    @return 0;
+  } @else if $unit == 'em' {
+    @return $value;
+  } @else if $unit == 'rem' {
+    @return $value / 1rem * 1em * ($base-font-size / $default-browser-font-size);
+  } @else if $unit == 'px' {
+    @return $value / $default-browser-font-size * 1em;
+  } @else {
+    @error 'Value must be in px, rem, or em.';
+  }
+}
+
+/// Returns the list of available names in a given map.
+/// @param {Map} $map - The map of data to list the names from.
+/// @param {Number} $map - The level of depth to get names from.
+/// @return {String} The list of names in the map.
+
+@function available-names($map, $level: 1) {
+  @if type-of($map) != 'map' {
+    @return null;
+  }
+
+  $output: '';
+  $newline: '\A ';
+
+  @if $level == 1 {
+    @each $key, $value in $map {
+      $output: $output +
+        '#{$newline}- #{$key} #{available-names($value, $level + 1)}';
+    }
+  } @else {
+    $output: '(';
+    $i: 1;
+
+    @each $key, $value in $map {
+      $sep: if($i < length($map), ', ', '');
+      $output: $output + '#{$key}#{$sep}#{available-names($value, $level + 1)}';
+      $i: $i + 1;
+    }
+
+    $output: $output + ')';
+  }
+
+  @return $output;
+}
+
+// Merge multiple maps into one.
+// @param {Map} $map - Initial default map.
+// @param {ArgList} $maps - Other maps to merge.
+// @return {Map} The final merged map.
+@function map-extend($map, $maps...) {
+  @for $i from 1 through length($maps) {
+    @each $key, $value in nth($maps, $i) {
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
+
+      @if type-of($value) == map and type-of(map-get($map, $key)) == map {
+        $value: map-extend(map-get($map, $key), $value);
+      }
+    }
+  }
+
+  @return $map;
+}
+
+//
+// FOUNDATION: colors
+//
+
+///
+/// Color data
+///
+/// Shopify color palette, extended specifically for polaris-react.
+///
+/// @type map
+$color-palette-data: $polaris-colors;
+
+// Add state colors to the palette
+$color-palette-data: map-extend(
+  $color-palette-data,
+  (
+    'state': (
+      'hover': rgba(223, 227, 232, 0.3),
+      'focused': rgba(223, 227, 232, 0.3),
+      'active': rgba(179, 188, 245, 0.1),
+      'selected': rgba(179, 188, 245, 0.15),
+      'subdued': rgba(249, 250, 251, 1),
+      'disabled': rgba(249, 250, 251, 1),
+      'hover-destructive': rgba(251, 234, 229, 0.4),
+      'focused-destructive': rgba(251, 234, 229, 0.4),
+      'active-destructive': rgba(220, 56, 37, 0.03),
+    ),
+  )
+);
+
+/// Returns the color value for a given color name and group.
+///
+/// @param {String} $hue - The color’s hue.
+/// @param {String} $value - The darkness/lightness of the color. Defaults to
+/// base.
+/// @param {Color} $for-background - The background color on which this color
+/// will appear. Applies a multiply filter to ensure appropriate contrast.
+/// @return {Color} The color value.
+
+@function color($hue, $value: base, $for-background: null) {
+  $fetched-color: map-get(map-get($color-palette-data, $hue), $value);
+
+  @if map-has-key($color-palette-data, $fetched-color) {
+    $fetched-color: map-get(
+      map-get($color-palette-data, $fetched-color),
+      $value
+    );
+  }
+
+  @if $for-background {
+    $fetched-color: color-multiply($fetched-color, $for-background);
+  }
+
+  @if type-of($fetched-color) == color {
+    @return $fetched-color;
+  } @else {
+    @error "Color `#{$hue}, #{$value}` not found.\a Make sure arguments are strings.\a GOOD: `color('yellow')`.\a BAD: `color(yellow)`.\a\a Available options: #{available-names($color-palette-data)}";
+  }
+}
+
+/// Darkens the foreground color by the background color. This is the same as
+/// the "multiply" filter in graphics apps.
+///
+/// @param {Color} $foreground - The color to darken.
+/// @param {Color} $background - The background to base darkening on.
+/// @return {Color} The modified color.
+
+@function color-multiply($foreground, $background: null) {
+  @if $background {
+    $background: rgb(255, 255, 255);
+  }
+
+  $red: red($background) * red($foreground) / 255;
+  $green: green($background) * green($foreground) / 255;
+  $blue: blue($background) * blue($foreground) / 255;
+
+  $opacity: opacity($foreground);
+  $background-opacity: opacity($background);
+
+  // calculate opacity
+  $bm-red: $red * $opacity + red($background) * $background-opacity *
+    (1 - $opacity);
+  $bm-green: $green * $opacity + green($background) * $background-opacity *
+    (1 - $opacity);
+  $bm-blue: $blue * $opacity + blue($background) * $background-opacity *
+    (1 - $opacity);
+
+  @return rgb($bm-red, $bm-green, $bm-blue);
+}
+
+///
+/// Color palette for Windows high-contrast mode
+/// See https://bit.ly/2vN9aGO
+///
+/// @type map
+
+$ms-high-contrast-color-data: (
+  'text': windowText,
+  'disabled-text': grayText,
+  'selected-text': highlightText,
+  'selected-text-background': highlight,
+  'button-text': buttonText,
+  'button-text-background': buttonFace,
+  'background': window,
+);
+
+///
+/// Returns the color value for Windows high contrast mode
+///
+/// @param {String} $color - The name of the high-contrast color.
+/// @return {Color} The color value.
+
+@function ms-high-contrast-color($color) {
+  $fetched-color: map-get($ms-high-contrast-color-data, $color);
+
+  @if $fetched-color {
+    @return $fetched-color;
+  } @else {
+    @error "Color `#{$color}` not found.\a Make sure argument is a string.\a GOOD: ms-high-contrast-color('selected-text').\a BAD: ms-high-contrast-color(selected-text).\a\a Available options: #{available-names($ms-high-contrast-color-data)}";
+  }
+}
+
+//
+// FOUNDATION: filters
+//
+
+///
+/// Color filter data
+///
+/// Shopify color filter palette, extended specifically for polaris-react.
+///
+/// @type map
+$color-filter-palette-data: $polaris-color-filters;
+
+/// Returns the filter list for a given color name and group.
+///
+/// @param {String} $hue - The color’s hue.
+/// @param {String} $value - The darkness/lightness of the color. Defaults to
+/// base.
+/// @return {List} The filter list.
+
+@function filter($hue, $value: base) {
+  $fetched-color: map-get(map-get($color-filter-palette-data, $hue), $value);
+
+  @if map-has-key($color-filter-palette-data, $fetched-color) {
+    $fetched-color: map-get(
+      map-get($color-filter-palette-data, $fetched-color),
+      $value
+    );
+  }
+
+  @if type-of($fetched-color) == list {
+    @return $fetched-color;
+  } @else {
+    @error "Filter `#{$hue}, #{$value}` not found.\a Make sure arguments are strings.\a GOOD: `filter('yellow')`.\a BAD: `filter(yellow)`.\a\a Available options: #{available-names($color-filter-palette-data)}";
+  }
+}
+
+//
+// FOUNDATION: spacing
+//
+
+$spacing-data: $polaris-spacing;
+
+/// Returns the spacing value for a given variant.
+///
+/// @param {String} $variant - The key for the given variant.
+/// @return {Number} The spacing for the variant.
+
+@function spacing($variant: base) {
+  $fetched-value: map-get($spacing-data, $variant);
+
+  @if type-of($fetched-value) == number {
+    @return rem($fetched-value);
+  } @else {
+    @error 'Spacing variant `#{$variant}` not found. Available variants: #{available-names($spacing-data)}';
+  }
+}
+
+//
+// FOUNDATION: border-width
+//
+
+$border-width-data: (
+  base: rem(1px),
+  thick: rem(2px),
+  thicker: rem(3px),
+);
+
+/// Returns the width of the specified border type.
+/// @param {String} $variant [base] - The border variant key.
+/// @return {Number} The width for the border.
+
+@function border-width($variant: base) {
+  $fetched-value: map-get($border-width-data, $variant);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Border width variant `#{$variant}` not found. Available variants: #{available-names($border-width-data)}';
+  }
+}
+
+//
+// FOUNDATION: borders
+//
+
+$borders-data: (
+  base: border-width() solid var(--p-border-subdued),
+  dark: border-width() solid var(--p-border),
+  transparent: border-width() solid transparent,
+  divider: border-width() solid var(--p-divider),
+);
+
+/// Returns the default border.
+/// @param {String} $variant [base] - The border variant key.
+/// @return {List} The border value.
+
+@function border($variant: base) {
+  $fetched-value: map-get($borders-data, $variant);
+
+  @if $fetched-value {
+    @return $fetched-value;
+  } @else {
+    @error 'Border variant `#{$variant}` not found. Available variants: #{available-names($borders-data)}';
+  }
+}
+
+//
+// FOUNDATION: border-radius
+//
+
+$border-radius-data: (
+  base: 3px,
+  large: 6px,
+);
+
+/// Returns the border radius of the specified size.
+/// @param {String} $size - The border radius’s size.
+/// @return {Number} The border radius value.
+
+@function border-radius($size: base) {
+  @return map-get($border-radius-data, $size);
+}
+
+//
+// FOUNDATION: duration
+//
+
+$duration-data: $polaris-duration-map;
+
+/// Returns the duration value for a given variant.
+///
+/// @param {String} $variant - The key for the given variant.
+/// @return {Number} The duration for the variant (in milliseconds).
+
+@function duration($variant: base) {
+  $interpolated-value: 'duration-' + $variant;
+  $fetched-value: nth(map-get($duration-data, $interpolated-value), 1);
+
+  @if type-of($fetched-value) == number {
+    @return $fetched-value;
+  } @else {
+    @error 'Duration variant `#{$interpolated-value}` not found. Available variants: #{available-names($duration-data)}';
+  }
+}
+
+//
+// FOUNDATION: easing
+//
+
+$easing-data: (
+  base: cubic-bezier(0.25, 0.1, 0.25, 1),
+  in: cubic-bezier(0.36, 0, 1, 1),
+  out: cubic-bezier(0, 0, 0.42, 1),
+  excite: cubic-bezier(0.18, 0.67, 0.6, 1.22),
+  overshoot: cubic-bezier(0.07, 0.28, 0.32, 1.22),
+  anticipate: cubic-bezier(0.38, -0.4, 0.88, 0.65),
+);
+
+/// Returns the timing-function value for a given variant.
+///
+/// @param {String} $variant - The key for the given variant.
+/// @return {String} The cubic-bezier function (string) for the variant.
+
+@function easing($variant: base) {
+  $fetched-value: map-get($easing-data, $variant);
+
+  @if type-of($fetched-value) == string {
+    @return $fetched-value;
+  } @else {
+    @error 'Easing variant `#{$variant}` not found. Available variants: #{available-names($easing-data)}';
+  }
+}
+
+//
+// FOUNDATION: layout
+//
+
+$navigation-width: 240px !default;
+
+////
+/// Layout
+/// @group foundation/layout
+////
+
+$layout-width-data: (
+  primary: (
+    min: rem(480px),
+    max: rem(662px),
+  ),
+  secondary: (
+    min: rem(240px),
+    max: rem(320px),
+  ),
+  one-half-width: (
+    base: rem(450px),
+  ),
+  one-third-width: (
+    base: rem(240px),
+  ),
+  nav: (
+    base: rem($navigation-width),
+  ),
+  page-with-nav: (
+    base: rem(769px),
+  ),
+  page-content: (
+    not-condensed: rem(680px),
+    partially-condensed: rem(450px),
+  ),
+  inner-spacing: (
+    base: spacing(),
+  ),
+  outer-spacing: (
+    min: spacing(loose),
+    max: spacing(extra-loose),
+  ),
+);
+
+/// Returns the widths of the specified column.
+/// @param {String} $name - The column name.
+/// @return {Number} The width for the column.
+
+@function layout-width($name, $value: base) {
+  $fetched-value: map-get(map-get($layout-width-data, $name), $value);
+
+  @if type-of($fetched-value) {
+    @return $fetched-value;
+  } @else {
+    @error 'Column `#{$name} - #{$value}` not found. Available columns: #{available-names($layout-width-data)}';
+  }
+}
+
+$dismiss-icon-size: 32px;
+
+@function top-bar-height() {
+  @return rem(56px);
+}
+
+@function mobile-nav-width() {
+  @return calc(100vw - #{rem($dismiss-icon-size) + spacing() * 2});
+}
+
+@function nav-min-window-corrected() {
+  @return rem(769px);
+}
+
+//
+// FOUNDATION: shadows
+//
+
+// Shadows are intentionally very subtle gradiations.
+$shadows-data: (
+  faint: (
+    0 1px 0 0 rgba(22, 29, 37, 0.05),
+  ),
+  base: (
+    0 0 0 1px rgba(63, 63, 68, 0.05),
+    0 1px 3px 0 rgba(63, 63, 68, 0.15),
+  ),
+  deep: (
+    0 0 0 1px rgba(6, 44, 82, 0.1),
+    0 2px 16px rgba(33, 43, 54, 0.08),
+  ),
+  layer: (
+    0 31px 41px 0 rgba(32, 42, 53, 0.2),
+    0 2px 16px 0 rgba(32, 42, 54, 0.08),
+  ),
+  transparent: 0 0 0 0 transparent,
+);
+
+/// Returns the shadow for the specified depth
+/// @param {String} $depth [base] - The shadow’s depth.
+/// @return {List} The shadow value.
+
+@function shadow($depth: base) {
+  $fetched-value: map-get($shadows-data, $depth);
+
+  @if type-of($fetched-value) == list {
+    @return $fetched-value;
+  } @else {
+    @error 'Shadow variant `#{$depth}` not found. Available variants: #{available-names($shadows-data)}';
+  }
+}
+
+//
+// FOUNDATION: typography
+//
+
+$typography-condensed: em(640px);
+
+$font-family-data: (
+  base: #{-apple-system,
+  'BlinkMacSystemFont',
+  'San Francisco',
+  'Segoe UI',
+  'Roboto',
+  'Helvetica Neue',
+  sans-serif},
+  monospace: #{ui-monospace,
+  SFMono-Regular,
+  SF Mono,
+  Consolas,
+  Liberation Mono,
+  Menlo,
+  monospace},
+);
+
+$line-height-data: (
+  caption: (
+    base: rem(20px),
+    large-screen: rem(16px),
+  ),
+  heading: (
+    base: rem(24px),
+  ),
+  subheading: (
+    base: rem(16px),
+  ),
+  input: (
+    base: rem(24px),
+  ),
+  body: (
+    base: rem(20px),
+  ),
+  button: (
+    base: rem(16px),
+  ),
+  button-large: (
+    base: rem(20px),
+  ),
+  display-x-large: (
+    base: rem(36px),
+    large-screen: rem(44px),
+  ),
+  display-large: (
+    base: rem(28px),
+    large-screen: rem(32px),
+  ),
+  display-medium: (
+    base: rem(28px),
+    large-screen: rem(32px),
+  ),
+  display-small: (
+    base: rem(24px),
+    large-screen: rem(28px),
+  ),
+);
+
+$font-size-data: (
+  caption: (
+    base: rem(13px),
+    large-screen: rem(12px),
+  ),
+  heading: (
+    base: rem(17px),
+    large-screen: rem(16px),
+  ),
+  subheading: (
+    base: rem(13px),
+    large-screen: rem(12px),
+  ),
+  input: (
+    base: rem(16px),
+    large-screen: rem(14px),
+  ),
+  body: (
+    base: rem(15px),
+    large-screen: rem(14px),
+  ),
+  button: (
+    base: rem(15px),
+    large-screen: rem(14px),
+  ),
+  button-large: (
+    base: rem(17px),
+    large-screen: rem(16px),
+  ),
+  display-x-large: (
+    base: rem(27px),
+    large-screen: rem(42px),
+  ),
+  display-large: (
+    base: rem(24px),
+    large-screen: rem(28px),
+  ),
+  display-medium: (
+    base: rem(21px),
+    large-screen: rem(26px),
+  ),
+  display-small: (
+    base: rem(16px),
+    large-screen: rem(20px),
+  ),
+);
+
+/// Returns the font stack for a given family.
+///
+/// @param {String} $family - The key for the given family.
+/// @return {Number} The font stack for the family.
+
+@function font-family($family: base) {
+  $fetched-value: map-get($font-family-data, $family);
+
+  @if $fetched-value {
+    @return $fetched-value;
+  } @else {
+    @error 'Font family `#{$family}` not found. Available font families: #{available-names($font-family-data)}';
+  }
+}
+
+/// Returns the line height for a given text style and variant.
+///
+/// @param {String} $style - The font style.
+/// @param {String} $variant [base] - The variant on the font-size.
+/// @return {Number} The line-height for the text-style.
+
+@function line-height($style, $variant: base) {
+  $fetched-line-height: map-get(map-get($line-height-data, $style), $variant);
+
+  @if type-of($fetched-line-height) {
+    @return $fetched-line-height;
+  } @else {
+    @error 'Line height `#{$style} - #{$variant}` not found. Available line heights: #{available-names($line-height-data)}';
+  }
+}
+
+/// Returns the font size for a given text style and variant.
+///
+/// @param {String} $style - The font style.
+/// @param {String} $variant [base] - The variant on the font-size.
+/// @return {Number} The font-size for the text-style.
+
+@function font-size($style, $variant: base) {
+  $fetched-font-size: map-get(map-get($font-size-data, $style), $variant);
+
+  @if type-of($fetched-font-size) {
+    @return $fetched-font-size;
+  } @else {
+    @error 'Font size `#{$style} - #{$variant}` not found. Available font sizes: #{available-names($line-height-data)}';
+  }
+}
+
+//
+// FOUNDATION: z-index
+//
+
+$global-elements: (
+  content: 100,
+  overlay: 400,
+);
+
+// We're matching that here and relatively stacking other fixed components.
+$fixed-element-stacking-order: (
+  global-ribbon: 510,
+  loading-bar: 511,
+  top-bar: 512,
+  context-bar: 513,
+  small-screen-loading-bar: 514,
+  nav-backdrop: 515,
+  nav: 516,
+  skip-to-content: 517,
+  backdrop: 518,
+  modal: 519,
+  toast: 520,
+  dev-ui: 521,
+);
+
+/// Returns the z-index of the specified element.
+/// @param {String} $element - The key for the element.
+/// @param {Map} $context - The map in which to search for the element.
+/// @return {Number} The z-index for the element.
+
+@function z-index($element, $context: $global-elements) {
+  $index: map-get($context, $element);
+
+  @if $index {
+    @return $index;
+  } @else {
+    @error 'z-index `#{$element}` in `#{$context}` not found.';
+  }
+}
+
+//
+// FOUNDATION: focus-ring
+//
+
+/// Sets the focus ring for an interactive element
+/// @param {String} $size - The size of the border radius on the focus ring.
+/// @param {String} $style - Focus ring state.
+/// @param {Number} $border-width - The border width of your element in rems.
+///
+
+@mixin focus-ring($size: 'base', $border-width: 0, $style: 'base') {
+  $stroke: rem(2px);
+  // calc does not like performing addition with a unitless number (`0`, NOT `0px`)
+  // This is a problem because `rem(0px)` returns `0`, not `0px`.
+  // Make sure that we can handle unitless zeros by not trying to do math with them
+  $offset: if(
+    $border-width == 0,
+    rem(1px),
+    calc(#{$border-width} + #{rem(1px)})
+  );
+  $border-radius: if(
+    $size == 'wide',
+    var(--p-border-radius-2),
+    var(--p-border-radius-1)
+  );
+  $negative-offset: calc(-1 * #{$offset});
+
+  @if $style == 'base' {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      z-index: 1;
+      top: $negative-offset;
+      right: $negative-offset;
+      bottom: $negative-offset;
+      left: $negative-offset;
+      display: block;
+      pointer-events: none;
+      box-shadow: 0 0 0 $negative-offset var(--p-focused);
+      transition: box-shadow duration(fast) var(--p-ease);
+      border-radius: calc(#{$border-radius} + #{rem(1px)});
+    }
+  } @else if $style == 'focused' {
+    &::after {
+      box-shadow: 0 0 0 $stroke var(--p-focused);
+      @include high-contrast-outline;
+    }
+  }
+}
+
+@mixin no-focus-ring {
+  &::after {
+    content: none;
+  }
+}
+
+//
+// SHARED: accessibility
+//
+
+/// Used to hide an element visually, but keeping it accessible for
+/// accessibility tools.
+
+/// styles referenced from GOV.UK design system
+/// https://github.com/h5bp/main.css/issues/12#issuecomment-451965809
+@mixin visually-hidden {
+  // Need to make sure we override any existing styles.
+  // stylelint-disable declaration-no-important
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  // stylelint-enable declaration-no-important
+}
+
+//
+// SHARED: breakpoints
+//
+
+$page-max-width: layout-width(primary, max) + layout-width(secondary, max) +
+  layout-width(inner-spacing);
+$frame-with-nav-max-width: layout-width(nav) + $page-max-width;
+
+$stacked-content: em(
+  layout-width(primary, min) + layout-width(secondary, min) +
+    layout-width(inner-spacing)
+);
+$not-condensed-content: em(layout-width(page-content, not-condensed));
+$partially-condensed-content: em(
+  layout-width(page-content, partially-condensed)
+);
+
+$not-condensed-outer-spacing: em(2 * layout-width(outer-spacing, max));
+$partially-condensed-outer-spacing: em(2 * layout-width(outer-spacing, min));
+
+$not-condensed-min-page: $not-condensed-content + $not-condensed-outer-spacing;
+$partially-condensed-min-page: $partially-condensed-content +
+  $partially-condensed-outer-spacing;
+
+$nav-size: em(layout-width(nav));
+$nav-min-window: em(layout-width(page-with-nav));
+
+@function breakpoint($value, $adjustment: 0) {
+  $adjusted-value: em($adjustment);
+
+  // Reduces chances to have a style void
+  // between two media queries
+  // See https://github.com/sass-mq/sass-mq/issues/6
+  @if $adjustment == -1px {
+    $adjusted-value: -0.01em;
+  } @else if $adjustment == 1px {
+    $adjusted-value: 0.01em;
+  }
+
+  @return em($value) + $adjusted-value;
+}
+
+@mixin page-content-breakpoint-before($size) {
+  $size: breakpoint($size);
+
+  @if $size < $partially-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{min($nav-min-window, $size)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size}) {
+          @content;
+      }
+    }
+
+    @media (max-width: #{$size}) {
+      @content;
+    }
+  } @else if $size < $not-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (max-width: #{$size + $partially-condensed-outer-spacing}) {
+      @content;
+    }
+  } @else {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{min($nav-min-window, $size + $partially-condensed-outer-spacing)}),
+        (min-width: #{$nav-min-window}) and (max-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (max-width: #{$size + $not-condensed-outer-spacing}) {
+      @content;
+    }
+  }
+}
+
+@mixin page-content-breakpoint-after($size) {
+  $size: breakpoint($size);
+
+  @if $size < $partially-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size}),
+        (min-width: #{$nav-size + $size}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size}) {
+      @content;
+    }
+  } @else if $size < $not-condensed-content {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $partially-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $partially-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size + $partially-condensed-outer-spacing}) {
+      @content;
+    }
+  } @else {
+    // prettier-ignore
+    [data-has-navigation] #{if(&, "&", "*")} {
+      @media (max-width: #{$nav-min-window}) and (min-width: #{$size + $not-condensed-outer-spacing}),
+        (min-width: #{$nav-size + $size + $not-condensed-outer-spacing}) {
+          @content;
+      }
+    }
+
+    @media (min-width: #{$size + $not-condensed-outer-spacing}) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpoint-after($breakpoint, $inclusive: true) {
+  @media (min-width: #{breakpoint($breakpoint, if($inclusive, 0, 1px))}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-before($breakpoint, $inclusive: true) {
+  @media (max-width: #{breakpoint($breakpoint, if($inclusive, 0, -1px))}) {
+    @content;
+  }
+}
+
+@mixin frame-with-nav-when-not-max-width() {
+  @include breakpoint-before($frame-with-nav-max-width) {
+    @content;
+  }
+}
+
+@mixin page-when-not-max-width() {
+  @include breakpoint-before($page-max-width) {
+    @content;
+  }
+}
+
+@mixin page-content-when-layout-stacked() {
+  @include page-content-breakpoint-before($stacked-content) {
+    @content;
+  }
+}
+
+@mixin page-content-when-layout-not-stacked() {
+  @include page-content-breakpoint-after($stacked-content) {
+    @content;
+  }
+}
+
+@mixin page-content-when-partially-condensed() {
+  @include page-content-breakpoint-before($not-condensed-content) {
+    @content;
+  }
+}
+
+@mixin page-content-when-not-partially-condensed() {
+  @include page-content-breakpoint-after($not-condensed-content) {
+    @content;
+  }
+}
+
+@mixin page-content-when-fully-condensed() {
+  @include page-content-breakpoint-before($partially-condensed-content) {
+    @content;
+  }
+}
+
+@mixin page-content-when-not-fully-condensed() {
+  @include page-content-breakpoint-after($partially-condensed-content) {
+    @content;
+  }
+}
+
+@mixin frame-when-nav-displayed() {
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    @content;
+  }
+}
+
+@mixin frame-when-nav-hidden() {
+  @include breakpoint-before(layout-width(page-with-nav), false) {
+    @content;
+  }
+}
+
+//
+// SHARED: buttons
+//
+
+@mixin high-contrast-button-outline($outline: 2px dotted) {
+  @media (-ms-high-contrast: active) {
+    outline: $outline;
+  }
+}
+
+@mixin button-base {
+  $min-height: control-height();
+  $vertical-padding: ($min-height - line-height(body) - rem(2px)) / 2;
+
+  @include recolor-icon(var(--p-icon));
+  @include focus-ring($border-width: border-width('base'));
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: $min-height;
+  min-width: $min-height;
+  margin: 0;
+  padding: $vertical-padding spacing();
+  background: var(--p-surface);
+  box-shadow: var(--p-shadow-button);
+  border-radius: var(--p-border-radius-1);
+  color: var(--p-text);
+  border: 1px solid var(--p-border-neutral-subdued);
+  border-top-color: var(--p-border-subdued);
+  border-bottom-color: var(--p-border-shadow-subdued);
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    background: var(--p-action-secondary-hovered);
+    @include high-contrast-outline;
+  }
+
+  &:focus {
+    box-shadow: var(--p-shadow-button);
+    outline: 0;
+
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active {
+    background: var(--p-action-secondary-pressed);
+    box-shadow: var(--p-shadow-button);
+
+    &::after {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &.pressed {
+    background: var(--p-action-secondary-depressed);
+    box-shadow: var(--p-shadows-inset-button-pressed);
+    color: var(--p-text-on-primary);
+    border-color: var(--p-border-depressed);
+    @include recolor-icon(currentColor);
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: 1px solid ms-high-contrast-color('text');
+  }
+}
+
+@mixin base-button-disabled {
+  @include recolor-icon(var(--p-icon-disabled));
+  transition: none;
+  box-shadow: none;
+  border-color: var(--p-border-disabled);
+  background: var(--p-surface-disabled);
+  color: var(--p-text-disabled);
+}
+
+@mixin button-filled() {
+  @include focus-ring($border-width: 0);
+  background: var(--pc-button-color);
+  border-width: 0;
+  border-color: transparent;
+  box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  color: var(--pc-button-text);
+
+  &:hover {
+    background: var(--pc-button-color-hover);
+    border-color: transparent;
+    color: var(--pc-button-text);
+  }
+
+  &:focus {
+    border-color: transparent;
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  }
+
+  &:active {
+    background: var(--pc-button-color-active);
+    border-color: transparent;
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+  }
+
+  &.pressed {
+    color: var(--pc-button-text);
+    background: var(--pc-button-color-depressed);
+    border-color: transparent;
+    box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+
+    &:hover,
+    &:focus {
+      background: var(--pc-button-color-depressed);
+      box-shadow: var(--p-shadow-button), var(--p-shadows-inset-button);
+    }
+  }
+}
+
+@mixin button-outline($outline-color, $background-color: transparent) {
+  background: transparent;
+  border: border-width() solid var(--p-border);
+  box-shadow: none;
+  color: var(--p-text);
+  @include focus-ring($border-width: border-width('base'));
+
+  &:hover {
+    border: border-width() solid var(--p-border);
+    box-shadow: none;
+    background: var(--p-surface-hovered);
+  }
+
+  &:focus {
+    border: border-width() solid var(--p-border);
+    box-shadow: none;
+    @include focus-ring($style: 'focused');
+  }
+
+  &:active {
+    border: border-width() solid var(--p-border);
+    box-shadow: none;
+    background: var(--p-surface-pressed);
+
+    &::after {
+      box-shadow: none;
+    }
+  }
+
+  &.pressed {
+    background: var(--p-action-secondary-pressed);
+    border: border-width() solid var(--p-border);
+    box-shadow: none;
+    color: var(--pc-button-text);
+  }
+
+  &.disabled {
+    border: border-width('base') solid var(--p-border-disabled);
+    box-shadow: none;
+    background: transparent;
+    color: var(--p-text-disabled);
+  }
+
+  &.destructive {
+    background: transparent;
+    border: border-width('base') solid var(--p-border-critical);
+    box-shadow: none;
+    color: var(--p-interactive-critical);
+    @include recolor-icon(var(--p-icon-critical));
+
+    &:hover {
+      border: border-width('base') solid var(--p-border-critical);
+      background: var(--p-surface-critical-subdued);
+    }
+
+    &:focus {
+      border: border-width('base') solid var(--p-border-critical);
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      border: border-width('base') solid var(--p-border-critical);
+      background: var(--p-surface-critical-subdued);
+    }
+
+    &.disabled {
+      border: border-width('base') solid var(--p-border-critical-disabled);
+      background: transparent;
+      color: var(--p-interactive-critical-disabled);
+    }
+
+    &.pressed {
+      background: var(--p-surface-critical-subdued);
+      box-shadow: border-width('base') solid var(--p-border-critical);
+      color: var(--p-interactive-critical);
+    }
+  }
+}
+
+@mixin button-outline-disabled($outline-color) {
+  background: transparent;
+  box-shadow: none;
+}
+
+@mixin button-full-width {
+  display: flex;
+  width: 100%;
+}
+
+@mixin plain-button-backdrop {
+  padding: 2px 5px;
+  margin: -2px -5px;
+  background: var(--p-action-secondary-hovered);
+  border-radius: border-radius();
+}
+
+@mixin unstyled-button() {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+//
+// SHARED: controls
+//
+
+@function control-height() {
+  @return rem(36px);
+}
+
+@function control-slim-height() {
+  @return rem(28px);
+}
+
+@function control-vertical-padding() {
+  @return (control-height() - line-height(input) - rem(2px)) / 2;
+}
+
+@function control-icon-transition() {
+  @return transform duration(fast) easing(in);
+}
+
+@mixin control-backdrop($style: base) {
+  @if $style == base {
+    position: relative;
+    border: var(--p-control-border-width) solid var(--p-border);
+    background-color: var(--p-surface);
+    border-radius: var(--p-border-radius-1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(-1 * var(--p-control-border-width));
+      right: calc(-1 * var(--p-control-border-width));
+      bottom: calc(-1 * var(--p-control-border-width));
+      left: calc(-1 * var(--p-control-border-width));
+      border-radius: var(--p-border-radius-1);
+      background-color: var(--p-interactive);
+      opacity: 0;
+      transform: scale(0.25);
+      transition: opacity duration(fast) var(--p-ease),
+        transform duration(fast) var(--p-ease);
+    }
+
+    &.hover,
+    &:hover {
+      cursor: pointer;
+      border-color: var(--p-border-hovered);
+    }
+  } @else if $style == active {
+    border-color: var(--p-interactive);
+
+    &::before {
+      opacity: 1;
+      transform: scale(1);
+      @media (-ms-high-contrast: active) {
+        border: 2px solid ms-high-contrast-color('text');
+      }
+    }
+  } @else if $style == disabled {
+    border-color: var(--p-border-disabled);
+
+    &::before {
+      background-color: var(--p-action-secondary-disabled);
+    }
+
+    &:hover {
+      cursor: default;
+    }
+  } @else if $style == error {
+    border-color: var(--p-border-critical);
+    background-color: var(--p-surface-critical);
+
+    &.hover,
+    &:hover {
+      border-color: var(--p-border-critical);
+    }
+
+    &::before {
+      background-color: var(--p-border-critical);
+    }
+  }
+}
+
+//
+// SHARED: forms
+//
+
+@mixin unstyled-input {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: transparent;
+  appearance: none;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+}
+
+@mixin range-track-selectors {
+  &::-ms-track {
+    @include high-contrast-outline;
+    @content;
+  }
+
+  &::-moz-range-track {
+    @content;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @content;
+  }
+}
+
+@mixin range-thumb-selectors {
+  &::-ms-thumb {
+    @content;
+  }
+
+  &::-moz-range-thumb {
+    @content;
+  }
+
+  &::-webkit-slider-thumb {
+    @content;
+  }
+}
+
+//
+// SHARED: icons
+//
+
+@function icon-size() {
+  @return rem(20px);
+}
+
+@mixin recolor-icon(
+  $fill-color: null,
+  $secondary-color: null,
+  $filter-color: null
+) {
+  svg {
+    fill: $fill-color;
+    color: $secondary-color;
+  }
+
+  img {
+    filter: $filter-color;
+  }
+}
+
+@mixin color-icon($value, $hue: base) {
+  svg {
+    fill: color($value, $hue);
+  }
+
+  img {
+    filter: filter($value, $hue);
+  }
+}
+
+//
+// SHARED: layout
+//
+
+/// To be used on flex items. Resolves some common layout issues, such as
+/// text truncation not respecting padding or breaking out of container.
+/// https://css-tricks.com/flexbox-truncated-text/
+
+@mixin layout-flex-fix {
+  min-width: 0;
+  max-width: 100%;
+}
+
+/// Returns a safe-area-inset for iPhone X screen obtrusions.
+///
+/// @param {String} $property - The property name i.e. padding-left.
+/// @param {Space} $spacing - The spacing value to be added to the safe-area
+/// value. i.e. spacing().
+/// @param {string} $area - The area where the inset is to be added. i.e. left
+///
+/// If overriding an existing padding / margin that value should be used as
+/// $spacing.
+@mixin safe-area-for($property, $spacing, $area) {
+  // stylelint-disable-next-line scss/dimension-no-non-numeric-values
+  $spacing: if($spacing == 0, #{$spacing}px, $spacing);
+  #{$property}: #{$spacing};
+  #{$property}: calc(#{$spacing} + constant(safe-area-inset-#{$area}));
+  #{$property}: calc(#{$spacing} + env(safe-area-inset-#{$area}));
+}
+
+@mixin after-topbar-sheet {
+  @include breakpoint-after(450px) {
+    @content;
+  }
+}
+
+//
+// SHARED: links
+//
+
+@mixin unstyled-link() {
+  color: inherit;
+  text-decoration: none;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+//
+// SHARED: lists
+//
+
+@mixin unstyled-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+//
+// SHARED: page
+//
+
+$actions-vertical-spacing: spacing(tight);
+
+@mixin page-padding-not-fully-condensed {
+  padding: 0 spacing(loose);
+}
+
+@mixin page-padding-not-partially-condensed {
+  padding: 0 spacing(extra-loose);
+}
+
+@mixin page-layout {
+  margin: 0 auto;
+  padding: 0;
+  max-width: $page-max-width;
+
+  @include page-content-when-not-fully-condensed {
+    @include page-padding-not-fully-condensed;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    @include page-padding-not-partially-condensed;
+  }
+}
+
+@mixin page-content-layout {
+  margin: spacing(tight) 0;
+
+  @include page-content-when-not-partially-condensed {
+    margin-top: spacing(loose);
+  }
+}
+
+@mixin page-title-layout {
+  @include layout-flex-fix;
+  @include text-breakword;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-top: -1 * spacing(tight);
+  margin-left: -1 * spacing(tight);
+
+  > * {
+    margin-top: spacing(tight);
+    margin-left: spacing(tight);
+  }
+}
+
+@mixin page-header-layout {
+  padding: spacing();
+
+  @include page-content-when-not-fully-condensed {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @include page-content-when-not-partially-condensed {
+    padding: spacing(loose) 0;
+  }
+}
+
+@mixin page-header-has-navigation {
+  padding-top: spacing();
+}
+
+@mixin page-header-without-navigation {
+  margin-top: unset;
+}
+
+@mixin page-header-has-secondary-actions {
+  padding-top: spacing();
+}
+
+@mixin page-actions-layout {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2 * $actions-vertical-spacing;
+
+  @include page-content-when-not-fully-condensed {
+    margin-top: $actions-vertical-spacing;
+  }
+}
+
+//
+// SHARED: typography
+//
+
+$typography-condensed: em(640px);
+
+@mixin when-typography-not-condensed {
+  @include breakpoint-after($typography-condensed) {
+    @content;
+  }
+}
+
+@mixin when-typography-condensed {
+  @include breakpoint-before($typography-condensed) {
+    @content;
+  }
+}
+
+@mixin text-style-caption {
+  font-size: var(--p-font-size-2);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-2);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-1);
+    line-height: var(--p-line-height-1);
+  }
+}
+
+@mixin text-style-heading {
+  font-size: var(--p-font-size-6);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-3);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-5);
+  }
+}
+
+@mixin text-style-subheading {
+  font-size: var(--p-font-size-2);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-1);
+  text-transform: uppercase;
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-1);
+  }
+}
+
+@mixin text-style-input {
+  font-size: var(--p-font-size-5);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-3);
+  border: none;
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-3);
+  }
+}
+
+@mixin text-style-body {
+  font-size: var(--p-font-size-4);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-2);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-3);
+  }
+}
+
+@mixin text-style-button {
+  font-size: var(--p-font-size-4);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-line-height-1);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-3);
+  }
+}
+
+@mixin text-style-button-large {
+  font-size: var(--p-font-size-6);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-line-height-2);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-5);
+  }
+}
+
+@mixin text-style-display-x-large {
+  font-size: var(--p-font-size-11);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-6);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-13);
+    line-height: var(--p-line-height-7);
+  }
+}
+
+@mixin text-style-display-large {
+  font-size: var(--p-font-size-9);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-line-height-4);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-12);
+    line-height: var(--p-line-height-5);
+  }
+}
+
+@mixin text-style-display-medium {
+  font-size: var(--p-font-size-8);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-4);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-10);
+    line-height: var(--p-line-height-5);
+  }
+}
+
+@mixin text-style-display-small {
+  font-size: var(--p-font-size-5);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-line-height-3);
+
+  @include when-typography-not-condensed {
+    font-size: var(--p-font-size-7);
+    line-height: var(--p-line-height-4);
+  }
+}
+
+@mixin text-emphasis-subdued($for-background: null) {
+  color: var(--p-text-subdued);
+}
+
+@mixin text-emphasis-strong {
+  font-weight: var(--p-font-weight-semibold);
+}
+
+@mixin text-emphasis-normal($for-background: null) {
+  font-weight: var(--p-font-weight-regular);
+  color: var(--p-text);
+}
+
+@mixin text-breakword {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin print-hidden {
+  @media print {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}
+
+//
+// SHARED: skeleton
+//
+
+/// Used to create the shimmer effect of skeleton components
+$skeleton-shimmer-duration: duration(slower) * 2;
+
+// Used by both Thumbnail and SkeletonThumbnail
+$small-thumbnail-size: rem(40px);
+$medium-thumbnail-size: rem(60px);
+$large-thumbnail-size: rem(80px);
+
+$thumbnail-sizes: (
+  small: $small-thumbnail-size,
+  medium: $medium-thumbnail-size,
+  large: $large-thumbnail-size,
+);
+
+@function thumbnail-size($size) {
+  @return map-get($thumbnail-sizes, $size);
+}
+
+@mixin skeleton-shimmer {
+  // This is a global animation, defined in /src/components/AppProvider/AppProvider.scss
+  // See that file for why this is referenced as a custom property instead of
+  // by name
+  animation: var(--polaris-animation-skeleton-shimmer)
+    $skeleton-shimmer-duration linear infinite alternate;
+  will-change: opacity;
+
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
+}
+
+@mixin skeleton-content {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background-color: var(--p-surface-neutral);
+    border-radius: border-radius();
+
+    @media screen and (-ms-high-contrast: active) {
+      background-color: ms-high-contrast-color('disabled-text');
+    }
+  }
+}
+
+@mixin skeleton-page-secondary-actions-layout {
+  margin-top: spacing(tight);
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+@mixin skeleton-page-header-layout {
+  padding-bottom: spacing(tight);
+}
+
+//
+// SHARED: interaction-state
+//
+
+/// Sets the background-image and box-shadow for single or multiple given
+/// interaction states.
+///
+/// @param {argList} $interaction-states... - Accepts single or multiple
+/// interactions states.
+@mixin state($interaction-states...) {
+  $backgrounds: ();
+
+  @each $state in $interaction-states {
+    $colors: color(state, $state);
+    $backgrounds: append(
+      $backgrounds,
+      linear-gradient($colors, $colors),
+      comma
+    );
+
+    @if $state == 'focused' {
+      box-shadow: inset rem(2px) 0 0 var(--p-focused);
+    }
+
+    @if $state == 'focused-destructive' {
+      box-shadow: inset rem(2px) 0 0 var(--p-focused);
+    }
+  }
+  background-image: $backgrounds;
+}
+
+@mixin list-selected-indicator($offset: spacing(tight)) {
+  content: '';
+  background-color: var(--p-interactive);
+  position: absolute;
+  top: 0;
+  left: -1 * $offset;
+  height: 100%;
+  display: block;
+  width: border-width(thicker);
+  border-top-right-radius: var(--p-border-radius-1);
+  border-bottom-right-radius: var(--p-border-radius-1);
+}
+
+//
+// SHARED: printing
+//
+
+@mixin when-printing {
+  @media print {
+    @content;
+  }
+}
+
+@mixin when-not-printing {
+  @media not print {
+    @content;
+  }
+}
+
+@mixin hidden-when-printing {
+  @include when-printing {
+    // We really, really don't want to see this thing when it is printed.
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
+}

@@ -1,0 +1,16 @@
+name: Plans
+set: major
+description: Wayfinding | Used to help direct merchants to the Plan page in Settings.
+keywords:
+  - Plan
+  - Plans
+  - Steps
+  - Levels
+  - Stairs
+  - Staircase
+authors:
+  - David Goligorsky
+version: 1
+date_added: 2022-07-15
+date_modified: 2022-07-15
+exclusive_use: For "Plan" in the settings nav

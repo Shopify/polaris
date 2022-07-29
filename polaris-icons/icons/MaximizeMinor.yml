@@ -1,0 +1,13 @@
+name: Maximize
+set: minor
+description: Used to represent an action to make an item, resource or view larger.
+keywords:
+  - expand
+  - full screen
+  - maximise
+authors:
+  - Adam Whitcroft
+version: 1
+date_added: 2019-03-15
+date_modified: 2019-03-15
+exclusive_use:

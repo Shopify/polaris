@@ -1,0 +1,79 @@
+@import '../../styles/common';
+
+.Choice {
+  display: inline-flex;
+  justify-content: flex-start;
+  padding: var(--p-space-1) 0;
+  cursor: pointer;
+}
+
+.labelHidden {
+  padding: 0;
+
+  > .Label {
+    @include visually-hidden;
+  }
+
+  .Control {
+    margin-top: 0;
+    margin-right: 0;
+  }
+}
+
+.disabled {
+  cursor: default;
+
+  > .Label {
+    color: var(--p-text-disabled);
+
+    &:hover {
+      cursor: default;
+    }
+
+    @media (-ms-high-contrast: active) {
+      color: grayText;
+    }
+  }
+}
+
+.Control {
+  --pc-choice-size: var(--p-choice-size);
+
+  @include when-typography-condensed {
+    --pc-choice-size: 22px;
+  }
+  display: flex;
+  flex: 0 0 auto;
+  align-items: stretch;
+  width: var(--pc-choice-size);
+  height: var(--pc-choice-size);
+  margin-right: var(--p-space-2);
+
+  > * {
+    width: 100%;
+  }
+}
+
+.Label {
+  @include text-style-body;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.Descriptions {
+  --pc-choice-size: var(--p-choice-size);
+
+  @include when-typography-condensed {
+    --pc-choice-size: 22px;
+  }
+  padding-left: calc(var(--p-space-2) + var(--pc-choice-size));
+}
+
+.HelpText {
+  @include text-style-body;
+  @include text-emphasis-subdued;
+  margin-bottom: var(--p-space-1);
+}

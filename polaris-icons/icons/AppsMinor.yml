@@ -1,0 +1,16 @@
+name: Apps
+set: minor
+description: Used to represent partner apps.
+keywords:
+  - add
+  - apps
+  - applications
+  - blocks
+  - embedded
+  - extensions
+authors:
+  - Adam Whitcroft
+version: 2
+date_added: 2022-01-19
+date_modified: 2022-01-20
+exclusive_use:

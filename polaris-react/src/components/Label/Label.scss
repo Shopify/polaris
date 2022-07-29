@@ -1,0 +1,23 @@
+@import '../../styles/common';
+
+.Label {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hidden {
+  @include visually-hidden;
+}
+
+.Text {
+  @include text-style-body;
+  display: block;
+  flex: 1 1 auto;
+  color: currentColor;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.RequiredIndicator::after {
+  content: '*';
+  color: var(--p-text-critical);
+  margin-left: var(--p-space-1);
+}
