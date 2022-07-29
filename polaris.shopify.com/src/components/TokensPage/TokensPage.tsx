@@ -13,10 +13,10 @@ interface Props {
     | "breakpoints"
     | "colors"
     | "depth"
+    | "font"
     | "motion"
     | "shape"
     | "spacing"
-    | "typography"
     | "zIndex";
 }
 
@@ -26,8 +26,8 @@ const navItems: NavItem[] = [
     url: `/tokens/colors`,
   },
   {
-    title: "Typography",
-    url: `/tokens/typography`,
+    title: "Font",
+    url: `/tokens/font`,
   },
   {
     title: "Shape",
@@ -76,10 +76,10 @@ function TokensPage({ tokenGroup }: Props) {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
     colors: tokensToFilteredArray(filter, allTokens.colors),
     depth: tokensToFilteredArray(filter, allTokens.depth),
+    font: tokensToFilteredArray(filter, allTokens.font),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shape: tokensToFilteredArray(filter, allTokens.shape),
     spacing: tokensToFilteredArray(filter, allTokens.spacing),
-    typography: tokensToFilteredArray(filter, allTokens.font),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
 

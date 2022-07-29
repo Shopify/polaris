@@ -13,7 +13,7 @@ export const navItems: NavItem[] = [
     title: "Tokens",
     children: [
       { title: "Colors", url: "/tokens/colors" },
-      { title: "Typography", url: "/tokens/typography" },
+      { title: "Font", url: "/tokens/font" },
       { title: "Shape", url: "/tokens/shape" },
       { title: "Spacing", url: "/tokens/spacing" },
       { title: "Depth", url: "/tokens/depth" },
