@@ -362,6 +362,18 @@ describe('<Row />', () => {
       className: 'TableRow statusSubdued',
     });
   });
+
+  it('applies disabled styles when disabled prop is set to true', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} disabled>
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow TableRow-disabled',
+    });
+  });
 });
 
 function triggerOnClick(
