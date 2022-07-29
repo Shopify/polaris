@@ -36,7 +36,7 @@ keywords:
 Space is the distance between objects in your design. It should be used to organize information in a way that is familiar and easy to scan, while helping reinforce its purpose.
 
 <div class="space-hero">
-  <img src="/images/foundations/design/spacing/spacing-polaris-size-units@2x.png" alt="A visual example of a polaris unit">
+  <img src="/images/foundations/design/spacing/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
 </div>
 
 <!-- ![A visual example of a polaris unit](/images/foundations/design/spacing/spacing-polaris-size-units@2x.png) -->
@@ -66,7 +66,7 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 All measurements used across the experience (space, width, height, etc) must reference Polaris size units to guarantee visual consistency and balance.
 
 <div class="punit-img">
-  <img src="/images/foundations/design/spacing/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
+  <img src="/images/foundations/design/spacing/spacing-polaris-units.svg" alt="A visual example of a polaris unit">
 </div>
 
 <!-- ![Polaris unit illustration](/images/foundations/design/spacing/spacing-polaris-units@2x.png) -->
