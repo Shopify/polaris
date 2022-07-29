@@ -170,7 +170,7 @@ $nav-animation-variables: (
   }
 
   @media #{$p-breakpoints-md-down} {
-    font-size: var(--p-font-size-4);
+    font-size: 15px;
     line-height: var(--p-font-line-height-2);
   }
 }
