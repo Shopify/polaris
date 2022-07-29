@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {motion} from '@shopify/polaris-tokens';
+import {tokens, toPx, motion} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -60,7 +60,6 @@ export interface TableHeadingRect {
 const SCROLL_BAR_PADDING = 4;
 const SIXTY_FPS = 1000 / 60;
 const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
-const SMALL_SCREEN_WIDTH = 458;
 
 function IndexTableBase({
   headings,
@@ -104,7 +103,7 @@ function IndexTableBase({
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
   const [hideScrollContainer, setHideScrollContainer] =
     useState<boolean>(false);
-  const [smallScreen, setSmallScreen] = useState(isSmallScreen());
+  const [smallScreen, setSmallScreen] = useState(isBreakpointsXS());
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -187,7 +186,7 @@ function IndexTableBase({
           // update sticky header min-widths
           stickyTableHeadings.current.forEach((heading, index) => {
             let minWidth = 0;
-            if (index === 0 && (!isSmallScreen() || !selectable)) {
+            if (index === 0 && (!isBreakpointsXS() || !selectable)) {
               minWidth = calculateFirstHeaderOffset();
             } else if (selectable && tableHeadingRects.current.length > index) {
               minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
@@ -797,10 +796,11 @@ function IndexTableBase({
   }
 }
 
-const isSmallScreen = () => {
+const isBreakpointsXS = () => {
   return typeof window === 'undefined'
     ? false
-    : window.innerWidth < SMALL_SCREEN_WIDTH;
+    : window.innerWidth <
+        parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
 export interface IndexTableProps

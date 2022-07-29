@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$breakpoint-small: 458px;
-
 .IndexTable {
   --pc-index-table-translate-offset: 35px;
   --pc-index-table-table-header-offset: 52px;
@@ -94,7 +92,7 @@ $loading-panel-height: 53px;
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   .TableCell-first + .TableCell,
   .TableHeading-second {
-    @include breakpoint-after($breakpoint-small) {
+    @media #{$p-breakpoints-sm-up} {
       filter: drop-shadow(1px 0 0 var(--p-divider));
     }
   }
@@ -206,7 +204,7 @@ $loading-panel-height: 53px;
   &:not(.TableHeading-unselectable) {
     padding-left: 0;
 
-    @include breakpoint-after($breakpoint-small) {
+    @media #{$p-breakpoints-sm-up} {
       position: sticky;
       z-index: auto;
       left: 0;
@@ -243,7 +241,7 @@ $loading-panel-height: 53px;
   left: var(--pc-checkbox-offset);
   padding-left: 0;
 
-  @include breakpoint-after($breakpoint-small) {
+  @media #{$p-breakpoints-sm-up} {
     position: sticky;
     z-index: var(--pc-index-table-sticky-cell);
   }
@@ -282,7 +280,7 @@ $loading-panel-height: 53px;
 .Table-sticky-scrolling {
   .TableCell:last-child,
   .TableHeading-last {
-    @include breakpoint-after($breakpoint-small) {
+    @media #{$p-breakpoints-sm-up} {
       filter: drop-shadow(-1px 0 0 var(--p-divider));
     }
   }
@@ -290,7 +288,7 @@ $loading-panel-height: 53px;
 
 .Table-sticky-last {
   .TableCell:last-child {
-    @include breakpoint-after($breakpoint-small) {
+    @media #{$p-breakpoints-sm-up} {
       position: sticky;
       right: 0;
       background-color: var(--p-surface);
@@ -299,7 +297,7 @@ $loading-panel-height: 53px;
   }
 
   .TableHeading-last {
-    @include breakpoint-after($breakpoint-small) {
+    @media #{$p-breakpoints-sm-up} {
       position: sticky;
       right: 0;
       background-color: var(--p-surface);
@@ -371,7 +369,7 @@ $loading-panel-height: 53px;
 .StickyTableHeading-second {
   padding-left: 0;
 
-  @include breakpoint-after($breakpoint-small) {
+  @media #{$p-breakpoints-sm-up} {
     display: none;
   }
 
@@ -384,7 +382,7 @@ $loading-panel-height: 53px;
   padding: 0 var(--p-space-025) 0 var(--p-space-4);
   display: none;
 
-  @include breakpoint-after($breakpoint-small) {
+  @media #{$p-breakpoints-sm-up} {
     display: block;
   }
 }

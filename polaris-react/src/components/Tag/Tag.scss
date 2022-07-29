@@ -2,7 +2,6 @@
 
 $height: 20px;
 $button-size: 20px;
-$breakpoint: 490px;
 
 .Tag {
   display: inline-flex;
@@ -52,7 +51,7 @@ $breakpoint: 490px;
       color: var(--p-text-disabled);
     }
 
-    @include breakpoint-after($breakpoint) {
+    @media #{$p-breakpoints-sm-up} {
       padding: var(--p-space-05) var(--p-space-2);
       font-size: var(--p-font-size-1);
     }
@@ -66,7 +65,7 @@ $breakpoint: 490px;
     padding: 0;
   }
 
-  @include breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-sm-up} {
     min-height: 24px;
   }
 }
@@ -81,7 +80,7 @@ $breakpoint: 490px;
   white-space: nowrap;
   vertical-align: middle;
 
-  @include breakpoint-after($breakpoint) {
+  @media #{$p-breakpoints-sm-up} {
     font-size: var(--p-font-size-1);
     padding: var(--p-space-05) 0;
   }
@@ -139,7 +138,7 @@ $breakpoint: 490px;
     padding-top: var(--p-space-1);
     padding-bottom: var(--p-space-1);
 
-    @include breakpoint-after($breakpoint) {
+    @media #{$p-breakpoints-sm-up} {
       font-size: var(--p-font-size-1);
       padding-top: var(--p-space-05);
       padding-bottom: var(--p-space-05);

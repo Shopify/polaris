@@ -52,7 +52,7 @@ $button-vertical-padding: calc(
     }
   }
 
-  @include page-after-resource-list-small {
+  @media #{$p-breakpoints-sm-up} {
     flex: 0 1 auto;
   }
 
