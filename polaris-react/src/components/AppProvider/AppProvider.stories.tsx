@@ -148,24 +148,7 @@ export function WithLinkComponent() {
   };
 
   return (
-    <AppProvider
-      linkComponent={CustomLinkComponent}
-      i18n={{
-        Polaris: {
-          Frame: {skipToContent: 'Skip to content'},
-          ContextualSaveBar: {
-            save: 'Save',
-            discard: 'Discard',
-          },
-          TopBar: {
-            SearchField: {
-              clearButtonLabel: 'Clear',
-              search: 'Search',
-            },
-          },
-        },
-      }}
-    >
+    <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
         breadcrumbs={[{content: 'Products', url: '#'}]}
         title="Jar With Lock-Lid"
