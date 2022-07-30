@@ -1,13 +1,12 @@
-import fs from 'fs';
-
+/**
+ * Example:
+ * yarn start -f templateBabel ./example.js
+ */
 import chalk from 'chalk';
 import globby from 'globby';
 import meow from 'meow';
-
-import {migrations} from './migrations';
+import {isMigrationKey, migrations} from './migrations';
 import {checkGitStatus} from './utilities/checkGitStatus';
-
-type Migration = keyof typeof migrations;
 
 const cli = meow({
   description: 'Code migrations for updating Polaris apps.',
@@ -23,6 +22,7 @@ const cli = meow({
     `,
   flags: {
     force: {
+      alias: 'f',
       type: 'boolean',
     },
     dry: {
@@ -34,45 +34,41 @@ const cli = meow({
   },
 });
 
-export const runMigration = (
-  filePath: string,
-  migrationFunction: (fileContent: string) => string,
-) => {
-  const oldContent = fs.readFileSync(filePath, 'utf-8');
-  const newContent = migrationFunction(oldContent);
-  fs.writeFileSync(filePath, newContent);
-};
-
 export async function run() {
   const [migration, pathGlob] = cli.input;
 
-  try {
-    if (!(migration in migrations)) {
-      throw new Error(`No migration found for ${migration}`);
-    }
-
-    if (!pathGlob) throw new Error(`No path provided for migration`);
-
-    if (!cli.flags.dry) {
-      checkGitStatus(cli.flags.force);
-    }
-
-    const filepaths = globby.sync(pathGlob);
-    if (filepaths.length === 0) {
-      throw new Error(`No files found for ${pathGlob}`);
-    }
-
-    // eslint-disable-next-line no-console
-    console.log(chalk.green('Running migration:'), migration);
-
-    await Promise.all(
-      filepaths.map((filepath: string) =>
-        runMigration(filepath, migrations[migration as Migration]),
-      ),
-    );
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-    process.exit(1);
+  if (!cli.flags.dry) {
+    checkGitStatus(cli.flags.force);
   }
+
+  if (!migration) {
+    throw new Error(
+      `Missing migration argument. Ex. @shopify/polaris-migrator <migration>`,
+    );
+  }
+
+  if (!pathGlob) {
+    throw new Error(
+      `Missing path argument. Ex. @shopify/polaris-migrator <migration> <path>`,
+    );
+  }
+
+  if (!isMigrationKey(migration)) {
+    throw new Error(`No migration found for ${migration}`);
+  }
+
+  const migrationFunction = migrations[migration];
+
+  const filePaths = await globby(pathGlob, {
+    absolute: true,
+  });
+
+  if (filePaths.length === 0) {
+    throw new Error(`No files found for ${pathGlob}`);
+  }
+
+  console.log(chalk.green('Running migration:'), migration);
+
+  // TODO: Use pMap and limit concurrency
+  await Promise.all(filePaths.map(migrationFunction));
 }

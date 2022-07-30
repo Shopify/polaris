@@ -12,4 +12,10 @@ module.exports = {
     './polaris-icons',
     './polaris-react',
   ],
+  overrides: [
+    {
+      test: './polaris-migrator',
+      plugins: ['@babel/transform-runtime'],
+    },
+  ],
 };

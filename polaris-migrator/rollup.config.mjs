@@ -1,14 +1,14 @@
-import {readFileSync} from 'fs';
-import * as path from 'path';
-import * as url from 'url';
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import * as url from 'node:url';
 
 import {babel} from '@rollup/plugin-babel';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
-import json from '@rollup/plugin-json';
+import shebang from 'rollup-plugin-preserve-shebang';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const pkg = JSON.parse(readFileSync(path.join(__dirname, 'package.json')));
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')));
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
@@ -24,6 +24,7 @@ export default {
     },
   ],
   plugins: [
+    shebang(),
     // Allows node_modules resolution
     nodeResolve({extensions, preferBuiltins: true}),
     // Allow bundling cjs modules. Rollup doesn't understand cjs
@@ -33,12 +34,14 @@ export default {
       extensions,
       rootMode: 'upward',
       include: ['src/**/*'],
-      babelHelpers: 'bundled',
+      babelHelpers: 'runtime',
     }),
-    json({compact: true}),
   ],
   external: [
     ...Object.keys(pkg.dependencies ?? {}),
     ...Object.keys(pkg.peerDependencies ?? {}),
+    // https://www.npmjs.com/package/@rollup/plugin-babel#user-content-babelhelpers
+    /@babel\/runtime/,
+    /node_modules/,
   ],
 };
