@@ -2,10 +2,13 @@
  * Example:
  * yarn start -f templateBabel ./example.js
  */
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
 import chalk from 'chalk';
 import globby from 'globby';
 import meow from 'meow';
-import {isMigrationKey, migrations} from './migrations';
+
 import {checkGitStatus} from './utilities/checkGitStatus';
 
 const cli = meow({
@@ -53,11 +56,13 @@ export async function run() {
     );
   }
 
-  if (!isMigrationKey(migration)) {
+  const migrationNames = await fs.promises.readdir(
+    path.join(__dirname, './migrations'),
+  );
+
+  if (!migrationNames.includes(migration)) {
     throw new Error(`No migration found for ${migration}`);
   }
-
-  const migrationFunction = migrations[migration];
 
   const filePaths = await globby(pathGlob, {
     absolute: true,
@@ -67,7 +72,11 @@ export async function run() {
     throw new Error(`No files found for ${pathGlob}`);
   }
 
-  console.log(chalk.green('Running migration:'), migration);
+  const {migration: migrationFunction} = await import(
+    `./migrations/${migration}/index.js`
+  );
+
+  process.stdout.write(`${chalk.green('Running migration:')} ${migration}\n`);
 
   // TODO: Use pMap and limit concurrency
   await Promise.all(filePaths.map(migrationFunction));

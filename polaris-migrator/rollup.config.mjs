@@ -6,15 +6,20 @@ import {babel} from '@rollup/plugin-babel';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import shebang from 'rollup-plugin-preserve-shebang';
+import globby from 'globby';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json')));
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
+const migrationPaths = globby.sync(
+  path.join(__dirname, './src/migrations/*/index.ts'),
+);
+
 /** @type {import('rollup').RollupOptions} */
 export default {
-  input: 'src/index.ts',
+  input: ['src/index.ts', ...migrationPaths],
   output: [
     {
       format: /** @type {const} */ ('cjs'),
