@@ -1,6 +1,6 @@
 import React from 'react';
 
-import type {Action} from '../../types';
+import type {LoadableAction} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';
@@ -24,7 +24,7 @@ export interface AccountConnectionProps {
   /** Set if the account is connected */
   connected?: boolean;
   /** Action for account connection */
-  action?: Action;
+  action?: LoadableAction;
 }
 
 export function AccountConnection({
