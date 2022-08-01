@@ -193,6 +193,13 @@ export const foundationsNavItems: NavItemWithIcon[] = [
     title: "Patterns",
     children: [
       {
+        title: "Design Patterns",
+        url: "/foundations/patterns/design-patterns",
+        icon: FoundationsIcons.LoadingIcon,
+        excerpt:
+          "Design patterns provide repeatable UX solutions to common merchant situations.",
+      },
+      {
         title: "Loading",
         url: "/foundations/patterns/loading",
         icon: "RefreshMajor",
