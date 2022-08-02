@@ -21,7 +21,7 @@ Error messages should:
 - Communicate severity using the appropriate [color](#colors) and
   [tone of voice](#voice-and-tone).
 - Use
-  [plain language](/content/product-content#write-for-a-grade-7-reading-level).
+  [plain language](/content/product-content#respond-to-merchant-needs).
 - Be specific. For example, use precise
   [numbers and dates](/content/grammar-and-mechanics#dates-numbers-and-addresses).
 - Be brief.
