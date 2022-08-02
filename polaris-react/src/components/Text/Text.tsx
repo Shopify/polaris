@@ -18,7 +18,7 @@ type Variant =
   | 'bodyMd'
   | 'bodyLg';
 
-type Alignment = 'inherit' | 'start' | 'center' | 'end' | 'justify';
+type Alignment = 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
@@ -57,7 +57,7 @@ export interface TextProps {
 }
 
 export const Text = ({
-  alignment = 'inherit',
+  alignment,
   as,
   children,
   color,
@@ -72,6 +72,7 @@ export const Text = ({
     styles.root,
     styles[variant],
     fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
+    (alignment || truncate) && styles.block,
     alignment && styles[alignment],
     color && styles[color],
     truncate && styles.truncate,
