@@ -96,7 +96,7 @@ In general, home card content should follow this format:
 
 - The **heading** should clearly state the merchant benefit or primary data point. Keep headings to a single sentence fragment and don’t use punctuation at the end.
 - **Body** content should explain the value or significance of the information in the heading, and provide next steps. Body content should be concise and no longer than two sentences.
-- The **primary call-to-action** should be clear, predictable, and actionable. A merchant should anticipate where the [call-to-action button](/content/actionable-language#section-buttons) takes them. Call-to-action buttons are action-led (verb + noun format), and shouldn’t exceed 34 characters in length.
+- The **primary call-to-action** should be clear, predictable, and actionable. A merchant should anticipate where the [call-to-action button](/content/actionable-language#buttons) takes them. Call-to-action buttons are action-led (verb + noun format), and shouldn’t exceed 34 characters in length.
 - A **secondary call-to-action** links to a [Shopify Help Center](https://help.shopify.com/) article or a [Shopify Blog](https://www.shopify.com/blog) post. Include a secondary action whenever educational content is available for the topic of the home card. The button content is always “Learn more”.
 
 ---

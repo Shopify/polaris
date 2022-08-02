@@ -58,7 +58,7 @@ Forms should:
 
 ### Form section title
 
-Form section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
+Form section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
 ### Field label
 

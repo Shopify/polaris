@@ -563,7 +563,7 @@ Require that merchants are able to see color to understand the information provi
 
 <!-- end -->
 
-To learn more, see guidance about [accessible colors in Polaris](https://polaris.shopify.com/design/colors#section-accessibility).
+To learn more, see guidance about [accessible colors in Polaris](https://polaris.shopify.com/design/colors#colors-follow-accessibility-guidelines).
 
 ### Scalable vector graphics (SVGs)
 

@@ -64,11 +64,11 @@ The content that appears in the layout component comes from cards and annotated 
 
 ### Cards
 
-Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#section-content-guidelines).
+Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#content-guidelines).
 
 ### Annotated section titles
 
-Annotated section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
+Annotated section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
 ### Annotated section descriptions
 

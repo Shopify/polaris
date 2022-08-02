@@ -218,7 +218,7 @@ ZIP/Postal code required
 
 ## Headings and subheadings
 
-See the content guidelines for [headings and subheadings](/content/actionable-language#section-headings-and-subheadings) in the actionable language section.
+See the content guidelines for [headings and subheadings](/content/actionable-language#headings-and-subheadings) in the actionable language section.
 
 ---
 

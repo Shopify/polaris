@@ -30,7 +30,7 @@ Inline errors should:
 - Describe specific solutions so merchants can successfully complete their task in the form
 - Not be placed out of context of the input or group of inputs they describe
 
-[Learn more about error message patterns](https://polaris.shopify.com/patterns/error-messages#section-form-validation)
+[Learn more about error message patterns](https://polaris.shopify.com/patterns/error-messages#form-validation)
 
 ---
 

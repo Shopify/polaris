@@ -47,7 +47,7 @@ Date pickers should:
 - Close after a single date is selected unless a range with a start and end date is required
 - Set the start date on first click or tap and the end date on second click or tap if a range is required
 - Not be used to enter a date that is many years in the future or the past
-- Follow [date format guidelines](https://polaris.shopify.com/content/grammar-and-mechanics#section-dates-numbers-and-addresses)
+- Follow [date format guidelines](https://polaris.shopify.com/content/grammar-and-mechanics#dates--numbers--and-measurements)
 
 ---
 

@@ -87,7 +87,7 @@ Avoid using narrow columns in smaller components. Ensure the right amount of pad
 ### Tips
 
 - Always assume the worst-case scenario for text length, especially on mobile and in layouts such as tables and columns. Avoid using narrow columns.
-- Pay particular attention to content elements that only have a few words. In English, labels and buttons [exclude words such as “a” or “the”](/content/actionable-language#section-buttons), but many other languages need to include them. Overall these small pieces of text may expand up to 300%.
+- Pay particular attention to content elements that only have a few words. In English, labels and buttons [exclude words such as “a” or “the”](/content/actionable-language#buttons), but many other languages need to include them. Overall these small pieces of text may expand up to 300%.
 - Our components are designed to be expandable, but you should still test them in your designs and builds. Check the CSS layout to make sure text doesn’t overflow when the screen size is reduced.
 - Work with linguistic experts to review line breaks and word wrapping for character-based languages, like Chinese or Japanese, to ensure they don’t break sentences.
 
@@ -119,7 +119,7 @@ Don’t place elements with a fixed position inside a sentence. The order of thi
 
 ![Good example of hyperlinking text](/images/foundations/foundations/internationalization/hyperlink-text-do@2x.png)
 
-When including links in body text, only use a single and descriptive term or a small part of a phrase as the link. Find out more about [links](/content/actionable-language#section-links).
+When including links in body text, only use a single and descriptive term or a small part of a phrase as the link. Find out more about [links](/content/actionable-language#links).
 
 #### Don’t
 
