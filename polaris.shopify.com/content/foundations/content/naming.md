@@ -163,7 +163,9 @@ Descriptive names should:
 - Make sense in marketing materials
 - Align with brand
 
-If it’s a default feature (merchants don’t have to sign up or opt in to use it), don’t [capitalize](/content/naming#section-general-guidelines) it. don- dodont -->
+If it’s a default feature (merchants don’t have to sign up or opt in to use it), don’t [capitalize](/content/naming#general-guidelines) it.
+
+<!-- dodont -->
 
 #### Do
 
@@ -181,7 +183,7 @@ If it’s a default feature (merchants don’t have to sign up or opt in to use 
 
 Avoid jargon and give merchants a hint about the actions they’ll be able to take when they interact with the product or feature.
 
-<!-- dodont --> when
+<!-- dodont -->
 
 #### Do
 
@@ -206,7 +208,7 @@ Sometimes Shopify acquires a product or service that already has a unique, brand
 
 Certain standalone names use the word “Shopify” because it differentiates the product from similar ones in the industry, like Shopify Pay in comparison to
 Apple Pay, or Android Pay. For more details, see the
-[guidelines for using “Shopify” in a name](/content/naming#section-does-it-need-a-branded-name-).
+[guidelines for using “Shopify” in a name](/content/naming#does-it-need-a-branded-name-).
 
 Evocative names should:
 
@@ -233,7 +235,7 @@ If you work at Shopify and want to trademark a name, talk to the legal departmen
 
 <!-- end -->
 
-Some evocative names can be more descriptive, although they’re harder to trademark if they use common terminology. Not all evocative names need t trademarked.
+Some evocative names can be more descriptive, although they’re harder to trademark if they use common terminology. Not all evocative names need to be trademarked.
 
 <!-- dodont -->
 
@@ -278,7 +280,7 @@ A good product or feature name should:
 - Avoid any negative or weird connotations
 
 There are two types of approaches to naming, the
-[descriptive approach, or the evocative approach](/content/naming#section-descriptive-vs-evocative-names).
+[descriptive approach, or the evocative approach](/content/naming#descriptive-vs-evocative-names).
 
 ### Referring to Shopify and areas in the admin
 
@@ -452,7 +454,7 @@ Don’t capitalize default features. Default features are built into Shopify and
 Capitalizing names should only happen:
 
 - For independently branded,
-  [evocative names](/content/naming#section-descriptive-vs-evocative-names)
+  [evocative names](/content/naming#descriptive-vs-evocative-names)
 - When we want to try and claim specific words (think Tweet or Pin)
 - For names listed in top level navigation, like Products
 
@@ -478,7 +480,7 @@ Capitalizing names should only happen:
 
 Names shouldn’t be capitalized if they:
 
-- Are [descriptive](/content/naming#section-descriptive-vs-evocative-names)
+- Are [descriptive](/content/naming#descriptive-vs-evocative-names)
 - Include common, familiar words
 - Are default features
 
