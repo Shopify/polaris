@@ -87,7 +87,7 @@ Use “Shopify” in front of a name when a product:
 
 - Is or will become a separate product or platform and we need to associate it with Shopify
 - Should be differentiated from other, similar products in the industry
-- Doesn’t justify an [evocative name](/content/naming#section-descriptive-vs-evocative-names), but still needs to associated with Shopify
+- Doesn’t justify an [evocative name](/content/naming#descriptive-vs-evocative-names), but still needs to associated with Shopify
 
 Don’t use “Shopify” in a name for built in functionality features, like fraud analysis or importing products.
 
