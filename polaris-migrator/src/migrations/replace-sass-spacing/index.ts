@@ -1,7 +1,6 @@
-import postcss, {Plugin} from 'postcss';
-
-import type {MigrationFn} from '../../types';
+import {postcss, Plugin} from '../../runners/postcss';
 import {createRegexFromMap} from '../../utilities/regex';
+import type {MigrationFn} from '../../types';
 
 const spacingMap = {
   'spacing(none)': 'var(--p-space-0)',
@@ -25,9 +24,7 @@ const plugin = (): Plugin => ({
 });
 
 export const migration: MigrationFn = (fileContent: string) => {
-  return postcss(plugin()).process(fileContent, {
-    parser: require('postcss-scss'),
-  }).css;
+  return postcss(plugin).process(fileContent);
 };
 
 migration.extensions = ['.scss'];

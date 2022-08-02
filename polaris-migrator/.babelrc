@@ -1,0 +1,4 @@
+{
+  "presets": [["@shopify/babel-preset", {"typescript": true, "react": true}]],
+  "plugins": ["@babel/transform-runtime"]
+}

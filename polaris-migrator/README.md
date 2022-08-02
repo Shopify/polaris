@@ -34,6 +34,23 @@ Then, use the `start` script to execute the migrator in a separate terminal.
 yarn workspace @shopify/polaris-migrator start template-babel "**/template-babel.input.ts"
 ```
 
+You can also install the script and test the package globally on your local machine.
+
+```sh
+cd polaris-migrator
+npm i -g
+```
+
+Once that is done, the package can now run using `polaris-migrator`.
+
+```sh
+# Usage
+polaris-migrator <migration> <path>
+
+# Example
+polaris-migrator template-babel "./src/**/template-babel.input.ts" --dry --print --force
+```
+
 ## Writing a migration
 
 Create a new migration by copying one of the template examples (ex: `template-babel` or `template-sass`). Make the desired migration adjustments to the copied template and update the tests to validate your migration.

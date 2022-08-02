@@ -1,6 +1,6 @@
-import babel from '@babel/core';
 import {declare} from '@babel/helper-plugin-utils';
 
+import {babel} from '../../runners/babel';
 import type {MigrationFn} from '../../types';
 
 const plugin = declare(({types: t}) => {
@@ -41,11 +41,7 @@ const plugin = declare(({types: t}) => {
 });
 
 export const migration: MigrationFn = (fileContent: string) => {
-  const result = babel.transform(fileContent, {
-    plugins: [plugin],
-  });
-
-  return result?.code;
+  return babel(plugin).transform(fileContent);
 };
 
 migration.extensions = ['.tsx', '.ts', '.jsx', '.js'];

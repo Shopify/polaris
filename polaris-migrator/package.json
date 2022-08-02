@@ -25,8 +25,10 @@
   },
   "dependencies": {
     "@babel/core": "^7.18.9",
+    "@babel/plugin-transform-runtime": "^7.18.9",
     "@babel/runtime": "^7.18.9",
     "@babel/helper-plugin-utils": "^7.18.9",
+    "@shopify/babel-preset": "^24.1.5",
     "chalk": "^4.1.0",
     "globby": "11.0.1",
     "is-git-clean": "^1.1.0",

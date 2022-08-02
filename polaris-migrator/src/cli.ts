@@ -106,6 +106,6 @@ export async function run() {
         // await fs.promises.writeFile(filePath, newContent);
       }
     },
-    {concurrency: os.cpus.length},
+    {concurrency: os.cpus.length || Infinity},
   );
 }

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import postcss, {Plugin} from 'postcss';
-
+import {postcss, Plugin} from '../../runners/postcss';
 import type {MigrationFn} from '../../types';
 
 const plugin = (): Plugin => {
@@ -23,9 +22,7 @@ const plugin = (): Plugin => {
 plugin.postcss = true;
 
 export const migration: MigrationFn = (fileContent: string) => {
-  return postcss(plugin()).process(fileContent, {
-    parser: require('postcss-scss'),
-  }).css;
+  return postcss(plugin).process(fileContent);
 };
 
 migration.extensions = ['.scss'];
