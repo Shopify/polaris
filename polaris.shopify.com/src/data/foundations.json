@@ -442,25 +442,6 @@
   },
   {
     "frontMatter": {
-      "name": "Designing onboarding flows",
-      "keywords": [
-        "adoption",
-        "funnel",
-        "benefit",
-        "sequence",
-        "sequencing",
-        "tooltips",
-        "trust",
-        "onboarding education",
-        "education",
-        "offboarding"
-      ]
-    },
-    "intro": "Well-designed onboarding flows increase engagement with a product or feature. They’re efficient and they gradually\nintroduce merchants to tasks that have a clearly defined goal and benefit.",
-    "category": "foundations"
-  },
-  {
-    "frontMatter": {
       "name": "Shopify experience values",
       "keywords": [
         "mission",
