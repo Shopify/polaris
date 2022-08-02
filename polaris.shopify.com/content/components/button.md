@@ -114,7 +114,7 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 
 ## Content guidelines
 
-Buttons should follow the content guidelines for [buttons](https://polaris.shopify.com/content/actionable-language#section-buttons).
+Buttons should follow the content guidelines for [buttons](https://polaris.shopify.com/content/actionable-language#buttons).
 
 ---
 

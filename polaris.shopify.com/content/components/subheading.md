@@ -33,7 +33,7 @@ Subheadings should:
 
 ## Content guidelines
 
-Subheadings should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
+Subheadings should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
 ---
 
@@ -49,7 +49,7 @@ A clear and consistent heading structure helps merchants who have difficulty wit
 
 Use the `element` prop to determine the specific HTML element that’s output for the subheading. The component defaults to a level 3 heading (`<h3>`). Use a different value for the `element` prop if a different subheading fits the context better.
 
-Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
+Learn more about writing helpful [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
 <!-- dodont -->
 
