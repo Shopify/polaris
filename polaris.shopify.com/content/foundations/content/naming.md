@@ -282,10 +282,11 @@ There are two types of approaches to naming, the
 
 ### Referring to Shopify and areas in the admin
 
-Use consistent and easy to understand descriptions when referring to locations in product, especially in
-[help documentation](/content/help-documentation#navigation). Descriptive feature names aren’t [capitalized](/content/naming#section-general-guidel featuren providing steps in a workflow, it’s okay to capitalize the page name, for example, “Go to the Products page”. Note that the page name is capitalized, but “page” isn’t. forn referring to Shopify’s main product offering, use “Shopify”. The only exception is when you need to differentiate it from another product, like the butile app, or expl fornpify admin”.
+Use consistent and easy to understand descriptions when referring to locations in product, especially in [help documentation](/content/help-documentation#navigation). Descriptive feature names aren’t [capitalized](https://polaris.shopify.com/foundations/content/naming), but when providing steps in a workflow, it’s okay to capitalize the page name, for example, “Go to the Products page”. Note that the page name is capitalized, but “page” isn’t.
 
-A good description can: exception mobileease adoption of the product area
+When referring to Shopify’s main product offering, use “Shopify”. The only exception is when you need to differentiate it from another product, like the mobile app, or explain a task specific to the admin. In these cases, you can use “Shopify admin”.
+
+A good description can:
 
 - Help establish a mental model for merchants
 - Clarify where the area fits into the product system
