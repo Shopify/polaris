@@ -19,7 +19,7 @@
         "success": "Lyckades",
         "warning": "Varning",
         "attention": "Observera",
-        "new": "Ny",
+        "new": "Nytt",
         "critical": "Kritisk"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
@@ -217,7 +217,7 @@
       "toggleMenuLabel": "Växla menyn",
       "SearchField": {
         "clearButtonLabel": "Rensa",
-        "search": "Sök"
+        "search": "Sökning"
       }
     },
     "MediaCard": {
@@ -290,7 +290,7 @@
     "IndexTable": {
       "emptySearchTitle": "Inga {resourceNamePlural} hittades",
       "emptySearchDescription": "Prova att byta filter eller sökord",
-      "onboardingBadgeText": "Ny",
+      "onboardingBadgeText": "Nytt",
       "resourceLoadingAccessibilityLabel": "Laddar {resourceNamePlural}",
       "selectAllLabel": "Välj alla {resourceNamePlural}",
       "selected": "{selectedItemsCount} har valts",

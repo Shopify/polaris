@@ -179,41 +179,43 @@ describe('<ActionMenu />', () => {
     });
   });
 
-  it('uses Button and ButtonGroup as subcomponents', () => {
-    const wrapper = mountWithApp(
-      <ActionMenu {...mockProps} actions={mockActions} />,
-    );
+  describe('<Actions />', () => {
+    it('uses Button and ButtonGroup as subcomponents', () => {
+      const wrapper = mountWithApp(
+        <ActionMenu {...mockProps} actions={mockActions} />,
+      );
 
-    expect(wrapper.findAll(Button)).toHaveLength(2);
-    expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
-  });
+      expect(wrapper.findAll(Button)).toHaveLength(2);
+      expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
+    });
 
-  it('action callbacks are passed through to Button', () => {
-    const spy = jest.fn();
-    const wrapper = mountWithApp(
-      <ActionMenu
-        {...mockProps}
-        actions={[{content: 'mock', onAction: spy}]}
-      />,
-    );
+    it('passes action callbacks through to Button', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock', onAction: spy}]}
+        />,
+      );
 
-    wrapper.find(Button)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
 
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
 
-  it('renders <Actions /> passing `onActionRollup` as prop if it exists', () => {
-    const onActionRollup = jest.fn();
-    const wrapper = mountWithApp(
-      <ActionMenu
-        {...mockProps}
-        actions={[{content: 'mock'}]}
-        onActionRollup={onActionRollup}
-      />,
-    );
+    it('passes `onActionRollup` if set', () => {
+      const onActionRollup = jest.fn();
+      const wrapper = mountWithApp(
+        <ActionMenu
+          {...mockProps}
+          actions={[{content: 'mock'}]}
+          onActionRollup={onActionRollup}
+        />,
+      );
 
-    expect(wrapper).toContainReactComponent(Actions, {
-      onActionRollup,
+      expect(wrapper).toContainReactComponent(Actions, {
+        onActionRollup,
+      });
     });
   });
 });

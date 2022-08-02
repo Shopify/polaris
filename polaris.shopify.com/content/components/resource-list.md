@@ -178,7 +178,7 @@ Resource lists should:
 
 - Follow the verb + noun formula for bulk actions
 
-- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#section-content-guidelines)
+- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#content-guidelines)
 
 ---
 

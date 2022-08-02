@@ -79,7 +79,7 @@ Modals should:
 Modal titles should:
 
 - Use a clear {verb}+{noun} question or statement
-- Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
+- Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings)
 
 <!-- dodont -->
 

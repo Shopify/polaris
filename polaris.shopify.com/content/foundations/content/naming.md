@@ -81,16 +81,15 @@ Only Shopify can use the word “Shopify” in a name. The word “Shopify” ca
 It’s important we use the word “Shopify” consistently, and sparingly. Don’t use
 “Shopify” in a name unless there’s a lack of surrounding context and we want its target audience to know it’s associated with Shopify.
 
-Adding “Shopify” doesn’t add clarity in the context of other Shopify products and features. For example, merchants often confuse Shopify Shipping with the other shipping features, like shipping settings, carrier calculated shipping other, shipping labels, and shipping zones. Our support staff have to refer to the Shopify Plan by its cost because the general name doesn’t distinguish it ratesthe other plans.
+Adding “Shopify” doesn’t add clarity in the context of other Shopify products and features. For example, merchants often confuse Shopify Shipping with the other shipping features, like shipping settings, carrier calculated shipping rates, shipping labels, and shipping zones. Our support staff have to refer to the Shopify Plan by its cost because the general name doesn’t distinguish it from the other plans.
 
 Use “Shopify” in front of a name when a product:
 
 - Is or will become a separate product or platform and we need to associate it with Shopify
 - Should be differentiated from other, similar products in the industry
-- Doesn’t justify an
-  [evocative name](/content/naming#section-descriptive-vs-evocative-names), but still needs to associated with Shopify
+- Doesn’t justify an [evocative name](/content/naming#descriptive-vs-evocative-names), but still needs to associated with Shopify
 
-Don’t use “Shopify” in a name for built in functionality features, like fraud analysis or importing products. analysis
+Don’t use “Shopify” in a name for built in functionality features, like fraud analysis or importing products.
 
 <!-- dodont -->
 
@@ -108,7 +107,9 @@ Don’t use “Shopify” in a name for built in functionality features, like fr
 
 <!-- end -->
 
-Shopify makes apps that merchants can add to their Shopify admin. It’s okay to say “Built by Shopify” or “Made by Shopify” after the app name. Once you’ve sayked the format that works for the design, use it consistently. pickedodont -->
+Shopify makes apps that merchants can add to their Shopify admin. It’s okay to say “Built by Shopify” or “Made by Shopify” after the app name. Once you’ve picked the format that works for the design, use it consistently.
+
+<!-- dodont -->
 
 #### Do
 
@@ -144,14 +145,15 @@ Apps that aren’t built by Shopify should not use the word “Shopify” in the
 
 ## Descriptive vs evocative names
 
-There are two types of approaches to naming, the descriptive approach, or the evocative approach. Descriptive names are concrete, while evocative can be more abstract. Descriptive names are merchant friendly, and the most common. Features should always have descriptive names. Standalone products that require independent branding can use evocative names. Third-party apps and channels should have their own branded names and should never use the word “Shopify” in the name. the
+There are two types of approaches to naming, the descriptive approach, or the evocative approach. Descriptive names are concrete, while evocative can be more abstract. Descriptive names are merchant friendly, and the most common. Features should always have descriptive names. Standalone products that require independent branding can use evocative names. Third-party apps and channels should have their own branded names and should never use the word “Shopify” in the name.
+
 If you’re a Shopify employee and are looking to trademark an evocative name, ask the legal department for help.
 
 ### Descriptive names
 
-Features and products connected to Shopify’s main product offering should have names that reveal something about their purpose. Avoid jargon and make sure the name you pick won’t get confused with similar names or terms. name
-Reserve evocative naming conventions for standalone products like Kit, and
-Frenzy.
+Features and products connected to Shopify’s main product offering should have names that reveal something about their purpose. Avoid jargon and make sure the name you pick won’t get confused with similar names or terms.
+
+Reserve evocative naming conventions for standalone products like Kit, and Frenzy.
 
 Descriptive names should:
 
@@ -161,7 +163,9 @@ Descriptive names should:
 - Make sense in marketing materials
 - Align with brand
 
-If it’s a default feature (merchants don’t have to sign up or opt in to use it), don’t [capitalize](/content/naming#section-general-guidelines) it. don- dodont -->
+If it’s a default feature (merchants don’t have to sign up or opt in to use it), don’t [capitalize](/content/naming#general-guidelines) it.
+
+<!-- dodont -->
 
 #### Do
 
@@ -179,7 +183,7 @@ If it’s a default feature (merchants don’t have to sign up or opt in to use 
 
 Avoid jargon and give merchants a hint about the actions they’ll be able to take when they interact with the product or feature.
 
-<!-- dodont --> when
+<!-- dodont -->
 
 #### Do
 
@@ -198,12 +202,13 @@ Avoid jargon and give merchants a hint about the actions they’ll be able to ta
 
 ### Evocative names
 
-Standalone products use evocative names to position us in the industry. These unique and bold naming conventions can help with branding or recall, but don’ unique help people understand the experience. They’re better for standalone products, and not for experiences that are part of Shopify’s main product uniq always
+Standalone products use evocative names to position us in the industry. These unique and bold naming conventions can help with branding or recall, but don’t always help people understand the experience. They’re better for standalone products, and not for experiences that are part of Shopify’s main product offering.
+
 Sometimes Shopify acquires a product or service that already has a unique, branded name. Even though it may become more tied to Shopify, it can keep its name to maintain its brand identity. This also helps maintain the context audiences already have about the product, like in the case of Kit.
 
 Certain standalone names use the word “Shopify” because it differentiates the product from similar ones in the industry, like Shopify Pay in comparison to
 Apple Pay, or Android Pay. For more details, see the
-[guidelines for using “Shopify” in a name](/content/naming#section-does-it-need-a-branded-name-).
+[guidelines for using “Shopify” in a name](/content/naming#does-it-need-a-branded-name-).
 
 Evocative names should:
 
@@ -230,7 +235,7 @@ If you work at Shopify and want to trademark a name, talk to the legal departmen
 
 <!-- end -->
 
-Some evocative names can be more descriptive, although they’re harder to trademark if they use common terminology. Not all evocative names need t trademarked.
+Some evocative names can be more descriptive, although they’re harder to trademark if they use common terminology. Not all evocative names need to be trademarked.
 
 <!-- dodont -->
 
@@ -275,14 +280,15 @@ A good product or feature name should:
 - Avoid any negative or weird connotations
 
 There are two types of approaches to naming, the
-[descriptive approach, or the evocative approach](/content/naming#section-descriptive-vs-evocative-names).
+[descriptive approach, or the evocative approach](/content/naming#descriptive-vs-evocative-names).
 
 ### Referring to Shopify and areas in the admin
 
-Use consistent and easy to understand descriptions when referring to locations in product, especially in
-[help documentation](/content/help-documentation#navigation). Descriptive feature names aren’t [capitalized](/content/naming#section-general-guidel featuren providing steps in a workflow, it’s okay to capitalize the page name, for example, “Go to the Products page”. Note that the page name is capitalized, but “page” isn’t. forn referring to Shopify’s main product offering, use “Shopify”. The only exception is when you need to differentiate it from another product, like the butile app, or expl fornpify admin”.
+Use consistent and easy to understand descriptions when referring to locations in product, especially in [help documentation](/content/help-documentation#navigation). Descriptive feature names aren’t [capitalized](/content/naming#general-guidelines), but when providing steps in a workflow, it’s okay to capitalize the page name, for example, “Go to the Products page”. Note that the page name is capitalized, but “page” isn’t.
 
-A good description can: exception mobileease adoption of the product area
+When referring to Shopify’s main product offering, use “Shopify”. The only exception is when you need to differentiate it from another product, like the mobile app, or explain a task specific to the admin. In these cases, you can use “Shopify admin”.
+
+A good description can:
 
 - Help establish a mental model for merchants
 - Clarify where the area fits into the product system
@@ -405,7 +411,8 @@ If “channel” is used somewhere in surrounding content, it’s okay to drop i
 
 <!-- end -->
 
-Not every channel is a sales channel. For example, BuzzFeed is a marketing outreach channel and Facebook is a sales and marketing channel. Clarify ch outreachen you have room, otherwise default to channel. If there’s surrounding context, you can drop channel altogether. context
+Not every channel is a sales channel. For example, BuzzFeed is a marketing outreach channel and Facebook is a sales and marketing channel. Clarify channel types when you have room, otherwise default to channel. If there’s surrounding context, you can drop channel altogether.
+
 If there’s surrounding context, drop the word channel from the name.
 
 <!-- dodont -->
@@ -447,7 +454,7 @@ Don’t capitalize default features. Default features are built into Shopify and
 Capitalizing names should only happen:
 
 - For independently branded,
-  [evocative names](/content/naming#section-descriptive-vs-evocative-names)
+  [evocative names](/content/naming#descriptive-vs-evocative-names)
 - When we want to try and claim specific words (think Tweet or Pin)
 - For names listed in top level navigation, like Products
 
@@ -473,7 +480,7 @@ Capitalizing names should only happen:
 
 Names shouldn’t be capitalized if they:
 
-- Are [descriptive](/content/naming#section-descriptive-vs-evocative-names)
+- Are [descriptive](/content/naming#descriptive-vs-evocative-names)
 - Include common, familiar words
 - Are default features
 
@@ -497,7 +504,7 @@ Names shouldn’t be capitalized if they:
 
 ### Acronyms and abbreviations
 
-An acronym is a word formed from parts of an existing compound term. For example, “rich text editor” could be written as “RTE”. An abbreviation i exampleed form of a written word or phrase used in place of the whole word or phrase. “Amt” is an abbreviation for “amount”.
+An acronym is a word formed from parts of an existing compound term. For example, “rich text editor” could be written as “RTE”. An abbreviation is a shortened form of a written word or phrase used in place of the whole word or phrase. “Amt” is an abbreviation for “amount”.
 
 Our stance on acronyms:
 
@@ -607,16 +614,14 @@ Being an ecommerce platform has its naming challenges. For example, a lot of fea
 
 Names may not translate directly to other languages. Identify if you need to create a separate name, or if a direct translation will do.
 
-Before confirming a name, check with people who work in translation and createzation to find out if:
+Before confirming a name, check with people who work in translation and localization to find out if:
 
 - There are cultural considerations
-- A different name for a different location would have a positive impac localization
-  Some already existing names are different depending where you’re from. For
-  example, in North America, people say, “I’ll send you a text.” In India and
-  Nordic countries, people say, “I’ll SMS you.” Do your research and find out what
-  people call things in everyday conversations.
+- A different name for a different location would have a positive impact for brand
 
-Use “text message” when writing for North American audiences. example
+Some already existing names are different depending where you’re from. For example, in North America, people say, “I’ll send you a text.” In India and Nordic countries, people say, “I’ll SMS you.” Do your research and find out what people call things in everyday conversations.
+
+Use “text message” when writing for North American audiences.
 
 <!-- dodont -->
 
@@ -646,8 +651,13 @@ Use SMS when writing for Indian and Nordic audiences.
 
 ### Initials
 
-In languages that use logographic characters, like Japanese, name initials can have different meanings. For example, in Japanese a name like Chikako (周子) havekawa (石川) means “neighborhood stone” (周石) in initials. Check with the localization and translation team before writing something in short form in another language. localization anotheriding negative connotat anotheriding
-Some words or terms have unintended negative connotations for some audiences. Do some research to avoid associating offensive words or phrases with your product or feature name. somet by: orSaying it out loud
+In languages that use logographic characters, like Japanese, name initials can have different meanings. For example, in Japanese a name like Chikako (周子) Ishikawa (石川) means “neighborhood stone” (周石) in initials. Check with the localization and translation team before writing something in short form in another language.
+
+#### Avoiding negative connotations
+
+Some words or terms have unintended negative connotations for some audiences. Do some research to avoid associating offensive words or phrases with your product or feature name.
+
+Start by:
 
 - Getting people outside of your team to look at the name with a new perspective
 - Doing a Google search to see if it surfaces with another meaning
@@ -656,9 +666,7 @@ Some words or terms have unintended negative connotations for some audiences. Do
 
 ## Components
 
-Be strategic and consistent when naming
-[components](/components/get-started#navigation). It makes it easier to create and build products and features for Shopify when people can switch between implementations and see the same names represented throughout. For example implementationssame name across Rails, React, and Figma. It’s okay if each implementation has its own spelling convention. For example, “Account andnection” in documentation and in Figma layer names, but
-“ui_account_connection” in Rails, and “AccountConnection” in React.
+Be strategic and consistent when naming [components](/components/get-started#navigation). It makes it easier to create and build products and features for Shopify when people can switch between implementations and see the same names represented throughout. For example, we should use the same name across Rails, React, and Figma. It’s okay if each implementation has its own spelling convention. For example, “Account connection” in documentation and in Figma layer names, but “ui_account_connection” in Rails, and “AccountConnection” in React.
 
 A good component name can:
 
@@ -672,7 +680,7 @@ Component names in documentation should:
 - Avoid jargon so different disciplines understand its function
 - Be written in singular, not plural, format
 
-In documentation we write out the name without any punctuation and use sentence case, meaning, the first word is capitalized and the rest is lowercase. case
+In documentation we write out the name without any punctuation and use sentence case, meaning, the first word is capitalized and the rest is lowercase.
 
 <!-- dodont -->
 
@@ -688,7 +696,7 @@ In documentation we write out the name without any punctuation and use sentence 
 
 <!-- end -->
 
-In code, we use the same name as the documentation, but can alter the spelling convention to suit the implementation. convention
+In code, we use the same name as the documentation, but can alter the spelling convention to suit the implementation.
 
 <!-- dodont -->
 
