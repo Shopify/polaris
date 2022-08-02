@@ -23,7 +23,7 @@ Error messages should:
 - Use
   [plain language](/content/product-content#respond-to-merchant-needs).
 - Be specific. For example, use precise
-  [numbers and dates](/content/grammar-and-mechanics#dates-numbers-and-addresses).
+  [numbers and dates](/content/grammar-and-mechanics#dates--numbers--and-measurements).
 - Be brief.
 
 Good design can reduce the need for error messages by preventing them in the first place.
