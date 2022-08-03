@@ -13,7 +13,6 @@ import TokenList from "../TokenList";
 import { Dialog } from "@headlessui/react";
 import { KeyboardEventHandler } from "react";
 import FoundationsGrid from "../FoundationsGrid";
-import { foundationsNavItems } from "../../data/navItems";
 
 const CATEGORY_NAMES: { [key in SearchResultCategory]: string } = {
   components: "Components",
@@ -21,13 +20,6 @@ const CATEGORY_NAMES: { [key in SearchResultCategory]: string } = {
   tokens: "Tokens",
   icons: "Icons",
 };
-
-const foundationsIcons: { [title: string]: JSX.Element } = {};
-Object.entries(foundationsNavItems).forEach(([, value]) => {
-  value.children?.forEach((child) => {
-    foundationsIcons[child.title] = child.icon;
-  });
-});
 
 const SearchContext = createContext({ id: "", currentItemId: "" });
 
@@ -239,8 +231,8 @@ function SearchResults({
                 <FoundationsGrid>
                   {results.map(({ id, url, meta }) => {
                     if (!meta.foundations) return null;
-                    const { title, description, category } = meta.foundations;
-                    const icon = foundationsIcons[title];
+                    const { title, description, category, icon } =
+                      meta.foundations;
                     return (
                       <SearchContext.Provider
                         key={title}
