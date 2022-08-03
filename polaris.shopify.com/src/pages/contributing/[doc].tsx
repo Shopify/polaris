@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
 }) => {
   const mdFilePath = path.resolve(
     process.cwd(),
-    `${contributingDirectory}/${params?.doc || ""}.md`
+    `${contributingDirectory}/${params?.doc || ""}/index.md`
   );
 
   if (fs.existsSync(mdFilePath)) {

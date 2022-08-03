@@ -20,7 +20,7 @@ for (let i = 0; i < subfolders.length; i++) {
     const files = fs.readdirSync(dirPath, "utf-8");
 
     for (let j = 0; j < files.length; j++) {
-      const fileName = files[j];
+      const fileName = `${files[j]}/index.md`;
       const filePath = path.join(guidelinesDir, dirName, fileName);
 
       const readmeFileContent = fs.readFileSync(filePath, "utf-8");

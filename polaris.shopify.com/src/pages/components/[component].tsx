@@ -75,7 +75,7 @@ export const getStaticProps: GetStaticProps<
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
     process.cwd(),
-    `content/components/${componentSlug}.md`
+    `content/components/${componentSlug}/index.md`
   );
 
   if (fs.existsSync(mdFilePath)) {
