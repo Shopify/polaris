@@ -1,5 +1,6 @@
 ---
 title: Inline error
+description: Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
 category: Forms
 keywords:
   - InlineError
@@ -11,12 +12,6 @@ examples:
   - fileName: inline-error-default.tsx
     title: Default
     description: Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
----
-
-# Inline error
-
-Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
-
 ---
 
 ## Best practices

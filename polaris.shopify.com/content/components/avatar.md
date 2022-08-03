@@ -1,5 +1,6 @@
 ---
 title: Avatar
+description: Avatars are used to show a thumbnail representation of an individual or business in the interface.
 category: Images and icons
 keywords:
   - photo
@@ -27,12 +28,6 @@ examples:
   - fileName: avatar-square.tsx
     title: Square
     description: Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
----
-
-# Avatar
-
-Avatars are used to show a thumbnail representation of an individual or business in the interface.
-
 ---
 
 ## Best practices

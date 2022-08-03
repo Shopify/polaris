@@ -1,5 +1,6 @@
 ---
 title: Skeleton page
+description: Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -14,12 +15,6 @@ examples:
   - fileName: skeleton-page-with-static-content.tsx
     title: With static content
     description: Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
----
-
-# Skeleton page
-
-Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
-
 ---
 
 ## Best practices

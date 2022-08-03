@@ -1,5 +1,6 @@
 ---
 title: Icon
+description: Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
 category: Images and icons
 keywords:
   - iconography
@@ -29,12 +30,6 @@ examples:
   - fileName: icon-with-custom-svg-and-color.tsx
     title: With custom SVG and color
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
----
-
-# Icon
-
-Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
-
 ---
 
 ## Accessibility

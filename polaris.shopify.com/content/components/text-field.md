@@ -1,5 +1,6 @@
 ---
 title: Text field
+description: A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 category: Forms
 keywords:
   - TextField
@@ -101,12 +102,6 @@ examples:
   - fileName: text-field-with-inline-suggestion.tsx
     title: With inline suggestion
     description: Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
----
-
-# Text field
-
-A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
-
 ---
 
 ## Best practices

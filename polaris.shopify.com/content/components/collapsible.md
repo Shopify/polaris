@@ -1,5 +1,6 @@
 ---
 title: Collapsible
+description: The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
 category: Behavior
 keywords:
   - hide
@@ -22,12 +23,6 @@ examples:
   - fileName: collapsible-default.tsx
     title: Default
     description: Use for a basic “show more” interaction when you need to display more content.
----
-
-# Collapsible
-
-The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
-
 ---
 
 ## Best practices

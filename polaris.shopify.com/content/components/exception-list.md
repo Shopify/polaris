@@ -1,5 +1,6 @@
 ---
 title: Exception list
+description: Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.
 category: Lists and tables
 keywords:
   - exception list
@@ -10,12 +11,6 @@ examples:
   - fileName: exception-list-default.tsx
     title: Default
     description: Use icons to add clarity or assist in visualizing the meaning
----
-
-# Exception list
-
-Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.
-
 ---
 
 ## Best practices

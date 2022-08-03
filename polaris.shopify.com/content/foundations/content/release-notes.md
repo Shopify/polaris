@@ -1,5 +1,6 @@
 ---
 title: App release notes
+description: Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.
 keywords:
   - release
   - notes
@@ -7,10 +8,6 @@ keywords:
   - updates
   - fixes
 ---
-
-# App release notes
-
-Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.
 
 To “get out of the way” of our merchants, write notes that are functional, reliable, and usable.
 

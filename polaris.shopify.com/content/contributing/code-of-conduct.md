@@ -1,5 +1,5 @@
 ---
-title: Components
+title: Code of Conduct
 keywords:
   - components
   - contributing to polaris react
@@ -10,8 +10,6 @@ keywords:
   - ux improvement
   - open source
 ---
-
-# Code of Conduct
 
 ## Our pledge
 

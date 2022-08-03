@@ -1,5 +1,6 @@
 ---
 title: Modal
+description: Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
 category: Overlays
 keywords:
   - modal
@@ -52,12 +53,6 @@ examples:
   - fileName: modal-without-an-activator-prop.tsx
     title: Without an activator prop
     description: Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
----
-
-# Modal
-
-Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
-
 ---
 
 ## Best practices

@@ -1,5 +1,6 @@
 ---
 title: Shipping your contribution
+description: While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live in [GitHub](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub discussions, issues, and pull requests to work in the open.
 keywords:
   - contributing to polaris
   - github
@@ -7,10 +8,6 @@ keywords:
   - fork
   - clone
 ---
-
-# Shipping your contribution
-
-While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live in [GitHub](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub discussions, issues, and pull requests to work in the open.
 
 ## Project details
 

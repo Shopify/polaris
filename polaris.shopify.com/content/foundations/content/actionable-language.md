@@ -1,5 +1,6 @@
 ---
 title: Actionable language
+description: Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions.
 keywords:
   - button content
   - button copy
@@ -67,12 +68,6 @@ keywords:
   - left
   - up
   - down
----
-
-# Actionable language
-
-Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions.
-
 ---
 
 ## Headings and subheadings

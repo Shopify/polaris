@@ -1,5 +1,6 @@
 ---
 title: Video thumbnail
+description: Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.
 category: Images and icons
 keywords:
   - video
@@ -17,12 +18,6 @@ examples:
   - fileName: video-thumbnail-with-progress.tsx
     title: With progress
     description: Use to indicate the video’s play progress in relation to its duration.
----
-
-# Video thumbnail
-
-Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.
-
 ---
 
 ## Best practices

@@ -1,5 +1,6 @@
 ---
 title: Badge
+description: Badges are used to inform merchants of the status of an object or of an action that’s been taken.
 category: Images and icons
 keywords:
   - pills
@@ -47,12 +48,6 @@ examples:
   - fileName: badge-with-status-and-progress-label-override.tsx
     title: With statusAndProgressLabelOverride
     description: Use when the status and progress accessibilityLabels are not appropriate to a given context.
----
-
-# Badge
-
-Badges are used to inform merchants of the status of an object or of an action that’s been taken.
-
 ---
 
 ## Best practices

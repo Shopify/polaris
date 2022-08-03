@@ -6,8 +6,6 @@ keywords:
   - designing with a system
 ---
 
-# Designing with a system
-
 ![Illustration of dozens of chairs of the same kind and a single chair of a diverent kind.](/images/contributing/designing-with-a-system/01.png)
 
 At Shopify, we often say, "Polaris is the floor, not the ceiling." The design system provides you with building blocks, and it's up to you to construct them in a way that best meets your user's needs. The idea behind Polaris not being a ceiling is that you shouldn't limit your ideas to fit into existing system pieces too early. Zoom out, figure out the best design solution to the problem, and then see if Polaris has all the pieces for you to design that solution. If there's a gap, then [contribute](https://polaris.shopify.com/contributing) to the system to make it better.

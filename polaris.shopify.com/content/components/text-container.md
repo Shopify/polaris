@@ -1,5 +1,6 @@
 ---
 title: Text container
+description: A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
 category: Titles and text
 releasedIn: 1.9.0
 keywords:
@@ -20,12 +21,6 @@ examples:
   - fileName: text-container-loose.tsx
     title: Loose
     description: Use the loose spacing option to separate concepts that are independent of each other.
----
-
-# Text container
-
-A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
-
 ---
 
 ## Best practices

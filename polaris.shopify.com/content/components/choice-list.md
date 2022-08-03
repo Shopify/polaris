@@ -1,5 +1,6 @@
 ---
 title: Choice list
+description: A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 category: Forms
 keywords:
   - ChoiceList
@@ -33,12 +34,6 @@ examples:
   - fileName: choice-list-with-dynamic-children-content.tsx
     title: With dynamic children content
     description: Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
----
-
-# Choice list
-
-A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
-
 ---
 
 ## Best practices

@@ -1,5 +1,6 @@
 ---
 title: Tooltip
+description: Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
 category: Overlays
 keywords:
   - info
@@ -17,12 +18,6 @@ examples:
   - fileName: tooltip-visible-only-with-child-interaction.tsx
     title: Visible only with child interaction
     description: Use when the tooltip overlays interactive elements when active, for example a form input. The `dismissOnMouseOut` prop prevents the tooltip from remaining active when mouse hover or focus leaves its `children` and enters the tooltip's content.
----
-
-# Tooltip
-
-Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
-
 ---
 
 ## Best practices

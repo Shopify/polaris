@@ -1,5 +1,6 @@
 ---
 title: Footer help
+description: Footer help is used to refer merchants to more information related to the product or feature they’re using.
 category: Navigation
 keywords:
   - FooterHelp
@@ -17,12 +18,6 @@ examples:
   - fileName: footer-help-default.tsx
     title: Default
     description: Use to direct merchants to more information related to the product or feature they’re working on.
----
-
-# Footer help
-
-Footer help is used to refer merchants to more information related to the product or feature they’re using.
-
 ---
 
 ## Best practices

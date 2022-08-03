@@ -1,13 +1,12 @@
 ---
 title: Contributing to Polaris
+description: Polaris thrives on contribution and community support. Anyone, regardless of discipline, is encouraged to contribute.
 keywords:
   - how to contribute to polaris
   - contribution
 ---
 
-# Contributing to Polaris
-
-Polaris thrives on contribution and community support. Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
+No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
 
 ## Who can contribute
 

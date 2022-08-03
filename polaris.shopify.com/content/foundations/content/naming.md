@@ -1,5 +1,6 @@
 ---
 title: Naming
+description: The names we give our products and features teach merchants how to use Shopify and how to find the things they need to run their business.
 keywords:
   - names
   - caps
@@ -17,12 +18,6 @@ keywords:
   - trademarks
   - branded names
   - capitalized names
----
-
-# Naming
-
-The names we give our products and features teach merchants how to use Shopify and how to find the things they need to run their business.
-
 ---
 
 ## Thoughtful naming

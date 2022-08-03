@@ -1,5 +1,6 @@
 ---
 title: Keyboard key
+description: Keyboard key is used to educate merchants about keyboard shortcuts.
 category: Images and icons
 keywords:
   - KeyboardKey
@@ -13,12 +14,6 @@ examples:
   - fileName: keyboard-key-default.tsx
     title: Default
     description: Use to list a related set of keyboard shortcuts.
----
-
-# Keyboard key
-
-Keyboard key is used to educate merchants about keyboard shortcuts.
-
 ---
 
 ## Best practices

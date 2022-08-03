@@ -1,5 +1,6 @@
 ---
 title: Listbox
+description: A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
 category: Lists and tables
 keywords:
   - list
@@ -22,12 +23,6 @@ examples:
   - fileName: listbox-with-search.tsx
     title: With search
     description: Use to help merchants browse, filter, and choose from a list of options.
----
-
-# Listbox
-
-A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
-
 ---
 
 ## Anatomy

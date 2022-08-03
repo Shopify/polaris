@@ -1,15 +1,12 @@
 ---
 title: When to contribute new patterns
+description: There will likely be times where the system and its components fall short of your preferred solution. You have a decision to make---should you stay consistent with what exists, or go with the best possible solution, regardless of consistency?
 keywords:
   - when to contribute to polaris
   - when to evolve the system
   - when to contribute new patterns
   - contribution guide
 ---
-
-# When to contribute new patterns
-
-There will likely be times where the system and its components fall short of your preferred solution. You have a decision to make---should you stay consistent with what exists, or go with the best possible solution, regardless of consistency?
 
 To help you figure this out, start by plotting out where each solution fits in this "perfect vs consistent" framework. Rate the solutions according to:
 

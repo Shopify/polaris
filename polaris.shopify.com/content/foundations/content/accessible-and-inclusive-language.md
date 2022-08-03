@@ -1,5 +1,6 @@
 ---
 title: Accessible and inclusive language
+description: Our mission is to make commerce better for _everyone_. Building products for everyone means creating inclusive content.
 keywords:
   - copy instructions
   - copy rules
@@ -28,10 +29,6 @@ keywords:
   - pronoun
   - inclusive content
 ---
-
-# Accessible and inclusive language
-
-Our mission is to make commerce better for _everyone_. Building products for everyone means creating inclusive content.
 
 The words we use have power. Writing for everyone, everywhere means that we don’t exclude or harm any of our merchants, even if these words have been normalized.
 

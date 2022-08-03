@@ -1,5 +1,6 @@
 ---
 title: Alternative text
+description: Shopify aims to provide an [inclusive experience](/foundations/accessibility). Alternative text (alt text) helps people with low or loss of vision use our products.
 keywords:
   - speech synthesis
   - alt HTML element attribute
@@ -33,10 +34,6 @@ keywords:
   - accessibility feedback
   - accessible components
 ---
-
-# Alternative text
-
-Shopify aims to provide an [inclusive experience](/foundations/accessibility). Alternative text (alt text) helps people with low or loss of vision use our products.
 
 Generally, alt text is text replacement for an image and is often represented by the alt HTML element attribute, `alt=""`, but is also used in other scenarios.
 

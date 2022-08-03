@@ -1,5 +1,6 @@
 ---
 title: Visually hidden
+description: Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden.
 category: Titles and text
 keywords:
   - VisuallyHidden
@@ -23,12 +24,6 @@ examples:
   - fileName: visually-hidden-table-headers.tsx
     title: Table headers
     description: Whenever one or more table columns has no need for a visible header, hide the header content rather than omitting it. Note that due to browser quirks the visually hidden component must go inside each `<th>`.
----
-
-# Visually hidden
-
-Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden.
-
 ---
 
 ## Best practices

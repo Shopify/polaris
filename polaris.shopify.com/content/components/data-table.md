@@ -1,5 +1,6 @@
 ---
 title: Data table
+description: Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
 category: Lists and tables
 keywords:
   - DataTable
@@ -41,12 +42,6 @@ examples:
   - fileName: data-table-with-fixed-first-column-enabled.tsx
     title: Data table with fixed first column enabled
     description: Use to fix the first column when horizontal scrolling becomes necessary. Keeps the context of the row as the user scrolls.
----
-
-# Data table
-
-Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
-
 ---
 
 ## Best practices

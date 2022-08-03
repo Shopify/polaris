@@ -1,5 +1,6 @@
 ---
 title: Subheading
+description: Subheadings are used for the title of any sub-sections in top-level page sections.
 category: Titles and text
 keywords:
   - title bar
@@ -13,12 +14,6 @@ examples:
   - fileName: subheading-default.tsx
     title: Default
     description: Used for the title of any sub-sections in top-level page sections.
----
-
-# Subheading
-
-Subheadings are used for the title of any sub-sections in top-level page sections.
-
 ---
 
 ## Best practices

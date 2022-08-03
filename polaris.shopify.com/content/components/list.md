@@ -1,5 +1,6 @@
 ---
 title: List
+description: Lists display a set of related text-only content. Each list item begins with a bullet or a number.
 category: Lists and tables
 keywords:
   - bulleted lists
@@ -15,12 +16,6 @@ examples:
   - fileName: list-numbered.tsx
     title: Numbered
     description: Use for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
----
-
-# List
-
-Lists display a set of related text-only content. Each list item begins with a bullet or a number.
-
 ---
 
 ## Best practices

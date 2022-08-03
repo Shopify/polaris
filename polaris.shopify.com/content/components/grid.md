@@ -1,5 +1,6 @@
 ---
 title: Grid
+description: Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 category: Structure
 keywords:
   - one column
@@ -28,12 +29,6 @@ examples:
   - fileName: grid-custom-layout.tsx
     title: Custom layout
     description: Use to create a layout that can be customized at specific breakpoints.
----
-
-# Grid
-
-Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
-
 ---
 
 ## Related components

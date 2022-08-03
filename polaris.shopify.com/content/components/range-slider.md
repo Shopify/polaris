@@ -1,5 +1,6 @@
 ---
 title: Range slider
+description: A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
 category: Forms
 keywords:
   - RangeSlider
@@ -25,12 +26,6 @@ examples:
   - fileName: range-slider-with-dual-thumb.tsx
     title: With dual thumb
     description: Use when two values need to be selected from a range of numbers.
----
-
-# Range slider
-
-A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
-
 ---
 
 ## Best practices

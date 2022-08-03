@@ -1,5 +1,6 @@
 ---
 title: Drop zone
+description: The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
 category: Actions
 keywords:
   - upload
@@ -46,12 +47,6 @@ examples:
   - fileName: drop-zone-with-custom-file-dialog-trigger.tsx
     title: With custom file dialog trigger
     description: Use to trigger the file dialog from an action somewhere else on the page.
----
-
-# Drop zone
-
-The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
-
 ---
 
 ## Best practices

@@ -1,5 +1,6 @@
 ---
 title: Combobox
+description: Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
 category: Forms
 keywords:
   - autocomplete
@@ -28,12 +29,6 @@ examples:
   - fileName: combobox-with-loading.tsx
     title: With loading
     description: Use to indicate to merchants that the list data is being fetched.
----
-
-# Combobox
-
-Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
-
 ---
 
 ## Anatomy

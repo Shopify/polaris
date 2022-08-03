@@ -1,5 +1,6 @@
 ---
 title: Skeleton body text
+description: Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -14,12 +15,6 @@ examples:
   - fileName: skeleton-body-text-single-line-content.tsx
     title: Single line content
     description: Use this component to represent a short, single line of text, like a timestamp.
----
-
-# Skeleton body text
-
-Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
-
 ---
 
 ## Best practices

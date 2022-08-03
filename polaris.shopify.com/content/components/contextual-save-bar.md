@@ -1,5 +1,6 @@
 ---
 title: Contextual save bar
+description: The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 category: Forms
 keywords:
   - form
@@ -19,12 +20,6 @@ examples:
   - fileName: contextual-save-bar-with-full-width.tsx
     title: With full width
     description: Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
----
-
-# Contextual Save Bar
-
-The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
-
 ---
 
 ## Required components

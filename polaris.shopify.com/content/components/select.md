@@ -1,5 +1,6 @@
 ---
 title: Select
+description: Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
 category: Forms
 keywords:
   - on off
@@ -38,12 +39,6 @@ examples:
   - fileName: select-with-separate-validation-error.tsx
     title: With separate validation error
     description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
----
-
-# Select
-
-Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
-
 ---
 
 ## Best practices
