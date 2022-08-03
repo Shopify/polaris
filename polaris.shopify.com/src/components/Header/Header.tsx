@@ -3,35 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { DarkMode } from "use-dark-mode";
 
-import GlobalSearch from "../GlobalSearch";
 import Container from "../Container";
 import MobileNav from "../MobileNav";
-import type { NavItem } from "../Nav";
 
 import styles from "./Header.module.scss";
-
-const headerNavItems: NavItem[] = [
-  {
-    title: "Foundations",
-    url: "/foundations",
-  },
-  {
-    title: "Components",
-    url: "/components",
-  },
-  {
-    title: "Tokens",
-    url: "/tokens/colors",
-  },
-  {
-    title: "Icons",
-    url: "/icons",
-  },
-  // {
-  //   title: "Contributing",
-  //   url: "/contributing",
-  // },
-];
 
 interface Props {
   darkMode: DarkMode;
@@ -76,24 +51,7 @@ function Header({ darkMode, currentPath = "" }: Props) {
         )}
 
         <nav className={styles.Nav}>
-          <ul>
-            {headerNavItems.map(({ url, title }) => {
-              const isCurrent =
-                currentSection && url?.startsWith(currentSection)
-                  ? "page"
-                  : false;
-
-              return url ? (
-                <li key={url}>
-                  <Link href={url} passHref>
-                    <a aria-current={isCurrent}>
-                      <span>{title}</span>
-                    </a>
-                  </Link>
-                </li>
-              ) : null;
-            })}
-          </ul>
+          <ul></ul>
         </nav>
 
         <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
@@ -103,8 +61,6 @@ function Header({ darkMode, currentPath = "" }: Props) {
             <div className={styles.DarkModeIcon}>🌙</div>
           )}
         </button>
-
-        <GlobalSearch />
       </Container>
     </div>
   );

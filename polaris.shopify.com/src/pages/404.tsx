@@ -1,5 +1,3 @@
-import Error404Page from "../components/Error404Page";
-
 export default function Custom404() {
-  return <Error404Page />;
+  return <Page title="404 — Page not found"></Page>;
 }
