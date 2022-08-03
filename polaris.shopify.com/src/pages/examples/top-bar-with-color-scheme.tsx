@@ -1,7 +1,7 @@
 import { TopBar, ActionList, Frame, Button } from "@shopify/polaris";
 import { ArrowLeftMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function TopBarExample() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);

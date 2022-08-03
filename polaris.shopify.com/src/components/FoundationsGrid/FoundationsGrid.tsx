@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { stripMarkdownLinks } from "../../utils/various";
@@ -24,15 +25,15 @@ function FoundationsGrid({ title, children }: Props) {
 
 interface FoundationsGridItemProps {
   title: string;
-  excerpt: string;
+  description: string;
   url: string;
-  icon: JSX.Element;
+  icon: string;
   category: string;
 }
 
 function FoundationsGridItem({
   title,
-  excerpt,
+  description,
   url,
   icon,
   category,
@@ -43,9 +44,11 @@ function FoundationsGridItem({
     <li className={styles.FoundationsGridItem} data-category={category}>
       <Link href={url} passHref>
         <a {...searchAttributes}>
-          <div className={styles.Icon}>{icon}</div>
+          <div className={styles.Icon}>
+            <Image src={`/icons/${icon}.svg`} alt="" width={20} height={20} />
+          </div>
           <h4>{title}</h4>
-          <p>{stripMarkdownLinks(excerpt)}</p>
+          <p>{stripMarkdownLinks(description)}</p>
         </a>
       </Link>
     </li>

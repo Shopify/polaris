@@ -103,7 +103,7 @@ function TOC({ items }: Props) {
 
   useEffect(() => detectCurrentHeading(), [items]);
 
-  const Link = ({ toId, name }: { toId: string; name: string }) => (
+  const Link = ({ toId, linkText }: { toId: string; linkText: string }) => (
     <a
       href={`#${toId}`}
       data-is-current={toId === idOfCurrentHeading}
@@ -112,23 +112,23 @@ function TOC({ items }: Props) {
         evt.preventDefault();
       }}
     >
-      {name}
+      {linkText}
     </a>
   );
 
   return (
     <div className={className(styles.TOC, isNested && styles.isNested)}>
       <ul>
-        {items.map(({ name, id, children }) => {
+        {items.map(({ title, id, children }) => {
           return (
-            <li key={name}>
-              <Link toId={id} name={name} />
+            <li key={title}>
+              <Link toId={id} linkText={title} />
               {children.length > 0 && (
                 <ul>
                   {children.map((child) => {
                     return (
-                      <li key={child.name}>
-                        <Link toId={child.id} name={child.name} />
+                      <li key={child.title}>
+                        <Link toId={child.id} linkText={child.title} />
                       </li>
                     );
                   })}

@@ -7,7 +7,7 @@ import {
   Link,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function CollapsibleExample() {
   const [open, setOpen] = useState(true);
