@@ -1,7 +1,7 @@
 import { Button, Popover, ActionList } from "@shopify/polaris";
 import { ImportMinor, ExportMinor, DeleteMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function ActionListWithDestructiveItemExample() {
   const [active, setActive] = useState(true);

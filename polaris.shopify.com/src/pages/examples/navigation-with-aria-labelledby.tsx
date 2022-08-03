@@ -1,7 +1,7 @@
 import { Frame, Navigation, VisuallyHidden } from "@shopify/polaris";
 import { HomeMinor, OrdersMinor, ProductsMinor } from "@shopify/polaris-icons";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function NavigationExample() {
   return (

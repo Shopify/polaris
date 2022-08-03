@@ -1,6 +1,6 @@
 import { Button, Popover, ActionList, Avatar } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function ExtraSmallAvatarExample() {
   const [active, setActive] = useState(true);

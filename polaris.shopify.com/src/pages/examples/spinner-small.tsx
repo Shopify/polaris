@@ -1,6 +1,6 @@
 import { Spinner } from "@shopify/polaris";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function SpinnerExample() {
   return <Spinner accessibilityLabel="Small spinner example" size="small" />;

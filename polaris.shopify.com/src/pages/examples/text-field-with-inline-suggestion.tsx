@@ -1,6 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function TextFieldWithSuggestionExample() {
   const suggestions = useMemo(

@@ -1,6 +1,6 @@
 import { ProgressBar } from "@shopify/polaris";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function ProgressBarExample() {
   return <ProgressBar progress={40} size="small" />;

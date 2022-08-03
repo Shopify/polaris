@@ -1,7 +1,7 @@
 import { Page, Card } from "@shopify/polaris";
 import { ArrowDownMinor } from "@shopify/polaris-icons";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function PageExample() {
   return (

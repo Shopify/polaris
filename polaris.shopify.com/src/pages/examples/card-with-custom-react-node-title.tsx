@@ -1,7 +1,7 @@
 import { Card, Stack, Icon, Subheading, List } from "@shopify/polaris";
 import { ProductsMajor } from "@shopify/polaris-icons";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function CardExample() {
   return (

@@ -1,6 +1,6 @@
 import { Card, OptionList } from "@shopify/polaris";
 import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExample";
 
 function OptionListWithSectionsExample() {
   const [selected, setSelected] = useState([]);
