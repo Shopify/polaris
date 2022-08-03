@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Use description front matter and title when rendering pages from /content
+Use description and title front matter for pages rendered from /content
