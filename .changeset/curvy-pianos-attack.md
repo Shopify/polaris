@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Add selection IndexTable type defintions
+Exported IndexTable constant and type definition
