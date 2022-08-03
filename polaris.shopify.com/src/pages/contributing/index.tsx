@@ -37,8 +37,7 @@ export const getStaticProps: GetStaticProps<
 > = async () => {
   const fullPath = path.join(contributingDirectory, "index.md");
   const content = fs.readFileSync(fullPath, "utf-8");
-  const data = parseMarkdown(content);
-  const { readme, frontMatter } = data;
+  const { readme, frontMatter }: MarkdownFile = parseMarkdown(content);
   const { title, description } = frontMatter;
 
   if (content) {
