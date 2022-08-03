@@ -35,7 +35,7 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
 }) => {
   const mdFilePath = path.resolve(
     process.cwd(),
-    `${contributingDirectory}/${params?.doc || ""}.md`
+    `${contributingDirectory}/${params?.doc || ""}/index.md`
   );
 
   if (fs.existsSync(mdFilePath)) {
@@ -54,14 +54,12 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const basePath = path.resolve(process.cwd(), "content/contributing");
-  const paths = glob
-    .sync(path.join(basePath, "*.md"))
-    .map((fileName: string) => {
-      return fileName
-        .replace(`${process.cwd()}/content`, "")
-        .replace(".md", "");
-    });
+  const globPath = path.resolve(process.cwd(), "content/contributing/*/*.md");
+  const paths = glob.sync(globPath).map((fileName: string) => {
+    return fileName
+      .replace(`${process.cwd()}/content`, "")
+      .replace("/index.md", "");
+  });
 
   return {
     paths,

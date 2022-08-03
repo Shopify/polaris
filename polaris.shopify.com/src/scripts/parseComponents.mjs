@@ -13,7 +13,7 @@ const componentFiles = fs.readdirSync(componentReadmesDir, "utf-8");
 
 // Loop through the components directory
 for (let i = 0; i < componentFiles.length; i++) {
-  const file = componentFiles[i];
+  const file = `${componentFiles[i]}/index.md`;
   const readmePath = path.join(componentReadmesDir, file);
   const readmeExists = fs.existsSync(readmePath);
 
