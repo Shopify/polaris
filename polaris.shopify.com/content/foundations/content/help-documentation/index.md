@@ -1,5 +1,6 @@
 ---
 title: Help documentation
+description: After you build an app or other integration, writing help documentation will show merchants how to use it.
 keywords:
   - writing instructions
   - writing guides
@@ -28,10 +29,6 @@ keywords:
   - educational opportunity
   - educational opportunities
 ---
-
-# Help documentation
-
-After you build an app or other integration, writing help documentation will show merchants how to use it.
 
 These guidelines are based on our experience writing help documentation for the
 [Shopify Help Center](https://help.shopify.com/). They’re all intended to serve the same goal: to educate and empower Shopify merchants.

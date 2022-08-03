@@ -1,5 +1,6 @@
 ---
 title: CustomProperties
+description: Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children.
 category: Structure
 keywords:
   - theme
@@ -17,12 +18,6 @@ examples:
   - fileName: custom-properties-with-a-different-color-scheme-nested-within-an-app-provider.tsx
     title: With a different color scheme nested within an app provider
     description: Custom properties can be nested within the custom properties rendered by the app provider in order to override the color scheme at a local level.
----
-
-# Custom Properties
-
-Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children.
-
 ---
 
 ## Consuming custom properties colors in a component

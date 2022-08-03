@@ -1,14 +1,11 @@
 ---
 title: Colors
+description: Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.
 keywords:
   - visual patterns
   - color strategy
   - color use
 ---
-
-# Colors
-
-Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.
 
 ![Diagram showcasing layers of color of various hues](/images/foundations/design/colors/color-intro@2x.png)
 

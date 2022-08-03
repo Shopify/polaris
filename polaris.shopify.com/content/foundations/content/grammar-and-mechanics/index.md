@@ -1,5 +1,6 @@
 ---
 title: Grammar and mechanics
+description: This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify.
 keywords:
   - writing instructions
   - writing rules
@@ -16,12 +17,6 @@ keywords:
   - public-facing copy
   - writing public-facing content
   - public-facing content
----
-
-# Grammar and mechanics
-
-This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify.
-
 ---
 
 ## Basics

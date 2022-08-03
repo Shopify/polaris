@@ -1,5 +1,6 @@
 ---
 title: Display text
+description: Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding.
 category: Titles and text
 keywords:
   - DisplayText
@@ -35,12 +36,6 @@ examples:
   - fileName: display-text-small.tsx
     title: Small
     description: Use for text that would otherwise use body text, but that needs to scale with other display text.
----
-
-# Display text
-
-Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding.
-
 ---
 
 ## Best practices

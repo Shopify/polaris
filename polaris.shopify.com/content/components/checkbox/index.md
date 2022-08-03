@@ -1,5 +1,6 @@
 ---
 title: Checkbox
+description: Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
 category: Forms
 keywords:
   - accept
@@ -17,12 +18,6 @@ examples:
   - fileName: checkbox-default.tsx
     title: Default
     description: Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
----
-
-# Checkbox
-
-Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
-
 ---
 
 ## Best practices

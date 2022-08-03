@@ -1,5 +1,6 @@
 ---
 title: Stack
+description: Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.
 category: Structure
 keywords:
   - rows
@@ -38,12 +39,6 @@ examples:
   - fileName: stack-where-a-single-item-fills-the-remaining-space.tsx
     title: Where a single item fills the remaining space
     description: Use for aligning buttons or secondary content to the right edge of another element, allowing it to wrap below on small screens.
----
-
-# Stack
-
-Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.
-
 ---
 
 ## Best practices

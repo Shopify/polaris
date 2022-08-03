@@ -1,5 +1,6 @@
 ---
 title: Heading
+description: Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title.
 category: Titles and text
 keywords:
   - titles
@@ -17,12 +18,6 @@ examples:
   - fileName: heading-default.tsx
     title: Default
     description: Use for the title of each top-level page section.
----
-
-# Heading
-
-Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title.
-
 ---
 
 ## Best practices

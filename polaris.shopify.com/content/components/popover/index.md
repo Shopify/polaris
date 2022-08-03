@@ -1,5 +1,6 @@
 ---
 title: Popover
+description: Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
 category: Overlays
 keywords:
   - interactive
@@ -35,12 +36,6 @@ examples:
   - fileName: popover-with-searchable-listbox.tsx
     title: With searchable listbox
     description: Use to help merchants browse, filter, and choose from a list of options.
----
-
-# Popover
-
-Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
-
 ---
 
 ## Best practices

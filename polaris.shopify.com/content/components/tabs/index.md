@@ -1,5 +1,6 @@
 ---
 title: Tabs
+description: Use to alternate among related views within the same context.
 category: Navigation
 keywords:
   - layout
@@ -23,12 +24,6 @@ examples:
   - fileName: tabs-with-custom-disclosure.tsx
     title: With custom disclosure
     description: Use to provide information about the popover contents
----
-
-# Tabs
-
-Use to alternate among related views within the same context.
-
 ---
 
 ## Best practices

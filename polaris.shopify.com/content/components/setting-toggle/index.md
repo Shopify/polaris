@@ -1,5 +1,6 @@
 ---
 title: Setting toggle
+description: Use to give merchants control over a feature or option that can be turned on or off.
 category: Actions
 keywords:
   - SettingToggle
@@ -18,12 +19,6 @@ examples:
   - fileName: setting-toggle-default.tsx
     title: Default
     description: Use on settings pages to allow merchants to toggle a setting that has an activated or a deactivated state.
----
-
-# Setting toggle
-
-Use to give merchants control over a feature or option that can be turned on or off.
-
 ---
 
 ## Best practices

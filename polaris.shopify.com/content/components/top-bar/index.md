@@ -1,5 +1,6 @@
 ---
 title: Top bar
+description: The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.
 category: Navigation
 keywords:
   - global chrome
@@ -22,12 +23,6 @@ examples:
   - fileName: top-bar-with-color-scheme.tsx
     title: With colorScheme
     description: Provide specific keys and corresponding colors to the top bar theme for finer control. When giving more than just the `background`, providing all keys is necessary to prevent falling back to default colors.
----
-
-# Top bar
-
-The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.
-
 ---
 
 ## Required components

@@ -1,5 +1,6 @@
 ---
 title: Link
+description: Links take users to another place, and usually appear within or directly following a sentence.
 category: Navigation
 keywords:
   - URL
@@ -32,14 +33,6 @@ examples:
   - fileName: link-external.tsx
     title: External
     description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
----
-
-# Link
-
-Links take users to another place, and usually appear within or directly following a sentence.
-
-For actions that aren’t related to navigation, use the [button component](https://polaris.shopify.com/components/button).
-
 ---
 
 ## Best practices

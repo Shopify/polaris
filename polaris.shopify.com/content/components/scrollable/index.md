@@ -1,5 +1,6 @@
 ---
 title: Scrollable
+description: The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
 category: Behavior
 keywords:
   - long form
@@ -20,12 +21,6 @@ examples:
   - fileName: scrollable-to-child-component.tsx
     title: To child component
     description: Use when you need to programmatically scroll a child component into view in the scrollable container.
----
-
-# Scrollable
-
-The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
-
 ---
 
 ## Best practices

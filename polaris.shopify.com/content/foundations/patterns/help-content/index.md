@@ -1,16 +1,12 @@
 ---
 title: Help content
+description: Help content is educational text that describes interactive elements or offers information about concepts in the UI.
 keywords:
   - help text
   - learn more
   - help center
   - help
 ---
-
-# Help content
-
-​
-Help content is educational text that describes interactive elements or offers information about concepts in the UI.
 
 The goal of help content is to teach merchants:
 

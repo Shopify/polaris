@@ -1,5 +1,6 @@
 ---
 title: Empty state
+description: Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.
 category: Structure
 keywords:
   - EmptyState
@@ -29,12 +30,6 @@ examples:
     description: Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
   - fileName: empty-state-with-full-width-layout.tsx
     title: With full width layout
----
-
-# Empty state
-
-Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.
-
 ---
 
 ## Best practices

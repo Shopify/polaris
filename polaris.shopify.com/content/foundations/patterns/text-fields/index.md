@@ -1,14 +1,11 @@
 ---
 title: Text fields
+description: Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.
 keywords:
   - text fields
   - search
   - placeholder text
 ---
-
-# Text fields
-
-Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.
 
 Text fields can be grouped in a form or placed individually in the UI. Placeholder text should generally be avoided in text fields. Help text can be used below the text input area to guide the user on acceptable inputs.
 

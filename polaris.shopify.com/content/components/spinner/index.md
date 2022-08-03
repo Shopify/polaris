@@ -1,5 +1,6 @@
 ---
 title: Spinner
+description: Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -17,12 +18,6 @@ examples:
   - fileName: spinner-with-focus-management.tsx
     title: With focus management
     description: Use to direct the focus state from the control to the spinner, to the content.
----
-
-# Spinner
-
-Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
-
 ---
 
 ## Accessibility

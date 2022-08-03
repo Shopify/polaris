@@ -1,5 +1,6 @@
 ---
 title: Page
+description: Use to build the outer wrapper of a page, including the page title and associated actions.
 category: Structure
 keywords:
   - page
@@ -61,12 +62,6 @@ examples:
   - fileName: page-with-divider.tsx
     title: With divider
     description: Use when the page needs visual separation between the page header and the content.
----
-
-# Page
-
-Use to build the outer wrapper of a page, including the page title and associated actions.
-
 ---
 
 ## Best practices

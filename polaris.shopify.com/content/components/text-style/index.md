@@ -1,5 +1,6 @@
 ---
 title: Text style
+description: Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
 category: Titles and text
 keywords:
   - TextStyle
@@ -37,12 +38,6 @@ examples:
   - fileName: text-style-code.tsx
     title: Code
     description: Use to display inline snippets of code or code-like text.
----
-
-# Text style
-
-Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
-
 ---
 
 ## Best practices

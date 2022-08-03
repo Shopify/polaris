@@ -1,5 +1,6 @@
 ---
 title: Option list
+description: The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
 category: Lists and tables
 keywords:
   - option list
@@ -24,12 +25,6 @@ examples:
   - fileName: option-list-in-a-popover.tsx
     title: In a popover
     description: Use when a set of selections won’t fit in the available screen space.
----
-
-# Option list
-
-The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
-
 ---
 
 ## Best practices

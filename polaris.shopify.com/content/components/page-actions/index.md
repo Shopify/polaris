@@ -1,5 +1,6 @@
 ---
 title: Page actions
+description: Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 category: Structure
 keywords:
   - PageActions
@@ -24,12 +25,6 @@ examples:
   - fileName: page-actions-with-custom-secondary-action.tsx
     title: With custom secondary action
     description: Use to create a custom secondary action.
----
-
-# Page actions
-
-Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
-
 ---
 
 ## Best practices

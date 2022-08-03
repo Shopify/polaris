@@ -1,5 +1,6 @@
 ---
 title: Progress bar
+description: The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left.
 category: Feedback indicators
 releasedIn: 1.8.0
 keywords:
@@ -20,12 +21,6 @@ examples:
   - fileName: progress-bar-non-animated.tsx
     title: Non-animated
     description: Use the animated prop when you want to show a static progress bar.
----
-
-# Progress bar
-
-The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left.
-
 ---
 
 ## Best practices

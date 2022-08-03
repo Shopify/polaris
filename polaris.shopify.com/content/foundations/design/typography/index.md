@@ -1,14 +1,11 @@
 ---
 title: Typography
+description: Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.
 keywords:
   - type styles
   - font sizes
   - fonts
 ---
-
-# Typography
-
-Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.
 
 By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
 

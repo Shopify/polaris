@@ -1,5 +1,6 @@
 ---
 title: Banner
+description: Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
 category: Feedback indicators
 keywords:
   - inform
@@ -54,12 +55,6 @@ examples:
   - fileName: banner-in-a-card.tsx
     title: In a card
     description: Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
----
-
-# Banner
-
-Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
-
 ---
 
 ## Best practices

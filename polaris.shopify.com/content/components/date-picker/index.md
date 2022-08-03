@@ -1,5 +1,6 @@
 ---
 title: Date picker
+description: Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
 category: Forms
 keywords:
   - DatePicker
@@ -31,12 +32,6 @@ examples:
   - fileName: date-picker-with-specific-disabled-dates.tsx
     title: With specific disabled dates
     description: Dates may be disabed if you do not want them to be selectable
----
-
-# Date picker
-
-Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
-
 ---
 
 ## Best practices

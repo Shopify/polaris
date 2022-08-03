@@ -1,5 +1,6 @@
 ---
 title: Error messages
+description: Error messages can be scary. Make errors visible to merchants, easy to understand, and helpful.
 keywords:
   - error states
   - invalid
@@ -8,10 +9,6 @@ keywords:
   - 404
   - error pages
 ---
-
-# Error messages
-
-Error messages can be scary. Make errors visible to merchants, easy to understand, and helpful.
 
 Error messages should:
 

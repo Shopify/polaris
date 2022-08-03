@@ -1,14 +1,11 @@
 ---
 title: Home cards
+description: Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.
 keywords:
   - home cards
   - insights
   - milestones
 ---
-
-# Home cards
-
-Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.
 
 Home cards should:
 

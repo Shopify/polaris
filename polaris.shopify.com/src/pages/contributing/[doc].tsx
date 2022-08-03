@@ -14,16 +14,22 @@ import { MarkdownFile } from "../../types";
 interface Props {
   readme: MarkdownFile["readme"];
   title: string;
+  description?: string;
 }
 
 const contributingDirectory = path.join(process.cwd(), "content/contributing");
 
-const Contributing: NextPage<Props> = ({ readme, title }: Props) => {
+const Contributing: NextPage<Props> = ({
+  readme,
+  title,
+  description,
+}: Props) => {
   return (
-    <Layout navItems={contributingNavItems}>
-      <PageMeta title={title} />
+    <Layout navItems={contributingNavItems} title={title}>
+      <PageMeta title={title} description={description} />
 
       <Longform>
+        {description ? <Markdown text={description} /> : null}
         <Markdown text={readme} />
       </Longform>
     </Layout>
@@ -41,11 +47,14 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, "utf-8");
     const { readme, frontMatter }: MarkdownFile = parseMarkdown(markdown);
-    const { name: title = "" } = frontMatter;
+    const { title, description } = frontMatter;
     const props: Props = {
       title,
+      description: description || null,
       readme,
     };
+
+    console.log(props.title);
 
     return { props };
   } else {

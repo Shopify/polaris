@@ -1,5 +1,6 @@
 ---
 title: Merchant-to-customer content
+description: Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.
 keywords:
   - merchant to buyer
   - buyer
@@ -10,10 +11,6 @@ keywords:
   - checkout
   - check out
 ---
-
-# Merchant-to-customer content
-
-Shopify creates content for different audiences. One of those audiences is merchants’ customers. A customer is a person or organization who interacts with a Shopify merchant or a merchant’s sales channel.
 
 Merchant-to-customer content represents the merchant, not Shopify, and should optimize the customers’ online or retail store experience.
 

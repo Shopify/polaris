@@ -1,14 +1,11 @@
 ---
 title: Sounds
+description: We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.
 keywords:
   - audio
   - sonic
   - noise
 ---
-
-# Sounds
-
-We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.
 
 ![Visual representation of sound waves as concentric circles](/images/foundations/design/sounds/sound-intro@2x.png)
 

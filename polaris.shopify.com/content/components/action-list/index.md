@@ -1,5 +1,6 @@
 ---
 title: Action list
+description: Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options.
 category: Actions
 keywords:
   - ActionList
@@ -33,12 +34,6 @@ examples:
   - fileName: action-list-with-a-prefix-and-a-suffix.tsx
     title: With a prefix and a suffix
     description: Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
----
-
-# Action list
-
-Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options.
-
 ---
 
 ## Best practices

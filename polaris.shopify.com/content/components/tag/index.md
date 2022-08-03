@@ -1,5 +1,6 @@
 ---
 title: Tag
+description: Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
 category: Forms
 keywords:
   - indicator
@@ -28,12 +29,6 @@ examples:
   - fileName: tag-removable-with-link.tsx
     title: Removable with link
     description: A removable attribute to an object that allows merchants to navigate to a resource.
----
-
-# Tag
-
-Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
-
 ---
 
 ## Best practices

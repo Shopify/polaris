@@ -1,5 +1,6 @@
 ---
 title: Form
+description: A wrapper component that handles the submission of forms.
 category: Forms
 keywords:
   - form
@@ -18,12 +19,6 @@ examples:
   - fileName: form-without-native-validation.tsx
     title: Without native validation
     description: Use in forms to toggle native form validation.
----
-
-# Form
-
-A wrapper component that handles the submission of forms.
-
 ---
 
 ## Best practices

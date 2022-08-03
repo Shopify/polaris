@@ -1,5 +1,6 @@
 ---
 title: Radio button
+description: Use radio buttons to present each item in a list of options where merchants must make a single selection.
 category: Forms
 keywords:
   - RadioButton
@@ -17,12 +18,6 @@ examples:
   - fileName: radio-button-default.tsx
     title: Default
     description: Use radio buttons where merchants must make a single selection.
----
-
-# Radio button
-
-Use radio buttons to present each item in a list of options where merchants must make a single selection.
-
 ---
 
 ## Best practices

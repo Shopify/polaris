@@ -1,5 +1,6 @@
 ---
 title: Form layout
+description: Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
 category: Forms
 keywords:
   - FormLayout
@@ -36,12 +37,6 @@ examples:
   - fileName: form-layout-condensed-field-group.tsx
     title: Condensed field group
     description: For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
----
-
-# Form layout
-
-Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
-
 ---
 
 ## Best practices

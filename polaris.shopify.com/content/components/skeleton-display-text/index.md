@@ -1,5 +1,6 @@
 ---
 title: Skeleton display text
+description: Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -17,12 +18,6 @@ examples:
   - fileName: skeleton-display-text-small.tsx
     title: Small
     description: Use this component to represent small display text such as content headings.
----
-
-# Skeleton display text
-
-Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
-
 ---
 
 ## Best practices

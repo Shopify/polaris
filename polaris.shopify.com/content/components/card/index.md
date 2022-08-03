@@ -1,5 +1,6 @@
 ---
 title: Card
+description: Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 category: Structure
 keywords:
   - layout
@@ -71,12 +72,6 @@ examples:
   - fileName: card-with-flushed-sections.tsx
     title: With flushed sections
     description: Use when you need further control over the spacing of your card sections.
----
-
-# Card
-
-Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
-
 ---
 
 ## Best practices

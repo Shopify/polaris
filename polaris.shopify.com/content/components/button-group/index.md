@@ -1,5 +1,6 @@
 ---
 title: Button group
+description: Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
 category: Actions
 keywords:
   - ButtonGroup
@@ -27,12 +28,6 @@ examples:
   - fileName: button-group-outline-with-segmented-buttons.tsx
     title: Outline with segmented buttons
     description: Use to emphasize several buttons as a thematically-related set among other controls.
----
-
-# Button group
-
-Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
-
 ---
 
 ## Best practices

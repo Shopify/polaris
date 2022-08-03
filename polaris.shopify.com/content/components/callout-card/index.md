@@ -1,5 +1,6 @@
 ---
 title: Callout card
+description: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.
 category: Structure
 keywords:
   - CalloutCard
@@ -31,12 +32,6 @@ examples:
   - fileName: callout-card-dismissable.tsx
     title: Dismissable
     description: Make all callout cards dismissible so merchants can get rid of cards about features they’re not interested in.
----
-
-# Callout card
-
-Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify.
-
 ---
 
 ## Best practices

@@ -1,5 +1,6 @@
 ---
 title: App provider
+description: App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
 category: Structure
 keywords:
   - app
@@ -27,12 +28,6 @@ examples:
   - fileName: app-provider-with-color-scheme.tsx
     title: With color scheme
     description: With a `colorScheme`, the app provider component will set the root color scheme for the App (such as light or dark). For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/custom-properties) component documentation.
----
-
-# App provider
-
-App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
-
 ---
 
 ## Best practices

@@ -1,5 +1,6 @@
 ---
 title: Caption
+description: Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items.
 category: Titles and text
 keywords:
   - labels
@@ -18,12 +19,6 @@ examples:
   - fileName: caption-default.tsx
     title: Default
     description: Use to provide details in situations where content is compact and space is tight.
----
-
-# Caption
-
-Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items.
-
 ---
 
 ## Best practices
