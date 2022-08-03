@@ -1,5 +1,5 @@
 ---
-name: Banner
+title: Banner
 category: Feedback indicators
 keywords:
   - inform

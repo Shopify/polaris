@@ -1,5 +1,5 @@
 ---
-name: Display text
+title: Display text
 category: Titles and text
 keywords:
   - DisplayText

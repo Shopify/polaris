@@ -1,5 +1,5 @@
 ---
-name: Form
+title: Form
 category: Forms
 keywords:
   - form

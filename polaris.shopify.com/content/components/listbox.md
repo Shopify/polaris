@@ -1,5 +1,5 @@
 ---
-name: Listbox
+title: Listbox
 category: Lists and tables
 keywords:
   - list

@@ -1,5 +1,5 @@
 ---
-name: Checkbox
+title: Checkbox
 category: Forms
 keywords:
   - accept

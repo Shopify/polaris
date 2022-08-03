@@ -1,5 +1,5 @@
 ---
-name: Text field
+title: Text field
 category: Forms
 keywords:
   - TextField

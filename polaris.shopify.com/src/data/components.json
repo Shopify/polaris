@@ -1,7 +1,7 @@
 [
   {
     "frontMatter": {
-      "name": "Account connection",
+      "title": "Account connection",
       "category": "Actions",
       "keywords": [
         "AccountConnection",
@@ -17,11 +17,11 @@
         "social media"
       ]
     },
-    "intro": "The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store."
+    "description": "The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store."
   },
   {
     "frontMatter": {
-      "name": "Action list",
+      "title": "Action list",
       "category": "Actions",
       "keywords": [
         "ActionList",
@@ -35,11 +35,11 @@
         "options"
       ]
     },
-    "intro": "Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options."
+    "description": "Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options."
   },
   {
     "frontMatter": {
-      "name": "App provider",
+      "title": "App provider",
       "category": "Structure",
       "keywords": [
         "app",
@@ -56,11 +56,11 @@
         "sdk"
       ]
     },
-    "intro": "App provider is a required component that enables sharing global settings throughout the hierarchy of your application."
+    "description": "App provider is a required component that enables sharing global settings throughout the hierarchy of your application."
   },
   {
     "frontMatter": {
-      "name": "Autocomplete",
+      "title": "Autocomplete",
       "category": "Forms",
       "keywords": [
         "autocomplete",
@@ -70,11 +70,11 @@
         "listbox"
       ]
     },
-    "intro": "The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `Combobox` and `Listbox` components with minor UI differences."
+    "description": "The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `Combobox` and `Listbox` components with minor UI differences."
   },
   {
     "frontMatter": {
-      "name": "Avatar",
+      "title": "Avatar",
       "category": "Images and icons",
       "keywords": [
         "photo",
@@ -94,11 +94,11 @@
         "business thumbnail"
       ]
     },
-    "intro": "Avatars are used to show a thumbnail representation of an individual or business in the interface."
+    "description": "Avatars are used to show a thumbnail representation of an individual or business in the interface."
   },
   {
     "frontMatter": {
-      "name": "Badge",
+      "title": "Badge",
       "category": "Images and icons",
       "keywords": [
         "pills",
@@ -114,11 +114,11 @@
         "alert"
       ]
     },
-    "intro": "Badges are used to inform merchants of the status of an object or of an action that’s been taken."
+    "description": "Badges are used to inform merchants of the status of an object or of an action that’s been taken."
   },
   {
     "frontMatter": {
-      "name": "Banner",
+      "title": "Banner",
       "category": "Feedback indicators",
       "keywords": [
         "inform",
@@ -144,11 +144,11 @@
         "full-width alert"
       ]
     },
-    "intro": "Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header."
+    "description": "Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header."
   },
   {
     "frontMatter": {
-      "name": "Button group",
+      "title": "Button group",
       "category": "Actions",
       "keywords": [
         "ButtonGroup",
@@ -168,11 +168,11 @@
         "segmented control"
       ]
     },
-    "intro": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
+    "description": "Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
   },
   {
     "frontMatter": {
-      "name": "Button",
+      "title": "Button",
       "category": "Actions",
       "keywords": [
         "CTA",
@@ -195,11 +195,11 @@
         "submit"
       ]
     },
-    "intro": "Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”."
+    "description": "Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”."
   },
   {
     "frontMatter": {
-      "name": "Callout card",
+      "title": "Callout card",
       "category": "Structure",
       "keywords": [
         "CalloutCard",
@@ -223,11 +223,11 @@
         "illustration card"
       ]
     },
-    "intro": "Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify."
+    "description": "Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. They are most commonly displayed in the sales channels section of Shopify."
   },
   {
     "frontMatter": {
-      "name": "Caption",
+      "title": "Caption",
       "category": "Titles and text",
       "keywords": [
         "labels",
@@ -244,11 +244,11 @@
         "small text"
       ]
     },
-    "intro": "Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items."
+    "description": "Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items."
   },
   {
     "frontMatter": {
-      "name": "Card",
+      "title": "Card",
       "category": "Structure",
       "keywords": [
         "layout",
@@ -270,11 +270,11 @@
         "call out"
       ]
     },
-    "intro": "Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done."
+    "description": "Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done."
   },
   {
     "frontMatter": {
-      "name": "Checkbox",
+      "title": "Checkbox",
       "category": "Forms",
       "keywords": [
         "accept",
@@ -290,11 +290,11 @@
         "multi-choice lists"
       ]
     },
-    "intro": "Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services."
+    "description": "Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services."
   },
   {
     "frontMatter": {
-      "name": "Choice list",
+      "title": "Choice list",
       "category": "Forms",
       "keywords": [
         "ChoiceList",
@@ -314,11 +314,11 @@
         "single-choice list"
       ]
     },
-    "intro": "A choice list lets you create a list of grouped radio buttons or checkboxes.\nUse this component if you need to group together a related list of interactive\nchoices."
+    "description": "A choice list lets you create a list of grouped radio buttons or checkboxes.\nUse this component if you need to group together a related list of interactive\nchoices."
   },
   {
     "frontMatter": {
-      "name": "Collapsible",
+      "title": "Collapsible",
       "category": "Behavior",
       "keywords": [
         "hide",
@@ -339,11 +339,11 @@
         "collapse"
       ]
     },
-    "intro": "The collapsible component is used to put long sections of information under a block that merchants can expand or collapse."
+    "description": "The collapsible component is used to put long sections of information under a block that merchants can expand or collapse."
   },
   {
     "frontMatter": {
-      "name": "Color picker",
+      "title": "Color picker",
       "category": "Forms",
       "keywords": [
         "ColorPicker",
@@ -359,11 +359,11 @@
         "alpha value selector"
       ]
     },
-    "intro": "The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop."
+    "description": "The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop."
   },
   {
     "frontMatter": {
-      "name": "Combobox",
+      "title": "Combobox",
       "category": "Forms",
       "keywords": [
         "autocomplete",
@@ -375,11 +375,11 @@
         "list box"
       ]
     },
-    "intro": "Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values."
+    "description": "Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values."
   },
   {
     "frontMatter": {
-      "name": "Contextual save bar",
+      "title": "Contextual save bar",
       "category": "Forms",
       "keywords": [
         "form",
@@ -391,11 +391,11 @@
         "logo"
       ]
     },
-    "intro": "The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work."
+    "description": "The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work."
   },
   {
     "frontMatter": {
-      "name": "CustomProperties",
+      "title": "CustomProperties",
       "category": "Structure",
       "keywords": [
         "theme",
@@ -405,19 +405,19 @@
         "dark mode"
       ]
     },
-    "intro": "Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children."
+    "description": "Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children."
   },
   {
     "frontMatter": {
-      "name": "Data table",
+      "title": "Data table",
       "category": "Lists and tables",
       "keywords": ["DataTable", "data", "table", "tabular", "index"]
     },
-    "intro": "Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data."
+    "description": "Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data."
   },
   {
     "frontMatter": {
-      "name": "Date picker",
+      "title": "Date picker",
       "category": "Forms",
       "keywords": [
         "DatePicker",
@@ -435,11 +435,11 @@
         "date range selector"
       ]
     },
-    "intro": "Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
+    "description": "Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
   },
   {
     "frontMatter": {
-      "name": "Description list",
+      "title": "Description list",
       "category": "Lists and tables",
       "keywords": [
         "DescriptionList",
@@ -453,11 +453,11 @@
         "term explaination"
       ]
     },
-    "intro": "Description lists are a way to organize and explain related information.\nThey’re particularly useful when you need to list and define terms such as in a\nglossary."
+    "description": "Description lists are a way to organize and explain related information.\nThey’re particularly useful when you need to list and define terms such as in a\nglossary."
   },
   {
     "frontMatter": {
-      "name": "Display text",
+      "title": "Display text",
       "category": "Titles and text",
       "keywords": [
         "DisplayText",
@@ -482,11 +482,11 @@
         "visual statements"
       ]
     },
-    "intro": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
+    "description": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
   },
   {
     "frontMatter": {
-      "name": "Drop zone",
+      "title": "Drop zone",
       "category": "Actions",
       "keywords": [
         "upload",
@@ -501,11 +501,11 @@
         "drop placeholder"
       ]
     },
-    "intro": "The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button."
+    "description": "The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button."
   },
   {
     "frontMatter": {
-      "name": "Empty state",
+      "title": "Empty state",
       "category": "Structure",
       "keywords": [
         "EmptyState",
@@ -528,19 +528,19 @@
         "landing layouts"
       ]
     },
-    "intro": "Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface."
+    "description": "Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface."
   },
   {
     "frontMatter": {
-      "name": "Exception list",
+      "title": "Exception list",
       "category": "Lists and tables",
       "keywords": ["exception list", "exceptions", "list", "list exceptions"]
     },
-    "intro": "Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front."
+    "description": "Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front."
   },
   {
     "frontMatter": {
-      "name": "Filters",
+      "title": "Filters",
       "category": "Lists and tables",
       "keywords": [
         "filters",
@@ -552,11 +552,11 @@
         "table"
       ]
     },
-    "intro": "Filters is a composite component that filters the items of a list or table."
+    "description": "Filters is a composite component that filters the items of a list or table."
   },
   {
     "frontMatter": {
-      "name": "Footer help",
+      "title": "Footer help",
       "category": "Navigation",
       "keywords": [
         "FooterHelp",
@@ -572,11 +572,11 @@
         "teaching"
       ]
     },
-    "intro": "Footer help is used to refer merchants to more information related to the product or feature they’re using."
+    "description": "Footer help is used to refer merchants to more information related to the product or feature they’re using."
   },
   {
     "frontMatter": {
-      "name": "Form layout",
+      "title": "Form layout",
       "category": "Forms",
       "keywords": [
         "FormLayout",
@@ -605,11 +605,11 @@
         "layout input fields"
       ]
     },
-    "intro": "Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields."
+    "description": "Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields."
   },
   {
     "frontMatter": {
-      "name": "Form",
+      "title": "Form",
       "category": "Forms",
       "keywords": [
         "form",
@@ -623,11 +623,11 @@
         "get"
       ]
     },
-    "intro": "A wrapper component that handles the submission of forms."
+    "description": "A wrapper component that handles the submission of forms."
   },
   {
     "frontMatter": {
-      "name": "Frame",
+      "title": "Frame",
       "category": "Structure",
       "keywords": [
         "navigation",
@@ -645,19 +645,19 @@
         "toast"
       ]
     },
-    "intro": "The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components."
+    "description": "The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components."
   },
   {
     "frontMatter": {
-      "name": "Fullscreen bar",
+      "title": "Fullscreen bar",
       "category": "Navigation",
       "keywords": ["topbar", "top bar", "header", "bar", "app"]
     },
-    "intro": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
+    "description": "The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`."
   },
   {
     "frontMatter": {
-      "name": "Grid",
+      "title": "Grid",
       "category": "Structure",
       "keywords": [
         "one column",
@@ -676,11 +676,11 @@
         "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
       }
     },
-    "intro": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)."
+    "description": "Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid)."
   },
   {
     "frontMatter": {
-      "name": "Heading",
+      "title": "Heading",
       "category": "Titles and text",
       "keywords": [
         "titles",
@@ -696,11 +696,11 @@
         "heading font"
       ]
     },
-    "intro": "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title."
+    "description": "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title."
   },
   {
     "frontMatter": {
-      "name": "Icon",
+      "title": "Icon",
       "category": "Images and icons",
       "keywords": [
         "iconography",
@@ -716,11 +716,11 @@
         "alert"
       ]
     },
-    "intro": "Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available."
+    "description": "Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available."
   },
   {
     "frontMatter": {
-      "name": "Index table",
+      "title": "Index table",
       "category": "Lists and tables",
       "keywords": [
         "ResourceList",
@@ -749,11 +749,11 @@
         "sort"
       ]
     },
-    "intro": "An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it."
+    "description": "An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it."
   },
   {
     "frontMatter": {
-      "name": "Inline error",
+      "title": "Inline error",
       "category": "Forms",
       "keywords": [
         "InlineError",
@@ -763,11 +763,11 @@
         "form group"
       ]
     },
-    "intro": "Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it."
+    "description": "Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it."
   },
   {
     "frontMatter": {
-      "name": "Keyboard key",
+      "title": "Keyboard key",
       "category": "Images and icons",
       "keywords": [
         "KeyboardKey",
@@ -779,11 +779,11 @@
         "hotkey combinations"
       ]
     },
-    "intro": "Keyboard key is used to educate merchants about keyboard shortcuts."
+    "description": "Keyboard key is used to educate merchants about keyboard shortcuts."
   },
   {
     "frontMatter": {
-      "name": "Layout",
+      "title": "Layout",
       "category": "Structure",
       "keywords": [
         "one column",
@@ -801,11 +801,11 @@
         "annotated sections"
       ]
     },
-    "intro": "The layout component is used to create the main layout on a page. Layouts sections come in three main configurations: one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages."
+    "description": "The layout component is used to create the main layout on a page. Layouts sections come in three main configurations: one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages."
   },
   {
     "frontMatter": {
-      "name": "Link",
+      "title": "Link",
       "category": "Navigation",
       "keywords": [
         "URL",
@@ -827,11 +827,11 @@
         "secondary call to action"
       ]
     },
-    "intro": "Links take users to another place, and usually appear within or directly following a sentence."
+    "description": "Links take users to another place, and usually appear within or directly following a sentence."
   },
   {
     "frontMatter": {
-      "name": "List",
+      "title": "List",
       "category": "Lists and tables",
       "keywords": [
         "bulleted lists",
@@ -842,27 +842,27 @@
         "text-only lists"
       ]
     },
-    "intro": "Lists display a set of related text-only content. Each list item begins with a bullet or a number."
+    "description": "Lists display a set of related text-only content. Each list item begins with a bullet or a number."
   },
   {
     "frontMatter": {
-      "name": "Listbox",
+      "title": "Listbox",
       "category": "Lists and tables",
       "keywords": ["list", "listbox", "list box", "interactive list"]
     },
-    "intro": "A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements."
+    "description": "A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements."
   },
   {
     "frontMatter": {
-      "name": "Loading",
+      "title": "Loading",
       "category": "Feedback indicators",
       "keywords": ["spinner", "loader", "loading", "loading bar"]
     },
-    "intro": "The loading component is used to indicate to merchants that a page is loading or an upload is processing."
+    "description": "The loading component is used to indicate to merchants that a page is loading or an upload is processing."
   },
   {
     "frontMatter": {
-      "name": "Media card",
+      "title": "Media card",
       "category": "Structure",
       "keywords": [
         "MediaCard",
@@ -876,11 +876,11 @@
         "thumbnail card"
       ]
     },
-    "intro": "Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with."
+    "description": "Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with."
   },
   {
     "frontMatter": {
-      "name": "Modal",
+      "title": "Modal",
       "category": "Overlays",
       "keywords": [
         "modal",
@@ -907,11 +907,11 @@
         "alert"
       ]
     },
-    "intro": "Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly."
+    "description": "Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly."
   },
   {
     "frontMatter": {
-      "name": "Navigation",
+      "title": "Navigation",
       "category": "Navigation",
       "keywords": [
         "navigation",
@@ -924,11 +924,11 @@
         "side bar"
       ]
     },
-    "intro": "The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application."
+    "description": "The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application."
   },
   {
     "frontMatter": {
-      "name": "Option list",
+      "title": "Option list",
       "category": "Lists and tables",
       "keywords": [
         "option list",
@@ -942,11 +942,11 @@
         "list selection"
       ]
     },
-    "intro": "The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu."
+    "description": "The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu."
   },
   {
     "frontMatter": {
-      "name": "Page actions",
+      "title": "Page actions",
       "category": "Structure",
       "keywords": [
         "PageActions",
@@ -960,11 +960,11 @@
         "delete actions"
       ]
     },
-    "intro": "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page."
+    "description": "Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page."
   },
   {
     "frontMatter": {
-      "name": "Page",
+      "title": "Page",
       "category": "Structure",
       "keywords": [
         "page",
@@ -985,11 +985,11 @@
         "page layouts"
       ]
     },
-    "intro": "Use to build the outer wrapper of a page, including the page title and associated actions."
+    "description": "Use to build the outer wrapper of a page, including the page title and associated actions."
   },
   {
     "frontMatter": {
-      "name": "Pagination",
+      "title": "Pagination",
       "category": "Navigation",
       "keywords": [
         "lists",
@@ -1010,11 +1010,11 @@
         "next buttons"
       ]
     },
-    "intro": "Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling."
+    "description": "Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling."
   },
   {
     "frontMatter": {
-      "name": "Popover",
+      "title": "Popover",
       "category": "Overlays",
       "keywords": [
         "interactive",
@@ -1036,11 +1036,11 @@
         "action sheet"
       ]
     },
-    "intro": "Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page."
+    "description": "Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page."
   },
   {
     "frontMatter": {
-      "name": "Progress bar",
+      "title": "Progress bar",
       "category": "Feedback indicators",
       "releasedIn": "1.8.0",
       "keywords": [
@@ -1050,11 +1050,11 @@
         "loading"
       ]
     },
-    "intro": "The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left."
+    "description": "The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left."
   },
   {
     "frontMatter": {
-      "name": "Radio button",
+      "title": "Radio button",
       "category": "Forms",
       "keywords": [
         "RadioButton",
@@ -1070,11 +1070,11 @@
         "switch"
       ]
     },
-    "intro": "Use radio buttons to present each item in a list of options where merchants must make a single selection."
+    "description": "Use radio buttons to present each item in a list of options where merchants must make a single selection."
   },
   {
     "frontMatter": {
-      "name": "Range slider",
+      "title": "Range slider",
       "category": "Forms",
       "keywords": [
         "RangeSlider",
@@ -1086,11 +1086,11 @@
         "range form"
       ]
     },
-    "intro": "A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values)."
+    "description": "A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values)."
   },
   {
     "frontMatter": {
-      "name": "Resource item",
+      "title": "Resource item",
       "category": "Lists and tables",
       "keywords": [
         "ResourceItem",
@@ -1115,11 +1115,11 @@
         "list of resources"
       ]
     },
-    "intro": "Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object’s detail page."
+    "description": "Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object’s detail page."
   },
   {
     "frontMatter": {
-      "name": "Resource list",
+      "title": "Resource list",
       "category": "Lists and tables",
       "keywords": [
         "ResourceList",
@@ -1145,11 +1145,11 @@
         "sort"
       ]
     },
-    "intro": "A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it."
+    "description": "A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it."
   },
   {
     "frontMatter": {
-      "name": "Scrollable",
+      "title": "Scrollable",
       "category": "Behavior",
       "keywords": [
         "long form",
@@ -1165,11 +1165,11 @@
         "above the fold"
       ]
     },
-    "intro": "The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read."
+    "description": "The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read."
   },
   {
     "frontMatter": {
-      "name": "Select",
+      "title": "Select",
       "category": "Forms",
       "keywords": [
         "on off",
@@ -1191,11 +1191,11 @@
         "separate error message"
       ]
     },
-    "intro": "Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface."
+    "description": "Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface."
   },
   {
     "frontMatter": {
-      "name": "Setting toggle",
+      "title": "Setting toggle",
       "category": "Actions",
       "keywords": [
         "SettingToggle",
@@ -1212,11 +1212,11 @@
         "adjuster"
       ]
     },
-    "intro": "Use to give merchants control over a feature or option that can be turned on or off."
+    "description": "Use to give merchants control over a feature or option that can be turned on or off."
   },
   {
     "frontMatter": {
-      "name": "Sheet",
+      "title": "Sheet",
       "category": "Overlays",
       "keywords": [
         "sheet",
@@ -1232,65 +1232,65 @@
         "message": "The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions."
       }
     },
-    "intro": "A sheet is a large container that enters from the edge of the screen when triggered by the merchant. It’s used to provide merchants with actions and information contextual to the page. It doesn’t interrupt their flow like a modal."
+    "description": "A sheet is a large container that enters from the edge of the screen when triggered by the merchant. It’s used to provide merchants with actions and information contextual to the page. It doesn’t interrupt their flow like a modal."
   },
   {
     "frontMatter": {
-      "name": "Skeleton body text",
+      "title": "Skeleton body text",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
       "keywords": ["SkeletonBodyText", "skeleton", "loading", "page"]
     },
-    "intro": "Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
+    "description": "Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
   {
     "frontMatter": {
-      "name": "Skeleton display text",
+      "title": "Skeleton display text",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
       "keywords": ["SkeletonDisplayText", "skeleton", "loading", "page"]
     },
-    "intro": "Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
+    "description": "Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
   {
     "frontMatter": {
-      "name": "Skeleton page",
+      "title": "Skeleton page",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
       "keywords": ["SkeletonPage", "skeleton", "loading", "page"]
     },
-    "intro": "Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants."
+    "description": "Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants."
   },
   {
     "frontMatter": {
-      "name": "Skeleton tabs",
+      "title": "Skeleton tabs",
       "category": "Feedback indicators",
       "releasedIn": 9,
       "keywords": ["SkeletonTabs", "skeleton", "loading", "page"]
     },
-    "intro": "Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
+    "description": "Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card."
   },
   {
     "frontMatter": {
-      "name": "Skeleton thumbnail",
+      "title": "Skeleton thumbnail",
       "category": "Feedback indicators",
       "releasedIn": "3.7.2",
       "keywords": ["SkeletonThumbnail", "skeleton", "loading", "page"]
     },
-    "intro": "Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card."
+    "description": "Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card."
   },
   {
     "frontMatter": {
-      "name": "Spinner",
+      "title": "Spinner",
       "category": "Feedback indicators",
       "releasedIn": "1.7.0",
       "keywords": ["spinner", "loader", "loading", "progress indicator"]
     },
-    "intro": "Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts."
+    "description": "Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts."
   },
   {
     "frontMatter": {
-      "name": "Stack",
+      "title": "Stack",
       "category": "Structure",
       "keywords": [
         "rows",
@@ -1309,11 +1309,11 @@
         "layout"
       ]
     },
-    "intro": "Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
+    "description": "Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack."
   },
   {
     "frontMatter": {
-      "name": "Subheading",
+      "title": "Subheading",
       "category": "Titles and text",
       "keywords": [
         "title bar",
@@ -1325,11 +1325,11 @@
         "titles of subsections"
       ]
     },
-    "intro": "Subheadings are used for the title of any sub-sections in top-level page sections."
+    "description": "Subheadings are used for the title of any sub-sections in top-level page sections."
   },
   {
     "frontMatter": {
-      "name": "Tabs",
+      "title": "Tabs",
       "category": "Navigation",
       "keywords": [
         "layout",
@@ -1342,11 +1342,11 @@
         "scrollable"
       ]
     },
-    "intro": "Use to alternate among related views within the same context."
+    "description": "Use to alternate among related views within the same context."
   },
   {
     "frontMatter": {
-      "name": "Tag",
+      "title": "Tag",
       "category": "Forms",
       "keywords": [
         "indicator",
@@ -1358,11 +1358,11 @@
         "keywords"
       ]
     },
-    "intro": "Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants."
+    "description": "Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants."
   },
   {
     "frontMatter": {
-      "name": "Text container",
+      "title": "Text container",
       "category": "Titles and text",
       "releasedIn": "1.9.0",
       "keywords": [
@@ -1375,11 +1375,11 @@
         "padding"
       ]
     },
-    "intro": "A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing."
+    "description": "A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing."
   },
   {
     "frontMatter": {
-      "name": "Text field",
+      "title": "Text field",
       "category": "Forms",
       "keywords": [
         "TextField",
@@ -1422,11 +1422,11 @@
         "icon action"
       ]
     },
-    "intro": "A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers."
+    "description": "A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers."
   },
   {
     "frontMatter": {
-      "name": "Text style",
+      "title": "Text style",
       "category": "Titles and text",
       "keywords": [
         "TextStyle",
@@ -1447,11 +1447,11 @@
         "fields"
       ]
     },
-    "intro": "Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text."
+    "description": "Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text."
   },
   {
     "frontMatter": {
-      "name": "Thumbnail",
+      "title": "Thumbnail",
       "category": "Images and icons",
       "keywords": [
         "photo",
@@ -1463,11 +1463,11 @@
         "image preview"
       ]
     },
-    "intro": "Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context."
+    "description": "Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context."
   },
   {
     "frontMatter": {
-      "name": "Toast",
+      "title": "Toast",
       "category": "Feedback indicators",
       "keywords": [
         "toast",
@@ -1483,11 +1483,11 @@
         "duration"
       ]
     },
-    "intro": "The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action."
+    "description": "The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action."
   },
   {
     "frontMatter": {
-      "name": "Tooltip",
+      "title": "Tooltip",
       "category": "Overlays",
       "keywords": [
         "info",
@@ -1500,11 +1500,11 @@
         "tap"
       ]
     },
-    "intro": "Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click."
+    "description": "Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click."
   },
   {
     "frontMatter": {
-      "name": "Top bar",
+      "title": "Top bar",
       "category": "Navigation",
       "keywords": [
         "global chrome",
@@ -1522,11 +1522,11 @@
         "logo"
       ]
     },
-    "intro": "The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo."
+    "description": "The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo."
   },
   {
     "frontMatter": {
-      "name": "Video thumbnail",
+      "title": "Video thumbnail",
       "category": "Images and icons",
       "keywords": [
         "video",
@@ -1539,11 +1539,11 @@
         "contextual learning system"
       ]
     },
-    "intro": "Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen."
+    "description": "Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen."
   },
   {
     "frontMatter": {
-      "name": "Visually hidden",
+      "title": "Visually hidden",
       "category": "Titles and text",
       "keywords": [
         "VisuallyHidden",
@@ -1562,6 +1562,6 @@
         "assistive technology"
       ]
     },
-    "intro": "Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden."
+    "description": "Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden."
   }
 ]

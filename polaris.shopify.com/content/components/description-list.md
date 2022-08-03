@@ -1,5 +1,5 @@
 ---
-name: Description list
+title: Description list
 category: Lists and tables
 keywords:
   - DescriptionList

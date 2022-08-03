@@ -1,5 +1,5 @@
 ---
-name: Setting toggle
+title: Setting toggle
 category: Actions
 keywords:
   - SettingToggle

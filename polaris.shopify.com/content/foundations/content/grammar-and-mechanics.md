@@ -1,5 +1,5 @@
 ---
-name: Grammar and mechanics
+title: Grammar and mechanics
 keywords:
   - writing instructions
   - writing rules

@@ -1,5 +1,5 @@
 ---
-name: Date picker
+title: Date picker
 category: Forms
 keywords:
   - DatePicker

@@ -1,5 +1,5 @@
 ---
-name: Data table
+title: Data table
 category: Lists and tables
 keywords:
   - DataTable

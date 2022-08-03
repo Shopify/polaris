@@ -1,5 +1,5 @@
 ---
-name: Filters
+title: Filters
 category: Lists and tables
 keywords:
   - filters
@@ -152,4 +152,3 @@ If all tag pills selected: truncate in the middle
 - All payment status filters selected, Paid, unpa…
 
 <!-- end -->
-

@@ -1,5 +1,5 @@
 ---
-name: Illustrations
+title: Illustrations
 keywords:
   - drawings
   - pictures

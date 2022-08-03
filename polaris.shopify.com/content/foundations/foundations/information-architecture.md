@@ -1,5 +1,5 @@
 ---
-name: Information architecture
+title: Information architecture
 keywords:
   - IA principles
   - info architecture

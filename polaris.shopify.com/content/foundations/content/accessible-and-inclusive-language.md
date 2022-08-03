@@ -1,5 +1,5 @@
 ---
-name: Accessible and inclusive language
+title: Accessible and inclusive language
 keywords:
   - copy instructions
   - copy rules

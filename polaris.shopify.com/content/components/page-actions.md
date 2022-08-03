@@ -1,5 +1,5 @@
 ---
-name: Page actions
+title: Page actions
 category: Structure
 keywords:
   - PageActions

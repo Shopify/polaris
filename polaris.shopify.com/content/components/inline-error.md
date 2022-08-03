@@ -1,5 +1,5 @@
 ---
-name: Inline error
+title: Inline error
 category: Forms
 keywords:
   - InlineError

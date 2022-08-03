@@ -1,5 +1,5 @@
 ---
-name: Formatting localized currency
+title: Formatting localized currency
 keywords:
   - internationalization
   - localization

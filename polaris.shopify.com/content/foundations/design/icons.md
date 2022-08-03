@@ -1,5 +1,5 @@
 ---
-name: Icons
+title: Icons
 keywords:
   - shopify icons
   - icon sets

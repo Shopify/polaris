@@ -1,5 +1,5 @@
 ---
-name: Skeleton thumbnail
+title: Skeleton thumbnail
 category: Feedback indicators
 releasedIn: 3.7.2
 keywords:

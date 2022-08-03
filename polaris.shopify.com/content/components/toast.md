@@ -1,5 +1,5 @@
 ---
-name: Toast
+title: Toast
 category: Feedback indicators
 keywords:
   - toast

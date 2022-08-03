@@ -1,5 +1,5 @@
 ---
-name: Footer help
+title: Footer help
 category: Navigation
 keywords:
   - FooterHelp

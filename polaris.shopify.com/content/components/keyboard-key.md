@@ -1,5 +1,5 @@
 ---
-name: Keyboard key
+title: Keyboard key
 category: Images and icons
 keywords:
   - KeyboardKey

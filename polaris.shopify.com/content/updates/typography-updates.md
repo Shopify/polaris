@@ -1,5 +1,5 @@
 ---
-name: Typography updates
+title: Typography updates
 keywords:
   - typography
   - type

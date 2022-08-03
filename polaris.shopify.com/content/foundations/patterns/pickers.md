@@ -1,5 +1,5 @@
 ---
-name: Pickers
+title: Pickers
 keywords:
   - customer segments
   - locations

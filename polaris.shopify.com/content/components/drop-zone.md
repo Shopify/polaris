@@ -1,5 +1,5 @@
 ---
-name: Drop zone
+title: Drop zone
 category: Actions
 keywords:
   - upload

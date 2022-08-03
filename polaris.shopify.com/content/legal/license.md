@@ -1,5 +1,5 @@
 ---
-name: License
+title: License
 keywords:
   - legal
   - license

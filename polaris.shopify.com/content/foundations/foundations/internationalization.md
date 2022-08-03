@@ -1,5 +1,5 @@
 ---
-name: Internationalization
+title: Internationalization
 keywords:
   - internationalization
   - localization

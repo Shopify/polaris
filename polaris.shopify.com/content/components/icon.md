@@ -1,5 +1,5 @@
 ---
-name: Icon
+title: Icon
 category: Images and icons
 keywords:
   - iconography

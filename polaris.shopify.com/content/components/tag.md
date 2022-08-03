@@ -1,5 +1,5 @@
 ---
-name: Tag
+title: Tag
 category: Forms
 keywords:
   - indicator

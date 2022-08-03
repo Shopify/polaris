@@ -1,5 +1,5 @@
 ---
-name: Naming
+title: Naming
 keywords:
   - names
   - caps

@@ -1,5 +1,5 @@
 ---
-name: Typography
+title: Typography
 keywords:
   - type styles
   - font sizes

@@ -1,5 +1,5 @@
 ---
-name: Actionable language
+title: Actionable language
 keywords:
   - button content
   - button copy

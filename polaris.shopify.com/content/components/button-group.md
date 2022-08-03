@@ -1,5 +1,5 @@
 ---
-name: Button group
+title: Button group
 category: Actions
 keywords:
   - ButtonGroup

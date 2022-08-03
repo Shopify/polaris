@@ -1,5 +1,5 @@
 ---
-name: Color picker
+title: Color picker
 category: Forms
 keywords:
   - ColorPicker
@@ -34,4 +34,3 @@ The color picker is used to let merchants select a color visually. For example, 
 ## Best practices
 
 - Use the alpha slider if you want to allow merchants to be able to select a transparent color
-

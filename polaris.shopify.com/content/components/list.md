@@ -1,5 +1,5 @@
 ---
-name: List
+title: List
 category: Lists and tables
 keywords:
   - bulleted lists

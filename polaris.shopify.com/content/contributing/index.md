@@ -1,5 +1,5 @@
 ---
-name: Contributing to Polaris
+title: Contributing to Polaris
 keywords:
   - how to contribute to polaris
   - contribution

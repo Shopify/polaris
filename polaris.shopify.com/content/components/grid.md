@@ -1,5 +1,5 @@
 ---
-name: Grid
+title: Grid
 category: Structure
 keywords:
   - one column

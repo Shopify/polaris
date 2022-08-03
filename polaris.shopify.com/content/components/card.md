@@ -1,5 +1,5 @@
 ---
-name: Card
+title: Card
 category: Structure
 keywords:
   - layout

@@ -1,5 +1,5 @@
 ---
-name: Button
+title: Button
 category: Actions
 keywords:
   - CTA

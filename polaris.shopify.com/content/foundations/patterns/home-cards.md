@@ -1,5 +1,5 @@
 ---
-name: Home cards
+title: Home cards
 keywords:
   - home cards
   - insights

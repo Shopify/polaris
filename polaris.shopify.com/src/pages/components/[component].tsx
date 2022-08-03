@@ -17,15 +17,15 @@ import PropsTable from "../../components/PropsTable";
 
 interface MarkdownData {
   frontMatter: any;
-  intro: string;
+  description: string;
   readme: string;
 }
 
 interface Props {
   examples: ComponentExample[];
   status?: Status;
-  name: string;
-  intro: string;
+  title: string;
+  description: string;
   readme: {
     body: string;
     header: string;
@@ -35,8 +35,8 @@ interface Props {
 
 const Components = ({
   examples,
-  intro,
-  name,
+  description,
+  title,
   readme,
   status,
   propsForComponent,
@@ -50,11 +50,11 @@ const Components = ({
     : undefined;
 
   return (
-    <Layout width="narrow" navItems={navItems} title={name}>
-      <PageMeta title={name} description={intro} />
+    <Layout width="narrow" navItems={navItems} title={title}>
+      <PageMeta title={title} description={description} />
 
       <Longform>
-        <Markdown text={intro} skipH1 />
+        <Markdown text={description} skipH1 />
         {typedStatus && <StatusBanner status={typedStatus} />}
         <ComponentExamples examples={examples} />
         {propsForComponent && <PropsTable props={propsForComponent} />}
@@ -83,12 +83,13 @@ export const getStaticProps: GetStaticProps<
     const data: MarkdownData = parseMarkdown(componentMarkdown);
     const readmeText = data.readme;
     const readmeTextParts = readmeText.split(/\n\n/);
-    const intro = readmeTextParts.length > 2 ? readmeTextParts[2].trim() : "";
+    const description =
+      readmeTextParts.length > 2 ? readmeTextParts[2].trim() : "";
     const body =
       readmeTextParts.length > 3 ? readmeTextParts.slice(3).join("\n\n") : "";
 
     const readme = {
-      intro,
+      description,
       body,
     };
 
@@ -116,13 +117,13 @@ export const getStaticProps: GetStaticProps<
       propsData.find(
         (PropsTable) =>
           PropsTable.interfaceName.toLowerCase() ===
-          `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
+          `${data.frontMatter.title.replace(/\s/g, "").toLowerCase()}props`
       ) || null;
 
     const props: Props = {
       ...data.frontMatter,
       examples,
-      intro,
+      description,
       readme,
       propsForComponent,
     };

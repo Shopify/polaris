@@ -1,5 +1,5 @@
 ---
-name: Select
+title: Select
 category: Forms
 keywords:
   - on off

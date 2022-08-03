@@ -10,9 +10,9 @@ interface Props {
 }
 
 function FoundationsPage({
-  markdownFile: { readme, intro, frontMatter },
+  markdownFile: { readme, description, frontMatter },
 }: Props) {
-  let title = frontMatter?.name || "";
+  let { title } = frontMatter;
 
   if (title.includes("/")) {
     const parts = title.split("/");
@@ -21,7 +21,7 @@ function FoundationsPage({
 
   return (
     <Layout width="narrow" navItems={foundationsNavItems} title={title}>
-      <PageMeta title={title} description={intro} />
+      <PageMeta title={title} description={description} />
 
       <Longform>
         <Markdown text={readme} skipH1 />

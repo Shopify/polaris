@@ -1,5 +1,5 @@
 ---
-name: Accessibility
+title: Accessibility
 keywords:
   - a11y
   - universal design

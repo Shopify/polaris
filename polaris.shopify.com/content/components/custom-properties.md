@@ -1,5 +1,5 @@
 ---
-name: CustomProperties
+title: CustomProperties
 category: Structure
 keywords:
   - theme

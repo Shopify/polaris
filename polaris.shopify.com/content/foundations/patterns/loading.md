@@ -1,5 +1,5 @@
 ---
-name: Loading
+title: Loading
 slug: loading
 keywords:
   - page loading

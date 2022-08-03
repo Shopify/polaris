@@ -1,5 +1,5 @@
 ---
-name: Popover
+title: Popover
 category: Overlays
 keywords:
   - interactive

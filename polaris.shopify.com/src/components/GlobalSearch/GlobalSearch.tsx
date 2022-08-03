@@ -239,7 +239,7 @@ function SearchResults({
                 <FoundationsGrid>
                   {results.map(({ id, url, meta }) => {
                     if (!meta.foundations) return null;
-                    const { title, excerpt, category } = meta.foundations;
+                    const { title, description, category } = meta.foundations;
                     const icon = foundationsIcons[title];
                     return (
                       <SearchContext.Provider
@@ -248,7 +248,7 @@ function SearchResults({
                       >
                         <FoundationsGrid.Item
                           title={title}
-                          excerpt={excerpt}
+                          description={description}
                           category={category}
                           url={url}
                           icon={icon}
@@ -266,7 +266,7 @@ function SearchResults({
                 <ComponentGrid>
                   {results.map(({ id, url, meta }) => {
                     if (!meta.components) return null;
-                    const { name, description, status } = meta.components;
+                    const { title, description, status } = meta.components;
                     return (
                       <SearchContext.Provider
                         key={id}
@@ -275,7 +275,7 @@ function SearchResults({
                         <ComponentGrid.Item
                           url={url}
                           description={description}
-                          name={name}
+                          title={title}
                           status={status}
                         />
                       </SearchContext.Provider>

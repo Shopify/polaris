@@ -1,5 +1,5 @@
 ---
-name: Skeleton page
+title: Skeleton page
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

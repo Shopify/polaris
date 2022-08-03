@@ -1,5 +1,5 @@
 ---
-name: Radio button
+title: Radio button
 category: Forms
 keywords:
   - RadioButton

@@ -1,5 +1,5 @@
 ---
-name: Link
+title: Link
 category: Navigation
 keywords:
   - URL

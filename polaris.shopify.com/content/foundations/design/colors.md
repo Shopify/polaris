@@ -1,5 +1,5 @@
 ---
-name: Colors
+title: Colors
 keywords:
   - visual patterns
   - color strategy

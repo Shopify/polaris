@@ -1,5 +1,5 @@
 ---
-name: Components
+title: Components
 keywords:
   - components
   - contributing to polaris react

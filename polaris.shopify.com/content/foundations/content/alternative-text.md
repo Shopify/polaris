@@ -1,5 +1,5 @@
 ---
-name: Alternative text
+title: Alternative text
 keywords:
   - speech synthesis
   - alt HTML element attribute

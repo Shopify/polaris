@@ -1,5 +1,5 @@
 ---
-name: Combobox
+title: Combobox
 category: Forms
 keywords:
   - autocomplete

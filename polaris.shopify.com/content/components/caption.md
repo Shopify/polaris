@@ -1,5 +1,5 @@
 ---
-name: Caption
+title: Caption
 category: Titles and text
 keywords:
   - labels

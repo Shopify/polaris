@@ -1,5 +1,5 @@
 ---
-name: Data visualizations
+title: Data visualizations
 keywords:
   - data viz
 ---

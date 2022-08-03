@@ -1,5 +1,5 @@
 ---
-name: Sheet
+title: Sheet
 category: Overlays
 keywords:
   - sheet

@@ -1,5 +1,5 @@
 ---
-name: Stack
+title: Stack
 category: Structure
 keywords:
   - rows

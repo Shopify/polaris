@@ -1,5 +1,5 @@
 ---
-name: App release notes
+title: App release notes
 keywords:
   - release
   - notes

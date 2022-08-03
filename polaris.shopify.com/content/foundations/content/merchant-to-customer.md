@@ -1,5 +1,5 @@
 ---
-name: Merchant-to-customer content
+title: Merchant-to-customer content
 keywords:
   - merchant to buyer
   - buyer
