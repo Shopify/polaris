@@ -3,7 +3,6 @@ import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
   frontMatter: any;
-  description: string;
   readme: string;
 };
 
