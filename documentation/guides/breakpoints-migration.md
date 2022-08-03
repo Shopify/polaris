@@ -54,6 +54,8 @@ The following Sass mixins have been removed. You will need to replace any instan
 
 #### `breakpoint-after()`
 
+For dynamic mixins like this, you can use our [migration script](https://stackblitz.com/edit/node-cgrsxx?file=README.md) that will recommend the best matching breakpoint token for your case.
+
 _Before_
 
 ```scss
@@ -85,6 +87,8 @@ _After_
 
 #### `breakpoint-before()`
 
+For dynamic mixins like this, you can use our [migration script](https://stackblitz.com/edit/node-cgrsxx?file=README.md) that will recommend the best matching breakpoint token for your case.
+
 _Before_
 
 ```scss
@@ -115,6 +119,8 @@ _After_
 </details>
 
 #### `page-content-breakpoint-after()`
+
+For dynamic mixins like this, you can use our [migration script](https://stackblitz.com/edit/node-cgrsxx?file=README.md) that will recommend the best matching breakpoint token for your case.
 
 _Before_
 
@@ -178,6 +184,8 @@ _After_
 </details>
 
 #### `page-content-breakpoint-before()`
+
+For dynamic mixins like this, you can use our [migration script](https://stackblitz.com/edit/node-cgrsxx?file=README.md) that will recommend the best matching breakpoint token for your case.
 
 _Before_
 
