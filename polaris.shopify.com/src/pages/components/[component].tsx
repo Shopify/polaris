@@ -135,14 +135,14 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const componentBasePath = path.resolve(process.cwd(), "content/components");
-  const paths = glob
-    .sync(path.join(componentBasePath, "*.md"))
-    .map((fileName: string) => {
-      return fileName
-        .replace(`${process.cwd()}/content`, "")
-        .replace(".md", "");
-    });
+  const globPath = path.resolve(process.cwd(), "content/components/*/*.md");
+  const paths = glob.sync(globPath).map((fileName: string) => {
+    return fileName
+      .replace(`${process.cwd()}/content`, "")
+      .replace("/index.md", "");
+  });
+
+  console.log(paths);
 
   return {
     paths,
