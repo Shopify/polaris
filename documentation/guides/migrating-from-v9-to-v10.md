@@ -107,7 +107,7 @@ Token groups are now exported individually, allowing for tree-shaking and smalle
 + import {depth, spacing} from '@shopify/polaris-tokens';
 ```
 
-## Updated typopgraphy tokens
+## Updated typography tokens
 
 We have updated and streamlined token values, and updated token names to reflect a token naming convention that makes tokens easier to use and understand.
 
