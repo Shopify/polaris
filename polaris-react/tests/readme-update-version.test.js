@@ -5,7 +5,7 @@ const {semverRegExp} = require('../scripts/utilities');
 const readmes = require('../scripts/readme-update-version');
 
 describe('readme-update-version', () => {
-  it('matches 4 semver numbers in READMEs', () => {
+  it('matches 2 semver numbers in READMEs', () => {
     const occurrences = readmes.reduce((accumulator, readmePath) => {
       const readme = fs.readFileSync(
         path.join(__dirname, '..', readmePath),
@@ -14,7 +14,7 @@ describe('readme-update-version', () => {
       return accumulator + (readme.match(semverRegExp) || []).length;
     }, 0);
 
-    expect(occurrences).toBe(4);
+    expect(occurrences).toBe(2);
   });
 
   it('semverRegExp matches a variety of valid semver numbers', () => {

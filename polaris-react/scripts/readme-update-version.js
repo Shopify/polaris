@@ -9,7 +9,7 @@ const {semverRegExp} = require('../scripts/utilities');
 
 const root = resolve(__dirname, '..');
 
-const readmes = Object.freeze(['README.md', 'src/components/README.md']);
+const readmes = Object.freeze(['README.md']);
 
 console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
 readmes

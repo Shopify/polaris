@@ -4,6 +4,7 @@ import CodesandboxButton from "../CodesandboxButton";
 import Code from "../Code";
 import { Tab } from "@headlessui/react";
 import { className } from "../../utils/various";
+import Markdown from "../Markdown";
 
 const exampleIframeId = "example-iframe";
 const iframePadding = 192;
@@ -104,7 +105,7 @@ const ComponentExamples = ({ examples }: Props) => {
 
             return (
               <Tab.Panel key={fileName}>
-                {description ? <p>{description}</p> : null}
+                {description ? <Markdown text={description} /> : null}
                 <div className={styles.ExampleFrame}>
                   <iframe
                     src={exampleUrl}

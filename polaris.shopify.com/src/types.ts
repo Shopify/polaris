@@ -3,7 +3,6 @@ import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
   frontMatter: any;
-  intro: string;
   readme: string;
 };
 
@@ -27,13 +26,13 @@ export interface SearchResult {
   score: number;
   meta: Partial<{
     components: {
-      name: string;
+      title: string;
       description: string;
       status?: Status;
     };
     foundations: {
       title: string;
-      excerpt: string;
+      description: string;
       category: string;
     };
     tokens: {

@@ -1,13 +1,10 @@
 ---
-name: Contributing to Polaris
+title: Contributing to Polaris
+description: Polaris thrives on contribution and community support. Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
 keywords:
   - how to contribute to polaris
   - contribution
 ---
-
-# Contributing to Polaris
-
-Polaris thrives on contribution and community support. Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
 
 ## Who can contribute
 
@@ -15,9 +12,9 @@ Contribution to Polaris looks different depending on whether you work at Shopify
 
 ## When to contribute
 
-Figuring out what and when to contribute is not always simple, but it doesn't have to be! Here are some common scenarios for deciding when to contribute:
+Contributions can seem intimidating, but they don't have to be! Here are some common scenarios for deciding when to contribute:
 
-| Use the System                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
+| Use the system                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
 | _When available resources can solve a design problem_                        | _When a change or addition can solve a shared problem_                                  | _When a unique problem requires a unique solution_                                              |     |     |
 | Read [ Designing with a system ](/contributing/designing-with-a-system)      | Read [ When to contribute new patterns ](/contributing/when-to-contribute-new-patterns) | Share ideas in [ #admin-ux ](https://shopify.slack.com/archives/C039ZAKQ5AA)(Shopify employees) |     |     |

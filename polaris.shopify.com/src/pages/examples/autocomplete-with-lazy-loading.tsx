@@ -68,7 +68,7 @@ function AutoCompleteLazyLoadExample() {
       setOptions(resultOptions);
       setInputValue;
     },
-    [deselectedOptions, options]
+    [deselectedOptions]
   );
 
   const textField = (

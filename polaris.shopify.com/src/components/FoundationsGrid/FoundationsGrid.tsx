@@ -24,7 +24,7 @@ function FoundationsGrid({ title, children }: Props) {
 
 interface FoundationsGridItemProps {
   title: string;
-  excerpt: string;
+  description: string;
   url: string;
   icon: JSX.Element;
   category: string;
@@ -32,7 +32,7 @@ interface FoundationsGridItemProps {
 
 function FoundationsGridItem({
   title,
-  excerpt,
+  description,
   url,
   icon,
   category,
@@ -45,7 +45,7 @@ function FoundationsGridItem({
         <a {...searchAttributes}>
           <div className={styles.Icon}>{icon}</div>
           <h4>{title}</h4>
-          <p>{stripMarkdownLinks(excerpt)}</p>
+          <p>{stripMarkdownLinks(description)}</p>
         </a>
       </Link>
     </li>

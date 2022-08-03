@@ -1,10 +1,10 @@
 <div align="center">
-<a href="https://polaris.shopify.com"><img width="705" src="https://github.com/Shopify/polaris/blob/main/documentation/readme.jpg?raw=true" alt="Abstract illustration of a lady sitting with a hot drink in hand using a laptop" /></a>
+  <a href="https://polaris.shopify.com"><img src="https://github.com/Shopify/polaris/blob/main/documentation/readme.png?raw=true" alt="" /></a>
 </div>
 
 # Polaris
 
-> Shopify’s design system to help us work together to build a great experience for all of our merchants.
+> Build. Contribute. Evolve. Shape the merchant experience for Shopify’s core product, the admin.
 
 [![storybook](https://shields.io/badge/storybook-white?logo=storybook&style=flat)](https://storybook.polaris.shopify.com) [![npm version](https://img.shields.io/npm/v/@shopify/polaris.svg?label=@shopify/polaris)](https://www.npmjs.com/package/@shopify/polaris) [![CI](https://github.com/shopify/polaris/workflows/CI/badge.svg)](https://github.com/Shopify/polaris/actions?query=branch%3Amain) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#your-first-pull-request)
 
