@@ -1,6 +1,6 @@
 import { Button } from "@shopify/polaris";
 import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function DisclosureButton() {
   const [expanded, setExpanded] = useState(false);

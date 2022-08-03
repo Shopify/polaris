@@ -48,5 +48,5 @@ function ModalExample() {
   );
 }
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 export default withPolarisExample(() => <p />);

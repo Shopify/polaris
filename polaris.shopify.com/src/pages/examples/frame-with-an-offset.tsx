@@ -25,7 +25,7 @@ import {
   ConversationMinor,
 } from "@shopify/polaris-icons";
 import { useState, useCallback, useRef } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function FrameExample() {
   const defaultState = useRef({
