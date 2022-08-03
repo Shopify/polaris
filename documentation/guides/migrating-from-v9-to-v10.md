@@ -9,6 +9,9 @@ Polaris v10.0.0 ([full release notes](https://github.com/Shopify/polaris/release
   - [Removed support for `colorScheme`](#removed-support-for-colorscheme)
   - [Using dark color tokens](#using-dark-color-tokens)
   - [Removing `CustomProperties`](#removing-customproperties)
+- [Updated typopgraphy tokens](#updated-typography-tokens)
+  - [Font-size tokens](#font-size-tokens)
+  - [Line-height tokens](#line-height-tokens)
 
 ## Consolidated color schemes
 
@@ -103,3 +106,40 @@ Token groups are now exported individually, allowing for tree-shaking and smalle
 
 + import {depth, spacing} from '@shopify/polaris-tokens';
 ```
+
+## Updated typography tokens
+
+We have updated and streamlined token values, and updated token names to reflect a token naming convention that makes tokens easier to use and understand.
+
+### Font-size tokens
+
+We updated the size tokens to use increments of 100 for the variants. This allows us to set `--p-font-size-100` as the base and go lower (` --p-font-size-75` ) or higher (`--p-font-size-200`) as needed numerically.
+
+| New token         | Old token        | px value  | rem value |
+| ----------------- | ---------------- | --------- | --------- |
+| --p-font-size-75  | --p-font-size-1  | 12        | 0.75      |
+| -                 | --p-font-size-2  | 13        | 0.8125    |
+| --p-font-size-100 | --p-font-size-3  | 14 (base) | 0.875     |
+| -                 | --p-font-size-4  | 15        | 0.9375    |
+| --p-font-size-200 | --p-font-size-5  | 16        | 1         |
+| -                 | --p-font-size-6  | 17        | 1.0625    |
+| --p-font-size-300 | --p-font-size-7  | 20        | 1.25      |
+| -                 | --p-font-size-8  | 21        | 1.3125    |
+| --p-font-size-400 | --p-font-size-9  | 24        | 1.50      |
+| -                 | --p-font-size-10 | 26        | 1.625     |
+| -                 | --p-font-size-11 | 27        | 1.6875    |
+| --p-font-size-500 | --p-font-size-12 | 28        | 1.75      |
+| --p-font-size-600 | -                | 32        | 2         |
+| --p-font-size-700 | -                | 40        | 2.5       |
+
+### Line-height tokens
+
+| New token              | Value | Old token         | Value |
+| ---------------------- | ----- | ----------------- | ----- |
+| --p-font-line-height-1 | 16    | --p-line-height-1 | 16    |
+| --p-font-line-height-2 | 20    | --p-line-height-2 | 20    |
+| --p-font-line-height-3 | 24    | --p-line-height-3 | 24    |
+| --p-font-line-height-4 | 28    | --p-line-height-4 | 28    |
+| --p-font-line-height-5 | 32    | --p-line-height-5 | 32    |
+| --p-font-line-height-6 | 40    | --p-line-height-6 | 36    |
+| --p-font-line-height-7 | 48    | --p-line-height-7 | 44    |
