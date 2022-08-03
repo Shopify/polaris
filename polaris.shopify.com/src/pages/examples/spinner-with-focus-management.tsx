@@ -8,7 +8,7 @@ import {
   Tabs,
 } from "@shopify/polaris";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function SpinnerWithFocusManagement() {
   const tabs = useRef([

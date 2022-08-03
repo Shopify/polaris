@@ -7,7 +7,7 @@ import {
   Combobox,
 } from "@shopify/polaris";
 import { useState, useCallback, useMemo } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function MultiselectTagComboboxExample() {
   const [selectedTags, setSelectedTags] = useState(["Rustic"]);

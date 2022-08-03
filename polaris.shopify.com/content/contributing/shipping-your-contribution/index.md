@@ -1,6 +1,6 @@
 ---
 title: Shipping your contribution
-description: While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live in [GitHub](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub discussions, issues, and pull requests to work in the open.
+description: Contributions to this documentation site and code-related resources in the Polaris design system are made in the [Shopify/polaris GitHub repository](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects/2250), and use GitHub discussions, issues, and pull requests to work in the open.
 keywords:
   - contributing to polaris
   - github
@@ -13,18 +13,18 @@ keywords:
 
 ### How it's structured
 
-Polaris is structured as a monorepo, which means it’s a single repository with multiple projects. The Polaris monorepo includes:
+The Shopify/polaris GitHub repository is structured as a monorepo, which means it’s a single repository with multiple projects. The monorepo includes:
 
-```plaintext
-polaris/
-├── polaris-for-figma           # Figma plugin for Polaris components
-├── polaris-for-vscode          # VS Code extension for Polaris Design Token autocomplete suggestions
-├── polaris-icons               # npm SVG icon library `@shopify/polaris-icons`
-├── polaris-react               # npm React component library `@shopify/polaris`
-├── polaris-tokens              # npm Design Token library `@shopify/polaris-tokens`
-├── polaris.shopify.com         # The style guide to the Polaris Design System
-└── stylelint-polaris           # Linting rules for using Polaris Design Tokens through CSS custom properties
-```
+<!-- prettier-ignore -->
+| `polaris` |     |
+| ---------- | --- |
+|`/polaris-for-figma` |Figma plugin for Polaris components|
+|`/polaris-for-vscode` |VS Code extension for Polaris Design Token autocompletion|
+|`/polaris-icons` |npm SVG icon library `@shopify/polaris-icons`|
+|`/polaris-react` |npm React component library `@shopify/polaris`|
+|`/polaris-tokens` |npm Design Token library `@shopify/polaris-tokens`|
+|`/polaris.shopify.com` |The style guide to the Polaris Design System|
+|`/stylelint-polaris` |Linting rules for using Polaris Design Tokens through CSS custom properties|
 
 ### Technologies we use
 
