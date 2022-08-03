@@ -1,5 +1,6 @@
 ---
 title: Shopify experience values
+description: At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.
 keywords:
   - mission
   - approaches
@@ -27,10 +28,6 @@ keywords:
   - cohesive experiences
   - polished
 ---
-
-# Shopify experience values
-
-At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.
 
 These values are at the heart of how we build experiences at Shopify. They’re important whether you work at Shopify or you’re developing third-party apps or themes.
 

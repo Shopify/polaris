@@ -1,12 +1,9 @@
 ---
 title: Data visualizations
+description: Visualizations surface patterns in data, and provide immediate answers to a single, specific question.
 keywords:
   - data viz
 ---
-
-# Data visualizations
-
-Visualizations surface patterns in data, and provide immediate answers to a single, specific question.
 
 This section outlines data visualization practices at Shopify and how to leverage them.
 

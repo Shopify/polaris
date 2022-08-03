@@ -1,5 +1,6 @@
 ---
 title: Internationalization
+description: Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.
 keywords:
   - internationalization
   - localization
@@ -16,10 +17,6 @@ keywords:
   - germany
   - france
 ---
-
-# Internationalization
-
-Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.
 
 We want our merchants to experience Shopify in a way that’s appropriate and meaningful to them, no matter where they are in the world.
 

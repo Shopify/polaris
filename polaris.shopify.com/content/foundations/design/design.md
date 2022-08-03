@@ -1,14 +1,11 @@
 ---
 title: Design
+description: These are the principles that shape how we design all the experiences across the Shopify admin.
 keywords:
   - visual design
   - design language
   - design
 ---
-
-# Design
-
-These are the principles that shape how we design all the experiences across the Shopify admin.
 
 ![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)
 

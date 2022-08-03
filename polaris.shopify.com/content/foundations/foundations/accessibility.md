@@ -1,5 +1,6 @@
 ---
 title: Accessibility
+description: Making commerce better for everyone means caring deeply about making quality products. A quality product should have a fantastic user experience (UX).
 keywords:
   - a11y
   - universal design
@@ -17,9 +18,7 @@ keywords:
   - diverse
 ---
 
-# Accessibility
-
-Making commerce better for everyone means caring deeply about making quality products. A quality product should have a fantastic user experience (UX), including:
+This includes:
 
 - A beautiful and functional design
 - Consistent and useful [copy](/content/product-content)

@@ -1,17 +1,12 @@
 ---
 title: Information architecture
+description: Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.
 keywords:
   - IA principles
   - info architecture
   - wayfinding
   - way finding
   - navigation
----
-
-# Information architecture (IA)
-
-Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work.
-
 ---
 
 ## Defining IA

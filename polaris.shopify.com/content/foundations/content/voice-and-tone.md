@@ -1,5 +1,6 @@
 ---
 title: Voice and tone
+description: Learn how to apply Shopify’s voice and choose the right tone, no matter what product, feature, or app you’re building.
 keywords:
   - sound like Shopify
   - personality of Shopify
@@ -10,12 +11,6 @@ keywords:
   - merchant context
   - content voice
   - content tone
----
-
-# Voice and tone
-
-Learn how to apply Shopify’s voice and choose the right tone, no matter what product, feature, or app you’re building.
-
 ---
 
 ## What are voice and tone?

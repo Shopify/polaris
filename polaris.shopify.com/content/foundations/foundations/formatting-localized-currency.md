@@ -1,5 +1,6 @@
 ---
 title: Formatting localized currency
+description: Currencies are formatted differently in different countries and languages.
 keywords:
   - internationalization
   - localization
@@ -20,9 +21,7 @@ keywords:
   - japan
 ---
 
-# Formatting localized currency
-
-Currencies are formatted differently in different countries and languages. There’s a currency formatting framework to:
+There’s a currency formatting framework to:
 
 - Help more merchants sell globally
 - Localize currency formatting for merchants and customers everywhere

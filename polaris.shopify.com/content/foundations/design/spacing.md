@@ -1,5 +1,6 @@
 ---
 title: Spacing
+description: Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.
 keywords:
   - spacing
   - space
@@ -8,12 +9,6 @@ keywords:
   - position
   - margin
   - padding
----
-
-# Spacing
-
-Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.
-
 ---
 
 ## Principles

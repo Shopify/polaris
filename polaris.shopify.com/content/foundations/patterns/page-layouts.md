@@ -1,5 +1,6 @@
 ---
 title: Page layouts
+description: Layout patterns provide common ways to arrange the content of a screen.
 keywords:
   - layout
   - page
@@ -7,12 +8,6 @@ keywords:
   - hierarchy
   - spacing
   - stack
----
-
-# Page Layouts
-
-Layout patterns provide common ways to arrange the content of a screen.
-
 ---
 
 ## Structure of a screen

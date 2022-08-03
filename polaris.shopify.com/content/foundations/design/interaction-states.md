@@ -1,5 +1,6 @@
 ---
 title: Interaction states
+description: Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.
 keywords:
   - visual patterns
   - color strategy
@@ -12,10 +13,6 @@ keywords:
   - subdued
   - state
 ---
-
-# Interaction states
-
-Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.
 
 ![A collection of buttons in different states](/images/foundations/design/interaction-states/interaction-states-intro@2x.png)
 

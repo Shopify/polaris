@@ -1,13 +1,11 @@
 ---
-title: License
+title: License agreement
 keywords:
   - legal
   - license
   - agreement
   - rules
 ---
-
-# License agreement
 
 ## Polaris Design Guidelines License Agreement
 

@@ -1,5 +1,6 @@
 ---
 title: Pickers
+description: Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.
 keywords:
   - customer segments
   - locations
@@ -15,12 +16,6 @@ keywords:
   - segments
   - segementation
   - single select
----
-
-# Pickers
-
-Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.
-
 ---
 
 ## Best practices

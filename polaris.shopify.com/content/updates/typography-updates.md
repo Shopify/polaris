@@ -1,5 +1,6 @@
 ---
-title: Typography updates
+title: Polaris typography updates
+description: Learn about what changes are coming to Polaris typography.
 keywords:
   - typography
   - type
@@ -7,10 +8,6 @@ keywords:
   - text
   - type styles
 ---
-
-# Polaris typography updates
-
-Learn about what changes are coming to Polaris typography
 
 ![Screen showing the new type styles](/images/updates/type-updates-feature@2x.png)
 
