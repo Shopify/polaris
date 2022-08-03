@@ -130,7 +130,7 @@ foundations.forEach((data) => {
     meta: {
       foundations: {
         title,
-        icon,
+        icon: icon || "",
         description,
         category: category || "",
       },
