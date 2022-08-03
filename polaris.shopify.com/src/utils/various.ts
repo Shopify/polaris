@@ -1,45 +1,5 @@
 import type { NavItem } from "../components/Nav";
-import components from "../data/components.json";
 import { Status } from "../types";
-
-export const getComponentCategories = (): string[] => {
-  const tempComponentCategories: { [key: string]: boolean } = {};
-
-  Object.values(components).forEach((component) => {
-    tempComponentCategories[component.frontMatter.category] = true;
-  });
-
-  const componentCategories = Object.keys(tempComponentCategories);
-
-  return componentCategories;
-};
-
-export const getComponentNav = (): NavItem[] => {
-  const navItems: NavItem[] = [
-    {
-      title: "All",
-      children: components.map((component) => {
-        const statusValue =
-          component.frontMatter.status?.value.toLowerCase() as
-            | Status["value"]
-            | undefined;
-        return {
-          title: component.frontMatter.title,
-          url: `/components/${slugify(component.frontMatter.title)}`,
-          status:
-            component.frontMatter.status && statusValue
-              ? {
-                  value: statusValue,
-                  message: component.frontMatter.status.value,
-                }
-              : undefined,
-        };
-      }),
-    },
-  ];
-
-  return navItems;
-};
 
 export const getReadableStatusValue = (
   statusValue: Status["value"]

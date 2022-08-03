@@ -1,21 +1,12 @@
 import ComponentGrid from "../ComponentGrid";
 import Layout from "../Layout";
 
-import components from "../../data/components.json";
-import {
-  getComponentCategories,
-  stripMarkdownLinks,
-  slugify,
-  getComponentNav,
-} from "../../utils/various";
+import { stripMarkdownLinks, slugify } from "../../utils/various";
 import { Status } from "../../types";
 import styles from "./ComponentsPage.module.scss";
 import PageMeta from "../PageMeta";
 
-const componentCategories = getComponentCategories();
-const componentNav = getComponentNav();
-
-export default function ComponentsPage() {
+export default function ComponentsPage({ components }) {
   return (
     <div className={styles.ComponentsPage}>
       <PageMeta
