@@ -1,5 +1,6 @@
 ---
-name: Components
+title: Working with the polaris team
+description: When you contribute to Polaris, you help the Shopify community create better experiences for merchants, faster. Contribution takes thoughtful planning. 
 keywords:
   - service level agreement
   - SLA
@@ -8,11 +9,9 @@ keywords:
   - contribution guide
 ---
 
-# Working with the Polaris team
+Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights:
 
-When you contribute to Polaris, you help the Shopify community create better experiences for merchants, faster. Contribution takes thoughtful planning. Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights:
-
-- - High pressure deadlines are stressful, but the Polaris team can’t be pulled in to unblock. Think about the system early in the design process and plan for any system updates or additions ahead of the build stage. The Polaris team is here to support you while planning. Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) for a larger contribution. For smaller contributions like bug fixes, read the [contribution guide](/contributing).
+- High pressure deadlines are stressful, but the Polaris team can’t be pulled in to unblock. Think about the system early in the design process and plan for any system updates or additions ahead of the build stage. The Polaris team is here to support you while planning. Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) for a larger contribution. For smaller contributions like bug fixes, read the [contribution guide](/contributing).
 For the system to stay healthy and scale, contributions require a certain level of [quality](/contributing/quality-contributions)
  -If you make a custom solution, your team is responsible for maintaining it. Be aware of the impact if other teams use or tweak your already custom solution. Always use Polaris tokens. Learn more about [when to make a contribution](/contributing/#when-to-contribute) vs a custom solution. 
 - The best way to get support is to start a [Github discussion](https://github.com/Shopify/polaris/discussions/6750) or reach out in the #polaris channel (if you are a Shopify employee). Please avoid direct messaging Polaris team members about a system inquiry. 
