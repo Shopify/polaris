@@ -117,7 +117,9 @@ Object.keys(iconMetadata).forEach((fileName) => {
 });
 
 // Add foundations
-foundations.forEach(({ frontMatter: { title }, description, category }) => {
+foundations.forEach((data) => {
+  const { title, icon } = data.frontMatter;
+  const { description, category } = data;
   const url = `/foundations/${category}/${slugify(title)}`;
 
   results.push({
@@ -128,6 +130,7 @@ foundations.forEach(({ frontMatter: { title }, description, category }) => {
     meta: {
       foundations: {
         title,
+        icon,
         description,
         category: category || "",
       },
