@@ -1,5 +1,5 @@
 ---
-name: Sounds
+title: Sounds
 keywords:
   - audio
   - sonic

@@ -1,5 +1,5 @@
 ---
-name: Page layouts
+title: Page layouts
 keywords:
   - layout
   - page

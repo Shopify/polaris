@@ -1,5 +1,5 @@
 ---
-name: Fullscreen bar
+title: Fullscreen bar
 category: Navigation
 keywords:
   - topbar

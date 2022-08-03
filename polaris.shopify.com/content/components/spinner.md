@@ -1,5 +1,5 @@
 ---
-name: Spinner
+title: Spinner
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

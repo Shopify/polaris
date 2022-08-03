@@ -1,5 +1,5 @@
 ---
-name: Product content
+title: Product content
 keywords:
   - content standards
   - content guidelines

@@ -1,5 +1,5 @@
 ---
-name: Choice list
+title: Choice list
 category: Forms
 keywords:
   - ChoiceList

@@ -1,5 +1,5 @@
 ---
-name: Form layout
+title: Form layout
 category: Forms
 keywords:
   - FormLayout

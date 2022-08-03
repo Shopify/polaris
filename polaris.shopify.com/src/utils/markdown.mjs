@@ -10,7 +10,7 @@ export const parseMarkdown = (inputMarkdown) => {
 
   // Extract the content of the first paragraph
 
-  const intro = readmeSection.split("\n\n").find((paragraph) => {
+  const description = readmeSection.split("\n\n").find((paragraph) => {
     const content = paragraph.trim().split("\n").join(" ");
     if (paragraph.startsWith("<!--")) {
       return false;
@@ -56,7 +56,7 @@ export const parseMarkdown = (inputMarkdown) => {
 
   const out = {
     frontMatter,
-    intro,
+    description,
     readme: markdown,
   };
 

@@ -1,5 +1,5 @@
 ---
-name: Heading
+title: Heading
 category: Titles and text
 keywords:
   - titles

@@ -1,5 +1,5 @@
 ---
-name: Range slider
+title: Range slider
 category: Forms
 keywords:
   - RangeSlider

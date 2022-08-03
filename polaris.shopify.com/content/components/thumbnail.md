@@ -1,5 +1,5 @@
 ---
-name: Thumbnail
+title: Thumbnail
 category: Images and icons
 keywords:
   - photo

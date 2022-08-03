@@ -1,5 +1,5 @@
 ---
-name: Skeleton body text
+title: Skeleton body text
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

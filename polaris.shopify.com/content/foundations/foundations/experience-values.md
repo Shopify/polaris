@@ -1,5 +1,5 @@
 ---
-name: Shopify experience values
+title: Shopify experience values
 keywords:
   - mission
   - approaches

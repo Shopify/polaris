@@ -1,5 +1,5 @@
 ---
-name: Designing with a system
+title: Designing with a system
 keywords:
   - systems thinking
   - contribution guide

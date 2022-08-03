@@ -1,5 +1,5 @@
 ---
-name: Figma UI Kit
+title: Figma UI Kit
 keywords:
   - ui kit
   - figma

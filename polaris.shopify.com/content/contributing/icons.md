@@ -1,5 +1,5 @@
 ---
-name: Icons
+title: Icons
 keywords:
   - icons
   - add a new icon

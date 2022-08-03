@@ -1,5 +1,5 @@
 ---
-name: Top bar
+title: Top bar
 category: Navigation
 keywords:
   - global chrome

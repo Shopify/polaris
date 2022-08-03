@@ -1,5 +1,5 @@
 ---
-name: When to contribute new patterns
+title: When to contribute new patterns
 keywords:
   - when to contribute to polaris
   - when to evolve the system

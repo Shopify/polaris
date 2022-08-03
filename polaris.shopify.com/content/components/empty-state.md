@@ -1,5 +1,5 @@
 ---
-name: Empty state
+title: Empty state
 category: Structure
 keywords:
   - EmptyState

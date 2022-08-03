@@ -1,5 +1,5 @@
 ---
-name: Subheading
+title: Subheading
 category: Titles and text
 keywords:
   - title bar

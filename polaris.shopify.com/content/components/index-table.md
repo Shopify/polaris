@@ -1,5 +1,5 @@
 ---
-name: Index table
+title: Index table
 category: Lists and tables
 keywords:
   - ResourceList

@@ -1,5 +1,5 @@
 ---
-name: Pagination
+title: Pagination
 category: Navigation
 keywords:
   - lists

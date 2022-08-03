@@ -1,5 +1,5 @@
 ---
-name: Text container
+title: Text container
 category: Titles and text
 releasedIn: 1.9.0
 keywords:

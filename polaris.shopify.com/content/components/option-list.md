@@ -1,5 +1,5 @@
 ---
-name: Option list
+title: Option list
 category: Lists and tables
 keywords:
   - option list

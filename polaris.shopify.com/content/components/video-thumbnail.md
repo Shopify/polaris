@@ -1,5 +1,5 @@
 ---
-name: Video thumbnail
+title: Video thumbnail
 category: Images and icons
 keywords:
   - video

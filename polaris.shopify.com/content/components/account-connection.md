@@ -1,5 +1,5 @@
 ---
-name: Account connection
+title: Account connection
 category: Actions
 keywords:
   - AccountConnection

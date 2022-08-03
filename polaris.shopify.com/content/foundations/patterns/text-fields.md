@@ -1,5 +1,5 @@
 ---
-name: Text fields
+title: Text fields
 keywords:
   - text fields
   - search

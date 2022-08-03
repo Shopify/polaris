@@ -1,5 +1,5 @@
 ---
-name: Tabs
+title: Tabs
 category: Navigation
 keywords:
   - layout
@@ -74,4 +74,3 @@ And for the customers section, the tabs are:
 - Email subscribers
 
 Where possible, follow this pattern when writing tabs.
-

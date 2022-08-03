@@ -1,5 +1,5 @@
 ---
-name: Frame
+title: Frame
 category: Structure
 keywords:
   - navigation

@@ -1,5 +1,5 @@
 ---
-name: Help documentation
+title: Help documentation
 keywords:
   - writing instructions
   - writing guides

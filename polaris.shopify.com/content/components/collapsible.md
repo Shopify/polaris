@@ -1,5 +1,5 @@
 ---
-name: Collapsible
+title: Collapsible
 category: Behavior
 keywords:
   - hide

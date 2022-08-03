@@ -1,5 +1,5 @@
 ---
-name: Avatar
+title: Avatar
 category: Images and icons
 keywords:
   - photo

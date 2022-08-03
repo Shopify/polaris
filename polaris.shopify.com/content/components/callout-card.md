@@ -1,5 +1,5 @@
 ---
-name: Callout card
+title: Callout card
 category: Structure
 keywords:
   - CalloutCard

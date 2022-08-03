@@ -1,5 +1,5 @@
 ---
-name: Layout
+title: Layout
 category: Structure
 keywords:
   - one column

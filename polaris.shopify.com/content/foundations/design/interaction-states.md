@@ -1,5 +1,5 @@
 ---
-name: Interaction states
+title: Interaction states
 keywords:
   - visual patterns
   - color strategy

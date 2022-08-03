@@ -1,5 +1,5 @@
 ---
-name: Help content
+title: Help content
 keywords:
   - help text
   - learn more

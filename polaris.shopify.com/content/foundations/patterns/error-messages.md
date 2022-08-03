@@ -1,5 +1,5 @@
 ---
-name: Error messages
+title: Error messages
 keywords:
   - error states
   - invalid

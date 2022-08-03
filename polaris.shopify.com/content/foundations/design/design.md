@@ -1,5 +1,5 @@
 ---
-name: Design
+title: Design
 keywords:
   - visual design
   - design language

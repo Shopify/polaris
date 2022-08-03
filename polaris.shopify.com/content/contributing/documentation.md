@@ -1,5 +1,5 @@
 ---
-name: Documentation
+title: Documentation
 keywords:
   - how to contribute to polaris documentation
   - how to contribute to the style guide

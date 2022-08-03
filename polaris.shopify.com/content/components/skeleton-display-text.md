@@ -1,5 +1,5 @@
 ---
-name: Skeleton display text
+title: Skeleton display text
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

@@ -1,5 +1,5 @@
 ---
-name: Loading
+title: Loading
 category: Feedback indicators
 keywords:
   - spinner

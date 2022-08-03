@@ -1,5 +1,5 @@
 ---
-name: Resource list
+title: Resource list
 category: Lists and tables
 keywords:
   - ResourceList

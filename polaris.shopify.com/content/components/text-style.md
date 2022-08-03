@@ -1,5 +1,5 @@
 ---
-name: Text style
+title: Text style
 category: Titles and text
 keywords:
   - TextStyle

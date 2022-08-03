@@ -25,7 +25,7 @@ export const useCopyToClipboard = (stringToCopy: string) => {
 };
 
 export type TOCItem = {
-  name: string;
+  title: string;
   element: "H2" | "H3";
   id: string;
   children: TOCItem[];
@@ -46,7 +46,7 @@ export const useTOC = (children: React.ReactNode) => {
         if (currentNode === null) {
           if (el.tagName === "H2") {
             currentNode = {
-              name: el.textContent,
+              title: el.textContent,
               id,
               element: "H2",
               children: [],
@@ -56,7 +56,7 @@ export const useTOC = (children: React.ReactNode) => {
           if (el.tagName === "H2") {
             tocNodes.push(currentNode);
             currentNode = {
-              name: el.textContent,
+              title: el.textContent,
               id,
               element: "H2",
               children: [],
@@ -65,7 +65,7 @@ export const useTOC = (children: React.ReactNode) => {
             if (currentNode.element === "H2") {
               if (el.closest(".usage-list") === null) {
                 currentNode.children.push({
-                  name: el.textContent,
+                  title: el.textContent,
                   id,
                   element: "H3",
                   children: [],

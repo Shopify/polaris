@@ -1,5 +1,5 @@
 ---
-name: Tooltip
+title: Tooltip
 category: Overlays
 keywords:
   - info

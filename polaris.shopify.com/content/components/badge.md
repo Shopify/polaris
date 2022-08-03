@@ -1,5 +1,5 @@
 ---
-name: Badge
+title: Badge
 category: Images and icons
 keywords:
   - pills

@@ -1,5 +1,5 @@
 ---
-name: Visually hidden
+title: Visually hidden
 category: Titles and text
 keywords:
   - VisuallyHidden

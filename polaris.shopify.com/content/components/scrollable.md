@@ -1,5 +1,5 @@
 ---
-name: Scrollable
+title: Scrollable
 category: Behavior
 keywords:
   - long form

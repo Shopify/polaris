@@ -1,5 +1,5 @@
 ---
-name: Autocomplete
+title: Autocomplete
 category: Forms
 keywords:
   - autocomplete

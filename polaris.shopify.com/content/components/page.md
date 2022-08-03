@@ -1,5 +1,5 @@
 ---
-name: Page
+title: Page
 category: Structure
 keywords:
   - page

@@ -1,5 +1,5 @@
 ---
-name: Skeleton tabs
+title: Skeleton tabs
 category: Feedback indicators
 releasedIn: 9.0
 keywords:

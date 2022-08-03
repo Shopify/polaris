@@ -1,5 +1,5 @@
 ---
-name: Resource item
+title: Resource item
 category: Lists and tables
 keywords:
   - ResourceItem

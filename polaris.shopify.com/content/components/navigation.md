@@ -1,5 +1,5 @@
 ---
-name: Navigation
+title: Navigation
 category: Navigation
 keywords:
   - navigation

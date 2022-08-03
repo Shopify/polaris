@@ -1,5 +1,5 @@
 ---
-name: Shipping your contribution
+title: Shipping your contribution
 keywords:
   - contributing to polaris
   - github

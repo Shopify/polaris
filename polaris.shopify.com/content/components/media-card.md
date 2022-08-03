@@ -1,5 +1,5 @@
 ---
-name: Media card
+title: Media card
 category: Structure
 keywords:
   - MediaCard

@@ -1,5 +1,5 @@
 ---
-name: Modal
+title: Modal
 category: Overlays
 keywords:
   - modal

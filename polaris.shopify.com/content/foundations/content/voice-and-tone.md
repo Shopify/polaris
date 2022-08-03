@@ -1,5 +1,5 @@
 ---
-name: Voice and tone
+title: Voice and tone
 keywords:
   - sound like Shopify
   - personality of Shopify

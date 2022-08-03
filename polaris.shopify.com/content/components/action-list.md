@@ -1,5 +1,5 @@
 ---
-name: Action list
+title: Action list
 category: Actions
 keywords:
   - ActionList
