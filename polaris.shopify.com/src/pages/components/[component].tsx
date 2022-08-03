@@ -54,11 +54,11 @@ const Components = ({
       <PageMeta title={title} description={description} />
 
       <Longform>
-        <Markdown text={description} skipH1 />
+        <Markdown text={description} />
         {typedStatus && <StatusBanner status={typedStatus} />}
         <ComponentExamples examples={examples} />
         {propsForComponent && <PropsTable props={propsForComponent} />}
-        <Markdown text={readme.body} skipH1 />
+        <Markdown text={readme.body} />
       </Longform>
     </Layout>
   );
@@ -81,12 +81,9 @@ export const getStaticProps: GetStaticProps<
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
-    const readmeText = data.readme;
-    const readmeTextParts = readmeText.split(/\n\n/);
-    const description =
-      readmeTextParts.length > 2 ? readmeTextParts[2].trim() : "";
-    const body =
-      readmeTextParts.length > 3 ? readmeTextParts.slice(3).join("\n\n") : "";
+
+    const description = data.frontMatter.description;
+    const body = data.readme;
 
     const readme = {
       description,

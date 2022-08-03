@@ -1,5 +1,5 @@
 ---
-title: Components
+title: Contributing to Polaris React
 description: Anyone is welcome to contribute to Polaris React components. There are several types of component contributions, but they typically fall under three categories; bug fix, enhancement, or new pattern.
 keywords:
   - components
