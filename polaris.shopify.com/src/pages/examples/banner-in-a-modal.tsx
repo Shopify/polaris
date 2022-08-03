@@ -1,6 +1,6 @@
 import { Button, Modal, TextContainer, Banner } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function BannerInModalExample() {
   const [active, setActive] = useState(false);

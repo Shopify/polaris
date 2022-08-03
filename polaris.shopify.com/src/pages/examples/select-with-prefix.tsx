@@ -1,7 +1,7 @@
 import { Icon, Select } from "@shopify/polaris";
 import { CaretUpMinor, CaretDownMinor } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function PrefixExample() {
   const [selected, setSelected] = useState("enabled");

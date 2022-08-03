@@ -1,6 +1,6 @@
 import { Button, Modal, Stack, DropZone, Checkbox } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function SmallModalExample() {
   const [active, setActive] = useState(true);

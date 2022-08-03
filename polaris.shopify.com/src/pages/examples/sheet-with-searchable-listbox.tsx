@@ -17,7 +17,7 @@ import {
 } from "@shopify/polaris";
 import { MobileCancelMajor, SearchMinor } from "@shopify/polaris-icons";
 
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 interface CustomerSegment {
   id: string;

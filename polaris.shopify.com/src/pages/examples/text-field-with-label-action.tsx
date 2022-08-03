@@ -1,6 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function LabelActionExample() {
   const [textFieldValue, setTextFieldValue] = useState("6201.11.0000");

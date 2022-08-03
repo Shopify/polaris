@@ -1,6 +1,6 @@
 import { TextField } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function TextFieldExample() {
   const [value, setValue] = useState("Jaded Pixel");

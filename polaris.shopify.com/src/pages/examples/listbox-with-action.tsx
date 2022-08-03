@@ -1,7 +1,7 @@
 import { Listbox, Stack, Icon } from "@shopify/polaris";
 import { CirclePlusMinor } from "@shopify/polaris-icons";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function ListboxWithActionExample() {
   return (

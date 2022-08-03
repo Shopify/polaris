@@ -1,7 +1,7 @@
 import { AppProvider } from "@shopify/polaris";
 import translations from "@shopify/polaris/locales/en.json";
 import { ComponentType } from "react";
-import styles from "./PolarisExample.module.scss";
+import styles from "./PolarisExampleWrapper.module.scss";
 
 const stylesheetHref =
   "https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css";

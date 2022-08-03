@@ -7,7 +7,7 @@ import {
   ContextualSaveBar,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function AppProviderThemeExample() {
   const [isDirty, setIsDirty] = useState(false);

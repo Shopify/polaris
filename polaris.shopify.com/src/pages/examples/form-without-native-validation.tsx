@@ -1,6 +1,6 @@
 import { Form, FormLayout, TextField, Button } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function FormWithoutNativeValidationExample() {
   const [url, setUrl] = useState("");

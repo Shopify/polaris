@@ -6,7 +6,7 @@ import {
   Button,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function FormOnSubmitExample() {
   const [newsletter, setNewsletter] = useState(false);

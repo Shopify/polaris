@@ -1,6 +1,6 @@
 import { Card, RangeSlider } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function RangeSliderWithPrefixAndSuffixExample() {
   const [rangeValue, setRangeValue] = useState(100);

@@ -1,6 +1,6 @@
 import { Banner } from "@shopify/polaris";
 import { useEffect, useRef } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function BannerWithFocusExample() {
   const banner = useRef();

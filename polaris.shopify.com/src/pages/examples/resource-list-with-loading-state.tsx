@@ -6,7 +6,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function ResourceListWithLoadingExample() {
   const [selectedItems, setSelectedItems] = useState([]);

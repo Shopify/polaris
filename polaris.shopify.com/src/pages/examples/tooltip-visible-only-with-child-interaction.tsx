@@ -1,6 +1,6 @@
 import { ButtonGroup, Tooltip, Button, TextField } from "@shopify/polaris";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExample";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function TooltipExample() {
   return (
