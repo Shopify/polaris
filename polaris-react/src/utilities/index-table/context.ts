@@ -3,6 +3,7 @@ import {createContext} from 'react';
 interface RowContextType {
   itemId?: string;
   selected?: boolean;
+  disabled?: boolean;
   onInteraction?: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 

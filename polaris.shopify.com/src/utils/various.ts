@@ -24,8 +24,8 @@ export const getComponentNav = (): NavItem[] => {
             | Status["value"]
             | undefined;
         return {
-          title: component.frontMatter.name,
-          url: `/components/${slugify(component.frontMatter.name)}`,
+          title: component.frontMatter.title,
+          url: `/components/${slugify(component.frontMatter.title)}`,
           status:
             component.frontMatter.status && statusValue
               ? {

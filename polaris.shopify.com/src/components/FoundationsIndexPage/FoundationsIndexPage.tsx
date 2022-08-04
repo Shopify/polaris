@@ -30,7 +30,7 @@ function FoundationsIndexPage({}: Props) {
                     <FoundationsGrid.Item
                       key={category.title}
                       title={child.title}
-                      excerpt={child.excerpt}
+                      description={child.description}
                       icon={child.icon}
                       url={child.url}
                       category={category.title.toLowerCase()}

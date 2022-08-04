@@ -6,7 +6,7 @@ import {
   TextStyle,
 } from "@shopify/polaris";
 import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function ResourceListWithSortingExample() {
   const [sortValue, setSortValue] = useState("DATE_MODIFIED_DESC");
