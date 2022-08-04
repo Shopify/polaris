@@ -11,19 +11,13 @@ keywords:
 
 Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights.
 
-### TL;DR
+## TL;dr
 
-- High pressure deadlines are stressful, but the Polaris team can’t be pulled in to unblock. Think about the system early in the design process and plan for any system updates or additions ahead of the build stage. The Polaris team is here to support you while planning. Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) for a larger contribution. For smaller contributions like bug fixes, read the [contribution guide](/contributing).
-- For the system to stay healthy and scale, contributions require a certain level of [quality](/contributing/quality-contributions)
-- If you make a custom solution, your team is responsible for maintaining it. Be aware of the impact if other teams use or tweak your custom solution. Always use Polaris tokens. Learn more about [when to make a contribution](/contributing/#when-to-contribute) vs a custom solution.
-- The best way to get support is to start a [Github discussion](https://github.com/Shopify/polaris/discussions/6750) or reach out in the #polaris channel (if you’re a Shopify employee). Please avoid direct messaging Polaris team members about a system inquiry.
+Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing/quality-contributions) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you in the planning phase, but we can’t be pulled in last minute to unblock. The best way to get help is through Polaris support channels:
+-  #polaris Slack channel if you work at Shopify
+- Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) around your potential contributions to get the conversation started.
 
-### Polaris support
-
-Our community is important to us. For our community support to scale, we rely on operations that distribute our efforts, while also giving us time to work on system projects. We lean on asynchronous collaboration as much as possible since our team is internationally distributed. Here’s how we mainly provide support:
-
-- Through a support rotation during working hours. The scheduled support pair monitors the internal #polaris Slack channel and [Github](https://github.com/Shopify/polaris), and makes an effort to respond within 24 hours for inquiries and 72 hours for collaboration requests
-- Ad hoc pairing sessions and asynchronous collaboration for system contributions
+As you’re building you may need custom styles. In those cases, always use Polaris [tokens](/tokens).
 
 ## Product team tips
 With some early planning and intentional systems thinking, the build stage will go a lot smoother.
@@ -81,7 +75,7 @@ If a Polaris team member is individually DM’d, they’ill forward the inquiry/
 
 Admin pattern questions should be posted in the #admin-ux channel and if a question relates to #polaris, it should be forwarded to the #polaris channel.
 
-## Response time goals
+### Response time goals
 
 These response time goals are for GitHub and our internal #polaris Slack channel.
 
@@ -92,7 +86,7 @@ These response time goals are for GitHub and our internal #polaris Slack channel
 | **Collaboration request**<br/> An opportunity has been identified for an individual or team to collaborate with Polaris to evolve the system | 72 hours: [Github discussion](https://github.com/Shopify/polaris/discussions/6750) is started | 1 week: Discussions identified for a larger Polaris team collaboration have an issue added to the [Polaris backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for project triaging |
 
 
-## Third party developer response times
+### Third party developer response times
 
 Polaris is an open source project used by Shopify employees, and Shopify Partners building apps. We value all feedback, feature requests, issues, and pull requests from our open source community. However, we aren’t able to accommodate every request and take longer than we’d like to respond to everyone. We review every request and prioritize them against our product roadmap based on user needs. Below is the process for every open source contribution:
 
