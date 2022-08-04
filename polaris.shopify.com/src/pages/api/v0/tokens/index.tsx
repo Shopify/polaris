@@ -1,5 +1,5 @@
 import { tokens } from "@shopify/polaris-tokens";
-import type { NextApiResponse } from "next";
+import type { NextApiResponse, NextApiRequest } from "next";
 
 import { staticTokenGroupKeys } from "./[tokens]";
 
@@ -117,7 +117,7 @@ const html = `
 </html>
 `;
 
-const handler = async (res: NextApiResponse) => {
+const handler = async (_: NextApiRequest, res: NextApiResponse) => {
   res.setHeader("content-type", "text/html");
   res.send(html);
 };
