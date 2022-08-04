@@ -112,3 +112,5 @@ In your PR’s description, be specific with what you’ve tested as well as wha
 - UI changes
 - Small screen vs large screen UX
 - Other considerations or feedback you’re seeking regarding how you’ve implemented your changes
+
+Add a [changeset](/.changeset/README.md#changesets) if your PR includes any changes that will require a package version bump and release. Otherwise, add the `🤖 Skip Changelog` label to your PR.
