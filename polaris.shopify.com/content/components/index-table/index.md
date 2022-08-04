@@ -183,14 +183,15 @@ An `IndexTableRow` is used to render a row representing an item within an `Index
 
 ### IndexTableRow properties
 
-| Prop     | Type       | Description                                                     |
-| -------- | ---------- | --------------------------------------------------------------- |
-| id       | string     | A unique identifier for the row                                 |
-| selected | boolean    | A boolean property indicating whether the row is selected       |
-| position | number     | The index position of the row                                   |
-| subdued  | boolean    | A boolean property indicating whether the row should be subdued |
-| status   | RowStatus  | A property indicating whether the row should have a status      |
-| onClick  | () => void | A function which overrides the default click behaviour          |
+| Prop     | Type       | Description                                                      |
+| -------- | ---------- | ---------------------------------------------------------------- |
+| id       | string     | A unique identifier for the row                                  |
+| selected | boolean    | A boolean property indicating whether the row is selected        |
+| position | number     | The index position of the row                                    |
+| subdued  | boolean    | A boolean property indicating whether the row should be subdued  |
+| status   | RowStatus  | A property indicating whether the row should have a status       |
+| disabled | boolean    | A boolean property indicating whether the row should be disabled |
+| onClick  | () => void | A function which overrides the default click behaviour           |
 
 ## IndexTableCell
 
