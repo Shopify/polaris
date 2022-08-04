@@ -10,7 +10,7 @@ keywords:
 
 # Design Patterns
 
-A pattern is a repeatable solution to a common UX problem in a specific merchant situation. Using the right pattern in the right context makes the Admin familiar and easy to use.
+A pattern is a repeatable solution to a common UX problem in a specific merchant situation. Using the right pattern in the right context makes the Shopify admin familiar and easy to use.
 
 ---
 
@@ -22,7 +22,7 @@ Do you have ideas or feedback on how we can make these guidelines more empowerin
 
 ## Principles
 
-For patterns to be successful, they need to be contextual, consistent, and unified;
+For patterns to be successful, they need to be contextual, consistent, and unified.
 
 ### Contextual
 Patterns are always paired with the problem it solves and the situation it appears in. A solution applied in a context it wasn’t designed for is not a pattern.
@@ -35,7 +35,7 @@ Patterns are always informed by and designed together with similar patterns. For
 
 ![A solution box within a problem box within a situation box.](/images/foundations/patterns/design-patterns/situation-problem-solution.png)
 
-Patterns come with a solution, problem, and situation that belong together. Solutions taken out of this context is no longer a pattern. A primary button is a reusable component that can be used and misused. It’s also a part of the create pattern on index pages, when merchants need a clear and reliable way to start a new resource creation flow.
+Patterns come with a solution, problem, and situation that belong together. Solutions taken out of this context are no longer a pattern.
 
 ## Patterns vs. Compositions
 Patterns are for merchants and compositions are for builders.
@@ -53,7 +53,7 @@ Patterns are for merchants and compositions are for builders.
 - Ensure build consistency
 
 ### How to Distinguish
-- Patterns solve usability problems that relate to the usage of Admin, while compositions solve build problems that relate to the build process.
+- Patterns solve usability problems that relate to the usage of admin, while compositions solve build problems that relate to the build process.
 - Patterns ensure consistent product experience, while compositions ensure consistent implementation.
 - A pattern can be hard coded and still be a pattern, and a composition can be using Polaris primitives and tokens and still not be a pattern.
 - Patterns are the language we speak with merchants, compositions are the code we share amongst us.
