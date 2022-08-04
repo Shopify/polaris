@@ -95,7 +95,6 @@ When designing with type, it’s important to ensure legibility. Good readabilit
 
 ### Foundational typesetting
 
-Foundational typesetting
 Typesetting can be used to add visual clarity to type elements. By understanding it, you’ll be able to better apply type to the UI.
 
 ### Bounding box
@@ -114,7 +113,8 @@ Appropriate padding between different texts and/or UIs needs to be applied. Refe
 
 The padding between different texts and/or UIs ensures legibility.
 
-Align to the baseline
+### Align to the baseline
+
 The baseline is the imaginary line that letters rest on.
 
 [Example]
