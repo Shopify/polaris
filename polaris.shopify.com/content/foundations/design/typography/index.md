@@ -92,6 +92,8 @@ The larger sizes, Heading 2xl -Heading 4xl, are typically used for numerals and 
 
 Body styles are used within components and blocks of text.
 
+### Responsive type
+
 <!-- end -->
 
 ## Essentials for designing with type
@@ -100,7 +102,7 @@ When designing with type, we can use a combination of font size, weight, color, 
 
 ### Using the bounding box
 
-The bounding box is the vertical height of the text and is defined by the text’s line-height. The value of the line-height is critical to make sure text aligns to the 4px grid. Refer to [individual type styles] for specified heights.
+The bounding box is the vertical height of the text and is defined by the text’s line-height. The value of the line-height is critical to make sure text aligns to the 4px grid. Refer to individual type styles for specified heights.
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-bounding-box@2x.png)
 
@@ -132,7 +134,15 @@ Right align numbers when they're inside a table. This keeps the decimal in the s
 
 ### Weight
 
+Default text styles have font weights specified. For example, the font weight of the body text styles are regular by default. However, when necessary, different font weights may be used.
+
+Adjusting font weights can help with readability, comprehension, and overall cohesiveness.
+
 ### Color
+
+Color and contrast can improve hierarchy and legibility.
+
+Adjusting font color can help achieve better content hierarchy.
 
 ### Space
 
