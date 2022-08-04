@@ -96,7 +96,7 @@ Body styles are used within components and blocks of text.
 
 ## Essentials for designing with type
 
-When designing with type, we can use a combination of font size, weight, color, and space to ensure a strong hierarchy and scannability of a page.
+When designing with type, we can use a combination of font size, weight, color, and space to ensure a strong hierarchy and scannability of a page. By understanding the fundamentals, you’ll be able to better apply type to the UI.
 
 ### Using the bounding box
 
@@ -112,7 +112,7 @@ The baseline is the imaginary line that letters rest on.
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-align-baseline@2x.png)
 
-Align text is horizontally to the baseline for a simple clean look.
+Align text horizontally to the baseline for a simple clean look.
 
 There are situations where it makes sense to have multiple text sizes on a single line to establish hierarchy of elements. Aligning to the text’s baseline instead of center gives a more harmonious look.
 
@@ -124,10 +124,18 @@ Line length describes the width of the content. For longer body text, the recomm
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-line-length@2x.png)
 
+### Right align numbers
+
+Right align numbers when they're inside a table. This keeps the decimal in the same place and makes numerical data easier to read and compare.
+
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-tabular-numbers@2x.png)
+
 ### Weight
 
 ### Color
 
 ### Space
 
-Use space to create relationships
+We can help merchants navigate the UI by grouping related information together. One way to do this is to use space to create relationships between elements on a page.
+
+Ambiguous spacing can cause confusion and make it hard to understand the content.
