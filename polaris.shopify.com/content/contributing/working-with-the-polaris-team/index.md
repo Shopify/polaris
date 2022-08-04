@@ -13,9 +13,11 @@ Through supporting teams, we’ve learned what works well, and not so well. We�
 
 ## TL;dr
 
-Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing/quality-contributions) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you in the planning phase, but we can’t be pulled in last minute to unblock. The best way to get help is through Polaris support channels:
--  #polaris Slack channel if you work at Shopify
-- Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) around your potential contributions to get the conversation started.
+Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing/quality-contributions) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you with planning, but we can’t be pulled in last minute to unblock. 
+
+The best way to get help is through our support channels:
+- [GitHub discussions](https://github.com/Shopify/polaris/discussions/6750) to talk to the community about anything from patterns, to potential contributions 
+-  #polaris in Slack if you work at Shopify and have a general inquiry
 
 As you’re building you may need custom styles. In those cases, always use Polaris [tokens](/tokens).
 
@@ -71,7 +73,7 @@ The Polaris team rotation schedule assigns one UXer and one developer to cover s
 
 If an issue doesn’t get resolved by the end of their work day, it’s passed along to the next scheduled support pair.
 
-If a Polaris team member is individually DM’d, they’ill forward the inquiry/request to the internal #polaris channel for the pair on call to respond.
+If a Polaris team member is messaged directly, they’ll forward the inquiry/request to the internal #polaris channel for the pair on call to respond.
 
 Admin pattern questions should be posted in the #admin-ux channel and if a question relates to #polaris, it should be forwarded to the #polaris channel.
 
