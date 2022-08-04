@@ -36,7 +36,7 @@ describe('<Checkbox />', () => {
     it('on keyUp adds a keyFocused class to the input', () => {
       const checkbox = mountWithApp(<Checkbox onChange={noop} />);
 
-      const event: KeyboardEventInit & {keyCode: Key} = {
+      const event = {
         keyCode: Key.Space,
       };
       checkbox.find('input')!.trigger('onKeyUp', event);
@@ -48,7 +48,7 @@ describe('<Checkbox />', () => {
     it('removes the keyFocused class on blur', () => {
       const checkbox = mountWithApp(<Checkbox onChange={noop} />);
 
-      const event: KeyboardEventInit & {keyCode: Key} = {
+      const event = {
         keyCode: Key.Space,
       };
 

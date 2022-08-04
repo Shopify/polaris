@@ -234,7 +234,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           styles.FixedFirstColumn,
           !isScrolledFarthestLeft && styles.separate,
         )}
-        style={{maxWidth: `${columnVisibilityData[0].rightEdge}px`}}
+        style={{maxWidth: `${columnVisibilityData[0]?.rightEdge}px`}}
       >
         <thead>
           <tr style={{height: `${headerRowHeights[0]}px`}}>
@@ -541,7 +541,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const tableRightEdge = tableScrollLeft + tableViewableWidth;
     const firstColumnWidth =
       this.state.columnVisibilityData.length > 0
-        ? this.state.columnVisibilityData[0].rightEdge
+        ? this.state.columnVisibilityData[0]?.rightEdge
         : 0;
     const currentColumnLeftEdge = currentCell.offsetLeft;
     const currentColumnRightEdge =
@@ -599,7 +599,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const currentCell = event.target.parentNode as HTMLTableCellElement;
     const fixedFirstColumn = this.props;
     const firstColumnWidth = fixedFirstColumn
-      ? this.state.columnVisibilityData[0].rightEdge
+      ? this.state.columnVisibilityData[0]?.rightEdge
       : 0;
     const currentColumnLeftEdge = currentCell.offsetLeft;
     const desiredScrollLeft = currentColumnLeftEdge - firstColumnWidth;

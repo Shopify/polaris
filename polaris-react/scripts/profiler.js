@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const iframePath =
-  'http://localhost:6006/iframe.html?id=playground-playground--kitchen-sink&args=&viewMode=story&globals=profiler:false';
+  'http://localhost:6006/iframe.html?id=playground--kitchen-sink&viewMode=story&globals=profiler:false';
 
 (async () => {
   const browser = await puppeteer.launch();

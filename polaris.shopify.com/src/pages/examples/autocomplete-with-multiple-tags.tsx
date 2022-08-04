@@ -1,6 +1,6 @@
 import { Stack, Tag, Autocomplete } from "@shopify/polaris";
 import { useState, useCallback, useMemo } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function MultiAutocompleteExample() {
   const deselectedOptions = useMemo(

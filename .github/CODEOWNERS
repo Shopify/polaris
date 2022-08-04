@@ -1,4 +1,0 @@
-# The CODEOWNERS file enforces reviews
-
-# README.md files are being migrated to /polaris.shopify.com/content/components/
-/polaris-react/src/components/**/README.md   @alex-page @martenbjork

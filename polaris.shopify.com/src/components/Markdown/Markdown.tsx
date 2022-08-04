@@ -7,17 +7,16 @@ import Code from "../Code";
 
 interface Props {
   text: string;
-  skipH1?: boolean;
 }
 
-function Markdown({ text, skipH1 }: Props) {
+function Markdown({ text }: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, { tablePipeAlign: true }]]}
       rehypePlugins={[rehypeRaw]}
       components={{
         h1: ({ children }) => {
-          return skipH1 ? <></> : <h1>{children}</h1>;
+          return <h1>{children}</h1>;
         },
         h2: ({ children }) => {
           if (children.length === 1 && typeof children[0] === "string") {

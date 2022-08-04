@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "private": true,
   "scripts": {
     "build": "yarn run copy-icons && next build",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "^9.21.1",
+    "@shopify/polaris": "^9.22.0",
     "@shopify/polaris-icons": "^5.2.0",
     "@shopify/polaris-tokens": "^5.5.0",
     "codesandbox": "^2.2.3",
@@ -29,8 +29,8 @@
     "glob": "^7.1.6",
     "next": "12.1.0",
     "prismjs": "^1.27.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-markdown": "^8.0.2",
     "sass": "^1.49.9",
     "use-dark-mode": "^2.3.1",
@@ -41,7 +41,7 @@
     "@types/marked": "^4.0.3",
     "@types/node": "17.0.21",
     "@types/prismjs": "^1.26.0",
-    "@types/react": "17.0.39",
+    "@types/react": "*",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",
     "frontmatter": "^0.0.3",

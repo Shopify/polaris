@@ -7,29 +7,20 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  stories: ['../playground/stories.tsx', '../src/components/**/*/README.md'],
+  stories: [
+    {
+      directory: '../playground/',
+      files: 'stories.tsx',
+    },
+    {
+      directory: '../src/components/',
+      titlePrefix: 'All components',
+      files: '**/*.stories.tsx',
+    },
+  ],
   addons: ['@storybook/addon-a11y', '@storybook/addon-toolbars'],
   webpackFinal: (config) => {
-    const isProduction = config.mode === 'production';
-
     const extraRules = [
-      {
-        test: /src\/components\/.+\/README\.md$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              rootMode: 'upward',
-              cacheDirectory: path.resolve(
-                'build-internal/cache/storybook/markdown',
-              ),
-            },
-          },
-          {
-            loader: `${__dirname}/polaris-readme-loader.js`,
-          },
-        ],
-      },
       {
         test: /\.scss$/,
         use: [
@@ -63,13 +54,7 @@ module.exports = {
       },
     ];
 
-    config.module.rules = [
-      // Strip out existing rules that apply to md files
-      ...config.module.rules.filter(
-        (rule) => rule.test.toString() !== '/\\.md$/',
-      ),
-      ...extraRules,
-    ];
+    config.module.rules = [...config.module.rules, ...extraRules];
 
     config.resolve.alias = {
       ...config.resolve.alias,

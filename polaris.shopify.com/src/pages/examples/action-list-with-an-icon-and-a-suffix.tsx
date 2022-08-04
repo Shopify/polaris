@@ -5,7 +5,7 @@ import {
   ExportMinor,
 } from "@shopify/polaris-icons";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function ActionListWithSuffixExample() {
   const [active, setActive] = useState(true);
