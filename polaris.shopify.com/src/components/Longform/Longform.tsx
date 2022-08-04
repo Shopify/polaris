@@ -5,11 +5,7 @@ interface Props {
 }
 
 function Longform({ children }: Props) {
-  return (
-    <div className={styles.Longform}>
-      <div className={styles.Content}>{children}</div>
-    </div>
-  );
+  return <div className={styles.Longform}>{children}</div>;
 }
 
 export default Longform;

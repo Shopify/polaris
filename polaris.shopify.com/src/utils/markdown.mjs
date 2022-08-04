@@ -1,32 +1,12 @@
-import yaml from "js-yaml";
+import ReactDom from "react-dom";
+import ReactMarkdown from "react-markdown";
 
-export const parseMarkdown = (inputMarkdown) => {
-  const readmeSections = inputMarkdown.split("---");
-  const frontMatterSection = readmeSections[1];
-  const readmeSection = readmeSections.slice(2).join("---");
-
-  // Extract front matter
-  const frontMatter = yaml.load(frontMatterSection);
-
-  // Extract the content of the first paragraph
-
-  const description = readmeSection.split("\n\n").find((paragraph) => {
-    const content = paragraph.trim().split("\n").join(" ");
-    if (paragraph.startsWith("<!--")) {
-      return false;
-    }
-    if (content.length > 0 && content[0] !== "#") {
-      return content;
-    }
-    return false;
-  });
-
-  let markdown = readmeSection;
-
+const doDontFormat = (content) => {
+  let newContent = content;
   // Add some custom HTML to <!-- dodont --> tags
-  const dodontRegex = /<!-- (dodont) -->(.*?)<!-- end -->/gis;
-  if (markdown.match(dodontRegex)) {
-    markdown = markdown.replaceAll(dodontRegex, (match) => {
+  const dodontRegex = /<!-- dodont -->(.*?)<!-- end -->/gis;
+  if (newContent.match(dodontRegex)) {
+    newContent = newContent.replaceAll(dodontRegex, (match) => {
       const matchWithoutComments = match
         .replace(/^<!-- dodont -->/, "")
         .replace(/<!-- end -->$/, "");
@@ -54,11 +34,14 @@ export const parseMarkdown = (inputMarkdown) => {
     });
   }
 
-  const out = {
-    frontMatter,
-    description,
-    readme: markdown,
-  };
+  return newContent;
+};
 
-  return out;
+export const parseMarkdown = async (content) => {
+  const transformedContent = doDontFormat(content);
+
+  return ReactDom.render(
+    <ReactMarkdown>{transformedContent}</ReactMarkdown>,
+    document.body
+  );
 };

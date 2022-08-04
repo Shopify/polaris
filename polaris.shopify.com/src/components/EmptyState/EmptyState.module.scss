@@ -1,0 +1,9 @@
+.EmptyState {
+  min-height: calc(100vh - var(--header-height));
+  text-align: center;
+}
+
+.Icon {
+  opacity: 0.25;
+  margin-bottom: 2rem;
+}

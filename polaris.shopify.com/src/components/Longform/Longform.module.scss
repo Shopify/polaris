@@ -200,14 +200,3 @@
     }
   }
 }
-
-.Content {
-  > p:first-of-type {
-    margin-top: 0;
-    margin-bottom: 2rem;
-    color: var(--text-strong);
-    font-size: var(--font-size-700);
-    font-weight: var(--font-weight-500);
-    letter-spacing: var(--letter-spacing-300);
-  }
-}

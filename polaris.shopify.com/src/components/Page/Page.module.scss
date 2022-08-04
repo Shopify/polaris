@@ -1,0 +1,24 @@
+.Reset {
+  min-height: 100vh;
+}
+
+*:where(.Reset *) {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 100%;
+  line-height: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  border: none;
+  appearance: none;
+  outline: none;
+
+  *:focus-visible {
+    box-shadow: var(--focus-outline);
+  }
+}
