@@ -120,6 +120,8 @@ The column grid is meant to give teams agency for page layouts, while still prov
 
 The grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.
 
+<br>
+
 | Screen size                            | Columns | Margin | Gutter | Navigation |
 | -------------------------------------- | ------- | ------ | ------ | ---------- |
 | **XS** <br> 0-489 <br> Phones          | 6       | 16     | 16     | Collapsed  |
@@ -141,6 +143,8 @@ When designing, it’s key to consider that people look for patterns, and will a
 
 ![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/spacing/spacing-principles@2x.png)
 
+<br>
+
 #### People look for patterns instinctively, and they lean of visual cues like:
 
 #### Similarity
@@ -155,6 +159,8 @@ Grouping things based on distance between objects.
 
 ![Customers and orders page](/images/foundations/design/spacing/spacing-proximity@2x.png)
 
+<br>
+
 #### Continuity
 
 Grouping things based on the way they are arranged.
@@ -163,11 +169,15 @@ Grouping things based on the way they are arranged.
 
 Shadows inside popovers act as visual cues to indicate additional content when scrolled (left). Cards placed horizontally in a media carousel communicates related topics (right).
 
+<br>
+
 #### Closure
 
 Grouping things that are implicitly enclosed by a larger object.
 
 ![Order details page](/images/foundations/design/spacing/spacing-closure@2x.png)
+
+<br>
 
 #### Common fate
 
@@ -178,6 +188,8 @@ Grouping things based on how they move.
     <source src="/images/foundations/design/spacing/common-fate.mp4" type="video/mp4">
   </video>
 </div>
+
+<br>
 
 #### Common Region
 
