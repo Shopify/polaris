@@ -15,7 +15,7 @@
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
     "copy-icons": "node src/scripts/copy-icons.mjs",
     "generate-sitemap": "next build && yarn next-sitemap",
-    "get-props": "npx ts-node-esm ./scripts/get-props.ts"
+    "get-props": "ts-node --skip-project ./scripts/get-props.ts"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",

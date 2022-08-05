@@ -15,7 +15,7 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
     }
   }
 
-  const filePath = path.join(__dirname, "../../../data/props.json");
+  const filePath = path.join(__dirname, "../src/data/props.json");
   fs.writeFileSync(filePath, JSON.stringify(props, undefined, 2));
 
   return;
