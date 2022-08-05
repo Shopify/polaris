@@ -128,6 +128,8 @@ Body styles are used within components and blocks of text.
   </video>
 </div>
 
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-responsive-styles@2x.png)
+
 <!-- end -->
 
 ## Essentials for designing with type
