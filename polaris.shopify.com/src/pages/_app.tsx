@@ -30,11 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events, isProd]);
 
-  const ogImageHash =
-    `${router.asPath.replace("/", "").replace(/\//g, "--")}` || "home";
-  const ogImagePath = `${
-    typeof window !== "undefined" ? `https://${window.location.hostname}` : ""
-  }/open-graph/${ogImageHash}.jpg`;
+  const ogImagePath = `/api/og-image/${
+    router.asPath === "/" ? "home" : router.asPath
+  }`;
 
   return (
     <>
