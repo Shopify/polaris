@@ -1,6 +1,7 @@
 ---
 title: Accessible and inclusive language
 description: Our mission is to make commerce better for _everyone_. Building products for everyone means creating inclusive content.
+icon: AccessibilityMajor
 keywords:
   - copy instructions
   - copy rules

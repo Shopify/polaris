@@ -1,7 +1,7 @@
 ---
 title: Loading
 description: Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.
-slug: loading
+icon: RefreshMajor
 keywords:
   - page loading
   - loading

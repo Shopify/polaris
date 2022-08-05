@@ -1,6 +1,7 @@
 ---
 title: Formatting localized currency
 description: Currencies are formatted differently in different countries and languages.
+icon: CashYenMajor
 keywords:
   - internationalization
   - localization

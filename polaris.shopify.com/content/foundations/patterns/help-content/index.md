@@ -1,6 +1,7 @@
 ---
 title: Help content
 description: Help content is educational text that describes interactive elements or offers information about concepts in the UI.
+icon: QuestionMarkInverseMajor
 keywords:
   - help text
   - learn more

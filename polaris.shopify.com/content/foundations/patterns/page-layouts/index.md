@@ -1,6 +1,7 @@
 ---
 title: Page layouts
 description: Layout patterns provide common ways to arrange the content of a screen.
+icon: ThemesMajor
 keywords:
   - layout
   - page

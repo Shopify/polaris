@@ -1,6 +1,7 @@
 ---
 title: Internationalization
 description: Make commerce better for everyone by building interfaces that work everywhere. These guidelines will help you design, write, and build products that can be used in every part of the world.
+icon: GlobeMajor
 keywords:
   - internationalization
   - localization
