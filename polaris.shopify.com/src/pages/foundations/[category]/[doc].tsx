@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<
   const fullPath = path.join(
     foundationsDirectory,
     context.params?.category || "",
-    `${context.params?.doc}.md`
+    `${context.params?.doc}/index.md`
   );
 
   let content = fs.readFileSync(fullPath, "utf-8");

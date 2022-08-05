@@ -1,15 +1,18 @@
 import { Stack, Tag, Autocomplete } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { useState, useCallback, useMemo } from "react";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function MultiAutocompleteExample() {
-  const deselectedOptions = [
-    { value: "rustic", label: "Rustic" },
-    { value: "antique", label: "Antique" },
-    { value: "vinyl", label: "Vinyl" },
-    { value: "vintage", label: "Vintage" },
-    { value: "refurbished", label: "Refurbished" },
-  ];
+  const deselectedOptions = useMemo(
+    () => [
+      { value: "rustic", label: "Rustic" },
+      { value: "antique", label: "Antique" },
+      { value: "vinyl", label: "Vinyl" },
+      { value: "vintage", label: "Vintage" },
+      { value: "refurbished", label: "Refurbished" },
+    ],
+    []
+  );
   const [selectedOptions, setSelectedOptions] = useState(["rustic"]);
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState(deselectedOptions);

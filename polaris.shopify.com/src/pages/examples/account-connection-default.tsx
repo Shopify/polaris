@@ -1,6 +1,6 @@
 import { Link, AccountConnection } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function AccountConnectionExample() {
   const [connected, setConnected] = useState(false);
@@ -8,7 +8,7 @@ function AccountConnectionExample() {
 
   const handleAction = useCallback(() => {
     setConnected((connected) => !connected);
-  }, [connected]);
+  }, []);
 
   const buttonText = connected ? "Disconnect" : "Connect";
   const details = connected ? "Account connected" : "No account connected";

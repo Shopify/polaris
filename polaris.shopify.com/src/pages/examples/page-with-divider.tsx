@@ -1,6 +1,6 @@
 import { Page, Card } from "@shopify/polaris";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function PageExample() {
   return (

@@ -1,6 +1,6 @@
 import { Autocomplete, Tag, Stack } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function AutoCompleteLazyLoadExample() {
   const paginationInterval = 25;
@@ -68,7 +68,7 @@ function AutoCompleteLazyLoadExample() {
       setOptions(resultOptions);
       setInputValue;
     },
-    [deselectedOptions, options]
+    [deselectedOptions]
   );
 
   const textField = (

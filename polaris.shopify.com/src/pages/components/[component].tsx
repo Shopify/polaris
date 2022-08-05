@@ -17,15 +17,15 @@ import PropsTable from "../../components/PropsTable";
 
 interface MarkdownData {
   frontMatter: any;
-  intro: string;
+  description: string;
   readme: string;
 }
 
 interface Props {
   examples: ComponentExample[];
   status?: Status;
-  name: string;
-  intro: string;
+  title: string;
+  description: string;
   readme: {
     body: string;
     header: string;
@@ -35,8 +35,8 @@ interface Props {
 
 const Components = ({
   examples,
-  intro,
-  name,
+  description,
+  title,
   readme,
   status,
   propsForComponent,
@@ -50,15 +50,15 @@ const Components = ({
     : undefined;
 
   return (
-    <Layout width="narrow" navItems={navItems} title={name}>
-      <PageMeta title={name} description={intro} />
+    <Layout width="narrow" navItems={navItems} title={title}>
+      <PageMeta title={title} description={description} />
 
       <Longform>
-        <Markdown text={intro} skipH1 />
+        <Markdown text={description} />
         {typedStatus && <StatusBanner status={typedStatus} />}
         <ComponentExamples examples={examples} />
         {propsForComponent && <PropsTable props={propsForComponent} />}
-        <Markdown text={readme.body} skipH1 />
+        <Markdown text={readme.body} />
       </Longform>
     </Layout>
   );
@@ -75,20 +75,18 @@ export const getStaticProps: GetStaticProps<
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
     process.cwd(),
-    `content/components/${componentSlug}.md`
+    `content/components/${componentSlug}/index.md`
   );
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, "utf-8");
     const data: MarkdownData = parseMarkdown(componentMarkdown);
-    const readmeText = data.readme;
-    const readmeTextParts = readmeText.split(/\n\n/);
-    const intro = readmeTextParts.length > 2 ? readmeTextParts[2].trim() : "";
-    const body =
-      readmeTextParts.length > 3 ? readmeTextParts.slice(3).join("\n\n") : "";
+
+    const description = data.frontMatter.description;
+    const body = data.readme;
 
     const readme = {
-      intro,
+      description,
       body,
     };
 
@@ -116,13 +114,13 @@ export const getStaticProps: GetStaticProps<
       propsData.find(
         (PropsTable) =>
           PropsTable.interfaceName.toLowerCase() ===
-          `${data.frontMatter.name.replace(/\s/g, "").toLowerCase()}props`
+          `${data.frontMatter.title.replace(/\s/g, "").toLowerCase()}props`
       ) || null;
 
     const props: Props = {
       ...data.frontMatter,
       examples,
-      intro,
+      description,
       readme,
       propsForComponent,
     };
@@ -134,14 +132,12 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const componentBasePath = path.resolve(process.cwd(), "content/components");
-  const paths = glob
-    .sync(path.join(componentBasePath, "*.md"))
-    .map((fileName: string) => {
-      return fileName
-        .replace(`${process.cwd()}/content`, "")
-        .replace(".md", "");
-    });
+  const globPath = path.resolve(process.cwd(), "content/components/*/*.md");
+  const paths = glob.sync(globPath).map((fileName: string) => {
+    return fileName
+      .replace(`${process.cwd()}/content`, "")
+      .replace("/index.md", "");
+  });
 
   return {
     paths,

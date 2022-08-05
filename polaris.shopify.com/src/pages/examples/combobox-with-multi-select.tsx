@@ -11,7 +11,7 @@ import { SearchMinor } from "@shopify/polaris-icons";
 
 import { useState, useCallback, useMemo } from "react";
 
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function MultiAutoComboboxExample() {
   const deselectedOptions = useMemo(
@@ -63,7 +63,7 @@ function MultiAutoComboboxExample() {
 
       updateText("");
     },
-    [options, selectedOptions]
+    [options, selectedOptions, updateText]
   );
 
   const removeTag = useCallback(

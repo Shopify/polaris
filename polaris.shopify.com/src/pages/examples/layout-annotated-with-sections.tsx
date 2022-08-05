@@ -9,7 +9,7 @@ import {
   Heading,
 } from "@shopify/polaris";
 import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import { withPolarisExample } from "../../components/PolarisExampleWrapper";
 
 function LayoutExample() {
   return (
