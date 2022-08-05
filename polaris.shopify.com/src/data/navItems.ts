@@ -295,10 +295,6 @@ export const contributingNavItems = [
         title: "Shipping your contribution",
         url: "/contributing/shipping-your-contribution",
       },
-      {
-        title: "Working with the Polaris team",
-        url: "/contributing/working-with-the-polaris-team",
-      },
     ],
   },
 ];
