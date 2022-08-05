@@ -43,15 +43,17 @@ Space is the distance between objects in your design. It should be used to organ
 
 ## Principles
 
-### Make content easy to understand.
+![Illustrations of blocks representing each principle](/images/foundations/design/spacing/principles.svg)
+
+### 1. Make content easy to understand.
 
 Guides merchants' eyes, rather than expecting them to decipher all the information.
 
-### Augment the purpose of a page.
+### 2. Augment the purpose of a page.
 
 Make sure the information is organized in a way that makes clear its function.
 
-### Make it feel integrated.
+### 3. Make it feel integrated.
 
 Merchants experience pages, space should feel like a small part of a bigger system. Only introduce uniqueness when the benefits massively outweigh the cost of inconsistency.
 
@@ -94,6 +96,8 @@ This is intentional to provide a good range to work with, but you must be delibe
 
 Repeating the same amount of spacing (left) and using more variation (right).
 
+<br>
+
 ### Column grid
 
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
@@ -103,6 +107,8 @@ The column grid is meant to give teams agency for page layouts, while still prov
     <source src="/images/foundations/design/spacing/column.mp4" type="video/mp4">
   </video>
 </div>
+
+<br>
 
 ### Breakpoints
 
@@ -183,6 +189,8 @@ Because people perceive these instinctively, we can use them as tools to create 
 
 ---
 
+<br>
+
 ### Rhythm
 
 Alternating between objects and space creates a pattern. Repeated patterns create visual rhythm, which can be used to effectively direct the viewer’s attention.
@@ -206,6 +214,8 @@ Rhythm plays another job in designs, it’s the norm that enables the introducti
 
 ---
 
+<br>
+
 ### Density
 
 The overall perception people get from the space between information as a whole is density. It can range from tight to loose, and there is a very different purpose for each end of the spectrum.
@@ -216,6 +226,8 @@ Tighter spacing (left) makes it easier to scan and comprehend large sets of data
 Looser space (right) can help attract the user attention and make a layout feel more user-friendly.
 
 ---
+
+<br>
 
 ### Contrast
 
@@ -234,6 +246,8 @@ Contrast can play a role at very different levels, but it must be used sparingly
 Home feed overview (left) and location profile analytics (right).
 
 ---
+
+<br>
 
 ### Optical adjustment
 
