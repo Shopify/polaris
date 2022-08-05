@@ -1,5 +1,4 @@
 import puppeteer from "puppeteer";
-import { readFile } from "fs/promises";
 import type { NextApiResponse, NextApiRequest } from "next";
 
 const shopifyLogo = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -38,21 +37,12 @@ function capitalizeFirstLetter(value: string) {
 
 const generateHTML = async (slug: string) => {
   const currentSlug = slug.split("/").at(-1);
-  const title = capitalizeFirstLetter(currentSlug || "");
+  const title = capitalizeFirstLetter(currentSlug || "").replace("-", " ");
 
   let htmlImg = `<div class="icon">${defaultIcon}</div>`;
 
   if (slug.startsWith("components/")) {
     htmlImg = `<img src="/images/${slug}.png" class="component-image" />`;
-  }
-
-  if (slug.startsWith("foundations/")) {
-    const data = await readFile(
-      `${process.cwd()}/content/${slug}/index.md`,
-      "utf-8"
-    );
-    console.log(data);
-    htmlImg = `<p>yo</p>`;
   }
 
   return `
