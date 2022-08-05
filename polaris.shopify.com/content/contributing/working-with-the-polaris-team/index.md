@@ -26,7 +26,7 @@ With some early planning and intentional systems thinking, the build stage will 
 
 ### Plan for systems changes ahead of time
 
-The Polaris team should never be pulled in to unblock a team from shipping something quickly—we’re here to support and guide teams when they’re planning their strategic system changes ahead of time. Teams at Shopify should start working on their system needs early in the design and build process and are expected to make [quality system contributions](link to new quality guidelines) ahead of their ship dates. 
+The Polaris team should never be pulled in to unblock a team from shipping something quickly—we’re here to support and guide teams when they’re planning their strategic system changes ahead of time. Teams at Shopify should start working on their system needs early in the design and build process and are expected to make [quality system contributions](/contributing#what-makes-a-good-contribution) ahead of their ship dates. 
 
 ### Aim to systematize your custom solutions
 
