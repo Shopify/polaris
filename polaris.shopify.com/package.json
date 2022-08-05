@@ -14,9 +14,8 @@
     "parse-components": "node src/scripts/parseComponents.mjs",
     "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
     "copy-icons": "node src/scripts/copy-icons.mjs",
-    "generate-og-images": "next build && yarn next-sitemap && node src/scripts/generate-og-images.js",
-    "generate-og-images-skip-sitemap": "node src/scripts/generate-og-images.js",
-    "get-props": "tsc ./src/scripts/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./src/scripts/get-props && node ./src/scripts/get-props/scripts/get-props.js && rm -rf ./src/scripts/get-props"
+    "generate-sitemap": "next build && yarn next-sitemap",
+    "get-props": "npx ts-node-esm ./scripts/get-props.ts"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
