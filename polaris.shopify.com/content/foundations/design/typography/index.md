@@ -8,6 +8,18 @@ keywords:
 icon: TypeMajor
 ---
 
+<!-- inline css styling for html video and images -->
+<style>
+.video-wrap {
+  border: 1px solid #E1E3E5;
+  border-radius: 8px; 
+  overflow: hidden;
+}
+
+</style>
+
+---
+
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-featured@2x.png)
 
 [Figma styles](http://www.google.com) | [Tokens](http://www.google.com) | [Components](http://www.google.com)
@@ -78,11 +90,19 @@ All font sizes have a ratio of 1.2, known as the major third type scale. This me
 
 Our type styles are grouped into two categories: **Heading** and **Body**. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-type-styles@2x.png)
-
 ### Heading
 
 Heading styles are used to create various levels of hierarchy on the page.
+
+| Variant        | Size (px) | Size (px) | Line-height | Weight   |
+| -------------- | --------- | --------- | ----------- | -------- |
+| **Heading4xl** | 40        | 2         | 48          | bold     |
+| **Heading3xl** | 32        | 1.75      | 40          | semibold |
+| **Heading2xl** | 28        | 1.5       | 32          | semibold |
+| **HeadingXl**  | 20        | 1.25      | 24          | semibold |
+| **HeadingLg**  | 16        | 1         | 24          | semibold |
+| **HeadingMd**  | 14        | 0.875     | 20          | semibold |
+| **HeadingSm**  | 12        | 0.75      | 16          | bold     |
 
 The larger sizes, Heading 2xl -Heading 4xl, are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
 
@@ -90,7 +110,19 @@ The larger sizes, Heading 2xl -Heading 4xl, are typically used for numerals and 
 
 Body styles are used within components and blocks of text.
 
+| Variant    | Size (px) | Size (px) | Line-height | Weight  |
+| ---------- | --------- | --------- | ----------- | ------- |
+| **BodyLg** | 16        | 1         | 24          | regular |
+| **BodyMd** | 14        | 0.875     | 20          | regular |
+| **BodySm** | 12        | 0.75      | 16          | regular |
+
 ### Responsive type
+
+<div class="video-wrap">
+  <video width="100%" height="auto" controls autoplay muted loop>
+    <source src="/images/foundations/design/typography/text-responsive.mp4" type="video/mp4">
+  </video>
+</div>
 
 <!-- end -->
 
