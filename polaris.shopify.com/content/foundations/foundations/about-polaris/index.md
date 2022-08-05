@@ -7,8 +7,6 @@ keywords:
   - getting started
 ---
 
-# What is Polaris?
-
 Polaris is the design system for the Shopify admin. It's used both internally at Shopify and externally by third party developers and designers. From accessibility to performance to design expertise, Polaris gives you the tools to build a world-class admin experience.
 
 ## Shopify admin
@@ -33,17 +31,17 @@ The Shopify admin includes installable apps built by Shopify employees and third
 
 The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin. Read on to learn more about the foundational pieces that make up the Polaris design system.
 
-## Primitives
+### Primitives
 
 Primitives are the building blocks of the Polaris design system. They are the smallest units of the system that represent codified design decisions and reusable visual elements. The Polaris design system contains primitive tokens and primitive components that can be combined together to create admin user interfaces.
 
-## Tokens
+### Tokens
 
 Design tokens represent reusable design decisions such as color, spacing, and typography. These tokens are used throughout the Polaris design system and Shopify admin to unify the merchant experience across the entire platform.
 
 Polaris design tokens are packaged up as the open source [@Shopify/polaris-tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens) library
 
-## Components
+### Components
 
 Polaris components are the smallest reusable user interface elements for supporting a variety of admin merchant experiences. Polaris components are one of our design system primitives, and are often referred to as primitive components.
 
@@ -53,7 +51,7 @@ Polaris web components are packaged as the open source [@Shopify/polaris](https:
 
 Polaris React Native components are also used in the Shopify admin iOS and Android apps. The Polaris React Native library is only available to Shopify employees building with React Native.
 
-## Compositions
+### Compositions
 
 Polaris tokens and components can be assembled together to solve any number of merchant needs in the admin. Compositions_ _are the result of design tokens and/or primitives being put together to create a specific user experience. 
 
@@ -61,7 +59,7 @@ Many of our primitive components are built with Polaris design tokens, and many 
 
 Some compositions can be packaged and distributed via component libraries. 
 
-## Design patterns
+### Design patterns
 
 Design patterns are best practice design guidance. They address situations that merchants commonly face, including:
 
@@ -74,4 +72,4 @@ These patterns center on the merchant, and how we build experiences to meet thei
 
 Design patterns often use one or more primitive components and adapt them to the context. Some patterns can link to compositions and will contain code examples where possible.
 
-For a deeper understanding of design patterns, read our guide to [admin](/foundations/patterns/design-patterns) design patterns.
+For a deeper understanding of design patterns, read our guide to [admin design patterns](/foundations/patterns/design-patterns).
