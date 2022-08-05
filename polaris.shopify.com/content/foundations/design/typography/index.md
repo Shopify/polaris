@@ -108,15 +108,11 @@ The bounding box is the vertical height of the text and is defined by the textâ€
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-bounding-box@2x.png)
 
-The bounding box which is the same as the line height is defined for each text style and/or UIs.
-
 ### Using the baseline
 
-The baseline is the imaginary line that letters rest on.
+The baseline is the imaginary line that letters rest on. Align text horizontally to the baseline for a simple clean look.
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-align-baseline@2x.png)
-
-Align text horizontally to the baseline for a simple clean look.
 
 There are situations where it makes sense to have multiple text sizes on a single line to establish hierarchy of elements. Aligning to the textâ€™s baseline instead of center gives a more harmonious look.
 
