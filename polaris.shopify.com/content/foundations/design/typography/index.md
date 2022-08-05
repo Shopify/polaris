@@ -5,6 +5,7 @@ keywords:
   - type styles
   - font sizes
   - fonts
+icon: TypeMajor
 ---
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-featured@2x.png)

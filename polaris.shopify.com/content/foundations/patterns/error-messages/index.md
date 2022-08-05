@@ -1,6 +1,7 @@
 ---
 title: Error messages
 description: Error messages can be scary. Make errors visible to merchants, easy to understand, and helpful.
+icon: DiamondAlertMajor
 keywords:
   - error states
   - invalid

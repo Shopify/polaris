@@ -1,6 +1,7 @@
 ---
 title: Interaction states
 description: Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.
+icon: BuyButtonMajor
 keywords:
   - visual patterns
   - color strategy

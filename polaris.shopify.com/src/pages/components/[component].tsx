@@ -139,8 +139,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
       .replace("/index.md", "");
   });
 
-  console.log(paths);
-
   return {
     paths,
     fallback: false,
