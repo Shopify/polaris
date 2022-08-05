@@ -54,8 +54,6 @@ export const getStaticProps: GetStaticProps<Props, { doc: string }> = async ({
       readme,
     };
 
-    console.log(props.title);
-
     return { props };
   } else {
     return { notFound: true };
