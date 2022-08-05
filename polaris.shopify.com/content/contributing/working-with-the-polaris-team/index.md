@@ -32,7 +32,7 @@ The Polaris team should never be pulled in to unblock a team from shipping somet
 
 Things don’t always go according to plan. If a team is still learning how to plan for system changes and finds themselves under pressure to quickly ship something custom, they’re responsible for owning any custom components they ship. The components should use [Polaris tokens](https://polaris.shopify.com/tokens/colors) and the team should make an effort to systematize the custom solution down the road. When product-wide changes happen in the future, the product team will be responsible for updating their custom components.
 
-## Collaborations and system contributions
+## Collaborations for system contributions
 
 When an opportunity for a collaboration related to a system contribution comes up, we’ll add it to our [backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for triaging. Collaboration opportunities can be worked on through cross-product team pairings and don't always have to be with Polaris.
 
@@ -48,16 +48,17 @@ During our triaging process, teams can expect that the Polaris team will help:
 The Polaris team will prioritize collaborating on contributions that:
 
 - have the highest number of community upvotes in Github discussions
-- help other teams solve similar problems so that we make the best possible impact on the merchant experience, such as the addition of new patterns
+- help other teams solve similar problems so that we make the best possible impact on the merchant experience, like through pattern documentation
 - align with ongoing system improvement projects, for example, a team wants to make layout improvements while the Polaris team improves the layout foundations
 - break down large and complex composite components into primitive, foundational components
+- improve foundational components
 
 ### Polaris support during collaborations
 
 If the Polaris team is the main collaborator on a system contribution, the Polaris team will:
 
-- pair with the contributor(s) asynchronously, or when it's more efficient, through ad hoc video calls
-- direct internal contributors to the #Admin-UX community if extra feedback is needed on the solution being explored
+- pair with the contributor(s) asynchronously, or when it’s more efficient, through ad hoc video calls
+- direct internal contributors to the #admin-ux community if extra feedback is needed on the solution being explored
 - offer systems coaching to the subject matter experts with the most context on the merchant problem that's being solved
 - help the contributor with any systems tooling related to shipping the solution
 
