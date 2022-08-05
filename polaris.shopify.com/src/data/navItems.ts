@@ -195,14 +195,14 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       {
         title: "Design Patterns",
         url: "/foundations/patterns/design-patterns",
-        icon: FoundationsIcons.LoadingIcon,
-        excerpt:
+        icon: "RefreshMajor",
+        description:
           "Design patterns provide repeatable UX solutions to common merchant situations.",
       },
       {
         title: "Loading",
         url: "/foundations/patterns/loading",
-        icon: "RefreshMajor",
+        icon: "ClockMajor",
         description:
           "Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.",
       },
