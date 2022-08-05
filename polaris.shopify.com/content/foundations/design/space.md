@@ -143,9 +143,7 @@ When designing, it’s key to consider that people look for patterns, and will a
 
 ![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/spacing/spacing-principles@2x.png)
 
-<br>
-
-#### People look for patterns instinctively, and they lean of visual cues like:
+People look for patterns instinctively, and they lean of visual cues like:
 
 <br>
 
