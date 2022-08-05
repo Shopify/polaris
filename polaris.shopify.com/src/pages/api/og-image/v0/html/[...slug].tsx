@@ -1,5 +1,5 @@
-import puppeteer from "puppeteer";
 import type { NextApiResponse, NextApiRequest } from "next";
+import { VERSION } from "../png/[...slug]";
 
 const shopifyLogo = `<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 109.5 124.5" style="enable-background:new 0 0 109.5 124.5;" xml:space="preserve">
@@ -35,7 +35,8 @@ function capitalizeFirstLetter(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-const generateHTML = async (slug: string) => {
+const generateHTML = async (apiSlug: string) => {
+  const slug = apiSlug.replace(`${VERSION}/html/`, "").replace(".png", "");
   const currentSlug = slug.split("/").at(-1);
   const title = capitalizeFirstLetter(currentSlug || "").replace("-", " ");
 
@@ -143,32 +144,13 @@ const generateHTML = async (slug: string) => {
 </body>`;
 };
 
-const generateScreenshot = async (html: string) => {
-  let base64String = Buffer.from(html).toString("base64");
-  const browser = await puppeteer.launch({
-    defaultViewport: { width: 1200, height: 630 },
-  });
-  const page = await browser.newPage();
-  const encodedUrl = `data:text/html;charset=utf-8;base64,${base64String}`;
-  await page.goto(encodedUrl, { waitUntil: "networkidle0" });
-  const file = await page.screenshot();
-  return file;
-};
-
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (!req.url) throw new Error(`og-image API requires a URL`);
     const slug = req.url.replace("/api/og-image/", "");
     const html = await generateHTML(slug);
-    const image = await generateScreenshot(html);
 
-    res.statusCode = 200;
-    res.setHeader("Content-Type", `image/png`);
-    res.setHeader(
-      "Cache-Control",
-      `public, immutable, no-transform, s-maxage=31536000, max-age=31536000`
-    );
-    res.end(image);
+    res.send(html);
   } catch (e) {
     res.statusCode = 500;
     res.setHeader("Content-Type", "text/html");

@@ -30,9 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     };
   }, [router.events, isProd]);
 
-  const ogImagePath = `/api/og-image/${
+  const ogImagePath = `/api/og-image/v0/png/${
     router.asPath === "/" ? "home" : router.asPath
-  }`;
+  }.png`;
 
   return (
     <>
