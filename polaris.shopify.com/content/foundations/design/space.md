@@ -43,7 +43,7 @@ Space is the distance between objects in your design. It should be used to organ
 
 ## Principles
 
-![Illustrations of blocks representing each principle](/images/foundations/design/spacing/principles.svg)
+![Illustrations of blocks representing each principle](/images/foundations/design/spacing/principles@2x.png)
 
 ### 1. Make content easy to understand.
 
