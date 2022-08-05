@@ -1,6 +1,7 @@
 ---
 title: Icons
 description: Icons in the Shopify admin act as visual aids to help merchants complete tasks. They’re simple, informative, and build on the visual language of the design system.
+icon: IconsMajor
 keywords:
   - shopify icons
   - icon sets

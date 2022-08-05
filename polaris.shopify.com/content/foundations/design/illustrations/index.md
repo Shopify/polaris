@@ -4,6 +4,7 @@ description: The Shopify admin uses a precise illustration style to help merchan
 keywords:
   - drawings
   - pictures
+icon: IllustrationMajor
 ---
 
 ![The illustration of a chair, in simples straight lines, followed by a version with curves and some color, followed by a final version with filled shapes and shadows.](/images/foundations/design/illustrations/illustrations-intro@2x.png)

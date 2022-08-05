@@ -1,6 +1,7 @@
 ---
 title: Colors
 description: Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.
+icon: ColorsMajor
 keywords:
   - visual patterns
   - color strategy

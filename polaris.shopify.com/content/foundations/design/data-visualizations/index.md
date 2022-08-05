@@ -1,6 +1,7 @@
 ---
 title: Data visualizations
 description: Visualizations surface patterns in data, and provide immediate answers to a single, specific question.
+icon: AnalyticsMajor
 keywords:
   - data viz
 ---

@@ -5,6 +5,7 @@ keywords:
   - type styles
   - font sizes
   - fonts
+icon: TypeMajor
 ---
 
 By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
