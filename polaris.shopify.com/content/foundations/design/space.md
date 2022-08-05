@@ -21,12 +21,12 @@ keywords:
   margin: 40px auto 40px auto;
   width: 75%;
 }
-
+/* 
 .video-wrap {
   border: 1px solid #E1E3E5;
   border-radius: 8px; 
   overflow: hidden;
-}
+} */
 </style>
 
 ---
@@ -147,11 +147,15 @@ When designing, it’s key to consider that people look for patterns, and will a
 
 #### People look for patterns instinctively, and they lean of visual cues like:
 
+<br>
+
 #### Similarity
 
 Grouping things based on physical appearance (shape, color, size, orientation).
 
 ![Index table](/images/foundations/design/spacing/spacing-similarity@2x.png)
+
+<br>
 
 #### Proximity
 
@@ -210,17 +214,25 @@ Anything can establish rhythm: space, typography, icons, color, shape, and size.
 
 Like in music, different types of rhythm serve a different purpose, in design there’s three worth highlighting:
 
+<br>
+
 ![Example of data table](/images/foundations/design/spacing/spacing-regular-rhythm@2x.png)
 
 **Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.
+
+<Br>
 
 ![Location profile page](/images/foundations/design/spacing/spacing-flowing-rhythm@2x.png)
 
 **Flowing rhythm** is organic, and it can bring a high level of scannability to something that would be otherwise a random collection of objects.
 
+<br>
+
 ![Home page with progressive disclosure card](/images/foundations/design/spacing/spacing-progressive-rhythm@2x.png)
 
 **Progressive rhythm** is a gradual progression, and is very effective in giving the eye a path to follow, along the progression. This is great to establish hierarchy and aid the user through a series of steps.
+
+<br>
 
 Rhythm plays another job in designs, it’s the norm that enables the introduction of variation and points of attention, otherwise known as contrast.
 
@@ -267,6 +279,8 @@ Sometimes software will say two objects are aligned, or that they have the same 
 
 That means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:
 
+<br>
+
 #### Visual weight ≠ Size
 
 Two things can have the same size, but feel unbalanced.
@@ -278,6 +292,8 @@ Without optical adjustment, the disclosure icon appears too far from the right e
 ![Before and after comparison of optical adjustment applied to an icon](/images/foundations/design/spacing/spacing-weight-icon@2x.png)
 
 The square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.
+
+<br>
 
 #### Colors affect each other
 
