@@ -7,6 +7,8 @@ keywords:
   - fonts
 ---
 
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-featured@2x.png)
+
 [Figma styles](http://www.google.com) | [Tokens](http://www.google.com) | [Components](http://www.google.com)
 
 ---
