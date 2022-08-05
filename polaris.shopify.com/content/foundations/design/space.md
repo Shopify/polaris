@@ -143,9 +143,9 @@ When designing, it’s key to consider that people look for patterns, and will a
 
 ![Different types of list items, such as menus, popovers, and dropdowns](/images/foundations/design/spacing/spacing-principles@2x.png)
 
-People look for patterns instinctively, and they lean of visual cues like:
-
 <br>
+
+People look for patterns instinctively, and they lean of visual cues like:
 
 #### Similarity
 
@@ -229,8 +229,6 @@ Like in music, different types of rhythm serve a different purpose, in design th
 ![Home page with progressive disclosure card](/images/foundations/design/spacing/spacing-progressive-rhythm@2x.png)
 
 **Progressive rhythm** is a gradual progression, and is very effective in giving the eye a path to follow, along the progression. This is great to establish hierarchy and aid the user through a series of steps.
-
-<br>
 
 Rhythm plays another job in designs, it’s the norm that enables the introduction of variation and points of attention, otherwise known as contrast.
 
