@@ -59,7 +59,7 @@ function Header({ darkMode, currentPath = "" }: Props) {
         <Link href="/">
           <a className={styles.Logo}>
             <Image
-              src="/shopify-logo.svg"
+              src="/images/shopify-logo.svg"
               layout="fixed"
               width={24}
               height={24}
