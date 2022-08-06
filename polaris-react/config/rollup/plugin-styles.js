@@ -5,7 +5,7 @@ import nodeSass from 'node-sass';
 import postcss from 'postcss';
 import cssModules from 'postcss-modules';
 
-export default =({
+export default ({
   output = '',
   plugins = [],
   modules = {},
