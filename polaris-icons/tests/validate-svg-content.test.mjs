@@ -1,4 +1,4 @@
-import {globby} from 'globby';
+import {globbySync} from 'globby';
 
 const fs = require('fs');
 const path = require('path');
@@ -14,9 +14,8 @@ const configPerSet = new Map([
   ['Minor', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
 ]);
 
-const allIconFiles = glob
-  .sync(path.resolve(__dirname, '../icons/*.svg'))
-  .map((absoluteIconPath) => {
+const allIconFiles = globbySync(path.resolve(__dirname, '../icons/*.svg')).map(
+  (absoluteIconPath) => {
     // We don't care about the first item, only the groups matches
     const [, set] = nameRegex.exec(absoluteIconPath) || [];
 
@@ -33,7 +32,8 @@ const allIconFiles = glob
       expectedViewbox: viewbox,
       expectedFillColors: colors,
     };
-  });
+  },
+);
 
 allIconFiles.forEach(
   ({iconPath, iconSource, iconAst, expectedViewbox, expectedFillColors}) => {

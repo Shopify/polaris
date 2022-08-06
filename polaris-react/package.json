@@ -49,7 +49,7 @@
     "build:types": "tsc -b",
     "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
     "build:js": "rollup -c",
-    "build:validate": "node scripts/build-validate.js",
+    "build:validate": "node scripts/build-validate.mjs",
     "dev": "yarn run storybook",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
