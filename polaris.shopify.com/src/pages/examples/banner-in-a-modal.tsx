@@ -1,6 +1,6 @@
-import { Button, Modal, TextContainer, Banner } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Button, Modal, TextContainer, Banner} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function BannerInModalExample() {
   const [active, setActive] = useState(false);
@@ -8,26 +8,26 @@ function BannerInModalExample() {
   const handleChange = useCallback(() => setActive(!active), [active]);
 
   return (
-    <div style={{ height: "500px" }}>
+    <div style={{height: '500px'}}>
       <Button onClick={handleChange}>Open</Button>
       <Modal
         open={active}
         onClose={handleChange}
         title="Reach more shoppers with Instagram product tags"
         primaryAction={{
-          content: "Add Instagram",
+          content: 'Add Instagram',
           onAction: handleChange,
         }}
         secondaryActions={[
           {
-            content: "Learn more",
+            content: 'Learn more',
             onAction: handleChange,
           },
         ]}
       >
         <Modal.Section>
           <TextContainer>
-            <Banner action={{ content: "Connect account" }} status="warning">
+            <Banner action={{content: 'Connect account'}} status="warning">
               <p>
                 Connect your instagram account to your shop before proceeding.
               </p>

@@ -1,13 +1,13 @@
-import { Banner } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Banner} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function BannerExample() {
   return (
     <Banner
       title="USPS has updated their rates"
-      action={{ content: "Update rates", url: "" }}
-      secondaryAction={{ content: "Learn more" }}
+      action={{content: 'Update rates', url: ''}}
+      secondaryAction={{content: 'Learn more'}}
       status="info"
       onDismiss={() => {}}
     >

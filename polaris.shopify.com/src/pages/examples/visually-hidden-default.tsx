@@ -4,9 +4,9 @@ import {
   Heading,
   FormLayout,
   TextField,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function VisuallyHiddenExample() {
   return (

@@ -3,10 +3,7 @@ import {existsSync, rmSync, mkdirSync} from 'fs';
 import {copyFile} from 'fs/promises';
 import metadata from '@shopify/polaris-icons/metadata';
 
-const srcDir = path.join(
-  process.cwd(),
-  '../polaris-icons/dist/svg',
-);
+const srcDir = path.join(process.cwd(), '../polaris-icons/dist/svg');
 
 const distDir = path.join(process.cwd(), 'public/icons');
 

@@ -1,21 +1,21 @@
-import { Autocomplete, Icon } from "@shopify/polaris";
-import { SearchMinor, DeleteMinor } from "@shopify/polaris-icons";
-import { useState, useCallback, useMemo } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Autocomplete, Icon} from '@shopify/polaris';
+import {SearchMinor, DeleteMinor} from '@shopify/polaris-icons';
+import {useState, useCallback, useMemo} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function AutocompleteActionBeforeExample() {
   const deselectedOptions = useMemo(
     () => [
-      { value: "rustic", label: "Rustic" },
-      { value: "antique", label: "Antique" },
-      { value: "vinyl", label: "Vinyl" },
-      { value: "vintage", label: "Vintage" },
-      { value: "refurbished", label: "Refurbished" },
+      {value: 'rustic', label: 'Rustic'},
+      {value: 'antique', label: 'Antique'},
+      {value: 'vinyl', label: 'Vinyl'},
+      {value: 'vintage', label: 'Vintage'},
+      {value: 'refurbished', label: 'Refurbished'},
     ],
-    []
+    [],
   );
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
@@ -28,20 +28,20 @@ function AutocompleteActionBeforeExample() {
       }
 
       setTimeout(() => {
-        if (value === "") {
+        if (value === '') {
           setOptions(deselectedOptions);
           setLoading(false);
           return;
         }
-        const filterRegex = new RegExp(value, "i");
+        const filterRegex = new RegExp(value, 'i');
         const resultOptions = options.filter((option) =>
-          option.label.match(filterRegex)
+          option.label.match(filterRegex),
         );
         setOptions(resultOptions);
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, loading, options]
+    [deselectedOptions, loading, options],
   );
 
   const updateSelection = useCallback(
@@ -55,7 +55,7 @@ function AutocompleteActionBeforeExample() {
       setSelectedOptions(selected);
       setInputValue(selectedText[0]);
     },
-    [options]
+    [options],
   );
 
   const textField = (
@@ -69,11 +69,11 @@ function AutocompleteActionBeforeExample() {
   );
 
   return (
-    <div style={{ height: "225px" }}>
+    <div style={{height: '225px'}}>
       <Autocomplete
         actionBefore={{
-          accessibilityLabel: "Destructive action label",
-          content: "Destructive action",
+          accessibilityLabel: 'Destructive action label',
+          content: 'Destructive action',
           destructive: true,
           icon: DeleteMinor,
         }}

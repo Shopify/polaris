@@ -7,18 +7,18 @@ import {
   Avatar,
   ResourceItem,
   TextStyle,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ResourceListWithFilteringExample() {
-  const [taggedWith, setTaggedWith] = useState("VIP");
+  const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
   const [items, setItems] = useState([]);
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
-    []
+    [],
   );
   const handleQueryValueChange = useCallback((value) => {
     setQueryValue(value);
@@ -32,14 +32,14 @@ function ResourceListWithFilteringExample() {
   }, [handleQueryValueRemove, handleTaggedWithRemove]);
 
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
   const filters = [
     {
-      key: "taggedWith2",
-      label: "Tagged with",
+      key: 'taggedWith2',
+      label: 'Tagged with',
       filter: (
         <TextField
           label="Tagged with"
@@ -56,8 +56,8 @@ function ResourceListWithFilteringExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: "taggedWith2",
-          label: disambiguateLabel("taggedWith2", taggedWith),
+          key: 'taggedWith2',
+          label: disambiguateLabel('taggedWith2', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
       ]
@@ -72,8 +72,8 @@ function ResourceListWithFilteringExample() {
       onQueryClear={handleQueryValueRemove}
       onClearAll={handleClearAll}
     >
-      <div style={{ paddingLeft: "8px" }}>
-        <Button onClick={() => console.log("New filter saved")}>Save</Button>
+      <div style={{paddingLeft: '8px'}}>
+        <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
     </Filters>
   );
@@ -91,7 +91,7 @@ function ResourceListWithFilteringExample() {
   );
 
   function renderItem(item) {
-    const { id, url, name, location } = item;
+    const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
     return (
@@ -106,7 +106,7 @@ function ResourceListWithFilteringExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case "taggedWith2":
+      case 'taggedWith2':
         return `Tagged with ${value}`;
       default:
         return value;
@@ -117,7 +117,7 @@ function ResourceListWithFilteringExample() {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
-      return value === "" || value == null;
+      return value === '' || value == null;
     }
   }
 }

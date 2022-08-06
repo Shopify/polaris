@@ -1,12 +1,12 @@
-import { HTMLProps } from "react";
-import Image from "../Image";
-import styles from "./SearchField.module.scss";
+import {HTMLProps} from 'react';
+import Image from '../Image';
+import styles from './SearchField.module.scss';
 
-interface Props extends Omit<HTMLProps<HTMLInputElement>, "onChange"> {
+interface Props extends Omit<HTMLProps<HTMLInputElement>, 'onChange'> {
   onChange: (value: string) => void;
 }
 
-function SearchField({ onChange, ...props }: Props) {
+function SearchField({onChange, ...props}: Props) {
   return (
     <div className={styles.SearchField}>
       <div className={styles.Icon}>

@@ -4,28 +4,28 @@ import {
   ResourceItem,
   Avatar,
   TextStyle,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ResourceItemExample() {
   return (
     <Card>
       <ResourceList
-        resourceName={{ singular: "customer", plural: "customers" }}
+        resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: 145,
-            url: "customers/145",
+            url: 'customers/145',
             avatarSource:
-              "https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746",
-            name: "Yi So-Yeon",
-            location: "Gwangju, South Korea",
-            lastOrder: "Emerald Silk Gown",
+              'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
+            name: 'Yi So-Yeon',
+            location: 'Gwangju, South Korea',
+            lastOrder: 'Emerald Silk Gown',
           },
         ]}
         renderItem={(item) => {
-          const { id, url, avatarSource, name, location, lastOrder } = item;
+          const {id, url, avatarSource, name, location, lastOrder} = item;
           return (
             <ResourceItem
               verticalAlignment="center"

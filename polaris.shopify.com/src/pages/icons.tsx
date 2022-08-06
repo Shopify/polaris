@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
+import type {NextPage} from 'next';
 
-import IconsPage from "../components/IconsPage";
+import IconsPage from '../components/IconsPage';
 
 const Components: NextPage = () => <IconsPage />;
 

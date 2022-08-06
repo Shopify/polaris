@@ -1,6 +1,6 @@
-import { Stack, Heading, Badge } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Stack, Heading, Badge} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function StackExample() {
   return (

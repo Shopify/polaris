@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { Status } from "../../types";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import {Status} from '../../types';
+import {useRouter} from 'next/router';
 
-import styles from "./Nav.module.scss";
-import StatusBadge from "../StatusBadge";
+import styles from './Nav.module.scss';
+import StatusBadge from '../StatusBadge';
 
 export type NavItem = {
   title: string;
@@ -16,7 +16,7 @@ interface Props {
   navItems: NavItem[];
 }
 
-function Nav({ navItems }: Props) {
+function Nav({navItems}: Props) {
   const router = useRouter();
   const currentPath = router.asPath;
   return (
@@ -54,11 +54,11 @@ function NavListItem({
     <li>
       {navItem.url ? (
         <Link href={navItem.url} passHref>
-          <a aria-current={navItem.url === currentPath ? "page" : "false"}>
+          <a aria-current={navItem.url === currentPath ? 'page' : 'false'}>
             {navItem.title}
             {navItem.status && (
               <>
-                {" "}
+                {' '}
                 <StatusBadge status={navItem.status} />
               </>
             )}

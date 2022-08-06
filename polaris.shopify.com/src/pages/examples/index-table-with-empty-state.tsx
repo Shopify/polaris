@@ -4,30 +4,30 @@ import {
   TextStyle,
   Card,
   useIndexResourceState,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function IndexTableWithCustomEmptyStateExample() {
   const customers = [];
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  const { selectedResources, allResourcesSelected, handleSelectionChange } =
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(customers);
 
   const emptyStateMarkup = (
     <EmptySearchResult
-      title={"No customers yet"}
-      description={"Try changing the filters or search term"}
+      title={'No customers yet'}
+      description={'Try changing the filters or search term'}
       withIllustration
     />
   );
 
   const rowMarkup = customers.map(
-    ({ id, name, location, orders, amountSpent }, index) => (
+    ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -41,7 +41,7 @@ function IndexTableWithCustomEmptyStateExample() {
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
       </IndexTable.Row>
-    )
+    ),
   );
 
   return (
@@ -50,15 +50,15 @@ function IndexTableWithCustomEmptyStateExample() {
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
-          allResourcesSelected ? "All" : selectedResources.length
+          allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
         emptyState={emptyStateMarkup}
         headings={[
-          { title: "Name" },
-          { title: "Location" },
-          { title: "Order count" },
-          { title: "Amount spent" },
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
         ]}
       >
         {rowMarkup}

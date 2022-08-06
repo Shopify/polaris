@@ -1,22 +1,22 @@
-import { Tag, Stack } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Tag, Stack} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function RemovableTagWithLinkExample() {
   const [selectedTags, setSelectedTags] = useState([
-    "Rustic",
-    "Antique",
-    "Vinyl",
-    "Refurbished",
+    'Rustic',
+    'Antique',
+    'Vinyl',
+    'Refurbished',
   ]);
 
   const removeTag = useCallback(
     (tag) => () => {
       setSelectedTags((previousTags) =>
-        previousTags.filter((previousTag) => previousTag !== tag)
+        previousTags.filter((previousTag) => previousTag !== tag),
       );
     },
-    []
+    [],
   );
 
   const tagMarkup = selectedTags.map((option) => (
