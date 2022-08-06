@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps<Props, {doc: string}> = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = path.resolve(process.cwd(), 'content/contributing/*/*.md');
-  const paths = glob.sync(globPath).map((fileName: string) => {
+  const paths = (await globby(globPath)).map((fileName: string) => {
     return fileName
       .replace(`${process.cwd()}/content`, '')
       .replace('/index.md', '');

@@ -1,4 +1,4 @@
-import {globby} from 'globby';
+import {globbySync} from 'globby';
 
 const assert = require('assert').strict;
 const fs = require('fs');
@@ -21,7 +21,7 @@ function validateStandardBuild() {
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
-  const files = glob.sync('./build/cjs/**/*.js');
+  const files = globbySync('./build/cjs/**/*.js');
   assert.notStrictEqual(files.length, 0);
   const filesContainingUnwantedReactUsage = [];
   files.forEach((file) => {
@@ -90,7 +90,7 @@ function validateAncillaryOutput() {
 }
 
 function validateVersionReplacement() {
-  const files = glob.sync('./build/**/*.{js,mjs,esnext,css}');
+  const files = globbySync('./build/**/*.{js,mjs,esnext,css}');
 
   assert.notStrictEqual(files.length, 0);
 
