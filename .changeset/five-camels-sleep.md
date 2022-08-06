@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Run prettier . --write on polaris.shopify.com
+Run yarn format across monorepo, remove custom prettier config from polaris.shopify.com
