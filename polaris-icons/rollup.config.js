@@ -7,10 +7,10 @@ import {babel} from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
 import glob from 'glob';
 import jsYaml from 'js-yaml';
-import svgr from '@svgr/core';
+import {default as convert} from '@svgr/core';
 import {optimize} from 'svgo';
 
-const convert = svgr.default;
+// const convert = svgr.default;
 const iconBasePath = new URL('./icons', import.meta.url).pathname;
 const iconPaths = glob.sync(path.join(iconBasePath, '*.yml'));
 

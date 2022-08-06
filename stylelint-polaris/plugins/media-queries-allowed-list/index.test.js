@@ -1,4 +1,4 @@
-const {messages, ruleName} = require('.');
+import {messages, ruleName} from '.';
 
 // Allowed media types and media conditions
 // https://www.w3.org/TR/mediaqueries-5/#media

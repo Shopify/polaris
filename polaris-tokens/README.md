@@ -43,7 +43,7 @@ div {
 Accessing a specific token group file via the dist folder
 
 ```js
-const spacing = require('@shopify/polaris-tokens/json/spacing.json');
+import spacing from '@shopify/polaris-tokens/json/spacing.json';
 ```
 
 ## Contributing

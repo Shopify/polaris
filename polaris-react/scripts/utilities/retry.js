@@ -24,4 +24,4 @@ function retry(functionToTry, maxAttempts = 3, delay = 1000) {
   });
 }
 
-module.exports = retry;
+export default retry;

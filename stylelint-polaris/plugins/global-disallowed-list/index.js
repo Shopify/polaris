@@ -1,6 +1,6 @@
-const stylelint = require('stylelint');
+import stylelint from 'stylelint';
 
-const {isRegExp, isString, matchesStringOrRegExp} = require('../../utils');
+import {isRegExp, isString, matchesStringOrRegExp} from '../../utils';
 
 const ruleName = 'stylelint-polaris/global-disallowed-list';
 
@@ -57,7 +57,7 @@ const {rule} = stylelint.createPlugin(
 
 rule.primaryOptionArray = true;
 
-module.exports = {
+export default {
   rule,
   ruleName,
   messages,

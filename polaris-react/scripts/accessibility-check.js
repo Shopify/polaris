@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-const path = require('path');
+import path from 'path';
 
-const {A11yTestRunner} = require('@shopify/storybook-a11y-test');
+import {A11yTestRunner} from '@shopify/storybook-a11y-test';
 
 (async () => {
   const buildDir = path.join(__dirname, '../build-internal/storybook/static');

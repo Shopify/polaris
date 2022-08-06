@@ -1,11 +1,11 @@
-const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
+import {getCustomPropertyNames, tokens} from '@shopify/polaris-tokens';
 
-const {
+import {
   ruleName: customPropertiesAllowedListRuleName,
-} = require('./plugins/custom-properties-allowed-list');
-const {
+} from './plugins/custom-properties-allowed-list';
+import {
   ruleName: mediaQueriesAllowedList,
-} = require('./plugins/media-queries-allowed-list');
+} from './plugins/media-queries-allowed-list';
 
 /**
  * Allowed Polaris token custom properties.
@@ -24,7 +24,7 @@ const userDefinedCustomPropertyNames = /--(?!pc?-).+/;
 /**
  * @type {import('stylelint').Config}
  */
-module.exports = {
+export default {
   extends: ['./configs/shared'],
   plugins: [
     './plugins/custom-properties-allowed-list',

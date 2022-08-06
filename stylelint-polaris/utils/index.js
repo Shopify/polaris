@@ -208,15 +208,17 @@ function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
 
-module.exports.hasScssInterpolation = hasScssInterpolation;
-module.exports.isBoolean = isBoolean;
-module.exports.isCustomProperty = isCustomProperty;
-module.exports.isNumber = isNumber;
-module.exports.isRegExp = isRegExp;
-module.exports.isScssInterpolation = isScssInterpolation;
-module.exports.isString = isString;
-module.exports.matchesStringOrRegExp = matchesStringOrRegExp;
-module.exports.scssInterpolationExpression = scssInterpolationExpression;
-module.exports.scssInterpolationRegExp = scssInterpolationRegExp;
-module.exports.vendorPrefix = vendorPrefix;
-module.exports.vendorUnprefixed = vendorUnprefixed;
+export default {
+  hasScssInterpolation,
+  isBoolean,
+  isCustomProperty,
+  isNumber,
+  isRegExp,
+  isScssInterpolation,
+  isString,
+  matchesStringOrRegExp,
+  scssInterpolationExpression,
+  scssInterpolationRegExp,
+  vendorPrefix,
+  vendorUnprefixed,
+};

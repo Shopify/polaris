@@ -1,6 +1,6 @@
-const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
+import {getCustomPropertyNames, tokens} from '@shopify/polaris-tokens';
 
-const {messages, ruleName} = require('.');
+import {messages, ruleName} from '.';
 
 const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
 

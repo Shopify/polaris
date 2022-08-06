@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   moduleNameMapper: {
     '^tests/(.*)': '<rootDir>/tests/$1',
   },

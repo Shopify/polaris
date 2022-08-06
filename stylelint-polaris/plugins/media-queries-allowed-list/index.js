@@ -1,14 +1,16 @@
-const stylelint = require('stylelint');
-const mediaParser = require('postcss-media-query-parser').default;
+import stylelint from 'stylelint';
+import mp from 'postcss-media-query-parser';
 
-const {
+const mediaParser = mp.default;
+
+import {
   hasScssInterpolation,
   scssInterpolationRegExp,
   scssInterpolationExpression,
   isString,
   isRegExp,
   matchesStringOrRegExp,
-} = require('../../utils');
+} from '../../utils';
 
 const ruleName = 'stylelint-polaris/media-queries-allowed-list';
 
@@ -134,7 +136,7 @@ const {rule} = stylelint.createPlugin(
   },
 );
 
-module.exports = {
+export default {
   rule,
   ruleName,
   messages,

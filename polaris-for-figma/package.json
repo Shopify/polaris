@@ -2,6 +2,7 @@
   "name": "polaris-for-figma",
   "version": "0.0.6",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development --watch",

@@ -1,3 +1,3 @@
-const {semverRegExp} = require('./semver-reg-exp');
+import {semverRegExp} from './semver-reg-exp';
 
-module.exports.semverRegExp = semverRegExp;
+export default semverRegExp;

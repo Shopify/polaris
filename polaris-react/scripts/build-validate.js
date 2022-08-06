@@ -1,10 +1,12 @@
 // eslint-disable-next-line node/no-unsupported-features/node-builtins
-const assert = require('assert').strict;
-const fs = require('fs');
+import assert from 'assert';
+import fs from 'fs';
 
-const glob = require('glob');
+import glob from 'glob';
 
-const packageJSON = require('../package.json');
+import packageJSON from '../package.json';
+
+const assertStrict = assert.strict;
 
 // Validation to assert the output of the build.
 
@@ -15,15 +17,15 @@ validateVersionReplacement();
 
 function validateStandardBuild() {
   // Standard build
-  assert.ok(fs.existsSync('./build/cjs/index.js'));
-  assert.ok(fs.existsSync('./build/esm/index.js'));
-  assert.ok(fs.existsSync('./build/esm/styles.css'));
+  assertStrict.ok(fs.existsSync('./build/cjs/index.js'));
+  assertStrict.ok(fs.existsSync('./build/esm/index.js'));
+  assertStrict.ok(fs.existsSync('./build/esm/styles.css'));
 
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
   const files = glob.sync('./build/cjs/**/*.js');
-  assert.notStrictEqual(files.length, 0);
+  assertStrict.notStrictEqual(files.length, 0);
   const filesContainingUnwantedReactUsage = [];
   files.forEach((file) => {
     const content = fs.readFileSync(file, 'utf-8');
@@ -38,22 +40,28 @@ function validateStandardBuild() {
     }
   });
 
-  assert.deepStrictEqual(filesContainingUnwantedReactUsage, []);
+  assertStrict.deepStrictEqual(filesContainingUnwantedReactUsage, []);
 
   // Standard build css contains namespaced classes
   const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
-  assert.ok(cssContent.includes('.Polaris-Avatar {'));
-  assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton {'));
-  assert.ok(cssContent.includes('@keyframes p-keyframes-bounce {'));
-  assert.ok(cssContent.includes('--p-keyframes-bounce:p-keyframes-bounce;'));
+  assertStrict.ok(cssContent.includes('.Polaris-Avatar {'));
+  assertStrict.ok(
+    cssContent.includes('.Polaris-BulkActions__BulkActionButton {'),
+  );
+  assertStrict.ok(cssContent.includes('@keyframes p-keyframes-bounce {'));
+  assertStrict.ok(
+    cssContent.includes('--p-keyframes-bounce:p-keyframes-bounce;'),
+  );
 }
 
 function validateEsNextBuild() {
   // ESnext build
-  assert.ok(fs.existsSync('./build/esnext/index.esnext'));
-  assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
-  assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
-  assert.ok(
+  assertStrict.ok(fs.existsSync('./build/esnext/index.esnext'));
+  assertStrict.ok(
+    fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'),
+  );
+  assertStrict.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
+  assertStrict.ok(
     fs.existsSync(
       './build/esnext/components/CustomProperties/CustomProperties.css',
     ),
@@ -68,9 +76,11 @@ function validateEsNextBuild() {
     './build/esnext/components/CustomProperties/CustomProperties.css',
     'utf-8',
   );
-  assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
-  assert.ok(cssKeyframesContent.includes('@keyframes p-keyframes-spin {'));
-  assert.ok(
+  assertStrict.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
+  assertStrict.ok(
+    cssKeyframesContent.includes('@keyframes p-keyframes-spin {'),
+  );
+  assertStrict.ok(
     cssKeyframesContent.includes('--p-keyframes-spin:p-keyframes-spin;'),
   );
 
@@ -79,21 +89,23 @@ function validateEsNextBuild() {
     'utf-8',
   );
 
-  assert.ok(jsContent.includes("import './Avatar.css';"));
-  assert.ok(jsContent.includes('"Avatar": "Polaris-Avatar_z763p"'));
-  assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
+  assertStrict.ok(jsContent.includes("import './Avatar.css';"));
+  assertStrict.ok(jsContent.includes('"Avatar": "Polaris-Avatar_z763p"'));
+  assertStrict.ok(
+    jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'),
+  );
 }
 
 function validateAncillaryOutput() {
-  assert.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
+  assertStrict.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
   // Downleveled for consumers on older TypeScript versions
-  assert.ok(fs.existsSync('./build/ts/3.4/src/index.d.ts'));
+  assertStrict.ok(fs.existsSync('./build/ts/3.4/src/index.d.ts'));
 }
 
 function validateVersionReplacement() {
   const files = glob.sync('./build/**/*.{js,mjs,esnext,css}');
 
-  assert.notStrictEqual(files.length, 0);
+  assertStrict.notStrictEqual(files.length, 0);
 
   const fileBuckets = {
     includesTemplateString: [],
@@ -112,9 +124,9 @@ function validateVersionReplacement() {
     }
   });
 
-  assert.strictEqual(fileBuckets.includesTemplateString.length, 0);
+  assertStrict.strictEqual(fileBuckets.includesTemplateString.length, 0);
 
-  assert.deepStrictEqual(fileBuckets.includesVersion, [
+  assertStrict.deepStrictEqual(fileBuckets.includesVersion, [
     './build/cjs/configure.js',
     './build/esm/configure.js',
     './build/esm/styles.css',

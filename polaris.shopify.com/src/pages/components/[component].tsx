@@ -8,7 +8,7 @@ import Longform from '../../components/Longform';
 import Markdown from '../../components/Markdown';
 import type {NavItem} from '../../components/Nav';
 import Layout from '../../components/Layout';
-import {parseMarkdown} from '../../utils/markdown.mjs';
+import {parseMarkdown} from '../../utils/markdown.js';
 import {getComponentNav} from '../../utils/various';
 import PageMeta from '../../components/PageMeta';
 import {PropsForComponent, Status} from '../../types';

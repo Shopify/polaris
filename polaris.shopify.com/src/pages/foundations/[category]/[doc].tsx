@@ -2,7 +2,7 @@ import type {GetStaticPaths, GetStaticProps, NextPage} from 'next';
 import fs from 'fs';
 import path from 'path';
 
-import {parseMarkdown} from '../../../utils/markdown.mjs';
+import {parseMarkdown} from '../../../utils/markdown.js';
 import {getUrlsFromNavItems} from '../../../utils/various';
 import {MarkdownFile} from '../../../types';
 import {foundationsNavItems} from '../../../data/navItems';

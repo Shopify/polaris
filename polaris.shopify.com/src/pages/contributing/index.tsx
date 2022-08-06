@@ -6,7 +6,7 @@ import Layout from '../../components/Layout';
 import Longform from '../../components/Longform';
 import Markdown from '../../components/Markdown';
 import {contributingNavItems} from '../../data/navItems';
-import {parseMarkdown} from '../../utils/markdown.mjs';
+import {parseMarkdown} from '../../utils/markdown.js';
 import {MarkdownFile} from '../../types';
 import PageMeta from '../../components/PageMeta';
 

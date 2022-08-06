@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 
-const {resolve} = require('path');
-const {execSync} = require('child_process');
-const {writeFileSync, readFileSync} = require('fs');
+import {resolve} from 'path';
+import {execSync} from 'child_process';
+import {writeFileSync, readFileSync} from 'fs';
 
-const {version: newVersion} = require('../package.json');
-const {semverRegExp} = require('../scripts/utilities');
+import {version: newVersion} from '../package.json';
+import {semverRegExp} from '../scripts/utilities';
 
 const root = resolve(__dirname, '..');
 
@@ -25,4 +25,4 @@ console.log(`🏃‍♂️ Running \`git add -A ${readmes.join(' ')}\`...`);
 const execOpts = {stdio: 'inherit'};
 execSync(`git add -A ${readmes.join(' ')}`, execOpts);
 
-module.exports = readmes;
+export default readmes;

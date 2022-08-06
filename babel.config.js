@@ -1,7 +1,7 @@
 /**
  * @type {import('@babel/core').TransformOptions}
  */
-module.exports = {
+export default {
   presets: [['@shopify/babel-preset', {typescript: true, react: true}]],
   babelrcRoots: [
     '.',

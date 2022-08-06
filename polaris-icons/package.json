@@ -3,6 +3,7 @@
   "version": "5.2.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",

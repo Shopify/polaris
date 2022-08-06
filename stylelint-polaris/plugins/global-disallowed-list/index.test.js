@@ -1,4 +1,4 @@
-const {messages, ruleName} = require('.');
+import {messages, ruleName} from '.';
 
 const config = [[/rem\(/, /--p-button-font/]];
 

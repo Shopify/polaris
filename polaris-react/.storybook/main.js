@@ -1,9 +1,11 @@
-const path = require('path');
-const spawn = require('child_process').spawn;
-const CreateFileWebpack = require('create-file-webpack');
-const postcssPlugins = require('../config/postcss-plugins');
+import path from 'path';
+import cp from 'child_process';
+import CreateFileWebpack from 'create-file-webpack';
+import postcssPlugins from '../config/postcss-plugins';
 
-module.exports = {
+const {spawn} = cp;
+
+export default {
   core: {
     builder: 'webpack5',
   },

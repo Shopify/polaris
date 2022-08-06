@@ -5,7 +5,7 @@
 /**
  * @type {import('stylelint').Config}
  */
-module.exports = {
+export default {
   plugins: ['stylelint-scss', '../plugins/global-disallowed-list'],
   rules: {
     'at-rule-disallowed-list': [['keyframes'], {severity: 'warning'}],

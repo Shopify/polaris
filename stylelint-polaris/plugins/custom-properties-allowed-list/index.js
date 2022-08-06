@@ -1,13 +1,13 @@
-const stylelint = require('stylelint');
-const valueParser = require('postcss-value-parser');
+import stylelint from 'stylelint';
+import valueParser from 'postcss-value-parser';
 
-const {
+import {
   vendorUnprefixed,
   matchesStringOrRegExp,
   isCustomProperty,
   isRegExp,
   isString,
-} = require('../../utils');
+} from '../../utils';
 
 const ruleName = 'stylelint-polaris/custom-properties-allowed-list';
 
@@ -149,7 +149,7 @@ function validateCustomPropertyValues(allowedValues, prop, value) {
   return invalidValues;
 }
 
-module.exports = {
+export default {
   rule,
   ruleName,
   messages,

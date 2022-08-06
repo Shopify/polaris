@@ -1,5 +1,5 @@
-module.exports = {
+export default {
   process() {
-    return `module.exports = new Proxy({}, {get: (_, key) => (key === '__esModule' ? false : key)})`;
+    return `export default new Proxy({}, {get: (_, key) => (key === '__esModule' ? false : key)})`;
   },
 };

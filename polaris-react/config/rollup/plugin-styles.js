@@ -1,18 +1,18 @@
-const path = require('path');
+import path from 'path';
 
-const {createFilter} = require('@rollup/pluginutils');
-const nodeSass = require('node-sass');
-const postcss = require('postcss');
-const cssModules = require('postcss-modules');
+import {createFilter} from '@rollup/pluginutils';
+import nodeSass from 'node-sass';
+import postcss from 'postcss';
+import cssModules from 'postcss-modules';
 
-module.exports.styles = function styles({
+export default =({
   output = '',
   plugins = [],
   modules = {},
   mode,
   include = ['**/*.css', '**/*.scss'],
   exclude = [],
-} = {}) {
+} = {}) => {
   if (!['standalone', 'esnext'].includes(mode)) {
     throw new Error(
       `Expected mode to be either "standalone" or "esnext", but got "${mode}"`,

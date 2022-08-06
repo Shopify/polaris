@@ -1,8 +1,10 @@
-const path = require('path');
+import path from 'path';
 
-const packages = require('./package.json').workspaces.packages;
+import packages from './package.json';
 
-module.exports = {
+const workspacePackages = packages.workspaces.packages;
+
+export default {
   root: true,
   extends: [
     'plugin:@shopify/typescript',
@@ -16,7 +18,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: [
       './tsconfig.eslint.json',
-      ...packages.map((pkg) => `./${pkg}/tsconfig.json`),
+      ...workspacePackages.map((pkg) => `./${pkg}/tsconfig.json`),
     ],
   },
   settings: {
@@ -80,7 +82,7 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
   },
   overrides: [
-    ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
+    ...workspacePackages.map((pkg) => noExtraneousDependenciesConfig(pkg)),
     {
       files: ['polaris-for-figma/src/**/*.{ts,tsx}'],
       rules: {
@@ -97,7 +99,7 @@ module.exports = {
       },
     },
     {
-      files: ['*/rollup.config.mjs'],
+      files: ['*/rollup.config.js'],
       rules: {
         'import/extensions': 'off',
         'import/no-default-export': 'off',

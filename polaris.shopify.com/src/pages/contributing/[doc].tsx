@@ -8,7 +8,7 @@ import Longform from '../../components/Longform';
 import Markdown from '../../components/Markdown';
 import PageMeta from '../../components/PageMeta';
 import {contributingNavItems} from '../../data/navItems';
-import {parseMarkdown} from '../../utils/markdown.mjs';
+import {parseMarkdown} from '../../utils/markdown.js';
 import {MarkdownFile} from '../../types';
 
 interface Props {

@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+import puppeteer from 'puppeteer';
 
 const iframePath =
   'http://localhost:6006/iframe.html?id=playground--kitchen-sink&viewMode=story&globals=profiler:false';

@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   projects: [
     // '<rootDir>/polaris-for-figma',
     // '<rootDir>/polaris-for-vscode',

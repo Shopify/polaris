@@ -5,6 +5,7 @@
   "license": "SEE LICENSE IN LICENSE.md",
   "description": "Polaris Design System VS Code extension",
   "icon": "docs/polaris-icon.png",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/Shopify/polaris.git"

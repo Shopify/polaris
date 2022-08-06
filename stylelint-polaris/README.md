@@ -57,7 +57,7 @@ stylelint-polaris/
 
 ```js
 // consumer/stylelintrc.js
-module.exports = {
+export default {
   extends: ['@shopify/stylelint-polaris'],
   plugins: ['@shopify/stylelint-polaris/plugins'],
   rules: {

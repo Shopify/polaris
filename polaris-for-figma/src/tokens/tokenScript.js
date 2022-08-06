@@ -1,7 +1,7 @@
-const fs = require('fs');
+import {writeFileSync} from 'fs';
 
-const apiColorTokens = require('./apiTokenColors.json');
-const colorStyles = require('./colorStyles.json');
+import apiColorTokens from './apiTokenColors.json';
+import colorStyles from './colorStyles.json';
 
 function addPaintStyleIDtoTokens() {
   const figmaColorStyles = colorStyles.meta.styles;
@@ -16,7 +16,7 @@ function addPaintStyleIDtoTokens() {
     });
   }
 
-  fs.writeFileSync(
+  writeFileSync(
     'apiTokenColors.json',
     JSON.stringify(apiColorTokens),
     (err) => {

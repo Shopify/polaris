@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   transform: {
     '\\.(js|tsx?)$': [
       'babel-jest',

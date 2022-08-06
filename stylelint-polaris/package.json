@@ -2,6 +2,7 @@
   "name": "@shopify/stylelint-polaris",
   "description": "Polaris Design System Stylelint tooling",
   "version": "4.0.0",
+  "type": "module",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",

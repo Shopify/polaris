@@ -7,6 +7,7 @@
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://polaris.shopify.com/components",
   "repository": "https://github.com/Shopify/polaris",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },

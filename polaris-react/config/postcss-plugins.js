@@ -1,7 +1,7 @@
-const postcssShopify = require('@shopify/postcss-plugin');
-const pxtorem = require('postcss-pxtorem');
+import postcssShopify from '@shopify/postcss-plugin';
+import pxtorem from 'postcss-pxtorem';
 
-module.exports = [
+export default [
   postcssShopify,
   pxtorem({
     rootValue: 16,
