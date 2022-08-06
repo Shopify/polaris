@@ -1,7 +1,7 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import fs from "fs";
 import path from "path";
-import glob from "glob";
+import { globby } from "globby";
 
 import Layout from "../../components/Layout";
 import Longform from "../../components/Longform";

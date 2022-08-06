@@ -1,5 +1,5 @@
 import fs from "fs";
-import glob from "glob";
+import { globby } from "globby";
 import path from "path";
 import type { GetStaticPaths, GetStaticProps } from "next";
 import ComponentExamples from "../../components/ComponentExamples";

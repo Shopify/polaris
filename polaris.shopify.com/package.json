@@ -26,7 +26,6 @@
     "@shopify/polaris-tokens": "^5.5.0",
     "codesandbox": "^2.2.3",
     "fuse.js": "^6.5.3",
-    "glob": "^7.1.6",
     "next": "12.1.0",
     "prismjs": "^1.27.0",
     "react": "^17.0.2",

@@ -1,8 +1,7 @@
-// eslint-disable-next-line node/no-unsupported-features/node-builtins
+import {globby} from 'globby';
+
 const assert = require('assert').strict;
 const fs = require('fs');
-
-const glob = require('glob');
 
 const packageJSON = require('../package.json');
 

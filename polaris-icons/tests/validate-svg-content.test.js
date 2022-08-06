@@ -1,7 +1,8 @@
+import {globby} from 'globby';
+
 const fs = require('fs');
 const path = require('path');
 
-const glob = require('glob');
 const unified = require('unified');
 const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');

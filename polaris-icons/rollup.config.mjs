@@ -5,7 +5,7 @@ import * as path from 'path';
 import {createFilter} from '@rollup/pluginutils';
 import {babel} from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
-import glob from 'glob';
+import {globby} from 'globby';
 import jsYaml from 'js-yaml';
 import svgr from '@svgr/core';
 import {optimize} from 'svgo';
