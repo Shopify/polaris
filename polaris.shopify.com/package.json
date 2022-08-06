@@ -11,9 +11,7 @@
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
-    "copy-icons": "node src/scripts/copy-icons.mjs",
+    "copy-icons": "node scripts/copy-icons.mjs",
     "generate-sitemap": "next build && yarn next-sitemap",
     "get-props": "ts-node --skip-project ./scripts/get-props.ts"
   },
