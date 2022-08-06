@@ -1,5 +1,5 @@
-import { TokenProperties } from "@shopify/polaris-tokens";
-import { Icon } from "@shopify/polaris-icons/metadata";
+import {TokenProperties} from '@shopify/polaris-tokens';
+import {Icon} from '@shopify/polaris-icons/metadata';
 
 export type MarkdownFile = {
   frontMatter: any;
@@ -11,10 +11,10 @@ export interface TokenPropertiesWithName extends TokenProperties {
 }
 
 export const searchResultCategories = [
-  "foundations",
-  "components",
-  "tokens",
-  "icons",
+  'foundations',
+  'components',
+  'tokens',
+  'icons',
 ] as const;
 
 export type SearchResultCategory = typeof searchResultCategories[number];
@@ -40,7 +40,7 @@ export interface SearchResult {
       category: string;
       token: TokenPropertiesWithName;
     };
-    icons: { icon: Icon };
+    icons: {icon: Icon};
   }>;
 }
 
@@ -57,7 +57,7 @@ export interface SearchResultItem {
     tabIndex: -1;
     itemAttributes: {
       id: string;
-      "data-is-active-descendant": boolean;
+      'data-is-active-descendant': boolean;
     };
     url: string;
   };
@@ -71,7 +71,7 @@ export enum Breakpoints {
 }
 
 export type Status = {
-  value: "deprecated" | "alpha" | "warning" | "information";
+  value: 'deprecated' | 'alpha' | 'warning' | 'information';
   message: string;
 };
 

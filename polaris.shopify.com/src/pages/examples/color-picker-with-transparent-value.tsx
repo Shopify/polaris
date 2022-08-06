@@ -1,6 +1,6 @@
-import { ColorPicker } from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {ColorPicker} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ColorPickerWithTransparentValueExample() {
   const [color, setColor] = useState({

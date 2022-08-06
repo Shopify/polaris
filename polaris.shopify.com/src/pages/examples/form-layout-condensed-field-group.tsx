@@ -1,6 +1,6 @@
-import { FormLayout, TextField } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {FormLayout, TextField} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function Example() {
   return (

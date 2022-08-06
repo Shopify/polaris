@@ -30,10 +30,10 @@
   SOFTWARE.
 */
 
-code[class*="language-"],
-pre[class*="language-"] {
+code[class*='language-'],
+pre[class*='language-'] {
   color: #393a34;
-  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier,
+  font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier,
     monospace;
   direction: ltr;
   text-align: left;
@@ -53,26 +53,26 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-pre > code[class*="language-"] {
+pre > code[class*='language-'] {
   font-size: 1em;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
   background: #c1def1;
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
   background: #c1def1;
 }
 
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*='language-'] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
@@ -81,7 +81,7 @@ pre[class*="language-"] {
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
+:not(pre) > code[class*='language-'] {
   padding: 0.2em;
   padding-top: 1px;
   padding-bottom: 1px;
@@ -126,7 +126,7 @@ pre[class*="language-"] {
 .language-autohotkey .token.selector,
 .language-json .token.boolean,
 .language-json .token.number,
-code[class*="language-css"] {
+code[class*='language-css'] {
   color: #0000ff;
 }
 
@@ -209,13 +209,13 @@ code[class*="language-css"] {
 
 .dark-mode {
   // https://github.com/PrismJS/prism-themes/blob/master/themes/prism-vsc-dark-plus.css
-  pre[class*="language-"],
-  code[class*="language-"] {
+  pre[class*='language-'],
+  code[class*='language-'] {
     color: #d4d4d4;
     font-size: 13px;
     text-shadow: none;
-    font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono",
-      "Courier New", monospace;
+    font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono',
+      'Courier New', monospace;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -231,29 +231,29 @@ code[class*="language-css"] {
     hyphens: none;
   }
 
-  pre[class*="language-"]::selection,
-  code[class*="language-"]::selection,
-  pre[class*="language-"] *::selection,
-  code[class*="language-"] *::selection {
+  pre[class*='language-']::selection,
+  code[class*='language-']::selection,
+  pre[class*='language-'] *::selection,
+  code[class*='language-'] *::selection {
     text-shadow: none;
     background: #264f78;
   }
 
   @media print {
-    pre[class*="language-"],
-    code[class*="language-"] {
+    pre[class*='language-'],
+    code[class*='language-'] {
       text-shadow: none;
     }
   }
 
-  pre[class*="language-"] {
+  pre[class*='language-'] {
     padding: 1em;
     margin: 0.5em 0;
     overflow: auto;
     background: #1e1e1e;
   }
 
-  :not(pre) > code[class*="language-"] {
+  :not(pre) > code[class*='language-'] {
     padding: 0.1em 0.3em;
     border-radius: 0.3em;
     color: #db4c69;
@@ -444,24 +444,24 @@ code[class*="language-css"] {
 * Language Specific
 */
 
-  pre[class*="language-javascript"],
-  code[class*="language-javascript"],
-  pre[class*="language-jsx"],
-  code[class*="language-jsx"],
-  pre[class*="language-typescript"],
-  code[class*="language-typescript"],
-  pre[class*="language-tsx"],
-  code[class*="language-tsx"] {
+  pre[class*='language-javascript'],
+  code[class*='language-javascript'],
+  pre[class*='language-jsx'],
+  code[class*='language-jsx'],
+  pre[class*='language-typescript'],
+  code[class*='language-typescript'],
+  pre[class*='language-tsx'],
+  code[class*='language-tsx'] {
     color: #9cdcfe;
   }
 
-  pre[class*="language-css"],
-  code[class*="language-css"] {
+  pre[class*='language-css'],
+  code[class*='language-css'] {
     color: #ce9178;
   }
 
-  pre[class*="language-html"],
-  code[class*="language-html"] {
+  pre[class*='language-html'],
+  code[class*='language-html'] {
     color: #d4d4d4;
   }
 
@@ -475,7 +475,7 @@ code[class*="language-css"] {
   /*********************************************************
 * Line highlighting
 */
-  pre[class*="language-"] > code[class*="language-"] {
+  pre[class*='language-'] > code[class*='language-'] {
     position: relative;
     z-index: 1;
   }

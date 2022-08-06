@@ -1,19 +1,19 @@
-import { Page, Button } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Page, Button} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
       title="Product"
       primaryAction={{
-        content: "Save",
+        content: 'Save',
       }}
       secondaryActions={[
         {
-          content: "Import",
+          content: 'Import',
           disabled: true,
-          helpText: "You need permission to import products.",
+          helpText: 'You need permission to import products.',
         },
       ]}
     />

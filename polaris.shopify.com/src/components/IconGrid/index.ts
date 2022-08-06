@@ -1,3 +1,3 @@
-import IconGrid from "./IconGrid";
+import IconGrid from './IconGrid';
 
 export default IconGrid;

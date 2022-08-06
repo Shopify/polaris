@@ -4,9 +4,9 @@ import {
   Card,
   List,
   CustomProperties,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function Example() {
   return (
@@ -14,8 +14,8 @@ function Example() {
       <TextContainer>
         <Card
           title="Shipment 1234"
-          secondaryFooterActions={[{ content: "Edit shipment" }]}
-          primaryFooterAction={{ content: "Add tracking number" }}
+          secondaryFooterActions={[{content: 'Edit shipment'}]}
+          primaryFooterAction={{content: 'Add tracking number'}}
         >
           <Card.Section title="Items">
             <List>
@@ -27,8 +27,8 @@ function Example() {
         <CustomProperties colorScheme="dark">
           <Card
             title="Shipment 1234"
-            secondaryFooterActions={[{ content: "Edit shipment" }]}
-            primaryFooterAction={{ content: "Add tracking number" }}
+            secondaryFooterActions={[{content: 'Edit shipment'}]}
+            primaryFooterAction={{content: 'Add tracking number'}}
           >
             <Card.Section title="Items">
               <List>

@@ -4,30 +4,30 @@ import {
   Avatar,
   ResourceItem,
   TextStyle,
-} from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ResourceListWithSortingExample() {
-  const [sortValue, setSortValue] = useState("DATE_MODIFIED_DESC");
+  const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
 
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
   const items = [
     {
       id: 106,
-      url: "customers/341",
-      name: "Mae Jemison",
-      location: "Decatur, USA",
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
     },
     {
       id: 206,
-      url: "customers/256",
-      name: "Ellen Ochoa",
-      location: "Los Angeles, USA",
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
     },
   ];
 
@@ -39,8 +39,8 @@ function ResourceListWithSortingExample() {
         renderItem={renderItem}
         sortValue={sortValue}
         sortOptions={[
-          { label: "Newest update", value: "DATE_MODIFIED_DESC" },
-          { label: "Oldest update", value: "DATE_MODIFIED_ASC" },
+          {label: 'Newest update', value: 'DATE_MODIFIED_DESC'},
+          {label: 'Oldest update', value: 'DATE_MODIFIED_ASC'},
         ]}
         onSortChange={(selected) => {
           setSortValue(selected);
@@ -51,7 +51,7 @@ function ResourceListWithSortingExample() {
   );
 
   function renderItem(item) {
-    const { id, url, name, location } = item;
+    const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
     return (

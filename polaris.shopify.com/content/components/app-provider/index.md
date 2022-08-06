@@ -43,9 +43,9 @@ Translations are provided in the locales folder. When using Polaris, you are abl
 If a project has only one locale, then you can pass the JSON content from the locale file into `AppProvider`.
 
 ```jsx
-import { AppProvider } from "@shopify/polaris";
+import {AppProvider} from '@shopify/polaris';
 // en.json is English. Replace with fr.json for French, etc
-import translations from "@shopify/polaris/locales/en.json";
+import translations from '@shopify/polaris/locales/en.json';
 
 function App() {
   return <AppProvider i18n={translations}>{/* App content */}</AppProvider>;
@@ -55,14 +55,14 @@ function App() {
 If a project supports multiple locales, then load them dynamically using [`@shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n#translation). This ensures that you load only the translations you need.
 
 ```jsx
-import { AppProvider } from "@shopify/polaris";
+import {AppProvider} from '@shopify/polaris';
 // en.json is English. Replace with fr.json for French, etc
-import translations from "@shopify/polaris/locales/en.json";
-import { useI18n } from "@shopify/react-i18n";
+import translations from '@shopify/polaris/locales/en.json';
+import {useI18n} from '@shopify/react-i18n';
 
 function App() {
   const [i18n] = useI18n({
-    id: "Polaris",
+    id: 'Polaris',
     fallback: translations,
     translations(locale) {
       return import(
@@ -88,7 +88,7 @@ By default Polaris renders `<Link>` elements (and action objects) as `<a>` tags.
 The `linkComponent` prop allows you to customise how links behave within Polaris by allowing you to inject your router's own Link component. The following example demonstrates using react-router's `Link` component.
 
 ```jsx
-import { BrowserRouter, Link as ReactRouterLink } from "react-router-dom";
+import {BrowserRouter, Link as ReactRouterLink} from 'react-router-dom';
 
 function App() {
   return (
@@ -102,13 +102,13 @@ function App() {
 
 const IS_EXTERNAL_LINK_REGEX = /^(?:[a-z][a-z\d+.-]*:|\/\/)/;
 
-function Link({ children, url = "", external, ref, ...rest }) {
+function Link({children, url = '', external, ref, ...rest}) {
   // react-router only supports links to pages it can handle itself. It does not
   // support arbirary links, so anything that is not a path-based link should
   // use a reglar old `a` tag
   if (external || IS_EXTERNAL_LINK_REGEX.test(url)) {
-    rest.target = "_blank";
-    rest.rel = "noopener noreferrer";
+    rest.target = '_blank';
+    rest.rel = 'noopener noreferrer';
     return (
       <a href={url} {...rest}>
         {children}

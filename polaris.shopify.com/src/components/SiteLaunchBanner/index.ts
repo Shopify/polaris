@@ -1,3 +1,3 @@
-import SiteLaunchBanner from "./SiteLaunchBanner";
+import SiteLaunchBanner from './SiteLaunchBanner';
 
 export default SiteLaunchBanner;

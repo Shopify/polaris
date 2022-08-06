@@ -1,16 +1,16 @@
-import Image from "../Image";
-import Link from "next/link";
-import { getReadableStatusValue, slugify } from "../../utils/various";
-import { Status } from "../../types";
-import styles from "./ComponentGrid.module.scss";
-import StatusBadge from "../StatusBadge";
-import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
+import Image from '../Image';
+import Link from 'next/link';
+import {getReadableStatusValue, slugify} from '../../utils/various';
+import {Status} from '../../types';
+import styles from './ComponentGrid.module.scss';
+import StatusBadge from '../StatusBadge';
+import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 
 interface ComponentGridProps {
   children: React.ReactNode;
 }
 
-function ComponentGrid({ children }: ComponentGridProps) {
+function ComponentGrid({children}: ComponentGridProps) {
   return <ul className={styles.ComponentGrid}>{children}</ul>;
 }
 
@@ -50,7 +50,7 @@ function ComponentGridItem({
               {title}
               {status && (
                 <>
-                  {" "}
+                  {' '}
                   <StatusBadge
                     status={{
                       value: status.value,
