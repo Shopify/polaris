@@ -65,23 +65,23 @@ All measurements used across the experience (space, width, height, etc) must ref
 
 ### Size scale
 
-| Value    | Size         | px value | rem value |
-| -------- | ------------ | -------- | --------- |
-| 0        | --p-size-0   | 0        | 0         |
-| 0.25     | --p-size-025 | 1        | 0.0625    |
-| 0.5      | --p-size-05  | 2        | 0.03125   |
+| Value        | Size         | px value | rem value |
+| ------------ | ------------ | -------- | --------- |
+| 0            | --p-size-0   | 0        | 0         |
+| 0.25         | --p-size-025 | 1        | 0.0625    |
+| 0.5          | --p-size-05  | 2        | 0.03125   |
 | **1 (base)** | --p-size-1   | 4        | 0.25      |
-| 2        | --p-size-2   | 8        | 0.5       |
-| 3        | --p-size-3   | 12       | 0.75      |
-| 4        | --p-size-4   | 16       | 1         |
-| 5        | --p-size-5   | 20       | 1.25      |
-| 6        | --p-size-6   | 24       | 1.5       |
-| 8        | --p-size-8   | 32       | 2         |
-| 10       | --p-size-10  | 40       | 2.5       |
-| 12       | --p-size-12  | 48       | 3         |
-| 16       | --p-size-16  | 64       | 4         |
-| 24       | --p-size-24  | 96       | 6         |
-| 32       | --p-size-32  | 128      | 8         |
+| 2            | --p-size-2   | 8        | 0.5       |
+| 3            | --p-size-3   | 12       | 0.75      |
+| 4            | --p-size-4   | 16       | 1         |
+| 5            | --p-size-5   | 20       | 1.25      |
+| 6            | --p-size-6   | 24       | 1.5       |
+| 8            | --p-size-8   | 32       | 2         |
+| 10           | --p-size-10  | 40       | 2.5       |
+| 12           | --p-size-12  | 48       | 3         |
+| 16           | --p-size-16  | 64       | 4         |
+| 24           | --p-size-24  | 96       | 6         |
+| 32           | --p-size-32  | 128      | 8         |
 
 Polaris units are more dense at a small scale, and less so as dimensions increase.
 This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different sizes.
@@ -112,8 +112,8 @@ The grid adapts to the viewport width. The amount of columns will change dependi
 
 <br/>
 
-| Screen size                            | Columns | Margin | Gutter | Navigation |
-| -------------------------------------- | ------- | ------ | ------ | ---------- |
+| Screen size                              | Columns | Margin | Gutter | Navigation |
+| ---------------------------------------- | ------- | ------ | ------ | ---------- |
 | **XS** <br/> 0-489 <br/> Phones          | 6       | 16     | 16     | Collapsed  |
 | **SM** <br/> 490-767 <br/> Small tablets | 6       | 16     | 16     | Collapsed  |
 | **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Collapsed  |
@@ -243,9 +243,9 @@ Contrast is meant to create sticking points that help make content easy to scan,
 
 ![Marketing page and empty state](/images/foundations/design/space/spacing-contrast@2x.png)
 
-**Highlights (left)**: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity. 
+**Highlights (left)**: Callout cards are used to encourage merchants to take an action related to a new feature or opportunity.
 
-**Breather moment (right)**: Empty states provide explanation or guidance to help merchants progress. 
+**Breather moment (right)**: Empty states provide explanation or guidance to help merchants progress.
 
 Contrast can play a role at very different levels, but it must be used sparingly, otherwise its effect gets diluted.
 

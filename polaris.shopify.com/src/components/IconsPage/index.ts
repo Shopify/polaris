@@ -1,3 +1,3 @@
-import IconsPage from "./IconsPage";
+import IconsPage from './IconsPage';
 
 export default IconsPage;

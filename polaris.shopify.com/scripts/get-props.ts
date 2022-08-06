@@ -1,8 +1,8 @@
-import * as ts from "typescript";
-import * as fs from "fs";
-import path from "path";
-import { globby } from "globby";
-import { PropsForComponent } from "../src/types";
+import * as ts from 'typescript';
+import * as fs from 'fs';
+import path from 'path';
+import {globby} from 'globby';
+import {PropsForComponent} from '../src/types';
 
 function getProps(fileNames: string[], options: ts.CompilerOptions): void {
   let program = ts.createProgram(fileNames, options);
@@ -15,7 +15,7 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
     }
   }
 
-  const filePath = path.join(__dirname, "../src/data/props.json");
+  const filePath = path.join(__dirname, '../src/data/props.json');
   fs.writeFileSync(filePath, JSON.stringify(props, undefined, 2));
 
   return;
@@ -24,7 +24,7 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
     if (node.kind === ts.SyntaxKind.InterfaceDeclaration) {
       const interfaceNode = node as ts.InterfaceDeclaration;
 
-      if (interfaceNode.name.escapedText.toString().endsWith("Props")) {
+      if (interfaceNode.name.escapedText.toString().endsWith('Props')) {
         let propsForComponent: PropsForComponent = {
           interfaceName: interfaceNode.name.escapedText.toString(),
           props: [],
@@ -32,7 +32,7 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
 
         const type = checker.getTypeAtLocation(interfaceNode.name);
         for (const prop of type.getProperties()) {
-          let comment = "";
+          let comment = '';
           const comments = prop.getDocumentationComment(checker);
           if (comments.length === 1) {
             comment = comments[0].text;
@@ -40,16 +40,16 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
 
           const deprecated = prop
             .getJsDocTags()
-            .some((tag) => tag.name.includes("deprecated"));
+            .some((tag) => tag.name.includes('deprecated'));
 
           if (prop.valueDeclaration) {
             const propType = checker.getTypeOfSymbolAtLocation(
               prop,
-              prop.valueDeclaration
+              prop.valueDeclaration,
             );
 
             let optional = false;
-            const { valueDeclaration } = prop;
+            const {valueDeclaration} = prop;
             if (valueDeclaration.kind === ts.SyntaxKind.PropertySignature) {
               const propertySignature =
                 valueDeclaration as ts.PropertySignature;
@@ -74,8 +74,8 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
   }
 }
 
-globby("../polaris-react/src/components/*/*.tsx", {
-  ignore: ["*.test.tsx"],
+globby('../polaris-react/src/components/*/*.tsx', {
+  ignore: ['*.test.tsx'],
 }).then((files) => {
   getProps(files, {
     target: ts.ScriptTarget.ES5,

@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@import '../../styles/mixins.scss';
 
 .Code {
   border-radius: var(--border-radius-400);
@@ -34,12 +34,12 @@
     padding-right: 0.5rem;
     color: var(--text-strong);
 
-    &[aria-selected="true"] {
+    &[aria-selected='true'] {
       position: relative;
 
       &:not(:focus-visible) {
         &:after {
-          content: "";
+          content: '';
           display: block;
           position: absolute;
           right: 0;

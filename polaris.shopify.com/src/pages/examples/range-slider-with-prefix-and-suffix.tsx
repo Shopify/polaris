@@ -1,18 +1,18 @@
-import { Card, RangeSlider } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Card, RangeSlider} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function RangeSliderWithPrefixAndSuffixExample() {
   const [rangeValue, setRangeValue] = useState(100);
 
   const handleRangeSliderChange = useCallback(
     (value) => setRangeValue(value),
-    []
+    [],
   );
 
   const suffixStyles = {
-    minWidth: "24px",
-    textAlign: "right",
+    minWidth: '24px',
+    textAlign: 'right',
   };
 
   return (

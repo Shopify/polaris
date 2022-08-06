@@ -17,7 +17,7 @@
     border-radius: var(--border-radius-800);
     color: var(--text);
 
-    &[aria-current="page"] {
+    &[aria-current='page'] {
       background-color: var(--text-strong);
       color: white;
     }

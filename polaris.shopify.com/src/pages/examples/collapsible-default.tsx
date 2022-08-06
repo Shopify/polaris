@@ -5,9 +5,9 @@ import {
   Collapsible,
   TextContainer,
   Link,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function CollapsibleExample() {
   const [open, setOpen] = useState(true);
@@ -15,7 +15,7 @@ function CollapsibleExample() {
   const handleToggle = useCallback(() => setOpen((open) => !open), []);
 
   return (
-    <div style={{ height: "200px" }}>
+    <div style={{height: '200px'}}>
       <Card sectioned>
         <Stack vertical>
           <Button
@@ -28,7 +28,7 @@ function CollapsibleExample() {
           <Collapsible
             open={open}
             id="basic-collapsible"
-            transition={{ duration: "500ms", timingFunction: "ease-in-out" }}
+            transition={{duration: '500ms', timingFunction: 'ease-in-out'}}
             expandOnPrint
           >
             <TextContainer>

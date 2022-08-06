@@ -7,18 +7,18 @@ import {
   Card,
   TextStyle,
   Link,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function SeparateValidationErrorExample() {
-  const [weight, setWeight] = useState("12");
-  const [unit, setUnit] = useState("");
+  const [weight, setWeight] = useState('12');
+  const [unit, setUnit] = useState('');
 
   const handleWeightChange = useCallback((value) => setWeight(value), []);
   const handleUnitChange = useCallback((value) => setUnit(value), []);
 
-  const unitSelectID = "unit";
+  const unitSelectID = 'unit';
   const errorMessage = generateErrorMessage();
   const formGroupMarkup = (
     <Stack vertical spacing="extraTight">
@@ -36,7 +36,7 @@ function SeparateValidationErrorExample() {
             id={unitSelectID}
             label="Unit of measure"
             placeholder="Select"
-            options={["oz", "g", "kg", "lb"]}
+            options={['oz', 'g', 'kg', 'lb']}
             value={unit}
             onChange={handleUnitChange}
             error={Boolean(!unit && weight)}
@@ -51,12 +51,12 @@ function SeparateValidationErrorExample() {
 
   function generateErrorMessage() {
     const weightError =
-      !weight && unit ? "The numeric weight of the product " : "";
+      !weight && unit ? 'The numeric weight of the product ' : '';
     const unitError =
-      !unit && weight ? "The unit of measure for the product weight" : "";
+      !unit && weight ? 'The unit of measure for the product weight' : '';
 
     if (!weightError && !unitError) {
-      return "";
+      return '';
     }
 
     return (

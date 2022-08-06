@@ -1,19 +1,19 @@
-import { Select } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Select} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function InlineLabelExample() {
-  const [selected, setSelected] = useState("newestUpdate");
+  const [selected, setSelected] = useState('newestUpdate');
 
   const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   const options = [
-    { label: "Newest update", value: "newestUpdate" },
-    { label: "Oldest update", value: "oldestUpdate" },
-    { label: "Most spent", value: "mostSpent" },
-    { label: "Most orders", value: "mostOrders" },
-    { label: "Last name A–Z", value: "lastNameAlpha" },
-    { label: "Last name Z–A", value: "lastNameReverseAlpha" },
+    {label: 'Newest update', value: 'newestUpdate'},
+    {label: 'Oldest update', value: 'oldestUpdate'},
+    {label: 'Most spent', value: 'mostSpent'},
+    {label: 'Most orders', value: 'mostOrders'},
+    {label: 'Last name A–Z', value: 'lastNameAlpha'},
+    {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
   ];
 
   return (

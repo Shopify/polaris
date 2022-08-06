@@ -1,7 +1,7 @@
-import { Frame, Navigation } from "@shopify/polaris";
-import { HomeMinor, OrdersMinor, ProductsMinor } from "@shopify/polaris-icons";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Frame, Navigation} from '@shopify/polaris';
+import {HomeMinor, OrdersMinor, ProductsMinor} from '@shopify/polaris-icons';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function NavigationExample() {
   return (
@@ -11,32 +11,32 @@ function NavigationExample() {
           duplicateRootItem
           items={[
             {
-              url: "/path/to/place",
-              label: "Home",
+              url: '/path/to/place',
+              label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: "/path/to/place",
-              label: "Orders",
+              url: '/path/to/place',
+              label: 'Orders',
               icon: OrdersMinor,
-              badge: "15",
+              badge: '15',
             },
             {
-              url: "/admin/products",
-              label: "Products",
+              url: '/admin/products',
+              label: 'Products',
               icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
-                  url: "/admin/products/collections",
+                  url: '/admin/products/collections',
                   disabled: false,
                   selected: false,
-                  label: "Collections",
+                  label: 'Collections',
                 },
                 {
-                  url: "/admin/products/inventory",
+                  url: '/admin/products/inventory',
                   disabled: false,
-                  label: "Inventory",
+                  label: 'Inventory',
                 },
               ],
             },

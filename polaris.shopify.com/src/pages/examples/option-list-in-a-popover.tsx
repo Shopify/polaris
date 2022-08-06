@@ -1,6 +1,6 @@
-import { Button, Popover, OptionList } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Button, Popover, OptionList} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function OptionListInPopoverExample() {
   const [selected, setSelected] = useState([]);
@@ -8,7 +8,7 @@ function OptionListInPopoverExample() {
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    []
+    [],
   );
 
   const activator = (
@@ -18,7 +18,7 @@ function OptionListInPopoverExample() {
   );
 
   return (
-    <div style={{ height: "275px" }}>
+    <div style={{height: '275px'}}>
       <Popover
         active={popoverActive}
         activator={activator}
@@ -29,18 +29,18 @@ function OptionListInPopoverExample() {
           onChange={setSelected}
           options={[
             {
-              value: "byward_market",
-              label: "Byward Market",
+              value: 'byward_market',
+              label: 'Byward Market',
               active: true,
             },
-            { value: "centretown", label: "Centretown" },
+            {value: 'centretown', label: 'Centretown'},
             {
-              value: "hintonburg",
-              label: "Hintonburg",
+              value: 'hintonburg',
+              label: 'Hintonburg',
               active: true,
             },
-            { value: "westboro", label: "Westboro" },
-            { value: "downtown", label: "Downtown" },
+            {value: 'westboro', label: 'Westboro'},
+            {value: 'downtown', label: 'Downtown'},
           ]}
           selected={selected}
         />

@@ -1,3 +1,3 @@
-import ComponentGrid from "./ComponentGrid";
+import ComponentGrid from './ComponentGrid';
 
 export default ComponentGrid;

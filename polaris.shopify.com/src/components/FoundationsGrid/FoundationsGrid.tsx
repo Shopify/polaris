@@ -1,16 +1,16 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { stripMarkdownLinks } from "../../utils/various";
-import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
-import styles from "./FoundationsGrid.module.scss";
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+import {stripMarkdownLinks} from '../../utils/various';
+import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
+import styles from './FoundationsGrid.module.scss';
 
 interface Props {
   title?: string;
   children: React.ReactNode;
 }
 
-function FoundationsGrid({ title, children }: Props) {
+function FoundationsGrid({title, children}: Props) {
   return (
     <div className={styles.FoundationsGrid}>
       <div key={title} className={styles.Category}>
