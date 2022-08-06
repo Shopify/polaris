@@ -1,6 +1,6 @@
-import {globbySync} from 'globby';
+import path from 'path';
 
-const path = require('path');
+import {globbySync} from 'globby';
 
 const iconBasePath = path.resolve(__dirname, '../icons');
 

@@ -1,9 +1,11 @@
+import {strict} from 'assert';
+import fs from 'fs';
+
 import {globbySync} from 'globby';
 
-const assert = require('assert').strict;
-const fs = require('fs');
+import packageJSON from '../package.json' assert {type: 'json'};
 
-const packageJSON = require('../package.json');
+const assert = strict;
 
 // Validation to assert the output of the build.
 
@@ -117,7 +119,7 @@ function validateVersionReplacement() {
     './build/cjs/configure.js',
     './build/esm/configure.js',
     './build/esm/styles.css',
-    './build/esnext/components/AppProvider/AppProvider.css',
     './build/esnext/configure.esnext',
+    './build/esnext/components/AppProvider/AppProvider.css',
   ]);
 }

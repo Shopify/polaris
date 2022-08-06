@@ -1,11 +1,10 @@
+import fs from 'fs';
+import path from 'path';
+
 import {globbySync} from 'globby';
-
-const fs = require('fs');
-const path = require('path');
-
-const unified = require('unified');
-const parse = require('rehype-parse');
-const {select, selectAll} = require('hast-util-select');
+import unified from 'unified';
+import parse from 'rehype-parse';
+import {select, selectAll} from 'hast-util-select';
 
 const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 
