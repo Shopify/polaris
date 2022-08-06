@@ -11,11 +11,9 @@
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "parse-components": "node src/scripts/parseComponents.mjs",
-    "parse-guidelines": "node src/scripts/parseGuidelines.mjs",
-    "copy-icons": "node src/scripts/copy-icons.mjs",
+    "copy-icons": "node scripts/copy-icons.mjs",
     "generate-sitemap": "yarn next-sitemap",
-    "get-props": "tsc ./src/scripts/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./src/scripts/get-props && node ./src/scripts/get-props/scripts/get-props.js && rm -rf ./src/scripts/get-props"
+    "get-props": "ts-node --skip-project ./scripts/get-props.ts"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",

@@ -104,8 +104,8 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           "Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.",
       },
       {
-        title: "Spacing",
-        url: "/foundations/design/spacing",
+        title: "Space",
+        url: "/foundations/design/space",
         icon: "Columns3Major",
         description:
           "Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.",
@@ -294,6 +294,10 @@ export const contributingNavItems = [
       {
         title: "Shipping your contribution",
         url: "/contributing/shipping-your-contribution",
+      },
+      {
+        title: "Working with the Polaris team",
+        url: "/contributing/working-with-the-polaris-team",
       },
     ],
   },
