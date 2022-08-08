@@ -8,7 +8,7 @@ keywords:
   - principles
 ---
 
-# Design Patterns
+# Design patterns
 
 A pattern is a repeatable solution to a common UX problem in a specific merchant situation. Using the right pattern in the right context makes the Shopify admin familiar and easy to use.
 
