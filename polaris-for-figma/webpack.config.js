@@ -1,9 +1,11 @@
-const path = require('path');
+import path from 'path';
+import {fileURLToPath} from 'url';
 
-const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = (env, argv) => ({
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
   // This is necessary because Figma's 'eval' works differently than normal eval
   devtool: argv.mode === 'production' ? false : 'inline-source-map',
@@ -24,14 +26,19 @@ module.exports = (env, argv) => ({
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-      {test: /\.(png|jpg|gif|webp|svg)$/, loader: [{loader: 'url-loader'}]},
+      {
+        test: /\.(png|jpg|gif|webp|svg)$/,
+        type: 'asset/resource',
+      },
     ],
   },
+
   resolve: {extensions: ['.tsx', '.ts', '.jsx', '.js']},
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -39,6 +46,5 @@ module.exports = (env, argv) => ({
       inlineSource: '.(js)$',
       chunks: ['ui'],
     }),
-    new HtmlWebpackInlineSourcePlugin(),
   ],
 });
