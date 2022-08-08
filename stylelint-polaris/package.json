@@ -29,7 +29,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "lint": "TIMING=1 eslint --cache .",
-    "test": "jest",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {

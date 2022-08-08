@@ -24,7 +24,7 @@
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
-    "test": "jest",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },
   "devDependencies": {
@@ -46,5 +46,8 @@
   ],
   "files": [
     "dist"
-  ]
+  ],
+  "jest": {
+    "transform": {}
+  }
 }
