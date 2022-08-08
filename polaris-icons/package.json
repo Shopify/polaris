@@ -17,7 +17,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "jest",
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "exports": {
@@ -46,6 +46,9 @@
     "type": "git",
     "url": "git+https://github.com/Shopify/polaris.git",
     "directory": "polaris-icons"
+  },
+  "jest": {
+    "transform": {}
   },
   "bugs": {
     "url": "https://github.com/shopify/polaris/issues"
