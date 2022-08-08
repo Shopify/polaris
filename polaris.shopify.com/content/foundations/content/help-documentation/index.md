@@ -1,6 +1,7 @@
 ---
 title: Help documentation
 description: After you build an app or other integration, writing help documentation will show merchants how to use it.
+icon: QuestionMarkInverseMajor
 keywords:
   - writing instructions
   - writing guides

@@ -1,4 +1,4 @@
-@import "../../styles/fonts.scss";
+@import '../../styles/fonts.scss';
 
 .Nav {
   ul {
@@ -41,12 +41,12 @@
       }
     }
 
-    &[aria-current="page"],
+    &[aria-current='page'],
     &:hover {
       color: var(--text-strong);
     }
 
-    &[aria-current="page"] {
+    &[aria-current='page'] {
       font-weight: var(--font-weight-500);
     }
   }

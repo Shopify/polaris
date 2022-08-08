@@ -1,6 +1,6 @@
-import { Select } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Select} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function SelectExample() {
   return (
@@ -8,9 +8,9 @@ function SelectExample() {
       label="Date range"
       disabled
       options={[
-        { label: "Today", value: "today" },
-        { label: "Yesterday", value: "yesterday" },
-        { label: "Last 7 days", value: "lastWeek" },
+        {label: 'Today', value: 'today'},
+        {label: 'Yesterday', value: 'yesterday'},
+        {label: 'Last 7 days', value: 'lastWeek'},
       ]}
     />
   );

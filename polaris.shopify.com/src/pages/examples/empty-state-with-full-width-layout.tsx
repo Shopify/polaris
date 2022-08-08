@@ -1,13 +1,13 @@
-import { Card, EmptyState } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Card, EmptyState} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function EmptyStateExample() {
   return (
     <Card sectioned>
       <EmptyState
         heading="Upload a file to get started"
-        action={{ content: "Upload files" }}
+        action={{content: 'Upload files'}}
         image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
         fullWidth
       >

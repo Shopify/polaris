@@ -1,6 +1,7 @@
 ---
 title: Alternative text
 description: Shopify aims to provide an [inclusive experience](/foundations/accessibility). Alternative text (alt text) helps people with low or loss of vision use our products.
+icon: ImageAltMajor
 keywords:
   - speech synthesis
   - alt HTML element attribute

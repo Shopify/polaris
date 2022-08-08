@@ -1,18 +1,18 @@
-import { getParameters } from "codesandbox/lib/api/define";
-import styles from "./CodesandboxButton.module.scss";
+import {getParameters} from 'codesandbox/lib/api/define';
+import styles from './CodesandboxButton.module.scss';
 
 const getAppCode = (code: string) => {
   const lineWithFunctionName = code
-    .split("\n")
+    .split('\n')
     .filter((name) => name.match(/function .*Example/g))?.[0];
   const functionName = lineWithFunctionName
-    ? lineWithFunctionName.replace("function ", "").replace("() {", "")
-    : "Example";
+    ? lineWithFunctionName.replace('function ', '').replace('() {', '')
+    : 'Example';
   const exportLine = `export default ${functionName};`;
-  let appCode = "";
+  let appCode = '';
 
   appCode += code;
-  appCode += "\n";
+  appCode += '\n';
   appCode += exportLine;
 
   return appCode;
@@ -37,30 +37,30 @@ interface Props {
 }
 
 const CodesandboxButton = (props: Props) => {
-  const { className, code } = props;
+  const {className, code} = props;
 
   const parameters = getParameters({
     files: {
-      "package.json": {
+      'package.json': {
         content: {
           dependencies: {
-            react: "latest",
-            "react-dom": "latest",
-            "@shopify/polaris": "latest",
-            "@shopify/polaris-icons": "latest",
+            react: 'latest',
+            'react-dom': 'latest',
+            '@shopify/polaris': 'latest',
+            '@shopify/polaris-icons': 'latest',
           },
         } as any,
         isBinary: false,
       },
-      "App.js": {
+      'App.js': {
         content: getAppCode(code),
         isBinary: false,
       },
-      "index.js": {
+      'index.js': {
         content: indexCode,
         isBinary: false,
       },
-      "index.html": {
+      'index.html': {
         content: '<div id="root"></div>',
         isBinary: false,
       },

@@ -1,14 +1,14 @@
-import { SettingToggle, TextStyle } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {SettingToggle, TextStyle} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function SettingToggleExample() {
   const [active, setActive] = useState(false);
 
   const handleToggle = useCallback(() => setActive((active) => !active), []);
 
-  const contentStatus = active ? "Deactivate" : "Activate";
-  const textStatus = active ? "activated" : "deactivated";
+  const contentStatus = active ? 'Deactivate' : 'Activate';
+  const textStatus = active ? 'activated' : 'deactivated';
 
   return (
     <SettingToggle

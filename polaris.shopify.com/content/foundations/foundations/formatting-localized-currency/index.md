@@ -1,6 +1,7 @@
 ---
 title: Formatting localized currency
 description: Currencies are formatted differently in different countries and languages.
+icon: CashYenMajor
 keywords:
   - internationalization
   - localization
@@ -230,19 +231,19 @@ This table shows commonly-used currencies in short and explicit formats.
 To format currency in a React component, use the [`Shopify/react-i18n`](https://github.com/Shopify/quilt/tree/master/packages/react-i18n) library’s `formatCurrency` method. You can select either `short` or `explicit` formatting by setting the `form` option as shown in the code example below.
 
 ```jsx
-import { useI18n } from "@shopify/react-i18n";
+import {useI18n} from '@shopify/react-i18n';
 
 const [i18n] = useI18n();
 
-i18n.locale = "de-AT";
+i18n.locale = 'de-AT';
 
 const eurDeAt = i18n.formatCurrency(price, {
-  currency: "EUR",
-  form: "short",
+  currency: 'EUR',
+  form: 'short',
 });
 
 const eurDeAtExp = i18n.formatCurrency(price, {
-  currency: "EUR",
-  form: "explicit",
+  currency: 'EUR',
+  form: 'explicit',
 });
 ```

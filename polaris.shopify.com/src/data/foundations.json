@@ -293,14 +293,6 @@
   },
   {
     "frontMatter": {
-      "title": "App release notes",
-      "keywords": ["release", "notes", "app", "updates", "fixes"]
-    },
-    "description": "Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.",
-    "category": "content"
-  },
-  {
-    "frontMatter": {
       "title": "Voice and tone",
       "icon": "ChatMajor",
       "keywords": [
@@ -411,7 +403,7 @@
   },
   {
     "frontMatter": {
-      "title": "Spacing",
+      "title": "Space",
       "icon": "Columns3Major",
       "keywords": [
         "spacing",
@@ -614,19 +606,6 @@
       ]
     },
     "description": "Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.",
-    "category": "patterns"
-  },
-  {
-    "frontMatter": {
-      "title": "Locations",
-      "keywords": [
-        "breakpoint",
-        "locations",
-        "location picker",
-        "location list"
-      ]
-    },
-    "description": "The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.",
     "category": "patterns"
   },
   {

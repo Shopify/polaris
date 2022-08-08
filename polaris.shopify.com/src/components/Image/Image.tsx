@@ -1,15 +1,15 @@
-import NextJSImage from "next/image";
-import { ImageProps } from "next/image";
-import { useState } from "react";
-import { className } from "../../utils/various";
-import styles from "./Image.module.scss";
+import NextJSImage from 'next/image';
+import {ImageProps} from 'next/image';
+import {useState} from 'react';
+import {className} from '../../utils/various';
+import styles from './Image.module.scss';
 
 interface Props extends ImageProps {
   fadeIn?: boolean;
   icon?: boolean;
 }
 
-function Image({ icon = false, fadeIn = true, alt = "", ...rest }: Props) {
+function Image({icon = false, fadeIn = true, alt = '', ...rest}: Props) {
   const [hasLoaded, setHasLoaded] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ function Image({ icon = false, fadeIn = true, alt = "", ...rest }: Props) {
         styles.Image,
         hasLoaded && styles.hasLoaded,
         fadeIn && styles.fadeIn,
-        icon && styles.icon
+        icon && styles.icon,
       )}
       alt={alt}
       onLoad={() => setHasLoaded(true)}

@@ -1,6 +1,7 @@
 ---
 title: Voice and tone
 description: Learn how to apply Shopify’s voice and choose the right tone, no matter what product, feature, or app you’re building.
+icon: ChatMajor
 keywords:
   - sound like Shopify
   - personality of Shopify

@@ -1,12 +1,12 @@
-import { Banner, List } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Banner, List} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function BannerExample() {
   return (
     <Banner
       title="Before you can purchase a shipping label, this change needs to be made:"
-      action={{ content: "Edit address" }}
+      action={{content: 'Edit address'}}
       status="warning"
     >
       <List>

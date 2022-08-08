@@ -1,12 +1,12 @@
-import Head from "next/head";
+import Head from 'next/head';
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-function PageMeta({ title, description }: Props) {
-  let siteName = "Shopify Polaris";
+function PageMeta({title, description}: Props) {
+  let siteName = 'Shopify Polaris';
 
   if (title) {
     siteName = `${title} — ${siteName}`;

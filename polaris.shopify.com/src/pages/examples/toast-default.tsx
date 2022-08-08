@@ -1,6 +1,6 @@
-import { Toast, Frame, Page, Button } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Toast, Frame, Page, Button} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ToastExample() {
   const [active, setActive] = useState(false);
@@ -12,7 +12,7 @@ function ToastExample() {
   ) : null;
 
   return (
-    <div style={{ height: "250px" }}>
+    <div style={{height: '250px'}}>
       <Frame>
         <Page title="Toast example">
           <Button onClick={toggleActive}>Show Toast</Button>

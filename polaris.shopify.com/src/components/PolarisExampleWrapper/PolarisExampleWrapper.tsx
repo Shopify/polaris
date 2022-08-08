@@ -1,10 +1,10 @@
-import { AppProvider } from "@shopify/polaris";
-import translations from "@shopify/polaris/locales/en.json";
-import { ComponentType } from "react";
-import styles from "./PolarisExampleWrapper.module.scss";
+import {AppProvider} from '@shopify/polaris';
+import translations from '@shopify/polaris/locales/en.json';
+import {ComponentType} from 'react';
+import styles from './PolarisExampleWrapper.module.scss';
 
 const stylesheetHref =
-  "https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css";
+  'https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css';
 
 export const withPolarisExample = (Component: ComponentType) => {
   const PolarisHOC = (props: any) => {

@@ -5,9 +5,9 @@ import {
   Banner,
   List,
   DropZone,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function DropZoneAcceptingSVGFilesExample() {
   const [files, setFiles] = useState([]);
@@ -19,7 +19,7 @@ function DropZoneAcceptingSVGFilesExample() {
       setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
     },
-    []
+    [],
   );
 
   const uploadedFiles = files.length > 0 && (
