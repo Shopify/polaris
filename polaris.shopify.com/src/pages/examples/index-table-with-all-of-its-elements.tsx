@@ -6,43 +6,43 @@ import {
   Filters,
   Select,
   useIndexResourceState,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function IndexTableWithAllElementsExample() {
   const customers = [
     {
-      id: "3417",
-      url: "customers/341",
-      name: "Mae Jemison",
-      location: "Decatur, USA",
+      id: '3417',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
       orders: 20,
-      amountSpent: "$2,400",
+      amountSpent: '$2,400',
     },
     {
-      id: "2567",
-      url: "customers/256",
-      name: "Ellen Ochoa",
-      location: "Los Angeles, USA",
+      id: '2567',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
       orders: 30,
-      amountSpent: "$140",
+      amountSpent: '$140',
     },
   ];
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  const { selectedResources, allResourcesSelected, handleSelectionChange } =
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(customers);
-  const [taggedWith, setTaggedWith] = useState("VIP");
+  const [taggedWith, setTaggedWith] = useState('VIP');
   const [queryValue, setQueryValue] = useState(null);
-  const [sortValue, setSortValue] = useState("today");
+  const [sortValue, setSortValue] = useState('today');
 
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
-    []
+    [],
   );
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
@@ -54,29 +54,29 @@ function IndexTableWithAllElementsExample() {
 
   const promotedBulkActions = [
     {
-      content: "Edit customers",
-      onAction: () => console.log("Todo: implement bulk edit"),
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
     },
   ];
   const bulkActions = [
     {
-      content: "Add tags",
-      onAction: () => console.log("Todo: implement bulk add tags"),
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
     },
     {
-      content: "Remove tags",
-      onAction: () => console.log("Todo: implement bulk remove tags"),
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
-      content: "Delete customers",
-      onAction: () => console.log("Todo: implement bulk delete"),
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
 
   const filters = [
     {
-      key: "taggedWith",
-      label: "Tagged with",
+      key: 'taggedWith',
+      label: 'Tagged with',
       filter: (
         <TextField
           label="Tagged with"
@@ -93,21 +93,21 @@ function IndexTableWithAllElementsExample() {
   const appliedFilters = !isEmpty(taggedWith)
     ? [
         {
-          key: "taggedWith",
-          label: disambiguateLabel("taggedWith", taggedWith),
+          key: 'taggedWith',
+          label: disambiguateLabel('taggedWith', taggedWith),
           onRemove: handleTaggedWithRemove,
         },
       ]
     : [];
 
   const sortOptions = [
-    { label: "Today", value: "today" },
-    { label: "Yesterday", value: "yesterday" },
-    { label: "Last 7 days", value: "lastWeek" },
+    {label: 'Today', value: 'today'},
+    {label: 'Yesterday', value: 'yesterday'},
+    {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
   const rowMarkup = customers.map(
-    ({ id, name, location, orders, amountSpent }, index) => (
+    ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -121,13 +121,13 @@ function IndexTableWithAllElementsExample() {
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
       </IndexTable.Row>
-    )
+    ),
   );
 
   return (
     <Card>
-      <div style={{ padding: "16px", display: "flex" }}>
-        <div style={{ flex: 1 }}>
+      <div style={{padding: '16px', display: 'flex'}}>
+        <div style={{flex: 1}}>
           <Filters
             queryValue={queryValue}
             filters={filters}
@@ -137,7 +137,7 @@ function IndexTableWithAllElementsExample() {
             onClearAll={handleClearAll}
           />
         </div>
-        <div style={{ paddingLeft: "0.25rem" }}>
+        <div style={{paddingLeft: '0.25rem'}}>
           <Select
             labelInline
             label="Sort by"
@@ -151,7 +151,7 @@ function IndexTableWithAllElementsExample() {
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
-          allResourcesSelected ? "All" : selectedResources.length
+          allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
         hasMoreItems
@@ -159,10 +159,10 @@ function IndexTableWithAllElementsExample() {
         promotedBulkActions={promotedBulkActions}
         lastColumnSticky
         headings={[
-          { title: "Name" },
-          { title: "Location" },
-          { title: "Order count" },
-          { title: "Amount spent", hidden: false },
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent', hidden: false},
         ]}
       >
         {rowMarkup}
@@ -172,7 +172,7 @@ function IndexTableWithAllElementsExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case "taggedWith":
+      case 'taggedWith':
         return `Tagged with ${value}`;
       default:
         return value;
@@ -183,7 +183,7 @@ function IndexTableWithAllElementsExample() {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
-      return value === "" || value == null;
+      return value === '' || value == null;
     }
   }
 }

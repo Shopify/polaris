@@ -1,7 +1,7 @@
-import { Stack, Thumbnail, Caption, Card, DropZone } from "@shopify/polaris";
-import { NoteMinor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Stack, Thumbnail, Caption, Card, DropZone} from '@shopify/polaris';
+import {NoteMinor} from '@shopify/polaris-icons';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function DropZoneWithCustomFileDialogExample() {
   const [files, setFiles] = useState([]);
@@ -10,14 +10,14 @@ function DropZoneWithCustomFileDialogExample() {
   const handleDropZoneDrop = useCallback(
     (dropFiles, _acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...dropFiles]),
-    []
+    [],
   );
   const toggleOpenFileDialog = useCallback(
     () => setOpenFileDialog((openFileDialog) => !openFileDialog),
-    []
+    [],
   );
 
-  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
     <Stack vertical>
@@ -46,7 +46,7 @@ function DropZoneWithCustomFileDialogExample() {
       title="Product Images"
       actions={[
         {
-          content: "Upload Image",
+          content: 'Upload Image',
           onAction: toggleOpenFileDialog,
         },
       ]}

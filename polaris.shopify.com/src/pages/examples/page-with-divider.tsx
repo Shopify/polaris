@@ -1,11 +1,11 @@
-import { Page, Card } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Page, Card} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{ content: "Settings", url: "/settings" }]}
+      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
       title="General"
       divider
     >

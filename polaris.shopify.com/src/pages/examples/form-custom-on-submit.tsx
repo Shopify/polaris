@@ -1,25 +1,19 @@
-import {
-  Form,
-  FormLayout,
-  Checkbox,
-  TextField,
-  Button,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Form, FormLayout, Checkbox, TextField, Button} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function FormOnSubmitExample() {
   const [newsletter, setNewsletter] = useState(false);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
 
   const handleSubmit = useCallback((_event) => {
-    setEmail("");
+    setEmail('');
     setNewsletter(false);
   }, []);
 
   const handleNewsLetterChange = useCallback(
     (value) => setNewsletter(value),
-    []
+    [],
   );
 
   const handleEmailChange = useCallback((value) => setEmail(value), []);

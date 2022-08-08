@@ -1,3 +1,3 @@
-import CodesandboxButton from "./CodesandboxButton";
+import CodesandboxButton from './CodesandboxButton';
 
 export default CodesandboxButton;

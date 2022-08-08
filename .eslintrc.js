@@ -121,11 +121,17 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-react/playground/*.tsx'],
+      files: [
+        'polaris-react/playground/*.tsx',
+        'polaris-react/src/components/**/*.stories.tsx',
+      ],
       rules: {
         'react/prefer-stateless-function': 'off',
         '@shopify/jsx-no-hardcoded-content': 'off',
         '@shopify/react-initialize-state': 'off',
+        'import/no-default-export': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'no-console': 'off',
       },
     },
     {

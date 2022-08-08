@@ -1,19 +1,19 @@
-import { Page, Card } from "@shopify/polaris";
-import { ExternalMinor } from "@shopify/polaris-icons";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Page, Card} from '@shopify/polaris';
+import {ExternalMinor} from '@shopify/polaris-icons';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
       title="Jar With Lock-Lid"
-      primaryAction={{ content: "Save", disabled: true }}
+      primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {
-          content: "Promote",
+          content: 'Promote',
           external: true,
           icon: ExternalMinor,
-          url: "https://www.facebook.com/business/learn/facebook-page-build-audience",
+          url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
         },
       ]}
     >

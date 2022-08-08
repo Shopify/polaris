@@ -1,10 +1,10 @@
-import { ButtonGroup, Tooltip, Button, TextField } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {ButtonGroup, Tooltip, Button, TextField} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function TooltipExample() {
   return (
-    <div style={{ width: "200px" }}>
+    <div style={{width: '200px'}}>
       <ButtonGroup segmented fullWidth>
         <Tooltip content="Bold" dismissOnMouseOut>
           <Button>B</Button>

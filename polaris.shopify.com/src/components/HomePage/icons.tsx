@@ -90,7 +90,7 @@ export const VSCodeIcon = () => (
     <g clipPath="url(#clip0_207_15635)">
       <mask
         id="mask0_207_15635"
-        style={{ maskType: "alpha" }}
+        style={{maskType: 'alpha'}}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -121,9 +121,9 @@ export const VSCodeIcon = () => (
             fill="#1F9CF0"
           />
         </g>
-        <g style={{ mixBlendMode: "overlay" }} opacity="0.25">
+        <g style={{mixBlendMode: 'overlay'}} opacity="0.25">
           <path
-            style={{ mixBlendMode: "overlay" }}
+            style={{mixBlendMode: 'overlay'}}
             opacity="0.25"
             fillRule="evenodd"
             clipRule="evenodd"

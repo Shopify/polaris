@@ -1,6 +1,6 @@
-import { Toast, Frame, Page, ButtonGroup, Button } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Toast, Frame, Page, ButtonGroup, Button} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function MultipleToastExample() {
   const [activeOne, setActiveOne] = useState(false);
@@ -8,12 +8,12 @@ function MultipleToastExample() {
 
   const toggleActiveOne = useCallback(
     () => setActiveOne((activeOne) => !activeOne),
-    []
+    [],
   );
 
   const toggleActiveTwo = useCallback(
     () => setActiveTwo((activeTwo) => !activeTwo),
-    []
+    [],
   );
 
   const toastMarkup1 = activeOne ? (
@@ -25,7 +25,7 @@ function MultipleToastExample() {
   ) : null;
 
   return (
-    <div style={{ height: "250px" }}>
+    <div style={{height: '250px'}}>
       <Frame>
         <Page title="Toast example">
           <ButtonGroup segmented>

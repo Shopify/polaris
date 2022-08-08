@@ -1,22 +1,22 @@
-import { PropsForComponent } from "../../types";
-import StatusBadge from "../StatusBadge";
-import styles from "./PropsTable.module.scss";
+import {PropsForComponent} from '../../types';
+import StatusBadge from '../StatusBadge';
+import styles from './PropsTable.module.scss';
 
 interface Props {
   props: PropsForComponent;
 }
 
-function PropsTable({ props: { props } }: Props) {
-  const feedbackTitle = "[polaris.shopify.com] Props table feedback";
+function PropsTable({props: {props}}: Props) {
+  const feedbackTitle = '[polaris.shopify.com] Props table feedback';
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
-    feedbackTitle
+    feedbackTitle,
   )}&amp;labels=polaris.shopify.com`;
 
   return (
     <div className={styles.PropsTable}>
       <h2 id="props">Props</h2>
       <p>
-        Want to help make this feature better? Please{" "}
+        Want to help make this feature better? Please{' '}
         <a href={feedbackUrl}>share your feedback</a>.
       </p>
 
@@ -29,32 +29,32 @@ function PropsTable({ props: { props } }: Props) {
                 <p className={styles.Definition}>
                   <span className={styles.Name}>
                     {prop.name}
-                    {prop.optional && "?"}
+                    {prop.optional && '?'}
                   </span>
                   {!prop.optional && (
                     <>
-                      {" "}
+                      {' '}
                       <StatusBadge
                         status={{
-                          value: "information",
-                          message: "Required",
+                          value: 'information',
+                          message: 'Required',
                         }}
                       />
                     </>
                   )}
                   {prop.deprecated ? (
                     <>
-                      {" "}
+                      {' '}
                       <StatusBadge
                         status={{
-                          value: "deprecated",
-                          message: "Deprecated",
+                          value: 'deprecated',
+                          message: 'Deprecated',
                         }}
                       />
                     </>
                   ) : (
-                    ""
-                  )}{" "}
+                    ''
+                  )}{' '}
                   <span className={styles.Type}>{prop.type}</span>
                 </p>
                 <p className={styles.Comment}>{prop.comment}</p>

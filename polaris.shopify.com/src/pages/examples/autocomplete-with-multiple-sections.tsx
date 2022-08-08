@@ -1,47 +1,47 @@
-import { Autocomplete, Icon } from "@shopify/polaris";
-import { SearchMinor } from "@shopify/polaris-icons";
-import { useState, useCallback, useMemo } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Autocomplete, Icon} from '@shopify/polaris';
+import {SearchMinor} from '@shopify/polaris-icons';
+import {useState, useCallback, useMemo} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function AutocompleteExample() {
   const deselectedOptions = useMemo(
     () => [
       {
-        title: "Frequently used",
+        title: 'Frequently used',
         options: [
-          { value: "ups", label: "UPS" },
-          { value: "usps", label: "USPS" },
+          {value: 'ups', label: 'UPS'},
+          {value: 'usps', label: 'USPS'},
         ],
       },
       {
-        title: "All carriers",
+        title: 'All carriers',
         options: [
-          { value: "dhl", label: "DHL Express" },
-          { value: "canada_post", label: "Canada Post" },
+          {value: 'dhl', label: 'DHL Express'},
+          {value: 'canada_post', label: 'Canada Post'},
         ],
       },
     ],
-    []
+    [],
   );
   const [selectedOptions, setSelectedOptions] = useState([]);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
   const updateText = useCallback(
     (value) => {
       setInputValue(value);
 
-      if (value === "") {
+      if (value === '') {
         setOptions(deselectedOptions);
         return;
       }
 
-      const filterRegex = new RegExp(value, "i");
+      const filterRegex = new RegExp(value, 'i');
       const resultOptions = [];
 
       deselectedOptions.forEach((opt) => {
         const lol = opt.options.filter((option) =>
-          option.label.match(filterRegex)
+          option.label.match(filterRegex),
         );
 
         resultOptions.push({
@@ -52,20 +52,20 @@ function AutocompleteExample() {
 
       setOptions(resultOptions);
     },
-    [deselectedOptions]
+    [deselectedOptions],
   );
 
   const updateSelection = useCallback(
     ([selected]) => {
       let selectedValue;
 
-      options.forEach(({ options: opt }) => {
+      options.forEach(({options: opt}) => {
         if (selectedValue) {
           return;
         }
 
         const matchedOption = opt.find((option) =>
-          option.value.match(selected)
+          option.value.match(selected),
         );
 
         if (matchedOption) {
@@ -74,9 +74,9 @@ function AutocompleteExample() {
       });
 
       setSelectedOptions([selected]);
-      setInputValue(String(selectedValue) ? String(selectedValue) : "");
+      setInputValue(String(selectedValue) ? String(selectedValue) : '');
     },
-    [options]
+    [options],
   );
 
   const textField = (
@@ -90,7 +90,7 @@ function AutocompleteExample() {
   );
 
   return (
-    <div style={{ height: "225px" }}>
+    <div style={{height: '225px'}}>
       <Autocomplete
         textField={textField}
         selected={selectedOptions}

@@ -1,16 +1,16 @@
-import { TextField, ChoiceList } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {TextField, ChoiceList} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function SingleOrMultiChoiceListWithChildrenContextExample() {
-  const [selected, setSelected] = useState(["none"]);
-  const [textFieldValue, setTextFieldValue] = useState("");
+  const [selected, setSelected] = useState(['none']);
+  const [textFieldValue, setTextFieldValue] = useState('');
 
   const handleChoiceListChange = useCallback((value) => setSelected(value), []);
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    []
+    [],
   );
 
   const renderChildren = useCallback(
@@ -23,18 +23,18 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
         autoComplete="off"
       />
     ),
-    [handleTextFieldChange, textFieldValue]
+    [handleTextFieldChange, textFieldValue],
   );
 
   return (
     <ChoiceList
       title="Discount minimum requirements"
       choices={[
-        { label: "None", value: "none" },
-        { label: "Minimum purchase", value: "minimum_purchase" },
+        {label: 'None', value: 'none'},
+        {label: 'Minimum purchase', value: 'minimum_purchase'},
         {
-          label: "Minimum quantity",
-          value: "minimum_quantity",
+          label: 'Minimum quantity',
+          value: 'minimum_quantity',
           renderChildren,
         },
       ]}
@@ -45,5 +45,5 @@ function SingleOrMultiChoiceListWithChildrenContextExample() {
 }
 
 export default withPolarisExample(
-  SingleOrMultiChoiceListWithChildrenContextExample
+  SingleOrMultiChoiceListWithChildrenContextExample,
 );

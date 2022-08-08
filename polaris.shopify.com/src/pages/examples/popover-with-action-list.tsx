@@ -1,13 +1,13 @@
-import { Button, Popover, ActionList } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Button, Popover, ActionList} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PopoverWithActionListExample() {
   const [popoverActive, setPopoverActive] = useState(true);
 
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
-    []
+    [],
   );
 
   const activator = (
@@ -17,7 +17,7 @@ function PopoverWithActionListExample() {
   );
 
   return (
-    <div style={{ height: "250px" }}>
+    <div style={{height: '250px'}}>
       <Popover
         active={popoverActive}
         activator={activator}
@@ -26,7 +26,7 @@ function PopoverWithActionListExample() {
       >
         <ActionList
           actionRole="menuitem"
-          items={[{ content: "Import" }, { content: "Export" }]}
+          items={[{content: 'Import'}, {content: 'Export'}]}
         />
       </Popover>
     </div>

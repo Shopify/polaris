@@ -156,7 +156,7 @@
       "moreFiltersWithCount": "詳細な絞り込み ({count})"
     },
     "Modal": {
-      "iFrameTitle": "ボディマークアップ",
+      "iFrameTitle": "body markup",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
     },
     "Pagination": {

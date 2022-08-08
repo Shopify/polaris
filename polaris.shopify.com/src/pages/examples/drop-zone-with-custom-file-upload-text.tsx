@@ -1,7 +1,7 @@
-import { DropZone, Stack, Thumbnail, Caption } from "@shopify/polaris";
-import { NoteMinor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {DropZone, Stack, Thumbnail, Caption} from '@shopify/polaris';
+import {NoteMinor} from '@shopify/polaris-icons';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function DropZoneExample() {
   const [files, setFiles] = useState([]);
@@ -9,10 +9,10 @@ function DropZoneExample() {
   const handleDropZoneDrop = useCallback(
     (_dropFiles, acceptedFiles, _rejectedFiles) =>
       setFiles((files) => [...files, ...acceptedFiles]),
-    []
+    [],
   );
 
-  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const fileUpload = !files.length && (
     <DropZone.FileUpload actionHint="Accepts .gif, .jpg, and .png" />

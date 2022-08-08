@@ -1,9 +1,9 @@
-import type { NavItem } from "../components/Nav";
-import components from "../data/components.json";
-import { Status } from "../types";
+import type {NavItem} from '../components/Nav';
+import components from '../data/components.json';
+import {Status} from '../types';
 
 export const getComponentCategories = (): string[] => {
-  const tempComponentCategories: { [key: string]: boolean } = {};
+  const tempComponentCategories: {[key: string]: boolean} = {};
 
   Object.values(components).forEach((component) => {
     tempComponentCategories[component.frontMatter.category] = true;
@@ -17,15 +17,15 @@ export const getComponentCategories = (): string[] => {
 export const getComponentNav = (): NavItem[] => {
   const navItems: NavItem[] = [
     {
-      title: "All",
+      title: 'All',
       children: components.map((component) => {
         const statusValue =
           component.frontMatter.status?.value.toLowerCase() as
-            | Status["value"]
+            | Status['value']
             | undefined;
         return {
-          title: component.frontMatter.name,
-          url: `/components/${slugify(component.frontMatter.name)}`,
+          title: component.frontMatter.title,
+          url: `/components/${slugify(component.frontMatter.title)}`,
           status:
             component.frontMatter.status && statusValue
               ? {
@@ -42,13 +42,13 @@ export const getComponentNav = (): NavItem[] => {
 };
 
 export const getReadableStatusValue = (
-  statusValue: Status["value"]
+  statusValue: Status['value'],
 ): string => {
-  const bannerTitles: { [key in Status["value"]]: string } = {
-    deprecated: "Deprecated",
-    alpha: "Alpha",
-    information: "Information",
-    warning: "Warning",
+  const bannerTitles: {[key in Status['value']]: string} = {
+    deprecated: 'Deprecated',
+    alpha: 'Alpha',
+    information: 'Information',
+    warning: 'Warning',
   };
 
   return bannerTitles[statusValue];
@@ -58,9 +58,9 @@ export const slugify = (str: string): string => {
   return (
     str
       // Camel to hyphen case
-      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      .replace(/([a-z])([A-Z])/g, '$1-$2')
       // Replace spaces with hyphens
-      .replace(/[^a-z0-9]/gi, "-")
+      .replace(/[^a-z0-9]/gi, '-')
       .toLowerCase()
   );
 };
@@ -90,5 +90,5 @@ export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
 export const className = (
   ...classNames: (string | boolean | null | undefined)[]
 ): string => {
-  return classNames.filter((className) => Boolean(className)).join(" ");
+  return classNames.filter((className) => Boolean(className)).join(' ');
 };
