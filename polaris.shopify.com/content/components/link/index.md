@@ -60,7 +60,7 @@ External links should be used when:
 
 ### No icon
 
-Avoid using this icon [ ], as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
+Avoid using the <a href="/icons?icon=ExternalMinor&q=exter">external link icon</a>, as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
 
 Edge case: icon can be used very sparingly as a stylistic/symbolic icon, not as an indicator of a new tab being opened.
 
@@ -70,13 +70,13 @@ Edge case: icon can be used very sparingly as a stylistic/symbolic icon, not as 
 
 Use as standalone, identifying icon only
 
-![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)
+![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/link/external-link-icon-decorative@2x.png)
 
 #### Don’t
 
-Do not use beside link text
+Avoid using the icon beside link text
 
-{image}
+![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/link/external-link-no-icon@2x.png)
 
 <!-- end -->
 
