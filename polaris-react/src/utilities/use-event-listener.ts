@@ -23,6 +23,8 @@ type ExtractTargetElement<Target> = Target extends RefObject<infer Element>
  */
 type ExtractEventMap<Target> = ExtractTargetElement<Target> extends Window
   ? WindowEventMap
+  : ExtractTargetElement<Target> extends Document
+  ? DocumentEventMap
   : HTMLElementEventMap;
 
 /**
