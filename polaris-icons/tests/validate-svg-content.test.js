@@ -1,10 +1,13 @@
 import fs from 'fs';
 import path from 'path';
+import {fileURLToPath} from 'url';
 
 import {globbySync} from 'globby';
 import unified from 'unified';
 import parse from 'rehype-parse';
 import {select, selectAll} from 'hast-util-select';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 

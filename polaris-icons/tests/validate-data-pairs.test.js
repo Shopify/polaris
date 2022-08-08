@@ -1,6 +1,9 @@
 import path from 'path';
+import {fileURLToPath} from 'url';
 
 import {globbySync} from 'globby';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const iconBasePath = path.resolve(__dirname, '../icons');
 
