@@ -1,15 +1,12 @@
-import { Link, FooterHelp } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Link} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function LinkExample() {
   return (
-    <FooterHelp>
-      Learn more about{" "}
-      <Link url="https://help.shopify.com/manual" external>
-        orders
-      </Link>
-    </FooterHelp>
+    <Link url="https://help.shopify.com/manual" external>
+      Shopify Help Center
+    </Link>
   );
 }
 

@@ -1,12 +1,12 @@
-import { Frame, Navigation } from "@shopify/polaris";
+import {Frame, Navigation} from '@shopify/polaris';
 import {
   HomeMinor,
   OrdersMinor,
   CirclePlusOutlineMinor,
   ProductsMinor,
-} from "@shopify/polaris-icons";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris-icons';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function NavigationExample() {
   return (
@@ -15,26 +15,26 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: "/path/to/place",
-              label: "Home",
+              url: '/path/to/place',
+              label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: "/path/to/place",
-              label: "Orders",
+              url: '/path/to/place',
+              label: 'Orders',
               icon: OrdersMinor,
               secondaryAction: {
-                url: "/admin/orders/add",
-                accessibilityLabel: "Add an order",
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
                 icon: CirclePlusOutlineMinor,
                 tooltip: {
-                  content: "Add an order",
+                  content: 'Add an order',
                 },
               },
             },
             {
-              url: "/path/to/place",
-              label: "Products",
+              url: '/path/to/place',
+              label: 'Products',
               icon: ProductsMinor,
             },
           ]}

@@ -213,7 +213,7 @@
       "characterCountWithMaxLength": "{count} de {limit} caracteres utilizados"
     },
     "TopBar": {
-      "toggleMenuLabel": "Activar menú",
+      "toggleMenuLabel": "Abrir/cerrar menú",
       "SearchField": {
         "clearButtonLabel": "Borrar",
         "search": "Buscar"
@@ -280,7 +280,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Artículo",
       "defaultItemPlural": "Artículos",
-      "allItemsSelected": "Los más de {itemsLength} recursos de {resourceNamePlural} están seleccionados.",
+      "allItemsSelected": "Hay más de {itemsLength} {resourceNamePlural} seleccionados.",
       "selected": "Seleccionados: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Deseleccionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",

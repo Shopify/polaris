@@ -1,15 +1,9 @@
-import {
-  Button,
-  Modal,
-  Stack,
-  TextContainer,
-  TextField,
-} from "@shopify/polaris";
-import { useState, useCallback, useRef } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Button, Modal, Stack, TextContainer, TextField} from '@shopify/polaris';
+import {useState, useCallback, useRef} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ModalWithPrimaryActionExample() {
-  const DISCOUNT_LINK = "https://polaris.shopify.com/";
+  const DISCOUNT_LINK = 'https://polaris.shopify.com/';
 
   const [active, setActive] = useState(true);
   const node = useRef(null);
@@ -23,7 +17,7 @@ function ModalWithPrimaryActionExample() {
       return;
     }
     node.current.input.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
   }, []);
 
   const toggleModal = useCallback(() => setActive((active) => !active), []);
@@ -31,14 +25,14 @@ function ModalWithPrimaryActionExample() {
   const activator = <Button onClick={toggleModal}>Open</Button>;
 
   return (
-    <div style={{ height: "500px" }}>
+    <div style={{height: '500px'}}>
       <Modal
         activator={activator}
         open={active}
         onClose={toggleModal}
         title="Get a shareable link"
         primaryAction={{
-          content: "Close",
+          content: 'Close',
           onAction: toggleModal,
         }}
       >

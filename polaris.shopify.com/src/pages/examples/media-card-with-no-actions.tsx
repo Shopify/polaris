@@ -1,19 +1,19 @@
-import { MediaCard } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {MediaCard} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function MediaCardExample() {
   return (
     <MediaCard
       title="Getting Started"
       description="Discover how Shopify can power up your entrepreneurial journey."
-      popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
+      popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
     >
       <img
         alt=""
         width="100%"
         height="100%"
-        style={{ objectFit: "cover", objectPosition: "center" }}
+        style={{objectFit: 'cover', objectPosition: 'center'}}
         src="https://burst.shopifycdn.com/photos/business-woman-smiling-in-office.jpg?width=1850"
       />
     </MediaCard>

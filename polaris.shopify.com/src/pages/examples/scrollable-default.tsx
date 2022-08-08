@@ -1,11 +1,11 @@
-import { Card, Scrollable } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Card, Scrollable} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ScrollableExample() {
   return (
     <Card title="Terms of service" sectioned>
-      <Scrollable shadow style={{ height: "100px" }} focusable>
+      <Scrollable shadow style={{height: '100px'}} focusable>
         <p>
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by

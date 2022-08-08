@@ -13,7 +13,7 @@
     text-overflow: ellipsis;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       left: 0;
@@ -32,7 +32,7 @@
       }
     }
 
-    &[data-is-current="true"] {
+    &[data-is-current='true'] {
       color: var(--text-strong);
 
       &::before {

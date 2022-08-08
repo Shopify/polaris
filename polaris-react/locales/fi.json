@@ -213,7 +213,7 @@
       "characterCountWithMaxLength": "{count}/{limit} merkkiä käytetty"
     },
     "TopBar": {
-      "toggleMenuLabel": "Vaihda valikkoa",
+      "toggleMenuLabel": "Valikon vaihto",
       "SearchField": {
         "clearButtonLabel": "Tyhjennä",
         "search": "Hae"
@@ -283,7 +283,7 @@
       "selected": "{selectedItemsCount} valittu",
       "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Poista kaikkien valinta: {itemsLength} x {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {

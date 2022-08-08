@@ -1,6 +1,6 @@
-import { ButtonGroup, Button } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {ButtonGroup, Button} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ButtonExample() {
   return (
@@ -15,7 +15,7 @@ function ButtonExample() {
       <Button outline disabled>
         Buy shipping label
       </Button>
-      <span style={{ color: "#bf0711" }}>
+      <span style={{color: '#bf0711'}}>
         <Button outline monochrome disabled>
           Buy shipping label
         </Button>

@@ -281,7 +281,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Položka",
       "defaultItemPlural": "Položky",
-      "allItemsSelected": "Bylo vybráno vše typu {resourceNamePlural} ({itemsLength} a více).",
+      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
       "selected": "Vybráno: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",

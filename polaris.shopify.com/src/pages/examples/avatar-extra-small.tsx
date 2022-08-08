@@ -1,6 +1,6 @@
-import { Button, Popover, ActionList, Avatar } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Button, Popover, ActionList, Avatar} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ExtraSmallAvatarExample() {
   const [active, setActive] = useState(true);
@@ -12,16 +12,16 @@ function ExtraSmallAvatarExample() {
   );
 
   return (
-    <div style={{ height: "250px" }}>
+    <div style={{height: '250px'}}>
       <Popover active={active} activator={activator} onClose={toggleActive}>
         <ActionList
           items={[
             {
-              content: "Chet Baker",
+              content: 'Chet Baker',
               prefix: <Avatar customer size="extraSmall" name="Chet Baker" />,
             },
             {
-              content: "Farrah Fawcett",
+              content: 'Farrah Fawcett',
               prefix: (
                 <Avatar customer size="extraSmall" name="Farrah Fawcett" />
               ),

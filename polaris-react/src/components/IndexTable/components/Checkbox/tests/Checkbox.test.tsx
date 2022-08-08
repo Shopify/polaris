@@ -69,6 +69,32 @@ describe('<Checkbox />', () => {
     expect(onSelectionChange).toHaveBeenCalledWith('single', false, defaultId);
   });
 
+  describe('when the row disabled prop is true', () => {
+    it('renders a Checkbox with disabled set to true', () => {
+      const disabled = true;
+      const checkbox = mountWithTable(<Checkbox />, {
+        rowProps: {disabled},
+      });
+
+      expect(checkbox).toContainReactComponent(PolarisCheckbox, {
+        disabled: true,
+      });
+    });
+  });
+
+  describe('when the row disabled prop is false', () => {
+    it('renders a Checkbox with disabled set to false', () => {
+      const disabled = false;
+      const checkbox = mountWithTable(<Checkbox />, {
+        rowProps: {disabled},
+      });
+
+      expect(checkbox).toContainReactComponent(PolarisCheckbox, {
+        disabled: false,
+      });
+    });
+  });
+
   describe('CheckboxWrapper', () => {
     describe('small screen', () => {
       const defaultTableProps = {

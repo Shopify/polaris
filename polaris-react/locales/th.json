@@ -213,7 +213,7 @@
       "characterCountWithMaxLength": "ใช้อักขระไปแล้ว {count} จาก {limit}"
     },
     "TopBar": {
-      "toggleMenuLabel": "สลับเมนู",
+      "toggleMenuLabel": "เมนูเปิด/ปิด",
       "SearchField": {
         "clearButtonLabel": "ล้าง",
         "search": "ค้นหา"

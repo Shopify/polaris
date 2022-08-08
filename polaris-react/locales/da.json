@@ -155,7 +155,7 @@
       "moreFiltersWithCount": "Flere filtre: ({count})"
     },
     "Modal": {
-      "iFrameTitle": "markering af brødtekst",
+      "iFrameTitle": "body markup",
       "modalWarning": "Disse krævede egenskaber mangler fra modus: {missingProps}"
     },
     "Pagination": {
@@ -213,10 +213,10 @@
       "characterCountWithMaxLength": "{count} af {limit} benyttede tegn"
     },
     "TopBar": {
-      "toggleMenuLabel": "Slå menu til/fra",
+      "toggleMenuLabel": "Åbn/luk menuen",
       "SearchField": {
         "clearButtonLabel": "Ryd",
-        "search": "Søg"
+        "search": "Søgning"
       }
     },
     "MediaCard": {
@@ -279,7 +279,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Vare",
       "defaultItemPlural": "Varer",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} er valgt.",
+      "allItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} er valgt.",
       "selected": "{selectedItemsCount} valgt",
       "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",

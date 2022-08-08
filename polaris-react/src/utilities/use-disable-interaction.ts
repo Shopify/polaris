@@ -24,12 +24,14 @@ export function useDisableClick(disabled?: boolean, handleClick?: () => void) {
       if (disabled) {
         event.preventDefault();
         event.stopPropagation();
-      } else {
-        handleClick && handleClick();
       }
     },
-    [disabled, handleClick],
+    [disabled],
   );
+
+  if (!disabled) {
+    return handleClick;
+  }
 
   return handleClickWrapper;
 }
@@ -43,12 +45,14 @@ export function useDisableKeyboard(
       if (disabled && (event?.key === ' ' || event.key === 'Enter')) {
         event.preventDefault();
         event.stopPropagation();
-      } else {
-        handleKeyDown && handleKeyDown(event);
       }
     },
-    [disabled, handleKeyDown],
+    [disabled],
   );
+
+  if (!disabled) {
+    return handleKeyDown;
+  }
 
   return handleKeyDownWrapper;
 }

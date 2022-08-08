@@ -21,7 +21,7 @@
       box-shadow: var(--card-shadow-hover);
     }
 
-    &[aria-selected="true"] {
+    &[aria-selected='true'] {
       background: var(--search-highlight-color);
       &:focus {
         box-shadow: var(--focus-outline);

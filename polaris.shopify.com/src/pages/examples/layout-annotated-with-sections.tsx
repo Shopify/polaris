@@ -7,16 +7,16 @@ import {
   TextContainer,
   TextStyle,
   Heading,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function LayoutExample() {
   return (
     <Page fullWidth>
       <Layout>
         <Layout.Section oneThird>
-          <div style={{ marginTop: "var(--p-space-5)" }}>
+          <div style={{marginTop: 'var(--p-space-5)'}}>
             <TextContainer>
               <Heading id="storeDetails">Store details</Heading>
               <p>

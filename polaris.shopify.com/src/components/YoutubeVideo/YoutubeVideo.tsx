@@ -1,10 +1,10 @@
-import styles from "./YoutubeVideo.module.scss";
+import styles from './YoutubeVideo.module.scss';
 
 interface Props {
   id: string;
 }
 
-function YoutubeVideo({ id }: Props) {
+function YoutubeVideo({id}: Props) {
   return (
     <div className={styles.YoutubeVideo}>
       <iframe

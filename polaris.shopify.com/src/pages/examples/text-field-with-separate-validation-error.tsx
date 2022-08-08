@@ -6,37 +6,37 @@ import {
   InlineError,
   Button,
   Card,
-} from "@shopify/polaris";
-import { DeleteMinor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import {DeleteMinor} from '@shopify/polaris-icons';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function SeparateValidationErrorExample() {
-  const [textFieldValue, setTextFieldValue] = useState("");
-  const [selectTypeValue, setSelectTypeValue] = useState("Product type");
+  const [textFieldValue, setTextFieldValue] = useState('');
+  const [selectTypeValue, setSelectTypeValue] = useState('Product type');
   const [selectConditionValue, setSelectConditionValue] =
-    useState("is equal to");
+    useState('is equal to');
 
   const handleTextFieldValueChange = useCallback(
     (value) => setTextFieldValue(value),
-    []
+    [],
   );
 
   const handleSelectTypeChange = useCallback(
     (value) => setSelectTypeValue(value),
-    []
+    [],
   );
 
   const handleSelectConditionChange = useCallback(
     (value) => setSelectConditionValue(value),
-    []
+    [],
   );
 
-  const textFieldID = "ruleContent";
+  const textFieldID = 'ruleContent';
   const isInvalid = isValueInvalid(textFieldValue);
   const errorMessage = isInvalid
-    ? "Enter 3 or more characters for product type is equal to"
-    : "";
+    ? 'Enter 3 or more characters for product type is equal to'
+    : '';
 
   const formGroupMarkup = (
     <Stack wrap={false} alignment="leading" spacing="loose">
@@ -46,14 +46,14 @@ function SeparateValidationErrorExample() {
             <Select
               labelHidden
               label="Collection rule type"
-              options={["Product type"]}
+              options={['Product type']}
               value={selectTypeValue}
               onChange={handleSelectTypeChange}
             />
             <Select
               labelHidden
               label="Collection rule condition"
-              options={["is equal to"]}
+              options={['is equal to']}
               value={selectConditionValue}
               onChange={handleSelectConditionChange}
             />
@@ -68,7 +68,7 @@ function SeparateValidationErrorExample() {
             />
           </FormLayout.Group>
         </FormLayout>
-        <div style={{ marginTop: "4px" }}>
+        <div style={{marginTop: '4px'}}>
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
       </Stack.Item>

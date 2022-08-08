@@ -1,21 +1,21 @@
-import { Card, EmptyState, Link } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Card, EmptyState, Link} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function EmptyStateExample() {
   return (
     <Card sectioned>
       <EmptyState
         heading="Manage your inventory transfers"
-        action={{ content: "Add transfer" }}
+        action={{content: 'Add transfer'}}
         secondaryAction={{
-          content: "Learn more",
-          url: "https://help.shopify.com",
+          content: 'Learn more',
+          url: 'https://help.shopify.com',
         }}
         footerContent={
           <p>
             If you don’t want to add a transfer, you can import your inventory
-            from{" "}
+            from{' '}
             <Link monochrome url="/settings">
               settings
             </Link>

@@ -1,10 +1,10 @@
-import { DropZone } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {DropZone} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function DropZoneExample() {
   return (
-    <div style={{ width: 114, height: 114 }}>
+    <div style={{width: 114, height: 114}}>
       <DropZone>
         <DropZone.FileUpload />
       </DropZone>

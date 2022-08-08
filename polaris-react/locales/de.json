@@ -213,7 +213,7 @@
       "characterCountWithMaxLength": "{count} von {limit} Zeichen verwendet"
     },
     "TopBar": {
-      "toggleMenuLabel": "Menü wechseln",
+      "toggleMenuLabel": "Menü ein/aus",
       "SearchField": {
         "clearButtonLabel": "Löschen",
         "search": "Suchen"

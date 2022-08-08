@@ -283,7 +283,7 @@
       "selected": "{selectedItemsCount}개 선택됨",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} 선택 취소",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} 선택",
-      "a11yCheckboxDeselectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택 취소",
+      "a11yCheckboxDeselectAllMultiple": "{itemsLength}개의 모든 {resourceNamePlural} 선택 취소",
       "a11yCheckboxSelectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택"
     },
     "IndexTable": {

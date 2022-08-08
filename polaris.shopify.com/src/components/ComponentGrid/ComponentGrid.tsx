@@ -1,28 +1,28 @@
-import Image from "../Image";
-import Link from "next/link";
-import { getReadableStatusValue, slugify } from "../../utils/various";
-import { Status } from "../../types";
-import styles from "./ComponentGrid.module.scss";
-import StatusBadge from "../StatusBadge";
-import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
+import Image from '../Image';
+import Link from 'next/link';
+import {getReadableStatusValue, slugify} from '../../utils/various';
+import {Status} from '../../types';
+import styles from './ComponentGrid.module.scss';
+import StatusBadge from '../StatusBadge';
+import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 
 interface ComponentGridProps {
   children: React.ReactNode;
 }
 
-function ComponentGrid({ children }: ComponentGridProps) {
+function ComponentGrid({children}: ComponentGridProps) {
   return <ul className={styles.ComponentGrid}>{children}</ul>;
 }
 
 interface ComponentGridItemProps {
-  name: string;
+  title: string;
   description: string;
   url: string;
   status?: Status;
 }
 
 function ComponentGridItem({
-  name,
+  title,
   description,
   url,
   status,
@@ -30,27 +30,27 @@ function ComponentGridItem({
   const searchAttributes = useGlobalSearchResult();
 
   return (
-    <li key={name} className={styles.Component} {...searchAttributes}>
+    <li key={title} className={styles.Component} {...searchAttributes}>
       <Link href={url} passHref>
         <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>
             <Image
-              src={`/images/components/${slugify(name)}.png`}
+              src={`/images/components/${slugify(title)}.png`}
               layout="responsive"
               width={525}
               height={300}
               quality={70}
               sizes="300px"
-              alt={`Screenshot of the ${name} component`}
+              alt={`Screenshot of the ${title} component`}
               lazyBoundary="1000px"
             />
           </div>
           <div className={styles.ComponentDescription}>
             <h4>
-              {name}
+              {title}
               {status && (
                 <>
-                  {" "}
+                  {' '}
                   <StatusBadge
                     status={{
                       value: status.value,
