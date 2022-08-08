@@ -164,17 +164,25 @@ Right align numbers when they're inside a table. This keeps the decimal in the s
 
 ![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-tabular-numbers@2x.png)
 
-### Weight
-
-Default text styles have font weights specified. For example, the font weight of the body text styles are regular by default. However, when necessary, different font weights may be used.
-
-Adjusting font weights can help with readability, comprehension, and overall cohesiveness.
-
 ### Color
 
-Color and contrast can improve hierarchy and legibility.
+Color can be used to add contrast and reinforce the hierarchy between text.
 
-Adjusting font color can help achieve better content hierarchy.
+For example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
+
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-color-different@2x.png)
+
+### Weight
+
+Weight is another way to add contrast and communicate the intent and behavior of text in the interface.
+
+Weights are applied intentionally to both heading and body type styles. Heading styles use bolder weights and body styles use regular and medium weights.
+
+HeadingSm uses a bolder weight which allows it to have a visually similar weight as a larger heading style.
+
+We encourage the use of default type styles, however, different font weights may be applied when necessary.
+
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-weight-different@2x.png)
 
 ### Space
 
