@@ -1,17 +1,17 @@
-import { MediaCard, VideoThumbnail } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {MediaCard, VideoThumbnail} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function VideoThumbnailExample() {
   return (
     <MediaCard
       title="Turn your side-project into a business"
       primaryAction={{
-        content: "Learn more",
+        content: 'Learn more',
         onAction: () => {},
       }}
       description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
-      popoverActions={[{ content: "Dismiss", onAction: () => {} }]}
+      popoverActions={[{content: 'Dismiss', onAction: () => {}}]}
     >
       <VideoThumbnail
         videoLength={80}

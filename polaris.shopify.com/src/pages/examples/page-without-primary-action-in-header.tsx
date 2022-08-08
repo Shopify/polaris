@@ -1,16 +1,16 @@
-import { Page, Card, Stack, Button } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Page, Card, Stack, Button} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{ content: "Orders", url: "/orders" }]}
+      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
       title="#1085"
       secondaryActions={[
-        { content: "Print" },
-        { content: "Unarchive" },
-        { content: "Cancel order" },
+        {content: 'Print'},
+        {content: 'Unarchive'},
+        {content: 'Cancel order'},
       ]}
       pagination={{
         hasPrevious: true,

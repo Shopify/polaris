@@ -21,7 +21,7 @@ import styles from './Checkbox.scss';
 export const Checkbox = memo(function Checkbox() {
   const i18n = useI18n();
   const {resourceName, condensed} = useIndexValue();
-  const {itemId, selected, onInteraction} = useContext(RowContext);
+  const {itemId, selected, disabled, onInteraction} = useContext(RowContext);
 
   const wrapperClassName = classNames(
     styles.Wrapper,
@@ -45,6 +45,7 @@ export const Checkbox = memo(function Checkbox() {
             })}
             labelHidden
             checked={selected}
+            disabled={disabled}
           />
         </div>
       </div>

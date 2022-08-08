@@ -1,13 +1,13 @@
-import { Frame, Navigation } from "@shopify/polaris";
+import {Frame, Navigation} from '@shopify/polaris';
 import {
   HomeMinor,
   OrdersMinor,
   ProductsMinor,
   OnlineStoreMinor,
   CirclePlusOutlineMinor,
-} from "@shopify/polaris-icons";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris-icons';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function NavigationExample() {
   return (
@@ -16,18 +16,18 @@ function NavigationExample() {
         <Navigation.Section
           items={[
             {
-              url: "/path/to/place",
-              label: "Home",
+              url: '/path/to/place',
+              label: 'Home',
               icon: HomeMinor,
             },
             {
-              url: "/path/to/place",
-              label: "Orders",
+              url: '/path/to/place',
+              label: 'Orders',
               icon: OrdersMinor,
             },
             {
-              url: "/path/to/place",
-              label: "Products",
+              url: '/path/to/place',
+              label: 'Products',
               icon: ProductsMinor,
             },
           ]}
@@ -36,13 +36,13 @@ function NavigationExample() {
           title="Sales channels"
           items={[
             {
-              url: "/path/to/place",
-              label: "Online Store",
+              url: '/path/to/place',
+              label: 'Online Store',
               icon: OnlineStoreMinor,
             },
           ]}
           action={{
-            accessibilityLabel: "Add sales channel",
+            accessibilityLabel: 'Add sales channel',
             icon: CirclePlusOutlineMinor,
             onClick: () => {},
           }}

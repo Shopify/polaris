@@ -1,9 +1,9 @@
-import { TextField } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {TextField} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function NumberFieldExample() {
-  const [value, setValue] = useState("1");
+  const [value, setValue] = useState('1');
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 

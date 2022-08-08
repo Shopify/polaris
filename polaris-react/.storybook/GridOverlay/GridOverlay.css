@@ -1,3 +1,7 @@
+.sb-main-padded .GridOverlay {
+  margin: 0 1rem;
+}
+
 .GridOverlay {
   --pc-top-bar-height: 56px;
   --pc-nav-width: 240px;

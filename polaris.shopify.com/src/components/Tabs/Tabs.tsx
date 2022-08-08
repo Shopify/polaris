@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
-import Container from "../Container";
-import styles from "./Tabs.module.scss";
+import {useRouter} from 'next/router';
+import Container from '../Container';
+import styles from './Tabs.module.scss';
 
 interface Props {
   items: {
@@ -10,7 +10,7 @@ interface Props {
   }[];
 }
 
-function Tabs({ items }: Props) {
+function Tabs({items}: Props) {
   const router = useRouter();
   const currentPath = router.asPath;
   return (
@@ -24,7 +24,7 @@ function Tabs({ items }: Props) {
                   href={item.url}
                   aria-current={
                     currentPath.startsWith(item.isCurrentIfPathStartsWith)
-                      ? "page"
+                      ? 'page'
                       : undefined
                   }
                 >

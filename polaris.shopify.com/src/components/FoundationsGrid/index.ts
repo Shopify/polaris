@@ -1,3 +1,3 @@
-import FoundationsGrid from "./FoundationsGrid";
+import FoundationsGrid from './FoundationsGrid';
 
 export default FoundationsGrid;

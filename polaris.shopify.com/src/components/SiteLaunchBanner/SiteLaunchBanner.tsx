@@ -1,12 +1,12 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-import { useState } from "react";
-import styles from "./SiteLaunchBanner.module.scss";
+import {useRouter} from 'next/router';
+import {useEffect} from 'react';
+import {useState} from 'react';
+import styles from './SiteLaunchBanner.module.scss';
 
 interface Props {}
 
-const isServer = typeof window === "undefined";
-const localStorageKey = "siteLaunchBannerVisible";
+const isServer = typeof window === 'undefined';
+const localStorageKey = 'siteLaunchBannerVisible';
 
 function SiteLaunchBanner({}: Props) {
   const router = useRouter();
@@ -17,7 +17,7 @@ function SiteLaunchBanner({}: Props) {
   if (!isServer) {
     const visibleValueInLocalStorage =
       window.localStorage.getItem(localStorageKey);
-    if (visibleValueInLocalStorage === "false") {
+    if (visibleValueInLocalStorage === 'false') {
       visibleDefault = false;
     }
   }
@@ -33,7 +33,7 @@ function SiteLaunchBanner({}: Props) {
   function dismiss() {
     setVisible(false);
     if (!isServer) {
-      window.localStorage.setItem(localStorageKey, "false");
+      window.localStorage.setItem(localStorageKey, 'false');
     }
   }
 

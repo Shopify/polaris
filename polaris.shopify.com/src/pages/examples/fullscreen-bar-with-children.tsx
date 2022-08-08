@@ -4,9 +4,9 @@ import {
   FullscreenBar,
   DisplayText,
   Button,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function FullscreenBarExample() {
   const [isFullscreen, setFullscreen] = useState(true);
@@ -19,16 +19,16 @@ function FullscreenBarExample() {
     <FullscreenBar onAction={handleActionClick}>
       <div
         style={{
-          display: "flex",
+          display: 'flex',
           flexGrow: 1,
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingLeft: "1rem",
-          paddingRight: "1rem",
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
         }}
       >
         <Badge status="info">Draft</Badge>
-        <div style={{ marginLeft: "1rem", flexGrow: 1 }}>
+        <div style={{marginLeft: '1rem', flexGrow: 1}}>
           <DisplayText size="small">Page title</DisplayText>
         </div>
         <ButtonGroup>
@@ -42,9 +42,9 @@ function FullscreenBarExample() {
   );
 
   return (
-    <div style={{ height: "250px", width: "100%" }}>
+    <div style={{height: '250px', width: '100%'}}>
       {isFullscreen && fullscreenBarMarkup}
-      <div style={{ padding: "1rem" }}>
+      <div style={{padding: '1rem'}}>
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}

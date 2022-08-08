@@ -1,6 +1,6 @@
-import { PageActions, Button } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {PageActions, Button} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
@@ -9,8 +9,8 @@ function PageExample() {
         <Button
           primary
           connectedDisclosure={{
-            accessibilityLabel: "Other save actions",
-            actions: [{ content: "Save as draft" }],
+            accessibilityLabel: 'Other save actions',
+            actions: [{content: 'Save as draft'}],
           }}
         >
           Save
@@ -18,7 +18,7 @@ function PageExample() {
       }
       secondaryActions={[
         {
-          content: "Delete",
+          content: 'Delete',
           destructive: true,
         },
       ]}

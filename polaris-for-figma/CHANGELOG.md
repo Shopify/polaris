@@ -1,10 +1,25 @@
 # Changelog
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`47e8244d5`](https://github.com/Shopify/polaris/commit/47e8244d573e0e34a71379733bcc5aa7788d8d5c), [`51be08e37`](https://github.com/Shopify/polaris/commit/51be08e371bc2090346cdc9695d44437023bb20a), [`b5ff69e44`](https://github.com/Shopify/polaris/commit/b5ff69e44a57824fef7ccccac314d2594db4d514), [`b75bc19ed`](https://github.com/Shopify/polaris/commit/b75bc19edf260af8fa20ec9f9c995990c8a3e4dd), [`6f50cb1dc`](https://github.com/Shopify/polaris/commit/6f50cb1dceb2f3ac3bb558c4da748d890de30543)]:
+  - @shopify/polaris@9.22.0
+
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`e17db88b2`](https://github.com/Shopify/polaris/commit/e17db88b275d2c4070d22d9c2c3bf903f12739db), [`45f45883a`](https://github.com/Shopify/polaris/commit/45f45883ac975b89e1df53f651748319223e1f2c), [`b4053553d`](https://github.com/Shopify/polaris/commit/b4053553d9fb0079a957e31df48893d90ce766b0), [`ceff5fb6c`](https://github.com/Shopify/polaris/commit/ceff5fb6c015706192c8e451ad33078238e01eb8), [`fdf4d836d`](https://github.com/Shopify/polaris/commit/fdf4d836dccedd4578d094fa216c5460780064cc), [`51798772a`](https://github.com/Shopify/polaris/commit/51798772a04f6afb51ef11ef41a7ca573617275c)]:
+  - @shopify/polaris@9.21.1
+
 ## 0.0.4
 
 ### Patch Changes
 
 - [#6711](https://github.com/Shopify/polaris/pull/6711) [`c2ffb9762`](https://github.com/Shopify/polaris/commit/c2ffb976216bfaded2c3b8d4ea0e5c82543a5cd6) Thanks [@SimonLeclercq](https://github.com/SimonLeclercq)! - - Modification of the documentation mentioning the use of a non-existent script
+
   - Added documentation for a build script
 
 - Updated dependencies [[`720d10e79`](https://github.com/Shopify/polaris/commit/720d10e79c9080efccb4c1d3e41ac322b58b7977), [`e58092acb`](https://github.com/Shopify/polaris/commit/e58092acb10ddc8330dcd8fc4bd7293ba94692ad), [`3b6d6949f`](https://github.com/Shopify/polaris/commit/3b6d6949fdbb1d809f6aff5d3f36b897c0fd2353), [`6fab899c1`](https://github.com/Shopify/polaris/commit/6fab899c1a11b19640845b4a57ce82173bc27097)]:

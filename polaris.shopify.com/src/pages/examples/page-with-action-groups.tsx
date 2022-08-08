@@ -1,6 +1,6 @@
-import { Page, Card } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Page, Card} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
@@ -8,25 +8,25 @@ function PageExample() {
       title="Products"
       actionGroups={[
         {
-          title: "Copy",
+          title: 'Copy',
           onClick: (openActions) => {
-            alert("Copy action");
+            alert('Copy action');
             openActions();
           },
-          actions: [{ content: "Copy to clipboard" }],
+          actions: [{content: 'Copy to clipboard'}],
         },
         {
-          title: "Promote",
+          title: 'Promote',
           disabled: true,
-          actions: [{ content: "Share on Facebook" }],
+          actions: [{content: 'Share on Facebook'}],
         },
         {
-          title: "More actions",
+          title: 'More actions',
           actions: [
-            { content: "Duplicate" },
-            { content: "Print" },
-            { content: "Unarchive" },
-            { content: "Cancel order" },
+            {content: 'Duplicate'},
+            {content: 'Print'},
+            {content: 'Unarchive'},
+            {content: 'Cancel order'},
           ],
         },
       ]}

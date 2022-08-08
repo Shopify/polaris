@@ -1,4 +1,4 @@
-import FoundationsIndexPage from "../../components/FoundationsIndexPage";
+import FoundationsIndexPage from '../../components/FoundationsIndexPage';
 
 const Resources = () => {
   return <FoundationsIndexPage />;

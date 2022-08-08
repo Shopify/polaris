@@ -1,6 +1,6 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/fonts.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
   invert(1);
@@ -222,11 +222,11 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
     padding: 0.25rem 0;
     font-size: var(--font-size-400);
 
-    &[data-icon="github"] svg {
+    &[data-icon='github'] svg {
       color: var(--text-strong);
     }
 
-    &[data-icon="browse"] svg {
+    &[data-icon='browse'] svg {
       color: var(--text-strong);
     }
   }

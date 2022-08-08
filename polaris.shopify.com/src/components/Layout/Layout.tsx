@@ -1,14 +1,14 @@
-import { useTOC } from "../../utils/hooks";
-import { className } from "../../utils/various";
-import Longform from "../Longform";
-import Container from "../Container";
-import Nav, { NavItem } from "../Nav";
+import {useTOC} from '../../utils/hooks';
+import {className} from '../../utils/various';
+import Longform from '../Longform';
+import Container from '../Container';
+import Nav, {NavItem} from '../Nav';
 
-import styles from "./Layout.module.scss";
-import TOC from "../TOC";
+import styles from './Layout.module.scss';
+import TOC from '../TOC';
 
 interface Props {
-  width?: "full" | "narrow";
+  width?: 'full' | 'narrow';
   navItems?: NavItem[];
   title?: string;
   showTOC?: boolean;
@@ -16,7 +16,7 @@ interface Props {
 }
 
 function Layout({
-  width = "full",
+  width = 'full',
   navItems,
   title,
   showTOC = true,
@@ -29,7 +29,7 @@ function Layout({
       className={className(
         styles.Layout,
         showTOC && styles.showTOC,
-        width === "narrow" && styles.narrow
+        width === 'narrow' && styles.narrow,
       )}
     >
       <div className={styles.Nav}>

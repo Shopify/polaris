@@ -4,30 +4,30 @@ import {
   Icon,
   VisuallyHidden,
   Frame,
-} from "@shopify/polaris";
-import { ArrowLeftMinor, QuestionMarkMajor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function TopBarExample() {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
 
   const toggleIsUserMenuOpen = useCallback(
     () => setIsUserMenuOpen((isUserMenuOpen) => !isUserMenuOpen),
-    []
+    [],
   );
 
   const toggleIsSecondaryMenuOpen = useCallback(
     () => setIsSecondaryMenuOpen((isSecondaryMenuOpen) => !isSecondaryMenuOpen),
-    []
+    [],
   );
 
   const handleSearchResultsDismiss = useCallback(() => {
     setIsSearchActive(false);
-    setSearchValue("");
+    setSearchValue('');
   }, []);
 
   const handleSearchChange = useCallback((value) => {
@@ -36,25 +36,25 @@ function TopBarExample() {
   }, []);
 
   const handleNavigationToggle = useCallback(() => {
-    console.log("toggle navigation visibility");
+    console.log('toggle navigation visibility');
   }, []);
 
   const logo = {
     width: 124,
     topBarSource:
-      "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999",
-    url: "http://jadedpixel.com",
-    accessibilityLabel: "Jaded Pixel",
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+    url: 'http://jadedpixel.com',
+    accessibilityLabel: 'Jaded Pixel',
   };
 
   const userMenuMarkup = (
     <TopBar.UserMenu
       actions={[
         {
-          items: [{ content: "Back to Shopify", icon: ArrowLeftMinor }],
+          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
         },
         {
-          items: [{ content: "Community forums" }],
+          items: [{content: 'Community forums'}],
         },
       ]}
       name="Dharma"
@@ -67,10 +67,7 @@ function TopBarExample() {
 
   const searchResultsMarkup = (
     <ActionList
-      items={[
-        { content: "Shopify help center" },
-        { content: "Community forums" },
-      ]}
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
     />
   );
 
@@ -96,7 +93,7 @@ function TopBarExample() {
       onClose={toggleIsSecondaryMenuOpen}
       actions={[
         {
-          items: [{ content: "Community forums" }],
+          items: [{content: 'Community forums'}],
         },
       ]}
     />
@@ -116,7 +113,7 @@ function TopBarExample() {
   );
 
   return (
-    <div style={{ height: "250px" }}>
+    <div style={{height: '250px'}}>
       <Frame topBar={topBarMarkup} logo={logo} />
     </div>
   );

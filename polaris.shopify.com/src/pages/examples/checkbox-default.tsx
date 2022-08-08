@@ -1,6 +1,6 @@
-import { Checkbox } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Checkbox} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function CheckboxExample() {
   const [checked, setChecked] = useState(false);

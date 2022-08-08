@@ -7,20 +7,20 @@ import {
   ResourceList,
   Stack,
   List,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
     <Card
-      secondaryFooterActions={[{ content: "Dismiss" }]}
-      primaryFooterAction={{ content: "Export Report" }}
+      secondaryFooterActions={[{content: 'Dismiss'}]}
+      primaryFooterAction={{content: 'Export Report'}}
     >
       <Card.Header
         actions={[
           {
-            content: "Total Sales",
+            content: 'Total Sales',
           },
         ]}
         title="Sales"
@@ -35,7 +35,7 @@ function CardExample() {
           onClose={() => {}}
         >
           <ActionList
-            items={[{ content: "Gross Sales" }, { content: "Net Sales" }]}
+            items={[{content: 'Gross Sales'}, {content: 'Net Sales'}]}
           />
         </Popover>
       </Card.Header>
@@ -48,21 +48,21 @@ function CardExample() {
       </Card.Section>
       <Card.Section title="Total Sales Breakdown">
         <ResourceList
-          resourceName={{ singular: "sale", plural: "sales" }}
+          resourceName={{singular: 'sale', plural: 'sales'}}
           items={[
             {
-              sales: "Orders",
-              amount: "USD$0.00",
-              url: "reports/orders",
+              sales: 'Orders',
+              amount: 'USD$0.00',
+              url: 'reports/orders',
             },
             {
-              sales: "Returns",
-              amount: "-USD$250.00",
-              url: "reports/returns",
+              sales: 'Returns',
+              amount: '-USD$250.00',
+              url: 'reports/returns',
             },
           ]}
           renderItem={(item) => {
-            const { sales, amount, url } = item;
+            const {sales, amount, url} = item;
             return (
               <ResourceList.Item
                 url={url}

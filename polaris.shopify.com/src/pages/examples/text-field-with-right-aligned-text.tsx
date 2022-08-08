@@ -1,13 +1,13 @@
-import { Stack, TextField } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Stack, TextField} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function RightAlignExample() {
-  const [textFieldValue, setTextFieldValue] = useState("1");
+  const [textFieldValue, setTextFieldValue] = useState('1');
 
   const handleTextFieldChange = useCallback(
     (value) => setTextFieldValue(value),
-    []
+    [],
   );
 
   return (

@@ -17,20 +17,20 @@ import {
   TextField,
   Toast,
   TopBar,
-} from "@shopify/polaris";
+} from '@shopify/polaris';
 import {
   ArrowLeftMinor,
   HomeMajor,
   OrdersMajor,
   ConversationMinor,
-} from "@shopify/polaris-icons";
-import { useState, useCallback, useRef } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris-icons';
+import {useState, useCallback, useRef} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function FrameExample() {
   const defaultState = useRef({
-    emailFieldValue: "dharma@jadedpixel.com",
-    nameFieldValue: "Jaded Pixel",
+    emailFieldValue: 'dharma@jadedpixel.com',
+    nameFieldValue: 'Jaded Pixel',
   });
   const skipToContentRef = useRef(null);
 
@@ -38,29 +38,29 @@ function FrameExample() {
   const [isLoading, setIsLoading] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [userMenuActive, setUserMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [nameFieldValue, setNameFieldValue] = useState(
-    defaultState.current.nameFieldValue
+    defaultState.current.nameFieldValue,
   );
   const [emailFieldValue, setEmailFieldValue] = useState(
-    defaultState.current.emailFieldValue
+    defaultState.current.emailFieldValue,
   );
   const [storeName, setStoreName] = useState(
-    defaultState.current.nameFieldValue
+    defaultState.current.nameFieldValue,
   );
-  const [supportSubject, setSupportSubject] = useState("");
-  const [supportMessage, setSupportMessage] = useState("");
+  const [supportSubject, setSupportSubject] = useState('');
+  const [supportMessage, setSupportMessage] = useState('');
 
   const handleSubjectChange = useCallback(
     (value) => setSupportSubject(value),
-    []
+    [],
   );
   const handleMessageChange = useCallback(
     (value) => setSupportMessage(value),
-    []
+    [],
   );
   const handleDiscard = useCallback(() => {
     setEmailFieldValue(defaultState.current.emailFieldValue);
@@ -85,7 +85,7 @@ function FrameExample() {
   }, []);
   const handleSearchResultsDismiss = useCallback(() => {
     setSearchActive(false);
-    setSearchValue("");
+    setSearchValue('');
   }, []);
   const handleSearchFieldChange = useCallback((value) => {
     setSearchValue(value);
@@ -93,26 +93,26 @@ function FrameExample() {
   }, []);
   const toggleToastActive = useCallback(
     () => setToastActive((toastActive) => !toastActive),
-    []
+    [],
   );
   const toggleUserMenuActive = useCallback(
     () => setUserMenuActive((userMenuActive) => !userMenuActive),
-    []
+    [],
   );
   const toggleMobileNavigationActive = useCallback(
     () =>
       setMobileNavigationActive(
-        (mobileNavigationActive) => !mobileNavigationActive
+        (mobileNavigationActive) => !mobileNavigationActive,
       ),
-    []
+    [],
   );
   const toggleIsLoading = useCallback(
     () => setIsLoading((isLoading) => !isLoading),
-    []
+    [],
   );
   const toggleModalActive = useCallback(
     () => setModalActive((modalActive) => !modalActive),
-    []
+    [],
   );
 
   const toastMarkup = toastActive ? (
@@ -121,7 +121,7 @@ function FrameExample() {
 
   const userMenuActions = [
     {
-      items: [{ content: "Community forums" }],
+      items: [{content: 'Community forums'}],
     },
   ];
 
@@ -150,10 +150,7 @@ function FrameExample() {
 
   const searchResultsMarkup = (
     <ActionList
-      items={[
-        { content: "Shopify help center" },
-        { content: "Community forums" },
-      ]}
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
     />
   );
 
@@ -182,7 +179,7 @@ function FrameExample() {
       <Navigation.Section
         items={[
           {
-            label: "Back to Shopify",
+            label: 'Back to Shopify',
             icon: ArrowLeftMinor,
           },
         ]}
@@ -192,19 +189,19 @@ function FrameExample() {
         title="Jaded Pixel App"
         items={[
           {
-            label: "Dashboard",
+            label: 'Dashboard',
             icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
-            label: "Jaded Pixel Orders",
+            label: 'Jaded Pixel Orders',
             icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
           icon: ConversationMinor,
-          accessibilityLabel: "Contact support",
+          accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}
       />
@@ -270,7 +267,7 @@ function FrameExample() {
       onClose={toggleModalActive}
       title="Contact support"
       primaryAction={{
-        content: "Send",
+        content: 'Send',
         onAction: toggleModalActive,
       }}
     >
@@ -297,45 +294,45 @@ function FrameExample() {
   const logo = {
     width: 124,
     topBarSource:
-      "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999",
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
     contextualSaveBarSource:
-      "https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999",
-    url: "http://jadedpixel.com",
-    accessibilityLabel: "Jaded Pixel",
+      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+    url: 'http://jadedpixel.com',
+    accessibilityLabel: 'Jaded Pixel',
   };
 
   return (
-    <div style={{ height: "500px", background: "#DE1373" }}>
+    <div style={{height: '500px', background: '#DE1373'}}>
       <AppProvider
         i18n={{
           Polaris: {
             Avatar: {
-              label: "Avatar",
-              labelWithInitials: "Avatar with initials {initials}",
+              label: 'Avatar',
+              labelWithInitials: 'Avatar with initials {initials}',
             },
             ContextualSaveBar: {
-              save: "Save",
-              discard: "Discard",
+              save: 'Save',
+              discard: 'Discard',
             },
             TextField: {
-              characterCount: "{count} characters",
+              characterCount: '{count} characters',
             },
             TopBar: {
-              toggleMenuLabel: "Toggle menu",
+              toggleMenuLabel: 'Toggle menu',
 
               SearchField: {
-                clearButtonLabel: "Clear",
-                search: "Search",
+                clearButtonLabel: 'Clear',
+                search: 'Search',
               },
             },
             Modal: {
-              iFrameTitle: "body markup",
+              iFrameTitle: 'body markup',
             },
             Frame: {
-              skipToContent: "Skip to content",
-              navigationLabel: "Navigation",
+              skipToContent: 'Skip to content',
+              navigationLabel: 'Navigation',
               Navigation: {
-                closeMobileNavigationLabel: "Close navigation",
+                closeMobileNavigationLabel: 'Close navigation',
               },
             },
           },
@@ -345,7 +342,7 @@ function FrameExample() {
           logo={logo}
           offset="60px"
           globalRibbon={
-            <div style={{ background: "#C0FFEE", padding: "30px" }}>
+            <div style={{background: '#C0FFEE', padding: '30px'}}>
               Global ribbon
             </div>
           }

@@ -1,9 +1,9 @@
-import { TextField } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {TextField} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function TextFieldExample() {
-  const [value, setValue] = useState("Jaded Pixel");
+  const [value, setValue] = useState('Jaded Pixel');
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
