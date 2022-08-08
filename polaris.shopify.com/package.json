@@ -2,6 +2,7 @@
   "name": "polaris.shopify.com",
   "version": "0.9.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "yarn run copy-icons && next build",
     "dev": "yarn run copy-icons && open http://localhost:3000 && next dev",
