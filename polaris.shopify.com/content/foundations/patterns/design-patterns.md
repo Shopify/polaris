@@ -44,7 +44,7 @@ Patterns are for merchants and compositions are for builders.
 - Design the best possible merchant experience
 - Simplify learning the UI
 - Improve recognizability and ease of use
-- Improve merchants’ Admin proficiency
+- Improve merchants’ admin proficiency
 
 ### Composition purpose
 - Share as much code as possible
