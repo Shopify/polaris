@@ -157,14 +157,6 @@
     border-radius: 0.5rem;
     width: 100%;
 
-    tr:nth-child(even) {
-      background: var(--table-row);
-    }
-
-    tr:nth-child(odd) {
-      background: var(--surface);
-    }
-
     th {
       font-weight: var(--font-weight-600);
       text-align: left;
@@ -181,7 +173,19 @@
 
     th,
     td {
-      padding: 0.6rem 2.8rem;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border-color-light);
+
+      @media screen and (min-width: $breakpointDesktop) {
+        &:first-child {
+          padding-left: 2.8rem;
+        }
+
+        &:last-child {
+          padding-right: 2.8rem;
+        }
+      }
+
     }
 
     tbody {
