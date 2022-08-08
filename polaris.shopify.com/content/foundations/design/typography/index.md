@@ -32,15 +32,15 @@ icon: TypeMajor
 
 ![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
 
-### Make it readable.
+### 1. Make it readable
 
 Help merchants understand content quickly by considering how to display and apply text within a page.
 
-### Make it adaptable
+### 2. Make it adaptable
 
 Design in a way that works for a wide range of audiences, browsers, and mobile devices.
 
-### Reinforce the message
+### 3. Reinforce the message
 
 Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
 
@@ -189,3 +189,5 @@ We encourage the use of default type styles, however, different font weights may
 We can help merchants navigate the UI by grouping related information together. One way to do this is to use space to create relationships between elements on a page.
 
 Ambiguous spacing can cause confusion and make it hard to understand the content.
+
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
