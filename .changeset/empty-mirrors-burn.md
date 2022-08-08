@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': patch
+'@shopify/polaris': minor
 ---
 
-Improved `useEventListener` types
+Improved `useEventListener` types and added support for attaching listeners to React refs.
