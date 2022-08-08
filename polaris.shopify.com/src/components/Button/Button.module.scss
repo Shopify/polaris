@@ -33,9 +33,9 @@
     text-align: center;
   }
 
-  &[aria-pressed="true"],
-  &[aria-selected="true"],
-  &[aria-current="true"] {
+  &[aria-pressed='true'],
+  &[aria-selected='true'],
+  &[aria-current='true'] {
     background: var(--text);
     color: var(--surface);
   }

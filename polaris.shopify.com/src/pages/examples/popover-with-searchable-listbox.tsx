@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
 import {
   Listbox,
   TextField,
@@ -11,10 +11,10 @@ import {
   EmptySearchResult,
   DisplayText,
   Button,
-} from "@shopify/polaris";
-import { SearchMinor } from "@shopify/polaris-icons";
+} from '@shopify/polaris';
+import {SearchMinor} from '@shopify/polaris-icons';
 
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 interface CustomerSegment {
   id: string;
@@ -22,68 +22,68 @@ interface CustomerSegment {
   value: string;
 }
 
-const actionValue = "__ACTION__";
+const actionValue = '__ACTION__';
 
 const segments: CustomerSegment[] = [
   {
-    label: "All customers",
-    id: "gid://shopify/CustomerSegment/1",
-    value: "0",
+    label: 'All customers',
+    id: 'gid://shopify/CustomerSegment/1',
+    value: '0',
   },
   {
-    label: "VIP customers",
-    id: "gid://shopify/CustomerSegment/2",
-    value: "1",
+    label: 'VIP customers',
+    id: 'gid://shopify/CustomerSegment/2',
+    value: '1',
   },
   {
-    label: "New customers",
-    id: "gid://shopify/CustomerSegment/3",
-    value: "2",
+    label: 'New customers',
+    id: 'gid://shopify/CustomerSegment/3',
+    value: '2',
   },
   {
-    label: "Abandoned carts - last 30 days",
-    id: "gid://shopify/CustomerSegment/4",
-    value: "3",
+    label: 'Abandoned carts - last 30 days',
+    id: 'gid://shopify/CustomerSegment/4',
+    value: '3',
   },
   {
-    label: "Wholesale customers",
-    id: "gid://shopify/CustomerSegment/5",
-    value: "4",
+    label: 'Wholesale customers',
+    id: 'gid://shopify/CustomerSegment/5',
+    value: '4',
   },
   {
-    label: "Email subscribers",
-    id: "gid://shopify/CustomerSegment/6",
-    value: "5",
+    label: 'Email subscribers',
+    id: 'gid://shopify/CustomerSegment/6',
+    value: '5',
   },
   {
-    label: "From New York",
-    id: "gid://shopify/CustomerSegment/7",
-    value: "6",
+    label: 'From New York',
+    id: 'gid://shopify/CustomerSegment/7',
+    value: '6',
   },
   {
-    label: "Repeat buyers",
-    id: "gid://shopify/CustomerSegment/8",
-    value: "7",
+    label: 'Repeat buyers',
+    id: 'gid://shopify/CustomerSegment/8',
+    value: '7',
   },
   {
-    label: "First time buyers",
-    id: "gid://shopify/CustomerSegment/9",
-    value: "8",
+    label: 'First time buyers',
+    id: 'gid://shopify/CustomerSegment/9',
+    value: '8',
   },
   {
-    label: "From Canada",
-    id: "gid://shopify/CustomerSegment/10",
-    value: "9",
+    label: 'From Canada',
+    id: 'gid://shopify/CustomerSegment/10',
+    value: '9',
   },
   {
-    label: "Bought in last 60 days",
-    id: "gid://shopify/CustomerSegment/11",
-    value: "10",
+    label: 'Bought in last 60 days',
+    id: 'gid://shopify/CustomerSegment/11',
+    value: '10',
   },
   {
-    label: "Bought last BFCM",
-    id: "gid://shopify/CustomerSegment/12",
-    value: "11",
+    label: 'Bought last BFCM',
+    id: 'gid://shopify/CustomerSegment/12',
+    value: '11',
   },
 ];
 
@@ -92,7 +92,7 @@ const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
     label: `Other customers ${index + 12}`,
     id: `gid://shopify/CustomerSegment/${index + 12}`,
     value: `${index + 12}`,
-  })
+  }),
 );
 
 segments.push(...lazyLoadSegments);
@@ -102,14 +102,14 @@ const interval = 25;
 function PopoverWithSearchableListboxExample() {
   const [pickerOpen, setPickerOpen] = useState(false);
   const [showFooterAction, setShowFooterAction] = useState(true);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [lazyLoading, setLazyLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
   const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
-    []
+    [],
   );
 
   const handleClickShowAll = () => {
@@ -134,7 +134,7 @@ function PopoverWithSearchableListboxExample() {
   };
 
   const handleQueryClear = () => {
-    handleQueryChange("");
+    handleQueryChange('');
   };
 
   const handleResetVisibleOptionIndex = () => {
@@ -147,7 +147,7 @@ function PopoverWithSearchableListboxExample() {
 
   const handleClosePicker = () => {
     setPickerOpen(false);
-    handleQueryChange("");
+    handleQueryChange('');
     handleResetVisibleOptionIndex();
   };
 
@@ -189,15 +189,15 @@ function PopoverWithSearchableListboxExample() {
     }
   };
 
-  const listboxId = "SearchableListboxInPopover";
+  const listboxId = 'SearchableListboxInPopover';
 
   /* Your app's feature/context specific activator here */
   const activator = (
     <div
       style={{
-        fontSize: "var(--p-font-size-7)",
-        color: "var(--p-text)",
-        borderBottom: "1px dashed var(--p-border)",
+        fontSize: 'var(--p-font-size-7)',
+        color: 'var(--p-text)',
+        borderBottom: '1px dashed var(--p-border)',
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
@@ -209,7 +209,7 @@ function PopoverWithSearchableListboxExample() {
   );
 
   const textFieldMarkup = (
-    <div style={{ padding: "12px" }}>
+    <div style={{padding: '12px'}}>
       <StopPropagation>
         <TextField
           focused={showFooterAction}
@@ -235,7 +235,7 @@ function PopoverWithSearchableListboxExample() {
     segmentOptions.length > 0
       ? segmentOptions
           .slice(0, visibleOptionIndex)
-          .map(({ label, id, value }) => {
+          .map(({label, id, value}) => {
             const selected = segments[selectedSegmentIndex].id === id;
 
             return (
@@ -250,16 +250,14 @@ function PopoverWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{ color: "var(--p-interactive)" }}>
-        Show all 111 segments
-      </span>
+      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
     </Listbox.Action>
   ) : null;
 
   const lazyLoadingMarkup = lazyLoading ? (
     <Listbox.Loading
       accessibilityLabel={`${
-        query ? "Filtering" : "Loading"
+        query ? 'Filtering' : 'Loading'
       } customer segments`}
     />
   ) : null;
@@ -289,7 +287,7 @@ function PopoverWithSearchableListboxExample() {
   );
 
   return (
-    <div style={{ height: "400px" }}>
+    <div style={{height: '400px'}}>
       <Popover
         active={pickerOpen}
         activator={activator}
@@ -301,15 +299,15 @@ function PopoverWithSearchableListboxExample() {
         <Popover.Pane fixed>
           <div
             style={{
-              alignItems: "stretch",
-              borderTop: "1px solid #DFE3E8",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "stretch",
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              overflow: "hidden",
+              alignItems: 'stretch',
+              borderTop: '1px solid #DFE3E8',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'stretch',
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+              overflow: 'hidden',
             }}
           >
             {textFieldMarkup}
@@ -317,12 +315,12 @@ function PopoverWithSearchableListboxExample() {
             <Scrollable
               shadow
               style={{
-                position: "relative",
-                width: "310px",
-                height: "292px",
-                padding: "var(--p-space-2) 0",
-                borderBottomLeftRadius: "var(--p-border-radius-2)",
-                borderBottomRightRadius: "var(--p-border-radius-2)",
+                position: 'relative',
+                width: '310px',
+                height: '292px',
+                padding: 'var(--p-space-2) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-2)',
+                borderBottomRightRadius: 'var(--p-border-radius-2)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >
@@ -335,7 +333,7 @@ function PopoverWithSearchableListboxExample() {
   );
 }
 
-const StopPropagation = ({ children }: React.PropsWithChildren<any>) => {
+const StopPropagation = ({children}: React.PropsWithChildren<any>) => {
   const stopEventPropagation = (event: React.MouseEvent | React.TouchEvent) => {
     event.stopPropagation();
   };

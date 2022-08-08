@@ -1,17 +1,17 @@
-import { Page, Badge, Card } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Page, Badge, Card} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{ content: "Products", url: "/products" }]}
+      breadcrumbs={[{content: 'Products', url: '/products'}]}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge status="attention">Verified</Badge>}
-      primaryAction={{ content: "Save", disabled: true }}
+      primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
-        { content: "Duplicate" },
-        { content: "View on your store" },
+        {content: 'Duplicate'},
+        {content: 'View on your store'},
       ]}
       pagination={{
         hasPrevious: true,

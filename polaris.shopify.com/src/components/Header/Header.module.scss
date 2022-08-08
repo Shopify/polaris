@@ -1,5 +1,5 @@
-@import "../../styles/variables.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 .Header {
   position: sticky;
@@ -49,7 +49,7 @@
             color: var(--text-strong);
           }
 
-          &[aria-current="page"],
+          &[aria-current='page'],
           &:hover {
             span {
               background: var(--surface-subdued);

@@ -1,10 +1,10 @@
-import Tooltip from "../Tooltip";
-import Prism from "prismjs";
-import { useCopyToClipboard } from "../../utils/hooks";
-import styles from "./Code.module.scss";
-import { Tab } from "@headlessui/react";
-import Image from "../Image";
-import { useState } from "react";
+import Tooltip from '../Tooltip';
+import Prism from 'prismjs';
+import {useCopyToClipboard} from '../../utils/hooks';
+import styles from './Code.module.scss';
+import {Tab} from '@headlessui/react';
+import Image from '../Image';
+import {useState} from 'react';
 
 interface Props {
   code:
@@ -18,7 +18,7 @@ interface Props {
       }[];
 }
 
-function Code({ code }: Props) {
+function Code({code}: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
@@ -27,7 +27,7 @@ function Code({ code }: Props) {
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           <div className={styles.TopBar}>
             <Tab.List className={styles.Tabs}>
-              {code.map(({ title }) => (
+              {code.map(({title}) => (
                 <Tab key={title} className={styles.Tab}>
                   {title}
                 </Tab>
@@ -39,7 +39,7 @@ function Code({ code }: Props) {
           </div>
 
           <Tab.Panels>
-            {code.map(({ title, code }) => (
+            {code.map(({title, code}) => (
               <Tab.Panel key={title}>
                 <HighlightedCode code={code} />
               </Tab.Panel>
@@ -61,7 +61,7 @@ function Code({ code }: Props) {
   );
 }
 
-function HighlightedCode({ code }: { code: string }) {
+function HighlightedCode({code}: {code: string}) {
   return (
     <pre>
       <code
@@ -70,7 +70,7 @@ function HighlightedCode({ code }: { code: string }) {
           __html: Prism.highlight(
             code,
             Prism.languages.javascript,
-            "javascript"
+            'javascript',
           ),
         }}
       ></code>
@@ -78,14 +78,14 @@ function HighlightedCode({ code }: { code: string }) {
   );
 }
 
-function CopyButton({ code }: { code: string }) {
+function CopyButton({code}: {code: string}) {
   const [copy, didJustCopy] = useCopyToClipboard(code);
 
   return (
     <div className={styles.CopyButtonWrapper}>
       <Tooltip
         ariaLabel="Copy to clipboard"
-        renderContent={() => <p>{didJustCopy ? "Copied" : "Copy"}</p>}
+        renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
       >
         <button
           type="button"

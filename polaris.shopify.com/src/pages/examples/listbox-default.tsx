@@ -1,6 +1,6 @@
-import { Listbox } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Listbox} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function BaseListboxExample() {
   return (

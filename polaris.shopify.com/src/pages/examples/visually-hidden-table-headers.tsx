@@ -1,6 +1,6 @@
-import { VisuallyHidden } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {VisuallyHidden} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function VisuallyHiddenExample() {
   return (

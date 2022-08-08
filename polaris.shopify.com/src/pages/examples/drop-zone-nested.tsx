@@ -1,7 +1,7 @@
-import { DropZone, Stack, Thumbnail, Caption, Card } from "@shopify/polaris";
-import { NoteMinor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {DropZone, Stack, Thumbnail, Caption, Card} from '@shopify/polaris';
+import {NoteMinor} from '@shopify/polaris-icons';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function NestedDropZoneExample() {
   const [files, setFiles] = useState([]);
@@ -12,7 +12,7 @@ function NestedDropZoneExample() {
 
   const handleDropZoneClick = useCallback(() => {}, []);
 
-  const validImageTypes = ["image/gif", "image/jpeg", "image/png"];
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (

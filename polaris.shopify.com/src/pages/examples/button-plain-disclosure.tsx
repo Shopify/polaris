@@ -1,6 +1,6 @@
-import { Button } from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Button} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function DisclosureButton() {
   const [expanded, setExpanded] = useState(false);
@@ -8,12 +8,12 @@ function DisclosureButton() {
   return (
     <Button
       plain
-      disclosure={expanded ? "up" : "down"}
+      disclosure={expanded ? 'up' : 'down'}
       onClick={() => {
         setExpanded(!expanded);
       }}
     >
-      {expanded ? "Show less" : "Show more"}
+      {expanded ? 'Show less' : 'Show more'}
     </Button>
   );
 }
