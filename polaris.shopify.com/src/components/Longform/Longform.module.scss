@@ -173,8 +173,16 @@
 
     th,
     td {
-      padding: 0.6rem 1rem;
+      padding: 0.6rem .70588rem;
       border-bottom: 1px solid var(--border-color-light);
+
+      &:first-child {
+        padding-left: 1.5rem;
+      }
+
+      &:last-child {
+        padding-right: 1.5rem;
+      }
 
       @media screen and (min-width: $breakpointDesktop) {
         &:first-child {
