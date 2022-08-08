@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import Fuse from 'fuse.js';
 import {useRouter} from 'next/router';
 import {Dialog} from '@headlessui/react';
-import * as iconMetadata from '@shopify/polaris-icons/metadata';
+import metadata from '@shopify/polaris-icons/metadata';
 import type {Icon} from '@shopify/polaris-icons/metadata';
 import {useMedia} from '../../utils/hooks';
 import styles from './IconsPage.module.scss';
@@ -13,6 +13,8 @@ import Image from '../Image';
 import IconDetails from '../IconDetails';
 import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
+
+const iconMetadata = metadata;
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,

@@ -8,10 +8,12 @@ import {
 import {tokens, TokenProperties} from '@shopify/polaris-tokens';
 import Fuse from 'fuse.js';
 import {slugify, stripMarkdownLinks} from './various';
-import iconMetadata from '@shopify/polaris-icons/metadata';
+import metadata from '@shopify/polaris-icons/metadata';
 
 import components from '../data/components.json';
 import foundations from '../data/foundations.json';
+
+const iconMetadata = metadata;
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   foundations: 8,
