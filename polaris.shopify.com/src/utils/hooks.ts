@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
 
-import { ParsedUrlQueryInput } from "querystring";
+import {ParsedUrlQueryInput} from 'querystring';
 
 const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
 
@@ -26,7 +26,7 @@ export const useCopyToClipboard = (stringToCopy: string) => {
 
 export type TOCItem = {
   title: string;
-  element: "H2" | "H3";
+  element: 'H2' | 'H3';
   id: string;
   children: TOCItem[];
 };
@@ -39,35 +39,35 @@ export const useTOC = (children: React.ReactNode) => {
     let currentNode: TOCItem | null = null;
 
     const headings =
-      document.querySelectorAll<HTMLHeadingElement>("h2[id], h3[id]");
+      document.querySelectorAll<HTMLHeadingElement>('h2[id], h3[id]');
     headings.forEach((el, i) => {
-      const id = el.getAttribute("id");
-      if (typeof el.textContent === "string" && id) {
+      const id = el.getAttribute('id');
+      if (typeof el.textContent === 'string' && id) {
         if (currentNode === null) {
-          if (el.tagName === "H2") {
+          if (el.tagName === 'H2') {
             currentNode = {
               title: el.textContent,
               id,
-              element: "H2",
+              element: 'H2',
               children: [],
             };
           }
         } else {
-          if (el.tagName === "H2") {
+          if (el.tagName === 'H2') {
             tocNodes.push(currentNode);
             currentNode = {
               title: el.textContent,
               id,
-              element: "H2",
+              element: 'H2',
               children: [],
             };
-          } else if (el.tagName === "H3") {
-            if (currentNode.element === "H2") {
-              if (el.closest(".usage-list") === null) {
+          } else if (el.tagName === 'H3') {
+            if (currentNode.element === 'H2') {
+              if (el.closest('.usage-list') === null) {
                 currentNode.children.push({
                   title: el.textContent,
                   id,
-                  element: "H3",
+                  element: 'H3',
                   children: [],
                 });
               }
@@ -93,7 +93,7 @@ export function useMedia(media: string): boolean {
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       const mediaQueryList = window.matchMedia(media);
 
       setIsActive(mediaQueryList.matches);
@@ -102,10 +102,10 @@ export function useMedia(media: string): boolean {
         setIsActive(evt.matches);
       };
 
-      mediaQueryList.addEventListener("change", listener);
+      mediaQueryList.addEventListener('change', listener);
 
       return () => {
-        mediaQueryList.removeEventListener("change", listener);
+        mediaQueryList.removeEventListener('change', listener);
       };
     }
   }, [media]);
@@ -126,13 +126,13 @@ export function useQueryParams() {
         },
       },
       undefined,
-      { shallow: true }
+      {shallow: true},
     );
   };
 
   return {
     routerIsReady: router.isReady,
-    currentParams: { ...router.query },
+    currentParams: {...router.query},
     setQueryParams,
   };
 }

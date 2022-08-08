@@ -4,30 +4,30 @@ import {
   Avatar,
   ResourceItem,
   TextStyle,
-} from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ResourceListWithSelectionExample() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
   const items = [
     {
       id: 101,
-      url: "customers/341",
-      name: "Mae Jemison",
-      location: "Decatur, USA",
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
     },
     {
       id: 201,
-      url: "customers/256",
-      name: "Ellen Ochoa",
-      location: "Los Angeles, USA",
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
     },
   ];
 
@@ -45,7 +45,7 @@ function ResourceListWithSelectionExample() {
   );
 
   function renderItem(item) {
-    const { id, url, name, location } = item;
+    const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
     return (

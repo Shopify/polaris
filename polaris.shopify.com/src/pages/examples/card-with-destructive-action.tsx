@@ -1,6 +1,6 @@
-import { Card } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Card} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
@@ -10,10 +10,7 @@ function CardExample() {
       </Card.Section>
       <Card.Section
         title="Contact Information"
-        actions={[
-          { content: "Delete", destructive: true },
-          { content: "Edit" },
-        ]}
+        actions={[{content: 'Delete', destructive: true}, {content: 'Edit'}]}
       >
         <p>john.smith@example.com</p>
       </Card.Section>

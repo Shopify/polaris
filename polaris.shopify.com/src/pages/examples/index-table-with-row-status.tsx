@@ -3,41 +3,41 @@ import {
   TextStyle,
   Card,
   useIndexResourceState,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function IndexTableWithRowStatusExample() {
   const customers = [
     {
-      id: "3411",
-      url: "customers/341",
-      name: "Mae Jemison",
-      location: "Decatur, USA",
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
       orders: 20,
-      amountSpent: "$2,400",
-      status: "success",
+      amountSpent: '$2,400',
+      status: 'success',
     },
     {
-      id: "2561",
-      url: "customers/256",
-      name: "Ellen Ochoa",
-      location: "Los Angeles, USA",
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
       orders: 30,
-      amountSpent: "$140",
-      status: "subdued",
+      amountSpent: '$140',
+      status: 'subdued',
     },
   ];
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
-  const { selectedResources, allResourcesSelected, handleSelectionChange } =
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(customers);
 
   const rowMarkup = customers.map(
-    ({ id, name, location, orders, amountSpent, status }, index) => (
+    ({id, name, location, orders, amountSpent, status}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -52,7 +52,7 @@ function IndexTableWithRowStatusExample() {
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
       </IndexTable.Row>
-    )
+    ),
   );
 
   return (
@@ -61,14 +61,14 @@ function IndexTableWithRowStatusExample() {
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
-          allResourcesSelected ? "All" : selectedResources.length
+          allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
         headings={[
-          { title: "Name" },
-          { title: "Location" },
-          { title: "Order count" },
-          { title: "Amount spent" },
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
         ]}
       >
         {rowMarkup}

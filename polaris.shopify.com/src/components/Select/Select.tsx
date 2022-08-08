@@ -1,8 +1,8 @@
-import { className } from "../../utils/various";
+import {className} from '../../utils/various';
 
-import Image from "../Image";
+import Image from '../Image';
 
-import styles from "./Select.module.scss";
+import styles from './Select.module.scss';
 
 interface SelectOption {
   label: string;
@@ -43,7 +43,7 @@ const Select = ({
         onChange={onChange}
       >
         {options.map((option) => {
-          const { value, label } = option;
+          const {value, label} = option;
 
           return (
             <option key={value} value={value}>

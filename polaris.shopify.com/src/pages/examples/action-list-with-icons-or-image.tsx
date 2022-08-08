@@ -1,7 +1,7 @@
-import { Button, Popover, ActionList } from "@shopify/polaris";
-import { ImportMinor, ExportMinor } from "@shopify/polaris-icons";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Button, Popover, ActionList} from '@shopify/polaris';
+import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ActionListWithMediaExample() {
   const [active, setActive] = useState(true);
@@ -15,7 +15,7 @@ function ActionListWithMediaExample() {
   );
 
   return (
-    <div style={{ height: "200px" }}>
+    <div style={{height: '200px'}}>
       <Popover
         active={active}
         activator={activator}
@@ -25,8 +25,8 @@ function ActionListWithMediaExample() {
         <ActionList
           actionRole="menuitem"
           items={[
-            { content: "Import file", icon: ImportMinor },
-            { content: "Export file", icon: ExportMinor },
+            {content: 'Import file', icon: ImportMinor},
+            {content: 'Export file', icon: ExportMinor},
           ]}
         />
       </Popover>

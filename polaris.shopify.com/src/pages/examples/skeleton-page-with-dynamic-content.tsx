@@ -5,9 +5,9 @@ import {
   SkeletonBodyText,
   TextContainer,
   SkeletonDisplayText,
-} from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function SkeletonExample() {
   return (

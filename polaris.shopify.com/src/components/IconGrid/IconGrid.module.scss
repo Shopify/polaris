@@ -1,11 +1,11 @@
-@import "../../styles/mixins.scss";
+@import '../../styles/mixins.scss';
 
 .IconGrid {
   border-radius: var(--border-radius-600);
   position: relative;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
@@ -48,7 +48,7 @@
   }
 
   @media (hover: hover) {
-    &[data-is-current-result="true"] {
+    &[data-is-current-result='true'] {
       background: var(--search-highlight-color);
       box-shadow: none;
     }

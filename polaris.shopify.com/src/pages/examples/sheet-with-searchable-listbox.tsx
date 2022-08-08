@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, {useState, useCallback} from 'react';
 import {
   TextField,
   Stack,
@@ -14,10 +14,10 @@ import {
   Button,
   EmptySearchResult,
   TextContainer,
-} from "@shopify/polaris";
-import { MobileCancelMajor, SearchMinor } from "@shopify/polaris-icons";
+} from '@shopify/polaris';
+import {MobileCancelMajor, SearchMinor} from '@shopify/polaris-icons';
 
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 interface CustomerSegment {
   id: string;
@@ -25,68 +25,68 @@ interface CustomerSegment {
   value: string;
 }
 
-const actionValue = "__ACTION__";
+const actionValue = '__ACTION__';
 
 const segments: CustomerSegment[] = [
   {
-    label: "All customers",
-    id: "gid://shopify/CustomerSegment/1",
-    value: "0",
+    label: 'All customers',
+    id: 'gid://shopify/CustomerSegment/1',
+    value: '0',
   },
   {
-    label: "VIP customers",
-    id: "gid://shopify/CustomerSegment/2",
-    value: "1",
+    label: 'VIP customers',
+    id: 'gid://shopify/CustomerSegment/2',
+    value: '1',
   },
   {
-    label: "New customers",
-    id: "gid://shopify/CustomerSegment/3",
-    value: "2",
+    label: 'New customers',
+    id: 'gid://shopify/CustomerSegment/3',
+    value: '2',
   },
   {
-    label: "Abandoned carts - last 30 days",
-    id: "gid://shopify/CustomerSegment/4",
-    value: "3",
+    label: 'Abandoned carts - last 30 days',
+    id: 'gid://shopify/CustomerSegment/4',
+    value: '3',
   },
   {
-    label: "Wholesale customers",
-    id: "gid://shopify/CustomerSegment/5",
-    value: "4",
+    label: 'Wholesale customers',
+    id: 'gid://shopify/CustomerSegment/5',
+    value: '4',
   },
   {
-    label: "Email subscribers",
-    id: "gid://shopify/CustomerSegment/6",
-    value: "5",
+    label: 'Email subscribers',
+    id: 'gid://shopify/CustomerSegment/6',
+    value: '5',
   },
   {
-    label: "From New York",
-    id: "gid://shopify/CustomerSegment/7",
-    value: "6",
+    label: 'From New York',
+    id: 'gid://shopify/CustomerSegment/7',
+    value: '6',
   },
   {
-    label: "Repeat buyers",
-    id: "gid://shopify/CustomerSegment/8",
-    value: "7",
+    label: 'Repeat buyers',
+    id: 'gid://shopify/CustomerSegment/8',
+    value: '7',
   },
   {
-    label: "First time buyers",
-    id: "gid://shopify/CustomerSegment/9",
-    value: "8",
+    label: 'First time buyers',
+    id: 'gid://shopify/CustomerSegment/9',
+    value: '8',
   },
   {
-    label: "From Canada",
-    id: "gid://shopify/CustomerSegment/10",
-    value: "9",
+    label: 'From Canada',
+    id: 'gid://shopify/CustomerSegment/10',
+    value: '9',
   },
   {
-    label: "Bought in last 60 days",
-    id: "gid://shopify/CustomerSegment/11",
-    value: "10",
+    label: 'Bought in last 60 days',
+    id: 'gid://shopify/CustomerSegment/11',
+    value: '10',
   },
   {
-    label: "Bought last BFCM",
-    id: "gid://shopify/CustomerSegment/12",
-    value: "11",
+    label: 'Bought last BFCM',
+    id: 'gid://shopify/CustomerSegment/12',
+    value: '11',
   },
 ];
 
@@ -95,7 +95,7 @@ const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
     label: `Other customers ${index + 12}`,
     id: `gid://shopify/CustomerSegment/${index + 12}`,
     value: `${index + 12}`,
-  })
+  }),
 );
 
 segments.push(...lazyLoadSegments);
@@ -105,14 +105,14 @@ const interval = 25;
 function SheetWithSearchableListboxExample() {
   const [sheetOpen, setSheetOpen] = useState(true);
   const [showFooterAction, setShowFooterAction] = useState(true);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const [lazyLoading, setLazyLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
   const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
-    []
+    [],
   );
 
   const handleClickShowAll = () => {
@@ -137,7 +137,7 @@ function SheetWithSearchableListboxExample() {
   };
 
   const handleQueryClear = () => {
-    handleQueryChange("");
+    handleQueryChange('');
   };
 
   const handleResetVisibleOptionIndex = () => {
@@ -150,7 +150,7 @@ function SheetWithSearchableListboxExample() {
 
   const handleCloseSheet = () => {
     setSheetOpen(false);
-    handleQueryChange("");
+    handleQueryChange('');
     handleResetVisibleOptionIndex();
   };
 
@@ -192,7 +192,7 @@ function SheetWithSearchableListboxExample() {
     }
   };
 
-  const listboxId = "SearchableListboxInSheet";
+  const listboxId = 'SearchableListboxInSheet';
 
   /* Your app's feature/context specific activator here */
   const activator = (
@@ -204,11 +204,11 @@ function SheetWithSearchableListboxExample() {
   const textFieldMarkup = (
     <div
       style={{
-        padding: "var(--p-space-4) var(--p-space-2)",
-        position: "sticky",
-        zIndex: "var(--p-z-12)",
-        width: "100%",
-        background: "var(--p-surface)",
+        padding: 'var(--p-space-4) var(--p-space-2)',
+        position: 'sticky',
+        zIndex: 'var(--p-z-12)',
+        width: '100%',
+        background: 'var(--p-surface)',
       }}
     >
       <StopPropagation>
@@ -236,7 +236,7 @@ function SheetWithSearchableListboxExample() {
     segmentOptions.length > 0
       ? segmentOptions
           .slice(0, visibleOptionIndex)
-          .map(({ label, id, value }) => {
+          .map(({label, id, value}) => {
             const selected = segments[selectedSegmentIndex].id === id;
 
             return (
@@ -251,16 +251,14 @@ function SheetWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{ color: "var(--p-interactive)" }}>
-        Show all 111 segments
-      </span>
+      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
     </Listbox.Action>
   ) : null;
 
   const lazyLoadingMarkup = lazyLoading ? (
     <Listbox.Loading
       accessibilityLabel={`${
-        query ? "Filtering" : "Loading"
+        query ? 'Filtering' : 'Loading'
       } customer segments`}
     />
   ) : null;
@@ -276,9 +274,9 @@ function SheetWithSearchableListboxExample() {
   const listboxMarkup = (
     <div
       style={{
-        position: "relative",
-        width: "100%",
-        height: "100%",
+        position: 'relative',
+        width: '100%',
+        height: '100%',
       }}
     >
       <Listbox
@@ -298,7 +296,7 @@ function SheetWithSearchableListboxExample() {
   );
 
   return (
-    <div style={{ height: "265px" }}>
+    <div style={{height: '265px'}}>
       {activator}
       <Sheet
         open={sheetOpen}
@@ -307,28 +305,28 @@ function SheetWithSearchableListboxExample() {
       >
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
           }}
         >
           <div
             style={{
-              alignItems: "flex-start",
-              borderBottom: "1px solid #DFE3E8",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              width: "100%",
-              padding: "var(--p-space-4)",
+              alignItems: 'flex-start',
+              borderBottom: '1px solid #DFE3E8',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              width: '100%',
+              padding: 'var(--p-space-4)',
             }}
           >
             <div
               style={{
-                alignItems: "center",
-                display: "flex",
-                justifyContent: "space-between",
-                width: "100%",
-                marginBottom: "var(--p-space-2)",
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '100%',
+                marginBottom: 'var(--p-space-2)',
               }}
             >
               <TextStyle variation="subdued">
@@ -350,15 +348,15 @@ function SheetWithSearchableListboxExample() {
           </div>
           <div
             style={{
-              alignItems: "stretch",
-              borderTop: "1px solid #DFE3E8",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "stretch",
-              position: "relative",
-              width: "100%",
-              height: "100%",
-              overflow: "hidden",
+              alignItems: 'stretch',
+              borderTop: '1px solid #DFE3E8',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'stretch',
+              position: 'relative',
+              width: '100%',
+              height: '100%',
+              overflow: 'hidden',
             }}
           >
             {textFieldMarkup}
@@ -366,10 +364,10 @@ function SheetWithSearchableListboxExample() {
             <Scrollable
               shadow
               style={{
-                position: "relative",
-                width: "100%",
-                height: "292px",
-                padding: "var(--p-space-2) 0",
+                position: 'relative',
+                width: '100%',
+                height: '292px',
+                padding: 'var(--p-space-2) 0',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >
@@ -382,7 +380,7 @@ function SheetWithSearchableListboxExample() {
   );
 }
 
-const StopPropagation = ({ children }: React.PropsWithChildren<any>) => {
+const StopPropagation = ({children}: React.PropsWithChildren<any>) => {
   const stopEventPropagation = (event: React.MouseEvent | React.TouchEvent) => {
     event.stopPropagation();
   };

@@ -1,3 +1,3 @@
-import YoutubeVideo from "./YoutubeVideo";
+import YoutubeVideo from './YoutubeVideo';
 
 export default YoutubeVideo;

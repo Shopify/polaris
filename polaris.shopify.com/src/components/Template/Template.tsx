@@ -1,4 +1,4 @@
-import styles from "./Template.module.scss";
+import styles from './Template.module.scss';
 
 interface Props {}
 

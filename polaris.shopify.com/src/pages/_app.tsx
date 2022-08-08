@@ -1,19 +1,19 @@
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import Script from "next/script";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
+import type {AppProps} from 'next/app';
+import Head from 'next/head';
+import Script from 'next/script';
+import {useEffect} from 'react';
+import {useRouter} from 'next/router';
 
-import "../styles/globals.scss";
-import Page from "../components/Page";
-import * as ga from "../lib/ga";
+import '../styles/globals.scss';
+import Page from '../components/Page';
+import * as ga from '../lib/ga';
 
 // Remove dark mode flicker. Minified version of https://github.com/donavon/use-dark-mode/blob/develop/noflash.js.txt
 const noflash = `!function(){var b="darkMode",g="dark-mode",j="light-mode";function d(a){document.body.classList.add(a?g:j),document.body.classList.remove(a?j:g)}var e="(prefers-color-scheme: dark)",c=window.matchMedia(e),h=c.media===e,a=null;try{a=localStorage.getItem(b)}catch(k){}var f=null!==a;if(f&&(a=JSON.parse(a)),f)d(a);else if(h)d(c.matches),localStorage.setItem(b,c.matches);else{var i=document.body.classList.contains(g);localStorage.setItem(b,JSON.stringify(i))}}()`;
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
-  const isProd = process.env.NODE_ENV === "production";
+  const isProd = process.env.NODE_ENV === 'production';
 
   useEffect(() => {
     if (!isProd) return;
@@ -22,18 +22,18 @@ function MyApp({ Component, pageProps }: AppProps) {
       ga.pageview(url);
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
-    router.events.on("hashChangeComplete", handleRouteChange);
+    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on('hashChangeComplete', handleRouteChange);
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-      router.events.off("hashChangeComplete", handleRouteChange);
+      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off('hashChangeComplete', handleRouteChange);
     };
   }, [router.events, isProd]);
 
   const ogImageHash =
-    `${router.asPath.replace("/", "").replace(/\//g, "--")}` || "home";
+    `${router.asPath.replace('/', '').replace(/\//g, '--')}` || 'home';
   const ogImagePath = `${
-    typeof window !== "undefined" ? `https://${window.location.hostname}` : ""
+    typeof window !== 'undefined' ? `https://${window.location.hostname}` : ''
   }/open-graph/${ogImageHash}.jpg`;
 
   return (
@@ -62,7 +62,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       ) : null}
 
       <Page>
-        <script dangerouslySetInnerHTML={{ __html: noflash }}></script>
+        <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />

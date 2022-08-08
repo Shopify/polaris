@@ -1,5 +1,5 @@
-@import "../../styles/variables.scss";
-@import "../../styles/fonts.scss";
+@import '../../styles/variables.scss';
+@import '../../styles/fonts.scss';
 
 .TokenList {
   --table-border-color: var(--border-color-light);
@@ -57,7 +57,7 @@
     position: relative;
 
     @media (hover: hover) {
-      &[data-is-current-result="true"] {
+      &[data-is-current-result='true'] {
         &,
         &:hover {
           background: var(--search-highlight-color);
@@ -78,7 +78,7 @@
 
         td:first-child {
           &:before {
-            content: "";
+            content: '';
             display: block;
             position: absolute;
             top: 0;
@@ -96,7 +96,7 @@
 
         td:last-child {
           &:before {
-            content: "";
+            content: '';
             display: block;
             position: absolute;
             top: 0;
@@ -122,7 +122,7 @@
     position: relative;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
