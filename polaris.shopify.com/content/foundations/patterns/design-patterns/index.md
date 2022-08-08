@@ -1,5 +1,6 @@
 ---
-name: Design Patterns
+title: Design Patterns
+description: Whenever possible we strive to establish and reuse the best solutions to merchant situations. Identifying and documenting design patterns is one way to make this possible.
 slug: design-patterns
 keywords:
   - patterns
@@ -8,9 +9,7 @@ keywords:
   - principles
 ---
 
-# Design patterns
-
-A pattern is a repeatable solution to a common UX problem in a specific merchant situation. Using the right pattern in the right context makes the Shopify admin familiar and easy to use.
+A design pattern is a repeatable solution to a common UX problem in a specific merchant situation. Using the right pattern in the right context makes the Shopify admin familiar and easy to use.
 
 ---
 
