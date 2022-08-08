@@ -2,7 +2,7 @@ import Image from '../Image';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import {className} from '../../utils/various';
 import styles from './IconGrid.module.scss';
-import {Icon} from '@shopify/polaris-icons/metadata';
+import type {Icon} from '@shopify/polaris-icons/metadata';
 import Link from 'next/link';
 
 interface IconGridProps {

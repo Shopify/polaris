@@ -275,6 +275,11 @@ export default [
         entryFileNames: '[name].js',
         exports: 'default',
       },
+      {
+        dir: 'dist',
+        format: 'esm',
+        entryFileNames: '[name].mjs',
+      },
     ],
     plugins: [
       virtual({

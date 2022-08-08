@@ -4,7 +4,7 @@ import fs from 'fs';
 
 import glob from 'glob';
 
-import packageJSON from '../package.json';
+import packageJSON from '../package.json' assert {type: 'json'};
 
 const assertStrict = assert.strict;
 

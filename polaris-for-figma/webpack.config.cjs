@@ -1,9 +1,9 @@
-import path from 'path';
+const path = require('path');
 
-import HtmlWebpackInlineSourcePlugin from 'html-webpack-inline-source-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-export default (env, argv) => ({
+module.exports = (env, argv) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
   // This is necessary because Figma's 'eval' works differently than normal eval
   devtool: argv.mode === 'production' ? false : 'inline-source-map',

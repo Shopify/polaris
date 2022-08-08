@@ -1,5 +1,5 @@
-import {TokenProperties} from '@shopify/polaris-tokens';
-import {Icon} from '@shopify/polaris-icons/metadata';
+import type {TokenProperties} from '@shopify/polaris-tokens';
+import type {Icon} from '@shopify/polaris-icons/metadata';
 
 export type MarkdownFile = {
   frontMatter: any;
