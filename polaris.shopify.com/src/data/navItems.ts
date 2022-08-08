@@ -16,7 +16,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       {
         title: "About Polaris",
         url: "/foundations/foundations/about-polaris",
-        icon: "HeartMajor",
+        icon: "HintMajor",
         description:
           "Learn what the Polaris design system is and how it's used by designers and developers to build world-class Shopify admin experiences.",
       },
