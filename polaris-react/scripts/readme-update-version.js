@@ -10,26 +10,22 @@ const {name: pkgName} = require('../package.json');
 const {semverRegExp} = require('../scripts/utilities');
 
 const root = resolve(__dirname, '..');
-
-const readmes = Object.freeze(['README.md']);
+const readmePath = resolve(root, 'README.md');
 
 const run = async () => {
   const {releases} = await getReleasePlan(resolve(process.cwd(), '../'));
   const {newVersion} = releases.find((release) => release.name === pkgName);
 
-  console.log(`🆕 Updating version in ${readmes.join(', ')}...`);
-  readmes
-    .map((readme) => resolve(root, readme))
-    .forEach((file) => {
-      writeFileSync(
-        file,
-        readFileSync(file, 'utf8').replace(semverRegExp, newVersion),
-      );
-    });
+  console.log(`🆕 Updating version in README.md...`);
 
-  console.log(`🏃‍♂️ Running \`git add -A ${readmes.join(' ')}\`...`);
+  writeFileSync(
+    readmePath,
+    readFileSync(readmePath, 'utf8').replace(semverRegExp, newVersion),
+  );
+
+  console.log(`🏃‍♂️ Running \`git add -A README.md\`...`);
   const execOpts = {stdio: 'inherit'};
-  execSync(`git add -A ${readmes.join(' ')}`, execOpts);
+  execSync(`git add -A README.md`, execOpts);
 };
 
 try {
@@ -38,5 +34,3 @@ try {
   console.error(err);
   process.exit(1);
 }
-
-module.exports = readmes;
