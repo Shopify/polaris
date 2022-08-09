@@ -55,7 +55,7 @@ Polaris React Native components are also used in the Shopify admin iOS and Andro
 
 ### Compositions
 
-Polaris tokens and components can be assembled together to solve any number of merchant needs in the admin. Compositions_ _are the result of design tokens and/or primitives being put together to create a specific user experience. 
+Polaris tokens and components can be assembled together to solve any number of merchant needs in the admin. Compositions are the result of design tokens and/or primitives being put together to create a specific user experience. 
 
 Many of our primitive components are built with Polaris design tokens, and many of our design patterns can be composed using primitive components. 
 
