@@ -1,6 +1,6 @@
 ---
 title: About Polaris
-description: Learn what the Polaris design system is and how it's used by designers and developers to build world-class Shopify admin experiences.
+description: Learn what the Polaris design system is and how it’s used by designers and developers to build world-class Shopify admin experiences.
 keywords:
   - about
   - polaris
