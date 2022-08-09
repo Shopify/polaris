@@ -10,10 +10,10 @@ import Fuse from "fuse.js";
 import { slugify, stripMarkdownLinks } from "./various";
 import iconMetadata from "@shopify/polaris-icons/metadata";
 
-import components from "../data/components.json";
-import foundations from "../data/foundations.json";
+import components from '../data/components.json';
+import foundations from '../data/foundations.json';
 
-const MAX_RESULTS: { [key in SearchResultCategory]: number } = {
+const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   foundations: 8,
   components: 6,
   tokens: 5,
@@ -25,23 +25,23 @@ const { colors, depth, font, motion, shape, spacing, zIndex } = metadata;
 let results: SearchResults = [];
 
 // Add components
-components.forEach(({ frontMatter: { name, status }, intro }) => {
+components.forEach(({frontMatter: {title, status}, description}) => {
   const typedStatus: Status | undefined = status
     ? {
-        value: status.value.toLowerCase() as Status["value"],
+        value: status.value.toLowerCase() as Status['value'],
         message: status.message,
       }
     : undefined;
 
   results.push({
-    id: slugify(`components ${name}`),
-    category: "components",
+    id: slugify(`components ${title}`),
+    category: 'components',
     score: 0,
-    url: `/components/${slugify(name)}`,
+    url: `/components/${slugify(title)}`,
     meta: {
       components: {
-        name,
-        description: stripMarkdownLinks(intro),
+        title,
+        description: stripMarkdownLinks(description),
         status: typedStatus,
       },
     },
@@ -62,7 +62,7 @@ Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
     ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
       results.push({
         id: slugify(`tokens ${tokenName}`),
-        category: "tokens",
+        category: 'tokens',
         score: 0,
         url: `/tokens/${slugify(groupSlug)}#${tokenName}`,
         meta: {
@@ -70,13 +70,13 @@ Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
             category: groupSlug,
             token: {
               name: tokenName,
-              description: tokenProperties.description || "",
+              description: tokenProperties.description || '',
               value: tokenProperties.value,
             },
           },
         },
       });
-    }
+    },
   );
 });
 
@@ -84,7 +84,7 @@ Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
 Object.keys(iconMetadata).forEach((fileName) => {
   results.push({
     id: slugify(`icons ${fileName} ${iconMetadata[fileName].set}`),
-    category: "icons",
+    category: 'icons',
     url: `/icons?icon=${fileName}`,
     score: 0,
     meta: {
@@ -96,19 +96,22 @@ Object.keys(iconMetadata).forEach((fileName) => {
 });
 
 // Add foundations
-foundations.forEach(({ frontMatter: { name }, intro, category }) => {
-  const url = `/foundations/${category}/${slugify(name)}`;
+foundations.forEach((data) => {
+  const {title, icon} = data.frontMatter;
+  const {description, category} = data;
+  const url = `/foundations/${category}/${slugify(title)}`;
 
   results.push({
-    id: slugify(`foundations ${name}`),
-    category: "foundations",
+    id: slugify(`foundations ${title}`),
+    category: 'foundations',
     score: 0,
     url,
     meta: {
       foundations: {
-        title: name,
-        excerpt: intro,
-        category: category || "",
+        title,
+        icon: icon || '',
+        description,
+        category: category || '',
       },
     },
   });
@@ -117,23 +120,23 @@ foundations.forEach(({ frontMatter: { name }, intro, category }) => {
 const fuse = new Fuse(results, {
   keys: [
     // Foundations
-    { name: "meta.foundations.title", weight: 100 },
-    { name: "meta.foundations.excerpt", weight: 50 },
+    {name: 'meta.foundations.title', weight: 100},
+    {name: 'meta.foundations.description', weight: 50},
 
     // Components
-    { name: "meta.components.name", weight: 100 },
-    { name: "meta.components.description", weight: 50 },
+    {name: 'meta.components.title', weight: 100},
+    {name: 'meta.components.description', weight: 50},
 
     // Tokens
-    { name: "meta.tokens.token.name", weight: 200 },
-    { name: "meta.tokens.token.value", weight: 50 },
+    {name: 'meta.tokens.token.name', weight: 200},
+    {name: 'meta.tokens.token.value', weight: 50},
 
     // Icons
-    { name: "meta.icons.icon.fileName", weight: 50 },
-    { name: "meta.icons.icon.name", weight: 50 },
-    { name: "meta.icons.icon.keywords", weight: 20 },
-    { name: "meta.icons.icon.set", weight: 20 },
-    { name: "meta.icons.icon.description", weight: 50 },
+    {name: 'meta.icons.icon.fileName', weight: 50},
+    {name: 'meta.icons.icon.name', weight: 50},
+    {name: 'meta.icons.icon.keywords', weight: 20},
+    {name: 'meta.icons.icon.set', weight: 20},
+    {name: 'meta.icons.icon.description', weight: 50},
   ],
   includeScore: true,
   threshold: 0.5,
@@ -157,13 +160,13 @@ export function search(query: string): GroupedSearchResults {
         category,
         results: scoredResults
           .filter((result) => result.category === category)
-          .map((result) => ({ ...result, score: result.score || 0 }))
+          .map((result) => ({...result, score: result.score || 0}))
           .slice(0, MAX_RESULTS[category]),
       });
     });
 
     groupedResults.sort(
-      (a, b) => (a.results[0]?.score || 0) - (b.results[0]?.score || 0)
+      (a, b) => (a.results[0]?.score || 0) - (b.results[0]?.score || 0),
     );
   }
 

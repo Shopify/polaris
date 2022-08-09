@@ -7,9 +7,9 @@ import {
   Filters,
   Avatar,
   TextStyle,
-} from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ResourceListFiltersExample() {
   const [accountStatus, setAccountStatus] = useState(null);
@@ -19,23 +19,23 @@ function ResourceListFiltersExample() {
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
-    []
+    [],
   );
   const handleMoneySpentChange = useCallback(
     (value) => setMoneySpent(value),
-    []
+    [],
   );
   const handleTaggedWithChange = useCallback(
     (value) => setTaggedWith(value),
-    []
+    [],
   );
   const handleFiltersQueryChange = useCallback(
     (value) => setQueryValue(value),
-    []
+    [],
   );
   const handleAccountStatusRemove = useCallback(
     () => setAccountStatus(null),
-    []
+    [],
   );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
@@ -54,17 +54,17 @@ function ResourceListFiltersExample() {
 
   const filters = [
     {
-      key: "accountStatus",
-      label: "Account status",
+      key: 'accountStatus',
+      label: 'Account status',
       filter: (
         <ChoiceList
           title="Account status"
           titleHidden
           choices={[
-            { label: "Enabled", value: "enabled" },
-            { label: "Not invited", value: "not invited" },
-            { label: "Invited", value: "invited" },
-            { label: "Declined", value: "declined" },
+            {label: 'Enabled', value: 'enabled'},
+            {label: 'Not invited', value: 'not invited'},
+            {label: 'Invited', value: 'invited'},
+            {label: 'Declined', value: 'declined'},
           ]}
           selected={accountStatus || []}
           onChange={handleAccountStatusChange}
@@ -74,8 +74,8 @@ function ResourceListFiltersExample() {
       shortcut: true,
     },
     {
-      key: "taggedWith",
-      label: "Tagged with",
+      key: 'taggedWith',
+      label: 'Tagged with',
       filter: (
         <TextField
           label="Tagged with"
@@ -88,8 +88,8 @@ function ResourceListFiltersExample() {
       shortcut: true,
     },
     {
-      key: "moneySpent",
-      label: "Money spent",
+      key: 'moneySpent',
+      label: 'Money spent',
       filter: (
         <RangeSlider
           label="Money spent is between"
@@ -108,7 +108,7 @@ function ResourceListFiltersExample() {
 
   const appliedFilters = [];
   if (!isEmpty(accountStatus)) {
-    const key = "accountStatus";
+    const key = 'accountStatus';
     appliedFilters.push({
       key,
       label: disambiguateLabel(key, accountStatus),
@@ -116,7 +116,7 @@ function ResourceListFiltersExample() {
     });
   }
   if (!isEmpty(moneySpent)) {
-    const key = "moneySpent";
+    const key = 'moneySpent';
     appliedFilters.push({
       key,
       label: disambiguateLabel(key, moneySpent),
@@ -124,7 +124,7 @@ function ResourceListFiltersExample() {
     });
   }
   if (!isEmpty(taggedWith)) {
-    const key = "taggedWith";
+    const key = 'taggedWith';
     appliedFilters.push({
       key,
       label: disambiguateLabel(key, taggedWith),
@@ -133,10 +133,10 @@ function ResourceListFiltersExample() {
   }
 
   return (
-    <div style={{ height: "568px" }}>
+    <div style={{height: '568px'}}>
       <Card>
         <ResourceList
-          resourceName={{ singular: "customer", plural: "customers" }}
+          resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
             <Filters
               queryValue={queryValue}
@@ -150,19 +150,19 @@ function ResourceListFiltersExample() {
           items={[
             {
               id: 341,
-              url: "customers/341",
-              name: "Mae Jemison",
-              location: "Decatur, USA",
+              url: 'customers/341',
+              name: 'Mae Jemison',
+              location: 'Decatur, USA',
             },
             {
               id: 256,
-              url: "customers/256",
-              name: "Ellen Ochoa",
-              location: "Los Angeles, USA",
+              url: 'customers/256',
+              name: 'Ellen Ochoa',
+              location: 'Los Angeles, USA',
             },
           ]}
           renderItem={(item) => {
-            const { id, url, name, location } = item;
+            const {id, url, name, location} = item;
             const media = <Avatar customer size="medium" name={name} />;
 
             return (
@@ -186,12 +186,12 @@ function ResourceListFiltersExample() {
 
   function disambiguateLabel(key, value) {
     switch (key) {
-      case "moneySpent":
+      case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
-      case "taggedWith":
+      case 'taggedWith':
         return `Tagged with ${value}`;
-      case "accountStatus":
-        return value.map((val) => `Customer ${val}`).join(", ");
+      case 'accountStatus':
+        return value.map((val) => `Customer ${val}`).join(', ');
       default:
         return value;
     }
@@ -201,7 +201,7 @@ function ResourceListFiltersExample() {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
-      return value === "" || value == null;
+      return value === '' || value == null;
     }
   }
 }

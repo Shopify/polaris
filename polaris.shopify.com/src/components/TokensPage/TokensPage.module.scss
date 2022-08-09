@@ -1,6 +1,6 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/mixins.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
 .TokensPage {
   margin-top: var(--header-margin);
@@ -47,7 +47,7 @@
     text-align: center;
     font-weight: var(--font-weight-500);
 
-    &[aria-current="page"] {
+    &[aria-current='page'] {
       background: var(--surface-subdued);
     }
 

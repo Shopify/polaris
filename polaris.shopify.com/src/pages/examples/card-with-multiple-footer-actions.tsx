@@ -1,16 +1,16 @@
-import { Card, List } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Card, List} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
     <Card
       title="Shipment 1234"
       secondaryFooterActions={[
-        { content: "Cancel shipment", destructive: true },
-        { content: "Add another shipment", disabled: true },
+        {content: 'Cancel shipment', destructive: true},
+        {content: 'Add another shipment', disabled: true},
       ]}
-      primaryFooterAction={{ content: "Add tracking number" }}
+      primaryFooterAction={{content: 'Add tracking number'}}
     >
       <Card.Section title="Items">
         <List>

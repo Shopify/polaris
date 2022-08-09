@@ -1,16 +1,16 @@
-import { Select } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Select} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ValidationErrorExample() {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState('');
 
   const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   return (
     <Select
       label="Province"
-      options={["Alberta"]}
+      options={['Alberta']}
       value={selected}
       onChange={handleSelectChange}
       error="Province is required"

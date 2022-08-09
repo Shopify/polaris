@@ -1,14 +1,14 @@
-import { Banner } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Banner} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function BannerExample() {
   return (
     <Banner
       title="Some of your product variants are missing weights"
       status="warning"
-      action={{ content: "Edit variant weights", url: "" }}
-      secondaryAction={{ content: "Learn more", url: "" }}
+      action={{content: 'Edit variant weights', url: ''}}
+      secondaryAction={{content: 'Learn more', url: ''}}
       onDismiss={() => {}}
     >
       <p>

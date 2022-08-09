@@ -5,7 +5,7 @@ type TokenGroupKey = keyof typeof tokens;
 
 export const tokenGroupKeys = Object.keys(tokens) as TokenGroupKey[];
 
-const formats = ["json", "css"] as const;
+const formats = ['json', 'css'] as const;
 
 type Format = typeof formats[number];
 
@@ -25,7 +25,7 @@ const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
     Object.entries(tokenGroup).map(([token, value]) => [token, value])
   );
 
-  if (format === "css") {
+  if (format === 'css') {
     return Object.keys(tokenValues)
       .reduce<string[]>((result, token) => {
         const cssVariable = `${createVar(token)}: ${tokenValues[token]};`;
@@ -34,7 +34,7 @@ const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
 
         return result;
       }, [])
-      .join("\n");
+      .join('\n');
   }
 
   return tokenValues;
@@ -52,19 +52,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       tokenGroupKeys.forEach((group) => {
         const tokenGroup = tokens[group];
 
-        tokenData = { ...tokenData, ...tokenGroup };
+        tokenData = {...tokenData, ...tokenGroup};
       });
     }
 
     if (isTokenGroupKey(tokenGroupParam)) {
       const tokenGroup: TokenGroup = tokens[tokenGroupParam];
 
-      tokenData = { ...tokenData, ...tokenGroup };
+      tokenData = {...tokenData, ...tokenGroup};
     }
 
     if (Object.keys(tokenData).length === 0) {
       res.status(400);
-      res.json({ error: true, status: 400 });
+      res.json({error: true, status: 400});
       return;
     }
 

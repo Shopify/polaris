@@ -20,6 +20,7 @@ export interface RowProps {
   position: number;
   subdued?: boolean;
   status?: RowStatus;
+  disabled?: boolean;
   onNavigation?(id: string): void;
   onClick?(): void;
 }
@@ -31,6 +32,7 @@ export const Row = memo(function Row({
   position,
   subdued,
   status,
+  disabled,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -61,8 +63,9 @@ export const Row = memo(function Row({
       itemId: id,
       selected,
       onInteraction: handleInteraction,
+      disabled,
     }),
-    [id, selected, handleInteraction],
+    [id, selected, disabled, handleInteraction],
   );
 
   const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);
@@ -87,6 +90,7 @@ export const Row = memo(function Row({
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
     hovered && styles['TableRow-hovered'],
+    disabled && styles['TableRow-disabled'],
     status && styles[variationName('status', status)],
     !selectable &&
       !primaryLinkElement.current &&
@@ -95,7 +99,7 @@ export const Row = memo(function Row({
 
   let handleRowClick;
 
-  if (selectable || primaryLinkElement.current) {
+  if ((!disabled && selectable) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (!tableRowRef.current || isNavigating.current) {
         return;

@@ -154,6 +154,44 @@ describe('useIndexResourceState', () => {
         selectedResources: [selectedID],
       });
     });
+
+    it('defaults resource filter to undefined', () => {
+      const selectedID = '1';
+      const resources = [{id: selectedID}];
+      const mockComponent = mountWithApp(
+        <MockComponent resources={resources} />,
+      );
+
+      mockComponent
+        .find(TypedChild)!
+        .trigger('onClick', SelectionType.Page, true);
+
+      expect(mockComponent).toContainReactComponent(TypedChild, {
+        selectedResources: [selectedID],
+      });
+    });
+
+    it('accepts a custom resource filter', () => {
+      const selectedID = '1';
+      const resources = [{id: selectedID}, {id: '2'}];
+      const customResoureFilter = (item: typeof resources[0]) => {
+        return item.id === selectedID;
+      };
+      const mockComponent = mountWithApp(
+        <MockComponent
+          resources={resources}
+          options={{resourceFilter: customResoureFilter}}
+        />,
+      );
+
+      mockComponent
+        .find(TypedChild)!
+        .trigger('onClick', SelectionType.Page, true);
+
+      expect(mockComponent).toContainReactComponent(TypedChild, {
+        selectedResources: [selectedID],
+      });
+    });
   });
 
   describe('handleSelectionChange', () => {
@@ -237,6 +275,31 @@ describe('useIndexResourceState', () => {
     });
 
     describe('SelectionType.All', () => {
+      describe('with a custom resource filter', () => {
+        it('only selects resources that match the filter', () => {
+          const idOne = '1';
+          const idTwo = '2';
+          const resources = [{id: idOne}, {id: idTwo}];
+          const customResoureFilter = (item: typeof resources[0]) => {
+            return item.id === idOne;
+          };
+          const mockComponent = mountWithApp(
+            <MockComponent
+              resources={resources}
+              options={{resourceFilter: customResoureFilter}}
+            />,
+          );
+
+          mockComponent
+            .find(TypedChild)!
+            .trigger('onClick', SelectionType.All, true);
+
+          expect(mockComponent).toContainReactComponent(TypedChild, {
+            selectedResources: [idOne],
+          });
+        });
+      });
+
       it('selects all resources', () => {
         const idOne = '1';
         const idTwo = '2';
@@ -276,6 +339,31 @@ describe('useIndexResourceState', () => {
     });
 
     describe('SelectionType.Page', () => {
+      describe('with a custom resource filter', () => {
+        it('only selects resources that match the filter', () => {
+          const idOne = '1';
+          const idTwo = '2';
+          const resources = [{id: idOne}, {id: idTwo}];
+          const customResoureFilter = (item: typeof resources[0]) => {
+            return item.id === idOne;
+          };
+          const mockComponent = mountWithApp(
+            <MockComponent
+              resources={resources}
+              options={{resourceFilter: customResoureFilter}}
+            />,
+          );
+
+          mockComponent
+            .find(TypedChild)!
+            .trigger('onClick', SelectionType.All, true);
+
+          expect(mockComponent).toContainReactComponent(TypedChild, {
+            selectedResources: [idOne],
+          });
+        });
+      });
+
       it('selects all resources', () => {
         const idOne = '1';
         const idTwo = '2';
@@ -315,7 +403,33 @@ describe('useIndexResourceState', () => {
     });
 
     describe('SelectionType.Multi', () => {
-      it('has no effect is selection is undefined', () => {
+      describe('with a custom resource filter', () => {
+        it('only selects resources that match the filter', () => {
+          const idOne = '1';
+          const idTwo = '2';
+          const idThree = '3';
+          const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+          const customResoureFilter = (item: typeof resources[0]) => {
+            return item.id === idOne;
+          };
+          const mockComponent = mountWithApp(
+            <MockComponent
+              resources={resources}
+              options={{resourceFilter: customResoureFilter}}
+            />,
+          );
+
+          mockComponent
+            .find(TypedChild)!
+            .trigger('onClick', SelectionType.Multi, true, [0, 1]);
+
+          expect(mockComponent).toContainReactComponent(TypedChild, {
+            selectedResources: [idOne],
+          });
+        });
+      });
+
+      it('has no effect if selection is undefined', () => {
         const selectedResources = ['1', '2'];
         const mockComponent = mountWithApp(
           <MockComponent options={{selectedResources}} />,

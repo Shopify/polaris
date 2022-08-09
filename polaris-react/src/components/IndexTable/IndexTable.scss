@@ -169,6 +169,11 @@ $loading-panel-height: 53px;
   color: var(--p-text-subdued);
 }
 
+.TableRow-disabled {
+  cursor: default;
+  color: var(--p-text-subdued);
+}
+
 .TableHeading {
   padding: var(--p-space-4);
   text-align: left;

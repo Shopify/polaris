@@ -1,6 +1,6 @@
-import { Card, OptionList } from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Card, OptionList} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function OptionListExample() {
   const [selected, setSelected] = useState([]);
@@ -11,11 +11,11 @@ function OptionListExample() {
         title="Inventory Location"
         onChange={setSelected}
         options={[
-          { value: "byward_market", label: "Byward Market" },
-          { value: "centretown", label: "Centretown" },
-          { value: "hintonburg", label: "Hintonburg" },
-          { value: "westboro", label: "Westboro" },
-          { value: "downtown", label: "Downtown" },
+          {value: 'byward_market', label: 'Byward Market'},
+          {value: 'centretown', label: 'Centretown'},
+          {value: 'hintonburg', label: 'Hintonburg'},
+          {value: 'westboro', label: 'Westboro'},
+          {value: 'downtown', label: 'Downtown'},
         ]}
         selected={selected}
       />

@@ -1,10 +1,10 @@
-import type { NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 import { tokenGroupKeys } from "./[tokens]";
 
 const getGithubUrl = (file: string) => {
   const fileName = `${file}.ts`;
-  const githubUrl = "https://github.com/Shopify/polaris/blob";
+  const githubUrl = 'https://github.com/Shopify/polaris/blob';
   const filePath = `/main/polaris-tokens/src/token-groups/${fileName}`;
 
   return `${githubUrl}${filePath}`;
@@ -86,15 +86,15 @@ const html = `
                     </tr>
                 `;
               })
-              .join("\n")}
+              .join('\n')}
             </tbody>
         </table>
     </body>
 </html>
 `;
 
-const handler = async (res: NextApiResponse) => {
-  res.setHeader("content-type", "text/html");
+const handler = async (_: NextApiRequest, res: NextApiResponse) => {
+  res.setHeader('content-type', 'text/html');
   res.send(html);
 };
 

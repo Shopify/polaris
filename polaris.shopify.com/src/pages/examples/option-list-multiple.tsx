@@ -1,6 +1,6 @@
-import { Card, OptionList } from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {Card, OptionList} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function MultipleOptionListExample() {
   const [selected, setSelected] = useState([]);
@@ -11,11 +11,11 @@ function MultipleOptionListExample() {
         title="Manage sales channels availability"
         onChange={setSelected}
         options={[
-          { value: "online_store", label: "Online Store" },
-          { value: "messenger", label: "Messenger" },
-          { value: "facebook", label: "Facebook" },
-          { value: "wholesale", label: "Wholesale" },
-          { value: "buzzfeed", label: "BuzzFeed" },
+          {value: 'online_store', label: 'Online Store'},
+          {value: 'messenger', label: 'Messenger'},
+          {value: 'facebook', label: 'Facebook'},
+          {value: 'wholesale', label: 'Wholesale'},
+          {value: 'buzzfeed', label: 'BuzzFeed'},
         ]}
         selected={selected}
         allowMultiple

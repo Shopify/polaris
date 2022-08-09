@@ -4,52 +4,52 @@ import {
   Avatar,
   ResourceItem,
   TextStyle,
-} from "@shopify/polaris";
-import { useState } from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+} from '@shopify/polaris';
+import {useState} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ResourceListWithLoadingExample() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const resourceName = {
-    singular: "customer",
-    plural: "customers",
+    singular: 'customer',
+    plural: 'customers',
   };
 
   const items = [
     {
       id: 104,
-      url: "customers/341",
-      name: "Mae Jemison",
-      location: "Decatur, USA",
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
     },
     {
       id: 204,
-      url: "customers/256",
-      name: "Ellen Ochoa",
-      location: "Los Angeles, USA",
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
     },
   ];
 
   const promotedBulkActions = [
     {
-      content: "Edit customers",
-      onAction: () => console.log("Todo: implement bulk edit"),
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
     },
   ];
 
   const bulkActions = [
     {
-      content: "Add tags",
-      onAction: () => console.log("Todo: implement bulk add tags"),
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
     },
     {
-      content: "Remove tags",
-      onAction: () => console.log("Todo: implement bulk remove tags"),
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
-      content: "Delete customers",
-      onAction: () => console.log("Todo: implement bulk delete"),
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
 
@@ -69,7 +69,7 @@ function ResourceListWithLoadingExample() {
   );
 
   function renderItem(item) {
-    const { id, url, name, location } = item;
+    const {id, url, name, location} = item;
     const media = <Avatar customer size="medium" name={name} />;
 
     return (

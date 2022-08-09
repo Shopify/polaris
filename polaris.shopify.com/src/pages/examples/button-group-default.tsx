@@ -1,6 +1,6 @@
-import { ButtonGroup, Button } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExamplePage";
+import {ButtonGroup, Button} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function ButtonGroupExample() {
   return (

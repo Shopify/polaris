@@ -1,23 +1,21 @@
-import ComponentGrid from "../ComponentGrid";
-import Layout from "../Layout";
+import ComponentGrid from '../ComponentGrid';
+import Layout from '../Layout';
 
-import components from "../../data/components.json";
+import components from '../../data/components.json';
 import {
   getComponentCategories,
   stripMarkdownLinks,
   slugify,
   getComponentNav,
-} from "../../utils/various";
-import { Status } from "../../types";
-import styles from "./ComponentsPage.module.scss";
-import PageMeta from "../PageMeta";
+} from '../../utils/various';
+import {Status} from '../../types';
+import styles from './ComponentsPage.module.scss';
+import PageMeta from '../PageMeta';
 
 const componentCategories = getComponentCategories();
 const componentNav = getComponentNav();
 
-interface Props {}
-
-export default function ComponentsPage({}: Props) {
+export default function ComponentsPage() {
   return (
     <div className={styles.ComponentsPage}>
       <PageMeta
@@ -35,23 +33,23 @@ export default function ComponentsPage({}: Props) {
               <ComponentGrid>
                 {components
                   .filter(
-                    (component) => component.frontMatter.category === category
+                    (component) => component.frontMatter.category === category,
                   )
-                  .map(({ frontMatter, intro }) => {
-                    const { name, status } = frontMatter;
-                    const url = `/components/${slugify(name)}`;
+                  .map(({frontMatter, description}) => {
+                    const {title, status} = frontMatter;
+                    const url = `/components/${slugify(title)}`;
                     let typedStatus = status
                       ? {
-                          value: status.value.toLowerCase() as Status["value"],
+                          value: status.value.toLowerCase() as Status['value'],
                           message: status.value,
                         }
                       : undefined;
 
                     return (
                       <ComponentGrid.Item
-                        key={name}
-                        name={name}
-                        description={stripMarkdownLinks(intro)}
+                        key={title}
+                        title={title}
+                        description={stripMarkdownLinks(description)}
                         url={url}
                         status={typedStatus}
                       />
