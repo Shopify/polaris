@@ -24,7 +24,7 @@ Do you have ideas or feedback on how we can make these guidelines more empowerin
 For patterns to be successful, they need to be contextual, consistent, and unified.
 
 ### Contextual
-Patterns are always paired with the problem it solves and the situation it appears in. A solution applied in a context it wasn’t designed for is not a pattern.
+A pattern is always paired with the problem it solves and the situation it appears in. A solution applied in a context it wasn’t designed for is not a pattern.
 
 ### Consistent
 Patterns are always used in the same way for the same reasons. Merchants need to be able to trust their expectations.
