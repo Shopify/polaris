@@ -91,7 +91,7 @@ function validateAncillaryOutput() {
 }
 
 function validateVersionReplacement() {
-  const files = glob.sync('./build/**/*.{js,mjs,esnext,css}');
+  const files = globby.sync('./build/**/*.{js,mjs,esnext,css}');
 
   assert.notStrictEqual(files.length, 0);
 
