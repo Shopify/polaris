@@ -131,6 +131,7 @@ We updated the size tokens to use increments of 100 for the variants. This allow
 | --p-font-size-500 | --p-font-size-12 | 28        | 1.75      |
 | --p-font-size-600 | -                | 32        | 2         |
 | --p-font-size-700 | -                | 40        | 2.5       |
+| -                 | --p-font-size-13 | 42        | 2.625     |
 
 ### Line-height tokens
 
