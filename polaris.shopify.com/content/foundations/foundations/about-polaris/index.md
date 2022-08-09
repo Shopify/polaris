@@ -70,7 +70,7 @@ Design patterns are best practice design guidance. They address situations that 
 * UI characteristics, like feedback
 * Architecture, like navigation and page layout
 
-These patterns center on the merchant, and how we build experiences to meet their needs.
+These patterns center on the merchant and how we build experiences to meet their needs.
 
 Design patterns often use one or more primitive components and adapt them to the context. Some patterns can link to compositions and will contain code examples where possible.
 
