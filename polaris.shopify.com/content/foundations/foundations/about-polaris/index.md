@@ -13,7 +13,7 @@ Polaris is the design system for the Shopify admin. It’s used both internally 
 
 ## Shopify admin
 
-Merchants set up their store, configure settings, and manage their business using the Shopify admin. It includes core aspects of the merchant's Shopify business, including orders, products, and customers.
+Merchants set up their store, configure settings, and manage their business using the Shopify admin. It includes core aspects of the merchant’s Shopify business, including orders, products, and customers.
 
 The Shopify admin is available across web and native platforms. The Polaris design system is available on every platform the Shopify admin is built for.
 
