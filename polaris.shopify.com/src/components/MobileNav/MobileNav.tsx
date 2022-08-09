@@ -31,7 +31,10 @@ const navItems: NavItem[] = [
     title: 'Icons',
     url: '/icons',
   },
-  // ...contributingNavItems,
+  {
+    title: 'Contributing',
+    url: '/contributing',
+  },
 ];
 
 interface Props {
