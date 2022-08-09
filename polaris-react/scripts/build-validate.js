@@ -118,7 +118,7 @@ function validateVersionReplacement() {
     './build/cjs/configure.js',
     './build/esm/configure.js',
     './build/esm/styles.css',
-    './build/esnext/components/AppProvider/AppProvider.css',
     './build/esnext/configure.esnext',
+    './build/esnext/components/AppProvider/AppProvider.css',
   ]);
 }
