@@ -1,5 +1,16 @@
 # Changelog
 
+## 4.1.0
+
+### Minor Changes
+
+- [#6877](https://github.com/Shopify/polaris/pull/6877) [`dadad0e0e`](https://github.com/Shopify/polaris/commit/dadad0e0e7a65de735a34d7b8b8e7310f0fbaa43) Thanks [@alex-page](https://github.com/alex-page)! - Move polaris-tokens to dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`655bd4828`](https://github.com/Shopify/polaris/commit/655bd48288f87ba6196d932a7696ab0c6e6c9024)]:
+  - @shopify/polaris-tokens@5.5.1
+
 ## 4.0.0
 
 ### Minor Changes
