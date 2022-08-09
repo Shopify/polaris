@@ -47,7 +47,7 @@ Patterns are for merchants and compositions are for builders.
 
 ### Composition purpose
 - Share as much code as possible
-- Speed up build process
+- Speed up the build process
 - Improve maintainability and reusability
 - Ensure build consistency
 
