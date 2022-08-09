@@ -200,9 +200,16 @@ export const foundationsNavItems: NavItemWithIcon[] = [
     title: 'Patterns',
     children: [
       {
-        title: 'Loading',
-        url: '/foundations/patterns/loading',
-        icon: 'RefreshMajor',
+        title: "Design Patterns",
+        url: "/foundations/patterns/design-patterns",
+        icon: "RefreshMajor",
+        description:
+          "Design patterns provide repeatable UX solutions to common merchant situations.",
+      },
+      {
+        title: "Loading",
+        url: "/foundations/patterns/loading",
+        icon: "ClockMajor",
         description:
           "Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.",
       },
@@ -239,7 +246,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         url: '/foundations/patterns/help-content',
         icon: 'QuestionMarkInverseMajor',
         description:
-          '​Help content is educational text that describes interactive elements or offers information about concepts in the UI.',
+          'Help content is educational text that describes interactive elements or offers information about concepts in the UI.',
       },
       {
         title: 'Pickers',

@@ -27,6 +27,7 @@
     },
     "./metadata": {
       "types": "./dist/metadata.d.ts",
+      "import": "./dist/metadata.mjs",
       "default": "./dist/metadata.js"
     },
     "./dist/svg/*.svg": "./dist/svg/*.svg"
