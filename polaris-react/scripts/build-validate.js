@@ -2,7 +2,7 @@
 const assert = require('assert').strict;
 const fs = require('fs');
 
-const glob = require('glob');
+const globby = require('globby');
 
 const packageJSON = require('../package.json');
 
@@ -22,7 +22,7 @@ function validateStandardBuild() {
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
-  const files = glob.sync('./build/cjs/**/*.js');
+  const files = globby.sync('./build/cjs/**/*.js');
   assert.notStrictEqual(files.length, 0);
   const filesContainingUnwantedReactUsage = [];
   files.forEach((file) => {
