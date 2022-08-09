@@ -42,6 +42,7 @@
     "eslint-config-next": "12.1.0",
     "frontmatter": "^0.0.3",
     "generact": "^0.4.0",
+    "globby": "^11.1.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
     "rehype-raw": "^6.1.1",

@@ -97,6 +97,7 @@
     "chromatic": "^6.5.4",
     "core-js": "^3.6.5",
     "create-file-webpack": "^1.0.2",
+    "globby": "^11.1.0",
     "node-cmd": "^3.0.0",
     "node-sass": "^7.0.1",
     "object-hash": "^1.3.1",

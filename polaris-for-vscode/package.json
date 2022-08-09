@@ -46,6 +46,7 @@
     "@types/node": "14.x",
     "@types/vscode": "^1.64.0",
     "@vscode/test-electron": "^2.1.2",
+    "globby": "^11.1.0",
     "vsce": "^2.7.0"
   }
 }
