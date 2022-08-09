@@ -51,7 +51,7 @@ Patterns are for merchants and compositions are for builders.
 - Improve maintainability and reusability
 - Ensure build consistency
 
-### How to Distinguish
+### How to distinguish
 - Patterns solve usability problems that relate to the usage of admin, while compositions solve build problems that relate to the build process
 - Patterns ensure consistent product experience, while compositions ensure consistent implementation
 - A pattern can be hard coded and still be a pattern, and a composition can be using Polaris primitives and tokens and still not be a pattern
