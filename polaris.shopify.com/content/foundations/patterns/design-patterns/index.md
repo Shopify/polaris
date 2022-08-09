@@ -1,7 +1,6 @@
 ---
 title: Design patterns
 description: Whenever possible we strive to establish and reuse the best solutions to merchant situations. Identifying and documenting design patterns is one way to make this possible.
-slug: design-patterns
 keywords:
   - patterns
   - design patterns
