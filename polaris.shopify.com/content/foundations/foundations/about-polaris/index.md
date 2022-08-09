@@ -23,7 +23,7 @@ The web version of the Shopify admin is available for desktop and mobile web. Po
 
 ### Native
 
-The Shopify admin is also available as iOS and Android apps. Polaris components are available as native UI elements built with React Native. Because the iOS and Android apps also make use of embedded web views for parts of the admin, Polaris web components are used in these cases.
+The Shopify admin is also available as iOS and Android apps. Polaris components are available as native user interface (UI) elements built with React Native. Because the iOS and Android apps also make use of embedded web views for parts of the admin, Polaris web components are used in these cases.
 
 ### Shopify apps
 
