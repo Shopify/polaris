@@ -35,7 +35,7 @@ The design system is made up of design guidance, code libraries, development opi
 
 ### Primitives
 
-Primitives are the building blocks of the Polaris design system. They are the smallest units of the system that represent codified design decisions and reusable visual elements. The Polaris design system contains primitive tokens and primitive components that can be combined together to create admin user interfaces.
+Primitives are the building blocks of the Polaris design system. They’re the smallest units of the system that represent codified design decisions and reusable visual elements. The Polaris design system contains primitive tokens and primitive components that can be combined together to create admin UIs.
 
 ### Tokens
 
