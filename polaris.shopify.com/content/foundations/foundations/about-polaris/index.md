@@ -45,7 +45,7 @@ Polaris design tokens are packaged up as the open source [@Shopify/polaris-token
 
 ### Components
 
-Polaris components are the smallest reusable user interface elements for supporting a variety of admin merchant experiences. Polaris components are one of our design system primitives, and are often referred to as primitive components.
+Polaris components are the smallest reusable UI elements for supporting a variety of admin merchant experiences. Polaris components are one of our design system primitives, and are often referred to as primitive components.
 
 These primitive components are highly composable and can be assembled together to create a variety of patterns and user experiences within the admin.
 
