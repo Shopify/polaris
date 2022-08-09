@@ -36,7 +36,7 @@ Patterns are always informed by and designed together with similar patterns. For
 
 Patterns come with a solution, problem, and situation that belong together. Solutions taken out of this context are no longer a pattern.
 
-## Patterns vs. Compositions
+## Patterns vs. compositions
 Patterns are for merchants and compositions are for builders.
 
 ### Pattern purpose
