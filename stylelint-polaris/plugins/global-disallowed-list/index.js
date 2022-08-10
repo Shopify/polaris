@@ -28,6 +28,35 @@ const {rule} = stylelint.createPlugin(
         );
       }
 
+      // Mixin detection
+      postcssRoot.walkAtRules((atRule) => {
+        const value = atRule.source.input.css.slice(
+          atRule.source.start.offset,
+          atRule.source.end.offset,
+        );
+
+        const found = primary.filter((test) => {
+          return matchesStringOrRegExp(value, test);
+        });
+
+        if (!found || !found.length) return;
+
+        found.forEach((test) => {
+          const invalidValue = isString(test)
+            ? test
+            : /** @type {string} */ (value.match(test)?.[0]);
+
+          stylelint.utils.report({
+            ruleName,
+            result: postcssResult,
+            message: messages.rejected(invalidValue),
+            node: rule,
+            word: invalidValue,
+          });
+        });
+      });
+
+      // Everything else
       postcssRoot.walkDecls((decl) => {
         const found = primary.filter((test) => {
           return matchesStringOrRegExp(decl.value, test);
