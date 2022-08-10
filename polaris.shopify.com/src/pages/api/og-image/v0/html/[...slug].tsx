@@ -1,5 +1,5 @@
 import type {NextApiResponse, NextApiRequest} from 'next';
-import * as matter from 'gray-matter';
+import matter from 'gray-matter';
 import {VERSION} from '../png/[...slug]';
 import {readFile} from 'fs/promises';
 import path from 'path';
