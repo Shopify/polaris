@@ -466,7 +466,11 @@
         "visual story telling",
         "visual storytelling",
         "visual statements"
-      ]
+      ],
+      "status": {
+        "value": "Deprecated",
+        "message": "This component is no longer supported. Please use the alpha Text component instead."
+      }
     },
     "description": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
   },
