@@ -90,16 +90,31 @@
 .heading2xl {
   font-size: var(--p-font-size-500);
   line-height: var(--p-font-line-height-5);
+
+  @media #{$p-breakpoints-md-down} {
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-3);
+  }
 }
 
 .heading3xl {
   font-size: var(--p-font-size-600);
   line-height: var(--p-font-line-height-6);
+
+  @media #{$p-breakpoints-md-down} {
+    font-size: var(--p-font-size-400);
+    line-height: var(--p-font-line-height-4);
+  }
 }
 
 .heading4xl {
   font-size: var(--p-font-size-700);
   line-height: var(--p-font-line-height-7);
+
+  @media #{$p-breakpoints-md-down} {
+    font-size: var(--p-font-size-600);
+    line-height: var(--p-font-line-height-6);
+  }
 }
 
 .bodySm {
