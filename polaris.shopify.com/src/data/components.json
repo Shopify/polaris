@@ -1476,7 +1476,11 @@
         "decrease",
         "input",
         "fields"
-      ]
+      ],
+      "status": {
+        "value": "Deprecated",
+        "message": "This component is no longer supported. Please use the alpha Text component instead."
+      }
     },
     "description": "Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text."
   },
