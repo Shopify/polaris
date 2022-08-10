@@ -1,0 +1,12 @@
+name: Fulfillment fulfilled
+set: major
+description: The fulfillment icon is associated with the 'fulfilled' status.
+keywords:
+  - fulfillment
+  - fulfilled
+authors:
+  - Flavia Scudeler
+version: 1
+date_added: 2022-08-10
+date_modified: 2022-08-10
+exclusive_use:
