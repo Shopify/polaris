@@ -1,6 +1,6 @@
-import { Card, Popover, Button, ActionList, List } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Card, Popover, Button, ActionList, List} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
@@ -8,7 +8,7 @@ function CardExample() {
       <Card.Header
         actions={[
           {
-            content: "Preview",
+            content: 'Preview',
           },
         ]}
         title="Staff accounts"
@@ -22,7 +22,7 @@ function CardExample() {
           }
           onClose={() => {}}
         >
-          <ActionList items={[{ content: "Member" }, { content: "Admin" }]} />
+          <ActionList items={[{content: 'Member'}, {content: 'Admin'}]} />
         </Popover>
       </Card.Header>
       <Card.Section>

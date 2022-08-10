@@ -1,6 +1,6 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/mixins.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
 .Longform {
   img {
@@ -97,7 +97,7 @@
       position: relative;
       counter-increment: list;
       &::before {
-        content: counter(list) ".";
+        content: counter(list) '.';
         display: block;
         position: absolute;
         left: 0;
@@ -153,7 +153,7 @@
     font-size: var(--font-size-200);
     border-collapse: separate;
     border-spacing: 0;
-    border: var(--border);
+    border: 1px solid var(--border-color-light);
     border-radius: 0.5rem;
     width: 100%;
 
@@ -173,8 +173,27 @@
 
     th,
     td {
-      padding: 0.6rem 1rem;
-      border-bottom: var(--border);
+      padding: 0.6rem .70588rem;
+      border-bottom: 1px solid var(--border-color-light);
+
+      &:first-child {
+        padding-left: 1.5rem;
+      }
+
+      &:last-child {
+        padding-right: 1.5rem;
+      }
+
+      @media screen and (min-width: $breakpointDesktop) {
+        &:first-child {
+          padding-left: 2.8rem;
+        }
+
+        &:last-child {
+          padding-right: 2.8rem;
+        }
+      }
+
     }
 
     tbody {

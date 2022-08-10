@@ -1,36 +1,36 @@
-import { Page, Badge, Card } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Page, Badge, Card} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{ content: "Products", url: "/products" }]}
+      breadcrumbs={[{content: 'Products', url: '/products'}]}
       title="3/4 inch Leather pet collar"
       titleMetadata={<Badge status="success">Paid</Badge>}
       subtitle="Perfect for any pet"
       compactTitle
-      primaryAction={{ content: "Save", disabled: true }}
+      primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {
-          content: "Duplicate",
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Duplicate action"),
+          content: 'Duplicate',
+          accessibilityLabel: 'Secondary action label',
+          onAction: () => alert('Duplicate action'),
         },
         {
-          content: "View on your store",
-          onAction: () => alert("View on your store action"),
+          content: 'View on your store',
+          onAction: () => alert('View on your store action'),
         },
       ]}
       actionGroups={[
         {
-          title: "Promote",
-          accessibilityLabel: "Action group label",
+          title: 'Promote',
+          accessibilityLabel: 'Action group label',
           actions: [
             {
-              content: "Share on Facebook",
-              accessibilityLabel: "Individual action label",
-              onAction: () => alert("Share on Facebook action"),
+              content: 'Share on Facebook',
+              accessibilityLabel: 'Individual action label',
+              onAction: () => alert('Share on Facebook action'),
             },
           ],
         },

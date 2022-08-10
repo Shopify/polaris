@@ -1,6 +1,6 @@
-import { Link, Page, Card, DataTable } from "@shopify/polaris";
-import { useState, useCallback } from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Link, Page, Card, DataTable} from '@shopify/polaris';
+import {useState, useCallback} from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function FullDataTableExample() {
   const [sortedRows, setSortedRows] = useState(null);
@@ -14,10 +14,10 @@ function FullDataTableExample() {
       >
         Emerald Silk Gown
       </Link>,
-      "$875.00",
+      '$875.00',
       124689,
       140,
-      "$121,500.00",
+      '$121,500.00',
     ],
     [
       <Link
@@ -27,10 +27,10 @@ function FullDataTableExample() {
       >
         Mauve Cashmere Scarf
       </Link>,
-      "$230.00",
+      '$230.00',
       124533,
       83,
-      "$19,090.00",
+      '$19,090.00',
     ],
     [
       <Link
@@ -40,17 +40,17 @@ function FullDataTableExample() {
       >
         Navy Merino Wool Blazer with khaki chinos and yellow belt
       </Link>,
-      "$445.00",
+      '$445.00',
       124518,
       32,
-      "$14,240.00",
+      '$14,240.00',
     ],
   ];
 
   const rows = sortedRows ? sortedRows : initiallySortedRows;
   const handleSort = useCallback(
     (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
-    [rows]
+    [rows],
   );
 
   return (
@@ -58,21 +58,21 @@ function FullDataTableExample() {
       <Card>
         <DataTable
           columnContentTypes={[
-            "text",
-            "numeric",
-            "numeric",
-            "numeric",
-            "numeric",
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
           ]}
           headings={[
-            "Product",
-            "Price",
-            "SKU Number",
-            "Net quantity",
-            "Net sales",
+            'Product',
+            'Price',
+            'SKU Number',
+            'Net quantity',
+            'Net sales',
           ]}
           rows={rows}
-          totals={["", "", "", 255, "$155,830.00"]}
+          totals={['', '', '', 255, '$155,830.00']}
           sortable={[false, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
@@ -88,7 +88,7 @@ function FullDataTableExample() {
       const amountA = parseFloat(rowA[index].substring(1));
       const amountB = parseFloat(rowB[index].substring(1));
 
-      return direction === "descending" ? amountB - amountA : amountA - amountB;
+      return direction === 'descending' ? amountB - amountA : amountA - amountB;
     });
   }
 }

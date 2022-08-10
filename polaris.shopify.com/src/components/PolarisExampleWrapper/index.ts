@@ -1,1 +1,1 @@
-export { withPolarisExample } from "./PolarisExampleWrapper";
+export {withPolarisExample} from './PolarisExampleWrapper';

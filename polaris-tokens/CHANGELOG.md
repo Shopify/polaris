@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.5.1
+
+### Patch Changes
+
+- [#6865](https://github.com/Shopify/polaris/pull/6865) [`655bd4828`](https://github.com/Shopify/polaris/commit/655bd48288f87ba6196d932a7696ab0c6e6c9024) Thanks [@alex-page](https://github.com/alex-page)! - Remove og-image generation script, clean up other scripts, mv scripts to root
+
 ## 5.5.0
 
 ### Minor Changes

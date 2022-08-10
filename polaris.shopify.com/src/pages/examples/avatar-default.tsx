@@ -1,6 +1,6 @@
-import { Avatar } from "@shopify/polaris";
-import React from "react";
-import { withPolarisExample } from "../../components/PolarisExampleWrapper";
+import {Avatar} from '@shopify/polaris';
+import React from 'react';
+import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function AvatarExample() {
   return <Avatar customer name="Farrah" />;

@@ -39,9 +39,6 @@ examples:
   - fileName: data-table-with-sticky-header-enabled.tsx
     title: With sticky header enabled
     description: Use as a broad example that includes most props available to data table.
-  - fileName: data-table-with-fixed-first-column-enabled.tsx
-    title: Data table with fixed first column enabled
-    description: Use to fix the first column when horizontal scrolling becomes necessary. Keeps the context of the row as the user scrolls.
 ---
 
 ## Best practices
