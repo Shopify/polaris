@@ -15,10 +15,18 @@ keywords:
   - time text
   - compact text
   - small text
-examples:
-  - fileName: caption-default.tsx
-    title: Default
-    description: Use to provide details in situations where content is compact and space is tight.
+status:
+  value: Deprecated
+  message: This component is no longer supported. Please use the alpha Text component instead.
+---
+
+## Mapping to the alpha Text component
+
+```diff
+- <Caption>Received April 21, 2017</Caption>
++ <Text variant="bodySm" as="p">Received April 21, 2017</Text>
+```
+
 ---
 
 ## Best practices
