@@ -1595,7 +1595,11 @@
         "accessibility",
         "a11y",
         "assistive technology"
-      ]
+      ],
+      "status": {
+        "value": "Deprecated",
+        "message": "This component is no longer supported. Please use the alpha Text component instead."
+      }
     },
     "description": "Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden."
   }
