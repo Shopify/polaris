@@ -2,6 +2,10 @@ import {Page, Card, DataTable} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
+// we don't need this linting rule here as DataTable has specific UI that
+// appears as soon as a container becomes scrollable.
+// eslint-disable jsx-a11y/scrollable-region-focusable
+
 function DataTableExample() {
   const rows = [
     ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
