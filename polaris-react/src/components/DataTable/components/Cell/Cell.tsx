@@ -1,4 +1,9 @@
-import React, {FocusEventHandler, useState} from 'react';
+import React, {
+  FocusEventHandler,
+  useRef,
+  useState,
+  useLayoutEffect,
+} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -62,20 +67,6 @@ export function Cell({
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
-
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [tooltipContent, setTooltipContent] = useState('');
-
-  function setTooltip(ref: HTMLTableCellElement | null) {
-    if (!ref) {
-      return;
-    }
-    // Since the cell can accept any React node, we'll only show a tooltip when the cell content has an innerText
-    if (ref.scrollWidth > ref.offsetWidth && ref.innerText) {
-      setShowTooltip(true);
-      setTooltipContent(ref.innerText);
-    }
-  }
 
   const className = classNames(
     styles.Cell,
@@ -180,17 +171,15 @@ export function Cell({
       scope="row"
       {...colSpanProp}
       ref={(ref) => {
-        setTooltip(ref);
         setRef(ref);
       }}
     >
-      {showTooltip ? (
-        <Tooltip content={tooltipContent}>
-          <span className={styles.TooltipContent}>{content}</span>
-        </Tooltip>
-      ) : (
-        content
-      )}
+      <TruncatedText
+        showTooltip={Boolean(truncate)}
+        className={styles.TooltipContent}
+      >
+        {content}
+      </TruncatedText>
     </th>
   );
 
@@ -205,3 +194,40 @@ export function Cell({
 
   return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
+
+const TruncatedText = ({
+  children,
+  showTooltip,
+  className = '',
+}: {
+  children: React.ReactNode;
+  showTooltip: boolean;
+  className?: string;
+}) => {
+  const textRef = useRef<any | null>(null);
+  const [isEllipsis, setIsEllipsis] = useState<boolean | null>(null);
+
+  useLayoutEffect(() => {
+    const checkTextOverflow = () => {
+      const {current} = textRef;
+
+      if (!current) {
+        return;
+      }
+
+      const hasEllipsis =
+        showTooltip && current.scrollWidth > current.offsetWidth;
+
+      setIsEllipsis(hasEllipsis);
+    };
+
+    checkTextOverflow();
+  }, [textRef, showTooltip, children]);
+
+  const text = (
+    <span ref={textRef} className={className}>
+      {children}
+    </span>
+  );
+  return isEllipsis ? <Tooltip content={children}>{text}</Tooltip> : text;
+};
