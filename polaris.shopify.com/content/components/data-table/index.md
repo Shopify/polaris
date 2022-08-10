@@ -53,7 +53,7 @@ Data tables should:
 - Include a summary row to surface the column totals.
 - Not include calculations within the summary row.
 - Wrap instead of truncate content. This is because if row titles start with the same word, they’ll all appear the same when truncated.
-- Not to be used for an actionable list of items that link to details pages. For this functionality, use the [resource list] component.
+- Not to be used for an actionable list of items that link to details pages. For this functionality, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 ### Alignment
 
