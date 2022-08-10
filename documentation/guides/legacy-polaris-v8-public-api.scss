@@ -1893,7 +1893,7 @@ $typography-condensed: em(640px);
   text-transform: uppercase;
 
   @include when-typography-not-condensed {
-    font-size: 12px;
+    font-size: var(--p-font-size-75);
   }
 }
 
