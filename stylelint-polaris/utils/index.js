@@ -124,28 +124,6 @@ function testAgainstStringOrRegExp(value, comparison) {
     return comparison.test(value) ? {match: value, pattern: comparison} : false;
   }
 
-  // Check if it's RegExp in a string
-  const firstComparisonChar = comparison[0];
-  const lastComparisonChar = comparison[comparison.length - 1];
-  const secondToLastComparisonChar = comparison[comparison.length - 2];
-
-  const comparisonIsRegex =
-    firstComparisonChar === '/' &&
-    (lastComparisonChar === '/' ||
-      (secondToLastComparisonChar === '/' && lastComparisonChar === 'i'));
-
-  const hasCaseInsensitiveFlag =
-    comparisonIsRegex && lastComparisonChar === 'i';
-
-  // If so, create a new RegExp from it
-  if (comparisonIsRegex) {
-    const valueMatches = hasCaseInsensitiveFlag
-      ? new RegExp(comparison.slice(1, -2), 'i').test(value)
-      : new RegExp(comparison.slice(1, -1)).test(value);
-
-    return valueMatches ? {match: value, pattern: comparison} : false;
-  }
-
   // Otherwise, it's a string. Do a strict comparison
   return value === comparison ? {match: value, pattern: comparison} : false;
 }
