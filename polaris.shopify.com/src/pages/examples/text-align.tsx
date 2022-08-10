@@ -1,5 +1,5 @@
-import { Text, Stack } from "@shopify/polaris";
-import React from "react";
+import {Text, Stack} from '@shopify/polaris';
+import React from 'react';
 import {withPolarisExample} from '../../components/PolarisExampleWrapper';
 
 function TextExample() {
@@ -14,10 +14,6 @@ function TextExample() {
         to your dashboard, and order management, all from your smartphone.
       </Text>
       <Text variant="bodyLg" as="p" alignment="end">
-        Manage your Shopify store on-the-go with real-time notifications, access
-        to your dashboard, and order management, all from your smartphone.
-      </Text>
-      <Text variant="bodyLg" as="p" alignment="inherit">
         Manage your Shopify store on-the-go with real-time notifications, access
         to your dashboard, and order management, all from your smartphone.
       </Text>

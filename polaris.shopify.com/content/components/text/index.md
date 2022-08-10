@@ -1,5 +1,6 @@
 ---
-name: Text
+title: Text
+description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 category: Titles and text
 keywords:
   - titles
@@ -44,13 +45,8 @@ examples:
       Use to set text color.
 ---
 
-# Text
-
-Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
-
----
-
 ## Mapping from previous type components
+
 These are suggested replacements for existing text style components, but ultimately the best replacement should be evaluated based on the context of the usage. The `Text` component also requires setting the semantically appropriate html element through the `as` prop.
 
 ### DisplayText
@@ -61,74 +57,95 @@ These are suggested replacements for existing text style components, but ultimat
 - <DisplayText size="small">Sales this year</DisplayText>
 + <Text variant="headingXl" as="p">Sales this year</Text>
 ```
+
 #### Medium
+
 ```diff
 - <DisplayText size="medium">Sales this year</DisplayText>
 + <Text variant="heading2xl" as="p">Sales this year</Text>
 ```
+
 #### Large
+
 ```diff
 - <DisplayText size="large">Sales this year</DisplayText>
 + <Text variant="heading3xl" as="p">Sales this year</Text>
 ```
+
 #### Extra large
+
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
 + <Text variant="heading4xl" as="p">Sales this year</Text>
 ```
+
 ### Heading
+
 ```diff
 - <Heading>Online store dashboard</Heading>
 + <Text variant="headingLg" as="h2">Online store dashboard</Text>
 ```
+
 ### Subheading
+
 ```diff
 - <Subheading>Accounts</Subheading>
 + <Text variant="headingSm" as="h3">Accounts</Text>
 ```
+
 ### Caption
+
 ```diff
 - <Caption>Received April 21, 2017</Caption>
 + <Text variant="bodySm" as="p">Received April 21, 2017</Text>
 ```
+
 ### TextStyle
 
 #### Subdued
+
 ```diff
 - <TextStyle variation="subdued">No supplier listed</TextStyle>
 + <Text variant="bodyMd" as="span" color="subdued">No supplier listed</Text>
 ```
 
 #### Strong
+
 ```diff
 - <TextStyle variation="strong">No supplier listed</TextStyle>
 + <Text variant="bodyMd" as="span" fontWeight="semibold" >No supplier listed</Text>
 ```
+
 #### Positive
+
 ```diff
 - <TextStyle variation="positive">No supplier listed</TextStyle>
 + <Text variant="bodyMd" as="span" color="success">No supplier listed</Text>
 ```
 
 #### Negative
+
 ```diff
 - <TextStyle variation="negative">No supplier listed</TextStyle>
 + <Text variant="bodyMd" as="span" color="critical">No supplier listed</Text>
 ```
 
 #### Warning
+
 ```diff
 - <TextStyle variation="warning">No supplier listed</TextStyle>
 + <Text variant="bodyMd" as="span" color="warning">No supplier listed</Text>
 ```
 
 #### Code
+
 ```diff
 - <TextStyle variation="code">No supplier listed</TextStyle>
 + <Text variant="bodyMd" as="span"><InlineCode>No supplier listed</InlineCode></Text>
 ```
 
 ### VisuallyHidden
+
 ```diff
 - <VisuallyHidden>
 -   <Heading>Title and description</Heading>
