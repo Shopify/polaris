@@ -230,11 +230,7 @@ const TruncatedText = ({
     </span>
   );
   return isEllipsis ? (
-    <Tooltip
-      content={<span className={styles.TooltipContentInner}>{children}</span>}
-    >
-      {text}
-    </Tooltip>
+    <Tooltip content={textRef.current.innerText}>{text}</Tooltip>
   ) : (
     text
   );
