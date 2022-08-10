@@ -353,6 +353,10 @@
   }
 }
 
+.TooltipContentInner > a {
+  color: inherit;
+}
+
 .TooltipContent {
   display: block;
   overflow: hidden;

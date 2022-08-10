@@ -229,5 +229,13 @@ const TruncatedText = ({
       {children}
     </span>
   );
-  return isEllipsis ? <Tooltip content={children}>{text}</Tooltip> : text;
+  return isEllipsis ? (
+    <Tooltip
+      content={<span className={styles.TooltipContentInner}>{children}</span>}
+    >
+      {text}
+    </Tooltip>
+  ) : (
+    text
+  );
 };
