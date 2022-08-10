@@ -116,6 +116,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const slug = req.url.replace('/api/og-image/', '');
     const html = await generateHTML(slug);
 
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/html');
     res.send(html);
   } catch (e) {
     res.statusCode = 500;
