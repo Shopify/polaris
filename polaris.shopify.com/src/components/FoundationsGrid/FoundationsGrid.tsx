@@ -45,7 +45,7 @@ function FoundationsGridItem({
       <Link href={url} passHref>
         <a {...searchAttributes}>
           <div className={styles.Icon}>
-            <Image src={`/icons/${icon}.svg`} alt="" width={20} height={20} />
+            <Image src={`/api/icons/v0/${icon}.svg`} alt="" width={20} height={20} />
           </div>
           <h4>{title}</h4>
           <p>{stripMarkdownLinks(description)}</p>

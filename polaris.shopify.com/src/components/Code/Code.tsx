@@ -94,7 +94,7 @@ function CopyButton({code}: {code: string}) {
           aria-label="Copy to clipboard"
         >
           <Image
-            src="/icons/ClipboardMinor.svg"
+            src="/api/icon-images/v0/ClipboardMinor.svg"
             alt="Clipboard icon"
             width={16}
             height={16}

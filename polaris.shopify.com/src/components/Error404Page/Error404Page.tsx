@@ -30,7 +30,7 @@ function Error404Page({}: Props) {
           <Longform>
             <Image
               className={styles.Icon}
-              src="/icons/CircleAlertMajor.svg"
+              src="/api/icons/v0/CircleAlertMajor.svg"
               width={100}
               height={100}
               alt=""

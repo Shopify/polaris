@@ -54,7 +54,7 @@ const Select = ({
       </select>
       <div className={styles.SelectIcon}>
         <Image
-          src="/icons/CaretDownMinor.svg"
+          src="/api/icons/v0/CaretDownMinor.svg"
           alt="Down Arrow"
           width={16}
           height={16}

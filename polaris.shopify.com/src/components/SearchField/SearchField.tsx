@@ -11,7 +11,7 @@ function SearchField({onChange, ...props}: Props) {
     <div className={styles.SearchField}>
       <div className={styles.Icon}>
         <Image
-          src="/icons/SearchMajor.svg"
+          src="/api/icons/v0/SearchMajor.svg"
           width={20}
           height={20}
           alt=""

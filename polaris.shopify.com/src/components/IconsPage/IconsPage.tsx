@@ -149,7 +149,7 @@ function IconsPage() {
           {minorIcons.length === 0 && majorIcons.length === 0 ? (
             <div className={styles.NoSearchResults}>
               <Image
-                src="/icons/SearchMajor.svg"
+                src="/api/icons/v0/SearchMajor.svg"
                 width={40}
                 height={40}
                 alt="A magnifying glass icon"

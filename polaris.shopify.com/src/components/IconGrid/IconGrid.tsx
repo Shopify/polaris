@@ -52,7 +52,7 @@ function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
           {...searchAttributes}
         >
           <Image
-            src={`/icons/${id}.svg`}
+            src={`/api/icons/v0/${id}.svg`}
             alt={description}
             width={20}
             height={20}

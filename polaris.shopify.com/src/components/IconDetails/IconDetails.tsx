@@ -38,7 +38,7 @@ function IconDetails({fileName, iconData}: Props) {
       <div className={styles.Section}>
         <div className={styles.Preview}>
           <Image
-            src={`/icons/${fileName}.svg`}
+            src={`/api/icons/v0/${fileName}.svg`}
             alt={description}
             width={40}
             height={40}
@@ -75,7 +75,7 @@ function IconDetails({fileName, iconData}: Props) {
 
         <a
           className={styles.DownloadButton}
-          href={`/icons/${fileName}.svg`}
+          href={`/api/icons/v0/${fileName}.svg`}
           download
         >
           Download
@@ -130,7 +130,7 @@ function EmptyState() {
         <Image
           width={46}
           height={46}
-          src="/icons/BehaviorMajor.svg"
+          src="/api/icons/v0/BehaviorMajor.svg"
           alt="Cursor suggesting to click an item"
           icon
         />
