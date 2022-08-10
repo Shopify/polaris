@@ -1,6 +1,6 @@
 const {messages, ruleName} = require('.');
 
-const config = [[/rem\(/, /--p-button-font/]];
+const config = [[/rem\(/, /--p-button-font/, /@include layout-flex-fix/]];
 
 testRule({
   ruleName,
@@ -28,6 +28,15 @@ testRule({
       code: '.a { color: var(--p-button-font); }',
       description: 'Uses something on the disallowed list',
       message: messages.rejected('--p-button-font'),
+      line: 1,
+      column: 17,
+      endLine: 1,
+      endColumn: 32,
+    },
+    {
+      code: '.a { @include layout-flex-fix(); }',
+      description: 'Uses something on the disallowed list',
+      message: messages.rejected('@include layout-flex-fix'),
       line: 1,
       column: 17,
       endLine: 1,
