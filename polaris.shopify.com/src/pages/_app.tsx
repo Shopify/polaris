@@ -30,11 +30,9 @@ function MyApp({Component, pageProps}: AppProps) {
     };
   }, [router.events, isProd]);
 
-  const ogImageHash =
-    `${router.asPath.replace('/', '').replace(/\//g, '--')}` || 'home';
-  const ogImagePath = `${
-    typeof window !== 'undefined' ? `https://${window.location.hostname}` : ''
-  }/open-graph/${ogImageHash}.jpg`;
+  const ogImagePath = `/api/og-image/v0/png/${
+    router.asPath === '/' ? 'home' : router.asPath
+  }.png`;
 
   return (
     <>
@@ -66,7 +64,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
         <Head>
           <meta name="viewport" content="initial-scale=1, width=device-width" />
-          <link rel="shortcut icon" href="/favicon.png" />
+          <link rel="shortcut icon" href="/images/favicon.png" />
           <meta property="og:image" content={ogImagePath} />
         </Head>
 
