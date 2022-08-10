@@ -10,10 +10,18 @@ keywords:
   - titles of sub-sections
   - subsection titles
   - titles of subsections
-examples:
-  - fileName: subheading-default.tsx
-    title: Default
-    description: Used for the title of any sub-sections in top-level page sections.
+status:
+  value: Deprecated
+  message: This component is no longer supported. Please use the alpha Text component instead.
+---
+
+## Mapping to the alpha Text component
+
+```diff
+- <Subheading>Accounts</Subheading>
++ <Text variant="headingSm" as="h3">Accounts</Text>
+```
+
 ---
 
 ## Best practices

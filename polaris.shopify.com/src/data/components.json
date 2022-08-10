@@ -1317,7 +1317,11 @@
         "titles of sub-sections",
         "subsection titles",
         "titles of subsections"
-      ]
+      ],
+      "status": {
+        "value": "Deprecated",
+        "message": "This component is no longer supported. Please use the alpha Text component instead."
+      }
     },
     "description": "Subheadings are used for the title of any sub-sections in top-level page sections."
   },
