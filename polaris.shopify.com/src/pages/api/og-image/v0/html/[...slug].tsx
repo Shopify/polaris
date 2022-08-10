@@ -1,19 +1,29 @@
-import type { NextApiResponse, NextApiRequest } from "next";
-import { VERSION } from "../png/[...slug]";
+import type {NextApiResponse, NextApiRequest} from 'next';
+import * as matter from 'gray-matter';
+import {VERSION} from '../png/[...slug]';
+import {readFile} from 'fs/promises';
+import path from 'path';
 
 function capitalizeFirstLetter(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 const generateHTML = async (apiSlug: string) => {
-  const slug = apiSlug.replace(`${VERSION}/html/`, "").replace(".png", "");
-  const currentSlug = slug.split("/").at(-1);
-  const title = capitalizeFirstLetter(currentSlug || "").replace("-", " ");
+  const slug = apiSlug.replace(`${VERSION}/html/`, '').replace('.png', '');
+  const currentSlug = slug.split('/').at(-1);
+  const title = capitalizeFirstLetter(currentSlug || '').replace('-', ' ');
 
-  let htmlImg = "<img class='icon' src='/images/default-og.svg'>";
+  let htmlImg = "<img class='default-icon' src='/images/default-og.svg'>";
 
-  if (slug.startsWith("components/")) {
+  if (slug.startsWith('components/')) {
     htmlImg = `<img src="/images/${slug}.png" class="component-image" />`;
+  }
+
+  if (slug.startsWith('foundations/')) {
+    const mdFilePath = path.join(process.cwd(), `content/${slug}/index.md`);
+    const markdownContent = await readFile(mdFilePath, 'utf-8');
+    const {data} = matter(markdownContent);
+    htmlImg = `<img class='polaris-icon' src="/icons/${data.icon}.svg" />`;
   }
 
   return `
@@ -60,31 +70,23 @@ const generateHTML = async (apiSlug: string) => {
     transform: rotateY(-60deg) translateY(-50%) scale(.9);
   }
 
-  .icon {
-    filter: brightness(1000%);
+  .polaris-icon,
+  .default-icon {
     position: absolute;
     left: 600px;
     top: 50%;
     transform: translate3d(0, -50%, 0);
     opacity: .2;
+    width: 400px;
+    height: 400px;
   }
 
-  .icon svg {
-    width: 721px;
-    height: 721px;
+  .default-icon {
+    filter: brightness(1000%);
   }
 
-  .default-graphic .icon {
-    top: 60px;
-    left: auto;
-    right: 60px;
-    width: 300px;
-    transform: none;
-  }
-
-  .default-graphic .icon svg {
-    width: 300px;
-    height: 300px;
+  .polaris-icon {
+    filter: invert();
   }
 
   .logo {
@@ -96,12 +98,6 @@ const generateHTML = async (apiSlug: string) => {
     opacity: .5;
     font-size: 24px;
     font-weight: 500;
-  }
-
-  .logo svg {
-    min-width: 30px;
-    max-width: 30px;
-    height: auto;
   }
 </style>
 
@@ -117,14 +113,14 @@ const generateHTML = async (apiSlug: string) => {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     if (!req.url) throw new Error(`og-image API requires a URL`);
-    const slug = req.url.replace("/api/og-image/", "");
+    const slug = req.url.replace('/api/og-image/', '');
     const html = await generateHTML(slug);
 
     res.send(html);
   } catch (e) {
     res.statusCode = 500;
-    res.setHeader("Content-Type", "text/html");
-    res.end("<h1>Internal Error</h1><p>Sorry, there was a problem</p>");
+    res.setHeader('Content-Type', 'text/html');
+    res.end('<h1>Internal Error</h1><p>Sorry, there was a problem</p>');
     console.error(e);
   }
 };
