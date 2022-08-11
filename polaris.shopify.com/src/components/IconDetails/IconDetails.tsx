@@ -1,8 +1,9 @@
-import React from 'react';
+import {useEffect, useState, Fragment} from 'react';
 import Link from 'next/link';
-import Image from '../Image';
 import Code from '../Code';
+import Icon from '../Icon';
 import styles from './IconDetails.module.scss';
+import * as polarisIcons from '@shopify/polaris-icons';
 
 interface Props {
   fileName: string;
@@ -15,6 +16,20 @@ interface Props {
 }
 
 function IconDetails({fileName, iconData}: Props) {
+  const [blob, setBlob]: any = useState();
+
+  useEffect(() => {
+    if (!fileName) return;
+    getBlob(fileName);
+  }, [fileName]);
+
+  async function getBlob(icon: string) {
+    const iconUrl = `https://raw.githubusercontent.com/Shopify/polaris/main/polaris-icons/icons/${icon}.svg`;
+    fetch(iconUrl)
+      .then((r) => r.blob())
+      .then((r) => setBlob(URL.createObjectURL(r)));
+  }
+
   if (!fileName) return <EmptyState />;
 
   const {set, description, name, keywords} = iconData;
@@ -37,13 +52,7 @@ function IconDetails({fileName, iconData}: Props) {
     <div className={styles.IconDetails}>
       <div className={styles.Section}>
         <div className={styles.Preview}>
-          <Image
-            src={`/icons/${fileName}.svg`}
-            alt={description}
-            width={40}
-            height={40}
-            icon
-          />
+          <Icon source={polarisIcons[fileName]} />
           <div className={styles.SetBadge}>{set}</div>
         </div>
 
@@ -57,7 +66,7 @@ function IconDetails({fileName, iconData}: Props) {
                 .filter((keyword) => keyword !== 'N/A')
                 .map((keyword, i) => {
                   return (
-                    <React.Fragment key={i}>
+                    <Fragment key={i}>
                       <Link
                         key={keyword}
                         href={{query: {icon: fileName, q: keyword}}}
@@ -66,18 +75,14 @@ function IconDetails({fileName, iconData}: Props) {
                         {keyword}
                       </Link>
                       {i < keywords.length - 1 && ' '}
-                    </React.Fragment>
+                    </Fragment>
                   );
                 })}
             </span>
           </p>
         )}
 
-        <a
-          className={styles.DownloadButton}
-          href={`/icons/${fileName}.svg`}
-          download
-        >
+        <a className={styles.DownloadButton} href={blob} download={fileName}>
           Download
         </a>
       </div>
@@ -127,13 +132,7 @@ function EmptyState() {
   return (
     <div className={styles.IconDetails}>
       <div className={styles.EmptyState}>
-        <Image
-          width={46}
-          height={46}
-          src="/icons/BehaviorMajor.svg"
-          alt="Cursor suggesting to click an item"
-          icon
-        />
+        <Icon source={polarisIcons.BehaviorMajor} width={46} height={46} />
         <p>Select an icon</p>
       </div>
     </div>

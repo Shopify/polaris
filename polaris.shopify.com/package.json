@@ -3,15 +3,14 @@
   "version": "0.10.0",
   "private": true,
   "scripts": {
-    "build": "yarn run copy-icons && next build",
-    "dev": "yarn run copy-icons && open http://localhost:3000 && next dev",
+    "build": "next build",
+    "dev": "open http://localhost:3000 && next dev",
     "start": "next start ",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "copy-icons": "node scripts/copy-icons.mjs",
     "generate-sitemap": "yarn next-sitemap",
     "get-props": "ts-node --skip-project ./scripts/get-props.ts"
   },
@@ -26,7 +25,6 @@
     "gray-matter": "^4.0.3",
     "next": "12.1.0",
     "prismjs": "^1.27.0",
-    "puppeteer": "^16.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^8.0.2",
@@ -47,6 +45,7 @@
     "globby": "^11.1.0",
     "js-yaml": "^4.1.0",
     "marked": "^4.0.16",
+    "puppeteer": "^16.0.0",
     "rehype-raw": "^6.1.1",
     "next-sitemap": "^3.1.5",
     "typescript": "^4.7.4"
