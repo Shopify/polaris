@@ -182,16 +182,6 @@ export function Cell({
       </td>
     );
 
-  // const handleCellFocus = (event: React.FocusEvent<HTMLElement>) => {
-  //   const anchor = containerRef?.current?.querySelector('a');
-
-  //   if (anchor === event.target) {
-  //     setIsFocused(true);
-  //   }
-
-  //   setShowTooltip(true);
-  // });
-
   return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
 
