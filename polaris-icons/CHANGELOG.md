@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.4.0
+
+### Minor Changes
+
+- [#6928](https://github.com/Shopify/polaris/pull/6928) [`0e7b06524`](https://github.com/Shopify/polaris/commit/0e7b065240d09d5b349f634a96d21c7be0fb117e) Thanks [@joelzwarrington](https://github.com/joelzwarrington)! - - [#6928](https://github.com/Shopify/polaris/pull/6928) Add fulfillment icons (FulfillmentFulfilledMajor, FulfillmentOnHoldMajor)
+
+### Patch Changes
+
+- [#6942](https://github.com/Shopify/polaris/pull/6942) [`d676abda9`](https://github.com/Shopify/polaris/commit/d676abda906ca13411a469aa211eb1a0ff363f55) Thanks [@samrose3](https://github.com/samrose3)! - Fix casing of the the "Active status" icon in the icon metadata
+
+* [#6881](https://github.com/Shopify/polaris/pull/6881) [`1f8950cdc`](https://github.com/Shopify/polaris/commit/1f8950cdceb391a2ac899cad8648c1e16aa512ee) Thanks [@alex-page](https://github.com/alex-page)! - Replaced glob with globby
+
 ## 5.3.0
 
 ### Minor Changes
