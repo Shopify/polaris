@@ -39,6 +39,7 @@
     "@types/marked": "^4.0.3",
     "@types/node": "17.0.21",
     "@types/prismjs": "^1.26.0",
+    "@types/gtag.js": "^0.0.10",
     "@types/react": "*",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",

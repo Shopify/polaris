@@ -6,7 +6,12 @@ import {useRouter} from 'next/router';
 
 import '../src/styles/globals.scss';
 import Page from '../src/components/Page';
-import * as ga from '../src/lib/ga';
+
+const PUBLIC_GA_ID = 'UA-49178120-32';
+
+const gaPageView = (url: string) => {
+  window.gtag('config', PUBLIC_GA_ID, {page_path: url});
+};
 
 // Remove dark mode flicker. Minified version of https://github.com/donavon/use-dark-mode/blob/develop/noflash.js.txt
 const noflash = `!function(){var b="darkMode",g="dark-mode",j="light-mode";function d(a){document.body.classList.add(a?g:j),document.body.classList.remove(a?j:g)}var e="(prefers-color-scheme: dark)",c=window.matchMedia(e),h=c.media===e,a=null;try{a=localStorage.getItem(b)}catch(k){}var f=null!==a;if(f&&(a=JSON.parse(a)),f)d(a);else if(h)d(c.matches),localStorage.setItem(b,c.matches);else{var i=document.body.classList.contains(g);localStorage.setItem(b,JSON.stringify(i))}}()`;
@@ -19,7 +24,7 @@ function MyApp({Component, pageProps}: AppProps) {
     if (!isProd) return;
 
     const handleRouteChange = (url: string) => {
-      ga.pageview(url);
+      gaPageView(url);
     };
 
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -40,7 +45,7 @@ function MyApp({Component, pageProps}: AppProps) {
         <>
           <Script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${ga.PUBLIC_GA_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GA_ID}`}
           />
           <Script
             id="gtag-init"
@@ -50,7 +55,7 @@ function MyApp({Component, pageProps}: AppProps) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${ga.PUBLIC_GA_ID}', {
+              gtag('config', '${PUBLIC_GA_ID}', {
                 page_path: window.location.pathname,
               });
             `,
