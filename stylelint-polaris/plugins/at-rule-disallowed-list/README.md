@@ -23,8 +23,9 @@ const stylelintConfig = {
   rules: {
     'stylelint-polaris/at-rule-disallowed-list': {
       // Using a RegExp ensures we disallow `@mixin id` and `@mixin id()`
-      mixin: [/^disallowed-mixin/],
-      include: [/^disallowed-mixin/],
+      // https://regex101.com/r/PJYwuP/1
+      mixin: [/^disallowed-mixin($|\()/],
+      include: [/^disallowed-mixin($|\()/],
     },
   },
 };
