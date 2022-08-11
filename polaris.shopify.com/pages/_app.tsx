@@ -3,13 +3,14 @@ import Head from 'next/head';
 import Script from 'next/script';
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
+
 import '../src/styles/globals.scss';
 import Page from '../src/components/Page';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
 const gaPageView = (url: string) => {
-  (window as any).gtag('config', PUBLIC_GA_ID, {page_path: url});
+  window.gtag('config', PUBLIC_GA_ID, {page_path: url});
 };
 
 // Remove dark mode flicker. Minified version of https://github.com/donavon/use-dark-mode/blob/develop/noflash.js.txt
