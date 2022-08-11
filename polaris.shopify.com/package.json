@@ -3,7 +3,9 @@
   "version": "0.10.0",
   "private": true,
   "scripts": {
+    "prebuild": "yarn generate-og-images",
     "build": "yarn run copy-icons && next build",
+    "postbuild": "yarn generate-sitemap",
     "dev": "yarn run copy-icons && open http://localhost:3000 && next dev",
     "start": "next start ",
     "lint": "run-p lint:*",
@@ -12,6 +14,7 @@
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "copy-icons": "node scripts/copy-icons.mjs",
+    "generate-og-images": "node scripts/generate-og-images.mjs",
     "generate-sitemap": "yarn next-sitemap",
     "get-props": "ts-node --skip-project ./scripts/get-props.ts"
   },
