@@ -30,36 +30,35 @@ const stylelintConfig = {
 };
 ```
 
-### Run all linters
+### How to run:
 
-```
-yarn lint
-```
-
-OR
-
-```
-yarn stylelint <file-glob>
-```
-
-e.x.
-
-### Lint all files
+All files:
 
 ```
 yarn stylelint **/*.scss
 ```
 
-### Lint the TextContainer.scss file
+A specific file:
 
 ```
-yarn stylelint src/components/TextContainer/TextContainer.scss
+yarn stylelint src/example.scss
 ```
 
-e.x. output
+```scss
+// src/example.scss
+@mixin disallowed-mixin() {
+  color: red;
+}
+
+.example {
+  @include disallowed-mixin;
+}
+```
+
+Example output:
 
 ```
-src/components/TextContainer/TextContainer.scss
-  4:3  ✖  Invalid @mixin rule [disallowed-mixin]. Disallowed pattern [^disallowed-mixin]   (stylelint-polaris/at-rule-disallowed-list)
-  6:5  ✖  Invalid @include rule [disallowed-mixin]. Disallowed pattern [^disallowed-mixin] (stylelint-polaris/at-rule-disallowed-list)
+src/example.scss
+  1:8  ✖  Invalid @mixin rule [disallowed-mixin]. Disallowed pattern [^disallowed-mixin]   (stylelint-polaris/at-rule-disallowed-list)
+  6:12 ✖  Invalid @include rule [disallowed-mixin]. Disallowed pattern [^disallowed-mixin] (stylelint-polaris/at-rule-disallowed-list)
 ```
