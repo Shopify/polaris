@@ -68,7 +68,7 @@ Edge case: External icons should not be used as an indicator that a new tab or w
 
 #### Do
 
-Use as standalone, identifying icon only
+Use as a standalone, identifying icon only
 
 ![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/link/external-link-icon-decorative@2x.png)
 
