@@ -24,9 +24,9 @@ function IconDetails({fileName, iconData}: Props) {
     componentUsage: `<Icon\n  source={${fileName}}\n  color="base"\n/>`,
   };
   const figmaUIKitURl =
-    'https:www.figma.com/community/file/1110993965108325096';
+    'https://www.figma.com/community/file/1110993965108325096';
   const polarisIconsUrl =
-    'https:www.npmjs.com/package/@shopify/polaris-icons#usage';
+    'https://www.npmjs.com/package/@shopify/polaris-icons#usage';
   const iconComponentUrl = '/components/icon';
   const githubIssueSubject = `[Icon]: Update icon ${fileName}`;
   const proposeChangeUrl = `https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=UPDATE_ICON.yml&title=${encodeURIComponent(

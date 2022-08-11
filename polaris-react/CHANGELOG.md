@@ -1,5 +1,29 @@
 # Changelog
 
+## 9.23.0
+
+### Minor Changes
+
+- [#6825](https://github.com/Shopify/polaris/pull/6825) [`dd9cb536b`](https://github.com/Shopify/polaris/commit/dd9cb536b6681aee7ff164fcf0086cce70639efb) Thanks [@mrcthms](https://github.com/mrcthms)! - Exported IndexTable constant and type definition
+
+* [#6181](https://github.com/Shopify/polaris/pull/6181) [`44c7e3e36`](https://github.com/Shopify/polaris/commit/44c7e3e363f3e27ef3b07765311f44928e7a7779) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improved `useEventListener` types and added support for attaching listeners to React refs.
+
+- [#6769](https://github.com/Shopify/polaris/pull/6769) [`f67f0d4d1`](https://github.com/Shopify/polaris/commit/f67f0d4d1fd22a34f545e305c1c6e18da8e53d23) Thanks [@alex-page](https://github.com/alex-page)! - Removed `README.md` files from all components and migrated their examples into Storybook files. Their documentation has moved from `polaris-react/src/components/**/README.md` to `polaris.shopify.com/content/components/*.md`.
+
+* [#6854](https://github.com/Shopify/polaris/pull/6854) [`d34e8e8b6`](https://github.com/Shopify/polaris/commit/d34e8e8b6fa0720da93a63a9af1a02a4bf4e8548) Thanks [@zakwarsame](https://github.com/zakwarsame)! - fix explicit onClick handler bug
+
+- [#6812](https://github.com/Shopify/polaris/pull/6812) [`40c05d8d2`](https://github.com/Shopify/polaris/commit/40c05d8d2f81ed335b95bdb3b022520caa1cd100) Thanks [@csmiarowski](https://github.com/csmiarowski)! - Add disabled prop to Index Table Row
+
+### Patch Changes
+
+- [#6047](https://github.com/Shopify/polaris/pull/6047) [`d3ac9c2c5`](https://github.com/Shopify/polaris/commit/d3ac9c2c5a1e42dcf0bfde6d24cc25110ed57801) Thanks [@translation-platform](https://github.com/apps/translation-platform)! - Update translations across locales
+
+* [#6785](https://github.com/Shopify/polaris/pull/6785) [`c4758d0d9`](https://github.com/Shopify/polaris/commit/c4758d0d9fbaae91cae38b227cd5136be56c4223) Thanks [@kyledurand](https://github.com/kyledurand)! - Update @shopify/storybook-a11y-test to latest version
+
+* Updated dependencies [[`f87ce09c0`](https://github.com/Shopify/polaris/commit/f87ce09c0f85046f83426f46f70c9ecac4976eca), [`dcc7cbc26`](https://github.com/Shopify/polaris/commit/dcc7cbc2633da4f4a9d5aff71a2031ebcf8c7491), [`214678021`](https://github.com/Shopify/polaris/commit/2146780213886bb633fd4cfc6bb1c89d90ccfe10), [`655bd4828`](https://github.com/Shopify/polaris/commit/655bd48288f87ba6196d932a7696ab0c6e6c9024)]:
+  - @shopify/polaris-icons@5.3.0
+  - @shopify/polaris-tokens@5.5.1
+
 ## 9.22.0
 
 ### Minor Changes

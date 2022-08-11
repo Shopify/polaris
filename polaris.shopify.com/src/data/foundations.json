@@ -450,6 +450,21 @@
   },
   {
     "frontMatter": {
+      "title": "About Polaris",
+      "icon": "HintMajor",
+      "keywords": [
+        "about",
+        "polaris",
+        "design system",
+        "system",
+        "getting started"
+      ]
+    },
+    "description": "Learn what the Polaris design system is and how it's used by designers and developers to build world-class Shopify admin experiences.",
+    "category": "foundations"
+  },
+  {
+    "frontMatter": {
       "title": "Accessibility",
       "icon": "AccessibilityMajor",
       "keywords": [

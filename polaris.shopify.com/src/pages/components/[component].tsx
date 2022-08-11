@@ -1,5 +1,5 @@
 import fs from 'fs';
-import glob from 'glob';
+import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../components/ComponentExamples';
@@ -133,7 +133,7 @@ export const getStaticProps: GetStaticProps<
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = path.resolve(process.cwd(), 'content/components/*/*.md');
-  const paths = glob.sync(globPath).map((fileName: string) => {
+  const paths = globby.sync(globPath).map((fileName: string) => {
     return fileName
       .replace(`${process.cwd()}/content`, '')
       .replace('/index.md', '');

@@ -122,7 +122,7 @@ function MobileNav({currentPath}: Props) {
                 onKeyDown={handleShiftTabPress}
               >
                 <Image
-                  src="/shopify-logo.svg"
+                  src="/images/shopify-logo.svg"
                   layout="fixed"
                   width={24}
                   height={24}

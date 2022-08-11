@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const glob = require('glob');
+const globby = require('globby');
 const unified = require('unified');
 const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');
@@ -13,7 +13,7 @@ const configPerSet = new Map([
   ['Minor', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
 ]);
 
-const allIconFiles = glob
+const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
     // We don't care about the first item, only the groups matches

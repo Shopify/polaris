@@ -1,7 +1,7 @@
 import type {GetStaticPaths, GetStaticProps, NextPage} from 'next';
 import fs from 'fs';
 import path from 'path';
-import glob from 'glob';
+import globby from 'globby';
 
 import Layout from '../../components/Layout';
 import Longform from '../../components/Longform';
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps<Props, {doc: string}> = async ({
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = path.resolve(process.cwd(), 'content/contributing/*/*.md');
-  const paths = glob.sync(globPath).map((fileName: string) => {
+  const paths = globby.sync(globPath).map((fileName: string) => {
     return fileName
       .replace(`${process.cwd()}/content`, '')
       .replace('/index.md', '');
