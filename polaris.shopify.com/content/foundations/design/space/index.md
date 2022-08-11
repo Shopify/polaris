@@ -55,7 +55,7 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 
 ## Spacing tools
 
-### Polaris size units
+### Polaris space units
 
 All measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.
 
@@ -66,7 +66,7 @@ All measurements used across the experience (space, width, height, etc) must ref
 ### Space scale
 
 | Value        | Space         | px value | rem value |
-| ------------ | ------------ | -------- | --------- |
+| ------------ | ------------- | -------- | --------- |
 | 0            | --p-space-0   | 0        | 0         |
 | 0.25         | --p-space-025 | 1        | 0.0625    |
 | 0.5          | --p-space-05  | 2        | 0.125     |
