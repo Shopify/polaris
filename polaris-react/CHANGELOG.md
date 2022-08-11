@@ -1,5 +1,20 @@
 # Changelog
 
+## 9.23.1
+
+### Patch Changes
+
+- [#6518](https://github.com/Shopify/polaris/pull/6518) [`8f515922b`](https://github.com/Shopify/polaris/commit/8f515922bee80d9a2836755a4f4caedf2884f960) Thanks [@sarahill](https://github.com/sarahill)! - Removed external link icon from the Link components external prop and updated Link documentation
+
+* [#6914](https://github.com/Shopify/polaris/pull/6914) [`47d517cea`](https://github.com/Shopify/polaris/commit/47d517ceac37348a4889e58dbd5274a224f74df1) Thanks [@philschoefer](https://github.com/philschoefer)! - Fixed bug in `DataTable` where tooltips become disassociated when rows get sorted
+
+- [#6881](https://github.com/Shopify/polaris/pull/6881) [`1f8950cdc`](https://github.com/Shopify/polaris/commit/1f8950cdceb391a2ac899cad8648c1e16aa512ee) Thanks [@alex-page](https://github.com/alex-page)! - Replaced glob with globby
+
+* [#6913](https://github.com/Shopify/polaris/pull/6913) [`c788351c0`](https://github.com/Shopify/polaris/commit/c788351c0f8b2cc766af43ecff439ce39a0e6227) Thanks [@dleroux](https://github.com/dleroux)! - Fixed position of Bulk Action Checkbox
+
+* Updated dependencies [[`0e7b06524`](https://github.com/Shopify/polaris/commit/0e7b065240d09d5b349f634a96d21c7be0fb117e), [`d676abda9`](https://github.com/Shopify/polaris/commit/d676abda906ca13411a469aa211eb1a0ff363f55), [`1f8950cdc`](https://github.com/Shopify/polaris/commit/1f8950cdceb391a2ac899cad8648c1e16aa512ee)]:
+  - @shopify/polaris-icons@5.4.0
+
 ## 9.23.0
 
 ### Minor Changes
