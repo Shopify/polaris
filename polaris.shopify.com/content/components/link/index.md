@@ -62,7 +62,7 @@ External links should be used when merchants are:
 
 Avoid using the [external icon](/icons?icon=ExternalMinor&q=external), as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
 
-Edge case: External icons should not be used as an indicator that a new tab or window will be opened. However, they may be used sparingly in features where symbols help merchants scan and pick from a list of several kinds of navigation options, like the admin's global search results.
+Edge cases: External icons should not be used to indicate a new tab or window is being opened. However, they may be used sparingly in features where symbols help merchants scan and pick from a list of several kinds of navigation options, like the admin's global search results.
 
 <!-- dodont -->
 
