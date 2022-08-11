@@ -1,9 +1,4 @@
-import React, {
-  FocusEventHandler,
-  useRef,
-  useState,
-  useLayoutEffect,
-} from 'react';
+import React, {FocusEventHandler, useRef} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -174,12 +169,7 @@ export function Cell({
         setRef(ref);
       }}
     >
-      <TruncatedText
-        showTooltip={Boolean(truncate)}
-        className={styles.TooltipContent}
-      >
-        {content}
-      </TruncatedText>
+      <TruncatedText className={styles.TooltipContent}>{content}</TruncatedText>
     </th>
   );
 
@@ -192,44 +182,35 @@ export function Cell({
       </td>
     );
 
+  // const handleCellFocus = (event: React.FocusEvent<HTMLElement>) => {
+  //   const anchor = containerRef?.current?.querySelector('a');
+
+  //   if (anchor === event.target) {
+  //     setIsFocused(true);
+  //   }
+
+  //   setShowTooltip(true);
+  // });
+
   return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
 
 const TruncatedText = ({
   children,
-  showTooltip,
   className = '',
 }: {
   children: React.ReactNode;
-  showTooltip: boolean;
   className?: string;
 }) => {
   const textRef = useRef<any | null>(null);
-  const [isEllipsis, setIsEllipsis] = useState<boolean | null>(null);
-
-  useLayoutEffect(() => {
-    const checkTextOverflow = () => {
-      const {current} = textRef;
-
-      if (!current) {
-        return;
-      }
-
-      const hasEllipsis =
-        showTooltip && current.scrollWidth > current.offsetWidth;
-
-      setIsEllipsis(hasEllipsis);
-    };
-
-    checkTextOverflow();
-  }, [textRef, showTooltip, children]);
-
+  const {current} = textRef;
   const text = (
     <span ref={textRef} className={className}>
       {children}
     </span>
   );
-  return isEllipsis ? (
+
+  return current?.scrollWidth > current?.offsetWidth ? (
     <Tooltip content={textRef.current.innerText}>{text}</Tooltip>
   ) : (
     text
