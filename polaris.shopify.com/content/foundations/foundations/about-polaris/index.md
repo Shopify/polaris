@@ -7,6 +7,7 @@ keywords:
   - design system
   - system
   - getting started
+icon: HintMajor
 ---
 
 Polaris is the design system for the Shopify admin. It’s used both internally at Shopify and externally by third-party developers and designers. From accessibility to performance to design expertise, Polaris gives you the tools to build a world-class admin experience.
@@ -57,20 +58,20 @@ Polaris React Native components are also used in the Shopify admin iOS and Andro
 
 ### Compositions
 
-Polaris tokens and components can be assembled together to solve any number of merchant needs in the admin. Compositions are the result of design tokens and/or primitives being put together to create a specific user experience. 
+Polaris tokens and components can be assembled together to solve any number of merchant needs in the admin. Compositions are the result of design tokens and/or primitives being put together to create a specific user experience.
 
-Many of our primitive components are built with Polaris design tokens, and many of our design patterns can be composed using primitive components. 
+Many of our primitive components are built with Polaris design tokens, and many of our design patterns can be composed using primitive components.
 
-Some compositions can be packaged and distributed via component libraries. 
+Some compositions can be packaged and distributed via component libraries.
 
 ### Design patterns
 
 Design patterns are best practice design guidance. They address situations that merchants commonly face, including:
 
-* Tasks, like searching and filtering
-* Situations, like errors and loading
-* UI characteristics, like feedback
-* Architecture, like navigation and page layout
+- Tasks, like searching and filtering
+- Situations, like errors and loading
+- UI characteristics, like feedback
+- Architecture, like navigation and page layout
 
 These patterns center on the merchant and how we build experiences to meet their needs.
 
