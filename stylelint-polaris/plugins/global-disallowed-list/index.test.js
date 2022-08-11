@@ -33,14 +33,14 @@ testRule({
       endLine: 1,
       endColumn: 32,
     },
-    {
-      code: '.a { @include layout-flex-fix(); }',
-      description: 'Uses something on the disallowed list',
-      message: messages.rejected('@include layout-flex-fix'),
-      line: 1,
-      column: 17,
-      endLine: 1,
-      endColumn: 32,
-    },
+    // {
+    //   code: '.a { @include layout-flex-fix(); }',
+    //   description: 'Uses something on the disallowed list',
+    //   message: messages.rejected('@include layout-flex-fix'),
+    //   line: 1,
+    //   column: 17,
+    //   endLine: 1,
+    //   endColumn: 32,
+    // },
   ],
 });
