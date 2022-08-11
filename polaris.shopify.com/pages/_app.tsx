@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Script from 'next/script';
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
-import '../styles/globals.scss';
+import '../src/styles/globals.scss';
 import Page from '../src/components/Page';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
