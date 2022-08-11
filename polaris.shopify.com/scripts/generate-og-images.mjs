@@ -36,8 +36,7 @@ const getUrls = async () => {
   const sitemap = await readFile('./public/sitemap.xml', 'utf-8');
   return sitemap
     .match(/loc>[^<]+/gi)
-    .map((match) => match.replace('loc>https://polaris.shopify.com', ''))
-    .filter((url) => !url.startsWith('/examples'));
+    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
 };
 
 const generateHTML = async (url, slug) => {
