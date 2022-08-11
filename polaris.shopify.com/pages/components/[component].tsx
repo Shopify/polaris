@@ -94,7 +94,7 @@ export const getStaticProps: GetStaticProps<
       (example: ComponentExample) => {
         const examplePath = path.resolve(
           process.cwd(),
-          `src/pages/examples/${example.fileName}`,
+          `pages/examples/${example.fileName}`,
         );
         let code = '';
 
