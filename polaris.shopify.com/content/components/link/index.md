@@ -53,7 +53,7 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 
 Use default links whenever possible to avoid disorienting merchants and causing accessibility problems by opening a new tab.
 
-Links should be indicated as external when merchants are:
+External links should be used when merchants are:
 
 - Performing a task or workflow, like creating a product
 - Navigating to a page outside of the Shopify admin
