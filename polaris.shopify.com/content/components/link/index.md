@@ -76,7 +76,7 @@ Use as a standalone, identifying icon only
 
 Avoid using the icon beside link text
 
-![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/link/external-link-no-icon@2x.png)
+![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/link/external-link-dont-example@2x.png)
 
 <!-- end -->
 
