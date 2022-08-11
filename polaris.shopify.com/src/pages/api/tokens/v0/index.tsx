@@ -40,13 +40,13 @@ const html = `
                 <a href="/api/v0/tokens">/api/v0/tokens</a> - Overview
             </li>
             <li>
-                <a href="/api/v0/tokens/all">/api/v0/tokens/all</a> - Contains all available tokens
+                <a href="/api/tokens/v0/all">/api/tokens/v0/all</a> - Contains all available tokens
             </li>
             <li>
-                <a href="/api/v0/tokens/colors">/api/v0/tokens/colors</a> - Contains the color tokens for a desired color scheme
+                <a href="/api/tokens/v0/colors">/api/tokens/v0/colors</a> - Contains the color tokens for a desired color scheme
             </li>
             <li>
-                /api/v0/tokens/:token-group - Information for a single token group
+                /api/tokens/v0/:token-group - Information for a single token group
             </li>
             <li>
                 Format Query Param - Updates the format that you receive. Defaults to json. Ex: /all?format=css, /colors?format=json, /:token-group?format=json
@@ -69,7 +69,7 @@ const html = `
             <tbody>
             ${Object.keys(tokens.colorSchemes)
               .map((scheme) => {
-                const url = `/api/v0/tokens/colors?scheme=${scheme}`;
+                const url = `/api/tokens/v0/colors?scheme=${scheme}`;
                 const cssUrl = `${url}&format=css`;
 
                 return `
@@ -92,7 +92,7 @@ const html = `
               .join('\n')}
             ${staticTokenGroupKeys
               .map((tokenGroup) => {
-                const url = `/api/v0/tokens/${tokenGroup}`;
+                const url = `/api/tokens/v0/${tokenGroup}`;
                 const cssUrl = `${url}?format=css`;
 
                 return `
