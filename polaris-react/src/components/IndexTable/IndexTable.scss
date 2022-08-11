@@ -12,7 +12,6 @@ $breakpoint-small: 458px;
   --pc-index-table-loading-panel: 37;
   position: relative;
   overflow: hidden;
-  border-radius: inherit;
 }
 
 .LoadingContainer-enter {
@@ -177,9 +176,13 @@ $loading-panel-height: 53px;
 }
 
 .TableHeading {
-  padding: var(--p-space-4);
+  background: var(--p-surface-subdued);
+  box-shadow: 0 1px var(--p-divider) inset;
+  padding: var(--p-space-2) var(--p-space-4);
   text-align: left;
   font-weight: var(--p-font-weight-medium);
+  color: var(--p-text-subdued);
+  font-size: var(--p-font-size-1);
   white-space: nowrap;
   border: 0;
 }
