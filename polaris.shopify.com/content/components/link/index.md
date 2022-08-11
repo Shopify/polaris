@@ -53,22 +53,22 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 
 Use default links whenever possible to avoid disorienting merchants and causing accessibility problems by opening a new tab.
 
-External links should be used when:
+Links should be indicated as external when merchants are:
 
-- If the merchant is in the middle of a task or workflow, like creating a product
-- If the merchant is navigating to a page outside the Shopify admin
+- Performing a task or workflow, like creating a product
+- Navigating to a page outside of the Shopify admin
 
 ### No icon
 
-Avoid using the <a href="/icons?icon=ExternalMinor&q=exter">external link icon</a>, as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
+Avoid using the [external link icon](/icons?icon=ExternalMinor&q=exter), as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
 
-Edge case: icon can be used very sparingly as a stylistic/symbolic icon, not as an indicator of a new tab being opened.
+Edge case: External icons should not be used as an indicator that a new tab or window will be opened. However, they may be used sparingly in features where symbols help merchants scan and pick from a list of several kinds of navigation options, like the admin's global search results.
 
 <!-- dodont -->
 
 #### Do
 
-Use as standalone, identifying icon only
+Use as a standalone, identifying icon only
 
 ![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/link/external-link-icon-decorative@2x.png)
 
