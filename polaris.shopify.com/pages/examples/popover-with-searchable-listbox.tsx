@@ -126,10 +126,6 @@ function PopoverWithSearchableListboxExample() {
     handleQueryChange('');
   };
 
-  const handleResetVisibleOptionIndex = () => {
-    setVisibleOptionIndex(interval);
-  };
-
   const handleOpenPicker = () => {
     setPickerOpen(true);
   };
@@ -137,7 +133,6 @@ function PopoverWithSearchableListboxExample() {
   const handleClosePicker = () => {
     setPickerOpen(false);
     handleQueryChange('');
-    handleResetVisibleOptionIndex();
   };
 
   const handleSegmentSelect = (segmentIndex: string) => {

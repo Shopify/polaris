@@ -352,10 +352,6 @@ export function WithSearchableListbox() {
     handleQueryChange('');
   };
 
-  const handleResetVisibleOptionIndex = () => {
-    setVisibleOptionIndex(interval);
-  };
-
   const handleOpenPicker = () => {
     setPickerOpen(true);
   };
@@ -363,7 +359,6 @@ export function WithSearchableListbox() {
   const handleClosePicker = () => {
     setPickerOpen(false);
     handleQueryChange('');
-    handleResetVisibleOptionIndex();
   };
 
   const handleSegmentSelect = (segmentIndex: string) => {
