@@ -297,7 +297,8 @@
       "undo": "Ångra",
       "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Välj {resourceName}",
-      "selectButtonText": "Välj"
+      "selectButtonText": "Välj",
+      "sortAccessibilityLabel": "sortera {direction} efter"
     },
     "Page": {
       "Header": {

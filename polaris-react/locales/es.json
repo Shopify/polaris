@@ -298,7 +298,8 @@
       "undo": "Deshacer",
       "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
-      "selectButtonText": "Seleccionar"
+      "selectButtonText": "Seleccionar",
+      "sortAccessibilityLabel": "ordenar {direction} por"
     },
     "Page": {
       "Header": {

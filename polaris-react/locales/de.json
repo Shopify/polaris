@@ -297,7 +297,8 @@
       "undo": "Rückgängig machen",
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} auswählen",
       "selectItem": "{resourceName} auswählen",
-      "selectButtonText": "Auswählen"
+      "selectButtonText": "Auswählen",
+      "sortAccessibilityLabel": "von {direction} sortieren nach"
     },
     "Page": {
       "Header": {

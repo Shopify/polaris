@@ -1403,12 +1403,10 @@ export function WithSortableHeadings() {
     setSortIndex(index);
     setSortDirection(direction);
     const newSortedRows = sortRows(rows, index, direction);
-    console.log({newSortedRows});
     setSortedRows(newSortedRows);
   }
 
   function sortRows(localRows, index, direction) {
-    console.log(index, direction);
     return [...localRows].sort((a, b) => {
       const key = index === 0 ? 'name' : 'location';
       if (a[key] < b[key]) {

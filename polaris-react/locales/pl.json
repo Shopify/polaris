@@ -299,7 +299,8 @@
       "undo": "Cofnij",
       "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Wybierz {resourceName}",
-      "selectButtonText": "Wybierz"
+      "selectButtonText": "Wybierz",
+      "sortAccessibilityLabel": "sortuj {direction} według"
     },
     "Page": {
       "Header": {

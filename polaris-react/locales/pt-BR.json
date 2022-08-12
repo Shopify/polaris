@@ -298,7 +298,8 @@
       "undo": "Desfazer",
       "selectAllItems": "Selecionar todos os {resourceNamePlural} maiores que {itemsLength}",
       "selectItem": "Selecionar {resourceName}",
-      "selectButtonText": "Selecionar"
+      "selectButtonText": "Selecionar",
+      "sortAccessibilityLabel": "ordenar {direction} por"
     },
     "Page": {
       "Header": {

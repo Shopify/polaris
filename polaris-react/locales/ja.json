@@ -297,7 +297,8 @@
       "undo": "元に戻す",
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
-      "selectButtonText": "選択"
+      "selectButtonText": "選択",
+      "sortAccessibilityLabel": "で{direction}を並び替える"
     },
     "Page": {
       "Header": {

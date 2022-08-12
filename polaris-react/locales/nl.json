@@ -297,7 +297,8 @@
       "undo": "Ongedaan maken",
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} selecteren",
       "selectItem": "{resourceName} selecteren",
-      "selectButtonText": "Selecteren"
+      "selectButtonText": "Selecteren",
+      "sortAccessibilityLabel": "sorteer {direction} op"
     },
     "Page": {
       "Header": {

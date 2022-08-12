@@ -297,7 +297,8 @@
       "undo": "Hoàn tác",
       "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Chọn {resourceName}",
-      "selectButtonText": "Chọn"
+      "selectButtonText": "Chọn",
+      "sortAccessibilityLabel": "sắp xếp {direction} theo"
     },
     "Page": {
       "Header": {
