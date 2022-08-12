@@ -88,11 +88,10 @@ export function Combobox({
   }, [shouldOpen, handleOpen]);
 
   const handleBlur = useCallback(() => {
-    setDisableCloseOnSelect(false);
     if (popoverActive) {
       handleClose();
     }
-  }, [popoverActive, handleClose, setDisableCloseOnSelect]);
+  }, [popoverActive, handleClose]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
