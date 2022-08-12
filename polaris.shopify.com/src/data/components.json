@@ -245,7 +245,7 @@
       ],
       "status": {
         "value": "Deprecated",
-        "message": "This component is no longer supported. Please use the alpha Text component instead."
+        "message": "This component is no longer supported. Please use the Text component instead."
       }
     },
     "description": "Caption text size is smaller than the recommended size for general reading. On web, it should be used only in a graph or as a timestamp for a list item. On Android and iOS, it can also be used as help text or as other kinds of secondary text for list items."
@@ -473,7 +473,7 @@
       ],
       "status": {
         "value": "Deprecated",
-        "message": "This component is no longer supported. Please use the alpha Text component instead."
+        "message": "This component is no longer supported. Please use the Text component instead."
       }
     },
     "description": "Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding."
@@ -691,7 +691,7 @@
       ],
       "status": {
         "value": "Deprecated",
-        "message": "This component is no longer supported. Please use the alpha Text component instead."
+        "message": "This component is no longer supported. Please use the Text component instead."
       }
     },
     "description": "Headings are used as the titles of each major section of a page in the interface. For example, [card components](https://polaris.shopify.com/components/card) generally use headings as their title."
@@ -1324,7 +1324,7 @@
       ],
       "status": {
         "value": "Deprecated",
-        "message": "This component is no longer supported. Please use the alpha Text component instead."
+        "message": "This component is no longer supported. Please use the Text component instead."
       }
     },
     "description": "Subheadings are used for the title of any sub-sections in top-level page sections."
@@ -1479,7 +1479,7 @@
       ],
       "status": {
         "value": "Deprecated",
-        "message": "This component is no longer supported. Please use the alpha Text component instead."
+        "message": "This component is no longer supported. Please use the Text component instead."
       }
     },
     "description": "Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text."
@@ -1598,7 +1598,7 @@
       ],
       "status": {
         "value": "Deprecated",
-        "message": "This component is no longer supported. Please use the alpha Text component instead."
+        "message": "This component is no longer supported. Please use the Text component instead."
       }
     },
     "description": "Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden."

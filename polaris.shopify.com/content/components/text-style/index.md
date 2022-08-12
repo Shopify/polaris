@@ -21,10 +21,10 @@ keywords:
   - fields
 status:
   value: Deprecated
-  message: This component is no longer supported. Please use the alpha Text component instead.
+  message: This component is no longer supported. Please use the Text component instead.
 ---
 
-## Mapping to the alpha Text component
+## Mapping to the Text component
 
 ### Subdued
 
