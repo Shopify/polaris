@@ -1407,12 +1407,12 @@ export function WithSortableHeadings() {
   }
 
   function sortRows(localRows, index, direction) {
-    return [...localRows].sort((a, b) => {
+    return [...localRows].sort((rowA, rowB) => {
       const key = index === 0 ? 'name' : 'location';
-      if (a[key] < b[key]) {
+      if (rowA[key] < rowB[key]) {
         return direction === 'descending' ? -1 : 1;
       }
-      if (a[key] > b[key]) {
+      if (rowA[key] > rowB[key]) {
         return direction === 'descending' ? 1 : -1;
       }
       return 0;
