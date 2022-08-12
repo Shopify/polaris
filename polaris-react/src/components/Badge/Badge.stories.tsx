@@ -15,19 +15,19 @@ export function Small() {
 }
 
 export function Informational() {
-  return <Badge status="info">Published</Badge>;
+  return <Badge status="info">Draft</Badge>;
 }
 
 export function Success() {
-  return <Badge status="success">Funds recovered</Badge>;
+  return <Badge status="success">Active</Badge>;
 }
 
 export function Attention() {
-  return <Badge status="attention">Inactive</Badge>;
+  return <Badge status="attention">Open</Badge>;
 }
 
 export function Warning() {
-  return <Badge status="warning">Expired</Badge>;
+  return <Badge status="warning">On hold</Badge>;
 }
 
 export function Critical() {
@@ -36,7 +36,7 @@ export function Critical() {
 
 export function Incomplete() {
   return (
-    <Badge progress="incomplete" status="warning">
+    <Badge progress="incomplete" status="attention">
       Unfulfilled
     </Badge>
   );
@@ -44,7 +44,7 @@ export function Incomplete() {
 
 export function PartiallyComplete() {
   return (
-    <Badge progress="partiallyComplete" status="attention">
+    <Badge progress="partiallyComplete" status="warning">
       Partially fulfilled
     </Badge>
   );
