@@ -1,5 +1,9 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
-import {EnableSelectionMinor} from '@shopify/polaris-icons';
+import {
+  EnableSelectionMinor,
+  SortAscendingMajor,
+  SortDescendingMajor,
+} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {tokens} from '@shopify/polaris-tokens';
 
@@ -11,11 +15,13 @@ import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
+import {Icon} from '../Icon';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
+import {UnstyledButton} from '../UnstyledButton';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
 import {
@@ -35,10 +41,13 @@ import styles from './IndexTable.scss';
 
 export interface IndexTableHeading {
   title: string;
+  id?: string;
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
 }
+
+export type IndexTableSortDirection = 'ascending' | 'descending';
 
 export interface IndexTableBaseProps {
   headings: NonEmptyArray<IndexTableHeading>;
@@ -50,6 +59,21 @@ export interface IndexTableBaseProps {
   paginatedSelectAllActionText?: string;
   lastColumnSticky?: boolean;
   selectable?: boolean;
+  /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
+  sortable?: boolean[];
+  /**
+   * The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.
+   * @default 'ascending'
+   */
+  defaultSortDirection?: IndexTableSortDirection;
+  /** The current sorting direction. */
+  sortDirection?: IndexTableSortDirection;
+  /**
+   * The index of the heading that the table rows are sorted by.
+   */
+  sortColumnIndex?: number;
+  /** Callback fired on click or keypress of a sortable column heading. */
+  onSort?(headingIndex: number, direction: IndexTableSortDirection): void;
 }
 
 export interface TableHeadingRect {
@@ -71,6 +95,11 @@ function IndexTableBase({
   sort,
   paginatedSelectAllActionText,
   lastColumnSticky = false,
+  sortable,
+  sortDirection,
+  defaultSortDirection = 'descending',
+  sortColumnIndex,
+  onSort,
   ...restProps
 }: IndexTableBaseProps) {
   const {
@@ -385,7 +414,7 @@ function IndexTableBase({
 
         {selectable && (
           <div className={styles['StickyTableHeading-second-scrolling']}>
-            {renderHeadingContent(headings[0])}
+            {renderHeadingContent(headings[0], 0)}
           </div>
         )}
 
@@ -394,7 +423,7 @@ function IndexTableBase({
             className={styles.FirstStickyHeaderElement}
             ref={firstStickyHeaderElement}
           >
-            {renderHeadingContent(headings[0])}
+            {renderHeadingContent(headings[0], 0)}
           </div>
         )}
       </Stack>
@@ -677,7 +706,7 @@ function IndexTableBase({
         data-index-table-heading
         style={stickyPositioningStyle}
       >
-        {renderHeadingContent(heading)}
+        {renderHeadingContent(heading, index)}
       </th>
     );
 
@@ -718,7 +747,14 @@ function IndexTableBase({
     );
   }
 
-  function renderHeadingContent(heading: IndexTableHeading) {
+  function handleSortHeadingClick(
+    index: number,
+    direction: IndexTableSortDirection,
+  ) {
+    onSort?.(index, direction);
+  }
+
+  function renderHeadingContent(heading: IndexTableHeading, index: number) {
     let headingContent;
 
     if (heading.new) {
@@ -735,6 +771,49 @@ function IndexTableBase({
     } else {
       headingContent = heading.title;
     }
+    if (sortable?.[index]) {
+      const isCurrentlySorted = index === sortColumnIndex;
+      const isAscending = sortDirection === 'ascending';
+      let newDirection: IndexTableSortDirection = defaultSortDirection;
+      let source =
+        defaultSortDirection === 'ascending'
+          ? SortAscendingMajor
+          : SortDescendingMajor;
+      if (isCurrentlySorted) {
+        newDirection = isAscending ? 'descending' : 'ascending';
+        source =
+          sortDirection === 'ascending'
+            ? SortAscendingMajor
+            : SortDescendingMajor;
+      }
+
+      const sortAccessibilityLabel = i18n.translate(
+        'Polaris.IndexTable.sortAccessibilityLabel',
+        {direction: newDirection},
+      );
+
+      const iconMarkup = (
+        <span
+          className={classNames(
+            styles.TableHeadingSortIcon,
+            isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
+          )}
+        >
+          <Icon source={source} accessibilityLabel={sortAccessibilityLabel} />
+        </span>
+      );
+
+      return (
+        <UnstyledButton
+          onClick={() => handleSortHeadingClick(index, newDirection)}
+          className={styles.TableHeadingSortButton}
+        >
+          {iconMarkup}
+
+          {headingContent}
+        </UnstyledButton>
+      );
+    }
     return headingContent;
   }
 
@@ -749,7 +828,7 @@ function IndexTableBase({
         ? {minWidth: tableHeadingRects.current[position].offsetWidth}
         : undefined;
 
-    const headingContent = renderHeadingContent(heading);
+    const headingContent = renderHeadingContent(heading, index);
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
       index === 0 && styles['StickyTableHeading-second'],

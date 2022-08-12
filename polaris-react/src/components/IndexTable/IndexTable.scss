@@ -201,6 +201,36 @@ $loading-panel-height: 53px;
   width: var(--p-space-5);
 }
 
+.TableHeadingSortButton {
+  background: none;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--p-font-weight-medium);
+  color: var(--p-text-subdued);
+  font-size: var(--p-font-size-1);
+
+  &:hover,
+  &:focus {
+    .TableHeadingSortIcon {
+      opacity: 1;
+    }
+  }
+}
+
+.TableHeadingSortIcon {
+  order: 1;
+  opacity: 0;
+  transition: var(--p-ease) var(--p-duration-150) opacity;
+}
+
+.TableHeadingSortIcon-visible {
+  opacity: 1;
+}
+
 .ColumnHeaderCheckboxWrapper {
   display: flex;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
@@ -13,9 +14,12 @@ import {Badge} from '../../Badge';
 import {VisuallyHidden} from '../../VisuallyHidden';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
+import type {IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
+import {UnstyledButton} from '../../UnstyledButton';
+import {Icon} from '../../Icon';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -588,6 +592,127 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent(BulkActions, {
         actions: bulkActions,
         promotedActions,
+      });
+    });
+  });
+
+  describe('sorting', () => {
+    const mockSortingHeadings: IndexTableProps['headings'] = [
+      {title: 'Foo'},
+      {title: 'Bar'},
+      {title: 'Baz'},
+    ];
+    const tableItems = [
+      {foo: 'Foo1', bar: 'Bar1', baz: 'Baz1'},
+      {foo: 'Foo2', bar: 'Bar2', baz: 'Baz2'},
+      {foo: 'Foo3', bar: 'Bar3', baz: 'Baz3'},
+    ];
+
+    const defaultSortingProps: IndexTableProps = {
+      ...defaultProps,
+      headings: mockSortingHeadings,
+      itemCount: tableItems.length,
+      sortable: [true, false, true],
+      sortDirection: 'ascending',
+      defaultSortDirection: 'descending',
+      sortColumnIndex: 0,
+      onSort: jest.fn(),
+    };
+
+    describe('sortable', () => {
+      it('adds the sorting buttons to columns that match the indexes of the sortable prop', () => {
+        const index = mountWithApp(
+          <IndexTable {...defaultSortingProps}>
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll('th')[1]).toContainReactComponent(UnstyledButton);
+        expect(index.findAll('th')[2]).not.toContainReactComponent(
+          UnstyledButton,
+        );
+        expect(index.findAll('th')[3]).toContainReactComponent(UnstyledButton);
+      });
+    });
+
+    describe('sortColumnIndex', () => {
+      it('adds the visible icon class to the heading with the index that matches the sortColumnIndex', () => {
+        const index = mountWithApp(
+          <IndexTable {...defaultSortingProps}>
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+        expect(index.findAll('th')[1]).toContainReactComponent('span', {
+          className: expect.stringContaining('TableHeadingSortIcon-visible'),
+        });
+        expect(index.findAll('th')[3]).not.toContainReactComponent('span', {
+          className: expect.stringContaining('TableHeadingSortIcon-visible'),
+        });
+      });
+    });
+
+    describe('sortDirection', () => {
+      it.each(['ascending', 'descending'])(
+        'will set the icon source correctly for %s direction for the active sortable heading',
+        (direction) => {
+          const index = mountWithApp(
+            <IndexTable
+              {...defaultSortingProps}
+              sortDirection={direction as IndexTableSortDirection}
+            >
+              {tableItems.map(mockRenderRow)}
+            </IndexTable>,
+          );
+          const source =
+            direction === 'ascending'
+              ? SortAscendingMajor
+              : SortDescendingMajor;
+
+          expect(index.findAll('th')[1]).toContainReactComponent(Icon, {
+            source,
+          });
+        },
+      );
+    });
+
+    describe('defaultSortDirection', () => {
+      it.each(['ascending', 'descending'])(
+        'will set the icon source correctly for %s direction for the inactive sortable heading',
+        (direction) => {
+          const index = mountWithApp(
+            <IndexTable
+              {...defaultSortingProps}
+              defaultSortDirection={direction as IndexTableSortDirection}
+            >
+              {tableItems.map(mockRenderRow)}
+            </IndexTable>,
+          );
+          const source =
+            direction === 'ascending'
+              ? SortAscendingMajor
+              : SortDescendingMajor;
+
+          expect(index.findAll('th')[3]).toContainReactComponent(Icon, {
+            source,
+          });
+        },
+      );
+    });
+
+    describe('onSort', () => {
+      it('passes the arguments to the callback correctly', () => {
+        const onSort = jest.fn();
+        const index = mountWithApp(
+          <IndexTable {...defaultSortingProps} onSort={onSort}>
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        index.act(() => {
+          index.findAll('th')[1].find(UnstyledButton)?.trigger('onClick');
+        });
+
+        expect(onSort).toHaveBeenCalledWith(0, 'descending');
       });
     });
   });
