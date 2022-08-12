@@ -68,7 +68,10 @@ describe('Option', () => {
     });
     const domId = optionElement?.prop('id');
 
-    optionElement!.trigger('onClick', {preventDefault: () => {}});
+    optionElement!.trigger('onClick', {
+      preventDefault: () => {},
+      stopPropagation: () => {},
+    });
 
     expect(onOptionSelectSpy).toHaveBeenCalledTimes(1);
     expect(onOptionSelectSpy).toHaveBeenCalledWith({
@@ -138,9 +141,10 @@ describe('Option', () => {
       },
     );
 
-    option
-      .find('li', {role: 'option'})!
-      .trigger('onMouseDown', {preventDefault: preventDefaultSpy});
+    option.find('li', {role: 'option'})!.trigger('onMouseDown', {
+      preventDefault: preventDefaultSpy,
+      stopPropagation: () => {},
+    });
 
     expect(preventDefaultSpy).toHaveBeenCalledTimes(1);
   });
@@ -318,7 +322,10 @@ describe('Option', () => {
         .find('li', {
           role: 'option',
         })!
-        .trigger('onClick', {preventDefault: () => {}});
+        .trigger('onClick', {
+          preventDefault: () => {},
+          stopPropagation: () => {},
+        });
 
       expect(onActionSpy).toHaveBeenCalled();
     });
@@ -343,7 +350,10 @@ describe('Option', () => {
         .find('li', {
           role: 'option',
         })!
-        .trigger('onClick', {preventDefault: () => {}});
+        .trigger('onClick', {
+          preventDefault: () => {},
+          stopPropagation: () => {},
+        });
 
       expect(onOptionSelectSpy).not.toHaveBeenCalled();
     });

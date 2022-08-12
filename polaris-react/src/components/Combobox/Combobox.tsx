@@ -50,19 +50,15 @@ export function Combobox({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
-  const [disableCloseOnSelect, setDisableCloseOnSelect] = useState(false);
   const shouldOpen = Boolean(!popoverActive && Children.count(children) > 0);
   const ref = useRef<PopoverPublicAPI | null>(null);
 
   const handleClose = useCallback(() => {
-    // only deactive popover if not creating a new option
-    if (!disableCloseOnSelect) {
-      setPopoverActive(false);
-      onClose?.();
-    }
+    setPopoverActive(false);
+    onClose?.();
 
     setActiveOptionId(undefined);
-  }, [disableCloseOnSelect, onClose]);
+  }, [onClose]);
 
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
@@ -74,12 +70,10 @@ export function Combobox({
       handleClose();
       setActiveOptionId(undefined);
       return;
-    } else {
-      setDisableCloseOnSelect(true);
     }
 
     ref.current?.forceUpdatePosition();
-  }, [allowMultiple, handleClose, setDisableCloseOnSelect]);
+  }, [allowMultiple, handleClose]);
 
   const handleFocus = useCallback(() => {
     if (shouldOpen) {
