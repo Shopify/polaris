@@ -90,8 +90,8 @@ const segments: CustomerSegment[] = [
 
 const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
   (_, index) => ({
-    label: `Other customers ${index + 12}`,
-    id: `gid://shopify/CustomerSegment/${index + 12}`,
+    label: `Other customers ${index + 13}`,
+    id: `gid://shopify/CustomerSegment/${index + 13}`,
     value: `${index + 12}`,
   }),
 );
