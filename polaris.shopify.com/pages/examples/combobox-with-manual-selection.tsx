@@ -5,6 +5,7 @@ import {
   Icon,
   TextContainer,
   Stack,
+  AutoSelection,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
@@ -112,7 +113,9 @@ function MultiComboboxExample() {
         }
       >
         {optionsMarkup ? (
-          <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
+          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+            {optionsMarkup}
+          </Listbox>
         ) : null}
       </Combobox>
       <TextContainer>
