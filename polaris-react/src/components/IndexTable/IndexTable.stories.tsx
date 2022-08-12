@@ -1349,9 +1349,9 @@ export function WithAllOfItsElements() {
 
 export function WithSortableHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('ascending');
+  const [sortDirection, setSortDirection] = useState('descending');
 
-  const customers = [
+  const initialRows = [
     {
       id: '3411',
       url: 'customers/341',
@@ -1368,21 +1368,60 @@ export function WithSortableHeadings() {
       orders: 30,
       amountSpent: '$140',
     },
+    {
+      id: '1245',
+      url: 'customers/123',
+      name: 'Anne-Marie Johnson',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+    },
+    {
+      id: '8741',
+      url: 'customers/543',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+    },
   ];
+  const [sortedRows, setSortedRows] = useState(
+    sortRows(initialRows, sortIndex, sortDirection),
+  );
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
   };
 
+  const rows = sortedRows ?? initialRows;
+
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
+    useIndexResourceState(rows);
 
   function handleClickSortHeading(index, direction) {
     setSortIndex(index);
     setSortDirection(direction);
+    const newSortedRows = sortRows(rows, index, direction);
+    console.log({newSortedRows});
+    setSortedRows(newSortedRows);
   }
 
-  const rowMarkup = customers.map(
+  function sortRows(localRows, index, direction) {
+    console.log(index, direction);
+    return [...localRows].sort((a, b) => {
+      const key = index === 0 ? 'name' : 'location';
+      if (a[key] < b[key]) {
+        return direction === 'descending' ? -1 : 1;
+      }
+      if (a[key] > b[key]) {
+        return direction === 'descending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  const rowMarkup = rows.map(
     ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row
         id={id}
@@ -1393,9 +1432,9 @@ export function WithSortableHeadings() {
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1404,16 +1443,16 @@ export function WithSortableHeadings() {
     <Card>
       <IndexTable
         resourceName={resourceName}
-        itemCount={customers.length}
+        itemCount={rows.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
-          {title: 'Location'},
           {title: 'Order count'},
           {title: 'Amount spent'},
+          {title: 'Location'},
         ]}
         sortable={[true, false, false, true]}
         sortDirection={sortDirection}
