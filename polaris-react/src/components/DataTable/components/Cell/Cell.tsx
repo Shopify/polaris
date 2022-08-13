@@ -1,4 +1,4 @@
-import React, {FocusEventHandler, useState} from 'react';
+import React, {FocusEventHandler, useRef} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -62,20 +62,6 @@ export function Cell({
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
-
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [tooltipContent, setTooltipContent] = useState('');
-
-  function setTooltip(ref: HTMLTableCellElement | null) {
-    if (!ref) {
-      return;
-    }
-    // Since the cell can accept any React node, we'll only show a tooltip when the cell content has an innerText
-    if (ref.scrollWidth > ref.offsetWidth && ref.innerText) {
-      setShowTooltip(true);
-      setTooltipContent(ref.innerText);
-    }
-  }
 
   const className = classNames(
     styles.Cell,
@@ -180,17 +166,10 @@ export function Cell({
       scope="row"
       {...colSpanProp}
       ref={(ref) => {
-        setTooltip(ref);
         setRef(ref);
       }}
     >
-      {showTooltip ? (
-        <Tooltip content={tooltipContent}>
-          <span className={styles.TooltipContent}>{content}</span>
-        </Tooltip>
-      ) : (
-        content
-      )}
+      <TruncatedText className={styles.TooltipContent}>{content}</TruncatedText>
     </th>
   );
 
@@ -205,3 +184,25 @@ export function Cell({
 
   return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
+
+const TruncatedText = ({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const textRef = useRef<any | null>(null);
+  const {current} = textRef;
+  const text = (
+    <span ref={textRef} className={className}>
+      {children}
+    </span>
+  );
+
+  return current?.scrollWidth > current?.offsetWidth ? (
+    <Tooltip content={textRef.current.innerText}>{text}</Tooltip>
+  ) : (
+    text
+  );
+};

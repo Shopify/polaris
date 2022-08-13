@@ -22,8 +22,8 @@ keywords:
   - secondary call to action
 examples:
   - fileName: link-default.tsx
-    title: Default
-    description: Use for text links in larger spans of text.
+    title: Default links
+    description: Use for text links inside a paragraph or for standalone text. Default links open in the same browser tab.
   - fileName: link-monochrome.tsx
     title: Monochrome
     description: Use for text links that are the same color as the surrounding text.
@@ -31,8 +31,8 @@ examples:
     title: Monochrome in a banner
     description: Monochrome styles will be applied to links rendered within a `Banner`.
   - fileName: link-external.tsx
-    title: External
-    description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when opening a page in the same tab might disrupt the merchant’s workflow.
+    title: External link
+    description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when a default link might disrupt the merchant’s workflow.
 ---
 
 ## Best practices
@@ -48,6 +48,37 @@ The HTML that renders for the `Button` and `Link` components carries meaning. Us
 - a more inclusive experience for assistive technology users
 - a more cohesive visual experience for sighted users
 - products that are easier to maintain at scale
+
+### Open a new tab only when necessary
+
+Use default links whenever possible to avoid disorienting merchants and causing accessibility problems by opening a new tab.
+
+External links should be used when merchants are:
+
+- Performing a task or workflow, like creating a product
+- Navigating to a page outside of the Shopify admin
+
+### No icon
+
+Avoid using the [external icon](/icons?icon=ExternalMinor&q=external), as it can add unnecessary visual load inside a sentence or when accompanied by other content. Instead, add clarity to external links through clear link text and predictable placement of the link in a merchant’s workflow.
+
+Edge cases: External icons should not be used to indicate a new tab or window is being opened. However, they may be used sparingly in features where symbols help merchants scan and pick from a list of several kinds of navigation options, like the admin's global search results.
+
+<!-- dodont -->
+
+#### Do
+
+Use as a standalone, identifying icon only
+
+![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/link/external-link-icon-decorative@2x.png)
+
+#### Don’t
+
+Avoid using the icon beside link text
+
+![Shopify admin page with an example of an external link to the Shopify help center with no icon](/images/components/link/external-link-dont-example@2x.png)
+
+<!-- end -->
 
 ### Unstyled links
 
@@ -150,10 +181,6 @@ To provide consistency and clarity:
 ```
 
 <!-- end -->
-
-#### External links
-
-The `external` prop adds an icon and a notification that the link opens a new tab. Use the `external` prop to make the link open in a new tab (or window, depending on the merchant’s browser settings). Open a page in a new tab only when opening a page in the same tab might disrupt the merchant’s workflow.
 
 ### Keyboard support
 
