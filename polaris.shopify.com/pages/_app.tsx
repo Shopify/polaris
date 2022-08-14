@@ -35,8 +35,8 @@ function MyApp({Component, pageProps}: AppProps) {
     };
   }, [router.events, isProd]);
 
-  const ogImagePath = `/og-images/png/${
-    router.asPath === '/' ? 'home' : router.asPath
+  const ogImagePath = `/og-images${
+    router.asPath === '/' ? '/home' : router.asPath
   }.png`;
 
   return (
