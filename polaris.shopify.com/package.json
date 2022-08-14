@@ -5,7 +5,7 @@
   "scripts": {
     "build": "yarn run gen-assets && next build",
     "postbuild": "yarn gen-sitemap",
-    "dev": "yarn run copy-icons && open http://localhost:3000 && next dev",
+    "dev": "node scripts/copy-icons.mjs && open http://localhost:3000 && next dev",
     "start": "next start ",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
