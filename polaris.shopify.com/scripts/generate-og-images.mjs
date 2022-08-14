@@ -175,6 +175,7 @@ const generateImages = async () => {
 
   const browser = await puppeteer.launch({
     defaultViewport: {width: 1200, height: 630},
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
   const generateImages = urls.map((url) => getPNG(url, browser));
