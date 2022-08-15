@@ -95,7 +95,7 @@ When exploring the potential for improving the look, feel, and or experience of 
 
 ### Case study
 
-In the years since Polaris launched in 2017, we've learned a lot from the Shopify and design system communities. As the system's matured, we've found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that's the case, there's an opportunity to refactor the component or build a new component to better meet merchant needs.
+In the years since Polaris launched in 2017, we've learned a lot from the Shopify and design system communities. As the system's matured, we've found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/blog/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that's the case, there's an opportunity to refactor the component or build a new component to better meet merchant needs.
 
 For example, `Autocomplete` implements [the combobox with list pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). When the Deliver team looked into fixing bugs in the component, they decided it would benefit from being broken down into two new components. They contributed `Combobox` and `Listbox` and refactored `Autocomplete` to use them. This reduced complexity and made `Autocomplete` easier to maintain.
 
