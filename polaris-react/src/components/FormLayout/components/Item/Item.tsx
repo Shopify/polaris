@@ -6,6 +6,6 @@ export interface ItemProps {
   children?: React.ReactNode;
 }
 
-export function Item(props: ItemProps) {
-  return <div className={styles.Item}>{props.children}</div>;
+export function Item({children}: ItemProps) {
+  return children ? <div className={styles.Item}>{children}</div> : null;
 }

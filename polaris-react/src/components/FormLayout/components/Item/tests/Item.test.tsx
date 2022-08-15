@@ -15,6 +15,11 @@ describe('<Item />', () => {
       label: 'test',
     });
   });
+
+  it('does not render when children is undefined', () => {
+    const item = mountWithApp(<Item />);
+    expect(item).not.toContainReactComponent(TextField);
+  });
 });
 
 function noop() {}
