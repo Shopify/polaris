@@ -63,7 +63,7 @@ export interface IndexTableBaseProps {
   sortable?: boolean[];
   /**
    * The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.
-   * @default 'ascending'
+   * @default 'descending'
    */
   defaultSortDirection?: IndexTableSortDirection;
   /** The current sorting direction. */
