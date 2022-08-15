@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import styles from '../../../FormLayout.scss';
 import {TextField} from '../../../../TextField';
 import {Item} from '../Item';
 
@@ -18,7 +19,9 @@ describe('<Item />', () => {
 
   it('does not render when children is undefined', () => {
     const item = mountWithApp(<Item />);
-    expect(item).not.toContainReactComponent(TextField);
+    expect(item).not.toContainReactComponent('div', {
+      className: styles.Item,
+    });
   });
 });
 
