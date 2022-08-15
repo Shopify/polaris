@@ -298,7 +298,7 @@
       "selectAllItems": "Şunların tümünü seç: {itemsLength}+ {resourceNamePlural}",
       "selectItem": "{resourceName} kaynağını seç",
       "selectButtonText": "Seç",
-      "sortAccessibilityLabel": "{direction} tarafı şuna göre sırala:"
+      "sortAccessibilityLabel": "{direction} öğesini şuna göre sırala:"
     },
     "Page": {
       "Header": {
