@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an addition or improvement to Polaris or the documentation
-labels: Feature request
+labels: Feature request, untriaged
 ---
 
 ## Feature request summary
