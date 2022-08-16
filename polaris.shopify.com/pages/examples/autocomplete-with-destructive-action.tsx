@@ -76,6 +76,9 @@ function AutocompleteActionBeforeExample() {
           content: 'Destructive action',
           destructive: true,
           icon: DeleteMinor,
+          onAction: () => {
+            console.log('actionBefore clicked!');
+          },
         }}
         options={options}
         selected={selectedOptions}

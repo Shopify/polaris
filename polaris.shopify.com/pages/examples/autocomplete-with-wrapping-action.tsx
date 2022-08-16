@@ -83,6 +83,9 @@ function AutocompleteActionBeforeExample() {
           helpText: 'Help text',
           icon: CirclePlusMinor,
           wrapOverflow: true,
+          onAction: () => {
+            console.log('actionBefore clicked!');
+          },
         }}
         options={options}
         selected={selectedOptions}

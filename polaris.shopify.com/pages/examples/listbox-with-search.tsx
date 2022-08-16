@@ -17,15 +17,9 @@ import {SearchMinor} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-interface CustomerSegment {
-  id: string;
-  label: string;
-  value: string;
-}
-
 const actionValue = '__ACTION__';
 
-const segments: CustomerSegment[] = [
+const segments = [
   {
     label: 'All customers',
     id: 'gid://shopify/CustomerSegment/1',
@@ -88,13 +82,11 @@ const segments: CustomerSegment[] = [
   },
 ];
 
-const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
-  (_, index) => ({
-    label: `Other customers ${index + 12}`,
-    id: `gid://shopify/CustomerSegment/${index + 12}`,
-    value: `${index + 12}`,
-  }),
-);
+const lazyLoadSegments = Array.from(Array(100)).map((_, index) => ({
+  label: `Other customers ${index + 13}`,
+  id: `gid://shopify/CustomerSegment/${index + 13}`,
+  value: `${index + 12}`,
+}));
 
 segments.push(...lazyLoadSegments);
 
@@ -108,17 +100,15 @@ function ListboxWithSearchExample() {
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
-    [],
-  );
+  const [filteredSegments, setFilteredSegments] = useState([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);
     setVisibleOptionIndex(segments.length);
   };
 
-  const handleFilterSegments = (query: string) => {
-    const nextFilteredSegments = segments.filter((segment: CustomerSegment) => {
+  const handleFilterSegments = (query) => {
+    const nextFilteredSegments = segments.filter((segment) => {
       return segment.label
         .toLocaleLowerCase()
         .includes(query.toLocaleLowerCase().trim());
@@ -127,7 +117,7 @@ function ListboxWithSearchExample() {
     setFilteredSegments(nextFilteredSegments);
   };
 
-  const handleQueryChange = (query: string) => {
+  const handleQueryChange = (query) => {
     setQuery(query);
 
     if (query.length >= 2) handleFilterSegments(query);
@@ -141,7 +131,7 @@ function ListboxWithSearchExample() {
     setVisibleOptionIndex(interval);
   };
 
-  const handleSegmentSelect = (segmentIndex: string) => {
+  const handleSegmentSelect = (segmentIndex) => {
     if (segmentIndex === actionValue) {
       return handleClickShowAll();
     }
@@ -149,7 +139,7 @@ function ListboxWithSearchExample() {
     setSelectedSegmentIndex(Number(segmentIndex));
   };
 
-  const handleActiveOptionChange = (_: string, domId: string) => {
+  const handleActiveOptionChange = (_, domId) => {
     setActiveOptionId(domId);
   };
 

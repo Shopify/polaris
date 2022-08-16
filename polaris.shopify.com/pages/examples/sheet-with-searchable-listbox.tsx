@@ -19,15 +19,9 @@ import {MobileCancelMajor, SearchMinor} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-interface CustomerSegment {
-  id: string;
-  label: string;
-  value: string;
-}
-
 const actionValue = '__ACTION__';
 
-const segments: CustomerSegment[] = [
+const segments = [
   {
     label: 'All customers',
     id: 'gid://shopify/CustomerSegment/1',
@@ -90,13 +84,11 @@ const segments: CustomerSegment[] = [
   },
 ];
 
-const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
-  (_, index) => ({
-    label: `Other customers ${index + 12}`,
-    id: `gid://shopify/CustomerSegment/${index + 12}`,
-    value: `${index + 12}`,
-  }),
-);
+const lazyLoadSegments = Array.from(Array(100)).map((_, index) => ({
+  label: `Other customers ${index + 13}`,
+  id: `gid://shopify/CustomerSegment/${index + 13}`,
+  value: `${index + 12}`,
+}));
 
 segments.push(...lazyLoadSegments);
 
@@ -111,9 +103,7 @@ function SheetWithSearchableListboxExample() {
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
-    [],
-  );
+  const [filteredSegments, setFilteredSegments] = useState([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);
@@ -121,7 +111,7 @@ function SheetWithSearchableListboxExample() {
   };
 
   const handleFilterSegments = (query: string) => {
-    const nextFilteredSegments = segments.filter((segment: CustomerSegment) => {
+    const nextFilteredSegments = segments.filter((segment) => {
       return segment.label
         .toLocaleLowerCase()
         .includes(query.toLocaleLowerCase().trim());
