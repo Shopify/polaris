@@ -298,7 +298,7 @@
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} selecteren",
       "selectItem": "{resourceName} selecteren",
       "selectButtonText": "Selecteren",
-      "sortAccessibilityLabel": "sorteer {direction} op"
+      "sortAccessibilityLabel": "{direction} sorteren op"
     },
     "Page": {
       "Header": {

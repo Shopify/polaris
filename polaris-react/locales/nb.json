@@ -298,7 +298,7 @@
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",
       "selectButtonText": "Velg",
-      "sortAccessibilityLabel": "sortere {direction} etter"
+      "sortAccessibilityLabel": "sorter {direction} etter"
     },
     "Page": {
       "Header": {
