@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fix multiline TextField focus problem
+Fixed `TextField` `focused` prop not working when `multiline` is `true`
