@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Support ID prop for Choice in ChoiceList
+Added `id` prop for Choice in ChoiceList
