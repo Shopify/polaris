@@ -47,6 +47,7 @@ export const Option = memo(function Option({
   const handleOptionSelect = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
       event.preventDefault();
+      event.stopPropagation();
       onAction && onAction();
       if (listItemRef.current && !onAction) {
         onOptionSelect({

@@ -81,6 +81,9 @@ function AutocompleteActionBeforeExample() {
           ellipsis: true,
           helpText: 'Help text',
           icon: CirclePlusMinor,
+          onAction: () => {
+            console.log('actionBefore clicked!');
+          },
         }}
         options={options}
         selected={selectedOptions}
