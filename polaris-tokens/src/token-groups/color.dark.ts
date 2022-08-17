@@ -333,10 +333,10 @@ export const colors = {
     value: 'rgba(88, 173, 142, 1)',
   },
   'icon-attention': {
-    value: 'rgba(138, 97, 22)',
+    value: 'rgba(138, 97, 22, 1)',
   },
   'surface-attention': {
-    value: 'rgba(255, 234, 138)',
+    value: 'rgba(255, 234, 138, 1)',
   },
   'decorative-one-icon': {
     value: 'rgba(255, 186, 67, 1)',
