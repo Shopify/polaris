@@ -349,7 +349,9 @@
 
   &.separate:is(table) th,
   &.separate:is(th) {
-    border-right: var(--p-border-divider);
+    &:last-of-type {
+      border-right: var(--p-border-divider);
+    }
   }
 }
 

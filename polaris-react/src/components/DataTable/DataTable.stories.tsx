@@ -376,7 +376,8 @@ export function WithAllOfItsElements() {
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           stickyHeader
-          hasFixedFirstColumn
+          hasFixedNthColumn
+          nthIndex={1}
           truncate
         />
       </Card>
@@ -481,7 +482,8 @@ export function WithFixedFirstColumn() {
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={handleSort}
-          hasFixedFirstColumn
+          hasFixedNthColumn
+          nthIndex={1}
           truncate
         />
       </Card>
