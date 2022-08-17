@@ -5,8 +5,10 @@ keywords:
   - pin
   - save
 authors:
+  - David Luong
   - Adam Whitcroft
-version: 1
+  - Chris Blinstrub
+version: 2
 date_added: 2019-03-15
-date_modified: 2019-03-15
+date_modified: 2023-01-30
 exclusive_use:
