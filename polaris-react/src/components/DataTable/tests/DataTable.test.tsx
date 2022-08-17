@@ -92,11 +92,11 @@ describe('<DataTable />', () => {
         .filter((cell) => cell.prop('stickyHeadingCell') !== true);
 
       const firstColumnCells = cells.filter(
-        (cell) => cell.prop('firstColumn') === true,
+        (cell) => cell.prop('nthColumn') === true,
       );
 
       const secondColumnCells = cells.filter(
-        (cell) => cell.prop('firstColumn') !== true,
+        (cell) => cell.prop('nthColumn') !== true,
       );
 
       expect(cells).toHaveLength(4);
@@ -227,7 +227,7 @@ describe('<DataTable />', () => {
         .findAll(Cell)
         .filter(
           (cell) =>
-            cell.prop('total') === true && cell.prop('firstColumn') !== true,
+            cell.prop('total') === true && cell.prop('nthColumn') !== true,
         );
 
       totalsCells.forEach((total) => expect(total).toContainReactText(''));
@@ -300,7 +300,7 @@ describe('<DataTable />', () => {
 
       const firstColumnCells = dataTable
         .findAll(Cell)
-        .filter((cell) => cell.prop('firstColumn') === true);
+        .filter((cell) => cell.prop('nthColumn') === true);
 
       firstColumnCells.forEach((cell) =>
         expect(cell).toHaveReactProps({truncate: false}),
@@ -312,7 +312,7 @@ describe('<DataTable />', () => {
 
       const firstColumnCells = dataTable
         .findAll(Cell)
-        .filter((cell) => cell.prop('firstColumn') === true);
+        .filter((cell) => cell.prop('nthColumn') === true);
 
       firstColumnCells.forEach((cell) =>
         expect(cell).toHaveReactProps({truncate: true}),

@@ -13,6 +13,48 @@ export default {
   },
 } as ComponentMeta<typeof DataTable>;
 
+function sortRows(rows, index, direction) {
+  return [...rows].sort((rowA, rowB) => {
+    let type;
+    if (rowA[index].length > 1) {
+      if (!isNaN(parseFloat(rowA[index]))) {
+        type = 'number';
+      } else if (!isNaN(parseFloat(rowA[index].substring(1)))) {
+        type = 'currency';
+      } else type = 'string';
+    } else {
+      type = !isNaN(parseFloat(rowA[index])) ? 'number' : 'string';
+    }
+
+    let itemA;
+    let itemB;
+    if (type === 'number') {
+      itemA = parseInt(rowA[index], 10);
+    } else if (type === 'currency') {
+      itemA = parseFloat(rowA[index].substring(1));
+    } else {
+      itemA = rowA[index];
+    }
+    if (type === 'number') {
+      itemB = parseInt(rowB[index], 10);
+    } else if (type === 'currency') {
+      itemB = parseFloat(rowA[index].substring(1));
+    } else {
+      itemB = rowA[index];
+    }
+    if (type === 'string') {
+      let result;
+
+      if (itemA > itemB) result = 1;
+      else if (itemB > itemA) result = -1;
+      else result = 0;
+      return direction === 'descending' ? result * -1 : result;
+    }
+
+    return direction === 'descending' ? itemB - itemA : itemA - itemB;
+  });
+}
+
 export function Default() {
   const rows = [
     ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
@@ -53,7 +95,7 @@ export function Default() {
 }
 
 export function Sortable() {
-  const [sortedRows, setSortedRows] = useState(null);
+  const [sortedRows, setSortedRows] = useState<any[]>();
 
   const initiallySortedRows = [
     ['Emerald Silk Gown', '$875.00', 124689, 140, '$122,500.00'],
@@ -69,7 +111,7 @@ export function Sortable() {
   const rows = sortedRows ? sortedRows : initiallySortedRows;
 
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
     [rows],
   );
 
@@ -101,15 +143,6 @@ export function Sortable() {
       </Card>
     </Page>
   );
-
-  function sortCurrency(rows, index, direction) {
-    return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
-
-      return direction === 'descending' ? amountB - amountA : amountA - amountB;
-    });
-  }
 }
 
 export function WithFooter() {
@@ -300,7 +333,7 @@ export function WithRowHeadingLinks() {
 }
 
 export function WithAllOfItsElements() {
-  const [sortedRows, setSortedRows] = useState(null);
+  const [sortedRows, setSortedRows] = useState<any[]>();
 
   const initiallySortedRows = [
     [
@@ -346,7 +379,7 @@ export function WithAllOfItsElements() {
 
   const rows = sortedRows ? sortedRows : initiallySortedRows;
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
     [rows],
   );
 
@@ -376,26 +409,75 @@ export function WithAllOfItsElements() {
           onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           stickyHeader
-          hasFixedNthColumn
-          nthIndex={1}
+          fixedFirstColumns={1}
           truncate
         />
       </Card>
     </Page>
   );
-
-  function sortCurrency(rows, index, direction) {
-    return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
-
-      return direction === 'descending' ? amountB - amountA : amountA - amountB;
-    });
-  }
 }
 
-export function WithFixedFirstColumn() {
-  const [sortedRows, setSortedRows] = useState(null);
+export function WithColumnSpanning() {
+  const rows = [
+    [
+      'Sep 19, 2010, 1:02 pm NDT',
+      '#1234',
+      'Adjustment',
+      '$1.00',
+      '$1.00',
+      '$1.00',
+      '$1.00',
+      '$1.00',
+    ],
+    // eslint-disable-next-line react/jsx-key
+    [<Card>Hello</Card>],
+    [
+      'Sep 19, 2010, 1:02 pm NDT',
+      '#1234',
+      'Adjustment',
+      '$1.00',
+      '$1.00',
+      '$1.00',
+      '$1.00',
+      '$1.00',
+    ],
+  ];
+
+  return (
+    <Page title="Payouts">
+      <Card>
+        <DataTable
+          columnContentTypes={[
+            'text',
+            'text',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+            'numeric',
+          ]}
+          headings={[
+            'transactionDate',
+            'reference',
+            'type',
+            'amount',
+            'fee',
+            'net',
+            'gross',
+            'number',
+          ]}
+          rows={rows}
+          verticalAlign="middle"
+        />
+      </Card>
+    </Page>
+  );
+}
+
+export function WithFixedColumns() {
+  const [sortedRows, setSortedRows] = useState<any[]>();
 
   const initiallySortedRows = [
     [
@@ -478,63 +560,30 @@ export function WithFixedFirstColumn() {
           ]}
           rows={rows}
           totals={['', '', '', '', '', '', 255, '$1399', '$155,830.00']}
-          sortable={[true, true, true, true, true, true, true, true, true]}
+          sortable={[
+            false,
+            false,
+            false,
+            false,
+            true,
+            false,
+            false,
+            false,
+            true,
+          ]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={handleSort}
-          hasFixedNthColumn
-          nthIndex={1}
+          fixedFirstColumns={3}
           truncate
         />
       </Card>
     </Page>
   );
-
-  function sortRows(rows, index, direction) {
-    return [...rows].sort((rowA, rowB) => {
-      let type;
-      if (rowA[index].length > 1) {
-        if (!isNaN(parseFloat(rowA[index]))) {
-          type = 'number';
-        } else if (!isNaN(parseFloat(rowA[index].substring(1)))) {
-          type = 'currency';
-        } else type = 'string';
-      } else {
-        type = !isNaN(parseFloat(rowA[index])) ? 'number' : 'string';
-      }
-
-      let itemA;
-      let itemB;
-      if (type === 'number') {
-        itemA = parseInt(rowA[index], 10);
-      } else if (type === 'currency') {
-        itemA = parseFloat(rowA[index].substring(1));
-      } else {
-        itemA = rowA[index];
-      }
-      if (type === 'number') {
-        itemB = parseInt(rowB[index], 10);
-      } else if (type === 'currency') {
-        itemB = parseFloat(rowA[index].substring(1));
-      } else {
-        itemB = rowA[index];
-      }
-      if (type === 'string') {
-        let result;
-
-        if (itemA > itemB) result = 1;
-        else if (itemB > itemA) result = -1;
-        else result = 0;
-        return direction === 'descending' ? result * -1 : result;
-      }
-
-      return direction === 'descending' ? itemB - itemA : itemA - itemB;
-    });
-  }
 }
 
 export function WithIncreasedDensityAndZebraStriping() {
-  const [sortedRows, setSortedRows] = useState(null);
+  const [sortedRows, setSortedRows] = useState<any[]>();
 
   const initiallySortedRows = [
     [
@@ -580,7 +629,7 @@ export function WithIncreasedDensityAndZebraStriping() {
 
   const rows = sortedRows ? sortedRows : initiallySortedRows;
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
     [rows],
   );
 
@@ -615,19 +664,10 @@ export function WithIncreasedDensityAndZebraStriping() {
       </Card>
     </Page>
   );
-
-  function sortCurrency(rows, index, direction) {
-    return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
-
-      return direction === 'descending' ? amountB - amountA : amountA - amountB;
-    });
-  }
 }
 
 export function WithStickyHeaderEnabled() {
-  const [sortedRows, setSortedRows] = useState(null);
+  const [sortedRows, setSortedRows] = useState<any[]>();
 
   const initiallySortedRows = [
     [
@@ -868,7 +908,7 @@ export function WithStickyHeaderEnabled() {
 
   const rows = sortedRows ? sortedRows : initiallySortedRows;
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
+    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
     [rows],
   );
 
@@ -904,13 +944,4 @@ export function WithStickyHeaderEnabled() {
       </Card>
     </Page>
   );
-
-  function sortCurrency(rows, index, direction) {
-    return [...rows].sort((rowA, rowB) => {
-      const amountA = parseFloat(rowA[index].substring(1));
-      const amountB = parseFloat(rowB[index].substring(1));
-
-      return direction === 'descending' ? amountB - amountA : amountA - amountB;
-    });
-  }
 }
