@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useState, useCallback, useRef, useEffect} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
@@ -90,6 +90,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   fullScreen,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
+  const [closing, setClosing] = useState(false);
 
   const headerId = useUniqueId('modal-header');
   const activatorRef = useRef<HTMLDivElement>(null);
@@ -135,6 +136,17 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     },
     [onIFrameLoad],
   );
+
+  useEffect(() => {
+    if (closing) {
+      onClose();
+      setClosing(false);
+    }
+  }, [closing, onClose]);
+
+  const handleOnClose = () => {
+    setClosing(true);
+  };
 
   if (open) {
     const footerMarkup =
@@ -196,7 +208,12 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         limitHeight={limitHeight}
         fullScreen={fullScreen}
       >
-        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
+        <Header
+          titleHidden={titleHidden}
+          id={headerId}
+          closing={closing}
+          onClose={onClose}
+        >
           {title}
         </Header>
         <div className={styles.BodyWrapper}>{bodyMarkup}</div>
@@ -204,7 +221,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop onClick={onClose} />;
+    backdrop = <Backdrop onClick={handleOnClose} />;
   }
 
   const animated = !instant;
