@@ -31,6 +31,16 @@ Typography helps establish hierarchy and communicate important content by creati
 
 ## Examples
 
+### Heading extra small
+
+Use to create a extra small heading text.
+
+```jsx
+<Text variant="headingXs" as="h6">
+  Online store dashboard
+</Text>
+```
+
 ### Heading small
 
 Use to create a small heading text.
