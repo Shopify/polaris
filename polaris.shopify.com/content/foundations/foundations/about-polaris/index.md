@@ -10,7 +10,7 @@ keywords:
 icon: HintMajor
 ---
 
-Polaris is the design system for the Shopify admin. It’s used both internally at Shopify and externally by third-party developers and designers. From accessibility to performance to design expertise, Polaris gives you the tools to build a world-class admin experience.
+Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences, and is grounded in deep merchant understanding. Polaris is used both internally at Shopify and externally by third-party developers and designers. From accessibility to performance to design expertise, it gives you the tools to build a world-class admin experience.
 
 ## Shopify admin
 
