@@ -1,5 +1,5 @@
 ---
-title: CustomProperties
+title: Custom properties
 description: Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children.
 category: Structure
 keywords:
@@ -11,7 +11,7 @@ keywords:
 examples:
   - fileName: custom-properties-rendered-by-the-app-provider.tsx
     title: Rendered by the app provider
-    description: The app provider component renders a CustomProperties component with the default color scheme.
+    description: The app provider component renders a custom properties component with the default color scheme.
   - fileName: custom-properties-with-a-color-scheme-rendered-by-the-app-provider.tsx
     title: With a color scheme rendered by the app provider
     description: A color scheme can be passed to the app provider to determine what color scheme is globally applied to the application.
@@ -22,7 +22,7 @@ examples:
 
 ## Consuming custom properties colors in a component
 
-The CustomProperties component uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) to share color values with components. For a full list of available CSS custom properties, see the [Polaris tokens docs](https://github.com/Shopify/polaris/tree/main/polaris-tokens#readme).
+The custom properties component uses [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) to share color values with components. For a full list of available CSS custom properties, see the [Polaris tokens docs](https://github.com/Shopify/polaris/tree/main/polaris-tokens#readme).
 
 ```scss
 .Card {
