@@ -20,7 +20,7 @@ icon: TypeMajor
 
 ---
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-featured@2x.png)
+![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
 [Figma styles](http://www.google.com) | [Tokens](http://www.google.com) | [Components](http://www.google.com)
 
@@ -98,15 +98,20 @@ Heading styles are used to create various levels of hierarchy on the page.
 
 | Variant        | Size (px) | Size (px) | Line-height | Weight   |
 | -------------- | --------- | --------- | ----------- | -------- |
-| **Heading4xl** | 40        | 2         | 48          | bold     |
-| **Heading3xl** | 32        | 1.75      | 40          | semibold |
-| **Heading2xl** | 28        | 1.5       | 32          | semibold |
-| **HeadingXl**  | 20        | 1.25      | 24          | semibold |
-| **HeadingLg**  | 16        | 1         | 24          | semibold |
-| **HeadingMd**  | 14        | 0.875     | 20          | semibold |
-| **HeadingSm**  | 12        | 0.75      | 16          | bold     |
+| **Heading4xl** | 40        | 2.5       | 48          | bold     |
+| **Heading3xl** | 32        | 2         | 40          | semibold |
+| **Heading2xl** | 28        | 1.75      | 32          | semibold |
+| **HeadingXl**  | 24        | 1.5       | 28          | semibold |
+| **HeadingLg**  | 20        | 1.25      | 24          | semibold |
+| **HeadingMd**  | 16        | 1         | 24          | semibold |
+| **HeadingSm**  | 14        | 0.875     | 20          | semibold |
+| **HeadingXs**  | 12        | 0.75      | 16          | bold     |
 
-The larger sizes, Heading 2xl -Heading 4xl, are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
+![An image of the admin interface showing how various heading styles are used.](/images/foundations/design/typography/text-heading-example-02@2x.png)
+
+The larger sizes, HeadingXl -Heading4xl, are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
+
+![An image of the admin interface showing how large heading styles are used.](/images/foundations/design/typography/text-heading-example-01@2x.png)
 
 ### Body
 
@@ -114,9 +119,11 @@ Body styles are used within components and blocks of text.
 
 | Variant    | Size (px) | Size (px) | Line-height | Weight  |
 | ---------- | --------- | --------- | ----------- | ------- |
-| **BodyLg** | 16        | 1         | 24          | regular |
+| **BodyLg** | 16        | 1         | 20          | regular |
 | **BodyMd** | 14        | 0.875     | 20          | regular |
 | **BodySm** | 12        | 0.75      | 16          | regular |
+
+![An image of the admin interface showing how body styles are used.](/images/foundations/design/typography/text-body-example01@2x.png)
 
 ### Responsive type
 
@@ -126,7 +133,7 @@ Body styles are used within components and blocks of text.
   </video>
 </div>
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-responsive-styles@2x.png)
+![An image showing how large headings respond at different screen sizes](/images/foundations/design/typography/text-responsive-styles@2x.png)
 
 <!-- end -->
 
@@ -138,29 +145,29 @@ When designing with type, we can use a combination of font size, weight, color, 
 
 The bounding box is the vertical height of the text and is defined by the text’s line-height. The value of the line-height is critical to make sure text aligns to the 4px grid. Refer to individual type styles for specified heights.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-bounding-box@2x.png)
+![An image showing how the bounding box applies to text elements](/images/foundations/design/typography/text-bounding-box@2x.png)
 
 ### Using the baseline
 
 The baseline is the imaginary line that letters rest on. Align text horizontally to the baseline for a simple clean look.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-align-baseline@2x.png)
+![An image showing the baseline and how it applies to text elements](/images/foundations/design/typography/text-align-baseline@2x.png)
 
 There are situations where it makes sense to have multiple text sizes on a single line to establish hierarchy of elements. Aligning to the text’s baseline instead of center gives a more harmonious look.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-center-baseline@2x.png)
+![An example of aligning text elements to the baseline](/images/foundations/design/typography/text-center-baseline@2x.png)
 
 ### Line length
 
 Line length describes the width of the content. For longer body text, the recommended line length is between 40 to 60 characters.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-line-length@2x.png)
+![A diagram showing the ideal line length for text](/images/foundations/design/typography/text-line-length@2x.png)
 
 ### Right align numbers
 
 Right align numbers when they're inside a table. This keeps the decimal in the same place and makes numerical data easier to read and compare.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-tabular-numbers@2x.png)
+![An image showing right aligning numbers within a table](/images/foundations/design/typography/text-tabular-numbers@2x.png)
 
 ### Color
 
@@ -168,7 +175,7 @@ Color can be used to add contrast and reinforce the hierarchy between text.
 
 For example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-color-different@2x.png)
+![An image showing how you can use color to add hierarchy within text elements](/images/foundations/design/typography/text-color-different@2x.png)
 
 ### Weight
 
@@ -177,6 +184,8 @@ Weight is another way to add contrast and communicate the intent and behavior of
 Weights are applied intentionally to both heading and body type styles. Heading styles use bolder weights and body styles use regular and medium weights.
 
 HeadingSm uses a bolder weight which allows it to have a visually similar weight as a larger heading style.
+
+![An image of the admin interface showing how different weights are used to create hierarchy.](/images/foundations/design/typography/text-weights@2x.png)
 
 We encourage the use of default type styles, however, different font weights may be applied when necessary.
 
@@ -188,4 +197,4 @@ We can help merchants navigate the UI by grouping related information together. 
 
 Ambiguous spacing can cause confusion and make it hard to understand the content.
 
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
+![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
