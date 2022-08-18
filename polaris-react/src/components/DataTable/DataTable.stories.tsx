@@ -13,45 +13,12 @@ export default {
   },
 } as ComponentMeta<typeof DataTable>;
 
-function sortRows(rows, index, direction) {
+function sortCurrency(rows, index, direction) {
   return [...rows].sort((rowA, rowB) => {
-    let type;
-    if (rowA[index].length > 1) {
-      if (!isNaN(parseFloat(rowA[index]))) {
-        type = 'number';
-      } else if (!isNaN(parseFloat(rowA[index].substring(1)))) {
-        type = 'currency';
-      } else type = 'string';
-    } else {
-      type = !isNaN(parseFloat(rowA[index])) ? 'number' : 'string';
-    }
+    const amountA = parseFloat(rowA[index].substring(1));
+    const amountB = parseFloat(rowB[index].substring(1));
 
-    let itemA;
-    let itemB;
-    if (type === 'number') {
-      itemA = parseInt(rowA[index], 10);
-    } else if (type === 'currency') {
-      itemA = parseFloat(rowA[index].substring(1));
-    } else {
-      itemA = rowA[index];
-    }
-    if (type === 'number') {
-      itemB = parseInt(rowB[index], 10);
-    } else if (type === 'currency') {
-      itemB = parseFloat(rowA[index].substring(1));
-    } else {
-      itemB = rowA[index];
-    }
-    if (type === 'string') {
-      let result;
-
-      if (itemA > itemB) result = 1;
-      else if (itemB > itemA) result = -1;
-      else result = 0;
-      return direction === 'descending' ? result * -1 : result;
-    }
-
-    return direction === 'descending' ? itemB - itemA : itemA - itemB;
+    return direction === 'descending' ? amountB - amountA : amountA - amountB;
   });
 }
 
@@ -111,7 +78,7 @@ export function Sortable() {
   const rows = sortedRows ? sortedRows : initiallySortedRows;
 
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
+    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
     [rows],
   );
 
@@ -379,7 +346,7 @@ export function WithAllOfItsElements() {
 
   const rows = sortedRows ? sortedRows : initiallySortedRows;
   const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
+    (index, direction) => setSortedRows(sortCurrency(rows, index, direction)),
     [rows],
   );
 
@@ -477,9 +444,7 @@ export function WithColumnSpanning() {
 }
 
 export function WithFixedColumns() {
-  const [sortedRows, setSortedRows] = useState<any[]>();
-
-  const initiallySortedRows = [
+  const rows = [
     [
       'Emerald Silk Gown',
       'Formalwear',
@@ -525,12 +490,6 @@ export function WithFixedColumns() {
       '$140.00',
     ],
   ];
-  const rows = sortedRows ? sortedRows : initiallySortedRows;
-
-  const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
-    [rows],
-  );
 
   return (
     <Page title="Sales by product">
@@ -560,22 +519,12 @@ export function WithFixedColumns() {
           ]}
           rows={rows}
           totals={['', '', '', '', '', '', 255, '$1399', '$155,830.00']}
-          sortable={[
-            false,
-            false,
-            false,
-            false,
-            true,
-            false,
-            false,
-            false,
-            true,
-          ]}
-          defaultSortDirection="descending"
           initialSortColumnIndex={4}
-          onSort={handleSort}
+          stickyHeader
           fixedFirstColumns={3}
           truncate
+          showTotalsInFooter
+          footerContent={`Showing ${rows.length} of ${rows.length} results`}
         />
       </Card>
     </Page>
@@ -583,9 +532,7 @@ export function WithFixedColumns() {
 }
 
 export function WithIncreasedDensityAndZebraStriping() {
-  const [sortedRows, setSortedRows] = useState<any[]>();
-
-  const initiallySortedRows = [
+  const rows = [
     [
       <Link
         removeUnderline
@@ -627,12 +574,6 @@ export function WithIncreasedDensityAndZebraStriping() {
     ],
   ];
 
-  const rows = sortedRows ? sortedRows : initiallySortedRows;
-  const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
-    [rows],
-  );
-
   return (
     <Page title="Sales by product">
       <Card>
@@ -653,10 +594,8 @@ export function WithIncreasedDensityAndZebraStriping() {
           ]}
           rows={rows}
           totals={['', '', '', 255, '$155,830.00']}
-          sortable={[false, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
-          onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           hasZebraStripingOnData
           increasedTableDensity
@@ -667,9 +606,7 @@ export function WithIncreasedDensityAndZebraStriping() {
 }
 
 export function WithStickyHeaderEnabled() {
-  const [sortedRows, setSortedRows] = useState<any[]>();
-
-  const initiallySortedRows = [
+  const rows = [
     [
       <Link
         removeUnderline
@@ -906,12 +843,6 @@ export function WithStickyHeaderEnabled() {
     ],
   ];
 
-  const rows = sortedRows ? sortedRows : initiallySortedRows;
-  const handleSort = useCallback(
-    (index, direction) => setSortedRows(sortRows(rows, index, direction)),
-    [rows],
-  );
-
   return (
     <Page title="Sales by product">
       <Card>
@@ -932,10 +863,8 @@ export function WithStickyHeaderEnabled() {
           ]}
           rows={rows}
           totals={['', '', '', 255, '$155,830.00']}
-          sortable={[false, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
-          onSort={handleSort}
           footerContent={`Showing ${rows.length} of ${rows.length} results`}
           hasZebraStripingOnData
           increasedTableDensity

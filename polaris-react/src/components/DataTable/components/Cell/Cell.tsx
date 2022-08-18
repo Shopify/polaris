@@ -33,6 +33,7 @@ export interface CellProps {
   hasFixedNthColumn?: boolean;
   fixedCellVisible?: boolean;
   firstColumnMinWidth?: string;
+  style?: React.CSSProperties;
 }
 
 export function Cell({
@@ -59,6 +60,7 @@ export function Cell({
   hasFixedNthColumn = false,
   fixedCellVisible = false,
   firstColumnMinWidth,
+  style,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -130,6 +132,11 @@ export function Cell({
 
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
+  const minWidthStyles =
+    nthColumn && firstColumnMinWidth
+      ? {minWidth: firstColumnMinWidth}
+      : {minWidth: stickyCellWidth};
+
   const stickyHeading = (
     <th
       ref={setRef}
@@ -137,11 +144,10 @@ export function Cell({
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
-      style={
-        nthColumn && firstColumnMinWidth
-          ? {minWidth: firstColumnMinWidth}
-          : {minWidth: stickyCellWidth}
-      }
+      style={{
+        ...style,
+        ...minWidthStyles,
+      }}
       data-index-table-sticky-heading
     >
       {columnHeadingContent}

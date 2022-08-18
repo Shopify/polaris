@@ -190,7 +190,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     if (fixedFirstColumn && process.env.NODE_ENV === 'development') {
       // eslint-disable-next-line no-console
       console.warn(
-        'Deprecation: The `hasFixedFirstColumn` prop on the `DataTable` has been deprecated. See the v11 migration guide for replacing this prop with `fixedFirstColumns={n}`. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v10-to-v11.md',
+        'Deprecation: The `hasFixedFirstColumn` prop on the `DataTable` has been deprecated. Use fixedFirstColumns={n} instead.',
       );
     }
 
@@ -246,7 +246,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           !isScrolledFarthestLeft && styles.separate,
         )}
         style={{
-          maxWidth: `${columnVisibilityData[fixedFirstColumns]?.rightEdge}px`,
+          maxWidth: `${
+            columnVisibilityData[fixedFirstColumns - 1]?.rightEdge
+          }px`,
         }}
       >
         <thead>
@@ -311,7 +313,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           isScrolledFarthestRight={isScrolledFarthestRight}
           navigateTableLeft={this.navigateTable('left')}
           navigateTableRight={this.navigateTable('right')}
-          fixedFirstColumn={Boolean(fixedFirstColumns)}
+          fixedFirstColumns={fixedFirstColumns}
           setRef={(ref: any) => {
             if (location === 'header') {
               this.headerNav = ref;
@@ -504,10 +506,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     } = this;
 
     if (condensed && table && scrollContainer && dataTable) {
-      const headerCells = table.querySelectorAll(headerCell.selector);
+      const headerCells = table.querySelectorAll<HTMLTableCellElement>(
+        headerCell.selector,
+      );
 
+      const rightMostHeader = headerCells[fixedFirstColumns - 1];
       const nthColumnWidth = fixedFirstColumns
-        ? headerCells[0].clientWidth + headerCells[1].clientWidth
+        ? rightMostHeader.offsetLeft + rightMostHeader.offsetWidth
         : 0;
 
       if (headerCells.length > 0) {
@@ -738,18 +743,20 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       ? this.tableHeadingWidths[headingIndex]
       : undefined;
 
+    const fixedCellVisible = !isScrolledFarthestLeft;
+
     const cellProps = {
       header: true,
       stickyHeadingCell: inStickyHeader,
       content: heading,
       contentType: columnContentTypes[headingIndex],
-      nthColumn: headingIndex <= fixedFirstColumns - 1,
+      nthColumn: headingIndex < fixedFirstColumns,
       truncate,
       ...sortableHeadingProps,
       verticalAlign,
       handleFocus: this.handleFocus,
       stickyCellWidth,
-      fixedCellVisible: !isScrolledFarthestLeft,
+      fixedCellVisible,
       firstColumnMinWidth,
     };
 
@@ -782,6 +789,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             });
           }}
           inFixedNthColumn
+          style={{
+            left: this.state.columnVisibilityData[headingIndex]?.leftEdge,
+            borderRight:
+              headingIndex === fixedFirstColumns - 1 && fixedCellVisible
+                ? 'var(--p-border-divider)'
+                : undefined,
+          }}
         />,
       ];
     }

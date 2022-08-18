@@ -87,27 +87,22 @@ describe('<DataTable />', () => {
         />,
       );
 
-      const cells = dataTable
-        .findAll(Cell)
-        .filter((cell) => cell.prop('stickyHeadingCell') !== true);
+      const cells = dataTable.findAll(Cell);
 
-      const firstColumnCells = cells.filter(
-        (cell) => cell.prop('nthColumn') === true,
-      );
-
-      const secondColumnCells = cells.filter(
-        (cell) => cell.prop('nthColumn') !== true,
-      );
-
+      // 2 for the headers and 2 for the body
       expect(cells).toHaveLength(4);
 
-      firstColumnCells.forEach((cell) =>
-        expect(cell.prop('contentType')).toBe('text'),
-      );
+      expect(
+        cells
+          .filter((cell) => cell.prop('header'))
+          .map((cell) => cell.prop('contentType')),
+      ).toStrictEqual(columnContentTypes);
 
-      secondColumnCells.forEach((cell) =>
-        expect(cell.prop('contentType')).toBe('numeric'),
-      );
+      expect(
+        cells
+          .filter((cell) => !cell.prop('header'))
+          .map((cell) => cell.prop('contentType')),
+      ).toStrictEqual(columnContentTypes);
     });
   });
 
