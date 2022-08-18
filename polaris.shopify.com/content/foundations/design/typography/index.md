@@ -28,6 +28,8 @@ icon: TypeMajor
 
 ## Principles
 
+![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
+
 ### 1. Make it readable
 
 Help merchants understand content quickly by considering how to display and apply text within a page.
