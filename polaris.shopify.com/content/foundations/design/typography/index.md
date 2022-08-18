@@ -125,7 +125,7 @@ Body styles are used within components and blocks of text.
 | **BodyMd** | 14        | 0.875     | 20          | regular |
 | **BodySm** | 12        | 0.75      | 16          | regular |
 
-![An image of the admin interface showing how body styles are used.](/images/foundations/design/typography/text-body-example01@2x.png)
+![An image of the admin interface showing how body styles are used.](/images/foundations/design/typography/text-body-example-01@2x.png)
 
 ### Responsive type
 
