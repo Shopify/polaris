@@ -177,7 +177,6 @@ $loading-panel-height: 53px;
 }
 
 .TableHeading {
-  background: var(--p-surface-subdued);
   padding: var(--p-space-2) var(--p-space-4);
   text-align: left;
   font-weight: var(--p-font-weight-medium);
@@ -185,6 +184,10 @@ $loading-panel-height: 53px;
   font-size: var(--p-font-size-1);
   white-space: nowrap;
   border: 0;
+}
+
+.TableHeading-sortable {
+  background: var(--p-surface-subdued);
 }
 
 .TableHeading-flush {

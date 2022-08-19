@@ -685,6 +685,8 @@ function IndexTableBase({
     const isLast = index === headings.length - 1;
     const headingContentClassName = classNames(
       styles.TableHeading,
+      sortable?.some((value) => value === true) &&
+        styles['TableHeading-sortable'],
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
       !selectable && styles['TableHeading-unselectable'],
