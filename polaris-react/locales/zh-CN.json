@@ -296,7 +296,8 @@
       "undo": "撤销",
       "selectAllItems": "选择所有 {itemsLength}+ 个 {resourceNamePlural}",
       "selectItem": "选择 {resourceName}",
-      "selectButtonText": "选择"
+      "selectButtonText": "选择",
+      "sortAccessibilityLabel": "向 {direction} 排序"
     },
     "Page": {
       "Header": {

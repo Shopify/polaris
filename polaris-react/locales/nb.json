@@ -296,7 +296,8 @@
       "undo": "Angre",
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",
-      "selectButtonText": "Velg"
+      "selectButtonText": "Velg",
+      "sortAccessibilityLabel": "sorter {direction} etter"
     },
     "Page": {
       "Header": {

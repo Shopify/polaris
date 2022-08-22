@@ -1,5 +1,12 @@
 # Changelog
 
+## 4.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`e5eb70032`](https://github.com/Shopify/polaris/commit/e5eb700321c7ddf4fd3bd8679dfcebbc1514e3d4)]:
+  - @shopify/polaris-tokens@5.5.2
+
 ## 4.1.0
 
 ### Minor Changes

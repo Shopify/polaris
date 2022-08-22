@@ -297,7 +297,8 @@
       "undo": "Annuler",
       "selectAllItems": "Sélectionner la totalité des {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Sélectionner {resourceName}",
-      "selectButtonText": "Sélectionner"
+      "selectButtonText": "Sélectionner",
+      "sortAccessibilityLabel": "trier {direction} par"
     },
     "Page": {
       "Header": {
