@@ -1,5 +1,26 @@
 # Changelog
 
+## 9.24.0
+
+### Minor Changes
+
+- [#6949](https://github.com/Shopify/polaris/pull/6949) [`93db1ed8c`](https://github.com/Shopify/polaris/commit/93db1ed8c9771d2827d4bd5f7da3861409228ad8) Thanks [@mrcthms](https://github.com/mrcthms)! - Update IndexTable heading appearance and surface sorting ability in headings
+
+* [#6966](https://github.com/Shopify/polaris/pull/6966) [`a5345cc6d`](https://github.com/Shopify/polaris/commit/a5345cc6d43a9831b43bb99a4e85dc14cc6212b1) Thanks [@LA1CH3](https://github.com/LA1CH3)! - Added `id` prop for Choice in ChoiceList
+
+### Patch Changes
+
+- [#6953](https://github.com/Shopify/polaris/pull/6953) [`0c9175177`](https://github.com/Shopify/polaris/commit/0c9175177021d93adfe19b57d44bbd33f656175f) Thanks [@chloerice](https://github.com/chloerice)! - Updated `Badge` examples to reflect admin use cases
+
+* [#6965](https://github.com/Shopify/polaris/pull/6965) [`7d759fbd1`](https://github.com/Shopify/polaris/commit/7d759fbd173d24a68695562194c6b7f0ed1aeafd) Thanks [@kyledurand](https://github.com/kyledurand)! - Don't render if children is null / undefined
+
+- [#6961](https://github.com/Shopify/polaris/pull/6961) [`d2ecb7943`](https://github.com/Shopify/polaris/commit/d2ecb7943f156b938b6bc63e2e2cf51e27d9ff0a) Thanks [@berkaygure](https://github.com/berkaygure)! - Fixed `TextField` `focused` prop not working when `multiline` is `true`
+
+* [#6954](https://github.com/Shopify/polaris/pull/6954) [`0ed63ba61`](https://github.com/Shopify/polaris/commit/0ed63ba611ebcf96e940fddcec80f1cf83b534a8) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Listbox.Option` click event bubbling causing close of `Popover` in `Combobox`
+
+* Updated dependencies [[`e5eb70032`](https://github.com/Shopify/polaris/commit/e5eb700321c7ddf4fd3bd8679dfcebbc1514e3d4)]:
+  - @shopify/polaris-tokens@5.5.2
+
 ## 9.23.1
 
 ### Patch Changes

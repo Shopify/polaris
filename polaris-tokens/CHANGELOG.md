@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.5.2
+
+### Patch Changes
+
+- [#6975](https://github.com/Shopify/polaris/pull/6975) [`e5eb70032`](https://github.com/Shopify/polaris/commit/e5eb700321c7ddf4fd3bd8679dfcebbc1514e3d4) Thanks [@jonathaneckmier](https://github.com/jonathaneckmier)! - Add missing alpha values in RGBA colors
+
 ## 5.5.1
 
 ### Patch Changes

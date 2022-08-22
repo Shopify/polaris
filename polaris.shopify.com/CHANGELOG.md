@@ -1,5 +1,31 @@
 # polaris.shopify.com
 
+## 0.12.0
+
+### Minor Changes
+
+- [#6936](https://github.com/Shopify/polaris/pull/6936) [`7767996c1`](https://github.com/Shopify/polaris/commit/7767996c1e1c4fd037504f70b52835f7ee368691) Thanks [@alex-page](https://github.com/alex-page)! - Add back the script to generate og-images
+
+* [#6938](https://github.com/Shopify/polaris/pull/6938) [`526cb0dc2`](https://github.com/Shopify/polaris/commit/526cb0dc225ff0ad271118137383c21a422da216) Thanks [@alex-page](https://github.com/alex-page)! - Move google analytics to the \_app.tsx file
+
+### Patch Changes
+
+- [#6953](https://github.com/Shopify/polaris/pull/6953) [`0c9175177`](https://github.com/Shopify/polaris/commit/0c9175177021d93adfe19b57d44bbd33f656175f) Thanks [@chloerice](https://github.com/chloerice)! - Updated `Badge` examples to reflect admin use cases
+
+* [#6981](https://github.com/Shopify/polaris/pull/6981) [`112d144d2`](https://github.com/Shopify/polaris/commit/112d144d2ed68e1937fc9d2f31f9643523ebd801) Thanks [@sarahill](https://github.com/sarahill)! - Update CustomProperties to use sentence case format in polaris.shopify.com docs
+
+- [#6937](https://github.com/Shopify/polaris/pull/6937) [`9f5faa9e8`](https://github.com/Shopify/polaris/commit/9f5faa9e82b3257223cbee29284f7de98e5d3dfd) Thanks [@alex-page](https://github.com/alex-page)! - Move sass to dev dependency
+
+* [#6969](https://github.com/Shopify/polaris/pull/6969) [`345c5d70a`](https://github.com/Shopify/polaris/commit/345c5d70a905041ed35d7e34ee996863a508a0ad) Thanks [@berkaygure](https://github.com/berkaygure)! - Fixed `ProgressBar` examples
+
+- [#6954](https://github.com/Shopify/polaris/pull/6954) [`0ed63ba61`](https://github.com/Shopify/polaris/commit/0ed63ba611ebcf96e940fddcec80f1cf83b534a8) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Listbox.Option` click event bubbling causing close of `Popover` in `Combobox`
+
+* [#6964](https://github.com/Shopify/polaris/pull/6964) [`8aaed02f6`](https://github.com/Shopify/polaris/commit/8aaed02f64e3a9fc0a685e13272a98ddfef51d2a) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed external link in documentation
+
+* Updated dependencies [[`93db1ed8c`](https://github.com/Shopify/polaris/commit/93db1ed8c9771d2827d4bd5f7da3861409228ad8), [`0c9175177`](https://github.com/Shopify/polaris/commit/0c9175177021d93adfe19b57d44bbd33f656175f), [`e5eb70032`](https://github.com/Shopify/polaris/commit/e5eb700321c7ddf4fd3bd8679dfcebbc1514e3d4), [`7d759fbd1`](https://github.com/Shopify/polaris/commit/7d759fbd173d24a68695562194c6b7f0ed1aeafd), [`a5345cc6d`](https://github.com/Shopify/polaris/commit/a5345cc6d43a9831b43bb99a4e85dc14cc6212b1), [`d2ecb7943`](https://github.com/Shopify/polaris/commit/d2ecb7943f156b938b6bc63e2e2cf51e27d9ff0a), [`0ed63ba61`](https://github.com/Shopify/polaris/commit/0ed63ba611ebcf96e940fddcec80f1cf83b534a8)]:
+  - @shopify/polaris@9.24.0
+  - @shopify/polaris-tokens@5.5.2
+
 ## 0.11.0
 
 ### Minor Changes
