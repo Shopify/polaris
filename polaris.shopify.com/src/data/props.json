@@ -42,7 +42,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "label",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": false,
         "description": "Display label for the option",
         "tags": []
@@ -82,7 +82,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "media",
-        "type": "ReactElement<IconProps | ThumbnailProps | AvatarProps, string | JSXElementConstructor<any>>",
+        "type": "React.ReactElement<IconProps | ThumbnailProps | AvatarProps>",
         "isOptional": true,
         "description": "Media to display to the left of the option content",
         "tags": []
@@ -132,7 +132,7 @@
     "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types\".IconSource",
     "kind": 259,
     "syntaxKind": "TypeAliasDeclaration",
-    "name": "IconSource",
+    "name": "any",
     "type": "React.FunctionComponent<React.SVGProps<SVGSVGElement>> | 'placeholder' | string",
     "description": "",
     "tags": []
@@ -150,7 +150,7 @@
     "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types\".Error",
     "kind": 259,
     "syntaxKind": "TypeAliasDeclaration",
-    "name": "Error",
+    "name": "any",
     "type": "string | React.ReactElement | (string | React.ReactElement)[]",
     "description": "",
     "tags": []
@@ -338,7 +338,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyPress",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keypress event is registered on the button",
         "tags": []
@@ -348,7 +348,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyUp",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keyup event is registered on the button",
         "tags": []
@@ -358,7 +358,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyDown",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keydown event is registered on the button",
         "tags": []
@@ -868,7 +868,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Source of the icon",
         "tags": []
@@ -1256,6 +1256,26 @@
     ]
   },
   {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types\".TooltipAction",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "TooltipAction",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types\".TooltipAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "helpText",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "Text content to render in a tooltip",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types\".ActionListItemDescriptor",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -1293,7 +1313,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "helpText",
-        "type": "string",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Additional hint text to display with item",
         "tags": []
@@ -1303,7 +1323,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "",
         "tags": [
@@ -1333,7 +1353,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "prefix",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Prefix source",
         "tags": []
@@ -1343,7 +1363,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "suffix",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Suffix source",
         "tags": []
@@ -1613,7 +1633,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Source of the icon",
         "tags": []
@@ -1773,7 +1793,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Source of the icon",
         "tags": []
@@ -1806,6 +1826,16 @@
         "type": "boolean",
         "isOptional": true,
         "description": "Should action be displayed as a plain link",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/types\".MenuActionDescriptor",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "helpText",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "Text content to render in a tooltip",
         "tags": []
       }
     ]
@@ -1843,7 +1873,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Icon to display",
         "tags": []
@@ -1853,7 +1883,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "details",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Action details",
         "tags": []
@@ -2348,11 +2378,47 @@
     "tags": []
   },
   {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/use-event-listener.ts#ElementType",
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/use-event-listener.ts#UseEventListenerTarget",
     "kind": 259,
     "syntaxKind": "TypeAliasDeclaration",
-    "name": "ElementType",
-    "type": "Window | Document | HTMLElement",
+    "name": "UseEventListenerTarget",
+    "type": "Window | Document | HTMLElement | RefObject<HTMLElement>",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/use-event-listener.ts#ExtractTargetElement",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "ExtractTargetElement<Target>",
+    "type": "\n\n/**\n * Extracts the target element from a React `RefObject` or returns the input element.\n */\ntype ExtractTargetElement<Target> = Target extends RefObject<infer Element>\n  ? Element\n  : Target;",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/use-event-listener.ts#ExtractEventMap",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "ExtractEventMap<Target>",
+    "type": "\n\n/**\n * Extracts a (lib.dom.ts) EventMap for a given target element.\n */\ntype ExtractEventMap<Target> = ExtractTargetElement<Target> extends Window\n  ? WindowEventMap\n  : ExtractTargetElement<Target> extends Document\n  ? DocumentEventMap\n  : HTMLElementEventMap;",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/use-event-listener.ts#ExtractEventName",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "keyof ExtractEventMap<ExtractTargetElement<Target>>",
+    "type": "\n\n/**\n * Extracts all event names for a given target element.\n */\ntype ExtractEventName<Target> = keyof ExtractEventMap<\n  ExtractTargetElement<Target>\n>;",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/use-event-listener.ts#ExtractEvent",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "ExtractEvent<Target, EventName>",
+    "type": "\n\n/**\n * Extracts the `event` object for a given event type.\n */\ntype ExtractEvent<\n  Target,\n  EventName extends ExtractEventName<Target>,\n> = ExtractEventMap<ExtractTargetElement<Target>>[EventName];",
     "description": "",
     "tags": []
   },
@@ -2406,6 +2472,16 @@
         "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-table/context.ts#RowContextType",
         "kind": 166,
         "syntaxKind": "PropertySignature",
+        "name": "disabled",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-table/context.ts#RowContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
         "name": "onInteraction",
         "type": "(event: MouseEvent<Element, MouseEvent> | KeyboardEvent<Element>) => void",
         "isOptional": true,
@@ -2449,6 +2525,381 @@
         "name": "canScrollRight",
         "type": "boolean",
         "isOptional": false,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/merge.ts#GeneralObject",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "GeneralObject",
+    "description": "",
+    "tags": [],
+    "members": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/i18n/I18n.ts#TranslationDictionary",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "TranslationDictionary",
+    "description": "",
+    "tags": [],
+    "members": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexSelectedItems",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "IndexSelectedItems",
+    "type": "string[] | 'All'",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".Range",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "Range",
+    "type": "\n\nexport type Range = [number, number];",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "IndexProviderProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectable",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "itemCount",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectedItemsCount",
+        "type": "number | \"All\"",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "resourceName",
+        "type": "{ singular: string; plural: string; }",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "loading",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "hasMoreItems",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "condensed",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onSelectionChange",
+        "type": "(selectionType: SelectionType, toggleType: boolean, selection?: string | Range) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".HandleSelectionChange",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "HandleSelectionChange",
+    "type": "\n\nexport type HandleSelectionChange = (\n  selectionType: SelectionType,\n  toggleType: boolean,\n  selection?: string | Range,\n  sortOrder?: number,\n) => void;",
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "BulkSelectionDataOptions",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectedItemsCount",
+        "type": "number | \"All\"",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "itemCount",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "hasMoreItems",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "resourceName",
+        "type": "{ singular: string; plural: string; }",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".HandleBulkSelectionOptions",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "HandleBulkSelectionOptions",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".HandleBulkSelectionOptions",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onSelectionChange",
+        "type": "(selectionType: SelectionType, toggleType: boolean, selection?: string | Range) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "IndexContextType",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "loading",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "bulkSelectState",
+        "type": "boolean | \"indeterminate\"",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "resourceName",
+        "type": "{ singular: string; plural: string; }",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectedItemsCount",
+        "type": "number | \"All\"",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "bulkActionsAccessibilityLabel",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectMode",
+        "type": "boolean",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "paginatedSelectAllText",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "itemCount",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectable",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "hasMoreItems",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "condensed",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "IndexRowContextType",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectable",
+        "type": "boolean",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectMode",
+        "type": "boolean",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "condensed",
+        "type": "boolean",
+        "isOptional": true,
         "description": "",
         "tags": []
       }
@@ -2691,24 +3142,6 @@
         "tags": []
       }
     ]
-  },
-  {
-    "id": "../polaris-react/src/utilities/merge.ts#GeneralObject",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "GeneralObject",
-    "description": "",
-    "tags": [],
-    "members": []
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/i18n/I18n.ts#TranslationDictionary",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "TranslationDictionary",
-    "description": "",
-    "tags": [],
-    "members": []
   },
   {
     "id": "../polaris-react/src/components/DataTable/types.ts#\"../polaris-react/src/components/DataTable/types\".SortDirection",
@@ -3059,7 +3492,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -3709,363 +4142,6 @@
         "name": "stopLoading",
         "type": "() => void",
         "isOptional": false,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexSelectedItems",
-    "kind": 259,
-    "syntaxKind": "TypeAliasDeclaration",
-    "name": "IndexSelectedItems",
-    "type": "string[] | 'All'",
-    "description": "",
-    "tags": []
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".Range",
-    "kind": 259,
-    "syntaxKind": "TypeAliasDeclaration",
-    "name": "Range",
-    "type": "\n\nexport type Range = [number, number];",
-    "description": "",
-    "tags": []
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "IndexProviderProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectable",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "itemCount",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectedItemsCount",
-        "type": "number | \"All\"",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "resourceName",
-        "type": "{ singular: string; plural: string; }",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "loading",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "hasMoreItems",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "condensed",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".IndexProviderProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onSelectionChange",
-        "type": "(selectionType: SelectionType, toggleType: boolean, selection?: string | Range) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".HandleSelectionChange",
-    "kind": 259,
-    "syntaxKind": "TypeAliasDeclaration",
-    "name": "HandleSelectionChange",
-    "type": "\n\nexport type HandleSelectionChange = (\n  selectionType: SelectionType,\n  toggleType: boolean,\n  selection?: string | Range,\n  sortOrder?: number,\n) => void;",
-    "description": "",
-    "tags": []
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "BulkSelectionDataOptions",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectedItemsCount",
-        "type": "number | \"All\"",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "itemCount",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "hasMoreItems",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".BulkSelectionDataOptions",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "resourceName",
-        "type": "{ singular: string; plural: string; }",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".HandleBulkSelectionOptions",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "HandleBulkSelectionOptions",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/index-provider/types\".HandleBulkSelectionOptions",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onSelectionChange",
-        "type": "(selectionType: SelectionType, toggleType: boolean, selection?: string | Range) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "IndexContextType",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "loading",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "bulkSelectState",
-        "type": "boolean | \"indeterminate\"",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "resourceName",
-        "type": "{ singular: string; plural: string; }",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectedItemsCount",
-        "type": "number | \"All\"",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "bulkActionsAccessibilityLabel",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectMode",
-        "type": "boolean",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "paginatedSelectAllText",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "itemCount",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectable",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "hasMoreItems",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "condensed",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "IndexRowContextType",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectable",
-        "type": "boolean",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectMode",
-        "type": "boolean",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/utilities/index-provider/context.ts#\"../polaris-react/src/utilities/index-provider/context\".IndexRowContextType",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "condensed",
-        "type": "boolean",
-        "isOptional": true,
         "description": "",
         "tags": []
       }
@@ -7869,6 +7945,16 @@
         "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/link/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/link/types\".LinkLikeComponentProps",
         "kind": 166,
         "syntaxKind": "PropertySignature",
+        "name": "css",
+        "type": "InterpolationWithTheme<any>",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/link/types.ts#\"/Users/martenbjork/src/github.com/Shopify/polaris/polaris-react/src/utilities/link/types\".LinkLikeComponentProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
         "name": "ref",
         "type": "LegacyRef<HTMLAnchorElement>",
         "isOptional": true,
@@ -8496,36 +8582,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/AfterInitialMount/AfterInitialMount.tsx#Props",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "Props",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/AfterInitialMount/AfterInitialMount.tsx#Props",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/AfterInitialMount/AfterInitialMount.tsx#Props",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "fallback",
-        "type": "ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/ActionList/ActionList.tsx#\"../polaris-react/src/components/ActionList/ActionList\".ActionListProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -8676,6 +8732,36 @@
             "text": "Determines what color scheme is applied to child content."
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/AfterInitialMount/AfterInitialMount.tsx#Props",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "Props",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/AfterInitialMount/AfterInitialMount.tsx#Props",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/AfterInitialMount/AfterInitialMount.tsx#Props",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "fallback",
+        "type": "ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
       }
     ]
   },
@@ -9030,7 +9116,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Icon to display to the left of the badge’s content.",
         "tags": []
@@ -9103,7 +9189,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Icon to display in the banner. Use only major, duotone icons",
         "tags": []
@@ -9193,7 +9279,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "defaultIcon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": false,
         "description": "",
         "tags": []
@@ -9804,7 +9890,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyPress",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keypress event is registered on the button",
         "tags": []
@@ -9814,7 +9900,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyUp",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keyup event is registered on the button",
         "tags": []
@@ -9824,7 +9910,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyDown",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keydown event is registered on the button",
         "tags": []
@@ -10401,7 +10487,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -10481,7 +10567,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -10574,6 +10660,16 @@
         "type": "React.ReactNode",
         "isOptional": false,
         "description": "Label for the choice",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/ChoiceList/ChoiceList.tsx#Choice",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "id",
+        "type": "string",
+        "isOptional": true,
+        "description": "A unique identifier for the choice",
         "tags": []
       },
       {
@@ -10691,7 +10787,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -12513,7 +12609,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Icon displayed by the list item",
         "tags": []
@@ -13517,7 +13613,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "source",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": false,
         "description": "The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox)",
         "tags": []
@@ -13685,6 +13781,16 @@
         "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableHeading",
         "kind": 166,
         "syntaxKind": "PropertySignature",
+        "name": "id",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableHeading",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
         "name": "flush",
         "type": "boolean",
         "isOptional": true,
@@ -13712,6 +13818,15 @@
         "tags": []
       }
     ]
+  },
+  {
+    "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableSortDirection",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "IndexTableSortDirection",
+    "type": "'ascending' | 'descending'",
+    "description": "",
+    "tags": []
   },
   {
     "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableBaseProps",
@@ -13809,6 +13924,61 @@
         "type": "boolean",
         "isOptional": true,
         "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableBaseProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sortable",
+        "type": "boolean[]",
+        "isOptional": true,
+        "description": "List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableBaseProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "defaultSortDirection",
+        "type": "IndexTableSortDirection",
+        "isOptional": true,
+        "description": "The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.",
+        "tags": [
+          {
+            "name": "default",
+            "text": "'descending'"
+          }
+        ]
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableBaseProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sortDirection",
+        "type": "IndexTableSortDirection",
+        "isOptional": true,
+        "description": "The current sorting direction.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableBaseProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sortColumnIndex",
+        "type": "number",
+        "isOptional": true,
+        "description": "The index of the heading that the table rows are sorted by.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableBaseProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onSort",
+        "type": "(headingIndex: number, direction: IndexTableSortDirection) => void",
+        "isOptional": true,
+        "description": "Callback fired on click or keypress of a sortable column heading.",
         "tags": []
       }
     ]
@@ -13945,6 +14115,61 @@
         "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableProps",
         "kind": 166,
         "syntaxKind": "PropertySignature",
+        "name": "sortable",
+        "type": "boolean[]",
+        "isOptional": true,
+        "description": "List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "defaultSortDirection",
+        "type": "IndexTableSortDirection",
+        "isOptional": true,
+        "description": "The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.",
+        "tags": [
+          {
+            "name": "default",
+            "text": "'descending'"
+          }
+        ]
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sortDirection",
+        "type": "IndexTableSortDirection",
+        "isOptional": true,
+        "description": "The current sorting direction.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sortColumnIndex",
+        "type": "number",
+        "isOptional": true,
+        "description": "The index of the heading that the table rows are sorted by.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onSort",
+        "type": "(headingIndex: number, direction: IndexTableSortDirection) => void",
+        "isOptional": true,
+        "description": "Callback fired on click or keypress of a sortable column heading.",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/IndexTable.tsx#\"../polaris-react/src/components/IndexTable/IndexTable\".IndexTableProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
         "name": "itemCount",
         "type": "number",
         "isOptional": false,
@@ -14046,7 +14271,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "message",
-        "type": "Error",
+        "type": "any",
         "isOptional": false,
         "description": "Content briefly explaining how to resolve the invalid form field input.",
         "tags": []
@@ -14244,7 +14469,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "isOptional": true,
         "description": "Error to display beneath the label",
         "tags": []
@@ -16753,7 +16978,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -18083,7 +18308,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error state",
         "tags": []
@@ -19284,7 +19509,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "isOptional": true,
         "description": "Error to display beneath the label",
         "tags": []
@@ -20239,7 +20464,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyPress",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keypress event is registered on the button",
         "tags": []
@@ -20249,7 +20474,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyUp",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keyup event is registered on the button",
         "tags": []
@@ -20259,7 +20484,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyDown",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keydown event is registered on the button",
         "tags": []
@@ -24094,6 +24319,16 @@
         "id": "../polaris-react/src/components/UnstyledLink/UnstyledLink.tsx#\"../polaris-react/src/components/UnstyledLink/UnstyledLink\".UnstyledLinkProps",
         "kind": 166,
         "syntaxKind": "PropertySignature",
+        "name": "css",
+        "type": "InterpolationWithTheme<any>",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/UnstyledLink/UnstyledLink.tsx#\"../polaris-react/src/components/UnstyledLink/UnstyledLink\".UnstyledLinkProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
         "name": "ref",
         "type": "LegacyRef<HTMLAnchorElement>",
         "isOptional": true,
@@ -24583,6 +24818,46 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "RollupActionsProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "accessibilityLabel",
+        "type": "string",
+        "isOptional": true,
+        "description": "Accessibilty label",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "items",
+        "type": "ActionListItemDescriptor[]",
+        "isOptional": true,
+        "description": "Collection of actions for the list",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sections",
+        "type": "ActionListSection[]",
+        "isOptional": true,
+        "description": "Collection of sectioned action items",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "../polaris-react/src/components/ActionMenu/components/MenuGroup/MenuGroup.tsx#\"../polaris-react/src/components/ActionMenu/components/MenuGroup/MenuGroup\".MenuGroupProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -24685,7 +24960,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Icon to display",
         "tags": []
@@ -24695,7 +24970,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "details",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Action details",
         "tags": []
@@ -24743,46 +25018,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "RollupActionsProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "accessibilityLabel",
-        "type": "string",
-        "isOptional": true,
-        "description": "Accessibilty label",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "items",
-        "type": "ActionListItemDescriptor[]",
-        "isOptional": true,
-        "description": "Collection of actions for the list",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions.tsx#\"../polaris-react/src/components/ActionMenu/components/RollupActions/RollupActions\".RollupActionsProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "sections",
-        "type": "ActionListSection[]",
-        "isOptional": true,
-        "description": "Collection of sectioned action items",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/ActionMenu/components/SecondaryAction/SecondaryAction.tsx#SecondaryAction",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -24790,6 +25025,16 @@
     "description": "",
     "tags": [],
     "members": [
+      {
+        "id": "../polaris-react/src/components/ActionMenu/components/SecondaryAction/SecondaryAction.tsx#SecondaryAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "helpText",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
       {
         "id": "../polaris-react/src/components/ActionMenu/components/SecondaryAction/SecondaryAction.tsx#SecondaryAction",
         "kind": 168,
@@ -25130,7 +25375,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyPress",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keypress event is registered on the button",
         "tags": []
@@ -25140,7 +25385,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyUp",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keyup event is registered on the button",
         "tags": []
@@ -25150,7 +25395,7 @@
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onKeyDown",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "isOptional": true,
         "description": "Callback when a keydown event is registered on the button",
         "tags": []
@@ -25186,15 +25431,6 @@
         "tags": []
       }
     ]
-  },
-  {
-    "id": "../polaris-react/src/components/ActionList/components/Item/Item.tsx#\"../polaris-react/src/components/ActionList/components/Item/Item\".ItemProps",
-    "kind": 259,
-    "syntaxKind": "TypeAliasDeclaration",
-    "name": "ActionListItemDescriptor",
-    "type": "\n\nexport type ItemProps = ActionListItemDescriptor;",
-    "description": "",
-    "tags": []
   },
   {
     "id": "../polaris-react/src/components/ActionList/components/Section/Section.tsx#\"../polaris-react/src/components/ActionList/components/Section/Section\".SectionProps",
@@ -25247,6 +25483,15 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/ActionList/components/Item/Item.tsx#\"../polaris-react/src/components/ActionList/components/Item/Item\".ItemProps",
+    "kind": 259,
+    "syntaxKind": "TypeAliasDeclaration",
+    "name": "ActionListItemDescriptor",
+    "type": "\n\nexport type ItemProps = ActionListItemDescriptor;",
+    "description": "",
+    "tags": []
+  },
+  {
     "id": "../polaris-react/src/components/Autocomplete/components/MappedAction/MappedAction.tsx#MappedAction",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -25294,7 +25539,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "helpText",
-        "type": "string",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Additional hint text to display with item",
         "tags": []
@@ -25304,7 +25549,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "",
         "tags": [
@@ -25334,7 +25579,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "prefix",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Prefix source",
         "tags": []
@@ -25344,7 +25589,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "suffix",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Suffix source",
         "tags": []
@@ -25572,7 +25817,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Icon to display",
         "tags": []
@@ -25582,7 +25827,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "details",
-        "type": "ReactNode",
+        "type": "React.ReactNode",
         "isOptional": true,
         "description": "Action details",
         "tags": []
@@ -26069,6 +26314,256 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "NavigationProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "columnVisibilityData",
+        "type": "ColumnVisibilityData[]",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "isScrolledFarthestLeft",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "isScrolledFarthestRight",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "fixedFirstColumn",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "navigateTableLeft",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "navigateTableRight",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "setRef",
+        "type": "(ref: HTMLDivElement) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "DayProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "focused",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "day",
+        "type": "Date",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selected",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "inRange",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "inHoveringRange",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disabled",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "lastDayOfMonth",
+        "type": "any",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "isLastSelectedDay",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "isFirstSelectedDay",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "isHoveringRight",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "rangeIsDifferent",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "weekday",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selectedAccessibilityLabelPrefix",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onClick",
+        "type": "(day: Date) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onHover",
+        "type": "(day?: Date) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onFocus",
+        "type": "(day: Date) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "../polaris-react/src/components/DataTable/components/Cell/Cell.tsx#\"../polaris-react/src/components/DataTable/components/Cell/Cell\".CellProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -26309,326 +26804,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "DayProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "focused",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "day",
-        "type": "Date",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selected",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "inRange",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "inHoveringRange",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disabled",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "lastDayOfMonth",
-        "type": "any",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "isLastSelectedDay",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "isFirstSelectedDay",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "isHoveringRight",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "rangeIsDifferent",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "weekday",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selectedAccessibilityLabelPrefix",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onClick",
-        "type": "(day: Date) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onHover",
-        "type": "(day?: Date) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Day/Day.tsx#\"../polaris-react/src/components/DatePicker/components/Day/Day\".DayProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onFocus",
-        "type": "(day: Date) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "MonthProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "focusedDate",
-        "type": "Date",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selected",
-        "type": "Range",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "hoverDate",
-        "type": "Date",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "month",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "year",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disableDatesBefore",
-        "type": "Date",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disableDatesAfter",
-        "type": "Date",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disableSpecificDates",
-        "type": "Date[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "allowRange",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "weekStartsOn",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "accessibilityLabelPrefixes",
-        "type": "[string, string]",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onChange",
-        "type": "(date: Range) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onHover",
-        "type": "(hoverEnd: Date) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onFocus",
-        "type": "(date: Date) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/DatePicker/components/Weekday/Weekday.tsx#\"../polaris-react/src/components/DatePicker/components/Weekday/Weekday\".WeekdayProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -26663,86 +26838,6 @@
         "name": "current",
         "type": "boolean",
         "isOptional": false,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "NavigationProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "columnVisibilityData",
-        "type": "ColumnVisibilityData[]",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "isScrolledFarthestLeft",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "isScrolledFarthestRight",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "fixedFirstColumn",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "navigateTableLeft",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "navigateTableRight",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/DataTable/components/Navigation/Navigation.tsx#\"../polaris-react/src/components/DataTable/components/Navigation/Navigation\".NavigationProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "setRef",
-        "type": "(ref: HTMLDivElement) => void",
-        "isOptional": true,
         "description": "",
         "tags": []
       }
@@ -27022,6 +27117,156 @@
         "name": "proxyButtonsWidth",
         "type": "ComputedProperty",
         "isOptional": false,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "MonthProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "focusedDate",
+        "type": "Date",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selected",
+        "type": "Range",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "hoverDate",
+        "type": "Date",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "month",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "year",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disableDatesBefore",
+        "type": "Date",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disableDatesAfter",
+        "type": "Date",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disableSpecificDates",
+        "type": "Date[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "allowRange",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "weekStartsOn",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "accessibilityLabelPrefixes",
+        "type": "[string, string]",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onChange",
+        "type": "(date: Range) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onHover",
+        "type": "(hoverEnd: Date) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/DatePicker/components/Month/Month.tsx#\"../polaris-react/src/components/DatePicker/components/Month/Month\".MonthProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onFocus",
+        "type": "(date: Date) => void",
+        "isOptional": true,
         "description": "",
         "tags": []
       }
@@ -27405,46 +27650,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "ScrollContainerProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "React.ReactNode",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "scrollableContainerRef",
-        "type": "React.RefObject<HTMLDivElement>",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onScroll",
-        "type": "(canScrollLeft: boolean, canScrollRight: boolean) => void",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/IndexTable/components/Row/Row.tsx#RowStatus",
     "kind": 259,
     "syntaxKind": "TypeAliasDeclaration",
@@ -27523,6 +27728,16 @@
       },
       {
         "id": "../polaris-react/src/components/IndexTable/components/Row/Row.tsx#\"../polaris-react/src/components/IndexTable/components/Row/Row\".RowProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disabled",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/components/Row/Row.tsx#\"../polaris-react/src/components/IndexTable/components/Row/Row\".RowProps",
         "kind": 168,
         "syntaxKind": "MethodSignature",
         "name": "onNavigation",
@@ -27537,6 +27752,96 @@
         "syntaxKind": "MethodSignature",
         "name": "onClick",
         "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "ScrollContainerProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "React.ReactNode",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "scrollableContainerRef",
+        "type": "React.RefObject<HTMLDivElement>",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer.tsx#\"../polaris-react/src/components/IndexTable/components/ScrollContainer/ScrollContainer\".ScrollContainerProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onScroll",
+        "type": "(canScrollLeft: boolean, canScrollRight: boolean) => void",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "AnnotatedSectionProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "title",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "description",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "id",
+        "type": "string",
         "isOptional": true,
         "description": "",
         "tags": []
@@ -27604,56 +27909,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "AnnotatedSectionProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "React.ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "title",
-        "type": "React.ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "description",
-        "type": "React.ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection.tsx#\"../polaris-react/src/components/Layout/components/AnnotatedSection/AnnotatedSection\".AnnotatedSectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "id",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/List/components/Item/Item.tsx#\"../polaris-react/src/components/List/components/Item/Item\".ItemProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -27674,6 +27929,26 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/Listbox/components/Header/Header.tsx#HeaderProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "HeaderProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Listbox/components/Header/Header.tsx#HeaderProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "ReactNode",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "../polaris-react/src/components/Listbox/components/Action/Action.tsx#ActionProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -27686,7 +27961,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "",
         "tags": []
@@ -27754,26 +28029,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Listbox/components/Header/Header.tsx#HeaderProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "HeaderProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Listbox/components/Header/Header.tsx#HeaderProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "ReactNode",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/Listbox/components/Loading/Loading.tsx#\"../polaris-react/src/components/Listbox/components/Loading/Loading\".LoadingProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -27797,46 +28052,6 @@
         "syntaxKind": "PropertySignature",
         "name": "accessibilityLabel",
         "type": "string",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "SectionProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "divider",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "title",
-        "type": "ReactNode",
         "isOptional": false,
         "description": "",
         "tags": []
@@ -27914,6 +28129,46 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "SectionProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "divider",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Listbox/components/Section/Section.tsx#SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "title",
+        "type": "ReactNode",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "../polaris-react/src/components/Listbox/components/TextOption/TextOption.tsx#\"../polaris-react/src/components/Listbox/components/TextOption/TextOption\".TextOptionProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -27979,6 +28234,46 @@
         "type": "() => void",
         "isOptional": false,
         "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "FooterProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "primaryAction",
+        "type": "ComplexAction",
+        "isOptional": true,
+        "description": "Primary action",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "secondaryActions",
+        "type": "ComplexAction[]",
+        "isOptional": true,
+        "description": "Collection of secondary actions",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "The content to display inside modal",
         "tags": []
       }
     ]
@@ -28104,46 +28399,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "FooterProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "primaryAction",
-        "type": "ComplexAction",
-        "isOptional": true,
-        "description": "Primary action",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "secondaryActions",
-        "type": "ComplexAction[]",
-        "isOptional": true,
-        "description": "Collection of secondary actions",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Modal/components/Footer/Footer.tsx#\"../polaris-react/src/components/Modal/components/Footer/Footer\".FooterProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "React.ReactNode",
-        "isOptional": true,
-        "description": "The content to display inside modal",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/Modal/components/Header/Header.tsx#\"../polaris-react/src/components/Modal/components/Header/Header\".HeaderProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -28244,526 +28499,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "SectionProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "items",
-        "type": "ItemProps[]",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "icon",
-        "type": "IconSource",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "title",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "fill",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "rollup",
-        "type": "{ after: number; view: string; hide: string; activePath: string; }",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "action",
-        "type": "{ icon: IconSource; accessibilityLabel: string; onClick(): void; tooltip?: TooltipProps; }",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "separator",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "ItemURLDetails",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "url",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "matches",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "exactMatch",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "matchPaths",
-        "type": "string[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "excludePaths",
-        "type": "string[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "external",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "SubNavigationItem",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "url",
-        "type": "string",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "label",
-        "type": "string",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disabled",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "new",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onClick",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "matches",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "exactMatch",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "matchPaths",
-        "type": "string[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "excludePaths",
-        "type": "string[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "external",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "SecondaryAction",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "url",
-        "type": "string",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "accessibilityLabel",
-        "type": "string",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "icon",
-        "type": "IconSource",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onClick",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "tooltip",
-        "type": "TooltipProps",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
-    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "ItemProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "icon",
-        "type": "IconSource",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "badge",
-        "type": "ReactNode",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "label",
-        "type": "string",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disabled",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "accessibilityLabel",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "selected",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "exactMatch",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "new",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "subNavigationItems",
-        "type": "SubNavigationItem[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "secondaryAction",
-        "type": "SecondaryAction",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onClick",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onToggleExpandedState",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "expanded",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "shouldResizeIcon",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "url",
-        "type": "string",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "matches",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "matchPaths",
-        "type": "string[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "excludePaths",
-        "type": "string[]",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "external",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/OptionList/components/Checkbox/Checkbox.tsx#\"../polaris-react/src/components/OptionList/components/Checkbox/Checkbox\".CheckboxProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -28848,6 +28583,86 @@
         "name": "onChange",
         "type": "() => void",
         "isOptional": false,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "SectionProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "items",
+        "type": "ItemProps[]",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "icon",
+        "type": "any",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "title",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "fill",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "rollup",
+        "type": "{ after: number; view: string; hide: string; activePath: string; }",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "action",
+        "type": "{ icon: any; accessibilityLabel: string; onClick(): void; tooltip?: TooltipProps; }",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Section/Section.tsx#\"../polaris-react/src/components/Navigation/components/Section/Section\".SectionProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "separator",
+        "type": "boolean",
+        "isOptional": true,
         "description": "",
         "tags": []
       }
@@ -29003,66 +28818,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "PaneProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "fixed",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "Fix the pane to the top of the popover",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "sectioned",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "Automatically wrap children in padded sections",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "React.ReactNode",
-        "isOptional": true,
-        "description": "The pane content",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "height",
-        "type": "string",
-        "isOptional": true,
-        "description": "Sets a fixed height and max-height on the Scrollable",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onScrolledToBottom",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "Callback when the bottom of the popover is reached by mouse or keyboard",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/Page/components/Header/Header.tsx#MaybeJSX",
     "kind": 259,
     "syntaxKind": "TypeAliasDeclaration",
@@ -29204,9 +28959,19 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "isOptional": true,
         "description": "Source of the icon",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Page/components/Header/Header.tsx#PrimaryAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "helpText",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "Text content to render in a tooltip",
         "tags": []
       }
     ]
@@ -29352,6 +29117,66 @@
         "type": "boolean",
         "isOptional": true,
         "description": "Removes spacing between title and subtitle",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "PaneProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "fixed",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "Fix the pane to the top of the popover",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "sectioned",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "Automatically wrap children in padded sections",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "React.ReactNode",
+        "isOptional": true,
+        "description": "The pane content",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "height",
+        "type": "string",
+        "isOptional": true,
+        "description": "Sets a fixed height and max-height on the Scrollable",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Popover/components/Pane/Pane.tsx#\"../polaris-react/src/components/Popover/components/Pane/Pane\".PaneProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onScrolledToBottom",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "Callback when the bottom of the popover is reached by mouse or keyboard",
         "tags": []
       }
     ]
@@ -29586,6 +29411,446 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "ItemURLDetails",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "url",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "matches",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "exactMatch",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "matchPaths",
+        "type": "string[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "excludePaths",
+        "type": "string[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#ItemURLDetails",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "external",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "SubNavigationItem",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "url",
+        "type": "string",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "label",
+        "type": "string",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disabled",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "new",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onClick",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "matches",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "exactMatch",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "matchPaths",
+        "type": "string[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "excludePaths",
+        "type": "string[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".SubNavigationItem",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "external",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "SecondaryAction",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "url",
+        "type": "string",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "accessibilityLabel",
+        "type": "string",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "icon",
+        "type": "any",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onClick",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#SecondaryAction",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "tooltip",
+        "type": "TooltipProps",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "ItemProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "icon",
+        "type": "any",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "badge",
+        "type": "ReactNode",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "label",
+        "type": "string",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disabled",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "accessibilityLabel",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "selected",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "exactMatch",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "new",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "subNavigationItems",
+        "type": "SubNavigationItem[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "secondaryAction",
+        "type": "SecondaryAction",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onClick",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onToggleExpandedState",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "expanded",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "shouldResizeIcon",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "url",
+        "type": "string",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "matches",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "matchPaths",
+        "type": "string[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "excludePaths",
+        "type": "string[]",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Navigation/components/Item/Item.tsx#\"../polaris-react/src/components/Navigation/components/Item/Item\".ItemProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "external",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "../polaris-react/src/components/PortalsManager/components/PortalsContainer/PortalsContainer.tsx#\"../polaris-react/src/components/PortalsManager/components/PortalsContainer/PortalsContainer\".PolarisContainerProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -29757,7 +30022,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -29946,7 +30211,7 @@
         "kind": 166,
         "syntaxKind": "PropertySignature",
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "isOptional": true,
         "description": "Display an error message",
         "tags": []
@@ -30044,56 +30309,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "ListProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "focusIndex",
-        "type": "number",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "disclosureTabs",
-        "type": "TabDescriptor[]",
-        "isOptional": false,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onClick",
-        "type": "(id: string) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onKeyPress",
-        "type": "(event: React.KeyboardEvent<HTMLElement>) => void",
-        "isOptional": true,
-        "description": "",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/Tabs/components/Item/Item.tsx#\"../polaris-react/src/components/Tabs/components/Item/Item\".ItemProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -30167,6 +30382,56 @@
         "syntaxKind": "MethodSignature",
         "name": "onClick",
         "type": "() => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      }
+    ]
+  },
+  {
+    "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "ListProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "focusIndex",
+        "type": "number",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "disclosureTabs",
+        "type": "TabDescriptor[]",
+        "isOptional": false,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onClick",
+        "type": "(id: string) => void",
+        "isOptional": true,
+        "description": "",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/Tabs/components/List/List.tsx#\"../polaris-react/src/components/Tabs/components/List/List\".ListProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onKeyPress",
+        "type": "(event: React.KeyboardEvent<HTMLElement>) => void",
         "isOptional": true,
         "description": "",
         "tags": []
@@ -30818,106 +31083,6 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-    "kind": 258,
-    "syntaxKind": "InterfaceDeclaration",
-    "name": "SearchFieldProps",
-    "description": "",
-    "tags": [],
-    "members": [
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "value",
-        "type": "string",
-        "isOptional": false,
-        "description": "Initial value for the input",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "placeholder",
-        "type": "string",
-        "isOptional": true,
-        "description": "Hint text to display",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "focused",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "Force the focus state on the input",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "active",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "Force a state where search is active but the text field component is not focused",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onChange",
-        "type": "(value: string) => void",
-        "isOptional": false,
-        "description": "Callback when value is changed",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onFocus",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "Callback when input is focused",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onBlur",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "Callback when focus is removed",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onCancel",
-        "type": "() => void",
-        "isOptional": true,
-        "description": "Callback when search field cancel button is clicked",
-        "tags": []
-      },
-      {
-        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "showFocusBorder",
-        "type": "boolean",
-        "isOptional": true,
-        "description": "Show a border when the search field is focused",
-        "tags": []
-      }
-    ]
-  },
-  {
     "id": "../polaris-react/src/components/TopBar/components/UserMenu/UserMenu.tsx#\"../polaris-react/src/components/TopBar/components/UserMenu/UserMenu\".UserMenuProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -31033,6 +31198,106 @@
     ]
   },
   {
+    "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+    "kind": 258,
+    "syntaxKind": "InterfaceDeclaration",
+    "name": "SearchFieldProps",
+    "description": "",
+    "tags": [],
+    "members": [
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "value",
+        "type": "string",
+        "isOptional": false,
+        "description": "Initial value for the input",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "placeholder",
+        "type": "string",
+        "isOptional": true,
+        "description": "Hint text to display",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "focused",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "Force the focus state on the input",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "active",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "Force a state where search is active but the text field component is not focused",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onChange",
+        "type": "(value: string) => void",
+        "isOptional": false,
+        "description": "Callback when value is changed",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onFocus",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "Callback when input is focused",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onBlur",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "Callback when focus is removed",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onCancel",
+        "type": "() => void",
+        "isOptional": true,
+        "description": "Callback when search field cancel button is clicked",
+        "tags": []
+      },
+      {
+        "id": "../polaris-react/src/components/TopBar/components/SearchField/SearchField.tsx#\"../polaris-react/src/components/TopBar/components/SearchField/SearchField\".SearchFieldProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "showFocusBorder",
+        "type": "boolean",
+        "isOptional": true,
+        "description": "Show a border when the search field is focused",
+        "tags": []
+      }
+    ]
+  },
+  {
     "id": "../polaris-react/src/components/Filters/components/ConnectedFilterControl/components/Item/Item.tsx#ItemProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
@@ -31053,40 +31318,40 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
+    "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
-    "name": "SecondaryProps",
+    "name": "DiscardConfirmationModalProps",
     "description": "",
     "tags": [],
     "members": [
       {
-        "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
+        "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
         "kind": 166,
         "syntaxKind": "PropertySignature",
-        "name": "expanded",
+        "name": "open",
         "type": "boolean",
         "isOptional": false,
         "description": "",
         "tags": []
       },
       {
-        "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "children",
-        "type": "React.ReactNode",
-        "isOptional": true,
+        "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onDiscard",
+        "type": "() => void",
+        "isOptional": false,
         "description": "",
         "tags": []
       },
       {
-        "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
-        "kind": 166,
-        "syntaxKind": "PropertySignature",
-        "name": "id",
-        "type": "string",
-        "isOptional": true,
+        "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
+        "kind": 168,
+        "syntaxKind": "MethodSignature",
+        "name": "onCancel",
+        "type": "() => void",
+        "isOptional": false,
         "description": "",
         "tags": []
       }
@@ -31143,40 +31408,40 @@
     ]
   },
   {
-    "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
+    "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
     "kind": 258,
     "syntaxKind": "InterfaceDeclaration",
-    "name": "DiscardConfirmationModalProps",
+    "name": "SecondaryProps",
     "description": "",
     "tags": [],
     "members": [
       {
-        "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
+        "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
         "kind": 166,
         "syntaxKind": "PropertySignature",
-        "name": "open",
+        "name": "expanded",
         "type": "boolean",
         "isOptional": false,
         "description": "",
         "tags": []
       },
       {
-        "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onDiscard",
-        "type": "() => void",
-        "isOptional": false,
+        "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "children",
+        "type": "React.ReactNode",
+        "isOptional": true,
         "description": "",
         "tags": []
       },
       {
-        "id": "../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal.tsx#\"../polaris-react/src/components/Frame/components/ContextualSaveBar/components/DiscardConfirmationModal/DiscardConfirmationModal\".DiscardConfirmationModalProps",
-        "kind": 168,
-        "syntaxKind": "MethodSignature",
-        "name": "onCancel",
-        "type": "() => void",
-        "isOptional": false,
+        "id": "../polaris-react/src/components/Navigation/components/Item/components/Secondary/Secondary.tsx#SecondaryProps",
+        "kind": 166,
+        "syntaxKind": "PropertySignature",
+        "name": "id",
+        "type": "string",
+        "isOptional": true,
         "description": "",
         "tags": []
       }

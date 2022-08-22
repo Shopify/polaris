@@ -85,3 +85,25 @@ export interface QuickGuide {
   queryParam: string;
   rows: QuickGuideRow[];
 }
+
+export type BaseNode = {
+  id: string;
+  kind: number;
+  syntaxKind: string;
+  name: string;
+  description: string;
+  tags: {name: string; text: string}[];
+};
+
+export interface NodeWithMembers extends BaseNode {
+  members: NodeWithType[];
+}
+
+export interface NodeWithType extends BaseNode {
+  type: string;
+  isOptional?: boolean;
+}
+
+type Node = NodeWithMembers | NodeWithType;
+
+export type TypeList = Node[];
