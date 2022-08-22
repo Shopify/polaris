@@ -151,6 +151,10 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
       const symbol = checker.getSymbolAtLocation(typeAliasDeclaration.name);
       const typeName = checker.typeToString(type);
 
+      // if (typeName === "LinkLikeComponent") {
+      //   console.log(node);
+      // }
+
       if (symbol) {
         const fullyQualifiedName = naivelyGetQualifiedName(symbol);
 
@@ -192,16 +196,32 @@ function getProps(fileNames: string[], options: ts.CompilerOptions): void {
           });
         } else {
           // TBD: Resolve more types
+          typeList.push({
+            id: fullyQualifiedName,
+            kind: node.kind,
+            syntaxKind: ts.SyntaxKind[node.kind],
+            name: typeName,
+            type: typeAliasDeclaration?.getFullText() || "",
+            description: "",
+            tags: [],
+          });
         }
       }
     }
   }
 }
 
-globby(["../polaris-react/src/**/*.tsx"]).then((files) => {
-  let filesWithoutTests = files.filter((file) => !file.endsWith("test.tsx"));
-  getProps(filesWithoutTests, {
-    target: ts.ScriptTarget.ES5,
-    module: ts.ModuleKind.CommonJS,
-  });
-});
+globby(["../polaris-react/src/**/*.ts", "../polaris-react/src/**/*.tsx"]).then(
+  (files) => {
+    let filesWithoutTests = files.filter((file) => !file.endsWith("test.tsx"));
+    // filesWithoutTests.forEach((file) => {
+    //   if (file.includes("utilities/link")) {
+    //     console.log(file);
+    //   }
+    // });
+    getProps(filesWithoutTests, {
+      target: ts.ScriptTarget.ES5,
+      module: ts.ModuleKind.CommonJS,
+    });
+  }
+);
