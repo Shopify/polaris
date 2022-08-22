@@ -13,7 +13,7 @@
     }
   }
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     border-radius: var(--p-border-radius-2);
   }
 
@@ -37,21 +37,19 @@
 .Header {
   padding: var(--p-space-4) var(--p-space-4) 0;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) var(--p-space-5) 0;
   }
 
-  @media print {
-    @include page-content-when-not-fully-condensed {
-      padding: var(--p-space-2) var(--p-space-4) var(--p-space-0);
-    }
+  @media print and #{$p-breakpoints-sm-up} {
+    padding: var(--p-space-2) var(--p-space-4) var(--p-space-0);
   }
 }
 
 .Section {
   padding: var(--p-space-4);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5);
   }
 
@@ -82,7 +80,7 @@
 .Section-fullWidth {
   padding: var(--p-space-4) var(--p-space-0);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) var(--p-space-0);
   }
 }
@@ -90,7 +88,7 @@
 .Section-flush {
   padding: var(--p-space-0);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-0);
   }
 }
@@ -115,7 +113,7 @@
     padding-left: var(--p-space-4);
     padding-right: var(--p-space-4);
 
-    @include page-content-when-not-fully-condensed {
+    @media #{$p-breakpoints-sm-up} {
       padding-left: var(--p-space-5);
       padding-right: var(--p-space-5);
     }
@@ -144,7 +142,7 @@
   justify-content: flex-end;
   padding: 0 var(--p-space-4) var(--p-space-4);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5) var(--p-space-5);
   }
 

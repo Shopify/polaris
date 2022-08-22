@@ -2,6 +2,7 @@
 @import './variables';
 
 $item-wrapper-loading-height: 64px;
+$breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})';
 
 @mixin disabled-pointer-events {
   pointer-events: none;
@@ -18,7 +19,7 @@ $item-wrapper-loading-height: 64px;
 .FiltersWrapper {
   padding: var(--p-space-3) var(--p-space-3) var(--p-space-4);
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-4);
   }
 
@@ -63,7 +64,7 @@ $item-wrapper-loading-height: 64px;
   padding: calc(var(--p-space-3) - var(--p-space-05)) var(--p-space-4);
   background-color: var(--p-surface);
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     flex-direction: row;
   }
 }
@@ -86,7 +87,7 @@ $item-wrapper-loading-height: 64px;
     opacity: 0;
   }
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     right: var(--p-space-4);
     left: var(--p-space-4);
     align-self: flex-start;
@@ -104,7 +105,7 @@ $item-wrapper-loading-height: 64px;
     padding-right: var(--p-space-2);
   }
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     position: relative;
     left: auto;
     flex: 0 1 auto;
@@ -138,7 +139,7 @@ $item-wrapper-loading-height: 64px;
     display: none;
   }
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     // stylelint-disable-next-line selector-max-class
     .HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
@@ -158,7 +159,7 @@ $item-wrapper-loading-height: 64px;
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     flex: 0 1 auto;
     align-self: flex-start;
   }
@@ -167,7 +168,7 @@ $item-wrapper-loading-height: 64px;
 .CheckableButtonWrapper {
   display: none;
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     flex: 1;
     display: block;
   }
@@ -177,7 +178,7 @@ $item-wrapper-loading-height: 64px;
   position: relative;
   flex: none;
 
-  @include breakpoint-after(resource-list(breakpoint-small)) {
+  @media #{$p-breakpoints-sm-up} {
     display: none;
   }
 }
@@ -186,7 +187,8 @@ $item-wrapper-loading-height: 64px;
   padding-top: var(--p-space-8);
   padding-bottom: var(--p-space-8);
 
-  @media (min-height: breakpoint(600px)) {
+  /* stylelint-disable-next-line stylelint-polaris/media-queries-allowed-list */
+  @media #{$breakpoints-empty-search-results-height-up} {
     padding-top: var(--p-space-16);
     padding-bottom: var(--p-space-16);
   }

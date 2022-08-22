@@ -39,7 +39,7 @@
 .Control {
   --pc-choice-size: var(--p-choice-size);
 
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     --pc-choice-size: 22px;
   }
   display: flex;
@@ -66,7 +66,7 @@
 .Descriptions {
   --pc-choice-size: var(--p-choice-size);
 
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     --pc-choice-size: 22px;
   }
   padding-left: calc(var(--p-space-2) + var(--pc-choice-size));

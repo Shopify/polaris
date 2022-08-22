@@ -1,20 +1,9 @@
-import {
-  Tokens,
-  TokenGroup,
-  ColorScheme,
-  createVar,
-  tokens,
-} from '@shopify/polaris-tokens';
-import type {NextApiRequest, NextApiResponse} from 'next';
+import { createVar, tokens, TokenGroup } from "@shopify/polaris-tokens";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-/**
- * Color scheme independent token groups
- */
-type StaticTokenGroupKey = Exclude<keyof Tokens, 'colorSchemes'>;
+type TokenGroupKey = keyof typeof tokens;
 
-export const staticTokenGroupKeys = Object.keys(tokens).filter(
-  (token) => token !== 'colorSchemes',
-) as StaticTokenGroupKey[];
+export const tokenGroupKeys = Object.keys(tokens) as TokenGroupKey[];
 
 const formats = ['json', 'css'] as const;
 
@@ -24,13 +13,8 @@ function isFormat(format: unknown): format is Format {
   return formats.includes(format as Format);
 }
 
-function isScheme(scheme: unknown): scheme is ColorScheme {
-  return Object.keys(tokens.colorSchemes).includes(scheme as ColorScheme);
-}
-
-function isStaticTokenGroupKey(key: unknown): key is StaticTokenGroupKey {
-  // return Object.keys(tokens.colorSchemes).includes(scheme as ColorScheme);
-  return staticTokenGroupKeys.includes(key as StaticTokenGroupKey);
+function isTokenGroupKey(key: unknown): key is TokenGroupKey {
+  return tokenGroupKeys.includes(key as TokenGroupKey);
 }
 
 /**
@@ -38,10 +22,7 @@ function isStaticTokenGroupKey(key: unknown): key is StaticTokenGroupKey {
  */
 const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
   const tokenValues = Object.fromEntries(
-    Object.entries(tokenGroup).map(([token, tokenProps]) => [
-      token,
-      tokenProps.value,
-    ]),
+    Object.entries(tokenGroup).map(([token, value]) => [token, value])
   );
 
   if (format === 'css') {
@@ -60,29 +41,22 @@ const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const formatParam = isFormat(req.query.format) ? req.query.format : 'json';
-  const schemeParam = isScheme(req.query.scheme) ? req.query.scheme : 'light';
+  const formatParam = isFormat(req.query.format) ? req.query.format : "json";
 
-  if (typeof formatParam === 'string' && typeof schemeParam === 'string') {
-    const tokenGroupParam = req.query.tokens || '';
+  if (typeof formatParam === "string") {
+    const tokenGroupParam = req.query.tokens || "";
     let tokenData: TokenGroup = {};
 
     // Determine which list(s) we are querying for based on the token param
-    if (tokenGroupParam === 'all') {
-      staticTokenGroupKeys.forEach((group) => {
+    if (tokenGroupParam === "all") {
+      tokenGroupKeys.forEach((group) => {
         const tokenGroup = tokens[group];
 
         tokenData = {...tokenData, ...tokenGroup};
       });
     }
 
-    if (tokenGroupParam === 'all' || tokenGroupParam === 'colors') {
-      const colorSchemeTokenGroup = tokens.colorSchemes[schemeParam];
-
-      tokenData = {...tokenData, ...colorSchemeTokenGroup};
-    }
-
-    if (isStaticTokenGroupKey(tokenGroupParam)) {
+    if (isTokenGroupKey(tokenGroupParam)) {
       const tokenGroup: TokenGroup = tokens[tokenGroupParam];
 
       tokenData = {...tokenData, ...tokenGroup};
@@ -96,8 +70,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const formattedTokenData = formatTokenGroup(tokenData, formatParam);
 
-    if (formatParam === 'css') {
-      res.setHeader('content-type', 'text/css');
+    if (formatParam === "css") {
+      res.setHeader("content-type", "text/plain");
       res.send(formattedTokenData);
     } else {
       res.json(formattedTokenData);

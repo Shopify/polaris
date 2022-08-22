@@ -405,7 +405,7 @@ export function WithSearchableListbox() {
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-7)',
+        fontSize: 'var(--p-font-size-300)',
         color: 'var(--p-text)',
         borderBottom: '1px dashed var(--p-border)',
       }}
