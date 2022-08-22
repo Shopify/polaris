@@ -179,7 +179,7 @@ $loading-panel-height: 53px;
   text-align: left;
   font-weight: var(--p-font-weight-medium);
   color: var(--p-text-subdued);
-  font-size: var(--p-font-size-1);
+  font-size: var(--p-font-size-75);
   white-space: nowrap;
   border: 0;
 }
@@ -212,7 +212,7 @@ $loading-panel-height: 53px;
   justify-content: center;
   font-weight: var(--p-font-weight-medium);
   color: var(--p-text-subdued);
-  font-size: var(--p-font-size-1);
+  font-size: var(--p-font-size-75);
 
   &:hover,
   &:focus {
