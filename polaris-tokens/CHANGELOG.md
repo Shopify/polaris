@@ -1,5 +1,18 @@
 # Changelog
 
+## 6.0.0
+
+### Major Changes
+
+- [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Removed dark color tokens and color scheme support.
+
+* [#6996](https://github.com/Shopify/polaris/pull/6996) [`7d7ae1e87`](https://github.com/Shopify/polaris/commit/7d7ae1e8797ce18820b96b16e360334e38671a5a) Thanks [@samrose3](https://github.com/samrose3)! - Renamed the following token groups: `colorScheme` to `colors`, `legacyTokens` to `legacy`, and `typography` to `fonts`.
+
+- [#6995](https://github.com/Shopify/polaris/pull/6995) [`84ceaa3fc`](https://github.com/Shopify/polaris/commit/84ceaa3fc332d686c7efda312357854555d5e0e6) Thanks [@aveline](https://github.com/aveline)! - Updated type scale and font size token names.
+
+  - Hardcoded existing `font-size` values outside the new scale.
+  - Updated `line-height` token values and hardcoded values outside the new scale.
+
 ## 5.5.2
 
 ### Patch Changes
