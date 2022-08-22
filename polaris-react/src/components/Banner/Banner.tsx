@@ -16,7 +16,6 @@ import {
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
 import {useUniqueId} from '../../utilities/unique-id';
-import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
 import {Heading} from '../Heading';
@@ -65,7 +64,6 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 ) {
   const withinContentContainer = useContext(WithinContentContext);
   const id = useUniqueId('Banner');
-  const i18n = useI18n();
   const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
     useBannerFocus(bannerRef);
   const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
@@ -97,12 +95,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
       className={classNames(styles.Button, styles.loading)}
     >
       <span className={styles.Spinner}>
-        <Spinner
-          size="small"
-          accessibilityLabel={i18n.translate(
-            'Polaris.Button.spinnerAccessibilityLabel',
-          )}
-        />
+        <Spinner size="small" />
       </span>
       {action.content}
     </button>

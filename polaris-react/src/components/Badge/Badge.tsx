@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Icon} from '../Icon';
@@ -10,7 +9,6 @@ import type {IconSource} from '../../types';
 import styles from './Badge.scss';
 import type {Progress, Size, Status} from './types';
 import {Pip} from './components';
-import {getDefaultAccessibilityLabel} from './utils';
 
 const DEFAULT_SIZE: Size = 'medium';
 interface NonMutuallyExclusiveProps {
@@ -27,8 +25,8 @@ interface NonMutuallyExclusiveProps {
    * @default 'medium'
    */
   size?: Size;
-  /** Pass a custom accessibilityLabel */
-  statusAndProgressLabelOverride?: string;
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
 }
 
 export type BadgeProps = NonMutuallyExclusiveProps &
@@ -43,9 +41,8 @@ export function Badge({
   progress,
   icon,
   size = DEFAULT_SIZE,
-  statusAndProgressLabelOverride,
+  accessibilityLabel,
 }: BadgeProps) {
-  const i18n = useI18n();
   const withinFilter = useContext(WithinFilterContext);
 
   const className = classNames(
@@ -55,10 +52,6 @@ export function Badge({
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     withinFilter && styles.withinFilter,
   );
-
-  const accessibilityLabel = statusAndProgressLabelOverride
-    ? statusAndProgressLabelOverride
-    : getDefaultAccessibilityLabel(i18n, progress, status);
 
   let accessibilityMarkup = Boolean(accessibilityLabel) && (
     <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
@@ -70,7 +63,7 @@ export function Badge({
         <Pip
           progress={progress}
           status={status}
-          accessibilityLabelOverride={accessibilityLabel}
+          accessibilityLabel={accessibilityLabel}
         />
       </span>
     );

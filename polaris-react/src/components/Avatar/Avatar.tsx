@@ -1,7 +1,6 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 import {Image} from '../Image';
 
@@ -54,7 +53,6 @@ export function Avatar({
   shape = 'round',
   accessibilityLabel,
 }: AvatarProps) {
-  const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
 
   function styleClass(name?: string) {
@@ -83,21 +81,6 @@ export function Avatar({
   const hasImage = source && status !== Status.Errored;
 
   const nameString = name || initials;
-
-  let label: string | undefined;
-
-  if (accessibilityLabel) {
-    label = accessibilityLabel;
-  } else if (name) {
-    label = name;
-  } else if (initials) {
-    const splitInitials = initials.split('').join(' ');
-    label = i18n.translate('Polaris.Avatar.labelWithInitials', {
-      initials: splitInitials,
-    });
-  } else {
-    label = i18n.translate('Polaris.Avatar.label');
-  }
 
   const className = classNames(
     styles.Avatar,
@@ -155,7 +138,7 @@ export function Avatar({
   );
 
   return (
-    <span aria-label={label} role="img" className={className}>
+    <span aria-label={accessibilityLabel} role="img" className={className}>
       {svgMarkup}
       {imageMarkUp}
     </span>

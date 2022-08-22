@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {useI18n} from '../../utilities/i18n';
 import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
 import {WithinContentContext} from '../../utilities/within-content-context';
@@ -63,7 +62,6 @@ export const Card: React.FunctionComponent<CardProps> & {
   secondaryFooterActionsDisclosureText,
   footerActionAlignment = 'right',
 }: CardProps) {
-  const i18n = useI18n();
   const {
     value: secondaryActionsPopoverOpen,
     toggle: toggleSecondaryActionsPopoverOpen,
@@ -95,8 +93,7 @@ export const Card: React.FunctionComponent<CardProps> & {
             active={secondaryActionsPopoverOpen}
             activator={
               <Button disclosure onClick={toggleSecondaryActionsPopoverOpen}>
-                {secondaryFooterActionsDisclosureText ||
-                  i18n.translate('Polaris.Common.more')}
+                {secondaryFooterActionsDisclosureText}
               </Button>
             }
             onClose={toggleSecondaryActionsPopoverOpen}

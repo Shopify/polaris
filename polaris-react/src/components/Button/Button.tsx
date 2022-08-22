@@ -11,7 +11,6 @@ import {
   handleMouseUpByBlurring,
   MouseUpBlurHandler,
 } from '../../utilities/focus';
-import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
 import {Popover} from '../Popover';
@@ -131,8 +130,6 @@ export function Button({
   connectedDisclosure,
   dataPrimaryLink,
 }: ButtonProps) {
-  const i18n = useI18n();
-
   const isDisabled = disabled || loading;
 
   const className = classNames(
@@ -191,12 +188,7 @@ export function Button({
 
   const spinnerSVGMarkup = loading ? (
     <span className={styles.Spinner}>
-      <Spinner
-        size="small"
-        accessibilityLabel={i18n.translate(
-          'Polaris.Button.spinnerAccessibilityLabel',
-        )}
-      />
+      <Spinner size="small" />
     </span>
   ) : null;
 
@@ -223,19 +215,14 @@ export function Button({
       monochrome && styles.monochrome,
     );
 
-    const defaultLabel = i18n.translate(
-      'Polaris.Button.connectedDisclosureAccessibilityLabel',
-    );
-
-    const {disabled, accessibilityLabel: disclosureLabel = defaultLabel} =
-      connectedDisclosure;
+    const {disabled, accessibilityLabel} = connectedDisclosure;
 
     const connectedDisclosureActivator = (
       <button
         type="button"
         className={connectedDisclosureClassName}
         aria-disabled={disabled}
-        aria-label={disclosureLabel}
+        aria-label={accessibilityLabel}
         aria-describedby={ariaDescribedBy}
         aria-checked={ariaChecked}
         onClick={handleClick}
