@@ -405,8 +405,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   }
 
   private fixedFirstColumns() {
-    const {hasFixedFirstColumn, fixedFirstColumns = 0} = this.props;
-    return hasFixedFirstColumn && !fixedFirstColumns ? 1 : fixedFirstColumns;
+    const {hasFixedFirstColumn, fixedFirstColumns = 0, headings} = this.props;
+    const numberOfFixedFirstColumns =
+      hasFixedFirstColumn && !fixedFirstColumns ? 1 : fixedFirstColumns;
+
+    if (numberOfFixedFirstColumns >= headings.length) {
+      return 0;
+    }
+
+    return numberOfFixedFirstColumns;
   }
 
   private setCellRef = ({

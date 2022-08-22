@@ -565,4 +565,77 @@ describe('<DataTable />', () => {
       expect(threeSpanCells).toHaveLength(1);
     });
   });
+
+  describe('fixedFirstColumns', () => {
+    const headings = ['Product', 'Price', 'Order Number'];
+    const rows = [
+      [
+        'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+        '$875.00',
+        124518,
+        83,
+        '$122,500.00',
+      ],
+    ];
+
+    const columnContentTypes: DataTableProps['columnContentTypes'] = [
+      'text',
+      'numeric',
+      'numeric',
+    ];
+
+    const fixedFirstColumnsProps = {
+      headings,
+      rows,
+      columnContentTypes,
+    };
+
+    it('sets fixed first columns', () => {
+      const dataTable = mountWithApp(
+        <DataTable {...fixedFirstColumnsProps} fixedFirstColumns={2} />,
+      );
+
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 100,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+
+      dataTable.forceUpdate();
+
+      const separateTable = dataTable.findAll('table')[0];
+      const separateTableHeadingGroup = separateTable.find('thead');
+      const separateTableHeaders = separateTableHeadingGroup?.findAll('th');
+
+      expect(separateTableHeaders).toHaveLength(2);
+    });
+
+    it('sets "fixedFirstColumns" to 0 if it exceeds or is equal to columns amount', () => {
+      const dataTable = mountWithApp(
+        <DataTable {...fixedFirstColumnsProps} fixedFirstColumns={3} />,
+      );
+
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 100,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+
+      dataTable.forceUpdate();
+
+      const tables = dataTable.findAll('table');
+
+      expect(tables).toHaveLength(1);
+    });
+  });
 });
