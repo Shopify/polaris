@@ -55,21 +55,21 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <DisplayText size="small">Sales this year</DisplayText>
-+ <Text variant="headingXl" as="p">Sales this year</Text>
++ <Text variant="headingLg" as="p">Sales this year</Text>
 ```
 
 #### Medium
 
 ```diff
 - <DisplayText size="medium">Sales this year</DisplayText>
-+ <Text variant="heading2xl" as="p">Sales this year</Text>
++ <Text variant="headingXl" as="p">Sales this year</Text>
 ```
 
 #### Large
 
 ```diff
 - <DisplayText size="large">Sales this year</DisplayText>
-+ <Text variant="heading3xl" as="p">Sales this year</Text>
++ <Text variant="heading2xl" as="p">Sales this year</Text>
 ```
 
 #### Extra large
@@ -83,14 +83,14 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <Heading>Online store dashboard</Heading>
-+ <Text variant="headingLg" as="h2">Online store dashboard</Text>
++ <Text variant="headingMd" as="h2">Online store dashboard</Text>
 ```
 
 ### Subheading
 
 ```diff
 - <Subheading>Accounts</Subheading>
-+ <Text variant="headingSm" as="h3">Accounts</Text>
++ <Text variant="headingXs" as="h3">Accounts</Text>
 ```
 
 ### Caption
