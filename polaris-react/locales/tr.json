@@ -296,7 +296,8 @@
       "undo": "Geri al",
       "selectAllItems": "Şunların tümünü seç: {itemsLength}+ {resourceNamePlural}",
       "selectItem": "{resourceName} kaynağını seç",
-      "selectButtonText": "Seç"
+      "selectButtonText": "Seç",
+      "sortAccessibilityLabel": "{direction} öğesini şuna göre sırala:"
     },
     "Page": {
       "Header": {

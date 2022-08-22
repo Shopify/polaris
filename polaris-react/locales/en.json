@@ -178,7 +178,8 @@
       "undo": "Undo",
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Select {resourceName}",
-      "selectButtonText": "Select"
+      "selectButtonText": "Select",
+      "sortAccessibilityLabel": "sort {direction} by"
     },
     "Loading": {
       "label": "Page loading bar"

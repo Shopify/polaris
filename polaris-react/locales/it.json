@@ -297,7 +297,8 @@
       "undo": "Annulla",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Seleziona {resourceName}",
-      "selectButtonText": "Seleziona"
+      "selectButtonText": "Seleziona",
+      "sortAccessibilityLabel": "ordina {direction} per"
     },
     "Page": {
       "Header": {

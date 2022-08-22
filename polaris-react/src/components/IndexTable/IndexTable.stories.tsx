@@ -1347,6 +1347,122 @@ export function WithAllOfItsElements() {
   }
 }
 
+export function WithSortableHeadings() {
+  const [sortIndex, setSortIndex] = useState(0);
+  const [sortDirection, setSortDirection] = useState('descending');
+
+  const initialRows = [
+    {
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+    {
+      id: '1245',
+      url: 'customers/123',
+      name: 'Anne-Marie Johnson',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+    },
+    {
+      id: '8741',
+      url: 'customers/543',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+    },
+  ];
+  const [sortedRows, setSortedRows] = useState(
+    sortRows(initialRows, sortIndex, sortDirection),
+  );
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const rows = sortedRows ?? initialRows;
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows);
+
+  function handleClickSortHeading(index, direction) {
+    setSortIndex(index);
+    setSortDirection(direction);
+    const newSortedRows = sortRows(rows, index, direction);
+    setSortedRows(newSortedRows);
+  }
+
+  function sortRows(localRows, index, direction) {
+    return [...localRows].sort((rowA, rowB) => {
+      const key = index === 0 ? 'name' : 'location';
+      if (rowA[key] < rowB[key]) {
+        return direction === 'descending' ? -1 : 1;
+      }
+      if (rowA[key] > rowB[key]) {
+        return direction === 'descending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  const rowMarkup = rows.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <TextStyle variation="strong">{name}</TextStyle>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={rows.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+          {title: 'Location'},
+        ]}
+        sortable={[true, false, false, true]}
+        sortDirection={sortDirection}
+        sortColumnIndex={sortIndex}
+        onSort={handleClickSortHeading}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
+  );
+}
+
 export function SmallScreenWithAllOfItsElements() {
   const customers = [
     {

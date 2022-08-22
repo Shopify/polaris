@@ -296,7 +296,8 @@
       "undo": "Fortryd",
       "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Vælg {resourceName}",
-      "selectButtonText": "Vælg"
+      "selectButtonText": "Vælg",
+      "sortAccessibilityLabel": "sortér {direction} efter"
     },
     "Page": {
       "Header": {

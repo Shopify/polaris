@@ -296,7 +296,8 @@
       "undo": "เลิกทำ",
       "selectAllItems": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการ",
       "selectItem": "เลือก {resourceName}",
-      "selectButtonText": "เลือก"
+      "selectButtonText": "เลือก",
+      "sortAccessibilityLabel": "จัดเรียง {direction} ตาม"
     },
     "Page": {
       "Header": {
