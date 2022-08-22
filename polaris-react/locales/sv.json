@@ -19,7 +19,7 @@
         "success": "Lyckades",
         "warning": "Varning",
         "attention": "Observera",
-        "new": "Ny",
+        "new": "Nytt",
         "critical": "Kritisk"
       },
       "progressAndStatus": "{statusLabel} {progressLabel}"
@@ -32,7 +32,6 @@
       "checkbox": "kryssruta",
       "undo": "Ångra",
       "cancel": "Avbryt",
-      "newWindowAccessibilityHint": "(öppnar ett nytt fönster)",
       "clear": "Rensa",
       "close": "Stäng",
       "submit": "Skicka",
@@ -217,7 +216,7 @@
       "toggleMenuLabel": "Växla menyn",
       "SearchField": {
         "clearButtonLabel": "Rensa",
-        "search": "Sök"
+        "search": "Sökning"
       }
     },
     "MediaCard": {
@@ -290,14 +289,15 @@
     "IndexTable": {
       "emptySearchTitle": "Inga {resourceNamePlural} hittades",
       "emptySearchDescription": "Prova att byta filter eller sökord",
-      "onboardingBadgeText": "Ny",
+      "onboardingBadgeText": "Nytt",
       "resourceLoadingAccessibilityLabel": "Laddar {resourceNamePlural}",
       "selectAllLabel": "Välj alla {resourceNamePlural}",
       "selected": "{selectedItemsCount} har valts",
       "undo": "Ångra",
       "selectAllItems": "Välj alla {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Välj {resourceName}",
-      "selectButtonText": "Välj"
+      "selectButtonText": "Välj",
+      "sortAccessibilityLabel": "sortera {direction} efter"
     },
     "Page": {
       "Header": {

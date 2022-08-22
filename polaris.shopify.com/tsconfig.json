@@ -20,6 +20,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src", "**/*.json", "next-env.d.ts"],
-  "exclude": ["node_modules", "src/pages/examples/**/*"]
+  "include": ["src", "pages", "**/*.json", "next-env.d.ts"],
+  "exclude": ["node_modules", "pages/examples/**/*"]
 }

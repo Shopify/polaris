@@ -32,7 +32,6 @@
       "checkbox": "valintaruutu",
       "undo": "Peru",
       "cancel": "Peruuta",
-      "newWindowAccessibilityHint": "(avaa uuden ikkunan)",
       "clear": "Tyhjennä",
       "close": "Sulje",
       "submit": "Lähetä",
@@ -214,7 +213,7 @@
       "characterCountWithMaxLength": "{count}/{limit} merkkiä käytetty"
     },
     "TopBar": {
-      "toggleMenuLabel": "Vaihda valikkoa",
+      "toggleMenuLabel": "Valikon vaihto",
       "SearchField": {
         "clearButtonLabel": "Tyhjennä",
         "search": "Hae"
@@ -284,7 +283,7 @@
       "selected": "{selectedItemsCount} valittu",
       "a11yCheckboxDeselectAllSingle": "Poista valinta kohteesta {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
+      "a11yCheckboxDeselectAllMultiple": "Poista kaikkien valinta: {itemsLength} x {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}"
     },
     "IndexTable": {
@@ -297,7 +296,8 @@
       "undo": "Peru",
       "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
       "selectItem": "Valitse {resourceName}",
-      "selectButtonText": "Valitse"
+      "selectButtonText": "Valitse",
+      "sortAccessibilityLabel": "lajittele {direction}:"
     },
     "Page": {
       "Header": {

@@ -1,3 +1,3 @@
-import StatusBanner from "./StatusBanner";
+import StatusBanner from './StatusBanner';
 
 export default StatusBanner;

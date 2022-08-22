@@ -1,35 +1,35 @@
-import React, { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React, {useState, useEffect, useRef} from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { foundationsNavItems } from "../../data/navItems";
-import { className, getComponentNav } from "../../utils/various";
-import { Breakpoints } from "../../types";
-import Button from "../Button";
-import type { NavItem } from "../Nav";
+import {foundationsNavItems} from '../../data/navItems';
+import {className, getComponentNav} from '../../utils/various';
+import {Breakpoints} from '../../types';
+import Button from '../Button';
+import type {NavItem} from '../Nav';
 
-import styles from "./MobileNav.module.scss";
+import styles from './MobileNav.module.scss';
 
 const componentsNavItems = getComponentNav();
 
 const navItems: NavItem[] = [
   {
-    title: "Getting started",
-    url: "/",
+    title: 'Getting started',
+    url: '/',
   },
   ...foundationsNavItems,
   {
-    title: "Components",
-    url: "/components",
+    title: 'Components',
+    url: '/components',
     children: componentsNavItems[0].children,
   },
   {
-    title: "Tokens",
-    url: "/tokens/colors",
+    title: 'Tokens',
+    url: '/tokens/colors',
   },
   {
-    title: "Icons",
-    url: "/icons",
+    title: 'Icons',
+    url: '/icons',
   },
   // ...contributingNavItems,
 ];
@@ -38,7 +38,7 @@ interface Props {
   currentPath: string;
 }
 
-function MobileNav({ currentPath }: Props) {
+function MobileNav({currentPath}: Props) {
   const [showMenu, setShowMenu] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const logoRef = useRef<HTMLAnchorElement>(null);
@@ -51,25 +51,25 @@ function MobileNav({ currentPath }: Props) {
       }
     }
 
-    window.addEventListener("resize", hideSideNavOnResize);
+    window.addEventListener('resize', hideSideNavOnResize);
 
-    return () => window.removeEventListener("resize", hideSideNavOnResize);
+    return () => window.removeEventListener('resize', hideSideNavOnResize);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const handleOnKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setShowMenu(false);
       }
     };
 
     if (showMenu) {
-      document.addEventListener("keydown", handleOnKeyDown);
+      document.addEventListener('keydown', handleOnKeyDown);
       logoRef.current instanceof HTMLElement && logoRef.current.focus();
     }
 
-    return () => document.removeEventListener("keydown", handleOnKeyDown);
+    return () => document.removeEventListener('keydown', handleOnKeyDown);
   }, [showMenu]);
 
   const handleCloseMenu = () => {
@@ -78,7 +78,7 @@ function MobileNav({ currentPath }: Props) {
   };
 
   const handleShiftTabPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Tab" && e.shiftKey) {
+    if (e.key === 'Tab' && e.shiftKey) {
       e.preventDefault();
       const closeButton = closeButtonRef.current;
       closeButton instanceof HTMLElement && closeButton.focus();
@@ -86,7 +86,7 @@ function MobileNav({ currentPath }: Props) {
   };
 
   const handleTabPress = (e: React.KeyboardEvent) => {
-    if (e.key === "Tab" && !e.shiftKey) {
+    if (e.key === 'Tab' && !e.shiftKey) {
       e.preventDefault();
       const logoLink = logoRef.current;
       logoLink instanceof HTMLElement && logoLink.focus();
@@ -122,7 +122,7 @@ function MobileNav({ currentPath }: Props) {
                 onKeyDown={handleShiftTabPress}
               >
                 <Image
-                  src="/shopify-logo.svg"
+                  src="/images/shopify-logo.svg"
                   layout="fixed"
                   width={24}
                   height={24}
@@ -169,12 +169,7 @@ interface ListItemProps {
   handleCloseMenu?: () => void;
 }
 
-function ListItem({
-  ariaId,
-  item,
-  currentPath,
-  handleCloseMenu,
-}: ListItemProps) {
+function ListItem({ariaId, item, currentPath, handleCloseMenu}: ListItemProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -189,7 +184,7 @@ function ListItem({
               aria-controls={`accordion-panel-${ariaId}`}
               className={className(
                 styles.AccordionTrigger,
-                isExpanded && styles.expanded
+                isExpanded && styles.expanded,
               )}
               onClick={() => setIsExpanded((prevState) => !prevState)}
             >
@@ -202,7 +197,7 @@ function ListItem({
             aria-labelledby={`accordion-${ariaId}`}
             className={className(
               styles.AccordionPanel,
-              isExpanded && styles.expanded
+              isExpanded && styles.expanded,
             )}
           >
             {item.children.map((child) => (
@@ -220,7 +215,7 @@ function ListItem({
       {!item.children && item.url && (
         <Link href={item.url} passHref>
           <a
-            aria-current={item.url === currentPath ? "page" : "false"}
+            aria-current={item.url === currentPath ? 'page' : 'false'}
             onClick={handleCloseMenu}
           >
             {item.title}

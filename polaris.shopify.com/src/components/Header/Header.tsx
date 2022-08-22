@@ -1,31 +1,31 @@
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { DarkMode } from "use-dark-mode";
+import {useState, useEffect} from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import {DarkMode} from 'use-dark-mode';
 
-import GlobalSearch from "../GlobalSearch";
-import Container from "../Container";
-import MobileNav from "../MobileNav";
-import type { NavItem } from "../Nav";
+import GlobalSearch from '../GlobalSearch';
+import Container from '../Container';
+import MobileNav from '../MobileNav';
+import type {NavItem} from '../Nav';
 
-import styles from "./Header.module.scss";
+import styles from './Header.module.scss';
 
 const headerNavItems: NavItem[] = [
   {
-    title: "Foundations",
-    url: "/foundations",
+    title: 'Foundations',
+    url: '/foundations',
   },
   {
-    title: "Components",
-    url: "/components",
+    title: 'Components',
+    url: '/components',
   },
   {
-    title: "Tokens",
-    url: "/tokens/colors",
+    title: 'Tokens',
+    url: '/tokens/colors',
   },
   {
-    title: "Icons",
-    url: "/icons",
+    title: 'Icons',
+    url: '/icons',
   },
   // {
   //   title: "Contributing",
@@ -38,16 +38,16 @@ interface Props {
   currentPath?: string;
 }
 
-function Header({ darkMode, currentPath = "" }: Props) {
+function Header({darkMode, currentPath = ''}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
-    const mainContent = document.querySelector("#main");
+    const mainContent = document.querySelector('#main');
     setShowSkipToContentLink(mainContent !== null);
   }, [currentPath]);
 
   const match = currentPath.match(/^\/\w+/);
-  const currentSection = match ? match[0] : "";
+  const currentSection = match ? match[0] : '';
 
   return (
     <div className={styles.Header}>
@@ -59,7 +59,7 @@ function Header({ darkMode, currentPath = "" }: Props) {
         <Link href="/">
           <a className={styles.Logo}>
             <Image
-              src="/shopify-logo.svg"
+              src="/images/shopify-logo.svg"
               layout="fixed"
               width={24}
               height={24}
@@ -77,10 +77,10 @@ function Header({ darkMode, currentPath = "" }: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            {headerNavItems.map(({ url, title }) => {
+            {headerNavItems.map(({url, title}) => {
               const isCurrent =
                 currentSection && url?.startsWith(currentSection)
-                  ? "page"
+                  ? 'page'
                   : false;
 
               return url ? (

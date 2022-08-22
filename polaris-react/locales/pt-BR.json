@@ -32,7 +32,6 @@
       "checkbox": "caixa de seleção",
       "undo": "Desfazer",
       "cancel": "Cancelar",
-      "newWindowAccessibilityHint": "(abre uma nova janela)",
       "clear": "Limpar",
       "close": "Fechar",
       "submit": "Enviar",
@@ -285,7 +284,7 @@
       "selected": "{selectedItemsCount} selecionados",
       "a11yCheckboxDeselectAllSingle": "Desmarcar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
-      "a11yCheckboxDeselectAllMultiple": "Desmarcar todos os {resourceNamePlural} com {itemsLength}",
+      "a11yCheckboxDeselectAllMultiple": "Desmarcar todos os {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Selecionar todos os {resourceNamePlural} com {itemsLength}"
     },
     "IndexTable": {
@@ -298,7 +297,8 @@
       "undo": "Desfazer",
       "selectAllItems": "Selecionar todos os {resourceNamePlural} maiores que {itemsLength}",
       "selectItem": "Selecionar {resourceName}",
-      "selectButtonText": "Selecionar"
+      "selectButtonText": "Selecionar",
+      "sortAccessibilityLabel": "ordenar {direction} por"
     },
     "Page": {
       "Header": {

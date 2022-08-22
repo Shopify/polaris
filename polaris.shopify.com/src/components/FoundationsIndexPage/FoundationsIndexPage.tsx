@@ -1,8 +1,8 @@
-import { foundationsNavItems } from "../../data/navItems";
-import styles from "./FoundationsIndexPage.module.scss";
-import Layout from "../Layout";
-import PageMeta from "../PageMeta";
-import FoundationsGrid from "../FoundationsGrid";
+import {foundationsNavItems} from '../../data/navItems';
+import styles from './FoundationsIndexPage.module.scss';
+import Layout from '../Layout';
+import PageMeta from '../PageMeta';
+import FoundationsGrid from '../FoundationsGrid';
 
 interface Props {}
 
@@ -30,7 +30,7 @@ function FoundationsIndexPage({}: Props) {
                     <FoundationsGrid.Item
                       key={category.title}
                       title={child.title}
-                      excerpt={child.excerpt}
+                      description={child.description}
                       icon={child.icon}
                       url={child.url}
                       category={category.title.toLowerCase()}

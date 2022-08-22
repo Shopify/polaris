@@ -1,7 +1,7 @@
 name: Propose updates to an existing icon
 description: For modifications to an existing icon in polaris-icons
 title: '[Icon]: Update icon <icon-name>'
-labels: ['Icon']
+labels: ['Icon', 'untriaged']
 body:
   - type: markdown
     attributes:

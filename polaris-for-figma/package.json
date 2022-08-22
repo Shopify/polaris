@@ -1,6 +1,6 @@
 {
   "name": "polaris-for-figma",
-  "version": "0.0.4",
+  "version": "0.0.9",
   "private": true,
   "scripts": {
     "build": "webpack --mode=production",
@@ -12,17 +12,17 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@shopify/polaris": "^9.21.0",
+    "@shopify/polaris": "^9.24.0",
     "antd": "^4.20.4",
     "lodash": "^4.17.15",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.32.8"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.19.1",
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^16.0.0",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
     "@types/node": "^17.0.23",
     "babel-loader": "^8.2.3",
     "css-loader": "^3.4.2",

@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import Image from "../Image";
-import Code from "../Code";
-import styles from "./IconDetails.module.scss";
+import React from 'react';
+import Link from 'next/link';
+import Image from '../Image';
+import Code from '../Code';
+import styles from './IconDetails.module.scss';
 
 interface Props {
   fileName: string;
@@ -14,23 +14,23 @@ interface Props {
   };
 }
 
-function IconDetails({ fileName, iconData }: Props) {
+function IconDetails({fileName, iconData}: Props) {
   if (!fileName) return <EmptyState />;
 
-  const { set, description, name, keywords } = iconData;
+  const {set, description, name, keywords} = iconData;
 
   const reactExamples = {
     imports: `import {\n  ${fileName}\n} from '@shopify/polaris-icons';`,
     componentUsage: `<Icon\n  source={${fileName}}\n  color="base"\n/>`,
   };
   const figmaUIKitURl =
-    "https:www.figma.com/community/file/1110993965108325096";
+    'https://www.figma.com/community/file/1110993965108325096';
   const polarisIconsUrl =
-    "https:www.npmjs.com/package/@shopify/polaris-icons#usage";
-  const iconComponentUrl = "/components/icon";
+    'https://www.npmjs.com/package/@shopify/polaris-icons#usage';
+  const iconComponentUrl = '/components/icon';
   const githubIssueSubject = `[Icon]: Update icon ${fileName}`;
   const proposeChangeUrl = `https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon&template=UPDATE_ICON.yml&title=${encodeURIComponent(
-    githubIssueSubject
+    githubIssueSubject,
   )}`;
 
   return (
@@ -49,23 +49,23 @@ function IconDetails({ fileName, iconData }: Props) {
 
         <h2 className={styles.Title}>{name}</h2>
 
-        {description !== "N/A" && (
+        {description !== 'N/A' && (
           <p className={styles.IconDescription}>
-            {description}{" "}
+            {description}{' '}
             <span className={styles.Keywords}>
               {keywords
-                .filter((keyword) => keyword !== "N/A")
+                .filter((keyword) => keyword !== 'N/A')
                 .map((keyword, i) => {
                   return (
                     <React.Fragment key={i}>
                       <Link
                         key={keyword}
-                        href={{ query: { icon: fileName, q: keyword } }}
+                        href={{query: {icon: fileName, q: keyword}}}
                         scroll={false}
                       >
                         {keyword}
                       </Link>
-                      {i < keywords.length - 1 && " "}
+                      {i < keywords.length - 1 && ' '}
                     </React.Fragment>
                   );
                 })}
@@ -97,18 +97,18 @@ function IconDetails({ fileName, iconData }: Props) {
         </p>
 
         <div className={styles.CodeWrapper}>
-          <Code code={{ title: "Import", code: reactExamples.imports }} />
+          <Code code={{title: 'Import', code: reactExamples.imports}} />
         </div>
 
         <p className={styles.SmallParagraph}>
-          Then render it using the{" "}
+          Then render it using the{' '}
           <Link href={iconComponentUrl}>icon component</Link>:
         </p>
 
         <div className={styles.CodeWrapper}>
           <Code
             code={{
-              title: "React component",
+              title: 'React component',
               code: reactExamples.componentUsage,
             }}
           />

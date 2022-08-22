@@ -1,16 +1,16 @@
-import { BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon } from "./icons";
-import Container from "../Container";
-import Link from "next/link";
-import { className } from "../../utils/various";
-import { useMedia } from "../../utils/hooks";
-import Image from "../Image";
-import PageMeta from "../PageMeta";
-import styles from "./HomePage.module.scss";
+import {BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon} from './icons';
+import Container from '../Container';
+import Link from 'next/link';
+import {className} from '../../utils/various';
+import {useMedia} from '../../utils/hooks';
+import Image from '../Image';
+import PageMeta from '../PageMeta';
+import styles from './HomePage.module.scss';
 
 interface Props {}
 
 function HomePage({}: Props) {
-  const useMotion = useMedia("(prefers-reduced-motion: no-preference)");
+  const useMotion = useMedia('(prefers-reduced-motion: no-preference)');
 
   return (
     <div className={styles.HomePage}>
@@ -45,9 +45,9 @@ function HomePage({}: Props) {
                 <Links
                   links={[
                     {
-                      icon: "browse",
-                      label: "Start reading",
-                      url: "/foundations",
+                      icon: 'browse',
+                      label: 'Start reading',
+                      url: '/foundations',
                     },
                   ]}
                 />
@@ -76,19 +76,19 @@ function HomePage({}: Props) {
                 <Links
                   links={[
                     {
-                      icon: "browse",
-                      label: "Browse components",
-                      url: "/components",
+                      icon: 'browse',
+                      label: 'Browse components',
+                      url: '/components',
                     },
                     {
-                      icon: "github",
-                      label: "Repo",
-                      url: "https://github.com/Shopify/polaris/tree/main/polaris-react",
+                      icon: 'github',
+                      label: 'Repo',
+                      url: 'https://github.com/Shopify/polaris/tree/main/polaris-react',
                     },
                     {
-                      icon: "figma",
-                      label: "Library",
-                      url: "https://www.figma.com/community/file/1111360433678236702",
+                      icon: 'figma',
+                      label: 'Library',
+                      url: 'https://www.figma.com/community/file/1111360433678236702',
                     },
                   ]}
                 />
@@ -114,19 +114,19 @@ function HomePage({}: Props) {
                 <Links
                   links={[
                     {
-                      icon: "browse",
-                      label: "Browse tokens",
-                      url: "/tokens/colors",
+                      icon: 'browse',
+                      label: 'Browse tokens',
+                      url: '/tokens/colors',
                     },
                     {
-                      icon: "github",
-                      label: "Repo",
-                      url: "https://github.com/Shopify/polaris/tree/main/polaris-tokens",
+                      icon: 'github',
+                      label: 'Repo',
+                      url: 'https://github.com/Shopify/polaris/tree/main/polaris-tokens',
                     },
                     {
-                      icon: "figma",
-                      label: "Library",
-                      url: "https://www.figma.com/community/file/1111359207966840858",
+                      icon: 'figma',
+                      label: 'Library',
+                      url: 'https://www.figma.com/community/file/1111359207966840858',
                     },
                   ]}
                 />
@@ -153,19 +153,19 @@ function HomePage({}: Props) {
                 <Links
                   links={[
                     {
-                      icon: "browse",
-                      label: "Browse icons",
-                      url: "/icons",
+                      icon: 'browse',
+                      label: 'Browse icons',
+                      url: '/icons',
                     },
                     {
-                      icon: "github",
-                      label: "Repo",
-                      url: "https://github.com/Shopify/polaris/tree/main/polaris-icons",
+                      icon: 'github',
+                      label: 'Repo',
+                      url: 'https://github.com/Shopify/polaris/tree/main/polaris-icons',
                     },
                     {
-                      icon: "figma",
-                      label: "Library",
-                      url: "https://www.figma.com/community/file/1110993965108325096",
+                      icon: 'figma',
+                      label: 'Library',
+                      url: 'https://www.figma.com/community/file/1110993965108325096',
                     },
                   ]}
                 />
@@ -197,9 +197,9 @@ function HomePage({}: Props) {
                 <Links
                   links={[
                     {
-                      icon: "install",
-                      label: "Get the extension",
-                      url: "https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode",
+                      icon: 'install',
+                      label: 'Get the extension',
+                      url: 'https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode',
                     },
                   ]}
                 />
@@ -238,26 +238,26 @@ function HomePage({}: Props) {
 
 interface ResourceListItemProps {
   links: {
-    icon: "browse" | "github" | "figma" | "install" | "other";
+    icon: 'browse' | 'github' | 'figma' | 'install' | 'other';
     label: string;
     url: string;
   }[];
 }
 
-export const Links = ({ links }: ResourceListItemProps) => {
+export const Links = ({links}: ResourceListItemProps) => {
   return (
     <ul className={styles.Links}>
       {links.map((link) => (
         <li key={link.url}>
           <Link href={link.url}>
             <a data-icon={link.icon}>
-              {link.icon === "browse" && <BrowseIcon />}
+              {link.icon === 'browse' && <BrowseIcon />}
 
-              {link.icon === "github" && <GitHubIcon />}
+              {link.icon === 'github' && <GitHubIcon />}
 
-              {link.icon === "figma" && <FigmaIcon />}
+              {link.icon === 'figma' && <FigmaIcon />}
 
-              {link.icon === "install" && <InstallIcon />}
+              {link.icon === 'install' && <InstallIcon />}
 
               {link.label}
             </a>

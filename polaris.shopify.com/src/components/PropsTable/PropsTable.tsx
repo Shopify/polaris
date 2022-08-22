@@ -1,13 +1,8 @@
-import {
-  BaseNode,
-  NodeWithMembers,
-  NodeWithType,
-  TypeList,
-} from "../../scripts/get-props";
-import StatusBadge from "../StatusBadge";
-import { Disclosure } from "@headlessui/react";
-import styles from "./PropsTable.module.scss";
-import Longform from "../Longform";
+import {BaseNode, NodeWithMembers, NodeWithType, TypeList} from '../../types';
+import StatusBadge from '../StatusBadge';
+import {Disclosure} from '@headlessui/react';
+import styles from './PropsTable.module.scss';
+import Longform from '../Longform';
 
 interface Props {
   componentName: string;
@@ -25,21 +20,21 @@ function findReferencedType({
 }): TypeList[number] | null {
   const typesWithSameName = allTypes.filter((type) => type.name === typeName);
   if (typesWithSameName.length === 0) {
-    console.log("No types found");
+    console.log('No types found');
   } else if (typesWithSameName.length === 1) {
-    console.log("Found a perfect match", typesWithSameName);
+    console.log('Found a perfect match', typesWithSameName);
     return typesWithSameName[0];
   } else {
-    console.log("Multiple types match. Narrowing down...", typesWithSameName);
+    console.log('Multiple types match. Narrowing down...', typesWithSameName);
     console.log(fileName, typesWithSameName);
     const typeWithSameNameInSameFile = typesWithSameName.filter(
-      (type) => type.id.split("#")[0] === fileName
+      (type) => type.id.split('#')[0] === fileName,
     );
     if (typeWithSameNameInSameFile.length === 1) {
-      console.log("Narrowed down to this type:", typeWithSameNameInSameFile);
+      console.log('Narrowed down to this type:', typeWithSameNameInSameFile);
       return typeWithSameNameInSameFile[0];
     } else {
-      console.log("Failed to narrow results down.", typeWithSameNameInSameFile);
+      console.log('Failed to narrow results down.', typeWithSameNameInSameFile);
     }
   }
 
@@ -48,10 +43,10 @@ function findReferencedType({
 
 function resolveMember(
   allTypes: TypeList,
-  node: NodeWithType
+  node: NodeWithType,
 ): NodeWithMembers | string {
-  const fileName = node.id.split("#")[0];
-  const nodeType = node.type.replace(/^readonly/, "").trim();
+  const fileName = node.id.split('#')[0];
+  const nodeType = node.type.replace(/^readonly/, '').trim();
   const isJustAType = nodeType.match(/^[A-Z][A-Za-z]+$/);
   const isArrayType = nodeType.match(/^[A-Z][A-Za-z]+\[\]$/);
 
@@ -62,21 +57,21 @@ function resolveMember(
       fileName,
     });
     if (referencedType) {
-      if ("type" in referencedType) {
+      if ('type' in referencedType) {
         return `${referencedType.type} 🪄`;
       } else {
         return referencedType;
       }
     }
   } else if (isArrayType) {
-    const typeWithoutArrayNotation = nodeType.replace(/\[\]$/gi, "");
+    const typeWithoutArrayNotation = nodeType.replace(/\[\]$/gi, '');
     const referencedType = findReferencedType({
       allTypes,
       typeName: typeWithoutArrayNotation,
       fileName,
     });
     if (referencedType) {
-      if ("type" in referencedType) {
+      if ('type' in referencedType) {
         return `(${referencedType.type})[] 🪄`;
       } else {
         return referencedType;
@@ -86,22 +81,22 @@ function resolveMember(
   return node.type;
 }
 
-function highlightType(type: string, prev: string = ""): React.ReactNode {
+function highlightType(type: string, prev: string = ''): React.ReactNode {
   if (
-    type === "string" ||
+    type === 'string' ||
     type.match(/^['][^']+'$/) !== null ||
     type.match(/^["][^"]+"$/) !== null
   ) {
     return <span className={styles.SyntaxString}>{type}</span>;
-  } else if (type === "boolean") {
+  } else if (type === 'boolean') {
     return <span className={styles.SyntaxBoolean}>{type}</span>;
-  } else if (type === "number") {
+  } else if (type === 'number') {
     return <span className={styles.SyntaxNumber}>{type}</span>;
-  } else if (type.endsWith("ReactNode") || type.endsWith("ReactElement")) {
+  } else if (type.endsWith('ReactNode') || type.endsWith('ReactElement')) {
     return <span className={styles.SyntaxReactNode}>{type}</span>;
-  } else if (type === "void") {
+  } else if (type === 'void') {
     return <span className={styles.SyntaxReactNode}>{type}</span>;
-  } else if (type.match(/^[A-Z][A-Za-z]+$/) || type === "any") {
+  } else if (type.match(/^[A-Z][A-Za-z]+$/) || type === 'any') {
     return <span className={styles.SyntaxReactNode}>{type}</span>;
   } else if (type.match(/^[a-z]+$/gi) !== null) {
     return <span className={styles.SyntaxKeyword}>{type}</span>;
@@ -122,34 +117,34 @@ function highlightType(type: string, prev: string = ""): React.ReactNode {
 }
 
 function getDefaultValue(type: BaseNode): string | null {
-  const defaultTag = type.tags.find((tag) => tag.name === "default");
+  const defaultTag = type.tags.find((tag) => tag.name === 'default');
   if (defaultTag) {
     return defaultTag.text;
   }
   return null;
 }
 
-function PropsTable({ types, componentName }: Props) {
-  const feedbackTitle = "[polaris.shopify.com] Props table feedback";
+function PropsTable({types, componentName}: Props) {
+  const feedbackTitle = '[polaris.shopify.com] Props table feedback';
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
-    feedbackTitle
+    feedbackTitle,
   )}&amp;labels=polaris.shopify.com`;
 
   const propsForComponent = types.find(
     (type) =>
       type.name.toLowerCase() ===
-      `${componentName.replace(/\s/g, "").toLowerCase()}props`
+      `${componentName.replace(/\s/g, '').toLowerCase()}props`,
   );
 
   const propsAreDefinedUsingInterface =
-    propsForComponent && "members" in propsForComponent;
+    propsForComponent && 'members' in propsForComponent;
 
   return (
     <div className={styles.PropsTable}>
       <Longform>
         <h2 id="props">Props</h2>
         <p>
-          Want to help make this feature better? Please{" "}
+          Want to help make this feature better? Please{' '}
           <a href={feedbackUrl}>share your feedback</a>.
         </p>
       </Longform>
@@ -178,7 +173,7 @@ function InterfaceList({
   level?: number;
   isArrayed?: boolean;
 }) {
-  if (!("members" in node)) return <p>Hmmm</p>;
+  if (!('members' in node)) return <p>Hmmm</p>;
 
   if (node.members.length === 0) {
     return <p>{`This component doesn't have any props.`}</p>;
@@ -189,7 +184,7 @@ function InterfaceList({
       <Disclosure defaultOpen={level === 0}>
         <Disclosure.Button className={styles.InterfaceListHeader}>
           {node.name}
-          {isArrayed && "[]"}
+          {isArrayed && '[]'}
         </Disclosure.Button>
 
         <Disclosure.Panel className={styles.InterfaceListContent}>
@@ -201,14 +196,14 @@ function InterfaceList({
                 <li key={type.name}>
                   <span className={styles.KeyValue}>
                     <span className={styles.Key}>
-                      {type.name}{" "}
+                      {type.name}{' '}
                       {type.isOptional ? (
-                        ""
+                        ''
                       ) : (
                         <>
-                          {" "}
+                          {' '}
                           <StatusBadge
-                            status={{ value: "warning", message: "Required" }}
+                            status={{value: 'warning', message: 'Required'}}
                           />
                         </>
                       )}
@@ -218,7 +213,7 @@ function InterfaceList({
                         {type.description}
                         {defaultValue && (
                           <>
-                            {". Defaults to "}
+                            {'. Defaults to '}
                             <span className={styles.Default}>
                               {highlightType(defaultValue)}
                             </span>
@@ -227,7 +222,7 @@ function InterfaceList({
                         )}
                       </span>
 
-                      {typeof memberType === "string" ? (
+                      {typeof memberType === 'string' ? (
                         <span className={styles.ValueText}>
                           {highlightType(memberType)}
                         </span>
@@ -237,7 +232,7 @@ function InterfaceList({
                             allTypes={allTypes}
                             node={memberType}
                             level={level + 1}
-                            isArrayed={type.type.endsWith("[]")}
+                            isArrayed={type.type.endsWith('[]')}
                           />
                         </>
                       )}

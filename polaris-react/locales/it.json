@@ -32,7 +32,6 @@
       "checkbox": "casella di spunta",
       "undo": "Annulla",
       "cancel": "Annulla",
-      "newWindowAccessibilityHint": "(apre una nuova finestra)",
       "clear": "Rimuovi",
       "close": "Chiudi",
       "submit": "Invia",
@@ -214,7 +213,7 @@
       "characterCountWithMaxLength": "{count} caratteri utilizzati su {limit}"
     },
     "TopBar": {
-      "toggleMenuLabel": "Menu di attivazione/disattivazione",
+      "toggleMenuLabel": "Apri/chiudi menu",
       "SearchField": {
         "clearButtonLabel": "Rimuovi",
         "search": "Cerca"
@@ -281,7 +280,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Articolo",
       "defaultItemPlural": "Articoli",
-      "allItemsSelected": "Tutti i {itemsLength}+ {resourceNamePlural} sono selezionati.",
+      "allItemsSelected": "Tutti gli oltre {itemsLength} {resourceNamePlural} sono selezionati.",
       "selected": "{selectedItemsCount} selezionati",
       "a11yCheckboxDeselectAllSingle": "Deseleziona {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Seleziona {resourceNameSingular}",
@@ -298,7 +297,8 @@
       "undo": "Annulla",
       "selectAllItems": "Seleziona tutti i {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Seleziona {resourceName}",
-      "selectButtonText": "Seleziona"
+      "selectButtonText": "Seleziona",
+      "sortAccessibilityLabel": "ordina {direction} per"
     },
     "Page": {
       "Header": {
