@@ -43,12 +43,9 @@ const Components = ({
   type,
   editPageLinkPath,
 }: Props) => {
-  const typedStatus: Status | undefined = status
-    ? {
-        value: status.value.toLowerCase() as Status['value'],
-        message: status.message,
-      }
-    : undefined;
+  const statusBanner = status ? <StatusBanner status={status} /> : null;
+  const propList =
+    type && status?.value !== 'Deprecated' ? <PropsTable types={type} /> : null;
 
   return (
     <Page title={title} editPageLinkPath={editPageLinkPath}>
@@ -56,13 +53,9 @@ const Components = ({
 
       <Longform>
         <Markdown text={description} />
-        {typedStatus && <StatusBanner status={typedStatus} />}
-        <ComponentExamples examples={examples} />
-      </Longform>
-
-      {type && <PropsTable types={type} componentName={title} />}
-
-      <Longform firstParagraphIsLede={false}>
+        {statusBanner}
+        {Boolean(examples.length) && <ComponentExamples examples={examples} />}
+        {propList}
         <Markdown text={readme.body} />
       </Longform>
     </Page>
