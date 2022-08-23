@@ -43,9 +43,10 @@ const Components = ({
 }: Props) => {
   const navItems: NavItem[] = getComponentNav();
   const statusBanner = status ? <StatusBanner status={status} /> : null;
-  const propList = propsForComponent ? (
-    <PropsTable props={propsForComponent} />
-  ) : null;
+  const propList =
+    propsForComponent && status?.value !== 'Deprecated' ? (
+      <PropsTable props={propsForComponent} />
+    ) : null;
 
   return (
     <Layout width="narrow" navItems={navItems} title={title}>
@@ -54,7 +55,7 @@ const Components = ({
       <Longform>
         <Markdown text={description} />
         {statusBanner}
-        <ComponentExamples examples={examples} />
+        {Boolean(examples.length) && <ComponentExamples examples={examples} />}
         {propList}
         <Markdown text={readme.body} />
       </Longform>
