@@ -1,3 +1,95 @@
 .root {
   display: block;
 }
+
+.background {
+  background-color: var(--p-background);
+}
+
+.backgroundHovered {
+  background-color: var(--p-background-hovered);
+}
+
+.backgroundPressed {
+  background-color: var(--p-background-pressed);
+}
+
+.backgroundSelected {
+  background-color: var(--p-background-selected);
+}
+
+.surface {
+  background-color: var(--p-surface);
+}
+
+.surfaceDark {
+  background-color: var(--p-surface-dark);
+}
+
+.surfaceNeutral {
+  background-color: var(--p-surface-neutral);
+}
+
+.surfaceNeutralHovered {
+  background-color: var(--p-surface-neutral-hovered);
+}
+
+.surfaceNeutralPressed {
+  background-color: var(--p-surface-neutral-pressed);
+}
+
+.surfaceNeutralDisabled {
+  background-color: var(--p-surface-neutral-disabled);
+}
+
+.surfaceNeutralSubdued {
+  background-color: var(--p-surface-neutral-subdued);
+}
+
+.surfaceNeutralSubduedDark {
+  background-color: var(--p-surface-neutral-subdued-dark);
+}
+
+.surfaceSubdued {
+  background-color: var(--p-surface-subdued);
+}
+
+.surfaceDisabled {
+  background-color: var(--p-surface-disabled);
+}
+
+.surfaceHovered {
+  background-color: var(--p-surface-hovered);
+}
+
+.surfaceHoveredDark {
+  background-color: var(--p-surface-hovered-dark);
+}
+
+.surfacePressed {
+  background-color: var(--p-surface-pressed);
+}
+
+.surfacePressedDark {
+  background-color: var(--p-surface-pressed-dark);
+}
+
+.surfaceDepressed {
+  background-color: var(--p-surface-depressed);
+}
+
+.surfaceSearchField {
+  background-color: var(--p-surface-search-field);
+}
+
+.surfaceSearchFieldDark {
+  background-color: var(--p-surface-search-field-dark);
+}
+
+.backdrop {
+  background-color: var(--p-backdrop);
+}
+
+.overlay {
+  background-color: var(--p-overlay);
+}
