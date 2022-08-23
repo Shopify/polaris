@@ -15,6 +15,15 @@ import {
 
 export default {
   component: Filters,
+  parameters: {
+    a11y: {
+      config: {
+        // disabled due to DataTable having a scrollable region without
+        // keyboard access when all content fits without scrolling.
+        rules: [{id: 'scrollable-region-focusable', enabled: false}],
+      },
+    },
+  },
 } as ComponentMeta<typeof Filters>;
 
 export function WithAResourceList() {

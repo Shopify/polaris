@@ -7,6 +7,7 @@ import styles from './Text.scss';
 type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 type Variant =
+  | 'headingXs'
   | 'headingSm'
   | 'headingMd'
   | 'headingLg'
@@ -25,7 +26,8 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 type Color = 'success' | 'critical' | 'warning' | 'subdued';
 
 const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
-  headingSm: 'bold',
+  headingXs: 'bold',
+  headingSm: 'semibold',
   headingMd: 'semibold',
   headingLg: 'semibold',
   headingXl: 'semibold',

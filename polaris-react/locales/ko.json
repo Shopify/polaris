@@ -32,7 +32,6 @@
       "checkbox": "확인란",
       "undo": "실행 취소",
       "cancel": "취소",
-      "newWindowAccessibilityHint": "(새 창에서 열림)",
       "clear": "지우기",
       "close": "닫기",
       "submit": "제출",
@@ -297,7 +296,8 @@
       "undo": "실행 취소",
       "selectAllItems": "길이가 {itemsLength} 이상인 모든 {resourceNamePlural} 선택",
       "selectItem": "{resourceName} 선택",
-      "selectButtonText": "선택"
+      "selectButtonText": "선택",
+      "sortAccessibilityLabel": "{direction} 정렬 기준"
     },
     "Page": {
       "Header": {

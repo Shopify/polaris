@@ -10,6 +10,7 @@ Some of the token groups have been renamed. See the following table for the upda
 | -------------- | -------- |
 | `colorScheme`  | `colors` |
 | `legacyTokens` | `legacy` |
+| `typography`   | `font`   |
 
 ```diff
 import {tokens} from '@shopify/polaris-tokens';
@@ -24,6 +25,8 @@ const tokens = {
   motion,
   shape,
   spacing,
+- typography,
++ font,
   typography,
   zIndex,
 }

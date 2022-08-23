@@ -14,6 +14,8 @@ interface Choice {
   value: string;
   /** Label for the choice */
   label: React.ReactNode;
+  /** A unique identifier for the choice */
+  id?: string;
   /** Disable choice */
   disabled?: boolean;
   /** Additional text to aide in use */
@@ -75,6 +77,7 @@ export function ChoiceList({
   const choicesMarkup = choices.map((choice) => {
     const {
       value,
+      id,
       label,
       helpText,
       disabled: choiceDisabled,
@@ -101,6 +104,7 @@ export function ChoiceList({
         <ControlComponent
           name={finalName}
           value={value}
+          id={id}
           label={label}
           disabled={choiceDisabled || disabled}
           checked={choiceIsSelected(choice, selected)}

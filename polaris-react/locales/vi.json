@@ -32,7 +32,6 @@
       "checkbox": "hộp kiểm",
       "undo": "Hoàn tác",
       "cancel": "Hủy",
-      "newWindowAccessibilityHint": "(mở một cửa sổ mới)",
       "clear": "Xóa",
       "close": "Đóng",
       "submit": "Gửi",
@@ -297,7 +296,8 @@
       "undo": "Hoàn tác",
       "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Chọn {resourceName}",
-      "selectButtonText": "Chọn"
+      "selectButtonText": "Chọn",
+      "sortAccessibilityLabel": "sắp xếp {direction} theo"
     },
     "Page": {
       "Header": {

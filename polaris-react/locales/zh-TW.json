@@ -32,7 +32,6 @@
       "checkbox": "核取方塊",
       "undo": "復原",
       "cancel": "取消",
-      "newWindowAccessibilityHint": "(開啟新視窗)",
       "clear": "清除",
       "close": "關閉",
       "submit": "提交",
@@ -297,7 +296,8 @@
       "undo": "復原",
       "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
       "selectItem": "選取 {resourceName}",
-      "selectButtonText": "選取"
+      "selectButtonText": "選取",
+      "sortAccessibilityLabel": "向 {direction} 排序，依據"
     },
     "Page": {
       "Header": {

@@ -11,7 +11,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/api/v0/tokens/:path*',
+        source: '/api/tokens/v0:path*',
         headers: [
           {key: 'Access-Control-Allow-Credentials', value: 'true'},
           {key: 'Access-Control-Allow-Origin', value: '*'},

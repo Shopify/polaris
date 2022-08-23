@@ -569,10 +569,10 @@ export const colors = {
       'For use as a text color in inert success elements. Not for use as a text color on banners and badges.',
   },
   'icon-attention': {
-    value: 'rgba(138, 97, 22)',
+    value: 'rgba(138, 97, 22, 1)',
   },
   'surface-attention': {
-    value: 'rgba(255, 234, 138)',
+    value: 'rgba(255, 234, 138, 1)',
   },
   'decorative-one-icon': {
     value: 'rgba(126, 87, 0, 1)',
