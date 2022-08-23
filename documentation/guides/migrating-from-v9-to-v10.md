@@ -73,7 +73,7 @@ $p-breakpoints-xl-only: '(min-width: 90em)';
 
 ### Sass static mixins
 
-The following Sass mixins have been removed. You will need to replace any instances with the closest Polaris media query variable (listed above) or hard code the one off media query value you need.
+The following Sass mixins have been removed. You will need to replace any instances with the closest Polaris media query variable (listed above) or hard code one off values.
 
 | Before                                                 | After                              |
 | ------------------------------------------------------ | ---------------------------------- |
@@ -99,7 +99,7 @@ For dynamic mixins, the replacement media query variable will depend on the valu
 
 #### `breakpoint-before` and `breakpoint-after` mixins
 
-Replace any instances with the closest Polaris media query variable (listed above) or hard code the one off media query value you need. For example:
+Replace any instances with the closest Polaris media query variable (listed above) or hard code one off values. For example:
 
 | Before                              | After                              |
 | ----------------------------------- | ---------------------------------- |
