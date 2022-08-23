@@ -1,58 +1,50 @@
-import { useState, useEffect, createContext, useContext } from "react";
-import { search } from "../../utils/search";
+import {useState, useEffect, createContext, useContext} from 'react';
+import {search} from '../../utils/search';
 import {
   GroupedSearchResults,
   SearchResultCategory,
   SearchResults,
-} from "../../types";
-import styles from "./GlobalSearch.module.scss";
-import { useRouter } from "next/router";
-import IconGrid from "../IconGrid";
-import ComponentGrid from "../ComponentGrid";
-import TokenList from "../TokenList";
-import { Dialog } from "@headlessui/react";
-import { KeyboardEventHandler } from "react";
-import FoundationsGrid from "../FoundationsGrid";
-import { foundationsNavItems } from "../../data/navItems";
+} from '../../types';
+import styles from './GlobalSearch.module.scss';
+import {useRouter} from 'next/router';
+import IconGrid from '../IconGrid';
+import ComponentGrid from '../ComponentGrid';
+import TokenList from '../TokenList';
+import {Dialog} from '@headlessui/react';
+import {KeyboardEventHandler} from 'react';
+import FoundationsGrid from '../FoundationsGrid';
 
-const CATEGORY_NAMES: { [key in SearchResultCategory]: string } = {
-  components: "Components",
-  foundations: "Foundations",
-  tokens: "Tokens",
-  icons: "Icons",
+const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
+  components: 'Components',
+  foundations: 'Foundations',
+  tokens: 'Tokens',
+  icons: 'Icons',
 };
 
-const foundationsIcons: { [title: string]: JSX.Element } = {};
-Object.entries(foundationsNavItems).forEach(([, value]) => {
-  value.children?.forEach((child) => {
-    foundationsIcons[child.title] = child.icon;
-  });
-});
-
-const SearchContext = createContext({ id: "", currentItemId: "" });
+const SearchContext = createContext({id: '', currentItemId: ''});
 
 export function useGlobalSearchResult() {
   const searchContext = useContext(SearchContext);
   if (!searchContext.id) return null;
-  const { id, currentItemId } = searchContext;
+  const {id, currentItemId} = searchContext;
 
   return {
     id,
-    "data-is-global-search-result": true,
-    "data-is-current-result": currentItemId === id,
+    'data-is-global-search-result': true,
+    'data-is-current-result': currentItemId === id,
     tabIndex: -1,
   };
 }
 
 function scrollToTop() {
   const overflowEl = document.querySelector(`.${styles.ResultsInner}`);
-  overflowEl?.scrollTo({ top: 0, behavior: "smooth" });
+  overflowEl?.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function scrollIntoView() {
   const overflowEl = document.querySelector(`.${styles.ResultsInner}`);
   const highlightedEl = document.querySelector(
-    '#search-results [data-is-current-result="true"]'
+    '#search-results [data-is-current-result="true"]',
   );
 
   if (overflowEl && highlightedEl) {
@@ -66,8 +58,8 @@ function scrollIntoView() {
 
     if (isCloseToTop || isCloseToBottom) {
       highlightedEl.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
+        behavior: 'smooth',
+        block: 'center',
       });
     }
   }
@@ -76,7 +68,7 @@ function scrollIntoView() {
 function GlobalSearch() {
   const [searchResults, setSearchResults] = useState<GroupedSearchResults>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
   const router = useRouter();
 
@@ -90,16 +82,16 @@ function GlobalSearch() {
 
   useEffect(() => {
     const listener = (event: KeyboardEvent) => {
-      let isSlashKey = event.key === "/";
+      let isSlashKey = event.key === '/';
       if (isSlashKey) {
         event.preventDefault();
         setIsOpen(true);
       }
     };
 
-    document.addEventListener("keydown", listener);
+    document.addEventListener('keydown', listener);
 
-    return () => document.removeEventListener("keydown", listener);
+    return () => document.removeEventListener('keydown', listener);
   }, []);
 
   useEffect(() => {
@@ -113,40 +105,40 @@ function GlobalSearch() {
   useEffect(() => {
     const handler = () => setIsOpen(false);
 
-    router.events.on("beforeHistoryChange", handler);
-    router.events.on("hashChangeComplete", handler);
+    router.events.on('beforeHistoryChange', handler);
+    router.events.on('hashChangeComplete', handler);
 
     return () => {
-      router.events.off("beforeHistoryChange", handler);
-      router.events.off("hashChangeComplete", handler);
+      router.events.off('beforeHistoryChange', handler);
+      router.events.off('hashChangeComplete', handler);
     };
   }, [setIsOpen, router.events]);
 
   useEffect(() => {
     if (!isOpen) {
-      setSearchTerm("");
+      setSearchTerm('');
     }
   }, [isOpen]);
 
   const handleKeyboardNavigation: KeyboardEventHandler<HTMLDivElement> = (
-    evt
+    evt,
   ) => {
     switch (evt.code) {
-      case "ArrowDown":
+      case 'ArrowDown':
         if (currentResultIndex < searchResultsCount - 1) {
           setCurrentResultIndex(currentResultIndex + 1);
           evt.preventDefault();
         }
         break;
 
-      case "ArrowUp":
+      case 'ArrowUp':
         if (currentResultIndex > 0) {
           setCurrentResultIndex(currentResultIndex - 1);
           evt.preventDefault();
         }
         break;
 
-      case "Enter":
+      case 'Enter':
         if (resultsInRenderedOrder.length > 0) {
           setIsOpen(false);
           const url = resultsInRenderedOrder[currentResultIndex].url;
@@ -156,7 +148,7 @@ function GlobalSearch() {
     }
   };
 
-  const currentItemId = resultsInRenderedOrder[currentResultIndex]?.id || "";
+  const currentItemId = resultsInRenderedOrder[currentResultIndex]?.id || '';
 
   return (
     <>
@@ -230,21 +222,21 @@ function SearchResults({
 }) {
   return (
     <>
-      {searchResults.map(({ category, results }) => {
+      {searchResults.map(({category, results}) => {
         if (results.length === 0) return null;
         switch (category) {
-          case "foundations":
+          case 'foundations':
             return (
               <ResultsGroup category={category}>
                 <FoundationsGrid>
-                  {results.map(({ id, url, meta }) => {
+                  {results.map(({id, url, meta}) => {
                     if (!meta.foundations) return null;
-                    const { title, description, category } = meta.foundations;
-                    const icon = foundationsIcons[title];
+                    const {title, description, category, icon} =
+                      meta.foundations;
                     return (
                       <SearchContext.Provider
                         key={title}
-                        value={{ currentItemId, id }}
+                        value={{currentItemId, id}}
                       >
                         <FoundationsGrid.Item
                           title={title}
@@ -260,17 +252,17 @@ function SearchResults({
               </ResultsGroup>
             );
 
-          case "components": {
+          case 'components': {
             return (
               <ResultsGroup category={category}>
                 <ComponentGrid>
-                  {results.map(({ id, url, meta }) => {
+                  {results.map(({id, url, meta}) => {
                     if (!meta.components) return null;
-                    const { title, description, status } = meta.components;
+                    const {title, description, status} = meta.components;
                     return (
                       <SearchContext.Provider
                         key={id}
-                        value={{ currentItemId, id }}
+                        value={{currentItemId, id}}
                       >
                         <ComponentGrid.Item
                           url={url}
@@ -286,7 +278,7 @@ function SearchResults({
             );
           }
 
-          case "tokens": {
+          case 'tokens': {
             return (
               <ResultsGroup category={category}>
                 <TokenList
@@ -299,13 +291,13 @@ function SearchResults({
                     description: true,
                   }}
                 >
-                  {results.map(({ id, meta }) => {
+                  {results.map(({id, meta}) => {
                     if (!meta.tokens) return null;
-                    const { token, category } = meta.tokens;
+                    const {token, category} = meta.tokens;
                     return (
                       <SearchContext.Provider
                         key={id}
-                        value={{ currentItemId, id }}
+                        value={{currentItemId, id}}
                       >
                         <TokenList.Item category={category} token={token} />
                       </SearchContext.Provider>
@@ -316,17 +308,17 @@ function SearchResults({
             );
           }
 
-          case "icons": {
+          case 'icons': {
             return (
               <ResultsGroup category={category}>
                 <IconGrid>
-                  {results.map(({ id, meta }) => {
+                  {results.map(({id, meta}) => {
                     if (!meta.icons) return null;
-                    const { icon } = meta.icons;
+                    const {icon} = meta.icons;
                     return (
                       <SearchContext.Provider
                         key={id}
-                        value={{ currentItemId, id }}
+                        value={{currentItemId, id}}
                       >
                         <IconGrid.Item icon={icon} />
                       </SearchContext.Provider>

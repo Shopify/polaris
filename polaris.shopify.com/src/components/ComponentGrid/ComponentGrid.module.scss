@@ -1,5 +1,5 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/mixins.scss";
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
 
 .ComponentGrid {
   display: grid;
@@ -31,7 +31,7 @@
   }
 
   @media (hover: hover) {
-    &[data-is-current-result="true"] a {
+    &[data-is-current-result='true'] a {
       background: var(--search-highlight-color);
     }
   }

@@ -1,6 +1,7 @@
 ---
 title: Shopify experience values
 description: At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.
+icon: HeartMajor
 keywords:
   - mission
   - approaches

@@ -395,20 +395,6 @@
   },
   {
     "frontMatter": {
-      "title": "CustomProperties",
-      "category": "Structure",
-      "keywords": [
-        "theme",
-        "custom properties",
-        "color scheme",
-        "light mode",
-        "dark mode"
-      ]
-    },
-    "description": "Use the custom properties component to share global theme settings throughout the hierarchy of your application. Custom properties is included by default as a child of the [app provider component](https://polaris.shopify.com/components/app-provider) but can be used independently to apply a base color scheme to its children."
-  },
-  {
-    "frontMatter": {
       "title": "Data table",
       "category": "Lists and tables",
       "keywords": ["DataTable", "data", "table", "tabular", "index"]
@@ -1359,6 +1345,35 @@
       ]
     },
     "description": "Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants."
+  },
+  {
+    "frontMatter": {
+      "title": "Text",
+      "category": "Titles and text",
+      "keywords": [
+        "titles",
+        "text",
+        "typographic",
+        "spacing",
+        "display",
+        "heading",
+        "body",
+        "success",
+        "critical",
+        "warning",
+        "subdued",
+        "regular",
+        "medium",
+        "semibold",
+        "bold",
+        "list"
+      ],
+      "status": {
+        "value": "Alpha",
+        "message": "This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution."
+      }
+    },
+    "description": "Typography helps establish hierarchy and communicate important content by creating clear visual patterns."
   },
   {
     "frontMatter": {

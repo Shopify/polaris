@@ -1,6 +1,6 @@
-name: active status
+name: Active status
 set: major
-description: Used to represent a resource that is in an Active state. 
+description: Used to represent a resource that is in an Active state.
 keywords:
   - active
   - tick

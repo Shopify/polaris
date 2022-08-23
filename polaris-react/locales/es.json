@@ -32,7 +32,6 @@
       "checkbox": "casilla de verificación",
       "undo": "Deshacer",
       "cancel": "Cancelar",
-      "newWindowAccessibilityHint": "(abre una nueva ventana)",
       "clear": "Borrar",
       "close": "Cerrar",
       "submit": "Enviar",
@@ -298,7 +297,8 @@
       "undo": "Deshacer",
       "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
-      "selectButtonText": "Seleccionar"
+      "selectButtonText": "Seleccionar",
+      "sortAccessibilityLabel": "ordenar {direction} por"
     },
     "Page": {
       "Header": {

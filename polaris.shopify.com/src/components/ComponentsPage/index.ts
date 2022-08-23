@@ -1,3 +1,3 @@
-import ComponentsPage from "./ComponentsPage";
+import ComponentsPage from './ComponentsPage';
 
 export default ComponentsPage;

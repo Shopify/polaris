@@ -2,7 +2,7 @@
 const assert = require('assert').strict;
 const fs = require('fs');
 
-const glob = require('glob');
+const globby = require('globby');
 
 const packageJSON = require('../package.json');
 
@@ -22,7 +22,7 @@ function validateStandardBuild() {
   // Assert it uses named exports rather than properties from the React default
   // export to help tree-shaking.
   // React.createElement and React.Fragment are the allowed exceptions
-  const files = glob.sync('./build/cjs/**/*.js');
+  const files = globby.sync('./build/cjs/**/*.js');
   assert.notStrictEqual(files.length, 0);
   const filesContainingUnwantedReactUsage = [];
   files.forEach((file) => {
@@ -54,9 +54,7 @@ function validateEsNextBuild() {
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
   assert.ok(
-    fs.existsSync(
-      './build/esnext/components/CustomProperties/CustomProperties.css',
-    ),
+    fs.existsSync('./build/esnext/components/AppProvider/AppProvider.css'),
   );
 
   // ESnext build css contains namespaced classes, and
@@ -65,7 +63,7 @@ function validateEsNextBuild() {
     'utf-8',
   );
   const cssKeyframesContent = fs.readFileSync(
-    './build/esnext/components/CustomProperties/CustomProperties.css',
+    './build/esnext/components/AppProvider/global.css',
     'utf-8',
   );
   assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
@@ -91,7 +89,7 @@ function validateAncillaryOutput() {
 }
 
 function validateVersionReplacement() {
-  const files = glob.sync('./build/**/*.{js,mjs,esnext,css}');
+  const files = globby.sync('./build/**/*.{js,mjs,esnext,css}');
 
   assert.notStrictEqual(files.length, 0);
 
@@ -118,7 +116,7 @@ function validateVersionReplacement() {
     './build/cjs/configure.js',
     './build/esm/configure.js',
     './build/esm/styles.css',
-    './build/esnext/components/AppProvider/AppProvider.css',
     './build/esnext/configure.esnext',
+    './build/esnext/components/AppProvider/AppProvider.css',
   ]);
 }

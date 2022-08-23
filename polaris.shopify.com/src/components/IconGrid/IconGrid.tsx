@@ -1,16 +1,16 @@
-import Image from "../Image";
-import { useGlobalSearchResult } from "../GlobalSearch/GlobalSearch";
-import { className } from "../../utils/various";
-import styles from "./IconGrid.module.scss";
-import { Icon } from "@shopify/polaris-icons/metadata";
-import Link from "next/link";
+import Image from '../Image';
+import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
+import {className} from '../../utils/various';
+import styles from './IconGrid.module.scss';
+import {Icon} from '@shopify/polaris-icons/metadata';
+import Link from 'next/link';
 
 interface IconGridProps {
   title?: string;
   children: React.ReactNode;
 }
 
-function IconGrid({ title, children }: IconGridProps) {
+function IconGrid({title, children}: IconGridProps) {
   return (
     <>
       {title ? <h2 className={styles.SectionHeading}>{title}</h2> : null}
@@ -27,18 +27,18 @@ interface IconGridItemProps {
   activeIcon?: string;
 }
 
-function IconGridItem({ icon, activeIcon, query }: IconGridItemProps) {
-  const { id, name, description } = icon;
+function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
+  const {id, name, description} = icon;
   const searchAttributes = useGlobalSearchResult();
 
   return (
     <li key={id}>
       <Link
         href={{
-          pathname: "/icons",
+          pathname: '/icons',
           query: {
             icon: id,
-            ...(query === "" ? {} : { q: query }),
+            ...(query === '' ? {} : {q: query}),
           },
         }}
         scroll={false}
@@ -46,7 +46,7 @@ function IconGridItem({ icon, activeIcon, query }: IconGridItemProps) {
         <a
           className={className(
             styles.Icon,
-            activeIcon === id && styles.isSelected
+            activeIcon === id && styles.isSelected,
           )}
           id={icon.id}
           {...searchAttributes}

@@ -1,6 +1,6 @@
 import React, {useCallback, useRef, useEffect} from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {tokens} from '@shopify/polaris-tokens';
+import {motion} from '@shopify/polaris-tokens';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {useMediaQuery} from '../../utilities/media-query';
@@ -94,7 +94,7 @@ export function Sheet({
           classNames={
             isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
           }
-          timeout={parseInt(tokens.motion['duration-300'].value, 10)}
+          timeout={parseInt(motion['duration-300'], 10)}
           in={open}
           mountOnEnter
           unmountOnExit

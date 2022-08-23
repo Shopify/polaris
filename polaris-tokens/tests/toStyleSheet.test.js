@@ -1,7 +1,4 @@
-import {osColorSchemes} from '../src/tokens';
 import {
-  getColorSchemeDeclarations,
-  getColorSchemeRules,
   getCustomProperties,
   getKeyframes,
   getStaticCustomProperties,
@@ -26,31 +23,20 @@ const mockMotionTokenGroup = {
   },
 };
 
-const mockColorSchemes = {
-  light: mockTokenGroup,
-  dark: mockTokenGroup,
-};
-
 const mockTokens = {
-  colorSchemes: mockColorSchemes,
-  depth: mockTokenGroup,
+  colors: {},
   // Note: We don't need to assign mock values to the remaining static tokens.
+  depth: mockTokenGroup,
+  font: {},
   motion: {},
   legacyTokens: {},
   shape: {},
   spacing: {},
-  typography: {},
   zIndex: {},
 };
 
 const expectedCustomProperties =
   '--p-design-token-1:valueA;--p-design-token-2:valueB;';
-
-const expectedColorSchemeDeclarations = (colorScheme) =>
-  `color-scheme:${osColorSchemes[colorScheme]};${expectedCustomProperties}`;
-
-const expectedColorSchemeRules = (colorScheme) =>
-  `${expectedColorSchemeDeclarations(colorScheme)}${expectedCustomProperties}`;
 
 const expectedKeyframes =
   '@keyframes p-keyframes-token-1valueA@keyframes p-keyframes-token-2valueB';
@@ -71,35 +57,6 @@ describe('getCustomProperties', () => {
     expect(customProperties).toBe(
       `${expectedCustomProperties}${expectedKeyframesCustomProperties}`,
     );
-  });
-});
-
-describe('getColorSchemeDeclarations', () => {
-  it('creates a string of CSS declarations for a given color-scheme', () => {
-    const declarations = getColorSchemeDeclarations(
-      'dark',
-      mockTokens,
-      osColorSchemes,
-    );
-
-    expect(declarations).toBe(expectedColorSchemeDeclarations('dark'));
-  });
-});
-
-describe('getColorSchemeRules', () => {
-  it('creates a string of CSS rules for each color-scheme', () => {
-    const rules = getColorSchemeRules(mockTokens, osColorSchemes);
-
-    const expectedRules = Object.keys(mockColorSchemes)
-      .map(
-        (colorScheme) =>
-          `[p-color-scheme="${colorScheme}"]{${expectedColorSchemeRules(
-            colorScheme,
-          )}}`,
-      )
-      .join('');
-
-    expect(rules).toBe(expectedRules);
   });
 });
 

@@ -37,7 +37,7 @@ $bulk-actions-button-stacking-order: (
 }
 
 .Group-smallScreen {
-  @include page-after-resource-list-small {
+  @media #{$p-breakpoints-sm-up} {
     display: none;
   }
 }
@@ -45,7 +45,7 @@ $bulk-actions-button-stacking-order: (
 .Group-largeScreen {
   display: none;
 
-  @include page-after-resource-list-small {
+  @media #{$p-breakpoints-sm-up} {
     display: flex;
 
     &.Group-exiting {
@@ -64,14 +64,14 @@ $bulk-actions-button-stacking-order: (
   max-width: 100%;
 
   // We need the first item of button group on small screen to fill the space
-  @include page-before-resource-list-small {
+  @media #{$p-breakpoints-sm-down} {
     // stylelint-disable-next-line, selector-max-combinators, selector-max-type
     > div > div:first-child {
       flex: 1 1 auto;
     }
   }
 
-  @include page-after-resource-list-small {
+  @media #{$p-breakpoints-sm-up} {
     width: auto;
     justify-content: flex-start;
     margin-right: var(--p-space-2);

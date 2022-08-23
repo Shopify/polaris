@@ -27,14 +27,17 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     selectedResources: initSelectedResources = [],
     allResourcesSelected: initAllResourcesSelected = false,
     resourceIDResolver = defaultResourceIDResolver,
+    resourceFilter = undefined,
   }: {
     selectedResources?: string[];
     allResourcesSelected?: boolean;
     resourceIDResolver?: ResourceIDResolver<T>;
+    resourceFilter?: (value: T) => boolean;
   } = {
     selectedResources: [],
     allResourcesSelected: false,
     resourceIDResolver: defaultResourceIDResolver,
+    resourceFilter: undefined,
   },
 ) {
   const [selectedResources, setSelectedResources] = useState(
@@ -66,22 +69,37 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
           break;
         case SelectionType.All:
         case SelectionType.Page:
-          setSelectedResources(
-            isSelecting ? resources.map(resourceIDResolver) : [],
-          );
+          if (resourceFilter) {
+            const filteredResources = resources.filter(resourceFilter);
+            setSelectedResources(
+              isSelecting && selectedResources.length < filteredResources.length
+                ? filteredResources.map(resourceIDResolver)
+                : [],
+            );
+          } else {
+            setSelectedResources(
+              isSelecting ? resources.map(resourceIDResolver) : [],
+            );
+          }
+
           break;
         case SelectionType.Multi:
           if (!selection) break;
           setSelectedResources((newSelectedResources) => {
             const ids: string[] = [];
+            const filteredResources = resourceFilter
+              ? resources.filter(resourceFilter)
+              : resources;
             for (let i = selection[0] as number; i <= selection[1]; i++) {
-              const id = resourceIDResolver(resources[i]);
+              if (filteredResources.includes(resources[i])) {
+                const id = resourceIDResolver(resources[i]);
 
-              if (
-                (isSelecting && !newSelectedResources.includes(id)) ||
-                (!isSelecting && newSelectedResources.includes(id))
-              ) {
-                ids.push(id);
+                if (
+                  (isSelecting && !newSelectedResources.includes(id)) ||
+                  (!isSelecting && newSelectedResources.includes(id))
+                ) {
+                  ids.push(id);
+                }
               }
             }
 
@@ -92,7 +110,13 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
           break;
       }
     },
-    [allResourcesSelected, resources, resourceIDResolver],
+    [
+      allResourcesSelected,
+      resourceFilter,
+      selectedResources.length,
+      resources,
+      resourceIDResolver,
+    ],
   );
 
   const clearSelection = useCallback(() => {

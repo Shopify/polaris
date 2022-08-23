@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import '../../styles/variables.scss';
 
 $mobileNavMaxWidth: 22.5rem;
 $navItemPadding: 0.75rem 1rem;
@@ -66,7 +66,7 @@ $navItemPadding: 0.75rem 1rem;
       }
 
       &:hover,
-      &[aria-current="page"] {
+      &[aria-current='page'] {
         background: rgba(0, 0, 0, 0.05);
         border-radius: 0;
         -webkit-touch-callout: none;

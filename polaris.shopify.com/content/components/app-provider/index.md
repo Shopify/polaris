@@ -25,9 +25,6 @@ examples:
   - fileName: app-provider-with-link-component.tsx
     title: With linkComponent
     description: With a `linkComponent`, the app provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughout your application instead of the default `a` tag.
-  - fileName: app-provider-with-color-scheme.tsx
-    title: With color scheme
-    description: With a `colorScheme`, the app provider component will set the root color scheme for the App (such as light or dark). For `colorScheme` configuration, see the [CustomProperties](https://polaris.shopify.com/components/custom-properties) component documentation.
 ---
 
 ## Best practices

@@ -26,8 +26,6 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
-  /** @deprecated Accepts a color scheme for the contents of the user menu */
-  colorScheme?: MenuProps['colorScheme'];
 }
 
 export function UserMenu({
@@ -39,7 +37,6 @@ export function UserMenu({
   message,
   onToggle,
   open,
-  colorScheme,
   accessibilityLabel,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
@@ -60,13 +57,6 @@ export function UserMenu({
     </>
   );
 
-  if (colorScheme && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `colorScheme` prop on the `UserMenu` component has been deprecated. See the v10 migration guide for replacing dark color scheme styles. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md',
-    );
-  }
-
   return (
     <Menu
       activatorContent={activatorContentMarkup}
@@ -75,7 +65,6 @@ export function UserMenu({
       onClose={onToggle}
       actions={actions}
       message={message}
-      colorScheme={colorScheme}
       accessibilityLabel={accessibilityLabel}
     />
   );

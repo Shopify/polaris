@@ -2,6 +2,7 @@
   {
     "frontMatter": {
       "title": "Accessible and inclusive language",
+      "icon": "AccessibilityMajor",
       "keywords": [
         "copy instructions",
         "copy rules",
@@ -37,6 +38,7 @@
   {
     "frontMatter": {
       "title": "Actionable language",
+      "icon": "CircleRightMajor",
       "keywords": [
         "button content",
         "button copy",
@@ -112,6 +114,7 @@
   {
     "frontMatter": {
       "title": "Alternative text",
+      "icon": "ImageAltMajor",
       "keywords": [
         "speech synthesis",
         "alt HTML element attribute",
@@ -152,6 +155,7 @@
   {
     "frontMatter": {
       "title": "Grammar and mechanics",
+      "icon": "GrammarMajor",
       "keywords": [
         "writing instructions",
         "writing rules",
@@ -176,6 +180,7 @@
   {
     "frontMatter": {
       "title": "Help documentation",
+      "icon": "QuestionMarkInverseMajor",
       "keywords": [
         "writing instructions",
         "writing guides",
@@ -211,6 +216,7 @@
   {
     "frontMatter": {
       "title": "Merchant-to-customer content",
+      "icon": "EmailNewsletterMajor",
       "keywords": [
         "merchant to buyer",
         "buyer",
@@ -228,6 +234,7 @@
   {
     "frontMatter": {
       "title": "Naming",
+      "icon": "ProductsMajor",
       "keywords": [
         "names",
         "caps",
@@ -253,6 +260,7 @@
   {
     "frontMatter": {
       "title": "Product content",
+      "icon": "ColumnWithTextMajor",
       "keywords": [
         "content standards",
         "content guidelines",
@@ -285,15 +293,8 @@
   },
   {
     "frontMatter": {
-      "title": "App release notes",
-      "keywords": ["release", "notes", "app", "updates", "fixes"]
-    },
-    "description": "Merchants need to quickly understand what’s changed in our apps and why, so they can get back to running their business.",
-    "category": "content"
-  },
-  {
-    "frontMatter": {
       "title": "Voice and tone",
+      "icon": "ChatMajor",
       "keywords": [
         "sound like Shopify",
         "personality of Shopify",
@@ -312,7 +313,12 @@
   {
     "frontMatter": {
       "title": "Colors",
-      "keywords": ["visual patterns", "color strategy", "color use"]
+      "icon": "ColorsMajor",
+      "keywords": [
+        "visual patterns",
+        "color strategy",
+        "color use"
+      ]
     },
     "description": "Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.",
     "category": "design"
@@ -320,7 +326,10 @@
   {
     "frontMatter": {
       "title": "Data visualizations",
-      "keywords": ["data viz"]
+      "icon": "AnalyticsMajor",
+      "keywords": [
+        "data viz"
+      ]
     },
     "description": "Visualizations surface patterns in data, and provide immediate answers to a\nsingle, specific question.",
     "category": "design"
@@ -328,7 +337,12 @@
   {
     "frontMatter": {
       "title": "Design",
-      "keywords": ["visual design", "design language", "design"]
+      "keywords": [
+        "visual design",
+        "design language",
+        "design"
+      ],
+      "icon": "PaintBrushMajor"
     },
     "description": "These are the principles that shape how we design all the experiences across the Shopify admin.",
     "category": "design"
@@ -336,6 +350,7 @@
   {
     "frontMatter": {
       "title": "Icons",
+      "icon": "IconsMajor",
       "keywords": [
         "shopify icons",
         "icon sets",
@@ -361,7 +376,11 @@
   {
     "frontMatter": {
       "title": "Illustrations",
-      "keywords": ["drawings", "pictures"]
+      "icon": "IllustrationMajor",
+      "keywords": [
+        "drawings",
+        "pictures"
+      ]
     },
     "description": "The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.",
     "category": "design"
@@ -369,6 +388,7 @@
   {
     "frontMatter": {
       "title": "Interaction states",
+      "icon": "BuyButtonMajor",
       "keywords": [
         "visual patterns",
         "color strategy",
@@ -388,14 +408,20 @@
   {
     "frontMatter": {
       "title": "Sounds",
-      "keywords": ["audio", "sonic", "noise"]
+      "icon": "SoundMajor",
+      "keywords": [
+        "audio",
+        "sonic",
+        "noise"
+      ]
     },
     "description": "We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.",
     "category": "design"
   },
   {
     "frontMatter": {
-      "title": "Spacing",
+      "title": "Space",
+      "icon": "Columns3Major",
       "keywords": [
         "spacing",
         "space",
@@ -412,14 +438,35 @@
   {
     "frontMatter": {
       "title": "Typography",
-      "keywords": ["type styles", "font sizes", "fonts"]
+      "icon": "TypeMajor",
+      "keywords": [
+        "type styles",
+        "font sizes",
+        "fonts"
+      ]
     },
     "description": "Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.",
     "category": "design"
   },
   {
     "frontMatter": {
+      "title": "About Polaris",
+      "icon": "HintMajor",
+      "keywords": [
+        "about",
+        "polaris",
+        "design system",
+        "system",
+        "getting started"
+      ]
+    },
+    "description": "Learn what the Polaris design system is and how it's used by designers and developers to build world-class Shopify admin experiences.",
+    "category": "foundations"
+  },
+  {
+    "frontMatter": {
       "title": "Accessibility",
+      "icon": "AccessibilityMajor",
       "keywords": [
         "a11y",
         "universal design",
@@ -443,6 +490,7 @@
   {
     "frontMatter": {
       "title": "Shopify experience values",
+      "icon": "HeartMajor",
       "keywords": [
         "mission",
         "approaches",
@@ -477,6 +525,7 @@
   {
     "frontMatter": {
       "title": "Formatting localized currency",
+      "icon": "CashYenMajor",
       "keywords": [
         "internationalization",
         "localization",
@@ -503,6 +552,7 @@
   {
     "frontMatter": {
       "title": "Information architecture",
+      "icon": "CategoriesMajor",
       "keywords": [
         "IA principles",
         "info architecture",
@@ -517,6 +567,7 @@
   {
     "frontMatter": {
       "title": "Internationalization",
+      "icon": "GlobeMajor",
       "keywords": [
         "internationalization",
         "localization",
@@ -539,8 +590,32 @@
   },
   {
     "frontMatter": {
+      "title": "Design Patterns",
+      "icon": "RefreshMajor",
+      "keywords": [
+        "patterns",
+        "design patterns",
+        "guidelines",
+        "principles",
+        "reusable",
+        "merchant solutions"
+      ]
+    },
+    "description": "Whenever possible we strive to establish and reuse the best solutions to merchant situations. Identifying and documenting design patterns is one way to make this possible.",
+    "category": "patterns"
+  },
+  {
+    "frontMatter": {
       "title": "Error messages",
-      "keywords": ["error states", "invalid", 500, 400, 404, "error pages"]
+      "icon": "DiamondAlertMajor",
+      "keywords": [
+        "error states",
+        "invalid",
+        500,
+        400,
+        404,
+        "error pages"
+      ]
     },
     "description": "Error messages can be scary. Make errors visible to merchants, easy to\nunderstand, and helpful.",
     "category": "patterns"
@@ -548,7 +623,13 @@
   {
     "frontMatter": {
       "title": "Help content",
-      "keywords": ["help text", "learn more", "help center", "help"]
+      "icon": "QuestionMarkInverseMajor",
+      "keywords": [
+        "help text",
+        "learn more",
+        "help center",
+        "help"
+      ]
     },
     "description": "​\nHelp content is educational text that describes interactive elements or offers information about concepts in the UI.",
     "category": "patterns"
@@ -556,7 +637,12 @@
   {
     "frontMatter": {
       "title": "Home cards",
-      "keywords": ["home cards", "insights", "milestones"]
+      "icon": "TextBlockMajor",
+      "keywords": [
+        "home cards",
+        "insights",
+        "milestones"
+      ]
     },
     "description": "Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.",
     "category": "patterns"
@@ -564,7 +650,15 @@
   {
     "frontMatter": {
       "title": "Page layouts",
-      "keywords": ["layout", "page", "columns", "hierarchy", "spacing", "stack"]
+      "icon": "ThemesMajor",
+      "keywords": [
+        "layout",
+        "page",
+        "columns",
+        "hierarchy",
+        "spacing",
+        "stack"
+      ]
     },
     "description": "Layout patterns provide common ways to arrange the content of a screen.",
     "category": "patterns"
@@ -572,6 +666,7 @@
   {
     "frontMatter": {
       "title": "Loading",
+      "icon": "ClockMajor",
       "slug": "loading",
       "keywords": [
         "page loading",
@@ -590,23 +685,39 @@
   },
   {
     "frontMatter": {
-      "title": "Locations",
+      "title": "Text fields",
+      "icon": "FormsMajor",
       "keywords": [
-        "breakpoint",
-        "locations",
-        "location picker",
-        "location list"
+        "text fields",
+        "search",
+        "placeholder text"
       ]
     },
-    "description": "The number of locations a merchant has can range dramatically, and the location experience should adapt to that number. Using progressive disclosure, we can introduce features as merchants need them.",
+    "description": "Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.",
     "category": "patterns"
   },
   {
     "frontMatter": {
-      "title": "Text fields",
-      "keywords": ["text fields", "search", "placeholder text"]
+      "title": "Pickers",
+      "icon": "LocationMajor",
+      "keywords": [
+        "customer segments",
+        "locations",
+        "location picker",
+        "multiselect",
+        "multi-select",
+        "multi select",
+        "picker",
+        "resource picker",
+        "searchable listbox",
+        "searchable list",
+        "segment picker",
+        "segments",
+        "segementation",
+        "single select"
+      ]
     },
-    "description": "Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.",
+    "description": "Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.",
     "category": "patterns"
   }
 ]

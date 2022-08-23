@@ -16,8 +16,8 @@ $relative-size: $primary-basis / $secondary-basis;
 
   @media print {
     body & {
-      font-size: var(--p-font-size-1);
-      line-height: var(--p-line-height-1);
+      font-size: var(--p-font-size-75);
+      line-height: var(--p-font-line-height-1);
     }
 
     a,
@@ -67,7 +67,7 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-left: var(--p-space-5);
 
   + .AnnotatedSection {
-    @include page-content-when-not-fully-condensed {
+    @media #{$p-breakpoints-sm-up} {
       padding-top: var(--p-space-4);
       border-top: var(--p-border-divider);
     }
@@ -89,11 +89,11 @@ $relative-size: $primary-basis / $secondary-basis;
   flex: 1 1 $secondary-basis;
   padding: var(--p-space-4) var(--p-space-5) 0;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-4) 0 0;
   }
 
-  @include page-content-when-layout-not-stacked {
+  @media #{$p-breakpoints-md-up} {
     padding: var(--p-space-5) var(--p-space-5) var(--p-space-5) 0;
   }
 }

@@ -1,27 +1,27 @@
-import { useState, useEffect } from "react";
-import Fuse from "fuse.js";
-import { useRouter } from "next/router";
-import { Dialog } from "@headlessui/react";
-import iconMetadata, { Icon } from "@shopify/polaris-icons/metadata";
-import { useMedia } from "../../utils/hooks";
-import styles from "./IconsPage.module.scss";
-import Container from "../Container";
-import IconGrid from "../IconGrid";
-import SearchField from "../SearchField";
-import Image from "../Image";
-import IconDetails from "../IconDetails";
-import PageMeta from "../PageMeta";
-import { className } from "../../utils/various";
+import {useState, useEffect} from 'react';
+import Fuse from 'fuse.js';
+import {useRouter} from 'next/router';
+import {Dialog} from '@headlessui/react';
+import iconMetadata, {Icon} from '@shopify/polaris-icons/metadata';
+import {useMedia} from '../../utils/hooks';
+import styles from './IconsPage.module.scss';
+import Container from '../Container';
+import IconGrid from '../IconGrid';
+import SearchField from '../SearchField';
+import Image from '../Image';
+import IconDetails from '../IconDetails';
+import PageMeta from '../PageMeta';
+import {className} from '../../utils/various';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
   keys: [
-    { name: "name", weight: 3 },
-    { name: "id", weight: 2 },
-    { name: "keywords", weight: 2 },
-    { name: "set", weight: 1 },
-    { name: "fileName", weight: 1 },
-    { name: "description", weight: 1 },
+    {name: 'name', weight: 3},
+    {name: 'id', weight: 2},
+    {name: 'keywords', weight: 2},
+    {name: 'set', weight: 1},
+    {name: 'fileName', weight: 1},
+    {name: 'description', weight: 1},
   ],
 });
 
@@ -55,7 +55,7 @@ function scrollToActiveIcon(activeIcon: string): void {
           elementOffsetY -
           window.innerHeight / 2 +
           activeElementRect.height / 2,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   }
@@ -63,14 +63,14 @@ function scrollToActiveIcon(activeIcon: string): void {
 
 function IconsPage() {
   const router = useRouter();
-  const useModal = useMedia("screen and (max-width: 850px)");
-  const [searchText, setSearchText] = useState("");
+  const useModal = useMedia('screen and (max-width: 850px)');
+  const [searchText, setSearchText] = useState('');
   const [minorIcons, setMinorIcons] = useState<Icon[]>([]);
   const [majorIcons, setMajorIcons] = useState<Icon[]>([]);
   const activeIcon = Array.isArray(router.query.icon)
     ? router.query.icon[0]
-    : router.query.icon ?? "";
-  const currentSearchText = router.query.q ? `${router.query.q}` : "";
+    : router.query.icon ?? '';
+  const currentSearchText = router.query.q ? `${router.query.q}` : '';
 
   useEffect(() => {
     if (router.isReady && activeIcon) {
@@ -79,31 +79,31 @@ function IconsPage() {
   }, [router.isReady, activeIcon]);
 
   useEffect(() => {
-    setMajorIcons(getIcons(currentSearchText, "major"));
-    setMinorIcons(getIcons(currentSearchText, "minor"));
+    setMajorIcons(getIcons(currentSearchText, 'major'));
+    setMinorIcons(getIcons(currentSearchText, 'minor'));
     setSearchText(currentSearchText);
   }, [currentSearchText]);
 
   const updateQueryParams = (currentSearchText: string) => {
-    const query: { q?: string; icon?: string } = {};
+    const query: {q?: string; icon?: string} = {};
     if (currentSearchText) query.q = currentSearchText;
     if (activeIcon) query.icon = activeIcon;
-    router.push({ query });
+    router.push({query});
   };
 
   const handleModalClose = () => {
-    const query: { q?: string } = {};
+    const query: {q?: string} = {};
     if (searchText) query.q = searchText;
-    router.push({ query });
+    router.push({query});
   };
 
   const pageTitle = iconMetadata[activeIcon]
     ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
-    : "Icons";
+    : 'Icons';
 
   const githubIssueTitle = `[Icon] New icon ${searchText}`;
   const githubIssueUrl = `https://github.com/Shopify/polaris/issues/new?labels=Icon&template=NEW_ICON.yml&title=${encodeURIComponent(
-    githubIssueTitle
+    githubIssueTitle,
   )}`;
 
   return (
@@ -167,7 +167,7 @@ function IconsPage() {
         </div>
 
         {useModal ? (
-          <Dialog open={activeIcon !== ""} onClose={handleModalClose}>
+          <Dialog open={activeIcon !== ''} onClose={handleModalClose}>
             <div className={styles.ModalBackdrop} aria-hidden="true" />
             <Dialog.Panel className={styles.Modal}>
               <IconDetails

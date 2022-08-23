@@ -19,7 +19,7 @@ $small-width: 620px;
   max-width: 100vw;
   border: none;
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media #{$p-breakpoints-md-up} {
     max-width: $small-width;
   }
 }

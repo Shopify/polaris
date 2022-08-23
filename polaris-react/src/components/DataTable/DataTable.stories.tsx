@@ -4,6 +4,13 @@ import {Card, DataTable, Link, Page} from '@shopify/polaris';
 
 export default {
   component: DataTable,
+  parameters: {
+    a11y: {
+      config: {
+        rules: [{id: 'scrollable-region-focusable', enabled: false}],
+      },
+    },
+  },
 } as ComponentMeta<typeof DataTable>;
 
 export function Default() {

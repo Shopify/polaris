@@ -116,9 +116,6 @@ export type {ConnectedProps} from './components/Connected';
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
 
-export {CustomProperties} from './components/CustomProperties';
-export type {CustomPropertiesProps} from './components/CustomProperties';
-
 export {DataTable} from './components/DataTable';
 export type {
   DataTableProps,
@@ -198,6 +195,9 @@ export type {IndexTableProps} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
+
+export {InlineCode} from './components/InlineCode';
+export type {InlineCodeProps} from './components/InlineCode';
 
 export {InlineError, errorTextID} from './components/InlineError';
 export type {InlineErrorProps} from './components/InlineError';
@@ -339,6 +339,9 @@ export type {TabsProps} from './components/Tabs';
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';
 
+export {Text} from './components/Text';
+export type {TextProps} from './components/Text';
+
 export {TextContainer} from './components/TextContainer';
 export type {TextContainerProps} from './components/TextContainer';
 
@@ -406,3 +409,7 @@ export {
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
+export {
+  SELECT_ALL_ITEMS as INDEX_TABLE_SELECT_ALL_ITEMS,
+  SelectionType as IndexTableSelectionType,
+} from './utilities/index-provider';

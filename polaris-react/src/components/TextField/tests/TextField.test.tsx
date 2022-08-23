@@ -290,6 +290,20 @@ describe('<TextField />', () => {
 
       expect(document.activeElement).not.toBe(element.find('input')!.domNode);
     });
+
+    it('multiline input is in focus state if focused is true', () => {
+      const element = mountWithApp(
+        <TextField
+          label="MultiLineTextField"
+          onChange={noop}
+          autoComplete="off"
+          focused
+          multiline={3}
+        />,
+      );
+
+      expect(document.activeElement).toBe(element.find('textarea')!.domNode);
+    });
   });
 
   describe('autoComplete', () => {
