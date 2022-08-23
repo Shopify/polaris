@@ -2,4 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-Added `fixedFirstColumns` prop to `DataTable` so that multiple columns can be fixed
+- Added a `fixedFirstColumns` prop to `DataTable` so that multiple columns can be fixed
+- Deprecated the `DataTable` `fixedFirstColumn` prop
