@@ -70,7 +70,7 @@ export function TwoColumnsWithEqualWidth() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 341,
+                    id: '341',
                     url: 'produdcts/341',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -83,7 +83,7 @@ export function TwoColumnsWithEqualWidth() {
                     ),
                   },
                   {
-                    id: 256,
+                    id: '256',
                     url: 'produdcts/256',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -128,7 +128,7 @@ export function TwoColumnsWithEqualWidth() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 342,
+                    id: '342',
                     url: 'produdcts/342',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -141,7 +141,7 @@ export function TwoColumnsWithEqualWidth() {
                     ),
                   },
                   {
-                    id: 257,
+                    id: '257',
                     url: 'produdcts/257',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -195,7 +195,7 @@ export function ThreeColumnsWithEqualWidth() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 343,
+                    id: '343',
                     url: 'produdcts/343',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -208,7 +208,7 @@ export function ThreeColumnsWithEqualWidth() {
                     ),
                   },
                   {
-                    id: 258,
+                    id: '258',
                     url: 'produdcts/258',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -253,7 +253,7 @@ export function ThreeColumnsWithEqualWidth() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 344,
+                    id: '344',
                     url: 'produdcts/344',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -266,7 +266,7 @@ export function ThreeColumnsWithEqualWidth() {
                     ),
                   },
                   {
-                    id: 259,
+                    id: '259',
                     url: 'produdcts/259',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -311,7 +311,7 @@ export function ThreeColumnsWithEqualWidth() {
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
-                    id: 345,
+                    id: '345',
                     url: 'produdcts/345',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
@@ -324,7 +324,7 @@ export function ThreeColumnsWithEqualWidth() {
                     ),
                   },
                   {
-                    id: 260,
+                    id: '260',
                     url: 'produdcts/260',
                     name: 'Tucan scarf',
                     sku: '9234194010',
@@ -389,45 +389,6 @@ export function Annotated() {
             </FormLayout>
           </Card>
         </Layout.AnnotatedSection>
-      </Layout>
-    </Page>
-  );
-}
-
-export function AnnotatedWithSections() {
-  return (
-    <Page fullWidth>
-      <Layout>
-        <Layout.Section oneThird>
-          <div style={{marginTop: 'var(--p-space-5)'}}>
-            <TextContainer>
-              <Heading id="storeDetails">Store details</Heading>
-              <p>
-                <TextStyle variation="subdued">
-                  Shopify and your customers will use this information to
-                  contact you.
-                </TextStyle>
-              </p>
-            </TextContainer>
-          </div>
-        </Layout.Section>
-        <Layout.Section>
-          <Card sectioned>
-            <FormLayout>
-              <TextField
-                label="Store name"
-                onChange={() => {}}
-                autoComplete="off"
-              />
-              <TextField
-                type="email"
-                label="Account email"
-                onChange={() => {}}
-                autoComplete="email"
-              />
-            </FormLayout>
-          </Card>
-        </Layout.Section>
       </Layout>
     </Page>
   );
