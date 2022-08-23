@@ -6,7 +6,6 @@ import {Button} from '../../Button';
 import {DisplayText} from '../../DisplayText';
 import {Image} from '../../Image';
 import {Stack} from '../../Stack';
-// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../TextContainer';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -96,7 +95,6 @@ describe('<EmptyState />', () => {
         <EmptyState image={imgSrc}>{children}</EmptyState>,
       );
 
-      // eslint-disable-next-line import/no-deprecated
       expect(emptyState.find(TextContainer)).toContainReactText(
         expectedContent,
       );
@@ -200,7 +198,6 @@ describe('<EmptyState />', () => {
       const emptyState = mountWithApp(
         <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
       );
-      // eslint-disable-next-line import/no-deprecated
       expect(emptyState).toContainReactComponent(TextContainer, {
         children: footerContentMarkup,
       });
@@ -209,7 +206,6 @@ describe('<EmptyState />', () => {
     it('does not create a footer when footerContent is not provided', () => {
       const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
 
-      // eslint-disable-next-line import/no-deprecated
       expect(emptyState).not.toContainReactComponent(TextContainer);
     });
   });

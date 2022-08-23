@@ -5,7 +5,6 @@ import {Button} from '../../Button';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {Focus} from '../../Focus';
-// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../TextContainer';
 import {TextField} from '../../TextField';
 import {Portal} from '../../Portal';
@@ -50,7 +49,6 @@ describe('<TrapFocus />', () => {
     );
 
     // Render children
-    // eslint-disable-next-line import/no-deprecated
     expect(trapFocus).toContainReactComponent(TextContainer);
 
     // Renders Focus

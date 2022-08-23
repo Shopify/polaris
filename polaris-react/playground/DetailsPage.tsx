@@ -37,7 +37,6 @@ import {
   SkeletonDisplayText,
   SkeletonPage,
   Stack,
-  // eslint-disable-next-line import/no-deprecated
   TextContainer,
   TextField,
   Thumbnail,

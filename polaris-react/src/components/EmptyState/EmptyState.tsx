@@ -6,7 +6,6 @@ import type {ComplexAction} from '../../types';
 import {Image} from '../Image';
 import {buttonFrom} from '../Button';
 import {Stack} from '../Stack';
-// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../TextContainer';
 // eslint-disable-next-line import/no-deprecated
 import {DisplayText} from '../DisplayText';

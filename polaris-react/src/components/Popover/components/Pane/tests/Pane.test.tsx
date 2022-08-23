@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Scrollable} from '../../../../Scrollable';
-// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../../TextContainer';
 import {Pane} from '../Pane';
 import {Section} from '../../Section';

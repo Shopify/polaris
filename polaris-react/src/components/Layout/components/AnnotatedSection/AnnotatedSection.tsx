@@ -2,7 +2,6 @@ import React from 'react';
 
 // eslint-disable-next-line import/no-deprecated
 import {Heading} from '../../../Heading';
-// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
 
