@@ -56,8 +56,10 @@ const Components = ({
       <Longform>
         <Markdown text={description} />
         {typedStatus && <StatusBanner status={typedStatus} />}
-        <ComponentExamples examples={examples} />
-        {propsForComponent && <PropsTable props={propsForComponent} />}
+        {Boolean(examples.length) && <ComponentExamples examples={examples} />}
+        {propsForComponent && typedStatus?.value !== 'deprecated' && (
+          <PropsTable props={propsForComponent} />
+        )}
         <Markdown text={readme.body} />
       </Longform>
     </Layout>
