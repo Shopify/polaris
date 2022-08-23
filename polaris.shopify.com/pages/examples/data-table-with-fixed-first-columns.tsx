@@ -1,5 +1,6 @@
 import {Link, Page, Card, DataTable} from '@shopify/polaris';
 import {useState} from 'react';
+import {useMedia} from '../../src/utils/hooks';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DataTableWithFixedFirstColumnsExample() {
@@ -276,6 +277,8 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
   ];
   const [sortedRows, setSortedRows] = useState(rows);
+  const showFixedColumns = useMedia('screen and (max-width: 850px)');
+  const fixedFirstColumns = showFixedColumns ? 2 : 0;
 
   return (
     <Page title="Sales by product">
@@ -326,7 +329,7 @@ function DataTableWithFixedFirstColumnsExample() {
           }}
           footerContent={`Showing ${sortedRows.length} of ${sortedRows.length} results`}
           stickyHeader
-          fixedFirstColumns={2}
+          fixedFirstColumns={fixedFirstColumns}
         />
       </Card>
     </Page>
