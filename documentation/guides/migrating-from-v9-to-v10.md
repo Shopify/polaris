@@ -39,7 +39,7 @@ Example of generated output for `breakpoints-md`:
 - `@media #{$p-breakpoints-md-down} {/*...*/}`
 - `@media #{$p-breakpoints-md-only} {/*...*/}`
 
-To use these Sass variables you will need to import the Polaris’ scss file into your project from the package in `node_modules`:
+To use these Sass variables you will need to import the `media-queries.scss` file from `@shopify/polaris-tokens` in your project:
 
 ```scss
 @import 'path/to/node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
