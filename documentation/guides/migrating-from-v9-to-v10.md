@@ -5,7 +5,7 @@ Polaris v10.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 ## Table of Contents
 
 - [Breakpoints](#breakpoints)
-  - [Updated breakpoint tokens](#updated-breakpoint-tokens)
+  - [New breakpoint tokens](#new-breakpoint-tokens)
   - [Media query variables](#media-query-variables)
   - [Sass static mixins](#sass-static-mixins)
   - [Sass dynamic mixins](#sass-dynamic-mixins)
@@ -21,7 +21,7 @@ Polaris v10.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Breakpoints
 
-### Updated breakpoint tokens
+### New breakpoint tokens
 
 As part of our project to reduce the total number of unique breakpoints in Polaris and Shopify’s admin we've created the follow set of mobile first breakpoint tokens:
 
@@ -119,9 +119,9 @@ Use the following [tool](https://stackblitz.com/edit/node-cbofkd?file=README.md)
   <br>
   <img width="449" alt="Screen Shot 2022-08-23 at 3 38 11 PM" src="https://user-images.githubusercontent.com/32409546/186279553-98a4f0c2-3616-48f7-8851-61f015d53bee.png">
 
-  Example output:
-  <br>
-  <img width="600" alt="Screen Shot 2022-08-23 at 3 40 57 PM" src="https://user-images.githubusercontent.com/32409546/186279649-b6ca5124-aaa3-43bd-b5e7-0b95eacb8ce9.png">
+Example output:
+<br>
+<img width="600" alt="Screen Shot 2022-08-23 at 3 40 57 PM" src="https://user-images.githubusercontent.com/32409546/186279649-b6ca5124-aaa3-43bd-b5e7-0b95eacb8ce9.png">
 
 > Note: In most cases you will select the largest `max-width` media query (as shown above).
 
@@ -136,9 +136,8 @@ Use the following [tool](https://stackblitz.com/edit/node-cbofkd?file=README.md)
   <br>
 <img width="449" alt="Screen Shot 2022-08-23 at 3 37 59 PM" src="https://user-images.githubusercontent.com/32409546/186280245-5bd873fe-9139-4d73-81c4-31619209ab7d.png">
 
-
-  Example output:
-  <br>
+Example output:
+<br>
 <img width="600" alt="Screen Shot 2022-08-23 at 3 57 33 PM" src="https://user-images.githubusercontent.com/32409546/186280524-6eefb235-7e64-452f-ace7-ea8ee86aa18a.png">
 
 > Note: In most cases you will select the smallest `min-width` media query (as shown above).
