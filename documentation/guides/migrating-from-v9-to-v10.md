@@ -114,12 +114,35 @@ Use the following [tool](https://stackblitz.com/edit/node-cbofkd?file=README.md)
 
 <details>
   <summary><code>@include page-content-breakpoint-before(400px)</code></summary>
+  
+  Example input:
+  <br>
+  <img width="449" alt="Screen Shot 2022-08-23 at 3 38 11 PM" src="https://user-images.githubusercontent.com/32409546/186279553-98a4f0c2-3616-48f7-8851-61f015d53bee.png">
+
+  Example output:
+  <br>
+  <img width="600" alt="Screen Shot 2022-08-23 at 3 40 57 PM" src="https://user-images.githubusercontent.com/32409546/186279649-b6ca5124-aaa3-43bd-b5e7-0b95eacb8ce9.png">
+
+> Note: In most cases you will select the largest `max-width` media query (as shown above).
+
 </details>
 
 **Example 2**
 
 <details>
   <summary><code>@include page-content-breakpoint-after(400px)</code></summary>
+  
+  Example input:
+  <br>
+<img width="449" alt="Screen Shot 2022-08-23 at 3 37 59 PM" src="https://user-images.githubusercontent.com/32409546/186280245-5bd873fe-9139-4d73-81c4-31619209ab7d.png">
+
+
+  Example output:
+  <br>
+<img width="600" alt="Screen Shot 2022-08-23 at 3 57 33 PM" src="https://user-images.githubusercontent.com/32409546/186280524-6eefb235-7e64-452f-ace7-ea8ee86aa18a.png">
+
+> Note: In most cases you will select the smallest `min-width` media query (as shown above).
+
 </details>
 
 ### Sass global variables
