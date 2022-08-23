@@ -95,16 +95,32 @@ The following Sass mixins have been removed. You will need to replace any instan
 
 ### Sass dynamic mixins
 
-For dynamic mixins, the media query variable will depend on the value being passed as an argument to the mixin. On the table below we use `490px` which is the same value as our `sm` breakpoint:
+For dynamic mixins, the replacement media query variable will depend on the value being passed as an argument to the mixin.
 
-| Before                                           | After                              |
-| ------------------------------------------------ | ---------------------------------- |
-| `@include breakpoint-after(490px)`               | `@media #{$p-breakpoints-sm-up}`   |
-| `@include breakpoint-before(490px)`              | `@media #{$p-breakpoints-sm-down}` |
-| `@include page-content-breakpoint-after(490px)`  | `@media #{$p-breakpoints-sm-up}`   |
-| `@include page-content-breakpoint-before(490px)` | `@media #{$p-breakpoints-sm-down}` |
+#### `breakpoint-before` and `breakpoint-after` mixins
 
-You can also use our [migration script](https://stackblitz.com/edit/node-cgrsxx?file=README.md) that will recommend the best matching breakpoint token for your case.
+Replace any instances with the closest Polaris media query variable (listed above) or hard code the one off media query value you need. For example:
+
+| Before                              | After                              |
+| ----------------------------------- | ---------------------------------- |
+| `@include breakpoint-after(490px)`  | `@media #{$p-breakpoints-sm-up}`   |
+| `@include breakpoint-before(490px)` | `@media #{$p-breakpoints-sm-down}` |
+
+#### `page-content-breakpoint-before` and `page-content-breakpoint-after` mixins
+
+Use the following [tool](https://stackblitz.com/edit/node-cbofkd?file=README.md) to determine the closest Polaris media query variable replacement.
+
+**Example 1**
+
+<details>
+  <summary><code>@include page-content-breakpoint-before(400px)</code></summary>
+</details>
+
+**Example 2**
+
+<details>
+  <summary><code>@include page-content-breakpoint-after(400px)</code></summary>
+</details>
 
 ### Sass global variables
 
