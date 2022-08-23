@@ -97,7 +97,7 @@ The following Sass mixins have been removed. You will need to replace any instan
 
 For dynamic mixins, the replacement media query variable will depend on the value being passed as an argument to the mixin.
 
-#### `breakpoint-before` and `breakpoint-after` mixins
+#### Mixin: `breakpoint-before()` and `breakpoint-after()`
 
 Replace any instances with the closest Polaris media query variable (listed above) or hard code one off values. For example:
 
@@ -106,7 +106,7 @@ Replace any instances with the closest Polaris media query variable (listed abov
 | `@include breakpoint-after(490px)`  | `@media #{$p-breakpoints-sm-up}`   |
 | `@include breakpoint-before(490px)` | `@media #{$p-breakpoints-sm-down}` |
 
-#### `page-content-breakpoint-before` and `page-content-breakpoint-after` mixins
+#### Mixin: `page-content-breakpoint-before()` and `page-content-breakpoint-after()`
 
 Use the following [tool](https://stackblitz.com/edit/node-cbofkd?file=README.md) to determine the closest Polaris media query variable replacement.
 
