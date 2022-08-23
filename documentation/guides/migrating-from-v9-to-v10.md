@@ -146,7 +146,7 @@ Example output:
 
 ### Sass global variables
 
-The following Sass global variables have been removed. The table below shows the evaluated value to help you determine the closest replacement media query during your migration.
+The following Sass global variables have been removed. The table below shows the evaluated values to help you determine the closest Polaris media query variable replacement.
 
 | Deprecated Variable                  | Value in EM (base 16px) | Value in PX |
 | ------------------------------------ | ----------------------- | ----------- |
