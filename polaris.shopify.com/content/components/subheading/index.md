@@ -19,7 +19,7 @@ status:
 
 ```diff
 - <Subheading>Accounts</Subheading>
-+ <Text variant="headingSm" as="h3">Accounts</Text>
++ <Text variant="headingXs" as="h3">Accounts</Text>
 ```
 
 ---

@@ -23,7 +23,7 @@ status:
 
 ```diff
 - <Heading>Online store dashboard</Heading>
-+ <Text variant="headingLg" as="h2">Online store dashboard</Text>
++ <Text variant="headingMd" as="h2">Online store dashboard</Text>
 ```
 
 ---

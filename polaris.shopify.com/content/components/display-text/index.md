@@ -34,21 +34,21 @@ status:
 
 ```diff
 - <DisplayText size="small">Sales this year</DisplayText>
-+ <Text variant="headingXl" as="p">Sales this year</Text>
++ <Text variant="headingLg" as="p">Sales this year</Text>
 ```
 
 ### Medium
 
 ```diff
 - <DisplayText size="medium">Sales this year</DisplayText>
-+ <Text variant="heading2xl" as="p">Sales this year</Text>
++ <Text variant="headingXl" as="p">Sales this year</Text>
 ```
 
 ### Large
 
 ```diff
 - <DisplayText size="large">Sales this year</DisplayText>
-+ <Text variant="heading3xl" as="p">Sales this year</Text>
++ <Text variant="heading2xl" as="p">Sales this year</Text>
 ```
 
 ### Extra large
