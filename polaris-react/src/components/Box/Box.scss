@@ -94,7 +94,7 @@
   background-color: var(--p-overlay);
 }
 
-.radius-05 {
+<<<<<<< HEAD .radius-05 {
   border-radius: var(--p-border-radius-05);
 }
 
@@ -132,4 +132,20 @@
 
 .radius-half {
   border-radius: var(--p-border-radius-half);
+}
+
+.shadowBase {
+  box-shadow: var(--p-shadow-base);
+}
+
+.transparent {
+  box-shadow: var(--p-shadow-transparent);
+}
+
+.faint {
+  box-shadow: var(--p-shadow-faint);
+}
+
+.deep {
+  box-shadow: var(--p-shadow-deep);
 }

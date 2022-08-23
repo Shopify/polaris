@@ -49,6 +49,8 @@ interface BoxBaseProps {
   background?: Background;
   /** Border radius of the Box */
   borderRadius?: BorderRadius;
+  /** Shadow on the Box */
+  shadow?: Shadow;
   /** Inner content of the Box */
   children: ReactNode;
 }
@@ -58,11 +60,15 @@ type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxBaseProps>;
 export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
 
 export const Box = forwardRef(
-  ({as: Component = 'div', background, borderRadius, children}, ref) => {
+  (
+    {as: Component = 'div', background, borderRadius, shadow, children},
+    ref,
+  ) => {
     const className = classNames(
       styles.root,
       background && styles[background],
       borderRadius && styles[borderRadius],
+      shadow && styles[shadow],
     );
 
     return (
