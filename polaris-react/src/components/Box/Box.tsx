@@ -5,7 +5,7 @@ import {classNames} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type BackgroundColor =
+type Background =
   | 'background'
   | 'backgroundHovered'
   | 'backgroundPressed'
@@ -30,9 +30,25 @@ type BackgroundColor =
   | 'backdrop'
   | 'overlay';
 
+type BorderRadius =
+  | 'radius-05'
+  | 'radius-1'
+  | 'radius-2'
+  | 'radius-3'
+  | 'radius-4'
+  | 'radius-5'
+  | 'radius-6'
+  | 'radius-base'
+  | 'radius-large'
+  | 'radius-half';
+
+type Shadow = 'default' | 'transparent' | 'faint' | 'deep';
+
 interface BoxBaseProps {
   /** Background color of the Box */
-  background?: BackgroundColor;
+  background?: Background;
+  /** Border radius of the Box */
+  borderRadius?: BorderRadius;
   /** Inner content of the Box */
   children: ReactNode;
 }
@@ -42,8 +58,12 @@ type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxBaseProps>;
 export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
 
 export const Box = forwardRef(
-  ({as: Component = 'div', background, children}, ref) => {
-    const className = classNames(styles.root, background && styles[background]);
+  ({as: Component = 'div', background, borderRadius, children}, ref) => {
+    const className = classNames(
+      styles.root,
+      background && styles[background],
+      borderRadius && styles[borderRadius],
+    );
 
     return (
       <Component ref={ref} className={className}>
