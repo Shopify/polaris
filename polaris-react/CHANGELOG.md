@@ -1,5 +1,47 @@
 # Changelog
 
+## 10.0.0
+
+### Major Changes
+
+- [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Removed the `CustomProperties` component. Polaris CSS custom properties are now injected by the `AppProvider`.
+
+* [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Removed the `colorScheme` prop from the following components: `AppProvider`, `PolarisTestProvider`, `Menu`, `Popover`, `UserMenu`.
+
+- [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Removed all legacy breakpoint Sass functions, mixins, and variables. Updated all component styles to use the new Polaris breakpoint aliases.
+
+### Minor Changes
+
+- [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Added new `Text` and `InlineCode` components, updated `typography` token references in styleguide, updated `/tokens/typography` page in styleguide to `/tokens/font`, add docs and examples for `Text` component
+
+### Patch Changes
+
+- [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Updated components to use the new usage of `@shopify/polaris-tokens` and leverage tree-shaking imports
+
+- Updated dependencies [[`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7), [`7d7ae1e87`](https://github.com/Shopify/polaris/commit/7d7ae1e8797ce18820b96b16e360334e38671a5a), [`84ceaa3fc`](https://github.com/Shopify/polaris/commit/84ceaa3fc332d686c7efda312357854555d5e0e6)]:
+  - @shopify/polaris-tokens@6.0.0
+
+## 9.24.0
+
+### Minor Changes
+
+- [#6949](https://github.com/Shopify/polaris/pull/6949) [`93db1ed8c`](https://github.com/Shopify/polaris/commit/93db1ed8c9771d2827d4bd5f7da3861409228ad8) Thanks [@mrcthms](https://github.com/mrcthms)! - Update IndexTable heading appearance and surface sorting ability in headings
+
+* [#6966](https://github.com/Shopify/polaris/pull/6966) [`a5345cc6d`](https://github.com/Shopify/polaris/commit/a5345cc6d43a9831b43bb99a4e85dc14cc6212b1) Thanks [@LA1CH3](https://github.com/LA1CH3)! - Added `id` prop for Choice in ChoiceList
+
+### Patch Changes
+
+- [#6953](https://github.com/Shopify/polaris/pull/6953) [`0c9175177`](https://github.com/Shopify/polaris/commit/0c9175177021d93adfe19b57d44bbd33f656175f) Thanks [@chloerice](https://github.com/chloerice)! - Updated `Badge` examples to reflect admin use cases
+
+* [#6965](https://github.com/Shopify/polaris/pull/6965) [`7d759fbd1`](https://github.com/Shopify/polaris/commit/7d759fbd173d24a68695562194c6b7f0ed1aeafd) Thanks [@kyledurand](https://github.com/kyledurand)! - Don't render if children is null / undefined
+
+- [#6961](https://github.com/Shopify/polaris/pull/6961) [`d2ecb7943`](https://github.com/Shopify/polaris/commit/d2ecb7943f156b938b6bc63e2e2cf51e27d9ff0a) Thanks [@berkaygure](https://github.com/berkaygure)! - Fixed `TextField` `focused` prop not working when `multiline` is `true`
+
+* [#6954](https://github.com/Shopify/polaris/pull/6954) [`0ed63ba61`](https://github.com/Shopify/polaris/commit/0ed63ba611ebcf96e940fddcec80f1cf83b534a8) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Listbox.Option` click event bubbling causing close of `Popover` in `Combobox`
+
+* Updated dependencies [[`e5eb70032`](https://github.com/Shopify/polaris/commit/e5eb700321c7ddf4fd3bd8679dfcebbc1514e3d4)]:
+  - @shopify/polaris-tokens@5.5.2
+
 ## 9.23.1
 
 ### Patch Changes

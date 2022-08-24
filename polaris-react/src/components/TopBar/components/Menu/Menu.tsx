@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {ActionList, ActionListProps} from '../../../ActionList';
-import {Popover, PopoverProps} from '../../../Popover';
+import {Popover} from '../../../Popover';
 
 import {Message, MessageProps} from './components';
 import styles from './Menu.scss';
@@ -21,8 +21,6 @@ export interface MenuProps {
   onClose(): void;
   /** A callback function to handle closing the menu popover */
   onClose(): void;
-  /** @deprecated Accepts a color scheme for the contents of the menu */
-  colorScheme?: PopoverProps['colorScheme'];
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
 }
@@ -35,7 +33,6 @@ export function Menu(props: MenuProps) {
     open,
     activatorContent,
     message,
-    colorScheme,
     accessibilityLabel,
   } = props;
 
@@ -44,6 +41,7 @@ export function Menu(props: MenuProps) {
       content: message.badge.content,
       status: message.badge.status,
     };
+
   const messageMarkup = message && (
     <Message
       title={message.title}
@@ -58,13 +56,6 @@ export function Menu(props: MenuProps) {
   );
 
   const isFullHeight = Boolean(message);
-
-  if (colorScheme && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `colorScheme` prop on the `Menu` component has been deprecated. See the v10 migration guide for replacing dark color scheme styles. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md',
-    );
-  }
 
   return (
     <Popover
@@ -85,7 +76,6 @@ export function Menu(props: MenuProps) {
       fixed
       fullHeight={isFullHeight}
       preferredAlignment="right"
-      colorScheme={colorScheme}
     >
       <ActionList onActionAnyItem={onClose} sections={actions} />
       {messageMarkup}

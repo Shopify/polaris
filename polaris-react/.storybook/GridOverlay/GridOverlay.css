@@ -19,8 +19,8 @@
   opacity: 0.25;
   pointer-events: none;
 }
-
-@media screen and (min-width: 768px) {
+/* #{$p-breakpoints-sm-up} */
+@media (min-width: 768px) {
   .GridOverlay {
     grid-template-columns: repeat(12, 1fr);
     padding: 0 var(--p-space-8);
@@ -36,7 +36,8 @@
   top: var(--pc-top-bar-height);
 }
 
-@media screen and (min-width: 768px) {
+/* #{$p-breakpoints-sm-up} */
+@media (min-width: 768px) {
   .inFrame {
     left: var(--pc-nav-width);
   }

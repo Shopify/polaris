@@ -25,7 +25,7 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     max-width: $layout-width-nav-base;
     @include safe-area-for(max-width, $layout-width-nav-base, left);
   }
@@ -38,7 +38,7 @@ $nav-max-width: 360px;
 .ContextControl {
   min-height: $top-bar-height;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     display: none;
   }
 }
@@ -55,18 +55,14 @@ $nav-max-width: 360px;
     outline: none;
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     padding-top: var(--p-space-4);
   }
 }
 
 .LogoContainer {
   display: none;
-
-  @include breakpoint-before(
-    $breakpoint: $nav-min-window-corrected,
-    $inclusive: false
-  ) {
+  @media #{$p-breakpoints-md-down} {
     display: flex;
     flex: 0 0 $top-bar-height;
     align-items: center;
@@ -135,7 +131,7 @@ $disabled-fade: 0.6;
     background-color: var(--p-background-pressed);
   }
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     font-weight: var(--p-font-weight-medium);
   }
 }
@@ -158,7 +154,7 @@ $disabled-fade: 0.6;
   display: inline-flex;
   margin-top: var(--p-space-2);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     margin-top: var(--p-space-1);
   }
 }
@@ -173,7 +169,7 @@ $disabled-fade: 0.6;
   height: nav(mobile-height);
   padding: var(--p-space-1) var(--p-space-2) var(--p-space-1) var(--p-space-4);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     height: nav(desktop-height);
   }
 }
@@ -214,7 +210,7 @@ $disabled-fade: 0.6;
   padding: var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-1);
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     height: nav(desktop-height);
   }
 
@@ -271,7 +267,7 @@ $disabled-fade: 0.6;
   }
 
   .Item {
-    font-size: var(--p-font-size-4);
+    font-size: 15px;
     font-weight: var(--p-font-weight-medium);
     line-height: nav(item-line-height);
     color: var(--p-text-subdued);
@@ -297,8 +293,8 @@ $disabled-fade: 0.6;
       color: var(--p-text-primary);
     }
 
-    @include breakpoint-after($nav-min-window-corrected) {
-      font-size: var(--p-font-size-3);
+    @media #{$p-breakpoints-md-up} {
+      font-size: var(--p-font-size-100);
       line-height: 1;
       padding-left: var(--p-space-10);
     }
@@ -370,11 +366,11 @@ $disabled-fade: 0.6;
   padding-left: calc(var(--p-space-5) + var(--p-space-05));
 
   .Text {
-    font-size: var(--p-font-size-2);
+    font-size: 13px;
     color: var(--p-text-subdued);
 
-    @include when-typography-not-condensed {
-      font-size: var(--p-font-size-1);
+    @media #{$p-breakpoints-md-up} {
+      font-size: var(--p-font-size-75);
     }
   }
 
@@ -388,7 +384,7 @@ $disabled-fade: 0.6;
     padding: var(--p-space-1) var(--p-space-4);
     border-radius: var(--p-border-radius-1);
 
-    @include breakpoint-after($nav-min-window-corrected) {
+    @media #{$p-breakpoints-md-up} {
       height: nav(desktop-nav-height);
 
       // stylelint-disable selector-max-combinators

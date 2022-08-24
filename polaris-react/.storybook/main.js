@@ -34,7 +34,7 @@ module.exports = {
               modules: {
                 localIdentName: '[name]-[local]_[hash:base64:5]',
                 auto: (resourcePath) => {
-                  return !resourcePath.includes('CustomProperties');
+                  return !resourcePath.includes('global');
                 },
               },
             },

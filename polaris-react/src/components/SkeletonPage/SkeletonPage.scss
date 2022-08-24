@@ -35,7 +35,7 @@ $skeleton-display-text-max-width: 120px;
 .TitleAndPrimaryAction {
   display: flex;
 
-  @include page-content-when-partially-condensed {
+  @media #{$p-breakpoints-lg-down} {
     display: block;
   }
 }
@@ -49,7 +49,7 @@ $skeleton-display-text-max-width: 120px;
   font-size: 24px;
   line-height: 28px;
 
-  @include when-typography-not-condensed {
+  @media #{$p-breakpoints-md-up} {
     font-size: 20px;
   }
 }
@@ -74,21 +74,17 @@ $skeleton-display-text-max-width: 120px;
     min-width: $primary-action-button-width;
   }
 
-  @include page-content-when-layout-stacked {
+  @media #{$p-breakpoints-lg-down} {
     margin-top: var(--p-space-4);
     margin-bottom: calc(-1 * var(--p-space-2));
   }
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     margin-top: var(--p-space-2);
     margin-bottom: calc(-1 * var(--p-space-2));
   }
 
-  @include page-content-when-not-partially-condensed {
-    margin-top: 0;
-  }
-
-  @include page-content-when-layout-not-stacked {
+  @media #{$p-breakpoints-md-up} {
     margin-top: 0;
   }
 }
@@ -115,7 +111,7 @@ $skeleton-display-text-max-width: 120px;
     padding-right: 0;
   }
 
-  @include page-content-when-partially-condensed {
+  @media #{$p-breakpoints-lg-down} {
     &:not(:last-child) {
       display: none;
     }

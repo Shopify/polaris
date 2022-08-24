@@ -50,9 +50,7 @@
 
 .Banner {
   --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
-  --pc-banner-secondary-action-vertical-padding: calc(
-    0.5 * (var(--p-line-height-6) - var(--p-line-height-2))
-  );
+  --pc-banner-secondary-action-vertical-padding: var(--p-space-2);
   position: relative;
   display: flex;
 

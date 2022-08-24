@@ -6,8 +6,8 @@ $height-limit: 600px;
 $xsmall-width: 380px;
 $small-width: 620px;
 $large-width: 980px;
-// @TODO simplify media queries so this isn't needed
-$dangerous-magic-space-16: 64px;
+
+$breakpoints-height-limit-up: '(min-height: #{breakpoint($height-limit + $vertical-spacing)})';
 
 .Container {
   position: fixed;
@@ -23,7 +23,7 @@ $dangerous-magic-space-16: 64px;
   // Resume pointer-events on .Modal below
   pointer-events: none;
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media #{$p-breakpoints-md-up} {
     justify-content: center;
   }
 }
@@ -49,12 +49,12 @@ $dangerous-magic-space-16: 64px;
     border: var(--p-border-width-1) solid transparent;
   }
 
-  @include frame-when-nav-hidden {
+  @media #{$p-breakpoints-md-down} {
     bottom: 0;
     max-height: 100%;
   }
 
-  @include breakpoint-after($layout-width-page-with-nav-base) {
+  @media #{$p-breakpoints-md-up} {
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
@@ -62,36 +62,37 @@ $dangerous-magic-space-16: 64px;
   }
 
   &.limitHeight {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
-      @media (min-height: $height-limit + $vertical-spacing) {
+    @media #{$p-breakpoints-md-up} {
+      /* stylelint-disable-next-line stylelint-polaris/media-queries-allowed-list */
+      @media #{$breakpoints-height-limit-up} {
         max-height: $height-limit;
       }
     }
   }
 
   &.sizeSmall {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$p-breakpoints-md-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @include breakpoint-after($xsmall-width + $dangerous-magic-space-16) {
+    @media #{$p-breakpoints-sm-up} {
       max-width: $xsmall-width;
     }
   }
 
   &.sizeLarge {
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$p-breakpoints-md-up} {
       max-width: calc(100% - var(--p-space-16));
     }
 
-    @include breakpoint-after($large-width + $dangerous-magic-space-16) {
+    @media #{$p-breakpoints-lg-up} {
       max-width: $large-width;
     }
   }
 
   &.fullScreen {
     height: 100%;
-    @include breakpoint-after($layout-width-page-with-nav-base) {
+    @media #{$p-breakpoints-md-up} {
       height: unset;
     }
   }

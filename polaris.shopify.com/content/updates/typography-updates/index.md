@@ -13,19 +13,25 @@ keywords:
 
 ---
 
-This is an Alpha release of the new type system. That means we’re making the new Text component and Figma text styles available to use but there could still be significant changes made. Our goal is to share the work so that you can: **understand what’s changing**, **start using the typography updates**, and **provide feedback to help us improve.**
+This is an Alpha release of the new type system. That means we’re making the new Text component and Figma text styles available but there could still be significant developments made. Our goal is to share the work so that you can: **understand what’s changing**, **start using the typography updates**, and **provide feedback to help us improve.**
 
-Ready to learn what’s changing? Let’s dive in!
+**_🚧 Please note: Since significant changes could still be made, please work with your team and the Polaris team to determine what's best for your situation._**
+
+Want more details? Let’s dive in!
 
 ## Why are we making changes?
 
-As the Shopify admin gets more and more merchants using it to run their businesses, we need to evolve to feel less like a website and more like a power tool. In order to do this, we need to establish a strong foundation at the center of our design system and typography plays an important role.
+As more merchants use the Shopify admin to run their businesses, we need to evolve it to feel less like a website and more like a power tool. To do this, we need to establish a strong foundation at the center of our design system and typography plays an important role.
 
-Earlier this year, we invested a lot of time in [building up our design tokens](https://ux.shopify.com/putting-the-system-back-in-our-design-system-b2c55a392dea) as a first step in strengthening the foundation and increasing Polaris token coverage. After that release, we saw that there was still only ~8% coverage of typography in custom components in `shopify/web`.
+Earlier this year, we invested a lot of time in [building up our design tokens](https://ux.shopify.com/putting-the-system-back-in-our-design-system-b2c55a392dea) as a first step in strengthening the foundation and increasing Polaris token coverage. After that release, we saw that there was still only ~8% coverage of typography in custom components in `shopify/web`. We discovered that teams were creating new components or hard coding css values for type to work around the system.
 
-A lack of flexibility in our 7+ typography components, little guidance on how to design with typography, and a lack of range in font weights and sizes is leading teams to diverge from Polaris and create new components or hard coded css values for type.
+Here are key reasons for this divergence:
 
-Simplifying our components and improving our foundation will help our product teams make significant and sweeping changes quickly across Shopify’s admin.
+- A lack of flexibility in our 6 typography components (DisplayText, Heading, Subheading, Caption, TextStyle, and VisuallyHidden)
+- Little guidance on how to design with typography
+- A lack of range in font weights and sizes
+
+Simplifying our type components and improving our foundation will add the flexibility that will help product teams quickly make significant changes across Shopify’s admin.
 
 ## What's changing
 
@@ -41,7 +47,7 @@ The updates will simplify type into two categories: **Heading** and **Body**. Ea
 
 We’ve updated the type scale and we’re moving from two scales to one for both desktop and mobile web. Some values have been removed and others added to cover a wide range of uses in the UI.
 
-All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px. For example, if I take my base value of 14px and multiply it by 1.2 I get a value of 16px as the next increment in the scale.
+All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px. For example, if I take my base value of 14px and multiply it by 1.2, I get a value of 16px as the next increment in the scale.
 
 | New scale | Old scale |      |
 | --------- | --------- | ---- |
@@ -56,21 +62,19 @@ All font sizes have a ratio of 1.2, known as the major third type scale. This me
 
 ### Why were values changed or removed?
 
-The lower end of the scale has largely stayed the same with the majority of the changes made to the middle and upper values.
+The smaller sizes in the scale have largely stayed the same with the majority of the changes made to the larger values.
 
 **Changing values**
 The first change we made was updating the values of both size and line-height to be multiples of 4 with the exception of the 14px base size. This helps us be critical about the size values we use for other elements in the UI. This is important because it affects the rhythm of the page.
 
 **Adding values**
-We added `32px` to have an extra step at the larger end of the scale. We made this decision after looking at what font sizes are being used across the different pages in the Shopify admin. Pages that are geared towards learning or celebrating key moments, often use the larger sizes in the scale. We also found that additional sizes were being added or adjusted with custom styles.
+We added `32px` to have an extra step at the larger end of the scale. We made this decision after looking at what font sizes are being used across the different pages in the Shopify admin. Pages that are geared towards learning or celebrating key moments often use the larger sizes. We also found that additional sizes were being added or adjusted to fill in the gaps.
 
 We considered those common values that we were noticing being added and adjusted the scale to work for those different pages.
 
 ### Why one type scale?
 
-We’re moving from two type scales to one for both desktop and mobile web.
-
-We looked at how type changes between the different screen sizes and found that it’s often a difference of `1px`. While `1px` can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles, just wasn’t worth it. They often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
+We looked at how type changes between the different screen sizes and found that it’s often a difference of 1px. While 1px can make a visual difference, after talking to designers and developers, we came to the conclusion that the added complexity of having two distinct scales and two sets of text styles just wasn’t worth it. They often didn’t even realize a change in size happened or expected the size to actually decrease instead of increase as it does now.
 
 However, for the larger sizes in the scale, we believe, in most cases, it makes sense for those sizes to adjust automatically so the sizes look appropriate for the screen size they’re being displayed on. This behavior hasn’t been added yet but, in the next release, we’ll update the larger styles to respond automatically at certain breakpoints with all other sizes staying the same unless specified otherwise.
 
@@ -78,19 +82,19 @@ However, for the larger sizes in the scale, we believe, in most cases, it makes 
 
 ## Typography components
 
-We’re moving from seven type components to a singular Text component.
+We’re moving from 6 components (DisplayText, Heading, Subheading, Caption, VisuallyHidden, TextStyle) to a singular Text component.
 
 ## Why one component?
 
 To start, the team prototyped both a singular and multiple component approach. We then tested these prototypes with developers and the response was overwhelmingly in favor of the singular Text component.
 
-Overall, developers perceived the singular component as easier to use and understand. They could type in a property and see all the possible options right from their code editor. They didn’t have to import 7+ components and figure out the right one to use.
+Overall, developers perceived the singular component as easier to use and understand. They could type in a property and see all the possible options right from their code editor. They didn’t have to import 6+ components and figure out the right one to use.
 
 Other benefits of the singular component:
 
 - One component to learn and read documentation on
 - Autocompleting props helps developers to learn the different typography options quickly
-- Less complexity in code
+- Less complexity in code which results in improved performance
 - Decouples layout from type
 - Easier to make sweeping changes to type
 - Provides us with a more flexible way to control type within components
@@ -137,7 +141,7 @@ We updated the size tokens to use increments of 100 for the variants. This allow
 
 ## Using the typography updates
 
-The new Text component and Figma text styles are available in alpha. You can start using the new component and styles now but be aware they’re still in development and there could be breaking changes. The existing type components will continue to be available for use until the new Text component is finalized.
+The new `Text` component and Figma text styles are available in alpha. You can start using the new component and styles now but be aware they’re still in development and there could be breaking changes. The existing type components will continue to be available for use until the new `Text` component is finalized.
 
 As you start to use the new component, please share feedback with the Polaris team to help us continuously improve the type system.
 
@@ -145,7 +149,7 @@ As you start to use the new component, please share feedback with the Polaris te
 
 Next, we’ll be releasing the beta version of the component. The beta release will include:
 
-- Updating Polaris components to use the new Text component
+- Updating Polaris components to use the new `Text` component
 - Adding a deprecation warning to the old type components
 - Adding responsive styles
 - Updating components in the Figma UI Kit to use the new text styles
@@ -155,6 +159,6 @@ Don’t worry, we’ll also provide a timeline and guidance for migration.
 
 ## Resources
 
-- [Text component](http://localhost:3000/components/text)
+- [Text component](http://polaris.shopify.com/components/text)
 - [Figma text styles](https://www.figma.com/file/tbm3yEIZsOuHS7xJu9zy6Q/text-styles?node-id=5457%3A5710)
 - [Figma guides](https://www.figma.com/file/tbm3yEIZsOuHS7xJu9zy6Q/text-styles?node-id=5523%3A51)

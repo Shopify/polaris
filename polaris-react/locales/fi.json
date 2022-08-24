@@ -296,7 +296,8 @@
       "undo": "Peru",
       "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
       "selectItem": "Valitse {resourceName}",
-      "selectButtonText": "Valitse"
+      "selectButtonText": "Valitse",
+      "sortAccessibilityLabel": "lajittele {direction}:"
     },
     "Page": {
       "Header": {

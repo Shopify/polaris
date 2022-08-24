@@ -4,15 +4,17 @@ import {
   BreakpointsAliasDirection,
   BreakpointsTokenGroup,
   getMediaConditions,
-  tokens,
+  breakpoints,
 } from '@shopify/polaris-tokens';
 
 import {isServer} from './target';
 import {useIsomorphicLayoutEffect} from './use-isomorphic-layout-effect';
 
 const Breakpoints = {
-  navigationBarCollapsed: '768px',
-  stackedContent: '1043px',
+  // TODO: Update to smDown
+  navigationBarCollapsed: '767.95px',
+  // TODO: Update to lgDown
+  stackedContent: '1039.95px',
 };
 
 const noWindowMatches: MediaQueryList = {
@@ -55,7 +57,7 @@ type BreakpointsMatches = {
   [DirectionAlias in BreakpointsDirectionAlias]: boolean;
 };
 
-const breakpointsQueryEntries = getBreakpointsQueryEntries(tokens.breakpoints);
+const breakpointsQueryEntries = getBreakpointsQueryEntries(breakpoints);
 
 function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
   if (!isServer) {
