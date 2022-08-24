@@ -1,6 +1,6 @@
 ---
 title: Typography
-description: Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.
+description: Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
 keywords:
   - type styles
   - font sizes
@@ -14,13 +14,17 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ## Principles
 
-### Style with purpose
+### Make it readable
 
-A disciplined consistency with how you size and style type makes the whole admin more intuitive to use. Merchants who learn how to navigate one experience can apply that same knowledge to each new experience they come across.
+Help merchants understand content quickly by considering how to display and apply text within a page.
 
-### Stay flexible
+### Make it adaptable
 
-To make things accessible to audiences with different eyesight constraints, across different browsers, and different mobile devices, make sure to design in a way that works no matter what font size the merchant opts to use.
+Design in a way that works for a wide range of audiences, browsers, and mobile devices.
+
+### Reinforce the message
+
+Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
 
 ---
 
@@ -31,32 +35,6 @@ We use the typographic scale to communicate visual hierarchy in text.
 ---
 
 ## Formatting
-
-Along with the typographic scale, sometimes additional formatting is necessary to illuminate the distinction between smaller-scale relationships. Different formatting styles can be implemented using the text style component.
-
-![Diagram presenting text that is left aligned](/images/foundations/design/typography/type-left-align@2x.png)
-
-### Left aligned
-
-By default, text is left aligned. Exceptions to this rule include text in tables, and the centered text we use in empty states.
-
-![Diagram presenting text that is emphasised by being bold](/images/foundations/design/typography/type-strong@2x.png)
-
-### Strong
-
-Use this style sparingly and only where strong emphasis is required. In interfaces, strong should be seldom used to enhance visual hierarchy.
-
-![Diagram presenting text that is underlined](/images/foundations/design/typography/type-underline@2x.png)
-
-### Underline
-
-Underline styles are exclusively for text links. Don’t use underline for things like adding emphasis to text within body copy.
-
-![Diagram presenting text that is subdued in a lighter gray color](/images/foundations/design/typography/type-subdued@2x.png)
-
-### Subdued
-
-The subdued style lets you de-emphasize content, and you can use it across all font sizes. Mostly it should be used in contrast to other un-subdued text, vs. on its own. However you can use Subdued with standalone text that’s non-actionable or less important.
 
 ---
 
@@ -144,23 +122,3 @@ textarea {
   font-family: inherit;
 }
 ```
-
----
-
-## Mobile considerations
-
-<!-- dodont -->
-
-#### Do
-
-- Refer to the platform’s native font scales when designing experiences for native apps
-- Refer to the small-screen scale when designing experiences for mobile browsers
-- Use the platform-specific component library
-
-#### Do
-
-- Use the native font scale
-- Keep in mind that all UI elements containing text will be affected
-- Explore additional content height, width, truncation, and line wraps
-
-<!-- end -->
