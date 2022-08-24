@@ -682,10 +682,10 @@ function IndexTableBase({
   function renderHeading(heading: IndexTableHeading, index: number) {
     const isSecond = index === 0;
     const isLast = index === headings.length - 1;
+    const hasSortable = sortable?.some((value) => value === true);
     const headingContentClassName = classNames(
       styles.TableHeading,
-      sortable?.some((value) => value === true) &&
-        styles['TableHeading-sortable'],
+      hasSortable && styles['TableHeading-sortable'],
       isSecond && styles['TableHeading-second'],
       isLast && !heading.hidden && styles['TableHeading-last'],
       !selectable && styles['TableHeading-unselectable'],
@@ -717,6 +717,7 @@ function IndexTableBase({
 
     const checkboxClassName = classNames(
       styles.TableHeading,
+      hasSortable && styles['TableHeading-sortable'],
       index === 0 && styles['TableHeading-first'],
     );
 
