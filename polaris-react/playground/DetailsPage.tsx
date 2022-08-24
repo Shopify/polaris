@@ -42,6 +42,7 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  // eslint-disable-next-line import/no-deprecated
   VisuallyHidden,
 } from '../src';
 
