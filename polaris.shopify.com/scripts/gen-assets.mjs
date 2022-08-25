@@ -196,6 +196,7 @@ const genAssets = async () => {
   await Promise.all(generateImages);
 
   await browser.close();
+  console.log(`✅ Created ${urls.length} og-images from sitemap`);
 };
 
 await genAssets();
