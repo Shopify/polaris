@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer';
-import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import matter from 'gray-matter';
+import {execa} from 'execa';
 import path from 'path';
+
 import {existsSync} from 'fs';
+import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 
 const imgDir = path.join(process.cwd(), 'public/og-images');
 
@@ -168,7 +170,19 @@ const getPNG = async (url, browser) => {
   await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
 };
 
-const generateImages = async () => {
+const genAssets = async () => {
+  const server = execa('node_modules/.bin/next', ['dev']);
+
+  const {stdout} = await execa('npx', [
+    'get-site-urls',
+    'http://localhost:3000',
+    '--output=public/sitemap.xml',
+    '--alias=https://polaris.shopify.com',
+  ]);
+  console.log(stdout);
+
+  await server.kill();
+
   if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
   await mkdir(imgDir, {recursive: true});
   const urls = await getUrls();
@@ -182,6 +196,7 @@ const generateImages = async () => {
   await Promise.all(generateImages);
 
   await browser.close();
+  console.log(`✅ Created ${urls.length} og-images from sitemap`);
 };
 
-await generateImages();
+await genAssets();
