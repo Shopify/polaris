@@ -21,5 +21,9 @@
     "noUnusedParameters": true
   },
   "include": ["src", "pages", "**/*.json", "next-env.d.ts"],
-  "exclude": ["node_modules", "pages/examples/**/*"]
+  "exclude": [
+    "node_modules",
+    "pages/examples/**/*",
+    "scripts/get-props/testData"
+  ]
 }

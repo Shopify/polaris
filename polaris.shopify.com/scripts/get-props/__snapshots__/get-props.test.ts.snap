@@ -1,0 +1,217 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Gracefully handles unsupported types 1`] = `
+Array [
+  Object {
+    "description": "Props that the script can't parse",
+    "filePath": "/polaris.shopify.com/scripts/get-props/testData/unsupported.ts",
+    "name": "UnsupportedProps",
+    "syntaxKind": "TypeAliasDeclaration",
+    "value": "(Animal | string) & null",
+  },
+]
+`;
+
+exports[`Parses enums 1`] = `
+Array [
+  Object {
+    "filePath": "/polaris.shopify.com/scripts/get-props/testData/enums.ts",
+    "members": Array [
+      Object {
+        "name": "Horse",
+        "value": 0,
+      },
+      Object {
+        "name": "Dog",
+        "value": 10,
+      },
+      Object {
+        "name": "Cow",
+        "value": "Moo",
+      },
+    ],
+    "name": "Animal",
+    "syntaxKind": "EnumDeclaration",
+    "value": "enum Animal {
+  Horse,
+  Dog = 10,
+  Cow = 'Moo',
+}",
+  },
+]
+`;
+
+exports[`Parses interfaces 1`] = `
+Array [
+  Object {
+    "description": "An interface containing a bunch of complex props",
+    "filePath": "/polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+    "members": Array [
+      Object {
+        "name": "[key: string]",
+        "value": "any",
+      },
+      Object {
+        "defaultValue": "true",
+        "description": "A boolean member",
+        "name": "isBoolean",
+        "syntaxKind": "PropertySignature",
+        "value": "boolean",
+      },
+      Object {
+        "defaultValue": "Hello",
+        "description": "A string member",
+        "name": "stringMember",
+        "syntaxKind": "PropertySignature",
+        "value": "string",
+      },
+      Object {
+        "defaultValue": "123",
+        "description": "A number member",
+        "name": "numberMember",
+        "syntaxKind": "PropertySignature",
+        "value": "number",
+      },
+      Object {
+        "description": "A method member",
+        "isOptional": true,
+        "name": "isMethod",
+        "syntaxKind": "PropertySignature",
+        "value": "(a: string, b: SomeInterface, c: Animal) => any",
+      },
+      Object {
+        "description": "An enum member",
+        "name": "enumMember",
+        "syntaxKind": "PropertySignature",
+        "value": "Animal",
+      },
+      Object {
+        "description": "An optional member",
+        "isOptional": true,
+        "name": "optionalMember",
+        "syntaxKind": "PropertySignature",
+        "value": "string",
+      },
+      Object {
+        "deprecationMessage": "This member is deprecated...",
+        "description": "A deprecated member",
+        "name": "deprecatedMember",
+        "syntaxKind": "PropertySignature",
+        "value": "string",
+      },
+      Object {
+        "description": "A member that references another interface",
+        "name": "referencedInterface",
+        "syntaxKind": "PropertySignature",
+        "value": "SomeInterface",
+      },
+      Object {
+        "description": "A union member",
+        "name": "unionMember",
+        "syntaxKind": "PropertySignature",
+        "value": "string | number",
+      },
+      Object {
+        "description": "An intersection member",
+        "name": "intersectionMember",
+        "syntaxKind": "PropertySignature",
+        "value": "{ a: string; } & { b: string; }",
+      },
+      Object {
+        "description": "An array member",
+        "name": "arrayMember",
+        "syntaxKind": "PropertySignature",
+        "value": "[1, \\"hello\\", () => void]",
+      },
+    ],
+    "name": "InterfaceProps",
+    "value": "interface InterfaceProps {
+  /**
+   * A boolean member
+   *
+   * @default true
+   */
+  isBoolean: boolean;
+  /**
+   * A string member
+   *
+   * @default Hello
+   */
+  stringMember: string;
+  /**
+   * A number member
+   *
+   * @default 123
+   */
+  numberMember: number;
+  /**
+   * A method member
+   */
+  isMethod?: (a: string, b: SomeInterface, c: Animal) => any;
+  /**
+   * An enum member
+   */
+  enumMember: Animal;
+  /**
+   * An optional member
+   */
+  optionalMember?: string;
+  /**
+   * A deprecated member
+   *
+   * @deprecated This member is deprecated...
+   */
+  deprecatedMember: string;
+  /**
+   * A member that references another interface
+   */
+  referencedInterface: SomeInterface;
+  /**
+   * A union member
+   */
+  unionMember: string | number;
+  /**
+   * An intersection member
+   */
+  intersectionMember: {a: string} & {b: string};
+  /**
+   * An array member
+   */
+  arrayMember: [1, 'hello', () => void];
+  /**
+   * Index signature
+   */
+  [key: string]: any;
+}",
+  },
+]
+`;
+
+exports[`Parses type aliases 1`] = `
+Array [
+  Object {
+    "description": "A basic type",
+    "filePath": "/polaris.shopify.com/scripts/get-props/testData/types.ts",
+    "name": "StringProps",
+    "syntaxKind": "TypeAliasDeclaration",
+    "value": "string",
+  },
+  Object {
+    "description": "A more complex type",
+    "filePath": "/polaris.shopify.com/scripts/get-props/testData/types.ts",
+    "name": "TypeProps",
+    "syntaxKind": "TypeAliasDeclaration",
+    "value": "{
+  a: string;
+  b: number;
+}",
+  },
+  Object {
+    "description": "A function type",
+    "filePath": "/polaris.shopify.com/scripts/get-props/testData/types.ts",
+    "name": "MyFunction",
+    "syntaxKind": "TypeAliasDeclaration",
+    "value": "(a: string, b: number) => void",
+  },
+]
+`;

@@ -86,24 +86,15 @@ export interface QuickGuide {
   rows: QuickGuideRow[];
 }
 
-export type BaseNode = {
-  id: string;
-  kind: number;
-  syntaxKind: string;
+export type ASTNode = {
+  filePath?: string;
   name: string;
-  description: string;
-  tags: {name: string; text: string}[];
+  value: string | number | object;
+  id?: string;
+  syntaxKind?: string;
+  description?: string;
+  isOptional?: true;
+  deprecationMessage?: string;
+  defaultValue?: string;
+  members?: ASTNode[];
 };
-
-export interface NodeWithMembers extends BaseNode {
-  members: NodeWithType[];
-}
-
-export interface NodeWithType extends BaseNode {
-  type: string;
-  isOptional?: boolean;
-}
-
-type Node = NodeWithMembers | NodeWithType;
-
-export type TypeList = Node[];
