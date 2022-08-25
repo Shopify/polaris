@@ -12,13 +12,13 @@ export const navItems: NavItem[] = [
   {
     title: 'Tokens',
     children: [
-      {title: 'Colors', url: '/tokens/colors'},
-      {title: 'Typography', url: '/tokens/typography'},
-      {title: 'Shape', url: '/tokens/shape'},
-      {title: 'Spacing', url: '/tokens/spacing'},
-      {title: 'Depth', url: '/tokens/depth'},
-      {title: 'Motion', url: '/tokens/motion'},
-      {title: 'Z-index', url: '/tokens/z-index'},
+      { title: "Colors", url: "/tokens/colors" },
+      { title: "Font", url: "/tokens/font" },
+      { title: "Shape", url: "/tokens/shape" },
+      { title: "Spacing", url: "/tokens/spacing" },
+      { title: "Depth", url: "/tokens/depth" },
+      { title: "Motion", url: "/tokens/motion" },
+      { title: "Z-index", url: "/tokens/z-index" },
     ],
   },
 ];
