@@ -1,10 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Filters out the relevant AST nodes when given a starting point 1`] = `
+Array [
+  "InterfaceProps",
+  "Relationship",
+  "Animal",
+  "Friend",
+  "Family",
+  "Close",
+  "Extended",
+]
+`;
+
 exports[`Gracefully handles unsupported types 1`] = `
 Array [
   Object {
     "description": "Props that the script can't parse",
-    "filePath": "/polaris.shopify.com/scripts/get-props/testData/unsupported.ts",
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/unsupported.ts",
     "name": "UnsupportedProps",
     "syntaxKind": "TypeAliasDeclaration",
     "value": "(Animal | string) & null",
@@ -15,7 +27,7 @@ Array [
 exports[`Parses enums 1`] = `
 Array [
   Object {
-    "filePath": "/polaris.shopify.com/scripts/get-props/testData/enums.ts",
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
     "members": Array [
       Object {
         "name": "Horse",
@@ -32,7 +44,7 @@ Array [
     ],
     "name": "Animal",
     "syntaxKind": "EnumDeclaration",
-    "value": "enum Animal {
+    "value": "export enum Animal {
   Horse,
   Dog = 10,
   Cow = 'Moo',
@@ -44,8 +56,32 @@ Array [
 exports[`Parses interfaces 1`] = `
 Array [
   Object {
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+    "members": Array [
+      Object {
+        "name": "Horse",
+        "value": 0,
+      },
+      Object {
+        "name": "Dog",
+        "value": 10,
+      },
+      Object {
+        "name": "Cow",
+        "value": "Moo",
+      },
+    ],
+    "name": "Animal",
+    "syntaxKind": "EnumDeclaration",
+    "value": "export enum Animal {
+  Horse,
+  Dog = 10,
+  Cow = 'Moo',
+}",
+  },
+  Object {
     "description": "An interface containing a bunch of complex props",
-    "filePath": "/polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
     "members": Array [
       Object {
         "name": "[key: string]",
@@ -191,14 +227,14 @@ exports[`Parses type aliases 1`] = `
 Array [
   Object {
     "description": "A basic type",
-    "filePath": "/polaris.shopify.com/scripts/get-props/testData/types.ts",
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
     "name": "StringProps",
     "syntaxKind": "TypeAliasDeclaration",
     "value": "string",
   },
   Object {
     "description": "A more complex type",
-    "filePath": "/polaris.shopify.com/scripts/get-props/testData/types.ts",
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
     "name": "TypeProps",
     "syntaxKind": "TypeAliasDeclaration",
     "value": "{
@@ -208,7 +244,7 @@ Array [
   },
   Object {
     "description": "A function type",
-    "filePath": "/polaris.shopify.com/scripts/get-props/testData/types.ts",
+    "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
     "name": "MyFunction",
     "syntaxKind": "TypeAliasDeclaration",
     "value": "(a: string, b: number) => void",

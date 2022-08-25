@@ -1,7 +1,7 @@
 /**
  * An enum
  */
-enum Animal {
+export enum Animal {
   Horse,
   Dog = 10,
   Cow = 'Moo',

@@ -1,3 +1,5 @@
+import {Animal} from './enums';
+
 /**
  * An interface containing a bunch of complex props
  */

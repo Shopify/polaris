@@ -11,9 +11,10 @@ import Layout from '../../src/components/Layout';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 import {getComponentNav} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
-import {PropsForComponent, Status} from '../../src/types';
+import {TypeMeta, Status} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
+import {filterTypeMetas} from '../../scripts/get-props/src/get-props';
 
 interface MarkdownData {
   frontMatter: any;
@@ -30,7 +31,7 @@ interface Props {
     body: string;
     header: string;
   };
-  propsForComponent: PropsForComponent | null;
+  typeMeta: TypeMeta[];
 }
 
 const Components = ({
@@ -39,7 +40,7 @@ const Components = ({
   title,
   readme,
   status,
-  propsForComponent,
+  typeMeta,
 }: Props) => {
   const navItems: NavItem[] = getComponentNav();
   const typedStatus: Status | undefined = status
@@ -57,7 +58,11 @@ const Components = ({
         <Markdown text={description} />
         {typedStatus && <StatusBanner status={typedStatus} />}
         <ComponentExamples examples={examples} />
-        {propsForComponent && <PropsTable props={propsForComponent} />}
+      </Longform>
+
+      {typeMeta && <PropsTable typeMeta={typeMeta} componentName={title} />}
+
+      <Longform>
         <Markdown text={readme.body} />
       </Longform>
     </Layout>
@@ -68,10 +73,6 @@ export const getStaticProps: GetStaticProps<
   Props,
   {component: string}
 > = async (context) => {
-  const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
-  const fileContent = fs.readFileSync(propsFilePath, 'utf8');
-  let propsData: PropsForComponent[] = JSON.parse(fileContent);
-
   const componentSlug = context.params?.component;
   const mdFilePath = path.resolve(
     process.cwd(),
@@ -85,10 +86,7 @@ export const getStaticProps: GetStaticProps<
     const description = data.frontMatter.description;
     const body = data.readme;
 
-    const readme = {
-      description,
-      body,
-    };
+    const readme = {description, body};
 
     const examples = (data?.frontMatter?.examples || []).map(
       (example: ComponentExample) => {
@@ -110,19 +108,33 @@ export const getStaticProps: GetStaticProps<
       },
     );
 
-    const propsForComponent =
-      propsData.find(
-        (PropsTable) =>
-          PropsTable.interfaceName.toLowerCase() ===
-          `${data.frontMatter.title.replace(/\s/g, '').toLowerCase()}props`,
-      ) || null;
+    const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
+    const fileContent = fs.readFileSync(propsFilePath, 'utf8');
+    const allTypeMeta: TypeMeta[] = JSON.parse(fileContent);
+
+    let toPascalCase = (s: string) => {
+      return s
+        .replace(/(\w)(\w*)/g, function (_, g1, g2) {
+          return g1.toUpperCase() + g2.toLowerCase();
+        })
+        .replace(/\s/g, '');
+    };
+
+    const componentDirName = toPascalCase(`${data.frontMatter.title} `);
+    const propName = toPascalCase(`${data.frontMatter.title} props`);
+    let typeMeta = filterTypeMetas(
+      allTypeMeta,
+      propName,
+      `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
+    );
 
     const props: Props = {
       ...data.frontMatter,
       examples,
       description,
       readme,
-      propsForComponent,
+      typeMeta,
+      // propsForComponent,
     };
 
     return {props};

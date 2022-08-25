@@ -2,10 +2,10 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
 import globby from 'globby';
-import {ASTNode} from '../../../src/types';
+import {TypeMeta} from '../../../src/types';
 
 type NodeParser = (
-  ast: ASTNode[],
+  ast: TypeMeta[],
   node: ts.Node,
   checker: ts.TypeChecker,
   program: ts.Program,
@@ -17,8 +17,20 @@ const compilerOptions = {
   module: ts.ModuleKind.CommonJS,
 };
 
-export function getProps(filePaths: string[]): ASTNode[] {
-  let ast: ASTNode[] = [];
+export function normalizePath(path: string): string {
+  let normalizedPath = path;
+  if (normalizedPath.startsWith('.')) {
+    normalizedPath = normalizedPath.replace(/^\.{1,2}\//, '');
+  } else if (normalizedPath.includes('/polaris/')) {
+    normalizedPath = normalizedPath.split('/polaris/')[1];
+  } else if (normalizedPath.startsWith('/')) {
+    normalizedPath = normalizedPath.replace('/', '');
+  }
+  return normalizedPath;
+}
+
+export function getProps(filePaths: string[]): TypeMeta[] {
+  let ast: TypeMeta[] = [];
   let program = ts.createProgram(filePaths, compilerOptions);
   let checker = program.getTypeChecker();
 
@@ -27,11 +39,7 @@ export function getProps(filePaths: string[]): ASTNode[] {
   for (const sourceFile of program.getSourceFiles()) {
     if (!sourceFile.isDeclarationFile) {
       ts.forEachChild(sourceFile, (child) => {
-        const privatePath = process.cwd().split('/').slice(0, -1).join('/');
-        filePath = sourceFile.fileName.replace(privatePath, '');
-        if (filePath.startsWith('../')) {
-          filePath = filePath.replace('../', '');
-        }
+        filePath = normalizePath(sourceFile.fileName);
         visit(child);
       });
     }
@@ -79,7 +87,7 @@ const parseInterfaceDeclaration: NodeParser = (
 
   if (!symbol) throw new Error('Expected interface declaration to have symbol');
 
-  const members: ASTNode[] = [];
+  const members: TypeMeta[] = [];
 
   interfaceDeclaration.members.forEach((member) => {
     if (member.kind === ts.SyntaxKind.IndexSignature) {
@@ -102,7 +110,7 @@ const parseInterfaceDeclaration: NodeParser = (
       const value = checker.typeToString(type);
       const {deprecationMessage, defaultValue} = parseJSDocTags(prop);
 
-      let memberNode: ASTNode = {syntaxKind, name, value, description};
+      let memberNode: TypeMeta = {syntaxKind, name, value, description};
 
       if (
         valueDeclaration.kind === ts.SyntaxKind.PropertySignature ||
@@ -196,7 +204,7 @@ const parseEnumDeclaration: NodeParser = (
   const syntaxKind = ts.SyntaxKind[enumDeclation.kind];
   const name = enumDeclation.name.getText();
   const value = enumDeclation.getText();
-  const members: ASTNode[] = enumDeclation.members.map((member) => {
+  const members: TypeMeta[] = enumDeclation.members.map((member) => {
     const type = checker.getTypeAtLocation(member.name);
     return {
       name: member.name.getText(),
@@ -225,10 +233,7 @@ function parseJSDocTags(symbol: ts.Symbol): {
     }
   });
 
-  return {
-    deprecationMessage,
-    defaultValue,
-  };
+  return {deprecationMessage, defaultValue};
 }
 
 function getSymbolComment(
@@ -258,4 +263,84 @@ if (isExecutedThroughCommandLine) {
     const filePath = path.join(__dirname, '../../../../../src/data/props.json');
     fs.writeFileSync(filePath, JSON.stringify(ast, undefined, 2));
   });
+}
+
+export function filterTypeMetas(
+  allNodes: TypeMeta[],
+  name: string,
+  filePath: string,
+): TypeMeta[] {
+  const matchingNodes = getMatchingNodes(allNodes, name, filePath);
+  if (matchingNodes.length !== 1) {
+    throw new Error(
+      `Expected to find 1 starting node, but found ${matchingNodes.length}`,
+    );
+  }
+  let startingNode = matchingNodes[0];
+
+  let ignoredNames: string[] = [startingNode.name];
+  let openSet: TypeMeta[] = [startingNode];
+  let closedSet: TypeMeta[] = [];
+
+  while (openSet.length > 0) {
+    closedSet = [...closedSet, ...openSet];
+
+    let newOpenSet: TypeMeta[] = [];
+    openSet.forEach((node) => {
+      const referencedTypes = getReferencedTypes(allNodes, node, ignoredNames);
+      newOpenSet = [...newOpenSet, ...referencedTypes];
+      ignoredNames = [
+        ...ignoredNames,
+        ...referencedTypes.map(({name}) => name),
+      ];
+    });
+
+    openSet = newOpenSet;
+  }
+
+  return closedSet;
+}
+
+function getReferencedTypes(
+  allNodes: TypeMeta[],
+  searchedNode: TypeMeta,
+  ignoredNames: string[],
+): TypeMeta[] {
+  let returnedNodes: TypeMeta[] = [];
+  if (typeof searchedNode.value === 'string') {
+    const typeNames = searchedNode.value.match(/[A-Z][a-zA-Z]+/g);
+    typeNames?.forEach((name) => {
+      if (!ignoredNames.includes(name)) {
+        const referencedNode = getMatchingNodes(
+          allNodes,
+          name,
+          searchedNode.filePath,
+        );
+        if (referencedNode.length === 1) {
+          returnedNodes = [...returnedNodes, ...referencedNode];
+        } else {
+          console.log(
+            `Type ${name} could not be referenced. It was defined ${referencedNode.length} times.`,
+          );
+        }
+      }
+    });
+  }
+  return returnedNodes;
+}
+
+function getMatchingNodes(
+  allNodes: TypeMeta[],
+  name: string,
+  filePath?: string,
+): TypeMeta[] {
+  let matchingNodes = allNodes.filter(
+    (node) => node.filePath === filePath && node.name === name,
+  );
+
+  if (matchingNodes.length !== 1) {
+    matchingNodes = allNodes.filter((node) => node.name === name);
+  }
+
+  return matchingNodes;
 }

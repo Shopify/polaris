@@ -8,6 +8,7 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+
   async headers() {
     return [
       {

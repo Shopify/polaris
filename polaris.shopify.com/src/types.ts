@@ -86,7 +86,7 @@ export interface QuickGuide {
   rows: QuickGuideRow[];
 }
 
-export type ASTNode = {
+export type TypeMeta = {
   filePath?: string;
   name: string;
   value: string | number | object;
@@ -96,5 +96,5 @@ export type ASTNode = {
   isOptional?: true;
   deprecationMessage?: string;
   defaultValue?: string;
-  members?: ASTNode[];
+  members?: TypeMeta[];
 };
