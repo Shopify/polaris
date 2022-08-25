@@ -18,15 +18,15 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
 
-### Make it readable
+### 1. Make it readable
 
 Help merchants understand content quickly by considering how to display and apply text within a page.
 
-### Make it adaptable
+### 2. Make it adaptable
 
 Design in a way that works for a wide range of audiences, browsers, and mobile devices.
 
-### Reinforce the message
+### 3. Reinforce the message
 
 Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
 
