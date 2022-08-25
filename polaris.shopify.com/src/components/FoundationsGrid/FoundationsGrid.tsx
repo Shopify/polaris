@@ -46,7 +46,7 @@ function FoundationsGridItem({
       <Link href={url} passHref>
         <a {...searchAttributes}>
           <div className={styles.Icon}>
-            <Icon source={polarisIcons[icon]} />
+            <Icon source={(polarisIcons as any)[icon]} />
           </div>
           <h4>{title}</h4>
           <p>{stripMarkdownLinks(description)}</p>
