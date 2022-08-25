@@ -1,0 +1,73 @@
+.Inline {
+  --pc-stack-spacing: var(--p-space-4);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin-left: calc(-1 * var(--pc-stack-spacing));
+
+  > .Item {
+    margin-left: var(--pc-stack-spacing);
+    max-width: 100%;
+  }
+}
+
+.noWrap {
+  flex-wrap: nowrap;
+}
+
+.spacingNone {
+  --pc-stack-spacing: var(--p-space-0);
+}
+
+.spacingExtraTight {
+  --pc-stack-spacing: var(--p-space-1);
+}
+
+.spacingTight {
+  --pc-stack-spacing: var(--p-space-2);
+}
+
+.spacingBaseTight {
+  --pc-stack-spacing: var(--p-space-3);
+}
+
+.spacingLoose {
+  --pc-stack-spacing: var(--p-space-5);
+}
+
+.spacingExtraLoose {
+  --pc-stack-spacing: var(--p-space-8);
+}
+
+.alignStart {
+  justify-content: flex-start;
+}
+
+.alignEnd {
+  justify-content: flex-end;
+}
+
+.alignCenter {
+  justify-content: center;
+}
+
+.alignYTop {
+  align-items: flex-start;
+}
+
+.alignYBottom {
+  align-items: flex-end;
+}
+
+.alignYCenter {
+  align-items: center;
+}
+
+.alignYBaseline {
+  align-items: baseline;
+}
+
+.Item {
+  flex: 0 0 auto;
+  min-width: 0;
+}
