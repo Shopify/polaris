@@ -118,7 +118,7 @@ The grid adapts to the viewport width. The amount of columns will change dependi
 | ---------------------------------------- | ------- | ------ | ------ | ---------- |
 | **XS** <br/> 0-489 <br/> Phones          | 6       | 16     | 16     | Collapsed  |
 | **SM** <br/> 490-767 <br/> Small tablets | 6       | 16     | 16     | Collapsed  |
-| **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Collapsed  |
+| **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Visible    |
 | **LG** <br/> 1040-1399 <br/> Laptops     | 12      | 24     | 16     | Visible    |
 | **XL** <br/> 1440+ <br/> Desktops        | 12      | 32     | 16     | Visible    |
 

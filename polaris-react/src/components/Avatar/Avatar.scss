@@ -10,7 +10,6 @@
   max-width: 100%;
   background: var(--p-surface-neutral);
   color: var(--p-icon-subdued);
-  border-radius: var(--p-border-radius-half);
   user-select: none;
 
   @media (forced-colors: active) {
@@ -22,6 +21,10 @@
     display: block;
     padding-bottom: 100%;
   }
+}
+
+.shapeRound {
+  border-radius: var(--p-border-radius-half);
 }
 
 .shapeSquare {
@@ -83,7 +86,7 @@
   left: 50%;
   width: 100%;
   height: 100%;
-  border-radius: var(--p-border-radius-half);
+  border-radius: inherit;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }

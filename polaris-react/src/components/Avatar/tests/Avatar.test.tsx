@@ -138,5 +138,13 @@ describe('<Avatar />', () => {
         className: expect.stringContaining('shapeSquare'),
       });
     });
+
+    it('renders a round background when square is not passed to shape', () => {
+      const avatar = mountWithApp(<Avatar initials="DL" />);
+
+      expect(avatar).toContainReactComponent('span', {
+        className: expect.stringContaining('shapeRound'),
+      });
+    });
   });
 });

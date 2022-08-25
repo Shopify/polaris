@@ -1,10 +1,12 @@
-import Tooltip from '../Tooltip';
-import Prism from 'prismjs';
-import {useCopyToClipboard} from '../../utils/hooks';
-import styles from './Code.module.scss';
+import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Tab} from '@headlessui/react';
-import Image from '../Image';
 import {useState} from 'react';
+import Prism from 'prismjs';
+
+import {useCopyToClipboard} from '../../utils/hooks';
+import Icon from '../Icon';
+import styles from './Code.module.scss';
+import Tooltip from '../Tooltip';
 
 interface Props {
   code:
@@ -93,13 +95,7 @@ function CopyButton({code}: {code: string}) {
           onClick={copy}
           aria-label="Copy to clipboard"
         >
-          <Image
-            src="/icons/ClipboardMinor.svg"
-            alt="Clipboard icon"
-            width={16}
-            height={16}
-            icon
-          />
+          <Icon source={ClipboardMinor} width={16} height={16} />
         </button>
       </Tooltip>
     </div>
