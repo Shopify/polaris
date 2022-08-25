@@ -172,3 +172,23 @@ textarea {
   font-family: inherit;
 }
 ```
+
+---
+
+## Mobile considerations
+
+<!-- dodont -->
+
+#### Do
+
+- Refer to the platform’s native font scales when designing experiences for native apps
+- Refer to the small-screen scale when designing experiences for mobile browsers
+- Use the platform-specific component library
+
+#### Do
+
+- Use the native font scale
+- Keep in mind that all UI elements containing text will be affected
+- Explore additional content height, width, truncation, and line wraps
+
+<!-- end -->
