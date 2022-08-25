@@ -164,7 +164,7 @@ const getPNG = async (url, browser) => {
 };
 
 const genAssets = async () => {
-  const server = execa('yarn', ['dev']);
+  const server = execa('node_modules/.bin/next', ['dev']);
 
   await setTimeout(() => {}, 5000);
 
@@ -175,19 +175,17 @@ const genAssets = async () => {
     '--alias=https://polaris.shopify.com',
   ]);
 
-  console.log(stdout);
+  await server.kill();
 
-  server.kill('SIGTERM', {forceKillAfterTimeout: 1000});
-
-  // if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
-  // await mkdir(imgDir, {recursive: true});
-  // const browser = await puppeteer.launch({
-  //   defaultViewport: {width: 1200, height: 630},
-  //   args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  // });
-  // const generateImages = urls.map((url) => getPNG(url, browser));
-  // await Promise.all(generateImages);
-  // await browser.close();
+  if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
+  await mkdir(imgDir, {recursive: true});
+  const browser = await puppeteer.launch({
+    defaultViewport: {width: 1200, height: 630},
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+  const generateImages = urls.map((url) => getPNG(url, browser));
+  await Promise.all(generateImages);
+  await browser.close();
 };
 
 await genAssets();
