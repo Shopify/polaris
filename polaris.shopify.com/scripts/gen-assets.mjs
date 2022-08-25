@@ -173,8 +173,6 @@ const getPNG = async (url, browser) => {
 const genAssets = async () => {
   const server = execa('node_modules/.bin/next', ['dev']);
 
-  await setTimeout(() => {}, 5000);
-
   const {stdout} = await execa('npx', [
     'get-site-urls',
     'http://localhost:3000',
