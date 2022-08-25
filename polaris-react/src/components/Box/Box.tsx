@@ -1,10 +1,10 @@
 import React, {ReactNode, forwardRef} from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
+import type {spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
 import styles from './Box.scss';
-import type {spacing} from '@shopify/polaris-tokens';
 
 type Background =
   | 'background'
@@ -48,9 +48,17 @@ type Shadow = 'default' | 'transparent' | 'faint' | 'deep';
 type SpacingTokenGroup = typeof spacing;
 type SpacingTokenName = keyof SpacingTokenGroup;
 
+// TODO: Bring this logic into tokens
 type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
   ? Scale
   : never;
+
+type Spacing = {
+  bottom: SpacingTokenScale | '';
+  left: SpacingTokenScale | '';
+  right: SpacingTokenScale | '';
+  top: SpacingTokenScale | '';
+};
 
 interface BoxBaseProps {
   /** Background color of the Box */
@@ -94,41 +102,57 @@ export const Box = forwardRef(
       background,
       borderRadius,
       children,
-      margin,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      marginTop,
-      padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
+      margin = '',
+      marginBottom = '',
+      marginLeft = '',
+      marginRight = '',
+      marginTop = '',
+      padding = '',
+      paddingBottom = '',
+      paddingLeft = '',
+      paddingRight = '',
+      paddingTop = '',
       shadow,
     },
     ref,
   ) => {
+    const margins = {
+      bottom: marginBottom ? marginBottom : margin,
+      left: marginLeft ? marginLeft : margin,
+      right: marginRight ? marginRight : margin,
+      top: marginTop ? marginTop : margin,
+    } as Spacing;
+
+    const paddings = {
+      bottom: paddingBottom ? paddingBottom : padding,
+      left: paddingLeft ? paddingLeft : padding,
+      right: paddingRight ? paddingRight : padding,
+      top: paddingTop ? paddingTop : padding,
+    } as Spacing;
+
     const style = {
-      '--pc-box-margin': margin ? `var(--p-space-${margin})` : '',
-      '--pc-box-margin-bottom': marginBottom
-        ? `var(--p-space-${marginBottom})`
+      '--pc-box-margin-bottom': margins.bottom
+        ? `var(--p-space-${margins.bottom})`
         : '',
-      '--pc-box-margin-left': marginLeft ? `var(--p-space-${marginLeft})` : '',
-      '--pc-box-margin-right': marginRight
-        ? `var(--p-space-${marginRight})`
+      '--pc-box-margin-left': margins.left
+        ? `var(--p-space-${margins.left})`
         : '',
-      '--pc-box-margin-top': marginTop ? `var(--p-space-${marginTop})` : '',
-      '--pc-box-padding': padding ? `var(--p-space-${padding})` : '',
-      '--pc-box-padding-bottom': paddingBottom
-        ? `var(--p-space-${paddingBottom})`
+      '--pc-box-margin-right': margins.right
+        ? `var(--p-space-${margins.right})`
         : '',
-      '--pc-box-padding-left': paddingLeft
-        ? `var(--p-space-${paddingLeft})`
+      '--pc-box-margin-top': margins.top ? `var(--p-space-${margins.top})` : '',
+      '--pc-box-padding-bottom': paddings.bottom
+        ? `var(--p-space-${paddings.bottom})`
         : '',
-      '--pc-box-padding-right': paddingRight
-        ? `var(--p-space-${paddingRight})`
+      '--pc-box-padding-left': paddings.left
+        ? `var(--p-space-${paddings.left})`
         : '',
-      '--pc-box-padding-top': paddingTop ? `var(--p-space-${paddingTop})` : '',
+      '--pc-box-padding-right': paddings.right
+        ? `var(--p-space-${paddings.right})`
+        : '',
+      '--pc-box-padding-top': paddings.top
+        ? `var(--p-space-${paddings.top})`
+        : '',
     } as React.CSSProperties;
 
     const className = classNames(
