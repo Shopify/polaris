@@ -1,4 +1,5 @@
 import React, {memo, NamedExoticComponent} from 'react';
+import type {spacing} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
@@ -6,13 +7,11 @@ import {elementChildren, wrapWithComponent} from '../../utilities/components';
 import {Item} from './components';
 import styles from './Inline.scss';
 
-type Spacing =
-  | 'extraTight'
-  | 'tight'
-  | 'baseTight'
-  | 'loose'
-  | 'extraLoose'
-  | 'none';
+type SpacingTokenGroup = typeof spacing;
+type SpacingTokenName = keyof SpacingTokenGroup;
+
+// TODO: Bring this logic into tokens
+type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
 
 type AlignY = 'top' | 'center' | 'bottom' | 'baseline';
 

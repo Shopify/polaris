@@ -15,28 +15,72 @@
   flex-wrap: nowrap;
 }
 
-.spacingNone {
+.spacing0 {
   --pc-stack-spacing: var(--p-space-0);
 }
 
-.spacingExtraTight {
-  --pc-stack-spacing: var(--p-space-1);
+.spacing025 {
+  --pc-stack-spacing: var(--p-space-025);
 }
 
-.spacingTight {
+.spacing05 {
+  --pc-stack-spacing: var(--p-space-05);
+}
+
+.spacin1 {
+  --pc-stack-spacing: var(--p-space1);
+}
+
+.spacing2 {
   --pc-stack-spacing: var(--p-space-2);
 }
 
-.spacingBaseTight {
+.spacing3 {
   --pc-stack-spacing: var(--p-space-3);
 }
 
-.spacingLoose {
+.spacing4 {
+  --pc-stack-spacing: var(--p-space-4);
+}
+
+.spacing5 {
   --pc-stack-spacing: var(--p-space-5);
 }
 
-.spacingExtraLoose {
+.spacing6 {
+  --pc-stack-spacing: var(--p-space-6);
+}
+
+.spacing8 {
   --pc-stack-spacing: var(--p-space-8);
+}
+
+.spacing10 {
+  --pc-stack-spacing: var(--p-space-10);
+}
+
+.spacing12 {
+  --pc-stack-spacing: var(--p-space-12);
+}
+
+.spacing16 {
+  --pc-stack-spacing: var(--p-space-16);
+}
+
+.spacing20 {
+  --pc-stack-spacing: var(--p-space-20);
+}
+
+.spacing24 {
+  --pc-stack-spacing: var(--p-space-24);
+}
+
+.spacing28 {
+  --pc-stack-spacing: var(--p-space-28);
+}
+
+.spacing32 {
+  --pc-stack-spacing: var(--p-space-32);
 }
 
 .alignStart {
