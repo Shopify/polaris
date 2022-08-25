@@ -144,6 +144,46 @@
   border-radius: var(--p-border-radius-half);
 }
 
+.width-1 {
+  border: var(--p-border-width-1) solid;
+}
+
+.width-2 {
+  border: var(--p-border-width-2) solid;
+}
+
+.width-3 {
+  border: var(--p-border-width-3) solid;
+}
+
+.width-4 {
+  border: var(--p-border-width-4) solid;
+}
+
+.width-5 {
+  border: var(--p-border-width-5) solid;
+}
+
+.base {
+  border: var(--p-border-base);
+}
+
+.dark {
+  border: var(--p-border-dark);
+}
+
+.transparent {
+  border: var(--p-border-transparent);
+}
+
+.divider {
+  border: var(--p-border-divider);
+}
+
+.divider-on-dark {
+  border: var(--p-border-divider-on-dark);
+}
+
 .shadowBase {
   box-shadow: var(--p-shadow-base);
 }

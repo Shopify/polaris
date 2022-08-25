@@ -1,6 +1,6 @@
 import React, {ReactNode, forwardRef} from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {spacing} from '@shopify/polaris-tokens';
+import type {shape, spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
@@ -31,19 +31,14 @@ type Background =
   | 'backdrop'
   | 'overlay';
 
-type BorderRadius =
-  | 'radius-05'
-  | 'radius-1'
-  | 'radius-2'
-  | 'radius-3'
-  | 'radius-4'
-  | 'radius-5'
-  | 'radius-6'
-  | 'radius-base'
-  | 'radius-large'
-  | 'radius-half';
-
 type Shadow = 'default' | 'transparent' | 'faint' | 'deep';
+
+type ShapeTokenGroup = typeof shape;
+type ShapeTokenName = keyof ShapeTokenGroup;
+
+type BorderTokenScale = ShapeTokenName extends `border-${infer Scale}`
+  ? Scale
+  : never;
 
 type SpacingTokenGroup = typeof spacing;
 type SpacingTokenName = keyof SpacingTokenGroup;
@@ -63,8 +58,8 @@ type Spacing = {
 interface BoxBaseProps {
   /** Background color of the Box */
   background?: Background;
-  /** Border radius of the Box */
-  borderRadius?: BorderRadius;
+  /** Border styling of the Box */
+  border?: BorderTokenScale;
   /** Inner content of the Box */
   children: ReactNode;
   /** Spacing outside of the Box */
@@ -100,7 +95,7 @@ export const Box = forwardRef(
     {
       as: Component = 'div',
       background,
-      borderRadius,
+      border,
       children,
       margin = '',
       marginBottom = '',
@@ -158,7 +153,7 @@ export const Box = forwardRef(
     const className = classNames(
       styles.root,
       background && styles[background],
-      borderRadius && styles[borderRadius],
+      border && styles[border],
       shadow && styles[shadow],
     );
 
