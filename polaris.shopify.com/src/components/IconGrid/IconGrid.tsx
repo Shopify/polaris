@@ -29,7 +29,7 @@ interface IconGridItemProps {
 }
 
 function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
-  const {id, name, description} = icon;
+  const {id, name} = icon;
   const searchAttributes = useGlobalSearchResult();
 
   return (
@@ -52,7 +52,7 @@ function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
           id={icon.id}
           {...searchAttributes}
         >
-          <Icon source={polarisIcons[id]} />
+          <Icon source={(polarisIcons as any)[id]} />
           <p>{name}</p>
         </a>
       </Link>
