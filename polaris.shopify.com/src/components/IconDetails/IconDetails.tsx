@@ -52,7 +52,7 @@ function IconDetails({fileName, iconData}: Props) {
     <div className={styles.IconDetails}>
       <div className={styles.Section}>
         <div className={styles.Preview}>
-          <Icon source={polarisIcons[fileName]} />
+          <Icon source={(polarisIcons as any)[fileName]} />
           <div className={styles.SetBadge}>{set}</div>
         </div>
 
