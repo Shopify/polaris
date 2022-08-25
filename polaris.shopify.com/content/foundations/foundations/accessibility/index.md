@@ -43,7 +43,7 @@ In the United States, as many as 1 in 4 adults has at least 1 disability [Source
 
 ## Building inclusive experiences
 
-Using our [components](/components/get-started) is a way to improve accessibility and consistency when building products for Shopify.
+Using our [components](/components) is a way to improve accessibility and consistency when building products for Shopify.
 
 - The component library in this style guide includes code we can use across applications
 - This component code includes accessible markup

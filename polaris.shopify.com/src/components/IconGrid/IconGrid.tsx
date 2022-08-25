@@ -1,9 +1,10 @@
-import Image from '../Image';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import {className} from '../../utils/various';
 import styles from './IconGrid.module.scss';
-import {Icon} from '@shopify/polaris-icons/metadata';
+import type {Icon as IconType} from '@shopify/polaris-icons/metadata';
 import Link from 'next/link';
+import Icon from '../Icon';
+import * as polarisIcons from '@shopify/polaris-icons';
 
 interface IconGridProps {
   title?: string;
@@ -22,13 +23,13 @@ function IconGrid({title, children}: IconGridProps) {
 }
 
 interface IconGridItemProps {
-  icon: Icon;
+  icon: IconType;
   query?: string;
   activeIcon?: string;
 }
 
 function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
-  const {id, name, description} = icon;
+  const {id, name} = icon;
   const searchAttributes = useGlobalSearchResult();
 
   return (
@@ -51,13 +52,7 @@ function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
           id={icon.id}
           {...searchAttributes}
         >
-          <Image
-            src={`/icons/${id}.svg`}
-            alt={description}
-            width={20}
-            height={20}
-            icon
-          />
+          <Icon source={(polarisIcons as any)[id]} />
           <p>{name}</p>
         </a>
       </Link>

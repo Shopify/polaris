@@ -14,6 +14,7 @@ describe('<Navigation />', () => {
 
     const navigation = mountWithApp(
       <Navigation
+        fixedFirstColumns={0}
         columnVisibilityData={columnVisibilityData}
         isScrolledFarthestLeft
         isScrolledFarthestRight={false}
@@ -31,6 +32,7 @@ describe('<Navigation />', () => {
 
     const navigation = mountWithApp(
       <Navigation
+        fixedFirstColumns={0}
         columnVisibilityData={columnVisibilityData}
         isScrolledFarthestLeft
         isScrolledFarthestRight={false}
@@ -53,7 +55,7 @@ describe('<Navigation />', () => {
         columnVisibilityData={columnVisibilityData}
         isScrolledFarthestLeft
         isScrolledFarthestRight={false}
-        fixedFirstColumn
+        fixedFirstColumns={1}
       />,
     );
 

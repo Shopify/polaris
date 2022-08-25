@@ -21,6 +21,9 @@
     },
     "preversion": {
       "cache": false
+    },
+    "gen-assets": {
+      "cache": false
     }
   }
 }
