@@ -25,6 +25,7 @@
     ]
   },
   "scripts": {
+    "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
     "build": "turbo run build",
     "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
     "lint": "turbo run lint",
