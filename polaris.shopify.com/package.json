@@ -4,15 +4,15 @@
   "private": true,
   "scripts": {
     "build": "yarn run gen-assets && next build",
+    "dev": "open http://localhost:3000 && next dev",
     "postbuild": "yarn gen-sitemap",
-    "dev": "node scripts/copy-icons.mjs && open http://localhost:3000 && next dev",
     "start": "next start ",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules .next *.tsbuildinfo",
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
-    "gen-assets": "node scripts/gen-og-images.mjs && node scripts/copy-icons.mjs",
+    "gen-assets": "node scripts/gen-og-images.mjs",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "ts-node --skip-project ./scripts/get-props.ts"
   },
@@ -34,11 +34,11 @@
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
+    "@types/gtag.js": "^0.0.10",
     "@types/js-yaml": "^4.0.5",
     "@types/marked": "^4.0.3",
     "@types/node": "17.0.21",
     "@types/prismjs": "^1.26.0",
-    "@types/gtag.js": "^0.0.10",
     "@types/react": "*",
     "eslint-config-next": "12.1.0",
     "eslint": "8.10.0",
