@@ -1,8 +1,10 @@
 import puppeteer from 'puppeteer';
-import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import matter from 'gray-matter';
+import {execa} from 'execa';
 import path from 'path';
+
 import {existsSync} from 'fs';
+import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 
 const imgDir = path.join(process.cwd(), 'public/og-images');
 
@@ -30,13 +32,6 @@ const defaultImage = `<svg viewBox="0 0 99 99" fill="none" xmlns="http://www.w3.
 
 const capitalizeFirstLetter = (value) => {
   return value.charAt(0).toUpperCase() + value.slice(1);
-};
-
-const getUrls = async () => {
-  const sitemap = await readFile('./public/sitemap.xml', 'utf-8');
-  return sitemap
-    .match(/loc>[^<]+/gi)
-    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
 };
 
 const generateHTML = async (url, slug) => {
@@ -168,20 +163,31 @@ const getPNG = async (url, browser) => {
   await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
 };
 
-const generateImages = async () => {
-  if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
-  await mkdir(imgDir, {recursive: true});
-  const urls = await getUrls();
+const genAssets = async () => {
+  const server = execa('yarn', ['dev']);
 
-  const browser = await puppeteer.launch({
-    defaultViewport: {width: 1200, height: 630},
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+  await setTimeout(() => {}, 5000);
 
-  const generateImages = urls.map((url) => getPNG(url, browser));
-  await Promise.all(generateImages);
+  const {stdout} = await execa('npx', [
+    'get-site-urls',
+    'http://localhost:3000',
+    '--output=public/sitemap.xml',
+    '--alias=https://polaris.shopify.com',
+  ]);
 
-  await browser.close();
+  console.log(stdout);
+
+  server.kill('SIGTERM', {forceKillAfterTimeout: 1000});
+
+  // if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
+  // await mkdir(imgDir, {recursive: true});
+  // const browser = await puppeteer.launch({
+  //   defaultViewport: {width: 1200, height: 630},
+  //   args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  // });
+  // const generateImages = urls.map((url) => getPNG(url, browser));
+  // await Promise.all(generateImages);
+  // await browser.close();
 };
 
-await generateImages();
+await genAssets();

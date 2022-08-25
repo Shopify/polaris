@@ -12,4 +12,5 @@ node_modules
 /polaris-react/build-internal
 /polaris-react/src/styles/_media-queries.scss
 /polaris-tokens/build
+/polaris.shopify.com/public/sitemap.xml
 /polaris.shopify.com/public/og-images
