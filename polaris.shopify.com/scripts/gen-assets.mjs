@@ -34,6 +34,13 @@ const capitalizeFirstLetter = (value) => {
   return value.charAt(0).toUpperCase() + value.slice(1);
 };
 
+const getUrls = async () => {
+  const sitemap = await readFile('./public/sitemap.xml', 'utf-8');
+  return sitemap
+    .match(/loc>[^<]+/gi)
+    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
+};
+
 const generateHTML = async (url, slug) => {
   const title = capitalizeFirstLetter(slug || '')
     .replace('.png', '')
@@ -174,17 +181,22 @@ const genAssets = async () => {
     '--output=public/sitemap.xml',
     '--alias=https://polaris.shopify.com',
   ]);
+  console.log(stdout);
 
   await server.kill();
 
   if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
   await mkdir(imgDir, {recursive: true});
+  const urls = await getUrls();
+
   const browser = await puppeteer.launch({
     defaultViewport: {width: 1200, height: 630},
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
+
   const generateImages = urls.map((url) => getPNG(url, browser));
   await Promise.all(generateImages);
+
   await browser.close();
 };
 
