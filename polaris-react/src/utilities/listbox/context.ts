@@ -5,6 +5,7 @@ import type {NavigableOption} from './types';
 export interface ListboxContextType {
   onOptionSelect(option: NavigableOption): void;
   setLoading(label?: string): void;
+  allowMultiple: boolean;
 }
 
 export const ListboxContext = createContext<ListboxContextType | undefined>(

@@ -305,6 +305,22 @@ describe('<Listbox>', () => {
 
       expect(listbox).toContainReactComponent(ListboxContext.Provider);
     });
+
+    it('passes `allowMultiple` to ListboxContext.Provider', () => {
+      const listbox = mountWithApp(<Listbox allowMultiple>Child</Listbox>);
+
+      expect(listbox).toContainReactComponent(ListboxContext.Provider, {
+        value: expect.objectContaining({allowMultiple: true}),
+      });
+    });
+
+    it('defaults `allowMultiple` to false when not passed', () => {
+      const listbox = mountWithApp(<Listbox>Child</Listbox>);
+
+      expect(listbox).toContainReactComponent(ListboxContext.Provider, {
+        value: expect.objectContaining({allowMultiple: false}),
+      });
+    });
   });
 
   it('calls setListboxId on the combobox context with the list id', () => {

@@ -59,6 +59,8 @@ export interface ListboxProps {
   onSelect?(value: string): void;
   /** Callback fired when an option becomes active */
   onActiveOptionChange?(value: string, domId: string): void;
+  /** Enable multiple options to be selected */
+  allowMultiple?: boolean;
 }
 
 export type ArrowKeys = 'up' | 'down';
@@ -76,6 +78,7 @@ export function Listbox({
   customListId,
   onSelect,
   onActiveOptionChange,
+  allowMultiple = false,
 }: ListboxProps) {
   const [loading, setLoading] = useState<string>();
   const [activeOption, setActiveOption] = useState<NavigableOption>();
@@ -479,6 +482,7 @@ export function Listbox({
     () => ({
       onOptionSelect,
       setLoading,
+      allowMultiple,
     }),
     [onOptionSelect],
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount, mountWithApp} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
 
 import {TextOption} from '../TextOption';
 import {Listbox} from '../../..';
@@ -9,13 +9,21 @@ import {ComboboxListboxOptionContext} from '../../../../../utilities/combobox/co
 describe('TextOption', () => {
   it('renders children', () => {
     const child = 'child';
-    const textOption = mount(<TextOption>{child}</TextOption>);
+    const textOption = mountWithApp(
+      <Listbox>
+        <TextOption>{child}</TextOption>
+      </Listbox>,
+    );
 
     expect(textOption).toContainReactText(child);
   });
 
   it('renders visually disabled text when disabled', () => {
-    const textOption = mount(<TextOption disabled>child</TextOption>);
+    const textOption = mountWithApp(
+      <Listbox>
+        <TextOption disabled>child</TextOption>
+      </Listbox>,
+    );
 
     expect(textOption).toContainReactComponent('div', {
       className: 'TextOption disabled',
@@ -23,7 +31,11 @@ describe('TextOption', () => {
   });
 
   it('renders visually selected text when selected', () => {
-    const textOption = mount(<TextOption selected>child</TextOption>);
+    const textOption = mountWithApp(
+      <Listbox>
+        <TextOption selected>child</TextOption>
+      </Listbox>,
+    );
 
     expect(textOption).toContainReactComponent('div', {
       className: 'TextOption selected',
@@ -33,7 +45,9 @@ describe('TextOption', () => {
   it('renders visual checkbox when allowMultiple is provided', () => {
     const textOption = mountWithApp(
       <ComboboxListboxOptionContext.Provider value={{allowMultiple: true}}>
-        <TextOption>child</TextOption>
+        <Listbox>
+          <TextOption>child</TextOption>
+        </Listbox>
       </ComboboxListboxOptionContext.Provider>,
     );
 
@@ -43,7 +57,9 @@ describe('TextOption', () => {
   it('does not render visual checkbox when allowMultiple is false', () => {
     const textOption = mountWithApp(
       <ComboboxListboxOptionContext.Provider value={{allowMultiple: false}}>
-        <TextOption>child</TextOption>
+        <Listbox>
+          <TextOption>child</TextOption>
+        </Listbox>
       </ComboboxListboxOptionContext.Provider>,
     );
 
