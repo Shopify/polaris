@@ -34,13 +34,6 @@ const capitalizeFirstLetter = (value) => {
   return value.charAt(0).toUpperCase() + value.slice(1);
 };
 
-const getUrls = async () => {
-  const sitemap = await readFile('./public/sitemap.xml', 'utf-8');
-  return sitemap
-    .match(/loc>[^<]+/gi)
-    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
-};
-
 const generateHTML = async (url, slug) => {
   const title = capitalizeFirstLetter(slug || '')
     .replace('.png', '')
@@ -171,12 +164,16 @@ const getPNG = async (url, browser) => {
 };
 
 const genAssets = async () => {
-  const server = execa('node_modules/.bin/next', ['dev']);
+  const outputFile = 'public/sitemap.xml';
+  const outputPath = path.join(process.cwd(), `public/sitemap.xml`);
+
+  const nextBin = path.join(process.cwd(), 'node_modules/.bin/next');
+  const server = execa(nextBin, ['dev']);
 
   const {stdout} = await execa('npx', [
     'get-site-urls',
     'http://localhost:3000',
-    '--output=public/sitemap.xml',
+    `--output=${outputFile}`,
     '--alias=https://polaris.shopify.com',
   ]);
   console.log(stdout);
@@ -185,7 +182,11 @@ const genAssets = async () => {
 
   if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
   await mkdir(imgDir, {recursive: true});
-  const urls = await getUrls();
+
+  const sitemap = await readFile(outputPath, 'utf-8');
+  const urls = sitemap
+    .match(/loc>[^<]+/gi)
+    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
 
   const browser = await puppeteer.launch({
     defaultViewport: {width: 1200, height: 630},
