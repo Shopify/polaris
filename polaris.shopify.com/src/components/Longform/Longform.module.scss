@@ -134,7 +134,7 @@
     display: none;
   }
 
-  p code {
+  *:not(pre) > code {
     font-family: var(--font-family-mono);
     font-size: 0.9em;
     font-weight: var(--font-weight-500);
@@ -173,7 +173,7 @@
 
     th,
     td {
-      padding: 0.6rem .70588rem;
+      padding: 0.6rem 0.70588rem;
       border-bottom: 1px solid var(--border-color-light);
 
       &:first-child {
@@ -193,7 +193,6 @@
           padding-right: 2.8rem;
         }
       }
-
     }
 
     tbody {
