@@ -1,4 +1,4 @@
-import React, {memo, NamedExoticComponent} from 'react';
+import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
@@ -30,7 +30,7 @@ export interface InlineProps {
   align?: Align;
 }
 
-export const Inline = memo(function Inline({
+export const Inline = function Inline({
   children,
   spacing,
   align,
@@ -51,8 +51,6 @@ export const Inline = memo(function Inline({
   });
 
   return <div className={className}>{itemMarkup}</div>;
-}) as NamedExoticComponent<InlineProps> & {
-  Item: typeof Item;
 };
 
 Inline.Item = Item;
