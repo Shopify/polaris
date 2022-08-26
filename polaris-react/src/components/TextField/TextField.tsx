@@ -242,10 +242,10 @@ export function TextField({
   const spinnerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const input = inputRef.current;
+    const input = multiline ? textAreaRef.current : inputRef.current;
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
-  }, [focused, verticalContent]);
+  }, [focused, verticalContent, multiline]);
 
   useEffect(() => {
     const input = inputRef.current;

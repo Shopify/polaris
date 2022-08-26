@@ -51,11 +51,11 @@ describe('<ChoiceList />', () => {
   });
 
   describe('choices', () => {
-    it('renders a choice with the label, value, and helpText properties', () => {
+    it('renders a choice with the label, value, id, and helpText properties', () => {
       choices = [
         choices[0],
         choices[1],
-        {...choices[2], helpText: 'Some help text'},
+        {...choices[2], id: 'custom-choice-id', helpText: 'Some help text'},
       ];
 
       const choiceElements = mountWithApp(
@@ -65,6 +65,7 @@ describe('<ChoiceList />', () => {
       choiceElements.findAll(RadioButton).forEach((choiceElement, index) => {
         expect(choiceElement.prop('label')).toBe(choices[index].label);
         expect(choiceElement.prop('value')).toBe(choices[index].value);
+        expect(choiceElement.prop('id')).toBe(choices[index].id);
         expect(choiceElement.prop('helpText')).toBe(choices[index].helpText);
       });
     });

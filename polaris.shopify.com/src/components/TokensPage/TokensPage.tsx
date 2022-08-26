@@ -1,23 +1,23 @@
-import styles from './TokensPage.module.scss';
-import {TokenGroup, tokens as allTokens} from '@shopify/polaris-tokens';
-import Container from '../Container';
-import {TokenPropertiesWithName} from '../../types';
-import TokenList from '../TokenList';
-import type {NavItem} from '../Nav';
-import Link from 'next/link';
-import {slugify} from '../../utils/various';
-import {useRouter} from 'next/router';
+import styles from "./TokensPage.module.scss";
+import { MetadataGroup, metadata as allTokens } from "@shopify/polaris-tokens";
+import Container from "../Container";
+import { TokenPropertiesWithName } from "../../types";
+import TokenList from "../TokenList";
+import type { NavItem } from "../Nav";
+import Link from "next/link";
+import { slugify } from "../../utils/various";
+import { useRouter } from "next/router";
 
 interface Props {
   tokenGroup:
-    | 'breakpoints'
-    | 'colors'
-    | 'depth'
-    | 'motion'
-    | 'shape'
-    | 'spacing'
-    | 'typography'
-    | 'zIndex';
+    | "breakpoints"
+    | "colors"
+    | "depth"
+    | "font"
+    | "motion"
+    | "shape"
+    | "spacing"
+    | "zIndex";
 }
 
 const navItems: NavItem[] = [
@@ -26,8 +26,8 @@ const navItems: NavItem[] = [
     url: `/tokens/colors`,
   },
   {
-    title: 'Typography',
-    url: `/tokens/typography`,
+    title: "Font",
+    url: `/tokens/font`,
   },
   {
     title: 'Shape',
@@ -57,7 +57,7 @@ const navItems: NavItem[] = [
 
 function tokensToFilteredArray(
   filter: string,
-  tokenGroup: TokenGroup,
+  tokenGroup: MetadataGroup
 ): TokenPropertiesWithName[] {
   return Object.entries(tokenGroup)
     .filter(([name]) => {
@@ -74,12 +74,12 @@ function TokensPage({tokenGroup}: Props) {
 
   const tokens = {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
-    colors: tokensToFilteredArray(filter, allTokens.colorSchemes.light),
+    colors: tokensToFilteredArray(filter, allTokens.colors),
     depth: tokensToFilteredArray(filter, allTokens.depth),
+    font: tokensToFilteredArray(filter, allTokens.font),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shape: tokensToFilteredArray(filter, allTokens.shape),
     spacing: tokensToFilteredArray(filter, allTokens.spacing),
-    typography: tokensToFilteredArray(filter, allTokens.typography),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
 

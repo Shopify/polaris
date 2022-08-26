@@ -2,13 +2,15 @@ import {useState, useEffect} from 'react';
 import Fuse from 'fuse.js';
 import {useRouter} from 'next/router';
 import {Dialog} from '@headlessui/react';
-import iconMetadata, {Icon} from '@shopify/polaris-icons/metadata';
+import iconMetadata from '@shopify/polaris-icons/metadata';
+import type {Icon as IconType} from '@shopify/polaris-icons/metadata';
 import {useMedia} from '../../utils/hooks';
 import styles from './IconsPage.module.scss';
 import Container from '../Container';
 import IconGrid from '../IconGrid';
 import SearchField from '../SearchField';
-import Image from '../Image';
+import {SearchMajor} from '@shopify/polaris-icons';
+import Icon from '../Icon';
 import IconDetails from '../IconDetails';
 import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
@@ -65,8 +67,8 @@ function IconsPage() {
   const router = useRouter();
   const useModal = useMedia('screen and (max-width: 850px)');
   const [searchText, setSearchText] = useState('');
-  const [minorIcons, setMinorIcons] = useState<Icon[]>([]);
-  const [majorIcons, setMajorIcons] = useState<Icon[]>([]);
+  const [minorIcons, setMinorIcons] = useState<IconType[]>([]);
+  const [majorIcons, setMajorIcons] = useState<IconType[]>([]);
   const activeIcon = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? '';
@@ -148,13 +150,7 @@ function IconsPage() {
 
           {minorIcons.length === 0 && majorIcons.length === 0 ? (
             <div className={styles.NoSearchResults}>
-              <Image
-                src="/icons/SearchMajor.svg"
-                width={40}
-                height={40}
-                alt="A magnifying glass icon"
-                icon
-              />
+              <Icon source={SearchMajor} width={40} height={40} />
               <div>
                 <h2>No matches for {`"${searchText}"`}</h2>
                 <p>

@@ -30,9 +30,13 @@ examples:
   - fileName: data-table-with-all-of-its-elements.tsx
     title: With all of its elements
     description: Use as a broad example that includes most props available to data table.
-  - fileName: data-table-with-fixed-first-column.tsx
-    title: With fixed first column
-    description: Use when the table contains many columns and it would benefit the merchant to see the first column when scrolling to the right.
+  - fileName: data-table-with-fixed-first-columns.tsx
+    title: With fixed first columns
+    description:
+      Use when the table contains many columns and it would benefit the merchant to see a set number of columns when scrolling to the right. For example, the first column in the "Sales by Product" report table is fixed because the product names are important to reference while analyzing the sales data in other columns.
+
+
+      When fixing multiple columns, ensure other data within the table is visible and not limited on smaller screens.
   - fileName: data-table-with-increased-density-and-zebra-striping.tsx
     title: With increased density and zebra striping
     description: Use as a broad example that includes most props available to data table.
@@ -53,7 +57,7 @@ Data tables should:
 - Include a summary row to surface the column totals.
 - Not include calculations within the summary row.
 - Wrap instead of truncate content. This is because if row titles start with the same word, they’ll all appear the same when truncated.
-- Not to be used for an actionable list of items that link to details pages. For this functionality, use the [resource list] component.
+- Not to be used for an actionable list of items that link to details pages. For this functionality, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
 ### Alignment
 

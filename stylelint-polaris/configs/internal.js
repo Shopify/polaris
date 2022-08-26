@@ -45,18 +45,15 @@ module.exports = {
         ],
       },
     },
-    [mediaQueriesAllowedList]: [
-      {
-        // Allowed media types and media conditions
-        // https://www.w3.org/TR/mediaqueries-5/#media
-        allowedMediaTypes: ['print', 'screen'],
-        allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
-        allowedScssInterpolations: [
-          // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
-          /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
-        ],
-      },
-      {severity: 'warning'},
-    ],
+    [mediaQueriesAllowedList]: {
+      // Allowed media types and media conditions
+      // https://www.w3.org/TR/mediaqueries-5/#media
+      allowedMediaTypes: ['print', 'screen'],
+      allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+      allowedScssInterpolations: [
+        // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
+        /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+      ],
+    },
   },
 };

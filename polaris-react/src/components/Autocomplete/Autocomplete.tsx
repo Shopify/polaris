@@ -151,6 +151,11 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
 
   const updateSelection = useCallback(
     (newSelection: string) => {
+      if (actionBefore && newSelection === actionBefore.content) {
+        actionBefore.onAction && actionBefore.onAction();
+        return;
+      }
+
       if (allowMultiple) {
         if (selected.includes(newSelection)) {
           onSelect(selected.filter((option) => option !== newSelection));
@@ -161,7 +166,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
         onSelect([newSelection]);
       }
     },
-    [allowMultiple, onSelect, selected],
+    [allowMultiple, onSelect, selected, actionBefore],
   );
 
   const actionMarkup = actionBefore && <MappedAction {...actionBefore} />;

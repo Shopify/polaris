@@ -60,7 +60,7 @@ Labels should:
 - Give a short description (1–3 words) of the requested input.
 - Be written in sentence case (the first word capitalized, the rest lowercase).
 - Avoid punctuation and articles (“the”, “an”, “a”).
-- Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
+- Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
 <!-- dodont -->

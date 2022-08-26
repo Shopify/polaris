@@ -101,12 +101,12 @@
       width: 50px;
       border-radius: var(--border-radius-800);
 
-      img {
+      svg {
         opacity: 0.66;
       }
 
       @include dark-mode {
-        img {
+        svg {
           filter: invert(1);
         }
       }

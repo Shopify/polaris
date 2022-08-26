@@ -1,9 +1,10 @@
-import Image from 'next/image';
+import Icon from '../Icon';
 import Link from 'next/link';
 import React from 'react';
 import {stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './FoundationsGrid.module.scss';
+import * as polarisIcons from '@shopify/polaris-icons';
 
 interface Props {
   title?: string;
@@ -45,7 +46,7 @@ function FoundationsGridItem({
       <Link href={url} passHref>
         <a {...searchAttributes}>
           <div className={styles.Icon}>
-            <Image src={`/icons/${icon}.svg`} alt="" width={20} height={20} />
+            <Icon source={(polarisIcons as any)[icon]} />
           </div>
           <h4>{title}</h4>
           <p>{stripMarkdownLinks(description)}</p>

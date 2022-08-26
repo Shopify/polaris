@@ -148,104 +148,14 @@ export function WithLinkComponent() {
   };
 
   return (
-    <AppProvider
-      linkComponent={CustomLinkComponent}
-      i18n={{
-        Polaris: {
-          Page: {
-            Header: {
-              rollupButton: 'Actions',
-            },
-          },
-        },
-      }}
-    >
+    <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
         breadcrumbs={[{content: 'Products', url: '#'}]}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
-        secondaryActions={[
-          {content: 'Duplicate', url: '#'},
-          {content: 'View on your store', url: '#'},
-        ]}
       >
         <p>Page content</p>
       </Page>
     </AppProvider>
-  );
-}
-
-export function WithColorScheme() {
-  const [isDirty, setIsDirty] = useState(false);
-  const [searchFieldValue, setSearchFieldValue] = useState('');
-
-  const handleSearchChange = useCallback(
-    (searchFieldValue) => setSearchFieldValue(searchFieldValue),
-    [],
-  );
-
-  const toggleIsDirty = useCallback(
-    () => setIsDirty((isDirty) => !isDirty),
-    [],
-  );
-
-  const contentStatus = isDirty ? 'Disable' : 'Enable';
-  const textStatus = isDirty ? 'enabled' : 'disabled';
-
-  const pageMarkup = (
-    <Page title="Account">
-      <Layout>
-        <Layout.Section>
-          <SettingToggle
-            action={{
-              content: contentStatus,
-              onAction: toggleIsDirty,
-            }}
-            enabled={isDirty}
-          >
-            This setting is{' '}
-            <TextStyle variation="strong">{textStatus}</TextStyle>.
-          </SettingToggle>
-        </Layout.Section>
-      </Layout>
-    </Page>
-  );
-
-  const contextualSaveBarMarkup = isDirty ? (
-    <ContextualSaveBar
-      message="Unsaved changes"
-      saveAction={{
-        onAction: toggleIsDirty,
-      }}
-      discardAction={{
-        onAction: toggleIsDirty,
-      }}
-    />
-  ) : null;
-
-  return (
-    <div style={{height: '250px'}}>
-      <AppProvider
-        colorScheme="dark"
-        i18n={{
-          Polaris: {
-            Frame: {skipToContent: 'Skip to content'},
-            ContextualSaveBar: {
-              save: 'Save',
-              discard: 'Discard',
-            },
-            TopBar: {
-              SearchField: {
-                clearButtonLabel: 'Clear',
-                search: 'Search',
-              },
-            },
-          },
-        }}
-      >
-        {contextualSaveBarMarkup}
-        {pageMarkup}
-      </AppProvider>
-    </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, {FocusEventHandler, useState} from 'react';
+import React, {FocusEventHandler, useRef} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -12,7 +12,7 @@ import {Tooltip} from '../../../Tooltip';
 export interface CellProps {
   content?: React.ReactNode;
   contentType?: string;
-  firstColumn?: boolean;
+  nthColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
   total?: boolean;
@@ -29,16 +29,17 @@ export interface CellProps {
   stickyCellWidth?: number;
   hovered?: boolean;
   handleFocus?: FocusEventHandler;
-  inFixedFirstColumn?: boolean;
-  hasFixedFirstColumn?: boolean;
+  inFixedNthColumn?: boolean;
+  hasFixedNthColumn?: boolean;
   fixedCellVisible?: boolean;
   firstColumnMinWidth?: string;
+  style?: React.CSSProperties;
 }
 
 export function Cell({
   content,
   contentType,
-  firstColumn,
+  nthColumn,
   truncate,
   header,
   total,
@@ -46,7 +47,7 @@ export function Cell({
   sorted,
   sortable,
   sortDirection,
-  inFixedFirstColumn,
+  inFixedNthColumn,
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
@@ -56,32 +57,19 @@ export function Cell({
   stickyCellWidth,
   hovered = false,
   handleFocus = () => {},
-  hasFixedFirstColumn = false,
+  hasFixedNthColumn = false,
   fixedCellVisible = false,
   firstColumnMinWidth,
+  style,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
 
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [tooltipContent, setTooltipContent] = useState('');
-
-  function setTooltip(ref: HTMLTableCellElement | null) {
-    if (!ref) {
-      return;
-    }
-    // Since the cell can accept any React node, we'll only show a tooltip when the cell content has an innerText
-    if (ref.scrollWidth > ref.offsetWidth && ref.innerText) {
-      setShowTooltip(true);
-      setTooltipContent(ref.innerText);
-    }
-  }
-
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
-    firstColumn && styles['Cell-firstColumn'],
-    firstColumn && truncate && styles['Cell-truncated'],
+    nthColumn && styles['Cell-firstColumn'],
+    nthColumn && truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     totalInFooter && styles['Cell-total-footer'],
@@ -91,8 +79,8 @@ export function Cell({
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
     fixedCellVisible && styles.separate,
-    firstColumn &&
-      inFixedFirstColumn &&
+    nthColumn &&
+      inFixedNthColumn &&
       stickyHeadingCell &&
       styles.FixedFirstColumn,
   );
@@ -123,9 +111,9 @@ export function Cell({
 
   const focusable = !(
     stickyHeadingCell &&
-    hasFixedFirstColumn &&
-    firstColumn &&
-    !inFixedFirstColumn
+    hasFixedNthColumn &&
+    nthColumn &&
+    !inFixedNthColumn
   );
 
   const sortableHeadingContent = (
@@ -144,6 +132,11 @@ export function Cell({
 
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
+  const minWidthStyles =
+    nthColumn && firstColumnMinWidth
+      ? {minWidth: firstColumnMinWidth}
+      : {minWidth: stickyCellWidth};
+
   const stickyHeading = (
     <th
       ref={setRef}
@@ -151,11 +144,10 @@ export function Cell({
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
-      style={
-        firstColumn && firstColumnMinWidth
-          ? {minWidth: firstColumnMinWidth}
-          : {minWidth: stickyCellWidth}
-      }
+      style={{
+        ...style,
+        ...minWidthStyles,
+      }}
       data-index-table-sticky-heading
     >
       {columnHeadingContent}
@@ -169,7 +161,7 @@ export function Cell({
       className={className}
       scope="col"
       aria-sort={sortDirection}
-      style={firstColumn ? {minWidth: firstColumnMinWidth} : {}}
+      style={nthColumn ? {minWidth: firstColumnMinWidth} : {}}
     >
       {columnHeadingContent}
     </th>
@@ -180,22 +172,15 @@ export function Cell({
       scope="row"
       {...colSpanProp}
       ref={(ref) => {
-        setTooltip(ref);
         setRef(ref);
       }}
     >
-      {showTooltip ? (
-        <Tooltip content={tooltipContent}>
-          <span className={styles.TooltipContent}>{content}</span>
-        </Tooltip>
-      ) : (
-        content
-      )}
+      <TruncatedText className={styles.TooltipContent}>{content}</TruncatedText>
     </th>
   );
 
   const cellMarkup =
-    header || firstColumn ? (
+    header || nthColumn ? (
       headingMarkup
     ) : (
       <td className={className} {...colSpanProp}>
@@ -205,3 +190,25 @@ export function Cell({
 
   return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
+
+const TruncatedText = ({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const textRef = useRef<any | null>(null);
+  const {current} = textRef;
+  const text = (
+    <span ref={textRef} className={className}>
+      {children}
+    </span>
+  );
+
+  return current?.scrollWidth > current?.offsetWidth ? (
+    <Tooltip content={textRef.current.innerText}>{text}</Tooltip>
+  ) : (
+    text
+  );
+};

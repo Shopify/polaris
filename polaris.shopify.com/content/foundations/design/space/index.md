@@ -55,36 +55,38 @@ Merchants experience pages, space should feel like a small part of a bigger syst
 
 ## Spacing tools
 
-### Polaris size units
+### Polaris space units
 
-All measurements used across the experience (space, width, height, etc) must reference Polaris size units to guarantee visual consistency and balance.
+All measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.
 
 <div class="punit-img">
-  <img src="/images/foundations/design/space/spacing-polaris-units.svg" alt="A visual example of a polaris unit">
+  <img src="/images/foundations/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
 </div>
 
-### Size scale
+### Space scale
 
-| Value        | Size         | px value | rem value |
-| ------------ | ------------ | -------- | --------- |
-| 0            | --p-size-0   | 0        | 0         |
-| 0.25         | --p-size-025 | 1        | 0.0625    |
-| 0.5          | --p-size-05  | 2        | 0.03125   |
-| **1 (base)** | --p-size-1   | 4        | 0.25      |
-| 2            | --p-size-2   | 8        | 0.5       |
-| 3            | --p-size-3   | 12       | 0.75      |
-| 4            | --p-size-4   | 16       | 1         |
-| 5            | --p-size-5   | 20       | 1.25      |
-| 6            | --p-size-6   | 24       | 1.5       |
-| 8            | --p-size-8   | 32       | 2         |
-| 10           | --p-size-10  | 40       | 2.5       |
-| 12           | --p-size-12  | 48       | 3         |
-| 16           | --p-size-16  | 64       | 4         |
-| 24           | --p-size-24  | 96       | 6         |
-| 32           | --p-size-32  | 128      | 8         |
+| Value        | Space         | px value | rem value |
+| ------------ | ------------- | -------- | --------- |
+| 0            | --p-space-0   | 0        | 0         |
+| 0.25         | --p-space-025 | 1        | 0.0625    |
+| 0.5          | --p-space-05  | 2        | 0.125     |
+| **1 (base)** | --p-space-1   | 4        | 0.25      |
+| 2            | --p-space-2   | 8        | 0.5       |
+| 3            | --p-space-3   | 12       | 0.75      |
+| 4            | --p-space-4   | 16       | 1         |
+| 5            | --p-space-5   | 20       | 1.25      |
+| 6            | --p-space-6   | 24       | 1.5       |
+| 8            | --p-space-8   | 32       | 2         |
+| 10           | --p-space-10  | 40       | 2.5       |
+| 12           | --p-space-12  | 48       | 3         |
+| 16           | --p-space-16  | 64       | 4         |
+| 20           | --p-space-20  | 80       | 5         |
+| 24           | --p-space-24  | 96       | 6         |
+| 28           | --p-space-28  | 112      | 7         |
+| 32           | --p-space-32  | 128      | 8         |
 
 Polaris units are more dense at a small scale, and less so as dimensions increase.
-This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different sizes.
+This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different spaces.
 
 ![Examples of different variations of spacing](/images/foundations/design/space/spacing-scale-examples@2x.png)
 
@@ -116,7 +118,7 @@ The grid adapts to the viewport width. The amount of columns will change dependi
 | ---------------------------------------- | ------- | ------ | ------ | ---------- |
 | **XS** <br/> 0-489 <br/> Phones          | 6       | 16     | 16     | Collapsed  |
 | **SM** <br/> 490-767 <br/> Small tablets | 6       | 16     | 16     | Collapsed  |
-| **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Collapsed  |
+| **MD** <br/> 768-1039 <br/> Tablets      | 6       | 24     | 16     | Visible    |
 | **LG** <br/> 1040-1399 <br/> Laptops     | 12      | 24     | 16     | Visible    |
 | **XL** <br/> 1440+ <br/> Desktops        | 12      | 32     | 16     | Visible    |
 

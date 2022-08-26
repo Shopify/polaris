@@ -1,6 +1,5 @@
 import React from 'react';
 
-// eslint-disable-next-line import/no-deprecated
 import {AnnotatedSection, Section} from './components';
 import styles from './Layout.scss';
 
@@ -12,13 +11,12 @@ export interface LayoutProps {
 }
 
 export const Layout: React.FunctionComponent<LayoutProps> & {
-  // eslint-disable-next-line import/no-deprecated
   AnnotatedSection: typeof AnnotatedSection;
   Section: typeof Section;
 } = function Layout({sectioned, children}: LayoutProps) {
   const content = sectioned ? <Section>{children}</Section> : children;
   return <div className={styles.Layout}>{content}</div>;
 };
-// eslint-disable-next-line import/no-deprecated
+
 Layout.AnnotatedSection = AnnotatedSection;
 Layout.Section = Section;

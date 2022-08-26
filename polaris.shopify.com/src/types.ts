@@ -1,12 +1,12 @@
-import {TokenProperties} from '@shopify/polaris-tokens';
-import {Icon} from '@shopify/polaris-icons/metadata';
+import { MetadataProperties } from "@shopify/polaris-tokens";
+import { Icon } from "@shopify/polaris-icons/metadata";
 
 export type MarkdownFile = {
   frontMatter: any;
   readme: string;
 };
 
-export interface TokenPropertiesWithName extends TokenProperties {
+export interface TokenPropertiesWithName extends MetadataProperties {
   name: string;
 }
 

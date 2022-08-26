@@ -40,7 +40,6 @@
       "checkbox": "checkbox",
       "undo": "Undo",
       "cancel": "Cancel",
-      "newWindowAccessibilityHint": "(opens a new window)",
       "clear": "Clear",
       "close": "Close",
       "submit": "Submit",
@@ -179,7 +178,8 @@
       "undo": "Undo",
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Select {resourceName}",
-      "selectButtonText": "Select"
+      "selectButtonText": "Select",
+      "sortAccessibilityLabel": "sort {direction} by"
     },
     "Loading": {
       "label": "Page loading bar"

@@ -1,6 +1,6 @@
 import React from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {tokens} from '@shopify/polaris-tokens';
+import {motion} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -57,8 +57,8 @@ export function ProgressBar({
   const parsedProgress = parseProgress(progress, warningMessage);
 
   const progressBarDuration = hasAppearAnimation
-    ? tokens.motion['duration-500'].value
-    : tokens.motion['duration-0'].value;
+    ? motion['duration-500']
+    : motion['duration-0'];
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (

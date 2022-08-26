@@ -32,7 +32,6 @@
       "checkbox": "caixa de seleção",
       "undo": "Desfazer",
       "cancel": "Cancelar",
-      "newWindowAccessibilityHint": "(abre uma nova janela)",
       "clear": "Limpar",
       "close": "Fechar",
       "submit": "Enviar",
@@ -298,7 +297,8 @@
       "undo": "Desfazer",
       "selectAllItems": "Selecionar todos os {resourceNamePlural} maiores que {itemsLength}",
       "selectItem": "Selecionar {resourceName}",
-      "selectButtonText": "Selecionar"
+      "selectButtonText": "Selecionar",
+      "sortAccessibilityLabel": "ordenar {direction} por"
     },
     "Page": {
       "Header": {

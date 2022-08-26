@@ -651,6 +651,9 @@ export function WithAction() {
           ellipsis: true,
           helpText: 'Help text',
           icon: CirclePlusMinor,
+          onAction: () => {
+            console.log('actionBefore clicked!');
+          },
         }}
         options={options}
         selected={selectedOptions}
@@ -743,6 +746,9 @@ export function WithWrappingAction() {
           helpText: 'Help text',
           icon: CirclePlusMinor,
           wrapOverflow: true,
+          onAction: () => {
+            console.log('actionBefore clicked!');
+          },
         }}
         options={options}
         selected={selectedOptions}
@@ -828,6 +834,9 @@ export function WithDestructiveAction() {
           content: 'Destructive action',
           destructive: true,
           icon: DeleteMinor,
+          onAction: () => {
+            console.log('actionBefore clicked!');
+          },
         }}
         options={options}
         selected={selectedOptions}

@@ -6,7 +6,7 @@
   margin: var(--p-space-5) 0;
   width: 100%;
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     margin: var(--p-space-5);
     width: auto;
   }

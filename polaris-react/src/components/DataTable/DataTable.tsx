@@ -94,8 +94,10 @@ export interface DataTableProps {
   hasZebraStripingOnData?: boolean;
   /** Header becomes sticky and pins to top of table when scrolling  */
   stickyHeader?: boolean;
-  /** Add a fixed first column on horizontal scroll. */
+  /** @deprecated Add a fixed first column on horizontal scroll. Use fixedFirstColumns={n} instead. */
   hasFixedFirstColumn?: boolean;
+  /** Add fixed columns on horizontal scroll. */
+  fixedFirstColumns?: number;
   /** Specify a min width for the first column if neccessary */
   firstColumnMinWidth?: string;
 }
@@ -185,6 +187,15 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       isScrolledFarthestRight,
     } = this.state;
 
+    if (fixedFirstColumn && process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'Deprecation: The `hasFixedFirstColumn` prop on the `DataTable` has been deprecated. Use fixedFirstColumns={n} instead.',
+      );
+    }
+
+    const fixedFirstColumns = this.fixedFirstColumns();
+
     const rowCountIsEven = rows.length % 2 === 0;
 
     const className = classNames(
@@ -209,7 +220,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           this.renderHeading({
             heading,
             headingIndex: index,
-            inFixedFirstColumn: false,
+            inFixedNthColumn: false,
             inStickyHeader: false,
           }),
         )}
@@ -217,62 +228,72 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
 
     const totalsMarkup = totals ? (
-      <tr>{totals.map(this.renderTotals)}</tr>
+      <tr>{totals.map((total, index) => this.renderTotals({total, index}))}</tr>
     ) : null;
 
-    const firstColumn = rows.map((row) => row.slice(0, 1));
-    const firstHeading = headings.slice(0, 1);
-    const firstTotal = totals?.slice(0, 1);
+    const nthColumns = rows.map((row) => row.slice(0, fixedFirstColumns));
+    const nthHeadings = headings.slice(0, fixedFirstColumns);
+    const nthTotals = totals?.slice(0, fixedFirstColumns);
     const tableHeaderRows = this.table.current?.children[0].childNodes;
     const tableBodyRows = this.table.current?.children[1].childNodes;
     const headerRowHeights: number[] = getRowClientHeights(tableHeaderRows);
     const bodyRowHeights: number[] = getRowClientHeights(tableBodyRows);
 
-    const fixedFirstColumnMarkup = condensed && fixedFirstColumn && (
+    const fixedNthColumnMarkup = condensed && fixedFirstColumns !== 0 && (
       <table
         className={classNames(
           styles.FixedFirstColumn,
           !isScrolledFarthestLeft && styles.separate,
         )}
-        style={{maxWidth: `${columnVisibilityData[0]?.rightEdge}px`}}
+        style={{
+          maxWidth: `${
+            columnVisibilityData[fixedFirstColumns - 1]?.rightEdge
+          }px`,
+        }}
       >
         <thead>
           <tr style={{height: `${headerRowHeights[0]}px`}}>
-            {firstHeading.map((heading, index) =>
+            {nthHeadings.map((heading, index) =>
               this.renderHeading({
                 heading,
                 headingIndex: index,
-                inFixedFirstColumn: true,
+                inFixedNthColumn: true,
                 inStickyHeader: false,
               }),
             )}
           </tr>
           {totals && !showTotalsInFooter && (
             <tr style={{height: `${headerRowHeights[1]}px`}}>
-              {firstTotal?.map(this.renderTotals)}
+              {nthTotals?.map((total, index) =>
+                this.renderTotals({total, index}),
+              )}
             </tr>
           )}
         </thead>
         <tbody>
-          {firstColumn.map((row, index) =>
+          {nthColumns.map((row, index) =>
             this.defaultRenderRow({
               row,
               index,
-              inFixedFirstColumn: true,
+              inFixedNthColumn: true,
               rowHeights: bodyRowHeights,
             }),
           )}
         </tbody>
         {totals && showTotalsInFooter && (
           <tfoot>
-            <tr>{firstTotal?.map(this.renderTotals)}</tr>
+            <tr>
+              {nthTotals?.map((total, index) =>
+                this.renderTotals({total, index}),
+              )}
+            </tr>
           </tfoot>
         )}
       </table>
     );
 
     const bodyMarkup = rows.map((row, index) =>
-      this.defaultRenderRow({row, index, inFixedFirstColumn: false}),
+      this.defaultRenderRow({row, index, inFixedNthColumn: false}),
     );
 
     const footerMarkup = footerContent ? (
@@ -292,7 +313,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           isScrolledFarthestRight={isScrolledFarthestRight}
           navigateTableLeft={this.navigateTable('left')}
           navigateTableRight={this.navigateTable('right')}
-          fixedFirstColumn={fixedFirstColumn}
+          fixedFirstColumns={fixedFirstColumns}
           setRef={(ref: any) => {
             if (location === 'header') {
               this.headerNav = ref;
@@ -336,7 +357,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
                           return this.renderHeading({
                             heading,
                             headingIndex: index,
-                            inFixedFirstColumn: index === 0 && fixedFirstColumn,
+                            inFixedNthColumn: Boolean(
+                              index <= fixedFirstColumns - 1 &&
+                                fixedFirstColumns,
+                            ),
                             inStickyHeader: true,
                           });
                         })}
@@ -364,7 +388,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               event="scroll"
               handler={this.scrollListener}
             />
-            {fixedFirstColumnMarkup}
+            {fixedNthColumnMarkup}
             <table className={styles.Table} ref={this.table}>
               <thead>
                 {headingMarkup}
@@ -378,6 +402,18 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         </div>
       </div>
     );
+  }
+
+  private fixedFirstColumns() {
+    const {hasFixedFirstColumn, fixedFirstColumns = 0, headings} = this.props;
+    const numberOfFixedFirstColumns =
+      hasFixedFirstColumn && !fixedFirstColumns ? 1 : fixedFirstColumns;
+
+    if (numberOfFixedFirstColumns >= headings.length) {
+      return 0;
+    }
+
+    return numberOfFixedFirstColumns;
   }
 
   private setCellRef = ({
@@ -469,6 +505,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private calculateColumnVisibilityData = (condensed: boolean) => {
+    const fixedFirstColumns = this.fixedFirstColumns();
     const {
       table: {current: table},
       scrollContainer: {current: scrollContainer},
@@ -476,16 +513,19 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     } = this;
 
     if (condensed && table && scrollContainer && dataTable) {
-      const headerCells = table.querySelectorAll(headerCell.selector);
-      const {hasFixedFirstColumn: fixedFirstColumn} = this.props;
-      const firstColumnWidth = fixedFirstColumn
-        ? headerCells[0].clientWidth
+      const headerCells = table.querySelectorAll<HTMLTableCellElement>(
+        headerCell.selector,
+      );
+
+      const rightMostHeader = headerCells[fixedFirstColumns - 1];
+      const nthColumnWidth = fixedFirstColumns
+        ? rightMostHeader.offsetLeft + rightMostHeader.offsetWidth
         : 0;
 
       if (headerCells.length > 0) {
         const firstVisibleColumnIndex = headerCells.length - 1;
         const tableLeftVisibleEdge =
-          scrollContainer.scrollLeft + firstColumnWidth;
+          scrollContainer.scrollLeft + nthColumnWidth;
 
         const tableRightVisibleEdge =
           scrollContainer.scrollLeft + dataTable.offsetWidth;
@@ -503,8 +543,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         const lastColumn =
           columnVisibilityData[columnVisibilityData.length - 1];
 
-        const isScrolledFarthestLeft = fixedFirstColumn
-          ? tableLeftVisibleEdge === firstColumnWidth
+        const isScrolledFarthestLeft = fixedFirstColumns
+          ? tableLeftVisibleEdge === nthColumnWidth
           : tableLeftVisibleEdge === 0;
 
         return {
@@ -525,6 +565,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private handleHeaderButtonFocus = (event: Event) => {
+    const fixedFirstColumns = this.fixedFirstColumns();
     if (
       this.scrollContainer.current == null ||
       event.target == null ||
@@ -539,17 +580,17 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const tableScrollLeft = this.scrollContainer.current.scrollLeft;
     const tableViewableWidth = this.scrollContainer.current.offsetWidth;
     const tableRightEdge = tableScrollLeft + tableViewableWidth;
-    const firstColumnWidth =
+    const nthColumnWidth =
       this.state.columnVisibilityData.length > 0
-        ? this.state.columnVisibilityData[0]?.rightEdge
+        ? this.state.columnVisibilityData[fixedFirstColumns]?.rightEdge
         : 0;
     const currentColumnLeftEdge = currentCell.offsetLeft;
     const currentColumnRightEdge =
       currentCell.offsetLeft + currentCell.offsetWidth;
 
-    if (tableScrollLeft > currentColumnLeftEdge - firstColumnWidth) {
+    if (tableScrollLeft > currentColumnLeftEdge - nthColumnWidth) {
       this.scrollContainer.current.scrollLeft =
-        currentColumnLeftEdge - firstColumnWidth;
+        currentColumnLeftEdge - nthColumnWidth;
     }
 
     if (currentColumnRightEdge > tableRightEdge) {
@@ -593,16 +634,17 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private handleFocus: FocusEventHandler = (event) => {
+    const fixedFirstColumns = this.fixedFirstColumns();
     if (this.scrollContainer.current == null || event.target == null) {
       return;
     }
     const currentCell = event.target.parentNode as HTMLTableCellElement;
-    const fixedFirstColumn = this.props;
-    const firstColumnWidth = fixedFirstColumn
-      ? this.state.columnVisibilityData[0]?.rightEdge
+    const fixedNthColumn = this.props;
+    const nthColumnWidth = fixedNthColumn
+      ? this.state.columnVisibilityData[fixedFirstColumns]?.rightEdge
       : 0;
     const currentColumnLeftEdge = currentCell.offsetLeft;
-    const desiredScrollLeft = currentColumnLeftEdge - firstColumnWidth;
+    const desiredScrollLeft = currentColumnLeftEdge - nthColumnWidth;
 
     if (this.scrollContainer.current.scrollLeft > desiredScrollLeft) {
       this.scrollContainer.current.scrollLeft = desiredScrollLeft;
@@ -612,8 +654,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   private navigateTable = (direction: string) => {
+    const fixedFirstColumns = this.fixedFirstColumns();
     const {currentColumn, previousColumn} = this.state;
-    const firstColumnWidth = this.state.columnVisibilityData[0]?.rightEdge;
+    const nthColumnWidth =
+      this.state.columnVisibilityData[fixedFirstColumns - 1]?.rightEdge;
     if (!currentColumn || !previousColumn) {
       return;
     }
@@ -627,11 +671,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     const handleScroll = () => {
       let newScrollLeft = 0;
-      if (this.props.hasFixedFirstColumn) {
+      if (fixedFirstColumns) {
         newScrollLeft =
           direction === 'right'
-            ? prevWidths - firstColumnWidth + currentColumn.width
-            : prevWidths - previousColumn.width - firstColumnWidth;
+            ? prevWidths - nthColumnWidth + currentColumn.width
+            : prevWidths - previousColumn.width - nthColumnWidth;
       } else {
         newScrollLeft =
           direction === 'right'
@@ -656,12 +700,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private renderHeading = ({
     heading,
     headingIndex,
-    inFixedFirstColumn,
+    inFixedNthColumn,
     inStickyHeader,
   }: {
     heading: string | ReactNode;
     headingIndex: number;
-    inFixedFirstColumn: boolean;
+    inFixedNthColumn: boolean;
     inStickyHeader: boolean;
   }) => {
     const {
@@ -673,6 +717,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       verticalAlign,
       firstColumnMinWidth,
     } = this.props;
+    const fixedFirstColumns = this.fixedFirstColumns();
 
     const {
       sortDirection = defaultSortDirection,
@@ -696,9 +741,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         sortable: isSortable,
         sortDirection: direction,
         onSort: this.defaultOnSort(headingIndex),
-        fixedFirstColumn: this.props.hasFixedFirstColumn,
-        inFixedFirstColumn:
-          this.props.hasFixedFirstColumn && inFixedFirstColumn,
+        fixedNthColumn: fixedFirstColumns,
+        inFixedNthColumn: fixedFirstColumns,
       };
     }
 
@@ -706,22 +750,24 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       ? this.tableHeadingWidths[headingIndex]
       : undefined;
 
+    const fixedCellVisible = !isScrolledFarthestLeft;
+
     const cellProps = {
       header: true,
       stickyHeadingCell: inStickyHeader,
       content: heading,
       contentType: columnContentTypes[headingIndex],
-      firstColumn: headingIndex === 0,
+      nthColumn: headingIndex < fixedFirstColumns,
       truncate,
       ...sortableHeadingProps,
       verticalAlign,
       handleFocus: this.handleFocus,
       stickyCellWidth,
-      fixedCellVisible: !isScrolledFarthestLeft,
+      fixedCellVisible,
       firstColumnMinWidth,
     };
 
-    if (inFixedFirstColumn && inStickyHeader) {
+    if (inFixedNthColumn && inStickyHeader) {
       // need two cells for fixed first column (actual cell and the overlapping one)
       // the sticky cell is second so that the index is associated with the sticky
       // cell and not the underlying one. This helps `changeHeadingFocus` to put
@@ -737,7 +783,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               inStickyHeader,
             });
           }}
-          inFixedFirstColumn={false}
+          inFixedNthColumn={false}
         />,
         <Cell
           key={`${id}-sticky`}
@@ -749,7 +795,14 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               inStickyHeader,
             });
           }}
-          inFixedFirstColumn
+          inFixedNthColumn
+          style={{
+            left: this.state.columnVisibilityData[headingIndex]?.leftEdge,
+            borderRight:
+              headingIndex === fixedFirstColumns - 1 && fixedCellVisible
+                ? 'var(--p-border-divider)'
+                : undefined,
+          }}
         />,
       ];
     }
@@ -765,7 +818,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             inStickyHeader,
           });
         }}
-        inFixedFirstColumn={inFixedFirstColumn}
+        inFixedNthColumn={inFixedNthColumn}
       />
     );
   };
@@ -786,7 +839,14 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   };
 
   // eslint-disable-next-line @shopify/react-no-multiple-render-methods
-  private renderTotals = (total: TableData, index: number) => {
+  private renderTotals = ({
+    total,
+    index,
+  }: {
+    total: TableData;
+    index: number;
+  }) => {
+    const fixedFirstColumns = this.fixedFirstColumns();
     const id = `totals-cell-${index}`;
     const {truncate = false, verticalAlign} = this.props;
 
@@ -808,7 +868,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       <Cell
         total
         totalInFooter={totalInFooter}
-        firstColumn={index === 0}
+        nthColumn={index <= fixedFirstColumns - 1}
         key={id}
         content={content}
         contentType={contentType}
@@ -824,6 +884,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     contentTypesLength: number,
     cellIndex: number,
   ) => {
+    // We decided that it shouldn't be possible to have fixed "n" columns and content that spans multiple columns
+    const fixedFirstColumns = this.fixedFirstColumns();
+    if (fixedFirstColumns) {
+      return 1;
+    }
     const rowLen = rowLength ? rowLength : 1;
     const colLen = headingsLength ? headingsLength : contentTypesLength;
     const colSpan = Math.floor(colLen / rowLen);
@@ -834,12 +899,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
   private defaultRenderRow = ({
     row,
     index,
-    inFixedFirstColumn,
+    inFixedNthColumn,
     rowHeights,
   }: {
     row: TableData[];
     index: number;
-    inFixedFirstColumn: boolean;
+    inFixedNthColumn: boolean;
     rowHeights?: number[];
   }) => {
     const {
@@ -849,6 +914,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       hoverable = true,
       headings,
     } = this.props;
+    const fixedFirstColumns = this.fixedFirstColumns();
     const className = classNames(
       styles.TableRow,
       hoverable && styles.hoverable,
@@ -877,12 +943,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               key={id}
               content={content}
               contentType={columnContentTypes[cellIndex]}
-              firstColumn={cellIndex === 0}
+              nthColumn={cellIndex <= fixedFirstColumns - 1}
               truncate={truncate}
               verticalAlign={verticalAlign}
               colSpan={colSpan}
               hovered={hovered}
-              inFixedFirstColumn={inFixedFirstColumn}
+              inFixedNthColumn={inFixedNthColumn}
             />
           );
         })}
