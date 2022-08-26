@@ -1,10 +1,10 @@
 import React, {useMemo} from 'react';
 
 import type {ComplexAction} from '../../types';
-import {SettingAction} from '../SettingAction';
+import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';
-import {globalIdGeneratorFactory} from '../../utilities/unique-id';
+import {SettingAction} from '../SettingAction';
 
 export interface SettingToggleProps {
   /** Inner content of the card */
@@ -13,11 +13,18 @@ export interface SettingToggleProps {
   action?: ComplexAction;
   /** Sets toggle state to activated or deactivated */
   enabled?: boolean;
+  /** Sets toggle state to intermediate / loading */
+  loading?: boolean;
 }
 
 const getUniqueSettingToggleId = globalIdGeneratorFactory('SettingToggle');
 
-export function SettingToggle({enabled, action, children}: SettingToggleProps) {
+export function SettingToggle({
+  loading,
+  enabled,
+  action,
+  children,
+}: SettingToggleProps) {
   const id = useMemo(getUniqueSettingToggleId, []);
 
   const actionMarkup = action
@@ -25,6 +32,7 @@ export function SettingToggle({enabled, action, children}: SettingToggleProps) {
         primary: !enabled,
         role: 'switch',
         id,
+        loading,
         ariaChecked: enabled ? 'true' : 'false',
       })
     : null;

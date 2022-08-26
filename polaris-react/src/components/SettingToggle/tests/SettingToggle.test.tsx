@@ -1,9 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import {Button} from '../../Button';
 import {SettingAction} from '../../SettingAction';
 import {SettingToggle} from '../SettingToggle';
-import {Button} from '../../Button';
 
 describe('<SettingToggle />', () => {
   function getComponentProps(node: React.ReactNode) {
@@ -89,6 +89,20 @@ describe('<SettingToggle />', () => {
         toggle.find(SettingAction)!.prop('action'),
       );
       expect(primary).toBe(false);
+    });
+  });
+
+  describe('loading', () => {
+    it('passes the loading prop to button when loading', () => {
+      const action = {
+        content: 'Click me!',
+        onAction: noop,
+      };
+      const toggle = mountWithApp(<SettingToggle action={action} loading />);
+      const {loading} = getComponentProps(
+        toggle.find(SettingAction)!.prop('action'),
+      );
+      expect(loading).toBe(true);
     });
   });
 

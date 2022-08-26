@@ -7730,6 +7730,13 @@
         "comment": "Sets toggle state to activated or deactivated",
         "optional": true,
         "deprecated": false
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "comment": "Sets toggle state to intermediate / loading",
+        "optional": true,
+        "deprecated": false
       }
     ]
   },
