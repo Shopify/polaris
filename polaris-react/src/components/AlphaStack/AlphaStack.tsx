@@ -13,7 +13,7 @@ type SpacingTokenName = keyof SpacingTokenGroup;
 // TODO: Bring this logic into tokens
 type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
 
-type Alignment = 'left' | 'right' | 'center';
+type Align = 'start' | 'end' | 'center';
 
 export interface AlphaStackProps {
   /** Elements to display inside stack */
@@ -21,14 +21,14 @@ export interface AlphaStackProps {
   /** Adjust spacing between elements */
   spacing?: Spacing;
   /** Adjust vertical alignment of elements */
-  alignment?: Alignment;
+  align?: Align;
 }
 
-export const AlphaStack = ({children, spacing, alignment}: AlphaStackProps) => {
+export const AlphaStack = ({children, spacing, align}: AlphaStackProps) => {
   const className = classNames(
     styles.Stack,
     spacing && styles[variationName('spacing', spacing)],
-    alignment && styles[variationName('alignment', alignment)],
+    align && styles[variationName('align', align)],
   );
 
   const itemMarkup = elementChildren(children).map((child, index) => {
