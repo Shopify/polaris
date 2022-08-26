@@ -1,45 +1,45 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, Heading, Stack} from '@shopify/polaris';
+import {Badge, Heading, Inline} from '@shopify/polaris';
 
 export default {
-  component: Stack,
-} as ComponentMeta<typeof Stack>;
+  component: Inline,
+} as ComponentMeta<typeof Inline>;
 
 export function Default() {
   return (
-    <Stack>
+    <Inline>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
       <Badge>Completed</Badge>
-    </Stack>
+    </Inline>
   );
 }
 
 export function NonWrapping() {
   return (
-    <Stack wrap={false}>
+    <Inline wrap={false}>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
       <Badge>Completed</Badge>
-    </Stack>
+    </Inline>
   );
 }
 
 export function Spacing() {
   return (
-    <Stack spacing="loose">
+    <Inline spacing="8">
       <Badge>Paid</Badge>
       <Badge>Fulfilled</Badge>
-    </Stack>
+    </Inline>
   );
 }
 
 export function VerticalCentering() {
   return (
-    <Stack alignment="center">
+    <Inline alignY="center">
       <Heading>
         Order
         <br />
@@ -49,42 +49,6 @@ export function VerticalCentering() {
       </Heading>
       <Badge>Paid</Badge>
       <Badge>Fulfilled</Badge>
-    </Stack>
-  );
-}
-
-export function FillAvailableSpaceProportionally() {
-  return (
-    <Stack distribution="fill">
-      <Heading>Order #1136</Heading>
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
-    </Stack>
-  );
-}
-
-export function WhereItemsFillSpaceEvenly() {
-  return (
-    <Stack distribution="fillEvenly">
-      <Heading>Order #1136</Heading>
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
-    </Stack>
-  );
-}
-
-export function WhereASingleItemFillsTheRemainingSpace() {
-  return (
-    <Stack>
-      <Stack.Item fill>
-        <Heading>Order #1136</Heading>
-      </Stack.Item>
-      <Stack.Item>
-        <Badge>Paid</Badge>
-      </Stack.Item>
-      <Stack.Item>
-        <Badge>Fulfilled</Badge>
-      </Stack.Item>
-    </Stack>
+    </Inline>
   );
 }
