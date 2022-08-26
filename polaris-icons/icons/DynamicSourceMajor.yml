@@ -1,0 +1,14 @@
+name: Dynamic Source
+set: major
+description: Used to represent connecting to a dynamic source
+keywords:
+  - dynamic source
+  - dynamic
+  - source
+  - database
+  - db
+authors:
+version: 1
+date_added: 2022-08-26
+date_modified: 2022-08-26
+exclusive_use:

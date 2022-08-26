@@ -1,0 +1,16 @@
+name: Insert Dynamic Source
+set: minor
+description: Used to represent inserting a dynamic data source
+keywords:
+  - dynamic source
+  - database
+  - source
+  - dynamic
+  - db
+  - add
+  - insert
+authors:
+version: 1
+date_added: 2022-08-26
+date_modified: 2022-08-26
+exclusive_use:
