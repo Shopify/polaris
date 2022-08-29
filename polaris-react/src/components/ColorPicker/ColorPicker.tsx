@@ -24,12 +24,25 @@ interface State {
   };
 }
 
-export interface ColorPickerProps extends TextFieldProps {
-  /** ID for the element */
-  id?: string;
-  /** Displays a text field that accepts HEX colors */
-  showHexTextField?: boolean;
-}
+type WithTextFieldProps =
+  | {
+      /** Allow user to select an alpha value */
+      allowAlpha?: false;
+      /** Displays a text field that accepts HEX colors */
+      showHexTextField?: never | false;
+    }
+  | {
+      /** Allow user to select an alpha value */
+      allowAlpha?: true;
+      /** Displays a text field that accepts HEX colors */
+      showHexTextField?: boolean;
+    };
+
+export type ColorPickerProps = TextFieldProps &
+  WithTextFieldProps & {
+    /** ID for the element */
+    id?: string;
+  };
 
 const RESIZE_DEBOUNCE_TIME_MS = 200;
 export class ColorPicker extends PureComponent<ColorPickerProps, State> {
@@ -87,7 +100,8 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   }
 
   render() {
-    const {id, color, allowAlpha, fullWidth, onChange} = this.props;
+    const {id, color, allowAlpha, fullWidth, onChange, showHexTextField} =
+      this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
     const {pickerSize} = this.state;
 
@@ -110,22 +124,18 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       />
     ) : null;
 
-    const hexTextFieldMarkup = this.props.showHexTextField ? (
-      <div className={styles.HexTexField}>
-        <div
-          className={styles.SquarePreview}
-          style={{
-            backgroundColor: `rgba(${rgbaColor.red}, ${rgbaColor.green}, ${rgbaColor.blue}, ${alpha})`,
-          }}
-        />
-        <TextField
-          color={color}
-          allowAlpha={allowAlpha}
-          fullWidth={fullWidth}
-          onChange={onChange}
-        />
-      </div>
-    ) : null;
+    const hexTextFieldMarkup =
+      showHexTextField && !allowAlpha ? (
+        <div className={styles.HexTexField}>
+          <div
+            className={styles.SquarePreview}
+            style={{
+              backgroundColor: `rgba(${rgbaColor.red}, ${rgbaColor.green}, ${rgbaColor.blue}, ${alpha})`,
+            }}
+          />
+          <TextField color={color} fullWidth={fullWidth} onChange={onChange} />
+        </div>
+      ) : null;
 
     const className = classNames(
       styles.ColorPicker,

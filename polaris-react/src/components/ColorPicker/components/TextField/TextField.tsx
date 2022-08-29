@@ -20,15 +20,13 @@ interface Color extends HSBColor {
 export interface TextFieldProps {
   /** The currently selected color */
   color: Color;
-  /** Allow user to select an alpha value */
-  allowAlpha?: boolean;
   /** Allow HuePicker to take the full width */
   fullWidth?: boolean;
   /** Callback when color is selected */
   onChange(color: HSBAColor): void;
 }
 
-function TextField({color, allowAlpha, fullWidth, onChange}: TextFieldProps) {
+function TextField({color, fullWidth, onChange}: TextFieldProps) {
   const [internalValue, setInternalValue] = useState<string | null>(
     hsbToHex(color),
   );
@@ -39,7 +37,6 @@ function TextField({color, allowAlpha, fullWidth, onChange}: TextFieldProps) {
 
   const className = classNames(
     styles.ColorPickerTextFieldSize,
-    allowAlpha && styles.withAlpha,
     fullWidth && styles.fullWidth,
   );
 
