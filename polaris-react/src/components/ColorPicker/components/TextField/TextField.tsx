@@ -1,6 +1,12 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect, useState, useRef} from 'react';
 
-import {hsbToHex} from '../../../../utilities/color-transformers';
+import {
+  hsbToHex,
+  expandHex,
+  hexToRgb,
+  rgbToHsb,
+} from '../../../../utilities/color-transformers';
+import {isHexString} from '../../../../utilities/color-validation';
 import type {HSBColor, HSBAColor} from '../../../../utilities/color-types';
 import {classNames} from '../../../../utilities/css';
 import {TextField as PolarisTextField} from '../../../TextField';
@@ -12,6 +18,7 @@ interface Color extends HSBColor {
   alpha?: HSBAColor['alpha'];
 }
 
+// TODO Move the types to here and extend it on ColorPicker
 interface TextFieldProps {
   /** The currently selected color (coming from parent) */
   color: Color;
@@ -19,18 +26,18 @@ interface TextFieldProps {
   allowAlpha?: boolean;
   /** Allow HuePicker to take the full width (coming from parent) */
   fullWidth?: boolean;
+  /** Callback when color is selected (coming from Parent) */
+  onChange(color: HSBAColor): void;
 }
 
-function TextField({color, allowAlpha, fullWidth}: TextFieldProps) {
-  const hexColor = hsbToHex(color);
+function TextField({color, allowAlpha, fullWidth, onChange}: TextFieldProps) {
+  const [internalValue, setInternalValue] = useState<string | null>(
+    hsbToHex(color),
+  );
+  const ignoreChangeRef = useRef(false);
+  const value = internalValue ?? hsbToHex(color);
 
-  const handleTextChange = useCallback(() => {
-    console.log('text changed');
-  }, []);
-
-  const handleBlur = useCallback(() => {
-    console.log('text changed');
-  }, []);
+  const valueForDisplay = value.replace('#', '').toUpperCase();
 
   const className = classNames(
     styles.ColorPickerTextFieldSize,
@@ -38,18 +45,47 @@ function TextField({color, allowAlpha, fullWidth}: TextFieldProps) {
     fullWidth && styles.fullWidth,
   );
 
+  const handleUpdate = useCallback(() => {
+    const validUserInput = coerceToValidUserInput(value);
+
+    if (!validUserInput) {
+      return;
+    }
+
+    setInternalValue(null);
+
+    const colorHasChanged = validUserInput !== hsbToHex(color);
+
+    if (colorHasChanged) {
+      ignoreChangeRef.current = true;
+      onChange({...rgbToHsb(hexToRgb(validUserInput)), alpha: 1});
+    }
+  }, [value, onChange, color]);
+
+  useEffect(() => {
+    if (internalValue !== null) {
+      handleUpdate();
+    }
+  }, [internalValue, handleUpdate]);
+
   return (
     <div className={className}>
       <PolarisTextField
         label=""
+        labelHidden
         prefix="#"
-        value={hexColor.replace('#', '').toUpperCase()}
-        onChange={handleTextChange}
-        onBlur={handleBlur}
+        placeholder={valueForDisplay}
+        value={valueForDisplay}
+        onChange={setInternalValue}
         autoComplete="off"
       />
     </div>
   );
+}
+
+function coerceToValidUserInput(value: string) {
+  const coercedValue = !value.startsWith('#') ? `#${value}` : value;
+  return isHexString(coercedValue) ? expandHex(coercedValue) : null;
 }
 
 export {TextField};

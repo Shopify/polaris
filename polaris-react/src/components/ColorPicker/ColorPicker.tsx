@@ -135,6 +135,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
           color={color}
           allowAlpha={allowAlpha}
           fullWidth={fullWidth}
+          onChange={onChange}
         />
       </div>
     ) : null;
