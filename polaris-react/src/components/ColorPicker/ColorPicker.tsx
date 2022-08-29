@@ -4,7 +4,6 @@ import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';
-import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
@@ -15,6 +14,7 @@ import {
   SlidableProps,
   TextField,
 } from './components';
+import type {TextFieldProps} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
@@ -24,22 +24,9 @@ interface State {
   };
 }
 
-interface Color extends HSBColor {
-  /** Level of transparency */
-  alpha?: HSBAColor['alpha'];
-}
-
-export interface ColorPickerProps {
+export interface ColorPickerProps extends TextFieldProps {
   /** ID for the element */
   id?: string;
-  /** The currently selected color */
-  color: Color;
-  /** Allow user to select an alpha value */
-  allowAlpha?: boolean;
-  /** Allow HuePicker to take the full width */
-  fullWidth?: boolean;
-  /** Callback when color is selected */
-  onChange(color: HSBAColor): void;
   /** Displays a text field that accepts HEX colors */
   showHexTextField?: boolean;
 }

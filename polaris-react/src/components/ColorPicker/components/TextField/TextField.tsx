@@ -18,15 +18,14 @@ interface Color extends HSBColor {
   alpha?: HSBAColor['alpha'];
 }
 
-// TODO Move the types to here and extend it on ColorPicker
-interface TextFieldProps {
-  /** The currently selected color (coming from parent) */
+export interface TextFieldProps {
+  /** The currently selected color */
   color: Color;
-  /** Allow user to select an alpha value (coming from parent) */
+  /** Allow user to select an alpha value */
   allowAlpha?: boolean;
-  /** Allow HuePicker to take the full width (coming from parent) */
+  /** Allow HuePicker to take the full width */
   fullWidth?: boolean;
-  /** Callback when color is selected (coming from Parent) */
+  /** Callback when color is selected */
   onChange(color: HSBAColor): void;
 }
 
