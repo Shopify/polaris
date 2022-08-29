@@ -333,6 +333,11 @@
       height: 0;
       width: 0;
     }
+
+    .FixedFirstColumn {
+      bottom: 0;
+      top: auto;
+    }
   }
 
   .StickyTableColumnHeader-isScrolling {
@@ -356,7 +361,7 @@
   background: inherit;
   z-index: 3;
   border-spacing: 0;
-  bottom: 0;
+  top: 0;
   left: 0;
 
   @media #{$p-breakpoints-md-down} {
