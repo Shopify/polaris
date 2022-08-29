@@ -1,5 +1,5 @@
 ---
-title: [New] badge
+title: New badge
 description: The [New] badge can be used to inform merchants about the recent release of a feature that creates new value for merchants. It should be used sparingly and for a short time frame.
 icon: RefreshMajor
 keywords:

@@ -200,6 +200,13 @@ export const foundationsNavItems: NavItemWithIcon[] = [
     title: 'Patterns',
     children: [
       {
+        title: "New badge",
+        url: "/foundations/patterns/new-badge",
+        icon: "RefreshMajor",
+        description:
+          "new badge guidance",
+      },
+      {
         title: "Design Patterns",
         url: "/foundations/patterns/design-patterns",
         icon: "RefreshMajor",
