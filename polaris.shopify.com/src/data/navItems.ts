@@ -28,7 +28,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           'At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.',
       },
       {
-        title: 'Accessibility',
+        title: 'Accessibility',pattern
         url: '/foundations/foundations/accessibility',
         icon: 'AccessibilityMajor',
         description:
@@ -200,13 +200,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
     title: 'Patterns',
     children: [
       {
-        title: "New badge",
-        url: "/foundations/patterns/new-badge",
-        icon: "StarFilledMinor",
-        description:
-          "new badge guidance",
-      },
-      {
         title: "Design Patterns",
         url: "/foundations/patterns/design-patterns",
         icon: "RefreshMajor",
@@ -261,6 +254,13 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         icon: 'LocationMajor',
         description:
           'Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.',
+      },
+      {
+        title: "New badge",
+        url: "/foundations/patterns/new-badge",
+        icon: "StarFilledMinor",
+        description:
+          "new badge guidance",
       },
     ],
   },
