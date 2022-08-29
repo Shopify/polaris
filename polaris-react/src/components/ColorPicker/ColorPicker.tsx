@@ -8,7 +8,13 @@ import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
-import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
+import {
+  AlphaPicker,
+  HuePicker,
+  Slidable,
+  SlidableProps,
+  TextField,
+} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
@@ -34,6 +40,8 @@ export interface ColorPickerProps {
   fullWidth?: boolean;
   /** Callback when color is selected */
   onChange(color: HSBAColor): void;
+  /** Displays a text field that accepts HEX colors */
+  showHexTextField?: boolean;
 }
 
 const RESIZE_DEBOUNCE_TIME_MS = 200;
@@ -114,27 +122,48 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       />
     ) : null;
 
+    const hexTextFieldMarkup = this.props.showHexTextField ? (
+      <div className={styles.HexTexField}>
+        <div
+          className={styles.SquarePreview}
+          style={{backgroundColor: colorString}}
+        />
+        <TextField
+          color={color}
+          allowAlpha={allowAlpha}
+          fullWidth={fullWidth}
+        />
+      </div>
+    ) : null;
+
     const className = classNames(
       styles.ColorPicker,
       fullWidth && styles.fullWidth,
     );
 
     return (
-      <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
-        <div ref={this.setColorNode} className={styles.MainColor}>
-          <div
-            className={styles.ColorLayer}
-            style={{backgroundColor: colorString}}
-          />
-          <Slidable
-            onChange={this.handleDraggerMove}
-            draggerX={draggerX}
-            draggerY={draggerY}
-          />
+      <div className={className}>
+        <div
+          className={styles.Container}
+          id={id}
+          onMouseDown={this.handlePickerDrag}
+        >
+          <div ref={this.setColorNode} className={styles.MainColor}>
+            <div
+              className={styles.ColorLayer}
+              style={{backgroundColor: colorString}}
+            />
+            <Slidable
+              onChange={this.handleDraggerMove}
+              draggerX={draggerX}
+              draggerY={draggerY}
+            />
+          </div>
+          <HuePicker hue={hue} onChange={this.handleHueChange} />
+          {alphaSliderMarkup}
+          <EventListener event="resize" handler={this.handleResize} />
         </div>
-        <HuePicker hue={hue} onChange={this.handleHueChange} />
-        {alphaSliderMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
+        {hexTextFieldMarkup}
       </div>
     );
   }

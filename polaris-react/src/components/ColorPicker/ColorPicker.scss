@@ -18,6 +18,10 @@
   --pc-color-picker-dragger-shadow: inset 0 1px 2px 0
       var(--p-shadow-color-picker-dragger),
     0 1px 2px 0 var(--p-shadow-color-picker-dragger);
+  --pc-color-picker-square-preview-size: 36px;
+}
+
+.Container {
   user-select: none;
   display: flex;
 }
@@ -160,4 +164,16 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   height: 100%;
   width: 100%;
   cursor: pointer;
+}
+
+.HexTexField {
+  padding: var(--p-space-4) 0;
+  display: flex;
+}
+
+.SquarePreview {
+  width: var(--pc-color-picker-square-preview-size);
+  height: var(--pc-color-picker-square-preview-size);
+  border-radius: var(--p-border-radius-1);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
 }
