@@ -65,11 +65,9 @@ Each item in a `Listbox` should be clear and descriptive.
 
 <!-- end -->
 
-## Patterns that use `Listbox`
+## Patterns that use Listbox
 
-Location picker
-
----
+- [Pickers](https://polaris.shopify.com/foundations/patterns/pickers)
 
 ## Related components
 
