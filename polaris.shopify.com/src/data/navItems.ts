@@ -202,7 +202,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
       {
         title: "New badge",
         url: "/foundations/patterns/new-badge",
-        icon: "RefreshMajor",
+        icon: "StarFilledMinor",
         description:
           "new badge guidance",
       },
