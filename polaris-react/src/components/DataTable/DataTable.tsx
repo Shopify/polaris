@@ -507,7 +507,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     button.style.removeProperty('visibility');
   };
 
-  private calculateColumnVisibilityData = (condensed?: boolean) => {
+  private calculateColumnVisibilityData = (condensed: boolean) => {
     const fixedFirstColumns = this.fixedFirstColumns();
     const {
       table: {current: table},
