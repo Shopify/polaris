@@ -181,15 +181,15 @@ export const colorsNext = {
     value: palettes.blue[600],
     description: '',
   },
-  'bg-interactive-subuded-active': {
+  'bg-interactive-subdued-active': {
     value: palettes.blue[200],
     description: '',
   },
-  'bg-interactive-subuded-hover': {
+  'bg-interactive-subdued-hover': {
     value: palettes.blue[100],
     description: '',
   },
-  'bg-interactive-subuded': {
+  'bg-interactive-subdued': {
     value: palettes.blue[50],
     description: '',
   },
