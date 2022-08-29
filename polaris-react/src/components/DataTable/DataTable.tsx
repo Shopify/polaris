@@ -810,12 +810,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       ];
     }
 
-    console.log({
-      heading,
-      inFixedNthColumn,
-      last: headingIndex === fixedFirstColumns - 1,
-    });
-
     return (
       <Cell
         key={id}
