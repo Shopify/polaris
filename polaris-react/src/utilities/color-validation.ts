@@ -1,6 +1,6 @@
 import type {RGBColor, RGBAColor} from './color-types';
 
-const IS_HEX_STRING_REGEX = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i;
+const IS_HEX_STRING_REGEX = /(^#[0-9A-F]{6}$)/i;
 
 // implements: https://www.w3.org/WAI/ER/WD-AERT/#color-contrast
 export function isLight({red, green, blue}: RGBColor | RGBAColor): boolean {

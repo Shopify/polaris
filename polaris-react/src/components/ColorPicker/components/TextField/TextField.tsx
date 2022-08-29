@@ -2,7 +2,6 @@ import React, {useCallback, useEffect, useState, useRef} from 'react';
 
 import {
   hsbToHex,
-  expandHex,
   hexToRgb,
   rgbToHsb,
 } from '../../../../utilities/color-transformers';
@@ -45,7 +44,8 @@ function TextField({color, allowAlpha, fullWidth, onChange}: TextFieldProps) {
   );
 
   const handleUpdate = useCallback(() => {
-    const validUserInput = coerceToValidUserInput(value);
+    const coercedValue = !value.startsWith('#') ? `#${value}` : value;
+    const validUserInput = isHexString(coercedValue);
 
     if (!validUserInput) {
       return;
@@ -53,11 +53,11 @@ function TextField({color, allowAlpha, fullWidth, onChange}: TextFieldProps) {
 
     setInternalValue(null);
 
-    const colorHasChanged = validUserInput !== hsbToHex(color);
+    const colorHasChanged = coercedValue !== hsbToHex(color);
 
     if (colorHasChanged) {
       ignoreChangeRef.current = true;
-      onChange({...rgbToHsb(hexToRgb(validUserInput)), alpha: 1});
+      onChange({...rgbToHsb(hexToRgb(coercedValue)), alpha: 1});
     }
   }, [value, onChange, color]);
 
@@ -80,11 +80,6 @@ function TextField({color, allowAlpha, fullWidth, onChange}: TextFieldProps) {
       />
     </div>
   );
-}
-
-function coerceToValidUserInput(value: string) {
-  const coercedValue = !value.startsWith('#') ? `#${value}` : value;
-  return isHexString(coercedValue) ? expandHex(coercedValue) : null;
 }
 
 export {TextField};
