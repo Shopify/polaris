@@ -143,12 +143,8 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     );
 
     return (
-      <div className={className}>
-        <div
-          className={styles.Container}
-          id={id}
-          onMouseDown={this.handlePickerDrag}
-        >
+      <div className={className} id={id}>
+        <div className={styles.Container} onMouseDown={this.handlePickerDrag}>
           <div ref={this.setColorNode} className={styles.MainColor}>
             <div
               className={styles.ColorLayer}
