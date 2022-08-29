@@ -38,3 +38,5 @@ export const AlphaStack = ({children, spacing, align}: AlphaStackProps) => {
 
   return <div className={className}>{itemMarkup}</div>;
 };
+
+AlphaStack.Item = Item;
