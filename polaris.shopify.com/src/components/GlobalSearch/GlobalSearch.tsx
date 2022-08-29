@@ -200,7 +200,7 @@ function GlobalSearch() {
               aria-label="Search results"
             >
               {searchResults && (
-                <SearchResults
+                <SearchResultsList
                   searchResults={searchResults}
                   currentItemId={currentItemId}
                 />
@@ -213,7 +213,7 @@ function GlobalSearch() {
   );
 }
 
-function SearchResults({
+function SearchResultsList({
   searchResults,
   currentItemId,
 }: {
