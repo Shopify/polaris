@@ -1,6 +1,6 @@
 name: Identity card
 set: major
-description: Used to represent a personal identification document, such as a driver's license.
+description: Used to represent a personal identification document, such as a driver’s license.
 keywords:
   - document
   - upload
