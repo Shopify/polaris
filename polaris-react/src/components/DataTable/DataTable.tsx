@@ -142,7 +142,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
 
     this.setState({
       condensed,
-      ...this.calculateColumnVisibilityData(),
+      ...this.calculateColumnVisibilityData(condensed),
     });
   });
 
@@ -507,15 +507,16 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     button.style.removeProperty('visibility');
   };
 
-  private calculateColumnVisibilityData = () => {
+  private calculateColumnVisibilityData = (condensed?: boolean) => {
     const fixedFirstColumns = this.fixedFirstColumns();
     const {
       table: {current: table},
       scrollContainer: {current: scrollContainer},
       dataTable: {current: dataTable},
     } = this;
+    const {stickyHeader} = this.props;
 
-    if (table && scrollContainer && dataTable) {
+    if ((stickyHeader || condensed) && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll<HTMLTableCellElement>(
         headerCell.selector,
       );
@@ -619,8 +620,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     }
 
     this.scrollStopTimer = setTimeout(() => {
-      this.setState(() => ({
-        ...this.calculateColumnVisibilityData(),
+      this.setState((prevState) => ({
+        ...this.calculateColumnVisibilityData(prevState.condensed),
       }));
     }, 100);
     this.setState({
@@ -690,8 +691,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         scrollContainer.scrollLeft = newScrollLeft;
 
         requestAnimationFrame(() => {
-          this.setState(() => ({
-            ...this.calculateColumnVisibilityData(),
+          this.setState((prevState) => ({
+            ...this.calculateColumnVisibilityData(prevState.condensed),
           }));
         });
       }
