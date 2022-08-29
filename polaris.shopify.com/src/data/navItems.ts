@@ -28,7 +28,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           'At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.',
       },
       {
-        title: 'Accessibility',pattern
+        title: 'Accessibility',
         url: '/foundations/foundations/accessibility',
         icon: 'AccessibilityMajor',
         description:
