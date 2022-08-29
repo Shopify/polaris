@@ -1,6 +1,5 @@
 import {Link, Page, Card, DataTable} from '@shopify/polaris';
-import {useState} from 'react';
-import {useMedia} from '../../src/utils/hooks';
+import {useState, useEffect} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DataTableWithFixedFirstColumnsExample() {
@@ -337,3 +336,27 @@ function DataTableWithFixedFirstColumnsExample() {
 }
 
 export default withPolarisExample(DataTableWithFixedFirstColumnsExample);
+
+function useMedia(media) {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const mediaQueryList = window.matchMedia(media);
+
+      setIsActive(mediaQueryList.matches);
+
+      const listener = (evt) => {
+        setIsActive(evt.matches);
+      };
+
+      mediaQueryList.addEventListener('change', listener);
+
+      return () => {
+        mediaQueryList.removeEventListener('change', listener);
+      };
+    }
+  }, [media]);
+
+  return isActive;
+}
