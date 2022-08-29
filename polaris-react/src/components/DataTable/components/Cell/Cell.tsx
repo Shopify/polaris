@@ -69,16 +69,6 @@ export function Cell({
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
 
-  if (stickyHeadingCell && inFixedNthColumn) {
-    console.log({
-      content,
-      nthColumn,
-      inFixedNthColumn,
-      stickyHeadingCell,
-      lastFixedFirstColumn,
-    });
-  }
-
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
