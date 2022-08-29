@@ -15,7 +15,7 @@ jobs:
       - name: Trigger deploy polaris.shopify.com
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           script: |
             await github.rest.actions.createWorkflowDispatch({
               owner: "shopify",

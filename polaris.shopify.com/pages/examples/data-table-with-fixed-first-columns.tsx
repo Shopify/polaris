@@ -1,8 +1,8 @@
 import {Link, Page, Card, DataTable} from '@shopify/polaris';
-import {useState, useCallback} from 'react';
+import {useState, useEffect} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function DataTableWithFixedFirstColumnExample() {
+function DataTableWithFixedFirstColumnsExample() {
   const rows = [
     [
       <Link
@@ -16,6 +16,8 @@ function DataTableWithFixedFirstColumnExample() {
       124689,
       140,
       '$121,500.00',
+      '$14,250.00',
+      '$12,240.00',
     ],
     [
       <Link
@@ -29,6 +31,8 @@ function DataTableWithFixedFirstColumnExample() {
       124533,
       83,
       '$19,090.00',
+      '$12,240.00',
+      '$11,270.00',
     ],
     [
       <Link
@@ -42,6 +46,8 @@ function DataTableWithFixedFirstColumnExample() {
       124518,
       32,
       '$14,240.00',
+      '$10,241.00',
+      '$10,201.00',
     ],
     [
       <Link
@@ -55,6 +61,8 @@ function DataTableWithFixedFirstColumnExample() {
       124689,
       140,
       '$121,500.00',
+      '$14,240.00',
+      '$14,200.10',
     ],
     [
       <Link
@@ -68,6 +76,8 @@ function DataTableWithFixedFirstColumnExample() {
       124533,
       83,
       '$19,090.00',
+      '$14,300.30',
+      '$17,200.00',
     ],
     [
       <Link
@@ -81,6 +91,8 @@ function DataTableWithFixedFirstColumnExample() {
       124518,
       32,
       '$14,240.00',
+      '$18,770.07',
+      '$15,545.00',
     ],
     [
       <Link
@@ -94,6 +106,8 @@ function DataTableWithFixedFirstColumnExample() {
       124689,
       140,
       '$121,500.00',
+      '$14,240.00',
+      '$14,240.00',
     ],
     [
       <Link
@@ -107,6 +121,8 @@ function DataTableWithFixedFirstColumnExample() {
       124533,
       83,
       '$19,090.00',
+      '$19,290.00',
+      '$12,997.00',
     ],
     [
       <Link
@@ -120,6 +136,8 @@ function DataTableWithFixedFirstColumnExample() {
       124518,
       32,
       '$14,240.00',
+      '$11,211.20',
+      '$11,343.50',
     ],
     [
       <Link
@@ -133,6 +151,8 @@ function DataTableWithFixedFirstColumnExample() {
       124689,
       140,
       '$121,500.00',
+      '$12,430.00',
+      '$17,420.00',
     ],
     [
       <Link
@@ -146,6 +166,8 @@ function DataTableWithFixedFirstColumnExample() {
       124533,
       83,
       '$19,090.00',
+      '$14,790.00',
+      '$12,370.00',
     ],
     [
       <Link
@@ -159,6 +181,8 @@ function DataTableWithFixedFirstColumnExample() {
       124518,
       32,
       '$14,240.00',
+      '$16,241.00',
+      '$18,211.00',
     ],
     [
       <Link
@@ -172,6 +196,8 @@ function DataTableWithFixedFirstColumnExample() {
       124689,
       140,
       '$121,500.00',
+      '$15,111.00',
+      '$11,221.00',
     ],
     [
       <Link
@@ -185,6 +211,8 @@ function DataTableWithFixedFirstColumnExample() {
       124533,
       83,
       '$19,090.00',
+      '$17,880.00',
+      '$11,280.00',
     ],
     [
       <Link
@@ -198,6 +226,8 @@ function DataTableWithFixedFirstColumnExample() {
       124518,
       32,
       '$14,240.00',
+      '$11,111.00',
+      '$17,211.00',
     ],
     [
       <Link
@@ -211,6 +241,8 @@ function DataTableWithFixedFirstColumnExample() {
       124689,
       140,
       '$121,500.00',
+      '$14,240.00',
+      '$17,840.00',
     ],
     [
       <Link
@@ -224,6 +256,8 @@ function DataTableWithFixedFirstColumnExample() {
       124533,
       83,
       '$19,090.00',
+      '$13,238.00',
+      '$14,288.00',
     ],
     [
       <Link
@@ -237,9 +271,13 @@ function DataTableWithFixedFirstColumnExample() {
       124518,
       32,
       '$14,240.00',
+      '$14,988.00',
+      '$14,902.10',
     ],
   ];
-  const [sortedRows, setSortedRows] = useState<any[]>(rows);
+  const [sortedRows, setSortedRows] = useState(rows);
+  const showFixedColumns = useMedia('screen and (max-width: 850px)');
+  const fixedFirstColumns = showFixedColumns ? 2 : 0;
 
   return (
     <Page title="Sales by product">
@@ -251,6 +289,8 @@ function DataTableWithFixedFirstColumnExample() {
             'numeric',
             'numeric',
             'numeric',
+            'numeric',
+            'numeric',
           ]}
           headings={[
             'Product',
@@ -258,10 +298,12 @@ function DataTableWithFixedFirstColumnExample() {
             'SKU Number',
             'Net quantity',
             'Net sales',
+            'Gross sales',
+            'Discounts',
           ]}
           rows={sortedRows}
-          totals={['', '', '', 255, '$155,830.00']}
-          sortable={[true, true, false, false, true]}
+          totals={['', '', '', 255, '$155,830.00', '', '']}
+          sortable={[false, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
           onSort={(index, direction) => {
@@ -286,11 +328,35 @@ function DataTableWithFixedFirstColumnExample() {
           }}
           footerContent={`Showing ${sortedRows.length} of ${sortedRows.length} results`}
           stickyHeader
-          hasFixedFirstColumn
+          fixedFirstColumns={fixedFirstColumns}
         />
       </Card>
     </Page>
   );
 }
 
-export default withPolarisExample(DataTableWithFixedFirstColumnExample);
+export default withPolarisExample(DataTableWithFixedFirstColumnsExample);
+
+function useMedia(media) {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const mediaQueryList = window.matchMedia(media);
+
+      setIsActive(mediaQueryList.matches);
+
+      const listener = (evt) => {
+        setIsActive(evt.matches);
+      };
+
+      mediaQueryList.addEventListener('change', listener);
+
+      return () => {
+        mediaQueryList.removeEventListener('change', listener);
+      };
+    }
+  }, [media]);
+
+  return isActive;
+}

@@ -662,7 +662,7 @@ Start by:
 
 ## Components
 
-Be strategic and consistent when naming [components](/components/get-started#navigation). It makes it easier to create and build products and features for Shopify when people can switch between implementations and see the same names represented throughout. For example, we should use the same name across Rails, React, and Figma. It’s okay if each implementation has its own spelling convention. For example, “Account connection” in documentation and in Figma layer names, but “ui_account_connection” in Rails, and “AccountConnection” in React.
+Be strategic and consistent when naming [components](/components). It makes it easier to create and build products and features for Shopify when people can switch between implementations and see the same names represented throughout. For example, we should use the same name across Rails, React, and Figma. It’s okay if each implementation has its own spelling convention. For example, “Account connection” in documentation and in Figma layer names, but “ui_account_connection” in Rails, and “AccountConnection” in React.
 
 A good component name can:
 
