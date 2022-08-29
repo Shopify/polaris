@@ -113,6 +113,12 @@ const ComponentExamples = ({examples}: Props) => {
                     width="100%"
                     onLoad={handleExampleLoad}
                     id={exampleIframeId}
+                    style={{
+                      resize: 'horizontal',
+                      overflow: 'auto',
+                      maxWidth: '100%',
+                      minWidth: '375px',
+                    }}
                   />
                   <div className={className(styles.Buttons, 'light-mode')}>
                     <CodesandboxButton
