@@ -100,7 +100,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   }
 
   render() {
-    const {id, color, allowAlpha, fullWidth} = this.props;
+    const {id, color, allowAlpha, fullWidth, onChange} = this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
     const {pickerSize} = this.state;
 
@@ -113,6 +113,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       0,
       pickerSize.height,
     );
+    const rgbaColor = hsbToRgb({hue, saturation, brightness, alpha});
 
     const alphaSliderMarkup = allowAlpha ? (
       <AlphaPicker
@@ -126,7 +127,9 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       <div className={styles.HexTexField}>
         <div
           className={styles.SquarePreview}
-          style={{backgroundColor: colorString}}
+          style={{
+            backgroundColor: `rgba(${rgbaColor.red}, ${rgbaColor.green}, ${rgbaColor.blue}, ${alpha})`,
+          }}
         />
         <TextField
           color={color}
