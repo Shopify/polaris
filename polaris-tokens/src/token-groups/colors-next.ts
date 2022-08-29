@@ -413,20 +413,12 @@ export const colorsNext = {
     value: palettes.green[700],
     description: '',
   },
-  'text-success-subdued': {
-    value: palettes.green[50],
-    description: '',
-  },
   'text-critical-strong': {
     value: palettes.red[900],
     description: '',
   },
   'text-critical': {
     value: palettes.red[600],
-    description: '',
-  },
-  'text-critical-subuded': {
-    value: palettes.red[50],
     description: '',
   },
   'text-caution-strong': {
@@ -437,20 +429,12 @@ export const colorsNext = {
     value: palettes.yellow[800],
     description: '',
   },
-  'text-caution-subuded': {
-    value: palettes.yellow[50],
-    description: '',
-  },
   'text-info-strong': {
     value: palettes.teal[900],
     description: '',
   },
   'text-info': {
     value: palettes.teal[700],
-    description: '',
-  },
-  'text-info-subuded': {
-    value: palettes.teal[50],
     description: '',
   },
   'text-warning-strong': {
