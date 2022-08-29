@@ -30,11 +30,12 @@ export interface CellProps {
   stickyCellWidth?: number;
   hovered?: boolean;
   handleFocus?: FocusEventHandler;
-  inFixedNthColumn?: number;
+  inFixedNthColumn?: boolean;
   hasFixedNthColumn?: boolean;
   fixedCellVisible?: boolean;
   firstColumnMinWidth?: string;
   style?: React.CSSProperties;
+  lastFixedFirstColumn?: boolean;
 }
 
 export function Cell({
@@ -63,15 +64,26 @@ export function Cell({
   fixedCellVisible = false,
   firstColumnMinWidth,
   style,
+  lastFixedFirstColumn,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
 
+  if (stickyHeadingCell && inFixedNthColumn) {
+    console.log({
+      content,
+      nthColumn,
+      inFixedNthColumn,
+      stickyHeadingCell,
+      lastFixedFirstColumn,
+    });
+  }
+
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
-    (firstColumn || nthColumn) && styles['Cell-firstColumn'],
-    nthColumn && truncate && styles['Cell-truncated'],
+    firstColumn && styles['Cell-firstColumn'],
+    truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     totalInFooter && styles['Cell-total-footer'],
@@ -80,7 +92,10 @@ export function Cell({
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
-    inFixedNthColumn === 1 && fixedCellVisible && styles.separate,
+    lastFixedFirstColumn &&
+      inFixedNthColumn &&
+      fixedCellVisible &&
+      styles['Cell-separate'],
     nthColumn &&
       inFixedNthColumn &&
       stickyHeadingCell &&

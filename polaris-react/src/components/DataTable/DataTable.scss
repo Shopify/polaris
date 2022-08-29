@@ -66,6 +66,7 @@
 }
 
 .Cell {
+  @include text-emphasis-normal;
   padding: var(--p-space-4);
   white-space: nowrap;
   text-align: left;
@@ -90,6 +91,15 @@
   &.ShowTotalsInFooter.RowCountIsEven .TableRow:nth-child(2n) .Cell {
     background: var(--p-surface-subdued);
   }
+}
+
+.Cell-separate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-right: var(--p-border-divider);
 }
 
 .Cell-firstColumn {
@@ -351,18 +361,6 @@
 
   @media #{$p-breakpoints-md-down} {
     z-index: 1;
-  }
-
-  &.separate:is(table) th,
-  &.separate:is(th) {
-    &:last-of-type::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      border-right: var(--p-border-divider);
-    }
   }
 }
 
