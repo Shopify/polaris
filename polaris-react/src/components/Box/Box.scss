@@ -18,6 +18,7 @@
   border-right: var(--pc-box-border-right, initial);
   border-top: var(--pc-box-border-top, initial);
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+  box-shadow: var(--pc-box-shadow, initial);
 }
 
 .background {
@@ -110,20 +111,4 @@
 
 .overlay {
   background-color: var(--p-overlay);
-}
-
-.shadowBase {
-  box-shadow: var(--p-shadow-base);
-}
-
-.transparent {
-  box-shadow: var(--p-shadow-transparent);
-}
-
-.faint {
-  box-shadow: var(--p-shadow-faint);
-}
-
-.deep {
-  box-shadow: var(--p-shadow-deep);
 }

@@ -1,6 +1,6 @@
 import React, {ReactNode, forwardRef} from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {shape, spacing} from '@shopify/polaris-tokens';
+import type {depth, shape, spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
@@ -31,7 +31,13 @@ type Background =
   | 'backdrop'
   | 'overlay';
 
-type Shadow = 'default' | 'transparent' | 'faint' | 'deep';
+type DepthTokenGroup = typeof depth;
+type DepthTokenName = keyof DepthTokenGroup;
+type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
+
+type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
+  ? Scale
+  : never;
 
 type ShapeTokenGroup = typeof shape;
 type ShapeTokenName = keyof ShapeTokenGroup;
@@ -125,7 +131,7 @@ interface BoxBaseProps {
   /** Top spacing inside of the Box */
   paddingTop?: SpacingTokenScale;
   /** Shadow on the Box */
-  shadow?: Shadow;
+  shadow?: DepthTokenScale;
 }
 
 type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxBaseProps>;
@@ -241,13 +247,10 @@ export const Box = forwardRef(
       '--pc-box-border-radius-top-right': borderRadiuses.topRight
         ? `var(--p-border-${borderRadiuses.topRight})`
         : '',
+      '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : '',
     } as React.CSSProperties;
 
-    const className = classNames(
-      styles.root,
-      background && styles[background],
-      shadow && styles[shadow],
-    );
+    const className = classNames(styles.root, background && styles[background]);
 
     return (
       <Component ref={ref} className={className} style={style}>
