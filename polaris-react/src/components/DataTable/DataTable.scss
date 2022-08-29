@@ -4,6 +4,9 @@
   --pc-data-table-first-column-width: 145px;
   position: relative;
   max-width: 100vw;
+  background-color: var(--p-surface);
+  border-radius: var(--p-border-radius-2);
+  overflow: hidden;
 }
 
 .condensed {
@@ -47,6 +50,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  background-color: inherit;
 }
 
 .Table {
@@ -339,17 +343,24 @@
 
 .FixedFirstColumn {
   position: absolute;
-  background: var(--p-surface);
+  background: inherit;
   z-index: 3;
   border-spacing: 0;
+  bottom: 0;
   left: 0;
+
   @media #{$p-breakpoints-md-down} {
     z-index: 1;
   }
 
   &.separate:is(table) th,
   &.separate:is(th) {
-    &:last-of-type {
+    &:last-of-type::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
       border-right: var(--p-border-divider);
     }
   }

@@ -136,7 +136,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     let condensed = false;
 
     if (table && scrollContainer) {
-      condensed = table.scrollWidth > scrollContainer.clientWidth;
+      // safari sometimes incorrectly sets the scrollwidth too large by 1px
+      condensed = table.scrollWidth > scrollContainer.clientWidth + 1;
     }
 
     this.setState({
@@ -246,9 +247,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           !isScrolledFarthestLeft && styles.separate,
         )}
         style={{
-          maxWidth: `${
-            columnVisibilityData[fixedFirstColumns - 1]?.rightEdge
-          }px`,
+          width: `${columnVisibilityData[fixedFirstColumns - 1]?.rightEdge}px`,
         }}
       >
         <thead>
@@ -293,7 +292,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
 
     const bodyMarkup = rows.map((row, index) =>
-      this.defaultRenderRow({row, index, inFixedNthColumn: false}),
+      this.defaultRenderRow({
+        row,
+        index,
+        inFixedNthColumn: false,
+      }),
     );
 
     const footerMarkup = footerContent ? (
@@ -783,7 +786,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               inStickyHeader,
             });
           }}
-          inFixedNthColumn={false}
+          inFixedNthColumn={0}
         />,
         <Cell
           key={`${id}-sticky`}
@@ -795,13 +798,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               inStickyHeader,
             });
           }}
-          inFixedNthColumn
+          inFixedNthColumn={fixedFirstColumns - 1}
           style={{
             left: this.state.columnVisibilityData[headingIndex]?.leftEdge,
-            borderRight:
-              headingIndex === fixedFirstColumns - 1 && fixedCellVisible
-                ? 'var(--p-border-divider)'
-                : undefined,
           }}
         />,
       ];
@@ -869,6 +868,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         total
         totalInFooter={totalInFooter}
         nthColumn={index <= fixedFirstColumns - 1}
+        firstColumn={index === 0}
         key={id}
         content={content}
         contentType={contentType}
@@ -926,7 +926,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         className={className}
         onMouseEnter={this.handleHover(index)}
         onMouseLeave={this.handleHover()}
-        style={rowHeights ? {height: `${rowHeights[index]}px`} : {}}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const hovered = index === this.state.rowHovered;
@@ -944,10 +943,12 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               content={content}
               contentType={columnContentTypes[cellIndex]}
               nthColumn={cellIndex <= fixedFirstColumns - 1}
+              firstColumn={cellIndex === 0}
               truncate={truncate}
               verticalAlign={verticalAlign}
               colSpan={colSpan}
               hovered={hovered}
+              style={rowHeights ? {height: `${rowHeights[index]}px`} : {}}
               inFixedNthColumn={inFixedNthColumn}
             />
           );
