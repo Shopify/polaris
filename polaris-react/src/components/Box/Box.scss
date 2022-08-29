@@ -9,6 +9,14 @@
   padding-left: var(--pc-box-padding-left, initial);
   padding-right: var(--pc-box-padding-right, initial);
   padding-top: var(--pc-box-padding-top, initial);
+  border-bottom-left-radius: var(--pc-box-border-radius-bottom-left, initial);
+  border-bottom-right-radius: var(--pc-box-border-radius-bottom-right, initial);
+  border-top-left-radius: var(--pc-box-border-radius-top-left, initial);
+  border-top-right-radius: var(--pc-box-border-radius-top-right, initial);
+  border-bottom: var(--pc-box-border-bottom, initial);
+  border-left: var(--pc-box-border-left, initial);
+  border-right: var(--pc-box-border-right, initial);
+  border-top: var(--pc-box-border-top, initial);
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
 }
 
@@ -102,86 +110,6 @@
 
 .overlay {
   background-color: var(--p-overlay);
-}
-
-.radius-05 {
-  border-radius: var(--p-border-radius-05);
-}
-
-.radius-1 {
-  border-radius: var(--p-border-radius-1);
-}
-
-.radius-2 {
-  border-radius: var(--p-border-radius-2);
-}
-
-.radius-3 {
-  border-radius: var(--p-border-radius-3);
-}
-
-.radius-4 {
-  border-radius: var(--p-border-radius-4);
-}
-
-.radius-5 {
-  border-radius: var(--p-border-radius-5);
-}
-
-.radius-6 {
-  border-radius: var(--p-border-radius-6);
-}
-
-.radius-base {
-  border-radius: var(--p-border-radius-base);
-}
-
-.radius-large {
-  border-radius: var(--p-border-radius-large);
-}
-
-.radius-half {
-  border-radius: var(--p-border-radius-half);
-}
-
-.width-1 {
-  border: var(--p-border-width-1) solid;
-}
-
-.width-2 {
-  border: var(--p-border-width-2) solid;
-}
-
-.width-3 {
-  border: var(--p-border-width-3) solid;
-}
-
-.width-4 {
-  border: var(--p-border-width-4) solid;
-}
-
-.width-5 {
-  border: var(--p-border-width-5) solid;
-}
-
-.base {
-  border: var(--p-border-base);
-}
-
-.dark {
-  border: var(--p-border-dark);
-}
-
-.transparent {
-  border: var(--p-border-transparent);
-}
-
-.divider {
-  border: var(--p-border-divider);
-}
-
-.divider-on-dark {
-  border: var(--p-border-divider-on-dark);
 }
 
 .shadowBase {
