@@ -86,7 +86,7 @@ export interface QuickGuide {
   rows: QuickGuideRow[];
 }
 
-export type TypeMeta = {
+export type TypeData = {
   filePath?: string;
   name: string;
   value: string | number | object;
@@ -96,5 +96,5 @@ export type TypeMeta = {
   isOptional?: true;
   deprecationMessage?: string;
   defaultValue?: string;
-  members?: TypeMeta[];
+  members?: TypeData[];
 };

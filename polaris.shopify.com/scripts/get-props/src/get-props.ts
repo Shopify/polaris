@@ -2,10 +2,10 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
 import globby from 'globby';
-import {TypeMeta} from '../../../src/types';
+import {TypeData} from '../../../src/types';
 
 type NodeParser = (
-  ast: TypeMeta[],
+  ast: TypeData[],
   node: ts.Node,
   checker: ts.TypeChecker,
   program: ts.Program,
@@ -29,8 +29,8 @@ export function normalizePath(path: string): string {
   return normalizedPath;
 }
 
-export function getProps(filePaths: string[]): TypeMeta[] {
-  let ast: TypeMeta[] = [];
+export function getProps(filePaths: string[]): TypeData[] {
+  let ast: TypeData[] = [];
   let program = ts.createProgram(filePaths, compilerOptions);
   let checker = program.getTypeChecker();
 
@@ -87,7 +87,7 @@ const parseInterfaceDeclaration: NodeParser = (
 
   if (!symbol) throw new Error('Expected interface declaration to have symbol');
 
-  const members: TypeMeta[] = [];
+  const members: TypeData[] = [];
 
   interfaceDeclaration.members.forEach((member) => {
     if (member.kind === ts.SyntaxKind.IndexSignature) {
@@ -110,7 +110,7 @@ const parseInterfaceDeclaration: NodeParser = (
       const value = checker.typeToString(type);
       const {deprecationMessage, defaultValue} = parseJSDocTags(prop);
 
-      let memberNode: TypeMeta = {syntaxKind, name, value, description};
+      let memberNode: TypeData = {syntaxKind, name, value, description};
 
       if (
         valueDeclaration.kind === ts.SyntaxKind.PropertySignature ||
@@ -204,7 +204,7 @@ const parseEnumDeclaration: NodeParser = (
   const syntaxKind = ts.SyntaxKind[enumDeclation.kind];
   const name = enumDeclation.name.getText();
   const value = enumDeclation.getText();
-  const members: TypeMeta[] = enumDeclation.members.map((member) => {
+  const members: TypeData[] = enumDeclation.members.map((member) => {
     const type = checker.getTypeAtLocation(member.name);
     return {
       name: member.name.getText(),
@@ -253,23 +253,28 @@ if (isExecutedThroughCommandLine) {
     '../polaris-react/src/**/*.tsx',
   ]).then((files) => {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
-    filesWithoutTests.forEach((file) => {
-      if (file.includes('utilities/link')) {
-        console.log(file);
-      }
-    });
     const ast = getProps(filesWithoutTests);
-
     const filePath = path.join(__dirname, '../../../../../src/data/props.json');
     fs.writeFileSync(filePath, JSON.stringify(ast, undefined, 2));
   });
 }
 
-export function filterTypeMetas(
-  allNodes: TypeMeta[],
+const alwaysIgnoredNames = [
+  'React',
+  'ReactNode',
+  'any',
+  'CSSProperties',
+  'ElementType',
+  'MouseEvent',
+  'File',
+  'HTMLElement',
+];
+
+export function getRelevantTypeData(
+  allNodes: TypeData[],
   name: string,
   filePath: string,
-): TypeMeta[] {
+): TypeData[] {
   const matchingNodes = getMatchingNodes(allNodes, name, filePath);
   if (matchingNodes.length !== 1) {
     throw new Error(
@@ -278,14 +283,14 @@ export function filterTypeMetas(
   }
   let startingNode = matchingNodes[0];
 
-  let ignoredNames: string[] = [startingNode.name];
-  let openSet: TypeMeta[] = [startingNode];
-  let closedSet: TypeMeta[] = [];
+  let ignoredNames: string[] = [startingNode.name, ...alwaysIgnoredNames];
+  let openSet: TypeData[] = [startingNode];
+  let closedSet: TypeData[] = [];
 
   while (openSet.length > 0) {
     closedSet = [...closedSet, ...openSet];
 
-    let newOpenSet: TypeMeta[] = [];
+    let newOpenSet: TypeData[] = [];
     openSet.forEach((node) => {
       const referencedTypes = getReferencedTypes(allNodes, node, ignoredNames);
       newOpenSet = [...newOpenSet, ...referencedTypes];
@@ -302,38 +307,58 @@ export function filterTypeMetas(
 }
 
 function getReferencedTypes(
-  allNodes: TypeMeta[],
-  searchedNode: TypeMeta,
+  allNodes: TypeData[],
+  searchedNode: TypeData,
   ignoredNames: string[],
-): TypeMeta[] {
-  let returnedNodes: TypeMeta[] = [];
-  if (typeof searchedNode.value === 'string') {
-    const typeNames = searchedNode.value.match(/[A-Z][a-zA-Z]+/g);
-    typeNames?.forEach((name) => {
-      if (!ignoredNames.includes(name)) {
-        const referencedNode = getMatchingNodes(
-          allNodes,
-          name,
-          searchedNode.filePath,
-        );
-        if (referencedNode.length === 1) {
-          returnedNodes = [...returnedNodes, ...referencedNode];
-        } else {
-          console.log(
-            `Type ${name} could not be referenced. It was defined ${referencedNode.length} times.`,
-          );
+): TypeData[] {
+  let returnedNodes: TypeData[] = [];
+  let foundTypes: string[] = [];
+
+  const pascalCaseRegex = /[A-Z][a-z]+(?:[A-Z][a-z]+)*/gm;
+
+  if (searchedNode.members) {
+    searchedNode.members.forEach((member) => {
+      if (typeof member.value === 'string') {
+        const matchingTypes = member.value.match(pascalCaseRegex);
+        if (matchingTypes) {
+          foundTypes = [...foundTypes, ...matchingTypes];
         }
       }
     });
+  } else {
+    if (typeof searchedNode.value === 'string') {
+      const matchingTypes = searchedNode.value.match(pascalCaseRegex);
+      if (matchingTypes) {
+        foundTypes = [...foundTypes, ...matchingTypes];
+      }
+    }
   }
+
+  foundTypes?.forEach((name) => {
+    if (!ignoredNames.includes(name)) {
+      const referencedNode = getMatchingNodes(
+        allNodes,
+        name,
+        searchedNode.filePath,
+      );
+      if (referencedNode.length === 1) {
+        returnedNodes = [...returnedNodes, ...referencedNode];
+      } else {
+        console.log(
+          `⛔️ Type ${name} could not be referenced. It was defined ${referencedNode.length} times.`,
+        );
+      }
+    }
+  });
+
   return returnedNodes;
 }
 
 function getMatchingNodes(
-  allNodes: TypeMeta[],
+  allNodes: TypeData[],
   name: string,
   filePath?: string,
-): TypeMeta[] {
+): TypeData[] {
   let matchingNodes = allNodes.filter(
     (node) => node.filePath === filePath && node.name === name,
   );

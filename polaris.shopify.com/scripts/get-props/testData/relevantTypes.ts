@@ -15,4 +15,10 @@ type Unused = 4;
 interface InterfaceProps {
   relationship: Relationship;
   imported: Animal;
+  // The referenced type, "Animal", should be extracted
+  referenced: TypeToBeReferenced['animal'];
 }
+
+type TypeToBeReferenced = {
+  animal: Animal;
+};

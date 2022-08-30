@@ -9,46 +9,25 @@
 }
 
 .InterfaceList {
-  background: rgba(0, 0, 0, 0.03);
   border-radius: var(--border-radius-400);
   border: 1px solid var(--border-color-light);
   font-size: var(--font-size-200);
   display: block;
 
   .InterfaceList {
-    margin-top: 0.5rem;
-    display: inline-block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+    background: var(--surface-subdued);
   }
 
   .InterfaceListHeader {
     border-bottom: 1px solid var(--border-color-light);
-    font-weight: var(--font-weight-500);
-    padding: 0.5em 1em;
     background: transparent;
     width: 100%;
     text-align: left;
     color: var(--code-keyword);
     font-family: var(--font-family-mono);
-
-    &:hover {
-      background: var(--surface-subdued);
-    }
-
-    &[aria-expanded="false"] {
-      border-bottom: none;
-    }
-  }
-
-  li {
-    padding: 0.666em 1em;
-
-    &:nth-of-type(even) {
-      background: rgba(255, 255, 255, 0.025);
-    }
-  }
-
-  .InterfaceList {
-    font-size: var(--font-size-100);
+    padding: 0.5em 1em;
   }
 
   .Description {
@@ -56,26 +35,40 @@
     font-size: var(--font-size-50);
   }
 
-  .KeyValue {
-    display: flex;
-    align-items: flex-start;
+  .Row {
+    display: block;
+    padding: 0.666em 1em;
+    border-bottom: 1px solid var(--border-color-light);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   .Key {
     display: flex;
     gap: 0.4rem;
     align-items: center;
-    min-width: 10em;
+    font-size: var(--font-size-100);
+
+    button {
+      background: transparent;
+      border-bottom: 1px dashed var(--border-color);
+    }
+  }
+
+  .MemberName {
+    font-weight: var(--font-weight-500);
     color: var(--text-strong);
   }
 
   .Value {
-    margin-left: 0.4rem;
     word-break: break-word;
   }
 
   .ValueText {
     font-family: var(--font-family-mono);
+    font-size: var(--font-size-100);
     color: var(--text-strong);
   }
 }

@@ -11,10 +11,10 @@ import Layout from '../../src/components/Layout';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 import {getComponentNav} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
-import {TypeMeta, Status} from '../../src/types';
+import {TypeData, Status} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
-import {filterTypeMetas} from '../../scripts/get-props/src/get-props';
+import {getRelevantTypeData} from '../../scripts/get-props/src/get-props';
 
 interface MarkdownData {
   frontMatter: any;
@@ -31,7 +31,7 @@ interface Props {
     body: string;
     header: string;
   };
-  typeMeta: TypeMeta[];
+  typeData: TypeData[];
 }
 
 const Components = ({
@@ -40,7 +40,7 @@ const Components = ({
   title,
   readme,
   status,
-  typeMeta,
+  typeData,
 }: Props) => {
   const navItems: NavItem[] = getComponentNav();
   const typedStatus: Status | undefined = status
@@ -60,9 +60,9 @@ const Components = ({
         <ComponentExamples examples={examples} />
       </Longform>
 
-      {typeMeta && <PropsTable typeMeta={typeMeta} componentName={title} />}
+      {typeData && <PropsTable allTypeData={typeData} componentName={title} />}
 
-      <Longform>
+      <Longform firstParagraphIsLede={false}>
         <Markdown text={readme.body} />
       </Longform>
     </Layout>
@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps<
 
     const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
-    const allTypeMeta: TypeMeta[] = JSON.parse(fileContent);
+    const allTypeData: TypeData[] = JSON.parse(fileContent);
 
     let toPascalCase = (s: string) => {
       return s
@@ -122,8 +122,9 @@ export const getStaticProps: GetStaticProps<
 
     const componentDirName = toPascalCase(`${data.frontMatter.title} `);
     const propName = toPascalCase(`${data.frontMatter.title} props`);
-    let typeMeta = filterTypeMetas(
-      allTypeMeta,
+
+    let typeData = getRelevantTypeData(
+      allTypeData,
       propName,
       `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
     );
@@ -133,7 +134,7 @@ export const getStaticProps: GetStaticProps<
       examples,
       description,
       readme,
-      typeMeta,
+      typeData,
       // propsForComponent,
     };
 
