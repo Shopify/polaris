@@ -30,7 +30,6 @@ function TextField({color, fullWidth, onChange}: TextFieldProps) {
   const [internalValue, setInternalValue] = useState<string | null>(
     hsbToHex(color),
   );
-  const ignoreChangeRef = useRef(false);
   const value = internalValue ?? hsbToHex(color);
 
   const valueForDisplay = value.replace('#', '').toUpperCase();
@@ -53,7 +52,6 @@ function TextField({color, fullWidth, onChange}: TextFieldProps) {
     const colorHasChanged = coercedValue !== hsbToHex(color);
 
     if (colorHasChanged) {
-      ignoreChangeRef.current = true;
       onChange({...rgbToHsb(hexToRgb(coercedValue)), alpha: 1});
     }
   }, [value, onChange, color]);
