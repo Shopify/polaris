@@ -260,7 +260,7 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         url: "/foundations/patterns/new-badge",
         icon: "StarFilledMinor",
         description:
-          "new badge guidance",
+          "The [New] badge can be used to inform merchants about the release of a feature that creates new value.",
       },
     ],
   },
