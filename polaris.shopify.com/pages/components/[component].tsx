@@ -135,7 +135,6 @@ export const getStaticProps: GetStaticProps<
       description,
       readme,
       typeData,
-      // propsForComponent,
     };
 
     return {props};
