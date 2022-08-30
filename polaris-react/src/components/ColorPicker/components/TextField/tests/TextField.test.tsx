@@ -40,7 +40,7 @@ describe('<TextField />', () => {
       const textField = mountWithApp(
         <TextField color={BLUE.hsl} onChange={noop} />,
       );
-      expect(textField.find('div')?.props.className).not.toMatch(
+      expect(textField.find('div')!.props.className).not.toMatch(
         styles.fullWidth,
       );
     });
@@ -49,8 +49,29 @@ describe('<TextField />', () => {
       const textField = mountWithApp(
         <TextField color={RED.hsl} onChange={noop} fullWidth />,
       );
-      expect(textField.find('div')?.props.className).toMatch('fullWidth');
+      expect(textField.find('div')!.props.className).toMatch('fullWidth');
     });
+  });
+
+  it('allows users to type a hex color', () => {
+    const onChangeSpy = jest.fn();
+    const textField = mountWithApp(
+      <TextField color={BLUE.hsl} onChange={onChangeSpy} fullWidth />,
+    );
+    expect(textField.find('input')!.props.value).toBe(BLUE.hex);
+    expect(onChangeSpy).not.toHaveBeenCalled();
+    textField.find(PolarisTextField)!.trigger('onChange', RED.hex);
+    expect(onChangeSpy).toHaveBeenCalledWith({...RED.hsl, alpha: 1});
+  });
+
+  it('does not call onChange callback if the input is not a valid hex color', () => {
+    const onChangeSpy = jest.fn();
+    const textField = mountWithApp(
+      <TextField color={BLUE.hsl} onChange={onChangeSpy} fullWidth />,
+    );
+    expect(onChangeSpy).not.toHaveBeenCalled();
+    textField.find(PolarisTextField)!.trigger('onChange', 'invalid');
+    expect(onChangeSpy).not.toHaveBeenCalledWith();
   });
 });
 
