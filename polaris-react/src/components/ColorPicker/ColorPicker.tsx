@@ -126,7 +126,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
 
     const hexTextFieldMarkup =
       showTextField && !allowAlpha ? (
-        <div className={styles.HexTexField}>
+        <div className={styles.TextField}>
           <div
             className={styles.SquarePreview}
             style={{
