@@ -67,7 +67,6 @@ function scrollIntoView() {
 
 function GlobalSearch() {
   const [searchResults, setSearchResults] = useState<GroupedSearchResults>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
@@ -96,12 +95,10 @@ function GlobalSearch() {
   }, []);
 
   const throttledSearch = useThrottle(() => {
-    setIsLoading(true);
     fetch(`/api/search/v0?q=${encodeURIComponent(searchTerm)}`)
       .then((data) => data.json())
       .then((json) => {
         const {results} = json;
-        setIsLoading(false);
         setSearchResults(results);
       });
 
