@@ -28,14 +28,14 @@ type WithTextFieldProps =
   | {
       /** Allow user to select an alpha value */
       allowAlpha?: false;
-      /** Displays a text field that accepts HEX colors */
-      showHexTextField?: never | false;
+      /** Displays a text field that accepts color code */
+      showTextField?: never | false;
     }
   | {
       /** Allow user to select an alpha value */
       allowAlpha?: true;
-      /** Displays a text field that accepts HEX colors */
-      showHexTextField?: boolean;
+      /** Displays a text field that accepts color code */
+      showTextField?: boolean;
     };
 
 export type ColorPickerProps = TextFieldProps &
@@ -100,7 +100,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   }
 
   render() {
-    const {id, color, allowAlpha, fullWidth, onChange, showHexTextField} =
+    const {id, color, allowAlpha, fullWidth, onChange, showTextField} =
       this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
     const {pickerSize} = this.state;
@@ -125,7 +125,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
     ) : null;
 
     const hexTextFieldMarkup =
-      showHexTextField && !allowAlpha ? (
+      showTextField && !allowAlpha ? (
         <div className={styles.HexTexField}>
           <div
             className={styles.SquarePreview}

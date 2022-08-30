@@ -3998,9 +3998,9 @@
         "deprecated": false
       },
       {
-        "name": "showHexTextField",
+        "name": "showTextField",
         "type": "boolean",
-        "comment": "Displays a text field that accepts colors code (HEX). Only available if `allowAlpha` is false",
+        "comment": "Displays a text field that accepts colors code. Only available if `allowAlpha` is false",
         "optional": true,
         "deprecated": false
       }

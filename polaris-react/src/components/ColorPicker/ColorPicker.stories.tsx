@@ -46,7 +46,7 @@ export function WithHexColorTextField() {
     alpha: 0.7,
   });
 
-  return <ColorPicker onChange={setColor} color={color} showHexTextField />;
+  return <ColorPicker onChange={setColor} color={color} showTextField />;
 }
 
 export function WithHexColorTextFieldFullWidth() {
@@ -58,6 +58,6 @@ export function WithHexColorTextFieldFullWidth() {
   });
 
   return (
-    <ColorPicker onChange={setColor} color={color} showHexTextField fullWidth />
+    <ColorPicker onChange={setColor} color={color} showTextField fullWidth />
   );
 }

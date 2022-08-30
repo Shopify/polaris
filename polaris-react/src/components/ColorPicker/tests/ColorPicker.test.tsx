@@ -89,9 +89,9 @@ describe('<ColorPicker />', () => {
   });
 
   describe('TextField', () => {
-    it('shows the TextField when `showHexTextField` is true', () => {
+    it('shows the TextField when `showTextField` is true', () => {
       const colorPicker = mountWithApp(
-        <ColorPicker color={red} onChange={jest.fn()} showHexTextField />,
+        <ColorPicker color={red} onChange={jest.fn()} showTextField />,
       );
 
       expect(colorPicker).toContainReactComponent(TextField, {color: red});
@@ -102,7 +102,7 @@ describe('<ColorPicker />', () => {
         <ColorPicker
           color={red}
           onChange={jest.fn()}
-          showHexTextField
+          showTextField
           allowAlpha
         />,
       );
@@ -114,7 +114,7 @@ describe('<ColorPicker />', () => {
       it("is called when TextField's onChange is triggered", () => {
         const spy = jest.fn();
         const colorPicker = mountWithApp(
-          <ColorPicker color={red} onChange={spy} showHexTextField />,
+          <ColorPicker color={red} onChange={spy} showTextField />,
         );
 
         colorPicker.find('input')!.trigger('onChange', {
@@ -127,7 +127,7 @@ describe('<ColorPicker />', () => {
       it("is not called TextField's onChange is triggered", () => {
         const spy = jest.fn();
         const colorPicker = mountWithApp(
-          <ColorPicker color={red} onChange={spy} showHexTextField />,
+          <ColorPicker color={red} onChange={spy} showTextField />,
         );
 
         colorPicker.find('input')!.trigger('onChange', {
@@ -161,7 +161,7 @@ describe('<ColorPicker />', () => {
 
     it('is passed down to TextField', () => {
       const colorPicker = mountWithApp(
-        <ColorPicker color={red} onChange={jest.fn()} showHexTextField />,
+        <ColorPicker color={red} onChange={jest.fn()} showTextField />,
       );
 
       expect(colorPicker).toContainReactComponent(TextField, {color: red});
