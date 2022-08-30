@@ -4,6 +4,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import {slugify} from '../../utils/various';
 import Code from '../Code';
+import Image from '../Image';
 
 interface Props {
   text: string;
@@ -43,6 +44,9 @@ function Markdown({text}: Props) {
             <table>{children}</table>
           </div>
         ),
+        img: ({src = '', alt}) => {
+          return <Image src={src} alt={alt} />;
+        },
       }}
     >
       {text}
