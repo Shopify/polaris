@@ -4,11 +4,17 @@ import {debounce} from '../../utilities/debounce';
 import {clamp} from '../../utilities/clamp';
 import {classNames} from '../../utilities/css';
 import {hsbToRgb} from '../../utilities/color-transformers';
-import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
-import {AlphaPicker, HuePicker, Slidable, SlidableProps} from './components';
+import {
+  AlphaPicker,
+  HuePicker,
+  Slidable,
+  SlidableProps,
+  TextField,
+} from './components';
+import type {TextFieldProps} from './components';
 import styles from './ColorPicker.scss';
 
 interface State {
@@ -18,23 +24,25 @@ interface State {
   };
 }
 
-interface Color extends HSBColor {
-  /** Level of transparency */
-  alpha?: HSBAColor['alpha'];
-}
+type WithTextFieldProps =
+  | {
+      /** Allow user to select an alpha value */
+      allowAlpha?: false;
+      /** Displays a text field that accepts color code */
+      showTextField?: never | false;
+    }
+  | {
+      /** Allow user to select an alpha value */
+      allowAlpha?: true;
+      /** Displays a text field that accepts color code */
+      showTextField?: boolean;
+    };
 
-export interface ColorPickerProps {
-  /** ID for the element */
-  id?: string;
-  /** The currently selected color */
-  color: Color;
-  /** Allow user to select an alpha value */
-  allowAlpha?: boolean;
-  /** Allow HuePicker to take the full width */
-  fullWidth?: boolean;
-  /** Callback when color is selected */
-  onChange(color: HSBAColor): void;
-}
+export type ColorPickerProps = TextFieldProps &
+  WithTextFieldProps & {
+    /** ID for the element */
+    id?: string;
+  };
 
 const RESIZE_DEBOUNCE_TIME_MS = 200;
 export class ColorPicker extends PureComponent<ColorPickerProps, State> {
@@ -92,7 +100,8 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
   }
 
   render() {
-    const {id, color, allowAlpha, fullWidth} = this.props;
+    const {id, color, allowAlpha, fullWidth, onChange, showTextField} =
+      this.props;
     const {hue, saturation, brightness, alpha: providedAlpha} = color;
     const {pickerSize} = this.state;
 
@@ -105,6 +114,7 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       0,
       pickerSize.height,
     );
+    const rgbaColor = hsbToRgb({hue, saturation, brightness, alpha});
 
     const alphaSliderMarkup = allowAlpha ? (
       <AlphaPicker
@@ -114,27 +124,43 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       />
     ) : null;
 
+    const hexTextFieldMarkup =
+      showTextField && !allowAlpha ? (
+        <div className={styles.HexTexField}>
+          <div
+            className={styles.SquarePreview}
+            style={{
+              backgroundColor: `rgba(${rgbaColor.red}, ${rgbaColor.green}, ${rgbaColor.blue}, ${alpha})`,
+            }}
+          />
+          <TextField color={color} fullWidth={fullWidth} onChange={onChange} />
+        </div>
+      ) : null;
+
     const className = classNames(
       styles.ColorPicker,
       fullWidth && styles.fullWidth,
     );
 
     return (
-      <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
-        <div ref={this.setColorNode} className={styles.MainColor}>
-          <div
-            className={styles.ColorLayer}
-            style={{backgroundColor: colorString}}
-          />
-          <Slidable
-            onChange={this.handleDraggerMove}
-            draggerX={draggerX}
-            draggerY={draggerY}
-          />
+      <div className={className} id={id}>
+        <div className={styles.Container} onMouseDown={this.handlePickerDrag}>
+          <div ref={this.setColorNode} className={styles.MainColor}>
+            <div
+              className={styles.ColorLayer}
+              style={{backgroundColor: colorString}}
+            />
+            <Slidable
+              onChange={this.handleDraggerMove}
+              draggerX={draggerX}
+              draggerY={draggerY}
+            />
+          </div>
+          <HuePicker hue={hue} onChange={this.handleHueChange} />
+          {alphaSliderMarkup}
+          <EventListener event="resize" handler={this.handleResize} />
         </div>
-        <HuePicker hue={hue} onChange={this.handleHueChange} />
-        {alphaSliderMarkup}
-        <EventListener event="resize" handler={this.handleResize} />
+        {hexTextFieldMarkup}
       </div>
     );
   }

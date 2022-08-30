@@ -3,13 +3,19 @@ import {mountWithApp} from 'tests/utilities';
 
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
-import {Slidable, AlphaPicker} from '../components';
+import {Slidable, AlphaPicker, TextField} from '../components';
 import {ColorPicker} from '../ColorPicker';
 
 const red = {
   hue: 0,
   saturation: 1,
   brightness: 1,
+};
+
+const blue = {
+  hue: 240,
+  brightness: 1,
+  saturation: 1,
 };
 
 describe('<ColorPicker />', () => {
@@ -82,6 +88,57 @@ describe('<ColorPicker />', () => {
     });
   });
 
+  describe('TextField', () => {
+    it('shows the TextField when `showTextField` is true', () => {
+      const colorPicker = mountWithApp(
+        <ColorPicker color={red} onChange={jest.fn()} showTextField />,
+      );
+
+      expect(colorPicker).toContainReactComponent(TextField, {color: red});
+    });
+
+    it('does not show TextField when `allowAlpha` is true', () => {
+      const colorPicker = mountWithApp(
+        <ColorPicker
+          color={red}
+          onChange={jest.fn()}
+          showTextField
+          allowAlpha
+        />,
+      );
+
+      expect(colorPicker).not.toContainReactComponent(TextField);
+    });
+
+    describe('onChange', () => {
+      it("is called when TextField's onChange is triggered", () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} showTextField />,
+        );
+
+        colorPicker.find('input')!.trigger('onChange', {
+          currentTarget: {value: '0000FF'},
+        });
+
+        expect(spy).toHaveBeenCalledWith({...blue, alpha: 1});
+      });
+
+      it("is not called TextField's onChange is triggered", () => {
+        const spy = jest.fn();
+        const colorPicker = mountWithApp(
+          <ColorPicker color={red} onChange={spy} showTextField />,
+        );
+
+        colorPicker.find('input')!.trigger('onChange', {
+          currentTarget: {value: 'invalid'},
+        });
+
+        expect(spy).not.toHaveBeenCalled();
+      });
+    });
+  });
+
   describe('id', () => {
     it('is passed down to the first child', () => {
       const id = 'MyID';
@@ -100,6 +157,14 @@ describe('<ColorPicker />', () => {
       );
 
       expect(colorPicker).toContainReactComponent(AlphaPicker, {color: red});
+    });
+
+    it('is passed down to TextField', () => {
+      const colorPicker = mountWithApp(
+        <ColorPicker color={red} onChange={jest.fn()} showTextField />,
+      );
+
+      expect(colorPicker).toContainReactComponent(TextField, {color: red});
     });
   });
 
