@@ -4,7 +4,7 @@ import {ComponentType} from 'react';
 import styles from './PolarisExampleWrapper.module.scss';
 
 const stylesheetHref =
-  'https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css';
+  'https://unpkg.com/@shopify/polaris/build/esm/styles.css';
 
 export const withPolarisExample = (Component: ComponentType) => {
   const PolarisHOC = (props: any) => {
