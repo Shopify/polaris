@@ -16,9 +16,11 @@ interface InterfaceProps {
   relationship: Relationship;
   imported: Animal;
   // The referenced type, "Animal", should be extracted
-  referenced: TypeToBeReferenced['animal'];
+  referenced: TypeToBeReferenced['referenced'];
 }
 
 type TypeToBeReferenced = {
-  animal: Animal;
+  referenced: Referenced;
 };
+
+type Referenced = () => void;

@@ -161,7 +161,7 @@ const parseTypeAliasDeclaration: NodeParser = (
   ast,
   node,
   checker,
-  program,
+  _program,
   filePath,
 ) => {
   const typeAliasDeclaration = node as ts.TypeAliasDeclaration;
@@ -193,7 +193,7 @@ const parseEnumDeclaration: NodeParser = (
   ast,
   node,
   checker,
-  program,
+  _program,
   filePath,
 ) => {
   const enumDeclation = node as ts.EnumDeclaration;
@@ -312,7 +312,7 @@ function getReferencedTypes(
   ignoredNames: string[],
 ): TypeData[] {
   let returnedNodes: TypeData[] = [];
-  let foundTypes: string[] = [];
+  let foundTypes: {[name: string]: true} = {};
 
   const pascalCaseRegex = /[A-Z][a-z]+(?:[A-Z][a-z]+)*/gm;
 
@@ -320,21 +320,21 @@ function getReferencedTypes(
     searchedNode.members.forEach((member) => {
       if (typeof member.value === 'string') {
         const matchingTypes = member.value.match(pascalCaseRegex);
-        if (matchingTypes) {
-          foundTypes = [...foundTypes, ...matchingTypes];
-        }
+        matchingTypes?.map((name) => {
+          foundTypes[name] = true;
+        });
       }
     });
   } else {
     if (typeof searchedNode.value === 'string') {
       const matchingTypes = searchedNode.value.match(pascalCaseRegex);
-      if (matchingTypes) {
-        foundTypes = [...foundTypes, ...matchingTypes];
-      }
+      matchingTypes?.map((name) => {
+        foundTypes[name] = true;
+      });
     }
   }
 
-  foundTypes?.forEach((name) => {
+  Object.keys(foundTypes).forEach((name) => {
     if (!ignoredNames.includes(name)) {
       const referencedNode = getMatchingNodes(
         allNodes,
