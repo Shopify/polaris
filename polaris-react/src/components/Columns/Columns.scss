@@ -1,0 +1,57 @@
+@import '../../styles/common';
+
+.Columns {
+  --pc-columns-xs: 6;
+  --pc-columns-sm: var(--pc-columns-xs);
+  --pc-columns-md: var(--pc-columns-sm);
+  --pc-columns-lg: 12;
+  --pc-columns-xl: var(--pc-columns-lg);
+  --pc-columns-gap-xs: var(--p-space-4);
+  --pc-columns-gap-sm: var(--pc-columns-gap-xs);
+  --pc-columns-gap-md: var(--pc-columns-gap-sm);
+  --pc-columns-gap-lg: var(--pc-columns-gap-md);
+  --pc-columns-gap-xl: var(--pc-columns-gap-lg);
+  --pc-columns-templates-xs: initial;
+  --pc-columns-templates-sm: var(--pc-columns-templates-xs);
+  --pc-columns-templates-md: var(--pc-columns-templates-sm);
+  --pc-columns-templates-lg: var(--pc-columns-templates-md);
+  --pc-columns-templates-xl: var(--pc-columns-templates-lg);
+  display: grid;
+  gap: var(--pc-columns-gap-xs);
+  grid-template-columns: var(
+    --pc-columns-templates-xs,
+    repeat(var(--pc-columns-xs), minmax(0, 1fr))
+  );
+
+  @media #{$p-breakpoints-sm-up} {
+    gap: var(--pc-columns-gap-sm);
+    grid-template-columns: var(
+      --pc-columns-templates-sm,
+      repeat(var(--pc-columns-sm), minmax(0, 1fr))
+    );
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    gap: var(--pc-columns-gap-md);
+    grid-template-columns: var(
+      --pc-columns-templates-md,
+      repeat(var(--pc-columns-md), minmax(0, 1fr))
+    );
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    gap: var(--pc-columns-gap-lg);
+    grid-template-columns: var(
+      --pc-columns-templates-lg,
+      repeat(var(--pc-columns-lg), minmax(0, 1fr))
+    );
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    gap: var(--pc-columns-gap-xl);
+    grid-template-columns: var(
+      --pc-columns-templates-xl,
+      repeat(var(--pc-columns-xl), minmax(0, 1fr))
+    );
+  }
+}
