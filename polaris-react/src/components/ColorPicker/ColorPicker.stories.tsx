@@ -37,3 +37,27 @@ export function WithTransparentValueFullWidth() {
 
   return <ColorPicker fullWidth onChange={setColor} color={color} allowAlpha />;
 }
+
+export function WithHexColorTextField() {
+  const [color, setColor] = useState({
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7,
+  });
+
+  return <ColorPicker onChange={setColor} color={color} showHexTextField />;
+}
+
+export function WithHexColorTextFieldFullWidth() {
+  const [color, setColor] = useState({
+    hue: 300,
+    brightness: 1,
+    saturation: 0.7,
+    alpha: 0.7,
+  });
+
+  return (
+    <ColorPicker onChange={setColor} color={color} showHexTextField fullWidth />
+  );
+}
