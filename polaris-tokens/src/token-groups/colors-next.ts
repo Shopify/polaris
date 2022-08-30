@@ -217,6 +217,10 @@ export const colorsNext = {
     value: palettes.gray[600],
     description: '',
   },
+  'border-hover': {
+    value: palettes.gray[600],
+    description: '',
+  },
   'border-strong': {
     value: palettes.gray[600],
     description: '',
