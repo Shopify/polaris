@@ -1,10 +1,10 @@
 import {useState, useEffect, createContext, useContext} from 'react';
-import {search} from '../../utils/search';
 import {
   GroupedSearchResults,
   SearchResultCategory,
   SearchResults,
 } from '../../types';
+import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
 import {useRouter} from 'next/router';
 import IconGrid from '../IconGrid';
@@ -94,11 +94,19 @@ function GlobalSearch() {
     return () => document.removeEventListener('keydown', listener);
   }, []);
 
-  useEffect(() => {
+  const throttledSearch = useThrottle(() => {
+    fetch(`/api/search/v0?q=${encodeURIComponent(searchTerm)}`)
+      .then((data) => data.json())
+      .then((json) => {
+        const {results} = json;
+        setSearchResults(results);
+      });
+
     setCurrentResultIndex(0);
-    setSearchResults(search(searchTerm.trim()));
     scrollToTop();
-  }, [searchTerm]);
+  }, 400);
+
+  useEffect(throttledSearch, [searchTerm, throttledSearch]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
 
@@ -227,7 +235,7 @@ function SearchResults({
         switch (category) {
           case 'foundations':
             return (
-              <ResultsGroup category={category}>
+              <ResultsGroup category={category} key={category}>
                 <FoundationsGrid>
                   {results.map(({id, url, meta}) => {
                     if (!meta.foundations) return null;
@@ -254,7 +262,7 @@ function SearchResults({
 
           case 'components': {
             return (
-              <ResultsGroup category={category}>
+              <ResultsGroup category={category} key={category}>
                 <ComponentGrid>
                   {results.map(({id, url, meta}) => {
                     if (!meta.components) return null;
@@ -280,7 +288,7 @@ function SearchResults({
 
           case 'tokens': {
             return (
-              <ResultsGroup category={category}>
+              <ResultsGroup category={category} key={category}>
                 <TokenList
                   showTableHeading={false}
                   columns={{
@@ -310,7 +318,7 @@ function SearchResults({
 
           case 'icons': {
             return (
-              <ResultsGroup category={category}>
+              <ResultsGroup category={category} key={category}>
                 <IconGrid>
                   {results.map(({id, meta}) => {
                     if (!meta.icons) return null;
