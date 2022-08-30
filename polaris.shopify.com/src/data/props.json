@@ -3996,6 +3996,13 @@
         "comment": "Callback when color is selected",
         "optional": false,
         "deprecated": false
+      },
+      {
+        "name": "showHexTextField",
+        "type": "boolean",
+        "comment": "Displays a text field that accepts colors code (HEX). Only available if `allowAlpha` is false",
+        "optional": true,
+        "deprecated": false
       }
     ]
   },

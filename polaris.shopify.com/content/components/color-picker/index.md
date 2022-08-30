@@ -25,8 +25,8 @@ examples:
     title: With transparent value full width
     description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
   - fileName: color-picker-with-hex-color-text-field.tsx
-    title: With text field for color code
-    description: Use to allow merchants to type a color code.
+    title: With text field for color code (HEX)
+    description: Use to allow merchants to type a color code (HEX).
 ---
 
 ## Best practices
