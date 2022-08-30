@@ -136,7 +136,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     let condensed = false;
 
     if (table && scrollContainer) {
-      condensed = table.scrollWidth > scrollContainer.clientWidth;
+      // safari sometimes incorrectly sets the scrollwidth too large by 1px
+      condensed = table.scrollWidth > scrollContainer.clientWidth + 1;
     }
 
     this.setState({
@@ -246,9 +247,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
           !isScrolledFarthestLeft && styles.separate,
         )}
         style={{
-          maxWidth: `${
-            columnVisibilityData[fixedFirstColumns - 1]?.rightEdge
-          }px`,
+          width: `${columnVisibilityData[fixedFirstColumns - 1]?.rightEdge}px`,
         }}
       >
         <thead>
@@ -293,7 +292,11 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     );
 
     const bodyMarkup = rows.map((row, index) =>
-      this.defaultRenderRow({row, index, inFixedNthColumn: false}),
+      this.defaultRenderRow({
+        row,
+        index,
+        inFixedNthColumn: false,
+      }),
     );
 
     const footerMarkup = footerContent ? (
@@ -438,7 +441,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       button.addEventListener('focus', this.handleHeaderButtonFocus);
     } else {
       this.tableHeadings[index] = ref;
-      this.tableHeadingWidths[index] = ref.getBoundingClientRect().width;
+      this.tableHeadingWidths[index] = ref.clientWidth;
     }
   };
 
@@ -511,8 +514,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       scrollContainer: {current: scrollContainer},
       dataTable: {current: dataTable},
     } = this;
+    const {stickyHeader} = this.props;
 
-    if (condensed && table && scrollContainer && dataTable) {
+    if ((stickyHeader || condensed) && table && scrollContainer && dataTable) {
       const headerCells = table.querySelectorAll<HTMLTableCellElement>(
         headerCell.selector,
       );
@@ -758,7 +762,9 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       content: heading,
       contentType: columnContentTypes[headingIndex],
       nthColumn: headingIndex < fixedFirstColumns,
+      fixedFirstColumns,
       truncate,
+      headingIndex,
       ...sortableHeadingProps,
       verticalAlign,
       handleFocus: this.handleFocus,
@@ -795,13 +801,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               inStickyHeader,
             });
           }}
-          inFixedNthColumn
+          inFixedNthColumn={Boolean(fixedFirstColumns)}
+          lastFixedFirstColumn={headingIndex === fixedFirstColumns - 1}
           style={{
             left: this.state.columnVisibilityData[headingIndex]?.leftEdge,
-            borderRight:
-              headingIndex === fixedFirstColumns - 1 && fixedCellVisible
-                ? 'var(--p-border-divider)'
-                : undefined,
           }}
         />,
       ];
@@ -818,6 +821,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
             inStickyHeader,
           });
         }}
+        lastFixedFirstColumn={headingIndex === fixedFirstColumns - 1}
         inFixedNthColumn={inFixedNthColumn}
       />
     );
@@ -869,6 +873,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         total
         totalInFooter={totalInFooter}
         nthColumn={index <= fixedFirstColumns - 1}
+        firstColumn={index === 0}
         key={id}
         content={content}
         contentType={contentType}
@@ -914,6 +919,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       hoverable = true,
       headings,
     } = this.props;
+    const {condensed} = this.state;
     const fixedFirstColumns = this.fixedFirstColumns();
     const className = classNames(
       styles.TableRow,
@@ -926,7 +932,6 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
         className={className}
         onMouseEnter={this.handleHover(index)}
         onMouseLeave={this.handleHover()}
-        style={rowHeights ? {height: `${rowHeights[index]}px`} : {}}
       >
         {row.map((content: CellProps['content'], cellIndex: number) => {
           const hovered = index === this.state.rowHovered;
@@ -944,11 +949,13 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               content={content}
               contentType={columnContentTypes[cellIndex]}
               nthColumn={cellIndex <= fixedFirstColumns - 1}
+              firstColumn={cellIndex === 0}
               truncate={truncate}
               verticalAlign={verticalAlign}
               colSpan={colSpan}
               hovered={hovered}
-              inFixedNthColumn={inFixedNthColumn}
+              style={rowHeights ? {height: `${rowHeights[index]}px`} : {}}
+              inFixedNthColumn={condensed && inFixedNthColumn}
             />
           );
         })}
