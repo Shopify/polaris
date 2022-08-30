@@ -2,16 +2,11 @@
   --pc-stack-spacing: var(--p-space-4);
   display: flex;
   flex-direction: column;
-  align-items: start;
   gap: var(--pc-stack-spacing);
 }
 
-.alignStart {
-  align-items: flex-start;
-}
-
 .alignEnd {
-  align-items: flex-end;
+  align-items: end;
 }
 
 .alignCenter {
