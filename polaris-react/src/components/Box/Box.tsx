@@ -61,7 +61,9 @@ interface Border {
 type BorderRadiusTokenScale = Extract<
   BorderShapeTokenScale,
   `radius-${string}`
->;
+> extends `radius-${infer Scale}`
+  ? Scale
+  : never;
 
 interface BorderRadius {
   bottomLeft: BorderRadiusTokenScale | '';
@@ -236,16 +238,16 @@ export const Box = forwardRef(
         ? `var(--p-border-${borders.top})`
         : '',
       '--pc-box-border-radius-bottom-left': borderRadiuses.bottomLeft
-        ? `var(--p-border-${borderRadiuses.bottomLeft})`
+        ? `var(--p-border-radius-${borderRadiuses.bottomLeft})`
         : '',
       '--pc-box-border-radius-bottom-right': borderRadiuses.bottomRight
-        ? `var(--p-border-${borderRadiuses.bottomRight})`
+        ? `var(--p-border-radius-${borderRadiuses.bottomRight})`
         : '',
       '--pc-box-border-radius-top-left': borderRadiuses.topLeft
-        ? `var(--p-border-${borderRadiuses.topLeft})`
+        ? `var(--p-border-radius-${borderRadiuses.topLeft})`
         : '',
       '--pc-box-border-radius-top-right': borderRadiuses.topRight
-        ? `var(--p-border-${borderRadiuses.topRight})`
+        ? `var(--p-border-radius-${borderRadiuses.topRight})`
         : '',
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : '',
     } as React.CSSProperties;
