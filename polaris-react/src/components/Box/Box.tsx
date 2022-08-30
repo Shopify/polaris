@@ -1,35 +1,22 @@
 import React, {ReactNode, forwardRef} from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {depth, shape, spacing} from '@shopify/polaris-tokens';
+import type {colors, depth, shape, spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Background =
+type ColorsTokenGroup = typeof colors;
+type ColorsTokenName = keyof ColorsTokenGroup;
+type BackgroundColorTokenScale = Extract<
+  ColorsTokenName,
   | 'background'
-  | 'backgroundHovered'
-  | 'backgroundPressed'
-  | 'backgroundSelected'
+  | `background-${string}`
   | 'surface'
-  | 'surfaceDark'
-  | 'surfaceNeutral'
-  | 'surfaceNeutralHovered'
-  | 'surfaceNeutralPressed'
-  | 'surfaceNeutralDisabled'
-  | 'surfaceNeutralSubdued'
-  | 'surfaceNeutralSubduedDark'
-  | 'surfaceSubdued'
-  | 'surfaceDisabled'
-  | 'surfaceHovered'
-  | 'surfaceHoveredDark'
-  | 'surfacePressed'
-  | 'surfacePressedDark'
-  | 'surfaceDepressed'
-  | 'surfaceSearchField'
-  | 'surfaceSearchFieldDark'
+  | `surface-${string}`
   | 'backdrop'
-  | 'overlay';
+  | 'overlay'
+>;
 
 type DepthTokenGroup = typeof depth;
 type DepthTokenName = keyof DepthTokenGroup;
@@ -89,7 +76,7 @@ interface Spacing {
 
 interface BoxBaseProps {
   /** Background color of the Box */
-  background?: Background;
+  background?: BackgroundColorTokenScale;
   /** Border styling of the Box */
   border?: BorderTokenScale;
   /** Bottom border styling of the Box */
@@ -203,6 +190,7 @@ export const Box = forwardRef(
     } as Spacing;
 
     const style = {
+      '--pc-box-background': background ? `var(--p-${background})` : '',
       '--pc-box-margin-bottom': margins.bottom
         ? `var(--p-space-${margins.bottom})`
         : '',
@@ -252,7 +240,7 @@ export const Box = forwardRef(
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : '',
     } as React.CSSProperties;
 
-    const className = classNames(styles.root, background && styles[background]);
+    const className = classNames(styles.root);
 
     return (
       <Component ref={ref} className={className} style={style}>
