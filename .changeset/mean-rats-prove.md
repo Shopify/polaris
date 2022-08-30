@@ -2,4 +2,7 @@
 '@shopify/polaris': minor
 ---
 
-Fixed issue where DataTable cells would not wrap into multiple lines. `truncate` prop can now be used without `fixedFirstColumns`
+Updates to `DataTable`
+
+- Fixed `DataTable` cell content not wrapping when the `truncate` prop is `false`
+- Added support for setting the `DataTable` `truncate` prop without having to set the `fixedFirstColumns` prop
