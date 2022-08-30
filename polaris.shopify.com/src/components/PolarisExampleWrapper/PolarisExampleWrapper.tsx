@@ -13,7 +13,7 @@ export const withPolarisExample = (Component: ComponentType) => {
         <link rel="stylesheet" href={stylesheetHref} />
         <AppProvider i18n={translations}>
           <div className={styles.Container}>
-            <div id="polaris-example" style={{width: '100%'}}>
+            <div id="polaris-example">
               <Component {...props} />
             </div>
           </div>
