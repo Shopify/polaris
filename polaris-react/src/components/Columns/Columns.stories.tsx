@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon, Columns, Page} from '@shopify/polaris';
+import {Button, Columns, Page} from '@shopify/polaris';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -78,16 +78,16 @@ export function ColumnsWithVaryingGap() {
   );
 }
 
-export function ColumnsWithFixedWidths() {
+export function ColumnsWithFreeAndFixedWidths() {
   return (
     <Page fullWidth>
-      <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '4'}}>
+      <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '05'}}>
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>
-          <Icon source={ChevronLeftMinor} />
+          <Button icon={ChevronLeftMinor} />
         </div>
         <div style={{background: 'aquamarine'}}>
-          <Icon source={ChevronRightMinor} />
+          <Button icon={ChevronRightMinor} />
         </div>
       </Columns>
     </Page>

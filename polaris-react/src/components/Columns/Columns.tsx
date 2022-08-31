@@ -1,25 +1,23 @@
 import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
+import {sanitizeCustomProperties} from '../../utilities/css';
+
 import styles from './Columns.scss';
 
 type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-type SpacingTokenName = keyof typeof spacing;
-
-type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
-  ? Scale
-  : never;
+type SpacingName = keyof typeof spacing;
+type SpacingScale = SpacingName extends `space-${infer Scale}` ? Scale : never;
 
 type Columns = {
   [Breakpoint in Breakpoints]?: number | string;
 };
 
 type Gap = {
-  [Breakpoint in Breakpoints]?: SpacingTokenScale;
+  [Breakpoint in Breakpoints]?: SpacingScale;
 };
 
-export interface ColumnsProps {
+interface ColumnsProps {
   gap?: Gap;
   columns?: Columns;
   children?: React.ReactNode;
@@ -40,7 +38,7 @@ export function Columns({columns, children, gap}: ColumnsProps) {
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Columns} style={style}>
+    <div className={styles.Columns} style={sanitizeCustomProperties(style)}>
       {children}
     </div>
   );
