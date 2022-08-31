@@ -1,5 +1,4 @@
-import React, {ReactNode, forwardRef} from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
+import React, {createElement, forwardRef, ReactNode} from 'react';
 import type {colors, depth, shape, spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
@@ -53,10 +52,10 @@ type BorderRadiusTokenScale = Extract<
   : never;
 
 interface BorderRadius {
-  bottomLeft: BorderRadiusTokenScale | '';
-  bottomRight: BorderRadiusTokenScale | '';
-  topLeft: BorderRadiusTokenScale | '';
-  topRight: BorderRadiusTokenScale | '';
+  bottomLeft: BorderRadiusTokenScale;
+  bottomRight: BorderRadiusTokenScale;
+  topLeft: BorderRadiusTokenScale;
+  topRight: BorderRadiusTokenScale;
 }
 
 type SpacingTokenGroup = typeof spacing;
@@ -68,13 +67,14 @@ type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
   : never;
 
 interface Spacing {
-  bottom: SpacingTokenScale | '';
-  left: SpacingTokenScale | '';
-  right: SpacingTokenScale | '';
-  top: SpacingTokenScale | '';
+  bottom: SpacingTokenScale;
+  left: SpacingTokenScale;
+  right: SpacingTokenScale;
+  top: SpacingTokenScale;
 }
 
-interface BoxBaseProps {
+export interface BoxProps {
+  as?: 'div' | 'span';
   /** Background color of the Box */
   background?: BackgroundColorTokenScale;
   /** Border styling of the Box */
@@ -123,36 +123,32 @@ interface BoxBaseProps {
   shadow?: DepthTokenScale;
 }
 
-type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxBaseProps>;
-
-export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
-
-export const Box = forwardRef(
+export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
-      as: Component = 'div',
+      as = 'div',
       background,
-      border = '',
-      borderBottom = '',
-      borderLeft = '',
-      borderRight = '',
-      borderTop = '',
-      borderRadius = '',
-      borderRadiusBottomLeft = '',
-      borderRadiusBottomRight = '',
-      borderRadiusTopLeft = '',
-      borderRadiusTopRight = '',
+      border,
+      borderBottom,
+      borderLeft,
+      borderRight,
+      borderTop,
+      borderRadius,
+      borderRadiusBottomLeft,
+      borderRadiusBottomRight,
+      borderRadiusTopLeft,
+      borderRadiusTopRight,
       children,
-      margin = '',
-      marginBottom = '',
-      marginLeft = '',
-      marginRight = '',
-      marginTop = '',
-      padding = '',
-      paddingBottom = '',
-      paddingLeft = '',
-      paddingRight = '',
-      paddingTop = '',
+      margin,
+      marginBottom,
+      marginLeft,
+      marginRight,
+      marginTop,
+      padding,
+      paddingBottom,
+      paddingLeft,
+      paddingRight,
+      paddingTop,
       shadow,
     },
     ref,
@@ -190,64 +186,78 @@ export const Box = forwardRef(
     } as Spacing;
 
     const style = {
-      '--pc-box-background': background ? `var(--p-${background})` : '',
-      '--pc-box-margin-bottom': margins.bottom
-        ? `var(--p-space-${margins.bottom})`
-        : '',
-      '--pc-box-margin-left': margins.left
-        ? `var(--p-space-${margins.left})`
-        : '',
-      '--pc-box-margin-right': margins.right
-        ? `var(--p-space-${margins.right})`
-        : '',
-      '--pc-box-margin-top': margins.top ? `var(--p-space-${margins.top})` : '',
-      '--pc-box-padding-bottom': paddings.bottom
-        ? `var(--p-space-${paddings.bottom})`
-        : '',
-      '--pc-box-padding-left': paddings.left
-        ? `var(--p-space-${paddings.left})`
-        : '',
-      '--pc-box-padding-right': paddings.right
-        ? `var(--p-space-${paddings.right})`
-        : '',
-      '--pc-box-padding-top': paddings.top
-        ? `var(--p-space-${paddings.top})`
-        : '',
-      '--pc-box-border-bottom': borders.bottom
-        ? `var(--p-border-${borders.bottom})`
-        : '',
-      '--pc-box-border-left': borders.left
-        ? `var(--p-border-${borders.left})`
-        : '',
-      '--pc-box-border-right': borders.right
-        ? `var(--p-border-${borders.right})`
-        : '',
-      '--pc-box-border-top': borders.top
-        ? `var(--p-border-${borders.top})`
-        : '',
-      '--pc-box-border-radius-bottom-left': borderRadiuses.bottomLeft
-        ? `var(--p-border-radius-${borderRadiuses.bottomLeft})`
-        : '',
-      '--pc-box-border-radius-bottom-right': borderRadiuses.bottomRight
-        ? `var(--p-border-radius-${borderRadiuses.bottomRight})`
-        : '',
-      '--pc-box-border-radius-top-left': borderRadiuses.topLeft
-        ? `var(--p-border-radius-${borderRadiuses.topLeft})`
-        : '',
-      '--pc-box-border-radius-top-right': borderRadiuses.topRight
-        ? `var(--p-border-radius-${borderRadiuses.topRight})`
-        : '',
-      '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : '',
+      ...(background ? {'--pc-box-background': `var(--p-${background})`} : {}),
+      ...(borders.bottom
+        ? {'--pc-box-border-bottom': `var(--p-border-${borders.bottom})`}
+        : {}),
+      ...(borders.left
+        ? {'--pc-box-border-left': `var(--p-border-${borders.left})`}
+        : {}),
+      ...(borders.right
+        ? {'--pc-box-border-right': `var(--p-border-${borders.right})`}
+        : {}),
+      ...(borders.top
+        ? {'--pc-box-border-top': `var(--p-border-${borders.top})`}
+        : {}),
+      ...(borderRadiuses.bottomLeft
+        ? {
+            '--pc-box-border-radius-bottom-left': `var(--p-border-radius-${borderRadiuses.bottomLeft})`,
+          }
+        : {}),
+      ...(borderRadiuses.bottomRight
+        ? {
+            '--pc-box-border-radius-bottom-right': `var(--p-border-radius-${borderRadiuses.bottomRight})`,
+          }
+        : {}),
+      ...(borderRadiuses.topLeft
+        ? {
+            '--pc-box-border-radius-top-left': `var(--p-border-radius-${borderRadiuses.topLeft})`,
+          }
+        : {}),
+      ...(borderRadiuses.topRight
+        ? {
+            '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
+          }
+        : {}),
+      ...(margins.bottom
+        ? {'--pc-box-margin-bottom': `var(--p-space-${margins.bottom})`}
+        : {}),
+      ...(margins.left
+        ? {'--pc-box-margin-left': `var(--p-space-${margins.left})`}
+        : {}),
+      ...(margins.right
+        ? {'--pc-box-margin-right': `var(--p-space-${margins.right})`}
+        : {}),
+      ...(margins.top
+        ? {'--pc-box-margin-top': `var(--p-space-${margins.top})`}
+        : {}),
+      ...(paddings.bottom
+        ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
+        : {}),
+      ...(paddings.left
+        ? {'--pc-box-padding-left': `var(--p-space-${paddings.left})`}
+        : {}),
+      ...(paddings.right
+        ? {'--pc-box-padding-right': `var(--p-space-${paddings.right})`}
+        : {}),
+      ...(paddings.top
+        ? {'--pc-box-padding-top': `var(--p-space-${paddings.top})`}
+        : {}),
+      ...(shadow ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`} : {}),
     } as React.CSSProperties;
 
-    const className = classNames(styles.root);
+    const className = classNames(styles.Box);
 
-    return (
-      <Component ref={ref} className={className} style={style}>
-        {children}
-      </Component>
+    return createElement(
+      as,
+      {
+        className,
+        style,
+        ref,
+      },
+      children,
     );
   },
-) as PolymorphicBox;
+);
 
 Box.displayName = 'Box';
