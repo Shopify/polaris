@@ -202,6 +202,8 @@ export interface ActionListItemDescriptor
   active?: boolean;
   /** Defines a role for the action */
   role?: string;
+  /** Disable automatical scroll to active item */
+  disableScrollToActiveItem?: boolean;
 }
 
 export interface ActionListSection {

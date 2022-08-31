@@ -46,6 +46,7 @@ export function Section({
             helpText={helpText}
             role={actionRole}
             onAction={handleAction(onAction)}
+            disableScrollToActiveItem
             {...item}
           />
         </li>

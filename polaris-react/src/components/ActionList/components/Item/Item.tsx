@@ -30,6 +30,7 @@ export function Item({
   ellipsis,
   active,
   role,
+  disableScrollToActiveItem,
 }: ItemProps) {
   const className = classNames(
     styles.Item,
@@ -90,7 +91,7 @@ export function Item({
     </span>
   );
 
-  const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
+  const scrollMarkup = active && !disableScrollToActiveItem ? <Scrollable.ScrollTo /> : null;
 
   const control = url ? (
     <UnstyledLink
