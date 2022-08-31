@@ -1,6 +1,7 @@
 .Box {
   display: block;
   background-color: var(--pc-box-background, initial);
+  box-shadow: var(--pc-box-shadow, initial);
   /* stylelint-disable declaration-block-no-redundant-longhand-properties */
   border-bottom-left-radius: var(--pc-box-border-radius-bottom-left, initial);
   border-bottom-right-radius: var(--pc-box-border-radius-bottom-right, initial);
@@ -19,5 +20,4 @@
   padding-right: var(--pc-box-padding-right, initial);
   padding-top: var(--pc-box-padding-top, initial);
   /* stylelint-enable declaration-block-no-redundant-longhand-properties */
-  box-shadow: var(--pc-box-shadow, initial);
 }
