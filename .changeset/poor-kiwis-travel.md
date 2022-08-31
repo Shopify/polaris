@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': patch
+'@shopify/polaris': minor
 ---
 
-Add `AlphaStack` component
+Added `AlphaStack` component
