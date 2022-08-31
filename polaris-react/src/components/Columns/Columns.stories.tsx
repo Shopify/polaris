@@ -1,6 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Columns, Page} from '@shopify/polaris';
+import {Icon, Columns, Page} from '@shopify/polaris';
+import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Columns,
@@ -44,6 +45,24 @@ export function ColumnsWithTemplateColumns() {
   );
 }
 
+export function ColumnsWithMixedPropTypes() {
+  return (
+    <Page fullWidth>
+      <Columns
+        columns={{xs: 2, sm: '2fr 1fr', md: '2fr 1fr 1fr', lg: 6}}
+        gap={{xs: '2'}}
+      >
+        <div style={{background: 'aquamarine'}}>one</div>
+        <div style={{background: 'aquamarine'}}>two</div>
+        <div style={{background: 'aquamarine'}}>three</div>
+        <div style={{background: 'aquamarine'}}>four</div>
+        <div style={{background: 'aquamarine'}}>five</div>
+        <div style={{background: 'aquamarine'}}>six</div>
+      </Columns>
+    </Page>
+  );
+}
+
 export function ColumnsWithVaryingGap() {
   return (
     <Page fullWidth>
@@ -59,16 +78,17 @@ export function ColumnsWithVaryingGap() {
   );
 }
 
-export function ColumnsWithFixed() {
+export function ColumnsWithFixedWidths() {
   return (
     <Page fullWidth>
-      <Columns
-        columns={{xs: 3}}
-        gap={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}
-      >
+      <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '4'}}>
         <div style={{background: 'aquamarine'}}>Column one</div>
-        <div style={{background: 'aquamarine'}}>Column two</div>
-        <div style={{background: 'aquamarine'}}>Column three</div>
+        <div style={{background: 'aquamarine'}}>
+          <Icon source={ChevronLeftMinor} />
+        </div>
+        <div style={{background: 'aquamarine'}}>
+          <Icon source={ChevronRightMinor} />
+        </div>
       </Columns>
     </Page>
   );
