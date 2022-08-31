@@ -4,7 +4,7 @@
   --pc-columns-xs: 6;
   --pc-columns-sm: var(--pc-columns-xs);
   --pc-columns-md: var(--pc-columns-sm);
-  --pc-columns-lg: 12;
+  --pc-columns-lg: var(--pc-columns-md);
   --pc-columns-xl: var(--pc-columns-lg);
   --pc-columns-gap-xs: var(--p-space-4);
   --pc-columns-gap-sm: var(--pc-columns-gap-xs);
