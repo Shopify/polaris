@@ -1,5 +1,4 @@
-import React, {ReactNode, forwardRef} from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
+import React, {createElement, forwardRef, ReactNode} from 'react';
 import type {colors, depth, shape, spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
@@ -74,63 +73,60 @@ interface Spacing {
   top: SpacingTokenScale | '';
 }
 
-interface BoxBaseProps {
+export interface BoxBaseProps {
+  as?: 'div' | 'span';
   /** Background color of the Box */
   background?: BackgroundColorTokenScale;
   /** Border styling of the Box */
-  border?: BorderTokenScale;
+  border?: BorderTokenScale | '';
   /** Bottom border styling of the Box */
-  borderBottom?: BorderTokenScale;
+  borderBottom?: BorderTokenScale | '';
   /** Left border styling of the Box */
-  borderLeft?: BorderTokenScale;
+  borderLeft?: BorderTokenScale | '';
   /** Right border styling of the Box */
-  borderRight?: BorderTokenScale;
+  borderRight?: BorderTokenScale | '';
   /** Top border styling of the Box */
-  borderTop?: BorderTokenScale;
+  borderTop?: BorderTokenScale | '';
   /** Border radius of the Box */
-  borderRadius?: BorderRadiusTokenScale;
+  borderRadius?: BorderRadiusTokenScale | '';
   /** Bottom left border radius of the Box */
-  borderRadiusBottomLeft?: BorderRadiusTokenScale;
+  borderRadiusBottomLeft?: BorderRadiusTokenScale | '';
   /** Bottom right border radius of the Box */
-  borderRadiusBottomRight?: BorderRadiusTokenScale;
+  borderRadiusBottomRight?: BorderRadiusTokenScale | '';
   /** Top left border radius of the Box */
-  borderRadiusTopLeft?: BorderRadiusTokenScale;
+  borderRadiusTopLeft?: BorderRadiusTokenScale | '';
   /** Top right border radius of the Box */
-  borderRadiusTopRight?: BorderRadiusTokenScale;
+  borderRadiusTopRight?: BorderRadiusTokenScale | '';
   /** Inner content of the Box */
   children: ReactNode;
   /** Spacing outside of the Box */
-  margin?: SpacingTokenScale;
+  margin?: SpacingTokenScale | '';
   /** Bottom spacing outside of the Box */
-  marginBottom?: SpacingTokenScale;
+  marginBottom?: SpacingTokenScale | '';
   /** Left side spacing outside of the Box */
-  marginLeft?: SpacingTokenScale;
+  marginLeft?: SpacingTokenScale | '';
   /** Right side spacing outside of the Box */
-  marginRight?: SpacingTokenScale;
+  marginRight?: SpacingTokenScale | '';
   /** Top spacing outside of the Box */
-  marginTop?: SpacingTokenScale;
+  marginTop?: SpacingTokenScale | '';
   /** Spacing inside of the Box */
-  padding?: SpacingTokenScale;
+  padding?: SpacingTokenScale | '';
   /** Bottom spacing inside of the Box */
-  paddingBottom?: SpacingTokenScale;
+  paddingBottom?: SpacingTokenScale | '';
   /** Left side spacing inside of the Box */
-  paddingLeft?: SpacingTokenScale;
+  paddingLeft?: SpacingTokenScale | '';
   /** Right side spacing inside of the Box */
-  paddingRight?: SpacingTokenScale;
+  paddingRight?: SpacingTokenScale | '';
   /** Top spacing inside of the Box */
-  paddingTop?: SpacingTokenScale;
+  paddingTop?: SpacingTokenScale | '';
   /** Shadow on the Box */
   shadow?: DepthTokenScale;
 }
 
-type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxBaseProps>;
-
-export type BoxProps = Polymorphic.OwnProps<PolymorphicBox>;
-
-export const Box = forwardRef(
+export const Box = forwardRef<HTMLElement, BoxBaseProps>(
   (
     {
-      as: Component = 'div',
+      as = 'div',
       background,
       border = '',
       borderBottom = '',
@@ -240,14 +236,18 @@ export const Box = forwardRef(
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : '',
     } as React.CSSProperties;
 
-    const className = classNames(styles.root);
+    const className = classNames(styles.Box);
 
-    return (
-      <Component ref={ref} className={className} style={style}>
-        {children}
-      </Component>
+    return createElement(
+      as,
+      {
+        className,
+        style,
+        ref,
+      },
+      children,
     );
   },
-) as PolymorphicBox;
+);
 
 Box.displayName = 'Box';
