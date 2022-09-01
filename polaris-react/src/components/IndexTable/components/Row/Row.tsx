@@ -62,10 +62,11 @@ export const Row = memo(function Row({
     () => ({
       itemId: id,
       selected,
+      position,
       onInteraction: handleInteraction,
       disabled,
     }),
-    [id, selected, disabled, handleInteraction],
+    [id, selected, disabled, position, handleInteraction],
   );
 
   const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);

@@ -4,6 +4,7 @@ interface RowContextType {
   itemId?: string;
   selected?: boolean;
   disabled?: boolean;
+  position?: number;
   onInteraction?: (event: React.MouseEvent | React.KeyboardEvent) => void;
 }
 
