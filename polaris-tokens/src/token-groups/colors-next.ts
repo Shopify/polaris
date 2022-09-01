@@ -117,6 +117,10 @@ export const colorsNext = {
     value: palettes.green[50],
     description: '',
   },
+  'bg-primary-subdued-selected': {
+    value: palettes.green[50],
+    description: '',
+  },
   'bg-critical-strong-active': {
     value: palettes.red[800],
     description: '',
@@ -409,6 +413,7 @@ export const colorsNext = {
     value: palettes.green[900],
     description: '',
   },
+
   'text-success': {
     value: palettes.green[700],
     description: '',
