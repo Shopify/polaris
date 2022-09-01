@@ -1,7 +1,7 @@
 import ComponentGrid from '../ComponentGrid';
 import Layout from '../Layout';
 
-import components from '../../data/components.json';
+import siteJson from '../../../.cache/site.json';
 import {
   getComponentCategories,
   stripMarkdownLinks,
@@ -11,6 +11,10 @@ import {
 import {Status} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
+
+const components = Object.keys(siteJson).filter((slug) =>
+  slug.startsWith('components/'),
+);
 
 const componentCategories = getComponentCategories();
 const componentNav = getComponentNav();
@@ -33,10 +37,11 @@ export default function ComponentsPage() {
               <ComponentGrid>
                 {components
                   .filter(
-                    (component) => component.frontMatter.category === category,
+                    (slug) => siteJson[slug].frontMatter.category === category,
                   )
-                  .map(({frontMatter, description}) => {
-                    const {title, status} = frontMatter;
+                  .map((slug) => {
+                    const {title, status, description} =
+                      siteJson[slug].frontMatter;
                     const url = `/components/${slugify(title)}`;
                     let typedStatus = status
                       ? {

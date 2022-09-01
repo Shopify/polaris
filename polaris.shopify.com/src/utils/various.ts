@@ -1,12 +1,16 @@
 import type {NavItem} from '../components/Nav';
-import components from '../data/components.json';
+import siteJson from '../../.cache/site.json';
 import {Status} from '../types';
+
+const components = Object.keys(siteJson).filter((slug) =>
+  slug.startsWith('components/'),
+);
 
 export const getComponentCategories = (): string[] => {
   const tempComponentCategories: {[key: string]: boolean} = {};
 
-  Object.values(components).forEach((component) => {
-    tempComponentCategories[component.frontMatter.category] = true;
+  components.forEach((slug) => {
+    tempComponentCategories[siteJson[slug].frontMatter.category] = true;
   });
 
   const componentCategories = Object.keys(tempComponentCategories);
@@ -18,19 +22,20 @@ export const getComponentNav = (): NavItem[] => {
   const navItems: NavItem[] = [
     {
       title: 'All',
-      children: components.map((component) => {
-        const statusValue =
-          component.frontMatter.status?.value.toLowerCase() as
-            | Status['value']
-            | undefined;
+      children: components.map((slug) => {
+        const statusValue = siteJson[
+          slug
+        ].frontMatter.status?.value.toLowerCase() as
+          | Status['value']
+          | undefined;
         return {
-          title: component.frontMatter.title,
-          url: `/components/${slugify(component.frontMatter.title)}`,
+          title: siteJson[slug].frontMatter.title,
+          url: `/components/${slugify(siteJson[slug].frontMatter.title)}`,
           status:
-            component.frontMatter.status && statusValue
+            siteJson[slug].frontMatter.status && statusValue
               ? {
                   value: statusValue,
-                  message: component.frontMatter.status.value,
+                  message: siteJson[slug].frontMatter.status.value,
                 }
               : undefined,
         };

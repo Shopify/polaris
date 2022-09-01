@@ -1,5 +1,7 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import Fuse from 'fuse.js';
+import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
+import iconMetadata from '@shopify/polaris-icons/metadata';
 
 import {
   SearchResults,
@@ -11,10 +13,14 @@ import {
 
 import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 
-import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
-import iconMetadata from '@shopify/polaris-icons/metadata';
-import components from '../../../../src/data/components.json';
-import foundations from '../../../../src/data/foundations.json';
+import siteJson from '../../../../.cache/site.json';
+
+const components = Object.keys(siteJson).filter((slug) =>
+  slug.startsWith('components/'),
+);
+const foundations = Object.keys(siteJson).filter((slug) =>
+  slug.startsWith('foundations/'),
+);
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   foundations: 8,
@@ -29,7 +35,8 @@ const getSearchResults = (query: string) => {
   let results: SearchResults = [];
 
   // Add components
-  components.forEach(({frontMatter: {title, status}, description}) => {
+  components.forEach((slug) => {
+    const {status, title, description} = siteJson[slug].frontMatter;
     const typedStatus: Status | undefined = status
       ? {
           value: status.value.toLowerCase() as Status['value'],
@@ -102,16 +109,15 @@ const getSearchResults = (query: string) => {
   });
 
   // Add foundations
-  foundations.forEach((data) => {
-    const {title, icon} = data.frontMatter;
-    const {description, category} = data;
-    const url = `/foundations/${category}/${slugify(title)}`;
+  foundations.forEach((slug) => {
+    const {title, icon, description} = siteJson[slug].frontMatter;
+    const category = slug.split('/')[2];
 
     results.push({
       id: slugify(`foundations ${title}`),
       category: 'foundations',
       score: 0,
-      url,
+      url: slug,
       meta: {
         foundations: {
           title,
