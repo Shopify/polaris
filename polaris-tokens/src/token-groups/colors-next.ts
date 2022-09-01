@@ -9,6 +9,10 @@ export const colorsNext = {
     value: palettes.gray[900],
     description: '',
   },
+  'bg-inset-strong': {
+    value: palettes.gray[800],
+    description: '',
+  },
   'bg-inverse-hover': {
     value: palettes.gray[800],
     description: '',
