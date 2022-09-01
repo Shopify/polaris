@@ -141,6 +141,10 @@ export const colorsNext = {
     value: palettes.red[600],
     description: '',
   },
+  'bg-critical-subdued-active': {
+    value: palettes.red[300],
+    description: '',
+  },
   'bg-critical': {
     value: palettes.red[200],
     description: '',
