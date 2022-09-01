@@ -142,7 +142,7 @@ export const colorsNext = {
     description: '',
   },
   'bg-critical-subdued-active': {
-    value: palettes.red[300],
+    value: palettes.red[200],
     description: '',
   },
   'bg-critical': {
@@ -150,11 +150,11 @@ export const colorsNext = {
     description: '',
   },
   'bg-critical-subdued-hover': {
-    value: palettes.red[200],
+    value: palettes.red[100],
     description: '',
   },
   'bg-critical-subdued': {
-    value: palettes.red[100],
+    value: palettes.red[50],
     description: '',
   },
   'bg-caution-strong': {
