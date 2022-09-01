@@ -438,6 +438,10 @@ export const colorsNext = {
     value: palettes.red[900],
     description: '',
   },
+  'text-critical-active': {
+    value: palettes.red[800],
+    description: '',
+  },
   'text-critical': {
     value: palettes.red[600],
     description: '',
