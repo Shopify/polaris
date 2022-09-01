@@ -8,26 +8,6 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
-  async headers() {
-    return [
-      {
-        source: '/api/tokens/v0:path*',
-        headers: [
-          {key: 'Access-Control-Allow-Credentials', value: 'true'},
-          {key: 'Access-Control-Allow-Origin', value: '*'},
-          {
-            key: 'Access-Control-Allow-Methods',
-            value: 'GET,OPTIONS',
-          },
-          {
-            key: 'Access-Control-Allow-Headers',
-            value:
-              'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
-          },
-        ],
-      },
-    ];
-  },
 
   async redirects() {
     return [
