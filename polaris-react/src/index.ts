@@ -110,6 +110,9 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
+export {Columns} from './components/Columns';
+export type {ColumnsProps} from './components/Columns';
+
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
 
