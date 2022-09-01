@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .UnparsablePropsWarning {
   p {
     margin-bottom: 1rem;
@@ -17,7 +19,10 @@
   .InterfaceList {
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
-    background: var(--surface-subdued);
+    background: rgba(0, 0, 0, 0.025);
+    @include dark-mode {
+      background: rgba(255, 255, 255, 0.05);
+    }
   }
 
   .InterfaceListHeader {

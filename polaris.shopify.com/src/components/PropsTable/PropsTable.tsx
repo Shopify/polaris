@@ -2,13 +2,16 @@ import {createContext, useContext, useState} from 'react';
 import {TypeData} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
+import {motion, AnimatePresence} from 'framer-motion';
 
 interface Props {
   componentName: string;
   allTypeData: TypeData[];
 }
 
-function syntaxKindToDeveloperFriendlyString(syntaxKind: string): string {
+function syntaxKindToDeveloperFriendlyString(
+  syntaxKind: string | undefined,
+): string {
   if (syntaxKind === 'EnumDeclaration') {
     return `enum`;
   } else if (syntaxKind === 'TypeAliasDeclaration') {
@@ -157,7 +160,12 @@ function InterfaceList({
   >([]);
 
   return (
-    <div className={styles.InterfaceList}>
+    <motion.div
+      className={styles.InterfaceList}
+      initial={{opacity: 0, scale: 0.9}}
+      animate={{opacity: 1, scale: 1, transformOrigin: 'center top'}}
+      exit={{opacity: 0}}
+    >
       <div className={styles.InterfaceListHeader}>
         {syntaxKindToDeveloperFriendlyString(typeData.syntaxKind)}{' '}
         {typeData.name}
@@ -204,22 +212,24 @@ function InterfaceList({
                       )}
                     </span>
 
-                    {expandedTypes
-                      .filter((expanded) => expanded.memberName === name)
-                      .map((expanded) => {
-                        const typeDataForExpandedType = getTypeWithName(
-                          allTypeData,
-                          expanded.typeName,
-                        );
-                        if (!typeDataForExpandedType) return null;
-                        return (
-                          <InterfaceList
-                            key={expanded.typeName}
-                            allTypeData={allTypeData}
-                            typeData={typeDataForExpandedType}
-                          />
-                        );
-                      })}
+                    <AnimatePresence>
+                      {expandedTypes
+                        .filter((expanded) => expanded.memberName === name)
+                        .map((expanded) => {
+                          const typeDataForExpandedType = getTypeWithName(
+                            allTypeData,
+                            expanded.typeName,
+                          );
+                          if (!typeDataForExpandedType) return null;
+                          return (
+                            <InterfaceList
+                              key={expanded.typeName}
+                              allTypeData={allTypeData}
+                              typeData={typeDataForExpandedType}
+                            />
+                          );
+                        })}
+                    </AnimatePresence>
                   </dd>
                 </span>
               </ExpandedTypesContext.Provider>
@@ -227,7 +237,7 @@ function InterfaceList({
           },
         )}
       </dl>
-    </div>
+    </motion.div>
   );
 }
 
