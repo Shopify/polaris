@@ -7,13 +7,14 @@ const components = Object.keys(siteJson).filter((slug) =>
 );
 
 export const getComponentCategories = (): string[] => {
-  const tempComponentCategories: {[key: string]: boolean} = {};
+  const componentCategories: string[] = [];
 
   components.forEach((slug) => {
-    tempComponentCategories[siteJson[slug].frontMatter.category] = true;
+    const {category} = siteJson[slug].frontMatter;
+    if (!componentCategories.includes(category)) {
+      componentCategories.push(category);
+    }
   });
-
-  const componentCategories = Object.keys(tempComponentCategories);
 
   return componentCategories;
 };
