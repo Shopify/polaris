@@ -181,6 +181,10 @@ export const colorsNext = {
     value: palettes.teal[600],
     description: '',
   },
+  'bg-info-subdued-active': {
+    value: palettes.teal[300],
+    description: '',
+  },
   'bg-info': {
     value: palettes.teal[200],
     description: '',
