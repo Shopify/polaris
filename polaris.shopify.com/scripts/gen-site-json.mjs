@@ -1,12 +1,14 @@
 import path from 'path';
 import globby from 'globby';
-import fs from 'fs/promises';
+import {rm, mkdir, writeFile, readFile} from 'fs/promises';
+import {existsSync} from 'fs';
 import matter from 'gray-matter';
 
-const siteJsonPath = path.join(process.cwd(), '.cache/site.json');
+const cacheDir = path.join(process.cwd(), '.cache');
+const siteJsonFile = `${cacheDir}/site.json`;
 
 const getMdContent = async (filePath) => {
-  const fileContent = await fs.readFile(filePath, 'utf-8');
+  const fileContent = await readFile(filePath, 'utf-8');
   const {data, content} = matter(fileContent);
   const slug = filePath
     .replace(`${process.cwd()}/content/`, '')
@@ -16,6 +18,8 @@ const getMdContent = async (filePath) => {
 };
 
 const genSiteJson = async () => {
+  if (existsSync(cacheDir)) await rm(cacheDir, {recursive: true});
+  await mkdir(cacheDir, {recursive: true});
   const pathGlob = path.join(process.cwd(), 'content/**/*.md');
   const mdFiles = globby.sync(pathGlob);
 
@@ -25,9 +29,11 @@ const genSiteJson = async () => {
   const data = {};
   mdData.forEach((md) => (data[md.slug] = {frontMatter: md.frontMatter}));
 
-  await fs.writeFile(siteJsonPath, JSON.stringify(data), 'utf-8');
+  await writeFile(siteJsonFile, JSON.stringify(data), 'utf-8');
 
-  console.log(`✅ Generated ${siteJsonPath}`);
+  console.log(`✅ Generated ${siteJsonFile}`);
 };
+
+genSiteJson();
 
 export default genSiteJson;
