@@ -409,10 +409,6 @@ export const colorsNext = {
     value: palettes.green[900],
     description: '',
   },
-  'text-primary-hover': {
-    value: palettes.green[800],
-    description: '',
-  },
   'text-success': {
     value: palettes.green[700],
     description: '',
