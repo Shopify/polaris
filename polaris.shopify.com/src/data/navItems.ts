@@ -221,13 +221,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           'Polaris provides many layout patterns that help you create efficient and familiar interfaces.',
       },
       {
-        title: 'Home cards',
-        url: '/foundations/patterns/home-cards',
-        icon: 'TextBlockMajor',
-        description:
-          'Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.',
-      },
-      {
         title: 'Error messages',
         url: '/foundations/patterns/error-messages',
         icon: 'DiamondAlertMajor',
