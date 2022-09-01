@@ -17,7 +17,7 @@ type Gap = {
   [Breakpoint in Breakpoints]?: SpacingScale;
 };
 
-interface ColumnsProps {
+export interface ColumnsProps {
   gap?: Gap;
   columns?: Columns;
   children?: React.ReactNode;
