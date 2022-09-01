@@ -8,6 +8,15 @@ interface Props {
   allTypeData: TypeData[];
 }
 
+function syntaxKindToDeveloperFriendlyString(syntaxKind: string): string {
+  if (syntaxKind === 'EnumDeclaration') {
+    return `enum`;
+  } else if (syntaxKind === 'TypeAliasDeclaration') {
+    return `type`;
+  }
+  return `interface`;
+}
+
 function inlineTypeValue(
   typeData: TypeData,
 ): string | number | object | undefined {
@@ -94,7 +103,7 @@ function Highlighter({
     return <span className={styles.SyntaxString}>{type}</span>;
   } else if (type === 'boolean') {
     return <span className={styles.SyntaxBoolean}>{type}</span>;
-  } else if (type === 'number') {
+  } else if (type === 'number' || !Number.isNaN(parseInt(type))) {
     return <span className={styles.SyntaxNumber}>{type}</span>;
   } else if (type.endsWith('ReactNode') || type.endsWith('ReactElement')) {
     return <span className={styles.SyntaxReactNode}>{type}</span>;
@@ -149,9 +158,16 @@ function InterfaceList({
 
   return (
     <div className={styles.InterfaceList}>
-      <div className={styles.InterfaceListHeader}>{typeData.name}</div>
+      <div className={styles.InterfaceListHeader}>
+        {syntaxKindToDeveloperFriendlyString(typeData.syntaxKind)}{' '}
+        {typeData.name}
+      </div>
 
-      {!typeData.members && <Highlighter type={typeData.value.toString()} />}
+      {!typeData.members && (
+        <div className={styles.RawInterfaceValue}>
+          <Highlighter type={typeData.value.toString()} />
+        </div>
+      )}
 
       <dl>
         {typeData.members?.map(

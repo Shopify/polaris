@@ -11,7 +11,7 @@
 .InterfaceList {
   border-radius: var(--border-radius-400);
   border: 1px solid var(--border-color-light);
-  font-size: var(--font-size-200);
+  font-size: var(--font-size-100);
   display: block;
 
   .InterfaceList {
@@ -35,6 +35,10 @@
     font-size: var(--font-size-50);
   }
 
+  .RawInterfaceValue {
+    padding: 0.666em 1em;
+  }
+
   .Row {
     display: block;
     padding: 0.666em 1em;
@@ -49,7 +53,6 @@
     display: flex;
     gap: 0.4rem;
     align-items: center;
-    font-size: var(--font-size-100);
 
     button {
       background: transparent;
@@ -68,7 +71,6 @@
 
   .ValueText {
     font-family: var(--font-family-mono);
-    font-size: var(--font-size-100);
     color: var(--text-strong);
   }
 }
