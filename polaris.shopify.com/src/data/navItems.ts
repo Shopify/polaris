@@ -255,6 +255,13 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         description:
           'Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.',
       },
+      {
+        title: "New badge",
+        url: "/foundations/patterns/new-badge",
+        icon: "StarFilledMinor",
+        description:
+          "The [New] badge can be used to inform merchants about the release of a feature that creates new value.",
+      },
     ],
   },
 ];

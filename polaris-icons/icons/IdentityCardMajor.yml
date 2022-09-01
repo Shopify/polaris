@@ -1,0 +1,16 @@
+name: Identity card
+set: major
+description: Used to represent a personal identification document, such as a driver’s license.
+keywords:
+  - document
+  - upload
+  - license
+  - id
+  - identity
+  - card
+authors:
+  - Fayçal Sabaou
+version: 1
+date_added: 2022-08-24
+date_modified: 2022-08-24
+exclusive_use:
