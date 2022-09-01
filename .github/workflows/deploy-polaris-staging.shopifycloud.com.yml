@@ -1,18 +1,20 @@
-name: Trigger deploy of polaris.shopify.com
+name: Trigger deploy of polaris-staging.shopifycloud.com
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'polaris.shopify.com/**'
+  issue_comment:
+    types:
+      - created
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   trigger-deploy:
+    name: Deploy to staging
+    if: |
+      github.event.issue.pull_request && github.event.comment.body == '/stageit'
     runs-on: ubuntu-latest
-
     steps:
-      - name: Trigger deploy polaris.shopify.com
+      - name: Trigger deploy polaris-staging.shopifycloud.com
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
@@ -21,10 +23,10 @@ jobs:
               owner: "shopify",
               repo: "polaris-site-container-builder",
               workflow_id: "trigger-deploy.yml",
-              ref: "main",
+              ref: "staging",
               inputs: {
                 // TODO
                 sha: 'foobar',
-                target: 'production'
+                target: 'staging'
               }
             });
