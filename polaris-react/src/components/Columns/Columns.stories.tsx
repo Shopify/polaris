@@ -84,10 +84,10 @@ export function ColumnsWithFreeAndFixedWidths() {
       <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '05'}}>
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>
-          <Button icon={ChevronLeftMinor} />
+          <Button icon={ChevronLeftMinor} accessibilityLabel="Previous" />
         </div>
         <div style={{background: 'aquamarine'}}>
-          <Button icon={ChevronRightMinor} />
+          <Button icon={ChevronRightMinor} accessibilityLabel="Next" />
         </div>
       </Columns>
     </Page>
