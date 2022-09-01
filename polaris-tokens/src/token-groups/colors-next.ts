@@ -113,6 +113,10 @@ export const colorsNext = {
     value: palettes.green[100],
     description: '',
   },
+  'bg-primary-subdued-hover': {
+    value: palettes.green[100],
+    description: '',
+  },
   'bg-primary-subdued': {
     value: palettes.green[50],
     description: '',
