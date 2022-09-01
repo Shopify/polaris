@@ -169,7 +169,6 @@ export const colorsNext = {
     value: palettes.yellow[300],
     description: '',
   },
-  'bg-c
   'bg-caution-subdued-hover': {
     value: palettes.yellow[200],
     description: '',
