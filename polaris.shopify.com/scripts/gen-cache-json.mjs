@@ -26,7 +26,7 @@ const genNavJson = (data) => {
       } else {
         const newItem = {
           title,
-          slug,
+          slug: `/${slug}`,
           children: [],
           ...(icon && {icon}),
           ...(description && {description}),
@@ -82,7 +82,7 @@ const genCacheJson = () => {
     .map((filePath) => getMdContent(filePath))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  // genSiteJson(data);
+  genSiteJson(data);
   genNavJson(data);
 
   console.log('✅ Generated .cache/nav.json and .cache/site.json');
