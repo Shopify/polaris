@@ -1,0 +1,8 @@
+@import '../../styles/common';
+
+.root {
+  display: grid;
+  grid-template-columns: var(--pc-column-number);
+  grid-auto-rows: 3rem;
+  gap: var(--pc-tile-spacing);
+}
