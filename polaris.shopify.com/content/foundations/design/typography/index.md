@@ -26,8 +26,6 @@ icon: TypeMajor
 
 ---
 
-![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
-
 ## Principles
 
 ![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
@@ -199,4 +197,4 @@ We can help merchants navigate the UI by grouping related information together. 
 
 Ambiguous spacing can cause confusion and make it hard to understand the content.
 
-![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
+![An image of showing how to use space to create hierarchy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
