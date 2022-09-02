@@ -72,9 +72,6 @@ export type {
   BannerHandles,
 } from './components/Banner';
 
-export {Box} from './components/Box';
-export type {BoxProps} from './components/Box';
-
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';
 

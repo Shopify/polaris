@@ -5,6 +5,8 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
+type Element = 'div' | 'span';
+
 type ColorsTokenGroup = typeof colors;
 type ColorsTokenName = keyof ColorsTokenGroup;
 type BackgroundColorTokenScale = Extract<
@@ -74,7 +76,8 @@ interface Spacing {
 }
 
 export interface BoxProps {
-  as?: 'div' | 'span';
+  /** HTML Element type */
+  as?: Element;
   /** Background color of the Box */
   background?: BackgroundColorTokenScale;
   /** Border styling of the Box */
@@ -99,6 +102,8 @@ export interface BoxProps {
   borderRadiusTopRight?: BorderRadiusTokenScale;
   /** Inner content of the Box */
   children: ReactNode;
+  /** Custom styling for the Box */
+  className?: string;
   /** Spacing outside of the Box */
   margin?: SpacingTokenScale;
   /** Bottom spacing outside of the Box */
@@ -138,6 +143,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusBottomRight,
       borderRadiusTopLeft,
       borderRadiusTopRight,
+      className,
       children,
       margin,
       marginBottom,
@@ -250,12 +256,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined),
     } as React.CSSProperties;
 
-    const className = classNames(styles.Box);
+    const boxClassName = classNames(styles.Box, className && className);
 
     return createElement(
       as,
       {
-        className,
+        className: boxClassName,
         style: sanitizeCustomProperties(style),
         ref,
       },
