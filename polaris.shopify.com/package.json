@@ -3,7 +3,7 @@
   "version": "0.14.0",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "yarn gen-assets && next build",
     "start": "next start",
     "dev": "run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",

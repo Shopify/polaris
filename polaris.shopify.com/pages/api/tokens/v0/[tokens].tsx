@@ -1,5 +1,5 @@
-import { createVar, tokens, TokenGroup } from "@shopify/polaris-tokens";
-import type { NextApiRequest, NextApiResponse } from "next";
+import {createVar, tokens, TokenGroup} from '@shopify/polaris-tokens';
+import type {NextApiRequest, NextApiResponse} from 'next';
 
 type TokenGroupKey = keyof typeof tokens;
 
@@ -22,7 +22,7 @@ function isTokenGroupKey(key: unknown): key is TokenGroupKey {
  */
 const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
   const tokenValues = Object.fromEntries(
-    Object.entries(tokenGroup).map(([token, value]) => [token, value])
+    Object.entries(tokenGroup).map(([token, value]) => [token, value]),
   );
 
   if (format === 'css') {
@@ -41,14 +41,14 @@ const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
 };
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const formatParam = isFormat(req.query.format) ? req.query.format : "json";
+  const formatParam = isFormat(req.query.format) ? req.query.format : 'json';
 
-  if (typeof formatParam === "string") {
-    const tokenGroupParam = req.query.tokens || "";
+  if (typeof formatParam === 'string') {
+    const tokenGroupParam = req.query.tokens || '';
     let tokenData: TokenGroup = {};
 
     // Determine which list(s) we are querying for based on the token param
-    if (tokenGroupParam === "all") {
+    if (tokenGroupParam === 'all') {
       tokenGroupKeys.forEach((group) => {
         const tokenGroup = tokens[group];
 
@@ -70,8 +70,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const formattedTokenData = formatTokenGroup(tokenData, formatParam);
 
-    if (formatParam === "css") {
-      res.setHeader("content-type", "text/plain");
+    if (formatParam === 'css') {
+      res.setHeader('content-type', 'text/plain');
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+      res.setHeader('Access-Control-Allow-Origin', 'true');
+      res.setHeader('Access-Control-Allow-Methods', 'true');
+      res.setHeader(
+        'Access-Control-Allow-Headers',
+        'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version',
+      );
       res.send(formattedTokenData);
     } else {
       res.json(formattedTokenData);
