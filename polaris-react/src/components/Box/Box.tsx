@@ -1,7 +1,7 @@
 import React, {createElement, forwardRef, ReactNode} from 'react';
 import type {colors, depth, shape, spacing} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../utilities/css';
+import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -186,64 +186,68 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     } as Spacing;
 
     const style = {
-      ...(background ? {'--pc-box-background': `var(--p-${background})`} : {}),
+      ...(background
+        ? {'--pc-box-background': `var(--p-${background})`}
+        : undefined),
       ...(borders.bottom
         ? {'--pc-box-border-bottom': `var(--p-border-${borders.bottom})`}
-        : {}),
+        : undefined),
       ...(borders.left
         ? {'--pc-box-border-left': `var(--p-border-${borders.left})`}
-        : {}),
+        : undefined),
       ...(borders.right
         ? {'--pc-box-border-right': `var(--p-border-${borders.right})`}
-        : {}),
+        : undefined),
       ...(borders.top
         ? {'--pc-box-border-top': `var(--p-border-${borders.top})`}
-        : {}),
+        : undefined),
       ...(borderRadiuses.bottomLeft
         ? {
             '--pc-box-border-radius-bottom-left': `var(--p-border-radius-${borderRadiuses.bottomLeft})`,
           }
-        : {}),
+        : undefined),
       ...(borderRadiuses.bottomRight
         ? {
             '--pc-box-border-radius-bottom-right': `var(--p-border-radius-${borderRadiuses.bottomRight})`,
           }
-        : {}),
+        : undefined),
       ...(borderRadiuses.topLeft
         ? {
             '--pc-box-border-radius-top-left': `var(--p-border-radius-${borderRadiuses.topLeft})`,
           }
-        : {}),
+        : undefined),
       ...(borderRadiuses.topRight
         ? {
             '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
           }
-        : {}),
+        : undefined),
       ...(margins.bottom
         ? {'--pc-box-margin-bottom': `var(--p-space-${margins.bottom})`}
-        : {}),
+        : undefined),
       ...(margins.left
         ? {'--pc-box-margin-left': `var(--p-space-${margins.left})`}
-        : {}),
+        : undefined),
       ...(margins.right
         ? {'--pc-box-margin-right': `var(--p-space-${margins.right})`}
-        : {}),
+        : undefined),
       ...(margins.top
         ? {'--pc-box-margin-top': `var(--p-space-${margins.top})`}
-        : {}),
+        : undefined),
       ...(paddings.bottom
         ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
-        : {}),
+        : undefined),
       ...(paddings.left
         ? {'--pc-box-padding-left': `var(--p-space-${paddings.left})`}
-        : {}),
+        : undefined),
       ...(paddings.right
         ? {'--pc-box-padding-right': `var(--p-space-${paddings.right})`}
-        : {}),
+        : undefined),
       ...(paddings.top
         ? {'--pc-box-padding-top': `var(--p-space-${paddings.top})`}
-        : {}),
-      ...(shadow ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`} : {}),
+        : undefined),
+      ...(shadow
+        ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`}
+        : undefined),
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
@@ -252,7 +256,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as,
       {
         className,
-        style,
+        style: sanitizeCustomProperties(style),
         ref,
       },
       children,
