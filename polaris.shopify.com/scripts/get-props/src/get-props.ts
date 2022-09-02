@@ -2,10 +2,14 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
 import globby from 'globby';
-import {TypeData} from '../../../src/types';
+import {
+  TypeData,
+  TypeDataTree,
+  TypeDataTreeWithPaths,
+} from '../../../src/types';
 
 type NodeParser = (
-  ast: TypeData[],
+  ast: TypeDataTreeWithPaths,
   node: ts.Node,
   checker: ts.TypeChecker,
   program: ts.Program,
@@ -29,8 +33,8 @@ export function normalizePath(path: string): string {
   return normalizedPath;
 }
 
-export function getProps(filePaths: string[]): TypeData[] {
-  let ast: TypeData[] = [];
+export function getProps(filePaths: string[]): TypeDataTreeWithPaths {
+  let ast: TypeDataTreeWithPaths = {};
   let program = ts.createProgram(filePaths, compilerOptions);
   let checker = program.getTypeChecker();
 
@@ -44,6 +48,15 @@ export function getProps(filePaths: string[]): TypeData[] {
       });
     }
   }
+
+  Object.entries(ast).forEach(([name, value]) => {
+    const definitionCount = Object.keys(value).length;
+    if (definitionCount !== 1) {
+      console.warn(
+        `A type called "${name}" is defined in ${definitionCount} files`,
+      );
+    }
+  });
 
   return ast;
 
@@ -78,7 +91,7 @@ const parseInterfaceDeclaration: NodeParser = (
   ast,
   node,
   checker,
-  program,
+  _program,
   filePath,
 ) => {
   const interfaceDeclaration = node as ts.InterfaceDeclaration;
@@ -96,7 +109,7 @@ const parseInterfaceDeclaration: NodeParser = (
         .map((param) => `${param.name.getText()}: ${param.type?.getText()}`)
         .join(', ')}]`;
       const value = indexSignature.type.getText();
-      members.push({name, value});
+      members.push({filePath, name, value});
     }
   });
 
@@ -110,7 +123,13 @@ const parseInterfaceDeclaration: NodeParser = (
       const value = checker.typeToString(type);
       const {deprecationMessage, defaultValue} = parseJSDocTags(prop);
 
-      let memberNode: TypeData = {syntaxKind, name, value, description};
+      let memberNode: TypeData = {
+        filePath,
+        syntaxKind,
+        name,
+        value,
+        description,
+      };
 
       if (
         valueDeclaration.kind === ts.SyntaxKind.PropertySignature ||
@@ -154,7 +173,16 @@ const parseInterfaceDeclaration: NodeParser = (
   const description = getSymbolComment(symbol, checker);
   const value = interfaceDeclaration.getText();
 
-  ast.push({filePath, name, description, members, value});
+  if (!ast[name]) {
+    ast[name] = {};
+  }
+  ast[name][filePath] = {
+    filePath,
+    name,
+    description,
+    members,
+    value,
+  };
 };
 
 const parseTypeAliasDeclaration: NodeParser = (
@@ -186,7 +214,16 @@ const parseTypeAliasDeclaration: NodeParser = (
     value = unionType.types.map((type) => type.getText()).join(' & ');
   }
 
-  ast.push({filePath, syntaxKind, name, value, description});
+  if (!ast[name]) {
+    ast[name] = {};
+  }
+  ast[name][filePath] = {
+    filePath,
+    syntaxKind,
+    name,
+    value,
+    description,
+  };
 };
 
 const parseEnumDeclaration: NodeParser = (
@@ -207,11 +244,22 @@ const parseEnumDeclaration: NodeParser = (
   const members: TypeData[] = enumDeclation.members.map((member) => {
     const type = checker.getTypeAtLocation(member.name);
     return {
+      filePath,
       name: member.name.getText(),
       value: type.isLiteral() ? type.value.valueOf() : '',
     };
   });
-  ast.push({filePath, syntaxKind, name, value, members});
+
+  if (!ast[name]) {
+    ast[name] = {};
+  }
+  ast[name][filePath] = {
+    filePath,
+    syntaxKind,
+    name,
+    value,
+    members,
+  };
 };
 
 function parseJSDocTags(symbol: ts.Symbol): {
@@ -259,7 +307,7 @@ if (isExecutedThroughCommandLine) {
   });
 }
 
-const alwaysIgnoredNames = [
+const nonPolarisTypes = [
   'React',
   'ReactNode',
   'any',
@@ -271,101 +319,56 @@ const alwaysIgnoredNames = [
 ];
 
 export function getRelevantTypeData(
-  allNodes: TypeData[],
+  ast: TypeDataTreeWithPaths,
   name: string,
   filePath: string,
-): TypeData[] {
-  const matchingNodes = getMatchingNodes(allNodes, name, filePath);
-  if (matchingNodes.length !== 1) {
+): TypeDataTree {
+  const matchingNode = ast[name][filePath];
+  if (!matchingNode) {
     throw new Error(
-      `Expected to find 1 starting node, but found ${matchingNodes.length}`,
+      `Expected to find a type at location ast[${name}][${filePath}]`,
     );
   }
-  let startingNode = matchingNodes[0];
-
-  let ignoredNames: string[] = [startingNode.name, ...alwaysIgnoredNames];
-  let openSet: TypeData[] = [startingNode];
-  let closedSet: TypeData[] = [];
-
-  while (openSet.length > 0) {
-    closedSet = [...closedSet, ...openSet];
-
-    let newOpenSet: TypeData[] = [];
-    openSet.forEach((node) => {
-      const referencedTypes = getReferencedTypes(allNodes, node, ignoredNames);
-      newOpenSet = [...newOpenSet, ...referencedTypes];
-      ignoredNames = [
-        ...ignoredNames,
-        ...referencedTypes.map(({name}) => name),
-      ];
-    });
-
-    openSet = newOpenSet;
-  }
-
-  return closedSet;
-}
-
-function getReferencedTypes(
-  allNodes: TypeData[],
-  searchedNode: TypeData,
-  ignoredNames: string[],
-): TypeData[] {
-  let returnedNodes: TypeData[] = [];
-  let foundTypes: {[name: string]: true} = {};
 
   const pascalCaseRegex = /[A-Z][a-z]+(?:[A-Z][a-z]+)*/gm;
+  let output: TypeDataTree = {};
 
-  if (searchedNode.members) {
-    searchedNode.members.forEach((member) => {
-      if (typeof member.value === 'string') {
-        const matchingTypes = member.value.match(pascalCaseRegex);
-        matchingTypes?.map((name) => {
-          foundTypes[name] = true;
-        });
+  extractTypes(matchingNode);
+
+  function extractTypes(node: TypeData) {
+    output[node.name] = node;
+
+    let typeDefinitionString: string = node.members
+      ? node.members.map((member) => member.value.toString()).join(' ')
+      : node.value.toString();
+
+    let detectedTypeDefinitions = typeDefinitionString.match(pascalCaseRegex);
+    detectedTypeDefinitions?.forEach((name) => {
+      if (nonPolarisTypes.includes(name)) return;
+      if (Object.keys(output).includes(name)) return;
+
+      const typeDefinitionInSameFile = ast[name]
+        ? ast[name][node.filePath]
+        : undefined;
+
+      if (typeDefinitionInSameFile) {
+        extractTypes(typeDefinitionInSameFile);
+      } else {
+        const typeDefinitionsWithSameName = ast[name];
+        const typeDefinitionsWithSameNameCount = Object.keys(
+          typeDefinitionsWithSameName || {},
+        ).length;
+
+        if (typeDefinitionsWithSameNameCount === 1) {
+          extractTypes(Object.values(typeDefinitionsWithSameName)[0]);
+        } else {
+          console.warn(
+            `Found ${typeDefinitionsWithSameNameCount} definitions for type ${name}`,
+          );
+        }
       }
     });
-  } else {
-    if (typeof searchedNode.value === 'string') {
-      const matchingTypes = searchedNode.value.match(pascalCaseRegex);
-      matchingTypes?.map((name) => {
-        foundTypes[name] = true;
-      });
-    }
   }
 
-  Object.keys(foundTypes).forEach((name) => {
-    if (!ignoredNames.includes(name)) {
-      const referencedNode = getMatchingNodes(
-        allNodes,
-        name,
-        searchedNode.filePath,
-      );
-      if (referencedNode.length === 1) {
-        returnedNodes = [...returnedNodes, ...referencedNode];
-      } else {
-        console.log(
-          `⛔️ Type ${name} could not be referenced. It was defined ${referencedNode.length} times.`,
-        );
-      }
-    }
-  });
-
-  return returnedNodes;
-}
-
-function getMatchingNodes(
-  allNodes: TypeData[],
-  name: string,
-  filePath?: string,
-): TypeData[] {
-  let matchingNodes = allNodes.filter(
-    (node) => node.filePath === filePath && node.name === name,
-  );
-
-  if (matchingNodes.length !== 1) {
-    matchingNodes = allNodes.filter((node) => node.name === name);
-  }
-
-  return matchingNodes;
+  return output;
 }

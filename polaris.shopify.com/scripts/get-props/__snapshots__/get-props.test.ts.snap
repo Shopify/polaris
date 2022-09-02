@@ -4,165 +4,190 @@ exports[`Filters out the relevant AST nodes when given a starting point 1`] = `
 Array [
   "InterfaceProps",
   "Relationship",
-  "Animal",
-  "Referenced",
   "Friend",
   "Family",
   "Close",
   "Extended",
+  "Animal",
+  "Referenced",
 ]
 `;
 
 exports[`Gracefully handles unsupported types 1`] = `
-Array [
-  Object {
-    "description": "Props that the script can't parse",
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/unsupported.ts",
-    "name": "UnsupportedProps",
-    "syntaxKind": "TypeAliasDeclaration",
-    "value": "(Animal | string) & null",
+Object {
+  "UnsupportedProps": Object {
+    "polaris.shopify.com/scripts/get-props/testData/unsupported.ts": Object {
+      "description": "Props that the script can't parse",
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/unsupported.ts",
+      "name": "UnsupportedProps",
+      "syntaxKind": "TypeAliasDeclaration",
+      "value": "(Animal | string) & null",
+    },
   },
-]
+}
 `;
 
 exports[`Parses enums 1`] = `
-Array [
-  Object {
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
-    "members": Array [
-      Object {
-        "name": "Horse",
-        "value": 0,
-      },
-      Object {
-        "name": "Dog",
-        "value": 10,
-      },
-      Object {
-        "name": "Cow",
-        "value": "Moo",
-      },
-    ],
-    "name": "Animal",
-    "syntaxKind": "EnumDeclaration",
-    "value": "export enum Animal {
+Object {
+  "Animal": Object {
+    "polaris.shopify.com/scripts/get-props/testData/enums.ts": Object {
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+      "members": Array [
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+          "name": "Horse",
+          "value": 0,
+        },
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+          "name": "Dog",
+          "value": 10,
+        },
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+          "name": "Cow",
+          "value": "Moo",
+        },
+      ],
+      "name": "Animal",
+      "syntaxKind": "EnumDeclaration",
+      "value": "export enum Animal {
   Horse,
   Dog = 10,
   Cow = 'Moo',
 }",
+    },
   },
-]
+}
 `;
 
 exports[`Parses interfaces 1`] = `
-Array [
-  Object {
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
-    "members": Array [
-      Object {
-        "name": "Horse",
-        "value": 0,
-      },
-      Object {
-        "name": "Dog",
-        "value": 10,
-      },
-      Object {
-        "name": "Cow",
-        "value": "Moo",
-      },
-    ],
-    "name": "Animal",
-    "syntaxKind": "EnumDeclaration",
-    "value": "export enum Animal {
+Object {
+  "Animal": Object {
+    "polaris.shopify.com/scripts/get-props/testData/enums.ts": Object {
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+      "members": Array [
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+          "name": "Horse",
+          "value": 0,
+        },
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+          "name": "Dog",
+          "value": 10,
+        },
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/enums.ts",
+          "name": "Cow",
+          "value": "Moo",
+        },
+      ],
+      "name": "Animal",
+      "syntaxKind": "EnumDeclaration",
+      "value": "export enum Animal {
   Horse,
   Dog = 10,
   Cow = 'Moo',
 }",
+    },
   },
-  Object {
-    "description": "An interface containing a bunch of complex props",
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
-    "members": Array [
-      Object {
-        "name": "[key: string]",
-        "value": "any",
-      },
-      Object {
-        "defaultValue": "true",
-        "description": "A boolean member",
-        "name": "isBoolean",
-        "syntaxKind": "PropertySignature",
-        "value": "boolean",
-      },
-      Object {
-        "defaultValue": "Hello",
-        "description": "A string member",
-        "name": "stringMember",
-        "syntaxKind": "PropertySignature",
-        "value": "string",
-      },
-      Object {
-        "defaultValue": "123",
-        "description": "A number member",
-        "name": "numberMember",
-        "syntaxKind": "PropertySignature",
-        "value": "number",
-      },
-      Object {
-        "description": "A method member",
-        "isOptional": true,
-        "name": "isMethod",
-        "syntaxKind": "PropertySignature",
-        "value": "(a: string, b: SomeInterface, c: Animal) => any",
-      },
-      Object {
-        "description": "An enum member",
-        "name": "enumMember",
-        "syntaxKind": "PropertySignature",
-        "value": "Animal",
-      },
-      Object {
-        "description": "An optional member",
-        "isOptional": true,
-        "name": "optionalMember",
-        "syntaxKind": "PropertySignature",
-        "value": "string",
-      },
-      Object {
-        "deprecationMessage": "This member is deprecated...",
-        "description": "A deprecated member",
-        "name": "deprecatedMember",
-        "syntaxKind": "PropertySignature",
-        "value": "string",
-      },
-      Object {
-        "description": "A member that references another interface",
-        "name": "referencedInterface",
-        "syntaxKind": "PropertySignature",
-        "value": "SomeInterface",
-      },
-      Object {
-        "description": "A union member",
-        "name": "unionMember",
-        "syntaxKind": "PropertySignature",
-        "value": "string | number",
-      },
-      Object {
-        "description": "An intersection member",
-        "name": "intersectionMember",
-        "syntaxKind": "PropertySignature",
-        "value": "{ a: string; } & { b: string; }",
-      },
-      Object {
-        "description": "An array member",
-        "name": "arrayMember",
-        "syntaxKind": "PropertySignature",
-        "value": "[1, \\"hello\\", () => void]",
-      },
-    ],
-    "name": "InterfaceProps",
-    "value": "interface InterfaceProps {
+  "InterfaceProps": Object {
+    "polaris.shopify.com/scripts/get-props/testData/interfaces.ts": Object {
+      "description": "An interface containing a bunch of complex props",
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+      "members": Array [
+        Object {
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "[key: string]",
+          "value": "any",
+        },
+        Object {
+          "defaultValue": "true",
+          "description": "A boolean member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "isBoolean",
+          "syntaxKind": "PropertySignature",
+          "value": "boolean",
+        },
+        Object {
+          "defaultValue": "Hello",
+          "description": "A string member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "stringMember",
+          "syntaxKind": "PropertySignature",
+          "value": "string",
+        },
+        Object {
+          "defaultValue": "123",
+          "description": "A number member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "numberMember",
+          "syntaxKind": "PropertySignature",
+          "value": "number",
+        },
+        Object {
+          "description": "A method member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "isOptional": true,
+          "name": "isMethod",
+          "syntaxKind": "PropertySignature",
+          "value": "(a: string, b: SomeInterface, c: Animal) => any",
+        },
+        Object {
+          "description": "An enum member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "enumMember",
+          "syntaxKind": "PropertySignature",
+          "value": "Animal",
+        },
+        Object {
+          "description": "An optional member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "isOptional": true,
+          "name": "optionalMember",
+          "syntaxKind": "PropertySignature",
+          "value": "string",
+        },
+        Object {
+          "deprecationMessage": "This member is deprecated...",
+          "description": "A deprecated member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "deprecatedMember",
+          "syntaxKind": "PropertySignature",
+          "value": "string",
+        },
+        Object {
+          "description": "A member that references another interface",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "referencedInterface",
+          "syntaxKind": "PropertySignature",
+          "value": "SomeInterface",
+        },
+        Object {
+          "description": "A union member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "unionMember",
+          "syntaxKind": "PropertySignature",
+          "value": "string | number",
+        },
+        Object {
+          "description": "An intersection member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "intersectionMember",
+          "syntaxKind": "PropertySignature",
+          "value": "{ a: string; } & { b: string; }",
+        },
+        Object {
+          "description": "An array member",
+          "filePath": "polaris.shopify.com/scripts/get-props/testData/interfaces.ts",
+          "name": "arrayMember",
+          "syntaxKind": "PropertySignature",
+          "value": "[1, \\"hello\\", () => void]",
+        },
+      ],
+      "name": "InterfaceProps",
+      "value": "interface InterfaceProps {
   /**
    * A boolean member
    *
@@ -220,35 +245,42 @@ Array [
    */
   [key: string]: any;
 }",
+    },
   },
-]
+}
 `;
 
 exports[`Parses type aliases 1`] = `
-Array [
-  Object {
-    "description": "A basic type",
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
-    "name": "StringProps",
-    "syntaxKind": "TypeAliasDeclaration",
-    "value": "string",
+Object {
+  "MyFunction": Object {
+    "polaris.shopify.com/scripts/get-props/testData/types.ts": Object {
+      "description": "A function type",
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
+      "name": "MyFunction",
+      "syntaxKind": "TypeAliasDeclaration",
+      "value": "(a: string, b: number) => void",
+    },
   },
-  Object {
-    "description": "A more complex type",
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
-    "name": "TypeProps",
-    "syntaxKind": "TypeAliasDeclaration",
-    "value": "{
+  "StringProps": Object {
+    "polaris.shopify.com/scripts/get-props/testData/types.ts": Object {
+      "description": "A basic type",
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
+      "name": "StringProps",
+      "syntaxKind": "TypeAliasDeclaration",
+      "value": "string",
+    },
+  },
+  "TypeProps": Object {
+    "polaris.shopify.com/scripts/get-props/testData/types.ts": Object {
+      "description": "A more complex type",
+      "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
+      "name": "TypeProps",
+      "syntaxKind": "TypeAliasDeclaration",
+      "value": "{
   a: string;
   b: number;
 }",
+    },
   },
-  Object {
-    "description": "A function type",
-    "filePath": "polaris.shopify.com/scripts/get-props/testData/types.ts",
-    "name": "MyFunction",
-    "syntaxKind": "TypeAliasDeclaration",
-    "value": "(a: string, b: number) => void",
-  },
-]
+}
 `;

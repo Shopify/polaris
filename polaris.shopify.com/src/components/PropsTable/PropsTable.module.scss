@@ -68,6 +68,7 @@
   .MemberName {
     font-weight: var(--font-weight-500);
     color: var(--text-strong);
+    flex-shrink: 0;
   }
 
   .Value {

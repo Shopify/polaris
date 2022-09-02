@@ -1,12 +1,12 @@
 import {createContext, useContext, useState} from 'react';
-import {TypeData} from '../../types';
+import {TypeData, TypeDataTree} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
 
 interface Props {
   componentName: string;
-  allTypeData: TypeData[];
+  allTypeData: TypeDataTree;
 }
 
 function syntaxKindToDeveloperFriendlyString(
@@ -20,31 +20,14 @@ function syntaxKindToDeveloperFriendlyString(
   return `interface`;
 }
 
-function inlineTypeValue(
-  typeData: TypeData,
-): string | number | object | undefined {
-  if (typeData.members) {
-    return undefined;
-  } else {
-    return typeData.value;
-  }
-}
-
-function getTypeWithName(
-  typeData: TypeData[],
-  name: string,
-): TypeData | undefined {
-  return typeData.find((type) => type.name === name);
-}
-
 const toPascalCase = (str: string) =>
   (str.match(/[a-zA-Z0-9]+/g) || [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
     .join('');
 
 const TypeDataContext = createContext<{
-  allTypeData: TypeData[];
-}>({allTypeData: []});
+  allTypeData: TypeDataTree;
+}>({allTypeData: {}});
 
 function PropsTable({allTypeData, componentName}: Props) {
   const feedbackTitle = '[polaris.shopify.com] Props table feedback';
@@ -53,11 +36,13 @@ function PropsTable({allTypeData, componentName}: Props) {
   )}&amp;labels=polaris.shopify.com`;
 
   const propsName = `${toPascalCase(componentName).replace(/\s/g, '')}Props`;
-  const propsForComponent = getTypeWithName(allTypeData, propsName);
+  const propsForComponent = allTypeData[propsName];
 
   if (!propsForComponent) {
     throw new Error('Could not find props for component');
   }
+
+  console.log(allTypeData);
 
   const propsAreDefinedUsingInterface = !!propsForComponent.members;
 
@@ -72,23 +57,19 @@ function PropsTable({allTypeData, componentName}: Props) {
           </p>
         </Longform>
 
-        {propsAreDefinedUsingInterface ? (
-          <InterfaceList
-            allTypeData={allTypeData}
-            typeData={propsForComponent}
-          />
-        ) : (
+        {!propsAreDefinedUsingInterface && (
           <div className={styles.UnparsablePropsWarning}>
             <p>{`This component uses prop types that our website can't automatically parse.`}</p>
-            <pre>{propsForComponent?.value}</pre>
           </div>
         )}
+
+        <InterfaceList allTypeData={allTypeData} typeData={propsForComponent} />
       </div>
     </TypeDataContext.Provider>
   );
 }
 
-type ExpandedTypeInfo = {memberName: string; typeName: string};
+type ExpandedTypeInfo = {memberName: string | null; typeName: string};
 
 const ExpandedTypesContext = createContext<{
   expandedTypes: ExpandedTypeInfo[];
@@ -99,7 +80,7 @@ function InterfaceList({
   allTypeData,
   typeData,
 }: {
-  allTypeData: TypeData[];
+  allTypeData: TypeDataTree;
   typeData: TypeData;
   level?: number;
 }) {
@@ -117,9 +98,35 @@ function InterfaceList({
       </div>
 
       {!typeData.members && (
-        <div className={styles.RawInterfaceValue}>
-          <Highlighter type={typeData.value.toString()} />
-        </div>
+        <ExpandedTypesContext.Provider
+          value={{
+            expandedTypes,
+            expandType: (typeName: string) => {
+              setExpandedTypes([
+                {typeName, memberName: null},
+                ...expandedTypes,
+              ]);
+            },
+          }}
+        >
+          <div className={styles.RawInterfaceValue}>
+            <Highlighter type={typeData.value.toString()} />
+
+            {expandedTypes
+              .filter((expanded) => expanded.memberName === null)
+              .map((expanded) => {
+                const typeDataForExpandedType = allTypeData[expanded.typeName];
+                if (!typeDataForExpandedType) return null;
+                return (
+                  <InterfaceList
+                    key={expanded.typeName}
+                    allTypeData={allTypeData}
+                    typeData={typeDataForExpandedType}
+                  />
+                );
+              })}
+          </div>
+        </ExpandedTypesContext.Provider>
       )}
 
       {typeData.members && (
@@ -165,10 +172,8 @@ function InterfaceList({
                         {expandedTypes
                           .filter((expanded) => expanded.memberName === name)
                           .map((expanded) => {
-                            const typeDataForExpandedType = getTypeWithName(
-                              allTypeData,
-                              expanded.typeName,
-                            );
+                            const typeDataForExpandedType =
+                              allTypeData[expanded.typeName];
                             if (!typeDataForExpandedType) return null;
                             return (
                               <InterfaceList
@@ -215,15 +220,23 @@ function Highlighter({
   } else if (type === 'number' || !Number.isNaN(parseInt(type))) {
     return <span className={styles.SyntaxNumber}>{type}</span>;
   } else if (isType) {
-    const referencedType = getTypeWithName(allTypeData, type);
+    const referencedType = allTypeData[type];
     const referencedTypeExists = !!referencedType;
     const typeCanBeExpanded = referencedTypeExists && !hasBenExpanded;
-    const autoInlinedValue =
+    let autoInlinedValue =
       referencedType &&
       !referencedType.members &&
       typeof referencedType.value === 'string'
         ? referencedType.value
         : undefined;
+
+    if (autoInlinedValue) {
+      const needsParenthesesToMakeSense =
+        prev.includes('&') || prev.includes('|');
+      if (needsParenthesesToMakeSense) {
+        autoInlinedValue = `(${autoInlinedValue})`;
+      }
+    }
 
     if (autoInlinedValue) {
       return <Highlighter type={autoInlinedValue} prev={type} />;

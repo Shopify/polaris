@@ -86,11 +86,20 @@ export interface QuickGuide {
   rows: QuickGuideRow[];
 }
 
+export type TypeDataTreeWithPaths = {
+  [typeName: string]: {
+    [filePath: string]: TypeData;
+  };
+};
+
+export type TypeDataTree = {
+  [typeName: string]: TypeData;
+};
+
 export type TypeData = {
-  filePath?: string;
+  filePath: string;
   name: string;
   value: string | number | object;
-  id?: string;
   syntaxKind?: string;
   description?: string;
   isOptional?: true;

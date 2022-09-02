@@ -56,7 +56,7 @@ it('Filters out the relevant AST nodes when given a starting point', () => {
     'InterfaceProps',
     'polaris.shopify.com/scripts/get-props/testData/relevantTypes.ts',
   );
-  const names = filteredTypeDatas.map((node) => node.name);
+  const names = Object.values(filteredTypeDatas).map((node) => node.name);
 
   expect(names).toMatchSnapshot();
 });
