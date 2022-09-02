@@ -5,7 +5,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span';
+type Element = 'div' | 'span' | 'button';
 
 type ColorsTokenGroup = typeof colors;
 type ColorsTokenName = keyof ColorsTokenGroup;
@@ -126,6 +126,8 @@ export interface BoxProps {
   paddingTop?: SpacingTokenScale;
   /** Shadow on the Box */
   shadow?: DepthTokenScale;
+  /** Callback triggered on click */
+  onClick?(event: React.MouseEvent<HTMLElement>): void;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -156,6 +158,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingRight,
       paddingTop,
       shadow,
+      onClick,
     },
     ref,
   ) => {
@@ -264,6 +267,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         className: boxClassName,
         style: sanitizeCustomProperties(style),
         ref,
+        ...(onClick ? {onClick} : undefined),
       },
       children,
     );

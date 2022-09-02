@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
+import {Box} from '../../../Box';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
@@ -47,27 +48,27 @@ export function Toast({
   }, [action, duration, onDismiss]);
 
   const dismissMarkup = (
-    <button type="button" className={styles.CloseButton} onClick={onDismiss}>
+    <Box as="button" className={styles.CloseButton} onClick={onDismiss}>
       <Icon source={MobileCancelMajor} />
-    </button>
+    </Box>
   );
 
   const actionMarkup = action ? (
-    <div className={styles.Action}>
+    <Box className={styles.Action}>
       <Button plain monochrome onClick={action.onAction}>
         {action.content}
       </Button>
-    </div>
+    </Box>
   ) : null;
 
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <div className={className}>
+    <Box className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {content}
       {actionMarkup}
       {dismissMarkup}
-    </div>
+    </Box>
   );
 }
