@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.1.1
+
+### Patch Changes
+
+- [#6840](https://github.com/Shopify/polaris/pull/6840) [`90f325460`](https://github.com/Shopify/polaris/commit/90f32546022103e2bba1a4659306152d7facc149) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Removed additional reflows from IndexTable
+
 ## 10.1.0
 
 ### Minor Changes
