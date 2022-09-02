@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, useEffect} from 'react';
+import React, {useState, useCallback, useRef} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
@@ -137,17 +137,6 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     [onIFrameLoad],
   );
 
-  useEffect(() => {
-    if (closing) {
-      onClose();
-      setClosing(false);
-    }
-  }, [closing, onClose]);
-
-  const handleOnClose = () => {
-    setClosing(true);
-  };
-
   if (open) {
     const footerMarkup =
       !footer && !primaryAction && !secondaryActions ? null : (
@@ -207,6 +196,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         small={small}
         limitHeight={limitHeight}
         fullScreen={fullScreen}
+        setClosing={setClosing}
       >
         <Header
           titleHidden={titleHidden}
@@ -221,7 +211,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop onClick={handleOnClose} />;
+    backdrop = <Backdrop setClosing={setClosing} onClick={onClose} />;
   }
 
   const animated = !instant;
