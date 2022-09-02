@@ -1,15 +1,22 @@
 import type {NavItem} from '../components/Nav';
-import components from '../data/components.json';
-import {Status} from '../types';
+import siteJson from '../../.cache/site.json';
+import {Status, SiteJSON} from '../types';
+
+const pages: SiteJSON = siteJson;
+
+const components = Object.keys(pages).filter((slug) =>
+  slug.startsWith('components/'),
+);
 
 export const getComponentCategories = (): string[] => {
-  const tempComponentCategories: {[key: string]: boolean} = {};
+  const componentCategories: string[] = [];
 
-  Object.values(components).forEach((component) => {
-    tempComponentCategories[component.frontMatter.category] = true;
+  components.forEach((slug) => {
+    const {category = ''} = pages[slug].frontMatter;
+    if (!componentCategories.includes(category)) {
+      componentCategories.push(category);
+    }
   });
-
-  const componentCategories = Object.keys(tempComponentCategories);
 
   return componentCategories;
 };
@@ -18,40 +25,21 @@ export const getComponentNav = (): NavItem[] => {
   const navItems: NavItem[] = [
     {
       title: 'All',
-      children: components.map((component) => {
-        const statusValue =
-          component.frontMatter.status?.value.toLowerCase() as
-            | Status['value']
-            | undefined;
+      children: components.map((slug) => {
+        const {title, status} = pages[slug].frontMatter;
+        const componentStatus = status
+          ? ({value: status.value, message: status.value} as Status)
+          : undefined;
         return {
-          title: component.frontMatter.title,
-          url: `/components/${slugify(component.frontMatter.title)}`,
-          status:
-            component.frontMatter.status && statusValue
-              ? {
-                  value: statusValue,
-                  message: component.frontMatter.status.value,
-                }
-              : undefined,
+          title: title,
+          url: `/components/${slugify(title)}`,
+          status: componentStatus,
         };
       }),
     },
   ];
 
   return navItems;
-};
-
-export const getReadableStatusValue = (
-  statusValue: Status['value'],
-): string => {
-  const bannerTitles: {[key in Status['value']]: string} = {
-    deprecated: 'Deprecated',
-    alpha: 'Alpha',
-    information: 'Information',
-    warning: 'Warning',
-  };
-
-  return bannerTitles[statusValue];
 };
 
 export const slugify = (str: string): string => {

@@ -1,16 +1,22 @@
 import ComponentGrid from '../ComponentGrid';
 import Layout from '../Layout';
 
-import components from '../../data/components.json';
+import siteJson from '../../../.cache/site.json';
 import {
   getComponentCategories,
   stripMarkdownLinks,
   slugify,
   getComponentNav,
 } from '../../utils/various';
-import {Status} from '../../types';
+import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
+
+const pages: SiteJSON = siteJson;
+
+const components = Object.keys(pages).filter((slug) =>
+  slug.startsWith('components/'),
+);
 
 const componentCategories = getComponentCategories();
 const componentNav = getComponentNav();
@@ -33,25 +39,22 @@ export default function ComponentsPage() {
               <ComponentGrid>
                 {components
                   .filter(
-                    (component) => component.frontMatter.category === category,
+                    (slug) => pages[slug].frontMatter.category === category,
                   )
-                  .map(({frontMatter, description}) => {
-                    const {title, status} = frontMatter;
+                  .map((slug) => {
+                    const {
+                      title,
+                      status,
+                      description = '',
+                    } = pages[slug].frontMatter;
                     const url = `/components/${slugify(title)}`;
-                    let typedStatus = status
-                      ? {
-                          value: status.value.toLowerCase() as Status['value'],
-                          message: status.value,
-                        }
-                      : undefined;
-
                     return (
                       <ComponentGrid.Item
                         key={title}
                         title={title}
                         description={stripMarkdownLinks(description)}
                         url={url}
-                        status={typedStatus}
+                        status={status as Status}
                       />
                     );
                   })}
