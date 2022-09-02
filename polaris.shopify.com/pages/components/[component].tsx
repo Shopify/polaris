@@ -2,18 +2,21 @@ import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
+import type {NavItem} from '../../src/components/Nav';
 import ComponentExamples from '../../src/components/ComponentExamples';
 import type {ComponentExample} from '../../src/components/ComponentExamples';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
-import type {NavItem} from '../../src/components/Nav';
 import Layout from '../../src/components/Layout';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {getComponentNav} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
 import {PropsForComponent, Status} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
+
+import navJson from '../../.cache/nav.json';
+const nav: NavItem[] = navJson;
+const navItems = nav.find((item) => item.slug === '/components')?.children;
 
 interface MarkdownData {
   frontMatter: any;
@@ -41,7 +44,7 @@ const Components = ({
   status,
   propsForComponent,
 }: Props) => {
-  const navItems: NavItem[] = getComponentNav();
+  // const navItems: NavItem[] = getComponentNav();
   const statusBanner = status ? <StatusBanner status={status} /> : null;
   const propList = propsForComponent ? (
     <PropsTable props={propsForComponent} />

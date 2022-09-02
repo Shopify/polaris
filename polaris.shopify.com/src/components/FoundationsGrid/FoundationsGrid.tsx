@@ -26,9 +26,9 @@ function FoundationsGrid({title, children}: Props) {
 
 interface FoundationsGridItemProps {
   title: string;
-  description: string;
+  description?: string;
   url: string;
-  icon: string;
+  icon?: string;
   category: string;
 }
 
@@ -45,11 +45,14 @@ function FoundationsGridItem({
     <li className={styles.FoundationsGridItem} data-category={category}>
       <Link href={url} passHref>
         <a {...searchAttributes}>
-          <div className={styles.Icon}>
-            <Icon source={(polarisIcons as any)[icon]} />
-          </div>
+          {icon && (
+            <div className={styles.Icon}>
+              <Icon source={(polarisIcons as any)[icon]} />
+            </div>
+          )}
+
           <h4>{title}</h4>
-          <p>{stripMarkdownLinks(description)}</p>
+          {description && <p>{stripMarkdownLinks(description)}</p>}
         </a>
       </Link>
     </li>

@@ -2,37 +2,15 @@ import React, {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import {foundationsNavItems} from '../../data/navItems';
-import {className, getComponentNav} from '../../utils/various';
+import navJson from '../../../.cache/nav.json';
+import {className} from '../../utils/various';
 import {Breakpoints} from '../../types';
 import Button from '../Button';
 import type {NavItem} from '../Nav';
 
 import styles from './MobileNav.module.scss';
 
-const componentsNavItems = getComponentNav();
-
-const navItems: NavItem[] = [
-  {
-    title: 'Getting started',
-    url: '/',
-  },
-  ...foundationsNavItems,
-  {
-    title: 'Components',
-    url: '/components',
-    children: componentsNavItems[0].children,
-  },
-  {
-    title: 'Tokens',
-    url: '/tokens/colors',
-  },
-  {
-    title: 'Icons',
-    url: '/icons',
-  },
-  // ...contributingNavItems,
-];
+const navItems: NavItem[] = navJson;
 
 interface Props {
   currentPath: string;
@@ -202,7 +180,7 @@ function ListItem({ariaId, item, currentPath, handleCloseMenu}: ListItemProps) {
           >
             {item.children.map((child) => (
               <ListItem
-                key={child.url}
+                key={child.slug}
                 item={child}
                 currentPath={currentPath}
                 handleCloseMenu={handleCloseMenu}
@@ -212,10 +190,10 @@ function ListItem({ariaId, item, currentPath, handleCloseMenu}: ListItemProps) {
         </>
       )}
 
-      {!item.children && item.url && (
-        <Link href={item.url} passHref>
+      {!item.children && item.slug && (
+        <Link href={item.slug} passHref>
           <a
-            aria-current={item.url === currentPath ? 'page' : 'false'}
+            aria-current={item.slug === currentPath ? 'page' : 'false'}
             onClick={handleCloseMenu}
           >
             {item.title}

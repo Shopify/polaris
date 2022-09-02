@@ -1,9 +1,14 @@
-import {MarkdownFile} from '../../types';
-import {foundationsNavItems} from '../../data/navItems';
+import {MarkdownFile, NavItem} from '../../types';
 import Layout from '../Layout';
 import Longform from '../Longform';
 import Markdown from '../Markdown';
 import PageMeta from '../PageMeta';
+
+import navJson from '../../../.cache/nav.json';
+const nav: NavItem[] = navJson;
+const foundationsNavItems = nav.find(
+  (item) => item.slug === '/foundations',
+)?.children;
 
 interface Props {
   markdownFile: MarkdownFile;

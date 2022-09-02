@@ -5,10 +5,15 @@ import path from 'path';
 import Layout from '../../src/components/Layout';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
-import {contributingNavItems} from '../../src/data/navItems';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {MarkdownFile} from '../../src/types';
+import {MarkdownFile, NavItem} from '../../src/types';
 import PageMeta from '../../src/components/PageMeta';
+
+import navJson from '../../.cache/nav.json';
+const nav: NavItem[] = navJson;
+const contributingNavItems = nav.find(
+  (item) => item.slug === '/contributing',
+)?.children;
 
 interface Props {
   title: string;

@@ -24,6 +24,15 @@ export interface FrontMatter {
   };
 }
 
+export type NavItem = {
+  title: string;
+  slug?: string;
+  icon?: string;
+  description?: string;
+  status?: Status;
+  children?: NavItem[];
+};
+
 export type MarkdownFile = {
   frontMatter: any;
   readme: string;

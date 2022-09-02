@@ -2,13 +2,9 @@ import ComponentGrid from '../ComponentGrid';
 import Layout from '../Layout';
 
 import siteJson from '../../../.cache/site.json';
-import {
-  getComponentCategories,
-  stripMarkdownLinks,
-  slugify,
-  getComponentNav,
-} from '../../utils/various';
-import {Status, SiteJSON} from '../../types';
+import navJson from '../../../.cache/nav.json';
+import {stripMarkdownLinks, slugify} from '../../utils/various';
+import {Status, SiteJSON, NavItem} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
 
@@ -18,8 +14,12 @@ const components = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
 
-const componentCategories = getComponentCategories();
-const componentNav = getComponentNav();
+const nav: NavItem[] = navJson;
+const componentNav = nav.find((item) => item.slug === '/components')?.children;
+
+const componentCategories = components
+  .map((c) => pages[c].frontMatter.category)
+  .filter((c, i, arr) => arr.indexOf(c) === i);
 
 export default function ComponentsPage() {
   return (

@@ -1,12 +1,16 @@
-import {foundationsNavItems} from '../../data/navItems';
 import styles from './FoundationsIndexPage.module.scss';
 import Layout from '../Layout';
 import PageMeta from '../PageMeta';
 import FoundationsGrid from '../FoundationsGrid';
+import {NavItem} from '../../types';
 
-interface Props {}
+import navJson from '../../../.cache/nav.json';
+const nav: NavItem[] = navJson;
+const foundationsNavItems = nav.find(
+  (item) => item.slug === '/foundations',
+)?.children;
 
-function FoundationsIndexPage({}: Props) {
+function FoundationsIndexPage({}) {
   return (
     <div className={styles.FoundationsIndexPage}>
       <PageMeta
@@ -20,20 +24,20 @@ function FoundationsIndexPage({}: Props) {
         showTOC={false}
       >
         <div className={styles.Categories}>
-          {foundationsNavItems.map((category) => {
-            if (!category.children) return null;
+          {foundationsNavItems?.map((navItem) => {
+            if (!navItem.children) return null;
             return (
-              <FoundationsGrid key={category.title} title={category.title}>
-                {category.children.map((child) => {
-                  if (!child.url) return null;
+              <FoundationsGrid key={navItem.title} title={navItem.title}>
+                {navItem.children.map((child) => {
+                  if (!child.slug) return null;
                   return (
                     <FoundationsGrid.Item
-                      key={category.title}
+                      key={navItem.title}
                       title={child.title}
                       description={child.description}
                       icon={child.icon}
-                      url={child.url}
-                      category={category.title.toLowerCase()}
+                      url={child.slug}
+                      category={navItem.title.toLowerCase()}
                     />
                   );
                 })}

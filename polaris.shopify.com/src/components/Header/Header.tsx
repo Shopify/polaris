@@ -8,30 +8,11 @@ import Container from '../Container';
 import MobileNav from '../MobileNav';
 import type {NavItem} from '../Nav';
 
-import styles from './Header.module.scss';
+import navJson from '../../../.cache/nav.json';
 
-const headerNavItems: NavItem[] = [
-  {
-    title: 'Foundations',
-    url: '/foundations',
-  },
-  {
-    title: 'Components',
-    url: '/components',
-  },
-  {
-    title: 'Tokens',
-    url: '/tokens/colors',
-  },
-  {
-    title: 'Icons',
-    url: '/icons',
-  },
-  // {
-  //   title: "Contributing",
-  //   url: "/contributing",
-  // },
-];
+const headerNavItems: NavItem[] = navJson;
+
+import styles from './Header.module.scss';
 
 interface Props {
   darkMode: DarkMode;
@@ -77,15 +58,15 @@ function Header({darkMode, currentPath = ''}: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            {headerNavItems.map(({url, title}) => {
+            {headerNavItems.map(({slug, title}) => {
               const isCurrent =
-                currentSection && url?.startsWith(currentSection)
+                currentSection && slug?.startsWith(currentSection)
                   ? 'page'
                   : false;
 
-              return url ? (
-                <li key={url}>
-                  <Link href={url} passHref>
+              return slug ? (
+                <li key={slug}>
+                  <Link href={slug} passHref>
                     <a aria-current={isCurrent}>
                       <span>{title}</span>
                     </a>
