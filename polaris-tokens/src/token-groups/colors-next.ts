@@ -109,7 +109,7 @@ export const colorsNext = {
     value: palettes.green[200],
     description: '',
   },
-  'bg-success-subdued-hover': {
+  'bg-success-subdued-active': {
     value: palettes.green[200],
     description: '',
   },
@@ -119,6 +119,10 @@ export const colorsNext = {
   },
   'bg-primary-subdued-hover': {
     value: palettes.green[100],
+    description: '',
+  },
+  'bg-success-subdued-hover': {
+    value: palettes.green[50],
     description: '',
   },
   'bg-primary-subdued': {
@@ -149,11 +153,11 @@ export const colorsNext = {
     value: palettes.red[200],
     description: '',
   },
-  'bg-critical-subdued-hover': {
+  'bg-critical-subdued': {
     value: palettes.red[100],
     description: '',
   },
-  'bg-critical-subdued': {
+  'bg-critical-subdued-hover': {
     value: palettes.red[50],
     description: '',
   },
@@ -166,10 +170,6 @@ export const colorsNext = {
     description: '',
   },
   'bg-caution-subdued-active': {
-    value: palettes.yellow[300],
-    description: '',
-  },
-  'bg-caution-subdued-hover': {
     value: palettes.yellow[200],
     description: '',
   },
@@ -177,24 +177,28 @@ export const colorsNext = {
     value: palettes.yellow[100],
     description: '',
   },
+  'bg-caution-subdued-hover': {
+    value: palettes.yellow[50],
+    description: '',
+  },
   'bg-info-strong': {
     value: palettes.teal[600],
     description: '',
   },
   'bg-info-subdued-active': {
-    value: palettes.teal[300],
+    value: palettes.teal[200],
     description: '',
   },
   'bg-info': {
     value: palettes.teal[200],
     description: '',
   },
-  'bg-info-subdued-hover': {
-    value: palettes.teal[200],
-    description: '',
-  },
   'bg-info-subdued': {
     value: palettes.teal[100],
+    description: '',
+  },
+  'bg-info-subdued-hover': {
+    value: palettes.teal[50],
     description: '',
   },
   'bg-interactive-active': {
@@ -282,11 +286,11 @@ export const colorsNext = {
     description: '',
   },
   'border-critical-active': {
-    value: palettes.red[700],
+    value: palettes.red[900],
     description: '',
   },
   'border-critical-hover': {
-    value: palettes.red[600],
+    value: palettes.red[800],
     description: '',
   },
   'border-critical': {
