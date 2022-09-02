@@ -1,9 +1,9 @@
 import genSiteMap from './gen-site-map.mjs';
-import genSiteJson from './gen-site-json.mjs';
+import genCacheJson from './gen-cache-json.mjs';
 import genOgImages from './gen-og-images.mjs';
 
 const genAssets = async () => {
-  await Promise.all([genSiteMap(), genSiteJson()]);
+  await Promise.all([genSiteMap(), genCacheJson()]);
   await genOgImages();
 };
 
