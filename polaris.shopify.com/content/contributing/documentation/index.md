@@ -11,7 +11,7 @@ Shopify teams create documentation for polaris.shopify.com, but open source cont
 
 To write effectively as a Shopify employee, use a cross-discipline lens. Make sure your content meets both UX and development needs. Before starting, check out our [style guide to the style guide](https://docs.google.com/document/d/1zVDsHIWhoir2svRjdtSdRbD_ruTz3K1nAJcQLGPVQwM/edit#heading=h.ni67tdntu9cr).
 
-Most documentation about the design system is meant for polaris.shopify.com. However, there may be a reason for the content to live elsewhere. If you're not sure if something should live on this site, the Polaris team can help you figure that out.
+Most documentation about the design system is meant for polaris.shopify.com. However, there may be a reason for the content to live elsewhere. If you’re not sure if something should live on this site, the Polaris team can help you figure that out.
 
 ## Making copy edits
 
@@ -19,7 +19,7 @@ Edits related to spelling, grammar, punctuation, or other typos should happen qu
 
 To fix any copy issues on polaris.shopify.com, [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
 
-Note: If you find copy issues in other Polaris resources, follow the steps for that resource's contribution guidelines.
+Note: If you find copy issues in other Polaris resources, follow the steps for that resource’s contribution guidelines.
 
 ## Updating documentation
 
@@ -36,16 +36,18 @@ New documentation in Polaris can range from component documentation, to content 
 
 To create new documentation:
 
-1. Book office hours with Polaris to share your rationale for why you think this addition would improve the design system.
-2. Once the Polaris team provides feedback, draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
+1. Reach out to the Polaris team and we can help you:
+- strategize where to add the documentation
+- offer strategies and templates for drafting your documentation
+- provide asynchronous feedback
+- offer ad hoc pair writing session when you get stuck
+2. Draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
 3. Get feedback from subject matter experts, or someone with high context around your changes (team member, manager, etc.).
-4. Reach out to the Polaris team again to review your changes for style guide alignment.
-   <br /> If on review of the initial proposal the Polaris team suggests that the content should live somewhere besides the Polaris site, you don't need to have the content reviewed for style guide alignment.
-5. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
+4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
 
 ## Removing documentation
 
-It's important that inaccurate or outdated information be removed as soon as possible. This helps maintain high trust in Polaris as a source of truth for design system guidance.
+It’s important that inaccurate or outdated information be removed as soon as possible. This helps maintain high trust in Polaris as a source of truth for design system guidance.
 
 To remove documentation:
 

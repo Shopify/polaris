@@ -11,7 +11,7 @@ keywords:
 
 ## Project details
 
-### How it's structured
+### How it’s structured
 
 The Shopify/polaris GitHub repository is structured as a monorepo, which means it’s a single repository with multiple projects. The monorepo includes:
 
@@ -38,7 +38,7 @@ Every Polaris project is a little different, but in general we build with JavaSc
 
 ## Get set up
 
-To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred `git` interface to commit and push up your changes. Whether that's the command line in your favorite terminal, or in GitHub Desktop is entirely up to you. For this guide, we'll illustrate the steps with terminal commands.
+To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred `git` interface to commit and push up your changes. Whether that’s the command line in your favorite terminal, or in GitHub Desktop is entirely up to you. For this guide, we’ll illustrate the steps with terminal commands.
 
 ### 1. Download the repo
 
@@ -72,7 +72,7 @@ git checkout -b new-branch-name
 
 As you work, commit and test your changes:
 
-If your changes affect Polaris React components, you'll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
+If your changes affect Polaris React components, you’ll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
 
 ```bash
 yarn turbo run dev --filter=@shopify/polaris
@@ -89,7 +89,7 @@ yarn turbo run dev --filter=polaris.shopify.com
 
 ### 2. Commit your changes
 
-Save the changes you've made to your branch.
+Save the changes you’ve made to your branch.
 
 ```bash
 git commit -m “descriptive message”
