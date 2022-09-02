@@ -46,6 +46,9 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
+export {AlphaStack} from './components/AlphaStack';
+export type {AlphaStackProps} from './components/AlphaStack';
+
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
