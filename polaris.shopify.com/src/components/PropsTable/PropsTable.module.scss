@@ -15,13 +15,14 @@
   border: 1px solid var(--border-color-light);
   font-size: var(--font-size-100);
   display: block;
+  transform-origin: 50% 0;
 
   .InterfaceList {
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
     background: rgba(0, 0, 0, 0.025);
     @include dark-mode {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.033);
     }
   }
 
@@ -46,7 +47,7 @@
 
   .Row {
     display: block;
-    padding: 0.666em 1em;
+    padding: 0.75em 1em;
     border-bottom: 1px solid var(--border-color-light);
 
     &:last-child {
@@ -56,13 +57,12 @@
 
   .Key {
     display: flex;
-    gap: 0.4rem;
-    align-items: center;
+    gap: 0.6rem;
+  }
 
-    button {
-      background: transparent;
-      border-bottom: 1px dashed var(--border-color);
-    }
+  .ExpandableType {
+    background: transparent;
+    border-bottom: 1px dashed var(--border-color);
   }
 
   .MemberName {
@@ -76,7 +76,6 @@
 
   .ValueText {
     font-family: var(--font-family-mono);
-    color: var(--text-strong);
   }
 }
 
@@ -88,7 +87,7 @@
   color: var(--code-boolean);
 }
 
-.SyntaxReactNode {
+.SyntaxType {
   color: var(--code-keyword);
 }
 

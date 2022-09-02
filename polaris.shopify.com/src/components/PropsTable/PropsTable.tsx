@@ -88,6 +88,109 @@ function PropsTable({allTypeData, componentName}: Props) {
   );
 }
 
+type ExpandedTypeInfo = {memberName: string; typeName: string};
+
+const ExpandedTypesContext = createContext<{
+  expandedTypes: ExpandedTypeInfo[];
+  expandType: (typeName: string) => void;
+}>({expandType: () => undefined, expandedTypes: []});
+
+function InterfaceList({
+  allTypeData,
+  typeData,
+}: {
+  allTypeData: TypeData[];
+  typeData: TypeData;
+  level?: number;
+}) {
+  const [expandedTypes, setExpandedTypes] = useState<ExpandedTypeInfo[]>([]);
+
+  return (
+    <motion.div
+      className={styles.InterfaceList}
+      initial={{opacity: 0, scale: 0.7}}
+      animate={{opacity: 1, scale: 1}}
+    >
+      <div className={styles.InterfaceListHeader}>
+        {syntaxKindToDeveloperFriendlyString(typeData.syntaxKind)}{' '}
+        {typeData.name}
+      </div>
+
+      {!typeData.members && (
+        <div className={styles.RawInterfaceValue}>
+          <Highlighter type={typeData.value.toString()} />
+        </div>
+      )}
+
+      {typeData.members && (
+        <dl>
+          {typeData.members.map(
+            ({name, isOptional, description, defaultValue, value}) => {
+              const expandType = (typeName: string) =>
+                setExpandedTypes([
+                  {typeName, memberName: name},
+                  ...expandedTypes,
+                ]);
+
+              return (
+                <ExpandedTypesContext.Provider
+                  key={name}
+                  value={{expandedTypes, expandType}}
+                >
+                  <span className={styles.Row}>
+                    <dt className={styles.Key}>
+                      <span className={styles.MemberName}>
+                        {name}
+                        {isOptional && <span>?</span>}
+                      </span>
+                      <span className={styles.ValueText}>
+                        <Highlighter type={value.toString()} />
+                      </span>
+                    </dt>
+                    <dd className={styles.Value}>
+                      <span className={styles.Description}>
+                        {description}
+                        {defaultValue && (
+                          <>
+                            {'. Defaults to '}
+                            <span className={styles.Default}>
+                              <Highlighter type={defaultValue} />
+                            </span>
+                            .
+                          </>
+                        )}
+                      </span>
+
+                      <AnimatePresence initial={false}>
+                        {expandedTypes
+                          .filter((expanded) => expanded.memberName === name)
+                          .map((expanded) => {
+                            const typeDataForExpandedType = getTypeWithName(
+                              allTypeData,
+                              expanded.typeName,
+                            );
+                            if (!typeDataForExpandedType) return null;
+                            return (
+                              <InterfaceList
+                                key={expanded.typeName}
+                                allTypeData={allTypeData}
+                                typeData={typeDataForExpandedType}
+                              />
+                            );
+                          })}
+                      </AnimatePresence>
+                    </dd>
+                  </span>
+                </ExpandedTypesContext.Provider>
+              );
+            },
+          )}
+        </dl>
+      )}
+    </motion.div>
+  );
+}
+
 function Highlighter({
   type,
   prev = '',
@@ -97,27 +200,47 @@ function Highlighter({
 }): JSX.Element {
   const {expandType} = useContext(ExpandedTypesContext);
   const {allTypeData} = useContext(TypeDataContext);
+  const [hasBenExpanded, setHasBenExpanded] = useState(false);
 
-  if (
+  const isString =
     type === 'string' ||
     type.match(/^['][^']+'$/) !== null ||
-    type.match(/^["][^"]+"$/) !== null
-  ) {
+    type.match(/^["][^"]+"$/) !== null;
+  const isType = type.match(/^[A-Z][A-Za-z]+$/) || type === 'any';
+
+  if (isString) {
     return <span className={styles.SyntaxString}>{type}</span>;
   } else if (type === 'boolean') {
     return <span className={styles.SyntaxBoolean}>{type}</span>;
   } else if (type === 'number' || !Number.isNaN(parseInt(type))) {
     return <span className={styles.SyntaxNumber}>{type}</span>;
-  } else if (type.endsWith('ReactNode') || type.endsWith('ReactElement')) {
-    return <span className={styles.SyntaxReactNode}>{type}</span>;
-  } else if (type === 'void') {
-    return <span className={styles.SyntaxReactNode}>{type}</span>;
-  } else if (type.match(/^[A-Z][A-Za-z]+$/) || type === 'any') {
-    const typeCanBeExpanded = !!getTypeWithName(allTypeData, type);
+  } else if (isType) {
+    const referencedType = getTypeWithName(allTypeData, type);
+    const referencedTypeExists = !!referencedType;
+    const typeCanBeExpanded = referencedTypeExists && !hasBenExpanded;
+    const autoInlinedValue =
+      referencedType &&
+      !referencedType.members &&
+      typeof referencedType.value === 'string'
+        ? referencedType.value
+        : undefined;
+
+    if (autoInlinedValue) {
+      return <Highlighter type={autoInlinedValue} prev={type} />;
+    }
+
     return (
-      <span className={styles.SyntaxReactNode}>
+      <span className={styles.SyntaxType}>
         {typeCanBeExpanded ? (
-          <button onClick={() => expandType(type)}>{type}</button>
+          <button
+            className={styles.ExpandableType}
+            onClick={() => {
+              expandType(type);
+              setHasBenExpanded(true);
+            }}
+          >
+            {type}
+          </button>
         ) : (
           <span>{type}</span>
         )}
@@ -141,104 +264,6 @@ function Highlighter({
       </>
     );
   }
-}
-
-const ExpandedTypesContext = createContext<{
-  expandType: (typeName: string) => void;
-}>({expandType: () => undefined});
-
-function InterfaceList({
-  allTypeData,
-  typeData,
-}: {
-  allTypeData: TypeData[];
-  typeData: TypeData;
-  level?: number;
-}) {
-  const [expandedTypes, setExpandedTypes] = useState<
-    {memberName: string; typeName: string}[]
-  >([]);
-
-  return (
-    <motion.div
-      className={styles.InterfaceList}
-      initial={{opacity: 0, scale: 0.9}}
-      animate={{opacity: 1, scale: 1, transformOrigin: 'center top'}}
-      exit={{opacity: 0}}
-    >
-      <div className={styles.InterfaceListHeader}>
-        {syntaxKindToDeveloperFriendlyString(typeData.syntaxKind)}{' '}
-        {typeData.name}
-      </div>
-
-      {!typeData.members && (
-        <div className={styles.RawInterfaceValue}>
-          <Highlighter type={typeData.value.toString()} />
-        </div>
-      )}
-
-      <dl>
-        {typeData.members?.map(
-          ({name, isOptional, description, defaultValue, value}) => {
-            const expandType = (typeName: string) =>
-              setExpandedTypes([
-                {typeName, memberName: name},
-                ...expandedTypes,
-              ]);
-
-            return (
-              <ExpandedTypesContext.Provider key={name} value={{expandType}}>
-                <span className={styles.Row}>
-                  <dt className={styles.Key}>
-                    <span className={styles.MemberName}>
-                      {name}
-                      {isOptional && <span>?</span>}
-                    </span>
-                    <span className={styles.ValueText}>
-                      <Highlighter type={value.toString()} />
-                    </span>
-                  </dt>
-                  <dd className={styles.Value}>
-                    <span className={styles.Description}>
-                      {description}
-                      {defaultValue && (
-                        <>
-                          {'. Defaults to '}
-                          <span className={styles.Default}>
-                            <Highlighter type={defaultValue} />
-                          </span>
-                          .
-                        </>
-                      )}
-                    </span>
-
-                    <AnimatePresence>
-                      {expandedTypes
-                        .filter((expanded) => expanded.memberName === name)
-                        .map((expanded) => {
-                          const typeDataForExpandedType = getTypeWithName(
-                            allTypeData,
-                            expanded.typeName,
-                          );
-                          if (!typeDataForExpandedType) return null;
-                          return (
-                            <InterfaceList
-                              key={expanded.typeName}
-                              allTypeData={allTypeData}
-                              typeData={typeDataForExpandedType}
-                            />
-                          );
-                        })}
-                    </AnimatePresence>
-                  </dd>
-                </span>
-              </ExpandedTypesContext.Provider>
-            );
-          },
-        )}
-      </dl>
-    </motion.div>
-  );
 }
 
 export default PropsTable;
