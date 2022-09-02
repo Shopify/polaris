@@ -1,5 +1,24 @@
 # polaris.shopify.com
 
+## 0.15.0
+
+### Minor Changes
+
+- [#7074](https://github.com/Shopify/polaris/pull/7074) [`ddfacd855`](https://github.com/Shopify/polaris/commit/ddfacd855ad520879f1fb86fefa0e6d104c9c480) Thanks [@alex-page](https://github.com/alex-page)! - Replace data/\*.json files with build time .cache/site.json
+
+* [#7082](https://github.com/Shopify/polaris/pull/7082) [`8ebb9fc3c`](https://github.com/Shopify/polaris/commit/8ebb9fc3c1b430b7d207d6719a1d94560cfcd05e) Thanks [@selenehinkley](https://github.com/selenehinkley)! - Large edit of /contributing
+
+- [#7087](https://github.com/Shopify/polaris/pull/7087) [`43ea7e5d5`](https://github.com/Shopify/polaris/commit/43ea7e5d51fec7a19bc6c9c9b695454c1a7014a5) Thanks [@alex-page](https://github.com/alex-page)! - Add automation to generate .cache/nav.json
+
+### Patch Changes
+
+- [#7037](https://github.com/Shopify/polaris/pull/7037) [`7dafdee00`](https://github.com/Shopify/polaris/commit/7dafdee002ba562047ead368e9c0ecc521750481) Thanks [@alex-page](https://github.com/alex-page)! - Move header logic to the API and out of next.config.js
+
+* [#7075](https://github.com/Shopify/polaris/pull/7075) [`5933fc547`](https://github.com/Shopify/polaris/commit/5933fc54780ba399337419790bf28751b548e063) Thanks [@alex-page](https://github.com/alex-page)! - Run gen-assets on build of website
+
+* Updated dependencies [[`90f325460`](https://github.com/Shopify/polaris/commit/90f32546022103e2bba1a4659306152d7facc149)]:
+  - @shopify/polaris@10.1.1
+
 ## 0.14.0
 
 ### Minor Changes

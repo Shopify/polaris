@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.2.0
+
+### Minor Changes
+
+- [#6890](https://github.com/Shopify/polaris/pull/6890) [`267e1a9bd`](https://github.com/Shopify/polaris/commit/267e1a9bd8a920fde542ac8e9f1f9118749532ff) Thanks [@alex-page](https://github.com/alex-page)! - Add deprecated scss API to stylelint-polaris and use regex tests in the config
+
 ## 4.1.2
 
 ### Patch Changes
