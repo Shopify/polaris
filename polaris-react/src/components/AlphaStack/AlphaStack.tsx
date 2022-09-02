@@ -30,8 +30,8 @@ export const AlphaStack = ({
   const className = classNames(styles.Stack);
 
   const style = {
+    '--pc-align': align,
     ...(spacing ? {'--pc-stack-spacing': `var(--p-space-${spacing})`} : {}),
-    'align-items': align ? `${align}` : '',
   } as React.CSSProperties;
 
   return (
