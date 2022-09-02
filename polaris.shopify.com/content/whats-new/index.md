@@ -1,3 +1,0 @@
----
-title: What's new
----
