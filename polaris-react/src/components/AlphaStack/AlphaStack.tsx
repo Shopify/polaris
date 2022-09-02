@@ -24,13 +24,13 @@ export interface AlphaStackProps {
 
 export const AlphaStack = ({
   children,
-  spacing,
+  spacing = '4',
   align = 'start',
 }: AlphaStackProps) => {
   const className = classNames(styles.Stack);
 
   const style = {
-    '--pc-align': align,
+    '--pc-stack-align': align,
     ...(spacing ? {'--pc-stack-spacing': `var(--p-space-${spacing})`} : {}),
   } as React.CSSProperties;
 

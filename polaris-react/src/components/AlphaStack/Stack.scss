@@ -1,7 +1,6 @@
 .Stack {
-  --pc-stack-spacing: var(--p-space-4);
   display: flex;
   flex-direction: column;
-  align-items: var(--pc-align);
+  align-items: var(--pc-stack-align);
   gap: var(--pc-stack-spacing);
 }
