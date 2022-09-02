@@ -9,16 +9,19 @@ import {
   searchResultCategories,
   SearchResultCategory,
   Status,
+  SiteJSON,
 } from '../../../../src/types';
 
 import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 
 import siteJson from '../../../../.cache/site.json';
 
-const components = Object.keys(siteJson).filter((slug) =>
+const pages: SiteJSON = siteJson;
+
+const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
-const foundations = Object.keys(siteJson).filter((slug) =>
+const foundationSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('foundations/'),
 );
 
@@ -35,14 +38,8 @@ const getSearchResults = (query: string) => {
   let results: SearchResults = [];
 
   // Add components
-  components.forEach((slug) => {
-    const {status, title, description} = siteJson[slug].frontMatter;
-    const typedStatus: Status | undefined = status
-      ? {
-          value: status.value.toLowerCase() as Status['value'],
-          message: status.message,
-        }
-      : undefined;
+  componentSlugs.forEach((slug) => {
+    const {status, title, description = ''} = pages[slug].frontMatter;
 
     results.push({
       id: slugify(`components ${title}`),
@@ -53,7 +50,7 @@ const getSearchResults = (query: string) => {
         components: {
           title,
           description: stripMarkdownLinks(description),
-          status: typedStatus,
+          status: status as Status,
         },
       },
     });
@@ -109,8 +106,8 @@ const getSearchResults = (query: string) => {
   });
 
   // Add foundations
-  foundations.forEach((slug) => {
-    const {title, icon, description} = siteJson[slug].frontMatter;
+  foundationSlugs.forEach((slug) => {
+    const {title, icon = '', description = ''} = pages[slug].frontMatter;
     const category = slug.split('/')[2];
 
     results.push({
@@ -121,7 +118,7 @@ const getSearchResults = (query: string) => {
       meta: {
         foundations: {
           title,
-          icon: icon || '',
+          icon,
           description,
           category: category || '',
         },

@@ -1,8 +1,10 @@
 import type {NavItem} from '../components/Nav';
 import siteJson from '../../.cache/site.json';
-import {Status} from '../types';
+import {Status, SiteJSON} from '../types';
 
-const components = Object.keys(siteJson).filter((slug) =>
+const pages: SiteJSON = siteJson;
+
+const components = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
 
@@ -10,7 +12,7 @@ export const getComponentCategories = (): string[] => {
   const componentCategories: string[] = [];
 
   components.forEach((slug) => {
-    const {category} = siteJson[slug].frontMatter;
+    const {category = ''} = pages[slug].frontMatter;
     if (!componentCategories.includes(category)) {
       componentCategories.push(category);
     }
@@ -24,40 +26,20 @@ export const getComponentNav = (): NavItem[] => {
     {
       title: 'All',
       children: components.map((slug) => {
-        const statusValue = siteJson[
-          slug
-        ].frontMatter.status?.value.toLowerCase() as
-          | Status['value']
-          | undefined;
+        const {title, status} = pages[slug].frontMatter;
+        const componentStatus = status
+          ? ({value: status.value, message: status.value} as Status)
+          : undefined;
         return {
-          title: siteJson[slug].frontMatter.title,
-          url: `/components/${slugify(siteJson[slug].frontMatter.title)}`,
-          status:
-            siteJson[slug].frontMatter.status && statusValue
-              ? {
-                  value: statusValue,
-                  message: siteJson[slug].frontMatter.status.value,
-                }
-              : undefined,
+          title: title,
+          url: `/components/${slugify(title)}`,
+          status: componentStatus,
         };
       }),
     },
   ];
 
   return navItems;
-};
-
-export const getReadableStatusValue = (
-  statusValue: Status['value'],
-): string => {
-  const bannerTitles: {[key in Status['value']]: string} = {
-    deprecated: 'Deprecated',
-    alpha: 'Alpha',
-    information: 'Information',
-    warning: 'Warning',
-  };
-
-  return bannerTitles[statusValue];
 };
 
 export const slugify = (str: string): string => {

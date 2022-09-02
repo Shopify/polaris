@@ -8,11 +8,13 @@ import {
   slugify,
   getComponentNav,
 } from '../../utils/various';
-import {Status} from '../../types';
+import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
 
-const components = Object.keys(siteJson).filter((slug) =>
+const pages: SiteJSON = siteJson;
+
+const components = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
 
@@ -37,26 +39,22 @@ export default function ComponentsPage() {
               <ComponentGrid>
                 {components
                   .filter(
-                    (slug) => siteJson[slug].frontMatter.category === category,
+                    (slug) => pages[slug].frontMatter.category === category,
                   )
                   .map((slug) => {
-                    const {title, status, description} =
-                      siteJson[slug].frontMatter;
+                    const {
+                      title,
+                      status,
+                      description = '',
+                    } = pages[slug].frontMatter;
                     const url = `/components/${slugify(title)}`;
-                    let typedStatus = status
-                      ? {
-                          value: status.value.toLowerCase() as Status['value'],
-                          message: status.value,
-                        }
-                      : undefined;
-
                     return (
                       <ComponentGrid.Item
                         key={title}
                         title={title}
                         description={stripMarkdownLinks(description)}
                         url={url}
-                        status={typedStatus}
+                        status={status as Status}
                       />
                     );
                   })}

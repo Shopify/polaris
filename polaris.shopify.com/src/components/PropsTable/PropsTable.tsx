@@ -1,4 +1,4 @@
-import {PropsForComponent} from '../../types';
+import {PropsForComponent, StatusName} from '../../types';
 import StatusBadge from '../StatusBadge';
 import styles from './PropsTable.module.scss';
 
@@ -36,7 +36,7 @@ function PropsTable({props: {props}}: Props) {
                       {' '}
                       <StatusBadge
                         status={{
-                          value: 'information',
+                          value: StatusName.Information,
                           message: 'Required',
                         }}
                       />
@@ -47,7 +47,7 @@ function PropsTable({props: {props}}: Props) {
                       {' '}
                       <StatusBadge
                         status={{
-                          value: 'deprecated',
+                          value: StatusName.Deprecated,
                           message: 'Deprecated',
                         }}
                       />
