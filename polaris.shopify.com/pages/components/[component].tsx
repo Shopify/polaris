@@ -11,10 +11,10 @@ import Layout from '../../src/components/Layout';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 import {getComponentNav} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
-import {Status, TypeDataTree, TypeDataTreeWithPaths} from '../../src/types';
+import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
-import {getRelevantTypeData} from '../../scripts/get-props/src/get-props';
+import {getRelevantTypes} from '../../scripts/get-props/src/get-props';
 
 interface MarkdownData {
   frontMatter: any;
@@ -31,7 +31,7 @@ interface Props {
     body: string;
     header: string;
   };
-  typeData: TypeDataTree;
+  type: FilteredTypes;
 }
 
 const Components = ({
@@ -40,7 +40,7 @@ const Components = ({
   title,
   readme,
   status,
-  typeData,
+  type,
 }: Props) => {
   const navItems: NavItem[] = getComponentNav();
   const typedStatus: Status | undefined = status
@@ -60,7 +60,7 @@ const Components = ({
         <ComponentExamples examples={examples} />
       </Longform>
 
-      {typeData && <PropsTable allTypeData={typeData} componentName={title} />}
+      {type && <PropsTable types={type} componentName={title} />}
 
       <Longform firstParagraphIsLede={false}>
         <Markdown text={readme.body} />
@@ -110,7 +110,7 @@ export const getStaticProps: GetStaticProps<
 
     const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
-    const allTypeData: TypeDataTreeWithPaths = JSON.parse(fileContent);
+    const allType: AllTypes = JSON.parse(fileContent);
 
     let toPascalCase = (s: string) => {
       return s
@@ -123,8 +123,8 @@ export const getStaticProps: GetStaticProps<
     const componentDirName = toPascalCase(`${data.frontMatter.title} `);
     const propName = toPascalCase(`${data.frontMatter.title} Props`);
 
-    let typeData = getRelevantTypeData(
-      allTypeData,
+    let type = getRelevantTypes(
+      allType,
       propName,
       `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
     );
@@ -134,7 +134,7 @@ export const getStaticProps: GetStaticProps<
       examples,
       description,
       readme,
-      typeData,
+      type,
     };
 
     return {props};

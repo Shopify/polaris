@@ -86,17 +86,17 @@ export interface QuickGuide {
   rows: QuickGuideRow[];
 }
 
-export type TypeDataTreeWithPaths = {
+export type AllTypes = {
   [typeName: string]: {
-    [filePath: string]: TypeData;
+    [filePath: string]: Type;
   };
 };
 
-export type TypeDataTree = {
-  [typeName: string]: TypeData;
+export type FilteredTypes = {
+  [typeName: string]: Type;
 };
 
-export type TypeData = {
+export type Type = {
   filePath: string;
   name: string;
   value: string | number | object;
@@ -105,5 +105,5 @@ export type TypeData = {
   isOptional?: true;
   deprecationMessage?: string;
   defaultValue?: string;
-  members?: TypeData[];
+  members?: Type[];
 };

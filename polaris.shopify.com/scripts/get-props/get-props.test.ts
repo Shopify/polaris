@@ -1,4 +1,4 @@
-import {getRelevantTypeData, getProps, normalizePath} from './src/get-props';
+import {getRelevantTypes, getProps, normalizePath} from './src/get-props';
 import path from 'path';
 
 it('Normalizes paths', () => {
@@ -50,13 +50,13 @@ it('Filters out the relevant AST nodes when given a starting point', () => {
     path.join(__dirname, './testData/unsupported.ts'),
   ];
 
-  const allTypeDatas = getProps(testFiles);
-  const filteredTypeDatas = getRelevantTypeData(
-    allTypeDatas,
+  const allTypes = getProps(testFiles);
+  const filteredTypes = getRelevantTypes(
+    allTypes,
     'InterfaceProps',
     'polaris.shopify.com/scripts/get-props/testData/relevantTypes.ts',
   );
-  const names = Object.values(filteredTypeDatas).map((node) => node.name);
+  const names = Object.values(filteredTypes).map((node) => node.name);
 
   expect(names).toMatchSnapshot();
 });

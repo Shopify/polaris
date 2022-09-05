@@ -2,14 +2,10 @@ import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
 import globby from 'globby';
-import {
-  TypeData,
-  TypeDataTree,
-  TypeDataTreeWithPaths,
-} from '../../../src/types';
+import {Type, FilteredTypes, AllTypes} from '../../../src/types';
 
 type NodeParser = (
-  ast: TypeDataTreeWithPaths,
+  ast: AllTypes,
   node: ts.Node,
   checker: ts.TypeChecker,
   program: ts.Program,
@@ -33,8 +29,8 @@ export function normalizePath(path: string): string {
   return normalizedPath;
 }
 
-export function getProps(filePaths: string[]): TypeDataTreeWithPaths {
-  let ast: TypeDataTreeWithPaths = {};
+export function getProps(filePaths: string[]): AllTypes {
+  let ast: AllTypes = {};
   let program = ts.createProgram(filePaths, compilerOptions);
   let checker = program.getTypeChecker();
 
@@ -100,7 +96,7 @@ const parseInterfaceDeclaration: NodeParser = (
 
   if (!symbol) throw new Error('Expected interface declaration to have symbol');
 
-  const members: TypeData[] = [];
+  const members: Type[] = [];
 
   interfaceDeclaration.members.forEach((member) => {
     if (member.kind === ts.SyntaxKind.IndexSignature) {
@@ -123,7 +119,7 @@ const parseInterfaceDeclaration: NodeParser = (
       const value = checker.typeToString(type);
       const {deprecationMessage, defaultValue} = parseJSDocTags(prop);
 
-      let memberNode: TypeData = {
+      let memberNode: Type = {
         filePath,
         syntaxKind,
         name,
@@ -241,7 +237,7 @@ const parseEnumDeclaration: NodeParser = (
   const syntaxKind = ts.SyntaxKind[enumDeclation.kind];
   const name = enumDeclation.name.getText();
   const value = enumDeclation.getText();
-  const members: TypeData[] = enumDeclation.members.map((member) => {
+  const members: Type[] = enumDeclation.members.map((member) => {
     const type = checker.getTypeAtLocation(member.name);
     return {
       filePath,
@@ -318,11 +314,11 @@ const nonPolarisTypes = [
   'HTMLElement',
 ];
 
-export function getRelevantTypeData(
-  ast: TypeDataTreeWithPaths,
+export function getRelevantTypes(
+  ast: AllTypes,
   name: string,
   filePath: string,
-): TypeDataTree {
+): FilteredTypes {
   const matchingNode = ast[name][filePath];
   if (!matchingNode) {
     throw new Error(
@@ -331,11 +327,11 @@ export function getRelevantTypeData(
   }
 
   const pascalCaseRegex = /[A-Z][a-z]+(?:[A-Z][a-z]+)*/gm;
-  let output: TypeDataTree = {};
+  let output: FilteredTypes = {};
 
   extractTypes(matchingNode);
 
-  function extractTypes(node: TypeData) {
+  function extractTypes(node: Type) {
     output[node.name] = node;
 
     let typeDefinitionString: string = node.members

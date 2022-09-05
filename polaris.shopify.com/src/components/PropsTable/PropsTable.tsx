@@ -1,12 +1,12 @@
 import {createContext, useContext, useState} from 'react';
-import {TypeData, TypeDataTree} from '../../types';
+import {Type, FilteredTypes} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
 
 interface Props {
   componentName: string;
-  allTypeData: TypeDataTree;
+  types: FilteredTypes;
 }
 
 function syntaxKindToDeveloperFriendlyString(
@@ -25,29 +25,27 @@ const toPascalCase = (str: string) =>
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
     .join('');
 
-const TypeDataContext = createContext<{
-  allTypeData: TypeDataTree;
-}>({allTypeData: {}});
+const TypeContext = createContext<{
+  types: FilteredTypes;
+}>({types: {}});
 
-function PropsTable({allTypeData, componentName}: Props) {
+function PropsTable({types, componentName}: Props) {
   const feedbackTitle = '[polaris.shopify.com] Props table feedback';
   const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
     feedbackTitle,
   )}&amp;labels=polaris.shopify.com`;
 
   const propsName = `${toPascalCase(componentName).replace(/\s/g, '')}Props`;
-  const propsForComponent = allTypeData[propsName];
+  const propsForComponent = types[propsName];
 
   if (!propsForComponent) {
     throw new Error('Could not find props for component');
   }
 
-  console.log(allTypeData);
-
   const propsAreDefinedUsingInterface = !!propsForComponent.members;
 
   return (
-    <TypeDataContext.Provider value={{allTypeData}}>
+    <TypeContext.Provider value={{types}}>
       <div className={styles.PropsTable}>
         <Longform firstParagraphIsLede={false}>
           <h2 id="props">Props</h2>
@@ -63,9 +61,9 @@ function PropsTable({allTypeData, componentName}: Props) {
           </div>
         )}
 
-        <InterfaceList allTypeData={allTypeData} typeData={propsForComponent} />
+        <InterfaceList types={types} type={propsForComponent} />
       </div>
-    </TypeDataContext.Provider>
+    </TypeContext.Provider>
   );
 }
 
@@ -77,11 +75,11 @@ const ExpandedTypesContext = createContext<{
 }>({expandType: () => undefined, expandedTypes: []});
 
 function InterfaceList({
-  allTypeData,
-  typeData,
+  types,
+  type,
 }: {
-  allTypeData: TypeDataTree;
-  typeData: TypeData;
+  types: FilteredTypes;
+  type: Type;
   level?: number;
 }) {
   const [expandedTypes, setExpandedTypes] = useState<ExpandedTypeInfo[]>([]);
@@ -93,11 +91,10 @@ function InterfaceList({
       animate={{opacity: 1, scale: 1}}
     >
       <div className={styles.InterfaceListHeader}>
-        {syntaxKindToDeveloperFriendlyString(typeData.syntaxKind)}{' '}
-        {typeData.name}
+        {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}
       </div>
 
-      {!typeData.members && (
+      {!type.members && (
         <ExpandedTypesContext.Provider
           value={{
             expandedTypes,
@@ -110,18 +107,18 @@ function InterfaceList({
           }}
         >
           <div className={styles.RawInterfaceValue}>
-            <Highlighter type={typeData.value.toString()} />
+            <Highlighter type={type.value.toString()} />
 
             {expandedTypes
               .filter((expanded) => expanded.memberName === null)
               .map((expanded) => {
-                const typeDataForExpandedType = allTypeData[expanded.typeName];
-                if (!typeDataForExpandedType) return null;
+                const typeForExpandedType = types[expanded.typeName];
+                if (!typeForExpandedType) return null;
                 return (
                   <InterfaceList
                     key={expanded.typeName}
-                    allTypeData={allTypeData}
-                    typeData={typeDataForExpandedType}
+                    types={types}
+                    type={typeForExpandedType}
                   />
                 );
               })}
@@ -129,9 +126,9 @@ function InterfaceList({
         </ExpandedTypesContext.Provider>
       )}
 
-      {typeData.members && (
+      {type.members && (
         <dl>
-          {typeData.members.map(
+          {type.members.map(
             ({name, isOptional, description, defaultValue, value}) => {
               const expandType = (typeName: string) =>
                 setExpandedTypes([
@@ -172,14 +169,14 @@ function InterfaceList({
                         {expandedTypes
                           .filter((expanded) => expanded.memberName === name)
                           .map((expanded) => {
-                            const typeDataForExpandedType =
-                              allTypeData[expanded.typeName];
-                            if (!typeDataForExpandedType) return null;
+                            const typeForExpandedType =
+                              types[expanded.typeName];
+                            if (!typeForExpandedType) return null;
                             return (
                               <InterfaceList
                                 key={expanded.typeName}
-                                allTypeData={allTypeData}
-                                typeData={typeDataForExpandedType}
+                                types={types}
+                                type={typeForExpandedType}
                               />
                             );
                           })}
@@ -204,7 +201,7 @@ function Highlighter({
   prev?: string;
 }): JSX.Element {
   const {expandType} = useContext(ExpandedTypesContext);
-  const {allTypeData} = useContext(TypeDataContext);
+  const {types} = useContext(TypeContext);
   const [hasBenExpanded, setHasBenExpanded] = useState(false);
 
   const isString =
@@ -220,7 +217,7 @@ function Highlighter({
   } else if (type === 'number' || !Number.isNaN(parseInt(type))) {
     return <span className={styles.SyntaxNumber}>{type}</span>;
   } else if (isType) {
-    const referencedType = allTypeData[type];
+    const referencedType = types[type];
     const referencedTypeExists = !!referencedType;
     const typeCanBeExpanded = referencedTypeExists && !hasBenExpanded;
     let autoInlinedValue =
