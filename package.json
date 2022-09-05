@@ -98,7 +98,7 @@
     {
       "name": "polaris-react-css",
       "path": "polaris-react/build/esm/styles.css",
-      "limit": "55 kB"
+      "limit": "45 kB"
     }
   ]
 }
