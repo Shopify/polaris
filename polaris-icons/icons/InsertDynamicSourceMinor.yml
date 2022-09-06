@@ -1,0 +1,23 @@
+name: Insert Dynamic Source
+set: minor
+description: Used to represent inserting a dynamic source into an input field that supports multiple dynamic sources
+keywords:
+  - dynamic source
+  - data source
+  - dynamic
+  - data
+  - datasource
+  - dynamicsource
+  - dynamic data
+  - add data source
+  - add dynamic source
+  - add
+  - insert
+  - insert data source
+  - insert dynamic source
+authors:
+  - Russell Baylis
+version: 1
+date_added: 2022-09-06
+date_modified: 2022-09-06
+exclusive_use:
