@@ -12,7 +12,19 @@ type SpacingTokenName = keyof SpacingTokenGroup;
 // TODO: Bring this logic into tokens
 type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
 
-type Columns = '1' | '2' | '3' | '4' | '5' | '6';
+type Columns =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12';
 
 export interface TileProps {
   /** Elements to display inside tile */
@@ -24,10 +36,10 @@ export interface TileProps {
 }
 
 export const Tile = ({children, spacing, columns}: TileProps) => {
-  const className = classNames(styles.root);
+  const className = classNames(styles.Tile);
 
   const style = {
-    '--pc-column-number': `repeat(${columns}, 1fr)`,
+    '--pc-tile-column-number': `repeat(${columns}, 1fr)`,
     ...(spacing ? {'--pc-tile-spacing': `var(--p-space-${spacing})`} : {}),
   } as React.CSSProperties;
 

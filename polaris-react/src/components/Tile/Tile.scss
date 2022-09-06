@@ -1,8 +1,7 @@
 @import '../../styles/common';
 
-.root {
+.Tile {
   display: grid;
-  grid-template-columns: var(--pc-column-number);
-  grid-auto-rows: 3rem;
+  grid-template-columns: var(--pc-tile-column-number);
   gap: var(--pc-tile-spacing);
 }
