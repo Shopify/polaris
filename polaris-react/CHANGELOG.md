@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`811af5907`](https://github.com/Shopify/polaris/commit/811af590780f4546b4add345205382f87b429569)]:
+  - @shopify/polaris-icons@6.1.0
+
 ## 10.1.1
 
 ### Patch Changes

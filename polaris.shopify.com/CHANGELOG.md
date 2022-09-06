@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.16.0
+
+### Minor Changes
+
+- [#7095](https://github.com/Shopify/polaris/pull/7095) [`06c6744a5`](https://github.com/Shopify/polaris/commit/06c6744a5b7d5642cede5f13a376d60fabaff702) Thanks [@selenehinkley](https://github.com/selenehinkley)! - Update new badge pattern guidelines
+
+### Patch Changes
+
+- Updated dependencies [[`811af5907`](https://github.com/Shopify/polaris/commit/811af590780f4546b4add345205382f87b429569)]:
+  - @shopify/polaris-icons@6.1.0
+  - @shopify/polaris@10.1.2
+
 ## 0.15.0
 
 ### Minor Changes
