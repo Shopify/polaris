@@ -1,0 +1,60 @@
+{
+  "name": "@shopify/polaris-cli",
+  "version": "0.0.0",
+  "description": "Commands for building Shopify Apps with Polaris",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": "./bin/run",
+  "files": [
+    "/bin",
+    "/dist"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "tsc -b -w",
+    "lint": "TIMING=1 eslint --cache .",
+    "clean": "rm -rf .turbo node_modules dist"
+  },
+  "dependencies": {
+    "@oclif/core": "^1.13.10",
+    "@oclif/plugin-help": "^5.0.0",
+    "@shopify/polaris-migrator": "^0.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.2.1",
+    "typescript": "^4.7.4"
+  },
+  "engine-strict": true,
+  "engines": {
+    "node": ">=14.13.1"
+  },
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "oclif": {
+    "bin": "polaris-cli",
+    "commands": "dist/commands",
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topicSeparator": " ",
+    "topics": {
+      "polaris": {
+        "description": "Commands for building Shopify Apps with Polaris"
+      }
+    }
+  }
+}
