@@ -276,8 +276,8 @@ function DataTableWithFixedFirstColumnsExample() {
     ],
   ];
   const [sortedRows, setSortedRows] = useState(rows);
-  const {mdDown, mdOnly} = useBreakpoints();
-  const fixedFirstColumns = mdDown || mdOnly ? 2 : 0;
+  const {lgDown} = useBreakpoints();
+  const fixedFirstColumns = lgDown ? 2 : 0;
 
   return (
     <Page title="Sales by product">
