@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- [#7105](https://github.com/Shopify/polaris/pull/7105) [`811af5907`](https://github.com/Shopify/polaris/commit/811af590780f4546b4add345205382f87b429569) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Add dynamic source icons
+
 ## 6.0.0
 
 ### Major Changes
