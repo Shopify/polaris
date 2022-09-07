@@ -65,7 +65,7 @@ The purpose of an icon is to clarify the content by providing a visual cue and i
 
 ### Keep internationalization in mind
 
-Whenever possible, use a universally recognized icon. However, there will be times where only a locally understood icon will work to communicate a concept. When deciding what symbol should be used, check that it will be understood at a glance by people from different cultures and&nbsp;backgrounds.
+Whenever possible, use a universally recognized icon. However, there will be times where only a locally understood icon will work to communicate a concept. When deciding what symbol should be used, check that it will be understood at a glance by people from different cultures and backgrounds.
 
 ---
 
@@ -80,9 +80,7 @@ Icons are commonly used:
 - Inline with text to add clarity
 - To direct attention to something the merchant can take action on
 
-To browse a list of all available icons, visit the [polaris-icons](https://polaris-icons.shopify.com/) site.
-
----
+To browse all available icons, visit the [Icons library](https://polaris.shopify.com/icons).
 
 ## System icons
 
