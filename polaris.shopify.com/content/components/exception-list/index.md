@@ -34,6 +34,21 @@ Exception lists should:
 - Have a description (a title is optional)
 - Be concise
 
+Punctuation for exception lists should follow [Polaris list guidelines](https://polaris.shopify.com/components/list). Standalone exceptions (a single sentence or sentence fragment) do not need end punctuation. 
+
+If the title and description on separate lines, use a line break.
+
+> - **List item title**  
+> Full sentence list item description.
+
+If the list item title is a sentence fragment, use a colon.
+
+> - **Sentence fragment list item title:** Full sentence list item description.
+
+If the list item title is a full sentence, use a period.
+
+> - **Full sentence list item title.** Full sentence list item description.
+
 For error states, exception lists should:
 
 - Either tell merchants how to solve the problem or be attached to an item that lets merchants fix the problem
