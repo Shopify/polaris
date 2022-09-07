@@ -73,21 +73,23 @@ const getMdContent = (filePath) => {
 };
 
 const genCacheJson = () => {
-  if (!existsSync(cacheDir)) mkdirSync(cacheDir, {recursive: true});
-  const pathGlob = path.join(process.cwd(), 'content/**/*.md');
+  try {
+    if (!existsSync(cacheDir)) mkdirSync(cacheDir, {recursive: true});
+    const pathGlob = path.join(process.cwd(), 'content/**/*.md');
 
-  const mdFiles = globby.sync(pathGlob);
+    const mdFiles = globby.sync(pathGlob);
 
-  const data = mdFiles
-    .map((filePath) => getMdContent(filePath))
-    .sort((a, b) => a.slug.localeCompare(b.slug));
+    const data = mdFiles
+      .map((filePath) => getMdContent(filePath))
+      .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  genSiteJson(data);
-  genNavJson(data);
+    genSiteJson(data);
+    genNavJson(data);
 
-  console.log('✅ Generated .cache/nav.json and .cache/site.json');
+    console.log('✅ Generated .cache/nav.json and .cache/site.json');
+  } catch (error) {
+    console.error('❌ Error generating nav and site files ', error);
+  }
 };
-
-genCacheJson();
 
 export default genCacheJson;

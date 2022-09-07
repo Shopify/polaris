@@ -7,13 +7,18 @@ const genSiteMap = async () => {
   const nextBin = path.join(process.cwd(), 'node_modules/.bin/next');
   const server = execa(nextBin, ['dev']);
 
-  const {stdout} = await execa('npx', [
-    'get-site-urls',
-    'http://localhost:3000',
-    `--output=${outputFile}`,
-    '--alias=https://polaris.shopify.com',
-  ]);
-  console.log(stdout);
+  try {
+    const {stdout} = await execa('npx', [
+      'get-site-urls',
+      'http://localhost:3000',
+      `--output=${outputFile}`,
+      '--alias=https://polaris.shopify.com',
+    ]);
+
+    console.log(stdout);
+  } catch (error) {
+    console.error('❌ Error generating sitemap ', error);
+  }
 
   await server.kill();
 };
