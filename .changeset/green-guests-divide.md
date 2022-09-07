@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': major
+'@shopify/polaris': minor
 ---
 
 - Improved the `useIndexResourceState` hook by exposing a new function called `removeSelectedResources`
