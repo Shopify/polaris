@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 
+import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
@@ -94,15 +95,14 @@ export function ContextualSaveBar({
     <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
   );
 
+  const logoClassName = classNames(styles.LogoContainer, width);
   const logoMarkup =
     alignContentFlush || contextControl ? null : (
-      <div className={styles.LogoContainer} style={{width}}>
-        {imageMarkup}
-      </div>
+      <Box className={logoClassName}>{imageMarkup}</Box>
     );
 
   const contextControlMarkup = contextControl ? (
-    <div className={styles.ContextControl}>{contextControl}</div>
+    <Box className={styles.ContextControl}>{contextControl}</Box>
   ) : null;
 
   const contentsClassName = classNames(
@@ -112,20 +112,20 @@ export function ContextualSaveBar({
 
   return (
     <>
-      <div className={styles.ContextualSaveBar}>
+      <Box className={styles.ContextualSaveBar}>
         {contextControlMarkup}
         {logoMarkup}
-        <div className={contentsClassName}>
+        <Box className={contentsClassName}>
           <h2 className={styles.Message}>{message}</h2>
-          <div className={styles.ActionContainer}>
+          <Box className={styles.ActionContainer}>
             <Stack spacing="tight" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
               {saveActionMarkup}
             </Stack>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </Box>
+      </Box>
       {discardConfirmationModalMarkup}
     </>
   );
