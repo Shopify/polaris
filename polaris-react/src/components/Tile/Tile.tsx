@@ -1,7 +1,6 @@
-import React, {Children} from 'react';
+import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
-import {Box} from '../Box';
 import {classNames} from '../../utilities/css';
 
 import styles from './Tile.scss';
@@ -40,14 +39,12 @@ export const Tile = ({children, spacing, columns}: TileProps) => {
 
   const style = {
     '--pc-tile-column-number': `repeat(${columns}, 1fr)`,
-    ...(spacing ? {'--pc-tile-spacing': `var(--p-space-${spacing})`} : {}),
+    '--pc-tile-spacing': `var(--p-space-${spacing})`,
   } as React.CSSProperties;
 
   return (
     <div className={className} style={style}>
-      {Children.map(children, (child) => (
-        <Box>{child}</Box>
-      ))}
+      {children}
     </div>
   );
 };
