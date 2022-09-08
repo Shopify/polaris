@@ -33,7 +33,7 @@ describe('<Toast />', () => {
     const message = mountWithApp(<Toast {...mockProps} error />);
 
     expect(message).toContainReactComponent('div', {
-      className: 'Toast error',
+      className: 'Box Toast error',
     });
   });
 
