@@ -18,6 +18,7 @@ import {BannerContext} from '../../utilities/banner-context';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
+import {Box} from '../Box';
 import {Button} from '../Button';
 import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
@@ -84,38 +85,39 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   if (title) {
     headingID = `${id}Heading`;
     headingMarkup = (
-      <div className={styles.Heading} id={headingID}>
+      <Box className={styles.Heading} id={headingID}>
         <Heading element="p">{title}</Heading>
-      </div>
+      </Box>
     );
   }
 
   const spinnerMarkup = action?.loading ? (
-    <button
+    <Box
+      as="button"
       disabled
-      aria-busy
+      ariaBusy
       className={classNames(styles.Button, styles.loading)}
     >
-      <span className={styles.Spinner}>
+      <Box as="span" className={styles.Spinner}>
         <Spinner
           size="small"
           accessibilityLabel={i18n.translate(
             'Polaris.Button.spinnerAccessibilityLabel',
           )}
         />
-      </span>
+      </Box>
       {action.content}
-    </button>
+    </Box>
   ) : null;
 
   const primaryActionMarkup = action ? (
-    <div className={styles.PrimaryAction}>
+    <Box className={styles.PrimaryAction}>
       {action.loading
         ? spinnerMarkup
         : unstyledButtonFrom(action, {
             className: styles.Button,
           })}
-    </div>
+    </Box>
   ) : null;
 
   const secondaryActionMarkup = secondaryAction ? (
@@ -124,12 +126,12 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   const actionMarkup =
     action || secondaryAction ? (
-      <div className={styles.Actions}>
+      <Box className={styles.Actions}>
         <ButtonGroup>
           {primaryActionMarkup}
           {secondaryActionMarkup}
         </ButtonGroup>
-      </div>
+      </Box>
     ) : null;
 
   let contentMarkup: React.ReactNode = null;
@@ -138,50 +140,49 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   if (children || actionMarkup) {
     contentID = `${id}Content`;
     contentMarkup = (
-      <div className={styles.Content} id={contentID}>
+      <Box className={styles.Content} id={contentID}>
         {children}
         {actionMarkup}
-      </div>
+      </Box>
     );
   }
 
   const dismissButton = onDismiss && (
-    <div className={styles.Dismiss}>
+    <Box className={styles.Dismiss}>
       <Button
         plain
         icon={CancelSmallMinor}
         onClick={onDismiss}
         accessibilityLabel="Dismiss notification"
       />
-    </div>
+    </Box>
   );
 
   return (
     <BannerContext.Provider value>
-      <div
+      <Box
         className={className}
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
         ref={wrapperRef}
-        role={ariaRoleType}
-        aria-live={stopAnnouncements ? 'off' : 'polite'}
+        ariaRoleType={ariaRoleType}
+        ariaLive={stopAnnouncements ? 'off' : 'polite'}
+        ariaLabelledBy={headingID}
+        ariaDescribedBy={contentID}
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
-        aria-labelledby={headingID}
-        aria-describedby={contentID}
       >
         {dismissButton}
 
-        <div className={styles.Ribbon}>
+        <Box className={styles.Ribbon}>
           <Icon source={iconName} color={iconColor} />
-        </div>
+        </Box>
 
-        <div className={styles.ContentWrapper}>
+        <Box className={styles.ContentWrapper}>
           {headingMarkup}
           {contentMarkup}
-        </div>
-      </div>
+        </Box>
+      </Box>
     </BannerContext.Provider>
   );
 });
@@ -194,7 +195,9 @@ function SecondaryActionFrom({action}: {action: Action}) {
         url={action.url}
         external={action.external}
       >
-        <span className={styles.Text}>{action.content}</span>
+        <Box as="span" className={styles.Text}>
+          {action.content}
+        </Box>
       </UnstyledLink>
     );
   }
@@ -204,7 +207,9 @@ function SecondaryActionFrom({action}: {action: Action}) {
       className={styles.SecondaryAction}
       onClick={action.onAction}
     >
-      <span className={styles.Text}>{action.content}</span>
+      <Box as="span" className={styles.Text}>
+        {action.content}
+      </Box>
     </UnstyledButton>
   );
 }

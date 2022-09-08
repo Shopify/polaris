@@ -7,6 +7,7 @@ import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'button';
 
+// TODO: Bring logic to extract token values into `polaris-tokens`
 type ColorsTokenGroup = typeof colors;
 type ColorsTokenName = keyof ColorsTokenGroup;
 type BackgroundColorTokenScale = Extract<
@@ -22,18 +23,15 @@ type BackgroundColorTokenScale = Extract<
 type DepthTokenGroup = typeof depth;
 type DepthTokenName = keyof DepthTokenGroup;
 type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
-
 type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
   ? Scale
   : never;
 
 type ShapeTokenGroup = typeof shape;
 type ShapeTokenName = keyof ShapeTokenGroup;
-
 type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
   ? Scale
   : never;
-
 type BorderTokenScale = Exclude<
   BorderShapeTokenScale,
   `radius-${string}` | `width-${string}`
@@ -62,8 +60,6 @@ interface BorderRadius {
 
 type SpacingTokenGroup = typeof spacing;
 type SpacingTokenName = keyof SpacingTokenGroup;
-
-// TODO: Bring this logic into tokens
 type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
   ? Scale
   : never;
@@ -76,34 +72,48 @@ interface Spacing {
 }
 
 export interface BoxProps {
+  /** Used to indicate the element is being modified */
+  ariaBusy?: boolean;
+  /** Used to identify the ID of the element that describes Box */
+  ariaDescribedBy?: string;
+  /** Used to identify the Id of element used as aria-labelledby */
+  ariaLabelledBy?: string;
+  /** Used to indicate the element will be updated */
+  ariaLive?: string;
+  /** Used to describe the semantic element type */
+  ariaRoleType?: string;
   /** HTML Element type */
   as?: Element;
-  /** Background color of the Box */
+  /** Background color */
   background?: BackgroundColorTokenScale;
-  /** Border styling of the Box */
+  /** Border styling */
   border?: BorderTokenScale;
-  /** Bottom border styling of the Box */
+  /** Bottom border styling */
   borderBottom?: BorderTokenScale;
-  /** Left border styling of the Box */
+  /** Left border styling */
   borderLeft?: BorderTokenScale;
-  /** Right border styling of the Box */
+  /** Right border styling */
   borderRight?: BorderTokenScale;
-  /** Top border styling of the Box */
+  /** Top border styling */
   borderTop?: BorderTokenScale;
-  /** Border radius of the Box */
+  /** Border radius styling */
   borderRadius?: BorderRadiusTokenScale;
-  /** Bottom left border radius of the Box */
+  /** Bottom left border radius styling */
   borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Bottom right border radius of the Box */
+  /** Bottom right border radius styling */
   borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Top left border radius of the Box */
+  /** Top left border radius styling */
   borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Top right border radius of the Box */
+  /** Top right border radius styling */
   borderRadiusTopRight?: BorderRadiusTokenScale;
   /** Inner content of the Box */
   children: ReactNode;
-  /** Custom styling for the Box */
+  /** A custom class name to apply styles to the Box */
   className?: string;
+  /** Set disabled state on the Box */
+  disabled?: boolean;
+  /** A unique identifier */
+  id?: string;
   /** Spacing outside of the Box */
   margin?: SpacingTokenScale;
   /** Bottom spacing outside of the Box */
@@ -124,15 +134,28 @@ export interface BoxProps {
   paddingRight?: SpacingTokenScale;
   /** Top spacing inside of the Box */
   paddingTop?: SpacingTokenScale;
-  /** Shadow on the Box */
+  /** Shadow styling */
   shadow?: DepthTokenScale;
+  /** Used to indicate the element is focusable in sequential order */
+  tabIndex?: number;
+  /** Callback triggered when focus is removed */
+  onBlur?(event: React.FocusEvent<HTMLElement>): void;
   /** Callback triggered on click */
   onClick?(event: React.MouseEvent<HTMLElement>): void;
+  /** Callback triggered on key up */
+  onKeyUp?(event: React.KeyboardEvent<HTMLElement>): void;
+  /** Callback triggered on mouse up */
+  onMouseUp?(event: React.MouseEvent<HTMLElement>): void;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
+      ariaBusy,
+      ariaDescribedBy,
+      ariaLabelledBy,
+      ariaLive,
+      ariaRoleType,
       as = 'div',
       background,
       border,
@@ -147,6 +170,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusTopRight,
       className,
       children,
+      disabled = false,
+      id,
       margin,
       marginBottom,
       marginLeft,
@@ -158,7 +183,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingRight,
       paddingTop,
       shadow,
+      tabIndex,
+      onBlur,
       onClick,
+      onKeyUp,
+      onMouseUp,
     },
     ref,
   ) => {
@@ -265,9 +294,20 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as,
       {
         className: boxClassName,
-        style: sanitizeCustomProperties(style),
+        'aria-busy': ariaBusy,
+        'aria-describedby': ariaDescribedBy,
+        'aria-labelledby': ariaLabelledBy,
+        'aria-live': ariaLive,
+        role: ariaRoleType,
+        disabled,
+        id,
         ref,
+        style: sanitizeCustomProperties(style),
+        tabIndex,
+        ...(onBlur ? {onBlur} : undefined),
         ...(onClick ? {onClick} : undefined),
+        ...(onKeyUp ? {onKeyUp} : undefined),
+        ...(onMouseUp ? {onMouseUp} : undefined),
       },
       children,
     );
