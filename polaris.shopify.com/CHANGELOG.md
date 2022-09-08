@@ -1,5 +1,18 @@
 # polaris.shopify.com
 
+## 0.17.0
+
+### Minor Changes
+
+- [#7045](https://github.com/Shopify/polaris/pull/7045) [`f20e67063`](https://github.com/Shopify/polaris/commit/f20e6706318cd7bedc3e1a15b6ef6e89b6957c03) Thanks [@kyledurand](https://github.com/kyledurand)! - Allowed examples to be responsive
+
+### Patch Changes
+
+- [#7118](https://github.com/Shopify/polaris/pull/7118) [`7cbe53f98`](https://github.com/Shopify/polaris/commit/7cbe53f98b93f2b676f426a639379582d9d397af) Thanks [@jjgali](https://github.com/jjgali)! - Replace mention of polaris-icons site with icons library
+
+- Updated dependencies [[`e2c7d6676`](https://github.com/Shopify/polaris/commit/e2c7d66760b7aef20dda18153e23222d58c61fcf)]:
+  - @shopify/polaris@10.2.0
+
 ## 0.16.0
 
 ### Minor Changes
