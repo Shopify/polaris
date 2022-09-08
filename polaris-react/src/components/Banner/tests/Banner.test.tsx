@@ -1,4 +1,5 @@
 import React, {useEffect, useRef} from 'react';
+import type {Element as ElementType} from '@shopify/react-testing';
 import {
   CirclePlusMinor,
   CircleTickMajor,
@@ -262,32 +263,32 @@ describe('<Banner />', () => {
       it('adds a keyFocused class to the banner on keyUp', () => {
         const banner = mountWithApp(<Banner />);
 
-        const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage',
-        });
+        const bannerDiv = banner.findWhere((el: any) =>
+          el.prop('className')?.includes('Banner withinPage'),
+        ) as ElementType<any>;
 
         bannerDiv!.trigger('onKeyUp', {
           target: bannerDiv!.domNode as HTMLDivElement,
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner keyFocused withinPage',
+          className: expect.stringContaining('Banner keyFocused withinPage'),
         });
       });
 
       it('does not add a keyFocused class onMouseUp', () => {
         const banner = mountWithApp(<Banner />);
 
-        const bannerDiv = banner.find('div', {
-          className: 'Banner withinPage',
-        });
+        const bannerDiv = banner.findWhere((el: any) =>
+          el.prop('className')?.includes('Banner withinPage'),
+        ) as ElementType<any>;
 
         bannerDiv!.trigger('onMouseUp', {
           currentTarget: bannerDiv!.domNode as HTMLDivElement,
         });
 
         expect(banner).toContainReactComponent('div', {
-          className: 'Banner withinPage',
+          className: expect.stringContaining('Banner withinPage'),
         });
       });
     });
