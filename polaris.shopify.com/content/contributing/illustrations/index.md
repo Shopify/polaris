@@ -8,6 +8,4 @@ keywords:
   - add
 ---
 
-Illustration contributions are welcome from any designer working at Shopify.
-
-Each illustration must be submitted for feedback from an illustrator in #illustration-guild on Slack. Polaris only supports illustrations within the Shopify Admin product and not marketing assets.
+Reusing illustrations should be avoided in product. New illustration contributions are welcome from any designer working at Shopify. They can be submitted for feedback to the #illustration-guild on Slack. Polaris only supports illustrations within the Shopify admin product and not marketing assets.

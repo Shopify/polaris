@@ -1,6 +1,6 @@
 ---
 title: Typography
-description: Shopify admin provides a constrained, purposeful set of typographic styles. These styles map to functional roles so you know when to use what.
+description: Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
 keywords:
   - type styles
   - font sizes
@@ -12,51 +12,79 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ---
 
+![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
+
 ## Principles
 
-### Style with purpose
+![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
 
-A disciplined consistency with how you size and style type makes the whole admin more intuitive to use. Merchants who learn how to navigate one experience can apply that same knowledge to each new experience they come across.
+### 1. Make it readable
 
-### Stay flexible
+Help merchants understand content quickly by considering how to display and apply text within a page.
 
-To make things accessible to audiences with different eyesight constraints, across different browsers, and different mobile devices, make sure to design in a way that works no matter what font size the merchant opts to use.
+### 2. Make it adaptable
+
+Design in a way that works for a wide range of audiences, browsers, and mobile devices.
+
+### 3. Reinforce the message
+
+Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
+
+---
+
+## Essentials for designing with type
+
+When designing with type, we can use a combination of font size, weight, color, and space to ensure a strong hierarchy and scannability of a page. By understanding the fundamentals, you’ll be able to better apply type to the UI.
+
+### Using the bounding box
+
+The bounding box is the vertical height of the text and is defined by the text’s line-height. The value of the line-height is critical to make sure text aligns to the 4px grid. Refer to individual type styles for specified heights.
+
+![An image showing how the bounding box applies to text elements](/images/foundations/design/typography/text-bounding-box@2x.png)
+
+### Using the baseline
+
+The baseline is the imaginary line that letters rest on. Align text horizontally to the baseline for a simple clean look.
+
+![An image showing the baseline and how it applies to text elements](/images/foundations/design/typography/text-align-baseline@2x.png)
+
+There are situations where it makes sense to have multiple text sizes on a single line to establish hierarchy of elements. Aligning to the text’s baseline instead of center gives a more harmonious look.
+
+![An example of aligning text elements to the baseline](/images/foundations/design/typography/text-center-baseline@2x.png)
+
+### Line length
+
+Line length describes the width of the content. For longer body text, the recommended line length is between 40 to 60 characters.
+
+![A diagram showing the ideal line length for text](/images/foundations/design/typography/text-line-length@2x.png)
+
+### Right align numbers
+
+Right align numbers when they're inside a table. This keeps the decimal in the same place and makes numerical data easier to read and compare.
+
+![An image showing right aligning numbers within a table](/images/foundations/design/typography/text-tabular-numbers@2x.png)
+
+### Color
+
+Color can be used to add contrast and reinforce the hierarchy between text.
+
+For example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary information provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
+
+![An image showing how you can use color to add hierarchy within text elements](/images/foundations/design/typography/text-color-different@2x.png)
+
+### Space
+
+We can help merchants navigate the UI by grouping related information together. One way to do this is to use space to create relationships between elements on a page.
+
+Ambiguous spacing can cause confusion and make it hard to understand the content.
+
+![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
 
 ---
 
 ## Font sizes
 
 We use the typographic scale to communicate visual hierarchy in text.
-
----
-
-## Formatting
-
-Along with the typographic scale, sometimes additional formatting is necessary to illuminate the distinction between smaller-scale relationships. Different formatting styles can be implemented using the text style component.
-
-![Diagram presenting text that is left aligned](/images/foundations/design/typography/type-left-align@2x.png)
-
-### Left aligned
-
-By default, text is left aligned. Exceptions to this rule include text in tables, and the centered text we use in empty states.
-
-![Diagram presenting text that is emphasised by being bold](/images/foundations/design/typography/type-strong@2x.png)
-
-### Strong
-
-Use this style sparingly and only where strong emphasis is required. In interfaces, strong should be seldom used to enhance visual hierarchy.
-
-![Diagram presenting text that is underlined](/images/foundations/design/typography/type-underline@2x.png)
-
-### Underline
-
-Underline styles are exclusively for text links. Don’t use underline for things like adding emphasis to text within body copy.
-
-![Diagram presenting text that is subdued in a lighter gray color](/images/foundations/design/typography/type-subdued@2x.png)
-
-### Subdued
-
-The subdued style lets you de-emphasize content, and you can use it across all font sizes. Mostly it should be used in contrast to other un-subdued text, vs. on its own. However you can use Subdued with standalone text that’s non-actionable or less important.
 
 ---
 

@@ -1,0 +1,22 @@
+.Box {
+  background-color: var(--pc-box-background, initial);
+  box-shadow: var(--pc-box-shadow, initial);
+  /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+  border-bottom-left-radius: var(--pc-box-border-radius-bottom-left, initial);
+  border-bottom-right-radius: var(--pc-box-border-radius-bottom-right, initial);
+  border-top-left-radius: var(--pc-box-border-radius-top-left, initial);
+  border-top-right-radius: var(--pc-box-border-radius-top-right, initial);
+  border-bottom: var(--pc-box-border-bottom, initial);
+  border-left: var(--pc-box-border-left, initial);
+  border-right: var(--pc-box-border-right, initial);
+  border-top: var(--pc-box-border-top, initial);
+  margin-bottom: var(--pc-box-margin-bottom, initial);
+  margin-left: var(--pc-box-margin-left, initial);
+  margin-right: var(--pc-box-margin-right, initial);
+  margin-top: var(--pc-box-margin-top, initial);
+  padding-bottom: var(--pc-box-padding-bottom, initial);
+  padding-left: var(--pc-box-padding-left, initial);
+  padding-right: var(--pc-box-padding-right, initial);
+  padding-top: var(--pc-box-padding-top, initial);
+  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+}

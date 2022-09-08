@@ -1,6 +1,6 @@
 import Image from '../Image';
 import Link from 'next/link';
-import {getReadableStatusValue, slugify} from '../../utils/various';
+import {slugify} from '../../utils/various';
 import {Status} from '../../types';
 import styles from './ComponentGrid.module.scss';
 import StatusBadge from '../StatusBadge';
@@ -28,6 +28,9 @@ function ComponentGridItem({
   status,
 }: ComponentGridItemProps) {
   const searchAttributes = useGlobalSearchResult();
+  const statusBadge = status ? (
+    <StatusBadge status={{value: status.value, message: status.value}} />
+  ) : null;
 
   return (
     <li key={title} className={styles.Component} {...searchAttributes}>
@@ -47,18 +50,7 @@ function ComponentGridItem({
           </div>
           <div className={styles.ComponentDescription}>
             <h4>
-              {title}
-              {status && (
-                <>
-                  {' '}
-                  <StatusBadge
-                    status={{
-                      value: status.value,
-                      message: getReadableStatusValue(status.value),
-                    }}
-                  />
-                </>
-              )}
+              {`${title} `} {statusBadge}
             </h4>
             <p>{description}</p>
           </div>

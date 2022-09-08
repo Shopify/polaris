@@ -46,6 +46,9 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
+export {AlphaStack} from './components/AlphaStack';
+export type {AlphaStackProps} from './components/AlphaStack';
+
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -68,6 +71,9 @@ export type {
   BannerStatus,
   BannerHandles,
 } from './components/Banner';
+
+export {Box} from './components/Box';
+export type {BoxProps} from './components/Box';
 
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';
@@ -106,6 +112,9 @@ export type {CollapsibleProps} from './components/Collapsible';
 
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
+
+export {Columns} from './components/Columns';
+export type {ColumnsProps} from './components/Columns';
 
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
