@@ -319,10 +319,15 @@ export function getRelevantTypes(
   name: string,
   filePath: string,
 ): FilteredTypes {
-  const matchingNode = ast[name][filePath];
+  let matchingNode = ast[name][filePath];
+
+  if (!matchingNode) {
+    matchingNode = Object.values(ast[name])[0];
+  }
+
   if (!matchingNode) {
     throw new Error(
-      `Expected to find a type at location ast[${name}][${filePath}]`,
+      `Expected to find a Props definition at ast['${name}']['${filePath}'] or at least Object.values(ast['${name}])[0]`,
     );
   }
 
