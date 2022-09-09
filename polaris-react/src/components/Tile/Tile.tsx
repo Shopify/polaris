@@ -1,12 +1,9 @@
 import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../utilities/css';
-
 import styles from './Tile.scss';
 
-type SpacingTokenGroup = typeof spacing;
-type SpacingTokenName = keyof SpacingTokenGroup;
+type SpacingTokenName = keyof typeof spacing;
 
 // TODO: Bring this logic into tokens
 type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
@@ -35,15 +32,13 @@ export interface TileProps {
 }
 
 export const Tile = ({children, spacing, columns}: TileProps) => {
-  const className = classNames(styles.Tile);
-
   const style = {
     '--pc-tile-column-number': `repeat(${columns}, 1fr)`,
     '--pc-tile-spacing': `var(--p-space-${spacing})`,
   } as React.CSSProperties;
 
   return (
-    <div className={className} style={style}>
+    <div className={styles.Tile} style={style}>
       {children}
     </div>
   );
