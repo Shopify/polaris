@@ -248,6 +248,8 @@ function Highlighter({
               expandType(type);
               setHasBenExpanded(true);
             }}
+            disabled={hasBenExpanded}
+            aria-expanded={hasBenExpanded}
           >
             {type}
           </button>
