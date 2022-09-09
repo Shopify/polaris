@@ -46,7 +46,7 @@
 
   // ::before is the selected dot, ::after the focus-ring
 
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     --pc-icon-size-small: 10px;
   }
   position: relative;

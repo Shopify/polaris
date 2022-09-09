@@ -102,9 +102,11 @@ export function Avatar({
   const className = classNames(
     styles.Avatar,
     size && styles[variationName('size', size)],
-    !customer && styles[variationName('style', styleClass(nameString))],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
     shape && styles[variationName('shape', shape)],
+    !customer &&
+      !source &&
+      styles[variationName('style', styleClass(nameString))],
   );
 
   const imageClassName = classNames(

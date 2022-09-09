@@ -4,6 +4,9 @@
   --pc-data-table-first-column-width: 145px;
   position: relative;
   max-width: 100vw;
+  background-color: var(--p-surface);
+  border-radius: var(--p-border-radius-2);
+  overflow: hidden;
 }
 
 .condensed {
@@ -47,6 +50,7 @@
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+  background-color: inherit;
 }
 
 .Table {
@@ -62,6 +66,7 @@
 }
 
 .Cell {
+  @include text-emphasis-normal;
   padding: var(--p-space-4);
   white-space: nowrap;
   text-align: left;
@@ -88,8 +93,16 @@
   }
 }
 
+.Cell-separate::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-right: var(--p-border-divider);
+}
+
 .Cell-firstColumn {
-  @include text-emphasis-normal;
   text-align: left;
   white-space: normal;
 }
@@ -112,7 +125,7 @@
 
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-medium);
-    font-size: var(--p-font-size-1);
+    font-size: var(--p-font-size-75);
   }
 }
 
@@ -192,7 +205,7 @@
 
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-medium);
-    font-size: var(--p-font-size-1);
+    font-size: var(--p-font-size-75);
     padding: 0;
     padding-right: var(--p-space-1);
     margin: 0;
@@ -319,6 +332,11 @@
       height: 0;
       width: 0;
     }
+
+    .FixedFirstColumn {
+      bottom: 0;
+      top: auto;
+    }
   }
 
   .StickyTableColumnHeader-isScrolling {
@@ -339,17 +357,14 @@
 
 .FixedFirstColumn {
   position: absolute;
-  background: var(--p-surface);
+  background: inherit;
   z-index: 3;
   border-spacing: 0;
+  top: 0;
   left: 0;
+
   @media #{$p-breakpoints-md-down} {
     z-index: 1;
-  }
-
-  &.separate:is(table) th,
-  &.separate:is(th) {
-    border-right: var(--p-border-divider);
   }
 }
 

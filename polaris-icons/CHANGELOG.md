@@ -1,5 +1,23 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- [#7105](https://github.com/Shopify/polaris/pull/7105) [`811af5907`](https://github.com/Shopify/polaris/commit/811af590780f4546b4add345205382f87b429569) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Add dynamic source icons
+
+## 6.0.0
+
+### Major Changes
+
+- [#7012](https://github.com/Shopify/polaris/pull/7012) [`bd00ef4ed`](https://github.com/Shopify/polaris/commit/bd00ef4ed5307aa07bb7fbd00ff4328179b859e1) Thanks [@leileu](https://github.com/leileu)! - Adding Metafields icon to polaris
+
+### Minor Changes
+
+- [#7013](https://github.com/Shopify/polaris/pull/7013) [`1e0645f33`](https://github.com/Shopify/polaris/commit/1e0645f334e16cff5051f321a822324dd70e16c1) Thanks [@jpmarra](https://github.com/jpmarra)! - Added IdentityCard icon
+
+* [#7028](https://github.com/Shopify/polaris/pull/7028) [`635bcfeb7`](https://github.com/Shopify/polaris/commit/635bcfeb710504847f46f10c68722bbc7e452bde) Thanks [@joelzwarrington](https://github.com/joelzwarrington)! - add vertical viewport icon variations
+
 ## 5.4.0
 
 ### Minor Changes

@@ -12,7 +12,7 @@ window.matchMedia =
   window.matchMedia ||
   function () {
     return {
-      matches: window.innerWidth <= 769,
+      matches: window.innerWidth < 768,
       addListener() {},
       removeListener() {},
     };

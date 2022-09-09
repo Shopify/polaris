@@ -12,6 +12,7 @@ import {Tooltip} from '../../../Tooltip';
 export interface CellProps {
   content?: React.ReactNode;
   contentType?: string;
+  nthColumn?: boolean;
   firstColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
@@ -29,15 +30,18 @@ export interface CellProps {
   stickyCellWidth?: number;
   hovered?: boolean;
   handleFocus?: FocusEventHandler;
-  inFixedFirstColumn?: boolean;
-  hasFixedFirstColumn?: boolean;
+  inFixedNthColumn?: boolean;
+  hasFixedNthColumn?: boolean;
   fixedCellVisible?: boolean;
   firstColumnMinWidth?: string;
+  style?: React.CSSProperties;
+  lastFixedFirstColumn?: boolean;
 }
 
 export function Cell({
   content,
   contentType,
+  nthColumn,
   firstColumn,
   truncate,
   header,
@@ -46,7 +50,7 @@ export function Cell({
   sorted,
   sortable,
   sortDirection,
-  inFixedFirstColumn,
+  inFixedNthColumn,
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
@@ -56,9 +60,11 @@ export function Cell({
   stickyCellWidth,
   hovered = false,
   handleFocus = () => {},
-  hasFixedFirstColumn = false,
+  hasFixedNthColumn = false,
   fixedCellVisible = false,
   firstColumnMinWidth,
+  style,
+  lastFixedFirstColumn,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -67,7 +73,7 @@ export function Cell({
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
     firstColumn && styles['Cell-firstColumn'],
-    firstColumn && truncate && styles['Cell-truncated'],
+    truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     totalInFooter && styles['Cell-total-footer'],
@@ -76,9 +82,12 @@ export function Cell({
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
-    fixedCellVisible && styles.separate,
-    firstColumn &&
-      inFixedFirstColumn &&
+    lastFixedFirstColumn &&
+      inFixedNthColumn &&
+      fixedCellVisible &&
+      styles['Cell-separate'],
+    nthColumn &&
+      inFixedNthColumn &&
       stickyHeadingCell &&
       styles.FixedFirstColumn,
   );
@@ -109,9 +118,9 @@ export function Cell({
 
   const focusable = !(
     stickyHeadingCell &&
-    hasFixedFirstColumn &&
-    firstColumn &&
-    !inFixedFirstColumn
+    hasFixedNthColumn &&
+    nthColumn &&
+    !inFixedNthColumn
   );
 
   const sortableHeadingContent = (
@@ -130,6 +139,11 @@ export function Cell({
 
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
+  const minWidthStyles =
+    nthColumn && firstColumnMinWidth
+      ? {minWidth: firstColumnMinWidth}
+      : {minWidth: stickyCellWidth};
+
   const stickyHeading = (
     <th
       ref={setRef}
@@ -137,11 +151,10 @@ export function Cell({
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
-      style={
-        firstColumn && firstColumnMinWidth
-          ? {minWidth: firstColumnMinWidth}
-          : {minWidth: stickyCellWidth}
-      }
+      style={{
+        ...style,
+        ...minWidthStyles,
+      }}
       data-index-table-sticky-heading
     >
       {columnHeadingContent}
@@ -150,31 +163,35 @@ export function Cell({
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
+      aria-sort={sortDirection}
       {...colSpanProp}
       ref={setRef}
       className={className}
       scope="col"
-      aria-sort={sortDirection}
-      style={firstColumn ? {minWidth: firstColumnMinWidth} : {}}
+      style={{...minWidthStyles}}
     >
       {columnHeadingContent}
     </th>
   ) : (
     <th
-      style={{minWidth: firstColumnMinWidth}}
+      {...colSpanProp}
+      ref={setRef}
       className={className}
       scope="row"
-      {...colSpanProp}
-      ref={(ref) => {
-        setRef(ref);
-      }}
+      style={{...minWidthStyles}}
     >
-      <TruncatedText className={styles.TooltipContent}>{content}</TruncatedText>
+      {truncate ? (
+        <TruncatedText className={styles.TooltipContent}>
+          {content}
+        </TruncatedText>
+      ) : (
+        content
+      )}
     </th>
   );
 
   const cellMarkup =
-    header || firstColumn ? (
+    header || firstColumn || nthColumn ? (
       headingMarkup
     ) : (
       <td className={className} {...colSpanProp}>

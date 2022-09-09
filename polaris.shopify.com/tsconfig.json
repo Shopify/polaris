@@ -23,6 +23,7 @@
   "include": [
     "src",
     "pages",
+    ".cache/*.json",
     "**/*.json",
     "next-env.d.ts",
     "scripts/get-props/src/get-props.ts"

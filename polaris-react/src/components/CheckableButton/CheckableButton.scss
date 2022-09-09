@@ -2,7 +2,7 @@
 @import '../ResourceList/variables';
 
 $button-vertical-padding: calc(
-  (var(--p-line-height-6) - var(--p-line-height-2) - var(--p-space-05)) / 2
+  (36px - var(--p-font-line-height-2) - var(--p-space-05)) / 2
 );
 
 .CheckableButton {
@@ -10,8 +10,8 @@ $button-vertical-padding: calc(
   @include recolor-icon(var(--p-icon-on-interactive));
   display: flex;
   align-items: center;
-  min-height: var(--p-line-height-6);
-  min-width: var(--p-line-height-6);
+  min-height: 36px;
+  min-width: 36px;
   margin: 0;
   padding: $button-vertical-padding var(--p-space-4);
   line-height: 1;
@@ -41,18 +41,18 @@ $button-vertical-padding: calc(
   }
 
   &.CheckableButton-measuring {
-    font-size: var(--p-font-size-4);
+    font-size: 15px;
     font-weight: var(--p-font-weight-bold);
 
     // simulates measuring with an additional digit (e.g. 00 instead of 0)
     &::before {
       content: '';
       display: inline-block;
-      width: var(--p-font-size-4);
+      width: 15px;
     }
   }
 
-  @include page-after-resource-list-small {
+  @media #{$p-breakpoints-sm-up} {
     flex: 0 1 auto;
   }
 

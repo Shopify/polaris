@@ -7,7 +7,7 @@
 }
 
 .ChoiceItem:not(:last-child) {
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     margin-bottom: var(--p-space-4);
   }
 }
@@ -23,7 +23,7 @@
 }
 
 .ChoiceChildren {
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     margin-top: var(--p-space-4);
   }
   margin-bottom: var(--p-space-2);
@@ -34,7 +34,7 @@
   margin-top: var(--p-space-1);
   margin-bottom: var(--p-space-2);
 
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     margin-top: var(--p-space-4);
   }
 }
@@ -45,7 +45,7 @@
   margin: 0 0 var(--p-space-1);
   padding: 0;
 
-  @include when-typography-condensed {
+  @media #{$p-breakpoints-md-down} {
     margin-bottom: var(--p-space-5);
   }
 }

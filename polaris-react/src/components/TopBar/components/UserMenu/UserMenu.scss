@@ -4,7 +4,7 @@
   max-width: 160px;
   margin-left: var(--p-space-2);
 
-  @include breakpoint-before($layout-width-page-with-nav-base, false) {
+  @media #{$p-breakpoints-md-down} {
     display: none;
   }
 }
@@ -13,7 +13,7 @@
   @include truncate;
   @include text-style-body;
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-line-height-1);
+  line-height: var(--p-font-line-height-1);
   color: var(--p-text);
   text-align: left;
 }

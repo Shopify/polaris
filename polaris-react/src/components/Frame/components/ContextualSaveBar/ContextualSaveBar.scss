@@ -1,9 +1,16 @@
 @import '../../../../styles/common';
 
 .ContextualSaveBar {
+  // Used to apply dark theme to action buttons
+  /* stylelint-disable stylelint-polaris/custom-properties-allowed-list */
+  --p-surface: var(--p-surface-dark);
+  --p-text: var(--p-text-on-dark);
+  --p-action-secondary-hovered: var(--p-action-secondary-hovered-dark);
+  --p-action-secondary-pressed: var(--p-action-secondary-pressed-dark);
+  /* stylelint-enable stylelint-polaris/custom-properties-allowed-list */
   display: flex;
   height: $top-bar-height;
-  background: var(--p-surface);
+  background: var(--p-surface-dark);
   box-shadow: 0 2px 4px var(--p-hint-from-direct-light);
 
   .LogoContainer {
@@ -16,7 +23,7 @@
   }
 
   .Message {
-    color: var(--p-text);
+    color: var(--p-text-on-dark);
   }
 
   @media (forced-colors: active) {
@@ -27,7 +34,7 @@
 .LogoContainer {
   display: none;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     display: flex;
     flex: 0 0 $layout-width-nav-base;
     align-items: center;
@@ -49,11 +56,11 @@
   margin: 0 auto;
   padding: 0 var(--p-space-4);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: 0 var(--p-space-5);
   }
 
-  @include page-content-when-not-partially-condensed {
+  @media #{$p-breakpoints-md-up} {
     padding: 0 var(--p-space-8);
   }
 }
@@ -80,7 +87,7 @@
 .ContextControl {
   display: none;
 
-  @include breakpoint-after($nav-min-window-corrected) {
+  @media #{$p-breakpoints-md-up} {
     display: block;
     width: $layout-width-nav-base;
   }

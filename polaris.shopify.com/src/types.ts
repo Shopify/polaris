@@ -1,12 +1,35 @@
-import {TokenProperties} from '@shopify/polaris-tokens';
+import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
+
+export interface SiteJSON {
+  [key: string]: {
+    frontMatter: FrontMatter;
+  };
+}
+
+export interface Example extends FrontMatter {
+  fileName: string;
+}
+
+export interface FrontMatter {
+  title: string;
+  category?: string;
+  description?: string;
+  examples?: Example[];
+  icon?: string;
+  keywords?: (string | number)[];
+  status?: {
+    value: string;
+    message: string;
+  };
+}
 
 export type MarkdownFile = {
   frontMatter: any;
   readme: string;
 };
 
-export interface TokenPropertiesWithName extends TokenProperties {
+export interface TokenPropertiesWithName extends MetadataProperties {
   name: string;
 }
 
@@ -70,8 +93,15 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
+export enum StatusName {
+  Deprecated = 'Deprecated',
+  Alpha = 'Alpha',
+  Information = 'Information',
+  Warning = 'Warning',
+}
+
 export type Status = {
-  value: 'deprecated' | 'alpha' | 'warning' | 'information';
+  value: StatusName;
   message: string;
 };
 

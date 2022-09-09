@@ -1,7 +1,6 @@
-import {tokens} from '@shopify/polaris-tokens';
-import type {NextApiResponse, NextApiRequest} from 'next';
+import type {NextApiRequest, NextApiResponse} from 'next';
 
-import {staticTokenGroupKeys} from './[tokens]';
+import {tokenGroupKeys} from './[tokens]';
 
 const getGithubUrl = (file: string) => {
   const fileName = `${file}.ts`;
@@ -67,30 +66,7 @@ const html = `
                 </tr>
             </thead>
             <tbody>
-            ${Object.keys(tokens.colorSchemes)
-              .map((scheme) => {
-                const url = `/api/tokens/v0/colors?scheme=${scheme}`;
-                const cssUrl = `${url}&format=css`;
-
-                return `
-                    <tr>
-                        <td>${scheme}</td>
-                        <td>
-                            <a href="${url}">${url}</a>
-                        </td>
-                        <td>
-                            <a href="${cssUrl}">${cssUrl}</a>
-                        </td>
-                        <td>
-                            <a href="${getGithubUrl(
-                              `color.${scheme}`,
-                            )}">File</a>
-                        </td>
-                    </tr>
-                `;
-              })
-              .join('\n')}
-            ${staticTokenGroupKeys
+            ${tokenGroupKeys
               .map((tokenGroup) => {
                 const url = `/api/tokens/v0/${tokenGroup}`;
                 const cssUrl = `${url}?format=css`;

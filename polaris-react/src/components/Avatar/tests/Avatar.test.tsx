@@ -31,6 +31,17 @@ describe('<Avatar />', () => {
         avatar.setProps({source: 'image/new/path'});
       }).not.toThrow();
     });
+
+    it('does not apply a style background class', () => {
+      const src = 'image/path/';
+      const avatar = mountWithApp(<Avatar source={src} />);
+      expect(avatar).toContainReactComponent('span', {
+        className: 'Avatar sizeMedium shapeRound',
+      });
+      expect(avatar).toContainReactComponent('span', {
+        className: expect.not.stringContaining('styleOne'),
+      });
+    });
   });
 
   describe('customer', () => {
@@ -43,6 +54,17 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar customer source={src} />);
       expect(avatar).not.toContainReactComponent('svg');
+    });
+
+    it('does not apply a style class', () => {
+      const src = 'image/path/';
+      const avatar = mountWithApp(<Avatar customer source={src} />);
+      expect(avatar).toContainReactComponent('span', {
+        className: 'Avatar sizeMedium shapeRound',
+      });
+      expect(avatar).toContainReactComponent('span', {
+        className: expect.not.stringContaining('styleOne'),
+      });
     });
   });
 
@@ -136,6 +158,14 @@ describe('<Avatar />', () => {
 
       expect(avatar).toContainReactComponent('span', {
         className: expect.stringContaining('shapeSquare'),
+      });
+    });
+
+    it('renders a round background when square is not passed to shape', () => {
+      const avatar = mountWithApp(<Avatar initials="DL" />);
+
+      expect(avatar).toContainReactComponent('span', {
+        className: expect.stringContaining('shapeRound'),
       });
     });
   });

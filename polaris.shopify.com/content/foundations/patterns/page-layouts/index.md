@@ -230,7 +230,7 @@ Think of layout components a set of “shelves” into which other components ca
 ## Small-scale layout
 
 The [stack](/components/stack) component is useful for small-scale layout. It lets you arrange arbitrary components in a horizontal row or vertical stack. It’s also a useful component for applying
-[standard spacing](/design/spacing).
+[standard spacing](/design/space).
 
 ![A text label, text value and badge arranged in a row with space between](/images/foundations/patterns/page-layouts/stack-horizontal@2x.png)
 

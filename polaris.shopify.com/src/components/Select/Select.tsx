@@ -1,6 +1,7 @@
+import {CaretDownMinor} from '@shopify/polaris-icons';
 import {className} from '../../utils/various';
 
-import Image from '../Image';
+import Icon from '../Icon';
 
 import styles from './Select.module.scss';
 
@@ -53,14 +54,7 @@ const Select = ({
         })}
       </select>
       <div className={styles.SelectIcon}>
-        <Image
-          src="/icons/CaretDownMinor.svg"
-          alt="Down Arrow"
-          width={16}
-          height={16}
-          fadeIn={false}
-          icon
-        />
+        <Icon source={CaretDownMinor} width={16} height={16} />
       </div>
     </div>
   );

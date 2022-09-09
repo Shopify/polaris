@@ -15,11 +15,11 @@ keywords:
   - open source
 ---
 
-Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component's documentation, or by adding new components or utilities. Often component contributions are a mix of these.
+Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component’s documentation, or by adding new components or utilities. Often component contributions are a mix of these.
 
-Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you're an open source contributor. Once you've decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.
+Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. Once you’ve decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.
 
-Often the changes you make to a component's code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you're an open source contributor, we'll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the `Shopify/polaris` repo.
+Often the changes you make to a component’s code impact the [documentation](/contributing/documentation) and [Figma UI Kit](/contributing/figma-ui-kit). If you work at Shopify, component contributions should be a team effort across disciplines. If you’re an open source contributor, we’ll work with you to update the Figma UI Kit once you [create an issue](https://github.com/Shopify/polaris/issues/new/choose) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the `Shopify/polaris` repo.
 
 ## Update props
 
@@ -35,7 +35,7 @@ Components should be performant, accessible, and maintainable. When contributing
 - Address a pain point in the merchant experience
 - Reduce complexity of the source code
 
-If a component isn't flexible enough to meet your project's requirements, or you're unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) outlining the problem and the approach you're thinking about. We're happy to collaborate to find a solution.
+If a component isn’t flexible enough to meet your project’s requirements, or you’re unsure whether a component is right for your use case, submit an [issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) outlining the problem and the approach you’re thinking about. We’re happy to collaborate to find a solution.
 
 ### How to contribute
 
@@ -57,13 +57,13 @@ To add or update a prop:
 
 ### Considerations
 
-Bug fixes are high impact contributions that ensure we deliver a reliable, crafted experience to merchants. Whether you're a seasoned contributor or looking to make your first pull request, there's a bug report open for every level of experience.
+Bug fixes are high impact contributions that ensure we deliver a reliable, crafted experience to merchants. Whether you’re a seasoned contributor or looking to make your first pull request, there’s a bug report open for every level of experience.
 
-If you're just getting started with contributing to Polaris React, look for issues that are:
+If you’re just getting started with contributing to Polaris React, look for issues that are:
 
 - Labeled as a [good first issue](https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3A%22Good+first+issue%22)
 - Not yet assigned to someone
-- Haven't been updated in two or more weeks
+- Haven’t been updated in two or more weeks
 
 ### How to contribute
 
@@ -95,7 +95,7 @@ When exploring the potential for improving the look, feel, and or experience of 
 
 ### Case study
 
-In the years since Polaris launched in 2017, we've learned a lot from the Shopify and design system communities. As the system's matured, we've found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/blog/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that's the case, there's an opportunity to refactor the component or build a new component to better meet merchant needs.
+In the years since Polaris launched in 2017, we’ve learned a lot from the Shopify and design system communities. As the system’s matured, we’ve found that many of the components should evolve toward [composition over configuration](https://maecapozzi.com/blog/composition-vs-configuration/). Many props is a signal that a component is solving too many problems or is too opinionated. When that’s the case, there’s an opportunity to refactor the component or build a new component to better meet merchant needs.
 
 For example, `Autocomplete` implements [the combobox with list pattern](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/). When the Deliver team looked into fixing bugs in the component, they decided it would benefit from being broken down into two new components. They contributed `Combobox` and `Listbox` and refactored `Autocomplete` to use them. This reduced complexity and made `Autocomplete` easier to maintain.
 

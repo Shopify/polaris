@@ -6,9 +6,9 @@ import PageMeta from '../../src/components/PageMeta';
 const Components: NextPage = () => {
   return (
     <>
-      <PageMeta title="Typography tokens" />
+      <PageMeta title="Font tokens" />
 
-      <TokensPage tokenGroup={'typography'} />
+      <TokensPage tokenGroup={"font"} />
     </>
   );
 };

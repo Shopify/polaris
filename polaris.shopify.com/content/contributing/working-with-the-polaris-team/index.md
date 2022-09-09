@@ -11,7 +11,7 @@ keywords:
 
 Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights.
 
-## TL;dr
+## Tl;dr
 
 Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing/quality-contributions) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you with planning, but we can’t be pulled in last minute to unblock.
 
@@ -36,7 +36,7 @@ Things don’t always go according to plan. If a team is still learning how to p
 
 ## Collaborations for system contributions
 
-When an opportunity for a collaboration related to a system contribution comes up, we’ll add it to our [backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for triaging. Collaboration opportunities can be worked on through cross-product team pairings and don't always have to be with Polaris.
+When an opportunity for a collaboration related to a system contribution comes up, we’ll add it to our [backlog](https://github.com/orgs/Shopify/projects/2250/views/5) for triaging. Collaboration opportunities can be worked on through cross-product team pairings and don’t always have to be with Polaris.
 
 ### Triaging considerations
 
@@ -61,7 +61,7 @@ If the Polaris team is the main collaborator on a system contribution, the Polar
 
 - pair with the contributor(s) asynchronously, or when it’s more efficient, through ad hoc video calls
 - direct internal contributors to the #admin-ux community if extra feedback is needed on the solution being explored
-- offer systems coaching to the subject matter experts with the most context on the merchant problem that's being solved
+- offer systems coaching to the subject matter experts with the most context on the merchant problem that’s being solved
 - help the contributor with any systems tooling related to shipping the solution
 
 ## Polaris on-call support
@@ -96,7 +96,7 @@ Polaris is an open source project used by Shopify employees, and Shopify Partner
 
 | Contribution type                                                                | Team response                                                                                                                                                                                                                                | How you can help                                                                                                                                                                                                                                                                                       |
 | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Bug report                                                                       | Prioritized against our backlog and roadmap. If there's a clear or urgent need for a fix we'll add it to our backlog.                                                                                                                        | Leave comments with additional information on how to reproduce the bug and how it's affecting your use case.<br/><br/> If you're interested in a fix, [upvote](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) the bug report to let the team know. |
-| Feature request                                                                  | For now, feature requests will be closed and reviewed against our existing backlog and roadmap. We'll evaluate interest in the request and prioritize it for development if there is enough interest and alignment with our product roadmap. | If you're interested in the feature please upvote the request in [GitHub](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) to let the team know.                                                                                           |
+| Bug report                                                                       | Prioritized against our backlog and roadmap. If there’s a clear or urgent need for a fix we’ll add it to our backlog.                                                                                                                        | Leave comments with additional information on how to reproduce the bug and how it’s affecting your use case.<br/><br/> If you’re interested in a fix, [upvote](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) the bug report to let the team know. |
+| Feature request                                                                  | For now, feature requests will be closed and reviewed against our existing backlog and roadmap. We’ll evaluate interest in the request and prioritize it for development if there is enough interest and alignment with our product roadmap. | If you’re interested in the feature please upvote the request in [GitHub](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) to let the team know.                                                                                           |
 | Pull request                                                                     | Will review [PRs](https://github.com/Shopify/polaris/pulls) for system alignment, user need, and contribution quality.                                                                                                                       | Leave comments for code review.<br/><br/> Upvote the request in [GitHub](https://github.com/Shopify/polaris/discussions/6750) to express interest and let the team know you want this feature.                                                                                                         |
 | Start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/6750) | Review discussions and close or respond as needed                                                                                                                                                                                            | Participate in a discussion to express interest or share your opinion.                                                                                                                                                                                                                                 |

@@ -5,7 +5,7 @@
   padding: var(--p-space-5);
   border-top: var(--p-border-divider);
 
-  @include page-content-when-not-fully-condensed {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-5) 0;
   }
 }

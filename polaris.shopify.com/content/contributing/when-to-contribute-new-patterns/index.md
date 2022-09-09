@@ -8,7 +8,7 @@ keywords:
   - contribution guide
 ---
 
-To help you figure this out, start by plotting out where each solution fits in this "perfect vs consistent" framework. Rate the solutions according to:
+To help you figure this out, start by plotting out where each solution fits in this “perfect vs consistent” framework. Rate the solutions according to:
 
 - Consistency with the rest of the product (x axis)
 - How appropriate the solution is for your specific situation (y axis)
@@ -41,4 +41,4 @@ When both are appropriate and there’s not a massive difference in value, consi
 
 The key here is to zoom out. When we’re [designing for scale](https://polaris.shopify.com/contributing/designing-with-a-system), we need to think broader and look at our specific problem area as a small part of a larger system. So spend some time figuring out if your solution is unique, or if it has potential to solve other problems. This is why it’s important to have good awareness of the whole experience before you start, and why it’s important to contribute back to the system if you land on a solution that would benefit others.
 
-For initial questions about contribution, reach out in [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you're an open source contributor. To get help with the strategy for a larger contribution, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new) with the system community.
+For initial questions about contribution, reach out in [#polaris](https://shopify.slack.com/archives/C4Y8N30KD) if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. To get help with the strategy for a larger contribution, start a [GitHub discussion](https://github.com/Shopify/polaris/discussions/new) with the system community.

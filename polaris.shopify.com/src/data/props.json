@@ -3677,7 +3677,7 @@
     }
   },
   "TabDescriptor": {
-    "polaris-react/src/components/Tabs/types.ts": {
+    ",polaris-react/src/components/Tabs/types.ts": {
       "filePath": "polaris-react/src/components/Tabs/types.ts",
       "name": "TabDescriptor",
       "description": "",
@@ -7271,7 +7271,7 @@
       "description": "",
       "members": [
         {
-          "filePath": "polaris-react/src/utilities/listbox/context.ts",
+          "filePath": "polaris-react/src/utilities/listbox/contex,t.ts",
           "syntaxKind": "MethodSignature",
           "name": "onOptionSelect",
           "value": "(option: NavigableOption) => void",
@@ -10302,7 +10302,7 @@
         },
         {
           "filePath": "polaris-react/src/components/Card/Card.tsx",
-          "syntaxKind": "PropertySignature",
+      ,    "syntaxKind": "PropertySignature",
           "name": "children",
           "value": "React.ReactNode",
           "description": "Inner content of the card",
@@ -13290,7 +13290,7 @@
         {
           "filePath": "polaris-react/src/components/IndexTable/IndexTable.tsx",
           "syntaxKind": "MethodSignature",
-          "name": "onSort",
+          "name": "onSor,t",
           "value": "(headingIndex: number, direction: IndexTableSortDirection) => void",
           "description": "Callback fired on click or keypress of a sortable column heading.",
           "isOptional": true
@@ -16290,7 +16290,7 @@
         },
         {
           "filePath": "polaris-react/src/components/Scrollable/Scrollable.tsx",
-          "syntaxKind": "PropertySignature",
+          "synt,axKind": "PropertySignature",
           "name": "focusable",
           "value": "boolean",
           "description": "Adds a tabIndex to scrollable when children are not focusable",
@@ -19573,7 +19573,7 @@
           "isOptional": true
         },
         {
-          "filePath": "polaris-react/src/components/UnstyledLink/UnstyledLink.tsx",
+          "file,Path": "polaris-react/src/components/UnstyledLink/UnstyledLink.tsx",
           "syntaxKind": "PropertySignature",
           "name": "onSubmitCapture",
           "value": "FormEventHandler<HTMLAnchorElement>",
@@ -22831,7 +22831,7 @@
         },
         {
           "filePath": "polaris-react/src/components/DataTable/components/Cell/Cell.tsx",
-          "syntaxKind": "PropertySignature",
+          "syntaxKind": "PropertySigna,ture",
           "name": "inFixedFirstColumn",
           "value": "boolean",
           "description": "",

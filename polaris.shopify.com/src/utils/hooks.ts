@@ -1,9 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState, useCallback} from 'react';
+import throttle from 'lodash.throttle';
 import {useRouter} from 'next/router';
 
 import {ParsedUrlQueryInput} from 'querystring';
 
 const COPY_TO_CLIPBOARD_TIMEOUT = 2000;
+
+export const useThrottle = (cb: Function, delay: number) => {
+  const cbRef = useRef(cb);
+
+  useEffect(() => {
+    cbRef.current = cb;
+  });
+
+  return useCallback(
+    () =>
+      throttle((...args) => cbRef.current(...args), delay, {
+        leading: true,
+        trailing: true,
+      }),
+    [delay],
+  );
+};
 
 export const useCopyToClipboard = (stringToCopy: string) => {
   const [didJustCopy, setDidJustCopy] = useState(false);

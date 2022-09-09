@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [[`e2c7d6676`](https://github.com/Shopify/polaris/commit/e2c7d66760b7aef20dda18153e23222d58c61fcf)]:
+  - @shopify/polaris@10.2.0
+
+## 0.0.13
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris@10.1.2
+
+## 0.0.12
+
+### Patch Changes
+
+- Updated dependencies [[`90f325460`](https://github.com/Shopify/polaris/commit/90f32546022103e2bba1a4659306152d7facc149)]:
+  - @shopify/polaris@10.1.1
+
+## 0.0.11
+
+### Patch Changes
+
+- Updated dependencies [[`716956df6`](https://github.com/Shopify/polaris/commit/716956df6939d86204342fb7107c81333f570517), [`ae7345f0c`](https://github.com/Shopify/polaris/commit/ae7345f0cc71cfe0290302667722dd758b0891bc), [`60086a61f`](https://github.com/Shopify/polaris/commit/60086a61ff5906d998ff23fbe1090ecab49cb0e2), [`d1a33d8b0`](https://github.com/Shopify/polaris/commit/d1a33d8b0194858a0405cbb19fa7d35e897ffa7c), [`fa840e4a9`](https://github.com/Shopify/polaris/commit/fa840e4a9dc47a9afdeca0c5f4191294183a8093), [`2b5f7d0fc`](https://github.com/Shopify/polaris/commit/2b5f7d0fc57149f27fe28d31b3618d98b057923c)]:
+  - @shopify/polaris@10.1.0
+
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [[`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7), [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7), [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7), [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7), [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7)]:
+  - @shopify/polaris@10.0.0
+
 ## 0.0.9
 
 ### Patch Changes

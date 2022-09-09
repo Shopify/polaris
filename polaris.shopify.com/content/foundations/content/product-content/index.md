@@ -31,7 +31,7 @@ keywords:
 
 Our content standards will help you understand how to think strategically about the language in your products and apps. They’ll also give you clear, tactical suggestions designed to help you use language to craft better experiences.
 
-[Each component](/components/get-started) also includes content guidelines about how to write for specific interface elements.
+[Each component](/components) also includes content guidelines about how to write for specific interface elements.
 
 ## Respond to merchant needs
 

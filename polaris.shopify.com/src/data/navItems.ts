@@ -221,13 +221,6 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           'Polaris provides many layout patterns that help you create efficient and familiar interfaces.',
       },
       {
-        title: 'Home cards',
-        url: '/foundations/patterns/home-cards',
-        icon: 'TextBlockMajor',
-        description:
-          'Home cards make actionable recommendations based on data from the merchant’s store, or give merchants feedback about their store’s performance.',
-      },
-      {
         title: 'Error messages',
         url: '/foundations/patterns/error-messages',
         icon: 'DiamondAlertMajor',
@@ -254,6 +247,13 @@ export const foundationsNavItems: NavItemWithIcon[] = [
         icon: 'LocationMajor',
         description:
           'Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.',
+      },
+      {
+        title: "New badge",
+        url: "/foundations/patterns/new-badge",
+        icon: "StarFilledMinor",
+        description:
+          "The [New] badge can be used to inform merchants about the release of a feature that creates new value.",
       },
     ],
   },
