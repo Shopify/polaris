@@ -87,8 +87,8 @@ function InterfaceList({
   return (
     <motion.div
       className={styles.InterfaceList}
-      initial={{opacity: 0, scale: 0.7}}
-      animate={{opacity: 1, scale: 1}}
+      initial={{opacity: 0, scale: 0.7, height: 0}}
+      animate={{opacity: 1, scale: 1, height: 'auto'}}
     >
       <div className={styles.InterfaceListHeader}>
         {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}
