@@ -72,7 +72,8 @@ type ExpandedTypeInfo = {memberName: string | null; typeName: string};
 const ExpandedTypesContext = createContext<{
   expandedTypes: ExpandedTypeInfo[];
   expandType: (typeName: string) => void;
-}>({expandType: () => undefined, expandedTypes: []});
+  currentMember: string | null;
+}>({expandType: () => undefined, expandedTypes: [], currentMember: null});
 
 function InterfaceList({
   types,
@@ -104,6 +105,7 @@ function InterfaceList({
                 ...expandedTypes,
               ]);
             },
+            currentMember: null,
           }}
         >
           <div className={styles.RawInterfaceValue}>
@@ -139,7 +141,7 @@ function InterfaceList({
               return (
                 <ExpandedTypesContext.Provider
                   key={name}
-                  value={{expandedTypes, expandType}}
+                  value={{expandedTypes, expandType, currentMember: name}}
                 >
                   <span className={styles.Row}>
                     <dt className={styles.Key}>
@@ -200,9 +202,14 @@ function Highlighter({
   type: string;
   prev?: string;
 }): JSX.Element {
-  const {expandType} = useContext(ExpandedTypesContext);
+  const {expandType, expandedTypes, currentMember} =
+    useContext(ExpandedTypesContext);
   const {types} = useContext(TypeContext);
-  const [hasBenExpanded, setHasBenExpanded] = useState(false);
+  const hasBenExpanded = expandedTypes.some(
+    (expandedType) =>
+      expandedType.typeName === type &&
+      expandedType.memberName === currentMember,
+  );
 
   const isString =
     type === 'string' ||
@@ -220,7 +227,7 @@ function Highlighter({
   } else if (isType) {
     const referencedType = types[type];
     const referencedTypeExists = !!referencedType;
-    const typeCanBeExpanded = referencedTypeExists && !hasBenExpanded;
+    const typeCanBeExpanded = referencedTypeExists;
     let autoInlinedValue =
       referencedType &&
       !referencedType.members &&
@@ -245,10 +252,7 @@ function Highlighter({
         {typeCanBeExpanded ? (
           <button
             className={styles.ExpandableType}
-            onClick={() => {
-              expandType(type);
-              setHasBenExpanded(true);
-            }}
+            onClick={() => expandType(type)}
             disabled={hasBenExpanded}
             aria-expanded={hasBenExpanded}
           >
