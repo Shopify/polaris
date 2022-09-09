@@ -3,12 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  margin-left: calc(-1 * var(--pc-stack-spacing));
-
-  > .Item {
-    margin-left: var(--pc-stack-spacing);
-    max-width: 100%;
-  }
+  gap: var(--pc-stack-spacing);
 }
 
 .noWrap {
@@ -114,4 +109,5 @@
 .Item {
   flex: 0 0 auto;
   min-width: 0;
+  max-width: 100%;
 }

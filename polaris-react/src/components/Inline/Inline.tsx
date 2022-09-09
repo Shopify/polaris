@@ -2,9 +2,8 @@ import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
-import {elementChildren, wrapWithComponent} from '../../utilities/components';
+import {elementChildren} from '../../utilities/components';
 
-import {Item} from './components';
 import styles from './Inline.scss';
 
 type SpacingTokenGroup = typeof spacing;
@@ -46,11 +45,12 @@ export const Inline = function Inline({
   );
 
   const itemMarkup = elementChildren(children).map((child, index) => {
-    const props = {key: index};
-    return wrapWithComponent(child, Item, props);
+    return (
+      <div className={styles.Item} key={index}>
+        {child}
+      </div>
+    );
   });
 
   return <div className={className}>{itemMarkup}</div>;
 };
-
-Inline.Item = Item;
