@@ -3,24 +3,23 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Tile} from '../Tile';
 
-const text = 'This is a tile';
-const children = <p>{text}</p>;
+const Children = () => <p>This is a tile</p>;
 
 describe('<Tile />', () => {
   it('renders children', () => {
     const tile = mountWithApp(
       <Tile spacing="1" columns="1">
-        {children}
+        <Children />
       </Tile>,
     );
 
-    expect(tile).toContainReactComponent('p', {children: text});
+    expect(tile).toContainReactComponent(Children);
   });
 
   it('uses custom properties when passed in', () => {
     const tile = mountWithApp(
       <Tile spacing="1" columns="2">
-        {children}
+        <Children />
       </Tile>,
     );
 
