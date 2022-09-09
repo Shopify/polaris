@@ -3,8 +3,7 @@ import genCacheJson from './gen-cache-json.mjs';
 import genOgImages from './gen-og-images.mjs';
 
 const genAssets = async () => {
-  genCacheJson();
-  await genSiteMap();
+  await Promise.all([genSiteMap(), genCacheJson()]);
   await genOgImages();
 };
 
