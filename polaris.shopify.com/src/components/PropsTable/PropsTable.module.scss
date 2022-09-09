@@ -11,29 +11,37 @@
 }
 
 .InterfaceList {
+  --props-table-border-color: rgba(0, 0, 0, 0.075);
+  @include dark-mode {
+    --props-table-border-color: rgba(255, 255, 255, 0.085);
+  }
   border-radius: var(--border-radius-400);
-  border: 1px solid var(--border-color-light);
   font-size: var(--font-size-100);
   display: block;
   transform-origin: 50% 0;
+  border: 1px solid var(--props-table-border-color);
+  overflow: hidden;
 
   .InterfaceList {
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
-    background: rgba(0, 0, 0, 0.025);
+    background: rgba(0, 0, 0, 0.01);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.033);
     @include dark-mode {
-      background: rgba(255, 255, 255, 0.033);
+      background: rgba(255, 255, 255, 0.005);
     }
   }
 
   .InterfaceListHeader {
-    border-bottom: 1px solid var(--border-color-light);
-    background: transparent;
     width: 100%;
     text-align: left;
     color: var(--code-keyword);
     font-family: var(--font-family-mono);
     padding: 0.5em 1em;
+    background: rgba(0, 0, 0, 0.035);
+    @include dark-mode {
+      background: rgba(255, 255, 255, 0.05);
+    }
   }
 
   .Description {
@@ -48,7 +56,7 @@
   .Row {
     display: block;
     padding: 0.75em 1em;
-    border-bottom: 1px solid var(--border-color-light);
+    border-bottom: 1px solid var(--props-table-border-color);
 
     &:last-child {
       border-bottom: none;
@@ -62,7 +70,10 @@
 
   .ExpandableType {
     background: transparent;
-    border-bottom: 1px dashed var(--border-color);
+
+    &[aria-expanded='false'] {
+      border-bottom: 1px dashed var(--border-color);
+    }
   }
 
   .MemberName {
