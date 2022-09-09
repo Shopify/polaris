@@ -208,7 +208,8 @@ function Highlighter({
     type === 'string' ||
     type.match(/^['][^']+'$/) !== null ||
     type.match(/^["][^"]+"$/) !== null;
-  const isType = type.match(/^[A-Z][A-Za-z]+$/) || type === 'any';
+  const isType =
+    type.match(/^[A-Z][A-Za-z]+$/) || type === 'any' || type === 'void';
 
   if (isString) {
     return <span className={styles.SyntaxString}>{type}</span>;
