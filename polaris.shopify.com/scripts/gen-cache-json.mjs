@@ -88,6 +88,4 @@ const genCacheJson = () => {
   console.log('✅ Generated .cache/nav.json and .cache/site.json');
 };
 
-genCacheJson();
-
 export default genCacheJson;

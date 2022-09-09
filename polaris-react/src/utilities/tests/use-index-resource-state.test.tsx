@@ -14,6 +14,9 @@ interface TypedChildProps {
   selectedResources: ReturnType<
     typeof useIndexResourceState
   >['selectedResources'];
+  removeSelectedResources: ReturnType<
+    typeof useIndexResourceState
+  >['removeSelectedResources'];
 }
 
 describe('useIndexResourceState', () => {
@@ -28,14 +31,19 @@ describe('useIndexResourceState', () => {
     resources?: T[];
     options?: Parameters<typeof useIndexResourceState>[1];
   }) {
-    const {selectedResources, allResourcesSelected, handleSelectionChange} =
-      useIndexResourceState(resources, options);
+    const {
+      selectedResources,
+      allResourcesSelected,
+      handleSelectionChange,
+      removeSelectedResources,
+    } = useIndexResourceState(resources, options);
 
     return (
       <TypedChild
         onClick={handleSelectionChange}
         selectedResources={selectedResources}
         allResourcesSelected={allResourcesSelected}
+        removeSelectedResources={removeSelectedResources}
       />
     );
   }
@@ -47,14 +55,19 @@ describe('useIndexResourceState', () => {
     resources?: T[];
     options?: Parameters<typeof useIndexResourceState>[1];
   }) {
-    const {selectedResources, allResourcesSelected, clearSelection} =
-      useIndexResourceState(resources, options);
+    const {
+      selectedResources,
+      allResourcesSelected,
+      clearSelection,
+      removeSelectedResources,
+    } = useIndexResourceState(resources, options);
 
     return (
       <TypedChild
         onClick={clearSelection}
         selectedResources={selectedResources}
         allResourcesSelected={allResourcesSelected}
+        removeSelectedResources={removeSelectedResources}
       />
     );
   }
@@ -502,6 +515,29 @@ describe('useIndexResourceState', () => {
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
         selectedResources: [],
+      });
+    });
+  });
+
+  describe('removeSelectedResources', () => {
+    it('removes the selection correctly', () => {
+      const idOne = '1';
+      const idTwo = '2';
+      const idThree = '3';
+      const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+      const mockComponent = mountWithApp(
+        <MockClearComponent
+          resources={resources}
+          options={{selectedResources: [idOne, idTwo, idThree]}}
+        />,
+      );
+
+      mockComponent
+        .find(TypedChild)!
+        .trigger('removeSelectedResources', [idTwo]);
+
+      expect(mockComponent).toContainReactComponent(TypedChild, {
+        selectedResources: [idOne, idThree],
       });
     });
   });

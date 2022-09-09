@@ -1,0 +1,54 @@
+{
+  "name": "@shopify/polaris-migrator",
+  "version": "0.0.0",
+  "description": "Codemod transformations to help upgrade your Polaris codebase",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "author": "Shopify <dev@shopify.com>",
+  "homepage": "https://polaris.shopify.com",
+  "repository": "https://github.com/Shopify/polaris",
+  "bugs": {
+    "url": "https://github.com/Shopify/polaris/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "bin": "bin/migrator-cli.js",
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "scripts": {
+    "build": "run-s build:*",
+    "build:js": "rollup -c",
+    "build:types": "tsc -b",
+    "dev": "rollup -c -w",
+    "start": "./bin/migrator-cli.js",
+    "lint": "TIMING=1 eslint --cache .",
+    "test": "jest",
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "globby": "11.0.1",
+    "is-git-clean": "^1.1.0",
+    "jscodeshift": "^0.13.1",
+    "meow": "^9.0.0",
+    "postcss": "^8.4.14",
+    "postcss-scss": "^4.0.4",
+    "postcss-value-parser": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/is-git-clean": "^1.1.0",
+    "@types/jscodeshift": "^0.11.5",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@shopify/polaris": "^10.2.0",
+    "prettier": "^2.7.1"
+  }
+}

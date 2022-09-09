@@ -11,6 +11,7 @@
       "polaris-for-figma",
       "polaris-for-vscode",
       "polaris-icons",
+      "polaris-migrator",
       "polaris-react",
       "stylelint-polaris",
       "polaris.shopify.com"
@@ -37,7 +38,7 @@
     "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
     "preversion-packages": "turbo run preversion",
     "version-packages": "yarn preversion-packages && changeset version",
-    "release": "turbo run build --filter=polaris.shopify.com^... && changeset publish",
+    "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1"
   },
   "devDependencies": {
@@ -82,7 +83,7 @@
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "206 kB"
+      "limit": "208 kB"
     },
     {
       "name": "polaris-react-esm",
