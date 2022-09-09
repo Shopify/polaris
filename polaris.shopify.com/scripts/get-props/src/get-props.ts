@@ -331,7 +331,7 @@ export function getRelevantTypes(
     );
   }
 
-  const pascalCaseRegex = /[A-Z][a-z]+(?:[A-Z][a-z]+)*/gm;
+  const pascalCaseRegex = /[A-Z]+[a-z]+(?:[A-Z][a-z]+)*/gm;
   let output: FilteredTypes = {};
 
   extractTypes(matchingNode);
