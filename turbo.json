@@ -3,7 +3,7 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", ".next/**", "build/**"],
+      "outputs": ["dist/**", ".next/**", "build/**", ".cache/**"],
       "dependsOn": ["^build"]
     },
     "test": {
@@ -11,8 +11,7 @@
       "dependsOn": []
     },
     "lint": {
-      "outputs": [".eslintcache"],
-      "dependsOn": ["^gen-assets"]
+      "outputs": [".eslintcache"]
     },
     "dev": {
       "cache": false
