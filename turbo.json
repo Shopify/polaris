@@ -11,7 +11,8 @@
       "dependsOn": []
     },
     "lint": {
-      "outputs": [".eslintcache"]
+      "outputs": [".eslintcache"],
+      "dependsOn": ["^gen-assets"]
     },
     "dev": {
       "cache": false
