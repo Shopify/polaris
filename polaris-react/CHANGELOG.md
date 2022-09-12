@@ -1,5 +1,12 @@
 # Changelog
 
+## 10.2.0
+
+### Minor Changes
+
+- [#7064](https://github.com/Shopify/polaris/pull/7064) [`e2c7d6676`](https://github.com/Shopify/polaris/commit/e2c7d66760b7aef20dda18153e23222d58c61fcf) Thanks [@KaunainKarmali](https://github.com/KaunainKarmali)! - - Improved the `useIndexResourceState` hook by exposing a new function called `removeSelectedResources`
+  - The `removeSelectedResources` function supports removing one or more items from the `selectedResources` state
+
 ## 10.1.2
 
 ### Patch Changes
