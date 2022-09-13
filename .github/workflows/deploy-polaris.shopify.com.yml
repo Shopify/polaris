@@ -21,5 +21,9 @@ jobs:
               owner: "shopify",
               repo: "polaris-site-container-builder",
               workflow_id: "trigger-deploy.yml",
-              ref: "main"
+              ref: "main",
+              inputs: {
+                sha: context.sha,
+                target: 'production'
+              }
             });

@@ -1,0 +1,53 @@
+name: Trigger deploy of polaris-staging.shopifycloud.com
+
+on:
+  issue_comment:
+    types:
+      - created
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  trigger-deploy:
+    name: Deploy to staging
+    if: |
+      github.event.issue.pull_request && github.event.comment.body == '/stageit'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR SHA
+        id: sha
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+            return pr.data.head.sha
+      - name: Trigger deploy polaris-staging.shopifycloud.com
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: "shopify",
+              repo: "polaris-site-container-builder",
+              workflow_id: "trigger-deploy.yml",
+              ref: "staging-bdvt",
+              inputs: {
+                sha: "${{steps.sha.outputs.result}}",
+                target: 'staging',
+              }
+            });
+      - name: Create comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `\`🚀 ${{steps.sha.outputs.result}}\` is now deploying to staging. [View status](https://shipit.shopify.io/shopify/polaris-site-container-builder/staging-bdvt/tasks).`,
+            });
