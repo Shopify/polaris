@@ -66,13 +66,13 @@ export function WithHexTextField() {
       display: 'grid',
       gap: 'var(--p-space-2)',
       gridTemplateColumns: 'auto 1fr',
-      width: 'fit-content',
+      maxWidth: 'fit-content',
     },
     Picker: {
       gridColumn: '1 / 3',
     },
     Tile: {
-      minHeight: '100%',
+      minHeight: 'calc(100% - 0.125rem)',
       aspectRatio: '1 / 1',
       borderRadius: 'var(--p-border-radius-1)',
       border: 'var(--p-border-divider)',
