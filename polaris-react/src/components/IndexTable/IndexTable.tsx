@@ -39,13 +39,24 @@ import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
-export interface IndexTableHeading {
-  title: string;
-  id?: string;
+interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
 }
+
+interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
+  title: string;
+}
+
+interface IndexTableHeadingTitleNode extends IndexTableHeadingBase {
+  title: React.ReactNode;
+  id: string;
+}
+
+export type IndexTableHeading =
+  | IndexTableHeadingTitleString
+  | IndexTableHeadingTitleNode;
 
 export type IndexTableSortDirection = 'ascending' | 'descending';
 
@@ -393,7 +404,7 @@ function IndexTableBase({
   const stickyColumnHeader = (
     <div
       className={styles.TableHeading}
-      key={headings[0].title}
+      key={getHeadingKey(headings[0])}
       style={stickyColumnHeaderStyle}
       data-index-table-sticky-heading
     >
@@ -699,7 +710,7 @@ function IndexTableBase({
     const headingContent = (
       <th
         className={headingContentClassName}
-        key={heading.title}
+        key={getHeadingKey(heading)}
         data-index-table-heading
         style={stickyPositioningStyle}
       >
@@ -836,7 +847,7 @@ function IndexTableBase({
     return (
       <div
         className={stickyHeadingClassName}
-        key={heading.title}
+        key={getHeadingKey(heading)}
         style={headingStyle}
         data-index-table-sticky-heading
       >
@@ -880,6 +891,18 @@ const isBreakpointsXS = () => {
     : window.innerWidth <
         parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
+
+function getHeadingKey(heading: IndexTableHeading): string {
+  if ('id' in heading && heading.id) {
+    return heading.id;
+  }
+
+  if (typeof heading.title === 'string') {
+    return heading.title;
+  }
+
+  return '';
+}
 
 export interface IndexTableProps
   extends IndexTableBaseProps,
