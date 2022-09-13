@@ -35,8 +35,10 @@ const plugin = (): Plugin => ({
 
     if (!isStaticBreakpointMixin(mixinName)) return;
 
-    atRule.name = 'media';
-    atRule.params = staticBreakpointMixins[mixinName];
+    atRule.assign({
+      name: 'media',
+      params: staticBreakpointMixins[mixinName],
+    });
   },
 });
 
