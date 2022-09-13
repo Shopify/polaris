@@ -20,12 +20,10 @@ jobs:
         with:
           result-encoding: string
           script: |
-            console.log(JSON.stringify(context.issue, null, 2), JSON.stringify(${{github.event.issue}}, null, 2))
-            const { owner, repo, number } = context.issue;
-            const pr = await github.pulls.get({
-              owner,
-              repo,
-              pull_number: number,
+            const pr = await github.rest.pulls.get({
+              owner: context.payload.repository.owner.login,
+              repo: context.payload.repository.name,
+              pull_number: context.payload.issue.number,
             });
             return pr.data.head.sha
       - name: Trigger deploy polaris-staging.shopifycloud.com
@@ -33,20 +31,13 @@ jobs:
         with:
           github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           script: |
-            console.log("### SHA IS: ${{ steps.sha.outputs.result }}")
-
-      # - name: Trigger deploy polaris-staging.shopifycloud.com
-      #   uses: actions/github-script@v6
-      #   with:
-      #     github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
-      #     script: |
-      #       await github.rest.actions.createWorkflowDispatch({
-      #         owner: "shopify",
-      #         repo: "polaris-site-container-builder",
-      #         workflow_id: "trigger-deploy.yml",
-      #         ref: "staging",
-      #         inputs: {
-      #           sha: "BLAH",
-      #           target: 'staging'
-      #         }
-      #       });
+            await github.rest.actions.createWorkflowDispatch({
+              owner: "shopify",
+              repo: "polaris-site-container-builder",
+              workflow_id: "trigger-deploy.yml",
+              ref: "staging-bdvt",
+              inputs: {
+                sha: "${{steps.sha.outputs.result}}",
+                target: 'staging'
+              }
+            });
