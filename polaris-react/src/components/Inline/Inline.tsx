@@ -45,11 +45,7 @@ export const Inline = function Inline({
   );
 
   const itemMarkup = elementChildren(children).map((child, index) => {
-    return (
-      <div className={styles.Item} key={index}>
-        {child}
-      </div>
-    );
+    return <div key={index}>{child}</div>;
   });
 
   return <div className={className}>{itemMarkup}</div>;
