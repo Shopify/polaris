@@ -21,9 +21,9 @@ jobs:
           result-encoding: string
           script: |
             const pr = await github.rest.pulls.get({
-              owner: context.payload.repository.owner.login,
-              repo: context.payload.repository.name,
-              pull_number: context.payload.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
             });
             return pr.data.head.sha
       - name: Trigger deploy polaris-staging.shopifycloud.com
