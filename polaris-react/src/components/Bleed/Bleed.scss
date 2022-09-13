@@ -1,0 +1,8 @@
+@import '../../styles/common';
+
+.Bleed {
+  margin-bottom: calc(-1 * var(--pc-bleed-margin-bottom));
+  margin-left: calc(-1 * var(--pc-bleed-margin-left));
+  margin-right: calc(-1 * var(--pc-bleed-margin-right));
+  margin-top: calc(-1 * var(--pc-bleed-margin-top));
+}

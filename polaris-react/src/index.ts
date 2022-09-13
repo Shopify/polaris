@@ -72,6 +72,9 @@ export type {
   BannerHandles,
 } from './components/Banner';
 
+export {Bleed} from './components/Bleed';
+export type {BleedProps} from './components/Bleed';
+
 export {Box} from './components/Box';
 export type {BoxProps} from './components/Box';
 
