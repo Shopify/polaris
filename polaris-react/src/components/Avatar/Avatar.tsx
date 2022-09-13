@@ -57,6 +57,9 @@ export function Avatar({
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
 
+  // WARNING: This approach of utilizing the first letter of the name to generate the icon styling within the Avatar component also exists in one other repository:
+  // https://github.com/Shopify/mobile/blob/main/src/foundations/polaris/components/Avatar/utilities/getStyleClassFromName.ts
+  // Please ensure they stay in sync by making changes in both places.
   function styleClass(name?: string) {
     return name
       ? STYLE_CLASSES[name.charCodeAt(0) % STYLE_CLASSES.length]

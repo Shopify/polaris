@@ -1,2 +1,2 @@
 export {SkeletonTabs} from './SkeletonTabs';
-export type {Props as SkeletonTabsProps} from './SkeletonTabs';
+export type {SkeletonTabsProps} from './SkeletonTabs';

@@ -398,6 +398,7 @@ export {
   hslToRgb,
   rgbString,
   rgbaString,
+  hexToRgb,
 } from './utilities/color-transformers';
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';

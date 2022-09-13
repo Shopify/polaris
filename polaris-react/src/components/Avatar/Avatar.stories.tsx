@@ -50,7 +50,7 @@ export function ExternalImage() {
     <Avatar
       name="External image"
       shape="square"
-      source="https://picsum.photos/200"
+      source="https://i.picsum.photos/id/696/200/200.jpg?hmac=JE4lFckorKxM41-eM1nTxXjpOeCf3aZkAxrLl3ZAYI0"
     />
   );
 }
