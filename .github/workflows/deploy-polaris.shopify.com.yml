@@ -23,8 +23,7 @@ jobs:
               workflow_id: "trigger-deploy.yml",
               ref: "main",
               inputs: {
-                // TODO
-                sha: 'foobar',
+                sha: context.sha,
                 target: 'production'
               }
             });
