@@ -410,6 +410,7 @@ export {
   hslToRgb,
   rgbString,
   rgbaString,
+  hexToRgb,
 } from './utilities/color-transformers';
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
@@ -425,3 +426,4 @@ export {
   SELECT_ALL_ITEMS as INDEX_TABLE_SELECT_ALL_ITEMS,
   SelectionType as IndexTableSelectionType,
 } from './utilities/index-provider';
+export {useBreakpoints} from './utilities/breakpoints';
