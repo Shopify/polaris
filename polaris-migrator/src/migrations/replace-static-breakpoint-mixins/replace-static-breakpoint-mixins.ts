@@ -31,7 +31,7 @@ const plugin = (): Plugin => ({
     if (atRule.name !== 'include') return;
 
     // Extract mixin name e.g. name from `@include name;` or `@include name();`
-    const mixinName = atRule.params.match(/^([a-zA-Z-]+)/)?.[1];
+    const mixinName = atRule.params.match(/^([a-zA-Z0-9_-]+)/)?.[1];
 
     if (!isStaticBreakpointMixin(mixinName)) return;
 
