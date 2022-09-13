@@ -14,19 +14,39 @@ jobs:
       github.event.issue.pull_request && github.event.comment.body == '/stageit'
     runs-on: ubuntu-latest
     steps:
+      - name: Get PR SHA
+        id: sha
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            console.log(JSON.stringify(context.issue, null, 2), JSON.stringify(${{github.event.issue}}, null, 2))
+            const { owner, repo, number } = context.issue;
+            const pr = await github.pulls.get({
+              owner,
+              repo,
+              pull_number: number,
+            });
+            return pr.data.head.sha
       - name: Trigger deploy polaris-staging.shopifycloud.com
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: "shopify",
-              repo: "polaris-site-container-builder",
-              workflow_id: "trigger-deploy.yml",
-              ref: "staging",
-              inputs: {
-                // TODO
-                sha: 'foobar',
-                target: 'staging'
-              }
-            });
+            console.log("### SHA IS: ${{ steps.sha.outputs.result }}")
+
+      # - name: Trigger deploy polaris-staging.shopifycloud.com
+      #   uses: actions/github-script@v6
+      #   with:
+      #     github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+      #     script: |
+      #       await github.rest.actions.createWorkflowDispatch({
+      #         owner: "shopify",
+      #         repo: "polaris-site-container-builder",
+      #         workflow_id: "trigger-deploy.yml",
+      #         ref: "staging",
+      #         inputs: {
+      #           sha: "BLAH",
+      #           target: 'staging'
+      #         }
+      #       });
