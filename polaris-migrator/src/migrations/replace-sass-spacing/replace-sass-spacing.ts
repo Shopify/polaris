@@ -2,6 +2,8 @@ import {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser, {Node, WordNode, FunctionNode} from 'postcss-value-parser';
 
+import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+
 const spacingMap = {
   none: '--p-space-0',
   'extra-tight': '--p-space-1',
@@ -24,7 +26,8 @@ function isOperator(node: Node): boolean {
     node.value === '+' ||
     node.value === '-' ||
     node.value === '*' ||
-    node.value === '/'
+    node.value === '/' ||
+    node.value === '%'
   );
 }
 
@@ -33,9 +36,13 @@ const plugin = (): Plugin => ({
   Declaration(decl) {
     const parsed = valueParser(decl.value);
 
-    // Skip if the value contains calculations
+    // Insert comment if the value contains calculations
     const containsCalculation = parsed.nodes.some(isOperator);
-    if (containsCalculation) return;
+    if (containsCalculation) {
+      const comment = postcss.comment({text: POLARIS_MIGRATOR_COMMENT});
+      decl.parent!.insertBefore(decl, comment);
+      return;
+    }
 
     parsed.walk((node) => {
       if (!isSpacingFn(node)) return;
