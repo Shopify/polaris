@@ -110,7 +110,6 @@ const ComponentExamples = ({examples}: Props) => {
                   <iframe
                     src={exampleUrl}
                     height={iframeHeight}
-                    width="100%"
                     onLoad={handleExampleLoad}
                     id={exampleIframeId}
                   />
