@@ -1,0 +1,11 @@
+name: JSON
+set: Minor
+description: Used to represent JSON Metafield type
+keywords:
+  - Metafields
+  - JSON
+authors: Leina Leung
+version: 1
+date_added: 2022-09-13
+date_modified: 2022-09-13
+exclusive_use:

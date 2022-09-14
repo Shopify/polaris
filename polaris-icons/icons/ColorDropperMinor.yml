@@ -1,0 +1,13 @@
+name: Color dropper
+set: Minor
+description: Used to represent color Metafield type
+keywords:
+  - Color
+  - Metafields
+  - Color picker
+  - Eye dropper
+authors: Leina Leung
+version: 1
+date_added: 2022-09-13
+date_modified: 2022-09-13
+exclusive_use:
