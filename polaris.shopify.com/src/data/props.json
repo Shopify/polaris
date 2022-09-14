@@ -1,38 +1,5 @@
 [
   {
-    "interfaceName": "ActionListProps",
-    "props": [
-      {
-        "name": "items",
-        "type": "readonly ActionListItemDescriptor[]",
-        "comment": "Collection of actions for list",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "sections",
-        "type": "readonly ActionListSection[]",
-        "comment": "Collection of sectioned action items",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "actionRole",
-        "type": "string",
-        "comment": "Defines a specific role attribute for each action in the list",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "onActionAnyItem",
-        "type": "() => void",
-        "comment": "Callback when any item is clicked or keypressed",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
     "interfaceName": "AccountConnectionProps",
     "props": [
       {
@@ -87,6 +54,79 @@
     ]
   },
   {
+    "interfaceName": "ActionListProps",
+    "props": [
+      {
+        "name": "items",
+        "type": "readonly ActionListItemDescriptor[]",
+        "comment": "Collection of actions for list",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "sections",
+        "type": "readonly ActionListSection[]",
+        "comment": "Collection of sectioned action items",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "actionRole",
+        "type": "string",
+        "comment": "Defines a specific role attribute for each action in the list",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onActionAnyItem",
+        "type": "() => void",
+        "comment": "Callback when any item is clicked or keypressed",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "ActionMenuProps",
+    "props": [
+      {
+        "name": "actions",
+        "type": "MenuActionDescriptor[]",
+        "comment": "Collection of page-level secondary actions",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "groups",
+        "type": "MenuGroupDescriptor[]",
+        "comment": "Collection of page-level action groups",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "rollup",
+        "type": "boolean",
+        "comment": "Roll up all actions into a Popover > ActionList",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "rollupActionsLabel",
+        "type": "string",
+        "comment": "Label for rolled up actions activator",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onActionRollup",
+        "type": "(hasRolledUp: boolean) => void",
+        "comment": "Callback that returns true when secondary actions are rolled up into action groups, and false when not",
+        "optional": false,
+        "deprecated": false
+      }
+    ]
+  },
+  {
     "interfaceName": "Props",
     "props": [
       {
@@ -101,6 +141,163 @@
         "type": "ReactNode",
         "comment": "",
         "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "AvatarProps",
+    "props": [
+      {
+        "name": "size",
+        "type": "Size",
+        "comment": "Size of avatar",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "shape",
+        "type": "Shape",
+        "comment": "Shape of avatar",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "comment": "The name of the person",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "initials",
+        "type": "string",
+        "comment": "Initials of person to display",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "customer",
+        "type": "boolean",
+        "comment": "Whether the avatar is for a customer",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "source",
+        "type": "string",
+        "comment": "URL of the avatar image which falls back to initials if the image fails to load",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onError",
+        "type": "() => void",
+        "comment": "Callback fired when the image fails to load",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "accessibilityLabel",
+        "type": "string",
+        "comment": "Accessible label for the avatar image",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "AutocompleteProps",
+    "props": [
+      {
+        "name": "id",
+        "type": "string",
+        "comment": "A unique identifier for the Autocomplete",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "options",
+        "type": "SectionDescriptor[] | OptionDescriptor[]",
+        "comment": "Collection of options to be listed",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "selected",
+        "type": "string[]",
+        "comment": "The selected options",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "textField",
+        "type": "React.ReactElement",
+        "comment": "The text field component attached to the list of options",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "preferredPosition",
+        "type": "PopoverOverlayProps",
+        "comment": "The preferred direction to open the popover",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "listTitle",
+        "type": "string",
+        "comment": "Title of the list of options",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "allowMultiple",
+        "type": "boolean",
+        "comment": "Allow more than one option to be selected",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "actionBefore",
+        "type": "ActionListItemDescriptor & { wrapOverflow?: boolean; }",
+        "comment": "An action to render above the list of options",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "comment": "Display loading state",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "willLoadMoreResults",
+        "type": "boolean",
+        "comment": "Indicates if more results will load dynamically",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "emptyState",
+        "type": "React.ReactNode",
+        "comment": "Is rendered when there are no options",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onSelect",
+        "type": "(selected: string[]) => void",
+        "comment": "Callback when the selection of options is changed",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "onLoadMoreResults",
+        "type": "() => void",
+        "comment": "Callback when the end of the list is reached",
+        "optional": false,
         "deprecated": false
       }
     ]
@@ -215,7 +412,7 @@
       },
       {
         "name": "capture",
-        "type": "string | boolean",
+        "type": "boolean | \"user\" | \"environment\"",
         "comment": "",
         "optional": true,
         "deprecated": false
@@ -1758,14 +1955,14 @@
         "type": "KeyboardEventHandler<HTMLAnchorElement>",
         "comment": "",
         "optional": true,
-        "deprecated": false
+        "deprecated": true
       },
       {
         "name": "onKeyPressCapture",
         "type": "KeyboardEventHandler<HTMLAnchorElement>",
         "comment": "",
         "optional": true,
-        "deprecated": false
+        "deprecated": true
       },
       {
         "name": "onKeyUp",
@@ -2685,203 +2882,6 @@
     ]
   },
   {
-    "interfaceName": "AutocompleteProps",
-    "props": [
-      {
-        "name": "id",
-        "type": "string",
-        "comment": "A unique identifier for the Autocomplete",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "options",
-        "type": "SectionDescriptor[] | OptionDescriptor[]",
-        "comment": "Collection of options to be listed",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "selected",
-        "type": "string[]",
-        "comment": "The selected options",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "textField",
-        "type": "React.ReactElement",
-        "comment": "The text field component attached to the list of options",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "preferredPosition",
-        "type": "PopoverOverlayProps",
-        "comment": "The preferred direction to open the popover",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "listTitle",
-        "type": "string",
-        "comment": "Title of the list of options",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "allowMultiple",
-        "type": "boolean",
-        "comment": "Allow more than one option to be selected",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "actionBefore",
-        "type": "ActionListItemDescriptor & { wrapOverflow?: boolean; }",
-        "comment": "An action to render above the list of options",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "loading",
-        "type": "boolean",
-        "comment": "Display loading state",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "willLoadMoreResults",
-        "type": "boolean",
-        "comment": "Indicates if more results will load dynamically",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "emptyState",
-        "type": "React.ReactNode",
-        "comment": "Is rendered when there are no options",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "onSelect",
-        "type": "(selected: string[]) => void",
-        "comment": "Callback when the selection of options is changed",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "onLoadMoreResults",
-        "type": "() => void",
-        "comment": "Callback when the end of the list is reached",
-        "optional": false,
-        "deprecated": false
-      }
-    ]
-  },
-  {
-    "interfaceName": "ActionMenuProps",
-    "props": [
-      {
-        "name": "actions",
-        "type": "MenuActionDescriptor[]",
-        "comment": "Collection of page-level secondary actions",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "groups",
-        "type": "MenuGroupDescriptor[]",
-        "comment": "Collection of page-level action groups",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "rollup",
-        "type": "boolean",
-        "comment": "Roll up all actions into a Popover > ActionList",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "rollupActionsLabel",
-        "type": "string",
-        "comment": "Label for rolled up actions activator",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "onActionRollup",
-        "type": "(hasRolledUp: boolean) => void",
-        "comment": "Callback that returns true when secondary actions are rolled up into action groups, and false when not",
-        "optional": false,
-        "deprecated": false
-      }
-    ]
-  },
-  {
-    "interfaceName": "AvatarProps",
-    "props": [
-      {
-        "name": "size",
-        "type": "Size",
-        "comment": "Size of avatar",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "shape",
-        "type": "Shape",
-        "comment": "Shape of avatar",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "comment": "The name of the person",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "initials",
-        "type": "string",
-        "comment": "Initials of person to display",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "customer",
-        "type": "boolean",
-        "comment": "Whether the avatar is for a customer",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "source",
-        "type": "string",
-        "comment": "URL of the avatar image which falls back to initials if the image fails to load",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "onError",
-        "type": "() => void",
-        "comment": "Callback fired when the image fails to load",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "accessibilityLabel",
-        "type": "string",
-        "comment": "Accessible label for the avatar image",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
     "interfaceName": "ScrollLockProps",
     "props": []
   },
@@ -2944,7 +2944,7 @@
       },
       {
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "comment": "Icon to display to the left of the badge’s content.",
         "optional": true,
         "deprecated": false
@@ -2977,7 +2977,7 @@
       },
       {
         "name": "icon",
-        "type": "IconSource",
+        "type": "any",
         "comment": "Icon to display in the banner. Use only major, duotone icons",
         "optional": true,
         "deprecated": false
@@ -3356,21 +3356,21 @@
       },
       {
         "name": "onKeyPress",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "comment": "Callback when a keypress event is registered on the button",
         "optional": false,
         "deprecated": false
       },
       {
         "name": "onKeyUp",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "comment": "Callback when a keyup event is registered on the button",
         "optional": false,
         "deprecated": false
       },
       {
         "name": "onKeyDown",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "comment": "Callback when a keydown event is registered on the button",
         "optional": false,
         "deprecated": false
@@ -3741,7 +3741,7 @@
       },
       {
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "comment": "Display an error message",
         "optional": true,
         "deprecated": false
@@ -3795,7 +3795,7 @@
       },
       {
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "comment": "Display an error message",
         "optional": true,
         "deprecated": false
@@ -3891,7 +3891,7 @@
       },
       {
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "comment": "Display an error message",
         "optional": true,
         "deprecated": false
@@ -4378,7 +4378,14 @@
       {
         "name": "hasFixedFirstColumn",
         "type": "boolean",
-        "comment": "Add a fixed first column on horizontal scroll.",
+        "comment": "",
+        "optional": true,
+        "deprecated": true
+      },
+      {
+        "name": "fixedFirstColumns",
+        "type": "number",
+        "comment": "Add fixed columns on horizontal scroll.",
         "optional": true,
         "deprecated": false
       },
@@ -5385,7 +5392,7 @@
     "props": [
       {
         "name": "source",
-        "type": "IconSource",
+        "type": "any",
         "comment": "The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox)",
         "optional": false,
         "deprecated": false
@@ -5593,6 +5600,41 @@
         "comment": "",
         "optional": true,
         "deprecated": false
+      },
+      {
+        "name": "sortable",
+        "type": "boolean[]",
+        "comment": "List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "defaultSortDirection",
+        "type": "IndexTableSortDirection",
+        "comment": "The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "sortDirection",
+        "type": "IndexTableSortDirection",
+        "comment": "The current sorting direction.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "sortColumnIndex",
+        "type": "number",
+        "comment": "The index of the heading that the table rows are sorted by.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onSort",
+        "type": "(headingIndex: number, direction: IndexTableSortDirection) => void",
+        "comment": "Callback fired on click or keypress of a sortable column heading.",
+        "optional": false,
+        "deprecated": false
       }
     ]
   },
@@ -5663,6 +5705,41 @@
         "deprecated": false
       },
       {
+        "name": "sortable",
+        "type": "boolean[]",
+        "comment": "List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "defaultSortDirection",
+        "type": "IndexTableSortDirection",
+        "comment": "The direction to sort the table rows on first click or keypress of a sortable column heading. Defaults to ascending.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "sortDirection",
+        "type": "IndexTableSortDirection",
+        "comment": "The current sorting direction.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "sortColumnIndex",
+        "type": "number",
+        "comment": "The index of the heading that the table rows are sorted by.",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "onSort",
+        "type": "(headingIndex: number, direction: IndexTableSortDirection) => void",
+        "comment": "Callback fired on click or keypress of a sortable column heading.",
+        "optional": false,
+        "deprecated": false
+      },
+      {
         "name": "itemCount",
         "type": "number",
         "comment": "",
@@ -5726,11 +5803,23 @@
     ]
   },
   {
+    "interfaceName": "InlineCodeProps",
+    "props": [
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "comment": "The content to render inside the code block",
+        "optional": false,
+        "deprecated": false
+      }
+    ]
+  },
+  {
     "interfaceName": "InlineErrorProps",
     "props": [
       {
         "name": "message",
-        "type": "Error",
+        "type": "any",
         "comment": "Content briefly explaining how to resolve the invalid form field input.",
         "optional": false,
         "deprecated": false
@@ -5846,7 +5935,7 @@
       },
       {
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "comment": "Error to display beneath the label",
         "optional": true,
         "deprecated": false
@@ -6741,6 +6830,13 @@
         "comment": "The preferred auto focus target defaulting to the popover container",
         "optional": true,
         "deprecated": false
+      },
+      {
+        "name": "preventCloseOnChildOverlayClick",
+        "type": "boolean",
+        "comment": "Prevents closing the popover when other overlays are clicked",
+        "optional": true,
+        "deprecated": false
       }
     ]
   },
@@ -7075,7 +7171,7 @@
       },
       {
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "comment": "Display an error message",
         "optional": true,
         "deprecated": false
@@ -7199,7 +7295,7 @@
       },
       {
         "name": "error",
-        "type": "Error",
+        "type": "any",
         "comment": "Display an error message",
         "optional": true,
         "deprecated": false
@@ -7653,7 +7749,7 @@
       },
       {
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "comment": "Display an error state",
         "optional": true,
         "deprecated": false
@@ -8022,67 +8118,6 @@
     ]
   },
   {
-    "interfaceName": "TextProps",
-    "props": [
-      {
-        "name": "alignment",
-        "type": "Alignment",
-        "comment": "Adjust horizontal alignment of text",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "as",
-        "type": "Element",
-        "comment": "The element type",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "children",
-        "type": "React.ReactNode",
-        "comment": "Text to display",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "color",
-        "type": "Color",
-        "comment": "Adjust color of text",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "fontWeight",
-        "type": "FontWeight",
-        "comment": "Adjust weight of text",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "truncate",
-        "type": "boolean",
-        "comment": "Truncate text overflow with ellipsis",
-        "optional": true,
-        "deprecated": false
-      },
-      {
-        "name": "variant",
-        "type": "Variant",
-        "comment": "Typographic style of text",
-        "optional": false,
-        "deprecated": false
-      },
-      {
-        "name": "visuallyHidden",
-        "type": "boolean",
-        "comment": "Visually hide the text",
-        "optional": true,
-        "deprecated": false
-      }
-    ]
-  },
-  {
     "interfaceName": "NonMutuallyExclusiveProps",
     "props": [
       {
@@ -8124,6 +8159,67 @@
         "name": "url",
         "type": "string",
         "comment": "Url to navigate to when tag is clicked or keypressed.",
+        "optional": true,
+        "deprecated": false
+      }
+    ]
+  },
+  {
+    "interfaceName": "TextProps",
+    "props": [
+      {
+        "name": "alignment",
+        "type": "Alignment",
+        "comment": "Adjust horizontal alignment of text",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "as",
+        "type": "Element",
+        "comment": "The element type",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "children",
+        "type": "ReactNode",
+        "comment": "Text to display",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "color",
+        "type": "Color",
+        "comment": "Adjust color of text",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "fontWeight",
+        "type": "FontWeight",
+        "comment": "Adjust weight of text",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "truncate",
+        "type": "boolean",
+        "comment": "Truncate text overflow with ellipsis",
+        "optional": true,
+        "deprecated": false
+      },
+      {
+        "name": "variant",
+        "type": "Variant",
+        "comment": "Typographic style of text",
+        "optional": false,
+        "deprecated": false
+      },
+      {
+        "name": "visuallyHidden",
+        "type": "boolean",
+        "comment": "Visually hide the text",
         "optional": true,
         "deprecated": false
       }
@@ -8272,7 +8368,7 @@
       },
       {
         "name": "error",
-        "type": "boolean | Error",
+        "type": "any",
         "comment": "Error to display beneath the label",
         "optional": true,
         "deprecated": false
@@ -8879,21 +8975,21 @@
       },
       {
         "name": "onKeyPress",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "comment": "Callback when a keypress event is registered on the button",
         "optional": false,
         "deprecated": false
       },
       {
         "name": "onKeyUp",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "comment": "Callback when a keyup event is registered on the button",
         "optional": false,
         "deprecated": false
       },
       {
         "name": "onKeyDown",
-        "type": "(event: KeyboardEvent<HTMLButtonElement>) => void",
+        "type": "(event: React.KeyboardEvent<HTMLButtonElement>) => void",
         "comment": "Callback when a keydown event is registered on the button",
         "optional": false,
         "deprecated": false
@@ -9031,7 +9127,7 @@
       },
       {
         "name": "capture",
-        "type": "string | boolean",
+        "type": "boolean | \"user\" | \"environment\"",
         "comment": "",
         "optional": true,
         "deprecated": false
@@ -10574,14 +10670,14 @@
         "type": "KeyboardEventHandler<HTMLAnchorElement>",
         "comment": "",
         "optional": true,
-        "deprecated": false
+        "deprecated": true
       },
       {
         "name": "onKeyPressCapture",
         "type": "KeyboardEventHandler<HTMLAnchorElement>",
         "comment": "",
         "optional": true,
-        "deprecated": false
+        "deprecated": true
       },
       {
         "name": "onKeyUp",
