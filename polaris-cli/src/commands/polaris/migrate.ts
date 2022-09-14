@@ -1,39 +1,33 @@
 import {Command, Flags} from '@oclif/core';
-import {run as runMigrator} from '@shopify/polaris-migrator';
+import {FlagInput} from '@oclif/core/lib/interfaces';
+import {
+  run as runMigrator,
+  cliInfo,
+  Flags as MigratorFlags,
+} from '@shopify/polaris-migrator';
+
+type FlagType = 'string' | 'boolean';
+
+const isFlagType = (type: FlagType | string): type is FlagType => {
+  return ['string', 'boolean'].includes(type);
+};
 
 export default class Migrate extends Command {
-  static description = 'Runs a Polaris migration on the current project';
-
-  static args = [
-    {
-      name: 'migration',
-      description:
-        'One of the choices from https://polaris.shopify.com/docs/advanced-features/migrations',
-    },
-    {
-      name: 'path',
-      description:
-        'Files or directory to transform. Can be a glob like src/**.scss',
-    },
-  ];
-
-  static flags = {
-    dry: Flags.boolean({
-      char: 'd',
-      description: 'Dry run (no changes are made to files)',
-      env: 'SHOPIFY_FLAG_DRY',
+  static description = cliInfo.description;
+  static args = cliInfo.args;
+  static flags = Object.fromEntries(
+    Object.entries(cliInfo.flags).map(([name, flag]) => {
+      const flagType = isFlagType(flag.type) ? flag.type : 'string';
+      return [
+        name,
+        Flags[flagType]({
+          char: flag.alias,
+          description: flag.description,
+          env: `SHOPIFY_FLAG_${name.toUpperCase()}`,
+        }),
+      ];
     }),
-    print: Flags.boolean({
-      char: 'p',
-      description: 'Print transformed files to your terminal',
-      env: 'SHOPIFY_FLAG_PRINT',
-    }),
-    force: Flags.boolean({
-      char: 'f',
-      description: 'Bypass Git safety checks and forcibly run migrations',
-      env: 'SHOPIFY_FLAG_FORCE',
-    }),
-  };
+  ) as FlagInput<MigratorFlags>;
 
   async run() {
     const {args, flags} = await this.parse(Migrate);

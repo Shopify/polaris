@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
-const {run} = require('./../dist/cjs');
+const {cli, run} = require('./../dist/cjs');
 
-run();
+(async function () {
+  const [migration, files] = cli.input;
+  const flags = cli.flags;
+  await run(migration, files, flags);
+})();
