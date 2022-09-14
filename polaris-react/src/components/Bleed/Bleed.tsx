@@ -1,6 +1,8 @@
 import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
+import {sanitizeCustomProperties} from '../../utilities/css';
+
 import styles from './Bleed.scss';
 
 type SpacingTokenName = keyof typeof spacing;
@@ -86,7 +88,7 @@ export const Bleed = ({
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Bleed} style={style}>
+    <div className={styles.Bleed} style={sanitizeCustomProperties(style)}>
       {children}
     </div>
   );
