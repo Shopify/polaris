@@ -51,6 +51,7 @@ export function ManyColumns() {
       </Text>
     </div>
   ));
+
   return (
     <Tile spacing="3" columns="5">
       {children}
