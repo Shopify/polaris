@@ -18,6 +18,10 @@ import {
 } from '../../../PositionedOverlay';
 import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
+import {
+  PortalsContainerElement,
+  PortalsManagerContext,
+} from '../../../../utilities/portals';
 
 export enum PopoverCloseSource {
   Click,
@@ -52,6 +56,7 @@ export interface PopoverOverlayProps {
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
   autofocusTarget?: PopoverAutofocusTarget;
+  preventCloseOnChildOverlayClick?: boolean;
 }
 
 interface State {
@@ -59,6 +64,8 @@ interface State {
 }
 
 export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
+  static contextType = PortalsManagerContext;
+
   state: State = {
     transitionStatus: this.props.active
       ? TransitionStatus.Entering
@@ -270,19 +277,21 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const target = event.target as HTMLElement;
     const {
       contentNode,
-      props: {activator, onClose},
+      props: {activator, onClose, preventCloseOnChildOverlayClick},
     } = this;
-    const isDescendant =
-      contentNode.current != null &&
-      nodeContainsDescendant(contentNode.current, target);
+    const composedPath = event.composedPath();
+    const wasDescendant = preventCloseOnChildOverlayClick
+      ? wasPolarisPortalDescendant(composedPath, this.context.container)
+      : wasContentNodeDescendant(composedPath, contentNode);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
     if (
-      isDescendant ||
+      wasDescendant ||
       isActivatorDescendant ||
       this.state.transitionStatus !== TransitionStatus.Entered
     ) {
       return;
     }
+
     onClose(PopoverCloseSource.Click);
   };
 
@@ -332,4 +341,24 @@ export function nodeContainsDescendant(
   }
 
   return false;
+}
+
+function wasContentNodeDescendant(
+  composedPath: readonly EventTarget[],
+  contentNode: React.RefObject<HTMLDivElement>,
+) {
+  return (
+    contentNode.current != null && composedPath.includes(contentNode.current)
+  );
+}
+
+function wasPolarisPortalDescendant(
+  composedPath: readonly EventTarget[],
+  portalsContainerElement: PortalsContainerElement,
+): boolean {
+  return composedPath.some(
+    (eventTarget) =>
+      eventTarget instanceof Node &&
+      portalsContainerElement?.contains(eventTarget),
+  );
 }
