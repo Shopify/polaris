@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const {run} = require('./../dist/cjs');
+const {main} = require('./../dist/cjs');
 
-run();
+main();
