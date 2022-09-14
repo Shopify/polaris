@@ -33,6 +33,10 @@ export const colorsNext = {
     value: palettes.gray[400],
     description: '',
   },
+  'bg-subuded-active': {
+    value: palettes.gray[400],
+    description: '',
+  },
   'bg-disabled': {
     value: palettes.gray[300],
     description: '',
