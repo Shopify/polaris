@@ -1,4 +1,5 @@
 import React, {ReactNode} from 'react';
+import type {font} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
@@ -19,13 +20,34 @@ type Variant =
   | 'bodyMd'
   | 'bodyLg';
 
-type Alignment = 'start' | 'center' | 'end' | 'justify';
+const Alignment = {
+  start: 'start',
+  center: 'center',
+  end: 'end',
+  justify: 'justify',
+};
 
-type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
+type Alignment = keyof typeof Alignment;
 
-type Color = 'success' | 'critical' | 'warning' | 'subdued';
+const Color = {
+  success: 'success',
+  critical: 'critical',
+  warning: 'warning',
+  subdued: 'subdued',
+};
 
-const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
+type Color = keyof typeof Color;
+
+type FontTokenName = keyof typeof font;
+
+type FontWeightTokenScale = Extract<
+  FontTokenName,
+  `font-weight-${string}`
+> extends `font-weight-${infer Scale}`
+  ? Scale
+  : never;
+
+const VariantFontWeightMapping: {[V in Variant]: FontWeightTokenScale} = {
   headingXs: 'semibold',
   headingSm: 'semibold',
   headingMd: 'semibold',
@@ -39,6 +61,49 @@ const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
   bodyLg: 'regular',
 };
 
+type FontSizeTokenScale = Extract<
+  FontTokenName,
+  `font-size-${string}`
+> extends `font-size-${infer Scale}`
+  ? Scale
+  : never;
+
+const VariantFontSizeMapping: {[V in Variant]: FontSizeTokenScale} = {
+  headingXs: '75',
+  headingSm: '100',
+  headingMd: '200',
+  headingLg: '300',
+  headingXl: '400',
+  heading2xl: '500',
+  heading3xl: '600',
+  heading4xl: '700',
+  bodySm: '75',
+  bodyMd: '100',
+  bodyLg: '200',
+};
+
+type FontLineHeightTokenScale = Extract<
+  FontTokenName,
+  `font-line-height-${string}`
+> extends `font-line-height-${infer Scale}`
+  ? Scale
+  : never;
+
+const VariantFontLineHeightMapping: {[V in Variant]: FontLineHeightTokenScale} =
+  {
+    headingXs: '1',
+    headingSm: '2',
+    headingMd: '3',
+    headingLg: '3',
+    headingXl: '4',
+    heading2xl: '5',
+    heading3xl: '6',
+    heading4xl: '7',
+    bodySm: '1',
+    bodyMd: '2',
+    bodyLg: '2',
+  };
+
 export interface TextProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
@@ -49,7 +114,7 @@ export interface TextProps {
   /** Adjust color of text */
   color?: Color;
   /** Adjust weight of text */
-  fontWeight?: FontWeight;
+  fontWeight?: FontWeightTokenScale;
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
@@ -70,16 +135,34 @@ export const Text = ({
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
+  const style = {
+    '--pc-text-font-size': `var(--p-font-size-${VariantFontSizeMapping[variant]})`,
+    '--pc-text-font-line-height': `var(--p-font-line-height-${VariantFontLineHeightMapping[variant]})`,
+    ...(alignment ? {'--pc-text-alignment': alignment} : undefined),
+    ...(color ? {'--pc-text-color': `var(--p-text-${color})`} : undefined),
+    ...(alignment || truncate ? {'--pc-text-display': 'block'} : undefined),
+    ...(fontWeight
+      ? {'--pc-text-font-weight': `var(--p-font-weight-${fontWeight})`}
+      : {
+          '--pc-text-font-weight': `var(--p-font-weight-${VariantFontWeightMapping[variant]})`,
+        }),
+  } as React.CSSProperties;
+
+  const isResponsiveVariant =
+    variant === 'heading2xl' ||
+    variant === 'heading3xl' ||
+    variant === 'heading4xl';
+
   const className = classNames(
-    styles.root,
-    styles[variant],
-    fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
-    (alignment || truncate) && styles.block,
-    alignment && styles[alignment],
-    color && styles[color],
+    styles.Text,
+    isResponsiveVariant && styles[variant],
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
   );
 
-  return <Component className={className}>{children}</Component>;
+  return (
+    <Component className={className} style={style}>
+      {children}
+    </Component>
+  );
 };
