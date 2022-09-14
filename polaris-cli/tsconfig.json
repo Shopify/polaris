@@ -1,9 +1,8 @@
 {
   "extends": "@shopify/typescript-configs/node-base",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2019",
-    "declaration": true,
+    "module": "es2020",
+    "target": "es2020",
     "outDir": "dist",
     "rootDir": "src"
   },

@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-cli': patch
+'@shopify/plugin-polaris': patch
 ---
 
 Initial release 🚀

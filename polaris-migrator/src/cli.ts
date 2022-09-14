@@ -6,31 +6,60 @@ import * as jscodeshift from 'jscodeshift/src/Runner';
 import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
 import globby from 'globby';
-import meow from 'meow';
+import meow, {AnyFlag} from 'meow';
 
-const cli = meow({
+export const cliInfo = {
   description: 'Code migrations for updating Polaris apps.',
-  help: `
-    Usage
-      $ npx @shopify/polaris-migrator <migration> <path> <...options>
-        migration    One of the choices from https://polaris.shopify.com/docs/advanced-features/migrations
-        path         Files or directory to transform. Can be a glob like src/**.scss
-    Options
-      --force            Bypass Git safety checks and forcibly run migrations
-      --dry              Dry run (no changes are made to files)
-      --print            Print transformed files to your terminal
-    `,
-  flags: {
-    force: {
-      type: 'boolean',
+  args: [
+    {
+      name: 'migration',
+      description:
+        'One of the choices from https://polaris.shopify.com/docs/advanced-features/migrations',
     },
+    {
+      name: 'path',
+      description:
+        'Files or directory to transform. Can be a glob like src/**.scss',
+    },
+  ],
+  flags: {
     dry: {
+      alias: 'd',
+      description: 'Dry run (no changes are made to files)',
       type: 'boolean',
     },
     print: {
+      alias: 'p',
+      description: 'Print transformed files to your terminal',
+      type: 'boolean',
+    },
+    force: {
+      alias: 'f',
+      description: 'Bypass Git safety checks and forcibly run migrations',
       type: 'boolean',
     },
   },
+};
+
+const help = `
+Usage
+  $ npx @shopify/polaris-migrator ${cliInfo.args.map((arg) => `<${arg.name}>`)}
+    ${cliInfo.args.map((arg) => `${arg.name}\t${arg.description}\n`)}
+Options
+  ${Object.entries(cliInfo.flags).map(
+    ([name, {description}]) => `--${name}\t${description}\n`,
+  )}
+`;
+
+const cli = meow({
+  description: cliInfo.description,
+  flags: Object.fromEntries(
+    Object.entries(cliInfo.flags).map(([name, flag]) => [
+      name,
+      {alias: flag.alias, type: flag.type} as AnyFlag,
+    ]),
+  ),
+  help,
 });
 
 export function checkGitStatus(force?: boolean) {
@@ -65,15 +94,17 @@ export function checkGitStatus(force?: boolean) {
   }
 }
 
-type Args = [
-  migration: string,
-  path: string,
-  flags?: {force?: boolean; dry?: boolean; print?: boolean},
-];
+interface Flags {
+  force?: boolean;
+  dry?: boolean;
+  print?: boolean;
+}
+
+type Args = [migration: string, path: string, flags?: Flags];
 
 export async function run(...args: Args) {
   const [migration, files] = args.length ? args : cli.input;
-  const flags = args && args[2] ? args[2] : cli.flags;
+  const flags: Flags = args && args[2] ? args[2] : cli.flags;
 
   const migrationFile = path.join(
     __dirname,
@@ -88,7 +119,7 @@ export async function run(...args: Args) {
     if (!files) throw new Error(`No path provided for migration`);
 
     if (!flags.dry) {
-      checkGitStatus(cli.flags.force);
+      checkGitStatus(flags.force);
     }
 
     const filepaths = globby.sync(files, {cwd: process.cwd()});

@@ -9,7 +9,7 @@
 You can install the Polaris plugin using the Shopify CLI by running the following command:
 
 ```sh
-shopify plugins install @shopify/polaris-cli
+shopify plugins install polaris
 ```
 
 > Note: run the `shopify` CLI using the [following syntax](https://shopify.dev/apps/tools/cli/commands#command-syntax) based on your package manager (ex: npm, Yarn, or pnpm).
@@ -18,7 +18,7 @@ shopify plugins install @shopify/polaris-cli
 
 This reference lists the [Shopify CLI][] commands for Polaris.
 
-### migrate
+### `migrate`
 
 Codemod transformations to help upgrade your Polaris codebase.
 
