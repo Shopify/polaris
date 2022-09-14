@@ -217,7 +217,7 @@
   dependencies:
     "@babel/types" "^7.16.7"
 
-"@babel/helper-function-name@^7.16.7", "@babel/helper-function-name@^7.18.9":
+"@babel/helper-function-name@^7.16.7", "@babel/helper-function-name@^7.18.9", "@babel/helper-function-name@^7.19.0":
   version "7.19.0"
   resolved "https://registry.yarnpkg.com/@babel/helper-function-name/-/helper-function-name-7.19.0.tgz#941574ed5390682e872e52d3f38ce9d1bef4648c"
   integrity sha512-WAwHBINyrpqywkUH0nTnNgI5ina5TFn85HKS0pbPDfxFfhyR/aNQEn4hGi1P1JyT//I0t4OgXUlofzWILRvS5w==
