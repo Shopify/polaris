@@ -1,9 +1,14 @@
 name: Money
-set: Minor
-description: Used to represent money Metafield type.
+set: minor
+description: Used to represent money.
 keywords:
-  - Money
-  - Metafields
+  - money
+  - balance
+  - billing
+  - finances
+  - money
+  - payout
+  - cash
 authors: Leina Leung
 version: 1
 date_added: 2022-09-13

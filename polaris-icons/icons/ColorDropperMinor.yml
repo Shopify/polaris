@@ -1,11 +1,10 @@
 name: Color dropper
-set: Minor
-description: Used to represent color Metafield type
+set: minor
+description: Used to represent a color picker.
 keywords:
-  - Color
-  - Metafields
-  - Color picker
-  - Eye dropper
+  - color
+  - color picker
+  - eye dropper
 authors: Leina Leung
 version: 1
 date_added: 2022-09-13

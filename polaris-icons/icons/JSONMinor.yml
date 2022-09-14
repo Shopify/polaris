@@ -1,9 +1,13 @@
 name: JSON
-set: Minor
-description: Used to represent JSON Metafield type
+set: minor
+description: Used to represent programming.
 keywords:
-  - Metafields
-  - JSON
+  - code
+  - json
+  - javascript
+  - block
+  - script
+  - syntax
 authors: Leina Leung
 version: 1
 date_added: 2022-09-13

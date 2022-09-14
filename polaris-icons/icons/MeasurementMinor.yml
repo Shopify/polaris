@@ -1,14 +1,12 @@
 name: Measurement
-set: Minor
-description:
-  Used to represent measurement Metafield type. It includes Dimension, Volume and Weight.
-  N/A
+set: minor
+description: Used to represent measurement including dimension, volume, and weight.
 keywords:
-  - Dimension
-  - Weight
-  - Volume
-  - Measurement
-  - Metafields
+  - dimension
+  - weight
+  - volume
+  - measurement
+  - size
 authors: Leina Leung
 version: 1
 date_added: 2022-09-13
