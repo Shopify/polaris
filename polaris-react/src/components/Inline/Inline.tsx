@@ -1,7 +1,6 @@
 import React from 'react';
 import type {spacing} from '@shopify/polaris-tokens';
 
-import {classNames, variationName} from '../../utilities/css';
 import {elementChildren} from '../../utilities/components';
 
 import styles from './Inline.scss';
@@ -12,7 +11,12 @@ type SpacingTokenName = keyof SpacingTokenGroup;
 // TODO: Bring this logic into tokens
 type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
 
-type AlignY = 'top' | 'center' | 'bottom' | 'baseline';
+const AlignY = {
+  top: 'start',
+  center: 'center',
+  bottom: 'end',
+  baseline: 'baseline',
+};
 
 type Align = 'start' | 'center' | 'end';
 
@@ -24,29 +28,32 @@ export interface InlineProps {
   /** Adjust spacing between elements */
   spacing?: Spacing;
   /** Adjust vertical alignment of elements */
-  alignY?: AlignY;
+  alignY?: keyof typeof AlignY;
   /** Adjust horizontal alignment of elements */
   align?: Align;
 }
 
 export const Inline = function Inline({
   children,
-  spacing,
+  spacing = '1',
   align,
   alignY,
   wrap,
 }: InlineProps) {
-  const className = classNames(
-    styles.Inline,
-    spacing && styles[variationName('spacing', spacing)],
-    align && styles[variationName('align', align)],
-    alignY && styles[variationName('alignY', alignY)],
-    wrap === false && styles.noWrap,
-  );
+  const style = {
+    '--pc-inline-align': align,
+    '--pc-inline-align-y': alignY,
+    '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
+    '--pc-inline-spacing': `var(--p-space-${spacing})`,
+  } as React.CSSProperties;
 
   const itemMarkup = elementChildren(children).map((child, index) => {
     return <div key={index}>{child}</div>;
   });
 
-  return <div className={className}>{itemMarkup}</div>;
+  return (
+    <div className={styles.Inline} style={style}>
+      {itemMarkup}
+    </div>
+  );
 };
