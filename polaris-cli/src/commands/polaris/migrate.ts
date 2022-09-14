@@ -25,3 +25,4 @@ export default class Migrate extends Command {
     });
   }
 }
+
