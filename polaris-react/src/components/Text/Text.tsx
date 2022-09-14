@@ -135,9 +135,18 @@ export const Text = ({
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
+  const isResponsiveVariant =
+    variant === 'heading2xl' ||
+    variant === 'heading3xl' ||
+    variant === 'heading4xl';
+
   const style = {
-    '--pc-text-font-size': `var(--p-font-size-${VariantFontSizeMapping[variant]})`,
-    '--pc-text-font-line-height': `var(--p-font-line-height-${VariantFontLineHeightMapping[variant]})`,
+    ...(!isResponsiveVariant
+      ? {
+          '--pc-text-font-size': `var(--p-font-size-${VariantFontSizeMapping[variant]})`,
+          '--pc-text-font-line-height': `var(--p-font-line-height-${VariantFontLineHeightMapping[variant]})`,
+        }
+      : undefined),
     ...(alignment ? {'--pc-text-alignment': alignment} : undefined),
     ...(color ? {'--pc-text-color': `var(--p-text-${color})`} : undefined),
     ...(alignment || truncate ? {'--pc-text-display': 'block'} : undefined),
@@ -147,11 +156,6 @@ export const Text = ({
           '--pc-text-font-weight': `var(--p-font-weight-${VariantFontWeightMapping[variant]})`,
         }),
   } as React.CSSProperties;
-
-  const isResponsiveVariant =
-    variant === 'heading2xl' ||
-    variant === 'heading3xl' ||
-    variant === 'heading4xl';
 
   const className = classNames(
     styles.Text,
