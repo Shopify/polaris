@@ -60,12 +60,16 @@ export const cliInfo: CliInfo = {
 
 const help = `
 Usage
-  $ npx @shopify/polaris-migrator ${cliInfo.args.map((arg) => `<${arg.name}>`)}
-    ${cliInfo.args.map((arg) => `${arg.name}\t${arg.description}\n`)}
+  $ npx @shopify/polaris-migrator ${cliInfo.args
+    .map((arg) => `<${arg.name}>`)
+    .join(' ')}
+    ${cliInfo.args
+      .map((arg) => `${arg.name}\t${arg.description}`)
+      .join('\n    ')}
 Options
-  ${Object.entries(cliInfo.flags).map(
-    ([name, {description}]) => `--${name}\t${description}\n`,
-  )}
+  ${Object.entries(cliInfo.flags)
+    .map(([name, {description}]) => `--${name}\t${description}`)
+    .join('\n  ')}
 `;
 
 // @ts-expect-error Ignore the additional description property on the flags
