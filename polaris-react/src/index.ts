@@ -46,6 +46,9 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
+export {AlphaCard} from './components/AlphaCard';
+export {AlphaCardProps} from './components/AlphaCard';
+
 export {AlphaStack} from './components/AlphaStack';
 export type {AlphaStackProps} from './components/AlphaStack';
 
