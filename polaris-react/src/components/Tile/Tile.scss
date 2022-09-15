@@ -1,0 +1,7 @@
+@import '../../styles/common';
+
+.Tile {
+  display: grid;
+  grid-template-columns: var(--pc-tile-column-number);
+  gap: var(--pc-tile-spacing);
+}
