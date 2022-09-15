@@ -7,19 +7,16 @@ import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
 import globby from 'globby';
 
-export type RunMigration = string;
-export type RunFiles = string;
-
-export interface RunOptions {
+export interface MigrateOptions {
   dry?: boolean;
   print?: boolean;
   force?: boolean;
 }
 
-export async function run(
-  migration: RunMigration,
-  files: RunFiles,
-  options: RunOptions = {},
+export async function migrate(
+  migration: string,
+  files: string,
+  options: MigrateOptions = {},
 ) {
   const migrationFile = path.join(
     __dirname,

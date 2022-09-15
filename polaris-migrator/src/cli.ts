@@ -1,18 +1,18 @@
 import meow, {AnyFlag} from 'meow';
 
-import {run} from './run';
+import {migrate} from './migrate';
 import {cliConfig} from './constants';
 
 const help = `
 Usage
-  $ npx @shopify/polaris-migrator ${cliConfig.args.map(
-    (arg) => `<${arg.name}>`,
-  )}
-    ${cliConfig.args.map((arg) => `${arg.name}\t${arg.description}\n`)}
+  $ npx @shopify/polaris-migrator ${cliConfig.args
+    .map((arg) => `<${arg.name}>`)
+    .join(' ')}
+  ${cliConfig.args.map((arg) => `${arg.name}\t${arg.description}`).join('\n  ')}
 Options
-  ${Object.entries(cliConfig.flags).map(
-    ([name, {description}]) => `--${name}\t${description}\n`,
-  )}
+  ${Object.entries(cliConfig.flags)
+    .map(([name, {description}]) => `--${name}\t${description}`)
+    .join('\n  ')}
 `;
 
 const {input, flags} = meow({
@@ -29,6 +29,6 @@ const {input, flags} = meow({
   help,
 });
 
-export async function cli() {
-  await run(input[0], input[1], flags);
+export async function run() {
+  await migrate(input[0], input[1], flags);
 }

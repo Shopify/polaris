@@ -1,5 +1,5 @@
 import {Command, Flags} from '@oclif/core';
-import {run as runMigrator, cliConfig} from '@shopify/polaris-migrator';
+import {migrate, cliConfig} from '@shopify/polaris-migrator';
 
 export default class Migrate extends Command {
   static description = cliConfig.description;
@@ -18,7 +18,7 @@ export default class Migrate extends Command {
   async run() {
     const {args, flags} = await this.parse(Migrate);
     const {migration, path} = args;
-    await runMigrator(migration, path, {
+    await migrate(migration, path, {
       dry: flags.dry,
       print: flags.print,
       force: flags.force,

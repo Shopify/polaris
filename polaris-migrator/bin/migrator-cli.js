@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const {cli} = require('./../dist/cjs');
+const {run} = require('./../dist/cjs');
 
-cli();
+run();

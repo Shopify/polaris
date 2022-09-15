@@ -1,28 +1,30 @@
-import type {AlphabetLowercase, AlphabetUppercase, Exact} from './types';
-import type {RunOptions} from './run';
+import type {Exact} from 'type-fest';
 
-interface BaseArg {
+import type {AlphabetLowercase, AlphabetUppercase} from './types';
+import type {MigrateOptions} from './migrate';
+
+interface Arg {
   name: string;
   description: string;
 }
 
-interface BaseFlag {
+interface Flag {
   type: 'boolean' | 'string' | 'number';
   alias?: AlphabetLowercase | AlphabetUppercase;
   description: string;
 }
 
-type BaseFlags = {[O in keyof RunOptions]: BaseFlag};
+type Flags = {[O in keyof MigrateOptions]: Flag};
 
-interface BaseConfig {
+interface Config {
   description: string;
-  args: BaseArg[];
-  flags: BaseFlags;
+  args: Arg[];
+  flags: Flags;
 }
 
-const createConfig = <T extends Exact<BaseConfig, T>>(config: T): T => config;
+const createCLIConfig = <T extends Exact<Config, T>>(config: T): T => config;
 
-export const cliConfig = createConfig({
+export const cliConfig = createCLIConfig({
   description: 'Code migrations for updating Polaris apps.',
   args: [
     {

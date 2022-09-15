@@ -49,6 +49,7 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@shopify/polaris": "^10.2.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "type-fest": "^2.19.0"
   }
 }
