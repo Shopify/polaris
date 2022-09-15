@@ -1,5 +1,5 @@
 .root {
-  @media #{$p-breakpoints-md-down} {
+  @media #{$p-breakpoints-lg-down} {
     padding-bottom: spacing(loose);
 
     &.Active {
@@ -23,7 +23,7 @@
     border-radius: spacing(tight);
   }
 
-  @media #{$p-breakpoints-md-down} {
+  @media #{$p-breakpoints-lg-down} {
     @include stacked-elements;
   }
 
@@ -51,7 +51,7 @@
     }
   }
 
-  @media #{$p-breakpoints-xl-down} {
+  @media #{$p-breakpoints-lg-down} {
     padding: spacing(tight) 0;
   }
 

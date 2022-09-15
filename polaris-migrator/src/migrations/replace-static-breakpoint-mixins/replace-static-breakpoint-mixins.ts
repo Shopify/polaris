@@ -3,11 +3,11 @@ import postcss, {Plugin} from 'postcss';
 
 /** Mapping of static breakpoint mixins from old to new */
 const staticBreakpointMixins = {
-  'page-content-when-partially-condensed': '#{$p-breakpoints-md-down}',
+  'page-content-when-partially-condensed': '#{$p-breakpoints-lg-down}',
   'page-content-when-not-partially-condensed': '#{$p-breakpoints-md-up}',
   'page-content-when-fully-condensed': '#{$p-breakpoints-sm-down}',
   'page-content-when-not-fully-condensed': '#{$p-breakpoints-sm-up}',
-  'page-content-when-layout-stacked': '#{$p-breakpoints-md-down}',
+  'page-content-when-layout-stacked': '#{$p-breakpoints-lg-down}',
   'page-content-when-layout-not-stacked': '#{$p-breakpoints-md-up}',
   'page-before-resource-list-small': '#{$p-breakpoints-sm-down}',
   'page-after-resource-list-small': '#{$p-breakpoints-sm-up}',
@@ -16,7 +16,7 @@ const staticBreakpointMixins = {
   'when-typography-not-condensed': '#{$p-breakpoints-md-up}',
   'frame-when-nav-hidden': '#{$p-breakpoints-md-down}',
   'frame-when-nav-displayed': '#{$p-breakpoints-md-up}',
-  'frame-with-nav-when-not-max-width': '#{$p-breakpoints-xl-down}',
+  'frame-with-nav-when-not-max-width': '#{$p-breakpoints-lg-down}',
   'after-topbar-sheet': '#{$p-breakpoints-sm-up}',
 };
 
