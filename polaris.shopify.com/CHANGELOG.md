@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.17.1
+
+### Patch Changes
+
+- [#7050](https://github.com/Shopify/polaris/pull/7050) [`0ccc981fc`](https://github.com/Shopify/polaris/commit/0ccc981fc39506e07222e4106aaed1b5bb765f85) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Fix data-table with-fixed-first-columns example referencing useMedia hook. Replace with useBreakpoint export from polaris-react
+
+* [#7177](https://github.com/Shopify/polaris/pull/7177) [`b79e64e2c`](https://github.com/Shopify/polaris/commit/b79e64e2cc515c3e115fad29e8dc5714734e9788) Thanks [@sarahill](https://github.com/sarahill)! - Updated typography guidance to clarify number alignment
+
+* Updated dependencies [[`c31402639`](https://github.com/Shopify/polaris/commit/c3140263993046e68d8c1c51cb14d42c1a40e170), [`577796691`](https://github.com/Shopify/polaris/commit/57779669169f503cdceaedbb9c0ca269cef4d9b2), [`8e16d15d1`](https://github.com/Shopify/polaris/commit/8e16d15d1249591e9e854ae294ec8ce8ab3e3594), [`9d6497970`](https://github.com/Shopify/polaris/commit/9d64979708a2e961a537e5b152ad028e6aa52795), [`9eff83ea6`](https://github.com/Shopify/polaris/commit/9eff83ea6b3011cb45c777b0f9e48cb9a82cd210), [`0ccc981fc`](https://github.com/Shopify/polaris/commit/0ccc981fc39506e07222e4106aaed1b5bb765f85), [`3911a45a8`](https://github.com/Shopify/polaris/commit/3911a45a8dc3010d31f5bec6208e58ab4db88bd7), [`69faaa41d`](https://github.com/Shopify/polaris/commit/69faaa41db4af147b1e4e3de1c0e4b683143d64b), [`2ce4503f5`](https://github.com/Shopify/polaris/commit/2ce4503f5f886f24686c6f1ee0b79edaa658e174)]:
+  - @shopify/polaris@10.3.0
+  - @shopify/polaris-icons@6.2.0
+
 ## 0.17.0
 
 ### Minor Changes
