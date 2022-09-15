@@ -7,6 +7,63 @@ import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
 import globby from 'globby';
 
+export type RunMigration = string;
+export type RunFiles = string;
+
+export interface RunOptions {
+  dry?: boolean;
+  print?: boolean;
+  force?: boolean;
+}
+
+export async function run(
+  migration: RunMigration,
+  files: RunFiles,
+  options: RunOptions = {},
+) {
+  const migrationFile = path.join(
+    __dirname,
+    `./migrations/${migration}/${migration}.js`,
+  );
+
+  try {
+    if (!fs.existsSync(migrationFile)) {
+      throw new Error(`No migration found for ${migration}`);
+    }
+
+    if (!files) throw new Error(`No path provided for migration`);
+
+    if (!options.dry) {
+      checkGitStatus(options.force);
+    }
+
+    const filepaths = globby.sync(files, {cwd: process.cwd()});
+    if (filepaths.length === 0) {
+      throw new Error(`No files found for ${files}`);
+    }
+
+    // eslint-disable-next-line no-console
+    console.log(chalk.green('Running migration:'), migration);
+
+    await jscodeshift.run(migrationFile, filepaths, {
+      dry: options.dry,
+      print: options.print,
+      babel: true,
+      ignorePattern: ['**/node_modules/**', '**/.next/**', '**/build/**'],
+      extensions: 'tsx,ts,jsx,js',
+      parser: 'tsx',
+      verbose: 2,
+      runInBand: true,
+      silent: false,
+      stdin: false,
+    });
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+    process.exit(1);
+  }
+}
+
 export function checkGitStatus(force?: boolean) {
   let clean = false;
   let errorMessage = 'Unable to determine if git directory is clean';
@@ -36,55 +93,5 @@ export function checkGitStatus(force?: boolean) {
       process.exit(1);
     }
     /* eslint-enable no-console */
-  }
-}
-
-export interface Flags {
-  dry?: boolean;
-  print?: boolean;
-  force?: boolean;
-}
-
-export async function run(migration: string, files: string, flags: Flags = {}) {
-  const migrationFile = path.join(
-    __dirname,
-    `./migrations/${migration}/${migration}.js`,
-  );
-
-  try {
-    if (!fs.existsSync(migrationFile)) {
-      throw new Error(`No migration found for ${migration}`);
-    }
-
-    if (!files) throw new Error(`No path provided for migration`);
-
-    if (!flags.dry) {
-      checkGitStatus(flags.force);
-    }
-
-    const filepaths = globby.sync(files, {cwd: process.cwd()});
-    if (filepaths.length === 0) {
-      throw new Error(`No files found for ${files}`);
-    }
-
-    // eslint-disable-next-line no-console
-    console.log(chalk.green('Running migration:'), migration);
-
-    await jscodeshift.run(migrationFile, filepaths, {
-      dry: flags.dry,
-      print: flags.print,
-      babel: true,
-      ignorePattern: ['**/node_modules/**', '**/.next/**', '**/build/**'],
-      extensions: 'tsx,ts,jsx,js',
-      parser: 'tsx',
-      verbose: 2,
-      runInBand: true,
-      silent: false,
-      stdin: false,
-    });
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-    process.exit(1);
   }
 }

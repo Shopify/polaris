@@ -1,80 +1,34 @@
-import meow from 'meow';
+import meow, {AnyFlag} from 'meow';
 
-import type {AlphabetLowercase, AlphabetUppercase} from './types';
-
-interface Flag {
-  alias: AlphabetLowercase | AlphabetUppercase;
-  description: string;
-  type: string;
-}
-
-interface Flags {
-  [key: string]: Flag;
-}
-
-interface Arg {
-  name: string;
-  description: string;
-}
-
-type Args = Arg[];
-
-interface CliInfo {
-  description: string;
-  args: Args;
-  flags: Flags;
-}
-
-export const cliInfo: CliInfo = {
-  description: 'Code migrations for updating Polaris apps.',
-  args: [
-    {
-      name: 'migration',
-      description:
-        'One of the choices from https://polaris.shopify.com/docs/advanced-features/migrations',
-    },
-    {
-      name: 'path',
-      description:
-        'Files or directory to transform. Can be a glob like src/**.scss',
-    },
-  ],
-  flags: {
-    dry: {
-      alias: 'd',
-      description: 'Dry run (no changes are made to files)',
-      type: 'boolean',
-    },
-    print: {
-      alias: 'p',
-      description: 'Print transformed files to your terminal',
-      type: 'boolean',
-    },
-    force: {
-      alias: 'f',
-      description: 'Bypass Git safety checks and forcibly run migrations',
-      type: 'boolean',
-    },
-  },
-};
+import {run} from './run';
+import {cliConfig} from './constants';
 
 const help = `
 Usage
-  $ npx @shopify/polaris-migrator ${cliInfo.args
-    .map((arg) => `<${arg.name}>`)
-    .join(' ')}
-    ${cliInfo.args
-      .map((arg) => `${arg.name}\t${arg.description}`)
-      .join('\n    ')}
+  $ npx @shopify/polaris-migrator ${cliConfig.args.map(
+    (arg) => `<${arg.name}>`,
+  )}
+    ${cliConfig.args.map((arg) => `${arg.name}\t${arg.description}\n`)}
 Options
-  ${Object.entries(cliInfo.flags)
-    .map(([name, {description}]) => `--${name}\t${description}`)
-    .join('\n  ')}
+  ${Object.entries(cliConfig.flags).map(
+    ([name, {description}]) => `--${name}\t${description}\n`,
+  )}
 `;
 
-// @ts-expect-error Ignore the additional description property on the flags
-export const cli = meow({
-  description: cliInfo.description,
-  flags: cliInfo.flags,
+const {input, flags} = meow({
+  description: cliConfig.description,
+  flags: Object.fromEntries(
+    Object.entries(cliConfig.flags).map(([name, flag]): [string, AnyFlag] => [
+      name,
+      {
+        alias: flag.alias,
+        type: flag.type,
+      },
+    ]),
+  ),
   help,
 });
+
+export async function cli() {
+  await run(input[0], input[1], flags);
+}
