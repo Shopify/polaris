@@ -1,8 +1,10 @@
 import {createContext, useContext, useState} from 'react';
-import {Type, FilteredTypes} from '../../types';
+import {Type, FilteredTypes, StatusName} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
+import StatusBadge from '../StatusBadge';
+import {className} from '../../utils/various';
 
 interface Props {
   componentName: string;
@@ -24,6 +26,13 @@ const toPascalCase = (str: string) =>
   (str.match(/[a-zA-Z0-9]+/g) || [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
     .join('');
+
+const endWithPeriod = (str: string): string => {
+  if (!str.trim().endsWith('.')) {
+    return `${str}.`;
+  }
+  return str;
+};
 
 const TypeContext = createContext<{
   types: FilteredTypes;
@@ -131,7 +140,14 @@ function InterfaceList({
       {type.members && (
         <dl>
           {type.members.map(
-            ({name, isOptional, description, defaultValue, value}) => {
+            ({
+              name,
+              isOptional,
+              description,
+              defaultValue,
+              value,
+              deprecationMessage,
+            }) => {
               const expandType = (typeName: string) =>
                 setExpandedTypes([
                   {typeName, memberName: name},
@@ -145,7 +161,12 @@ function InterfaceList({
                 >
                   <span className={styles.Row}>
                     <dt className={styles.Key}>
-                      <span className={styles.MemberName}>
+                      <span
+                        className={className(
+                          styles.MemberName,
+                          !!deprecationMessage && styles.isDeprecated,
+                        )}
+                      >
                         {name}
                         {isOptional && <span>?</span>}
                       </span>
@@ -154,18 +175,29 @@ function InterfaceList({
                       </span>
                     </dt>
                     <dd className={styles.Value}>
-                      <span className={styles.Description}>
-                        {description}
+                      <div className={styles.Description}>
+                        {description && <p>{endWithPeriod(description)}</p>}
                         {defaultValue && (
-                          <>
-                            {'. Defaults to '}
+                          <p>
+                            {'Defaults to '}
                             <span className={styles.Default}>
                               <Highlighter type={defaultValue} />
                             </span>
                             .
-                          </>
+                          </p>
                         )}
-                      </span>
+                        {deprecationMessage && (
+                          <p className={styles.DeprecationNotice}>
+                            <StatusBadge
+                              status={{
+                                message: 'Deprecated',
+                                value: StatusName.Warning,
+                              }}
+                            />{' '}
+                            {endWithPeriod(deprecationMessage)}
+                          </p>
+                        )}
+                      </div>
 
                       <AnimatePresence initial={false}>
                         {expandedTypes

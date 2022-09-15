@@ -80,6 +80,10 @@
     font-weight: var(--font-weight-500);
     color: var(--text-strong);
     flex-shrink: 0;
+
+    &.isDeprecated {
+      text-decoration: line-through;
+    }
   }
 
   .Value {
@@ -88,6 +92,13 @@
 
   .ValueText {
     font-family: var(--font-family-mono);
+  }
+
+  .DeprecationNotice {
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
   }
 }
 
@@ -106,7 +117,3 @@
 .SyntaxNumber {
   color: var(--code-number);
 }
-
-// .SyntaxKeyword {
-//   color: var(--code-keyword);
-// }
