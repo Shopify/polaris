@@ -23,7 +23,7 @@ export interface LinkProps {
   onClick?(): void;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
-  /** Indicates whether the link is the primary navigation link when rendered outside an `IndexTable.Row` */
+  /** Indicates whether the link is the primary navigation link when rendered inside an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
 }
 
