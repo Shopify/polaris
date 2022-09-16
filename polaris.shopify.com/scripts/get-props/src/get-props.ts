@@ -148,21 +148,6 @@ const parseInterfaceDeclaration: NodeParser = (
 
       members.push(memberNode);
     }
-
-    // We only end up in this else branch for the Button component
-    // which extends another type in a really strange way.
-    // https://github.com/Shopify/polaris/blob/main/polaris-react/src/components/Button/Button.tsx#L57
-    else {
-      //   const declarations = prop.getDeclarations();
-      //   if (declarations) {
-      //     declarations.forEach((declaration) => {
-      //       visit(declaration, level + 1);
-      //     });
-      //   } else {
-      //     throw new Error('Expected interface member to have declarations');
-      //   }
-      //   throw new Error('Expected value declaration');
-    }
   }
 
   const name = interfaceDeclaration.name.escapedText.toString();
