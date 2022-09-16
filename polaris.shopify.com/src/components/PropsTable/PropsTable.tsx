@@ -23,7 +23,7 @@ function syntaxKindToDeveloperFriendlyString(
 }
 
 const endWithPeriod = (str: string): string =>
-  !str.trim().endsWith('.') ? `${str}.` : str;
+  str.trim().endsWith('.') ? str.trim() : `${str.trim()}.`;
 
 const TypeContext = createContext<{
   types: FilteredTypes;
