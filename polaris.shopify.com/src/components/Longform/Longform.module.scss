@@ -173,7 +173,7 @@
 
     th,
     td {
-      padding: 0.6rem .70588rem;
+      padding: 0.6rem 0.70588rem;
       border-bottom: 1px solid var(--border-color-light);
 
       &:first-child {
@@ -193,7 +193,6 @@
           padding-right: 2.8rem;
         }
       }
-
     }
 
     tbody {
@@ -220,7 +219,7 @@
   }
 }
 
-.Content {
+.Content.firstParagraphIsLede {
   > p:first-of-type {
     margin-top: 0;
     margin-bottom: 2rem;
