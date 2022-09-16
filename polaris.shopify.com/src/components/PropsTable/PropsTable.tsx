@@ -4,7 +4,7 @@ import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
 import StatusBadge from '../StatusBadge';
-import {className} from '../../utils/various';
+import {className, toPascalCase} from '../../utils/various';
 
 interface Props {
   componentName: string;
@@ -22,17 +22,8 @@ function syntaxKindToDeveloperFriendlyString(
   return `interface`;
 }
 
-const toPascalCase = (str: string) =>
-  (str.match(/[a-zA-Z0-9]+/g) || [])
-    .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
-    .join('');
-
-const endWithPeriod = (str: string): string => {
-  if (!str.trim().endsWith('.')) {
-    return `${str}.`;
-  }
-  return str;
-};
+const endWithPeriod = (str: string): string =>
+  !str.trim().endsWith('.') ? `${str}.` : str;
 
 const TypeContext = createContext<{
   types: FilteredTypes;
@@ -47,9 +38,7 @@ function PropsTable({types, componentName}: Props) {
   const propsName = `${toPascalCase(componentName).replace(/\s/g, '')}Props`;
   const propsForComponent = types[propsName];
 
-  if (!propsForComponent) {
-    throw new Error('Could not find props for component');
-  }
+  if (!propsForComponent) throw new Error('Could not find props for component');
 
   const propsAreDefinedUsingInterface = !!propsForComponent.members;
 

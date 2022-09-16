@@ -9,7 +9,7 @@ import Markdown from '../../src/components/Markdown';
 import type {NavItem} from '../../src/components/Nav';
 import Layout from '../../src/components/Layout';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {getComponentNav} from '../../src/utils/various';
+import {getComponentNav, toPascalCase} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
@@ -111,14 +111,6 @@ export const getStaticProps: GetStaticProps<
     const propsFilePath = path.resolve(process.cwd(), `src/data/props.json`);
     const fileContent = fs.readFileSync(propsFilePath, 'utf8');
     const allType: AllTypes = JSON.parse(fileContent);
-
-    let toPascalCase = (s: string) => {
-      return s
-        .replace(/(\w)(\w*)/g, function (_, g1, g2) {
-          return g1.toUpperCase() + g2.toLowerCase();
-        })
-        .replace(/\s/g, '');
-    };
 
     const componentDirName = toPascalCase(`${data.frontMatter.title} `);
     const propName = toPascalCase(`${data.frontMatter.title} Props`);
