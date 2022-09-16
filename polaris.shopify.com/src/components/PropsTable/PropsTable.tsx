@@ -66,11 +66,11 @@ function PropsTable({types, componentName}: Props) {
 
         {!propsAreDefinedUsingInterface && (
           <div className={styles.UnparsablePropsWarning}>
-            <p>{`This component uses prop types that our website can't automatically parse.`}</p>
+            <p>{`This component defines its props in a way that our website can't automatically parse. The type definition is shown below, but it might be hard to read.`}</p>
           </div>
         )}
 
-        <InterfaceList types={types} type={propsForComponent} />
+        <TypeTable types={types} type={propsForComponent} />
       </div>
     </TypeContext.Provider>
   );
@@ -84,7 +84,7 @@ const ExpandedTypesContext = createContext<{
   currentMember: string | null;
 }>({expandType: () => undefined, expandedTypes: [], currentMember: null});
 
-function InterfaceList({
+function TypeTable({
   types,
   type,
 }: {
@@ -96,11 +96,11 @@ function InterfaceList({
 
   return (
     <motion.div
-      className={styles.InterfaceList}
+      className={styles.TypeTable}
       initial={{opacity: 0, scale: 0.7, height: 0}}
       animate={{opacity: 1, scale: 1, height: 'auto'}}
     >
-      <div className={styles.InterfaceListHeader}>
+      <div className={styles.TypeTableHeader}>
         {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}
       </div>
 
@@ -126,7 +126,7 @@ function InterfaceList({
                 const typeForExpandedType = types[expanded.typeName];
                 if (!typeForExpandedType) return null;
                 return (
-                  <InterfaceList
+                  <TypeTable
                     key={expanded.typeName}
                     types={types}
                     type={typeForExpandedType}
@@ -170,11 +170,11 @@ function InterfaceList({
                         {name}
                         {isOptional && <span>?</span>}
                       </span>
-                      <span className={styles.ValueText}>
+                      <span className={styles.Valuex}>
                         <Highlighter type={value.toString()} />
                       </span>
                     </dt>
-                    <dd className={styles.Value}>
+                    <dd>
                       <div className={styles.Description}>
                         {description && <p>{endWithPeriod(description)}</p>}
                         {defaultValue && (
@@ -207,7 +207,7 @@ function InterfaceList({
                               types[expanded.typeName];
                             if (!typeForExpandedType) return null;
                             return (
-                              <InterfaceList
+                              <TypeTable
                                 key={expanded.typeName}
                                 types={types}
                                 type={typeForExpandedType}
@@ -260,6 +260,7 @@ function Highlighter({
     const referencedType = types[type];
     const referencedTypeExists = !!referencedType;
     const typeCanBeExpanded = referencedTypeExists;
+
     let autoInlinedValue =
       referencedType &&
       !referencedType.members &&
@@ -298,18 +299,14 @@ function Highlighter({
   } else if (type.match(/^[a-z]+$/gi) !== null) {
     return <span className={styles.SyntaxKeyword}>{type}</span>;
   } else {
-    if (prev === type) {
-      return <>{type}</>;
-    }
+    if (prev === type) return <>{type}</>;
     const tokenRegex = /([^a-z0-9'"/-]+)/gi;
     const tokens = type.split(tokenRegex);
     return (
       <>
-        {tokens.map((token, i) => {
-          return (
-            <Highlighter key={prev + token + i} type={token} prev={type} />
-          );
-        })}
+        {tokens.map((token, i) => (
+          <Highlighter key={prev + token + i} type={token} prev={type} />
+        ))}
       </>
     );
   }

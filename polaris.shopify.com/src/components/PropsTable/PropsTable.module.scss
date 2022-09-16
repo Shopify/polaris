@@ -1,18 +1,20 @@
 @import '../../styles/mixins.scss';
 
 .UnparsablePropsWarning {
+  background: url(/images/CircleAlertMajor.svg) no-repeat left 0.275rem;
+  background-size: 16px auto;
+  padding-left: 24px;
   p {
     margin-bottom: 1rem;
-  }
-  pre {
-    font-family: var(--font-family-mono);
-    white-space: pre-line;
+    color: var(--text);
   }
 }
 
-.InterfaceList {
+.TypeTable {
+  --props-table-background-color: rgba(0, 0, 0, 0.01);
   --props-table-border-color: rgba(0, 0, 0, 0.075);
   @include dark-mode {
+    --props-table-background-color: rgba(255, 255, 255, 0.005);
     --props-table-border-color: rgba(255, 255, 255, 0.085);
   }
   border-radius: var(--border-radius-400);
@@ -22,17 +24,14 @@
   border: 1px solid var(--props-table-border-color);
   overflow: hidden;
 
-  .InterfaceList {
+  .TypeTable {
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
-    background: rgba(0, 0, 0, 0.01);
+    background: var(--props-table-background-color);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.033);
-    @include dark-mode {
-      background: rgba(255, 255, 255, 0.005);
-    }
   }
 
-  .InterfaceListHeader {
+  .TypeTableHeader {
     width: 100%;
     text-align: left;
     color: var(--code-keyword);
@@ -86,11 +85,7 @@
     }
   }
 
-  .Value {
-    word-break: break-word;
-  }
-
-  .ValueText {
+  .Valuex {
     font-family: var(--font-family-mono);
   }
 
