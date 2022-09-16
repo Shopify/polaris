@@ -1,5 +1,5 @@
 ---
-title: Polaris typography updates
+title: Version 10 Typography
 description: Learn about what changes are coming to Polaris typography.
 keywords:
   - typography
