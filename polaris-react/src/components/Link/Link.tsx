@@ -20,7 +20,9 @@ export interface LinkProps {
   /** Removes text decoration underline to the link*/
   removeUnderline?: boolean;
   /** Callback when a link is clicked */
-  onClick?(): void;
+  onClick?(
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ): void;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
   /** Indicates whether or not the link is the primary navigation link when rendered inside of an `IndexTable.Row` */
