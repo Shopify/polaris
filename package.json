@@ -7,6 +7,7 @@
   },
   "workspaces": {
     "packages": [
+      "polaris-cli",
       "polaris-tokens",
       "polaris-for-figma",
       "polaris-for-vscode",
@@ -56,6 +57,7 @@
     "@rollup/plugin-virtual": "^2.0.3",
     "@rollup/pluginutils": "^4.1.0",
     "@shopify/babel-preset": "^24.1.2",
+    "@shopify/cli": "^3.10.1",
     "@shopify/eslint-plugin": "^42.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",

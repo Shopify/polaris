@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.2.0
+
+### Minor Changes
+
+- [#7128](https://github.com/Shopify/polaris/pull/7128) [`9d6497970`](https://github.com/Shopify/polaris/commit/9d64979708a2e961a537e5b152ad028e6aa52795) Thanks [@james-a-c](https://github.com/james-a-c)! - Add new icon `FilterMinor`
+
 ## 6.1.0
 
 ### Minor Changes

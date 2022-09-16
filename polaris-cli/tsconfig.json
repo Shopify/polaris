@@ -1,0 +1,11 @@
+{
+  "extends": "@shopify/typescript-configs/node-base",
+  "compilerOptions": {
+    "module": "es2020",
+    "target": "es2020",
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
