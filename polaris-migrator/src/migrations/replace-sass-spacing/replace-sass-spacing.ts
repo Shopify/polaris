@@ -1,27 +1,30 @@
-import {FileInfo} from 'jscodeshift';
+import type {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node, WordNode, FunctionNode} from 'postcss-value-parser';
+import valueParser, {Node} from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
-const spacingMap = {
+const defaultVariant = 'defaultVariant';
+
+/** Mapping of spacing variants to new custom properties */
+const spacingVariantMap = {
   none: '--p-space-0',
   'extra-tight': '--p-space-1',
   tight: '--p-space-2',
   'base-tight': '--p-space-3',
-  '': '--p-space-4',
+  [defaultVariant]: '--p-space-4',
   base: '--p-space-4',
   loose: '--p-space-5',
   'extra-loose': '--p-space-8',
 };
 
-type Spacing = keyof typeof spacingMap;
+const isSpacingVariant = (
+  variant: unknown,
+): variant is keyof typeof spacingVariantMap =>
+  Object.keys(spacingVariantMap).includes(variant as string);
 
-function isSpacingFn(node: Node): node is FunctionNode {
-  return node.type === 'function' && node.value === 'spacing';
-}
-
-function isOperator(node: Node): boolean {
+// https://sass-lang.com/documentation/operators/numeric
+function isNumericOperator(node: Node): boolean {
   return (
     node.value === '+' ||
     node.value === '-' ||
@@ -36,23 +39,31 @@ const plugin = (): Plugin => ({
   Declaration(decl) {
     const parsed = valueParser(decl.value);
 
-    // Insert comment if the value contains calculations
-    const containsCalculation = parsed.nodes.some(isOperator);
-    if (containsCalculation) {
-      const comment = postcss.comment({text: POLARIS_MIGRATOR_COMMENT});
-      decl.parent!.insertBefore(decl, comment);
+    if (parsed.nodes.some(isNumericOperator)) {
+      // Insert comment if the value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
       return;
     }
 
     parsed.walk((node) => {
-      if (!isSpacingFn(node)) return;
-      const hasNodes = Boolean(node.nodes && node.nodes.length);
-      const spacing = hasNodes ? node.nodes[0].value : '';
-      const newSpacing = spacingMap[spacing as Spacing];
+      if (!(node.type === 'function' && node.value === 'spacing')) return;
+
+      const spacingVariant = node.nodes[0]?.value ?? defaultVariant;
+
+      if (!isSpacingVariant(spacingVariant)) return;
+
+      const spacingCustomProperty = spacingVariantMap[spacingVariant];
 
       node.value = 'var';
-      node.nodes = hasNodes ? node.nodes : [{type: 'word'} as WordNode];
-      node.nodes[0].value = newSpacing;
+      node.nodes = [
+        {
+          type: 'word',
+          value: spacingCustomProperty,
+          sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+          sourceEndIndex: spacingCustomProperty.length,
+        },
+        ...node.nodes.slice(1),
+      ];
     });
 
     decl.value = parsed.toString();
