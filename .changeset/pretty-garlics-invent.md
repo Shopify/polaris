@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Added MoneyMinor, MeasurementMinor, ColorDropperMinor, and JSONMinor
+Added CashDollarMinor, CodeMinor, EyeDropperMinor, MeasurementMinor, and MoneyMinor.
