@@ -31,17 +31,22 @@ function isOperator(node: Node): boolean {
   );
 }
 
+const processed = Symbol('processed');
+
 const plugin = (): Plugin => ({
   postcssPlugin: 'ReplaceSassSpacing',
   Declaration(decl) {
+    // @ts-expect-error - Skip if processed so we don't process it again
+    if (decl[processed]) return;
+
     const parsed = valueParser(decl.value);
 
     // Insert comment if the value contains calculations
     const containsCalculation = parsed.nodes.some(isOperator);
-    if (containsCalculation) {
+    const containsSpacingFn = parsed.nodes.some(isSpacingFn);
+    if (containsCalculation && containsSpacingFn) {
       const comment = postcss.comment({text: POLARIS_MIGRATOR_COMMENT});
       decl.parent!.insertBefore(decl, comment);
-      return;
     }
 
     parsed.walk((node) => {
@@ -56,6 +61,9 @@ const plugin = (): Plugin => ({
     });
 
     decl.value = parsed.toString();
+
+    // @ts-expect-error - Mark the declaration as processed
+    decl[processed] = true;
   },
 });
 

@@ -1,4 +1,5 @@
 .Card {
+  z-index: z-index(content) + 1;
   padding: var(--p-space-5) var(--p-space-8);
   border-radius: var(--p-border-radius-2, border-radius());
   box-shadow: var(--p-shadow-card, shadow());
@@ -8,5 +9,5 @@
   right: var(--p-space-4);
   top: var(--p-space-5);
   /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
-  bottom: spacing() + spacing();
+  bottom: var(--p-space-4) + var(--p-space-4);
 }

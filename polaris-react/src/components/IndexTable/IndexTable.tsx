@@ -279,6 +279,46 @@ function IndexTableBase({
     setSmallScreen(smallScreen);
   }, [smallScreen]);
 
+  const [canFitStickyColumn, setCanFitStickyColumn] = useState(true);
+
+  const handleCanFitStickyColumn = useCallback(() => {
+    if (!scrollableContainerElement.current || !tableHeadings.current.length) {
+      return;
+    }
+    const scrollableRect =
+      scrollableContainerElement.current.getBoundingClientRect();
+    const checkboxColumnWidth = selectable
+      ? tableHeadings.current[0].getBoundingClientRect().width
+      : 0;
+    const firstStickyColumnWidth =
+      tableHeadings.current[selectable ? 1 : 0].getBoundingClientRect().width;
+    const lastColumnIsNotTheFirst = selectable
+      ? tableHeadings.current.length > 2
+      : 1;
+    // Don't consider the last column in the calculations if it's not sticky
+    const lastStickyColumnWidth =
+      lastColumnSticky && lastColumnIsNotTheFirst
+        ? tableHeadings.current[
+            tableHeadings.current.length - 1
+          ].getBoundingClientRect().width
+        : 0;
+    // Secure some space for the remaining columns to be visible
+    const restOfContentMinWidth = 100;
+    setCanFitStickyColumn(
+      scrollableRect.width >
+        firstStickyColumnWidth +
+          checkboxColumnWidth +
+          lastStickyColumnWidth +
+          restOfContentMinWidth,
+    );
+  }, [lastColumnSticky, selectable]);
+
+  useEffect(() => {
+    if (tableInitialized) {
+      handleCanFitStickyColumn();
+    }
+  }, [handleCanFitStickyColumn, tableInitialized]);
+
   const handleResize = useCallback(() => {
     // hide the scrollbar when resizing
     scrollBarElement.current?.style.setProperty(
@@ -290,11 +330,13 @@ function IndexTableBase({
     debounceResizeTableScrollbar();
     handleCanScrollRight();
     handleIsSmallScreen();
+    handleCanFitStickyColumn();
   }, [
     resizeTableHeadings,
     debounceResizeTableScrollbar,
     handleCanScrollRight,
     handleIsSmallScreen,
+    handleCanFitStickyColumn,
   ]);
 
   const handleScrollContainerScroll = useCallback(
@@ -608,8 +650,12 @@ function IndexTableBase({
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
     !selectable && styles['Table-unselectable'],
-    lastColumnSticky && styles['Table-sticky-last'],
-    lastColumnSticky && canScrollRight && styles['Table-sticky-scrolling'],
+    canFitStickyColumn && styles['Table-sticky'],
+    canFitStickyColumn && lastColumnSticky && styles['Table-sticky-last'],
+    canFitStickyColumn &&
+      lastColumnSticky &&
+      canScrollRight &&
+      styles['Table-sticky-scrolling'],
   );
 
   const emptyStateMarkup = emptyState ? (

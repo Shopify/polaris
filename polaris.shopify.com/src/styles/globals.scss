@@ -1,7 +1,6 @@
 @import 'variables.scss';
 @import 'fonts.scss';
 @import 'mixins.scss';
-@import 'prism.scss';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -131,6 +130,40 @@ html {
   *:focus-visible {
     box-shadow: var(--focus-outline);
   }
+
+  code,
+  pre {
+    .keyword {
+      color: var(--code-keyword);
+    }
+    .function {
+      color: var(--code-function);
+    }
+    .string {
+      color: var(--code-string);
+    }
+    .boolean {
+      color: var(--code-boolean);
+    }
+    .number {
+      color: var(--code-number);
+    }
+    .operator {
+      color: var(--code-operator);
+    }
+    .punctuation {
+      color: var(--code-punctuation);
+    }
+    .property {
+      color: var(--code-property);
+    }
+    .selector {
+      color: var(--code-selector);
+    }
+    .comment {
+      color: var(--code-comment);
+    }
+  }
 }
 
 html {
@@ -178,6 +211,16 @@ body,
   --decorative-4: #dce0f5;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #f4f5f5;
+  --code-keyword: #017b33;
+  --code-function: var(--code-keyword);
+  --code-string: #6a00df;
+  --code-boolean: #d6004b;
+  --code-number: #c55100;
+  --code-operator: var(--text);
+  --code-punctuation: var(--text-subdued);
+  --code-property: var(--code-keyword);
+  --code-selector: var(--code-keyword);
+  --code-comment: #3d2fe8;
 }
 
 .dark-mode {
@@ -203,6 +246,16 @@ body,
   --decorative-4: #342484;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #363636;
+  --code-keyword: #6dffaa;
+  --code-function: var(--code-keyword);
+  --code-string: #c087ff;
+  --code-boolean: #ff6ea1;
+  --code-number: #ff9e5b;
+  --code-operator: var(--text);
+  --code-punctuation: var(--text-subdued);
+  --code-property: var(--code-keyword);
+  --code-selector: var(--code-keyword);
+  --code-comment: #897fff;
 }
 
 video {
@@ -215,6 +268,10 @@ a {
 
 button {
   cursor: pointer;
+
+  &[disabled] {
+    cursor: default;
+  }
 }
 
 .sr-only {

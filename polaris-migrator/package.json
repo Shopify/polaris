@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-migrator",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "Codemod transformations to help upgrade your Polaris codebase",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
@@ -48,7 +48,7 @@
     "@rollup/plugin-commonjs": "^22.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@shopify/polaris": "^10.2.0",
+    "@shopify/polaris": "^10.3.1",
     "prettier": "^2.7.1",
     "type-fest": "^2.19.0"
   }
