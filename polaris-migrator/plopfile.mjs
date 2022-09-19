@@ -15,7 +15,14 @@ export default async function run(plop) {
       templateDir: path.join(__dirname, './templates/scss-migration'),
       outputDir: path.join(__dirname, './src/migrations'),
       prompts: [
-        {name: 'migrationName', message: "What's the name of your migration?"},
+        {
+          name: 'migrationName',
+          message: 'Name of the migration',
+        },
+        {
+          name: 'textFixtureName',
+          message: 'Name of input/output test fixture files',
+        },
       ],
     }),
   );
@@ -27,7 +34,14 @@ export default async function run(plop) {
       templateDir: path.join(__dirname, './templates/typescript-migration'),
       outputDir: path.join(__dirname, './src/migrations'),
       prompts: [
-        {name: 'migrationName', message: "What's the name of your migration?"},
+        {
+          name: 'migrationName',
+          message: 'Name of the migration',
+        },
+        {
+          name: 'textFixtureName',
+          message: 'Name of input/output test fixture files',
+        },
       ],
     }),
   );
