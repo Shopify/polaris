@@ -13,6 +13,8 @@ const breakpointsUsage = `
 
 A transform takes the above values and generates Sass variables (which can be
 used in media conditions) for each breakpoint in \`up\`, \`down\`, and \`only\` directions.
+While we currently support \`down\` media conditions, we encourage developers to
+adopt a mobile first strategy and use \`up\` wherever possible.
 
 Example of generated output for \`breakpoints-md\`:
 \`\`\`scss
