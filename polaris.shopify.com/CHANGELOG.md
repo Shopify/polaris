@@ -1,5 +1,20 @@
 # polaris.shopify.com
 
+## 0.18.0
+
+### Minor Changes
+
+- [#6757](https://github.com/Shopify/polaris/pull/6757) [`3711739a5`](https://github.com/Shopify/polaris/commit/3711739a5a49aa52f25560239fe60f22dc830167) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved Props table for all compoents. Adds auto-inlined types, expandable type references, syntax highlighting and much more.
+
+* [#7089](https://github.com/Shopify/polaris/pull/7089) [`fd6af1915`](https://github.com/Shopify/polaris/commit/fd6af19150cb1f59a7044ca9bfaa803e2b8b8714) Thanks [@alex-page](https://github.com/alex-page)! - Add whats new section for typography page
+
+### Patch Changes
+
+- [#7202](https://github.com/Shopify/polaris/pull/7202) [`06410bf5c`](https://github.com/Shopify/polaris/commit/06410bf5c85466a3f6a17a729a4848cc3403b273) Thanks [@martenbjork](https://github.com/martenbjork)! - Remove welcome banner from website.
+
+- Updated dependencies [[`c09994418`](https://github.com/Shopify/polaris/commit/c09994418ff097115c134a0c0230e3f54b62f9cd)]:
+  - @shopify/polaris@10.3.1
+
 ## 0.17.1
 
 ### Patch Changes
