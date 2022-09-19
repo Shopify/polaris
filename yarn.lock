@@ -15819,10 +15819,10 @@ pkg-up@^3.1.0:
   dependencies:
     find-up "^3.0.0"
 
-plop-dir@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/plop-dir/-/plop-dir-0.0.4.tgz#7a94ecb6b2cbafaa7b9caa4f0faeb6755d6aff25"
-  integrity sha512-GxpLLwAxau1xG+R+95BP/12H/Jhi8ueFmsAjnkck+mQyhDEUIHQnxNAw+H2bzEy0vU0BTiPk9d/MHuoCIjFqOg==
+plop-dir@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/plop-dir/-/plop-dir-0.0.5.tgz#b77e89dff7c6598a76fdf61eca05698ddb758b74"
+  integrity sha512-F1ZOmkM/0DNSPGLTFlt7WJSqjDX0WEh5gmYXMjKG2bgQWCUbuy6soW21H67ZlnWHB4Noj/YeBP1MBeFmmyKhSQ==
 
 plop@^3.1.1:
   version "3.1.1"
