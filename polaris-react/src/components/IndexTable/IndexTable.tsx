@@ -302,9 +302,14 @@ function IndexTableBase({
             tableHeadings.current.length - 1
           ].getBoundingClientRect().width
         : 0;
+    // Secure some space for the remaining columns to be visible
+    const restOfContentMinWidth = 100;
     setCanFitStickyColumn(
       scrollableRect.width >
-        firstStickyColumnWidth + checkboxColumnWidth + lastStickyColumnWidth,
+        firstStickyColumnWidth +
+          checkboxColumnWidth +
+          lastStickyColumnWidth +
+          restOfContentMinWidth,
     );
   }, [lastColumnSticky, selectable]);
 
