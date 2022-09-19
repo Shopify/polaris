@@ -42,15 +42,15 @@ const plugin = (): Plugin => ({
 
     const parsed = valueParser(decl.value);
 
-    const containsSpacingFn = parsed.nodes.some(isSpacingFn);
-    const containsCalculation = parsed.nodes.some(isNumericOperator);
-    if (containsSpacingFn && containsCalculation) {
-      // Insert comment if the declaration value contains calculations
-      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
-    }
+    let containsSpacingFn = false;
+    let containsCalculation = false;
 
     parsed.walk((node) => {
+      if (isSpacingFn(node)) containsSpacingFn = true;
+      if (isNumericOperator(node)) containsCalculation = true;
+
       if (!isSpacingFn(node)) return;
+
       const spacing = node.nodes[0]?.value ?? '';
 
       if (!isSpacing(spacing)) return;
@@ -68,7 +68,15 @@ const plugin = (): Plugin => ({
       ];
     });
 
-    decl.value = parsed.toString();
+    if (containsSpacingFn && containsCalculation) {
+      // Insert comment if the declaration value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      decl.before(
+        postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
+      );
+    } else {
+      decl.value = parsed.toString();
+    }
 
     // @ts-expect-error - Mark the declaration as processed
     decl[processed] = true;
