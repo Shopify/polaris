@@ -166,7 +166,7 @@ describe('<IndexTable>', () => {
     );
 
     expect(index).toContainReactComponent('table', {
-      className: 'Table Table-sticky-last',
+      className: 'Table Table-sticky Table-sticky-last',
     });
   });
 
@@ -220,7 +220,7 @@ describe('<IndexTable>', () => {
       scrollContainer!.trigger('onScroll', true, false);
 
       expect(index).toContainReactComponent('table', {
-        className: 'Table Table-scrolling Table-sticky-last',
+        className: 'Table Table-scrolling Table-sticky Table-sticky-last',
       });
     });
   });
@@ -348,7 +348,7 @@ describe('<IndexTable>', () => {
       );
 
       expect(index).toContainReactComponent('table', {
-        className: 'Table Table-sticky-last',
+        className: 'Table Table-sticky Table-sticky-last',
       });
       expect(index).toContainReactComponent('th', {
         children: title,
@@ -374,7 +374,7 @@ describe('<IndexTable>', () => {
       );
 
       expect(index).toContainReactComponent('table', {
-        className: 'Table Table-sticky-last',
+        className: 'Table Table-sticky Table-sticky-last',
       });
       expect(index).toContainReactComponent(VisuallyHidden, {
         children: title,
