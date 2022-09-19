@@ -1,15 +1,14 @@
-name: JSON
+name: Code
 set: minor
 description: Used to represent programming.
 keywords:
   - code
-  - json
-  - javascript
   - block
+  - liquid
   - script
   - syntax
 authors: Leina Leung
 version: 1
-date_added: 2022-09-13
-date_modified: 2022-09-13
+date_added: 2022-09-15
+date_modified: 2022-09-15
 exclusive_use:
