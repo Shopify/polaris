@@ -1,5 +1,14 @@
 @import '../../styles/common';
 
+label {
+  @media #{$p-breakpoints-sm-down} {
+    display: flex;
+    align-items: center;
+    width: 21.5rem;
+    height: 44px;
+  }
+}
+
 .Checkbox {
   position: relative;
   margin: var(--p-choice-margin);
