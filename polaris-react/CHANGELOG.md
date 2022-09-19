@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.3.1
+
+### Patch Changes
+
+- [#7130](https://github.com/Shopify/polaris/pull/7130) [`c09994418`](https://github.com/Shopify/polaris/commit/c09994418ff097115c134a0c0230e3f54b62f9cd) Thanks [@FCalabria](https://github.com/FCalabria)! - Fix long content on index table's sticky columns hiding the rest of the table
+
 ## 10.3.0
 
 ### Minor Changes

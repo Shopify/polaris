@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.1.1
+
+### Patch Changes
+
+- [#7217](https://github.com/Shopify/polaris/pull/7217) [`77d7b5ae3`](https://github.com/Shopify/polaris/commit/77d7b5ae3ff94d29133ff132316cb779a635b047) Thanks [@samrose3](https://github.com/samrose3)! - Update the Sass spacing migration to perform spacing replacement even when there is an operator.
+
 ## 0.1.0
 
 ### Minor Changes
