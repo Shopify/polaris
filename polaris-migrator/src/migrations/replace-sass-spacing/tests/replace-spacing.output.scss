@@ -10,4 +10,5 @@
   top: var(--p-space-5);
   /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
   bottom: var(--p-space-4) + var(--p-space-4);
+  left: var(--p-space-2);
 }
