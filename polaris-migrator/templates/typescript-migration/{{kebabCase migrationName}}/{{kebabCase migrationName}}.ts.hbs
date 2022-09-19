@@ -1,1 +1,10 @@
-export default {}
+import type {API, FileInfo} from 'jscodeshift';
+
+export default function {{camelCase migrationName}}(
+	fileInfo: FileInfo,
+	{jscodeshift: j}: API,
+) {
+	const source = j(file.source);
+
+  return source.toSource();
+}
