@@ -68,7 +68,7 @@ export function Playground() {
             </Text>
             <AlphaCard>
               <AlphaStack spacing="5">
-                <Columns columns={{xs: '1fr auto '}} gap={{xs: '4'}}>
+                <Columns columns={{xs: '1fr auto'}} gap={{xs: '4'}}>
                   <Text as="h3" variant="headingMd">
                     Variants{' '}
                   </Text>
@@ -209,11 +209,11 @@ export function Playground() {
           </AlphaStack>
           <AlphaStack>
             <Text as="h2" variant="bodySm">
-              Alpha with sections
+              Alpha with all the things
             </Text>
             <AlphaCard padding="0">
               <Box padding="5">
-                <Columns columns={{xs: 'auto 1fr 1fr'}} gap={{xs: '4'}}>
+                <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '4'}}>
                   <Text as="h3" variant="headingMd">
                     Sales
                   </Text>
@@ -246,66 +246,66 @@ export function Playground() {
                 </Text>
               </Box>
               <Box padding="5" borderBottom="divider">
-                <Box marginBottom="1">
+                <AlphaStack spacing="1">
                   <Text as="h3" variant="headingSm">
                     Total Sales Breakdown
                   </Text>
-                </Box>
-                <ResourceList
-                  resourceName={{singular: 'sale', plural: 'sales'}}
-                  items={[
-                    {
-                      sales: 'Orders',
-                      amount: 'USD$0.00',
-                      url: 'reports/orders',
-                    },
-                    {
-                      sales: 'Returns',
-                      amount: '-USD$250.00',
-                      url: 'reports/returns',
-                    },
-                  ]}
-                  renderItem={(item) => {
-                    const {sales, amount, url} = item;
-                    return (
-                      <ResourceList.Item
-                        url={url}
-                        accessibilityLabel={`View Sales for ${sales}`}
-                      >
-                        <Stack>
-                          <Stack.Item fill>{sales}</Stack.Item>
-                          <Stack.Item>{amount}</Stack.Item>
-                        </Stack>
-                      </ResourceList.Item>
-                    );
-                  }}
-                />
+                  <ResourceList
+                    resourceName={{singular: 'sale', plural: 'sales'}}
+                    items={[
+                      {
+                        sales: 'Orders',
+                        amount: 'USD$0.00',
+                        url: 'reports/orders',
+                      },
+                      {
+                        sales: 'Returns',
+                        amount: '-USD$250.00',
+                        url: 'reports/returns',
+                      },
+                    ]}
+                    renderItem={(item) => {
+                      const {sales, amount, url} = item;
+                      return (
+                        <ResourceList.Item
+                          url={url}
+                          accessibilityLabel={`View Sales for ${sales}`}
+                        >
+                          <Stack>
+                            <Stack.Item fill>{sales}</Stack.Item>
+                            <Stack.Item>{amount}</Stack.Item>
+                          </Stack>
+                        </ResourceList.Item>
+                      );
+                    }}
+                  />
+                </AlphaStack>
               </Box>
               <Box
                 padding="5"
                 borderBottom="divider"
                 background="surface-subdued"
               >
-                <Box marginBottom="1">
+                <AlphaStack spacing="1">
                   <Text as="h3" variant="headingSm">
                     Deactivated reports
                   </Text>
-                </Box>
-                <List>
-                  <List.Item>Payouts</List.Item>
-                  <List.Item>Total Sales By Channel</List.Item>
-                </List>
+                  <List>
+                    <List.Item>Payouts</List.Item>
+                    <List.Item>Total Sales By Channel</List.Item>
+                  </List>
+                </AlphaStack>
               </Box>
               <Box padding="5">
-                <Box marginBottom="1">
+                <AlphaStack spacing="1">
                   <Text as="h3" variant="headingSm">
                     Note
                   </Text>
-                </Box>
-                <Text as="p" variant="bodyMd">
-                  The sales reports are available only if your store is on the
-                  Shopify plan or higher.
-                </Text>
+                  <Text as="p" variant="bodyMd">
+                    The sales reports are available only if your store is on the
+                    Shopify plan or higher.
+                  </Text>
+                </AlphaStack>
               </Box>
               <Box paddingRight="5" paddingBottom="4" paddingLeft="5">
                 <Inline align="end" spacing="2">
