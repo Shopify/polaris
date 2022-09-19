@@ -1,6 +1,6 @@
-import {FileInfo} from 'jscodeshift';
+import type {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node, WordNode, FunctionNode} from 'postcss-value-parser';
+import valueParser, {Node, FunctionNode} from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
@@ -15,13 +15,14 @@ const spacingMap = {
   'extra-loose': '--p-space-8',
 };
 
-type Spacing = keyof typeof spacingMap;
+const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
+  Object.keys(spacingMap).includes(spacing as string);
 
 function isSpacingFn(node: Node): node is FunctionNode {
   return node.type === 'function' && node.value === 'spacing';
 }
 
-function isOperator(node: Node): boolean {
+function isNumericOperator(node: Node): boolean {
   return (
     node.value === '+' ||
     node.value === '-' ||
@@ -41,23 +42,30 @@ const plugin = (): Plugin => ({
 
     const parsed = valueParser(decl.value);
 
-    // Insert comment if the value contains calculations
-    const containsCalculation = parsed.nodes.some(isOperator);
     const containsSpacingFn = parsed.nodes.some(isSpacingFn);
-    if (containsCalculation && containsSpacingFn) {
-      const comment = postcss.comment({text: POLARIS_MIGRATOR_COMMENT});
-      decl.parent!.insertBefore(decl, comment);
+    const containsCalculation = parsed.nodes.some(isNumericOperator);
+    if (containsSpacingFn && containsCalculation) {
+      // Insert comment if the declaration value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
     }
 
     parsed.walk((node) => {
       if (!isSpacingFn(node)) return;
-      const hasNodes = Boolean(node.nodes && node.nodes.length);
-      const spacing = hasNodes ? node.nodes[0].value : '';
-      const newSpacing = spacingMap[spacing as Spacing];
+      const spacing = node.nodes[0]?.value ?? '';
+
+      if (!isSpacing(spacing)) return;
+      const spacingCustomProperty = spacingMap[spacing];
 
       node.value = 'var';
-      node.nodes = hasNodes ? node.nodes : [{type: 'word'} as WordNode];
-      node.nodes[0].value = newSpacing;
+      node.nodes = [
+        {
+          type: 'word',
+          value: spacingCustomProperty,
+          sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+          sourceEndIndex: spacingCustomProperty.length,
+        },
+        ...node.nodes.slice(1),
+      ];
     });
 
     decl.value = parsed.toString();
