@@ -100,6 +100,7 @@ export function Select({
     styles.Select,
     error && styles.error,
     disabled && styles.disabled,
+    // styles.mobileUpdates,
   );
 
   const handleChange = onChange
