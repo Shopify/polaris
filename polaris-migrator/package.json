@@ -29,7 +29,8 @@
     "start": "./bin/migrator-cli.js",
     "lint": "TIMING=1 eslint --cache .",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo",
+    "generate": "plop"
   },
   "dependencies": {
     "chalk": "^4.1.0",
@@ -49,6 +50,8 @@
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@shopify/polaris": "^10.3.1",
+    "plop": "^3.1.1",
+    "plop-dir": "^0.0.5",
     "prettier": "^2.7.1",
     "type-fest": "^2.19.0"
   }
