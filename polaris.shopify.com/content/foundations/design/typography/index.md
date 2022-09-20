@@ -58,12 +58,6 @@ Line length describes the width of the content. For longer body text, the recomm
 
 ![A diagram showing the ideal line length for text](/images/foundations/design/typography/text-line-length@2x.png)
 
-### Right align tabular numbers
-
-Right align numbers when they're inside a table. This keeps the decimal in the same place and makes numerical data easier to read and compare.
-
-![An image showing right aligning numbers within a table](/images/foundations/design/typography/text-tabular-numbers@2x.png)
-
 ### Color
 
 Color can be used to add contrast and reinforce the hierarchy between text.
