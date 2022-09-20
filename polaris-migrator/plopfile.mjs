@@ -1,3 +1,4 @@
+import * as fs from 'node:fs';
 import * as url from 'node:url';
 import * as path from 'node:path';
 
@@ -19,6 +20,7 @@ export default async function run(plop) {
           name: 'migrationName',
           message: 'Name of the migration',
           suffix: ' (e.g. replace-sass-layout)',
+          validate: (input) => validateMigrationName(plop, input),
         },
       ],
     }),
@@ -35,8 +37,20 @@ export default async function run(plop) {
           name: 'migrationName',
           message: 'Name of the migration',
           suffix: ' (e.g. replace-component-layout)',
+          validate: (input) => validateMigrationName(plop, input),
         },
       ],
     }),
+  );
+}
+
+function validateMigrationName(plop, input) {
+  const migrationName = plop.renderString('{{kebabCase input}}', {
+    input,
+  });
+
+  return (
+    !fs.existsSync(path.join(__dirname, `./src/migrations/${migrationName}`)) ||
+    'That migration name already exists'
   );
 }
