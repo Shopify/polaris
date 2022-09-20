@@ -23,8 +23,7 @@
     }
 
     ~ .Icon {
-      transition: opacity var(--p-duration-150) var(--p-ease),
-        transform var(--p-duration-150) var(--p-ease);
+      transition: opacity var(--p-duration-150) var(--p-ease);
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
     }
@@ -67,8 +66,7 @@
 
   transform: translate(-50%, -50%) scale(0.25);
   opacity: 0;
-  transition: opacity var(--p-duration-100) var(--p-ease),
-    transform var(--p-duration-100) var(--p-ease);
+  transition: opacity var(--p-duration-100) var(--p-ease);
 
   @media (-ms-high-contrast: active) {
     fill: windowText;
