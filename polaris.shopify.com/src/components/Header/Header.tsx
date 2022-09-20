@@ -51,11 +51,11 @@ function Header({darkMode, currentPath = ''}: Props) {
 
   return (
     <div className={styles.Header}>
-      <Container className={styles.HeaderInner}>
-        <div className={styles.MobileNavContainer}>
-          <MobileNav currentPath={currentPath} />
-        </div>
+      <div className={styles.MobileNavContainer}>
+        <MobileNav currentPath={currentPath} />
+      </div>
 
+      <Container className={styles.HeaderInner}>
         <Link href="/">
           <a className={styles.Logo}>
             <Image

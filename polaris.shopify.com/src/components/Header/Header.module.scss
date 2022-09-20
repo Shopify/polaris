@@ -6,7 +6,7 @@
   top: 0;
   z-index: 2;
   background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid var(--border-color-light);
+  border-right: 1px solid var(--border-color-light);
 
   @include dark-mode {
     background: rgba(28, 28, 28, 0.9);
@@ -15,15 +15,16 @@
 
 .HeaderInner {
   display: flex;
-  align-items: center;
-  gap: 3em;
-  height: var(--header-height);
+  flex-direction: column;
+  gap: 2em;
+  height: 100vh;
 
   .Nav {
     display: flex;
 
     ul {
       display: flex;
+      flex-direction: column;
       font-size: var(--font-size-100);
       font-weight: var(--font-weight-500);
 

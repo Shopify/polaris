@@ -4,6 +4,7 @@ import useDarkMode from 'use-dark-mode';
 
 import Header from '../Header';
 import {className} from '../../utils/various';
+import styles from './Page.module.scss';
 
 interface Props {
   children: React.ReactNode;
@@ -26,12 +27,13 @@ function Page({children}: Props) {
     <div
       style={{background: isPolaris ? '#fafafa' : 'unset'}}
       className={className(
+        styles.Page,
         !isPolaris && 'styles-for-site-but-not-polaris-examples',
       )}
     >
       {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
-      {children}
+      <div className={styles.PageContent}>{children}</div>
     </div>
   );
 }
