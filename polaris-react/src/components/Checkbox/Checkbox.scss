@@ -65,6 +65,7 @@
   transform-origin: 50% 50%;
   pointer-events: none;
 
+  will-change: transform;
   transform: translate(-50%, -50%) scale(0.25);
   opacity: 0;
   transition: opacity var(--p-duration-100) var(--p-ease),
