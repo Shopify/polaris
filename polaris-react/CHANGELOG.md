@@ -1,5 +1,50 @@
 # Changelog
 
+## 10.3.1
+
+### Patch Changes
+
+- [#7130](https://github.com/Shopify/polaris/pull/7130) [`c09994418`](https://github.com/Shopify/polaris/commit/c09994418ff097115c134a0c0230e3f54b62f9cd) Thanks [@FCalabria](https://github.com/FCalabria)! - Fix long content on index table's sticky columns hiding the rest of the table
+
+## 10.3.0
+
+### Minor Changes
+
+- [#7181](https://github.com/Shopify/polaris/pull/7181) [`577796691`](https://github.com/Shopify/polaris/commit/57779669169f503cdceaedbb9c0ca269cef4d9b2) Thanks [@laurkim](https://github.com/laurkim)! - Added stories for `Text` component
+
+* [#7140](https://github.com/Shopify/polaris/pull/7140) [`9eff83ea6`](https://github.com/Shopify/polaris/commit/9eff83ea6b3011cb45c777b0f9e48cb9a82cd210) Thanks [@renerbaffa](https://github.com/renerbaffa)! - Export hexToRgb from color-transformers
+
+- [#7050](https://github.com/Shopify/polaris/pull/7050) [`0ccc981fc`](https://github.com/Shopify/polaris/commit/0ccc981fc39506e07222e4106aaed1b5bb765f85) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Exposes useBreakpoint as a named export from @shopify/polaris-react
+
+* [#7178](https://github.com/Shopify/polaris/pull/7178) [`2ce4503f5`](https://github.com/Shopify/polaris/commit/2ce4503f5f886f24686c6f1ee0b79edaa658e174) Thanks [@IrinaLipovaya](https://github.com/IrinaLipovaya)! - Add `ariaLabelledBy` prop to `ProgressBar` component to allow ids of description elements for accessibility
+
+### Patch Changes
+
+- [#7132](https://github.com/Shopify/polaris/pull/7132) [`c31402639`](https://github.com/Shopify/polaris/commit/c3140263993046e68d8c1c51cb14d42c1a40e170) Thanks [@martenbjork](https://github.com/martenbjork)! - Clarified the naming of SkeletonTabs props (from "Props" to "SkeletonTabsProps")
+
+* [#7141](https://github.com/Shopify/polaris/pull/7141) [`8e16d15d1`](https://github.com/Shopify/polaris/commit/8e16d15d1249591e9e854ae294ec8ce8ab3e3594) Thanks [@renerbaffa](https://github.com/renerbaffa)! - Added an example of Hex code TextField to ColorPicker
+
+- [#7179](https://github.com/Shopify/polaris/pull/7179) [`3911a45a8`](https://github.com/Shopify/polaris/commit/3911a45a8dc3010d31f5bec6208e58ab4db88bd7) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Text` component to use `semibold` for `headingXs` variant
+
+* [#7111](https://github.com/Shopify/polaris/pull/7111) [`69faaa41d`](https://github.com/Shopify/polaris/commit/69faaa41db4af147b1e4e3de1c0e4b683143d64b) Thanks [@nneubarth](https://github.com/nneubarth)! - Fixed bug in which deleted elements or clicks inside other portal-based elements were inappropriately closing popovers
+
+* Updated dependencies [[`9d6497970`](https://github.com/Shopify/polaris/commit/9d64979708a2e961a537e5b152ad028e6aa52795)]:
+  - @shopify/polaris-icons@6.2.0
+
+## 10.2.0
+
+### Minor Changes
+
+- [#7064](https://github.com/Shopify/polaris/pull/7064) [`e2c7d6676`](https://github.com/Shopify/polaris/commit/e2c7d66760b7aef20dda18153e23222d58c61fcf) Thanks [@KaunainKarmali](https://github.com/KaunainKarmali)! - - Improved the `useIndexResourceState` hook by exposing a new function called `removeSelectedResources`
+  - The `removeSelectedResources` function supports removing one or more items from the `selectedResources` state
+
+## 10.1.2
+
+### Patch Changes
+
+- Updated dependencies [[`811af5907`](https://github.com/Shopify/polaris/commit/811af590780f4546b4add345205382f87b429569)]:
+  - @shopify/polaris-icons@6.1.0
+
 ## 10.1.1
 
 ### Patch Changes

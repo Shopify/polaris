@@ -124,10 +124,28 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     setAllResourcesSelected(false);
   }, []);
 
+  const removeSelectedResources = useCallback(
+    (removeResources: string[]) => {
+      const selectedResourcesCopy = [...selectedResources];
+
+      const newSelectedResources = selectedResourcesCopy.filter(
+        (resource) => !removeResources.includes(resource),
+      );
+
+      setSelectedResources(newSelectedResources);
+
+      if (newSelectedResources.length === 0) {
+        setAllResourcesSelected(false);
+      }
+    },
+    [selectedResources],
+  );
+
   return {
     selectedResources,
     allResourcesSelected,
     handleSelectionChange,
     clearSelection,
+    removeSelectedResources,
   };
 }

@@ -7,10 +7,12 @@
   },
   "workspaces": {
     "packages": [
+      "polaris-cli",
       "polaris-tokens",
       "polaris-for-figma",
       "polaris-for-vscode",
       "polaris-icons",
+      "polaris-migrator",
       "polaris-react",
       "stylelint-polaris",
       "polaris.shopify.com"
@@ -35,9 +37,9 @@
     "type-check": "tsc --build",
     "changeset": "changeset",
     "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
-    "preversion-packages": "turbo run preversion",
+    "preversion-packages": "node scripts/preversion.js",
     "version-packages": "yarn preversion-packages && changeset version",
-    "release": "turbo run build --filter=polaris.shopify.com^... && changeset publish",
+    "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1"
   },
   "devDependencies": {
@@ -45,6 +47,7 @@
     "@babel/node": "^7.14.9",
     "@changesets/changelog-github": "^0.4.4",
     "@changesets/cli": "^2.23.0",
+    "@changesets/get-release-plan": "^3.0.14",
     "@next/eslint-plugin-next": "^12.1.4",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^21.1.0",
@@ -55,6 +58,7 @@
     "@rollup/plugin-virtual": "^2.0.3",
     "@rollup/pluginutils": "^4.1.0",
     "@shopify/babel-preset": "^24.1.2",
+    "@shopify/cli": "^3.10.1",
     "@shopify/eslint-plugin": "^42.0.1",
     "@shopify/prettier-config": "^1.1.2",
     "@shopify/stylelint-plugin": "^11.0.0",
@@ -82,17 +86,17 @@
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "206 kB"
+      "limit": "215 kB"
     },
     {
       "name": "polaris-react-esm",
       "path": "polaris-react/build/esm/index.js",
-      "limit": "140 kB"
+      "limit": "150 kB"
     },
     {
       "name": "polaris-react-esnext",
       "path": "polaris-react/build/esnext/index.esnext",
-      "limit": "195 kB"
+      "limit": "205 kB"
     },
     {
       "name": "polaris-react-css",

@@ -31,6 +31,10 @@ export interface ProgressBarProps {
    * @default 'true'
    */
   animated?: boolean;
+  /**
+   * Id (ids) of element (elements) that describes progressbar
+   */
+  ariaLabelledBy?: string;
 }
 
 export function ProgressBar({
@@ -38,6 +42,7 @@ export function ProgressBar({
   size = 'medium',
   color = 'highlight',
   animated: hasAppearAnimation = true,
+  ariaLabelledBy,
 }: ProgressBarProps) {
   const i18n = useI18n();
 
@@ -63,7 +68,12 @@ export function ProgressBar({
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
     <div className={className}>
-      <progress className={styles.Progress} value={parsedProgress} max="100" />
+      <progress
+        aria-labelledby={ariaLabelledBy}
+        className={styles.Progress}
+        value={parsedProgress}
+        max="100"
+      />
       <CSSTransition
         in
         appear

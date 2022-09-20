@@ -6,7 +6,7 @@ const {writeFileSync, readFileSync} = require('fs');
 
 const getReleasePlan = require('@changesets/get-release-plan').default;
 
-const {name: pkgName} = require('../package.json');
+const {name: pkgName, version} = require('../package.json');
 const {semverRegExp} = require('../scripts/utilities');
 
 const root = resolve(__dirname, '..');
@@ -14,7 +14,9 @@ const readmePath = resolve(root, 'README.md');
 
 const run = async () => {
   const {releases} = await getReleasePlan(resolve(process.cwd(), '../'));
-  const {newVersion} = releases.find((release) => release.name === pkgName);
+  const {newVersion} = releases.find((release) => release.name === pkgName) || {
+    newVersion: version,
+  };
 
   console.log(`🆕 Updating version in README.md...`);
 

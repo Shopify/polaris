@@ -10,6 +10,7 @@
     // Paths to lint
     "polaris-for-figma",
     "polaris-for-vscode",
+    "polaris-migrator",
     "polaris-react",
     "polaris-tokens",
     "polaris.shopify.com",

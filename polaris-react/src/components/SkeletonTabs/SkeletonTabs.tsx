@@ -5,11 +5,11 @@ import {SkeletonBodyText} from '../SkeletonBodyText';
 
 import styles from './SkeletonTabs.scss';
 
-export interface Props {
+export interface SkeletonTabsProps {
   count?: number;
 }
 
-export function SkeletonTabs({count = 2}: Props) {
+export function SkeletonTabs({count = 2}: SkeletonTabsProps) {
   return (
     <div className={styles.Tabs}>
       {[...Array(count).keys()].map((key) => {
