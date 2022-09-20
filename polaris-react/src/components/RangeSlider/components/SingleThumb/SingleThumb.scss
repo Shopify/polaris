@@ -28,7 +28,7 @@
   }
 
   @media #{$p-breakpoints-sm-down} {
-    height: 44px;
+    min-height: 44px;
   }
 }
 
