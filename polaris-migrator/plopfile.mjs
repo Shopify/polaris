@@ -20,11 +20,6 @@ export default async function run(plop) {
           message: 'Name of the migration',
           suffix: ' (e.g. replace-sass-layout)',
         },
-        {
-          name: 'testFixtureName',
-          message: 'Name of the initial input/output test fixtures',
-          suffix: ' (e.g. replace-layout-mixins)',
-        },
       ],
     }),
   );
@@ -40,11 +35,6 @@ export default async function run(plop) {
           name: 'migrationName',
           message: 'Name of the migration',
           suffix: ' (e.g. replace-component-layout)',
-        },
-        {
-          name: 'testFixtureName',
-          message: 'Name of the initial input/output test fixtures',
-          suffix: ' (e.g. replace-layout-props)',
         },
       ],
     }),
