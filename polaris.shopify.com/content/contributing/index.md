@@ -1,10 +1,12 @@
 ---
 title: Contributing to Polaris
-description: Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support. Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
+description: Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support. 
 keywords:
   - how to contribute to polaris
   - contribution
 ---
+
+Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
 
 ## Who can contribute
 
@@ -12,7 +14,7 @@ Contribution to Polaris looks different depending on whether you work at Shopify
 
 ## When to contribute
 
-Contributions can seem intimidating, but they don't have to be! Here are some common scenarios for deciding when to contribute:
+Contributions can seem intimidating, but they don’t have to be! Here are some common scenarios for deciding when to contribute:
 
 | Use the system                                                               | Extend the system                                                                       | Build a custom solution                                                                         |     |     |
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |

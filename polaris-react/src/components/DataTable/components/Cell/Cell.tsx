@@ -13,6 +13,7 @@ export interface CellProps {
   content?: React.ReactNode;
   contentType?: string;
   nthColumn?: boolean;
+  firstColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
   total?: boolean;
@@ -34,12 +35,14 @@ export interface CellProps {
   fixedCellVisible?: boolean;
   firstColumnMinWidth?: string;
   style?: React.CSSProperties;
+  lastFixedFirstColumn?: boolean;
 }
 
 export function Cell({
   content,
   contentType,
   nthColumn,
+  firstColumn,
   truncate,
   header,
   total,
@@ -61,6 +64,7 @@ export function Cell({
   fixedCellVisible = false,
   firstColumnMinWidth,
   style,
+  lastFixedFirstColumn,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
@@ -68,8 +72,8 @@ export function Cell({
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
-    nthColumn && styles['Cell-firstColumn'],
-    nthColumn && truncate && styles['Cell-truncated'],
+    firstColumn && styles['Cell-firstColumn'],
+    truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     totalInFooter && styles['Cell-total-footer'],
@@ -78,7 +82,10 @@ export function Cell({
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
-    fixedCellVisible && styles.separate,
+    lastFixedFirstColumn &&
+      inFixedNthColumn &&
+      fixedCellVisible &&
+      styles['Cell-separate'],
     nthColumn &&
       inFixedNthColumn &&
       stickyHeadingCell &&
@@ -156,31 +163,35 @@ export function Cell({
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
+      aria-sort={sortDirection}
       {...colSpanProp}
       ref={setRef}
       className={className}
       scope="col"
-      aria-sort={sortDirection}
-      style={nthColumn ? {minWidth: firstColumnMinWidth} : {}}
+      style={{...minWidthStyles}}
     >
       {columnHeadingContent}
     </th>
   ) : (
     <th
-      style={{minWidth: firstColumnMinWidth}}
+      {...colSpanProp}
+      ref={setRef}
       className={className}
       scope="row"
-      {...colSpanProp}
-      ref={(ref) => {
-        setRef(ref);
-      }}
+      style={{...minWidthStyles}}
     >
-      <TruncatedText className={styles.TooltipContent}>{content}</TruncatedText>
+      {truncate ? (
+        <TruncatedText className={styles.TooltipContent}>
+          {content}
+        </TruncatedText>
+      ) : (
+        content
+      )}
     </th>
   );
 
   const cellMarkup =
-    header || nthColumn ? (
+    header || firstColumn || nthColumn ? (
       headingMarkup
     ) : (
       <td className={className} {...colSpanProp}>

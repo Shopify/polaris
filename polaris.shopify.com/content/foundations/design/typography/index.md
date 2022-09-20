@@ -22,7 +22,7 @@ icon: TypeMajor
 
 ![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
-[Figma styles](http://www.google.com) | [Tokens](http://www.google.com) | [Components](http://www.google.com)
+[Figma styles](https://www.figma.com/file/JHp1kp7ghGmTHs147CHjDf/Polaris-Styles?node-id=5455%3A50) | [Tokens](https://polaris.shopify.com/tokens/font) | [Components](https://polaris.shopify.com/components)
 
 ---
 
@@ -197,4 +197,4 @@ We can help merchants navigate the UI by grouping related information together. 
 
 Ambiguous spacing can cause confusion and make it hard to understand the content.
 
-![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
+![An image of showing how to use space to create hierarchy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)

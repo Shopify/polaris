@@ -42,12 +42,10 @@ const Components = ({
   propsForComponent,
 }: Props) => {
   const navItems: NavItem[] = getComponentNav();
-  const typedStatus: Status | undefined = status
-    ? {
-        value: status.value.toLowerCase() as Status['value'],
-        message: status.message,
-      }
-    : undefined;
+  const statusBanner = status ? <StatusBanner status={status} /> : null;
+  const propList = propsForComponent ? (
+    <PropsTable props={propsForComponent} />
+  ) : null;
 
   return (
     <Layout width="narrow" navItems={navItems} title={title}>
@@ -55,9 +53,9 @@ const Components = ({
 
       <Longform>
         <Markdown text={description} />
-        {typedStatus && <StatusBanner status={typedStatus} />}
+        {statusBanner}
         <ComponentExamples examples={examples} />
-        {propsForComponent && <PropsTable props={propsForComponent} />}
+        {propList}
         <Markdown text={readme.body} />
       </Longform>
     </Layout>

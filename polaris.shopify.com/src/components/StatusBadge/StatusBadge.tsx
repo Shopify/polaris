@@ -4,10 +4,10 @@ import styles from './StatusBadge.module.scss';
 interface Props {
   status: Status;
 }
-function StatusBadge({status}: Props) {
+function StatusBadge({status: {value, message}}: Props) {
   return (
-    <div className={styles.StatusBadge} data-value={status.value}>
-      {status.message}
+    <div className={styles.StatusBadge} data-value={value.toLowerCase()}>
+      {message}
     </div>
   );
 }
