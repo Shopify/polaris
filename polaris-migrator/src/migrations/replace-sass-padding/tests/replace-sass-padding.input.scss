@@ -2,11 +2,12 @@
   color: red;
   padding-top: 13px;
   padding: 0 1rem 2em 3px 4in;
-  // padding-bottom: var(--p-space-0);
-  // padding-right: rem(2px);
+  padding-bottom: var(--p-space-0);
+  padding-right: rem(2px);
 }
 
 .another-class {
   padding-bottom: 0.5rem;
   padding-top: 1.25rem;
+  padding-right: calc(2px + 2px);
 }

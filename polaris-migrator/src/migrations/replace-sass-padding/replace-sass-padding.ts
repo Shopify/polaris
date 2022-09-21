@@ -1,6 +1,20 @@
 import type {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+import valueParser, {Node} from 'postcss-value-parser';
+
+import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+
+// List of the props we want to run this migration on
+const targetProps = [
+  'padding',
+  'padding-top',
+  'padding-right',
+  'padding-bottom',
+  'padding-left',
+];
+
+const isTargetProp = (propName: string): boolean =>
+  targetProps.includes(propName);
 
 // Mapping of spacing tokens and their corresponding px values
 const spacingTokensMap = {
@@ -23,35 +37,42 @@ const spacingTokensMap = {
   '128px': '--p-space-32',
 };
 
-// List of the props we want to run this migration on
-const targetProps = [
-  'padding',
-  'padding-top',
-  'padding-right',
-  'padding-bottom',
-  'padding-left',
-];
-
-const isTargetProp = (propName: string): boolean =>
-  targetProps.includes(propName);
-
 const isSpacingTokenValue = (
   value: string,
 ): value is keyof typeof spacingTokensMap =>
   Object.keys(spacingTokensMap).includes(value);
 
+const processed = Symbol('processed');
+
+function isNumericOperator(node: Node): boolean {
+  return (
+    node.value === '+' ||
+    node.value === '-' ||
+    node.value === '*' ||
+    node.value === '/' ||
+    node.value === '%'
+  );
+}
+
 const plugin = (): Plugin => ({
   postcssPlugin: 'replace-sass-padding',
   Declaration(decl) {
+    // @ts-expect-error - Skip if processed so we don't process it again
+    if (decl[processed]) return;
+
     const prop = decl.prop;
     const parsedValue = valueParser(decl.value);
 
     if (!isTargetProp(prop)) return;
 
+    let containsCalculation = false;
+
     parsedValue.walk((node) => {
       const dimension = valueParser.unit(node.value);
 
-      if (node.type === 'word' && dimension) {
+      if (isNumericOperator(node)) containsCalculation = true;
+
+      if (node.type === 'word' && dimension && !containsCalculation) {
         switch (dimension.unit) {
           case '': {
             if (!isSpacingTokenValue(node.value)) return;
@@ -77,9 +98,41 @@ const plugin = (): Plugin => ({
           }
         }
       }
+      if (node.type === 'function') {
+        const funcType = node.value;
+        const funcValue = node.nodes[0]?.value ?? '';
+
+        switch (funcType) {
+          case 'calc': {
+            containsCalculation = true;
+            break;
+          }
+          case 'var': {
+            break;
+          }
+          case 'rem': {
+            // TODO: create logic to prevent innards from being converted
+            break;
+          }
+          default: {
+            console.log(`Function ${funcType} is not supported`);
+          }
+        }
+      }
     });
 
-    decl.value = parsedValue.toString();
+    if (containsCalculation) {
+      // Insert comment if the declaration value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      decl.before(
+        postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+      );
+    } else {
+      decl.value = parsedValue.toString();
+    }
+
+    // @ts-expect-error - Mark the declaration as processed
+    decl[processed] = true;
   },
 });
 
