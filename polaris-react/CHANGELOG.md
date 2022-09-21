@@ -1,5 +1,14 @@
 # Changelog
 
+## 10.3.2
+
+### Patch Changes
+
+- [#7243](https://github.com/Shopify/polaris/pull/7243) [`29043ca5e`](https://github.com/Shopify/polaris/commit/29043ca5e669150477a78a78a4f5d88823475649) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fix `IndexTable` Safari rendering issue
+
+- Updated dependencies [[`17c4fe2ac`](https://github.com/Shopify/polaris/commit/17c4fe2acc0bcd493d0febec06102173cc759aff)]:
+  - @shopify/polaris-icons@6.3.0
+
 ## 10.3.1
 
 ### Patch Changes
