@@ -10,14 +10,22 @@ import {
   SpacingTokenScale,
 } from '../Box';
 
-// import styles from './AlphaCard.scss';
+type CardElevationTokensScale = Extract<
+  DepthTokenScale,
+  'card' | 'transparent'
+>;
+
+type CardBackgroundColorTokenScale = Extract<
+  BackgroundColorTokenScale,
+  'surface' | `surface-${string}`
+>;
 
 export interface AlphaCardProps {
   /** Elements to display inside card */
   children?: React.ReactNode;
-  backgroundColor?: BackgroundColorTokenScale;
+  backgroundColor?: CardBackgroundColorTokenScale;
   borderRadius?: BorderRadiusTokenScale;
-  elevation?: DepthTokenScale;
+  elevation?: CardElevationTokensScale;
   padding?: SpacingTokenScale;
 }
 
