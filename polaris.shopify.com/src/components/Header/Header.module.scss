@@ -5,8 +5,13 @@
   position: sticky;
   top: 0;
   z-index: 2;
+  height: 100vh;
+  min-width: 18rem;
+  padding: 2rem;
+  overflow: auto;
   background: rgba(255, 255, 255, 0.95);
   border-right: 1px solid var(--border-color-light);
+  @include custom-scrollbars;
 
   @include dark-mode {
     background: rgba(28, 28, 28, 0.9);
@@ -17,27 +22,33 @@
   display: flex;
   flex-direction: column;
   gap: 2em;
-  height: 100vh;
-
   .Nav {
-    display: flex;
+    .NavItem {
+      display: flex;
+      justify-content: space-between;
+      a {
+        flex: 1;
+      }
+    }
+
+    > ul > li {
+      margin-top: 1rem;
+    }
 
     ul {
       display: flex;
       flex-direction: column;
-      font-size: var(--font-size-100);
+      font-size: var(--font-size-50);
       font-weight: var(--font-weight-500);
 
       li {
+        li {
+          margin-left: 0.5rem;
+        }
         a {
-          color: inherit;
-          white-space: pre;
-          display: block;
-          padding: 1px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
-
           span {
             display: block;
-            padding: 0.75rem 0.8rem;
+            padding: 0.125rem 0;
           }
 
           &:focus-within {
@@ -48,15 +59,6 @@
 
           &:hover {
             color: var(--text-strong);
-          }
-
-          &[aria-current='page'],
-          &:hover {
-            span {
-              background: var(--surface-subdued);
-              border-radius: var(--border-radius-800);
-              color: var(--text-strong);
-            }
           }
         }
 

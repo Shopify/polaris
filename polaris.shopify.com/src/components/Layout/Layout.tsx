@@ -32,10 +32,6 @@ function Layout({
         width === 'narrow' && styles.narrow,
       )}
     >
-      <div className={styles.Nav}>
-        {navItems && <Nav navItems={navItems} />}
-      </div>
-
       <article className={styles.Post} id="main">
         {title && (
           <Longform>

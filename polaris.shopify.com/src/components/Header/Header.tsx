@@ -4,34 +4,27 @@ import Image from 'next/image';
 import {DarkMode} from 'use-dark-mode';
 
 import GlobalSearch from '../GlobalSearch';
-import Container from '../Container';
 import MobileNav from '../MobileNav';
-import type {NavItem} from '../Nav';
+// import type {NavItem} from '../Nav';
+import navJSON from '../../../.cache/nav.json';
 
 import styles from './Header.module.scss';
 
-const headerNavItems: NavItem[] = [
-  {
-    title: 'Foundations',
-    url: '/foundations',
-  },
-  {
-    title: 'Components',
-    url: '/components',
-  },
-  {
-    title: 'Tokens',
-    url: '/tokens/colors',
-  },
-  {
-    title: 'Icons',
-    url: '/icons',
-  },
-  // {
-  //   title: "Contributing",
-  //   url: "/contributing",
-  // },
-];
+interface Nav {
+  children?: {
+    [key: string]: NavItem;
+  };
+}
+
+interface NavItem {
+  title?: string;
+  description?: string;
+  slug?: string;
+  expandable?: false;
+  children?: Nav;
+}
+
+const nav = navJSON as Nav;
 
 interface Props {
   darkMode: DarkMode;
@@ -47,7 +40,6 @@ function Header({darkMode, currentPath = ''}: Props) {
   }, [currentPath]);
 
   const match = currentPath.match(/^\/\w+/);
-  const currentSection = match ? match[0] : '';
 
   return (
     <div className={styles.Header}>
@@ -55,7 +47,7 @@ function Header({darkMode, currentPath = ''}: Props) {
         <MobileNav currentPath={currentPath} />
       </div>
 
-      <Container className={styles.HeaderInner}>
+      <div className={styles.HeaderInner}>
         <Link href="/">
           <a className={styles.Logo}>
             <Image
@@ -69,6 +61,8 @@ function Header({darkMode, currentPath = ''}: Props) {
           </a>
         </Link>
 
+        <GlobalSearch />
+
         {showSkipToContentLink && (
           <a className={styles.SkipToContentLink} href="#main">
             Skip to content
@@ -77,22 +71,7 @@ function Header({darkMode, currentPath = ''}: Props) {
 
         <nav className={styles.Nav}>
           <ul>
-            {headerNavItems.map(({url, title}) => {
-              const isCurrent =
-                currentSection && url?.startsWith(currentSection)
-                  ? 'page'
-                  : false;
-
-              return url ? (
-                <li key={url}>
-                  <Link href={url} passHref>
-                    <a aria-current={isCurrent}>
-                      <span>{title}</span>
-                    </a>
-                  </Link>
-                </li>
-              ) : null;
-            })}
+            <NavItem nav={nav} />
           </ul>
         </nav>
 
@@ -103,10 +82,65 @@ function Header({darkMode, currentPath = ''}: Props) {
             <div className={styles.DarkModeIcon}>🌙</div>
           )}
         </button>
-
-        <GlobalSearch />
-      </Container>
+      </div>
     </div>
+  );
+}
+
+function NavItem({nav}: {nav: NavItem}) {
+  const [expandedSections, setExpandedSections] = useState<{
+    [slug: string]: boolean;
+  }>({});
+
+  const isCurrent = false;
+  return (
+    <>
+      {nav.children &&
+        Object.entries(nav.children).map((entry) => {
+          const [key, child] = entry as [string, NavItem];
+
+          const isExpandable = child.children && child.expandable !== false;
+
+          return (
+            <li key={child.slug}>
+              <div className={styles.NavItem}>
+                {child.slug ? (
+                  <Link href={child.slug} passHref>
+                    <a aria-current={isCurrent}>
+                      <span>{child.title}</span>
+                    </a>
+                  </Link>
+                ) : (
+                  <span>{child.title || key}</span>
+                )}
+
+                {isExpandable && (
+                  <span
+                    onClick={() =>
+                      setExpandedSections({
+                        ...expandedSections,
+                        [key]: expandedSections[key] ? false : true,
+                      })
+                    }
+                  >
+                    {!!expandedSections[key] ? '—' : '+'}
+                  </span>
+                )}
+              </div>
+
+              {isExpandable && (
+                <ul
+                  style={{
+                    display: !!expandedSections[key] ? 'block' : 'none',
+                  }}
+                >
+                  <NavItem nav={child} />
+                </ul>
+              )}
+            </li>
+          );
+        })}
+    </>
   );
 }
 
