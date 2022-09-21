@@ -1,5 +1,13 @@
 # @shopify/polaris-migrator
 
+## 0.1.2
+
+### Patch Changes
+
+- [#7223](https://github.com/Shopify/polaris/pull/7223) [`c7afbd498`](https://github.com/Shopify/polaris/commit/c7afbd4984048ddc7438c7cef9e50acd1d174db1) Thanks [@samrose3](https://github.com/samrose3)! - Update Sass spacing migration to properly map spacing functions where quoted string arguments are passed (ex: `spacing('tight')`)
+
+* [#7229](https://github.com/Shopify/polaris/pull/7229) [`2fec9611d`](https://github.com/Shopify/polaris/commit/2fec9611dec0a147be0be0410e955e92c025edc0) Thanks [@samrose3](https://github.com/samrose3)! - Update Sass spacing migrator to apply operator migrations as comments
+
 ## 0.1.1
 
 ### Patch Changes
