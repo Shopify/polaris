@@ -29,6 +29,18 @@
       a {
         flex: 1;
       }
+      button {
+        width: 1.25rem;
+        height: 1.25rem;
+        border-radius: 100%;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .sectionBreakAfter {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color-light);
     }
 
     > ul > li {

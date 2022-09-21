@@ -9,6 +9,7 @@ import MobileNav from '../MobileNav';
 import navJSON from '../../../.cache/nav.json';
 
 import styles from './Header.module.scss';
+import {className} from '../../utils/various';
 
 interface Nav {
   children?: {
@@ -20,7 +21,10 @@ interface NavItem {
   title?: string;
   description?: string;
   slug?: string;
+  order?: number;
   expandable?: false;
+  sectionBreakAfter?: true;
+  skipInNav?: true;
   children?: Nav;
 }
 
@@ -92,54 +96,77 @@ function NavItem({nav}: {nav: NavItem}) {
     [slug: string]: boolean;
   }>({});
 
+  const toggleChild = (slug: string) => {
+    setExpandedSections({
+      ...expandedSections,
+      [slug]: expandedSections[slug] ? false : true,
+    });
+  };
+
+  const openChild = (slug: string) => {
+    setExpandedSections({...expandedSections, [slug]: true});
+  };
+
   const isCurrent = false;
+
   return (
     <>
       {nav.children &&
-        Object.entries(nav.children).map((entry) => {
-          const [key, child] = entry as [string, NavItem];
+        Object.entries(nav.children)
+          .sort((_a, _b) => {
+            const [, a] = _a as [string, NavItem];
+            const [, b] = _b as [string, NavItem];
+            return (a.order || 0) - (b.order || 0);
+          })
+          .map((entry) => {
+            const [key, child] = entry as [string, NavItem];
 
-          const isExpandable = child.children && child.expandable !== false;
+            const isExpandable = child.children && child.expandable !== false;
 
-          return (
-            <li key={child.slug}>
-              <div className={styles.NavItem}>
-                {child.slug ? (
-                  <Link href={child.slug} passHref>
-                    <a aria-current={isCurrent}>
-                      <span>{child.title}</span>
-                    </a>
-                  </Link>
-                ) : (
-                  <span>{child.title || key}</span>
+            if (child.skipInNav) {
+              return <NavItem nav={child} />;
+            }
+
+            return (
+              <li
+                key={child.slug}
+                className={className(
+                  child.sectionBreakAfter && styles.sectionBreakAfter,
                 )}
+              >
+                <div className={styles.NavItem}>
+                  {child.slug ? (
+                    <Link href={child.slug} passHref>
+                      <a
+                        aria-current={isCurrent}
+                        onClick={() => openChild(key)}
+                      >
+                        <span>{child.title}</span>
+                      </a>
+                    </Link>
+                  ) : (
+                    <span>{child.title || key}</span>
+                  )}
+
+                  {isExpandable && (
+                    <button onClick={() => toggleChild(key)}>
+                      {!!expandedSections[key] ? '—' : '+'}
+                    </button>
+                  )}
+                </div>
 
                 {isExpandable && (
-                  <span
-                    onClick={() =>
-                      setExpandedSections({
-                        ...expandedSections,
-                        [key]: expandedSections[key] ? false : true,
-                      })
-                    }
+                  <ul
+                    style={{
+                      display: !!expandedSections[key] ? 'block' : 'none',
+                    }}
                   >
-                    {!!expandedSections[key] ? '—' : '+'}
-                  </span>
+                    <NavItem nav={child} />
+                  </ul>
                 )}
-              </div>
-
-              {isExpandable && (
-                <ul
-                  style={{
-                    display: !!expandedSections[key] ? 'block' : 'none',
-                  }}
-                >
-                  <NavItem nav={child} />
-                </ul>
-              )}
-            </li>
-          );
-        })}
+              </li>
+            );
+          })}
     </>
   );
 }

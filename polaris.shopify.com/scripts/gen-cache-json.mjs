@@ -3,12 +3,12 @@ import globby from 'globby';
 import {existsSync, rmSync, mkdirSync, writeFileSync, readFileSync} from 'fs';
 import matter from 'gray-matter';
 import set from 'lodash.set';
-import merge from 'lodash.merge';
 
 const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.json`;
 const navJsonFile = `${cacheDir}/nav.json`;
 
+// https://stackoverflow.com/a/34749873
 export function isObject(item) {
   return item && typeof item === 'object' && !Array.isArray(item);
 }
@@ -38,29 +38,41 @@ export function mergeDeep(target, ...sources) {
 
 const navOverrides = {
   children: {
-    icons: {
-      title: 'Icons',
-      slug: '/icons',
-    },
-    foundations: {
-      title: 'Foundations',
-      children: {
-        content: {title: 'Content'},
-        design: {title: 'Design'},
-        foundations: {title: 'Foundations'},
-        patterns: {title: 'Patterns'},
-      },
-    },
     'whats-new': {
       title: "What's new",
       slug: '/whats-new',
       expandable: false,
+      order: 0,
+      sectionBreakAfter: true,
     },
     foundations: {
-      title: 'Foundations',
+      skipInNav: true,
+      order: 1,
+      children: {
+        foundations: {title: 'Foundations', order: 0},
+        content: {title: 'Content', order: 1},
+        design: {title: 'Design', order: 2},
+        patterns: {title: 'Patterns', order: 3, sectionBreakAfter: true},
+      },
     },
     components: {
       title: 'Components',
+      slug: '/components',
+      order: 2,
+    },
+    tokens: {
+      title: 'Tokens',
+      slug: '/tokens/colors',
+      order: 3,
+    },
+    icons: {
+      title: 'Icons',
+      slug: '/icons',
+      order: 4,
+      sectionBreakAfter: true,
+    },
+    contributing: {
+      order: 5,
     },
   },
 };
