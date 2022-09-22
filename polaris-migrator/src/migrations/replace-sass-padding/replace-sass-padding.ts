@@ -1,6 +1,7 @@
 import type {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser, {Node} from 'postcss-value-parser';
+import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
@@ -11,14 +12,17 @@ const targetProps = [
   'padding-right',
   'padding-bottom',
   'padding-left',
-];
+] as const;
 
-const isTargetProp = (propName: string): boolean =>
-  targetProps.includes(propName);
+type TargetProp = typeof targetProps[number];
+
+const isTargetProp = (propName: unknown): propName is TargetProp =>
+  targetProps.includes(propName as TargetProp);
 
 // Mapping of spacing tokens and their corresponding px values
 const spacingTokensMap = {
   '0': '--p-space-0',
+  '0px': '--p-space-0',
   '1px': '--p-space-025',
   '2px': '--p-space-05',
   '4px': '--p-space-1',
@@ -35,24 +39,27 @@ const spacingTokensMap = {
   '96px': '--p-space-24',
   '112px': '--p-space-28',
   '128px': '--p-space-32',
-};
+} as const;
 
-const isSpacingTokenValue = (
-  value: string,
-): value is keyof typeof spacingTokensMap =>
-  Object.keys(spacingTokensMap).includes(value);
+type SpacingToken = keyof typeof spacingTokensMap;
+
+const isSpacingTokenValue = (value: unknown): value is SpacingToken =>
+  Object.keys(spacingTokensMap).includes(value as SpacingToken);
+
+/**
+ * All supported dimension units. These values are used to determine
+ * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
+ * Note: The empty string is used to match the `0` value
+ */
+const supportedDimensionUnits = ['px', 'rem', ''];
 
 const processed = Symbol('processed');
 
-function isNumericOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
-}
+/**
+ * Exit early and stop traversing descendant nodes:
+ * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
+ */
+const ExitAndStopTraversing = false;
 
 const plugin = (): Plugin => ({
   postcssPlugin: 'replace-sass-padding',
@@ -65,82 +72,47 @@ const plugin = (): Plugin => ({
 
     if (!isTargetProp(prop)) return;
 
-    let containsCalculation = false;
-
     parsedValue.walk((node) => {
-      const dimension = valueParser.unit(node.value);
+      if (node.type === 'function' && node.value === 'rem') {
+        const argDimension = valueParser.unit(node.nodes[0]?.value ?? '');
 
-      if (isNumericOperator(node)) containsCalculation = true;
+        if (
+          argDimension &&
+          supportedDimensionUnits.includes(argDimension.unit)
+        ) {
+          const argInPx = toPx(`${argDimension.number}${argDimension.unit}`);
 
-      if (node.type === 'word' && dimension && !containsCalculation) {
-        switch (dimension.unit) {
-          case '': {
-            if (!isSpacingTokenValue(node.value)) return;
-            // Does this correctly reassign the value or do we need to use decl.assign?
-            node.value = `var(${spacingTokensMap[node.value]})`;
-            break;
-          }
-          case 'px': {
-            if (!isSpacingTokenValue(node.value)) return;
-            node.value = `var(${spacingTokensMap[node.value]})`;
-            break;
-          }
-          case 'rem':
-          case 'em': {
-            const pxNumber = parseFloat(dimension.number) * 16;
-            const pxDimension = `${pxNumber}px`;
-            if (!isSpacingTokenValue(pxDimension)) return;
-            node.value = `var(${spacingTokensMap[pxDimension]})`;
-            break;
-          }
-          default: {
-            console.log(`Unit ${dimension.unit} is not supported`);
-          }
+          if (!isSpacingTokenValue(argInPx)) return ExitAndStopTraversing;
+
+          const spacingToken = spacingTokensMap[argInPx];
+
+          node.value = 'var';
+          node.nodes = [
+            {
+              type: 'word',
+              value: spacingToken,
+              sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+              sourceEndIndex: spacingToken.length,
+            },
+            ...node.nodes.slice(1),
+          ];
         }
-      }
-      if (node.type === 'function') {
-        const funcType = node.value;
-        const funcValue = node.nodes[0]?.value ?? '';
-        const funcDimension = valueParser.unit(funcValue);
 
-        switch (funcType) {
-          case 'calc': {
-            containsCalculation = true;
-            break;
-          }
-          case 'var': {
-            break;
-          }
-          case 'rem': {
-            console.log(`funcValue: ${funcValue}`);
-            console.log(`funcDimension: ${Object.entries(funcDimension)}`);
+        return ExitAndStopTraversing;
+      } else if (node.type === 'word') {
+        const dimension = valueParser.unit(node.value);
 
-            if (funcDimension && !containsCalculation) {
-              if (!isSpacingTokenValue(funcDimension.number)) return;
+        if (dimension && supportedDimensionUnits.includes(dimension.unit)) {
+          const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
 
-              const spacingToken = spacingTokensMap[funcDimension.number];
+          if (!isSpacingTokenValue(dimensionInPx)) return;
 
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: spacingToken,
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: spacingToken.length,
-                },
-                ...node.nodes.slice(1),
-              ];
-            }
-            break;
-          }
-          default: {
-            console.log(`Function ${funcType} is not supported`);
-          }
+          node.value = `var(${spacingTokensMap[dimensionInPx]})`;
         }
       }
     });
 
-    if (containsCalculation) {
+    if (hasCalculation(parsedValue)) {
       // Insert comment if the declaration value contains calculations
       decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
       decl.before(
@@ -159,4 +131,24 @@ export default function replaceSassPadding(fileInfo: FileInfo) {
   return postcss(plugin()).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
+}
+
+function hasCalculation(parsedValue: valueParser.ParsedValue): boolean {
+  let hasCalc = false;
+
+  parsedValue.walk((node) => {
+    if (isNumericOperator(node)) hasCalc = true;
+  });
+
+  return hasCalc;
+}
+
+function isNumericOperator(node: Node): boolean {
+  return (
+    node.value === '+' ||
+    node.value === '-' ||
+    node.value === '*' ||
+    node.value === '/' ||
+    node.value === '%'
+  );
 }
