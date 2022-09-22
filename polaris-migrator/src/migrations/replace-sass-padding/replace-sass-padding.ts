@@ -101,6 +101,7 @@ const plugin = (): Plugin => ({
       if (node.type === 'function') {
         const funcType = node.value;
         const funcValue = node.nodes[0]?.value ?? '';
+        const funcDimension = valueParser.unit(funcValue);
 
         switch (funcType) {
           case 'calc': {
@@ -111,7 +112,25 @@ const plugin = (): Plugin => ({
             break;
           }
           case 'rem': {
-            // TODO: create logic to prevent innards from being converted
+            console.log(`funcValue: ${funcValue}`);
+            console.log(`funcDimension: ${Object.entries(funcDimension)}`);
+
+            if (funcDimension && !containsCalculation) {
+              if (!isSpacingTokenValue(funcDimension.number)) return;
+
+              const spacingToken = spacingTokensMap[funcDimension.number];
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: spacingToken,
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: spacingToken.length,
+                },
+                ...node.nodes.slice(1),
+              ];
+            }
             break;
           }
           default: {
