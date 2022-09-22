@@ -32,9 +32,7 @@ file from \`@shopify/polaris-tokens\` in your project:
 
 ### Media query variables
 
-We've created a collection of Sass variables for applying responsive styles at
-each breakpoint alias. A majority of the migration will involve replacing legacy
-media-queries or mixins with the following values:
+A collection of all Sass variables for applying responsive styles at a given breakpoint alias.
 
 \`\`\`scss
 $p-breakpoints-xs-up: '(min-width: 0em)';
