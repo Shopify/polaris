@@ -1,7 +1,37 @@
 @import '../../styles/common';
 
 .Tile {
+  --pc-tile-xs: 6;
+  --pc-tile-sm: var(--pc-tile-xs);
+  --pc-tile-md: var(--pc-tile-sm);
+  --pc-tile-lg: var(--pc-tile-md);
+  --pc-tile-xl: var(--pc-tile-lg);
+  --pc-tile-gap-xs: var(--p-space-4);
+  --pc-tile-gap-sm: var(--pc-tile-gap-xs);
+  --pc-tile-gap-md: var(--pc-tile-gap-sm);
+  --pc-tile-gap-lg: var(--pc-tile-gap-md);
+  --pc-tile-gap-xl: var(--pc-tile-gap-lg);
   display: grid;
-  grid-template-columns: var(--pc-tile-column-number);
-  gap: var(--pc-tile-spacing);
+  gap: var(--pc-tile-gap-xs);
+  grid-template-columns: var(--pc-tile-xs);
+
+  @media #{$p-breakpoints-sm-up} {
+    gap: var(--pc-tile-gap-sm);
+    grid-template-columns: var(--pc-tile-sm);
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    gap: var(--pc-tile-gap-md);
+    grid-template-columns: var(--pc-tile-md);
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    gap: var(--pc-tile-gap-lg);
+    grid-template-columns: var(--pc-tile-lg);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    gap: var(--pc-tile-gap-xl);
+    grid-template-columns: var(--pc-tile-xl);
+  }
 }
