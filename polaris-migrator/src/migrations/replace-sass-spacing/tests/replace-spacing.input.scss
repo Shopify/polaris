@@ -1,11 +1,14 @@
 .Card {
+  z-index: z-index(content) + 1;
   padding: spacing(loose) spacing(extra-loose);
   border-radius: var(--p-border-radius-2, border-radius());
   box-shadow: var(--p-shadow-card, shadow());
+  margin: spacing(tight) 0 0 (-1 * spacing());
 }
 
 .ButtonContainer {
   right: spacing();
   top: spacing(loose);
   bottom: spacing() + spacing();
+  left: spacing('tight');
 }
