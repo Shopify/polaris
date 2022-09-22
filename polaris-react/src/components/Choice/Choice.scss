@@ -1,13 +1,13 @@
 @import '../../styles/common';
 
 .Choice {
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
   padding: var(--p-space-1) 0;
   cursor: pointer;
 
-  @media #{$p-breakpoints-sm-down} {
-    width: 100%;
+  @media #{$p-breakpoints-sm-up} {
+    display: inline-flex;
   }
 }
 
