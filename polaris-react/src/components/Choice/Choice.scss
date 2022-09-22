@@ -5,6 +5,11 @@
   justify-content: flex-start;
   padding: var(--p-space-1) 0;
   cursor: pointer;
+
+  @media #{$p-breakpoints-sm-down} {
+    min-height: 44px;
+    width: 100%;
+  }
 }
 
 .labelHidden {
