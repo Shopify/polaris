@@ -22,7 +22,7 @@ interface Spacing {
 export interface BleedProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
-  space?: SpacingTokenScale;
+  spacing?: SpacingTokenScale;
   horizontal?: SpacingTokenScale;
   vertical?: SpacingTokenScale;
   top?: SpacingTokenScale;
@@ -32,7 +32,7 @@ export interface BleedProps {
 }
 
 export const Bleed = ({
-  space,
+  spacing,
   horizontal,
   vertical,
   top,
@@ -61,7 +61,7 @@ export const Bleed = ({
     } else if (!xAxis.includes(direction) && vertical) {
       return directionValues.vertical;
     } else {
-      return space;
+      return spacing;
     }
   };
 
