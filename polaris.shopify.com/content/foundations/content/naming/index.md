@@ -91,7 +91,7 @@ Don’t use “Shopify” in a name for built in functionality features, like fr
 
 #### Do
 
-- Shopify Pay
+- Shopify Payments
 - Shopify App Store
 - Shopify Theme Store
 
