@@ -1,6 +1,8 @@
-import {FileInfo} from 'jscodeshift';
+import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node, WordNode, FunctionNode} from 'postcss-value-parser';
+import valueParser, {Node, FunctionNode} from 'postcss-value-parser';
+
+import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
 const spacingMap = {
   none: '--p-space-0',
@@ -13,47 +15,88 @@ const spacingMap = {
   'extra-loose': '--p-space-8',
 };
 
-type Spacing = keyof typeof spacingMap;
+const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
+  Object.keys(spacingMap).includes(spacing as string);
 
-function isSpacingFn(node: Node): node is FunctionNode {
-  return node.type === 'function' && node.value === 'spacing';
-}
-
-function isOperator(node: Node): boolean {
+function isNumericOperator(node: Node): boolean {
   return (
     node.value === '+' ||
     node.value === '-' ||
     node.value === '*' ||
-    node.value === '/'
+    node.value === '/' ||
+    node.value === '%'
   );
 }
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'ReplaceSassSpacing',
-  Declaration(decl) {
-    const parsed = valueParser(decl.value);
+const processed = Symbol('processed');
 
-    // Skip if the value contains calculations
-    const containsCalculation = parsed.nodes.some(isOperator);
-    if (containsCalculation) return;
+interface PluginOptions extends Options {
+  namespace?: string;
+}
 
-    parsed.walk((node) => {
-      if (!isSpacingFn(node)) return;
-      const hasNodes = Boolean(node.nodes && node.nodes.length);
-      const spacing = hasNodes ? node.nodes[0].value : '';
-      const newSpacing = spacingMap[spacing as Spacing];
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespace = options?.namespace || '';
+  const functionName = namespace ? `${namespace}.spacing` : 'spacing';
+  const isSpacingFn = (node: Node): node is FunctionNode => {
+    return node.type === 'function' && node.value === functionName;
+  };
 
-      node.value = 'var';
-      node.nodes = hasNodes ? node.nodes : [{type: 'word'} as WordNode];
-      node.nodes[0].value = newSpacing;
-    });
+  return {
+    postcssPlugin: 'ReplaceSassSpacing',
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
 
-    decl.value = parsed.toString();
-  },
-});
+      const parsed = valueParser(decl.value);
 
-export default function replaceSassSpacing(file: FileInfo) {
-  return postcss(plugin()).process(file.source, {
+      let containsSpacingFn = false;
+      let containsCalculation = false;
+
+      parsed.walk((node) => {
+        if (isSpacingFn(node)) containsSpacingFn = true;
+        if (isNumericOperator(node)) containsCalculation = true;
+
+        if (!isSpacingFn(node)) return;
+
+        const spacing = node.nodes[0]?.value ?? '';
+
+        if (!isSpacing(spacing)) return;
+        const spacingCustomProperty = spacingMap[spacing];
+
+        node.value = 'var';
+        node.nodes = [
+          {
+            type: 'word',
+            value: spacingCustomProperty,
+            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+            sourceEndIndex: spacingCustomProperty.length,
+          },
+          ...node.nodes.slice(1),
+        ];
+      });
+
+      if (containsSpacingFn && containsCalculation) {
+        // Insert comment if the declaration value contains calculations
+        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        decl.before(
+          postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
+        );
+      } else {
+        decl.value = parsed.toString();
+      }
+
+      // @ts-expect-error - Mark the declaration as processed
+      decl[processed] = true;
+    },
+  };
+};
+
+export default function replaceSassSpacing(
+  file: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(file.source, {
     syntax: require('postcss-scss'),
   }).css;
 }

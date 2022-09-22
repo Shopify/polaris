@@ -26,7 +26,7 @@ type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 type Color = 'success' | 'critical' | 'warning' | 'subdued';
 
 const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
-  headingXs: 'bold',
+  headingXs: 'semibold',
   headingSm: 'semibold',
   headingMd: 'semibold',
   headingLg: 'semibold',

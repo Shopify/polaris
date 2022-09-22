@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
 
-import SiteLaunchBanner from '../SiteLaunchBanner';
 import Header from '../Header';
 import {className} from '../../utils/various';
 
@@ -33,8 +32,6 @@ function Page({children}: Props) {
       {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
 
       {children}
-
-      {!isPolaris && <SiteLaunchBanner />}
     </div>
   );
 }

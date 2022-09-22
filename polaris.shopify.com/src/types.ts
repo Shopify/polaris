@@ -105,17 +105,6 @@ export type Status = {
   message: string;
 };
 
-export interface PropsForComponent {
-  interfaceName: string;
-  props: {
-    name: string;
-    type: string;
-    comment?: string;
-    optional: boolean;
-    deprecated: boolean;
-  }[];
-}
-
 export interface QuickGuideRow {
   question: string;
   answer: string;
@@ -126,3 +115,25 @@ export interface QuickGuide {
   queryParam: string;
   rows: QuickGuideRow[];
 }
+
+export type AllTypes = {
+  [typeName: string]: {
+    [filePath: string]: Type;
+  };
+};
+
+export type FilteredTypes = {
+  [typeName: string]: Type;
+};
+
+export type Type = {
+  filePath: string;
+  name: string;
+  value: string | number | object;
+  syntaxKind?: string;
+  description?: string;
+  isOptional?: true;
+  deprecationMessage?: string;
+  defaultValue?: string;
+  members?: Type[];
+};

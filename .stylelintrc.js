@@ -19,7 +19,9 @@ module.exports = {
     {
       files: ['polaris-migrator/**/tests/*.{css,scss}'],
       rules: {
-        'declaration-property-value-disallowed-list': 'off',
+        'comment-empty-line-before': undefined,
+        'declaration-property-value-disallowed-list': undefined,
+        'function-disallowed-list': undefined,
       },
     },
   ],

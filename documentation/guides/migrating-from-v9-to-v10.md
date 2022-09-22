@@ -77,11 +77,11 @@ The following Sass mixins have been removed. You will need to replace any instan
 
 | Before                                                 | After                              |
 | ------------------------------------------------------ | ---------------------------------- |
-| `@include page-content-when-partially-condensed()`     | `@media #{$p-breakpoints-md-down}` |
+| `@include page-content-when-partially-condensed()`     | `@media #{$p-breakpoints-lg-down}` |
 | `@include page-content-when-not-partially-condensed()` | `@media #{$p-breakpoints-md-up}`   |
 | `@include page-content-when-fully-condensed()`         | `@media #{$p-breakpoints-sm-down}` |
 | `@include page-content-when-not-fully-condensed()`     | `@media #{$p-breakpoints-sm-up}`   |
-| `@include page-content-when-layout-stacked()`          | `@media #{$p-breakpoints-md-down}` |
+| `@include page-content-when-layout-stacked()`          | `@media #{$p-breakpoints-lg-down}` |
 | `@include page-content-when-layout-not-stacked()`      | `@media #{$p-breakpoints-md-up}`   |
 | `@include page-before-resource-list-small()`           | `@media #{$p-breakpoints-sm-down}` |
 | `@include page-after-resource-list-small()`            | `@media #{$p-breakpoints-sm-up}`   |
@@ -90,7 +90,7 @@ The following Sass mixins have been removed. You will need to replace any instan
 | `@include when-typography-not-condensed()`             | `@media #{$p-breakpoints-md-up}`   |
 | `@include frame-when-nav-hidden()`                     | `@media #{$p-breakpoints-md-down}` |
 | `@include frame-when-nav-displayed()`                  | `@media #{$p-breakpoints-md-up}`   |
-| `@include frame-with-nav-when-not-max-width()`         | `@media #{$p-breakpoints-xl-down}` |
+| `@include frame-with-nav-when-not-max-width()`         | `@media #{$p-breakpoints-lg-down}` |
 | `@include after-topbar-sheet()`                        | `@media #{$p-breakpoints-sm-up}`   |
 
 ### Sass dynamic mixins

@@ -20,6 +20,17 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src", "pages", ".cache/*.json", "**/*.json", "next-env.d.ts"],
-  "exclude": ["node_modules", "pages/examples/**/*"]
+  "include": [
+    "src",
+    "pages",
+    ".cache/*.json",
+    "**/*.json",
+    "next-env.d.ts",
+    "scripts/get-props/src/get-props.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "pages/examples/**/*",
+    "scripts/get-props/testData"
+  ]
 }

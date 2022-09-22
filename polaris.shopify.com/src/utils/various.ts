@@ -80,3 +80,8 @@ export const className = (
 ): string => {
   return classNames.filter((className) => Boolean(className)).join(' ');
 };
+
+export const toPascalCase = (str: string) =>
+  (str.match(/[a-zA-Z0-9]+/g) || [])
+    .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
+    .join('');

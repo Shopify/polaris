@@ -76,6 +76,8 @@ export interface PopoverProps {
    * @default 'container'
    */
   autofocusTarget?: PopoverAutofocusTarget;
+  /** Prevents closing the popover when other overlays are clicked */
+  preventCloseOnChildOverlayClick?: boolean;
 }
 
 export interface PopoverPublicAPI {
