@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-
 import {
   BreakpointsTokenName,
   breakpoints,
@@ -13,7 +12,7 @@ import {AlphaCard} from '..';
 const mediaConditions = getMediaConditions(breakpoints);
 
 const heading = <p>Online store dashboard</p>;
-const subheading = <p>View a summary of your online store's performance</p>;
+const subheading = <p>View a summary of your online store performance</p>;
 
 describe('AlphaCard', () => {
   beforeEach(() => {
