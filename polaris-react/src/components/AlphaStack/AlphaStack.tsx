@@ -3,7 +3,7 @@ import type {spacing} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './Stack.scss';
+import styles from './AlphaStack.scss';
 
 type SpacingTokenGroup = typeof spacing;
 type SpacingTokenName = keyof SpacingTokenGroup;
@@ -27,7 +27,7 @@ export const AlphaStack = ({
   spacing = '4',
   align = 'start',
 }: AlphaStackProps) => {
-  const className = classNames(styles.Stack);
+  const className = classNames(styles.AlphaStack);
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
