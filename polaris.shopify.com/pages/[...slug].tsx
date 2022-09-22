@@ -3,12 +3,12 @@ import fs from 'fs';
 import path from 'path';
 import globby from 'globby';
 
-import Layout from '../../src/components/Layout';
-import Longform from '../../src/components/Longform';
-import Markdown from '../../src/components/Markdown';
-import PageMeta from '../../src/components/PageMeta';
-import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {MarkdownFile} from '../../src/types';
+import Layout from '../src/components/Layout';
+import Longform from '../src/components/Longform';
+import Markdown from '../src/components/Markdown';
+import PageMeta from '../src/components/PageMeta';
+import {parseMarkdown} from '../src/utils/markdown.mjs';
+import {MarkdownFile} from '../src/types';
 
 interface Props {
   readme: MarkdownFile['readme'];
@@ -16,9 +16,7 @@ interface Props {
   description?: string;
 }
 
-const whatsnewDir = path.join(process.cwd(), 'content/whats-new');
-
-const WhatsNew: NextPage<Props> = ({readme, title, description}: Props) => {
+const Contributing: NextPage<Props> = ({readme, title, description}: Props) => {
   return (
     <Layout title={title}>
       <PageMeta title={title} description={description} />
@@ -31,13 +29,16 @@ const WhatsNew: NextPage<Props> = ({readme, title, description}: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props, {slug: string}> = async ({
+const contentDir = path.join(process.cwd(), 'content');
+
+export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   params,
 }) => {
   const mdFilePath = path.resolve(
     process.cwd(),
-    `${whatsnewDir}/${params?.slug || ''}/index.md`,
+    `${contentDir}/${params?.slug.join('/') || ''}/index.md`,
   );
+  console.log({mdFilePath});
 
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -56,12 +57,17 @@ export const getStaticProps: GetStaticProps<Props, {slug: string}> = async ({
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = path.resolve(process.cwd(), 'content/whats-new/*/*.md');
-  const paths = globby.sync(globPath).map((fileName: string) => {
-    return fileName
-      .replace(`${process.cwd()}/content`, '')
-      .replace('/index.md', '');
-  });
+  const globPath = path.resolve(process.cwd(), 'content/**/*.md');
+  const paths = globby
+    .sync(globPath)
+    .filter((path) => !path.startsWith('/components'))
+    .map((fileName: string) => {
+      return fileName
+        .replace(`${process.cwd()}/content`, '')
+        .replace('/index.md', '');
+    });
+
+  console.log(paths);
 
   return {
     paths,
@@ -69,4 +75,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default WhatsNew;
+export default Contributing;
