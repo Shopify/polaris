@@ -43,8 +43,6 @@ export async function migrate(
     console.log(chalk.green('Running migration:'), migration);
 
     await jscodeshift.run(migrationFile, filepaths, {
-      dry: options.dry,
-      print: options.print,
       babel: true,
       ignorePattern: ['**/node_modules/**', '**/.next/**', '**/build/**'],
       extensions: 'tsx,ts,jsx,js',
@@ -53,6 +51,7 @@ export async function migrate(
       runInBand: true,
       silent: false,
       stdin: false,
+      ...options,
     });
   } catch (error) {
     // eslint-disable-next-line no-console
