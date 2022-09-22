@@ -42,7 +42,7 @@ describe('<Bleed />', () => {
 
   it('renders custom properties combined with any overrides if they are passed in', () => {
     const bleed = mountWithApp(
-      <Bleed space="1" left="2" horizontal="3">
+      <Bleed spacing="1" left="2" horizontal="3">
         <Children />
       </Bleed>,
     );
