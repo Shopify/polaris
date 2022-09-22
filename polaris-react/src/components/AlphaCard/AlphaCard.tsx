@@ -20,6 +20,8 @@ type CardBackgroundColorTokenScale = Extract<
   'surface' | `surface-${string}`
 >;
 
+type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+
 export interface AlphaCardProps {
   /** Elements to display inside card */
   children?: React.ReactNode;
@@ -27,23 +29,33 @@ export interface AlphaCardProps {
   borderRadius?: BorderRadiusTokenScale;
   elevation?: CardElevationTokensScale;
   padding?: SpacingTokenScale;
+  roundedAbove?: Breakpoint;
 }
+
+const defaultBorderRadius = '2';
 
 export const AlphaCard = ({
   children,
   backgroundColor = 'surface',
-  borderRadius = '2',
+  borderRadius: borderRadiusProp = defaultBorderRadius,
   elevation = 'card',
   padding = '5',
+  roundedAbove,
 }: AlphaCardProps) => {
-  const {smUp} = useBreakpoints();
+  const breakpoints = useBreakpoints();
+
+  let borderRadius = !roundedAbove ? borderRadiusProp : null;
+
+  if (roundedAbove && breakpoints[`${roundedAbove}Up`]) {
+    borderRadius = borderRadiusProp;
+  }
 
   return (
     <Box
       background={backgroundColor}
       padding={padding}
       shadow={elevation}
-      {...(smUp ? {borderRadius} : {})}
+      {...(borderRadius && {borderRadius})}
     >
       {children}
     </Box>
