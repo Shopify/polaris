@@ -7,7 +7,6 @@ import Layout from '../../src/components/Layout';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
 import PageMeta from '../../src/components/PageMeta';
-import {contributingNavItems} from '../../src/data/navItems';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 import {MarkdownFile} from '../../src/types';
 
@@ -21,7 +20,7 @@ const contributingDirectory = path.join(process.cwd(), 'content/contributing');
 
 const Contributing: NextPage<Props> = ({readme, title, description}: Props) => {
   return (
-    <Layout navItems={contributingNavItems} title={title}>
+    <Layout title={title}>
       <PageMeta title={title} description={description} />
 
       <Longform>

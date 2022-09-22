@@ -32,11 +32,6 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/foundations/:slug',
-        destination: '/foundations/foundations/:slug',
-        permanent: false,
-      },
-      {
         source: '/patterns/:slug',
         destination: '/foundations/patterns/:slug',
         permanent: false,

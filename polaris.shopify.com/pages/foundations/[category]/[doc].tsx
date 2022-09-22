@@ -3,10 +3,11 @@ import fs from 'fs';
 import path from 'path';
 
 import {parseMarkdown} from '../../../src/utils/markdown.mjs';
-import {getUrlsFromNavItems} from '../../../src/utils/various';
 import {MarkdownFile} from '../../../src/types';
-import {foundationsNavItems} from '../../../src/data/navItems';
-import FoundationsPage from '../../../src/components/FoundationsPage';
+import Layout from '../../../src/components/Layout';
+import Longform from '../../../src/components/Longform';
+import Markdown from '../../../src/components/Markdown';
+import PageMeta from '../../../src/components/PageMeta';
 
 interface Props {
   category: string;
@@ -14,7 +15,18 @@ interface Props {
 }
 
 const Foundations: NextPage<Props> = ({markdownFile}) => {
-  return <FoundationsPage markdownFile={markdownFile} />;
+  const {frontMatter, readme} = markdownFile;
+  const {title, description} = frontMatter;
+  return (
+    <Layout width="narrow" title={title}>
+      <PageMeta title={title} description={description} />
+
+      <Longform>
+        <Markdown text={description} />
+        <Markdown text={readme} />
+      </Longform>
+    </Layout>
+  );
 };
 
 const foundationsDirectory = path.join(process.cwd(), 'content/foundations');
@@ -46,15 +58,32 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  let urls: string[] = getUrlsFromNavItems(foundationsNavItems);
+  const findPaths = (dirPath: string): {[key: string]: boolean} => {
+    const dirFiles = fs.readdirSync(dirPath);
+    if (dirFiles.length === 1 && dirFiles[0] === 'index.md') {
+      return {[dirPath]: true};
+    } else {
+      let paths: {[key: string]: boolean} = {};
+      const subDirs = dirFiles.filter((fileName) => fileName !== 'index.md');
+      subDirs.forEach((dir) => {
+        const newDirPath = `${dirPath}/${dir}`;
+        paths = {...paths, ...findPaths(newDirPath)};
+      });
+      return paths;
+    }
+  };
 
-  const paths = urls.map((url) => {
-    const parts = url.split('/');
-    return {params: {category: parts[2], doc: parts[3]}};
-  });
+  const rootDirPath = path.join(foundationsDirectory);
+  const paths = findPaths(rootDirPath);
 
   return {
-    paths,
+    paths: Object.entries(paths)
+      .filter(([, hasIndexMd]) => hasIndexMd)
+      .map(([path]) => {
+        const relativePath = path.replace(rootDirPath, '');
+        const segments = relativePath.split('/');
+        return {params: {category: segments[1], doc: segments[2]}};
+      }),
     fallback: false,
   };
 };

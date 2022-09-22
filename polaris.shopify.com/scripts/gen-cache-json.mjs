@@ -49,10 +49,19 @@ const navOverrides = {
       skipInNav: true,
       order: 1,
       children: {
-        foundations: {title: 'Foundations', order: 0},
-        content: {title: 'Content', order: 1},
-        design: {title: 'Design', order: 2},
-        patterns: {title: 'Patterns', order: 3, sectionBreakAfter: true},
+        foundations: {
+          title: 'Foundations',
+          slug: '/foundations/foundations',
+          order: 0,
+        },
+        content: {title: 'Content', slug: '/foundations/content', order: 1},
+        design: {title: 'Design', slug: '/foundations/design', order: 2},
+        patterns: {
+          title: 'Patterns',
+          slug: '/foundations/patterns',
+          order: 3,
+          sectionBreakAfter: true,
+        },
       },
     },
     components: {
@@ -81,12 +90,17 @@ const genNavJson = (mardownFiles) => {
   let nav = {};
 
   mardownFiles.forEach((md) => {
-    const {title, icon, description} = md.frontMatter;
+    const {title, navTitle, icon, description} = md.frontMatter;
     const {slug} = md;
 
     const path = `children.${slug.replace(/\//g, '.children.')}`;
 
-    set(nav, path, {title, icon, description, slug: `/${slug}`});
+    set(nav, path, {
+      title: navTitle || title,
+      icon,
+      description,
+      slug: `/${slug}`,
+    });
   });
 
   nav = mergeDeep(nav, navOverrides);

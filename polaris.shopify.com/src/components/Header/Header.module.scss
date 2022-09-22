@@ -7,7 +7,6 @@
   z-index: 2;
   height: 100vh;
   min-width: 18rem;
-  padding: 2rem;
   overflow: auto;
   background: rgba(255, 255, 255, 0.95);
   border-right: 1px solid var(--border-color-light);
@@ -18,76 +17,73 @@
   }
 }
 
-.HeaderInner {
-  display: flex;
-  flex-direction: column;
-  gap: 2em;
-  .Nav {
-    .NavItem {
-      display: flex;
-      justify-content: space-between;
-      a {
-        flex: 1;
-      }
-      button {
-        width: 1.25rem;
-        height: 1.25rem;
-        border-radius: 100%;
-        background: rgba(255, 255, 255, 0.1);
-      }
-    }
+.Nav {
+  margin-top: 3rem;
+  .sectionBreakAfter {
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color-light);
+  }
 
-    .sectionBreakAfter {
-      margin-bottom: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color-light);
-    }
+  a {
+    color: inherit;
 
-    > ul > li {
-      margin-top: 1rem;
-    }
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      font-size: var(--font-size-50);
-      font-weight: var(--font-weight-500);
-
-      li {
-        li {
-          margin-left: 0.5rem;
-        }
-        a {
-          span {
-            display: block;
-            padding: 0.125rem 0;
-          }
-
-          &:focus-within {
-            position: relative;
-            z-index: 1;
-            border-radius: var(--border-radius-800);
-          }
-
-          &:hover {
-            color: var(--text-strong);
-          }
-        }
-
-        &:first-child a {
-          border-left: none;
-        }
-      }
-    }
-
-    @media screen and (max-width: $breakpointTablet) {
-      display: none;
+    &:hover {
+      color: var(--text-strong);
     }
   }
 
+  > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  > ul > li > .NavItem {
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
+
+    + ul > li:first-child {
+      padding-top: 0.25rem;
+    }
+
+    + ul > li:last-child {
+      padding-bottom: 1rem;
+    }
+  }
+
+  > ul > li > ul > li > .NavItem {
+    font-size: var(--font-size-100);
+    padding-left: 2.5rem !important;
+  }
+
   @media screen and (max-width: $breakpointTablet) {
-    gap: 0.5rem;
-    justify-content: space-between;
+    display: none;
+  }
+}
+
+.NavItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.1em 2rem;
+
+  a {
+    flex: 1;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 100%;
+    background: rgba(255, 255, 255, 0);
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
@@ -140,9 +136,7 @@
   background: transparent;
   width: 2.25rem;
   height: 2.25rem;
-  margin: 0.5rem 0 0.5rem auto;
   border-radius: var(--border-radius-round);
-  margin-right: -1rem;
 
   @media screen and (max-width: $breakpointTablet) {
     margin-right: 1rem;

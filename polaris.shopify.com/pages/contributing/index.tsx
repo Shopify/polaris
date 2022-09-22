@@ -5,7 +5,6 @@ import path from 'path';
 import Layout from '../../src/components/Layout';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
-import {contributingNavItems} from '../../src/data/navItems';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 import {MarkdownFile} from '../../src/types';
 import PageMeta from '../../src/components/PageMeta';
@@ -18,7 +17,7 @@ interface Props {
 
 const Contributing: NextPage<Props> = ({readme, description, title}) => {
   return (
-    <Layout title={title} navItems={contributingNavItems}>
+    <Layout title={title}>
       <PageMeta title={title} />
 
       <Longform>

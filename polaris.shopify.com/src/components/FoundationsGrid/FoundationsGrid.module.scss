@@ -12,7 +12,7 @@
     display: grid;
     gap: 0.75rem;
     // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
-    grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
 
     @media screen and (max-width: $breakpointDesktopLarge) {
       // Foundations section currently has 5 articles. This avoids

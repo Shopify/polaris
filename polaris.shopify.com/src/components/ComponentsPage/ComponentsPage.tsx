@@ -6,7 +6,6 @@ import {
   getComponentCategories,
   stripMarkdownLinks,
   slugify,
-  getComponentNav,
 } from '../../utils/various';
 import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
@@ -19,7 +18,6 @@ const components = Object.keys(pages).filter((slug) =>
 );
 
 const componentCategories = getComponentCategories();
-const componentNav = getComponentNav();
 
 export default function ComponentsPage() {
   return (
@@ -29,7 +27,7 @@ export default function ComponentsPage() {
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
       />
 
-      <Layout navItems={componentNav} showTOC={false}>
+      <Layout showTOC={false}>
         <h1>Components</h1>
 
         {componentCategories.map((category) => {

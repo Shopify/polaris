@@ -6,10 +6,9 @@ import ComponentExamples from '../../src/components/ComponentExamples';
 import type {ComponentExample} from '../../src/components/ComponentExamples';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
-import type {NavItem} from '../../src/components/Nav';
 import Layout from '../../src/components/Layout';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {getComponentNav, toPascalCase} from '../../src/utils/various';
+import {toPascalCase} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
@@ -42,7 +41,6 @@ const Components = ({
   status,
   type,
 }: Props) => {
-  const navItems: NavItem[] = getComponentNav();
   const typedStatus: Status | undefined = status
     ? {
         value: status.value.toLowerCase() as Status['value'],
@@ -51,7 +49,7 @@ const Components = ({
     : undefined;
 
   return (
-    <Layout width="narrow" navItems={navItems} title={title}>
+    <Layout width="narrow" title={title}>
       <PageMeta title={title} description={description} />
 
       <Longform>

@@ -6,17 +6,15 @@ import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './FoundationsGrid.module.scss';
 import * as polarisIcons from '@shopify/polaris-icons';
 
-interface Props {
-  title?: string;
+export interface Props {
   children: React.ReactNode;
 }
 
-function FoundationsGrid({title, children}: Props) {
+function FoundationsGrid({children}: Props) {
   return (
     <div className={styles.FoundationsGrid}>
-      <div key={title} className={styles.Category}>
+      <div className={styles.Category}>
         <div className={styles.Text}>
-          {title && <h2>{title}</h2>}
           <ul>{children}</ul>
         </div>
       </div>
@@ -24,7 +22,7 @@ function FoundationsGrid({title, children}: Props) {
   );
 }
 
-interface FoundationsGridItemProps {
+export interface FoundationsGridItemProps {
   title: string;
   description: string;
   url: string;
@@ -41,12 +39,14 @@ function FoundationsGridItem({
 }: FoundationsGridItemProps) {
   const searchAttributes = useGlobalSearchResult();
 
+  let iconSource = (polarisIcons as any)[icon];
+
   return (
     <li className={styles.FoundationsGridItem} data-category={category}>
       <Link href={url} passHref>
         <a {...searchAttributes}>
           <div className={styles.Icon}>
-            <Icon source={(polarisIcons as any)[icon]} />
+            {iconSource && <Icon source={iconSource} />}
           </div>
           <h4>{title}</h4>
           <p>{stripMarkdownLinks(description)}</p>

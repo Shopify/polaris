@@ -1,46 +1,35 @@
-import {foundationsNavItems} from '../../data/navItems';
-import styles from './FoundationsIndexPage.module.scss';
 import Layout from '../Layout';
 import PageMeta from '../PageMeta';
 import FoundationsGrid from '../FoundationsGrid';
+import {FoundationsGridItemProps} from '../FoundationsGrid/FoundationsGrid';
+import styles from './FoundationsIndexPage.module.scss';
 
-interface Props {}
+interface Props {
+  title: string;
+  items: FoundationsGridItemProps[];
+}
 
-function FoundationsIndexPage({}: Props) {
+function FoundationsIndexPage({title, items}: Props) {
   return (
     <div className={styles.FoundationsIndexPage}>
-      <PageMeta
-        title="Foundations"
-        description="Our design foundations offer fundamental design elements and guidance for creating good merchant experiences."
-      />
+      <PageMeta description="Our design foundations offer fundamental design elements and guidance for creating good merchant experiences." />
 
-      <Layout
-        title="Foundations"
-        navItems={foundationsNavItems}
-        showTOC={false}
-      >
-        <div className={styles.Categories}>
-          {foundationsNavItems.map((category) => {
-            if (!category.children) return null;
+      <Layout title={title} showTOC={false}>
+        <FoundationsGrid key={title}>
+          {items.map((item) => {
+            if (!item.url) return null;
             return (
-              <FoundationsGrid key={category.title} title={category.title}>
-                {category.children.map((child) => {
-                  if (!child.url) return null;
-                  return (
-                    <FoundationsGrid.Item
-                      key={category.title}
-                      title={child.title}
-                      description={child.description}
-                      icon={child.icon}
-                      url={child.url}
-                      category={category.title.toLowerCase()}
-                    />
-                  );
-                })}
-              </FoundationsGrid>
+              <FoundationsGrid.Item
+                key={item.title}
+                title={item.title}
+                description={item.description}
+                icon={item.icon}
+                url={item.url}
+                category={item.category.toLowerCase()}
+              />
             );
           })}
-        </div>
+        </FoundationsGrid>
       </Layout>
     </div>
   );
