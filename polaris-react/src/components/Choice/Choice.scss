@@ -7,7 +7,6 @@
   cursor: pointer;
 
   @media #{$p-breakpoints-sm-down} {
-    min-height: 44px;
     width: 100%;
   }
 }
