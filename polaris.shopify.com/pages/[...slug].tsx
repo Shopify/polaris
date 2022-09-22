@@ -16,7 +16,11 @@ interface Props {
   description?: string;
 }
 
-const Contributing: NextPage<Props> = ({readme, title, description}: Props) => {
+const CatchAllTemplate: NextPage<Props> = ({
+  readme,
+  title,
+  description,
+}: Props) => {
   return (
     <Layout title={title}>
       <PageMeta title={title} description={description} />
@@ -38,7 +42,6 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     process.cwd(),
     `${contentDir}/${params?.slug.join('/') || ''}/index.md`,
   );
-  console.log({mdFilePath});
 
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -56,6 +59,10 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   }
 };
 
+function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
+  return !path.startsWith('/components') && path !== '/patterns';
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = path.resolve(process.cwd(), 'content/**/*.md');
   const paths = globby
@@ -65,7 +72,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
         .replace(`${process.cwd()}/content`, '')
         .replace('/index.md', '');
     })
-    .filter((path) => !path.startsWith('/components') && path !== '/patterns');
+    .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
 
   console.log({paths});
 
@@ -75,4 +82,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export default Contributing;
+export default CatchAllTemplate;

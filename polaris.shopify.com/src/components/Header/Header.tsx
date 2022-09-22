@@ -120,7 +120,7 @@ function NavItem({nav}: {nav: NavItem}) {
           .map((entry) => {
             const [key, child] = entry as [string, NavItem];
 
-            const isExpandable = child.children && child.hideChildren !== true;
+            const isExpandable = child.children && !child.hideChildren;
 
             return (
               <li
