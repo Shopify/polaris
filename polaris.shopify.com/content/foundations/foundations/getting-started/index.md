@@ -116,7 +116,7 @@ Design tokens are coded names that represent design decisions for elements like 
 The Polaris icon library has 400+ carefully designed icons focused on commerce and entrepreneurship. Use them as visual aids to help merchants complete tasks.
  - [Browse icons](https://polaris.shopify.com/icons)
 
- #### Releases
+#### Releases
 
 Polaris uses [Changsets](https://github.com/changesets/changesets) to handle releasing the npm packages in repository. Our [GitHub action](https://github.com/changesets/action) creates a `version` PR called **"Version Packages"**, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version` and performs a releases when changes are merged to the `main` branch.
 
