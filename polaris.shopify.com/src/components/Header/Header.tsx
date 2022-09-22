@@ -22,9 +22,8 @@ interface NavItem {
   description?: string;
   slug?: string;
   order?: number;
-  expandable?: false;
-  sectionBreakAfter?: true;
-  skipInNav?: true;
+  hideChildren?: false;
+  newSection?: true;
   children?: Nav;
 }
 
@@ -121,18 +120,12 @@ function NavItem({nav}: {nav: NavItem}) {
           .map((entry) => {
             const [key, child] = entry as [string, NavItem];
 
-            const isExpandable = child.children && child.expandable !== false;
-
-            if (child.skipInNav) {
-              return <NavItem nav={child} />;
-            }
+            const isExpandable = child.children && child.hideChildren !== true;
 
             return (
               <li
                 key={child.slug}
-                className={className(
-                  child.sectionBreakAfter && styles.sectionBreakAfter,
-                )}
+                className={className(child.newSection && styles.newSection)}
               >
                 <div className={styles.NavItem}>
                   {child.slug ? (

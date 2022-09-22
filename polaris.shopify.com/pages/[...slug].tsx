@@ -60,14 +60,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = path.resolve(process.cwd(), 'content/**/*.md');
   const paths = globby
     .sync(globPath)
-    .filter((path) => !path.startsWith('/components'))
     .map((fileName: string) => {
       return fileName
         .replace(`${process.cwd()}/content`, '')
         .replace('/index.md', '');
-    });
+    })
+    .filter((path) => !path.startsWith('/components') && path !== '/patterns');
 
-  console.log(paths);
+  console.log({paths});
 
   return {
     paths,

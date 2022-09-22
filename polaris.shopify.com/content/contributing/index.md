@@ -4,6 +4,8 @@ description: Polaris exists to make a product worked on by many, feel like it wa
 keywords:
   - how to contribute to polaris
   - contribution
+order: 6
+newSection: true
 ---
 
 Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.

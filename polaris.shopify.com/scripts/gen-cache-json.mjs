@@ -8,89 +8,19 @@ const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.json`;
 const navJsonFile = `${cacheDir}/nav.json`;
 
-// https://stackoverflow.com/a/34749873
-export function isObject(item) {
-  return item && typeof item === 'object' && !Array.isArray(item);
-}
-
-/**
- * Deep merge two objects.
- * @param target
- * @param ...sources
- */
-export function mergeDeep(target, ...sources) {
-  if (!sources.length) return target;
-  const source = sources.shift();
-
-  if (isObject(target) && isObject(source)) {
-    for (const key in source) {
-      if (isObject(source[key])) {
-        if (!target[key]) Object.assign(target, {[key]: {}});
-        mergeDeep(target[key], source[key]);
-      } else {
-        Object.assign(target, {[key]: source[key]});
-      }
-    }
-  }
-
-  return mergeDeep(target, ...sources);
-}
-
-const navOverrides = {
-  children: {
-    'whats-new': {
-      title: "What's new",
-      slug: '/whats-new',
-      expandable: false,
-      order: 0,
-      sectionBreakAfter: true,
-    },
-    foundations: {
-      skipInNav: true,
-      order: 1,
-      children: {
-        foundations: {
-          title: 'Foundations',
-          slug: '/foundations/foundations',
-          order: 0,
-        },
-        content: {title: 'Content', slug: '/foundations/content', order: 1},
-        design: {title: 'Design', slug: '/foundations/design', order: 2},
-        patterns: {
-          title: 'Patterns',
-          slug: '/foundations/patterns',
-          order: 3,
-          sectionBreakAfter: true,
-        },
-      },
-    },
-    components: {
-      title: 'Components',
-      slug: '/components',
-      order: 2,
-    },
-    tokens: {
-      title: 'Tokens',
-      slug: '/tokens/colors',
-      order: 3,
-    },
-    icons: {
-      title: 'Icons',
-      slug: '/icons',
-      order: 4,
-      sectionBreakAfter: true,
-    },
-    contributing: {
-      order: 5,
-    },
-  },
-};
-
 const genNavJson = (mardownFiles) => {
   let nav = {};
 
   mardownFiles.forEach((md) => {
-    const {title, navTitle, icon, description} = md.frontMatter;
+    const {
+      title,
+      navTitle,
+      icon,
+      description,
+      order,
+      newSection,
+      hideChildren,
+    } = md.frontMatter;
     const {slug} = md;
 
     const path = `children.${slug.replace(/\//g, '.children.')}`;
@@ -99,11 +29,12 @@ const genNavJson = (mardownFiles) => {
       title: navTitle || title,
       icon,
       description,
+      order: order || 0,
       slug: `/${slug}`,
+      newSection,
+      hideChildren,
     });
   });
-
-  nav = mergeDeep(nav, navOverrides);
 
   writeFileSync(navJsonFile, JSON.stringify(nav), 'utf-8');
 };
