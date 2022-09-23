@@ -7,7 +7,7 @@ import styles from './Box.scss';
 
 type ColorsTokenGroup = typeof colors;
 type ColorsTokenName = keyof ColorsTokenGroup;
-type BackgroundColorTokenScale = Extract<
+export type BackgroundColorTokenScale = Extract<
   ColorsTokenName,
   | 'background'
   | `background-${string}`
@@ -21,7 +21,7 @@ type DepthTokenGroup = typeof depth;
 type DepthTokenName = keyof DepthTokenGroup;
 type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
 
-type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
+export type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
   ? Scale
   : never;
 
@@ -44,7 +44,7 @@ interface Border {
   top: BorderTokenScale;
 }
 
-type BorderRadiusTokenScale = Extract<
+export type BorderRadiusTokenScale = Extract<
   BorderShapeTokenScale,
   `radius-${string}`
 > extends `radius-${infer Scale}`
@@ -62,7 +62,7 @@ type SpacingTokenGroup = typeof spacing;
 type SpacingTokenName = keyof SpacingTokenGroup;
 
 // TODO: Bring this logic into tokens
-type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
+export type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
   ? Scale
   : never;
 
