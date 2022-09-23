@@ -9,6 +9,25 @@ keywords:
   - getting started
 icon: HintMajor
 ---
+## Quick start
+
+Polaris is the design system for the Shopify admin. There are many layers to being successful with Polaris but if you want to dive in, the first step you might want to do is download the resources.
+
+### Downloads and links
+
+For full descriptions of our resources, see the [develop](/getting-started/##develop) and [design](/getting-started/##design) resources sections.
+
+| Develop                                                               | Design                                                                       | Start exploring                                                                         |     |     |
+| ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --- | --- |
+| [Polaris for VS Code extension](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode)                        | [Component Figma library](https://www.figma.com/community/file/1111360433678236702)                       | [Experience values](https://polaris.shopify.com/foundations/foundations/experience-values) solution_                                              |     |     |
+| React component library](https://polaris.shopify.com/components)      | [Token Figma library](https://www.figma.com/community/file/1111359207966840858) | [Polaris 101]((https://polaris.shopify.com/foundations/getting-started/##polaris-101)) |     |     |
+| [Component GitHub Package Repo](https://github.com/Shopify/polaris/tree/main/polaris-react) | [ Design ](polaris.shopify.com/design)           | [Experience values](https://polaris.shopify.com/foundations/foundations/experience-values)                        |     |     |
+| [Token library](https://polaris.shopify.com/tokens/colors) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | [Accessibility](https://polaris.shopify.com/foundations/foundations/accessibility)                        |     |     |
+| [Token GitHub Package Repo](https://github.com/Shopify/polaris/tree/main/polaris-tokens) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | [Error messages](https://polaris.shopify.com/foundations/patterns/error-messages)                        |     |     |
+| [Browse icons](https://polaris.shopify.com/icons) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | [Product content](https://polaris.shopify.com/foundations/content/product-content)                      |     |     |
+| [Performing a release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md) | [ Create GitHub issue ](https://github.com/Shopify/polaris/issues/new/choose)           | [Actionable language](https://polaris.shopify.com/foundations/content/actionable-language) 
+
+
 ## Polaris 101 
 
 ### What is Polaris?
