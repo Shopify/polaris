@@ -45,7 +45,7 @@ export function BorderRadius() {
   );
 }
 
-export function BorderRadiusAbove() {
+export function BorderRadiusRoundedAbove() {
   return (
     <AlphaCard roundedAbove="sm">
       <AlphaStack spacing="5">
