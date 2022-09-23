@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.1
+
+### Patch Changes
+
+- [#7230](https://github.com/Shopify/polaris/pull/7230) [`a55193a8a`](https://github.com/Shopify/polaris/commit/a55193a8ad0de90a40de25b5d4909c1692861bc9) Thanks [@lgriffee](https://github.com/lgriffee)! - Add documentation on breakpoint token usage in media queries
+
 ## 6.0.0
 
 ### Major Changes
