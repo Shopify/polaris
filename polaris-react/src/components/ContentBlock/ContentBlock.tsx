@@ -1,30 +1,20 @@
 import React from 'react';
-import type {breakpoints} from '@shopify/polaris-tokens';
+
+import {classNames} from '../../utilities/css';
 
 import styles from './ContentBlock.scss';
 
-type BreakpointsTokenGroup = typeof breakpoints;
-type BreakpointsTokenName = keyof BreakpointsTokenGroup;
-
-type Breakpoints = BreakpointsTokenName extends `breakpoints-${infer Scale}`
-  ? Scale
-  : never;
+type Width = 'medium' | 'large';
 
 export interface ContentBlockProps {
-  /** Elements to display inside stack */
+  /** Elements to display inside container */
   children?: React.ReactNode;
   /** Adjust maximum width of container */
-  width: Breakpoints;
+  width: Width;
 }
 
 export const ContentBlock = ({children, width}: ContentBlockProps) => {
-  const style = {
-    '--pc-content-block-width': `var(--p-breakpoints-${width})`,
-  } as React.CSSProperties;
+  const className = classNames(styles.ContentBlock, styles[width]);
 
-  return (
-    <div className={styles.ContentBlock} style={style}>
-      {children}
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 };

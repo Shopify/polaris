@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {ContentBlock} from '@shopify/polaris';
+import {ContentBlock, Box, Text} from '@shopify/polaris';
 
 export default {
   component: ContentBlock,
@@ -15,42 +15,26 @@ const placeHolder = {
   height: 'var(--p-space-32)',
 };
 
-export function ExtraSmall() {
-  return (
-    <ContentBlock width="xs">
-      <div style={placeHolder}>{}</div>
-    </ContentBlock>
-  );
-}
-
-export function Small() {
-  return (
-    <ContentBlock width="sm">
-      <div style={placeHolder}>{}</div>
-    </ContentBlock>
-  );
-}
-
 export function Medium() {
   return (
-    <ContentBlock width="md">
-      <div style={placeHolder}>{}</div>
+    <ContentBlock width="medium">
+      <Box background="surface" borderRadius="2" padding="5" shadow="card">
+        <Text variant="bodySm" as="h3" alignment="center">
+          medium
+        </Text>
+      </Box>
     </ContentBlock>
   );
 }
 
 export function Large() {
   return (
-    <ContentBlock width="lg">
-      <div style={placeHolder}>{}</div>
-    </ContentBlock>
-  );
-}
-
-export function ExtraLarge() {
-  return (
-    <ContentBlock width="xl">
-      <div style={placeHolder}>{}</div>
+    <ContentBlock width="large">
+      <Box background="surface" borderRadius="2" padding="5" shadow="card">
+        <Text variant="bodySm" as="h3" alignment="center">
+          large
+        </Text>
+      </Box>
     </ContentBlock>
   );
 }

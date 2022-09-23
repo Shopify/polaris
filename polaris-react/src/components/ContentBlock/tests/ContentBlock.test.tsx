@@ -8,22 +8,20 @@ const children = <p>{text}</p>;
 
 describe('<ContentBlock />', () => {
   it('renders children', () => {
-    const stack = mountWithApp(
-      <ContentBlock width="xs">{children}</ContentBlock>,
+    const contentBlock = mountWithApp(
+      <ContentBlock width="medium">{children}</ContentBlock>,
     );
 
-    expect(stack).toContainReactComponent('p', {children: text});
+    expect(contentBlock).toContainReactComponent('p', {children: text});
   });
 
   it('renders custom properties', () => {
-    const stack = mountWithApp(
-      <ContentBlock width="sm">{children}</ContentBlock>,
+    const contentBlock = mountWithApp(
+      <ContentBlock width="large">{children}</ContentBlock>,
     );
 
-    expect(stack).toContainReactComponent('div', {
-      style: {
-        '--pc-content-block-width': 'var(--p-breakpoints-sm)',
-      } as React.CSSProperties,
+    expect(contentBlock).toContainReactComponent('div', {
+      className: expect.stringContaining('large'),
     });
   });
 });
