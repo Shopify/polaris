@@ -108,8 +108,8 @@ export function renameProps(
   props: {[from: string]: string},
 ) {
   const fromProps = Object.keys(props);
-  const isFromProp = (name: unknown): name is keyof typeof props =>
-    fromProps.includes(name as string);
+  const isFromProp = (prop: unknown): prop is keyof typeof props =>
+    fromProps.includes(prop as string);
 
   source.findJSXElements(componentName)?.forEach((path) => {
     path.node.openingElement.attributes?.forEach((node) => {
