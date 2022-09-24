@@ -102,19 +102,22 @@ export function replaceJSXElement(
 }
 
 export function renameProps(
-  j: core.JSCodeshift,
+  _j: core.JSCodeshift,
   source: Collection<any>,
   componentName: string,
   props: {[from: string]: string},
 ) {
-  return source
-    .findJSXElements(componentName)
-    .find(j.JSXOpeningElement)
-    .find(j.JSXAttribute)
-    .forEach(({node}) => {
-      const propName = node.name.name.toString();
-      if (Object.keys(props).includes(propName)) {
-        node.name.name = props[propName];
+  const fromProps = Object.keys(props);
+  const isFromProp = (name: unknown): name is keyof typeof props =>
+    fromProps.includes(name as string);
+
+  source.findJSXElements(componentName)?.forEach((path) => {
+    path.node.openingElement.attributes?.forEach((node) => {
+      if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
+        node.name.name = props[node.name.name];
       }
     });
+  });
+
+  return source;
 }
