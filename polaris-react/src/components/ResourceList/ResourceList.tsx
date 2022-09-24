@@ -1,5 +1,4 @@
 import React, {
-  ReactElement,
   useCallback,
   useEffect,
   useReducer,
@@ -39,11 +38,15 @@ import styles from './ResourceList.scss';
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-function getAllItemsOnPage<TItemType>(
-  items: TItemType[],
-  idForItem: (item: TItemType, index: number) => string,
+interface ResourceListItem {
+  [prop: string]: any;
+}
+
+function getAllItemsOnPage<TItem extends ResourceListItem>(
+  items: TItem[],
+  idForItem: (item: TItem, index: number) => string,
 ) {
-  return items.map((item: TItemType, index: number) => {
+  return items.map((item: TItem, index: number) => {
     return idForItem(item, index);
   });
 }
@@ -55,18 +58,18 @@ const isBreakpointsXS = () => {
         parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
-function defaultIdForItem<TItemType extends {id?: any}>(
-  item: TItemType,
+function defaultIdForItem<TItem extends ResourceListItem>(
+  item: TItem,
   index: number,
-) {
-  return Object.prototype.hasOwnProperty.call(item, 'id')
-    ? item.id
-    : index.toString();
+): string {
+  return 'id' in item ? item.id : index.toString();
 }
 
-export interface ResourceListProps<TItemType = any> {
+export interface ResourceListProps<
+  TItem extends ResourceListItem = ResourceListItem,
+> {
   /** Item data; each item is passed to renderItem */
-  items: TItemType[];
+  items: TItem[];
   filterControl?: React.ReactNode;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
   emptyState?: React.ReactNode;
@@ -108,20 +111,14 @@ export interface ResourceListProps<TItemType = any> {
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item, must return a ResourceItem component */
-  renderItem(item: TItemType, id: string, index: number): React.ReactNode;
+  renderItem(item: TItem, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
-  idForItem?(item: TItemType, index: number): string;
+  idForItem?(item: TItem, index: number): string;
   /** Function to resolve the ids of items */
-  resolveItemId?(item: TItemType): string;
+  resolveItemId?(item: TItem): string;
 }
 
-type ResourceListType = (<TItemType>(
-  value: ResourceListProps<TItemType>,
-) => ReactElement) & {
-  Item: typeof ResourceItem;
-};
-
-export const ResourceList: ResourceListType = function ResourceList<TItemType>({
+export function ResourceList<TItem extends ResourceListItem>({
   items,
   filterControl,
   emptyState,
@@ -144,7 +141,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   renderItem,
   idForItem = defaultIdForItem,
   resolveItemId,
-}: ResourceListProps<TItemType>) {
+}: ResourceListProps<TItem>) {
   const i18n = useI18n();
   const [selectMode, setSelectMode] = useState(
     Boolean(selectedItems && selectedItems.length > 0),
@@ -402,7 +399,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     forceUpdate();
   }, [forceUpdate, items]);
 
-  const renderItemWithId = (item: TItemType, index: number) => {
+  const renderItemWithId = (item: TItem, index: number) => {
     const id = idForItem(item, index);
 
     const itemContent = renderItem(item, id, index);
@@ -423,7 +420,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   const handleMultiSelectionChange = (
     lastSelected: number,
     currentSelected: number,
-    resolveItemId: (item: TItemType) => string,
+    resolveItemId: (item: TItem) => string,
   ) => {
     const min = Math.min(lastSelected, currentSelected);
     const max = Math.max(lastSelected, currentSelected);
@@ -735,6 +732,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       </div>
     </ResourceListContext.Provider>
   );
-};
+}
 
 ResourceList.Item = ResourceItem;
