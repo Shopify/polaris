@@ -38,15 +38,15 @@ import styles from './ResourceList.scss';
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;
 
-interface ResourceListItem {
-  [prop: string]: any;
+interface ResourceListItemData {
+  [data: string]: any;
 }
 
-function getAllItemsOnPage<TItem extends ResourceListItem>(
-  items: TItem[],
-  idForItem: (item: TItem, index: number) => string,
+function getAllItemsOnPage<TItemType extends ResourceListItemData>(
+  items: TItemType[],
+  idForItem: (item: TItemType, index: number) => string,
 ) {
-  return items.map((item: TItem, index: number) => {
+  return items.map((item: TItemType, index: number) => {
     return idForItem(item, index);
   });
 }
@@ -58,18 +58,18 @@ const isBreakpointsXS = () => {
         parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
 };
 
-function defaultIdForItem<TItem extends ResourceListItem>(
-  item: TItem,
+function defaultIdForItem<TItemType extends ResourceListItemData>(
+  item: TItemType,
   index: number,
 ): string {
   return 'id' in item ? item.id : index.toString();
 }
 
 export interface ResourceListProps<
-  TItem extends ResourceListItem = ResourceListItem,
+  TItemType extends ResourceListItemData = ResourceListItemData,
 > {
   /** Item data; each item is passed to renderItem */
-  items: TItem[];
+  items: TItemType[];
   filterControl?: React.ReactNode;
   /** The markup to display when no resources exist yet. Renders when set and items is empty. */
   emptyState?: React.ReactNode;
@@ -111,14 +111,14 @@ export interface ResourceListProps<
   /** Callback when selection is changed */
   onSelectionChange?(selectedItems: ResourceListSelectedItems): void;
   /** Function to render each list item, must return a ResourceItem component */
-  renderItem(item: TItem, id: string, index: number): React.ReactNode;
+  renderItem(item: TItemType, id: string, index: number): React.ReactNode;
   /** Function to customize the unique ID for each item */
-  idForItem?(item: TItem, index: number): string;
+  idForItem?(item: TItemType, index: number): string;
   /** Function to resolve the ids of items */
-  resolveItemId?(item: TItem): string;
+  resolveItemId?(item: TItemType): string;
 }
 
-export function ResourceList<TItem extends ResourceListItem>({
+export function ResourceList<TItemType extends ResourceListItemData>({
   items,
   filterControl,
   emptyState,
@@ -141,7 +141,7 @@ export function ResourceList<TItem extends ResourceListItem>({
   renderItem,
   idForItem = defaultIdForItem,
   resolveItemId,
-}: ResourceListProps<TItem>) {
+}: ResourceListProps<TItemType>) {
   const i18n = useI18n();
   const [selectMode, setSelectMode] = useState(
     Boolean(selectedItems && selectedItems.length > 0),
@@ -399,7 +399,7 @@ export function ResourceList<TItem extends ResourceListItem>({
     forceUpdate();
   }, [forceUpdate, items]);
 
-  const renderItemWithId = (item: TItem, index: number) => {
+  const renderItemWithId = (item: TItemType, index: number) => {
     const id = idForItem(item, index);
 
     const itemContent = renderItem(item, id, index);
@@ -420,7 +420,7 @@ export function ResourceList<TItem extends ResourceListItem>({
   const handleMultiSelectionChange = (
     lastSelected: number,
     currentSelected: number,
-    resolveItemId: (item: TItem) => string,
+    resolveItemId: (item: TItemType) => string,
   ) => {
     const min = Math.min(lastSelected, currentSelected);
     const max = Math.max(lastSelected, currentSelected);
