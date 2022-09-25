@@ -39,3 +39,6 @@ export const depth = {
     value: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
   },
 };
+
+export type DepthTokenGroup = typeof depth;
+export type DepthTokenName = keyof DepthTokenGroup;

@@ -1,3 +1,5 @@
+import type {Metadata} from './metadata';
+
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
 
@@ -10,28 +12,20 @@ export interface MetadataGroup {
   [token: string]: MetadataProperties;
 }
 
-export interface Metadata {
-  breakpoints: MetadataGroup;
-  colors: MetadataGroup;
-  depth: MetadataGroup;
-  font: MetadataGroup;
-  legacy: MetadataGroup;
-  motion: MetadataGroup;
-  shape: MetadataGroup;
-  spacing: MetadataGroup;
-  zIndex: MetadataGroup;
+export interface MetadataBase {
+  [tokenGroup: string]: MetadataGroup;
 }
 
 export interface TokenGroup {
   [token: string]: string;
 }
 
-export type Tokens = {
-  [Property in keyof MetadataGroup]: TokenGroup;
-};
-
 export type ExtractValues<T extends MetadataGroup> = {
   [K in keyof T]: T[K]['value'];
+};
+
+export type Tokens = {
+  [TokenGroup in keyof Metadata]: ExtractValues<Metadata[TokenGroup]>;
 };
 
 // The following utility types are copied directly from `type-fest`:

@@ -645,3 +645,6 @@ export const colors = {
       'For use as a decorative text color that is applied on a decorative surface.',
   },
 };
+
+export type ColorsTokenGroup = typeof colors;
+export type ColorsTokenName = keyof ColorsTokenGroup;

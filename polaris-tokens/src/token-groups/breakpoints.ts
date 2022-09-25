@@ -25,3 +25,14 @@ export const breakpoints = {
       'Commonly used for sizing containers (e.g. max-width). See below for media query usage.',
   },
 };
+
+export type BreakpointsTokenGroup = typeof breakpoints;
+export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
+
+// e.g. "xs" | "sm" | "md" | "lg" | "xl"
+export type BreakpointsAlias = Extract<
+  BreakpointsTokenName,
+  `breakpoints-${string}`
+> extends `breakpoints-${infer Alias}`
+  ? Alias
+  : never;

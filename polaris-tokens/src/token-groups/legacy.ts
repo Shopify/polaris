@@ -59,3 +59,6 @@ export const legacy = {
     value: '0px',
   },
 };
+
+export type LegacyTokenGroup = typeof legacy;
+export type LegacyTokenName = keyof LegacyTokenGroup;

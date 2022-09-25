@@ -36,3 +36,14 @@ export const zIndex = {
     value: '520',
   },
 };
+
+export type ZIndexTokenGroup = typeof zIndex;
+export type ZIndexTokenName = keyof ZIndexTokenGroup;
+
+// e.g. "1" | "2" | "3" | "4" | "5" | "6" | ...
+export type ZIndexZScale = Extract<
+  ZIndexTokenName,
+  `z-${number}`
+> extends `z-${infer Scale}`
+  ? Scale
+  : never;
