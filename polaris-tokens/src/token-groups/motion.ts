@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const motion = {
   'duration-0': {
     value: '0ms',
@@ -64,4 +66,20 @@ export const motion = {
   'keyframes-spin': {
     value: '{ to { transform: rotate(1turn) } }',
   },
-};
+} satisfies MetadataGroup;
+
+export type MotionTokenGroup = typeof motion;
+export type MotionTokenName = keyof MotionTokenGroup;
+
+// e.g. "0" | "50" | "100" | "150" | ...
+export type MotionDurationScale = Extract<
+  MotionTokenName,
+  `duration-${number}`
+> extends `duration-${infer Scale}` ? Scale : never;
+
+// e.g. "bounce" | "fade-in" | "pulse" | "spin" 
+export type MotionKeyframesAlias = Extract<
+  MotionTokenName,
+  `keyframes-${string}`
+> extends `keyframes-${infer Alias}` ? Alias : never;
+

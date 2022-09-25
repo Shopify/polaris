@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const spacing = {
   'space-0': {
     value: '0',
@@ -50,4 +52,13 @@ export const spacing = {
   'space-32': {
     value: '128px',
   },
-};
+} satisfies MetadataGroup;
+
+export type SpacingTokenGroup = typeof spacing;
+export type SpacingTokenName = keyof SpacingTokenGroup;
+
+// e.g. "0" | "025" | "05" | "1" | "2" | "3" | ...
+export type SpacingSpaceScale = Extract<
+  SpacingTokenName,
+  `space-${number}`
+> extends `space-${infer Scale}` ? Scale : never;

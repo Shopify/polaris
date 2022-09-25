@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const font = {
   'font-family-sans': {
     value:
@@ -64,4 +66,26 @@ export const font = {
   'font-line-height-7': {
     value: '48px',
   },
-};
+} satisfies MetadataGroup;
+
+export type FontTokenGroup = typeof font;
+export type FontTokenName = keyof FontTokenGroup;
+
+// e.g. "400" | "500" | "600" | "700" | "100" | ...
+export type FontSizeScale = Extract<
+  FontTokenName,
+  `font-size-${number}`
+> extends `font-size-${infer Scale}` ? Scale : never;
+
+// e.g. "1" | "2" | "3" | "4" | "5" | "6" | "7"
+export type FontLineHeightScale = Extract<
+  FontTokenName,
+  `font-line-height-${number}`
+> extends `font-line-height-${infer Scale}` ? Scale : never;
+
+
+// e.g. "bold" | "regular" | "medium" | "semibold"
+export type FontWeightAlias = Extract<
+  FontTokenName,
+  `font-weight-${string}`
+> extends `font-weight-${infer Alias}` ? Alias : never;

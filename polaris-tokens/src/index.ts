@@ -5,5 +5,4 @@ export type {
   Tokens,
   MetadataProperties,
   MetadataGroup,
-  Metadata,
 } from './types';

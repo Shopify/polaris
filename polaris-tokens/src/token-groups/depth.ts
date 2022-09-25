@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const depth = {
   'shadow-transparent': {
     value: '0 0 0 0 transparent',
@@ -38,4 +40,7 @@ export const depth = {
   'shadows-inset-button-pressed': {
     value: 'inset 0 1px 0 rgba(0, 0, 0, 0.15)',
   },
-};
+} satisfies MetadataGroup;
+
+export type DepthTokenGroup = typeof depth;
+export type DepthTokenName = keyof DepthTokenGroup;

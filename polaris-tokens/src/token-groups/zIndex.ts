@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const zIndex = {
   'z-1': {
     value: '100',
@@ -35,4 +37,13 @@ export const zIndex = {
   'z-12': {
     value: '520',
   },
-};
+} satisfies MetadataGroup;
+
+export type ZIndexTokenGroup = typeof zIndex;
+export type ZIndexTokenName = keyof ZIndexTokenGroup;
+
+// e.g. "1" | "2" | "3" | "4" | "5" | "6" | ...
+export type ZIndexZScale = Extract<
+  ZIndexTokenName,
+  `z-${number}`
+> extends `z-${infer Scale}` ? Scale : never;

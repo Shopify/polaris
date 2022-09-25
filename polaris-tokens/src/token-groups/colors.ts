@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const colors = {
   background: {
     value: 'rgba(246, 246, 247, 1)',
@@ -644,4 +646,7 @@ export const colors = {
     description:
       'For use as a decorative text color that is applied on a decorative surface.',
   },
-};
+} satisfies MetadataGroup;
+
+export type ColorsTokenGroup = typeof colors;
+export type ColorsTokenName = keyof ColorsTokenGroup;

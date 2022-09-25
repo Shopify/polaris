@@ -83,7 +83,7 @@ export function rem(value: string) {
   );
 }
 
-export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
+export function tokensToRems<T extends MetadataGroup>(tokenGroup: T) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, properties]) => [
       token,

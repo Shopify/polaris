@@ -1,3 +1,5 @@
+import type {MetadataGroup} from '../types'
+
 export const legacy = {
   'override-loading-z-index': {
     value: '514',
@@ -58,4 +60,7 @@ export const legacy = {
   'frame-offset': {
     value: '0px',
   },
-};
+} satisfies MetadataGroup;
+
+export type LegacyTokenGroup = typeof legacy;
+export type LegacyTokenName = keyof LegacyTokenGroup;
