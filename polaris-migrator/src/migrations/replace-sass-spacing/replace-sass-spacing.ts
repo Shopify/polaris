@@ -3,6 +3,11 @@ import postcss, {Plugin} from 'postcss';
 import valueParser, {Node, FunctionNode} from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+import {
+  NamespaceOptions,
+  namespace,
+  createIsSassFunction,
+} from '../../utilities/sass';
 
 const spacingMap = {
   none: '--p-space-0',
@@ -30,16 +35,11 @@ function isNumericOperator(node: Node): boolean {
 
 const processed = Symbol('processed');
 
-interface PluginOptions extends Options {
-  namespace?: string;
-}
+interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const namespace = options?.namespace || '';
-  const functionName = namespace ? `${namespace}.spacing` : 'spacing';
-  const isSpacingFn = (node: Node): node is FunctionNode => {
-    return node.type === 'function' && node.value === functionName;
-  };
+  const spacingFunction = namespace('spacing', options);
+  const isSpacingFunction = createIsSassFunction(spacingFunction);
 
   return {
     postcssPlugin: 'ReplaceSassSpacing',
@@ -53,10 +53,10 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       let containsCalculation = false;
 
       parsed.walk((node) => {
-        if (isSpacingFn(node)) containsSpacingFn = true;
+        if (isSpacingFunction(node)) containsSpacingFn = true;
         if (isNumericOperator(node)) containsCalculation = true;
 
-        if (!isSpacingFn(node)) return;
+        if (!isSpacingFunction(node)) return;
 
         const spacing = node.nodes[0]?.value ?? '';
 

@@ -1,9 +1,14 @@
-import type {FileInfo} from 'jscodeshift';
+import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser, {Node} from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+import {
+  NamespaceOptions,
+  namespace,
+  createIsSassFunction,
+} from '../../utilities/sass';
 
 // List of the props we want to run this migration on
 const targetProps = [
@@ -78,74 +83,85 @@ const processed = Symbol('processed');
  */
 const ExitAndStopTraversing = false;
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'replace-sass-lengths',
-  Declaration(decl) {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
+interface PluginOptions extends Options, NamespaceOptions {}
 
-    const prop = decl.prop;
-    const parsedValue = valueParser(decl.value);
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const remFunction = namespace('rem', options);
+  const isRemFunction = createIsSassFunction(remFunction);
 
-    if (!isTargetProp(prop)) return;
+  return {
+    postcssPlugin: 'replace-sass-lengths',
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
 
-    parsedValue.walk((node) => {
-      if (node.type === 'function' && node.value === 'rem') {
-        const argDimension = valueParser.unit(node.nodes[0]?.value ?? '');
+      const prop = decl.prop;
+      const parsedValue = valueParser(decl.value);
 
-        if (
-          argDimension &&
-          supportedDimensionUnits.includes(argDimension.unit)
-        ) {
-          const argInPx = toPx(`${argDimension.number}${argDimension.unit}`);
+      if (!isTargetProp(prop)) return;
 
-          if (!isSpacingTokenValue(argInPx)) return ExitAndStopTraversing;
+      parsedValue.walk((node) => {
+        if (isRemFunction(node)) {
+          const argDimension = valueParser.unit(node.nodes[0]?.value ?? '');
 
-          const spacingToken = spacingTokensMap[argInPx];
+          if (
+            argDimension &&
+            supportedDimensionUnits.includes(argDimension.unit)
+          ) {
+            const argInPx = toPx(`${argDimension.number}${argDimension.unit}`);
 
-          node.value = 'var';
-          node.nodes = [
-            {
-              type: 'word',
-              value: spacingToken,
-              sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-              sourceEndIndex: spacingToken.length,
-            },
-            ...node.nodes.slice(1),
-          ];
+            if (!isSpacingTokenValue(argInPx)) return ExitAndStopTraversing;
+
+            const spacingToken = spacingTokensMap[argInPx];
+
+            node.value = 'var';
+            node.nodes = [
+              {
+                type: 'word',
+                value: spacingToken,
+                sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                sourceEndIndex: spacingToken.length,
+              },
+              ...node.nodes.slice(1),
+            ];
+          }
+
+          return ExitAndStopTraversing;
+        } else if (node.type === 'word') {
+          const dimension = valueParser.unit(node.value);
+
+          if (dimension && supportedDimensionUnits.includes(dimension.unit)) {
+            const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
+
+            if (!isSpacingTokenValue(dimensionInPx)) return;
+
+            node.value = `var(${spacingTokensMap[dimensionInPx]})`;
+          }
         }
+      });
 
-        return ExitAndStopTraversing;
-      } else if (node.type === 'word') {
-        const dimension = valueParser.unit(node.value);
-
-        if (dimension && supportedDimensionUnits.includes(dimension.unit)) {
-          const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
-
-          if (!isSpacingTokenValue(dimensionInPx)) return;
-
-          node.value = `var(${spacingTokensMap[dimensionInPx]})`;
-        }
+      if (hasCalculation(parsedValue)) {
+        // Insert comment if the declaration value contains calculations
+        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        decl.before(
+          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+        );
+      } else {
+        decl.value = parsedValue.toString();
       }
-    });
 
-    if (hasCalculation(parsedValue)) {
-      // Insert comment if the declaration value contains calculations
-      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
-      decl.before(
-        postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
-      );
-    } else {
-      decl.value = parsedValue.toString();
-    }
+      // @ts-expect-error - Mark the declaration as processed
+      decl[processed] = true;
+    },
+  };
+};
 
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
-  },
-});
-
-export default function replaceSassLengths(fileInfo: FileInfo) {
-  return postcss(plugin()).process(fileInfo.source, {
+export default function replaceSassLengths(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
 }
