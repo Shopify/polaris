@@ -42,7 +42,7 @@ export const Inline = function Inline({
 }: InlineProps) {
   const style = {
     '--pc-inline-align': align,
-    '--pc-inline-align-y': alignY,
+    '--pc-inline-align-y': alignY ? AlignY[alignY] : undefined,
     '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
     '--pc-inline-spacing': `var(--p-space-${spacing})`,
   } as React.CSSProperties;

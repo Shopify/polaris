@@ -6,9 +6,10 @@ interface Props {
 }
 
 function StatusBanner({status: {value, message}}: Props) {
+  const statusValue = value.charAt(0).toUpperCase() + value.slice(1);
   return (
     <div className={styles.StatusBanner} data-value={value.toLowerCase()}>
-      <h2>{value}</h2>
+      <h2>{statusValue}</h2>
       <p>{message}</p>
     </div>
   );
