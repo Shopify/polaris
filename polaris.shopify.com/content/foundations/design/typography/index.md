@@ -24,7 +24,7 @@ Keep related text aligned and closer together to create visual groupings. For mo
 
 ### 2. Adjust text based on device size and distance from the merchant
 
-Because small screens are often at an arms distance, we can decrease the size of larger headings and increase the size of important body text.
+Because small screens are often at an arm's distance, we can decrease the size of larger headings and increase the size of important body text.
 
 ### 3. Create visual hierarchy
 
