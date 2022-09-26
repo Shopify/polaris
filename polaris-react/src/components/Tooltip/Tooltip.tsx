@@ -3,7 +3,6 @@ import React, {useEffect, useState, useRef, useCallback} from 'react';
 import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
-import {useToggle} from '../../utilities/use-toggle';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
@@ -36,19 +35,18 @@ export function Tooltip({
   children,
   content,
   dismissOnMouseOut,
-  active: originalActive,
+  active: forceActive,
   preferredPosition = 'below',
   activatorWrapper = 'span',
   accessibilityLabel,
   onVisibilityChange,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
-  const {
-    value: active,
-    setTrue: handleFocus,
-    setFalse: handleBlur,
-  } = useToggle(Boolean(originalActive));
+
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const [active, setActive] = useState<boolean | undefined>(
+    forceActive ? undefined : false,
+  );
 
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
@@ -68,8 +66,25 @@ export function Tooltip({
   }, [id, children]);
 
   useEffect(() => {
-    if (onVisibilityChange) onVisibilityChange(active);
+    if (forceActive && onVisibilityChange) {
+      if (active !== undefined) return;
+      setActive(true);
+    }
+  }, [forceActive, active, setActive, onVisibilityChange]);
+
+  useEffect(() => {
+    if (onVisibilityChange && active !== undefined) {
+      onVisibilityChange(active);
+    }
   }, [active, onVisibilityChange]);
+
+  const handleFocus = useCallback(() => {
+    setActive(true);
+  }, []);
+
+  const handleBlur = useCallback(() => {
+    setActive(false);
+  }, []);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
@@ -85,7 +100,7 @@ export function Tooltip({
         id={id}
         preferredPosition={preferredPosition}
         activator={activatorNode}
-        active={active}
+        active={active === undefined ? false : active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
         preventInteraction={dismissOnMouseOut}

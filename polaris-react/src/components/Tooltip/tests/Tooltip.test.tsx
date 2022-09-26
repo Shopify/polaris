@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {act} from 'react-dom/test-utils';
 
 import {Link} from '../../Link';
 import {Tooltip} from '../Tooltip';
@@ -31,7 +32,12 @@ describe('<Tooltip />', () => {
         <Link>link content</Link>
       </Tooltip>,
     );
-    expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
+
+    tooltipActive.act(() => {
+      tooltipActive.find(TooltipOverlay);
+    });
+
+    expect(tooltipActive).toContainReactComponent('div');
   });
 
   it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
@@ -126,7 +132,7 @@ describe('<Tooltip />', () => {
       active: false,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(false);
+    expect(changeSpy).toHaveBeenCalledWith(true);
   });
 
   it('calls onVisibilityChange on mouseOver', () => {
