@@ -33,10 +33,10 @@ export const Tooltip = ({children, ariaLabel, renderContent}: Props) => {
   );
 
   const {getReferenceProps, getFloatingProps} = useInteractions([
-    useHover(context, {move: false}),
+    useHover(context),
     useFocus(context),
     useRole(context, {role: 'tooltip'}),
-    useDismiss(context, {referencePress: true}),
+    useDismiss(context),
   ]);
 
   return (
