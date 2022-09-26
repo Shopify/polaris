@@ -1,6 +1,6 @@
 ---
 title: Bleed
-description: Use to create a container that applies negative margins. This will allow content to Bleed into the surrounding layout.
+description: Used to create a container that applies negative margins to allow content to extend into the surrounding layout.
 category: Structure
 keywords:
   - layout
