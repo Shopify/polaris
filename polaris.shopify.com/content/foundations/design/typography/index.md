@@ -1,6 +1,6 @@
 ---
 title: Typography
-description: It helps establish hierarchy and communicate important content by creating clear visual patterns.
+description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 keywords:
   - type styles
   - font sizes
