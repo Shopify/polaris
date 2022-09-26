@@ -6,18 +6,9 @@ export default {
   component: ContentBlock,
 } as ComponentMeta<typeof ContentBlock>;
 
-const placeHolder = {
-  background: 'var(--p-background-selected)',
-  borderRadius: 'var(--p-border-radius-05)',
-  border: '1px solid var(--p-surface-dark)',
-  padding: 'var(--p-space-4)',
-  width: '100%',
-  height: 'var(--p-space-32)',
-};
-
 export function Medium() {
   return (
-    <ContentBlock width="medium">
+    <ContentBlock width="md">
       <Box background="surface" borderRadius="2" padding="5" shadow="card">
         <Text variant="bodySm" as="h3" alignment="center">
           medium
@@ -29,7 +20,7 @@ export function Medium() {
 
 export function Large() {
   return (
-    <ContentBlock width="large">
+    <ContentBlock width="lg">
       <Box background="surface" borderRadius="2" padding="5" shadow="card">
         <Text variant="bodySm" as="h3" alignment="center">
           large

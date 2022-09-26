@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function ContentBlockWidthExample() {
   return (
     <div style={{width: '500px'}}>
-      <ContentBlock width="medium">
+      <ContentBlock width="md">
         <Box background="surface" borderRadius="2" padding="5" shadow="card">
           <Text variant="bodySm" as="h3" alignment="center">
             medium
@@ -14,7 +14,7 @@ function ContentBlockWidthExample() {
         </Box>
       </ContentBlock>
       <br />
-      <ContentBlock width="large">
+      <ContentBlock width="lg">
         <Box background="surface" borderRadius="2" padding="5" shadow="card">
           <Text variant="bodySm" as="h3" alignment="center">
             large

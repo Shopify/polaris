@@ -4,7 +4,7 @@ import {classNames} from '../../utilities/css';
 
 import styles from './ContentBlock.scss';
 
-type Width = 'medium' | 'large';
+type Width = 'md' | 'lg';
 
 export interface ContentBlockProps {
   /** Elements to display inside container */

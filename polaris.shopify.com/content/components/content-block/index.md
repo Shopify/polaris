@@ -1,6 +1,6 @@
 ---
 title: Content block
-description: Use to create a container that centers and sets the maximum width of the content within.
+description: Used to create a container that centers and sets the maximum width of the content within.
 category: Structure
 keywords:
   - layout
@@ -11,5 +11,5 @@ examples:
   - fileName: content-block-width.tsx
     title: Width
     description: >-
-      Use to set maximum width.
+      Used to set maximum width.
 ---

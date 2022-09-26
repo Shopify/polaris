@@ -9,7 +9,7 @@ const children = <p>{text}</p>;
 describe('<ContentBlock />', () => {
   it('renders children', () => {
     const contentBlock = mountWithApp(
-      <ContentBlock width="medium">{children}</ContentBlock>,
+      <ContentBlock width="md">{children}</ContentBlock>,
     );
 
     expect(contentBlock).toContainReactComponent('p', {children: text});
@@ -17,7 +17,7 @@ describe('<ContentBlock />', () => {
 
   it('renders custom properties', () => {
     const contentBlock = mountWithApp(
-      <ContentBlock width="large">{children}</ContentBlock>,
+      <ContentBlock width="lg">{children}</ContentBlock>,
     );
 
     expect(contentBlock).toContainReactComponent('div', {
