@@ -20,7 +20,7 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ### 1. Make it scannable
 
-Place related text closer together to create visual groupings.
+Keep related text aligned and closer together to create visual groupings. For most languages, the the majority of text should be left-aligned.
 
 ### 2. Adjust text based on device size and distance from the merchant
 
