@@ -4,6 +4,8 @@
   padding: 0 1rem 2em 3px 4in;
   padding-bottom: var(--p-space-0);
   padding: rem(2px) 2px;
+  /* Expect to skip negative lengths */
+  padding: rem(-2px) -2px;
 }
 
 .another-class {
