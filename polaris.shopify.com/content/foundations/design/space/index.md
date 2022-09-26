@@ -9,7 +9,7 @@ keywords:
   - position
   - margin
   - padding
-description: Consistent spacing creates visual balance that makes the user interface (UI) easier for merchants to scan. Apply consistent spacing to improve the quality of the UI.
+description: Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.
 ---
 
 <!-- inline css styling for html video and images -->
@@ -27,29 +27,27 @@ description: Consistent spacing creates visual balance that makes the user inter
 
 ---
 
-Space is the distance between objects in your design. It should be used to organize information in a way that is familiar and easy to scan, while helping reinforce its purpose.
-
 <div class="space-hero">
   <img src="/images/foundations/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
 </div>
 
 ---
 
-## Principles
+## Spacing must...
 
 ![Illustrations of blocks representing each principle](/images/foundations/design/space/principles@2x.png)
 
-### 1. Make content easy to understand.
+### 1. Create visual groupings
 
-Guides merchants' eyes, rather than expecting them to decipher all the information.
+The more items are related, the closer they should be to each other.
 
-### 2. Augment the purpose of a page.
+### 2. Complement function
 
-Make sure the information is organized in a way that makes clear its function.
+Use tighter spacing for large amounts of information, use looser spacing for more focused content.
 
-### 3. Make it feel integrated.
+### 3. Be harmonious
 
-Merchants experience pages, space should feel like a small part of a bigger system. Only introduce uniqueness when the benefits massively outweigh the cost of inconsistency.
+Use Polaris space tokens in a way that is consistent with the rest of the experience.
 
 ---
 
