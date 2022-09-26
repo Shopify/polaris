@@ -20,11 +20,11 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ### 1. Make it scannable
 
-Align long-form text to match the direction of the language it's written in. For most languages, that means the majority of text should be left-aligned.
+Place related text closer together to create visual groupings.
 
-### 2. Adjust text based on screen size
+### 2. Adjust text based on device size and distance from the merchant
 
-Large headings may need to become smaller and important body text may need to be larger on smaller screens.
+Because small screens are often at an arms distance, we can decrease the size of larger headings and increase the size of important body text.
 
 ### 3. Create visual hierarchy
 
