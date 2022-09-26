@@ -1,4 +1,4 @@
-import {Node, FunctionNode} from 'postcss-value-parser';
+import type {Node, FunctionNode} from 'postcss-value-parser';
 
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || '';
