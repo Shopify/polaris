@@ -1,4 +1,4 @@
-import type {FileInfo} from 'jscodeshift';
+import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser, {Node, FunctionNode} from 'postcss-value-parser';
 
@@ -18,10 +18,6 @@ const spacingMap = {
 const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
   Object.keys(spacingMap).includes(spacing as string);
 
-function isSpacingFn(node: Node): node is FunctionNode {
-  return node.type === 'function' && node.value === 'spacing';
-}
-
 function isNumericOperator(node: Node): boolean {
   return (
     node.value === '+' ||
@@ -34,57 +30,73 @@ function isNumericOperator(node: Node): boolean {
 
 const processed = Symbol('processed');
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'ReplaceSassSpacing',
-  Declaration(decl) {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
+interface PluginOptions extends Options {
+  namespace?: string;
+}
 
-    const parsed = valueParser(decl.value);
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespace = options?.namespace || '';
+  const functionName = namespace ? `${namespace}.spacing` : 'spacing';
+  const isSpacingFn = (node: Node): node is FunctionNode => {
+    return node.type === 'function' && node.value === functionName;
+  };
 
-    let containsSpacingFn = false;
-    let containsCalculation = false;
+  return {
+    postcssPlugin: 'ReplaceSassSpacing',
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
 
-    parsed.walk((node) => {
-      if (isSpacingFn(node)) containsSpacingFn = true;
-      if (isNumericOperator(node)) containsCalculation = true;
+      const parsed = valueParser(decl.value);
 
-      if (!isSpacingFn(node)) return;
+      let containsSpacingFn = false;
+      let containsCalculation = false;
 
-      const spacing = node.nodes[0]?.value ?? '';
+      parsed.walk((node) => {
+        if (isSpacingFn(node)) containsSpacingFn = true;
+        if (isNumericOperator(node)) containsCalculation = true;
 
-      if (!isSpacing(spacing)) return;
-      const spacingCustomProperty = spacingMap[spacing];
+        if (!isSpacingFn(node)) return;
 
-      node.value = 'var';
-      node.nodes = [
-        {
-          type: 'word',
-          value: spacingCustomProperty,
-          sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-          sourceEndIndex: spacingCustomProperty.length,
-        },
-        ...node.nodes.slice(1),
-      ];
-    });
+        const spacing = node.nodes[0]?.value ?? '';
 
-    if (containsSpacingFn && containsCalculation) {
-      // Insert comment if the declaration value contains calculations
-      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
-      decl.before(
-        postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
-      );
-    } else {
-      decl.value = parsed.toString();
-    }
+        if (!isSpacing(spacing)) return;
+        const spacingCustomProperty = spacingMap[spacing];
 
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
-  },
-});
+        node.value = 'var';
+        node.nodes = [
+          {
+            type: 'word',
+            value: spacingCustomProperty,
+            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+            sourceEndIndex: spacingCustomProperty.length,
+          },
+          ...node.nodes.slice(1),
+        ];
+      });
 
-export default function replaceSassSpacing(file: FileInfo) {
-  return postcss(plugin()).process(file.source, {
+      if (containsSpacingFn && containsCalculation) {
+        // Insert comment if the declaration value contains calculations
+        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        decl.before(
+          postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
+        );
+      } else {
+        decl.value = parsed.toString();
+      }
+
+      // @ts-expect-error - Mark the declaration as processed
+      decl[processed] = true;
+    },
+  };
+};
+
+export default function replaceSassSpacing(
+  file: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(file.source, {
     syntax: require('postcss-scss'),
   }).css;
 }

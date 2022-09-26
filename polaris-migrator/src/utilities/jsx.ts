@@ -1,4 +1,4 @@
-import core, {ASTPath} from 'jscodeshift';
+import core, {ASTPath, Collection} from 'jscodeshift';
 
 export function getJSXAttributes(
   j: core.JSCodeshift,
@@ -99,4 +99,22 @@ export function replaceJSXElement(
   );
 
   return j(element).replaceWith(newComponent);
+}
+
+export function renameProps(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  componentName: string,
+  props: {[from: string]: string},
+) {
+  return source
+    .findJSXElements(componentName)
+    .find(j.JSXOpeningElement)
+    .find(j.JSXAttribute)
+    .forEach(({node}) => {
+      const propName = node.name.name.toString();
+      if (Object.keys(props).includes(propName)) {
+        node.name.name = props[propName];
+      }
+    });
 }
