@@ -4,7 +4,6 @@ import {mountWithApp} from 'tests/utilities';
 import {Link} from '../../Link';
 import {Tooltip} from '../Tooltip';
 import {TooltipOverlay} from '../components';
-import {Key} from '../../../types';
 
 describe('<Tooltip />', () => {
   it('renders its children', () => {
@@ -98,11 +97,108 @@ describe('<Tooltip />', () => {
     );
 
     findWrapperComponent(tooltip)!.trigger('onKeyUp', {
-      keyCode: Key.Escape,
+      key: 'Escape',
     });
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
       active: false,
     });
+  });
+
+  it('calls onVisibilityChange when initially activated', () => {
+    const changeSpy = jest.fn();
+    const tooltip = mountWithApp(
+      <Tooltip
+        active
+        content="This order has shipping labels."
+        onVisibilityChange={changeSpy}
+      >
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      key: 'Escape',
+    });
+
+    tooltip.forceUpdate();
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+
+    expect(changeSpy).toHaveBeenCalledWith(false);
+  });
+
+  it('calls onVisibilityChange on mouseOver', () => {
+    const changeSpy = jest.fn();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: true,
+    });
+
+    expect(changeSpy).toHaveBeenCalledWith(true);
+  });
+
+  it('calls onVisibilityChange on focus', () => {
+    const changeSpy = jest.fn();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onFocus');
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: true,
+    });
+
+    expect(changeSpy).toHaveBeenCalledWith(true);
+  });
+
+  it('calls onVisibilityChange on blur', () => {
+    const changeSpy = jest.fn();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onBlur');
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+
+    expect(changeSpy).toHaveBeenCalledWith(false);
+  });
+
+  it('calls onVisibilityChange on mouseLeave', () => {
+    const changeSpy = jest.fn();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+
+    expect(changeSpy).toHaveBeenCalledWith(false);
   });
 
   it('passes accessibility label to TooltipOverlay', () => {

@@ -1,11 +1,21 @@
 import React from 'react';
 
-import {Page} from '../src';
+import {Page, Tooltip, TextStyle} from '../src';
 
 export function Playground() {
+  const callMonorailEventEmitter = (tooltipActivated: boolean) => {
+    if (tooltipActivated) console.log('Calling monorail event emitter!!');
+  };
+
   return (
     <Page title="Playground">
-      {/* Add the code you want to test in here */}
+      <Tooltip
+        active
+        content="This order has shipping labels."
+        onVisibilityChange={callMonorailEventEmitter}
+      >
+        <TextStyle variation="strong">Order #1001</TextStyle>
+      </Tooltip>
     </Page>
   );
 }

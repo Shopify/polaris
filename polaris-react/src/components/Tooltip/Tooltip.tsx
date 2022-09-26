@@ -4,7 +4,6 @@ import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
-import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
@@ -29,6 +28,8 @@ export interface TooltipProps {
   activatorWrapper?: string;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /* Callback fired when the tooltip is activated or dismissed */
+  onVisibilityChange?(active: boolean): void;
 }
 
 export function Tooltip({
@@ -39,6 +40,7 @@ export function Tooltip({
   preferredPosition = 'below',
   activatorWrapper = 'span',
   accessibilityLabel,
+  onVisibilityChange,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {
@@ -65,9 +67,13 @@ export function Tooltip({
     accessibilityNode.setAttribute('data-polaris-tooltip-activator', 'true');
   }, [id, children]);
 
+  useEffect(() => {
+    if (onVisibilityChange) onVisibilityChange(active);
+  }, [active, onVisibilityChange]);
+
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.keyCode !== Key.Escape) return;
+      if (event.key !== 'Escape') return;
       handleBlur();
     },
     [handleBlur],
