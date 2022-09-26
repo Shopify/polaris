@@ -97,17 +97,17 @@ export interface BoxProps {
   children: ReactNode;
   /** Adjust color of children */
   color?: ColorTokenScale;
-  /** Adjust spacing outside of element */
+  /** Adjust spacing outside of container */
   margin?: SpacingTokenScale;
-  /** Adjust bottom spacing outside of element */
+  /** Adjust bottom spacing outside of container */
   marginBottom?: SpacingTokenScale;
-  /** Adjust left side spacing outside of element */
+  /** Adjust left side spacing outside of container */
   marginLeft?: SpacingTokenScale;
-  /** Adjust right side spacing outside of element */
+  /** Adjust right side spacing outside of container */
   marginRight?: SpacingTokenScale;
-  /** Adjust top spacing outside of element */
+  /** Adjust top spacing outside of container */
   marginTop?: SpacingTokenScale;
-  /** Adjust maximum width of element */
+  /** Adjust maximum width of container */
   maxWidth?: string;
   /** Adjust spacing around children */
   padding?: SpacingTokenScale;
