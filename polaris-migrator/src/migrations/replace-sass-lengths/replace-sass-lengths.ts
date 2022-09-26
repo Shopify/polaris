@@ -12,6 +12,23 @@ const targetProps = [
   'padding-right',
   'padding-bottom',
   'padding-left',
+  'padding-inline',
+  'padding-inline-start',
+  'padding-inline-end',
+  'padding-block',
+  'padding-block-start',
+  'padding-block-end',
+  'margin',
+  'margin-top',
+  'margin-right',
+  'margin-bottom',
+  'margin-left',
+  'margin-inline',
+  'margin-inline-start',
+  'margin-inline-end',
+  'margin-block',
+  'margin-block-start',
+  'margin-block-end',
 ] as const;
 
 type TargetProp = typeof targetProps[number];
