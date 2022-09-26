@@ -21,7 +21,7 @@ describe('<ContentBlock />', () => {
     );
 
     expect(contentBlock).toContainReactComponent('div', {
-      className: expect.stringContaining('large'),
+      className: expect.stringContaining('lg'),
     });
   });
 });
