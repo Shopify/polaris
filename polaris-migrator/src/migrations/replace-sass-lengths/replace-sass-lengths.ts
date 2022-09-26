@@ -62,7 +62,7 @@ const processed = Symbol('processed');
 const ExitAndStopTraversing = false;
 
 const plugin = (): Plugin => ({
-  postcssPlugin: 'replace-sass-padding',
+  postcssPlugin: 'replace-sass-lengths',
   Declaration(decl) {
     // @ts-expect-error - Skip if processed so we don't process it again
     if (decl[processed]) return;
@@ -127,7 +127,7 @@ const plugin = (): Plugin => ({
   },
 });
 
-export default function replaceSassPadding(fileInfo: FileInfo) {
+export default function replaceSassLengths(fileInfo: FileInfo) {
   return postcss(plugin()).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
