@@ -1,6 +1,6 @@
 ---
 title: Typography
-description: Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
+description: It helps establish hierarchy and communicate important content by creating clear visual patterns.
 keywords:
   - type styles
   - font sizes
@@ -14,21 +14,21 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
-## Principles
+## Working with typography
 
 ![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
 
-### 1. Make it readable
+### 1. Make it scannable
 
-Help merchants understand content quickly by considering how to display and apply text within a page.
+Align long-form text to match the direction of the language it's written in. For most languages, that means the majority of text should be left-aligned.
 
-### 2. Make it adaptable
+### 2. Adjust text based on screen size
 
-Design in a way that works for a wide range of audiences, browsers, and mobile devices.
+Large headings may need to become smaller and important body text may need to be larger on smaller screens.
 
-### 3. Reinforce the message
+### 3. Create visual hierarchy
 
-Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
+Pair font weight, size, and color together to create hierarchy. Use a lighter color or font-size to de-emphasize secondary content.
 
 ---
 
