@@ -5,8 +5,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type ColorsTokenGroup = typeof colors;
-type ColorsTokenName = keyof ColorsTokenGroup;
+type ColorsTokenName = keyof typeof colors;
 export type BackgroundColorTokenScale = Extract<
   ColorsTokenName,
   | 'background'
@@ -17,21 +16,16 @@ export type BackgroundColorTokenScale = Extract<
   | 'overlay'
 >;
 
-type DepthTokenGroup = typeof depth;
-type DepthTokenName = keyof DepthTokenGroup;
+type DepthTokenName = keyof typeof depth;
 type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
-
 export type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
   ? Scale
   : never;
 
-type ShapeTokenGroup = typeof shape;
-type ShapeTokenName = keyof ShapeTokenGroup;
-
+type ShapeTokenName = keyof typeof shape;
 type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
   ? Scale
   : never;
-
 type BorderTokenScale = Exclude<
   BorderShapeTokenScale,
   `radius-${string}` | `width-${string}`
@@ -58,10 +52,7 @@ interface BorderRadius {
   topRight: BorderRadiusTokenScale;
 }
 
-type SpacingTokenGroup = typeof spacing;
-type SpacingTokenName = keyof SpacingTokenGroup;
-
-// TODO: Bring this logic into tokens
+type SpacingTokenName = keyof typeof spacing;
 export type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
   ? Scale
   : never;
@@ -73,53 +64,55 @@ interface Spacing {
   top: SpacingTokenScale;
 }
 
+type Element = 'div' | 'span' | 'button';
+
 export interface BoxProps {
-  as?: 'div' | 'span';
-  /** Background color of the Box */
+  as?: Element;
+  /** Adjust background color */
   background?: BackgroundColorTokenScale;
-  /** Border styling of the Box */
+  /** Adjust border styling */
   border?: BorderTokenScale;
-  /** Bottom border styling of the Box */
+  /** Adjust bottom border styling */
   borderBottom?: BorderTokenScale;
-  /** Left border styling of the Box */
+  /** Adjust left side border styling */
   borderLeft?: BorderTokenScale;
-  /** Right border styling of the Box */
+  /** Adjust right side border styling */
   borderRight?: BorderTokenScale;
-  /** Top border styling of the Box */
+  /** Adjust top border styling */
   borderTop?: BorderTokenScale;
-  /** Border radius of the Box */
+  /** Adjust border radius */
   borderRadius?: BorderRadiusTokenScale;
-  /** Bottom left border radius of the Box */
+  /** Adjust bottom left border radius */
   borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Bottom right border radius of the Box */
+  /** Adjust bottom right border radius */
   borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Top left border radius of the Box */
+  /** Adjust top left border radius */
   borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Top right border radius of the Box */
+  /** Adjust top right border radius */
   borderRadiusTopRight?: BorderRadiusTokenScale;
-  /** Inner content of the Box */
+  /** Inner content */
   children: ReactNode;
-  /** Spacing outside of the Box */
+  /** Adjust spacing outside of element */
   margin?: SpacingTokenScale;
-  /** Bottom spacing outside of the Box */
+  /** Adjust bottom spacing outside of element */
   marginBottom?: SpacingTokenScale;
-  /** Left side spacing outside of the Box */
+  /** Adjust left side spacing outside of element */
   marginLeft?: SpacingTokenScale;
-  /** Right side spacing outside of the Box */
+  /** Adjust right side spacing outside of element */
   marginRight?: SpacingTokenScale;
-  /** Top spacing outside of the Box */
+  /** Adjust top spacing outside of element */
   marginTop?: SpacingTokenScale;
-  /** Spacing inside of the Box */
+  /** Adjust spacing around children */
   padding?: SpacingTokenScale;
-  /** Bottom spacing inside of the Box */
+  /** Adjust bottom spacing around children */
   paddingBottom?: SpacingTokenScale;
-  /** Left side spacing inside of the Box */
+  /** Adjust left side spacing around children */
   paddingLeft?: SpacingTokenScale;
-  /** Right side spacing inside of the Box */
+  /** Adjust right side spacing around children */
   paddingRight?: SpacingTokenScale;
-  /** Top spacing inside of the Box */
+  /** Adjust top spacing around children */
   paddingTop?: SpacingTokenScale;
-  /** Shadow on the Box */
+  /** Adjust shadow */
   shadow?: DepthTokenScale;
 }
 
