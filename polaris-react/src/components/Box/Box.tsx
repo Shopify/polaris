@@ -14,7 +14,9 @@ export type BackgroundColorTokenScale = Extract<
   | `surface-${string}`
   | 'backdrop'
   | 'overlay'
+  | `action-${string}`
 >;
+type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
 
 type DepthTokenName = keyof typeof depth;
 type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
@@ -67,6 +69,7 @@ interface Spacing {
 type Element = 'div' | 'span' | 'button';
 
 export interface BoxProps {
+  /** HTML Element type */
   as?: Element;
   /** Adjust background color */
   background?: BackgroundColorTokenScale;
@@ -92,6 +95,8 @@ export interface BoxProps {
   borderRadiusTopRight?: BorderRadiusTokenScale;
   /** Inner content */
   children: ReactNode;
+  /** Adjust color of children */
+  color?: ColorTokenScale;
   /** Adjust spacing outside of element */
   margin?: SpacingTokenScale;
   /** Adjust bottom spacing outside of element */
@@ -102,6 +107,8 @@ export interface BoxProps {
   marginRight?: SpacingTokenScale;
   /** Adjust top spacing outside of element */
   marginTop?: SpacingTokenScale;
+  /** Adjust maximum width of element */
+  maxWidth?: string;
   /** Adjust spacing around children */
   padding?: SpacingTokenScale;
   /** Adjust bottom spacing around children */
@@ -132,11 +139,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusTopLeft,
       borderRadiusTopRight,
       children,
+      color,
       margin,
       marginBottom,
       marginLeft,
       marginRight,
       marginTop,
+      maxWidth,
       padding,
       paddingBottom,
       paddingLeft,
@@ -214,6 +223,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
             '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
           }
         : undefined),
+      ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
       ...(margins.bottom
         ? {'--pc-box-margin-bottom': `var(--p-space-${margins.bottom})`}
         : undefined),
@@ -226,6 +236,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ...(margins.top
         ? {'--pc-box-margin-top': `var(--p-space-${margins.top})`}
         : undefined),
+      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}px`} : undefined),
       ...(paddings.bottom
         ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
         : undefined),
@@ -249,8 +260,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as,
       {
         className,
-        style: sanitizeCustomProperties(style),
         ref,
+        style: sanitizeCustomProperties(style),
       },
       children,
     );
