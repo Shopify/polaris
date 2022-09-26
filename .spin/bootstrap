@@ -1,0 +1,6 @@
+#!/bin/bash
+
+set -e
+
+yarn install --no-progress --frozen-lockfile --ignore-engines
+yarn build

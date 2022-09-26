@@ -1,0 +1,4 @@
+schema: v1
+extend: web
+repos:
+  - polaris
