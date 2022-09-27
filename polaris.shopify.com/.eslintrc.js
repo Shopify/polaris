@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
   extends: ['next/core-web-vitals'],
-  ignorePatterns: ['public/sandbox'],
+  ignorePatterns: ['public/playroom'],
   rules: {},
 };
