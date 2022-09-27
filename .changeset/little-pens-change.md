@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Expose token group types
+Exposed types for each token group including scale/alias unions for select token groups
