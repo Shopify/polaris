@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {DarkMode} from 'use-dark-mode';
 
+import {StatusName} from '../../types';
 import {ClipboardMinor, QuestionMarkMinor} from '@shopify/polaris-icons';
 import Container from '../Container';
 import {useCopyToClipboard} from '../../utils/hooks';
@@ -11,6 +12,7 @@ import Tooltip from '../Tooltip';
 
 import styles from './SandboxHeader.module.scss';
 import SandboxHelpDialog from '../SandboxHelpDialog';
+import StatusBadge from '../StatusBadge';
 
 function IconButtonWithTooltip({
   icon,
@@ -104,7 +106,10 @@ function PlaygroundHeader({darkMode, currentPath = '', url}: Props) {
           </a>
         )}
 
-        <span>Welcome to the Polaris Playground ALPHA</span>
+        <div className={styles.HeaderCopyWrapper}>
+          Welcome to the Polaris Playground{' '}
+          <StatusBadge status={{value: StatusName.Alpha, message: 'Alpha'}} />
+        </div>
         <div className={styles.HeaderBtnWrapper}>
           <CopyURLButton url={url} />
           <HelpDialogButton onClick={() => setIsOpen(true)} />
