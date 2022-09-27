@@ -31,6 +31,7 @@ describe('<Tooltip />', () => {
         <Link>link content</Link>
       </Tooltip>,
     );
+
     expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
@@ -99,6 +100,7 @@ describe('<Tooltip />', () => {
     findWrapperComponent(tooltip)!.trigger('onKeyUp', {
       key: 'Escape',
     });
+
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
       active: false,
     });
@@ -116,11 +118,30 @@ describe('<Tooltip />', () => {
       </Tooltip>,
     );
 
-    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
-      key: 'Escape',
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: true,
     });
 
-    tooltip.forceUpdate();
+    expect(changeSpy).toHaveBeenCalledWith(true);
+  });
+
+  it('calls onVisibilityChange when initially activated and then closed', () => {
+    const changeSpy = jest.fn();
+    const tooltip = mountWithApp(
+      <Tooltip
+        active
+        content="This order has shipping labels."
+        onVisibilityChange={changeSpy}
+      >
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    tooltip.act(() =>
+      findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+        key: 'Escape',
+      }),
+    );
 
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
       active: false,
@@ -169,7 +190,7 @@ describe('<Tooltip />', () => {
     const changeSpy = jest.fn();
 
     const tooltip = mountWithApp(
-      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+      <Tooltip active content="Inner content" onVisibilityChange={changeSpy}>
         <Link>link content</Link>
       </Tooltip>,
     );
@@ -187,7 +208,7 @@ describe('<Tooltip />', () => {
     const changeSpy = jest.fn();
 
     const tooltip = mountWithApp(
-      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+      <Tooltip active content="Inner content" onVisibilityChange={changeSpy}>
         <Link>link content</Link>
       </Tooltip>,
     );
