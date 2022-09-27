@@ -1,18 +1,18 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {DarkMode} from 'use-dark-mode';
 import {motion, AnimatePresence} from 'framer-motion';
 
 import GlobalSearch from '../GlobalSearch';
-import MobileNav from '../MobileNav';
 import navJSON from '../../../.cache/nav.json';
-import {NavJSON, NavItem} from '../../types';
+import {NavJSON, NavItem, Breakpoints} from '../../types';
 
-import styles from './Header.module.scss';
+import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
-import * as polarisIcons from '@shopify/polaris-icons';
 import {useRouter} from 'next/router';
+
+const NAV_ID = 'nav';
 
 interface Props {
   darkMode: DarkMode;
@@ -24,15 +24,93 @@ const nav = navJSON as NavJSON;
 
 function Header({darkMode, currentPath = '', children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const mainContent = document.querySelector('#main');
     setShowSkipToContentLink(mainContent !== null);
   }, [currentPath]);
 
+  useEffect(() => {
+    function hideSideNavOnResize() {
+      if (window.innerWidth > Breakpoints.Desktop && showMenu) {
+        setShowMenu(false);
+      }
+    }
+
+    window.addEventListener('resize', hideSideNavOnResize);
+
+    return () => window.removeEventListener('resize', hideSideNavOnResize);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const handleOnKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowMenu(false);
+      }
+    };
+
+    if (showMenu) {
+      document.addEventListener('keydown', handleOnKeyDown);
+      focusFirstItemInNav();
+    }
+
+    return () => document.removeEventListener('keydown', handleOnKeyDown);
+  }, [showMenu]);
+
+  const focusFirstItemInNav = () => {
+    const selector = `#${NAV_ID} a`;
+    const firstLinkInNav: HTMLLinkElement | null =
+      document.querySelector(selector);
+    firstLinkInNav && firstLinkInNav.focus();
+  };
+
+  const handleCloseMenu = () => {
+    setShowMenu(false);
+    menuButtonRef.current?.focus();
+  };
+
+  const handleShiftTabPress = (evt: React.KeyboardEvent) => {
+    if (evt.key === 'Tab' && evt.shiftKey) {
+      evt.preventDefault();
+      const closeButton = closeButtonRef.current;
+      closeButton instanceof HTMLElement && closeButton.focus();
+    }
+  };
+
+  const handleCloseButtonKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+      e.preventDefault();
+      focusFirstItemInNav();
+    }
+  };
+
   return (
-    <div>
-      <div className={className(styles.ActualHeader, 'dark-modes')}>
+    <>
+      <div className={styles.Header}>
+        {showSkipToContentLink && (
+          <a className={styles.SkipToContentLink} href="#main">
+            Skip to content
+          </a>
+        )}
+
+        <button
+          id="menu-button"
+          aria-label="Open menu"
+          aria-controls={NAV_ID}
+          aria-expanded={showMenu}
+          onClick={() => setShowMenu(true)}
+          ref={menuButtonRef}
+          className={styles.NavToggle}
+        >
+          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 11h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0-7h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0 14h-18a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2z" />
+          </svg>
+        </button>
+
         <Link href="/">
           <a className={styles.Logo}>
             <Image
@@ -58,30 +136,45 @@ function Header({darkMode, currentPath = '', children}: Props) {
       </div>
 
       <div className={styles.NavAndContent}>
-        <div className={className(styles.Header, '')}>
-          <div className={styles.MobileNavContainer}>
-            {/* <MobileNav currentPath={currentPath} /> */}
-          </div>
-
-          {showSkipToContentLink && (
-            <a className={styles.SkipToContentLink} href="#main">
-              Skip to content
-            </a>
-          )}
-
-          <nav className={styles.Nav}>
-            <ul>
-              <NavItem nav={nav} level={0} />
-            </ul>
-          </nav>
-        </div>
+        <nav
+          className={className(styles.Nav, showMenu && styles.show)}
+          id={NAV_ID}
+        >
+          <ul>
+            <NavItem
+              nav={nav}
+              level={0}
+              handleLinkClick={() => setShowMenu(false)}
+              handleShiftTabOnFirstLink={handleShiftTabPress}
+            />
+          </ul>
+          <button
+            ref={closeButtonRef}
+            aria-label="Close menu"
+            className={styles.CloseButton}
+            onClick={handleCloseMenu}
+            onKeyDown={handleCloseButtonKeyDown}
+          >
+            <CloseIcon />
+          </button>
+        </nav>
         <div className={styles.PageContent}>{children}</div>
       </div>
-    </div>
+    </>
   );
 }
 
-function NavItem({nav, level}: {nav: NavItem; level: number}) {
+function NavItem({
+  nav,
+  level,
+  handleLinkClick,
+  handleShiftTabOnFirstLink,
+}: {
+  nav: NavItem;
+  level: number;
+  handleLinkClick: () => void;
+  handleShiftTabOnFirstLink: (e: React.KeyboardEvent) => void;
+}) {
   const [expandedSections, setExpandedSections] = useState<{
     [slug: string]: boolean;
   }>({});
@@ -112,7 +205,7 @@ function NavItem({nav, level}: {nav: NavItem; level: number}) {
             const [, b] = _b as [string, NavItem];
             return (a.order || 0) - (b.order || 0);
           })
-          .map((entry) => {
+          .map((entry, i) => {
             const [key, child] = entry as [string, NavItem];
 
             if (!child.slug) return null;
@@ -138,8 +231,16 @@ function NavItem({nav, level}: {nav: NavItem; level: number}) {
                 >
                   <Link href={child.slug} passHref>
                     <a
-                      onClick={() => openChild(key, true)}
+                      onClick={() => {
+                        openChild(key, true);
+                        handleLinkClick();
+                      }}
                       aria-current={isCurrent ? 'page' : 'false'}
+                      onKeyDown={(evt) => {
+                        if (level === 0 && i === 0) {
+                          handleShiftTabOnFirstLink(evt);
+                        }
+                      }}
                     >
                       {child.title}
                     </a>
@@ -167,7 +268,12 @@ function NavItem({nav, level}: {nav: NavItem; level: number}) {
                       }}
                       id={navAriaId}
                     >
-                      <NavItem nav={child} level={level + 1} />
+                      <NavItem
+                        nav={child}
+                        level={level + 1}
+                        handleLinkClick={handleLinkClick}
+                        handleShiftTabOnFirstLink={handleShiftTabOnFirstLink}
+                      />
                     </motion.ul>
                   )}
                 </AnimatePresence>
@@ -175,6 +281,14 @@ function NavItem({nav, level}: {nav: NavItem; level: number}) {
             );
           })}
     </>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="m11.414 10 6.293-6.293a1 1 0 1 0-1.414-1.414l-6.293 6.293-6.293-6.293a1 1 0 0 0-1.414 1.414l6.293 6.293-6.293 6.293a1 1 0 1 0 1.414 1.414l6.293-6.293 6.293 6.293a.998.998 0 0 0 1.707-.707.999.999 0 0 0-.293-.707l-6.293-6.293z" />
+    </svg>
   );
 }
 

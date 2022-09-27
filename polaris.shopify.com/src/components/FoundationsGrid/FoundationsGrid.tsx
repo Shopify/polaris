@@ -15,6 +15,7 @@ function FoundationsGrid({children}: Props) {
 }
 
 export interface FoundationsGridItemProps {
+  order: number;
   title: string;
   description: string;
   url: string;
@@ -28,6 +29,7 @@ function FoundationsGridItem({
   url,
   icon,
   headings,
+  order,
 }: FoundationsGridItemProps) {
   const searchAttributes = useGlobalSearchResult();
 

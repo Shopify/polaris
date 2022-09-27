@@ -25,7 +25,7 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
     @media screen and (max-width: $breakpointMobile) {
       margin-bottom: 1.5rem;

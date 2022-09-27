@@ -61,11 +61,6 @@
   .narrow &,
   .showTOC & {
     padding: 0 var(--content-padding-x) var(--header-margin) 0;
-
-    @media screen and (max-width: $breakpointTablet) {
-      padding: var(--header-margin) 0 var(--header-margin)
-        var(--content-padding-x);
-    }
   }
 }
 

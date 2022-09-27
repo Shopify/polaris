@@ -18,12 +18,11 @@
     margin-bottom: 1.125rem;
     position: relative;
     border-radius: var(--border-radius-600);
-    min-height: 140px;
-    max-height: 140px;
+    aspect-ratio: 16/9;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #e1e9e6;
+    background: #cef3e0;
 
     svg {
       transform: scale(1.7);
@@ -49,17 +48,30 @@
   }
 
   p {
+    padding-right: 0.5rem;
     color: var(--text);
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
 
 .DeepLinks {
   margin-top: 0.75rem;
   gap: 0 0.75rem;
-  font-size: var(--font-size-200);
+  font-size: var(--font-size-300);
 
-  li {
-    list-style-type: disc;
-    margin-left: 0.85rem;
+  a {
+    position: relative;
+    display: block;
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &::before {
+      content: '-> ';
+      color: var(--text-subdued);
+    }
   }
 }

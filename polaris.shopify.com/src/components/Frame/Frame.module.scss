@@ -1,21 +1,9 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-.Header {
-  position: sticky;
-  top: var(--header-height);
-  z-index: 2;
-  height: calc(100vh - var(--header-height));
-  min-width: 18rem;
-  max-width: 18rem;
-  overflow: scroll;
-  background: var(--surface);
-  @include custom-scrollbars;
-  background: var(--surface-subdued);
-  border-radius: 0 var(--border-radius-600) var(--border-radius-600) 0;
-}
+$breakpointNav: $breakpointTablet;
 
-.ActualHeader {
+.Header {
   position: sticky;
   top: 0;
   width: 100%;
@@ -24,6 +12,7 @@
   justify-content: space-between;
   padding: 0 1.5rem;
   height: var(--header-height);
+  user-select: none;
 }
 
 .NavAndContent {
@@ -35,7 +24,22 @@
 }
 
 .Nav {
-  margin-top: 1.5rem;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+  min-width: 18rem;
+  max-width: 18rem;
+  overflow: scroll;
+  @include custom-scrollbars;
+  background: var(--surface-subdued);
+  border-radius: 0 var(--border-radius-600) var(--border-radius-600) 0;
+  overscroll-behavior: contain;
+  padding: 1rem 4px 1.5rem 6px;
+  user-select: none;
+
+  @media screen and (max-width: $breakpointNav) {
+    padding-top: 4rem;
+  }
 
   .newSection {
     margin-top: 1.25rem;
@@ -60,7 +64,6 @@
     > li {
       .NavItem {
         font-size: var(--font-size-400);
-        font-weight: var(--font-weight-400);
         letter-spacing: var(--letter-spacing-100);
         color: var(--text-strong);
 
@@ -73,16 +76,15 @@
         }
 
         > a {
-          padding: 0.05rem 0;
+          padding: 0.025rem 0;
         }
       }
 
       > ul > li {
         > .NavItem {
           font-size: var(--font-size-200);
-          font-weight: var(--font-weight-400);
           letter-spacing: var(--letter-spacing-300);
-          padding-left: 2.5rem;
+          padding-left: 2.25rem;
 
           a {
             color: var(--text);
@@ -92,8 +94,18 @@
     }
   }
 
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: $breakpointNav) {
     display: none;
+
+    &.show {
+      display: block;
+      position: fixed;
+      top: 0;
+      z-index: 1;
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.33);
+      height: 100vh;
+      border-radius: 0;
+    }
   }
 }
 
@@ -105,14 +117,10 @@
   transition: background-color 0.1s linear;
 
   &.isCurrent {
-    background: #def6e6;
-    font-weight: var(--font-weight-600);
+    background: #cef3e0;
     border-radius: 8px;
     position: relative;
-
-    a {
-      color: #00654c;
-    }
+    font-weight: var(--font-weight-600);
   }
 
   a {
@@ -144,14 +152,45 @@
   }
 }
 
+.NavToggle {
+  min-width: 24px;
+  max-width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+  background-color: transparent;
+
+  svg {
+    transform: scale(0.8);
+  }
+
+  @media screen and (min-width: $breakpointNav) {
+    display: none;
+  }
+}
+
+.CloseButton {
+  display: none;
+
+  @media screen and (max-width: $breakpointNav) {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border-radius: var(--border-radius-round);
+  }
+}
+
 .Logo {
   display: flex;
   align-items: center;
   color: inherit;
   gap: 0.5rem;
   margin-left: 0.25rem;
-  font-weight: var(--font-weight-600);
-  font-size: var(--font-size-200);
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-300);
   color: var(--text-strong);
   margin-right: auto;
 
@@ -167,7 +206,7 @@
     transform: translate3d(0, -1px, 0);
   }
 
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: $breakpointMobile) {
     display: none;
   }
 }
@@ -213,43 +252,4 @@
 
 .DarkModeIcon {
   animation: slide-down 0.3s;
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(30%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-30%);
-  }
-  to {
-    opacity: 1 linear;
-    transform: translateY(0%);
-  }
-}
-
-.MobileNavContainer {
-  visibility: hidden;
-  display: none;
-
-  svg {
-    fill: var(--text-strong);
-    width: 20px;
-    height: 20px;
-  }
-
-  @media screen and (max-width: $breakpointTablet) {
-    visibility: visible;
-    display: flex;
-    align-items: center;
-  }
 }

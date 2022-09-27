@@ -31,7 +31,7 @@ const genNavJson = (mardownFiles) => {
       title: navTitle || title,
       icon,
       description,
-      order: order || 0,
+      order,
       slug: url || `/${slug}`,
       newSection,
       hideChildren,

@@ -8,10 +8,11 @@
   font-size: var(--font-size-50);
   width: 14rem;
   padding: 0.5rem 0.75rem;
-  border-radius: var(--border-radius-round);
+  border-radius: var(--border-radius-600);
   gap: 0.5rem;
   font-weight: var(--font-weight-500);
-  background: var(--surface);
+  background: var(--surface-subdued);
+  border: 1px solid var(--border-color);
   margin-left: 1rem;
 
   &:focus-within {
@@ -35,7 +36,6 @@
 
 .Header {
   position: relative;
-  box-shadow: 0 0.5px var(--border-color);
 
   .SearchIcon {
     display: block;

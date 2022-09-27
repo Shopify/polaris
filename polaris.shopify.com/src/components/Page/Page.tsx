@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
 
-import Header from '../Header';
+import Header from '../Frame';
 import {className} from '../../utils/various';
 import styles from './Page.module.scss';
 

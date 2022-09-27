@@ -16,19 +16,13 @@ function FoundationsIndexPage({title, description, items}: FoundationsProps) {
           <p>{description}</p>
         </Longform>
         <FoundationsGrid key={title}>
-          {items.map((item) => {
-            if (!item.url) return null;
-            return (
-              <FoundationsGrid.Item
-                key={item.title}
-                title={item.title}
-                description={item.description}
-                icon={item.icon}
-                url={item.url}
-                headings={item.headings}
-              />
-            );
-          })}
+          {items
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .sort((a, b) => a.order - b.order)
+            .map((item) => {
+              if (!item.url) return null;
+              return <FoundationsGrid.Item key={item.title} {...item} />;
+            })}
         </FoundationsGrid>
       </Layout>
     </div>

@@ -8,7 +8,7 @@
   box-sizing: content-box;
   padding: 0 4rem;
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     padding: 0 1.25rem;
   }
 }

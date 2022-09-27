@@ -15,6 +15,16 @@ export interface FoundationsProps {
 
 export const getStaticPropsForFoundations = (category: string) => {
   const getStaticProps: GetStaticProps<FoundationsProps> = async () => {
+    const markdownPath = path.resolve(
+      process.cwd(),
+      `content/${category}/index.md`,
+    );
+    const markdown = fs.readFileSync(markdownPath, 'utf-8');
+    const {
+      frontMatter: {description},
+    }: MarkdownFile = parseMarkdown(markdown);
+    console.log({markdown});
+
     const filePattern = path.resolve(
       process.cwd(),
       `content/${category}/**/index.md`,
@@ -29,7 +39,7 @@ export const getStaticPropsForFoundations = (category: string) => {
         if (fs.existsSync(markdownFilePath)) {
           const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
           const {frontMatter, readme}: MarkdownFile = parseMarkdown(markdown);
-          const {title, description} = frontMatter;
+          const {title, description, order, icon} = frontMatter;
 
           const url = markdownFilePath
             .replace(`${process.cwd()}/content`, '')
@@ -38,13 +48,15 @@ export const getStaticPropsForFoundations = (category: string) => {
           const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
             (heading) => heading.replace(/^\n## /, '').trim(),
           );
+          console.log({order, nan: isNaN(order), f: !isNaN(parseInt(order))});
 
           items.push({
             title: title,
             description: description || '',
-            icon: frontMatter.icon || '',
+            icon: icon || '',
             url,
             headings,
+            order: !isNaN(parseInt(order)) ? order : 1000,
           });
         }
       });
@@ -52,8 +64,7 @@ export const getStaticPropsForFoundations = (category: string) => {
     return {
       props: {
         title: uppercaseFirst(category),
-        description:
-          'Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.',
+        description: description || '',
         items,
       },
     };

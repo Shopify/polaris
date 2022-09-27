@@ -6,6 +6,7 @@ keywords:
   - visual design
   - design language
   - design
+order: 0
 ---
 
 ![Design of Polaris for Admin, showcasing an admin interface and a mobile view](/images/foundations/design/design-intro@2x.png)

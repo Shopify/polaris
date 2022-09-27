@@ -191,7 +191,7 @@ body,
 
 .light-mode {
   --text: #434e4e;
-  --text-strong: #232525;
+  --text-strong: #1c1e1e;
   --text-subdued: #767676;
   --text-link: #4e52b8;
   --surface: #fff;
@@ -286,7 +286,7 @@ button {
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
 .dodont {
-  margin: 1.25rem 0 2rem;
+  margin: 2rem 0 2rem;
   font-size: var(--font-size-200);
   gap: 1rem;
   display: grid;
@@ -330,10 +330,12 @@ button {
       content: '';
       display: block;
       position: absolute;
-      top: -9px;
-      left: -6px;
-      height: 20px;
-      width: 20px;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 28px;
+      width: 28px;
+      margin: 0 auto;
       background-color: white;
       background-image: url(/images/icon-do.svg);
       background-repeat: no-repeat;
