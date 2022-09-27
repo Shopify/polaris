@@ -106,13 +106,13 @@ describe('<Tooltip />', () => {
     });
   });
 
-  it('calls onVisibilityChange when initially activated', () => {
-    const changeSpy = jest.fn();
+  it('does not call onOpen when initially activated', () => {
+    const openSpy = jest.fn();
     const tooltip = mountWithApp(
       <Tooltip
         active
         content="This order has shipping labels."
-        onVisibilityChange={changeSpy}
+        onOpen={openSpy}
       >
         <div>Order #1001</div>
       </Tooltip>,
@@ -122,16 +122,16 @@ describe('<Tooltip />', () => {
       active: true,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(true);
+    expect(openSpy).not.toHaveBeenCalled();
   });
 
-  it('calls onVisibilityChange when initially activated and then closed', () => {
-    const changeSpy = jest.fn();
+  it('calls onClose when initially activated and then closed', () => {
+    const closeSpy = jest.fn();
     const tooltip = mountWithApp(
       <Tooltip
         active
         content="This order has shipping labels."
-        onVisibilityChange={changeSpy}
+        onClose={closeSpy}
       >
         <div>Order #1001</div>
       </Tooltip>,
@@ -147,14 +147,14 @@ describe('<Tooltip />', () => {
       active: false,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(false);
+    expect(closeSpy).toHaveBeenCalled();
   });
 
-  it('calls onVisibilityChange on mouseOver', () => {
-    const changeSpy = jest.fn();
+  it('calls onOpen on mouseOver', () => {
+    const openSpy = jest.fn();
 
     const tooltip = mountWithApp(
-      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+      <Tooltip content="Inner content" onOpen={openSpy}>
         <Link>link content</Link>
       </Tooltip>,
     );
@@ -165,14 +165,14 @@ describe('<Tooltip />', () => {
       active: true,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(true);
+    expect(openSpy).toHaveBeenCalled();
   });
 
-  it('calls onVisibilityChange on focus', () => {
-    const changeSpy = jest.fn();
+  it('calls onOpen on focus', () => {
+    const openSpy = jest.fn();
 
     const tooltip = mountWithApp(
-      <Tooltip content="Inner content" onVisibilityChange={changeSpy}>
+      <Tooltip content="Inner content" onOpen={openSpy}>
         <Link>link content</Link>
       </Tooltip>,
     );
@@ -183,14 +183,14 @@ describe('<Tooltip />', () => {
       active: true,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(true);
+    expect(openSpy).toHaveBeenCalled();
   });
 
-  it('calls onVisibilityChange on blur', () => {
-    const changeSpy = jest.fn();
+  it('calls onClose on blur', () => {
+    const closeSpy = jest.fn();
 
     const tooltip = mountWithApp(
-      <Tooltip active content="Inner content" onVisibilityChange={changeSpy}>
+      <Tooltip active content="Inner content" onClose={closeSpy}>
         <Link>link content</Link>
       </Tooltip>,
     );
@@ -201,14 +201,14 @@ describe('<Tooltip />', () => {
       active: false,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(false);
+    expect(closeSpy).toHaveBeenCalled();
   });
 
-  it('calls onVisibilityChange on mouseLeave', () => {
-    const changeSpy = jest.fn();
+  it('calls onClose on mouseLeave', () => {
+    const closeSpy = jest.fn();
 
     const tooltip = mountWithApp(
-      <Tooltip active content="Inner content" onVisibilityChange={changeSpy}>
+      <Tooltip active content="Inner content" onClose={closeSpy}>
         <Link>link content</Link>
       </Tooltip>,
     );
@@ -219,7 +219,7 @@ describe('<Tooltip />', () => {
       active: false,
     });
 
-    expect(changeSpy).toHaveBeenCalledWith(false);
+    expect(closeSpy).toHaveBeenCalled();
   });
 
   it('passes accessibility label to TooltipOverlay', () => {
