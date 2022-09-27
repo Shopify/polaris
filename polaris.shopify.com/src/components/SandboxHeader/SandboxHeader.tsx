@@ -107,7 +107,7 @@ function SandboxHeader({currentPath = '', url}: Props) {
         )}
 
         <div className={styles.HeaderCopyWrapper}>
-          Welcome to the Polaris Playground{' '}
+          Welcome to the Polaris Sandbox{' '}
           <StatusBadge status={{value: StatusName.Alpha, message: 'Alpha'}} />
         </div>
         <div className={styles.HeaderBtnWrapper}>
