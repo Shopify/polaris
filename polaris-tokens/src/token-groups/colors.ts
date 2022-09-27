@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const colors = {
   background: {
     value: 'rgba(246, 246, 247, 1)',
@@ -646,5 +648,5 @@ export const colors = {
   },
 };
 
-export type ColorsTokenGroup = typeof colors;
+export type ColorsTokenGroup = TokenGroup<typeof colors>;
 export type ColorsTokenName = keyof ColorsTokenGroup;

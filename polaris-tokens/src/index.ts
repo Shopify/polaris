@@ -8,36 +8,48 @@ export type {
 } from './types';
 
 export type {
+  BreakpointsTokenGroup,
   BreakpointsTokenName,
   BreakpointsAlias,
 } from './token-groups/breakpoints';
 
-export type {ColorsTokenName} from './token-groups/colors';
+export type {ColorsTokenGroup, ColorsTokenName} from './token-groups/colors';
 
-export type {DepthTokenName} from './token-groups/depth';
+export type {DepthTokenGroup, DepthTokenName} from './token-groups/depth';
 
 export type {
+  FontTokenGroup,
   FontTokenName,
   FontSizeScale,
   FontLineHeightScale,
   FontWeightAlias,
 } from './token-groups/font';
 
-export type {LegacyTokenName} from './token-groups/legacy';
+export type {LegacyTokenGroup, LegacyTokenName} from './token-groups/legacy';
 
 export type {
+  MotionTokenGroup,
   MotionTokenName,
   MotionDurationScale,
   MotionKeyframesAlias,
 } from './token-groups/motion';
 
 export type {
+  ShapeTokenGroup,
   ShapeTokenName,
   ShapeBorderRadiusScale,
   ShapeBorderRadiusAlias,
   ShapeBorderRadiusScaleOrAlias,
 } from './token-groups/shape';
 
-export type {SpacingTokenName, SpacingSpaceScale} from './token-groups/spacing';
+export type {
+  SpacingTokenGroup,
+  SpacingTokenName,
+  SpacingSpaceScale,
+} from './token-groups/spacing';
 
-export type {ZIndexTokenName, ZIndexZScale} from './token-groups/zIndex';
+export type {
+  ZIndexTokenGroup,
+  ZIndexTokenName,
+  ZIndexZScale,
+} from './token-groups/zIndex';

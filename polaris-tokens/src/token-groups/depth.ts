@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const depth = {
   'shadow-transparent': {
     value: '0 0 0 0 transparent',
@@ -40,5 +42,5 @@ export const depth = {
   },
 };
 
-export type DepthTokenGroup = typeof depth;
+export type DepthTokenGroup = TokenGroup<typeof depth>;
 export type DepthTokenName = keyof DepthTokenGroup;

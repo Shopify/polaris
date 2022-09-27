@@ -16,16 +16,12 @@ export interface MetadataBase {
   [tokenGroup: string]: MetadataGroup;
 }
 
-export interface TokenGroup {
-  [token: string]: string;
-}
-
-export type ExtractValues<T extends MetadataGroup> = {
+export type TokenGroup<T extends MetadataGroup = MetadataGroup> = {
   [K in keyof T]: T[K]['value'];
 };
 
 export type Tokens = {
-  [TokenGroup in keyof Metadata]: ExtractValues<Metadata[TokenGroup]>;
+  [TokenGroupName in keyof Metadata]: TokenGroup<Metadata[TokenGroupName]>;
 };
 
 // The following utility types are copied directly from `type-fest`:

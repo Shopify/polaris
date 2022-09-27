@@ -1,11 +1,4 @@
-import type {
-  Entry,
-  Exact,
-  ExtractValues,
-  MetadataGroup,
-  Tokens,
-  TokenGroup,
-} from './types';
+import type {Entry, Exact, MetadataGroup, Tokens, TokenGroup} from './types';
 import type {breakpoints as metaBreakpointsTokenGroup} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
@@ -132,11 +125,11 @@ export function removeMetadata<T extends Exact<MetadataGroup, T>>(
 
       return [tokenName, value];
     }),
-  ) as ExtractValues<T>;
+  ) as TokenGroup<T>;
 }
 
 export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;
-export type BreakpointsTokenGroup = ExtractValues<MetaBreakpointsTokenGroup>;
+export type BreakpointsTokenGroup = TokenGroup<MetaBreakpointsTokenGroup>;
 
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 

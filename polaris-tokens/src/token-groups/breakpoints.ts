@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const breakpoints = {
   'breakpoints-xs': {
     value: '0px',
@@ -26,7 +28,7 @@ export const breakpoints = {
   },
 };
 
-export type BreakpointsTokenGroup = typeof breakpoints;
+export type BreakpointsTokenGroup = TokenGroup<typeof breakpoints>;
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
 // e.g. "xs" | "sm" | "md" | "lg" | "xl"

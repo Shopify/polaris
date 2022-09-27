@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const font = {
   'font-family-sans': {
     value:
@@ -66,7 +68,7 @@ export const font = {
   },
 };
 
-export type FontTokenGroup = typeof font;
+export type FontTokenGroup = TokenGroup<typeof font>;
 export type FontTokenName = keyof FontTokenGroup;
 
 // e.g. "400" | "500" | "600" | "700" | "100" | ...

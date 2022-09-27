@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const legacy = {
   'override-loading-z-index': {
     value: '514',
@@ -60,5 +62,5 @@ export const legacy = {
   },
 };
 
-export type LegacyTokenGroup = typeof legacy;
+export type LegacyTokenGroup = TokenGroup<typeof legacy>;
 export type LegacyTokenName = keyof LegacyTokenGroup;

@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const shape = {
   'border-radius-05': {
     value: '2px',
@@ -61,7 +63,7 @@ export const shape = {
   },
 };
 
-export type ShapeTokenGroup = typeof shape;
+export type ShapeTokenGroup = TokenGroup<typeof shape>;
 export type ShapeTokenName = keyof ShapeTokenGroup;
 
 type ShapeBorderRadiusTokenName = Extract<

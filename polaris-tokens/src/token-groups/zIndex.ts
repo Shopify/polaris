@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const zIndex = {
   'z-1': {
     value: '100',
@@ -37,7 +39,7 @@ export const zIndex = {
   },
 };
 
-export type ZIndexTokenGroup = typeof zIndex;
+export type ZIndexTokenGroup = TokenGroup<typeof zIndex>;
 export type ZIndexTokenName = keyof ZIndexTokenGroup;
 
 // e.g. "1" | "2" | "3" | "4" | "5" | "6" | ...
