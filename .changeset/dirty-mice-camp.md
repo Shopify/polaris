@@ -2,4 +2,4 @@
 '@shopify/polaris-migrator': minor
 ---
 
-Add sass padding migration
+Add sass padding and margin migration
