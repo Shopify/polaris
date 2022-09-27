@@ -2,9 +2,14 @@ import type {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
 
+const processed = Symbol('processed');
+
 const plugin = (): Plugin => ({
   postcssPlugin: '{{kebabCase migrationName}}',
   Declaration(decl) {
+    // @ts-expect-error - Skip if processed so we don't process it again
+    if (decl[processed]) return;
+
     // const prop = decl.prop;
     const parsedValue = valueParser(decl.value);
 
@@ -15,6 +20,9 @@ const plugin = (): Plugin => ({
     });
 
     decl.value = parsedValue.toString();
+
+    // @ts-expect-error - Mark the declaration as processed
+    decl[processed] = true;
   },
 });
 
