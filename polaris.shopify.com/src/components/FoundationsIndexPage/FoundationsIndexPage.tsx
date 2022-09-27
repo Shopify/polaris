@@ -15,7 +15,7 @@ function FoundationsIndexPage({title, description, items}: FoundationsProps) {
           <h1>{title}</h1>
           <p>{description}</p>
         </Longform>
-        <FoundationsGrid key={title}>
+        <FoundationsGrid category={title.toLowerCase()}>
           {items
             .sort((a, b) => a.title.localeCompare(b.title))
             .sort((a, b) => a.order - b.order)

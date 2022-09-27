@@ -3,15 +3,19 @@
 @import '../../styles/mixins.scss';
 
 .FoundationsGrid {
-  margin-top: 2.5rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
-  gap: 3rem 1rem;
+  gap: 1.75rem 1rem;
 }
 
 .FoundationsGridItem {
-  &[data-is-current-result='true'] {
-    background: var(--search-highlight-color);
+  @media (hover: hover) {
+    a[data-is-current-result='true'] {
+      background: var(--search-highlight-color);
+      border-radius: var(--border-radius-600);
+      display: block;
+      height: 100%;
+    }
   }
 
   .Icon {
@@ -23,6 +27,23 @@
     align-items: center;
     justify-content: center;
     background: #cef3e0;
+    background: var(--decorative-4);
+
+    [data-category='foundations'] & {
+      background: var(--decorative-4);
+    }
+
+    [data-category='design'] & {
+      background: var(--decorative-2);
+    }
+
+    [data-category='content'] & {
+      background: var(--decorative-1);
+    }
+
+    [data-category='patterns'] & {
+      background: var(--decorative-3);
+    }
 
     svg {
       transform: scale(1.7);
@@ -33,7 +54,7 @@
 
     @include dark-mode {
       svg {
-        filter: invert(1);
+        filter: invert(0);
       }
     }
   }
@@ -61,6 +82,7 @@
   margin-top: 0.75rem;
   gap: 0 0.75rem;
   font-size: var(--font-size-300);
+  display: none;
 
   a {
     position: relative;

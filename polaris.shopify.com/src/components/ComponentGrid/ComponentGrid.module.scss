@@ -27,6 +27,7 @@
   @media (hover: hover) {
     &[data-is-current-result='true'] a {
       background: var(--search-highlight-color);
+      border-radius: var(--border-radius-600);
     }
   }
 

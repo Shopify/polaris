@@ -47,10 +47,10 @@ $breakpointNav: $breakpointTablet;
 
   a {
     gap: 0.66rem;
-    color: var(--text-strong);
     white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--text);
 
     &:hover {
       color: var(--text-strong);
@@ -77,6 +77,11 @@ $breakpointNav: $breakpointTablet;
 
         > a {
           padding: 0.025rem 0;
+          color: var(--text-strong);
+        }
+
+        &.isCurrent > a {
+          color: var(--primary);
         }
       }
 
@@ -86,8 +91,12 @@ $breakpointNav: $breakpointTablet;
           letter-spacing: var(--letter-spacing-300);
           padding-left: 2.25rem;
 
-          a {
+          > a {
             color: var(--text);
+          }
+
+          &.isCurrent > a {
+            color: var(--primary);
           }
         }
       }
@@ -117,10 +126,11 @@ $breakpointNav: $breakpointTablet;
   transition: background-color 0.1s linear;
 
   &.isCurrent {
-    background: #cef3e0;
+    background: var(--surface);
     border-radius: 8px;
     position: relative;
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.055);
   }
 
   a {

@@ -236,11 +236,10 @@ function SearchResults({
           case 'foundations':
             return (
               <ResultsGroup category={category} key={category}>
-                <FoundationsGrid>
+                <FoundationsGrid category={category}>
                   {results.map(({id, url, meta}) => {
                     if (!meta.foundations) return null;
-                    const {title, description, category, icon} =
-                      meta.foundations;
+                    const {title, description, icon} = meta.foundations;
                     return (
                       <SearchContext.Provider
                         key={title}
@@ -249,10 +248,10 @@ function SearchResults({
                         <FoundationsGrid.Item
                           title={title}
                           description={description}
-                          category={category}
                           url={url}
                           icon={icon}
                           headings={[]}
+                          order={0}
                         />
                       </SearchContext.Provider>
                     );

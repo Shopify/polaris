@@ -7,11 +7,16 @@ import styles from './FoundationsGrid.module.scss';
 import * as polarisIcons from '@shopify/polaris-icons';
 
 export interface Props {
+  category: string;
   children: React.ReactNode;
 }
 
-function FoundationsGrid({children}: Props) {
-  return <ul className={styles.FoundationsGrid}>{children}</ul>;
+function FoundationsGrid({category, children}: Props) {
+  return (
+    <ul className={styles.FoundationsGrid} data-category={category}>
+      {children}
+    </ul>
+  );
 }
 
 export interface FoundationsGridItemProps {

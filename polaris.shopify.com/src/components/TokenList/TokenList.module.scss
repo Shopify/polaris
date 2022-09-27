@@ -25,7 +25,7 @@
   }
 
   td {
-    padding: 1rem;
+    padding: 0.66rem 1rem;
 
     &:not(.renderedInSearchResults) & {
       height: 3.2rem;
@@ -219,6 +219,7 @@
 
 .TokenDescription {
   line-height: 1.45;
+  font-size: var(--font-size-100);
 }
 
 .ClickableItemLink {

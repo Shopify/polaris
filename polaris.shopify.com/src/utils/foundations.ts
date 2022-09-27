@@ -23,7 +23,6 @@ export const getStaticPropsForFoundations = (category: string) => {
     const {
       frontMatter: {description},
     }: MarkdownFile = parseMarkdown(markdown);
-    console.log({markdown});
 
     const filePattern = path.resolve(
       process.cwd(),
@@ -48,7 +47,6 @@ export const getStaticPropsForFoundations = (category: string) => {
           const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
             (heading) => heading.replace(/^\n## /, '').trim(),
           );
-          console.log({order, nan: isNaN(order), f: !isNaN(parseInt(order))});
 
           items.push({
             title: title,
