@@ -210,11 +210,12 @@ function getUpMediaCondition(breakpoint: string) {
 }
 
 /**
- * Down media condition breakpoints are being subtracted by 0.05px to prevent
+ * Down media condition breakpoints are being subtracted by 0.04px to prevent
  * them from overwriting up media queries. We experimented with multiple offsets
- * and felt that 0.05px would be the safest across different pixel densities.
+ * and felt that 0.04px would be the safest across different pixel densities,
+ * while being representable in ems with 4 decimal places of precision.
  */
 function getDownMediaCondition(breakpoint: string) {
-  const offsetBreakpoint = parseFloat(toPx(breakpoint) ?? '') - 0.05;
+  const offsetBreakpoint = parseFloat(toPx(breakpoint) ?? '') - 0.04;
   return `(max-width: ${toEm(`${offsetBreakpoint}px`)})`;
 }
