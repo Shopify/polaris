@@ -19,6 +19,12 @@
   gap: 3em;
   height: var(--header-height);
   justify-content: space-between;
+  .HeaderCopyWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+  }
   .HeaderBtnWrapper {
     display: flex;
     gap: 2rem;
