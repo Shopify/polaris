@@ -1,12 +1,9 @@
+import type {Entry, Exact, MetadataGroup, Tokens, TokenGroup} from './types';
 import type {
-  Entry,
-  Exact,
-  ExtractValues,
-  MetadataGroup,
-  Tokens,
-  TokenGroup,
-} from './types';
-import type {breakpoints as metaBreakpointsTokenGroup} from './token-groups/breakpoints';
+  breakpoints as metaBreakpointsTokenGroup,
+  BreakpointsTokenGroup,
+  BreakpointsTokenName,
+} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -132,21 +129,10 @@ export function removeMetadata<T extends Exact<MetadataGroup, T>>(
 
       return [tokenName, value];
     }),
-  ) as ExtractValues<T>;
+  ) as TokenGroup<T>;
 }
 
 export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;
-export type BreakpointsTokenGroup = ExtractValues<MetaBreakpointsTokenGroup>;
-
-export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
-
-/**
- * Alias extracted from each Polaris `breakpoints` token name.
- *
- * @example 'xs' | 'sm' | 'md' | 'lg' | 'xl'
- */
-export type BreakpointsAlias =
-  BreakpointsTokenName extends `${string}-${infer Alias}` ? Alias : never;
 
 /**
  * Alias direction used for composing Polaris `breakpoints` utilities.
