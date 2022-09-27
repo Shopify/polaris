@@ -24,6 +24,7 @@
 }
 
 .Icon {
+  position: relative;
   display: flex;
   font-size: var(--font-size-200);
   color: var(--text-subdued);
@@ -44,13 +45,6 @@
   &:hover {
     background: var(--search-highlight-color);
     box-shadow: none;
-  }
-
-  @media (hover: hover) {
-    &[data-is-current-result='true'] {
-      background: var(--search-highlight-color);
-      box-shadow: none;
-    }
   }
 }
 

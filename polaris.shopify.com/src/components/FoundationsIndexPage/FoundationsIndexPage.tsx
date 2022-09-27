@@ -8,14 +8,14 @@ import Longform from '../Longform';
 function FoundationsIndexPage({title, description, items}: FoundationsProps) {
   return (
     <div className={styles.FoundationsIndexPage}>
-      <PageMeta description="Our design foundations offer fundamental design elements and guidance for creating good merchant experiences." />
+      <PageMeta description={description} />
 
       <Layout showTOC={false}>
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>
         </Longform>
-        <FoundationsGrid category={title.toLowerCase()}>
+        <FoundationsGrid>
           {items
             .sort((a, b) => a.title.localeCompare(b.title))
             .sort((a, b) => a.order - b.order)

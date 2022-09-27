@@ -21,7 +21,6 @@
 }
 
 .Layout {
-  --nav-width: 16rem;
   --toc-width: 16rem;
   --content-padding-x: 3.5rem;
   display: flex;
@@ -33,24 +32,6 @@
   @media screen and (max-width: $breakpointTablet) {
     display: block;
     --content-padding-x: 0;
-  }
-}
-
-.Nav {
-  align-self: flex-start;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  min-width: var(--nav-width);
-  max-width: var(--nav-width);
-  overscroll-behavior: contain;
-  overflow: auto;
-  box-shadow: inset -1px 0 var(--border-color);
-
-  @include layout-scrollbars();
-
-  @media screen and (max-width: $breakpointTablet) {
-    display: none;
   }
 }
 

@@ -9,14 +9,7 @@
 }
 
 .FoundationsGridItem {
-  @media (hover: hover) {
-    a[data-is-current-result='true'] {
-      background: var(--search-highlight-color);
-      border-radius: var(--border-radius-600);
-      display: block;
-      height: 100%;
-    }
-  }
+  position: relative;
 
   .Icon {
     margin-bottom: 1.125rem;
@@ -26,24 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #cef3e0;
-    background: var(--decorative-4);
-
-    [data-category='foundations'] & {
-      background: var(--decorative-4);
-    }
-
-    [data-category='design'] & {
-      background: var(--decorative-2);
-    }
-
-    [data-category='content'] & {
-      background: var(--decorative-1);
-    }
-
-    [data-category='patterns'] & {
-      background: var(--decorative-3);
-    }
+    background: var(--surface-subdued);
 
     svg {
       transform: scale(1.7);
@@ -57,6 +33,22 @@
         filter: invert(0);
       }
     }
+  }
+
+  &[data-category='foundations'] .Icon {
+    background: var(--decorative-4);
+  }
+
+  &[data-category='design'] .Icon {
+    background: var(--decorative-2);
+  }
+
+  &[data-category='content'] .Icon {
+    background: var(--decorative-1);
+  }
+
+  &[data-category='patterns'] .Icon {
+    background: var(--decorative-3);
   }
 
   h4 {

@@ -5,6 +5,7 @@ import {Status} from '../../types';
 import styles from './ComponentGrid.module.scss';
 import StatusBadge from '../StatusBadge';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
+import SearchResultHighlight from '../SearchResultHighlight';
 
 interface ComponentGridProps {
   children: React.ReactNode;
@@ -34,6 +35,7 @@ function ComponentGridItem({
 
   return (
     <li key={title} className={styles.Component} {...searchAttributes}>
+      <SearchResultHighlight />
       <Link href={url} passHref>
         <a tabIndex={searchAttributes?.tabIndex}>
           <div className={styles.Preview}>

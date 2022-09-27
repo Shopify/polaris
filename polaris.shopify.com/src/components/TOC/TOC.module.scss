@@ -2,7 +2,7 @@
   font-size: var(--font-size-300);
 
   > ul > li:not(:first-child) {
-    padding-top: 0.5rem;
+    padding-top: 0.25rem;
   }
 
   a {
@@ -45,6 +45,7 @@
   &.isNested {
     ul ul {
       padding-top: 0.25rem;
+      font-size: var(--font-size-100);
 
       a {
         padding: 0.1rem 0 0.1rem 0.66rem;

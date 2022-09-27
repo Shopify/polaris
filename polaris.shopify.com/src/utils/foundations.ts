@@ -21,7 +21,7 @@ export const getStaticPropsForFoundations = (category: string) => {
     );
     const markdown = fs.readFileSync(markdownPath, 'utf-8');
     const {
-      frontMatter: {description},
+      frontMatter: {title: categoryTitle, description},
     }: MarkdownFile = parseMarkdown(markdown);
 
     const filePattern = path.resolve(
@@ -55,6 +55,7 @@ export const getStaticPropsForFoundations = (category: string) => {
             url,
             headings,
             order: !isNaN(parseInt(order)) ? order : 1000,
+            category: categoryTitle.toLowerCase(),
           });
         }
       });

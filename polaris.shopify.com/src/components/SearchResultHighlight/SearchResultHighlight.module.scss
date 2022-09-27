@@ -1,0 +1,38 @@
+.SearchResultHighlight {
+  @media (hover: hover) {
+    display: block;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+    border-radius: var(--border-radius-800);
+    z-index: 1;
+    cursor: pointer;
+    pointer-events: none;
+
+    &.onEdge {
+      top: 0;
+      bottom: 0;
+    }
+
+    [data-is-current-result='true'] &,
+    [data-is-current-result]:hover & {
+      box-shadow: inset 0 1px rgb(255 255 255 / 15%), 0 20px 50px rgb(0 0 0);
+      mix-blend-mode: plus-lighter;
+      animation: fade-in 0.1s both ease-out;
+      background-color: rgba(0, 36, 197, 0.8);
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

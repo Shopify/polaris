@@ -5,18 +5,14 @@ import {slugify, stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './FoundationsGrid.module.scss';
 import * as polarisIcons from '@shopify/polaris-icons';
+import SearchResultHighlight from '../SearchResultHighlight';
 
 export interface Props {
-  category: string;
   children: React.ReactNode;
 }
 
-function FoundationsGrid({category, children}: Props) {
-  return (
-    <ul className={styles.FoundationsGrid} data-category={category}>
-      {children}
-    </ul>
-  );
+function FoundationsGrid({children}: Props) {
+  return <ul className={styles.FoundationsGrid}>{children}</ul>;
 }
 
 export interface FoundationsGridItemProps {
@@ -26,6 +22,7 @@ export interface FoundationsGridItemProps {
   url: string;
   icon: string;
   headings: string[];
+  category: string;
 }
 
 function FoundationsGridItem({
@@ -34,15 +31,20 @@ function FoundationsGridItem({
   url,
   icon,
   headings,
+  category,
 }: FoundationsGridItemProps) {
   const searchAttributes = useGlobalSearchResult();
-
   let iconSource = (polarisIcons as any)[icon];
 
   return (
-    <li className={styles.FoundationsGridItem}>
+    <li
+      className={styles.FoundationsGridItem}
+      {...searchAttributes}
+      data-category={category}
+    >
       <Link href={url} passHref>
-        <a className={styles.Text} {...searchAttributes}>
+        <a className={styles.Text}>
+          <SearchResultHighlight />
           <div className={styles.Icon}>
             {iconSource && <Icon source={iconSource} />}
           </div>{' '}

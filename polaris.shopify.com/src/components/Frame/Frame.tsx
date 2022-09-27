@@ -24,7 +24,7 @@ const nav = navJSON as NavJSON;
 
 function Header({darkMode, currentPath = '', children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
-  const [showMenu, setShowMenu] = useState(false);
+  const [navIsVisible, setNavIsVisible] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -35,8 +35,8 @@ function Header({darkMode, currentPath = '', children}: Props) {
 
   useEffect(() => {
     function hideSideNavOnResize() {
-      if (window.innerWidth > Breakpoints.Desktop && showMenu) {
-        setShowMenu(false);
+      if (window.innerWidth > Breakpoints.Desktop && navIsVisible) {
+        setNavIsVisible(false);
       }
     }
 
@@ -49,17 +49,17 @@ function Header({darkMode, currentPath = '', children}: Props) {
   useEffect(() => {
     const handleOnKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        setShowMenu(false);
+        setNavIsVisible(false);
       }
     };
 
-    if (showMenu) {
+    if (navIsVisible) {
       document.addEventListener('keydown', handleOnKeyDown);
       focusFirstItemInNav();
     }
 
     return () => document.removeEventListener('keydown', handleOnKeyDown);
-  }, [showMenu]);
+  }, [navIsVisible]);
 
   const focusFirstItemInNav = () => {
     const selector = `#${NAV_ID} a`;
@@ -69,7 +69,7 @@ function Header({darkMode, currentPath = '', children}: Props) {
   };
 
   const handleCloseMenu = () => {
-    setShowMenu(false);
+    setNavIsVisible(false);
     menuButtonRef.current?.focus();
   };
 
@@ -101,8 +101,8 @@ function Header({darkMode, currentPath = '', children}: Props) {
           id="menu-button"
           aria-label="Open menu"
           aria-controls={NAV_ID}
-          aria-expanded={showMenu}
-          onClick={() => setShowMenu(true)}
+          aria-expanded={navIsVisible}
+          onClick={() => setNavIsVisible(true)}
           ref={menuButtonRef}
           className={styles.NavToggle}
         >
@@ -137,14 +137,14 @@ function Header({darkMode, currentPath = '', children}: Props) {
 
       <div className={styles.NavAndContent}>
         <nav
-          className={className(styles.Nav, showMenu && styles.show)}
+          className={className(styles.Nav, navIsVisible && styles.isVisible)}
           id={NAV_ID}
         >
           <ul>
             <NavItem
               nav={nav}
               level={0}
-              handleLinkClick={() => setShowMenu(false)}
+              handleLinkClick={() => setNavIsVisible(false)}
               handleShiftTabOnFirstLink={handleShiftTabPress}
             />
           </ul>
@@ -257,6 +257,7 @@ function NavItem({
 
                   {isExpandable && (
                     <button
+                      className={styles.Toggle}
                       onClick={() => toggleChild(key)}
                       aria-label="Toggle section"
                       aria-expanded={isExpanded}
