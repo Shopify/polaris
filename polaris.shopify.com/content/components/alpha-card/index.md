@@ -34,5 +34,5 @@ examples:
     description: Border radius can be toggled off, or added after a certain breakpoint.
   - fileName: alpha-card-flat.tsx
     title: Elevation
-    description: Border radius can be adjusted when cards are nested, or added after a certain breakpoint.
+    description: Elevation can be set to flat
 ---
