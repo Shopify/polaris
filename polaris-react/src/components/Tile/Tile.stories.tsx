@@ -26,7 +26,7 @@ const children = Array.from(Array(4)).map((ele, index) => (
 
 export function Default() {
   return (
-    <Tile spacing="1" columns="2">
+    <Tile columns={{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}} gap={{xs: '2'}}>
       {children}
     </Tile>
   );
@@ -34,7 +34,7 @@ export function Default() {
 
 export function LargeSpacing() {
   return (
-    <Tile spacing="10" columns="2">
+    <Tile columns={{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}} gap={{xs: '10'}}>
       {children}
     </Tile>
   );
@@ -53,7 +53,7 @@ export function ManyColumns() {
   ));
 
   return (
-    <Tile spacing="3" columns="5">
+    <Tile columns={{xs: 5, sm: 5, md: 5, lg: 5, xl: 5}} gap={{xs: '2'}}>
       {children}
     </Tile>
   );

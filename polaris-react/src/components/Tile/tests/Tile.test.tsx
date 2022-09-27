@@ -8,7 +8,7 @@ const Children = () => <p>This is a tile</p>;
 describe('<Tile />', () => {
   it('renders children', () => {
     const tile = mountWithApp(
-      <Tile spacing="1" columns="1">
+      <Tile columns={{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}} gap={{xs: '2'}}>
         <Children />
       </Tile>,
     );
@@ -18,15 +18,16 @@ describe('<Tile />', () => {
 
   it('uses custom properties when passed in', () => {
     const tile = mountWithApp(
-      <Tile spacing="1" columns="2">
+      <Tile columns={{xs: 2, lg: 2}} gap={{xs: '2'}}>
         <Children />
       </Tile>,
     );
 
     expect(tile).toContainReactComponent('div', {
       style: {
-        '--pc-tile-column-number': 'repeat(2, 1fr)',
-        '--pc-tile-spacing': 'var(--p-space-1)',
+        '--pc-tile-xs': 'repeat(2, 1fr)',
+        '--pc-tile-lg': 'repeat(2, 1fr)',
+        '--pc-tile-gap-xs': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
