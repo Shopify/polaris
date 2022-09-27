@@ -76,7 +76,7 @@ function HelpDialogButton({onClick}: {onClick: () => void}) {
   );
 }
 
-function PlaygroundHeader({darkMode, currentPath = '', url}: Props) {
+function SandboxHeader({currentPath = '', url}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -120,4 +120,4 @@ function PlaygroundHeader({darkMode, currentPath = '', url}: Props) {
   );
 }
 
-export default PlaygroundHeader;
+export default SandboxHeader;
