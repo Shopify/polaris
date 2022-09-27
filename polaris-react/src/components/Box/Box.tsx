@@ -66,7 +66,7 @@ interface Spacing {
   top: SpacingTokenScale;
 }
 
-type Element = 'div' | 'span' | 'button';
+type Element = 'div' | 'span';
 
 export interface BoxProps {
   /** HTML Element type */
