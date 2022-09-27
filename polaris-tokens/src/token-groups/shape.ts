@@ -86,8 +86,3 @@ export type ShapeBorderRadiusAlias = Exclude<
 > extends `border-radius-${infer Alias}`
   ? Alias
   : never;
-
-// e.g. "05" | "1" | "2" | ... | "base" | "large" | "half"
-export type ShapeBorderRadiusScaleOrAlias =
-  | ShapeBorderRadiusScale
-  | ShapeBorderRadiusAlias;
