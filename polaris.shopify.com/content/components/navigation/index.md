@@ -71,45 +71,45 @@ Navigation should:
 
 - Use sentence case for primary and secondary navigation items
 
-  <!-- dodont -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - Online store
+- Online store
 
-  #### Don’t
+#### Don’t
 
-  - Online Store
+- Online Store
 
-  <!-- end -->
+<!-- end -->
 
 - Use as few words as possible to describe each item label
 
-  <!-- dodont -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - Products
+- Products
 
-  #### Don’t
+#### Don’t
 
-  - Products in your store
+- Products in your store
 
-  <!-- end -->
+<!-- end -->
 
 - Use all caps for section labels
 
-  <!-- dodont -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - SALES CHANNELS
+- SALES CHANNELS
 
-  #### Don’t
+#### Don’t
 
-  - Sales channels
+- Sales channels
 
-  <!-- end -->
+<!-- end -->
 
 ---
 

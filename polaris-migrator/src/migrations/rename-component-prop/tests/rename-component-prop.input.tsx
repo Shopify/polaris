@@ -6,11 +6,18 @@ interface MyComponentProps {
   children?: React.ReactNode;
 }
 
+const Child = (props: {prop: string}) => <>{props.prop}</>;
+
 function MyComponent(props: MyComponentProps) {
   const value = props.newProp || props.prop;
   return <div data-prop={value}>{props.children}</div>;
 }
 
 export function App() {
-  return <MyComponent prop="value">Hello</MyComponent>;
+  return (
+    <MyComponent prop="value">
+      Hello
+      <Child prop="value" />
+    </MyComponent>
+  );
 }
