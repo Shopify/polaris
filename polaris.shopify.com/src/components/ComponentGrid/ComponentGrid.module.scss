@@ -37,6 +37,10 @@
   h4 {
     @include heading-3;
     margin-bottom: 0.25rem;
+    color: var(--text-link);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   p {

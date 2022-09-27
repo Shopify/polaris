@@ -29,7 +29,6 @@ function FoundationsGridItem({
   url,
   icon,
   headings,
-  order,
 }: FoundationsGridItemProps) {
   const searchAttributes = useGlobalSearchResult();
 
@@ -37,16 +36,16 @@ function FoundationsGridItem({
 
   return (
     <li className={styles.FoundationsGridItem}>
-      <div className={styles.Icon}>
-        {iconSource && <Icon source={iconSource} />}
-      </div>{' '}
+      <Link href={url} passHref>
+        <a className={styles.Text} {...searchAttributes}>
+          <div className={styles.Icon}>
+            {iconSource && <Icon source={iconSource} />}
+          </div>{' '}
+          <h4>{title}</h4>
+          <p>{stripMarkdownLinks(description)}</p>
+        </a>
+      </Link>
       <div>
-        <Link href={url} passHref>
-          <a className={styles.Text} {...searchAttributes}>
-            <h4>{title}</h4>
-            <p>{stripMarkdownLinks(description)}</p>
-          </a>
-        </Link>
         <ul className={styles.DeepLinks}>
           {headings.map((heading) => (
             <li key={heading}>
