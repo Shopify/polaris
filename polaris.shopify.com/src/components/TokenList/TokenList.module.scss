@@ -2,9 +2,9 @@
 @import '../../styles/fonts.scss';
 
 .TokenList {
-  --table-border-color: var(--border-color-light);
+  --table-border-color: var(--border-color);
   color: var(--text-strong);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-200);
 
   table {
     border-collapse: collapse;
@@ -219,7 +219,6 @@
 
 .TokenDescription {
   line-height: 1.45;
-  font-size: var(--font-size-50);
 }
 
 .ClickableItemLink {

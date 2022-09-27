@@ -137,3 +137,21 @@ export type Type = {
   defaultValue?: string;
   members?: Type[];
 };
+
+export interface NavJSON {
+  children?: {
+    [key: string]: NavItem;
+  };
+}
+
+export interface NavItem {
+  title?: string;
+  description?: string;
+  slug?: string;
+  order?: number;
+  icon?: string;
+  color?: string;
+  hideChildren?: false;
+  newSection?: true;
+  children?: NavJSON;
+}

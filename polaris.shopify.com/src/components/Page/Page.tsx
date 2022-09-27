@@ -31,9 +31,13 @@ function Page({children}: Props) {
         !isPolaris && 'styles-for-site-but-not-polaris-examples',
       )}
     >
-      {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
-
-      <div className={styles.PageContent}>{children}</div>
+      {isPolaris ? (
+        <>{children}</>
+      ) : (
+        <Header currentPath={router.asPath} darkMode={darkMode}>
+          {children}
+        </Header>
+      )}
     </div>
   );
 }

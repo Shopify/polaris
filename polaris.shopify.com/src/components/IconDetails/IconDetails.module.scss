@@ -31,7 +31,7 @@
 
 .Section {
   padding: 1.5rem 1.75rem;
-  border-bottom: 1px solid var(--border-color-light);
+  border-bottom: 1px solid var(--border-color);
 
   &:first-child {
     // Optical adjustments to make the first section
@@ -83,7 +83,7 @@
   a {
     border-radius: var(--border-radius-400);
     padding: 0.25rem 0.3rem 0.3rem;
-    border: 1px solid var(--border-color-light);
+    border: 1px solid var(--border-color);
     white-space: pre;
     display: inline-block;
     transform: translateY(-0.1rem);

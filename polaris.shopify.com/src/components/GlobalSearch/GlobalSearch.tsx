@@ -252,6 +252,7 @@ function SearchResults({
                           category={category}
                           url={url}
                           icon={icon}
+                          headings={[]}
                         />
                       </SearchContext.Provider>
                     );

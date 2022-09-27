@@ -5,6 +5,7 @@ import Container from '../Container';
 
 import styles from './Layout.module.scss';
 import TOC from '../TOC';
+import Breadcrumbs from '../Breadcrumbs';
 
 interface Props {
   width?: 'full' | 'narrow';
@@ -17,28 +18,30 @@ function Layout({width = 'full', title, showTOC = true, children}: Props) {
   const [tocItems] = useTOC(children);
 
   return (
-    <Container
-      className={className(
-        styles.Layout,
-        showTOC && styles.showTOC,
-        width === 'narrow' && styles.narrow,
-      )}
-    >
-      <article className={styles.Post} id="main">
-        {title && (
-          <Longform>
-            <h1>{title}</h1>
-          </Longform>
+    <>
+      <Container
+        className={className(
+          styles.Layout,
+          showTOC && styles.showTOC,
+          width === 'narrow' && styles.narrow,
         )}
-        {children}
-      </article>
-
-      {showTOC && (
-        <div className={styles.TOCWrapper}>
-          <TOC items={tocItems} />
-        </div>
-      )}
-    </Container>
+      >
+        <article className={styles.Post} id="main">
+          <Breadcrumbs />
+          {title && (
+            <Longform>
+              <h1>{title}</h1>
+            </Longform>
+          )}
+          {children}
+        </article>
+        {showTOC && (
+          <div className={styles.TOCWrapper}>
+            <TOC items={tocItems} />
+          </div>
+        )}
+      </Container>
+    </>
   );
 }
 

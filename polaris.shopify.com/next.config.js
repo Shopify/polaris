@@ -61,6 +61,11 @@ const nextConfig = {
         destination: '/tokens/colors',
         permanent: false,
       },
+      {
+        source: '/tokens',
+        destination: '/tokens/colors',
+        permanent: false,
+      },
     ];
   },
 };

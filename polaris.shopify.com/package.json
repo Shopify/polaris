@@ -27,6 +27,7 @@
     "framer-motion": "^6.5.1",
     "fuse.js": "^6.5.3",
     "gray-matter": "^4.0.3",
+    "lodash.get": "^4.4.2",
     "lodash.throttle": "^4.1.1",
     "next": "12.1.0",
     "prismjs": "^1.27.0",
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@types/gtag.js": "^0.0.10",
     "@types/js-yaml": "^4.0.5",
+    "@types/lodash.get": "^4.4.7",
     "@types/lodash.throttle": "^4.1.7",
     "@types/marked": "^4.0.3",
     "@types/node": "17.0.21",

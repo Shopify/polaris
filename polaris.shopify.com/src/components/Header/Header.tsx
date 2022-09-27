@@ -7,34 +7,22 @@ import {motion, AnimatePresence} from 'framer-motion';
 import GlobalSearch from '../GlobalSearch';
 import MobileNav from '../MobileNav';
 import navJSON from '../../../.cache/nav.json';
+import {NavJSON, NavItem} from '../../types';
 
 import styles from './Header.module.scss';
 import {className} from '../../utils/various';
-
-interface Nav {
-  children?: {
-    [key: string]: NavItem;
-  };
-}
-
-interface NavItem {
-  title?: string;
-  description?: string;
-  slug?: string;
-  order?: number;
-  hideChildren?: false;
-  newSection?: true;
-  children?: Nav;
-}
-
-const nav = navJSON as Nav;
+import * as polarisIcons from '@shopify/polaris-icons';
+import {useRouter} from 'next/router';
 
 interface Props {
   darkMode: DarkMode;
   currentPath?: string;
+  children: React.ReactNode;
 }
 
-function Header({darkMode, currentPath = ''}: Props) {
+const nav = navJSON as NavJSON;
+
+function Header({darkMode, currentPath = '', children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
 
   useEffect(() => {
@@ -43,53 +31,62 @@ function Header({darkMode, currentPath = ''}: Props) {
   }, [currentPath]);
 
   return (
-    <div className={styles.Header}>
-      <div className={styles.MobileNavContainer}>
-        {/* <MobileNav currentPath={currentPath} /> */}
+    <div>
+      <div className={className(styles.ActualHeader, 'dark-modes')}>
+        <Link href="/">
+          <a className={styles.Logo}>
+            <Image
+              src="/images/shopify-logo.svg"
+              layout="fixed"
+              width={24}
+              height={24}
+              alt="Shopify logo"
+            />
+            Polaris
+          </a>
+        </Link>
+
+        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+          {darkMode.value ? (
+            <div className={styles.LightModeIcon}>💡</div>
+          ) : (
+            <div className={styles.DarkModeIcon}>🌙</div>
+          )}
+        </button>
+
+        <GlobalSearch />
       </div>
 
-      <Link href="/">
-        <a className={styles.Logo}>
-          <Image
-            src="/images/shopify-logo.svg"
-            layout="fixed"
-            width={24}
-            height={24}
-            alt="Shopify logo"
-          />
-          Polaris
-        </a>
-      </Link>
+      <div className={styles.NavAndContent}>
+        <div className={className(styles.Header, '')}>
+          <div className={styles.MobileNavContainer}>
+            {/* <MobileNav currentPath={currentPath} /> */}
+          </div>
 
-      <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
-        {darkMode.value ? (
-          <div className={styles.LightModeIcon}>💡</div>
-        ) : (
-          <div className={styles.DarkModeIcon}>🌙</div>
-        )}
-      </button>
+          {showSkipToContentLink && (
+            <a className={styles.SkipToContentLink} href="#main">
+              Skip to content
+            </a>
+          )}
 
-      <GlobalSearch />
-
-      {showSkipToContentLink && (
-        <a className={styles.SkipToContentLink} href="#main">
-          Skip to content
-        </a>
-      )}
-
-      <nav className={styles.Nav}>
-        <ul>
-          <NavItem nav={nav} />
-        </ul>
-      </nav>
+          <nav className={styles.Nav}>
+            <ul>
+              <NavItem nav={nav} level={0} />
+            </ul>
+          </nav>
+        </div>
+        <div className={styles.PageContent}>{children}</div>
+      </div>
     </div>
   );
 }
 
-function NavItem({nav}: {nav: NavItem}) {
+function NavItem({nav, level}: {nav: NavItem; level: number}) {
   const [expandedSections, setExpandedSections] = useState<{
     [slug: string]: boolean;
   }>({});
+
+  const {asPath} = useRouter();
 
   const toggleChild = (slug: string) => {
     setExpandedSections({
@@ -106,8 +103,6 @@ function NavItem({nav}: {nav: NavItem}) {
     }
   };
 
-  const isCurrent = false;
-
   return (
     <>
       {nav.children &&
@@ -120,51 +115,59 @@ function NavItem({nav}: {nav: NavItem}) {
           .map((entry) => {
             const [key, child] = entry as [string, NavItem];
 
+            if (!child.slug) return null;
+
             const isExpandable = child.children && !child.hideChildren;
+            const isExpanded = !!expandedSections[key];
+            const id = (child.slug || key).replace(/\//g, '');
+            const navAriaId = `nav-${id}`;
+
+            const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
+            const isCurrent = removeParams(asPath) === child.slug;
 
             return (
               <li
                 key={child.slug}
                 className={className(child.newSection && styles.newSection)}
               >
-                <div className={styles.NavItem}>
-                  {child.slug ? (
-                    <Link href={child.slug} passHref>
-                      <a
-                        aria-current={isCurrent}
-                        onClick={() => openChild(key, true)}
-                      >
-                        <span>{child.title}</span>
-                      </a>
-                    </Link>
-                  ) : (
-                    <button
-                      onClick={() => openChild(key)}
-                      aria-label="Toggle section"
-                    >
-                      {child.title || key}
-                    </button>
+                <span
+                  className={className(
+                    styles.NavItem,
+                    isCurrent && styles.isCurrent,
                   )}
+                >
+                  <Link href={child.slug} passHref>
+                    <a
+                      onClick={() => openChild(key, true)}
+                      aria-current={isCurrent ? 'page' : 'false'}
+                    >
+                      {child.title}
+                    </a>
+                  </Link>
 
                   {isExpandable && (
-                    <button onClick={() => toggleChild(key)}>
-                      {!!expandedSections[key] ? '—' : '+'}
-                    </button>
+                    <button
+                      onClick={() => toggleChild(key)}
+                      aria-label="Toggle section"
+                      aria-expanded={isExpanded}
+                      aria-controls={isExpanded ? navAriaId : undefined}
+                    ></button>
                   )}
-                </div>
+                </span>
 
                 <AnimatePresence initial={false}>
-                  {isExpandable && !!expandedSections[key] && (
+                  {isExpandable && isExpanded && (
                     <motion.ul
                       initial={{opacity: 0, height: 0}}
                       animate={{opacity: 1, scale: 1, height: 'auto'}}
                       exit={{opacity: 0, height: 0}}
                       transition={{
                         ease: 'easeInOut',
-                        duration: 0.2,
+                        duration: 0.15,
                       }}
+                      id={navAriaId}
                     >
-                      <NavItem nav={child} />
+                      <NavItem nav={child} level={level + 1} />
                     </motion.ul>
                   )}
                 </AnimatePresence>

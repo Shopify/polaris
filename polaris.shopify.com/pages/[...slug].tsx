@@ -60,7 +60,11 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 };
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
-  return !path.startsWith('/components') && path !== '/patterns';
+  return (
+    !path.startsWith('/components') &&
+    path !== '/patterns' &&
+    path !== '/tokens'
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -73,8 +77,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
         .replace('/index.md', '');
     })
     .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
-
-  console.log({paths});
 
   return {
     paths,

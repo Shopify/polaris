@@ -3,30 +3,50 @@
 
 .Header {
   position: sticky;
-  top: 0;
+  top: var(--header-height);
   z-index: 2;
-  height: 100vh;
+  height: calc(100vh - var(--header-height));
   min-width: 18rem;
-  overflow: auto;
-  background: rgba(255, 255, 255, 0.95);
-  border-right: 1px solid var(--border-color-light);
+  max-width: 18rem;
+  overflow: scroll;
+  background: var(--surface);
   @include custom-scrollbars;
+  background: var(--surface-subdued);
+  border-radius: 0 var(--border-radius-600) var(--border-radius-600) 0;
+}
 
-  @include dark-mode {
-    background: rgba(28, 28, 28, 0.9);
-  }
+.ActualHeader {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  height: var(--header-height);
+}
+
+.NavAndContent {
+  display: flex;
+}
+
+.PageContent {
+  flex: 1;
 }
 
 .Nav {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
+
   .newSection {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color-light);
+    margin-top: 1.25rem;
   }
 
   a {
-    color: inherit;
+    gap: 0.66rem;
+    color: var(--text-strong);
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:hover {
       color: var(--text-strong);
@@ -36,26 +56,40 @@
   > ul {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
-  }
 
-  > ul > li > .NavItem {
-    font-size: var(--font-size-100);
-    font-weight: var(--font-weight-500);
-    color: var(--text-strong);
+    > li {
+      .NavItem {
+        font-size: var(--font-size-400);
+        font-weight: var(--font-weight-400);
+        letter-spacing: var(--letter-spacing-100);
+        color: var(--text-strong);
 
-    + ul > li:first-child {
-      padding-top: 0.25rem;
+        + ul > li:first-child {
+          padding-top: 0.125rem;
+        }
+
+        + ul > li:last-child {
+          padding-bottom: 0.5rem;
+        }
+
+        > a {
+          padding: 0.05rem 0;
+        }
+      }
+
+      > ul > li {
+        > .NavItem {
+          font-size: var(--font-size-200);
+          font-weight: var(--font-weight-400);
+          letter-spacing: var(--letter-spacing-300);
+          padding-left: 2.5rem;
+
+          a {
+            color: var(--text);
+          }
+        }
+      }
     }
-
-    + ul > li:last-child {
-      padding-bottom: 1rem;
-    }
-  }
-
-  > ul > li > ul > li > .NavItem {
-    font-size: var(--font-size-100);
-    padding-left: 2.5rem !important;
   }
 
   @media screen and (max-width: $breakpointTablet) {
@@ -66,7 +100,20 @@
 .NavItem {
   display: flex;
   justify-content: space-between;
-  padding: 0.1em 2rem;
+  align-items: center;
+  padding: 0.05rem 0.75rem 0.05rem 1.5rem;
+  transition: background-color 0.1s linear;
+
+  &.isCurrent {
+    background: #def6e6;
+    font-weight: var(--font-weight-600);
+    border-radius: 8px;
+    position: relative;
+
+    a {
+      color: #00654c;
+    }
+  }
 
   a {
     flex: 1;
@@ -76,14 +123,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 24px;
+    height: 24px;
     border-radius: 100%;
     background: rgba(255, 255, 255, 0);
-    opacity: 0.5;
+    background-image: url(/images/PlusMinor.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 12px 12px;
+    opacity: 0.66;
+
     &:hover {
       opacity: 1;
+      background-color: var(--surface);
     }
+  }
+
+  &.isCurrent button {
+    background-image: url(/images/MinusMinor.svg);
   }
 }
 
@@ -91,9 +148,16 @@
   display: flex;
   align-items: center;
   color: inherit;
-  gap: 0.7rem;
-  font-weight: var(--font-weight-500);
-  font-size: var(--font-size-100);
+  gap: 0.5rem;
+  margin-left: 0.25rem;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-200);
+  color: var(--text-strong);
+  margin-right: auto;
+
+  img {
+    opacity: 0.8;
+  }
 
   p {
     margin: 0;

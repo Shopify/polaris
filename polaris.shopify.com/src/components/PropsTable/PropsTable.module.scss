@@ -18,11 +18,12 @@
     --props-table-border-color: rgba(255, 255, 255, 0.085);
   }
   border-radius: var(--border-radius-400);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-200);
   display: block;
   transform-origin: 50% 0;
   border: 1px solid var(--props-table-border-color);
   overflow: hidden;
+  background: var(--surface);
 
   .TypeTable {
     margin-top: 0.75rem;
@@ -45,7 +46,7 @@
 
   .Description {
     display: block;
-    font-size: var(--font-size-50);
+    font-size: var(--font-size-100);
   }
 
   .RawInterfaceValue {

@@ -2,7 +2,6 @@
 
 .Icon {
   filter: contrast(0) brightness(-5000%);
-  opacity: 0.85;
 
   @include dark-mode {
     filter: contrast(0) brightness(5000%);

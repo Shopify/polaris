@@ -9,6 +9,7 @@ import {GetStaticProps} from 'next';
 
 export interface FoundationsProps {
   title: string;
+  description: string;
   items: FoundationsGridItemProps[];
 }
 
@@ -20,7 +21,6 @@ export const getStaticPropsForFoundations = (category: string) => {
     );
 
     let items: FoundationsProps['items'] = [];
-
     const markdownFilePaths = await globby(filePattern);
 
     markdownFilePaths
@@ -28,19 +28,23 @@ export const getStaticPropsForFoundations = (category: string) => {
       .forEach((markdownFilePath) => {
         if (fs.existsSync(markdownFilePath)) {
           const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
-          const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
+          const {frontMatter, readme}: MarkdownFile = parseMarkdown(markdown);
           const {title, description} = frontMatter;
 
           const url = markdownFilePath
             .replace(`${process.cwd()}/content`, '')
             .replace('index.md', '');
 
+          const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
+            (heading) => heading.replace(/^\n## /, '').trim(),
+          );
+
           items.push({
             title: title,
-            category: category,
             description: description || '',
             icon: frontMatter.icon || '',
             url,
+            headings,
           });
         }
       });
@@ -48,6 +52,8 @@ export const getStaticPropsForFoundations = (category: string) => {
     return {
       props: {
         title: uppercaseFirst(category),
+        description:
+          'Our color system builds on the recognition of the Shopify brand colors to make the admin interface more usable.',
         items,
       },
     };

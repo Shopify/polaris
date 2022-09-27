@@ -20,6 +20,8 @@ const genNavJson = (mardownFiles) => {
       order,
       newSection,
       hideChildren,
+      color,
+      url,
     } = md.frontMatter;
     const {slug} = md;
 
@@ -30,9 +32,10 @@ const genNavJson = (mardownFiles) => {
       icon,
       description,
       order: order || 0,
-      slug: `/${slug}`,
+      slug: url || `/${slug}`,
       newSection,
       hideChildren,
+      color: color ? color.replace(/\\/g, '') : undefined,
     });
   });
 

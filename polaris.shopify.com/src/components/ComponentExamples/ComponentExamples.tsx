@@ -80,15 +80,13 @@ const ComponentExamples = ({examples}: Props) => {
 
   return (
     <>
-      <h2 id="examples">Examples</h2>
-
       <Tab.Group
         defaultIndex={0}
         selectedIndex={selectedIndex}
         onChange={setSelectedIndex}
       >
         <Tab.List>
-          <div className={styles.ExamplesList}>
+          <div className={styles.ExamplesList} id="examples">
             {examples.map((example) => {
               return (
                 <Tab key={example.fileName}>

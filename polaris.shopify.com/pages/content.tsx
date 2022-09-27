@@ -6,8 +6,8 @@ import {
 
 const SECTION = 'content';
 
-const FoundationsCategory = ({title, items}: FoundationsProps) => (
-  <FoundationsIndexPage title={title} items={items} />
+const FoundationsCategory = (props: FoundationsProps) => (
+  <FoundationsIndexPage {...props} />
 );
 
 export const getStaticProps = getStaticPropsForFoundations(SECTION);

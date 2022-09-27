@@ -1,20 +1,20 @@
 import Layout from '../Layout';
 import PageMeta from '../PageMeta';
 import FoundationsGrid from '../FoundationsGrid';
-import {FoundationsGridItemProps} from '../FoundationsGrid/FoundationsGrid';
 import styles from './FoundationsIndexPage.module.scss';
+import {FoundationsProps} from '../../utils/foundations';
+import Longform from '../Longform';
 
-interface Props {
-  title: string;
-  items: FoundationsGridItemProps[];
-}
-
-function FoundationsIndexPage({title, items}: Props) {
+function FoundationsIndexPage({title, description, items}: FoundationsProps) {
   return (
     <div className={styles.FoundationsIndexPage}>
       <PageMeta description="Our design foundations offer fundamental design elements and guidance for creating good merchant experiences." />
 
-      <Layout title={title} showTOC={false}>
+      <Layout showTOC={false}>
+        <Longform>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </Longform>
         <FoundationsGrid key={title}>
           {items.map((item) => {
             if (!item.url) return null;
@@ -25,7 +25,7 @@ function FoundationsIndexPage({title, items}: Props) {
                 description={item.description}
                 icon={item.icon}
                 url={item.url}
-                category={item.category.toLowerCase()}
+                headings={item.headings}
               />
             );
           })}

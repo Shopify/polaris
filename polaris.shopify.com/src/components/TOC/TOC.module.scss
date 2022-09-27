@@ -1,8 +1,8 @@
 .TOC {
-  font-size: var(--font-size-50);
+  font-size: var(--font-size-300);
 
   > ul > li:not(:first-child) {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
   }
 
   a {
@@ -34,6 +34,7 @@
 
     &[data-is-current='true'] {
       color: var(--text-strong);
+      font-weight: var(--font-weight-500);
 
       &::before {
         opacity: 1;
@@ -46,7 +47,7 @@
       padding-top: 0.25rem;
 
       a {
-        padding: 0.1rem 0 0.1rem 0.5rem;
+        padding: 0.1rem 0 0.1rem 0.66rem;
       }
     }
   }

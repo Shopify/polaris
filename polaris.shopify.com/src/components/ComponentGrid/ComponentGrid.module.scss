@@ -5,7 +5,7 @@
   display: grid;
   // https://evanminto.com/blog/intrinsically-responsive-css-grid-minmax-min/
   grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
-  gap: 0.75rem;
+  gap: 1.75rem 1rem;
 }
 
 .Component {
@@ -16,14 +16,8 @@
     display: flex;
     flex-direction: column;
     color: inherit;
-    border-radius: var(--border-radius-600);
-    box-shadow: var(--card-shadow);
     overflow: hidden;
     width: 100%;
-
-    &:hover {
-      box-shadow: var(--card-shadow-hover);
-    }
 
     &:focus-visible {
       box-shadow: var(--focus-outline);
@@ -37,18 +31,18 @@
   }
 
   .ComponentDescription {
-    padding: 1.25rem;
+    margin-top: 0.75rem;
   }
 
   h4 {
-    @include heading-4;
+    @include heading-3;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
   p {
-    font-size: var(--font-size-100);
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -58,6 +52,8 @@
 
 .Preview {
   filter: brightness(0.92) contrast(1.15);
+  border-radius: var(--border-radius-600);
+  overflow: hidden;
 
   @include dark-mode {
     opacity: 0.8;

@@ -1,7 +1,7 @@
 import Icon from '../Icon';
 import Link from 'next/link';
 import React from 'react';
-import {stripMarkdownLinks} from '../../utils/various';
+import {slugify, stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './FoundationsGrid.module.scss';
 import * as polarisIcons from '@shopify/polaris-icons';
@@ -11,15 +11,7 @@ export interface Props {
 }
 
 function FoundationsGrid({children}: Props) {
-  return (
-    <div className={styles.FoundationsGrid}>
-      <div className={styles.Category}>
-        <div className={styles.Text}>
-          <ul>{children}</ul>
-        </div>
-      </div>
-    </div>
-  );
+  return <ul className={styles.FoundationsGrid}>{children}</ul>;
 }
 
 export interface FoundationsGridItemProps {
@@ -27,7 +19,7 @@ export interface FoundationsGridItemProps {
   description: string;
   url: string;
   icon: string;
-  category: string;
+  headings: string[];
 }
 
 function FoundationsGridItem({
@@ -35,23 +27,32 @@ function FoundationsGridItem({
   description,
   url,
   icon,
-  category,
+  headings,
 }: FoundationsGridItemProps) {
   const searchAttributes = useGlobalSearchResult();
 
   let iconSource = (polarisIcons as any)[icon];
 
   return (
-    <li className={styles.FoundationsGridItem} data-category={category}>
-      <Link href={url} passHref>
-        <a {...searchAttributes}>
-          <div className={styles.Icon}>
-            {iconSource && <Icon source={iconSource} />}
-          </div>
-          <h4>{title}</h4>
-          <p>{stripMarkdownLinks(description)}</p>
-        </a>
-      </Link>
+    <li className={styles.FoundationsGridItem}>
+      <div className={styles.Icon}>
+        {iconSource && <Icon source={iconSource} />}
+      </div>{' '}
+      <div>
+        <Link href={url} passHref>
+          <a className={styles.Text} {...searchAttributes}>
+            <h4>{title}</h4>
+            <p>{stripMarkdownLinks(description)}</p>
+          </a>
+        </Link>
+        <ul className={styles.DeepLinks}>
+          {headings.map((heading) => (
+            <li key={heading}>
+              <a href={`${url}#${slugify(heading)}`}>{heading}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </li>
   );
 }
