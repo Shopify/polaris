@@ -42,14 +42,14 @@ function IconButtonWithTooltip({
   );
 }
 
-function CopyButton({url}: {url: string}) {
+function CopyURLButton({url}: {url: string}) {
   const [copy, didJustCopy] = useCopyToClipboard(url);
 
   return (
     <IconButtonWithTooltip
       icon={ClipboardMinor}
-      ariaLabel="Copy to clipboard"
-      tooltipContent={didJustCopy ? 'Copied' : 'Copy'}
+      ariaLabel="Copy URL to clipboard"
+      tooltipContent={didJustCopy ? 'URL copied' : 'Copy URL'}
       buttonClassName={styles.TooltipButton}
       onClick={copy}
     />
@@ -106,7 +106,7 @@ function PlaygroundHeader({darkMode, currentPath = '', url}: Props) {
 
         <span>Welcome to the Polaris Playground ALPHA</span>
         <div className={styles.HeaderBtnWrapper}>
-          <CopyButton url={url} />
+          <CopyURLButton url={url} />
           <HelpDialogButton onClick={() => setIsOpen(true)} />
           <SandboxHelpDialog {...{isOpen, setIsOpen}} />
         </div>
