@@ -29,7 +29,7 @@
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
     background: var(--props-table-background-color);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.033);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01);
   }
 
   .TypeTableHeader {
@@ -37,8 +37,8 @@
     text-align: left;
     color: var(--code-keyword);
     font-family: var(--font-family-mono);
-    padding: 0.5em 1em;
-    background: rgba(0, 0, 0, 0.035);
+    padding: 0.66em 1em;
+    background: rgba(0, 0, 0, 0.02);
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
@@ -55,7 +55,7 @@
 
   .Row {
     display: block;
-    padding: 0.75em 1em;
+    padding: 1em 1em;
     border-bottom: 1px solid var(--props-table-border-color);
 
     &:last-child {

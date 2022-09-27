@@ -196,6 +196,15 @@ function NavItem({
     }
   };
 
+  useEffect(() => {
+    const newExpandedSections: typeof expandedSections = {};
+    asPath.split('/').forEach((segment) => {
+      newExpandedSections[segment] = true;
+    });
+    setExpandedSections(newExpandedSections);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <>
       {nav.children &&

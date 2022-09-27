@@ -21,7 +21,10 @@ function Breadcrumbs({}: Props) {
     },
   ];
 
-  const pathChunks = asPath.slice(1).split('/');
+  const pathChunks = asPath
+    .replace(/[#\?].+$/, '')
+    .slice(1)
+    .split('/');
 
   pathChunks.forEach((chunk, i) => {
     const objectPath = `children.${pathChunks

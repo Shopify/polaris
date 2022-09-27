@@ -171,8 +171,8 @@ html {
   font-size: 100%;
   overflow-y: overlay;
 
-  @media screen and (max-width: $breakpointMobile) {
-    font-size: 100%;
+  @media screen and (max-width: $breakpointTablet) {
+    font-size: 90%;
   }
 }
 
@@ -205,10 +205,10 @@ body,
   --card-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 2px 2px rgb(0 0 0 / 4%);
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
-  --decorative-1: #27b07f;
-  --decorative-2: #f5c755;
-  --decorative-3: #b03793;
-  --decorative-4: #774bf1;
+  --decorative-1: #dfefd2;
+  --decorative-2: #ffe6cd;
+  --decorative-3: #f8dff1;
+  --decorative-4: #dce0f5;
   --backdrop: rgba(0, 0, 0, 0.5);
   --search-highlight-color: #f4f5f5;
   --code-keyword: #017b33;
