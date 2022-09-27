@@ -106,13 +106,6 @@ function PlaygroundHeader({darkMode, currentPath = '', url}: Props) {
 
         <span>Welcome to the Polaris Playground ALPHA</span>
         <div className={styles.HeaderBtnWrapper}>
-          <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
-            {darkMode.value ? (
-              <div className={styles.LightModeIcon}>💡</div>
-            ) : (
-              <div className={styles.DarkModeIcon}>🌙</div>
-            )}
-          </button>
           <CopyButton url={url} />
           <HelpDialogButton onClick={() => setIsOpen(true)} />
           <SandboxHelpDialog {...{isOpen, setIsOpen}} />
