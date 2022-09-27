@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added `onVisibilityChange` callback to `Tooltip`
+Added `onClose` and `onOpen` callbacks to `Tooltip`
