@@ -3,7 +3,7 @@ import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {CheckableButton} from '../../CheckableButton';
-import {Button} from '../../Button';
+import {UnstyledButton} from '../../UnstyledButton';
 import {SelectAllActions} from '../SelectAllActions';
 import styles from '../SelectAllActions.scss';
 
@@ -195,11 +195,12 @@ describe('<SelectAllActions />', () => {
       it('renders when provided', () => {
         const {paginatedSelectAllText} = selectAllActionProps;
         const selectAllActions = mountWithApp(
-          <SelectAllActions {...selectAllActionProps} />,
+          <SelectAllActions
+            {...selectAllActionProps}
+            paginatedSelectAllAction={{content: 'content', onAction: () => {}}}
+          />,
         );
-        expect(
-          selectAllActions.find('div', {className: styles.PaginatedSelectAll}),
-        ).toContainReactText(paginatedSelectAllText);
+        expect(selectAllActions).toContainReactText(paginatedSelectAllText);
       });
 
       it('does not render when not provided', () => {
@@ -222,7 +223,9 @@ describe('<SelectAllActions />', () => {
             paginatedSelectAllAction={{content: 'content', onAction: spy}}
           />,
         );
-        selectAllActions.find(Button, {onClick: spy})!.trigger('onClick');
+        selectAllActions
+          .find(UnstyledButton, {onClick: spy})!
+          .trigger('onClick');
         expect(spy).toHaveBeenCalled();
       });
     });

@@ -20,6 +20,7 @@ export interface CheckableButtonProps {
   disabled?: boolean;
   onToggleAll?(): void;
   autoWidth?: boolean;
+  ariaLive?: 'off' | 'assertive' | 'polite';
 }
 
 export function CheckableButton({
@@ -32,6 +33,7 @@ export function CheckableButton({
   measuring,
   disabled,
   autoWidth,
+  ariaLive,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
@@ -75,7 +77,9 @@ export function CheckableButton({
           ref={checkBoxRef}
         />
       </div>
-      <span className={styles.Label}>{label}</span>
+      <span className={styles.Label} aria-live={ariaLive}>
+        {label}
+      </span>
     </div>
   );
 }

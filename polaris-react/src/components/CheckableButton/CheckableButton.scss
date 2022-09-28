@@ -76,6 +76,7 @@ $button-vertical-padding: calc(
 
   &.CheckableButton-autoWidth {
     width: auto;
+    font-size: var(--p-font-size-75);
 
     @media #{$p-breakpoints-sm-up} {
       flex: none;

@@ -3,12 +3,13 @@ import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
-import {Button} from '../Button';
+import {UnstyledButton} from '../UnstyledButton';
 import {CheckableButton} from '../CheckableButton';
 
 import styles from './SelectAllActions.scss';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+type AriaLive = 'off' | 'assertive' | 'polite' | undefined;
 
 export interface SelectAllActionsProps {
   /** Visually hidden text for screen readers */
@@ -43,38 +44,37 @@ export function SelectAllActions({
   onToggleAll,
 }: SelectAllActionsProps) {
   const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
-    <Button
+    <UnstyledButton
+      className={styles.AllAction}
       onClick={paginatedSelectAllAction.onAction}
       plain
+      size="slim"
       disabled={disabled}
     >
       {paginatedSelectAllAction.content}
-    </Button>
+    </UnstyledButton>
   ) : null;
 
-  const paginatedSelectAllTextMarkup =
-    paginatedSelectAllText && paginatedSelectAllAction ? (
-      <span aria-live="polite">{paginatedSelectAllText}</span>
-    ) : (
-      paginatedSelectAllText
-    );
+  const hasTextAndAction = paginatedSelectAllText && paginatedSelectAllAction;
 
-  const paginatedSelectAllMarkup =
-    paginatedSelectAllActionMarkup || paginatedSelectAllTextMarkup ? (
-      <div className={styles.PaginatedSelectAll}>
-        {paginatedSelectAllTextMarkup} {paginatedSelectAllActionMarkup}
-      </div>
-    ) : null;
+  const paginatedSelectAllMarkup = paginatedSelectAllActionMarkup ? (
+    <div className={styles.PaginatedSelectAll}>
+      {paginatedSelectAllActionMarkup}
+    </div>
+  ) : null;
+
+  const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
 
   const checkableButtonProps = {
     accessibilityLabel,
-    label,
+    label: hasTextAndAction ? paginatedSelectAllText : label,
     selected,
     selectMode,
     onToggleAll,
     disabled,
     plain: !smallScreen,
     autoWidth: true,
+    ariaLive,
   };
   const markup = (
     <Transition timeout={0} in={selectMode} key="markup">
