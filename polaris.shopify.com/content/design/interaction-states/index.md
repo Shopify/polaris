@@ -44,7 +44,7 @@ Keep in mind that merchants interact with interfaces differently depending which
 - Game controller
 - Refreshable braille display
 
-To learn more, check out the [accessibility guidelines](/foundations/foundations/accessibility).
+To learn more, check out the [accessibility guidelines](/foundations/accessibility).
 
 ### Use signifiers
 

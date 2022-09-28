@@ -154,7 +154,7 @@ Be mindful of using colors to represent meaning. Colors can hold discrete connot
 - When naming features, be mindful of connotations in other cultures, especially for evocative names and acronyms. Find out more about [naming](/content/naming).
 - Avoid colloquial words, idioms, and references to popular culture. It’s difficult to translate them in a meaningful way.
 - In some cultures, a person’s given name comes first, whereas in other cultures the family name comes first. Let merchants choose how they want to enter, read, and sort names, especially in text fields and lists.
-- Many types of information, such as addresses, dates, numbers, and currencies, are shown in different formats in different locales. For example, some locales display currency symbols before the number, others display them after. Make sure these can be translated appropriately. Find out more about [formatting localized currency](/foundations/foundations/formatting-localized-currency#navigation).
+- Many types of information, such as addresses, dates, numbers, and currencies, are shown in different formats in different locales. For example, some locales display currency symbols before the number, others display them after. Make sure these can be translated appropriately. Find out more about [formatting localized currency](/foundations/formatting-localized-currency#navigation).
 - Some cultures expect more guidelines and instructions when filling in long or critical forms. Consider using asterisks to mark mandatory fields in a form to match that expectation.
 - Work with people that have local knowledge if possible.
 

@@ -245,7 +245,7 @@ Links should never use “click here” or “here” as link text.
 
 Links in full sentences shouldn’t link the entire sentence, only the text that describes where merchants go when they select the link.
 
-It’s better for [internationalization](/foundations/foundations/internationalization) to have only single terms or small parts of phrases linked. Linking a full phrase is problematic because the word order might change, which would break the link into two parts.
+It’s better for [internationalization](/foundations/internationalization) to have only single terms or small parts of phrases linked. Linking a full phrase is problematic because the word order might change, which would break the link into two parts.
 
 <!-- dodont -->
 

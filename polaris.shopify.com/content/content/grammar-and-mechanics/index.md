@@ -450,7 +450,7 @@ Use consistent timestamp formats by following these examples:
 
 ### Currency
 
-When including currency with a price, the currency comes after the dollar amount. Learn more about [formatting localized currency](/foundations/foundations/formatting-localized-currency).
+When including currency with a price, the currency comes after the dollar amount. Learn more about [formatting localized currency](/foundations/formatting-localized-currency).
 
 <!-- dodont -->
 

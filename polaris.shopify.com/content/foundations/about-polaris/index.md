@@ -77,4 +77,4 @@ These patterns center on the merchant and how we build experiences to meet their
 
 Design patterns often use one or more primitive components and adapt them to the context. Some patterns can link to compositions and will contain code examples where possible.
 
-For a deeper understanding of design patterns, read our guide to [admin design patterns](/foundations/patterns/design-patterns).
+For a deeper understanding of design patterns, read our guide to [admin design patterns](/patterns/design-patterns).
