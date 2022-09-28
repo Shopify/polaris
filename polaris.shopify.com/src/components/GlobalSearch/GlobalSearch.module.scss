@@ -10,12 +10,16 @@
   padding: 0.33rem 0.66rem;
   border-radius: var(--border-radius-600);
   gap: 0.5rem;
-  font-weight: var(--font-weight-500);
   background: var(--surface-subdued);
   border: 1px solid var(--border-color);
+  box-shadow: inset 0 1px var(--border-color);
   margin-left: 1rem;
   color: var(--text-strong);
-  letter-spacing: vaR(--letter-spacing-300);
+  letter-spacing: var(--letter-spacing-300);
+
+  @include dark-mode {
+    box-shadow: none;
+  }
 
   &:focus-within {
     box-shadow: var(--focus-outline);
