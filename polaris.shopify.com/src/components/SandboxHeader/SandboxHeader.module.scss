@@ -19,11 +19,24 @@
   gap: 3em;
   height: var(--header-height);
   justify-content: space-between;
-  .HeaderCopyWrapper {
+  .Title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .TitleHeader {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1em;
+    color: var(--text-strong);
+  }
+  .TitleTagline {
+    font-size: var(--font-size-100);
+    color: var(--text-subdued);
+    a {
+      font-size: var(--font-size-50);
+    }
   }
   .HeaderBtnWrapper {
     display: flex;
