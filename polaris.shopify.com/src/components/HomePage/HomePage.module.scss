@@ -12,13 +12,12 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
 .Hero {
   padding: 6rem 0;
   background: url(/images/home-hero.png);
-  background-size: 70% auto;
+  background-size: 60% auto;
   background-repeat: no-repeat;
-  background-position: top right;
+  background-position: center right;
 
   @media screen and (max-width: $breakpointDesktopLarge) {
     padding: 2rem 0 4rem;
-    background-size: 60% auto;
   }
 
   h1 {
@@ -28,7 +27,6 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
     letter-spacing: var(--letter-spacing-1000);
     font-weight: var(--font-weight-600);
     line-height: 1.1;
-    mix-blend-mode: luminosity;
 
     span {
       display: block;
