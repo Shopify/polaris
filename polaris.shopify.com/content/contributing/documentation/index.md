@@ -37,10 +37,12 @@ New documentation in Polaris can range from component documentation, to content 
 To create new documentation:
 
 1. Reach out to the Polaris team and we can help you:
+
 - strategize where to add the documentation
 - offer strategies and templates for drafting your documentation
 - provide asynchronous feedback
 - offer ad hoc pair writing session when you get stuck
+
 2. Draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
 3. Get feedback from subject matter experts, or someone with high context around your changes (team member, manager, etc.).
 4. [Open a pull request](/contributing/shipping-your-contribution#open-your-first-pr) in the [Shopify/polaris repo](https://github.com/Shopify/polaris) GitHub repo.
