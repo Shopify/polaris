@@ -66,6 +66,9 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
+    path !== '/foundations' &&
+    path !== '/design' &&
+    path !== '/content' &&
     path !== '/patterns' &&
     path !== '/tokens'
   );
