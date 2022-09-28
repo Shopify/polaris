@@ -1,5 +1,15 @@
 # Changelog
 
+## 6.1.0
+
+### Minor Changes
+
+- [#7274](https://github.com/Shopify/polaris/pull/7274) [`3fd9f6415`](https://github.com/Shopify/polaris/commit/3fd9f6415c0d7e3721eb7462c6777d4816437345) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Exposed types for each token group including scale/alias unions for select token groups
+
+### Patch Changes
+
+- [#7239](https://github.com/Shopify/polaris/pull/7239) [`8626d6a1b`](https://github.com/Shopify/polaris/commit/8626d6a1b8a2ab50e6aa6074037144d11819734b) Thanks [@BPScott](https://github.com/BPScott)! - Increase `$p-breakpoint-*-{down,only}` breakpoint max-width values by 0.01px so that they are representable in fewer digits of precision when expressed as `em`s. This ensures they are representable without rounding when using `node-sass`'s default precision. E.g. `$p-breakpoints-md-down`changes from `max-width: 47.996875em` to `max-width: 47.9975em`.
+
 ## 6.0.1
 
 ### Patch Changes
