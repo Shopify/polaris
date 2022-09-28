@@ -1,7 +1,7 @@
 @import '../../styles/mixins.scss';
 
 .Code {
-  border-radius: var(--border-radius-600);
+  border-radius: var(--border-radius-400);
   max-width: calc(100vw - 1.5rem);
   cursor: text;
   background: var(--surface);
