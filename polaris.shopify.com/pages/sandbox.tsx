@@ -1,6 +1,7 @@
 import SandboxHeader from '../src/components/SandboxHeader';
+import SandboxHelpDialog from '../src/components/SandboxHelpDialog';
 import useDarkMode from 'use-dark-mode';
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useRouter} from 'next/router';
 import type {InferGetServerSidePropsType, GetServerSideProps} from 'next';
 
@@ -23,6 +24,21 @@ export default function Sandbox({
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const router = useRouter();
   const searchValue = useRef('');
+  const [isHelpOpen, setHelpIsOpen] = useState(false);
+
+  // After the page has rendered at least once, we might show the help dialog
+  // (so it animates onto the screen nicely)
+  useEffect(() => {
+    const helpTimeout = setTimeout(() => {
+      if (localStorage.getItem('onboarded')) {
+        // Already been shown the automatic onboarding, so nothing to do
+        return;
+      }
+      localStorage.setItem('onboarded', 'true');
+      setHelpIsOpen(true);
+    }, 500);
+    return () => clearTimeout(helpTimeout);
+  }, []);
 
   useEffect(() => {
     /**
@@ -51,7 +67,7 @@ export default function Sandbox({
       }
     }, 200);
     return () => clearInterval(iframeUrlPoll);
-  }, []);
+  }, [router]);
 
   return (
     <div
@@ -67,8 +83,10 @@ export default function Sandbox({
     >
       <SandboxHeader
         darkMode={darkMode}
+        setHelpIsOpen={setHelpIsOpen}
         url={typeof window !== 'undefined' ? window.location.href : ''}
       />
+      <SandboxHelpDialog {...{isOpen: isHelpOpen, setIsOpen: setHelpIsOpen}} />
       <iframe
         id="main"
         ref={iframeRef}
