@@ -17,7 +17,10 @@ interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({small, pill, primary, fill, children, ...rest}, ref) => {
+  (
+    {small, pill, primary, fill, children, className: classNameProp, ...rest},
+    ref,
+  ) => {
     return (
       <button
         className={className(
@@ -26,6 +29,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           pill && styles.pill,
           primary && styles.primary,
           fill && styles.fill,
+          classNameProp,
         )}
         {...rest}
         type="button"
