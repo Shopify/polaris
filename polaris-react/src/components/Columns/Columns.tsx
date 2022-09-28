@@ -1,20 +1,19 @@
 import React from 'react';
-import type {spacing} from '@shopify/polaris-tokens';
+import type {
+  BreakpointsAlias,
+  SpacingSpaceScale,
+} from '@shopify/polaris-tokens';
 
 import {sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
-type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type SpacingName = keyof typeof spacing;
-type SpacingScale = SpacingName extends `space-${infer Scale}` ? Scale : never;
-
 type Columns = {
-  [Breakpoint in Breakpoints]?: number | string;
+  [Breakpoint in BreakpointsAlias]?: number | string;
 };
 
 type Gap = {
-  [Breakpoint in Breakpoints]?: SpacingScale;
+  [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
 };
 
 export interface ColumnsProps {
