@@ -9,9 +9,17 @@
 const path = require('node:path');
 const {breakpoints, toPx} = require('@shopify/polaris-tokens');
 const {playroom} = require('./constants');
-const breakpointsConfig = Object.values(breakpoints)
-  .map((value) => +toPx(value).replace('px', ''))
-  .filter((val) => val > 0);
+
+// Note: We insert a 320 breakpoint to ensure we capture a representation of the
+// "xs" size (which technically finishes at 1px smaller than the first non-zero value
+// from the tokens, but we pick 320 as it's realistically the smallest mobile
+// phone size you'll encounter)
+const breakpointsConfig = [
+  320,
+  ...Object.values(breakpoints)
+    .map((value) => +toPx(value).replace('px', ''))
+    .filter((val) => val > 0),
+];
 
 module.exports = {
   baseUrl: playroom.baseUrl,
