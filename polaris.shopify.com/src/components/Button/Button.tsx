@@ -89,6 +89,7 @@ export const StableButton = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Button
+        // @ts-expect-error WTF are you on about Typescript?
         ref={mergeRefs([buttonRef, ref])}
         {...props}
         style={{
