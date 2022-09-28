@@ -1,14 +1,13 @@
 import type {AppProps} from 'next/app';
-import Link from 'next/link';
 import Head from 'next/head';
 import Script from 'next/script';
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
-
-import '../src/styles/globals.scss';
 import useDarkMode from 'use-dark-mode';
+
 import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
+import '../src/styles/globals.scss';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
