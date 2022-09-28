@@ -30,6 +30,9 @@ export function createIsSassFunction(name: string) {
   };
 }
 
+/**
+ * Checks if a `valueParser` node is a [Sass numeric operator](https://sass-lang.com/documentation/operators/numeric)
+ */
 export function isNumericOperator(node: Node): boolean {
   return (
     node.value === '+' ||
