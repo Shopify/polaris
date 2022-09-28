@@ -13,6 +13,8 @@ $breakpointNav: $breakpointTablet;
   padding: 0 1.5rem;
   height: var(--header-height);
   user-select: none;
+  background: var(--surface);
+  z-index: 10;
 }
 
 .NavAndContent {

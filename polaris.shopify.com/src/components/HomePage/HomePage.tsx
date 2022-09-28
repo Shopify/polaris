@@ -30,8 +30,8 @@ function HomePage({}: Props) {
         </div>
       </Container>
 
-      <div className={className(styles.Step, styles.BuildingBlocks)}>
-        <Container>
+      <Container>
+        <div className={styles.Blocks}>
           <div className={styles.Block}>
             <div className={styles.Text}>
               <h3>Foundations</h3>
@@ -233,8 +233,8 @@ function HomePage({}: Props) {
               )}
             </div>
           </div>
-        </Container>
-      </div>
+        </div>
+      </Container>
     </div>
   );
 }

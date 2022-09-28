@@ -11,6 +11,15 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
 
 .Hero {
   padding: 6rem 0;
+  background: url(/images/home-hero.png);
+  background-size: 70% auto;
+  background-repeat: no-repeat;
+  background-position: top right;
+
+  @media screen and (max-width: $breakpointDesktopLarge) {
+    padding: 2rem 0 4rem;
+    background-size: 60% auto;
+  }
 
   h1 {
     margin-bottom: 1rem;
@@ -19,6 +28,11 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
     letter-spacing: var(--letter-spacing-1000);
     font-weight: var(--font-weight-600);
     line-height: 1.1;
+    mix-blend-mode: luminosity;
+
+    span {
+      display: block;
+    }
 
     @media screen and (max-width: $breakpointTablet) {
       font-size: var(--font-size-1500);
@@ -27,23 +41,36 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
 
   p {
     font-size: var(--font-size-800);
+    max-width: 26rem;
+    color: var(--text-strong);
+    letter-spacing: var(--letter-spacing-300);
+  }
+}
+
+.Blocks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (max-width: $breakpointTablet) {
+    grid-template-columns: 1fr;
   }
 }
 
 .Block {
   position: relative;
   display: flex;
-  align-items: center;
 
   h3 {
     @include heading-2;
-    font-size: var(--font-size-900);
   }
 
-  .Text {
-    min-width: 50%;
-    max-width: 50%;
-    padding-right: 3rem;
+  .Image {
+    display: none;
   }
 
   h3 {
@@ -64,10 +91,6 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
     .Image {
       margin: 0 -1.25rem;
     }
-
-    + .Block {
-      margin-top: 3rem;
-    }
   }
 }
 
@@ -78,13 +101,9 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
   a {
     display: flex;
     align-items: center;
-    gap: 0.66rem;
-    padding: 0.1rem 0;
-    font-size: var(--font-size-600);
-
-    @media screen and (max-width: $breakpointTablet) {
-      font-size: var(--font-size-400);
-    }
+    gap: 0.5rem;
+    padding: 0rem 0;
+    color: var(--text);
 
     &[data-icon='github'] svg {
       color: var(--text-strong);
@@ -96,8 +115,9 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
   }
 
   svg {
-    width: 1rem;
+    width: 0.85rem;
     height: auto;
+    opacity: 0.85;
   }
 }
 
