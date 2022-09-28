@@ -47,7 +47,12 @@ const generateHTML = async (url, slug) => {
     htmlImg = `<img src="data:image/png;base64,${base64}" class="component-image" />`;
   }
 
-  if (url.startsWith('/foundations/')) {
+  if (
+    url.startsWith('/foundations/') ||
+    url.startsWith('/design/') ||
+    url.startsWith('/content/') ||
+    url.startsWith('/patterns/')
+  ) {
     const mdFilePath = path.join(process.cwd(), `content${url}/index.md`);
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
