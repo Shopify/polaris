@@ -16,22 +16,22 @@ const NAV_ID = 'nav';
 
 interface Props {
   darkMode: DarkMode;
-  currentPath?: string;
   children: React.ReactNode;
 }
 
 const nav = navJSON as NavJSON;
 
-function Header({darkMode, currentPath = '', children}: Props) {
+function Header({darkMode, children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
   const [navIsVisible, setNavIsVisible] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const {asPath} = useRouter();
 
   useEffect(() => {
     const mainContent = document.querySelector('#main');
     setShowSkipToContentLink(mainContent !== null);
-  }, [currentPath]);
+  }, [asPath]);
 
   useEffect(() => {
     function hideSideNavOnResize() {

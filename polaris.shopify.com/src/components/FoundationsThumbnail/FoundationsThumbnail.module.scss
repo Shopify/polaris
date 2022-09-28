@@ -5,6 +5,11 @@
   justify-content: center;
   background: var(--surface-subdued);
 
+  svg {
+    opacity: 0.7;
+    transform: scale(1.5);
+  }
+
   &[data-category='foundations'] {
     background: var(--decorative-4);
   }

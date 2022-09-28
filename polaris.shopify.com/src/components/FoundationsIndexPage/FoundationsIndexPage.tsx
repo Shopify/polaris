@@ -1,4 +1,4 @@
-import Layout from '../Layout';
+import Page from '../Page';
 import PageMeta from '../PageMeta';
 import styles from './FoundationsIndexPage.module.scss';
 import Longform from '../Longform';
@@ -22,7 +22,7 @@ function FoundationsIndexPage({title, description, items}: FoundationsProps) {
     <div className={styles.FoundationsIndexPage}>
       <PageMeta description={description} />
 
-      <Layout showTOC={false}>
+      <Page showTOC={false}>
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>
@@ -47,7 +47,7 @@ function FoundationsIndexPage({title, description, items}: FoundationsProps) {
               );
             })}
         </Grid>
-      </Layout>
+      </Page>
     </div>
   );
 }

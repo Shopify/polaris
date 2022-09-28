@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import globby from 'globby';
 
-import Layout from '../src/components/Layout';
+import Page from '../src/components/Page';
 import Longform from '../src/components/Longform';
 import PageMeta from '../src/components/PageMeta';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
@@ -17,7 +17,7 @@ interface Props {
 
 const WhatsNew: NextPage<Props> = ({title, description, posts}: Props) => {
   return (
-    <Layout title={title} showTOC={false}>
+    <Page title={title} showTOC={false}>
       <PageMeta title={title} description={description} />
 
       <Longform firstParagraphIsLede={false}>
@@ -29,7 +29,7 @@ const WhatsNew: NextPage<Props> = ({title, description, posts}: Props) => {
           </>
         ))}
       </Longform>
-    </Layout>
+    </Page>
   );
 };
 

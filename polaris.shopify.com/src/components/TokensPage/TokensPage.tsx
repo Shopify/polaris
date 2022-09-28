@@ -1,12 +1,11 @@
 import styles from './TokensPage.module.scss';
 import {MetadataGroup, metadata as allTokens} from '@shopify/polaris-tokens';
-import Container from '../Container';
 import {Status, TokenPropertiesWithName} from '../../types';
 import TokenList from '../TokenList';
 import Link from 'next/link';
 import {slugify} from '../../utils/various';
 import {useRouter} from 'next/router';
-import Layout from '../Layout';
+import Page from '../Page';
 
 interface Props {
   tokenGroup:
@@ -96,7 +95,7 @@ function TokensPage({tokenGroup}: Props) {
     .join('\n');
 
   return (
-    <Layout showTOC={false}>
+    <Page showTOC={false}>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Tokens</h1>
@@ -139,7 +138,7 @@ function TokensPage({tokenGroup}: Props) {
 
         <style jsx>{keyframeStyles}</style>
       </div>
-    </Layout>
+    </Page>
   );
 }
 

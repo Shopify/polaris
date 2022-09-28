@@ -2,16 +2,6 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-.IconsPage {
-  padding-top: var(--header-margin);
-  padding-bottom: var(--header-margin);
-
-  h1 {
-    @include heading-1;
-    margin-bottom: 1.5rem;
-  }
-}
-
 .PageLayout {
   display: grid;
   gap: 3rem;
@@ -76,7 +66,6 @@
 
   p {
     margin-top: 0.5rem;
-    font-size: var(--font-size-100);
     color: var(--text-subdued);
   }
 }

@@ -6,7 +6,7 @@ import ComponentExamples from '../../src/components/ComponentExamples';
 import type {ComponentExample} from '../../src/components/ComponentExamples';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
-import Layout from '../../src/components/Layout';
+import Page from '../../src/components/Page';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
 import {toPascalCase} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
@@ -31,6 +31,7 @@ interface Props {
     header: string;
   };
   type: FilteredTypes;
+  editPageLinkPath: string;
 }
 
 const Components = ({
@@ -40,6 +41,7 @@ const Components = ({
   readme,
   status,
   type,
+  editPageLinkPath,
 }: Props) => {
   const typedStatus: Status | undefined = status
     ? {
@@ -49,7 +51,7 @@ const Components = ({
     : undefined;
 
   return (
-    <Layout width="narrow" title={title}>
+    <Page title={title} editPageLinkPath={editPageLinkPath}>
       <PageMeta title={title} description={description} />
 
       <Longform>
@@ -63,7 +65,7 @@ const Components = ({
       <Longform firstParagraphIsLede={false}>
         <Markdown text={readme.body} />
       </Longform>
-    </Layout>
+    </Page>
   );
 };
 
@@ -72,10 +74,9 @@ export const getStaticProps: GetStaticProps<
   {component: string}
 > = async (context) => {
   const componentSlug = context.params?.component;
-  const mdFilePath = path.resolve(
-    process.cwd(),
-    `content/components/${componentSlug}/index.md`,
-  );
+  const relativeMdPath = `content/components/${componentSlug}/index.md`;
+  const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
+  const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -125,6 +126,7 @@ export const getStaticProps: GetStaticProps<
       description,
       readme,
       type,
+      editPageLinkPath,
     };
 
     return {props};

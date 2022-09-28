@@ -1,18 +1,19 @@
 @import '../../styles/mixins.scss';
 
 .Code {
-  border-radius: var(--border-radius-400);
+  border-radius: var(--border-radius-600);
   max-width: calc(100vw - 1.5rem);
   cursor: text;
   background: var(--surface);
   color: var(--text-strong);
-  background: var(--surface-subdued);
+  border: var(--border);
 }
 
 .TopBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: var(--border);
 }
 
 .Tabs {

@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import globby from 'globby';
 
-import Layout from '../src/components/Layout';
+import Page from '../src/components/Page';
 import Longform from '../src/components/Longform';
 import Markdown from '../src/components/Markdown';
 import PageMeta from '../src/components/PageMeta';
@@ -14,34 +14,37 @@ interface Props {
   readme: MarkdownFile['readme'];
   title: string;
   description?: string;
+  editPageLinkPath: string;
 }
 
 const CatchAllTemplate: NextPage<Props> = ({
   readme,
   title,
   description,
+  editPageLinkPath,
 }: Props) => {
   return (
-    <Layout title={title}>
+    <Page title={title} editPageLinkPath={editPageLinkPath}>
       <PageMeta title={title} description={description} />
 
       <Longform>
         {description ? <Markdown text={description} /> : null}
         <Markdown text={readme} />
       </Longform>
-    </Layout>
+    </Page>
   );
 };
 
-const contentDir = path.join(process.cwd(), 'content');
+const contentDir = 'content';
 
 export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   params,
 }) => {
-  const mdFilePath = path.resolve(
-    process.cwd(),
-    `${contentDir}/${params?.slug.join('/') || ''}/index.md`,
-  );
+  const mdRelativePath = `${contentDir}/${
+    params?.slug.join('/') || ''
+  }/index.md`;
+  const mdFilePath = path.resolve(process.cwd(), mdRelativePath);
+  const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
 
   if (fs.existsSync(mdFilePath)) {
     const markdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -51,6 +54,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       title,
       description: description || null,
       readme,
+      editPageLinkPath,
     };
 
     return {props};

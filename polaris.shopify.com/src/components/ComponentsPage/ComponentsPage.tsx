@@ -8,7 +8,7 @@ import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
 import Grid from '../Grid';
-import Layout from '../Layout';
+import Page from '../Page';
 import ComponentThumbnail from '../ComponentThumbnail';
 
 const pages: SiteJSON = siteJson;
@@ -27,9 +27,7 @@ export default function ComponentsPage() {
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
       />
 
-      <Layout showTOC={false}>
-        <h1>Components</h1>
-
+      <Page title="Components" showTOC={false}>
         {componentCategories.map((category) => {
           return (
             <div key={category} className={styles.Category}>
@@ -63,7 +61,7 @@ export default function ComponentsPage() {
             </div>
           );
         })}
-      </Layout>
+      </Page>
     </div>
   );
 }

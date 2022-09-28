@@ -50,7 +50,7 @@
     text-overflow: ellipsis;
 
     &::before {
-      content: '-> ';
+      content: '→ ';
       color: var(--text-subdued);
     }
   }
