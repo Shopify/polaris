@@ -14,16 +14,16 @@ export const foundationsNavItems: NavItemWithIcon[] = [
     title: 'Foundations',
     children: [
       {
-        title: "About Polaris",
-        url: "/foundations/foundations/about-polaris",
-        icon: "HintMajor",
+        title: 'About Polaris',
+        url: '/foundations/foundations/about-polaris',
+        icon: 'HintMajor',
         description:
           "Learn what the Polaris design system is and how it's used by designers and developers to build world-class Shopify admin experiences.",
       },
       {
-        title: "Experience values",
-        url: "/foundations/foundations/experience-values",
-        icon: "HeartMajor",
+        title: 'Experience values',
+        url: '/foundations/foundations/experience-values',
+        icon: 'HeartMajor',
         description:
           'At Shopify, we empower commerce at a global scale. We build products, tools, and services for people to start, manage, and scale their businesses. We manage enormous complexity for commerce giants, and give new entrepreneurs the best chance to succeed.',
       },
@@ -200,16 +200,16 @@ export const foundationsNavItems: NavItemWithIcon[] = [
     title: 'Patterns',
     children: [
       {
-        title: "Design Patterns",
-        url: "/foundations/patterns/design-patterns",
-        icon: "RefreshMajor",
+        title: 'Design Patterns',
+        url: '/foundations/patterns/design-patterns',
+        icon: 'RefreshMajor',
         description:
-          "Design patterns provide repeatable UX solutions to common merchant situations.",
+          'Design patterns provide repeatable UX solutions to common merchant situations.',
       },
       {
-        title: "Loading",
-        url: "/foundations/patterns/loading",
-        icon: "ClockMajor",
+        title: 'Loading',
+        url: '/foundations/patterns/loading',
+        icon: 'ClockMajor',
         description:
           "Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.",
       },
@@ -249,11 +249,11 @@ export const foundationsNavItems: NavItemWithIcon[] = [
           'Picking experiences present merchants with options to browse, find, and select from to perform an action. Pickers can help merchants navigate to a new page, filter an index table, or input one or more values in a form.',
       },
       {
-        title: "New badge",
-        url: "/foundations/patterns/new-badge",
-        icon: "StarFilledMinor",
+        title: 'New badge',
+        url: '/foundations/patterns/new-badge',
+        icon: 'StarFilledMinor',
         description:
-          "The [New] badge can be used to inform merchants about the release of a feature that creates new value.",
+          'The [New] badge can be used to inform merchants about the release of a feature that creates new value.',
       },
     ],
   },

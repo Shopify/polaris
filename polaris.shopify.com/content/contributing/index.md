@@ -1,6 +1,6 @@
 ---
 title: Contributing to Polaris
-description: Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support. 
+description: Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support.
 keywords:
   - how to contribute to polaris
   - contribution

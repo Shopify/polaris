@@ -8,7 +8,7 @@ const Components: NextPage = () => {
     <>
       <PageMeta title="Font tokens" />
 
-      <TokensPage tokenGroup={"font"} />
+      <TokensPage tokenGroup={'font'} />
     </>
   );
 };
