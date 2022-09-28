@@ -212,7 +212,15 @@ function NavItem({
           .sort((_a, _b) => {
             const [, a] = _a as [string, NavItem];
             const [, b] = _b as [string, NavItem];
-            return (a.order || 0) - (b.order || 0);
+            return a.title && b.title ? a.title.localeCompare(b.title) : 0;
+          })
+          .sort((_a, _b) => {
+            const [, a] = _a as [string, NavItem];
+            const [, b] = _b as [string, NavItem];
+            return (
+              (typeof a.order !== 'undefined' ? a.order : 1000) -
+              (typeof b.order !== 'undefined' ? b.order : 1000)
+            );
           })
           .map((entry, i) => {
             const [key, child] = entry as [string, NavItem];
