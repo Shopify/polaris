@@ -8,23 +8,18 @@ import TOC from '../TOC';
 import Breadcrumbs from '../Breadcrumbs';
 
 interface Props {
-  width?: 'full' | 'narrow';
   title?: string;
   showTOC?: boolean;
   children: React.ReactNode;
 }
 
-function Layout({width = 'full', title, showTOC = true, children}: Props) {
+function Layout({title, showTOC = true, children}: Props) {
   const [tocItems] = useTOC(children);
 
   return (
     <>
       <Container
-        className={className(
-          styles.Layout,
-          showTOC && styles.showTOC,
-          width === 'narrow' && styles.narrow,
-        )}
+        className={className(styles.Layout, showTOC && styles.showTOC)}
       >
         <article className={styles.Post} id="main">
           <Breadcrumbs />
