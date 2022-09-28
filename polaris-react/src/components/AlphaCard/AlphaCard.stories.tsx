@@ -32,9 +32,9 @@ export function BackgroundSubdued() {
   );
 }
 
-export function BorderRadius() {
+export function WithoutBorderRadius() {
   return (
-    <AlphaCard borderRadius="4">
+    <AlphaCard hasBorderRadius={false}>
       <AlphaStack spacing="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
