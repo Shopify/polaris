@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.2.1
+
+### Patch Changes
+
+- [#7269](https://github.com/Shopify/polaris/pull/7269) [`963581358`](https://github.com/Shopify/polaris/commit/9635813582030159f4c102242420fde3a6364808) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Update `renameProps` to avoid migrating nested component props
+
 ## 0.2.0
 
 ### Minor Changes
