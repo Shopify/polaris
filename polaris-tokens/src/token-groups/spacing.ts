@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const spacing = {
   'space-0': {
     value: '0',
@@ -51,3 +53,14 @@ export const spacing = {
     value: '128px',
   },
 };
+
+export type SpacingTokenGroup = TokenGroup<typeof spacing>;
+export type SpacingTokenName = keyof SpacingTokenGroup;
+
+// e.g. "0" | "025" | "05" | "1" | "2" | "3" | ...
+export type SpacingSpaceScale = Extract<
+  SpacingTokenName,
+  `space-${number}`
+> extends `space-${infer Scale}`
+  ? Scale
+  : never;

@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Fix typo
+Update breakpoint token documentation

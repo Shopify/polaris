@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const zIndex = {
   'z-1': {
     value: '100',
@@ -36,3 +38,14 @@ export const zIndex = {
     value: '520',
   },
 };
+
+export type ZIndexTokenGroup = TokenGroup<typeof zIndex>;
+export type ZIndexTokenName = keyof ZIndexTokenGroup;
+
+// e.g. "1" | "2" | "3" | "4" | "5" | "6" | ...
+export type ZIndexZScale = Extract<
+  ZIndexTokenName,
+  `z-${number}`
+> extends `z-${infer Scale}`
+  ? Scale
+  : never;

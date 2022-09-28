@@ -4,7 +4,6 @@ import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
-import {Key} from '../../types';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
@@ -29,6 +28,10 @@ export interface TooltipProps {
   activatorWrapper?: string;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /* Callback fired when the tooltip is activated */
+  onOpen?(): void;
+  /* Callback fired when the tooltip is dismissed */
+  onClose?(): void;
 }
 
 export function Tooltip({
@@ -39,6 +42,8 @@ export function Tooltip({
   preferredPosition = 'below',
   activatorWrapper = 'span',
   accessibilityLabel,
+  onOpen,
+  onClose,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {
@@ -67,10 +72,11 @@ export function Tooltip({
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.keyCode !== Key.Escape) return;
+      if (event.key !== 'Escape') return;
+      onClose?.();
       handleBlur();
     },
-    [handleBlur],
+    [handleBlur, onClose],
   );
 
   const portal = activatorNode ? (
@@ -91,8 +97,14 @@ export function Tooltip({
 
   return (
     <WrapperComponent
-      onFocus={handleFocus}
-      onBlur={handleBlur}
+      onFocus={() => {
+        onOpen?.();
+        handleFocus();
+      }}
+      onBlur={() => {
+        onClose?.();
+        handleBlur();
+      }}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
       ref={setActivator}
@@ -119,11 +131,13 @@ export function Tooltip({
 
   function handleMouseEnter() {
     mouseEntered.current = true;
+    onOpen?.();
     handleFocus();
   }
 
   function handleMouseLeave() {
     mouseEntered.current = false;
+    onClose?.();
     handleBlur();
   }
 
