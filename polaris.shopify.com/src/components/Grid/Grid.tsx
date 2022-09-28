@@ -11,7 +11,7 @@ export interface Props {
 }
 
 function Grid({children}: Props) {
-  return <ul className={styles.FoundationsGrid}>{children}</ul>;
+  return <ul className={styles.Grid}>{children}</ul>;
 }
 
 export interface GridItemProps {
@@ -32,7 +32,7 @@ function GridItem({
 }: GridItemProps) {
   const searchAttributes = useGlobalSearchResult();
   return (
-    <li className={styles.FoundationsGridItem} {...searchAttributes}>
+    <li className={styles.GridItem} {...searchAttributes}>
       <Link href={url} passHref>
         <a className={styles.Text}>
           <SearchResultHighlight />

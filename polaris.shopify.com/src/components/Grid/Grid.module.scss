@@ -2,13 +2,13 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-.FoundationsGrid {
+.Grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
   gap: 1.75rem 1rem;
 }
 
-.FoundationsGridItem {
+.GridItem {
   position: relative;
 
   h4 {
