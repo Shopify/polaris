@@ -1,34 +1,27 @@
 import React from 'react';
-import type {spacing} from '@shopify/polaris-tokens';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Bleed.scss';
 
-type SpacingTokenName = keyof typeof spacing;
-
-// TODO: Bring this logic into tokens
-type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
-  ? Scale
-  : never;
-
 interface Spacing {
-  bottom: SpacingTokenScale;
-  left: SpacingTokenScale;
-  right: SpacingTokenScale;
-  top: SpacingTokenScale;
+  bottom: SpacingSpaceScale;
+  left: SpacingSpaceScale;
+  right: SpacingSpaceScale;
+  top: SpacingSpaceScale;
 }
 
 export interface BleedProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
-  spacing?: SpacingTokenScale;
-  horizontal?: SpacingTokenScale;
-  vertical?: SpacingTokenScale;
-  top?: SpacingTokenScale;
-  bottom?: SpacingTokenScale;
-  left?: SpacingTokenScale;
-  right?: SpacingTokenScale;
+  spacing?: SpacingSpaceScale;
+  horizontal?: SpacingSpaceScale;
+  vertical?: SpacingSpaceScale;
+  top?: SpacingSpaceScale;
+  bottom?: SpacingSpaceScale;
+  left?: SpacingSpaceScale;
+  right?: SpacingSpaceScale;
 }
 
 export const Bleed = ({
