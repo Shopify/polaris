@@ -11,7 +11,6 @@ import Icon from '../Icon';
 import {StableButton} from '../Button';
 
 import styles from './SandboxHeader.module.scss';
-import SandboxHelpDialog from '../SandboxHelpDialog';
 import StatusBadge from '../StatusBadge';
 
 function CopyURLButton({url}: {url: string}) {
@@ -29,11 +28,11 @@ interface Props {
   darkMode: DarkMode;
   currentPath?: string;
   url: string;
+  setHelpIsOpen: (open: boolean) => void;
 }
 
-function SandboxHeader({currentPath = '', url}: Props) {
+function SandboxHeader({currentPath = '', url, setHelpIsOpen}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const mainContent = document.querySelector('#main');
@@ -70,7 +69,7 @@ function SandboxHeader({currentPath = '', url}: Props) {
           </h1>
           <div className={styles.TitleTagline}>
             Effortless prototyping with Polaris components.{' '}
-            <a href="#" onClick={() => setIsOpen(true)}>
+            <a href="#" onClick={() => setHelpIsOpen(true)}>
               Learn more
             </a>
           </div>
@@ -79,7 +78,6 @@ function SandboxHeader({currentPath = '', url}: Props) {
           <CopyURLButton url={url} />
         </div>
       </Container>
-      <SandboxHelpDialog {...{isOpen, setIsOpen}} />
     </div>
   );
 }
