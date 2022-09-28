@@ -8,53 +8,20 @@ import {ClipboardMinor} from '@shopify/polaris-icons';
 import Container from '../Container';
 import {useCopyToClipboard} from '../../utils/hooks';
 import Icon from '../Icon';
-import Tooltip from '../Tooltip';
+import {StableButton} from '../Button';
 
 import styles from './SandboxHeader.module.scss';
 import SandboxHelpDialog from '../SandboxHelpDialog';
 import StatusBadge from '../StatusBadge';
 
-function IconButtonWithTooltip({
-  icon,
-  ariaLabel,
-  tooltipContent,
-  buttonClassName,
-  onClick,
-}: {
-  icon: any;
-  ariaLabel: any;
-  tooltipContent: any;
-  buttonClassName: any;
-  onClick: any;
-}) {
-  return (
-    <Tooltip
-      ariaLabel={ariaLabel}
-      renderContent={() => <p>{tooltipContent}</p>}
-    >
-      <button
-        type="button"
-        className={buttonClassName}
-        onClick={onClick}
-        aria-label={ariaLabel}
-      >
-        <Icon source={icon} width={16} height={16} />
-      </button>
-    </Tooltip>
-  );
-}
-
 function CopyURLButton({url}: {url: string}) {
   const [copy, didJustCopy] = useCopyToClipboard(url);
 
   return (
-    <IconButtonWithTooltip
-      icon={ClipboardMinor}
-      ariaLabel="Copy URL to clipboard"
-      tooltipContent={didJustCopy ? 'URL copied' : 'Copy URL'}
-      buttonClassName={styles.TooltipButton}
-      onClick={copy}
-    />
+    <StableButton small className={styles.CopyURLButton} onClick={copy}>
+      <Icon source={ClipboardMinor} width="1em" height="1em" />
+      {didJustCopy ? 'Copied!' : 'Copy URL'}
+    </StableButton>
   );
 }
 
@@ -75,18 +42,20 @@ function SandboxHeader({currentPath = '', url}: Props) {
   return (
     <div className={styles.Header}>
       <Container className={styles.HeaderInner}>
-        <Link href="/">
-          <a className={styles.Logo}>
-            <Image
-              src="/images/shopify-logo.svg"
-              layout="fixed"
-              width={24}
-              height={24}
-              alt="Shopify logo"
-            />
-            Polaris
-          </a>
-        </Link>
+        <div className={styles.LogoContainer}>
+          <Link href="/">
+            <a className={styles.Logo}>
+              <Image
+                src="/images/shopify-logo.svg"
+                layout="fixed"
+                width={24}
+                height={24}
+                alt="Shopify logo"
+              />
+              Polaris
+            </a>
+          </Link>
+        </div>
 
         {showSkipToContentLink && (
           <a className={styles.SkipToContentLink} href="#main">
@@ -102,15 +71,15 @@ function SandboxHeader({currentPath = '', url}: Props) {
           <div className={styles.TitleTagline}>
             Effortless prototyping with Polaris components.{' '}
             <a href="#" onClick={() => setIsOpen(true)}>
-              Learn more.
+              Learn more
             </a>
           </div>
         </div>
-        <div className={styles.HeaderBtnWrapper}>
+        <div className={styles.ButtonContainer}>
           <CopyURLButton url={url} />
-          <SandboxHelpDialog {...{isOpen, setIsOpen}} />
         </div>
       </Container>
+      <SandboxHelpDialog {...{isOpen, setIsOpen}} />
     </div>
   );
 }
