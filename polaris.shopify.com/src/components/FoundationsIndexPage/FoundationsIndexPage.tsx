@@ -1,9 +1,21 @@
 import Layout from '../Layout';
 import PageMeta from '../PageMeta';
-import FoundationsGrid from '../FoundationsGrid';
 import styles from './FoundationsIndexPage.module.scss';
-import {FoundationsProps} from '../../utils/foundations';
 import Longform from '../Longform';
+import Grid from '../Grid';
+import {GridItemProps} from '../Grid/Grid';
+import FoundationsThumbnail from '../FoundationsThumbnail';
+
+export interface FoundationsProps {
+  title: string;
+  description: string;
+  items: Item[];
+}
+
+interface Item extends GridItemProps {
+  order: number;
+  icon: string;
+}
 
 function FoundationsIndexPage({title, description, items}: FoundationsProps) {
   return (
@@ -15,15 +27,26 @@ function FoundationsIndexPage({title, description, items}: FoundationsProps) {
           <h1>{title}</h1>
           <p>{description}</p>
         </Longform>
-        <FoundationsGrid>
+        <Grid>
           {items
             .sort((a, b) => a.title.localeCompare(b.title))
             .sort((a, b) => a.order - b.order)
             .map((item) => {
               if (!item.url) return null;
-              return <FoundationsGrid.Item key={item.title} {...item} />;
+              return (
+                <Grid.Item
+                  key={item.title}
+                  {...item}
+                  renderPreview={() => (
+                    <FoundationsThumbnail
+                      icon={item.icon}
+                      category={title.toLowerCase()}
+                    />
+                  )}
+                />
+              );
             })}
-        </FoundationsGrid>
+        </Grid>
       </Layout>
     </div>
   );

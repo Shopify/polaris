@@ -1,17 +1,11 @@
 import globby from 'globby';
 import path from 'path';
 import fs from 'fs';
-import {FoundationsGridItemProps} from '../components/FoundationsGrid/FoundationsGrid';
 import {MarkdownFile} from '../types';
 import {parseMarkdown} from './markdown.mjs';
-import {uppercaseFirst} from './various';
+import {slugify, uppercaseFirst} from './various';
 import {GetStaticProps} from 'next';
-
-export interface FoundationsProps {
-  title: string;
-  description: string;
-  items: FoundationsGridItemProps[];
-}
+import {FoundationsProps} from '../components/FoundationsIndexPage/FoundationsIndexPage';
 
 export const getStaticPropsForFoundations = (category: string) => {
   const getStaticProps: GetStaticProps<FoundationsProps> = async () => {
@@ -21,7 +15,7 @@ export const getStaticPropsForFoundations = (category: string) => {
     );
     const markdown = fs.readFileSync(markdownPath, 'utf-8');
     const {
-      frontMatter: {title: categoryTitle, description},
+      frontMatter: {description},
     }: MarkdownFile = parseMarkdown(markdown);
 
     const filePattern = path.resolve(
@@ -47,15 +41,18 @@ export const getStaticPropsForFoundations = (category: string) => {
           const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
             (heading) => heading.replace(/^\n## /, '').trim(),
           );
+          const deepLinks = headings.map((heading) => ({
+            url: `${url.replace(/\/$/, '')}#${slugify(heading)}`,
+            text: heading,
+          }));
 
           items.push({
             title: title,
             description: description || '',
             icon: icon || '',
             url,
-            headings,
+            deepLinks,
             order: !isNaN(parseInt(order)) ? order : 1000,
-            category: categoryTitle.toLowerCase(),
           });
         }
       });

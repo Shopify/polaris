@@ -8,12 +8,12 @@ import {useThrottle} from '../../utils/hooks';
 import styles from './GlobalSearch.module.scss';
 import {useRouter} from 'next/router';
 import IconGrid from '../IconGrid';
-import ComponentGrid from '../ComponentGrid';
+import Grid from '../Grid';
 import TokenList from '../TokenList';
 import {Dialog} from '@headlessui/react';
 import {KeyboardEventHandler} from 'react';
-import FoundationsGrid from '../FoundationsGrid';
-
+import FoundationsThumbnail from '../FoundationsThumbnail';
+import ComponentThumbnail from '../ComponentThumbnail';
 const CATEGORY_NAMES: {[key in SearchResultCategory]: string} = {
   components: 'Components',
   foundations: 'Foundations',
@@ -236,35 +236,38 @@ function SearchResults({
           case 'foundations':
             return (
               <ResultsGroup category={category} key={category}>
-                <FoundationsGrid>
+                <Grid>
                   {results.map(({id, url, meta}) => {
                     if (!meta.foundations) return null;
-                    const {title, description, icon} = meta.foundations;
+                    const {title, description, icon, category} =
+                      meta.foundations;
                     return (
                       <SearchContext.Provider
                         key={title}
                         value={{currentItemId, id}}
                       >
-                        <FoundationsGrid.Item
+                        <Grid.Item
                           title={title}
                           description={description}
                           url={url}
-                          icon={icon}
-                          headings={[]}
-                          order={0}
-                          category={meta.foundations.category}
+                          renderPreview={() => (
+                            <FoundationsThumbnail
+                              icon={icon}
+                              category={category}
+                            />
+                          )}
                         />
                       </SearchContext.Provider>
                     );
                   })}
-                </FoundationsGrid>
+                </Grid>
               </ResultsGroup>
             );
 
           case 'components': {
             return (
               <ResultsGroup category={category} key={category}>
-                <ComponentGrid>
+                <Grid>
                   {results.map(({id, url, meta}) => {
                     if (!meta.components) return null;
                     const {title, description, status} = meta.components;
@@ -273,16 +276,19 @@ function SearchResults({
                         key={id}
                         value={{currentItemId, id}}
                       >
-                        <ComponentGrid.Item
+                        <Grid.Item
                           url={url}
                           description={description}
                           title={title}
                           status={status}
+                          renderPreview={() => (
+                            <ComponentThumbnail title={title} />
+                          )}
                         />
                       </SearchContext.Provider>
                     );
                   })}
-                </ComponentGrid>
+                </Grid>
               </ResultsGroup>
             );
           }

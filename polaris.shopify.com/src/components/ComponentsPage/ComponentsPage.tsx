@@ -1,6 +1,3 @@
-import ComponentGrid from '../ComponentGrid';
-import Layout from '../Layout';
-
 import siteJson from '../../../.cache/site.json';
 import {
   getComponentCategories,
@@ -10,6 +7,9 @@ import {
 import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
+import Grid from '../Grid';
+import Layout from '../Layout';
+import ComponentThumbnail from '../ComponentThumbnail';
 
 const pages: SiteJSON = siteJson;
 
@@ -34,7 +34,7 @@ export default function ComponentsPage() {
           return (
             <div key={category} className={styles.Category}>
               <h2 className={styles.CategoryName}>{category}</h2>
-              <ComponentGrid>
+              <Grid>
                 {components
                   .filter(
                     (slug) => pages[slug].frontMatter.category === category,
@@ -47,16 +47,19 @@ export default function ComponentsPage() {
                     } = pages[slug].frontMatter;
                     const url = `/components/${slugify(title)}`;
                     return (
-                      <ComponentGrid.Item
+                      <Grid.Item
                         key={title}
                         title={title}
                         description={stripMarkdownLinks(description)}
                         url={url}
                         status={status as Status}
+                        renderPreview={() => (
+                          <ComponentThumbnail title={title} />
+                        )}
                       />
                     );
                   })}
-              </ComponentGrid>
+              </Grid>
             </div>
           );
         })}

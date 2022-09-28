@@ -1,0 +1,23 @@
+.FoundationsThumbnail {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-subdued);
+
+  &[data-category='foundations'] {
+    background: var(--decorative-4);
+  }
+
+  &[data-category='design'] {
+    background: var(--decorative-2);
+  }
+
+  &[data-category='content'] {
+    background: var(--decorative-1);
+  }
+
+  &[data-category='patterns'] {
+    background: var(--decorative-3);
+  }
+}
