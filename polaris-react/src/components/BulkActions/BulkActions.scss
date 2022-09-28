@@ -7,11 +7,25 @@ $bulk-actions-button-stacking-order: (
 
 .Group {
   @include text-style-input;
-  width: 100%;
   display: none;
   align-items: center;
   flex-wrap: wrap;
   opacity: 0;
+  width: 90vw;
+  justify-content: center;
+
+  @media #{$p-breakpoints-sm-up} {
+    display: flex;
+
+    &.Group-exiting {
+      transition: none;
+    }
+
+    &.Group-exited {
+      opacity: 0;
+      display: none;
+    }
+  }
 
   &.Group-measuring {
     transition: none;
@@ -36,29 +50,6 @@ $bulk-actions-button-stacking-order: (
   display: none;
 }
 
-.Group-smallScreen {
-  @media #{$p-breakpoints-sm-up} {
-    display: none;
-  }
-}
-
-.Group-largeScreen {
-  display: none;
-
-  @media #{$p-breakpoints-sm-up} {
-    display: flex;
-
-    &.Group-exiting {
-      transition: none;
-    }
-
-    &.Group-exited {
-      opacity: 0;
-      display: none;
-    }
-  }
-}
-
 .ButtonGroupWrapper {
   width: 100%;
   max-width: 100%;
@@ -74,7 +65,10 @@ $bulk-actions-button-stacking-order: (
   @media #{$p-breakpoints-sm-up} {
     width: auto;
     justify-content: flex-start;
-    margin-right: var(--p-space-2);
+    padding: var(--p-space-4);
+    background: var(--p-surface);
+    border-radius: var(--p-border-radius-2);
+    box-shadow: var(--p-shadow-popover);
   }
 
   .Group-measuring & {

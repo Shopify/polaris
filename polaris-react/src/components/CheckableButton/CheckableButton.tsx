@@ -15,11 +15,11 @@ export interface CheckableButtonProps {
   label?: string;
   selected?: boolean | 'indeterminate';
   selectMode?: boolean;
-  smallScreen?: boolean;
   plain?: boolean;
   measuring?: boolean;
   disabled?: boolean;
   onToggleAll?(): void;
+  autoWidth?: boolean;
 }
 
 export function CheckableButton({
@@ -31,18 +31,16 @@ export function CheckableButton({
   plain,
   measuring,
   disabled,
-  smallScreen,
+  autoWidth,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
   const {registerCheckableButtons} = useContext(ResourceListContext);
 
-  let currentKey: CheckableButtonKey = 'bulkLg';
+  let currentKey: CheckableButtonKey = 'plain';
 
-  if (plain) {
-    currentKey = 'plain';
-  } else if (smallScreen) {
-    currentKey = 'bulkSm';
+  if (autoWidth) {
+    currentKey = 'selectAll';
   }
 
   useEffect(() => {
@@ -52,12 +50,17 @@ export function CheckableButton({
   }, [currentKey, registerCheckableButtons]);
 
   const className = plain
-    ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
+    ? classNames(
+        styles.CheckableButton,
+        styles['CheckableButton-plain'],
+        autoWidth && styles['CheckableButton-autoWidth'],
+      )
     : classNames(
         styles.CheckableButton,
         selectMode && styles['CheckableButton-selectMode'],
         selected && styles['CheckableButton-selected'],
         measuring && styles['CheckableButton-measuring'],
+        autoWidth && styles['CheckableButton-autoWidth'],
       );
 
   return (

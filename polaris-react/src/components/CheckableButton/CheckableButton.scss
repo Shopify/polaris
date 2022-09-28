@@ -74,6 +74,14 @@ $button-vertical-padding: calc(
     }
   }
 
+  &.CheckableButton-autoWidth {
+    width: auto;
+
+    @media #{$p-breakpoints-sm-up} {
+      flex: none;
+    }
+  }
+
   &.CheckableButton-selectMode {
     color: var(--p-text-subdued);
     font-weight: var(--p-font-weight-medium);

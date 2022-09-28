@@ -1,0 +1,22 @@
+.SelectAllActions {
+  display: flex;
+  gap: var(--p-space-025);
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.SelectAllActions-entering,
+.SelectAllActions-exiting {
+  opacity: 0;
+  display: flex;
+}
+
+.SelectAllActions-entered {
+  opacity: 1;
+  display: flex;
+}
+
+.SelectAllActions-exited {
+  opacity: 0;
+  display: none;
+}

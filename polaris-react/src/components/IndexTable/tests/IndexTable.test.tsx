@@ -13,6 +13,7 @@ import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
+import {SelectAllActions} from '../../SelectAllActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
 import type {IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
@@ -385,7 +386,7 @@ describe('<IndexTable>', () => {
     });
   });
 
-  describe('BulkActions', () => {
+  describe('SelectAllActions', () => {
     const originalInnerWidth = window.innerWidth;
 
     afterEach(() => {
@@ -411,7 +412,7 @@ describe('<IndexTable>', () => {
       );
 
       index
-        .find(BulkActions)!
+        .find(SelectAllActions)!
         .triggerKeypath('paginatedSelectAllAction.onAction');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
@@ -437,7 +438,7 @@ describe('<IndexTable>', () => {
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-      expect(index.find(BulkActions)).toContainReactText(customString);
+      expect(index.find(SelectAllActions)).toContainReactText(customString);
     });
 
     it('toggles all page resources when onToggleAll is triggered', () => {
@@ -456,7 +457,7 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(BulkActions)!.trigger('onToggleAll');
+      index.find(SelectAllActions)!.trigger('onToggleAll');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,

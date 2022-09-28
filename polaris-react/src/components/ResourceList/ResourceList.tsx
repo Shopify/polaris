@@ -32,6 +32,7 @@ import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
 import styles from './ResourceList.scss';
@@ -200,7 +201,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       selectable,
   );
 
-  const bulkSelectState = (): boolean | 'indeterminate' => {
+  const selectAllSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
       !selectedItems ||
@@ -244,7 +245,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     }
   };
 
-  const bulkActionsLabel = () => {
+  const selectAllActionsLabel = () => {
     const selectedItemsCount =
       selectedItems === SELECT_ALL_ITEMS
         ? `${items.length}+`
@@ -255,7 +256,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     });
   };
 
-  const bulkActionsAccessibilityLabel = () => {
+  const selectAllActionsAccessibilityLabel = () => {
     const selectedItemsCount = selectedItems.length;
     const totalItemsCount = items.length;
     const allSelected = selectedItemsCount === totalItemsCount;
@@ -516,11 +517,11 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     let checkbox: CheckboxHandles | undefined;
 
     if (isBreakpointsXS()) {
-      checkbox = checkableButtons.get('bulkSm');
+      checkbox = checkableButtons.get('selectAll');
     } else if (newlySelectedItems.length === 0) {
       checkbox = checkableButtons.get('plain');
     } else {
-      checkbox = checkableButtons.get('bulkLg');
+      checkbox = checkableButtons.get('selectAll');
     }
 
     if (onSelectionChange) {
@@ -533,21 +534,30 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     }, 0);
   };
 
+  const selectAllActionsMarkup = isSelectable ? (
+    <div className={styles.SelectAllActionsWrapper}>
+      <SelectAllActions
+        label={selectAllActionsLabel()}
+        accessibilityLabel={selectAllActionsAccessibilityLabel()}
+        selected={selectAllSelectState()}
+        onToggleAll={handleToggleAll}
+        selectMode={selectMode}
+        paginatedSelectAllAction={paginatedSelectAllAction()}
+        paginatedSelectAllText={paginatedSelectAllText()}
+        disabled={loading}
+        smallScreen={smallScreen}
+      />
+    </div>
+  ) : null;
+
   const bulkActionsMarkup = isSelectable ? (
     <div className={styles.BulkActionsWrapper}>
       <BulkActions
-        label={bulkActionsLabel()}
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
-        selected={bulkSelectState()}
-        onToggleAll={handleToggleAll}
         selectMode={selectMode}
         onSelectModeToggle={handleSelectMode}
         promotedActions={promotedBulkActions}
-        paginatedSelectAllAction={paginatedSelectAllAction()}
-        paginatedSelectAllText={paginatedSelectAllText()}
         actions={bulkActions}
         disabled={loading}
-        smallScreen={smallScreen}
       />
     </div>
   ) : null;
@@ -595,7 +605,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   const checkableButtonMarkup = isSelectable ? (
     <div className={styles.CheckableButtonWrapper}>
       <CheckableButton
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
+        accessibilityLabel={selectAllActionsAccessibilityLabel()}
         label={headerTitle()}
         onToggleAll={handleToggleAll}
         plain
@@ -649,7 +659,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
                   {sortingSelectMarkup}
                   {selectButtonMarkup}
                 </div>
-                {bulkActionsMarkup}
+                {selectAllActionsMarkup}
               </div>
             );
           }}
@@ -725,13 +735,21 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
 
   return (
     <ResourceListContext.Provider value={context}>
-      <div className={styles.ResourceListWrapper}>
+      <div
+        className={classNames(
+          styles.ResourceListWrapper,
+          Boolean(bulkActionsMarkup) &&
+            selectMode &&
+            styles.ResourceListWrapperWithBulkActions,
+        )}
+      >
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
         {emptySearchStateMarkup}
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
+        {bulkActionsMarkup}
       </div>
     </ResourceListContext.Provider>
   );

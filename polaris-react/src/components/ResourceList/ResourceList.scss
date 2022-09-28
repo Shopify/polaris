@@ -155,6 +155,24 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .BulkActionsWrapper {
+  z-index: resource-list(bulk-actions-wrapper-stacking-order);
+  visibility: visible;
+  position: sticky;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: var(--p-space-4);
+  margin-top: var(--p-space-4);
+
+  @media #{$p-breakpoints-sm-up} {
+    flex: 0 1 auto;
+    align-self: flex-start;
+  }
+}
+
+.SelectAllActionsWrapper {
   position: relative;
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
@@ -196,6 +214,10 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .ResourceListWrapper {
   position: relative;
+}
+
+.ResourceListWrapperWithBulkActions {
+  padding-bottom: var(--p-space-4);
 }
 
 .ResourceList {

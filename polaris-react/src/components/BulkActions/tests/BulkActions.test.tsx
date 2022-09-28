@@ -3,9 +3,6 @@ import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../ActionList';
-import {CheckableButton} from '../../CheckableButton';
-import {Button} from '../../Button';
-import {Popover} from '../../Popover';
 import {
   BulkActionButton,
   BulkActionMenu,
@@ -17,10 +14,6 @@ import styles from '../BulkActions.scss';
 interface Props {
   bulkActions: BulkActionButtonProps['content'][];
   promotedActions: NonNullable<BulkActionsProps['promotedActions']>;
-  paginatedSelectAllText: string;
-  selected: boolean;
-  accessibilityLabel: string;
-  label: string;
   disabled: boolean;
 }
 
@@ -34,10 +27,6 @@ const bulkActionProps: Props = {
       content: 'button 2',
     },
   ],
-  paginatedSelectAllText: 'paginated select all text string',
-  selected: false,
-  accessibilityLabel: 'test-aria-label',
-  label: 'Test-Label',
   disabled: false,
 };
 
@@ -106,13 +95,6 @@ describe('<BulkActions />', () => {
 
       expect(bulkActionsCount).toBe(0);
     });
-
-    it('renders a Popover when smallScreen is true', () => {
-      const bulkActionsElement = mountWithApp(
-        <BulkActions {...bulkActionProps} smallScreen />,
-      );
-      expect(bulkActionsElement).toContainReactComponentTimes(Popover, 1);
-    });
   });
 
   describe('loading', () => {
@@ -125,90 +107,17 @@ describe('<BulkActions />', () => {
               content: 'button 1',
             },
           ]}
-          paginatedSelectAllAction={{content: 'content', onAction: () => {}}}
           disabled
         />,
       );
 
-      expect(bulkActionsElement).toContainReactComponentTimes('button', 2, {
+      expect(bulkActionsElement).toContainReactComponentTimes('button', 1, {
         'aria-disabled': true,
       });
     });
   });
 
   describe('props', () => {
-    describe('accessibilityLabel', () => {
-      it('is passed down to CheckableButton', () => {
-        const {accessibilityLabel} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength =
-          bulkActions.findAll(CheckableButton).length;
-
-        expect(bulkActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {
-            accessibilityLabel,
-          },
-        );
-      });
-
-      it('does not pass down to CheckableButton when the property is not provided', () => {
-        const {accessibilityLabel, ...props} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...props} />);
-
-        expect(bulkActions).toContainReactComponentTimes(CheckableButton, 0, {
-          accessibilityLabel,
-        });
-      });
-    });
-
-    describe('label', () => {
-      it('is passed down to CheckableButton', () => {
-        const {label} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength =
-          bulkActions.findAll(CheckableButton).length;
-        expect(bulkActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {label},
-        );
-      });
-
-      it('does not pass down to CheckableButton when the property is not provided', () => {
-        const {label, ...props} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...props} />);
-        expect(bulkActions).toContainReactComponentTimes(CheckableButton, 0, {
-          label,
-        });
-      });
-    });
-
-    describe('selected', () => {
-      it('is passed down to CheckableButton', () => {
-        const {selected} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength =
-          bulkActions.findAll(CheckableButton).length;
-
-        expect(bulkActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {selected},
-        );
-      });
-
-      it('does not pass down to CheckableButton when the property is not provided', () => {
-        const {selected, ...props} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...props} />);
-
-        expect(bulkActions).toContainReactComponentTimes(CheckableButton, 0, {
-          selected,
-        });
-      });
-    });
-
     describe('selectMode', () => {
       it('is passed down to Transition', () => {
         const bulkActions = mountWithApp(
@@ -230,16 +139,6 @@ describe('<BulkActions />', () => {
         });
         cssTransition.forEach((cssTransitionComponent) => {
           expect(cssTransitionComponent).toHaveReactProps({in: true});
-        });
-      });
-
-      it('is passed down to CheckableButton', () => {
-        const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} selectMode />,
-        );
-        const checkableButton = bulkActions.findAll(CheckableButton);
-        checkableButton.forEach((checkableButtonComponent) => {
-          expect(checkableButtonComponent).toHaveReactProps({selectMode: true});
         });
       });
     });
@@ -277,10 +176,6 @@ describe('<BulkActions />', () => {
               content: 'button 3',
             },
           ],
-          paginatedSelectAllText: 'paginated select all text string',
-          selected: false,
-          accessibilityLabel: 'test-aria-label',
-          label: 'Test-Label',
           disabled: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -321,10 +216,6 @@ describe('<BulkActions />', () => {
               content: 'button 3',
             },
           ],
-          paginatedSelectAllText: 'paginated select all text string',
-          selected: false,
-          accessibilityLabel: 'test-aria-label',
-          label: 'Test-Label',
           disabled: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -354,10 +245,6 @@ describe('<BulkActions />', () => {
               content: 'button 2',
             },
           ],
-          paginatedSelectAllText: 'paginated select all text string',
-          selected: false,
-          accessibilityLabel: 'test-aria-label',
-          label: 'Test-Label',
           disabled: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -372,36 +259,6 @@ describe('<BulkActions />', () => {
     });
 
     describe('disabled', () => {
-      const bulkActionProps: Props = {
-        bulkActions: ['button 3', 'button 4', 'button 5'],
-        promotedActions: [
-          {
-            content: 'button 1',
-          },
-          {
-            content: 'button 2',
-          },
-        ],
-        paginatedSelectAllText: 'paginated select all text string',
-        selected: false,
-        accessibilityLabel: 'test-aria-label',
-        label: 'Test-Label',
-        disabled: true,
-      };
-
-      it('is passed down to CheckableButton', () => {
-        const {disabled} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const checkableButtonLength =
-          bulkActions.findAll(CheckableButton).length;
-
-        expect(bulkActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {disabled},
-        );
-      });
-
       it('will not overwrite the disabled value coming from a promotedAction', () => {
         const bulkActionProps: Props = {
           bulkActions: [],
@@ -411,10 +268,6 @@ describe('<BulkActions />', () => {
               content: 'button 1',
             },
           ],
-          paginatedSelectAllText: 'paginated select all text string',
-          selected: false,
-          accessibilityLabel: 'test-aria-label',
-          label: 'Test-Label',
           disabled: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
@@ -425,59 +278,8 @@ describe('<BulkActions />', () => {
       });
     });
 
-    describe('paginatedSelectAllText', () => {
-      it('renders when provided', () => {
-        const {paginatedSelectAllText} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        expect(
-          bulkActions.find('div', {className: styles.PaginatedSelectAll}),
-        ).toContainReactText(paginatedSelectAllText);
-      });
-
-      it('does not render when not provided', () => {
-        const {paginatedSelectAllText, ...props} = bulkActionProps;
-        const bulkActions = mountWithApp(<BulkActions {...props} />);
-
-        expect(bulkActions).not.toContainReactComponent('div', {
-          className: styles.PaginatedSelectAll,
-        });
-      });
-    });
-
-    describe('paginatedSelectAllAction', () => {
-      it('onAction is called when CheckableButton is clicked', () => {
-        const spy = jest.fn();
-
-        const bulkActions = mountWithApp(
-          <BulkActions
-            {...bulkActionProps}
-            paginatedSelectAllAction={{content: 'content', onAction: spy}}
-          />,
-        );
-        bulkActions.find(Button, {onClick: spy})!.trigger('onClick');
-        expect(spy).toHaveBeenCalled();
-      });
-    });
-
     describe('onMoreActionPopoverToggle', () => {
-      it('is invoked when the small screen popover is toggled', () => {
-        const spy = jest.fn();
-        const bulkActions = mountWithApp(
-          <BulkActions
-            {...bulkActionProps}
-            actions={[{content: 'Action'}]}
-            smallScreen
-            promotedActions={[]}
-            onMoreActionPopoverToggle={spy}
-          />,
-        );
-
-        bulkActions.find(BulkActionButton)?.trigger('onAction');
-
-        expect(spy).toHaveBeenCalledTimes(1);
-      });
-
-      it('is invoked when the large screen popover is toggled', () => {
+      it('is invoked when the popover is toggled', () => {
         const spy = jest.fn();
         const bulkActions = mountWithApp(
           <BulkActions
@@ -494,28 +296,13 @@ describe('<BulkActions />', () => {
       });
     });
 
-    describe('smallScreen', () => {
-      it('renders only the large screen bulkactions if smallScreen is false', () => {
+    describe('className', () => {
+      it('renders with the Group className', () => {
         const bulkActions = mountWithApp(
           <BulkActions {...bulkActionProps} selectMode />,
         );
-        expect(bulkActions).not.toContainReactComponent('div', {
-          className: expect.stringContaining(styles['Group-smallScreen']),
-        });
         expect(bulkActions).toContainReactComponent('div', {
-          className: expect.stringContaining(styles['Group-largeScreen']),
-        });
-      });
-
-      it('renders only the small screen bulkactions if smallScreen is true', () => {
-        const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} selectMode smallScreen />,
-        );
-        expect(bulkActions).toContainReactComponent('div', {
-          className: expect.stringContaining(styles['Group-smallScreen']),
-        });
-        expect(bulkActions).not.toContainReactComponent('div', {
-          className: expect.stringContaining(styles['Group-largeScreen']),
+          className: expect.stringContaining(styles.Group),
         });
       });
     });
@@ -526,7 +313,7 @@ describe('<BulkActions />', () => {
     // and ensure only the first element flex grows, we add this test to ensure the mark-up does not change
     it('has the mark-up structure to target the CheckableButton', () => {
       const bulkActions = mountWithApp(
-        <BulkActions {...bulkActionProps} selectMode smallScreen />,
+        <BulkActions {...bulkActionProps} selectMode />,
       );
 
       const checkableButton = bulkActions!

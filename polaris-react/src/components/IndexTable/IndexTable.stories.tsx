@@ -501,24 +501,34 @@ export function WithMultiplePromotedBulkActions() {
 }
 
 export function WithBulkActionsAndSelectionAcrossPages() {
-  const customers = [
-    {
-      id: '3414',
-      url: 'customers/341',
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '/customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
-      amountSpent: '$2,400',
-    },
-    {
-      id: '2564',
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-  ];
+      amountSpent: '$24,00',
+    };
+  });
+  // const customers = [
+  //   {
+  //     id: '3414',
+  //     url: 'customers/341',
+  //     name: 'Mae Jemison',
+  //     location: 'Decatur, USA',
+  //     orders: 20,
+  //     amountSpent: '$2,400',
+  //   },
+  //   {
+  //     id: '2564',
+  //     url: 'customers/256',
+  //     name: 'Ellen Ochoa',
+  //     location: 'Los Angeles, USA',
+  //     orders: 30,
+  //     amountSpent: '$140',
+  //   },
+  // ];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
