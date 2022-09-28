@@ -1,12 +1,16 @@
 import React, {createElement, forwardRef, ReactNode} from 'react';
-import type {colors, depth, shape, spacing} from '@shopify/polaris-tokens';
+import type {
+  ColorsTokenName,
+  DepthShadowAlias,
+  ShapeTokenName,
+  SpacingSpaceScale,
+} from '@shopify/polaris-tokens';
 
 import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type ColorsTokenName = keyof typeof colors;
-export type BackgroundColorTokenScale = Extract<
+type BackgroundColorTokenScale = Extract<
   ColorsTokenName,
   | 'background'
   | `background-${string}`
@@ -18,13 +22,6 @@ export type BackgroundColorTokenScale = Extract<
 >;
 type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
 
-type DepthTokenName = keyof typeof depth;
-type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
-export type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
-  ? Scale
-  : never;
-
-type ShapeTokenName = keyof typeof shape;
 type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
   ? Scale
   : never;
@@ -40,7 +37,7 @@ interface Border {
   top: BorderTokenScale;
 }
 
-export type BorderRadiusTokenScale = Extract<
+type BorderRadiusTokenScale = Extract<
   BorderShapeTokenScale,
   `radius-${string}`
 > extends `radius-${infer Scale}`
@@ -54,16 +51,11 @@ interface BorderRadius {
   topRight: BorderRadiusTokenScale;
 }
 
-type SpacingTokenName = keyof typeof spacing;
-export type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
-  ? Scale
-  : never;
-
 interface Spacing {
-  bottom: SpacingTokenScale;
-  left: SpacingTokenScale;
-  right: SpacingTokenScale;
-  top: SpacingTokenScale;
+  bottom: SpacingSpaceScale;
+  left: SpacingSpaceScale;
+  right: SpacingSpaceScale;
+  top: SpacingSpaceScale;
 }
 
 type Element = 'div' | 'span';
@@ -98,29 +90,29 @@ export interface BoxProps {
   /** Color of children */
   color?: ColorTokenScale;
   /** Spacing outside of container */
-  margin?: SpacingTokenScale;
+  margin?: SpacingSpaceScale;
   /** Bottom spacing outside of container */
-  marginBottom?: SpacingTokenScale;
+  marginBottom?: SpacingSpaceScale;
   /** Left spacing outside of container */
-  marginLeft?: SpacingTokenScale;
+  marginLeft?: SpacingSpaceScale;
   /** Right spacing outside of container */
-  marginRight?: SpacingTokenScale;
+  marginRight?: SpacingSpaceScale;
   /** Top spacing outside of container */
-  marginTop?: SpacingTokenScale;
+  marginTop?: SpacingSpaceScale;
   /** Maximum width of container */
   maxWidth?: string;
   /** Spacing around children */
-  padding?: SpacingTokenScale;
+  padding?: SpacingSpaceScale;
   /** Bottom spacing around children */
-  paddingBottom?: SpacingTokenScale;
+  paddingBottom?: SpacingSpaceScale;
   /** Left spacing around children */
-  paddingLeft?: SpacingTokenScale;
+  paddingLeft?: SpacingSpaceScale;
   /** Right spacing around children */
-  paddingRight?: SpacingTokenScale;
+  paddingRight?: SpacingSpaceScale;
   /** Top spacing around children */
-  paddingTop?: SpacingTokenScale;
+  paddingTop?: SpacingSpaceScale;
   /** Shadow */
-  shadow?: DepthTokenScale;
+  shadow?: DepthShadowAlias;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
