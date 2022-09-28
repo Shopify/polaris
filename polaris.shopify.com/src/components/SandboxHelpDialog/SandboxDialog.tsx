@@ -1,6 +1,8 @@
+import {useRef} from 'react';
 import {Dialog} from '@headlessui/react';
 import styles from './SandboxDialog.module.scss';
 import Longform from '../Longform';
+import Button from '../Button';
 
 function SandboxHelpDialog({
   isOpen,
@@ -9,43 +11,65 @@ function SandboxHelpDialog({
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }) {
+  const videoRef = useRef(null);
   return (
-    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
+    <Dialog
+      initialFocus={videoRef}
+      open={isOpen}
+      onClose={() => setIsOpen(false)}
+    >
       <div className={styles.PreventBackgroundInteractions}></div>
-      <div className="dark-mode styles-for-site-but-not-polaris-examples">
+      <div className="styles-for-site-but-not-polaris-examples">
         <Dialog.Panel className={styles.DialogPanel}>
-          <Longform>
-            <h2>How to use</h2>
-            <p>Effortless prototyping with Polaris Sandbox</p>
-            <div className={styles.SandboxVideo}>
-              <video muted loop autoPlay playsInline width="1140" height="730">
-                <source src="/images/sandbox-usage.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <ul>
-              <li>
-                No setup required, all Polaris components included. Just start
-                typing!
-                {/* <auto-complete-example-3s.gif> */}
-              </li>
-              <li>
-                Preview at every breakpoint automatically
-                {/* <scroll-preview-pane-2s.gif> */}
-              </li>
-              <li>
-                Instantly shareable URL
-                {/* <copy-URL-2s.gif> */}
-              </li>
-              <li>
-                Fully supports all React hooks
-                {/* <use-state-example-4s.gif> */}
-              </li>
-            </ul>
+          <p style={{textAlign: 'right'}}>
+            <Button
+              small
+              className={styles.CloseButton}
+              onClick={() => setIsOpen(false)}
+            >
+              ╳
+            </Button>
+          </p>
+          <div
+            className={styles.SandboxVideo}
+            // @ts-expect-error Why doesn't TS support CSS variables?
+            style={{'--aspect-ratio': '1140 / 730'}}
+            ref={videoRef}
+          >
+            <video muted loop autoPlay playsInline>
+              <source src="/images/sandbox-usage.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <Longform firstParagraphIsLede={false}>
+            <Dialog.Title>
+              Effortless prototyping with Polaris components.
+            </Dialog.Title>
             <p>
-              This is just the beginning!
-              <br />
-              As we continue to grow the Polaris tooling ecosystem, we&apos;ll
-              also improve the Polaris Sandbox.
+              <ul>
+                <li>No setup required</li>
+                <li>
+                  Polaris components autocomplete and React hooks are fully
+                  supported
+                </li>
+                <li>Preview breakpoints automatically</li>
+                <li>Share your compositions via a shareable URL</li>
+              </ul>
+            </p>
+            <p>
+              Tell us what functionality you’d like the sandbox to have.{' '}
+              <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request%2C+untriaged&template=FEATURE_REQUEST.md&title=%5BSandbox%5D%20">
+                Submit a GitHub issue with your idea
+              </a>
+              .{' '}
+            </p>
+            <p style={{textAlign: 'right'}}>
+              <Button
+                primary
+                className={styles.CloseButton}
+                onClick={() => setIsOpen(false)}
+              >
+                Let's go!
+              </Button>
             </p>
           </Longform>
         </Dialog.Panel>
