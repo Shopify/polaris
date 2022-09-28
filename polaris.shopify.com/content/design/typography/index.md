@@ -1,6 +1,6 @@
 ---
 title: Typography
-description: Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
+description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 keywords:
   - type styles
   - font sizes
@@ -14,21 +14,21 @@ By tying typographic styles to specific functions in the interface, we create a 
 
 ![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
-## Principles
+## Working with typography
 
 ![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
 
-### 1. Make it readable
+### 1. Make it scannable
 
-Help merchants understand content quickly by considering how to display and apply text within a page.
+Keep related text aligned and closer together to create visual groupings. For most languages, the the majority of text should be left-aligned.
 
-### 2. Make it adaptable
+### 2. Adjust text based on device size and distance from the merchant
 
-Design in a way that works for a wide range of audiences, browsers, and mobile devices.
+Because small screens are often at an arm's distance, we can decrease the size of larger headings and increase the size of important body text.
 
-### 3. Reinforce the message
+### 3. Create visual hierarchy
 
-Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
+Pair font weight, size, and color together to create hierarchy. Use a lighter color or font-size to de-emphasize secondary content.
 
 ---
 
@@ -57,12 +57,6 @@ There are situations where it makes sense to have multiple text sizes on a singl
 Line length describes the width of the content. For longer body text, the recommended line length is between 40 to 60 characters.
 
 ![A diagram showing the ideal line length for text](/images/foundations/design/typography/text-line-length@2x.png)
-
-### Right align tabular numbers
-
-Right align numbers when they're inside a table. This keeps the decimal in the same place and makes numerical data easier to read and compare.
-
-![An image showing right aligning numbers within a table](/images/foundations/design/typography/text-tabular-numbers@2x.png)
 
 ### Color
 

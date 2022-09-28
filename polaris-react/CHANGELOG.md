@@ -1,5 +1,27 @@
 # Changelog
 
+## 10.3.3
+
+### Patch Changes
+
+- [#7226](https://github.com/Shopify/polaris/pull/7226) [`2b85940ec`](https://github.com/Shopify/polaris/commit/2b85940ecdb497faade08b4605617876c95cbf92) Thanks [@rjur11](https://github.com/rjur11)! - Update rangeslider height to 44px in small screens
+
+* [#7252](https://github.com/Shopify/polaris/pull/7252) [`a09153335`](https://github.com/Shopify/polaris/commit/a09153335a71de33a48817e605fb9a06c411ce2f) Thanks [@rjur11](https://github.com/rjur11)! - Increase taptarget height and width for choice in choicelist on small screens
+
+- [#7252](https://github.com/Shopify/polaris/pull/7252) [`a09153335`](https://github.com/Shopify/polaris/commit/a09153335a71de33a48817e605fb9a06c411ce2f) Thanks [@rjur11](https://github.com/rjur11)! - Adding 100% width to choicelist items on small screens for increased accessibility
+
+- Updated dependencies [[`a55193a8a`](https://github.com/Shopify/polaris/commit/a55193a8ad0de90a40de25b5d4909c1692861bc9)]:
+  - @shopify/polaris-tokens@6.0.1
+
+## 10.3.2
+
+### Patch Changes
+
+- [#7243](https://github.com/Shopify/polaris/pull/7243) [`29043ca5e`](https://github.com/Shopify/polaris/commit/29043ca5e669150477a78a78a4f5d88823475649) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fix `IndexTable` Safari rendering issue
+
+- Updated dependencies [[`17c4fe2ac`](https://github.com/Shopify/polaris/commit/17c4fe2acc0bcd493d0febec06102173cc759aff)]:
+  - @shopify/polaris-icons@6.3.0
+
 ## 10.3.1
 
 ### Patch Changes

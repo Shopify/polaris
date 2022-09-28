@@ -146,32 +146,32 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- dodont -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - Products
-  - Showing 50 products
+- Products
+- Showing 50 products
 
-  #### Don’t
+#### Don’t
 
-  - _No heading_
+- _No heading_
 
-  <!-- end -->
+<!-- end -->
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- dodont -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - Popular products this week
+- Popular products this week
 
-  #### Don’t
+#### Don’t
 
-  - Products
+- Products
 
-  <!-- end -->
+<!-- end -->
 
 - Follow the verb + noun formula for bulk actions
 
