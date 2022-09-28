@@ -1,6 +1,6 @@
 ---
 title: Typography
-description: Typography is a key part of the design system. It helps establish hierarchy and communicate important content by creating clear visual patterns.
+description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 keywords:
   - type styles
   - font sizes
@@ -8,134 +8,29 @@ keywords:
 icon: TypeMajor
 ---
 
-<!-- inline css styling for html video and images -->
-<style>
-.video-wrap {
-  border: 1px solid #E1E3E5;
-  border-radius: 8px; 
-  overflow: hidden;
-}
-
-</style>
+By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
 
 ---
 
 ![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
-[Figma styles](https://www.figma.com/file/JHp1kp7ghGmTHs147CHjDf/Polaris-Styles?node-id=5455%3A50) | [Tokens](https://polaris.shopify.com/tokens/font) | [Components](https://polaris.shopify.com/components)
-
----
-
-## Principles
+## Working with typography
 
 ![A series of three illustrations representing the principles make it readable, make it adaptable, reinforce the message](/images/foundations/design/typography/text-principles@2x.png)
 
-### 1. Make it readable
+### 1. Make it scannable
 
-Help merchants understand content quickly by considering how to display and apply text within a page.
+Keep related text aligned and closer together to create visual groupings. For most languages, the the majority of text should be left-aligned.
 
-### 2. Make it adaptable
+### 2. Adjust text based on device size and distance from the merchant
 
-Design in a way that works for a wide range of audiences, browsers, and mobile devices.
+Because small screens are often at an arm's distance, we can decrease the size of larger headings and increase the size of important body text.
 
-### 3. Reinforce the message
+### 3. Create visual hierarchy
 
-Use font weight, size, and color to help establish clear hierarchy and guide merchant’s eyes.
+Pair font weight, size, and color together to create hierarchy. Use a lighter color or font-size to de-emphasize secondary content.
 
 ---
-
-## Fonts
-
-<!-- keywords: font-family, webfont, system font -->
-
-### Typefaces
-
-The Shopify admin uses system fonts. This means the typeface will change based on the operating system it runs on, like macOS, iOS, Windows, Android or Linux.
-
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-typefaces@2x.png)
-
-<!-- end -->
-
-- Apple devices will display [San Francisco](https://devimages-cdn.apple.com/design/resources/download/SF-Pro.dmg)
-- Android devices will display [Roboto](https://fonts.google.com/specimen/Roboto)
-- Devices running Windows will display [Segoe UI](https://developer.microsoft.com/en-us/fabric#/resources)
-- Machines running Linux will display the default sans-serif font for any running distribution [Ubuntu](https://design.ubuntu.com/font/)
-- [SF Mono](https://devimages-cdn.apple.com/design/resources/download/SF-Mono.dmg) is a monospace typeface that is part of the San Francisco typeface family. SF Mono is not a system font but is used to differentiate information.
-
-### Font stack
-
-This font-stack makes sure all browsers can load platform-specific fonts.
-
-| Token                | Properties                                                                                                                                          |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| --p-font-family-sans | font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; |
-| --p-font-family-mono | font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !default;`                                                    |
-
-## Type scale
-
-All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.
-
-| Token             | Size (px) | Size (rem) |
-| ----------------- | --------- | ---------- |
-| --p-font-size-700 | 40        | 2.5        |
-| --p-font-size-600 | 32        | 2          |
-| --p-font-size-500 | 28        | 1.75       |
-| --p-font-size-400 | 24        | 1.5        |
-| --p-font-size-300 | 20        | 1.25       |
-| --p-font-size-200 | 16        | 1          |
-| --p-font-size-100 | 14        | 0.875      |
-| --p-font-size-75  | 12        | 0.75       |
-
-## Type styles
-
-<!-- keywords: type styles, font-weight, font-size -->
-
-Our type styles are grouped into two categories: **Heading** and **Body**. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.
-
-### Heading
-
-Heading styles are used to create various levels of hierarchy on the page.
-
-| Variant        | Size (px) | Size (px) | Line-height | Weight   |
-| -------------- | --------- | --------- | ----------- | -------- |
-| **Heading4xl** | 40        | 2.5       | 48          | bold     |
-| **Heading3xl** | 32        | 2         | 40          | semibold |
-| **Heading2xl** | 28        | 1.75      | 32          | semibold |
-| **HeadingXl**  | 24        | 1.5       | 28          | semibold |
-| **HeadingLg**  | 20        | 1.25      | 24          | semibold |
-| **HeadingMd**  | 16        | 1         | 24          | semibold |
-| **HeadingSm**  | 14        | 0.875     | 20          | semibold |
-| **HeadingXs**  | 12        | 0.75      | 16          | bold     |
-
-![An image of the admin interface showing how various heading styles are used.](/images/foundations/design/typography/text-heading-example-02@2x.png)
-
-The larger sizes, HeadingXl -Heading4xl, are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
-
-![An image of the admin interface showing how large heading styles are used.](/images/foundations/design/typography/text-heading-example-01@2x.png)
-
-### Body
-
-Body styles are used within components and blocks of text.
-
-| Variant    | Size (px) | Size (px) | Line-height | Weight  |
-| ---------- | --------- | --------- | ----------- | ------- |
-| **BodyLg** | 16        | 1         | 20          | regular |
-| **BodyMd** | 14        | 0.875     | 20          | regular |
-| **BodySm** | 12        | 0.75      | 16          | regular |
-
-![An image of the admin interface showing how body styles are used.](/images/foundations/design/typography/text-body-example-01@2x.png)
-
-### Responsive type
-
-<div class="video-wrap">
-  <video width="100%" height="auto" controls autoplay muted loop>
-    <source src="/images/foundations/design/typography/text-responsive.mp4" type="video/mp4">
-  </video>
-</div>
-
-![An image showing how large headings respond at different screen sizes](/images/foundations/design/typography/text-responsive-styles@2x.png)
-
-<!-- end -->
 
 ## Essentials for designing with type
 
@@ -167,23 +62,9 @@ Line length describes the width of the content. For longer body text, the recomm
 
 Color can be used to add contrast and reinforce the hierarchy between text.
 
-For example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
+For example, one way to distinguish between a title and a subtitle is to apply `--p-text-color` to the title, and `--p-text-subdued` to the subtitle. Using a lighter color for secondary information provides contrast between the text and helps reinforce hierarchy even when the text is the same size and weight.
 
 ![An image showing how you can use color to add hierarchy within text elements](/images/foundations/design/typography/text-color-different@2x.png)
-
-### Weight
-
-Weight is another way to add contrast and communicate the intent and behavior of text in the interface.
-
-Weights are applied intentionally to both heading and body type styles. Heading styles use bolder weights and body styles use regular and medium weights.
-
-HeadingSm uses a bolder weight which allows it to have a visually similar weight as a larger heading style.
-
-![An image of the admin interface showing how different weights are used to create hierarchy.](/images/foundations/design/typography/text-weights@2x.png)
-
-We encourage the use of default type styles, however, different font weights may be applied when necessary.
-
-![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/text-weight-different@2x.png)
 
 ### Space
 
@@ -191,4 +72,117 @@ We can help merchants navigate the UI by grouping related information together. 
 
 Ambiguous spacing can cause confusion and make it hard to understand the content.
 
-![An image of showing how to use space to create hierarchy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
+![An image of showing how to use space to create hierachy and relationships between text elements](/images/foundations/design/typography/text-spacing-adjustments@2x.png)
+
+---
+
+## Font sizes
+
+We use the typographic scale to communicate visual hierarchy in text.
+
+---
+
+## Display styles
+
+### PageHeading
+
+PageHeading is reserved for the title of a screen.
+
+![An interface showing the title of a page before its contents](/images/foundations/design/typography/type-pageheading@2x.png)
+
+### Display
+
+Display is for titling various interface elements, such as empty states and modals.
+
+![An empty state and a modal with large display headings](/images/foundations/design/typography/type-display@2x.png)
+
+### Heading
+
+Heading should always be used for titles of top-level sections of a screen. If the sections of a screen are represented by cards, each card’s title should use the Heading style.
+
+![Two interface cards with headings](/images/foundations/design/typography/type-heading@2x.png)
+
+### Subheading
+
+If a top-level section of a screen has subsections, use the Subheading style for titling those subsections. Subheading should never appear as the first element in a card. Only use with titles (vs. sections of content).
+
+![An interface card titled with a large heading text size followed by a smaller subheading](/images/foundations/design/typography/type-subheading@2x.png)
+
+### Caption
+
+Caption is for providing details in places where content is compact and space is tight, like when it comes to data visualization.
+
+![A line chart with small, caption-sized labels](/images/foundations/design/typography/type-caption@2x.png)
+
+---
+
+## Font stack
+
+We use a font stack that adapts to the operating system it runs on, like macOS, iOS, Windows, Android or Linux distributions.
+
+![A diagram showing a selection of default iOS, Mac, Windows, Android and Linux fonts](/images/foundations/design/typography/type-fontstack@2x.png)
+
+- Apple devices will display [San Francisco](https://developer.apple.com/fonts/)
+- Android devices will display
+  [Roboto](https://material.io/guidelines/resources/roboto-noto-fonts.html)
+- Devices running Windows will display
+  [Segoe UI](https://en.wikipedia.org/wiki/Segoe#Segoe_UI)
+- Machines running Linux will display the default sans-serif font for any running distribution
+
+This font-stack makes sure all browsers can load platform-specific fonts:
+
+```
+-apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif
+```
+
+Add this to your CSS to preload system fonts and set up browsers for legibility:
+
+```css
+html {
+  /* Load system fonts */
+  font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,
+    Roboto, Helvetica Neue, sans-serif;
+
+  /* Make type rendering look crisper */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Deactivate auto-enlargement of small text in Safari */
+  text-size-adjust: 100%;
+
+  /* Enable kerning and optional ligatures */
+  text-rendering: optimizeLegibility;
+}
+
+/**
+ * Form elements render using OS defaults,
+ * so font-family inheritance must be specifically declared
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+```
+
+---
+
+## Mobile considerations
+
+<!-- dodont -->
+
+#### Do
+
+- Refer to the platform’s native font scales when designing experiences for native apps
+- Refer to the small-screen scale when designing experiences for mobile browsers
+- Use the platform-specific component library
+
+#### Do
+
+- Use the native font scale
+- Keep in mind that all UI elements containing text will be affected
+- Explore additional content height, width, truncation, and line wraps
+
+<!-- end -->
