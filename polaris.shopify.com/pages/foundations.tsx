@@ -1,4 +1,4 @@
-import FoundationsIndexPage from '../src/components/FoundationsIndexPage';
+import FoundationsPage from '../src/components/FoundationsPage';
 import {
   FoundationsProps,
   getStaticPropsForFoundations,
@@ -7,7 +7,7 @@ import {
 const SECTION = 'foundations';
 
 const FoundationsCategory = (props: FoundationsProps) => (
-  <FoundationsIndexPage {...props} />
+  <FoundationsPage {...props} />
 );
 
 export const getStaticProps = getStaticPropsForFoundations(SECTION);

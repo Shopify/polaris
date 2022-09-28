@@ -5,7 +5,7 @@ import {MarkdownFile} from '../types';
 import {parseMarkdown} from './markdown.mjs';
 import {slugify, uppercaseFirst} from './various';
 import {GetStaticProps} from 'next';
-import {FoundationsProps} from '../components/FoundationsIndexPage/FoundationsIndexPage';
+import {FoundationsProps} from '../components/FoundationsPage/FoundationsPage';
 
 export const getStaticPropsForFoundations = (category: string) => {
   const getStaticProps: GetStaticProps<FoundationsProps> = async () => {

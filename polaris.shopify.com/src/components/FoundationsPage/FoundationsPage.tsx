@@ -1,6 +1,6 @@
 import Page from '../Page';
 import PageMeta from '../PageMeta';
-import styles from './FoundationsIndexPage.module.scss';
+import styles from './FoundationsPage.module.scss';
 import Longform from '../Longform';
 import Grid from '../Grid';
 import {GridItemProps} from '../Grid/Grid';
@@ -17,9 +17,9 @@ interface Item extends GridItemProps {
   icon: string;
 }
 
-function FoundationsIndexPage({title, description, items}: FoundationsProps) {
+function FoundationsPage({title, description, items}: FoundationsProps) {
   return (
-    <div className={styles.FoundationsIndexPage}>
+    <div className={styles.FoundationsPage}>
       <PageMeta description={description} />
 
       <Page showTOC={false}>
@@ -52,4 +52,4 @@ function FoundationsIndexPage({title, description, items}: FoundationsProps) {
   );
 }
 
-export default FoundationsIndexPage;
+export default FoundationsPage;
