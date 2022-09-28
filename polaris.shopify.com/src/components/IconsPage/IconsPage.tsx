@@ -6,7 +6,6 @@ import iconMetadata from '@shopify/polaris-icons/metadata';
 import type {Icon as IconType} from '@shopify/polaris-icons/metadata';
 import {useMedia} from '../../utils/hooks';
 import styles from './IconsPage.module.scss';
-import Container from '../Container';
 import IconGrid from '../IconGrid';
 import SearchField from '../SearchField';
 import {SearchMajor} from '@shopify/polaris-icons';
