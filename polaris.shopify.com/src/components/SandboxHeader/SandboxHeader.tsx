@@ -4,7 +4,7 @@ import Image from 'next/image';
 import {DarkMode} from 'use-dark-mode';
 
 import {StatusName} from '../../types';
-import {ClipboardMinor, QuestionMarkMinor} from '@shopify/polaris-icons';
+import {ClipboardMinor} from '@shopify/polaris-icons';
 import Container from '../Container';
 import {useCopyToClipboard} from '../../utils/hooks';
 import Icon from '../Icon';
@@ -64,18 +64,6 @@ interface Props {
   url: string;
 }
 
-function HelpDialogButton({onClick}: {onClick: () => void}) {
-  return (
-    <IconButtonWithTooltip
-      icon={QuestionMarkMinor}
-      ariaLabel="Open how to use dialog"
-      tooltipContent="How to use"
-      buttonClassName={styles.TooltipButton}
-      onClick={onClick}
-    />
-  );
-}
-
 function SandboxHeader({currentPath = '', url}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
@@ -106,13 +94,20 @@ function SandboxHeader({currentPath = '', url}: Props) {
           </a>
         )}
 
-        <div className={styles.HeaderCopyWrapper}>
-          Welcome to the Polaris Sandbox{' '}
-          <StatusBadge status={{value: StatusName.Alpha, message: 'Alpha'}} />
+        <div className={styles.Title}>
+          <h1 className={styles.TitleHeader}>
+            Polaris Sandbox{' '}
+            <StatusBadge status={{value: StatusName.Alpha, message: 'Alpha'}} />
+          </h1>
+          <div className={styles.TitleTagline}>
+            Effortless prototyping with Polaris components.{' '}
+            <a href="#" onClick={() => setIsOpen(true)}>
+              Learn more.
+            </a>
+          </div>
         </div>
         <div className={styles.HeaderBtnWrapper}>
           <CopyURLButton url={url} />
-          <HelpDialogButton onClick={() => setIsOpen(true)} />
           <SandboxHelpDialog {...{isOpen, setIsOpen}} />
         </div>
       </Container>
