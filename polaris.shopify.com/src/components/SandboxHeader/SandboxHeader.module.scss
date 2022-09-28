@@ -19,10 +19,14 @@
   gap: 3em;
   height: var(--header-height);
   justify-content: space-between;
+  & > * {
+    flex: 1 1 0px;
+  }
   .Title {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    white-space: nowrap;
   }
   .TitleHeader {
     display: flex;
@@ -38,66 +42,36 @@
       font-size: var(--font-size-50);
     }
   }
+
+  .LogoContainer {
+    display: flex;
+    justify-content: flex-start;
+  }
+  .ButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .CopyURLButton {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    align-items: center;
+    color: var(--text-subdued);
+    font-size: var(--font-size-50);
+    white-space: nowrap;
+    &:hover {
+      color: var(--text-strong);
+    }
+  }
   .HeaderBtnWrapper {
     display: flex;
     gap: 2rem;
     align-items: center;
   }
 
-  .Nav {
-    display: flex;
-
-    ul {
-      display: flex;
-      font-size: var(--font-size-100);
-      font-weight: var(--font-weight-500);
-
-      li {
-        a {
-          color: inherit;
-          white-space: pre;
-          display: block;
-          padding: 1px; // Ensures a continous hover area, but still puts a visual gap between hovered/current items
-
-          span {
-            display: block;
-            padding: 0.75rem 0.8rem;
-          }
-
-          &:focus-within {
-            position: relative;
-            z-index: 1;
-            border-radius: var(--border-radius-800);
-          }
-
-          &:hover {
-            color: var(--text-strong);
-          }
-
-          &[aria-current='page'],
-          &:hover {
-            span {
-              background: var(--surface-subdued);
-              border-radius: var(--border-radius-800);
-              color: var(--text-strong);
-            }
-          }
-        }
-
-        &:first-child a {
-          border-left: none;
-        }
-      }
-    }
-
-    @media screen and (max-width: $breakpointTablet) {
-      display: none;
-    }
-  }
-
   @media screen and (max-width: $breakpointTablet) {
     gap: 0.5rem;
-    justify-content: space-between;
   }
 }
 
@@ -140,87 +114,5 @@
 
   &:focus {
     transform: translateY(0%);
-  }
-}
-
-.DarkModeToggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border-radius: var(--border-radius-round);
-
-  @media screen and (max-width: $breakpointTablet) {
-    margin-right: 1rem;
-  }
-}
-
-.LightModeIcon {
-  animation: slide-up 0.3s;
-}
-
-.DarkModeIcon {
-  animation: slide-down 0.3s;
-}
-
-@keyframes slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(30%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0%);
-  }
-}
-
-@keyframes slide-down {
-  from {
-    opacity: 0;
-    transform: translateY(-30%);
-  }
-  to {
-    opacity: 1 linear;
-    transform: translateY(0%);
-  }
-}
-
-.MobileNavContainer {
-  visibility: hidden;
-  display: none;
-
-  svg {
-    fill: var(--text-strong);
-    width: 20px;
-    height: 20px;
-  }
-
-  @media screen and (max-width: $breakpointTablet) {
-    visibility: visible;
-    display: flex;
-    align-items: center;
-  }
-}
-
-.TooltipButton {
-  background: transparent;
-  border-radius: var(--border-radius-200);
-  opacity: 0.5;
-  display: flex;
-  align-items: center;
-
-  &:hover,
-  &:focus {
-    opacity: 1;
-  }
-
-  svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  &:focus-visible {
-    box-shadow: none;
-    opacity: 1;
   }
 }
