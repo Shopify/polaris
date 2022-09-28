@@ -29,3 +29,13 @@ export function createIsSassFunction(name: string) {
     return node.type === 'function' && node.value === name;
   };
 }
+
+export function isNumericOperator(node: Node): boolean {
+  return (
+    node.value === '+' ||
+    node.value === '-' ||
+    node.value === '*' ||
+    node.value === '/' ||
+    node.value === '%'
+  );
+}

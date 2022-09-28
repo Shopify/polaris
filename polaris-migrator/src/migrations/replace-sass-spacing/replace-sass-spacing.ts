@@ -1,12 +1,13 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   NamespaceOptions,
   namespace,
   createIsSassFunction,
+  isNumericOperator,
 } from '../../utilities/sass';
 
 const spacingMap = {
@@ -22,16 +23,6 @@ const spacingMap = {
 
 const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
   Object.keys(spacingMap).includes(spacing as string);
-
-function isNumericOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
-}
 
 const processed = Symbol('processed');
 

@@ -1,6 +1,6 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
@@ -8,6 +8,7 @@ import {
   NamespaceOptions,
   namespace,
   createIsSassFunction,
+  isNumericOperator,
 } from '../../utilities/sass';
 
 // List of the props we want to run this migration on
@@ -174,14 +175,4 @@ function hasCalculation(parsedValue: valueParser.ParsedValue): boolean {
   });
 
   return hasCalc;
-}
-
-function isNumericOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
 }
