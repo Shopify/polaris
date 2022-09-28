@@ -22,7 +22,7 @@ type Gap = {
 
 export interface TileProps {
   /** Elements to display inside tile */
-  children?: React.ReactNode;
+  children: React.ReactNode;
   /** Adjust spacing between elements */
   gap?: Gap;
   /** Adjust number of columns */
