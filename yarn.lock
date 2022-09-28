@@ -3842,6 +3842,14 @@
   dependencies:
     "@types/node" "*"
 
+"@types/liftoff@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/liftoff/-/liftoff-4.0.0.tgz#d4a100d356529776ad47fee2a9ce8f1f1ffe3772"
+  integrity sha512-Ny/PJkO6nxWAQnaet8q/oWz15lrfwvdvBpuY4treB0CSsBO1CG0fVuNLngR3m3bepQLd+E4c3Y3DlC2okpUvPw==
+  dependencies:
+    "@types/fined" "*"
+    "@types/node" "*"
+
 "@types/lodash.get@^4.4.7":
   version "4.4.7"
   resolved "https://registry.yarnpkg.com/@types/lodash.get/-/lodash.get-4.4.7.tgz#1ea63d8b94709f6bc9e231f252b31440abe312cf"

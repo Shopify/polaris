@@ -36,8 +36,7 @@ function HomePage({}: Props) {
             <div className={styles.Text}>
               <h3>Foundations</h3>
               <p>
-                Our design foundations offer fundamental design elements and
-                guidance for creating good merchant experiences.
+                Fundamental design guidance for creating quality merchant admin experiences
               </p>
               <Links
                 links={[
@@ -78,9 +77,7 @@ function HomePage({}: Props) {
             <div className={styles.Text}>
               <h3>Components</h3>
               <p>
-                Components are reusable building blocks made of interface
-                elements and styles, packaged through code. Piece them together,
-                improve them, and create new ones to solve merchant problems.
+                Reusable elements and styles, packaged through code, for building merchant admin interfaces
               </p>
               <Links
                 links={[
@@ -116,9 +113,7 @@ function HomePage({}: Props) {
             <div className={styles.Text}>
               <h3>Tokens</h3>
               <p>
-                Design tokens are coded names that represent design decisions
-                for elements like color, spacing, and typography. Applying them
-                to our designs unifies merchant experiences.
+                Coded names that represent design decisions for color, spacing, typography, and more
               </p>
               <Links
                 links={[
@@ -155,9 +150,7 @@ function HomePage({}: Props) {
             <div className={styles.Text}>
               <h3>Icons</h3>
               <p>
-                The Polaris icon library has 400+ carefully designed icons
-                focused on commerce and entrepreneurship. Use them as visual
-                aids to help merchants complete tasks.
+                Over 400 carefully designed icons focused on commerce and entrepreneurship
               </p>
               <Links
                 links={[
@@ -194,8 +187,7 @@ function HomePage({}: Props) {
             <div className={styles.Text}>
               <h3>Polaris for VS Code</h3>
               <p>
-                Automatic autocompletion for Polaris tokens, right inside your
-                favorite code editor.
+                Autocompletion for Polaris tokens, right inside your favorite code editor
               </p>
               <Links
                 links={[
