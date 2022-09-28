@@ -168,10 +168,6 @@ html {
 html {
   font-size: 100%;
   overflow-y: overlay;
-
-  @media screen and (max-width: $breakpointTablet) {
-    font-size: 90%;
-  }
 }
 
 body {

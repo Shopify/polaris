@@ -118,7 +118,7 @@ $breakpointNav: $breakpointTablet;
       display: block;
       position: fixed;
       top: 0;
-      z-index: 1;
+      z-index: 11;
       box-shadow: 0 0 100px rgba(0, 0, 0, 0.33);
       height: 100vh;
       border-radius: 0;
@@ -128,6 +128,7 @@ $breakpointNav: $breakpointTablet;
 
 .NavItem {
   display: flex;
+  position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 0 0.75rem 0.05rem 1.5rem;
@@ -140,7 +141,6 @@ $breakpointNav: $breakpointTablet;
 
   &.isCurrent {
     background: var(--surface);
-    position: relative;
     font-weight: var(--font-weight-500);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.033), 0 2px 50px rgba(0, 0, 0, 0.033);
 
@@ -211,6 +211,10 @@ $breakpointNav: $breakpointTablet;
 
   @media screen and (min-width: $breakpointNav) {
     display: none;
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    margin-right: auto;
   }
 }
 
@@ -286,10 +290,6 @@ $breakpointNav: $breakpointTablet;
   width: 2.25rem;
   height: 2.25rem;
   border-radius: var(--border-radius-round);
-
-  @media screen and (max-width: $breakpointTablet) {
-    margin-right: 1rem;
-  }
 }
 
 .LightModeIcon {
