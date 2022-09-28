@@ -13,7 +13,7 @@ Through supporting teams, we’ve learned what works well, and not so well. We�
 
 ## Tl;dr
 
-Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing/quality-contributions) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you with planning, but we can’t be pulled in last minute to unblock.
+Think about your system needs in the prototype phase of your project so your team can plan for [quality](/contributing#what-makes-a-good-contribution) systems [contributions](/contributing) ahead of the build phase. The Polaris team is here to help you with planning, but we can’t be pulled in last minute to unblock.
 
 The best way to get help is through our support channels:
 
