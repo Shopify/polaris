@@ -158,12 +158,12 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   visibility: visible;
   position: sticky;
+  bottom: var(--p-space-4);
   left: 0;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: var(--p-space-4);
   margin-top: var(--p-space-4);
 
   @media #{$p-breakpoints-sm-up} {

@@ -492,11 +492,11 @@ $loading-panel-height: 53px;
   position: sticky;
   z-index: var(--pc-index-table-bulk-actions);
   left: 0;
+  bottom: var(--p-space-4);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: var(--p-space-4);
   margin-top: var(--p-space-4);
 }
 
