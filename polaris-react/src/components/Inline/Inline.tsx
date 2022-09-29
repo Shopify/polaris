@@ -1,15 +1,9 @@
 import React from 'react';
-import type {spacing} from '@shopify/polaris-tokens';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {elementChildren} from '../../utilities/components';
 
 import styles from './Inline.scss';
-
-type SpacingTokenGroup = typeof spacing;
-type SpacingTokenName = keyof SpacingTokenGroup;
-
-// TODO: Bring this logic into tokens
-type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
 
 const AlignY = {
   top: 'start',
@@ -26,7 +20,7 @@ export interface InlineProps {
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
   wrap?: boolean;
   /** Adjust spacing between elements */
-  spacing?: Spacing;
+  spacing?: SpacingSpaceScale;
   /** Adjust vertical alignment of elements */
   alignY?: keyof typeof AlignY;
   /** Adjust horizontal alignment of elements */
