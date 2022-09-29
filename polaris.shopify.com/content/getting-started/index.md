@@ -1,6 +1,5 @@
 ---
 title: Getting started
-navTitle: Getting started
 description: Learn what the Polaris design system is and how it’s used by UXers and developers to build world-class Shopify admin experiences.
 keywords:
   - about
@@ -15,7 +14,6 @@ keywords:
   - ui kits
   - plugins
 order: 1
-hideChildren: true
 icon:  HintMajor
 ---
 
