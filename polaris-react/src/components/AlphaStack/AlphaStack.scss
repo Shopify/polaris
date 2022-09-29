@@ -8,3 +8,9 @@
     max-width: 100%;
   }
 }
+
+.fullWidth {
+  > * {
+    width: 100%;
+  }
+}
