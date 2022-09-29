@@ -67,7 +67,9 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
-          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+          postcss.comment({
+            text: `${decl.prop}: ${parsedValue.toString()};`,
+          }),
         );
       } else {
         decl.value = parsedValue.toString();
