@@ -122,8 +122,12 @@
       display: inline-block;
       color: var(--surface);
       background: var(--text);
-      padding: 0.25rem 0.8rem;
+      padding: 0.25rem 0.85rem;
       border-radius: var(--border-radius-round);
+
+      &:hover {
+        background: var(--text-strong);
+      }
     }
   }
 
