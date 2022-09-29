@@ -1,7 +1,7 @@
 ---
 title: Whats new
-description: Learn about the latest Polaris updates
-order: 0
+description: Learn how to start using Polaris
+order: 1
 hideChildren: true
 icon:  GrammarMajor
 ---
