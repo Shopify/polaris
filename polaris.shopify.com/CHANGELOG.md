@@ -1,5 +1,19 @@
 # polaris.shopify.com
 
+## 0.19.0
+
+### Minor Changes
+
+- [#7232](https://github.com/Shopify/polaris/pull/7232) [`65722c395`](https://github.com/Shopify/polaris/commit/65722c395d006cd3199549817daa3fc5faca9cae) Thanks [@martenbjork](https://github.com/martenbjork)! - Introduces a new IA that makes the website more scalable and future proof. The site also gets a visual overhaul to accomodate the new content.
+
+### Patch Changes
+
+- [#7304](https://github.com/Shopify/polaris/pull/7304) [`1db6f90cf`](https://github.com/Shopify/polaris/commit/1db6f90cf418087cd8e463c718bb0c42fb94ea1d) Thanks [@jjgali](https://github.com/jjgali)! - Fixed typographical errors in Contributing documentation.
+
+- Updated dependencies [[`a7d9cad7a`](https://github.com/Shopify/polaris/commit/a7d9cad7aa24ea251e42be919cbfcae16676587f)]:
+  - @shopify/polaris-icons@6.4.0
+  - @shopify/polaris@10.4.1
+
 ## 0.18.3
 
 ### Patch Changes

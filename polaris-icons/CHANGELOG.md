@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- [#7292](https://github.com/Shopify/polaris/pull/7292) [`a7d9cad7a`](https://github.com/Shopify/polaris/commit/a7d9cad7aa24ea251e42be919cbfcae16676587f) Thanks [@clarkjennings](https://github.com/clarkjennings)! - [#7292](https://github.com/Shopify/polaris/pull/7292) - Add a new icon `OrganizationMajor`
+
 ## 6.3.0
 
 ### Minor Changes

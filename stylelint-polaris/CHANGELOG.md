@@ -1,5 +1,11 @@
 # Changelog
 
+## 4.3.0
+
+### Minor Changes
+
+- [#7306](https://github.com/Shopify/polaris/pull/7306) [`c4bf017aa`](https://github.com/Shopify/polaris/commit/c4bf017aa3b08033311ac4be778a9f845e3ce44a) Thanks [@samrose3](https://github.com/samrose3)! - Update stylelint coverage to include legacy Sass with namespace
+
 ## 4.2.2
 
 ### Patch Changes

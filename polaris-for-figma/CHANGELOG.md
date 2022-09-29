@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.0.20
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris@10.4.1
+
 ## 0.0.19
 
 ### Patch Changes
