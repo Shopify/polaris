@@ -15,7 +15,11 @@ export type {
 
 export type {ColorsTokenGroup, ColorsTokenName} from './token-groups/colors';
 
-export type {DepthTokenGroup, DepthTokenName} from './token-groups/depth';
+export type {
+  DepthTokenGroup,
+  DepthTokenName,
+  DepthShadowAlias,
+} from './token-groups/depth';
 
 export type {
   FontTokenGroup,

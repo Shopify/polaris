@@ -1,15 +1,9 @@
 import React from 'react';
-import type {spacing} from '@shopify/polaris-tokens';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
-
-type SpacingTokenGroup = typeof spacing;
-type SpacingTokenName = keyof SpacingTokenGroup;
-
-// TODO: Bring this logic into tokens
-type Spacing = SpacingTokenName extends `space-${infer Scale}` ? Scale : never;
 
 type Align = 'start' | 'end' | 'center';
 
@@ -21,7 +15,7 @@ export interface AlphaStackProps {
   /** Toogle elements to be full width */
   fullWidth?: boolean;
   /** Adjust spacing between elements */
-  spacing?: Spacing;
+  spacing?: SpacingSpaceScale;
 }
 
 export const AlphaStack = ({

@@ -24,7 +24,7 @@ const children = Array.from(Array(8)).map((ele, index) => (
 function TileWithColumnsExample() {
   return (
     <div style={{width: '500px'}}>
-      <Tile columns="4" spacing="2">
+      <Tile columns={{xs: 4}} gap={{xs: '2'}}>
         {children}
       </Tile>
     </div>

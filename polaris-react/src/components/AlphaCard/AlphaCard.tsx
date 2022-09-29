@@ -1,26 +1,24 @@
+import type {
+  BreakpointsAlias,
+  ColorsTokenName,
+  DepthShadowAlias,
+  ShapeBorderRadiusScale,
+  SpacingSpaceScale,
+} from '@shopify/polaris-tokens';
 import React from 'react';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
-// These should come from polaris-tokens eventually, see #7164
-import {
-  BackgroundColorTokenScale,
-  BorderRadiusTokenScale,
-  Box,
-  DepthTokenScale,
-  SpacingTokenScale,
-} from '../Box';
+import {Box} from '../Box';
 
 type CardElevationTokensScale = Extract<
-  DepthTokenScale,
+  DepthShadowAlias,
   'card' | 'transparent'
 >;
 
 type CardBackgroundColorTokenScale = Extract<
-  BackgroundColorTokenScale,
+  ColorsTokenName,
   'surface' | 'surface-subdued'
 >;
-
-type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export interface AlphaCardProps {
   /** Elements to display inside card */
@@ -28,8 +26,8 @@ export interface AlphaCardProps {
   backgroundColor?: CardBackgroundColorTokenScale;
   hasBorderRadius?: boolean;
   elevation?: CardElevationTokensScale;
-  padding?: SpacingTokenScale;
-  roundedAbove?: Breakpoint;
+  padding?: SpacingSpaceScale;
+  roundedAbove?: BreakpointsAlias;
 }
 
 export const AlphaCard = ({
@@ -41,7 +39,7 @@ export const AlphaCard = ({
   roundedAbove,
 }: AlphaCardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius = '2' as BorderRadiusTokenScale;
+  const defaultBorderRadius = '2' as ShapeBorderRadiusScale;
 
   let hasBorderRadius = !roundedAbove && hasBorderRadiusProp;
 
