@@ -153,7 +153,9 @@ export function Header({
         rollup={isNavigationCollapsed}
         rollupActionsLabel={
           title
-            ? i18n.translate('Polaris.Page.Header.rollupActionsLabel', {title})
+            ? i18n.translate('Polaris.Page.Header.rollupActionsLabel', {
+                title: title as string,
+              })
             : undefined
         }
         onActionRollup={onActionRollup}
@@ -177,8 +179,14 @@ export function Header({
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
     !breadcrumbs.length && styles.noBreadcrumbs,
-    title && title.length < LONG_TITLE && styles.mediumTitle,
-    title && title.length > LONG_TITLE && styles.longTitle,
+    title &&
+      typeof title === 'string' &&
+      title.length < LONG_TITLE &&
+      styles.mediumTitle,
+    title &&
+      typeof title === 'string' &&
+      title.length > LONG_TITLE &&
+      styles.longTitle,
   );
 
   const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
@@ -299,7 +307,7 @@ function determineLayout({
   pageTitleMarkup: JSX.Element;
   paginationMarkup: MaybeJSX;
   primaryActionMarkup: MaybeJSX;
-  title?: string;
+  title?: React.ReactNode;
 }) {
   //    Header Layout
   // |----------------------------------------------------|
@@ -322,6 +330,7 @@ function determineLayout({
         isNavigationCollapsed &&
         breadcrumbMarkup == null &&
         title != null &&
+        typeof title === 'string' &&
         title.length <= REALLY_SHORT_TITLE,
     },
     mobileDefault: {
@@ -349,6 +358,7 @@ function determineLayout({
         paginationMarkup == null &&
         actionMenuMarkup == null &&
         title != null &&
+        typeof title === 'string' &&
         title.length <= SHORT_TITLE,
     },
     desktopDefault: {

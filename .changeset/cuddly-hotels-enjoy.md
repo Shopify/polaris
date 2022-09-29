@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Update the type of the Page title prop to ReactNode
+Added support for setting a `ReactNode` on the `Page` `title` prop
