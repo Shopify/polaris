@@ -71,55 +71,55 @@ type Element = 'div' | 'span';
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
-  /** Adjust background color */
+  /** Background color */
   background?: BackgroundColorTokenScale;
-  /** Adjust border styling */
+  /** Border style */
   border?: BorderTokenScale;
-  /** Adjust bottom border styling */
+  /** Bottom border style */
   borderBottom?: BorderTokenScale;
-  /** Adjust left side border styling */
+  /** Left border style */
   borderLeft?: BorderTokenScale;
-  /** Adjust right side border styling */
+  /** Right border style */
   borderRight?: BorderTokenScale;
-  /** Adjust top border styling */
+  /** Top border style */
   borderTop?: BorderTokenScale;
-  /** Adjust border radius */
+  /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
-  /** Adjust bottom left border radius */
+  /** Bottom left border radius */
   borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Adjust bottom right border radius */
+  /** Bottom right border radius */
   borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Adjust top left border radius */
+  /** Top left border radius */
   borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Adjust top right border radius */
+  /** Top right border radius */
   borderRadiusTopRight?: BorderRadiusTokenScale;
   /** Inner content */
   children: ReactNode;
-  /** Adjust color of children */
+  /** Color of children */
   color?: ColorTokenScale;
-  /** Adjust spacing outside of container */
+  /** Spacing outside of container */
   margin?: SpacingTokenScale;
-  /** Adjust bottom spacing outside of container */
+  /** Bottom spacing outside of container */
   marginBottom?: SpacingTokenScale;
-  /** Adjust left side spacing outside of container */
+  /** Left spacing outside of container */
   marginLeft?: SpacingTokenScale;
-  /** Adjust right side spacing outside of container */
+  /** Right spacing outside of container */
   marginRight?: SpacingTokenScale;
-  /** Adjust top spacing outside of container */
+  /** Top spacing outside of container */
   marginTop?: SpacingTokenScale;
-  /** Adjust maximum width of container */
+  /** Maximum width of container */
   maxWidth?: string;
-  /** Adjust spacing around children */
+  /** Spacing around children */
   padding?: SpacingTokenScale;
-  /** Adjust bottom spacing around children */
+  /** Bottom spacing around children */
   paddingBottom?: SpacingTokenScale;
-  /** Adjust left side spacing around children */
+  /** Left spacing around children */
   paddingLeft?: SpacingTokenScale;
-  /** Adjust right side spacing around children */
+  /** Right spacing around children */
   paddingRight?: SpacingTokenScale;
-  /** Adjust top spacing around children */
+  /** Top spacing around children */
   paddingTop?: SpacingTokenScale;
-  /** Adjust shadow */
+  /** Shadow */
   shadow?: DepthTokenScale;
 }
 
