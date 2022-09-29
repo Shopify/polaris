@@ -13,8 +13,8 @@
     box-shadow: var(--card-shadow);
   }
 
-  @media screen and (max-width: $breakpointMobile) {
-    border-radius: var(--border-radius-800) var(--border-radius-800) 0 0;
+  @media screen and (max-width: $breakpointDesktop) {
+    border-radius: var(--border-radius-600) var(--border-radius-600) 0 0;
   }
 }
 

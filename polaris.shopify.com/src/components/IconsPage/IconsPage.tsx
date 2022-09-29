@@ -65,7 +65,7 @@ function scrollToActiveIcon(activeIcon: string): void {
 
 function IconsPage() {
   const router = useRouter();
-  const useModal = useMedia('screen and (max-width: 850px)');
+  const useModal = useMedia('screen and (max-width: 1400px)');
   const [searchText, setSearchText] = useState('');
   const [minorIcons, setMinorIcons] = useState<IconType[]>([]);
   const [majorIcons, setMajorIcons] = useState<IconType[]>([]);
