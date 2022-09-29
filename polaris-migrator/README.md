@@ -15,10 +15,62 @@ npx @shopify/polaris-migrator <migration> <path>
 - `--dry` Do a dry-run, no code will be edited
 - `--print` Prints the changed output for comparison
 
-## Documentation
+## Migrations
 
-> Coming soon ✨
-> ~~Visit [polaris.shopify.com/docs/advanced-features/migrations](https://polaris.shopify.com/docs/advanced-features/migrations) to view available migrations.~~
+### v10
+
+#### `replace-text-component`
+
+Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
+
+```diff
+- <DisplayText size="medium">Display text</DisplayText>
+- <Heading>Heading</Heading>
++ <Text variant="heading2xl" as="p" />
++ <Text variant="headingLg" as="h2" />
+```
+
+```sh
+npx @shopify/polaris-migrator replace-text-component <path>
+```
+
+#### `rename-component-prop`
+
+A generic codemod to rename any component prop.
+
+```diff
+- <MyComponent prop="value" />
+- <MyComponent prop />
++ <MyComponent newProp="value" />
++ <MyComponent newProp />
+```
+
+```sh
+npx @shopify/polaris-migrator rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
+```
+
+### v9
+
+For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
+
+```sh
+npx @shopify/polaris-migrator <sass-migration> <path> --namespace="legacy-polaris-v8"
+```
+
+### `replace-sass-spacing`
+
+Replace the legacy Sass `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
+
+```diff
+- padding: spacing();
+- margin: spacing(loose) spacing(tight);
++ padding: var(--p-space-4);
++ margin: var(--p-space-5) var(--p-space-2);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-sass-spacing <path>
+```
 
 ## Creating a migration
 
@@ -117,6 +169,33 @@ In your PR, you can add a comment with the text `/snapit` to create a new [snaps
 ```sh
 # example snapshot release
 npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 replace-sass-function "./app/**/*.scss"
+```
+
+### Checking migrations
+
+Running a migration can potentially modify thousands of files. For more complex migrations, a comment may be added suggesting the change is manually checked. You can quickly perform a manual search for this comment in your text editor:
+
+```
+polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually.
+```
+
+After applying a migration, it might be helpful to commit the changes that do not need a manual check from those that do. You can do this a few different ways, but we suggest staging all your changes, then unstaging those that include the manual check comment:
+
+```sh
+# Stage all modified files
+git add .
+
+# Unstage those that contain the manual check comment prefixed with "polaris-migrator:"
+git reset --mixed $(grep -r -l "polaris-migrator:")
+```
+
+### Linting and formatting migrations
+
+The migrator doesn't include a default formatter. It is recommended to run your own linter and formatter after running migrations. For example, if you are using [ESLint](https://eslint.org/) and/or [Prettier](https://prettier.io/):
+
+```sh
+npx eslint --fix .
+npx prettier --write .
 ```
 
 ### Resources
