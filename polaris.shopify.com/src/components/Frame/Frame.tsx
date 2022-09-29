@@ -175,35 +175,20 @@ function NavItem({
   handleLinkClick: () => void;
   handleShiftTabOnFirstLink: (e: React.KeyboardEvent) => void;
 }) {
-  const [expandedSections, setExpandedSections] = useState<{
+  const [manuallyExpandedSections, setManuallyExpandedSections] = useState<{
     [slug: string]: boolean;
   }>({});
 
   const {asPath} = useRouter();
 
-  const toggleChild = (slug: string) => {
-    setExpandedSections({
-      ...expandedSections,
-      [slug]: expandedSections[slug] ? false : true,
+  const manuallyToggleSection = (slug: string, expanded: boolean) => {
+    setManuallyExpandedSections({
+      ...manuallyExpandedSections,
+      [slug]: expanded,
     });
   };
 
-  const openChild = (slug: string, closeOthers?: boolean) => {
-    if (closeOthers) {
-      setExpandedSections({[slug]: true});
-    } else {
-      setExpandedSections({...expandedSections, [slug]: true});
-    }
-  };
-
-  useEffect(() => {
-    const newExpandedSections: typeof expandedSections = {};
-    asPath.split('/').forEach((segment) => {
-      newExpandedSections[segment] = true;
-    });
-    setExpandedSections(newExpandedSections);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  useEffect(() => setManuallyExpandedSections({}), [asPath]);
 
   return (
     <>
@@ -228,9 +213,15 @@ function NavItem({
             if (!child.slug) return null;
 
             const isExpandable = child.children && !child.hideChildren;
-            const isExpanded = !!expandedSections[key];
             const id = (child.slug || key).replace(/\//g, '');
             const navAriaId = `nav-${id}`;
+            const segments = asPath.slice(1).split('/');
+            const keyAndLevelMatchUrl = !!(segments[level] === key);
+            const manuallyExpandedStatus = manuallyExpandedSections[key];
+            const isExpanded =
+              manuallyExpandedStatus === undefined
+                ? keyAndLevelMatchUrl
+                : manuallyExpandedStatus;
 
             const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
             const isCurrent = removeParams(asPath) === child.slug;
@@ -248,10 +239,7 @@ function NavItem({
                 >
                   <Link href={child.slug} passHref>
                     <a
-                      onClick={() => {
-                        openChild(key, true);
-                        handleLinkClick();
-                      }}
+                      onClick={handleLinkClick}
                       aria-current={isCurrent ? 'page' : 'false'}
                       onKeyDown={(evt) => {
                         if (level === 0 && i === 0) {
@@ -266,7 +254,7 @@ function NavItem({
                   {isExpandable && (
                     <button
                       className={styles.Toggle}
-                      onClick={() => toggleChild(key)}
+                      onClick={() => manuallyToggleSection(key, !isExpanded)}
                       aria-label="Toggle section"
                       aria-expanded={isExpanded}
                       aria-controls={isExpanded ? navAriaId : undefined}
@@ -280,10 +268,7 @@ function NavItem({
                       initial={{opacity: 0, height: 0}}
                       animate={{opacity: 1, scale: 1, height: 'auto'}}
                       exit={{opacity: 0, height: 0}}
-                      transition={{
-                        ease: 'easeInOut',
-                        duration: 0.15,
-                      }}
+                      transition={{ease: 'easeInOut', duration: 0.15}}
                       id={navAriaId}
                     >
                       <NavItem
