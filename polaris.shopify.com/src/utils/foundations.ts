@@ -47,7 +47,7 @@ export const getStaticPropsForFoundations = (category: string) => {
           }));
 
           items.push({
-            title: title,
+            title,
             description: description || '',
             icon: icon || '',
             url,
