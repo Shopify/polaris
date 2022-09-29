@@ -11,6 +11,7 @@ const nav = navJSON as NavJSON;
 
 function Breadcrumbs() {
   const {asPath} = useRouter();
+  if (asPath === '/') return null;
 
   const segments: {url: string; text: string}[] = [
     {

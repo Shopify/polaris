@@ -2,31 +2,28 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-$video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
-  invert(1);
-
 .HomePage {
   padding-bottom: var(--header-margin);
 }
 
 .Hero {
-  padding: 6rem 0;
+  padding: 6rem 0 3rem;
   background: url(/images/home-hero.png);
-  background-size: 55% auto;
+  background-size: 56% auto;
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: 65% 33%;
 
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    padding: 0 0 4rem;
-    background-position: top right;
+  @media screen and (max-width: $breakpointTablet) {
+    font-size: var(--font-size-1300);
+    background-position: right center;
   }
 
   h1 {
     margin-bottom: 1rem;
     color: var(--text-strong);
-    font-size: var(--font-size-1900);
+    font-size: var(--font-size-1600);
+    font-weight: var(--font-weight-700);
     letter-spacing: var(--letter-spacing-1000);
-    font-weight: var(--font-weight-600);
     line-height: 1.1;
 
     span {
@@ -34,22 +31,22 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
     }
 
     @media screen and (max-width: $breakpointTablet) {
-      font-size: var(--font-size-1500);
+      font-size: var(--font-size-1300);
     }
   }
 
   p {
     font-size: var(--font-size-800);
-    max-width: 26rem;
+    letter-spacing: var(--letter-spacing-600);
+    max-width: 20em;
     color: var(--text-strong);
-    letter-spacing: var(--letter-spacing-300);
   }
 }
 
-.Blocks {
+.EntryPoints {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
 
   @media screen and (max-width: $breakpointDesktop) {
     grid-template-columns: 1fr 1fr;
@@ -57,45 +54,33 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
 
   @media screen and (max-width: $breakpointTablet) {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 }
 
-.Block {
-  position: relative;
-  display: flex;
+.EntryPoint {
+  display: block;
 
   h3 {
     @include heading-2;
-  }
-
-  .Image {
-    display: none;
-  }
-
-  h3 {
     margin-bottom: 0.33rem;
   }
 
-  p {
-    font-size: var(--font-size-600);
-    margin-bottom: 0.9rem;
+  &:hover {
+    h3 {
+      text-decoration: underline;
+    }
   }
 
-  @media screen and (max-width: $breakpointTablet) {
-    flex-direction: column-reverse;
-
-    .Text {
-      max-width: 100%;
-    }
-
-    .Image {
-      margin: 0 -1.25rem;
-    }
+  p {
+    font-size: var(--font-size-500);
+    color: var(--text);
   }
 }
 
 .Links {
   display: flex;
+  display: none;
   flex-direction: column;
 
   a {
@@ -103,7 +88,6 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
     align-items: center;
     gap: 0.5rem;
     padding: 0rem 0;
-    color: var(--text);
 
     &[data-icon='github'] svg {
       color: var(--text-strong);
@@ -121,23 +105,83 @@ $video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
   }
 }
 
-.PolarisForVSCode {
-  position: relative;
+.Promos {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  gap: 1rem;
 
-  .Image {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    margin: 0 35px;
-    border-radius: 8px;
-    overflow: hidden;
+  @media screen and (max-width: $breakpointDesktop) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
 
-    @media screen and (max-width: $breakpointTablet) {
-      margin: 0 0 1rem;
+  .Promo {
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--surface-subdued);
+    color: var(--text);
+    border-radius: var(--border-radius-600);
+  }
+
+  .Text {
+    padding: 2.5rem 7rem;
+    text-align: center;
+
+    @media screen and (max-width: $breakpointMobile) {
+      padding: 2.5rem 2rem;
     }
   }
 
-  video {
-    width: 100%;
-    height: auto;
-    filter: $video-filter;
+  h3 {
+    @include heading-2;
+    margin-bottom: 0.33rem;
+  }
+
+  .Text {
+    mix-blend-mode: plus-lighter;
+
+    a {
+      margin-top: 1rem;
+      display: inline-block;
+      color: var(--surface);
+      background: var(--text);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--border-radius-round);
+    }
+  }
+
+  .Image {
+    aspect-ratio: 2/1;
+    overflow: hidden;
+    mix-blend-mode: plus-lighter;
+    opacity: 0.9;
+
+    img,
+    video {
+      display: block;
+    }
+  }
+
+  .News {
+    .Image {
+      filter: brightness(100%) contrast(1) saturate(0) invert(1);
+    }
+  }
+
+  .PolarisForVSCode {
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--decorative-4);
+
+    video {
+      width: 100%;
+      height: auto;
+      filter: brightness(100%) contrast(2) saturate(0);
+      mix-blend-mode: plus-lighter;
+    }
   }
 }

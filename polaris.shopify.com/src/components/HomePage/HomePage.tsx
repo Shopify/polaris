@@ -1,11 +1,11 @@
 import {BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon} from './icons';
-import Container from '../Container';
 import Link from 'next/link';
 import {className} from '../../utils/various';
 import {useMedia} from '../../utils/hooks';
 import Image from '../Image';
 import PageMeta from '../PageMeta';
 import styles from './HomePage.module.scss';
+import Page from '../Page';
 
 interface Props {}
 
@@ -13,10 +13,10 @@ function HomePage({}: Props) {
   const useMotion = useMedia('(prefers-reduced-motion: no-preference)');
 
   return (
-    <div className={styles.HomePage}>
-      <PageMeta description="A starter kit for reimagining commerce." />
+    <Page showTOC={false}>
+      <div className={styles.HomePage}>
+        <PageMeta description="A starter kit for reimagining commerce." />
 
-      <Container>
         <div className={styles.Hero}>
           <div className={styles.Text}>
             <h1>
@@ -28,167 +28,82 @@ function HomePage({}: Props) {
             </p>
           </div>
         </div>
-      </Container>
 
-      <Container>
-        <div className={styles.Blocks}>
-          <div className={styles.Block}>
-            <div className={styles.Text}>
+        <div className={styles.EntryPoints}>
+          <Link href="/foundations">
+            <a className={styles.EntryPoint}>
               <h3>Foundations</h3>
               <p>
-                Fundamental design guidance for creating quality merchant admin experiences
+                Fundamental design guidance for creating quality merchant admin
+                experiences
               </p>
-              <Links
-                links={[
-                  {
-                    icon: 'browse',
-                    label: 'Foundations',
-                    url: '/foundations',
-                  },
-                  {
-                    icon: 'browse',
-                    label: 'Design',
-                    url: '/design',
-                  },
-                  {
-                    icon: 'browse',
-                    label: 'Content',
-                    url: '/content',
-                  },
-                  {
-                    icon: 'browse',
-                    label: 'Patterns',
-                    url: '/patterns',
-                  },
-                ]}
-              />
-            </div>
-            <div className={styles.Image}>
-              <Image
-                src="/images/foundations.png"
-                alt="Media card and date picker components"
-                width={555 * 1.5}
-                height={430 * 1.5}
-              />
-            </div>
-          </div>
+            </a>
+          </Link>
 
-          <div className={styles.Block}>
-            <div className={styles.Text}>
+          <Link href="/components">
+            <a className={styles.EntryPoint}>
               <h3>Components</h3>
               <p>
-                Reusable elements and styles, packaged through code, for building merchant admin interfaces
+                Reusable elements and styles, packaged through code, for
+                building merchant admin interfaces
               </p>
-              <Links
-                links={[
-                  {
-                    icon: 'browse',
-                    label: 'Browse components',
-                    url: '/components',
-                  },
-                  {
-                    icon: 'github',
-                    label: 'Repo',
-                    url: 'https://github.com/Shopify/polaris/tree/main/polaris-react',
-                  },
-                  {
-                    icon: 'figma',
-                    label: 'Library',
-                    url: 'https://www.figma.com/community/file/1111360433678236702',
-                  },
-                ]}
-              />
-            </div>
-            <div className={styles.Image}>
-              <Image
-                src="/images/components.png"
-                alt="Media card and date picker components"
-                width={555 * 1.5}
-                height={430 * 1.5}
-              />
-            </div>
-          </div>
+            </a>
+          </Link>
 
-          <div className={styles.Block}>
-            <div className={styles.Text}>
+          <Link href="/tokens/colors">
+            <a className={styles.EntryPoint}>
               <h3>Tokens</h3>
               <p>
-                Coded names that represent design decisions for color, spacing, typography, and more
+                Coded names that represent design decisions for color, spacing,
+                typography, and more
               </p>
-              <Links
-                links={[
-                  {
-                    icon: 'browse',
-                    label: 'Browse tokens',
-                    url: '/tokens/colors',
-                  },
-                  {
-                    icon: 'github',
-                    label: 'Repo',
-                    url: 'https://github.com/Shopify/polaris/tree/main/polaris-tokens',
-                  },
-                  {
-                    icon: 'figma',
-                    label: 'Library',
-                    url: 'https://www.figma.com/community/file/1111359207966840858',
-                  },
-                ]}
-              />
-            </div>
+            </a>
+          </Link>
 
-            <div className={styles.Image}>
-              <Image
-                src="/images/tokens.png"
-                alt="A card containing a color preview, a token name and a description."
-                width={555 * 1.5}
-                height={430 * 1.5}
-              />
-            </div>
-          </div>
-
-          <div className={styles.Block}>
-            <div className={styles.Text}>
+          <Link href="/icons">
+            <a className={styles.EntryPoint}>
               <h3>Icons</h3>
               <p>
-                Over 400 carefully designed icons focused on commerce and entrepreneurship
+                Over 400 carefully designed icons focused on commerce and
+                entrepreneurship
               </p>
-              <Links
-                links={[
-                  {
-                    icon: 'browse',
-                    label: 'Browse icons',
-                    url: '/icons',
-                  },
-                  {
-                    icon: 'github',
-                    label: 'Repo',
-                    url: 'https://github.com/Shopify/polaris/tree/main/polaris-icons',
-                  },
-                  {
-                    icon: 'figma',
-                    label: 'Library',
-                    url: 'https://www.figma.com/community/file/1110993965108325096',
-                  },
-                ]}
-              />
-            </div>
+            </a>
+          </Link>
+        </div>
 
+        <div className={styles.Promos}>
+          <div className={className(styles.Promo, styles.News, 'dark-mode')}>
+            <div className={styles.Text}>
+              <h3>New: Version 10 typography</h3>
+              <p>Learn about what changes are coming to Polaris typography.</p>
+              <Link href="/whats-new/version-10-typography">Read post</Link>
+            </div>
             <div className={styles.Image}>
               <Image
-                src="/images/icons.png"
-                alt="A grid containing icons from Polaris"
-                width={555 * 1.5}
-                height={430 * 1.5}
+                width={1600}
+                height={800}
+                src="/images/home-news.png"
+                alt="A list showcasing the new font sizes in Polaris"
               />
             </div>
           </div>
-
-          <div className={className(styles.Block, styles.PolarisForVSCode)}>
+          <div
+            className={className(
+              styles.Promo,
+              styles.PolarisForVSCode,
+              'dark-mode',
+            )}
+          >
             <div className={styles.Text}>
               <h3>Polaris for VS Code</h3>
               <p>
-                Autocompletion for Polaris tokens, right inside your favorite code editor
+                Autocompletion for Polaris tokens, right inside your favorite
+                code editor
               </p>
+              <Link href="https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode">
+                Install
+              </Link>
+
               <Links
                 links={[
                   {
@@ -226,8 +141,8 @@ function HomePage({}: Props) {
             </div>
           </div>
         </div>
-      </Container>
-    </div>
+      </div>
+    </Page>
   );
 }
 
