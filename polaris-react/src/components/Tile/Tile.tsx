@@ -1,23 +1,17 @@
 import React from 'react';
-import type {spacing} from '@shopify/polaris-tokens';
+import type {
+  BreakpointsAlias,
+  SpacingSpaceScale,
+} from '@shopify/polaris-tokens';
 
 import styles from './Tile.scss';
 
-type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-type SpacingTokenName = keyof typeof spacing;
-
-// TODO: Bring this logic into tokens
-type SpacingScale = SpacingTokenName extends `space-${infer Scale}`
-  ? Scale
-  : never;
-
 type Columns = {
-  [Breakpoint in Breakpoints]?: number | string;
+  [Breakpoint in BreakpointsAlias]?: number | string;
 };
 
 type Gap = {
-  [Breakpoint in Breakpoints]?: SpacingScale;
+  [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
 };
 
 export interface TileProps {
