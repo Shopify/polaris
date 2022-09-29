@@ -63,16 +63,20 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   }
 };
 
+const catchAllTemplateExcludeList = [
+  '/whats-new',
+  '/icons',
+  '/foundations',
+  '/design',
+  '/content',
+  '/patterns',
+  '/tokens'
+]
+
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
-    path !== '/whats-new' &&
-    path !== '/icons' &&
-    path !== '/foundations' &&
-    path !== '/design' &&
-    path !== '/content' &&
-    path !== '/patterns' &&
-    path !== '/tokens'
+    !catchAllTemplateExcludeList.includes(path)
   );
 }
 
