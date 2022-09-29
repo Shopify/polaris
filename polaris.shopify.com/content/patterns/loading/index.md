@@ -1,6 +1,6 @@
 ---
 title: Loading
-description: Navigating the Shopify admin should be fast, meaningful, and focused, but unintentional loading can get in the way and break a merchant's flow. To deliver a continuous experience, we need to consider loading states when planning and prototyping.
+description: Navigating the Shopify admin should be fast, meaningful, and focused. Intentional loading states deliver a continuous flow for merchants.
 icon: RefreshMajor
 keywords:
   - page loading

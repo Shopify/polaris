@@ -1,6 +1,6 @@
 ---
 title: Text fields
-description: Text fields are a combination of the field label (the title) and the input area. Inputs can be typed text, URLs, date pickers, and more.
+description: Text fields combine the field label (the title) and the input area. Inputs can vary from typed text to URLs to date pickers.
 icon: FormsMajor
 keywords:
   - text fields

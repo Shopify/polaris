@@ -1,6 +1,6 @@
 ---
 title: Patterns
-description: Design patterns help ensure consistent behaviour across Shopify's admin.
+description: Design patterns help ensure consistent behavior across the Shopify admin.
 icon: BehaviorMajor
 order: 5
 newSection: true
