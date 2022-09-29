@@ -1,12 +1,14 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   NamespaceOptions,
   namespace,
-  createIsSassFunction,
+  isSassFunction,
+  hasSassFunction,
+  hasNumericOperator,
 } from '../../utilities/sass';
 
 const spacingMap = {
@@ -23,23 +25,12 @@ const spacingMap = {
 const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
   Object.keys(spacingMap).includes(spacing as string);
 
-function isNumericOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
-}
-
 const processed = Symbol('processed');
 
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const spacingFunction = namespace('spacing', options);
-  const isSpacingFunction = createIsSassFunction(spacingFunction);
+  const namespacedSpacing = namespace('spacing', options);
 
   return {
     postcssPlugin: 'ReplaceSassSpacing',
@@ -47,19 +38,16 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      const parsed = valueParser(decl.value);
+      const parsedValue = valueParser(decl.value);
 
-      let containsSpacingFn = false;
-      let containsCalculation = false;
+      if (!hasSassFunction(namespacedSpacing, parsedValue)) return;
 
-      parsed.walk((node) => {
-        if (isSpacingFunction(node)) containsSpacingFn = true;
-        if (isNumericOperator(node)) containsCalculation = true;
-
-        if (!isSpacingFunction(node)) return;
+      parsedValue.walk((node) => {
+        if (!isSassFunction(namespacedSpacing, node)) return;
 
         const spacing = node.nodes[0]?.value ?? '';
 
+        // Should we prompt/comment if we encounter an unknown spacing variant?
         if (!isSpacing(spacing)) return;
         const spacingCustomProperty = spacingMap[spacing];
 
@@ -75,14 +63,14 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         ];
       });
 
-      if (containsSpacingFn && containsCalculation) {
+      if (hasNumericOperator(parsedValue)) {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
-          postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
+          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
         );
       } else {
-        decl.value = parsed.toString();
+        decl.value = parsedValue.toString();
       }
 
       // @ts-expect-error - Mark the declaration as processed

@@ -1,14 +1,10 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-import {
-  NamespaceOptions,
-  namespace,
-  createIsSassFunction,
-} from '../../utilities/sass';
+import {hasNumericOperator} from '../../utilities/sass';
 
 // List of the props we want to run this migration on
 const targetProps = [
@@ -68,27 +64,17 @@ type SpacingToken = keyof typeof spacingTokensMap;
 const isSpacingTokenValue = (value: unknown): value is SpacingToken =>
   Object.keys(spacingTokensMap).includes(value as SpacingToken);
 
-/**
- * All supported dimension units. These values are used to determine
- * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
- * Note: The empty string is used to match the `0` value
- */
-const supportedDimensionUnits = ['px', 'rem', ''];
-
 const processed = Symbol('processed');
 
 /**
  * Exit early and stop traversing descendant nodes:
  * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
  */
-const ExitAndStopTraversing = false;
+const StopWalkingFunctionNodes = false;
 
-interface PluginOptions extends Options, NamespaceOptions {}
+interface PluginOptions extends Options {}
 
-const plugin = (options: PluginOptions = {}): Plugin => {
-  const remFunction = namespace('rem', options);
-  const isRemFunction = createIsSassFunction(remFunction);
-
+const plugin = (_options: PluginOptions = {}): Plugin => {
   return {
     postcssPlugin: 'replace-sass-lengths',
     Declaration(decl) {
@@ -96,41 +82,20 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       if (decl[processed]) return;
 
       const prop = decl.prop;
-      const parsedValue = valueParser(decl.value);
 
       if (!isTargetProp(prop)) return;
 
+      const parsedValue = valueParser(decl.value);
+
+      if (!hasTransformableLength(parsedValue)) return;
+
       parsedValue.walk((node) => {
-        if (isRemFunction(node)) {
-          const argDimension = valueParser.unit(node.nodes[0]?.value ?? '');
-
-          if (
-            argDimension &&
-            supportedDimensionUnits.includes(argDimension.unit)
-          ) {
-            const argInPx = toPx(`${argDimension.number}${argDimension.unit}`);
-
-            if (!isSpacingTokenValue(argInPx)) return ExitAndStopTraversing;
-
-            const spacingToken = spacingTokensMap[argInPx];
-
-            node.value = 'var';
-            node.nodes = [
-              {
-                type: 'word',
-                value: spacingToken,
-                sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                sourceEndIndex: spacingToken.length,
-              },
-              ...node.nodes.slice(1),
-            ];
-          }
-
-          return ExitAndStopTraversing;
+        if (node.type === 'function') {
+          return StopWalkingFunctionNodes;
         } else if (node.type === 'word') {
           const dimension = valueParser.unit(node.value);
 
-          if (dimension && supportedDimensionUnits.includes(dimension.unit)) {
+          if (isTransformableLength(dimension)) {
             const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
 
             if (!isSpacingTokenValue(dimensionInPx)) return;
@@ -140,7 +105,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         }
       });
 
-      if (hasCalculation(parsedValue)) {
+      if (hasNumericOperator(parsedValue)) {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
@@ -166,22 +131,35 @@ export default function replaceSassLengths(
   }).css;
 }
 
-function hasCalculation(parsedValue: valueParser.ParsedValue): boolean {
-  let hasCalc = false;
+/**
+ * All supported dimension units. These values are used to determine
+ * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
+ * Note: The empty string is used to match the `0` value
+ */
+const transformableLengthUnits = ['px', 'rem'];
 
-  parsedValue.walk((node) => {
-    if (isNumericOperator(node)) hasCalc = true;
-  });
+function isTransformableLength(
+  dimension: false | valueParser.Dimension,
+): dimension is valueParser.Dimension {
+  if (!dimension) return false;
 
-  return hasCalc;
+  // Zero is the only unitless length we can transform
+  if (dimension.unit === '' && dimension.number === '0') return true;
+
+  return transformableLengthUnits.includes(dimension.unit);
 }
 
-function isNumericOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
+function hasTransformableLength(parsedValue: valueParser.ParsedValue): boolean {
+  let transformableLength = false;
+
+  parsedValue.walk((node) => {
+    if (
+      node.type === 'word' &&
+      isTransformableLength(valueParser.unit(node.value))
+    ) {
+      transformableLength = true;
+    }
+  });
+
+  return transformableLength;
 }

@@ -1,4 +1,4 @@
-import type {Node, FunctionNode} from 'postcss-value-parser';
+import type {Node, FunctionNode, ParsedValue} from 'postcss-value-parser';
 
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || '';
@@ -13,19 +13,55 @@ export function namespace(name: string, options?: NamespaceOptions) {
   return namespace ? `${namespace}.${name}` : name;
 }
 
+export function isNumericOperator(node: Node): boolean {
+  return (
+    node.value === '+' ||
+    node.value === '-' ||
+    node.value === '*' ||
+    node.value === '/' ||
+    node.value === '%'
+  );
+}
+
+export function hasNumericOperator(parsedValue: ParsedValue): boolean {
+  let containsNumericOperator = false;
+
+  parsedValue.walk((node) => {
+    if (isNumericOperator(node)) containsNumericOperator = true;
+  });
+
+  return containsNumericOperator;
+}
+
 /**
+ * Checks if a `valueParser` node is a given Sass function
+ *
  * @example
- * const spacingFunction = namespace('spacing', options);
- * const remFunction = namespace('rem', options);
+ * const namespacedRem = namespace('rem', options);
  *
- * const isSpacingFunction = createIsSassFunction(spacingFunction);
- * const isRemFunction = createIsSassFunction(remFunction);
- * const isCalcFunction = createIsSassFunction('calc');
- *
- * if (isSpacingFunction(node)) node // FunctionNode
+ * if (isSassFunction(namespacedRem, node)) node // FunctionNode
  */
-export function createIsSassFunction(name: string) {
-  return (node: Node): node is FunctionNode => {
-    return node.type === 'function' && node.value === name;
-  };
+export function isSassFunction(name: string, node: Node): node is FunctionNode {
+  return node.type === 'function' && node.value === name;
+}
+
+/**
+ * Checks if any descendant `valueParser` node is a given Sass function
+ *
+ * @example
+ * const namespacedRem = namespace('rem', options);
+ *
+ * if (!hasSassFunction(namespacedRem, parsedValue)) return;
+ */
+export function hasSassFunction(
+  name: string,
+  parsedValue: ParsedValue,
+): boolean {
+  let containsSassFunction = false;
+
+  parsedValue.walk((node) => {
+    if (isSassFunction(name, node)) containsSassFunction = true;
+  });
+
+  return containsSassFunction;
 }

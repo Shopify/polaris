@@ -1,19 +1,81 @@
+/* stylelint-disable shorthand-property-no-redundant-values */
 @use 'global-styles/legacy-polaris-v8';
 
 .my-class {
-  color: red;
-  padding-top: 13px;
-  padding: var(--p-space-0) var(--p-space-4) 2em 3px 4in;
-  padding-bottom: var(--p-space-0);
-  padding: var(--p-space-05) var(--p-space-05);
-  /* Expect to skip negative lengths */
-  padding: legacy-polaris-v8.rem(-2px) -2px;
-}
+  color: lightsteelblue;
 
-.another-class {
-  padding-bottom: var(--p-space-2);
-  padding-top: var(--p-space-5);
+  // Unitless
+  padding: var(--p-space-0);
+  padding: 1;
+  padding: 2;
+
+  // Single shorthand pixels
+  padding: var(--p-space-4);
+  padding: 10px;
+
+  // Single shorthand rems
+  padding: var(--p-space-4);
+  padding: 10rem;
+
+  // Double shorthand pixels
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 10px 10px;
+  padding: var(--p-space-4) 10px;
+
+  // Double shorthand rems
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 10rem 10rem;
+  padding: var(--p-space-4) 10rem;
+
+  // Double shorthand mixed (px, rem, unitless)
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 10px 10rem;
+  padding: var(--p-space-4) 10rem;
+  padding: 10px var(--p-space-4);
+  padding: var(--p-space-0) var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-0);
+
+  // Double shorthand mixed edge cases
+  padding: var(--p-space-4) 4in;
+  padding: var(--p-space-4) 1em;
+  padding: var(--p-space-4) -16px;
+
+  // Unsupported transforms with comments
   /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
-  /* padding-right: calc(var(--p-space-05) + var(--p-space-05)); */
-  padding-right: calc(2px + 2px);
+  /* padding: var(--p-space-4) + var(--p-space-4); */
+  padding: 16px + 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: var(--p-space-4) + var(--p-space-4) var(--p-space-4); */
+  padding: 16px + 16px 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: (16px + 16px) var(--p-space-4); */
+  padding: (16px + 16px) 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: $var + var(--p-space-4); */
+  padding: $var + 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: legacy-polaris-v8.rem(16px) + var(--p-space-4); */
+  padding: legacy-polaris-v8.rem(16px) + 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: legacy-polaris-v8.rem($var * 16px); */
+  padding: legacy-polaris-v8.rem($var * 16px);
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: calc(16px + 16px); */
+  padding: calc(16px + 16px);
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: var(--p-space-4) + #{16px + 16px}; */
+  padding: 16px + #{16px + 16px};
+
+  // Unsupported transforms without comments
+  padding: legacy-polaris-v8.rem(16px);
+  padding: #{16px + 16px};
+  padding: layout-width(nav);
+  padding: 10em;
+  padding: var(--var);
+  padding: var(--p-space-4);
+  padding: var(--p-space-4, 16px);
+  // Skip negative lengths. Need to discuss replacement strategy e.g.
+  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
+  padding: -16px;
+  padding: -10px;
 }
