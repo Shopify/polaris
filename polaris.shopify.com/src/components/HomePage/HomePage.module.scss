@@ -78,33 +78,6 @@
   }
 }
 
-.Links {
-  display: flex;
-  display: none;
-  flex-direction: column;
-
-  a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0rem 0;
-
-    &[data-icon='github'] svg {
-      color: var(--text-strong);
-    }
-
-    &[data-icon='browse'] svg {
-      color: var(--text-strong);
-    }
-  }
-
-  svg {
-    width: 0.85rem;
-    height: auto;
-    opacity: 0.85;
-  }
-}
-
 .Promos {
   margin-top: 3rem;
   display: grid;
@@ -149,7 +122,7 @@
       display: inline-block;
       color: var(--surface);
       background: var(--text);
-      padding: 0.25rem 0.75rem;
+      padding: 0.25rem 0.8rem;
       border-radius: var(--border-radius-round);
     }
   }

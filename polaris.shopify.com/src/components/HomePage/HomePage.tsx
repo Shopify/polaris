@@ -103,16 +103,6 @@ function HomePage({}: Props) {
               <Link href="https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode">
                 Install
               </Link>
-
-              <Links
-                links={[
-                  {
-                    icon: 'install',
-                    label: 'Get the extension',
-                    url: 'https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode',
-                  },
-                ]}
-              />
             </div>
             <div className={styles.Image}>
               {useMotion ? (
@@ -145,37 +135,5 @@ function HomePage({}: Props) {
     </Page>
   );
 }
-
-interface ResourceListItemProps {
-  links: {
-    icon: 'browse' | 'github' | 'figma' | 'install' | 'other';
-    label: string;
-    url: string;
-  }[];
-}
-
-export const Links = ({links}: ResourceListItemProps) => {
-  return (
-    <ul className={styles.Links}>
-      {links.map((link) => (
-        <li key={link.url}>
-          <Link href={link.url}>
-            <a data-icon={link.icon}>
-              {link.icon === 'browse' && <BrowseIcon />}
-
-              {link.icon === 'github' && <GitHubIcon />}
-
-              {link.icon === 'figma' && <FigmaIcon />}
-
-              {link.icon === 'install' && <InstallIcon />}
-
-              {link.label}
-            </a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-};
 
 export default HomePage;
