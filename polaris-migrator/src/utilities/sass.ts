@@ -1,4 +1,4 @@
-import type {Node, FunctionNode, ParsedValue} from 'postcss-value-parser';
+import type {Node, ParsedValue, FunctionNode} from 'postcss-value-parser';
 
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || '';
@@ -13,6 +13,9 @@ export function namespace(name: string, options?: NamespaceOptions) {
   return namespace ? `${namespace}.${name}` : name;
 }
 
+/**
+ * Checks if a `valueParser` node is a [Sass numeric operator](https://sass-lang.com/documentation/operators/numeric)
+ */
 export function isNumericOperator(node: Node): boolean {
   return (
     node.value === '+' ||
@@ -23,6 +26,9 @@ export function isNumericOperator(node: Node): boolean {
   );
 }
 
+/**
+ * Checks if any descendant `valueParser` node is a numeric operator
+ */
 export function hasNumericOperator(parsedValue: ParsedValue): boolean {
   let containsNumericOperator = false;
 

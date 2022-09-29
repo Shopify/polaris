@@ -132,9 +132,8 @@ export default function replaceSassLengths(
 }
 
 /**
- * All supported dimension units. These values are used to determine
+ * All transformable dimension units. These values are used to determine
  * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
- * Note: The empty string is used to match the `0` value
  */
 const transformableLengthUnits = ['px', 'rem'];
 

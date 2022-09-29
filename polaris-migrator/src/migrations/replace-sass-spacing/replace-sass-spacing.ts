@@ -47,7 +47,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
         const spacing = node.nodes[0]?.value ?? '';
 
-        // Should we prompt/comment if we encounter an unknown spacing variant?
         if (!isSpacing(spacing)) return;
         const spacingCustomProperty = spacingMap[spacing];
 
@@ -67,9 +66,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
-          postcss.comment({
-            text: `${decl.prop}: ${parsedValue.toString()};`,
-          }),
+          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
         );
       } else {
         decl.value = parsedValue.toString();
