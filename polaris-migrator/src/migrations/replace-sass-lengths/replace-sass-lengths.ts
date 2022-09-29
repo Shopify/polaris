@@ -8,7 +8,8 @@ import {
   NamespaceOptions,
   namespace,
   createIsSassFunction,
-  isNumericOperator,
+  createHasSassFunction,
+  hasCalculation,
 } from '../../utilities/sass';
 
 // List of the props we want to run this migration on
@@ -89,6 +90,7 @@ interface PluginOptions extends Options, NamespaceOptions {}
 const plugin = (options: PluginOptions = {}): Plugin => {
   const remFunction = namespace('rem', options);
   const isRemFunction = createIsSassFunction(remFunction);
+  const hasRemFunction = createHasSassFunction(remFunction);
 
   return {
     postcssPlugin: 'replace-sass-lengths',
@@ -97,12 +99,17 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       if (decl[processed]) return;
 
       const prop = decl.prop;
-      const parsedValue = valueParser(decl.value);
 
       if (!isTargetProp(prop)) return;
 
+      const parsedValue = valueParser(decl.value);
+      const containsRemFunction = hasRemFunction(parsedValue);
+      const containsCalculation = hasCalculation(parsedValue);
+
       parsedValue.walk((node) => {
-        if (isRemFunction(node)) {
+        if (node.type === 'function') {
+          if (!isRemFunction(node)) return ExitAndStopTraversing;
+
           const argDimension = valueParser.unit(node.nodes[0]?.value ?? '');
 
           if (
@@ -141,7 +148,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         }
       });
 
-      if (hasCalculation(parsedValue)) {
+      if (containsRemFunction && containsCalculation) {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
@@ -165,14 +172,4 @@ export default function replaceSassLengths(
   return postcss(plugin(options)).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
-}
-
-function hasCalculation(parsedValue: valueParser.ParsedValue): boolean {
-  let hasCalc = false;
-
-  parsedValue.walk((node) => {
-    if (isNumericOperator(node)) hasCalc = true;
-  });
-
-  return hasCalc;
 }

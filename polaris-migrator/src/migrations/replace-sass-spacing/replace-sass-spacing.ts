@@ -6,8 +6,9 @@ import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   NamespaceOptions,
   namespace,
+  hasCalculation,
   createIsSassFunction,
-  isNumericOperator,
+  createHasSassFunction,
 } from '../../utilities/sass';
 
 const spacingMap = {
@@ -31,6 +32,7 @@ interface PluginOptions extends Options, NamespaceOptions {}
 const plugin = (options: PluginOptions = {}): Plugin => {
   const spacingFunction = namespace('spacing', options);
   const isSpacingFunction = createIsSassFunction(spacingFunction);
+  const hasSpacingFunction = createHasSassFunction(spacingFunction);
 
   return {
     postcssPlugin: 'ReplaceSassSpacing',
@@ -38,15 +40,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      const parsed = valueParser(decl.value);
+      const parsedValue = valueParser(decl.value);
 
-      let containsSpacingFn = false;
-      let containsCalculation = false;
+      const containsSpacingFn = hasSpacingFunction(parsedValue);
+      const containsCalculation = hasCalculation(parsedValue);
 
-      parsed.walk((node) => {
-        if (isSpacingFunction(node)) containsSpacingFn = true;
-        if (isNumericOperator(node)) containsCalculation = true;
-
+      parsedValue.walk((node) => {
         if (!isSpacingFunction(node)) return;
 
         const spacing = node.nodes[0]?.value ?? '';
@@ -70,10 +69,10 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
-          postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
+          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
         );
       } else {
-        decl.value = parsed.toString();
+        decl.value = parsedValue.toString();
       }
 
       // @ts-expect-error - Mark the declaration as processed
