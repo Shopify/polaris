@@ -40,9 +40,10 @@ const contentDir = 'content';
 export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   params,
 }) => {
-  const mdRelativePath = `${contentDir}/${
-    params?.slug.join('/') || ''
-  }/index.md`;
+  const slug = params?.slug;
+  if (!slug)
+    throw new Error('Expected params.slug to be defined (as string[])');
+  const mdRelativePath = `${contentDir}/${params.slug.join('/')}/index.md`;
   const mdFilePath = path.resolve(process.cwd(), mdRelativePath);
   const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
 
@@ -70,8 +71,8 @@ const catchAllTemplateExcludeList = [
   '/design',
   '/content',
   '/patterns',
-  '/tokens'
-]
+  '/tokens',
+];
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
