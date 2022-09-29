@@ -79,7 +79,7 @@
 }
 
 .Promos {
-  margin-top: 3rem;
+  margin-top: 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
@@ -131,7 +131,7 @@
     aspect-ratio: 2/1;
     overflow: hidden;
     mix-blend-mode: plus-lighter;
-    opacity: 0.9;
+    opacity: 0.85;
 
     img,
     video {
@@ -140,6 +140,19 @@
   }
 
   .News {
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      span {
+        background: var(--decorative-4);
+        padding: 0.125rem 0.4rem;
+        border-radius: var(--border-radius-400);
+        font-size: var(--font-size-200);
+        font-weight: var(--font-weight-500);
+      }
+    }
     .Image {
       filter: brightness(100%) contrast(1) saturate(0) invert(1);
     }

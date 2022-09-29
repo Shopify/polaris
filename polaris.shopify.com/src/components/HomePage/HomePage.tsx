@@ -34,7 +34,7 @@ function HomePage({}: Props) {
             <a className={styles.EntryPoint}>
               <h3>Foundations</h3>
               <p>
-                Fundamental design guidance for creating quality merchant admin
+                Fundamental design guidance for creating quality admin
                 experiences
               </p>
             </a>
@@ -45,7 +45,7 @@ function HomePage({}: Props) {
               <h3>Components</h3>
               <p>
                 Reusable elements and styles, packaged through code, for
-                building merchant admin interfaces
+                building admin interfaces
               </p>
             </a>
           </Link>
@@ -74,7 +74,9 @@ function HomePage({}: Props) {
         <div className={styles.Promos}>
           <div className={className(styles.Promo, styles.News, 'dark-mode')}>
             <div className={styles.Text}>
-              <h3>New: Version 10 typography</h3>
+              <h3>
+                <span>New</span> Version 10 typography
+              </h3>
               <p>Learn about what changes are coming to Polaris typography.</p>
               <Link href="/whats-new/version-10-typography">Read post</Link>
             </div>
