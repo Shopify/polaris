@@ -4,31 +4,24 @@ import path from 'path';
 import globby from 'globby';
 
 import Page from '../src/components/Page';
-import Longform from '../src/components/Longform';
 import PageMeta from '../src/components/PageMeta';
 import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {MarkdownFile} from '../src/types';
+import WhatsNewListing, {
+  WhatsNewListingProps,
+} from '../src/components/WhatsNewListing/WhatsNewListing';
 
 interface Props {
   title: string;
   description: string;
-  posts: {title: string; description: string; slug: string}[];
+  posts: WhatsNewListingProps['posts'];
 }
 
 const WhatsNew: NextPage<Props> = ({title, description, posts}: Props) => {
   return (
     <Page title={title} showTOC={false}>
       <PageMeta title={title} description={description} />
-
-      <Longform firstParagraphIsLede={false}>
-        {posts.map(({title, description, slug}) => (
-          <>
-            <h2>{title}</h2>
-            <p>{description}</p>
-            <a href={slug}>Read more</a>
-          </>
-        ))}
-      </Longform>
+      <WhatsNewListing posts={posts} />
     </Page>
   );
 };
@@ -51,9 +44,9 @@ export const getStaticProps: GetStaticProps<
   const posts: Props['posts'] = paths.map((path) => {
     const markdown = fs.readFileSync(path, 'utf-8');
     const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
-    const {title, description} = frontMatter;
+    const {title, description, imageUrl} = frontMatter;
     const slug = path.replace(contentDir, '').replace('index.md', '');
-    return {title, description, slug};
+    return {title, description, slug, imageUrl};
   });
 
   return {props: {title, description, posts}};
