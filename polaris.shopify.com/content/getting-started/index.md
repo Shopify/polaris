@@ -1,7 +1,7 @@
 ---
-title: What’s new
+title: Whats new
 description: Learn about the latest Polaris updates
 order: 0
 hideChildren: true
-icon: EmailNewsletterMajor
+icon:  GrammarMajor
 ---
