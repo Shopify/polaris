@@ -186,7 +186,7 @@ After applying a migration, it might be helpful to commit the changes that do no
 git add .
 
 # Unstage those that contain the manual check comment prefixed with "polaris-migrator:"
-git reset --mixed $(grep -r -l "polaris-migrator:")
+git reset $(grep -r -l "polaris-migrator:")
 ```
 
 ### Linting and formatting migrations
