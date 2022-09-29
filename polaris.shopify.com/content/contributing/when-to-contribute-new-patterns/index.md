@@ -21,7 +21,7 @@ To practice this framework, let’s imagine some possible scenarios. Consider th
 
 When deciding between A or B, go with A. It’s the better solution to the problem, assuming all options are inconsistent.
 A or C? Obviously C. Of two equal solutions, choose the one that is more consistent with the rest of the experience.
-A or D? D is consistent, but A is a much better solution to the problem. In that situation, it is likely that you can [contribute the new pattern to the system](insert link to contribution page), so others can leverage it in the future.
+A or D? D is consistent, but A is a much better solution to the problem. In that situation, it is likely that you can [contribute the new pattern to the system](https://polaris.shopify.com/contributing/documentation), so others can leverage it in the future.
 
 Now let’s look at the less obvious directions:
 
