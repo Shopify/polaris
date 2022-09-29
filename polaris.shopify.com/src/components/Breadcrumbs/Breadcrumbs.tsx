@@ -9,9 +9,7 @@ import {uppercaseFirst} from '../../utils/various';
 
 const nav = navJSON as NavJSON;
 
-interface Props {}
-
-function Breadcrumbs({}: Props) {
+function Breadcrumbs() {
   const {asPath} = useRouter();
 
   const segments: {url: string; text: string}[] = [
