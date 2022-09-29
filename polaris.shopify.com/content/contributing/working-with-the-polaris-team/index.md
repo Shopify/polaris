@@ -7,6 +7,7 @@ keywords:
   - contributing to polaris
   - open source
   - contribution guide
+order: 9
 ---
 
 Through supporting teams, we’ve learned what works well, and not so well. We’ve outlined these things so that you can create a successful plan. This guide goes into detail, but here are the highlights.
