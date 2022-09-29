@@ -11,6 +11,7 @@ import {NavJSON, NavItem, Breakpoints} from '../../types';
 import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
 import {useRouter} from 'next/router';
+import StatusBadge from '../StatusBadge';
 
 const NAV_ID = 'nav';
 
@@ -248,6 +249,8 @@ function NavItem({
                       }}
                     >
                       {child.title}
+
+                      {child.status && <StatusBadge status={child.status} />}
                     </a>
                   </Link>
 

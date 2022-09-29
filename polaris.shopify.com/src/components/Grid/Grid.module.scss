@@ -18,6 +18,9 @@
     width: 100%;
     text-overflow: ellipsis;
     color: var(--text-link);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   p {

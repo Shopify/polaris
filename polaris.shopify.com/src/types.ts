@@ -153,5 +153,6 @@ export interface NavItem {
   color?: string;
   hideChildren?: false;
   newSection?: true;
+  status?: Status;
   children?: NavJSON;
 }

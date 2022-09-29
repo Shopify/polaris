@@ -54,7 +54,9 @@ $breakpointNav: $breakpointTablet;
   }
 
   a {
-    gap: 0.66rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     white-space: pre;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -131,7 +133,7 @@ $breakpointNav: $breakpointTablet;
   position: relative;
   justify-content: space-between;
   align-items: center;
-  padding: 0 0.75rem 0.05rem 1.5rem;
+  padding: 0.025rem 0.75rem 0.025rem 1.5rem;
   border-radius: var(--border-radius-500);
   transition: box-shadow 0.2s linear;
 

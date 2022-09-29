@@ -5,6 +5,7 @@ import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './Grid.module.scss';
 import SearchResultHighlight from '../SearchResultHighlight';
 import {Status} from '../../types';
+import StatusBadge from '../StatusBadge';
 
 export interface Props {
   children: React.ReactNode;
@@ -29,6 +30,7 @@ function GridItem({
   url,
   deepLinks,
   renderPreview,
+  status,
 }: GridItemProps) {
   const searchAttributes = useGlobalSearchResult();
   return (
@@ -39,7 +41,9 @@ function GridItem({
           {renderPreview && (
             <div className={styles.Preview}>{renderPreview()}</div>
           )}
-          <h4>{title}</h4>
+          <h4>
+            {title} {status && <StatusBadge status={status} />}
+          </h4>
           <p>{stripMarkdownLinks(description)}</p>
         </a>
       </Link>
