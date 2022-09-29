@@ -5,8 +5,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type ColorsTokenGroup = typeof colors;
-type ColorsTokenName = keyof ColorsTokenGroup;
+type ColorsTokenName = keyof typeof colors;
 export type BackgroundColorTokenScale = Extract<
   ColorsTokenName,
   | 'background'
@@ -15,23 +14,20 @@ export type BackgroundColorTokenScale = Extract<
   | `surface-${string}`
   | 'backdrop'
   | 'overlay'
+  | `action-${string}`
 >;
+type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
 
-type DepthTokenGroup = typeof depth;
-type DepthTokenName = keyof DepthTokenGroup;
+type DepthTokenName = keyof typeof depth;
 type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
-
 export type DepthTokenScale = ShadowsTokenName extends `shadow-${infer Scale}`
   ? Scale
   : never;
 
-type ShapeTokenGroup = typeof shape;
-type ShapeTokenName = keyof ShapeTokenGroup;
-
+type ShapeTokenName = keyof typeof shape;
 type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
   ? Scale
   : never;
-
 type BorderTokenScale = Exclude<
   BorderShapeTokenScale,
   `radius-${string}` | `width-${string}`
@@ -58,10 +54,7 @@ interface BorderRadius {
   topRight: BorderRadiusTokenScale;
 }
 
-type SpacingTokenGroup = typeof spacing;
-type SpacingTokenName = keyof SpacingTokenGroup;
-
-// TODO: Bring this logic into tokens
+type SpacingTokenName = keyof typeof spacing;
 export type SpacingTokenScale = SpacingTokenName extends `space-${infer Scale}`
   ? Scale
   : never;
@@ -73,53 +66,60 @@ interface Spacing {
   top: SpacingTokenScale;
 }
 
+type Element = 'div' | 'span';
+
 export interface BoxProps {
-  as?: 'div' | 'span';
-  /** Background color of the Box */
+  /** HTML Element type */
+  as?: Element;
+  /** Background color */
   background?: BackgroundColorTokenScale;
-  /** Border styling of the Box */
+  /** Border style */
   border?: BorderTokenScale;
-  /** Bottom border styling of the Box */
+  /** Bottom border style */
   borderBottom?: BorderTokenScale;
-  /** Left border styling of the Box */
+  /** Left border style */
   borderLeft?: BorderTokenScale;
-  /** Right border styling of the Box */
+  /** Right border style */
   borderRight?: BorderTokenScale;
-  /** Top border styling of the Box */
+  /** Top border style */
   borderTop?: BorderTokenScale;
-  /** Border radius of the Box */
+  /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
-  /** Bottom left border radius of the Box */
+  /** Bottom left border radius */
   borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Bottom right border radius of the Box */
+  /** Bottom right border radius */
   borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Top left border radius of the Box */
+  /** Top left border radius */
   borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Top right border radius of the Box */
+  /** Top right border radius */
   borderRadiusTopRight?: BorderRadiusTokenScale;
-  /** Inner content of the Box */
+  /** Inner content */
   children: ReactNode;
-  /** Spacing outside of the Box */
+  /** Color of children */
+  color?: ColorTokenScale;
+  /** Spacing outside of container */
   margin?: SpacingTokenScale;
-  /** Bottom spacing outside of the Box */
+  /** Bottom spacing outside of container */
   marginBottom?: SpacingTokenScale;
-  /** Left side spacing outside of the Box */
+  /** Left spacing outside of container */
   marginLeft?: SpacingTokenScale;
-  /** Right side spacing outside of the Box */
+  /** Right spacing outside of container */
   marginRight?: SpacingTokenScale;
-  /** Top spacing outside of the Box */
+  /** Top spacing outside of container */
   marginTop?: SpacingTokenScale;
-  /** Spacing inside of the Box */
+  /** Maximum width of container */
+  maxWidth?: string;
+  /** Spacing around children */
   padding?: SpacingTokenScale;
-  /** Bottom spacing inside of the Box */
+  /** Bottom spacing around children */
   paddingBottom?: SpacingTokenScale;
-  /** Left side spacing inside of the Box */
+  /** Left spacing around children */
   paddingLeft?: SpacingTokenScale;
-  /** Right side spacing inside of the Box */
+  /** Right spacing around children */
   paddingRight?: SpacingTokenScale;
-  /** Top spacing inside of the Box */
+  /** Top spacing around children */
   paddingTop?: SpacingTokenScale;
-  /** Shadow on the Box */
+  /** Shadow */
   shadow?: DepthTokenScale;
 }
 
@@ -139,11 +139,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusTopLeft,
       borderRadiusTopRight,
       children,
+      color,
       margin,
       marginBottom,
       marginLeft,
       marginRight,
       marginTop,
+      maxWidth,
       padding,
       paddingBottom,
       paddingLeft,
@@ -221,6 +223,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
             '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
           }
         : undefined),
+      ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
       ...(margins.bottom
         ? {'--pc-box-margin-bottom': `var(--p-space-${margins.bottom})`}
         : undefined),
@@ -233,6 +236,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ...(margins.top
         ? {'--pc-box-margin-top': `var(--p-space-${margins.top})`}
         : undefined),
+      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}px`} : undefined),
       ...(paddings.bottom
         ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
         : undefined),
@@ -256,8 +260,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as,
       {
         className,
-        style: sanitizeCustomProperties(style),
         ref,
+        style: sanitizeCustomProperties(style),
       },
       children,
     );
