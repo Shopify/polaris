@@ -1,5 +1,21 @@
 # polaris.shopify.com
 
+## 0.18.3
+
+### Patch Changes
+
+- [#7289](https://github.com/Shopify/polaris/pull/7289) [`22a07954e`](https://github.com/Shopify/polaris/commit/22a07954ede37af75c505d17e5f6cb88d2f131f5) Thanks [@lgriffee](https://github.com/lgriffee)! - Update breakpoint token documentation
+
+* [#7278](https://github.com/Shopify/polaris/pull/7278) [`6d65feb46`](https://github.com/Shopify/polaris/commit/6d65feb46f768c6879bf4f4390dd3cf1a37c98ce) Thanks [@sarahill](https://github.com/sarahill)! - Updated type principles to be more actionable
+
+- [#7268](https://github.com/Shopify/polaris/pull/7268) [`183a6e91f`](https://github.com/Shopify/polaris/commit/183a6e91f89f75c95b1792da417ee67f350c901a) Thanks [@rmleg](https://github.com/rmleg)! - Fix content guideline formatting for Resource list, Navigation, and Index table.
+
+* [#7280](https://github.com/Shopify/polaris/pull/7280) [`a192e3641`](https://github.com/Shopify/polaris/commit/a192e3641a8629a2ea9e1a1bd5d6c20aaf9a499c) Thanks [@sarahill](https://github.com/sarahill)! - Updated spacing principles to be more actionable.
+
+* Updated dependencies [[`3fd9f6415`](https://github.com/Shopify/polaris/commit/3fd9f6415c0d7e3721eb7462c6777d4816437345), [`8626d6a1b`](https://github.com/Shopify/polaris/commit/8626d6a1b8a2ab50e6aa6074037144d11819734b), [`9b67d1533`](https://github.com/Shopify/polaris/commit/9b67d15332b1f45faa94f9d309ed6fd46f4419a1), [`b34ac1859`](https://github.com/Shopify/polaris/commit/b34ac185973cae94f8e68dc2fc621e3e4679dbaa)]:
+  - @shopify/polaris-tokens@6.1.0
+  - @shopify/polaris@10.4.0
+
 ## 0.18.2
 
 ### Patch Changes
