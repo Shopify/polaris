@@ -6,9 +6,9 @@ import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   NamespaceOptions,
   namespace,
-  hasCalculation,
-  createIsSassFunction,
-  createHasSassFunction,
+  isSassFunction,
+  hasSassFunction,
+  hasNumericOperator,
 } from '../../utilities/sass';
 
 const spacingMap = {
@@ -30,9 +30,7 @@ const processed = Symbol('processed');
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const spacingFunction = namespace('spacing', options);
-  const isSpacingFunction = createIsSassFunction(spacingFunction);
-  const hasSpacingFunction = createHasSassFunction(spacingFunction);
+  const namespacedSpacing = namespace('spacing', options);
 
   return {
     postcssPlugin: 'ReplaceSassSpacing',
@@ -42,11 +40,10 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       const parsedValue = valueParser(decl.value);
 
-      const containsSpacingFn = hasSpacingFunction(parsedValue);
-      const containsCalculation = hasCalculation(parsedValue);
+      if (!hasSassFunction(namespacedSpacing, parsedValue)) return;
 
       parsedValue.walk((node) => {
-        if (!isSpacingFunction(node)) return;
+        if (!isSassFunction(namespacedSpacing, node)) return;
 
         const spacing = node.nodes[0]?.value ?? '';
 
@@ -65,7 +62,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         ];
       });
 
-      if (containsSpacingFn && containsCalculation) {
+      if (hasNumericOperator(parsedValue)) {
         // Insert comment if the declaration value contains calculations
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(

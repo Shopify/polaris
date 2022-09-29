@@ -29,49 +29,45 @@ export function isNumericOperator(node: Node): boolean {
 /**
  * Checks if any descendant `valueParser` node is a numeric operator
  */
-export function hasCalculation(parsedValue: ParsedValue): boolean {
-  let hasCalc = false;
+export function hasNumericOperator(parsedValue: ParsedValue): boolean {
+  let containsNumericOperator = false;
 
   parsedValue.walk((node) => {
-    if (isNumericOperator(node)) hasCalc = true;
+    if (isNumericOperator(node)) containsNumericOperator = true;
   });
 
-  return hasCalc;
+  return containsNumericOperator;
 }
 
 /**
- * Creates a function to check if a `valueParser` node is a given Sass function
+ * Checks if a `valueParser` node is a given Sass function
  *
  * @example
- * const spacingFunction = namespace('spacing', options);
- * const remFunction = namespace('rem', options);
+ * const namespacedRem = namespace('rem', options);
  *
- * const isSpacingFunction = createIsSassFunction(spacingFunction);
- * const isRemFunction = createIsSassFunction(remFunction);
- * const isCalcFunction = createIsSassFunction('calc');
- *
- * if (isSpacingFunction(node)) node // FunctionNode
+ * if (isSassFunction(namespacedRem, node)) node // FunctionNode
  */
-export function createIsSassFunction(name: string) {
-  return function isSassFunction(node: Node): node is FunctionNode {
-    return node.type === 'function' && node.value === name;
-  };
+export function isSassFunction(name: string, node: Node): node is FunctionNode {
+  return node.type === 'function' && node.value === name;
 }
 
 /**
- * Creates a function to check if any descendant `valueParser` node is a given Sass function
- * Important: Use before mutating `parsedValue`
+ * Checks if any descendant `valueParser` node is a given Sass function
+ *
+ * @example
+ * const namespacedRem = namespace('rem', options);
+ *
+ * if (!hasSassFunction(namespacedRem, parsedValue)) return;
  */
-export function createHasSassFunction(name: string) {
-  const isSassFunction = createIsSassFunction(name);
+export function hasSassFunction(
+  name: string,
+  parsedValue: ParsedValue,
+): boolean {
+  let containsSassFunction = false;
 
-  return function hasSassFunction(parsedValue: ParsedValue) {
-    let hasFn = false;
+  parsedValue.walk((node) => {
+    if (isSassFunction(name, node)) containsSassFunction = true;
+  });
 
-    parsedValue.walk((node) => {
-      if (isSassFunction(node)) hasFn = true;
-    });
-
-    return hasFn;
-  };
+  return containsSassFunction;
 }
