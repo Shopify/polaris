@@ -1,4 +1,5 @@
 .ExamplesList {
+  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -6,7 +7,7 @@
   margin-bottom: 1rem;
 
   button {
-    padding: 0.6rem 0.85rem;
+    padding: 0.45rem 0.65rem;
     text-align: left;
     display: flex;
     align-items: flex-start;
@@ -14,6 +15,7 @@
     box-shadow: var(--card-shadow);
     border-radius: var(--border-radius-400);
     font-size: var(--font-size-100);
+    font-weight: var(--font-weight-500);
     line-height: 1.33;
     color: var(--text-strong);
 
@@ -33,9 +35,8 @@
 .ExampleFrame {
   margin-bottom: 1rem;
   background: #fafafa;
-  border-radius: var(--border-radius-400);
+  border-radius: var(--border-radius-600);
   overflow: hidden;
-  box-shadow: var(--card-shadow);
 
   .Buttons {
     display: flex;

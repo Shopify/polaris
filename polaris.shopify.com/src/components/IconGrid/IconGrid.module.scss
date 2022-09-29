@@ -1,7 +1,6 @@
 @import '../../styles/mixins.scss';
 
 .IconGrid {
-  border-radius: var(--border-radius-600);
   position: relative;
 
   &:before {
@@ -12,10 +11,9 @@
     right: 0;
     bottom: 0;
     left: 0;
-    box-shadow: inset 0 0 0 1px var(--border-color-light),
-      0 0 0 5px var(--surface);
+    box-shadow: inset 0 0 0 1px var(--border-color), 0 0 0 5px var(--surface);
     pointer-events: none;
-    border-radius: var(--border-radius-600);
+    border-radius: var(--border-radius-400);
   }
 }
 
@@ -25,12 +23,13 @@
 }
 
 .Icon {
+  position: relative;
   display: flex;
-  font-size: var(--font-size-50);
+  font-size: var(--font-size-100);
   color: var(--text-subdued);
   padding: 1.25rem;
-  border-bottom: 1px solid var(--border-color-light);
-  border-right: 1px solid var(--border-color-light);
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
   gap: 1.125rem;
 
   p {
@@ -43,15 +42,8 @@
   &:focus-visible,
   &.isSelected,
   &:hover {
-    background: var(--search-highlight-color);
+    background: var(--surface-subdued);
     box-shadow: none;
-  }
-
-  @media (hover: hover) {
-    &[data-is-current-result='true'] {
-      background: var(--search-highlight-color);
-      box-shadow: none;
-    }
   }
 }
 

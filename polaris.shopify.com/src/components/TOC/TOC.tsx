@@ -10,8 +10,7 @@ interface Props {
 function getContentTopMargin(): number {
   const rootStyles = getComputedStyle(document.documentElement);
   const headerHeight = rootStyles.getPropertyValue('--header-height');
-  const headerMargin = rootStyles.getPropertyValue('--header-margin');
-  const headerThreshold = parseInt(headerHeight) + parseInt(headerMargin);
+  const headerThreshold = parseInt(headerHeight);
   return headerThreshold;
 }
 

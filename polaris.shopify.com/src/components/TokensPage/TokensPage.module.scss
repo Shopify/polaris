@@ -30,8 +30,8 @@
   ul {
     display: flex;
     box-shadow: var(--card-shadow);
-    border-radius: var(--border-radius-400);
-    font-size: var(--font-size-100);
+    border-radius: var(--border-radius-600);
+    font-size: var(--font-size-400);
     overflow: hidden;
   }
 
@@ -43,7 +43,7 @@
     padding: 0.75rem 2rem;
     display: block;
     color: var(--text-strong);
-    border-right: 1px solid var(--border-color-light);
+    border-right: 1px solid var(--border-color);
     text-align: center;
     font-weight: var(--font-weight-500);
 

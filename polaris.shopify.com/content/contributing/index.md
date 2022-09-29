@@ -1,16 +1,20 @@
 ---
 title: Contributing to Polaris
+navTitle: Contributing
 description: Polaris exists to make a product worked on by many, feel like it was created by one person. The design system needs to stay in sync with new solutions so merchants always have a seamless experience. This is why Polaris thrives on contribution and community support.
 keywords:
   - how to contribute to polaris
   - contribution
+order: 9
+newSection: true
+icon: MobilePlusMajor
 ---
 
 Anyone, regardless of discipline, is encouraged to contribute. No contribution is too small. We welcome everything from bug fixes or new components, to new UX guidelines. So if you find something to contribute, we hope you feel empowered to go for it. The Polaris team is here to help you along the way.
 
 ## Who can contribute
 
-Contribution to Polaris looks different depending on whether you work at Shopify. Shopify employees can contribute to any Polaris project, including the Figma UI Kit. Open source contributions are welcome for [Polaris React components](contributing/components) and their [documentation](/contributing/documentation).
+Contribution to Polaris looks different depending on whether you work at Shopify. Shopify employees can contribute to any Polaris project, including the Figma UI Kit. Open source contributions are welcome for [Polaris React components](/contributing/components) and their [documentation](/contributing/documentation).
 
 ## When to contribute
 
@@ -30,7 +34,7 @@ By sticking to a few principles, we can ensure that all contributions made to Po
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **🧠 Keep the merchant in mind** <br>Polaris is for building merchant admin experiences. If the value to merchants isn’t clear, reconsider the contribution.                                                                                                                                                       | **💡 Provide solutions** <br>Contributions should both identify a problem and provide a solution. If you found a bug, have a question, or want to open a discussion, you can submit those via [GitHub](https://github.com/Shopify/polaris/discussions/6750).                                                                                                                                                                                             |
 | **🤝 Collaborate with other disciplines** <br>A good contribution addresses the needs and perspectives of design, content, and code. Consult a diverse group of disciplines when drafting your contribution.                                                                                                       | **🪟 Work in the open** <br>Public discussion is crucial for contribution visibility and feedback. Submit contributions using [GitHub](https://github.com/Shopify/polaris/discussions/6750). Shopify employees can request assistance via the #polaris Slack channel.                                                                                                                                                                                    |
-| **📅 Include contribution in project cycles** <br>Contributing close to a project deadline creates blockers. Include contribution in project retros, or involve Polaris early in a project cycle. Read [Working with Polaris](contributing/working-with-the-polaris-team).                                         | **🔍 Check your work** <br>Double check your contribution to make sure it meets standards for things like accessibility and performance. Following the guidance for each contribution type is also a great way to meet quality standards.                                                                                                                                                                                                                |
+| **📅 Include contribution in project cycles** <br>Contributing close to a project deadline creates blockers. Include contribution in project retros, or involve Polaris early in a project cycle. Read [Working with Polaris](/contributing/working-with-the-polaris-team).                                        | **🔍 Check your work** <br>Double check your contribution to make sure it meets standards for things like accessibility and performance. Following the guidance for each contribution type is also a great way to meet quality standards.                                                                                                                                                                                                                |
 | **🏗️ Consider the impact on the system** <br>Contributions to Polaris should apply to multiple admin surfaces. They should not be unique solutions with only one use case. Read [Designing with a system](/contributing/designing-with-a-system), and reach out to the Polaris team for system advice or guidance. | **🔬 Be clear and detailed** <br>Submit a short summary of your contribution, along with relevant links, artifacts, and context. State your expectations, understanding that we must prioritize certain business and system needs. If you can ship in collaboration with another product team, tag them and let the Polaris team know. Capture contribution details with [GitHub issue templates](https://github.com/Shopify/polaris/issues/new/choose). |
 
 ## Where to get help

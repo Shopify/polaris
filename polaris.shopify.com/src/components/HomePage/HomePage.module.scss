@@ -2,353 +2,176 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-$video-filter: hue-rotate(130deg) brightness(75%) contrast(1.2) saturate(1.2)
-  invert(1);
-
 .HomePage {
-  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   padding-bottom: var(--header-margin);
-
-  h2 {
-    @include heading-2;
-    font-size: var(--font-size-1100);
-    margin-bottom: 1rem;
-  }
-
-  h3 {
-    margin-bottom: 1rem;
-    font-size: var(--font-size-900);
-    font-weight: var(--font-weight-600);
-    letter-spacing: var(--letter-spacing-500);
-    line-height: 1.15;
-    color: var(--text-strong);
-
-    @media screen and (max-width: $breakpointMobile) {
-      font-size: var(--font-size-700);
-    }
-  }
-
-  a {
-    color: var(--primary);
-  }
-}
-
-.Line {
-  width: 60px;
-  height: 2px;
-  background: var(--text-subdued);
-  border-radius: 2px;
-  margin: 3rem auto;
-  opacity: 0;
-
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    margin: 1.5rem auto;
-  }
-
-  @media screen and (max-width: $breakpointTablet) {
-    height: 2px;
-    width: 60px;
-  }
 }
 
 .Hero {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 6rem;
+  padding: 6rem 0 3rem;
+  background: url(/images/home-hero.png);
+  background-size: 56% auto;
+  background-repeat: no-repeat;
+  background-position: 65% 33%;
 
-  .Text {
-    z-index: 1;
-    text-align: center;
-    padding: 2rem 0;
+  @media screen and (max-width: $breakpointTablet) {
+    font-size: var(--font-size-1300);
+    background-position: right center;
   }
 
   h1 {
     margin-bottom: 1rem;
-    color: var(--primary);
-    font-size: var(--font-size-1900);
+    color: var(--text-strong);
+    font-size: var(--font-size-1600);
+    font-weight: var(--font-weight-700);
     letter-spacing: var(--letter-spacing-1000);
-    font-weight: var(--font-weight-600);
     line-height: 1.1;
 
-    @media screen and (max-width: $breakpointDesktop) {
-      span {
-        display: block;
-      }
+    span {
+      display: block;
+    }
+
+    @media screen and (max-width: $breakpointTablet) {
+      font-size: var(--font-size-1300);
     }
   }
 
   p {
     font-size: var(--font-size-800);
-    font-weight: var(--font-weight-500);
-    letter-spacing: var(--letter-spacing-500);
-    margin: 0 auto;
+    letter-spacing: var(--letter-spacing-600);
+    max-width: 20em;
     color: var(--text-strong);
-  }
-
-  @media screen and (max-width: $breakpointDesktopLarge) {
-    padding-top: 4rem;
-  }
-
-  @media screen and (max-width: $breakpointTablet) {
-    .Text {
-      h1 {
-        font-size: var(--font-size-1600);
-      }
-
-      p {
-        font-size: var(--font-size-800);
-        max-width: 100%;
-      }
-    }
-  }
-
-  @media screen and (max-width: $breakpointMobile) {
-    padding-top: var(--header-margin);
-    min-height: calc(80vh - var(--header-height));
-    justify-content: center;
-
-    .Text {
-      text-align: left;
-
-      h1 {
-        font-size: var(--font-size-1900);
-      }
-
-      p {
-        font-size: var(--font-size-600);
-        max-width: 100%;
-      }
-    }
   }
 }
 
-.BuildingBlocks {
-  h2 {
-    text-align: center;
-    margin: 0 auto 2rem;
+.EntryPoints {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+
+  @media screen and (max-width: $breakpointDesktop) {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .Block {
-    margin: 0 auto 1rem;
-    max-width: 56rem;
-    padding: 3rem;
-    min-height: 32rem;
-    position: relative;
-    background: var(--surface-subdued);
-    border-radius: 32px;
+  @media screen and (max-width: $breakpointTablet) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.EntryPoint {
+  display: block;
+
+  h3 {
+    @include heading-2;
+    margin-bottom: 0.33rem;
+  }
+
+  &:hover {
+    h3 {
+      text-decoration: underline;
+    }
+  }
+
+  p {
+    font-size: var(--font-size-500);
+    color: var(--text);
+  }
+}
+
+.Promos {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  gap: 1rem;
+
+  @media screen and (max-width: $breakpointDesktop) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
 
-    .Text {
-      max-width: 50%;
+  .Promo {
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--surface-subdued);
+    color: var(--text);
+    border-radius: var(--border-radius-600);
+  }
+
+  .Text {
+    padding: 3.5rem 7rem;
+    text-align: center;
+
+    @media screen and (max-width: $breakpointMobile) {
+      padding: 2.5rem 2rem;
     }
+  }
 
-    h3 {
-      margin-bottom: 1rem;
-    }
+  h3 {
+    @include heading-2;
+    margin-bottom: 0.33rem;
+  }
 
-    p {
-      margin-bottom: 1rem;
-      padding-right: 1rem;
+  .Text {
+    mix-blend-mode: plus-lighter;
+
+    a {
+      margin-top: 1rem;
+      display: inline-block;
+      color: var(--surface);
+      background: var(--text);
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--border-radius-round);
+
+      &:hover {
+        background: var(--text-strong);
+      }
     }
   }
 
   .Image {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 35rem;
-  }
-
-  @media screen and (max-width: $breakpointDesktop) {
-    .Block {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      padding: 2rem 1.25rem;
-      min-height: auto;
-
-      .Text {
-        max-width: 30rem;
-
-        p {
-          padding-right: 0;
-        }
-      }
-
-      .Image {
-        position: static;
-        transform: none;
-        max-width: 33.5rem;
-        width: 100%;
-      }
-    }
-  }
-
-  @media screen and (max-width: $breakpointMobile) {
-    gap: 14.25rem;
-
-    h2 {
-      text-align: left;
-      margin-bottom: 1.25rem;
-    }
-
-    .Block {
-      padding: 0.7rem 1.25rem 1.25rem;
-      gap: 0.5rem;
-      border-radius: var(--border-radius-800);
-
-      .Image {
-        max-width: 75%;
-        margin-right: auto;
-        transform: translateX(-5%);
-      }
-    }
-  }
-}
-
-.Links {
-  display: flex;
-  flex-direction: column;
-
-  a {
-    display: flex;
-    align-items: center;
-    gap: 0.66rem;
-    padding: 0.25rem 0;
-    font-size: var(--font-size-400);
-
-    &[data-icon='github'] svg {
-      color: var(--text-strong);
-    }
-
-    &[data-icon='browse'] svg {
-      color: var(--text-strong);
-    }
-  }
-
-  svg {
-    width: 1.1rem;
-    height: auto;
-  }
-
-  @media screen and (max-width: $breakpointDesktop) and (min-width: $breakpointMobile) {
-    flex-direction: row;
-    gap: 1.5rem;
-
-    a {
-      gap: 0.5rem;
-
-      svg {
-        width: 0.9rem;
-      }
-    }
-  }
-}
-
-.PolarisForVSCode {
-  position: relative;
-  max-width: 56rem;
-  margin-top: 2rem;
-  border-radius: 32px;
-  margin: 2rem auto 0;
-  background: var(--surface-subdued);
-
-  .Text {
-    padding: 8rem 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    max-width: 50%;
-
-    h3 {
-      margin-bottom: 1rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
-    }
-  }
-
-  .Video {
-    position: absolute;
-    border-radius: 24px;
+    aspect-ratio: 2/1;
     overflow: hidden;
-    width: 60%;
-    left: 50%;
-    margin-right: -10rem;
-    min-width: 65.5;
-    max-width: 65.5%;
-    top: 50%;
-    transform: translateY(-50%) translateX(33px);
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
+    mix-blend-mode: plus-lighter;
+    opacity: 0.85;
+
+    img,
+    video {
+      display: block;
+    }
+  }
+
+  .News {
+    h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      span {
+        background: var(--decorative-4);
+        padding: 0.125rem 0.4rem;
+        border-radius: var(--border-radius-400);
+        font-size: var(--font-size-200);
+        font-weight: var(--font-weight-500);
+      }
+    }
+    .Image {
+      filter: brightness(100%) contrast(1) saturate(0) invert(1);
+    }
+  }
+
+  .PolarisForVSCode {
+    display: flex;
+    flex-direction: column-reverse;
+    background: var(--decorative-4);
 
     video {
       width: 100%;
       height: auto;
-      filter: $video-filter;
+      filter: brightness(100%) contrast(2) saturate(0);
+      mix-blend-mode: plus-lighter;
     }
-  }
-
-  .Poster {
-    position: absolute;
-    border-radius: 24px;
-    overflow: hidden;
-    width: 60%;
-    height: 85%;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%) translateX(33px);
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
-  }
-
-  @media screen and (max-width: $breakpointDesktop) {
-    display: flex;
-    flex-direction: column-reverse;
-    padding: 2rem 1.25rem;
-    gap: 2rem;
-
-    .Text {
-      padding: 0;
-      max-width: 100%;
-      max-width: 30rem;
-      margin: 0 auto;
-    }
-
-    .Video,
-    .Poster {
-      position: static;
-      transform: none;
-      max-width: 100%;
-      width: 100%;
-      max-width: 30rem;
-      margin: 0 auto;
-      border-radius: var(--border-radius-800);
-      box-shadow: none;
-    }
-  }
-}
-
-@keyframes fade-up {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
