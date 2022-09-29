@@ -1,4 +1,3 @@
-import {BrowseIcon, FigmaIcon, GitHubIcon, InstallIcon} from './icons';
 import Link from 'next/link';
 import {className} from '../../utils/various';
 import {useMedia} from '../../utils/hooks';
