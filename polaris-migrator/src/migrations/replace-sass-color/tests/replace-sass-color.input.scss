@@ -1,0 +1,17 @@
+.my-class {
+  // static colors
+  color: white;
+  color: black;
+
+  // color() function
+  color: color('ink');
+  color: color('ink', 'lighter');
+  color: color('ink', 'lighter', #f2ece4);
+  color: var(--p-text, color('white'));
+
+  background: color('white');
+  background-color: color('black');
+
+  border: var(--p-border-width-1) solid color('sky');
+  border-color: color('sky', 'light');
+}

@@ -76,6 +76,21 @@ For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-r
 npx @shopify/polaris-migrator <sass-migration> <path> --namespace="legacy-polaris-v8"
 ```
 
+### `replace-sass-color`
+
+Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`).
+
+```diff
+- color: color('ink');
+- background: color('white');
++ color: var(--p-text);
++ background: var(--p-surface);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-sass-color <path>
+```
+
 ### `replace-sass-spacing`
 
 Replace the legacy Sass `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
