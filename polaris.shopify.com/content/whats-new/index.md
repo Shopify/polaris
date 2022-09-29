@@ -4,5 +4,4 @@ description: Learn about the latest Polaris updates
 order: 0
 hideChildren: true
 icon: EmailNewsletterMajor
-color: \#b5850d
 ---
