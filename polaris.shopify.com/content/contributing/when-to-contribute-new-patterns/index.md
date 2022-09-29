@@ -6,6 +6,7 @@ keywords:
   - when to evolve the system
   - when to contribute new patterns
   - contribution guide
+order: 8
 ---
 
 To help you figure this out, start by plotting out where each solution fits in this “perfect vs consistent” framework. Rate the solutions according to:
