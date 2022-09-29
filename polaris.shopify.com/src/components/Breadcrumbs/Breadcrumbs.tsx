@@ -14,7 +14,7 @@ interface Props {}
 function Breadcrumbs({}: Props) {
   const {asPath} = useRouter();
 
-  let segments: {url: string; text: string}[] = [
+  const segments: {url: string; text: string}[] = [
     {
       url: '/',
       text: 'Home',
