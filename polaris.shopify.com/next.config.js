@@ -66,6 +66,11 @@ const nextConfig = {
         destination: '/tokens/colors',
         permanent: false,
       },
+      {
+        source: '/legal/license',
+        destination: 'https://github.com/Shopify/polaris/blob/main/LICENSE.md',
+        permanent: true,
+      },
     ];
   },
 };
