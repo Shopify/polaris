@@ -41,4 +41,4 @@ Polaris React Native components are also used in the Shopify admin iOS and Andro
 
 Design tokens represent reusable design decisions such as color, spacing, and typography. These tokens are used throughout the Polaris design system and Shopify admin to unify the merchant experience across the entire platform.
 
-Polaris design tokens are packaged up as the open source [@Shopify/polaris-tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens) library
+Polaris design tokens are packaged up as the open source [@Shopify/polaris-tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens) library.
