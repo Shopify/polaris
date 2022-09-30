@@ -1,7 +1,7 @@
 const path = require('path');
 
 const {createFilter} = require('@rollup/pluginutils');
-const nodeSass = require('node-sass');
+const sass = require('sass-embedded');
 const postcss = require('postcss');
 const cssModules = require('postcss-modules');
 
@@ -148,14 +148,14 @@ module.exports.styles = function styles({
 
       let sassOutput;
       try {
-        sassOutput = nodeSass
-          .renderSync({
-            data: source,
+        sassOutput = (
+          await sass.compileAsync(id, {
+            // data: source,
             file: id,
-            outputStyle: 'compact',
-            includePaths: [path.dirname(id)],
+            style: 'compressed',
+            loadPaths: [path.dirname(id)],
           })
-          .css.toString();
+        ).css;
       } catch (err) {
         throw new Error(err.formatted);
       }
