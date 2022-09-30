@@ -12,7 +12,7 @@ export interface AlphaStackProps {
   children?: React.ReactNode;
   /** Adjust vertical alignment of elements */
   align?: Align;
-  /** Toogle elements to be full width */
+  /** Toggle elements to be full width */
   fullWidth?: boolean;
   /** Adjust spacing between elements */
   spacing?: SpacingSpaceScale;
