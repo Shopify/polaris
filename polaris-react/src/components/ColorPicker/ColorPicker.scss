@@ -5,7 +5,7 @@
       var(--p-surface) 0% 25%,
       var(--p-surface-neutral-subdued) 0% 50%
     )
-    calc(50% / var(--p-space-4)) var(--p-space-4);
+    50% / var(--p-space-4) var(--p-space-4);
 }
 
 .ColorPicker {
