@@ -148,14 +148,7 @@ module.exports.styles = function styles({
 
       let sassOutput;
       try {
-        sassOutput = (
-          await sass.compileAsync(id, {
-            // data: source,
-            file: id,
-            style: 'compressed',
-            loadPaths: [path.dirname(id)],
-          })
-        ).css;
+        sassOutput = (await sass.compileAsync(id, {style: 'compressed'})).css;
       } catch (err) {
         throw new Error(err);
       }
