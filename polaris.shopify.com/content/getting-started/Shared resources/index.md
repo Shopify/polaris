@@ -2,6 +2,7 @@
 title: Shared resources
 keywords:
   - resources
+order: 4
 ---
 
 There are pieces of foundational knowledge that are useful for all disciplines to learn. 

@@ -3,8 +3,10 @@ title: Polaris 101
 keywords:
   - polaris
   - shopify admin
-order: 1
+order: 0
 ---
+
+![Partial screenshots of the admin in mobile and web](/images/getting-started/polaris-101/mobile-web-admin@2x.png)
 
 ## What is Polaris?
 
