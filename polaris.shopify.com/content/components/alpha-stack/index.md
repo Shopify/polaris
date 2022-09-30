@@ -18,4 +18,8 @@ examples:
     title: Vertical spacing
     description: >-
       Vertical spacing for children can be set with the spacing property. Spacing options are provided using our spacing tokens.
+  - fileName: alpha-stack-with-full-width-children.tsx
+    title: Full width children
+    description: >-
+      Set children to full width
 ---

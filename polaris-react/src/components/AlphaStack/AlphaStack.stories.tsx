@@ -49,3 +49,14 @@ export function AlignEnd() {
     </AlphaStack>
   );
 }
+
+export function FullWidthChildren() {
+  return (
+    <AlphaStack fullWidth>
+      <Badge>Paid</Badge>
+      <Badge>Processing</Badge>
+      <Badge>Fulfilled</Badge>
+      <Badge>Completed</Badge>
+    </AlphaStack>
+  );
+}
