@@ -23,7 +23,7 @@ type CardBackgroundColorTokenScale = Extract<
 export interface AlphaCardProps {
   /** Elements to display inside card */
   children?: React.ReactNode;
-  backgroundColor?: CardBackgroundColorTokenScale;
+  background?: CardBackgroundColorTokenScale;
   hasBorderRadius?: boolean;
   elevation?: CardElevationTokensScale;
   padding?: SpacingSpaceScale;
@@ -32,7 +32,7 @@ export interface AlphaCardProps {
 
 export const AlphaCard = ({
   children,
-  backgroundColor = 'surface',
+  background = 'surface',
   hasBorderRadius: hasBorderRadiusProp = true,
   elevation = 'card',
   padding = '5',
@@ -49,7 +49,7 @@ export const AlphaCard = ({
 
   return (
     <Box
-      background={backgroundColor}
+      background={background}
       padding={padding}
       shadow={elevation}
       {...(hasBorderRadius && {borderRadius: defaultBorderRadius})}
