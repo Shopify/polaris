@@ -46,7 +46,7 @@ $breakpointNav: $breakpointTablet;
   overflow: scroll;
 
   @media screen and (max-width: $breakpointNav) {
-    padding-top: 4rem;
+    padding-top: 4.75rem;
   }
 
   .newSection {
@@ -88,6 +88,11 @@ $breakpointNav: $breakpointTablet;
         > a {
           padding: 0.033rem 0;
           color: var(--text-strong);
+
+          @media screen and (max-width: $breakpointNav) {
+            padding: 0.4rem 0;
+            font-size: var(--font-size-400);
+          }
         }
 
         &.isCurrent > a {
@@ -189,6 +194,11 @@ $breakpointNav: $breakpointTablet;
     background-size: 12px 12px;
     opacity: 0.66;
 
+    @media screen and (max-width: $breakpointNav) {
+      width: 36px;
+      height: 36px;
+    }
+
     &:hover {
       opacity: 1;
       background-color: var(--surface-subdued);
@@ -209,6 +219,10 @@ $breakpointNav: $breakpointTablet;
 
   svg {
     transform: scale(0.8);
+
+    @include dark-mode {
+      filter: invert(1);
+    }
   }
 
   @media screen and (min-width: $breakpointNav) {
@@ -226,12 +240,20 @@ $breakpointNav: $breakpointTablet;
   @media screen and (max-width: $breakpointNav) {
     display: block;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 24px;
-    height: 24px;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
     background-color: transparent;
     border-radius: var(--border-radius-round);
+
+    svg {
+      transform: scale(0.5);
+    }
+  }
+
+  @include dark-mode {
+    filter: invert(1);
   }
 }
 

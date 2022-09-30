@@ -1,9 +1,14 @@
 @import '../../styles/fonts.scss';
+@import '../../styles/variables.scss';
 
 .WhatsNewListing {
   margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  @media screen and (max-width: $breakpointTablet) {
+    grid-template-columns: 1fr;
+  }
 
   .Post {
     gap: 2rem;
