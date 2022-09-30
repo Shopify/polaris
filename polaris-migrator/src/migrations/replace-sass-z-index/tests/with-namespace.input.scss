@@ -1,0 +1,41 @@
+@use 'global-styles/legacy-polaris-v8';
+$someElement: (
+  someKey: 1000;,
+);
+
+.scenario-1 {
+  z-index: legacy-polaris-v8.z-index(content) + 1;
+  background-color: var(--p-background);
+}
+
+.scenario-2 {
+  z-index: legacy-polaris-v8.z-index(overlay) + 1;
+  background-color: var(--p-background);
+}
+
+.scenario-3 {
+  z-index: legacy-polaris-v8.z-index(content);
+  background-color: var(--p-background);
+}
+
+.scenario-4 {
+  z-index: legacy-polaris-v8.z-index(overlay);
+  background-color: var(--p-background);
+}
+
+.scenario-5 {
+  z-index: legacy-polaris-v8.z-index(someKey, $someElement);
+  background-color: var(--p-background);
+}
+
+.scenario-6 {
+  z-index: calc(
+    legacy-polaris-v8.z-index(overlay) + legacy-polaris-v8.z-index(content)
+  );
+}
+
+.scenario-7 {
+  z-index: calc(
+    #{legacy-polaris-v8.z-index(dev-ui, $fixed-element-stacking-order)} + 1
+  );
+}
