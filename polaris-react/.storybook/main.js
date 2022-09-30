@@ -49,6 +49,7 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
+            options: {api: 'modern'},
           },
         ],
       },

@@ -112,7 +112,7 @@
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.0",
     "sass-embedded": "^1.55.0",
-    "sass-loader": "^12.4.0",
+    "sass-loader": "^12.6.0",
     "semver": "^6.3.0",
     "shx": "^0.3.2",
     "svgo": "^2.8.0",
