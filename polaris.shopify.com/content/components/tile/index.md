@@ -1,5 +1,5 @@
 ---
-title: Tile
+title: Tiles
 description: Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 category: Structure
 keywords:
@@ -8,8 +8,8 @@ status:
   value: Alpha
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
-  - fileName: tile-with-spacing.tsx
+  - fileName: tiles-with-spacing.tsx
     title: With spacing
-  - fileName: tile-with-columns.tsx
+  - fileName: tiles-with-columns.tsx
     title: With columns
 ---

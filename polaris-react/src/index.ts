@@ -375,8 +375,8 @@ export type {TextStyleProps} from './components/TextStyle';
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
 
-export {Tile} from './components/Tile';
-export type {TileProps} from './components/Tile';
+export {Tiles} from './components/Tiles';
+export type {TilesProps} from './components/Tiles';
 
 export {Toast} from './components/Toast';
 export type {ToastProps} from './components/Toast';
