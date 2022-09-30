@@ -16,6 +16,7 @@ keywords:
   - plugins
 order: 1
 icon: HintMajor
+order: 5
 ---
 
 Polaris is the design system for the Shopify admin. There are many layers to being successful with Polaris but if you want to dive in, the first step you might want to do is download the resources.

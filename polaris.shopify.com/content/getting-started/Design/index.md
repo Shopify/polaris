@@ -2,6 +2,7 @@
 title: Design
 keywords:
   - design resources
+order: 3
 ---
 
 ## Resources

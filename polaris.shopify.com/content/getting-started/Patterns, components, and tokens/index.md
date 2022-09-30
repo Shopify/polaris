@@ -5,6 +5,7 @@ keywords:
   - primitives
   - components
   - tokens
+order: 2
 ---
 
 ## Patterns

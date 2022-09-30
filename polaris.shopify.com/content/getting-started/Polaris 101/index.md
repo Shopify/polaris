@@ -3,6 +3,7 @@ title: Polaris 101
 keywords:
   - polaris
   - shopify admin
+order: 1
 ---
 
 ## What is Polaris?
