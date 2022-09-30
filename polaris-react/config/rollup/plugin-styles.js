@@ -157,7 +157,7 @@ module.exports.styles = function styles({
           })
         ).css;
       } catch (err) {
-        throw new Error(err.formatted);
+        throw new Error(err);
       }
 
       const postCssOutput = await styleProcessor
