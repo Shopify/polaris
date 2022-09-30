@@ -39,8 +39,6 @@ const isTargetProp = (propName: unknown): propName is TargetProp =>
 
 // Mapping of spacing tokens and their corresponding px values
 const spacingTokensMap = {
-  '0': '--p-space-0',
-  '0px': '--p-space-0',
   '1px': '--p-space-025',
   '2px': '--p-space-05',
   '4px': '--p-space-1',
