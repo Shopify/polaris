@@ -68,7 +68,7 @@ function SandboxHelpDialog({
                 className={styles.CloseButton}
                 onClick={() => setIsOpen(false)}
               >
-                Let's go!
+                Close
               </Button>
             </p>
           </Longform>
