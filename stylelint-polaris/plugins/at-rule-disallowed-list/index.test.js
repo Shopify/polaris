@@ -1,5 +1,6 @@
 const {messages, ruleName} = require('.');
 
+const disallowedIncludeRegExp = /^([\w-]+\.)?disallowed-include($|\()/;
 const disallowedMixinRegExp = /^disallowed-mixin($|\()/;
 
 testRule({
@@ -9,7 +10,11 @@ testRule({
     // Using a RegExp ensures we disallow `@mixin id` and `@mixin id()`
     // https://regex101.com/r/PJYwuP/1
     mixin: [disallowedMixinRegExp],
-    include: [disallowedMixinRegExp, /^prefix-.+/, 'disallowed-include'],
+    include: [
+      disallowedIncludeRegExp,
+      /^prefix-.+/,
+      'disallowed-include-literal',
+    ],
     // Nifty pattern to disallow the usage of a given at-rule.
     disallowedAtRuleName: [/.*/],
   },
@@ -45,12 +50,21 @@ testRule({
   ],
   reject: [
     {
-      code: `@include disallowed-include {}`,
-      description: 'Defining a disallowed include name',
+      code: `@include disallowed-include-literal {}`,
+      description: 'Defining a disallowed include name as a string literal',
       message: messages.rejected(
         'include',
-        'disallowed-include',
-        'disallowed-include',
+        'disallowed-include-literal',
+        'disallowed-include-literal',
+      ),
+    },
+    {
+      code: `@include namespace.disallowed-include {}`,
+      description: 'Defining a disallowed include name with a namespace',
+      message: messages.rejected(
+        'include',
+        'namespace.disallowed-include',
+        disallowedIncludeRegExp.source,
       ),
     },
     {

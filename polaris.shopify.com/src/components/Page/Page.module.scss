@@ -39,8 +39,13 @@
     display: flex;
     gap: 1rem;
   }
+
   a {
     color: var(--text-subdued);
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    padding: 1rem 0 1.5rem;
   }
 }
 

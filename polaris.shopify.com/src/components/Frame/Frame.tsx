@@ -107,9 +107,7 @@ function Header({darkMode, children}: Props) {
           ref={menuButtonRef}
           className={styles.NavToggle}
         >
-          <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 11h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0-7h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0 14h-18a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2z" />
-          </svg>
+          <NavToggleIcon />
         </button>
 
         <Link href="/">
@@ -294,6 +292,14 @@ function CloseIcon() {
   return (
     <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path d="m11.414 10 6.293-6.293a1 1 0 1 0-1.414-1.414l-6.293 6.293-6.293-6.293a1 1 0 0 0-1.414 1.414l6.293 6.293-6.293 6.293a1 1 0 1 0 1.414 1.414l6.293-6.293 6.293 6.293a.998.998 0 0 0 1.707-.707.999.999 0 0 0-.293-.707l-6.293-6.293z" />
+    </svg>
+  );
+}
+
+function NavToggleIcon() {
+  return (
+    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 11h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0-7h-18a1 1 0 0 1 0-2h18a1 1 0 1 1 0 2zm0 14h-18a1 1 0 0 1 0-2h18a1 1 0 0 1 0 2z" />
     </svg>
   );
 }

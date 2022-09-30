@@ -5,6 +5,7 @@ keywords:
   - how to contribute to the style guide
   - documenting in polaris
   - documentation guidelines
+order: 5
 ---
 
 Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
@@ -36,12 +37,7 @@ New documentation in Polaris can range from component documentation, to content 
 
 To create new documentation:
 
-1. Reach out to the Polaris team and we can help you:
-
-- strategize where to add the documentation
-- offer strategies and templates for drafting your documentation
-- provide asynchronous feedback
-- offer ad hoc pair writing session when you get stuck
+1. Reach out to the Polaris team. We can help find a home for your documentation, offer templates, provide asynchronous feedback, and—if you're really stuck—participate in pair writing sessions.
 
 2. Draft the content in Google docs for easy collaboration. We recommend writing in [Markdown](https://www.markdownguide.org/cheat-sheet/), or converting your file to Markdown when finished.
 3. Get feedback from subject matter experts, or someone with high context around your changes (team member, manager, etc.).

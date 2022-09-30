@@ -5,6 +5,7 @@ keywords:
   - figma
   - how to contribute to polaris ui kit
   - how to fix a figma component
+order: 3
 ---
 
 Any designer that works at Shopify can contribute to the Figma UI Kit. If you find a bug to fix or your team is contributing new patterns or variants to Polaris React components, we want you to feel empowered to contribute.

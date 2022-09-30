@@ -11,11 +11,18 @@
   background: url(/images/home-hero.png);
   background-size: 56% auto;
   background-repeat: no-repeat;
-  background-position: 65% 33%;
+  background-position: 58.5% 33%;
 
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: $breakpointDesktop) {
     font-size: var(--font-size-1300);
     background-position: right center;
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    padding: 40vw 0 2rem;
+    background-size: 60% auto;
+    background-repeat: no-repeat;
+    background-position: left 1rem;
   }
 
   h1 {
@@ -40,6 +47,10 @@
     letter-spacing: var(--letter-spacing-600);
     max-width: 20em;
     color: var(--text-strong);
+
+    @media screen and (max-width: $breakpointMobile) {
+      font-size: var(--font-size-600);
+    }
   }
 }
 
@@ -54,7 +65,7 @@
 
   @media screen and (max-width: $breakpointTablet) {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 1.75rem;
   }
 }
 
@@ -85,7 +96,7 @@
   overflow: hidden;
   gap: 1rem;
 
-  @media screen and (max-width: $breakpointDesktop) {
+  @media screen and (max-width: $breakpointTablet) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -104,14 +115,29 @@
     padding: 3.5rem 7rem;
     text-align: center;
 
-    @media screen and (max-width: $breakpointMobile) {
+    @media screen and (max-width: $breakpointDesktop) {
       padding: 2.5rem 2rem;
     }
   }
 
   h3 {
     @include heading-2;
+    display: flex;
+    justify-content: center;
+    text-align: left;
     margin-bottom: 0.33rem;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+
+    @media screen and (max-width: $breakpointTablet) {
+      @include heading-3;
+    }
+
+    @media screen and (max-width: $breakpointDesktop) {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
   }
 
   .Text {
@@ -145,10 +171,6 @@
 
   .News {
     h3 {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-
       span {
         background: var(--decorative-4);
         padding: 0.125rem 0.4rem;
