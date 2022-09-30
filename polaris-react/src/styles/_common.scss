@@ -4,18 +4,18 @@
 
 // stylelint-disable scss/partial-no-import
 
-@import './foundation/layout';
-@import './foundation/focus-ring';
+@forward './foundation/layout';
+@forward './foundation/focus-ring';
 
-@import './shared/accessibility';
-@import './shared/breakpoints';
-@import './shared/buttons';
-@import './shared/controls';
-@import './shared/forms';
-@import './shared/icons';
-@import './shared/layout';
-@import './shared/page';
-@import './shared/typography';
-@import './shared/interaction-state';
+@forward './shared/accessibility';
+@forward './shared/breakpoints';
+@forward './shared/buttons';
+@forward './shared/controls';
+@forward './shared/forms';
+@forward './shared/icons';
+@forward './shared/layout';
+@forward './shared/page';
+@forward './shared/typography';
+@forward './shared/interaction-state';
 
-@import '../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
+@forward '../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
