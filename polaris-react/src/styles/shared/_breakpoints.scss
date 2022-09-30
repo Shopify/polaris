@@ -1,3 +1,5 @@
+@forward '../../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
+
 @function breakpoint($value, $inclusive: true) {
   $value-unit: unit($value);
   // Down media condition breakpoints are being subtracted by 0.05px to prevent

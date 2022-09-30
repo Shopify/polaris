@@ -1,7 +1,3 @@
-// This file is Polaris's private Sass API.
-// Within this codebase import this file if you wish to use our helper functions
-// Don't use this externally as it may change
-
 @forward './foundation/layout';
 @forward './foundation/focus-ring';
 
@@ -15,5 +11,3 @@
 @forward './shared/page';
 @forward './shared/typography';
 @forward './shared/interaction-state';
-
-@forward '../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
