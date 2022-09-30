@@ -5,7 +5,7 @@
   color: lightsteelblue;
 
   // Unitless
-  padding: var(--p-space-0);
+  padding: 0;
   padding: 1;
   padding: 2;
 
@@ -32,8 +32,8 @@
   padding: 10px 10rem;
   padding: var(--p-space-4) 10rem;
   padding: 10px var(--p-space-4);
-  padding: var(--p-space-0) var(--p-space-4);
-  padding: var(--p-space-4) var(--p-space-0);
+  padding: 0 var(--p-space-4);
+  padding: var(--p-space-4) 0;
 
   // Double shorthand mixed edge cases
   padding: var(--p-space-4) 4in;
