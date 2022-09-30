@@ -1,0 +1,64 @@
+/* stylelint-disable shorthand-property-no-redundant-values */
+
+.my-class {
+  color: lightsteelblue;
+
+  // Unitless
+  padding: 0;
+  padding: 1;
+  padding: 2;
+
+  // Single shorthand pixels
+  padding: 16px;
+  padding: 10px;
+
+  // Single shorthand rems
+  padding: 1rem;
+  padding: 10rem;
+
+  // Double shorthand pixels
+  padding: 16px 16px;
+  padding: 10px 10px;
+  padding: 16px 10px;
+
+  // Double shorthand rems
+  padding: 1rem 1rem;
+  padding: 10rem 10rem;
+  padding: 1rem 10rem;
+
+  // Double shorthand mixed (px, rem, unitless)
+  padding: 16px 1rem;
+  padding: 10px 10rem;
+  padding: 16px 10rem;
+  padding: 10px 1rem;
+  padding: 0 16px;
+  padding: 1rem 0;
+
+  // Double shorthand mixed edge cases
+  padding: 16px 4in;
+  padding: 16px 1em;
+  padding: 16px -16px;
+
+  // Unsupported transforms with comments
+  padding: 16px + 16px;
+  padding: 16px + 16px 16px;
+  padding: (16px + 16px) 16px;
+  padding: $var + 16px;
+  padding: rem(16px) + 16px;
+  padding: rem($var * 16px);
+  padding: calc(16px + 16px);
+  padding: 16px + #{16px + 16px};
+
+  // Unsupported transforms without comments
+  padding: rem(16px);
+  padding: #{16px + 16px};
+  padding: layout-width(nav);
+  padding: 10em;
+  padding: var(--var);
+  padding: var(--p-space-4);
+  padding: var(--p-space-4, 16px);
+  // Skip negative lengths. Need to discuss replacement strategy e.g.
+  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
+  padding: -16px;
+  padding: -10px;
+}
