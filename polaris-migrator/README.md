@@ -171,6 +171,15 @@ In your PR, you can add a comment with the text `/snapit` to create a new [snaps
 npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 replace-sass-function "./app/**/*.scss"
 ```
 
+### Linting and formatting migrations
+
+The migrator doesn't include a default formatter. It is recommended to run your own linter and formatter after running migrations. For example, if you are using [ESLint](https://eslint.org/) and/or [Prettier](https://prettier.io/):
+
+```sh
+npx eslint --fix .
+npx prettier --write .
+```
+
 ### Checking migrations
 
 Running a migration can potentially modify thousands of files. For more complex migrations, a comment may be added suggesting the change is manually checked. You can quickly perform a manual search for this comment in your text editor:
@@ -187,15 +196,6 @@ git add .
 
 # Unstage those that contain the manual check comment prefixed with "polaris-migrator:"
 git reset $(grep -r -l "polaris-migrator:")
-```
-
-### Linting and formatting migrations
-
-The migrator doesn't include a default formatter. It is recommended to run your own linter and formatter after running migrations. For example, if you are using [ESLint](https://eslint.org/) and/or [Prettier](https://prettier.io/):
-
-```sh
-npx eslint --fix .
-npx prettier --write .
 ```
 
 ### Resources
