@@ -1,5 +1,6 @@
-@import './layout';
+@import '../foundation/layout';
 @import './typography';
+@import './breakpoints';
 
 $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
   $layout-width-inner-spacing-base;
