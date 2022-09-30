@@ -1,3 +1,6 @@
+@import './../foundation/focus-ring';
+@import './icons';
+
 @mixin high-contrast-button-outline($outline: var(--p-border-width-2) dotted) {
   @media (-ms-high-contrast: active) {
     outline: $outline;

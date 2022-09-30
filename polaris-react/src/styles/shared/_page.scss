@@ -1,3 +1,6 @@
+@import './layout';
+@import './typography';
+
 $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
   $layout-width-inner-spacing-base;
 
