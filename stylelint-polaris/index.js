@@ -58,7 +58,7 @@ module.exports = {
         allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
-          /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+          /^([\w-]+\.)?\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
         ],
       },
       {severity: 'warning'},
