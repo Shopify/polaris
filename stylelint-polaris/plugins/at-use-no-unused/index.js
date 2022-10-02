@@ -8,11 +8,9 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (atUseURLNamespace, atUseNamespace = atUseURLNamespace) =>
+  rejected: (atUseURLNamespace, atUseAsNamespace = '') =>
     `Unused @use [${atUseURLNamespace}]${
-      atUseURLNamespace === atUseNamespace
-        ? ''
-        : ` with namespace [${atUseNamespace}]`
+      atUseAsNamespace ? '' : ` with namespace [${atUseAsNamespace}]`
     }`,
 });
 
@@ -29,6 +27,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
  * @property {boolean} used
  * @property {AtUseURL} atUseURL
  * @property {AtUseURLNamespace} atUseURLNamespace
+ * @property {AtUseAsNamespace} [atUseAsNamespace]
  * @property {RegExp} atUseNamespaceIdentRegExp
  */
 
@@ -96,6 +95,7 @@ const {rule} = stylelint.createPlugin(
           used: false,
           atUseURL,
           atUseURLNamespace,
+          atUseAsNamespace,
           atUseNamespaceIdentRegExp: getNamespaceIdentRegExp(atUseNamespace),
         };
       });
@@ -139,14 +139,14 @@ const {rule} = stylelint.createPlugin(
       }
 
       Object.entries(targetAtUseNamespaces).forEach(
-        ([atUseNamespace, {used, atUseURLNamespace}]) => {
+        ([, {used, atUseURLNamespace, atUseAsNamespace}]) => {
           if (used) return;
 
           stylelint.utils.report({
             ruleName,
             result,
             node: root,
-            message: messages.rejected(atUseURLNamespace, atUseNamespace),
+            message: messages.rejected(atUseURLNamespace, atUseAsNamespace),
           });
         },
       );
