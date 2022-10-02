@@ -1,0 +1,80 @@
+/* stylelint-disable shorthand-property-no-redundant-values */
+
+.my-class {
+  color: lightsteelblue;
+
+  // Unitless
+  padding: var(--p-space-0);
+  padding: 1;
+  padding: 2;
+
+  // Single shorthand pixels
+  padding: var(--p-space-4);
+  padding: 10px;
+
+  // Single shorthand rems
+  padding: var(--p-space-4);
+  padding: 10rem;
+
+  // Double shorthand pixels
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 10px 10px;
+  padding: var(--p-space-4) 10px;
+
+  // Double shorthand rems
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 10rem 10rem;
+  padding: var(--p-space-4) 10rem;
+
+  // Double shorthand mixed (px, rem, unitless)
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 10px 10rem;
+  padding: var(--p-space-4) 10rem;
+  padding: 10px var(--p-space-4);
+  padding: var(--p-space-0) var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-0);
+
+  // Double shorthand mixed edge cases
+  padding: var(--p-space-4) 4in;
+  padding: var(--p-space-4) 1em;
+  padding: var(--p-space-4) -16px;
+
+  // Unsupported transforms with comments
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: var(--p-space-4) + var(--p-space-4); */
+  padding: 16px + 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: var(--p-space-4) + var(--p-space-4) var(--p-space-4); */
+  padding: 16px + 16px 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: (16px + 16px) var(--p-space-4); */
+  padding: (16px + 16px) 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: $var + var(--p-space-4); */
+  padding: $var + 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: rem(16px) + var(--p-space-4); */
+  padding: rem(16px) + 16px;
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: rem($var * 16px); */
+  padding: rem($var * 16px);
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: calc(16px + 16px); */
+  padding: calc(16px + 16px);
+  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* padding: var(--p-space-4) + #{16px + 16px}; */
+  padding: 16px + #{16px + 16px};
+
+  // Unsupported transforms without comments
+  padding: rem(16px);
+  padding: #{16px + 16px};
+  padding: layout-width(nav);
+  padding: 10em;
+  padding: var(--var);
+  padding: var(--p-space-4);
+  padding: var(--p-space-4, 16px);
+  // Skip negative lengths. Need to discuss replacement strategy e.g.
+  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
+  padding: -16px;
+  padding: -10px;
+}

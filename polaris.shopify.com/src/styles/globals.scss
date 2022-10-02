@@ -1,13 +1,11 @@
 @import 'variables.scss';
 @import 'fonts.scss';
 @import 'mixins.scss';
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   --page-max-width: #{$pageMaxWidth};
-  --narrow-content-width: 720px;
-  --header-height: 64px; // Parsed by JS. Define in px.
-  --header-margin: 76px; // Parsed by JS. Define in px.
+  --header-height: 60px; // Parsed by JS. Define in px.
+  --header-margin: 40px; // Parsed by JS. Define in px.
 
   @media screen and (max-width: $breakpointDesktop) {
     --header-margin: 48px; // Parsed by JS. Define in px.
@@ -25,8 +23,7 @@
   --surface-code-block: #2e2e30;
 
   // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
-  --font-size-50: 0.75rem;
-  --font-size-100: 0.85rem;
+  --font-size-100: 0.8rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
   --font-size-400: 1rem;
@@ -74,6 +71,7 @@
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
+  --font-weight-700: 700;
 
   --letter-spacing-100: -0.0025em;
   --letter-spacing-200: -0.005em;
@@ -167,19 +165,14 @@ html {
 }
 
 html {
-  font-size: 106.25%;
+  font-size: 100%;
   overflow-y: overlay;
-
-  @media screen and (max-width: $breakpointMobile) {
-    font-size: 100%;
-  }
 }
 
 body {
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.6;
-  font-weight: var(--font-weight-400);
+  line-height: 1.55;
 }
 
 body,
@@ -189,28 +182,26 @@ body,
 }
 
 .light-mode {
-  --text: #3c4141;
-  --text-strong: #111212;
+  --text: #434e4e;
+  --text-strong: #1c1e1e;
   --text-subdued: #767676;
-  --text-link: #2e5dba;
+  --text-link: #4e52b8;
   --surface: #fff;
-  --surface-subdued: #f7f7f7;
+  --surface-subdued: #f9f9f9;
   --surface-information: #dcf5f0;
   --surface-warning: #ffeceb;
-  --surface-code-inline: #eaeaea;
+  --surface-code-inline: #f1f1f1;
   --primary: #008060;
-  --border-color: #dedede;
-  --border-color-light: #ededed;
+  --border-color: #e9e9e9;
   --border: 1px solid var(--border-color);
-  --card-shadow: 0 0 0 1px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 4%);
+  --card-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 2px 2px rgb(0 0 0 / 4%);
   --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
     0 0 0 0.5px var(--border-color);
   --decorative-1: #dfefd2;
-  --decorative-2: #ffe6cd;
+  --decorative-2: #fae8d4;
   --decorative-3: #f8dff1;
   --decorative-4: #dce0f5;
   --backdrop: rgba(0, 0, 0, 0.5);
-  --search-highlight-color: #f4f5f5;
   --code-keyword: #017b33;
   --code-function: var(--code-keyword);
   --code-string: #6a00df;
@@ -224,18 +215,17 @@ body,
 }
 
 .dark-mode {
-  --text: #aaa;
-  --text-strong: #e7e7e7;
-  --text-subdued: #777;
-  --text-link: #6995ee;
+  --text: #b0b0bc;
+  --text-strong: #e7e7f1;
+  --text-subdued: #808089;
+  --text-link: #8bb2ff;
   --surface-information: #02382d;
   --surface-warning: #4c250f;
-  --surface: #202021;
-  --surface-subdued: #2e2e30;
+  --surface: #161619;
+  --surface-subdued: #1e1e23;
   --surface-code-inline: #3b3b3c;
   --primary: #1aab87;
-  --border-color: #555;
-  --border-color-light: #343434;
+  --border-color: rgb(55, 55, 55);
   --border: 1px solid var(--border-color);
   --card-shadow: inset 0 0 0 1px rgb(255 255 255 / 12%);
   --card-shadow-hover: 0 4px 7px rgba(255, 255, 255, 0.1),
@@ -245,7 +235,6 @@ body,
   --decorative-3: #601249;
   --decorative-4: #342484;
   --backdrop: rgba(0, 0, 0, 0.5);
-  --search-highlight-color: #363636;
   --code-keyword: #6dffaa;
   --code-function: var(--code-keyword);
   --code-string: #c087ff;
@@ -287,11 +276,15 @@ button {
 
 // Legacy CSS hacks to work with content from old site (used in markdown files)
 .dodont {
-  margin: 1.25rem 0 2rem;
-  font-size: var(--font-size-200);
+  margin: 2rem 0 2rem;
+  font-size: var(--font-size-300);
   gap: 1rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
+
+  + .dodont {
+    margin-top: -1rem;
+  }
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -303,35 +296,37 @@ button {
     position: relative;
     flex: 1;
     background: var(--surface-subdued);
-    padding: 0.25rem 1.25rem;
+    padding: 0.5rem 1.5rem;
     border-radius: var(--border-radius-400);
-    overflow: hidden;
+    background-color: #13b2881c;
 
     h4:first-child {
-      background-image: url(/images/icon-do.svg);
-      background-repeat: no-repeat;
-      background-position: left center;
-      padding-left: 34px;
-      background-size: auto 1.25rem;
-      font-size: var(--font-size-400);
-      font-weight: var(--font-weight-500);
-      letter-spacing: var(--letter-spacing-200);
-      margin-bottom: 1.33rem;
+      @include heading-3;
     }
 
-    &::before {
+    &:after {
       content: '';
       display: block;
       position: absolute;
-      top: 0;
-      right: 0;
+      top: -13px;
       left: 0;
-      height: 3px;
-      background: #13b288;
+      right: 0;
+      height: 28px;
+      width: 28px;
+      margin: 0 auto;
+      background-color: var(--surface);
+      background-image: url(/images/icon-do.svg);
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: cover;
+      border-radius: var(--border-radius-round);
+      z-index: 1;
     }
 
     &[data-type='dont'] {
-      h4 {
+      background-color: #ea584517;
+
+      &:after {
         background-image: url(/images/icon-dont.svg);
       }
 

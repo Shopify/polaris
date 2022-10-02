@@ -22,23 +22,23 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/content/:slug',
-        destination: '/foundations/content/:slug',
+        source: '/foundations/foundations/:slug',
+        destination: '/foundations/:slug',
         permanent: false,
       },
       {
-        source: '/design/:slug',
-        destination: '/foundations/design/:slug',
+        source: '/foundations/content/:slug',
+        destination: '/content/:slug',
         permanent: false,
       },
       {
-        source: '/foundations/:slug',
-        destination: '/foundations/foundations/:slug',
+        source: '/foundations/design/:slug',
+        destination: '/design/:slug',
         permanent: false,
       },
       {
-        source: '/patterns/:slug',
-        destination: '/foundations/patterns/:slug',
+        source: '/foundations/patterns/:slug',
+        destination: '/patterns/:slug',
         permanent: false,
       },
       {
@@ -60,6 +60,16 @@ const nextConfig = {
         source: '/tokens/all-tokens',
         destination: '/tokens/colors',
         permanent: false,
+      },
+      {
+        source: '/tokens',
+        destination: '/tokens/colors',
+        permanent: false,
+      },
+      {
+        source: '/legal/license',
+        destination: 'https://github.com/Shopify/polaris/blob/main/LICENSE.md',
+        permanent: true,
       },
     ];
   },

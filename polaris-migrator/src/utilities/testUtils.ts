@@ -19,11 +19,12 @@ interface TestArgs {
   fixture: string;
   migration: string;
   extension?: string;
+  options?: {[option: string]: any};
 }
 
 export function check(
   dirName: string,
-  {fixture, migration, extension = 'tsx'}: TestArgs,
+  {fixture, migration, extension = 'tsx', options = {}}: TestArgs,
 ) {
   describe(migration, () => {
     it(fixture, async () => {
@@ -37,7 +38,9 @@ export function check(
       );
       // Assumes transform is one level up from tests directory
       const module = await import(path.join(dirName, '..', migration));
-      const output = applyTransform({...module, parser: 'tsx'}, {}, {source});
+      const output = applyTransform({...module, parser: 'tsx'}, options, {
+        source,
+      });
 
       // Format output and expected with prettier for white spaces and line breaks consistency
       expect(prettier.format(output, {parser})).toBe(

@@ -2,9 +2,9 @@
 @import '../../styles/fonts.scss';
 
 .TokenList {
-  --table-border-color: var(--border-color-light);
+  --table-border-color: var(--border-color);
   color: var(--text-strong);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-200);
 
   table {
     border-collapse: collapse;
@@ -25,11 +25,7 @@
   }
 
   td {
-    padding: 1rem;
-
-    &:not(.renderedInSearchResults) & {
-      height: 3.2rem;
-    }
+    padding: 0.66rem 1rem;
   }
 
   th {
@@ -58,12 +54,6 @@
 
     @media (hover: hover) {
       &[data-is-current-result='true'] {
-        &,
-        &:hover {
-          background: var(--search-highlight-color);
-          color: var(--text-strong);
-        }
-
         .TokenName {
           color: var(--text-strong);
         }
@@ -74,42 +64,6 @@
 
         td {
           box-shadow: none;
-        }
-
-        td:first-child {
-          &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: -0.5rem;
-            width: 0.5rem;
-            background: var(--search-highlight-color);
-            border-radius: var(--border-radius-800) 0 0 var(--border-radius-800);
-
-            @media screen and (max-width: $breakpointDesktop) {
-              display: none;
-            }
-          }
-        }
-
-        td:last-child {
-          &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: -0.5rem;
-            width: 0.5rem;
-            background: var(--search-highlight-color);
-            border-radius: 0 var(--border-radius-800) var(--border-radius-800) 0;
-
-            @media screen and (max-width: $breakpointDesktop) {
-              display: none;
-            }
-          }
         }
       }
     }
@@ -219,7 +173,7 @@
 
 .TokenDescription {
   line-height: 1.45;
-  font-size: var(--font-size-50);
+  font-size: var(--font-size-100);
 }
 
 .ClickableItemLink {

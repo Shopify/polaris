@@ -1,6 +1,7 @@
 ---
 title: Version 10 Typography
 description: Learn about what changes are coming to Polaris typography.
+imageUrl: /images/updates/type-new-to-old@2x.png
 keywords:
   - typography
   - type

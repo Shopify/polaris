@@ -162,16 +162,16 @@ describe('getMediaConditions', () => {
       breakpoint1: {
         // Up: sizeInPx / 16
         up: '(min-width: 1em)',
-        // Down: (sizeInPx - 0.05) / 16
-        down: '(max-width: 0.996875em)',
-        // Only: (nextBreakpointSizeInPx - 0.05) / 16
-        only: '(min-width: 1em) and (max-width: 1.996875em)',
+        // Down: (sizeInPx - 0.04) / 16
+        down: '(max-width: 0.9975em)',
+        // Only: (nextBreakpointSizeInPx - 0.04) / 16
+        only: '(min-width: 1em) and (max-width: 1.9975em)',
       },
       breakpoint2: {
         // Up: sizeInPx / 16
         up: '(min-width: 2em)',
-        // Down: (sizeInPx - 0.05) / 16
-        down: '(max-width: 1.996875em)',
+        // Down: (sizeInPx - 0.04) / 16
+        down: '(max-width: 1.9975em)',
         // Only: Same as the up condition as there is no next breakpoint
         only: '(min-width: 2em)',
       },

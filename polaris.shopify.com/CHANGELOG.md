@@ -1,5 +1,55 @@
 # polaris.shopify.com
 
+## 0.19.0
+
+### Minor Changes
+
+- [#7232](https://github.com/Shopify/polaris/pull/7232) [`65722c395`](https://github.com/Shopify/polaris/commit/65722c395d006cd3199549817daa3fc5faca9cae) Thanks [@martenbjork](https://github.com/martenbjork)! - Introduces a new IA that makes the website more scalable and future proof. The site also gets a visual overhaul to accomodate the new content.
+
+### Patch Changes
+
+- [#7304](https://github.com/Shopify/polaris/pull/7304) [`1db6f90cf`](https://github.com/Shopify/polaris/commit/1db6f90cf418087cd8e463c718bb0c42fb94ea1d) Thanks [@jjgali](https://github.com/jjgali)! - Fixed typographical errors in Contributing documentation.
+
+- Updated dependencies [[`a7d9cad7a`](https://github.com/Shopify/polaris/commit/a7d9cad7aa24ea251e42be919cbfcae16676587f)]:
+  - @shopify/polaris-icons@6.4.0
+  - @shopify/polaris@10.4.1
+
+## 0.18.3
+
+### Patch Changes
+
+- [#7289](https://github.com/Shopify/polaris/pull/7289) [`22a07954e`](https://github.com/Shopify/polaris/commit/22a07954ede37af75c505d17e5f6cb88d2f131f5) Thanks [@lgriffee](https://github.com/lgriffee)! - Update breakpoint token documentation
+
+* [#7278](https://github.com/Shopify/polaris/pull/7278) [`6d65feb46`](https://github.com/Shopify/polaris/commit/6d65feb46f768c6879bf4f4390dd3cf1a37c98ce) Thanks [@sarahill](https://github.com/sarahill)! - Updated type principles to be more actionable
+
+- [#7268](https://github.com/Shopify/polaris/pull/7268) [`183a6e91f`](https://github.com/Shopify/polaris/commit/183a6e91f89f75c95b1792da417ee67f350c901a) Thanks [@rmleg](https://github.com/rmleg)! - Fix content guideline formatting for Resource list, Navigation, and Index table.
+
+* [#7280](https://github.com/Shopify/polaris/pull/7280) [`a192e3641`](https://github.com/Shopify/polaris/commit/a192e3641a8629a2ea9e1a1bd5d6c20aaf9a499c) Thanks [@sarahill](https://github.com/sarahill)! - Updated spacing principles to be more actionable.
+
+* Updated dependencies [[`3fd9f6415`](https://github.com/Shopify/polaris/commit/3fd9f6415c0d7e3721eb7462c6777d4816437345), [`8626d6a1b`](https://github.com/Shopify/polaris/commit/8626d6a1b8a2ab50e6aa6074037144d11819734b), [`9b67d1533`](https://github.com/Shopify/polaris/commit/9b67d15332b1f45faa94f9d309ed6fd46f4419a1), [`b34ac1859`](https://github.com/Shopify/polaris/commit/b34ac185973cae94f8e68dc2fc621e3e4679dbaa)]:
+  - @shopify/polaris-tokens@6.1.0
+  - @shopify/polaris@10.4.0
+
+## 0.18.2
+
+### Patch Changes
+
+- [#7253](https://github.com/Shopify/polaris/pull/7253) [`ccc2da16a`](https://github.com/Shopify/polaris/commit/ccc2da16a93ebae3abd98abb0c980a858f7e665e) Thanks [@jjgali](https://github.com/jjgali)! - Fix typo
+
+* [#7230](https://github.com/Shopify/polaris/pull/7230) [`a55193a8a`](https://github.com/Shopify/polaris/commit/a55193a8ad0de90a40de25b5d4909c1692861bc9) Thanks [@lgriffee](https://github.com/lgriffee)! - Add documentation on breakpoint token usage in media queries
+
+* Updated dependencies [[`2b85940ec`](https://github.com/Shopify/polaris/commit/2b85940ecdb497faade08b4605617876c95cbf92), [`a09153335`](https://github.com/Shopify/polaris/commit/a09153335a71de33a48817e605fb9a06c411ce2f), [`a55193a8a`](https://github.com/Shopify/polaris/commit/a55193a8ad0de90a40de25b5d4909c1692861bc9), [`a09153335`](https://github.com/Shopify/polaris/commit/a09153335a71de33a48817e605fb9a06c411ce2f)]:
+  - @shopify/polaris@10.3.3
+  - @shopify/polaris-tokens@6.0.1
+
+## 0.18.1
+
+### Patch Changes
+
+- Updated dependencies [[`29043ca5e`](https://github.com/Shopify/polaris/commit/29043ca5e669150477a78a78a4f5d88823475649), [`17c4fe2ac`](https://github.com/Shopify/polaris/commit/17c4fe2acc0bcd493d0febec06102173cc759aff)]:
+  - @shopify/polaris@10.3.2
+  - @shopify/polaris-icons@6.3.0
+
 ## 0.18.0
 
 ### Minor Changes

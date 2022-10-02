@@ -2,6 +2,7 @@
 title: Code of Conduct
 keywords:
   - open source
+order: 0
 ---
 
 ## Our pledge

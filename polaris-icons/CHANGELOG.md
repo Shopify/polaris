@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- [#7292](https://github.com/Shopify/polaris/pull/7292) [`a7d9cad7a`](https://github.com/Shopify/polaris/commit/a7d9cad7aa24ea251e42be919cbfcae16676587f) Thanks [@clarkjennings](https://github.com/clarkjennings)! - [#7292](https://github.com/Shopify/polaris/pull/7292) - Add a new icon `OrganizationMajor`
+
+## 6.3.0
+
+### Minor Changes
+
+- [#7184](https://github.com/Shopify/polaris/pull/7184) [`17c4fe2ac`](https://github.com/Shopify/polaris/commit/17c4fe2acc0bcd493d0febec06102173cc759aff) Thanks [@leileu](https://github.com/leileu)! - Added CashDollarMinor, CodeMinor, EyeDropperMinor, MeasurementMinor, and MoneyMinor.
+
 ## 6.2.0
 
 ### Minor Changes

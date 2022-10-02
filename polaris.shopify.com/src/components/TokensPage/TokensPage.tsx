@@ -1,24 +1,30 @@
-import styles from "./TokensPage.module.scss";
-import { MetadataGroup, metadata as allTokens } from "@shopify/polaris-tokens";
-import Container from "../Container";
-import { TokenPropertiesWithName } from "../../types";
-import TokenList from "../TokenList";
-import type { NavItem } from "../Nav";
-import Link from "next/link";
-import { slugify } from "../../utils/various";
-import { useRouter } from "next/router";
+import styles from './TokensPage.module.scss';
+import {MetadataGroup, metadata as allTokens} from '@shopify/polaris-tokens';
+import {Status, TokenPropertiesWithName} from '../../types';
+import TokenList from '../TokenList';
+import Link from 'next/link';
+import {slugify} from '../../utils/various';
+import {useRouter} from 'next/router';
+import Page from '../Page';
 
 interface Props {
   tokenGroup:
-    | "breakpoints"
-    | "colors"
-    | "depth"
-    | "font"
-    | "motion"
-    | "shape"
-    | "spacing"
-    | "zIndex";
+    | 'breakpoints'
+    | 'colors'
+    | 'depth'
+    | 'font'
+    | 'motion'
+    | 'shape'
+    | 'spacing'
+    | 'zIndex';
 }
+
+export type NavItem = {
+  title: string;
+  url?: string;
+  status?: Status;
+  children?: NavItem[];
+};
 
 const navItems: NavItem[] = [
   {
@@ -26,7 +32,7 @@ const navItems: NavItem[] = [
     url: `/tokens/colors`,
   },
   {
-    title: "Font",
+    title: 'Font',
     url: `/tokens/font`,
   },
   {
@@ -57,7 +63,7 @@ const navItems: NavItem[] = [
 
 function tokensToFilteredArray(
   filter: string,
-  tokenGroup: MetadataGroup
+  tokenGroup: MetadataGroup,
 ): TokenPropertiesWithName[] {
   return Object.entries(tokenGroup)
     .filter(([name]) => {
@@ -89,7 +95,7 @@ function TokensPage({tokenGroup}: Props) {
     .join('\n');
 
   return (
-    <Container>
+    <Page showTOC={false}>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Tokens</h1>
@@ -132,7 +138,7 @@ function TokensPage({tokenGroup}: Props) {
 
         <style jsx>{keyframeStyles}</style>
       </div>
-    </Container>
+    </Page>
   );
 }
 

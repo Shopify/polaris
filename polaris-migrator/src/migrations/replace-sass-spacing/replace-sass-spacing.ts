@@ -1,8 +1,15 @@
-import {FileInfo} from 'jscodeshift';
+import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser, {Node, WordNode, FunctionNode} from 'postcss-value-parser';
+import valueParser from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+import {
+  NamespaceOptions,
+  namespace,
+  isSassFunction,
+  hasSassFunction,
+  hasNumericOperator,
+} from '../../utilities/sass';
 
 const spacingMap = {
   none: '--p-space-0',
@@ -15,60 +22,68 @@ const spacingMap = {
   'extra-loose': '--p-space-8',
 };
 
-type Spacing = keyof typeof spacingMap;
-
-function isSpacingFn(node: Node): node is FunctionNode {
-  return node.type === 'function' && node.value === 'spacing';
-}
-
-function isOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
-}
+const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
+  Object.keys(spacingMap).includes(spacing as string);
 
 const processed = Symbol('processed');
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'ReplaceSassSpacing',
-  Declaration(decl) {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
+interface PluginOptions extends Options, NamespaceOptions {}
 
-    const parsed = valueParser(decl.value);
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespacedSpacing = namespace('spacing', options);
 
-    // Insert comment if the value contains calculations
-    const containsCalculation = parsed.nodes.some(isOperator);
-    const containsSpacingFn = parsed.nodes.some(isSpacingFn);
-    if (containsCalculation && containsSpacingFn) {
-      const comment = postcss.comment({text: POLARIS_MIGRATOR_COMMENT});
-      decl.parent!.insertBefore(decl, comment);
-    }
+  return {
+    postcssPlugin: 'ReplaceSassSpacing',
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
 
-    parsed.walk((node) => {
-      if (!isSpacingFn(node)) return;
-      const hasNodes = Boolean(node.nodes && node.nodes.length);
-      const spacing = hasNodes ? node.nodes[0].value : '';
-      const newSpacing = spacingMap[spacing as Spacing];
+      const parsedValue = valueParser(decl.value);
 
-      node.value = 'var';
-      node.nodes = hasNodes ? node.nodes : [{type: 'word'} as WordNode];
-      node.nodes[0].value = newSpacing;
-    });
+      if (!hasSassFunction(namespacedSpacing, parsedValue)) return;
 
-    decl.value = parsed.toString();
+      parsedValue.walk((node) => {
+        if (!isSassFunction(namespacedSpacing, node)) return;
 
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
-  },
-});
+        const spacing = node.nodes[0]?.value ?? '';
 
-export default function replaceSassSpacing(file: FileInfo) {
-  return postcss(plugin()).process(file.source, {
+        if (!isSpacing(spacing)) return;
+        const spacingCustomProperty = spacingMap[spacing];
+
+        node.value = 'var';
+        node.nodes = [
+          {
+            type: 'word',
+            value: spacingCustomProperty,
+            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+            sourceEndIndex: spacingCustomProperty.length,
+          },
+          ...node.nodes.slice(1),
+        ];
+      });
+
+      if (hasNumericOperator(parsedValue)) {
+        // Insert comment if the declaration value contains calculations
+        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        decl.before(
+          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+        );
+      } else {
+        decl.value = parsedValue.toString();
+      }
+
+      // @ts-expect-error - Mark the declaration as processed
+      decl[processed] = true;
+    },
+  };
+};
+
+export default function replaceSassSpacing(
+  file: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(file.source, {
     syntax: require('postcss-scss'),
   }).css;
 }
