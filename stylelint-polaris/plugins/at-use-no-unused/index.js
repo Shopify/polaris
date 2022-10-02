@@ -23,7 +23,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
 /** @typedef {AtUseURLNamespace | AtUseAsNamespace} AtUseNamespace The resolved at-use namespace to target in the stylesheet */
 
 /**
- * @typedef {object} AtUseNamespaceResults
+ * @typedef {object} TargetAtUseNamespace
  * @property {boolean} used
  * @property {AtUseURL} atUseURL
  * @property {AtUseURLNamespace} atUseURLNamespace
@@ -32,8 +32,11 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
  */
 
 /**
+ * State for each target at-use namespace in a given stylesheet. Targets are derived from
+ * filtering found at-use URLs with those configured in the rule options.
+ *
  * @typedef {{
- *   [targetAtUseNamespace: AtUseNamespace]: AtUseNamespaceResults
+ *   [targetAtUseNamespace: AtUseNamespace]: TargetAtUseNamespace
  * }} TargetAtUseNamespaces
  */
 
