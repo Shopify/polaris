@@ -1,9 +1,11 @@
-import {FileInfo} from 'jscodeshift';
+import {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
+
+import {NamespaceOptions, identRegExp} from '../../utilities/sass';
 
 /** Mapping of static mixins to replacement declarations */
 const staticMixins = {
-  // Note: The below mixins do accept arguments, but that logic has
+  // Note: The below mixins do accept arguments, but the logic has
   // since been removed from the mixins.
   'text-emphasis-subdued': {
     color: 'var(--p-text-subdued)',
@@ -22,31 +24,45 @@ const isStaticMixin = (
 ): mixinName is keyof typeof staticMixins =>
   Object.keys(staticMixins).includes(mixinName as string);
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'ReplaceStaticMixinsWithDeclarations',
-  AtRule(atRule) {
-    if (atRule.name !== 'include') return;
+interface PluginOptions extends Options, NamespaceOptions {}
 
-    // Extract mixin name e.g. name from `@include name;` or `@include name();`
-    const mixinName = atRule.params.match(/^([a-zA-Z0-9_-]+)/)?.[1];
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespaceRegExp = new RegExp(
+    options.namespace ? String.raw`(?:${options.namespace}\.)` : '',
+  );
 
-    if (!isStaticMixin(mixinName)) return;
+  const namespacedMixinRegExp = new RegExp(
+    String.raw`^${namespaceRegExp.source}(${identRegExp.source})`,
+  );
 
-    atRule.replaceWith(
-      ...Object.entries(staticMixins[mixinName]).map(([prop, value]) =>
-        postcss.decl({
-          prop,
-          value,
-        }),
-      ),
-    );
-  },
-});
+  return {
+    postcssPlugin: 'replace-static-mixins-with-declarations',
+    AtRule(atRule) {
+      if (atRule.name !== 'include') return;
+
+      // Extract mixin name e.g. name from `@include name;` or `@include name();`
+      const mixinName = atRule.params.match(namespacedMixinRegExp)?.[1];
+
+      if (!isStaticMixin(mixinName)) return;
+
+      atRule.replaceWith(
+        ...Object.entries(staticMixins[mixinName]).map(([prop, value]) =>
+          postcss.decl({
+            prop,
+            value,
+          }),
+        ),
+      );
+    },
+  };
+};
 
 export default function replaceStaticMixinsWithDeclarations(
   fileInfo: FileInfo,
+  _: API,
+  options: Options,
 ) {
-  return postcss(plugin()).process(fileInfo.source, {
+  return postcss(plugin(options)).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
 }

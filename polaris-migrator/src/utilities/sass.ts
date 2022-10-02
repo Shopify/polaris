@@ -14,6 +14,12 @@ export function namespace(name: string, options?: NamespaceOptions) {
 }
 
 /**
+ * Non-exhaustive CSS Ident RegExp:
+ * https://www.w3.org/TR/CSS21/syndata.html#:~:text=%5B%2D%5D%3F%7Bnmstart%7D%7Bnmchar%7D*
+ */
+export const identRegExp = /-?[_a-zA-Z][_a-zA-Z0-9-]*/;
+
+/**
  * Checks if a `valueParser` node is a [Sass numeric operator](https://sass-lang.com/documentation/operators/numeric)
  */
 export function isNumericOperator(node: Node): boolean {
