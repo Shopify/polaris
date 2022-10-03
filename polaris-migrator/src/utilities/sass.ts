@@ -1,5 +1,18 @@
 import type {Node, ParsedValue, FunctionNode} from 'postcss-value-parser';
 
+/**
+ * Non-exhaustive CSS ident token RegExp:
+ * - https://drafts.csswg.org/css-syntax-3/#ident-token-diagram
+ * - https://www.w3.org/TR/CSS21/syndata.html#:~:text=%5B%2D%5D%3F%7Bnmstart%7D%7Bnmchar%7D*
+ */
+export const identTokenRegExp = /-?[_a-zA-Z][_a-zA-Z0-9-]*/;
+
+/**
+ * Non-exhaustive Sass module public identifier RegExp:
+ * - https://github.com/sass/sass/blob/main/spec/modules.md#syntax
+ */
+export const publicIdentifierRegExp = /[a-zA-Z][_a-zA-Z0-9-]*/;
+
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || '';
 }

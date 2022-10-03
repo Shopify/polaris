@@ -1,5 +1,11 @@
-import {FileInfo} from 'jscodeshift';
+import {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
+
+import {
+  NamespaceOptions,
+  identTokenRegExp,
+  publicIdentifierRegExp,
+} from '../../utilities/sass';
 
 /** Mapping of static breakpoint mixins from old to new */
 const staticBreakpointMixins = {
@@ -25,25 +31,39 @@ const isStaticBreakpointMixin = (
 ): mixinName is keyof typeof staticBreakpointMixins =>
   Object.keys(staticBreakpointMixins).includes(mixinName as string);
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'ReplaceStaticBreakpointMixins',
-  AtRule(atRule) {
-    if (atRule.name !== 'include') return;
+interface PluginOptions extends Options, NamespaceOptions {}
 
-    // Extract mixin name e.g. name from `@include name;` or `@include name();`
-    const mixinName = atRule.params.match(/^([a-zA-Z0-9_-]+)/)?.[1];
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespacedMixinRegExp = options.namespace
+    ? new RegExp(
+        String.raw`^${options.namespace}\.(${publicIdentifierRegExp.source})`,
+      )
+    : new RegExp(String.raw`^(${identTokenRegExp.source})`);
 
-    if (!isStaticBreakpointMixin(mixinName)) return;
+  return {
+    postcssPlugin: 'ReplaceStaticBreakpointMixins',
+    AtRule(atRule) {
+      if (atRule.name !== 'include') return;
 
-    atRule.assign({
-      name: 'media',
-      params: staticBreakpointMixins[mixinName],
-    });
-  },
-});
+      // Extract mixin name e.g. name from `@include name;` or `@include name();`
+      const mixinName = atRule.params.match(namespacedMixinRegExp)?.[1];
 
-export default function replaceStaticBreakpointMixins(fileInfo: FileInfo) {
-  return postcss(plugin()).process(fileInfo.source, {
+      if (!isStaticBreakpointMixin(mixinName)) return;
+
+      atRule.assign({
+        name: 'media',
+        params: staticBreakpointMixins[mixinName],
+      });
+    },
+  };
+};
+
+export default function replaceStaticMixinsWithDeclarations(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
 }
