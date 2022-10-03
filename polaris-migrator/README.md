@@ -74,7 +74,7 @@ npx @shopify/polaris-migrator replace-sass-spacing <path>
 
 ### `replace-static-breakpoint-mixins`
 
-Replace legacy static breakpoint mixins with the new Polaris tokens [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
+Replace legacy static breakpoint mixins with the new Polaris [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
 
 ```diff
 - @include page-content-when-layout-not-stacked {}
