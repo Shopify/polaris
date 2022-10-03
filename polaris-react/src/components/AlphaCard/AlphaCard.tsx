@@ -10,10 +10,7 @@ import React from 'react';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import {Box} from '../Box';
 
-type CardElevationTokensScale = Extract<
-  DepthShadowAlias,
-  'card' | 'transparent'
->;
+type CardShadowTokensScale = Extract<DepthShadowAlias, 'card' | 'transparent'>;
 
 type CardBackgroundColorTokenScale = Extract<
   ColorsTokenName,
@@ -25,7 +22,7 @@ export interface AlphaCardProps {
   children?: React.ReactNode;
   background?: CardBackgroundColorTokenScale;
   hasBorderRadius?: boolean;
-  elevation?: CardElevationTokensScale;
+  shadow?: CardShadowTokensScale;
   padding?: SpacingSpaceScale;
   roundedAbove?: BreakpointsAlias;
 }
@@ -34,7 +31,7 @@ export const AlphaCard = ({
   children,
   background = 'surface',
   hasBorderRadius: hasBorderRadiusProp = true,
-  elevation = 'card',
+  shadow = 'card',
   padding = '5',
   roundedAbove,
 }: AlphaCardProps) => {
@@ -51,7 +48,7 @@ export const AlphaCard = ({
     <Box
       background={background}
       padding={padding}
-      shadow={elevation}
+      shadow={shadow}
       {...(hasBorderRadius && {borderRadius: defaultBorderRadius})}
     >
       {children}

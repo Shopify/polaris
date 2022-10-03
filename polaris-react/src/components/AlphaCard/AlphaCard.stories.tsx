@@ -60,7 +60,7 @@ export function BorderRadiusRoundedAbove() {
 
 export function Flat() {
   return (
-    <AlphaCard elevation="transparent">
+    <AlphaCard shadow="transparent">
       <AlphaStack spacing="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
