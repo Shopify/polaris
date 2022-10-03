@@ -14,7 +14,9 @@ describe('Columns', () => {
     const columns = mountWithApp(<Columns spacing={{md: '1'}} />);
 
     expect(columns).toContainReactComponent('div', {
-      style: {'--pc-columns-gap-md': 'var(--p-space-1)'} as React.CSSProperties,
+      style: {
+        '--pc-columns-space-md': 'var(--p-space-1)',
+      } as React.CSSProperties,
     });
   });
 

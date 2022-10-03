@@ -29,19 +29,19 @@ export function Columns({columns, children, spacing}: ColumnsProps) {
     '--pc-columns-md': formatColumns(columns?.md),
     '--pc-columns-lg': formatColumns(columns?.lg),
     '--pc-columns-xl': formatColumns(columns?.xl),
-    '--pc-columns-spacing-xs': spacing?.xs
+    '--pc-columns-space-xs': spacing?.xs
       ? `var(--p-space-${spacing?.xs})`
       : undefined,
-    '--pc-columns-spacing-sm': spacing?.sm
+    '--pc-columns-space-sm': spacing?.sm
       ? `var(--p-space-${spacing?.sm})`
       : undefined,
-    '--pc-columns-spacing-md': spacing?.md
+    '--pc-columns-space-md': spacing?.md
       ? `var(--p-space-${spacing?.md})`
       : undefined,
-    '--pc-columns-spacing-lg': spacing?.lg
+    '--pc-columns-space-lg': spacing?.lg
       ? `var(--p-space-${spacing?.lg})`
       : undefined,
-    '--pc-columns-spacing-xl': spacing?.xl
+    '--pc-columns-space-xl': spacing?.xl
       ? `var(--p-space-${spacing?.xl})`
       : undefined,
   } as React.CSSProperties;
