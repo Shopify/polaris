@@ -31,10 +31,7 @@ const isValidElement = (
   return Object.keys(zIndexMap).includes(element as string);
 };
 
-const hasMoreThanOneArgument = (node: FunctionNode) => {
-  if (!node.nodes || !Array.isArray(node.nodes)) return false;
-  return node.nodes && node.nodes.length > 1;
-};
+const hasMoreThanOneArgument = (node: FunctionNode) => node.nodes.length > 1;
 
 const plugin = (options: PluginOptions = {}): Plugin => {
   const namespace = options?.namespace || '';
