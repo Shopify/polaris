@@ -1,10 +1,10 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Tile, Text} from '@shopify/polaris';
+import {Tiles, Text} from '@shopify/polaris';
 
 export default {
-  component: Tile,
-} as ComponentMeta<typeof Tile>;
+  component: Tiles,
+} as ComponentMeta<typeof Tiles>;
 
 const styles = {
   background: 'var(--p-surface)',
@@ -26,17 +26,17 @@ const children = Array.from(Array(4)).map((ele, index) => (
 
 export function Default() {
   return (
-    <Tile columns={{xs: 2}} gap={{xs: '2'}}>
+    <Tiles columns={{xs: 2}} gap={{xs: '2'}}>
       {children}
-    </Tile>
+    </Tiles>
   );
 }
 
 export function LargeSpacing() {
   return (
-    <Tile columns={{xs: 2}} gap={{xs: '10'}}>
+    <Tiles columns={{xs: 2}} gap={{xs: '10'}}>
       {children}
-    </Tile>
+    </Tiles>
   );
 }
 
@@ -53,8 +53,8 @@ export function ManyColumns() {
   ));
 
   return (
-    <Tile columns={{xs: 5}} gap={{xs: '2'}}>
+    <Tiles columns={{xs: 5}} gap={{xs: '2'}}>
       {children}
-    </Tile>
+    </Tiles>
   );
 }

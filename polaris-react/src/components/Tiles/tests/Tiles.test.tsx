@@ -1,16 +1,16 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Tile} from '../Tile';
+import {Tiles} from '../Tiles';
 
 const Children = () => <p>This is a tile</p>;
 
-describe('<Tile />', () => {
+describe('<Tiles />', () => {
   it('renders children', () => {
     const tile = mountWithApp(
-      <Tile columns={{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}} gap={{xs: '2'}}>
+      <Tiles columns={{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}} gap={{xs: '2'}}>
         <Children />
-      </Tile>,
+      </Tiles>,
     );
 
     expect(tile).toContainReactComponent(Children);
@@ -18,9 +18,9 @@ describe('<Tile />', () => {
 
   it('uses custom properties when passed in', () => {
     const tile = mountWithApp(
-      <Tile columns={{xs: 2, lg: 2}} gap={{xs: '2'}}>
+      <Tiles columns={{xs: 2, lg: 2}} gap={{xs: '2'}}>
         <Children />
-      </Tile>,
+      </Tiles>,
     );
 
     expect(tile).toContainReactComponent('div', {

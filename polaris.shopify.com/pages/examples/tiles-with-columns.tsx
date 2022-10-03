@@ -1,5 +1,5 @@
 import React from 'react';
-import {Tile, Text} from '@shopify/polaris';
+import {Tiles, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -10,7 +10,7 @@ const styles = {
   padding: 'var(--p-space-4)',
 };
 
-const children = Array.from(Array(2)).map((ele, index) => (
+const children = Array.from(Array(8)).map((ele, index) => (
   <div key={index} style={styles}>
     <Text as="h2" variant="headingMd">
       Sales
@@ -21,14 +21,14 @@ const children = Array.from(Array(2)).map((ele, index) => (
   </div>
 ));
 
-function TileWithSpacingExample() {
+function TilesWithColumnsExample() {
   return (
     <div style={{width: '500px'}}>
-      <Tile columns={{xs: 1}} gap={{xs: '5'}}>
+      <Tiles columns={{xs: 4}} gap={{xs: '2'}}>
         {children}
-      </Tile>
+      </Tiles>
     </div>
   );
 }
 
-export default withPolarisExample(TileWithSpacingExample);
+export default withPolarisExample(TilesWithColumnsExample);

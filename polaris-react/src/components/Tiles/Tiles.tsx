@@ -4,7 +4,7 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import styles from './Tile.scss';
+import styles from './Tiles.scss';
 
 type Columns = {
   [Breakpoint in BreakpointsAlias]?: number | string;
@@ -14,7 +14,7 @@ type Gap = {
   [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
 };
 
-export interface TileProps {
+export interface TilesProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
   /** Adjust spacing between elements */
@@ -23,7 +23,7 @@ export interface TileProps {
   columns?: Columns;
 }
 
-export const Tile = ({children, gap, columns}: TileProps) => {
+export const Tiles = ({children, gap, columns}: TilesProps) => {
   const style = {
     '--pc-tile-gap-xs': gap?.xs ? `var(--p-space-${gap?.xs})` : undefined,
     '--pc-tile-gap-sm': gap?.sm ? `var(--p-space-${gap?.sm})` : undefined,
@@ -38,7 +38,7 @@ export const Tile = ({children, gap, columns}: TileProps) => {
   } as React.CSSProperties;
 
   return (
-    <div className={styles.Tile} style={style}>
+    <div className={styles.Tiles} style={style}>
       {children}
     </div>
   );
