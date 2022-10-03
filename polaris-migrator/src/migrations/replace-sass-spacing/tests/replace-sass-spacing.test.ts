@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
 const migration = 'replace-sass-spacing';
-const fixtures = ['replace-spacing', 'with-namespace'];
+const fixtures = ['calc-examples'];
 
 for (const fixture of fixtures) {
   check(__dirname, {

@@ -71,3 +71,37 @@ export function hasSassFunction(
 
   return containsSassFunction;
 }
+
+/**
+ * Check whether a string has Sass interpolation
+ */
+export function hasSassInterpolation(string: string) {
+  return /#\{.+?\}/.test(string);
+}
+
+/**
+ * Check whether a function is a standard CSS function
+ */
+export function isStandardSyntaxFunction(node: Node) {
+  // Function nodes without names are things in parentheses like Sass lists
+  if (!node.value) {
+    return false;
+  }
+
+  if (node.value.startsWith('#{')) {
+    return false;
+  }
+
+  return true;
+}
+/**
+ * Check whether a math function is standard
+ */
+export function isStandardSyntaxMathFunction(mathFunction: string) {
+  // SCSS variable
+  if (mathFunction.includes('$')) {
+    return false;
+  }
+
+  return true;
+}

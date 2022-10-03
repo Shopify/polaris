@@ -1,14 +1,13 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+import valueParser, {Node} from 'postcss-value-parser';
 
-import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
+// import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   NamespaceOptions,
   namespace,
   isSassFunction,
-  hasSassFunction,
-  hasNumericOperator,
+  isNumericOperator,
 } from '../../utilities/sass';
 
 const spacingMap = {
@@ -39,38 +38,81 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       if (decl[processed]) return;
 
       const parsedValue = valueParser(decl.value);
+      const contains = {
+        spacingFn: false,
+        operator: false,
+        mathModule: false,
+        calcFn: false,
+      };
 
-      if (!hasSassFunction(namespacedSpacing, parsedValue)) return;
-
+      // Replace spacing functions with custom properties
       parsedValue.walk((node) => {
-        if (!isSassFunction(namespacedSpacing, node)) return;
+        if (isNumericOperator(node)) contains.operator = true;
+        if (isSassFunction('math.div', node)) contains.mathModule = true;
+        if (isSassFunction('calc', node)) contains.calcFn = true;
+        if (isSassFunction(namespacedSpacing, node)) {
+          contains.spacingFn = true;
+          const spacing = node.nodes[0]?.value ?? '';
 
-        const spacing = node.nodes[0]?.value ?? '';
+          if (!isSpacing(spacing)) return;
+          const spacingCustomProperty = spacingMap[spacing];
 
-        if (!isSpacing(spacing)) return;
-        const spacingCustomProperty = spacingMap[spacing];
-
-        node.value = 'var';
-        node.nodes = [
-          {
-            type: 'word',
-            value: spacingCustomProperty,
-            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-            sourceEndIndex: spacingCustomProperty.length,
-          },
-          ...node.nodes.slice(1),
-        ];
+          node.value = 'var';
+          node.nodes = [
+            {
+              type: 'word',
+              value: spacingCustomProperty,
+              sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+              sourceEndIndex: spacingCustomProperty.length,
+            },
+          ];
+        }
       });
 
-      if (hasNumericOperator(parsedValue)) {
-        // Insert comment if the declaration value contains calculations
-        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
-        decl.before(
-          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+      parsedValue.walk((node, i, nodes) => {
+        // Ignore if there is already a calc()
+        if (!node || contains.calcFn) return false;
+
+        // Only process multiplication operators
+        if (!(node.type === 'word' && node.value === '*')) return;
+        const isWordOrFunction = (node: Node) =>
+          node.type === 'word' || node.type === 'function';
+        const operatorIndex = i;
+        const leftOperandIndex = nodes.findIndex(
+          (node, i) => i < operatorIndex && isWordOrFunction(node),
         );
-      } else {
-        decl.value = parsedValue.toString();
-      }
+        const rightOperandIndex = nodes.findIndex(
+          (node, i) => i > operatorIndex && isWordOrFunction(node),
+        );
+
+        // Extract modified operands
+        const calcNodes = nodes.slice(leftOperandIndex, rightOperandIndex + 1);
+
+        // Replace expression nodes with a new calc node
+        nodes.splice(
+          leftOperandIndex,
+          rightOperandIndex - leftOperandIndex + 1,
+          {
+            after: '',
+            before: '',
+            nodes: calcNodes,
+            type: 'function',
+            value: 'calc',
+          },
+        );
+      });
+
+      // if (contains.calcFn) {
+      //   // Insert comment if the declaration value contains calculations
+      //   decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      //   decl.before(
+      //     postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+      //   );
+      // } else {
+      //   decl.value = parsedValue.toString();
+      // }
+
+      decl.value = parsedValue.toString();
 
       // @ts-expect-error - Mark the declaration as processed
       decl[processed] = true;
