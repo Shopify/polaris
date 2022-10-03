@@ -72,7 +72,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           containsSecondArgument = true;
           node.value = 'map-get';
         } else {
-          const element = node.nodes[0].value ?? '';
+          const element = node.nodes[0]?.value ?? '';
           if (!isValidElement(element)) return;
           const zIndexCustomProperty = zIndexMap[element];
 
