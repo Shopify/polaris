@@ -7,6 +7,10 @@ import chalk from 'chalk';
 import isGitClean from 'is-git-clean';
 import globby from 'globby';
 
+export const migrations = fs.readdirSync(
+  path.resolve(__dirname, './migrations'),
+);
+
 export interface MigrateOptions {
   dry?: boolean;
   print?: boolean;

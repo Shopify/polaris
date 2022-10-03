@@ -1,6 +1,7 @@
 import meow, {AnyFlag} from 'meow';
+import chalk from 'chalk';
 
-import {migrate} from './migrate';
+import {migrate, migrations} from './migrate';
 import {cliConfig} from './constants';
 
 const help = `
@@ -30,5 +31,16 @@ const {input, flags} = meow({
 });
 
 export async function run() {
+  const command = input[0];
+
+  if (command === 'list' || command === 'ls') {
+    /* eslint-disable no-console */
+    console.log('All available migrations\n');
+    console.log(chalk.bold('MIGRATIONS'));
+    console.log(migrations.map((migration) => `  ${migration}`).join('\n'));
+    /* eslint-enable no-console */
+    return;
+  }
+
   await migrate(input[0], input[1], flags);
 }

@@ -24,7 +24,8 @@
   },
   "dependencies": {
     "@oclif/core": "^1.13.10",
-    "@shopify/polaris-migrator": "^0.2.1"
+    "@shopify/polaris-migrator": "^0.2.1",
+    "chalk": "^5.0.1"
   },
   "devDependencies": {
     "typescript": "^4.7.4"
