@@ -90,16 +90,6 @@ export interface BoxProps {
   /** Color of children */
   color?: ColorTokenScale;
   /** Spacing outside of container */
-  margin?: SpacingSpaceScale;
-  /** Bottom spacing outside of container */
-  marginBottom?: SpacingSpaceScale;
-  /** Left spacing outside of container */
-  marginLeft?: SpacingSpaceScale;
-  /** Right spacing outside of container */
-  marginRight?: SpacingSpaceScale;
-  /** Top spacing outside of container */
-  marginTop?: SpacingSpaceScale;
-  /** Maximum width of container */
   maxWidth?: string;
   /** Spacing around children */
   padding?: SpacingSpaceScale;
@@ -132,11 +122,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusTopRight,
       children,
       color,
-      margin,
-      marginBottom,
-      marginLeft,
-      marginRight,
-      marginTop,
       maxWidth,
       padding,
       paddingBottom,
@@ -164,13 +149,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       topLeft: borderRadiusTopLeft ? borderRadiusTopLeft : borderRadius,
       topRight: borderRadiusTopRight ? borderRadiusTopRight : borderRadius,
     } as BorderRadius;
-
-    const margins = {
-      bottom: marginBottom ? marginBottom : margin,
-      left: marginLeft ? marginLeft : margin,
-      right: marginRight ? marginRight : margin,
-      top: marginTop ? marginTop : margin,
-    } as Spacing;
 
     const paddings = {
       bottom: paddingBottom ? paddingBottom : padding,
@@ -216,18 +194,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           }
         : undefined),
       ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
-      ...(margins.bottom
-        ? {'--pc-box-margin-bottom': `var(--p-space-${margins.bottom})`}
-        : undefined),
-      ...(margins.left
-        ? {'--pc-box-margin-left': `var(--p-space-${margins.left})`}
-        : undefined),
-      ...(margins.right
-        ? {'--pc-box-margin-right': `var(--p-space-${margins.right})`}
-        : undefined),
-      ...(margins.top
-        ? {'--pc-box-margin-top': `var(--p-space-${margins.top})`}
-        : undefined),
       ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}px`} : undefined),
       ...(paddings.bottom
         ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}

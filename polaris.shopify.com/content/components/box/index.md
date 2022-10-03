@@ -12,10 +12,6 @@ examples:
     title: Padding
     description: >-
       Spacing inside Box can be set with the padding properties. Padding options are provided using our spacing tokens. There are 5 different padding properties: padding, paddingLeft, paddingRight, paddingTop, and paddingBottom.
-  - fileName: box-with-margin.tsx
-    title: Margin
-    description: >-
-      Spacing outside Box can be set with the margin properties. Padding options are provided using our spacing tokens. There are 5 different margin properties: margin, marginLeft, marginRight, marginTop, and marginBottom.
   - fileName: box-with-border-radius.tsx
     title: Border radius
     description: >-
