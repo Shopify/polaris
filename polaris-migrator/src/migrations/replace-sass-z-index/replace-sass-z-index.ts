@@ -2,6 +2,7 @@ import type {API, FileInfo, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser, {FunctionNode, Node} from 'postcss-value-parser';
 
+import {isNumericOperator} from '../../utilities/sass';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
 interface PluginOptions extends Options {
@@ -9,16 +10,6 @@ interface PluginOptions extends Options {
 }
 
 const processed = Symbol('processed');
-
-function isNumericOperator(node: Node): boolean {
-  return (
-    node.value === '+' ||
-    node.value === '-' ||
-    node.value === '*' ||
-    node.value === '/' ||
-    node.value === '%'
-  );
-}
 
 const zIndexMap = {
   content: '--p-z-1',
