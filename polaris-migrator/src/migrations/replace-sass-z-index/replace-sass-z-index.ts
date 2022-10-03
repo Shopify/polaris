@@ -84,9 +84,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
               sourceEndIndex: zIndexCustomProperty.length,
             },
-            // Do we need this??
-            // Initial thought is no, we don't want to replicate additional arguments.
-            // ...node.nodes.slice(1),
           ];
         }
       });
