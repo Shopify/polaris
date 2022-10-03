@@ -10,8 +10,8 @@ status:
 examples:
   - fileName: columns-default.tsx
     title: Default
-  - fileName: columns-with-varying-gap.tsx
-    title: With varying gap
+  - fileName: columns-with-varying-spacing.tsx
+    title: With varying spacing
   - fileName: columns-with-free-and-fixed-widths.tsx
     title: With free and fixed widths
 ---

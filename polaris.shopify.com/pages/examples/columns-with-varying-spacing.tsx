@@ -8,7 +8,7 @@ function ColumnsWithVaryingGapExample() {
     <div style={{width: '500px'}}>
       <Columns
         columns={{xs: 3}}
-        gap={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}
+        spacing={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}
       >
         <div style={{background: 'var(--p-surface-success)'}}>Column one</div>
         <div style={{background: 'var(--p-surface-success)'}}>Column two</div>
