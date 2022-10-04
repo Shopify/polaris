@@ -9,6 +9,15 @@ import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
 
+jest.mock('../../../hooks/use-is-bulk-actions-sticky', () => ({
+  useIsBulkActionsSticky: () => ({
+    bulkActionsIntersectionRef: null,
+    tableMeasurerRef: null,
+    isBulkActionsSticky: false,
+    bulkActionsAbsoluteOffset: 0,
+  }),
+}));
+
 const defaultEvent = {
   preventDefault: noop,
   stopPropagation: noop,

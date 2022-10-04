@@ -47,7 +47,6 @@ export function SelectAllActions({
     <UnstyledButton
       className={styles.AllAction}
       onClick={paginatedSelectAllAction.onAction}
-      plain
       size="slim"
       disabled={disabled}
     >
@@ -72,7 +71,6 @@ export function SelectAllActions({
     selectMode,
     onToggleAll,
     disabled,
-    plain: !smallScreen,
     autoWidth: true,
     ariaLive,
   };
@@ -85,7 +83,11 @@ export function SelectAllActions({
         );
         return (
           <div className={wrapperClasses}>
-            <CheckableButton {...checkableButtonProps} />
+            {smallScreen ? (
+              <CheckableButton {...checkableButtonProps} />
+            ) : (
+              <CheckableButton {...checkableButtonProps} plain />
+            )}
             {paginatedSelectAllMarkup}
           </div>
         );

@@ -34,6 +34,15 @@ jest.mock('../../../utilities/debounce', () => ({
   },
 }));
 
+jest.mock('../hooks/use-is-bulk-actions-sticky', () => ({
+  useIsBulkActionsSticky: () => ({
+    bulkActionsIntersectionRef: null,
+    tableMeasurerRef: null,
+    isBulkActionsSticky: false,
+    bulkActionsAbsoluteOffset: 0,
+  }),
+}));
+
 const mockTableItems = [
   {
     id: 'item-1',

@@ -14,7 +14,8 @@
 }
 
 .IndexTableWithBulkActions {
-  padding-bottom: var(--p-space-4);
+  --pc-index-table-bulk-actions-offset: 100px;
+  padding-bottom: var(--pc-index-table-bulk-actions-offset);
 }
 
 .LoadingContainer-enter {
@@ -489,15 +490,20 @@ $loading-panel-height: 53px;
 
 .BulkActionsWrapper {
   visibility: visible;
-  position: sticky;
+  position: absolute;
   z-index: var(--pc-index-table-bulk-actions);
   left: 0;
-  bottom: var(--p-space-4);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: var(--p-space-4);
+}
+
+.BulkActionsWrapperSticky {
+  position: fixed;
+  top: auto;
+  bottom: var(--p-space-4);
 }
 
 .SelectAllActionsWrapper {

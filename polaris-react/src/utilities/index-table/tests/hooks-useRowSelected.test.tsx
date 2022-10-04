@@ -5,6 +5,18 @@ import {mountWithApp} from 'tests/utilities';
 import {IndexTable, IndexTableProps} from '../../../components/IndexTable';
 import {useRowSelected} from '../hooks';
 
+jest.mock(
+  '../../../components/IndexTable/hooks/use-is-bulk-actions-sticky',
+  () => ({
+    useIsBulkActionsSticky: () => ({
+      bulkActionsIntersectionRef: null,
+      tableMeasurerRef: null,
+      isBulkActionsSticky: false,
+      bulkActionsAbsoluteOffset: 0,
+    }),
+  }),
+);
+
 function Component() {
   const selected = useRowSelected();
   const content = selected ? 'Selected' : 'Unselected';

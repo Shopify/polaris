@@ -5,6 +5,18 @@ import {mountWithApp} from 'tests/utilities';
 import {IndexTable, IndexTableProps} from '../../../components/IndexTable';
 import {useRowHovered} from '../hooks';
 
+jest.mock(
+  '../../../components/IndexTable/hooks/use-is-bulk-actions-sticky',
+  () => ({
+    useIsBulkActionsSticky: () => ({
+      bulkActionsIntersectionRef: null,
+      tableMeasurerRef: null,
+      isBulkActionsSticky: false,
+      bulkActionsAbsoluteOffset: 0,
+    }),
+  }),
+);
+
 function Component() {
   const hovered = useRowHovered();
   const content = hovered ? 'In' : 'Out';

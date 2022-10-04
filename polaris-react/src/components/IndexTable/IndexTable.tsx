@@ -38,6 +38,7 @@ import type {NonEmptyArray} from '../../types';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
+import {useIsBulkActionsSticky} from './hooks/use-is-bulk-actions-sticky';
 import styles from './IndexTable.scss';
 
 interface IndexTableHeadingBase {
@@ -166,6 +167,12 @@ function IndexTableBase({
   const scrollContainerElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
+  const {
+    bulkActionsIntersectionRef,
+    tableMeasurerRef,
+    isBulkActionsSticky,
+    bulkActionsAbsoluteOffset,
+  } = useIsBulkActionsSticky();
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
@@ -545,14 +552,23 @@ function IndexTableBase({
   const shouldShowBulkActions =
     (bulkActionsSelectable && selectedItemsCount) || isSmallScreenSelectable;
 
-  const bulkActionClassNames = classNames(styles.BulkActionsWrapper);
+  const bulkActionClassNames = classNames(
+    styles.BulkActionsWrapper,
+    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
+  );
 
   const shouldShowActions = !condensed || selectedItemsCount;
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
 
   const bulkActionsMarkup = shouldShowBulkActions ? (
-    <div className={bulkActionClassNames} data-condensed={condensed}>
+    <div
+      className={bulkActionClassNames}
+      data-condensed={condensed}
+      style={{
+        top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+      }}
+    >
       {loadingMarkup}
 
       <BulkActions
@@ -644,6 +660,7 @@ function IndexTableBase({
           return stickyContent;
         }}
       </Sticky>
+      {bulkActionsMarkup}
     </div>
   );
 
@@ -754,11 +771,11 @@ function IndexTableBase({
   return (
     <>
       <div className={styles.IndexTable}>
-        <div className={bulkActionsWrapperClassNames}>
+        <div className={bulkActionsWrapperClassNames} ref={tableMeasurerRef}>
           {!shouldShowBulkActions && !condensed && loadingMarkup}
           {tableContentMarkup}
-          {bulkActionsMarkup}
         </div>
+        <div ref={bulkActionsIntersectionRef} />
       </div>
       {scrollBarMarkup}
     </>

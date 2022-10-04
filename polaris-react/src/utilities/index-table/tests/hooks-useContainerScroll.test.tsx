@@ -9,6 +9,18 @@ import {
 } from '../../../components/IndexTable';
 import {useContainerScroll} from '../hooks';
 
+jest.mock(
+  '../../../components/IndexTable/hooks/use-is-bulk-actions-sticky',
+  () => ({
+    useIsBulkActionsSticky: () => ({
+      bulkActionsIntersectionRef: null,
+      tableMeasurerRef: null,
+      isBulkActionsSticky: false,
+      bulkActionsAbsoluteOffset: 0,
+    }),
+  }),
+);
+
 function Component({condensed}: {condensed?: boolean}) {
   const {scrollableContainer, canScrollLeft, canScrollRight} =
     useContainerScroll();

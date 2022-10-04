@@ -3,6 +3,15 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Cell} from '../Cell';
 
+jest.mock('../../../hooks/use-is-bulk-actions-sticky', () => ({
+  useIsBulkActionsSticky: () => ({
+    bulkActionsIntersectionRef: null,
+    tableMeasurerRef: null,
+    isBulkActionsSticky: false,
+    bulkActionsAbsoluteOffset: 0,
+  }),
+}));
+
 describe('<Cell />', () => {
   it('renders a table data tag', () => {
     const cell = mountWithTable(<Cell />);

@@ -16,6 +16,15 @@ jest.mock('../../../../../utilities/debounce', () => ({
   debounce: (callback: () => void) => () => callback(),
 }));
 
+jest.mock('../../../hooks/use-is-bulk-actions-sticky', () => ({
+  useIsBulkActionsSticky: () => ({
+    bulkActionsIntersectionRef: null,
+    tableMeasurerRef: null,
+    isBulkActionsSticky: false,
+    bulkActionsAbsoluteOffset: 0,
+  }),
+}));
+
 describe('<Checkbox />', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
   let setRootPropertySpy: jest.SpyInstance;

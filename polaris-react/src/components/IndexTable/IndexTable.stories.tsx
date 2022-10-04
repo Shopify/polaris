@@ -579,27 +579,29 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   );
 
   return (
-    <Card>
-      <IndexTable
-        resourceName={resourceName}
-        itemCount={customers.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
-        hasMoreItems
-        bulkActions={bulkActions}
-        promotedBulkActions={promotedBulkActions}
-        headings={[
-          {title: 'Name'},
-          {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
-        ]}
-      >
-        {rowMarkup}
-      </IndexTable>
-    </Card>
+    <div style={{padding: 'var(--p-space-4)'}}>
+      <Card>
+        <IndexTable
+          resourceName={resourceName}
+          itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
+          hasMoreItems
+          bulkActions={bulkActions}
+          promotedBulkActions={promotedBulkActions}
+          headings={[
+            {title: 'Name'},
+            {title: 'Location'},
+            {title: 'Order count'},
+            {title: 'Amount spent'},
+          ]}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </Card>
+    </div>
   );
 }
 
