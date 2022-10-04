@@ -55,6 +55,12 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   const lastMenuGroup = [...groups].pop();
   const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
 
+  console.log('render');
+
+  useEffect(() => {
+    console.log('mount');
+  }, []);
+
   const handleActionsOffsetWidth = useCallback((width: number) => {
     actionWidthsRef.current = [...actionWidthsRef.current, width];
   }, []);
@@ -70,6 +76,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   );
 
   const updateActions = useCallback(() => {
+    console.log('updateActions');
     let actionsAndGroups = [...actions, ...groups];
 
     if (groups.length > 0) {
@@ -86,6 +93,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       actionsAndGroups.length,
     );
 
+    console.log('setMeasuredActions 1');
     setMeasuredActions({showable, rolledUp});
   }, [actions, groups, measuredActions.showable.length]);
 
@@ -97,10 +105,13 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       return;
     }
 
+    console.log('measureActions');
+
     const actionsAndGroups = [...actions, ...groups];
 
     if (actionsAndGroups.length === 1) {
       setMeasuredActions({showable: actionsAndGroups, rolledUp: []});
+      console.log('setMeasuredActions 2');
       return;
     }
 
@@ -138,7 +149,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         rollupActiveRef.current = isRollupActive;
       }
     }
-
+    console.log('setMeasuredActions 3');
     setMeasuredActions({
       showable: newShowableActions,
       rolledUp: newRolledUpActions,
@@ -176,9 +187,11 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       timesMeasured.current >= 2 &&
       [...actions, ...groups].length === actionsAndGroupsLengthRef.current
     ) {
+      console.log('call updateActions');
       updateActions();
       return;
     }
+    console.log('call measureActions');
     measureActions();
   }, [actions, groups, measureActions, updateActions]);
 
