@@ -169,6 +169,8 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       debounce(
         () => {
           if (!actionsLayoutRef.current) return;
+          // eslint-disable-next-line no-console
+          console.log('resize');
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
           // Set timesMeasured to 0 to allow re-measuring
           timesMeasured.current = 0;
