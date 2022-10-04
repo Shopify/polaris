@@ -34,6 +34,12 @@ const targetProps = [
   'margin-block',
   'margin-block-start',
   'margin-block-end',
+  'gap',
+  'grid-gap',
+  'row-gap',
+  'grid-row-gap',
+  'column-gap',
+  'grid-column-gap',
 ] as const;
 
 // Mapping of spacing tokens and their corresponding px values

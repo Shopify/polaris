@@ -7,24 +7,35 @@
   padding: 0;
   padding: 1;
   padding: 2;
+  gap: 0;
 
   // Single shorthand pixels
   padding: 16px;
   padding: 10px;
+  gap: 16px;
+  gap: 10px;
 
   // Single shorthand rems
   padding: 1rem;
   padding: 10rem;
+  gap: 1rem;
+  gap: 10rem;
 
   // Double shorthand pixels
   padding: 16px 16px;
   padding: 10px 10px;
   padding: 16px 10px;
+  gap: 16px 16px;
+  gap: 10px 10px;
+  gap: 16px 10px;
 
   // Double shorthand rems
   padding: 1rem 1rem;
   padding: 10rem 10rem;
   padding: 1rem 10rem;
+  gap: 1rem 1rem;
+  gap: 10rem 10rem;
+  gap: 1rem 10rem;
 
   // Double shorthand mixed (px, rem, unitless)
   padding: 16px 1rem;
@@ -33,11 +44,20 @@
   padding: 10px 1rem;
   padding: 0 16px;
   padding: 1rem 0;
+  gap: 16px 1rem;
+  gap: 10px 10rem;
+  gap: 16px 10rem;
+  gap: 10px 1rem;
+  gap: 0 16px;
+  gap: 1rem 0;
 
   // Double shorthand mixed edge cases
   padding: 16px 4in;
   padding: 16px 1em;
   padding: 16px -16px;
+  gap: 16px 4in;
+  gap: 16px 1em;
+  gap: 16px -16px;
 
   // Unsupported transforms with comments
   padding: 16px + 16px;
@@ -48,6 +68,14 @@
   padding: rem($var * 16px);
   padding: calc(16px + 16px);
   padding: 16px + #{16px + 16px};
+  gap: 16px + 16px;
+  gap: 16px + 16px 16px;
+  gap: (16px + 16px) 16px;
+  gap: $var + 16px;
+  gap: rem(16px) + 16px;
+  gap: rem($var * 16px);
+  gap: calc(16px + 16px);
+  gap: 16px + #{16px + 16px};
 
   // Unsupported transforms without comments
   padding: rem(16px);
@@ -61,4 +89,15 @@
   // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
   padding: -16px;
   padding: -10px;
+  gap: rem(16px);
+  gap: #{16px + 16px};
+  gap: layout-width(nav);
+  gap: 10em;
+  gap: var(--var);
+  gap: var(--p-space-4);
+  gap: var(--p-space-4, 16px);
+  // Skip negative lengths. Need to discuss replacement strategy e.g.
+  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
+  gap: -16px;
+  gap: -10px;
 }
