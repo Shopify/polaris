@@ -93,6 +93,9 @@ export type {ButtonProps} from './components/Button';
 export {ButtonGroup} from './components/ButtonGroup';
 export type {ButtonGroupProps} from './components/ButtonGroup';
 
+export {ButtonGroup as ButtonGroupAlpha} from './components/ButtonGroupAlpha';
+export type {ButtonGroupProps as ButtonGroupAlphaProps} from './components/ButtonGroupAlpha';
+
 export {CalloutCard} from './components/CalloutCard';
 export type {CalloutCardProps} from './components/CalloutCard';
 
