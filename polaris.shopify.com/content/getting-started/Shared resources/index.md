@@ -5,7 +5,7 @@ keywords:
 order: 4
 ---
 
-There are pieces of foundational knowledge that are useful for all disciplines to learn. 
+These are pieces of foundational knowledge that are useful for all disciplines to learn. 
 
 ## Foundations
 Our design foundations offer fundamental design elements and guidance for creating good merchant experiences. Here are some highlights to get started:
