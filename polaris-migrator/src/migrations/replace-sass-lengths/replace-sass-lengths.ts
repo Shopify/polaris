@@ -4,7 +4,11 @@ import valueParser from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-import {hasNumericOperator} from '../../utilities/sass';
+import {
+  hasNumericOperator,
+  hasTransformableLength,
+  isTransformableLength,
+} from '../../utilities/sass';
 
 // List of the props we want to run this migration on
 const targetProps = [
@@ -129,36 +133,4 @@ export default function replaceSassLengths(
   return postcss(plugin(options)).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
-}
-
-/**
- * All transformable dimension units. These values are used to determine
- * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
- */
-const transformableLengthUnits = ['px', 'rem'];
-
-function isTransformableLength(
-  dimension: false | valueParser.Dimension,
-): dimension is valueParser.Dimension {
-  if (!dimension) return false;
-
-  // Zero is the only unitless length we can transform
-  if (dimension.unit === '' && dimension.number === '0') return true;
-
-  return transformableLengthUnits.includes(dimension.unit);
-}
-
-function hasTransformableLength(parsedValue: valueParser.ParsedValue): boolean {
-  let transformableLength = false;
-
-  parsedValue.walk((node) => {
-    if (
-      node.type === 'word' &&
-      isTransformableLength(valueParser.unit(node.value))
-    ) {
-      transformableLength = true;
-    }
-  });
-
-  return transformableLength;
 }

@@ -1,4 +1,9 @@
-import type {Node, ParsedValue, FunctionNode} from 'postcss-value-parser';
+import valueParser, {
+  Node,
+  ParsedValue,
+  FunctionNode,
+  Dimension,
+} from 'postcss-value-parser';
 
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || '';
@@ -70,4 +75,36 @@ export function hasSassFunction(
   });
 
   return containsSassFunction;
+}
+
+/**
+ * All transformable dimension units. These values are used to determine
+ * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
+ */
+export const transformableLengthUnits = ['px', 'rem'];
+
+export function isTransformableLength(
+  dimension: false | Dimension,
+): dimension is Dimension {
+  if (!dimension) return false;
+
+  // Zero is the only unitless dimension our length transforms support
+  if (dimension.unit === '' && dimension.number === '0') return true;
+
+  return transformableLengthUnits.includes(dimension.unit);
+}
+
+export function hasTransformableLength(parsedValue: ParsedValue): boolean {
+  let transformableLength = false;
+
+  parsedValue.walk((node) => {
+    if (
+      node.type === 'word' &&
+      isTransformableLength(valueParser.unit(node.value))
+    ) {
+      transformableLength = true;
+    }
+  });
+
+  return transformableLength;
 }
