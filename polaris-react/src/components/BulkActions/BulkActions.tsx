@@ -5,6 +5,7 @@ import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {clamp} from '../../utilities/clamp';
+import {findFirstKeyboardFocusableNode} from '../../utilities/focus';
 import type {
   BadgeAction,
   DisableableAction,
@@ -63,6 +64,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
   private containerNode: HTMLElement | null = null;
   private buttonsNode: HTMLElement | null = null;
   private moreActionsNode: HTMLElement | null = null;
+  private activatorNode: Element | null = null;
   private groupNode = createRef<HTMLDivElement>();
   private promotedActionsWidths: number[] = [];
   private bulkActionsWidth = 0;
@@ -88,6 +90,25 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     50,
     {trailing: true},
   );
+
+  private focusContent() {
+    if (this.containerNode == null) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      if (this.containerNode == null) {
+        return;
+      }
+
+      const focusableChild = findFirstKeyboardFocusableNode(this.containerNode);
+      if (focusableChild) {
+        focusableChild.focus({
+          preventScroll: process.env.NODE_ENV === 'development',
+        });
+      }
+    });
+  }
 
   private numberOfPromotedActionsToRender(): number {
     const {promotedActions} = this.props;
@@ -177,6 +198,11 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       ? this.buttonsNode.getBoundingClientRect().width -
         this.addedMoreActionsWidthForMeasuring
       : 0;
+
+    if (document?.activeElement) {
+      this.activatorNode = document.activeElement;
+    }
+    this.focusContent();
 
     if (this.containerNode) {
       this.setState({
@@ -321,7 +347,11 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       </Transition>
     );
 
-    return <div ref={this.setContainerNode}>{group}</div>;
+    return (
+      <div ref={this.setContainerNode} onBlur={this.handleBlur}>
+        {group}
+      </div>
+    );
   }
 
   private isNewBadgeInBadgeActions() {
@@ -364,6 +394,18 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     if (measuring) {
       this.promotedActionsWidths.push(width);
     }
+  };
+
+  private handleBlur = (event: React.FocusEvent<HTMLDivElement>) => {
+    const currentTarget = event.currentTarget;
+
+    // Give browser time to focus the next element
+    requestAnimationFrame(() => {
+      // Check if the new focused element is a child of the original container
+      if (!currentTarget.contains(document.activeElement)) {
+        console.log('blurrin yo');
+      }
+    });
   };
 }
 
