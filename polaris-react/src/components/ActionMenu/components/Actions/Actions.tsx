@@ -1,4 +1,5 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import ReactDOM from 'react-dom';
 
 import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
@@ -96,7 +97,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     );
     // eslint-disable-next-line no-console
     console.log('setMeasuredActions 1');
-    setMeasuredActions({showable, rolledUp});
+    ReactDOM.flushSync(() => setMeasuredActions({showable, rolledUp}));
   }, [actions, groups, measuredActions.showable.length]);
 
   const measureActions = useCallback(() => {
