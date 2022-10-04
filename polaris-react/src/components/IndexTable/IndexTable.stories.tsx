@@ -1359,6 +1359,9 @@ export function WithSortableHeadings() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Paid',
+      notes: '',
     },
     {
       id: '2561',
@@ -1367,6 +1370,9 @@ export function WithSortableHeadings() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer lives on the 3rd floor',
     },
     {
       id: '1245',
@@ -1375,6 +1381,9 @@ export function WithSortableHeadings() {
       location: 'Portland, USA',
       orders: 10,
       amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
     },
     {
       id: '8741',
@@ -1383,6 +1392,9 @@ export function WithSortableHeadings() {
       location: 'Hialeah, USA',
       orders: 5,
       amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
     },
   ];
   const [sortedRows, setSortedRows] = useState(
@@ -1420,7 +1432,19 @@ export function WithSortableHeadings() {
   }
 
   const rowMarkup = rows.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        fulfillmentStatus,
+        paymentStatus,
+        notes,
+      },
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -1433,6 +1457,9 @@ export function WithSortableHeadings() {
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{notes}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1451,8 +1478,11 @@ export function WithSortableHeadings() {
           {title: 'Order count'},
           {title: 'Amount spent'},
           {title: 'Location'},
+          {title: 'Fulfillment status'},
+          {title: 'Payment status'},
+          {title: 'Notes'},
         ]}
-        sortable={[true, false, false, true]}
+        sortable={[true, true, false, true, true, true, false]}
         sortDirection={sortDirection}
         sortColumnIndex={sortIndex}
         onSort={handleClickSortHeading}

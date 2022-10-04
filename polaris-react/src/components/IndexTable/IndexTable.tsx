@@ -15,7 +15,6 @@ import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
-import {Icon} from '../Icon';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
@@ -830,22 +829,17 @@ function IndexTableBase({
       const isCurrentlySorted = index === sortColumnIndex;
       const isAscending = sortDirection === 'ascending';
       let newDirection: IndexTableSortDirection = defaultSortDirection;
-      let source =
+      let SourceComponent =
         defaultSortDirection === 'ascending'
           ? SortAscendingMajor
           : SortDescendingMajor;
       if (isCurrentlySorted) {
         newDirection = isAscending ? 'descending' : 'ascending';
-        source =
+        SourceComponent =
           sortDirection === 'ascending'
             ? SortAscendingMajor
             : SortDescendingMajor;
       }
-
-      const sortAccessibilityLabel = i18n.translate(
-        'Polaris.IndexTable.sortAccessibilityLabel',
-        {direction: newDirection},
-      );
 
       const iconMarkup = (
         <span
@@ -854,7 +848,11 @@ function IndexTableBase({
             isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
           )}
         >
-          <Icon source={source} accessibilityLabel={sortAccessibilityLabel} />
+          <SourceComponent
+            focusable="false"
+            aria-hidden="true"
+            className={styles.TableHeadingSortSvg}
+          />
         </span>
       );
 
