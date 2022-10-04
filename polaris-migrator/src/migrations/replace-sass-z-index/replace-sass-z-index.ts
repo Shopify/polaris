@@ -1,13 +1,17 @@
-import type {API, FileInfo, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
+import type {API, FileInfo, Options} from 'jscodeshift';
 import valueParser, {FunctionNode, Node} from 'postcss-value-parser';
 
-import {isNumericOperator} from '../../utilities/sass';
+import {
+  NamespaceOptions,
+  namespace,
+  hasSassFunction,
+  isSassFunction,
+  hasNumericOperator,
+} from '../../utilities/sass';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
-interface PluginOptions extends Options {
-  namespace?: string;
-}
+interface PluginOptions extends Options, NamespaceOptions {}
 
 const processed = Symbol('processed');
 
@@ -25,33 +29,21 @@ const isValidElement = (
 const hasMoreThanOneArgument = (node: FunctionNode) => node.nodes.length > 1;
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const namespace = options?.namespace || '';
-  // This migration could be run over sass with
-  // proper legacy-polaris namespacing
-  // or some other pre-processed / post-processed css
-  // in which case we'll still want to transform a non-namespaced z-index fn.
-  const functionName = namespace ? `${namespace}.z-index` : 'z-index';
-  const isZIndexFn = (node: Node): node is FunctionNode => {
-    return node.type === 'function' && node.value === functionName;
-  };
+  const namespacedZIndex = namespace('z-index', options);
   return {
     postcssPlugin: 'replace-sass-z-index',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      const parsed = valueParser(decl.value);
+      const parsedValue = valueParser(decl.value);
 
-      let containsZIndexFn = false;
-      let containsCalculation = false;
+      if (!hasSassFunction(namespacedZIndex, parsedValue)) return;
+
       let containsSecondArgument = false;
 
-      parsed.walk((node) => {
-        if (isZIndexFn(node)) containsZIndexFn = true;
-        if (isNumericOperator(node)) containsCalculation = true;
-
-        if (!isZIndexFn(node)) return;
-
+      parsedValue.walk((node: Node) => {
+        if (!isSassFunction(namespacedZIndex, node)) return;
         if (hasMoreThanOneArgument(node)) {
           // If there's more than one argument to the zIndex fn
           // We assume they're passing in a custom map
@@ -76,15 +68,15 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         }
       });
 
-      if (containsZIndexFn && (containsCalculation || containsSecondArgument)) {
+      if (hasNumericOperator(parsedValue) || containsSecondArgument) {
         // Insert comment if the declaration value contains calculations
         // or if the invocation of zIndex has more than one argument
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
-          postcss.comment({text: `${decl.prop}: ${parsed.toString()};`}),
+          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
         );
       } else {
-        decl.value = parsed.toString();
+        decl.value = parsedValue.toString();
       }
 
       // @ts-expect-error - Mark the declaration as processed
