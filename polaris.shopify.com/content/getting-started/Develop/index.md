@@ -5,6 +5,8 @@ keywords:
 order: 3
 ---
 
+If you’re starting out developing for the Shopify admin, here are a few things you need to learn and download to get going. 
+
 ## Web
 The web version of the Shopify admin is available for desktop and mobile web. Polaris web components and relevant packages are built with responsiveness in mind and can be used at any screen size.
 
