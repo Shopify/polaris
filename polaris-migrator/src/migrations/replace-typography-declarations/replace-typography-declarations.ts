@@ -1,14 +1,15 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Declaration, Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
-import {toPx} from '@shopify/polaris-tokens';
 
 import {
   NamespaceOptions,
   namespace,
-  isTransformableLength,
+  getNamespace,
   hasSassFunction,
   isSassFunction,
+  toPx,
+  replaceRemFunction,
 } from '../../utilities/sass';
 import {isKeyof} from '../../utilities/type-guards';
 
@@ -27,15 +28,13 @@ const processed = Symbol('processed');
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const namespacedFontFamily = namespace('font-family', options);
-
   return {
     postcssPlugin: 'replace-typography-declarations',
     Declaration: {
-      'font-family': createHandleFontFamily(namespacedFontFamily),
-      'font-size': handleFontSize,
-      'font-weight': handleFontWeight,
-      'line-height': handleFontLineHeight,
+      'font-family': handleFontFamily(options),
+      'font-size': handleFontSize(options),
+      'font-weight': handleFontWeight(options),
+      'line-height': handleFontLineHeight(options),
     },
   };
 };
@@ -86,7 +85,9 @@ const fontWeightMap = {
   // 900 - Black (Heavy)
 };
 
-function createHandleFontFamily(namespacedFontFamily: string) {
+function handleFontFamily(options: NamespaceOptions) {
+  const namespacedFontFamily = namespace('font-family', options);
+
   return (decl: Declaration): void => {
     // @ts-expect-error - Skip if processed so we don't process it again
     if (decl[processed]) return;
@@ -122,71 +123,74 @@ function createHandleFontFamily(namespacedFontFamily: string) {
   };
 }
 
-function handleFontSize(decl: Declaration): void {
-  // @ts-expect-error - Skip if processed so we don't process it again
-  if (decl[processed]) return;
+function handleFontSize(options: NamespaceOptions) {
+  return (decl: Declaration): void => {
+    // @ts-expect-error - Skip if processed so we don't process it again
+    if (decl[processed]) return;
 
-  const parsedValue = valueParser(decl.value);
-  const fontSize = parsedValue.nodes[0];
+    if (decl.value.includes(`${namespace('rem(', options)}`)) {
+      replaceRemFunction(decl, fontSizeMap, options);
+      return;
+    }
 
-  if (parsedValue.nodes.length !== 1 || fontSize.type !== 'word') {
-    return;
-  }
+    const parsedValue = valueParser(decl.value);
+    const fontSize = parsedValue.nodes[0];
 
-  const dimension = valueParser.unit(fontSize.value);
+    if (parsedValue.nodes.length !== 1 || fontSize.type !== 'word') {
+      return;
+    }
 
-  if (!isTransformableLength(dimension)) return;
+    const fontSizeInPx = toPx(fontSize.value);
 
-  const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
+    if (!isKeyof(fontSizeMap, fontSizeInPx)) return;
 
-  if (!isKeyof(fontSizeMap, dimensionInPx)) return;
+    decl.value = `var(${fontSizeMap[fontSizeInPx]})`;
 
-  decl.value = `var(${fontSizeMap[dimensionInPx]})`;
-
-  // @ts-expect-error - Mark the declaration as processed
-  decl[processed] = true;
+    // @ts-expect-error - Mark the declaration as processed
+    decl[processed] = true;
+  };
 }
 
-function handleFontWeight(decl: Declaration): void {
-  // @ts-expect-error - Skip if processed so we don't process it again
-  if (decl[processed]) return;
+function handleFontWeight(_options: NamespaceOptions) {
+  return (decl: Declaration): void => {
+    // @ts-expect-error - Skip if processed so we don't process it again
+    if (decl[processed]) return;
 
-  const parsedValue = valueParser(decl.value);
-  const fontWeight = parsedValue.nodes[0];
+    const parsedValue = valueParser(decl.value);
+    const fontWeight = parsedValue.nodes[0];
 
-  if (parsedValue.nodes.length !== 1 || fontWeight.type !== 'word') {
-    return;
-  }
+    if (parsedValue.nodes.length !== 1 || fontWeight.type !== 'word') {
+      return;
+    }
 
-  if (!isKeyof(fontWeightMap, fontWeight.value)) return;
+    if (!isKeyof(fontWeightMap, fontWeight.value)) return;
 
-  decl.value = `var(${fontWeightMap[fontWeight.value]})`;
+    decl.value = `var(${fontWeightMap[fontWeight.value]})`;
 
-  // @ts-expect-error - Mark the declaration as processed
-  decl[processed] = true;
+    // @ts-expect-error - Mark the declaration as processed
+    decl[processed] = true;
+  };
 }
 
-function handleFontLineHeight(decl: Declaration): void {
-  // @ts-expect-error - Skip if processed so we don't process it again
-  if (decl[processed]) return;
+function handleFontLineHeight(_options: NamespaceOptions) {
+  return (decl: Declaration): void => {
+    // @ts-expect-error - Skip if processed so we don't process it again
+    if (decl[processed]) return;
 
-  const parsedValue = valueParser(decl.value);
-  const lineHeight = parsedValue.nodes[0];
+    const parsedValue = valueParser(decl.value);
+    const lineHeight = parsedValue.nodes[0];
 
-  if (parsedValue.nodes.length !== 1 || lineHeight.type !== 'word') {
-    return;
-  }
+    if (parsedValue.nodes.length !== 1 || lineHeight.type !== 'word') {
+      return;
+    }
 
-  const dimension = valueParser.unit(lineHeight.value);
+    const lineHeighInPx = toPx(lineHeight.value);
 
-  if (!isTransformableLength(dimension)) return;
+    if (!isKeyof(fontLineHeightMap, lineHeighInPx)) return;
 
-  const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
+    decl.value = `var(${fontLineHeightMap[lineHeighInPx]})`;
 
-  if (!isKeyof(fontLineHeightMap, dimensionInPx)) return;
-
-  decl.value = `var(${fontLineHeightMap[dimensionInPx]})`;
-
-  // @ts-expect-error - Mark the declaration as processed
-  decl[processed] = true;
+    // @ts-expect-error - Mark the declaration as processed
+    decl[processed] = true;
+  };
 }

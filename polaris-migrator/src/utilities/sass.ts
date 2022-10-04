@@ -1,11 +1,15 @@
+import type {Declaration} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
   FunctionNode,
   Dimension,
 } from 'postcss-value-parser';
+import {toPx as polarisTokenToPx} from '@shopify/polaris-tokens';
 
-function getNamespace(options?: NamespaceOptions) {
+import {isKeyof} from './type-guards';
+
+export function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || '';
 }
 
@@ -83,13 +87,17 @@ export function hasSassFunction(
  */
 export const transformableLengthUnits = ['px', 'rem'];
 
+function isUnitlessZero(dimension: false | Dimension) {
+  return dimension && dimension.unit === '' && dimension.number === '0';
+}
+
 export function isTransformableLength(
   dimension: false | Dimension,
 ): dimension is Dimension {
   if (!dimension) return false;
 
   // Zero is the only unitless dimension our length transforms support
-  if (dimension.unit === '' && dimension.number === '0') return true;
+  if (isUnitlessZero(dimension)) return true;
 
   return transformableLengthUnits.includes(dimension.unit);
 }
@@ -107,4 +115,66 @@ export function hasTransformableLength(parsedValue: ParsedValue): boolean {
   });
 
   return transformableLength;
+}
+
+export function toPx(value: string) {
+  const dimension = valueParser.unit(value);
+
+  if (!isTransformableLength(dimension)) return;
+
+  return isUnitlessZero(dimension)
+    ? dimension.number
+    : polarisTokenToPx(`${dimension.number}${dimension.unit}`);
+}
+
+/**
+ * A mapping of evaluated `rem` values (in pixels) and their replacement `decl.value`
+ */
+interface ReplaceRemFunctionMap {
+  [remValueInPx: string]: string;
+}
+
+/**
+ * Replaces a basic `rem` function with a value from the provided map.
+ *
+ * Note: If a `map` value starts with `--`, it is assumed to be a CSS
+ * custom property and wrapped in `var()`.
+ *
+ * @example
+ * const decl = { value: 'rem(4px)' };
+ * const namespacedDecl = { value: 'my-namespace.rem(4px)' };
+ * const map = { '4px': '--p-size-1' };
+ *
+ * replaceRemFunction(decl, map)
+ * //=> decl === { value: 'var(--p-size-1)' }
+ *
+ * replaceRemFunction(namespacedDecl, map, 'my-namespace')
+ * //=> namespaceDecl === { value: 'var(--p-size-1)' }
+ */
+export function replaceRemFunction(
+  decl: Declaration,
+  map: ReplaceRemFunctionMap,
+  options?: NamespaceOptions,
+): void {
+  const namespacedRemPattern = namespace('rem', options).replace('.', '\\.');
+
+  const namespacedRemFunctionRegExp = new RegExp(
+    String.raw`^${namespacedRemPattern}\(\s*([\d.]+)(px)?\s*\)\s*$`,
+    'g',
+  );
+
+  decl.value = decl.value.replace(
+    namespacedRemFunctionRegExp,
+    (match, number, unit) => {
+      if (!unit && number !== '0') return match;
+
+      const remValueInPx = `${number}${unit ?? 'px'}`;
+
+      if (!isKeyof(map, remValueInPx)) return match;
+
+      const newValue = map[remValueInPx];
+
+      return newValue.startsWith('--') ? `var(${newValue})` : newValue;
+    },
+  );
 }
