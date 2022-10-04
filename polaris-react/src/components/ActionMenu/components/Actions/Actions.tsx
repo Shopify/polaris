@@ -54,10 +54,11 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   };
   const lastMenuGroup = [...groups].pop();
   const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
-
+  // eslint-disable-next-line no-console
   console.log('render');
 
   useEffect(() => {
+    // eslint-disable-next-line no-console
     console.log('mount');
   }, []);
 
@@ -76,6 +77,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   );
 
   const updateActions = useCallback(() => {
+    // eslint-disable-next-line no-console
     console.log('updateActions');
     let actionsAndGroups = [...actions, ...groups];
 
@@ -92,7 +94,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       measuredActions.showable.length,
       actionsAndGroups.length,
     );
-
+    // eslint-disable-next-line no-console
     console.log('setMeasuredActions 1');
     setMeasuredActions({showable, rolledUp});
   }, [actions, groups, measuredActions.showable.length]);
@@ -104,13 +106,14 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     ) {
       return;
     }
-
+    // eslint-disable-next-line no-console
     console.log('measureActions');
 
     const actionsAndGroups = [...actions, ...groups];
 
     if (actionsAndGroups.length === 1) {
       setMeasuredActions({showable: actionsAndGroups, rolledUp: []});
+      // eslint-disable-next-line no-console
       console.log('setMeasuredActions 2');
       return;
     }
@@ -149,6 +152,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         rollupActiveRef.current = isRollupActive;
       }
     }
+    // eslint-disable-next-line no-console
     console.log('setMeasuredActions 3');
     setMeasuredActions({
       showable: newShowableActions,
@@ -187,10 +191,12 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       timesMeasured.current >= 2 &&
       [...actions, ...groups].length === actionsAndGroupsLengthRef.current
     ) {
+      // eslint-disable-next-line no-console
       console.log('call updateActions');
       updateActions();
       return;
     }
+    // eslint-disable-next-line no-console
     console.log('call measureActions');
     measureActions();
   }, [actions, groups, measureActions, updateActions]);
