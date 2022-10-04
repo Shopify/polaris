@@ -1,5 +1,4 @@
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
-import ReactDOM from 'react-dom';
 
 import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
@@ -97,7 +96,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     );
     // eslint-disable-next-line no-console
     console.log('setMeasuredActions 1');
-    ReactDOM.flushSync(() => setMeasuredActions({showable, rolledUp}));
+    setMeasuredActions({showable, rolledUp});
   }, [actions, groups, measuredActions.showable.length]);
 
   const measureActions = useCallback(() => {
@@ -191,7 +190,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     if (
       // Allow measuring twice
       // This accounts for the initial paint and re-flow
-      timesMeasured.current >= 2 &&
+      timesMeasured.current <= 2 &&
       [...actions, ...groups].length === actionsAndGroupsLengthRef.current
     ) {
       // eslint-disable-next-line no-console
