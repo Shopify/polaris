@@ -5,7 +5,6 @@ import valueParser from 'postcss-value-parser';
 import {
   NamespaceOptions,
   namespace,
-  getNamespace,
   hasSassFunction,
   isSassFunction,
   toPx,
