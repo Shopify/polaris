@@ -85,6 +85,20 @@ Replace legacy static breakpoint mixins with the new Polaris [media query variab
 npx @shopify/polaris-migrator replace-static-breakpoint-mixins <path>
 ```
 
+### `replace-static-mixins-with-declarations`
+
+Replace legacy static mixins with their corresponding declarations and CSS custom properties.
+
+```diff
+- @include text-emphasis-normal;
++ color: var(--p-text);
++ font-weight: var(--p-font-weight-regular);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
+```
+
 ## Creating a migration
 
 ### Setup
