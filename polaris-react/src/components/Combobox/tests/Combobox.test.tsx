@@ -302,8 +302,14 @@ describe('<Combobox />', () => {
 
       triggerFocus(combobox);
 
+      const target = combobox.find(TextField)!.find('input')!.domNode;
+      const keyupEvent = new KeyboardEvent('keyup', {
+        keyCode: Key.Escape,
+        bubbles: true,
+      });
+
       combobox.act(() => {
-        dispatchKeyup(Key.Escape);
+        target?.dispatchEvent(keyupEvent);
       });
 
       expect(combobox).toContainReactComponent(Popover, {
@@ -433,8 +439,3 @@ function triggerOptionSelected(combobox: any) {
 }
 
 function noop() {}
-
-function dispatchKeyup(key: Key) {
-  const event: KeyboardEventInit & {keyCode: Key} = {keyCode: key};
-  document.dispatchEvent(new KeyboardEvent('keyup', event));
-}

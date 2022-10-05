@@ -1,11 +1,8 @@
 import {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 
-import {
-  NamespaceOptions,
-  identTokenRegExp,
-  publicIdentifierRegExp,
-} from '../../utilities/sass';
+import {NamespaceOptions, getNamespacePattern} from '../../utilities/sass';
+import {isKeyOf} from '../../utilities/type-guards';
 
 /** Mapping of static breakpoint mixins from old to new */
 const staticBreakpointMixins = {
@@ -26,19 +23,14 @@ const staticBreakpointMixins = {
   'after-topbar-sheet': '#{$p-breakpoints-sm-up}',
 };
 
-const isStaticBreakpointMixin = (
-  mixinName: unknown,
-): mixinName is keyof typeof staticBreakpointMixins =>
-  Object.keys(staticBreakpointMixins).includes(mixinName as string);
-
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const namespacedMixinRegExp = options.namespace
-    ? new RegExp(
-        String.raw`^${options.namespace}\.(${publicIdentifierRegExp.source})`,
-      )
-    : new RegExp(String.raw`^(${identTokenRegExp.source})`);
+  const namespacePattern = getNamespacePattern(options);
+
+  const namespacedMixinRegExp = new RegExp(
+    String.raw`^${namespacePattern}([\w-]+)`,
+  );
 
   return {
     postcssPlugin: 'ReplaceStaticBreakpointMixins',
@@ -48,7 +40,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // Extract mixin name e.g. name from `@include name;` or `@include name();`
       const mixinName = atRule.params.match(namespacedMixinRegExp)?.[1];
 
-      if (!isStaticBreakpointMixin(mixinName)) return;
+      if (!isKeyOf(staticBreakpointMixins, mixinName)) return;
 
       atRule.assign({
         name: 'media',
