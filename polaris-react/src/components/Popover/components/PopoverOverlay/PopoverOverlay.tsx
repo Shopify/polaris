@@ -18,10 +18,7 @@ import {
 } from '../../../PositionedOverlay';
 import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
-import {
-  PortalsContainerElement,
-  PortalsManagerContext,
-} from '../../../../utilities/portals';
+import {PortalsManagerContext} from '../../../../utilities/portals';
 
 export enum PopoverCloseSource {
   Click,
@@ -277,12 +274,10 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const target = event.target as HTMLElement;
     const {
       contentNode,
-      props: {activator, onClose, preventCloseOnChildOverlayClick},
+      props: {activator, onClose},
     } = this;
     const composedPath = event.composedPath();
-    const wasDescendant = preventCloseOnChildOverlayClick
-      ? wasPolarisPortalDescendant(composedPath, this.context.container)
-      : wasContentNodeDescendant(composedPath, contentNode);
+    const wasDescendant = wasContentNodeDescendant(composedPath, contentNode);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
     if (
       wasDescendant ||
@@ -314,7 +309,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
 function renderPopoverContent(
   children: React.ReactNode,
-  props?: Partial<PaneProps>,
+  props: Partial<PaneProps>,
 ) {
   const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
@@ -349,16 +344,5 @@ function wasContentNodeDescendant(
 ) {
   return (
     contentNode.current != null && composedPath.includes(contentNode.current)
-  );
-}
-
-function wasPolarisPortalDescendant(
-  composedPath: readonly EventTarget[],
-  portalsContainerElement: PortalsContainerElement,
-): boolean {
-  return composedPath.some(
-    (eventTarget) =>
-      eventTarget instanceof Node &&
-      portalsContainerElement?.contains(eventTarget),
   );
 }

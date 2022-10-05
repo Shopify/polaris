@@ -155,7 +155,7 @@ function IndexTableBase({
   const scrollingContainer = useRef(false);
 
   const tableBodyRef = useCallback(
-    (node) => {
+    (node: Element | null) => {
       if (node !== null && !tableInitialized) {
         setTableInitialized(true);
       }
@@ -351,7 +351,7 @@ function IndexTableBase({
   ]);
 
   const handleScrollContainerScroll = useCallback(
-    (canScrollLeft, canScrollRight) => {
+    (canScrollLeft: boolean, canScrollRight: boolean) => {
       if (!scrollableContainerElement.current || !scrollBarElement.current) {
         return;
       }
@@ -639,7 +639,7 @@ function IndexTableBase({
 
   const scrollBarMarkup =
     itemCount > 0 ? (
-      <AfterInitialMount>
+      <AfterInitialMount onMount={resizeTableScrollBar}>
         <div
           className={scrollBarWrapperClassNames}
           ref={scrollContainerElement}

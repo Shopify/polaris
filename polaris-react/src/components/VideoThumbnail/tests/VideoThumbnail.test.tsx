@@ -71,7 +71,6 @@ describe('<VideoThumbnail />', () => {
     let warnSpy: jest.SpyInstance;
 
     beforeEach(() => {
-      jest.resetModules();
       process.env = {...oldEnv};
       delete process.env.NODE_ENV;
 

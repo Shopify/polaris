@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef} from 'react';
 
 import {Key} from '../../types';
 
@@ -21,21 +21,21 @@ export const KONAMI_CODE = [
 
 export function KonamiCode({handler}: KonamiCodeProps) {
   const keyEvent = 'keydown';
-  const [position, setPosition] = useState(0);
+  const position = useRef(0);
 
   const handleKeyEvent = (event: KeyboardEvent) => {
     const key = event.keyCode;
-    const requiredKey = KONAMI_CODE[position];
+    const requiredKey = KONAMI_CODE[position.current];
 
     if (key === requiredKey) {
-      if (position === KONAMI_CODE.length - 1) {
+      if (position.current === KONAMI_CODE.length - 1) {
         handler(event);
-        setPosition(0);
+        position.current = 0;
       } else {
-        setPosition(position + 1);
+        position.current++;
       }
     } else {
-      setPosition(0);
+      position.current = 0;
     }
   };
 
