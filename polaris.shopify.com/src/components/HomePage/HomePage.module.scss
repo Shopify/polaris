@@ -196,16 +196,6 @@
       mix-blend-mode: plus-lighter;
     }
   }
-  .PolarisSandbox {
-    display: flex;
-    flex-direction: column-reverse;
-    background: var(--decorative-4);
-
-    video {
-      width: 100%;
-      height: auto;
-    }
-  }
 
   .Poster {
     position: absolute;
