@@ -11,7 +11,7 @@ import {isKeyOf} from './type-guards';
 
 const defaultNamespace = '';
 
-export function getNamespace(options?: NamespaceOptions) {
+function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || defaultNamespace;
 }
 
