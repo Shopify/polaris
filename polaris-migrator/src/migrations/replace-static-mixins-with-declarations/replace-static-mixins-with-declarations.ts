@@ -1,7 +1,8 @@
 import {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 
-import {NamespaceOptions, identRegExp} from '../../utilities/sass';
+import {NamespaceOptions, getNamespacePattern} from '../../utilities/sass';
+import {isKeyOf} from '../../utilities/type-guards';
 
 /** Mapping of static mixins to replacement declarations */
 const staticMixins = {
@@ -19,20 +20,13 @@ const staticMixins = {
   },
 };
 
-const isStaticMixin = (
-  mixinName: unknown,
-): mixinName is keyof typeof staticMixins =>
-  Object.keys(staticMixins).includes(mixinName as string);
-
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
-  const namespaceRegExp = new RegExp(
-    options.namespace ? String.raw`(?:${options.namespace}\.)` : '',
-  );
+  const namespacePattern = getNamespacePattern(options);
 
   const namespacedMixinRegExp = new RegExp(
-    String.raw`^${namespaceRegExp.source}(${identRegExp.source})`,
+    String.raw`^${namespacePattern}([\w-]+)`,
   );
 
   return {
@@ -43,7 +37,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // Extract mixin name e.g. name from `@include name;` or `@include name();`
       const mixinName = atRule.params.match(namespacedMixinRegExp)?.[1];
 
-      if (!isStaticMixin(mixinName)) return;
+      if (!isKeyOf(staticMixins, mixinName)) return;
 
       atRule.replaceWith(
         ...Object.entries(staticMixins[mixinName]).map(([prop, value]) =>
