@@ -18,7 +18,7 @@ const gaPageView = (url: string) => {
 // Remove dark mode flicker. Minified version of https://github.com/donavon/use-dark-mode/blob/develop/noflash.js.txt
 const noflash = `!function(){var b="darkMode",g="dark-mode",j="light-mode";function d(a){document.body.classList.add(a?g:j),document.body.classList.remove(a?j:g)}var e="(prefers-color-scheme: dark)",c=window.matchMedia(e),h=c.media===e,a=null;try{a=localStorage.getItem(b)}catch(k){}var f=null!==a;if(f&&(a=JSON.parse(a)),f)d(a);else if(h)d(c.matches),localStorage.setItem(b,c.matches);else{var i=document.body.classList.contains(g);localStorage.setItem(b,JSON.stringify(i))}}()`;
 
-function MyApp({Component, pageProps, ...appProps}: AppProps) {
+function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
   const isProd = process.env.NODE_ENV === 'production';
   const darkMode = useDarkMode(false);
