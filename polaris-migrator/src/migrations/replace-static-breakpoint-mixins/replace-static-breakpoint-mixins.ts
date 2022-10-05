@@ -1,6 +1,8 @@
 import {FileInfo} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 
+import {isKeyOf} from '../../utilities/type-guards';
+
 /** Mapping of static breakpoint mixins from old to new */
 const staticBreakpointMixins = {
   'page-content-when-partially-condensed': '#{$p-breakpoints-lg-down}',
@@ -20,11 +22,6 @@ const staticBreakpointMixins = {
   'after-topbar-sheet': '#{$p-breakpoints-sm-up}',
 };
 
-const isStaticBreakpointMixin = (
-  mixinName: unknown,
-): mixinName is keyof typeof staticBreakpointMixins =>
-  Object.keys(staticBreakpointMixins).includes(mixinName as string);
-
 const plugin = (): Plugin => ({
   postcssPlugin: 'ReplaceStaticBreakpointMixins',
   AtRule(atRule) {
@@ -33,7 +30,7 @@ const plugin = (): Plugin => ({
     // Extract mixin name e.g. name from `@include name;` or `@include name();`
     const mixinName = atRule.params.match(/^([a-zA-Z0-9_-]+)/)?.[1];
 
-    if (!isStaticBreakpointMixin(mixinName)) return;
+    if (!isKeyOf(staticBreakpointMixins, mixinName)) return;
 
     atRule.assign({
       name: 'media',
