@@ -9,7 +9,7 @@ order: 0
 
 ## What is Polaris?
 
-Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences, and is grounded in deep merchant understanding. The Polaris components are available for web, iOS, and Android. The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin. Learn more about the [foundational pieces](https://polaris.shopify.com/getting-started/patterns-components-tokens) that make up the Polaris design system.
+Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences, and is grounded in deep merchant understanding. The Polaris components are available for web, iOS, and Android. The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin. Learn more about the [foundational pieces](/getting-started/patterns-components-and-tokens) that make up the Polaris design system.
 
 ### Who is Polaris for? 
 
