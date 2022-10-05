@@ -5,7 +5,7 @@ import valueParser, {
   FunctionNode,
   Dimension,
 } from 'postcss-value-parser';
-import {toPx as polarisTokensToPx} from '@shopify/polaris-tokens';
+import {toPx} from '@shopify/polaris-tokens';
 
 import {isKeyOf} from './type-guards';
 
@@ -117,14 +117,14 @@ export function hasTransformableLength(parsedValue: ParsedValue): boolean {
   return transformableLength;
 }
 
-export function toPx(value: string) {
+export function toTransformablePx(value: string) {
   const dimension = valueParser.unit(value);
 
   if (!isTransformableLength(dimension)) return;
 
   return isUnitlessZero(dimension)
-    ? dimension.number
-    : polarisTokensToPx(`${dimension.number}${dimension.unit}`);
+    ? `${dimension.number}px`
+    : toPx(`${dimension.number}${dimension.unit}`);
 }
 
 /**

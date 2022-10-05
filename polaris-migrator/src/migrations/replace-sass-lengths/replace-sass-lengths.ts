@@ -6,7 +6,7 @@ import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   hasNumericOperator,
   hasTransformableLength,
-  toPx,
+  toTransformablePx,
 } from '../../utilities/sass';
 import {isKeyOf, isValueOf} from '../../utilities/type-guards';
 
@@ -85,7 +85,7 @@ const plugin = (_options: PluginOptions = {}): Plugin => {
         if (node.type === 'function') {
           return StopWalkingFunctionNodes;
         } else if (node.type === 'word') {
-          const valueInPx = toPx(node.value);
+          const valueInPx = toTransformablePx(node.value);
 
           if (!isKeyOf(spacingTokensMap, valueInPx)) return;
 
