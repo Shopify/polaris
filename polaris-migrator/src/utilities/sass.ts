@@ -9,8 +9,16 @@ import {toPx} from '@shopify/polaris-tokens';
 
 import {isKeyOf} from './type-guards';
 
+const defaultNamespace = '';
+
 function getNamespace(options?: NamespaceOptions) {
-  return options?.namespace || '';
+  return options?.namespace || defaultNamespace;
+}
+
+export function getNamespacePattern(options?: NamespaceOptions) {
+  const namespace = getNamespace(options);
+
+  return namespace ? String.raw`${namespace}\.` : defaultNamespace;
 }
 
 export interface NamespaceOptions {
@@ -156,10 +164,10 @@ export function replaceRemFunction(
   map: ReplaceRemFunctionMap,
   options?: NamespaceOptions,
 ): void {
-  const namespacedRemPattern = namespace('rem', options).replace('.', '\\.');
+  const namespacePattern = getNamespacePattern(options);
 
   const namespacedRemFunctionRegExp = new RegExp(
-    String.raw`^${namespacedRemPattern}\(\s*([\d.]+)(px)?\s*\)\s*$`,
+    String.raw`^${namespacePattern}rem\(\s*([\d.]+)(px)?\s*\)\s*$`,
     'g',
   );
 
