@@ -1,5 +1,45 @@
 # Changelog
 
+## 10.5.0
+
+### Minor Changes
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha `Inline` component
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `AlphaStack` component
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `Columns` component
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `Box` component
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `AlphaCard` component
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `fullWidth` prop to `AlphaStack` and updated styleguide docs
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha `ContentBlock` component
+
+### Patch Changes
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Updated `AlphaCard` border radius to a boolean
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `Columns` spacing
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `background` prop on `AlphaCard` for consistency
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Rename `Tiles` component
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `AlphaCard` `shadow` prop
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Refactored token types in primitive Layout components
+  Exposed `DepthShadowAlias` type
+
+- [#7291](https://github.com/Shopify/polaris/pull/7291) [`3941f5281`](https://github.com/Shopify/polaris/commit/3941f5281f8bf41ff09c3e6e0dedf49eb219310f) Thanks [@atesgoral](https://github.com/atesgoral)! - Improve default style class selection of `Avatar` by using the entire name instead of just the first letter
+
+* [#7332](https://github.com/Shopify/polaris/pull/7332) [`2ee5c5d74`](https://github.com/Shopify/polaris/commit/2ee5c5d741be739b5f00cda626852c3922aa07ff) Thanks [@mattkubej](https://github.com/mattkubej)! - `PopoverOverlay` closes focused `Popover` when pressing `Escape`
+
+* Updated dependencies [[`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2)]:
+  - @shopify/polaris-tokens@6.2.0
+
 ## 10.4.1
 
 ### Patch Changes
