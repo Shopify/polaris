@@ -1,5 +1,6 @@
 ---
 title: Develop
+navTitle: Develop
 keywords:
   - development resources
 order: 3
@@ -29,6 +30,6 @@ A little about the Polaris components, tokens, and icons that we refer to in the
 
 | Repos| Libraries | Tooling | Releases | 
 | ---- | ------- | -------- | --------- |
-| </li><ul><li>[Component GitHub Package Repo](https://github.com/Shopify/polaris/tree/main/polaris-react)</li><ul><li>[Token GitHub Package Repo](https://github.com/Shopify/polaris/tree/main/polaris-tokens)| </li><ul><li>[Components](https://polaris.shopify.com/components)</li><ul><li>[Tokens](https://polaris.shopify.com/tokens/colors)</li><ul><li>[Icons](https://polaris.shopify.com/icons)| Polaris for VSCode offers automatic autocompletion for Polaris tokens, right inside your favorite code editor.</li><ul><li>[Download the VSCode extension](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode) | Polaris uses [Changsets](https://github.com/changesets/changesets) to handle releasing the npm packages in repository. Our [GitHub action](https://github.com/changesets/action) creates a `version` PR called **"Version Packages"**, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version` and performs a releases when changes are merged to the `main` branch.</li><ul><li>[Perform a release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md)
+| </li><ul><li>[Component GitHub Package Repo](https://github.com/Shopify/polaris/tree/main/polaris-react)</li><ul><li>[Token GitHub Package Repo](https://github.com/Shopify/polaris/tree/main/polaris-tokens)| </li><ul><li>[Components](https://polaris.shopify.com/components)</li><ul><li>[Tokens](https://polaris.shopify.com/tokens/colors)</li><ul><li>[Icons](https://polaris.shopify.com/icons)| Polaris for VSCode offers automatic autocompletion for Polaris tokens, right inside your favorite code editor.</li><ul><li>[Download the VSCode extension](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode) | Polaris uses [Changsets](https://github.com/changesets/changesets) to handle releasing the npm packages in repository. Our [GitHub action](https://github.com/changesets/action) creates a `version` PR called ”Version Packages”, then keeps it up to date, recreating it when merged. This PR always has an up-to-date run of `changeset version` and performs a releases when changes are merged to the `main` branch.</li><ul><li>[Perform a release](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md)
 
 Learn more about Polaris [components and tokens](https://polaris.shopify.com/getting-started/patterns-components-and-tokens) and browse the [shared resouces](https://polaris.shopify.com/getting-started/shared-resources).

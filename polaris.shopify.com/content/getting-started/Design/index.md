@@ -1,14 +1,15 @@
 ---
 title: Design
+navTitle: Design
 keywords:
   - design resources
 order: 2
 ---
 
-## Resources
-
 If you’re starting out designing for the Shopify admin, here are a few things you need to get going. 
-Learn  more about [patterns, components, and tokens](https://polaris.shopify.com/getting-started/patterns-components-tokens).
+Learn  more about [patterns, components, and tokens](https://polaris.shopify.com/getting-started/patterns-components-and-tokens).
+
+## Resources
 
 | Components| Tokens | Icons | Documentation | 
 | --------- | ------ | ----- | ------------- |
