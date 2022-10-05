@@ -3,11 +3,11 @@
   "version": "0.21.1",
   "private": true,
   "scripts": {
-    "build": "yarn gen-assets && yarn playroom:build && next build",
+    "build": "yarn gen-assets && playroom build && next build",
     "start": "next start",
     "dev": "run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
-    "dev:playroom": "yarn playroom:start",
+    "dev:playroom": "playroom start",
     "dev:watch-md": "node scripts/watch-md.mjs",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
@@ -16,9 +16,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "tsc ./scripts/get-props/src/get-props.ts --target esnext --module node16 --types \"react\" --outDir ./scripts/tmp && node ./scripts/tmp/scripts/get-props/src/get-props.js && rm -rf ./scripts/tmp",
-    "gen-assets": "node scripts/gen-assets.mjs",
-    "playroom:start": "playroom start",
-    "playroom:build": "playroom build"
+    "gen-assets": "node scripts/gen-assets.mjs"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
