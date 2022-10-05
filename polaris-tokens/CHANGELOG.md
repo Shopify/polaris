@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Refactored token types in primitive Layout components
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Refactored token types in primitive Layout components
   Exposed `DepthShadowAlias` type
 
 ## 6.1.0
