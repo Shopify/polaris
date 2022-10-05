@@ -218,31 +218,4 @@
     transform: translateY(-50%) translateX(33px);
     box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
   }
-
-  @media screen and (max-width: $breakpointDesktop) {
-    display: flex;
-    flex-direction: column-reverse;
-    padding: 2rem 1.25rem;
-    gap: 2rem;
-
-    .Text {
-      padding: 0;
-      max-width: 100%;
-      max-width: 30rem;
-      margin: 0 auto;
-    }
-
-    .Video,
-    .SandboxVideo,
-    .Poster {
-      position: static;
-      transform: none;
-      max-width: 100%;
-      width: 100%;
-      max-width: 30rem;
-      margin: 0 auto;
-      border-radius: var(--border-radius-800);
-      box-shadow: none;
-    }
-  }
 }
