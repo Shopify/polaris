@@ -26,8 +26,8 @@ Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`
 ```diff
 - <DisplayText size="medium">Display text</DisplayText>
 - <Heading>Heading</Heading>
-+ <Text variant="heading2xl" as="p" />
-+ <Text variant="headingLg" as="h2" />
++ <Text variant="heading2xl" as="p">Display text</Text>
++ <Text variant="headingLg" as="h2">Heading</Text>
 ```
 
 ```sh
@@ -70,6 +70,19 @@ Replace the legacy Sass `spacing()` function with the supported CSS custom prope
 
 ```sh
 npx @shopify/polaris-migrator replace-sass-spacing <path>
+```
+
+### `replace-static-breakpoint-mixins`
+
+Replace legacy static breakpoint mixins with the new Polaris [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
+
+```diff
+- @include page-content-when-layout-not-stacked {}
++ @media #{$p-breakpoints-md-up} {}
+```
+
+```sh
+npx @shopify/polaris-migrator replace-static-breakpoint-mixins <path>
 ```
 
 ### `replace-static-mixins-with-declarations`

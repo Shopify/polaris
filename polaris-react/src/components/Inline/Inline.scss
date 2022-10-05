@@ -1,0 +1,7 @@
+.Inline {
+  display: flex;
+  gap: var(--pc-inline-spacing);
+  flex-wrap: var(--pc-inline-wrap);
+  align-items: var(--pc-inline-align-y);
+  justify-content: var(--pc-inline-align);
+}

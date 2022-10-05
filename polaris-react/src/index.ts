@@ -46,6 +46,12 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
+export {AlphaCard} from './components/AlphaCard';
+export type {AlphaCardProps} from './components/AlphaCard';
+
+export {AlphaStack} from './components/AlphaStack';
+export type {AlphaStackProps} from './components/AlphaStack';
+
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -68,6 +74,12 @@ export type {
   BannerStatus,
   BannerHandles,
 } from './components/Banner';
+
+export {Bleed} from './components/Bleed';
+export type {BleedProps} from './components/Bleed';
+
+export {Box} from './components/Box';
+export type {BoxProps} from './components/Box';
 
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';
@@ -107,11 +119,17 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
+export {Columns} from './components/Columns';
+export type {ColumnsProps} from './components/Columns';
+
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
 
 export {Connected} from './components/Connected';
 export type {ConnectedProps} from './components/Connected';
+
+export {ContentBlock} from './components/ContentBlock';
+export type {ContentBlockProps} from './components/ContentBlock';
 
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
@@ -195,6 +213,9 @@ export type {IndexTableProps} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
+
+export {Inline} from './components/Inline';
+export type {InlineProps} from './components/Inline';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
@@ -353,6 +374,9 @@ export type {TextStyleProps} from './components/TextStyle';
 
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
+
+export {Tiles} from './components/Tiles';
+export type {TilesProps} from './components/Tiles';
 
 export {Toast} from './components/Toast';
 export type {ToastProps} from './components/Toast';
