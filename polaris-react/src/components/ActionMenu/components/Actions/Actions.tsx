@@ -55,7 +55,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   const lastMenuGroup = [...groups].pop();
   const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
   // eslint-disable-next-line no-console
-  console.log('render');
+  console.log('render', timesMeasured.current);
 
   useEffect(() => {
     // eslint-disable-next-line no-console
@@ -190,7 +190,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     if (
       // Allow measuring twice
       // This accounts for the initial paint and re-flow
-      timesMeasured.current <= 2 &&
+      timesMeasured.current >= 2 &&
       [...actions, ...groups].length === actionsAndGroupsLengthRef.current
     ) {
       // eslint-disable-next-line no-console
