@@ -6,25 +6,25 @@
 
 - [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha pages for `AlphaStack`, `Box`, `Columns`, `Inline`, and `Tile` components. Updated `StatusBanner` to capitalize status value.
 
-* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha page for `ContentBlock`
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@chazdean](https://github.com/chazdean)! - Added alpha page for `ContentBlock`
 
 ### Patch Changes
 
-- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Updated `AlphaCard` border radius to a boolean
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Updated `AlphaCard` border radius to a boolean
 
-* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `Columns` spacing
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Renamed `Columns` spacing
 
-- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `background` prop on `AlphaCard` for consistency
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Renamed `background` prop on `AlphaCard` for consistency
 
-* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Rename `Tiles` component
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Rename `Tiles` component
 
 - [#7312](https://github.com/Shopify/polaris/pull/7312) [`2349db304`](https://github.com/Shopify/polaris/commit/2349db304e1e840a4551b82ea1d7b6eae586d666) Thanks [@martenbjork](https://github.com/martenbjork)! - Added a redirect pointing to the Polaris license on Github
 
 * [#7343](https://github.com/Shopify/polaris/pull/7343) [`7ced95bfb`](https://github.com/Shopify/polaris/commit/7ced95bfbbe47bb1b86b452e9fec7acb08d62bea) Thanks [@laurkim](https://github.com/laurkim)! - Updated alpha `Box` page to remove sentence regarding usage in existing components
 
-- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `AlphaCard` `shadow` prop
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Renamed `AlphaCard` `shadow` prop
 
-* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `fullWidth` prop to `AlphaStack` and updated styleguide docs
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@aveline](https://github.com/aveline)! - Added `fullWidth` prop to `AlphaStack` and updated styleguide docs
 
 - [#7311](https://github.com/Shopify/polaris/pull/7311) [`fc05e3152`](https://github.com/Shopify/polaris/commit/fc05e31520b1ee4483a54a889a44fb3ac0959a62) Thanks [@martenbjork](https://github.com/martenbjork)! - Improved the layout on mobile
 
