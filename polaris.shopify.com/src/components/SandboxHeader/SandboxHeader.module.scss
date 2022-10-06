@@ -3,75 +3,30 @@
 
 .Header {
   position: sticky;
+  display: flex;
+  padding: 1.25rem 1.5rem;
   top: 0;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid var(--border-color-light);
-
-  @include dark-mode {
-    background: rgba(28, 28, 28, 0.9);
-  }
+  justify-content: space-between;
+  height: var(--header-height);
 }
 
-.HeaderInner {
+.Buttons {
   display: flex;
-  align-items: center;
-  gap: 3em;
-  height: var(--header-height);
-  justify-content: space-between;
-  & > * {
-    flex: 1 1 0px;
-  }
-  .Title {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    white-space: nowrap;
-  }
-  .TitleHeader {
+  gap: 0.5rem;
+
+  button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1em;
-    color: var(--text-strong);
-  }
-  .TitleTagline {
-    font-size: var(--font-size-100);
-    color: var(--text-subdued);
-    a {
-      font-size: var(--font-size-50);
-    }
-  }
+    gap: 0.25rem;
+    background: transparent;
+    font-size: var(--font-size-300);
+    min-width: 6rem;
+    text-align: center;
 
-  .LogoContainer {
-    display: flex;
-    justify-content: flex-start;
-  }
-  .ButtonContainer {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .CopyURLButton {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
-    align-items: center;
-    color: var(--text-subdued);
-    font-size: var(--font-size-50);
-    white-space: nowrap;
     &:hover {
       color: var(--text-strong);
     }
-  }
-  .HeaderBtnWrapper {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-
-  @media screen and (max-width: $breakpointTablet) {
-    gap: 0.5rem;
   }
 }
 
@@ -79,9 +34,16 @@
   display: flex;
   align-items: center;
   color: inherit;
-  gap: 0.7rem;
+  gap: 0.5rem;
+  margin-left: 0.25rem;
   font-weight: var(--font-weight-500);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-200);
+  color: var(--text-strong);
+  margin-right: auto;
+
+  img {
+    opacity: 0.8;
+  }
 
   p {
     margin: 0;
@@ -91,28 +53,7 @@
     transform: translate3d(0, -1px, 0);
   }
 
-  @media screen and (max-width: $breakpointTablet) {
+  @media screen and (max-width: $breakpointMobile) {
     display: none;
-  }
-}
-
-.SkipToContentLink {
-  top: 2px;
-  right: 2px;
-  left: 2px;
-  height: calc(var(--header-height) - 4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--font-size-500);
-  background-color: var(--surface);
-  color: var(--text-strong);
-  font-weight: var(--font-weight-500);
-  z-index: 1;
-  position: absolute;
-  transform: translateY(-115%);
-
-  &:focus {
-    transform: translateY(0%);
   }
 }
