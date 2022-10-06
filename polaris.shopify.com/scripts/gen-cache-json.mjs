@@ -56,7 +56,7 @@ const getMdContent = (filePath) => {
   const {data} = matter(fileContent);
   const slug = filePath
     .replace(`${process.cwd()}/content/`, '')
-    .replace('/index.md', '');
+    .replace('/index.md', '/');
 
   return {frontMatter: data, slug};
 };
