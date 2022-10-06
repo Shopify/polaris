@@ -27,7 +27,7 @@ Design patterns often use one or more primitive components and adapt them to the
 
 For a deeper understanding of design patterns, read our guide to [admin design patterns](/patterns/design-patterns).
 
-![Different colored lego blocks with one piece labeled as patterns](/images/getting-started/patterns-components-tokens/patterns@2x.png)
+![Different colored building blocks with one piece labeled as patterns](/images/getting-started/patterns-components-tokens/patterns@2x.png)
 
 ## Primitives
 
