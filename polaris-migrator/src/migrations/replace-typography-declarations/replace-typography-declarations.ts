@@ -9,6 +9,8 @@ import {
   isSassFunction,
   toTransformablePx,
   replaceRemFunction,
+  replaceDecl,
+  ReplaceDeclCallback,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -29,11 +31,23 @@ interface PluginOptions extends Options, NamespaceOptions {}
 const plugin = (options: PluginOptions = {}): Plugin => {
   return {
     postcssPlugin: 'replace-typography-declarations',
-    Declaration: {
-      'font-family': handleFontFamily(options),
-      'font-size': handleFontSize(options),
-      'font-weight': handleFontWeight(options),
-      'line-height': handleFontLineHeight(options),
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
+
+      const overrides = replaceDecl(decl, {
+        'font-family': handleFontFamily(options),
+        'font-size': handleFontSize(options),
+        'font-weight': handleFontWeight(options),
+        'line-height': handleFontLineHeight(options),
+      });
+
+      if (!overrides) return;
+
+      decl.assign(overrides);
+
+      // @ts-expect-error - Mark the declaration as processed
+      decl[processed] = true;
     },
   };
 };
@@ -84,13 +98,12 @@ const fontWeightMap = {
   // 900 - Black (Heavy)
 };
 
-function handleFontFamily(options: NamespaceOptions) {
+type DeclHandler = (options: NamespaceOptions) => ReplaceDeclCallback;
+
+const handleFontFamily: DeclHandler = (options) => {
   const namespacedFontFamily = namespace('font-family', options);
 
-  return (decl: Declaration): void => {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
-
+  return (decl) => {
     const parsedValue = valueParser(decl.value);
 
     if (!hasSassFunction(namespacedFontFamily, parsedValue)) return;
@@ -115,18 +128,12 @@ function handleFontFamily(options: NamespaceOptions) {
       ];
     });
 
-    decl.value = parsedValue.toString();
-
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
+    return {value: parsedValue.toString()};
   };
-}
+};
 
-function handleFontSize(options: NamespaceOptions) {
-  return (decl: Declaration): void => {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
-
+const handleFontSize: DeclHandler = (options) => {
+  return (decl) => {
     if (decl.value.includes(`${namespace('rem(', options)}`)) {
       replaceRemFunction(decl, fontSizeMap, options);
       return;
@@ -143,18 +150,12 @@ function handleFontSize(options: NamespaceOptions) {
 
     if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
 
-    decl.value = `var(${fontSizeMap[fontSizeInPx]})`;
-
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
+    return {value: `var(${fontSizeMap[fontSizeInPx]})`};
   };
-}
+};
 
-function handleFontWeight(_options: NamespaceOptions) {
-  return (decl: Declaration): void => {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
-
+const handleFontWeight: DeclHandler = (_options) => {
+  return (decl) => {
     const parsedValue = valueParser(decl.value);
     const fontWeight = parsedValue.nodes[0];
 
@@ -164,18 +165,12 @@ function handleFontWeight(_options: NamespaceOptions) {
 
     if (!isKeyOf(fontWeightMap, fontWeight.value)) return;
 
-    decl.value = `var(${fontWeightMap[fontWeight.value]})`;
-
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
+    return {value: `var(${fontWeightMap[fontWeight.value]})`};
   };
-}
+};
 
-function handleFontLineHeight(_options: NamespaceOptions) {
-  return (decl: Declaration): void => {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
-
+const handleFontLineHeight: DeclHandler = (_options) => {
+  return (decl) => {
     const parsedValue = valueParser(decl.value);
     const lineHeight = parsedValue.nodes[0];
 
@@ -187,9 +182,6 @@ function handleFontLineHeight(_options: NamespaceOptions) {
 
     if (!isKeyOf(fontLineHeightMap, lineHeighInPx)) return;
 
-    decl.value = `var(${fontLineHeightMap[lineHeighInPx]})`;
-
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
+    return {value: `var(${fontLineHeightMap[lineHeighInPx]})`};
   };
-}
+};
