@@ -16,6 +16,8 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
   };
 };
 
+const MS_DELAY_BEFORE_SHOW_ONBOARDING = 500;
+
 export default function Sandbox({
   initialSearchParams,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -28,13 +30,13 @@ export default function Sandbox({
   // (so it animates onto the screen nicely)
   useEffect(() => {
     const helpTimeout = setTimeout(() => {
-      if (localStorage.getItem('onboarded')) {
-        // Already been shown the automatic onboarding, so nothing to do
+      const hasAlreadyBeenOnboarded = localStorage.getItem('onboarded');
+      if (hasAlreadyBeenOnboarded) {
         return;
       }
       localStorage.setItem('onboarded', 'true');
       setHelpIsOpen(true);
-    }, 500);
+    }, MS_DELAY_BEFORE_SHOW_ONBOARDING);
     return () => clearTimeout(helpTimeout);
   }, []);
 
