@@ -1,7 +1,6 @@
-import React, {forwardRef, useRef, useState, useLayoutEffect} from 'react';
+import React, {forwardRef} from 'react';
 import Link, {LinkProps} from 'next/link';
 import type {HTMLProps, PropsWithChildren} from 'react';
-import {mergeRefs} from 'react-merge-refs';
 import {className} from '../../utils/various';
 import styles from './Button.module.scss';
 
