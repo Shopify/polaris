@@ -10,7 +10,7 @@ order: 1
 
 Polaris is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin. Here are the foundational building blocks that are part of the system.
 
-![Different colored lego blocks pieced together with labels for primitives, tokens, components, and patterns pointing to different pieces](/images/getting-started/patterns-components-tokens/combined@2x.png)
+![Different colored building blocks pieced together with labels for primitives, tokens, components, and patterns pointing to different pieces](/images/getting-started/patterns-components-tokens/combined@2x.png)
 
 ## Patterns
 
