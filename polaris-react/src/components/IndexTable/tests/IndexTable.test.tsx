@@ -19,7 +19,6 @@ import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
-import {Icon} from '../../Icon';
 import {Tooltip} from '../../Tooltip';
 
 jest.mock('../utilities', () => ({
