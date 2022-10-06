@@ -1,10 +1,7 @@
-/**
- * NOTE:
- *  Hot module reloading for dev has been turned off for this environment
- *  Why? We embed playroom in an iframe, and that iframe is loaded from the public asset folder
- *  So we need to build into that public asset folder. Hence no dev mode and HMR
- *  Workaround: restart the next dev server after each change to the playroom config and associated files.
- */
+// Note: Hot module reloading for dev has been turned off for this environment
+// Why? We embed playroom in an iframe, and that iframe is loaded from the public asset folder
+// So we need to build into that public asset folder. Hence no dev mode and HMR
+// Workaround: restart the next dev server after each change to the playroom config and associated files.
 
 const path = require('node:path');
 const {breakpoints, toPx} = require('@shopify/polaris-tokens');
@@ -36,11 +33,6 @@ module.exports = {
   port: 9000,
   openBrowser: false,
   paramType: 'search', // default is 'hash'
-  //exampleCode: `
-  //  <Button>
-  //    Hello World!
-  //  </Button>
-  //`,
   webpackConfig: () => ({
     module: {
       rules: [
