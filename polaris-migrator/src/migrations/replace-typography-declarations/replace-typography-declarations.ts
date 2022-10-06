@@ -7,10 +7,10 @@ import {
   namespace,
   hasSassFunction,
   isSassFunction,
-  toPx,
+  toTransformablePx,
   replaceRemFunction,
 } from '../../utilities/sass';
-import {isKeyof} from '../../utilities/type-guards';
+import {isKeyOf} from '../../utilities/type-guards';
 
 export default function replaceTypographyDeclarations(
   fileInfo: FileInfo,
@@ -100,7 +100,7 @@ function handleFontFamily(options: NamespaceOptions) {
 
       const fontFamily = node.nodes[0]?.value ?? '';
 
-      if (!isKeyof(fontFamilyMap, fontFamily)) return;
+      if (!isKeyOf(fontFamilyMap, fontFamily)) return;
 
       const fontFamilyCustomProperty = fontFamilyMap[fontFamily];
 
@@ -139,9 +139,9 @@ function handleFontSize(options: NamespaceOptions) {
       return;
     }
 
-    const fontSizeInPx = toPx(fontSize.value);
+    const fontSizeInPx = toTransformablePx(fontSize.value);
 
-    if (!isKeyof(fontSizeMap, fontSizeInPx)) return;
+    if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
 
     decl.value = `var(${fontSizeMap[fontSizeInPx]})`;
 
@@ -162,7 +162,7 @@ function handleFontWeight(_options: NamespaceOptions) {
       return;
     }
 
-    if (!isKeyof(fontWeightMap, fontWeight.value)) return;
+    if (!isKeyOf(fontWeightMap, fontWeight.value)) return;
 
     decl.value = `var(${fontWeightMap[fontWeight.value]})`;
 
@@ -183,9 +183,9 @@ function handleFontLineHeight(_options: NamespaceOptions) {
       return;
     }
 
-    const lineHeighInPx = toPx(lineHeight.value);
+    const lineHeighInPx = toTransformablePx(lineHeight.value);
 
-    if (!isKeyof(fontLineHeightMap, lineHeighInPx)) return;
+    if (!isKeyOf(fontLineHeightMap, lineHeighInPx)) return;
 
     decl.value = `var(${fontLineHeightMap[lineHeighInPx]})`;
 
