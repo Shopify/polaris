@@ -33,7 +33,7 @@ For a deeper understanding of design patterns, read our guide to [admin design p
 
 Primitives are the building blocks of the Polaris design system. They’re the smallest units of the system that represent codified design decisions and reusable visual elements. The Polaris design system contains primitive tokens and primitive components that can be combined together to create admin UIs.
 
-![Different colored lego blocks with one piece labeled as primitives](/images/getting-started/patterns-components-tokens/primitives@2x.png)
+![Different colored building blocks with one piece labeled as primitives](/images/getting-started/patterns-components-tokens/primitives@2x.png)
 
 ## Components
 
