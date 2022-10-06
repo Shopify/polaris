@@ -1,14 +1,14 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
-import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   hasNumericOperator,
   hasTransformableLength,
-  isTransformableLength,
+  toTransformablePx,
 } from '../../utilities/sass';
+import {isKeyOf, isValueOf} from '../../utilities/type-guards';
 
 // List of the props we want to run this migration on
 const targetProps = [
@@ -36,15 +36,8 @@ const targetProps = [
   'margin-block-end',
 ] as const;
 
-type TargetProp = typeof targetProps[number];
-
-const isTargetProp = (propName: unknown): propName is TargetProp =>
-  targetProps.includes(propName as TargetProp);
-
 // Mapping of spacing tokens and their corresponding px values
 const spacingTokensMap = {
-  '0': '--p-space-0',
-  '0px': '--p-space-0',
   '1px': '--p-space-025',
   '2px': '--p-space-05',
   '4px': '--p-space-1',
@@ -62,11 +55,6 @@ const spacingTokensMap = {
   '112px': '--p-space-28',
   '128px': '--p-space-32',
 } as const;
-
-type SpacingToken = keyof typeof spacingTokensMap;
-
-const isSpacingTokenValue = (value: unknown): value is SpacingToken =>
-  Object.keys(spacingTokensMap).includes(value as SpacingToken);
 
 const processed = Symbol('processed');
 
@@ -87,7 +75,7 @@ const plugin = (_options: PluginOptions = {}): Plugin => {
 
       const prop = decl.prop;
 
-      if (!isTargetProp(prop)) return;
+      if (!isValueOf(targetProps, prop)) return;
 
       const parsedValue = valueParser(decl.value);
 
@@ -97,15 +85,11 @@ const plugin = (_options: PluginOptions = {}): Plugin => {
         if (node.type === 'function') {
           return StopWalkingFunctionNodes;
         } else if (node.type === 'word') {
-          const dimension = valueParser.unit(node.value);
+          const valueInPx = toTransformablePx(node.value);
 
-          if (isTransformableLength(dimension)) {
-            const dimensionInPx = toPx(`${dimension.number}${dimension.unit}`);
+          if (!isKeyOf(spacingTokensMap, valueInPx)) return;
 
-            if (!isSpacingTokenValue(dimensionInPx)) return;
-
-            node.value = `var(${spacingTokensMap[dimensionInPx]})`;
-          }
+          node.value = `var(${spacingTokensMap[valueInPx]})`;
         }
       });
 

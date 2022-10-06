@@ -1,0 +1,10 @@
+@import '../../styles/common';
+
+.Bleed {
+  /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+  margin-bottom: calc(-1 * var(--pc-bleed-margin-bottom));
+  margin-left: calc(-1 * var(--pc-bleed-margin-left));
+  margin-right: calc(-1 * var(--pc-bleed-margin-right));
+  margin-top: calc(-1 * var(--pc-bleed-margin-top));
+  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+}

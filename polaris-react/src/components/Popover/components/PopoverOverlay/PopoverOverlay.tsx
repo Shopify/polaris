@@ -299,8 +299,19 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     this.props.onClose(PopoverCloseSource.ScrollOut);
   };
 
-  private handleEscape = () => {
-    this.props.onClose(PopoverCloseSource.EscapeKeypress);
+  private handleEscape = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const {
+      contentNode,
+      props: {activator},
+    } = this;
+    const composedPath = event.composedPath();
+    const wasDescendant = wasContentNodeDescendant(composedPath, contentNode);
+    const isActivatorDescendant = nodeContainsDescendant(activator, target);
+
+    if (wasDescendant || isActivatorDescendant) {
+      this.props.onClose(PopoverCloseSource.EscapeKeypress);
+    }
   };
 
   private handleFocusFirstItem = () => {

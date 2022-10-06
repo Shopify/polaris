@@ -5,12 +5,20 @@ import valueParser, {
   FunctionNode,
   Dimension,
 } from 'postcss-value-parser';
-import {toPx as polarisTokenToPx} from '@shopify/polaris-tokens';
+import {toPx} from '@shopify/polaris-tokens';
 
-import {isKeyof} from './type-guards';
+import {isKeyOf} from './type-guards';
 
-export function getNamespace(options?: NamespaceOptions) {
-  return options?.namespace || '';
+const defaultNamespace = '';
+
+function getNamespace(options?: NamespaceOptions) {
+  return options?.namespace || defaultNamespace;
+}
+
+export function getNamespacePattern(options?: NamespaceOptions) {
+  const namespace = getNamespace(options);
+
+  return namespace ? String.raw`${namespace}\.` : defaultNamespace;
 }
 
 export interface NamespaceOptions {
@@ -117,14 +125,14 @@ export function hasTransformableLength(parsedValue: ParsedValue): boolean {
   return transformableLength;
 }
 
-export function toPx(value: string) {
+export function toTransformablePx(value: string) {
   const dimension = valueParser.unit(value);
 
   if (!isTransformableLength(dimension)) return;
 
   return isUnitlessZero(dimension)
-    ? dimension.number
-    : polarisTokenToPx(`${dimension.number}${dimension.unit}`);
+    ? `${dimension.number}px`
+    : toPx(`${dimension.number}${dimension.unit}`);
 }
 
 /**
@@ -156,10 +164,10 @@ export function replaceRemFunction(
   map: ReplaceRemFunctionMap,
   options?: NamespaceOptions,
 ): void {
-  const namespacedRemPattern = namespace('rem', options).replace('.', '\\.');
+  const namespacePattern = getNamespacePattern(options);
 
   const namespacedRemFunctionRegExp = new RegExp(
-    String.raw`^${namespacedRemPattern}\(\s*([\d.]+)(px)?\s*\)\s*$`,
+    String.raw`^${namespacePattern}rem\(\s*([\d.]+)(px)?\s*\)\s*$`,
     'g',
   );
 
@@ -170,7 +178,7 @@ export function replaceRemFunction(
 
       const remValueInPx = `${number}${unit ?? 'px'}`;
 
-      if (!isKeyof(map, remValueInPx)) return match;
+      if (!isKeyOf(map, remValueInPx)) return match;
 
       const newValue = map[remValueInPx];
 
