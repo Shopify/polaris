@@ -80,14 +80,19 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         actionsAndGroups.length - 1,
       );
     }
-    const showable = actionsAndGroups.slice(0, measuredActions.showable.length);
-    const rolledUp = actionsAndGroups.slice(
-      measuredActions.showable.length,
-      actionsAndGroups.length,
-    );
 
-    setMeasuredActions({showable, rolledUp});
-  }, [actions, groups, measuredActions.showable.length]);
+    setMeasuredActions((currentMeasuredActions) => {
+      const showable = actionsAndGroups.slice(
+        0,
+        currentMeasuredActions.showable.length,
+      );
+      const rolledUp = actionsAndGroups.slice(
+        currentMeasuredActions.showable.length,
+        actionsAndGroups.length,
+      );
+      return {showable, rolledUp};
+    });
+  }, [actions, groups]);
 
   const measureActions = useCallback(() => {
     if (
