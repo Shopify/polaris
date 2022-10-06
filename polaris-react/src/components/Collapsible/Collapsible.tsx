@@ -20,20 +20,20 @@ export interface CollapsibleProps {
   open: boolean;
   /** Assign transition properties to the collapsible */
   transition?: Transition;
-  /** Prevents component from re-measuring when child is updated **/
-  preventMeasuringOnChildrenUpdate?: boolean;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
 
 type AnimationState = 'idle' | 'measuring' | 'animating';
 
+// https://w3c.github.io/csswg-drafts/css-values-3/#time
+const noTransitionRegex = /0+(ms|s)/;
+
 export function Collapsible({
   id,
   expandOnPrint,
   open,
   transition,
-  preventMeasuringOnChildrenUpdate,
   children,
 }: CollapsibleProps) {
   const [height, setHeight] = useState(0);
@@ -44,6 +44,9 @@ export function Collapsible({
   const isFullyOpen = animationState === 'idle' && open && isOpen;
   const isFullyClosed = animationState === 'idle' && !open && !isOpen;
   const content = expandOnPrint || !isFullyClosed ? children : null;
+
+  const transitionDisabled =
+    transition?.duration && noTransitionRegex.test(transition.duration.trim());
 
   const wrapperClassName = classNames(
     styles.Collapsible,
@@ -72,16 +75,26 @@ export function Collapsible({
     [open],
   );
 
-  useEffect(() => {
-    if (isFullyClosed || preventMeasuringOnChildrenUpdate) return;
-    setAnimationState('measuring');
-  }, [children, isFullyClosed, preventMeasuringOnChildrenUpdate]);
+  const startAnimation = useCallback(() => {
+    if (transitionDisabled) {
+      setIsOpen(open);
+      setAnimationState('idle');
+
+      const openHeight =
+        collapsibleContainer.current === null
+          ? height
+          : collapsibleContainer.current.scrollHeight;
+      setHeight(open ? openHeight : 0);
+    } else {
+      setAnimationState('measuring');
+    }
+  }, [height, open, transitionDisabled]);
 
   useEffect(() => {
     if (open !== isOpen) {
-      setAnimationState('measuring');
+      startAnimation();
     }
-  }, [open, isOpen]);
+  }, [open, isOpen, startAnimation]);
 
   useEffect(() => {
     if (!open || !collapsibleContainer.current) return;
