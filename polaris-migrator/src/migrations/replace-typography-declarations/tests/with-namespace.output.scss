@@ -1,0 +1,33 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.font-family {
+  font-family: sans-serif;
+  font-family: var(--p-font-family-sans);
+  font-family: var(--p-font-family-sans);
+  font-family: var(--p-font-family-mono);
+}
+
+.font-size {
+  font-size: 10px;
+  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-200);
+  font-size: 1em;
+  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-75) !important;
+}
+
+.font-weight {
+  font-weight: 300;
+  font-weight: var(--p-font-weight-regular);
+  font-weight: var(--p-font-weight-bold);
+  font-weight: var(--p-font-weight-regular);
+  font-weight: var(--p-font-weight-bold);
+  font-weight: var(--p-font-weight-regular) !important;
+  font-weight: 400 + $var;
+}
+
+.font-line-height {
+  line-height: 10px;
+  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-1);
+}

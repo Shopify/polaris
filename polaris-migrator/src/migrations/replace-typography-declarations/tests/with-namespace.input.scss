@@ -1,0 +1,33 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.font-family {
+  font-family: sans-serif;
+  font-family: legacy-polaris-v8.font-family();
+  font-family: legacy-polaris-v8.font-family(base);
+  font-family: legacy-polaris-v8.font-family(monospace);
+}
+
+.font-size {
+  font-size: 10px;
+  font-size: 12px;
+  font-size: 1rem;
+  font-size: 1em;
+  font-size: legacy-polaris-v8.rem(12px);
+  font-size: legacy-polaris-v8.rem(12px) !important;
+}
+
+.font-weight {
+  font-weight: 300;
+  font-weight: 400;
+  font-weight: 700;
+  font-weight: normal;
+  font-weight: bold;
+  font-weight: 400 !important;
+  font-weight: 400 + $var;
+}
+
+.font-line-height {
+  line-height: 10px;
+  line-height: 16px;
+  line-height: 1rem;
+}
