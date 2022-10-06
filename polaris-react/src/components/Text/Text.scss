@@ -121,3 +121,9 @@
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-2);
 }
+
+.break {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
