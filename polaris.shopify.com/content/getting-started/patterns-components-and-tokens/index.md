@@ -53,4 +53,4 @@ Design tokens represent reusable design decisions such as color, spacing, and ty
 
 Polaris design tokens are packaged up as the open source [@Shopify/polaris-tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens) library.
 
-![Different colored lego blocks with one piece labeled as tokens](/images/getting-started/patterns-components-tokens/tokens@2x.png)
+![Different colored building blocks with one piece labeled as tokens](/images/getting-started/patterns-components-tokens/tokens@2x.png)
