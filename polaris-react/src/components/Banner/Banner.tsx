@@ -15,7 +15,6 @@ import {
 
 import {classNames, variationName} from '../../utilities/css';
 import {BannerContext} from '../../utilities/banner-context';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
