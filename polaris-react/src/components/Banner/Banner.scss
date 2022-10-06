@@ -55,7 +55,7 @@
   display: flex;
 
   // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-  &.statusCritical .PrimaryAction .Button {
+  &.statusCritical .PrimaryAction.Button {
     border-color: var(--p-border-critical-subdued);
     background: var(--p-surface-critical-subdued);
 
@@ -75,7 +75,7 @@
     }
   }
 
-  &.statusWarning .PrimaryAction .Button {
+  &.statusWarning .PrimaryAction.Button {
     border-color: var(--p-border-warning-subdued);
     background: var(--p-surface-warning-subdued);
 
@@ -95,7 +95,7 @@
     }
   }
 
-  &.statusInfo .PrimaryAction .Button {
+  &.statusInfo .PrimaryAction.Button {
     border-color: var(--p-border-highlight-subdued);
     background: var(--p-surface-highlight-subdued);
 
@@ -115,7 +115,7 @@
     }
   }
 
-  &.statusSuccess .PrimaryAction .Button {
+  &.statusSuccess .PrimaryAction.Button {
     border-color: var(--p-border-success-subdued);
     background: var(--p-surface-success-subdued);
 
@@ -151,10 +151,6 @@
   + .Banner {
     margin-top: var(--p-space-2);
   }
-
-  .Actions {
-    padding: var(--p-space-3) 0 var(--p-space-1) 0;
-  }
 }
 
 .withinPage {
@@ -171,10 +167,6 @@
     padding-right: var(--p-space-4);
   }
 
-  .Actions {
-    padding-top: var(--p-space-4);
-  }
-
   .Dismiss {
     right: var(--p-space-4);
     top: var(--p-space-5);
@@ -184,15 +176,6 @@
 
 .hasDismiss {
   padding-right: calc(var(--p-space-8) + var(--p-icon-size-small));
-}
-
-.Content {
-  @include text-breakword;
-  padding: var(--p-space-05) 0;
-}
-
-.PrimaryAction {
-  margin-right: var(--p-space-2);
 }
 
 // We need pretty high specificity to do the descendant selectors

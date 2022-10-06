@@ -109,13 +109,13 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   ) : null;
 
   const primaryActionMarkup = action ? (
-    <div className={styles.PrimaryAction}>
+    <Box paddingRight="2">
       {action.loading
         ? spinnerMarkup
         : unstyledButtonFrom(action, {
-            className: styles.Button,
+            className: `${styles.Button} ${styles.PrimaryAction}`,
           })}
-    </div>
+    </Box>
   ) : null;
 
   const secondaryActionMarkup = secondaryAction ? (
@@ -124,12 +124,15 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   const actionMarkup =
     action || secondaryAction ? (
-      <div className={styles.Actions}>
+      <Box
+        paddingTop={withinContentContainer ? '3' : '4'}
+        paddingBottom={withinContentContainer ? '1' : undefined}
+      >
         <ButtonGroup>
           {primaryActionMarkup}
           {secondaryActionMarkup}
         </ButtonGroup>
-      </div>
+      </Box>
     ) : null;
 
   let contentMarkup: React.ReactNode = null;
