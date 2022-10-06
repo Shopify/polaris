@@ -1,6 +1,5 @@
 import SandboxHeader from '../src/components/SandboxHeader';
 import SandboxHelpDialog from '../src/components/SandboxHelpDialog';
-import useDarkMode from 'use-dark-mode';
 import {useEffect, useRef, useState} from 'react';
 import {useRouter} from 'next/router';
 import type {InferGetServerSidePropsType, GetServerSideProps} from 'next';
@@ -20,7 +19,6 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
 export default function Sandbox({
   initialSearchParams,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const darkMode = useDarkMode(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const router = useRouter();
   const searchValue = useRef('');
@@ -82,7 +80,6 @@ export default function Sandbox({
       }}
     >
       <SandboxHeader
-        darkMode={darkMode}
         setHelpIsOpen={setHelpIsOpen}
         url={typeof window !== 'undefined' ? window.location.href : ''}
       />

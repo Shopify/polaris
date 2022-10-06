@@ -1,68 +1,81 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
-
-.SandboxVideo {
-  border-radius: min(var(--border-radius-800), 5%);
-  overflow: hidden;
-  margin: 0 auto;
-  aspect-ratio: var(--aspect-ratio, 16 / 9);
-  max-height: 55vh;
-  box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
-
-  video {
-    width: 100%;
-    height: 100%;
-  }
-}
+@import '../../styles/fonts.scss';
 
 .DialogPanel {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   top: 3rem;
   right: 1.25rem;
   bottom: 3rem;
   left: 1.25rem;
-  max-width: 1180px;
+  padding: 3rem;
+  gap: 4rem;
+  max-width: 1080px;
   max-height: 700px;
-  padding: 1.5rem 1.5rem;
   margin: auto;
   z-index: 2;
-  border-radius: var(--border-radius-600);
+  border-radius: var(--border-radius-800);
   overflow: auto;
-  animation: search-results-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  box-shadow: 0px 0px 0px 10000px rgb(0 0 0 / 25%), 0 1px 3px rgb(0 0 0 / 10%);
-
+  box-shadow: 0 100px 100px rgba(0, 0, 0, 0.2);
   background: var(--surface);
+  color: var(--text);
   @include custom-scrollbars;
-  > * {
+
+  h2 {
+    @include heading-1;
     margin-bottom: 1.5rem;
   }
-  color: var(--text);
 
-  @include dark-mode {
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.125),
-      0 100px 250px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.1);
+  ul {
+    li {
+      margin-left: 1rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+      list-style-type: disc;
+    }
   }
 
-  @media screen and (max-width: $breakpointTablet) {
-    top: 0;
+  p {
+    margin: 1.5rem 0 1.75rem;
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
     left: 0;
     right: 0;
     bottom: 0;
-    max-height: 100vh;
-    box-shadow: none;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+    top: var(--header-height);
     border-radius: 0;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    justify-content: flex-start;
   }
 }
 
-@keyframes search-results-enter {
-  from {
-    transform: scale(0.98);
-    opacity: 0;
+.SandboxVideo {
+  display: flex;
+  align-items: center;
+  min-width: 24rem;
+  max-width: 24rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-800);
+
+  video {
+    width: 100%;
+    height: auto;
+    transform: scale(1.0075);
   }
 
-  to {
-    transform: scale(1);
-    opacity: 1;
+  @media screen and (max-width: $breakpointDesktop) {
+    display: none;
   }
 }
 
@@ -73,4 +86,6 @@
   bottom: 0;
   left: 0;
   z-index: 2;
+  background: var(--text);
+  opacity: 0.6;
 }

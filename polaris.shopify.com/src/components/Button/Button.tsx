@@ -1,7 +1,6 @@
-import React, {forwardRef, useRef, useState, useLayoutEffect} from 'react';
+import React, {forwardRef} from 'react';
 import Link, {LinkProps} from 'next/link';
 import type {HTMLProps, PropsWithChildren} from 'react';
-import {mergeRefs} from 'react-merge-refs';
 import {className} from '../../utils/various';
 import styles from './Button.module.scss';
 
@@ -71,34 +70,5 @@ export function LinkButton({
     </Link>
   );
 }
-
-export const StableButton = forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    // We want to change the button's text on hover, but that would change the
-    // button's width which can look janky. So we capture the button's width
-    // immediately after it's rendered, and set that as a width: style attribute
-    // so it wont change when the text changes.
-    const [buttonWidth, setButtonWidth] = useState<number | null>(null);
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    useLayoutEffect(() => {
-      if (!buttonRef.current) {
-        return;
-      }
-      setButtonWidth(buttonRef.current.offsetWidth);
-    }, []);
-
-    return (
-      <Button
-        // @ts-expect-error WTF are you on about Typescript?
-        ref={mergeRefs([buttonRef, ref])}
-        {...props}
-        style={{
-          ...(buttonWidth !== null && {width: buttonWidth}),
-        }}
-      />
-    );
-  },
-);
-StableButton.displayName = 'StableButton';
 
 export default Button;
