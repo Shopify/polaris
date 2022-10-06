@@ -19,13 +19,15 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
-import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
 import {Spinner} from '../Spinner';
 import {Icon, IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {Text} from '../Text';
+import {Box} from '../Box';
+import {Bleed} from '../Bleed';
 
 import styles from './Banner.scss';
 
@@ -79,14 +81,12 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   );
 
   let headingMarkup: React.ReactNode = null;
-  let headingID: string | undefined;
 
   if (title) {
-    headingID = `${id}Heading`;
     headingMarkup = (
-      <div className={styles.Heading} id={headingID}>
-        <Heading element="p">{title}</Heading>
-      </div>
+      <Text as="h2" variant="headingMd">
+        {title}
+      </Text>
     );
   }
 
@@ -133,15 +133,13 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     ) : null;
 
   let contentMarkup: React.ReactNode = null;
-  let contentID: string | undefined;
 
   if (children || actionMarkup) {
-    contentID = `${id}Content`;
     contentMarkup = (
-      <div className={styles.Content} id={contentID}>
+      <Box paddingTop="05" paddingBottom="05">
         {children}
         {actionMarkup}
-      </div>
+      </Box>
     );
   }
 
@@ -168,19 +166,17 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
-        aria-labelledby={headingID}
-        aria-describedby={contentID}
       >
         {dismissButton}
 
-        <div className={styles.Ribbon}>
+        <Box paddingRight="4">
           <Icon source={iconName} color={iconColor} />
-        </div>
+        </Box>
 
-        <div className={styles.ContentWrapper}>
+        <Bleed top="05">
           {headingMarkup}
           {contentMarkup}
-        </div>
+        </Bleed>
       </div>
     </BannerContext.Provider>
   );
