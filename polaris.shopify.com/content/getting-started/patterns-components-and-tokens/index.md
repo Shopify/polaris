@@ -45,7 +45,7 @@ Polaris web components are packaged as the open source [@Shopify/polaris](https:
 
 Polaris React Native components are also used in the Shopify admin iOS and Android apps. The Polaris React Native library is only available to Shopify employees building with React Native.
 
-![Different colored lego blocks with one piece labeled as components](/images/getting-started/patterns-components-tokens/components@2x.png)
+![Different colored building blocks with one piece labeled as components](/images/getting-started/patterns-components-tokens/components@2x.png)
 
 ## Tokens
 
