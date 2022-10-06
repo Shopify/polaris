@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-migrator': patch
+'@shopify/polaris-migrator': minor
 ---
 
 Add migration to `replace-typography-declarations`
