@@ -9,10 +9,10 @@ import type {
   MenuGroupDescriptor,
 } from '../../../../types';
 import {ButtonGroup} from '../../../ButtonGroup';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
 import {SecondaryAction} from '../SecondaryAction';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {useIsAfterInitialMount} from '../../../../utilities/use-is-after-initial-mount';
 
 import styles from './Actions.scss';
 
@@ -54,13 +54,15 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   };
   const lastMenuGroup = [...groups].pop();
   const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
-  // eslint-disable-next-line no-console
-  console.log('render', timesMeasured.current);
+  const isMounted = useIsAfterInitialMount();
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('mount');
-  }, []);
+    isMounted
+      ? // eslint-disable-next-line no-console
+        console.log('update, times measured: ', timesMeasured.current)
+      : // eslint-disable-next-line no-console
+        console.log('mount, times measured: ', timesMeasured.current);
+  });
 
   const handleActionsOffsetWidth = useCallback((width: number) => {
     actionWidthsRef.current = [...actionWidthsRef.current, width];
@@ -149,7 +151,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     });
 
     if (onActionRollup) {
-      // Note: Do not include last group actions since we are skipping `lastMenuGroup` above
+      // Do not include last group actions since we are skipping `lastMenuGroup` above
       // as it is always rendered with its own actions
       const isRollupActive =
         newShowableActions.length < actionsAndGroups.length - 1;
@@ -187,12 +189,13 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     [measureActions],
   );
 
+  useEventListener('resize', handleResize);
+
   useEffect(() => {
-    if (!actionsLayoutRef.current) {
-      return;
-    }
+    if (!actionsLayoutRef.current) return;
 
     availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+
     if (
       // Allow measuring twice
       // This accounts for the initial paint and re-flow
@@ -341,7 +344,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   return (
     <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
       {groupedActionsMarkup}
-      <EventListener event="resize" handler={handleResize} />
     </div>
   );
 }
