@@ -213,11 +213,11 @@ $loading-panel-height: 53px;
 }
 
 .TableHeadingSortButton {
+  position: static;
   background: none;
   padding: 0;
   border: 0;
   cursor: pointer;
-  position: static;
   display: flex;
   align-items: center;
   justify-content: center;
