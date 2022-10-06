@@ -20,7 +20,7 @@ export interface CollapsibleProps {
   open: boolean;
   /** Assign transition properties to the collapsible */
   transition?: Transition;
-  /** Prevents component from re-measuring when child is updated **/
+  /** @deprecated Re-measuring is no longer necessary on children update **/
   preventMeasuringOnChildrenUpdate?: boolean;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
