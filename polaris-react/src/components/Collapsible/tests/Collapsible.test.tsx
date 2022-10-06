@@ -132,42 +132,6 @@ describe('<Collapsible />', () => {
       ).not.toBeNull();
     });
   });
-
-  describe('preventMeasuringOnChildrenUpdate', () => {
-    it('does not re-measure on child update when preventMeasuringOnChildUpdate is true', () => {
-      const id = 'test-collapsible';
-
-      const collapsible = mountWithApp(
-        <Collapsible id={id} open preventMeasuringOnChildrenUpdate>
-          <div>Foo</div>
-        </Collapsible>,
-      );
-
-      collapsible.setProps({children: <div>Bar</div>});
-
-      expect(collapsible).toContainReactComponent('div', {
-        id,
-        style: {maxHeight: 'none', overflow: 'visible'},
-      });
-    });
-
-    it('re-measures on child update when preventMeasuringOnChildUpdate is false', () => {
-      const id = 'test-collapsible';
-
-      const collapsible = mountWithApp(
-        <Collapsible id={id} open preventMeasuringOnChildrenUpdate={false}>
-          <div>Foo</div>
-        </Collapsible>,
-      );
-
-      collapsible.setProps({children: <div>Bar</div>});
-
-      expect(collapsible).toContainReactComponent('div', {
-        id,
-        style: {maxHeight: '0px', overflow: 'hidden'},
-      });
-    });
-  });
 });
 
 function CollapsibleWithToggle(props: Omit<CollapsibleProps, 'open'>) {
