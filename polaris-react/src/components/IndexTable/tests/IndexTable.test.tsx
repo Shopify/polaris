@@ -755,6 +755,21 @@ describe('<IndexTable>', () => {
           defaultSortingProps!.sortToggleLabels![2].descending,
         );
       });
+
+      it('does not render the toggle label value for the selected index if not sortable', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="descending"
+            sortColumnIndex={1}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+        expect(index.findAll('th')[1]).toContainReactComponent(Tooltip);
+        expect(index.findAll('th')[2]).not.toContainReactComponent(Tooltip);
+        expect(index.findAll('th')[3]).toContainReactComponent(Tooltip);
+      });
     });
   });
 });
