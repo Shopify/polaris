@@ -217,6 +217,7 @@ $loading-panel-height: 53px;
   padding: 0;
   border: 0;
   cursor: pointer;
+  position: static;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -237,7 +238,8 @@ $loading-panel-height: 53px;
   opacity: 0;
   height: var(--p-space-5);
   width: var(--p-space-5);
-  transition: var(--p-ease) var(--p-duration-150) opacity;
+  transition: opacity var(--p-duration-200) var(--p-ease-in)
+    var(--p-duration-100);
 }
 
 .TableHeadingSortIcon-visible {
@@ -396,6 +398,12 @@ $loading-panel-height: 53px;
     .TableCell:last-child {
       background-color: var(--p-surface-selected);
     }
+  }
+}
+
+.Table-sortable {
+  .TableHeading {
+    background-color: var(--p-surface-subdued);
   }
 }
 

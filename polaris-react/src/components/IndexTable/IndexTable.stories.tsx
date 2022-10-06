@@ -1351,11 +1351,23 @@ export function WithSortableHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
   const [sortDirection, setSortDirection] = useState('descending');
 
+  const sortToggleLabels = {
+    0: {ascending: 'A-Z', descending: 'Z-A'},
+    1: {ascending: 'Ascending', descending: 'Descending'},
+    2: {ascending: 'Newest', descending: 'Oldest'},
+    3: {ascending: 'Ascending', descending: 'Ascending'},
+    4: {ascending: 'A-Z', descending: 'Z-A'},
+    5: {ascending: 'A-Z', descending: 'Z-A'},
+    6: {ascending: 'A-Z', descending: 'Z-A'},
+    7: {ascending: 'A-Z', descending: 'Z-A'},
+  };
+
   const initialRows = [
     {
       id: '3411',
       url: 'customers/341',
       name: 'Mae Jemison',
+      date: '2022-02-04',
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
@@ -1366,6 +1378,7 @@ export function WithSortableHeadings() {
     {
       id: '2561',
       url: 'customers/256',
+      date: '2022-01-19',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -1377,6 +1390,7 @@ export function WithSortableHeadings() {
     {
       id: '1245',
       url: 'customers/123',
+      date: '2021-12-12',
       name: 'Anne-Marie Johnson',
       location: 'Portland, USA',
       orders: 10,
@@ -1388,6 +1402,7 @@ export function WithSortableHeadings() {
     {
       id: '8741',
       url: 'customers/543',
+      date: '2022-05-11',
       name: 'Bradley Stevens',
       location: 'Hialeah, USA',
       orders: 5,
@@ -1436,6 +1451,7 @@ export function WithSortableHeadings() {
       {
         id,
         name,
+        date,
         location,
         orders,
         amountSpent,
@@ -1454,6 +1470,7 @@ export function WithSortableHeadings() {
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -1475,6 +1492,7 @@ export function WithSortableHeadings() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
+          {title: 'Date'},
           {title: 'Order count'},
           {title: 'Amount spent'},
           {title: 'Location'},
@@ -1482,10 +1500,12 @@ export function WithSortableHeadings() {
           {title: 'Payment status'},
           {title: 'Notes'},
         ]}
-        sortable={[true, true, false, true, true, true, false]}
+        sortable={[true, true, false, true, true, false, false]}
         sortDirection={sortDirection}
         sortColumnIndex={sortIndex}
         onSort={handleClickSortHeading}
+        sortToggleLabels={sortToggleLabels}
+        lastColumnSticky
       >
         {rowMarkup}
       </IndexTable>

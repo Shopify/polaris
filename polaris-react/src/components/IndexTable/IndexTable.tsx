@@ -20,6 +20,7 @@ import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
+import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
@@ -59,6 +60,14 @@ export type IndexTableHeading =
 
 export type IndexTableSortDirection = 'ascending' | 'descending';
 
+type IndexTableSortToggleLabel = {
+  [key in IndexTableSortDirection]: string;
+};
+
+interface IndexTableSortToggleLabels {
+  [key: number]: IndexTableSortToggleLabel;
+}
+
 export interface IndexTableBaseProps {
   headings: NonEmptyArray<IndexTableHeading>;
   promotedBulkActions?: BulkActionsProps['promotedActions'];
@@ -84,6 +93,9 @@ export interface IndexTableBaseProps {
   sortColumnIndex?: number;
   /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: IndexTableSortDirection): void;
+  /** Optional dictionary of sort toggle labels for each sortable column, with ascending and descending label,
+   * with the key as the index of the column */
+  sortToggleLabels?: IndexTableSortToggleLabels;
 }
 
 export interface TableHeadingRect {
@@ -108,6 +120,7 @@ function IndexTableBase({
   defaultSortDirection = 'descending',
   sortColumnIndex,
   onSort,
+  sortToggleLabels,
   ...restProps
 }: IndexTableBaseProps) {
   const {
@@ -654,6 +667,8 @@ function IndexTableBase({
       </AfterInitialMount>
     ) : null;
 
+  const isSortable = sortable?.some((value) => value);
+
   const tableClassNames = classNames(
     styles.Table,
     hasMoreLeftColumns && styles['Table-scrolling'],
@@ -661,6 +676,7 @@ function IndexTableBase({
     selectMode && shouldShowBulkActions && styles.selectMode,
     !selectable && styles['Table-unselectable'],
     canFitStickyColumn && styles['Table-sticky'],
+    isSortable && styles['Table-sortable'],
     canFitStickyColumn && lastColumnSticky && styles['Table-sticky-last'],
     canFitStickyColumn &&
       lastColumnSticky &&
@@ -856,7 +872,7 @@ function IndexTableBase({
         </span>
       );
 
-      return (
+      const sortMarkup = (
         <UnstyledButton
           onClick={() => handleSortHeadingClick(index, newDirection)}
           className={styles.TableHeadingSortButton}
@@ -866,6 +882,18 @@ function IndexTableBase({
           {headingContent}
         </UnstyledButton>
       );
+
+      if (!sortToggleLabels) {
+        return sortMarkup;
+      }
+
+      const tooltipDirection = isCurrentlySorted
+        ? sortDirection!
+        : defaultSortDirection;
+
+      const tooltipContent = sortToggleLabels[index][tooltipDirection];
+
+      return <Tooltip content={tooltipContent}>{sortMarkup}</Tooltip>;
     }
     return headingContent;
   }
