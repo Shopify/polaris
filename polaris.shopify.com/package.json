@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "private": true,
   "scripts": {
     "build": "yarn gen-assets && next build",
@@ -20,7 +20,7 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.6.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "^10.6.0",
+    "@shopify/polaris": "^10.7.0",
     "@shopify/polaris-icons": "^6.4.0",
     "@shopify/polaris-tokens": "^6.2.0",
     "codesandbox": "^2.2.3",
