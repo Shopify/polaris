@@ -59,7 +59,9 @@ function PropsTable({types, componentName}: Props) {
           </div>
         )}
 
-        <TypeTable types={types} type={propsForComponent} />
+        <AnimatePresence initial={false}>
+          <TypeTable types={types} type={propsForComponent} />
+        </AnimatePresence>
       </div>
     </TypeContext.Provider>
   );
@@ -70,58 +72,80 @@ type ExpandedTypeInfo = {memberName: string | null; typeName: string};
 const ExpandedTypesContext = createContext<{
   expandedTypes: ExpandedTypeInfo[];
   expandType: (typeName: string) => void;
+  collapseType: (typeName: string) => void;
   currentMember: string | null;
-}>({expandType: () => undefined, expandedTypes: [], currentMember: null});
+}>({
+  expandType: () => undefined,
+  collapseType: () => undefined,
+  expandedTypes: [],
+  currentMember: null,
+});
 
 function TypeTable({
   types,
   type,
+  level = 0,
 }: {
   types: FilteredTypes;
   type: Type;
   level?: number;
 }) {
   const [expandedTypes, setExpandedTypes] = useState<ExpandedTypeInfo[]>([]);
+  const {collapseType} = useContext(ExpandedTypesContext);
 
   return (
     <motion.div
+      key={type.name}
       className={styles.TypeTable}
       initial={{opacity: 0, scale: 0.7, height: 0}}
-      animate={{opacity: 1, scale: 1, height: 'auto'}}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        height: 'auto',
+        transition: {ease: 'backOut'},
+      }}
+      exit={{opacity: 0, scale: 0, height: 0, transition: {ease: 'backIn'}}}
     >
       <div className={styles.TypeTableHeader}>
-        {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}
+        {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}{' '}
+        {typeof level === 'number' && level > 0 && (
+          <button onClick={() => collapseType(type.name)} aria-label="Collapse">
+            &times;
+          </button>
+        )}
       </div>
 
       {!type.members && (
         <ExpandedTypesContext.Provider
           value={{
             expandedTypes,
-            expandType: (typeName: string) => {
+            expandType: (typeName: string) =>
               setExpandedTypes([
                 {typeName, memberName: null},
                 ...expandedTypes,
-              ]);
-            },
+              ]),
+            collapseType: () => undefined,
             currentMember: null,
           }}
         >
           <div className={styles.RawInterfaceValue}>
             <Highlighter type={type.value.toString()} />
 
-            {expandedTypes
-              .filter((expanded) => expanded.memberName === null)
-              .map((expanded) => {
-                const typeForExpandedType = types[expanded.typeName];
-                if (!typeForExpandedType) return null;
-                return (
-                  <TypeTable
-                    key={expanded.typeName}
-                    types={types}
-                    type={typeForExpandedType}
-                  />
-                );
-              })}
+            <AnimatePresence initial={false}>
+              {expandedTypes
+                .filter((expanded) => expanded.memberName === null)
+                .map((expanded) => {
+                  const typeForExpandedType = types[expanded.typeName];
+                  if (!typeForExpandedType) return null;
+                  return (
+                    <TypeTable
+                      key={expanded.typeName}
+                      types={types}
+                      type={typeForExpandedType}
+                    />
+                  );
+                })}
+            </AnimatePresence>
           </div>
         </ExpandedTypesContext.Provider>
       )}
@@ -137,16 +161,33 @@ function TypeTable({
               value,
               deprecationMessage,
             }) => {
-              const expandType = (typeName: string) =>
+              const expandType = (typeName: string) => {
                 setExpandedTypes([
                   {typeName, memberName: name},
                   ...expandedTypes,
                 ]);
+              };
+
+              const collapseType = (typeName: string) =>
+                setExpandedTypes((types) =>
+                  types.filter(
+                    (typeInfo) =>
+                      !(
+                        typeInfo.typeName === typeName &&
+                        typeInfo.memberName === name
+                      ),
+                  ),
+                );
 
               return (
                 <ExpandedTypesContext.Provider
                   key={name}
-                  value={{expandedTypes, expandType, currentMember: name}}
+                  value={{
+                    expandedTypes,
+                    expandType,
+                    collapseType,
+                    currentMember: name,
+                  }}
                 >
                   <span className={styles.Row}>
                     <dt className={styles.Key}>
@@ -200,6 +241,7 @@ function TypeTable({
                                 key={expanded.typeName}
                                 types={types}
                                 type={typeForExpandedType}
+                                level={level + 1}
                               />
                             );
                           })}
@@ -226,7 +268,7 @@ function Highlighter({
   const {expandType, expandedTypes, currentMember} =
     useContext(ExpandedTypesContext);
   const {types} = useContext(TypeContext);
-  const hasBenExpanded = expandedTypes.some(
+  const hasBeenExpanded = expandedTypes.some(
     (expandedType) =>
       expandedType.typeName === type &&
       expandedType.memberName === currentMember,
@@ -275,8 +317,8 @@ function Highlighter({
           <button
             className={styles.ExpandableType}
             onClick={() => expandType(type)}
-            disabled={hasBenExpanded}
-            aria-expanded={hasBenExpanded}
+            disabled={hasBeenExpanded}
+            aria-expanded={hasBeenExpanded}
           >
             {type}
           </button>
