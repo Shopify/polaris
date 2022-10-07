@@ -65,6 +65,7 @@ interface State {
 
 export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   static contextType = PortalsManagerContext;
+  context!: React.ContextType<typeof PortalsManagerContext>;
 
   state: State = {
     transitionStatus: this.props.active
@@ -281,7 +282,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     } = this;
     const composedPath = event.composedPath();
     const wasDescendant = preventCloseOnChildOverlayClick
-      ? wasPolarisPortalDescendant(composedPath, this.context.container)
+      ? wasPolarisPortalDescendant(composedPath, this.context!.container)
       : wasContentNodeDescendant(composedPath, contentNode);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
     if (
