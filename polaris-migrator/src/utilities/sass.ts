@@ -89,6 +89,28 @@ export function hasSassFunction(
   return containsSassFunction;
 }
 
+export function getFunctionArgs(node: FunctionNode): string[] {
+  const args: string[] = [];
+
+  let arg = '';
+
+  node.nodes.forEach((node) => {
+    if (node.type === 'div' && node.value === ',') {
+      args.push(arg);
+      arg = '';
+      return;
+    }
+
+    arg += valueParser.stringify(node);
+  });
+
+  if (arg) {
+    args.push(arg);
+  }
+
+  return args;
+}
+
 /**
  * All transformable dimension units. These values are used to determine
  * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
