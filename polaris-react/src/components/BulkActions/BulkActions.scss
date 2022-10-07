@@ -7,24 +7,35 @@ $bulk-actions-button-stacking-order: (
 
 .Group {
   @include text-style-input;
-  display: none;
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
   opacity: 0;
   width: 90vw;
   justify-content: center;
+  transition: var(--p-duration-250) var(--p-ease-in);
+  transform: translateY(120px);
 
-  @media #{$p-breakpoints-sm-up} {
+  &.Group-not-sticky {
+    transform: none;
+    opacity: 1;
+  }
+
+  &.Group-entering,
+  &.Group-exiting {
+    opacity: 0;
     display: flex;
+  }
 
-    &.Group-exiting {
-      transition: none;
-    }
+  &.Group-entered {
+    opacity: 1;
+    display: flex;
+    transform: translateY(0);
+  }
 
-    &.Group-exited {
-      opacity: 0;
-      display: none;
-    }
+  &.Group-exited {
+    opacity: 0;
+    display: none;
   }
 
   &.Group-measuring {
@@ -32,22 +43,6 @@ $bulk-actions-button-stacking-order: (
     display: flex;
     opacity: 0;
   }
-}
-
-.Group-entering,
-.Group-exiting {
-  opacity: 0;
-  display: flex;
-}
-
-.Group-entered {
-  opacity: 1;
-  display: flex;
-}
-
-.Group-exited {
-  opacity: 0;
-  display: none;
 }
 
 .ButtonGroupWrapper {

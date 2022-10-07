@@ -563,6 +563,7 @@ function IndexTableBase({
         promotedActions={promotedActions}
         actions={actions}
         onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
+        isSticky={isBulkActionsSticky}
       />
     </div>
   ) : null;
