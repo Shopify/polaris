@@ -168,7 +168,7 @@ function TypeTable({
                 ]);
               };
 
-              const collapseType = (typeName: string) => {
+              const collapseType = (typeName: string) =>
                 setExpandedTypes((types) =>
                   types.filter(
                     (typeInfo) =>
@@ -178,7 +178,6 @@ function TypeTable({
                       ),
                   ),
                 );
-              };
 
               return (
                 <ExpandedTypesContext.Provider
