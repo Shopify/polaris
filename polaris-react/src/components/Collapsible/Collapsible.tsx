@@ -18,10 +18,9 @@ export interface CollapsibleProps {
   expandOnPrint?: boolean;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
-  /** Assign transition properties to the collapsible */
-  transition?: Transition;
+  /** Assign transition properties to the collapsible. Defaults to true. */
+  transition?: boolean | Transition;
   /** Set to true to disable the animation. Defaults to false. */
-  transitionDisabled?: boolean;
   /** @deprecated Re-measuring is no longer necessary on children update **/
   preventMeasuringOnChildrenUpdate?: boolean;
   /** The content to display inside the collapsible. */
@@ -34,8 +33,7 @@ export function Collapsible({
   id,
   expandOnPrint,
   open,
-  transition,
-  transitionDisabled = false,
+  transition = true,
   preventMeasuringOnChildrenUpdate: _preventMeasuringOnChildrenUpdate,
   children,
 }: CollapsibleProps) {
@@ -54,11 +52,14 @@ export function Collapsible({
     expandOnPrint && styles.expandOnPrint,
   );
 
+  const transitionDisabled = transition === false;
+
+  const transitionStyles = typeof transition === 'object' && {
+    transitionDuration: transition.duration,
+    transitionTimingFunction: transition.timingFunction,
+  };
   const collapsibleStyles = {
-    ...(transition && {
-      transitionDuration: `${transition.duration}`,
-      transitionTimingFunction: `${transition.timingFunction}`,
-    }),
+    ...transitionStyles,
     ...{
       maxHeight: isFullyOpen ? 'none' : `${height}px`,
       overflow: isFullyOpen ? 'visible' : 'hidden',
@@ -80,15 +81,15 @@ export function Collapsible({
       setIsOpen(open);
       setAnimationState('idle');
 
-      const openHeight =
-        collapsibleContainer.current === null
-          ? height
-          : collapsibleContainer.current.scrollHeight;
-      setHeight(open ? openHeight : 0);
+      if (open && collapsibleContainer.current) {
+        setHeight(collapsibleContainer.current.scrollHeight);
+      } else {
+        setHeight(0);
+      }
     } else {
       setAnimationState('measuring');
     }
-  }, [height, open, transitionDisabled]);
+  }, [open, transitionDisabled]);
 
   useEffect(() => {
     if (open !== isOpen) {
