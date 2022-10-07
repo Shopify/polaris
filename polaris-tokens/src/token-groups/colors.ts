@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const colors = {
   background: {
     value: 'rgba(246, 246, 247, 1)',
@@ -645,3 +647,6 @@ export const colors = {
       'For use as a decorative text color that is applied on a decorative surface.',
   },
 };
+
+export type ColorsTokenGroup = TokenGroup<typeof colors>;
+export type ColorsTokenName = keyof ColorsTokenGroup;

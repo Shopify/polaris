@@ -1,31 +1,54 @@
-import {MarkdownFile} from '../../types';
-import {foundationsNavItems} from '../../data/navItems';
-import Layout from '../Layout';
-import Longform from '../Longform';
-import Markdown from '../Markdown';
+import Page from '../Page';
 import PageMeta from '../PageMeta';
+import styles from './FoundationsPage.module.scss';
+import Longform from '../Longform';
+import Grid from '../Grid';
+import {GridItemProps} from '../Grid/Grid';
+import FoundationsThumbnail from '../FoundationsThumbnail';
 
-interface Props {
-  markdownFile: MarkdownFile;
+export interface FoundationsProps {
+  title: string;
+  description: string;
+  items: Item[];
 }
 
-function FoundationsPage({markdownFile: {readme, frontMatter}}: Props) {
-  let {title, description} = frontMatter;
+interface Item extends GridItemProps {
+  order: number;
+  icon: string;
+}
 
-  if (title.includes('/')) {
-    const parts = title.split('/');
-    title = parts[parts.length - 1];
-  }
-
+function FoundationsPage({title, description, items}: FoundationsProps) {
   return (
-    <Layout width="narrow" navItems={foundationsNavItems} title={title}>
-      <PageMeta title={title} description={description} />
+    <div className={styles.FoundationsPage}>
+      <PageMeta description={description} />
 
-      <Longform>
-        <Markdown text={description} />
-        <Markdown text={readme} />
-      </Longform>
-    </Layout>
+      <Page showTOC={false}>
+        <Longform>
+          <h1>{title}</h1>
+          <p>{description}</p>
+        </Longform>
+        <Grid>
+          {items
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .sort((a, b) => a.order - b.order)
+            .map((item) => {
+              if (!item.url) return null;
+              return (
+                <Grid.Item
+                  key={item.title}
+                  {...item}
+                  renderPreview={() => (
+                    <FoundationsThumbnail
+                      icon={item.icon}
+                      category={title.toLowerCase()}
+                    />
+                  )}
+                />
+              );
+            })}
+        </Grid>
+      </Page>
+    </div>
   );
 }
 

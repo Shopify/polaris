@@ -1,0 +1,36 @@
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+.Box {
+  --pc-box-shadow: initial;
+  --pc-box-background: initial;
+  --pc-box-border-radius-bottom-left: initial;
+  --pc-box-border-radius-bottom-right: initial;
+  --pc-box-border-radius-top-left: initial;
+  --pc-box-border-radius-top-right: initial;
+  --pc-box-border-bottom: initial;
+  --pc-box-border-left: initial;
+  --pc-box-border-right: initial;
+  --pc-box-border-top: initial;
+  --pc-box-color: initial;
+  --pc-box-max-width: initial;
+  --pc-box-padding-bottom: initial;
+  --pc-box-padding-left: initial;
+  --pc-box-padding-right: initial;
+  --pc-box-padding-top: initial;
+  background-color: var(--pc-box-background);
+  box-shadow: var(--pc-box-shadow);
+  border-bottom-left-radius: var(--pc-box-border-radius-bottom-left);
+  border-bottom-right-radius: var(--pc-box-border-radius-bottom-right);
+  border-top-left-radius: var(--pc-box-border-radius-top-left);
+  border-top-right-radius: var(--pc-box-border-radius-top-right);
+  border-bottom: var(--pc-box-border-bottom);
+  border-left: var(--pc-box-border-left);
+  border-right: var(--pc-box-border-right);
+  border-top: var(--pc-box-border-top);
+  color: var(--pc-box-color);
+  max-width: var(--pc-box-max-width);
+  padding-bottom: var(--pc-box-padding-bottom);
+  padding-left: var(--pc-box-padding-left);
+  padding-right: var(--pc-box-padding-right);
+  padding-top: var(--pc-box-padding-top);
+  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
+}

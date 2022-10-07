@@ -19,6 +19,26 @@ enum Status {
 
 export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
 
+/**
+ * Computes a rudimentary hash from a string by xoring the character codes
+ * of all characters
+ */
+function xorHash(str: string) {
+  let hash = 0;
+
+  for (const char of str) {
+    hash ^= char.charCodeAt(0);
+  }
+
+  return hash;
+}
+
+function styleClass(name?: string) {
+  return name
+    ? STYLE_CLASSES[xorHash(name) % STYLE_CLASSES.length]
+    : STYLE_CLASSES[0];
+}
+
 export interface AvatarProps {
   /**
    * Size of avatar
@@ -56,15 +76,6 @@ export function Avatar({
 }: AvatarProps) {
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
-
-  // WARNING: This approach of utilizing the first letter of the name to generate the icon styling within the Avatar component also exists in one other repository:
-  // https://github.com/Shopify/mobile/blob/main/src/foundations/polaris/components/Avatar/utilities/getStyleClassFromName.ts
-  // Please ensure they stay in sync by making changes in both places.
-  function styleClass(name?: string) {
-    return name
-      ? STYLE_CLASSES[name.charCodeAt(0) % STYLE_CLASSES.length]
-      : STYLE_CLASSES[0];
-  }
 
   const [status, setStatus] = useState<Status>(Status.Pending);
 

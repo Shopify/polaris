@@ -1,0 +1,23 @@
+name: Update performance dispatch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'polaris-react/**'
+
+jobs:
+  update-performance-dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: "shopify",
+              repo: "polaris-coverage-shopifycloud-com",
+              workflow_id: "update-performance.yml",
+              ref: "main"
+            });

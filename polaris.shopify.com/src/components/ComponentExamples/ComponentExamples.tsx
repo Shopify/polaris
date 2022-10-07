@@ -79,60 +79,56 @@ const ComponentExamples = ({examples}: Props) => {
   }, [examples]);
 
   return (
-    <>
-      <h2 id="examples">Examples</h2>
-
-      <Tab.Group
-        defaultIndex={0}
-        selectedIndex={selectedIndex}
-        onChange={setSelectedIndex}
-      >
-        <Tab.List>
-          <div className={styles.ExamplesList}>
-            {examples.map((example) => {
-              return (
-                <Tab key={example.fileName}>
-                  <span>{example.title}</span>
-                </Tab>
-              );
-            })}
-          </div>
-        </Tab.List>
-
-        <Tab.Panels>
-          {examples.map(({fileName, description, code}) => {
-            const exampleUrl = `/examples/${fileName.replace('.tsx', '')}`;
-
+    <Tab.Group
+      defaultIndex={0}
+      selectedIndex={selectedIndex}
+      onChange={setSelectedIndex}
+    >
+      <Tab.List>
+        <div className={styles.ExamplesList} id="examples">
+          {examples.map((example) => {
             return (
-              <Tab.Panel key={fileName}>
-                {description ? <Markdown text={description} /> : null}
-                <div className={styles.ExampleFrame}>
-                  <iframe
-                    src={exampleUrl}
-                    height={iframeHeight}
-                    onLoad={handleExampleLoad}
-                    id={exampleIframeId}
-                  />
-                  <div className={className(styles.Buttons, 'light-mode')}>
-                    <CodesandboxButton
-                      className={styles.CodesandboxButton}
-                      code={code}
-                    />
-                  </div>
-                </div>
-
-                <Code
-                  code={[
-                    {title: 'React', code: code.trim()},
-                    {title: 'HTML', code: htmlCode},
-                  ]}
-                />
-              </Tab.Panel>
+              <Tab key={example.fileName}>
+                <span>{example.title}</span>
+              </Tab>
             );
           })}
-        </Tab.Panels>
-      </Tab.Group>
-    </>
+        </div>
+      </Tab.List>
+
+      <Tab.Panels>
+        {examples.map(({fileName, description, code}) => {
+          const exampleUrl = `/examples/${fileName.replace('.tsx', '')}`;
+
+          return (
+            <Tab.Panel key={fileName}>
+              {description ? <Markdown text={description} /> : null}
+              <div className={styles.ExampleFrame}>
+                <iframe
+                  src={exampleUrl}
+                  height={iframeHeight}
+                  onLoad={handleExampleLoad}
+                  id={exampleIframeId}
+                />
+                <div className={className(styles.Buttons, 'light-mode')}>
+                  <CodesandboxButton
+                    className={styles.CodesandboxButton}
+                    code={code}
+                  />
+                </div>
+              </div>
+
+              <Code
+                code={[
+                  {title: 'React', code: code.trim()},
+                  {title: 'HTML', code: htmlCode},
+                ]}
+              />
+            </Tab.Panel>
+          );
+        })}
+      </Tab.Panels>
+    </Tab.Group>
   );
 };
 

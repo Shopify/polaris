@@ -1,4 +1,5 @@
 @import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
 .UnparsablePropsWarning {
   background: url(/images/CircleAlertMajor.svg) no-repeat left 0.275rem;
@@ -18,17 +19,18 @@
     --props-table-border-color: rgba(255, 255, 255, 0.085);
   }
   border-radius: var(--border-radius-400);
-  font-size: var(--font-size-100);
+  font-size: var(--font-size-200);
   display: block;
   transform-origin: 50% 0;
   border: 1px solid var(--props-table-border-color);
   overflow: hidden;
+  background: var(--surface);
 
   .TypeTable {
     margin-top: 0.75rem;
     margin-bottom: 0.25rem;
     background: var(--props-table-background-color);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.033);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01);
   }
 
   .TypeTableHeader {
@@ -51,6 +53,8 @@
       }
     }
 
+    padding: 0.66em 1em;
+    background: rgba(0, 0, 0, 0.02);
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
@@ -58,7 +62,7 @@
 
   .Description {
     display: block;
-    font-size: var(--font-size-50);
+    font-size: var(--font-size-100);
   }
 
   .RawInterfaceValue {
@@ -67,7 +71,7 @@
 
   .Row {
     display: block;
-    padding: 0.75em 1em;
+    padding: 1em 1em;
     border-bottom: 1px solid var(--props-table-border-color);
 
     &:last-child {
@@ -77,7 +81,13 @@
 
   .Key {
     display: flex;
+    flex-direction: column;
     gap: 0.6rem;
+
+    @media screen and (max-width: $breakpointMobile) {
+      flex-direction: column;
+      gap: 0;
+    }
   }
 
   .ExpandableType {
