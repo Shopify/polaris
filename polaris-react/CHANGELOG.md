@@ -1,5 +1,17 @@
 # Changelog
 
+## 10.6.0
+
+### Minor Changes
+
+- [#7360](https://github.com/Shopify/polaris/pull/7360) [`f7140123d`](https://github.com/Shopify/polaris/commit/f7140123dce74be7d79b2ae57bbfda2f96363980) Thanks [@mrcthms](https://github.com/mrcthms)! - Update `IndexTable` in sortable mode to fix visual bugs and include label Tooltips
+
+### Patch Changes
+
+- [#7361](https://github.com/Shopify/polaris/pull/7361) [`b1b576403`](https://github.com/Shopify/polaris/commit/b1b5764035c6f138e24ad42c9c033c7ca7369a93) Thanks [@kyledurand](https://github.com/kyledurand)! - Use state callback in page actions
+
+* [#7319](https://github.com/Shopify/polaris/pull/7319) [`4b95fdc64`](https://github.com/Shopify/polaris/commit/4b95fdc64b4d30a39333e09623d347735636e771) Thanks [@qt314](https://github.com/qt314)! - Update the `VideoThumbnail` play button user experience
+
 ## 10.5.0
 
 ### Minor Changes
