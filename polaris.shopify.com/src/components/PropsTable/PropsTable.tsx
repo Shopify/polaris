@@ -84,23 +84,35 @@ const ExpandedTypesContext = createContext<{
 function TypeTable({
   types,
   type,
+  level = 0,
 }: {
   types: FilteredTypes;
   type: Type;
   level?: number;
 }) {
   const [expandedTypes, setExpandedTypes] = useState<ExpandedTypeInfo[]>([]);
+  const {collapseType} = useContext(ExpandedTypesContext);
 
   return (
     <motion.div
       key={type.name}
       className={styles.TypeTable}
       initial={{opacity: 0, scale: 0.7, height: 0}}
-      animate={{opacity: 1, scale: 1, height: 'auto'}}
-      exit={{opacity: 0, scale: 0, height: 0, transition: {bounce: 0}}}
+      animate={{
+        opacity: 1,
+        scale: 1,
+        height: 'auto',
+        transition: {ease: 'backOut'},
+      }}
+      exit={{opacity: 0, scale: 0, height: 0, transition: {ease: 'backIn'}}}
     >
       <div className={styles.TypeTableHeader}>
-        {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}
+        {syntaxKindToDeveloperFriendlyString(type.syntaxKind)} {type.name}{' '}
+        {typeof level === 'number' && level > 0 && (
+          <button onClick={() => collapseType(type.name)} aria-label="Collapse">
+            &times;
+          </button>
+        )}
       </div>
 
       {!type.members && (
@@ -113,11 +125,7 @@ function TypeTable({
                 ...expandedTypes,
               ]);
             },
-            collapseType: (typeName: string) => {
-              setExpandedTypes((types) =>
-                types.filter((typeInfo) => typeInfo.typeName !== typeName),
-              );
-            },
+            collapseType: () => undefined,
             currentMember: null,
           }}
         >
@@ -154,15 +162,22 @@ function TypeTable({
               value,
               deprecationMessage,
             }) => {
-              const expandType = (typeName: string) =>
+              const expandType = (typeName: string) => {
                 setExpandedTypes([
                   {typeName, memberName: name},
                   ...expandedTypes,
                 ]);
+              };
 
               const collapseType = (typeName: string) => {
                 setExpandedTypes((types) =>
-                  types.filter((typeInfo) => typeInfo.typeName !== typeName),
+                  types.filter(
+                    (typeInfo) =>
+                      !(
+                        typeInfo.typeName === typeName &&
+                        typeInfo.memberName === name
+                      ),
+                  ),
                 );
               };
 
@@ -228,6 +243,7 @@ function TypeTable({
                                 key={expanded.typeName}
                                 types={types}
                                 type={typeForExpandedType}
+                                level={level + 1}
                               />
                             );
                           })}
@@ -251,7 +267,7 @@ function Highlighter({
   type: string;
   prev?: string;
 }): JSX.Element {
-  const {expandType, collapseType, expandedTypes, currentMember} =
+  const {expandType, expandedTypes, currentMember} =
     useContext(ExpandedTypesContext);
   const {types} = useContext(TypeContext);
   const hasBeenExpanded = expandedTypes.some(
@@ -302,9 +318,8 @@ function Highlighter({
         {typeCanBeExpanded ? (
           <button
             className={styles.ExpandableType}
-            onClick={() => {
-              hasBeenExpanded ? collapseType(type) : expandType(type);
-            }}
+            onClick={() => expandType(type)}
+            disabled={hasBeenExpanded}
             aria-expanded={hasBeenExpanded}
           >
             {type}

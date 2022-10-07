@@ -32,12 +32,25 @@
   }
 
   .TypeTableHeader {
+    display: flex;
+    align-items: center;
     width: 100%;
     text-align: left;
     color: var(--code-keyword);
     font-family: var(--font-family-mono);
     padding: 0.5em 1em;
     background: rgba(0, 0, 0, 0.035);
+
+    button {
+      margin-left: auto;
+      background: transparent;
+      color: var(--text-subdued);
+
+      &:hover {
+        color: var(--text-strong);
+      }
+    }
+
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
@@ -69,10 +82,9 @@
 
   .ExpandableType {
     background: transparent;
-    border-bottom: 1px dashed var(--border-color);
 
-    &:hover {
-      border-bottom-color: transparent;
+    &[aria-expanded='false'] {
+      border-bottom: 1px dashed var(--border-color);
     }
   }
 
