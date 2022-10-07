@@ -16,6 +16,16 @@ import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
 import styles from '../ResourceList.scss';
 
+jest.mock('../../BulkActions', () => ({
+  ...jest.requireActual('../../BulkActions'),
+  useIsBulkActionsSticky: () => ({
+    bulkActionsIntersectionRef: null,
+    tableMeasurerRef: null,
+    isBulkActionsSticky: false,
+    bulkActionsAbsoluteOffset: 0,
+  }),
+}));
+
 const itemsNoID = [{url: 'item 1'}, {url: 'item 2'}];
 const singleItemNoID = [{url: 'item 1'}];
 const singleItemWithID = [{id: '1', url: 'item 1'}];

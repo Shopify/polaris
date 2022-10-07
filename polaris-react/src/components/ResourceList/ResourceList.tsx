@@ -31,7 +31,11 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {
+  BulkActions,
+  BulkActionsProps,
+  useIsBulkActionsSticky,
+} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
@@ -161,6 +165,13 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
     new Map(),
   );
+
+  const {
+    bulkActionsIntersectionRef,
+    tableMeasurerRef,
+    isBulkActionsSticky,
+    bulkActionsAbsoluteOffset,
+  } = useIsBulkActionsSticky(selectMode);
 
   const defaultResourceName = useLazyRef(() => ({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
@@ -550,8 +561,18 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     </div>
   ) : null;
 
+  const bulkActionClassNames = classNames(
+    styles.BulkActionsWrapper,
+    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
+  );
+
   const bulkActionsMarkup = isSelectable ? (
-    <div className={styles.BulkActionsWrapper}>
+    <div
+      className={bulkActionClassNames}
+      style={{
+        top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+      }}
+    >
       <BulkActions
         selectMode={selectMode}
         onSelectModeToggle={handleSelectMode}
@@ -664,6 +685,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
             );
           }}
         </Sticky>
+        {bulkActionsMarkup}
       </div>
     );
 
@@ -742,6 +764,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
             selectMode &&
             styles.ResourceListWrapperWithBulkActions,
         )}
+        ref={tableMeasurerRef}
       >
         {filterControlMarkup}
         {headerMarkup}
@@ -749,8 +772,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         {emptySearchStateMarkup}
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
-        {bulkActionsMarkup}
       </div>
+      <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
 };

@@ -4,7 +4,9 @@ import {debounce} from '../../../utilities/debounce';
 
 const DEBOUNCE_PERIOD = 250;
 
-export function useIsBulkActionsSticky() {
+const PADDING_IN_SELECT_MODE = 100;
+
+export function useIsBulkActionsSticky(selectMode: boolean) {
   const [isBulkActionsSticky, setIsSticky] = useState(false);
   const [bulkActionsAbsoluteOffset, setBulkActionsAbsoluteOffset] = useState(0);
   const bulkActionsIntersectionRef = useRef<HTMLDivElement>(null);
@@ -16,7 +18,8 @@ export function useIsBulkActionsSticky() {
       if (!node) {
         return 0;
       }
-      return node.getBoundingClientRect().height;
+      const paddingHeight = selectMode ? PADDING_IN_SELECT_MODE : 0;
+      return node.getBoundingClientRect().height - paddingHeight;
     }
     const tableHeight = computeTableHeight();
 
@@ -34,9 +37,13 @@ export function useIsBulkActionsSticky() {
 
     return () =>
       window.removeEventListener('resize', debouncedComputeTableHeight);
-  }, [tableMeasurerRef]);
+  }, [tableMeasurerRef, selectMode]);
 
   useEffect(() => {
+    const hasIOSupport = Boolean(IntersectionObserver);
+    if (!hasIOSupport) {
+      return;
+    }
     const handleIntersect = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry: IntersectionObserverEntry) => {
         setIsSticky(!entry.isIntersecting);

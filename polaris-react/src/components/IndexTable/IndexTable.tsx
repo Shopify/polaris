@@ -23,7 +23,11 @@ import {Text} from '../Text';
 import {Button} from '../Button';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
-import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {
+  BulkActions,
+  BulkActionsProps,
+  useIsBulkActionsSticky,
+} from '../BulkActions';
 import {classNames} from '../../utilities/css';
 import {
   useIndexValue,
@@ -38,7 +42,6 @@ import type {NonEmptyArray} from '../../types';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
-import {useIsBulkActionsSticky} from './hooks/use-is-bulk-actions-sticky';
 import styles from './IndexTable.scss';
 
 interface IndexTableHeadingBase {
@@ -172,7 +175,7 @@ function IndexTableBase({
     tableMeasurerRef,
     isBulkActionsSticky,
     bulkActionsAbsoluteOffset,
-  } = useIsBulkActionsSticky();
+  } = useIsBulkActionsSticky(selectMode);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
@@ -762,7 +765,7 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
-  const bulkActionsWrapperClassNames = classNames(
+  const tableWrapperClassNames = classNames(
     Boolean(bulkActionsMarkup) &&
       selectMode &&
       styles.IndexTableWithBulkActions,
@@ -771,7 +774,7 @@ function IndexTableBase({
   return (
     <>
       <div className={styles.IndexTable}>
-        <div className={bulkActionsWrapperClassNames} ref={tableMeasurerRef}>
+        <div className={tableWrapperClassNames} ref={tableMeasurerRef}>
           {!shouldShowBulkActions && !condensed && loadingMarkup}
           {tableContentMarkup}
         </div>

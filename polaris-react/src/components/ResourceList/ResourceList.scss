@@ -157,8 +157,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 .BulkActionsWrapper {
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   visibility: visible;
-  position: sticky;
-  bottom: var(--p-space-4);
+  position: absolute;
   left: 0;
   width: 100%;
   display: flex;
@@ -170,6 +169,12 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
     flex: 0 1 auto;
     align-self: flex-start;
   }
+}
+
+.BulkActionsWrapperSticky {
+  position: fixed;
+  top: auto;
+  bottom: var(--p-space-4);
 }
 
 .SelectAllActionsWrapper {
@@ -217,7 +222,8 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .ResourceListWrapperWithBulkActions {
-  padding-bottom: var(--p-space-4);
+  --pc-resource-list-bulk-actions-offset: 100px;
+  padding-bottom: var(--pc-resource-list-bulk-actions-offset);
 }
 
 .ResourceList {
