@@ -233,7 +233,7 @@ function PrimaryActionMarkup({
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
 
-  let actionMarkup = primaryAction;
+  let actionMarkup: React.ReactNode;
   if (isInterface(primaryAction)) {
     const {primary: isPrimary, helpText} = primaryAction;
     const primary = isPrimary === undefined ? true : isPrimary;
@@ -249,6 +249,8 @@ function PrimaryActionMarkup({
     ) : (
       content
     );
+  } else {
+    actionMarkup = primaryAction;
   }
 
   return <div className={styles.PrimaryActionWrapper}>{actionMarkup}</div>;

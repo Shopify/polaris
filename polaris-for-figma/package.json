@@ -15,14 +15,14 @@
     "@shopify/polaris": "^10.6.0",
     "antd": "^4.20.4",
     "lodash": "^4.17.15",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "sass": "^1.32.8"
   },
   "devDependencies": {
     "@figma/plugin-typings": "^1.19.1",
-    "@types/react": "^17.0.2",
-    "@types/react-dom": "^17.0.2",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "@types/node": "^17.0.23",
     "babel-loader": "^8.2.3",
     "css-loader": "^3.4.2",
