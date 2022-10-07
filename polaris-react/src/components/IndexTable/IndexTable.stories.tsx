@@ -1351,38 +1351,65 @@ export function WithSortableHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
   const [sortDirection, setSortDirection] = useState('descending');
 
+  const sortToggleLabels = {
+    0: {ascending: 'A-Z', descending: 'Z-A'},
+    1: {ascending: 'Ascending', descending: 'Descending'},
+    2: {ascending: 'Newest', descending: 'Oldest'},
+    3: {ascending: 'Ascending', descending: 'Ascending'},
+    4: {ascending: 'A-Z', descending: 'Z-A'},
+    5: {ascending: 'A-Z', descending: 'Z-A'},
+    6: {ascending: 'A-Z', descending: 'Z-A'},
+    7: {ascending: 'A-Z', descending: 'Z-A'},
+  };
+
   const initialRows = [
     {
       id: '3411',
       url: 'customers/341',
       name: 'Mae Jemison',
+      date: '2022-02-04',
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Paid',
+      notes: '',
     },
     {
       id: '2561',
       url: 'customers/256',
+      date: '2022-01-19',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer lives on the 3rd floor',
     },
     {
       id: '1245',
       url: 'customers/123',
+      date: '2021-12-12',
       name: 'Anne-Marie Johnson',
       location: 'Portland, USA',
       orders: 10,
       amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
     },
     {
       id: '8741',
       url: 'customers/543',
+      date: '2022-05-11',
       name: 'Bradley Stevens',
       location: 'Hialeah, USA',
       orders: 5,
       amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
     },
   ];
   const [sortedRows, setSortedRows] = useState(
@@ -1420,7 +1447,20 @@ export function WithSortableHeadings() {
   }
 
   const rowMarkup = rows.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    (
+      {
+        id,
+        name,
+        date,
+        location,
+        orders,
+        amountSpent,
+        fulfillmentStatus,
+        paymentStatus,
+        notes,
+      },
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -1430,9 +1470,13 @@ export function WithSortableHeadings() {
         <IndexTable.Cell>
           <TextStyle variation="strong">{name}</TextStyle>
         </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
         <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{notes}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -1448,14 +1492,20 @@ export function WithSortableHeadings() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
+          {title: 'Date'},
           {title: 'Order count'},
           {title: 'Amount spent'},
           {title: 'Location'},
+          {title: 'Fulfillment status'},
+          {title: 'Payment status'},
+          {title: 'Notes'},
         ]}
-        sortable={[true, false, false, true]}
+        sortable={[true, true, false, true, true, false, false]}
         sortDirection={sortDirection}
         sortColumnIndex={sortIndex}
         onSort={handleClickSortHeading}
+        sortToggleLabels={sortToggleLabels}
+        lastColumnSticky
       >
         {rowMarkup}
       </IndexTable>
