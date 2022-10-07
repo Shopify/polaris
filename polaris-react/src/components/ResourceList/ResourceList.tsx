@@ -171,6 +171,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     tableMeasurerRef,
     isBulkActionsSticky,
     bulkActionsAbsoluteOffset,
+    bulkActionsMaxWidth,
+    bulkActionsOffsetLeft,
   } = useIsBulkActionsSticky(selectMode);
 
   const defaultResourceName = useLazyRef(() => ({
@@ -572,6 +574,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       className={bulkActionClassNames}
       style={{
         top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+        width: bulkActionsMaxWidth,
+        left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
       }}
     >
       <BulkActions
@@ -580,6 +584,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         promotedActions={promotedBulkActions}
         actions={bulkActions}
         disabled={loading}
+        isSticky={isBulkActionsSticky}
+        width={bulkActionsMaxWidth}
       />
     </div>
   ) : null;

@@ -9,29 +9,46 @@ const PADDING_IN_SELECT_MODE = 100;
 export function useIsBulkActionsSticky(selectMode: boolean) {
   const [isBulkActionsSticky, setIsSticky] = useState(false);
   const [bulkActionsAbsoluteOffset, setBulkActionsAbsoluteOffset] = useState(0);
+  const [bulkActionsMaxWidth, setBulkActionsMaxWidth] = useState(0);
+  const [bulkActionsOffsetLeft, setBulkActionsOffsetLeft] = useState(0);
   const bulkActionsIntersectionRef = useRef<HTMLDivElement>(null);
   const tableMeasurerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function computeTableHeight() {
+    function computeTableDimensions() {
       const node = tableMeasurerRef.current;
       if (!node) {
-        return 0;
+        return {
+          maxWidth: 0,
+          offsetHeight: 0,
+          offsetLeft: 0,
+        };
       }
+      const box = node.getBoundingClientRect();
       const paddingHeight = selectMode ? PADDING_IN_SELECT_MODE : 0;
-      return node.getBoundingClientRect().height - paddingHeight;
+      const offsetHeight = box.height - paddingHeight;
+      const maxWidth = box.width;
+      const offsetLeft = box.left;
+
+      return {
+        offsetHeight,
+        offsetLeft,
+        maxWidth,
+      };
     }
-    const tableHeight = computeTableHeight();
+    const {offsetHeight, offsetLeft, maxWidth} = computeTableDimensions();
 
     const debouncedComputeTableHeight = debounce(
-      computeTableHeight,
+      computeTableDimensions,
       DEBOUNCE_PERIOD,
       {
         trailing: true,
       },
     );
 
-    setBulkActionsAbsoluteOffset(tableHeight);
+    setBulkActionsAbsoluteOffset(offsetHeight);
+    setBulkActionsMaxWidth(maxWidth);
+    setBulkActionsOffsetLeft(offsetLeft);
 
     window.addEventListener('resize', debouncedComputeTableHeight);
 
@@ -73,5 +90,7 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
     tableMeasurerRef,
     isBulkActionsSticky,
     bulkActionsAbsoluteOffset,
+    bulkActionsMaxWidth,
+    bulkActionsOffsetLeft,
   };
 }

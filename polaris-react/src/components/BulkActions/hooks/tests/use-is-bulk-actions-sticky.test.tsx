@@ -14,12 +14,16 @@ function Component({selectMode}: ComponentProps) {
     tableMeasurerRef,
     isBulkActionsSticky,
     bulkActionsAbsoluteOffset,
+    bulkActionsMaxWidth,
+    bulkActionsOffsetLeft,
   } = useIsBulkActionsSticky(selectMode);
 
   return (
     <div className="table" ref={tableMeasurerRef}>
       <p className="sticky">{isBulkActionsSticky ? 'true' : 'false'}</p>
       <span className="offset">{bulkActionsAbsoluteOffset}</span>
+      <span className="width">{bulkActionsMaxWidth}</span>
+      <span className="left">{bulkActionsOffsetLeft}</span>
       <em style={{height: 400}} />
       <i className="intersection" ref={bulkActionsIntersectionRef} />
     </div>
@@ -34,7 +38,11 @@ describe('useIsBulkActionsSticky', () => {
       Element.prototype,
       'getBoundingClientRect',
     );
-    setGetBoundingClientRect(400);
+    setGetBoundingClientRect({
+      width: 600,
+      height: 400,
+      left: 20,
+    });
 
     intersectionObserver.mock();
   });
@@ -47,14 +55,26 @@ describe('useIsBulkActionsSticky', () => {
   describe('when measuring', () => {
     it('returns the offset correctly when select mode is false', () => {
       const component = mountWithApp(<Component selectMode={false} />);
-      const result = component.find('span')?.text();
+      const result = component.findAll('span')[0]?.text();
       expect(result).toBe('400');
     });
 
     it('returns the offset correctly when select mode is true', () => {
       const component = mountWithApp(<Component selectMode />);
-      const result = component.find('span')?.text();
+      const result = component.findAll('span')[0]?.text();
       expect(result).toBe('300');
+    });
+
+    it('returns the width value correctly', () => {
+      const component = mountWithApp(<Component selectMode />);
+      const result = component.findAll('span')[1]?.text();
+      expect(result).toBe('600');
+    });
+
+    it('returns the left value correctly', () => {
+      const component = mountWithApp(<Component selectMode />);
+      const result = component.findAll('span')[2]?.text();
+      expect(result).toBe('20');
     });
   });
 
@@ -94,13 +114,21 @@ describe('useIsBulkActionsSticky', () => {
     });
   });
 
-  function setGetBoundingClientRect(height: number) {
+  function setGetBoundingClientRect({
+    width,
+    height,
+    left,
+  }: {
+    width: number;
+    height: number;
+    left: number;
+  }) {
     getBoundingClientRectSpy.mockImplementation(() => {
       return {
         height,
-        width: 0,
+        width,
         top: 0,
-        left: 0,
+        left,
         bottom: 0,
         right: 0,
         x: 0,

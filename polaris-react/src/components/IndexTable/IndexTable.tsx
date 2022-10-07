@@ -170,6 +170,8 @@ function IndexTableBase({
     tableMeasurerRef,
     isBulkActionsSticky,
     bulkActionsAbsoluteOffset,
+    bulkActionsMaxWidth,
+    bulkActionsOffsetLeft,
   } = useIsBulkActionsSticky(selectMode);
 
   const tableBodyRef = useCallback(
@@ -554,6 +556,8 @@ function IndexTableBase({
       data-condensed={condensed}
       style={{
         top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+        width: bulkActionsMaxWidth,
+        left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
       }}
     >
       {loadingMarkup}
@@ -564,6 +568,7 @@ function IndexTableBase({
         actions={actions}
         onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
         isSticky={isBulkActionsSticky}
+        width={bulkActionsMaxWidth}
       />
     </div>
   ) : null;

@@ -32,7 +32,6 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   position: relative;
   background-color: var(--p-surface);
   z-index: resource-list(header-outer-wrapper-stacking-order);
-  overflow: hidden;
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
 

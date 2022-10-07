@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import {Transition} from 'react-transition-group';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -43,6 +43,8 @@ export interface BulkActionsProps {
   onMoreActionPopoverToggle?(isOpen: boolean): void;
   /** If the BulkActions is currently sticky in view */
   isSticky?: boolean;
+  /** The width of the BulkActions */
+  width: number;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -190,7 +192,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
-    const {selectMode, disabled, promotedActions, i18n, isSticky} = this.props;
+    const {selectMode, disabled, promotedActions, i18n, isSticky, width} =
+      this.props;
 
     const actionSections = this.actionSections();
 
@@ -296,34 +299,36 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     }
 
     const group = (
-      <TransitionGroup>
-        <CSSTransition
-          timeout={250}
-          in={selectMode}
-          key="group"
-          nodeRef={this.groupNode}
-        >
-          {(status: TransitionStatus) => {
-            const groupClassName = classNames(
-              styles.Group,
-              !isSticky && styles['Group-not-sticky'],
-              !measuring && isSticky && styles[`Group-${status}`],
-              measuring && styles['Group-measuring'],
-            );
-            return (
-              <div className={groupClassName} ref={this.groupNode}>
-                <EventListener event="resize" handler={this.handleResize} />
-                <div
-                  className={styles.ButtonGroupWrapper}
-                  ref={this.setButtonsNode}
-                >
-                  {groupContent}
-                </div>
+      <Transition
+        timeout={250}
+        in={selectMode}
+        key="group"
+        nodeRef={this.groupNode}
+      >
+        {(status: TransitionStatus) => {
+          const groupClassName = classNames(
+            styles.Group,
+            !isSticky && styles['Group-not-sticky'],
+            !measuring && isSticky && styles[`Group-${status}`],
+            measuring && styles['Group-measuring'],
+          );
+          return (
+            <div
+              className={groupClassName}
+              ref={this.groupNode}
+              style={{width}}
+            >
+              <EventListener event="resize" handler={this.handleResize} />
+              <div
+                className={styles.ButtonGroupWrapper}
+                ref={this.setButtonsNode}
+              >
+                {groupContent}
               </div>
-            );
-          }}
-        </CSSTransition>
-      </TransitionGroup>
+            </div>
+          );
+        }}
+      </Transition>
     );
 
     return <div ref={this.setContainerNode}>{group}</div>;

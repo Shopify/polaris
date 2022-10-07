@@ -11,7 +11,8 @@ $bulk-actions-button-stacking-order: (
   align-items: center;
   flex-wrap: wrap;
   opacity: 0;
-  width: 90vw;
+  // width: 90vw;
+  width: 100%;
   justify-content: center;
   transition: var(--p-duration-250) var(--p-ease-in);
   transform: translateY(120px);
