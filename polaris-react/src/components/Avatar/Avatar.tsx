@@ -123,6 +123,11 @@ export function Avatar({
       styles[variationName('style', styleClass(nameString))],
   );
 
+  const textClassName = classNames(
+    styles.Text,
+    (initials?.length || 0) > 2 && styles.long,
+  );
+
   const imageClassName = classNames(
     styles.Image,
     status !== Status.Loaded && styles.hidden,
@@ -150,12 +155,11 @@ export function Avatar({
       />
     ) : (
       <text
+        className={textClassName}
         x="50%"
         y="50%"
         dy={verticalOffset}
         fill="currentColor"
-        fontSize={shape === 'square' ? '15.5' : '20'}
-        fontWeight={shape === 'square' ? '600' : '400'}
         textAnchor="middle"
       >
         {initials}
