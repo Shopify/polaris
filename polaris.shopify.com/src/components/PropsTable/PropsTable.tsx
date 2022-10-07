@@ -119,12 +119,11 @@ function TypeTable({
         <ExpandedTypesContext.Provider
           value={{
             expandedTypes,
-            expandType: (typeName: string) => {
+            expandType: (typeName: string) =>
               setExpandedTypes([
                 {typeName, memberName: null},
                 ...expandedTypes,
-              ]);
-            },
+              ]),
             collapseType: () => undefined,
             currentMember: null,
           }}
