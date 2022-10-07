@@ -8,7 +8,6 @@ import {EmptySearchResult} from '../../EmptySearchResult';
 import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
 import {Sticky} from '../../Sticky';
-import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
@@ -551,30 +550,24 @@ describe('<IndexTable>', () => {
       });
     });
 
-    it('renders bulk actions when selectable', () => {
+    it('does not render bulk actions', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      index.find(Button, {children: 'Select'})?.trigger('onClick');
-
-      expect(index).toContainReactComponent(BulkActions, {
-        selectMode: true,
-      });
+      expect(index).not.toContainReactComponent(BulkActions);
     });
 
-    it('does not render a Select button when not selectable', () => {
+    it('does not render SelectAllActions', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      expect(index).not.toContainReactComponent(Button, {
-        children: 'Select',
-      });
+      expect(index).not.toContainReactComponent(SelectAllActions);
     });
 
     it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
@@ -592,19 +585,6 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent(BulkActions, {
         onSelectModeToggle: undefined,
       });
-    });
-
-    it('toggles selectable state when the bulk action button is triggered', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultIndexTableProps} condensed>
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      index.find(Button, {children: 'Select'})?.trigger('onClick');
-      index.find(BulkActions)?.trigger('onSelectModeToggle');
-
-      expect(index).not.toContainReactComponent(BulkActions);
     });
 
     it('renders sort markup', () => {
@@ -632,20 +612,7 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('ul');
     });
 
-    it('leaves small screen select mode when going from condensed to regular', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultIndexTableProps} condensed>
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      index.find(Button, {children: 'Select'})?.trigger('onClick');
-      index.setProps({condensed: false});
-
-      expect(index).not.toContainReactComponent(BulkActions);
-    });
-
-    it('does not render bulk actions with onSelectModeToggle unless items are selected', () => {
+    it('does not render bulk actions with bulkActions and promotedActions', () => {
       Object.defineProperty(window, 'innerWidth', {
         value: 300,
       });
@@ -666,21 +633,6 @@ describe('<IndexTable>', () => {
       );
 
       expect(index).not.toContainReactComponent(BulkActions);
-
-      index.find(Sticky)!.find(Button)!.trigger('onClick');
-      expect(index).toContainReactComponent(BulkActions, {
-        actions: [],
-        promotedActions: [],
-      });
-
-      index.setProps({
-        selectedItemsCount: 2,
-      });
-
-      expect(index).toContainReactComponent(BulkActions, {
-        actions: bulkActions,
-        promotedActions,
-      });
     });
   });
 

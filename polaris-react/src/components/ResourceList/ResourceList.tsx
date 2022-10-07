@@ -206,11 +206,12 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     {leading: true, trailing: true, maxWait: 50},
   );
 
-  const isSelectable = Boolean(
-    (promotedBulkActions && promotedBulkActions.length > 0) ||
-      (bulkActions && bulkActions.length > 0) ||
-      selectable,
-  );
+  const isSelectable =
+    Boolean(
+      (promotedBulkActions && promotedBulkActions.length > 0) ||
+        (bulkActions && bulkActions.length > 0) ||
+        selectable,
+    ) && !smallScreen;
 
   const selectAllSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
@@ -671,7 +672,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
             );
             return (
               <div className={headerClassName}>
-                <EventListener event="resize" handler={handleResize} />
                 {headerWrapperOverlay}
                 <div className={styles.HeaderContentWrapper}>
                   {headerTitleMarkup}
@@ -757,6 +757,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
 
   return (
     <ResourceListContext.Provider value={context}>
+      <EventListener event="resize" handler={handleResize} />
       <div
         className={classNames(
           styles.ResourceListWrapper,

@@ -1,9 +1,5 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
-import {
-  EnableSelectionMinor,
-  SortAscendingMajor,
-  SortDescendingMajor,
-} from '@shopify/polaris-icons';
+import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {tokens, toPx, motion} from '@shopify/polaris-tokens';
 
@@ -20,7 +16,7 @@ import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {Text} from '../Text';
-import {Button} from '../Button';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
 import {
@@ -155,7 +151,6 @@ function IndexTableBase({
   const condensedListElement = useRef<HTMLUListElement>(null);
 
   const [tableInitialized, setTableInitialized] = useState(false);
-  const [isSmallScreenSelectable, setIsSmallScreenSelectable] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
   const [hideScrollContainer, setHideScrollContainer] =
     useState<boolean>(false);
@@ -185,10 +180,6 @@ function IndexTableBase({
     },
     [tableInitialized],
   );
-
-  const toggleIsSmallScreenSelectable = useCallback(() => {
-    setIsSmallScreenSelectable((value) => !value);
-  }, []);
 
   const handleSelectAllItemsInStore = useCallback(() => {
     handleSelectionChange(
@@ -440,12 +431,6 @@ function IndexTableBase({
     );
   }, [tableInitialized, resizeTableScrollBar, condensed]);
 
-  useEffect(() => {
-    if (!condensed && isSmallScreenSelectable) {
-      setIsSmallScreenSelectable(false);
-    }
-  }, [condensed, isSmallScreenSelectable]);
-
   const hasBulkActions = Boolean(
     (promotedBulkActions && promotedBulkActions.length > 0) ||
       (bulkActions && bulkActions.length > 0),
@@ -552,8 +537,7 @@ function IndexTableBase({
     condensed && styles['StickyTable-condensed'],
   );
 
-  const shouldShowBulkActions =
-    (bulkActionsSelectable && selectedItemsCount) || isSmallScreenSelectable;
+  const shouldShowBulkActions = bulkActionsSelectable && selectedItemsCount;
 
   const bulkActionClassNames = classNames(
     styles.BulkActionsWrapper,
@@ -575,7 +559,7 @@ function IndexTableBase({
       {loadingMarkup}
 
       <BulkActions
-        selectMode={selectMode || isSmallScreenSelectable}
+        selectMode={selectMode}
         promotedActions={promotedActions}
         actions={actions}
         onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
@@ -607,7 +591,7 @@ function IndexTableBase({
                 smallScreen={smallScreen}
                 accessibilityLabel={bulkActionsAccessibilityLabel}
                 selected={bulkSelectState}
-                selectMode={selectMode || isSmallScreenSelectable}
+                selectMode={selectMode}
                 onToggleAll={handleTogglePage}
                 paginatedSelectAllText={paginatedSelectAllText}
                 paginatedSelectAllAction={paginatedSelectAllAction}
@@ -620,25 +604,15 @@ function IndexTableBase({
             hasMoreLeftColumns && styles['StickyTableColumnHeader-isScrolling'],
           );
 
-          const selectButtonMarkup = (
-            <Button
-              icon={EnableSelectionMinor}
-              onClick={toggleIsSmallScreenSelectable}
-            >
-              {i18n.translate('Polaris.IndexTable.selectButtonText')}
-            </Button>
-          );
-
           const headerMarkup = condensed ? (
             <div
               className={classNames(
                 styles.HeaderWrapper,
-                !selectable && styles.unselectable,
+                (!selectable || condensed) && styles.unselectable,
               )}
             >
               {loadingMarkup}
               {sort}
-              {selectable && selectButtonMarkup}
             </div>
           ) : (
             <div
@@ -735,7 +709,7 @@ function IndexTableBase({
     <>
       {sharedMarkup}
       <ul
-        data-selectmode={Boolean(selectMode || isSmallScreenSelectable)}
+        data-selectmode={Boolean(selectMode)}
         className={styles.CondensedList}
         ref={condensedListElement}
       >
@@ -992,9 +966,8 @@ function IndexTableBase({
     };
   }
 
-  function handleSelectModeToggle(val: boolean) {
+  function handleSelectModeToggle() {
     handleSelectionChange(SelectionType.All, false);
-    setIsSmallScreenSelectable(val);
   }
 }
 

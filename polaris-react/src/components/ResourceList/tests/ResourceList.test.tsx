@@ -1013,33 +1013,7 @@ describe('<ResourceList />', () => {
           setDefaultScreen();
         });
 
-        it('keeps focus on the CheckableButton checkbox when selecting', () => {
-          setSmallScreen();
-
-          const resourceList = mountWithApp(
-            <ResourceList
-              items={itemsWithID}
-              renderItem={renderItem}
-              promotedBulkActions={promotedBulkActions}
-            />,
-          );
-
-          resourceList.find(Button)!.trigger('onClick');
-
-          const selectAllCheckableButton = resourceList
-            .findAll(CheckableButton)
-            .find((ele) => !ele.prop('plain'))!;
-
-          selectAllCheckableButton.trigger('onToggleAll');
-
-          const checkBox = selectAllCheckableButton.find('input', {
-            type: 'checkbox',
-          })!;
-
-          expect(document.activeElement).toBe(checkBox.domNode);
-        });
-
-        it('keeps focus on the CheckableButton checkbox when deselecting', () => {
+        it('does not render the selecting UI', () => {
           setSmallScreen();
 
           const resourceList = mountWithApp(
@@ -1051,17 +1025,8 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          const deselectAllCheckableButton = resourceList
-            .findAll(CheckableButton)
-            .find((ele) => !ele.prop('plain'))!;
-
-          deselectAllCheckableButton.trigger('onToggleAll');
-
-          const checkBox = deselectAllCheckableButton.find('input', {
-            type: 'checkbox',
-          })!;
-
-          expect(document.activeElement).toBe(checkBox.domNode);
+          expect(resourceList).not.toContainReactComponent(SelectAllActions);
+          expect(resourceList).not.toContainReactComponent(BulkActions);
         });
       });
     });

@@ -40,7 +40,7 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
   }, [tableMeasurerRef, selectMode]);
 
   useEffect(() => {
-    const hasIOSupport = Boolean(IntersectionObserver);
+    const hasIOSupport = Boolean(window.IntersectionObserver);
     if (!hasIOSupport) {
       return;
     }
