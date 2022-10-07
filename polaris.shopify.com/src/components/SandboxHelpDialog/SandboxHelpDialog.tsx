@@ -1,6 +1,5 @@
-import {useRef} from 'react';
 import {Dialog} from '@headlessui/react';
-import styles from './SandboxDialog.module.scss';
+import styles from './SandboxHelpDialog.module.scss';
 import Button from '../Button';
 
 function SandboxHelpDialog({
@@ -10,17 +9,12 @@ function SandboxHelpDialog({
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }) {
-  const videoRef = useRef(null);
   return (
-    <Dialog
-      initialFocus={videoRef}
-      open={isOpen}
-      onClose={() => setIsOpen(false)}
-    >
+    <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
       <div className={styles.PreventBackgroundInteractions}></div>
       <div className="styles-for-site-but-not-polaris-examples light-mode">
         <Dialog.Panel className={styles.DialogPanel}>
-          <div className={styles.SandboxVideo} ref={videoRef}>
+          <div className={styles.SandboxVideo}>
             <video muted loop autoPlay playsInline width={1000} height={1500}>
               <source src="/images/sandbox-usage.mp4" type="video/mp4" />
             </video>
