@@ -40,8 +40,8 @@
     text-align: left;
     color: var(--code-keyword);
     font-family: var(--font-family-mono);
-    padding: 0.5em 1em;
-    background: rgba(0, 0, 0, 0.035);
+    padding: 0.66em 1em;
+    background: rgba(0, 0, 0, 0.02);
 
     button {
       margin-left: auto;
@@ -53,8 +53,6 @@
       }
     }
 
-    padding: 0.66em 1em;
-    background: rgba(0, 0, 0, 0.02);
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
