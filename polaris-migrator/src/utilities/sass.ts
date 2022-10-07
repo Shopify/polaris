@@ -117,7 +117,7 @@ export function getFunctionArgs(node: FunctionNode): string[] {
  */
 export const transformableLengthUnits = ['px', 'rem'];
 
-function isUnitlessZero(dimension: false | Dimension) {
+export function isUnitlessZero(dimension: false | Dimension) {
   return dimension && dimension.unit === '' && dimension.number === '0';
 }
 

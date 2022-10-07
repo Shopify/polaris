@@ -6,12 +6,39 @@
 }
 
 .font-size {
-  font-size: 10px;
+  /* LENGTHS */
   font-size: 12px;
   font-size: 1rem;
+  /* Ignore */
   font-size: 1em;
+  font-size: #{1px};
+  /* Comment */
+  font-size: 10px;
+  font-size: 12px + 1px;
+
+  /* FONT-SIZE FUNCTION */
+  font-size: font-size(caption);
+  font-size: font-size(caption, base);
+  font-size: font-size(caption, large-screen);
+  /* Comment */
+  font-size: font-size($invalid);
+  font-size: font-size(caption, $invalid);
+  font-size: font-size();
+  font-size: font-size(caption, large-screen, $too-many-args);
+
+  /* REM FUNCTION */
   font-size: rem(12px);
-  font-size: rem(12px) !important;
+  font-size: rem(1rem);
+  /* Comment */
+  font-size: rem(1em);
+  font-size: rem(10px);
+  font-size: rem($invalid);
+  font-size: rem();
+  font-size: rem(12px, $too-many-args);
+  font-size: rem(12px) 1px;
+  font-size: rem(1px) 12px;
+  font-size: rem(#{10px + 2px}) 12px;
+  font-size: rem(12px) + #{10px + 2px};
 }
 
 .font-weight {

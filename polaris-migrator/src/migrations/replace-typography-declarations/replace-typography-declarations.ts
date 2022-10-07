@@ -1,16 +1,23 @@
-import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Declaration, Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+/* eslint-disable line-comment-position */
 
+import type {FileInfo, API, Options} from 'jscodeshift';
+import postcss, {Plugin, Declaration} from 'postcss';
+import valueParser from 'postcss-value-parser';
+import {toPx} from '@shopify/polaris-tokens';
+
+import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
-  NamespaceOptions,
-  namespace,
+  getFunctionArgs,
+  hasNumericOperator,
   hasSassFunction,
+  isNumericOperator,
   isSassFunction,
-  toTransformablePx,
-  replaceRemFunction,
+  isTransformableLength,
+  isUnitlessZero,
+  namespace,
+  NamespaceOptions,
   replaceDecl,
-  ReplaceDeclCallback,
+  toTransformablePx,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -35,16 +42,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      const overrides = replaceDecl(decl, {
+      replaceDecl(decl, {
         'font-family': handleFontFamily(options),
         'font-size': handleFontSize(options),
         'font-weight': handleFontWeight(options),
         'line-height': handleFontLineHeight(options),
       });
-
-      if (!overrides) return;
-
-      decl.assign(overrides);
 
       // @ts-expect-error - Mark the declaration as processed
       decl[processed] = true;
@@ -67,6 +70,53 @@ const fontSizeMap = {
   '28px': '--p-font-size-500',
   '32px': '--p-font-size-600',
   '40px': '--p-font-size-700',
+};
+
+const fontSizeFunctionMap = {
+  caption: {
+    base: '0.8125rem', // 13px
+    'large-screen': '--p-font-size-75',
+  },
+  heading: {
+    base: '1.0625rem', // 17px
+    'large-screen': '--p-font-size-200',
+  },
+  subheading: {
+    base: '0.8125rem', // 13px
+    'large-screen': '--p-font-size-75',
+  },
+  input: {
+    base: '--p-font-size-200',
+    'large-screen': '--p-font-size-100',
+  },
+  body: {
+    base: '0.9375rem', // 15px
+    'large-screen': '--p-font-size-100',
+  },
+  button: {
+    base: '0.9375rem', // 15px
+    'large-screen': '--p-font-size-100',
+  },
+  'button-large': {
+    base: '1.0625rem', // 17px
+    'large-screen': '--p-font-size-200',
+  },
+  'display-x-large': {
+    base: '1.6875rem',
+    'large-screen': '2.625rem', // 42px
+  },
+  'display-large': {
+    base: '--p-font-size-400',
+    'large-screen': '--p-font-size-500',
+  },
+  'display-medium': {
+    base: '1.3125rem', // 21px
+    'large-screen': '1.625rem', // 26px
+  },
+  'display-small': {
+    base: '--p-font-size-200',
+    'large-screen': '--p-font-size-300',
+  },
 };
 
 const fontLineHeightMap = {
@@ -98,12 +148,10 @@ const fontWeightMap = {
   // 900 - Black (Heavy)
 };
 
-type DeclHandler = (options: NamespaceOptions) => ReplaceDeclCallback;
-
-const handleFontFamily: DeclHandler = (options) => {
+function handleFontFamily(options: NamespaceOptions) {
   const namespacedFontFamily = namespace('font-family', options);
 
-  return (decl) => {
+  return (decl: Declaration): void => {
     const parsedValue = valueParser(decl.value);
 
     if (!hasSassFunction(namespacedFontFamily, parsedValue)) return;
@@ -128,34 +176,164 @@ const handleFontFamily: DeclHandler = (options) => {
       ];
     });
 
-    return {value: parsedValue.toString()};
-  };
-};
-
-const handleFontSize: DeclHandler = (options) => {
-  return (decl) => {
-    if (decl.value.includes(`${namespace('rem(', options)}`)) {
-      replaceRemFunction(decl, fontSizeMap, options);
-      return;
+    if (hasNumericOperator(parsedValue)) {
+      // Insert comment if the declaration value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      decl.before(
+        postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+      );
+    } else {
+      decl.value = parsedValue.toString();
     }
+  };
+}
+
+interface FileState {
+  hasNumericOperator: boolean;
+  targets: {
+    type: 'length' | 'rem' | 'font-size';
+    replaced: boolean;
+    invalid: boolean;
+  }[];
+}
+
+function handleFontSize(options: NamespaceOptions) {
+  const namespacedRem = namespace('rem', options);
+  const namespacedFontSize = namespace('font-size', options);
+
+  return (decl: Declaration): void => {
+    const fileState: FileState = {
+      hasNumericOperator: false,
+      targets: [],
+    };
 
     const parsedValue = valueParser(decl.value);
-    const fontSize = parsedValue.nodes[0];
 
-    if (parsedValue.nodes.length !== 1 || fontSize.type !== 'word') {
-      return;
+    parsedValue.walk((node) => {
+      if (node.type === 'function') {
+        if (isSassFunction(namespacedFontSize, node)) {
+          fileState.targets.push({
+            type: 'font-size',
+            replaced: false,
+            invalid: false,
+          });
+
+          const args = getFunctionArgs(node);
+
+          if (!(args.length === 1 || args.length === 2)) {
+            fileState.targets.at(-1)!.invalid = true;
+            return;
+          }
+
+          // Reference of the `font-size()` args
+          // https://github.com/Shopify/polaris/blob/1738f17c739e06dcde4653a9783ca367e38b4e32/documentation/guides/legacy-polaris-v8-public-api.scss#L977
+          const styleArg = args[0];
+          const variantArg = args[1] ?? 'base';
+
+          if (!isKeyOf(fontSizeFunctionMap, styleArg)) return;
+
+          const fontSizeStyle = fontSizeFunctionMap[styleArg];
+
+          if (!isKeyOf(fontSizeStyle, variantArg)) return;
+
+          const fontSizeVariant = fontSizeStyle[variantArg];
+
+          fileState.targets.at(-1)!.replaced = true;
+
+          if (fontSizeVariant.startsWith('--')) {
+            node.value = 'var';
+            node.nodes = [
+              {
+                type: 'word',
+                value: fontSizeVariant,
+                sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                sourceEndIndex: fontSizeVariant.length,
+              },
+            ];
+          } else {
+            // @ts-expect-error: We are intentionally changing the node type
+            node.type = 'word';
+            node.value = fontSizeVariant;
+          }
+        }
+
+        if (isSassFunction(namespacedRem, node)) {
+          fileState.targets.push({
+            type: 'rem',
+            replaced: false,
+            invalid: false,
+          });
+
+          const args = getFunctionArgs(node);
+
+          if (args.length !== 1) {
+            fileState.targets.at(-1)!.invalid = true;
+            return;
+          }
+
+          const fontSizeInPx = toTransformablePx(args[0]);
+
+          if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
+
+          fileState.targets.at(-1)!.replaced = true;
+          node.value = 'var';
+          node.nodes = [
+            {
+              type: 'word',
+              value: fontSizeMap[fontSizeInPx],
+              sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+              sourceEndIndex: fontSizeMap[fontSizeInPx].length,
+            },
+          ];
+        }
+
+        // Stop walking child nodes of the function
+        return false;
+      } else if (node.type === 'word') {
+        if (isNumericOperator(node)) {
+          fileState.hasNumericOperator = true;
+          return;
+        }
+
+        const dimension = valueParser.unit(node.value);
+
+        if (!isTransformableLength(dimension)) return;
+
+        fileState.targets.push({
+          type: 'length',
+          replaced: false,
+          invalid: false,
+        });
+
+        const fontSizeInPx = isUnitlessZero(dimension)
+          ? `${dimension.number}px`
+          : toPx(`${dimension.number}${dimension.unit}`);
+
+        if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
+
+        fileState.targets.at(-1)!.replaced = true;
+        node.value = `var(${fontSizeMap[fontSizeInPx]})`;
+      }
+    });
+
+    if (
+      fileState.targets.some(
+        (value) =>
+          !value.replaced || value.invalid || fileState.hasNumericOperator,
+      )
+    ) {
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      decl.before(
+        postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
+      );
+    } else {
+      decl.value = parsedValue.toString();
     }
-
-    const fontSizeInPx = toTransformablePx(fontSize.value);
-
-    if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
-
-    return {value: `var(${fontSizeMap[fontSizeInPx]})`};
   };
-};
+}
 
-const handleFontWeight: DeclHandler = (_options) => {
-  return (decl) => {
+function handleFontWeight(_options: NamespaceOptions) {
+  return (decl: Declaration): void => {
     const parsedValue = valueParser(decl.value);
     const fontWeight = parsedValue.nodes[0];
 
@@ -165,12 +343,20 @@ const handleFontWeight: DeclHandler = (_options) => {
 
     if (!isKeyOf(fontWeightMap, fontWeight.value)) return;
 
-    return {value: `var(${fontWeightMap[fontWeight.value]})`};
-  };
-};
+    const fontWeightVar = `var(${fontWeightMap[fontWeight.value]})`;
 
-const handleFontLineHeight: DeclHandler = (_options) => {
-  return (decl) => {
+    if (hasNumericOperator(parsedValue)) {
+      // Insert comment if the declaration value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      decl.before(postcss.comment({text: `${decl.prop}: ${fontWeightVar};`}));
+    } else {
+      decl.value = fontWeightVar;
+    }
+  };
+}
+
+function handleFontLineHeight(_options: NamespaceOptions) {
+  return (decl: Declaration): void => {
     const parsedValue = valueParser(decl.value);
     const lineHeight = parsedValue.nodes[0];
 
@@ -182,6 +368,16 @@ const handleFontLineHeight: DeclHandler = (_options) => {
 
     if (!isKeyOf(fontLineHeightMap, lineHeighInPx)) return;
 
-    return {value: `var(${fontLineHeightMap[lineHeighInPx]})`};
+    const fontLineHeightVar = `var(${fontLineHeightMap[lineHeighInPx]})`;
+
+    if (hasNumericOperator(parsedValue)) {
+      // Insert comment if the declaration value contains calculations
+      decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+      decl.before(
+        postcss.comment({text: `${decl.prop}: ${fontLineHeightVar};`}),
+      );
+    } else {
+      decl.value = fontLineHeightVar;
+    }
   };
-};
+}
