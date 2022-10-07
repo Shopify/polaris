@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.23
+
+### Patch Changes
+
+- [#6743](https://github.com/Shopify/polaris/pull/6743) [`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add support for React 18
+
+- Updated dependencies [[`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d), [`6be4436d0`](https://github.com/Shopify/polaris/commit/6be4436d0fa2e37a0e93aad99a436d286f976051)]:
+  - @shopify/polaris@10.7.0
+
 ## 0.0.22
 
 ### Patch Changes
