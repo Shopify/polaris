@@ -2,4 +2,4 @@
 '@shopify/polaris-migrator': patch
 ---
 
-Genericize Polaris migrator comment
+Make Polaris migrator comment generic
