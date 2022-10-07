@@ -24,7 +24,7 @@ describe('Secondary()', () => {
   it('disables Collapsible transition', () => {
     const component = mountWithApp(<Secondary expanded />);
     expect(component).toContainReactComponent(Collapsible, {
-      transitionDisabled: true,
+      transition: false,
     });
   });
 
