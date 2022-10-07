@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.4.1
+
+### Patch Changes
+
+- [#7371](https://github.com/Shopify/polaris/pull/7371) [`57e5f95c1`](https://github.com/Shopify/polaris/commit/57e5f95c1e402fda3202babfdce25b131b0b9165) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Make Polaris migrator comment generic
+
 ## 0.4.0
 
 ### Minor Changes
