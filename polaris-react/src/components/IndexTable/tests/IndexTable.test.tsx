@@ -19,7 +19,7 @@ import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
-import {Icon} from '../../Icon';
+import {Tooltip} from '../../Tooltip';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -624,6 +624,10 @@ describe('<IndexTable>', () => {
       defaultSortDirection: 'descending',
       sortColumnIndex: 0,
       onSort: jest.fn(),
+      sortToggleLabels: {
+        0: {ascending: 'A-Z', descending: 'Z-A'},
+        2: {ascending: 'Newest', descending: 'Oldest'},
+      },
     };
 
     describe('sortable', () => {
@@ -675,9 +679,7 @@ describe('<IndexTable>', () => {
               ? SortAscendingMajor
               : SortDescendingMajor;
 
-          expect(index.findAll('th')[1]).toContainReactComponent(Icon, {
-            source,
-          });
+          expect(index.findAll('th')[1]).toContainReactComponent(source);
         },
       );
     });
@@ -699,9 +701,7 @@ describe('<IndexTable>', () => {
               ? SortAscendingMajor
               : SortDescendingMajor;
 
-          expect(index.findAll('th')[3]).toContainReactComponent(Icon, {
-            source,
-          });
+          expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
       );
     });
@@ -720,6 +720,55 @@ describe('<IndexTable>', () => {
         });
 
         expect(onSort).toHaveBeenCalledWith(0, 'descending');
+      });
+    });
+
+    describe('sortToggleLabels', () => {
+      it('renders the toggle label value for the selected index when ascending', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="ascending"
+            sortColumnIndex={0}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll(Tooltip)[0].prop('content')).toBe(
+          defaultSortingProps!.sortToggleLabels![0].ascending,
+        );
+      });
+
+      it('renders the toggle label value for the selected index when descending', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="descending"
+            sortColumnIndex={2}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll(Tooltip)[2].prop('content')).toBe(
+          defaultSortingProps!.sortToggleLabels![2].descending,
+        );
+      });
+
+      it('does not render the toggle label value for the selected index if not sortable', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="descending"
+            sortColumnIndex={1}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+        expect(index.findAll('th')[1]).toContainReactComponent(Tooltip);
+        expect(index.findAll('th')[2]).not.toContainReactComponent(Tooltip);
+        expect(index.findAll('th')[3]).toContainReactComponent(Tooltip);
       });
     });
   });

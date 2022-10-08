@@ -15,12 +15,12 @@ import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
-import {Icon} from '../Icon';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
+import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
 import {BulkActions, BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
@@ -60,6 +60,14 @@ export type IndexTableHeading =
 
 export type IndexTableSortDirection = 'ascending' | 'descending';
 
+type IndexTableSortToggleLabel = {
+  [key in IndexTableSortDirection]: string;
+};
+
+interface IndexTableSortToggleLabels {
+  [key: number]: IndexTableSortToggleLabel;
+}
+
 export interface IndexTableBaseProps {
   headings: NonEmptyArray<IndexTableHeading>;
   promotedBulkActions?: BulkActionsProps['promotedActions'];
@@ -85,6 +93,9 @@ export interface IndexTableBaseProps {
   sortColumnIndex?: number;
   /** Callback fired on click or keypress of a sortable column heading. */
   onSort?(headingIndex: number, direction: IndexTableSortDirection): void;
+  /** Optional dictionary of sort toggle labels for each sortable column, with ascending and descending label,
+   * with the key as the index of the column */
+  sortToggleLabels?: IndexTableSortToggleLabels;
 }
 
 export interface TableHeadingRect {
@@ -109,6 +120,7 @@ function IndexTableBase({
   defaultSortDirection = 'descending',
   sortColumnIndex,
   onSort,
+  sortToggleLabels,
   ...restProps
 }: IndexTableBaseProps) {
   const {
@@ -155,7 +167,7 @@ function IndexTableBase({
   const scrollingContainer = useRef(false);
 
   const tableBodyRef = useCallback(
-    (node) => {
+    (node: Element | null) => {
       if (node !== null && !tableInitialized) {
         setTableInitialized(true);
       }
@@ -351,7 +363,7 @@ function IndexTableBase({
   ]);
 
   const handleScrollContainerScroll = useCallback(
-    (canScrollLeft, canScrollRight) => {
+    (canScrollLeft: boolean, canScrollRight: boolean) => {
       if (!scrollableContainerElement.current || !scrollBarElement.current) {
         return;
       }
@@ -639,7 +651,7 @@ function IndexTableBase({
 
   const scrollBarMarkup =
     itemCount > 0 ? (
-      <AfterInitialMount>
+      <AfterInitialMount onMount={resizeTableScrollBar}>
         <div
           className={scrollBarWrapperClassNames}
           ref={scrollContainerElement}
@@ -655,6 +667,8 @@ function IndexTableBase({
       </AfterInitialMount>
     ) : null;
 
+  const isSortable = sortable?.some((value) => value);
+
   const tableClassNames = classNames(
     styles.Table,
     hasMoreLeftColumns && styles['Table-scrolling'],
@@ -662,6 +676,7 @@ function IndexTableBase({
     selectMode && shouldShowBulkActions && styles.selectMode,
     !selectable && styles['Table-unselectable'],
     canFitStickyColumn && styles['Table-sticky'],
+    isSortable && styles['Table-sortable'],
     canFitStickyColumn && lastColumnSticky && styles['Table-sticky-last'],
     canFitStickyColumn &&
       lastColumnSticky &&
@@ -830,22 +845,17 @@ function IndexTableBase({
       const isCurrentlySorted = index === sortColumnIndex;
       const isAscending = sortDirection === 'ascending';
       let newDirection: IndexTableSortDirection = defaultSortDirection;
-      let source =
+      let SourceComponent =
         defaultSortDirection === 'ascending'
           ? SortAscendingMajor
           : SortDescendingMajor;
       if (isCurrentlySorted) {
         newDirection = isAscending ? 'descending' : 'ascending';
-        source =
+        SourceComponent =
           sortDirection === 'ascending'
             ? SortAscendingMajor
             : SortDescendingMajor;
       }
-
-      const sortAccessibilityLabel = i18n.translate(
-        'Polaris.IndexTable.sortAccessibilityLabel',
-        {direction: newDirection},
-      );
 
       const iconMarkup = (
         <span
@@ -854,11 +864,15 @@ function IndexTableBase({
             isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
           )}
         >
-          <Icon source={source} accessibilityLabel={sortAccessibilityLabel} />
+          <SourceComponent
+            focusable="false"
+            aria-hidden="true"
+            className={styles.TableHeadingSortSvg}
+          />
         </span>
       );
 
-      return (
+      const sortMarkup = (
         <UnstyledButton
           onClick={() => handleSortHeadingClick(index, newDirection)}
           className={styles.TableHeadingSortButton}
@@ -868,6 +882,18 @@ function IndexTableBase({
           {headingContent}
         </UnstyledButton>
       );
+
+      if (!sortToggleLabels) {
+        return sortMarkup;
+      }
+
+      const tooltipDirection = isCurrentlySorted
+        ? sortDirection!
+        : defaultSortDirection;
+
+      const tooltipContent = sortToggleLabels[index][tooltipDirection];
+
+      return <Tooltip content={tooltipContent}>{sortMarkup}</Tooltip>;
     }
     return headingContent;
   }

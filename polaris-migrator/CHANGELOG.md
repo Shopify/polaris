@@ -1,5 +1,21 @@
 # @shopify/polaris-migrator
 
+## 0.4.1
+
+### Patch Changes
+
+- [#7371](https://github.com/Shopify/polaris/pull/7371) [`57e5f95c1`](https://github.com/Shopify/polaris/commit/57e5f95c1e402fda3202babfdce25b131b0b9165) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Make Polaris migrator comment generic
+
+## 0.4.0
+
+### Minor Changes
+
+- [#7216](https://github.com/Shopify/polaris/pull/7216) [`fbf2f8832`](https://github.com/Shopify/polaris/commit/fbf2f88320ad6c5767c37d18d76bfa82babf71cb) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add migration to replace static mixins with declarations
+
+### Patch Changes
+
+- [#7328](https://github.com/Shopify/polaris/pull/7328) [`b31f51f25`](https://github.com/Shopify/polaris/commit/b31f51f259fefd8b119c5242e2ab1528c3a6cff8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add namespace support to the `replace-static-breakpoint-mixins` migration
+
 ## 0.3.0
 
 ### Minor Changes

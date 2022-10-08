@@ -84,13 +84,13 @@ When everything is working as it should, our goal is to give people what they ne
 
 Look for the simplest way to communicate information—words aren’t always necessary.
 
-![Images showing icons of an eye representing a “view” action, a picture frame representing the concept of "images" and a spyglass representing the action of "search".](/images/foundations/content/voice-and-tone/view-icon@2x.png)
+![Images showing icons of an eye representing a “view” action, a picture frame representing the concept of "images" and a spyglass representing the action of "search".](/images/content/voice-and-tone/view-icon@2x.png)
 
 #### Don’t
 
 Use overly complicated or intimidating language.
 
-![Image showing a toggle switch on a card labeled “Use Biometrics for Authentication”](/images/foundations/content/voice-and-tone/biometrics-toggle-card@2x.png)
+![Image showing a toggle switch on a card labeled “Use Biometrics for Authentication”](/images/content/voice-and-tone/biometrics-toggle-card@2x.png)
 
 <!-- end -->
 
@@ -107,7 +107,7 @@ Be consistent for identical actions or destinations when possible.
 
 Add extra text just to fill space.
 
-![Image showing a text field for notes labeled “Add a note” followed by an ellipsis](/images/foundations/content/voice-and-tone/add-note-field@2x.png)
+![Image showing a text field for notes labeled “Add a note” followed by an ellipsis](/images/content/voice-and-tone/add-note-field@2x.png)
 
 <!-- end -->
 
@@ -125,7 +125,7 @@ Remember, they may have sought this out specifically or we may have recommended 
 
 Help people understand why they should do something, not just how.
 
-![A home card suggesting to add a shipping policy to your store to build trust with customers](/images/foundations/content/voice-and-tone/shipping-policy-card@2x.png)
+![A home card suggesting to add a shipping policy to your store to build trust with customers](/images/content/voice-and-tone/shipping-policy-card@2x.png)
 
 #### Don’t
 
@@ -141,7 +141,7 @@ _Create a new campaign and you could double your sales this holiday season._
 
 Break down complicated tasks into steps that help people focus on one thing at a time.
 
-![A home card with separate tabs for adding a product, customizing a theme, and adding a domain](/images/foundations/content/voice-and-tone/onboarding-tasks@2x.png)
+![A home card with separate tabs for adding a product, customizing a theme, and adding a domain](/images/content/voice-and-tone/onboarding-tasks@2x.png)
 
 #### Don’t
 
@@ -181,13 +181,13 @@ _Bad request, forbidden, fatal, expectation failed, unresolved, invalid_
 
 Look for ways to help people resolve problems automatically.
 
-![An email input form element with a typo in the inputted email address and a hint text underneath it guiding the user to fix the typo.](/images/foundations/content/voice-and-tone/email-error-message@2x.png)
+![An email input form element with a typo in the inputted email address and a hint text underneath it guiding the user to fix the typo.](/images/content/voice-and-tone/email-error-message@2x.png)
 
 #### Don’t
 
 Use error numbers or code unless they’re easily recognizable by people and help them solve the problem.
 
-![Error modal with a confusing error code stating “200 OK”](/images/foundations/content/voice-and-tone/channel-not-found-error@2x.png)
+![Error modal with a confusing error code stating “200 OK”](/images/content/voice-and-tone/channel-not-found-error@2x.png)
 
 <!-- end -->
 
@@ -337,7 +337,7 @@ _It’s never been easier to customize the fonts, colors, and styles of Buy Butt
 
 If possible, let users dismiss announcements or postpone changes until they’re ready.
 
-![A modal with a secondary button option to “remind me later” for a “single login” feature.](/images/foundations/content/voice-and-tone/remind-later-button@2x.png)
+![A modal with a secondary button option to “remind me later” for a “single login” feature.](/images/content/voice-and-tone/remind-later-button@2x.png)
 
 <!-- end -->
 

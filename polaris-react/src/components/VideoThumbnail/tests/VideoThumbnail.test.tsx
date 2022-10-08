@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {VideoThumbnail} from '../VideoThumbnail';
+import {Text} from '../../Text';
 
 describe('<VideoThumbnail />', () => {
   const spyClick = jest.fn();
@@ -29,8 +30,8 @@ describe('<VideoThumbnail />', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail {...mockProps} videoLength={undefined} />,
       );
-      expect(videoThumbnail).not.toContainReactComponent('p', {
-        className: 'Timestamp',
+      expect(videoThumbnail).not.toContainReactComponent(Text, {
+        fontWeight: 'semibold',
       });
     });
 
@@ -39,8 +40,8 @@ describe('<VideoThumbnail />', () => {
         <VideoThumbnail {...mockProps} videoLength={45} />,
       );
 
-      expect(videoThumbnail).toContainReactComponent('p', {
-        className: 'Timestamp',
+      expect(videoThumbnail).toContainReactComponent(Text, {
+        fontWeight: 'semibold',
         children: '0:45',
       });
     });
@@ -49,8 +50,8 @@ describe('<VideoThumbnail />', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail {...mockProps} videoLength={135} />,
       );
-      expect(videoThumbnail).toContainReactComponent('p', {
-        className: 'Timestamp',
+      expect(videoThumbnail).toContainReactComponent(Text, {
+        fontWeight: 'semibold',
         children: '2:15',
       });
     });
@@ -59,8 +60,8 @@ describe('<VideoThumbnail />', () => {
       const videoThumbnail = mountWithApp(
         <VideoThumbnail {...mockProps} videoLength={3745} />,
       );
-      expect(videoThumbnail).toContainReactComponent('p', {
-        className: 'Timestamp',
+      expect(videoThumbnail).toContainReactComponent(Text, {
+        fontWeight: 'semibold',
         children: '1:02:25',
       });
     });
@@ -71,7 +72,6 @@ describe('<VideoThumbnail />', () => {
     let warnSpy: jest.SpyInstance;
 
     beforeEach(() => {
-      jest.resetModules();
       process.env = {...oldEnv};
       delete process.env.NODE_ENV;
 

@@ -21,7 +21,7 @@ type PopoverableAction = ArrayElement<
 
 const mockRightOpenPopoverableAction: PopoverableAction = {
   popoverOpen: true,
-  popoverContent: MockFilter,
+  popoverContent: <MockFilter />,
   key: 'openAction',
   content: 'Open action',
   onAction: noop,
@@ -29,7 +29,7 @@ const mockRightOpenPopoverableAction: PopoverableAction = {
 
 const mockRightClosedPopoverableAction: PopoverableAction = {
   popoverOpen: false,
-  popoverContent: MockFilter,
+  popoverContent: <MockFilter />,
   key: 'closedAction',
   content: 'Closed action',
   onAction: noop,
