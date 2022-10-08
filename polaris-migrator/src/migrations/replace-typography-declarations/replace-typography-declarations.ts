@@ -35,8 +35,9 @@ interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedFontFamily = namespace('font-family', options);
-  const namespacedRem = namespace('rem', options);
   const namespacedFontSize = namespace('font-size', options);
+  const namespacedLineHeight = namespace('line-height', options);
+  const namespacedRem = namespace('rem', options);
 
   return {
     postcssPlugin: 'replace-typography-declarations',
@@ -239,8 +240,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       function handleFontLineHeight() {
         parsedValue.walk((node) => {
-          if (node.type === 'function') return StopWalkingFunctionNodes;
-
           if (node.type === 'word') {
             if (isNumericOperator(node)) {
               hasNumericOperator = true;
@@ -256,6 +255,51 @@ const plugin = (options: PluginOptions = {}): Plugin => {
             targets.at(-1)!.replaced = true;
 
             node.value = `var(${fontLineHeightMap[lineHeighInPx]})`;
+
+            return;
+          }
+
+          if (node.type === 'function') {
+            if (isSassFunction(namespacedLineHeight, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (!(args.length === 1 || args.length === 2)) return;
+
+              // `line-height()` args reference:
+              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L961
+              const styleArg = args[0];
+              const variantArg = args[1] ?? 'base';
+
+              if (!isKeyOf(lineHeightFunctionMap, styleArg)) return;
+
+              const lineHeightStyle = lineHeightFunctionMap[styleArg];
+
+              if (!isKeyOf(lineHeightStyle, variantArg)) return;
+
+              const lineHeightVariant = lineHeightStyle[variantArg];
+
+              targets.at(-1)!.replaced = true;
+
+              if (lineHeightVariant.startsWith('--')) {
+                node.value = 'var';
+                node.nodes = [
+                  {
+                    type: 'word',
+                    value: lineHeightVariant,
+                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                    sourceEndIndex: lineHeightVariant.length,
+                  },
+                ];
+              } else {
+                // @ts-expect-error: We are intentionally changing the node type
+                node.type = 'word';
+                node.value = lineHeightVariant;
+              }
+            }
+
+            return StopWalkingFunctionNodes;
           }
         });
       }
@@ -337,6 +381,47 @@ const fontLineHeightMap = {
   '32px': '--p-font-line-height-5',
   '40px': '--p-font-line-height-6',
   '48px': '--p-font-line-height-7',
+};
+
+const lineHeightFunctionMap = {
+  caption: {
+    base: '--p-font-line-height-2',
+    'large-screen': '--p-font-line-height-1',
+  },
+  heading: {
+    base: '--p-font-line-height-3',
+  },
+  subheading: {
+    base: '--p-font-line-height-1',
+  },
+  input: {
+    base: '--p-font-line-height-3',
+  },
+  body: {
+    base: '--p-font-line-height-2',
+  },
+  button: {
+    base: '--p-font-line-height-1',
+  },
+  'button-large': {
+    base: '--p-font-line-height-2',
+  },
+  'display-x-large': {
+    base: '2.25rem', // 36px
+    'large-screen': '2.75rem', // 44px
+  },
+  'display-large': {
+    base: '--p-font-line-height-4',
+    'large-screen': '--p-font-line-height-5',
+  },
+  'display-medium': {
+    base: '--p-font-line-height-4',
+    'large-screen': '--p-font-line-height-5',
+  },
+  'display-small': {
+    base: '--p-font-line-height-3',
+    'large-screen': '--p-font-line-height-4',
+  },
 };
 
 const fontWeightMap = {

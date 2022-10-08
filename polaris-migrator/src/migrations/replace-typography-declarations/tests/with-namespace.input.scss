@@ -26,7 +26,7 @@
   font-size: legacy-polaris-v8.font-size($invalid);
   font-size: legacy-polaris-v8.font-size(caption, $invalid);
   font-size: legacy-polaris-v8.font-size();
-  font-size: legacy-polaris-v8.font-size(caption, large-screen, $too-many-args);
+  font-size: legacy-polaris-v8.font-size(caption, base, $too-many-args);
 
   /* REM FUNCTION */
   font-size: legacy-polaris-v8.rem(12px);
@@ -64,4 +64,15 @@
   line-height: 1rem;
   /* Comment */
   line-height: 10px;
+
+  /* LINE-HEIGHT FUNCTION */
+  line-height: legacy-polaris-v8.line-height(caption);
+  line-height: legacy-polaris-v8.line-height(caption, base);
+  line-height: legacy-polaris-v8.line-height(caption, large-screen);
+  line-height: legacy-polaris-v8.line-height(display-x-large, base);
+  /* Comment */
+  line-height: legacy-polaris-v8.line-height($invalid);
+  line-height: legacy-polaris-v8.line-height(caption, $invalid);
+  line-height: legacy-polaris-v8.line-height();
+  line-height: legacy-polaris-v8.line-height(caption, base, $too-many-args);
 }

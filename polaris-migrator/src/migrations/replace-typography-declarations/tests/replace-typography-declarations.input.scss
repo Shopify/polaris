@@ -24,7 +24,7 @@
   font-size: font-size($invalid);
   font-size: font-size(caption, $invalid);
   font-size: font-size();
-  font-size: font-size(caption, large-screen, $too-many-args);
+  font-size: font-size(caption, base, $too-many-args);
 
   /* REM FUNCTION */
   font-size: rem(12px);
@@ -62,4 +62,15 @@
   line-height: 1rem;
   /* Comment */
   line-height: 10px;
+
+  /* LINE-HEIGHT FUNCTION */
+  line-height: line-height(caption);
+  line-height: line-height(caption, base);
+  line-height: line-height(caption, large-screen);
+  line-height: line-height(display-x-large, base);
+  /* Comment */
+  line-height: line-height($invalid);
+  line-height: line-height(caption, $invalid);
+  line-height: line-height();
+  line-height: line-height(caption, base, $too-many-args);
 }
