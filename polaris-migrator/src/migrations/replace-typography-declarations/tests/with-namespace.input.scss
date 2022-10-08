@@ -44,17 +44,24 @@
 }
 
 .font-weight {
-  font-weight: 300;
+  /* LENGTHS */
   font-weight: 400;
   font-weight: 700;
+  /* Comment */
+  font-weight: 300;
+  font-weight: 400 + 300;
+
+  /* ALIAS */
   font-weight: normal;
   font-weight: bold;
-  font-weight: 400 !important;
-  font-weight: 400 + $var;
+  /* Comment */
+  font-weight: bolder;
 }
 
 .font-line-height {
-  line-height: 10px;
+  /* LENGTHS */
   line-height: 16px;
   line-height: 1rem;
+  /* Comment */
+  line-height: 10px;
 }
