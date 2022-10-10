@@ -51,6 +51,9 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           // transform legacy zIndex usage to map-get and move on.
           containsSecondArgument = true;
           node.value = 'map-get';
+          // map-get arguments are in the reverse order to z-index arguments.
+          // map-get expects the map object first, and the key second.
+          node.nodes.reverse();
         } else {
           const element = node.nodes[0]?.value ?? '';
           if (!isValidElement(element)) return;

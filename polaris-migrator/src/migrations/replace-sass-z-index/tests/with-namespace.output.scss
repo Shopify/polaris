@@ -29,7 +29,7 @@ $someElement: (
 
 .scenario-5 {
   /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
-  /* z-index: map-get(someKey, $someElement); */
+  /* z-index: map-get($someElement, someKey); */
   z-index: legacy-polaris-v8.z-index(someKey, $someElement);
   background-color: var(--p-background);
 }
