@@ -3,12 +3,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  margin-top: calc(-1 * var(--pc-stack-spacing));
-  margin-left: calc(-1 * var(--pc-stack-spacing));
+  gap: var(--pc-stack-spacing);
 
   > .Item {
-    margin-top: var(--pc-stack-spacing);
-    margin-left: var(--pc-stack-spacing);
     max-width: 100%;
   }
 }
@@ -92,11 +89,6 @@
 
 .vertical {
   flex-direction: column;
-  margin-left: var(--p-space-0);
-
-  > .Item {
-    margin-left: var(--p-space-0);
-  }
 }
 
 .Item {
