@@ -1,4 +1,3 @@
-/* eslint-disable line-comment-position */
 import type {Exact} from 'type-fest';
 
 export interface ColorHue {
@@ -44,14 +43,25 @@ export const colorMap = createMap({
 });
 
 export const backgroundColorMap = createMap({
+  ink: {
+    lighter: '--p-surface-neutral',
+  },
   green: {
     base: '--p-surface-success',
     light: '--p-surface-success-subdued',
   },
+  yellow: {
+    base: '--p-surface-warning',
+    light: '--p-surface-warning-subdued',
+  },
+  red: {
+    base: '--p-surface-critical',
+    light: '--p-surface-critical-subdued',
+  },
   sky: {
     base: '--p-surface-neutral',
-    light: '--p-surface-subdued',
-    lighter: '--p-surface-selected', // or --p-surface-disabled
+    light: '--p-surface-neutral-subdued',
+    lighter: '--p-surface-subdued',
   },
   black: {
     base: '--p-surface-dark',
@@ -63,14 +73,28 @@ export const backgroundColorMap = createMap({
 
 export const borderColorMap = createMap({
   indigo: {
-    base: '--p-interactive', // or --p-border-disabled
+    base: '--p-interactive',
   },
   blue: {
     base: '--p-border-subdued',
   },
+  green: {
+    dark: '--p-border-success',
+    base: '--p-border-success',
+    light: '--p-border-success-disabled',
+    lighter: '--p-border-success-subdued',
+  },
+  yellow: {
+    dark: '--p-border-warning',
+    base: '--p-border-warning',
+    light: '--p-border-warning-disabled',
+    lighter: '--p-border-warning-subdued',
+  },
   red: {
     dark: '--p-border-critical',
     base: '--p-border-critical',
+    light: '--p-border-critical-disabled',
+    lighter: '--p-border-critical-subdued',
   },
   sky: {
     base: '--p-border-subdued',
