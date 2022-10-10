@@ -15,24 +15,21 @@ export const colorMap = createMap({
     base: '--p-interactive',
   },
   green: {
-    text: '--text-success',
     dark: '--text-success',
     base: '--text-success',
   },
   yellow: {
-    text: '--p-text-warning',
     dark: '--p-text-warning',
     base: '--p-text-warning',
   },
   red: {
-    text: '--p-text-critical',
     dark: '--p-text-critical',
     base: '--p-text-critical',
   },
   ink: {
     base: '--p-text',
     lighter: '--p-text-subdued',
-    lightest: '--p-text-disabled',
+    lightest: '--p-text-subdued',
   },
   black: {
     base: '--p-text',
@@ -43,20 +40,20 @@ export const colorMap = createMap({
 });
 
 export const backgroundColorMap = createMap({
-  ink: {
-    lighter: '--p-surface-neutral',
-  },
   green: {
-    base: '--p-surface-success',
-    light: '--p-surface-success-subdued',
+    light: '--p-surface-success',
+    lighter: '--p-surface-success-subdued',
   },
   yellow: {
-    base: '--p-surface-warning',
-    light: '--p-surface-warning-subdued',
+    light: '--p-surface-warning',
+    lighter: '--p-surface-warning-subdued',
   },
   red: {
-    base: '--p-surface-critical',
-    light: '--p-surface-critical-subdued',
+    light: '--p-surface-critical',
+    lighter: '--p-surface-critical-subdued',
+  },
+  ink: {
+    lighter: '--p-surface-neutral',
   },
   sky: {
     base: '--p-surface-neutral',
@@ -72,12 +69,6 @@ export const backgroundColorMap = createMap({
 });
 
 export const borderColorMap = createMap({
-  indigo: {
-    base: '--p-interactive',
-  },
-  blue: {
-    base: '--p-border-subdued',
-  },
   green: {
     dark: '--p-border-success',
     base: '--p-border-success',
