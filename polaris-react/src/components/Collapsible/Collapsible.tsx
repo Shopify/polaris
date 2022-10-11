@@ -22,7 +22,6 @@ export interface CollapsibleProps {
    * default transition properties.
    */
   transition?: boolean | Transition;
-  /** Set to true to disable the animation. Defaults to false. */
   /** @deprecated Re-measuring is no longer necessary on children update **/
   preventMeasuringOnChildrenUpdate?: boolean;
   /** The content to display inside the collapsible. */
