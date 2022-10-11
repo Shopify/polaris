@@ -59,6 +59,23 @@
   gap: 16px 1em;
   gap: 16px -16px;
 
+  // Single shorthand rem function (rem(Xpx))
+  padding: rem(10px);
+  padding: rem(16px);
+  padding: calc(10rem + var(--p-choice-size, #{rem(16px)}));
+  padding: calc(10rem + var(--p-choice-size, #{rem(10px)}));
+  gap: rem(10px);
+  gap: rem(16px);
+
+  // Mixed shorthand rem function
+  padding: rem(16px) 16px;
+  padding: rem(16px) 4in;
+  padding: rem(16px) 1em;
+  padding: rem(16px) -16px;
+  gap: rem(16px) 4in;
+  gap: rem(16px) 1em;
+  gap: rem(16px) -16px;
+
   // Unsupported transforms with comments
   padding: 16px + 16px;
   padding: 16px + 16px 16px;
@@ -100,4 +117,5 @@
   // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
   gap: -16px;
   gap: -10px;
+  gap: rem(2em) rem(-16px);
 }

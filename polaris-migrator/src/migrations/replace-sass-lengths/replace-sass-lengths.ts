@@ -7,6 +7,8 @@ import {
   hasNumericOperator,
   hasTransformableLength,
   toTransformablePx,
+  replaceRemFunction,
+  namespace,
 } from '../../utilities/sass';
 import {isKeyOf, isValueOf} from '../../utilities/type-guards';
 
@@ -40,6 +42,7 @@ const targetProps = [
   'grid-row-gap',
   'column-gap',
   'grid-column-gap',
+  'border-width',
 ] as const;
 
 // Mapping of spacing tokens and their corresponding px values
@@ -62,6 +65,14 @@ const spacingTokensMap = {
   '128px': '--p-space-32',
 } as const;
 
+const borderWidthMap = {
+  '1px': '--p-border-1',
+  '2px': '--p-border-2',
+  '3px': '--p-border-3',
+  '4px': '--p-border-4',
+  '5px': '--p-border-5',
+};
+
 const processed = Symbol('processed');
 
 /**
@@ -82,6 +93,11 @@ const plugin = (_options: PluginOptions = {}): Plugin => {
       const prop = decl.prop;
 
       if (!isValueOf(targetProps, prop)) return;
+
+      // Happy path only (rem(Xpx))
+      if (decl.value.includes(`${namespace('rem(', _options)}`)) {
+        replaceRemFunction(decl, spacingTokensMap, _options);
+      }
 
       const parsedValue = valueParser(decl.value);
 

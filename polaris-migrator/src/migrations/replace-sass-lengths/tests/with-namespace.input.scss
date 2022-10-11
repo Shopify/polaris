@@ -60,6 +60,23 @@
   gap: 16px 1em;
   gap: 16px -16px;
 
+  // Single shorthand rem function (rem(Xpx))
+  padding: legacy-polaris-v8.rem(10px);
+  padding: legacy-polaris-v8.rem(16px);
+  padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)}));
+  padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)}));
+  gap: legacy-polaris-v8.rem(10px);
+  gap: legacy-polaris-v8.rem(16px);
+
+  // Mixed shorthand rem function
+  padding: legacy-polaris-v8.rem(16px) 16px;
+  padding: legacy-polaris-v8.rem(16px) 4in;
+  padding: legacy-polaris-v8.rem(16px) 1em;
+  padding: legacy-polaris-v8.rem(16px) -16px;
+  gap: legacy-polaris-v8.rem(16px) 4in;
+  gap: legacy-polaris-v8.rem(16px) 1em;
+  gap: legacy-polaris-v8.rem(16px) -16px;
+
   // Unsupported transforms with comments
   padding: 16px + 16px;
   padding: 16px + 16px 16px;
@@ -101,4 +118,5 @@
   // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
   gap: -16px;
   gap: -10px;
+  gap: rem(2em) legacy-polaris-v8.rem(-16px);
 }

@@ -167,7 +167,7 @@ export function replaceRemFunction(
   const namespacePattern = getNamespacePattern(options);
 
   const namespacedRemFunctionRegExp = new RegExp(
-    String.raw`^${namespacePattern}rem\(\s*([\d.]+)(px)?\s*\)\s*$`,
+    String.raw`^${namespacePattern}rem\b\(\s*([\d.]+)(px)?\s*\)\s*$`,
     'g',
   );
 
