@@ -34,3 +34,7 @@ $someElement: (
 .scenario-7 {
   z-index: calc(#{z-index(dev-ui, $fixed-element-stacking-order)} + 1);
 }
+
+.scenario-8 {
+  z-index: z-index(modal, $fixed-element-stacking-order);
+}

@@ -49,3 +49,7 @@ $someElement: (
     #{legacy-polaris-v8.z-index(dev-ui, $fixed-element-stacking-order)} + 1
   );
 }
+
+.scenario-8 {
+  z-index: var(--p-z-11);
+}

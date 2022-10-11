@@ -20,16 +20,33 @@ const zIndexMap = {
   overlay: '--p-z-2',
 };
 
-const isValidElement = (
-  element: unknown,
-): element is keyof typeof zIndexMap => {
-  return Object.keys(zIndexMap).includes(element as string);
+const fixedElementStackingOrder = {
+  'global-ribbon': '--p-z-3',
+  'top-bar': '--p-z-4',
+  'context-bar': '--p-z-5',
+  'small-screen-loading-bar': '--p-z-6',
+  'nav-backdrop': '--p-z-7',
+  nav: '--p-z-8',
+  'skip-to-content': '--p-z-9',
+  backdrop: '--p-z-10',
+  modal: '--p-z-11',
+  toast: '--p-z-12',
 };
+
+function isValidElement<
+  MapType extends typeof zIndexMap | typeof fixedElementStackingOrder,
+>(element: unknown, mapObj: MapType): element is keyof typeof mapObj {
+  return Object.keys(mapObj).includes(element as string);
+}
 
 const hasMoreThanOneArgument = (node: FunctionNode) => node.nodes.length > 1;
 
 const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedZIndex = namespace('z-index', options);
+  const namespacedFixedElementStackingOrder = namespace(
+    '$fixed-element-stacking-order',
+    options,
+  );
   return {
     postcssPlugin: 'replace-sass-z-index',
     Declaration(decl) {
@@ -40,7 +57,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       if (!hasSassFunction(namespacedZIndex, parsedValue)) return;
 
-      let containsSecondArgument = false;
+      let containsUnknownSecondArgument = false;
 
       parsedValue.walk((node: Node) => {
         if (!isSassFunction(namespacedZIndex, node)) return;
@@ -49,14 +66,33 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           // We assume they're passing in a custom map
           // In this case its unlikely this will resolve to a polaris token value
           // transform legacy zIndex usage to map-get and move on.
-          containsSecondArgument = true;
-          node.value = 'map-get';
+
+          const [key, _, map] = node.nodes;
+          if (
+            map.value === namespacedFixedElementStackingOrder &&
+            isValidElement(key.value, fixedElementStackingOrder)
+          ) {
+            const fixedElementStackingOrderToken =
+              fixedElementStackingOrder[key.value];
+            node.value = 'var';
+            node.nodes = [
+              {
+                type: 'word',
+                value: fixedElementStackingOrderToken,
+                sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                sourceEndIndex: fixedElementStackingOrderToken.length,
+              },
+            ];
+          } else {
+            containsUnknownSecondArgument = true;
+            node.value = 'map-get';
+            node.nodes.reverse();
+          }
           // map-get arguments are in the reverse order to z-index arguments.
           // map-get expects the map object first, and the key second.
-          node.nodes.reverse();
         } else {
           const element = node.nodes[0]?.value ?? '';
-          if (!isValidElement(element)) return;
+          if (!isValidElement<typeof zIndexMap>(element, zIndexMap)) return;
           const zIndexCustomProperty = zIndexMap[element];
 
           node.value = 'var';
@@ -71,7 +107,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         }
       });
 
-      if (hasNumericOperator(parsedValue) || containsSecondArgument) {
+      if (hasNumericOperator(parsedValue) || containsUnknownSecondArgument) {
         // Insert comment if the declaration value contains calculations
         // or if the invocation of zIndex has more than one argument
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
