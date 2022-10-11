@@ -61,11 +61,9 @@
   gap: var(--p-space-4) -16px;
 
   // Single shorthand rem function (rem(Xpx))
-  padding: rem(10px);
+  padding: legacy-polaris-v8.rem(10px);
   padding: var(--p-space-4);
-  padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)}));
-  padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)}));
-  gap: rem(10px);
+  gap: legacy-polaris-v8.rem(10px);
   gap: var(--p-space-4);
 
   // Mixed shorthand rem function
@@ -126,6 +124,12 @@
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* gap: var(--p-space-4) + #{16px + 16px}; */
   gap: 16px + #{16px + 16px};
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)})); */
+  padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)}));
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)})); */
+  padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)}));
 
   // Unsupported transforms without comments
   padding: var(--p-space-4);

@@ -62,8 +62,6 @@
   // Single shorthand rem function (rem(Xpx))
   padding: rem(10px);
   padding: rem(16px);
-  padding: calc(10rem + var(--p-choice-size, #{rem(16px)}));
-  padding: calc(10rem + var(--p-choice-size, #{rem(10px)}));
   gap: rem(10px);
   gap: rem(16px);
 
@@ -93,6 +91,8 @@
   gap: rem($var * 16px);
   gap: calc(16px + 16px);
   gap: 16px + #{16px + 16px};
+  padding: calc(10rem + var(--p-choice-size, #{rem(16px)}));
+  padding: calc(10rem + var(--p-choice-size, #{rem(10px)}));
 
   // Unsupported transforms without comments
   padding: rem(16px);
