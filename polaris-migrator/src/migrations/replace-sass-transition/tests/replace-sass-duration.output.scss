@@ -1,0 +1,212 @@
+.duration-simple-string-arg {
+  opacity: 1;
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-500);
+}
+
+.duration-simple-non-string-arg {
+  opacity: 1;
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-500);
+}
+
+.duration-simple-constant {
+  opacity: 1;
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-5000);
+}
+
+.duration-compound-string-arg {
+  opacity: 1;
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+}
+
+.duration-compound-non-string-arg {
+  opacity: 1;
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+}
+
+.duration-compound-constant {
+  opacity: 1;
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-5000) var(--p-linear);
+}
+
+.duration-multiple-string-arg {
+  opacity: 1;
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+}
+
+.duration-multiple-non-string-arg {
+  opacity: 1;
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+}
+
+.duration-multiple-constant {
+  opacity: 1;
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-5000) var(--p-linear),
+    left var(--p-duration-5000) var(--p-linear);
+}
+
+.edges {
+  // sass calculation
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Numeric operator detected.
+  // warning: No matching duration token for '33ms'.
+  // transition: (legacy-polaris-v8.duration() - 33ms) fill var(--p-linear) 33ms;
+  transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
+  // Duration comes after easing func
+  transition: opacity var(--p-linear) var(--p-duration-500);
+  // Duration + Delay
+  transition: opacity var(--p-duration-400) var(--p-linear)
+    var(--p-duration-100);
+  // Duration + Delay after easing func
+  transition: opacity var(--p-linear) var(--p-duration-400)
+    var(--p-duration-100);
+  // foobar isn't a valid duration key
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unknown duration key 'foobar'.
+  transition-duration: legacy-polaris-v8.duration(foobar);
+  // can't process variables
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyse SASS variable $foo.
+  transition-duration: $foo;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyse SASS variable $foo.
+  // transition: opacity $foo var(--p-duration-500);
+  transition: opacity $foo 0.5s;
+}
