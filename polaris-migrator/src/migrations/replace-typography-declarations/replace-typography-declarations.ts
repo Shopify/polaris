@@ -14,7 +14,6 @@ import {
   isUnitlessZero,
   namespace,
   NamespaceOptions,
-  replaceDecl,
   toTransformablePx,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
@@ -45,6 +44,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
+      const prop = decl.prop;
       const parsedValue = valueParser(decl.value);
 
       /**
@@ -56,12 +56,16 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       const targets: {replaced: boolean}[] = [];
       let hasNumericOperator = false;
 
-      replaceDecl(decl, {
+      const handlers = {
         'font-family': handleFontFamily,
         'font-size': handleFontSize,
         'font-weight': handleFontWeight,
         'line-height': handleFontLineHeight,
-      });
+      };
+
+      if (!isKeyOf(handlers, prop)) return;
+
+      handlers[prop]();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
