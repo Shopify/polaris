@@ -18,7 +18,9 @@ export interface CollapsibleProps {
   expandOnPrint?: boolean;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
-  /** Assign transition properties to the collapsible. Defaults to true. */
+  /** Override transition properties. When set to false, disables transition completely. Defaults to true, which uses
+   * default transition properties.
+   */
   transition?: boolean | Transition;
   /** Set to true to disable the animation. Defaults to false. */
   /** @deprecated Re-measuring is no longer necessary on children update **/
