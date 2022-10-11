@@ -44,8 +44,14 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      const prop = decl.prop;
-      const parsedValue = valueParser(decl.value);
+      const handlers = {
+        'font-family': handleFontFamily,
+        'font-size': handleFontSize,
+        'font-weight': handleFontWeight,
+        'line-height': handleFontLineHeight,
+      };
+
+      if (!isKeyOf(handlers, decl.prop)) return;
 
       /**
        * A collection of transformable values to migrate (e.g. decl lengths, functions, etc.)
@@ -56,16 +62,9 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       const targets: {replaced: boolean}[] = [];
       let hasNumericOperator = false;
 
-      const handlers = {
-        'font-family': handleFontFamily,
-        'font-size': handleFontSize,
-        'font-weight': handleFontWeight,
-        'line-height': handleFontLineHeight,
-      };
+      const parsedValue = valueParser(decl.value);
 
-      if (!isKeyOf(handlers, prop)) return;
-
-      handlers[prop]();
+      handlers[decl.prop]();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
