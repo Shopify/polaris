@@ -4,4 +4,4 @@
 
 Deprecated Collapsible preventMeasuringOnChildrenUpdate.
 Fixed bug where Collapsible would get stuck in animating state.
-Support for 0ms transition duration in Collapsible.
+Add support for intentionally disabling the transition in Collapsible.
