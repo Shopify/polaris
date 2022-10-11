@@ -86,6 +86,8 @@
   /* ALIAS */
   font-weight: var(--p-font-weight-regular);
   font-weight: var(--p-font-weight-bold);
+  /* Ignore */
+  font-weight: inherit;
   /* Comment */
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* font-weight: bolder; */

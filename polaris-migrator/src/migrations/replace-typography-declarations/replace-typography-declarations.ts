@@ -126,6 +126,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       function handleFontSize() {
         parsedValue.walk((node) => {
           if (node.type === 'word') {
+            if (globalValues.has(node.value)) return;
+
             if (isNumericOperator(node)) {
               hasNumericOperator = true;
               return;
@@ -223,6 +225,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           if (node.type === 'function') return StopWalkingFunctionNodes;
 
           if (node.type === 'word') {
+            if (globalValues.has(node.value)) return;
+
             if (isNumericOperator(node)) {
               hasNumericOperator = true;
               return;
@@ -244,6 +248,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       function handleFontLineHeight() {
         parsedValue.walk((node) => {
           if (node.type === 'word') {
+            if (globalValues.has(node.value)) return;
+
             if (isNumericOperator(node)) {
               hasNumericOperator = true;
               return;
@@ -312,6 +318,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
     },
   };
 };
+
+const globalValues = new Set(['inherit', 'initial', 'unset']);
 
 const fontFamilyMap = {
   base: '--p-font-family-sans',
