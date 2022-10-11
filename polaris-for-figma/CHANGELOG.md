@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.0.23
+
+### Patch Changes
+
+- [#6743](https://github.com/Shopify/polaris/pull/6743) [`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add support for React 18
+
+- Updated dependencies [[`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d), [`6be4436d0`](https://github.com/Shopify/polaris/commit/6be4436d0fa2e37a0e93aad99a436d286f976051)]:
+  - @shopify/polaris@10.7.0
+
+## 0.0.22
+
+### Patch Changes
+
+- Updated dependencies [[`f7140123d`](https://github.com/Shopify/polaris/commit/f7140123dce74be7d79b2ae57bbfda2f96363980), [`b1b576403`](https://github.com/Shopify/polaris/commit/b1b5764035c6f138e24ad42c9c033c7ca7369a93), [`4b95fdc64`](https://github.com/Shopify/polaris/commit/4b95fdc64b4d30a39333e09623d347735636e771)]:
+  - @shopify/polaris@10.6.0
+
+## 0.0.21
+
+### Patch Changes
+
+- Updated dependencies [[`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2), [`3941f5281`](https://github.com/Shopify/polaris/commit/3941f5281f8bf41ff09c3e6e0dedf49eb219310f), [`2ee5c5d74`](https://github.com/Shopify/polaris/commit/2ee5c5d741be739b5f00cda626852c3922aa07ff)]:
+  - @shopify/polaris@10.5.0
+
 ## 0.0.20
 
 ### Patch Changes

@@ -1,14 +1,17 @@
 import React from 'react';
+import {PlayMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';
-import {classNames} from '../../utilities/css';
 import {
   secondsToTimeComponents,
   secondsToTimestamp,
   secondsToDurationTranslationKey,
 } from '../../utilities/duration';
+import {useMediaQuery} from '../../utilities/media-query';
+import {Icon} from '../Icon';
+import {Stack} from '../Stack';
+import {Text} from '../Text';
 
-import {PlayIcon} from './illustrations';
 import styles from './VideoThumbnail.scss';
 
 export interface VideoThumbnailProps {
@@ -49,6 +52,7 @@ export function VideoThumbnail({
   onBeforeStartPlaying,
 }: VideoThumbnailProps) {
   const i18n = useI18n();
+  const {isNavigationCollapsed} = useMediaQuery();
   let buttonLabel;
 
   if (accessibilityLabel) {
@@ -73,13 +77,19 @@ export function VideoThumbnail({
   }
 
   const timeStampMarkup = videoLength ? (
-    <p
-      className={classNames(
-        styles.Timestamp,
-        showVideoProgress && styles.withProgress,
-      )}
-    >
-      {secondsToTimestamp(videoLength)}
+    <p className={styles.Timestamp}>
+      <Stack alignment="center" spacing="extraTight">
+        <span className={styles.PlayIcon}>
+          <Icon source={PlayMinor} />
+        </span>
+        <Text
+          variant={isNavigationCollapsed ? 'bodyLg' : 'bodyMd'}
+          as="p"
+          fontWeight="semibold"
+        >
+          {secondsToTimestamp(videoLength)}
+        </Text>
+      </Stack>
     </p>
   ) : null;
 
@@ -109,10 +119,11 @@ export function VideoThumbnail({
   }
 
   return (
-    <div
-      className={styles.Thumbnail}
-      style={{backgroundImage: `url(${thumbnailUrl})`}}
-    >
+    <div className={styles.ThumbnailContainer}>
+      <div
+        className={styles.Thumbnail}
+        style={{backgroundImage: `url(${thumbnailUrl})`}}
+      />
       <button
         type="button"
         className={styles.PlayButton}
@@ -122,9 +133,8 @@ export function VideoThumbnail({
         onFocus={onBeforeStartPlaying}
         onTouchStart={onBeforeStartPlaying}
       >
-        <img className={styles.PlayIcon} src={PlayIcon} alt="" />
+        {timeStampMarkup}
       </button>
-      {timeStampMarkup}
       {progressMarkup}
     </div>
   );

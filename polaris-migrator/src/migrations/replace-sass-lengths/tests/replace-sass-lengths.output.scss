@@ -40,28 +40,28 @@
   padding: var(--p-space-4) -16px;
 
   // Unsupported transforms with comments
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: var(--p-space-4) + var(--p-space-4); */
   padding: 16px + 16px;
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: var(--p-space-4) + var(--p-space-4) var(--p-space-4); */
   padding: 16px + 16px 16px;
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: (16px + 16px) var(--p-space-4); */
   padding: (16px + 16px) 16px;
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: $var + var(--p-space-4); */
   padding: $var + 16px;
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: rem(16px) + var(--p-space-4); */
   padding: rem(16px) + 16px;
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: rem($var * 16px); */
   padding: rem($var * 16px);
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: calc(16px + 16px); */
   padding: calc(16px + 16px);
-  /* polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: var(--p-space-4) + #{16px + 16px}; */
   padding: 16px + #{16px + 16px};
 

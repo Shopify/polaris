@@ -72,6 +72,33 @@ Replace the legacy Sass `spacing()` function with the supported CSS custom prope
 npx @shopify/polaris-migrator replace-sass-spacing <path>
 ```
 
+### `replace-static-breakpoint-mixins`
+
+Replace legacy static breakpoint mixins with the new Polaris [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
+
+```diff
+- @include page-content-when-layout-not-stacked {}
++ @media #{$p-breakpoints-md-up} {}
+```
+
+```sh
+npx @shopify/polaris-migrator replace-static-breakpoint-mixins <path>
+```
+
+### `replace-static-mixins-with-declarations`
+
+Replace legacy static mixins with their corresponding declarations and CSS custom properties.
+
+```diff
+- @include text-emphasis-normal;
++ color: var(--p-text);
++ font-weight: var(--p-font-weight-regular);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
+```
+
 ## Creating a migration
 
 ### Setup
@@ -185,7 +212,7 @@ npx prettier --write .
 Running a migration can potentially modify thousands of files. For more complex migrations, a comment may be added suggesting the change is manually checked. You can quickly perform a manual search for this comment in your text editor:
 
 ```
-polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually.
+polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
 ```
 
 After applying a migration, it might be helpful to commit the changes that do not need a manual check from those that do. You can do this a few different ways, but we suggest staging all your changes, then unstaging those that include the manual check comment:
