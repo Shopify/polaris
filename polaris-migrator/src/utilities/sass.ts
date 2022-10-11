@@ -16,12 +16,16 @@ import valueParser, {
   FunctionNode,
   Dimension,
 } from 'postcss-value-parser';
-import {toPx} from '@shopify/polaris-tokens';
+import {toPx, getCustomPropertyNames, tokens} from '@shopify/polaris-tokens';
 import prettier from 'prettier';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../constants';
 
 const defaultNamespace = '';
+
+const polarisCustomPropertyRegEx = new RegExp(
+  getCustomPropertyNames(tokens).join('|'),
+);
 
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || defaultNamespace;
@@ -58,14 +62,54 @@ export function isNumericOperator(node: Node): boolean {
 /**
  * Checks if any descendant `valueParser` node is a numeric operator
  */
-export function hasNumericOperator(parsedValue: ParsedValue): boolean {
+export function hasNumericOperator(
+  parsedValue: ParsedValue,
+  deep = true,
+): boolean {
   let containsNumericOperator = false;
 
   parsedValue.walk((node) => {
-    if (isNumericOperator(node)) containsNumericOperator = true;
+    if (isNumericOperator(node)) {
+      containsNumericOperator = true;
+      return StopWalkingFunctionNodes;
+    }
+
+    if (!deep) {
+      return StopWalkingFunctionNodes;
+    }
   });
 
   return containsNumericOperator;
+}
+
+/**
+ * Checks if a `valueParser` node is a [SASS variable](https://sass-lang.com/documentation/variables)
+ */
+export function isSassVariable(node: Node): boolean {
+  return node.type === 'word' && node.value.startsWith('$');
+}
+
+/**
+ * Checks if any descendant `valueParser` node is a SASS variable
+ */
+export function hasSassVariable(
+  parsedValue: ParsedValue,
+  deep = true,
+): boolean {
+  let containsSassVariable = false;
+
+  parsedValue.walk((node) => {
+    if (isSassVariable(node)) {
+      containsSassVariable = true;
+      return StopWalkingFunctionNodes;
+    }
+
+    if (!deep) {
+      return StopWalkingFunctionNodes;
+    }
+  });
+
+  return containsSassVariable;
 }
 
 /**
@@ -91,11 +135,19 @@ export function isSassFunction(name: string, node: Node): node is FunctionNode {
 export function hasSassFunction(
   name: string,
   parsedValue: ParsedValue,
+  deep = true,
 ): boolean {
   let containsSassFunction = false;
 
   parsedValue.walk((node) => {
-    if (isSassFunction(name, node)) containsSassFunction = true;
+    if (isSassFunction(name, node)) {
+      containsSassFunction = true;
+      return StopWalkingFunctionNodes;
+    }
+
+    if (!deep) {
+      return StopWalkingFunctionNodes;
+    }
   });
 
   return containsSassFunction;
@@ -248,6 +300,33 @@ export function toTransformablePx(value: string) {
  * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
  */
 export const StopWalkingFunctionNodes = false;
+
+/**
+ * All transformable duration units. These values are used to determine
+ * if a decl.value can be mapped to a Polaris custom property.
+ *
+ * Note: <time> is a dimension with 's' or 'ms' as the unit:
+ * https://w3c.github.io/csswg-drafts/css-values-3/#time-value
+ */
+export const transformableDurationUnits = ['s', 'ms'];
+
+export function isTransformableDuration(
+  dimension: false | Dimension,
+): dimension is Dimension {
+  if (!dimension) return false;
+
+  // Zero is the only unitless dimension our duration transforms support
+  if (isUnitlessZero(dimension)) return true;
+
+  return transformableDurationUnits.includes(dimension.unit);
+}
+
+export function isPolarisVar(node: Node): boolean {
+  return (
+    isSassFunction('var', node) &&
+    polarisCustomPropertyRegEx.test(node.nodes?.[0]?.value ?? '')
+  );
+}
 
 export function createInlineComment(text: string, options?: {prose?: boolean}) {
   const formatted = prettier
