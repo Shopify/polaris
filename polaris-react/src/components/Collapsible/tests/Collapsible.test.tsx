@@ -31,6 +31,7 @@ describe('<Collapsible />', () => {
   };
   const animatingClosedProps = {
     'aria-hidden': true,
+    className: expect.not.stringContaining('isFullyClosed'),
     style: {
       maxHeight: '0px',
       overflow: 'hidden',
@@ -118,7 +119,7 @@ describe('<Collapsible />', () => {
     expect(collapsible).toContainReactComponent('div', fullyOpenProps);
   });
 
-  it('begins animation by when toggled open', () => {
+  it('begins animation when toggled open', () => {
     const collapsible = mountWithApp(
       <Collapsible id="test-collapsible" open={false} expandOnPrint>
         content
@@ -128,6 +129,18 @@ describe('<Collapsible />', () => {
     collapsible.setProps({open: true});
 
     expect(collapsible).toContainReactComponent('div', animatingOpenProps);
+  });
+
+  it('begins animation when toggled closed', () => {
+    const collapsible = mountWithApp(
+      <Collapsible id="test-collapsible" open expandOnPrint>
+        content
+      </Collapsible>,
+    );
+
+    collapsible.setProps({open: false});
+
+    expect(collapsible).toContainReactComponent('div', animatingClosedProps);
   });
 
   describe('Transition', () => {
@@ -188,7 +201,7 @@ describe('<Collapsible />', () => {
       });
     });
 
-    it('completes closing transition by adding isFullyClosed class', () => {
+    it('completes closing transition', () => {
       const id = 'test-collapsible';
       const collapsible = mountWithApp<CollapsibleProps>(
         <Collapsible id={id} open>
@@ -209,7 +222,7 @@ describe('<Collapsible />', () => {
     it('does not complete opening transition if onTransitionEnd fires on a different target', () => {
       const id = 'test-collapsible';
       const collapsible = mountWithApp<CollapsibleProps>(
-        <Collapsible id={id} open>
+        <Collapsible id={id} open={false}>
           content
         </Collapsible>,
       );
