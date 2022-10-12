@@ -40,7 +40,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       let handler;
 
       if (spaceProps.includes(decl.prop)) handler = handleSpace;
-      else if (borderWithProps.includes(decl.prop)) handler = handleBorderWidth;
+      else if (borderWidthProps.includes(decl.prop))
+        handler = handleBorderWidth;
       else return;
 
       /**
@@ -163,7 +164,7 @@ const spaceProps = [
   'grid-column-gap',
 ];
 
-const borderWithProps = [
+const borderWidthProps = [
   'border',
   'border-top',
   'border-right',
