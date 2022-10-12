@@ -6,7 +6,7 @@ import {
 } from '../../src/token-groups/motion';
 
 describe('MotionDurationScale', () => {
-  it('extracts the motion duration scale from the motion token', () => {
+  it('has a motion token for each duration scale', () => {
     for (const scale of motionDurationScale) {
       expect(isKeyOf(motion, `duration-${scale}`)).toBe(true);
     }
@@ -14,7 +14,7 @@ describe('MotionDurationScale', () => {
 });
 
 describe('MotionKeyframesAlias', () => {
-  it('extracts the motion keyframe alias from the motion token', () => {
+  it('has a motion token for each keyframes alias', () => {
     for (const alias of motionKeyframesAlias) {
       expect(isKeyOf(motion, `keyframes-${alias}`)).toBe(true);
     }

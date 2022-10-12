@@ -5,7 +5,7 @@ import {
 } from '../../src/token-groups/breakpoints';
 
 describe('BreakpointsAlias', () => {
-  it('extracts the breakpoint alias from the breakpoints token', () => {
+  it('has a breakpoints token for each breakpoint alias', () => {
     for (const alias of breakpointsAlias) {
       expect(isKeyOf(breakpoints, `breakpoints-${alias}`)).toBe(true);
     }

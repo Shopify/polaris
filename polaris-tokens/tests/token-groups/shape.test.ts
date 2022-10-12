@@ -6,7 +6,7 @@ import {
 } from '../../src/token-groups/shape';
 
 describe('ShapeBorderRadiusScale', () => {
-  it('extracts the border radius scale from the shape token', () => {
+  it('has a shape token for each border radius scale', () => {
     for (const scale of shapeBorderRadiusScale) {
       expect(isKeyOf(shape, `border-radius-${scale}`)).toBe(true);
     }
@@ -14,7 +14,7 @@ describe('ShapeBorderRadiusScale', () => {
 });
 
 describe('ShapeBorderRadiusAlias', () => {
-  it('extracts the border radius alias from the shape token', () => {
+  it('has a shape token for each border radius alias', () => {
     for (const alias of shapeBorderRadiusAlias) {
       expect(isKeyOf(shape, `border-radius-${alias}`)).toBe(true);
     }

@@ -7,7 +7,7 @@ import {
 } from '../../src/token-groups/font';
 
 describe('FontSizeScale', () => {
-  it('extracts the font size scale from the font token', () => {
+  it('has a font token for each font size scale', () => {
     for (const sizeScale of fontSizeScale) {
       expect(isKeyOf(font, `font-size-${sizeScale}`)).toBe(true);
     }
@@ -15,7 +15,7 @@ describe('FontSizeScale', () => {
 });
 
 describe('FontLineHeightScale', () => {
-  it('extracts the font line height scale from the font token', () => {
+  it('has a font token for each font line height scale', () => {
     for (const lineHeightScale of fontLineHeightScale) {
       expect(isKeyOf(font, `font-line-height-${lineHeightScale}`)).toBe(true);
     }
@@ -23,7 +23,7 @@ describe('FontLineHeightScale', () => {
 });
 
 describe('FontWeightAlias', () => {
-  it('extracts the font weight alias from the font token', () => {
+  it('has a font token for each font weight alias', () => {
     for (const alias of fontWeightAlias) {
       expect(isKeyOf(font, `font-weight-${alias}`)).toBe(true);
     }
