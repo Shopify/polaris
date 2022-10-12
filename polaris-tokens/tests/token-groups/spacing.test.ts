@@ -1,5 +1,4 @@
-import {isKeyOf} from '@shopify/polaris-migrator';
-
+import {isKeyOf} from '../../src/utilities';
 import {spacing, spaceScale} from '../../src/token-groups/spacing';
 
 describe('SpacingSpaceScale', () => {

@@ -1,5 +1,4 @@
-import {isKeyOf} from '@shopify/polaris-migrator';
-
+import {isKeyOf} from '../../src/utilities';
 import {
   shape,
   borderRadiusScale,
