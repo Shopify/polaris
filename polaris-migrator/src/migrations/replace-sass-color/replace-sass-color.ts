@@ -56,10 +56,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       if (!hasSassFunction(namespacedColor, parsed)) return;
 
-      if (!isKeyof(propertyMap, decl.prop)) return;
-      const propertyMapKey = propertyMap[decl.prop];
-      const replacementMap = maps[propertyMapKey];
-
       parsed.walk((node) => {
         // 1. Remove color() fallbacks
         if (isSassFunction('var', node)) {
@@ -77,6 +73,10 @@ const plugin = (options: PluginOptions = {}): Plugin => {
             node.nodes = [nodes[0]];
           }
         }
+
+        if (!isKeyof(propertyMap, decl.prop)) return;
+        const propertyMapKey = propertyMap[decl.prop];
+        const replacementMap = maps[propertyMapKey];
 
         // 2. Replace `color()` with variable
         if (!isSassFunction(namespacedColor, node)) return;
