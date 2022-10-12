@@ -57,7 +57,7 @@ export const spacing = {
 export type SpacingTokenGroup = TokenGroup<typeof spacing>;
 export type SpacingTokenName = keyof SpacingTokenGroup;
 
-export const spaceScale = [
+export const spacingSpaceScale = [
   '0',
   '025',
   '05',
@@ -76,4 +76,4 @@ export const spaceScale = [
   '28',
   '32',
 ] as const;
-export type SpacingSpaceScale = typeof spaceScale[number];
+export type SpacingSpaceScale = typeof spacingSpaceScale[number];

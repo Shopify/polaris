@@ -66,8 +66,16 @@ export const shape = {
 export type ShapeTokenGroup = TokenGroup<typeof shape>;
 export type ShapeTokenName = keyof ShapeTokenGroup;
 
-export const borderRadiusScale = ['05', '1', '2', '3', '4', '5', '6'] as const;
-export type ShapeBorderRadiusScale = typeof borderRadiusScale[number];
+export const shapeBorderRadiusScale = [
+  '05',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+] as const;
+export type ShapeBorderRadiusScale = typeof shapeBorderRadiusScale[number];
 
-export const borderRadiusAlias = ['base', 'large', 'half'] as const;
-export type ShapeBorderRadiusAlias = typeof borderRadiusAlias[number];
+export const shapeBorderRadiusAlias = ['base', 'large', 'half'] as const;
+export type ShapeBorderRadiusAlias = typeof shapeBorderRadiusAlias[number];
