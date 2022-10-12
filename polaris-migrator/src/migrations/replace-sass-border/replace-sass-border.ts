@@ -12,7 +12,7 @@ import {
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-export default function replaceSassLengths(
+export default function replaceSassBorder(
   fileInfo: FileInfo,
   _: API,
   options: Options,
@@ -108,11 +108,74 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           }
         });
       }
+
+      function handleBorderWidth() {
+        parsedValue.walk((node) => {
+          if (node.type === 'word') {
+            if (globalValues.has(node.value)) return;
+            if (isNumericOperator(node)) {
+              hasNumericOperator = true;
+              return;
+            }
+
+            const dimension = valueParser.unit(node.value);
+
+            if (!isTransformableLength(dimension)) return;
+
+            targets.push({replaced: false});
+
+            const valueInPx = toTransformablePx(node.value);
+
+            if (!isKeyOf(borderWidthMap, valueInPx)) return;
+
+            targets.at(-1)!.replaced = true;
+
+            node.value = `var(${borderWidthMap[valueInPx]})`;
+            return;
+          }
+
+          if (node.type === 'function') {
+            if (isSassFunction(namespacedRem, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (args.length !== 1) return;
+
+              const valueInPx = toTransformablePx(args[0]);
+
+              if (!isKeyOf(borderWidthMap, valueInPx)) return;
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderWidthMap[valueInPx],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderWidthMap[valueInPx].length,
+                },
+              ];
+            }
+
+            return StopWalkingFunctionNodes;
+          }
+        });
+      }
     },
   };
 };
 
 const globalValues = new Set(['inherit', 'initial', 'unset']);
+
+const borderTokenMap = {
+  '1px': '--p-border-1',
+  '2px': '--p-border-2',
+  '3px': '--p-border-3',
+  '4px': '--p-border-4',
+  '5px': '--p-border-5',
+};
 
 const borderProps = [
   'border',
@@ -120,6 +183,9 @@ const borderProps = [
   'border-right',
   'border-bottom',
   'border-left',
+];
+
+const borderWidthProps = [
   'border-width',
   'border-width-top',
   'border-width-right',
@@ -133,6 +199,17 @@ const borderMap = {
   transparent: '--p-border-transparent',
   divider: '	--p-border-divider',
 } as const;
+
+const borderWidthMap = {
+  '1px': '--p-border-1',
+  '2px': '--p-border-2',
+  '3px': '--p-border-3',
+  '4px': '--p-border-4',
+  '5px': '--p-border-5',
+  base: '--p-border-1',
+  thick: '--p-border-2',
+  thicker: '--p-border-3',
+};
 
 /**
  * Exit early and stop traversing descendant nodes:
