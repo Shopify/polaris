@@ -71,26 +71,25 @@ export const font = {
 export type FontTokenGroup = TokenGroup<typeof font>;
 export type FontTokenName = keyof FontTokenGroup;
 
-// e.g. "400" | "500" | "600" | "700" | "100" | ...
-export type FontSizeScale = Extract<
-  FontTokenName,
-  `font-size-${number}`
-> extends `font-size-${infer Scale}`
-  ? Scale
-  : never;
+export const fontSizeScale = [
+  '75',
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+] as const;
+export type FontSizeScale = typeof fontSizeScale[number];
 
-// e.g. "1" | "2" | "3" | "4" | "5" | "6" | "7"
-export type FontLineHeightScale = Extract<
-  FontTokenName,
-  `font-line-height-${number}`
-> extends `font-line-height-${infer Scale}`
-  ? Scale
-  : never;
+export const fontLineHeightScale = ['1', '2', '3', '4', '5', '6', '7'] as const;
+export type FontLineHeightScale = typeof fontLineHeightScale[number];
 
-// e.g. "bold" | "regular" | "medium" | "semibold"
-export type FontWeightAlias = Extract<
-  FontTokenName,
-  `font-weight-${string}`
-> extends `font-weight-${infer Alias}`
-  ? Alias
-  : never;
+export const fontWeightAlias = [
+  'regular',
+  'medium',
+  'semibold',
+  'bold',
+] as const;
+export type FontWeightAlias = typeof fontWeightAlias[number];
