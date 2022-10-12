@@ -51,9 +51,9 @@ export const zIndexZScale = [
   '6',
   '7',
   '8',
-  '10',
-  '12',
   '9',
+  '10',
   '11',
+  '12',
 ] as const;
 export type ZIndexZScale = typeof zIndexZScale[number];
