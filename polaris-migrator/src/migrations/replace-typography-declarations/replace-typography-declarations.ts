@@ -367,7 +367,7 @@ const fontSizeFunctionMap = {
     'large-screen': '--p-font-size-200',
   },
   'display-x-large': {
-    base: '1.6875rem',
+    base: '1.6875rem', // 27px
     'large-screen': '2.625rem', // 42px
   },
   'display-large': {
