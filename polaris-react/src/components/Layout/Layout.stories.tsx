@@ -1,14 +1,16 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  AlphaStack,
   Banner,
+  Box,
   Card,
+  Columns,
   FormLayout,
-  Heading,
   Layout,
   Page,
   ResourceList,
-  TextContainer,
+  Text,
   TextField,
   TextStyle,
   Thumbnail,
@@ -21,13 +23,11 @@ export default {
 export function OneColumn() {
   return (
     <Page fullWidth>
-      <Layout>
-        <Layout.Section>
-          <Card title="Online store dashboard" sectioned>
-            <p>View a summary of your online store’s performance.</p>
-          </Card>
-        </Layout.Section>
-      </Layout>
+      <Columns columns={{xs: 1}}>
+        <Card title="Online store dashboard" sectioned>
+          <p>View a summary of your online store’s performance.</p>
+        </Card>
+      </Columns>
     </Page>
   );
 }
@@ -35,23 +35,21 @@ export function OneColumn() {
 export function TwoColumnsWithPrimaryAndSecondaryWidths() {
   return (
     <Page fullWidth>
-      <Layout>
-        <Layout.Section>
-          <Card title="Order details" sectioned>
-            <p>
-              Use to follow a normal section with a secondary section to create
-              a 2/3 + 1/3 layout on detail pages (such as individual product or
-              order pages). Can also be used on any page that needs to structure
-              a lot of content. This layout stacks the columns on small screens.
-            </p>
-          </Card>
-        </Layout.Section>
-        <Layout.Section secondary>
+      <Columns columns={{xs: 1, lg: '2fr 1fr'}}>
+        <Card title="Order details" sectioned>
+          <p>
+            Use to follow a normal section with a secondary section to create a
+            2/3 + 1/3 layout on detail pages (such as individual product or
+            order pages). Can also be used on any page that needs to structure a
+            lot of content. This layout stacks the columns on small screens.
+          </p>
+        </Card>
+        <div>
           <Card title="Tags" sectioned>
             <p>Add tags to your order.</p>
           </Card>
-        </Layout.Section>
-      </Layout>
+        </div>
+      </Columns>
     </Page>
   );
 }
@@ -59,9 +57,65 @@ export function TwoColumnsWithPrimaryAndSecondaryWidths() {
 export function TwoColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
-      <Layout>
-        <Layout.Section oneHalf>
-          <Card title="Florida" actions={[{content: 'Manage'}]}>
+      <Columns columns={{xs: 2}}>
+        <Card title="Florida" actions={[{content: 'Manage'}]}>
+          <Card.Section>
+            <TextStyle variation="subdued">455 units available</TextStyle>
+          </Card.Section>
+          <Card.Section title="Items">
+            <ResourceList
+              resourceName={{singular: 'product', plural: 'products'}}
+              items={[
+                {
+                  id: '341',
+                  url: 'produdcts/341',
+                  name: 'Black & orange scarf',
+                  sku: '9234194023',
+                  quantity: '254',
+                  media: (
+                    <Thumbnail
+                      source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                      alt="Black orange scarf"
+                    />
+                  ),
+                },
+                {
+                  id: '256',
+                  url: 'produdcts/256',
+                  name: 'Tucan scarf',
+                  sku: '9234194010',
+                  quantity: '201',
+                  media: (
+                    <Thumbnail
+                      source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                      alt="Tucan scarf"
+                    />
+                  ),
+                },
+              ]}
+              renderItem={(item) => {
+                const {id, url, name, sku, media, quantity} = item;
+
+                return (
+                  <ResourceList.Item
+                    id={id}
+                    url={url}
+                    media={media}
+                    accessibilityLabel={`View details for ${name}`}
+                  >
+                    <h3>
+                      <TextStyle variation="strong">{name}</TextStyle>
+                    </h3>
+                    <div>SKU: {sku}</div>
+                    <div>{quantity} available</div>
+                  </ResourceList.Item>
+                );
+              }}
+            />
+          </Card.Section>
+        </Card>
+        <div>
+          <Card title="Nevada" actions={[{content: 'Manage'}]}>
             <Card.Section>
               <TextStyle variation="subdued">455 units available</TextStyle>
             </Card.Section>
@@ -117,66 +171,8 @@ export function TwoColumnsWithEqualWidth() {
               />
             </Card.Section>
           </Card>
-        </Layout.Section>
-        <Layout.Section oneHalf>
-          <Card title="Nevada" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">301 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
-              <ResourceList
-                resourceName={{singular: 'product', plural: 'products'}}
-                items={[
-                  {
-                    id: '342',
-                    url: 'produdcts/342',
-                    name: 'Black & orange scarf',
-                    sku: '9234194023',
-                    quantity: '100',
-                    media: (
-                      <Thumbnail
-                        source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
-                        alt="Black orange scarf"
-                      />
-                    ),
-                  },
-                  {
-                    id: '257',
-                    url: 'produdcts/257',
-                    name: 'Tucan scarf',
-                    sku: '9234194010',
-                    quantity: '201',
-                    media: (
-                      <Thumbnail
-                        source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
-                        alt="Tucan scarf"
-                      />
-                    ),
-                  },
-                ]}
-                renderItem={(item) => {
-                  const {id, url, name, sku, media, quantity} = item;
-
-                  return (
-                    <ResourceList.Item
-                      id={id}
-                      url={url}
-                      media={media}
-                      accessibilityLabel={`View details for ${name}`}
-                    >
-                      <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
-                      </h3>
-                      <div>SKU: {sku}</div>
-                      <div>{quantity} available</div>
-                    </ResourceList.Item>
-                  );
-                }}
-              />
-            </Card.Section>
-          </Card>
-        </Layout.Section>
-      </Layout>
+        </div>
+      </Columns>
     </Page>
   );
 }
@@ -184,66 +180,65 @@ export function TwoColumnsWithEqualWidth() {
 export function ThreeColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
-      <Layout>
-        <Layout.Section oneThird>
-          <Card title="Florida" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">455 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
-              <ResourceList
-                resourceName={{singular: 'product', plural: 'products'}}
-                items={[
-                  {
-                    id: '343',
-                    url: 'produdcts/343',
-                    name: 'Black & orange scarf',
-                    sku: '9234194023',
-                    quantity: '254',
-                    media: (
-                      <Thumbnail
-                        source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
-                        alt="Black orange scarf"
-                      />
-                    ),
-                  },
-                  {
-                    id: '258',
-                    url: 'produdcts/258',
-                    name: 'Tucan scarf',
-                    sku: '9234194010',
-                    quantity: '201',
-                    media: (
-                      <Thumbnail
-                        source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
-                        alt="Tucan scarf"
-                      />
-                    ),
-                  },
-                ]}
-                renderItem={(item) => {
-                  const {id, url, name, sku, media, quantity} = item;
+      <Columns columns={{xs: 3}}>
+        <Card title="Florida" actions={[{content: 'Manage'}]}>
+          <Card.Section>
+            <TextStyle variation="subdued">455 units available</TextStyle>
+          </Card.Section>
+          <Card.Section title="Items">
+            <ResourceList
+              resourceName={{singular: 'product', plural: 'products'}}
+              items={[
+                {
+                  id: '343',
+                  url: 'produdcts/343',
+                  name: 'Black & orange scarf',
+                  sku: '9234194023',
+                  quantity: '254',
+                  media: (
+                    <Thumbnail
+                      source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
+                      alt="Black orange scarf"
+                    />
+                  ),
+                },
+                {
+                  id: '258',
+                  url: 'produdcts/258',
+                  name: 'Tucan scarf',
+                  sku: '9234194010',
+                  quantity: '201',
+                  media: (
+                    <Thumbnail
+                      source="https://burst.shopifycdn.com/photos/tucan-scarf_373x@2x.jpg"
+                      alt="Tucan scarf"
+                    />
+                  ),
+                },
+              ]}
+              renderItem={(item) => {
+                const {id, url, name, sku, media, quantity} = item;
 
-                  return (
-                    <ResourceList.Item
-                      id={id}
-                      url={url}
-                      media={media}
-                      accessibilityLabel={`View details for ${name}`}
-                    >
-                      <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
-                      </h3>
-                      <div>SKU: {sku}</div>
-                      <div>{quantity} available</div>
-                    </ResourceList.Item>
-                  );
-                }}
-              />
-            </Card.Section>
-          </Card>
-        </Layout.Section>
-        <Layout.Section oneThird>
+                return (
+                  <ResourceList.Item
+                    id={id}
+                    url={url}
+                    media={media}
+                    accessibilityLabel={`View details for ${name}`}
+                  >
+                    <h3>
+                      <TextStyle variation="strong">{name}</TextStyle>
+                    </h3>
+                    <div>SKU: {sku}</div>
+                    <div>{quantity} available</div>
+                  </ResourceList.Item>
+                );
+              }}
+            />
+          </Card.Section>
+        </Card>
+        <div>
+          {' '}
           <Card title="Nevada" actions={[{content: 'Manage'}]}>
             <Card.Section>
               <TextStyle variation="subdued">301 units available</TextStyle>
@@ -300,8 +295,9 @@ export function ThreeColumnsWithEqualWidth() {
               />
             </Card.Section>
           </Card>
-        </Layout.Section>
-        <Layout.Section oneThird>
+        </div>
+        <div>
+          {' '}
           <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
             <Card.Section>
               <TextStyle variation="subdued">1931 units available</TextStyle>
@@ -358,8 +354,8 @@ export function ThreeColumnsWithEqualWidth() {
               />
             </Card.Section>
           </Card>
-        </Layout.Section>
-      </Layout>
+        </div>
+      </Columns>
     </Page>
   );
 }
@@ -367,29 +363,34 @@ export function ThreeColumnsWithEqualWidth() {
 export function Annotated() {
   return (
     <Page fullWidth>
-      <Layout>
-        <Layout.AnnotatedSection
-          id="storeDetails"
-          title="Store details"
-          description="Shopify and your customers will use this information to contact you."
-        >
-          <Card sectioned>
-            <FormLayout>
-              <TextField
-                label="Store name"
-                onChange={() => {}}
-                autoComplete="off"
-              />
-              <TextField
-                type="email"
-                label="Account email"
-                onChange={() => {}}
-                autoComplete="email"
-              />
-            </FormLayout>
-          </Card>
-        </Layout.AnnotatedSection>
-      </Layout>
+      <Columns columns={{xs: 1, lg: '1fr 2fr'}}>
+        <Box paddingTop="5">
+          <AlphaStack>
+            <Text variant="headingMd" as="h2">
+              Store details
+            </Text>
+            <Text variant="bodyMd" as="p" color="subdued">
+              Shopify and your customers will use this information to contact
+              you.
+            </Text>
+          </AlphaStack>
+        </Box>
+        <Card sectioned>
+          <FormLayout>
+            <TextField
+              label="Store name"
+              onChange={() => {}}
+              autoComplete="off"
+            />
+            <TextField
+              type="email"
+              label="Account email"
+              onChange={() => {}}
+              autoComplete="email"
+            />
+          </FormLayout>
+        </Card>
+      </Columns>
     </Page>
   );
 }
@@ -397,17 +398,24 @@ export function Annotated() {
 export function AnnotatedWithBannerAtTheTop() {
   return (
     <Page fullWidth>
-      <Layout>
-        <Layout.Section>
+      <AlphaStack fullWidth>
+        <Box paddingBottom="4" borderBottom="divider">
           <Banner title="Order archived" onDismiss={() => {}}>
             <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
           </Banner>
-        </Layout.Section>
-        <Layout.AnnotatedSection
-          id="storeDetails"
-          title="Store details"
-          description="Shopify and your customers will use this information to contact you."
-        >
+        </Box>
+        <Columns columns={{xs: 1, lg: '1fr 2fr'}}>
+          <Box paddingTop="5">
+            <AlphaStack>
+              <Text variant="headingMd" as="h2">
+                Store details
+              </Text>
+              <Text variant="bodyMd" as="p" color="subdued">
+                Shopify and your customers will use this information to contact
+                you.
+              </Text>
+            </AlphaStack>
+          </Box>
           <Card sectioned>
             <FormLayout>
               <TextField
@@ -423,8 +431,8 @@ export function AnnotatedWithBannerAtTheTop() {
               />
             </FormLayout>
           </Card>
-        </Layout.AnnotatedSection>
-      </Layout>
+        </Columns>
+      </AlphaStack>
     </Page>
   );
 }
