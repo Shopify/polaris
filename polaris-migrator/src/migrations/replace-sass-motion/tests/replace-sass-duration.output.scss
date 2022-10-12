@@ -19,6 +19,33 @@
   transition-duration: var(--p-duration-500);
 }
 
+.duration-simple-constant {
+  opacity: 1;
+  transition-duration: 0;
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-5000);
+}
+
 .duration-compound-string-arg {
   opacity: 1;
   transition: opacity var(--p-duration-0) linear;
@@ -38,6 +65,34 @@
   transition: opacity var(--p-duration-300) linear;
   transition: opacity var(--p-duration-400) linear;
   transition: opacity var(--p-duration-500) linear;
+}
+
+.duration-compound-constant {
+  opacity: 1;
+  transition: opacity var(--p-duration-0) linear;
+  transition: opacity var(--p-duration-0) linear;
+  transition: opacity var(--p-duration-0) linear;
+  transition: opacity var(--p-duration-50) linear;
+  transition: opacity var(--p-duration-50) linear;
+  transition: opacity var(--p-duration-100) linear;
+  transition: opacity var(--p-duration-100) linear;
+  transition: opacity var(--p-duration-150) linear;
+  transition: opacity var(--p-duration-150) linear;
+  transition: opacity var(--p-duration-200) linear;
+  transition: opacity var(--p-duration-200) linear;
+  transition: opacity var(--p-duration-250) linear;
+  transition: opacity var(--p-duration-250) linear;
+  transition: opacity var(--p-duration-300) linear;
+  transition: opacity var(--p-duration-300) linear;
+  transition: opacity var(--p-duration-350) linear;
+  transition: opacity var(--p-duration-350) linear;
+  transition: opacity var(--p-duration-400) linear;
+  transition: opacity var(--p-duration-400) linear;
+  transition: opacity var(--p-duration-450) linear;
+  transition: opacity var(--p-duration-450) linear;
+  transition: opacity var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-5000) linear;
 }
 
 .duration-multiple-string-arg {
@@ -72,4 +127,71 @@
     left var(--p-duration-400) linear;
   transition: opacity var(--p-duration-500) linear,
     left var(--p-duration-500) linear;
+}
+
+/* Don't let prettier pretty-ify this so it matches our output */
+/* prettier-ignore */
+.duration-multiple-constant {
+  opacity: 1;
+  transition: opacity var(--p-duration-0) linear,
+    left var(--p-duration-0) linear;
+  transition: opacity var(--p-duration-0) linear,
+    left var(--p-duration-0) linear;
+  transition: opacity var(--p-duration-0) linear,
+    left var(--p-duration-0) linear;
+  transition: opacity var(--p-duration-50) linear,
+    left var(--p-duration-50) linear;
+  transition: opacity var(--p-duration-50) linear,
+    left var(--p-duration-50) linear;
+  transition: opacity var(--p-duration-100) linear,
+    left var(--p-duration-100) linear;
+  transition: opacity var(--p-duration-100) linear,
+    left var(--p-duration-100) linear;
+  transition: opacity var(--p-duration-150) linear,
+    left var(--p-duration-150) linear;
+  transition: opacity var(--p-duration-150) linear,
+    left var(--p-duration-150) linear;
+  transition: opacity var(--p-duration-200) linear,
+    left var(--p-duration-200) linear;
+  transition: opacity var(--p-duration-200) linear,
+    left var(--p-duration-200) linear;
+  transition: opacity var(--p-duration-250) linear,
+    left var(--p-duration-250) linear;
+  transition: opacity var(--p-duration-250) linear,
+    left var(--p-duration-250) linear;
+  transition: opacity var(--p-duration-300) linear,
+    left var(--p-duration-300) linear;
+  transition: opacity var(--p-duration-300) linear,
+    left var(--p-duration-300) linear;
+  transition: opacity var(--p-duration-350) linear,
+    left var(--p-duration-350) linear;
+  transition: opacity var(--p-duration-350) linear,
+    left var(--p-duration-350) linear;
+  transition: opacity var(--p-duration-400) linear,
+    left var(--p-duration-400) linear;
+  transition: opacity var(--p-duration-400) linear,
+    left var(--p-duration-400) linear;
+  transition: opacity var(--p-duration-450) linear,
+    left var(--p-duration-450) linear;
+  transition: opacity var(--p-duration-450) linear,
+    left var(--p-duration-450) linear;
+  transition: opacity var(--p-duration-500) linear,
+    left var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-500) linear,
+    left var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-5000) linear,
+    left var(--p-duration-5000) linear;
+}
+
+.edges {
+  /* sass calculation */
+  /* polaris-migrator: Unable to automatically migrate this SASS calculation. */
+  transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
+  /* Using duration as the transition-delay shorthand */
+  transition: opacity linear var(--p-duration-500);
+  /* Don't let prettier pretty-ify this so it matches our output */
+  /* prettier-ignore */
+  transition: opacity var(--p-duration-400) linear var(--p-duration-100);
+  /* A shorthand that doesn't specify a duration, only transition-delay. Is this a bug? ¯\_(ツ)_/¯ Dunno. But it exists in the wild, so we have to handle it. */
+  transition: opacity linear var(--p-duration-400);
 }
