@@ -1,3 +1,10 @@
-.my-class {
-  color: hello();
+.border {
+  /* === Migrate === */
+  border: border();
+  border: border(base);
+  border: border(dark);
+  border: border(transparent);
+  border: border(divider);
+  /* === Ignore === */
+  /* === Comment === */
 }
