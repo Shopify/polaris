@@ -14,7 +14,7 @@ import {
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-export default function replaceSassLengths(
+export default function replaceSassSpace(
   fileInfo: FileInfo,
   _: API,
   options: Options,
@@ -32,7 +32,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedRem = namespace('rem', options);
 
   return {
-    postcssPlugin: 'replace-sass-lengths',
+    postcssPlugin: 'replace-sass-space',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
