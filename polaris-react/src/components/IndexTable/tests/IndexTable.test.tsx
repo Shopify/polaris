@@ -102,14 +102,16 @@ describe('<IndexTable>', () => {
     expect(index).toContainReactComponentTimes(Component, 2);
   });
 
-  it('renders a spinner if loading is passed', () => {
+  it('passes a class if loading is passed', () => {
     const index = mountWithApp(
       <IndexTable {...defaultProps} loading itemCount={mockTableItems.length}>
         {mockTableItems.map(mockRenderRow)}
       </IndexTable>,
     );
 
-    expect(index).toContainReactComponent(Spinner);
+    expect(index).toContainReactComponent('table', {
+      className: expect.stringContaining('Table-loading'),
+    });
   });
 
   it('toggles page selection when select all checkbox is changed', () => {

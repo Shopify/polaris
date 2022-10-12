@@ -4,8 +4,7 @@ import {
   SortAscendingMajor,
   SortDescendingMajor,
 } from '@shopify/polaris-icons';
-import {CSSTransition} from 'react-transition-group';
-import {tokens, toPx, motion} from '@shopify/polaris-tokens';
+import {tokens, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -17,7 +16,6 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {EventListener} from '../EventListener';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
-import {Spinner} from '../Spinner';
 import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
 import {Tooltip} from '../Tooltip';
@@ -505,37 +503,6 @@ function IndexTableBase({
 
   const paginatedSelectAllAction = getPaginatedSelectAllAction();
 
-  const loadingTransitionClassNames = {
-    enter: styles['LoadingContainer-enter'],
-    enterActive: styles['LoadingContainer-enter-active'],
-    exit: styles['LoadingContainer-exit'],
-    exitActive: styles['LoadingContainer-exit-active'],
-  };
-
-  const loadingMarkup = (
-    <CSSTransition
-      in={loading}
-      classNames={loadingTransitionClassNames}
-      timeout={parseInt(motion['duration-100'], 10)}
-      appear
-      unmountOnExit
-    >
-      <div className={styles.LoadingPanel}>
-        <div className={styles.LoadingPanelRow}>
-          <Spinner size="small" />
-          <span className={styles.LoadingPanelText}>
-            {i18n.translate(
-              'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
-              {
-                resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-              },
-            )}
-          </span>
-        </div>
-      </div>
-    </CSSTransition>
-  );
-
   const stickyTableClassNames = classNames(
     styles.StickyTable,
     condensed && styles['StickyTable-condensed'],
@@ -565,7 +532,6 @@ function IndexTableBase({
 
           const bulkActionsMarkup = shouldShowBulkActions ? (
             <div className={bulkActionClassNames} data-condensed={condensed}>
-              {loadingMarkup}
               <BulkActions
                 smallScreen={smallScreen}
                 label={i18n.translate('Polaris.IndexTable.selected', {
@@ -607,7 +573,6 @@ function IndexTableBase({
                 !selectable && styles.unselectable,
               )}
             >
-              {loadingMarkup}
               {sort}
               {selectable && selectButtonMarkup}
             </div>
@@ -616,7 +581,6 @@ function IndexTableBase({
               className={stickyHeaderClassNames}
               ref={stickyHeaderWrapperElement}
             >
-              {loadingMarkup}
               <div className={stickyColumnHeaderClassNames}>
                 {stickyColumnHeader}
               </div>
@@ -671,6 +635,7 @@ function IndexTableBase({
 
   const tableClassNames = classNames(
     styles.Table,
+    loading && styles['Table-loading'],
     hasMoreLeftColumns && styles['Table-scrolling'],
     selectMode && styles.disableTextSelection,
     selectMode && shouldShowBulkActions && styles.selectMode,
@@ -739,10 +704,7 @@ function IndexTableBase({
 
   return (
     <>
-      <div className={styles.IndexTable}>
-        {!shouldShowBulkActions && !condensed && loadingMarkup}
-        {tableContentMarkup}
-      </div>
+      <div className={styles.IndexTable}>{tableContentMarkup}</div>
       {scrollBarMarkup}
     </>
   );
