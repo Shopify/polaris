@@ -2,4 +2,5 @@
 '@shopify/polaris-migrator': minor
 ---
 
-Add `gap` and `border` properties to `replace-sass-lengths` migration
+Rename `replace-sass-length` migration to `replace-sass-space`
+Add `gap` properties to `replace-sass-space` migration
