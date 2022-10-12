@@ -68,6 +68,7 @@ $button-vertical-padding: calc(
     box-shadow: none;
     background: transparent;
     border: none;
+    padding-right: var(--p-space-1);
 
     &:hover {
       background: transparent;
