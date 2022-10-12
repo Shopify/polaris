@@ -202,7 +202,7 @@ const borderWidthLengthMap = {
   '3px': '--p-border-3',
   '4px': '--p-border-4',
   '5px': '--p-border-5',
-};
+} as const;
 
 const borderFunctionMap = {
   base: '--p-border-base',
@@ -215,7 +215,7 @@ const borderWidthFunctionMap = {
   base: '--p-border-1',
   thick: '--p-border-2',
   thicker: '--p-border-3',
-};
+} as const;
 
 /**
  * Exit early and stop traversing descendant nodes:
