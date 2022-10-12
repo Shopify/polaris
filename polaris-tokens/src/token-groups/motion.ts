@@ -71,18 +71,26 @@ export const motion = {
 export type MotionTokenGroup = TokenGroup<typeof motion>;
 export type MotionTokenName = keyof MotionTokenGroup;
 
-// e.g. "0" | "50" | "100" | "150" | ...
-export type MotionDurationScale = Extract<
-  MotionTokenName,
-  `duration-${number}`
-> extends `duration-${infer Scale}`
-  ? Scale
-  : never;
+export const motionDurationScale = [
+  '0',
+  '50',
+  '100',
+  '150',
+  '200',
+  '250',
+  '300',
+  '350',
+  '400',
+  '450',
+  '500',
+  '5000',
+] as const;
+export type MotionDurationScale = typeof motionDurationScale[number];
 
-// e.g. "bounce" | "fade-in" | "pulse" | "spin"
-export type MotionKeyframesAlias = Extract<
-  MotionTokenName,
-  `keyframes-${string}`
-> extends `keyframes-${infer Alias}`
-  ? Alias
-  : never;
+export const motionKeyframesAlias = [
+  'bounce',
+  'fade-in',
+  'pulse',
+  'spin',
+] as const;
+export type MotionKeyframesAlias = typeof motionKeyframesAlias[number];

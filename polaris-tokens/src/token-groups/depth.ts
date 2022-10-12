@@ -45,10 +45,16 @@ export const depth = {
 export type DepthTokenGroup = TokenGroup<typeof depth>;
 export type DepthTokenName = keyof DepthTokenGroup;
 
-// temporary until shadows prefix is removed
-type ShadowsTokenName = Exclude<DepthTokenName, `shadows-${string}`>;
-
-// e.g. "transparent" | "faint" | "base" | "deep" | ...
-export type DepthShadowAlias = ShadowsTokenName extends `shadow-${infer Scale}`
-  ? Scale
-  : never;
+export const depthShadowAlias = [
+  'base',
+  'transparent',
+  'faint',
+  'deep',
+  'button',
+  'top-bar',
+  'card',
+  'popover',
+  'layer',
+  'modal',
+] as const;
+export type DepthShadowAlias = typeof depthShadowAlias[number];
