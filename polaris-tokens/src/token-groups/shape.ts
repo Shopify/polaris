@@ -66,23 +66,8 @@ export const shape = {
 export type ShapeTokenGroup = TokenGroup<typeof shape>;
 export type ShapeTokenName = keyof ShapeTokenGroup;
 
-type ShapeBorderRadiusTokenName = Extract<
-  ShapeTokenName,
-  `border-radius-${string}`
->;
+export const borderRadiusScale = ['05', '1', '2', '3', '4', '5', '6'] as const;
+export type ShapeBorderRadiusScale = typeof borderRadiusScale[number];
 
-// e.g. "05" | "1" | "2" | "3" | "4" | "5" | "6"
-export type ShapeBorderRadiusScale = Extract<
-  ShapeBorderRadiusTokenName,
-  `border-radius-${number}`
-> extends `border-radius-${infer Scale}`
-  ? Scale
-  : never;
-
-// e.g. "base" | "large" | "half"
-export type ShapeBorderRadiusAlias = Exclude<
-  ShapeBorderRadiusTokenName,
-  `border-radius-${number}`
-> extends `border-radius-${infer Alias}`
-  ? Alias
-  : never;
+export const borderRadiusAlias = ['base', 'large', 'half'] as const;
+export type ShapeBorderRadiusAlias = typeof borderRadiusAlias[number];
