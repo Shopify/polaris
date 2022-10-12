@@ -7,6 +7,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import isEqual from 'react-fast-compare';
 
 import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
@@ -113,8 +114,19 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         showable === currentMeasuredActions.showable &&
         rolledUp === currentMeasuredActions.rolledUp
       ) {
-        // Bail out of setState if the values are the same
-        console.log('updateActions => bail out of setState');
+        console.log(
+          'updateActions => simple compare, bail out of setState, should not re-render',
+        );
+        return currentMeasuredActions;
+      }
+
+      if (
+        isEqual(showable, currentMeasuredActions.showable) &&
+        isEqual(rolledUp, currentMeasuredActions.rolledUp)
+      ) {
+        console.log(
+          'updateActions => react fast compare, bail out of setState, should not re-render',
+        );
         return currentMeasuredActions;
       }
 
@@ -183,6 +195,14 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       if (
         currentMeasuredActions.showable === newShowableActions &&
         currentMeasuredActions.rolledUp === newRolledUpActions
+      ) {
+        console.log('measureActions bail out of setState');
+        return currentMeasuredActions;
+      }
+
+      if (
+        isEqual(currentMeasuredActions.showable, newShowableActions) &&
+        isEqual(currentMeasuredActions.rolledUp, newRolledUpActions)
       ) {
         console.log('measureActions bail out of setState');
         return currentMeasuredActions;
