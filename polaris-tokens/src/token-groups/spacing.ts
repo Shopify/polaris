@@ -57,10 +57,23 @@ export const spacing = {
 export type SpacingTokenGroup = TokenGroup<typeof spacing>;
 export type SpacingTokenName = keyof SpacingTokenGroup;
 
-// e.g. "0" | "025" | "05" | "1" | "2" | "3" | ...
-export type SpacingSpaceScale = Extract<
-  SpacingTokenName,
-  `space-${number}`
-> extends `space-${infer Scale}`
-  ? Scale
-  : never;
+export const spaceScale = [
+  '0',
+  '025',
+  '05',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '8',
+  '10',
+  '12',
+  '16',
+  '20',
+  '24',
+  '28',
+  '32',
+] as const;
+export type SpacingSpaceScale = typeof spaceScale[number];
