@@ -7,8 +7,10 @@ import {
   getFunctionArgs,
   isNumericOperator,
   isSassFunction,
+  isTransformableLength,
   namespace,
   NamespaceOptions,
+  toTransformablePx,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -27,10 +29,12 @@ const processed = Symbol('processed');
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespacedRem = namespace('rem', options);
   const namespacedBorder = namespace('border', options);
+  const namespacedBorderWidth = namespace('border-width', options);
 
   return {
-    postcssPlugin: 'replace-sass-lengths',
+    postcssPlugin: 'replace-sass-border',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
@@ -75,48 +79,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               hasNumericOperator = true;
               return;
             }
-          }
-
-          if (node.type === 'function') {
-            if (isSassFunction(namespacedBorder, node)) {
-              targets.push({replaced: false});
-
-              const args = getFunctionArgs(node);
-
-              if (!(args.length === 0 || args.length === 1)) return;
-
-              // `border()` args reference:
-              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L641
-              const value = args[0] ?? 'base';
-
-              if (!isKeyOf(borderMap, value)) return;
-
-              targets.at(-1)!.replaced = true;
-
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: borderMap[value],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderMap[value].length,
-                },
-              ];
-            }
-
-            return StopWalkingFunctionNodes;
-          }
-        });
-      }
-
-      function handleBorderWidth() {
-        parsedValue.walk((node) => {
-          if (node.type === 'word') {
-            if (globalValues.has(node.value)) return;
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
 
             const dimension = valueParser.unit(node.value);
 
@@ -126,11 +88,11 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             const valueInPx = toTransformablePx(node.value);
 
-            if (!isKeyOf(borderWidthMap, valueInPx)) return;
+            if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
 
             targets.at(-1)!.replaced = true;
 
-            node.value = `var(${borderWidthMap[valueInPx]})`;
+            node.value = `var(${borderWidthLengthMap[valueInPx]})`;
             return;
           }
 
@@ -144,7 +106,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (!isKeyOf(borderWidthMap, valueInPx)) return;
+              if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
 
               targets.at(-1)!.replaced = true;
 
@@ -152,9 +114,61 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               node.nodes = [
                 {
                   type: 'word',
-                  value: borderWidthMap[valueInPx],
+                  value: borderWidthLengthMap[valueInPx],
                   sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderWidthMap[valueInPx].length,
+                  sourceEndIndex: borderWidthLengthMap[valueInPx].length,
+                },
+              ];
+            }
+
+            if (isSassFunction(namespacedBorder, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (!(args.length === 0 || args.length === 1)) return;
+
+              // `border()` args reference:
+              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L641
+              const value = args[0] ?? 'base';
+
+              if (!isKeyOf(borderFunctionMap, value)) return;
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderFunctionMap[value],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderFunctionMap[value].length,
+                },
+              ];
+            }
+
+            if (isSassFunction(namespacedBorderWidth, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (!(args.length === 0 || args.length === 1)) return;
+
+              // `border-width()` args reference:
+              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L616
+              const value = args[0] ?? 'base';
+
+              if (!isKeyOf(borderWidthFunctionMap, value)) return;
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderWidthFunctionMap[value],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderWidthFunctionMap[value].length,
                 },
               ];
             }
@@ -169,23 +183,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
 const globalValues = new Set(['inherit', 'initial', 'unset']);
 
-const borderTokenMap = {
-  '1px': '--p-border-1',
-  '2px': '--p-border-2',
-  '3px': '--p-border-3',
-  '4px': '--p-border-4',
-  '5px': '--p-border-5',
-};
-
 const borderProps = [
   'border',
   'border-top',
   'border-right',
   'border-bottom',
   'border-left',
-];
-
-const borderWidthProps = [
   'border-width',
   'border-width-top',
   'border-width-right',
@@ -193,19 +196,22 @@ const borderWidthProps = [
   'border-width-left',
 ];
 
-const borderMap = {
+const borderWidthLengthMap = {
+  '1px': '--p-border-1',
+  '2px': '--p-border-2',
+  '3px': '--p-border-3',
+  '4px': '--p-border-4',
+  '5px': '--p-border-5',
+};
+
+const borderFunctionMap = {
   base: '--p-border-base',
   dark: '--p-border-dark',
   transparent: '--p-border-transparent',
   divider: '	--p-border-divider',
 } as const;
 
-const borderWidthMap = {
-  '1px': '--p-border-1',
-  '2px': '--p-border-2',
-  '3px': '--p-border-3',
-  '4px': '--p-border-4',
-  '5px': '--p-border-5',
+const borderWidthFunctionMap = {
   base: '--p-border-1',
   thick: '--p-border-2',
   thicker: '--p-border-3',
