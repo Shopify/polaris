@@ -1,81 +1,66 @@
 /* stylelint-disable shorthand-property-no-redundant-values */
 @use 'global-styles/legacy-polaris-v8';
 
-.my-class {
-  color: lightsteelblue;
+.space {
+  /*
+  *
+  * LENGTHS
+  *
+  */
+  /* === Migrate === */
+  padding: var(--p-space-4);
+  padding: var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: 0 var(--p-space-4);
+  padding: var(--p-space-4) 0;
+  padding: var(--p-space-4) 4in;
+  padding: var(--p-space-4) 1em;
+  padding: (16px + 16px) var(--p-space-4);
 
-  // Unitless
+  /* === Ignore === */
   padding: 0;
   padding: 1;
   padding: 2;
-  gap: 0;
-
-  // Single shorthand pixels
+  padding: #{16px + 16px};
+  padding: layout-width(nav);
+  padding: 10em;
+  padding: var(--var);
   padding: var(--p-space-4);
+  padding: var(--p-space-4, 16px);
+
+  /* === Comment === */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: 10px; */
   padding: 10px;
-  gap: var(--p-space-4);
-  gap: 10px;
-
-  // Single shorthand rems
-  padding: var(--p-space-4);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: 10rem; */
   padding: 10rem;
-  gap: var(--p-space-4);
-  gap: 10rem;
-
-  // Double shorthand pixels
-  padding: var(--p-space-4) var(--p-space-4);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: 10px 10px; */
   padding: 10px 10px;
-  padding: var(--p-space-4) 10px;
-  gap: var(--p-space-4) var(--p-space-4);
-  gap: 10px 10px;
-  gap: var(--p-space-4) 10px;
-
-  // Double shorthand rems
-  padding: var(--p-space-4) var(--p-space-4);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) 10px; */
+  padding: 16px 10px;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: 10rem 10rem; */
   padding: 10rem 10rem;
-  padding: var(--p-space-4) 10rem;
-  gap: var(--p-space-4) var(--p-space-4);
-  gap: 10rem 10rem;
-  gap: var(--p-space-4) 10rem;
-
-  // Double shorthand mixed (px, rem, unitless)
-  padding: var(--p-space-4) var(--p-space-4);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) 10rem; */
+  padding: 1rem 10rem;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: 10px 10rem; */
   padding: 10px 10rem;
-  padding: var(--p-space-4) 10rem;
-  padding: 10px var(--p-space-4);
-  padding: 0 var(--p-space-4);
-  padding: var(--p-space-4) 0;
-  gap: var(--p-space-4) var(--p-space-4);
-  gap: 10px 10rem;
-  gap: var(--p-space-4) 10rem;
-  gap: 10px var(--p-space-4);
-  gap: 0 var(--p-space-4);
-  gap: var(--p-space-4) 0;
-
-  // Double shorthand mixed edge cases
-  padding: var(--p-space-4) 4in;
-  padding: var(--p-space-4) 1em;
-  padding: var(--p-space-4) -16px;
-  gap: var(--p-space-4) 4in;
-  gap: var(--p-space-4) 1em;
-  gap: var(--p-space-4) -16px;
-
-  // Single shorthand rem function (rem(Xpx))
-  padding: legacy-polaris-v8.rem(10px);
-  padding: var(--p-space-4);
-  gap: legacy-polaris-v8.rem(10px);
-  gap: var(--p-space-4);
-
-  // Mixed shorthand rem function
-  padding: legacy-polaris-v8.rem(16px) var(--p-space-4);
-  padding: legacy-polaris-v8.rem(16px) 4in;
-  padding: legacy-polaris-v8.rem(16px) 1em;
-  padding: legacy-polaris-v8.rem(16px) -16px;
-  gap: legacy-polaris-v8.rem(16px) 4in;
-  gap: legacy-polaris-v8.rem(16px) 1em;
-  gap: legacy-polaris-v8.rem(16px) -16px;
-
-  // Unsupported transforms with comments
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) 10rem; */
+  padding: 16px 10rem;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: 10px var(--p-space-4); */
+  padding: 10px 1rem;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) -16px; */
+  padding: 16px -16px;
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: var(--p-space-4) + var(--p-space-4); */
   padding: 16px + 16px;
@@ -83,76 +68,58 @@
   /* padding: var(--p-space-4) + var(--p-space-4) var(--p-space-4); */
   padding: 16px + 16px 16px;
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* padding: (16px + 16px) var(--p-space-4); */
-  padding: (16px + 16px) 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: $var + var(--p-space-4); */
   padding: $var + 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* padding: legacy-polaris-v8.rem(16px) + var(--p-space-4); */
-  padding: legacy-polaris-v8.rem(16px) + 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* padding: legacy-polaris-v8.rem($var * 16px); */
-  padding: legacy-polaris-v8.rem($var * 16px);
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* padding: calc(16px + 16px); */
   padding: calc(16px + 16px);
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* padding: var(--p-space-4) + #{16px + 16px}; */
   padding: 16px + #{16px + 16px};
+  // Skip negative lengths. Need to discuss replacement strategy e.g.
+  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: var(--p-space-4) + var(--p-space-4); */
-  gap: 16px + 16px;
+  /* padding: -16px; */
+  padding: -16px;
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: var(--p-space-4) + var(--p-space-4) var(--p-space-4); */
-  gap: 16px + 16px 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: (16px + 16px) var(--p-space-4); */
-  gap: (16px + 16px) 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: $var + var(--p-space-4); */
-  gap: $var + 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: legacy-polaris-v8.rem(16px) + var(--p-space-4); */
-  gap: legacy-polaris-v8.rem(16px) + 16px;
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: legacy-polaris-v8.rem($var * 16px); */
-  gap: legacy-polaris-v8.rem($var * 16px);
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: calc(16px + 16px); */
-  gap: calc(16px + 16px);
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* gap: var(--p-space-4) + #{16px + 16px}; */
-  gap: 16px + #{16px + 16px};
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)})); */
+  /* padding: -10px; */
+  padding: -10px;
+
+  /*
+  *
+  * REM FUNCTION
+  *
+  */
+  /* === Migrate === */
+  padding: var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: var(--p-space-4) var(--p-space-4);
+  padding: var(--p-space-4) 4in;
+  padding: var(--p-space-4) 1em;
+
+  /* === Ignore === */
   padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)}));
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)})); */
   padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)}));
 
-  // Unsupported transforms without comments
-  padding: var(--p-space-4);
-  padding: #{16px + 16px};
-  padding: layout-width(nav);
-  padding: 10em;
-  padding: var(--var);
-  padding: var(--p-space-4);
-  padding: var(--p-space-4, 16px);
-  // Skip negative lengths. Need to discuss replacement strategy e.g.
-  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
-  padding: -16px;
-  padding: -10px;
-  gap: var(--p-space-4);
-  gap: #{16px + 16px};
-  gap: layout-width(nav);
-  gap: 10em;
-  gap: var(--var);
-  gap: var(--p-space-4);
-  gap: var(--p-space-4, 16px);
-  // Skip negative lengths. Need to discuss replacement strategy e.g.
-  // calc(-1 * var(--p-space-*)) vs var(--p-space--*)
-  gap: -16px;
-  gap: -10px;
-  gap: rem(2em) legacy-polaris-v8.rem(-16px);
+  /* === Comment === */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: legacy-polaris-v8.rem(10px); */
+  padding: legacy-polaris-v8.rem(10px);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(10px); */
+  padding: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(10px);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) legacy-polaris-v8.rem(10px); */
+  padding: legacy-polaris-v8.rem(16px) legacy-polaris-v8.rem(10px);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) -16px; */
+  padding: legacy-polaris-v8.rem(16px) -16px;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: var(--p-space-4) + var(--p-space-4); */
+  padding: legacy-polaris-v8.rem(16px) + 16px;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* padding: legacy-polaris-v8.rem($var * var(--p-space-4)); */
+  padding: legacy-polaris-v8.rem($var * 16px);
+}
+
+.border-width {
+  // Border width tests
 }

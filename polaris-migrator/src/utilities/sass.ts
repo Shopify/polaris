@@ -89,13 +89,35 @@ export function hasSassFunction(
   return containsSassFunction;
 }
 
+export function getFunctionArgs(node: FunctionNode): string[] {
+  const args: string[] = [];
+
+  let arg = '';
+
+  node.nodes.forEach((node) => {
+    if (node.type === 'div' && node.value === ',') {
+      args.push(arg);
+      arg = '';
+      return;
+    }
+
+    arg += valueParser.stringify(node);
+  });
+
+  if (arg) {
+    args.push(arg);
+  }
+
+  return args;
+}
+
 /**
  * All transformable dimension units. These values are used to determine
  * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
  */
 export const transformableLengthUnits = ['px', 'rem'];
 
-function isUnitlessZero(dimension: false | Dimension) {
+export function isUnitlessZero(dimension: false | Dimension) {
   return dimension && dimension.unit === '' && dimension.number === '0';
 }
 
@@ -103,9 +125,6 @@ export function isTransformableLength(
   dimension: false | Dimension,
 ): dimension is Dimension {
   if (!dimension) return false;
-
-  // Zero is the only unitless dimension our length transforms support
-  if (isUnitlessZero(dimension)) return true;
 
   return transformableLengthUnits.includes(dimension.unit);
 }
