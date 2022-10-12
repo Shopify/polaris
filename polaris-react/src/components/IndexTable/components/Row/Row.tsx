@@ -12,6 +12,7 @@ import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
 
 type RowStatus = 'success' | 'subdued';
+type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
   children: React.ReactNode;
@@ -71,17 +72,15 @@ export const Row = memo(function Row({
 
   const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);
   const isNavigating = useRef<boolean>(false);
-  const tableRowRef = useRef<(HTMLTableRowElement & HTMLLIElement) | null>(
-    null,
-  );
+  const tableRowRef = useRef<TableRowElementType | null>(null);
 
-  const tableRowCallbackRef = useCallback((node) => {
+  const tableRowCallbackRef = useCallback((node: TableRowElementType) => {
     tableRowRef.current = node;
 
     const el = node?.querySelector('[data-primary-link]');
 
     if (el) {
-      primaryLinkElement.current = el;
+      primaryLinkElement.current = el as HTMLAnchorElement;
     }
   }, []);
 

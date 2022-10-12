@@ -1,17 +1,14 @@
 import React from 'react';
-import {clock} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {KonamiCode, KONAMI_CODE} from '../KonamiCode';
 
 describe('<KonamiCode />', () => {
   beforeEach(() => {
-    clock.mock();
     jest.spyOn(console, 'error').mockImplementation();
   });
 
   afterEach(() => {
-    clock.restore();
     // eslint-disable-next-line no-console
     (console.error as jest.Mock).mockRestore();
   });
@@ -48,7 +45,6 @@ describe('<KonamiCode />', () => {
 function simulateKeySequence(keys: number[]) {
   for (const keyCode of keys) {
     dispatchKeydown(keyCode);
-    clock.tick(0);
   }
 }
 

@@ -89,6 +89,8 @@ export interface BoxProps {
   children: ReactNode;
   /** Color of children */
   color?: ColorTokenScale;
+  /** HTML id attribute */
+  id?: string;
   /** Spacing outside of container */
   maxWidth?: string;
   /** Spacing around children */
@@ -122,6 +124,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusTopRight,
       children,
       color,
+      id,
       maxWidth,
       padding,
       paddingBottom,
@@ -218,6 +221,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as,
       {
         className,
+        id,
         ref,
         style: sanitizeCustomProperties(style),
       },

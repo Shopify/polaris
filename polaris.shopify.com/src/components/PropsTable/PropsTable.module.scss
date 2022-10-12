@@ -34,12 +34,25 @@
   }
 
   .TypeTableHeader {
+    display: flex;
+    align-items: center;
     width: 100%;
     text-align: left;
     color: var(--code-keyword);
     font-family: var(--font-family-mono);
     padding: 0.66em 1em;
     background: rgba(0, 0, 0, 0.02);
+
+    button {
+      margin-left: auto;
+      background: transparent;
+      color: var(--text-subdued);
+
+      &:hover {
+        color: var(--text-strong);
+      }
+    }
+
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
@@ -66,7 +79,6 @@
 
   .Key {
     display: flex;
-    flex-direction: column;
     gap: 0.6rem;
 
     @media screen and (max-width: $breakpointMobile) {

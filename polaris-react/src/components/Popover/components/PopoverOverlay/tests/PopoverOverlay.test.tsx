@@ -8,29 +8,10 @@ import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
 import {Popover} from '../../../Popover';
 
-interface HandlerMap {
-  [eventName: string]: (event: any) => void;
-}
-
-const listenerMap: HandlerMap = {};
-
 describe('<PopoverOverlay />', () => {
-  let addEventListener: jest.SpyInstance;
-  let removeEventListener: jest.SpyInstance;
-
   let rafSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    addEventListener = jest.spyOn(document, 'addEventListener');
-    addEventListener.mockImplementation((event, callback) => {
-      listenerMap[event] = callback;
-    });
-
-    removeEventListener = jest.spyOn(document, 'removeEventListener');
-    removeEventListener.mockImplementation((event) => {
-      listenerMap[event] = noop;
-    });
-
     rafSpy = jest.spyOn(window, 'requestAnimationFrame');
     rafSpy.mockImplementation((callback) => callback());
   });
@@ -39,9 +20,6 @@ describe('<PopoverOverlay />', () => {
     if (document.activeElement) {
       (document.activeElement as HTMLElement).blur();
     }
-
-    addEventListener.mockRestore();
-    removeEventListener.mockRestore();
 
     rafSpy.mockRestore();
   });
@@ -204,24 +182,6 @@ describe('<PopoverOverlay />', () => {
     });
   });
 
-  it('calls the onClose callback when the escape key is pressed', () => {
-    const spy = jest.fn();
-
-    mountWithApp(
-      <PopoverOverlay
-        active
-        id="PopoverOverlay-1"
-        activator={activator}
-        onClose={spy}
-      >
-        {children}
-      </PopoverOverlay>,
-    );
-
-    listenerMap.keyup({keyCode: Key.Escape});
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-
   it('does not call the onClose callback when a descendent HTMLElement is clicked', () => {
     const spy = jest.fn();
 
@@ -314,6 +274,77 @@ describe('<PopoverOverlay />', () => {
     popover2Button.dispatchEvent(clickEvent);
 
     expect(spy).not.toHaveBeenCalled();
+  });
+
+  describe('when the Escape key is pressed', () => {
+    it('calls the onClose callback if event target is descendant', () => {
+      const spy = jest.fn();
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          <TextField
+            label="Store name"
+            value="Click me"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+        </PopoverOverlay>,
+      );
+
+      const target = popoverOverlay.find(TextField)!.find('input')!.domNode!;
+      triggerEscape(target);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls the onClose callback if event target is activator descendant', () => {
+      const spy = jest.fn();
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          <TextField
+            label="Store name"
+            value="Click me"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+        </PopoverOverlay>,
+      );
+
+      const target = popoverOverlay.find(TextField)!.find('input')!.domNode!;
+      triggerEscape(target);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not call the onClose callback if event target is not descendant or activator descendant', () => {
+      const spy = jest.fn();
+
+      mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      triggerEscape();
+
+      expect(spy).toHaveBeenCalledTimes(0);
+    });
   });
 
   describe('deleting descendant elements', () => {
@@ -567,3 +598,12 @@ describe('<PopoverOverlay />', () => {
 });
 
 function noop() {}
+
+function triggerEscape(target?: Element) {
+  const keyupEvent = new KeyboardEvent('keyup', {
+    keyCode: Key.Escape,
+    bubbles: true,
+  });
+
+  (target || document).dispatchEvent(keyupEvent);
+}

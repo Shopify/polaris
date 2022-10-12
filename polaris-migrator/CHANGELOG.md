@@ -1,5 +1,34 @@
 # @shopify/polaris-migrator
 
+## 0.4.1
+
+### Patch Changes
+
+- [#7371](https://github.com/Shopify/polaris/pull/7371) [`57e5f95c1`](https://github.com/Shopify/polaris/commit/57e5f95c1e402fda3202babfdce25b131b0b9165) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Make Polaris migrator comment generic
+
+## 0.4.0
+
+### Minor Changes
+
+- [#7216](https://github.com/Shopify/polaris/pull/7216) [`fbf2f8832`](https://github.com/Shopify/polaris/commit/fbf2f88320ad6c5767c37d18d76bfa82babf71cb) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add migration to replace static mixins with declarations
+
+### Patch Changes
+
+- [#7328](https://github.com/Shopify/polaris/pull/7328) [`b31f51f25`](https://github.com/Shopify/polaris/commit/b31f51f259fefd8b119c5242e2ab1528c3a6cff8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add namespace support to the `replace-static-breakpoint-mixins` migration
+
+## 0.3.0
+
+### Minor Changes
+
+- [#7264](https://github.com/Shopify/polaris/pull/7264) [`5a1f45f7a`](https://github.com/Shopify/polaris/commit/5a1f45f7a29cf6994394d7fab6f007f850d956ad) Thanks [@lgriffee](https://github.com/lgriffee)! - Add sass padding and margin migration
+
+### Patch Changes
+
+- [#7315](https://github.com/Shopify/polaris/pull/7315) [`c958899c7`](https://github.com/Shopify/polaris/commit/c958899c73829bf1c1fa512946ffa3db7f06a2d0) Thanks [@lgriffee](https://github.com/lgriffee)! - Remove `0` and `0px` length values from `replace-sass-lengths` migration
+
+- Updated dependencies [[`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2)]:
+  - @shopify/polaris-tokens@6.2.0
+
 ## 0.2.1
 
 ### Patch Changes

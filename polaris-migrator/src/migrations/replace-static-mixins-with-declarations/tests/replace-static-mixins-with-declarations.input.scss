@@ -1,0 +1,15 @@
+.normal {
+  @include text-emphasis-normal;
+}
+
+.strong {
+  @include text-emphasis-strong;
+}
+
+.subdued {
+  @include text-emphasis-subdued;
+}
+
+.subdued-with-args {
+  @include text-emphasis-subdued(green);
+}

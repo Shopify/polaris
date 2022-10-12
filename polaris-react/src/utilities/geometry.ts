@@ -35,7 +35,9 @@ export class Rect {
   }
 }
 
-export function getRectForNode(node: Element | React.ReactNode | Window): Rect {
+export function getRectForNode(
+  node: Element | React.ReactNode | Window | Document,
+): Rect {
   if (!(node instanceof Element)) {
     return new Rect({
       width: window.innerWidth,

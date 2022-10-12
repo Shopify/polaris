@@ -1,6 +1,6 @@
 ---
 title: Box
-description: Box is the most primitive layout component. Box has a set of padding options. Use it to render an individual item. Box can be used in components such as Toast, ContextualSaveBar, and Banner.
+description: Box is the most primitive layout component. Box has a set of padding options. Use it to render an individual item.
 category: Structure
 keywords:
   - layout
