@@ -40,8 +40,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       let handler;
 
       if (spaceProps.includes(decl.prop)) handler = handleSpace;
-      else if (borderWidthProps.includes(decl.prop))
-        handler = handleBorderWidth;
       else return;
 
       /**
@@ -125,8 +123,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           }
         });
       }
-
-      function handleBorderWidth() {}
     },
   };
 };
@@ -164,19 +160,6 @@ const spaceProps = [
   'grid-column-gap',
 ];
 
-const borderWidthProps = [
-  'border',
-  'border-top',
-  'border-right',
-  'border-bottom',
-  'border-left',
-  'border-width',
-  'border-width-top',
-  'border-width-right',
-  'border-width-bottom',
-  'border-width-left',
-];
-
 const spaceMap = {
   '1px': '--p-space-025',
   '2px': '--p-space-05',
@@ -195,14 +178,6 @@ const spaceMap = {
   '112px': '--p-space-28',
   '128px': '--p-space-32',
 } as const;
-
-// const borderWidthMap = {
-//   '1px': '--p-border-1',
-//   '2px': '--p-border-2',
-//   '3px': '--p-border-3',
-//   '4px': '--p-border-4',
-//   '5px': '--p-border-5',
-// };
 
 /**
  * Exit early and stop traversing descendant nodes:
