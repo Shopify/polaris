@@ -3,12 +3,12 @@ import React from 'react';
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
-import {Card} from '../Card';
-import {Stack} from '../Stack';
-import {Text} from '../Text';
 import {SettingAction} from '../SettingAction';
-
-import styles from './AccountConnection.scss';
+import {AlphaCard} from '../AlphaCard';
+import {Box} from '../Box';
+import {Inline} from '../Inline';
+import {Text} from '../Text';
+import {AlphaStack} from '../AlphaStack';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
@@ -54,21 +54,19 @@ export function AccountConnection({
 
   let titleMarkup: React.ReactNode = null;
   if (title) {
-    titleMarkup = <div>{title}</div>;
+    titleMarkup = <>{title}</>;
   } else if (accountName) {
-    titleMarkup = <div>{accountName}</div>;
+    titleMarkup = <>{accountName}</>;
   }
 
   const detailsMarkup = details ? (
-    <div>
-      <Text variant="bodyMd" color="subdued" as="span">
-        {details}
-      </Text>
-    </div>
+    <Text as="span" variant="bodyMd" color="subdued">
+      {details}
+    </Text>
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <div className={styles.TermsOfService}>{termsOfService}</div>
+    <Box paddingTop="5">{termsOfService}</Box>
   ) : null;
 
   const actionElement = action
@@ -76,19 +74,17 @@ export function AccountConnection({
     : null;
 
   return (
-    <Card sectioned>
+    <AlphaCard>
       <SettingAction action={actionElement}>
-        <Stack>
+        <Inline spacing="4">
           {avatarMarkup}
-          <Stack.Item fill>
-            <div className={styles.Content}>
-              {titleMarkup}
-              {detailsMarkup}
-            </div>
-          </Stack.Item>
-        </Stack>
+          <AlphaStack spacing="2">
+            {titleMarkup}
+            {detailsMarkup}
+          </AlphaStack>
+        </Inline>
       </SettingAction>
       {termsOfServiceMarkup}
-    </Card>
+    </AlphaCard>
   );
 }
