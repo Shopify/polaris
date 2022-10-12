@@ -42,10 +42,18 @@ export const zIndex = {
 export type ZIndexTokenGroup = TokenGroup<typeof zIndex>;
 export type ZIndexTokenName = keyof ZIndexTokenGroup;
 
-// e.g. "1" | "2" | "3" | "4" | "5" | "6" | ...
-export type ZIndexZScale = Extract<
-  ZIndexTokenName,
-  `z-${number}`
-> extends `z-${infer Scale}`
-  ? Scale
-  : never;
+export const zIndexZScale = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '10',
+  '12',
+  '9',
+  '11',
+] as const;
+export type ZIndexZScale = typeof zIndexZScale[number];
