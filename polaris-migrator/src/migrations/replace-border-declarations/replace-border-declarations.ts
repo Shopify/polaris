@@ -15,7 +15,7 @@ import {
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-export default function replaceSassBorder(
+export default function replaceBorderDeclarations(
   fileInfo: FileInfo,
   _: API,
   options: Options,
