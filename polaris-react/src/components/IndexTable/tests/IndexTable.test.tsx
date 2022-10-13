@@ -6,7 +6,6 @@ import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
-import {Spinner} from '../../Spinner';
 import {Sticky} from '../../Sticky';
 import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
