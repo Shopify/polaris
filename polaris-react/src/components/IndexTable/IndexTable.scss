@@ -78,6 +78,7 @@ $loading-panel-height: 53px;
   0% {
     background-position: 200% 0%;
   }
+
   100% {
     background-position: 0%;
   }
@@ -208,7 +209,7 @@ $table-loading-animation-duration: 2s;
 
   // stylelint-disable-next-line selector-max-class
   &.TableRow-hovered.TableRow-selected {
-    // stylelint-disable-next-line selector-max-class
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity
     .TableCell {
       background-color: var(--p-surface-selected-hovered);
     }
