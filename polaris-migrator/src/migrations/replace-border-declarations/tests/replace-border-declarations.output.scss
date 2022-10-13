@@ -56,7 +56,7 @@
   /* border-width: rem(10px) + var(--p-border-1); */
   border-width: rem(10px) + 1px;
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* border-width: rem($var * 1px); */
+  /* border-width: rem($var * var(--p-border-1)); */
   border-width: rem($var * 1px);
 
   /* BORDER FUNCTION */
