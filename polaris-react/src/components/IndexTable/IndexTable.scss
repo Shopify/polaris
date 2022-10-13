@@ -83,6 +83,8 @@ $loading-panel-height: 53px;
   }
 }
 
+$table-loading-duration: 2s;
+
 .Table-loading {
   tbody tr {
     background: linear-gradient(
@@ -92,12 +94,13 @@ $loading-panel-height: 53px;
       var(--p-surface) 60%
     );
     background-size: 200% 100%;
-    animation: shimmer 2s infinite var(--p-ease-in-out);
+    animation: shimmer $table-loading-duration infinite var(--p-ease-in-out);
   }
 
   @for $stagger from 1 through 25 {
     tbody tr:nth-child(25n + #{$stagger}) {
-      animation-delay: $stagger / 25 * 2s;
+      animation-delay: ($stagger / 25 * $table-loading-duration) -
+        $table-loading-duration;
     }
   }
 }
@@ -111,12 +114,13 @@ $loading-panel-height: 53px;
       var(--p-surface) 60%
     );
     background-size: 200% 100%;
-    animation: shimmer 2s infinite var(--p-ease-in-out);
+    animation: shimmer $table-loading-duration infinite var(--p-ease-in-out);
   }
 
   @for $stagger from 1 through 10 {
     li:nth-child(10n + #{$stagger}) {
-      animation-delay: $stagger / 10 * 2s;
+      animation-delay: ($stagger / 10 * $table-loading-duration) -
+        $table-loading-duration;
     }
   }
 }
