@@ -668,12 +668,17 @@ function IndexTableBase({
     </>
   );
 
+  const condensedListClassNames = classNames(
+    styles.CondensedList,
+    loading && styles['CondensedList-loading'],
+  );
+
   const bodyMarkup = condensed ? (
     <>
       {sharedMarkup}
       <ul
         data-selectmode={Boolean(selectMode || isSmallScreenSelectable)}
-        className={styles.CondensedList}
+        className={condensedListClassNames}
         ref={condensedListElement}
       >
         {children}

@@ -223,6 +223,159 @@ export function SmallScreen() {
   );
 }
 
+export function SmallScreenLoading() {
+  const customers = [
+    {
+      id: '3415',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2565',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+    {
+      id: '1234',
+      url: 'customers/341',
+      name: 'David Reynolds',
+      location: 'Phoenix, USA',
+      orders: 4,
+      amountSpent: '$84',
+    },
+    {
+      id: '1289',
+      url: 'customers/256',
+      name: 'Jennifer Jennings',
+      location: 'Boise, USA',
+      orders: 62,
+      amountSpent: '$542',
+    },
+    {
+      id: '9874',
+      url: 'customers/341',
+      name: 'Robert Bradley',
+      location: 'Seattle, USA',
+      orders: 21,
+      amountSpent: '$450',
+    },
+    {
+      id: '4873',
+      url: 'customers/256',
+      name: 'Brian Johnson',
+      location: 'San Diego, USA',
+      orders: 35,
+      amountSpent: '$765',
+    },
+    {
+      id: '9082',
+      url: 'customers/341',
+      name: 'Kimberley Rogers',
+      location: 'Kansas City, USA',
+      orders: 36,
+      amountSpent: '$1,230',
+    },
+    {
+      id: '3627',
+      url: 'customers/256',
+      name: 'Nina Rodriguez',
+      location: 'Mobile, USA',
+      orders: 67,
+      amountSpent: '$986',
+    },
+    {
+      id: '4328',
+      url: 'customers/341',
+      name: 'Pam Mahoney',
+      location: 'Austin, USA',
+      orders: 24,
+      amountSpent: '$2,300',
+    },
+    {
+      id: '2635',
+      url: 'customers/256',
+      name: 'Joe Talbot',
+      location: 'Tacoma, USA',
+      orders: 5,
+      amountSpent: '$86',
+    },
+    {
+      id: '0982',
+      url: 'customers/341',
+      name: 'Billy Parker',
+      location: 'Madison, USA',
+      orders: 87,
+      amountSpent: '$1,930',
+    },
+    {
+      id: '8326',
+      url: 'customers/256',
+      name: 'Ahmed Mahmood',
+      location: 'Portland, USA',
+      orders: 34,
+      amountSpent: '$243',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <div style={{padding: '12px 16px'}}>
+          <p>
+            <TextStyle variation="strong">{name}</TextStyle>
+          </p>
+          <p>{location}</p>
+          <p>{orders}</p>
+          <p>{amountSpent}</p>
+        </div>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <div style={{width: '430px'}}>
+      <Card>
+        <IndexTable
+          resourceName={resourceName}
+          itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
+          condensed
+          loading
+          headings={[
+            {title: 'Name'},
+            {title: 'Location'},
+            {title: 'Order count'},
+            {title: 'Amount spent'},
+          ]}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </Card>
+    </div>
+  );
+}
+
 export function WithEmptyState() {
   const customers = [];
   const resourceName = {
@@ -596,6 +749,86 @@ export function WithLoadingState() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+    },
+    {
+      id: '1234',
+      url: 'customers/341',
+      name: 'David Reynolds',
+      location: 'Phoenix, USA',
+      orders: 4,
+      amountSpent: '$84',
+    },
+    {
+      id: '1289',
+      url: 'customers/256',
+      name: 'Jennifer Jennings',
+      location: 'Boise, USA',
+      orders: 62,
+      amountSpent: '$542',
+    },
+    {
+      id: '9874',
+      url: 'customers/341',
+      name: 'Robert Bradley',
+      location: 'Seattle, USA',
+      orders: 21,
+      amountSpent: '$450',
+    },
+    {
+      id: '4873',
+      url: 'customers/256',
+      name: 'Brian Johnson',
+      location: 'San Diego, USA',
+      orders: 35,
+      amountSpent: '$765',
+    },
+    {
+      id: '9082',
+      url: 'customers/341',
+      name: 'Kimberley Rogers',
+      location: 'Kansas City, USA',
+      orders: 36,
+      amountSpent: '$1,230',
+    },
+    {
+      id: '3627',
+      url: 'customers/256',
+      name: 'Nina Rodriguez',
+      location: 'Mobile, USA',
+      orders: 67,
+      amountSpent: '$986',
+    },
+    {
+      id: '4328',
+      url: 'customers/341',
+      name: 'Pam Mahoney',
+      location: 'Austin, USA',
+      orders: 24,
+      amountSpent: '$2,300',
+    },
+    {
+      id: '2635',
+      url: 'customers/256',
+      name: 'Joe Talbot',
+      location: 'Tacoma, USA',
+      orders: 5,
+      amountSpent: '$86',
+    },
+    {
+      id: '0982',
+      url: 'customers/341',
+      name: 'Billy Parker',
+      location: 'Madison, USA',
+      orders: 87,
+      amountSpent: '$1,930',
+    },
+    {
+      id: '8326',
+      url: 'customers/256',
+      name: 'Ahmed Mahmood',
+      location: 'Portland, USA',
+      orders: 34,
+      amountSpent: '$243',
     },
   ];
   const resourceName = {

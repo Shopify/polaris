@@ -76,19 +76,48 @@ $loading-panel-height: 53px;
 
 @keyframes shimmer {
   0% {
-    background: var(--p-surface);
-  }
-  50% {
-    background: var(--p-surface-hovered);
+    background-position: 200% 0%;
   }
   100% {
-    background: var(--p-surface);
+    background-position: 0%;
   }
 }
 
 .Table-loading {
-  td {
-    animation: shimmer 1s infinite;
+  tbody tr {
+    background: linear-gradient(
+      90deg,
+      var(--p-surface) 40%,
+      var(--p-surface-hovered) 50%,
+      var(--p-surface) 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite var(--p-ease-in-out);
+  }
+
+  @for $stagger from 1 through 25 {
+    tbody tr:nth-child(25n + #{$stagger}) {
+      animation-delay: $stagger / 25 * 2s;
+    }
+  }
+}
+
+.CondensedList-loading {
+  li {
+    background: linear-gradient(
+      90deg,
+      var(--p-surface) 40%,
+      var(--p-surface-hovered) 50%,
+      var(--p-surface) 60%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite var(--p-ease-in-out);
+  }
+
+  @for $stagger from 1 through 10 {
+    li:nth-child(10n + #{$stagger}) {
+      animation-delay: $stagger / 10 * 2s;
+    }
   }
 }
 
@@ -145,49 +174,39 @@ $loading-panel-height: 53px;
   }
 
   &.statusSuccess {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-    &,
-    .TableCell-first,
-    .TableCell-first + .TableCell {
+    // stylelint-disable-next-line selector-max-class
+    .TableCell {
       background-color: var(--p-surface-primary-selected);
     }
   }
 
   &.statusSubdued {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity
-    &,
-    .TableCell-first,
-    .TableCell-first + .TableCell {
+    // stylelint-disable-next-line selector-max-class
+    .TableCell {
       background-color: var(--p-surface-subdued);
     }
   }
 
   &.TableRow-hovered {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-    &,
-    .TableCell-first,
-    .TableCell-first + .TableCell {
+    // stylelint-disable-next-line selector-max-class
+    .TableCell {
       background-color: var(--p-surface-hovered);
     }
   }
 
   &.TableRow-selected {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-    &,
+    // stylelint-disable-next-line selector-max-class
+    .TableCell,
     .TableHeading-first,
-    .TableHeading-second,
-    .TableCell-first,
-    .TableCell-first + .TableCell {
+    .TableHeading-second {
       background-color: var(--p-surface-selected);
     }
   }
 
   // stylelint-disable-next-line selector-max-class
   &.TableRow-hovered.TableRow-selected {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-    &,
-    .TableCell-first,
-    .TableCell-first + .TableCell {
+    // stylelint-disable-next-line selector-max-class
+    .TableCell {
       background-color: var(--p-surface-selected-hovered);
     }
   }
