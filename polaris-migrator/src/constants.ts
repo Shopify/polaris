@@ -60,4 +60,4 @@ export const cliConfig = createCLIConfig({
 export type CLIConfig = typeof cliConfig;
 
 export const POLARIS_MIGRATOR_COMMENT =
-  "polaris-migrator: This is a complex expression that we can't automatically convert. Please check this manually.";
+  'polaris-migrator: Unable to migrate the following expression. Please upgrade manually.';

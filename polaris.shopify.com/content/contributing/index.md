@@ -5,7 +5,7 @@ description: Polaris exists to make a product worked on by many, feel like it wa
 keywords:
   - how to contribute to polaris
   - contribution
-order: 9
+order: 10
 newSection: true
 icon: MobilePlusMajor
 ---

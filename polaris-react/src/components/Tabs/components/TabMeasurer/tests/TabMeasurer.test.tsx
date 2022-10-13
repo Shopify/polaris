@@ -47,9 +47,7 @@ describe('<TabMeasurer />', () => {
   it('calls setTimeout in development to delay measurements', () => {
     process.env.NODE_ENV = 'development';
     mountWithApp(<TabMeasurer {...mockProps} tabToFocus={0} />);
-    // The second invocation is from the react scheduler
-    // https://github.com/facebook/react/blob/0cf22a56a18790ef34c71bef14f64695c0498619/packages/scheduler/src/forks/SchedulerHostConfig.default.js#L53
-    expect(setTimeoutSpy).toHaveBeenCalledTimes(2);
+    expect(setTimeoutSpy).toHaveBeenCalled();
   });
 
   describe('tabToFocus', () => {

@@ -1,5 +1,29 @@
 # polaris.shopify.com
 
+## 0.21.1
+
+### Patch Changes
+
+- [#6743](https://github.com/Shopify/polaris/pull/6743) [`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add support for React 18
+
+* [#7370](https://github.com/Shopify/polaris/pull/7370) [`58cdc1671`](https://github.com/Shopify/polaris/commit/58cdc1671423d46375d863476a601fcc154c6eb0) Thanks [@chloerice](https://github.com/chloerice)! - Removed 'About Polaris' page from the Foundations section, as the 'Getting started' section covers this
+
+* Updated dependencies [[`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d), [`6be4436d0`](https://github.com/Shopify/polaris/commit/6be4436d0fa2e37a0e93aad99a436d286f976051)]:
+  - @shopify/polaris@10.7.0
+
+## 0.21.0
+
+### Minor Changes
+
+- [#7254](https://github.com/Shopify/polaris/pull/7254) [`61cf086ed`](https://github.com/Shopify/polaris/commit/61cf086edb2f20aca3867d62ba2d5eb97716a505) Thanks [@nickpresta](https://github.com/nickpresta)! - Added ability to collapse props that have been expanded.
+
+### Patch Changes
+
+- [#7305](https://github.com/Shopify/polaris/pull/7305) [`b0445cf9b`](https://github.com/Shopify/polaris/commit/b0445cf9b036752062af215da57347ce4b8f6f17) Thanks [@selenehinkley](https://github.com/selenehinkley)! - Added "Getting started" section
+
+- Updated dependencies [[`f7140123d`](https://github.com/Shopify/polaris/commit/f7140123dce74be7d79b2ae57bbfda2f96363980), [`b1b576403`](https://github.com/Shopify/polaris/commit/b1b5764035c6f138e24ad42c9c033c7ca7369a93), [`4b95fdc64`](https://github.com/Shopify/polaris/commit/4b95fdc64b4d30a39333e09623d347735636e771)]:
+  - @shopify/polaris@10.6.0
+
 ## 0.20.0
 
 ### Minor Changes
