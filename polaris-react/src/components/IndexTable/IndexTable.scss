@@ -83,24 +83,24 @@ $loading-panel-height: 53px;
   }
 }
 
-$table-loading-duration: 2s;
+$table-loading-animation-duration: 2s;
 
 .Table-loading {
+  // stylelint-disable-next-line selector-max-type, selector-max-combinators
   tbody tr {
     background: linear-gradient(
       90deg,
-      var(--p-surface) 40%,
-      var(--p-surface-hovered) 50%,
-      var(--p-surface) 60%
+      var(--p-surface) 10%,
+      var(--p-surface-hovered) 20%,
+      var(--p-surface) 30%
     );
     background-size: 200% 100%;
-    animation: shimmer $table-loading-duration infinite var(--p-ease-in-out);
+    animation: shimmer $table-loading-animation-duration infinite linear;
   }
 
   @for $stagger from 1 through 25 {
     tbody tr:nth-child(25n + #{$stagger}) {
-      animation-delay: ($stagger / 25 * $table-loading-duration) -
-        $table-loading-duration;
+      animation-delay: $stagger / 25 * $table-loading-animation-duration;
     }
   }
 }
@@ -109,18 +109,17 @@ $table-loading-duration: 2s;
   li {
     background: linear-gradient(
       90deg,
-      var(--p-surface) 40%,
-      var(--p-surface-hovered) 50%,
-      var(--p-surface) 60%
+      var(--p-surface) 10%,
+      var(--p-surface-hovered) 20%,
+      var(--p-surface) 30%
     );
     background-size: 200% 100%;
-    animation: shimmer $table-loading-duration infinite var(--p-ease-in-out);
+    animation: shimmer $table-loading-animation-duration infinite linear;
   }
 
   @for $stagger from 1 through 10 {
     li:nth-child(10n + #{$stagger}) {
-      animation-delay: ($stagger / 10 * $table-loading-duration) -
-        $table-loading-duration;
+      animation-delay: $stagger / 10 * $table-loading-animation-duration;
     }
   }
 }
