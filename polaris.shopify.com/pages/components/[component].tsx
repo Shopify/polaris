@@ -77,7 +77,6 @@ export const getStaticProps: GetStaticProps<
   const relativeMdPath = `content/components/${componentSlug}.md`;
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
-  console.log(relativeMdPath);
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -144,7 +143,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .map((path) =>
       path.replace(`${process.cwd()}/content`, '').replace('.md', ''),
     );
-  console.log({paths});
 
   return {
     paths,
