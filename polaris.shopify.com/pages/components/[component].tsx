@@ -74,9 +74,10 @@ export const getStaticProps: GetStaticProps<
   {component: string}
 > = async (context) => {
   const componentSlug = context.params?.component;
-  const relativeMdPath = `content/components/${componentSlug}/index.md`;
+  const relativeMdPath = `content/components/${componentSlug}.md`;
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
+  console.log(relativeMdPath);
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -136,12 +137,14 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = path.resolve(process.cwd(), 'content/components/*/*.md');
-  const paths = globby.sync(globPath).map((fileName: string) => {
-    return fileName
-      .replace(`${process.cwd()}/content`, '')
-      .replace('/index.md', '');
-  });
+  const globPath = path.resolve(process.cwd(), 'content/components/*.md');
+  const paths = globby
+    .sync(globPath)
+    .filter((path) => path !== 'index.md')
+    .map((path) =>
+      path.replace(`${process.cwd()}/content`, '').replace('.md', ''),
+    );
+  console.log({paths});
 
   return {
     paths,
