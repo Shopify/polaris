@@ -143,6 +143,10 @@ export const Row = memo(function Row({
 
   const checkboxMarkup = selectable ? <Checkbox /> : null;
 
+  const style = {
+    '--pc-index-table-row-stagger-index': position,
+  } as React.CSSProperties;
+
   return (
     <RowContext.Provider value={contextValue}>
       <RowHoveredContext.Provider value={hovered}>
@@ -153,6 +157,7 @@ export const Row = memo(function Row({
           onMouseLeave={setHoverOut}
           onClick={handleRowClick}
           ref={tableRowCallbackRef}
+          style={style}
         >
           {checkboxMarkup}
           {children}

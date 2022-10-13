@@ -91,18 +91,13 @@ $table-loading-animation-duration: 2s;
   tbody tr {
     background: linear-gradient(
       90deg,
-      var(--p-surface) 10%,
+      var(--p-surface) 5%,
       var(--p-surface-hovered) 20%,
-      var(--p-surface) 30%
+      var(--p-surface) 35%
     );
     background-size: 200% 100%;
     animation: shimmer $table-loading-animation-duration infinite linear;
-  }
-
-  @for $stagger from 1 through 25 {
-    tbody tr:nth-child(25n + #{$stagger}) {
-      animation-delay: $stagger / 25 * $table-loading-animation-duration;
-    }
+    animation-delay: calc(0.125s * var(--pc-index-table-row-stagger-index));
   }
 }
 
@@ -110,18 +105,13 @@ $table-loading-animation-duration: 2s;
   li {
     background: linear-gradient(
       90deg,
-      var(--p-surface) 10%,
+      var(--p-surface) 5%,
       var(--p-surface-hovered) 20%,
-      var(--p-surface) 30%
+      var(--p-surface) 35%
     );
     background-size: 200% 100%;
     animation: shimmer $table-loading-animation-duration infinite linear;
-  }
-
-  @for $stagger from 1 through 10 {
-    li:nth-child(10n + #{$stagger}) {
-      animation-delay: $stagger / 10 * $table-loading-animation-duration;
-    }
+    animation-delay: calc(0.125s * var(--pc-index-table-row-stagger-index));
   }
 }
 
