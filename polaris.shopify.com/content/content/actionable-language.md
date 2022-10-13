@@ -473,7 +473,7 @@ When merchants make changes on a page they’re sometimes presented with a conte
 
 Use the verb “Save” in the context bar
 
-![web context bar](/images/foundations/content/actionable-language/web-context-bar@2x.png)
+![web context bar](/images/content/actionable-language/web-context-bar@2x.png)
 
 #### Don’t
 
@@ -510,7 +510,7 @@ Use the verb “Save” in modals and sheets when saving directly to the databas
 
 Use the verb “Save” in modals and sheets
 
-![web save modal in edit state](/images/foundations/content/actionable-language/web-edit-save@2x.png)
+![web save modal in edit state](/images/content/actionable-language/web-edit-save@2x.png)
 
 #### Don’t
 
@@ -530,7 +530,7 @@ For example, the action at the bottom of the Create discount page uses [Save dis
 
 #### Do
 
-![web save page action](/images/foundations/content/actionable-language/web-page-actions@2x.png)
+![web save page action](/images/content/actionable-language/web-page-actions@2x.png)
 
 #### Don’t
 
@@ -553,7 +553,7 @@ Most deferred saves happen when confirming changes in Add, Edit, Manage, and Sel
 
 #### Do
 
-![deferred save modal with done button](/images/foundations/content/actionable-language/add-done@2x.png)
+![deferred save modal with done button](/images/content/actionable-language/add-done@2x.png)
 
 #### Don’t
 
@@ -574,7 +574,7 @@ Use the adjective “Done” for datepickers.
 
 #### Do
 
-![datepicker with done button](/images/foundations/content/actionable-language/datepicker@2x.png)
+![datepicker with done button](/images/content/actionable-language/datepicker@2x.png)
 
 #### Don’t
 
@@ -594,7 +594,7 @@ Use the adjective “OK” when merchants need to confirm they’ve read somethi
 
 #### Do
 
-![modal with okay button spelled with capitalized letter O and K, no punctuation](/images/foundations/content/actionable-language/ok@2x.png)
+![modal with okay button spelled with capitalized letter O and K, no punctuation](/images/content/actionable-language/ok@2x.png)
 
 #### Don’t
 
@@ -640,7 +640,7 @@ Don’t use “Close” as the call to action when there’s the option for merc
 
 #### Do
 
-![web modal with close button](/images/foundations/content/actionable-language/web-close@2x.png)
+![web modal with close button](/images/content/actionable-language/web-close@2x.png)
 
 #### Don’t
 
@@ -658,7 +658,7 @@ Use “Cancel” as the option for merchants to back out of any changes made on 
 
 Use the verb “Cancel” as the action for merchants to back out of changes
 
-![web save modal in edit state](/images/foundations/content/actionable-language/web-edit-save@2x.png)
+![web save modal in edit state](/images/content/actionable-language/web-edit-save@2x.png)
 
 #### Don’t
 
@@ -728,8 +728,8 @@ Use the verb “edit” when you can change the input of a field (letters, numbe
 
 #### Do
 
-- In this example, “Edit” is the correct call to action because it opens a modal where merchants update customer contact information ![modal where merchants can edit contact information](/images/foundations/content/actionable-language/edit-do@2x.png)
-  Here are the editing actions that become available after the “Edit” button is selected ![modal where merchants can edit customer information](/images/foundations/content/actionable-language/edit-do2@2x.png)
+- In this example, “Edit” is the correct call to action because it opens a modal where merchants update customer contact information ![modal where merchants can edit contact information](/images/content/actionable-language/edit-do@2x.png)
+  Here are the editing actions that become available after the “Edit” button is selected ![modal where merchants can edit customer information](/images/content/actionable-language/edit-do2@2x.png)
 - Edit an individual blog post
 
 #### Don’t
@@ -745,8 +745,8 @@ Use the verb “manage” at a higher level to convey that multiple actions can 
 
 #### Do
 
-- In this example, “Manage” is the correct call to action because it opens a modal where merchants can select channels to display their products ![manage button on the product page in the product availability section](/images/foundations/content/actionable-language/manage-do@2x.png)
-  Here are the options that become available after the “Manage” button is selected ![modal where merchants can select sales channels](/images/foundations/content/actionable-language/manage-do2@2x.png)
+- In this example, “Manage” is the correct call to action because it opens a modal where merchants can select channels to display their products ![manage button on the product page in the product availability section](/images/content/actionable-language/manage-do@2x.png)
+  Here are the options that become available after the “Manage” button is selected ![modal where merchants can select sales channels](/images/content/actionable-language/manage-do2@2x.png)
 - Manage multiple blog posts and comments
 
 #### Don’t
@@ -766,8 +766,8 @@ Use the verb “change” when merchants can replace an option, but not edit it.
 
 #### Do
 
-- Change image ![change button at the bottom of the image display on the slideshow page of the theme editor](/images/foundations/content/actionable-language/change-do@2x.png)
-  Here are the options that become available after the “Change” button is selected ![images library with an upload drop zone](/images/foundations/content/actionable-language/change-do2@2x.png)
+- Change image ![change button at the bottom of the image display on the slideshow page of the theme editor](/images/content/actionable-language/change-do@2x.png)
+  Here are the options that become available after the “Change” button is selected ![images library with an upload drop zone](/images/content/actionable-language/change-do2@2x.png)
 
 #### Don’t
 
@@ -781,8 +781,8 @@ Use the verb “switch” when it’s important for merchants to know what they�
 
 #### Do
 
-- ![Title that says, switch from your third party provider to shopify payments, with a card below that says, payment processing rate of 2.4% plus 0.25 euros”](/images/foundations/content/actionable-language/switch-do@2x.png)
-- ![Modal that says, switch locations to ‘new space’? You will only be able to sell inventory set to this location. Tax rates may also change. At the bottom there are two buttons. One says, cancel and one says, switch.](/images/foundations/content/actionable-language/switch-do2@2x.png)
+- ![Title that says, switch from your third party provider to shopify payments, with a card below that says, payment processing rate of 2.4% plus 0.25 euros”](/images/content/actionable-language/switch-do@2x.png)
+- ![Modal that says, switch locations to ‘new space’? You will only be able to sell inventory set to this location. Tax rates may also change. At the bottom there are two buttons. One says, cancel and one says, switch.](/images/content/actionable-language/switch-do2@2x.png)
 
 #### Don’t
 

@@ -1,5 +1,8 @@
-import {FileInfo} from 'jscodeshift';
+import {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
+
+import {NamespaceOptions, getNamespacePattern} from '../../utilities/sass';
+import {isKeyOf} from '../../utilities/type-guards';
 
 /** Mapping of static breakpoint mixins from old to new */
 const staticBreakpointMixins = {
@@ -20,30 +23,39 @@ const staticBreakpointMixins = {
   'after-topbar-sheet': '#{$p-breakpoints-sm-up}',
 };
 
-const isStaticBreakpointMixin = (
-  mixinName: unknown,
-): mixinName is keyof typeof staticBreakpointMixins =>
-  Object.keys(staticBreakpointMixins).includes(mixinName as string);
+interface PluginOptions extends Options, NamespaceOptions {}
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'ReplaceStaticBreakpointMixins',
-  AtRule(atRule) {
-    if (atRule.name !== 'include') return;
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespacePattern = getNamespacePattern(options);
 
-    // Extract mixin name e.g. name from `@include name;` or `@include name();`
-    const mixinName = atRule.params.match(/^([a-zA-Z0-9_-]+)/)?.[1];
+  const namespacedMixinRegExp = new RegExp(
+    String.raw`^${namespacePattern}([\w-]+)`,
+  );
 
-    if (!isStaticBreakpointMixin(mixinName)) return;
+  return {
+    postcssPlugin: 'ReplaceStaticBreakpointMixins',
+    AtRule(atRule) {
+      if (atRule.name !== 'include') return;
 
-    atRule.assign({
-      name: 'media',
-      params: staticBreakpointMixins[mixinName],
-    });
-  },
-});
+      // Extract mixin name e.g. name from `@include name;` or `@include name();`
+      const mixinName = atRule.params.match(namespacedMixinRegExp)?.[1];
 
-export default function replaceStaticBreakpointMixins(fileInfo: FileInfo) {
-  return postcss(plugin()).process(fileInfo.source, {
+      if (!isKeyOf(staticBreakpointMixins, mixinName)) return;
+
+      atRule.assign({
+        name: 'media',
+        params: staticBreakpointMixins[mixinName],
+      });
+    },
+  };
+};
+
+export default function replaceStaticMixinsWithDeclarations(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
 }

@@ -116,6 +116,7 @@ enum Suffix {
 
 class FiltersInner extends Component<CombinedProps, State> {
   static contextType = ResourceListContext;
+  context!: React.ContextType<typeof ResourceListContext>;
 
   state: State = {
     open: false,

@@ -10,6 +10,7 @@ import {
   hasSassFunction,
   hasNumericOperator,
 } from '../../utilities/sass';
+import {isKeyOf} from '../../utilities/type-guards';
 
 const spacingMap = {
   none: '--p-space-0',
@@ -21,9 +22,6 @@ const spacingMap = {
   loose: '--p-space-5',
   'extra-loose': '--p-space-8',
 };
-
-const isSpacing = (spacing: unknown): spacing is keyof typeof spacingMap =>
-  Object.keys(spacingMap).includes(spacing as string);
 
 const processed = Symbol('processed');
 
@@ -47,7 +45,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
         const spacing = node.nodes[0]?.value ?? '';
 
-        if (!isSpacing(spacing)) return;
+        if (!isKeyOf(spacingMap, spacing)) return;
         const spacingCustomProperty = spacingMap[spacing];
 
         node.value = 'var';

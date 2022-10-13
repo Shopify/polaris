@@ -1,5 +1,5 @@
 ---
 title: Icons
-order: 8
+order: 9
 icon: IconsMajor
 ---
