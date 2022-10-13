@@ -1,14 +1,14 @@
 import React, {createElement, forwardRef, ReactNode} from 'react';
 import type {
-  ColorsTokenName,
   DepthShadowAlias,
-  ShapeTokenName,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
 import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
+
+type Element = 'div' | 'span';
 
 type BackgroundColorTokenScale =
   | 'action-critical'
@@ -76,29 +76,48 @@ type BackgroundColorTokenScale =
   | 'surface-warning-subdued-hovered'
   | 'surface-warning-subdued-pressed';
 
-type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
+type ColorTokenScale =
+  | 'text'
+  | 'text-critical'
+  | 'text-disabled'
+  | 'text-highlight'
+  | 'text-on-critical'
+  | 'text-on-dark'
+  | 'text-on-interactive'
+  | 'text-on-primary'
+  | 'text-primary'
+  | 'text-primary-hovered'
+  | 'text-primary-pressed'
+  | 'text-subdued'
+  | 'text-subdued-on-dark'
+  | 'text-success'
+  | 'text-warning';
 
-type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
-  ? Scale
-  : never;
-type BorderTokenScale = Exclude<
-  BorderShapeTokenScale,
-  `radius-${string}` | `width-${string}`
->;
+type BorderTokenAlias =
+  | 'base'
+  | 'dark'
+  | 'transparent'
+  | 'divider'
+  | 'divider-on-dark';
 
 interface Border {
-  bottom: BorderTokenScale;
-  left: BorderTokenScale;
-  right: BorderTokenScale;
-  top: BorderTokenScale;
+  bottom: BorderTokenAlias;
+  left: BorderTokenAlias;
+  right: BorderTokenAlias;
+  top: BorderTokenAlias;
 }
 
-type BorderRadiusTokenScale = Extract<
-  BorderShapeTokenScale,
-  `radius-${string}`
-> extends `radius-${infer Scale}`
-  ? Scale
-  : never;
+type BorderRadiusTokenScale =
+  | 'base'
+  | '05'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | 'large'
+  | 'half';
 
 interface BorderRadius {
   bottomLeft: BorderRadiusTokenScale;
@@ -114,23 +133,21 @@ interface Spacing {
   top: SpacingSpaceScale;
 }
 
-type Element = 'div' | 'span';
-
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
   background?: BackgroundColorTokenScale;
   /** Border style */
-  border?: BorderTokenScale;
+  border?: BorderTokenAlias;
   /** Bottom border style */
-  borderBottom?: BorderTokenScale;
+  borderBottom?: BorderTokenAlias;
   /** Left border style */
-  borderLeft?: BorderTokenScale;
+  borderLeft?: BorderTokenAlias;
   /** Right border style */
-  borderRight?: BorderTokenScale;
+  borderRight?: BorderTokenAlias;
   /** Top border style */
-  borderTop?: BorderTokenScale;
+  borderTop?: BorderTokenAlias;
   /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
   /** Bottom left border radius */
