@@ -84,6 +84,17 @@ $loading-panel-height: 53px;
   }
 }
 
+@keyframes shimmer-min-motion {
+  0%,
+  100% {
+    background: var(--p-surface);
+  }
+
+  50% {
+    background: var(--p-surface-hovered);
+  }
+}
+
 $table-loading-animation-duration: 2s;
 
 .Table-loading {
@@ -98,6 +109,13 @@ $table-loading-animation-duration: 2s;
     background-size: 200% 100%;
     animation: shimmer $table-loading-animation-duration infinite linear;
     animation-delay: calc(0.125s * var(--pc-index-table-row-stagger-index));
+
+    // stylelint-disable-next-line stylelint-polaris/media-queries-allowed-list
+    @media (prefers-reduced-motion) {
+      background: var(--p-surface);
+      animation-name: shimmer-min-motion;
+      animation-delay: 0s;
+    }
   }
 }
 
@@ -112,6 +130,13 @@ $table-loading-animation-duration: 2s;
     background-size: 200% 100%;
     animation: shimmer $table-loading-animation-duration infinite linear;
     animation-delay: calc(0.125s * var(--pc-index-table-row-stagger-index));
+
+    // stylelint-disable-next-line stylelint-polaris/media-queries-allowed-list
+    @media (prefers-reduced-motion) {
+      background: var(--p-surface);
+      animation-name: shimmer-min-motion;
+      animation-delay: 0s;
+    }
   }
 }
 
