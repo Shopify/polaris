@@ -1,27 +1,23 @@
-/* eslint-disable no-console */
 import React, {
   useCallback,
-  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
-import isEqual from 'react-fast-compare';
 
-import {debounce} from '../../../../utilities/debounce';
-import {useI18n} from '../../../../utilities/i18n';
 import type {
   ActionListItemDescriptor,
   ActionListSection,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../types';
-import {ButtonGroup} from '../../../ButtonGroup';
 import {MenuGroup} from '../MenuGroup';
+import {ButtonGroup} from '../../../ButtonGroup';
+import {debounce} from '../../../../utilities/debounce';
+import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
 import {useEventListener} from '../../../../utilities/use-event-listener';
-import {useIsAfterInitialMount} from '../../../../utilities/use-is-after-initial-mount';
 
 import styles from './Actions.scss';
 
@@ -42,12 +38,6 @@ interface MeasuredActions {
 const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = [], onActionRollup}: Props) {
-  const isMounted = useIsAfterInitialMount();
-  useEffect(() => {
-    isMounted
-      ? console.log('update, measured: ', timesMeasured.current)
-      : console.log('mount, measured: ', timesMeasured.current);
-  });
   const i18n = useI18n();
   const actionsLayoutRef = useRef<HTMLDivElement>(null);
   const menuGroupWidthRef = useRef<number>(0);
@@ -96,10 +86,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       );
     }
 
-    console.log(
-      'updateActions => setMeasuredActions, measured: ',
-      timesMeasured.current,
-    );
     setMeasuredActions((currentMeasuredActions) => {
       const showable = actionsAndGroups.slice(
         0,
@@ -109,26 +95,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         currentMeasuredActions.showable.length,
         actionsAndGroups.length,
       );
-
-      if (
-        showable === currentMeasuredActions.showable &&
-        rolledUp === currentMeasuredActions.rolledUp
-      ) {
-        console.log(
-          'updateActions => simple compare, bail out of setState, should not re-render',
-        );
-        return currentMeasuredActions;
-      }
-
-      if (
-        isEqual(showable, currentMeasuredActions.showable) &&
-        isEqual(rolledUp, currentMeasuredActions.rolledUp)
-      ) {
-        console.log(
-          'updateActions => react fast compare, bail out of setState, should not re-render',
-        );
-        return currentMeasuredActions;
-      }
 
       return {showable, rolledUp};
     });
@@ -145,10 +111,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     const actionsAndGroups = [...actions, ...groups];
 
     if (actionsAndGroups.length === 1) {
-      console.log(
-        'measureActions => setMeasuredActions, measured: ',
-        timesMeasured.current,
-      );
       setMeasuredActions({showable: actionsAndGroups, rolledUp: []});
       return;
     }
@@ -187,31 +149,10 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         rollupActiveRef.current = isRollupActive;
       }
     }
-    console.log(
-      'measureActions => setMeasuredActions, measured: ',
-      timesMeasured.current,
-    );
-    setMeasuredActions((currentMeasuredActions) => {
-      if (
-        currentMeasuredActions.showable === newShowableActions &&
-        currentMeasuredActions.rolledUp === newRolledUpActions
-      ) {
-        console.log('measureActions bail out of setState');
-        return currentMeasuredActions;
-      }
 
-      if (
-        isEqual(currentMeasuredActions.showable, newShowableActions) &&
-        isEqual(currentMeasuredActions.rolledUp, newRolledUpActions)
-      ) {
-        console.log('measureActions bail out of setState');
-        return currentMeasuredActions;
-      }
-
-      return {
-        showable: newShowableActions,
-        rolledUp: newRolledUpActions,
-      };
+    setMeasuredActions({
+      showable: newShowableActions,
+      rolledUp: newRolledUpActions,
     });
 
     timesMeasured.current += 1;
@@ -226,10 +167,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
           availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
           // Set timesMeasured to 0 to allow re-measuring
           timesMeasured.current = 0;
-          console.log(
-            'handleResize => measureActions, measured: ',
-            timesMeasured.current,
-          );
           measureActions();
         },
         50,
@@ -251,14 +188,9 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
       timesMeasured.current >= 2 &&
       [...actions, ...groups].length === actionsAndGroupsLengthRef.current
     ) {
-      console.log(
-        'useEffect, updateActions, measured: ',
-        timesMeasured.current,
-      );
       updateActions();
       return;
     }
-    console.log('useEffect, measureActions, measured: ', timesMeasured.current);
     measureActions();
   }, [actions, groups, measureActions, updateActions]);
 
