@@ -168,6 +168,58 @@ Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `bo
 npx @shopify/polaris-migrator replace-border-declarations <path>
 ```
 
+### `replace-sass-z-index`
+
+Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
+
+Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
+This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
+
+```diff
+- .decl-1 {
+-   z-index: z-index(content);
+- }
+- .decl-2 {
+-   z-index: z-index(modal, $fixed-element-stacking-order)
+- }
++ decl-1 {
++   z-index: var(--p-z-1);
++ }
++ .decl-2 {
++   z-index: var(--p-z-11)
++ }
+```
+
+Invocations of `z-index` within an arithmetic expression will be appended with a comment for review and manual migration.
+Generally in these instances you'll want to wrap the suggested code change in a `calc` however this may defer on a case by case basis in your codebase.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: var(--p-z-1) + 1 */
+  z-index: z-index(content) + 1
+}
+```
+
+Invocations of `z-index` with a custom sass map property, will also be appended with a comment for review and manual migration.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: map.get($custom-sass-map, modal) */
+  z-index: z-index(modal, $custom-sass-map)
+}
+```
+
+In these cases you may also want to run `npx sass-migrator module <path> --migrate-deps --load-path <load-path>` to ensure that
+`map.get` is in scope\*\*.
+
+Be aware that this may also create additional code changes in your codebase, we recommend running this only if there are large number of instances of migrations from `z-index` to `map.get`. Otherwise it may be easier to add `use 'sass:map'` to the top of your `.scss` file manually.
+
+```sh
+npx @shopify/polaris-migrator replace-sass-spacing <path>
+```
+
 ## Creating a migration
 
 ### Setup

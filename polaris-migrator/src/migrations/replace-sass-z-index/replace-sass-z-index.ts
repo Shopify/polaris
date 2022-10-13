@@ -84,12 +84,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               },
             ];
           } else {
+            // map.get arguments are in the reverse order to z-index arguments.
+            // map.get expects the map object first, and the key second.
             containsUnknownSecondArgument = true;
-            node.value = 'map-get';
+            node.value = 'map.get';
             node.nodes.reverse();
           }
-          // map-get arguments are in the reverse order to z-index arguments.
-          // map-get expects the map object first, and the key second.
         } else {
           const element = node.nodes[0]?.value ?? '';
           if (!isValidElement<typeof zIndexMap>(element, zIndexMap)) return;

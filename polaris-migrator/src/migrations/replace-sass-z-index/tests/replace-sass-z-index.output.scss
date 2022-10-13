@@ -28,7 +28,7 @@ $someElement: (
 
 .scenario-5 {
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  /* z-index: map-get($someElement, someKey); */
+  /* z-index: map.get($someElement, someKey); */
   z-index: z-index(someKey, $someElement);
   background-color: var(--p-background);
 }
