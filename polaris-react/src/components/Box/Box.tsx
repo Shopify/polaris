@@ -10,7 +10,7 @@ import styles from './Box.scss';
 
 type Element = 'div' | 'span';
 
-type BackgroundColorTokenScale =
+export type BackgroundColorTokenScale =
   | 'action-critical'
   | 'action-critical-depressed'
   | 'action-critical-disabled'
@@ -76,7 +76,7 @@ type BackgroundColorTokenScale =
   | 'surface-warning-subdued-hovered'
   | 'surface-warning-subdued-pressed';
 
-type ColorTokenScale =
+export type ColorTokenScale =
   | 'text'
   | 'text-critical'
   | 'text-disabled'
@@ -93,12 +93,12 @@ type ColorTokenScale =
   | 'text-success'
   | 'text-warning';
 
-type BorderTokenAlias =
+export type BorderTokenAlias =
   | 'base'
   | 'dark'
-  | 'transparent'
   | 'divider'
-  | 'divider-on-dark';
+  | 'divider-on-dark'
+  | 'transparent';
 
 interface Border {
   bottom: BorderTokenAlias;
@@ -107,8 +107,7 @@ interface Border {
   top: BorderTokenAlias;
 }
 
-type BorderRadiusTokenScale =
-  | 'base'
+export type BorderRadiusTokenScale =
   | '05'
   | '1'
   | '2'
@@ -116,6 +115,7 @@ type BorderRadiusTokenScale =
   | '4'
   | '5'
   | '6'
+  | 'base'
   | 'large'
   | 'half';
 
