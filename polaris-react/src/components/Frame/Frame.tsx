@@ -34,6 +34,8 @@ export interface FrameProps {
   logo?: Logo;
   /** A horizontal offset that pushes the frame to the right, leaving empty space on the left */
   offset?: string;
+  /** Reduces the frame width */
+  shrink?: string;
   /** The content to display inside the frame. */
   children?: React.ReactNode;
   /** Accepts a top bar component that will be rendered at the top-most portion of an application frame */
@@ -90,6 +92,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     }
     this.setGlobalRibbonRootProperty();
     this.setOffset();
+    this.setShrink();
   }
 
   componentDidUpdate(prevProps: FrameProps) {
@@ -97,6 +100,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       this.setGlobalRibbonHeight();
     }
     this.setOffset();
+    this.setShrink();
   }
 
   render() {
@@ -313,6 +317,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       '--pc-frame-global-ribbon-height',
       `${globalRibbonHeight}px`,
     );
+  };
+
+  private setShrink = () => {
+    const {shrink = '0px'} = this.props;
+    setRootProperty('--pc-frame-shrink', shrink);
   };
 
   private showToast = (toast: ToastPropsWithID) => {

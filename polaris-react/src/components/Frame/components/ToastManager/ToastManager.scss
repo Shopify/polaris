@@ -11,6 +11,7 @@
 .ToastManager {
   position: fixed;
   z-index: var(--p-z-12);
+  width: calc(100% - var(--pc-frame-shrink));
   right: 0;
   left: 0;
   text-align: center;

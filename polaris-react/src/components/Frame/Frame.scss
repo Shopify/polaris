@@ -12,7 +12,7 @@
   }
 
   @media #{$p-breakpoints-md-up} {
-    width: calc(100% - var(--pc-frame-offset));
+    width: calc(100% - var(--pc-frame-offset) - var(--pc-frame-shrink));
     margin-left: var(--pc-frame-offset);
   }
 }
@@ -139,7 +139,7 @@
 
   @media #{$p-breakpoints-md-up} {
     left: var(--pc-frame-offset);
-    width: calc(100% - var(--pc-frame-offset));
+    width: calc(100% - var(--pc-frame-offset) - var(--pc-frame-shrink));
   }
 }
 
@@ -152,7 +152,7 @@
 
   @media #{$p-breakpoints-md-up} {
     left: var(--pc-frame-offset);
-    width: calc(100% - var(--pc-frame-offset));
+    width: calc(100% - var(--pc-frame-offset) - var(--pc-frame-shrink));
   }
 }
 
@@ -208,7 +208,7 @@
         calc(#{$layout-width-nav-base} + var(--pc-frame-offset)),
         left
       );
-      width: calc(100% - #{$layout-width-nav-base} - var(--pc-frame-offset));
+      width: calc(100% - #{$layout-width-nav-base} - var(--pc-frame-offset) - var(--pc-frame-shrink));
     }
   }
 }
