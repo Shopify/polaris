@@ -1,10 +1,64 @@
 .border {
-  /* === Migrate === */
+  /* LENGTHS */
+  /* Migrate */
+  border: 1px solid var(--p-border-base);
+  border: 1px solid transparent;
+  border: 1px solid currentColor;
+  border: 1px solid color('sky');
+  border: 1px solid rgba(141, 145, 150, 0.5);
+  border: 1px solid $var;
+  border: 0.0625rem solid var(--p-border-base);
+  border: solid 1px var(--p-border-base);
+  /* Ignore */
+  border: 0.0625em solid var(--p-border-base);
+  border: 0 solid var(--p-border-base);
+  border: (16px + 16px) solid var(--p-border-base);
+  border: var(--var);
+  border: calc(1px / var(--item-scale, 1)) solid var(--p-border-base);
+  /* Comment */
+  border: 10px solid var(--p-border-base);
+  border: 10rem solid transparent;
+
+  /* REM FUNCTION */
+  /* Migrate */
+  border: rem(1px) solid var(--p-border-base);
+  border: solid rem(1px) var(--p-border-base);
+  border-width: rem(1px);
+  border-width: rem(1px) rem(1px);
+  border-width: rem(1px) 1px;
+  border-width: rem(1px) 4in;
+  border-width: rem(1px) 1em;
+  border-width: rem(1px) 0 0 0;
+  /* Ignore */
+  border: calc(1rem + var(--var, #{rem(1px)})) solid var(--p-border-base);
+  border: calc(1rem + var(--var, #{rem(10px)})) solid var(--p-border-base);
+  /* Comment */
+  border: rem(10px) solid var(--p-border-base);
+  border-width: rem(10px);
+  border-width: rem(10px) rem(10px);
+  border-width: rem(1px) rem(10px);
+  border-width: rem(10px) -1px;
+  border-width: rem(10px) + 1px;
+  border-width: rem($var * 1px);
+
+  /* BORDER FUNCTION */
+  /* Migrate */
   border: border();
   border: border(base);
   border: border(dark);
   border: border(transparent);
   border: border(divider);
-  /* === Ignore === */
-  /* === Comment === */
+  border: border('divider');
+  /* Ignore */
+  /* Comment */
+
+  /* BORDER WIDTH FUNCTION */
+  /* Migrate */
+  border: border-width() solid var(--p-border-base);
+  border: border-width(base) solid var(--p-border-base);
+  border: border-width(thick) solid var(--p-border-base);
+  border: border-width(thicker) solid var(--p-border-base);
+  border: border-width('thicker') solid var(--p-border-base);
+  /* Ignore */
+  /* Comment */
 }
