@@ -196,9 +196,6 @@ export function isTransformableLength(
 ): dimension is Dimension {
   if (!dimension) return false;
 
-  // Zero is the only unitless dimension our length transforms support
-  if (isUnitlessZero(dimension)) return true;
-
   return transformableLengthUnits.includes(dimension.unit);
 }
 
@@ -226,6 +223,12 @@ export function toTransformablePx(value: string) {
     ? `${dimension.number}px`
     : toPx(`${dimension.number}${dimension.unit}`);
 }
+
+/**
+ * Exit early and stop traversing descendant nodes:
+ * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
+ */
+export const StopWalkingFunctionNodes = false;
 
 /**
  * A mapping of evaluated `rem` values (in pixels) and their replacement `decl.value`

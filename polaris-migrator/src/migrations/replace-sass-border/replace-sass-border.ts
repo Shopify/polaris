@@ -11,6 +11,7 @@ import {
   namespace,
   NamespaceOptions,
   toTransformablePx,
+  StopWalkingFunctionNodes,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -39,10 +40,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      let handler;
-
-      if (borderProps.includes(decl.prop)) handler = handleBorder;
-      else return;
+      if (!borderProps.has(decl.prop)) return;
 
       /**
        * A collection of transformable values to migrate (e.g. decl lengths, functions, etc.)
@@ -54,7 +52,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       let hasNumericOperator = false;
       const parsedValue = valueParser(decl.value);
 
-      handler();
+      handleBorderProps();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
         decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
@@ -71,7 +69,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // Handlers
       //
 
-      function handleBorder() {
+      function handleBorderProps() {
         parsedValue.walk((node) => {
           if (node.type === 'word') {
             if (globalValues.has(node.value)) return;
@@ -183,7 +181,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
 const globalValues = new Set(['inherit', 'initial', 'unset']);
 
-const borderProps = [
+const borderProps = new Set([
   'border',
   'border-top',
   'border-right',
@@ -194,7 +192,7 @@ const borderProps = [
   'border-width-right',
   'border-width-bottom',
   'border-width-left',
-];
+]);
 
 const borderWidthLengthMap = {
   '1px': '--p-border-1',
@@ -216,9 +214,3 @@ const borderWidthFunctionMap = {
   thick: '--p-border-2',
   thicker: '--p-border-3',
 } as const;
-
-/**
- * Exit early and stop traversing descendant nodes:
- * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
- */
-const StopWalkingFunctionNodes = false;
