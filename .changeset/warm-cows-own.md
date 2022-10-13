@@ -2,4 +2,4 @@
 '@shopify/polaris-migrator': minor
 ---
 
-Add `replace-sass-border` migration
+Add `replace-border-declarations` migration

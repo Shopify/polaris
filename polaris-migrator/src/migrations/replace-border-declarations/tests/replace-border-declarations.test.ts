@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'replace-sass-border';
-const fixtures = ['replace-sass-border'];
+const migration = 'replace-border-declarations';
+const fixtures = ['replace-border-declarations'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
