@@ -1,8 +1,10 @@
+import {useEffect, useRef, useState} from 'react';
+import type {InferGetServerSidePropsType, GetServerSideProps} from 'next';
+import {useRouter} from 'next/router';
+
 import SandboxHeader from '../src/components/SandboxHeader';
 import SandboxHelpDialog from '../src/components/SandboxHelpDialog';
-import {useEffect, useRef, useState} from 'react';
-import {useRouter} from 'next/router';
-import type {InferGetServerSidePropsType, GetServerSideProps} from 'next';
+import SandboxContainer from '../src/components/SandboxContainer';
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
   // We need to pass initial query param to our nested iframe
@@ -70,17 +72,7 @@ export default function Sandbox({
   }, [router]);
 
   return (
-    <div
-      className="styles-for-site-but-not-polaris-examples"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        height: '100vh',
-        margin: 0,
-        padding: 0,
-      }}
-    >
+    <SandboxContainer>
       <SandboxHeader
         setHelpIsOpen={setHelpIsOpen}
         url={typeof window !== 'undefined' ? window.location.href : ''}
@@ -98,6 +90,6 @@ export default function Sandbox({
         width="100%"
         height="100%"
       />
-    </div>
+    </SandboxContainer>
   );
 }
