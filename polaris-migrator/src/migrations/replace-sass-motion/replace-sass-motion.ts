@@ -1,28 +1,64 @@
 import type {FileInfo} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
+import postcss, {Plugin, Declaration, Helpers} from 'postcss';
 import valueParser from 'postcss-value-parser';
 
 const processed = Symbol('processed');
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'replace-sass-motion',
-  Declaration(decl) {
-    // @ts-expect-error - Skip if processed so we don't process it again
+/*
+function mutateTransitionDurationProp(decl): void {}
+function mutateTransitionDelayProp(decl): void {}
+function mutateTransitionProp(decl): void {}
+
+function mutateTransitionDurationValue(decl, node: unknown): void {}
+function mutateTransitionDelayValue(decl, node: unknown): void {}
+*/
+interface ParsedValueDeclaration extends Declaration {
+  [processed]?: boolean;
+  parsedValue: valueParser.ParsedValue;
+}
+
+// postcss doesn't export this, so had to extract it to here
+type DeclarationProcessor = (
+  decl: Declaration,
+  helper: Helpers,
+) => Promise<void> | void;
+
+// Inject the parsed values into the AST for processing
+function withParsedValue(
+  fn: (decl: ParsedValueDeclaration, helper: Helpers) => void,
+) {
+  return ((decl: ParsedValueDeclaration, helper: Helpers) => {
+    // Skip if processed so we don't process it again
     if (decl[processed]) return;
 
-    // const prop = decl.prop;
-    const parsedValue = valueParser(decl.value);
+    decl.parsedValue = valueParser(decl.value);
 
-    parsedValue.walk((node) => {
-      if (!(node.type === 'function' && node.value === 'hello')) return;
+    const result = fn(decl, helper);
 
-      node.value = 'world';
-    });
+    decl.value = decl.parsedValue.toString();
 
-    decl.value = parsedValue.toString();
-
-    // @ts-expect-error - Mark the declaration as processed
+    // Mark the declaration as processed
     decl[processed] = true;
+
+    return result;
+  }) as DeclarationProcessor;
+}
+
+const plugin = (): Plugin => ({
+  postcssPlugin: 'replace-sass-motion',
+  Declaration: {
+    'transition-duration': withParsedValue((decl) => {
+      console.log('transition-duration');
+      // decl.parsedValue.walk((node) => {
+      //   console.log(JSON.stringify(node, null, 2));
+      // });
+    }),
+    'transition-delay': withParsedValue((decl) => {
+      console.log('transition-delay');
+    }),
+    transition: withParsedValue((decl) => {
+      console.log('transition');
+    }),
   },
 });
 
