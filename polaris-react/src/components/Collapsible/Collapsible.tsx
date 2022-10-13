@@ -18,8 +18,8 @@ export interface CollapsibleProps {
   expandOnPrint?: boolean;
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
-  /** Override transition properties. When set to false, disables transition completely. Defaults to true, which uses
-   * default transition properties.
+  /** Override transition properties. When set to false, disables transition completely.
+   * @default transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}
    */
   transition?: boolean | Transition;
   /** @deprecated Re-measuring is no longer necessary on children update **/
@@ -53,12 +53,13 @@ export function Collapsible({
     expandOnPrint && styles.expandOnPrint,
   );
 
-  const transitionDisabled = transition === false;
+  const transitionDisabled = isTransitionDisabled(transition);
 
   const transitionStyles = typeof transition === 'object' && {
     transitionDuration: transition.duration,
     transitionTimingFunction: transition.timingFunction,
   };
+
   const collapsibleStyles = {
     ...transitionStyles,
     ...{
@@ -134,4 +135,18 @@ export function Collapsible({
       {content}
     </div>
   );
+}
+
+const zeroDurationRegex = /^0(ms|s)$/;
+
+function isTransitionDisabled(transitionProp: Transition | boolean) {
+  if (typeof transitionProp === 'boolean') {
+    return !transitionProp;
+  }
+
+  const {duration} = transitionProp;
+  if (duration && zeroDurationRegex.test(duration.trim())) {
+    return true;
+  }
+  return false;
 }

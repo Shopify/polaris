@@ -9,33 +9,33 @@ const mockScrollHeight = 2;
 describe('<Collapsible />', () => {
   const fullyOpenProps = {
     'aria-hidden': false,
-    style: {
+    style: expect.objectContaining({
       maxHeight: 'none',
       overflow: 'visible',
-    },
+    }),
   };
   const fullyClosedProps = {
     'aria-hidden': true,
     className: expect.stringContaining('isFullyClosed'),
-    style: {
+    style: expect.objectContaining({
       maxHeight: '0px',
       overflow: 'hidden',
-    },
+    }),
   };
   const animatingOpenProps = {
     'aria-hidden': false,
-    style: {
+    style: expect.objectContaining({
       maxHeight: '2px',
       overflow: 'hidden',
-    },
+    }),
   };
   const animatingClosedProps = {
     'aria-hidden': true,
     className: expect.not.stringContaining('isFullyClosed'),
-    style: {
+    style: expect.objectContaining({
       maxHeight: '0px',
       overflow: 'hidden',
-    },
+    }),
   };
 
   beforeEach(() => {
@@ -111,7 +111,7 @@ describe('<Collapsible />', () => {
 
   it('does not animate when rendered open', () => {
     const collapsible = mountWithApp(
-      <Collapsible id="test-collapsible" open expandOnPrint>
+      <Collapsible id="test-collapsible" open>
         content
       </Collapsible>,
     );
@@ -121,7 +121,7 @@ describe('<Collapsible />', () => {
 
   it('begins animation when toggled open', () => {
     const collapsible = mountWithApp(
-      <Collapsible id="test-collapsible" open={false} expandOnPrint>
+      <Collapsible id="test-collapsible" open={false}>
         content
       </Collapsible>,
     );
@@ -133,7 +133,7 @@ describe('<Collapsible />', () => {
 
   it('begins animation when toggled closed', () => {
     const collapsible = mountWithApp(
-      <Collapsible id="test-collapsible" open expandOnPrint>
+      <Collapsible id="test-collapsible" open>
         content
       </Collapsible>,
     );
@@ -166,21 +166,34 @@ describe('<Collapsible />', () => {
       expect(collapsible).toHaveReactProps({transition: {timingFunction}});
     });
 
-    it('does not animate when transition is set to false', () => {
-      const collapsible = mountWithApp(
-        <Collapsible id="test-collapsible" open={false} transition={false}>
-          content
-        </Collapsible>,
-      );
+    const transitionDisabledOptions = [
+      false,
+      {duration: '0s'},
+      {duration: '0ms'},
+    ];
 
-      collapsible.setProps({open: true});
+    it.each(transitionDisabledOptions)(
+      'does not animate when transition is disabled with %p',
+      (transition) => {
+        const collapsible = mountWithApp(
+          <Collapsible
+            id="test-collapsible"
+            open={false}
+            transition={transition}
+          >
+            content
+          </Collapsible>,
+        );
 
-      expect(collapsible).toContainReactComponent('div', fullyOpenProps);
+        collapsible.setProps({open: true});
 
-      collapsible.setProps({open: false});
+        expect(collapsible).toContainReactComponent('div', fullyOpenProps);
 
-      expect(collapsible).toContainReactComponent('div', fullyClosedProps);
-    });
+        collapsible.setProps({open: false});
+
+        expect(collapsible).toContainReactComponent('div', fullyClosedProps);
+      },
+    );
   });
 
   describe('onTransitionEnd', () => {
