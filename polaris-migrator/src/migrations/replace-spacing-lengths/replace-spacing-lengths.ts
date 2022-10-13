@@ -15,7 +15,7 @@ import {
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-export default function replaceSassSpace(
+export default function replaceSpacingLengths(
   fileInfo: FileInfo,
   _: API,
   options: Options,
