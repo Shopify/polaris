@@ -85,7 +85,7 @@ export const Text = ({
   );
 
   return (
-    <Component className={className} {...(id ? id : null)}>
+    <Component className={className} {...(id && {id})}>
       {children}
     </Component>
   );
