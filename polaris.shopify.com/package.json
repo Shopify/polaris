@@ -3,10 +3,11 @@
   "version": "0.21.1",
   "private": true,
   "scripts": {
-    "build": "yarn gen-assets && next build",
+    "build": "yarn gen-assets && playroom build && next build",
     "start": "next start",
     "dev": "run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
+    "dev:playroom": "playroom start",
     "dev:watch-md": "node scripts/watch-md.mjs",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
@@ -18,7 +19,7 @@
     "gen-assets": "node scripts/gen-assets.mjs"
   },
   "dependencies": {
-    "@floating-ui/react-dom-interactions": "^0.6.1",
+    "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
     "@shopify/polaris": "^10.7.0",
     "@shopify/polaris-icons": "^6.4.0",
@@ -51,13 +52,16 @@
     "eslint-config-next": "12.1.0",
     "execa": "^6.1.0",
     "frontmatter": "^0.0.3",
+    "babel-plugin-preval": "^5.1.0",
     "generact": "^0.4.0",
     "get-site-urls": "3.0.0-alpha.1",
     "globby": "^11.1.0",
     "js-yaml": "^4.1.0",
     "lodash.set": "^4.3.2",
+    "playroom": "^0.28.0",
     "marked": "^4.0.16",
     "puppeteer": "^16.0.0",
+    "style-loader": "^3.3.1",
     "rehype-raw": "^6.1.1",
     "sass": "^1.49.9",
     "typescript": "^4.7.4"
