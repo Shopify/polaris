@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 navTitle: Getting started
-description: Polaris is the design system for the Shopify admin. If you’re just starting out with Polaris, here’s a list of recommended resources and guidance to get you started:
+description: 'Polaris is the design system for the Shopify admin. If you’re just starting out with Polaris, here’s a list of recommended resources and guidance to get you started:'
 keywords:
   - about
   - polaris
