@@ -1,0 +1,91 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+
+.DialogPanel {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 3rem;
+  right: 1.25rem;
+  bottom: 3rem;
+  left: 1.25rem;
+  padding: 3rem;
+  gap: 4rem;
+  max-width: 1080px;
+  max-height: 700px;
+  margin: auto;
+  z-index: 2;
+  border-radius: var(--border-radius-800);
+  overflow: auto;
+  box-shadow: 0 100px 100px rgba(0, 0, 0, 0.2);
+  background: var(--surface);
+  color: var(--text);
+  @include custom-scrollbars;
+
+  h2 {
+    @include heading-1;
+    margin-bottom: 1.5rem;
+  }
+
+  ul {
+    li {
+      margin-left: 1rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+      list-style-type: disc;
+    }
+  }
+
+  p {
+    margin: 1.5rem 0 1.75rem;
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 2rem 1.5rem;
+    top: var(--header-height);
+    border-radius: 0;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: $breakpointMobile) {
+    justify-content: flex-start;
+  }
+}
+
+.SandboxVideo {
+  display: flex;
+  align-items: center;
+  min-width: 24rem;
+  max-width: 24rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-800);
+
+  video {
+    width: 100%;
+    height: auto;
+    transform: scale(1.0075);
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    display: none;
+  }
+}
+
+.PreventBackgroundInteractions {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: var(--text);
+  opacity: 0.6;
+}

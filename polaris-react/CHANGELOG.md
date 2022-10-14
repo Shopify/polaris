@@ -1,5 +1,24 @@
 # Changelog
 
+## 10.8.0
+
+### Minor Changes
+
+- [#7364](https://github.com/Shopify/polaris/pull/7364) [`e4b2c36d8`](https://github.com/Shopify/polaris/commit/e4b2c36d8ea8990c2f7e7229ad2529cc0391cf82) Thanks [@Bringer128](https://github.com/Bringer128)! - Deprecated Collapsible preventMeasuringOnChildrenUpdate.
+  Fixed bug where Collapsible would get stuck in animating state when duration is 0.
+  Add support for intentionally disabling the transition in Collapsible.
+
+### Patch Changes
+
+- [#7363](https://github.com/Shopify/polaris/pull/7363) [`8a6c323e2`](https://github.com/Shopify/polaris/commit/8a6c323e2965e4db82fe5e7a398d771f9f126a0e) Thanks [@aveline](https://github.com/aveline)! - Added `id` prop to `Text` and `Box`
+
+* [#7348](https://github.com/Shopify/polaris/pull/7348) [`ea2a45bbb`](https://github.com/Shopify/polaris/commit/ea2a45bbb9d706fc44100366c7e389f2d25abcf4) Thanks [@aveline](https://github.com/aveline)! - Added `setMediaWidth` breakpoints test utility
+
+- [#7388](https://github.com/Shopify/polaris/pull/7388) [`5bc885765`](https://github.com/Shopify/polaris/commit/5bc8857654475fe0006520d1d448170f7a51976b) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a re-render bug with Page Actions
+
+- Updated dependencies [[`c3f427c17`](https://github.com/Shopify/polaris/commit/c3f427c17d268f406618aaddb684ba12c3fa15d1)]:
+  - @shopify/polaris-tokens@6.2.1
+
 ## 10.7.0
 
 ### Minor Changes

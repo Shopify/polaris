@@ -1,18 +1,23 @@
-import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 
-import {debounce} from '../../../../utilities/debounce';
-import {useI18n} from '../../../../utilities/i18n';
 import type {
   ActionListItemDescriptor,
   ActionListSection,
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../types';
-import {ButtonGroup} from '../../../ButtonGroup';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../../EventListener';
 import {MenuGroup} from '../MenuGroup';
+import {ButtonGroup} from '../../../ButtonGroup';
+import {debounce} from '../../../../utilities/debounce';
+import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
+import {useEventListener} from '../../../../utilities/use-event-listener';
 
 import styles from './Actions.scss';
 
@@ -90,6 +95,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         currentMeasuredActions.showable.length,
         actionsAndGroups.length,
       );
+
       return {showable, rolledUp};
     });
   }, [actions, groups]);
@@ -169,12 +175,13 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     [measureActions],
   );
 
-  useEffect(() => {
-    if (!actionsLayoutRef.current) {
-      return;
-    }
+  useEventListener('resize', handleResize);
+
+  useLayoutEffect(() => {
+    if (!actionsLayoutRef.current) return;
 
     availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
+
     if (
       // Allow measuring twice
       // This accounts for the initial paint and re-flow
@@ -319,7 +326,6 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   return (
     <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
       {groupedActionsMarkup}
-      <EventListener event="resize" handler={handleResize} />
     </div>
   );
 }

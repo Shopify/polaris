@@ -43,7 +43,12 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   const slug = params?.slug;
   if (!slug)
     throw new Error('Expected params.slug to be defined (as string[])');
-  const mdRelativePath = `${contentDir}/${params.slug.join('/')}/index.md`;
+
+  const slugPath = `${contentDir}/${params.slug.join('/')}`;
+  const pathIsDirectory = fs.existsSync(slugPath) && fs.lstatSync(slugPath).isDirectory();
+  const mdRelativePath = pathIsDirectory
+    ? `${contentDir}/${params.slug.join('/')}/index.md`
+    : `${contentDir}/${params.slug.join('/')}.md`;
   const mdFilePath = path.resolve(process.cwd(), mdRelativePath);
   const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
 
@@ -82,13 +87,17 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = path.resolve(process.cwd(), 'content/**/*.md');
+  const globPath = [
+    path.resolve(process.cwd(), 'content/*.md'),
+    path.resolve(process.cwd(), 'content/**/*.md'),
+  ];
   const paths = globby
     .sync(globPath)
     .map((fileName: string) => {
       return fileName
         .replace(`${process.cwd()}/content`, '')
-        .replace('/index.md', '');
+        .replace('/index.md', '')
+        .replace('.md', '');
     })
     .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
 

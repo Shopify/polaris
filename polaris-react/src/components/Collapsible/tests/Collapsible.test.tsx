@@ -1,9 +1,52 @@
-import React, {useState, useCallback} from 'react';
-import {mountWithApp} from 'tests/utilities';
+import React from 'react';
+import {CustomRoot, mountWithApp} from 'tests/utilities';
 
+import type {WithPolarisTestProviderOptions} from '../../PolarisTestProvider';
 import {Collapsible, CollapsibleProps} from '../Collapsible';
 
+const mockScrollHeight = 2;
+
 describe('<Collapsible />', () => {
+  const fullyOpenProps = {
+    'aria-hidden': false,
+    style: expect.objectContaining({
+      maxHeight: 'none',
+      overflow: 'visible',
+    }),
+  };
+  const fullyClosedProps = {
+    'aria-hidden': true,
+    className: expect.stringContaining('isFullyClosed'),
+    style: expect.objectContaining({
+      maxHeight: '0px',
+      overflow: 'hidden',
+    }),
+  };
+  const animatingOpenProps = {
+    'aria-hidden': false,
+    style: expect.objectContaining({
+      maxHeight: '2px',
+      overflow: 'hidden',
+    }),
+  };
+  const animatingClosedProps = {
+    'aria-hidden': true,
+    className: expect.not.stringContaining('isFullyClosed'),
+    style: expect.objectContaining({
+      maxHeight: '0px',
+      overflow: 'hidden',
+    }),
+  };
+
+  beforeEach(() => {
+    const mockScrollHeightFn = jest.spyOn(
+      Element.prototype,
+      'scrollHeight',
+      'get',
+    );
+    mockScrollHeightFn.mockReturnValue(mockScrollHeight);
+  });
+
   it('does not render its children and indicates hidden with aria-hidden', () => {
     const collapsible = mountWithApp(
       <Collapsible id="test-collapsible" open={false}>
@@ -66,6 +109,40 @@ describe('<Collapsible />', () => {
     });
   });
 
+  it('does not animate when rendered open', () => {
+    const collapsible = mountWithApp(
+      <Collapsible id="test-collapsible" open>
+        content
+      </Collapsible>,
+    );
+
+    expect(collapsible).toContainReactComponent('div', fullyOpenProps);
+  });
+
+  it('begins animation when toggled open', () => {
+    const collapsible = mountWithApp(
+      <Collapsible id="test-collapsible" open={false}>
+        content
+      </Collapsible>,
+    );
+
+    collapsible.setProps({open: true});
+
+    expect(collapsible).toContainReactComponent('div', animatingOpenProps);
+  });
+
+  it('begins animation when toggled closed', () => {
+    const collapsible = mountWithApp(
+      <Collapsible id="test-collapsible" open>
+        content
+      </Collapsible>,
+    );
+
+    collapsible.setProps({open: false});
+
+    expect(collapsible).toContainReactComponent('div', animatingClosedProps);
+  });
+
   describe('Transition', () => {
     it('passes a duration property', () => {
       const duration = '150ms';
@@ -88,96 +165,119 @@ describe('<Collapsible />', () => {
 
       expect(collapsible).toHaveReactProps({transition: {timingFunction}});
     });
+
+    const transitionDisabledOptions = [
+      false,
+      {duration: '0s'},
+      {duration: '0ms'},
+    ];
+
+    it.each(transitionDisabledOptions)(
+      'does not animate when transition is disabled with %p',
+      (transition) => {
+        const collapsible = mountWithApp(
+          <Collapsible
+            id="test-collapsible"
+            open={false}
+            transition={transition}
+          >
+            content
+          </Collapsible>,
+        );
+
+        collapsible.setProps({open: true});
+
+        expect(collapsible).toContainReactComponent('div', fullyOpenProps);
+
+        collapsible.setProps({open: false});
+
+        expect(collapsible).toContainReactComponent('div', fullyClosedProps);
+      },
+    );
   });
 
   describe('onTransitionEnd', () => {
-    it('adds an isFullyClosed class to the collapsible onTransitionEnd if the event target is the collapsible div', () => {
+    it('completes opening transition', () => {
       const id = 'test-collapsible';
-      const collapsibleWithToggle = mountWithApp(
-        <CollapsibleWithToggle id={id} />,
+      const collapsible = mountWithApp<CollapsibleProps>(
+        <Collapsible id={id} open={false}>
+          content
+        </Collapsible>,
       );
-      collapsibleWithToggle.find('button')!.trigger('onClick');
+      collapsible.setProps({open: true});
 
-      const wrapper = collapsibleWithToggle.find('div', {id})!;
-      wrapper.trigger('onTransitionEnd', {
-        target: wrapper.domNode as HTMLDivElement,
+      fireTransitionEnd(collapsible);
+
+      expect(collapsible).toContainReactComponent('div', {
+        ...fullyOpenProps,
+        id,
       });
-
-      expect(
-        collapsibleWithToggle.find('div', {
-          id,
-          'aria-hidden': true,
-          className: 'Collapsible isFullyClosed',
-        }),
-      ).not.toBeNull();
     });
 
-    it('does not add an isFullyClosed class to the collapsible onTransitionEnd if the event target is not the collapsible div', () => {
+    it('completes closing transition', () => {
       const id = 'test-collapsible';
-      const collapsibleWithToggle = mountWithApp(
-        <CollapsibleWithToggle id={id} />,
-      );
-      collapsibleWithToggle.find('button')!.trigger('onClick');
-
-      collapsibleWithToggle.find('div', {id})!.trigger('onTransitionEnd', {
-        target: document.createElement('div'),
-      });
-
-      expect(
-        collapsibleWithToggle.find('div', {
-          id,
-          'aria-hidden': true,
-          className: 'Collapsible',
-        }),
-      ).not.toBeNull();
-    });
-  });
-
-  describe('preventMeasuringOnChildrenUpdate', () => {
-    it('does not re-measure on child update when preventMeasuringOnChildUpdate is true', () => {
-      const id = 'test-collapsible';
-
-      const collapsible = mountWithApp(
-        <Collapsible id={id} open preventMeasuringOnChildrenUpdate>
-          <div>Foo</div>
+      const collapsible = mountWithApp<CollapsibleProps>(
+        <Collapsible id={id} open>
+          content
         </Collapsible>,
       );
 
-      collapsible.setProps({children: <div>Bar</div>});
+      collapsible.setProps({open: false});
+
+      fireTransitionEnd(collapsible);
 
       expect(collapsible).toContainReactComponent('div', {
+        ...fullyClosedProps,
         id,
-        style: {maxHeight: 'none', overflow: 'visible'},
       });
     });
 
-    it('re-measures on child update when preventMeasuringOnChildUpdate is false', () => {
+    it('does not complete opening transition if onTransitionEnd fires on a different target', () => {
       const id = 'test-collapsible';
-
-      const collapsible = mountWithApp(
-        <Collapsible id={id} open preventMeasuringOnChildrenUpdate={false}>
-          <div>Foo</div>
+      const collapsible = mountWithApp<CollapsibleProps>(
+        <Collapsible id={id} open={false}>
+          content
         </Collapsible>,
       );
 
-      collapsible.setProps({children: <div>Bar</div>});
+      collapsible.setProps({open: true});
+      fireTransitionEnd(collapsible, true);
 
       expect(collapsible).toContainReactComponent('div', {
+        ...animatingOpenProps,
         id,
-        style: {maxHeight: '0px', overflow: 'hidden'},
+      });
+    });
+
+    it('does not complete closing transition if onTransitionEnd fires on a different target', () => {
+      const id = 'test-collapsible';
+      const collapsible = mountWithApp<CollapsibleProps>(
+        <Collapsible id={id} open>
+          content
+        </Collapsible>,
+      );
+
+      collapsible.setProps({open: false});
+
+      fireTransitionEnd(collapsible, true);
+
+      expect(collapsible).toContainReactComponent('div', {
+        ...animatingClosedProps,
+        id,
       });
     });
   });
 });
 
-function CollapsibleWithToggle(props: Omit<CollapsibleProps, 'open'>) {
-  const [open, setOpen] = useState(true);
-  const handleToggle = useCallback(() => setOpen((open) => !open), []);
-
-  return (
-    <>
-      <button onClick={handleToggle}>Activator</button>
-      <Collapsible {...props} open={open} />
-    </>
-  );
+function fireTransitionEnd(
+  collapsible: CustomRoot<CollapsibleProps, WithPolarisTestProviderOptions>,
+  fireOnWrongTarget = false,
+) {
+  const id = collapsible.props.id;
+  const div = collapsible.find('div', {id});
+  const correctTarget = div!.domNode as HTMLDivElement;
+  const wrongTarget = document.createElement('div');
+  div!.trigger('onTransitionEnd', {
+    target: fireOnWrongTarget ? wrongTarget : correctTarget,
+  });
 }

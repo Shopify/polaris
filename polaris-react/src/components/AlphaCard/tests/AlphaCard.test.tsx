@@ -1,15 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {
-  BreakpointsTokenName,
-  breakpoints,
-  getMediaConditions,
-} from '@shopify/polaris-tokens';
+import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {AlphaCard} from '..';
-
-const mediaConditions = getMediaConditions(breakpoints);
 
 const heading = <p>Online store dashboard</p>;
 const subheading = <p>View a summary of your online store performance</p>;
@@ -53,20 +47,3 @@ describe('AlphaCard', () => {
     });
   });
 });
-
-function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
-  const aliasDirectionConditions = Object.values(
-    mediaConditions[breakpointsTokenName],
-  );
-
-  jest.spyOn(window, 'matchMedia').mockImplementation((query) => ({
-    matches: aliasDirectionConditions.includes(query),
-    media: '',
-    onchange: null,
-    addListener: jest.fn(),
-    removeListener: jest.fn(),
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    dispatchEvent: jest.fn(),
-  }));
-}
