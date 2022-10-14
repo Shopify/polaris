@@ -130,68 +130,43 @@
     left legacy-polaris-v8.duration(slowest) linear;
 }
 
-/* Don't let prettier pretty-ify this so it matches our output */
-/* prettier-ignore */
 .duration-multiple-constant {
   opacity: 1;
-  transition: opacity 0 linear,
-    left 0 linear;
-  transition: opacity 0ms linear,
-    left 0ms linear;
-  transition: opacity 0s linear,
-    left 0s linear;
-  transition: opacity 50ms linear,
-    left 50ms linear;
-  transition: opacity 0.05s linear,
-    left 0.05s linear;
-  transition: opacity 100ms linear,
-    left 100ms linear;
-  transition: opacity 0.1s linear,
-    left 0.1s linear;
-  transition: opacity 150ms linear,
-    left 150ms linear;
-  transition: opacity 0.15s linear,
-    left 0.15s linear;
-  transition: opacity 200ms linear,
-    left 200ms linear;
-  transition: opacity 0.2s linear,
-    left 0.2s linear;
-  transition: opacity 250ms linear,
-    left 250ms linear;
-  transition: opacity 0.25s linear,
-    left 0.25s linear;
-  transition: opacity 300ms linear,
-    left 300ms linear;
-  transition: opacity 0.3s linear,
-    left 0.3s linear;
-  transition: opacity 350ms linear,
-    left 350ms linear;
-  transition: opacity 0.35s linear,
-    left 0.35s linear;
-  transition: opacity 400ms linear,
-    left 400ms linear;
-  transition: opacity 0.4s linear,
-    left 0.4s linear;
-  transition: opacity 450ms linear,
-    left 450ms linear;
-  transition: opacity 0.45s linear,
-    left 0.45s linear;
-  transition: opacity 500ms linear,
-    left 500ms linear;
-  transition: opacity 0.5s linear,
-    left 0.5s linear;
-  transition: opacity 5s linear,
-    left 5s linear;
+  transition: opacity 0 linear, left 0 linear;
+  transition: opacity 0ms linear, left 0ms linear;
+  transition: opacity 0s linear, left 0s linear;
+  transition: opacity 50ms linear, left 50ms linear;
+  transition: opacity 0.05s linear, left 0.05s linear;
+  transition: opacity 100ms linear, left 100ms linear;
+  transition: opacity 0.1s linear, left 0.1s linear;
+  transition: opacity 150ms linear, left 150ms linear;
+  transition: opacity 0.15s linear, left 0.15s linear;
+  transition: opacity 200ms linear, left 200ms linear;
+  transition: opacity 0.2s linear, left 0.2s linear;
+  transition: opacity 250ms linear, left 250ms linear;
+  transition: opacity 0.25s linear, left 0.25s linear;
+  transition: opacity 300ms linear, left 300ms linear;
+  transition: opacity 0.3s linear, left 0.3s linear;
+  transition: opacity 350ms linear, left 350ms linear;
+  transition: opacity 0.35s linear, left 0.35s linear;
+  transition: opacity 400ms linear, left 400ms linear;
+  transition: opacity 0.4s linear, left 0.4s linear;
+  transition: opacity 450ms linear, left 450ms linear;
+  transition: opacity 0.45s linear, left 0.45s linear;
+  transition: opacity 500ms linear, left 500ms linear;
+  transition: opacity 0.5s linear, left 0.5s linear;
+  transition: opacity 5s linear, left 5s linear;
 }
 
 .edges {
   /* sass calculation */
   transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
   /* Using duration as the transition-delay shorthand */
-  transition: opacity linear 0.5ms;
-  /* Don't let prettier pretty-ify this so it matches our output */
-  /* prettier-ignore */
-  transition: opacity legacy-polaris-v8.duration(slower) linear legacy-polaris-v8.duration(fast);
+  transition: opacity linear 0.5s;
+  transition: opacity legacy-polaris-v8.duration(slower) linear
+    legacy-polaris-v8.duration(fast);
   /* A shorthand that doesn't specify a duration, only transition-delay. Is this a bug? ¯\_(ツ)_/¯ Dunno. But it exists in the wild, so we have to handle it. */
   transition: opacity linear legacy-polaris-v8.duration(slower);
+  /* foobar isn't a valid duration key */
+  transition-duration: legacy-polaris-v8.duration(foobar);
 }
