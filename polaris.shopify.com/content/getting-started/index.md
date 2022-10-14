@@ -20,7 +20,7 @@ icon: HintMajor
 
 ## Design resources
 
-Shopify provides [Figma community resources](https://www.figma.com/@Shopify) for Polaris components, styles, and icons. If you are new to Figma, check out our [onboarding guide](https://www.figma.com/community/file/994263185745279952), or open Figma and start designing with the resources below:
+Shopify provides [Figma community resources](https://www.figma.com/@Shopify) for Polaris components, styles, and icons. If you are new to Figma, check out our [onboarding guide](https://www.figma.com/community/file/994263185745279952), or open Figma and start designing with the Polaris:
 
 - [Component UI kit](https://www.figma.com/community/file/1111360433678236702)
 - [Style Library](https://www.figma.com/community/file/1111359207966840858)
@@ -28,10 +28,10 @@ Shopify provides [Figma community resources](https://www.figma.com/@Shopify) for
 
 ## Development resources
 
-The [Shopify/polaris GitHub repo](https://github.com/Shopify/polaris) is an open-source monorepo made up of NPM packages, VSCode extensions, Figma plugins, and websites. To get started, install and use the Polaris:
+The [Shopify/polaris GitHub repo](https://github.com/Shopify/polaris) is an open-source monorepo made up of NPM packages, VS Code extensions, Figma plugins, and this website. To get started, learn how to install and use the Polaris:
 
 - [React components](https://github.com/Shopify/polaris/tree/main/polaris-react#using-the-react-components)
-- [Design Tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens#installation)
+- [Design tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens#installation)
 - [VS Code extension](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode)
 
 ## Tutorials
