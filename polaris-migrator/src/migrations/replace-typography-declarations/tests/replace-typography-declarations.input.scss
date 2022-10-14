@@ -87,6 +87,6 @@
   line-height: rem(16px, $too-many-args);
   line-height: rem(16px) 1px;
   line-height: rem(1px) 16px;
-  line-height: rem(#{10px + 2px}) 16px;
-  line-height: rem(16px) + #{10px + 2px};
+  line-height: rem(#{10px + 6px}) 16px;
+  line-height: rem(16px) + #{10px + 6px};
 }
