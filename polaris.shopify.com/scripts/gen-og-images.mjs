@@ -53,7 +53,7 @@ const generateHTML = async (url, slug) => {
     url.startsWith('/content/') ||
     url.startsWith('/patterns/')
   ) {
-    const mdFilePath = path.join(process.cwd(), `content${url}/index.md`);
+    const mdFilePath = path.join(process.cwd(), `content${url}.md`);
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
     if (!data.icon) return;

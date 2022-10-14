@@ -196,4 +196,16 @@
       mix-blend-mode: plus-lighter;
     }
   }
+
+  .Poster {
+    position: absolute;
+    border-radius: 24px;
+    overflow: hidden;
+    width: 60%;
+    height: 85%;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(33px);
+    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
+  }
 }

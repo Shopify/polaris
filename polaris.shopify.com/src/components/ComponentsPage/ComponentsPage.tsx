@@ -1,9 +1,5 @@
 import siteJson from '../../../.cache/site.json';
-import {
-  getComponentCategories,
-  stripMarkdownLinks,
-  slugify,
-} from '../../utils/various';
+import {getComponentCategories, stripMarkdownLinks} from '../../utils/various';
 import {Status, SiteJSON} from '../../types';
 import styles from './ComponentsPage.module.scss';
 import PageMeta from '../PageMeta';
@@ -43,13 +39,12 @@ export default function ComponentsPage() {
                       status,
                       description = '',
                     } = pages[slug].frontMatter;
-                    const url = `/components/${slugify(title)}`;
                     return (
                       <Grid.Item
                         key={title}
                         title={title}
                         description={stripMarkdownLinks(description)}
-                        url={url}
+                        url={`/${slug}`}
                         status={status as Status}
                         renderPreview={() => (
                           <ComponentThumbnail title={title} />

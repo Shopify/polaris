@@ -50,6 +50,8 @@ export interface TextProps {
   color?: Color;
   /** Adjust weight of text */
   fontWeight?: FontWeight;
+  /** HTML id attribute */
+  id?: string;
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
@@ -64,6 +66,7 @@ export const Text = ({
   children,
   color,
   fontWeight,
+  id,
   truncate = false,
   variant,
   visuallyHidden = false,
@@ -81,5 +84,9 @@ export const Text = ({
     visuallyHidden && styles.visuallyHidden,
   );
 
-  return <Component className={className}>{children}</Component>;
+  return (
+    <Component className={className} {...(id && {id})}>
+      {children}
+    </Component>
+  );
 };
