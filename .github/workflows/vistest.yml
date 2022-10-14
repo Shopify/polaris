@@ -1,0 +1,92 @@
+name: Visual Regression Tests
+
+on:
+  issue_comment:
+    types:
+      - created
+
+jobs:
+  visual_regression_test:
+    name: 'Visual regression test'
+    if: |
+      github.event.issue.pull_request && github.event.comment.body == '/vistest'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enforce permission requirement
+        uses: prince-chrismc/check-actor-permissions-action@v1
+        with:
+          permission: write
+
+      - name: Validate pull request is not on forked repo
+        uses: actions/github-script@v6
+        id: pr_data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          script: |
+            try {
+              const pullRequest = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+              })
+
+              // Pull request from fork
+              if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
+                const errorMessage = '`/vistest` is not supported on pull requests from forked repositories.'
+
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: errorMessage,
+                })
+
+                core.setFailed(errorMessage)
+              }
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
+
+      - name: Checkout branch
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Chromatic git history to track changes
+
+      - name: Setup Node with v16.13.0
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.13.0
+          cache: yarn
+
+      - name: Restore cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            **/.turbo
+            node_modules/.cache/turbo
+            polaris-react/build-internal/cache
+          key: ${{ runner.os }}-visual-regression-test-v1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-visual-regression-test-v1-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build packages
+        run: yarn turbo run build --filter=@shopify/polaris
+
+      - name: Build Storybook
+        run: yarn workspace @shopify/polaris run storybook:build --quiet
+
+      - name: Run Chromatic tests
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          autoAcceptChanges: 'main'
+          storybookBuildDir: 'polaris-react/build-internal/storybook/static'
+          exitZeroOnChanges: true
+          exitOnceUploaded: true
+        env:
+          STORYBOOK_GITHUB_SHA: ${{ github.sha }}
