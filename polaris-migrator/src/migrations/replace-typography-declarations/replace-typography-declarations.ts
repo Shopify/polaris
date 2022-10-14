@@ -308,6 +308,30 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               }
             }
 
+            if (isSassFunction(namespacedRem, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (args.length !== 1) return;
+
+              const lineHeightInPx = toTransformablePx(args[0]);
+
+              if (!isKeyOf(fontLineHeightMap, lineHeightInPx)) return;
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: fontLineHeightMap[lineHeightInPx],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: fontLineHeightMap[lineHeightInPx].length,
+                },
+              ];
+            }
+
             return StopWalkingFunctionNodes;
           }
         });

@@ -121,4 +121,36 @@
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* line-height: line-height(caption, base, $too-many-args); */
   line-height: line-height(caption, base, $too-many-args);
+
+  /* REM FUNCTION */
+  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-1);
+  /* Comment */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem(1em); */
+  line-height: rem(1em);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem(10px); */
+  line-height: rem(10px);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem($invalid); */
+  line-height: rem($invalid);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem(); */
+  line-height: rem();
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem(var(--p-font-line-height-1), $too-many-args); */
+  line-height: rem(16px, $too-many-args);
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: var(--p-font-line-height-1) 1px; */
+  line-height: rem(16px) 1px;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem(1px) var(--p-font-line-height-1); */
+  line-height: rem(1px) 16px;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: rem(#{10px + 2px}) var(--p-font-line-height-1); */
+  line-height: rem(#{10px + 2px}) 16px;
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* line-height: var(--p-font-line-height-1) + #{10px + 2px}; */
+  line-height: rem(16px) + #{10px + 2px};
 }

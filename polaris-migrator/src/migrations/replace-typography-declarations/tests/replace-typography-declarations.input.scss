@@ -75,4 +75,18 @@
   line-height: line-height(caption, $invalid);
   line-height: line-height();
   line-height: line-height(caption, base, $too-many-args);
+
+  /* REM FUNCTION */
+  line-height: rem(16px);
+  line-height: rem(1rem);
+  /* Comment */
+  line-height: rem(1em);
+  line-height: rem(10px);
+  line-height: rem($invalid);
+  line-height: rem();
+  line-height: rem(16px, $too-many-args);
+  line-height: rem(16px) 1px;
+  line-height: rem(1px) 16px;
+  line-height: rem(#{10px + 2px}) 16px;
+  line-height: rem(16px) + #{10px + 2px};
 }
