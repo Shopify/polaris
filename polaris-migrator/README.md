@@ -99,6 +99,28 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
 ```
 
+### `replace-typography-declarations`
+
+Replace legacy Typography functions and hardcoded lengths with Polaris custom properties for `font-family`, `font-size`, `font-weight`, and `line-height` declarations.
+
+```diff
+- font-family: font-family(monospace);
++ font-family: var(--p-font-family-mono);
+
+- font-size: font-size(input, base);
++ font-size: var(--p-font-size-200);
+
+- font-weight: 400;
++ font-weight: var(--p-font-weight-regular);
+
+- line-height: line-height(caption, base);
++ font-family: var(--p-font-line-height-2);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-typography-declarations <path>
+```
+
 ## Creating a migration
 
 ### Setup

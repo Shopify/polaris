@@ -205,3 +205,10 @@ function getDownMediaCondition(breakpoint: string) {
   const offsetBreakpoint = parseFloat(toPx(breakpoint) ?? '') - 0.04;
   return `(max-width: ${toEm(`${offsetBreakpoint}px`)})`;
 }
+
+export function isKeyOf<T extends {[key: string]: any}>(
+  obj: T,
+  key: PropertyKey | undefined,
+): key is keyof T {
+  return Object.keys(obj).includes(key as string);
+}

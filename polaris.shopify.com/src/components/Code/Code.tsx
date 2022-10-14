@@ -80,7 +80,7 @@ function HighlightedCode({code}: {code: string}) {
   );
 }
 
-function CopyButton({code}: {code: string}) {
+export function CopyButton({code}: {code: string}) {
   const [copy, didJustCopy] = useCopyToClipboard(code);
 
   return (
