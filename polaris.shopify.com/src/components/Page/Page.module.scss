@@ -57,8 +57,18 @@
   width: var(--toc-width);
   overscroll-behavior: contain;
   overflow: auto;
-  box-shadow: inset 1px 0 var(--border-color);
   @include layout-scrollbars();
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    left: 0;
+    width: 1px;
+    background: var(--border-color);
+  }
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;

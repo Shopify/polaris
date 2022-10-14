@@ -25,11 +25,9 @@
       box-shadow: var(--card-shadow-hover);
     }
 
-    &[aria-selected='true'] {
-      background: var(--search-highlight-color);
-      &:focus {
-        box-shadow: var(--focus-outline);
-      }
+    &[aria-selected='true'],
+    &:focus-visible {
+      background: var(--surface-subdued);
     }
   }
 }

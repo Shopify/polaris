@@ -22,6 +22,7 @@
       background: var(--text);
       border-radius: 0 2px 2px 0;
       opacity: 0;
+      transform: translateY(0.2rem);
     }
 
     &:hover {
