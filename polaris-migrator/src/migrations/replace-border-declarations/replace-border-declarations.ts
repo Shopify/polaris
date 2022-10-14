@@ -203,14 +203,23 @@ const borderWidthLengthMap = {
 } as const;
 
 const borderFunctionMap = {
+  '': '--p-border-base',
   base: '--p-border-base',
+  "'base'": '--p-border-base',
   dark: '--p-border-dark',
+  "'dark'": '--p-border-dark',
   transparent: '--p-border-transparent',
+  "'transparent'": '--p-border-transparent',
   divider: '	--p-border-divider',
+  "'divider'": '	--p-border-divider',
 } as const;
 
 const borderWidthFunctionMap = {
+  '': '--p-border-1',
   base: '--p-border-1',
+  "'base'": '--p-border-1',
   thick: '--p-border-2',
+  "'thick'": '--p-border-2',
   thicker: '--p-border-3',
+  "'thicker'": '--p-border-3',
 } as const;
