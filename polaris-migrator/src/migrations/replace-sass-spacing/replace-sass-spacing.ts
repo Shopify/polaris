@@ -9,6 +9,10 @@ import {
   isSassFunction,
   hasSassFunction,
   hasNumericOperator,
+  hasSassInterpolation,
+  removeSassInterpolation,
+  hasNegativeSassInterpolation,
+  replaceNegativeSassInterpolation,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -38,6 +42,17 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       const parsedValue = valueParser(decl.value);
 
+      // Convert -#{spacing()} to -1 * #{spacing()}
+      if (hasNegativeSassInterpolation(decl.value)) {
+        replaceNegativeSassInterpolation(parsedValue);
+      }
+
+      // Remove #{} from spacing()
+      if (hasSassInterpolation(parsedValue.toString())) {
+        removeSassInterpolation(namespacedSpacing, parsedValue);
+      }
+
+      // Now we can check if the value is a spacing() function
       if (!hasSassFunction(namespacedSpacing, parsedValue)) return;
 
       parsedValue.walk((node) => {
@@ -56,7 +71,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
             sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
             sourceEndIndex: spacingCustomProperty.length,
           },
-          ...node.nodes.slice(1),
         ];
       });
 
