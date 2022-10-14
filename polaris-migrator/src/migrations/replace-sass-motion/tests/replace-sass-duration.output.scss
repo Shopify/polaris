@@ -186,11 +186,12 @@
   /* sass calculation */
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
-  /* Using duration as the transition-delay shorthand */
+  /* Duration comes after easing func */
   transition: opacity linear var(--p-duration-500);
+  /* Duration + Delay */
   transition: opacity var(--p-duration-400) linear var(--p-duration-100);
-  /* A shorthand that doesn't specify a duration, only transition-delay. Is this a bug? ¯\_(ツ)_/¯ Dunno. But it exists in the wild, so we have to handle it. */
-  transition: opacity linear var(--p-duration-400);
+  /* Duration + Delay after easing func */
+  transition: opacity linear var(--p-duration-400) var(--p-duration-100);
   /* foobar isn't a valid duration key */
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. Unknown duration key 'foobar'. */
   transition-duration: legacy-polaris-v8.duration(foobar);
