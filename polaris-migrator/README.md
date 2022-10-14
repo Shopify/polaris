@@ -49,6 +49,25 @@ A generic codemod to rename any component prop.
 npx @shopify/polaris-migrator rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
 ```
 
+### `replace-spacing-lengths`
+
+Replace length values (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
+
+```diff
+- padding: 16px;
++ padding: var(--p-space-4);
+
+- margin: 1rem;
++ margin: var(--p-space-4);
+
+- gap: rem(16px);
++ gap: var(--p-space-4);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-spacing-lengths <path>
+```
+
 ### v9
 
 For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
