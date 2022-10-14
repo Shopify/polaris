@@ -1,33 +1,144 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin, Declaration, Helpers} from 'postcss';
-import valueParser, {
-  ParsedValue,
-  Node,
-  FunctionNode,
-} from 'postcss-value-parser';
+import postcss, {Plugin} from 'postcss';
+import valueParser from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
   NamespaceOptions,
   namespace,
   isSassFunction,
-  hasNumericOperator,
+  isNumericOperator,
+  getFunctionArgs,
+  isTransformableDuration,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-const processed = Symbol('processed');
-const DEFAULT_DURATION = 'base';
+export default function replaceSassMotion(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
+    syntax: require('postcss-scss'),
+  }).css;
+}
 
-const durationFuncMap = {
-  none: '--p-duration-0',
-  fast: '--p-duration-100',
-  base: '--p-duration-200',
-  slow: '--p-duration-300',
-  slower: '--p-duration-400',
-  slowest: '--p-duration-500',
+const processed = Symbol('processed');
+
+interface PluginOptions extends Options, NamespaceOptions {}
+
+const plugin = (options: PluginOptions = {}): Plugin => {
+  const namespacedDuration = namespace('duration', options);
+
+  return {
+    postcssPlugin: 'replace-sass-motion',
+    Declaration(decl) {
+      // @ts-expect-error - Skip if processed so we don't process it again
+      if (decl[processed]) return;
+
+      const handlers = {
+        transition: handleTransitionProps,
+        'transition-duration': handleTransitionProps,
+        'transition-delay': handleTransitionProps,
+      };
+
+      if (!isKeyOf(handlers, decl.prop)) return;
+
+      /**
+       * A collection of transformable values to migrate (e.g. `decl` lengths, functions, etc.)
+       *
+       * Note: This is evaluated at the end of each visitor execution to determine whether
+       * or not to replace the declaration or insert a comment.
+       */
+      const targets: {replaced: boolean}[] = [];
+      let hasNumericOperator = false;
+
+      const parsedValue = valueParser(decl.value);
+
+      handlers[decl.prop]();
+
+      if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
+        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        decl.before(
+          postcss.comment({
+            text: `${decl.prop}: ${parsedValue.toString()};`,
+          }),
+        );
+      } else {
+        decl.value = parsedValue.toString();
+      }
+
+      //
+      // Handlers
+      //
+
+      function handleTransitionProps() {
+        parsedValue.walk((node) => {
+          if (node.type === 'word') {
+            if (globalValues.has(node.value)) return;
+
+            if (isNumericOperator(node)) {
+              hasNumericOperator = true;
+              return;
+            }
+
+            const dimension = valueParser.unit(node.value);
+
+            if (!isTransformableDuration(dimension)) return;
+
+            targets.push({replaced: false});
+
+            const duration = `${dimension.number}${dimension.unit}`;
+
+            if (!isKeyOf(durationMap, duration)) return;
+
+            targets.at(-1)!.replaced = true;
+
+            node.value = `var(${durationMap[duration]})`;
+
+            return;
+          }
+
+          if (node.type === 'function') {
+            if (isSassFunction(namespacedDuration, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (!(args.length === 0 || args.length === 1)) return;
+
+              // `duration()` args reference:
+              // https://github.com/Shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L679
+              const variant = args[0]?.replace(/['"]/g, '') ?? 'base';
+
+              if (!isKeyOf(durationFunctionMap, variant)) return;
+
+              const durationCustomProperty = durationFunctionMap[variant];
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: durationCustomProperty,
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: durationCustomProperty.length,
+                },
+              ];
+            }
+
+            return StopWalkingFunctionNodes;
+          }
+        });
+      }
+    },
+  };
 };
 
-const durationConstantsMap = {
+const globalValues = new Set(['inherit', 'initial', 'unset']);
+
+const durationMap = {
   '0': '--p-duration-0',
   '0s': '--p-duration-0',
   '0ms': '--p-duration-0',
@@ -54,270 +165,17 @@ const durationConstantsMap = {
   '5s': '--p-duration-5000',
 };
 
-function normaliseStringifiedNumber(number: string): string {
-  return Number(number).toString();
-}
-
-function isValidConstantTimeUnit(value: string): boolean {
-  const unit = valueParser.unit(value);
-  // 1. <time> is a dimension with 's' or 'ms' as the unit
-  // https://w3c.github.io/csswg-drafts/css-values-3/#time-value
-  return (
-    unit &&
-    (['s', 'ms'].includes(unit.unit) ||
-      (!unit.unit && Number(unit.number) === 0))
-  );
-}
-
-function isPolarisCustomProperty(node: Node): boolean {
-  return (
-    isSassFunction('var', node) &&
-    (node.nodes?.[0]?.value ?? '').startsWith('--p-')
-  );
-}
-
-function replaceNodeWithValue(node: Node, value: string): void {
-  const {sourceIndex} = node;
-  const parsedValue = valueParser(value).nodes[0];
-  Object.assign(node, parsedValue);
-  // The node we're replacing might be mid-way through a higher-level value
-  // string. Eg; 'border: 1px solid', the 'solid' node is 5 characters into the
-  // higher-level value, so we need to correct the index here.
-  node.sourceIndex += sourceIndex;
-  node.sourceEndIndex += sourceIndex;
-}
-
-interface ParsedValueDeclaration extends Declaration {
-  [processed]?: boolean;
-  parsedValue: ParsedValue;
-}
-
-// postcss doesn't export this, so had to extract it to here
-type DeclarationProcessor = (
-  decl: Declaration,
-  helper: Helpers,
-) => Promise<void> | void;
-
-// Inject the parsed values into the AST for processing
-function withParsedValue(
-  fn: (decl: ParsedValueDeclaration, helper: Helpers) => void,
-) {
-  return ((decl: ParsedValueDeclaration, helper: Helpers) => {
-    // Skip if processed so we don't process it again
-    if (decl[processed]) return;
-
-    decl.parsedValue = valueParser(decl.value);
-
-    const result = fn(decl, helper);
-
-    decl.value = decl.parsedValue.toString();
-
-    // Mark the declaration as processed
-    decl[processed] = true;
-
-    return result;
-  }) as DeclarationProcessor;
-}
-
-interface PluginOptions extends Options, NamespaceOptions {}
-
-const plugin = (options: PluginOptions = {}): Plugin => {
-  const durationFunc = namespace('duration', options);
-
-  function isValidDurationFunction(node: Node): node is FunctionNode {
-    return isSassFunction(durationFunc, node);
-  }
-
-  function mutateTransitionDurationValue(
-    node: Node,
-    decl: ParsedValueDeclaration,
-  ): boolean {
-    if (isPolarisCustomProperty(node)) {
-      return true;
-    }
-
-    if (isValidDurationFunction(node)) {
-      const duration = node.nodes[0]?.value ?? DEFAULT_DURATION;
-
-      if (isKeyOf(durationFuncMap, duration)) {
-        const durationCustomProperty = durationFuncMap[duration];
-        replaceNodeWithValue(node, `var(${durationCustomProperty})`);
-      } else {
-        decl.before(
-          postcss.comment({
-            text: `${POLARIS_MIGRATOR_COMMENT} Unknown duration key '${duration}'.`,
-          }),
-        );
-      }
-
-      return true;
-    }
-
-    const unit = valueParser.unit(node.value);
-    if (unit) {
-      const constantDuration = `${normaliseStringifiedNumber(unit.number)}${
-        unit.unit
-      }`;
-
-      if (isKeyOf(durationConstantsMap, constantDuration)) {
-        const durationCustomProperty = durationConstantsMap[constantDuration];
-
-        replaceNodeWithValue(node, `var(${durationCustomProperty})`);
-      } else {
-        decl.before(
-          postcss.comment({
-            text: `${POLARIS_MIGRATOR_COMMENT} No matching duration token for '${constantDuration}'.`,
-          }),
-        );
-      }
-
-      return true;
-    }
-
-    return false;
-  }
-
-  function mutateTransitionDelayValue(
-    node: Node,
-    decl: ParsedValueDeclaration,
-  ): boolean {
-    // For now, we treat delays like durations
-    return mutateTransitionDurationValue(node, decl);
-  }
-
-  function mutateTransitionShorthandValue(decl: ParsedValueDeclaration): void {
-    const splitValues: Node[][] = [[]];
-
-    // Gathering up references of nodes into groups. Important to note that
-    // we're dealing with mutable structures here, so we are purposefully
-    // NOT making copies.
-    decl.parsedValue.nodes.forEach((node) => {
-      if (node.type === 'div') {
-        splitValues.push([]);
-      } else {
-        splitValues.at(-1)!.push(node);
-      }
-    });
-
-    splitValues.forEach((nodes) => {
-      mutateSingleTransitionShorthandValue(nodes, decl);
-    });
-  }
-
-  function mutateSingleTransitionShorthandValue(
-    nodes: Node[],
-    decl: ParsedValueDeclaration,
-  ): void {
-    // From the spec:
-    //
-    // Note that order is important within the items in this property: the
-    // first value that can be parsed as a time is assigned to the
-    // transition-duration, and the second value that can be parsed as a
-    // time is assigned to transition-delay.
-    // https://w3c.github.io/csswg-drafts/css-transitions-1/#transition-shorthand-property
-    //
-    // That sounds like an array to me! [0] is duration, [1] is delay.
-    const timings: Node[] = [];
-
-    nodes.forEach((node) => {
-      if (
-        isValidConstantTimeUnit(node.value) ||
-        isValidDurationFunction(node)
-      ) {
-        timings.push(node);
-      } else {
-        // TODO: Try process it as an easing function
-      }
-    });
-
-    if (timings[0]) {
-      if (!mutateTransitionDurationValue(timings[0], decl)) {
-        decl.before(
-          postcss.comment({
-            text: POLARIS_MIGRATOR_COMMENT,
-          }),
-        );
-      }
-    }
-
-    if (timings[1]) {
-      if (!mutateTransitionDelayValue(timings[1], decl)) {
-        decl.before(
-          postcss.comment({
-            text: POLARIS_MIGRATOR_COMMENT,
-          }),
-        );
-      }
-    }
-  }
-
-  return {
-    postcssPlugin: 'replace-sass-motion',
-    Declaration: {
-      'transition-duration': withParsedValue((decl) => {
-        if (hasNumericOperator(decl.parsedValue)) {
-          decl.before(
-            postcss.comment({
-              text: POLARIS_MIGRATOR_COMMENT,
-            }),
-          );
-          return;
-        }
-
-        decl.parsedValue.nodes.forEach((node) => {
-          if (!mutateTransitionDurationValue(node, decl)) {
-            decl.before(
-              postcss.comment({
-                text: POLARIS_MIGRATOR_COMMENT,
-              }),
-            );
-          }
-        });
-      }),
-
-      'transition-delay': withParsedValue((decl) => {
-        if (hasNumericOperator(decl.parsedValue)) {
-          decl.before(
-            postcss.comment({
-              text: POLARIS_MIGRATOR_COMMENT,
-            }),
-          );
-          return;
-        }
-
-        decl.parsedValue.nodes.forEach((node) => {
-          if (!mutateTransitionDelayValue(node, decl)) {
-            decl.before(
-              postcss.comment({
-                text: POLARIS_MIGRATOR_COMMENT,
-              }),
-            );
-          }
-        });
-      }),
-
-      transition: withParsedValue((decl) => {
-        if (hasNumericOperator(decl.parsedValue)) {
-          decl.before(
-            postcss.comment({
-              text: POLARIS_MIGRATOR_COMMENT,
-            }),
-          );
-          return;
-        }
-
-        mutateTransitionShorthandValue(decl);
-      }),
-    },
-  };
+const durationFunctionMap = {
+  none: '--p-duration-0',
+  fast: '--p-duration-100',
+  base: '--p-duration-200',
+  slow: '--p-duration-300',
+  slower: '--p-duration-400',
+  slowest: '--p-duration-500',
 };
 
-export default function replaceSassMotion(
-  fileInfo: FileInfo,
-  _: API,
-  options: Options,
-) {
-  return postcss(plugin(options)).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
+/**
+ * Exit early and stop traversing descendant nodes:
+ * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
+ */
+const StopWalkingFunctionNodes = false;

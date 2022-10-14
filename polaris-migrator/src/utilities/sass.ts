@@ -112,7 +112,7 @@ export function getFunctionArgs(node: FunctionNode): string[] {
 }
 
 /**
- * All transformable dimension units. These values are used to determine
+ * All transformable length units. These values are used to determine
  * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
  */
 export const transformableLengthUnits = ['px', 'rem'];
@@ -130,6 +130,26 @@ export function isTransformableLength(
   if (isUnitlessZero(dimension)) return true;
 
   return transformableLengthUnits.includes(dimension.unit);
+}
+
+/**
+ * All transformable duration units. These values are used to determine
+ * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
+ *
+ * Note: <time> is a dimension with 's' or 'ms' as the unit:
+ * https://w3c.github.io/csswg-drafts/css-values-3/#time-value
+ */
+export const transformableDurationUnits = ['s', 'ms'];
+
+export function isTransformableDuration(
+  dimension: false | Dimension,
+): dimension is Dimension {
+  if (!dimension) return false;
+
+  // Zero is the only unitless dimension our duration transforms support
+  if (isUnitlessZero(dimension)) return true;
+
+  return transformableDurationUnits.includes(dimension.unit);
 }
 
 export function hasTransformableLength(parsedValue: ParsedValue): boolean {

@@ -185,14 +185,10 @@
 .edges {
   /* sass calculation */
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms; */
   transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
-  /* Duration comes after easing func */
-  transition: opacity linear var(--p-duration-500);
-  /* Duration + Delay */
-  transition: opacity var(--p-duration-400) linear var(--p-duration-100);
-  /* Duration + Delay after easing func */
-  transition: opacity linear var(--p-duration-400) var(--p-duration-100);
   /* foobar isn't a valid duration key */
-  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. Unknown duration key 'foobar'. */
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* transition-duration: legacy-polaris-v8.duration(foobar); */
   transition-duration: legacy-polaris-v8.duration(foobar);
 }

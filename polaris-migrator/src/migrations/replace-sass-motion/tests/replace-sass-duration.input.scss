@@ -161,14 +161,6 @@
 .edges {
   /* sass calculation */
   transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
-  /* Duration comes after easing func */
-  transition: opacity linear 0.5s;
-  /* Duration + Delay */
-  transition: opacity legacy-polaris-v8.duration(slower) linear
-    legacy-polaris-v8.duration(fast);
-  /* Duration + Delay after easing func */
-  transition: opacity linear legacy-polaris-v8.duration(slower)
-    legacy-polaris-v8.duration(fast);
   /* foobar isn't a valid duration key */
   transition-duration: legacy-polaris-v8.duration(foobar);
 }
