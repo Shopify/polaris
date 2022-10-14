@@ -3,6 +3,7 @@ import PageMeta from '../PageMeta';
 import styles from './FoundationsPage.module.scss';
 import Longform from '../Longform';
 import Grid from '../Grid';
+import Image from '../Image';
 import {GridItemProps} from '../Grid/Grid';
 import FoundationsThumbnail from '../FoundationsThumbnail';
 
@@ -10,6 +11,10 @@ export interface FoundationsProps {
   title: string;
   description: string;
   items: Item[];
+  headerImage?: {
+    src: string;
+    altText: string;
+  };
 }
 
 interface Item extends GridItemProps {
@@ -17,7 +22,16 @@ interface Item extends GridItemProps {
   icon: string;
 }
 
-function FoundationsPage({title, description, items}: FoundationsProps) {
+function FoundationsPage({
+  title,
+  description,
+  items,
+  headerImage,
+}: FoundationsProps) {
+  const headerImageMarkup = headerImage ? (
+    <Image src={headerImage.src} alt={headerImage.altText} />
+  ) : null;
+
   return (
     <div className={styles.FoundationsPage}>
       <PageMeta description={description} />
@@ -27,6 +41,7 @@ function FoundationsPage({title, description, items}: FoundationsProps) {
           <h1>{title}</h1>
           <p>{description}</p>
         </Longform>
+        {headerImageMarkup}
         <Grid>
           {items
             .sort((a, b) => a.title.localeCompare(b.title))
