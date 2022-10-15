@@ -1,4 +1,4 @@
-import type {Declaration} from 'postcss';
+import postcss, {Declaration} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
@@ -6,6 +6,7 @@ import valueParser, {
   Dimension,
 } from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
+import prettier from 'prettier';
 
 import {isKeyOf} from './type-guards';
 
@@ -276,4 +277,20 @@ export function replaceRemFunction(
       return newValue.startsWith('--') ? `var(${newValue})` : newValue;
     },
   );
+}
+
+export function createInlineComment(text: string, options?: {prose?: boolean}) {
+  const formatted = prettier
+    .format(text, {
+      parser: options?.prose ? 'markdown' : 'scss',
+      proseWrap: 'never',
+      printWidth: 9999,
+    })
+    .trim();
+  const comment = postcss.comment({text: formatted});
+
+  comment.raws.left = ' ';
+  comment.raws.inline = true;
+
+  return comment;
 }
