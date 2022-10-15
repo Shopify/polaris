@@ -1,16 +1,16 @@
 @use 'global-styles/legacy-polaris-v8';
 
 .my-class {
-  // Standard replacement
+  /* Standard replacement */
   padding: spacing();
   padding: spacing(loose);
-  // With multiple values
+  /* With multiple values */
   padding: spacing() spacing();
   padding: spacing() 0 spacing() 0;
-  // With interpolation
+  /* With interpolation */
   padding: calc(50% - #{spacing()});
-  // With negative interpolation
+  /* With negative interpolation */
   padding: -#{spacing()};
-  // With other functions
+  /* With other functions */
   padding: calc(#{rem(16px)} + #{spacing()});
 }
