@@ -97,8 +97,15 @@ export class Scrollable extends Component<ScrollableProps, State> {
   }
 
   componentDidUpdate() {
+    if (!this.scrollArea) {
+      return;
+    }
+
     const {scrollPosition} = this.state;
-    if (scrollPosition && this.scrollArea && scrollPosition > 0) {
+    const availableScrollHeight =
+      this.scrollArea.scrollHeight - this.scrollArea.clientHeight;
+
+    if (scrollPosition > 0 && scrollPosition < availableScrollHeight) {
       this.scrollArea.scrollTop = scrollPosition;
     }
   }
