@@ -26,27 +26,29 @@ type GroupedCompletionItems = {
  * Grouped VS Code `CompletionItem`s for Polaris custom properties
  */
 const groupedCompletionItems = Object.fromEntries(
-  Object.entries(groupedCompletionItemTokenGroups).map(
-    ([groupedCompletionItemsKey, tokenGroup]: [string, MetadataGroup]) => {
-      const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
-        tokenGroup,
-      ).map(
-        ([tokenName, tokenProperties]): CompletionItem => ({
-          label: createVar(tokenName),
-          insertText: `${createVar(tokenName)}`,
-          detail: tokenProperties.value,
-          documentation: tokenProperties.description,
-          filterText: createVar(tokenName),
-          kind:
-            groupedCompletionItemsKey === 'color'
-              ? CompletionItemKind.Color
-              : CompletionItemKind.Variable,
-        }),
-      );
+  Object.entries(groupedCompletionItemTokenGroups).map((entry) => {
+    const [groupedCompletionItemsKey, tokenGroup] = entry as [
+      GroupedCompletionItemsKey,
+      MetadataGroup,
+    ];
+    const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
+      tokenGroup,
+    ).map(
+      ([tokenName, tokenProperties]): CompletionItem => ({
+        label: createVar(tokenName),
+        insertText: `${createVar(tokenName)}`,
+        detail: tokenProperties.value,
+        documentation: tokenProperties.description,
+        filterText: createVar(tokenName),
+        kind:
+          groupedCompletionItemsKey === 'colors'
+            ? CompletionItemKind.Color
+            : CompletionItemKind.Variable,
+      }),
+    );
 
-      return [groupedCompletionItemsKey, groupedCompletionItemProperties];
-    },
-  ),
+    return [groupedCompletionItemsKey, groupedCompletionItemProperties];
+  }),
 ) as unknown as GroupedCompletionItems;
 
 const allGroupedCompletionItems: CompletionItem[] = Object.values(
