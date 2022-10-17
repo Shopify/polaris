@@ -1,14 +1,16 @@
-.Card {
-  z-index: z-index(content) + 1;
-  padding: spacing(loose) spacing(extra-loose);
-  border-radius: var(--p-border-radius-2, border-radius());
-  box-shadow: var(--p-shadow-card, shadow());
-  margin: spacing(tight) 0 0 (-1 * spacing());
-}
+@use 'global-styles/legacy-polaris-v8';
 
-.ButtonContainer {
-  right: spacing();
-  top: spacing(loose);
-  bottom: spacing() + spacing();
-  left: spacing('tight');
+.my-class {
+  // Standard replacement
+  padding: spacing();
+  padding: spacing(loose);
+  // With multiple values
+  padding: spacing() spacing();
+  padding: spacing() 0 spacing() 0;
+  // With interpolation
+  padding: calc(50% - #{spacing()});
+  // With negative interpolation
+  padding: -#{spacing()};
+  // With other functions
+  padding: calc(#{rem(16px)} + #{spacing()});
 }

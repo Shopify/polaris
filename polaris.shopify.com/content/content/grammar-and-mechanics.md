@@ -357,11 +357,11 @@ Company name
 
 ## Dates, numbers, and measurements
 
-These guidelines are for American English, which is the language we use as a base before translating to other languages. However, dates, numbers, and measurements may be formatted differently in other languages. You can use [helpers](https://github.com/Shopify/quilt) to ensure they are localized automatically.
+Dates, numbers, and measurements are often formatted automatically according users’ local preferences, and they may be formatted differently in other languages. You can use [helpers](https://github.com/Shopify/quilt) to ensure they are localized automatically. These guidelines are for manually formatting in American English, which we use as a base before translating to other languages.
 
 ### Date
 
-When possible, use the month’s full name, for example, October. If there are space constraints, use 3-letter abbreviations, for example, Oct. Don’t write dates numerically, for example, 07-02-14.
+When possible, use the month’s full name. If there are space constraints, use 3-letter abbreviations. Don’t write dates with numerals only.
 
 <!-- dodont -->
 
@@ -393,7 +393,9 @@ January 23rd–April 1st
 
 <!-- end -->
 
-### Time:
+### Time
+
+For all translations, the time format is automatically localized by the `Intl.DateTimeFormat` JavaScript object. When time must be formatted manually, follow these guidelines:
 
 - Use the 12-hour clock, followed by am or pm.
 - Include a space after the last number. For example, “Your package will arrive at 12:35 pm.” Adding the space helps with formatting for English-speaking markets outside of North America, so we use it for North American usage as well.
@@ -407,8 +409,6 @@ January 23rd–April 1st
 - Use the time zone’s abbreviation following the am or pm, for example, 4:00 pm NZT.
 - If your audience is in a single time zone, then don’t include an S (for Standard) or D (for Daylight). For example, 3:00 pm PT.
 - If your audience is in a combination of time zones, then include the S (for Standard) or D (for Daylight) to avoid confusion. For example, 3:00 pm PDT.
-
-For all translations, the time format is automatically localized by the `Intl.DateTimeFormat` JavaScript object.
 
 <!-- dodont -->
 

@@ -1,3 +1,4 @@
+import postcss, {Declaration} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
@@ -5,6 +6,7 @@ import valueParser, {
   Dimension,
 } from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
+import prettier from 'prettier';
 
 const defaultNamespace = '';
 
@@ -86,6 +88,75 @@ export function hasSassFunction(
   return containsSassFunction;
 }
 
+/**
+ * Check whether a string has Sass interpolation
+ */
+export function hasSassInterpolation(string: string) {
+  return /#\{.+?\}/.test(string);
+}
+
+/**
+ * Check whether a string has negative Sass interpolation
+ */
+export function hasNegativeSassInterpolation(string: string) {
+  return /-#\{.+?\}/.test(string);
+}
+
+/**
+ * Replace negative Sass interpolations with a multiplication operator and a negative number
+ *
+ * @example
+ * // Before
+ * -#{spacing()};
+ *
+ * // After
+ * -1 * ${spacing()};
+ */
+export function replaceNegativeSassInterpolation(parsedValue: ParsedValue) {
+  let newNodes: Node[] = [];
+  parsedValue.walk((node, index, nodes) => {
+    const containsInterpolation = /-#\{.+?/.test(node.value);
+    if (!containsInterpolation) return;
+
+    node.value = node.value.replace('-#{', '#{');
+
+    const left = index > 0 ? nodes.slice(0, index) : [];
+    const right = nodes.length - 1 > index ? nodes.slice(index + 1) : [];
+
+    newNodes = [
+      ...left,
+      {type: 'word', value: '-1'},
+      {type: 'space', value: ' '},
+      {type: 'word', value: '*'},
+      {type: 'space', value: ' '},
+      node,
+      ...right,
+    ] as Node[];
+  });
+  parsedValue.nodes = newNodes;
+}
+
+/**
+ * Remove the Sass interpolation from parsedValue
+ */
+export function removeSassInterpolation(
+  namespace: string,
+  parsedValue: ParsedValue,
+) {
+  parsedValue.walk((node, index, nodes) => {
+    const regexp = new RegExp(`#{${namespace}`);
+    const containsInterpolation = regexp.test(node.value);
+    if (containsInterpolation) {
+      node.value = node.value.replace(/#\{/, '');
+      nodes[index + 1].value = nodes[index + 1].value.replace(/}/, '');
+    }
+  });
+
+  parsedValue.nodes = parsedValue.nodes.filter(
+    (node) => !(node.type === 'word' && node.value === ''),
+  );
+}
+
 export function getFunctionArgs(node: FunctionNode): string[] {
   const args: string[] = [];
 
@@ -154,3 +225,19 @@ export function toTransformablePx(value: string) {
  * https://www.npmjs.com/package/postcss-value-parser:~:text=Returning%20false%20in%20the%20callback%20will%20prevent%20traversal%20of%20descendent%20nodes
  */
 export const StopWalkingFunctionNodes = false;
+
+export function createInlineComment(text: string, options?: {prose?: boolean}) {
+  const formatted = prettier
+    .format(text, {
+      parser: options?.prose ? 'markdown' : 'scss',
+      proseWrap: 'never',
+      printWidth: 9999,
+    })
+    .trim();
+  const comment = postcss.comment({text: formatted});
+
+  comment.raws.left = ' ';
+  comment.raws.inline = true;
+
+  return comment;
+}
