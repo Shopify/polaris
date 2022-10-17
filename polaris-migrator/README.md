@@ -51,7 +51,7 @@ npx @shopify/polaris-migrator rename-component-prop <path> --component=MyCompone
 
 ### `replace-spacing-lengths`
 
-Replace lengths (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
+Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
 
 ```diff
 - padding: 16px;
