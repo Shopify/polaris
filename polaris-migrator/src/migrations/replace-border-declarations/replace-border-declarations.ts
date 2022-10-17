@@ -33,6 +33,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedRem = namespace('rem', options);
   const namespacedBorder = namespace('border', options);
   const namespacedBorderWidth = namespace('border-width', options);
+  const namespacedBorderRadius = namespace('border-radius', options);
 
   return {
     postcssPlugin: 'replace-sass-border',
@@ -86,11 +87,24 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             const valueInPx = toTransformablePx(node.value);
 
-            if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
+            if (decl.prop === 'border' || decl.prop.includes('border-width')) {
+              if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
+                return;
+              }
+
+              node.value = `var(${borderWidthLengthMap[valueInPx]})`;
+            }
+
+            if (decl.prop.includes('radius')) {
+              if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
+                return;
+              }
+
+              node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
+            }
 
             targets.at(-1)!.replaced = true;
 
-            node.value = `var(${borderWidthLengthMap[valueInPx]})`;
             return;
           }
 
@@ -104,19 +118,42 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
+              if (
+                decl.prop === 'border' ||
+                decl.prop.includes('border-width')
+              ) {
+                if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
+                  return;
+                }
+
+                node.value = 'var';
+                node.nodes = [
+                  {
+                    type: 'word',
+                    value: borderWidthLengthMap[valueInPx],
+                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                    sourceEndIndex: borderWidthLengthMap[valueInPx].length,
+                  },
+                ];
+              }
+
+              if (decl.prop.includes('radius')) {
+                if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
+                  return;
+                }
+
+                node.value = 'var';
+                node.nodes = [
+                  {
+                    type: 'word',
+                    value: borderRadiusLengthMap[valueInPx],
+                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                    sourceEndIndex: borderRadiusLengthMap[valueInPx].length,
+                  },
+                ];
+              }
 
               targets.at(-1)!.replaced = true;
-
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: borderWidthLengthMap[valueInPx],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderWidthLengthMap[valueInPx].length,
-                },
-              ];
             }
 
             if (isSassFunction(namespacedBorder, node)) {
@@ -171,6 +208,32 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               ];
             }
 
+            if (isSassFunction(namespacedBorderRadius, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (!(args.length === 0 || args.length === 1)) return;
+
+              // `border-radius()` args reference:
+              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L655
+              const value = args[0] ?? 'base';
+
+              if (!isKeyOf(borderRadiusFunctionMap, value)) return;
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderRadiusFunctionMap[value],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderRadiusFunctionMap[value].length,
+                },
+              ];
+            }
+
             return StopWalkingFunctionNodes;
           }
         });
@@ -192,6 +255,11 @@ const borderProps = new Set([
   'border-width-right',
   'border-width-bottom',
   'border-width-left',
+  'border-radius',
+  'border-top-left-radius',
+  'border-top-right-radius',
+  'border-bottom-left-radius',
+  'border-bottom-right-radius',
 ]);
 
 const borderWidthLengthMap = {
@@ -201,6 +269,17 @@ const borderWidthLengthMap = {
   '4px': '--p-border-4',
   '5px': '--p-border-5',
 } as const;
+
+const borderRadiusLengthMap = {
+  '50%': '--p- border-radius-half',
+  '2px': '--p-border-radius-05',
+  '4px': '--p-border-radius-1',
+  '8px': '--p-border-radius-2',
+  '12px': '--p-border-radius-3',
+  '16px': '--p-border-radius-4',
+  '20px': '--p-border-radius-5',
+  '30px': '--p-border-radius-6',
+};
 
 const borderFunctionMap = {
   '': '--p-border-base',
@@ -222,4 +301,12 @@ const borderWidthFunctionMap = {
   "'thick'": '--p-border-2',
   thicker: '--p-border-3',
   "'thicker'": '--p-border-3',
+} as const;
+
+const borderRadiusFunctionMap = {
+  '': '--p-border-radius-base',
+  base: '--p-border-radius-base',
+  "'base'": '--p-border-radius-base',
+  large: '--p-border-radius-large',
+  "'large'": '--p-border-radius-large',
 } as const;
