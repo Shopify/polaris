@@ -45,7 +45,8 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     throw new Error('Expected params.slug to be defined (as string[])');
 
   const slugPath = `${contentDir}/${params.slug.join('/')}`;
-  const pathIsDirectory = fs.existsSync(slugPath) && fs.lstatSync(slugPath).isDirectory();
+  const pathIsDirectory =
+    fs.existsSync(slugPath) && fs.lstatSync(slugPath).isDirectory();
   const mdRelativePath = pathIsDirectory
     ? `${contentDir}/${params.slug.join('/')}/index.md`
     : `${contentDir}/${params.slug.join('/')}.md`;
@@ -77,6 +78,7 @@ const catchAllTemplateExcludeList = [
   '/content',
   '/patterns',
   '/tokens',
+  '/sandbox',
 ];
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
