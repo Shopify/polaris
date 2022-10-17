@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {createElement} from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../utilities/css';
+import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
 
 type Align = 'start' | 'end' | 'center';
 
+type Element = 'div' | 'ul' | 'fieldset';
+
 export interface AlphaStackProps {
+  /** HTML Element type */
+  as?: Element;
   /** Elements to display inside stack */
   children?: React.ReactNode;
   /** Adjust vertical alignment of elements */
@@ -19,6 +23,7 @@ export interface AlphaStackProps {
 }
 
 export const AlphaStack = ({
+  as = 'div',
   children,
   align = 'start',
   fullWidth,
@@ -27,6 +32,7 @@ export const AlphaStack = ({
   const className = classNames(
     styles.AlphaStack,
     fullWidth && styles.fullWidth,
+    as === 'ul' && styles.listReset,
   );
 
   const style = {
@@ -34,9 +40,12 @@ export const AlphaStack = ({
     ...(spacing ? {'--pc-stack-spacing': `var(--p-space-${spacing})`} : {}),
   } as React.CSSProperties;
 
-  return (
-    <div className={className} style={style}>
-      {children}
-    </div>
+  return createElement(
+    as,
+    {
+      className,
+      style: sanitizeCustomProperties(style),
+    },
+    children,
   );
 };
