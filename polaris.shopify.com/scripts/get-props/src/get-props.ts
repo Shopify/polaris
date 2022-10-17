@@ -183,7 +183,14 @@ const parseTypeAliasDeclaration: NodeParser = (
   const description = getSymbolComment(symbol, checker);
   const name = symbol.escapedName.toString();
   const syntaxKind = ts.SyntaxKind[typeAliasDeclaration.kind];
+  const typeRefNode = typeAliasDeclaration.type as ts.TypeReferenceNode;
   let value = typeAliasDeclaration.type.getText();
+
+  for (const typeArg of typeRefNode.typeArguments ?? []) {
+    if (typeArg.kind === ts.SyntaxKind.UnionType) {
+      value = checker.typeToString(checker.getTypeAtLocation(typeArg));
+    }
+  }
 
   if (typeAliasDeclaration.type.kind === ts.SyntaxKind.UnionType) {
     const unionType = typeAliasDeclaration.type as ts.UnionTypeNode;
