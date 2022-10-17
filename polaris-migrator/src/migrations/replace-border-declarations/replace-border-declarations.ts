@@ -16,16 +16,6 @@ import {
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-export default function replaceBorderDeclarations(
-  fileInfo: FileInfo,
-  _: API,
-  options: Options,
-) {
-  return postcss(plugin(options)).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
-
 const processed = Symbol('processed');
 
 interface PluginOptions extends Options, NamespaceOptions {}
@@ -305,3 +295,13 @@ const borderRadiusFunctionMap = {
   large: '--p-border-radius-large',
   "'large'": '--p-border-radius-large',
 } as const;
+
+export default function replaceBorderDeclarations(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
+    syntax: require('postcss-scss'),
+  }).css;
+}
