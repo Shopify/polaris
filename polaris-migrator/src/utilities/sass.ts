@@ -1,4 +1,4 @@
-import postcss, {Declaration} from 'postcss';
+import postcss from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
