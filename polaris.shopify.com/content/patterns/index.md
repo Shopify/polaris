@@ -5,3 +5,5 @@ icon: BehaviorMajor
 order: 6
 newSection: true
 ---
+
+![Design system building blocks, with pattern block highlighted.](/images/foundations/patterns/patterns@2x.png)

@@ -1,8 +1,6 @@
 import React, {createElement, forwardRef, ReactNode} from 'react';
 import type {
-  ColorsTokenName,
   DepthShadowAlias,
-  ShapeTokenName,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
@@ -10,39 +8,116 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type BackgroundColorTokenScale = Extract<
-  ColorsTokenName,
-  | 'background'
-  | `background-${string}`
-  | 'surface'
-  | `surface-${string}`
-  | 'backdrop'
-  | 'overlay'
-  | `action-${string}`
->;
-type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
+type Element = 'div' | 'span';
 
-type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
-  ? Scale
-  : never;
-type BorderTokenScale = Exclude<
-  BorderShapeTokenScale,
-  `radius-${string}` | `width-${string}`
->;
+export type BackgroundColorTokenScale =
+  | 'action-critical'
+  | 'action-critical-depressed'
+  | 'action-critical-disabled'
+  | 'action-critical-hovered'
+  | 'action-critical-pressed'
+  | 'action-primary'
+  | 'action-primary-depressed'
+  | 'action-primary-disabled'
+  | 'action-primary-hovered'
+  | 'action-primary-pressed'
+  | 'action-secondary'
+  | 'action-secondary-depressed'
+  | 'action-secondary-disabled'
+  | 'action-secondary-hovered'
+  | 'action-secondary-hovered-dark'
+  | 'action-secondary-pressed'
+  | 'action-secondary-pressed-dark'
+  | 'backdrop'
+  | 'background'
+  | 'background-hovered'
+  | 'background-pressed'
+  | 'background-selected'
+  | 'overlay'
+  | 'surface'
+  | 'surface-attention'
+  | 'surface-critical'
+  | 'surface-critical-subdued'
+  | 'surface-critical-subdued-depressed'
+  | 'surface-critical-subdued-hovered'
+  | 'surface-critical-subdued-pressed'
+  | 'surface-dark'
+  | 'surface-depressed'
+  | 'surface-disabled'
+  | 'surface-highlight'
+  | 'surface-highlight-subdued'
+  | 'surface-highlight-subdued-hovered'
+  | 'surface-highlight-subdued-pressed'
+  | 'surface-hovered'
+  | 'surface-hovered-dark'
+  | 'surface-neutral'
+  | 'surface-neutral-disabled'
+  | 'surface-neutral-hovered'
+  | 'surface-neutral-pressed'
+  | 'surface-neutral-subdued'
+  | 'surface-neutral-subdued-dark'
+  | 'surface-pressed'
+  | 'surface-pressed-dark'
+  | 'surface-primary-selected'
+  | 'surface-primary-selected-hovered'
+  | 'surface-primary-selected-pressed'
+  | 'surface-search-field'
+  | 'surface-search-field-dark'
+  | 'surface-selected'
+  | 'surface-selected-hovered'
+  | 'surface-selected-pressed'
+  | 'surface-subdued'
+  | 'surface-success'
+  | 'surface-success-subdued'
+  | 'surface-success-subdued-hovered'
+  | 'surface-success-subdued-pressed'
+  | 'surface-warning'
+  | 'surface-warning-subdued'
+  | 'surface-warning-subdued-hovered'
+  | 'surface-warning-subdued-pressed';
+
+export type ColorTokenScale =
+  | 'text'
+  | 'text-critical'
+  | 'text-disabled'
+  | 'text-highlight'
+  | 'text-on-critical'
+  | 'text-on-dark'
+  | 'text-on-interactive'
+  | 'text-on-primary'
+  | 'text-primary'
+  | 'text-primary-hovered'
+  | 'text-primary-pressed'
+  | 'text-subdued'
+  | 'text-subdued-on-dark'
+  | 'text-success'
+  | 'text-warning';
+
+export type BorderTokenAlias =
+  | 'base'
+  | 'dark'
+  | 'divider'
+  | 'divider-on-dark'
+  | 'transparent';
 
 interface Border {
-  bottom: BorderTokenScale;
-  left: BorderTokenScale;
-  right: BorderTokenScale;
-  top: BorderTokenScale;
+  bottom: BorderTokenAlias;
+  left: BorderTokenAlias;
+  right: BorderTokenAlias;
+  top: BorderTokenAlias;
 }
 
-type BorderRadiusTokenScale = Extract<
-  BorderShapeTokenScale,
-  `radius-${string}`
-> extends `radius-${infer Scale}`
-  ? Scale
-  : never;
+export type BorderRadiusTokenScale =
+  | '05'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | 'base'
+  | 'large'
+  | 'half';
 
 interface BorderRadius {
   bottomLeft: BorderRadiusTokenScale;
@@ -58,23 +133,21 @@ interface Spacing {
   top: SpacingSpaceScale;
 }
 
-type Element = 'div' | 'span';
-
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
   background?: BackgroundColorTokenScale;
   /** Border style */
-  border?: BorderTokenScale;
+  border?: BorderTokenAlias;
   /** Bottom border style */
-  borderBottom?: BorderTokenScale;
+  borderBottom?: BorderTokenAlias;
   /** Left border style */
-  borderLeft?: BorderTokenScale;
+  borderLeft?: BorderTokenAlias;
   /** Right border style */
-  borderRight?: BorderTokenScale;
+  borderRight?: BorderTokenAlias;
   /** Top border style */
-  borderTop?: BorderTokenScale;
+  borderTop?: BorderTokenAlias;
   /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
   /** Bottom left border radius */
