@@ -1,8 +1,8 @@
 @use 'global-styles/legacy-polaris-v8';
 
 .space {
-  /* LENGTHS */
-  /* Migrate */
+  // LENGTHS
+  // Migrate
   padding: 16px;
   padding: 1rem;
   padding: 16px 16px;
@@ -13,7 +13,7 @@
   padding: 16px 4in;
   padding: 16px 1em;
   padding: (16px + 16px) 16px;
-  /* Ignore */
+  // Ignore
   padding: 0;
   padding: 1;
   padding: 2;
@@ -23,7 +23,7 @@
   padding: var(--var);
   padding: var(--p-space-4);
   padding: var(--p-space-4, 16px);
-  /* Comment */
+  // Comment
   padding: 10px;
   padding: 10rem;
   padding: 10px 10px;
@@ -44,17 +44,17 @@
   padding: -16px;
   padding: -10px;
 
-  /* REM FUNCTION */
-  /* Migrate */
+  // REM FUNCTION
+  // Migrate
   padding: legacy-polaris-v8.rem(16px);
   padding: legacy-polaris-v8.rem(16px) legacy-polaris-v8.rem(16px);
   padding: legacy-polaris-v8.rem(16px) 16px;
   padding: legacy-polaris-v8.rem(16px) 4in;
   padding: legacy-polaris-v8.rem(16px) 1em;
-  /* Ignore */
+  // Ignore
   padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(16px)}));
   padding: calc(10rem + var(--p-choice-size, #{legacy-polaris-v8.rem(10px)}));
-  /* Comment */
+  // Comment
   padding: legacy-polaris-v8.rem(10px);
   padding: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(10px);
   padding: legacy-polaris-v8.rem(16px) legacy-polaris-v8.rem(10px);

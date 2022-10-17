@@ -1,6 +1,6 @@
 .space {
-  /* LENGTHS */
-  /* Migrate */
+  // LENGTHS
+  // Migrate
   padding: 16px;
   padding: 1rem;
   padding: 16px 16px;
@@ -11,7 +11,7 @@
   padding: 16px 4in;
   padding: 16px 1em;
   padding: (16px + 16px) 16px;
-  /* Ignore */
+  // Ignore
   padding: 0;
   padding: 1;
   padding: 2;
@@ -21,7 +21,7 @@
   padding: var(--var);
   padding: var(--p-space-4);
   padding: var(--p-space-4, 16px);
-  /* Comment */
+  // Comment
   padding: 10px;
   padding: 10rem;
   padding: 10px 10px;
@@ -42,17 +42,17 @@
   padding: -16px;
   padding: -10px;
 
-  /* REM FUNCTION */
-  /* Migrate */
+  // REM FUNCTION
+  // Migrate
   padding: rem(16px);
   padding: rem(16px) rem(16px);
   padding: rem(16px) 16px;
   padding: rem(16px) 4in;
   padding: rem(16px) 1em;
-  /* Ignore */
+  // Ignore
   padding: calc(10rem + var(--p-choice-size, #{rem(16px)}));
   padding: calc(10rem + var(--p-choice-size, #{rem(10px)}));
-  /* Comment */
+  // Comment
   padding: rem(10px);
   padding: rem(10px) rem(10px);
   padding: rem(16px) rem(10px);
