@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {flushSync} from 'react-dom';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -171,11 +172,13 @@ export class Scrollable extends Component<ScrollableProps, State> {
       onScrolledToBottom();
     }
 
-    this.setState({
-      topShadow: shouldTopShadow,
-      bottomShadow: shouldBottomShadow,
-      scrollPosition: scrollTop,
-      canScroll,
+    flushSync(() => {
+      this.setState({
+        topShadow: shouldTopShadow,
+        bottomShadow: shouldBottomShadow,
+        scrollPosition: scrollTop,
+        canScroll,
+      });
     });
   };
 
