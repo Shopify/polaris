@@ -1,10 +1,6 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin, Declaration, Helpers} from 'postcss';
-import valueParser, {
-  ParsedValue,
-  Node,
-  FunctionNode,
-} from 'postcss-value-parser';
+import valueParser, {ParsedValue, Node} from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
@@ -12,6 +8,8 @@ import {
   namespace,
   isSassFunction,
   hasNumericOperator,
+  isTransformableDuration,
+  isPolarisVar,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -58,25 +56,7 @@ function normaliseStringifiedNumber(number: string): string {
   return Number(number).toString();
 }
 
-function isValidConstantTimeUnit(value: string): boolean {
-  const unit = valueParser.unit(value);
-  // 1. <time> is a dimension with 's' or 'ms' as the unit
-  // https://w3c.github.io/csswg-drafts/css-values-3/#time-value
-  return (
-    unit &&
-    (['s', 'ms'].includes(unit.unit) ||
-      (!unit.unit && Number(unit.number) === 0))
-  );
-}
-
-function isPolarisCustomProperty(node: Node): boolean {
-  return (
-    isSassFunction('var', node) &&
-    (node.nodes?.[0]?.value ?? '').startsWith('--p-')
-  );
-}
-
-function replaceNodeWithValue(node: Node, value: string): void {
+function setNodeValue(node: Node, value: string): void {
   const {sourceIndex} = node;
   const parsedValue = valueParser(value).nodes[0];
   Object.assign(node, parsedValue);
@@ -124,24 +104,20 @@ interface PluginOptions extends Options, NamespaceOptions {}
 const plugin = (options: PluginOptions = {}): Plugin => {
   const durationFunc = namespace('duration', options);
 
-  function isValidDurationFunction(node: Node): node is FunctionNode {
-    return isSassFunction(durationFunc, node);
-  }
-
   function mutateTransitionDurationValue(
     node: Node,
     decl: ParsedValueDeclaration,
   ): boolean {
-    if (isPolarisCustomProperty(node)) {
+    if (isPolarisVar(node)) {
       return true;
     }
 
-    if (isValidDurationFunction(node)) {
+    if (isSassFunction(durationFunc, node)) {
       const duration = node.nodes[0]?.value ?? DEFAULT_DURATION;
 
       if (isKeyOf(durationFuncMap, duration)) {
         const durationCustomProperty = durationFuncMap[duration];
-        replaceNodeWithValue(node, `var(${durationCustomProperty})`);
+        setNodeValue(node, `var(${durationCustomProperty})`);
       } else {
         decl.before(
           postcss.comment({
@@ -162,7 +138,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       if (isKeyOf(durationConstantsMap, constantDuration)) {
         const durationCustomProperty = durationConstantsMap[constantDuration];
 
-        replaceNodeWithValue(node, `var(${durationCustomProperty})`);
+        setNodeValue(node, `var(${durationCustomProperty})`);
       } else {
         decl.before(
           postcss.comment({
@@ -220,10 +196,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
     const timings: Node[] = [];
 
     nodes.forEach((node) => {
-      if (
-        isValidConstantTimeUnit(node.value) ||
-        isValidDurationFunction(node)
-      ) {
+      const unit = valueParser.unit(node.value);
+      if (isTransformableDuration(unit) || isSassFunction(durationFunc, node)) {
         timings.push(node);
       } else {
         // TODO: Try process it as an easing function

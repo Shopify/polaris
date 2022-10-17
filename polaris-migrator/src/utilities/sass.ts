@@ -226,6 +226,33 @@ export function toTransformablePx(value: string) {
  */
 export const StopWalkingFunctionNodes = false;
 
+/**
+ * All transformable duration units. These values are used to determine
+ * if a decl.value can be mapped to a Polaris custom property.
+ *
+ * Note: <time> is a dimension with 's' or 'ms' as the unit:
+ * https://w3c.github.io/csswg-drafts/css-values-3/#time-value
+ */
+export const transformableDurationUnits = ['s', 'ms'];
+
+export function isTransformableDuration(
+  dimension: false | Dimension,
+): dimension is Dimension {
+  if (!dimension) return false;
+
+  // Zero is the only unitless dimension our duration transforms support
+  if (isUnitlessZero(dimension)) return true;
+
+  return transformableDurationUnits.includes(dimension.unit);
+}
+
+export function isPolarisVar(node: Node): boolean {
+  return (
+    isSassFunction('var', node) &&
+    (node.nodes?.[0]?.value ?? '').startsWith('--p-')
+  );
+}
+
 export function createInlineComment(text: string, options?: {prose?: boolean}) {
   const formatted = prettier
     .format(text, {
