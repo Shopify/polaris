@@ -30,14 +30,14 @@
 }
 
 .hasTopShadow {
-  box-shadow: var(--pc-scrollable-shadow-top);
+  // box-shadow: var(--pc-scrollable-shadow-top);
 }
 
 .hasBottomShadow {
-  box-shadow: var(--pc-scrollable-shadow-bottom);
+  // box-shadow: var(--pc-scrollable-shadow-bottom);
 }
 
 .hasTopShadow.hasBottomShadow {
-  box-shadow: var(--pc-scrollable-shadow-top),
-    var(--pc-scrollable-shadow-bottom);
+  // box-shadow: var(--pc-scrollable-shadow-top),
+  //   var(--pc-scrollable-shadow-bottom);
 }
