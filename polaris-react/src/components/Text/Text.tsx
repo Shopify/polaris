@@ -4,7 +4,16 @@ import {classNames} from '../../utilities/css';
 
 import styles from './Text.scss';
 
-type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+type Element =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'legend';
 
 type Variant =
   | 'headingXs'
