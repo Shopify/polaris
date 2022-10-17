@@ -12,6 +12,7 @@ import {
   NamespaceOptions,
   toTransformablePx,
   StopWalkingFunctionNodes,
+  createInlineComment,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -56,11 +57,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       handleBorderProps();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
-        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        // Insert comment if the declaration value contains calculations
         decl.before(
-          postcss.comment({
-            text: `${decl.prop}: ${parsedValue.toString()};`,
-          }),
+          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+        );
+        decl.before(
+          createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
         );
       } else {
         decl.value = parsedValue.toString();
@@ -87,20 +89,18 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             const valueInPx = toTransformablePx(node.value);
 
-            if (decl.prop === 'border' || decl.prop.includes('border-width')) {
-              if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
-                return;
-              }
-
-              node.value = `var(${borderWidthLengthMap[valueInPx]})`;
-            }
-
             if (decl.prop.includes('radius')) {
               if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
                 return;
               }
 
               node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
+            } else {
+              if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
+                return;
+              }
+
+              node.value = `var(${borderWidthLengthMap[valueInPx]})`;
             }
 
             targets.at(-1)!.replaced = true;
@@ -118,25 +118,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (
-                decl.prop === 'border' ||
-                decl.prop.includes('border-width')
-              ) {
-                if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
-                  return;
-                }
-
-                node.value = 'var';
-                node.nodes = [
-                  {
-                    type: 'word',
-                    value: borderWidthLengthMap[valueInPx],
-                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                    sourceEndIndex: borderWidthLengthMap[valueInPx].length,
-                  },
-                ];
-              }
-
               if (decl.prop.includes('radius')) {
                 if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
                   return;
@@ -149,6 +130,20 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                     value: borderRadiusLengthMap[valueInPx],
                     sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
                     sourceEndIndex: borderRadiusLengthMap[valueInPx].length,
+                  },
+                ];
+              } else {
+                if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
+                  return;
+                }
+
+                node.value = 'var';
+                node.nodes = [
+                  {
+                    type: 'word',
+                    value: borderWidthLengthMap[valueInPx],
+                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                    sourceEndIndex: borderWidthLengthMap[valueInPx].length,
                   },
                 ];
               }
@@ -251,10 +246,10 @@ const borderProps = new Set([
   'border-bottom',
   'border-left',
   'border-width',
-  'border-width-top',
-  'border-width-right',
-  'border-width-bottom',
-  'border-width-left',
+  'border-top-width',
+  'border-right-width',
+  'border-bottom-width',
+  'border-left-width',
   'border-radius',
   'border-top-left-radius',
   'border-top-right-radius',
@@ -263,11 +258,11 @@ const borderProps = new Set([
 ]);
 
 const borderWidthLengthMap = {
-  '1px': '--p-border-1',
-  '2px': '--p-border-2',
-  '3px': '--p-border-3',
-  '4px': '--p-border-4',
-  '5px': '--p-border-5',
+  '1px': '--p-border-width-1',
+  '2px': '--p-border-width-2',
+  '3px': '--p-border-width-3',
+  '4px': '--p-border-width-4',
+  '5px': '--p-border-width-5',
 } as const;
 
 const borderRadiusLengthMap = {
@@ -294,13 +289,13 @@ const borderFunctionMap = {
 } as const;
 
 const borderWidthFunctionMap = {
-  '': '--p-border-1',
-  base: '--p-border-1',
-  "'base'": '--p-border-1',
-  thick: '--p-border-2',
-  "'thick'": '--p-border-2',
-  thicker: '--p-border-3',
-  "'thicker'": '--p-border-3',
+  '': '--p-border-width-1',
+  base: '--p-border-width-1',
+  "'base'": '--p-border-width-1',
+  thick: '--p-border-width-2',
+  "'thick'": '--p-border-width-2',
+  thicker: '--p-border-width-3',
+  "'thicker'": '--p-border-width-3',
 } as const;
 
 const borderRadiusFunctionMap = {

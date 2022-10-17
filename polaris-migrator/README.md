@@ -121,6 +121,34 @@ Replace legacy Typography functions and hardcoded lengths with Polaris custom pr
 npx @shopify/polaris-migrator replace-typography-declarations <path>
 ```
 
+### `replace-border-declarations`
+
+Replace length values (`px`, `rem` and `rem()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: border-radius(large);
++ border-radius: var(--p-border-radius-large);
+
+- border-width: 1rem;
++ border-width: var(--p-border-radius-4);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border: border-width(thicker) solid var(--p-border-base);
++ border: var(--p-border-width-3) solid var(--p-border-base);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-border-declarations <path>
+```
+
 ## Creating a migration
 
 ### Setup

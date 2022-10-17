@@ -8,10 +8,12 @@
   border: 1px solid transparent;
   border: 1px solid currentColor;
   border: 1px solid color('sky');
-  border: 1px solid rgba(141, 145, 150, 0.5);
-  border: 1px solid $var;
   border: 0.0625rem solid var(--p-border-base);
   border: solid 1px var(--p-border-base);
+  border-left: 1px solid rgba(141, 145, 150, 0.5);
+  border-top: 1px solid $var;
+  border-width: 1px;
+  border-bottom-width: 1px;
   border-radius: 2px;
   border-radius: 1rem;
   border-top-left-radius: 12px;
@@ -21,7 +23,7 @@
   border: 0.0625em solid var(--p-border-base);
   border: 0 solid var(--p-border-base);
   border: (16px + 16px) solid var(--p-border-base);
-  border: var(--var);
+  border-bottom: var(--var);
   border: calc(1px / var(--item-scale, 1)) solid var(--p-border-base);
   border-radius: calc(var(--p-space-2) * 3);
   border-radius: 50%;
@@ -29,7 +31,7 @@
   /* Comment */
   border: 10px solid var(--p-border-base);
   border: 10rem solid transparent;
-  border: 10px solid var(--p-divider);
+  border-bottom: 10px solid var(--p-divider);
 
   /* --- REM FUNCTION --- */
 
@@ -40,8 +42,8 @@
   border-width: rem(1px) rem(1px);
   border-width: rem(1px) 1px;
   border-width: rem(1px) 4in;
-  border-width: rem(1px) 1em;
-  border-width: rem(1px) 0 0 0;
+  border-left-width: rem(1px) 1em;
+  border-top-width: rem(1px) 0 0 0;
   border-radius: rem(8px);
 
   /* Ignore */
@@ -102,5 +104,5 @@
   border-radius: border-radius(base) * 2;
   border-radius: border-radius() * rem(1px);
   border-radius: 10px;
-  border-radius: border-radius() * rem(4px);
+  border-top-right-radius: border-radius() * rem(4px);
 }
