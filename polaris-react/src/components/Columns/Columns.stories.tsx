@@ -10,7 +10,7 @@ export default {
 export function BasicColumns() {
   return (
     <Page fullWidth>
-      <Columns columns={{xs: 1, sm: 2, md: 3, lg: 6}} spacing={{xs: '2'}}>
+      <Columns>
         <div style={{background: 'aquamarine'}}>one</div>
         <div style={{background: 'aquamarine'}}>two</div>
         <div style={{background: 'aquamarine'}}>three</div>

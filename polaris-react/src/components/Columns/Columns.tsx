@@ -20,7 +20,7 @@ export interface ColumnsProps extends PropsWithChildren {
   /** The space between columns */
   spacing?: Spacing;
   /** The number of columns to display
-   * @default 6
+   * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
   columns?: Columns;
 }
