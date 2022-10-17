@@ -1,24 +1,30 @@
 ---
 title: Polaris 101
-description: Learn what the Polaris design system is and how it’s used by UXers and developers to build world-class Shopify admin experiences.
+description: The Polaris design system is used by designers and developers to build world-class Shopify admin experiences.
 keywords:
   - polaris
   - shopify admin
 order: 0
 ---
 
+## What’s the Shopify admin?
+
+Merchants set up their store, configure settings, and manage their business using the admin. It includes core aspects of the merchant’s business, including orders, products, and customers.
+
+![Partial screenshots of the admin in mobile and web](/images/getting-started/polaris-101/mobile-web-admin@2x.png)
+
 ## What is Polaris?
 
-Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences, and is grounded in deep merchant understanding. The Polaris components are available for web, iOS, and Android. The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin. Learn more about the [foundational pieces](/getting-started/patterns-components-and-tokens) that make up the Polaris design system.
+Polaris is the design system for the Shopify admin. It’s the shared language that guides how we build high-quality merchant experiences.
+
+The design system is made up of design guidance, code libraries, development opinions, and API documentation on how to build merchant experiences for the Shopify admin.
 
 ## Who is Polaris for?
 
-Polaris is used both internally at Shopify and externally by third-party developers and designers. The Shopify admin includes installable apps built by Shopify employees and third-party developers. Third-party developers can use App Bridge and Polaris to build their Shopify admin apps. Shopify admin apps are web-based and are embedded into the admin web, iOS, and Android platforms. To learn more about building Shopify apps check out [shopify.dev](https://shopify.dev/).
+Polaris is used both internally at Shopify and externally by app developers and designers.
 
-## What’s the Shopify admin?
+## What are Shopify apps?
 
-Merchants set up their store, configure settings, and manage their business using the Shopify admin. It includes core aspects of the merchant’s business, including orders, products, and customers.
+The admin includes installable apps that are distributed through the Shopify App Store. They enable merchants to add functionality to their stores without leaving the familiar environment of the admin.
 
-The Shopify admin is available across web and native platforms. The Polaris design system is available on every platform the Shopify admin is built for.
-
-![Partial screenshots of the admin in mobile and web](/images/getting-started/polaris-101/mobile-web-admin@2x.png)
+By building with Polaris and [App Bridge](https://shopify.dev/apps/tools/app-bridge) and following the [App Design Guidelines](https://shopify.dev/apps/design-guidelines), you'll create a streamlined experience with the rest of the Shopify admin.
