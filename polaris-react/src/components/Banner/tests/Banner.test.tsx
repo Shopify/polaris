@@ -9,7 +9,7 @@ import {
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
-import {Heading} from '../../Heading';
+import {Text} from '../../Text';
 import {Icon} from '../../Icon';
 import {Spinner} from '../../Spinner';
 import {UnstyledButton} from '../../UnstyledButton';
@@ -21,12 +21,12 @@ import {Banner, BannerHandles} from '../Banner';
 describe('<Banner />', () => {
   it('renders a title', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
-    expect(banner.find(Heading)).toContainReactText('Banner title');
+    expect(banner.find(Text)).toContainReactText('Banner title');
   });
 
-  it('passes a p element to Heading', () => {
+  it('passes an h2 element to Heading', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
-    expect(banner).toContainReactComponent(Heading, {element: 'p'});
+    expect(banner).toContainReactComponent(Text, {as: 'h2'});
   });
 
   it('passes the provided icon source to Icon', () => {
