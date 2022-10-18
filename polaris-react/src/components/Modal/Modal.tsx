@@ -7,6 +7,8 @@ import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 import {Backdrop} from '../Backdrop';
+import {Box} from '../Box';
+import {Inline} from '../Inline';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
@@ -152,15 +154,17 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       : children;
 
     const body = loading ? (
-      <div className={styles.Spinner}>
-        <Spinner />
-      </div>
+      <Box padding="4">
+        <Inline align="center">
+          <Spinner />
+        </Inline>
+      </Box>
     ) : (
       content
     );
 
     const scrollContainerMarkup = noScroll ? (
-      <div className={styles.Body}>{body}</div>
+      <Box width="100%">{body}</Box>
     ) : (
       <Scrollable
         shadow
@@ -199,7 +203,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
           {title}
         </Header>
-        <div className={styles.BodyWrapper}>{bodyMarkup}</div>
+        {bodyMarkup}
         {footerMarkup}
       </Dialog>
     );
@@ -210,9 +214,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const animated = !instant;
 
   const activatorMarkup =
-    activator && !isRef(activator) ? (
-      <div ref={activatorRef}>{activator}</div>
-    ) : null;
+    activator && !isRef(activator) ? <Box>{activator}</Box> : null;
 
   return (
     <WithinContentContext.Provider value>
