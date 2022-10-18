@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ColumnsWithVaryingGapExample() {
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <Columns
         columns={{xs: 3}}
         spacing={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}

@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithAlignYExample() {
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with alignY top

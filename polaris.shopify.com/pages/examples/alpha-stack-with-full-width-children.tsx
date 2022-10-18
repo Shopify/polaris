@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithFullWidthChildrenExample() {
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <AlphaStack fullWidth>
         <Text variant="heading4xl" as="h2">
           AlphaStack
