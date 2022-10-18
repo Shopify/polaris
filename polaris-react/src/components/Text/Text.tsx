@@ -53,6 +53,8 @@ export interface TextProps {
   alignment?: Alignment;
   /** The element type */
   as: Element;
+  /** Prevent text from overflowing */
+  breakWord?: boolean;
   /** Text to display */
   children: ReactNode;
   /** Adjust color of text */
@@ -72,6 +74,7 @@ export interface TextProps {
 export const Text = ({
   alignment,
   as,
+  breakWord,
   children,
   color,
   fontWeight,
@@ -88,6 +91,7 @@ export const Text = ({
     fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
+    breakWord && styles.break,
     color && styles[color],
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
