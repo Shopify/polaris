@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithAlignExample() {
   return (
     <div style={{width: '500px'}}>
-      <Box marginBottom="2">
+      <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with align start
         </Text>
@@ -22,7 +22,7 @@ function InlineWithAlignExample() {
         </Inline>
       </Box>
       <hr />
-      <Box marginBottom="2">
+      <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with align center
         </Text>
@@ -38,7 +38,7 @@ function InlineWithAlignExample() {
         </Inline>
       </Box>
       <hr />
-      <Box marginBottom="2">
+      <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with align end
         </Text>
