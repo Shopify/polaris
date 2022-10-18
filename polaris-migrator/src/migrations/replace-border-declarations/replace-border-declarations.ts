@@ -27,7 +27,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedBorderRadius = namespace('border-radius', options);
 
   return {
-    postcssPlugin: 'replace-sass-border',
+    postcssPlugin: 'replace-border-declarations',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
