@@ -312,7 +312,7 @@ const borderRadiusLengthMap = {
   '16px': '--p-border-radius-4',
   '20px': '--p-border-radius-5',
   '30px': '--p-border-radius-6',
-};
+} as const;
 
 const borderFunctionMap = {
   '': '--p-border-base',
