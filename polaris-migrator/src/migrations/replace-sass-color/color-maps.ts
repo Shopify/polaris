@@ -12,11 +12,12 @@ const createMap = <T extends Exact<ColorHue, T>>(config: T): T => config;
 
 export const colorMap = createMap({
   blue: {
+    dark: '--p-interactive-hovered',
     base: '--p-interactive',
   },
   green: {
-    dark: '--text-success',
-    base: '--text-success',
+    dark: '--p-text-success',
+    base: '--p-text-success',
   },
   yellow: {
     dark: '--p-text-warning',
@@ -25,6 +26,12 @@ export const colorMap = createMap({
   red: {
     dark: '--p-text-critical',
     base: '--p-text-critical',
+  },
+  sky: {
+    dark: '--p-text-subdued-on-dark',
+    base: '--p-text-on-dark',
+    light: '--p-text-on-dark',
+    lighter: '--p-text-on-dark',
   },
   ink: {
     base: '--p-text',
@@ -53,7 +60,8 @@ export const backgroundColorMap = createMap({
     lighter: '--p-surface-critical-subdued',
   },
   ink: {
-    lighter: '--p-surface-neutral',
+    dark: '--p-surface-dark',
+    base: '--p-surface-neutral-subdued-dark',
   },
   sky: {
     base: '--p-surface-neutral',
@@ -72,7 +80,7 @@ export const borderColorMap = createMap({
   green: {
     dark: '--p-border-success',
     base: '--p-border-success',
-    light: '--p-border-success-disabled',
+    light: '--p-border-success-subdued',
     lighter: '--p-border-success-subdued',
   },
   yellow: {
@@ -84,12 +92,38 @@ export const borderColorMap = createMap({
   red: {
     dark: '--p-border-critical',
     base: '--p-border-critical',
-    light: '--p-border-critical-disabled',
+    light: '--p-border-critical-subdued',
     lighter: '--p-border-critical-subdued',
   },
-  sky: {
-    base: '--p-border-subdued',
-    light: '--p-border-disabled',
+  ink: {
+    lightest: '--p-border',
+  },
+});
+
+export const fillColorMap = createMap({
+  green: {
+    dark: '--p-icon-success',
+    base: '--p-icon-success',
+  },
+  yellow: {
+    dark: '--p-icon-warning',
+    base: '--p-icon-warning',
+  },
+  red: {
+    dark: '--p-icon-critical',
+    base: '--p-icon-critical',
+  },
+  ink: {
+    base: '--p-icon',
+    light: '--p-icon',
+    lighter: '--p-icon-subdued',
+    lightest: '--p-icon-disabled',
+  },
+  black: {
+    base: '--p-icon',
+  },
+  white: {
+    base: '--p-icon-on-dark',
   },
 });
 
