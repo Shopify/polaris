@@ -145,23 +145,23 @@ npx @shopify/polaris-migrator replace-typography-declarations <path>
 Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `border-width()`, `border-radius()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
 
 ```diff
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border: border();
++ border: var(--p-border-base);
+
+- border-width: 0.0625rem;
++ border-width: var(--p-border-width-1);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+
 - border-radius: 4px;
 + border-radius: var(--p-border-radius-1);
 
 - border-radius: border-radius(large);
 + border-radius: var(--p-border-radius-large);
-
-- border-width: 1rem;
-+ border-width: var(--p-border-radius-4);
-
-- border-width: border-width(thick);
-+ border-width: var(--p-border-width-2);
-
-- border: 1px solid transparent;
-+ border: var(--p-border-width-1) solid transparent;
-
-- border: border-width(thicker) solid var(--p-border-base);
-+ border: var(--p-border-width-3) solid var(--p-border-base);
 ```
 
 ```sh
