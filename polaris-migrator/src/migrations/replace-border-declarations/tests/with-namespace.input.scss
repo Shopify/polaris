@@ -11,28 +11,25 @@
   border: 1px solid color('sky');
   border: 0.0625rem solid var(--p-border-subdued);
   border: solid 1px var(--p-border-subdued);
-  border-left: 1px solid rgba(141, 145, 150, 0.5);
-  border-top: 1px solid $var;
+  border: 1px solid rgba(141, 145, 150, 0.5);
+  border: 1px solid $var;
   border-width: 1px;
-  border-bottom-width: 1px;
-  border-radius: 2px;
-  border-radius: 1rem;
-  border-top-left-radius: 12px;
-  border-bottom-right-radius: 8px;
+  border-width: 0.0625rem;
 
   /* Ignore */
   border: 0.0625em solid var(--p-border-subdued);
   border: 0 solid var(--p-border-subdued);
   border: (16px + 16px) solid var(--p-border-subdued);
-  border-bottom: var(--var);
+  border: var(--var);
   border: calc(1px / var(--item-scale, 1)) solid var(--p-border-subdued);
-  border-radius: calc(var(--p-space-2) * 3);
-  border-radius: 50%;
+  border-width: 0.0625em;
+  border-width: 0;
 
   /* Comment */
   border: 10px solid var(--p-border-subdued);
   border: 10rem solid transparent;
-  border-bottom: 10px solid var(--p-divider);
+  border-width: 10px;
+  border-width: 10rem;
 
   /* --- REM FUNCTION --- */
 
@@ -43,16 +40,15 @@
   border-width: legacy-polaris-v8.rem(1px) legacy-polaris-v8.rem(1px);
   border-width: legacy-polaris-v8.rem(1px) 1px;
   border-width: legacy-polaris-v8.rem(1px) 4in;
-  border-left-with: legacy-polaris-v8.rem(1px) 1em;
-  border-top-width: legacy-polaris-v8.rem(1px) 0 0 0;
-  border-radius: legacy-polaris-v8.rem(8px);
+  border-width: legacy-polaris-v8.rem(1px) 1em;
+  border-width: legacy-polaris-v8.rem(1px) 0 0 0;
 
   /* Ignore */
   border: calc(1rem + var(--var, #{legacy-polaris-v8.rem(1px)})) solid
     var(--p-border-subdued);
   border: calc(1rem + var(--var, #{legacy-polaris-v8.rem(10px)})) solid
     var(--p-border-subdued);
-  border-radius: calc(${var(--p-border-radius-base)} * 2px);
+  border-width: calc(-1 * legacy-polaris-v8.rem(1px));
 
   /* Comment */
   border: legacy-polaris-v8.rem(10px) solid var(--p-border-subdued);
@@ -62,8 +58,6 @@
   border-width: legacy-polaris-v8.rem(10px) -1px;
   border-width: legacy-polaris-v8.rem(10px) + 1px;
   border-width: legacy-polaris-v8.rem($var * 1px);
-  border-radius: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(4px);
-  border-radius: legacy-polaris-v8.rem(1px) * 5;
 
   /* --- BORDER FUNCTION --- */
 
@@ -82,17 +76,44 @@
   border: legacy-polaris-v8.border-width(base) solid var(--p-border-subdued);
   border: legacy-polaris-v8.border-width(thick) solid var(--p-border-subdued);
   border: legacy-polaris-v8.border-width(thicker) solid var(--p-border-subdued);
-  border: legacy-polaris-v8.border-width('thicker') solid
-    var(--p-border-subdued);
+  border-width: legacy-polaris-v8.border-width('thicker');
 
   /* Ignore */
-  border-width: calc(legacy-polaris-v8.rem(10px) * -1px);
-  border-width: calc(${$var} * legacy-polaris-v8.border-width());
+  border-width: calc(-1 * legacy-polaris-v8.border-width());
+  border-width: calc($var * legacy-polaris-v8.border-width());
 
   /* Comment */
   border-width: legacy-polaris-v8.rem(1px)
     legacy-polaris-v8.rem(10px - legacy-polaris-v8.border-width());
-  border-width: legacy-polaris-v8.rem(10px) * -1px;
+}
+
+.border-radius {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border-radius: 2px;
+  border-radius: 1rem;
+
+  /* Ignore */
+  border-radius: 0;
+  border-radius: 2em;
+  border-radius: calc(var(--p-space-2) * 3);
+  border-radius: 50%;
+
+  /* Comment */
+  border-radius: 1px;
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border-radius: legacy-polaris-v8.rem(8px);
+
+  /* Ignore */
+  border-radius: calc(var(--p-border-radius-base) * 2px);
+
+  /* Comment */
+  border-radius: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(4px);
+  border-radius: legacy-polaris-v8.rem(1px) * 5;
 
   /* --- BORDER-RADIUS FUNCTION --- */
 

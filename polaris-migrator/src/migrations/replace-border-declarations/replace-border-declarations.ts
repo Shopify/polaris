@@ -42,8 +42,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      if (!borderProps.has(decl.prop)) return;
-
       let handler;
 
       if (borderProps.has(decl.prop)) handler = handleBorderProps;
@@ -143,8 +141,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               if (!isKeyOf(borderFunctionMap, value)) return;
 
-              targets.at(-1)!.replaced = true;
-
               node.value = 'var';
               node.nodes = [
                 {
@@ -154,6 +150,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                   sourceEndIndex: borderFunctionMap[value].length,
                 },
               ];
+
+              targets.at(-1)!.replaced = true;
             }
 
             if (isSassFunction(namespacedBorderWidth, node)) {
@@ -169,8 +167,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               if (!isKeyOf(borderWidthFunctionMap, value)) return;
 
-              targets.at(-1)!.replaced = true;
-
               node.value = 'var';
               node.nodes = [
                 {
@@ -180,6 +176,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                   sourceEndIndex: borderWidthFunctionMap[value].length,
                 },
               ];
+
+              targets.at(-1)!.replaced = true;
             }
 
             return StopWalkingFunctionNodes;
@@ -251,8 +249,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               if (!isKeyOf(borderRadiusFunctionMap, value)) return;
 
-              targets.at(-1)!.replaced = true;
-
               node.value = 'var';
               node.nodes = [
                 {
@@ -262,6 +258,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                   sourceEndIndex: borderRadiusFunctionMap[value].length,
                 },
               ];
+
+              targets.at(-1)!.replaced = true;
             }
 
             return StopWalkingFunctionNodes;
@@ -304,7 +302,6 @@ const borderWidthLengthMap = {
 } as const;
 
 const borderRadiusLengthMap = {
-  '50%': '--p- border-radius-half',
   '2px': '--p-border-radius-05',
   '4px': '--p-border-radius-1',
   '8px': '--p-border-radius-2',
@@ -312,6 +309,7 @@ const borderRadiusLengthMap = {
   '16px': '--p-border-radius-4',
   '20px': '--p-border-radius-5',
   '30px': '--p-border-radius-6',
+  '50%': '--p- border-radius-half',
 } as const;
 
 const borderFunctionMap = {

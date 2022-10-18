@@ -10,23 +10,19 @@
   border: var(--p-border-width-1) solid color('sky');
   border: var(--p-border-width-1) solid var(--p-border-subdued);
   border: solid var(--p-border-width-1) var(--p-border-subdued);
-  border-left: var(--p-border-width-1) solid rgba(141, 145, 150, 0.5);
-  border-top: var(--p-border-width-1) solid $var;
+  border: var(--p-border-width-1) solid rgba(141, 145, 150, 0.5);
+  border: var(--p-border-width-1) solid $var;
   border-width: var(--p-border-width-1);
-  border-bottom-width: var(--p-border-width-1);
-  border-radius: var(--p-border-radius-05);
-  border-radius: var(--p-border-radius-4);
-  border-top-left-radius: var(--p-border-radius-3);
-  border-bottom-right-radius: var(--p-border-radius-2);
+  border-width: var(--p-border-width-1);
 
   /* Ignore */
   border: 0.0625em solid var(--p-border-subdued);
   border: 0 solid var(--p-border-subdued);
   border: (16px + 16px) solid var(--p-border-subdued);
-  border-bottom: var(--var);
+  border: var(--var);
   border: calc(1px / var(--item-scale, 1)) solid var(--p-border-subdued);
-  border-radius: calc(var(--p-space-2) * 3);
-  border-radius: 50%;
+  border-width: 0.0625em;
+  border-width: 0;
 
   /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
@@ -36,8 +32,11 @@
   // border: 10rem solid transparent;
   border: 10rem solid transparent;
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-bottom: 10px solid var(--p-divider);
-  border-bottom: 10px solid var(--p-divider);
+  // border-width: 10px;
+  border-width: 10px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: 10rem;
+  border-width: 10rem;
 
   /* --- REM FUNCTION --- */
 
@@ -48,14 +47,13 @@
   border-width: var(--p-border-width-1) var(--p-border-width-1);
   border-width: var(--p-border-width-1) var(--p-border-width-1);
   border-width: var(--p-border-width-1) 4in;
-  border-left-width: var(--p-border-width-1) 1em;
-  border-top-width: var(--p-border-width-1) 0 0 0;
-  border-radius: var(--p-border-radius-2);
+  border-width: var(--p-border-width-1) 1em;
+  border-width: var(--p-border-width-1) 0 0 0;
 
   /* Ignore */
   border: calc(1rem + var(--var, #{rem(1px)})) solid var(--p-border-subdued);
   border: calc(1rem + var(--var, #{rem(10px)})) solid var(--p-border-subdued);
-  border-radius: calc(${var(--p-border-radius-base)} * 2px);
+  border-width: calc(-1 * rem(1px));
 
   /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
@@ -79,12 +77,6 @@
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border-width: rem($var * var(--p-border-width-1));
   border-width: rem($var * 1px);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-radius: rem(10px) var(--p-border-radius-1);
-  border-radius: rem(10px) rem(4px);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-radius: rem(1px) * 5;
-  border-radius: rem(1px) * 5;
 
   /* --- BORDER FUNCTION --- */
 
@@ -103,19 +95,51 @@
   border: var(--p-border-width-1) solid var(--p-border-subdued);
   border: var(--p-border-width-2) solid var(--p-border-subdued);
   border: var(--p-border-width-3) solid var(--p-border-subdued);
-  border: var(--p-border-width-3) solid var(--p-border-subdued);
+  border-width: var(--p-border-width-3);
 
   /* Ignore */
-  border-width: calc(rem(10px) * -1px);
-  border-width: calc(${$var} * border-width());
+  border-width: calc(-1 * border-width());
+  border-width: calc($var * border-width());
 
   /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border-width: var(--p-border-width-1) rem(10px - var(--p-border-width-1));
   border-width: rem(1px) rem(10px - border-width());
+}
+
+.border-radius {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border-radius: var(--p-border-radius-05);
+  border-radius: var(--p-border-radius-4);
+
+  /* Ignore */
+  border-radius: 0;
+  border-radius: 2em;
+  border-radius: calc(var(--p-space-2) * 3);
+  border-radius: 50%;
+
+  /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-width: rem(10px) * -1px;
-  border-width: rem(10px) * -1px;
+  // border-radius: 1px;
+  border-radius: 1px;
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border-radius: var(--p-border-radius-2);
+
+  /* Ignore */
+  border-radius: calc(var(--p-border-radius-base) * 2px);
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: rem(10px) var(--p-border-radius-1);
+  border-radius: rem(10px) rem(4px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: rem(1px) * 5;
+  border-radius: rem(1px) * 5;
 
   /* --- BORDER-RADIUS FUNCTION --- */
 
