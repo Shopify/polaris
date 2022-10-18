@@ -21,7 +21,6 @@ export interface AlphaCardProps {
   /** Elements to display inside card */
   children?: React.ReactNode;
   background?: CardBackgroundColorTokenScale;
-  hasBorderRadius?: boolean;
   shadow?: CardShadowTokensScale;
   padding?: SpacingSpaceScale;
   roundedAbove?: BreakpointsAlias;
@@ -30,7 +29,6 @@ export interface AlphaCardProps {
 export const AlphaCard = ({
   children,
   background = 'surface',
-  hasBorderRadius: hasBorderRadiusProp = true,
   shadow = 'card',
   padding = '5',
   roundedAbove,
@@ -38,7 +36,7 @@ export const AlphaCard = ({
   const breakpoints = useBreakpoints();
   const defaultBorderRadius = '2' as ShapeBorderRadiusScale;
 
-  let hasBorderRadius = !roundedAbove && hasBorderRadiusProp;
+  let hasBorderRadius = !roundedAbove;
 
   if (roundedAbove && breakpoints[`${roundedAbove}Up`]) {
     hasBorderRadius = true;
