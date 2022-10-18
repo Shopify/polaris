@@ -10,6 +10,8 @@ import styles from './Box.scss';
 
 type Element = 'div' | 'span';
 
+type Overflow = 'hidden' | 'scroll';
+
 export type BackgroundColorTokenScale =
   | 'action-critical'
   | 'action-critical-depressed'
@@ -164,8 +166,12 @@ export interface BoxProps {
   color?: ColorTokenScale;
   /** HTML id attribute */
   id?: string;
-  /** Spacing outside of container */
+  /** Set maximum width of container */
   maxWidth?: string;
+  /** Clip horizontal content of children */
+  overflowX?: Overflow;
+  /** Clip vertical content of children */
+  overflowY?: Overflow;
   /** Spacing around children */
   padding?: SpacingSpaceScale;
   /** Bottom spacing around children */
@@ -178,6 +184,8 @@ export interface BoxProps {
   paddingTop?: SpacingSpaceScale;
   /** Shadow */
   shadow?: DepthShadowAlias;
+  /** Set width of container */
+  width?: string;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -199,12 +207,15 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       color,
       id,
       maxWidth,
+      overflowX,
+      overflowY,
       padding,
       paddingBottom,
       paddingLeft,
       paddingRight,
       paddingTop,
       shadow,
+      width,
     },
     ref,
   ) => {
@@ -270,7 +281,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
           }
         : undefined),
       ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
-      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}px`} : undefined),
+      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}`} : undefined),
+      ...(overflowX ? {'--pc-box-overflow-x': `${overflowX}`} : undefined),
+      ...(overflowY ? {'--pc-box-overflow-y': `${overflowY}`} : undefined),
       ...(paddings.bottom
         ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
         : undefined),
@@ -286,6 +299,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ...(shadow
         ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`}
         : undefined),
+      ...(width ? {'--pc-box-max-width': `${width}`} : undefined),
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
