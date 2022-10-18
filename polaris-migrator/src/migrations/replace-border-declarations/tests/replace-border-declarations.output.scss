@@ -4,12 +4,12 @@
   /* --- LENGTHS --- */
 
   /* Migrate */
-  border: var(--p-border-width-1) solid var(--p-border-base);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
   border: var(--p-border-width-1) solid transparent;
   border: var(--p-border-width-1) solid currentColor;
   border: var(--p-border-width-1) solid color('sky');
-  border: var(--p-border-width-1) solid var(--p-border-base);
-  border: solid var(--p-border-width-1) var(--p-border-base);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: solid var(--p-border-width-1) var(--p-border-subdued);
   border-left: var(--p-border-width-1) solid rgba(141, 145, 150, 0.5);
   border-top: var(--p-border-width-1) solid $var;
   border-width: var(--p-border-width-1);
@@ -20,18 +20,18 @@
   border-bottom-right-radius: var(--p-border-radius-2);
 
   /* Ignore */
-  border: 0.0625em solid var(--p-border-base);
-  border: 0 solid var(--p-border-base);
-  border: (16px + 16px) solid var(--p-border-base);
+  border: 0.0625em solid var(--p-border-subdued);
+  border: 0 solid var(--p-border-subdued);
+  border: (16px + 16px) solid var(--p-border-subdued);
   border-bottom: var(--var);
-  border: calc(1px / var(--item-scale, 1)) solid var(--p-border-base);
+  border: calc(1px / var(--item-scale, 1)) solid var(--p-border-subdued);
   border-radius: calc(var(--p-space-2) * 3);
   border-radius: 50%;
 
   /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border: 10px solid var(--p-border-base);
-  border: 10px solid var(--p-border-base);
+  // border: 10px solid var(--p-border-subdued);
+  border: 10px solid var(--p-border-subdued);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border: 10rem solid transparent;
   border: 10rem solid transparent;
@@ -42,8 +42,8 @@
   /* --- REM FUNCTION --- */
 
   /* Migrate */
-  border: var(--p-border-width-1) solid var(--p-border-base);
-  border: solid var(--p-border-width-1) var(--p-border-base);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: solid var(--p-border-width-1) var(--p-border-subdued);
   border-width: var(--p-border-width-1);
   border-width: var(--p-border-width-1) var(--p-border-width-1);
   border-width: var(--p-border-width-1) var(--p-border-width-1);
@@ -53,14 +53,14 @@
   border-radius: var(--p-border-radius-2);
 
   /* Ignore */
-  border: calc(1rem + var(--var, #{rem(1px)})) solid var(--p-border-base);
-  border: calc(1rem + var(--var, #{rem(10px)})) solid var(--p-border-base);
+  border: calc(1rem + var(--var, #{rem(1px)})) solid var(--p-border-subdued);
+  border: calc(1rem + var(--var, #{rem(10px)})) solid var(--p-border-subdued);
   border-radius: calc(${var(--p-border-radius-base)} * 2px);
 
   /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border: rem(10px) solid var(--p-border-base);
-  border: rem(10px) solid var(--p-border-base);
+  // border: rem(10px) solid var(--p-border-subdued);
+  border: rem(10px) solid var(--p-border-subdued);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border-width: rem(10px);
   border-width: rem(10px);
@@ -99,11 +99,11 @@
   /* --- BORDER WIDTH FUNCTION --- */
 
   /* Migrate */
-  border: var(--p-border-width-1) solid var(--p-border-base);
-  border: var(--p-border-width-1) solid var(--p-border-base);
-  border: var(--p-border-width-2) solid var(--p-border-base);
-  border: var(--p-border-width-3) solid var(--p-border-base);
-  border: var(--p-border-width-3) solid var(--p-border-base);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: var(--p-border-width-2) solid var(--p-border-subdued);
+  border: var(--p-border-width-3) solid var(--p-border-subdued);
+  border: var(--p-border-width-3) solid var(--p-border-subdued);
 
   /* Ignore */
   border-width: calc(rem(10px) * -1px);
