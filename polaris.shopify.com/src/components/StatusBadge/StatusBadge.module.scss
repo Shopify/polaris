@@ -6,13 +6,14 @@
   padding: 0.05rem 0.25rem;
   color: var(--text);
 
+  &[data-value='alpha'],
   &[data-value='warning'],
   &[data-value='deprecated'] {
     background: var(--surface-warning);
   }
 
-  &[data-value='information'],
-  &[data-value='alpha'] {
+  &[data-value='beta'],
+  &[data-value='information'] {
     background: var(--surface-information);
   }
 }
