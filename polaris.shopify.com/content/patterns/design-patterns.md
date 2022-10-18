@@ -23,11 +23,7 @@ Do you have ideas or feedback on how we can make these guidelines more empowerin
 
 ## Principles
 
-For patterns to be successful, they need to be contextual, consistent, and unified.
-
-### Contextual
-
-A pattern is always paired with the problem it solves and the situation it appears in. A solution applied in a context it wasn’t designed for is not a pattern.
+For patterns to be successful, they need to be consistent, unified, and contextual.
 
 ### Consistent
 
@@ -37,6 +33,8 @@ Patterns are always used in the same way for the same reasons. Merchants need to
 
 Patterns are always informed by and designed together with similar patterns. For example, patterns with similar purpose should complement each other, and patterns with similar functionality should share appearance and behavior.
 
-Patterns come with a solution, problem, and situation that belong together. Solutions taken out of this context are no longer a pattern.
+### Contextual
+
+A pattern is always paired with the problem it solves and the situation it appears in. A solution applied in a context it wasn’t designed for is not a pattern.
 
 ![A solution box within a problem box within a situation box.](/images/foundations/patterns/design-patterns/situation-problem-solution.png)
