@@ -270,6 +270,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         ? `var(--p-border-radius-${borderRadiuses.topRight})`
         : undefined,
       '--pc-box-max-width': maxWidth ?? undefined,
+      '--pc-box-overflow-x': overflowX ?? undefined,
+      '--pc-box-overflow-y': overflowY ?? undefined,
       '--pc-box-padding-bottom': paddings.bottom
         ? `var(--p-space-${paddings.bottom})`
         : undefined,
