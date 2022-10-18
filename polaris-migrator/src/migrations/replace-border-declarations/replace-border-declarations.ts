@@ -16,6 +16,16 @@ import {
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
+export default function replaceBorderDeclarations(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
+    syntax: require('postcss-scss'),
+  }).css;
+}
+
 const processed = Symbol('processed');
 
 interface PluginOptions extends Options, NamespaceOptions {}
@@ -34,6 +44,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       if (!borderProps.has(decl.prop)) return;
 
+      let handler;
+
+      if (borderProps.has(decl.prop)) handler = handleBorderProps;
+      else if (borderRadiusProps.has(decl.prop))
+        handler = handleBorderRadiusProps;
+      else return;
+
       /**
        * A collection of transformable values to migrate (e.g. decl lengths, functions, etc.)
        *
@@ -44,7 +61,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       let hasNumericOperator = false;
       const parsedValue = valueParser(decl.value);
 
-      handleBorderProps();
+      handler();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
         // Insert comment if the declaration value contains calculations
@@ -79,19 +96,9 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             const valueInPx = toTransformablePx(node.value);
 
-            if (decl.prop.includes('radius')) {
-              if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
-                return;
-              }
+            if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
 
-              node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
-            } else {
-              if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
-                return;
-              }
-
-              node.value = `var(${borderWidthLengthMap[valueInPx]})`;
-            }
+            node.value = `var(${borderWidthLengthMap[valueInPx]})`;
 
             targets.at(-1)!.replaced = true;
 
@@ -108,35 +115,17 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (decl.prop.includes('radius')) {
-                if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
-                  return;
-                }
+              if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
 
-                node.value = 'var';
-                node.nodes = [
-                  {
-                    type: 'word',
-                    value: borderRadiusLengthMap[valueInPx],
-                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                    sourceEndIndex: borderRadiusLengthMap[valueInPx].length,
-                  },
-                ];
-              } else {
-                if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
-                  return;
-                }
-
-                node.value = 'var';
-                node.nodes = [
-                  {
-                    type: 'word',
-                    value: borderWidthLengthMap[valueInPx],
-                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                    sourceEndIndex: borderWidthLengthMap[valueInPx].length,
-                  },
-                ];
-              }
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderWidthLengthMap[valueInPx],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderWidthLengthMap[valueInPx].length,
+                },
+              ];
 
               targets.at(-1)!.replaced = true;
             }
@@ -193,6 +182,62 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               ];
             }
 
+            return StopWalkingFunctionNodes;
+          }
+        });
+      }
+
+      function handleBorderRadiusProps() {
+        parsedValue.walk((node) => {
+          if (node.type === 'word') {
+            if (globalValues.has(node.value)) return;
+            if (isNumericOperator(node)) {
+              hasNumericOperator = true;
+              return;
+            }
+
+            const dimension = valueParser.unit(node.value);
+
+            if (!isTransformableLength(dimension)) return;
+
+            targets.push({replaced: false});
+
+            const valueInPx = toTransformablePx(node.value);
+
+            if (!isKeyOf(borderRadiusLengthMap, valueInPx)) return;
+
+            node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
+
+            targets.at(-1)!.replaced = true;
+
+            return;
+          }
+
+          if (node.type === 'function') {
+            if (isSassFunction(namespacedRem, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (args.length !== 1) return;
+
+              const valueInPx = toTransformablePx(args[0]);
+
+              if (!isKeyOf(borderRadiusLengthMap, valueInPx)) return;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderRadiusLengthMap[valueInPx],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderRadiusLengthMap[valueInPx].length,
+                },
+              ];
+
+              targets.at(-1)!.replaced = true;
+            }
+
             if (isSassFunction(namespacedBorderRadius, node)) {
               targets.push({replaced: false});
 
@@ -240,6 +285,9 @@ const borderProps = new Set([
   'border-right-width',
   'border-bottom-width',
   'border-left-width',
+]);
+
+const borderRadiusProps = new Set([
   'border-radius',
   'border-top-left-radius',
   'border-top-right-radius',
@@ -295,13 +343,3 @@ const borderRadiusFunctionMap = {
   large: '--p-border-radius-large',
   "'large'": '--p-border-radius-large',
 } as const;
-
-export default function replaceBorderDeclarations(
-  fileInfo: FileInfo,
-  _: API,
-  options: Options,
-) {
-  return postcss(plugin(options)).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
