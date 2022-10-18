@@ -1,6 +1,6 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+import valueParser, {FunctionNode, WordNode} from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
@@ -41,8 +41,8 @@ const plugin = (options: PluginOptions = {}): Plugin => {
        * or not to replace the declaration or insert a comment.
        */
       const targets: {replaced: boolean}[] = [];
-      let hasNumericOperator = false;
       const parsedValue = valueParser(decl.value);
+      let hasNumericOperator = false;
 
       handleBorderProps();
 
@@ -58,165 +58,106 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         decl.value = parsedValue.toString();
       }
 
-      //
-      // Handlers
-      //
+      /* --- Handlers --- */
+
+      function handleWordNode(node: WordNode) {
+        if (globalValues.has(node.value)) return;
+        if (isNumericOperator(node)) {
+          hasNumericOperator = true;
+          return;
+        }
+
+        const dimension = valueParser.unit(node.value);
+        if (!isTransformableLength(dimension)) return;
+
+        targets.push({replaced: false});
+
+        const valueInPx = toTransformablePx(node.value);
+        const lengthMap = decl.prop.includes('radius')
+          ? borderRadiusLengthMap
+          : borderWidthLengthMap;
+
+        if (!isKeyOf(lengthMap, valueInPx)) {
+          return;
+        }
+
+        node.value = `var(${lengthMap[valueInPx]})`;
+        targets.at(-1)!.replaced = true;
+      }
+
+      function handleRemFunctionNode(node: FunctionNode) {
+        targets.push({replaced: false});
+
+        const args = getFunctionArgs(node);
+        const areArgsValid = args.length === 1;
+        const valueInPx = toTransformablePx(args[0]);
+        const lengthMap = decl.prop.includes('radius')
+          ? borderRadiusLengthMap
+          : borderWidthLengthMap;
+
+        if (!areArgsValid || !isKeyOf(lengthMap, valueInPx)) return;
+
+        node.value = 'var';
+        node.nodes = [
+          {
+            type: 'word',
+            value: lengthMap[valueInPx],
+            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+            sourceEndIndex: lengthMap[valueInPx].length,
+          },
+        ];
+
+        targets.at(-1)!.replaced = true;
+      }
+
+      function handleBorderFunctionNode(
+        node: FunctionNode,
+        map: {[key: string]: any},
+      ) {
+        targets.push({replaced: false});
+
+        const args = getFunctionArgs(node);
+        const value = args[0] ?? 'base';
+        const areArgsValid = args.length === 0 || args.length === 1;
+        /* args reference:
+        https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L603-L667 */
+
+        if (!areArgsValid || !isKeyOf(map, value)) return;
+
+        node.value = 'var';
+        node.nodes = [
+          {
+            type: 'word',
+            value: map[value],
+            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+            sourceEndIndex: map[value].length,
+          },
+        ];
+
+        targets.at(-1)!.replaced = true;
+      }
 
       function handleBorderProps() {
         parsedValue.walk((node) => {
           if (node.type === 'word') {
-            if (globalValues.has(node.value)) return;
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
-
-            const dimension = valueParser.unit(node.value);
-
-            if (!isTransformableLength(dimension)) return;
-
-            targets.push({replaced: false});
-
-            const valueInPx = toTransformablePx(node.value);
-
-            if (decl.prop.includes('radius')) {
-              if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
-                return;
-              }
-
-              node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
-            } else {
-              if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
-                return;
-              }
-
-              node.value = `var(${borderWidthLengthMap[valueInPx]})`;
-            }
-
-            targets.at(-1)!.replaced = true;
-
-            return;
+            handleWordNode(node);
           }
 
           if (node.type === 'function') {
             if (isSassFunction(namespacedRem, node)) {
-              targets.push({replaced: false});
-
-              const args = getFunctionArgs(node);
-
-              if (args.length !== 1) return;
-
-              const valueInPx = toTransformablePx(args[0]);
-
-              if (decl.prop.includes('radius')) {
-                if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
-                  return;
-                }
-
-                node.value = 'var';
-                node.nodes = [
-                  {
-                    type: 'word',
-                    value: borderRadiusLengthMap[valueInPx],
-                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                    sourceEndIndex: borderRadiusLengthMap[valueInPx].length,
-                  },
-                ];
-              } else {
-                if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
-                  return;
-                }
-
-                node.value = 'var';
-                node.nodes = [
-                  {
-                    type: 'word',
-                    value: borderWidthLengthMap[valueInPx],
-                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                    sourceEndIndex: borderWidthLengthMap[valueInPx].length,
-                  },
-                ];
-              }
-
-              targets.at(-1)!.replaced = true;
+              handleRemFunctionNode(node);
             }
 
             if (isSassFunction(namespacedBorder, node)) {
-              targets.push({replaced: false});
-
-              const args = getFunctionArgs(node);
-
-              if (!(args.length === 0 || args.length === 1)) return;
-
-              // `border()` args reference:
-              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L641
-              const value = args[0] ?? 'base';
-
-              if (!isKeyOf(borderFunctionMap, value)) return;
-
-              targets.at(-1)!.replaced = true;
-
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: borderFunctionMap[value],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderFunctionMap[value].length,
-                },
-              ];
+              handleBorderFunctionNode(node, borderFunctionMap);
             }
 
             if (isSassFunction(namespacedBorderWidth, node)) {
-              targets.push({replaced: false});
-
-              const args = getFunctionArgs(node);
-
-              if (!(args.length === 0 || args.length === 1)) return;
-
-              // `border-width()` args reference:
-              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L616
-              const value = args[0] ?? 'base';
-
-              if (!isKeyOf(borderWidthFunctionMap, value)) return;
-
-              targets.at(-1)!.replaced = true;
-
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: borderWidthFunctionMap[value],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderWidthFunctionMap[value].length,
-                },
-              ];
+              handleBorderFunctionNode(node, borderWidthFunctionMap);
             }
 
             if (isSassFunction(namespacedBorderRadius, node)) {
-              targets.push({replaced: false});
-
-              const args = getFunctionArgs(node);
-
-              if (!(args.length === 0 || args.length === 1)) return;
-
-              // `border-radius()` args reference:
-              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L655
-              const value = args[0] ?? 'base';
-
-              if (!isKeyOf(borderRadiusFunctionMap, value)) return;
-
-              targets.at(-1)!.replaced = true;
-
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: borderRadiusFunctionMap[value],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderRadiusFunctionMap[value].length,
-                },
-              ];
+              handleBorderFunctionNode(node, borderRadiusFunctionMap);
             }
 
             return StopWalkingFunctionNodes;
