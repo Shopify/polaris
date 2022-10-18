@@ -49,137 +49,137 @@
 
 .duration-compound-string-arg {
   opacity: 1;
-  transition: opacity var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
 }
 
 .duration-compound-non-string-arg {
   opacity: 1;
-  transition: opacity var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
 }
 
 .duration-compound-constant {
   opacity: 1;
-  transition: opacity var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-50) linear;
-  transition: opacity var(--p-duration-50) linear;
-  transition: opacity var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-150) linear;
-  transition: opacity var(--p-duration-150) linear;
-  transition: opacity var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-250) linear;
-  transition: opacity var(--p-duration-250) linear;
-  transition: opacity var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-350) linear;
-  transition: opacity var(--p-duration-350) linear;
-  transition: opacity var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-450) linear;
-  transition: opacity var(--p-duration-450) linear;
-  transition: opacity var(--p-duration-500) linear;
-  transition: opacity var(--p-duration-500) linear;
-  transition: opacity var(--p-duration-5000) linear;
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-5000) var(--p-linear);
 }
 
 .duration-multiple-string-arg {
   opacity: 1;
-  transition: opacity var(--p-duration-0) linear,
-    left var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-100) linear,
-    left var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-200) linear,
-    left var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-300) linear,
-    left var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-400) linear,
-    left var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-500) linear,
-    left var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
 }
 
 .duration-multiple-non-string-arg {
   opacity: 1;
-  transition: opacity var(--p-duration-200) linear,
-    left var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-0) linear,
-    left var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-100) linear,
-    left var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-200) linear,
-    left var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-300) linear,
-    left var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-400) linear,
-    left var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-500) linear,
-    left var(--p-duration-500) linear;
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
 }
 
 .duration-multiple-constant {
   opacity: 1;
-  transition: opacity var(--p-duration-0) linear,
-    left var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-0) linear,
-    left var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-0) linear,
-    left var(--p-duration-0) linear;
-  transition: opacity var(--p-duration-50) linear,
-    left var(--p-duration-50) linear;
-  transition: opacity var(--p-duration-50) linear,
-    left var(--p-duration-50) linear;
-  transition: opacity var(--p-duration-100) linear,
-    left var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-100) linear,
-    left var(--p-duration-100) linear;
-  transition: opacity var(--p-duration-150) linear,
-    left var(--p-duration-150) linear;
-  transition: opacity var(--p-duration-150) linear,
-    left var(--p-duration-150) linear;
-  transition: opacity var(--p-duration-200) linear,
-    left var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-200) linear,
-    left var(--p-duration-200) linear;
-  transition: opacity var(--p-duration-250) linear,
-    left var(--p-duration-250) linear;
-  transition: opacity var(--p-duration-250) linear,
-    left var(--p-duration-250) linear;
-  transition: opacity var(--p-duration-300) linear,
-    left var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-300) linear,
-    left var(--p-duration-300) linear;
-  transition: opacity var(--p-duration-350) linear,
-    left var(--p-duration-350) linear;
-  transition: opacity var(--p-duration-350) linear,
-    left var(--p-duration-350) linear;
-  transition: opacity var(--p-duration-400) linear,
-    left var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-400) linear,
-    left var(--p-duration-400) linear;
-  transition: opacity var(--p-duration-450) linear,
-    left var(--p-duration-450) linear;
-  transition: opacity var(--p-duration-450) linear,
-    left var(--p-duration-450) linear;
-  transition: opacity var(--p-duration-500) linear,
-    left var(--p-duration-500) linear;
-  transition: opacity var(--p-duration-500) linear,
-    left var(--p-duration-500) linear;
-  transition: opacity var(--p-duration-5000) linear,
-    left var(--p-duration-5000) linear;
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  transition: opacity var(--p-duration-5000) var(--p-linear),
+    left var(--p-duration-5000) var(--p-linear);
 }
 
 .edges {
@@ -187,11 +187,13 @@
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   transition: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
   /* Duration comes after easing func */
-  transition: opacity linear var(--p-duration-500);
+  transition: opacity var(--p-linear) var(--p-duration-500);
   /* Duration + Delay */
-  transition: opacity var(--p-duration-400) linear var(--p-duration-100);
+  transition: opacity var(--p-duration-400) var(--p-linear)
+    var(--p-duration-100);
   /* Duration + Delay after easing func */
-  transition: opacity linear var(--p-duration-400) var(--p-duration-100);
+  transition: opacity var(--p-linear) var(--p-duration-400)
+    var(--p-duration-100);
   /* foobar isn't a valid duration key */
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. Unknown duration key 'foobar'. */
   transition-duration: legacy-polaris-v8.duration(foobar);

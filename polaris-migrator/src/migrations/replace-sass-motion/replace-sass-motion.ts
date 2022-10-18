@@ -1,6 +1,10 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin, Declaration, Helpers} from 'postcss';
-import valueParser, {ParsedValue, Node} from 'postcss-value-parser';
+import valueParser, {
+  ParsedValue,
+  Node,
+  FunctionNode,
+} from 'postcss-value-parser';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
@@ -15,6 +19,7 @@ import {isKeyOf} from '../../utilities/type-guards';
 
 const processed = Symbol('processed');
 const DEFAULT_DURATION = 'base';
+const DEFAULT_FUNCTION = 'base';
 
 const durationFuncMap = {
   none: '--p-duration-0',
@@ -51,6 +56,36 @@ const durationConstantsMap = {
   '0.5s': '--p-duration-500',
   '5s': '--p-duration-5000',
 };
+
+const easingFuncMap = {
+  base: '--p-ease',
+  in: '--p-ease-in',
+  out: '--p-ease-out',
+};
+
+const easingFuncConstantsMap = {
+  linear: '--p-linear',
+  ease: '--p-ease',
+  'ease-in': '--p-ease-in',
+  'ease-out': '--p-ease-out',
+  'ease-in-out': '--p-ease-in-out',
+};
+
+const deprecatedEasingFuncs = ['anticipate', 'excite', 'overshoot'];
+
+// Per the spec for transition easing functions:
+// https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
+const cssEasingBuiltinFuncs = [
+  'linear',
+  'ease',
+  'ease-in',
+  'ease-out',
+  'ease-in-out',
+  'cubic-bezier',
+  'step-start',
+  'step-end',
+  'steps',
+];
 
 function normaliseStringifiedNumber(number: string): string {
   return Number(number).toString();
@@ -99,10 +134,51 @@ function withParsedValue(
   }) as DeclarationProcessor;
 }
 
+function insertUnexpectedEasingFunctionComment(
+  node: Node,
+  decl: ParsedValueDeclaration,
+) {
+  decl.before(
+    postcss.comment({
+      text: `${POLARIS_MIGRATOR_COMMENT} Unexpected easing function '${node.value}'. See https://polaris.shopify.com/tokens/motion for possible values.`,
+    }),
+  );
+}
+
+function migrateLegacySassEasingFunction(
+  node: FunctionNode,
+  decl: ParsedValueDeclaration,
+) {
+  const easingFunc = node.nodes[0]?.value ?? DEFAULT_FUNCTION;
+
+  if (isKeyOf(easingFuncMap, easingFunc)) {
+    const easingCustomProperty = easingFuncMap[easingFunc];
+    setNodeValue(node, `var(${easingCustomProperty})`);
+  } else {
+    const comment = deprecatedEasingFuncs.includes(easingFunc)
+      ? `The ${easingFunc} easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.`
+      : `Unexpected easing function '${easingFunc}'.`;
+    decl.before(
+      postcss.comment({
+        text: `${POLARIS_MIGRATOR_COMMENT} ${comment}`,
+      }),
+    );
+  }
+}
+
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions = {}): Plugin => {
   const durationFunc = namespace('duration', options);
+
+  const easingFuncHandlers = {
+    [namespace('easing', options)]: migrateLegacySassEasingFunction,
+    // Per the spec, these can all be functions:
+    // https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
+    linear: insertUnexpectedEasingFunctionComment,
+    'cubic-bezier': insertUnexpectedEasingFunctionComment,
+    steps: insertUnexpectedEasingFunctionComment,
+  };
 
   function mutateTransitionDurationValue(
     node: Node,
@@ -148,6 +224,32 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       }
 
       return true;
+    }
+
+    return false;
+  }
+
+  function mutateTransitionFunctionValue(
+    node: Node,
+    decl: ParsedValueDeclaration,
+  ): boolean {
+    if (isPolarisVar(node)) {
+      return true;
+    }
+
+    if (node.type === 'function' && isKeyOf(easingFuncHandlers, node.value)) {
+      easingFuncHandlers[node.value](node, decl);
+      return true;
+    }
+
+    if (node.type === 'word') {
+      if (isKeyOf(easingFuncConstantsMap, node.value)) {
+        setNodeValue(node, `var(${easingFuncConstantsMap[node.value]})`);
+        return true;
+      } else if (cssEasingBuiltinFuncs.includes(node.value)) {
+        insertUnexpectedEasingFunctionComment(node, decl);
+        return true;
+      }
     }
 
     return false;
@@ -200,7 +302,10 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       if (isTransformableDuration(unit) || isSassFunction(durationFunc, node)) {
         timings.push(node);
       } else {
-        // TODO: Try process it as an easing function
+        // This node could be either the property to animate, or an easing
+        // function. We try mutate the easing function, but if not we assume
+        // it's the property to animate and therefore do not leave a comment.
+        mutateTransitionFunctionValue(node, decl);
       }
     });
 
@@ -261,6 +366,18 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
         decl.parsedValue.nodes.forEach((node) => {
           if (!mutateTransitionDelayValue(node, decl)) {
+            decl.before(
+              postcss.comment({
+                text: POLARIS_MIGRATOR_COMMENT,
+              }),
+            );
+          }
+        });
+      }),
+
+      'transition-timing-function': withParsedValue((decl) => {
+        decl.parsedValue.nodes.forEach((node) => {
+          if (!mutateTransitionFunctionValue(node, decl)) {
             decl.before(
               postcss.comment({
                 text: POLARIS_MIGRATOR_COMMENT,
