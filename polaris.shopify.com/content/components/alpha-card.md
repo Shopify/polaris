@@ -31,8 +31,5 @@ examples:
     description: Use for content that you want to deprioritize. Subdued cards don’t stand out as much as cards with white backgrounds so don’t use them for information or actions that are critical to merchants.
   - fileName: alpha-card-without-border-radius.tsx
     title: Without border radius
-    description: Border radius can be toggled off, or added after a certain breakpoint.
-  - fileName: alpha-card-flat.tsx
-    title: Elevation
-    description: Elevation can be set to flat
+    description: Border radius can be toggled to display only past a certain breakpoint.
 ---
