@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function AlphaStackWithAlignExample() {
   return (
     <div style={{width: '500px'}}>
-      <Box marginBottom="2">
+      <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with align start
         </Text>
@@ -24,7 +24,7 @@ function AlphaStackWithAlignExample() {
         </AlphaStack>
       </Box>
       <hr />
-      <Box marginBottom="2">
+      <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with align center
         </Text>
@@ -42,7 +42,7 @@ function AlphaStackWithAlignExample() {
         </AlphaStack>
       </Box>
       <hr />
-      <Box marginBottom="2">
+      <Box paddingBottom="2">
         <Text variant="bodySm" as="h3">
           with align end
         </Text>
