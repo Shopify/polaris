@@ -1,7 +1,6 @@
 import type {
   BreakpointsAlias,
   ColorsTokenName,
-  DepthShadowAlias,
   ShapeBorderRadiusScale,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -9,8 +8,6 @@ import React from 'react';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
 import {Box} from '../Box';
-
-type CardShadowTokensScale = Extract<DepthShadowAlias, 'card' | 'transparent'>;
 
 type CardBackgroundColorTokenScale = Extract<
   ColorsTokenName,
@@ -21,7 +18,6 @@ export interface AlphaCardProps {
   /** Elements to display inside card */
   children?: React.ReactNode;
   background?: CardBackgroundColorTokenScale;
-  shadow?: CardShadowTokensScale;
   padding?: SpacingSpaceScale;
   roundedAbove?: BreakpointsAlias;
 }
@@ -29,7 +25,6 @@ export interface AlphaCardProps {
 export const AlphaCard = ({
   children,
   background = 'surface',
-  shadow = 'card',
   padding = '5',
   roundedAbove,
 }: AlphaCardProps) => {
@@ -46,7 +41,7 @@ export const AlphaCard = ({
     <Box
       background={background}
       padding={padding}
-      shadow={shadow}
+      shadow="card"
       {...(hasBorderRadius && {borderRadius: defaultBorderRadius})}
     >
       {children}
