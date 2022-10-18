@@ -8,30 +8,30 @@
 }
 
 .font-size {
-  /* LENGTHS */
+  // LENGTHS
   font-size: 12px;
   font-size: 1rem;
-  /* Ignore */
+  // Ignore
   font-size: 1em;
   font-size: #{1px};
-  /* Comment */
+  // Comment
   font-size: 10px;
   font-size: 12px + 1px;
 
-  /* FONT-SIZE FUNCTION */
+  // FONT-SIZE FUNCTION
   font-size: legacy-polaris-v8.font-size(caption);
   font-size: legacy-polaris-v8.font-size(caption, base);
   font-size: legacy-polaris-v8.font-size(caption, large-screen);
-  /* Comment */
+  // Comment
   font-size: legacy-polaris-v8.font-size($invalid);
   font-size: legacy-polaris-v8.font-size(caption, $invalid);
   font-size: legacy-polaris-v8.font-size();
   font-size: legacy-polaris-v8.font-size(caption, base, $too-many-args);
 
-  /* REM FUNCTION */
+  // REM FUNCTION
   font-size: legacy-polaris-v8.rem(12px);
   font-size: legacy-polaris-v8.rem(1rem);
-  /* Comment */
+  // Comment
   font-size: legacy-polaris-v8.rem(1em);
   font-size: legacy-polaris-v8.rem(10px);
   font-size: legacy-polaris-v8.rem($invalid);
@@ -44,33 +44,33 @@
 }
 
 .font-weight {
-  /* LENGTHS */
+  // LENGTHS
   font-weight: 400;
   font-weight: 700;
-  /* Comment */
+  // Comment
   font-weight: 300;
   font-weight: 400 + 300;
 
-  /* ALIAS */
+  // ALIAS
   font-weight: normal;
   font-weight: bold;
-  /* Comment */
+  // Comment
   font-weight: bolder;
 }
 
 .font-line-height {
-  /* LENGTHS */
+  // LENGTHS
   line-height: 16px;
   line-height: 1rem;
-  /* Comment */
+  // Comment
   line-height: 10px;
 
-  /* LINE-HEIGHT FUNCTION */
+  // LINE-HEIGHT FUNCTION
   line-height: legacy-polaris-v8.line-height(caption);
   line-height: legacy-polaris-v8.line-height(caption, base);
   line-height: legacy-polaris-v8.line-height(caption, large-screen);
   line-height: legacy-polaris-v8.line-height(display-x-large, base);
-  /* Comment */
+  // Comment
   line-height: legacy-polaris-v8.line-height($invalid);
   line-height: legacy-polaris-v8.line-height(caption, $invalid);
   line-height: legacy-polaris-v8.line-height();
