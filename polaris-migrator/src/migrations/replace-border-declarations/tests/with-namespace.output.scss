@@ -78,7 +78,7 @@
   // border-width: legacy-polaris-v8.rem(10px) + var(--p-border-width-1);
   border-width: legacy-polaris-v8.rem(10px) + 1px;
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-width: legacy-polaris-v8.rem($var * 1px);
+  // border-width: legacy-polaris-v8.rem($var * var(--p-border-width-1));
   border-width: legacy-polaris-v8.rem($var * 1px);
 
   /* --- BORDER FUNCTION --- */
@@ -106,7 +106,7 @@
 
   /* Comment */
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-width: var(--p-border-width-1) legacy-polaris-v8.rem(10px - legacy-polaris-v8.border-width());
+  // border-width: var(--p-border-width-1) legacy-polaris-v8.rem(10px - var(--p-border-width-1));
   border-width: legacy-polaris-v8.rem(1px)
     legacy-polaris-v8.rem(10px - legacy-polaris-v8.border-width());
 }

@@ -109,12 +109,11 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const args = getFunctionArgs(node);
 
-              if (args.length !== 1) return StopWalkingFunctionNodes;
+              if (args.length !== 1) return;
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (!isKeyOf(borderWidthLengthMap, valueInPx))
-                return StopWalkingFunctionNodes;
+              if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
 
               node.value = 'var';
               node.nodes = [
@@ -134,15 +133,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const args = getFunctionArgs(node);
 
-              if (!(args.length === 0 || args.length === 1))
-                return StopWalkingFunctionNodes;
+              if (!(args.length === 0 || args.length === 1)) return;
 
               // `border()` args reference:
               // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L641
               const value = args[0] ?? 'base';
 
-              if (!isKeyOf(borderFunctionMap, value))
-                return StopWalkingFunctionNodes;
+              if (!isKeyOf(borderFunctionMap, value)) return;
 
               node.value = 'var';
               node.nodes = [
@@ -162,15 +159,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const args = getFunctionArgs(node);
 
-              if (!(args.length === 0 || args.length === 1))
-                return StopWalkingFunctionNodes;
+              if (!(args.length === 0 || args.length === 1)) return;
 
               // `border-width()` args reference:
               // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L616
               const value = args[0] ?? 'base';
 
-              if (!isKeyOf(borderWidthFunctionMap, value))
-                return StopWalkingFunctionNodes;
+              if (!isKeyOf(borderWidthFunctionMap, value)) return;
 
               node.value = 'var';
               node.nodes = [
@@ -222,12 +217,11 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const args = getFunctionArgs(node);
 
-              if (args.length !== 1) return StopWalkingFunctionNodes;
+              if (args.length !== 1) return;
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (!isKeyOf(borderRadiusLengthMap, valueInPx))
-                return StopWalkingFunctionNodes;
+              if (!isKeyOf(borderRadiusLengthMap, valueInPx)) return;
 
               node.value = 'var';
               node.nodes = [
@@ -247,15 +241,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const args = getFunctionArgs(node);
 
-              if (!(args.length === 0 || args.length === 1))
-                return StopWalkingFunctionNodes;
+              if (!(args.length === 0 || args.length === 1)) return;
 
               // `border-radius()` args reference:
               // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L655
               const value = args[0] ?? 'base';
 
-              if (!isKeyOf(borderRadiusFunctionMap, value))
-                return StopWalkingFunctionNodes;
+              if (!isKeyOf(borderRadiusFunctionMap, value)) return;
 
               node.value = 'var';
               node.nodes = [
