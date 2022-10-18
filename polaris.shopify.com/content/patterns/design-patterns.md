@@ -40,28 +40,3 @@ Patterns are always informed by and designed together with similar patterns. For
 ![A solution box within a problem box within a situation box.](/images/foundations/patterns/design-patterns/situation-problem-solution.png)
 
 Patterns come with a solution, problem, and situation that belong together. Solutions taken out of this context are no longer a pattern.
-
-## Patterns vs. compositions
-
-Patterns are for merchants and compositions are for builders.
-
-### Pattern purpose
-
-- Design the best possible merchant experience
-- Simplify learning the UI
-- Improve recognizability and ease of use
-- Improve merchants’ admin proficiency
-
-### Composition purpose
-
-- Share as much code as possible
-- Speed up the build process
-- Improve maintainability and reusability
-- Ensure build consistency
-
-### How to distinguish
-
-- Patterns solve usability problems that relate to the usage of admin, while compositions solve build problems that relate to the build process
-- Patterns ensure consistent product experience, while compositions ensure consistent implementation
-- A pattern can be hard coded and still be a pattern, and a composition can be using Polaris primitives and tokens and still not be a pattern
-- Patterns are the language we speak with merchants, compositions are the code we share among us
