@@ -1,5 +1,8 @@
 import React, {createElement} from 'react';
-import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
+import type {
+  BreakpointsAlias,
+  SpacingSpaceScale,
+} from '@shopify/polaris-tokens';
 
 import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
@@ -8,6 +11,14 @@ import styles from './AlphaStack.scss';
 type Align = 'start' | 'end' | 'center';
 
 type Element = 'div' | 'ul' | 'fieldset';
+
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
+
+type ResponsiveProp<T> =
+  | T
+  | {
+      [Breakpoint in BreakpointsAlias]?: T;
+    };
 
 export interface AlphaStackProps {
   /** HTML Element type */
@@ -19,7 +30,7 @@ export interface AlphaStackProps {
   /** Toggle elements to be full width */
   fullWidth?: boolean;
   /** Adjust spacing between elements */
-  spacing?: SpacingSpaceScale;
+  spacing?: Spacing;
 }
 
 export const AlphaStack = ({
@@ -37,7 +48,7 @@ export const AlphaStack = ({
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
-    ...(spacing ? {'--pc-stack-spacing': `var(--p-space-${spacing})`} : {}),
+    ...getResponsiveProps('stack', 'spacing', 'space', spacing),
   } as React.CSSProperties;
 
   return createElement(
@@ -47,5 +58,29 @@ export const AlphaStack = ({
       style: sanitizeCustomProperties(style),
     },
     children,
+  );
+};
+
+const getResponsiveProps = (
+  componentName: string,
+  componentProp: string,
+  tokenSubgroup: string,
+  responsiveProp:
+    | string
+    | {
+        [Breakpoint in BreakpointsAlias]?: string;
+      },
+) => {
+  if (typeof responsiveProp === 'string') {
+    return {
+      [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
+    };
+  }
+
+  return Object.fromEntries(
+    Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
+      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
+      `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+    ]),
   );
 };
