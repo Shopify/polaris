@@ -37,6 +37,6 @@ Patterns are always used in the same way for the same reasons. Merchants need to
 
 Patterns are always informed by and designed together with similar patterns. For example, patterns with similar purpose should complement each other, and patterns with similar functionality should share appearance and behavior.
 
-![A solution box within a problem box within a situation box.](/images/foundations/patterns/design-patterns/situation-problem-solution.png)
-
 Patterns come with a solution, problem, and situation that belong together. Solutions taken out of this context are no longer a pattern.
+
+![A solution box within a problem box within a situation box.](/images/foundations/patterns/design-patterns/situation-problem-solution.png)
