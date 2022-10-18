@@ -1,4 +1,4 @@
-import React, {createElement, forwardRef, ReactNode} from 'react';
+import React, {createElement, forwardRef, PropsWithChildren} from 'react';
 import type {
   DepthShadowAlias,
   SpacingSpaceScale,
@@ -135,7 +135,7 @@ interface Spacing {
   top: SpacingSpaceScale;
 }
 
-export interface BoxProps {
+export interface BoxProps extends PropsWithChildren {
   /** HTML Element type */
   as?: Element;
   /** Background color */
@@ -160,8 +160,6 @@ export interface BoxProps {
   borderRadiusTopLeft?: BorderRadiusTokenScale;
   /** Top right border radius */
   borderRadiusTopRight?: BorderRadiusTokenScale;
-  /** Inner content */
-  children: ReactNode;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
@@ -245,61 +243,49 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     } as Spacing;
 
     const style = {
-      ...(background
-        ? {'--pc-box-background': `var(--p-${background})`}
-        : undefined),
-      ...(borders.bottom
-        ? {'--pc-box-border-bottom': `var(--p-border-${borders.bottom})`}
-        : undefined),
-      ...(borders.left
-        ? {'--pc-box-border-left': `var(--p-border-${borders.left})`}
-        : undefined),
-      ...(borders.right
-        ? {'--pc-box-border-right': `var(--p-border-${borders.right})`}
-        : undefined),
-      ...(borders.top
-        ? {'--pc-box-border-top': `var(--p-border-${borders.top})`}
-        : undefined),
-      ...(borderRadiuses.bottomLeft
-        ? {
-            '--pc-box-border-radius-bottom-left': `var(--p-border-radius-${borderRadiuses.bottomLeft})`,
-          }
-        : undefined),
-      ...(borderRadiuses.bottomRight
-        ? {
-            '--pc-box-border-radius-bottom-right': `var(--p-border-radius-${borderRadiuses.bottomRight})`,
-          }
-        : undefined),
-      ...(borderRadiuses.topLeft
-        ? {
-            '--pc-box-border-radius-top-left': `var(--p-border-radius-${borderRadiuses.topLeft})`,
-          }
-        : undefined),
-      ...(borderRadiuses.topRight
-        ? {
-            '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
-          }
-        : undefined),
-      ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
-      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}`} : undefined),
-      ...(overflowX ? {'--pc-box-overflow-x': `${overflowX}`} : undefined),
-      ...(overflowY ? {'--pc-box-overflow-y': `${overflowY}`} : undefined),
-      ...(paddings.bottom
-        ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
-        : undefined),
-      ...(paddings.left
-        ? {'--pc-box-padding-left': `var(--p-space-${paddings.left})`}
-        : undefined),
-      ...(paddings.right
-        ? {'--pc-box-padding-right': `var(--p-space-${paddings.right})`}
-        : undefined),
-      ...(paddings.top
-        ? {'--pc-box-padding-top': `var(--p-space-${paddings.top})`}
-        : undefined),
-      ...(shadow
-        ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`}
-        : undefined),
-      ...(width ? {'--pc-box-width': `${width}`} : undefined),
+      '--pc-box-color': color ? `var(--p-${color})` : undefined,
+      '--pc-box-background': background ? `var(--p-${background})` : undefined,
+      '--pc-box-border-bottom': borders.bottom
+        ? `var(--p-border-${borders.bottom})`
+        : undefined,
+      '--pc-box-border-left': borders.left
+        ? `var(--p-border-${borders.left})`
+        : undefined,
+      '--pc-box-border-right': borders.right
+        ? `var(--p-border-${borders.right})`
+        : undefined,
+      '--pc-box-border-top': borders.top
+        ? `var(--p-border-${borders.top})`
+        : undefined,
+      '--pc-box-border-radius-bottom-left': borderRadiuses.bottomLeft
+        ? `var(--p-border-radius-${borderRadiuses.bottomLeft})`
+        : undefined,
+      '--pc-box-border-radius-bottom-right': borderRadiuses.bottomRight
+        ? `var(--p-border-radius-${borderRadiuses.bottomRight})`
+        : undefined,
+      '--pc-box-border-radius-top-left': borderRadiuses.topLeft
+        ? `var(--p-border-radius-${borderRadiuses.topLeft})`
+        : undefined,
+      '--pc-box-border-radius-top-right': borderRadiuses.topRight
+        ? `var(--p-border-radius-${borderRadiuses.topRight})`
+        : undefined,
+      '--pc-box-max-width': maxWidth ?? undefined,
+      '--pc-box-overflow-x': overflowX ?? undefined,
+      '--pc-box-overflow-y': overflowY ?? undefined,
+      '--pc-box-padding-bottom': paddings.bottom
+        ? `var(--p-space-${paddings.bottom})`
+        : undefined,
+      '--pc-box-padding-left': paddings.left
+        ? `var(--p-space-${paddings.left})`
+        : undefined,
+      '--pc-box-padding-right': paddings.right
+        ? `var(--p-space-${paddings.right})`
+        : undefined,
+      '--pc-box-padding-top': paddings.top
+        ? `var(--p-space-${paddings.top})`
+        : undefined,
+      '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
+      '--pc-box-width': width ?? undefined,
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
