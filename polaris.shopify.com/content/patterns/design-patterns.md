@@ -15,7 +15,7 @@ A design pattern is a repeatable solution to a common UX problem in a specific m
 
 ---
 
-### Join the conversation!
+### Join the conversation
 
 Do you have ideas or feedback on how we can make these guidelines more empowering and useful? Please share your thoughts in the [GitHub discussion](https://github.com/Shopify/polaris/discussions/6046).
 
