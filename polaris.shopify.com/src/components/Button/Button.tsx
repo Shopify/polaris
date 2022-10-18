@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import Link, {LinkProps} from 'next/link';
-import {HTMLProps, PropsWithChildren} from 'react';
+import type {HTMLProps, PropsWithChildren} from 'react';
 import {className} from '../../utils/various';
 import styles from './Button.module.scss';
 
@@ -16,8 +16,11 @@ interface LinkButtonProps extends Props, PropsWithChildren<LinkProps> {
   download?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({small, pill, primary, fill, children, ...rest}, ref) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {small, pill, primary, fill, children, className: classNameProp, ...rest},
+    ref,
+  ) => {
     return (
       <button
         className={className(
@@ -26,6 +29,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           pill && styles.pill,
           primary && styles.primary,
           fill && styles.fill,
+          classNameProp,
         )}
         {...rest}
         type="button"

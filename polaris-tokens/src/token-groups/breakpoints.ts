@@ -31,10 +31,5 @@ export const breakpoints = {
 export type BreakpointsTokenGroup = TokenGroup<typeof breakpoints>;
 export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
 
-// e.g. "xs" | "sm" | "md" | "lg" | "xl"
-export type BreakpointsAlias = Extract<
-  BreakpointsTokenName,
-  `breakpoints-${string}`
-> extends `breakpoints-${infer Alias}`
-  ? Alias
-  : never;
+export const breakpointsAlias = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export type BreakpointsAlias = typeof breakpointsAlias[number];

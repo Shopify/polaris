@@ -12,18 +12,9 @@ import {
   NamespaceOptions,
   toTransformablePx,
   StopWalkingFunctionNodes,
+  createInlineComment,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
-
-export default function replaceBorderDeclarations(
-  fileInfo: FileInfo,
-  _: API,
-  options: Options,
-) {
-  return postcss(plugin(options)).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
 
 const processed = Symbol('processed');
 
@@ -33,6 +24,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedRem = namespace('rem', options);
   const namespacedBorder = namespace('border', options);
   const namespacedBorderWidth = namespace('border-width', options);
+  const namespacedBorderRadius = namespace('border-radius', options);
 
   return {
     postcssPlugin: 'replace-sass-border',
@@ -55,11 +47,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       handleBorderProps();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
-        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
+        // Insert comment if the declaration value contains calculations
         decl.before(
-          postcss.comment({
-            text: `${decl.prop}: ${parsedValue.toString()};`,
-          }),
+          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+        );
+        decl.before(
+          createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
         );
       } else {
         decl.value = parsedValue.toString();
@@ -86,11 +79,22 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             const valueInPx = toTransformablePx(node.value);
 
-            if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
+            if (decl.prop.includes('radius')) {
+              if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
+                return;
+              }
+
+              node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
+            } else {
+              if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
+                return;
+              }
+
+              node.value = `var(${borderWidthLengthMap[valueInPx]})`;
+            }
 
             targets.at(-1)!.replaced = true;
 
-            node.value = `var(${borderWidthLengthMap[valueInPx]})`;
             return;
           }
 
@@ -104,19 +108,37 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const valueInPx = toTransformablePx(args[0]);
 
-              if (!isKeyOf(borderWidthLengthMap, valueInPx)) return;
+              if (decl.prop.includes('radius')) {
+                if (!isKeyOf(borderRadiusLengthMap, valueInPx)) {
+                  return;
+                }
+
+                node.value = 'var';
+                node.nodes = [
+                  {
+                    type: 'word',
+                    value: borderRadiusLengthMap[valueInPx],
+                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                    sourceEndIndex: borderRadiusLengthMap[valueInPx].length,
+                  },
+                ];
+              } else {
+                if (!isKeyOf(borderWidthLengthMap, valueInPx)) {
+                  return;
+                }
+
+                node.value = 'var';
+                node.nodes = [
+                  {
+                    type: 'word',
+                    value: borderWidthLengthMap[valueInPx],
+                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                    sourceEndIndex: borderWidthLengthMap[valueInPx].length,
+                  },
+                ];
+              }
 
               targets.at(-1)!.replaced = true;
-
-              node.value = 'var';
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: borderWidthLengthMap[valueInPx],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex: borderWidthLengthMap[valueInPx].length,
-                },
-              ];
             }
 
             if (isSassFunction(namespacedBorder, node)) {
@@ -171,6 +193,32 @@ const plugin = (options: PluginOptions = {}): Plugin => {
               ];
             }
 
+            if (isSassFunction(namespacedBorderRadius, node)) {
+              targets.push({replaced: false});
+
+              const args = getFunctionArgs(node);
+
+              if (!(args.length === 0 || args.length === 1)) return;
+
+              // `border-radius()` args reference:
+              // https://github.com/shopify/polaris/blob/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7/documentation/guides/legacy-polaris-v8-public-api.scss#L655
+              const value = args[0] ?? 'base';
+
+              if (!isKeyOf(borderRadiusFunctionMap, value)) return;
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: borderRadiusFunctionMap[value],
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: borderRadiusFunctionMap[value].length,
+                },
+              ];
+            }
+
             return StopWalkingFunctionNodes;
           }
         });
@@ -188,29 +236,72 @@ const borderProps = new Set([
   'border-bottom',
   'border-left',
   'border-width',
-  'border-width-top',
-  'border-width-right',
-  'border-width-bottom',
-  'border-width-left',
+  'border-top-width',
+  'border-right-width',
+  'border-bottom-width',
+  'border-left-width',
+  'border-radius',
+  'border-top-left-radius',
+  'border-top-right-radius',
+  'border-bottom-left-radius',
+  'border-bottom-right-radius',
 ]);
 
 const borderWidthLengthMap = {
-  '1px': '--p-border-1',
-  '2px': '--p-border-2',
-  '3px': '--p-border-3',
-  '4px': '--p-border-4',
-  '5px': '--p-border-5',
+  '1px': '--p-border-width-1',
+  '2px': '--p-border-width-2',
+  '3px': '--p-border-width-3',
+  '4px': '--p-border-width-4',
+  '5px': '--p-border-width-5',
 } as const;
 
+const borderRadiusLengthMap = {
+  '50%': '--p- border-radius-half',
+  '2px': '--p-border-radius-05',
+  '4px': '--p-border-radius-1',
+  '8px': '--p-border-radius-2',
+  '12px': '--p-border-radius-3',
+  '16px': '--p-border-radius-4',
+  '20px': '--p-border-radius-5',
+  '30px': '--p-border-radius-6',
+};
+
 const borderFunctionMap = {
+  '': '--p-border-base',
   base: '--p-border-base',
+  "'base'": '--p-border-base',
   dark: '--p-border-dark',
+  "'dark'": '--p-border-dark',
   transparent: '--p-border-transparent',
+  "'transparent'": '--p-border-transparent',
   divider: '	--p-border-divider',
+  "'divider'": '	--p-border-divider',
 } as const;
 
 const borderWidthFunctionMap = {
-  base: '--p-border-1',
-  thick: '--p-border-2',
-  thicker: '--p-border-3',
+  '': '--p-border-width-1',
+  base: '--p-border-width-1',
+  "'base'": '--p-border-width-1',
+  thick: '--p-border-width-2',
+  "'thick'": '--p-border-width-2',
+  thicker: '--p-border-width-3',
+  "'thicker'": '--p-border-width-3',
 } as const;
+
+const borderRadiusFunctionMap = {
+  '': '--p-border-radius-base',
+  base: '--p-border-radius-base',
+  "'base'": '--p-border-radius-base',
+  large: '--p-border-radius-large',
+  "'large'": '--p-border-radius-large',
+} as const;
+
+export default function replaceBorderDeclarations(
+  fileInfo: FileInfo,
+  _: API,
+  options: Options,
+) {
+  return postcss(plugin(options)).process(fileInfo.source, {
+    syntax: require('postcss-scss'),
+  }).css;
+}

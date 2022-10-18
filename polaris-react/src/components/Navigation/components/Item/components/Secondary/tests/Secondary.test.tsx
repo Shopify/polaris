@@ -21,13 +21,10 @@ describe('Secondary()', () => {
     });
   });
 
-  it('adds custom transition props to Collapsible', () => {
+  it('disables Collapsible transition', () => {
     const component = mountWithApp(<Secondary expanded />);
     expect(component).toContainReactComponent(Collapsible, {
-      transition: {
-        duration: expect.any(String),
-        timingFunction: expect.any(String),
-      },
+      transition: false,
     });
   });
 

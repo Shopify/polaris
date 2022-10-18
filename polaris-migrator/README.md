@@ -99,6 +99,56 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
 ```
 
+### `replace-typography-declarations`
+
+Replace legacy Typography functions and hardcoded lengths with Polaris custom properties for `font-family`, `font-size`, `font-weight`, and `line-height` declarations.
+
+```diff
+- font-family: font-family(monospace);
++ font-family: var(--p-font-family-mono);
+
+- font-size: font-size(input, base);
++ font-size: var(--p-font-size-200);
+
+- font-weight: 400;
++ font-weight: var(--p-font-weight-regular);
+
+- line-height: line-height(caption, base);
++ font-family: var(--p-font-line-height-2);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-typography-declarations <path>
+```
+
+### `replace-border-declarations`
+
+Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `border-width()`, `border-radius()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: border-radius(large);
++ border-radius: var(--p-border-radius-large);
+
+- border-width: 1rem;
++ border-width: var(--p-border-radius-4);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border: border-width(thicker) solid var(--p-border-base);
++ border: var(--p-border-width-3) solid var(--p-border-base);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-border-declarations <path>
+```
+
 ## Creating a migration
 
 ### Setup

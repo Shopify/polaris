@@ -463,10 +463,10 @@ export function DetailsPage() {
     </VisuallyHidden>
   );
 
-  // ---- Description ----
+  const [title, setTitle] = useState(
+    "The North Face Ventrix Active Trail Hybrid Hoodie - Men's",
+  );
   const [descriptionValue, setDescriptionValue] = useState(initialDescription);
-
-  // ---- Select ----
   const [selected, setSelected] = useState('today');
 
   const options = [
@@ -546,7 +546,7 @@ export function DetailsPage() {
     <Page
       fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-      title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
+      title={title}
       titleMetadata={<Badge status="success">Success badge</Badge>}
       primaryAction={{
         content: 'Save this page',
@@ -597,8 +597,11 @@ export function DetailsPage() {
             <FormLayout>
               <TextField
                 label="Title"
-                value="M60-A"
-                onChange={() => setIsDirty(true)}
+                value={title}
+                onChange={(title) => {
+                  setTitle(title);
+                  setIsDirty(true);
+                }}
                 autoComplete="off"
               />
               <TextField

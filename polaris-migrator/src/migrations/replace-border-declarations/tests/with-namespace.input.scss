@@ -1,0 +1,115 @@
+/* stylelint-disable */
+@use 'global-styles/legacy-polaris-v8';
+
+.border {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border: 1px solid var(--p-border-base);
+  border: 1px solid transparent;
+  border: 1px solid currentColor;
+  border: 1px solid color('sky');
+  border: 0.0625rem solid var(--p-border-base);
+  border: solid 1px var(--p-border-base);
+  border-left: 1px solid rgba(141, 145, 150, 0.5);
+  border-top: 1px solid $var;
+  border-width: 1px;
+  border-bottom-width: 1px;
+  border-radius: 2px;
+  border-radius: 1rem;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 8px;
+
+  /* Ignore */
+  border: 0.0625em solid var(--p-border-base);
+  border: 0 solid var(--p-border-base);
+  border: (16px + 16px) solid var(--p-border-base);
+  border-bottom: var(--var);
+  border: calc(1px / var(--item-scale, 1)) solid var(--p-border-base);
+  border-radius: calc(var(--p-space-2) * 3);
+  border-radius: 50%;
+
+  /* Comment */
+  border: 10px solid var(--p-border-base);
+  border: 10rem solid transparent;
+  border-bottom: 10px solid var(--p-divider);
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border: legacy-polaris-v8.rem(1px) solid var(--p-border-base);
+  border: solid legacy-polaris-v8.rem(1px) var(--p-border-base);
+  border-width: legacy-polaris-v8.rem(1px);
+  border-width: legacy-polaris-v8.rem(1px) legacy-polaris-v8.rem(1px);
+  border-width: legacy-polaris-v8.rem(1px) 1px;
+  border-width: legacy-polaris-v8.rem(1px) 4in;
+  border-left-with: legacy-polaris-v8.rem(1px) 1em;
+  border-top-width: legacy-polaris-v8.rem(1px) 0 0 0;
+  border-radius: legacy-polaris-v8.rem(8px);
+
+  /* Ignore */
+  border: calc(1rem + var(--var, #{legacy-polaris-v8.rem(1px)})) solid
+    var(--p-border-base);
+  border: calc(1rem + var(--var, #{legacy-polaris-v8.rem(10px)})) solid
+    var(--p-border-base);
+  border-radius: calc(${var(--p-border-radius-base)} * 2px);
+
+  /* Comment */
+  border: legacy-polaris-v8.rem(10px) solid var(--p-border-base);
+  border-width: legacy-polaris-v8.rem(10px);
+  border-width: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(10px);
+  border-width: legacy-polaris-v8.rem(1px) legacy-polaris-v8.rem(10px);
+  border-width: legacy-polaris-v8.rem(10px) -1px;
+  border-width: legacy-polaris-v8.rem(10px) + 1px;
+  border-width: legacy-polaris-v8.rem($var * 1px);
+  border-radius: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(4px);
+  border-radius: legacy-polaris-v8.rem(1px) * 5;
+
+  /* --- BORDER FUNCTION --- */
+
+  /* Migrate */
+  border: legacy-polaris-v8.border();
+  border: legacy-polaris-v8.border(base);
+  border: legacy-polaris-v8.border(dark);
+  border: legacy-polaris-v8.border(transparent);
+  border: legacy-polaris-v8.border(divider);
+  border: legacy-polaris-v8.border('divider');
+
+  /* --- BORDER WIDTH FUNCTION --- */
+
+  /* Migrate */
+  border: legacy-polaris-v8.border-width() solid var(--p-border-base);
+  border: legacy-polaris-v8.border-width(base) solid var(--p-border-base);
+  border: legacy-polaris-v8.border-width(thick) solid var(--p-border-base);
+  border: legacy-polaris-v8.border-width(thicker) solid var(--p-border-base);
+  border: legacy-polaris-v8.border-width('thicker') solid var(--p-border-base);
+
+  /* Ignore */
+  border-width: calc(legacy-polaris-v8.rem(10px) * -1px);
+  border-width: calc(${$var} * legacy-polaris-v8.border-width());
+
+  /* Comment */
+  border-width: legacy-polaris-v8.rem(1px)
+    legacy-polaris-v8.rem(10px - legacy-polaris-v8.border-width());
+  border-width: legacy-polaris-v8.rem(10px) * -1px;
+
+  /* --- BORDER-RADIUS FUNCTION --- */
+
+  /* Migrate */
+  border-radius: legacy-polaris-v8.border-radius();
+  border-radius: legacy-polaris-v8.border-radius(base);
+  border-radius: legacy-polaris-v8.border-radius(large);
+
+  /* Ignore */
+  border-radius: calc(legacy-polaris-v8.border-radius(base) * 2);
+  border-radius: calc(
+    legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px)
+  );
+
+  /* Comment */
+  border-radius: legacy-polaris-v8.border-radius(base) * 2;
+  border-radius: legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px);
+  border-radius: 10px;
+  border-top-right-radius: legacy-polaris-v8.border-radius() *
+    legacy-polaris-v8.rem(4px);
+}

@@ -7,7 +7,11 @@ describe('Columns', () => {
   it('does not render custom properties by default', () => {
     const columns = mountWithApp(<Columns />);
 
-    expect(columns).toContainReactComponent('div', {style: undefined});
+    expect(columns).toContainReactComponent('div', {
+      style: {
+        '--pc-columns-xs': 'repeat(6, minmax(0, 1fr))',
+      } as React.CSSProperties,
+    });
   });
 
   it('only renders custom properties that match the properties passed in', () => {
@@ -15,6 +19,7 @@ describe('Columns', () => {
 
     expect(columns).toContainReactComponent('div', {
       style: {
+        '--pc-columns-xs': 'repeat(6, minmax(0, 1fr))',
         '--pc-columns-space-md': 'var(--p-space-1)',
       } as React.CSSProperties,
     });

@@ -23,6 +23,11 @@ function MyApp({Component, pageProps}: AppProps) {
   const isProd = process.env.NODE_ENV === 'production';
   const darkMode = useDarkMode(false);
 
+  // We're using router.pathname here to check for a specific incoming route to render in a Fragment instead of
+  // the Page component. This will work fine for statically generated assets / pages
+  // Any SSR pages may break due to router sometimes being undefined on first render.
+  // see https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
+
   useEffect(() => {
     if (!isProd) return;
 
@@ -43,6 +48,7 @@ function MyApp({Component, pageProps}: AppProps) {
   }.png`;
 
   const isPolarisExample = router.asPath.startsWith('/examples');
+  const isPolarisSandbox = router.asPath.startsWith('/sandbox');
 
   useEffect(() => {
     document.documentElement.style.setProperty(
@@ -91,7 +97,7 @@ function MyApp({Component, pageProps}: AppProps) {
             !isPolarisExample && 'styles-for-site-but-not-polaris-examples',
           )}
         >
-          {isPolarisExample ? (
+          {isPolarisExample || isPolarisSandbox ? (
             <Component {...pageProps} />
           ) : (
             <Frame darkMode={darkMode}>
