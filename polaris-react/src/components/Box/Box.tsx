@@ -299,7 +299,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       ...(shadow
         ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`}
         : undefined),
-      ...(width ? {'--pc-box-max-width': `${width}`} : undefined),
+      ...(width ? {'--pc-box-width': `${width}`} : undefined),
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
