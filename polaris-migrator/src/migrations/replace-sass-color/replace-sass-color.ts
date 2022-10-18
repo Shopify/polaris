@@ -10,13 +10,19 @@ import {
   hasSassFunction,
 } from '../../utilities/sass';
 
-import {backgroundColorMap, borderColorMap, colorMap} from './color-maps';
+import {
+  backgroundColorMap,
+  borderColorMap,
+  colorMap,
+  fillColorMap,
+} from './color-maps';
 
 const tokenColorsKeys = Object.keys(tokenColors);
 const maps = {
   colorMap,
   backgroundColorMap,
   borderColorMap,
+  fillColorMap,
 };
 const propertyMap: {[key: string]: keyof typeof maps} = {
   color: 'colorMap',
@@ -24,6 +30,7 @@ const propertyMap: {[key: string]: keyof typeof maps} = {
   'background-color': 'backgroundColorMap',
   border: 'borderColorMap',
   'border-color': 'borderColorMap',
+  fill: 'fillColorMap',
 };
 
 export default function replaceSassColors(

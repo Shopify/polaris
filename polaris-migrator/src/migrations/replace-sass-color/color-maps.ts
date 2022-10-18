@@ -27,16 +27,17 @@ export const colorMap = createMap({
     dark: '--p-text-critical',
     base: '--p-text-critical',
   },
+  ink: {
+    base: '--p-text',
+    light: '--p-text-subdued',
+    lighter: '--p-text-subdued',
+    lightest: '--p-text-subdued',
+  },
   sky: {
     dark: '--p-text-subdued-on-dark',
     base: '--p-text-on-dark',
     light: '--p-text-on-dark',
     lighter: '--p-text-on-dark',
-  },
-  ink: {
-    base: '--p-text',
-    lighter: '--p-text-subdued',
-    lightest: '--p-text-subdued',
   },
   black: {
     base: '--p-text',
@@ -97,6 +98,9 @@ export const borderColorMap = createMap({
   },
   ink: {
     lightest: '--p-border',
+  },
+  sky: {
+    light: '--p-border-subdued',
   },
 });
 

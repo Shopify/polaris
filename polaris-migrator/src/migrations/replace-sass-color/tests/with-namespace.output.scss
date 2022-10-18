@@ -1,11 +1,6 @@
 @use 'global-styles/legacy-polaris-v8';
 
 .my-class {
-  // static colors
-  color: white;
-  color: black;
-
-  // color() function
   color: var(--p-text);
   color: var(--p-text-subdued);
   color: legacy-polaris-v8.color('ink', 'lighter', #f2ece4);
