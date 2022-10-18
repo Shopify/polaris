@@ -64,13 +64,16 @@
   fill: var(--p-icon);
   fill: var(--p-icon-on-dark);
 
-  // Skip color() with a for-background argument
-  color: color('ink', 'lighter', #f2ece4);
-
   // Remove color() fallbacks
   color: var(--p-text);
 
   // Handle declarations with multiple values
   border: var(--p-border-width-1) solid var(--p-border);
   background: border-box var(--p-surface-neutral-subdued);
+
+  // Skip color() with a for-background argument
+  color: color('ink', 'lighter', #f2ece4);
+
+  // Skip replacing color() within a function
+  background: rgba(color('black'), 0.5);
 }

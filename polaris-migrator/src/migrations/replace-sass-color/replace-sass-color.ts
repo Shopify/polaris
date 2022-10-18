@@ -7,8 +7,9 @@ import {
   NamespaceOptions,
   namespace,
   isSassFunction,
-  hasSassFunction,
+  StopWalkingFunctionNodes,
 } from '../../utilities/sass';
+import {isKeyOf} from '../../utilities/type-guards';
 
 import {
   backgroundColorMap,
@@ -59,13 +60,20 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
+      if (!isKeyOf(propertyMap, decl.prop)) return;
+      const propertyMapKey = propertyMap[decl.prop];
+      const replacementMap = maps[propertyMapKey];
       const parsed = valueParser(decl.value);
 
-      if (!hasSassFunction(namespacedColor, parsed)) return;
-
       parsed.walk((node) => {
+        if (node.type !== 'function') return;
+
+        if (node.value === 'rgba') {
+          return StopWalkingFunctionNodes;
+        }
+
         // 1. Remove color() fallbacks
-        if (isSassFunction('var', node)) {
+        if (node.value === 'var') {
           const {nodes} = node;
           const polarisCustomPropertyIndex = nodes.findIndex(
             (node) =>
@@ -79,39 +87,41 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           if (polarisCustomPropertyIndex < colorFnFallbackIndex) {
             node.nodes = [nodes[0]];
           }
+
+          return StopWalkingFunctionNodes;
         }
 
-        if (!isKeyof(propertyMap, decl.prop)) return;
-        const propertyMapKey = propertyMap[decl.prop];
-        const replacementMap = maps[propertyMapKey];
-
         // 2. Replace `color()` with variable
-        if (!isSassFunction(namespacedColor, node)) return;
-        const colorFnArgs = node.nodes.filter((node) => node.type !== 'div');
-        const hue = colorFnArgs[0]?.value ?? '';
-        const value = colorFnArgs[1]?.value ?? 'base';
-        const forBackground = colorFnArgs[2];
+        if (node.value === namespacedColor) {
+          const colorFnArgs = node.nodes.filter((node) => node.type !== 'div');
+          const hue = colorFnArgs[0]?.value ?? '';
+          const value = colorFnArgs[1]?.value ?? 'base';
+          const forBackground = colorFnArgs[2];
 
-        // Skip color() with for-background argument
-        if (forBackground) return;
+          // Skip color() with for-background argument
+          if (forBackground) return;
 
-        // Skip if we don't have a color for the hue and value
-        if (
-          !(isKeyof(replacementMap, hue) && isKeyof(replacementMap[hue], value))
-        )
-          return;
+          // Skip if we don't have a color for the hue and value
+          if (
+            !(
+              isKeyOf(replacementMap, hue) &&
+              isKeyOf(replacementMap[hue], value)
+            )
+          )
+            return;
 
-        const colorCustomProperty: string = replacementMap[hue][value];
+          const colorCustomProperty: string = replacementMap[hue][value];
 
-        node.value = 'var';
-        node.nodes = [
-          {
-            type: 'word',
-            value: colorCustomProperty,
-            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-            sourceEndIndex: colorCustomProperty.length,
-          },
-        ];
+          node.value = 'var';
+          node.nodes = [
+            {
+              type: 'word',
+              value: colorCustomProperty,
+              sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+              sourceEndIndex: colorCustomProperty.length,
+            },
+          ];
+        }
       });
 
       decl.value = parsed.toString();
@@ -121,10 +131,3 @@ const plugin = (options: PluginOptions = {}): Plugin => {
     },
   };
 };
-
-export function isKeyof<T extends {[key: string]: any}>(
-  obj: T,
-  key: PropertyKey | undefined,
-): key is keyof T {
-  return Object.keys(obj).includes(key as string);
-}

@@ -64,13 +64,16 @@
   fill: color('black');
   fill: color('white');
 
-  // Skip color() with a for-background argument
-  color: color('ink', 'lighter', #f2ece4);
-
   // Remove color() fallbacks
   color: var(--p-text, color('white'));
 
   // Handle declarations with multiple values
   border: var(--p-border-width-1) solid color('ink', 'lightest');
   background: border-box color('sky', 'light');
+
+  // Skip color() with a for-background argument
+  color: color('ink', 'lighter', #f2ece4);
+
+  // Skip replacing color() within a function
+  background: rgba(color('black'), 0.5);
 }
