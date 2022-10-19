@@ -1,4 +1,15 @@
-import postcss from 'postcss';
+import type {FileInfo, API, Options} from 'jscodeshift';
+import postcss, {
+  Root,
+  Result,
+  Plugin,
+  Container,
+  Declaration,
+  Node as PostCSSNode,
+  Rule as PostCSSRule,
+  Comment as PostCSSComment,
+  AtRule,
+} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
@@ -7,6 +18,8 @@ import valueParser, {
 } from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 import prettier from 'prettier';
+
+import {POLARIS_MIGRATOR_COMMENT} from '../constants';
 
 const defaultNamespace = '';
 
@@ -250,4 +263,277 @@ export function createInlineComment(text: string, options?: {prose?: boolean}) {
   comment.raws.inline = true;
 
   return comment;
+}
+
+interface PluginOptions extends Options, NamespaceOptions {
+  // Only applies when fixing
+  __injectReportsAsComments: boolean;
+}
+
+interface Report {
+  node: PostCSSNode;
+  severity: 'warning' | 'error' | 'suggestion';
+  message: string;
+}
+
+interface PluginContext {
+  fix: boolean;
+}
+
+// Extracted from stylelint
+type StylelintRuleBase<P = any, S = any> = (
+  primaryOption: P,
+  secondaryOptions: {[key: string]: S},
+  context: PluginContext,
+) => (root: Root, result: Result) => void;
+
+interface StylelintRuleMeta {
+  url: string;
+  deprecated?: boolean;
+  fixable?: boolean;
+}
+
+type StylelintRule<P = any, S = any> = StylelintRuleBase<P, S> & {
+  ruleName: string;
+  meta?: StylelintRuleMeta;
+};
+
+type Walker<N extends PostCSSNode> = (node: N) => false | void;
+
+export type PolarisMigrator<P = any, S = any> = (
+  primaryOption: P,
+  secondaryOptions: {
+    options: {[key: string]: S};
+    methods: {
+      report: (report: Report) => void;
+      each: <T extends Container>(root: T, walker: Walker<PostCSSNode>) => void;
+      walk: <T extends Container>(root: T, walker: Walker<PostCSSNode>) => void;
+      walkComments: <T extends Container>(
+        root: T,
+        walker: Walker<PostCSSComment>,
+      ) => void;
+      walkAtRules: <T extends Container>(
+        root: T,
+        atRuleWalker: Walker<AtRule>,
+      ) => void;
+      walkDecls: <T extends Container>(
+        root: T,
+        declWalker: Walker<Declaration>,
+      ) => void;
+      walkRules: <T extends Container>(
+        root: T,
+        ruleWalker: Walker<PostCSSRule>,
+      ) => void;
+    };
+  },
+  context: PluginContext,
+) => (root: Root, result: Result) => void;
+
+// Expose a stylelint-like API for creating sass migrators so we can easily
+// migrate to that tool in the future.
+function convertStylelintRuleToPostcssProcessor(ruleFn: StylelintRule) {
+  return (fileInfo: FileInfo, _: API, options: Options) => {
+    const plugin: Plugin = {
+      postcssPlugin: ruleFn.ruleName,
+      // PostCSS will rewalk the AST every time a declaration/rule/etc is
+      // mutated by a plugin. This can be useful in some cases, but in ours we
+      // only want single-pass behaviour.
+      //
+      // This can be avoided in 2 ways:
+      //
+      // 1) Flagging each declaration as we pass it, then skipping it on
+      //    subsequent passes.
+      // 2) Using postcss's Once() plugin callback.
+      //
+      // stylelint also uses `Once()`, so we're able to remove this once we've
+      // migrated:
+      // https://github.com/stylelint/stylelint/blob/cb425cb/lib/postcssPlugin.js#L22
+      Once(root, {result}) {
+        // NOTE: For fullest compatibility with stylelint, we initialise the
+        // rule here _inside_ the postcss Once function just like stylelint
+        // does. I _think_ this means multiple passes can be performed without
+        // rules accidentally retaining scoped variables, etc.
+        ruleFn(
+          // Normally, this comes from stylelint config, but for this shim we
+          // just hard-code it, and instead rely on the "seconary" options
+          // object for passing through the jscodeshift options.
+          true,
+          {
+            ...options,
+            __injectReportsAsComments: true,
+          },
+          // Also normally comes from styelint via the cli `--fix` flag.
+          {fix: true},
+        )(root, result);
+      },
+    };
+
+    return postcss(plugin).process(fileInfo.source, {
+      syntax: require('postcss-scss'),
+    }).css;
+  };
+}
+
+export function createStylelintRule(ruleName: string, ruleFn: PolarisMigrator) {
+  const wrappedRule: StylelintRule = ((
+    primary,
+    {__injectReportsAsComments = false, ...secondaryOptions}: PluginOptions,
+    context,
+  ) => {
+    const reports = new Map<PostCSSNode, Report[]>();
+
+    const addDedupedReport = (newReport: Report) => {
+      if (!reports.has(newReport.node)) {
+        reports.set(newReport.node, []);
+      }
+
+      const reportsForNode = reports.get(newReport.node)!;
+
+      if (
+        reportsForNode.findIndex(
+          (existingReport) =>
+            existingReport.severity === newReport.severity &&
+            existingReport.message === newReport.message,
+        ) === -1
+      ) {
+        reportsForNode.push(newReport);
+      }
+    };
+
+    const flushReportsAsComments = () => {
+      // @ts-expect-error No idea why TS is complaining here
+      for (const [node, reportsForNode] of reports) {
+        node.before(
+          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+        );
+
+        for (const report of reportsForNode) {
+          node.before(
+            createInlineComment(`${report.severity}: ${report.message}`, {
+              prose: true,
+            }),
+          );
+        }
+      }
+      reports.clear();
+    };
+
+    // TODO: When moving to style-lint, migrate this to call style-lint's
+    // stylelint.utils.report()
+    const flushReportsToStylelint = flushReportsAsComments;
+
+    function createWalker<T extends PostCSSNode>(args: {
+      walker: (node: T) => false | void;
+      serialiseSuggestion: (node: T) => string;
+    }): (node: T) => false | void {
+      const {walker, serialiseSuggestion} = args;
+
+      return (node: T) => {
+        let oldNode: T;
+        if (context.fix) {
+          oldNode = node.clone();
+        }
+
+        const result = walker(node);
+
+        const isPartialFix =
+          context.fix &&
+          reports.has(node) &&
+          node.toString() !== oldNode!.toString();
+
+        if (__injectReportsAsComments) {
+          flushReportsAsComments();
+
+          // Our migrations have an opinion on partial fixes (when multiple
+          // issues are found in a single node, and some but not all can be
+          // fixed): We dump out the partial fix result as a comment
+          // immediately above the node.
+          if (isPartialFix) {
+            node.before(createInlineComment(serialiseSuggestion(node)));
+          }
+        } else {
+          flushReportsToStylelint();
+        }
+
+        if (isPartialFix) {
+          // Undo changes
+          node.replaceWith(oldNode!);
+        }
+
+        return result;
+      };
+    }
+
+    return ruleFn(
+      primary,
+      // We're kind of abusing stylelint's types here since the
+      // SecondaryOptions param can take an arbitrary object. But we need a
+      // way to pass the methods into the rule function somehow, and this way
+      // means less Typescript hackery.
+      {
+        options: secondaryOptions,
+        methods: {
+          report: addDedupedReport,
+          each(root, walker) {
+            root.each(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.toString(),
+              }),
+            );
+          },
+          walk(root, walker) {
+            root.walk(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.toString(),
+              }),
+            );
+          },
+          walkAtRules(root, walker) {
+            root.walkAtRules(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => `@${node.name} ${node.params}`,
+              }),
+            );
+          },
+          walkComments(root, walker) {
+            root.walkComments(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.text,
+              }),
+            );
+          },
+          walkDecls(root, walker) {
+            root.walkDecls(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => `${node.prop}: ${node.value}`,
+              }),
+            );
+          },
+          walkRules(root, walker) {
+            root.walkRules(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.selector,
+              }),
+            );
+          },
+        },
+      },
+      context,
+    );
+  }) as StylelintRule;
+
+  wrappedRule.ruleName = ruleName;
+  wrappedRule.meta = {
+    // TODO: link directly to the specific rule
+    url: 'https://www.npmjs.com/package/@shopify/stylelint-polaris',
+    fixable: true,
+  };
+
+  return convertStylelintRuleToPostcssProcessor(wrappedRule);
 }
