@@ -3,6 +3,7 @@
 $small-width: 620px;
 
 .BodyWrapper {
+  position: relative;
   display: flex;
   flex-grow: 1;
   overflow-x: hidden;
