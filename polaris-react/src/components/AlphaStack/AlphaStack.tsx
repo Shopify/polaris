@@ -10,7 +10,7 @@ import styles from './AlphaStack.scss';
 
 type Align = 'start' | 'end' | 'center';
 
-type Element = 'div' | 'ul' | 'fieldset';
+type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
 
