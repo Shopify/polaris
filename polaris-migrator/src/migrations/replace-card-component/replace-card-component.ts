@@ -7,8 +7,6 @@ import {
   getImportSpecifierName,
   hasImportSpecifier,
   removeImportSpecifier,
-  renameImportSourcePath,
-  renameImportDeclaration,
 } from '../../utilities/imports';
 
 /**
@@ -27,13 +25,9 @@ export default function replaceCardComponent(
   }
 
   if (hasImportSpecifier(j, source, 'AlphaCard', updatedSourcePathRegex)) {
-    // console.log('migration — first conditional');
     removeImportSpecifier(j, source, 'Card', sourcePathRegex);
   } else {
-    // console.log('migration — second conditional');
     renameImportSpecifier(j, source, 'Card', 'AlphaCard', sourcePathRegex);
-    // renameImportDeclaration(j, source, sourcePathRegex, '?');
-    // renameImportSourcePath(j, source, 'Card', 'AlphaCard', sourcePathRegex);
   }
 
   const localElementName =

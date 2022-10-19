@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card} from '../Card';
+import {Card} from '@shopify/polaris';
 
 export function App() {
   return <Card>Card</Card>;

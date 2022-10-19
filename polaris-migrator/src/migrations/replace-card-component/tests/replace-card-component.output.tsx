@@ -1,5 +1,5 @@
 import React from 'react';
-import {AlphaCard} from '../AlphaCard';
+import {AlphaCard} from '@shopify/polaris';
 
 export function App() {
   return <AlphaCard>Card</AlphaCard>;

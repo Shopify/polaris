@@ -150,14 +150,6 @@ export function renameImportSpecifier(
   newSpecifier: string,
   sourcePath: string | RegExp,
 ) {
-  console.log('inside rename');
-  console.log(getImportSpecifier(j, source, specifier, sourcePath));
-  // console.log(j.importSpecifier(j.identifier(newSpecifier)));
-  // if (typeof sourcePath === 'string') {
-  //   console.log({sourcePath});
-  // } else {
-  //   console.log('inside the else');
-  // }
   getImportSpecifier(j, source, specifier, sourcePath).replaceWith(
     j.importSpecifier(j.identifier(newSpecifier)),
   );
@@ -169,7 +161,5 @@ export function removeImportSpecifier(
   specifier: string,
   sourcePath: string | RegExp,
 ) {
-  console.log('inside remove');
-  console.log(getImportSpecifier(j, source, specifier, sourcePath));
   getImportSpecifier(j, source, specifier, sourcePath).remove();
 }
