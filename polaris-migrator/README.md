@@ -78,7 +78,7 @@ npx @shopify/polaris-migrator <sass-migration> <path> --namespace="legacy-polari
 
 ### `replace-sass-color`
 
-Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`).
+Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
 
 ```diff
 - color: color('ink');
@@ -369,3 +369,4 @@ git reset $(grep -r -l "polaris-migrator:")
 - Common utilities:
   - [`jsx.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/utilities/jsx.ts)
   - [`imports.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/utilities/imports.ts)
+    0
