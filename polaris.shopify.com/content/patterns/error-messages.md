@@ -482,10 +482,7 @@ Don’t use when:
 - Try to add a next step, whether in a button or link
 - Use when there is more than one call to action
 
-![Warning banner at the top of a card below the card title](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
-![Small warning banner in a section within a card](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
-
----
+## ![Warning banner at the top of a card below the card title](/images/foundations/patterns/error-messages/section-level-warning@2x.png)
 
 ## Exception lists
 

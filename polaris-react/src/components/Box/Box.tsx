@@ -164,6 +164,10 @@ export interface BoxProps extends PropsWithChildren {
   color?: ColorTokenScale;
   /** HTML id attribute */
   id?: string;
+  /** Set minimum height of container */
+  minHeight?: string;
+  /** Set minimum width of container */
+  minWidth?: string;
   /** Set maximum width of container */
   maxWidth?: string;
   /** Clip horizontal content of children */
@@ -204,6 +208,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       children,
       color,
       id,
+      minHeight,
+      minWidth,
       maxWidth,
       overflowX,
       overflowY,
@@ -269,6 +275,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius-top-right': borderRadiuses.topRight
         ? `var(--p-border-radius-${borderRadiuses.topRight})`
         : undefined,
+      '--pc-box-min-height': minHeight ?? undefined,
+      '--pc-box-min-width': minWidth ?? undefined,
       '--pc-box-max-width': maxWidth ?? undefined,
       '--pc-box-overflow-x': overflowX ?? undefined,
       '--pc-box-overflow-y': overflowY ?? undefined,

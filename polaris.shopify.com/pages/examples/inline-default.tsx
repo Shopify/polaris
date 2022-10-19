@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineExample() {
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <Inline>
         <Text variant="heading4xl" as="h2">
           Inline
