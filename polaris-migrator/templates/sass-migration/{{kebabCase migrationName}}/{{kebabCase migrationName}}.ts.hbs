@@ -1,33 +1,27 @@
-import type {FileInfo} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
 
-const processed = Symbol('processed');
+import {
+  isSassFunction,
+  StopWalkingFunctionNodes,
+  createSassMigrator,
+} from '../../utilities/sass';
 
-const plugin = (): Plugin => ({
-  postcssPlugin: '{{kebabCase migrationName}}',
-  Declaration(decl) {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
+// options can be passed in from cli / config.
+export default createSassMigrator('{{kebabCase migrationName}}', (_, options, context) => {
+  return (root) => {
+    root.walkDecls((decl) => {
+      const parsedValue = valueParser(decl.value);
 
-    // const prop = decl.prop;
-    const parsedValue = valueParser(decl.value);
+      parsedValue.walk((node) => {
+        if (isSassFunction('hello', node)) {
+          node.value = 'world';
+          return StopWalkingFunctionNodes;
+        }
+      });
 
-    parsedValue.walk((node) => {
-      if (!(node.type === 'function' && node.value === 'hello')) return;
-
-      node.value = 'world';
+      if (context.fix) {
+        decl.value = parsedValue.toString();
+      }
     });
-
-    decl.value = parsedValue.toString();
-
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
-  },
+  };
 });
-
-export default function {{camelCase migrationName}}(fileInfo: FileInfo) {
-  return postcss(plugin()).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
