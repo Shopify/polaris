@@ -258,16 +258,38 @@ interface PluginOptions extends Options, NamespaceOptions {}
 interface PluginContext {
   fix: boolean;
 }
+
+// Extracted from stylelint
+type StylelintRuleBase<P = any, S = any> = (
+  primaryOption: P,
+  secondaryOptions: {[key: string]: S},
+  context: PluginContext,
+) => (root: Root, result: Result) => void;
+
+interface StylelintRuleMeta {
+  url: string;
+  deprecated?: boolean;
+  fixable?: boolean;
+}
+
+type StylelintRule<P = any, S = any> = StylelintRuleBase<P, S> & {
+  ruleName: string;
+  meta?: StylelintRuleMeta;
+};
+// End: Extracted from stylelint
+
 export type PolarisMigrator = (
   primaryOption: true,
   secondaryOptions: PluginOptions,
   context: PluginContext,
 ) => (root: Root, result: Result) => void;
 
-export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
+// Expose a stylelint-like API for creating sass migrators so we can easily
+// migrate to that tool in the future.
+function convertStylelintRuleToPostcssProcessor(ruleFn: StylelintRule) {
   return (fileInfo: FileInfo, _: API, options: Options) => {
     const plugin: Plugin = {
-      postcssPlugin: name,
+      postcssPlugin: ruleFn.ruleName,
       // PostCSS will rewalk the AST every time a declaration/rule/etc is
       // mutated by a plugin. This can be useful in some cases, but in ours we
       // only want single-pass behaviour.
@@ -278,12 +300,14 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
       //    subsequent passes.
       // 2) Using postcss's Once() plugin callback.
       //
-      // We're going with the Once() callback as it's idomatic PostCSS.
+      // stylelint also uses `Once()`, so we're able to remove this once we've
+      // migrated:
+      // https://github.com/stylelint/stylelint/blob/cb425cb/lib/postcssPlugin.js#L22
       Once(root, {result}) {
         // NOTE: For fullest compatibility with stylelint, we initialise the
-        // rule here _inside_ the postcss Once function so multiple passes can
-        // be performed without rules accidentally retaining scoped variables,
-        // etc.
+        // rule here _inside_ the postcss Once function just like stylelint
+        // does. This means multiple passes can be performed without rules
+        // accidentally retaining scoped variables, etc.
         ruleFn(
           // Normally, this comes from stylelint config, but for this shim we
           // just hard-code it, and instead rely on the "seconary" options
@@ -300,4 +324,17 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
       syntax: require('postcss-scss'),
     }).css;
   };
+}
+
+export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
+  const wrappedRule = ruleFn as StylelintRule;
+
+  wrappedRule.ruleName = name;
+  wrappedRule.meta = {
+    // TODO: link directly to the specific rule
+    url: 'https://www.npmjs.com/package/@shopify/stylelint-polaris',
+    fixable: true,
+  };
+
+  return convertStylelintRuleToPostcssProcessor(wrappedRule);
 }
