@@ -129,6 +129,7 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   }
 }
 
+/* stylelint-disable color-named */
 .HuePicker {
   background-image: linear-gradient(
     to bottom,
@@ -141,6 +142,7 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
     red $huepicker-bottom-padding-start
   );
 }
+/* stylelint-enable color-named */
 
 .AlphaPicker {
   @include checkers;
