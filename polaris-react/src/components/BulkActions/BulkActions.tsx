@@ -276,6 +276,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                 indicator={this.isNewBadgeInBadgeActions()}
               />
             }
+            preferredAlignment="right"
             onClose={this.togglePopover}
           >
             <ActionList
