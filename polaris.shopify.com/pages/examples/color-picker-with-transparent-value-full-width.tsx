@@ -11,7 +11,7 @@ function ColorPickerWithTransparentValueExample() {
   });
 
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <ColorPicker fullWidth onChange={setColor} color={color} allowAlpha />
     </div>
   );
