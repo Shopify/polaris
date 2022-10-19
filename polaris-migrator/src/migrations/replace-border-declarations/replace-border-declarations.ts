@@ -303,7 +303,9 @@ const borderWidthLengthMap = {
 
 const borderRadiusLengthMap = {
   '2px': '--p-border-radius-05',
+  '3px': '--p-border-radius-base',
   '4px': '--p-border-radius-1',
+  '6px': '--p-border-radius-large',
   '8px': '--p-border-radius-2',
   '12px': '--p-border-radius-3',
   '16px': '--p-border-radius-4',
