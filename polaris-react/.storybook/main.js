@@ -1,6 +1,4 @@
 const path = require('path');
-const spawn = require('child_process').spawn;
-const CreateFileWebpack = require('create-file-webpack');
 const postcssPlugins = require('../config/postcss-plugins');
 
 module.exports = {

@@ -78,6 +78,7 @@
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@changesets/get-release-plan": "^3.0.13",
+    "@rollup/plugin-alias": "^4.0.0",
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/postcss-plugin": "^5.0.1",
