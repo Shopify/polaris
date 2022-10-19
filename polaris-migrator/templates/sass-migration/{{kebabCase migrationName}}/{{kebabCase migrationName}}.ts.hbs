@@ -1,33 +1,48 @@
-import type {FileInfo} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+import {
+  isSassFunction,
+  createStylelintRule,
+  StopWalkingFunctionNodes,
+} from '../../utilities/sass';
+import type {PolarisMigrator} from '../../utilities/sass';
 
-const processed = Symbol('processed');
+const {{camelCase migrationName}}: PolarisMigrator = (
+  _,
+  // options will be passed in from cli / config.
+  {methods /* , options */},
+  // Use context.fix to change behaviour based on if the user has passed the
+  // `--fix` flag (always true for `polaris-migrator` CLI).
+  context,
+) => {
+  return (root) => {
+    methods.walkDecls(root, (decl, parsedValue) => {
+      // Using the parsedValue allows easy detection of individual functions and
+      // properties. Particularly useful when dealing with shorthand
+      // declarations such as `border`, `padding`, etc.
+      parsedValue.walk((node) => {
+        if (isSassFunction('hello', node)) {
+          if (context.fix) {
+            // When fixing, we mutate the node directly.
+            node.value = 'world';
+          } else {
+            // When not fixing, emit a report which will be aggregated and shown
+            // to the user once all migrations are run.
+            methods.report({
+              node: decl,
+              severity: 'error',
+              message:
+                'Method hello() is no longer supported. Please migrate to world().',
+            });
+          }
 
-const plugin = (): Plugin => ({
-  postcssPlugin: '{{kebabCase migrationName}}',
-  Declaration(decl) {
-    // @ts-expect-error - Skip if processed so we don't process it again
-    if (decl[processed]) return;
-
-    // const prop = decl.prop;
-    const parsedValue = valueParser(decl.value);
-
-    parsedValue.walk((node) => {
-      if (!(node.type === 'function' && node.value === 'hello')) return;
-
-      node.value = 'world';
+          // We do not want to recursively walk the function's arguments.
+          return StopWalkingFunctionNodes;
+        }
+      });
     });
+  };
+};
 
-    decl.value = parsedValue.toString();
-
-    // @ts-expect-error - Mark the declaration as processed
-    decl[processed] = true;
-  },
-});
-
-export default function {{camelCase migrationName}}(fileInfo: FileInfo) {
-  return postcss(plugin()).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
+export default createStylelintRule(
+  '{{kebabCase migrationName}}',
+  {{camelCase migrationName}}
+);
