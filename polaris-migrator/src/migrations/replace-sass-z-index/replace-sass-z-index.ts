@@ -7,7 +7,8 @@ import {
   namespace,
   hasSassFunction,
   isSassFunction,
-  hasNumericOperator,
+  createInlineComment,
+  isNumericOperator,
 } from '../../utilities/sass';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
@@ -53,11 +54,81 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
+      const targets: {replaced: boolean}[] = [];
       const parsedValue = valueParser(decl.value);
+      let hasNumericOperator = false;
+      handleZIndexProps();
+      if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
+        decl.before(
+          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+        );
+        decl.before(
+          createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
+        );
+      } else {
+        decl.value = parsedValue.toString();
+      }
 
-      if (!hasSassFunction(namespacedZIndex, parsedValue)) return;
+      function handleZIndexProps() {
+        parsedValue.walk((node: Node) => {
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
 
-      let containsUnknownSecondArgument = false;
+          if (!hasSassFunction(namespacedZIndex, parsedValue)) return;
+          if (!isSassFunction(namespacedZIndex, node)) return;
+
+          targets.push({replaced: false});
+          if (hasMoreThanOneArgument(node)) {
+            // If there's more than one argument to the zIndex fn
+            // We assume they're passing in a custom map
+            // In this case its unlikely this will resolve to a polaris token value
+            // transform legacy zIndex usage to map-get and move on.
+            const [key, _, map] = node.nodes;
+            if (
+              map.value === namespacedFixedElementStackingOrder &&
+              isValidElement(key.value, fixedElementStackingOrder)
+            ) {
+              const fixedElementStackingOrderToken =
+                fixedElementStackingOrder[key.value];
+
+              targets.at(-1)!.replaced = true;
+
+              node.value = 'var';
+              node.nodes = [
+                {
+                  type: 'word',
+                  value: fixedElementStackingOrderToken,
+                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                  sourceEndIndex: fixedElementStackingOrderToken.length,
+                },
+              ];
+            } else {
+              // map.get arguments are in the reverse order to z-index arguments.
+              // map.get expects the map object first, and the key second.
+              node.value = 'map.get';
+              node.nodes.reverse();
+            }
+          } else {
+            const element = node.nodes[0]?.value ?? '';
+            if (!isValidElement<typeof zIndexMap>(element, zIndexMap)) return;
+            const zIndexCustomProperty = zIndexMap[element];
+
+            targets.at(-1)!.replaced = true;
+
+            node.value = 'var';
+            node.nodes = [
+              {
+                type: 'word',
+                value: zIndexCustomProperty,
+                sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                sourceEndIndex: zIndexCustomProperty.length,
+              },
+            ];
+          }
+        });
+      }
 
       parsedValue.walk((node: Node) => {
         if (!isSassFunction(namespacedZIndex, node)) return;
@@ -86,7 +157,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           } else {
             // map.get arguments are in the reverse order to z-index arguments.
             // map.get expects the map object first, and the key second.
-            containsUnknownSecondArgument = true;
             node.value = 'map.get';
             node.nodes.reverse();
           }
@@ -106,17 +176,6 @@ const plugin = (options: PluginOptions = {}): Plugin => {
           ];
         }
       });
-
-      if (hasNumericOperator(parsedValue) || containsUnknownSecondArgument) {
-        // Insert comment if the declaration value contains calculations
-        // or if the invocation of zIndex has more than one argument
-        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
-        decl.before(
-          postcss.comment({text: `${decl.prop}: ${parsedValue.toString()};`}),
-        );
-      } else {
-        decl.value = parsedValue.toString();
-      }
 
       // @ts-expect-error - Mark the declaration as processed
       decl[processed] = true;
