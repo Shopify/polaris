@@ -11,6 +11,8 @@
   --pc-box-border-right: initial;
   --pc-box-border-top: initial;
   --pc-box-color: initial;
+  --pc-box-min-height: initial;
+  --pc-box-min-width: initial;
   --pc-box-max-width: initial;
   --pc-box-overflow-x: initial;
   --pc-box-overflow-y: initial;
@@ -30,6 +32,8 @@
   border-right: var(--pc-box-border-right);
   border-top: var(--pc-box-border-top);
   color: var(--pc-box-color);
+  min-height: var(--pc-box-min-height);
+  min-width: var(--pc-box-min-width);
   max-width: var(--pc-box-max-width);
   overflow-x: var(--pc-box-overflow-x);
   overflow-y: var(--pc-box-overflow-y);
