@@ -1,6 +1,7 @@
 import {readFileSync} from 'fs';
 import * as path from 'path';
 
+import alias from '@rollup/plugin-alias';
 import {babel} from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
@@ -22,6 +23,9 @@ function generateConfig({output, targets, stylesConfig}) {
   return {
     input: './src/index.ts',
     plugins: [
+      alias({
+        entries: [{find: 'components', replacement: 'src/index.ts'}],
+      }),
       externals({deps: true, packagePath: './package.json'}),
       nodeResolve({extensions}),
       commonjs(),

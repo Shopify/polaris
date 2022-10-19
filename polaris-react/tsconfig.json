@@ -6,9 +6,11 @@
     "importsNotUsedAsValues": "error",
     "outDir": "build/ts/latest",
     "rootDir": "./",
+    "baseUrl": "./",
     "strictFunctionTypes": false,
     "paths": {
-      "tests/*": ["./tests/*"]
+      "tests/*": ["./tests/*"],
+      "components": ["./src"],
     }
   },
   "include": [

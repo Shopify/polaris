@@ -1,7 +1,8 @@
 import React from 'react';
+import {Button} from 'components';
 
-import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
+import type {Action} from '../../types';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';
 import {Stack} from '../Stack';
@@ -77,6 +78,7 @@ export function AccountConnection({
     <Card sectioned>
       <SettingAction action={actionElement}>
         <Stack>
+          <Button />
           {avatarMarkup}
           <Stack.Item fill>
             <div className={styles.Content}>
