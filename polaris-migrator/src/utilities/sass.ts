@@ -1,4 +1,5 @@
-import postcss from 'postcss';
+import type {FileInfo, API, Options} from 'jscodeshift';
+import postcss, {Root, Result, Plugin} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
@@ -250,4 +251,53 @@ export function createInlineComment(text: string, options?: {prose?: boolean}) {
   comment.raws.inline = true;
 
   return comment;
+}
+
+interface PluginOptions extends Options, NamespaceOptions {}
+
+interface PluginContext {
+  fix: boolean;
+}
+export type PolarisMigrator = (
+  primaryOption: true,
+  secondaryOptions: PluginOptions,
+  context: PluginContext,
+) => (root: Root, result: Result) => void;
+
+export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
+  return (fileInfo: FileInfo, _: API, options: Options) => {
+    const plugin: Plugin = {
+      postcssPlugin: name,
+      // PostCSS will rewalk the AST every time a declaration/rule/etc is
+      // mutated by a plugin. This can be useful in some cases, but in ours we
+      // only want single-pass behaviour.
+      //
+      // This can be avoided in 2 ways:
+      //
+      // 1) Flagging each declaration as we pass it, then skipping it on
+      //    subsequent passes.
+      // 2) Using postcss's Once() plugin callback.
+      //
+      // We're going with the Once() callback as it's idomatic PostCSS.
+      Once(root, {result}) {
+        // NOTE: For fullest compatibility with stylelint, we initialise the
+        // rule here _inside_ the postcss Once function so multiple passes can
+        // be performed without rules accidentally retaining scoped variables,
+        // etc.
+        ruleFn(
+          // Normally, this comes from stylelint config, but for this shim we
+          // just hard-code it, and instead rely on the "seconary" options
+          // object for passing through the jscodeshift options.
+          true,
+          options,
+          // Also normally comes from styelint via the cli `--fix` flag.
+          {fix: true},
+        )(root, result);
+      },
+    };
+
+    return postcss(plugin).process(fileInfo.source, {
+      syntax: require('postcss-scss'),
+    }).css;
+  };
 }

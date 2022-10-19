@@ -235,11 +235,18 @@ Be aware that this may also create additional code changes in your codebase, we 
 npx @shopify/polaris-migrator replace-sass-spacing <path>
 ```
 
-## Creating a migration
+## Creating Migrations
 
-### Setup
+Sometimes referred to as "codemods", migrations are JavaScript functions which modify some code from one form to another (eg; to move between breaking versions of `@shopify/polaris`). ASTs (Abstract Syntax Trees) are used to "walk" through the code in discreet, strongly typed steps, called "nodes". All changes made to nodes (and thus the AST) are then written out as the new/"migrated" version of the code.
 
-Run `yarn new-migration` to generate a new migration from a template.
+`polaris-migrator` supports two types of migrations:
+
+- SASS Migrations
+- Typescript Migrations
+
+### Creating a SASS migration
+
+Run `yarn new-migration` to generate a new migration from the `sass-migration` template:
 
 ```sh
 ❯ yarn new-migration
@@ -250,7 +257,7 @@ $ plop
   typescript-migration
 ```
 
-We will use the `sass-migration` and call our migration `replace-sass-function` for this example. Provide the name of your migration:
+Next, provide the name of your migration. For example; `replace-sass-function`:
 
 ```sh
 ? [PLOP] Please choose a generator. sass-migration
@@ -269,11 +276,11 @@ migrations
         └── replace-sass-function.test.ts
 ```
 
-### Writing migration function
+#### The SASS migration function
 
-A migration is simply a javascript function which serves as the entry-point for your codemod. The `replace-sass-function.ts` file defines a "migration" function. This function is named the same as the provided migration name, `replace-sass-function`, and is the default export of the file.
+Each migrator has a default export adhering to the [PostCSS Plugin API](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md) with one main difference: events are only executed once.
 
-Some example code has been provided for each template. You can make any migration code adjustments in the migration function. For Sass migrations, a [PostCSS plugin](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md) is used to parse and transform the source code provided by the [jscodeshift](https://github.com/facebook/jscodeshift).
+Continuing the example, here is what the migration may look like if our goal is to replace the Sass function `hello()` with `world()`.
 
 ```ts
 // polaris-migrator/src/migrations/replace-sass-function/replace-sass-function.ts
@@ -305,9 +312,9 @@ export default function replaceSassFunction(fileInfo: FileInfo) {
 }
 ```
 
-This example migration will replace the Sass function `hello()` with `world()`.
+A more complete example can be seen in [`replace-spacing-lengths.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-spacing-lengths/replace-spacing-lengths.ts).
 
-### Testing
+#### Testing
 
 The template will also generate starting test files you can use to test your migration. In your migrations `tests` folder, you can see 3 files:
 
@@ -316,6 +323,8 @@ The template will also generate starting test files you can use to test your mig
 - `replace-sass-function.output.scss` – The expected output after migration
 
 The main test file will load the input/output fixtures to test your migration against. You can configure additional fixtures and test migration options (see the `replace-sass-spacing.test.ts` as an example).
+
+## Running Migrations
 
 Run tests locally from workspace root by filtering to the migrations package:
 
