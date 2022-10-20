@@ -1,112 +1,224 @@
 import React from 'react';
-import {AlphaStack, Box, Text, Page} from '@shopify/polaris';
+import {AlphaStack, Box, Text, Page, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithAlignExample() {
   return (
     <Page>
-      <AlphaStack align="start">
-        <Box background="action-primary" padding="4" paddingLeft="2">
+      <Box paddingBottom="20">
+        <AlphaStack align="start">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingLeft="2"
+            width="320px"
           >
-            <Text
-              as="h2"
-              variant="bodyMd"
-              fontWeight="medium"
-              alignment="start"
+            <Box
+              background="surface-primary-selected-pressed"
+              color="text-on-interactive"
+              width="fit-content"
             >
-              Start
-            </Text>
+              <Text
+                as="h2"
+                variant="bodyMd"
+                fontWeight="medium"
+                alignment="start"
+              >
+                Start
+              </Text>
+            </Box>
           </Box>
-        </Box>
-        <Box background="action-primary" padding="4" paddingLeft="2">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingLeft="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Stack child
-            </Text>
+            <Box
+              background="surface-primary-selected-pressed"
+              color="text-on-interactive"
+              width="fit-content"
+            >
+              <Text
+                as="h2"
+                variant="bodyMd"
+                fontWeight="medium"
+                alignment="start"
+              >
+                Stack child
+              </Text>
+            </Box>
           </Box>
-        </Box>
-        <Box background="action-primary" padding="4" paddingLeft="2">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingLeft="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Stack child
-            </Text>
+            <Box
+              background="surface-primary-selected-pressed"
+              color="text-on-interactive"
+              width="fit-content"
+            >
+              <Text
+                as="h2"
+                variant="bodyMd"
+                fontWeight="medium"
+                alignment="start"
+              >
+                Stack child
+              </Text>
+            </Box>
           </Box>
-        </Box>
-      </AlphaStack>
-      <AlphaStack align="center">
-        <Box background="action-primary" padding="4" paddingLeft="2">
+        </AlphaStack>
+      </Box>
+      <Box paddingBottom="20">
+        <AlphaStack align="center">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingLeft="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Center
-            </Text>
+            <Inline align="center">
+              <Box
+                background="surface-primary-selected-pressed"
+                color="text-on-interactive"
+                width="fit-content"
+              >
+                <Text
+                  as="h2"
+                  variant="bodyMd"
+                  fontWeight="medium"
+                  alignment="center"
+                >
+                  Center
+                </Text>
+              </Box>
+            </Inline>
           </Box>
-        </Box>
-        <Box background="action-primary" padding="4" paddingLeft="2">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingLeft="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Stack child
-            </Text>
+            <Inline align="center">
+              <Box
+                background="surface-primary-selected-pressed"
+                color="text-on-interactive"
+                width="fit-content"
+              >
+                <Text
+                  as="h2"
+                  variant="bodyMd"
+                  fontWeight="medium"
+                  alignment="center"
+                >
+                  Stack Child
+                </Text>
+              </Box>
+            </Inline>
           </Box>
-        </Box>
-        <Box background="action-primary" padding="4" paddingLeft="2">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingLeft="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Stack child
-            </Text>
+            <Inline align="center">
+              <Box
+                background="surface-primary-selected-pressed"
+                color="text-on-interactive"
+                width="fit-content"
+              >
+                <Text
+                  as="h2"
+                  variant="bodyMd"
+                  fontWeight="medium"
+                  alignment="center"
+                >
+                  Stack Child
+                </Text>
+              </Box>
+            </Inline>
           </Box>
-        </Box>
-      </AlphaStack>
-      <AlphaStack align="end">
-        <Box background="action-primary" padding="4" paddingLeft="2">
+        </AlphaStack>
+      </Box>
+      <Box>
+        <AlphaStack align="end">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingRight="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              End
-            </Text>
+            <Inline align="end">
+              <Box
+                background="surface-primary-selected-pressed"
+                color="text-on-interactive"
+                width="fit-content"
+              >
+                <Text
+                  as="h2"
+                  variant="bodyMd"
+                  fontWeight="medium"
+                  alignment="center"
+                >
+                  End
+                </Text>
+              </Box>
+            </Inline>
           </Box>
-        </Box>
-        <Box background="action-primary" padding="4" paddingLeft="2">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingRight="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Stack child
-            </Text>
+            <Inline align="end">
+              <Box
+                background="surface-primary-selected-pressed"
+                color="text-on-interactive"
+                width="fit-content"
+              >
+                <Text
+                  as="h2"
+                  variant="bodyMd"
+                  fontWeight="medium"
+                  alignment="center"
+                >
+                  Stack Child
+                </Text>
+              </Box>
+            </Inline>
           </Box>
-        </Box>
-        <Box background="action-primary" padding="4" paddingLeft="2">
           <Box
-            background="surface-primary-selected-pressed"
-            color="text-on-interactive"
+            background="action-primary"
+            padding="4"
+            paddingRight="2"
+            width="320px"
           >
-            <Text as="h2" variant="bodyMd" fontWeight="medium">
-              Stack child
-            </Text>
+            <Inline align="end">
+              <Box
+                background="surface-primary-selected-pressed"
+                color="text-on-interactive"
+                width="fit-content"
+              >
+                <Text
+                  as="h2"
+                  variant="bodyMd"
+                  fontWeight="medium"
+                  alignment="center"
+                >
+                  Stack Child
+                </Text>
+              </Box>
+            </Inline>
           </Box>
-        </Box>
-      </AlphaStack>
+        </AlphaStack>
+      </Box>
     </Page>
   );
 }
