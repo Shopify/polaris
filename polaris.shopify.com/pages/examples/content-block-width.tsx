@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ContentBlockWidthExample() {
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <ContentBlock width="md">
         <Box background="surface" borderRadius="2" padding="5" shadow="card">
           <Text variant="bodySm" as="h3" alignment="center">

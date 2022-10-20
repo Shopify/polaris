@@ -7,6 +7,7 @@ import {toPx} from '@shopify/polaris-tokens';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
+  createInlineComment,
   getFunctionArgs,
   isNumericOperator,
   isSassFunction,
@@ -67,11 +68,11 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       handlers[decl.prop]();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
-        decl.before(postcss.comment({text: POLARIS_MIGRATOR_COMMENT}));
         decl.before(
-          postcss.comment({
-            text: `${decl.prop}: ${parsedValue.toString()};`,
-          }),
+          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+        );
+        decl.before(
+          createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
         );
       } else {
         decl.value = parsedValue.toString();

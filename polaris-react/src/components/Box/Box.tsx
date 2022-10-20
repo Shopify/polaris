@@ -1,4 +1,4 @@
-import React, {createElement, forwardRef, ReactNode} from 'react';
+import React, {createElement, forwardRef, PropsWithChildren} from 'react';
 import type {
   DepthShadowAlias,
   SpacingSpaceScale,
@@ -9,6 +9,8 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 import styles from './Box.scss';
 
 type Element = 'div' | 'span';
+
+type Overflow = 'hidden' | 'scroll';
 
 export type BackgroundColorTokenScale =
   | 'action-critical'
@@ -133,7 +135,7 @@ interface Spacing {
   top: SpacingSpaceScale;
 }
 
-export interface BoxProps {
+export interface BoxProps extends PropsWithChildren {
   /** HTML Element type */
   as?: Element;
   /** Background color */
@@ -158,14 +160,20 @@ export interface BoxProps {
   borderRadiusTopLeft?: BorderRadiusTokenScale;
   /** Top right border radius */
   borderRadiusTopRight?: BorderRadiusTokenScale;
-  /** Inner content */
-  children: ReactNode;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
   id?: string;
-  /** Spacing outside of container */
+  /** Set minimum height of container */
+  minHeight?: string;
+  /** Set minimum width of container */
+  minWidth?: string;
+  /** Set maximum width of container */
   maxWidth?: string;
+  /** Clip horizontal content of children */
+  overflowX?: Overflow;
+  /** Clip vertical content of children */
+  overflowY?: Overflow;
   /** Spacing around children */
   padding?: SpacingSpaceScale;
   /** Bottom spacing around children */
@@ -178,6 +186,8 @@ export interface BoxProps {
   paddingTop?: SpacingSpaceScale;
   /** Shadow */
   shadow?: DepthShadowAlias;
+  /** Set width of container */
+  width?: string;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -198,13 +208,18 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       children,
       color,
       id,
+      minHeight,
+      minWidth,
       maxWidth,
+      overflowX,
+      overflowY,
       padding,
       paddingBottom,
       paddingLeft,
       paddingRight,
       paddingTop,
       shadow,
+      width,
     },
     ref,
   ) => {
@@ -234,58 +249,51 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     } as Spacing;
 
     const style = {
-      ...(background
-        ? {'--pc-box-background': `var(--p-${background})`}
-        : undefined),
-      ...(borders.bottom
-        ? {'--pc-box-border-bottom': `var(--p-border-${borders.bottom})`}
-        : undefined),
-      ...(borders.left
-        ? {'--pc-box-border-left': `var(--p-border-${borders.left})`}
-        : undefined),
-      ...(borders.right
-        ? {'--pc-box-border-right': `var(--p-border-${borders.right})`}
-        : undefined),
-      ...(borders.top
-        ? {'--pc-box-border-top': `var(--p-border-${borders.top})`}
-        : undefined),
-      ...(borderRadiuses.bottomLeft
-        ? {
-            '--pc-box-border-radius-bottom-left': `var(--p-border-radius-${borderRadiuses.bottomLeft})`,
-          }
-        : undefined),
-      ...(borderRadiuses.bottomRight
-        ? {
-            '--pc-box-border-radius-bottom-right': `var(--p-border-radius-${borderRadiuses.bottomRight})`,
-          }
-        : undefined),
-      ...(borderRadiuses.topLeft
-        ? {
-            '--pc-box-border-radius-top-left': `var(--p-border-radius-${borderRadiuses.topLeft})`,
-          }
-        : undefined),
-      ...(borderRadiuses.topRight
-        ? {
-            '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
-          }
-        : undefined),
-      ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
-      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}px`} : undefined),
-      ...(paddings.bottom
-        ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
-        : undefined),
-      ...(paddings.left
-        ? {'--pc-box-padding-left': `var(--p-space-${paddings.left})`}
-        : undefined),
-      ...(paddings.right
-        ? {'--pc-box-padding-right': `var(--p-space-${paddings.right})`}
-        : undefined),
-      ...(paddings.top
-        ? {'--pc-box-padding-top': `var(--p-space-${paddings.top})`}
-        : undefined),
-      ...(shadow
-        ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`}
-        : undefined),
+      '--pc-box-color': color ? `var(--p-${color})` : undefined,
+      '--pc-box-background': background ? `var(--p-${background})` : undefined,
+      '--pc-box-border-bottom': borders.bottom
+        ? `var(--p-border-${borders.bottom})`
+        : undefined,
+      '--pc-box-border-left': borders.left
+        ? `var(--p-border-${borders.left})`
+        : undefined,
+      '--pc-box-border-right': borders.right
+        ? `var(--p-border-${borders.right})`
+        : undefined,
+      '--pc-box-border-top': borders.top
+        ? `var(--p-border-${borders.top})`
+        : undefined,
+      '--pc-box-border-radius-bottom-left': borderRadiuses.bottomLeft
+        ? `var(--p-border-radius-${borderRadiuses.bottomLeft})`
+        : undefined,
+      '--pc-box-border-radius-bottom-right': borderRadiuses.bottomRight
+        ? `var(--p-border-radius-${borderRadiuses.bottomRight})`
+        : undefined,
+      '--pc-box-border-radius-top-left': borderRadiuses.topLeft
+        ? `var(--p-border-radius-${borderRadiuses.topLeft})`
+        : undefined,
+      '--pc-box-border-radius-top-right': borderRadiuses.topRight
+        ? `var(--p-border-radius-${borderRadiuses.topRight})`
+        : undefined,
+      '--pc-box-min-height': minHeight ?? undefined,
+      '--pc-box-min-width': minWidth ?? undefined,
+      '--pc-box-max-width': maxWidth ?? undefined,
+      '--pc-box-overflow-x': overflowX ?? undefined,
+      '--pc-box-overflow-y': overflowY ?? undefined,
+      '--pc-box-padding-bottom': paddings.bottom
+        ? `var(--p-space-${paddings.bottom})`
+        : undefined,
+      '--pc-box-padding-left': paddings.left
+        ? `var(--p-space-${paddings.left})`
+        : undefined,
+      '--pc-box-padding-right': paddings.right
+        ? `var(--p-space-${paddings.right})`
+        : undefined,
+      '--pc-box-padding-top': paddings.top
+        ? `var(--p-space-${paddings.top})`
+        : undefined,
+      '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
+      '--pc-box-width': width ?? undefined,
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
