@@ -1,13 +1,8 @@
 import type {API, FileInfo} from 'jscodeshift';
 
-import {replaceJSXElement} from '../../utilities/jsx';
-import {
-  hasImportDeclaration,
-  renameImportSpecifier,
-  getImportSpecifierName,
-  hasImportSpecifier,
-  removeImportSpecifier,
-} from '../../utilities/imports';
+import {hasImportDeclaration} from '../../utilities/imports';
+
+import {replaceCard} from './steps/replace-card';
 
 /**
  * Replace <Card> with the <AlphaCard> component
@@ -23,18 +18,8 @@ export default function replaceCardComponent(
     return fileInfo.source;
   }
 
-  if (hasImportSpecifier(j, source, 'AlphaCard', sourcePathRegex)) {
-    removeImportSpecifier(j, source, 'Card', sourcePathRegex);
-  } else {
-    renameImportSpecifier(j, source, 'Card', 'AlphaCard', sourcePathRegex);
-  }
-
-  const localElementName =
-    getImportSpecifierName(j, source, 'Card', sourcePathRegex) || 'Card';
-
-  source.findJSXElements(localElementName).forEach((element) => {
-    replaceJSXElement(j, element, 'AlphaCard');
-  });
+  // TODO: create a replaceCardSection step
+  replaceCard(j, source, sourcePathRegex);
 
   return source.toSource();
 }
