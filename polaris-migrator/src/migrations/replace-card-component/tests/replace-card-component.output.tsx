@@ -4,7 +4,7 @@ import {AlphaCard, Text, AlphaStack} from '@shopify/polaris';
 export function App() {
   return (
     <AlphaCard>
-      <AlphaStack spacing="5">
+      <AlphaStack spacing="5" fullWidth>
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>

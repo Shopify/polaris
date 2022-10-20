@@ -108,6 +108,7 @@ export function replaceCard<NodeType = ASTNode>(
             j.jsxIdentifier('spacing'),
             '5' ? j.stringLiteral('5') : null,
           ),
+          j.jsxAttribute(j.jsxIdentifier('fullWidth')),
         ]),
         AlphaStack.closingElement,
         AlphaStack.children,
