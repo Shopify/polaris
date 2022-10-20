@@ -2,5 +2,9 @@ import React from 'react';
 import {Card} from '@shopify/polaris';
 
 export function App() {
-  return <Card>Card</Card>;
+  return (
+    <Card title="Online store dashboard">
+      <p>View a summary of your online store's performance</p>
+    </Card>
+  );
 }
