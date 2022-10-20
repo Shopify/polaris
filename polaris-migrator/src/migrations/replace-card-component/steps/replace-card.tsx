@@ -81,7 +81,6 @@ export function replaceCard<NodeType = ASTNode>(
                 element.node.closingElement,
                 [TextWithJSXAttribute, ...(element.node.children ?? [])],
               ),
-              j.jsxText('\n'),
             );
           }
         });
@@ -116,7 +115,6 @@ export function replaceCard<NodeType = ASTNode>(
         j.jsxElement(element.node.openingElement, element.node.closingElement, [
           AlphaStackWithJSXAttribute,
         ]),
-        j.jsxText('\n'),
       );
     }
   });
