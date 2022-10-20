@@ -92,8 +92,6 @@
   box-shadow: var(--pc-color-picker-dragger-shadow);
 }
 
-$green: rgb(0, 255, 0);
-$purple: rgb(255, 0, 255);
 $huepicker-padding: var(--pc-color-picker-dragger-size);
 $huepicker-bottom-padding-start: calc(
   var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size)
@@ -129,16 +127,16 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   }
 }
 
-/* stylelint-disable color-named */
+/* stylelint-disable color-named function-disallowed-list */
 .HuePicker {
   background-image: linear-gradient(
     to bottom,
     red var(--pc-color-picker-dragger-size),
     yellow,
-    $green,
+    /* Green */ rgb(0, 255, 0),
     cyan,
     blue,
-    $purple,
+    /* Purple */ rgb(255, 0, 255),
     red $huepicker-bottom-padding-start
   );
 }
