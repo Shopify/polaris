@@ -3,7 +3,7 @@ import React from 'react';
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
-import {Card} from 'components';
+import {AlphaCard, AlphaStack} from 'components';
 import {Stack} from '../Stack';
 import {TextStyle} from '../TextStyle';
 import {SettingAction} from '../SettingAction';
@@ -74,19 +74,21 @@ export function AccountConnection({
     : null;
 
   return (
-    <Card sectioned>
-      <SettingAction action={actionElement}>
-        <Stack>
-          {avatarMarkup}
-          <Stack.Item fill>
-            <div className={styles.Content}>
-              {titleMarkup}
-              {detailsMarkup}
-            </div>
-          </Stack.Item>
-        </Stack>
-      </SettingAction>
-      {termsOfServiceMarkup}
-    </Card>
+    <AlphaCard>
+      <AlphaStack spacing="5" fullWidth>
+        <SettingAction action={actionElement}>
+          <Stack>
+            {avatarMarkup}
+            <Stack.Item fill>
+              <div className={styles.Content}>
+                {titleMarkup}
+                {detailsMarkup}
+              </div>
+            </Stack.Item>
+          </Stack>
+        </SettingAction>
+        {termsOfServiceMarkup}
+      </AlphaStack>
+    </AlphaCard>
   );
 }
