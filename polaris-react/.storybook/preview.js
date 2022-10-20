@@ -5,6 +5,7 @@ import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions} from './manager';
+import {breakpoints} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -79,6 +80,19 @@ export const globalTypes = {
   },
   ...gridOptions,
 };
+const views = {...breakpoints};
+delete views['breakpoints-xs'];
+const viewPorts = Object.entries(views).map(([key, value]) => {
+  const name = toCamelCase(key);
+  return {
+    name,
+    styles: {width: value, height: '100%'},
+  };
+});
+
+export const parameters = {
+  viewport: {viewports: {...viewPorts}},
+};
 
 export const decorators = [
   GridOverlayDecorator,
@@ -86,3 +100,7 @@ export const decorators = [
   AppProviderDecorator,
   ReactRenderProfiler,
 ];
+
+function toCamelCase(value: string) {
+  return value.replace(/-./g, (x) => x[1].toUpperCase());
+}
