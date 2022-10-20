@@ -4,7 +4,7 @@ import {AlphaCard, AlphaStack} from '@shopify/polaris';
 export function App() {
   return (
     <AlphaCard>
-      <AlphaStack>Card</AlphaStack>
+      <AlphaStack spacing="5">Card</AlphaStack>
     </AlphaCard>
   );
 }
