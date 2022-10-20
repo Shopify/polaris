@@ -7,6 +7,8 @@ import {
   NamespaceOptions,
   namespace,
   isSassFunction,
+  getFunctionArgs,
+  stripQuotes,
   StopWalkingFunctionNodes,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
@@ -93,9 +95,9 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
         // 2. Replace `color()` with variable
         if (node.value === namespacedColor) {
-          const colorFnArgs = node.nodes.filter((node) => node.type !== 'div');
-          const hue = colorFnArgs[0]?.value ?? '';
-          const value = colorFnArgs[1]?.value ?? 'base';
+          const colorFnArgs = getFunctionArgs(node).map(stripQuotes);
+          const hue = colorFnArgs[0] ?? '';
+          const value = colorFnArgs[1] ?? 'base';
           const forBackground = colorFnArgs[2];
 
           // Skip color() with for-background argument
