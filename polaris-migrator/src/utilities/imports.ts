@@ -18,11 +18,14 @@ export function hasImportDeclaration(
 export function getImportDeclaration(
   j: core.JSCodeshift,
   source: Collection<any>,
-  sourcePath: string,
+  sourcePath: string | RegExp,
 ) {
-  return source
-    .find(j.ImportDeclaration)
-    .filter((path) => path.node.source.value === sourcePath);
+  return source.find(j.ImportDeclaration).filter((path) => {
+    const nodePath = path.node.source.value;
+    return typeof sourcePath === 'string'
+      ? nodePath === sourcePath
+      : sourcePath.test(nodePath?.toString() ?? '');
+  });
 }
 
 export function removeImportDeclaration(
@@ -126,7 +129,7 @@ export function insertImportSpecifier(
   j: core.JSCodeshift,
   source: Collection<any>,
   importSpecifier: string,
-  sourcePath: string,
+  sourcePath: string | RegExp,
 ) {
   getImportDeclaration(j, source, sourcePath).replaceWith((declaration) => {
     return j.importDeclaration.from({

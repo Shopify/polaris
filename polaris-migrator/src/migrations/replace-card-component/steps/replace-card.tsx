@@ -2,9 +2,10 @@ import type {ASTNode, Collection, JSCodeshift} from 'jscodeshift';
 
 import {replaceJSXElement} from '../../../utilities/jsx';
 import {
-  renameImportSpecifier,
   getImportSpecifierName,
   hasImportSpecifier,
+  insertImportSpecifier,
+  renameImportSpecifier,
   removeImportSpecifier,
 } from '../../../utilities/imports';
 
@@ -27,5 +28,9 @@ export function replaceCard<NodeType = ASTNode>(
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'AlphaCard');
+
+    if (!hasImportSpecifier(j, source, 'AlphaStack', sourcePathRegex)) {
+      insertImportSpecifier(j, source, 'AlphaStack', sourcePathRegex);
+    }
   });
 }
