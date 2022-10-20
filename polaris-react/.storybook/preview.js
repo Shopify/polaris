@@ -83,7 +83,7 @@ export const globalTypes = {
 const views = {...breakpoints};
 delete views['breakpoints-xs'];
 const viewPorts = Object.entries(views).map(([key, value]) => {
-  const name = toCamelCase(key);
+  const name = kebabToCamelCase(key);
   return {
     name,
     styles: {width: value, height: '100%'},
@@ -101,6 +101,6 @@ export const decorators = [
   ReactRenderProfiler,
 ];
 
-function toCamelCase(value: string) {
-  return value.replace(/-./g, (x) => x[1].toUpperCase());
+function kebabToCamelCase(value: string) {
+  return value.replace(/-./g, (stringGroups) => stringGroups[1].toUpperCase());
 }
