@@ -4,7 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
-import {Card} from '../../Card';
+import {Card} from 'components';
 import {Page, PageProps} from '../Page';
 import {Header} from '../components';
 

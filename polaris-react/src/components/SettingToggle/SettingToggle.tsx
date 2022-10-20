@@ -3,7 +3,7 @@ import React, {useMemo} from 'react';
 import type {ComplexAction} from '../../types';
 import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
-import {Card} from '../Card';
+import {Card} from 'components';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 
 export interface SettingToggleProps {

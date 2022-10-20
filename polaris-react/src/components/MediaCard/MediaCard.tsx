@@ -5,7 +5,7 @@ import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor, ComplexAction} from '../../types';
-import {Card} from '../Card';
+import {Card} from 'components';
 import {Button, buttonFrom} from '../Button';
 import {Heading} from '../Heading';
 import {Popover} from '../Popover';

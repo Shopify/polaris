@@ -3,7 +3,7 @@ import React from 'react';
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
-import {Card} from '../Card';
+import {Card} from 'components';
 import {Stack} from '../Stack';
 import {TextStyle} from '../TextStyle';
 import {SettingAction} from '../SettingAction';

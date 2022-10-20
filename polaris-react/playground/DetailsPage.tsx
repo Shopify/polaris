@@ -42,7 +42,7 @@ import {
   Toast,
   TopBar,
   VisuallyHidden,
-} from '../src';
+} from 'components';
 
 import styles from './DetailsPage.scss';
 

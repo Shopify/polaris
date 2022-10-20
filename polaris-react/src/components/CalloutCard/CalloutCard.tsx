@@ -3,7 +3,7 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
-import {Card} from '../Card';
+import {Card} from 'components';
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
