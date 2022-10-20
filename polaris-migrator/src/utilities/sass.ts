@@ -6,7 +6,6 @@ import valueParser, {
   Dimension,
 } from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
-import prettier from 'prettier';
 
 const defaultNamespace = '';
 
@@ -226,15 +225,8 @@ export function toTransformablePx(value: string) {
  */
 export const StopWalkingFunctionNodes = false;
 
-export function createInlineComment(text: string, options?: {prose?: boolean}) {
-  const formatted = prettier
-    .format(text, {
-      parser: options?.prose ? 'markdown' : 'scss',
-      proseWrap: 'never',
-      printWidth: 9999,
-    })
-    .trim();
-  const comment = postcss.comment({text: formatted});
+export function createInlineComment(text: string) {
+  const comment = postcss.comment({text: text.replace(/\s+/gm, ' ').trim()});
 
   comment.raws.left = ' ';
   comment.raws.inline = true;

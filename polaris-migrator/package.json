@@ -41,8 +41,7 @@
     "meow": "^9.0.0",
     "postcss": "^8.4.14",
     "postcss-scss": "^4.0.4",
-    "postcss-value-parser": "^4.2.0",
-    "prettier": "^2.7.1"
+    "postcss-value-parser": "^4.2.0"
   },
   "devDependencies": {
     "@types/is-git-clean": "^1.1.0",
@@ -54,6 +53,7 @@
     "@shopify/polaris": "^10.8.0",
     "plop": "^3.1.1",
     "plop-dir": "^0.0.5",
+    "prettier": "^2.7.1",
     "type-fest": "^2.19.0"
   }
 }
