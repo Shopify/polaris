@@ -190,6 +190,7 @@ export interface BoxProps extends PropsWithChildren {
   width?: string;
 }
 
+// A generic comment
 export const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
