@@ -165,3 +165,22 @@ export function removeImportSpecifier(
 ) {
   getImportSpecifier(j, source, specifier, sourcePath).remove();
 }
+
+export function addNewImportSpecifier(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  newSpecifier: string,
+  sourcePath: string | RegExp,
+) {
+  const importSpecifiers = getImportDeclaration(j, source, sourcePath);
+  const newImportSpecifier = j.importSpecifier(j.identifier(newSpecifier));
+
+  importSpecifiers.forEach((importSpecifier) =>
+    j(importSpecifier).replaceWith(
+      j.importDeclaration(
+        [...importSpecifier.node.specifiers, newImportSpecifier],
+        importSpecifier.node.source,
+      ),
+    ),
+  );
+}
