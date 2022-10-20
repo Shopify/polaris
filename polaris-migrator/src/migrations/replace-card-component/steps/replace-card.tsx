@@ -86,9 +86,12 @@ export function replaceCard<NodeType = ASTNode>(
         });
     }
 
-    if (!hasImportSpecifier(j, source, 'AlphaStack', sourcePathRegex)) {
-      // Add AlphaStack as an import
-      addNewImportSpecifier(j, source, 'AlphaStack', sourcePathRegex);
+    // Check if <Card> has `sectioned` attribute
+    if (hasJSXAttribute(j, element, 'sectioned')) {
+      if (!hasImportSpecifier(j, source, 'AlphaStack', sourcePathRegex)) {
+        // Add AlphaStack as an import
+        addNewImportSpecifier(j, source, 'AlphaStack', sourcePathRegex);
+      }
 
       // Create <AlphaStack> element
       const AlphaStack = j.jsxElement(
@@ -116,6 +119,9 @@ export function replaceCard<NodeType = ASTNode>(
           AlphaStackWithJSXAttribute,
         ]),
       );
+
+      // Remove `sectioned` attribute from <AlphaCard>
+      removeJSXAttributes(j, element, 'sectioned');
     }
   });
 }

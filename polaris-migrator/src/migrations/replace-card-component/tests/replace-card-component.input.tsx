@@ -3,7 +3,7 @@ import {Card} from '@shopify/polaris';
 
 export function App() {
   return (
-    <Card title="Online store dashboard">
+    <Card title="Online store dashboard" sectioned>
       <p>View a summary of your online store's performance</p>
     </Card>
   );
