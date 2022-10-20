@@ -1,20 +1,42 @@
 import React from 'react';
-import {AlphaStack, Badge, Text} from '@shopify/polaris';
+import {AlphaStack, Badge, Text, Box} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackExample() {
   return (
-    <div style={{width: '100%'}}>
-      <AlphaStack>
-        <Text variant="heading4xl" as="h2">
-          AlphaStack
-        </Text>
-        <Badge>One</Badge>
-        <Badge>Two</Badge>
-        <Badge>Three</Badge>
-      </AlphaStack>
-    </div>
+    <AlphaStack>
+      <Box background="action-primary" padding="4" paddingLeft="2">
+        <Box
+          background="surface-primary-selected-pressed"
+          color="text-on-interactive"
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            Stack child
+          </Text>
+        </Box>
+      </Box>
+      <Box background="action-primary" padding="4" paddingLeft="2">
+        <Box
+          background="surface-primary-selected-pressed"
+          color="text-on-interactive"
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            Stack child
+          </Text>
+        </Box>
+      </Box>
+      <Box background="action-primary" padding="4" paddingLeft="2">
+        <Box
+          background="surface-primary-selected-pressed"
+          color="text-on-interactive"
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            Stack child
+          </Text>
+        </Box>
+      </Box>
+    </AlphaStack>
   );
 }
 

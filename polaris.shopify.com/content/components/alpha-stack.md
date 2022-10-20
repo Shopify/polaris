@@ -1,6 +1,6 @@
 ---
 title: Alpha stack
-description: Use to lay out a vertical pile of elements sitting on top of each other. A stack is made of flexible items that wrap each of the stack’s children. Options allow different spacing and alignments.
+description: Use to display elements vertically with items placed directly below the preceding item.
 category: Structure
 keywords:
   - layout
@@ -10,16 +10,22 @@ status:
 examples:
   - fileName: alpha-stack-default.tsx
     title: Default
-  - fileName: alpha-stack-with-align.tsx
-    title: Horizontal alignment
     description: >-
-      Horizontal alignment for children can be set with the align property.
+      By default, stack is left aligned and stacked items are spaced with 16px in between.
   - fileName: alpha-stack-with-spacing.tsx
-    title: Vertical spacing
+    title: Spacing
     description: >-
-      Vertical spacing for children can be set with the spacing property. Spacing options are provided using our spacing tokens.
+      Spacing between stack child can be adjusted using the Space token.
   - fileName: alpha-stack-with-full-width-children.tsx
-    title: Full width children
+    title: Full width
     description: >-
-      Set children to full width
+      Use a boolean to make Stack full width.
+  - fileName: alpha-stack-with-align.tsx
+    title: Alignment
+    description: >-
+      Use to vertically align Stack.
 ---
+
+## Related components
+
+- To display elements horizontally, use [Inline](https://polaris.shopify.com/components/inline).

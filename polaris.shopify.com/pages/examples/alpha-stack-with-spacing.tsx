@@ -5,60 +5,44 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithSpacingExample() {
   return (
-    <div style={{width: '100%'}}>
-      <Box paddingBottom="2">
-        <Text variant="bodySm" as="h3">
-          with spacing 0
-        </Text>
-      </Box>
-      <Box paddingBottom="2">
-        <AlphaStack spacing="0">
-          <Text variant="heading4xl" as="h2">
-            AlphaStack
-          </Text>
-          <Inline>
-            <Badge>One</Badge>
-            <Badge>Two</Badge>
-            <Badge>Three</Badge>
-          </Inline>
-        </AlphaStack>
-      </Box>
-      <hr />
-      <Box paddingBottom="2">
-        <Text variant="bodySm" as="h3">
-          with spacing 4
-        </Text>
-      </Box>
-      <Box paddingBottom="2">
-        <AlphaStack spacing="4">
-          <Text variant="heading4xl" as="h2">
-            AlphaStack
-          </Text>
-          <Inline>
-            <Badge>One</Badge>
-            <Badge>Two</Badge>
-            <Badge>Three</Badge>
-          </Inline>
-        </AlphaStack>
-      </Box>
-      <hr />
-      <Box paddingBottom="2">
-        <Text variant="bodySm" as="h3">
-          with spacing 10
-        </Text>
-      </Box>
-      <Box paddingBottom="2">
-        <AlphaStack spacing="10">
-          <Text variant="heading4xl" as="h2">
-            AlphaStack
-          </Text>
-          <Inline>
-            <Badge>One</Badge>
-            <Badge>Two</Badge>
-            <Badge>Three</Badge>
-          </Inline>
-        </AlphaStack>
-      </Box>
+    <div
+      style={{
+        background:
+          'repeating-linear-gradient(-45deg, var(--p-action-primary), var(--p-action-primary) 1px, var(--p-surface-primary-selected-hovered) 1px, var(--p-surface-primary-selected-hovered) 10px)',
+      }}
+    >
+      <AlphaStack spacing="5">
+        <Box background="action-primary" padding="4" paddingLeft="2">
+          <Box
+            background="surface-primary-selected-pressed"
+            color="text-on-interactive"
+          >
+            <Text as="h2" variant="bodyMd" fontWeight="medium">
+              Stack child
+            </Text>
+          </Box>
+        </Box>
+        <Box background="action-primary" padding="4" paddingLeft="2">
+          <Box
+            background="surface-primary-selected-pressed"
+            color="text-on-interactive"
+          >
+            <Text as="h2" variant="bodyMd" fontWeight="medium">
+              Stack child
+            </Text>
+          </Box>
+        </Box>
+        <Box background="action-primary" padding="4" paddingLeft="2">
+          <Box
+            background="surface-primary-selected-pressed"
+            color="text-on-interactive"
+          >
+            <Text as="h2" variant="bodyMd" fontWeight="medium">
+              Stack child
+            </Text>
+          </Box>
+        </Box>
+      </AlphaStack>
     </div>
   );
 }
