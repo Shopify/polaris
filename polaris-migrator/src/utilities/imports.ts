@@ -109,7 +109,6 @@ export function getImportSpecifierName(
   sourcePath: string | RegExp,
 ) {
   const specifiers = getImportSpecifier(j, source, specifier, sourcePath);
-  console.log({specifiers});
 
   return specifiers.length > 0 ? specifiers.nodes()[0]!.local!.name : null;
 }
