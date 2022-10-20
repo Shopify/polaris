@@ -17,21 +17,20 @@ export default function replaceCardComponent(
   {jscodeshift: j}: API,
 ) {
   const source = j(fileInfo.source);
-  const sourcePathRegex = /(?:\@shopify\/polaris|\.\.\/Card)/gi;
-  const updatedSourcePathRegex = /(?:\@shopify\/polaris|\.\.\/AlphaCard)/gi;
+  const sourcePathRegex = /(?:\@shopify\/polaris|components)/gi;
 
   if (!hasImportDeclaration(j, source, sourcePathRegex)) {
     return fileInfo.source;
   }
 
-  if (hasImportSpecifier(j, source, 'AlphaCard', updatedSourcePathRegex)) {
+  if (hasImportSpecifier(j, source, 'AlphaCard', sourcePathRegex)) {
     removeImportSpecifier(j, source, 'Card', sourcePathRegex);
   } else {
     renameImportSpecifier(j, source, 'Card', 'AlphaCard', sourcePathRegex);
   }
 
   const localElementName =
-    getImportSpecifierName(j, source, 'Card', updatedSourcePathRegex) || 'Card';
+    getImportSpecifierName(j, source, 'Card', sourcePathRegex) || 'Card';
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'AlphaCard');
