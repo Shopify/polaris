@@ -178,7 +178,7 @@ export function addNewImportSpecifier(
   importSpecifiers.forEach((importSpecifier) =>
     j(importSpecifier).replaceWith(
       j.importDeclaration(
-        [...importSpecifier.node.specifiers, newImportSpecifier],
+        [...(importSpecifier.node.specifiers ?? []), newImportSpecifier],
         importSpecifier.node.source,
       ),
     ),
