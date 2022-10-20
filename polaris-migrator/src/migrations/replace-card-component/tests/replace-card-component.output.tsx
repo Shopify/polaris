@@ -8,7 +8,7 @@ export function App() {
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store's performance</p>
+        <p>{`View a summary of your online store's performance`}</p>
       </AlphaStack>
     </AlphaCard>
   );

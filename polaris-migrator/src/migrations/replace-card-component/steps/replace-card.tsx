@@ -58,16 +58,13 @@ export function replaceCard<NodeType = ASTNode>(
             );
 
             // Add JSXAttributes to <Text>
-            let TextWithJSXAttribute = j.jsxElement(
+            const TextWithJSXAttribute = j.jsxElement(
               j.jsxOpeningElement(Text.openingElement.name, [
                 ...(Text.openingElement.attributes || []),
-                j.jsxAttribute(
-                  j.jsxIdentifier('as'),
-                  'h3' ? j.stringLiteral('h3') : null,
-                ),
+                j.jsxAttribute(j.jsxIdentifier('as'), j.stringLiteral('h3')),
                 j.jsxAttribute(
                   j.jsxIdentifier('variant'),
-                  'headingMd' ? j.stringLiteral('headingMd') : null,
+                  j.stringLiteral('headingMd'),
                 ),
               ]),
               Text.closingElement,
@@ -104,10 +101,7 @@ export function replaceCard<NodeType = ASTNode>(
       const AlphaStackWithJSXAttribute = j.jsxElement(
         j.jsxOpeningElement(AlphaStack.openingElement.name, [
           ...(AlphaStack.openingElement.attributes || []),
-          j.jsxAttribute(
-            j.jsxIdentifier('spacing'),
-            '5' ? j.stringLiteral('5') : null,
-          ),
+          j.jsxAttribute(j.jsxIdentifier('spacing'), j.stringLiteral('5')),
           j.jsxAttribute(j.jsxIdentifier('fullWidth')),
         ]),
         AlphaStack.closingElement,

@@ -12,6 +12,7 @@ export default function replaceCardComponent(
   {jscodeshift: j}: API,
 ) {
   const source = j(fileInfo.source);
+  // eslint-disable-next-line no-useless-escape
   const sourcePathRegex = /(?:\@shopify\/polaris|components)/gi;
 
   if (!hasImportDeclaration(j, source, sourcePathRegex)) {
