@@ -31,6 +31,18 @@ export function replaceCard<NodeType = ASTNode>(
 
     if (!hasImportSpecifier(j, source, 'AlphaStack', sourcePathRegex)) {
       addNewImportSpecifier(j, source, 'AlphaStack', sourcePathRegex);
+
+      const AlphaStack = j.jsxElement(
+        j.jsxOpeningElement(j.jsxIdentifier('AlphaStack')),
+        j.jsxClosingElement(j.jsxIdentifier('AlphaStack')),
+        element.node.children,
+      );
+
+      element.replace(
+        j.jsxElement(element.node.openingElement, element.node.closingElement, [
+          AlphaStack,
+        ]),
+      );
     }
   });
 }

@@ -2,5 +2,9 @@ import React from 'react';
 import {AlphaCard, AlphaStack} from '@shopify/polaris';
 
 export function App() {
-  return <AlphaCard>Card</AlphaCard>;
+  return (
+    <AlphaCard>
+      <AlphaStack>Card</AlphaStack>
+    </AlphaCard>
+  );
 }
