@@ -3,11 +3,13 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
   Button,
-  Card,
+  AlphaCard,
   Link,
   List,
   Modal,
   TextContainer,
+  Text,
+  AlphaStack,
 } from '@shopify/polaris';
 
 export default {
@@ -172,17 +174,22 @@ export function WithFocus() {
 
 export function InACard() {
   return (
-    <Card title="Online store dashboard" sectioned>
-      <TextContainer>
-        <Banner onDismiss={() => {}}>
-          <p>
-            Use your finance report to get detailed information about your
-            business. <Link url="">Let us know what you think</Link>
-          </p>
-        </Banner>
+    <AlphaCard>
+      <AlphaStack spacing="5" fullWidth>
+        <Text as="h3" variant="headingMd">
+          Online store dashboard
+        </Text>
+        <TextContainer>
+          <Banner onDismiss={() => {}}>
+            <p>
+              Use your finance report to get detailed information about your
+              business. <Link url="">Let us know what you think</Link>
+            </p>
+          </Banner>
 
-        <p>View a summary of your online store’s performance.</p>
-      </TextContainer>
-    </Card>
+          <p>View a summary of your online store’s performance.</p>
+        </TextContainer>
+      </AlphaStack>
+    </AlphaCard>
   );
 }
