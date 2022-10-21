@@ -180,6 +180,16 @@ export function getFunctionArgs(node: FunctionNode): string[] {
 }
 
 /**
+ * Removes surrounding quotes from a string
+ * @example
+ * const string = '"hello"';
+ * stripQuotes(string); // hello
+ */
+export function stripQuotes(string: string) {
+  return string.replace(/^['"]|['"]$/g, '');
+}
+
+/**
  * All transformable dimension units. These values are used to determine
  * if a decl.value can be converted to pixels and mapped to a Polaris custom property.
  */
