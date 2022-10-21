@@ -182,8 +182,6 @@ const genOgImages = async () => {
       }
       await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
       await page.close();
-
-      console.log(`✅ Successfuly generated png for ${url}`);
     } catch (error) {
       console.error(`❌ Failed to generate png for ${url}`);
       throw new Error(error);
