@@ -1,6 +1,6 @@
 /* eslint-disable jest/no-export, jest/valid-title, @typescript-eslint/no-var-requires */
 import fs from 'node:fs';
-import path from 'node:path';
+import path from 'path';
 
 import prettier from 'prettier';
 

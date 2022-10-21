@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as url from 'node:url';
-import * as path from 'node:path';
+import * as path from 'path';
 
 import {plopDir} from 'plop-dir';
 
