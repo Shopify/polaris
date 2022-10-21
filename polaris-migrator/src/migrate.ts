@@ -1,4 +1,4 @@
-import fs from 'node:fs';
+import fs from 'fs';
 import path from 'path';
 
 // @ts-expect-error TS can't resolve the type of this import
