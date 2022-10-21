@@ -57,7 +57,7 @@ export function TwoColumnsWithPrimaryAndSecondaryWidths() {
 export function TwoColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
-      <Columns columns={{xs: 2}}>
+      <Columns columns={{xs: 1, lg: 2}}>
         <Card title="Florida" actions={[{content: 'Manage'}]}>
           <Card.Section>
             <TextStyle variation="subdued">455 units available</TextStyle>
