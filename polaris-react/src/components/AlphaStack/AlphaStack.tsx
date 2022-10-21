@@ -1,10 +1,12 @@
 import React, {createElement} from 'react';
-import type {
-  BreakpointsAlias,
-  SpacingSpaceScale,
-} from '@shopify/polaris-tokens';
+import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import {
+  classNames,
+  sanitizeCustomProperties,
+  getResponsiveProps,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
 
@@ -13,12 +15,6 @@ type Align = 'start' | 'end' | 'center';
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Spacing = ResponsiveProp<SpacingSpaceScale>;
-
-type ResponsiveProp<T> =
-  | T
-  | {
-      [Breakpoint in BreakpointsAlias]?: T;
-    };
 
 export interface AlphaStackProps {
   /** HTML Element type */
@@ -58,29 +54,5 @@ export const AlphaStack = ({
       style: sanitizeCustomProperties(style),
     },
     children,
-  );
-};
-
-const getResponsiveProps = (
-  componentName: string,
-  componentProp: string,
-  tokenSubgroup: string,
-  responsiveProp:
-    | string
-    | {
-        [Breakpoint in BreakpointsAlias]?: string;
-      },
-) => {
-  if (typeof responsiveProp === 'string') {
-    return {
-      [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
-    };
-  }
-
-  return Object.fromEntries(
-    Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
-      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
-      `var(--p-${tokenSubgroup}-${aliasOrScale})`,
-    ]),
   );
 };
