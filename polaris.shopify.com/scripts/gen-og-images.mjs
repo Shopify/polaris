@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import {existsSync} from 'fs';
 import path from 'path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
+import pMap from 'p-map';
 
 const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
 const imgDir = path.join(process.cwd(), 'public/og-images');
@@ -152,28 +153,6 @@ const generateHTML = async (url, slug) => {
   return Buffer.from(html).toString('base64');
 };
 
-const getPNG = async (url, browser) => {
-  try {
-    const slug = url === '' ? 'home' : url.split('/').at(-1);
-    const imgPath =
-      url.split('/').length > 1 ? url.split('/').slice(0, -1).join('/') : url;
-    const html = await generateHTML(url, slug);
-    const encodedUrl = `data:text/html;charset=utf-8;base64,${html}`;
-    const page = await browser.newPage();
-    await page.goto(encodedUrl, {waitUntil: 'networkidle0'});
-    const image = await page.screenshot();
-    if (!existsSync(`${imgDir}${imgPath}`)) {
-      await mkdir(`${imgDir}${imgPath}`, {recursive: true});
-    }
-    await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
-
-    console.log(`✅ Successfuly generated png for ${url}`);
-  } catch (error) {
-    console.error(`❌ Failed to generate png for ${url}`);
-    throw new Error(error);
-  }
-};
-
 const genOgImages = async () => {
   if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
   await mkdir(imgDir, {recursive: true});
@@ -188,7 +167,31 @@ const genOgImages = async () => {
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
-  const generateImages = urls.map((url) => getPNG(url, browser));
+  const getPNG = async (url) => {
+    try {
+      const slug = url === '' ? 'home' : url.split('/').at(-1);
+      const imgPath =
+        url.split('/').length > 1 ? url.split('/').slice(0, -1).join('/') : url;
+      const html = await generateHTML(url, slug);
+      const encodedUrl = `data:text/html;charset=utf-8;base64,${html}`;
+      const page = await browser.newPage();
+      await page.goto(encodedUrl, {waitUntil: 'networkidle0'});
+      const image = await page.screenshot();
+      if (!existsSync(`${imgDir}${imgPath}`)) {
+        await mkdir(`${imgDir}${imgPath}`, {recursive: true});
+      }
+      await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
+      await page.close();
+
+      console.log(`✅ Successfuly generated png for ${url}`);
+    } catch (error) {
+      console.error(`❌ Failed to generate png for ${url}`);
+      throw new Error(error);
+    }
+  };
+
+  const generateImages = await pMap(urls, getPNG, {concurrency: 30});
+
   await Promise.all(generateImages);
 
   await browser.close();
