@@ -1,4 +1,3 @@
-import {AlphaStack} from '../../components/AlphaStack';
 import {classNames, variationName, getResponsiveProps} from '../css';
 
 describe('classNames', () => {
