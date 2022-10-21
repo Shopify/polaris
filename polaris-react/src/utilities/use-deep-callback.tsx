@@ -31,8 +31,9 @@ import {useDeepCompareRef} from './use-deep-compare-ref';
  *   );
  * }
  */
-export function useDeepCallback(
-  callback: Parameters<typeof useCallback>[0],
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function useDeepCallback<T extends Function>(
+  callback: T,
   dependencies: Parameters<typeof useDeepCompareRef>[0],
   customCompare?: Parameters<typeof useDeepCompareRef>[1],
 ) {

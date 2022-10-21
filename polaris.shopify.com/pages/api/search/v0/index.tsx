@@ -118,7 +118,7 @@ const getSearchResults = (query: string) => {
       id: slugify(`foundations ${title}`),
       category: 'foundations',
       score: 0,
-      url: slug,
+      url: `/${slug}`,
       meta: {
         foundations: {
           title,

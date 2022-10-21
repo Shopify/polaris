@@ -22,7 +22,7 @@ interface Props {
 
 const nav = navJSON as NavJSON;
 
-function Header({darkMode, children}: Props) {
+function Frame({darkMode, children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
   const [navIsVisible, setNavIsVisible] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -304,4 +304,4 @@ function NavToggleIcon() {
   );
 }
 
-export default Header;
+export default Frame;

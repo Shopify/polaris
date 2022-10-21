@@ -26,7 +26,8 @@
     ".cache/*.json",
     "**/*.json",
     "next-env.d.ts",
-    "scripts/get-props/src/get-props.ts"
+    "scripts/get-props/src/get-props.ts",
+    "constants.js"
   ],
   "exclude": [
     "node_modules",

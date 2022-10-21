@@ -19,6 +19,7 @@ $breakpointNav: $breakpointTablet;
 
 .NavAndContent {
   display: flex;
+  overflow-wrap: anywhere;
 }
 
 .PageContent {

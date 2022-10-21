@@ -1,5 +1,32 @@
 # polaris.shopify.com
 
+## 0.22.0
+
+### Minor Changes
+
+- [#7032](https://github.com/Shopify/polaris/pull/7032) [`40ee692aa`](https://github.com/Shopify/polaris/commit/40ee692aaddbb75ed0d524f598fbac9f6817612a) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Added Playroom integration to Polaris docs site.
+
+### Patch Changes
+
+- [#7032](https://github.com/Shopify/polaris/pull/7032) [`40ee692aa`](https://github.com/Shopify/polaris/commit/40ee692aaddbb75ed0d524f598fbac9f6817612a) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Improved the design of the Sandbox feature.
+
+* [#7400](https://github.com/Shopify/polaris/pull/7400) [`9f9fe1f99`](https://github.com/Shopify/polaris/commit/9f9fe1f99aed8b8814e7e854e06f4f8aa156c9da) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a scaling bug caused by content overflow
+  Fixed a bug where examples that don't have any content wouldn't show up
+* Updated dependencies [[`8a6c323e2`](https://github.com/Shopify/polaris/commit/8a6c323e2965e4db82fe5e7a398d771f9f126a0e), [`e4b2c36d8`](https://github.com/Shopify/polaris/commit/e4b2c36d8ea8990c2f7e7229ad2529cc0391cf82), [`c3f427c17`](https://github.com/Shopify/polaris/commit/c3f427c17d268f406618aaddb684ba12c3fa15d1), [`ea2a45bbb`](https://github.com/Shopify/polaris/commit/ea2a45bbb9d706fc44100366c7e389f2d25abcf4), [`5bc885765`](https://github.com/Shopify/polaris/commit/5bc8857654475fe0006520d1d448170f7a51976b)]:
+  - @shopify/polaris@10.8.0
+  - @shopify/polaris-tokens@6.2.1
+
+## 0.21.1
+
+### Patch Changes
+
+- [#6743](https://github.com/Shopify/polaris/pull/6743) [`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add support for React 18
+
+* [#7370](https://github.com/Shopify/polaris/pull/7370) [`58cdc1671`](https://github.com/Shopify/polaris/commit/58cdc1671423d46375d863476a601fcc154c6eb0) Thanks [@chloerice](https://github.com/chloerice)! - Removed 'About Polaris' page from the Foundations section, as the 'Getting started' section covers this
+
+* Updated dependencies [[`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d), [`6be4436d0`](https://github.com/Shopify/polaris/commit/6be4436d0fa2e37a0e93aad99a436d286f976051)]:
+  - @shopify/polaris@10.7.0
+
 ## 0.21.0
 
 ### Minor Changes

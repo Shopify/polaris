@@ -1,8 +1,10 @@
 import React from 'react';
-import {mountWithApp} from 'tests/utilities';
+import {mountWithApp, CustomRoot} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
 import {DualThumb, DualThumbProps} from '../DualThumb';
+
+type MountedComponentType = CustomRoot<any, any>;
 
 describe('<DualThumb />', () => {
   const mockProps: DualThumbProps = {
@@ -721,7 +723,7 @@ describe('<DualThumb />', () => {
     }
 
     function moveLowerThumb(
-      component: any,
+      component: MountedComponentType,
       percentageOfTrackX: number,
       button = 0,
     ) {
@@ -732,11 +734,13 @@ describe('<DualThumb />', () => {
         'onMouseDown',
         new MouseEvent('mouseDown', {button}),
       );
-      eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      component.act(() => {
+        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      });
     }
 
     function moveUpperThumb(
-      component: any,
+      component: MountedComponentType,
       percentageOfTrackX: number,
       button = 0,
     ) {
@@ -747,7 +751,9 @@ describe('<DualThumb />', () => {
         'onMouseDown',
         new MouseEvent('mouseDown', {button}),
       );
-      eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      component.act(() => {
+        eventMap.mousemove({clientX: trackWidth * percentageOfTrackX});
+      });
     }
   });
 
@@ -930,7 +936,7 @@ describe('<DualThumb />', () => {
         <DualThumb {...mockProps} value={[5, 40]} onChange={noop} />,
       );
 
-      const track = findTrack(dualThumb, trackClassName).domNode;
+      const track = findTrack(dualThumb, trackClassName).domNode!;
 
       const removeEventListenerSpy = jest.spyOn(track, 'removeEventListener');
       removeEventListenerSpy.mockClear();
@@ -941,7 +947,7 @@ describe('<DualThumb />', () => {
     });
 
     function touchTrack(
-      component: any,
+      component: MountedComponentType,
       percentageOfTrackX: number,
       className: string,
     ) {
@@ -955,11 +961,13 @@ describe('<DualThumb />', () => {
       } as TouchEventInit);
       Object.assign(event, {preventDefault: noop});
 
-      findTrack(component, className).domNode.dispatchEvent(event);
+      component.act(() => {
+        findTrack(component, className).domNode!.dispatchEvent(event);
+      });
     }
 
     function moveLowerThumb(
-      component: any,
+      component: MountedComponentType,
       percentageOfTrackX: number,
       simulateTouchStart = true,
     ) {
@@ -971,9 +979,11 @@ describe('<DualThumb />', () => {
           'onTouchStart',
           new TouchEvent('touchStart'),
         );
-      eventMap.touchmove({
-        touches: [{clientX: trackWidth * percentageOfTrackX}],
-        preventDefault: noop,
+      component.act(() => {
+        eventMap.touchmove({
+          touches: [{clientX: trackWidth * percentageOfTrackX}],
+          preventDefault: noop,
+        });
       });
     }
 
@@ -991,9 +1001,11 @@ describe('<DualThumb />', () => {
           'onTouchStart',
           new TouchEvent('touchStart'),
         );
-      eventMap.touchmove({
-        touches: [{clientX: trackWidth * percentageOfTrackX}],
-        preventDefault: noop,
+      component.act(() => {
+        eventMap.touchmove({
+          touches: [{clientX: trackWidth * percentageOfTrackX}],
+          preventDefault: noop,
+        });
       });
     }
   });
@@ -1138,13 +1150,13 @@ describe('<DualThumb />', () => {
 
 function noop() {}
 
-function findThumbLower(containerComponent: any) {
+function findThumbLower(containerComponent: MountedComponentType) {
   return containerComponent.find('div', {
     role: 'slider',
-  });
+  })!;
 }
 
-function findThumbUpper(containerComponent: any) {
+function findThumbUpper(containerComponent: MountedComponentType) {
   const thumbs = containerComponent.findAll('div', {
     role: 'slider',
   });
@@ -1152,10 +1164,13 @@ function findThumbUpper(containerComponent: any) {
   return thumbs[lastIndex];
 }
 
-function findTrack(containerComponent: any, className: string) {
+function findTrack(
+  containerComponent: MountedComponentType,
+  className: string,
+) {
   return containerComponent.find('div', {
     className,
-  });
+  })!;
 }
 
 function mockGetBoundingClientRect(): ReturnType<

@@ -56,14 +56,18 @@ const getMdContent = (filePath) => {
   const {data} = matter(fileContent);
   const slug = filePath
     .replace(`${process.cwd()}/content/`, '')
-    .replace('/index.md', '');
+    .replace('/index.md', '')
+    .replace('.md', '');
 
   return {frontMatter: data, slug};
 };
 
 const genCacheJson = () => {
   if (!existsSync(cacheDir)) mkdirSync(cacheDir, {recursive: true});
-  const pathGlob = path.join(process.cwd(), 'content/**/*.md');
+  const pathGlob = [
+    path.join(process.cwd(), 'content/*.md'),
+    path.join(process.cwd(), 'content/**/*.md'),
+  ];
 
   const mdFiles = globby.sync(pathGlob);
 

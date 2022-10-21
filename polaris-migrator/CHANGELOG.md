@@ -1,5 +1,22 @@
 # @shopify/polaris-migrator
 
+## 0.5.0
+
+### Minor Changes
+
+- [#7373](https://github.com/Shopify/polaris/pull/7373) [`56c82ee8d`](https://github.com/Shopify/polaris/commit/56c82ee8d15a58ef5e68b04968b126b93aa8dec9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add `getFunctionArgs` utility
+
+### Patch Changes
+
+- Updated dependencies [[`c3f427c17`](https://github.com/Shopify/polaris/commit/c3f427c17d268f406618aaddb684ba12c3fa15d1)]:
+  - @shopify/polaris-tokens@6.2.1
+
+## 0.4.1
+
+### Patch Changes
+
+- [#7371](https://github.com/Shopify/polaris/pull/7371) [`57e5f95c1`](https://github.com/Shopify/polaris/commit/57e5f95c1e402fda3202babfdce25b131b0b9165) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Make Polaris migrator comment generic
+
 ## 0.4.0
 
 ### Minor Changes

@@ -4,7 +4,16 @@ import {classNames} from '../../utilities/css';
 
 import styles from './Text.scss';
 
-type Element = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
+type Element =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'p'
+  | 'span'
+  | 'legend';
 
 type Variant =
   | 'headingXs'
@@ -44,12 +53,16 @@ export interface TextProps {
   alignment?: Alignment;
   /** The element type */
   as: Element;
+  /** Prevent text from overflowing */
+  breakWord?: boolean;
   /** Text to display */
   children: ReactNode;
   /** Adjust color of text */
   color?: Color;
   /** Adjust weight of text */
   fontWeight?: FontWeight;
+  /** HTML id attribute */
+  id?: string;
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
@@ -61,9 +74,11 @@ export interface TextProps {
 export const Text = ({
   alignment,
   as,
+  breakWord,
   children,
   color,
   fontWeight,
+  id,
   truncate = false,
   variant,
   visuallyHidden = false,
@@ -76,10 +91,15 @@ export const Text = ({
     fontWeight ? styles[fontWeight] : styles[VariantFontWeightMapping[variant]],
     (alignment || truncate) && styles.block,
     alignment && styles[alignment],
+    breakWord && styles.break,
     color && styles[color],
     truncate && styles.truncate,
     visuallyHidden && styles.visuallyHidden,
   );
 
-  return <Component className={className}>{children}</Component>;
+  return (
+    <Component className={className} {...(id && {id})}>
+      {children}
+    </Component>
+  );
 };

@@ -1,0 +1,124 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.font-family {
+  font-family: sans-serif;
+  font-family: var(--p-font-family-sans);
+  font-family: var(--p-font-family-sans);
+  font-family: var(--p-font-family-mono);
+}
+
+.font-size {
+  // LENGTHS
+  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-200);
+  // Ignore
+  font-size: 1em;
+  font-size: #{1px};
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: 10px;
+  font-size: 10px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: var(--p-font-size-75) + 1px;
+  font-size: 12px + 1px;
+
+  // FONT-SIZE FUNCTION
+  font-size: 0.8125rem;
+  font-size: 0.8125rem;
+  font-size: var(--p-font-size-75);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.font-size($invalid);
+  font-size: legacy-polaris-v8.font-size($invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.font-size(caption, $invalid);
+  font-size: legacy-polaris-v8.font-size(caption, $invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.font-size();
+  font-size: legacy-polaris-v8.font-size();
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.font-size(caption, base, $too-many-args);
+  font-size: legacy-polaris-v8.font-size(caption, base, $too-many-args);
+
+  // REM FUNCTION
+  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-200);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem(1em);
+  font-size: legacy-polaris-v8.rem(1em);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem(10px);
+  font-size: legacy-polaris-v8.rem(10px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem($invalid);
+  font-size: legacy-polaris-v8.rem($invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem();
+  font-size: legacy-polaris-v8.rem();
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem(var(--p-font-size-75), $too-many-args);
+  font-size: legacy-polaris-v8.rem(12px, $too-many-args);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: var(--p-font-size-75) 1px;
+  font-size: legacy-polaris-v8.rem(12px) 1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem(1px) var(--p-font-size-75);
+  font-size: legacy-polaris-v8.rem(1px) 12px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: legacy-polaris-v8.rem(#{10px + 2px}) var(--p-font-size-75);
+  font-size: legacy-polaris-v8.rem(#{10px + 2px}) 12px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-size: var(--p-font-size-75) + #{10px + 2px};
+  font-size: legacy-polaris-v8.rem(12px) + #{10px + 2px};
+}
+
+.font-weight {
+  // LENGTHS
+  font-weight: var(--p-font-weight-regular);
+  font-weight: var(--p-font-weight-bold);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-weight: 300;
+  font-weight: 300;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-weight: var(--p-font-weight-regular) + 300;
+  font-weight: 400 + 300;
+
+  // ALIAS
+  font-weight: var(--p-font-weight-regular);
+  font-weight: var(--p-font-weight-bold);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // font-weight: bolder;
+  font-weight: bolder;
+}
+
+.font-line-height {
+  // LENGTHS
+  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-1);
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: 10px;
+  line-height: 10px;
+
+  // LINE-HEIGHT FUNCTION
+  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-1);
+  line-height: 2.25rem;
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: legacy-polaris-v8.line-height($invalid);
+  line-height: legacy-polaris-v8.line-height($invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: legacy-polaris-v8.line-height(caption, $invalid);
+  line-height: legacy-polaris-v8.line-height(caption, $invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: legacy-polaris-v8.line-height();
+  line-height: legacy-polaris-v8.line-height();
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: legacy-polaris-v8.line-height(caption, base, $too-many-args);
+  line-height: legacy-polaris-v8.line-height(caption, base, $too-many-args);
+}
