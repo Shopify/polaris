@@ -23,6 +23,7 @@ export interface ColumnsProps extends PropsWithChildren {
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
   columns?: Columns;
+  children?: React.ReactNode;
 }
 
 export function Columns({columns, children, spacing}: ColumnsProps) {
