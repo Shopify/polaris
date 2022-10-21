@@ -154,6 +154,7 @@ const generateHTML = async (url, slug) => {
 
 const getPNG = async (url, browser) => {
   const slug = url === '' ? 'home' : url.split('/').at(-1);
+  console.log(`Creating png for ${slug}`);
   const imgPath =
     url.split('/').length > 1 ? url.split('/').slice(0, -1).join('/') : url;
   const html = await generateHTML(url, slug);
@@ -168,24 +169,29 @@ const getPNG = async (url, browser) => {
 };
 
 const genOgImages = async () => {
-  if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
-  await mkdir(imgDir, {recursive: true});
+  try {
+    if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
+    await mkdir(imgDir, {recursive: true});
 
-  const sitemap = await readFile(sitemapPath, 'utf-8');
-  const urls = sitemap
-    .match(/loc>[^<]+/gi)
-    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
+    const sitemap = await readFile(sitemapPath, 'utf-8');
+    const urls = sitemap
+      .match(/loc>[^<]+/gi)
+      .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
 
-  const browser = await puppeteer.launch({
-    defaultViewport: {width: 1200, height: 630},
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
+    const browser = await puppeteer.launch({
+      defaultViewport: {width: 1200, height: 630},
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+    });
 
-  const generateImages = urls.map((url) => getPNG(url, browser));
-  await Promise.all(generateImages);
+    const generateImages = urls.map((url) => getPNG(url, browser));
+    await Promise.all(generateImages);
 
-  await browser.close();
-  console.log(`✅ Created ${urls.length} og-images from sitemap`);
+    await browser.close();
+    console.log(`✅ Created ${urls.length} og-images from sitemap`);
+  } catch (error) {
+    console.error('❌ Failed to generate OG images');
+    throw new Error(error);
+  }
 };
 
 export default genOgImages;
