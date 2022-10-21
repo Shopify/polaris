@@ -87,7 +87,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             if (!isKeyOf(spaceMap, valueInPx)) return;
 
-            targets.pop()!.replaced = true;
+            targets[targets.length - 1]!.replaced = true;
 
             node.value = `var(${spaceMap[valueInPx]})`;
             return;
@@ -105,7 +105,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               if (!isKeyOf(spaceMap, valueInPx)) return;
 
-              targets.pop()!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
 
               node.value = 'var';
               node.nodes = [
