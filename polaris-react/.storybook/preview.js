@@ -80,9 +80,10 @@ export const globalTypes = {
   },
   ...gridOptions,
 };
-const views = {...breakpoints};
-delete views['breakpoints-xs'];
-const viewPorts = Object.entries(views).map(([key, value]) => {
+const viewPorts = Object.entries({
+  ...breakpoints,
+  'breakpoints-xs': '20rem', // Replace the 0px xs breakpoint with 320px (20rem) for testing small screens
+}).map(([key, value]) => {
   const name = kebabToCamelCase(key);
   return {
     name,
