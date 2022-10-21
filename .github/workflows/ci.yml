@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node with v${{ matrix.node_version }}
         uses: actions/setup-node@v3
         with:
-          node_version: ${{ matrix.node_version }}
+          node-version: ${{ matrix.node_version }}
           cache: yarn
 
       - name: Restore cache
