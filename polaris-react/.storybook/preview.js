@@ -84,16 +84,13 @@ const viewPorts = Object.entries({
   ...breakpoints,
   'breakpoints-xs': '20rem', // Replace the 0px xs breakpoint with 320px (20rem) for testing small screens
 }).map(([key, value]) => {
-  const name = kebabToCamelCase(key);
   return {
-    name,
+    name: key,
     styles: {width: value, height: '100%'},
   };
 });
 
-export const parameters = {
-  viewport: {viewports: {...viewPorts}},
-};
+export const parameters = {viewport: {viewports: {...viewPorts}}};
 
 export const decorators = [
   GridOverlayDecorator,
@@ -101,7 +98,3 @@ export const decorators = [
   AppProviderDecorator,
   ReactRenderProfiler,
 ];
-
-function kebabToCamelCase(value: string) {
-  return value.replace(/-./g, (stringGroups) => stringGroups[1].toUpperCase());
-}
