@@ -98,7 +98,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             node.value = `var(${borderWidthLengthMap[valueInPx]})`;
 
-            targets.at(-1)!.replaced = true;
+            targets[targets.length - 1]!.replaced = true;
 
             return;
           }
@@ -125,7 +125,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                 },
               ];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
             }
 
             if (isSassFunction(namespacedBorder, node)) {
@@ -151,7 +151,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                 },
               ];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
             }
 
             if (isSassFunction(namespacedBorderWidth, node)) {
@@ -177,7 +177,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                 },
               ];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
             }
 
             return StopWalkingFunctionNodes;
@@ -206,7 +206,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             node.value = `var(${borderRadiusLengthMap[valueInPx]})`;
 
-            targets.at(-1)!.replaced = true;
+            targets[targets.length - 1]!.replaced = true;
 
             return;
           }
@@ -233,7 +233,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                 },
               ];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
             }
 
             if (isSassFunction(namespacedBorderRadius, node)) {
@@ -259,7 +259,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
                 },
               ];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
             }
 
             return StopWalkingFunctionNodes;

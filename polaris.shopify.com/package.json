@@ -59,6 +59,7 @@
     "js-yaml": "^4.1.0",
     "lodash.set": "^4.3.2",
     "playroom": "^0.28.0",
+    "p-map": "^5.5.0",
     "marked": "^4.0.16",
     "puppeteer": "^16.0.0",
     "style-loader": "^3.3.1",

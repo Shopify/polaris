@@ -106,7 +106,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const fontFamilyCustomProperty = fontFamilyMap[family];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
 
               node.value = 'var';
               node.nodes = [
@@ -146,7 +146,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
 
-            targets.at(-1)!.replaced = true;
+            targets[targets.length - 1]!.replaced = true;
 
             node.value = `var(${fontSizeMap[fontSizeInPx]})`;
             return;
@@ -173,7 +173,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const fontSizeVariant = fontSizeStyle[variantArg];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
 
               if (fontSizeVariant.startsWith('--')) {
                 node.value = 'var';
@@ -203,7 +203,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               if (!isKeyOf(fontSizeMap, fontSizeInPx)) return;
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
 
               node.value = 'var';
               node.nodes = [
@@ -239,7 +239,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             if (!isKeyOf(fontWeightMap, fontWeight)) return;
 
-            targets.at(-1)!.replaced = true;
+            targets[targets.length - 1]!.replaced = true;
 
             node.value = `var(${fontWeightMap[fontWeight]})`;
           }
@@ -262,7 +262,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
             if (!isKeyOf(fontLineHeightMap, lineHeighInPx)) return;
 
-            targets.at(-1)!.replaced = true;
+            targets[targets.length - 1]!.replaced = true;
 
             node.value = `var(${fontLineHeightMap[lineHeighInPx]})`;
 
@@ -290,7 +290,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               const lineHeightVariant = lineHeightStyle[variantArg];
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
 
               if (lineHeightVariant.startsWith('--')) {
                 node.value = 'var';
@@ -320,7 +320,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
               if (!isKeyOf(fontLineHeightMap, lineHeightInPx)) return;
 
-              targets.at(-1)!.replaced = true;
+              targets[targets.length - 1]!.replaced = true;
 
               node.value = 'var';
               node.nodes = [
