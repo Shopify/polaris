@@ -26,14 +26,14 @@ export const parseMarkdown = (inputMarkdown) => {
   // Add some custom HTML to <!-- dodont --> tags
   const dodontRegex = /<!-- (dodont) -->(.*?)<!-- end -->/gis;
   if (markdown.match(dodontRegex)) {
-    markdown = markdown.replaceAll(dodontRegex, (match) => {
+    markdown = markdown.replace(dodontRegex, (match) => {
       const matchWithoutComments = match
         .replace(/^<!-- dodont -->/, '')
         .replace(/<!-- end -->$/, '');
 
       let i = 0;
 
-      const matchWithColumns = matchWithoutComments.replaceAll(
+      const matchWithColumns = matchWithoutComments.replace(
         /#### ([^\n]+)/g,
         (match, captured) => {
           if (i === 1) {

@@ -3,7 +3,7 @@
 // So we need to build into that public asset folder. Hence no dev mode and HMR
 // Workaround: restart the next dev server after each change to the playroom config and associated files.
 
-const path = require('node:path');
+const path = require('path');
 const {breakpoints, toPx} = require('@shopify/polaris-tokens');
 const {playroom} = require('./constants');
 

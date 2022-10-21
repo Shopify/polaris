@@ -1,5 +1,5 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from 'fs';
+import path from 'path';
 
 // @ts-expect-error TS can't resolve the type of this import
 import * as jscodeshift from 'jscodeshift/src/Runner';

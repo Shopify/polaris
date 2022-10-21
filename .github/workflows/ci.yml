@@ -9,32 +9,32 @@ on:
 
 jobs:
   build:
-    name: 'Validate with Node v${{ matrix.node_version }}'
+    name: 'Validate with Node v${{ matrix.node-version }}'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: ['14.17.0', '16.13.0']
+        node-version: ['14.17.0', '16.13.0']
     steps:
       - name: Checkout branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Setup Node with v${{ matrix.node_version }}
+      - name: Setup Node with v${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node_version: ${{ matrix.node_version }}
+          node-version: ${{ matrix.node-version }}
           cache: yarn
 
       - name: Restore cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             **/.eslintcache
             **/.turbo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node_version }}-test-v1-
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-v1-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
