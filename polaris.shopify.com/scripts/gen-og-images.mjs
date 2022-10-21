@@ -167,9 +167,9 @@ const getPNG = async (url, browser) => {
     }
     await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
 
-    console.log(`✅ Generated png for ${slug}`);
+    console.log(`✅ Successfuly generated png for ${url}`);
   } catch (error) {
-    console.error(`❌ Failed to generate ${url}`);
+    console.error(`❌ Failed to generate png for ${url}`);
     throw new Error(error);
   }
 };
