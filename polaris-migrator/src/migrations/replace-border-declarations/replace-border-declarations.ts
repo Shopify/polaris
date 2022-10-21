@@ -79,12 +79,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       function handleBorderProps() {
         parsedValue.walk((node) => {
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
+
           if (node.type === 'word') {
             if (globalValues.has(node.value)) return;
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
 
             const dimension = valueParser.unit(node.value);
 
@@ -187,12 +188,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       function handleBorderRadiusProps() {
         parsedValue.walk((node) => {
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
+
           if (node.type === 'word') {
             if (globalValues.has(node.value)) return;
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
 
             const dimension = valueParser.unit(node.value);
 

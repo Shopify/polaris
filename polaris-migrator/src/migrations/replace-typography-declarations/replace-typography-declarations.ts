@@ -84,13 +84,12 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       function handleFontFamily() {
         parsedValue.walk((node) => {
-          if (node.type === 'word') {
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              // eslint-disable-next-line no-useless-return
-              return;
-            }
-          } else if (node.type === 'function') {
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
+
+          if (node.type === 'function') {
             if (isSassFunction(namespacedFontFamily, node)) {
               targets.push({replaced: false});
 
@@ -126,13 +125,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       function handleFontSize() {
         parsedValue.walk((node) => {
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
+
           if (node.type === 'word') {
             if (globalValues.has(node.value)) return;
-
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
 
             const dimension = valueParser.unit(node.value);
 
@@ -225,13 +224,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         parsedValue.walk((node) => {
           if (node.type === 'function') return StopWalkingFunctionNodes;
 
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
+
           if (node.type === 'word') {
             if (globalValues.has(node.value)) return;
-
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
 
             targets.push({replaced: false});
 
@@ -248,13 +247,13 @@ const plugin = (options: PluginOptions = {}): Plugin => {
 
       function handleFontLineHeight() {
         parsedValue.walk((node) => {
+          if (isNumericOperator(node)) {
+            hasNumericOperator = true;
+            return;
+          }
+
           if (node.type === 'word') {
             if (globalValues.has(node.value)) return;
-
-            if (isNumericOperator(node)) {
-              hasNumericOperator = true;
-              return;
-            }
 
             targets.push({replaced: false});
 
