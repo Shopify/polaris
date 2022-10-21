@@ -17,7 +17,7 @@ const genSiteMap = async () => {
   const nextBin = path.join(process.cwd(), 'node_modules/.bin/next');
   const server = execa(nextBin, ['dev']);
 
-  await sleep(10 * 1000);
+  await sleep(3000);
 
   console.log(`👾 Generating sitemap...`);
 
