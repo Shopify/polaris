@@ -1,5 +1,6 @@
 import React from 'react';
-import {AlphaStack, Box, Text, Page, Inline} from '@shopify/polaris';
+import {AlphaStack, Box, Page, Inline} from '@shopify/polaris';
+import {Placeholder} from './ExampleStyleGuideComponents/AlignBlockComponent/Placeholder';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -8,215 +9,25 @@ function AlphaStackWithAlignExample() {
     <Page>
       <Box paddingBottom="20">
         <AlphaStack align="start">
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingLeft="2"
-            width="320px"
-          >
-            <Box
-              background="surface-primary-selected-pressed"
-              color="text-on-interactive"
-              width="fit-content"
-            >
-              <Text
-                as="h2"
-                variant="bodyMd"
-                fontWeight="medium"
-                alignment="start"
-              >
-                Start
-              </Text>
-            </Box>
-          </Box>
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingLeft="2"
-            width="320px"
-          >
-            <Box
-              background="surface-primary-selected-pressed"
-              color="text-on-interactive"
-              width="fit-content"
-            >
-              <Text
-                as="h2"
-                variant="bodyMd"
-                fontWeight="medium"
-                alignment="start"
-              >
-                Stack child
-              </Text>
-            </Box>
-          </Box>
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingLeft="2"
-            width="320px"
-          >
-            <Box
-              background="surface-primary-selected-pressed"
-              color="text-on-interactive"
-              width="fit-content"
-            >
-              <Text
-                as="h2"
-                variant="bodyMd"
-                fontWeight="medium"
-                alignment="start"
-              >
-                Stack child
-              </Text>
-            </Box>
-          </Box>
+          <Placeholder width="320" label="Start" childAlign="start" />
+          <Placeholder width="320" />
+          <Placeholder width="320" />
         </AlphaStack>
       </Box>
       <Box paddingBottom="20">
         <AlphaStack align="center">
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingLeft="2"
-            width="320px"
-          >
-            <Inline align="center">
-              <Box
-                background="surface-primary-selected-pressed"
-                color="text-on-interactive"
-                width="fit-content"
-              >
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                  alignment="center"
-                >
-                  Center
-                </Text>
-              </Box>
-            </Inline>
-          </Box>
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingLeft="2"
-            width="320px"
-          >
-            <Inline align="center">
-              <Box
-                background="surface-primary-selected-pressed"
-                color="text-on-interactive"
-                width="fit-content"
-              >
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                  alignment="center"
-                >
-                  Stack Child
-                </Text>
-              </Box>
-            </Inline>
-          </Box>
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingLeft="2"
-            width="320px"
-          >
-            <Inline align="center">
-              <Box
-                background="surface-primary-selected-pressed"
-                color="text-on-interactive"
-                width="fit-content"
-              >
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                  alignment="center"
-                >
-                  Stack Child
-                </Text>
-              </Box>
-            </Inline>
-          </Box>
+          <AlphaStack>
+            <Placeholder width="320" label="Center" childAlign="center" />
+            <Placeholder width="320" />
+            <Placeholder width="320" />
+          </AlphaStack>
         </AlphaStack>
       </Box>
       <Box>
         <AlphaStack align="end">
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingRight="2"
-            width="320px"
-          >
-            <Inline align="end">
-              <Box
-                background="surface-primary-selected-pressed"
-                color="text-on-interactive"
-                width="fit-content"
-              >
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                  alignment="center"
-                >
-                  End
-                </Text>
-              </Box>
-            </Inline>
-          </Box>
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingRight="2"
-            width="320px"
-          >
-            <Inline align="end">
-              <Box
-                background="surface-primary-selected-pressed"
-                color="text-on-interactive"
-                width="fit-content"
-              >
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                  alignment="center"
-                >
-                  Stack Child
-                </Text>
-              </Box>
-            </Inline>
-          </Box>
-          <Box
-            background="action-primary"
-            padding="4"
-            paddingRight="2"
-            width="320px"
-          >
-            <Inline align="end">
-              <Box
-                background="surface-primary-selected-pressed"
-                color="text-on-interactive"
-                width="fit-content"
-              >
-                <Text
-                  as="h2"
-                  variant="bodyMd"
-                  fontWeight="medium"
-                  alignment="center"
-                >
-                  Stack Child
-                </Text>
-              </Box>
-            </Inline>
-          </Box>
+          <Placeholder width="320" label="End" childAlign="end" />
+          <Placeholder width="320" />
+          <Placeholder width="320" />
         </AlphaStack>
       </Box>
     </Page>

@@ -1,41 +1,15 @@
 import React from 'react';
-import {AlphaStack, Box, Text} from '@shopify/polaris';
+import {AlphaStack} from '@shopify/polaris';
+import {Placeholder} from './ExampleStyleGuideComponents/DefaultBlockComponent/Placeholder';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithFullWidthChildrenExample() {
   return (
     <AlphaStack fullWidth>
-      <Box background="action-primary" padding="4" paddingLeft="2">
-        <Box
-          background="surface-primary-selected-pressed"
-          color="text-on-interactive"
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium">
-            Stack child
-          </Text>
-        </Box>
-      </Box>
-      <Box background="action-primary" padding="4" paddingLeft="2">
-        <Box
-          background="surface-primary-selected-pressed"
-          color="text-on-interactive"
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium">
-            Stack child
-          </Text>
-        </Box>
-      </Box>
-      <Box background="action-primary" padding="4" paddingLeft="2">
-        <Box
-          background="surface-primary-selected-pressed"
-          color="text-on-interactive"
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium">
-            Stack child
-          </Text>
-        </Box>
-      </Box>
+      <Placeholder label="Stack child" childWidth="100%" />
+      <Placeholder />
+      <Placeholder />
     </AlphaStack>
   );
 }

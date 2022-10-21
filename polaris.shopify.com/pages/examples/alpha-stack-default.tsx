@@ -1,59 +1,15 @@
 import React from 'react';
-import {AlphaStack, Text, Box} from '@shopify/polaris';
+import {AlphaStack} from '@shopify/polaris';
+import {Placeholder} from './ExampleStyleGuideComponents/DefaultBlockComponent/Placeholder';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackExample() {
   return (
     <AlphaStack>
-      <Box
-        background="action-primary"
-        padding="4"
-        paddingLeft="2"
-        width="320px"
-      >
-        <Box
-          background="surface-primary-selected-pressed"
-          color="text-on-interactive"
-          width="fit-content"
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium">
-            Stack child
-          </Text>
-        </Box>
-      </Box>
-      <Box
-        background="action-primary"
-        padding="4"
-        paddingLeft="2"
-        width="320px"
-      >
-        <Box
-          background="surface-primary-selected-pressed"
-          color="text-on-interactive"
-          width="fit-content"
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium">
-            Stack child
-          </Text>
-        </Box>
-      </Box>
-      <Box
-        background="action-primary"
-        padding="4"
-        paddingLeft="2"
-        width="320px"
-      >
-        <Box
-          background="surface-primary-selected-pressed"
-          color="text-on-interactive"
-          width="fit-content"
-        >
-          <Text as="h2" variant="bodyMd" fontWeight="medium">
-            Stack child
-          </Text>
-        </Box>
-      </Box>
+      <Placeholder width="320" label="Stack child" />
+      <Placeholder width="320" />
+      <Placeholder width="320" />
     </AlphaStack>
   );
 }
