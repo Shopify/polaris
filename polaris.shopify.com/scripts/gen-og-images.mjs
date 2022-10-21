@@ -153,7 +153,7 @@ const generateHTML = async (url, slug) => {
 };
 
 const getPNG = async (url, browser) => {
-  const slug = url === '' ? 'home' : url.split('/').at(-1);
+  const slug = url === '' ? 'home' : url.split('/').pop();
   const imgPath =
     url.split('/').length > 1 ? url.split('/').slice(0, -1).join('/') : url;
   const html = await generateHTML(url, slug);
