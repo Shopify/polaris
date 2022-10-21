@@ -124,6 +124,9 @@
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border-radius: 1px;
   border-radius: 1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: var(--p-border-radius-5) / 50%;
+  border-radius: 20px / 50%;
 
   /* --- REM FUNCTION --- */
 
