@@ -72,11 +72,11 @@ export interface BaseButton {
   /** Indicates the current checked state of the button when acting as a toggle or switch */
   ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
-  onClick?(): void;
+  onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
   /** Callback when button becomes focussed */
-  onFocus?(): void;
+  onFocus?(event: React.FocusEvent<HTMLButtonElement>): void;
   /** Callback when focus leaves button */
-  onBlur?(): void;
+  onBlur?(event: React.FocusEvent<HTMLButtonElement>): void;
   /** Callback when a keypress event is registered on the button */
   onKeyPress?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when a keyup event is registered on the button */
@@ -84,11 +84,11 @@ export interface BaseButton {
   /** Callback when a keydown event is registered on the button */
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when mouse enter */
-  onMouseEnter?(): void;
+  onMouseEnter?(event: React.MouseEvent<HTMLButtonElement>): void;
   /** Callback when element is touched */
-  onTouchStart?(): void;
+  onTouchStart?(event: React.TouchEvent<HTMLButtonElement>): void;
   /** Callback when pointerdown event is being triggered */
-  onPointerDown?(): void;
+  onPointerDown?(event: React.PointerEvent<HTMLButtonElement>): void;
 }
 
 export interface Action {
