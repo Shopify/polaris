@@ -63,7 +63,7 @@ export interface BaseButton {
   accessibilityLabel?: string;
   /** A valid WAI-ARIA role to define the semantic value of this element */
   role?: string;
-  /** Id of the element the button controls */
+  /** ID of the element the button controls */
   ariaControls?: string;
   /** Tells screen reader the controlled element is expanded */
   ariaExpanded?: boolean;

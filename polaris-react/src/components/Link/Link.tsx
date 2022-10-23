@@ -21,9 +21,9 @@ export interface LinkProps {
   removeUnderline?: boolean;
   /** Callback when a link is clicked */
   onClick?(): void;
-  /** Descriptive text to be read to screenreaders */
+  /** Descriptive text to be read to screen readers */
   accessibilityLabel?: string;
-  /** Indicates whether or not the link is the primary navigation link when rendered inside of an `IndexTable.Row` */
+  /** Indicates whether the link is the primary navigation link when rendered inside an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
 }
 
