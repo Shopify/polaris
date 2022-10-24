@@ -3,18 +3,26 @@ import {AlphaStack, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-interface PlaceholderProps {
-  label?: string;
-  height?: string;
-  width?: string;
-  childWidth?: string;
+function AlphaStackExample() {
+  return (
+    <AlphaStack>
+      <Placeholder width="320px" label="Stack child" />
+      <Placeholder width="320px" />
+      <Placeholder width="320px" />
+    </AlphaStack>
+  );
 }
 
-const Placeholder = ({label, height, width, childWidth}: PlaceholderProps) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  childWidth = 'auto',
+}) => {
   return (
     <div
       style={{
-        background: 'var(--surface-example-block)',
+        background: '#7B47F1',
         padding: '14px var(--p-space-2)',
         height: height ?? undefined,
         width: width ?? undefined,
@@ -35,15 +43,5 @@ const Placeholder = ({label, height, width, childWidth}: PlaceholderProps) => {
     </div>
   );
 };
-
-function AlphaStackExample() {
-  return (
-    <AlphaStack>
-      <Placeholder width="320px" label="Stack child" />
-      <Placeholder width="320px" />
-      <Placeholder width="320px" />
-    </AlphaStack>
-  );
-}
 
 export default withPolarisExample(AlphaStackExample);

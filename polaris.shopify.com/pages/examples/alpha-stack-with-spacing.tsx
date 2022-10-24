@@ -3,12 +3,19 @@ import {AlphaStack, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-interface SpacingBackgroundProps {
-  children: React.ReactNode;
-  width?: string;
+function AlphaStackWithSpacingExample() {
+  return (
+    <SpacingBackground width="320px">
+      <AlphaStack spacing="5">
+        <Placeholder width="320px" label="Stack child" />
+        <Placeholder width="320px" />
+        <Placeholder width="320px" />
+      </AlphaStack>
+    </SpacingBackground>
+  );
 }
 
-const SpacingBackground = ({children, width}: SpacingBackgroundProps) => {
+const SpacingBackground = ({children, width}) => {
   return (
     <div
       style={{
@@ -23,14 +30,12 @@ const SpacingBackground = ({children, width}: SpacingBackgroundProps) => {
   );
 };
 
-interface PlaceholderProps {
-  label?: string;
-  height?: string;
-  width?: string;
-  childWidth?: string;
-}
-
-const Placeholder = ({label, height, width, childWidth}: PlaceholderProps) => {
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  childWidth = 'auto',
+}) => {
   return (
     <div
       style={{
@@ -55,17 +60,5 @@ const Placeholder = ({label, height, width, childWidth}: PlaceholderProps) => {
     </div>
   );
 };
-
-function AlphaStackWithSpacingExample() {
-  return (
-    <SpacingBackground width="320px">
-      <AlphaStack spacing="5">
-        <Placeholder width="320px" label="Stack child" />
-        <Placeholder width="320px" />
-        <Placeholder width="320px" />
-      </AlphaStack>
-    </SpacingBackground>
-  );
-}
 
 export default withPolarisExample(AlphaStackWithSpacingExample);

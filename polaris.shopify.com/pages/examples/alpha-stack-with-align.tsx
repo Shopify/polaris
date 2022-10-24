@@ -3,21 +3,42 @@ import {AlphaStack, Box, Page, Inline, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-type Align = 'start' | 'end' | 'center';
-
-export interface PlaceholderProps {
-  label?: string;
-  height?: string;
-  width?: string;
-  childAlign?: Align;
+function AlphaStackWithAlignExample() {
+  return (
+    <Page>
+      <Box paddingBottom="20">
+        <AlphaStack align="start">
+          <Placeholder width="320px" label="Start" childAlign="start" />
+          <Placeholder width="320px" childAlign="start" />
+          <Placeholder width="320px" childAlign="start" />
+        </AlphaStack>
+      </Box>
+      <Box paddingBottom="20">
+        <AlphaStack align="center">
+          <AlphaStack>
+            <Placeholder width="320px" label="Center" childAlign="center" />
+            <Placeholder width="320px" childAlign="center" />
+            <Placeholder width="320px" childAlign="center" />
+          </AlphaStack>
+        </AlphaStack>
+      </Box>
+      <Box>
+        <AlphaStack align="end">
+          <Placeholder width="320px" label="End" childAlign="end" />
+          <Placeholder width="320px" childAlign="center" />
+          <Placeholder width="320px" childAlign="center" />
+        </AlphaStack>
+      </Box>
+    </Page>
+  );
 }
 
 const Placeholder = ({
-  label,
-  height,
-  width,
-  childAlign = 'start',
-}: PlaceholderProps) => {
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  childAlign,
+}) => {
   return (
     <div
       style={{
@@ -43,35 +64,5 @@ const Placeholder = ({
     </div>
   );
 };
-
-function AlphaStackWithAlignExample() {
-  return (
-    <Page>
-      <Box paddingBottom="20">
-        <AlphaStack align="start">
-          <Placeholder width="320px" label="Start" childAlign="start" />
-          <Placeholder width="320px" />
-          <Placeholder width="320px" />
-        </AlphaStack>
-      </Box>
-      <Box paddingBottom="20">
-        <AlphaStack align="center">
-          <AlphaStack>
-            <Placeholder width="320px" label="Center" childAlign="center" />
-            <Placeholder width="320px" />
-            <Placeholder width="320px" />
-          </AlphaStack>
-        </AlphaStack>
-      </Box>
-      <Box>
-        <AlphaStack align="end">
-          <Placeholder width="320px" label="End" childAlign="end" />
-          <Placeholder width="320px" />
-          <Placeholder width="320px" />
-        </AlphaStack>
-      </Box>
-    </Page>
-  );
-}
 
 export default withPolarisExample(AlphaStackWithAlignExample);
