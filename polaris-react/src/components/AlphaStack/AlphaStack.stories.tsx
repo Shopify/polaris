@@ -60,3 +60,14 @@ export function FullWidthChildren() {
     </AlphaStack>
   );
 }
+
+export function ResponsiveSpacing() {
+  return (
+    <AlphaStack spacing={{xs: '4', md: '10'}}>
+      <Badge>Paid</Badge>
+      <Badge>Processing</Badge>
+      <Badge>Fulfilled</Badge>
+      <Badge>Completed</Badge>
+    </AlphaStack>
+  );
+}
