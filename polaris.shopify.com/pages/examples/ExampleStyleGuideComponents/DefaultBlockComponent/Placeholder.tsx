@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, Inline} from '@shopify/polaris';
+import {Text} from '@shopify/polaris';
 
 export interface PlaceholderProps {
   label?: string;
@@ -17,7 +17,7 @@ export const Placeholder = ({
   return (
     <div
       style={{
-        background: '#7B47F1',
+        background: 'var(--surface-example-block)',
         padding: '14px 8px 14px 8px',
         height: height ? `${height}px` : '',
         width: width ? `${width}px` : '',

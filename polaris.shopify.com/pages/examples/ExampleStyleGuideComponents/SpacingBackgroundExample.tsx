@@ -13,7 +13,7 @@ export const SpacingBackground = ({
     <div
       style={{
         background:
-          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 10px)',
+          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 7px)',
         width: width ? `${width}px` : '100%',
         height: 'auto',
       }}
