@@ -10,7 +10,7 @@ export interface PlaceholderProps {
   childAlign?: Align;
 }
 
-export const Placeholder = ({
+const Placeholder = ({
   label,
   height,
   width,
@@ -20,9 +20,9 @@ export const Placeholder = ({
     <div
       style={{
         background: 'var(--surface-example-block)',
-        padding: '14px 8px 14px 8px',
-        height: height ? `${height}px` : '',
-        width: width ? `${width}px` : '',
+        padding: '14px var(--p-space-2)',
+        height: height ?? undefined,
+        width: width ?? undefined,
       }}
     >
       <Inline align={childAlign}>
@@ -41,3 +41,5 @@ export const Placeholder = ({
     </div>
   );
 };
+
+export default Placeholder;

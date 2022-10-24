@@ -8,19 +8,14 @@ export interface PlaceholderProps {
   childWidth?: string;
 }
 
-export const Placeholder = ({
-  label,
-  height,
-  width,
-  childWidth,
-}: PlaceholderProps) => {
+const Placeholder = ({label, height, width, childWidth}: PlaceholderProps) => {
   return (
     <div
       style={{
         background: 'var(--surface-example-block)',
-        padding: '14px 8px 14px 8px',
-        height: height ? `${height}px` : '',
-        width: width ? `${width}px` : '',
+        padding: '14px var(--p-space-2)',
+        height: height ?? undefined,
+        width: width ?? undefined,
       }}
     >
       <div
@@ -28,7 +23,7 @@ export const Placeholder = ({
           display: 'inline-block',
           background: 'rgba(255, 255, 255, 0.3)',
           color: '#FFFFFF',
-          width: childWidth ? `${childWidth}` : '',
+          width: childWidth ?? undefined,
         }}
       >
         <Text as="h2" variant="bodyMd" fontWeight="medium">
@@ -38,3 +33,5 @@ export const Placeholder = ({
     </div>
   );
 };
+
+export default Placeholder;
