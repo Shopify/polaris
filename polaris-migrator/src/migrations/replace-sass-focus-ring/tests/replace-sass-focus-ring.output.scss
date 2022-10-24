@@ -1,0 +1,17 @@
+@include focus-ring();
+
+.default-usage {
+  box-shadow: 0 0 0 calc(-1 * rem(1px)) var(--p-focused);
+  &:focus {
+    box-shadow: 0 0 0 rem(2px) var(--p-focused);
+    outline: rem(1px) solid transparent;
+  }
+}
+
+.withCustomBorderWidth {
+  box-shadow: 0 0 0 calc(-1 * (2px + rem(1px))) var(--p-focused);
+  &:focus {
+    box-shadow: 0 0 0 rem(2px) var(--p-focused);
+    outline: rem(1px) solid transparent;
+  }
+}

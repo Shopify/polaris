@@ -1,0 +1,15 @@
+@include focus-ring();
+
+.default-usage {
+  @include focus-ring();
+  &:focus {
+    @include focus-ring($style: 'focused');
+  }
+}
+
+.withCustomBorderWidth {
+  @include focus-ring($border-width: 2px);
+  &:focus {
+    @include focus-ring($border-width: 2px, $style: 'focused');
+  }
+}
