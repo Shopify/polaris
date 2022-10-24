@@ -2,8 +2,8 @@ import React from 'react';
 
 import {Box} from '../../../Box';
 import {Columns} from '../../../Columns';
+import {DisplayText} from '../../../DisplayText';
 import {Inline} from '../../../Inline';
-import {Text} from '../../../Text';
 import {CloseButton} from '../CloseButton';
 
 import styles from './Header.scss';
@@ -39,9 +39,12 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
       <Columns columns={{xs: '1fr auto'}}>
         <Inline alignY="center">
           <Box id={id}>
-            <Text variant="headingLg" as="h2" fontWeight="regular" breakWord>
-              {children}
-            </Text>
+            {/* Replace with <Text> once responsive styles supported */}
+            <div className={styles.Title}>
+              <DisplayText element="h2" size="small">
+                {children}
+              </DisplayText>
+            </div>
           </Box>
         </Inline>
         <CloseButton titleHidden={titleHidden} onClick={onClose} />
