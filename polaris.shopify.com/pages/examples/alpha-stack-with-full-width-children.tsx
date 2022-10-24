@@ -22,7 +22,7 @@ const Placeholder = ({
   return (
     <div
       style={{
-        background: 'var(--surface-example-block)',
+        background: '#7B47F1',
         padding: '14px var(--p-space-2)',
         height: height ?? undefined,
         width: width ?? undefined,
