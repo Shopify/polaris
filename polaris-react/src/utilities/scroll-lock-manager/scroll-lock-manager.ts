@@ -2,9 +2,16 @@ import {isServer} from '../target';
 
 export const SCROLL_LOCKING_ATTRIBUTE = 'data-lock-scrolling';
 
+const SCROLL_LOCKING_HIDDEN_ATTRIBUTE = 'data-lock-scrolling-hidden';
+
 const SCROLL_LOCKING_WRAPPER_ATTRIBUTE = 'data-lock-scrolling-wrapper';
 
 let scrollPosition = 0;
+
+function isScrollBarVisible() {
+  const {body} = document;
+  return body.scrollHeight > body.clientHeight;
+}
 
 export class ScrollLockManager {
   private scrollLocks = 0;
@@ -29,6 +36,7 @@ export class ScrollLockManager {
 
     if (scrollLocks === 0) {
       body.removeAttribute(SCROLL_LOCKING_ATTRIBUTE);
+      body.removeAttribute(SCROLL_LOCKING_HIDDEN_ATTRIBUTE);
       if (wrapper) {
         wrapper.removeAttribute(SCROLL_LOCKING_WRAPPER_ATTRIBUTE);
       }
@@ -37,6 +45,10 @@ export class ScrollLockManager {
     } else if (scrollLocks > 0 && !this.locked) {
       scrollPosition = window.pageYOffset;
       body.setAttribute(SCROLL_LOCKING_ATTRIBUTE, '');
+
+      if (!isScrollBarVisible()) {
+        body.setAttribute(SCROLL_LOCKING_HIDDEN_ATTRIBUTE, '');
+      }
 
       if (wrapper) {
         wrapper.setAttribute(SCROLL_LOCKING_WRAPPER_ATTRIBUTE, '');

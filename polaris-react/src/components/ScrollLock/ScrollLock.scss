@@ -2,6 +2,10 @@
   overflow-y: scroll;
   margin: 0;
 
+  &[data-lock-scrolling-hidden] {
+    overflow-y: hidden;
+  }
+
   // stylelint-disable selector-max-attribute
   [data-lock-scrolling-wrapper] {
     overflow: hidden;
