@@ -7,6 +7,8 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {scrollable} from '../shared';
+import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 
 import {ScrollTo} from './components';
 import {ScrollableContext} from './context';
@@ -49,17 +51,18 @@ export function Scrollable({
 }: ScrollableProps) {
   const [topShadow, setTopShadow] = useState(false);
   const [bottomShadow, setBottomShadow] = useState(false);
-  const stickyManager = useRef(new StickyManager());
+  const stickyManager = useLazyRef(() => new StickyManager());
   const scrollArea = useRef<HTMLDivElement>(null);
   const scrollTo = useCallback((scrollY: number) => {
-    scrollArea.current?.scrollTo({top: scrollY, behavior: 'smooth'});
+    const behavior = prefersReducedMotion() ? 'auto' : 'smooth';
+    scrollArea.current?.scrollTo({top: scrollY, behavior});
   }, []);
 
-  useEffect(() => {
+  useComponentDidMount(() => {
     if (hint) {
       performScrollHint(scrollArea.current);
     }
-  }, [hint]);
+  });
 
   useEffect(() => {
     const currentScrollArea = scrollArea.current;
@@ -70,11 +73,17 @@ export function Scrollable({
 
     const handleScroll = () => {
       const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
-
-      setBottomShadow(
-        Boolean(shadow && !(scrollTop + clientHeight >= scrollHeight)),
+      const isBelowTopOfScroll = Boolean(scrollTop > 0);
+      const isAtBottomOfScroll = Boolean(
+        scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
       );
-      setTopShadow(Boolean(shadow && scrollTop > 0));
+
+      setTopShadow(isBelowTopOfScroll);
+      setBottomShadow(!isAtBottomOfScroll);
+
+      if (isAtBottomOfScroll && onScrolledToBottom) {
+        onScrolledToBottom();
+      }
     };
 
     const handleResize = debounce(handleScroll, 50, {trailing: true});
@@ -89,15 +98,15 @@ export function Scrollable({
       currentScrollArea.removeEventListener('scroll', handleScroll);
       globalThis.removeEventListener('resize', handleResize);
     };
-  }, [shadow]);
+  }, [stickyManager, onScrolledToBottom]);
 
   const finalClassName = classNames(
     className,
     styles.Scrollable,
     vertical && styles.vertical,
     horizontal && styles.horizontal,
-    topShadow && styles.hasTopShadow,
-    bottomShadow && styles.hasBottomShadow,
+    shadow && topShadow && styles.hasTopShadow,
+    shadow && bottomShadow && styles.hasBottomShadow,
   );
 
   return (
