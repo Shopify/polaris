@@ -1,8 +1,48 @@
 import React from 'react';
-import {AlphaStack, Box, Page, Inline} from '@shopify/polaris';
-import Placeholder from './ExampleStyleGuideComponents/AlignBlockComponent/Placeholder';
+import {AlphaStack, Box, Page, Inline, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+
+type Align = 'start' | 'end' | 'center';
+
+export interface PlaceholderProps {
+  label?: string;
+  height?: string;
+  width?: string;
+  childAlign?: Align;
+}
+
+const Placeholder = ({
+  label,
+  height,
+  width,
+  childAlign = 'start',
+}: PlaceholderProps) => {
+  return (
+    <div
+      style={{
+        background: 'var(--surface-example-block)',
+        padding: '14px var(--p-space-2)',
+        height: height ?? undefined,
+        width: width ?? undefined,
+      }}
+    >
+      <Inline align={childAlign}>
+        <div
+          style={{
+            display: 'inline-block',
+            background: 'rgba(255, 255, 255, 0.3)',
+            color: '#FFFFFF',
+          }}
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            {label}
+          </Text>
+        </div>
+      </Inline>
+    </div>
+  );
+};
 
 function AlphaStackWithAlignExample() {
   return (
