@@ -489,9 +489,9 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      indexTable.find(BulkActions)!.trigger('onToggleAll');
+      indexTable.find(SelectAllActions)!.trigger('onToggleAll');
 
-      expect(indexTable).toContainReactComponent(BulkActions, {
+      expect(indexTable).toContainReactComponent(SelectAllActions, {
         smallScreen: expect.any(Boolean),
       });
     });
@@ -515,9 +515,9 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      indexTable.find(BulkActions)!.trigger('onToggleAll');
+      indexTable.find(SelectAllActions)!.trigger('onToggleAll');
 
-      expect(indexTable).toContainReactComponent(BulkActions, {
+      expect(indexTable).toContainReactComponent(SelectAllActions, {
         smallScreen: false,
       });
 
@@ -528,7 +528,7 @@ describe('<IndexTable>', () => {
         window.dispatchEvent(new Event('resize'));
       });
 
-      expect(indexTable).toContainReactComponent(BulkActions, {
+      expect(indexTable).toContainReactComponent(SelectAllActions, {
         smallScreen: true,
       });
     });
