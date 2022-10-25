@@ -1,5 +1,6 @@
 ---
-name: Page actions
+title: Page actions
+description: Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 category: Structure
 keywords:
   - PageActions
@@ -13,23 +14,17 @@ keywords:
   - delete actions
 examples:
   - fileName: page-actions-default.tsx
-    title: Default page actions
-    description: >-
-      Used on a resource page (such as an individual order or product page) to
-      let merchants take key actions at the bottom of the page. Usually, the
-      primary action is Save and the secondary action is Delete.
+    title: Default
+    description: Used on a resource page (such as an individual order or product page) to let merchants take key actions at the bottom of the page. Usually, the primary action is Save and the secondary action is Delete.
   - fileName: page-actions-primary-action-only.tsx
     title: Primary action only
     description: Not all page actions require a secondary action.
+  - fileName: page-actions-with-custom-primary-action.tsx
+    title: With custom primary action
+    description: Use to create a custom primary action.
   - fileName: page-actions-with-custom-secondary-action.tsx
-    title: Page actions with custom secondary action
+    title: With custom secondary action
     description: Use to create a custom secondary action.
----
-
-# Page actions
-
-Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
-
 ---
 
 ## Best practices
@@ -49,7 +44,7 @@ Buttons should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -65,7 +60,7 @@ Buttons should be:
 
 - Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -81,7 +76,7 @@ Buttons should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

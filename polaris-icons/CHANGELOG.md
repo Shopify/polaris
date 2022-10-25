@@ -1,5 +1,103 @@
 # Changelog
 
+## 6.4.0
+
+### Minor Changes
+
+- [#7292](https://github.com/Shopify/polaris/pull/7292) [`a7d9cad7a`](https://github.com/Shopify/polaris/commit/a7d9cad7aa24ea251e42be919cbfcae16676587f) Thanks [@clarkjennings](https://github.com/clarkjennings)! - [#7292](https://github.com/Shopify/polaris/pull/7292) - Add a new icon `OrganizationMajor`
+
+## 6.3.0
+
+### Minor Changes
+
+- [#7184](https://github.com/Shopify/polaris/pull/7184) [`17c4fe2ac`](https://github.com/Shopify/polaris/commit/17c4fe2acc0bcd493d0febec06102173cc759aff) Thanks [@leileu](https://github.com/leileu)! - Added CashDollarMinor, CodeMinor, EyeDropperMinor, MeasurementMinor, and MoneyMinor.
+
+## 6.2.0
+
+### Minor Changes
+
+- [#7128](https://github.com/Shopify/polaris/pull/7128) [`9d6497970`](https://github.com/Shopify/polaris/commit/9d64979708a2e961a537e5b152ad028e6aa52795) Thanks [@james-a-c](https://github.com/james-a-c)! - Add new icon `FilterMinor`
+
+## 6.1.0
+
+### Minor Changes
+
+- [#7105](https://github.com/Shopify/polaris/pull/7105) [`811af5907`](https://github.com/Shopify/polaris/commit/811af590780f4546b4add345205382f87b429569) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Add dynamic source icons
+
+## 6.0.0
+
+### Major Changes
+
+- [#7012](https://github.com/Shopify/polaris/pull/7012) [`bd00ef4ed`](https://github.com/Shopify/polaris/commit/bd00ef4ed5307aa07bb7fbd00ff4328179b859e1) Thanks [@leileu](https://github.com/leileu)! - Adding Metafields icon to polaris
+
+### Minor Changes
+
+- [#7013](https://github.com/Shopify/polaris/pull/7013) [`1e0645f33`](https://github.com/Shopify/polaris/commit/1e0645f334e16cff5051f321a822324dd70e16c1) Thanks [@jpmarra](https://github.com/jpmarra)! - Added IdentityCard icon
+
+* [#7028](https://github.com/Shopify/polaris/pull/7028) [`635bcfeb7`](https://github.com/Shopify/polaris/commit/635bcfeb710504847f46f10c68722bbc7e452bde) Thanks [@joelzwarrington](https://github.com/joelzwarrington)! - add vertical viewport icon variations
+
+## 5.4.0
+
+### Minor Changes
+
+- [#6928](https://github.com/Shopify/polaris/pull/6928) [`0e7b06524`](https://github.com/Shopify/polaris/commit/0e7b065240d09d5b349f634a96d21c7be0fb117e) Thanks [@joelzwarrington](https://github.com/joelzwarrington)! - - [#6928](https://github.com/Shopify/polaris/pull/6928) Add fulfillment icons (FulfillmentFulfilledMajor, FulfillmentOnHoldMajor)
+
+### Patch Changes
+
+- [#6942](https://github.com/Shopify/polaris/pull/6942) [`d676abda9`](https://github.com/Shopify/polaris/commit/d676abda906ca13411a469aa211eb1a0ff363f55) Thanks [@samrose3](https://github.com/samrose3)! - Fix casing of the the "Active status" icon in the icon metadata
+
+* [#6881](https://github.com/Shopify/polaris/pull/6881) [`1f8950cdc`](https://github.com/Shopify/polaris/commit/1f8950cdceb391a2ac899cad8648c1e16aa512ee) Thanks [@alex-page](https://github.com/alex-page)! - Replaced glob with globby
+
+## 5.3.0
+
+### Minor Changes
+
+- [#6874](https://github.com/Shopify/polaris/pull/6874) [`f87ce09c0`](https://github.com/Shopify/polaris/commit/f87ce09c0f85046f83426f46f70c9ecac4976eca) Thanks [@alex-page](https://github.com/alex-page)! - Support esm style imports for metadata
+
+* [#6876](https://github.com/Shopify/polaris/pull/6876) [`214678021`](https://github.com/Shopify/polaris/commit/2146780213886bb633fd4cfc6bb1c89d90ccfe10) Thanks [@anthonymenecola](https://github.com/anthonymenecola)! - minor visual updates to icons with product tag visual and addition of the ProductCostMajor icon
+
+### Patch Changes
+
+- [#6866](https://github.com/Shopify/polaris/pull/6866) [`dcc7cbc26`](https://github.com/Shopify/polaris/commit/dcc7cbc2633da4f4a9d5aff71a2031ebcf8c7491) Thanks [@alex-page](https://github.com/alex-page)! - Run yarn format across monorepo, remove custom prettier config from polaris.shopify.com
+
+## 5.2.0
+
+### Minor Changes
+
+- [#6690](https://github.com/Shopify/polaris/pull/6690) [`11816f2c5`](https://github.com/Shopify/polaris/commit/11816f2c526c98ef0f1839ce233baeaf9173c4fb) Thanks [@vladabee](https://github.com/vladabee)! - Making the descriptions and use cases for diamond and circle alert icons clearer.
+
+## 5.1.0
+
+### Minor Changes
+
+- [#6649](https://github.com/Shopify/polaris/pull/6649) [`a6a972f7f`](https://github.com/Shopify/polaris/commit/a6a972f7f186bbc03c60f925755056a9de1b056f) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Added PlanMajor and PlanMinor icons, which are for use on the Settings sheet for Plan
+
+* [#6514](https://github.com/Shopify/polaris/pull/6514) [`327a73381`](https://github.com/Shopify/polaris/commit/327a73381ffb9a3f0ac3de4b76632d08070b8720) Thanks [@james-a-c](https://github.com/james-a-c)! - Add new icon `TemplateMinor`
+
+- [#6457](https://github.com/Shopify/polaris/pull/6457) [`b541f5449`](https://github.com/Shopify/polaris/commit/b541f54498462ce513b9903dfcfcb966f43e0038) Thanks [@brandonlawshop](https://github.com/brandonlawshop)! - Added `StatusActiveMajor` icon
+
+### Patch Changes
+
+- [#6617](https://github.com/Shopify/polaris/pull/6617) [`305368d57`](https://github.com/Shopify/polaris/commit/305368d57745ab532063cb7370730f6e87e00632) Thanks [@alex-page](https://github.com/alex-page)! - Update component links so they no longer hit the redirect
+
+* [#6633](https://github.com/Shopify/polaris/pull/6633) [`4c0301bbb`](https://github.com/Shopify/polaris/commit/4c0301bbbb0612afaa5111fc579f52175c8b3ada) Thanks [@sambostock](https://github.com/sambostock)! - Update GitHub repo references in package.json
+
+## 5.0.0
+
+### Major Changes
+
+- [#6550](https://github.com/Shopify/polaris/pull/6550) [`dcbf307b4`](https://github.com/Shopify/polaris/commit/dcbf307b4f9521d38cb6fb008d4daa4de16b7c3a) Thanks [@ErickTamayo](https://github.com/ErickTamayo)! - Replaced SortAscendingMajor and SortDescendingMajor icons. Changed sorting icons in the Data Table
+
+### Minor Changes
+
+- [`54ba0f716`](https://github.com/Shopify/polaris/commit/54ba0f716088ae36e7fae08d2768d2541b9107b6) Thanks [@alex-page](https://github.com/alex-page)! - Added id to the metadata value to reduce need to transform objects
+
+* [#6484](https://github.com/Shopify/polaris/pull/6484) [`9269e5ee6`](https://github.com/Shopify/polaris/commit/9269e5ee62171cf7b8ced1b9edef68da3bcd9dd2) Thanks [@martenbjork](https://github.com/martenbjork)! - Change icon names to start with an uppercase
+
+### Patch Changes
+
+- [#6591](https://github.com/Shopify/polaris/pull/6591) [`9426d0108`](https://github.com/Shopify/polaris/commit/9426d01088930c761a4ab14c5a94008f129e70d0) Thanks [@qw-in](https://github.com/qw-in)! - Update polaris icons website url
+
 ## 4.23.0
 
 ### Minor Changes

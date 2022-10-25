@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlusMinor, ExternalMinor} from '@shopify/polaris-icons';
+import {PlusMinor} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
@@ -13,7 +13,6 @@ import {NavigationContext} from '../../../context';
 import {Item, ItemProps} from '../Item';
 import {Secondary} from '../components';
 import {Key} from '../../../../../types';
-import en from '../../../../../../locales/en.json';
 import {Tooltip} from '../../../../Tooltip';
 
 describe('<Nav.Item />', () => {
@@ -137,44 +136,9 @@ describe('<Nav.Item />', () => {
       expect(item).toContainReactComponentTimes(Badge, 1);
       expect(item.find(Badge)).toContainReactText('New');
     });
-
-    it('renders an external icon if the prop is provided with an element', () => {
-      const item = mountWithNavigationProvider(
-        <Item label="some label" url="foo" external disabled={false} />,
-        {
-          location: 'bar',
-        },
-      );
-
-      expect(item).toContainReactComponent(Icon, {
-        accessibilityLabel: en.Polaris.Common.newWindowAccessibilityHint,
-        source: ExternalMinor,
-      });
-    });
   });
 
   describe('with secondaryAction', () => {
-    it('renders an external icon', () => {
-      const item = mountWithNavigationProvider(
-        <Item
-          label="some label"
-          url="foo"
-          secondaryAction={{
-            url: 'bar',
-            icon: PlusMinor,
-            accessibilityLabel: 'label',
-          }}
-        />,
-        {
-          location: 'bar',
-        },
-      );
-
-      expect(item).toContainReactComponent(Icon, {
-        source: PlusMinor,
-      });
-    });
-
     it('renders an UnstyledLink with props delegated', () => {
       const item = mountWithNavigationProvider(
         <Item
@@ -708,7 +672,7 @@ describe('<Nav.Item />', () => {
         <Item label="some label" disabled={false} />,
       );
 
-      const event: KeyboardEventInit & {keyCode: Key} = {
+      const event = {
         keyCode: Key.Tab,
       };
 
@@ -728,7 +692,7 @@ describe('<Nav.Item />', () => {
         <Item label="some label" disabled={false} url="https://shopify.com" />,
       );
 
-      const event: KeyboardEventInit & {keyCode: Key} = {
+      const event = {
         keyCode: Key.Tab,
       };
 

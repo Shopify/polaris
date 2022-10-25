@@ -1,0 +1,18 @@
+name: Dynamic Source
+set: minor
+description: Used to represent a dynamic source
+keywords:
+  - dynamic source
+  - data source
+  - dynamic
+  - data
+  - datasource
+  - dynamicsource
+  - db
+  - database
+authors:
+  - Russell Baylis
+version: 1
+date_added: 2022-09-06
+date_modified: 2022-09-06
+exclusive_use:

@@ -1,38 +1,59 @@
-import React from "react";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import useDarkMode from "use-dark-mode";
+import {useTOC} from '../../utils/hooks';
+import {className} from '../../utils/various';
+import Longform from '../Longform';
+import Container from '../Container';
 
-import Header from "../Header";
-
-import shopifyLogo from "../../../public/shopify-logo.svg";
-import styles from "./Page.module.scss";
-import SiteLaunchBanner from "../SiteLaunchBanner";
+import styles from './Page.module.scss';
+import TOC from '../TOC';
+import Breadcrumbs from '../Breadcrumbs';
+import {useRouter} from 'next/router';
+import Link from 'next/link';
 
 interface Props {
+  title?: string;
+  showTOC?: boolean;
+  editPageLinkPath?: string;
   children: React.ReactNode;
 }
 
-function Page({ children }: Props) {
-  const router = useRouter();
-  const darkMode = useDarkMode(false);
+function Layout({title, showTOC = true, editPageLinkPath, children}: Props) {
+  const [tocItems] = useTOC(children);
+  const {asPath} = useRouter();
 
-  const isPolaris = router.asPath.startsWith("/examples");
+  const githubIssueSubject = `[polaris.shopify.com] Feedback (on ${asPath})`;
+  const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
+    githubIssueSubject,
+  )}&amp;labels=polaris.shopify.com`;
+  const editOnGithubUrl = editPageLinkPath
+    ? `https://github.com/Shopify/polaris/tree/main${editPageLinkPath}`
+    : '';
 
   return (
-    <div style={{ background: isPolaris ? "#fafafa" : "unset" }}>
-      {!isPolaris && <Header currentPath={router.asPath} darkMode={darkMode} />}
-
-      {children}
-
-      {!isPolaris && (
-        <div className={styles.Footer}>
-          <Image src={shopifyLogo} width={36} height={36} alt="Shopify logo" />
-          <SiteLaunchBanner />
+    <Container className={className(styles.Page, showTOC && styles.showTOC)}>
+      <article className={styles.Post} id="main">
+        <Breadcrumbs />
+        {title && (
+          <Longform>
+            <h1>{title}</h1>
+          </Longform>
+        )}
+        {children}
+        <footer className={styles.Footer}>
+          <p>
+            {editOnGithubUrl && (
+              <Link href={editOnGithubUrl}>Edit this page</Link>
+            )}
+            <Link href={feedbackUrl}>Leave feedback</Link>
+          </p>
+        </footer>
+      </article>
+      {showTOC && (
+        <div className={styles.TOCWrapper}>
+          <TOC items={tocItems} />
         </div>
       )}
-    </div>
+    </Container>
   );
 }
 
-export default Page;
+export default Layout;

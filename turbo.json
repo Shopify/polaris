@@ -3,7 +3,7 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", ".next/**", "build/**"],
+      "outputs": ["dist/**", ".next/**", "build/**", ".cache/**"],
       "dependsOn": ["^build"]
     },
     "test": {
@@ -17,6 +17,12 @@
       "cache": false
     },
     "clean": {
+      "cache": false
+    },
+    "preversion": {
+      "cache": false
+    },
+    "gen-assets": {
       "cache": false
     }
   }

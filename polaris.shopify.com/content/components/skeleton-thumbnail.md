@@ -1,5 +1,6 @@
 ---
-name: Skeleton thumbnail
+title: Skeleton thumbnail
+description: Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
 category: Feedback indicators
 releasedIn: 3.7.2
 keywords:
@@ -8,24 +9,18 @@ keywords:
   - loading
   - page
 examples:
-  - fileName: skeleton-thumbnail-medium-thumbnail.tsx
-    title: Medium thumbnail
+  - fileName: skeleton-thumbnail-medium.tsx
+    title: Medium
     description: Use this component to represent medium thumbnails.
-  - fileName: skeleton-thumbnail-large-thumbnail.tsx
-    title: Large thumbnail
+  - fileName: skeleton-thumbnail-large.tsx
+    title: Large
     description: Use this component to represent large thumbnails.
-  - fileName: skeleton-thumbnail-small-thumbnail.tsx
-    title: Small thumbnail
+  - fileName: skeleton-thumbnail-small.tsx
+    title: Small
     description: Use this component to represent small thumbnails.
-  - fileName: skeleton-thumbnail-extra-small-thumbnail.tsx
-    title: Extra small thumbnail
+  - fileName: skeleton-thumbnail-extra-small.tsx
+    title: Extra small
     description: Use this component to represent extra small thumbnails.
----
-
-# Skeleton image
-
-Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
-
 ---
 
 ## Best practices

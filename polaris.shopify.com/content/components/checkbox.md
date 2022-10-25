@@ -1,10 +1,7 @@
 ---
-name: Checkbox
+title: Checkbox
+description: Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - accept
   - decline
@@ -18,34 +15,20 @@ keywords:
   - form selections
   - multi-choice lists
 examples:
-  - fileName: checkboxes-default.tsx
-    title: Default checkboxes
-    description: >-
-      Use in forms to toggle the state of something on or off. Default
-      checkboxes can appear in two states: selected and disabled, or
-      unselected.
----
-
-# Checkbox
-
-Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
-
+  - fileName: checkbox-default.tsx
+    title: Default
+    description: Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
 ---
 
 ## Best practices
 
 Checkboxes should:
 
-- Work independently from each other: selecting one checkbox shouldn’t change
-  the selection status of another checkbox in the list. The exception is when a
-  checkbox is used to make a bulk selection of multiple items.
-- Be framed positively: for example, `Turn on notifications` instead of
-  `Turn off notifications`
+- Work independently from each other: selecting one checkbox shouldn’t change the selection status of another checkbox in the list. The exception is when a checkbox is used to make a bulk selection of multiple items.
+- Be framed positively: for example, `Turn on notifications` instead of `Turn off notifications`
 - Always have a label when being used to toggling a setting on or off
-- Be listed according to a logical order, whether it’s alphabetical, numerical,
-  time-based, or some other clear system.
-- Link to more information or include a subtitle as required to provide more
-  explanation. Don’t rely on tooltips to explain a checkbox.
+- Be listed according to a logical order, whether it’s alphabetical, numerical, time-based, or some other clear system.
+- Link to more information or include a subtitle as required to provide more explanation. Don’t rely on tooltips to explain a checkbox.
 
 ---
 
@@ -57,7 +40,7 @@ Lists that use checkboxes should:
 
 - Start with a capital letter
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -75,7 +58,7 @@ Lists that use checkboxes should:
 
 - Not use commas or semicolons at the end of each line
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -91,10 +74,9 @@ Lists that use checkboxes should:
 
 <!-- end -->
 
-- In the rare case where the checkbox is asking merchants to agree to terms
-  or service, use the first person
+- In the rare case where the checkbox is asking merchants to agree to terms or service, use the first person
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
@@ -118,26 +100,6 @@ You agree to the Terms of Service
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Screen readers convey the state of the checkbox automatically.
 
 - Use the `disabled` prop to apply the HTML `disabled` attribute to the checkbox `<input>`. This prevents merchants from being able to interact with the checkbox, and conveys its inactive state to assistive technologies.
@@ -155,5 +117,3 @@ Screen readers convey the state of the checkbox automatically.
 
 - Move focus to each checkbox using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - To interact with the checkbox when it has keyboard focus, press the <kbd>space</kbd> key
-
-<!-- /content-for -->

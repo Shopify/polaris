@@ -26,6 +26,10 @@
   &::after {
     @include track-dashed;
   }
+
+  @media #{$p-breakpoints-sm-down} {
+    height: 44px;
+  }
 }
 
 .disabled {

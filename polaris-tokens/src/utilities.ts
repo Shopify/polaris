@@ -1,6 +1,9 @@
-import type {Entry, Exact} from './types';
-import type {Tokens, TokenGroup} from './tokens';
-import type {breakpoints as breakpointsTokenGroup} from './token-groups/breakpoints';
+import type {Entry, Exact, MetadataGroup, Tokens, TokenGroup} from './types';
+import type {
+  breakpoints as metaBreakpointsTokenGroup,
+  BreakpointsTokenGroup,
+  BreakpointsTokenName,
+} from './token-groups/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -70,14 +73,14 @@ export function toRem(value = '') {
   }
 }
 
-function rem(value: string) {
+export function rem(value: string) {
   return value.replace(
     new RegExp(`${DIGIT_REGEX.source}(${UNIT_PX})`, 'g'),
     (px: string) => toRem(px) ?? px,
   );
 }
 
-export function tokensToRems<T extends Exact<TokenGroup, T>>(tokenGroup: T) {
+export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
   return Object.fromEntries(
     Object.entries(tokenGroup).map(([token, properties]) => [
       token,
@@ -110,30 +113,26 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  * Result: ['--p-background', '--p-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
-  const {colorSchemes, ...restTokenGroups} = tokens;
-  const customPropertyNames = [
-    ...Object.keys(colorSchemes.light).map((token) => createVar(token)),
-    ...Object.entries(restTokenGroups)
-      .map(([_, tokenGroup]: [string, TokenGroup]) =>
-        Object.keys(tokenGroup).map((token) => createVar(token)),
-      )
-      .flat(),
-  ];
-
-  return customPropertyNames;
+  return Object.entries(tokens)
+    .map(([_, tokenGroup]: [string, TokenGroup]) =>
+      Object.keys(tokenGroup).map((token) => createVar(token)),
+    )
+    .flat();
 }
 
-export type BreakpointsTokenGroup = typeof breakpointsTokenGroup;
+export function removeMetadata<T extends Exact<MetadataGroup, T>>(
+  tokenGroup: T,
+) {
+  return Object.fromEntries(
+    Object.entries(tokenGroup).map((entry): Entry<TokenGroup> => {
+      const [tokenName, {value}] = entry as Entry<MetadataGroup>;
 
-export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
+      return [tokenName, value];
+    }),
+  ) as TokenGroup<T>;
+}
 
-/**
- * Alias extracted from each Polaris `breakpoints` token name.
- *
- * @example 'xs' | 'sm' | 'md' | 'lg' | 'xl'
- */
-export type BreakpointsAlias =
-  BreakpointsTokenName extends `${string}-${infer Alias}` ? Alias : never;
+export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;
 
 /**
  * Alias direction used for composing Polaris `breakpoints` utilities.
@@ -164,7 +163,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
         entry,
         index,
       ): [BreakpointsTokenName, BreakpointsAliasDirectionMediaConditions] => {
-        const [breakpointsTokenName, {value: breakpoint}] =
+        const [breakpointsTokenName, breakpoint] =
           entry as Entry<BreakpointsTokenGroup>;
 
         const upMediaCondition = getUpMediaCondition(breakpoint);
@@ -173,8 +172,7 @@ export function getMediaConditions(breakpoints: BreakpointsTokenGroup) {
           index === lastBreakpointIndex
             ? upMediaCondition
             : `${upMediaCondition} and ${getDownMediaCondition(
-                // Next breakpoint
-                breakpointEntries[index + 1][1].value,
+                breakpointEntries[index + 1][1],
               )}`;
 
         return [
@@ -198,11 +196,19 @@ function getUpMediaCondition(breakpoint: string) {
 }
 
 /**
- * Down media condition breakpoints are being subtracted by 0.05px to prevent
+ * Down media condition breakpoints are being subtracted by 0.04px to prevent
  * them from overwriting up media queries. We experimented with multiple offsets
- * and felt that 0.05px would be the safest across different pixel densities.
+ * and felt that 0.04px would be the safest across different pixel densities,
+ * while being representable in ems with 4 decimal places of precision.
  */
 function getDownMediaCondition(breakpoint: string) {
-  const offsetBreakpoint = parseFloat(toPx(breakpoint) ?? '') - 0.05;
+  const offsetBreakpoint = parseFloat(toPx(breakpoint) ?? '') - 0.04;
   return `(max-width: ${toEm(`${offsetBreakpoint}px`)})`;
+}
+
+export function isKeyOf<T extends {[key: string]: any}>(
+  obj: T,
+  key: PropertyKey | undefined,
+): key is keyof T {
+  return Object.keys(obj).includes(key as string);
 }

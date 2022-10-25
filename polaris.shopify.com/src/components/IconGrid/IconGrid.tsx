@@ -1,71 +1,63 @@
-import Image from "../Image";
-import { className } from "../../utils/various";
-import Tooltip from "../Tooltip";
-const importedSvgs = require.context(
-  "../../../../polaris-icons/icons",
-  true,
-  /\.svg$/
-);
-import styles from "./IconGrid.module.scss";
-import { Icon, SearchResultItem } from "../../types";
+import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
+import {className} from '../../utils/various';
+import styles from './IconGrid.module.scss';
+import type {Icon as IconType} from '@shopify/polaris-icons/metadata';
+import Link from 'next/link';
+import Icon from '../Icon';
+import * as polarisIcons from '@shopify/polaris-icons';
+import SearchResultHighlight from '../SearchResultHighlight';
 
 interface IconGridProps {
+  title?: string;
   children: React.ReactNode;
 }
 
-function IconGrid({ children }: IconGridProps) {
-  return <ul className={styles.IconGrid}>{children}</ul>;
-}
-
-interface IconGridItemProps extends SearchResultItem {
-  icon: Icon;
-  onClick: (iconName: string) => void;
-  isSelected?: boolean;
-}
-
-function IconGridItem({
-  icon,
-  onClick,
-  isSelected,
-  searchResultData,
-}: IconGridItemProps) {
+function IconGrid({title, children}: IconGridProps) {
   return (
-    <li
-      key={`${icon.name}+${icon.set}`}
-      className={className(
-        styles.Icon,
-        searchResultData?.isHighlighted && styles.isHighlighted,
-        isSelected && styles.isSelected
-      )}
-      {...searchResultData?.itemAttributes}
-      id={icon.fileName}
-    >
-      <Tooltip
-        ariaLabel={icon.description}
-        renderContent={() => (
-          <div>
-            <p>
-              {icon.description === "N/A" ? "No description" : icon.description}
-            </p>
-          </div>
-        )}
+    <>
+      {title ? <h2 className={styles.SectionHeading}>{title}</h2> : null}
+      <div className={styles.IconGrid}>
+        <ul className={styles.IconGridInner}>{children}</ul>
+      </div>
+    </>
+  );
+}
+
+interface IconGridItemProps {
+  icon: IconType;
+  query?: string;
+  activeIcon?: string;
+}
+
+function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
+  const {id, name} = icon;
+  const searchAttributes = useGlobalSearchResult();
+
+  return (
+    <li key={id}>
+      <Link
+        href={{
+          pathname: '/icons',
+          query: {
+            icon: id,
+            ...(query === '' ? {} : {q: query}),
+          },
+        }}
+        scroll={false}
       >
-        <button
-          onClick={() => onClick(icon.name)}
-          tabIndex={searchResultData?.tabIndex}
+        <a
+          className={className(
+            styles.Icon,
+            activeIcon === id && styles.isSelected,
+          )}
+          id={icon.id}
+          {...searchAttributes}
         >
-          <div className={styles.SVGWrapper}>
-            <Image
-              src={importedSvgs(`./${icon.fileName}.svg`)}
-              alt={icon.description}
-              width={20}
-              height={20}
-              fadeIn={false}
-            />
-          </div>
-          <span>{icon.name}</span>
-        </button>
-      </Tooltip>
+          <SearchResultHighlight />
+          <Icon source={(polarisIcons as any)[id]} />
+          <p>{name}</p>
+        </a>
+      </Link>
     </li>
   );
 }

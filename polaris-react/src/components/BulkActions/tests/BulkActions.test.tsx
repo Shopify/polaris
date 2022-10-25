@@ -131,7 +131,7 @@ describe('<BulkActions />', () => {
       );
 
       expect(bulkActionsElement).toContainReactComponentTimes('button', 2, {
-        disabled: true,
+        'aria-disabled': true,
       });
     });
   });

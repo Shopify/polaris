@@ -32,7 +32,6 @@
       "checkbox": "확인란",
       "undo": "실행 취소",
       "cancel": "취소",
-      "newWindowAccessibilityHint": "(새 창에서 열림)",
       "clear": "지우기",
       "close": "닫기",
       "submit": "제출",
@@ -284,7 +283,7 @@
       "selected": "{selectedItemsCount}개 선택됨",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} 선택 취소",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} 선택",
-      "a11yCheckboxDeselectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택 취소",
+      "a11yCheckboxDeselectAllMultiple": "{itemsLength}개의 모든 {resourceNamePlural} 선택 취소",
       "a11yCheckboxSelectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택"
     },
     "IndexTable": {
@@ -297,7 +296,8 @@
       "undo": "실행 취소",
       "selectAllItems": "길이가 {itemsLength} 이상인 모든 {resourceNamePlural} 선택",
       "selectItem": "{resourceName} 선택",
-      "selectButtonText": "선택"
+      "selectButtonText": "선택",
+      "sortAccessibilityLabel": "{direction} 정렬 기준"
     },
     "Page": {
       "Header": {

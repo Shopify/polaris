@@ -1,19 +1,16 @@
 const path = require('path');
 const fs = require('fs');
 
-const {semverRegExp, readmes} = require('../scripts/utilities');
+const {semverRegExp} = require('../scripts/utilities');
+
+const readmePath = path.resolve(__dirname, '../README.md');
 
 describe('readme-update-version', () => {
-  it('matches 4 semver numbers in READMEs', () => {
-    const occurrences = readmes.reduce((accumulator, readmePath) => {
-      const readme = fs.readFileSync(
-        path.join(__dirname, '..', readmePath),
-        'utf8',
-      );
-      return accumulator + (readme.match(semverRegExp) || []).length;
-    }, 0);
+  it('matches 2 semver numbers in README.md', () => {
+    const readme = fs.readFileSync(readmePath, 'utf8');
+    const occurrences = (readme.match(semverRegExp) || []).length;
 
-    expect(occurrences).toBe(4);
+    expect(occurrences).toBe(2);
   });
 
   it('semverRegExp matches a variety of valid semver numbers', () => {

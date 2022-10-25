@@ -1,0 +1,46 @@
+@import '../../styles/common';
+
+.AlphaStack {
+  --pc-stack-spacing-xs: var(--p-space-4);
+  --pc-stack-spacing-sm: var(--pc-stack-spacing-xs);
+  --pc-stack-spacing-md: var(--pc-stack-spacing-sm);
+  --pc-stack-spacing-lg: var(--pc-stack-spacing-md);
+  --pc-stack-spacing-xl: var(--pc-stack-spacing-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--pc-stack-align);
+  gap: var(--pc-stack-spacing-xs);
+
+  @media #{$p-breakpoints-sm-up} {
+    gap: var(--pc-stack-spacing-sm);
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    gap: var(--pc-stack-spacing-md);
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    gap: var(--pc-stack-spacing-lg);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    gap: var(--pc-stack-spacing-xl);
+  }
+
+  > * {
+    max-width: 100%;
+  }
+}
+
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+
+.fullWidth {
+  > * {
+    width: 100%;
+  }
+}

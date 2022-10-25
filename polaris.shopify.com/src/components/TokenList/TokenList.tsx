@@ -1,13 +1,15 @@
-import { SearchResultItem, TokenPropertiesWithName } from "../../types";
-import { createContext } from "react";
-import { className, slugify } from "../../utils/various";
-import styles from "./TokenList.module.scss";
-import { useCopyToClipboard } from "../../utils/hooks";
-import iconClipboard from "../../../public/icon-clipboard.svg";
-import Image from "../Image";
-import Tooltip from "../Tooltip";
-import { figmaColorNames } from "../../data/figmaColorNames";
-import Link from "next/link";
+import {TokenPropertiesWithName} from '../../types';
+import {createContext} from 'react';
+import {className, slugify} from '../../utils/various';
+import styles from './TokenList.module.scss';
+import {useCopyToClipboard} from '../../utils/hooks';
+import Icon from '../Icon';
+import Tooltip from '../Tooltip';
+import {figmaColorNames} from '../../data/figmaColorNames';
+import Link from 'next/link';
+import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
+import {ClipboardMinor} from '@shopify/polaris-icons';
+import SearchResultHighlight from '../SearchResultHighlight';
 
 interface ColumnsConfig {
   preview: boolean;
@@ -33,7 +35,7 @@ interface TokenListProps {
 
 const TokenListContext = createContext<{
   columns: ColumnsConfig;
-}>({ columns: defaultColumnsConfig });
+}>({columns: defaultColumnsConfig});
 
 function TokenList({
   showTableHeading = true,
@@ -41,7 +43,7 @@ function TokenList({
   children,
 }: TokenListProps) {
   return (
-    <TokenListContext.Provider value={{ columns }}>
+    <TokenListContext.Provider value={{columns}}>
       <div className={styles.TokenList}>
         <table>
           {showTableHeading && (
@@ -76,29 +78,29 @@ function TokenList({
 
 function getFigmaUsageForToken(
   name: string,
-  value: string
+  value: string,
 ): undefined | string {
-  let usage = "—";
+  let usage = '—';
 
   const REM = 16;
 
-  if (value.startsWith("rgba")) {
-    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : "—";
-  } else if (name.startsWith("shadow")) {
-    usage = "Use shadow styles from UI kit";
-  } else if (name.includes("breakpoint")) {
+  if (value.startsWith('rgba')) {
+    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : '—';
+  } else if (name.startsWith('shadow')) {
+    usage = 'Use shadow styles from UI kit';
+  } else if (name.includes('breakpoint')) {
     const artboardWidth = parseFloat(value) * REM;
     if (artboardWidth > 0) {
       usage = `Set frame width to ${artboardWidth}+ pixels`;
     }
-  } else if (name.includes("border-radius-half")) {
-    usage = "Use a circle";
-  } else if (name.includes("radius")) {
+  } else if (name.includes('border-radius-half')) {
+    usage = 'Use a circle';
+  } else if (name.includes('radius')) {
     const radius = parseFloat(value) * REM;
     usage = `Use a radius of ${radius} pixels`;
-  } else if (name.includes("font") || name.includes("line-height")) {
-    usage = "Use typography styles from UI kit";
-  } else if (name.includes("space")) {
+  } else if (name.includes('font') || name.includes('line-height')) {
+    usage = 'Use typography styles from UI kit';
+  } else if (name.includes('space')) {
     const spacing = parseFloat(value) * REM;
     usage = `Use a spacing of ${spacing} pixels`;
   }
@@ -106,36 +108,37 @@ function getFigmaUsageForToken(
   return usage;
 }
 
-interface TokenListItemProps extends SearchResultItem {
+interface TokenListItemProps {
+  category: string;
   token: TokenPropertiesWithName;
 }
 
 function TokenListItem({
-  token: { name, value, description },
-  searchResultData,
+  category,
+  token: {name, value, description},
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
   const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
+  const searchAttributes = useGlobalSearchResult();
+  const isClickableSearchResult = !!searchAttributes?.tabIndex;
+
   return (
     <TokenListContext.Consumer>
-      {({ columns }) => (
+      {({columns}) => (
         <tr
           key={name}
-          className={className(
-            styles.TokenListItem,
-            !!searchResultData && styles.renderedInSearchResults,
-            searchResultData?.isHighlighted && styles.isHighlighted
-          )}
-          {...searchResultData?.itemAttributes}
+          className={className(styles.TokenListItem)}
           id={slugify(name)}
+          {...searchAttributes}
         >
           {columns.preview && (
             <td>
+              <SearchResultHighlight marginY="edge" />
               <TokenPreview name={name} value={value} />
-              {searchResultData?.url && (
-                <Link href={searchResultData.url}>
+              {isClickableSearchResult && (
+                <Link href={`/tokens/${category}#${searchAttributes?.id}`}>
                   <a className={styles.ClickableItemLink} tabIndex={-1}>
                     View token
                   </a>
@@ -154,22 +157,15 @@ function TokenListItem({
                     ariaLabel="Copy to clipboard"
                     renderContent={() => (
                       <div className={styles.TokenToolTip}>
-                        <p>{didJustCopy ? "Copied!" : "Copy to clipboard"}</p>
+                        <p>{didJustCopy ? 'Copied!' : 'Copy to clipboard'}</p>
                       </div>
                     )}
                   >
                     <button
                       onClick={copy}
-                      tabIndex={searchResultData?.tabIndex}
+                      tabIndex={searchAttributes?.tabIndex}
                     >
-                      <Image
-                        src={iconClipboard}
-                        alt={"Copy"}
-                        width={14}
-                        height={14}
-                        fadeIn={false}
-                        icon
-                      />
+                      <Icon source={ClipboardMinor} width={14} height={14} />
                     </button>
                   </Tooltip>
                 </div>
@@ -178,10 +174,10 @@ function TokenListItem({
           )}
           {columns.value && <td className={styles.Value}>{value}</td>}
           {columns.figmaUsage && (
-            <td className={styles.FigmaUsage}>{figmaUsage || "—"}</td>
+            <td className={styles.FigmaUsage}>{figmaUsage || '—'}</td>
           )}
           {columns.description && (
-            <td className={styles.TokenDescription}>{description || "—"}</td>
+            <td className={styles.TokenDescription}>{description || '—'}</td>
           )}
         </tr>
       )}
@@ -196,40 +192,40 @@ interface TokenPreviewProps {
   value: string;
 }
 
-function TokenPreview({ name, value }: TokenPreviewProps) {
+function TokenPreview({name, value}: TokenPreviewProps) {
   const previewDivAttributes = {
     className: styles.Preview,
   };
 
   // Colors
-  if (value.startsWith("rgba")) {
+  if (value.startsWith('rgba')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
           background: value,
           minHeight: 52,
-          borderRadius: "var(--border-radius-400)",
+          borderRadius: 'var(--border-radius-400)',
         }}
       ></div>
     );
   }
 
   // Border radii
-  else if (name.includes("border-radius")) {
+  else if (name.includes('border-radius')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <div
           style={{
             width: 50,
-            aspectRatio: "1 / 1",
+            aspectRatio: '1 / 1',
             borderRadius: value,
-            background: "var(--text)",
+            background: 'var(--text)',
           }}
         ></div>
       </div>
@@ -237,19 +233,19 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Border width
-  else if (name.includes("border-width")) {
+  else if (name.includes('border-width')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          background: "transparent",
-          display: "flex",
+          background: 'transparent',
+          display: 'flex',
         }}
       >
         <div
           style={{
             minHeight: value,
-            background: "var(--text)",
+            background: 'var(--text)',
             flex: 1,
           }}
         ></div>
@@ -258,13 +254,13 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Other borders width
-  else if (name.includes("border")) {
+  else if (name.includes('border')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          background: "var(--surface-subdued)",
+          display: 'flex',
+          background: 'var(--surface-subdued)',
         }}
       >
         <div
@@ -279,37 +275,37 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Spacing
-  else if (name.includes("space")) {
+  else if (name.includes('space')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          alignItems: "center",
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
         <div
           style={{
-            aspectRatio: "1/1",
+            aspectRatio: '1/1',
             borderRadius: 100,
-            minHeight: "10px",
-            background: "var(--text)",
+            minHeight: '10px',
+            background: 'var(--text)',
           }}
         ></div>
         <div
           style={{
             width: value,
-            minHeight: "30px",
-            background: "var(--text)",
+            minHeight: '30px',
+            background: 'var(--text)',
             opacity: 0.15,
           }}
         ></div>
         <div
           style={{
-            aspectRatio: "1/1",
+            aspectRatio: '1/1',
             borderRadius: 100,
-            minHeight: "10px",
-            background: "var(--text)",
+            minHeight: '10px',
+            background: 'var(--text)',
           }}
         ></div>
       </div>
@@ -317,14 +313,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Font families
-  else if (name.includes("font-family")) {
+  else if (name.includes('font-family')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
+          display: 'flex',
           fontFamily: value,
-          background: "transparent",
+          background: 'transparent',
         }}
       >
         Commerce
@@ -333,14 +329,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Font sizes
-  else if (name.includes("font-size")) {
+  else if (name.includes('font-size')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
+          display: 'flex',
           fontSize: value,
-          background: "transparent",
+          background: 'transparent',
         }}
       >
         Aa
@@ -349,14 +345,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Font weights
-  else if (name.includes("font-weight")) {
+  else if (name.includes('font-weight')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
+          display: 'flex',
           fontWeight: value,
-          background: "transparent",
+          background: 'transparent',
         }}
       >
         Aa
@@ -365,14 +361,14 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Line height
-  else if (name.includes("line-height")) {
+  else if (name.includes('line-height')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
+          display: 'flex',
           lineHeight: value,
-          background: "transparent",
+          background: 'transparent',
         }}
       >
         Hello
@@ -383,15 +379,15 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Breakpoints
-  else if (name.includes("breakpoints")) {
-    const width = (parseInt(value.replace("rem", "")) / 120) * 100;
+  else if (name.includes('breakpoints')) {
+    const width = (parseInt(value.replace('rem', '')) / 120) * 100;
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
           minHeight: 50,
         }}
       >
@@ -399,9 +395,9 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
           style={{
             minWidth: 4,
             maxWidth: width,
-            width: "100%",
+            width: '100%',
             minHeight: 50,
-            boxShadow: "inset 0 0 0 3px var(--text), inset 0 -10px var(--text)",
+            boxShadow: 'inset 0 0 0 3px var(--text), inset 0 -10px var(--text)',
             borderRadius: 4,
           }}
         ></div>
@@ -410,19 +406,19 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Depth
-  else if (name.includes("shadow")) {
+  else if (name.includes('shadow')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
+          display: 'flex',
         }}
       >
         <div
           style={{
             width: 50,
             minHeight: 50,
-            background: "white",
+            background: 'white',
             boxShadow: value,
             borderRadius: 8,
           }}
@@ -432,21 +428,21 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Duration
-  else if (name.includes("duration")) {
+  else if (name.includes('duration')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          background: "transparent",
+          display: 'flex',
+          background: 'transparent',
         }}
       >
         <div
           style={{
-            minHeight: "0%",
-            width: "10%",
-            paddingBottom: "10%",
-            background: "var(--text)",
+            minHeight: '0%',
+            width: '10%',
+            paddingBottom: '10%',
+            background: 'var(--text)',
             animation: `spin ${value} infinite both linear`,
           }}
         ></div>
@@ -455,21 +451,21 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Easing
-  else if (name.includes("ease") || name.includes("linear")) {
+  else if (name.includes('ease') || name.includes('linear')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          background: "transparent",
+          display: 'flex',
+          background: 'transparent',
         }}
       >
         <div
           style={{
-            minHeight: "0%",
-            width: "10%",
-            paddingBottom: "10%",
-            background: "var(--text)",
+            minHeight: '0%',
+            width: '10%',
+            paddingBottom: '10%',
+            background: 'var(--text)',
             boxShadow: value,
             animation: `spin 1s ${value} infinite both`,
           }}
@@ -479,21 +475,21 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Keyframes
-  else if (name.includes("keyframes")) {
+  else if (name.includes('keyframes')) {
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          background: "transparent",
+          display: 'flex',
+          background: 'transparent',
         }}
       >
         <div
           style={{
-            minHeight: "0%",
-            width: "10%",
-            paddingBottom: "10%",
-            background: "var(--text)",
+            minHeight: '0%',
+            width: '10%',
+            paddingBottom: '10%',
+            background: 'var(--text)',
             boxShadow: value,
             animation: `${name} 1s infinite both`,
           }}
@@ -503,16 +499,16 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
   }
 
   // Z-index
-  else if (name.includes("z-")) {
+  else if (name.includes('z-')) {
     const layerCount = 12;
-    const number = parseInt(name.replace("z-", ""));
+    const number = parseInt(name.replace('z-', ''));
     return (
       <div
         {...previewDivAttributes}
         style={{
-          display: "flex",
-          flexDirection: "column-reverse",
-          justifyContent: "center",
+          display: 'flex',
+          flexDirection: 'column-reverse',
+          justifyContent: 'center',
           gap: 2,
         }}
       >
@@ -521,7 +517,7 @@ function TokenPreview({ name, value }: TokenPreviewProps) {
             key={n}
             style={{
               minHeight: 2.5,
-              background: "var(--text)",
+              background: 'var(--text)',
               opacity: n + 1 === number ? 1 : 0.08,
               borderRadius: 2,
             }}

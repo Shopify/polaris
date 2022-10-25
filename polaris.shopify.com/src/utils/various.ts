@@ -1,75 +1,53 @@
-import type { NavItem } from "../components/Nav";
-import components from "../data/components.json";
+import siteJson from '../../.cache/site.json';
+import {SiteJSON} from '../types';
+
+const pages: SiteJSON = siteJson;
+
+const components = Object.keys(pages).filter((slug) =>
+  slug.startsWith('components/'),
+);
 
 export const getComponentCategories = (): string[] => {
-  const tempComponentCategories: { [key: string]: boolean } = {};
+  const componentCategories: string[] = [];
 
-  Object.values(components).forEach((component) => {
-    tempComponentCategories[component.frontMatter.category] = true;
+  components.forEach((slug) => {
+    const {category = ''} = pages[slug].frontMatter;
+    if (!componentCategories.includes(category)) {
+      componentCategories.push(category);
+    }
   });
 
-  const componentCategories = Object.keys(tempComponentCategories);
-
   return componentCategories;
-};
-
-export const getComponentNav = (): NavItem[] => {
-  const navItems: NavItem[] = [
-    {
-      title: "All",
-      children: components.map((component) => ({
-        title: component.frontMatter.name,
-        url: `/components/${slugify(component.frontMatter.name)}`,
-      })),
-    },
-  ];
-
-  return navItems;
 };
 
 export const slugify = (str: string): string => {
   return (
     str
       // Camel to hyphen case
-      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      .replace(/([a-z])([A-Z])/g, '$1-$2')
       // Replace spaces with hyphens
-      .replace(/[^a-z0-9]/gi, "-")
+      .replace(/[^a-z0-9]/gi, '-')
       .toLowerCase()
   );
 };
 
 export const stripMarkdownLinks = (markdown: string): string => {
   const linkRegex = /\[([a-z ]+)\]([^\)]+)\)/gi;
-  return markdown.replaceAll(linkRegex, (_, linkText) => {
+  return markdown.replace(linkRegex, (_, linkText) => {
     return linkText;
   });
-};
-
-export const getUrlsFromNavItems = (navItems: NavItem[]): string[] => {
-  let urls: string[] = [];
-
-  navItems.forEach((navItem) => {
-    if (navItem.url) {
-      urls.push(navItem.url);
-    }
-    if (navItem.children) {
-      urls = [...urls, ...getUrlsFromNavItems(navItem.children)];
-    }
-  });
-
-  return urls;
-};
-
-export const getTitleTagValue = (title?: string) => {
-  const siteName = "Shopify Polaris";
-  if (title) {
-    return `${title} — ${siteName}`;
-  }
-  return siteName;
 };
 
 export const className = (
   ...classNames: (string | boolean | null | undefined)[]
 ): string => {
-  return classNames.filter((className) => Boolean(className)).join(" ");
+  return classNames.filter((className) => Boolean(className)).join(' ');
 };
+
+export const toPascalCase = (str: string): string =>
+  (str.match(/[a-zA-Z0-9]+/g) || [])
+    .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
+    .join('');
+
+export const uppercaseFirst = (str: string): string =>
+  str.charAt(0).toUpperCase() + str.slice(1);

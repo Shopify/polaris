@@ -85,49 +85,62 @@ describe('<TextField />', () => {
   });
 
   describe('click events', () => {
-    describe('when a click event occurs on the input', () => {
-      it('bubbles up to the parent element', () => {
-        const onClick = jest.fn();
-        const event = new MouseEvent('click', {
-          view: window,
-          bubbles: true,
-          cancelable: true,
-        });
-        const textField = mountWithApp(
-          <div onClick={onClick}>
-            <TextField type="text" label="TextField" autoComplete="off" />
-          </div>,
-        );
-
-        textField.find('input')!.domNode?.dispatchEvent(event);
-        expect(onClick).toHaveBeenCalled();
+    it('bubbles up to the parent element when it occurs in the input', () => {
+      const onClick = jest.fn();
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
       });
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField type="text" label="TextField" autoComplete="off" />
+        </div>,
+      );
 
-      describe('when a click event occurs in an element other than the input', () => {
-        it('does not bubble up to the parent element', () => {
-          const onClick = jest.fn();
-          const children = 'vertical-content-children';
-          const event = new MouseEvent('click', {
-            view: window,
-            bubbles: true,
-            cancelable: true,
-          });
-          const verticalContent = <span>{children}</span>;
-          const textField = mountWithApp(
-            <div onClick={onClick}>
-              <TextField
-                type="text"
-                label="TextField"
-                autoComplete="off"
-                verticalContent={verticalContent}
-              />
-            </div>,
-          );
+      textField.find('input')!.domNode?.dispatchEvent(event);
+      expect(onClick).toHaveBeenCalled();
+    });
 
-          textField.find('span', {children})!.domNode?.dispatchEvent(event);
-          expect(onClick).not.toHaveBeenCalled();
-        });
+    it('bubbles up to the parent element when it occurs in the spinner', () => {
+      const onClick = jest.fn();
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
       });
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField type="number" label="TextField" autoComplete="off" />
+        </div>,
+      );
+
+      textField.find(Spinner)!.domNode?.dispatchEvent(event);
+      expect(onClick).toHaveBeenCalled();
+    });
+
+    it('does not bubble up to the parent element when it occurs in an element other than the input', () => {
+      const onClick = jest.fn();
+      const children = 'vertical-content-children';
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      const verticalContent = <span>{children}</span>;
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField
+            type="text"
+            label="TextField"
+            autoComplete="off"
+            verticalContent={verticalContent}
+          />
+        </div>,
+      );
+
+      textField.find('span', {children})!.domNode?.dispatchEvent(event);
+      expect(onClick).not.toHaveBeenCalled();
     });
   });
 
@@ -276,6 +289,20 @@ describe('<TextField />', () => {
       element.setProps({focused: false});
 
       expect(document.activeElement).not.toBe(element.find('input')!.domNode);
+    });
+
+    it('multiline input is in focus state if focused is true', () => {
+      const element = mountWithApp(
+        <TextField
+          label="MultiLineTextField"
+          onChange={noop}
+          autoComplete="off"
+          focused
+          multiline={3}
+        />,
+      );
+
+      expect(document.activeElement).toBe(element.find('textarea')!.domNode);
     });
   });
 

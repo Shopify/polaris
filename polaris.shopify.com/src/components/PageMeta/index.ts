@@ -1,3 +1,3 @@
-import PageMeta from "./PageMeta";
+import PageMeta from './PageMeta';
 
 export default PageMeta;

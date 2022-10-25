@@ -1,0 +1,134 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.UnparsablePropsWarning {
+  background: url(/images/CircleAlertMajor.svg) no-repeat left 0.275rem;
+  background-size: 16px auto;
+  padding-left: 24px;
+  p {
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+}
+
+.TypeTable {
+  --props-table-background-color: rgba(0, 0, 0, 0.01);
+  --props-table-border-color: rgba(0, 0, 0, 0.075);
+  @include dark-mode {
+    --props-table-background-color: rgba(255, 255, 255, 0.005);
+    --props-table-border-color: rgba(255, 255, 255, 0.085);
+  }
+  border-radius: var(--border-radius-400);
+  font-size: var(--font-size-200);
+  display: block;
+  transform-origin: 50% 0;
+  border: 1px solid var(--props-table-border-color);
+  overflow: hidden;
+  background: var(--surface);
+
+  .TypeTable {
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+    background: var(--props-table-background-color);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01);
+  }
+
+  .TypeTableHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    color: var(--code-keyword);
+    font-family: var(--font-family-mono);
+    padding: 0.66em 1em;
+    background: rgba(0, 0, 0, 0.02);
+
+    button {
+      margin-left: auto;
+      background: transparent;
+      color: var(--text-subdued);
+
+      &:hover {
+        color: var(--text-strong);
+      }
+    }
+
+    @include dark-mode {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .Description {
+    display: block;
+    font-size: var(--font-size-100);
+  }
+
+  .RawInterfaceValue {
+    padding: 0.666em 1em;
+  }
+
+  .Row {
+    display: block;
+    padding: 1em 1em;
+    border-bottom: 1px solid var(--props-table-border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .Key {
+    display: flex;
+    gap: 0.6rem;
+
+    @media screen and (max-width: $breakpointMobile) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  .ExpandableType {
+    background: transparent;
+
+    &[aria-expanded='false'] {
+      border-bottom: 1px dashed var(--border-color);
+    }
+  }
+
+  .MemberName {
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
+    flex-shrink: 0;
+
+    &.isDeprecated {
+      text-decoration: line-through;
+    }
+  }
+
+  .Valuex {
+    font-family: var(--font-family-mono);
+  }
+
+  .DeprecationNotice {
+    margin-top: 0.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+}
+
+.SyntaxString {
+  color: var(--code-string);
+}
+
+.SyntaxBoolean {
+  color: var(--code-boolean);
+}
+
+.SyntaxType {
+  color: var(--code-keyword);
+}
+
+.SyntaxNumber {
+  color: var(--code-number);
+}

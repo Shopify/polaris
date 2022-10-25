@@ -41,6 +41,7 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  VisuallyHidden,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -75,14 +76,6 @@ export function DetailsPage() {
   const [supportSubject, setSupportSubject] = useState('');
   const [supportMessage, setSupportMessage] = useState('');
 
-  const handleSubjectChange = useCallback(
-    (value) => setSupportSubject(value),
-    [],
-  );
-  const handleMessageChange = useCallback(
-    (value) => setSupportMessage(value),
-    [],
-  );
   const handleDiscard = useCallback(() => {
     setEmailFieldValue(defaultState.current.emailFieldValue);
     setNameFieldValue(defaultState.current.nameFieldValue);
@@ -100,7 +93,7 @@ export function DetailsPage() {
     setSearchActive(false);
     setSearchValue('');
   }, []);
-  const handleSearchFieldChange = useCallback((value) => {
+  const handleSearchFieldChange = useCallback((value: string) => {
     setSearchValue(value);
     setSearchActive(value.length > 0);
   }, []);
@@ -186,7 +179,6 @@ export function DetailsPage() {
       initials="D"
       open={userMenuActive}
       onToggle={toggleUserMenuActive}
-      colorScheme="dark"
       accessibilityLabel="User menu"
     />
   );
@@ -459,21 +451,23 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <a
-      href="#SkipToContent"
-      id="SkipToContentTarget"
-      ref={skipToContentRef}
-      tabIndex={-1}
-    />
+    <VisuallyHidden>
+      <a
+        href="#SkipToContent"
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+      >
+        Page content
+      </a>
+    </VisuallyHidden>
   );
 
-  // ---- Description ----
+  const [title, setTitle] = useState(
+    "The North Face Ventrix Active Trail Hybrid Hoodie - Men's",
+  );
   const [descriptionValue, setDescriptionValue] = useState(initialDescription);
-
-  // ---- Select ----
   const [selected, setSelected] = useState('today');
-
-  const handleSelectChange = useCallback((value) => setSelected(value), []);
 
   const options = [
     {label: 'Keyboard', value: 'keyboard'},
@@ -481,7 +475,7 @@ export function DetailsPage() {
     {label: 'Last 7 days', value: 'lastWeek'},
   ];
 
-  const handleChange = useCallback((newValue) => {
+  const handleChange = useCallback((newValue: string) => {
     setDescriptionValue(newValue);
     setPreviewValue(newValue);
   }, []);
@@ -489,19 +483,16 @@ export function DetailsPage() {
   const actions1 = [
     {
       content: 'Duplicate',
-      // eslint-disable-next-line no-console
       onAction: () => console.log('duplicate'),
     },
     {
       content: 'Print',
-      // eslint-disable-next-line no-console
       onAction: () => console.log('print'),
     },
   ];
   const actions2 = [
     {
       content: 'Print',
-      // eslint-disable-next-line no-console
       onAction: () => console.log('print'),
     },
   ];
@@ -555,11 +546,11 @@ export function DetailsPage() {
     <Page
       fullWidth
       breadcrumbs={[{content: 'Products', url: '/products/31'}]}
-      title="The North Face Ventrix Active Trail Hybrid Hoodie - Men's"
+      title={title}
       titleMetadata={<Badge status="success">Success badge</Badge>}
       primaryAction={{
         content: 'Save this page',
-        // eslint-disable-next-line no-console
+
         onAction: () => console.log('save'),
       }}
       additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
@@ -568,7 +559,6 @@ export function DetailsPage() {
         {
           content: 'View',
           onAction: () => {
-            // eslint-disable-next-line no-console
             console.log(previewValue);
           },
         },
@@ -577,7 +567,6 @@ export function DetailsPage() {
         {
           title: 'Promote',
           actions: [
-            // eslint-disable-next-line no-console
             {content: 'Promote', onAction: () => console.log('promote')},
           ],
         },
@@ -586,7 +575,7 @@ export function DetailsPage() {
           actions: [
             {
               content: 'Embed on a website',
-              // eslint-disable-next-line no-console
+
               onAction: () => console.log('embed'),
             },
             {
@@ -608,8 +597,11 @@ export function DetailsPage() {
             <FormLayout>
               <TextField
                 label="Title"
-                value="M60-A"
-                onChange={() => setIsDirty(true)}
+                value={title}
+                onChange={(title) => {
+                  setTitle(title);
+                  setIsDirty(true);
+                }}
                 autoComplete="off"
               />
               <TextField
@@ -634,14 +626,14 @@ export function DetailsPage() {
               <Select
                 label="Product type"
                 options={options}
-                onChange={handleSelectChange}
+                onChange={setSelected}
                 value={selected}
               />
               <br />
               <Select
                 label="Vendor"
                 options={options}
-                onChange={handleSelectChange}
+                onChange={setSelected}
                 value={selected}
               />
             </Card.Section>
@@ -687,13 +679,13 @@ export function DetailsPage() {
           <TextField
             label="Subject"
             value={supportSubject}
-            onChange={handleSubjectChange}
+            onChange={setSupportSubject}
             autoComplete="off"
           />
           <TextField
             label="Message"
             value={supportMessage}
-            onChange={handleMessageChange}
+            onChange={setSupportMessage}
             autoComplete="off"
             multiline
           />

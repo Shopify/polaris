@@ -1,12 +1,7 @@
 import React, {PureComponent, Children, createRef} from 'react';
-import {tokens} from '@shopify/polaris-tokens';
+import {motion} from '@shopify/polaris-tokens';
 
-import {
-  // eslint-disable-next-line import/no-deprecated
-  CustomProperties,
-  CustomPropertiesProps,
-} from '../../../CustomProperties';
-import {findFirstFocusableNode} from '../../../../utilities/focus';
+import {findFirstKeyboardFocusableNode} from '../../../../utilities/focus';
 import {classNames} from '../../../../utilities/css';
 import {
   isElementOfType,
@@ -23,6 +18,10 @@ import {
 } from '../../../PositionedOverlay';
 import {Pane, PaneProps} from '../Pane';
 import styles from '../../Popover.scss';
+import {
+  PortalsContainerElement,
+  PortalsManagerContext,
+} from '../../../../utilities/portals';
 
 export enum PopoverCloseSource {
   Click,
@@ -56,8 +55,8 @@ export interface PopoverOverlayProps {
   fixed?: boolean;
   hideOnPrint?: boolean;
   onClose(source: PopoverCloseSource): void;
-  colorScheme?: CustomPropertiesProps['colorScheme'];
   autofocusTarget?: PopoverAutofocusTarget;
+  preventCloseOnChildOverlayClick?: boolean;
 }
 
 interface State {
@@ -65,6 +64,9 @@ interface State {
 }
 
 export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
+  static contextType = PortalsManagerContext;
+  context!: React.ContextType<typeof PortalsManagerContext>;
+
   state: State = {
     transitionStatus: this.props.active
       ? TransitionStatus.Entering
@@ -107,7 +109,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, parseInt(tokens.motion['duration-100'].value, 10));
+        }, parseInt(motion['duration-100'], 10));
       });
     }
 
@@ -116,7 +118,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.exitingTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Exited});
-        }, parseInt(tokens.motion['duration-100'].value, 10));
+        }, parseInt(motion['duration-100'], 10));
       });
     }
   }
@@ -189,7 +191,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         return;
       }
 
-      const focusableChild = findFirstFocusableNode(this.contentNode.current);
+      const focusableChild = findFirstKeyboardFocusableNode(
+        this.contentNode.current,
+      );
 
       if (focusableChild && autofocusTarget === 'first-node') {
         focusableChild.focus({
@@ -217,7 +221,6 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fullHeight,
       fluidContent,
       hideOnPrint,
-      colorScheme,
       autofocusTarget,
     } = this.props;
 
@@ -260,9 +263,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <CustomProperties colorScheme={colorScheme}>
-          <div className={styles.Wrapper}>{content}</div>
-        </CustomProperties>
+        <div className={styles.Wrapper}>{content}</div>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
@@ -277,19 +278,21 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     const target = event.target as HTMLElement;
     const {
       contentNode,
-      props: {activator, onClose},
+      props: {activator, onClose, preventCloseOnChildOverlayClick},
     } = this;
-    const isDescendant =
-      contentNode.current != null &&
-      nodeContainsDescendant(contentNode.current, target);
+    const composedPath = event.composedPath();
+    const wasDescendant = preventCloseOnChildOverlayClick
+      ? wasPolarisPortalDescendant(composedPath, this.context!.container)
+      : wasContentNodeDescendant(composedPath, contentNode);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
     if (
-      isDescendant ||
+      wasDescendant ||
       isActivatorDescendant ||
       this.state.transitionStatus !== TransitionStatus.Entered
     ) {
       return;
     }
+
     onClose(PopoverCloseSource.Click);
   };
 
@@ -297,8 +300,19 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     this.props.onClose(PopoverCloseSource.ScrollOut);
   };
 
-  private handleEscape = () => {
-    this.props.onClose(PopoverCloseSource.EscapeKeypress);
+  private handleEscape = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const {
+      contentNode,
+      props: {activator},
+    } = this;
+    const composedPath = event.composedPath();
+    const wasDescendant = wasContentNodeDescendant(composedPath, contentNode);
+    const isActivatorDescendant = nodeContainsDescendant(activator, target);
+
+    if (wasDescendant || isActivatorDescendant) {
+      this.props.onClose(PopoverCloseSource.EscapeKeypress);
+    }
   };
 
   private handleFocusFirstItem = () => {
@@ -310,10 +324,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   };
 }
 
-function renderPopoverContent(
-  children: React.ReactNode,
-  props?: Partial<PaneProps>,
-) {
+function renderPopoverContent(children: React.ReactNode, props: PaneProps) {
   const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
     return childrenArray;
@@ -339,4 +350,24 @@ export function nodeContainsDescendant(
   }
 
   return false;
+}
+
+function wasContentNodeDescendant(
+  composedPath: readonly EventTarget[],
+  contentNode: React.RefObject<HTMLDivElement>,
+) {
+  return (
+    contentNode.current != null && composedPath.includes(contentNode.current)
+  );
+}
+
+function wasPolarisPortalDescendant(
+  composedPath: readonly EventTarget[],
+  portalsContainerElement: PortalsContainerElement,
+): boolean {
+  return composedPath.some(
+    (eventTarget) =>
+      eventTarget instanceof Node &&
+      portalsContainerElement?.contains(eventTarget),
+  );
 }

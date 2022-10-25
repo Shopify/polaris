@@ -1,5 +1,6 @@
 ---
-name: Skeleton page
+title: Skeleton page
+description: Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -9,21 +10,11 @@ keywords:
   - page
 examples:
   - fileName: skeleton-page-with-dynamic-content.tsx
-    title: Page with dynamic content
-    description: >-
-      Use this component to compose a loading version of a page where the page
-      title and header content are dynamic, meaning, the content changes.
+    title: With dynamic content
+    description: Use this component to compose a loading version of a page where the page title and header content are dynamic, meaning, the content changes.
   - fileName: skeleton-page-with-static-content.tsx
-    title: Page with static content
-    description: >-
-      Use this component to compose a loading version of a page where the page
-      title and header content are known and stay the same.
----
-
-# Skeleton page
-
-Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
-
+    title: With static content
+    description: Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 ---
 
 ## Best practices
@@ -41,27 +32,19 @@ Show page titles that never change for a page. For example, keep the title “Pr
 
 Secondary actions are always represented with skeleton content. You can change the number of skeleton actions that best represent the number of actions once loaded.
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
 Use skeleton loading for dynamic content, and use actual content for content that doesn’t change.
 
-<div class="TypographyUsageBlockImg">
-
-![Image showing skeleton loading for changing content](/public_images/skeleton/do-use-skeleton-for-changing-content@2x.png)
-
-</div>
+![Image showing skeleton loading for changing content](/images/components/skeleton-page/do-use-skeleton-for-changing-content@2x.png)
 
 #### Don’t
 
 Use placeholder content that will change when the page fully loads. This will confuse merchants and create a jumpy loading experience.
 
-<div class="TypographyUsageBlockImg">
-
-![Image showing placeholder content that will change](/public_images/skeleton/dont-use-placeholder-content-that-will-change@2x.png)
-
-</div>
+![Image showing placeholder content that will change](/images/components/skeleton-page/dont-use-placeholder-content-that-will-change@2x.png)
 
 <!-- end -->
 

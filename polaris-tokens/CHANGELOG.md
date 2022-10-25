@@ -1,5 +1,65 @@
 # Changelog
 
+## 6.2.1
+
+### Patch Changes
+
+- [#7385](https://github.com/Shopify/polaris/pull/7385) [`c3f427c17`](https://github.com/Shopify/polaris/commit/c3f427c17d268f406618aaddb684ba12c3fa15d1) Thanks [@laurkim](https://github.com/laurkim)! - Refactored exported alias and scale types in `breakpoints`, `depth`, `font`, `motion`, `shape`, `spacing`, and `zIndex`.
+
+## 6.2.0
+
+### Minor Changes
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Refactored token types in primitive Layout components
+  Exposed `DepthShadowAlias` type
+
+## 6.1.0
+
+### Minor Changes
+
+- [#7274](https://github.com/Shopify/polaris/pull/7274) [`3fd9f6415`](https://github.com/Shopify/polaris/commit/3fd9f6415c0d7e3721eb7462c6777d4816437345) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Exposed types for each token group including scale/alias unions for select token groups
+
+### Patch Changes
+
+- [#7239](https://github.com/Shopify/polaris/pull/7239) [`8626d6a1b`](https://github.com/Shopify/polaris/commit/8626d6a1b8a2ab50e6aa6074037144d11819734b) Thanks [@BPScott](https://github.com/BPScott)! - Increase `$p-breakpoint-*-{down,only}` breakpoint max-width values by 0.01px so that they are representable in fewer digits of precision when expressed as `em`s. This ensures they are representable without rounding when using `node-sass`'s default precision. E.g. `$p-breakpoints-md-down`changes from `max-width: 47.996875em` to `max-width: 47.9975em`.
+
+## 6.0.1
+
+### Patch Changes
+
+- [#7230](https://github.com/Shopify/polaris/pull/7230) [`a55193a8a`](https://github.com/Shopify/polaris/commit/a55193a8ad0de90a40de25b5d4909c1692861bc9) Thanks [@lgriffee](https://github.com/lgriffee)! - Add documentation on breakpoint token usage in media queries
+
+## 6.0.0
+
+### Major Changes
+
+- [#6675](https://github.com/Shopify/polaris/pull/6675) [`2b14c0b60`](https://github.com/Shopify/polaris/commit/2b14c0b60097f75d21df7eaa744dfaf84f8f53f7) Thanks [@samrose3](https://github.com/samrose3)! - Removed dark color tokens and color scheme support.
+
+* [#6996](https://github.com/Shopify/polaris/pull/6996) [`7d7ae1e87`](https://github.com/Shopify/polaris/commit/7d7ae1e8797ce18820b96b16e360334e38671a5a) Thanks [@samrose3](https://github.com/samrose3)! - Renamed the following token groups: `colorScheme` to `colors`, `legacyTokens` to `legacy`, and `typography` to `fonts`.
+
+- [#6995](https://github.com/Shopify/polaris/pull/6995) [`84ceaa3fc`](https://github.com/Shopify/polaris/commit/84ceaa3fc332d686c7efda312357854555d5e0e6) Thanks [@aveline](https://github.com/aveline)! - Updated type scale and font size token names.
+
+  - Hardcoded existing `font-size` values outside the new scale.
+  - Updated `line-height` token values and hardcoded values outside the new scale.
+
+## 5.5.2
+
+### Patch Changes
+
+- [#6975](https://github.com/Shopify/polaris/pull/6975) [`e5eb70032`](https://github.com/Shopify/polaris/commit/e5eb700321c7ddf4fd3bd8679dfcebbc1514e3d4) Thanks [@jonathaneckmier](https://github.com/jonathaneckmier)! - Add missing alpha values in RGBA colors
+
+## 5.5.1
+
+### Patch Changes
+
+- [#6865](https://github.com/Shopify/polaris/pull/6865) [`655bd4828`](https://github.com/Shopify/polaris/commit/655bd48288f87ba6196d932a7696ab0c6e6c9024) Thanks [@alex-page](https://github.com/alex-page)! - Remove og-image generation script, clean up other scripts, mv scripts to root
+
+## 5.5.0
+
+### Minor Changes
+
+- [#6407](https://github.com/Shopify/polaris/pull/6407) [`b506363cb`](https://github.com/Shopify/polaris/commit/b506363cb42248ecb463c85a2ec8bcd6f9556624) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Exposed SCSS media conditions for the `breakpoints` token group
+
 ## 5.4.0
 
 ### Minor Changes

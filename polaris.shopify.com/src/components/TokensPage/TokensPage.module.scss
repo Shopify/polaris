@@ -1,9 +1,13 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/mixins.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.TokensPage {
+  margin-top: var(--header-margin);
+  margin-bottom: var(--header-margin);
+}
 
 .Banner {
-  margin-top: var(--header-margin);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -27,6 +31,7 @@
     display: flex;
     box-shadow: var(--card-shadow);
     border-radius: var(--border-radius-600);
+    font-size: var(--font-size-400);
     overflow: hidden;
   }
 
@@ -35,15 +40,19 @@
   }
 
   a {
-    padding: 1rem 2rem;
+    padding: 0.75rem 1rem;
     display: block;
     color: var(--text-strong);
-    border-right: 1px solid var(--border-color-light);
+    border-right: 1px solid var(--border-color);
     text-align: center;
     font-weight: var(--font-weight-500);
 
-    &[aria-current="page"] {
+    &[aria-current='page'] {
       background: var(--surface-subdued);
+    }
+
+    &:focus-visible {
+      box-shadow: var(--focus-outline-inside);
     }
   }
 

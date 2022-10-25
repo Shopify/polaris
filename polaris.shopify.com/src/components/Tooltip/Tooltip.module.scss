@@ -1,4 +1,4 @@
-@import "../../styles/mixins.scss";
+@import '../../styles/mixins.scss';
 
 .Tooltip {
   pointer-events: none;
@@ -12,8 +12,8 @@
     background: var(--text-strong);
     color: var(--surface);
     text-align: center;
-    font-size: 14px;
-    padding: 0.33rem 0.5rem;
+    font-size: var(--font-size-100);
+    padding: 0.25rem 0.5rem;
     line-height: 1.4;
 
     p {
@@ -22,7 +22,7 @@
   }
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     right: 0;
@@ -40,7 +40,7 @@
     filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
   }
 
-  &[data-placement="bottom"]:after {
+  &[data-placement='bottom']:after {
     top: -5px;
     bottom: auto;
     transform: rotate(135deg);

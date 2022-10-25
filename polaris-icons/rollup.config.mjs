@@ -5,14 +5,14 @@ import * as path from 'path';
 import {createFilter} from '@rollup/pluginutils';
 import {babel} from '@rollup/plugin-babel';
 import virtual from '@rollup/plugin-virtual';
-import glob from 'glob';
+import globby from 'globby';
 import jsYaml from 'js-yaml';
 import svgr from '@svgr/core';
 import {optimize} from 'svgo';
 
 const convert = svgr.default;
 const iconBasePath = new URL('./icons', import.meta.url).pathname;
-const iconPaths = glob.sync(path.join(iconBasePath, '*.yml'));
+const iconPaths = globby.sync(path.join(iconBasePath, '*.yml'));
 
 const iconExports = [];
 const iconTypes = [];
@@ -55,15 +55,18 @@ const metadataContent = `
 const metadata = ${JSON.stringify(iconMetadata, null, 2)};
 export default metadata;
 `.trim();
-const metadataTypes = `declare const metadata: {
-  [key: string]: {
-    id: string;
-    name: string;
-    set: 'major' | 'minor';
-    description: string;
-    keywords: string[];
-  };
+const metadataTypes = `export interface Icon {
+  id: string;
+  name: string;
+  set: 'major' | 'minor';
+  description: string;
+  keywords: string[];
+}
+
+declare const metadata: {
+  [iconId: string]: Icon;
 };
+
 export default metadata;
 `.trim();
 
@@ -272,6 +275,11 @@ export default [
         format: 'cjs',
         entryFileNames: '[name].js',
         exports: 'default',
+      },
+      {
+        dir: 'dist',
+        format: 'esm',
+        entryFileNames: '[name].mjs',
       },
     ],
     plugins: [

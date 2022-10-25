@@ -1,16 +1,16 @@
 const path = require('path');
 
-const glob = require('glob');
+const globby = require('globby');
 
 const iconBasePath = path.resolve(__dirname, '../icons');
 
-const allSVGs = glob
+const allSVGs = globby
   .sync('*.svg', {
     cwd: iconBasePath,
   })
   .map((filename) => path.basename(filename));
 
-const allYMLs = glob
+const allYMLs = globby
   .sync('*.yml', {
     cwd: iconBasePath,
   })

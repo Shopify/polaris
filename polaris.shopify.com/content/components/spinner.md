@@ -1,49 +1,30 @@
 ---
-name: Spinner
+title: Spinner
+description: Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
 category: Feedback indicators
 releasedIn: 1.7.0
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - spinner
   - loader
   - loading
   - progress indicator
-  - android
-  - ios
 examples:
   - fileName: spinner-default.tsx
-    title: Default spinner
-    description: >-
-      Use to notify merchants that their requested action is being
-      processed.
+    title: Default
+    description: Use to notify merchants that their requested action is being processed.
   - fileName: spinner-small.tsx
-    title: Small spinner
+    title: Small
     description: Smaller than the default spinner.
   - fileName: spinner-with-focus-management.tsx
-    title: Spinner with focus management
-    description: >-
-      Use to direct the focus state from the control to the spinner, to the
-      content.
----
-
-# Spinner
-
-Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
-
+    title: With focus management
+    description: Use to direct the focus state from the control to the spinner, to the content.
 ---
 
 ## Accessibility
 
-<!-- content-for: web -->
-
 SVGs are often conveyed inconsistently to assistive technologies. The `Spinner` component’s accessibility is also highly contextual. When the parent component is focusable, you’ll need to set the `hasFocusableParent` prop for the appropriate `role` attribute to be applied.
 
 For optimal user experience, use the `accessibilityLabel` prop to let assistive technology users know the purpose of the spinner.
-
-<!-- /content-for-->
 
 ---
 

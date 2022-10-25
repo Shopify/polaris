@@ -1,10 +1,7 @@
 ---
-name: Collapsible
+title: Collapsible
+description: The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
 category: Behavior
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - hide
   - show
@@ -22,36 +19,24 @@ keywords:
   - show hide
   - expanding view
   - collapse
-  - ios
-  - android
 examples:
   - fileName: collapsible-default.tsx
-    title: Default collapsible component
-    description: >-
-      Use for a basic “show more” interaction when you need to display more
-      content.
----
-
-# Collapsible
-
-The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
-
+    title: Default
+    description: Use for a basic “show more” interaction when you need to display more content.
 ---
 
 ## Best practices
 
 The collapsible component should:
 
-- Be used for information that is lower priority or that merchants don’t need
-  to see all the time
-- Not be used to hide error messages or other critical information that requires
-  an immediate action
+- Be used for information that is lower priority or that merchants don’t need to see all the time
+- Not be used to hide error messages or other critical information that requires an immediate action
 
 ---
 
 ## Content guidelines
 
-Collapsible containers are cards with expandable and collapsible functionality, and should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#section-content-guidelines).
+Collapsible containers are cards with expandable and collapsible functionality, and should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#content-guidelines).
 
 ---
 
@@ -64,30 +49,8 @@ Collapsible containers are cards with expandable and collapsible functionality, 
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Use the collapsible component in conjunction with a [button](https://polaris.shopify.com/components/button). Place the collapsible content immediately after the button that controls it, so merchants with vision or attention issues can easily discover what content is being affected.
 
 - Use the required `id` prop of the collapsible component to give the content a unique `id` value
 - Use the `ariaExpanded` prop on the button component to add an `aria-expanded` attribute, which conveys the expanded or collapsed state to screen reader users
 - Use the `ariaControls` prop on the button component, and set its value to the `id` value of the collapsible component
-
-<!-- /content-for -->

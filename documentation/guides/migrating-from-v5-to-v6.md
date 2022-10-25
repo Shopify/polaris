@@ -9,7 +9,7 @@ In v5 Polaris contained two design languages that could be toggled using the `ne
 In v6, you no longer need to configure `AppProvider` to opt into new styles, and legacy theme configuration has been removed:
 
 - `AppProvider`'s `features` prop no longer accepts a `newDesignLanguage` key.
-- `AppProvider`'s `theme` prop no longer accepts theming using the `topBar` key. Instead control theming using the new color config that gets passed through to [`ThemeProvider`](https://polaris.shopify.com/components/structure/theme-provider).
+- `AppProvider`'s `theme` prop no longer accepts theming using the `topBar` key. Instead control theming using the new color config that gets passed through to [`ThemeProvider`](https://polaris.shopify.com/components/theme-provider).
 - `AppProvider`'s `theme` prop expects its `frameOffset` to be specified as a string including a unit instead of a number in pixels, to allow for non-pixel based sizing.
 
 ```diff

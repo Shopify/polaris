@@ -1,5 +1,6 @@
 ---
-name: Footer help
+title: Footer help
+description: Footer help is used to refer merchants to more information related to the product or feature they’re using.
 category: Navigation
 keywords:
   - FooterHelp
@@ -14,17 +15,9 @@ keywords:
   - educating
   - teaching
 examples:
-  - fileName: footer-help-box.tsx
-    title: Footer help box
-    description: >-
-      Use to direct merchants to more information related to the product or
-      feature they’re working on.
----
-
-# Footer help
-
-Footer help is used to refer merchants to more information related to the product or feature they’re using.
-
+  - fileName: footer-help-default.tsx
+    title: Default
+    description: Use to direct merchants to more information related to the product or feature they’re working on.
 ---
 
 ## Best practices
@@ -53,7 +46,11 @@ Links should be:
 
 Clearly labeled: Merchants shouldn’t need to guess where they’ll end up if they click on an action link. Never use “click here” as a link because it doesn’t set expectations about what’s next.
 
-<!-- usagelist -->
+Links should not be:
+
+Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
+
+<!-- dodont -->
 
 #### Do
 

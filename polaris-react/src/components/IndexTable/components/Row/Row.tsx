@@ -12,6 +12,7 @@ import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
 
 type RowStatus = 'success' | 'subdued';
+type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export interface RowProps {
   position: number;
   subdued?: boolean;
   status?: RowStatus;
+  disabled?: boolean;
   onNavigation?(id: string): void;
   onClick?(): void;
 }
@@ -31,6 +33,7 @@ export const Row = memo(function Row({
   position,
   subdued,
   status,
+  disabled,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -60,24 +63,24 @@ export const Row = memo(function Row({
     () => ({
       itemId: id,
       selected,
+      position,
       onInteraction: handleInteraction,
+      disabled,
     }),
-    [id, selected, handleInteraction],
+    [id, selected, disabled, position, handleInteraction],
   );
 
   const primaryLinkElement = useRef<HTMLAnchorElement | null>(null);
   const isNavigating = useRef<boolean>(false);
-  const tableRowRef = useRef<(HTMLTableRowElement & HTMLLIElement) | null>(
-    null,
-  );
+  const tableRowRef = useRef<TableRowElementType | null>(null);
 
-  const tableRowCallbackRef = useCallback((node) => {
+  const tableRowCallbackRef = useCallback((node: TableRowElementType) => {
     tableRowRef.current = node;
 
     const el = node?.querySelector('[data-primary-link]');
 
     if (el) {
-      primaryLinkElement.current = el;
+      primaryLinkElement.current = el as HTMLAnchorElement;
     }
   }, []);
 
@@ -87,6 +90,7 @@ export const Row = memo(function Row({
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
     hovered && styles['TableRow-hovered'],
+    disabled && styles['TableRow-disabled'],
     status && styles[variationName('status', status)],
     !selectable &&
       !primaryLinkElement.current &&
@@ -95,7 +99,7 @@ export const Row = memo(function Row({
 
   let handleRowClick;
 
-  if (selectable || primaryLinkElement.current) {
+  if ((!disabled && selectable) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (!tableRowRef.current || isNavigating.current) {
         return;

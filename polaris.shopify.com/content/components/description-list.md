@@ -1,10 +1,7 @@
 ---
-name: Description list
+title: Description list
+description: Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.
 category: Lists and tables
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - DescriptionList
   - glossary
@@ -15,22 +12,10 @@ keywords:
   - text lists
   - list of terms
   - term explaination
-  - android
-  - ios
 examples:
   - fileName: description-list-default.tsx
-    title: Default description list
-    description: >-
-      Use when you need to present merchants with a list of items or terms
-      alongside descriptions and explanations.
----
-
-# Description list
-
-Description lists are a way to organize and explain related information.
-They’re particularly useful when you need to list and define terms such as in a
-glossary.
-
+    title: Default
+    description: Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
 ---
 
 ## Best practices
@@ -39,9 +24,7 @@ Description lists should:
 
 - Contain terms and associated explanations, or descriptions for each term.
 - Provide information that isn’t action-oriented.
-- Not be an excuse for using unnecessarily complicated or jargon-filled
-  language. Generally, if merchants need a description list to understand the
-  language in Shopify, we should look for opportunities to simplify the language.
+- Not be an excuse for using unnecessarily complicated or jargon-filled language. Generally, if merchants need a description list to understand the language in Shopify, we should look for opportunities to simplify the language.
 - Not be used to upsell merchants on a feature or service.
 
 ---
@@ -54,7 +37,7 @@ Terms should be:
 
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -72,12 +55,11 @@ Terms descriptions should be:
 
 - Directly related to the term they’re describing
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Discount code: A series of numbers and/or letters that an online shopper may enter at checkout
-  to get a discount or special offer.
+- Discount code: A series of numbers and/or letters that an online shopper may enter at checkout to get a discount or special offer.
 
 #### Don’t
 
@@ -87,17 +69,15 @@ Terms descriptions should be:
 
 - Written to describe the merchant benefit or utility
 - No more than one or two short sentences in length
-- Written in sentence case with all appropriate punctuation, including ending
-  each sentence with a period
+- Written in sentence case with all appropriate punctuation, including ending each sentence with a period
 - Conversational by using articles (the, a, an)
 - Written using plain language
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- Abandoned checkout: The details of a checkout that was started but not completed, including the
-  products added and the customer’s details.
+- Abandoned checkout: The details of a checkout that was started but not completed, including the products added and the customer’s details.
 
 #### Don’t
 
@@ -115,26 +95,4 @@ Terms descriptions should be:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The description list component produces a description list wrapper (`<dl>`), terms (`<dt>`), and definitions (`<dd>`) to convey the relationships between the list items to assistive technology users.
-
-<!-- /content-for -->

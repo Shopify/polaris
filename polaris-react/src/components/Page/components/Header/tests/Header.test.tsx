@@ -8,6 +8,7 @@ import {Breadcrumbs} from '../../../../Breadcrumbs';
 import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
 import {Pagination} from '../../../../Pagination';
+import {Tooltip} from '../../../../Tooltip';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header, HeaderProps} from '../Header';
 
@@ -105,6 +106,19 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(PrimaryAction);
+    });
+
+    it('renders a <Tooltip /> when helpText is provided', () => {
+      const primaryAction = {
+        content: 'Save',
+        helpText: 'Helpful text',
+      };
+      const header = mountWithApp(
+        <Header {...mockProps} primaryAction={primaryAction} />,
+      );
+      expect(header).toContainReactComponent(Tooltip, {
+        content: primaryAction.helpText,
+      });
     });
   });
 

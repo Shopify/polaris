@@ -1,5 +1,6 @@
 ---
-name: Top bar
+title: Top bar
+description: The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.
 category: Navigation
 keywords:
   - global chrome
@@ -16,16 +17,9 @@ keywords:
   - menu
   - logo
 examples:
-  - fileName: top-bar-with-all-of-its-elements.tsx
-    title: Top bar with all of its elements
-  - fileName: top-bar-themed-with-color-scheme.tsx
-    title: Top bar themed with colorScheme
----
-
-# Top bar
-
-The top bar is a header component that allows merchants to search, access menus, and navigate by clicking on the logo. It’s always visible at the top of interfaces like Shopify or Shopify Plus. Third-party apps that use the top bar can customize the color to match their brand using the [app provider](https://polaris.shopify.com/components/app-provider) component and are required to use their own logo.
-
+  - fileName: top-bar-default.tsx
+    title: Default
+    description: Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
 ---
 
 ## Required components
@@ -59,7 +53,7 @@ The placeholder content for the search field should:
 - Always say "Search"
 - Never include an ellipsis
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -72,8 +66,6 @@ The placeholder content for the search field should:
 <!-- end -->
 
 ---
-
-<a name="subcomponent-menu"></a>
 
 ## Top bar menu
 
@@ -89,8 +81,6 @@ A component that composes together an activator and a popover containing an acti
 | open             | boolean                       | A boolean property indicating whether the menu is currently open                                   |
 | onOpen()         | function                      | A callback function to handle opening the menu popover                                             |
 | onClose()        | function                      | A callback function to handle closing the menu popover                                             |
-
-<a name="subcomponent-user-menu"></a>
 
 ## Top bar user menu
 
@@ -109,8 +99,6 @@ A specialized menu component that is activated by a user avatar.
 | open       | boolean                       | A boolean property indicating whether the user menu is currently open                                   |
 | onToggle() | function                      | A callback function to handle opening and closing the user menu                                         |
 
-<a name="type-message"></a>
-
 ### Top bar menu message
 
 #### Message properties
@@ -124,8 +112,6 @@ A specialized menu component that is activated by a user avatar.
 | badge       | {content: string; status: BadgeProps['status']} | A badge to render near the message        |
 
 ---
-
-<a name="subcomponent-search-field"></a>
 
 ## Top bar search field
 

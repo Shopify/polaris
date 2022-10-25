@@ -1,5 +1,6 @@
 ---
-name: Exception list
+title: Exception list
+description: Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.
 category: Lists and tables
 keywords:
   - exception list
@@ -7,15 +8,9 @@ keywords:
   - list
   - list exceptions
 examples:
-  - fileName: exception-list-with-icon.tsx
-    title: Exception list with icon
+  - fileName: exception-list-default.tsx
+    title: Default
     description: Use icons to add clarity or assist in visualizing the meaning
----
-
-# Exception list
-
-Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.
-
 ---
 
 ## Best practices
@@ -27,14 +22,6 @@ The exception list component should:
 - Only surface noteworthy, actionable content, like a high risk order or out of stock item
 - Used sparingly, so that it has more impact and doesn’t add clutter
 - Only use an icon if it adds clarity to the content or helps merchants visualize the meaning
-
-<!-- improvement -->
-
-### Opportunity for improvement
-
-Exception lists aren’t clickable. If you have an idea that could make this component better, please [open an issue](https://github.com/shopify/polaris/issues).
-
-<!-- end -->
 
 ---
 
@@ -55,25 +42,21 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 - Make the entire list item clickable because the exception list itself isn’t clickable
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
-- ![Exception list being used inside a resource list item](/public_images/exception-list/do-exception-list@2x.png)
+- ![Exception list being used inside a resource list item](/images/components/exception-list/do-exception-list@2x.png)
 
 #### Don’t
 
-- ![Exception list being used in place of a banner](/public_images/exception-list/dont-exception-list@2x.png)
+- ![Exception list being used in place of a banner](/images/components/exception-list/dont-exception-list@2x.png)
 
 <!-- end -->
 
 ---
 
 ## Related components
-
-<!-- remove comment and adjust link when component is built -->
-
-<!-- * To display an error in a card or section, use the [contextual banner]() component -->
 
 - To display an error at the top of a page, or to indicate multiple errors in a form, use the [banner](https://polaris.shopify.com/components/banner) component
 - Exceptions lists are often used in the [resource list](https://polaris.shopify.com/components/resource-list) component to display conditional content
@@ -82,28 +65,6 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Items in an exception list are organized as list items (`<li>`) in an unordered list wrapper (`<ul>`), so they’re conveyed as a group of related elements to assistive technology users.
 
 Icons displayed with exception list items are meant to visually reinforce the adjacent information, not to convey information on their own. They are skipped by screen readers using `aria-hidden="true"`.
-
-<!-- /content-for -->

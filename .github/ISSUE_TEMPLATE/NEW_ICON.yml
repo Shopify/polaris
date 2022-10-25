@@ -1,0 +1,66 @@
+name: Propose new icon
+description: For new icon contributions and suggestions for polaris-icons
+title: '[Icon]: New icon <icon-name>'
+labels: ['Icon', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out the proposal for a new icon!
+  - type: textarea
+    id: icon-usage
+    attributes:
+      label: How will these icons be used?
+      description: Relevant screenshots or links to design files detailing the user experience, the reason for creating the new icon, and any additional context.
+    validations:
+      required: true
+  - type: input
+    id: icon-name
+    attributes:
+      label: Icon name
+    validations:
+      required: true
+  - type: dropdown
+    id: icon-set
+    attributes:
+      label: What type of icon set?
+      options:
+        - Major (20x20)
+        - Minor (16x16)
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: icon-description
+    attributes:
+      label: Icon description
+      description: |
+        **Action:** Used to denote _x action_.
+        **Wayfinding:** Used to help direct merchants to _x_.
+        **Concept:** Used to represent _x_.
+        **Education:** Used to give merchants more information about _context x_.
+    validations:
+      required: true
+      render: shell
+  - type: input
+    id: icon-keywords
+    attributes:
+      label: Icon keywords
+      description: Comma-delimited string of keywords, e.g. orders, sales, funnel
+    validations:
+      required: true
+  - type: input
+    id: icon-author
+    attributes:
+      label: Icon author
+      description: Comma-delimited string of authors first and last name, e.g. Sam Rose, Lo Kim
+  - type: textarea
+    id: icon-svg
+    attributes:
+      label: Icon SVG code
+      value: <svg>...</svg>
+      render: shell
+  - type: textarea
+    id: icon-other-details
+    attributes:
+      label: Are there any other important details?

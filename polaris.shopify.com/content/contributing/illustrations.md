@@ -1,17 +1,12 @@
 ---
-name: Illustrations
+title: Adding new illustrations
 keywords:
   - illustration
   - image
   - photo
   - contribute
   - add
+order: 4
 ---
 
-# Illustrations
-
-We welcome illustration contributions from anyone working at Shopify. Each illustration must be submitted for feedback from an illustrator in #illustration-guild on Slack. This system only supports Shopify admin illustration within the product and not marketing assets.
-
-## Quick start guide
-
-table
+Reusing illustrations should be avoided in product. New illustration contributions are welcome from any designer working at Shopify. They can be submitted for feedback to the #illustration-guild on Slack. Polaris only supports illustrations within the Shopify admin product and not marketing assets.

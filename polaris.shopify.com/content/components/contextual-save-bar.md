@@ -1,5 +1,6 @@
 ---
-name: Contextual save bar
+title: Contextual save bar
+description: The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 category: Forms
 keywords:
   - form
@@ -11,31 +12,14 @@ keywords:
   - logo
 examples:
   - fileName: contextual-save-bar-default.tsx
-    title: Default contextual save bar
-    description: >-
-      Use the save action to provide an opportunity to save changes. Use the
-      discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
-  - fileName: contextual-save-bar-during-creation.tsx
-    title: Contextual save bar during creation
-    description: >-
-      Use the save action to provide an opportunity to save a newly-created
-      resource. Use the discard action to allow merchants the option to discard a new resource. Use the message to provide helpful context on the nature of the new resource.
+    title: Default
+    description: Use the save action to provide an opportunity to save changes. Use the discard action to allow merchants the option to discard their changes. Use the message to provide helpful context on the nature of those changes.
   - fileName: contextual-save-bar-with-flush-contents.tsx
-    title: Contextual save bar with flush contents
-    description: >-
-      Use the alignContentFlush flag when you want to omit the logo from the
-      contextual save bar and repurpose that space to extend the message contents fully to the left side
-      of the container.
-  - fileName: contextual-save-bar-full-width.tsx
-    title: Contextual save bar full width
-    description: >-
-      Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
----
-
-# Contextual Save Bar
-
-The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
-
+    title: With flush contents
+    description: Use the alignContentFlush flag when you want to omit the logo from the contextual save bar and repurpose that space to extend the message contents fully to the left side of the container.
+  - fileName: contextual-save-bar-with-full-width.tsx
+    title: With full width
+    description: Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
 ---
 
 ## Required components
@@ -64,7 +48,7 @@ The standard message content is
 - “Unsaved changes” when editing existing content
 - “Unsaved {resource name}” when creating a new object
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -80,7 +64,7 @@ The standard message content is
 
 Actions in the contextual save bar component should consist of a strong verb that encourages action. They should not include a noun.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

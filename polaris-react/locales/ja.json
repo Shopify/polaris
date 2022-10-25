@@ -32,7 +32,6 @@
       "checkbox": "チェックボックス",
       "undo": "元に戻す",
       "cancel": "キャンセル",
-      "newWindowAccessibilityHint": "(新しいウィンドウを開く)",
       "clear": "クリア",
       "close": "閉じる",
       "submit": "送信",
@@ -156,7 +155,7 @@
       "moreFiltersWithCount": "詳細な絞り込み ({count})"
     },
     "Modal": {
-      "iFrameTitle": "ボディマークアップ",
+      "iFrameTitle": "body markup",
       "modalWarning": "これらの必要なプロパティがモーダルにありません: {missingProps}"
     },
     "Pagination": {
@@ -297,7 +296,8 @@
       "undo": "元に戻す",
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
-      "selectButtonText": "選択"
+      "selectButtonText": "選択",
+      "sortAccessibilityLabel": "で{direction}を並び替える"
     },
     "Page": {
       "Header": {

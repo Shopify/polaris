@@ -87,27 +87,22 @@ describe('<DataTable />', () => {
         />,
       );
 
-      const cells = dataTable
-        .findAll(Cell)
-        .filter((cell) => cell.prop('stickyHeadingCell') !== true);
+      const cells = dataTable.findAll(Cell);
 
-      const firstColumnCells = cells.filter(
-        (cell) => cell.prop('firstColumn') === true,
-      );
-
-      const secondColumnCells = cells.filter(
-        (cell) => cell.prop('firstColumn') !== true,
-      );
-
+      // 2 for the headers and 2 for the body
       expect(cells).toHaveLength(4);
 
-      firstColumnCells.forEach((cell) =>
-        expect(cell.prop('contentType')).toBe('text'),
-      );
+      expect(
+        cells
+          .filter((cell) => cell.prop('header'))
+          .map((cell) => cell.prop('contentType')),
+      ).toStrictEqual(columnContentTypes);
 
-      secondColumnCells.forEach((cell) =>
-        expect(cell.prop('contentType')).toBe('numeric'),
-      );
+      expect(
+        cells
+          .filter((cell) => !cell.prop('header'))
+          .map((cell) => cell.prop('contentType')),
+      ).toStrictEqual(columnContentTypes);
     });
   });
 
@@ -227,7 +222,7 @@ describe('<DataTable />', () => {
         .findAll(Cell)
         .filter(
           (cell) =>
-            cell.prop('total') === true && cell.prop('firstColumn') !== true,
+            cell.prop('total') === true && cell.prop('nthColumn') !== true,
         );
 
       totalsCells.forEach((total) => expect(total).toContainReactText(''));
@@ -300,7 +295,7 @@ describe('<DataTable />', () => {
 
       const firstColumnCells = dataTable
         .findAll(Cell)
-        .filter((cell) => cell.prop('firstColumn') === true);
+        .filter((cell) => cell.prop('nthColumn') === true);
 
       firstColumnCells.forEach((cell) =>
         expect(cell).toHaveReactProps({truncate: false}),
@@ -312,7 +307,7 @@ describe('<DataTable />', () => {
 
       const firstColumnCells = dataTable
         .findAll(Cell)
-        .filter((cell) => cell.prop('firstColumn') === true);
+        .filter((cell) => cell.prop('nthColumn') === true);
 
       firstColumnCells.forEach((cell) =>
         expect(cell).toHaveReactProps({truncate: true}),
@@ -568,6 +563,79 @@ describe('<DataTable />', () => {
 
       expect(twoSpanCells).toHaveLength(1);
       expect(threeSpanCells).toHaveLength(1);
+    });
+  });
+
+  describe('fixedFirstColumns', () => {
+    const headings = ['Product', 'Price', 'Order Number'];
+    const rows = [
+      [
+        'Navy Merino Wool Blazer with khaki chinos and yellow belt',
+        '$875.00',
+        124518,
+        83,
+        '$122,500.00',
+      ],
+    ];
+
+    const columnContentTypes: DataTableProps['columnContentTypes'] = [
+      'text',
+      'numeric',
+      'numeric',
+    ];
+
+    const fixedFirstColumnsProps = {
+      headings,
+      rows,
+      columnContentTypes,
+    };
+
+    it('sets fixed first columns', () => {
+      const dataTable = mountWithApp(
+        <DataTable {...fixedFirstColumnsProps} fixedFirstColumns={2} />,
+      );
+
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 100,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+
+      dataTable.forceUpdate();
+
+      const separateTable = dataTable.findAll('table')[0];
+      const separateTableHeadingGroup = separateTable.find('thead');
+      const separateTableHeaders = separateTableHeadingGroup?.findAll('th');
+
+      expect(separateTableHeaders).toHaveLength(2);
+    });
+
+    it('sets "fixedFirstColumns" to 0 if it exceeds or is equal to columns amount', () => {
+      const dataTable = mountWithApp(
+        <DataTable {...fixedFirstColumnsProps} fixedFirstColumns={3} />,
+      );
+
+      const table = dataTable.find('table')!.domNode;
+
+      Object.defineProperty(table, 'scrollWidth', {
+        value: 100,
+        writable: true,
+        configurable: true,
+      });
+
+      window.dispatchEvent(new Event('resize'));
+      timer.runAllTimers();
+
+      dataTable.forceUpdate();
+
+      const tables = dataTable.findAll('table');
+
+      expect(tables).toHaveLength(1);
     });
   });
 });

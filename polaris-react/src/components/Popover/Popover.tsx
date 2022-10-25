@@ -71,13 +71,13 @@ export interface PopoverProps {
   hideOnPrint?: boolean;
   /** Callback when popover is closed */
   onClose(source: PopoverCloseSource): void;
-  /** @deprecated Accepts a color scheme for the contents of the popover */
-  colorScheme?: PopoverOverlayProps['colorScheme'];
   /**
    * The preferred auto focus target defaulting to the popover container
    * @default 'container'
    */
   autofocusTarget?: PopoverAutofocusTarget;
+  /** Prevents closing the popover when other overlays are clicked */
+  preventCloseOnChildOverlayClick?: boolean;
 }
 
 export interface PopoverPublicAPI {
@@ -101,7 +101,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       fixed,
       ariaHaspopup,
       preferInputActivator = true,
-      colorScheme,
       zIndexOverride,
       ...rest
     },
@@ -196,13 +195,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
       setAccessibilityAttributes();
     }, [activatorNode, setAccessibilityAttributes]);
 
-    if (colorScheme && process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'Deprecation: The `colorScheme` prop on the `Popover` component has been deprecated. See the v10 migration guide for replacing dark color scheme styles. https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md',
-      );
-    }
-
     const portal = activatorNode ? (
       <Portal idPrefix="popover">
         <PopoverOverlay
@@ -213,7 +205,6 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
           onClose={handleClose}
           active={active}
           fixed={fixed}
-          colorScheme={colorScheme}
           zIndexOverride={zIndexOverride}
           {...rest}
         >

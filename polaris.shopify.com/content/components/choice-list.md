@@ -1,10 +1,7 @@
 ---
-name: Choice list
+title: Choice list
+description: A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - ChoiceList
   - form
@@ -22,45 +19,21 @@ keywords:
   - multi-choice list
   - single-choice list
 examples:
-  - fileName: choice-list-single.tsx
-    title: Single choice list
-    description: >-
-      Allows merchants to select one option from a list.Make sure all options
-      are an either/or choice.
-  - fileName: choice-list-single-with-error.tsx
-    title: Single choice list with error
-    description: >-
-      Allows for accessible error handling by connecting the error message to
-      the field with the error.
-  - fileName: choice-list-multi.tsx
-    title: Multi-choice list
-    description: >-
-      Allows merchants to select multiple options from a list.Avoid options that
-      are an either/or choice.
-  - fileName: >-
-      choice-list-single-choice-or-multi-with-children-content-always-rendered.tsx
-    title: Single-choice or multi-choice list with children content (always rendered)
-    description: >-
-      Use when you need merchants to view and/or interact with additional
-      content under a choice. The content will always be rendered. Works for
-      both single-choice and multi-choice list.
-  - fileName: >-
-      choice-list-single-choice-or-multi-with-children-content-only-rendered-when-choice-is-selected.tsx
-    title: >-
-      Single-choice or multi-choice list with children content (only rendered
-      when choice is selected)
-    description: >-
-      Use when you need merchants to view and/or interact with additional
-      content under a choice. The content is only rendered when the choice is
-      selected. Works for both single-choice and multi-choice list.
----
-
-# Choice list
-
-A choice list lets you create a list of grouped radio buttons or checkboxes.
-Use this component if you need to group together a related list of interactive
-choices.
-
+  - fileName: choice-list-default.tsx
+    title: Default
+    description: Allows merchants to select one option from a list. Make sure all options are an either/or choice.
+  - fileName: choice-list-with-error.tsx
+    title: With error
+    description: Allows for accessible error handling by connecting the error message to the field with the error.
+  - fileName: choice-list-with-multi-choice.tsx
+    title: With multi-choice
+    description: Allows merchants to select multiple options from a list. Avoid options that are an either/or choice.
+  - fileName: choice-list-with-children-content.tsx
+    title: With children content
+    description: Use when you need merchants to view and/or interact with additional content under a choice. The content will always be rendered.
+  - fileName: choice-list-with-dynamic-children-content.tsx
+    title: With dynamic children content
+    description: Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 ---
 
 ## Best practices
@@ -79,10 +52,9 @@ Choice lists should:
 
 List titles should:
 
-- Help merchants understand how the items in the list are grouped together, or
-  should explain what kind of choice merchants are making
+- Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -94,13 +66,14 @@ Pick one
 
 <!-- end -->
 
-- Be concise and scannable:
-  - Use simple, clear language that can be read at a glance
-  - Keep list titles to a single sentence
-  - It the title introduces the list, it should end with a colon
-  - Should be written in sentence case
+### Be concise and scannable
 
-<!-- usagelist -->
+- Use simple, clear language that can be read at a glance
+- Keep list titles to a single sentence
+- It the title introduces the list, it should end with a colon
+- Should be written in sentence case
+
+<!-- dodont -->
 
 #### Do
 
@@ -112,29 +85,24 @@ Shipping Options
 
 <!-- end -->
 
-- Not use colons
+### Not use colons
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
-If the customer abandons their checkout, send them an email reminder to complete their order
+If the customer abandons their checkout, send them an email reminder to complete their order:
 
-<p>
-  <label><input type="radio" name="foo"> Never</label><br />
-  <label><input type="radio" name="foo"> 6 hours later</label><br />
-  <label><input type="radio" name="foo"> 24 hours later</label>
-</p>
+- Option a
+- Option b
 
 #### Don’t
 
-If the customer abandons their checkout, send them an email reminder to complete their order:
+If the customer abandons their checkout, send them an email reminder to complete their order
 
-<p>
-  <label><input type="radio" name="bar"> Never</label><br />
-  <label><input type="radio" name="bar"> 6 hours later</label><br />
-  <label><input type="radio" name="bar"> 24 hours later</label>
-</p>
+- Option a
+- Option b
+
 <!-- end -->
 
 ### List choices
@@ -142,55 +110,21 @@ If the customer abandons their checkout, send them an email reminder to complete
 Every item in a choice list should:
 
 - Start with a capital letter
+- Not use commas or semicolons at the end of each line
+- Be written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usageblock -->
+<!-- dodont -->
 
 #### Do
 
 - Option 1
-- Option 2
-- Option 3
-
-#### Don’t
-
-- option 1
-- option 2
-- option 3
-
-<!-- end -->
-
-- Not use commas or semicolons at the end of each line
-
-<!-- usageblock -->
-
-#### Do
-
-- Red
 - Yellow
-- Blue
-
-#### Don’t
-
-- Red;
-- Yellow;
-- Blue.
-
-<!-- end -->
-
-- Be written in sentence case (the first word capitalized, the rest lowercase)
-
-<!-- usageblock -->
-
-#### Do
-
-- Item one
-- Item two
 - Item three
 
 #### Don’t
 
-- Item One
-- Item Two
+- option 1
+- Yellow;
 - Item Three
 
 <!-- end -->
@@ -211,26 +145,4 @@ If your list contains helper text, only the description below the list item shou
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 The choice list component uses the accessibility features of the [checkbox](https://polaris.shopify.com/components/checkbox) and [radio button](https://polaris.shopify.com/components/radio-button) components.
-
-<!-- /content-for -->

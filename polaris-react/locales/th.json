@@ -32,7 +32,6 @@
       "checkbox": "ช่องทำเครื่องหมาย",
       "undo": "เลิกทำ",
       "cancel": "ยกเลิก",
-      "newWindowAccessibilityHint": "(เปิดหน้าต่างใหม่)",
       "clear": "ล้าง",
       "close": "ปิด",
       "submit": "ส่ง",
@@ -214,7 +213,7 @@
       "characterCountWithMaxLength": "ใช้อักขระไปแล้ว {count} จาก {limit}"
     },
     "TopBar": {
-      "toggleMenuLabel": "สลับเมนู",
+      "toggleMenuLabel": "เมนูเปิด/ปิด",
       "SearchField": {
         "clearButtonLabel": "ล้าง",
         "search": "ค้นหา"
@@ -297,7 +296,8 @@
       "undo": "เลิกทำ",
       "selectAllItems": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการ",
       "selectItem": "เลือก {resourceName}",
-      "selectButtonText": "เลือก"
+      "selectButtonText": "เลือก",
+      "sortAccessibilityLabel": "จัดเรียง {direction} ตาม"
     },
     "Page": {
       "Header": {

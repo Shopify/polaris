@@ -10,9 +10,10 @@ We have a [GitHub action](https://github.com/changesets/action) that
 To perform a release:
 
 - Comment `/snapit` in the **"Version Packages"** PR to cut a snapshot release
-- Create a draft pull request in `Shopify/web` for the upgrade using the snapshot
-- Once CI passes, merge the **"Version Packages"** PR
-- Once the release is available in npm, update the draft PR to the new version and request review from the folks whose changes are part of the release as listed in the release notes 
+- Create a pull request in `Shopify/web` for the upgrade using the snapshot
+- Once CI passes in the `Shopify/web` PR, and you've received an approval from [@Shopify/polaris-team](https://github.com/orgs/Shopify/teams/polaris-team), merge the **"Version Packages"** PR in `Shopify/polaris`
+- Once the release is available in npm, update the `Shopify/web` PR to the new version and request review from the folks whose changes are part of the release as listed in the release notes
+- Optional: You can create a group message tagging all contributors to nudge them for reviews, as well as to verify the changes within `Shopify/web` work as expected
 
 ## Snapshot Release
 
@@ -21,7 +22,7 @@ To perform a release:
 1. Add a comment in your feature branch PR with the slash command "/snapit"
 2. This will trigger the `snapit.yml` workflow to create a new snapshot release
 
-> Note: Your feature branch PR should have **at least one** changeset. The snapshot release will only release packages with a pending changeset. More info on [adding a changeset](https://github.com/Shopify/polaris/blob/.github/CONTRIBUTING.md#adding-a-changeset).
+> Note: Your feature branch PR should have **at least one** changeset. The snapshot release will only release packages with a pending changeset. More info on [adding a changeset](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset).
 
 ### [polaris-for-figma](/polaris-for-figma)
 

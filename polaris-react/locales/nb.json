@@ -32,7 +32,6 @@
       "checkbox": "avmerkingsboks",
       "undo": "Angre",
       "cancel": "Avbryt",
-      "newWindowAccessibilityHint": "(åpner et nytt vindu)",
       "clear": "Fjern",
       "close": "Lukk",
       "submit": "Send inn",
@@ -297,7 +296,8 @@
       "undo": "Angre",
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",
-      "selectButtonText": "Velg"
+      "selectButtonText": "Velg",
+      "sortAccessibilityLabel": "sorter {direction} etter"
     },
     "Page": {
       "Header": {

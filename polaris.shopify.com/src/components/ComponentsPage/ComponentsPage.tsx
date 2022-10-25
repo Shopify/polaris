@@ -1,23 +1,21 @@
-import ComponentGrid from "../ComponentGrid";
-import Layout from "../Layout";
+import siteJson from '../../../.cache/site.json';
+import {getComponentCategories, stripMarkdownLinks} from '../../utils/various';
+import {Status, SiteJSON} from '../../types';
+import styles from './ComponentsPage.module.scss';
+import PageMeta from '../PageMeta';
+import Grid from '../Grid';
+import Page from '../Page';
+import ComponentThumbnail from '../ComponentThumbnail';
 
-import components from "../../data/components.json";
-import {
-  getComponentCategories,
-  stripMarkdownLinks,
-  slugify,
-  getComponentNav,
-} from "../../utils/various";
-import { Status } from "../../types";
-import styles from "./ComponentsPage.module.scss";
-import PageMeta from "../PageMeta";
+const pages: SiteJSON = siteJson;
+
+const components = Object.keys(pages).filter((slug) =>
+  slug.startsWith('components/'),
+);
 
 const componentCategories = getComponentCategories();
-const componentNav = getComponentNav();
 
-interface Props {}
-
-export default function ComponentsPage({}: Props) {
+export default function ComponentsPage() {
   return (
     <div className={styles.ComponentsPage}>
       <PageMeta
@@ -25,37 +23,40 @@ export default function ComponentsPage({}: Props) {
         description="Components are reusable building blocks made of interface elements and styles, packaged through code. Piece them together, improve them, and create new ones to solve merchant problems."
       />
 
-      <Layout navItems={componentNav} showTOC={false}>
-        <h1>Components</h1>
-
+      <Page title="Components" showTOC={false}>
         {componentCategories.map((category) => {
           return (
             <div key={category} className={styles.Category}>
               <h2 className={styles.CategoryName}>{category}</h2>
-              <ComponentGrid>
+              <Grid>
                 {components
                   .filter(
-                    (component) => component.frontMatter.category === category
+                    (slug) => pages[slug].frontMatter.category === category,
                   )
-                  .map(({ frontMatter, intro }) => {
-                    const { name, status } = frontMatter;
-                    const url = `/components/${slugify(name)}`;
-                    let typedStatus = status as Status | undefined;
+                  .map((slug) => {
+                    const {
+                      title,
+                      status,
+                      description = '',
+                    } = pages[slug].frontMatter;
                     return (
-                      <ComponentGrid.Item
-                        key={name}
-                        name={name}
-                        description={stripMarkdownLinks(intro)}
-                        url={url}
-                        status={typedStatus}
+                      <Grid.Item
+                        key={title}
+                        title={title}
+                        description={stripMarkdownLinks(description)}
+                        url={`/${slug}`}
+                        status={status as Status}
+                        renderPreview={() => (
+                          <ComponentThumbnail title={title} />
+                        )}
                       />
                     );
                   })}
-              </ComponentGrid>
+              </Grid>
             </div>
           );
         })}
-      </Layout>
+      </Page>
     </div>
   );
 }

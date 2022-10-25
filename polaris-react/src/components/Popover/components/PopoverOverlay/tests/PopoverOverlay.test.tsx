@@ -2,36 +2,16 @@ import React, {useRef} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
-// eslint-disable-next-line import/no-deprecated
-import {EventListener} from '../../../../EventListener';
 import {TextContainer} from '../../../../TextContainer';
 import {TextField} from '../../../../TextField';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
-
-interface HandlerMap {
-  [eventName: string]: (event: any) => void;
-}
-
-const listenerMap: HandlerMap = {};
+import {Popover} from '../../../Popover';
 
 describe('<PopoverOverlay />', () => {
-  let addEventListener: jest.SpyInstance;
-  let removeEventListener: jest.SpyInstance;
-
   let rafSpy: jest.SpyInstance;
 
   beforeEach(() => {
-    addEventListener = jest.spyOn(document, 'addEventListener');
-    addEventListener.mockImplementation((event, callback) => {
-      listenerMap[event] = callback;
-    });
-
-    removeEventListener = jest.spyOn(document, 'removeEventListener');
-    removeEventListener.mockImplementation((event) => {
-      listenerMap[event] = noop;
-    });
-
     rafSpy = jest.spyOn(window, 'requestAnimationFrame');
     rafSpy.mockImplementation((callback) => callback());
   });
@@ -40,9 +20,6 @@ describe('<PopoverOverlay />', () => {
     if (document.activeElement) {
       (document.activeElement as HTMLElement).blur();
     }
-
-    addEventListener.mockRestore();
-    removeEventListener.mockRestore();
 
     rafSpy.mockRestore();
   });
@@ -205,24 +182,6 @@ describe('<PopoverOverlay />', () => {
     });
   });
 
-  it('calls the onClose callback when the escape key is pressed', () => {
-    const spy = jest.fn();
-
-    mountWithApp(
-      <PopoverOverlay
-        active
-        id="PopoverOverlay-1"
-        activator={activator}
-        onClose={spy}
-      >
-        {children}
-      </PopoverOverlay>,
-    );
-
-    listenerMap.keyup({keyCode: Key.Escape});
-    expect(spy).toHaveBeenCalledTimes(1);
-  });
-
   it('does not call the onClose callback when a descendent HTMLElement is clicked', () => {
     const spy = jest.fn();
 
@@ -244,13 +203,10 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    const target = popoverOverlay.find(TextField)!.find('input')!.domNode;
-    // eslint-disable-next-line import/no-deprecated
-    const clickEventListener = popoverOverlay.find(EventListener, {
-      event: 'click',
-    })!;
+    const target = popoverOverlay.find(TextField)!.find('input')!.domNode!;
+    const clickEvent = new MouseEvent('click', {bubbles: true});
 
-    clickEventListener.trigger('handler', {target});
+    target.dispatchEvent(clickEvent);
 
     expect(spy).not.toHaveBeenCalled();
   });
@@ -277,16 +233,185 @@ describe('<PopoverOverlay />', () => {
       </PopoverOverlay>,
     );
 
-    const target = popoverOverlay.find(TextField)!.find('svg')!.domNode;
-    // eslint-disable-next-line import/no-deprecated
-    const clickEventListener = popoverOverlay.find(EventListener, {
-      event: 'click',
-    })!;
+    const target = popoverOverlay.find(TextField)!.find('svg')!.domNode!;
+    const clickEvent = new MouseEvent('click', {bubbles: true});
 
-    clickEventListener!.trigger('handler', {
-      target,
-    });
+    target.dispatchEvent(clickEvent);
+
     expect(spy).not.toHaveBeenCalled();
+  });
+
+  it('does not call the onClose callback when another overlay is clicked if preventCloseOnChildOverlayClick is true', () => {
+    const spy = jest.fn();
+
+    const popoverOverlayAndPopover = mountWithApp(
+      <div>
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+          preventCloseOnChildOverlayClick
+        >
+          <button id="popover 1 button" />
+        </PopoverOverlay>
+        <Popover
+          active
+          fullWidth
+          activator={<div>Activator</div>}
+          onClose={jest.fn()}
+        >
+          <button id="popover 2 button" />
+        </Popover>
+      </div>,
+    );
+
+    const popover2Button = popoverOverlayAndPopover.find('button', {
+      id: 'popover 2 button',
+    })!.domNode!;
+    const clickEvent = new MouseEvent('click', {bubbles: true});
+
+    popover2Button.dispatchEvent(clickEvent);
+
+    expect(spy).not.toHaveBeenCalled();
+  });
+
+  describe('when the Escape key is pressed', () => {
+    it('calls the onClose callback if event target is descendant', () => {
+      const spy = jest.fn();
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          <TextField
+            label="Store name"
+            value="Click me"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+        </PopoverOverlay>,
+      );
+
+      const target = popoverOverlay.find(TextField)!.find('input')!.domNode!;
+      triggerEscape(target);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls the onClose callback if event target is activator descendant', () => {
+      const spy = jest.fn();
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          <TextField
+            label="Store name"
+            value="Click me"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+        </PopoverOverlay>,
+      );
+
+      const target = popoverOverlay.find(TextField)!.find('input')!.domNode!;
+      triggerEscape(target);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not call the onClose callback if event target is not descendant or activator descendant', () => {
+      const spy = jest.fn();
+
+      mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          {children}
+        </PopoverOverlay>,
+      );
+
+      triggerEscape();
+
+      expect(spy).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('deleting descendant elements', () => {
+    const DeleteButton = () => {
+      const [show, setShow] = React.useState(true);
+
+      return show ? (
+        <button onClick={() => setShow((prev) => !prev)}>Delete</button>
+      ) : null;
+    };
+
+    it('does not call the onClose callback when a descendant that has been removed from the DOM is clicked', () => {
+      const spy = jest.fn();
+
+      const popoverOverlay = mountWithApp(
+        <PopoverOverlay
+          active
+          id="PopoverOverlay-1"
+          activator={activator}
+          onClose={spy}
+        >
+          <DeleteButton />
+        </PopoverOverlay>,
+      );
+
+      const deleteButton = popoverOverlay.find('button')!.domNode!;
+      const clickEvent = new MouseEvent('click', {bubbles: true});
+
+      deleteButton.dispatchEvent(clickEvent);
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('does not call the onClose callback when a deleted element inside another overlay is clicked if preventCloseOnChildOverlayClick is true', () => {
+      const spy = jest.fn();
+
+      const popoverOverlayAndPopover = mountWithApp(
+        <div>
+          <PopoverOverlay
+            active
+            id="PopoverOverlay-1"
+            activator={activator}
+            onClose={spy}
+            preventCloseOnChildOverlayClick
+          >
+            <button id="popover 1 button" />
+          </PopoverOverlay>
+          <Popover
+            active
+            fullWidth
+            activator={<div>Activator</div>}
+            onClose={jest.fn()}
+          >
+            <DeleteButton />
+          </Popover>
+        </div>,
+      );
+
+      const deleteButton = popoverOverlayAndPopover
+        .find(Popover)!
+        .find('button')!.domNode!;
+      const clickEvent = new MouseEvent('click', {bubbles: true});
+
+      deleteButton.dispatchEvent(clickEvent);
+
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   it('starts animating in immediately', () => {
@@ -473,3 +598,12 @@ describe('<PopoverOverlay />', () => {
 });
 
 function noop() {}
+
+function triggerEscape(target?: Element) {
+  const keyupEvent = new KeyboardEvent('keyup', {
+    keyCode: Key.Escape,
+    bubbles: true,
+  });
+
+  (target || document).dispatchEvent(keyupEvent);
+}

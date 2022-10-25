@@ -1,6 +1,5 @@
-import { cloneElement, useState } from "react";
+import {cloneElement, useState} from 'react';
 import {
-  Placement,
   offset,
   flip,
   shift,
@@ -11,8 +10,8 @@ import {
   useFocus,
   useRole,
   useDismiss,
-} from "@floating-ui/react-dom-interactions";
-import styles from "./Tooltip.module.scss";
+} from '@floating-ui/react-dom-interactions';
+import styles from './Tooltip.module.scss';
 
 interface Props {
   ariaLabel: string;
@@ -20,22 +19,23 @@ interface Props {
   children: JSX.Element;
 }
 
-export const Tooltip = ({ children, ariaLabel, renderContent }: Props) => {
+export const Tooltip = ({children, ariaLabel, renderContent}: Props) => {
   const [open, setOpen] = useState(false);
 
-  const { x, y, reference, floating, strategy, context, placement } =
-    useFloating({
-      placement: "top",
+  const {x, y, reference, floating, strategy, context, placement} = useFloating(
+    {
+      placement: 'top',
       open,
       onOpenChange: setOpen,
-      middleware: [offset(5), flip(), shift({ padding: 8 })],
+      middleware: [offset(5), flip(), shift({padding: 8})],
       whileElementsMounted: autoUpdate,
-    });
+    },
+  );
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
+  const {getReferenceProps, getFloatingProps} = useInteractions([
     useHover(context),
     useFocus(context),
-    useRole(context, { role: "tooltip" }),
+    useRole(context, {role: 'tooltip'}),
     useDismiss(context),
   ]);
 
@@ -43,7 +43,7 @@ export const Tooltip = ({ children, ariaLabel, renderContent }: Props) => {
     <>
       {cloneElement(
         children,
-        getReferenceProps({ ref: reference, ...children.props })
+        getReferenceProps({ref: reference, ...children.props}),
       )}
       {open && (
         <div
@@ -52,8 +52,8 @@ export const Tooltip = ({ children, ariaLabel, renderContent }: Props) => {
             className: styles.Tooltip,
             style: {
               position: strategy,
-              top: y ?? "",
-              left: x ?? "",
+              top: y ?? '',
+              left: x ?? '',
             },
           })}
           data-placement={placement}

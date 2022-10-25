@@ -4,11 +4,164 @@ Polaris v10.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Table of Contents
 
+- [Breakpoints](#breakpoints)
+  - [New breakpoint tokens](#new-breakpoint-tokens)
+  - [Media query variables](#media-query-variables)
+  - [Sass static mixins](#sass-static-mixins)
+  - [Sass dynamic mixins](#sass-dynamic-mixins)
+  - [Sass global variables](#sass-global-variables)
 - [Consolidated color schemes](#consolidated-color-schemes)
 - [Components](#components)
   - [Removed support for `colorScheme`](#removed-support-for-colorscheme)
   - [Using dark color tokens](#using-dark-color-tokens)
   - [Removing `CustomProperties`](#removing-customproperties)
+- [Updated typopgraphy tokens](#updated-typography-tokens)
+  - [Font-size tokens](#font-size-tokens)
+  - [Line-height tokens](#line-height-tokens)
+
+## Breakpoints
+
+### New breakpoint tokens
+
+As part of our project to reduce the total number of unique breakpoints in Polaris and Shopify’s admin we've created the follow set of mobile first breakpoint tokens:
+
+- `xs`: 0px
+- `sm`: 490px
+- `md`: 768px
+- `lg`: 1040px
+- `xl`: 1440px
+
+A transform takes these values and generates Sass variables (which can be used in media conditions) for each breakpoint in `up`, `down`, and `only` directions.
+
+Example of generated output for `breakpoints-md`:
+
+- `@media #{$p-breakpoints-md-up} {/*...*/}`
+- `@media #{$p-breakpoints-md-down} {/*...*/}`
+- `@media #{$p-breakpoints-md-only} {/*...*/}`
+
+To use these Sass variables you will need to import the `media-queries.scss` file from `@shopify/polaris-tokens` in your project:
+
+```scss
+@import 'path/to/node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
+```
+
+### Media query variables
+
+We've created a collection of Sass variables for applying responsive styles at each breakpoint alias. A majority of the migration will involve replacing legacy media-queries or mixins with the following values:
+
+```scss
+$p-breakpoints-xs-up: '(min-width: 0em)';
+$p-breakpoints-xs-down: '(max-width: -0.0025em)';
+$p-breakpoints-xs-only: '(min-width: 0em) and (max-width: 30.6225em)';
+
+$p-breakpoints-sm-up: '(min-width: 30.625em)';
+$p-breakpoints-sm-down: '(max-width: 30.6225em)';
+$p-breakpoints-sm-only: '(min-width: 30.625em) and (max-width: 47.9975em)';
+
+$p-breakpoints-md-up: '(min-width: 48em)';
+$p-breakpoints-md-down: '(max-width: 47.9975em)';
+$p-breakpoints-md-only: '(min-width: 48em) and (max-width: 64.9975em)';
+
+$p-breakpoints-lg-up: '(min-width: 65em)';
+$p-breakpoints-lg-down: '(max-width: 64.9975em)';
+$p-breakpoints-lg-only: '(min-width: 65em) and (max-width: 89.9975em)';
+
+$p-breakpoints-xl-up: '(min-width: 90em)';
+$p-breakpoints-xl-down: '(max-width: 89.9975em)';
+$p-breakpoints-xl-only: '(min-width: 90em)';
+```
+
+### Sass static mixins
+
+The following Sass mixins have been removed. You will need to replace any instances with the closest Polaris media query variable (listed above) or hard code one off values.
+
+| Before                                                 | After                              |
+| ------------------------------------------------------ | ---------------------------------- |
+| `@include page-content-when-partially-condensed()`     | `@media #{$p-breakpoints-lg-down}` |
+| `@include page-content-when-not-partially-condensed()` | `@media #{$p-breakpoints-md-up}`   |
+| `@include page-content-when-fully-condensed()`         | `@media #{$p-breakpoints-sm-down}` |
+| `@include page-content-when-not-fully-condensed()`     | `@media #{$p-breakpoints-sm-up}`   |
+| `@include page-content-when-layout-stacked()`          | `@media #{$p-breakpoints-lg-down}` |
+| `@include page-content-when-layout-not-stacked()`      | `@media #{$p-breakpoints-md-up}`   |
+| `@include page-before-resource-list-small()`           | `@media #{$p-breakpoints-sm-down}` |
+| `@include page-after-resource-list-small()`            | `@media #{$p-breakpoints-sm-up}`   |
+| `@include page-when-not-max-width()`                   | `@media #{$p-breakpoints-lg-down}` |
+| `@include when-typography-condensed()`                 | `@media #{$p-breakpoints-md-down}` |
+| `@include when-typography-not-condensed()`             | `@media #{$p-breakpoints-md-up}`   |
+| `@include frame-when-nav-hidden()`                     | `@media #{$p-breakpoints-md-down}` |
+| `@include frame-when-nav-displayed()`                  | `@media #{$p-breakpoints-md-up}`   |
+| `@include frame-with-nav-when-not-max-width()`         | `@media #{$p-breakpoints-lg-down}` |
+| `@include after-topbar-sheet()`                        | `@media #{$p-breakpoints-sm-up}`   |
+
+### Sass dynamic mixins
+
+For dynamic mixins, the replacement media query variable will depend on the value being passed as an argument to the mixin.
+
+#### Mixin: `breakpoint-before()` and `breakpoint-after()`
+
+Replace any instances with the closest Polaris media query variable (listed above) or hard code one off values. For example:
+
+| Before                              | After                              |
+| ----------------------------------- | ---------------------------------- |
+| `@include breakpoint-after(490px)`  | `@media #{$p-breakpoints-sm-up}`   |
+| `@include breakpoint-before(490px)` | `@media #{$p-breakpoints-sm-down}` |
+
+#### Mixin: `page-content-breakpoint-before()` and `page-content-breakpoint-after()`
+
+Use the following [tool](https://stackblitz.com/edit/node-cbofkd?file=README.md) to determine the closest Polaris media query variable replacement.
+
+**Example 1**
+
+<details>
+  <summary><code>@include page-content-breakpoint-before(400px)</code></summary>
+
+Example input:
+<br>
+<img width="449" alt="Screen Shot 2022-08-23 at 3 38 11 PM" src="https://user-images.githubusercontent.com/32409546/186279553-98a4f0c2-3616-48f7-8851-61f015d53bee.png">
+
+Example output:
+<br>
+<img width="600" alt="Screen Shot 2022-08-23 at 3 40 57 PM" src="https://user-images.githubusercontent.com/32409546/186279649-b6ca5124-aaa3-43bd-b5e7-0b95eacb8ce9.png">
+
+> Note: In most cases you will select the largest `max-width` media query (as shown above).
+
+</details>
+
+**Example 2**
+
+<details>
+  <summary><code>@include page-content-breakpoint-after(400px)</code></summary>
+
+Example input:
+<br>
+<img width="449" alt="Screen Shot 2022-08-23 at 3 37 59 PM" src="https://user-images.githubusercontent.com/32409546/186280245-5bd873fe-9139-4d73-81c4-31619209ab7d.png">
+
+Example output:
+<br>
+<img width="600" alt="Screen Shot 2022-08-23 at 3 57 33 PM" src="https://user-images.githubusercontent.com/32409546/186280524-6eefb235-7e64-452f-ace7-ea8ee86aa18a.png">
+
+> Note: In most cases you will select the smallest `min-width` media query (as shown above).
+
+</details>
+
+### Sass global variables
+
+The following Sass global variables have been removed. The table below shows the evaluated values to help you determine the closest Polaris media query variable replacement.
+
+| Deprecated Variable                  | Value in EM (base 16px) | Value in PX |
+| ------------------------------------ | ----------------------- | ----------- |
+| `$frame-with-nav-max-width`          | `77.375rem`             | `1238px`    |
+| `$nav-min-window`                    | `48.0625em`             | `769px`     |
+| `$nav-size`                          | `15em`                  | `240px`     |
+| `$not-condensed-content`             | `46.5em`                | `744px`     |
+| `$not-condensed-min-page`            | `46.5em`                | `744px`     |
+| `$not-condensed-outer-spacing`       | `4em`                   | `64px`      |
+| `$page-max-width`                    | `62.375rem`             | `998px`     |
+| `$partially-condensed-content`       | `30.625em`              | `490px`     |
+| `$partially-condensed-min-page`      | `30.625em`              | `490px`     |
+| `$partially-condensed-outer-spacing` | `2.5em`                 | `40px`      |
+| `$stacked-content`                   | `50em`                  | `800px`     |
+| `$typography-condensed`              | `40em`                  | `640px`     |
 
 ## Consolidated color schemes
 
@@ -81,3 +234,63 @@ const App = (props) => (
 +  </div>
 )
 ```
+
+## Tokens
+
+The dark color scheme palette has been removed. Dark color tokens are now consolidated into a single color palette.
+
+The `@shopify/polaris-tokens` exported tokens object has replaced the `tokens.colorScheme` property with `tokens.colors`.
+
+```diff
+import {tokens} from '@shopify/polaris-tokens';
+
+- const colors = tokens.colorSchemes.light
++ const colors = tokens.colors
+```
+
+Token groups are now exported individually, allowing for tree-shaking and smaller import size.
+
+```diff
+- import {tokens} from '@shopify/polaris-tokens';
+- const {depth, spacing} = tokens;
+
++ import {depth, spacing} from '@shopify/polaris-tokens';
+```
+
+## Updated typography tokens
+
+We have updated and streamlined token values, and updated token names to reflect a token naming convention that makes tokens easier to use and understand.
+
+### Font-size tokens
+
+We updated the size tokens to use increments of 100 for the variants. This allows us to set `--p-font-size-100` as the base and go lower (` --p-font-size-75` ) or higher (`--p-font-size-200`) as needed numerically.
+
+| New token         | Old token        | px value  | rem value |
+| ----------------- | ---------------- | --------- | --------- |
+| --p-font-size-75  | --p-font-size-1  | 12        | 0.75      |
+| -                 | --p-font-size-2  | 13        | 0.8125    |
+| --p-font-size-100 | --p-font-size-3  | 14 (base) | 0.875     |
+| -                 | --p-font-size-4  | 15        | 0.9375    |
+| --p-font-size-200 | --p-font-size-5  | 16        | 1         |
+| -                 | --p-font-size-6  | 17        | 1.0625    |
+| --p-font-size-300 | --p-font-size-7  | 20        | 1.25      |
+| -                 | --p-font-size-8  | 21        | 1.3125    |
+| --p-font-size-400 | --p-font-size-9  | 24        | 1.50      |
+| -                 | --p-font-size-10 | 26        | 1.625     |
+| -                 | --p-font-size-11 | 27        | 1.6875    |
+| --p-font-size-500 | --p-font-size-12 | 28        | 1.75      |
+| --p-font-size-600 | -                | 32        | 2         |
+| --p-font-size-700 | -                | 40        | 2.5       |
+| -                 | --p-font-size-13 | 42        | 2.625     |
+
+### Line-height tokens
+
+| New token              | Value | Old token         | Value |
+| ---------------------- | ----- | ----------------- | ----- |
+| --p-font-line-height-1 | 16    | --p-line-height-1 | 16    |
+| --p-font-line-height-2 | 20    | --p-line-height-2 | 20    |
+| --p-font-line-height-3 | 24    | --p-line-height-3 | 24    |
+| --p-font-line-height-4 | 28    | --p-line-height-4 | 28    |
+| --p-font-line-height-5 | 32    | --p-line-height-5 | 32    |
+| --p-font-line-height-6 | 40    | --p-line-height-6 | 36    |
+| --p-font-line-height-7 | 48    | --p-line-height-7 | 44    |

@@ -1,4 +1,3 @@
-import {tokens} from '../src/tokens';
 import {
   createVar,
   getCustomPropertyNames,
@@ -11,6 +10,37 @@ import {
   getMediaConditions,
 } from '../src/utilities';
 
+const mockTokenGroup = {
+  'design-token-1': {
+    value: 'valueA',
+  },
+  'design-token-2': {
+    value: 'valueB',
+  },
+};
+
+const mockMotionTokenGroup = {
+  ...mockTokenGroup,
+  'keyframes-token-1': {
+    value: 'valueA',
+  },
+  'keyframes-token-2': {
+    value: 'valueB',
+  },
+};
+
+const mockTokens = {
+  colors: mockTokenGroup,
+  // Note: We don't need to assign mock values to the remaining static tokens.
+  depth: {},
+  motion: {},
+  legacyTokens: {},
+  shape: {},
+  spacing: {},
+  typography: {},
+  zIndex: {},
+};
+
 describe('createVar', () => {
   it('converts the token into a polaris css variable name', () => {
     const token = 'foo';
@@ -22,13 +52,19 @@ describe('createVar', () => {
 
 describe('getCustomPropertyNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(tokens)).toHaveLength(273);
+    expect(getCustomPropertyNames(mockTokens)).toStrictEqual([
+      '--p-design-token-1',
+      '--p-design-token-2',
+    ]);
   });
 });
 
 describe('getKeyframeNames', () => {
   it('extracts the keyframe tokens from the motion', () => {
-    expect(getKeyframeNames(tokens.motion)).toHaveLength(4);
+    expect(getKeyframeNames(mockMotionTokenGroup)).toStrictEqual([
+      'p-keyframes-token-1',
+      'p-keyframes-token-2',
+    ]);
   });
 });
 
@@ -118,24 +154,24 @@ describe('getMediaConditions', () => {
   it('transforms breakpoints tokens into directional media conditions', () => {
     /** @type {TokenGroup} */
     const breakpoints = {
-      breakpoint1: {value: '16px'},
-      breakpoint2: {value: '32px'},
+      breakpoint1: '16px',
+      breakpoint2: '32px',
     };
 
     expect(getMediaConditions(breakpoints)).toStrictEqual({
       breakpoint1: {
         // Up: sizeInPx / 16
         up: '(min-width: 1em)',
-        // Down: (sizeInPx - 0.05) / 16
-        down: '(max-width: 0.996875em)',
-        // Only: (nextBreakpointSizeInPx - 0.05) / 16
-        only: '(min-width: 1em) and (max-width: 1.996875em)',
+        // Down: (sizeInPx - 0.04) / 16
+        down: '(max-width: 0.9975em)',
+        // Only: (nextBreakpointSizeInPx - 0.04) / 16
+        only: '(min-width: 1em) and (max-width: 1.9975em)',
       },
       breakpoint2: {
         // Up: sizeInPx / 16
         up: '(min-width: 2em)',
-        // Down: (sizeInPx - 0.05) / 16
-        down: '(max-width: 1.996875em)',
+        // Down: (sizeInPx - 0.04) / 16
+        down: '(max-width: 1.9975em)',
         // Only: Same as the up condition as there is no next breakpoint
         only: '(min-width: 2em)',
       },

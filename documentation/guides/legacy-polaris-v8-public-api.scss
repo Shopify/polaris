@@ -1866,131 +1866,131 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-style-caption {
-  font-size: font-size(caption);
-  font-weight: 400;
-  line-height: line-height(caption);
+  font-size: 13px;
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-2);
 
   @include when-typography-not-condensed {
-    font-size: font-size(caption, large-screen);
-    line-height: line-height(caption, large-screen);
+    font-size: var(--p-font-size-75);
+    line-height: var(--p-font-line-height-1);
   }
 }
 
 @mixin text-style-heading {
-  font-size: font-size(heading);
-  font-weight: 600;
-  line-height: line-height(heading);
+  font-size: 17px;
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-3);
 
   @include when-typography-not-condensed {
-    font-size: font-size(heading, large-screen);
+    font-size: var(--p-font-size-200);
   }
 }
 
 @mixin text-style-subheading {
-  font-size: font-size(subheading);
-  font-weight: 600;
-  line-height: line-height(subheading);
+  font-size: 13px;
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-1);
   text-transform: uppercase;
 
   @include when-typography-not-condensed {
-    font-size: font-size(subheading, large-screen);
+    font-size: var(--p-font-size-75);
   }
 }
 
 @mixin text-style-input {
-  font-size: font-size(input);
-  font-weight: 400;
-  line-height: line-height(input);
+  font-size: var(--p-font-size-200);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-3);
   border: none;
 
   text-transform: initial;
   letter-spacing: initial;
 
   @include when-typography-not-condensed {
-    font-size: font-size(input, large-screen);
+    font-size: var(--p-font-size-100);
   }
 }
 
 @mixin text-style-body {
-  font-size: font-size(body);
-  font-weight: 400;
-  line-height: line-height(body);
+  font-size: 15px;
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-2);
 
   text-transform: initial;
   letter-spacing: initial;
 
   @include when-typography-not-condensed {
-    font-size: font-size(body, large-screen);
+    font-size: var(--p-font-size-100);
   }
 }
 
 @mixin text-style-button {
-  font-size: font-size(button);
+  font-size: 15px;
   font-weight: var(--p-font-weight-medium);
-  line-height: line-height(button);
+  line-height: var(--p-font-line-height-1);
 
   text-transform: initial;
   letter-spacing: initial;
 
   @include when-typography-not-condensed {
-    font-size: font-size(button, large-screen);
+    font-size: var(--p-font-size-100);
   }
 }
 
 @mixin text-style-button-large {
-  font-size: font-size(button-large);
+  font-size: 17px;
   font-weight: var(--p-font-weight-medium);
-  line-height: line-height(button-large);
+  line-height: var(--p-font-line-height-2);
 
   text-transform: initial;
   letter-spacing: initial;
 
   @include when-typography-not-condensed {
-    font-size: font-size(button-large, large-screen);
+    font-size: var(--p-font-size-200);
   }
 }
 
 @mixin text-style-display-x-large {
-  font-size: font-size(display-x-large);
-  font-weight: 600;
-  line-height: line-height(display-x-large);
+  font-size: 27px;
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-6);
 
   @include when-typography-not-condensed {
-    font-size: font-size(display-x-large, large-screen);
-    line-height: line-height(display-x-large, large-screen);
+    font-size: 42px;
+    line-height: var(--p-font-line-height-7);
   }
 }
 
 @mixin text-style-display-large {
-  font-size: font-size(display-large);
-  font-weight: 600;
-  line-height: line-height(display-large);
+  font-size: var(--p-font-size-400);
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-4);
 
   @include when-typography-not-condensed {
-    font-size: font-size(display-large, large-screen);
-    line-height: line-height(display-large, large-screen);
+    font-size: var(--p-font-size-500);
+    line-height: var(--p-font-line-height-5);
   }
 }
 
 @mixin text-style-display-medium {
-  font-size: font-size(display-medium);
-  font-weight: 400;
-  line-height: line-height(display-medium);
+  font-size: 21px;
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-4);
 
   @include when-typography-not-condensed {
-    font-size: font-size(display-medium, large-screen);
-    line-height: line-height(display-medium, large-screen);
+    font-size: 26px;
+    line-height: var(--p-font-line-height-5);
   }
 }
 
 @mixin text-style-display-small {
-  font-size: font-size(display-small);
-  font-weight: 400;
-  line-height: line-height(display-small);
+  font-size: var(--p-font-size-200);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-3);
 
   @include when-typography-not-condensed {
-    font-size: font-size(display-small, large-screen);
-    line-height: line-height(display-small, large-screen);
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-4);
   }
 }
 
@@ -1999,11 +1999,11 @@ $typography-condensed: em(640px);
 }
 
 @mixin text-emphasis-strong {
-  font-weight: 600;
+  font-weight: var(--p-font-weight-semibold);
 }
 
 @mixin text-emphasis-normal($for-background: null) {
-  font-weight: 400;
+  font-weight: var(--p-font-weight-regular);
   color: var(--p-text);
 }
 

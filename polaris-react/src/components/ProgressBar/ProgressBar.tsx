@@ -1,6 +1,6 @@
 import React from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {tokens} from '@shopify/polaris-tokens';
+import {motion} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -31,6 +31,10 @@ export interface ProgressBarProps {
    * @default 'true'
    */
   animated?: boolean;
+  /**
+   * Id (ids) of element (elements) that describes progressbar
+   */
+  ariaLabelledBy?: string;
 }
 
 export function ProgressBar({
@@ -38,6 +42,7 @@ export function ProgressBar({
   size = 'medium',
   color = 'highlight',
   animated: hasAppearAnimation = true,
+  ariaLabelledBy,
 }: ProgressBarProps) {
   const i18n = useI18n();
 
@@ -57,13 +62,18 @@ export function ProgressBar({
   const parsedProgress = parseProgress(progress, warningMessage);
 
   const progressBarDuration = hasAppearAnimation
-    ? tokens.motion['duration-500'].value
-    : tokens.motion['duration-0'].value;
+    ? motion['duration-500']
+    : motion['duration-0'];
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
     <div className={className}>
-      <progress className={styles.Progress} value={parsedProgress} max="100" />
+      <progress
+        aria-labelledby={ariaLabelledBy}
+        className={styles.Progress}
+        value={parsedProgress}
+        max="100"
+      />
       <CSSTransition
         in
         appear

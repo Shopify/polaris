@@ -1,10 +1,7 @@
 ---
-name: Text container
+title: Text container
+description: A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
 category: Titles and text
-platforms:
-  - android
-  - ios
-  - web
 releasedIn: 1.9.0
 keywords:
   - spacing
@@ -14,28 +11,16 @@ keywords:
   - vertical
   - margin
   - padding
-  - android
-  - ios
 examples:
   - fileName: text-container-default.tsx
-    title: Default text container
+    title: Default
     description: Use this component for default vertical spacing.
   - fileName: text-container-tight.tsx
-    title: Tight text container
-    description: >-
-      Use the tight spacing option to relate content topics to each
-      other.
+    title: Tight
+    description: Use the tight spacing option to relate content topics to each other.
   - fileName: text-container-loose.tsx
-    title: Loose text container
-    description: >-
-      Use the loose spacing option to separate concepts that are independent of
-      each other.
----
-
-# Text container
-
-A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
-
+    title: Loose
+    description: Use the loose spacing option to separate concepts that are independent of each other.
 ---
 
 ## Best practices

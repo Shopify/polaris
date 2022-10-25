@@ -26,6 +26,18 @@ describe('<ProgressBar />', () => {
     expect(progress).toContainReactComponent('progress', {value: 0});
   });
 
+  it('sets the aria-labelledby attribute for progress', () => {
+    const progressBarLabelId = 'label-id';
+
+    const progress = mountWithApp(
+      <ProgressBar ariaLabelledBy={progressBarLabelId} />,
+    );
+
+    expect(progress).toContainReactComponent('progress', {
+      'aria-labelledby': progressBarLabelId,
+    });
+  });
+
   describe('animated prop', () => {
     it('sets the progress bar CSSTransition to have a non-zero timeout value by default', () => {
       const progress = mountWithApp(<ProgressBar progress={20} />);
@@ -68,7 +80,6 @@ describe('<ProgressBar />', () => {
     let warnSpy: jest.SpyInstance;
 
     beforeEach(() => {
-      jest.resetModules();
       process.env = {...oldEnv};
       delete process.env.NODE_ENV;
 

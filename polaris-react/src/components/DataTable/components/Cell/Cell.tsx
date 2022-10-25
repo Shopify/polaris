@@ -1,5 +1,5 @@
-import React, {FocusEventHandler, useState} from 'react';
-import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import React, {FocusEventHandler, useRef} from 'react';
+import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -12,6 +12,7 @@ import {Tooltip} from '../../../Tooltip';
 export interface CellProps {
   content?: React.ReactNode;
   contentType?: string;
+  nthColumn?: boolean;
   firstColumn?: boolean;
   truncate?: boolean;
   header?: boolean;
@@ -29,15 +30,18 @@ export interface CellProps {
   stickyCellWidth?: number;
   hovered?: boolean;
   handleFocus?: FocusEventHandler;
-  inFixedFirstColumn?: boolean;
-  hasFixedFirstColumn?: boolean;
+  inFixedNthColumn?: boolean;
+  hasFixedNthColumn?: boolean;
   fixedCellVisible?: boolean;
   firstColumnMinWidth?: string;
+  style?: React.CSSProperties;
+  lastFixedFirstColumn?: boolean;
 }
 
 export function Cell({
   content,
   contentType,
+  nthColumn,
   firstColumn,
   truncate,
   header,
@@ -46,7 +50,7 @@ export function Cell({
   sorted,
   sortable,
   sortDirection,
-  inFixedFirstColumn,
+  inFixedNthColumn,
   verticalAlign = 'top',
   defaultSortDirection = 'ascending',
   onSort,
@@ -56,29 +60,20 @@ export function Cell({
   stickyCellWidth,
   hovered = false,
   handleFocus = () => {},
-  hasFixedFirstColumn = false,
+  hasFixedNthColumn = false,
   fixedCellVisible = false,
   firstColumnMinWidth,
+  style,
+  lastFixedFirstColumn,
 }: CellProps) {
   const i18n = useI18n();
   const numeric = contentType === 'numeric';
-
-  const [showTooltip, setShowTooltip] = useState(false);
-
-  function setTooltip(ref: HTMLTableCellElement | null) {
-    if (!ref) {
-      return;
-    }
-    if (ref.scrollWidth > ref.offsetWidth && inFixedFirstColumn) {
-      setShowTooltip(true);
-    }
-  }
 
   const className = classNames(
     styles.Cell,
     styles[`Cell-${variationName('verticalAlign', verticalAlign)}`],
     firstColumn && styles['Cell-firstColumn'],
-    firstColumn && truncate && styles['Cell-truncated'],
+    truncate && styles['Cell-truncated'],
     header && styles['Cell-header'],
     total && styles['Cell-total'],
     totalInFooter && styles['Cell-total-footer'],
@@ -87,9 +82,12 @@ export function Cell({
     sorted && styles['Cell-sorted'],
     stickyHeadingCell && styles.StickyHeaderCell,
     hovered && styles['Cell-hovered'],
-    fixedCellVisible && styles.separate,
-    firstColumn &&
-      inFixedFirstColumn &&
+    lastFixedFirstColumn &&
+      inFixedNthColumn &&
+      fixedCellVisible &&
+      styles['Cell-separate'],
+    nthColumn &&
+      inFixedNthColumn &&
       stickyHeadingCell &&
       styles.FixedFirstColumn,
   );
@@ -102,7 +100,8 @@ export function Cell({
   const iconClassName = classNames(sortable && styles.Icon);
   const direction =
     sorted && sortDirection ? sortDirection : defaultSortDirection;
-  const source = direction === 'descending' ? CaretDownMinor : CaretUpMinor;
+  const source =
+    direction === 'descending' ? SortDescendingMajor : SortAscendingMajor;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 
@@ -117,7 +116,12 @@ export function Cell({
     </span>
   );
 
-  const focusable = inFixedFirstColumn || !(hasFixedFirstColumn && firstColumn);
+  const focusable = !(
+    stickyHeadingCell &&
+    hasFixedNthColumn &&
+    nthColumn &&
+    !inFixedNthColumn
+  );
 
   const sortableHeadingContent = (
     <button
@@ -135,6 +139,11 @@ export function Cell({
 
   const colSpanProp = colSpan && colSpan > 1 ? {colSpan} : {};
 
+  const minWidthStyles =
+    nthColumn && firstColumnMinWidth
+      ? {minWidth: firstColumnMinWidth}
+      : {minWidth: stickyCellWidth};
+
   const stickyHeading = (
     <th
       ref={setRef}
@@ -142,11 +151,10 @@ export function Cell({
       {...colSpanProp}
       className={className}
       aria-sort={sortDirection}
-      style={
-        firstColumn && firstColumnMinWidth
-          ? {minWidth: firstColumnMinWidth}
-          : {minWidth: stickyCellWidth}
-      }
+      style={{
+        ...style,
+        ...minWidthStyles,
+      }}
       data-index-table-sticky-heading
     >
       {columnHeadingContent}
@@ -155,30 +163,27 @@ export function Cell({
   const headingMarkup = header ? (
     <th
       {...headerCell.props}
+      aria-sort={sortDirection}
       {...colSpanProp}
       ref={setRef}
       className={className}
       scope="col"
-      aria-sort={sortDirection}
-      style={firstColumn ? {minWidth: firstColumnMinWidth} : {}}
+      style={{...minWidthStyles}}
     >
       {columnHeadingContent}
     </th>
   ) : (
     <th
-      style={{minWidth: firstColumnMinWidth}}
+      {...colSpanProp}
+      ref={setRef}
       className={className}
       scope="row"
-      {...colSpanProp}
-      ref={(ref) => {
-        setTooltip(ref);
-        setRef(ref);
-      }}
+      style={{...minWidthStyles}}
     >
-      {showTooltip ? (
-        <Tooltip content={content}>
-          <span className={styles.TooltipContent}>{content}</span>
-        </Tooltip>
+      {truncate ? (
+        <TruncatedText className={styles.TooltipContent}>
+          {content}
+        </TruncatedText>
       ) : (
         content
       )}
@@ -186,7 +191,7 @@ export function Cell({
   );
 
   const cellMarkup =
-    header || firstColumn ? (
+    header || firstColumn || nthColumn ? (
       headingMarkup
     ) : (
       <td className={className} {...colSpanProp}>
@@ -196,3 +201,25 @@ export function Cell({
 
   return stickyHeadingCell ? stickyHeading : cellMarkup;
 }
+
+const TruncatedText = ({
+  children,
+  className = '',
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const textRef = useRef<any | null>(null);
+  const {current} = textRef;
+  const text = (
+    <span ref={textRef} className={className}>
+      {children}
+    </span>
+  );
+
+  return current?.scrollWidth > current?.offsetWidth ? (
+    <Tooltip content={textRef.current.innerText}>{text}</Tooltip>
+  ) : (
+    text
+  );
+};

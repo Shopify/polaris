@@ -8,6 +8,7 @@ import React, {
   Children,
 } from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
+import {tokens, toPx} from '@shopify/polaris-tokens';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';

@@ -1,15 +1,15 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "5.4.0",
+  "version": "6.2.1",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "main": "dist/cjs/build/index.js",
+  "module": "dist/esm/build/index.mjs",
+  "types": "dist/types/build/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.js"
+      "types": "./dist/types/build/index.d.ts",
+      "import": "./dist/esm/build/index.mjs",
+      "require": "./dist/cjs/build/index.js"
     },
     "./json/*": "./dist/json/*",
     "./css/*": "./dist/css/*",
@@ -17,19 +17,19 @@
   },
   "scripts": {
     "build": "run-s build:*",
-    "build:js": "rollup -c",
     "build:assets": "ts-node --skip-project scripts/index.ts",
+    "build:js": "rollup -c",
     "build:types": "tsc -b",
+    "build:clean": "rm -rf build",
     "dev": "rollup -c -w",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
-    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
+    "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
   },
   "devDependencies": {
-    "@shopify/browserslist-config": "^3.0.0",
-    "ts-node": "^10.7.0"
+    "@shopify/browserslist-config": "^3.0.0"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",

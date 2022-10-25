@@ -1,10 +1,7 @@
 ---
-name: Thumbnail
+title: Thumbnail
+description: Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
 category: Images and icons
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - photo
   - picture
@@ -13,36 +10,22 @@ keywords:
   - medium thumbnail
   - large thumbnail
   - image preview
-  - android
-  - ios
 examples:
   - fileName: thumbnail-default.tsx
-    title: Default thumbnail
+    title: Default
     description: Use as the default size.
   - fileName: thumbnail-extra-small.tsx
-    title: Extra small thumbnail
-    description: >-
-      Use to present a thumbnail in a condensed layout, such as a data table
-      cell or an action list item.
+    title: Extra small
+    description: Use to present a thumbnail in a condensed layout, such as a data table cell or an action list item.
   - fileName: thumbnail-small.tsx
-    title: Small thumbnail
-    description: >-
-      Use when the default size is too large for the layout, or when the
-      thumbnail has less importance.
+    title: Small
+    description: Use when the default size is too large for the layout, or when the thumbnail has less importance.
   - fileName: thumbnail-large.tsx
-    title: Large thumbnail
-    description: >-
-      Use when a thumbnail is a major focal point. Avoid this size in lists of
-      like items.
+    title: Large
+    description: Use when a thumbnail is a major focal point. Avoid this size in lists of like items.
   - fileName: thumbnail-with-component-source.tsx
-    title: Thumbnail with component source
+    title: With component source
     description: Use to render an icon inside of thumbnail.
----
-
-# Thumbnail
-
-Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
-
 ---
 
 ## Best practices

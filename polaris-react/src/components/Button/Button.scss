@@ -1,20 +1,20 @@
 @import '../../styles/common';
 
 .Button {
-  --pc-button-slim-min-height: var(--p-line-height-4);
-  --pc-button-large-min-height: var(--p-line-height-7);
+  --pc-button-slim-min-height: var(--p-font-line-height-4);
+  --pc-button-large-min-height: 44px;
   --pc-button-vertical-padding: calc(
-    (var(--p-line-height-6) - var(--p-line-height-2) - var(--p-space-05)) / 2
+    (36px - var(--p-font-line-height-2) - var(--p-space-05)) / 2
   );
   --pc-button-slim-vertical-padding: calc(
     (
-        var(--pc-button-slim-min-height) - var(--p-line-height-2) -
+        var(--pc-button-slim-min-height) - var(--p-font-line-height-2) -
           var(--p-space-05)
       ) / 2
   );
   --pc-button-large-vertical-padding: calc(
     (
-        var(--pc-button-large-min-height) - var(--p-line-height-2) -
+        var(--pc-button-large-min-height) - var(--p-font-line-height-2) -
           var(--p-space-05)
       ) / 2
   );
@@ -224,7 +224,7 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus:not(.disabled) {
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
     background: transparent;
@@ -308,7 +308,7 @@
 
   &.iconOnly {
     @include recolor-icon(var(--p-icon));
-    margin: calc(-0.5 * (var(--p-line-height-6) - var(--p-icon-size-medium)));
+    margin: calc(-0.5 * (36px - var(--p-icon-size-medium)));
 
     &:hover {
       @include recolor-icon(var(--p-icon-hovered));

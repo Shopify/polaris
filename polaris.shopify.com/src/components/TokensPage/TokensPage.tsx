@@ -1,96 +1,101 @@
-import styles from "./TokensPage.module.scss";
-import { TokenGroup, tokens as allTokens } from "@shopify/polaris-tokens";
-import { useState } from "react";
-import Container from "../Container";
-import { TokenPropertiesWithName } from "../../types";
-import TokenList from "../TokenList";
-import type { NavItem } from "../Nav";
-import Link from "next/link";
-import { slugify } from "../../utils/various";
-import { useRouter } from "next/router";
+import styles from './TokensPage.module.scss';
+import {MetadataGroup, metadata as allTokens} from '@shopify/polaris-tokens';
+import {Status, TokenPropertiesWithName} from '../../types';
+import TokenList from '../TokenList';
+import Link from 'next/link';
+import {slugify} from '../../utils/various';
+import {useRouter} from 'next/router';
+import Page from '../Page';
 
 interface Props {
   tokenGroup:
-    | "breakpoints"
-    | "colors"
-    | "depth"
-    | "motion"
-    | "shape"
-    | "spacing"
-    | "typography"
-    | "zIndex";
+    | 'breakpoints'
+    | 'colors'
+    | 'depth'
+    | 'font'
+    | 'motion'
+    | 'shape'
+    | 'spacing'
+    | 'zIndex';
 }
+
+export type NavItem = {
+  title: string;
+  url?: string;
+  status?: Status;
+  children?: NavItem[];
+};
 
 const navItems: NavItem[] = [
   {
-    title: "Colors",
+    title: 'Colors',
     url: `/tokens/colors`,
   },
   {
-    title: "Typography",
-    url: `/tokens/typography`,
+    title: 'Font',
+    url: `/tokens/font`,
   },
   {
-    title: "Shape",
+    title: 'Shape',
     url: `/tokens/shape`,
   },
   {
-    title: "Spacing",
+    title: 'Spacing',
     url: `/tokens/spacing`,
   },
   {
-    title: "Depth",
+    title: 'Depth',
     url: `/tokens/depth`,
   },
   {
-    title: "Motion",
+    title: 'Motion',
     url: `/tokens/motion`,
   },
   {
-    title: "Breakpoints",
+    title: 'Breakpoints',
     url: `/tokens/breakpoints`,
   },
   {
-    title: "Z-Index",
+    title: 'Z-Index',
     url: `/tokens/z-index`,
   },
 ];
 
 function tokensToFilteredArray(
   filter: string,
-  tokenGroup: TokenGroup
+  tokenGroup: MetadataGroup,
 ): TokenPropertiesWithName[] {
   return Object.entries(tokenGroup)
     .filter(([name]) => {
       return name.toLowerCase().includes(filter.toLowerCase());
     })
     .map(([name, value]) => {
-      return { name, ...value };
+      return {name, ...value};
     });
 }
 
-function TokensPage({ tokenGroup }: Props) {
-  const [filter, setFilter] = useState("");
+function TokensPage({tokenGroup}: Props) {
+  const filter = '';
   const router = useRouter();
 
   const tokens = {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
-    colors: tokensToFilteredArray(filter, allTokens.colorSchemes.light),
+    colors: tokensToFilteredArray(filter, allTokens.colors),
     depth: tokensToFilteredArray(filter, allTokens.depth),
+    font: tokensToFilteredArray(filter, allTokens.font),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shape: tokensToFilteredArray(filter, allTokens.shape),
     spacing: tokensToFilteredArray(filter, allTokens.spacing),
-    typography: tokensToFilteredArray(filter, allTokens.typography),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
 
-  const keyframeStyles = tokens["motion"]
-    .filter(({ name }) => name.includes("keyframes"))
-    .map(({ name, value }) => `@keyframes ${name} ${value}`)
-    .join("\n");
+  const keyframeStyles = tokens['motion']
+    .filter(({name}) => name.includes('keyframes'))
+    .map(({name, value}) => `@keyframes ${name} ${value}`)
+    .join('\n');
 
   return (
-    <Container>
+    <Page showTOC={false}>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Tokens</h1>
@@ -105,7 +110,7 @@ function TokensPage({ tokenGroup }: Props) {
                 return (
                   <li key={item.title}>
                     <Link href={item.url} passHref>
-                      <a aria-current={isCurrent ? "page" : undefined}>
+                      <a aria-current={isCurrent ? 'page' : undefined}>
                         {item.title}
                       </a>
                     </Link>
@@ -117,19 +122,23 @@ function TokensPage({ tokenGroup }: Props) {
           <TokenList>
             {tokens[tokenGroup]
               .sort((token) =>
-                token.name.includes("ease") || token.name.includes("linear")
+                token.name.includes('ease') || token.name.includes('linear')
                   ? -1
-                  : 1
+                  : 1,
               )
               .map((token) => (
-                <TokenList.Item key={token.name} token={token} />
+                <TokenList.Item
+                  key={token.name}
+                  category={tokenGroup}
+                  token={token}
+                />
               ))}
           </TokenList>
         </div>
 
         <style jsx>{keyframeStyles}</style>
       </div>
-    </Container>
+    </Page>
   );
 }
 

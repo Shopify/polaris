@@ -1,5 +1,6 @@
 ---
-name: Resource list
+title: Resource list
+description: A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 category: Lists and tables
 keywords:
   - ResourceList
@@ -24,76 +25,49 @@ keywords:
   - filter
   - sort
 examples:
-  - fileName: resource-list-simple.tsx
-    title: Simple resource list
-    description: >-
-      A resource list with simple items and no bulk actions, sorting, or
-      filtering.
+  - fileName: resource-list-default.tsx
+    title: Default
+    description: A resource list with simple items and no bulk actions, sorting, or filtering.
   - fileName: resource-list-with-empty-state.tsx
-    title: Resource list with empty state
-    description: >-
-      Use to explain the purpose of a list of resources when no resources exist
-      yet. This allows a smooth transition from a list in a loading state to a
-      list where zero, one, or many resources exist.
+    title: With empty state
+    description: Use to explain the purpose of a list of resources when no resources exist yet. This allows a smooth transition from a list in a loading state to a list where zero, one, or many resources exist.
   - fileName: resource-list-with-selection-and-no-bulk-actions.tsx
-    title: Resource list with selection and no bulk actions
+    title: With selection and no bulk actions
     description: A resource list with simple items and selection.
   - fileName: resource-list-with-bulk-actions.tsx
-    title: Resource list with bulk actions
+    title: With bulk actions
     description: Allows merchants to select items and perform an action on the selection.
   - fileName: resource-list-with-loading-state.tsx
-    title: Resource list with loading state
+    title: With loading state
     description: Notifies merchants that list items are being processed.
   - fileName: resource-list-with-total-count.tsx
-    title: Resource list with total resource count
-    description: >-
-      Use to indicate that the number of resources shown is a subset of the
-      total number of resources in the list.
+    title: With total count
+    description: Use to indicate that the number of resources shown is a subset of the total number of resources in the list.
   - fileName: resource-list-with-sorting.tsx
-    title: Resource list with sorting
+    title: With sorting
+    description: Allows merchants to change the way the list is sorted by selecting one of several options from a [Select](https://polaris.shopify.com/components/select) control.
   - fileName: resource-list-with-alternate-tool.tsx
-    title: Resource list with alternate tool
-    description: >-
-      Allows merchants to add an alternate tool in the current sort option
-      location when sort may not be the most relevant action for the current
-      list.
+    title: With alternate tool
+    description: Allows merchants to add an alternate tool in the current sort option location when sort may not be the most relevant action for the current list.
   - fileName: resource-list-with-filtering.tsx
-    title: Resource list with filtering
-    description: >-
-      Allows merchants to narrow the resource list to a subset of the original
-      items.
+    title: With filtering
+    description: Allows merchants to narrow the resource list to a subset of the original items.
   - fileName: resource-list-with-a-custom-empty-search-result-state.tsx
-    title: Resource list with a custom empty search result state
-    description: >-
-      Allows merchants to narrow the resource list to a subset of the original
-      items. If the filters or search applied return no results, then display a
-      custom empty search state.
+    title: With a custom empty search result state
+    description: Allows merchants to narrow the resource list to a subset of the original items. If the filters or search applied return no results, then display a custom empty search state.
   - fileName: resource-list-with-item-shortcut-actions.tsx
-    title: Resource list with item shortcut actions
-    description: >-
-      Shortcut actions are intended to provide quick access to popular actions
-      from the resource’s details page. They are shown when the mouse is hovered
-      over the list item, and are not shown on small screen devices, so the
-      action must also be accessible in another way.
+    title: With item shortcut actions
+    description: Shortcut actions are intended to provide quick access to popular actions from the resource’s details page. They are shown when the mouse is hovered over the list item, and are not shown on small screen devices, so the action must also be accessible in another way.
   - fileName: resource-list-with-persistent-item-shortcut-actions.tsx
-    title: Resource list with persistent item shortcut actions
-    description: >-
-      Use persistent shortcut actions in rare cases when the action cannot be
-      made available on the item’s details page. Persistent shortcut actions
-      roll up into an overflow menu on small screens.
+    title: With persistent item shortcut actions
+    description: Use persistent shortcut actions in rare cases when the action cannot be made available on the item’s details page. Persistent shortcut actions roll up into an overflow menu on small screens.
   - fileName: resource-list-with-multiselect.tsx
-    title: Resource list with multiselect
+    title: With multiselect
     description: Allows merchants to select or deselect multiple items at once.
   - fileName: resource-list-with-all-of-its-elements.tsx
-    title: Resource list with all of its elements
-    description: >-
-      Use as a broad example that includes most props available to resource
-      list.
+    title: With all of its elements
+    description: Use as a broad example that includes most props available to resource list.
 ---
-
-# Resource list
-
-A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 
 Resource lists can also:
 
@@ -113,11 +87,7 @@ Using a resource list in a project involves combining the following components a
 - [Filters](https://polaris.shopify.com/components/filters) (optional)
 - Pagination component (optional)
 
-<!-- hint -->
-
 The resource list component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
-
-<!-- end -->
 
 ---
 
@@ -139,15 +109,7 @@ Resource lists function as:
 
 Because a details page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these details pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
-<div class="TypeContainerImage TypeContainerImage--PageBackground">
-
-![Schematic showing content from a details page being surfaced on a resource list](/public_images/resource-list/list-surfacing-show@2x.png)
-
-</div>
-
-<!-- hint -->
-
-#### Hint
+![Schematic showing content from a details page being surfaced on a resource list](/images/components/resource-list/list-surfacing-show@2x.png)
 
 #### A resource list isn’t a data table
 
@@ -156,8 +118,6 @@ On wide screens, a resource list often looks like a table, especially if some co
 A data table is a form of data visualization. It works best to present highly structured data for comparison and analysis.
 
 If your use case is more about visualizing or analyzing data, use the [data table component](https://polaris.shopify.com/components/data-table). If your use case is more about finding and taking action on objects, use a resource list.
-
-<!-- end -->
 
 ---
 
@@ -186,36 +146,36 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-  <!-- usagelist -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - Products
-  - Showing 50 products
+- Products
+- Showing 50 products
 
-  #### Don’t
+#### Don’t
 
-  - _No heading_
+- _No heading_
 
-  <!-- end -->
+<!-- end -->
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-  <!-- usagelist -->
+<!-- dodont -->
 
-  #### Do
+#### Do
 
-  - Popular products this week
+- Popular products this week
 
-  #### Don’t
+#### Don’t
 
-  - Products
+- Products
 
-  <!-- end -->
+<!-- end -->
 
 - Follow the verb + noun formula for bulk actions
 
-- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#section-content-guidelines)
+- Follow the [content guidelines for filter options and applied filters](https://polaris.shopify.com/components/filters#content-guidelines)
 
 ---
 

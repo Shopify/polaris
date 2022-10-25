@@ -19,6 +19,26 @@ enum Status {
 
 export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
 
+/**
+ * Computes a rudimentary hash from a string by xoring the character codes
+ * of all characters
+ */
+function xorHash(str: string) {
+  let hash = 0;
+
+  for (const char of str) {
+    hash ^= char.charCodeAt(0);
+  }
+
+  return hash;
+}
+
+function styleClass(name?: string) {
+  return name
+    ? STYLE_CLASSES[xorHash(name) % STYLE_CLASSES.length]
+    : STYLE_CLASSES[0];
+}
+
 export interface AvatarProps {
   /**
    * Size of avatar
@@ -56,12 +76,6 @@ export function Avatar({
 }: AvatarProps) {
   const i18n = useI18n();
   const isAfterInitialMount = useIsAfterInitialMount();
-
-  function styleClass(name?: string) {
-    return name
-      ? STYLE_CLASSES[name.charCodeAt(0) % STYLE_CLASSES.length]
-      : STYLE_CLASSES[0];
-  }
 
   const [status, setStatus] = useState<Status>(Status.Pending);
 
@@ -102,9 +116,16 @@ export function Avatar({
   const className = classNames(
     styles.Avatar,
     size && styles[variationName('size', size)],
-    !customer && styles[variationName('style', styleClass(nameString))],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
     shape && styles[variationName('shape', shape)],
+    !customer &&
+      !source &&
+      styles[variationName('style', styleClass(nameString))],
+  );
+
+  const textClassName = classNames(
+    styles.Text,
+    (initials?.length || 0) > 2 && styles.long,
   );
 
   const imageClassName = classNames(
@@ -134,12 +155,11 @@ export function Avatar({
       />
     ) : (
       <text
+        className={textClassName}
         x="50%"
         y="50%"
         dy={verticalOffset}
         fill="currentColor"
-        fontSize={shape === 'square' ? '15.5' : '20'}
-        fontWeight={shape === 'square' ? '600' : '400'}
         textAnchor="middle"
       >
         {initials}

@@ -1,10 +1,7 @@
 ---
-name: Radio button
+title: Radio button
+description: Use radio buttons to present each item in a list of options where merchants must make a single selection.
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - RadioButton
   - selection
@@ -19,21 +16,8 @@ keywords:
   - switch
 examples:
   - fileName: radio-button-default.tsx
-    title: Default radio button
-    description: >-
-      Use radio buttons where merchants must make a single
-      selection.
-  # - fileName: radio-button-toggle.tsx
-  #   title: Toggle
-  #   description: >-
-  #     Use toggles when merchants need to make a binary choice (on or
-  #     off).
----
-
-# Radio button
-
-Use radio buttons to present each item in a list of options where merchants must make a single selection.
-
+    title: Default
+    description: Use radio buttons where merchants must make a single selection.
 ---
 
 ## Best practices
@@ -62,7 +46,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -76,7 +60,7 @@ Radio button labels should:
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -112,26 +96,6 @@ Toggle values should:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 Screen readers convey the state of the radio button automatically.
 
 - Use the `disabled` prop to apply the HTML `disabled` attribute to the radio button `<input>`. This prevents merchants from being able to interact with the radio button, and conveys its inactive state to assistive technologies.
@@ -147,5 +111,3 @@ Screen readers convey the state of the radio button automatically.
 
 - Move focus to the radio button group using the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - Use the up and down arrow keys to change which radio button is selected
-
-<!-- /content-for -->

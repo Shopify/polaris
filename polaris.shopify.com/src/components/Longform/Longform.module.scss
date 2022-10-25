@@ -1,6 +1,6 @@
-@import "../../styles/fonts.scss";
-@import "../../styles/mixins.scss";
-@import "../../styles/variables.scss";
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
 .Longform {
   img {
@@ -25,7 +25,7 @@
 
   h1 {
     @include heading-1;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 
     @media screen and (max-width: $breakpointMobile) {
       margin-bottom: 1.5rem;
@@ -34,7 +34,7 @@
 
   h2 {
     @include heading-2;
-    margin-top: 3.25rem;
+    margin-top: 3rem;
   }
 
   h3 {
@@ -83,11 +83,7 @@
   ul li {
     position: relative;
     &::marker {
-      color: #999;
-
-      @include dark-mode {
-        color: #555;
-      }
+      color: var(--text);
     }
   }
 
@@ -97,12 +93,11 @@
       position: relative;
       counter-increment: list;
       &::before {
-        content: counter(list) ".";
+        content: counter(list) '.';
         display: block;
         position: absolute;
         left: 0;
         border-radius: var(--border-radius-round);
-        opacity: 0.75;
       }
     }
   }
@@ -134,21 +129,13 @@
     display: none;
   }
 
-  pre {
-    font-family: "SF Mono", SFMono-Regular, ui-monospace, "DejaVu Sans Mono",
-      Menlo, Consolas, monospace;
-    font-size: var(--font-size-100);
-    padding: 1rem;
-    background: #222;
-    color: #fff;
-    border-radius: var(--border-radius-500);
-    overflow: auto;
-    white-space: pre-wrap;
-    min-width: 0;
-
-    p {
-      margin: 0;
-    }
+  p code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    font-weight: var(--font-weight-500);
+    background: var(--surface-code-inline);
+    border-radius: var(--border-radius-300);
+    padding: 0.15rem 0.25rem;
   }
 
   .usage-list {
@@ -158,35 +145,66 @@
   }
 
   table {
-    font-size: var(--font-size-200);
-    border-collapse: collapse;
+    font-size: var(--font-size-300);
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    width: 100%;
 
     th {
       font-weight: var(--font-weight-600);
+      font-size: var(--font-size-300);
+      letter-spacing: var(--letter-spacing-100);
       text-align: left;
-      border-bottom: var(--border);
+      background-color: var(--surface-subdued);
+      color: var(--text-strong);
+
+      &:first-child {
+        border-top-left-radius: 0.5rem;
+      }
+
+      &:last-child {
+        border-top-right-radius: 0.5rem;
+      }
     }
 
     th,
     td {
-      padding: 0.125rem 1rem;
+      padding: 0.6rem 0.70588rem;
+      border-bottom: 1px solid var(--border-color);
+      vertical-align: top;
 
       &:first-child {
-        padding-left: 0;
+        padding-left: 1.5rem;
       }
 
       &:last-child {
-        padding-right: 0;
+        padding-right: 1.5rem;
+      }
+
+      @media screen and (min-width: $breakpointDesktop) {
+        &:first-child {
+          padding-left: 1.5rem;
+        }
+
+        &:last-child {
+          padding-right: 1.5rem;
+        }
       }
     }
 
-    th {
-      padding-bottom: 0.5rem;
-    }
-
     tbody {
-      tr:first-child td {
-        padding-top: 0.5rem;
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: 0.5rem;
       }
     }
   }
@@ -200,12 +218,12 @@
   }
 }
 
-.Content {
+.Content.firstParagraphIsLede {
   > p:first-of-type {
     margin-top: 0;
-    margin-bottom: 2rem;
-    color: var(--text-strong);
-    font-size: var(--font-size-800);
+    margin-bottom: 1.5rem;
+    font-size: var(--font-size-600);
+    font-weight: var(--font-weight-500);
     letter-spacing: var(--letter-spacing-300);
   }
 }

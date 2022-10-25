@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
-import type {ThenType} from '@shopify/useful-types';
 import {mountWithApp} from 'tests/utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
+import {act} from 'react-dom/test-utils';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import {IndexTable, IndexTableProps} from '../../../IndexTable';
@@ -10,6 +10,11 @@ import {Checkbox, CheckboxWrapper} from '../Checkbox';
 import * as setRootPropertyModule from '../../../../../utilities/set-root-property';
 
 const defaultId = 'id';
+
+jest.mock('../../../../../utilities/debounce', () => ({
+  ...jest.requireActual('../../../../../utilities/debounce'),
+  debounce: (callback: () => void) => () => callback(),
+}));
 
 describe('<Checkbox />', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
@@ -69,6 +74,32 @@ describe('<Checkbox />', () => {
     expect(onSelectionChange).toHaveBeenCalledWith('single', false, defaultId);
   });
 
+  describe('when the row disabled prop is true', () => {
+    it('renders a Checkbox with disabled set to true', () => {
+      const disabled = true;
+      const checkbox = mountWithTable(<Checkbox />, {
+        rowProps: {disabled},
+      });
+
+      expect(checkbox).toContainReactComponent(PolarisCheckbox, {
+        disabled: true,
+      });
+    });
+  });
+
+  describe('when the row disabled prop is false', () => {
+    it('renders a Checkbox with disabled set to false', () => {
+      const disabled = false;
+      const checkbox = mountWithTable(<Checkbox />, {
+        rowProps: {disabled},
+      });
+
+      expect(checkbox).toContainReactComponent(PolarisCheckbox, {
+        disabled: false,
+      });
+    });
+  });
+
   describe('CheckboxWrapper', () => {
     describe('small screen', () => {
       const defaultTableProps = {
@@ -93,24 +124,58 @@ describe('<Checkbox />', () => {
         expect(checkbox).toContainReactComponent(CheckboxWrapper);
       });
 
-      it('sets `--pc-checkbox-offset` custom property', () => {
-        mountWithTable(<Checkbox />, defaultTableProps);
+      describe('--pc-checkbox-offset', () => {
+        it('sets `--pc-checkbox-offset` custom property when position is 0', () => {
+          mountWithTable(<Checkbox />, {
+            ...defaultTableProps,
+            rowProps: {position: 0},
+          });
 
-        expect(setRootPropertySpy).toHaveBeenLastCalledWith(
-          '--pc-checkbox-offset',
-          '0px',
-        );
-      });
+          expect(setRootPropertySpy).toHaveBeenLastCalledWith(
+            '--pc-checkbox-offset',
+            '0px',
+          );
+        });
 
-      it('updates `--pc-checkbox-offset` custom property on resize', () => {
-        mountWithTable(<Checkbox />, defaultTableProps);
-        setGetBoundingClientRect(200);
-        window.dispatchEvent(new Event('resize'));
+        it('updates `--pc-checkbox-offset` custom property on resize when position is 0', () => {
+          mountWithTable(<Checkbox />, {
+            ...defaultTableProps,
+            rowProps: {position: 0},
+          });
+          setGetBoundingClientRect(200);
 
-        expect(setRootPropertySpy).toHaveBeenLastCalledWith(
-          '--pc-checkbox-offset',
-          '200px',
-        );
+          act(() => {
+            window.dispatchEvent(new Event('resize'));
+          });
+
+          expect(setRootPropertySpy).toHaveBeenLastCalledWith(
+            '--pc-checkbox-offset',
+            '200px',
+          );
+        });
+
+        it('does not set `--pc-checkbox-offset` custom property when position is above 1', () => {
+          mountWithTable(<Checkbox />, {
+            ...defaultTableProps,
+            rowProps: {position: 1},
+          });
+
+          expect(setRootPropertySpy).not.toHaveBeenCalled();
+        });
+
+        it('does not update `--pc-checkbox-offset` custom property on resize when position is above 1', () => {
+          mountWithTable(<Checkbox />, {
+            ...defaultTableProps,
+            rowProps: {position: 1},
+          });
+          setGetBoundingClientRect(200);
+
+          act(() => {
+            window.dispatchEvent(new Event('resize'));
+          });
+
+          expect(setRootPropertySpy).not.toHaveBeenCalled();
+        });
       });
 
       it('renders table data', () => {
@@ -139,7 +204,7 @@ describe('<Checkbox />', () => {
 });
 
 function triggerCheckboxEvent(
-  checkbox: ThenType<ReturnType<typeof mountWithTable>>,
+  checkbox: Awaited<ReturnType<typeof mountWithTable>>,
   eventType: any,
   event: {[key: string]: any},
 ) {

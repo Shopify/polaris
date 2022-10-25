@@ -32,7 +32,6 @@
       "checkbox": "Kontrollkästchen",
       "undo": "Rückgängig machen",
       "cancel": "Abbrechen",
-      "newWindowAccessibilityHint": "(öffnet ein neues Fenster)",
       "clear": "Löschen",
       "close": "Schließen",
       "submit": "Senden",
@@ -214,7 +213,7 @@
       "characterCountWithMaxLength": "{count} von {limit} Zeichen verwendet"
     },
     "TopBar": {
-      "toggleMenuLabel": "Menü wechseln",
+      "toggleMenuLabel": "Menü ein/aus",
       "SearchField": {
         "clearButtonLabel": "Löschen",
         "search": "Suchen"
@@ -297,7 +296,8 @@
       "undo": "Rückgängig machen",
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} auswählen",
       "selectItem": "{resourceName} auswählen",
-      "selectButtonText": "Auswählen"
+      "selectButtonText": "Auswählen",
+      "sortAccessibilityLabel": "von {direction} sortieren nach"
     },
     "Page": {
       "Header": {

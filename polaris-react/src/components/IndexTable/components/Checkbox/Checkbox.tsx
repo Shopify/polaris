@@ -8,6 +8,7 @@ import React, {
   ReactNode,
 } from 'react';
 
+import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
 import {classNames} from '../../../../utilities/css';
 import {RowContext} from '../../../../utilities/index-table';
@@ -21,7 +22,7 @@ import styles from './Checkbox.scss';
 export const Checkbox = memo(function Checkbox() {
   const i18n = useI18n();
   const {resourceName, condensed} = useIndexValue();
-  const {itemId, selected, onInteraction} = useContext(RowContext);
+  const {itemId, selected, disabled, onInteraction} = useContext(RowContext);
 
   const wrapperClassName = classNames(
     styles.Wrapper,
@@ -45,6 +46,7 @@ export const Checkbox = memo(function Checkbox() {
             })}
             labelHidden
             checked={selected}
+            disabled={disabled}
           />
         </div>
       </div>
@@ -57,14 +59,19 @@ interface CheckboxWrapperProps {
 }
 
 export function CheckboxWrapper({children}: CheckboxWrapperProps) {
+  const {position} = useContext(RowContext);
   const checkboxNode = useRef<HTMLTableDataCellElement>(null);
 
-  const handleResize = useCallback(() => {
-    if (!checkboxNode.current) return;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleResize = useCallback(
+    debounce(() => {
+      if (position !== 0 || !checkboxNode.current) return;
 
-    const {width} = checkboxNode.current.getBoundingClientRect();
-    setRootProperty('--pc-checkbox-offset', `${width}px`);
-  }, []);
+      const {width} = checkboxNode.current.getBoundingClientRect();
+      setRootProperty('--pc-checkbox-offset', `${width}px`);
+    }),
+    [position],
+  );
 
   useEffect(() => {
     handleResize();

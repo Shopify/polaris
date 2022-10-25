@@ -1,10 +1,7 @@
 ---
-name: Toast
+title: Toast
+description: The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
 category: Feedback indicators
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - toast
   - flash message
@@ -17,50 +14,22 @@ keywords:
   - popup
   - iframe
   - duration
-  - ios
-  - android
-  - web
 examples:
-  - fileName: toast-basic.tsx
-    title: Basic toast
-    description: >-
-      Use to convey general confirmation or actions that aren’t critical. For
-      example, you might show a toast message to inform the merchant that their
-      recent action was successful.
+  - fileName: toast-default.tsx
+    title: Default
+    description: Use to convey general confirmation or actions that aren’t critical. For example, you might show a toast message to inform the merchant that their recent action was successful.
   - fileName: toast-multiple-messages.tsx
-    title: Multiple toast messages
+    title: Multiple messages
     description: Use multiple toast messages to inform the merchant about distinct actions.
   - fileName: toast-with-custom-duration.tsx
-    title: Toast with custom duration
+    title: With custom duration
     description: Use to shorten or lengthen the default duration of 5000 milliseconds.
-  # - fileName: toast-with-action.tsx
-  #   title: Toast with action
-  #   description: >-
-  #     Use when a merchant has the ability to act on the message. For example, to
-  #     undo a change or retry an action.
-  # - fileName: toast-default.tsx
-  #   title: Default toast
-  #   description: >-
-  #     Use default toast for informative and neutral feedback.On iOS,
-  #     icons are available for cases where you want to re-inforce the
-  #     message.
-  # - fileName: toast-success.tsx
-  #   title: Success toast
-  #   description: >-
-  #     Use success toast to indicate that something was successful. For example,
-  #     a product was successfully updated.On iOS, icons are available
-  #     for cases where you want to re-inforce the message.
+  - fileName: toast-with-action.tsx
+    title: With action
+    description: Use when a merchant has the ability to act on the message. For example, to undo a change or retry an action.
   - fileName: toast-error.tsx
-    title: Error toast
-    description: >-
-      On iOS, icons are available for cases where you want to
-      re-inforce the message.
----
-
-# Toast
-
-The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
-
+    title: Error
+    description: Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 ---
 
 ## Required components
@@ -97,7 +66,7 @@ Toast messages should be:
 - Short and affirmative
 - Written in the pattern of: noun + verb
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -132,7 +101,7 @@ Action should:
 - Not have actions, like [Cancel], for dismissing toast. The [X] to dismiss is already included in the component.
 - Be used with a duration of at least 10,000 milliseconds for accessibility.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -163,8 +132,6 @@ Action should:
 
 ## Accessibility
 
- <!-- content-for: web -->
-
 The content of the toast component is implemented as an ARIA live region using `aria-live="polite"`. When the toast appears, screen readers should announce the toast text after any other more pressing announcements.
 
 Avoid using toast for critical information that merchants need to act on immediately. Toast might be difficult for merchants with low vision or low dexterity to access because it:
@@ -178,5 +145,3 @@ Avoid using toast for critical information that merchants need to act on immedia
 Make sure that merchants can also accomplish the action in the toast another way, since the toast action may be difficult to access for some merchants. If the toast action is not available somewhere else on the page, for example a retry action that reloads a section, it should have a fallback action, for example a browser refresh.
 
 Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.
-
- <!-- /content-for -->

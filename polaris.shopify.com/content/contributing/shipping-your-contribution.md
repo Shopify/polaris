@@ -1,35 +1,35 @@
 ---
-name: Shipping your contribution
+title: Shipping your contribution
+description: Contributions to this documentation site and code-related resources in the Polaris design system are made in the [Shopify/polaris GitHub repository](https://github.com/Shopify/polaris). We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects/2250), and use GitHub discussions, issues, and pull requests to work in the open.
 keywords:
   - contributing to polaris
   - github
   - pull request
   - fork
   - clone
+order: 6
 ---
 
-# Shipping your contribution
+## Project details
 
-While Figma is used to host and maintain the Polaris UI Kit, all other resources in the Polaris design system live on GitHub. We manage work in progress in our [team backlog](https://github.com/orgs/Shopify/projects), and use GitHub Discussions, Issues, and Pull Requests to work in the open.
+### How it’s structured
 
-## How the project is structured
+The Shopify/polaris GitHub repository is structured as a monorepo, which means it’s a single repository with multiple projects. The monorepo includes:
 
-Polaris is structured as a monorepo, which means it’s a single repository with multiple projects. The Polaris monorepo includes:
+<!-- prettier-ignore -->
+| `polaris` |     |
+| ---------- | --- |
+|`/polaris-for-figma` |Figma plugin for Polaris components|
+|`/polaris-for-vscode` |VS Code extension for Polaris Design Token autocompletion|
+|`/polaris-icons` |npm SVG icon library `@shopify/polaris-icons`|
+|`/polaris-react` |npm React component library `@shopify/polaris`|
+|`/polaris-tokens` |npm Design Token library `@shopify/polaris-tokens`|
+|`/polaris.shopify.com` |The style guide to the Polaris Design System|
+|`/stylelint-polaris` |Linting rules for using Polaris Design Tokens through CSS custom properties|
 
-```
-polaris/
-├── polaris-for-figma           # Figma plugin for Polaris components
-├── polaris-for-vscode          # VS Code extension for Polaris Design Token autocomplete suggestions
-├── polaris-icons               # npm SVG icon library `@shopify/polaris-icons`
-├── polaris-react               # npm React component library `@shopify/polaris`
-├── polaris-tokens              # npm Design Token library `@shopify/polaris-tokens`
-├── polaris.shopify.com         # The style guide to the Polaris Design System
-└── stylelint-polaris           # Linting rules for using Polaris Design Tokens through CSS custom properties
-```
+### Technologies we use
 
-## What technologies we use
-
-To manage our monorepo structure we use:
+To manage our monorepo, we use:
 
 - Yarn for package management
 - Turborepo and Yarn workspaces for monorepo workflows
@@ -37,9 +37,9 @@ To manage our monorepo structure we use:
 
 Every Polaris project is a little different, but in general we build with JavaScript, TypeScript, and Sass. This documentation site is built using React and Next.js.
 
-## Getting set up
+## Get set up
 
-To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred git interface, like iTerm or Visual Studio Code, to save and log your changes with git.
+To contribute to Polaris components, icons, or documentation, you’ll need to use your preferred `git` interface to commit and push up your changes. Whether that’s the command line in your favorite terminal, or in GitHub Desktop is entirely up to you. For this guide, we’ll illustrate the steps with terminal commands.
 
 ### 1. Download the repo
 
@@ -67,22 +67,22 @@ yarn && yarn build
 git checkout -b new-branch-name
 ```
 
-## Making your first PR
+## Open your first PR
 
 ### 1. Test your changes
 
-As you work commit and test your changes:
+As you work, commit and test your changes:
 
-If your changes affect Polaris React components, you'll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
+If your changes affect Polaris React components, you’ll need to test the examples and documentation of affected components. For more thorough testing edit the sandbox files found in the `/polaris-react/playground` directory.
 
 ```bash
 yarn turbo run dev --filter=@shopify/polaris
 
 # Open https://localhost:3000 to test documentation
-# Open https://localhost:6006 to test Storybook examples and Playgrounds
+# Open https://localhost:6006 to test Storybook examples and Playground sandboxes
 ```
 
-If your adding or editing documentation, ensure your content displays as expected on the style guide website:
+If you are adding or editing documentation, ensure your content displays as expected on the style guide website:
 
 ```bash
 yarn turbo run dev --filter=polaris.shopify.com
@@ -90,13 +90,13 @@ yarn turbo run dev --filter=polaris.shopify.com
 
 ### 2. Commit your changes
 
-Save the changes you've made to your branch.
+Save the changes you’ve made to your branch.
 
 ```bash
 git commit -m “descriptive message”
 ```
 
-Push up your branch up to GitHub
+Push up your branch to GitHub
 
 ```bash
 git push origin new-branch-name
@@ -113,3 +113,5 @@ In your PR’s description, be specific with what you’ve tested as well as wha
 - UI changes
 - Small screen vs large screen UX
 - Other considerations or feedback you’re seeking regarding how you’ve implemented your changes
+
+Add a [changeset](https://github.com/Shopify/polaris/blob/main/.changeset/README.md#changesets) if your PR includes any changes that will require a package version bump and release. Otherwise, add the `🤖 Skip Changelog` label to your PR.

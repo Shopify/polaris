@@ -32,7 +32,6 @@
       "checkbox": "pole wyboru",
       "undo": "Cofnij",
       "cancel": "Anuluj",
-      "newWindowAccessibilityHint": "(otwiera nowe okno)",
       "clear": "Wyczyść",
       "close": "Zamknij",
       "submit": "Prześlij",
@@ -299,7 +298,8 @@
       "undo": "Cofnij",
       "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Wybierz {resourceName}",
-      "selectButtonText": "Wybierz"
+      "selectButtonText": "Wybierz",
+      "sortAccessibilityLabel": "sortuj {direction} według"
     },
     "Page": {
       "Header": {

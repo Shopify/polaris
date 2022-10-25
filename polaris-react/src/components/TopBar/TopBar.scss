@@ -124,11 +124,10 @@ $icon-size: 20px;
   width: 100%;
   margin: 0;
   max-width: none;
-  margin-left: calc((100% - #{$page-max-width}) / 2);
+  margin-right: var(--p-space-1);
 
-  @media #{$p-breakpoints-lg-down} {
-    margin-left: 0;
-    margin-right: var(--p-space-1);
+  @media #{$p-breakpoints-xl-up} {
+    margin-left: calc((100% - #{$page-max-width}) / 2);
   }
 }
 

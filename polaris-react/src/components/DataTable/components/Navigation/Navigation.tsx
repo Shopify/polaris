@@ -11,9 +11,10 @@ export interface NavigationProps {
   columnVisibilityData: ColumnVisibilityData[];
   isScrolledFarthestLeft?: boolean;
   isScrolledFarthestRight?: boolean;
-  fixedFirstColumn?: boolean;
+  fixedFirstColumns: number;
   navigateTableLeft?(): void;
   navigateTableRight?(): void;
+  setRef?: (ref: HTMLDivElement | null) => void;
 }
 
 export function Navigation({
@@ -22,12 +23,13 @@ export function Navigation({
   isScrolledFarthestRight,
   navigateTableLeft,
   navigateTableRight,
-  fixedFirstColumn,
+  fixedFirstColumns,
+  setRef = () => {},
 }: NavigationProps) {
   const i18n = useI18n();
 
   const pipMarkup = columnVisibilityData.map((column, index) => {
-    if (fixedFirstColumn && index === 0) return;
+    if (index < fixedFirstColumns) return;
     const className = classNames(
       styles.Pip,
       column.isVisible && styles['Pip-visible'],
@@ -47,7 +49,7 @@ export function Navigation({
   );
 
   return (
-    <div className={styles.Navigation}>
+    <div className={styles.Navigation} ref={setRef}>
       <Button
         plain
         icon={ChevronLeftMinor}

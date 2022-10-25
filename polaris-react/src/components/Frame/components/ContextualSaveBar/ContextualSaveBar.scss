@@ -1,9 +1,16 @@
 @import '../../../../styles/common';
 
 .ContextualSaveBar {
+  // Used to apply dark theme to action buttons
+  /* stylelint-disable stylelint-polaris/custom-properties-allowed-list */
+  --p-surface: var(--p-surface-dark);
+  --p-text: var(--p-text-on-dark);
+  --p-action-secondary-hovered: var(--p-action-secondary-hovered-dark);
+  --p-action-secondary-pressed: var(--p-action-secondary-pressed-dark);
+  /* stylelint-enable stylelint-polaris/custom-properties-allowed-list */
   display: flex;
   height: $top-bar-height;
-  background: var(--p-surface);
+  background: var(--p-surface-dark);
   box-shadow: 0 2px 4px var(--p-hint-from-direct-light);
 
   .LogoContainer {
@@ -16,7 +23,7 @@
   }
 
   .Message {
-    color: var(--p-text);
+    color: var(--p-text-on-dark);
   }
 
   @media (forced-colors: active) {

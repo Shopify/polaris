@@ -1,5 +1,5 @@
 import React, {ReactElement} from 'react';
-import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
+import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../../../Icon';
@@ -24,9 +24,9 @@ describe('<Cell />', () => {
     });
   });
 
-  describe('firstColumn', () => {
+  describe('nthColumn', () => {
     it('renders a table heading element when true', () => {
-      const cell = mountWithTable(<Cell firstColumn />);
+      const cell = mountWithTable(<Cell nthColumn />);
 
       expect(cell).toContainReactComponent('th');
     });
@@ -44,13 +44,7 @@ describe('<Cell />', () => {
     it('sets the aria-sort attribute to the sortDirection when the table is currently sorted by that column', () => {
       const sortDirection = 'ascending';
       const cell = mountWithTable(
-        <Cell
-          header
-          firstColumn
-          sortable
-          sorted
-          sortDirection={sortDirection}
-        />,
+        <Cell header nthColumn sortable sorted sortDirection={sortDirection} />,
       );
 
       expect(cell).toContainReactComponent('th', {
@@ -63,7 +57,7 @@ describe('<Cell />', () => {
       const cell = mountWithTable(
         <Cell
           header
-          firstColumn
+          nthColumn
           sortable
           sorted={false}
           sortDirection={sortDirection}
@@ -78,13 +72,13 @@ describe('<Cell />', () => {
 
   describe('sortable', () => {
     it('renders an Icon when table is sortable by that column', () => {
-      const cell = mountWithTable(<Cell header firstColumn sortable />);
+      const cell = mountWithTable(<Cell header nthColumn sortable />);
 
       expect(cell).toContainReactComponent(Icon);
     });
 
     it('renders no Icon when table is not sortable by that column', () => {
-      const cell = mountWithTable(<Cell header firstColumn sortable={false} />);
+      const cell = mountWithTable(<Cell header nthColumn sortable={false} />);
 
       expect(cell).not.toContainReactComponent(Icon);
     });
@@ -96,7 +90,7 @@ describe('<Cell />', () => {
         const cell = mountWithTable(
           <Cell
             header
-            firstColumn
+            nthColumn
             sortable
             sortDirection="none"
             defaultSortDirection="descending"
@@ -104,7 +98,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+          source: SortDescendingMajor,
         });
       });
 
@@ -112,7 +106,7 @@ describe('<Cell />', () => {
         const cell = mountWithTable(
           <Cell
             header
-            firstColumn
+            nthColumn
             sortable
             sortDirection="none"
             defaultSortDirection="ascending"
@@ -120,7 +114,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
     });
@@ -128,17 +122,17 @@ describe('<Cell />', () => {
     describe('when set to ascending', () => {
       it('renders an up caret Icon when table is currently sorted by that column', () => {
         const cell = mountWithTable(
-          <Cell header firstColumn sortable sorted sortDirection="ascending" />,
+          <Cell header nthColumn sortable sorted sortDirection="ascending" />,
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
 
       it('renders an Icon with an accessibility label indicating the next sort direction is descending', () => {
         const cell = mountWithTable(
-          <Cell header firstColumn sortable sorted sortDirection="ascending" />,
+          <Cell header nthColumn sortable sorted sortDirection="ascending" />,
         );
 
         expect(cell).toContainReactComponent(Icon, {
@@ -150,29 +144,17 @@ describe('<Cell />', () => {
     describe('when set to descending', () => {
       it('renders a down caret Icon when table is currently sorted by that column', () => {
         const cell = mountWithTable(
-          <Cell
-            header
-            firstColumn
-            sortable
-            sorted
-            sortDirection="descending"
-          />,
+          <Cell header nthColumn sortable sorted sortDirection="descending" />,
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+          source: SortDescendingMajor,
         });
       });
 
       it('renders an Icon with an accessibility label indicating the next sort direction is ascending', () => {
         const cell = mountWithTable(
-          <Cell
-            header
-            firstColumn
-            sortable
-            sorted
-            sortDirection="descending"
-          />,
+          <Cell header nthColumn sortable sorted sortDirection="descending" />,
         );
 
         expect(cell).toContainReactComponent(Icon, {
@@ -188,7 +170,7 @@ describe('<Cell />', () => {
         const cell = mountWithTable(
           <Cell
             header
-            firstColumn
+            nthColumn
             sortable
             sorted={false}
             sortDirection="none"
@@ -197,7 +179,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
     });
@@ -207,7 +189,7 @@ describe('<Cell />', () => {
         const cell = mountWithTable(
           <Cell
             header
-            firstColumn
+            nthColumn
             sortable
             sorted={false}
             defaultSortDirection="ascending"
@@ -215,7 +197,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretUpMinor,
+          source: SortAscendingMajor,
         });
       });
     });
@@ -225,7 +207,7 @@ describe('<Cell />', () => {
         const cell = mountWithTable(
           <Cell
             header
-            firstColumn
+            nthColumn
             sortable
             sorted={false}
             defaultSortDirection="descending"
@@ -233,7 +215,7 @@ describe('<Cell />', () => {
         );
 
         expect(cell).toContainReactComponent(Icon, {
-          source: CaretDownMinor,
+          source: SortDescendingMajor,
         });
       });
     });
@@ -245,7 +227,7 @@ describe('<Cell />', () => {
       const cell = mountWithTable(
         <Cell
           header
-          firstColumn
+          nthColumn
           sortable
           sorted={false}
           content="Heading 1"

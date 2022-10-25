@@ -1,10 +1,7 @@
 ---
-name: Modal
+title: Modal
+description: Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
 category: Overlays
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - modal
   - src
@@ -28,48 +25,34 @@ keywords:
   - overlay
   - dialog
   - alert
-  - android
-  - ios
 examples:
-  - fileName: modal-basic.tsx
-    title: Basic modal
+  - fileName: modal-default.tsx
+    title: Default
     description: Use as the default option for a modal.
   - fileName: modal-with-primary-action.tsx
-    title: Modal with primary action
+    title: With primary action
     description: Use to let merchants take a key action.
   - fileName: modal-with-primary-and-secondary-actions.tsx
-    title: Modal with primary and secondary actions
-    description: >-
-      Use to let merchants take key actions at the bottom of the
-      modal.
+    title: With primary and secondary actions
+    description: Use to let merchants take key actions at the bottom of the modal.
   - fileName: modal-large.tsx
-    title: Large modal
+    title: Large
     description: Use when you need to increase the width of your modal.
   - fileName: modal-small.tsx
-    title: Small modal
+    title: Small
     description: Use when you need to decrease the width of your modal.
   - fileName: modal-without-a-title.tsx
-    title: Modal without a title
+    title: Without a title
     description: A title is required for accessibility, but you may hide it.
   - fileName: modal-with-scroll-listener.tsx
-    title: Modal with scroll listener
+    title: With scroll listener
     description: Use to implement infinite scroll of modal content.
   - fileName: modal-with-activator-ref.tsx
-    title: Modal with activator ref
+    title: With activator ref
+    description: Provide an activator ref when it’s more convenient than providing an element. This ensures proper focus management when closing the modal. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
   - fileName: modal-without-an-activator-prop.tsx
-    title: Modal without an activator prop
-  # - fileName: modal-warning.tsx
-  #   title: Warning modal
-  #   description: >-
-  #     Use to make it clear to the merchant that the action is potentially
-  #     dangerous. Only use this option when the merchant is about to perform an
-  #     action that can’t be undone or is difficult to undo.
----
-
-# Modal
-
-Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
-
+    title: Without an activator prop
+    description: Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 ---
 
 ## Best practices
@@ -79,7 +62,7 @@ Use modals for confirmations and conditional changes. They should be thought of 
 Modals should:
 
 - Require that merchants take an action.
-- Close when merchants press the `X` button, the `Cancel` button, or the <kbd>Esc</kbd> key, not when merchants click or tap the area outside the modal.
+- Close when merchants press the `X` button, the `Cancel` button, the <kbd>Esc</kbd> key, or when merchants click or tap the area outside the modal.
 - Not have more than two buttons (primary and secondary) at the bottom. This prevents unclear action hierarchy and crowding on mobile screens. Since modals are for focused tasks, they should have focused actions. In some cases however, a [tertiary action](#tertiary-actions) may be appropriate.
 
 ---
@@ -91,9 +74,9 @@ Modals should:
 Modal titles should:
 
 - Use a clear {verb}+{noun} question or statement
-- Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings)
+- Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -115,7 +98,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -132,7 +115,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -150,7 +133,7 @@ Actions should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive a merchant by mislabeling an action.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -166,7 +149,7 @@ Actions should be:
 
 - Action-led: actions should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on actions except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -182,7 +165,7 @@ Actions should be:
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -194,8 +177,6 @@ Actions should be:
 
 <!-- end -->
 
-<a name="tertiary-actions"></a>
-
 ### Tertiary actions
 
 Tertiary actions should:
@@ -203,17 +184,17 @@ Tertiary actions should:
 - Only be used when the action requires the context of the content in the modal
 - Never be used to dismiss the modal
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
 - Use a plain button for a tertiary action if needed
-  ![Screenshot of modal with a plain button as a tertiary action](/public_images/components/Modal/do-use-plain-button-for-tertiary-action@2x.png)
+  ![Screenshot of modal with a plain button as a tertiary action](/images/components/modal/do-use-plain-button-for-tertiary-action@2x.png)
 
 #### Don’t
 
 - Use a tertiary action for a destructive action
-  ![Screenshot of modal with a destructive button as a tertiary action](/public_images/components/Modal/dont-use-destructive-tertiary-action@2x.png)
+  ![Screenshot of modal with a destructive button as a tertiary action](/images/components/modal/dont-use-destructive-tertiary-action@2x.png)
 
 <!-- end -->
 
@@ -223,7 +204,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling a merchant what actions are available to them (especially something new). Don’t use permissive language like "you can".
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -238,7 +219,7 @@ Body content should be:
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -262,26 +243,6 @@ Body content should be:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 - Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
 - After a modal is closed, in order to return focus to the button that launched it, pass the button to the modal as an `activator`.
@@ -292,5 +253,3 @@ See Apple’s Human Interface Guidelines and API documentation about accessibili
 - While the modal is open, keyboard focus shouldn’t leave the modal
 - Merchants can dismiss the modal with the keyboard by activating the `X` button, the `Cancel` button if one is provided, or by pressing the <kbd>Esc</kbd> key
 - After a modal is closed, focus returns to the button that launched it
-
-<!-- /content-for -->

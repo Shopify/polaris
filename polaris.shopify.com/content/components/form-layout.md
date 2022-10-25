@@ -1,10 +1,7 @@
 ---
-name: Form layout
+title: Form layout
+description: Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
 category: Forms
-platforms:
-  - android
-  - ios
-  - web
 keywords:
   - FormLayout
   - Group
@@ -30,33 +27,16 @@ keywords:
   - short text fields
   - layout forms
   - layout input fields
-  - android
-  - ios
 examples:
   - fileName: form-layout-default.tsx
-    title: Default form layout
-    description: >-
-      Use to stack form fields vertically, which makes them easier to scan and
-      complete.
+    title: Default
+    description: Use to stack form fields vertically, which makes them easier to scan and complete.
   - fileName: form-layout-field-group.tsx
     title: Field group
-    description: >-
-      Use field groups to arrange multiple fields in a row.Works best for
-      familiar layouts such as a row of city, state, and zip code fields. Use
-      caution when arranging unrelated fields next to each other as this makes
-      fields easier to miss.Field groups will wrap automatically on smaller
-      screens.
+    description: Use field groups to arrange multiple fields in a row. Works best for familiar layouts such as a row of city, state, and zip code fields. Use caution when arranging unrelated fields next to each other as this makes fields easier to miss. Field groups will wrap automatically on smaller screens.
   - fileName: form-layout-condensed-field-group.tsx
     title: Condensed field group
-    description: >-
-      For very short inputs, the width of the inputs may be reduced in order to
-      fit more fields in the row.
----
-
-# Form layout
-
-Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
-
+    description: For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 ---
 
 ## Best practices
@@ -73,7 +53,7 @@ Forms should:
 
 ### Form section title
 
-Form section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#section-headings-and-subheadings).
+Form section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
 ### Field label
 
@@ -83,7 +63,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -95,7 +75,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 <!-- end -->
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 

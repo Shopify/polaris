@@ -1,0 +1,29 @@
+name: Trigger deploy of polaris.shopify.com
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'polaris.shopify.com/**'
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger deploy polaris.shopify.com
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: "shopify",
+              repo: "polaris-site-container-builder",
+              workflow_id: "trigger-deploy.yml",
+              ref: "main",
+              inputs: {
+                sha: context.sha,
+                target: 'production'
+              }
+            });

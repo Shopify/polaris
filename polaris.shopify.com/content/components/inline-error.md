@@ -1,10 +1,7 @@
 ---
-name: Inline error
+title: Inline error
+description: Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
 category: Forms
-platforms:
-  - web
-  - android
-  - ios
 keywords:
   - InlineError
   - error message
@@ -12,18 +9,9 @@ keywords:
   - invalid input
   - form group
 examples:
-  - fileName: inline-error-basic.tsx
-    title: Basic inline error
-    description: >-
-      Use when the merchant has entered information that is not valid into
-      multiple fields inside of a form, or needs to be displayed in a
-      non-standard position in the form layout.
----
-
-# Inline error
-
-Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
-
+  - fileName: inline-error-default.tsx
+    title: Default
+    description: Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 ---
 
 ## Best practices
@@ -37,7 +25,7 @@ Inline errors should:
 - Describe specific solutions so merchants can successfully complete their task in the form
 - Not be placed out of context of the input or group of inputs they describe
 
-[Learn more about error message patterns](https://polaris.shopify.com/patterns/error-messages#section-form-validation)
+[Learn more about error message patterns](https://polaris.shopify.com/patterns/error-messages#form-validation)
 
 ---
 
@@ -53,7 +41,7 @@ Inline error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- usagelist -->
+<!-- dodont -->
 
 #### Do
 
@@ -75,28 +63,6 @@ Inline error messages should:
 
 ## Accessibility
 
-<!-- content-for: android -->
-
-See Material Design and development documentation about accessibility for Android:
-
-- [Accessible design on Android](https://material.io/design/usability/accessibility.html)
-- [Accessible development on Android](https://developer.android.com/guide/topics/ui/accessibility/)
-
-<!-- /content-for -->
-
-<!-- content-for: ios -->
-
-See Apple’s Human Interface Guidelines and API documentation about accessibility for iOS:
-
-- [Accessible design on iOS](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/accessibility/)
-- [Accessible development on iOS](https://developer.apple.com/accessibility/ios/)
-
-<!-- /content-for -->
-
-<!-- content-for: web -->
-
 - Use the required `fieldID` prop to give the inline error a unique `id`. This ties the error to a form field using `aria-describedby` so that it's conveyed to screen reader users.
 - Use the required `message` prop to provide the text that describes the error.
 - The inline error [icon](https://polaris.shopify.com/design/icons) helps visually identify the error message for merchants who have difficulty seeing [colors](https://polaris.shopify.com/design/colors) or who use settings that remove color from the page.
-
-<!-- /content-for -->

@@ -46,6 +46,12 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
+export {AlphaCard} from './components/AlphaCard';
+export type {AlphaCardProps} from './components/AlphaCard';
+
+export {AlphaStack} from './components/AlphaStack';
+export type {AlphaStackProps} from './components/AlphaStack';
+
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -68,6 +74,12 @@ export type {
   BannerStatus,
   BannerHandles,
 } from './components/Banner';
+
+export {Bleed} from './components/Bleed';
+export type {BleedProps} from './components/Bleed';
+
+export {Box} from './components/Box';
+export type {BoxProps} from './components/Box';
 
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';
@@ -107,17 +119,20 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
+export {Columns} from './components/Columns';
+export type {ColumnsProps} from './components/Columns';
+
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
 
 export {Connected} from './components/Connected';
 export type {ConnectedProps} from './components/Connected';
 
+export {ContentBlock} from './components/ContentBlock';
+export type {ContentBlockProps} from './components/ContentBlock';
+
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
-
-export {CustomProperties} from './components/CustomProperties';
-export type {CustomPropertiesProps} from './components/CustomProperties';
 
 export {DataTable} from './components/DataTable';
 export type {
@@ -198,6 +213,12 @@ export type {IndexTableProps} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
+
+export {Inline} from './components/Inline';
+export type {InlineProps} from './components/Inline';
+
+export {InlineCode} from './components/InlineCode';
+export type {InlineCodeProps} from './components/InlineCode';
 
 export {InlineError, errorTextID} from './components/InlineError';
 export type {InlineErrorProps} from './components/InlineError';
@@ -339,6 +360,9 @@ export type {TabsProps} from './components/Tabs';
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';
 
+export {Text} from './components/Text';
+export type {TextProps} from './components/Text';
+
 export {TextContainer} from './components/TextContainer';
 export type {TextContainerProps} from './components/TextContainer';
 
@@ -350,6 +374,9 @@ export type {TextStyleProps} from './components/TextStyle';
 
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
+
+export {Tiles} from './components/Tiles';
+export type {TilesProps} from './components/Tiles';
 
 export {Toast} from './components/Toast';
 export type {ToastProps} from './components/Toast';
@@ -395,6 +422,7 @@ export {
   hslToRgb,
   rgbString,
   rgbaString,
+  hexToRgb,
 } from './utilities/color-transformers';
 
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
@@ -406,3 +434,8 @@ export {
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
+export {
+  SELECT_ALL_ITEMS as INDEX_TABLE_SELECT_ALL_ITEMS,
+  SelectionType as IndexTableSelectionType,
+} from './utilities/index-provider';
+export {useBreakpoints} from './utilities/breakpoints';

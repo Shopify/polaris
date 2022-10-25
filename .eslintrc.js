@@ -82,9 +82,29 @@ module.exports = {
   overrides: [
     ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
     {
+      files: ['polaris-cli/src/**/*.{ts,tsx}'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+    {
       files: ['polaris-for-figma/src/**/*.{ts,tsx}'],
       rules: {
         '@shopify/jsx-no-hardcoded-content': 'off',
+      },
+    },
+    {
+      files: ['polaris-migrator/src/**/*.{ts,tsx}'],
+      rules: {
+        'import/no-default-export': 'off',
+      },
+    },
+    {
+      files: ['polaris-migrator/src/**/tests/*.{ts,tsx}'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
+        '@shopify/jsx-no-hardcoded-content': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
       },
     },
     {
@@ -121,11 +141,17 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-react/playground/*.tsx'],
+      files: [
+        'polaris-react/playground/*.tsx',
+        'polaris-react/src/components/**/*.stories.tsx',
+      ],
       rules: {
         'react/prefer-stateless-function': 'off',
         '@shopify/jsx-no-hardcoded-content': 'off',
         '@shopify/react-initialize-state': 'off',
+        'import/no-default-export': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'no-console': 'off',
       },
     },
     {

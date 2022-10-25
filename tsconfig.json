@@ -1,7 +1,9 @@
 {
   "files": [],
   "references": [
+    {"path": "./polaris-cli"},
     {"path": "./polaris-for-vscode"},
+    {"path": "./polaris-migrator"},
     {"path": "./polaris-react"},
     {"path": "./polaris-tokens"},
     {"path": "./polaris.shopify.com"},

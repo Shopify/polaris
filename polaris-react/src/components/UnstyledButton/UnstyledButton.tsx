@@ -2,6 +2,7 @@ import React from 'react';
 
 import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {useDisableClick} from '../../utilities/use-disable-interaction';
 import {UnstyledLink} from '../UnstyledLink';
 
 export interface UnstyledButtonProps extends BaseButton {
@@ -57,6 +58,8 @@ export function UnstyledButton({
     onTouchStart,
   };
 
+  const handleClick = useDisableClick(disabled, onClick);
+
   if (url) {
     buttonMarkup = disabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
@@ -77,8 +80,8 @@ export function UnstyledButton({
     buttonMarkup = (
       <button
         {...interactiveProps}
+        aria-disabled={disabled}
         type={submit ? 'submit' : 'button'}
-        disabled={disabled}
         aria-busy={loading ? true : undefined}
         aria-controls={ariaControls}
         aria-expanded={ariaExpanded}
@@ -88,6 +91,8 @@ export function UnstyledButton({
         onKeyDown={onKeyDown}
         onKeyUp={onKeyUp}
         onKeyPress={onKeyPress}
+        onClick={handleClick}
+        tabIndex={disabled ? -1 : undefined}
         {...rest}
       >
         {children}
