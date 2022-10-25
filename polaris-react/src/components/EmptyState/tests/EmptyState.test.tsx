@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
-import {DisplayText} from '../../DisplayText';
+import {Text} from '../../Text';
 import {Image} from '../../Image';
 import {Stack} from '../../Stack';
 import {TextContainer} from '../../TextContainer';
@@ -146,26 +146,26 @@ describe('<EmptyState />', () => {
   });
 
   describe('heading', () => {
-    it('passes the provided heading to DisplayText', () => {
+    it('passes the provided heading to Text', () => {
       const expectedHeading = 'Manage your inventory transfers';
       const emptyState = mountWithApp(
         <EmptyState heading={expectedHeading} image={imgSrc} />,
       );
-      const displayText = emptyState.find(DisplayText)!;
+      const text = emptyState.find(Text)!;
 
-      expect(displayText).toHaveReactProps({size: 'medium'});
-      expect(displayText).toContainReactText(expectedHeading);
+      expect(text).toHaveReactProps({variant: 'heading2xl'});
+      expect(text).toContainReactText(expectedHeading);
     });
 
-    it('renders a small DisplayText when in a content context', () => {
+    it('renders a headingXl Text when in a content context', () => {
       const emptyStateInContentContext = mountWithApp(
         <WithinContentContext.Provider value>
           <EmptyState heading="Heading" image={imgSrc} />
         </WithinContentContext.Provider>,
       );
 
-      expect(emptyStateInContentContext).toContainReactComponent(DisplayText, {
-        size: 'small',
+      expect(emptyStateInContentContext).toContainReactComponent(Text, {
+        variant: 'headingXl',
       });
     });
   });

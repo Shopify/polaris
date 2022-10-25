@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {GlobeMinor} from '@shopify/polaris-icons';
 
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 import {Icon} from '../../Icon';
 import {Badge} from '../Badge';
 
@@ -14,12 +14,12 @@ describe('<Badge />', () => {
 
   it('accepts a status prop and renders a visually hidden label', () => {
     const badge = mountWithApp(<Badge status="success" />);
-    expect(badge).toContainReactComponent(VisuallyHidden);
+    expect(badge).toContainReactComponent(Text), {visuallyHidden: true};
   });
 
   it('accepts a progress prop and renders a visually hidden label', () => {
     const badge = mountWithApp(<Badge progress="incomplete" />);
-    expect(badge).toContainReactComponent(VisuallyHidden);
+    expect(badge).toContainReactComponent(Text, {visuallyHidden: true});
   });
 
   it('renders progress and status labels in the same element', () => {
@@ -27,8 +27,9 @@ describe('<Badge />', () => {
       <Badge progress="incomplete" status="attention" />,
     );
 
-    expect(badge).toContainReactComponentTimes(VisuallyHidden, 1, {
+    expect(badge).toContainReactComponentTimes(Text, 1, {
       children: 'Attention Incomplete',
+      visuallyHidden: true,
     });
   });
 
@@ -87,8 +88,9 @@ describe('<Badge />', () => {
       />,
     );
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: mockAccessibilityLabel,
+      visuallyHidden: true,
     });
   });
 
@@ -102,8 +104,9 @@ describe('<Badge />', () => {
       />,
     );
 
-    expect(badge).not.toContainReactComponent(VisuallyHidden, {
+    expect(badge).not.toContainReactComponent(Text, {
       children: 'Attention Incomplete',
+      visuallyHidden: true,
     });
   });
 
@@ -112,25 +115,28 @@ describe('<Badge />', () => {
       <Badge status="attention" progress="incomplete" />,
     );
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Attention Incomplete',
+      visuallyHidden: true,
     });
 
     badge = mountWithApp(<Badge progress="incomplete" />);
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Incomplete',
+      visuallyHidden: true,
     });
 
     badge = mountWithApp(<Badge status="attention" />);
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Attention',
+      visuallyHidden: true,
     });
 
     badge = mountWithApp(<Badge />);
 
-    expect(badge).not.toContainReactComponent(VisuallyHidden);
+    expect(badge).not.toContainReactComponent(Text, {visuallyHidden: true});
   });
 });
 
@@ -140,26 +146,30 @@ describe('<Badge.Pip />', () => {
       <Badge.Pip status="attention" progress="incomplete" />,
     );
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Attention Incomplete',
+      visuallyHidden: true,
     });
 
     badge = mountWithApp(<Badge.Pip progress="partiallyComplete" />);
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Partially complete',
+      visuallyHidden: true,
     });
 
     badge = mountWithApp(<Badge.Pip status="attention" />);
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Attention Complete',
+      visuallyHidden: true,
     });
 
     badge = mountWithApp(<Badge.Pip />);
 
-    expect(badge).toContainReactComponent(VisuallyHidden, {
+    expect(badge).toContainReactComponent(Text, {
       children: 'Complete',
+      visuallyHidden: true,
     });
   });
 });

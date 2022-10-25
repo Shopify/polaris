@@ -1,8 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {DisplayText} from '../../DisplayText';
-import {TextStyle} from '../../TextStyle';
+import {Text} from '../../Text';
 import {EmptySearchResult} from '../EmptySearchResult';
 import {emptySearch} from '../illustrations';
 
@@ -10,10 +9,10 @@ describe('<EmptySearchResult />', () => {
   it("displays the title with style 'Display Small'", () => {
     const wrapper = mountWithApp(<EmptySearchResult title="Foo" />);
     const displaySmalls = wrapper.findWhere(
-      (wrap) => wrap.is(DisplayText) && wrap.prop('size') === 'small',
+      (wrap) => wrap.is(Text) && wrap.prop('variant') === 'headingXl',
     );
 
-    expect(wrapper).toContainReactComponent(DisplayText, {size: 'small'});
+    expect(wrapper).toContainReactComponent(Text, {variant: 'headingXl'});
     expect(displaySmalls).toContainReactText('Foo');
   });
 
@@ -22,9 +21,9 @@ describe('<EmptySearchResult />', () => {
       <EmptySearchResult title="Foo" description="Bar" />,
     );
     const subdued = wrapper.findWhere(
-      (wrap) => wrap.is(TextStyle) && wrap.prop('variation') === 'subdued',
+      (wrap) => wrap.is(Text) && wrap.prop('color') === 'subdued',
     );
-    expect(wrapper).toContainReactComponent(TextStyle, {variation: 'subdued'});
+    expect(wrapper).toContainReactComponent(Text, {color: 'subdued'});
     expect(subdued).toContainReactText('Bar');
   });
 
