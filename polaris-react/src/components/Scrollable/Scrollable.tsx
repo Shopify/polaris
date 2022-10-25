@@ -60,7 +60,7 @@ export function Scrollable({
 
   useComponentDidMount(() => {
     if (hint) {
-      performScrollHint(scrollArea.current);
+      requestAnimationFrame(() => performScrollHint(scrollArea.current));
     }
   });
 
@@ -72,18 +72,20 @@ export function Scrollable({
     }
 
     const handleScroll = () => {
-      const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
-      const isBelowTopOfScroll = Boolean(scrollTop > 0);
-      const isAtBottomOfScroll = Boolean(
-        scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
-      );
+      requestAnimationFrame(() => {
+        const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
+        const isBelowTopOfScroll = Boolean(scrollTop > 0);
+        const isAtBottomOfScroll = Boolean(
+          scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
+        );
 
-      setTopShadow(isBelowTopOfScroll);
-      setBottomShadow(!isAtBottomOfScroll);
+        setTopShadow(isBelowTopOfScroll);
+        setBottomShadow(!isAtBottomOfScroll);
 
-      if (isAtBottomOfScroll && onScrolledToBottom) {
-        onScrolledToBottom();
-      }
+        if (isAtBottomOfScroll && onScrolledToBottom) {
+          onScrolledToBottom();
+        }
+      });
     };
 
     const handleResize = debounce(handleScroll, 50, {trailing: true});
@@ -145,10 +147,12 @@ function performScrollHint(elem?: HTMLDivElement | null) {
     Math.min(MAX_SCROLL_HINT_DISTANCE, scrollableDistance) - LOW_RES_BUFFER;
 
   const goBackToTop = () => {
-    if (elem.scrollTop >= distanceToPeek) {
-      elem.removeEventListener('scroll', goBackToTop);
-      elem.scrollTo({top: 0, behavior: 'smooth'});
-    }
+    requestAnimationFrame(() => {
+      if (elem.scrollTop >= distanceToPeek) {
+        elem.removeEventListener('scroll', goBackToTop);
+        elem.scrollTo({top: 0, behavior: 'smooth'});
+      }
+    });
   };
 
   elem.addEventListener('scroll', goBackToTop);
