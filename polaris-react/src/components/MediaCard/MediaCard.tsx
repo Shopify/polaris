@@ -7,7 +7,7 @@ import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor, ComplexAction} from '../../types';
 import {Card} from '../Card';
 import {Button, buttonFrom} from '../Button';
-import {Heading} from '../Heading';
+import {Text} from '../Text';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
@@ -56,7 +56,13 @@ export function MediaCard({
   let headerMarkup = null;
   if (title) {
     const headerContent =
-      typeof title === 'string' ? <Heading>{title}</Heading> : title;
+      typeof title === 'string' ? (
+        <Text variant="headingLg" as="h2">
+          {title}
+        </Text>
+      ) : (
+        title
+      );
     headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
   }
 

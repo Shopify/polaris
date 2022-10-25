@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
 
@@ -61,7 +61,9 @@ export function Badge({
     : getDefaultAccessibilityLabel(i18n, progress, status);
 
   let accessibilityMarkup = Boolean(accessibilityLabel) && (
-    <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+    <Text variant="bodySm" as="span" visuallyHidden>
+      {accessibilityLabel}
+    </Text>
   );
 
   if (progress && !icon) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {DisplayText} from '../../../DisplayText';
+import {Text} from '../../../Text';
 import {CloseButton} from '../CloseButton';
 
 import styles from './Header.scss';
@@ -18,9 +18,9 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
       className={titleHidden || !children ? styles.titleHidden : styles.Header}
     >
       <div id={id} className={styles.Title}>
-        <DisplayText element="h2" size="small">
+        <Text as="h2" variant="headingXl">
           {children}
-        </DisplayText>
+        </Text>
       </div>
       <CloseButton titleHidden={titleHidden} onClick={onClose} />
     </div>
