@@ -14,7 +14,12 @@ import {
   getImportSpecifierName,
   hasImportSpecifier,
   removeImportSpecifier,
+  getImportSourcePaths,
+  renameImportDeclaration,
+  removeImportDeclaration,
+  insertImportDeclaration,
 } from '../../../utilities/imports';
+import type {MigrationOptions} from '../replace-text-component';
 
 const variationMap = {
   strong: {fontWeight: 'bold'},
@@ -31,16 +36,32 @@ const variationMap = {
 export function replaceTextStyle<NodeType = ASTNode>(
   j: JSCodeshift,
   source: Collection<NodeType>,
+  options: MigrationOptions,
 ) {
-  if (hasImportSpecifier(j, source, 'Text', '@shopify/polaris')) {
-    removeImportSpecifier(j, source, 'TextStyle', '@shopify/polaris');
-  } else {
-    renameImportSpecifier(j, source, 'TextStyle', 'Text', '@shopify/polaris');
-  }
+  const sourcePaths = getImportSourcePaths(j, source, {
+    relative: Boolean(options.relative),
+    currentFileName: 'TextStyle',
+    nextFileName: 'Text',
+  });
+
+  if (!sourcePaths) return;
 
   const localElementName =
-    getImportSpecifierName(j, source, 'TextStyle', '@shopify/polaris') ||
+    getImportSpecifierName(j, source, 'TextStyle', sourcePaths.current) ||
     'TextStyle';
+
+  if (hasImportSpecifier(j, source, 'Text', sourcePaths.next)) {
+    if (options.relative) {
+      removeImportDeclaration(j, source, sourcePaths.current);
+    } else {
+      removeImportSpecifier(j, source, 'TextStyle', sourcePaths.current);
+    }
+  } else {
+    if (options.relative) {
+      renameImportDeclaration(j, source, sourcePaths.current, sourcePaths.next);
+    }
+    renameImportSpecifier(j, source, 'TextStyle', 'Text', sourcePaths.next);
+  }
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'Text');
@@ -50,10 +71,29 @@ export function replaceTextStyle<NodeType = ASTNode>(
       .forEach((literal) => {
         const currentValue = literal.node.value as keyof typeof variationMap;
         if (currentValue === 'code') {
+          const inlineTextSourcePath = options.relative
+            ? sourcePaths.current.replace('TextStyle', 'InlineCode')
+            : '@shopify/polaris';
+
           if (
-            !hasImportSpecifier(j, source, 'InlineCode', '@shopify/polaris')
+            !hasImportSpecifier(j, source, 'InlineCode', inlineTextSourcePath)
           ) {
-            insertImportSpecifier(j, source, 'InlineCode', '@shopify/polaris');
+            if (options.relative) {
+              insertImportDeclaration(
+                j,
+                source,
+                'InlineCode',
+                inlineTextSourcePath,
+                sourcePaths.next,
+              );
+            } else {
+              insertImportSpecifier(
+                j,
+                source,
+                'InlineCode',
+                inlineTextSourcePath,
+              );
+            }
           }
 
           const InlineCode = j.jsxElement(

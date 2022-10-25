@@ -11,7 +11,11 @@ import {
   getImportSpecifierName,
   hasImportSpecifier,
   removeImportSpecifier,
+  getImportSourcePaths,
+  renameImportDeclaration,
+  removeImportDeclaration,
 } from '../../../utilities/imports';
+import type {MigrationOptions} from '../replace-text-component';
 
 const displayTextSizeMap = {
   small: 'headingXl',
@@ -26,16 +30,32 @@ const displayTextSizeMap = {
 export function replaceDisplayText<NodeType = ASTNode>(
   j: JSCodeshift,
   source: Collection<NodeType>,
+  options: MigrationOptions,
 ) {
-  if (hasImportSpecifier(j, source, 'Text', '@shopify/polaris')) {
-    removeImportSpecifier(j, source, 'DisplayText', '@shopify/polaris');
-  } else {
-    renameImportSpecifier(j, source, 'DisplayText', 'Text', '@shopify/polaris');
-  }
+  const sourcePaths = getImportSourcePaths(j, source, {
+    relative: Boolean(options.relative),
+    currentFileName: 'DisplayText',
+    nextFileName: 'Text',
+  });
+
+  if (!sourcePaths) return;
 
   const localElementName =
-    getImportSpecifierName(j, source, 'DisplayText', '@shopify/polaris') ||
+    getImportSpecifierName(j, source, 'DisplayText', sourcePaths.current) ||
     'DisplayText';
+
+  if (hasImportSpecifier(j, source, 'Text', sourcePaths.next)) {
+    if (options.relative) {
+      removeImportDeclaration(j, source, sourcePaths.current);
+    } else {
+      removeImportSpecifier(j, source, 'DisplayText', sourcePaths.current);
+    }
+  } else {
+    if (options.relative) {
+      renameImportDeclaration(j, source, sourcePaths.current, sourcePaths.next);
+    }
+    renameImportSpecifier(j, source, 'DisplayText', 'Text', sourcePaths.next);
+  }
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'Text');

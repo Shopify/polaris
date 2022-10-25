@@ -22,6 +22,33 @@ export function getImportDeclaration(
     .filter((path) => path.node.source.value === sourcePath);
 }
 
+export function getRelativeImportDeclaration(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  fileName = '',
+) {
+  const relativeRegex = new RegExp(String.raw`^[\.\/]*${fileName}$`);
+  return source
+    .find(j.ImportDeclaration)
+    .filter(
+      (path) =>
+        typeof path.node.source.value === 'string' &&
+        relativeRegex.test(path.node.source.value),
+    );
+}
+
+export function getRelativeImportDeclarationValue(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  fileName = '',
+) {
+  const declarations = getRelativeImportDeclaration(j, source, fileName);
+
+  if (!declarations.length) return null;
+
+  return (declarations.nodes()[0]!.source!.value as string) || null;
+}
+
 export function removeImportDeclaration(
   j: core.JSCodeshift,
   source: Collection<any>,
@@ -40,6 +67,50 @@ export function renameImportDeclaration(
     (importDeclaration) =>
       (importDeclaration.node.source = j.stringLiteral(newSourcePath)),
   );
+}
+
+export function insertImportDeclaration(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  importSpecifier: string,
+  sourcePath: string,
+  afterSourcePath: string,
+) {
+  getImportDeclaration(j, source, afterSourcePath).insertAfter(
+    j.importDeclaration.from({
+      source: j.literal(sourcePath),
+      specifiers: [j.importSpecifier(j.identifier(importSpecifier))],
+    }),
+  );
+}
+
+export function getImportSourcePaths(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  options = {
+    relative: false,
+    currentFileName: '',
+    nextFileName: '',
+  },
+) {
+  const {relative, currentFileName, nextFileName} = options;
+  const sourcePaths = {
+    current: '@shopify/polaris',
+    next: '@shopify/polaris',
+  };
+
+  if (relative) {
+    sourcePaths.current =
+      getRelativeImportDeclarationValue(j, source, currentFileName) || '';
+
+    if (!sourcePaths.current) return null;
+
+    sourcePaths.next =
+      getRelativeImportDeclarationValue(j, source, nextFileName) ||
+      sourcePaths.current.replace(currentFileName, nextFileName);
+  }
+
+  return sourcePaths;
 }
 
 export function getDefaultImportSpecifier(
