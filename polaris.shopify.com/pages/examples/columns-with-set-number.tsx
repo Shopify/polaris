@@ -3,18 +3,40 @@ import {Columns, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function ColumnsExample() {
+function ColumnsWithSetNumberExample() {
   return (
-    <Columns>
-      <Placeholder height="320px" label="01" />
-      <Placeholder height="320px" label="02" />
-      <Placeholder height="320px" label="03" />
-      <Placeholder height="320px" label="04" />
-      <Placeholder height="320px" label="05" />
-      <Placeholder height="320px" label="06" />
-    </Columns>
+    <SpacingBackground>
+      <Columns
+        columns={{
+          xs: '3fr 3fr',
+          md: '4fr 2fr',
+        }}
+        spacing={{
+          xs: '4',
+          md: '2',
+        }}
+      >
+        <Placeholder height="320px" label="01" />
+        <Placeholder height="320px" label="02" />
+      </Columns>
+    </SpacingBackground>
   );
 }
+
+const SpacingBackground = ({children, width = '100%'}) => {
+  return (
+    <div
+      style={{
+        background:
+          'repeating-linear-gradient(-45deg, #7B47F1, #7B47F1 1px, #E8D1FA 1px, #E8D1FA 7px)',
+        width: width ?? undefined,
+        height: 'auto',
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   return (
@@ -42,4 +64,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(ColumnsExample);
+export default withPolarisExample(ColumnsWithSetNumberExample);
