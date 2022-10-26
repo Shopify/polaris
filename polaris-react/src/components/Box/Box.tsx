@@ -247,7 +247,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
-      '--pc-box-border': border ? `var(--p-${border})` : undefined,
+      '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
       '--pc-box-border-bottom': borders.blockEnd
         ? `var(--p-border-${borders.blockEnd})`
         : undefined,
@@ -275,11 +275,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius-start-end': borderRadiuses.startEnd
         ? `var(--p-border-radius-${borderRadiuses.startEnd})`
         : undefined,
-      '--pc-box-min-height': minHeight ?? undefined,
-      '--pc-box-min-width': minWidth ?? undefined,
-      '--pc-box-max-width': maxWidth ?? undefined,
-      '--pc-box-overflow-x': overflowX ?? undefined,
-      '--pc-box-overflow-y': overflowY ?? undefined,
+      '--pc-box-min-height': minHeight,
+      '--pc-box-min-width': minWidth,
+      '--pc-box-max-width': maxWidth,
+      '--pc-box-overflow-x': overflowX,
+      '--pc-box-overflow-y': overflowY,
       '--pc-box-padding': padding ? `var(--p-space-${padding})` : undefined,
       '--pc-box-padding-block-end': paddings.blockEnd
         ? `var(--p-space-${paddings.blockEnd})`
@@ -294,7 +294,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         ? `var(--p-space-${paddings.blockStart})`
         : undefined,
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
-      '--pc-box-width': width ?? undefined,
+      '--pc-box-width': width,
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
