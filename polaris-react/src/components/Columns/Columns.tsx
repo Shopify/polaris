@@ -8,8 +8,11 @@ import {sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
+type ColumnWidths = 'oneThird' | 'oneHalf' | 'twoThirds';
+type ColumnTypes = number | string | ColumnWidths[];
+
 type Columns = {
-  [Breakpoint in BreakpointsAlias]?: number | string;
+  [Breakpoint in BreakpointsAlias]?: ColumnTypes;
 };
 
 type Spacing = {
@@ -36,9 +39,7 @@ export function Columns({columns, children, spacing}: ColumnsProps) {
     '--pc-columns-md': formatColumns(columns?.md),
     '--pc-columns-lg': formatColumns(columns?.lg),
     '--pc-columns-xl': formatColumns(columns?.xl),
-    '--pc-columns-space-xs': spacing?.xs
-      ? `var(--p-space-${spacing?.xs})`
-      : undefined,
+    '--pc-columns-space-xs': `var(--p-space-${spacing?.xs || '4'})`,
     '--pc-columns-space-sm': spacing?.sm
       ? `var(--p-space-${spacing?.sm})`
       : undefined,
@@ -60,8 +61,18 @@ export function Columns({columns, children, spacing}: ColumnsProps) {
   );
 }
 
-function formatColumns(columns?: number | string) {
+function formatColumns(columns?: ColumnTypes) {
   if (!columns) return undefined;
+
+  if (Array.isArray(columns)) {
+    return columns
+      .map((column) =>
+        column === 'oneThird' || column === 'oneHalf'
+          ? 'minmax(0, 1fr)'
+          : 'minmax(0, 2fr)',
+      )
+      .join(' ');
+  }
 
   return typeof columns === 'number'
     ? `repeat(${columns}, minmax(0, 1fr))`
