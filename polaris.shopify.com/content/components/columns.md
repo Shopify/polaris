@@ -28,5 +28,5 @@ examples:
 
 ## Related components
 
-- For more control over padding and widths, use the [Box](https://polaris.shopify.com/components/box) component
+- For more control over padding and widths, [use the Box](https://polaris.shopify.com/components/box) component
 - To lay out a set of smaller components horizontally, use the [Inline](https://polaris.shopify.com/components/inline) component
