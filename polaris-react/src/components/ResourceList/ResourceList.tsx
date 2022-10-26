@@ -569,26 +569,27 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     isBulkActionsSticky && styles.BulkActionsWrapperSticky,
   );
 
-  const bulkActionsMarkup = isSelectable ? (
-    <div
-      className={bulkActionClassNames}
-      style={{
-        top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
-        width: bulkActionsMaxWidth,
-        left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
-      }}
-    >
-      <BulkActions
-        selectMode={selectMode}
-        onSelectModeToggle={handleSelectMode}
-        promotedActions={promotedBulkActions}
-        actions={bulkActions}
-        disabled={loading}
-        isSticky={isBulkActionsSticky}
-        width={bulkActionsMaxWidth}
-      />
-    </div>
-  ) : null;
+  const bulkActionsMarkup =
+    isSelectable && selectMode ? (
+      <div
+        className={bulkActionClassNames}
+        style={{
+          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+          width: bulkActionsMaxWidth,
+          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
+        }}
+      >
+        <BulkActions
+          selectMode={selectMode}
+          onSelectModeToggle={handleSelectMode}
+          promotedActions={promotedBulkActions}
+          actions={bulkActions}
+          disabled={loading}
+          isSticky={isBulkActionsSticky}
+          width={bulkActionsMaxWidth}
+        />
+      </div>
+    ) : null;
 
   const filterControlMarkup = filterControl ? (
     <div className={styles.FiltersWrapper}>{filterControl}</div>
