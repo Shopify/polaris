@@ -3,6 +3,7 @@ import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {Badge} from '../../Badge';
+import {Box} from '../../Box';
 import {Button} from '../../Button';
 import {Scrollable} from '../../Scrollable';
 import {Spinner} from '../../Spinner';
@@ -302,8 +303,8 @@ describe('<Modal>', () => {
         <Modal onClose={jest.fn()} open title="foo" />,
       );
 
-      expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'Header',
+      expect(modal.find(Box)).toContainReactComponent('div', {
+        className: 'Title',
       });
     });
 
@@ -315,6 +316,7 @@ describe('<Modal>', () => {
       expect(modal.find(Header)).toContainReactComponent('div', {
         className: 'titleHidden',
       });
+      expect(modal.find(Header)).not.toContainReactComponent(Box);
     });
   });
 
