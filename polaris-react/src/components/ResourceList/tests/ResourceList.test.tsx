@@ -103,7 +103,7 @@ describe('<ResourceList />', () => {
       expect(resourceList).not.toContainReactComponent(SelectAllActions);
     });
 
-    it('does render bulk actions if the promotedBulkActions prop is provided', () => {
+    it('does render SelectAllActions if the promotedBulkActions prop is provided', () => {
       const resourceList = mountWithApp(
         <ResourceList
           items={itemsWithID}
@@ -111,7 +111,7 @@ describe('<ResourceList />', () => {
           promotedBulkActions={promotedBulkActions}
         />,
       );
-      expect(resourceList).toContainReactComponent(BulkActions);
+      expect(resourceList).toContainReactComponent(SelectAllActions);
     });
 
     it('renders bulk actions if the bulkActions prop is provided', () => {
@@ -122,7 +122,7 @@ describe('<ResourceList />', () => {
           bulkActions={bulkActions}
         />,
       );
-      expect(resourceList).toContainReactComponent(BulkActions);
+      expect(resourceList).toContainReactComponent(SelectAllActions);
     });
 
     it('renders a `CheckableButton` if the `selectable` prop is true', () => {
@@ -920,11 +920,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList).toContainReactComponent(BulkActions, {
+      expect(resourceList).toContainReactComponent(SelectAllActions, {
         selectMode: false,
       });
       resourceList.setProps({selectedItems: ['1']});
-      expect(resourceList).toContainReactComponent(BulkActions, {
+      expect(resourceList).toContainReactComponent(SelectAllActions, {
         selectMode: true,
       });
     });
@@ -939,11 +939,11 @@ describe('<ResourceList />', () => {
         />,
       );
 
-      expect(resourceList).toContainReactComponent(BulkActions, {
+      expect(resourceList).toContainReactComponent(SelectAllActions, {
         selectMode: true,
       });
       resourceList.setProps({selectedItems: []});
-      expect(resourceList).toContainReactComponent(BulkActions, {
+      expect(resourceList).toContainReactComponent(SelectAllActions, {
         selectMode: false,
       });
     });
@@ -1185,24 +1185,6 @@ describe('<ResourceList />', () => {
       resourceList.find(EventListener)!.trigger('handler');
       expect(resourceList).toContainReactComponent(Select, {
         labelInline: false,
-      });
-    });
-
-    it('select mode is turned off on large screen when no items are selected', () => {
-      const resourceList = mountWithApp(
-        <ResourceList
-          items={singleItemWithID}
-          renderItem={renderItem}
-          bulkActions={bulkActions}
-          selectedItems={[]}
-        />,
-      );
-
-      resourceList.find(BulkActions)!.trigger('onSelectModeToggle', true);
-      // eslint-disable-next-line import/no-deprecated
-      resourceList.find(EventListener)!.trigger('handler');
-      expect(resourceList).toContainReactComponent(BulkActions, {
-        selectMode: false,
       });
     });
   });
