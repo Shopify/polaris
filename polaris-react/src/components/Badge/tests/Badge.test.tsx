@@ -14,7 +14,7 @@ describe('<Badge />', () => {
 
   it('accepts a status prop and renders a visually hidden label', () => {
     const badge = mountWithApp(<Badge status="success" />);
-    expect(badge).toContainReactComponent(Text), {visuallyHidden: true};
+    expect(badge).toContainReactComponent(Text, {visuallyHidden: true});
   });
 
   it('accepts a progress prop and renders a visually hidden label', () => {
