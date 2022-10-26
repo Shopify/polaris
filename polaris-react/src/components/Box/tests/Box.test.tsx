@@ -75,28 +75,26 @@ describe('Box', () => {
   });
 
   it('only renders the custom property that matches the property passed in', () => {
-    const box = mountWithApp(<Box paddingLeft="2">{children}</Box>);
+    const box = mountWithApp(<Box paddingInlineStart="2">{children}</Box>);
 
     expect(box).toContainReactComponent('div', {
       style: {
-        '--pc-box-padding-left': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
 
   it('renders custom properties combined with any overrides if they are passed in', () => {
     const box = mountWithApp(
-      <Box padding="1" paddingLeft="2">
+      <Box padding="1" paddingInlineStart="2">
         {children}
       </Box>,
     );
 
     expect(box).toContainReactComponent('div', {
       style: {
-        '--pc-box-padding-bottom': 'var(--p-space-1)',
-        '--pc-box-padding-left': 'var(--p-space-2)',
-        '--pc-box-padding-right': 'var(--p-space-1)',
-        '--pc-box-padding-top': 'var(--p-space-1)',
+        '--pc-box-padding': 'var(--p-space-1)',
+        '--pc-box-padding-inline-start': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
