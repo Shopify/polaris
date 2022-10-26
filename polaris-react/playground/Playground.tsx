@@ -14,7 +14,7 @@ export function Playground() {
           sm: ['oneHalf', 'oneHalf'],
           md: ['oneThird', 'twoThirds'],
           lg: ['oneThird', 'oneThird', 'oneThird'],
-          xl: ['oneThird', 'twoThirds'],
+          xl: ['1fr', '1fr', 'oneThird', 'oneThird'],
         }}
       >
         <div style={{background}}>01</div>

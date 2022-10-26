@@ -8,8 +8,7 @@ import {sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
-type ColumnWidths = 'oneThird' | 'oneHalf' | 'twoThirds';
-type ColumnTypes = number | string | ColumnWidths[];
+type ColumnTypes = number | string | string[];
 
 type Columns = {
   [Breakpoint in BreakpointsAlias]?: ColumnTypes;
@@ -63,11 +62,18 @@ function formatColumns(columns?: ColumnTypes) {
 
   if (Array.isArray(columns)) {
     return columns
-      .map((column) =>
-        column === 'oneThird' || column === 'oneHalf'
-          ? 'minmax(0, 1fr)'
-          : 'minmax(0, 2fr)',
-      )
+      .map((column) => {
+        switch (column) {
+          case 'oneThird':
+            return 'minmax(0, 33.33%)';
+          case 'oneHalf':
+            return 'minmax(0, 50%)';
+          case 'twoThirds':
+            return 'minmax(0, 66.66%)';
+          default:
+            return `minmax(0, ${column})`;
+        }
+      })
       .join(' ');
   }
 
