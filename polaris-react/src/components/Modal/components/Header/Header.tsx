@@ -37,8 +37,8 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
       borderBottom="divider"
     >
       <Columns columns={{xs: '1fr auto'}}>
-        <Inline alignY="center">
-          <Box id={id}>
+        <Inline>
+          <Box id={id} paddingTop="1">
             {/* Replace with <Text> once responsive styles supported */}
             <div className={styles.Title}>
               <DisplayText element="h2" size="small">
@@ -47,7 +47,9 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
             </div>
           </Box>
         </Inline>
-        <CloseButton titleHidden={titleHidden} onClick={onClose} />
+        <Inline>
+          <CloseButton titleHidden={titleHidden} onClick={onClose} />
+        </Inline>
       </Columns>
     </Box>
   );

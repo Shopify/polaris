@@ -6,8 +6,4 @@ $close-button-width: calc(var(--p-space-12) + var(--p-space-1));
   &:not(:last-of-type) {
     border-bottom: var(--p-border-divider);
   }
-
-  &.titleHidden {
-    padding-right: $close-button-width;
-  }
 }
