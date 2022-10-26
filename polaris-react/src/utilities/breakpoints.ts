@@ -138,6 +138,54 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
   return breakpoints;
 }
 
+export function useBreakpointsValues({
+  xs,
+  sm,
+  md,
+  lg,
+  xl,
+}: {
+  xs?: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
+  xl?: string;
+}) {
+  const [breakpoints, setBreakpoints] = useState(getMatches());
+
+  useIsomorphicLayoutEffect(() => {
+    const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
+      window.matchMedia(query),
+    );
+
+    const handler = () => setBreakpoints(getMatches());
+
+    mediaQueryLists.forEach((mql) => {
+      mql.addEventListener('change', handler);
+    });
+
+    return () =>
+      mediaQueryLists.forEach((mql) => {
+        mql.removeEventListener('change', handler);
+      });
+  }, []);
+
+  const {smUp, mdUp, lgUp, xlUp} = breakpoints;
+
+  switch (true) {
+    case xlUp:
+      return xl || lg || md || sm || xs;
+    case lgUp:
+      return lg || md || sm || xs;
+    case mdUp:
+      return md || sm || xs;
+    case smUp:
+      return sm || xs;
+    default:
+      return xs;
+  }
+}
+
 /**
  * Converts `breakpoints` tokens into directional media query entries.
  *

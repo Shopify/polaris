@@ -4,7 +4,12 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import {
+  classNames,
+  ResponsiveProp,
+  getResponsiveProps,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -135,6 +140,8 @@ interface Spacing {
   top: SpacingSpaceScale;
 }
 
+type ResponsiveSpacing = ResponsiveProp<SpacingSpaceScale>;
+
 export interface BoxProps extends PropsWithChildren {
   /** HTML Element type */
   as?: Element;
@@ -175,7 +182,7 @@ export interface BoxProps extends PropsWithChildren {
   /** Clip vertical content of children */
   overflowY?: Overflow;
   /** Spacing around children */
-  padding?: SpacingSpaceScale;
+  padding?: ResponsiveSpacing;
   /** Bottom spacing around children */
   paddingBottom?: SpacingSpaceScale;
   /** Left spacing around children */
@@ -213,7 +220,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
-      padding,
+      padding = '4',
       paddingBottom,
       paddingLeft,
       paddingRight,
@@ -242,10 +249,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     } as BorderRadius;
 
     const paddings = {
-      bottom: paddingBottom ? paddingBottom : padding,
-      left: paddingLeft ? paddingLeft : padding,
-      right: paddingRight ? paddingRight : padding,
-      top: paddingTop ? paddingTop : padding,
+      bottom: paddingBottom,
+      left: paddingLeft,
+      right: paddingRight,
+      top: paddingTop,
     } as Spacing;
 
     const style = {
@@ -275,11 +282,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius-top-right': borderRadiuses.topRight
         ? `var(--p-border-radius-${borderRadiuses.topRight})`
         : undefined,
-      '--pc-box-min-height': minHeight ?? undefined,
-      '--pc-box-min-width': minWidth ?? undefined,
-      '--pc-box-max-width': maxWidth ?? undefined,
-      '--pc-box-overflow-x': overflowX ?? undefined,
-      '--pc-box-overflow-y': overflowY ?? undefined,
+      '--pc-box-min-height': minHeight,
+      '--pc-box-min-width': minWidth,
+      '--pc-box-max-width': maxWidth,
+      '--pc-box-overflow-x': overflowX,
+      '--pc-box-overflow-y': overflowY,
+      ...getResponsiveProps('box', 'padding', 'space', padding),
       '--pc-box-padding-bottom': paddings.bottom
         ? `var(--p-space-${paddings.bottom})`
         : undefined,
@@ -293,7 +301,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         ? `var(--p-space-${paddings.top})`
         : undefined,
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
-      '--pc-box-width': width ?? undefined,
+      '--pc-box-width': width,
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);

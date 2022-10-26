@@ -1,5 +1,12 @@
 /* stylelint-disable declaration-block-no-redundant-longhand-properties */
+@import '../../styles/common';
+
 .Box {
+  --pc-box-padding-xs: var(--p-space-4);
+  --pc-box-padding-sm: var(--pc-box-padding-xs);
+  --pc-box-padding-md: var(--pc-box-padding-sm);
+  --pc-box-padding-lg: var(--pc-box-padding-md);
+  --pc-box-padding-xl: var(--pc-box-padding-lg);
   --pc-box-shadow: initial;
   --pc-box-background: initial;
   --pc-box-border-radius-bottom-left: initial;
@@ -37,11 +44,28 @@
   max-width: var(--pc-box-max-width);
   overflow-x: var(--pc-box-overflow-x);
   overflow-y: var(--pc-box-overflow-y);
+  padding: var(--pc-box-padding-xs);
   padding-bottom: var(--pc-box-padding-bottom);
   padding-left: var(--pc-box-padding-left);
   padding-right: var(--pc-box-padding-right);
   padding-top: var(--pc-box-padding-top);
   width: var(--pc-box-width);
-  /* stylelint-enable declaration-block-no-redundant-longhand-properties */
   -webkit-overflow-scrolling: touch;
+
+  @media #{$p-breakpoints-sm-up} {
+    padding: var(--pc-box-padding-sm);
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    padding: var(--pc-box-padding-md);
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    padding: var(--pc-box-padding-lg);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    padding: var(--pc-box-padding-xl);
+  }
 }
+/* stylelint-enable declaration-block-no-redundant-longhand-properties */
