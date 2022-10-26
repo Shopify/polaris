@@ -462,7 +462,9 @@ export function TextField({
     suggestion && styles.suggestion,
   );
 
-  const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
+  const handleOnFocus = (
+    event: React.FocusEvent<HTMLElement> | React.MouseEvent<HTMLInputElement>,
+  ) => {
     setFocus(true);
 
     if (selectTextOnFocus && !suggestion) {
@@ -471,7 +473,7 @@ export function TextField({
     }
 
     if (onFocus) {
-      onFocus(event);
+      onFocus(event as React.FocusEvent<HTMLInputElement>);
     }
   };
 
@@ -577,7 +579,19 @@ export function TextField({
     onChange && onChange(event.currentTarget.value, id);
   }
 
-  function handleClick({target}: React.MouseEvent) {
+  function handleClick(event: React.MouseEvent<HTMLInputElement>) {
+    const {target} = event;
+
+    // For TextFields used with Combobox, focus needs to be set again even
+    // if the TextField is already focused to trigger the logic to open the
+    // Combobox activator
+    const inputRefRole = inputRef?.current?.getAttribute('role');
+    if (target === inputRef.current && inputRefRole === 'combobox') {
+      inputRef.current?.focus();
+      handleOnFocus(event);
+      return;
+    }
+
     if (
       isPrefixOrSuffix(target) ||
       isVerticalContent(target) ||
