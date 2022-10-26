@@ -250,7 +250,6 @@ export function WithBulkActions() {
 
 export function WithBulkActionsAndManyItems() {
   const [selectedItems, setSelectedItems] = useState([]);
-  console.log(selectedItems);
 
   const resourceName = {
     singular: 'customer',
