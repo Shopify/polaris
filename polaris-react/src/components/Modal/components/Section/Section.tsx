@@ -28,6 +28,7 @@ export function Section({
       <Box
         as="section"
         padding={flush ? '0' : '5'}
+        {...(titleHidden && {paddingRight: '0'})}
         {...(subdued && {background: 'surface-subdued'})}
       >
         {children}
