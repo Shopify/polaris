@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.9.1
+
+### Patch Changes
+
+- [#7533](https://github.com/Shopify/polaris/pull/7533) [`f6568c3c1`](https://github.com/Shopify/polaris/commit/f6568c3c1f82cda953213eae4ea1e7f06b3a101c) Thanks [@laurkim](https://github.com/laurkim)! - Fixed logic to trigger `TextField` focus on click when used with `Combobox`
+
 ## 10.9.0
 
 ### Minor Changes
