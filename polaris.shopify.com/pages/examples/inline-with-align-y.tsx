@@ -1,76 +1,64 @@
 import React from 'react';
-import {AlphaStack, Badge, Box, Inline, Text} from '@shopify/polaris';
+import {AlphaStack, Inline, Text, Page} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function InlineWithAlignYExample() {
+function InlineWithVerticalAlignmentExample() {
   return (
-    <div style={{width: '100%'}}>
-      <AlphaStack spacing="2">
-        <Text variant="bodySm" as="h3">
-          with alignY top
-        </Text>
-
-        <Inline alignY="top">
-          <Text variant="heading4xl" as="h2">
-            Inline
-          </Text>
-          <Badge>One</Badge>
-          <Badge>Two</Badge>
-          <Badge>Three</Badge>
+    <Page narrowWidth>
+      <AlphaStack>
+        <Inline wrap align="start">
+          <Placeholder width="106px" label="Start" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+        </Inline>
+        <Inline wrap align="center">
+          <Placeholder width="106px" label="Center" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+        </Inline>
+        <Inline wrap align="end">
+          <Placeholder width="106px" label="End" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
+          <Placeholder width="106px" height="20px" />
         </Inline>
       </AlphaStack>
-      <hr />
-      <AlphaStack spacing="2">
-        <Text variant="bodySm" as="h3">
-          with alignY center
-        </Text>
-
-        <Inline alignY="center">
-          <Text variant="heading4xl" as="h2">
-            Inline
-          </Text>
-          <Badge>One</Badge>
-          <Badge>Two</Badge>
-          <Badge>Three</Badge>
-        </Inline>
-      </AlphaStack>
-
-      <hr />
-
-      <AlphaStack spacing="2">
-        <Text variant="bodySm" as="h3">
-          with alignY bottom
-        </Text>
-
-        <Inline alignY="bottom">
-          <Text variant="heading4xl" as="h2">
-            Inline
-          </Text>
-          <Badge>One</Badge>
-          <Badge>Two</Badge>
-          <Badge>Three</Badge>
-        </Inline>
-      </AlphaStack>
-
-      <hr />
-
-      <AlphaStack spacing="2">
-        <Text variant="bodySm" as="h3">
-          with alignY baseline
-        </Text>
-
-        <Inline alignY="baseline">
-          <Text variant="heading4xl" as="h2">
-            Inline
-          </Text>
-          <Badge>One</Badge>
-          <Badge>Two</Badge>
-          <Badge>Three</Badge>
-        </Inline>
-      </AlphaStack>
-    </div>
+    </Page>
   );
 }
 
-export default withPolarisExample(InlineWithAlignYExample);
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        padding: '6px 0',
+        background: '#7B47F1',
+        height: height ?? undefined,
+        width: width ?? undefined,
+      }}
+    >
+      <Inline align="center" alignY="center">
+        <div
+          style={{
+            color: '#FFFFFF',
+          }}
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            {label}
+          </Text>
+        </div>
+      </Inline>
+    </div>
+  );
+};
+
+export default withPolarisExample(InlineWithVerticalAlignmentExample);
