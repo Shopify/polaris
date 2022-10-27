@@ -58,7 +58,32 @@ export function Scrollable({
     scrollArea.current?.scrollTo({top: scrollY, behavior});
   }, []);
 
+  const handleScroll = useCallback(() => {
+    const currentScrollArea = scrollArea.current;
+
+    if (!currentScrollArea) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
+      const isBelowTopOfScroll = Boolean(scrollTop > 0);
+      const isAtBottomOfScroll = Boolean(
+        scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
+      );
+
+      setTopShadow(isBelowTopOfScroll);
+      setBottomShadow(!isAtBottomOfScroll);
+
+      if (isAtBottomOfScroll && onScrolledToBottom) {
+        onScrolledToBottom();
+      }
+    });
+  }, [onScrolledToBottom]);
+
   useComponentDidMount(() => {
+    handleScroll();
+
     if (hint) {
       requestAnimationFrame(() => performScrollHint(scrollArea.current));
     }
@@ -71,36 +96,17 @@ export function Scrollable({
       return;
     }
 
-    const handleScroll = () => {
-      requestAnimationFrame(() => {
-        const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
-        const isBelowTopOfScroll = Boolean(scrollTop > 0);
-        const isAtBottomOfScroll = Boolean(
-          scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
-        );
-
-        setTopShadow(isBelowTopOfScroll);
-        setBottomShadow(!isAtBottomOfScroll);
-
-        if (isAtBottomOfScroll && onScrolledToBottom) {
-          onScrolledToBottom();
-        }
-      });
-    };
-
     const handleResize = debounce(handleScroll, 50, {trailing: true});
 
     stickyManager.current?.setContainer(currentScrollArea);
     currentScrollArea.addEventListener('scroll', handleScroll);
     globalThis.addEventListener('resize', handleResize);
 
-    handleScroll();
-
     return () => {
       currentScrollArea.removeEventListener('scroll', handleScroll);
       globalThis.removeEventListener('resize', handleResize);
     };
-  }, [stickyManager, onScrolledToBottom]);
+  }, [stickyManager, handleScroll]);
 
   const finalClassName = classNames(
     className,
