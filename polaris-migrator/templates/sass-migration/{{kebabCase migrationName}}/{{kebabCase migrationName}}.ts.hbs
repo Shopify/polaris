@@ -16,7 +16,7 @@ const {{camelCase migrationName}}: PolarisMigrator = (
   context,
 ) => {
   return (root) => {
-    root.walkDecls((decl) => {
+    methods.walkDecls(root, (decl) => {
       // Using the parsedValue allows easy detection of individual functions and
       // properties. Particularly useful when dealing with shorthand
       // declarations such as `border`, `padding`, etc.
@@ -45,9 +45,6 @@ const {{camelCase migrationName}}: PolarisMigrator = (
       if (context.fix) {
         decl.value = parsedValue.toString();
       }
-
-      // Ensure all generated reports are flushed to the appropriate output
-      methods.flushReports();
     });
   };
 };
