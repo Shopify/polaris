@@ -189,23 +189,12 @@
     flex-direction: column-reverse;
     background: var(--decorative-4);
 
-    video {
+    video,
+    .Poster {
       width: 100%;
       height: auto;
       filter: brightness(100%) contrast(2) saturate(0);
       mix-blend-mode: plus-lighter;
     }
-  }
-
-  .Poster {
-    position: absolute;
-    border-radius: 24px;
-    overflow: hidden;
-    width: 60%;
-    height: 85%;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%) translateX(33px);
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
   }
 }
