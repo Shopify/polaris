@@ -1,98 +1,108 @@
 import type {API, FileInfo, Options} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
-import valueParser, {Node, FunctionNode} from 'postcss-value-parser';
+import postcss, {Declaration, Plugin} from 'postcss';
+import valueParser, {Node, FunctionNode, stringify} from 'postcss-value-parser';
 
 import {
   createInlineComment,
   NamespaceOptions,
   namespace,
   isSassFunction,
+  isNumericOperator,
 } from '../../utilities/sass';
-// I also don't think we need this
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-// I don't think we need this
-const processed = Symbol('processed');
 
-export type Argument = OrderedArgument | NamedArgument;
+/*
+  Sass AST doesn't have the concept of values or arguments
+  This function parses the children of a function node, groups them into nodes that represent values,
+  and removes delimiters.
+*/
+const extractArguments = (args: Node[]): Node[][] => {
+  const extractedArguments: Node[][] = [];
+  let argumentSet: Node[] = [];
+  args.forEach((arg, i) => {
+    argumentSet.push(arg);
+    if (arg.type === 'div' && arg.value === ',') {
+      // pop out the last element
+      // we don't want the comma
+      argumentSet.pop();
+      extractedArguments.push([...argumentSet]);
+      argumentSet = [];
+    } else if (i === args.length - 1) {
+      extractedArguments.push([...argumentSet]);
+      argumentSet = [];
+    }
+  });
 
-export interface NamedArgument {
-  value: string;
-  type: 'named';
-  name: string;
+  return extractedArguments;
+};
+
+/*
+  This function expects to be passed grouped argument nodes from the invocation of
+  extractArguments.
+
+  Because Sass allows for the intermingling of
+  ordered arguments and named arguments
+  fn(1, 2, 3) or fn(1, c: 3). resolveArguments resolves
+  the passed in arguments and removes the non determinism
+  by constructing and returning a keyed object
+*/
+
+function isSpreadOperator(node: Node) {
+  return node.value.endsWith('...');
 }
-export interface OrderedArgument {
-  value: string;
-  order: number;
-  type: 'ordered';
-}
+const resolveArguments = (
+  args: Node[][],
+  declOrder: string[],
+  processArgs: (args: Node[], key: string) => unknown = (args, _) => args,
+): {[key: string]: Node[]} => {
+  return args.reduce((acc: {[key: string]: Node[]}, arg, i) => {
+    if (arg.some((node) => isSpreadOperator(node))) {
+      throw new Error('Spread operation not supported by this migration');
+    }
+    let key: string = declOrder[i];
+    let value = arg;
+    if (arg.some((token) => token.type === 'div' && token.value === ':')) {
+      key = arg[0].value.replace('$', '');
+      value = [arg[2]];
+    }
 
-type ArgumentBuffer = Node[];
+    acc[key] = processArgs ? (processArgs(value, key) as Node[]) : value;
+    return acc;
+  }, {} as {[key: string]: Node[]});
+};
 
-export function getFunctionArgs(node: FunctionNode) {
-  const args: Argument[] = [];
+function getFunctionArgs(
+  node: FunctionNode,
+  {
+    declOrder,
+    processArgs = (args, _) => args,
+  }: {
+    // We make this optional for compatibility with older usages of getFunctionArgs
+    declOrder: string[];
+    processArgs: (args: Node[], key: string) => unknown;
+  },
+): {[key: string]: Node[]} {
+  // This does not presently handle spread arguments i.e. borderSize($sizes...)
   const unProcessedArgs: Node[] = node.nodes.slice();
-  let buffer: Node[] | Node[][] = [];
-
-  function resolveArgBuffer(buffer: ArgumentBuffer): Argument {
-    if (!buffer.length) throw Error('Argument buffer must not be empty');
-    const bufferValue = buffer.pop();
-    if (!bufferValue) throw Error('Argument buffer may not contain null value');
-    if (Array.isArray(bufferValue)) {
-      const value = bufferValue.pop();
-      const name = bufferValue.pop();
-      return {
-        type: 'named',
-        value: value.value,
-        name: name.value,
-      } as NamedArgument;
-    } else {
-      return {
-        type: 'ordered',
-        value: bufferValue.value,
-      } as OrderedArgument;
-    }
-  }
-
-  while (unProcessedArgs.length) {
-    const argument = unProcessedArgs.shift() as Node;
-    const isSeparator = argument.type === 'div' && argument.value === ',';
-    const isAssignment = argument.type === 'div' && argument.value === ':';
-    buffer.push(argument as Node);
-    if (isAssignment && unProcessedArgs.length) {
-      // This signifies the middle of a named argument declaration
-      // pop out the next argument as well
-      const key = buffer.shift() as Node;
-      // We empty the buffer here to remove the operator argument
-      // that was previously pushed in
-      buffer = [];
-      const value = unProcessedArgs.shift() as Node;
-      buffer.push([key, value]);
-    }
-
-    if (isSeparator) {
-      // This signifies the end of an argument set
-      // check if the buffer has any arguments in it
-      // if it is an array, convert it into a named argument
-      // and push it into the args array
-      buffer.pop();
-      args.push(resolveArgBuffer(buffer));
-    } else if (!unProcessedArgs.length && buffer.length) {
-      // This is the end of the line,
-      args.push(resolveArgBuffer(buffer));
-    }
-  }
-
-  return args;
+  return resolveArguments(
+    extractArguments(unProcessedArgs),
+    declOrder,
+    processArgs,
+  );
 }
 
 interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions): Plugin => {
   const namespacedFocusRing = namespace('focus-ring', options);
-  // TODO FILL IN
-  function declResolver({size = 'base', borderWidth = 0, style = 'base'}) {
+  function declResolver({
+    size = 'base',
+    'border-width': borderWidth = 0,
+    style = 'base',
+  }) {
     const offset =
       borderWidth === 0 ? `rem(1px)` : `(${borderWidth} + rem(1px))`;
+
     if (style === 'base') {
       return [
         {
@@ -111,68 +121,84 @@ const plugin = (options: PluginOptions): Plugin => {
     prop: string;
     value: string;
   }
-  function orderArgs(args: Argument[]) {
-    // Separate the ordered and named arguments
-    // In the ordered category
-    // 0 is size, 1 is borderWidth, 2 is style
-    // If there are remaining named arguments,
-    // remove the $ from the key and merge the objects together.
-    const ordered: OrderedArgument[] = [];
-    const named: NamedArgument[] = [];
-    const declOrder = ['size', 'borderWidth', 'style'];
-    let reconstructedArgs = {};
-    args.forEach((arg) => {
-      if (arg.type === 'named') {
-        named.push(arg);
-      } else {
-        ordered.push(arg);
-      }
-    });
-    if (ordered.length) {
-      const entries = ordered.map((order, i) => [declOrder[i], order.value]);
-      reconstructedArgs = Object.fromEntries(entries);
-    }
 
-    if (named.length) {
-      const entries = named.reduce(
-        (acc: {[key: string]: any}, curr: NamedArgument) => {
-          const key =
-            curr.name === '$border-width'
-              ? 'borderWidth'
-              : curr.name.substring(1);
-          acc[key] = curr.value;
-          return acc;
-        },
-        {},
-      );
-      reconstructedArgs = Object.assign(reconstructedArgs, entries);
-    }
-
-    return reconstructedArgs;
-  }
   return {
     postcssPlugin: 'replace-sass-focus-ring',
     AtRule: {
       include: (atRule) => {
+        const reports: {message: string}[] = [];
+
         const parsedValue = valueParser(atRule.params);
         let declVal: PostCssDeclArgs[] = [];
+
         parsedValue.walk((node) => {
           if (!isSassFunction(namespacedFocusRing, node)) return;
-          const args = getFunctionArgs(node);
-          declVal = declResolver(orderArgs(args));
+          try {
+            const args = getFunctionArgs(node, {
+              declOrder: ['size', 'border-width', 'style'],
+              processArgs: (args: Node[], key) => {
+                const stringArgs: string[] = [];
+
+                args.forEach((arg) => {
+                  if (isNumericOperator(arg) || arg.type === 'function') {
+                    reports.push({
+                      message: `Argument ${key} is not of type word or string`,
+                    });
+                  }
+                  stringArgs.push(stringify(arg));
+                });
+                return stringArgs.join('');
+              },
+            });
+            declVal = declResolver(args);
+          } catch (err: any) {
+            reports.push({
+              message: err.message as string,
+            });
+          }
         });
 
         const parent = atRule.parent;
-        if (declVal.length && parent && parent.type !== 'root') {
-          const newDecls = declVal.map((val) => {
+        const invalidParent = !parent || parent.type === 'root';
+        let postCSSdeclNodes: Declaration[] = [];
+
+        if (declVal.length) {
+          postCSSdeclNodes = declVal.map((val) => {
             return postcss.decl({
               prop: val.prop,
               value: val.value,
             });
           });
-          newDecls.forEach((decl) => {
-            atRule.before(decl);
+        }
+
+        if (invalidParent) {
+          reports.push({
+            message: '@include should not be called on the root node',
           });
+        }
+
+        if (reports.length) {
+          console.log(reports, postCSSdeclNodes);
+          atRule.before([
+            createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+            ...reports.map((report) => {
+              return createInlineComment(report.message, {prose: true});
+            }),
+            ...(postCSSdeclNodes.length
+              ? postCSSdeclNodes.map((decl) =>
+                  createInlineComment(decl.toString()),
+                )
+              : []),
+          ]);
+          // if (postCSSdeclNodes.length) {
+          //   atRule.before(
+          //     postCSSdeclNodes.map((decl) =>
+          //       createInlineComment(decl.toString()),
+          //     ),
+          //   );
+          // }
+        } else if (postCSSdeclNodes.length) {
+          atRule.before(postCSSdeclNodes);
           atRule.remove();
         }
       },

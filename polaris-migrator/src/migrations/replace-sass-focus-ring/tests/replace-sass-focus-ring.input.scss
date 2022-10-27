@@ -13,3 +13,9 @@
     @include focus-ring($border-width: 2px, $style: 'focused');
   }
 }
+
+.edge-cases {
+  @include focus-ring(base, test());
+  @include focus-ring(base, 0 + 50px, focused);
+  @include focus-ring($args...);
+}
