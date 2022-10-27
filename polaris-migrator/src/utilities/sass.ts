@@ -1,5 +1,15 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Root, Result, Plugin, Node as PostCSSNode} from 'postcss';
+import postcss, {
+  Root,
+  Result,
+  Plugin,
+  Container,
+  Declaration,
+  Node as PostCSSNode,
+  Rule as PostCSSRule,
+  Comment as PostCSSComment,
+  AtRule,
+} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
@@ -259,7 +269,7 @@ interface PluginOptions extends Options, NamespaceOptions {}
 
 interface Report {
   node: PostCSSNode;
-  severity: 'warning' | 'error' | 'suggestion';
+  severity: 'warning' | 'error';
   message: string;
 }
 
@@ -286,14 +296,32 @@ type StylelintRule<P = any, S = any> = StylelintRuleBase<P, S> & {
 };
 // End: Extracted from stylelint
 
+type Walker<N extends PostCSSNode> = (node: N) => false | void;
+
 export type PolarisMigrator = (
   primaryOption: true,
   secondaryOptions: {
     options: {[key: string]: any};
     methods: {
       report: (report: Report) => void;
-      flushReports: () => void;
-      getReportsForNode: (node: PostCSSNode) => Report[] | undefined;
+      each: <T extends Container>(root: T, walker: Walker<PostCSSNode>) => void;
+      walk: <T extends Container>(root: T, walker: Walker<PostCSSNode>) => void;
+      walkComments: <T extends Container>(
+        root: T,
+        walker: Walker<PostCSSComment>,
+      ) => void;
+      walkAtRules: <T extends Container>(
+        root: T,
+        atRuleWalker: Walker<AtRule>,
+      ) => void;
+      walkDecls: <T extends Container>(
+        root: T,
+        declWalker: Walker<Declaration>,
+      ) => void;
+      walkRules: <T extends Container>(
+        root: T,
+        ruleWalker: Walker<PostCSSRule>,
+      ) => void;
     };
   },
   context: PluginContext,
@@ -376,18 +404,49 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
 
         for (const report of reportsForNode) {
           node.before(
-            report.severity === 'suggestion'
-              ? createInlineComment(report.message)
-              : createInlineComment(`${report.severity}: ${report.message}`, {
-                  prose: true,
-                }),
+            createInlineComment(`${report.severity}: ${report.message}`, {
+              prose: true,
+            }),
           );
         }
       }
       reports.clear();
     };
 
-    const getReportsForNode = (node: PostCSSNode) => reports.get(node);
+    function createWalker<T extends PostCSSNode>(args: {
+      walker: (node: T) => false | void;
+      serialiseSuggestion: (node: T) => string;
+    }): (node: T) => false | void {
+      const {walker, serialiseSuggestion} = args;
+
+      return (node: T) => {
+        let oldNode: T;
+        if (context.fix) {
+          oldNode = node.clone();
+        }
+
+        const result = walker(node);
+
+        const isPartialFix =
+          context.fix &&
+          reports.has(node) &&
+          node.toString() !== oldNode!.toString();
+
+        flushReportsAsComments();
+
+        // Our migrations have an opinion on partial fixes (when multiple
+        // issues are found in a single node, and some but not all can be
+        // fixed): We dump out the partial fix result as a comment
+        // immediately above the node.
+        if (isPartialFix) {
+          node.before(createInlineComment(serialiseSuggestion(node)));
+          // Undo changes
+          node.replaceWith(oldNode!);
+        }
+
+        return result;
+      };
+    }
 
     return ruleFn(
       primary,
@@ -399,8 +458,54 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
         options: secondaryOptions,
         methods: {
           report: addDedupedReport,
-          flushReports: flushReportsAsComments,
-          getReportsForNode,
+          each(root, walker) {
+            root.each(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.toString(),
+              }),
+            );
+          },
+          walk(root, walker) {
+            root.walk(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.toString(),
+              }),
+            );
+          },
+          walkAtRules(root, walker) {
+            root.walkAtRules(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => `@${node.name} ${node.params}`,
+              }),
+            );
+          },
+          walkComments(root, walker) {
+            root.walkComments(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.text,
+              }),
+            );
+          },
+          walkDecls(root, walker) {
+            root.walkDecls(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => `${node.prop}: ${node.value}`,
+              }),
+            );
+          },
+          walkRules(root, walker) {
+            root.walkRules(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.selector,
+              }),
+            );
+          },
         },
       },
       context,

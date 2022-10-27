@@ -293,7 +293,7 @@ import type {PolarisMigrator} from '../../utilities/sass';
 
 const replaceHelloWorld: PolarisMigrator = (_, {methods}, context) => {
   return (root) => {
-    root.walkDecls((decl) => {
+    methods.walkDecls(root, (decl) => {
       const parsedValue = valueParser(decl.value);
       parsedValue.walk((node) => {
         if (isSassFunction('hello', node)) {
@@ -311,12 +311,9 @@ const replaceHelloWorld: PolarisMigrator = (_, {methods}, context) => {
           return StopWalkingFunctionNodes;
         }
       });
-
       if (context.fix) {
         decl.value = parsedValue.toString();
       }
-
-      methods.flushReports();
     });
   };
 };

@@ -18,29 +18,16 @@ export default createSassMigrator(
     const namespacedRem = namespace('rem', options);
 
     return (root) => {
-      root.walkDecls((decl) => {
+      methods.walkDecls(root, (decl) => {
         if (!spaceProps.has(decl.prop)) return;
 
         const parsedValue = valueParser(decl.value);
 
         handleSpaceProps();
 
-        const newValue = parsedValue.toString();
-
-        if (context.fix && newValue !== decl.value) {
-          if (methods.getReportsForNode(decl)) {
-            // The "partial fix" case: When there's a new value AND a report.
-            methods.report({
-              node: decl,
-              severity: 'suggestion',
-              message: `${decl.prop}: ${parsedValue.toString()}`,
-            });
-          } else {
-            decl.value = parsedValue.toString();
-          }
+        if (context.fix) {
+          decl.value = parsedValue.toString();
         }
-
-        methods.flushReports();
 
         function handleSpaceProps() {
           parsedValue.walk((node) => {
