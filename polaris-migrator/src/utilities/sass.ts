@@ -1,5 +1,5 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Root, Result, Plugin} from 'postcss';
+import postcss, {Root, Result, Plugin, Node as PostCSSNode} from 'postcss';
 import valueParser, {
   Node,
   ParsedValue,
@@ -8,6 +8,8 @@ import valueParser, {
 } from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 import prettier from 'prettier';
+
+import {POLARIS_MIGRATOR_COMMENT} from '../constants';
 
 const defaultNamespace = '';
 
@@ -255,6 +257,12 @@ export function createInlineComment(text: string, options?: {prose?: boolean}) {
 
 interface PluginOptions extends Options, NamespaceOptions {}
 
+interface Report {
+  node: PostCSSNode;
+  severity: 'warning' | 'error' | 'suggestion';
+  message: string;
+}
+
 interface PluginContext {
   fix: boolean;
 }
@@ -280,7 +288,14 @@ type StylelintRule<P = any, S = any> = StylelintRuleBase<P, S> & {
 
 export type PolarisMigrator = (
   primaryOption: true,
-  secondaryOptions: PluginOptions,
+  secondaryOptions: {
+    options: {[key: string]: any};
+    methods: {
+      report: (report: Report) => void;
+      flushReports: () => void;
+      getReportsForNode: (node: PostCSSNode) => Report[] | undefined;
+    };
+  },
   context: PluginContext,
 ) => (root: Root, result: Result) => void;
 
@@ -327,7 +342,70 @@ function convertStylelintRuleToPostcssProcessor(ruleFn: StylelintRule) {
 }
 
 export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
-  const wrappedRule = ruleFn as StylelintRule;
+  const wrappedRule: StylelintRule = ((
+    primary,
+    secondaryOptions: PluginOptions,
+    context,
+  ) => {
+    const reports = new Map<PostCSSNode, Report[]>();
+
+    const addDedupedReport = (newReport: Report) => {
+      if (!reports.has(newReport.node)) {
+        reports.set(newReport.node, []);
+      }
+
+      const reportsForNode = reports.get(newReport.node)!;
+
+      if (
+        reportsForNode.findIndex(
+          (existingReport) =>
+            existingReport.severity === newReport.severity &&
+            existingReport.message === newReport.message,
+        ) === -1
+      ) {
+        reportsForNode.push(newReport);
+      }
+    };
+
+    const flushReportsAsComments = () => {
+      // @ts-expect-error No idea why TS is complaining here
+      for (const [node, reportsForNode] of reports) {
+        node.before(
+          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+        );
+
+        for (const report of reportsForNode) {
+          node.before(
+            report.severity === 'suggestion'
+              ? createInlineComment(report.message)
+              : createInlineComment(`${report.severity}: ${report.message}`, {
+                  prose: true,
+                }),
+          );
+        }
+      }
+      reports.clear();
+    };
+
+    const getReportsForNode = (node: PostCSSNode) => reports.get(node);
+
+    return ruleFn(
+      primary,
+      // We're kind of abusing stylelint's types here since the
+      // SecondaryOptions param can take an arbitrary object. But we need a
+      // way to pass the methods into the rule function somehow, and this way
+      // means less Typescript hackery.
+      {
+        options: secondaryOptions,
+        methods: {
+          report: addDedupedReport,
+          flushReports: flushReportsAsComments,
+          getReportsForNode,
+        },
+      },
+      context,
+    );
+  }) as StylelintRule;
 
   wrappedRule.ruleName = name;
   wrappedRule.meta = {

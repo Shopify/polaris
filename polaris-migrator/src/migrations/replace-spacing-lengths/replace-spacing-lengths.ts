@@ -1,8 +1,6 @@
 import valueParser from 'postcss-value-parser';
 
-import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 import {
-  createInlineComment,
   getFunctionArgs,
   isNumericOperator,
   isSassFunction,
@@ -16,44 +14,42 @@ import {isKeyOf} from '../../utilities/type-guards';
 
 export default createSassMigrator(
   'replace-sass-space',
-  (_, options, context) => {
+  (_, {methods, options}, context) => {
     const namespacedRem = namespace('rem', options);
 
     return (root) => {
       root.walkDecls((decl) => {
         if (!spaceProps.has(decl.prop)) return;
 
-        /**
-         * A collection of transformable values to migrate (e.g. decl lengths, functions, etc.)
-         *
-         * Note: This is evaluated at the end of each visitor execution to determine whether
-         * or not to replace the declaration or insert a comment.
-         */
-        const targets: {replaced: boolean}[] = [];
-        let hasNumericOperator = false;
         const parsedValue = valueParser(decl.value);
 
         handleSpaceProps();
 
-        if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
-          decl.before(
-            createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
-          );
-          decl.before(
-            createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
-          );
-        } else if (context.fix) {
-          decl.value = parsedValue.toString();
+        const newValue = parsedValue.toString();
+
+        if (context.fix && newValue !== decl.value) {
+          if (methods.getReportsForNode(decl)) {
+            // The "partial fix" case: When there's a new value AND a report.
+            methods.report({
+              node: decl,
+              severity: 'suggestion',
+              message: `${decl.prop}: ${parsedValue.toString()}`,
+            });
+          } else {
+            decl.value = parsedValue.toString();
+          }
         }
 
-        //
-        // Handlers
-        //
+        methods.flushReports();
 
         function handleSpaceProps() {
           parsedValue.walk((node) => {
             if (isNumericOperator(node)) {
-              hasNumericOperator = true;
+              methods.report({
+                node: decl,
+                severity: 'warning',
+                message: 'Numeric operator detected.',
+              });
               return;
             }
 
@@ -64,41 +60,72 @@ export default createSassMigrator(
 
               if (!isTransformableLength(dimension)) return;
 
-              targets.push({replaced: false});
-
               const valueInPx = toTransformablePx(node.value);
 
-              if (!isKeyOf(spaceMap, valueInPx)) return;
+              if (!isKeyOf(spaceMap, valueInPx)) {
+                methods.report({
+                  node: decl,
+                  severity: 'error',
+                  message: `Non-tokenizable value '${node.value}'`,
+                });
+                return;
+              }
 
-              targets[targets.length - 1]!.replaced = true;
+              if (context.fix) {
+                node.value = `var(${spaceMap[valueInPx]})`;
+                return;
+              }
 
-              node.value = `var(${spaceMap[valueInPx]})`;
+              methods.report({
+                node: decl,
+                severity: 'error',
+                message: `Prefer var(${spaceMap[valueInPx]}) Polaris token.`,
+              });
               return;
             }
 
             if (node.type === 'function') {
               if (isSassFunction(namespacedRem, node)) {
-                targets.push({replaced: false});
-
                 const args = getFunctionArgs(node);
 
-                if (args.length !== 1) return;
+                if (args.length !== 1) {
+                  methods.report({
+                    node: decl,
+                    severity: 'error',
+                    message: `Expected 1 argument, got ${args.length}`,
+                  });
+                  return;
+                }
 
                 const valueInPx = toTransformablePx(args[0]);
 
-                if (!isKeyOf(spaceMap, valueInPx)) return;
+                if (!isKeyOf(spaceMap, valueInPx)) {
+                  methods.report({
+                    node: decl,
+                    severity: 'error',
+                    message: `Non-tokenizable value '${args[0].trim()}'`,
+                  });
+                  return;
+                }
 
-                targets[targets.length - 1]!.replaced = true;
+                if (context.fix) {
+                  node.value = 'var';
+                  node.nodes = [
+                    {
+                      type: 'word',
+                      value: spaceMap[valueInPx],
+                      sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+                      sourceEndIndex: spaceMap[valueInPx].length,
+                    },
+                  ];
+                  return;
+                }
 
-                node.value = 'var';
-                node.nodes = [
-                  {
-                    type: 'word',
-                    value: spaceMap[valueInPx],
-                    sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                    sourceEndIndex: spaceMap[valueInPx].length,
-                  },
-                ];
+                methods.report({
+                  node: decl,
+                  severity: 'error',
+                  message: `Prefer var(${spaceMap[valueInPx]}) Polaris token.`,
+                });
               }
 
               return StopWalkingFunctionNodes;
