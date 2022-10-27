@@ -1,0 +1,92 @@
+.font-family {
+  font-family: sans-serif;
+  font-family: font-family();
+  font-family: font-family(base);
+  font-family: font-family(monospace);
+}
+
+.font-size {
+  // LENGTHS
+  font-size: 12px;
+  font-size: 1rem;
+  // Ignore
+  font-size: 1em;
+  font-size: #{1px};
+  // Comment
+  font-size: 10px;
+  font-size: 12px + 1px;
+
+  // FONT-SIZE FUNCTION
+  font-size: font-size(caption);
+  font-size: font-size(caption, base);
+  font-size: font-size(caption, large-screen);
+  // Comment
+  font-size: font-size($invalid);
+  font-size: font-size(caption, $invalid);
+  font-size: font-size();
+  font-size: font-size(caption, base, $too-many-args);
+
+  // REM FUNCTION
+  font-size: rem(12px);
+  font-size: rem(1rem);
+  // Comment
+  font-size: rem(1em);
+  font-size: rem(10px);
+  font-size: rem($invalid);
+  font-size: rem();
+  font-size: rem(12px, $too-many-args);
+  font-size: rem(12px) 1px;
+  font-size: rem(1px) 12px;
+  font-size: rem(#{10px + 2px}) 12px;
+  font-size: rem(12px) + #{10px + 2px};
+}
+
+.font-weight {
+  // LENGTHS
+  font-weight: 400;
+  font-weight: 700;
+  // Comment
+  font-weight: 300;
+  font-weight: 400 + 300;
+
+  // ALIAS
+  font-weight: normal;
+  font-weight: bold;
+  // Ignore
+  font-weight: inherit;
+  // Comment
+  font-weight: bolder;
+}
+
+.font-line-height {
+  // LENGTHS
+  line-height: 16px;
+  line-height: 1rem;
+  // Comment
+  line-height: 10px;
+
+  // LINE-HEIGHT FUNCTION
+  line-height: line-height(caption);
+  line-height: line-height(caption, base);
+  line-height: line-height(caption, large-screen);
+  line-height: line-height(display-x-large, base);
+  // Comment
+  line-height: line-height($invalid);
+  line-height: line-height(caption, $invalid);
+  line-height: line-height();
+  line-height: line-height(caption, base, $too-many-args);
+
+  // REM FUNCTION
+  line-height: rem(16px);
+  line-height: rem(1rem);
+  // Comment
+  line-height: rem(1em);
+  line-height: rem(10px);
+  line-height: rem($invalid);
+  line-height: rem();
+  line-height: rem(16px, $too-many-args);
+  line-height: rem(16px) 1px;
+  line-height: rem(1px) 16px;
+  line-height: rem(#{10px + 6px}) 16px;
+  line-height: rem(16px) + #{10px + 6px};
+}

@@ -18,16 +18,13 @@ export const getStaticPropsForFoundations = (category: string) => {
       frontMatter: {description},
     }: MarkdownFile = parseMarkdown(markdown);
 
-    const filePattern = path.resolve(
-      process.cwd(),
-      `content/${category}/**/index.md`,
-    );
+    const filePattern = path.resolve(process.cwd(), `content/${category}/*.md`);
 
     let items: FoundationsProps['items'] = [];
     const markdownFilePaths = await globby(filePattern);
 
     markdownFilePaths
-      .filter((path) => !path.endsWith(`content/${category}/index.md`))
+      .filter((path) => !path.endsWith(`index.md`))
       .forEach((markdownFilePath) => {
         if (fs.existsSync(markdownFilePath)) {
           const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
@@ -36,7 +33,7 @@ export const getStaticPropsForFoundations = (category: string) => {
 
           const url = markdownFilePath
             .replace(`${process.cwd()}/content`, '')
-            .replace('index.md', '');
+            .replace(/\.md$/, '');
 
           const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
             (heading) => heading.replace(/^\n## /, '').trim(),

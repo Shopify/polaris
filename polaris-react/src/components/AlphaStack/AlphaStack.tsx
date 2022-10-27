@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {createElement} from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../utilities/css';
+import {
+  classNames,
+  sanitizeCustomProperties,
+  getResponsiveProps,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
 
 type Align = 'start' | 'end' | 'center';
 
+type Element = 'div' | 'ul' | 'ol' | 'fieldset';
+
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
+
 export interface AlphaStackProps {
+  /** HTML Element type */
+  as?: Element;
   /** Elements to display inside stack */
   children?: React.ReactNode;
   /** Adjust vertical alignment of elements */
@@ -15,10 +26,11 @@ export interface AlphaStackProps {
   /** Toggle elements to be full width */
   fullWidth?: boolean;
   /** Adjust spacing between elements */
-  spacing?: SpacingSpaceScale;
+  spacing?: Spacing;
 }
 
 export const AlphaStack = ({
+  as = 'div',
   children,
   align = 'start',
   fullWidth,
@@ -27,16 +39,20 @@ export const AlphaStack = ({
   const className = classNames(
     styles.AlphaStack,
     fullWidth && styles.fullWidth,
+    as === 'ul' && styles.listReset,
   );
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
-    ...(spacing ? {'--pc-stack-spacing': `var(--p-space-${spacing})`} : {}),
+    ...getResponsiveProps('stack', 'spacing', 'space', spacing),
   } as React.CSSProperties;
 
-  return (
-    <div className={className} style={style}>
-      {children}
-    </div>
+  return createElement(
+    as,
+    {
+      className,
+      style: sanitizeCustomProperties(style),
+    },
+    children,
   );
 };

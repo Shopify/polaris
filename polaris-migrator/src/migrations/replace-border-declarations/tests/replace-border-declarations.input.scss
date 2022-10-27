@@ -1,0 +1,131 @@
+/* stylelint-disable */
+
+.border {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border: 1px solid var(--p-border-subdued);
+  border: 1px solid transparent;
+  border: 1px solid currentColor;
+  border: 1px solid color('sky');
+  border: 0.0625rem solid var(--p-border-subdued);
+  border: solid 1px var(--p-border-subdued);
+  border: 1px solid rgba(141, 145, 150, 0.5);
+  border: 1px solid $var;
+  border-width: 1px;
+  border-width: 0.0625rem;
+
+  /* Ignore */
+  border: 0.0625em solid var(--p-border-subdued);
+  border: 0 solid var(--p-border-subdued);
+  border: (16px + 16px) solid var(--p-border-subdued);
+  border: var(--var);
+  border: calc(1px / var(--item-scale, 1)) solid var(--p-border-subdued);
+  border-width: 0.0625em;
+  border-width: 0;
+
+  /* Comment */
+  border: 10px solid var(--p-border-subdued);
+  border: 10rem solid transparent;
+  border-width: 10px;
+  border-width: 10rem;
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border: rem(1px) solid var(--p-border-subdued);
+  border: solid rem(1px) var(--p-border-subdued);
+  border-width: rem(1px);
+  border-width: rem(1px) rem(1px);
+  border-width: rem(1px) 1px;
+  border-width: rem(1px) 4in;
+  border-width: rem(1px) 1em;
+  border-width: rem(1px) 0 0 0;
+
+  /* Ignore */
+  border: calc(1rem + var(--var, #{rem(1px)})) solid var(--p-border-subdued);
+  border: calc(1rem + var(--var, #{rem(10px)})) solid var(--p-border-subdued);
+  border-width: calc(-1 * rem(1px));
+
+  /* Comment */
+  border: rem(10px) solid var(--p-border-subdued);
+  border-width: rem(10px);
+  border-width: rem(10px) rem(10px);
+  border-width: rem(1px) rem(10px);
+  border-width: rem(10px) -1px;
+  border-width: rem(10px) + 1px;
+  border-width: rem($var * 1px);
+
+  /* --- BORDER FUNCTION --- */
+
+  /* Migrate */
+  border: border();
+  border: border(base);
+  border: border(dark);
+  border: border(transparent);
+  border: border(divider);
+  border: border('divider');
+
+  /* --- BORDER WIDTH FUNCTION --- */
+
+  /* Migrate */
+  border: border-width() solid var(--p-border-subdued);
+  border: border-width(base) solid var(--p-border-subdued);
+  border: border-width(thick) solid var(--p-border-subdued);
+  border: border-width(thicker) solid var(--p-border-subdued);
+  border-width: border-width('thicker');
+
+  /* Ignore */
+  border-width: calc(-1 * border-width());
+  border-width: calc($var * border-width());
+
+  /* Comment */
+  border-width: rem(1px) rem(10px - border-width());
+}
+
+.border-radius {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border-radius: 2px;
+  border-radius: 1rem;
+
+  /* Ignore */
+  border-radius: 0;
+  border-radius: 2em;
+  border-radius: calc(var(--p-space-2) * 3);
+  border-radius: 50%;
+
+  /* Comment */
+  border-radius: 1px;
+  border-radius: 20px / 50%;
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border-radius: rem(8px);
+
+  /* Ignore */
+  border-radius: calc(var(--p-border-radius-base) * 2px);
+
+  /* Comment */
+  border-radius: rem(10px) rem(4px);
+  border-radius: rem(1px) * 5;
+
+  /* --- BORDER-RADIUS FUNCTION --- */
+
+  /* Migrate */
+  border-radius: border-radius();
+  border-radius: border-radius(base);
+  border-radius: border-radius(large);
+
+  /* Ignore */
+  border-radius: calc(border-radius(base) * 2);
+  border-radius: calc(border-radius() * rem(1px));
+
+  /* Comment */
+  border-radius: border-radius(base) * 2;
+  border-radius: border-radius() * rem(1px);
+  border-radius: 10px;
+  border-top-right-radius: border-radius() * rem(4px);
+}

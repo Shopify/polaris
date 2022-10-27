@@ -1,0 +1,178 @@
+/* stylelint-disable */
+@use 'global-styles/legacy-polaris-v8';
+
+.border {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid transparent;
+  border: var(--p-border-width-1) solid currentColor;
+  border: var(--p-border-width-1) solid color('sky');
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: solid var(--p-border-width-1) var(--p-border-subdued);
+  border: var(--p-border-width-1) solid rgba(141, 145, 150, 0.5);
+  border: var(--p-border-width-1) solid $var;
+  border-width: var(--p-border-width-1);
+  border-width: var(--p-border-width-1);
+
+  /* Ignore */
+  border: 0.0625em solid var(--p-border-subdued);
+  border: 0 solid var(--p-border-subdued);
+  border: (16px + 16px) solid var(--p-border-subdued);
+  border: var(--var);
+  border: calc(1px / var(--item-scale, 1)) solid var(--p-border-subdued);
+  border-width: 0.0625em;
+  border-width: 0;
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border: 10px solid var(--p-border-subdued);
+  border: 10px solid var(--p-border-subdued);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border: 10rem solid transparent;
+  border: 10rem solid transparent;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: 10px;
+  border-width: 10px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: 10rem;
+  border-width: 10rem;
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: solid var(--p-border-width-1) var(--p-border-subdued);
+  border-width: var(--p-border-width-1);
+  border-width: var(--p-border-width-1) var(--p-border-width-1);
+  border-width: var(--p-border-width-1) var(--p-border-width-1);
+  border-width: var(--p-border-width-1) 4in;
+  border-width: var(--p-border-width-1) 1em;
+  border-width: var(--p-border-width-1) 0 0 0;
+
+  /* Ignore */
+  border: calc(1rem + var(--var, #{legacy-polaris-v8.rem(1px)})) solid
+    var(--p-border-subdued);
+  border: calc(1rem + var(--var, #{legacy-polaris-v8.rem(10px)})) solid
+    var(--p-border-subdued);
+  border-width: calc(-1 * legacy-polaris-v8.rem(1px));
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border: legacy-polaris-v8.rem(10px) solid var(--p-border-subdued);
+  border: legacy-polaris-v8.rem(10px) solid var(--p-border-subdued);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: legacy-polaris-v8.rem(10px);
+  border-width: legacy-polaris-v8.rem(10px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(10px);
+  border-width: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(10px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: var(--p-border-width-1) legacy-polaris-v8.rem(10px);
+  border-width: legacy-polaris-v8.rem(1px) legacy-polaris-v8.rem(10px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: legacy-polaris-v8.rem(10px) -1px;
+  border-width: legacy-polaris-v8.rem(10px) -1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: legacy-polaris-v8.rem(10px) + var(--p-border-width-1);
+  border-width: legacy-polaris-v8.rem(10px) + 1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: legacy-polaris-v8.rem($var * var(--p-border-width-1));
+  border-width: legacy-polaris-v8.rem($var * 1px);
+
+  /* --- BORDER FUNCTION --- */
+
+  /* Migrate */
+  border: var(--p-border-base);
+  border: var(--p-border-base);
+  border: var(--p-border-dark);
+  border: var(--p-border-transparent);
+  border: var(--p-border-divider);
+  border: var(--p-border-divider);
+
+  /* --- BORDER WIDTH FUNCTION --- */
+
+  /* Migrate */
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: var(--p-border-width-1) solid var(--p-border-subdued);
+  border: var(--p-border-width-2) solid var(--p-border-subdued);
+  border: var(--p-border-width-3) solid var(--p-border-subdued);
+  border-width: var(--p-border-width-3);
+
+  /* Ignore */
+  border-width: calc(-1 * legacy-polaris-v8.border-width());
+  border-width: calc($var * legacy-polaris-v8.border-width());
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-width: var(--p-border-width-1) legacy-polaris-v8.rem(10px - var(--p-border-width-1));
+  border-width: legacy-polaris-v8.rem(1px)
+    legacy-polaris-v8.rem(10px - legacy-polaris-v8.border-width());
+}
+
+.border-radius {
+  /* --- LENGTHS --- */
+
+  /* Migrate */
+  border-radius: var(--p-border-radius-05);
+  border-radius: var(--p-border-radius-4);
+
+  /* Ignore */
+  border-radius: 0;
+  border-radius: 2em;
+  border-radius: calc(var(--p-space-2) * 3);
+  border-radius: 50%;
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: 1px;
+  border-radius: 1px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: var(--p-border-radius-5) / 50%;
+  border-radius: 20px / 50%;
+
+  /* --- REM FUNCTION --- */
+
+  /* Migrate */
+  border-radius: var(--p-border-radius-2);
+
+  /* Ignore */
+  border-radius: calc(var(--p-border-radius-base) * 2px);
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: legacy-polaris-v8.rem(10px) var(--p-border-radius-1);
+  border-radius: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(4px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: legacy-polaris-v8.rem(1px) * 5;
+  border-radius: legacy-polaris-v8.rem(1px) * 5;
+
+  /* --- BORDER-RADIUS FUNCTION --- */
+
+  /* Migrate */
+  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-large);
+
+  /* Ignore */
+  border-radius: calc(legacy-polaris-v8.border-radius(base) * 2);
+  border-radius: calc(
+    legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px)
+  );
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: var(--p-border-radius-base) * 2;
+  border-radius: legacy-polaris-v8.border-radius(base) * 2;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: var(--p-border-radius-base) * legacy-polaris-v8.rem(1px);
+  border-radius: legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: 10px;
+  border-radius: 10px;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-top-right-radius: var(--p-border-radius-base) * var(--p-border-radius-1);
+  border-top-right-radius: legacy-polaris-v8.border-radius() *
+    legacy-polaris-v8.rem(4px);
+}

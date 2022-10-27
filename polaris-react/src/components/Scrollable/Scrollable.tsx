@@ -22,9 +22,13 @@ const LOW_RES_BUFFER = 2;
 export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   /** Content to display in scrollable area */
   children?: React.ReactNode;
-  /** Scroll content vertically */
+  /** Scroll content vertically
+   * @default true
+   * */
   vertical?: boolean;
-  /** Scroll content horizontally */
+  /** Scroll content horizontally
+   * @default true
+   * */
   horizontal?: boolean;
   /** Add a shadow when content is scrollable */
   shadow?: boolean;
@@ -107,7 +111,7 @@ export class Scrollable extends Component<ScrollableProps, State> {
     const {
       children,
       className,
-      horizontal,
+      horizontal = true,
       vertical = true,
       shadow,
       hint,

@@ -49,12 +49,46 @@ A generic codemod to rename any component prop.
 npx @shopify/polaris-migrator rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
 ```
 
+### `replace-spacing-lengths`
+
+Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
+
+```diff
+- padding: 16px;
++ padding: var(--p-space-4);
+
+- margin: 1rem;
++ margin: var(--p-space-4);
+
+- gap: rem(16px);
++ gap: var(--p-space-4);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-spacing-lengths <path>
+```
+
 ### v9
 
 For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
 
 ```sh
 npx @shopify/polaris-migrator <sass-migration> <path> --namespace="legacy-polaris-v8"
+```
+
+### `replace-sass-color`
+
+Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
+
+```diff
+- color: color('ink');
+- background: color('white');
++ color: var(--p-text);
++ background: var(--p-surface);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-sass-color <path>
 ```
 
 ### `replace-sass-spacing`
@@ -97,6 +131,108 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 
 ```sh
 npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
+```
+
+### `replace-typography-declarations`
+
+Replace legacy Typography functions and hardcoded lengths with Polaris custom properties for `font-family`, `font-size`, `font-weight`, and `line-height` declarations.
+
+```diff
+- font-family: font-family(monospace);
++ font-family: var(--p-font-family-mono);
+
+- font-size: font-size(input, base);
++ font-size: var(--p-font-size-200);
+
+- font-weight: 400;
++ font-weight: var(--p-font-weight-regular);
+
+- line-height: line-height(caption, base);
++ font-family: var(--p-font-line-height-2);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-typography-declarations <path>
+```
+
+### `replace-border-declarations`
+
+Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `border-width()`, `border-radius()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border: border();
++ border: var(--p-border-base);
+
+- border-width: 0.0625rem;
++ border-width: var(--p-border-width-1);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: border-radius(large);
++ border-radius: var(--p-border-radius-large);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-border-declarations <path>
+```
+
+### `replace-sass-z-index`
+
+Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
+
+Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
+This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
+
+```diff
+- .decl-1 {
+-   z-index: z-index(content);
+- }
+- .decl-2 {
+-   z-index: z-index(modal, $fixed-element-stacking-order)
+- }
++ decl-1 {
++   z-index: var(--p-z-1);
++ }
++ .decl-2 {
++   z-index: var(--p-z-11)
++ }
+```
+
+Invocations of `z-index` within an arithmetic expression will be appended with a comment for review and manual migration.
+Generally in these instances you'll want to wrap the suggested code change in a `calc` however this may defer on a case by case basis in your codebase.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: var(--p-z-1) + 1 */
+  z-index: z-index(content) + 1
+}
+```
+
+Invocations of `z-index` with a custom sass map property, will also be appended with a comment for review and manual migration.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: map.get($custom-sass-map, modal) */
+  z-index: z-index(modal, $custom-sass-map)
+}
+```
+
+In these cases you may also want to run `npx sass-migrator module <path> --migrate-deps --load-path <load-path>` to ensure that
+`map.get` is in scope\*\*.
+
+Be aware that this may also create additional code changes in your codebase, we recommend running this only if there are large number of instances of migrations from `z-index` to `map.get`. Otherwise it may be easier to add `use 'sass:map'` to the top of your `.scss` file manually.
+
+```sh
+npx @shopify/polaris-migrator replace-sass-spacing <path>
 ```
 
 ## Creating a migration
@@ -233,3 +369,4 @@ git reset $(grep -r -l "polaris-migrator:")
 - Common utilities:
   - [`jsx.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/utilities/jsx.ts)
   - [`imports.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/utilities/imports.ts)
+    0

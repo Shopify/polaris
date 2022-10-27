@@ -1,11 +1,18 @@
 @use 'global-styles/legacy-polaris-v8';
 
-.Card {
-  z-index: legacy-polaris-v8.z-index(content) + 1;
-  padding: legacy-polaris-v8.spacing(loose)
-    legacy-polaris-v8.spacing(extra-loose);
-  border-radius: var(--p-border-radius-2, legacy-polaris-v8.border-radius());
-  box-shadow: var(--p-shadow-card, legacy-polaris-v8.shadow());
-  margin: legacy-polaris-v8.spacing(tight) 0 0
-    (-1 * legacy-polaris-v8.spacing());
+.my-class {
+  // Standard replacement
+  padding: legacy-polaris-v8.spacing();
+  padding: legacy-polaris-v8.spacing(loose);
+  // With multiple values
+  padding: legacy-polaris-v8.spacing() legacy-polaris-v8.spacing();
+  padding: legacy-polaris-v8.spacing() 0 legacy-polaris-v8.spacing() 0;
+  // With interpolation
+  padding: calc(50% - #{legacy-polaris-v8.spacing()});
+  // With negative interpolation
+  padding: -#{legacy-polaris-v8.spacing()};
+  // With other functions
+  padding: calc(
+    #{legacy-polaris-v8.rem(16px)} + #{legacy-polaris-v8.spacing()}
+  );
 }

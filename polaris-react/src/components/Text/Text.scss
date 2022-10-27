@@ -83,28 +83,53 @@
 }
 
 .headingLg {
-  font-size: var(--p-font-size-300);
-  line-height: var(--p-font-line-height-3);
+  font-size: var(--p-font-size-200);
+  line-height: var(--p-font-line-height-2);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-3);
+  }
 }
 
 .headingXl {
-  font-size: var(--p-font-size-400);
-  line-height: var(--p-font-line-height-4);
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-3);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-400);
+    line-height: var(--p-font-line-height-4);
+  }
 }
 
 .heading2xl {
-  font-size: var(--p-font-size-500);
-  line-height: var(--p-font-line-height-5);
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-3);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-500);
+    line-height: var(--p-font-line-height-5);
+  }
 }
 
 .heading3xl {
-  font-size: var(--p-font-size-600);
-  line-height: var(--p-font-line-height-6);
+  font-size: var(--p-font-size-400);
+  line-height: var(--p-font-line-height-4);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-600);
+    line-height: var(--p-font-line-height-6);
+  }
 }
 
 .heading4xl {
-  font-size: var(--p-font-size-700);
-  line-height: var(--p-font-line-height-7);
+  font-size: var(--p-font-size-600);
+  line-height: var(--p-font-line-height-6);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-700);
+    line-height: var(--p-font-line-height-7);
+  }
 }
 
 .bodySm {
@@ -120,4 +145,8 @@
 .bodyLg {
   font-size: var(--p-font-size-200);
   line-height: var(--p-font-line-height-2);
+}
+
+.break {
+  overflow-wrap: break-word;
 }

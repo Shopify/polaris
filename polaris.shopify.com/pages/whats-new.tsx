@@ -38,14 +38,16 @@ export const getStaticProps: GetStaticProps<
     frontMatter: {title, description},
   }: MarkdownFile = parseMarkdown(mdFile);
 
-  const globPath = path.resolve(process.cwd(), 'content/whats-new/*/index.md');
-  const paths = globby.sync(globPath);
+  const globPath = path.resolve(process.cwd(), 'content/whats-new/*.md');
+  const paths = globby
+    .sync(globPath)
+    .filter((path) => !path.endsWith('index.md'));
 
   const posts: Props['posts'] = paths.map((path) => {
     const markdown = fs.readFileSync(path, 'utf-8');
     const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
     const {title, description, imageUrl} = frontMatter;
-    const slug = path.replace(contentDir, '').replace('index.md', '');
+    const slug = path.replace(contentDir, '').replace('.md', '');
     return {title, description, slug, imageUrl};
   });
 

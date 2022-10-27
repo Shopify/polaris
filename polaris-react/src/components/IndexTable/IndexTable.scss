@@ -2,7 +2,7 @@
 
 .IndexTable {
   --pc-index-table-translate-offset: 35px;
-  --pc-index-table-table-header-offset: 52px;
+  --pc-index-table-table-header-offset: 35px;
   --pc-index-table-cell: 1;
   --pc-index-table-sticky-cell: 31;
   --pc-index-table-scroll-bar: 35;
@@ -120,7 +120,7 @@ $loading-panel-height: 53px;
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
-  filter: drop-shadow(0 -1px 0 var(--p-divider));
+  border-top: var(--p-border-width-1) solid var(--p-divider);
 
   &.TableRow-unclickable {
     cursor: auto;

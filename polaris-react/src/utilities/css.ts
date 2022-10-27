@@ -1,4 +1,12 @@
+import type {BreakpointsAlias} from '@shopify/polaris-tokens';
+
 type Falsy = boolean | undefined | null | 0;
+
+export type ResponsiveProp<T> =
+  | T
+  | {
+      [Breakpoint in BreakpointsAlias]?: T;
+    };
 
 export function classNames(...classes: (string | Falsy)[]) {
   return classes.filter(Boolean).join(' ');
@@ -16,4 +24,28 @@ export function sanitizeCustomProperties(
   );
 
   return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
+}
+
+export function getResponsiveProps(
+  componentName: string,
+  componentProp: string,
+  tokenSubgroup: string,
+  responsiveProp:
+    | string
+    | {
+        [Breakpoint in BreakpointsAlias]?: string;
+      },
+) {
+  if (typeof responsiveProp === 'string') {
+    return {
+      [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
+    };
+  }
+
+  return Object.fromEntries(
+    Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
+      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
+      `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+    ]),
+  );
 }
