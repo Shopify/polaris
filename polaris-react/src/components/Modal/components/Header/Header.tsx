@@ -1,10 +1,11 @@
 import React from 'react';
 
 import {Box} from '../../../Box';
-import {Columns} from '../../../Columns';
-import {DisplayText} from '../../../DisplayText';
-import {Inline} from '../../../Inline';
 import {CloseButton} from '../CloseButton';
+import {Columns} from '../../../Columns';
+// import {DisplayText} from '../../../DisplayText';
+import {Inline} from '../../../Inline';
+import {Text} from '../../../Text';
 
 import styles from './Header.scss';
 
@@ -40,11 +41,14 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
         <Inline>
           <Box id={id} paddingTop="1">
             {/* Replace with <Text> once responsive styles supported */}
-            <div className={styles.Title}>
+            {/* <div className={styles.Title}>
               <DisplayText element="h2" size="small">
                 {children}
               </DisplayText>
-            </div>
+            </div> */}
+            <Text as="h2" variant="headingXl" fontWeight="regular">
+              {children}
+            </Text>
           </Box>
         </Inline>
         <Inline>

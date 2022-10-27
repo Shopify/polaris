@@ -214,7 +214,9 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const animated = !instant;
 
   const activatorMarkup =
-    activator && !isRef(activator) ? <Box>{activator}</Box> : null;
+    activator && !isRef(activator) ? (
+      <Box ref={activatorRef}>{activator}</Box>
+    ) : null;
 
   return (
     <WithinContentContext.Provider value>
