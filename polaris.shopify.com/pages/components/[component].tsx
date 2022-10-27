@@ -43,9 +43,20 @@ const Components = ({
   type,
   editPageLinkPath,
 }: Props) => {
-  const statusBanner = status ? <StatusBanner status={status} /> : null;
-  const propList =
-    type && status?.value !== 'Deprecated' ? <PropsTable types={type} /> : null;
+  const typedStatus: Status | undefined = status
+    ? {
+        value: status.value.toLowerCase() as Status['value'],
+        message: status.message,
+      }
+    : undefined;
+
+  const componentExamples = Boolean(examples.length) && (
+    <ComponentExamples examples={examples} />
+  );
+  const propsTable =
+    type && status?.value !== 'Deprecated' ? (
+      <PropsTable componentName={title} types={type} />
+    ) : null;
 
   return (
     <Page title={title} editPageLinkPath={editPageLinkPath}>
@@ -53,9 +64,13 @@ const Components = ({
 
       <Longform>
         <Markdown text={description} />
-        {statusBanner}
-        {Boolean(examples.length) && <ComponentExamples examples={examples} />}
-        {propList}
+        {typedStatus && <StatusBanner status={typedStatus} />}
+        {componentExamples}
+      </Longform>
+
+      {propsTable}
+
+      <Longform firstParagraphIsLede={false}>
         <Markdown text={readme.body} />
       </Longform>
     </Page>
