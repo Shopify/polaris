@@ -20,8 +20,8 @@ function BoxWithBorderRadiusExample() {
       <Box
         background="surface"
         border="base"
-        borderRadiusBottomLeft="2"
-        borderRadiusBottomRight="2"
+        borderRadiusEndStart="2"
+        borderRadiusEndEnd="2"
         padding="5"
         shadow="card"
       >

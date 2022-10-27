@@ -39,10 +39,7 @@ describe('AlphaCard', () => {
 
     expect(alphaCard).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-box-border-radius-bottom-left': 'var(--p-border-radius-2)',
-        '--pc-box-border-radius-bottom-right': 'var(--p-border-radius-2)',
-        '--pc-box-border-radius-top-left': 'var(--p-border-radius-2)',
-        '--pc-box-border-radius-top-right': 'var(--p-border-radius-2)',
+        '--pc-box-border-radius': 'var(--p-border-radius-2)',
       }),
     });
   });

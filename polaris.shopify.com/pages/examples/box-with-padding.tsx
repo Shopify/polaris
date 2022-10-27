@@ -15,14 +15,19 @@ function BoxWithPaddingExample() {
         background="surface"
         borderRadius="2"
         padding="5"
-        paddingLeft="2"
+        paddingInlineStart="2"
         shadow="card"
       >
         <Text as="h2" variant="headingMd">
           Box with left padding overwritten
         </Text>
       </Box>
-      <Box background="surface" borderRadius="2" paddingTop="4" shadow="card">
+      <Box
+        background="surface"
+        borderRadius="2"
+        paddingBlockStart="4"
+        shadow="card"
+      >
         <Text as="h2" variant="headingMd">
           Box with top padding only
         </Text>

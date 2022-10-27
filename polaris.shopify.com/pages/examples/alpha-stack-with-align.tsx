@@ -1,19 +1,18 @@
 import React from 'react';
-import {AlphaStack, Box, Page, Inline, Text} from '@shopify/polaris';
+import {AlphaStack, Page, Inline, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithAlignExample() {
   return (
     <Page>
-      <Box paddingBottom="20">
+      <AlphaStack spacing="5" fullWidth>
         <AlphaStack align="start">
           <Placeholder width="320px" label="Start" childAlign="start" />
           <Placeholder width="320px" childAlign="start" />
           <Placeholder width="320px" childAlign="start" />
         </AlphaStack>
-      </Box>
-      <Box paddingBottom="20">
+
         <AlphaStack align="center">
           <AlphaStack>
             <Placeholder width="320px" label="Center" childAlign="center" />
@@ -21,14 +20,12 @@ function AlphaStackWithAlignExample() {
             <Placeholder width="320px" childAlign="center" />
           </AlphaStack>
         </AlphaStack>
-      </Box>
-      <Box>
         <AlphaStack align="end">
           <Placeholder width="320px" label="End" childAlign="end" />
           <Placeholder width="320px" childAlign="center" />
           <Placeholder width="320px" childAlign="center" />
         </AlphaStack>
-      </Box>
+      </AlphaStack>
     </Page>
   );
 }

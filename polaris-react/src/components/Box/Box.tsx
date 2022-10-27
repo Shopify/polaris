@@ -103,10 +103,10 @@ export type BorderTokenAlias =
   | 'transparent';
 
 interface Border {
-  bottom: BorderTokenAlias;
-  left: BorderTokenAlias;
-  right: BorderTokenAlias;
-  top: BorderTokenAlias;
+  blockStart: BorderTokenAlias;
+  blockEnd: BorderTokenAlias;
+  inlineStart: BorderTokenAlias;
+  inlineEnd: BorderTokenAlias;
 }
 
 export type BorderRadiusTokenScale =
@@ -122,17 +122,17 @@ export type BorderRadiusTokenScale =
   | 'half';
 
 interface BorderRadius {
-  bottomLeft: BorderRadiusTokenScale;
-  bottomRight: BorderRadiusTokenScale;
-  topLeft: BorderRadiusTokenScale;
-  topRight: BorderRadiusTokenScale;
+  startStart: BorderRadiusTokenScale;
+  startEnd: BorderRadiusTokenScale;
+  endStart: BorderRadiusTokenScale;
+  endEnd: BorderRadiusTokenScale;
 }
 
 interface Spacing {
-  bottom: SpacingSpaceScale;
-  left: SpacingSpaceScale;
-  right: SpacingSpaceScale;
-  top: SpacingSpaceScale;
+  blockStart: SpacingSpaceScale;
+  blockEnd: SpacingSpaceScale;
+  inlineStart: SpacingSpaceScale;
+  inlineEnd: SpacingSpaceScale;
 }
 
 export interface BoxProps extends PropsWithChildren {
@@ -142,24 +142,24 @@ export interface BoxProps extends PropsWithChildren {
   background?: BackgroundColorTokenScale;
   /** Border style */
   border?: BorderTokenAlias;
-  /** Bottom border style */
-  borderBottom?: BorderTokenAlias;
-  /** Left border style */
-  borderLeft?: BorderTokenAlias;
-  /** Right border style */
-  borderRight?: BorderTokenAlias;
-  /** Top border style */
-  borderTop?: BorderTokenAlias;
+  /** Vertical end border style */
+  borderBlockEnd?: BorderTokenAlias;
+  /** Horizontal start border style */
+  borderInlineStart?: BorderTokenAlias;
+  /** Horizontal end border style */
+  borderInlineEnd?: BorderTokenAlias;
+  /** Vertical start border style */
+  borderBlockStart?: BorderTokenAlias;
   /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
-  /** Bottom left border radius */
-  borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Bottom right border radius */
-  borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Top left border radius */
-  borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Top right border radius */
-  borderRadiusTopRight?: BorderRadiusTokenScale;
+  /** Vertical end horizontal start border radius */
+  borderRadiusEndStart?: BorderRadiusTokenScale;
+  /** Vertical end horizontal end border radius */
+  borderRadiusEndEnd?: BorderRadiusTokenScale;
+  /** Vertical start horizontal start border radius */
+  borderRadiusStartStart?: BorderRadiusTokenScale;
+  /** Verital start horizontal end border radius */
+  borderRadiusStartEnd?: BorderRadiusTokenScale;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
@@ -176,14 +176,14 @@ export interface BoxProps extends PropsWithChildren {
   overflowY?: Overflow;
   /** Spacing around children */
   padding?: SpacingSpaceScale;
-  /** Bottom spacing around children */
-  paddingBottom?: SpacingSpaceScale;
-  /** Left spacing around children */
-  paddingLeft?: SpacingSpaceScale;
-  /** Right spacing around children */
-  paddingRight?: SpacingSpaceScale;
-  /** Top spacing around children */
-  paddingTop?: SpacingSpaceScale;
+  /** Vertical start spacing around children */
+  paddingBlockStart?: SpacingSpaceScale;
+  /** Vertical end spacing around children */
+  paddingBlockEnd?: SpacingSpaceScale;
+  /** Horizontal start spacing around children */
+  paddingInlineStart?: SpacingSpaceScale;
+  /** Horizontal end spacing around children */
+  paddingInlineEnd?: SpacingSpaceScale;
   /** Shadow */
   shadow?: DepthShadowAlias;
   /** Set width of container */
@@ -196,15 +196,15 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as = 'div',
       background,
       border,
-      borderBottom,
-      borderLeft,
-      borderRight,
-      borderTop,
+      borderBlockEnd,
+      borderInlineStart,
+      borderInlineEnd,
+      borderBlockStart,
       borderRadius,
-      borderRadiusBottomLeft,
-      borderRadiusBottomRight,
-      borderRadiusTopLeft,
-      borderRadiusTopRight,
+      borderRadiusEndStart,
+      borderRadiusEndEnd,
+      borderRadiusStartStart,
+      borderRadiusStartEnd,
       children,
       color,
       id,
@@ -214,86 +214,87 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       overflowX,
       overflowY,
       padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
+      paddingBlockStart,
+      paddingBlockEnd,
+      paddingInlineStart,
+      paddingInlineEnd,
       shadow,
       width,
     },
     ref,
   ) => {
     const borders = {
-      bottom: borderBottom ? borderBottom : border,
-      left: borderLeft ? borderLeft : border,
-      right: borderRight ? borderRight : border,
-      top: borderTop ? borderTop : border,
+      blockEnd: borderBlockEnd,
+      inlineStart: borderInlineStart,
+      inlineEnd: borderInlineEnd,
+      blockStart: borderBlockStart,
     } as Border;
 
     const borderRadiuses = {
-      bottomLeft: borderRadiusBottomLeft
-        ? borderRadiusBottomLeft
-        : borderRadius,
-      bottomRight: borderRadiusBottomRight
-        ? borderRadiusBottomRight
-        : borderRadius,
-      topLeft: borderRadiusTopLeft ? borderRadiusTopLeft : borderRadius,
-      topRight: borderRadiusTopRight ? borderRadiusTopRight : borderRadius,
+      endStart: borderRadiusEndStart,
+      endEnd: borderRadiusEndEnd,
+      startStart: borderRadiusStartStart,
+      startEnd: borderRadiusStartEnd,
     } as BorderRadius;
 
     const paddings = {
-      bottom: paddingBottom ? paddingBottom : padding,
-      left: paddingLeft ? paddingLeft : padding,
-      right: paddingRight ? paddingRight : padding,
-      top: paddingTop ? paddingTop : padding,
+      blockEnd: paddingBlockEnd,
+      inlineStart: paddingInlineStart,
+      inlineEnd: paddingInlineEnd,
+      blockStart: paddingBlockStart,
     } as Spacing;
 
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
-      '--pc-box-border-bottom': borders.bottom
-        ? `var(--p-border-${borders.bottom})`
+      '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
+      '--pc-box-border-bottom': borders.blockEnd
+        ? `var(--p-border-${borders.blockEnd})`
         : undefined,
-      '--pc-box-border-left': borders.left
-        ? `var(--p-border-${borders.left})`
+      '--pc-box-border-inline-start': borders.inlineStart
+        ? `var(--p-border-${borders.inlineStart})`
         : undefined,
-      '--pc-box-border-right': borders.right
-        ? `var(--p-border-${borders.right})`
+      '--pc-box-border-inline-end': borders.inlineEnd
+        ? `var(--p-border-${borders.inlineEnd})`
         : undefined,
-      '--pc-box-border-top': borders.top
-        ? `var(--p-border-${borders.top})`
+      '--pc-box-border-block-start': borders.blockStart
+        ? `var(--p-border-${borders.blockStart})`
         : undefined,
-      '--pc-box-border-radius-bottom-left': borderRadiuses.bottomLeft
-        ? `var(--p-border-radius-${borderRadiuses.bottomLeft})`
+      '--pc-box-border-radius': borderRadius
+        ? `var(--p-border-radius-${borderRadius})`
         : undefined,
-      '--pc-box-border-radius-bottom-right': borderRadiuses.bottomRight
-        ? `var(--p-border-radius-${borderRadiuses.bottomRight})`
+      '--pc-box-border-radius-end-start': borderRadiuses.endStart
+        ? `var(--p-border-radius-${borderRadiuses.endStart})`
         : undefined,
-      '--pc-box-border-radius-top-left': borderRadiuses.topLeft
-        ? `var(--p-border-radius-${borderRadiuses.topLeft})`
+      '--pc-box-border-radius-end-end': borderRadiuses.endEnd
+        ? `var(--p-border-radius-${borderRadiuses.endEnd})`
         : undefined,
-      '--pc-box-border-radius-top-right': borderRadiuses.topRight
-        ? `var(--p-border-radius-${borderRadiuses.topRight})`
+      '--pc-box-border-radius-start-start': borderRadiuses.startStart
+        ? `var(--p-border-radius-${borderRadiuses.startStart})`
         : undefined,
-      '--pc-box-min-height': minHeight ?? undefined,
-      '--pc-box-min-width': minWidth ?? undefined,
-      '--pc-box-max-width': maxWidth ?? undefined,
-      '--pc-box-overflow-x': overflowX ?? undefined,
-      '--pc-box-overflow-y': overflowY ?? undefined,
-      '--pc-box-padding-bottom': paddings.bottom
-        ? `var(--p-space-${paddings.bottom})`
+      '--pc-box-border-radius-start-end': borderRadiuses.startEnd
+        ? `var(--p-border-radius-${borderRadiuses.startEnd})`
         : undefined,
-      '--pc-box-padding-left': paddings.left
-        ? `var(--p-space-${paddings.left})`
+      '--pc-box-min-height': minHeight,
+      '--pc-box-min-width': minWidth,
+      '--pc-box-max-width': maxWidth,
+      '--pc-box-overflow-x': overflowX,
+      '--pc-box-overflow-y': overflowY,
+      '--pc-box-padding': padding ? `var(--p-space-${padding})` : undefined,
+      '--pc-box-padding-block-end': paddings.blockEnd
+        ? `var(--p-space-${paddings.blockEnd})`
         : undefined,
-      '--pc-box-padding-right': paddings.right
-        ? `var(--p-space-${paddings.right})`
+      '--pc-box-padding-inline-start': paddings.inlineStart
+        ? `var(--p-space-${paddings.inlineStart})`
         : undefined,
-      '--pc-box-padding-top': paddings.top
-        ? `var(--p-space-${paddings.top})`
+      '--pc-box-padding-inline-end': paddings.inlineEnd
+        ? `var(--p-space-${paddings.inlineEnd})`
+        : undefined,
+      '--pc-box-padding-block-start': paddings.blockStart
+        ? `var(--p-space-${paddings.blockStart})`
         : undefined,
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
-      '--pc-box-width': width ?? undefined,
+      '--pc-box-width': width,
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);
