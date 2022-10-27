@@ -83,13 +83,23 @@
 }
 
 .headingLg {
-  font-size: var(--p-font-size-300);
-  line-height: var(--p-font-line-height-3);
+  font-size: var(--p-font-size-200);
+  line-height: var(--p-font-line-height-2);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-3);
+  }
 }
 
 .headingXl {
-  font-size: var(--p-font-size-400);
-  line-height: var(--p-font-line-height-4);
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-3);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-400);
+    line-height: var(--p-font-line-height-4);
+  }
 }
 
 .heading2xl {
