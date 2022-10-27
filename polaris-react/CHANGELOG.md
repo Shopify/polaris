@@ -1,5 +1,17 @@
 # Changelog
 
+## 10.10.0
+
+### Minor Changes
+
+- [#7538](https://github.com/Shopify/polaris/pull/7538) [`a595fa3ca`](https://github.com/Shopify/polaris/commit/a595fa3cad8756242ec8fba1bf125c1579a2a761) Thanks [@laurkim](https://github.com/laurkim)! - Added responsive styling to `Text` for `heading2xl`, `heading3xl`, and `heading4xl` variants
+
+* [#7546](https://github.com/Shopify/polaris/pull/7546) [`e5f84f0eb`](https://github.com/Shopify/polaris/commit/e5f84f0ebd4da3f02217ab049c3570224d0ab26b) Thanks [@laurkim](https://github.com/laurkim)! - Added responsive styling to the `Text` `headingXl` and `headingLg` variants
+
+### Patch Changes
+
+- [#7534](https://github.com/Shopify/polaris/pull/7534) [`e53f7901c`](https://github.com/Shopify/polaris/commit/e53f7901c23e86a255d8e051a38158645753472c) Thanks [@kyledurand](https://github.com/kyledurand)! - Update box to use logical properties, condense single value into single custom property
+
 ## 10.9.1
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.23.2
+
+### Patch Changes
+
+- [#7544](https://github.com/Shopify/polaris/pull/7544) [`af478626d`](https://github.com/Shopify/polaris/commit/af478626d36500233e5107e29c216a8987ec9321) Thanks [@martenbjork](https://github.com/martenbjork)! - Fixes an issue that caused the reduced-motion fallback to appear broken on the home page.
+
+- Updated dependencies [[`e53f7901c`](https://github.com/Shopify/polaris/commit/e53f7901c23e86a255d8e051a38158645753472c), [`a595fa3ca`](https://github.com/Shopify/polaris/commit/a595fa3cad8756242ec8fba1bf125c1579a2a761), [`e5f84f0eb`](https://github.com/Shopify/polaris/commit/e5f84f0ebd4da3f02217ab049c3570224d0ab26b)]:
+  - @shopify/polaris@10.10.0
+
 ## 0.23.1
 
 ### Patch Changes
