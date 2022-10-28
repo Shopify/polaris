@@ -6,7 +6,7 @@ import {classNames} from '../../../../utilities/css';
 import {MappedActionContext} from '../../../../utilities/autocomplete';
 import {Listbox} from '../../../Listbox';
 import {Icon} from '../../../Icon';
-import {TextStyle} from '../../../TextStyle';
+import {Text} from '../../../Text';
 import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './MappedAction.scss';
@@ -75,7 +75,11 @@ export function MappedAction({
   const contentMarkup = (
     <div className={styles.Text}>
       <div className={contentOverflowStyle}>{contentText}</div>
-      {helpText ? <TextStyle variation="subdued">{helpText}</TextStyle> : null}
+      {helpText ? (
+        <Text variant="bodyMd" color="subdued" as="span">
+          {helpText}
+        </Text>
+      ) : null}
     </div>
   );
 

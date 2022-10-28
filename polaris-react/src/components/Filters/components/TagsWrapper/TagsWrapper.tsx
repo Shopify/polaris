@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {VisuallyHidden} from '../../../VisuallyHidden';
+import {Text} from '../../../Text';
 
 interface Props {
   children: React.ReactNode;
@@ -9,7 +9,11 @@ interface Props {
 
 export function TagsWrapper({children, hidden}: Props) {
   if (hidden) {
-    return <VisuallyHidden>{children}</VisuallyHidden>;
+    return (
+      <Text variant="bodySm" as="span" visuallyHidden>
+        {children}
+      </Text>
+    );
   }
 
   return <>{children}</>;

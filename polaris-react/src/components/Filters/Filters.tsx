@@ -13,14 +13,13 @@ import {useMediaQuery} from '../../utilities/media-query';
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
 import {Button} from '../Button';
-import {DisplayText} from '../DisplayText';
+import {Text} from '../Text';
 import {Collapsible} from '../Collapsible';
 import {Scrollable} from '../Scrollable';
 import {ScrollLock} from '../ScrollLock';
 import {Icon} from '../Icon';
 import {TextField} from '../TextField';
 import {Tag} from '../Tag';
-import {TextStyle} from '../TextStyle';
 import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 // eslint-disable-next-line import/no-deprecated
@@ -193,15 +192,17 @@ class FiltersInner extends Component<CombinedProps, State> {
           >
             <div className={styles.FilterTriggerLabelContainer}>
               <h3 className={styles.FilterTriggerTitle}>
-                <TextStyle
-                  variation={
+                <Text
+                  variant="bodyMd"
+                  color={
                     this.props.disabled || filter.disabled
                       ? 'subdued'
                       : undefined
                   }
+                  as="span"
                 >
                   {filter.label}
-                </TextStyle>
+                </Text>
               </h3>
               <span className={styles.FilterTriggerIcon}>
                 <Icon source={icon} color="base" />
@@ -295,9 +296,9 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const filtersDesktopHeaderMarkup = (
       <div className={filtersContainerHeaderClassname}>
-        <DisplayText size="small" element="h3">
+        <Text variant="headingLg" as="h3">
           {moreFiltersLabel}
-        </DisplayText>
+        </Text>
         <Button
           icon={CancelSmallMinor}
           plain
@@ -315,9 +316,9 @@ class FiltersInner extends Component<CombinedProps, State> {
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
-        <DisplayText size="small" element="h3">
+        <Text variant="headingLg" as="h3">
           {moreFiltersLabel}
-        </DisplayText>
+        </Text>
         <Button onClick={this.closeFilters} primary>
           {i18n.translate('Polaris.Filters.done')}
         </Button>
@@ -352,9 +353,9 @@ class FiltersInner extends Component<CombinedProps, State> {
           </Button>
         ) : (
           <div className={styles.EmptyFooterState}>
-            <TextStyle variation="subdued">
+            <Text variant="bodyMd" color="subdued" as="span">
               <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
-            </TextStyle>
+            </Text>
           </div>
         )}
       </div>
@@ -427,7 +428,9 @@ class FiltersInner extends Component<CombinedProps, State> {
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
-        <TextStyle variation="subdued">{helpText}</TextStyle>
+        <Text variant="bodyMd" color="subdued" as="span">
+          {helpText}
+        </Text>
       </div>
     ) : null;
 

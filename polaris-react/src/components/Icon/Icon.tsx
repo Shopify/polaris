@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';
 
@@ -97,7 +97,9 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
 
   return (
     <span className={className}>
-      <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+      <Text variant="bodySm" as="span" visuallyHidden>
+        {accessibilityLabel}
+      </Text>
       {contentMarkup[sourceType]}
     </span>
   );
