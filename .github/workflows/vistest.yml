@@ -17,6 +17,12 @@ jobs:
         with:
           permission: write
 
+      - name: Add initial reaction
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ github.event.comment.id }}
+          reactions: '+1'
+
       - name: Validate pull request is not on forked repo
         uses: actions/github-script@v6
         id: pr_data
