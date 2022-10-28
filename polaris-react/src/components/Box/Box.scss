@@ -42,7 +42,7 @@
     --pc-box-border-radius-start-end,
     var(--pc-box-border-radius)
   );
-  border-block-end: var(--pc-box-border-bottom, var(--pc-box-border));
+  border-block-end: var(--pc-box-border-block-end, var(--pc-box-border));
   border-inline-start: var(--pc-box-border-inline-start, var(--pc-box-border));
   border-inline-end: var(--pc-box-border-inline-end, var(--pc-box-border));
   border-block-start: var(--pc-box-border-block-start, var(--pc-box-border));
