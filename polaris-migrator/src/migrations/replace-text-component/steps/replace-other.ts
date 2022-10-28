@@ -15,11 +15,11 @@ import type {MigrationOptions} from '../replace-text-component';
 
 const components = {
   Heading: {
-    variant: 'headingLg',
+    variant: 'headingMd',
     as: 'h2',
   },
   Subheading: {
-    variant: 'headingSm',
+    variant: 'headingXs',
     as: 'h3',
   },
   Caption: {
