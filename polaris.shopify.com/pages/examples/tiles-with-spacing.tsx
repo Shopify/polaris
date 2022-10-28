@@ -3,32 +3,40 @@ import {Tiles, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-const styles = {
-  background: 'var(--p-surface)',
-  border: 'var(--p-border-base)',
-  borderRadius: 'var(--p-border-radius-2)',
-  padding: 'var(--p-space-4)',
-};
-
-const children = Array.from(Array(2)).map((ele, index) => (
-  <div key={index} style={styles}>
-    <Text as="h2" variant="headingMd">
-      Sales
-    </Text>
-    <Text as="p" variant="bodyMd">
-      View a summary of your online store’s sales.
-    </Text>
-  </div>
-));
-
 function TilesWithSpacingExample() {
   return (
-    <div style={{width: '100%'}}>
-      <Tiles columns={{xs: 1}} gap={{xs: '5'}}>
-        {children}
-      </Tiles>
-    </div>
+    <Tiles columns={{xs: 3}} gap={{xs: '4'}}>
+      <Placeholder label="01" />
+      <Placeholder label="02" />
+      <Placeholder label="03" />
+      <Placeholder label="04" />
+      <Placeholder label="05" />
+      <Placeholder label="06" />
+    </Tiles>
   );
 }
+
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        background: '#7B47F1',
+        padding: 'var(--p-space-2)',
+        height: height ?? undefined,
+        width: width ?? undefined,
+      }}
+    >
+      <div
+        style={{
+          color: '#FFFFFF',
+        }}
+      >
+        <Text as="h2" variant="bodyMd" fontWeight="medium">
+          {label}
+        </Text>
+      </div>
+    </div>
+  );
+};
 
 export default withPolarisExample(TilesWithSpacingExample);
