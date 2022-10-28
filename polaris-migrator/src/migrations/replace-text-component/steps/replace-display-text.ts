@@ -7,13 +7,9 @@ import {
   insertJSXAttribute,
 } from '../../../utilities/jsx';
 import {
-  renameImportSpecifier,
   getImportSpecifierName,
-  hasImportSpecifier,
-  removeImportSpecifier,
-  getImportSourcePaths,
-  renameImportDeclaration,
-  removeImportDeclaration,
+  normalizeImportSourcePaths,
+  updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../replace-text-component';
 
@@ -32,30 +28,24 @@ export function replaceDisplayText<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  const sourcePaths = getImportSourcePaths(j, source, {
-    relative: Boolean(options.relative),
-    currentFileName: 'DisplayText',
-    nextFileName: 'Text',
+  const sourcePaths = normalizeImportSourcePaths(j, source, {
+    relative: options.relative,
+    from: 'DisplayText',
+    to: 'Text',
   });
 
   if (!sourcePaths) return;
 
   const localElementName =
-    getImportSpecifierName(j, source, 'DisplayText', sourcePaths.current) ||
+    getImportSpecifierName(j, source, 'DisplayText', sourcePaths.from) ||
     'DisplayText';
 
-  if (hasImportSpecifier(j, source, 'Text', sourcePaths.next)) {
-    if (options.relative) {
-      removeImportDeclaration(j, source, sourcePaths.current);
-    } else {
-      removeImportSpecifier(j, source, 'DisplayText', sourcePaths.current);
-    }
-  } else {
-    if (options.relative) {
-      renameImportDeclaration(j, source, sourcePaths.current, sourcePaths.next);
-    }
-    renameImportSpecifier(j, source, 'DisplayText', 'Text', sourcePaths.next);
-  }
+  updateImports(j, source, {
+    fromSpecifier: 'DisplayText',
+    toSpecifier: 'Text',
+    fromSourcePath: sourcePaths.from,
+    toSourcePath: sourcePaths.to,
+  });
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'Text');

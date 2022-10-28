@@ -7,7 +7,7 @@ import {replaceOther} from './steps/replace-other';
 import {replaceTextStyle} from './steps/replace-text-style';
 
 export interface MigrationOptions extends Options {
-  relative: string;
+  relative: boolean;
 }
 
 export default function replaceTextComponent(

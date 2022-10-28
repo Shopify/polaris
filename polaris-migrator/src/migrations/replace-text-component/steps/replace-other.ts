@@ -7,13 +7,9 @@ import {
   insertJSXAttribute,
 } from '../../../utilities/jsx';
 import {
-  renameImportSpecifier,
   getImportSpecifierName,
-  hasImportSpecifier,
-  removeImportSpecifier,
-  getImportSourcePaths,
-  removeImportDeclaration,
-  renameImportDeclaration,
+  normalizeImportSourcePaths,
+  updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../replace-text-component';
 
@@ -44,38 +40,27 @@ export function replaceOther<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  const relative = Boolean(options.relative);
+  const relative = options.relative;
 
   Object.entries(components).forEach(([componentName, {variant, as}]) => {
-    const sourcePaths = getImportSourcePaths(j, source, {
+    const sourcePaths = normalizeImportSourcePaths(j, source, {
       relative,
-      currentFileName: componentName,
-      nextFileName: 'Text',
+      from: componentName,
+      to: 'Text',
     });
 
     if (!sourcePaths) return;
 
     const localElementName =
-      getImportSpecifierName(j, source, componentName, sourcePaths.current) ||
+      getImportSpecifierName(j, source, componentName, sourcePaths.from) ||
       componentName;
 
-    if (hasImportSpecifier(j, source, 'Text', sourcePaths.next)) {
-      if (options.relative) {
-        removeImportDeclaration(j, source, sourcePaths.current);
-      } else {
-        removeImportSpecifier(j, source, componentName, sourcePaths.current);
-      }
-    } else {
-      if (options.relative) {
-        renameImportDeclaration(
-          j,
-          source,
-          sourcePaths.current,
-          sourcePaths.next,
-        );
-      }
-      renameImportSpecifier(j, source, componentName, 'Text', sourcePaths.next);
-    }
+    updateImports(j, source, {
+      fromSpecifier: componentName,
+      toSpecifier: 'Text',
+      fromSourcePath: sourcePaths.from,
+      toSourcePath: sourcePaths.to,
+    });
 
     source.findJSXElements(localElementName).forEach((element) => {
       replaceJSXElement(j, element, 'Text');

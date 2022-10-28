@@ -10,14 +10,11 @@ import {
 } from '../../../utilities/jsx';
 import {
   insertImportSpecifier,
-  renameImportSpecifier,
   getImportSpecifierName,
   hasImportSpecifier,
-  removeImportSpecifier,
-  getImportSourcePaths,
-  renameImportDeclaration,
-  removeImportDeclaration,
   insertImportDeclaration,
+  normalizeImportSourcePaths,
+  updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../replace-text-component';
 
@@ -38,30 +35,24 @@ export function replaceTextStyle<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  const sourcePaths = getImportSourcePaths(j, source, {
-    relative: Boolean(options.relative),
-    currentFileName: 'TextStyle',
-    nextFileName: 'Text',
+  const sourcePaths = normalizeImportSourcePaths(j, source, {
+    relative: options.relative,
+    from: 'TextStyle',
+    to: 'Text',
   });
 
   if (!sourcePaths) return;
 
   const localElementName =
-    getImportSpecifierName(j, source, 'TextStyle', sourcePaths.current) ||
+    getImportSpecifierName(j, source, 'TextStyle', sourcePaths.from) ||
     'TextStyle';
 
-  if (hasImportSpecifier(j, source, 'Text', sourcePaths.next)) {
-    if (options.relative) {
-      removeImportDeclaration(j, source, sourcePaths.current);
-    } else {
-      removeImportSpecifier(j, source, 'TextStyle', sourcePaths.current);
-    }
-  } else {
-    if (options.relative) {
-      renameImportDeclaration(j, source, sourcePaths.current, sourcePaths.next);
-    }
-    renameImportSpecifier(j, source, 'TextStyle', 'Text', sourcePaths.next);
-  }
+  updateImports(j, source, {
+    fromSpecifier: 'TextStyle',
+    toSpecifier: 'Text',
+    fromSourcePath: sourcePaths.from,
+    toSourcePath: sourcePaths.to,
+  });
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'Text');
@@ -72,7 +63,7 @@ export function replaceTextStyle<NodeType = ASTNode>(
         const currentValue = literal.node.value as keyof typeof variationMap;
         if (currentValue === 'code') {
           const inlineTextSourcePath = options.relative
-            ? sourcePaths.current.replace('TextStyle', 'InlineCode')
+            ? sourcePaths.from.replace('TextStyle', 'InlineCode')
             : '@shopify/polaris';
 
           if (
@@ -84,7 +75,7 @@ export function replaceTextStyle<NodeType = ASTNode>(
                 source,
                 'InlineCode',
                 inlineTextSourcePath,
-                sourcePaths.next,
+                sourcePaths.to,
               );
             } else {
               insertImportSpecifier(

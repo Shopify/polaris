@@ -76,41 +76,17 @@ export function insertImportDeclaration(
   sourcePath: string,
   afterSourcePath: string,
 ) {
-  getImportDeclaration(j, source, afterSourcePath).insertAfter(
-    j.importDeclaration.from({
-      source: j.literal(sourcePath),
-      specifiers: [j.importSpecifier(j.identifier(importSpecifier))],
-    }),
-  );
-}
-
-export function getImportSourcePaths(
-  j: core.JSCodeshift,
-  source: Collection<any>,
-  options = {
-    relative: false,
-    currentFileName: '',
-    nextFileName: '',
-  },
-) {
-  const {relative, currentFileName, nextFileName} = options;
-  const sourcePaths = {
-    current: '@shopify/polaris',
-    next: '@shopify/polaris',
-  };
-
-  if (relative) {
-    sourcePaths.current =
-      getRelativeImportDeclarationValue(j, source, currentFileName) || '';
-
-    if (!sourcePaths.current) return null;
-
-    sourcePaths.next =
-      getRelativeImportDeclarationValue(j, source, nextFileName) ||
-      sourcePaths.current.replace(currentFileName, nextFileName);
+  const isSameModuleSpecifier = sourcePath === afterSourcePath;
+  if (isSameModuleSpecifier) {
+    insertImportSpecifier(j, source, sourcePath, importSpecifier);
+  } else {
+    getImportDeclaration(j, source, afterSourcePath).insertAfter(
+      j.importDeclaration.from({
+        source: j.literal(sourcePath),
+        specifiers: [j.importSpecifier(j.identifier(importSpecifier))],
+      }),
+    );
   }
-
-  return sourcePaths;
 }
 
 export function getDefaultImportSpecifier(
@@ -152,17 +128,26 @@ export function hasDefaultImportSpecifier(
   return Boolean(getDefaultImportSpecifier(j, source, sourcePath).length);
 }
 
+export function getImportAllSpecifiers(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  sourcePath: string,
+) {
+  return source
+    .find(j.ImportDeclaration)
+    .filter((path) => path.node.source.value === sourcePath)
+    .find(j.ImportSpecifier);
+}
+
 export function getImportSpecifier(
   j: core.JSCodeshift,
   source: Collection<any>,
   specifier: string,
   sourcePath: string,
 ) {
-  return source
-    .find(j.ImportDeclaration)
-    .filter((path) => path.node.source.value === sourcePath)
-    .find(j.ImportSpecifier)
-    .filter((path) => path.value.imported.name === specifier);
+  return getImportAllSpecifiers(j, source, sourcePath).filter(
+    (path) => path.value.imported.name === specifier,
+  );
 }
 
 export function getImportSpecifierName(
@@ -174,6 +159,14 @@ export function getImportSpecifierName(
   const specifiers = getImportSpecifier(j, source, specifier, sourcePath);
 
   return specifiers.length > 0 ? specifiers.nodes()[0]!.local!.name : null;
+}
+
+export function hasImportSpecifiers(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  sourcePath: string,
+) {
+  return Boolean(getImportAllSpecifiers(j, source, sourcePath)?.length);
 }
 
 export function hasImportSpecifier(
@@ -224,4 +217,67 @@ export function removeImportSpecifier(
   sourcePath: string,
 ) {
   getImportSpecifier(j, source, specifier, sourcePath).remove();
+}
+
+export function normalizeImportSourcePaths(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  options = {
+    relative: false,
+    from: '',
+    to: '',
+  },
+) {
+  const {relative, from, to} = options;
+  const sourcePaths = {
+    from: '@shopify/polaris',
+    to: '@shopify/polaris',
+  };
+
+  if (relative) {
+    sourcePaths.from = getRelativeImportDeclarationValue(j, source, from) || '';
+
+    if (!sourcePaths.from) return null;
+
+    sourcePaths.to =
+      getRelativeImportDeclarationValue(j, source, to) ||
+      sourcePaths.from.replace(from, to);
+  }
+
+  return sourcePaths;
+}
+
+export function updateImports(
+  j: core.JSCodeshift,
+  source: Collection<any>,
+  options: {
+    fromSpecifier: string;
+    toSpecifier: string;
+    fromSourcePath: string;
+    toSourcePath: string;
+  },
+) {
+  const {fromSpecifier, toSpecifier, fromSourcePath, toSourcePath} = options;
+
+  // Insert new import
+  if (!hasImportDeclaration(j, source, toSourcePath)) {
+    insertImportDeclaration(
+      j,
+      source,
+      toSpecifier,
+      toSourcePath,
+      fromSourcePath,
+    );
+  }
+  if (!hasImportSpecifier(j, source, toSpecifier, toSourcePath)) {
+    insertImportSpecifier(j, source, toSpecifier, toSourcePath);
+  }
+
+  // Remove old import
+  if (hasImportSpecifier(j, source, fromSpecifier, fromSourcePath)) {
+    removeImportSpecifier(j, source, fromSpecifier, fromSourcePath);
+  }
+  if (!hasImportSpecifiers(j, source, fromSourcePath)) {
+    removeImportDeclaration(j, source, fromSourcePath);
+  }
 }
