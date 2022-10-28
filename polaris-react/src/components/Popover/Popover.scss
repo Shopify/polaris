@@ -106,6 +106,10 @@ $vertical-motion-offset: -5px;
   flex: 0 0 auto;
 }
 
+.Pane-captureOverscroll {
+  overscroll-behavior: contain;
+}
+
 .Section {
   padding: var(--p-space-4);
 

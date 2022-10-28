@@ -57,6 +57,7 @@ export interface PopoverOverlayProps {
   onClose(source: PopoverCloseSource): void;
   autofocusTarget?: PopoverAutofocusTarget;
   preventCloseOnChildOverlayClick?: boolean;
+  captureOverscroll?: boolean;
 }
 
 interface State {
@@ -222,6 +223,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fluidContent,
       hideOnPrint,
       autofocusTarget,
+      captureOverscroll,
     } = this.props;
 
     const className = classNames(
@@ -248,7 +250,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         style={contentStyles}
         ref={this.contentNode}
       >
-        {renderPopoverContent(children, {sectioned})}
+        {renderPopoverContent(children, {captureOverscroll, sectioned})}
       </div>
     );
 
