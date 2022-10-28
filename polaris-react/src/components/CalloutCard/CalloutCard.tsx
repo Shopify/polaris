@@ -7,7 +7,7 @@ import {Card} from '../Card';
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
-import {Text} from '../Text';
+import {Heading} from '../Heading';
 import {Image} from '../Image';
 
 import styles from './CalloutCard.scss';
@@ -78,9 +78,7 @@ export function CalloutCard({
           <div className={styles.CalloutCard}>
             <div className={styles.Content}>
               <div className={styles.Title}>
-                <Text variant="headingLg" as="h2">
-                  {title}
-                </Text>
+                <Heading>{title}</Heading>
               </div>
               <TextContainer>{children}</TextContainer>
               <div className={styles.Buttons}>{buttonMarkup}</div>

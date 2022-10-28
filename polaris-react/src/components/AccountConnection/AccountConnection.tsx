@@ -5,7 +5,7 @@ import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
 import {Card} from '../Card';
 import {Stack} from '../Stack';
-import {Text} from '../Text';
+import {TextStyle} from '../TextStyle';
 import {SettingAction} from '../SettingAction';
 
 import styles from './AccountConnection.scss';
@@ -61,9 +61,7 @@ export function AccountConnection({
 
   const detailsMarkup = details ? (
     <div>
-      <Text variant="bodyMd" color="subdued" as="span">
-        {details}
-      </Text>
+      <TextStyle variation="subdued">{details}</TextStyle>
     </div>
   ) : null;
 

@@ -5,7 +5,7 @@ import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Stack} from '../../../Stack';
 import {ButtonGroup} from '../../../ButtonGroup';
-import {Text} from '../../../Text';
+import {Subheading} from '../../../Subheading';
 import styles from '../../Card.scss';
 
 export interface CardSectionProps {
@@ -41,13 +41,7 @@ export function Section({
   ) : null;
 
   const titleMarkup =
-    typeof title === 'string' ? (
-      <Text variant="headingSm" as="h3">
-        {title}
-      </Text>
-    ) : (
-      title
-    );
+    typeof title === 'string' ? <Subheading>{title}</Subheading> : title;
 
   const titleAreaMarkup =
     titleMarkup || actionMarkup ? (

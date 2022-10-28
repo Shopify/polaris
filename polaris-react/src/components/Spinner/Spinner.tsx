@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
-import {Text} from '../Text';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 
 import styles from './Spinner.scss';
@@ -49,9 +49,7 @@ export function Spinner({
 
   const accessibilityLabelMarkup = (isAfterInitialMount ||
     !hasFocusableParent) && (
-    <Text variant="bodySm" as="span" visuallyHidden>
-      {accessibilityLabel}
-    </Text>
+    <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
   );
 
   return (

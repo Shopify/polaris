@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Text} from '../../../Text';
+import {Heading} from '../../../Heading';
 import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
 
@@ -25,9 +25,7 @@ export function AnnotatedSection({
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
           <TextContainer>
-            <Text id={id} variant="headingLg" as="h2">
-              {title}
-            </Text>
+            <Heading id={id}>{title}</Heading>
             {descriptionMarkup && (
               <div className={styles.AnnotationDescription}>
                 {descriptionMarkup}
