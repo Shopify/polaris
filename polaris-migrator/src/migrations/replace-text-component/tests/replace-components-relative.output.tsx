@@ -10,13 +10,13 @@ export function App() {
       <Text variant="heading4xl" as="p">
         Display text
       </Text>
-      <Text variant="heading3xl" as="p">
-        Display text
-      </Text>
       <Text variant="heading2xl" as="p">
         Display text
       </Text>
       <Text variant="headingXl" as="p">
+        Display text
+      </Text>
+      <Text variant="headingLg" as="p">
         Display text
       </Text>
       <Text as="h1" variant="headingLg">

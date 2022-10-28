@@ -18,9 +18,9 @@ import {
 import type {MigrationOptions} from '../replace-text-component';
 
 const displayTextSizeMap = {
-  small: 'headingXl',
-  medium: 'heading2xl',
-  large: 'heading3xl',
+  small: 'headingLg',
+  medium: 'headingXl',
+  large: 'heading2xl',
   extraLarge: 'heading4xl',
 };
 
