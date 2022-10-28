@@ -3,9 +3,9 @@ import {Columns, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function ColumnsExample() {
+function ColumnsWithFreeAndFixedWidthsExample() {
   return (
-    <Columns>
+    <Columns columns={{xs: '2.5fr 1fr 1fr 1fr 1fr 1fr'}}>
       <Placeholder height="320px" label="01" />
       <Placeholder height="320px" label="02" />
       <Placeholder height="320px" label="03" />
@@ -42,4 +42,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(ColumnsExample);
+export default withPolarisExample(ColumnsWithFreeAndFixedWidthsExample);

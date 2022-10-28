@@ -3,16 +3,21 @@ import {Columns, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function ColumnsWithVaryingGapExample() {
+function ColumnsWithSetNumberExample() {
   return (
     <SpacingBackground>
-      <Columns spacing={{xs: '2'}}>
+      <Columns
+        columns={{
+          xs: '3fr 3fr',
+          md: '4fr 2fr',
+        }}
+        spacing={{
+          xs: '4',
+          md: '2',
+        }}
+      >
         <Placeholder height="320px" label="01" />
         <Placeholder height="320px" label="02" />
-        <Placeholder height="320px" label="03" />
-        <Placeholder height="320px" label="04" />
-        <Placeholder height="320px" label="05" />
-        <Placeholder height="320px" label="06" />
       </Columns>
     </SpacingBackground>
   );
@@ -59,4 +64,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(ColumnsWithVaryingGapExample);
+export default withPolarisExample(ColumnsWithSetNumberExample);
