@@ -35,7 +35,7 @@ export function Footer({
 
   return (
     <Box
-      borderTop="divider"
+      borderBlockStart="divider"
       minHeight="var(--p-space-16)"
       padding="4"
       width="100%"

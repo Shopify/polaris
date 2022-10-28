@@ -31,15 +31,15 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
 
   return (
     <Box
-      paddingTop="4"
-      paddingBottom="4"
-      paddingLeft="5"
-      paddingRight="5"
-      borderBottom="divider"
+      paddingBlockStart="4"
+      paddingBlockEnd="4"
+      paddingInlineStart="5"
+      paddingInlineEnd="5"
+      borderBlockEnd="divider"
     >
       <Columns columns={{xs: '1fr auto'}}>
         <Inline>
-          <Box id={id} paddingTop="1">
+          <Box id={id} paddingBlockStart="1">
             {/* Replace with <Text> once responsive styles supported */}
             {/* <div className={styles.Title}>
               <DisplayText element="h2" size="small">
