@@ -4,13 +4,12 @@ import {
   Banner,
   Card,
   FormLayout,
-  Heading,
+  Text,
   Layout,
   Page,
   ResourceList,
   TextContainer,
   TextField,
-  TextStyle,
   Thumbnail,
 } from '@shopify/polaris';
 
@@ -63,7 +62,9 @@ export function TwoColumnsWithEqualWidth() {
         <Layout.Section oneHalf>
           <Card title="Florida" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">455 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                455 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -107,7 +108,9 @@ export function TwoColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -121,7 +124,9 @@ export function TwoColumnsWithEqualWidth() {
         <Layout.Section oneHalf>
           <Card title="Nevada" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">301 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                301 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -165,7 +170,9 @@ export function TwoColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -188,7 +195,9 @@ export function ThreeColumnsWithEqualWidth() {
         <Layout.Section oneThird>
           <Card title="Florida" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">455 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                455 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -232,7 +241,9 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -246,7 +257,9 @@ export function ThreeColumnsWithEqualWidth() {
         <Layout.Section oneThird>
           <Card title="Nevada" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">301 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                301 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -290,7 +303,9 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -304,7 +319,9 @@ export function ThreeColumnsWithEqualWidth() {
         <Layout.Section oneThird>
           <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">1931 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                1931 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -348,7 +365,9 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>

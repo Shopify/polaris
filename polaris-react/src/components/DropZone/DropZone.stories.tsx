@@ -2,7 +2,7 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
-  Caption,
+  Text,
   Card,
   DropZone,
   List,
@@ -44,7 +44,10 @@ export function Default() {
               }
             />
             <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
+              {file.name}{' '}
+              <Text variant="bodySm" as="p">
+                {file.size}bytes
+              </Text>
             </div>
           </Stack>
         ))}
@@ -93,7 +96,10 @@ export function WithImageFileUpload() {
             source={window.URL.createObjectURL(file)}
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size}bytes
+            </Text>
           </div>
         </Stack>
       ))}
@@ -151,7 +157,10 @@ export function WithSingleFileUpload() {
         }
       />
       <div>
-        {file.name} <Caption>{file.size} bytes</Caption>
+        {file.name}{' '}
+        <Text variant="bodySm" as="p">
+          {file.size}bytes
+        </Text>
       </div>
     </Stack>
   );
@@ -190,7 +199,10 @@ export function WithDropOnPage() {
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size}bytes
+            </Text>
           </div>
         </Stack>
       ))}
@@ -245,7 +257,10 @@ export function AcceptsOnlySVGFiles() {
             source={window.URL.createObjectURL(file)}
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size}bytes
+            </Text>
           </div>
         </Stack>
       ))}
@@ -309,7 +324,10 @@ export function Nested() {
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size}bytes
+            </Text>
           </div>
         </Stack>
       ))}
@@ -378,7 +396,10 @@ export function WithCustomFileUploadText() {
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size}bytes
+            </Text>
           </div>
         </Stack>
       ))}
@@ -424,7 +445,10 @@ export function WithCustomFileDialogTrigger() {
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size}bytes
+            </Text>
           </div>
         </Stack>
       ))}

@@ -4,7 +4,7 @@ import {
   Button,
   Card,
   ChoiceList,
-  Heading,
+  Text,
   List,
   Page,
   Scrollable,
@@ -13,8 +13,6 @@ import {
   Listbox,
   TextField,
   TextContainer,
-  TextStyle,
-  Subheading,
   Icon,
   AutoSelection,
 } from '@shopify/polaris';
@@ -119,7 +117,9 @@ export function Default() {
               width: '100%',
             }}
           >
-            <Heading>Manage sales channels</Heading>
+            <Text variant="headingMd" as="h2">
+              Manage sales channels
+            </Text>
             <Button
               accessibilityLabel="Cancel"
               icon={MobileCancelMajor}
@@ -468,9 +468,11 @@ export function WithSearchableListbox() {
                 marginBottom: 'var(--p-space-2)',
               }}
             >
-              <TextStyle variation="subdued">
-                <Subheading>Action</Subheading>
-              </TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                <Text variant="headingXs" as="h3">
+                  Action
+                </Text>
+              </Text>
               <Button
                 accessibilityLabel="Cancel"
                 icon={MobileCancelMajor}
@@ -479,10 +481,12 @@ export function WithSearchableListbox() {
               />
             </div>
             <TextContainer>
-              <Heading>Look up customer segmentation membership</Heading>
-              <TextStyle variation="subdued">
+              <Text variant="headingMd" as="h2">
+                Look up customer segmentation membership
+              </Text>
+              <Text variant="bodyMd" color="subdued" as="span">
                 Look up whether a customer is included in a segment.
-              </TextStyle>
+              </Text>
             </TextContainer>
           </div>
           <div
