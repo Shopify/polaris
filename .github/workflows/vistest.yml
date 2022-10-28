@@ -1,23 +1,15 @@
-name: Accessibility and Visual Regression Tests
+name: Visual Regression Tests
 
 on:
-  push:
-    branches:
-      - main
-      - next
-    paths:
-      - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
-      - 'polaris-tokens/src/**'
-  pull_request:
-    paths:
-      - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
-      - 'polaris-tokens/src/**'
+  issue_comment:
+    types:
+      - created
 
 jobs:
-  accessibility_test:
-    name: 'Accessibility test'
+  visual_regression_test:
+    name: 'Visual regression test'
+    if: |
+      github.event.issue.pull_request && github.event.comment.body == '/vistest'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -26,38 +18,36 @@ jobs:
       - name: Setup Node with v16.13.0
         uses: actions/setup-node@v3
         with:
-          node-version: 16.13.0
-          cache: yarn
+          permission: write
 
       - name: Restore cache
         uses: actions/cache@v3
         with:
-          path: |
-            **/.turbo
-            node_modules/.cache/turbo
-            polaris-react/build-internal/cache
-          key: ${{ runner.os }}-accessibility-test-v1-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-accessibility-test-v1-
+          script: |
+            try {
+              const pullRequest = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.issue.number,
+              })
 
-      - name: Install dependencies
-        run: yarn --frozen-lockfile
+              // Pull request from fork
+              if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
+                const errorMessage = '`/vistest` is not supported on pull requests from forked repositories.'
 
-      - name: Build packages
-        run: yarn turbo run build --filter=@shopify/polaris
+                await github.rest.issues.createComment({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  body: errorMessage,
+                })
 
-      - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+                core.setFailed(errorMessage)
+              }
+            } catch (err) {
+              core.setFailed(`Request failed with error ${err}`)
+            }
 
-      - name: Run accessibility test
-        run: node ./polaris-react/scripts/accessibility-check.js
-        env:
-          STORYBOOK_DISABLE_DOCS: 1
-
-  visual_regression_test:
-    name: 'Visual regression test'
-    runs-on: ubuntu-latest
-    steps:
       - name: Checkout branch
         uses: actions/checkout@v3
         with:
