@@ -24,6 +24,7 @@
     "@shopify/polaris": "^10.11.0",
     "@shopify/polaris-icons": "^6.5.0",
     "@shopify/polaris-tokens": "^6.3.0",
+    "@vercel/og": "0.0.20",
     "codesandbox": "^2.2.3",
     "framer-motion": "^6.5.1",
     "fuse.js": "^6.5.3",

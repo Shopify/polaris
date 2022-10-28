@@ -44,9 +44,10 @@ function MyApp({Component, pageProps}: AppProps) {
     };
   }, [router.events, isProd]);
 
-  const ogImagePath = `/og-images${
-    router.asPath === '/' ? '/home' : router.asPath
-  }.png`;
+  const title = router.asPath.split('/').pop();
+  const ogImagePath = `/api/og-image?title=${
+    router.asPath === '/' ? 'home' : title
+  }`;
 
   const isPolarisExample = router.asPath.startsWith('/examples');
   const isPolarisSandbox = router.asPath.startsWith('/sandbox');
