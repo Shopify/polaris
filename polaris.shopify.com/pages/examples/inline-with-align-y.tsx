@@ -7,7 +7,7 @@ function InlineWithVerticalAlignmentExample() {
   return (
     <Page narrowWidth>
       <AlphaStack spacing="16">
-        <Inline wrap align="start">
+        <Inline align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -15,7 +15,7 @@ function InlineWithVerticalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-        <Inline wrap align="center">
+        <Inline align="center">
           <Placeholder width="106px" label="Center" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
@@ -23,7 +23,7 @@ function InlineWithVerticalAlignmentExample() {
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>
-        <Inline wrap align="end">
+        <Inline align="end">
           <Placeholder width="106px" label="End" />
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />

@@ -8,7 +8,7 @@ function InlineWithSpacingExample() {
     <AlphaStack spacing="8">
       <Inline alignY="center">
         <SpacingBackground width="436px">
-          <Inline>
+          <Inline wrap={false}>
             <Placeholder width="106px" height="36px" />
             <Placeholder width="106px" height="20px" />
             <Placeholder width="106px" height="20px" />
@@ -17,7 +17,7 @@ function InlineWithSpacingExample() {
         </SpacingBackground>
       </Inline>
       <SpacingBackground width="212px">
-        <Inline>
+        <Inline wrap={false}>
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </Inline>

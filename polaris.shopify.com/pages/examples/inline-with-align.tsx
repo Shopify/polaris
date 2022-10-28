@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithAlignExample() {
   return (
     <AlphaStack spacing="16">
-      <Inline wrap alignY="top">
+      <Inline alignY="top">
         <Placeholder width="106px" label="Top" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -14,7 +14,7 @@ function InlineWithAlignExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline wrap alignY="center">
+      <Inline alignY="center">
         <Placeholder width="106px" label="Center" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -22,7 +22,7 @@ function InlineWithAlignExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline wrap alignY="bottom">
+      <Inline alignY="bottom">
         <Placeholder width="106px" label="End" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -30,7 +30,7 @@ function InlineWithAlignExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline wrap alignY="baseline">
+      <Inline alignY="baseline">
         <Placeholder width="106px" header={true} label="Baseline" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
