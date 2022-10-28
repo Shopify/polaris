@@ -1,4 +1,4 @@
-import React, {createElement, forwardRef, PropsWithChildren} from 'react';
+import React, {createElement, forwardRef} from 'react';
 import type {
   DepthShadowAlias,
   SpacingSpaceScale,
@@ -135,7 +135,7 @@ interface Spacing {
   inlineEnd: SpacingSpaceScale;
 }
 
-export interface BoxProps extends PropsWithChildren {
+export interface BoxProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
@@ -188,6 +188,8 @@ export interface BoxProps extends PropsWithChildren {
   shadow?: DepthShadowAlias;
   /** Set width of container */
   width?: string;
+  /** Elements to display inside box */
+  children?: React.ReactNode;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -248,7 +250,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
       '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
-      '--pc-box-border-bottom': borders.blockEnd
+      '--pc-box-border-block-end': borders.blockEnd
         ? `var(--p-border-${borders.blockEnd})`
         : undefined,
       '--pc-box-border-inline-start': borders.inlineStart

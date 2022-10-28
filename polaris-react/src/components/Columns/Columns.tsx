@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from 'react';
+import React from 'react';
 import type {
   BreakpointsAlias,
   SpacingSpaceScale,
@@ -16,13 +16,14 @@ type Spacing = {
   [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
 };
 
-export interface ColumnsProps extends PropsWithChildren {
+export interface ColumnsProps {
   /** The space between columns */
   spacing?: Spacing;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
   columns?: Columns;
+  /** Elements to display inside columns */
   children?: React.ReactNode;
 }
 
