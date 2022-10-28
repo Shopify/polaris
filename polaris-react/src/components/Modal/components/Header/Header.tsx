@@ -3,7 +3,6 @@ import React from 'react';
 import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
 import {Columns} from '../../../Columns';
-// import {DisplayText} from '../../../DisplayText';
 import {Inline} from '../../../Inline';
 import {Text} from '../../../Text';
 
@@ -40,15 +39,11 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
       <Columns columns={{xs: '1fr auto'}}>
         <Inline>
           <Box id={id} paddingBlockStart="1">
-            {/* Replace with <Text> once responsive styles supported */}
-            {/* <div className={styles.Title}>
-              <DisplayText element="h2" size="small">
+            <Box paddingBlockStart="05">
+              <Text as="h2" variant="headingLg" breakWord>
                 {children}
-              </DisplayText>
-            </div> */}
-            <Text as="h2" variant="headingXl" fontWeight="regular">
-              {children}
-            </Text>
+              </Text>
+            </Box>
           </Box>
         </Inline>
         <Inline>
