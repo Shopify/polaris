@@ -17,11 +17,9 @@ function WhatsNewListing({posts}: WhatsNewListingProps) {
       {posts.map(({title, description, slug, imageUrl}) => (
         <article key={slug} className={styles.Post}>
           <Link href={slug}>
-            <a>
-              <Image width={1600} height={800} src={imageUrl} alt="s" />
-              <h2>{title}</h2>
-              <p>{description}</p>
-            </a>
+            <Image width={1600} height={800} src={imageUrl} alt="s" />
+            <h2>{title}</h2>
+            <p>{description}</p>
           </Link>
         </article>
       ))}

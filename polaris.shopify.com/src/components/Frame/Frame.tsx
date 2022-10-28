@@ -110,17 +110,14 @@ function Frame({darkMode, children}: Props) {
           <NavToggleIcon />
         </button>
 
-        <Link href="/">
-          <a className={styles.Logo}>
-            <Image
-              src="/images/shopify-logo.svg"
-              layout="fixed"
-              width={24}
-              height={24}
-              alt="Shopify logo"
-            />
-            Polaris
-          </a>
+        <Link href="/" className={styles.Logo}>
+          <Image
+            alt="Shopify logo"
+            src="/images/shopify-logo.svg"
+            width={24}
+            height={24}
+          />
+          Polaris
         </Link>
 
         <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
@@ -236,20 +233,19 @@ function NavItem({
                     isCurrent && styles.isCurrent,
                   )}
                 >
-                  <Link href={child.slug} passHref>
-                    <a
-                      onClick={handleLinkClick}
-                      aria-current={isCurrent ? 'page' : 'false'}
-                      onKeyDown={(evt) => {
-                        if (level === 0 && i === 0) {
-                          handleShiftTabOnFirstLink(evt);
-                        }
-                      }}
-                    >
-                      {child.title}
+                  <Link
+                    href={child.slug}
+                    onClick={handleLinkClick}
+                    aria-current={isCurrent ? 'page' : 'false'}
+                    onKeyDown={(evt) => {
+                      if (level === 0 && i === 0) {
+                        handleShiftTabOnFirstLink(evt);
+                      }
+                    }}
+                  >
+                    {child.title}
 
-                      {child.status && <StatusBadge status={child.status} />}
-                    </a>
+                    {child.status && <StatusBadge status={child.status} />}
                   </Link>
 
                   {isExpandable && (
