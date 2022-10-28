@@ -107,7 +107,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   ) : null;
 
   const primaryActionMarkup = action ? (
-    <Box paddingRight="2">
+    <Box paddingInlineEnd="2">
       {action.loading
         ? spinnerMarkup
         : unstyledButtonFrom(action, {
@@ -123,8 +123,8 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
   const actionMarkup =
     action || secondaryAction ? (
       <Box
-        paddingTop={withinContentContainer ? '3' : '4'}
-        paddingBottom={withinContentContainer ? '1' : undefined}
+        paddingBlockStart={withinContentContainer ? '3' : '4'}
+        paddingBlockEnd={withinContentContainer ? '1' : undefined}
       >
         <ButtonGroup>
           {primaryActionMarkup}
@@ -137,7 +137,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 
   if (children || actionMarkup) {
     contentMarkup = (
-      <Box paddingTop="05" paddingBottom="05">
+      <Box paddingBlockStart="05" paddingBlockEnd="05">
         {children}
         {actionMarkup}
       </Box>
@@ -170,7 +170,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
       >
         {dismissButton}
 
-        <Box paddingRight="4">
+        <Box paddingInlineEnd="4">
           <Icon source={iconName} color={iconColor} />
         </Box>
 
