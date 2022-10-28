@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaCardExample() {
   return (
-    <AlphaCard>
+    <AlphaCard roundedAbove="md">
       <Text as="h2" variant="bodyMd">
         Content inside a card
       </Text>
