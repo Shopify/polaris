@@ -12,16 +12,16 @@ jobs:
       github.event.issue.pull_request && github.event.comment.body == '/vistest'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout branch
-        uses: actions/checkout@v3
-
-      - name: Setup Node with v16.13.0
-        uses: actions/setup-node@v3
+      - name: Enforce permission requirement
+        uses: prince-chrismc/check-actor-permissions-action@v1
         with:
           permission: write
 
-      - name: Restore cache
-        uses: actions/cache@v3
+      - name: Validate pull request is not on forked repo
+        uses: actions/github-script@v6
+        id: pr_data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           script: |
             try {
