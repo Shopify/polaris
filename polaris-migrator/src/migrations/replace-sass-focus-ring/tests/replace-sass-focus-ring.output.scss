@@ -1,33 +1,38 @@
 // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
 // @include should not be called on the root node
-// box-shadow: 0 0 0 calc(-1 * rem(1px)) var(--p-focused);
+// outline-offset: 1px;
+// outline: 2px transparent solid;
+
 @include focus-ring();
 
 .default-usage {
-  box-shadow: 0 0 0 calc(-1 * rem(1px)) var(--p-focused);
+  outline-offset: 1px;
+  outline: 2px transparent solid;
   &:focus {
-    box-shadow: 0 0 0 rem(2px) var(--p-focused);
-    outline: rem(1px) solid transparent;
+    outline-offset: 1px;
+    outline: 2px var(--p-focused) solid;
   }
 }
 
 .withCustomBorderWidth {
-  box-shadow: 0 0 0 calc(-1 * (2px + rem(1px))) var(--p-focused);
+  outline-offset: 1px;
+  outline: 2px transparent solid;
   &:focus {
-    box-shadow: 0 0 0 rem(2px) var(--p-focused);
-    outline: rem(1px) solid transparent;
+    outline-offset: 1px;
+    outline: 2px var(--p-focused) solid;
   }
 }
 
 .edge-cases {
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // Argument border-width is not of type word or string
-  // box-shadow: 0 0 0 calc(-1 * (test() + rem(1px))) var(--p-focused);
+  // outline-offset: 1px;
+  // outline: 2px transparent solid;
   @include focus-ring(base, test());
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // Argument border-width is not of type word or string
-  // box-shadow: 0 0 0 rem(2px) var(--p-focused);
-  // outline: rem(1px) solid transparent;
+  // outline-offset: 1px;
+  // outline: 2px var(--p-focused) solid;
   @include focus-ring(base, 0 + 50px, focused);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // Spread operation not supported by this migration
