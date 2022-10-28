@@ -1,33 +1,31 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Text} from '../../Text';
+import {DisplayText} from '../DisplayText';
 
 describe('<DisplayText />', () => {
   it('renders its children', () => {
     const text = 'Important text.';
     const displayText = mountWithApp(
-      <Text variant="headingLg" as="h1">
+      <DisplayText size="small" element="h1">
         {text}
-      </Text>,
+      </DisplayText>,
     );
     expect(displayText).toContainReactText(text);
   });
 
   it('renders the specified element', () => {
     const displayText = mountWithApp(
-      <Text variant="heading4xl" as="h1">
+      <DisplayText size="extraLarge" element="h1">
         Important text.
-      </Text>,
+      </DisplayText>,
     );
     expect(displayText).toContainReactComponentTimes('h1', 1);
   });
 
   it('renders a p element if not specified', () => {
     const displayText = mountWithApp(
-      <Text variant="heading4xl" as="p">
-        Important text.
-      </Text>,
+      <DisplayText size="extraLarge">Important text.</DisplayText>,
     );
 
     expect(displayText).toContainReactComponentTimes('p', 1);

@@ -1,25 +1,17 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Text} from '../../Text';
+import {Caption} from '../Caption';
 
 describe('<Caption />', () => {
   it('renders a p tag', () => {
-    const caption = mountWithApp(
-      <Text variant="bodySm" as="p">
-        Caption text
-      </Text>,
-    );
+    const caption = mountWithApp(<Caption>Caption text</Caption>);
     expect(caption).toContainReactComponentTimes('p', 1);
   });
 
   it('renders its children', () => {
     const captionMarkup = 'Caption text';
-    const caption = mountWithApp(
-      <Text variant="bodySm" as="p">
-        {captionMarkup}
-      </Text>,
-    );
+    const caption = mountWithApp(<Caption>{captionMarkup}</Caption>);
     expect(caption).toContainReactText(captionMarkup);
   });
 });
