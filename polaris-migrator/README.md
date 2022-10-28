@@ -363,11 +363,23 @@ polaris-migrator: Unable to migrate the following expression. Please upgrade man
 After applying a migration, it might be helpful to commit the changes that do not need a manual check from those that do. You can do this a few different ways, but we suggest staging all your changes, then unstaging those that include the manual check comment:
 
 ```sh
-# Stage all modified files
+# Stash files with "polaris-migrator:" comments
+git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+
+# Stage all files without "polaris-migrator:" comments
 git add .
 
-# Unstage those that contain the manual check comment prefixed with "polaris-migrator:"
-git reset $(grep -r -l "polaris-migrator:")
+# Bring back the change with "polaris-migrator:" comments
+git stash pop
+
+# (optional) if there a files that have both "polaris-migrator:" comments
+# _and_ complete fixes, add the complete fixes now
+git add -p
+
+# Commit all the complete fixes:
+git commit
+
+# Now you're left with changes that have "polaris-migrator:" comments only
 ```
 
 ### Resources
