@@ -66,7 +66,7 @@ export function AccountConnection({
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box paddingTop="5">{termsOfService}</Box>
+    <Box paddingBlockStart="5">{termsOfService}</Box>
   ) : null;
 
   const actionElement = action
