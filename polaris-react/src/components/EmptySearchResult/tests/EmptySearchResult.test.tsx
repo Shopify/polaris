@@ -8,12 +8,15 @@ import {emptySearch} from '../illustrations';
 describe('<EmptySearchResult />', () => {
   it("displays the title with style 'Display Small'", () => {
     const wrapper = mountWithApp(<EmptySearchResult title="Foo" />);
-    const displaySmalls = wrapper.findWhere(
-      (wrap) => wrap.is(Text) && wrap.prop('variant') === 'headingXl',
+    const textHeadingLg = wrapper.findWhere(
+      (wrap) => wrap.is(Text) && wrap.prop('variant') === 'headingLg',
     );
 
-    expect(wrapper).toContainReactComponent(Text, {variant: 'headingXl'});
-    expect(displaySmalls).toContainReactText('Foo');
+    expect(wrapper).toContainReactComponent(Text, {
+      variant: 'headingLg',
+      as: 'p',
+    });
+    expect(textHeadingLg).toContainReactText('Foo');
   });
 
   it("displays the description with style 'Body Subdued'", () => {
