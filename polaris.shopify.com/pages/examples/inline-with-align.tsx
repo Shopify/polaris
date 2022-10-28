@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithAlignExample() {
   return (
-    <AlphaStack>
+    <AlphaStack spacing="16">
       <Inline wrap alignY="top">
         <Placeholder width="106px" label="Top" />
         <Placeholder width="106px" height="20px" />

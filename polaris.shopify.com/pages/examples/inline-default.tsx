@@ -16,7 +16,7 @@ function InlineExample() {
   );
 }
 
-const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+const Placeholder = ({height = 'auto', width = 'auto'}) => {
   return (
     <div
       style={{
