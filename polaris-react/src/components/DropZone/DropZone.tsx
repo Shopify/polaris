@@ -15,7 +15,9 @@ import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Stack} from '../Stack';
-import {Text} from '../Text';
+import {Caption} from '../Caption';
+import {TextStyle} from '../TextStyle';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {Labelled, LabelledProps} from '../Labelled';
 import {useI18n} from '../../utilities/i18n';
 import {isServer} from '../../utilities/target';
@@ -399,13 +401,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         >
           {dragOverlay}
           {dragErrorOverlay}
-          <Text variant="bodySm" as="span" visuallyHidden>
+          <VisuallyHidden>
             <DropZoneInput
               {...inputAttributes}
               openFileDialog={openFileDialog}
               onFileDialogClose={onFileDialogClose}
             />
-          </Text>
+          </VisuallyHidden>
           <div className={styles.Container}>{children}</div>
         </div>
       </Labelled>
@@ -422,11 +424,9 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         <Stack vertical spacing="tight">
           {size === 'small' && <Icon source={icon} color={color} />}
           {(size === 'medium' || size === 'large') && (
-            <Text variant="bodySm" as="p">
-              <Text variant="bodyMd" fontWeight="bold" as="span">
-                {text}
-              </Text>
-            </Text>
+            <Caption>
+              <TextStyle variation="strong">{text}</TextStyle>
+            </Caption>
           )}
         </Stack>
       </div>

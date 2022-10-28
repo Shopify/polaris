@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonFrom} from '../../../Button';
-import {Text} from '../../../Text';
+import {TextStyle} from '../../../TextStyle';
 import {Tooltip} from '../../../Tooltip';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useI18n} from '../../../../utilities/i18n';
@@ -165,9 +165,7 @@ export function Header({
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text variant="bodyMd" color="subdued" as="span">
-        {additionalMetadata}
-      </Text>
+      <TextStyle variation="subdued">{additionalMetadata}</TextStyle>
     </div>
   ) : null;
 

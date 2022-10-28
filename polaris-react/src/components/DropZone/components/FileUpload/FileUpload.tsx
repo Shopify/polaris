@@ -3,7 +3,8 @@ import React, {useContext} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
 import {Stack} from '../../../Stack';
-import {Text} from '../../../Text';
+import {Caption} from '../../../Caption';
+import {TextStyle} from '../../../TextStyle';
 import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
@@ -46,11 +47,9 @@ export function FileUpload(props: FileUploadProps) {
   );
 
   const actionHintMarkup = actionHint && (
-    <Text variant="bodySm" as="p">
-      <Text variant="bodyMd" color="subdued" as="span">
-        {actionHint}
-      </Text>
-    </Text>
+    <Caption>
+      <TextStyle variation="subdued">{actionHint}</TextStyle>
+    </Caption>
   );
 
   let viewMarkup;

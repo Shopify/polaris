@@ -4,7 +4,7 @@ import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Stack} from '../../../Stack';
-import {Text} from '../../../Text';
+import {Heading} from '../../../Heading';
 import styles from '../../Card.scss';
 
 export interface CardHeaderProps {
@@ -21,9 +21,7 @@ export function Header({children, title, actions}: CardHeaderProps) {
   const titleMarkup = isValidElement(title) ? (
     title
   ) : (
-    <Text variant="headingLg" as="h2">
-      {title}
-    </Text>
+    <Heading>{title}</Heading>
   );
 
   const headingMarkup =

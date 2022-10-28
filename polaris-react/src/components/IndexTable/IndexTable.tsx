@@ -18,7 +18,7 @@ import {EventListener} from '../EventListener';
 import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
-import {Text} from '../Text';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {Button} from '../Button';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
@@ -837,11 +837,7 @@ function IndexTableBase({
         </Stack>
       );
     } else if (heading.hidden) {
-      headingContent = (
-        <Text variant="bodySm" as="span" visuallyHidden>
-          {heading.title}
-        </Text>
-      );
+      headingContent = <VisuallyHidden>{heading.title}</VisuallyHidden>;
     } else {
       headingContent = heading.title;
     }

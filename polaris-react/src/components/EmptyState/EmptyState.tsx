@@ -7,7 +7,7 @@ import {Image} from '../Image';
 import {buttonFrom} from '../Button';
 import {Stack} from '../Stack';
 import {TextContainer} from '../TextContainer';
-import {Text} from '../Text';
+import {DisplayText} from '../DisplayText';
 
 import styles from './EmptyState.scss';
 
@@ -80,16 +80,14 @@ export function EmptyState({
     </div>
   ) : null;
 
-  const headingSize = withinContentContainer ? 'headingXl' : 'heading2xl';
+  const headingSize = withinContentContainer ? 'small' : 'medium';
 
   const primaryActionMarkup = action
     ? buttonFrom(action, {primary: true, size: 'medium'})
     : null;
 
   const headingMarkup = heading ? (
-    <Text variant={headingSize} as="p">
-      {heading}
-    </Text>
+    <DisplayText size={headingSize}>{heading}</DisplayText>
   ) : null;
 
   const childrenMarkup = children ? (

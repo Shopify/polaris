@@ -20,7 +20,7 @@ import {
 } from '../../utilities/listbox';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
-import {Text} from '../Text';
+import {VisuallyHidden} from '../VisuallyHidden';
 import {scrollable} from '../shared';
 
 import {
@@ -486,9 +486,9 @@ export function Listbox({
   return (
     <>
       {listeners}
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <VisuallyHidden>
         <div aria-live="polite">{loading ? loading : null}</div>
-      </Text>
+      </VisuallyHidden>
       <ListboxContext.Provider value={listboxContext}>
         <WithinListboxContext.Provider value>
           {children ? (
