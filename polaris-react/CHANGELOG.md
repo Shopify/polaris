@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.10.1
+
+### Patch Changes
+
+- [#7561](https://github.com/Shopify/polaris/pull/7561) [`fc78fcc48`](https://github.com/Shopify/polaris/commit/fc78fcc48d075db1240a17910ada9f61599e51fb) Thanks [@kyledurand](https://github.com/kyledurand)! - Fix typo in box property, remove PropsWithChildren
+
 ## 10.10.0
 
 ### Minor Changes
