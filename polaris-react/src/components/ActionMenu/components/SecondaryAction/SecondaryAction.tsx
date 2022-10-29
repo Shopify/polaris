@@ -16,6 +16,7 @@ interface SecondaryAction extends ButtonProps {
 export function SecondaryAction({
   children,
   destructive,
+  outline,
   helpText,
   onAction,
   getOffsetWidth,
@@ -46,6 +47,7 @@ export function SecondaryAction({
       className={classNames(
         styles.SecondaryAction,
         destructive && styles.destructive,
+        !outline && styles.plain,
       )}
       ref={secondaryActionsRef}
     >
