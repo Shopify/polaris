@@ -321,10 +321,6 @@ describe('<DropZone />', () => {
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       expect(dropZone).not.toContainReactComponent(Text, {
-        variant: 'bodyMd',
-        as: 'span',
-      });
-      expect(dropZone).not.toContainReactComponent(Text, {
         variant: 'bodySm',
         as: 'p',
       });
@@ -358,8 +354,9 @@ describe('<DropZone />', () => {
         <DropZone overlayText={overlayText} variableHeight />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const textStyle = dropZone.find(Text, {variant: 'bodyMd', as: 'span'});
-      expect(textStyle).toContainReactText(overlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: overlayText,
+      });
     });
   });
 
@@ -373,10 +370,6 @@ describe('<DropZone />', () => {
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
       expect(dropZone).not.toContainReactComponent(Text, {
-        variant: 'bodyMd',
-        as: 'span',
-      });
-      expect(dropZone).not.toContainReactComponent(Text, {
         variant: 'bodySm',
         as: 'p',
       });
@@ -388,8 +381,9 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const text = dropZone.find(Text);
-      expect(text).toContainReactText(errorOverlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
     });
 
     it('renders a Text containing the overlayText on large screens', () => {
@@ -398,9 +392,9 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const text = dropZone.find(Text);
-
-      expect(text).toContainReactText(errorOverlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
     });
 
     it('renders a Text containing the overlayText on any screen size when variableHeight is true', () => {
@@ -413,8 +407,9 @@ describe('<DropZone />', () => {
         />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const text = dropZone.find(Text);
-      expect(text).toContainReactText(errorOverlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
     });
   });
 

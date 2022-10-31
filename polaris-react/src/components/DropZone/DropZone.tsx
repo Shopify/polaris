@@ -422,10 +422,8 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         <Stack vertical spacing="tight">
           {size === 'small' && <Icon source={icon} color={color} />}
           {(size === 'medium' || size === 'large') && (
-            <Text variant="bodySm" as="p">
-              <Text variant="bodyMd" fontWeight="bold" as="span">
-                {text}
-              </Text>
+            <Text variant="bodySm" as="p" fontWeight="bold">
+              {text}
             </Text>
           )}
         </Stack>
