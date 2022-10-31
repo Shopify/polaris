@@ -4,6 +4,7 @@ import type {IconableAction} from '../../../../types';
 import {Avatar, AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
 import {Menu, MenuProps} from '../Menu';
+import {Text} from '../../../Text';
 
 import styles from './UserMenu.scss';
 
@@ -51,7 +52,15 @@ export function UserMenu({
         />
       </MessageIndicator>
       <span className={styles.Details}>
-        <p className={styles.Name}>{name}</p>
+        <Text
+          as="p"
+          variant="bodyMd"
+          alignment="start"
+          fontWeight="medium"
+          truncate
+        >
+          {name}
+        </Text>
         <p className={styles.Detail}>{detail}</p>
       </span>
     </>

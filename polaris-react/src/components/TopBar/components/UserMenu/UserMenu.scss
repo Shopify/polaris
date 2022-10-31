@@ -9,15 +9,6 @@
   }
 }
 
-.Name {
-  @include truncate;
-  @include text-style-body;
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
-  color: var(--p-text);
-  text-align: left;
-}
-
 .Detail {
   @include text-style-caption;
   @include truncate;
