@@ -12,41 +12,43 @@ module.exports = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primaryOptions */
   (primaryOptions) => {
-    return (root, result) => {
-      if (typeof primaryOptions !== 'object' && primaryOptions !== null) return;
+    if (typeof primaryOptions !== 'object' && primaryOptions !== null) return;
 
-      for (const [categoryName, categoryConfigRules] of Object.entries(
-        primaryOptions,
+    const rules = [];
+
+    for (const [categoryName, categoryConfigRules] of Object.entries(
+      primaryOptions,
+    )) {
+      for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
+        categoryConfigRules,
       )) {
-        for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
-          categoryConfigRules,
-        )) {
-          stylelint.utils.checkAgainstRule(
-            {
-              ruleName: categoryRuleName,
-              ruleSettings: categoryRuleSettings,
-              root,
-            },
-            (warning) => {
-              const coverageRuleName = `${ruleName}/${categoryName}`;
-              const coverageMessage = warning.text.replace(
-                categoryRuleName,
-                coverageRuleName,
-              );
+        rules.push({
+          categoryRuleName,
+          categoryRuleSettings,
+          coverageRuleName: `${ruleName}/${categoryName}`,
+        });
+      }
+    }
 
-              stylelint.utils.report({
-                message: coverageMessage,
-                ruleName: coverageRuleName,
-                result,
-                node: warning.node,
-                line: warning.line,
-                column: warning.column,
-                endLine: warning.endLine,
-                endColumn: warning.endColumn,
-              });
-            },
-          );
-        }
+    return (root, result) => {
+      for (const rule of rules) {
+        const {categoryRuleName, categoryRuleSettings, coverageRuleName} = rule;
+
+        stylelint.utils.checkAgainstRule(
+          {
+            ruleName: categoryRuleName,
+            ruleSettings: categoryRuleSettings,
+            root,
+          },
+          (warning) => {
+            stylelint.utils.report({
+              result,
+              node: warning.node,
+              ruleName: coverageRuleName,
+              message: warning.text.replace(categoryRuleName, coverageRuleName),
+            });
+          },
+        );
       }
     };
   },
