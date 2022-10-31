@@ -1,6 +1,6 @@
 ---
 title: Inline
-description: Use to lay out a horizontal row of components with equal spacing between and wrapping onto multiple lines.
+description: Use to arrange items in a horizontal row with equal spacing around them. Items wrap onto multiple lines when needed.
 category: Structure
 keywords:
   - layout
