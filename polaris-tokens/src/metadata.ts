@@ -9,6 +9,7 @@ import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
 import {spacing} from './token-groups/spacing';
 import {zIndex} from './token-groups/zIndex';
+import {focusring} from './token-groups/focusring';
 
 export const metadata = createMetadata({
   breakpoints: tokensToRems(breakpoints),
@@ -20,6 +21,7 @@ export const metadata = createMetadata({
   shape: tokensToRems(shape),
   spacing: tokensToRems(spacing),
   zIndex,
+  focusring,
 });
 
 export type Metadata = typeof metadata;
