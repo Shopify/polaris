@@ -8,7 +8,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'hr';
 
 type Overflow = 'hidden' | 'scroll';
 

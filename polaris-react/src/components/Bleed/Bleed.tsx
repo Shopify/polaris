@@ -15,23 +15,44 @@ interface Spacing {
 export interface BleedProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
+  /** Negative space around the element, default value is '5'
+   * @default '5'
+   */
   spacing?: SpacingSpaceScale;
+  /** Negative horizontal space around the element, default value is '5'
+   * @default '5'
+   */
   horizontal?: SpacingSpaceScale;
+  /** Negative vertical space around the element, default value is '5'
+   * @default '5'
+   */
   vertical?: SpacingSpaceScale;
+  /** Negative top space around the element, default value is '5'
+   * @default '5'
+   */
   top?: SpacingSpaceScale;
+  /** Negative bottom space around the element, default value is '5'
+   * @default '5'
+   */
   bottom?: SpacingSpaceScale;
+  /** Negative left space around the element, default value is '5'
+   * @default '5'
+   */
   left?: SpacingSpaceScale;
+  /** Negative right space around the element, default value is '5'
+   * @default '5'
+   */
   right?: SpacingSpaceScale;
 }
 
 export const Bleed = ({
-  spacing,
-  horizontal,
-  vertical,
-  top,
-  bottom,
-  left,
-  right,
+  spacing = '5',
+  horizontal = '5',
+  vertical = '5',
+  top = '5',
+  bottom = '5',
+  left = '5',
+  right = '5',
   children,
 }: BleedProps) => {
   const getNegativeMargins = (direction: string) => {
@@ -66,18 +87,18 @@ export const Bleed = ({
   } as Spacing;
 
   const style = {
-    ...(negativeMargins.bottom
-      ? {'--pc-bleed-margin-bottom': `var(--p-space-${negativeMargins.bottom})`}
-      : undefined),
-    ...(negativeMargins.left
-      ? {'--pc-bleed-margin-left': `var(--p-space-${negativeMargins.left})`}
-      : undefined),
-    ...(negativeMargins.right
-      ? {'--pc-bleed-margin-right': `var(--p-space-${negativeMargins.right})`}
-      : undefined),
-    ...(negativeMargins.top
-      ? {'--pc-bleed-margin-top': `var(--p-space-${negativeMargins.top})`}
-      : undefined),
+    '--pc-bleed-margin-bottom': negativeMargins.bottom
+      ? `var(--p-space-${negativeMargins.bottom})`
+      : undefined,
+    'pc-bleed-margin-left': negativeMargins.left
+      ? `var(--p-space-${negativeMargins.left})`
+      : undefined,
+    '--pc-bleed-margin-right': negativeMargins.right
+      ? `var(--p-space-${negativeMargins.right})`
+      : undefined,
+    '--pc-bleed-margin-top': negativeMargins.top
+      ? `var(--p-space-${negativeMargins.top})`
+      : undefined,
   } as React.CSSProperties;
 
   return (

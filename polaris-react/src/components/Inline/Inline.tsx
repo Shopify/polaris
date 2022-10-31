@@ -29,7 +29,7 @@ export interface InlineProps {
 
 export const Inline = function Inline({
   children,
-  spacing = '1',
+  spacing = '4',
   align,
   alignY,
   wrap,
