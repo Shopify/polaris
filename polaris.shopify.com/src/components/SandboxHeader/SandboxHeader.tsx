@@ -17,17 +17,14 @@ function SandboxHeader({url, setHelpIsOpen}: Props) {
 
   return (
     <div className={styles.Header}>
-      <Link href="/">
-        <a className={styles.Logo}>
-          <Image
-            src="/images/shopify-logo.svg"
-            layout="fixed"
-            width={24}
-            height={24}
-            alt="Shopify logo"
-          />
-          Polaris Sandbox
-        </a>
+      <Link href="/" className={styles.Logo}>
+        <Image
+          src="/images/shopify-logo.svg"
+          width={24}
+          height={24}
+          alt="Shopify logo"
+        />
+        Polaris Sandbox
       </Link>
 
       <div className={styles.Buttons}>

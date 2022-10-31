@@ -29,44 +29,35 @@ function HomePage({}: Props) {
         </div>
 
         <div className={styles.EntryPoints}>
-          <Link href="/foundations">
-            <a className={styles.EntryPoint}>
-              <h3>Foundations</h3>
-              <p>
-                Fundamental design guidance for creating quality admin
-                experiences
-              </p>
-            </a>
+          <Link href="/foundations" className={styles.EntryPoint}>
+            <h3>Foundations</h3>
+            <p>
+              Fundamental design guidance for creating quality admin experiences
+            </p>
           </Link>
 
-          <Link href="/components">
-            <a className={styles.EntryPoint}>
-              <h3>Components</h3>
-              <p>
-                Reusable elements and styles, packaged through code, for
-                building admin interfaces
-              </p>
-            </a>
+          <Link href="/components" className={styles.EntryPoint}>
+            <h3>Components</h3>
+            <p>
+              Reusable elements and styles, packaged through code, for building
+              admin interfaces
+            </p>
           </Link>
 
-          <Link href="/tokens/colors">
-            <a className={styles.EntryPoint}>
-              <h3>Tokens</h3>
-              <p>
-                Coded names that represent design decisions for color, spacing,
-                typography, and more
-              </p>
-            </a>
+          <Link href="/tokens/colors" className={styles.EntryPoint}>
+            <h3>Tokens</h3>
+            <p>
+              Coded names that represent design decisions for color, spacing,
+              typography, and more
+            </p>
           </Link>
 
-          <Link href="/icons">
-            <a className={styles.EntryPoint}>
-              <h3>Icons</h3>
-              <p>
-                Over 400 carefully designed icons focused on commerce and
-                entrepreneurship
-              </p>
-            </a>
+          <Link href="/icons" className={styles.EntryPoint}>
+            <h3>Icons</h3>
+            <p>
+              Over 400 carefully designed icons focused on commerce and
+              entrepreneurship
+            </p>
           </Link>
         </div>
 
