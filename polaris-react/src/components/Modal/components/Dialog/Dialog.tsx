@@ -88,6 +88,7 @@ export function Dialog({
           <div
             role="dialog"
             aria-modal
+            aria-label={labelledBy}
             aria-labelledby={labelledBy}
             tabIndex={-1}
             className={styles.Dialog}
