@@ -27,7 +27,7 @@ export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
       <span className={styles.Icon}>
         <Icon source={ArrowLeftMinor} />
       </span>
-      <Text variant="bodySm" as="span" visuallyHidden>
+      <Text variant="bodySm" as="span" visuallyHidden color="subdued">
         {content}
       </Text>
     </>

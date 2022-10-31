@@ -46,10 +46,8 @@ export function FileUpload(props: FileUploadProps) {
   );
 
   const actionHintMarkup = actionHint && (
-    <Text variant="bodySm" as="p">
-      <Text variant="bodyMd" color="subdued" as="span">
-        {actionHint}
-      </Text>
+    <Text variant="bodySm" as="p" color="subdued">
+      {actionHint}
     </Text>
   );
 

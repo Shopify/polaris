@@ -94,7 +94,7 @@ export function EmptyState({
 
   const childrenMarkup = children ? (
     <div className={styles.Content}>
-      <Text as="span" variant="bodyMd">
+      <Text as="span" variant="bodyMd" color="subdued">
         {children}
       </Text>
     </div>
