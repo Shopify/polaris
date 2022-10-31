@@ -74,6 +74,7 @@ const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
   shape: /border/,
   depth: /shadow/,
   motion: /animation/,
+  focusring: /outline|outline-offset/,
 };
 
 connection.onInitialize((params: InitializeParams) => {
