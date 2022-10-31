@@ -22,8 +22,6 @@ export interface CollapsibleProps {
    * @default transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}
    */
   transition?: boolean | Transition;
-  /** @deprecated Re-measuring is no longer necessary on children update **/
-  preventMeasuringOnChildrenUpdate?: boolean;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
@@ -35,7 +33,6 @@ export function Collapsible({
   expandOnPrint,
   open,
   transition = true,
-  preventMeasuringOnChildrenUpdate: _preventMeasuringOnChildrenUpdate,
   children,
 }: CollapsibleProps) {
   const [height, setHeight] = useState(0);
