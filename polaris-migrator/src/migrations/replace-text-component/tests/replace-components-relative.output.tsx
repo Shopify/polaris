@@ -1,5 +1,8 @@
+// @ts-nocheck
 import React from 'react';
-import {Text, InlineCode} from '@shopify/polaris';
+
+import {Text} from '../Text';
+import {InlineCode} from '../InlineCode';
 
 export function App() {
   return (
@@ -16,16 +19,16 @@ export function App() {
       <Text variant="headingLg" as="p">
         Display text
       </Text>
-      <Text as="h1" variant="headingLg">
+      <Text as="h1" variant="headingMd">
         Heading
       </Text>
-      <Text variant="headingLg" as="h2">
+      <Text variant="headingMd" as="h2">
         Heading
       </Text>
-      <Text as="h2" variant="headingSm">
+      <Text as="h2" variant="headingXs">
         Subheading
       </Text>
-      <Text variant="headingSm" as="h3">
+      <Text variant="headingXs" as="h3">
         Subheading
       </Text>
       <Text variant="bodySm" as="p">

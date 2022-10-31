@@ -7,19 +7,19 @@ import {
   insertJSXAttribute,
 } from '../../../utilities/jsx';
 import {
-  renameImportSpecifier,
   getImportSpecifierName,
-  hasImportSpecifier,
-  removeImportSpecifier,
+  normalizeImportSourcePaths,
+  updateImports,
 } from '../../../utilities/imports';
+import type {MigrationOptions} from '../replace-text-component';
 
 const components = {
   Heading: {
-    variant: 'headingLg',
+    variant: 'headingMd',
     as: 'h2',
   },
   Subheading: {
-    variant: 'headingSm',
+    variant: 'headingXs',
     as: 'h3',
   },
   Caption: {
@@ -38,23 +38,29 @@ const components = {
 export function replaceOther<NodeType = ASTNode>(
   j: JSCodeshift,
   source: Collection<NodeType>,
+  options: MigrationOptions,
 ) {
+  const relative = options.relative;
+
   Object.entries(components).forEach(([componentName, {variant, as}]) => {
-    if (hasImportSpecifier(j, source, 'Text', '@shopify/polaris')) {
-      removeImportSpecifier(j, source, componentName, '@shopify/polaris');
-    } else {
-      renameImportSpecifier(
-        j,
-        source,
-        componentName,
-        'Text',
-        '@shopify/polaris',
-      );
-    }
+    const sourcePaths = normalizeImportSourcePaths(j, source, {
+      relative,
+      from: componentName,
+      to: 'Text',
+    });
+
+    if (!sourcePaths) return;
 
     const localElementName =
-      getImportSpecifierName(j, source, componentName, '@shopify/polaris') ||
+      getImportSpecifierName(j, source, componentName, sourcePaths.from) ||
       componentName;
+
+    updateImports(j, source, {
+      fromSpecifier: componentName,
+      toSpecifier: 'Text',
+      fromSourcePath: sourcePaths.from,
+      toSourcePath: sourcePaths.to,
+    });
 
     source.findJSXElements(localElementName).forEach((element) => {
       replaceJSXElement(j, element, 'Text');
