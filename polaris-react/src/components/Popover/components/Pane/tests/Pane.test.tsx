@@ -153,4 +153,54 @@ describe('<Pane />', () => {
       });
     });
   });
+
+  describe('captureOverscroll', () => {
+    const Children = () => (
+      <TextContainer>
+        <p>Text</p>
+      </TextContainer>
+    );
+
+    describe('when not passed', () => {
+      it('does not apply the Pane-captureOverscroll class', () => {
+        const popoverPane = mountWithApp(
+          <Pane>
+            <Children />
+          </Pane>,
+        );
+
+        expect(popoverPane).toContainReactComponent(Scrollable, {
+          className: 'Pane',
+        });
+      });
+    });
+
+    describe('when passed as true', () => {
+      it('applies the Pane-captureOverscroll class', () => {
+        const popoverPane = mountWithApp(
+          <Pane captureOverscroll>
+            <Children />
+          </Pane>,
+        );
+
+        expect(popoverPane).toContainReactComponent(Scrollable, {
+          className: 'Pane Pane-captureOverscroll',
+        });
+      });
+    });
+
+    describe('when passed as false', () => {
+      it('does not apply the Pane-captureOverscroll class', () => {
+        const popoverPane = mountWithApp(
+          <Pane captureOverscroll={false}>
+            <Children />
+          </Pane>,
+        );
+
+        expect(popoverPane).toContainReactComponent(Scrollable, {
+          className: 'Pane',
+        });
+      });
+    });
+  });
 });
