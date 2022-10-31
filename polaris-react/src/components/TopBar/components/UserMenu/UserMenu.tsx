@@ -61,7 +61,15 @@ export function UserMenu({
         >
           {name}
         </Text>
-        <p className={styles.Detail}>{detail}</p>
+        <Text
+          as="p"
+          variant="bodySm"
+          alignment="start"
+          color="subdued"
+          truncate
+        >
+          {detail}
+        </Text>
       </span>
     </>
   );
