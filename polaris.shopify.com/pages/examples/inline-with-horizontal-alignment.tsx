@@ -3,7 +3,7 @@ import {AlphaStack, Inline, Text, Page} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function InlineWithVerticalAlignmentExample() {
+function InlineWithHorizontalAlignmentExample() {
   return (
     <Page narrowWidth>
       <AlphaStack spacing="16">
@@ -42,8 +42,8 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
       style={{
         padding: '6px 0',
         background: '#7B47F1',
-        height: height ?? undefined,
-        width: width ?? undefined,
+        height: height,
+        width: width,
       }}
     >
       <Inline align="center" alignY="center">
@@ -61,4 +61,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(InlineWithVerticalAlignmentExample);
+export default withPolarisExample(InlineWithHorizontalAlignmentExample);

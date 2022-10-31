@@ -20,11 +20,11 @@ examples:
     title: Spacing
     description: >-
       Use to control spacing of items in inline in standard increments.
-  - fileName: inline-with-align-y.tsx
+  - fileName: inline-with-vertical-alignment.tsx
     title: Vertical alignment
     description: >-
       Use to vertically align Inline.
-  - fileName: inline-with-align.tsx
+  - fileName: inline-with-horizontal-alignment.tsx
     title: Horizontal alignment
     description: >-
       Use to horizontally align Inline.

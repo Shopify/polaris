@@ -47,8 +47,8 @@ const Placeholder = ({height = 'auto', width = 'auto'}) => {
     <div
       style={{
         background: '#7B47F1',
-        height: height ?? undefined,
-        width: width ?? undefined,
+        height: height,
+        width: width,
       }}
     />
   );
