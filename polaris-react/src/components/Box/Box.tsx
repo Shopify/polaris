@@ -136,7 +136,9 @@ interface Spacing {
 }
 
 export interface BoxProps {
-  /** HTML Element type */
+  /** HTML Element type
+   * @default 'div'
+   */
   as?: Element;
   /** Background color */
   background?: BackgroundColorTokenScale;

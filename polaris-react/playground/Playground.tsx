@@ -1,11 +1,17 @@
 import React from 'react';
 
-import {Page, AlphaCard} from '../src';
+import {Page, Columns} from '../src';
 
 export function Playground() {
   return (
     <Page title="Playground">
-      <AlphaCard roundedAbove="xs">card</AlphaCard>
+      <Columns columns={3}>
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+        <div>04</div>
+        <div>05</div>
+      </Columns>
     </Page>
   );
 }
