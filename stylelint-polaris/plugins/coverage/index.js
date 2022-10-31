@@ -1,5 +1,7 @@
 const stylelint = require('stylelint');
 
+const {isObject} = require('../../utils');
+
 const ruleName = 'stylelint-polaris/coverage';
 
 /**
@@ -12,25 +14,28 @@ module.exports = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primaryOptions */
   (primaryOptions) => {
-    if (typeof primaryOptions !== 'object' && primaryOptions !== null) return;
+    const isPrimaryOptionsValid = validatePrimaryOptions(primaryOptions);
 
-    const rules = [];
-
-    for (const [categoryName, categoryConfigRules] of Object.entries(
-      primaryOptions,
-    )) {
-      for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
-        categoryConfigRules,
-      )) {
-        rules.push({
-          categoryRuleName,
-          categoryRuleSettings,
-          coverageRuleName: `${ruleName}/${categoryName}`,
-        });
-      }
-    }
+    const rules = !isPrimaryOptionsValid
+      ? []
+      : Object.entries(primaryOptions).flatMap(
+          ([categoryName, categoryConfigRules]) =>
+            Object.entries(categoryConfigRules).map(
+              ([categoryRuleName, categoryRuleSettings]) => ({
+                categoryRuleName,
+                categoryRuleSettings,
+                coverageRuleName: `${ruleName}/${categoryName}`,
+              }),
+            ),
+        );
 
     return (root, result) => {
+      const validOptions = stylelint.utils.validateOptions(result, ruleName, {
+        actual: isPrimaryOptionsValid,
+      });
+
+      if (!validOptions) return;
+
       for (const rule of rules) {
         const {categoryRuleName, categoryRuleSettings, coverageRuleName} = rule;
 
@@ -53,3 +58,13 @@ module.exports = stylelint.createPlugin(
     };
   },
 );
+
+function validatePrimaryOptions(primaryOptions) {
+  if (!isObject(primaryOptions)) return false;
+
+  for (const categoryConfigRules of Object.values(primaryOptions)) {
+    if (!isObject(categoryConfigRules)) return false;
+  }
+
+  return true;
+}
