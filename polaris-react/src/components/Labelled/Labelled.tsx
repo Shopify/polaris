@@ -5,6 +5,7 @@ import type {Action, Error} from '../../types';
 import {buttonFrom} from '../Button';
 import {Label, LabelProps, labelID} from '../Label';
 import {InlineError} from '../InlineError';
+import {Text} from '../Text';
 
 import styles from './Labelled.scss';
 
@@ -48,7 +49,9 @@ export function Labelled({
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
-      {helpText}
+      <Text as="span" variant="bodyMd" color="subdued" breakWord>
+        {helpText}
+      </Text>
     </div>
   ) : null;
 

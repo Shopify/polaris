@@ -44,7 +44,6 @@ $item-vertical-padding: $item-min-height * 0.5;
 
 .Tab {
   @include unstyled-button;
-  @include text-style-body;
   @include text-emphasis-subdued;
   color: var(--p-text);
   position: relative;

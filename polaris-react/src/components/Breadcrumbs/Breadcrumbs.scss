@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 .Breadcrumb {
-  @include text-style-body;
   @include text-emphasis-subdued;
   @include unstyled-button;
   position: relative;

@@ -93,7 +93,11 @@ export function EmptyState({
   ) : null;
 
   const childrenMarkup = children ? (
-    <div className={styles.Content}>{children}</div>
+    <div className={styles.Content}>
+      <Text as="span" variant="bodyMd">
+        {children}
+      </Text>
+    </div>
   ) : null;
 
   const textContentMarkup =

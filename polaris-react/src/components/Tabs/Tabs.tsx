@@ -4,6 +4,7 @@ import {HorizontalDotsMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
+import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
 
 import type {TabDescriptor} from './types';
@@ -241,7 +242,9 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
       >
-        {tab.content}
+        <Text as="span" variant="bodyMd">
+          {tab.content}
+        </Text>
       </Tab>
     );
   };
