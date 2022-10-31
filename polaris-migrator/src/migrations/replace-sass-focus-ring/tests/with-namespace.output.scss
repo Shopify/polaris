@@ -1,0 +1,40 @@
+// polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+// @include should not be called on the root node
+// outline-offset: var(--p-ring-offset-1);
+// outline: var(--p-ring-base);
+
+@include legacy-polaris-v8.focus-ring();
+
+.default-usage {
+  outline-offset: var(--p-ring-offset-1);
+  outline: var(--p-ring-base);
+  &:focus {
+    outline-offset: var(--p-ring-offset-1);
+    outline: var(--p-ring-focused);
+  }
+}
+
+.withCustomBorderWidth {
+  outline-offset: var(--p-ring-offset-1);
+  outline: var(--p-ring-base);
+  &:focus {
+    outline-offset: var(--p-ring-offset-1);
+    outline: var(--p-ring-focused);
+  }
+}
+
+.edge-cases {
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // Argument border-width is not of type word or string
+  // outline-offset: var(--p-ring-offset-1);
+  // outline: var(--p-ring-base);
+  @include legacy-polaris-v8.focus-ring(base, test());
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // Argument border-width is not of type word or string
+  // outline-offset: var(--p-ring-offset-1);
+  // outline: var(--p-ring-focused);
+  @include legacy-polaris-v8.focus-ring(base, 0 + 50px, focused);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // Spread operation not supported by this migration
+  @include legacy-polaris-v8.focus-ring($args...);
+}

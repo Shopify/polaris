@@ -1,0 +1,24 @@
+@include legacy-polaris-v8.focus-ring();
+
+.default-usage {
+  @include legacy-polaris-v8.focus-ring();
+  &:focus {
+    @include legacy-polaris-v8.focus-ring($style: 'focused');
+  }
+}
+
+.withCustomBorderWidth {
+  @include legacy-polaris-v8.focus-ring($border-width: 2px);
+  &:focus {
+    @include legacy-polaris-v8.focus-ring(
+      $border-width: 2px,
+      $style: 'focused'
+    );
+  }
+}
+
+.edge-cases {
+  @include legacy-polaris-v8.focus-ring(base, test());
+  @include legacy-polaris-v8.focus-ring(base, 0 + 50px, focused);
+  @include legacy-polaris-v8.focus-ring($args...);
+}
