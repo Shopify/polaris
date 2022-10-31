@@ -1,28 +1,5 @@
-@import '../../../../styles/common';
-
-.Header {
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-  padding: var(--p-space-4) var(--p-space-5);
-  border-bottom: var(--p-border-divider);
-}
-
 .titleHidden {
   position: absolute;
   right: 0;
   z-index: 1;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-
-  .Title {
-    display: none;
-  }
-}
-
-.Title {
-  @include text-breakword;
-  flex: 1;
-  align-self: center;
 }
