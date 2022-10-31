@@ -29,17 +29,17 @@ const plugin = (options: PluginOptions): Plugin => {
       return [
         {
           prop: 'outline-offset',
-          value: '1px',
+          value: 'var(--p-ring-offset-1)',
         },
         {
           prop: 'outline',
-          value: '2px transparent solid',
+          value: 'var(--p-ring-base)',
         },
       ];
     } else {
       return [
-        {prop: 'outline-offset', value: '1px'},
-        {prop: 'outline', value: '2px var(--p-focused) solid'},
+        {prop: 'outline-offset', value: 'var(--p-ring-offset-1)'},
+        {prop: 'outline', value: 'var(--p-ring-focused)'},
       ];
     }
   }
