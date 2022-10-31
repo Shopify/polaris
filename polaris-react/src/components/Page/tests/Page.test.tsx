@@ -58,7 +58,7 @@ describe('<Page />', () => {
   describe('subtitle', () => {
     it('gets passed into the <Header />', () => {
       const subtitle = 'Subtitle';
-      const page = mountWithApp(<Page {...mockProps} subtitle={subtitle} />);
+      const page = mountWithApp(<Page subtitle={subtitle} />);
       expect(page).toContainReactComponent(Header, {
         subtitle,
       });
