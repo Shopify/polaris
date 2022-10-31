@@ -16,6 +16,31 @@ testRule({
       code: '@media (min-width: 320px) {}',
       description: 'Uses allowed at-rule',
     },
+    {
+      code: `
+      	/* stylelint-disable -- polaris: context */
+        @keyframes foo {}
+        /* stylelint-enable */
+      `,
+      description:
+        'Uses disallowed at-rule with disable/enable comment and context',
+    },
+    {
+      code: `
+      	/* stylelint-disable -- polaris: context */
+        @keyframes foo {}
+      `,
+      description:
+        'Uses disallowed at-rule with disable comment and context and without enable comment',
+    },
+    {
+      code: `
+      	/* stylelint-disable-next-line -- polaris: context */
+        @keyframes foo {}
+      `,
+      description:
+        'Uses disallowed at-rule with disable next line comment and context',
+    },
   ],
 
   reject: [
@@ -24,6 +49,35 @@ testRule({
       description: 'Uses disallowed at-rule',
       message:
         'Unexpected at-rule "keyframes" (stylelint-polaris/coverage/motion)',
+    },
+    {
+      code: `
+      	/* stylelint-disable */
+        @keyframes foo {}
+        /* stylelint-enable */
+      `,
+      description:
+        'Uses disallowed at-rule with disable/enable comment and without context',
+      message: 'Missing "polaris:" prefix in disable comment description',
+    },
+    {
+      code: `
+      	/* stylelint-disable */
+
+        @keyframes fooz {}
+      `,
+      description:
+        'Uses disallowed at-rule with disable comment and without context and enable comment',
+      message: 'Missing "polaris:" prefix in disable comment description',
+    },
+    {
+      code: `
+      	/* stylelint-disable-next-line */
+        @keyframes foo {}
+      `,
+      description:
+        'Uses disallowed at-rule with disable next line comment and without context',
+      message: 'Missing "polaris:" prefix in disable comment description',
     },
   ],
 });
