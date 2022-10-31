@@ -11,7 +11,7 @@ examples:
   - fileName: inline-default.tsx
     title: Default
     description: >-
-      By default, Inline is left aligned, and wraps based on the width of Content block or Page. The default spacing in between is 16px and Inline children are horizontally centered.
+     Items are vertically centered with 16px of space around them. They’ll wrap onto multiple lines when needed.
   - fileName: inline-with-non-wrapping.tsx
     title: Non-wrapping
     description: >-
