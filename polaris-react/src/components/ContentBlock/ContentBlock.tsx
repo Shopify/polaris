@@ -9,7 +9,7 @@ type Width = 'md' | 'lg';
 export interface ContentBlockProps {
   /** Elements to display inside container */
   children?: React.ReactNode;
-  /** Adjust maximum width of container */
+  /** Adjust max width of container */
   width: Width;
 }
 
