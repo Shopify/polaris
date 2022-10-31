@@ -1,24 +1,13 @@
-@import '../../../../styles/common';
-
 $close-button-width: calc(var(--p-space-12) + var(--p-space-1));
 
 .Section {
   flex: 0 0 auto;
-  padding: var(--p-space-5);
 
   &:not(:last-of-type) {
     border-bottom: var(--p-border-divider);
   }
+}
 
-  &.subdued {
-    background: var(--p-surface-subdued);
-  }
-
-  &.flush {
-    padding: 0;
-  }
-
-  &.titleHidden {
-    padding-right: $close-button-width;
-  }
+.titleHidden {
+  padding-right: $close-button-width;
 }

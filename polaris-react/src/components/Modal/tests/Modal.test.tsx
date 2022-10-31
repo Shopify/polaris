@@ -2,12 +2,14 @@ import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import {Backdrop} from '../../Backdrop';
 import {Badge} from '../../Badge';
+import {Box} from '../../Box';
 import {Button} from '../../Button';
+import {Portal} from '../../Portal';
 import {Scrollable} from '../../Scrollable';
 import {Spinner} from '../../Spinner';
-import {Portal} from '../../Portal';
-import {Backdrop} from '../../Backdrop';
+import {Text} from '../../Text';
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -302,9 +304,7 @@ describe('<Modal>', () => {
         <Modal onClose={jest.fn()} open title="foo" />,
       );
 
-      expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'Header',
-      });
+      expect(modal.find(Box)).toContainReactComponent(Text);
     });
 
     it('only renders a close button when titleHidden is present', () => {
@@ -315,6 +315,7 @@ describe('<Modal>', () => {
       expect(modal.find(Header)).toContainReactComponent('div', {
         className: 'titleHidden',
       });
+      expect(modal.find(Header)).not.toContainReactComponent(Box);
     });
   });
 
