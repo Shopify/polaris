@@ -298,7 +298,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     const allActionsPopover = this.hasActions() ? (
       <div className={styles.Popover} ref={this.setMoreActionsNode}>
         <Popover
-          active={smallScreenPopoverVisible}
+          active={smallScreenPopoverVisible && selectMode}
           activator={
             <BulkActionButton
               disclosure
@@ -372,7 +372,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       actionSections || rolledInPromotedActions.length > 0 || measuring ? (
         <div className={styles.Popover} ref={this.setMoreActionsNode}>
           <Popover
-            active={largeScreenPopoverVisible}
+            active={largeScreenPopoverVisible && selectMode}
             activator={
               <BulkActionButton
                 disclosure
