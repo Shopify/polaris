@@ -8,7 +8,6 @@ import {
   namespace,
   isSassFunction,
   isNumericOperator,
-  isUnitlessZero,
 } from '../../utilities/sass';
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
 
@@ -18,7 +17,12 @@ interface PluginOptions extends Options, NamespaceOptions {}
 
 const plugin = (options: PluginOptions): Plugin => {
   const namespacedFocusRing = namespace('focus-ring', options);
-  function declResolver({style}: {[key: string]: Node[]}) {
+
+  // This is a reconstruction of the focus-ring mixin
+  // as a javascript function, such that the API remains the same
+  // but the output is an array of arguments to pass into
+  // `postcss.decl`
+  function focusRing({style}: {[key: string]: Node[]}) {
     const styleValue = style?.length ? stringify(style).trim() : 'base';
 
     if (styleValue === 'base') {
@@ -52,10 +56,10 @@ const plugin = (options: PluginOptions): Plugin => {
 
         const parsedValue = valueParser(atRule.params);
         let declVal: PostCssDeclArgs[] = [];
-        function hasSassFunction(nodes: Node[]) {
+        function nodesHaveSassFunctions(nodes: Node[]) {
           return nodes.some((node) => node.type === 'function');
         }
-        function hasNumericOperator(nodes: Node[]) {
+        function nodesHaveNumericOperators(nodes: Node[]) {
           return nodes.some((node) => isNumericOperator(node));
         }
 
@@ -68,13 +72,16 @@ const plugin = (options: PluginOptions): Plugin => {
             });
             declOrder.forEach((key) => {
               if (!args[key]) return;
-              if (hasNumericOperator(args[key]) || hasSassFunction(args[key])) {
+              if (
+                nodesHaveNumericOperators(args[key]) ||
+                nodesHaveSassFunctions(args[key])
+              ) {
                 reports.push({
                   message: `Argument ${key} is not of type word or string`,
                 });
               }
             });
-            declVal = declResolver(args);
+            declVal = focusRing(args);
           } catch (err: any) {
             reports.push({
               message: err.message as string,
