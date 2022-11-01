@@ -33,7 +33,7 @@ export const slugify = (str: string): string => {
 
 export const stripMarkdownLinks = (markdown: string): string => {
   const linkRegex = /\[([a-z ]+)\]([^\)]+)\)/gi;
-  return markdown.replaceAll(linkRegex, (_, linkText) => {
+  return markdown.replace(linkRegex, (_, linkText) => {
     return linkText;
   });
 };

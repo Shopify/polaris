@@ -1,66 +1,65 @@
 import React from 'react';
-import {AlphaStack, Badge, Box, Inline, Text} from '@shopify/polaris';
+import {AlphaStack, Page, Inline, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaStackWithAlignExample() {
   return (
-    <div style={{width: '500px'}}>
-      <Box marginBottom="2">
-        <Text variant="bodySm" as="h3">
-          with align start
-        </Text>
-      </Box>
-      <Box paddingBottom="2">
+    <Page>
+      <AlphaStack spacing="5" fullWidth>
         <AlphaStack align="start">
-          <Text variant="heading4xl" as="h2">
-            AlphaStack
-          </Text>
-          <Inline>
-            <Badge>One</Badge>
-            <Badge>Two</Badge>
-            <Badge>Three</Badge>
-          </Inline>
+          <Placeholder width="320px" label="Start" childAlign="start" />
+          <Placeholder width="320px" childAlign="start" />
+          <Placeholder width="320px" childAlign="start" />
         </AlphaStack>
-      </Box>
-      <hr />
-      <Box marginBottom="2">
-        <Text variant="bodySm" as="h3">
-          with align center
-        </Text>
-      </Box>
-      <Box paddingBottom="2">
+
         <AlphaStack align="center">
-          <Text variant="heading4xl" as="h2">
-            AlphaStack
-          </Text>
-          <Inline>
-            <Badge>One</Badge>
-            <Badge>Two</Badge>
-            <Badge>Three</Badge>
-          </Inline>
+          <AlphaStack>
+            <Placeholder width="320px" label="Center" childAlign="center" />
+            <Placeholder width="320px" childAlign="center" />
+            <Placeholder width="320px" childAlign="center" />
+          </AlphaStack>
         </AlphaStack>
-      </Box>
-      <hr />
-      <Box marginBottom="2">
-        <Text variant="bodySm" as="h3">
-          with align end
-        </Text>
-      </Box>
-      <Box paddingBottom="2">
         <AlphaStack align="end">
-          <Text variant="heading4xl" as="h2">
-            AlphaStack
-          </Text>
-          <Inline>
-            <Badge>One</Badge>
-            <Badge>Two</Badge>
-            <Badge>Three</Badge>
-          </Inline>
+          <Placeholder width="320px" label="End" childAlign="end" />
+          <Placeholder width="320px" childAlign="center" />
+          <Placeholder width="320px" childAlign="center" />
         </AlphaStack>
-      </Box>
-    </div>
+      </AlphaStack>
+    </Page>
   );
 }
+
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  childAlign,
+}) => {
+  return (
+    <div
+      style={{
+        background: '#7B47F1',
+        padding: '14px var(--p-space-2)',
+        height: height ?? undefined,
+        width: width ?? undefined,
+      }}
+    >
+      <Inline align={childAlign}>
+        <div
+          style={{
+            display: 'inline-block',
+            background: 'rgba(255, 255, 255, 0.3)',
+            color: '#FFFFFF',
+          }}
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            {label}
+          </Text>
+        </div>
+      </Inline>
+    </div>
+  );
+};
 
 export default withPolarisExample(AlphaStackWithAlignExample);

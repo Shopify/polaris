@@ -49,12 +49,46 @@ A generic codemod to rename any component prop.
 npx @shopify/polaris-migrator rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
 ```
 
+### `replace-spacing-lengths`
+
+Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
+
+```diff
+- padding: 16px;
++ padding: var(--p-space-4);
+
+- margin: 1rem;
++ margin: var(--p-space-4);
+
+- gap: rem(16px);
++ gap: var(--p-space-4);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-spacing-lengths <path>
+```
+
 ### v9
 
 For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
 
 ```sh
 npx @shopify/polaris-migrator <sass-migration> <path> --namespace="legacy-polaris-v8"
+```
+
+### `replace-sass-color`
+
+Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
+
+```diff
+- color: color('ink');
+- background: color('white');
++ color: var(--p-text);
++ background: var(--p-surface);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-sass-color <path>
 ```
 
 ### `replace-sass-spacing`
@@ -99,11 +133,120 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
 ```
 
-## Creating a migration
+### `replace-typography-declarations`
 
-### Setup
+Replace legacy Typography functions and hardcoded lengths with Polaris custom properties for `font-family`, `font-size`, `font-weight`, and `line-height` declarations.
 
-Run `yarn new-migration` to generate a new migration from a template.
+```diff
+- font-family: font-family(monospace);
++ font-family: var(--p-font-family-mono);
+
+- font-size: font-size(input, base);
++ font-size: var(--p-font-size-200);
+
+- font-weight: 400;
++ font-weight: var(--p-font-weight-regular);
+
+- line-height: line-height(caption, base);
++ font-family: var(--p-font-line-height-2);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-typography-declarations <path>
+```
+
+### `replace-border-declarations`
+
+Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `border-width()`, `border-radius()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border: border();
++ border: var(--p-border-base);
+
+- border-width: 0.0625rem;
++ border-width: var(--p-border-width-1);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: border-radius(large);
++ border-radius: var(--p-border-radius-large);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-border-declarations <path>
+```
+
+### `replace-sass-z-index`
+
+Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
+
+Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
+This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
+
+```diff
+- .decl-1 {
+-   z-index: z-index(content);
+- }
+- .decl-2 {
+-   z-index: z-index(modal, $fixed-element-stacking-order)
+- }
++ decl-1 {
++   z-index: var(--p-z-1);
++ }
++ .decl-2 {
++   z-index: var(--p-z-11)
++ }
+```
+
+Invocations of `z-index` within an arithmetic expression will be appended with a comment for review and manual migration.
+Generally in these instances you'll want to wrap the suggested code change in a `calc` however this may defer on a case by case basis in your codebase.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: var(--p-z-1) + 1 */
+  z-index: z-index(content) + 1
+}
+```
+
+Invocations of `z-index` with a custom sass map property, will also be appended with a comment for review and manual migration.
+
+```diff
+.decl-3 {
++  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
++  /* z-index: map.get($custom-sass-map, modal) */
+  z-index: z-index(modal, $custom-sass-map)
+}
+```
+
+In these cases you may also want to run `npx sass-migrator module <path> --migrate-deps --load-path <load-path>` to ensure that
+`map.get` is in scope\*\*.
+
+Be aware that this may also create additional code changes in your codebase, we recommend running this only if there are large number of instances of migrations from `z-index` to `map.get`. Otherwise it may be easier to add `use 'sass:map'` to the top of your `.scss` file manually.
+
+```sh
+npx @shopify/polaris-migrator replace-sass-spacing <path>
+```
+
+## Creating Migrations
+
+Sometimes referred to as "codemods", migrations are JavaScript functions which modify some code from one form to another (eg; to move between breaking versions of `@shopify/polaris`). ASTs (Abstract Syntax Trees) are used to "walk" through the code in discreet, strongly typed steps, called "nodes". All changes made to nodes (and thus the AST) are then written out as the new/"migrated" version of the code.
+
+`polaris-migrator` supports two types of migrations:
+
+- SASS Migrations
+- Typescript Migrations
+
+### Creating a SASS migration
+
+Run `yarn new-migration` to generate a new migration from the `sass-migration` template:
 
 ```sh
 ❯ yarn new-migration
@@ -114,7 +257,7 @@ $ plop
   typescript-migration
 ```
 
-We will use the `sass-migration` and call our migration `replace-sass-function` for this example. Provide the name of your migration:
+Next, provide the name of your migration. For example; `replace-sass-function`:
 
 ```sh
 ? [PLOP] Please choose a generator. sass-migration
@@ -133,11 +276,11 @@ migrations
         └── replace-sass-function.test.ts
 ```
 
-### Writing migration function
+#### The SASS migration function
 
-A migration is simply a javascript function which serves as the entry-point for your codemod. The `replace-sass-function.ts` file defines a "migration" function. This function is named the same as the provided migration name, `replace-sass-function`, and is the default export of the file.
+Each migrator has a default export adhering to the [PostCSS Plugin API](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md) with one main difference: events are only executed once.
 
-Some example code has been provided for each template. You can make any migration code adjustments in the migration function. For Sass migrations, a [PostCSS plugin](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md) is used to parse and transform the source code provided by the [jscodeshift](https://github.com/facebook/jscodeshift).
+Continuing the example, here is what the migration may look like if our goal is to replace the Sass function `hello()` with `world()`.
 
 ```ts
 // polaris-migrator/src/migrations/replace-sass-function/replace-sass-function.ts
@@ -169,9 +312,9 @@ export default function replaceSassFunction(fileInfo: FileInfo) {
 }
 ```
 
-This example migration will replace the Sass function `hello()` with `world()`.
+A more complete example can be seen in [`replace-spacing-lengths.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-spacing-lengths/replace-spacing-lengths.ts).
 
-### Testing
+#### Testing
 
 The template will also generate starting test files you can use to test your migration. In your migrations `tests` folder, you can see 3 files:
 
@@ -180,6 +323,8 @@ The template will also generate starting test files you can use to test your mig
 - `replace-sass-function.output.scss` – The expected output after migration
 
 The main test file will load the input/output fixtures to test your migration against. You can configure additional fixtures and test migration options (see the `replace-sass-spacing.test.ts` as an example).
+
+## Running Migrations
 
 Run tests locally from workspace root by filtering to the migrations package:
 
@@ -218,11 +363,23 @@ polaris-migrator: Unable to migrate the following expression. Please upgrade man
 After applying a migration, it might be helpful to commit the changes that do not need a manual check from those that do. You can do this a few different ways, but we suggest staging all your changes, then unstaging those that include the manual check comment:
 
 ```sh
-# Stage all modified files
+# Stash files with "polaris-migrator:" comments
+git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+
+# Stage all files without "polaris-migrator:" comments
 git add .
 
-# Unstage those that contain the manual check comment prefixed with "polaris-migrator:"
-git reset $(grep -r -l "polaris-migrator:")
+# Bring back the change with "polaris-migrator:" comments
+git stash pop
+
+# (optional) if there a files that have both "polaris-migrator:" comments
+# _and_ complete fixes, add the complete fixes now
+git add -p
+
+# Commit all the complete fixes:
+git commit
+
+# Now you're left with changes that have "polaris-migrator:" comments only
 ```
 
 ### Resources
@@ -233,3 +390,4 @@ git reset $(grep -r -l "polaris-migrator:")
 - Common utilities:
   - [`jsx.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/utilities/jsx.ts)
   - [`imports.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/utilities/imports.ts)
+    0

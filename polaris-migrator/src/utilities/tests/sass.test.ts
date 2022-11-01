@@ -1,6 +1,31 @@
 import valueParser from 'postcss-value-parser';
 
-import {getFunctionArgs} from '../sass';
+import {createInlineComment, getFunctionArgs} from '../sass';
+
+describe('createInlineComment', () => {
+  it('inline and contains starting space', () => {
+    const text = 'padding: var(--p-space-4);';
+    const comment = createInlineComment(text);
+    expect(comment.raws.inline).toBe(true);
+    expect(comment.raws.left).toBe(' ');
+  });
+
+  it('formats single line text', () => {
+    const text = 'padding: var(--p-space-4);';
+    const comment = createInlineComment(text);
+    expect(comment.text).toStrictEqual(text);
+  });
+
+  it('formats multiple line text', () => {
+    const text = `
+      padding: calc(-1 * var(--p-space-4))
+        var(--p-space-4);
+      `;
+    const formatted = 'padding: calc(-1 * var(--p-space-4)) var(--p-space-4);';
+    const comment = createInlineComment(text);
+    expect(comment.text).toStrictEqual(formatted);
+  });
+});
 
 describe('getFunctionArgs', () => {
   it('zero args', () => {

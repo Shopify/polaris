@@ -45,9 +45,7 @@ function Breadcrumbs() {
             key={url}
             aria-current={segments.length == i + 1 ? 'page' : 'false'}
           >
-            <Link href={url}>
-              <a>{text}</a>
-            </Link>
+            <Link href={url}>{text}</Link>
           </li>
         ))}
       </ul>

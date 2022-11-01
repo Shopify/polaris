@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.2.1
+
+### Patch Changes
+
+- [#7385](https://github.com/Shopify/polaris/pull/7385) [`c3f427c17`](https://github.com/Shopify/polaris/commit/c3f427c17d268f406618aaddb684ba12c3fa15d1) Thanks [@laurkim](https://github.com/laurkim)! - Refactored exported alias and scale types in `breakpoints`, `depth`, `font`, `motion`, `shape`, `spacing`, and `zIndex`.
+
 ## 6.2.0
 
 ### Minor Changes

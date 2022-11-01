@@ -17,14 +17,19 @@ type Spacing = {
 };
 
 export interface ColumnsProps {
+  /** The space between columns */
   spacing?: Spacing;
+  /** The number of columns to display
+   * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
+   */
   columns?: Columns;
+  /** Elements to display inside columns */
   children?: React.ReactNode;
 }
 
 export function Columns({columns, children, spacing}: ColumnsProps) {
   const style = {
-    '--pc-columns-xs': formatColumns(columns?.xs),
+    '--pc-columns-xs': formatColumns(columns?.xs || 6),
     '--pc-columns-sm': formatColumns(columns?.sm),
     '--pc-columns-md': formatColumns(columns?.md),
     '--pc-columns-lg': formatColumns(columns?.lg),

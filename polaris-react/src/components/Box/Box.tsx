@@ -1,8 +1,6 @@
-import React, {createElement, forwardRef, ReactNode} from 'react';
+import React, {createElement, forwardRef} from 'react';
 import type {
-  ColorsTokenName,
   DepthShadowAlias,
-  ShapeTokenName,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
@@ -10,55 +8,132 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type BackgroundColorTokenScale = Extract<
-  ColorsTokenName,
-  | 'background'
-  | `background-${string}`
-  | 'surface'
-  | `surface-${string}`
-  | 'backdrop'
-  | 'overlay'
-  | `action-${string}`
->;
-type ColorTokenScale = Extract<ColorsTokenName, 'text' | `text-${string}`>;
+type Element = 'div' | 'span' | 'section';
 
-type BorderShapeTokenScale = ShapeTokenName extends `border-${infer Scale}`
-  ? Scale
-  : never;
-type BorderTokenScale = Exclude<
-  BorderShapeTokenScale,
-  `radius-${string}` | `width-${string}`
->;
+type Overflow = 'hidden' | 'scroll';
+
+export type BackgroundColorTokenScale =
+  | 'action-critical'
+  | 'action-critical-depressed'
+  | 'action-critical-disabled'
+  | 'action-critical-hovered'
+  | 'action-critical-pressed'
+  | 'action-primary'
+  | 'action-primary-depressed'
+  | 'action-primary-disabled'
+  | 'action-primary-hovered'
+  | 'action-primary-pressed'
+  | 'action-secondary'
+  | 'action-secondary-depressed'
+  | 'action-secondary-disabled'
+  | 'action-secondary-hovered'
+  | 'action-secondary-hovered-dark'
+  | 'action-secondary-pressed'
+  | 'action-secondary-pressed-dark'
+  | 'backdrop'
+  | 'background'
+  | 'background-hovered'
+  | 'background-pressed'
+  | 'background-selected'
+  | 'overlay'
+  | 'surface'
+  | 'surface-attention'
+  | 'surface-critical'
+  | 'surface-critical-subdued'
+  | 'surface-critical-subdued-depressed'
+  | 'surface-critical-subdued-hovered'
+  | 'surface-critical-subdued-pressed'
+  | 'surface-dark'
+  | 'surface-depressed'
+  | 'surface-disabled'
+  | 'surface-highlight'
+  | 'surface-highlight-subdued'
+  | 'surface-highlight-subdued-hovered'
+  | 'surface-highlight-subdued-pressed'
+  | 'surface-hovered'
+  | 'surface-hovered-dark'
+  | 'surface-neutral'
+  | 'surface-neutral-disabled'
+  | 'surface-neutral-hovered'
+  | 'surface-neutral-pressed'
+  | 'surface-neutral-subdued'
+  | 'surface-neutral-subdued-dark'
+  | 'surface-pressed'
+  | 'surface-pressed-dark'
+  | 'surface-primary-selected'
+  | 'surface-primary-selected-hovered'
+  | 'surface-primary-selected-pressed'
+  | 'surface-search-field'
+  | 'surface-search-field-dark'
+  | 'surface-selected'
+  | 'surface-selected-hovered'
+  | 'surface-selected-pressed'
+  | 'surface-subdued'
+  | 'surface-success'
+  | 'surface-success-subdued'
+  | 'surface-success-subdued-hovered'
+  | 'surface-success-subdued-pressed'
+  | 'surface-warning'
+  | 'surface-warning-subdued'
+  | 'surface-warning-subdued-hovered'
+  | 'surface-warning-subdued-pressed';
+
+export type ColorTokenScale =
+  | 'text'
+  | 'text-critical'
+  | 'text-disabled'
+  | 'text-highlight'
+  | 'text-on-critical'
+  | 'text-on-dark'
+  | 'text-on-interactive'
+  | 'text-on-primary'
+  | 'text-primary'
+  | 'text-primary-hovered'
+  | 'text-primary-pressed'
+  | 'text-subdued'
+  | 'text-subdued-on-dark'
+  | 'text-success'
+  | 'text-warning';
+
+export type BorderTokenAlias =
+  | 'base'
+  | 'dark'
+  | 'divider'
+  | 'divider-on-dark'
+  | 'transparent';
 
 interface Border {
-  bottom: BorderTokenScale;
-  left: BorderTokenScale;
-  right: BorderTokenScale;
-  top: BorderTokenScale;
+  blockStart: BorderTokenAlias;
+  blockEnd: BorderTokenAlias;
+  inlineStart: BorderTokenAlias;
+  inlineEnd: BorderTokenAlias;
 }
 
-type BorderRadiusTokenScale = Extract<
-  BorderShapeTokenScale,
-  `radius-${string}`
-> extends `radius-${infer Scale}`
-  ? Scale
-  : never;
+export type BorderRadiusTokenScale =
+  | '05'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | 'base'
+  | 'large'
+  | 'half';
 
 interface BorderRadius {
-  bottomLeft: BorderRadiusTokenScale;
-  bottomRight: BorderRadiusTokenScale;
-  topLeft: BorderRadiusTokenScale;
-  topRight: BorderRadiusTokenScale;
+  startStart: BorderRadiusTokenScale;
+  startEnd: BorderRadiusTokenScale;
+  endStart: BorderRadiusTokenScale;
+  endEnd: BorderRadiusTokenScale;
 }
 
 interface Spacing {
-  bottom: SpacingSpaceScale;
-  left: SpacingSpaceScale;
-  right: SpacingSpaceScale;
-  top: SpacingSpaceScale;
+  blockStart: SpacingSpaceScale;
+  blockEnd: SpacingSpaceScale;
+  inlineStart: SpacingSpaceScale;
+  inlineEnd: SpacingSpaceScale;
 }
-
-type Element = 'div' | 'span';
 
 export interface BoxProps {
   /** HTML Element type */
@@ -66,45 +141,55 @@ export interface BoxProps {
   /** Background color */
   background?: BackgroundColorTokenScale;
   /** Border style */
-  border?: BorderTokenScale;
-  /** Bottom border style */
-  borderBottom?: BorderTokenScale;
-  /** Left border style */
-  borderLeft?: BorderTokenScale;
-  /** Right border style */
-  borderRight?: BorderTokenScale;
-  /** Top border style */
-  borderTop?: BorderTokenScale;
+  border?: BorderTokenAlias;
+  /** Vertical end border style */
+  borderBlockEnd?: BorderTokenAlias;
+  /** Horizontal start border style */
+  borderInlineStart?: BorderTokenAlias;
+  /** Horizontal end border style */
+  borderInlineEnd?: BorderTokenAlias;
+  /** Vertical start border style */
+  borderBlockStart?: BorderTokenAlias;
   /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
-  /** Bottom left border radius */
-  borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Bottom right border radius */
-  borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Top left border radius */
-  borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Top right border radius */
-  borderRadiusTopRight?: BorderRadiusTokenScale;
-  /** Inner content */
-  children: ReactNode;
+  /** Vertical end horizontal start border radius */
+  borderRadiusEndStart?: BorderRadiusTokenScale;
+  /** Vertical end horizontal end border radius */
+  borderRadiusEndEnd?: BorderRadiusTokenScale;
+  /** Vertical start horizontal start border radius */
+  borderRadiusStartStart?: BorderRadiusTokenScale;
+  /** Verital start horizontal end border radius */
+  borderRadiusStartEnd?: BorderRadiusTokenScale;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
   id?: string;
-  /** Spacing outside of container */
+  /** Set minimum height of container */
+  minHeight?: string;
+  /** Set minimum width of container */
+  minWidth?: string;
+  /** Set maximum width of container */
   maxWidth?: string;
+  /** Clip horizontal content of children */
+  overflowX?: Overflow;
+  /** Clip vertical content of children */
+  overflowY?: Overflow;
   /** Spacing around children */
   padding?: SpacingSpaceScale;
-  /** Bottom spacing around children */
-  paddingBottom?: SpacingSpaceScale;
-  /** Left spacing around children */
-  paddingLeft?: SpacingSpaceScale;
-  /** Right spacing around children */
-  paddingRight?: SpacingSpaceScale;
-  /** Top spacing around children */
-  paddingTop?: SpacingSpaceScale;
+  /** Vertical start spacing around children */
+  paddingBlockStart?: SpacingSpaceScale;
+  /** Vertical end spacing around children */
+  paddingBlockEnd?: SpacingSpaceScale;
+  /** Horizontal start spacing around children */
+  paddingInlineStart?: SpacingSpaceScale;
+  /** Horizontal end spacing around children */
+  paddingInlineEnd?: SpacingSpaceScale;
   /** Shadow */
   shadow?: DepthShadowAlias;
+  /** Set width of container */
+  width?: string;
+  /** Elements to display inside box */
+  children?: React.ReactNode;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -113,106 +198,105 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       as = 'div',
       background,
       border,
-      borderBottom,
-      borderLeft,
-      borderRight,
-      borderTop,
+      borderBlockEnd,
+      borderInlineStart,
+      borderInlineEnd,
+      borderBlockStart,
       borderRadius,
-      borderRadiusBottomLeft,
-      borderRadiusBottomRight,
-      borderRadiusTopLeft,
-      borderRadiusTopRight,
+      borderRadiusEndStart,
+      borderRadiusEndEnd,
+      borderRadiusStartStart,
+      borderRadiusStartEnd,
       children,
       color,
       id,
+      minHeight,
+      minWidth,
       maxWidth,
+      overflowX,
+      overflowY,
       padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
+      paddingBlockStart,
+      paddingBlockEnd,
+      paddingInlineStart,
+      paddingInlineEnd,
       shadow,
+      width,
     },
     ref,
   ) => {
     const borders = {
-      bottom: borderBottom ? borderBottom : border,
-      left: borderLeft ? borderLeft : border,
-      right: borderRight ? borderRight : border,
-      top: borderTop ? borderTop : border,
+      blockEnd: borderBlockEnd,
+      inlineStart: borderInlineStart,
+      inlineEnd: borderInlineEnd,
+      blockStart: borderBlockStart,
     } as Border;
 
     const borderRadiuses = {
-      bottomLeft: borderRadiusBottomLeft
-        ? borderRadiusBottomLeft
-        : borderRadius,
-      bottomRight: borderRadiusBottomRight
-        ? borderRadiusBottomRight
-        : borderRadius,
-      topLeft: borderRadiusTopLeft ? borderRadiusTopLeft : borderRadius,
-      topRight: borderRadiusTopRight ? borderRadiusTopRight : borderRadius,
+      endStart: borderRadiusEndStart,
+      endEnd: borderRadiusEndEnd,
+      startStart: borderRadiusStartStart,
+      startEnd: borderRadiusStartEnd,
     } as BorderRadius;
 
     const paddings = {
-      bottom: paddingBottom ? paddingBottom : padding,
-      left: paddingLeft ? paddingLeft : padding,
-      right: paddingRight ? paddingRight : padding,
-      top: paddingTop ? paddingTop : padding,
+      blockEnd: paddingBlockEnd,
+      inlineStart: paddingInlineStart,
+      inlineEnd: paddingInlineEnd,
+      blockStart: paddingBlockStart,
     } as Spacing;
 
     const style = {
-      ...(background
-        ? {'--pc-box-background': `var(--p-${background})`}
-        : undefined),
-      ...(borders.bottom
-        ? {'--pc-box-border-bottom': `var(--p-border-${borders.bottom})`}
-        : undefined),
-      ...(borders.left
-        ? {'--pc-box-border-left': `var(--p-border-${borders.left})`}
-        : undefined),
-      ...(borders.right
-        ? {'--pc-box-border-right': `var(--p-border-${borders.right})`}
-        : undefined),
-      ...(borders.top
-        ? {'--pc-box-border-top': `var(--p-border-${borders.top})`}
-        : undefined),
-      ...(borderRadiuses.bottomLeft
-        ? {
-            '--pc-box-border-radius-bottom-left': `var(--p-border-radius-${borderRadiuses.bottomLeft})`,
-          }
-        : undefined),
-      ...(borderRadiuses.bottomRight
-        ? {
-            '--pc-box-border-radius-bottom-right': `var(--p-border-radius-${borderRadiuses.bottomRight})`,
-          }
-        : undefined),
-      ...(borderRadiuses.topLeft
-        ? {
-            '--pc-box-border-radius-top-left': `var(--p-border-radius-${borderRadiuses.topLeft})`,
-          }
-        : undefined),
-      ...(borderRadiuses.topRight
-        ? {
-            '--pc-box-border-radius-top-right': `var(--p-border-radius-${borderRadiuses.topRight})`,
-          }
-        : undefined),
-      ...(color ? {'--pc-box-color': `var(--p-${color})`} : undefined),
-      ...(maxWidth ? {'--pc-box-max-width': `${maxWidth}px`} : undefined),
-      ...(paddings.bottom
-        ? {'--pc-box-padding-bottom': `var(--p-space-${paddings.bottom})`}
-        : undefined),
-      ...(paddings.left
-        ? {'--pc-box-padding-left': `var(--p-space-${paddings.left})`}
-        : undefined),
-      ...(paddings.right
-        ? {'--pc-box-padding-right': `var(--p-space-${paddings.right})`}
-        : undefined),
-      ...(paddings.top
-        ? {'--pc-box-padding-top': `var(--p-space-${paddings.top})`}
-        : undefined),
-      ...(shadow
-        ? {'--pc-box-shadow': `var(--p-shadow-${shadow})`}
-        : undefined),
+      '--pc-box-color': color ? `var(--p-${color})` : undefined,
+      '--pc-box-background': background ? `var(--p-${background})` : undefined,
+      '--pc-box-border': border ? `var(--p-border-${border})` : undefined,
+      '--pc-box-border-block-end': borders.blockEnd
+        ? `var(--p-border-${borders.blockEnd})`
+        : undefined,
+      '--pc-box-border-inline-start': borders.inlineStart
+        ? `var(--p-border-${borders.inlineStart})`
+        : undefined,
+      '--pc-box-border-inline-end': borders.inlineEnd
+        ? `var(--p-border-${borders.inlineEnd})`
+        : undefined,
+      '--pc-box-border-block-start': borders.blockStart
+        ? `var(--p-border-${borders.blockStart})`
+        : undefined,
+      '--pc-box-border-radius': borderRadius
+        ? `var(--p-border-radius-${borderRadius})`
+        : undefined,
+      '--pc-box-border-radius-end-start': borderRadiuses.endStart
+        ? `var(--p-border-radius-${borderRadiuses.endStart})`
+        : undefined,
+      '--pc-box-border-radius-end-end': borderRadiuses.endEnd
+        ? `var(--p-border-radius-${borderRadiuses.endEnd})`
+        : undefined,
+      '--pc-box-border-radius-start-start': borderRadiuses.startStart
+        ? `var(--p-border-radius-${borderRadiuses.startStart})`
+        : undefined,
+      '--pc-box-border-radius-start-end': borderRadiuses.startEnd
+        ? `var(--p-border-radius-${borderRadiuses.startEnd})`
+        : undefined,
+      '--pc-box-min-height': minHeight,
+      '--pc-box-min-width': minWidth,
+      '--pc-box-max-width': maxWidth,
+      '--pc-box-overflow-x': overflowX,
+      '--pc-box-overflow-y': overflowY,
+      '--pc-box-padding': padding ? `var(--p-space-${padding})` : undefined,
+      '--pc-box-padding-block-end': paddings.blockEnd
+        ? `var(--p-space-${paddings.blockEnd})`
+        : undefined,
+      '--pc-box-padding-inline-start': paddings.inlineStart
+        ? `var(--p-space-${paddings.inlineStart})`
+        : undefined,
+      '--pc-box-padding-inline-end': paddings.inlineEnd
+        ? `var(--p-space-${paddings.inlineEnd})`
+        : undefined,
+      '--pc-box-padding-block-start': paddings.blockStart
+        ? `var(--p-space-${paddings.blockStart})`
+        : undefined,
+      '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
+      '--pc-box-width': width,
     } as React.CSSProperties;
 
     const className = classNames(styles.Box);

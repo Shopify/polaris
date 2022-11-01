@@ -14,13 +14,12 @@ function ComponentThumbnail({title}: Props) {
     >
       <Image
         src={`/images/components/${slugify(title)}.png`}
-        layout="responsive"
-        width={525}
-        height={300}
+        style={{width: '100%', height: 'auto'}}
+        width={266}
+        height={140}
         quality={70}
         sizes="300px"
         alt={`Screenshot of the ${title} component`}
-        lazyBoundary="1000px"
       />
     </div>
   );

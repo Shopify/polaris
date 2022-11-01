@@ -14,7 +14,7 @@ const styles = {
 
 function BleedHorizontalExample() {
   return (
-    <div style={{width: '500px'}}>
+    <div style={{width: '100%'}}>
       <Box background="surface" border="base" padding="4">
         <Bleed horizontal="6">
           <div style={styles}>

@@ -189,7 +189,8 @@
     flex-direction: column-reverse;
     background: var(--decorative-4);
 
-    video {
+    video,
+    .Poster {
       width: 100%;
       height: auto;
       filter: brightness(100%) contrast(2) saturate(0);

@@ -39,7 +39,7 @@ jobs:
                 repo: context.repo.repo,
                 pull_number: context.issue.number,
               })
-              
+
               // Pull request from fork
               if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
                 const errorMessage = '`/snapit` is not supported on pull requests from forked repositories.'
@@ -58,7 +58,7 @@ jobs:
             }
 
       - name: Checkout default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # issue_comment requires us to checkout the branch
       # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
@@ -78,7 +78,7 @@ jobs:
           fi
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
 

@@ -138,10 +138,12 @@ function TokenListItem({
               <SearchResultHighlight marginY="edge" />
               <TokenPreview name={name} value={value} />
               {isClickableSearchResult && (
-                <Link href={`/tokens/${category}#${searchAttributes?.id}`}>
-                  <a className={styles.ClickableItemLink} tabIndex={-1}>
-                    View token
-                  </a>
+                <Link
+                  href={`/tokens/${category}#${searchAttributes?.id}`}
+                  className={styles.ClickableItemLink}
+                  tabIndex={-1}
+                >
+                  View token
                 </Link>
               )}
             </td>

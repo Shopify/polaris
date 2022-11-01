@@ -17,10 +17,10 @@ describe('<AlphaStack />', () => {
     const stack = mountWithApp(<AlphaStack>{children}</AlphaStack>);
 
     expect(stack).toContainReactComponent('div', {
-      style: {
+      style: expect.objectContaining({
         '--pc-stack-align': 'start',
-        '--pc-stack-spacing': 'var(--p-space-4)',
-      } as React.CSSProperties,
+        '--pc-stack-spacing-xs': 'var(--p-space-4)',
+      }) as React.CSSProperties,
     });
   });
 
@@ -32,10 +32,23 @@ describe('<AlphaStack />', () => {
     );
 
     expect(stack).toContainReactComponent('div', {
-      style: {
+      style: expect.objectContaining({
         '--pc-stack-align': 'center',
-        '--pc-stack-spacing': 'var(--p-space-10)',
-      } as React.CSSProperties,
+        '--pc-stack-spacing-xs': 'var(--p-space-10)',
+      }) as React.CSSProperties,
+    });
+  });
+
+  it('accepts spacing based on breakpoints', () => {
+    const stack = mountWithApp(
+      <AlphaStack spacing={{xs: '2', md: '8'}}>{children}</AlphaStack>,
+    );
+
+    expect(stack).toContainReactComponent('div', {
+      style: expect.objectContaining({
+        '--pc-stack-spacing-md': 'var(--p-space-8)',
+        '--pc-stack-spacing-xs': 'var(--p-space-2)',
+      }) as React.CSSProperties,
     });
   });
 });

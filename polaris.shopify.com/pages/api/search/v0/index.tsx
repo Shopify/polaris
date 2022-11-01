@@ -36,8 +36,8 @@ const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   icons: 9,
 };
 
-const getSearchResults = (query: string) => {
-  if (query.length === 0) return [];
+const getSearchResults = (query?: string) => {
+  if (query == null || query?.length === 0) return [];
 
   let results: SearchResults = [];
 
@@ -118,7 +118,7 @@ const getSearchResults = (query: string) => {
       id: slugify(`foundations ${title}`),
       category: 'foundations',
       score: 0,
-      url: slug,
+      url: `/${slug}`,
       meta: {
         foundations: {
           title,

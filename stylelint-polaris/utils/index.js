@@ -182,6 +182,17 @@ function isNumber(value) {
 }
 
 /**
+ * Checks if the value is an object and not an array or null.
+ * https://github.com/jonschlinkert/isobject/blob/15d5d58ea9fbc632dffd52917ac6791cd92251ab/index.js#L9
+ * @param {unknown} value
+ */
+function isObject(value) {
+  return (
+    value != null && typeof value === 'object' && Array.isArray(value) === false
+  );
+}
+
+/**
  * Checks if the value is a RegExp object.
  * @param {unknown} value
  * @returns {value is RegExp}
@@ -212,6 +223,7 @@ module.exports.hasScssInterpolation = hasScssInterpolation;
 module.exports.isBoolean = isBoolean;
 module.exports.isCustomProperty = isCustomProperty;
 module.exports.isNumber = isNumber;
+module.exports.isObject = isObject;
 module.exports.isRegExp = isRegExp;
 module.exports.isScssInterpolation = isScssInterpolation;
 module.exports.isString = isString;
