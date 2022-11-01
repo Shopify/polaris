@@ -15,44 +15,32 @@ interface Spacing {
 export interface BleedProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
-  /** Negative space around the element, default value is '5'
+  /** Negative space around the element
    * @default '5'
    */
   spacing?: SpacingSpaceScale;
-  /** Negative horizontal space around the element, default value is '5'
-   * @default '5'
-   */
+  /** Negative horizontal space around the element */
   horizontal?: SpacingSpaceScale;
-  /** Negative vertical space around the element, default value is '5'
-   * @default '5'
-   */
+  /** Negative vertical space around the element */
   vertical?: SpacingSpaceScale;
-  /** Negative top space around the element, default value is '5'
-   * @default '5'
-   */
+  /** Negative top space around the element */
   top?: SpacingSpaceScale;
-  /** Negative bottom space around the element, default value is '5'
-   * @default '5'
-   */
+  /** Negative bottom space around the element */
   bottom?: SpacingSpaceScale;
-  /** Negative left space around the element, default value is '5'
-   * @default '5'
-   */
+  /** Negative left space around the element */
   left?: SpacingSpaceScale;
-  /** Negative right space around the element, default value is '5'
-   * @default '5'
-   */
+  /** Negative right space around the element */
   right?: SpacingSpaceScale;
 }
 
 export const Bleed = ({
   spacing = '5',
-  horizontal = '5',
-  vertical = '5',
-  top = '5',
-  bottom = '5',
-  left = '5',
-  right = '5',
+  horizontal,
+  vertical,
+  top,
+  bottom,
+  left,
+  right,
   children,
 }: BleedProps) => {
   const getNegativeMargins = (direction: string) => {
@@ -90,7 +78,7 @@ export const Bleed = ({
     '--pc-bleed-margin-bottom': negativeMargins.bottom
       ? `var(--p-space-${negativeMargins.bottom})`
       : undefined,
-    'pc-bleed-margin-left': negativeMargins.left
+    '--pc-bleed-margin-left': negativeMargins.left
       ? `var(--p-space-${negativeMargins.left})`
       : undefined,
     '--pc-bleed-margin-right': negativeMargins.right

@@ -8,11 +8,9 @@ import {sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
-type Columns =
-  | {
-      [Breakpoint in BreakpointsAlias]?: number | string;
-    }
-  | number;
+type Columns = {
+  [Breakpoint in BreakpointsAlias]?: number | string;
+};
 
 type Spacing = {
   [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
@@ -33,14 +31,14 @@ export interface ColumnsProps {
 
 export function Columns({columns, children, spacing}: ColumnsProps) {
   const style = {
-    '--pc-columns-xs': formatColumns(columns || 6),
-    '--pc-columns-sm': formatColumns(columns),
-    '--pc-columns-md': formatColumns(columns),
-    '--pc-columns-lg': formatColumns(columns),
-    '--pc-columns-xl': formatColumns(columns),
+    '--pc-columns-xs': formatColumns(columns?.xs || 6),
+    '--pc-columns-sm': formatColumns(columns?.sm),
+    '--pc-columns-md': formatColumns(columns?.md),
+    '--pc-columns-lg': formatColumns(columns?.lg),
+    '--pc-columns-xl': formatColumns(columns?.xl),
     '--pc-columns-space-xs': spacing?.xs
       ? `var(--p-space-${spacing?.xs})`
-      : 'var(--p-space-4)',
+      : undefined,
     '--pc-columns-space-sm': spacing?.sm
       ? `var(--p-space-${spacing?.sm})`
       : undefined,
@@ -62,9 +60,8 @@ export function Columns({columns, children, spacing}: ColumnsProps) {
   );
 }
 
-function formatColumns(columns?: Columns) {
+function formatColumns(columns?: string | number) {
   if (!columns) return undefined;
-  if (typeof columns === 'number') return `repeat(${columns}, minmax(0, 1fr))`;
 
   return typeof columns === 'number'
     ? `repeat(${columns}, minmax(0, 1fr))`

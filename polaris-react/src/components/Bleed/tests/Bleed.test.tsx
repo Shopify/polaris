@@ -16,33 +16,26 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent(Children);
   });
 
-  it('does not render custom properties by default', () => {
+  it('renders default properties', () => {
     const bleed = mountWithApp(
       <Bleed>
         <Children />
       </Bleed>,
     );
 
-    expect(bleed).toContainReactComponent('div', {style: undefined});
-  });
-
-  it('only renders the custom property that matches the property passed in', () => {
-    const bleed = mountWithApp(
-      <Bleed left="2">
-        <Children />
-      </Bleed>,
-    );
-
     expect(bleed).toContainReactComponent('div', {
       style: {
-        '--pc-bleed-margin-left': 'var(--p-space-2)',
+        '--pc-bleed-margin-left': 'var(--p-space-5)',
+        '--pc-bleed-margin-bottom': 'var(--p-space-5)',
+        '--pc-bleed-margin-right': 'var(--p-space-5)',
+        '--pc-bleed-margin-top': 'var(--p-space-5)',
       } as React.CSSProperties,
     });
   });
 
   it('renders custom properties combined with any overrides if they are passed in', () => {
     const bleed = mountWithApp(
-      <Bleed spacing="1" left="2" horizontal="3">
+      <Bleed spacing="1" left="2" top="3">
         <Children />
       </Bleed>,
     );
@@ -51,8 +44,8 @@ describe('<Bleed />', () => {
       style: {
         '--pc-bleed-margin-bottom': 'var(--p-space-1)',
         '--pc-bleed-margin-left': 'var(--p-space-2)',
-        '--pc-bleed-margin-right': 'var(--p-space-3)',
-        '--pc-bleed-margin-top': 'var(--p-space-1)',
+        '--pc-bleed-margin-right': 'var(--p-space-1)',
+        '--pc-bleed-margin-top': 'var(--p-space-3)',
       } as React.CSSProperties,
     });
   });
