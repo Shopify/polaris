@@ -21,7 +21,7 @@ export interface AlphaCardProps {
    * @default 'surface'
    */
   background?: CardBackgroundColorTokenScale;
-  /** Spacing around the card
+  /** The spacing around the card
    * @default '5'
    */
   padding?: SpacingSpaceScale;
