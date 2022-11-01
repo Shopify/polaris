@@ -29,7 +29,7 @@ export interface AlphaStackProps {
   align?: Align;
   /** Toggle elements to be full width */
   fullWidth?: boolean;
-  /** The space between elements
+  /** The spacing between elements
    * @default '4'
    */
   spacing?: Spacing;
