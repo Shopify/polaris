@@ -160,6 +160,8 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
+  /** Indicates whether or not to blur the input and trigger any blur callbacks when the enter key is pressed */
+  blurOnEnterKeyPress?: boolean;
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
@@ -232,6 +234,7 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   suggestion,
+  blurOnEnterKeyPress,
   onClearButtonClick,
   onChange,
   onSpinnerChange,
@@ -657,6 +660,12 @@ export function TextField({
   function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
     const numbersSpec = /[\d.eE+-]$/;
+
+    if (which === Key.Enter && blurOnEnterKeyPress) {
+      inputRef.current?.blur();
+      return;
+    }
+
     if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
