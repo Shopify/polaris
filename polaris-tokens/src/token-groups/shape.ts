@@ -79,3 +79,7 @@ export type ShapeBorderRadiusScale = typeof shapeBorderRadiusScale[number];
 
 export const shapeBorderRadiusAlias = ['base', 'large', 'half'] as const;
 export type ShapeBorderRadiusAlias = typeof shapeBorderRadiusAlias[number];
+
+export const shapeBorderWidthScale = ['1', '2', '3'] as const;
+
+export type ShapeBorderWidthScale = typeof shapeBorderWidthScale[number];

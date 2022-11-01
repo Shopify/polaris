@@ -43,6 +43,7 @@ export type {
   ShapeTokenName,
   ShapeBorderRadiusScale,
   ShapeBorderRadiusAlias,
+  ShapeBorderWidthScale,
 } from './token-groups/shape';
 
 export type {

@@ -1,5 +1,6 @@
 import React, {createElement, forwardRef} from 'react';
 import type {
+  ShapeBorderWidthScale,
   DepthShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -135,6 +136,13 @@ interface Spacing {
   inlineEnd: SpacingSpaceScale;
 }
 
+interface BorderWidth {
+  blockStart: ShapeBorderWidthScale;
+  blockEnd: ShapeBorderWidthScale;
+  inlineStart: ShapeBorderWidthScale;
+  inlineEnd: ShapeBorderWidthScale;
+}
+
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
@@ -160,6 +168,16 @@ export interface BoxProps {
   borderRadiusStartStart?: BorderRadiusTokenScale;
   /** Verital start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
+  /** Border width */
+  borderWidth?: ShapeBorderWidthScale;
+  /** Vertical start border width */
+  borderBlockStartWidth?: ShapeBorderWidthScale;
+  /** Vertical end border width */
+  borderBlockEndWidth?: ShapeBorderWidthScale;
+  /** Horizontal start border width */
+  borderInlineStartWidth?: ShapeBorderWidthScale;
+  /** Horizontal end border width */
+  borderInlineEndWidth?: ShapeBorderWidthScale;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
@@ -202,6 +220,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStart,
       borderInlineEnd,
       borderBlockStart,
+      borderWidth,
+      borderBlockStartWidth,
+      borderBlockEndWidth,
+      borderInlineStartWidth,
+      borderInlineEndWidth,
       borderRadius,
       borderRadiusEndStart,
       borderRadiusEndEnd,
@@ -238,6 +261,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       startStart: borderRadiusStartStart,
       startEnd: borderRadiusStartEnd,
     } as BorderRadius;
+
+    const borderWidths = {
+      blockStart: borderBlockStartWidth,
+      blockEnd: borderBlockEndWidth,
+      inlineStart: borderInlineStartWidth,
+      inlineEnd: borderInlineEndWidth,
+    } as BorderWidth;
 
     const paddings = {
       blockEnd: paddingBlockEnd,
@@ -276,6 +306,21 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       '--pc-box-border-radius-start-end': borderRadiuses.startEnd
         ? `var(--p-border-radius-${borderRadiuses.startEnd})`
+        : undefined,
+      '--pc-box-border-width': borderWidth
+        ? `var(--p-border-width-${borderWidth})`
+        : undefined,
+      '--pc-box-border-block-start-width': borderWidths.blockStart
+        ? `var(--p-border-width-${borderWidths.blockStart})`
+        : undefined,
+      '--pc-box-border-block-end-width': borderWidths.blockEnd
+        ? `var(--p-border-width-${borderWidths.blockEnd})`
+        : undefined,
+      '--pc-box-border-inline-start-width': borderWidths.inlineStart
+        ? `var(--p-border-width-${borderWidths.inlineStart})`
+        : undefined,
+      '--pc-box-border-inline-end-width': borderWidths.inlineEnd
+        ? `var(--p-border-width-${borderWidths.inlineEnd})`
         : undefined,
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
