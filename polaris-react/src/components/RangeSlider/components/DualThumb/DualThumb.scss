@@ -171,13 +171,10 @@ $range-output-size: 32px;
     }
   }
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
-}
 
-.OutputText {
-  @include text-style-subheading;
-  display: block;
-  flex: 1 1 auto;
-  margin: auto;
-  text-align: center;
-  color: var(--p-text);
+  > span {
+    display: block;
+    flex: 1 1 auto;
+    margin: auto;
+  }
 }

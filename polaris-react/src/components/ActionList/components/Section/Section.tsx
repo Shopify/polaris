@@ -1,6 +1,8 @@
 import React from 'react';
 
 import {Item} from '../Item';
+import {Box} from '../../../Box';
+import {Text} from '../../../Text';
 import type {
   ActionListItemDescriptor,
   ActionListSection,
@@ -56,7 +58,11 @@ export function Section({
   const className = section.title ? undefined : styles['Section-withoutTitle'];
 
   const titleMarkup = section.title ? (
-    <p className={styles.Title}>{section.title}</p>
+    <Box paddingInlineStart="4" paddingBlockEnd="3" paddingInlineEnd="4">
+      <Text as="p" variant="headingXs">
+        {section.title}
+      </Text>
+    </Box>
   ) : null;
 
   let sectionRole;

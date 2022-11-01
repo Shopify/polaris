@@ -25,15 +25,18 @@
   > .Section-withoutTitle .Actions {
     border-top: none;
   }
+
+  // stylelint-disable-next-line selector-max-type, selector-max-combinators, selector-max-specificity
+  div > div:first-child {
+    padding-top: var(--p-space-3);
+  }
 }
 
-.Title {
-  @include text-style-subheading;
-  padding: var(--p-space-3) var(--p-space-4) var(--p-space-3) var(--p-space-4);
-}
-
-.Section:not(:first-child) .Title {
-  padding-top: var(--p-space-1);
+.Section:not(:first-child) {
+  // stylelint-disable-next-line selector-max-type, selector-max-combinators, selector-max-specificity
+  div > div:first-child {
+    padding-top: var(--p-space-1);
+  }
 }
 
 .Item {
