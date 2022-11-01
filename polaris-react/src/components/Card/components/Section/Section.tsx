@@ -42,7 +42,7 @@ export function Section({
 
   const titleMarkup =
     typeof title === 'string' ? (
-      <Text variant="headingXs" as="h3">
+      <Text variant="headingSm" as="h3">
         {title}
       </Text>
     ) : (

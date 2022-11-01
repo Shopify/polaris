@@ -29,7 +29,7 @@ describe('<Card.Section />', () => {
     const titleString = 'Online store';
     const card = mountWithApp(<Section title={titleString} />);
     expect(
-      card.find(Text, {variant: 'headingXs', as: 'h3'}),
+      card.find(Text, {variant: 'headingSm', as: 'h3'}),
     ).toContainReactText(titleString);
   });
 
