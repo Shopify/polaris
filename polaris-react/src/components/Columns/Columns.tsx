@@ -17,7 +17,7 @@ type Spacing = {
 };
 
 export interface ColumnsProps {
-  /** The space between columns
+  /** The spacing between columns
    * @default '4'
    */
   spacing?: Spacing;
