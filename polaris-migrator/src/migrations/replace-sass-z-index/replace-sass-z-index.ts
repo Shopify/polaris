@@ -16,21 +16,21 @@ interface PluginOptions extends Options, NamespaceOptions {}
 const processed = Symbol('processed');
 
 const zIndexMap = {
-  content: '--p-z-1',
-  overlay: '--p-z-2',
+  content: '--p-z-index-1',
+  overlay: '--p-z-index-2',
 };
 
 const fixedElementStackingOrder = {
-  'global-ribbon': '--p-z-3',
-  'top-bar': '--p-z-4',
-  'context-bar': '--p-z-5',
-  'small-screen-loading-bar': '--p-z-6',
-  'nav-backdrop': '--p-z-7',
-  nav: '--p-z-8',
-  'skip-to-content': '--p-z-9',
-  backdrop: '--p-z-10',
-  modal: '--p-z-11',
-  toast: '--p-z-12',
+  'global-ribbon': '--p-z-index-3',
+  'top-bar': '--p-z-index-4',
+  'context-bar': '--p-z-index-5',
+  'small-screen-loading-bar': '--p-z-index-6',
+  'nav-backdrop': '--p-z-index-7',
+  nav: '--p-z-index-8',
+  'skip-to-content': '--p-z-index-9',
+  backdrop: '--p-z-index-10',
+  modal: '--p-z-index-11',
+  toast: '--p-z-index-12',
 };
 
 function isValidElement<

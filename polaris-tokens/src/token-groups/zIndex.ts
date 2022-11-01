@@ -1,40 +1,40 @@
 import type {TokenGroup} from '../types';
 
 export const zIndex = {
-  'z-1': {
+  'z-index-1': {
     value: '100',
   },
-  'z-2': {
+  'z-index-2': {
     value: '400',
   },
-  'z-3': {
+  'z-index-3': {
     value: '510',
   },
-  'z-4': {
+  'z-index-4': {
     value: '512',
   },
-  'z-5': {
+  'z-index-5': {
     value: '513',
   },
-  'z-6': {
+  'z-index-6': {
     value: '514',
   },
-  'z-7': {
+  'z-index-7': {
     value: '515',
   },
-  'z-8': {
+  'z-index-8': {
     value: '516',
   },
-  'z-9': {
+  'z-index-9': {
     value: '517',
   },
-  'z-10': {
+  'z-index-10': {
     value: '518',
   },
-  'z-11': {
+  'z-index-11': {
     value: '519',
   },
-  'z-12': {
+  'z-index-12': {
     value: '520',
   },
 };

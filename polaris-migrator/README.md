@@ -185,9 +185,9 @@ npx @shopify/polaris-migrator replace-border-declarations <path>
 
 ### `replace-sass-z-index`
 
-Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
+Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-index-1)`).
 
-Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
+Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-index-1` will be replaced with a css variable declaration.
 This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
 
 ```diff
@@ -198,10 +198,10 @@ This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `
 -   z-index: z-index(modal, $fixed-element-stacking-order)
 - }
 + decl-1 {
-+   z-index: var(--p-z-1);
++   z-index: var(--p-z-index-1);
 + }
 + .decl-2 {
-+   z-index: var(--p-z-11)
++   z-index: var(--p-z-index-11)
 + }
 ```
 
@@ -211,7 +211,7 @@ Generally in these instances you'll want to wrap the suggested code change in a 
 ```diff
 .decl-3 {
 +  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-+  /* z-index: var(--p-z-1) + 1 */
++  /* z-index: var(--p-z-index-1) + 1 */
   z-index: z-index(content) + 1
 }
 ```

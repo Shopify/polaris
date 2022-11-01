@@ -19,7 +19,7 @@
 
 .Navigation {
   position: fixed;
-  z-index: var(--p-z-8);
+  z-index: var(--p-z-index-8);
   top: 0;
   left: 0;
   display: none;
@@ -126,7 +126,7 @@
 
 .TopBar {
   position: fixed;
-  z-index: var(--p-z-4);
+  z-index: var(--p-z-index-4);
   top: 0;
   left: 0;
   width: 100%;
@@ -145,7 +145,7 @@
 
 .ContextualSaveBar {
   position: fixed;
-  z-index: var(--p-z-5);
+  z-index: var(--p-z-index-5);
   top: 0;
   left: 0;
   width: 100%;
@@ -194,7 +194,7 @@
 
 .GlobalRibbonContainer {
   position: fixed;
-  z-index: var(--p-z-3);
+  z-index: var(--p-z-index-3);
   bottom: 0;
   width: 100%;
 
@@ -215,7 +215,7 @@
 
 .LoadingBar {
   position: fixed;
-  z-index: var(--p-z-6);
+  z-index: var(--p-z-index-6);
   top: 0;
   right: 0;
   left: 0;
@@ -231,7 +231,7 @@
     }
 
     .hasTopBar & {
-      z-index: var(--p-z-6);
+      z-index: var(--p-z-index-6);
     }
   }
 }
@@ -239,7 +239,7 @@
 .Skip {
   --pc-frame-skip-vertical-offset: 10px;
   position: fixed;
-  z-index: var(--p-z-9);
+  z-index: var(--p-z-index-9);
   top: var(--pc-frame-skip-vertical-offset);
   left: calc(var(--p-space-2) + var(--pc-frame-offset));
   opacity: 0;
