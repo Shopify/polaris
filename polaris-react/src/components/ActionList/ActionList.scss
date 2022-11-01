@@ -15,8 +15,8 @@
   outline: none;
   list-style: none;
   margin: 0;
-  border-top: var(--p-border-divider);
-  padding: var(--p-space-2);
+  border-bottom: var(--p-border-divider);
+  padding: var(--p-space-1);
 }
 
 .ActionList,
@@ -25,18 +25,10 @@
   > .Section-withoutTitle .Actions {
     border-top: none;
   }
-
-  // stylelint-disable-next-line selector-max-type, selector-max-combinators, selector-max-specificity
-  div > div:first-child {
-    padding-top: var(--p-space-3);
-  }
 }
 
-.Section:not(:first-child) {
-  // stylelint-disable-next-line selector-max-type, selector-max-combinators, selector-max-specificity
-  div > div:first-child {
-    padding-top: var(--p-space-1);
-  }
+.ActionList .Section:last-child {
+  border-bottom: none;
 }
 
 .Item {

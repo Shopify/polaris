@@ -58,7 +58,12 @@ export function Section({
   const className = section.title ? undefined : styles['Section-withoutTitle'];
 
   const titleMarkup = section.title ? (
-    <Box paddingInlineStart="4" paddingBlockEnd="3" paddingInlineEnd="4">
+    <Box
+      paddingBlockStart="4"
+      paddingInlineStart="4"
+      paddingBlockEnd="2"
+      paddingInlineEnd="4"
+    >
       <Text as="p" variant="headingXs">
         {section.title}
       </Text>
