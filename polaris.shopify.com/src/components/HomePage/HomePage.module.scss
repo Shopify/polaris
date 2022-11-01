@@ -97,8 +97,8 @@
   gap: 1rem;
 
   @media screen and (max-width: $breakpointTablet) {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     margin-top: 2rem;
   }
