@@ -2,6 +2,10 @@
   margin: 0;
   padding: var(--p-space-2);
   list-style: none;
+
+  > *:not(:first-child) {
+    margin-top: var(--p-space-2);
+  }
 }
 
 .Options {

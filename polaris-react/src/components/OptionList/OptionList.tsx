@@ -92,9 +92,16 @@ export function OptionList({
 
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
+        const isFirstOption = sectionIndex === 0;
         const titleMarkup = title ? (
-          <Box padding="2">
-            <Text as="p" variant="headingXs" color="subdued">
+          <Box
+            paddingBlockStart={isFirstOption ? '2' : '4'}
+            paddingInlineStart="2"
+            paddingBlockEnd="2"
+            paddingInlineEnd="2"
+            {...(!isFirstOption && {borderBlockStart: 'divider'})}
+          >
+            <Text as="p" variant="headingXs">
               {title}
             </Text>
           </Box>
