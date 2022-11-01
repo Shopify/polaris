@@ -48,6 +48,14 @@
   min-height: control-height();
   padding: control-vertical-padding() var(--p-space-2)
     control-vertical-padding() var(--p-space-3);
+
+  @media #{$p-breakpoints-md-down} {
+    // stylelint-disable-next-line selector-max-combinators, selector-max-type
+    div > span {
+      font-size: var(--p-font-size-200);
+      line-height: var(--p-font-line-height-2);
+    }
+  }
 }
 
 .SelectedOption {
@@ -67,7 +75,11 @@
 
 .Input {
   // Even though the input is invisible, text styles apply to the options menu
-  @include text-style-input;
+  font-size: var(--p-font-size-200);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-2);
+  text-transform: initial;
+  letter-spacing: initial;
   position: absolute;
   // Required to solve a bug causing Safari 13 to crash https://bugs.webkit.org/show_bug.cgi?id=202055
   text-rendering: auto;
@@ -79,6 +91,12 @@
   margin: 0;
   opacity: 0;
   appearance: none;
+  border: none;
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-100);
+    line-height: var(--p-font-line-height-2);
+  }
 }
 
 .Backdrop {
@@ -132,6 +150,7 @@
 
   .InlineLabel {
     color: inherit;
+    background-color: green;
 
     &::after {
       content: ':';
