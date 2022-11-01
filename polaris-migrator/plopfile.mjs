@@ -10,16 +10,16 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 // eslint-disable-next-line import/no-default-export
 export default async function run(plop) {
   plop.setGenerator(
-    'sass-migration',
+    'scss-migration',
     await plopDir({
       plop,
-      templateDir: path.join(__dirname, './templates/sass-migration'),
+      templateDir: path.join(__dirname, './templates/scss-migration'),
       outputDir: path.join(__dirname, './src/migrations'),
       prompts: [
         {
           name: 'migrationName',
           message: 'Name of the migration',
-          suffix: ' (e.g. replace-sass-layout)',
+          suffix: ' (e.g. scss-replace-function)',
           validate: (input) => validateMigrationName(plop, input),
         },
       ],
@@ -36,7 +36,7 @@ export default async function run(plop) {
         {
           name: 'migrationName',
           message: 'Name of the migration',
-          suffix: ' (e.g. replace-component-layout)',
+          suffix: ' (e.g. component-replace-prop)',
           validate: (input) => validateMigrationName(plop, input),
         },
       ],

@@ -73,10 +73,10 @@ npx @shopify/polaris-migrator replace-spacing-lengths <path>
 For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-rules/use), all Sass related migrations (ex: `replace-sass-spacing`) accept a `namespace` flag to target a specific `<namespace>.<variable|function|mixin>`.
 
 ```sh
-npx @shopify/polaris-migrator <sass-migration> <path> --namespace="legacy-polaris-v8"
+npx @shopify/polaris-migrator <scss-migration> <path> --namespace="legacy-polaris-v8"
 ```
 
-### `replace-sass-color`
+### `scss-replace-color`
 
 Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
 
@@ -88,10 +88,10 @@ Replace the legacy Sass `color()` function with the supported CSS custom propert
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-sass-color <path>
+npx @shopify/polaris-migrator scss-replace-color <path>
 ```
 
-### `replace-sass-spacing`
+### `scss-replace-spacing`
 
 Replace the legacy Sass `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
 
@@ -103,10 +103,10 @@ Replace the legacy Sass `spacing()` function with the supported CSS custom prope
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-sass-spacing <path>
+npx @shopify/polaris-migrator scss-replace-spacing <path>
 ```
 
-### `replace-static-breakpoint-mixins`
+### `scss-replace-breakpoints`
 
 Replace legacy static breakpoint mixins with the new Polaris [media query variables](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v9-to-v10.md#media-query-variables).
 
@@ -116,10 +116,10 @@ Replace legacy static breakpoint mixins with the new Polaris [media query variab
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-static-breakpoint-mixins <path>
+npx @shopify/polaris-migrator scss-replace-breakpoints <path>
 ```
 
-### `replace-static-mixins-with-declarations`
+### `scss-replace-text-emphasis`
 
 Replace legacy static mixins with their corresponding declarations and CSS custom properties.
 
@@ -130,10 +130,10 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-static-mixins-with-declarations <path>
+npx @shopify/polaris-migrator scss-replace-text-emphasis <path>
 ```
 
-### `replace-typography-declarations`
+### `styles-tokenize-fonts`
 
 Replace legacy Typography functions and hardcoded lengths with Polaris custom properties for `font-family`, `font-size`, `font-weight`, and `line-height` declarations.
 
@@ -152,10 +152,10 @@ Replace legacy Typography functions and hardcoded lengths with Polaris custom pr
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-typography-declarations <path>
+npx @shopify/polaris-migrator styles-tokenize-fonts <path>
 ```
 
-### `replace-border-declarations`
+### `styles-tokenize-fonts`
 
 Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `border-width()`, `border-radius()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
 
@@ -180,10 +180,10 @@ Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `bo
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-border-declarations <path>
+npx @shopify/polaris-migrator styles-tokenize-fonts <path>
 ```
 
-### `replace-sass-z-index`
+### `scss-replace-z-index`
 
 Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
 
@@ -232,7 +232,7 @@ In these cases you may also want to run `npx sass-migrator module <path> --migra
 Be aware that this may also create additional code changes in your codebase, we recommend running this only if there are large number of instances of migrations from `z-index` to `map.get`. Otherwise it may be easier to add `use 'sass:map'` to the top of your `.scss` file manually.
 
 ```sh
-npx @shopify/polaris-migrator replace-sass-spacing <path>
+npx @shopify/polaris-migrator scss-replace-z-index <path>
 ```
 
 ### `replace-sass-transition`
@@ -272,42 +272,42 @@ Sometimes referred to as "codemods", migrations are JavaScript functions which m
 
 `polaris-migrator` supports two types of migrations:
 
-- SASS Migrations
+- SCSS Migrations
 - Typescript Migrations
 
-### Creating a SASS migration
+### Creating a SCSS migration
 
-Run `yarn new-migration` to generate a new migration from the `sass-migration` template:
+Run `yarn new-migration` to generate a new migration from the `scss-migration` template:
 
 ```sh
 ❯ yarn new-migration
 $ yarn workspace @shopify/polaris-migrator generate
 $ plop
 ? [PLOP] Please choose a generator. (Use arrow keys)
-❯ sass-migration
+❯ scss-migration
   typescript-migration
 ```
 
-Next, provide the name of your migration. For example; `replace-sass-function`:
+Next, provide the name of your migration. For example; `scss-replace-function`:
 
 ```sh
 ? [PLOP] Please choose a generator. sass-migration
-? Name of the migration (e.g. replace-sass-layout) replace-sass-function
+? Name of the migration (e.g. scss-replace-function) scss-replace-function
 ```
 
 The generator will create the following files in the `migrations` folder:
 
 ```
 migrations
-└── replace-sass-function
-    ├── replace-sass-function.ts
+└── scss-replace-function
+    ├── scss-replace-function.ts
     └── tests
-        ├── replace-sass-function.input.scss
-        ├── replace-sass-function.output.scss
-        └── replace-sass-function.test.ts
+        ├── scss-replace-function.input.scss
+        ├── scss-replace-function.output.scss
+        └── scss-replace-function.test.ts
 ```
 
-#### The SASS migration function
+#### The SCSS migration function
 
 Each migrator has a default export adhering to the [Stylelint Rule API](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md). A PostCSS AST is passed as the `root` and can be mutated inline, or emit warning/error reports.
 
@@ -352,15 +352,15 @@ const replaceHelloWorld: PolarisMigrator = (_, {methods}, context) => {
 export default createSassMigrator('replace-hello-world', replaceHelloWorld);
 ```
 
-A more complete example can be seen in [`replace-spacing-lengths.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-spacing-lengths/replace-spacing-lengths.ts).
+A more complete example can be seen in [`styles-tokenize-space.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/styles-tokenize-space/styles-tokenize-space.ts).
 
 #### Testing
 
 The template will also generate starting test files you can use to test your migration. In your migrations `tests` folder, you can see 3 files:
 
-- `replace-sass-function.test.ts` – Runs the fixtures and sets up additional migration options
-- `replace-sass-function.input.scss` – The starting source input
-- `replace-sass-function.output.scss` – The expected output after migration
+- `scss-replace-function.test.ts` – Runs the fixtures and sets up additional migration options
+- `scss-replace-function.input.scss` – The starting source input
+- `scss-replace-function.output.scss` – The expected output after migration
 
 The main test file will load the input/output fixtures to test your migration against. You can configure additional fixtures and test migration options (see the `replace-sass-spacing.test.ts` as an example).
 
@@ -369,7 +369,7 @@ The main test file will load the input/output fixtures to test your migration ag
 Run tests locally from workspace root by filtering to the migrations package:
 
 ```sh
-npx turbo run test --filter=polaris-migrator -- replace-sass-function
+npx turbo run test --filter=polaris-migrator -- scss-replace-function
 ```
 
 ### Testing in another codebase
@@ -380,7 +380,7 @@ In your PR, you can add a comment with the text `/snapit` to create a new [snaps
 
 ```sh
 # example snapshot release
-npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 replace-sass-function "./app/**/*.scss"
+npx @shopify/polaris-migrator@0.0.0-snapshot-release-20220919213536 scss-replace-function "./app/**/*.scss"
 ```
 
 ### Linting and formatting migrations
