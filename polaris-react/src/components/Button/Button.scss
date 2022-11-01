@@ -389,7 +389,11 @@
   padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
 
   .Content {
-    @include text-style-button-large;
+    font-size: var(--p-font-size-200);
+    font-weight: var(--p-font-weight-medium);
+    line-height: var(--p-font-line-height-2);
+    text-transform: initial;
+    letter-spacing: initial;
   }
 }
 
