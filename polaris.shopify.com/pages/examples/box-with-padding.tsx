@@ -1,39 +1,61 @@
 import React from 'react';
-import {Box, Stack, Text} from '@shopify/polaris';
+import {AlphaStack, Box, Stack, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithPaddingExample() {
   return (
-    <Stack vertical>
-      <Box background="surface" borderRadius="2" padding="5" shadow="card">
-        <Text as="h2" variant="headingMd">
-          Box with uniform padding
-        </Text>
+    <AlphaStack>
+      <Box background="surface" borderRadius="2" padding="4" width="586px">
+        <Placeholder label="All side padding" childAlign="center" />
       </Box>
-      <Box
-        background="surface"
-        borderRadius="2"
-        padding="5"
-        paddingInlineStart="2"
-        shadow="card"
-      >
-        <Text as="h2" variant="headingMd">
-          Box with left padding overwritten
-        </Text>
-      </Box>
-      <Box
-        background="surface"
-        borderRadius="2"
-        paddingBlockStart="4"
-        shadow="card"
-      >
-        <Text as="h2" variant="headingMd">
-          Box with top padding only
-        </Text>
-      </Box>
-    </Stack>
+      <Inline spacing="4">
+        <Box background="surface" paddingInlineStart="4" width="284px">
+          <Placeholder label="PaddingLeft" childAlign="start" />
+        </Box>
+        <Box background="surface" paddingInlineEnd="4" width="284px">
+          <Placeholder label="PaddingRight" childAlign="end" />
+        </Box>
+      </Inline>
+      <Inline spacing="4">
+        <Box background="surface" paddingBlockStart="4" width="284px">
+          <Placeholder label="PaddingTop" childAlign="center" />
+        </Box>
+        <Box background="surface" paddingBlockEnd="4" width="284px">
+          <Placeholder label="PaddingBottom" childAlign="center" />
+        </Box>
+      </Inline>
+    </AlphaStack>
   );
 }
+
+const Placeholder = ({
+  label = '',
+  height = 'auto',
+  width = 'auto',
+  childAlign,
+}) => {
+  return (
+    <div
+      style={{
+        background: '#7B47F1',
+        height: height,
+        width: width,
+      }}
+    >
+      <Inline align={childAlign}>
+        <div
+          style={{
+            color: '#FFFFFF',
+          }}
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="medium">
+            {label}
+          </Text>
+        </div>
+      </Inline>
+    </div>
+  );
+};
 
 export default withPolarisExample(BoxWithPaddingExample);
