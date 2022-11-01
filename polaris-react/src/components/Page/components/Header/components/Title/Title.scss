@@ -28,6 +28,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  row-gap: var(--p-space-2);
 
   .Title {
     display: inline;
