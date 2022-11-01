@@ -442,7 +442,7 @@ $disabled-fade: 0.6;
 
 .RollupToggle {
   @include text-emphasis-normal;
-  @include text-emphasis-subdued;
+  color: var(--p-text-subdued);
 
   &:hover {
     @include recolor-icon(

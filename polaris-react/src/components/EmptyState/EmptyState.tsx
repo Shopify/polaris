@@ -3,8 +3,9 @@ import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import type {ComplexAction} from '../../types';
-import {Image} from '../Image';
+import {Box} from '../Box';
 import {buttonFrom} from '../Button';
+import {Image} from '../Image';
 import {Stack} from '../Stack';
 import {TextContainer} from '../TextContainer';
 import {Text} from '../Text';
@@ -75,9 +76,11 @@ export function EmptyState({
     : null;
 
   const footerContentMarkup = footerContent ? (
-    <div className={styles.FooterContent}>
-      <TextContainer>{footerContent}</TextContainer>
-    </div>
+    <Box paddingBlockStart="4">
+      <Text as="span" variant="bodyMd" color="subdued">
+        {footerContent}
+      </Text>
+    </Box>
   ) : null;
 
   const headingSize = withinContentContainer ? 'headingLg' : 'headingXl';

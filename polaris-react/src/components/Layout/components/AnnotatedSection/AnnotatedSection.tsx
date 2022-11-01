@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Box} from '../../../Box';
 import {Text} from '../../../Text';
 import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
@@ -29,9 +30,7 @@ export function AnnotatedSection({
               {title}
             </Text>
             {descriptionMarkup && (
-              <div className={styles.AnnotationDescription}>
-                {descriptionMarkup}
-              </div>
+              <Box color="text-subdued">{descriptionMarkup}</Box>
             )}
           </TextContainer>
         </div>

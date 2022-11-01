@@ -223,7 +223,7 @@ $spinner-icon-size: 12px;
 }
 
 .CharacterCount {
-  @include text-emphasis-subdued;
+  color: var(--p-text-subdued);
   z-index: var(--pc-text-field-contents);
   margin: 0 var(--p-space-3) 0 var(--p-space-1);
   pointer-events: none;

@@ -72,7 +72,7 @@ $button-vertical-padding: calc(
   }
 
   &.CheckableButton-selectMode {
-    @include text-emphasis-subdued;
+    color: var(--p-text-subdued);
     font-weight: var(--p-font-weight-medium);
   }
 

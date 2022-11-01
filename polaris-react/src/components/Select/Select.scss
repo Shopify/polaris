@@ -50,13 +50,6 @@
     control-vertical-padding() var(--p-space-3);
 }
 
-.InlineLabel {
-  @include text-emphasis-subdued;
-  margin-right: var(--p-space-1);
-  white-space: nowrap;
-  overflow: hidden;
-}
-
 .SelectedOption {
   flex: 1;
   white-space: nowrap;

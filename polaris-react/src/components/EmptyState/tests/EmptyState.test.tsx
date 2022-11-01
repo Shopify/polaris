@@ -2,10 +2,9 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
-import {Text} from '../../Text';
 import {Image} from '../../Image';
 import {Stack} from '../../Stack';
-import {TextContainer} from '../../TextContainer';
+import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
@@ -94,9 +93,7 @@ describe('<EmptyState />', () => {
         <EmptyState image={imgSrc}>{children}</EmptyState>,
       );
 
-      expect(emptyState.find(TextContainer)).toContainReactText(
-        expectedContent,
-      );
+      expect(emptyState.find(Text)).toContainReactText(expectedContent);
     });
   });
 
@@ -195,7 +192,7 @@ describe('<EmptyState />', () => {
       const emptyState = mountWithApp(
         <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
       );
-      expect(emptyState).toContainReactComponent(TextContainer, {
+      expect(emptyState).toContainReactComponent(Text, {
         children: footerContentMarkup,
       });
     });
@@ -203,7 +200,7 @@ describe('<EmptyState />', () => {
     it('does not create a footer when footerContent is not provided', () => {
       const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
 
-      expect(emptyState).not.toContainReactComponent(TextContainer);
+      expect(emptyState).not.toContainReactComponent(Text);
     });
   });
 });
