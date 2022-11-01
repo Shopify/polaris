@@ -23,7 +23,7 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
       </Inline>
       <Inline alignY="bottom">
-        <Placeholder width="106px" label="End" />
+        <Placeholder width="106px" label="Bottom" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
