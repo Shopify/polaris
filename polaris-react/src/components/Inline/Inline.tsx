@@ -19,7 +19,7 @@ export interface InlineProps {
   children?: React.ReactNode;
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
   wrap?: boolean;
-  /** The space between elements
+  /** The spacing between elements
    * @default '4'
    */
   spacing?: SpacingSpaceScale;
