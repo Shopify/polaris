@@ -3,9 +3,9 @@ import {Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function InlineExample() {
+function InlineWithNonWrappingExample() {
   return (
-    <Inline>
+    <Inline wrap={false}>
       <Placeholder width="106px" height="36px" />
       <Placeholder width="106px" height="20px" />
       <Placeholder width="106px" height="20px" />
@@ -28,4 +28,4 @@ const Placeholder = ({height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(InlineExample);
+export default withPolarisExample(InlineWithNonWrappingExample);
