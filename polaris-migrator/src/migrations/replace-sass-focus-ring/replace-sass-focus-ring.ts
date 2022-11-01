@@ -29,17 +29,17 @@ const plugin = (options: PluginOptions): Plugin => {
       return [
         {
           prop: 'outline-offset',
-          value: 'var(--p-ring-offset-1)',
+          value: 'var(--p-focusRing-offset-1)',
         },
         {
           prop: 'outline',
-          value: 'var(--p-ring-base)',
+          value: 'var(--p-focusRing-base)',
         },
       ];
     } else {
       return [
-        {prop: 'outline-offset', value: 'var(--p-ring-offset-1)'},
-        {prop: 'outline', value: 'var(--p-ring-focused)'},
+        {prop: 'outline-offset', value: 'var(--p-focusRing-offset-1)'},
+        {prop: 'outline', value: 'var(--p-focusRing-focused)'},
       ];
     }
   }
@@ -53,7 +53,12 @@ const plugin = (options: PluginOptions): Plugin => {
     AtRule: {
       include: (atRule) => {
         const reports: {message: string}[] = [];
-
+        // Checking for the edge case where
+        // mixin is invoked without parens
+        // @include legacy-polaris-v8.focus-ring;
+        if (atRule.params.endsWith(namespacedFocusRing)) {
+          atRule.params += '()';
+        }
         const parsedValue = valueParser(atRule.params);
         let declVal: PostCssDeclArgs[] = [];
         function nodesHaveSassFunctions(nodes: Node[]) {

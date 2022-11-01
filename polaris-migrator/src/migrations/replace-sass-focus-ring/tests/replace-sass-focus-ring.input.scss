@@ -15,6 +15,7 @@
 }
 
 .edge-cases {
+  @include focus-ring;
   @include focus-ring(base, test());
   @include focus-ring(base, 0 + 50px, focused);
   @include focus-ring($args...);

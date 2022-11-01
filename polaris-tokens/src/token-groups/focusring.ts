@@ -2,20 +2,20 @@ import type {TokenGroup} from '../types';
 
 import {colors} from './colors';
 
-export const focusring = {
-  'ring-offset-1': {
+export const focusRing = {
+  'focusRing-offset-1': {
     value: '2px',
     description: '',
   },
-  'ring-base': {
+  'focusRing-base': {
     value: `2px transparent solid`,
     description: '',
   },
-  'ring-focused': {
+  'focusRing-focused': {
     value: `2px ${colors.focused.value} solid`,
     description: '',
   },
 };
 
-export type FocusRingsTokenGroup = TokenGroup<typeof focusring>;
-export type FocusRingsTokenName = keyof FocusRingsTokenGroup;
+export type FocusRingTokenGroup = TokenGroup<typeof focusRing>;
+export type FocusRingTokenName = keyof FocusRingTokenGroup;
