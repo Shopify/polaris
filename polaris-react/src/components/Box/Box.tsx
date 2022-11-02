@@ -1,5 +1,10 @@
 import React, {createElement, forwardRef} from 'react';
 import type {
+  ColorsActionTokenAlias,
+  ColorsBackdropTokenAlias,
+  ColorsBackgroundTokenAlias,
+  ColorsOverlayTokenAlias,
+  ColorsSurfaceTokenAlias,
   ShapeBorderWidthScale,
   DepthShadowAlias,
   SpacingSpaceScale,
@@ -12,72 +17,6 @@ import styles from './Box.scss';
 type Element = 'div' | 'span' | 'section';
 
 type Overflow = 'hidden' | 'scroll';
-
-export type BackgroundColorTokenScale =
-  | 'action-critical'
-  | 'action-critical-depressed'
-  | 'action-critical-disabled'
-  | 'action-critical-hovered'
-  | 'action-critical-pressed'
-  | 'action-primary'
-  | 'action-primary-depressed'
-  | 'action-primary-disabled'
-  | 'action-primary-hovered'
-  | 'action-primary-pressed'
-  | 'action-secondary'
-  | 'action-secondary-depressed'
-  | 'action-secondary-disabled'
-  | 'action-secondary-hovered'
-  | 'action-secondary-hovered-dark'
-  | 'action-secondary-pressed'
-  | 'action-secondary-pressed-dark'
-  | 'backdrop'
-  | 'background'
-  | 'background-hovered'
-  | 'background-pressed'
-  | 'background-selected'
-  | 'overlay'
-  | 'surface'
-  | 'surface-attention'
-  | 'surface-critical'
-  | 'surface-critical-subdued'
-  | 'surface-critical-subdued-depressed'
-  | 'surface-critical-subdued-hovered'
-  | 'surface-critical-subdued-pressed'
-  | 'surface-dark'
-  | 'surface-depressed'
-  | 'surface-disabled'
-  | 'surface-highlight'
-  | 'surface-highlight-subdued'
-  | 'surface-highlight-subdued-hovered'
-  | 'surface-highlight-subdued-pressed'
-  | 'surface-hovered'
-  | 'surface-hovered-dark'
-  | 'surface-neutral'
-  | 'surface-neutral-disabled'
-  | 'surface-neutral-hovered'
-  | 'surface-neutral-pressed'
-  | 'surface-neutral-subdued'
-  | 'surface-neutral-subdued-dark'
-  | 'surface-pressed'
-  | 'surface-pressed-dark'
-  | 'surface-primary-selected'
-  | 'surface-primary-selected-hovered'
-  | 'surface-primary-selected-pressed'
-  | 'surface-search-field'
-  | 'surface-search-field-dark'
-  | 'surface-selected'
-  | 'surface-selected-hovered'
-  | 'surface-selected-pressed'
-  | 'surface-subdued'
-  | 'surface-success'
-  | 'surface-success-subdued'
-  | 'surface-success-subdued-hovered'
-  | 'surface-success-subdued-pressed'
-  | 'surface-warning'
-  | 'surface-warning-subdued'
-  | 'surface-warning-subdued-hovered'
-  | 'surface-warning-subdued-pressed';
 
 export type ColorTokenScale =
   | 'text'
@@ -122,6 +61,13 @@ export type BorderRadiusTokenScale =
   | 'large'
   | 'half';
 
+type BackgroundColors =
+  | ColorsBackdropTokenAlias
+  | ColorsBackgroundTokenAlias
+  | ColorsOverlayTokenAlias
+  | ColorsActionTokenAlias
+  | ColorsSurfaceTokenAlias;
+
 interface BorderRadius {
   startStart: BorderRadiusTokenScale;
   startEnd: BorderRadiusTokenScale;
@@ -147,7 +93,7 @@ export interface BoxProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
-  background?: BackgroundColorTokenScale;
+  background?: BackgroundColors;
   /** Border style */
   border?: BorderTokenAlias;
   /** Vertical end border style */
