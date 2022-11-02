@@ -42,6 +42,7 @@ module.exports = {
           include: [
             // mixins
             /([\w-]+\.)?color-icon($|\()/,
+            /([\w-]+\.)?recolor-icon($|\()/,
             /([\w-]+\.)?control-backdrop($|\()/,
             /([\w-]+\.)?ms-high-contrast-color/,
           ],
@@ -54,6 +55,9 @@ module.exports = {
           /([\w-]+\.)?duration/,
           /([\w-]+\.)?easing/,
         ],
+        'stylelint-polaris/at-rule-disallowed-list': {
+          include: [/([\w-]+\.)?skeleton-shimmer($|\()/],
+        },
       },
       typography: {
         'declaration-property-value-disallowed-list': {
@@ -64,6 +68,26 @@ module.exports = {
           /([\w-]+\.)?font-size/,
           /([\w-]+\.)?line-height/,
         ],
+        'stylelint-polaris/at-rule-disallowed-list': {
+          include: [
+            /([\w-]+\.)?truncate($|\()/,
+            /([\w-]+\.)?text-breakword($|\()/,
+            /([\w-]+\.)?text-emphasis-normal($|\()/,
+            /([\w-]+\.)?text-emphasis-strong($|\()/,
+            /([\w-]+\.)?text-emphasis-subdued($|\()/,
+            /([\w-]+\.)?text-style-body($|\()/,
+            /([\w-]+\.)?text-style-button-large($|\()/,
+            /([\w-]+\.)?text-style-button($|\()/,
+            /([\w-]+\.)?text-style-caption($|\()/,
+            /([\w-]+\.)?text-style-display-large($|\()/,
+            /([\w-]+\.)?text-style-display-medium($|\()/,
+            /([\w-]+\.)?text-style-display-small($|\()/,
+            /([\w-]+\.)?text-style-display-x-large($|\()/,
+            /([\w-]+\.)?text-style-heading($|\()/,
+            /([\w-]+\.)?text-style-input($|\()/,
+            /([\w-]+\.)?text-style-subheading($|\()/,
+          ],
+        },
       },
       layout: {
         'declaration-property-value-disallowed-list': {
@@ -99,22 +123,23 @@ module.exports = {
           'display',
         ],
         'function-disallowed-list': [
-          /([\w-]+\.)?breakpoint/,
+          /([\w-]+\.)?nav-min-window-corrected/,
           /([\w-]+\.)?control-height/,
           /([\w-]+\.)?control-slim-height/,
-          /([\w-]+\.)?layout-width/,
           /([\w-]+\.)?mobile-nav-width/,
-          /([\w-]+\.)?nav-min-window-corrected/,
           /([\w-]+\.)?thumbnail-size/,
           /([\w-]+\.)?icon-size($|\()/,
           /([\w-]+\.)?top-bar-height/,
           /([\w-]+\.)?z-index/,
+          /([\w-]+\.)?safe-area-for($|\()/,
         ],
         'stylelint-polaris/at-rule-disallowed-list': {
           include: [
             /([\w-]+\.)?hidden-when-printing($|\()/,
             /([\w-]+\.)?print-hidden($|\()/,
             /([\w-]+\.)?layout-flex-fix($|\()/,
+            /([\w-]+\.)?skeleton-page-header-layout($|\()/,
+            /([\w-]+\.)?skeleton-page-secondary-actions-layout($|\()/,
           ],
         },
       },
@@ -151,7 +176,11 @@ module.exports = {
           {severity: 'warning'},
         ],
       },
-      breakpoints: {
+      mediaQueries: {
+        'function-disallowed-list': [
+          /([\w-]+\.)?breakpoint/,
+          /([\w-]+\.)?layout-width/,
+        ],
         'stylelint-polaris/at-rule-disallowed-list': {
           include: [
             /([\w-]+\.)?after-topbar-sheet($|\()/,
@@ -179,10 +208,14 @@ module.exports = {
             /([\w-]+\.)?page-padding-not-partially-condensed($|\()/,
             /([\w-]+\.)?page-title-layout($|\()/,
             /([\w-]+\.)?page-when-not-max-width($|\()/,
+            /([\w-]+\.)?when-typography-condensed($|\()/,
+            /([\w-]+\.)?when-typography-not-condensed($|\()/,
+            /([\w-]+\.)?when-not-printing($|\()/,
+            /([\w-]+\.)?when-printing($|\()/,
           ],
         },
       },
-      button: {
+      legacySass: {
         'stylelint-polaris/at-rule-disallowed-list': {
           include: [
             /([\w-]+\.)?base-button-disabled($|\()/,
@@ -192,6 +225,13 @@ module.exports = {
             /([\w-]+\.)?button-outline-disabled($|\()/,
             /([\w-]+\.)?button-outline($|\()/,
             /([\w-]+\.)?plain-button-backdrop($|\()/,
+            /([\w-]+\.)?unstyled-button($|\()/,
+            /([\w-]+\.)?skeleton-content($|\()/,
+            /([\w-]+\.)?unstyled-input($|\()/,
+            /([\w-]+\.)?unstyled-link($|\()/,
+            /([\w-]+\.)?unstyled-list($|\()/,
+            /([\w-]+\.)?range-thumb-selectors($|\()/,
+            /([\w-]+\.)?range-track-selectors($|\()/,
           ],
         },
       },
@@ -201,51 +241,14 @@ module.exports = {
           /([\w-]+\.)?map-extend/,
           /([\w-]+\.)?control-backdrop($|\()/,
           /([\w-]+\.)?list-selected-indicator($|\()/,
+          /([\w-]+\.)?state($|\()/,
         ],
+        'stylelint-polaris/at-rule-disallowed-list': {
+          include: [/([\w-]+\.)?visually-hidden($|\()/],
+        },
       },
     },
     // TODO: Left off...
-    'stylelint-polaris/at-rule-disallowed-list': {
-      include: [
-        // Legacy Scss mixins
-        // https://regex101.com/r/UdW0oV/1
-
-        /([\w-]+\.)?range-thumb-selectors($|\()/,
-        /([\w-]+\.)?range-track-selectors($|\()/,
-        /([\w-]+\.)?recolor-icon($|\()/,
-        /([\w-]+\.)?safe-area-for($|\()/,
-        /([\w-]+\.)?skeleton-content($|\()/,
-        /([\w-]+\.)?skeleton-page-header-layout($|\()/,
-        /([\w-]+\.)?skeleton-page-secondary-actions-layout($|\()/,
-        /([\w-]+\.)?skeleton-shimmer($|\()/,
-        /([\w-]+\.)?state($|\()/,
-        /([\w-]+\.)?text-breakword($|\()/,
-        /([\w-]+\.)?text-emphasis-normal($|\()/,
-        /([\w-]+\.)?text-emphasis-strong($|\()/,
-        /([\w-]+\.)?text-emphasis-subdued($|\()/,
-        /([\w-]+\.)?text-style-body($|\()/,
-        /([\w-]+\.)?text-style-button-large($|\()/,
-        /([\w-]+\.)?text-style-button($|\()/,
-        /([\w-]+\.)?text-style-caption($|\()/,
-        /([\w-]+\.)?text-style-display-large($|\()/,
-        /([\w-]+\.)?text-style-display-medium($|\()/,
-        /([\w-]+\.)?text-style-display-small($|\()/,
-        /([\w-]+\.)?text-style-display-x-large($|\()/,
-        /([\w-]+\.)?text-style-heading($|\()/,
-        /([\w-]+\.)?text-style-input($|\()/,
-        /([\w-]+\.)?text-style-subheading($|\()/,
-        /([\w-]+\.)?truncate($|\()/,
-        /([\w-]+\.)?unstyled-button($|\()/,
-        /([\w-]+\.)?unstyled-input($|\()/,
-        /([\w-]+\.)?unstyled-link($|\()/,
-        /([\w-]+\.)?unstyled-list($|\()/,
-        /([\w-]+\.)?visually-hidden($|\()/,
-        /([\w-]+\.)?when-not-printing($|\()/,
-        /([\w-]+\.)?when-printing($|\()/,
-        /([\w-]+\.)?when-typography-condensed($|\()/,
-        /([\w-]+\.)?when-typography-not-condensed($|\()/,
-      ],
-    },
     'stylelint-polaris/global-disallowed-list': [
       // Legacy custom properties
       /--p-button-font/,
