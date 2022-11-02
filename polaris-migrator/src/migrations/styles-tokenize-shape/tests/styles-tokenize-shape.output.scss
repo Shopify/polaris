@@ -77,34 +77,6 @@
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border-width: rem($var * var(--p-border-width-1));
   border-width: rem($var * 1px);
-
-  /* --- BORDER FUNCTION --- */
-
-  /* Migrate */
-  border: var(--p-border-base);
-  border: var(--p-border-base);
-  border: var(--p-border-dark);
-  border: var(--p-border-transparent);
-  border: var(--p-border-divider);
-  border: var(--p-border-divider);
-
-  /* --- BORDER WIDTH FUNCTION --- */
-
-  /* Migrate */
-  border: var(--p-border-width-1) solid var(--p-border-subdued);
-  border: var(--p-border-width-1) solid var(--p-border-subdued);
-  border: var(--p-border-width-2) solid var(--p-border-subdued);
-  border: var(--p-border-width-3) solid var(--p-border-subdued);
-  border-width: var(--p-border-width-3);
-
-  /* Ignore */
-  border-width: calc(-1 * border-width());
-  border-width: calc($var * border-width());
-
-  /* Comment */
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-width: var(--p-border-width-1) rem(10px - var(--p-border-width-1));
-  border-width: rem(1px) rem(10px - border-width());
 }
 
 .border-radius {
@@ -143,29 +115,4 @@
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // border-radius: rem(1px) * 5;
   border-radius: rem(1px) * 5;
-
-  /* --- BORDER-RADIUS FUNCTION --- */
-
-  /* Migrate */
-  border-radius: var(--p-border-radius-base);
-  border-radius: var(--p-border-radius-base);
-  border-radius: var(--p-border-radius-large);
-
-  /* Ignore */
-  border-radius: calc(border-radius(base) * 2);
-  border-radius: calc(border-radius() * rem(1px));
-
-  /* Comment */
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-radius: var(--p-border-radius-base) * 2;
-  border-radius: border-radius(base) * 2;
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-radius: var(--p-border-radius-base) * rem(1px);
-  border-radius: border-radius() * rem(1px);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-radius: 10px;
-  border-radius: 10px;
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // border-top-right-radius: var(--p-border-radius-base) * var(--p-border-radius-1);
-  border-top-right-radius: border-radius() * rem(4px);
 }

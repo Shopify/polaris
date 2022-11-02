@@ -58,33 +58,6 @@
   border-width: legacy-polaris-v8.rem(10px) -1px;
   border-width: legacy-polaris-v8.rem(10px) + 1px;
   border-width: legacy-polaris-v8.rem($var * 1px);
-
-  /* --- BORDER FUNCTION --- */
-
-  /* Migrate */
-  border: legacy-polaris-v8.border();
-  border: legacy-polaris-v8.border(base);
-  border: legacy-polaris-v8.border(dark);
-  border: legacy-polaris-v8.border(transparent);
-  border: legacy-polaris-v8.border(divider);
-  border: legacy-polaris-v8.border('divider');
-
-  /* --- BORDER WIDTH FUNCTION --- */
-
-  /* Migrate */
-  border: legacy-polaris-v8.border-width() solid var(--p-border-subdued);
-  border: legacy-polaris-v8.border-width(base) solid var(--p-border-subdued);
-  border: legacy-polaris-v8.border-width(thick) solid var(--p-border-subdued);
-  border: legacy-polaris-v8.border-width(thicker) solid var(--p-border-subdued);
-  border-width: legacy-polaris-v8.border-width('thicker');
-
-  /* Ignore */
-  border-width: calc(-1 * legacy-polaris-v8.border-width());
-  border-width: calc($var * legacy-polaris-v8.border-width());
-
-  /* Comment */
-  border-width: legacy-polaris-v8.rem(1px)
-    legacy-polaris-v8.rem(10px - legacy-polaris-v8.border-width());
 }
 
 .border-radius {
@@ -115,24 +88,4 @@
   /* Comment */
   border-radius: legacy-polaris-v8.rem(10px) legacy-polaris-v8.rem(4px);
   border-radius: legacy-polaris-v8.rem(1px) * 5;
-
-  /* --- BORDER-RADIUS FUNCTION --- */
-
-  /* Migrate */
-  border-radius: legacy-polaris-v8.border-radius();
-  border-radius: legacy-polaris-v8.border-radius(base);
-  border-radius: legacy-polaris-v8.border-radius(large);
-
-  /* Ignore */
-  border-radius: calc(legacy-polaris-v8.border-radius(base) * 2);
-  border-radius: calc(
-    legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px)
-  );
-
-  /* Comment */
-  border-radius: legacy-polaris-v8.border-radius(base) * 2;
-  border-radius: legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px);
-  border-radius: 10px;
-  border-top-right-radius: legacy-polaris-v8.border-radius() *
-    legacy-polaris-v8.rem(4px);
 }

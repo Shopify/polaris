@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'replace-border-declarations';
-const fixtures = ['replace-border-declarations', 'with-namespace'];
+const migration = 'styles-tokenize-shape';
+const fixtures = ['styles-tokenize-shape', 'with-namespace'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
