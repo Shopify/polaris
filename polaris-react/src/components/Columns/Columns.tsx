@@ -11,9 +11,11 @@ import styles from './Columns.scss';
 type ColumnWidths = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnTypes = number | string | ColumnWidths[];
 
-type Columns = {
-  [Breakpoint in BreakpointsAlias]?: ColumnTypes;
-};
+type Columns =
+  | number
+  | {
+      [Breakpoint in BreakpointsAlias]?: ColumnTypes;
+    };
 
 type Spacing = {
   [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
@@ -34,12 +36,18 @@ export interface ColumnsProps {
 
 export function Columns({columns, children, spacing}: ColumnsProps) {
   const style = {
-    '--pc-columns-xs': formatColumns(columns?.xs || 6),
-    '--pc-columns-sm': formatColumns(columns?.sm),
-    '--pc-columns-md': formatColumns(columns?.md),
-    '--pc-columns-lg': formatColumns(columns?.lg),
-    '--pc-columns-xl': formatColumns(columns?.xl),
-    '--pc-columns-space-xs': `var(--p-space-${spacing?.xs || '4'})`,
+    ...(typeof columns === 'number'
+      ? {'--pc-columns-xs': `repeat(${columns}, minmax(0, 1fr))`}
+      : {
+          '--pc-columns-xs': formatColumns(columns?.xs || 6),
+          '--pc-columns-sm': formatColumns(columns?.sm),
+          '--pc-columns-md': formatColumns(columns?.md),
+          '--pc-columns-lg': formatColumns(columns?.lg),
+          '--pc-columns-xl': formatColumns(columns?.xl),
+        }),
+    '--pc-columns-space-xs': spacing?.xs
+      ? `var(--p-space-${spacing?.xs})`
+      : undefined,
     '--pc-columns-space-sm': spacing?.sm
       ? `var(--p-space-${spacing?.sm})`
       : undefined,
@@ -52,7 +60,7 @@ export function Columns({columns, children, spacing}: ColumnsProps) {
     '--pc-columns-space-xl': spacing?.xl
       ? `var(--p-space-${spacing?.xl})`
       : undefined,
-  } as React.CSSProperties;
+  } as unknown as React.CSSProperties;
 
   return (
     <div className={styles.Columns} style={sanitizeCustomProperties(style)}>
