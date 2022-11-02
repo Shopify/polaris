@@ -19,7 +19,9 @@ export interface InlineProps {
   children?: React.ReactNode;
   /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
   wrap?: boolean;
-  /** Adjust spacing between elements */
+  /** The spacing between elements
+   * @default '4'
+   */
   spacing?: SpacingSpaceScale;
   /** Adjust vertical alignment of elements */
   alignY?: keyof typeof AlignY;
@@ -29,10 +31,10 @@ export interface InlineProps {
 
 export const Inline = function Inline({
   children,
-  spacing = '1',
+  spacing = '4',
   align,
   alignY,
-  wrap,
+  wrap = true,
 }: InlineProps) {
   const style = {
     '--pc-inline-align': align,
