@@ -117,7 +117,7 @@ Heading styles are used to create various levels of hierarchy on the page. These
 
 ### Responsive styles
 
-Large heading styles, Heading xl - Heading 4xl, are responsive and will change size at different breakpoints.
+Large heading styles, Heading lg - Heading 4xl, are responsive and will change size at different breakpoints.
 
 <video width="100%" height="auto" controls autoplay muted loop>
   <source src="/images/foundations/design/typography/text-responsive.mp4" type="video/mp4">
