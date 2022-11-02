@@ -193,9 +193,7 @@ class FiltersInner extends Component<CombinedProps, State> {
                 <Text
                   variant="bodyMd"
                   as="span"
-                  {...((this.props.disabled || filter.disabled) && {
-                    color: 'subdued',
-                  })}
+                  color={this.props.disabled || filter.disabled ? 'subdued' : undefined}
                 >
                   {filter.label}
                 </Text>
