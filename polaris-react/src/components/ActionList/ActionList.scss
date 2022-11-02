@@ -27,8 +27,16 @@
   }
 }
 
+.ActionList .Section {
+  .Actions {
+    padding-top: 0;
+  }
+}
+
 .ActionList .Section:last-child {
-  border-bottom: none;
+  .Actions {
+    border-bottom: none;
+  }
 }
 
 .Item {
