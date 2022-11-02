@@ -95,7 +95,7 @@ All font sizes have a ratio of 1.2, known as the major third type scale. This me
 
 ## Type styles
 
-Polaris type styles are grouped into two categories: **Heading** and **Body**. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.
+Polaris type styles are grouped into two categories: heading and body. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.
 
 ### Body styles
 
@@ -107,25 +107,25 @@ Body styles are used within components and blocks of text.
 
 Heading styles are used to create various levels of hierarchy on the page. These styles range in size and weight. Using a blend of the two can help distinguish content and guide merchants through the page.
 
-**Heading xl - Heading 4xl** styles are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
+`headingXl` - `heading4xl` styles are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
 
-![An image showing how Heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)
+![An image showing how heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)
 
-**Heading xs - Heading lg** styles are most commonly used for card, section, or page titles.
+`headingXs` - `headingLg` styles are most commonly used for card, section, or page titles.
 
-![An image showing how large Heading styles are applied](/images/foundations/design/typography/text-heading-example-02@2x.png)
+![An image showing how large heading styles are applied](/images/foundations/design/typography/text-heading-example-02@2x.png)
 
 ### Responsive styles
 
-Large heading styles, Heading lg - Heading 4xl, are responsive and will change size at different breakpoints.
+Large heading styles, `headingLg` - `heading4xl`, are responsive and will change size at different breakpoints.
 
-Small heading styles, Heading xs - Heading md, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.
+Small heading styles, `headingXs` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.
 
 <video width="100%" height="auto" controls autoplay muted loop>
   <source src="/images/foundations/design/typography/text-responsive.mp4" type="video/mp4">
 </video>
 
-![An image showing how Heading styles change based on breakpoint](/images/foundations/design/typography/type-responsive-styles@2x.png)
+![An image showing how heading styles change based on breakpoint](/images/foundations/design/typography/type-responsive-styles@2x.png)
 
 ---
 
