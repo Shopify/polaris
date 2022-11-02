@@ -17,4 +17,4 @@ export function BoxWithDarkBorder() {
 
 export function BoxWithBorderRadius() {
     return <Box background='surface' padding='4' borderRadius='2'><Icon source={PaintBrushMajor} color='highlight' /></Box>;
-  }
+}

@@ -23,6 +23,8 @@
   --pc-box-padding-inline-end: initial;
   --pc-box-padding-block-start: initial;
   --pc-box-width: initial;
+  --pc-box-border-width: initial;
+  --pc-box-border-color: initial;
   background-color: var(--pc-box-background);
   box-shadow: var(--pc-box-shadow);
   border-radius: var(--pc-box-border-radius);
@@ -50,6 +52,10 @@
   border-block-end-width: var(--pc-box-border-block-end-width, var(--pc-box-border-width));
   border-inline-start-width: var(--pc-box-border-inline-start-width, var(--pc-box-border-width));
   border-inline-end-width: var(--pc-box-border-inline-end-width, var(--pc-box-border-width));
+  border-block-end-color: var(--pc-box-border-block-end-color, var(--pc-box-border-color));
+  border-block-start-color: var(--pc-box-border-block-start-color, var(--pc-box-border-color));
+  border-inline-start-color: var(--pc-box-border-inline-start-color, var(--pc-box-border-color));
+  border-inline-end-color: var(--pc-box-border-inline-end-color, var(--pc-box-border-color));
   color: var(--pc-box-color);
   min-height: var(--pc-box-min-height);
   min-width: var(--pc-box-min-width);

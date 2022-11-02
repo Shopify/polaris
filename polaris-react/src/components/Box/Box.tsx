@@ -3,6 +3,7 @@ import type {
   ColorsActionTokenAlias,
   ColorsBackdropTokenAlias,
   ColorsBackgroundTokenAlias,
+  ColorsBorderTokenAlias,
   ColorsOverlayTokenAlias,
   ColorsSurfaceTokenAlias,
   ShapeBorderWidthScale,
@@ -61,7 +62,7 @@ export type BorderRadiusTokenScale =
   | 'large'
   | 'half';
 
-type BackgroundColors =
+export type BackgroundColors =
   | ColorsBackdropTokenAlias
   | ColorsBackgroundTokenAlias
   | ColorsOverlayTokenAlias
@@ -89,6 +90,13 @@ interface BorderWidth {
   inlineEnd: ShapeBorderWidthScale;
 }
 
+interface BorderColor {
+  blockStart: ColorsBorderTokenAlias;
+  blockEnd: ColorsBorderTokenAlias;
+  inlineStart: ColorsBorderTokenAlias;
+  inlineEnd: ColorsBorderTokenAlias;
+}
+
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
@@ -104,6 +112,16 @@ export interface BoxProps {
   borderInlineEnd?: BorderTokenAlias;
   /** Vertical start border style */
   borderBlockStart?: BorderTokenAlias;
+  /** Border color */
+  borderColor?: ColorsBorderTokenAlias;
+  /** Vertical start border color */
+  borderBlockStartColor?: ColorsBorderTokenAlias;
+  /** Horizontal end border color */
+  borderInlineEndColor?: ColorsBorderTokenAlias;
+  /** Vertical end border color */
+  borderBlockEndColor?: ColorsBorderTokenAlias;
+  /** Horizontal start border color */
+  borderInlineStartColor?: ColorsBorderTokenAlias;
   /** Border radius */
   borderRadius?: BorderRadiusTokenScale;
   /** Vertical end horizontal start border radius */
@@ -166,6 +184,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStart,
       borderInlineEnd,
       borderBlockStart,
+      borderColor,
+      borderBlockStartColor,
+      borderInlineEndColor,
+      borderBlockEndColor,
+      borderInlineStartColor,
       borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
@@ -200,6 +223,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       inlineEnd: borderInlineEnd,
       blockStart: borderBlockStart,
     } as Border;
+
+    const borderColors = {
+      blockEnd: borderBlockEndColor,
+      inlineStart: borderInlineStartColor,
+      inlineEnd: borderInlineEndColor,
+      blockStart: borderBlockStartColor,
+    } as BorderColor;
 
     const borderRadiuses = {
       endStart: borderRadiusEndStart,
@@ -267,6 +297,21 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       '--pc-box-border-inline-end-width': borderWidths.inlineEnd
         ? `var(--p-border-width-${borderWidths.inlineEnd})`
+        : undefined,
+      '--pc-box-border-color': borderColor
+        ? `var(--p-${borderColor})`
+        : undefined,
+      '--pc-box-border-block-start-color': borderColors.blockStart
+        ? `var(--p-${borderColors.blockStart})`
+        : undefined,
+      '--pc-box-border-block-end-color': borderColors.blockEnd
+        ? `var(--p-${borderColors.blockEnd})`
+        : undefined,
+      '--pc-box-border-inline-start-color': borderColors.inlineStart
+        ? `var(--p-${borderColors.inlineStart})`
+        : undefined,
+      '--pc-box-border-inline-end-color': borderColors.inlineEnd
+        ? `var(--p-${borderColors.inlineEnd})`
         : undefined,
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,

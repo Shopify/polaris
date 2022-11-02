@@ -4,7 +4,7 @@ import type {ColorsTokenName, ShapeTokenName} from '@shopify/polaris-tokens';
 
 import {Box} from '..';
 import type {
-  BackgroundColorTokenScale as BoxBackgroundColorTokenScale,
+  BackgroundColors as BoxBackgroundColorTokenScale,
   ColorTokenScale as BoxColorTokenScale,
   BorderTokenAlias as BoxBorderTokenAlias,
   BorderRadiusTokenScale as BoxBorderRadiusTokenScale,
