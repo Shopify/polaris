@@ -8,10 +8,6 @@ keywords:
 icon: TypeMajor
 ---
 
-By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
-
----
-
 ![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
 ## Working with typography
