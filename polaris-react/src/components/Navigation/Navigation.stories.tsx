@@ -365,6 +365,28 @@ export function WithVariousStatesAndSecondaryElements() {
             },
             {
               url: '/path/to/place',
+              label: 'A very long label to ellipsize',
+              truncateText: true,
+              icon: OrdersMinor,
+              selected: false,
+            },
+            {
+              url: '/path/to/place',
+              label: 'Truncated lengthy text with secondary action',
+              icon: OrdersMinor,
+              selected: false,
+              truncateText: true,
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add an order',
+                },
+              },
+            },
+            {
+              url: '/path/to/place',
               label: 'Active with secondary action',
               icon: OrdersMinor,
               selected: true,

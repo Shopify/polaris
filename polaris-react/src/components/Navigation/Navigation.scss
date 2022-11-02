@@ -213,6 +213,16 @@ $disabled-fade: 0.6;
   }
 }
 
+.Text-truncated {
+  width: calc(
+    $layout-width-nav-base -
+      (var(--pc-navigation-icon-size) + var(--p-space-4) * 6 + var(--p-space-1))
+  );
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .SecondaryAction {
   @include recolor-icon($fill-color: var(--p-icon));
   display: flex;

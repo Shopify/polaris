@@ -62,6 +62,7 @@ export interface ItemProps extends ItemURLDetails {
   onToggleExpandedState?(): void;
   expanded?: boolean;
   shouldResizeIcon?: boolean;
+  truncateText?: boolean;
 }
 
 enum MatchState {
@@ -92,6 +93,7 @@ export function Item({
   onToggleExpandedState,
   expanded,
   shouldResizeIcon,
+  truncateText,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -162,7 +164,12 @@ export function Item({
   const itemContentMarkup = (
     <>
       {iconMarkup}
-      <span className={styles.Text}>
+      <span
+        className={classNames(
+          styles.Text,
+          truncateText && styles['Text-truncated'],
+        )}
+      >
         {label}
         {indicatorMarkup}
       </span>
