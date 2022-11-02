@@ -55,32 +55,6 @@
   border-width: rem(10px) -1px;
   border-width: rem(10px) + 1px;
   border-width: rem($var * 1px);
-
-  /* --- BORDER FUNCTION --- */
-
-  /* Migrate */
-  border: border();
-  border: border(base);
-  border: border(dark);
-  border: border(transparent);
-  border: border(divider);
-  border: border('divider');
-
-  /* --- BORDER WIDTH FUNCTION --- */
-
-  /* Migrate */
-  border: border-width() solid var(--p-border-subdued);
-  border: border-width(base) solid var(--p-border-subdued);
-  border: border-width(thick) solid var(--p-border-subdued);
-  border: border-width(thicker) solid var(--p-border-subdued);
-  border-width: border-width('thicker');
-
-  /* Ignore */
-  border-width: calc(-1 * border-width());
-  border-width: calc($var * border-width());
-
-  /* Comment */
-  border-width: rem(1px) rem(10px - border-width());
 }
 
 .border-radius {
@@ -111,21 +85,4 @@
   /* Comment */
   border-radius: rem(10px) rem(4px);
   border-radius: rem(1px) * 5;
-
-  /* --- BORDER-RADIUS FUNCTION --- */
-
-  /* Migrate */
-  border-radius: border-radius();
-  border-radius: border-radius(base);
-  border-radius: border-radius(large);
-
-  /* Ignore */
-  border-radius: calc(border-radius(base) * 2);
-  border-radius: calc(border-radius() * rem(1px));
-
-  /* Comment */
-  border-radius: border-radius(base) * 2;
-  border-radius: border-radius() * rem(1px);
-  border-radius: 10px;
-  border-top-right-radius: border-radius() * rem(4px);
 }
