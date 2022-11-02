@@ -5,6 +5,7 @@
 
 @include focus-ring();
 
+@include button-base;
 .default-usage {
   outline-offset: var(--p-focusRing-offset-1);
   outline: var(--p-focusRing-base);
@@ -24,6 +25,7 @@
 }
 
 .edge-cases {
+  @include no-focus-ring;
   outline-offset: var(--p-focusRing-offset-1);
   outline: var(--p-focusRing-base);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.

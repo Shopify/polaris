@@ -56,7 +56,7 @@ const plugin = (options: PluginOptions): Plugin => {
         // Checking for the edge case where
         // mixin is invoked without parens
         // @include legacy-polaris-v8.focus-ring;
-        if (atRule.params.endsWith(namespacedFocusRing)) {
+        if (atRule.params === namespacedFocusRing) {
           atRule.params += '()';
         }
         const parsedValue = valueParser(atRule.params);
@@ -67,9 +67,18 @@ const plugin = (options: PluginOptions): Plugin => {
         function nodesHaveNumericOperators(nodes: Node[]) {
           return nodes.some((node) => isNumericOperator(node));
         }
+        const parent = atRule.parent;
+        const invalidParent = !parent || parent.type === 'root';
 
         parsedValue.walk((node) => {
-          if (!isSassFunction(namespacedFocusRing, node)) return;
+          if (!isSassFunction(namespacedFocusRing, node)) {
+            return;
+          }
+          if (invalidParent) {
+            reports.push({
+              message: '@include should not be called on the root node',
+            });
+          }
           try {
             const declOrder = ['size', 'border-width', 'style'];
             const args = getFunctionArgs(node, {
@@ -94,8 +103,6 @@ const plugin = (options: PluginOptions): Plugin => {
           }
         });
 
-        const parent = atRule.parent;
-        const invalidParent = !parent || parent.type === 'root';
         let postCSSdeclNodes: Declaration[] = [];
 
         if (declVal.length) {
@@ -104,12 +111,6 @@ const plugin = (options: PluginOptions): Plugin => {
               prop: val.prop,
               value: val.value,
             });
-          });
-        }
-
-        if (invalidParent) {
-          reports.push({
-            message: '@include should not be called on the root node',
           });
         }
 

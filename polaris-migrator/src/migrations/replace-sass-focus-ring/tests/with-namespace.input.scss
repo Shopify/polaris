@@ -1,5 +1,6 @@
 @include legacy-polaris-v8.focus-ring();
 
+@include legacy-polaris-v8.button-base;
 .default-usage {
   @include legacy-polaris-v8.focus-ring();
   &:focus {
@@ -18,6 +19,8 @@
 }
 
 .edge-cases {
+  @include legacy-polaris-v8.no-focus-ring;
+  @include legacy-polaris-v8.focus-ring;
   @include legacy-polaris-v8.focus-ring(base, test());
   @include legacy-polaris-v8.focus-ring(base, 0 + 50px, focused);
   @include legacy-polaris-v8.focus-ring($args...);

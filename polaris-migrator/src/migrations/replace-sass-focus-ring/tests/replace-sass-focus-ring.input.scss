@@ -1,5 +1,6 @@
 @include focus-ring();
 
+@include button-base;
 .default-usage {
   @include focus-ring();
   &:focus {
@@ -15,6 +16,7 @@
 }
 
 .edge-cases {
+  @include no-focus-ring;
   @include focus-ring;
   @include focus-ring(base, test());
   @include focus-ring(base, 0 + 50px, focused);
