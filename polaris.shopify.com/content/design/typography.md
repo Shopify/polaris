@@ -107,7 +107,7 @@ Body styles are used within components and blocks of text.
 
 Heading styles are used to create various levels of hierarchy on the page. These styles range in size and weight. Using a blend of the two can help distinguish content and guide the merchant through the page.
 
-**Heading xl - Heading 4x** are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
+**Heading xl - Heading 4xl** styles are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
 
 ![An image showing how Heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)
 
