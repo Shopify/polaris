@@ -155,24 +155,63 @@ Replace legacy Typography functions and hardcoded lengths with Polaris custom pr
 npx @shopify/polaris-migrator styles-tokenize-fonts <path>
 ```
 
-### `styles-tokenize-fonts`
+### `styles-tokenize-shape`
 
-Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `border-width()`, `border-radius()`) in border declarations (`border`, `border-width`, and `border-radius`) with the corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+Replace usage of the legacy Sass `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
 
 ```diff
 - border: 1px solid transparent;
 + border: var(--p-border-width-1) solid transparent;
 
+- border-width: 0.0625rem;
++ border-width: var(--p-border-width-1);
+
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-border-declarations <path>
+```
+
+### `sass-replace-border`
+
+Replace usage of the legacy Sass `border()`) function in `border` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
 - border: border();
 + border: var(--p-border-base);
 
-- border-width: 0.0625rem;
+- border: border(divider);
++ border: var(--p-border-divider);
+```
+
+```sh
+npx @shopify/polaris-migrator sass-replace-border <path>
+```
+
+### `sass-replace-border-width`
+
+Replace usage of the legacy Sass `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+
+```diff
+- border-width: border-width();
 + border-width: var(--p-border-width-1);
 
 - border-width: border-width(thick);
 + border-width: var(--p-border-width-2);
+```
 
-- border-radius: 4px;
+```sh
+npx @shopify/polaris-migrator sass-replace-border-width <path>
+```
+
+### `sass-replace-border-radius`
+
+Replace usage of the legacy Sass `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+
+```diff
+- border-radius: border-radius();
 + border-radius: var(--p-border-radius-1);
 
 - border-radius: border-radius(large);
@@ -180,7 +219,7 @@ Replace lengths (`px`, `rem`) and legacy Sass functions (`rem()`,`border()`, `bo
 ```
 
 ```sh
-npx @shopify/polaris-migrator styles-tokenize-fonts <path>
+npx @shopify/polaris-migrator sass-replace-border-radius <path>
 ```
 
 ### `scss-replace-z-index`
