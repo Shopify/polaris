@@ -8,11 +8,10 @@ import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
 
 import styles from './Badge.scss';
-import type {Progress, Size, Status} from './types';
+import type {Progress, Status} from './types';
 import {Pip} from './components';
 import {getDefaultAccessibilityLabel} from './utils';
 
-const DEFAULT_SIZE: Size = 'medium';
 interface NonMutuallyExclusiveProps {
   /** The content to display inside the badge. */
   children?: string;
@@ -22,11 +21,6 @@ interface NonMutuallyExclusiveProps {
   progress?: Progress;
   /** Icon to display to the left of the badge’s content. */
   icon?: IconSource;
-  /**
-   * Medium or small size.
-   * @default 'medium'
-   */
-  size?: Size;
   /** Pass a custom accessibilityLabel */
   statusAndProgressLabelOverride?: string;
 }
@@ -42,7 +36,6 @@ export function Badge({
   status,
   progress,
   icon,
-  size = DEFAULT_SIZE,
   statusAndProgressLabelOverride,
 }: BadgeProps) {
   const i18n = useI18n();
@@ -52,7 +45,6 @@ export function Badge({
     styles.Badge,
     status && styles[variationName('status', status)],
     icon && styles.icon,
-    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     withinFilter && styles.withinFilter,
   );
 
@@ -86,7 +78,11 @@ export function Badge({
           <Icon source={icon} />
         </span>
       )}
-      {children && <span>{children}</span>}
+      {children && (
+        <Text as="span" variant="bodySm">
+          {children}
+        </Text>
+      )}
     </span>
   );
 }

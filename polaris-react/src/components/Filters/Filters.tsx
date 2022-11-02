@@ -170,9 +170,7 @@ class FiltersInner extends Component<CombinedProps, State> {
       const appliedFilterContent = this.getAppliedFilterContent(filter.key);
       const appliedFilterBadgeMarkup = appliedFilterContent ? (
         <div className={styles.AppliedFilterBadgeContainer}>
-          <Badge size="small" status="new">
-            {appliedFilterContent}
-          </Badge>
+          <Badge status="new">{appliedFilterContent}</Badge>
         </div>
       ) : null;
 

@@ -10,10 +10,6 @@ export function Default() {
   return <Badge>Fulfilled</Badge>;
 }
 
-export function Small() {
-  return <Badge size="small">Fulfilled</Badge>;
-}
-
 export function Informational() {
   return <Badge status="info">Draft</Badge>;
 }
