@@ -111,7 +111,7 @@ Heading styles are used to create various levels of hierarchy on the page. These
 
 ![An image showing how Heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)
 
-**Heading xs - Heading lg** styles are most commonly used for card, section, or page titles. These styles aren’t responsive by default. The type size remains the same regardless of break point unless specified otherwise.
+**Heading xs - Heading lg** styles are most commonly used for card, section, or page titles. These styles aren’t responsive by default, with the exception of Heading lg. The type size remains the same regardless of break point unless specified otherwise.
 
 ![An image showing how large Heading styles are applied](/images/foundations/design/typography/text-heading-example-02@2x.png)
 
