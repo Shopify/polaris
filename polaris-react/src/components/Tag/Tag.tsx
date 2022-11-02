@@ -5,8 +5,13 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {Box} from '../Box';
+import {Inline} from '../Inline';
+import {UnstyledLink} from '../UnstyledLink';
+import {Text} from '../Text';
 
 import styles from './Tag.scss';
+import {UnstyledButton} from '../UnstyledButton';
 
 export interface NonMutuallyExclusiveProps {
   /** Content to display in the tag */
@@ -49,18 +54,20 @@ export function Tag({
     segmented && styles.segmented,
   );
 
-  if (onClick) {
-    return (
-      <button
-        type="button"
-        disabled={disabled}
-        className={className}
-        onClick={onClick}
-      >
-        {children}
-      </button>
-    );
-  }
+  // if (onClick) {
+  //   return (
+  //     <UnstyledButton
+  //       type="button"
+  //       disabled={disabled}
+  //       className={styles.clickable}
+  //       onClick={onClick}
+  //     >
+  //       <Text as="span" variant="bodySm">
+  //         {children}
+  //       </Text>
+  //     </UnstyledButton>
+  //   );
+  // }
 
   let tagTitle = accessibilityLabel;
 
@@ -85,21 +92,66 @@ export function Tag({
     </button>
   ) : null;
 
+  // const tagContent =
+  //   url && !disabled ? (
+  //     <a
+  //       className={classNames(styles.Link, segmented && styles.segmented)}
+  //       href={url}
+  //     >
+  //       <span title={tagTitle} className={styles.LinkText}>
+  //         {children}
+  //       </span>
+  //     </a>
+  //   ) : (
+  //     <span title={tagTitle} className={styles.TagText}>
+  //       {children}
+  //     </span>
+  //   );
+
+  const textContent = (
+    <Text variant="bodySm" as="span">
+      <span className={styles.noWrap}>{children}</span>
+    </Text>
+  );
+
   const tagContent =
     url && !disabled ? (
-      <a
-        className={classNames(styles.Link, segmented && styles.segmented)}
-        href={url}
-      >
-        <span title={tagTitle} className={styles.LinkText}>
-          {children}
-        </span>
-      </a>
+      <UnstyledLink url={url}>{textContent}</UnstyledLink>
     ) : (
-      <span title={tagTitle} className={styles.TagText}>
-        {children}
-      </span>
+      textContent
     );
+
+  const clickable = (
+    <UnstyledButton
+      type="button"
+      disabled={disabled}
+      className={styles.clickable}
+      onClick={onClick}
+    >
+      <Text as="span" variant="bodySm">
+        {children}
+      </Text>
+    </UnstyledButton>
+  );
+
+  return (
+    <Inline wrap={false}>
+      <Box
+        as="a"
+        background="surface-neutral"
+        maxWidth="100%"
+        minHeight="1.5rem"
+        borderRadius="1"
+        color="text"
+        paddingBlockEnd="0"
+        paddingBlockStart="0"
+        paddingInlineStart="2"
+        paddingInlineEnd="2"
+      >
+        <Inline align="center">{onClick ? clickable : tagContent}</Inline>
+      </Box>
+    </Inline>
+  );
 
   return (
     <span className={className}>

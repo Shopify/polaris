@@ -3,6 +3,43 @@
 $height: 20px;
 $button-size: 20px;
 
+.clickable {
+    @include unstyled-button;
+    cursor: pointer;
+    // padding: var(--p-space-1) var(--p-space-1);
+    background-color: inherit;
+    outline: var(--p-border-width-1) solid transparent;
+    // line-height: var(--p-font-line-height-2);
+    // min-height: 28px;
+    // border-radius: var(--p-border-radius-1);
+    &:hover {
+      background: var(--p-surface-neutral-hovered);
+    }
+
+    @include focus-ring;
+    // stylelint-disable selector-max-specificity
+
+    &:focus:not(:active) {
+      @include focus-ring($style: 'focused');
+    }
+
+    &:active {
+      background: var(--p-surface-neutral-pressed);
+    }
+
+    &:disabled {
+      background: var(--p-surface-neutral-disabled);
+      cursor: default;
+      pointer-events: none;
+      color: var(--p-text-disabled);
+    }
+
+    // @media #{$p-breakpoints-sm-up} {
+    //   padding: var(--p-space-05) var(--p-space-2);
+    //   font-size: var(--p-font-size-75);
+    // }
+  }
+
 .Tag {
   display: inline-flex;
   max-width: 100%;
@@ -166,4 +203,8 @@ $button-size: 20px;
       margin-right: var(--p-space-1);
     }
   }
+}
+
+.noWrap {
+  white-space: nowrap;
 }
