@@ -11,7 +11,7 @@ import {
   normalizeImportSourcePaths,
   updateImports,
 } from '../../../utilities/imports';
-import type {MigrationOptions} from '../text-replace-components';
+import type {MigrationOptions} from '../react-replace-text-components';
 
 const displayTextSizeMap = {
   small: 'headingLg',

@@ -1,6 +1,6 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'text-replace-components';
+const migration = 'react-replace-text-components';
 const fixtures = ['with-relative'];
 
 for (const fixture of fixtures) {

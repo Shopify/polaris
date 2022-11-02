@@ -7,16 +7,14 @@ import {
   getFunctionArgs,
   isNumericOperator,
   isSassFunction,
-  isTransformableLength,
   namespace,
   NamespaceOptions,
-  toTransformablePx,
   StopWalkingFunctionNodes,
   createInlineComment,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
-export default function sassReplaceBorderRadius(
+export default function scssReplaceBorderRadius(
   fileInfo: FileInfo,
   _: API,
   options: Options,
@@ -34,7 +32,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
   const namespacedBorderRadius = namespace('border-radius', options);
 
   return {
-    postcssPlugin: 'sass-replace-border-radius',
+    postcssPlugin: 'scss-replace-border-radius',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;

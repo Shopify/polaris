@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'sass-replace-border';
-const fixtures = ['sass-replace-border', 'with-namespace'];
+const migration = 'scss-replace-font';
+const fixtures = ['scss-replace-font', 'with-namespace'];
 
 for (const fixture of fixtures) {
   check(__dirname, {

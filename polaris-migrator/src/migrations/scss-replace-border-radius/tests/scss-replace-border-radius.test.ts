@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'sass-replace-border-radius';
-const fixtures = ['sass-replace-border-radius', 'with-namespace'];
+const migration = 'scss-replace-border-radius';
+const fixtures = ['scss-replace-border-radius', 'with-namespace'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
