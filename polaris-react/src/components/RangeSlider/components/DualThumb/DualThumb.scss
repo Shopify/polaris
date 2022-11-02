@@ -172,7 +172,7 @@ $range-output-size: 32px;
   }
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 
-  > span {
+  > :first-child {
     display: block;
     flex: 1 1 auto;
     margin: auto;
