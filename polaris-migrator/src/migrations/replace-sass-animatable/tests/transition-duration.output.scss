@@ -1,0 +1,64 @@
+.duration-simple-string-arg {
+  opacity: 1;
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-500);
+}
+
+.duration-simple-non-string-arg {
+  opacity: 1;
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-500);
+}
+
+.duration-simple-constant {
+  opacity: 1;
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-0);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-50);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-100);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-150);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-200);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-250);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-300);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-350);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-400);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-450);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-500);
+  transition-duration: var(--p-duration-5000);
+}
+
+$foo: 'ease';
+
+.edges {
+  // sass calculation
+  // foobar isn't a valid duration key
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unknown duration key 'foobar'.
+  transition-duration: legacy-polaris-v8.duration(foobar);
+  // can't process variables
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyse SASS variable $foo.
+  transition-duration: $foo;
+  transition-delay: var(--p-duration-0);
+  transition-timing-function: var(--p-linear);
+}

@@ -1,0 +1,58 @@
+.duration-simple-string-arg {
+  opacity: 1;
+  animation-duration: legacy-polaris-v8.duration('none');
+  animation-duration: legacy-polaris-v8.duration('fast');
+  animation-duration: legacy-polaris-v8.duration('base');
+  animation-duration: legacy-polaris-v8.duration('slow');
+  animation-duration: legacy-polaris-v8.duration('slower');
+  animation-duration: legacy-polaris-v8.duration('slowest');
+  animation-duration: legacy-polaris-v8.duration('nonsense');
+}
+
+.duration-simple-non-string-arg {
+  opacity: 1;
+  animation-duration: legacy-polaris-v8.duration();
+  animation-duration: legacy-polaris-v8.duration(none);
+  animation-duration: legacy-polaris-v8.duration(fast);
+  animation-duration: legacy-polaris-v8.duration(base);
+  animation-duration: legacy-polaris-v8.duration(slow);
+  animation-duration: legacy-polaris-v8.duration(slower);
+  animation-duration: legacy-polaris-v8.duration(slowest);
+  animation-duration: legacy-polaris-v8.duration(nonsense);
+}
+
+.duration-simple-constant {
+  opacity: 1;
+  animation-duration: 0;
+  animation-duration: 0ms;
+  animation-duration: 0s;
+  animation-duration: 50ms;
+  animation-duration: 0.05s;
+  animation-duration: 100ms;
+  animation-duration: 0.1s;
+  animation-duration: 150ms;
+  animation-duration: 0.15s;
+  animation-duration: 200ms;
+  animation-duration: 0.2s;
+  animation-duration: 250ms;
+  animation-duration: 0.25s;
+  animation-duration: 300ms;
+  animation-duration: 0.3s;
+  animation-duration: 350ms;
+  animation-duration: 0.35s;
+  animation-duration: 400ms;
+  animation-duration: 0.4s;
+  animation-duration: 450ms;
+  animation-duration: 0.45s;
+  animation-duration: 500ms;
+  animation-duration: 0.5s;
+  animation-duration: 5s;
+  animation-duration: 16.7s;
+}
+
+.edges {
+  // foobar isn't a valid duration key
+  animation-duration: legacy-polaris-v8.duration(foobar);
+  // can't process variables
+  animation-duration: $foo;
+}

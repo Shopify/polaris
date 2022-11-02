@@ -4,6 +4,7 @@ import valueParser, {
   Node,
   FunctionNode,
 } from 'postcss-value-parser';
+import falsey from 'falsey';
 
 import {
   namespace,
@@ -13,6 +14,7 @@ import {
   isTransformableDuration,
   isPolarisVar,
   createSassMigrator,
+  PolarisMigrator,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -71,7 +73,7 @@ const easingFuncConstantsMap = {
 
 const deprecatedEasingFuncs = ['anticipate', 'excite', 'overshoot'];
 
-// Per the spec for transition easing functions:
+// Per the spec for easing functions:
 // https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
 const cssEasingBuiltinFuncs = [
   'linear',
@@ -100,10 +102,36 @@ function setNodeValue(node: Node, value: string): void {
   node.sourceEndIndex += sourceIndex;
 }
 
+interface Options {
+  namespace?: string;
+  // later cooerced by falsey()
+  withTransition?: string;
+  // later cooerced by falsey()
+  withAnimation?: string;
+}
+
 export default createSassMigrator(
-  'replace-sass-transition',
-  (_, {methods, options}, context) => {
+  'replace-sass-animatable',
+  (
+    _,
+    {
+      methods,
+      options,
+    }: {
+      methods: Parameters<PolarisMigrator>[1]['methods'];
+      options: Options;
+    },
+    context,
+  ) => {
     const durationFunc = namespace('duration', options);
+    const withTransition =
+      typeof options.withTransition === 'undefined'
+        ? true
+        : !falsey(options.withTransition);
+    const withAnimation =
+      typeof options.withAnimation === 'undefined'
+        ? true
+        : !falsey(options.withAnimation);
 
     function migrateLegacySassEasingFunction(
       node: FunctionNode,
@@ -150,10 +178,7 @@ export default createSassMigrator(
       });
     }
 
-    function mutateTransitionDurationValue(
-      node: Node,
-      decl: Declaration,
-    ): void {
+    function mutateDurationValue(node: Node, decl: Declaration): void {
       if (isPolarisVar(node)) {
         return;
       }
@@ -226,9 +251,10 @@ export default createSassMigrator(
       }
     }
 
-    function mutateTransitionFunctionValue(
+    function mutateTimingFunctionValue(
       node: Node,
       decl: Declaration,
+      {ignoreUnknownFunctions}: {ignoreUnknownFunctions: boolean},
     ): void {
       if (isPolarisVar(node)) {
         return;
@@ -244,17 +270,27 @@ export default createSassMigrator(
       }
 
       if (node.type === 'function') {
-        const easingFuncHandlers = {
-          [namespace('easing', options)]: migrateLegacySassEasingFunction,
-          // Per the spec, these can all be functions:
-          // https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
-          linear: insertUnexpectedEasingFunctionComment,
-          'cubic-bezier': insertUnexpectedEasingFunctionComment,
-          steps: insertUnexpectedEasingFunctionComment,
-        };
+        if (node.value === namespace('easing', options)) {
+          migrateLegacySassEasingFunction(node, decl);
+          return;
+        }
 
-        if (isKeyOf(easingFuncHandlers, node.value)) {
-          easingFuncHandlers[node.value](node, decl);
+        if (ignoreUnknownFunctions) {
+          const easingFuncHandlers = {
+            [namespace('easing', options)]: migrateLegacySassEasingFunction,
+            // Per the spec, these can all be functions:
+            // https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
+            linear: insertUnexpectedEasingFunctionComment,
+            'cubic-bezier': insertUnexpectedEasingFunctionComment,
+            steps: insertUnexpectedEasingFunctionComment,
+          };
+
+          if (isKeyOf(easingFuncHandlers, node.value)) {
+            easingFuncHandlers[node.value](node, decl);
+            return;
+          }
+        } else {
+          insertUnexpectedEasingFunctionComment(node, decl);
           return;
         }
       }
@@ -276,18 +312,21 @@ export default createSassMigrator(
           return;
         }
 
-        if (cssEasingBuiltinFuncs.includes(node.value)) {
+        if (
+          !ignoreUnknownFunctions ||
+          cssEasingBuiltinFuncs.includes(node.value)
+        ) {
           insertUnexpectedEasingFunctionComment(node, decl);
         }
       }
     }
 
-    function mutateTransitionDelayValue(node: Node, decl: Declaration): void {
+    function mutateDelayValue(node: Node, decl: Declaration): void {
       // For now, we treat delays like durations
-      return mutateTransitionDurationValue(node, decl);
+      return mutateDurationValue(node, decl);
     }
 
-    function mutateTransitionShorthandValue(
+    function mutateAnimatableShorthandValue(
       decl: Declaration,
       parsedValue: ParsedValue,
     ): void {
@@ -309,8 +348,8 @@ export default createSassMigrator(
         //
         // Note that order is important within the items in this property: the
         // first value that can be parsed as a time is assigned to the
-        // transition-duration, and the second value that can be parsed as a
-        // time is assigned to transition-delay.
+        // transition-duration/animation-duration, and the second value that can
+        // be parsed as a time is assigned to transition-delay/animation-delay.
         // https://w3c.github.io/csswg-drafts/css-transitions-1/#transition-shorthand-property
         //
         // That sounds like an array to me! [0] is duration, [1] is delay.
@@ -327,16 +366,18 @@ export default createSassMigrator(
             // This node could be either the property to animate, or an easing
             // function. We try mutate the easing function, but if not we assume
             // it's the property to animate and therefore do not leave a comment.
-            mutateTransitionFunctionValue(node, decl);
+            mutateTimingFunctionValue(node, decl, {
+              ignoreUnknownFunctions: true,
+            });
           }
         });
 
         if (timings[0]) {
-          mutateTransitionDurationValue(timings[0], decl);
+          mutateDurationValue(timings[0], decl);
         }
 
         if (timings[1]) {
-          mutateTransitionDelayValue(timings[1], decl);
+          mutateDelayValue(timings[1], decl);
         }
       });
     }
@@ -344,24 +385,50 @@ export default createSassMigrator(
     return (root) => {
       methods.walkDecls(root, (decl) => {
         const handlers: {[key: string]: () => void} = {
-          'transition-duration': () => {
-            parsedValue.nodes.forEach((node) => {
-              mutateTransitionDurationValue(node, decl);
-            });
-          },
-          'transition-delay': () => {
-            parsedValue.nodes.forEach((node) => {
-              mutateTransitionDelayValue(node, decl);
-            });
-          },
-          'transition-timing-function': () => {
-            parsedValue.nodes.forEach((node) => {
-              mutateTransitionFunctionValue(node, decl);
-            });
-          },
-          transition: () => {
-            mutateTransitionShorthandValue(decl, parsedValue);
-          },
+          ...(withTransition && {
+            'transition-duration': () => {
+              parsedValue.nodes.forEach((node) => {
+                mutateDurationValue(node, decl);
+              });
+            },
+            'transition-delay': () => {
+              parsedValue.nodes.forEach((node) => {
+                mutateDelayValue(node, decl);
+              });
+            },
+            'transition-timing-function': () => {
+              parsedValue.nodes.forEach((node) => {
+                mutateTimingFunctionValue(node, decl, {
+                  ignoreUnknownFunctions: false,
+                });
+              });
+            },
+            transition: () => {
+              mutateAnimatableShorthandValue(decl, parsedValue);
+            },
+          }),
+          ...(withAnimation && {
+            'animation-duration': () => {
+              parsedValue.nodes.forEach((node) => {
+                mutateDurationValue(node, decl);
+              });
+            },
+            'animation-delay': () => {
+              parsedValue.nodes.forEach((node) => {
+                mutateDelayValue(node, decl);
+              });
+            },
+            'animation-timing-function': () => {
+              parsedValue.nodes.forEach((node) => {
+                mutateTimingFunctionValue(node, decl, {
+                  ignoreUnknownFunctions: false,
+                });
+              });
+            },
+            animation: () => {
+              mutateAnimatableShorthandValue(decl, parsedValue);
+            },
+          }),
         };
 
         if (!handlers[decl.prop]) {

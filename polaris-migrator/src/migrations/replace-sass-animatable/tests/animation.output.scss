@@ -1,0 +1,325 @@
+.easing-shorthand-string-arg {
+  opacity: 1;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing("anticipate");
+  animation: fadeIn 300ms legacy-polaris-v8.easing('anticipate');
+  animation: fadeIn var(--p-duration-300) var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing("excite");
+  animation: fadeIn 300ms legacy-polaris-v8.easing('excite');
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing("overshoot");
+  animation: fadeIn 300ms legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-shorthand-non-string-arg {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-300) var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing(anticipate);
+  animation: fadeIn 300ms legacy-polaris-v8.easing(anticipate);
+  animation: fadeIn var(--p-duration-300) var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing(excite);
+  animation: fadeIn 300ms legacy-polaris-v8.easing(excite);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing(overshoot);
+  animation: fadeIn 300ms legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-shorthand-builtins {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-300) var(--p-linear);
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'linear'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) linear(1);
+  animation: fadeIn 300ms linear(1);
+  animation: fadeIn var(--p-duration-300) var(--p-ease);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-out);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'cubic-bezier'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) cubic-bezier(0, 0, 1, 1);
+  animation: fadeIn 300ms cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) step-start;
+  animation: fadeIn 300ms step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-end'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) step-end;
+  animation: fadeIn 300ms step-end;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'steps'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) steps(1, jump-end);
+  animation: fadeIn 300ms steps(1, jump-end);
+}
+
+.easing-multiple-string-arg {
+  opacity: 1;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing("anticipate"), left var(--p-duration-300) legacy-polaris-v8.easing("anticipate");
+  animation: fadeIn 300ms legacy-polaris-v8.easing('anticipate'),
+    left 300ms legacy-polaris-v8.easing('anticipate');
+  animation: fadeIn var(--p-duration-300) var(--p-ease),
+    left var(--p-duration-300) var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing("excite"), left var(--p-duration-300) legacy-polaris-v8.easing("excite");
+  animation: fadeIn 300ms legacy-polaris-v8.easing('excite'),
+    left 300ms legacy-polaris-v8.easing('excite');
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in),
+    left var(--p-duration-300) var(--p-ease-in);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-out),
+    left var(--p-duration-300) var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing("overshoot"), left var(--p-duration-300) legacy-polaris-v8.easing("overshoot");
+  animation: fadeIn 300ms legacy-polaris-v8.easing('overshoot'),
+    left 300ms legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-multiple-non-string-arg {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-300) var(--p-ease),
+    left var(--p-duration-300) var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing(anticipate), left var(--p-duration-300) legacy-polaris-v8.easing(anticipate);
+  animation: fadeIn 300ms legacy-polaris-v8.easing(anticipate),
+    left 300ms legacy-polaris-v8.easing(anticipate);
+  animation: fadeIn var(--p-duration-300) var(--p-ease),
+    left var(--p-duration-300) var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing(excite), left var(--p-duration-300) legacy-polaris-v8.easing(excite);
+  animation: fadeIn 300ms legacy-polaris-v8.easing(excite),
+    left 300ms legacy-polaris-v8.easing(excite);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in),
+    left var(--p-duration-300) var(--p-ease-in);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-out),
+    left var(--p-duration-300) var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) legacy-polaris-v8.easing(overshoot), left var(--p-duration-300) legacy-polaris-v8.easing(overshoot);
+  animation: fadeIn 300ms legacy-polaris-v8.easing(overshoot),
+    left 300ms legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-multiple-builtins {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'linear'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) linear(1), left var(--p-duration-300) linear(1);
+  animation: fadeIn 300ms linear(1), left 300ms linear(1);
+  animation: fadeIn var(--p-duration-300) var(--p-ease),
+    left var(--p-duration-300) var(--p-ease);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in),
+    left var(--p-duration-300) var(--p-ease-in);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-out),
+    left var(--p-duration-300) var(--p-ease-out);
+  animation: fadeIn var(--p-duration-300) var(--p-ease-in-out),
+    left var(--p-duration-300) var(--p-ease-in-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'cubic-bezier'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) cubic-bezier(0, 0, 1, 1), left var(--p-duration-300) cubic-bezier(0, 0, 1, 1);
+  animation: fadeIn 300ms cubic-bezier(0, 0, 1, 1),
+    left 300ms cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) step-start, left var(--p-duration-300) step-start;
+  animation: fadeIn 300ms step-start, left 300ms step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-end'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) step-end, left var(--p-duration-300) step-start;
+  animation: fadeIn 300ms step-end, left 300ms step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'steps'. See https://polaris.shopify.com/tokens/motion for possible values.
+  // animation: fadeIn var(--p-duration-300) steps(1, jump-end), left var(--p-duration-300) steps(1, jump-end);
+  animation: fadeIn 300ms steps(1, jump-end), left 300ms steps(1, jump-end);
+}
+
+.duration-compound-string-arg {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear);
+}
+
+.duration-compound-non-string-arg {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear);
+}
+
+.duration-compound-constant {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-50) var(--p-linear);
+  animation: fadeIn var(--p-duration-50) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-150) var(--p-linear);
+  animation: fadeIn var(--p-duration-150) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-250) var(--p-linear);
+  animation: fadeIn var(--p-duration-250) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-350) var(--p-linear);
+  animation: fadeIn var(--p-duration-350) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-450) var(--p-linear);
+  animation: fadeIn var(--p-duration-450) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear);
+  animation: fadeIn var(--p-duration-5000) var(--p-linear);
+}
+
+.duration-multiple-string-arg {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+}
+
+.duration-multiple-non-string-arg {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+}
+
+.duration-multiple-constant {
+  opacity: 1;
+  animation: fadeIn var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-0) var(--p-linear),
+    left var(--p-duration-0) var(--p-linear);
+  animation: fadeIn var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  animation: fadeIn var(--p-duration-50) var(--p-linear),
+    left var(--p-duration-50) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-100) var(--p-linear),
+    left var(--p-duration-100) var(--p-linear);
+  animation: fadeIn var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  animation: fadeIn var(--p-duration-150) var(--p-linear),
+    left var(--p-duration-150) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-200) var(--p-linear),
+    left var(--p-duration-200) var(--p-linear);
+  animation: fadeIn var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  animation: fadeIn var(--p-duration-250) var(--p-linear),
+    left var(--p-duration-250) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-300) var(--p-linear),
+    left var(--p-duration-300) var(--p-linear);
+  animation: fadeIn var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  animation: fadeIn var(--p-duration-350) var(--p-linear),
+    left var(--p-duration-350) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-400) var(--p-linear),
+    left var(--p-duration-400) var(--p-linear);
+  animation: fadeIn var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  animation: fadeIn var(--p-duration-450) var(--p-linear),
+    left var(--p-duration-450) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  animation: fadeIn var(--p-duration-500) var(--p-linear),
+    left var(--p-duration-500) var(--p-linear);
+  animation: fadeIn var(--p-duration-5000) var(--p-linear),
+    left var(--p-duration-5000) var(--p-linear);
+}
+
+$foo: 'ease-in';
+
+.edges {
+  // sass calculation
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Numeric operator detected.
+  // warning: No matching duration token for '33ms'.
+  // animation: (legacy-polaris-v8.duration() - 33ms) fill var(--p-linear) 33ms;
+  animation: (legacy-polaris-v8.duration() - 33ms) fill linear 33ms;
+  // Duration comes after easing func
+  animation: fadeIn var(--p-linear) var(--p-duration-500);
+  // Duration + Delay
+  animation: fadeIn var(--p-duration-400) var(--p-linear) var(--p-duration-100);
+  // Duration + Delay after easing func
+  animation: fadeIn var(--p-linear) var(--p-duration-400) var(--p-duration-100);
+  // Without an easing function
+  animation: fill var(--p-duration-300);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyse SASS variable $foo.
+  // animation: fadeIn $foo var(--p-duration-500);
+  animation: fadeIn $foo 0.5s;
+  // Count and direction
+  animation: fadeIn var(--p-linear) var(--p-duration-500) 1 forwards;
+  // animation name last
+  animation: var(--p-linear) var(--p-duration-500) 1 forwards fadeIn;
+  // already uses polaris tokens
+  animation: var(--p-duration-500) var(--p-linear);
+  // partially uses polaris tokens
+  animation: var(--p-duration-500) var(--p-linear);
+}

@@ -1,0 +1,81 @@
+.easing-simple-string-arg {
+  opacity: 1;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: legacy-polaris-v8.easing('anticipate');
+  animation-timing-function: var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: legacy-polaris-v8.easing('excite');
+  animation-timing-function: var(--p-ease-in);
+  animation-timing-function: var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: legacy-polaris-v8.easing('overshoot');
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'nonsense'.
+  animation-timing-function: legacy-polaris-v8.easing('nonsense');
+}
+
+.easing-simple-non-string-arg {
+  opacity: 1;
+  animation-timing-function: var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: legacy-polaris-v8.easing(anticipate);
+  animation-timing-function: var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: legacy-polaris-v8.easing(excite);
+  animation-timing-function: var(--p-ease-in);
+  animation-timing-function: var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: legacy-polaris-v8.easing(overshoot);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'nonsense'.
+  animation-timing-function: legacy-polaris-v8.easing(nonsense);
+}
+
+.easing-simple-builtins {
+  opacity: 1;
+  animation-timing-function: var(--p-linear);
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'linear'. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: linear(1);
+  animation-timing-function: var(--p-ease);
+  animation-timing-function: var(--p-ease-in);
+  animation-timing-function: var(--p-ease-out);
+  animation-timing-function: var(--p-ease-in-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'cubic-bezier'. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-start'. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: step-start;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'step-end'. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: step-end;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'steps'. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: steps(1, jump-end);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'nonsense'. See https://polaris.shopify.com/tokens/motion for possible values.
+  animation-timing-function: nonsense;
+}
+
+$easingFunc: 'ease-in';
+$foo: 'ease';
+
+.edges {
+  // Can only handle hard coded values
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function '$easingFunc'.
+  animation-timing-function: legacy-polaris-v8.easing($easingFunc);
+  // can't process variables
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyse SASS variable $foo.
+  animation-timing-function: $foo;
+}

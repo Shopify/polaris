@@ -1,0 +1,48 @@
+.easing-simple-string-arg {
+  opacity: 1;
+  transition-timing-function: legacy-polaris-v8.easing('anticipate');
+  transition-timing-function: legacy-polaris-v8.easing('base');
+  transition-timing-function: legacy-polaris-v8.easing('excite');
+  transition-timing-function: legacy-polaris-v8.easing('in');
+  transition-timing-function: legacy-polaris-v8.easing('out');
+  transition-timing-function: legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-simple-non-string-arg {
+  opacity: 1;
+  transition-timing-function: legacy-polaris-v8.easing();
+  transition-timing-function: legacy-polaris-v8.easing(anticipate);
+  transition-timing-function: legacy-polaris-v8.easing(base);
+  transition-timing-function: legacy-polaris-v8.easing(excite);
+  transition-timing-function: legacy-polaris-v8.easing(in);
+  transition-timing-function: legacy-polaris-v8.easing(out);
+  transition-timing-function: legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-simple-builtins {
+  opacity: 1;
+  transition-timing-function: linear;
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  transition-timing-function: linear(1);
+  transition-timing-function: ease;
+  transition-timing-function: ease-in;
+  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  transition-timing-function: step-start;
+  transition-timing-function: step-end;
+  transition-timing-function: steps(1, jump-end);
+}
+
+$easingFunc: 'ease-in';
+$foo: 'ease';
+
+.edges {
+  // Unknown values are flagged
+  transition-timing-function: legacy-polaris-v8.easing(foobar);
+  // Can only handle hard coded values
+  transition-timing-function: legacy-polaris-v8.easing($easingFunc);
+  // can't process variables
+  transition-timing-function: $foo;
+}

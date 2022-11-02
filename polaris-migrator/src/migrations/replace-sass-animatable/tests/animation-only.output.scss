@@ -1,0 +1,10 @@
+.foo {
+  animation: fadeIn var(--p-duration-300) var(--p-linear);
+  animation-duration: var(--p-duration-200);
+  animation-delay: var(--p-duration-200);
+  animation-timing-function: var(--p-ease);
+  transition: fadeIn 300ms linear;
+  transition-duration: legacy-polaris-v8.duration(base);
+  transition-delay: legacy-polaris-v8.duration();
+  transition-timing-function: legacy-polaris-v8.easing(base);
+}

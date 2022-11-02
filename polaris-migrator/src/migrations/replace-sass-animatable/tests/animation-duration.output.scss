@@ -1,0 +1,68 @@
+.duration-simple-string-arg {
+  opacity: 1;
+  animation-duration: var(--p-duration-0);
+  animation-duration: var(--p-duration-100);
+  animation-duration: var(--p-duration-200);
+  animation-duration: var(--p-duration-300);
+  animation-duration: var(--p-duration-400);
+  animation-duration: var(--p-duration-500);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unknown duration key 'nonsense'.
+  animation-duration: legacy-polaris-v8.duration('nonsense');
+}
+
+.duration-simple-non-string-arg {
+  opacity: 1;
+  animation-duration: var(--p-duration-200);
+  animation-duration: var(--p-duration-0);
+  animation-duration: var(--p-duration-100);
+  animation-duration: var(--p-duration-200);
+  animation-duration: var(--p-duration-300);
+  animation-duration: var(--p-duration-400);
+  animation-duration: var(--p-duration-500);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unknown duration key 'nonsense'.
+  animation-duration: legacy-polaris-v8.duration(nonsense);
+}
+
+.duration-simple-constant {
+  opacity: 1;
+  animation-duration: var(--p-duration-0);
+  animation-duration: var(--p-duration-0);
+  animation-duration: var(--p-duration-0);
+  animation-duration: var(--p-duration-50);
+  animation-duration: var(--p-duration-50);
+  animation-duration: var(--p-duration-100);
+  animation-duration: var(--p-duration-100);
+  animation-duration: var(--p-duration-150);
+  animation-duration: var(--p-duration-150);
+  animation-duration: var(--p-duration-200);
+  animation-duration: var(--p-duration-200);
+  animation-duration: var(--p-duration-250);
+  animation-duration: var(--p-duration-250);
+  animation-duration: var(--p-duration-300);
+  animation-duration: var(--p-duration-300);
+  animation-duration: var(--p-duration-350);
+  animation-duration: var(--p-duration-350);
+  animation-duration: var(--p-duration-400);
+  animation-duration: var(--p-duration-400);
+  animation-duration: var(--p-duration-450);
+  animation-duration: var(--p-duration-450);
+  animation-duration: var(--p-duration-500);
+  animation-duration: var(--p-duration-500);
+  animation-duration: var(--p-duration-5000);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: No matching duration token for '16.7s'.
+  animation-duration: 16.7s;
+}
+
+.edges {
+  // foobar isn't a valid duration key
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unknown duration key 'foobar'.
+  animation-duration: legacy-polaris-v8.duration(foobar);
+  // can't process variables
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Cannot statically analyse SASS variable $foo.
+  animation-duration: $foo;
+}

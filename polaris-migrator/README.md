@@ -235,9 +235,31 @@ Be aware that this may also create additional code changes in your codebase, we 
 npx @shopify/polaris-migrator replace-sass-spacing <path>
 ```
 
-### `replace-sass-transition`
+### `replace-sass-animatable`
 
-Replace timings (`ms`, `s`) and legacy Sass functions (`duration()`,`easing()`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+Replace timings (`ms`, `s`) and legacy Sass functions (`duration()`,`easing()`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+Accepts two command line arguments:
+
+- `--with-transition=<bool>`: (_default: `true`_) Migrate `transition`
+  declarations.
+- `--with-animation=<bool>`: (_default: `true`_) Migrate `animation`
+  declarations.
+
+Declarations targeted:
+
+```
+transition
+transition-duration
+transition-delay
+transition-timing-function
+animation
+animation-duration
+animation-delay
+animation-timing-function
+```
+
+Example changes:
 
 ```diff
 - transition-duration: 100ms;
@@ -263,7 +285,7 @@ Replace timings (`ms`, `s`) and legacy Sass functions (`duration()`,`easing()`) 
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-sass-transition <path>
+npx @shopify/polaris-migrator replace-sass-animatable <path>
 ```
 
 ## Creating Migrations
