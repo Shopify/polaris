@@ -4,7 +4,10 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
@@ -13,6 +16,7 @@ type ColumnTypes = number | string | ColumnWidths[];
 
 type Columns =
   | number
+  | ColumnWidths[]
   | {
       [Breakpoint in BreakpointsAlias]?: ColumnTypes;
     };
@@ -36,31 +40,9 @@ export interface ColumnsProps {
 
 export function Columns({columns, children, spacing}: ColumnsProps) {
   const style = {
-    ...(typeof columns === 'number'
-      ? {'--pc-columns-xs': `repeat(${columns}, minmax(0, 1fr))`}
-      : {
-          '--pc-columns-xs': formatColumns(columns?.xs || 6),
-          '--pc-columns-sm': formatColumns(columns?.sm),
-          '--pc-columns-md': formatColumns(columns?.md),
-          '--pc-columns-lg': formatColumns(columns?.lg),
-          '--pc-columns-xl': formatColumns(columns?.xl),
-        }),
-    '--pc-columns-space-xs': spacing?.xs
-      ? `var(--p-space-${spacing?.xs})`
-      : undefined,
-    '--pc-columns-space-sm': spacing?.sm
-      ? `var(--p-space-${spacing?.sm})`
-      : undefined,
-    '--pc-columns-space-md': spacing?.md
-      ? `var(--p-space-${spacing?.md})`
-      : undefined,
-    '--pc-columns-space-lg': spacing?.lg
-      ? `var(--p-space-${spacing?.lg})`
-      : undefined,
-    '--pc-columns-space-xl': spacing?.xl
-      ? `var(--p-space-${spacing?.xl})`
-      : undefined,
-  } as unknown as React.CSSProperties;
+    ...formatColumns(columns),
+    ...getResponsiveProps('columns', 'spacing', 'space', spacing || '4'),
+  } as React.CSSProperties;
 
   return (
     <div className={styles.Columns} style={sanitizeCustomProperties(style)}>
@@ -69,20 +51,48 @@ export function Columns({columns, children, spacing}: ColumnsProps) {
   );
 }
 
-function formatColumns(columns?: ColumnTypes) {
+function formatColumns(columns?: Columns) {
+  if (typeof columns === 'number') {
+    return {
+      '--pc-columns-xs': `repeat(${columns}, minmax(0, 1fr))`,
+    };
+  }
+
+  if (typeof columns === 'string') {
+    return {'--pc-columns-xs': columns};
+  }
+
+  if (typeof columns === 'object' && 'xs' in columns) {
+    return {
+      '--pc-columns-xs': formatResponsiveColumns(columns?.xs || 6),
+      '--pc-columns-sm': formatResponsiveColumns(columns?.sm),
+      '--pc-columns-md': formatResponsiveColumns(columns?.md),
+      '--pc-columns-lg': formatResponsiveColumns(columns?.lg),
+      '--pc-columns-xl': formatResponsiveColumns(columns?.xl),
+    };
+  }
+
+  if (Array.isArray(columns)) {
+    return {
+      '--pc-columns-xs': columns.map(getVerboseProperty).join(' '),
+    };
+  }
+}
+
+function formatResponsiveColumns(columns?: ColumnTypes) {
   if (!columns) return undefined;
 
   if (Array.isArray(columns)) {
-    return columns
-      .map((column) =>
-        column === 'oneThird' || column === 'oneHalf'
-          ? 'minmax(0, 1fr)'
-          : 'minmax(0, 2fr)',
-      )
-      .join(' ');
+    return columns.map(getVerboseProperty).join(' ');
   }
 
   return typeof columns === 'number'
     ? `repeat(${columns}, minmax(0, 1fr))`
     : columns;
+}
+
+function getVerboseProperty(column: string) {
+  return column === 'oneThird' || column === 'oneHalf'
+    ? 'minmax(0, 1fr)'
+    : 'minmax(0, 2fr)';
 }
