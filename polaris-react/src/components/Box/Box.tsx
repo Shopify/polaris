@@ -8,7 +8,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'a' | 'button';
 
 type Overflow = 'hidden' | 'scroll';
 
@@ -135,6 +135,34 @@ interface Spacing {
   inlineEnd: SpacingSpaceScale;
 }
 
+export type Display =
+  | 'block'
+  | 'inline'
+  | 'inline-block'
+  | 'flex'
+  | 'inline-flex'
+  | 'grid'
+  | 'inline-grid'
+  | 'flow-root'
+  | 'none'
+  | 'contents'
+  | 'block flow'
+  | 'inline flow'
+  | 'inline flow-root'
+  | 'block flex'
+  | 'inline flex'
+  | 'block grid'
+  | 'inline grid'
+  | 'block flow-root'
+  | 'table'
+  | 'table-row;'
+  | 'list-item'
+  | 'inherit'
+  | 'initial'
+  | 'revert'
+  | 'revert-layer'
+  | 'unset';
+
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
@@ -162,6 +190,8 @@ export interface BoxProps {
   borderRadiusStartEnd?: BorderRadiusTokenScale;
   /** Color of children */
   color?: ColorTokenScale;
+  /** Display of HTML element */
+  display?: Display;
   /** HTML id attribute */
   id?: string;
   /** Set minimum height of container */
@@ -209,6 +239,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderRadiusStartEnd,
       children,
       color,
+      display,
       id,
       minHeight,
       minWidth,
@@ -277,6 +308,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius-start-end': borderRadiuses.startEnd
         ? `var(--p-border-radius-${borderRadiuses.startEnd})`
         : undefined,
+      '--pc-box-display': display,
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
       '--pc-box-max-width': maxWidth,

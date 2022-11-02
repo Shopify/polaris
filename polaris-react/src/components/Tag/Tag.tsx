@@ -5,6 +5,7 @@ import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
+import {Box} from '../Box';
 
 import styles from './Tag.scss';
 
@@ -102,9 +103,24 @@ export function Tag({
     );
 
   return (
-    <span className={className}>
-      {tagContent}
-      {removeButton}
-    </span>
+    <Box
+      as="a"
+      display="inline-flex"
+      background="surface-neutral"
+      maxWidth="100%"
+      minHeight="1.5rem"
+      borderRadius="1"
+      color="text"
+      paddingBlockEnd="0"
+      paddingBlockStart="0"
+      paddingInlineStart="2"
+      paddingInlineEnd="2"
+    >
+      {children}
+    </Box>
+    // <span className={className}>
+    //   {tagContent}
+    //   {removeButton}
+    // </span>
   );
 }
