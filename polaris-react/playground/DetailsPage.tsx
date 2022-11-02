@@ -19,6 +19,7 @@ import {
 import {
   ActionList,
   Badge,
+  // eslint-disable-next-line import/no-deprecated
   Caption,
   Card,
   ContextualSaveBar,
@@ -41,6 +42,7 @@ import {
   Thumbnail,
   Toast,
   TopBar,
+  // eslint-disable-next-line import/no-deprecated
   VisuallyHidden,
 } from '../src';
 
