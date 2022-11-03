@@ -144,16 +144,12 @@ export function Item({
   let badgeMarkup: ReactNode = null;
   if (isNew) {
     badgeMarkup = (
-      <Badge status="new" size="small">
+      <Badge status="new">
         {i18n.translate('Polaris.Badge.STATUS_LABELS.new')}
       </Badge>
     );
   } else if (typeof badge === 'string') {
-    badgeMarkup = (
-      <Badge status="new" size="small">
-        {badge}
-      </Badge>
-    );
+    badgeMarkup = <Badge status="new">{badge}</Badge>;
   } else {
     badgeMarkup = badge;
   }

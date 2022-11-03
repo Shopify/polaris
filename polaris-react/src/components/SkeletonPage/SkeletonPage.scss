@@ -42,7 +42,7 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .Title {
-  @include text-emphasis-strong;
+  font-weight: var(--p-font-weight-semibold);
   font-size: 24px;
   line-height: 28px;
 

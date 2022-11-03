@@ -106,7 +106,6 @@ $centered-illustration-width: 226px;
   }
 
   .Content {
-    @include text-style-body;
     padding-bottom: var(--p-space-2);
   }
 }
@@ -127,16 +126,9 @@ $centered-illustration-width: 226px;
 }
 
 .Content {
-  @include text-style-body;
-  @include text-emphasis-subdued;
   padding-bottom: var(--p-space-2);
 }
 
 .Actions {
-  margin-top: var(--p-space-4);
-}
-
-.FooterContent {
-  @include text-emphasis-subdued;
   margin-top: var(--p-space-4);
 }

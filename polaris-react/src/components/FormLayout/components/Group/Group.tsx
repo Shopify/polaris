@@ -3,8 +3,9 @@ import React, {Children} from 'react';
 import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import {useUniqueId} from '../../../../utilities/unique-id';
-import styles from '../../FormLayout.scss';
+import {Box} from '../../../Box';
 import {Item} from '../Item';
+import styles from '../../FormLayout.scss';
 
 export interface GroupProps {
   children?: React.ReactNode;
@@ -26,9 +27,16 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
   if (helpText) {
     helpTextID = `${id}HelpText`;
     helpTextElement = (
-      <div id={helpTextID} className={styles.HelpText}>
+      <Box
+        id={helpTextID}
+        paddingBlockStart="2"
+        paddingInlineStart="5"
+        paddingBlockEnd="0"
+        paddingInlineEnd="5"
+        color="text-subdued"
+      >
         {helpText}
-      </div>
+      </Box>
     );
   }
 

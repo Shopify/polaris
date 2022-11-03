@@ -45,7 +45,11 @@
 }
 
 .Content {
-  @include text-style-button;
+  font-size: var(--p-font-size-100);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-1);
+  text-transform: initial;
+  letter-spacing: initial;
   position: relative;
   display: flex;
   justify-content: center;
@@ -385,7 +389,11 @@
   padding: var(--pc-button-large-vertical-padding) var(--p-space-6);
 
   .Content {
-    @include text-style-button-large;
+    font-size: var(--p-font-size-200);
+    font-weight: var(--p-font-weight-medium);
+    line-height: var(--p-font-line-height-2);
+    text-transform: initial;
+    letter-spacing: initial;
   }
 }
 

@@ -104,7 +104,7 @@ $list-filters-footer-height: 70px;
 
 .FilterTriggerTitle {
   font-size: 15px;
-  @include text-emphasis-strong;
+  font-weight: var(--p-font-weight-semibold);
 }
 
 .AppliedFilterBadgeContainer {
