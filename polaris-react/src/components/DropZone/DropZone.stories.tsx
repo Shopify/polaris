@@ -98,7 +98,7 @@ export function WithImageFileUpload() {
           <div>
             {file.name}{' '}
             <Text variant="bodySm" as="p">
-              {file.size}bytes
+              {file.size} bytes
             </Text>
           </div>
         </Stack>
@@ -159,7 +159,7 @@ export function WithSingleFileUpload() {
       <div>
         {file.name}{' '}
         <Text variant="bodySm" as="p">
-          {file.size}bytes
+          {file.size} bytes
         </Text>
       </div>
     </Stack>
@@ -201,7 +201,7 @@ export function WithDropOnPage() {
           <div>
             {file.name}{' '}
             <Text variant="bodySm" as="p">
-              {file.size}bytes
+              {file.size} bytes
             </Text>
           </div>
         </Stack>
@@ -259,7 +259,7 @@ export function AcceptsOnlySVGFiles() {
           <div>
             {file.name}{' '}
             <Text variant="bodySm" as="p">
-              {file.size}bytes
+              {file.size} bytes
             </Text>
           </div>
         </Stack>
@@ -326,7 +326,7 @@ export function Nested() {
           <div>
             {file.name}{' '}
             <Text variant="bodySm" as="p">
-              {file.size}bytes
+              {file.size} bytes
             </Text>
           </div>
         </Stack>
@@ -398,7 +398,7 @@ export function WithCustomFileUploadText() {
           <div>
             {file.name}{' '}
             <Text variant="bodySm" as="p">
-              {file.size}bytes
+              {file.size} bytes
             </Text>
           </div>
         </Stack>
@@ -447,7 +447,7 @@ export function WithCustomFileDialogTrigger() {
           <div>
             {file.name}{' '}
             <Text variant="bodySm" as="p">
-              {file.size}bytes
+              {file.size} bytes
             </Text>
           </div>
         </Stack>
