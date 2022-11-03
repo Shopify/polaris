@@ -118,7 +118,8 @@ function isDisabledCoverageRule(disabledCoverageLines, disabledRange) {
 }
 
 /**
- * Check if the disabled range includes both stylelint-disable and stylelint-enable comments
+ * Checks if the `disabledRange` is an unclosed `stylelint-disable` comment
+ * e.g. The `stylelint-disable` comment is NOT followed by `stylelint-enable`
  * @param {import('stylelint').DisabledRange} disabledRange
  */
 function isUnclosedDisabledRange(disabledRange) {

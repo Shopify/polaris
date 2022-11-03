@@ -58,7 +58,8 @@ testRule({
       `,
       description:
         'Uses disallowed at-rule with disable/enable comment and without context',
-      message: 'Missing "polaris:" prefix in disable comment description',
+      message:
+        'Expected /* stylelint-disable -- polaris: Reason for disabling */',
     },
     {
       code: `
@@ -68,7 +69,8 @@ testRule({
       `,
       description:
         'Uses disallowed at-rule with disable comment and without context and enable comment',
-      message: 'Missing "polaris:" prefix in disable comment description',
+      message:
+        'Expected /* stylelint-disable -- polaris: Reason for disabling */',
     },
     {
       code: `
@@ -77,7 +79,8 @@ testRule({
       `,
       description:
         'Uses disallowed at-rule with disable next line comment and without context',
-      message: 'Missing "polaris:" prefix in disable comment description',
+      message:
+        'Expected /* stylelint-disable-next-line -- polaris: Reason for disabling */',
     },
   ],
 });
