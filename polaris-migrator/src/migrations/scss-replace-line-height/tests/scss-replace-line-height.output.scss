@@ -1,0 +1,16 @@
+.font-line-height {
+  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-1);
+  line-height: 2.25rem;
+  // Comment
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: line-height($invalid);
+  line-height: line-height($invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: line-height(caption, $invalid);
+  line-height: line-height(caption, $invalid);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // line-height: line-height();
+  line-height: line-height();
+}
