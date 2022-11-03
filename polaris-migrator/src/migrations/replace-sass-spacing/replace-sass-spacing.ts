@@ -18,7 +18,7 @@ import {
 import {isKeyOf} from '../../utilities/type-guards';
 
 const spacingMap = {
-  none: '--p-space-0',
+  none: '0',
   'extra-tight': '--p-space-1',
   tight: '--p-space-2',
   'base-tight': '--p-space-3',
@@ -62,17 +62,24 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         const spacing = node.nodes[0]?.value ?? '';
 
         if (!isKeyOf(spacingMap, spacing)) return;
-        const spacingCustomProperty = spacingMap[spacing];
 
-        node.value = 'var';
-        node.nodes = [
-          {
-            type: 'word',
-            value: spacingCustomProperty,
-            sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-            sourceEndIndex: spacingCustomProperty.length,
-          },
-        ];
+        if (spacing === 'none') {
+          // @ts-expect-error - Change node type from a function to a word.
+          node.type = 'word';
+          node.value = spacingMap[spacing];
+        } else {
+          const spacingCustomProperty = spacingMap[spacing];
+
+          node.value = 'var';
+          node.nodes = [
+            {
+              type: 'word',
+              value: spacingCustomProperty,
+              sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
+              sourceEndIndex: spacingCustomProperty.length,
+            },
+          ];
+        }
       });
 
       if (hasNumericOperator(parsedValue)) {

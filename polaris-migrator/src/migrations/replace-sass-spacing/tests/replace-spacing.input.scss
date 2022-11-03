@@ -4,6 +4,7 @@
   // Standard replacement
   padding: spacing();
   padding: spacing(loose);
+  padding: spacing(none);
   // With multiple values
   padding: spacing() spacing();
   padding: spacing() 0 spacing() 0;
