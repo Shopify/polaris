@@ -46,7 +46,7 @@ export function Default() {
             <div>
               {file.name}{' '}
               <Text variant="bodySm" as="p">
-                {file.size}bytes
+                {file.size} bytes
               </Text>
             </div>
           </Stack>
