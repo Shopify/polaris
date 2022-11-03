@@ -77,8 +77,12 @@ module.exports = stylelint.createPlugin(
           continue;
         }
 
+        const stylelintDisableText = disabledRange.comment.text
+          .split('--')[0]
+          .trim();
+
         stylelint.utils.report({
-          message: `Missing "polaris:" prefix in disable comment description`,
+          message: `Expected /* ${stylelintDisableText} -- polaris: Context comment for disable */`,
           ruleName,
           result,
           node: disabledRange.comment,
@@ -119,7 +123,7 @@ function isDisabledCoverageRule(disabledCoverageLines, disabledRange) {
  */
 function isUnclosedDisabledRange(disabledRange) {
   if (
-    disabledRange.comment.text === 'stylelint-disable' &&
+    !disabledRange.comment.text.startsWith('stylelint-disable-next-line') &&
     !isNumber(disabledRange.end)
   ) {
     return true;
