@@ -20,12 +20,10 @@ function LayoutExample() {
               <Text id="storeDetails" variant="headingMd" as="h2">
                 Store details
               </Text>
-              <p>
-                <Text variant="bodyMd" color="subdued" as="span">
-                  Shopify and your customers will use this information to
-                  contact you.
-                </Text>
-              </p>
+              <Text variant="bodyMd" color="subdued" as="p">
+                Shopify and your customers will use this information to contact
+                you.
+              </Text>
             </TextContainer>
           </div>
         </Layout.Section>
