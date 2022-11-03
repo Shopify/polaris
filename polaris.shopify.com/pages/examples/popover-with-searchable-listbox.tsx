@@ -4,12 +4,11 @@ import {
   TextField,
   Icon,
   Link,
-  Heading,
   Popover,
   AutoSelection,
   Scrollable,
   EmptySearchResult,
-  DisplayText,
+  Text,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -185,9 +184,9 @@ function PopoverWithSearchableListboxExample() {
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
-        <DisplayText element="h1">
+        <Text as="h1" variant="headingXl">
           {segments[selectedSegmentIndex].label}
-        </DisplayText>
+        </Text>
       </Link>
     </div>
   );

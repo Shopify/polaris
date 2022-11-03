@@ -7,6 +7,7 @@ import {
   insertJSXAttribute,
 } from '../../../utilities/jsx';
 import {
+  hasImportSpecifier,
   getImportSpecifierName,
   normalizeImportSourcePaths,
   updateImports,
@@ -50,6 +51,7 @@ export function replaceOther<NodeType = ASTNode>(
     });
 
     if (!sourcePaths) return;
+    if (!hasImportSpecifier(j, source, componentName, sourcePaths.from)) return;
 
     const localElementName =
       getImportSpecifierName(j, source, componentName, sourcePaths.from) ||

@@ -1,9 +1,4 @@
-import {
-  IndexTable,
-  TextStyle,
-  Card,
-  useIndexResourceState,
-} from '@shopify/polaris';
+import {IndexTable, Card, useIndexResourceState, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -43,9 +38,9 @@ function SimpleSmallScreenIndexTableExample() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <p>
-            <TextStyle variation="strong">{name}</TextStyle>
-          </p>
+          <Text variant="bodyMd" fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
           <p>{orders}</p>
           <p>{amountSpent}</p>
