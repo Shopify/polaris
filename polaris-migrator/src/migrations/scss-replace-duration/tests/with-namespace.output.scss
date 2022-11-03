@@ -1,3 +1,5 @@
+@use 'global-styles/legacy-polaris-v8';
+
 .duration-simple-string-arg {
   transition-duration: var(--p-duration-0);
   transition-duration: var(--p-duration-100);

@@ -1,3 +1,5 @@
+@use 'global-styles/legacy-polaris-v8';
+
 .duration-simple-string-arg {
   transition-duration: legacy-polaris-v8.duration('none');
   transition-duration: legacy-polaris-v8.duration('fast');

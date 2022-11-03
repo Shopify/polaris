@@ -1,3 +1,5 @@
+@use 'global-styles/legacy-polaris-v8';
+
 .easing-simple-string-arg {
   transition-timing-function: legacy-polaris-v8.easing('anticipate');
   transition-timing-function: legacy-polaris-v8.easing('base');

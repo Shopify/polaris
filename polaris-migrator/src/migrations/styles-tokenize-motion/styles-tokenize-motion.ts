@@ -2,8 +2,6 @@ import {Declaration} from 'postcss';
 import valueParser, {ParsedValue, Node} from 'postcss-value-parser';
 
 import {
-  namespace,
-  isSassFunction,
   isSassVariable,
   hasNumericOperator,
   isTransformableDuration,
@@ -68,9 +66,7 @@ function normalizeStringifiedNumber(number: string): string {
 
 export default createSassMigrator(
   'replace-sass-transition',
-  (_, {methods, options}, context) => {
-    const durationFunc = namespace('duration', options);
-
+  (_, {methods}, context) => {
     function insertUnexpectedEasingFunctionComment(
       node: Node,
       decl: Declaration,
@@ -221,10 +217,7 @@ export default createSassMigrator(
 
         nodes.forEach((node) => {
           const unit = valueParser.unit(node.value);
-          if (
-            isTransformableDuration(unit) ||
-            isSassFunction(durationFunc, node)
-          ) {
+          if (isTransformableDuration(unit)) {
             timings.push(node);
           } else {
             // This node could be either the property to animate, or an easing
