@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Updated `Bleed` component docs
+Updated `Bleed` component guidance and examples
