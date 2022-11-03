@@ -17,7 +17,6 @@ import valueParser, {
   Dimension,
 } from 'postcss-value-parser';
 import {toPx, getCustomPropertyNames, tokens} from '@shopify/polaris-tokens';
-import prettier from 'prettier';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../constants';
 
@@ -328,15 +327,8 @@ export function isPolarisVar(node: Node): boolean {
   );
 }
 
-export function createInlineComment(text: string, options?: {prose?: boolean}) {
-  const formatted = prettier
-    .format(text, {
-      parser: options?.prose ? 'markdown' : 'scss',
-      proseWrap: 'never',
-      printWidth: 9999,
-    })
-    .trim();
-  const comment = postcss.comment({text: formatted});
+export function createInlineComment(text: string) {
+  const comment = postcss.comment({text: text.replace(/\s+/gm, ' ').trim()});
 
   comment.raws.left = ' ';
   comment.raws.inline = true;
@@ -477,15 +469,11 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
     const flushReportsAsComments = () => {
       // @ts-expect-error No idea why TS is complaining here
       for (const [node, reportsForNode] of reports) {
-        node.before(
-          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
-        );
+        node.before(createInlineComment(POLARIS_MIGRATOR_COMMENT));
 
         for (const report of reportsForNode) {
           node.before(
-            createInlineComment(`${report.severity}: ${report.message}`, {
-              prose: true,
-            }),
+            createInlineComment(`${report.severity}: ${report.message}`),
           );
         }
       }
@@ -573,7 +561,7 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
             root.walkDecls(
               createWalker({
                 walker,
-                serialiseSuggestion: (node) => `${node.prop}: ${node.value}`,
+                serialiseSuggestion: (node) => `${node.prop}: ${node.value};`,
               }),
             );
           },

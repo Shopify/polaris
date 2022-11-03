@@ -85,9 +85,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       });
 
       if (needsComment) {
-        decl.before(
-          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
-        );
+        decl.before(createInlineComment(POLARIS_MIGRATOR_COMMENT));
         decl.before(
           createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
         );

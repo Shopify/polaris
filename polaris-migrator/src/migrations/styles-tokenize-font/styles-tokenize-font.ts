@@ -63,9 +63,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
       handlers[decl.prop]();
 
       if (targets.some(({replaced}) => !replaced || hasNumericOperator)) {
-        decl.before(
-          createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
-        );
+        decl.before(createInlineComment(POLARIS_MIGRATOR_COMMENT));
         decl.before(
           createInlineComment(`${decl.prop}: ${parsedValue.toString()};`),
         );

@@ -116,7 +116,7 @@
   // padding: var(--p-space-4) + var(--p-space-4);
   padding: rem(16px) + 16px;
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // error: Non-tokenizable value '$var \* 16px'
+  // error: Non-tokenizable value '$var * 16px'
   // warning: Numeric operator detected.
   // padding: rem($var * var(--p-space-4));
   padding: rem($var * 16px);
