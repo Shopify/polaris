@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Heading, TextContainer} from '@shopify/polaris';
+import {Text, TextContainer} from '@shopify/polaris';
 
 export default {
   component: TextContainer,
@@ -9,7 +9,9 @@ export default {
 export function Default() {
   return (
     <TextContainer>
-      <Heading>Install the Shopify POS App</Heading>
+      <Text variant="headingMd" as="h2">
+        Install the Shopify POS App
+      </Text>
       <p>
         Shopify POS is the easiest way to sell your products in person.
         Available for iPad, iPhone, and Android.
@@ -21,7 +23,9 @@ export function Default() {
 export function Tight() {
   return (
     <TextContainer spacing="tight">
-      <Heading>Install the Shopify POS App</Heading>
+      <Text variant="headingMd" as="h2">
+        Install the Shopify POS App
+      </Text>
       <p>
         Shopify POS is the easiest way to sell your products in person.
         Available for iPad, iPhone, and Android.

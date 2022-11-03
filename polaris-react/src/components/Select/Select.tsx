@@ -4,7 +4,9 @@ import {SelectMinor} from '@shopify/polaris-icons';
 import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
 import {Labelled, LabelledProps, helpTextID} from '../Labelled';
+import {Box} from '../Box';
 import {Icon} from '../Icon';
+import {Text} from '../Text';
 import type {Error} from '../../types';
 
 import styles from './Select.scss';
@@ -130,7 +132,11 @@ export function Select({
   }
 
   const inlineLabelMarkup = labelInline && (
-    <span className={styles.InlineLabel}>{label}</span>
+    <Box paddingInlineEnd="1">
+      <Text as="span" variant="bodyMd" color="subdued" truncate>
+        {label}
+      </Text>
+    </Box>
   );
 
   const selectedOption = getSelectedOption(normalizedOptions, value);

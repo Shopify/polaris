@@ -5,6 +5,7 @@ import {Tab, Panel, TabMeasurer} from '../components';
 import {Tabs, TabsProps} from '../Tabs';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {Popover} from '../../Popover';
+import {Text} from '../../Text';
 
 jest.mock('../../Portal', () => ({
   ...(jest.requireActual('../../Portal') as any),
@@ -180,9 +181,10 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
-          children: tab!.content,
-        });
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toContainReactComponent(
+          Text,
+          {children: tab!.content},
+        );
       });
     });
 
@@ -203,9 +205,12 @@ describe('<Tabs />', () => {
       );
 
       tabsWithContent.forEach((tab, index) => {
-        expect(wrapper.find('ul')!.findAll(Tab)[index]).toHaveReactProps({
-          children: tab.content,
-        });
+        expect(wrapper.find('ul')!.findAll(Tab)[index]).toContainReactComponent(
+          Text,
+          {
+            children: tab.content,
+          },
+        );
       });
     });
   });

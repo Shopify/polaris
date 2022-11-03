@@ -17,8 +17,15 @@ type CardBackgroundColorTokenScale = Extract<
 export interface AlphaCardProps {
   /** Elements to display inside card */
   children?: React.ReactNode;
+  /** Background color
+   * @default 'surface'
+   */
   background?: CardBackgroundColorTokenScale;
+  /** The spacing around the card
+   * @default '5'
+   */
   padding?: SpacingSpaceScale;
+  /** Border radius value above a set breakpoint */
   roundedAbove?: BreakpointsAlias;
 }
 

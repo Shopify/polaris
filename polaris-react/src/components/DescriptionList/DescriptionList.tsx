@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {Text} from '../Text';
 
 import styles from './DescriptionList.scss';
 
@@ -29,7 +30,9 @@ export function DescriptionList({
     (allTerms, {term, description}, index) => [
       ...allTerms,
       <dt key={`dt${index}`} className={styles.Term}>
-        {term}
+        <Text as="span" variant="headingSm">
+          {term}
+        </Text>
       </dt>,
       <dd key={`dd${index}`} className={styles.Description}>
         {description}

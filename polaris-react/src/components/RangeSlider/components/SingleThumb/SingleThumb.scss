@@ -220,13 +220,10 @@ $range-output-translate-x: calc(
     }
   }
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
-}
 
-.OutputText {
-  @include text-style-subheading;
-  display: block;
-  flex: 1 1 auto;
-  margin: auto;
-  text-align: center;
-  color: var(--p-text);
+  > :first-child {
+    display: block;
+    flex: 1 1 auto;
+    margin: auto;
+  }
 }

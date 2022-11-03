@@ -82,7 +82,11 @@ $spinner-icon-size: 12px;
 }
 
 .Input {
-  @include text-style-input;
+  font-size: var(--p-font-size-200);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-2);
+  text-transform: initial;
+  letter-spacing: initial;
   position: relative;
   z-index: var(--pc-text-field-contents);
   display: block;
@@ -98,6 +102,11 @@ $spinner-icon-size: 12px;
   appearance: none;
   caret-color: var(--p-text);
   color: var(--p-text);
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-100);
+    line-height: var(--p-font-line-height-2);
+  }
 
   .Prefix + & {
     padding-left: 0;
@@ -223,7 +232,7 @@ $spinner-icon-size: 12px;
 }
 
 .CharacterCount {
-  @include text-emphasis-subdued;
+  color: var(--p-text-subdued);
   z-index: var(--pc-text-field-contents);
   margin: 0 var(--p-space-3) 0 var(--p-space-1);
   pointer-events: none;
