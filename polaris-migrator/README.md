@@ -26,8 +26,8 @@ Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`
 ```diff
 - <DisplayText size="medium">Display text</DisplayText>
 - <Heading>Heading</Heading>
-+ <Text variant="heading2xl" as="p">Display text</Text>
-+ <Text variant="headingLg" as="h2">Heading</Text>
++ <Text variant="headingXl" as="p">Display text</Text>
++ <Text variant="headingMd" as="h2">Heading</Text>
 ```
 
 ```sh
