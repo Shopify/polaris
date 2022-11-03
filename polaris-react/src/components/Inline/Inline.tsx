@@ -1,8 +1,6 @@
 import React from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {elementChildren} from '../../utilities/components';
-
 import styles from './Inline.scss';
 
 const AlignY = {
@@ -43,13 +41,9 @@ export const Inline = function Inline({
     '--pc-inline-spacing': `var(--p-space-${spacing})`,
   } as React.CSSProperties;
 
-  const itemMarkup = elementChildren(children).map((child, index) => {
-    return <div key={index}>{child}</div>;
-  });
-
   return (
     <div className={styles.Inline} style={style}>
-      {itemMarkup}
+      {children}
     </div>
   );
 };
