@@ -33,7 +33,7 @@ export function AlignYCenter() {
 
 export function AlignYTop() {
   return (
-    <Inline alignY="top">
+    <Inline alignY="top" spacing="1'>
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
