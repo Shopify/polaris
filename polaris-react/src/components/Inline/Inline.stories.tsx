@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Badge, Heading, Icon, Inline, Thumbnail} from '@shopify/polaris';
+import {Box, Badge, Icon, Inline, Thumbnail} from '@shopify/polaris';
 import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
 
 export default {
