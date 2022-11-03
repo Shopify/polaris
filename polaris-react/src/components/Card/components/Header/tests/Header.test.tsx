@@ -3,7 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {buttonsFrom} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
-import {Heading} from '../../../../Heading';
+import {Text} from '../../../../Text';
 import {Header} from '../Header';
 
 jest.mock('../../../../Button', () => ({
@@ -17,13 +17,13 @@ describe('<Header />', () => {
   describe('title', () => {
     it('renders a heading when defined', () => {
       const header = mountWithApp(<Header title="Staff accounts" />);
-      expect(header).toContainReactComponent(Heading);
+      expect(header).toContainReactComponent(Text, {variant: 'headingMd'});
     });
 
     it('renders the title directly if its a valid React element', () => {
       const title = <div>Staff accounts</div>;
       const header = mountWithApp(<Header title={title} />);
-      expect(header).not.toContainReactComponent(Heading);
+      expect(header).not.toContainReactComponent(Text, {variant: 'headingLg'});
       expect(header).toContainReactComponent('div', {
         children: 'Staff accounts',
       });
@@ -32,7 +32,9 @@ describe('<Header />', () => {
     it('is used as the content for the heading', () => {
       const title = 'Staff accounts';
       const header = mountWithApp(<Header title={title} />);
-      expect(header.find(Heading)).toContainReactText(title);
+      expect(header.find(Text, {variant: 'headingMd'})).toContainReactText(
+        title,
+      );
     });
   });
 

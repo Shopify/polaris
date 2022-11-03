@@ -6,7 +6,7 @@ import {Scrollable} from '../../../Scrollable';
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
-import {TextStyle} from '../../../TextStyle';
+import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 
@@ -63,7 +63,9 @@ export function Item({
   const contentMarkup = helpText ? (
     <span className={styles.ContentBlock}>
       <span className={styles.ContentBlockInner}>{contentText}</span>
-      <TextStyle variation="subdued">{helpText}</TextStyle>
+      <Text variant="bodyMd" color="subdued" as="span">
+        {helpText}
+      </Text>
     </span>
   ) : (
     contentText

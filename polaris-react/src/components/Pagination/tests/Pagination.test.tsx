@@ -7,7 +7,7 @@ import {Pagination} from '../Pagination';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import {TextField} from '../../TextField';
-import {TextStyle} from '../../TextStyle';
+import {Text} from '../../Text';
 import {Tooltip} from '../../Tooltip';
 import en from '../../../../locales/en.json';
 
@@ -150,8 +150,8 @@ describe('<Pagination />', () => {
     it('has subdued text without next and previous pages', () => {
       const pagination = mountWithApp(<Pagination label="test" />);
 
-      expect(pagination).toContainReactComponent(TextStyle, {
-        variation: 'subdued',
+      expect(pagination).toContainReactComponent(Text, {
+        color: 'subdued',
       });
     });
   });

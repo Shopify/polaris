@@ -71,6 +71,16 @@ export function WithSections() {
               {value: 'path', label: 'Traffic referrer path'},
             ],
           },
+          {
+            title: 'Inventory Location',
+            options: [
+              {value: 'byward_market', label: 'Byward Market'},
+              {value: 'centretown', label: 'Centretown'},
+              {value: 'hintonburg', label: 'Hintonburg'},
+              {value: 'westboro', label: 'Westboro'},
+              {value: 'downtown', label: 'Downtown'},
+            ],
+          },
         ]}
         selected={selected}
         allowMultiple

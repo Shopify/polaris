@@ -3,7 +3,6 @@
 $Backdrop-opacity: 0.88;
 
 .Toast {
-  @include text-style-display-small;
   display: inline-flex;
   max-width: 500px;
   padding: var(--p-space-2) var(--p-space-4);
@@ -53,7 +52,7 @@ $Backdrop-opacity: 0.88;
     align-self: flex-start;
     margin: calc(-1 * var(--p-space-2)) calc(-1 * var(--p-space-4))
       calc(-1 * var(--p-space-2)) 0;
-    padding: var(--p-space-3) var(--p-space-4) var(--p-space-2);
+    padding: var(--p-space-2) var(--p-space-4) 0;
   }
 
   &:focus {

@@ -1,8 +1,7 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {DisplayText} from '../DisplayText';
-import {TextStyle} from '../TextStyle';
+import {Text} from '../Text';
 import {Image} from '../Image';
 import {Stack} from '../Stack';
 
@@ -31,8 +30,12 @@ export function EmptySearchResult({
   return (
     <Stack alignment="center" vertical>
       {illustrationMarkup}
-      <DisplayText size="small">{title}</DisplayText>
-      <TextStyle variation="subdued">{descriptionMarkup}</TextStyle>
+      <Text variant="headingLg" as="p">
+        {title}
+      </Text>
+      <Text variant="bodyMd" color="subdued" as="span">
+        {descriptionMarkup}
+      </Text>
     </Stack>
   );
 }

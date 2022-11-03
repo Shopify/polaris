@@ -235,6 +235,37 @@ Be aware that this may also create additional code changes in your codebase, we 
 npx @shopify/polaris-migrator replace-sass-spacing <path>
 ```
 
+### `replace-sass-transition`
+
+Replace timings (`ms`, `s`) and legacy Sass functions (`duration()`,`easing()`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+```diff
+- transition-duration: 100ms;
++ transition-duration: var(--p-duration-100);
+
+- transition-duration: legacy-polaris-v8.duration('slow');
++ transition-duration: var(--p-duration-300);
+
+- transition-timing-function: linear;
++ transition-timing-function: var(--p-linear);
+
+- transition-timing-function: legacy-polaris-v8.easing('in');
++ transition-timing-function: var(--p-ease-in);
+
+- transition: opacity 100ms linear;
++ transition: opacity var(--p-duration-100) linear;
+
+- transition: opacity legacy-polaris-v8.duration('slow') linear;
++ transition: opacity var(--p-duration-300) linear;
+
+- transition: opacity 100ms linear, left 100ms linear;
++ transition: opacity var(--p-duration-100) linear, left var(--p-duration-100) linear;
+```
+
+```sh
+npx @shopify/polaris-migrator replace-sass-transition <path>
+```
+
 ## Creating Migrations
 
 Sometimes referred to as "codemods", migrations are JavaScript functions which modify some code from one form to another (eg; to move between breaking versions of `@shopify/polaris`). ASTs (Abstract Syntax Trees) are used to "walk" through the code in discreet, strongly typed steps, called "nodes". All changes made to nodes (and thus the AST) are then written out as the new/"migrated" version of the code.
@@ -278,38 +309,47 @@ migrations
 
 #### The SASS migration function
 
-Each migrator has a default export adhering to the [PostCSS Plugin API](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md) with one main difference: events are only executed once.
+Each migrator has a default export adhering to the [Stylelint Rule API](https://github.com/postcss/postcss/blob/main/docs/writing-a-plugin.md). A PostCSS AST is passed as the `root` and can be mutated inline, or emit warning/error reports.
 
 Continuing the example, here is what the migration may look like if our goal is to replace the Sass function `hello()` with `world()`.
 
 ```ts
 // polaris-migrator/src/migrations/replace-sass-function/replace-sass-function.ts
+import {
+  isSassFunction,
+  StopWalkingFunctionNodes,
+  createSassMigrator,
+} from '../../utilities/sass';
+import type {PolarisMigrator} from '../../utilities/sass';
 
-import type {FileInfo} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
-import valueParser from 'postcss-value-parser';
+const replaceHelloWorld: PolarisMigrator = (_, {methods}, context) => {
+  return (root) => {
+    methods.walkDecls(root, (decl) => {
+      const parsedValue = valueParser(decl.value);
+      parsedValue.walk((node) => {
+        if (isSassFunction('hello', node)) {
+          if (context.fix) {
+            node.value = 'world';
+          } else {
+            methods.report({
+              node: decl,
+              severity: 'error',
+              message:
+                'Method hello() is no longer supported. Please migrate to world().',
+            });
+          }
 
-const plugin = (): Plugin => ({
-  postcssPlugin: 'replace-sass-function',
-  Declaration(decl) {
-    // const prop = decl.prop;
-    const parsedValue = valueParser(decl.value);
-
-    parsedValue.walk((node) => {
-      if (!(node.type === 'function' && node.value === 'hello')) return;
-
-      node.value = 'world';
+          return StopWalkingFunctionNodes;
+        }
+      });
+      if (context.fix) {
+        decl.value = parsedValue.toString();
+      }
     });
+  };
+};
 
-    decl.value = parsedValue.toString();
-  },
-});
-
-export default function replaceSassFunction(fileInfo: FileInfo) {
-  return postcss(plugin()).process(fileInfo.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
+export default createSassMigrator('replace-hello-world', replaceHelloWorld);
 ```
 
 A more complete example can be seen in [`replace-spacing-lengths.ts`](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-spacing-lengths/replace-spacing-lengths.ts).

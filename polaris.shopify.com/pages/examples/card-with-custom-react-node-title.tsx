@@ -1,4 +1,4 @@
-import {Card, Stack, Icon, Subheading, List} from '@shopify/polaris';
+import {Card, Stack, Icon, List, Text} from '@shopify/polaris';
 import {ProductsMajor} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -10,7 +10,9 @@ function CardExample() {
         title={
           <Stack>
             <Icon source={ProductsMajor} />
-            <Subheading>New Products</Subheading>
+            <Text variant="headingXs" as="h3">
+              New Products
+            </Text>
           </Stack>
         }
       >

@@ -1,12 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  ActionList,
-  Frame,
-  Icon,
-  TopBar,
-  VisuallyHidden,
-} from '@shopify/polaris';
+import {ActionList, Frame, Icon, TopBar, Text} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -89,7 +83,9 @@ export function Default() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <VisuallyHidden>Secondary menu</VisuallyHidden>
+          <Text variant="bodySm" as="span" visuallyHidden>
+            Secondary menu
+          </Text>
         </span>
       }
       open={isSecondaryMenuOpen}

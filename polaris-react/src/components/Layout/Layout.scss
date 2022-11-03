@@ -105,7 +105,3 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-top: var(--p-space-4);
   margin-left: var(--p-space-5);
 }
-
-.AnnotationDescription {
-  @include text-emphasis-subdued;
-}
