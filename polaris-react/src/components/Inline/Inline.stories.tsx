@@ -33,7 +33,7 @@ export function AlignYCenter() {
 
 export function AlignYTop() {
   return (
-    <Inline alignY="top">
+    <Inline alignY="top" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -66,7 +66,7 @@ export function AlignYBaseline() {
 
 export function AlignStart() {
   return (
-    <Inline align="start" alignY="center">
+    <Inline align="start" alignY="center" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -77,7 +77,7 @@ export function AlignStart() {
 
 export function AlignCenter() {
   return (
-    <Inline align="center" alignY="center">
+    <Inline align="center" alignY="center" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -88,7 +88,7 @@ export function AlignCenter() {
 
 export function AlignEnd() {
   return (
-    <Inline align="end" alignY="center">
+    <Inline align="end" alignY="center" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -99,7 +99,7 @@ export function AlignEnd() {
 
 export function AlignCenterAlignYCenter() {
   return (
-    <Inline align="center" alignY="center">
+    <Inline align="center" alignY="center" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -110,7 +110,7 @@ export function AlignCenterAlignYCenter() {
 
 export function NonWrapping() {
   return (
-    <Inline wrap={false}>
+    <Inline wrap={false} spacing="1">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
@@ -123,7 +123,9 @@ export function Spacing() {
   return (
     <Inline spacing="8">
       <Badge>Paid</Badge>
+      <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
+      <Badge>Completed</Badge>
     </Inline>
   );
 }
