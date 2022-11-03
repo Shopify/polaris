@@ -82,7 +82,7 @@ module.exports = stylelint.createPlugin(
           .trim();
 
         stylelint.utils.report({
-          message: `Expected /* ${stylelintDisableText} -- polaris: Context comment for disable */`,
+          message: `Expected /* ${stylelintDisableText} -- polaris: Reason for disabling */`,
           ruleName,
           result,
           node: disabledRange.comment,
