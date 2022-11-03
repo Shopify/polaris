@@ -8,6 +8,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
+// some generic comment
 type Element = 'div' | 'span' | 'section';
 
 type Overflow = 'hidden' | 'scroll';
