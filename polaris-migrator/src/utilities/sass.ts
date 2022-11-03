@@ -600,3 +600,14 @@ export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
 
   return convertStylelintRuleToPostcssProcessor(wrappedRule);
 }
+
+export function setNodeValue(node: Node, value: string): void {
+  const {sourceIndex} = node;
+  const parsedValue = valueParser(value).nodes[0];
+  Object.assign(node, parsedValue);
+  // The node we're replacing might be mid-way through a higher-level value
+  // string. Eg; 'border: 1px solid', the 'solid' node is 5 characters into the
+  // higher-level value, so we need to correct the index here.
+  node.sourceIndex += sourceIndex;
+  node.sourceEndIndex += sourceIndex;
+}

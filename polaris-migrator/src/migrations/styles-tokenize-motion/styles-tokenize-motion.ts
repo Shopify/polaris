@@ -1,9 +1,5 @@
 import {Declaration} from 'postcss';
-import valueParser, {
-  ParsedValue,
-  Node,
-  FunctionNode,
-} from 'postcss-value-parser';
+import valueParser, {ParsedValue, Node} from 'postcss-value-parser';
 
 import {
   namespace,
@@ -13,20 +9,9 @@ import {
   isTransformableDuration,
   isPolarisVar,
   createSassMigrator,
+  setNodeValue,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
-
-const DEFAULT_DURATION = 'base';
-const DEFAULT_FUNCTION = 'base';
-
-const durationFuncMap = {
-  none: '--p-duration-0',
-  fast: '--p-duration-100',
-  base: '--p-duration-200',
-  slow: '--p-duration-300',
-  slower: '--p-duration-400',
-  slowest: '--p-duration-500',
-};
 
 const durationConstantsMap = {
   '0': '--p-duration-0',
@@ -55,12 +40,6 @@ const durationConstantsMap = {
   '5s': '--p-duration-5000',
 };
 
-const easingFuncMap = {
-  base: '--p-ease',
-  in: '--p-ease-in',
-  out: '--p-ease-out',
-};
-
 const easingFuncConstantsMap = {
   linear: '--p-linear',
   ease: '--p-ease',
@@ -68,8 +47,6 @@ const easingFuncConstantsMap = {
   'ease-out': '--p-ease-out',
   'ease-in-out': '--p-ease-in-out',
 };
-
-const deprecatedEasingFuncs = ['anticipate', 'excite', 'overshoot'];
 
 // Per the spec for transition easing functions:
 // https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
@@ -85,59 +62,14 @@ const cssEasingBuiltinFuncs = [
   'steps',
 ];
 
-function normaliseStringifiedNumber(number: string): string {
+function normalizeStringifiedNumber(number: string): string {
   return Number(number).toString();
-}
-
-function setNodeValue(node: Node, value: string): void {
-  const {sourceIndex} = node;
-  const parsedValue = valueParser(value).nodes[0];
-  Object.assign(node, parsedValue);
-  // The node we're replacing might be mid-way through a higher-level value
-  // string. Eg; 'border: 1px solid', the 'solid' node is 5 characters into the
-  // higher-level value, so we need to correct the index here.
-  node.sourceIndex += sourceIndex;
-  node.sourceEndIndex += sourceIndex;
 }
 
 export default createSassMigrator(
   'replace-sass-transition',
   (_, {methods, options}, context) => {
     const durationFunc = namespace('duration', options);
-
-    function migrateLegacySassEasingFunction(
-      node: FunctionNode,
-      decl: Declaration,
-    ) {
-      const easingFunc = node.nodes[0]?.value ?? DEFAULT_FUNCTION;
-
-      if (!isKeyOf(easingFuncMap, easingFunc)) {
-        const comment = deprecatedEasingFuncs.includes(easingFunc)
-          ? `The ${easingFunc} easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.`
-          : `Unexpected easing function '${easingFunc}'.`;
-
-        methods.report({
-          severity: 'warning',
-          node: decl,
-          message: comment,
-        });
-
-        return;
-      }
-
-      const easingCustomProperty = easingFuncMap[easingFunc];
-      const targetValue = `var(${easingCustomProperty})`;
-
-      if (context.fix) {
-        setNodeValue(node, targetValue);
-      } else {
-        methods.report({
-          severity: 'error',
-          node: decl,
-          message: `Replace easing function with token: ${targetValue}`,
-        });
-      }
-    }
 
     function insertUnexpectedEasingFunctionComment(
       node: Node,
@@ -162,42 +94,14 @@ export default createSassMigrator(
         methods.report({
           severity: 'warning',
           node: decl,
-          message: `Cannot statically analyse SASS variable ${node.value}.`,
+          message: `Cannot statically analyze SCSS variable ${node.value}.`,
         });
-        return;
-      }
-
-      if (isSassFunction(durationFunc, node)) {
-        const duration = node.nodes[0]?.value ?? DEFAULT_DURATION;
-
-        if (!isKeyOf(durationFuncMap, duration)) {
-          methods.report({
-            severity: 'warning',
-            node: decl,
-            message: `Unknown duration key '${duration}'.`,
-          });
-          return;
-        }
-
-        const durationCustomProperty = durationFuncMap[duration];
-        const targetValue = `var(${durationCustomProperty})`;
-
-        if (context.fix) {
-          setNodeValue(node, targetValue);
-        } else {
-          methods.report({
-            severity: 'error',
-            node: decl,
-            message: `Replace duration with token: ${targetValue}`,
-          });
-        }
-
         return;
       }
 
       const unit = valueParser.unit(node.value);
       if (unit) {
-        const constantDuration = `${normaliseStringifiedNumber(unit.number)}${
+        const constantDuration = `${normalizeStringifiedNumber(unit.number)}${
           unit.unit
         }`;
 
@@ -238,14 +142,13 @@ export default createSassMigrator(
         methods.report({
           severity: 'warning',
           node: decl,
-          message: `Cannot statically analyse SASS variable ${node.value}.`,
+          message: `Cannot statically analyze SCSS variable ${node.value}.`,
         });
         return;
       }
 
       if (node.type === 'function') {
         const easingFuncHandlers = {
-          [namespace('easing', options)]: migrateLegacySassEasingFunction,
           // Per the spec, these can all be functions:
           // https://w3c.github.io/csswg-drafts/css-easing/#easing-functions
           linear: insertUnexpectedEasingFunctionComment,

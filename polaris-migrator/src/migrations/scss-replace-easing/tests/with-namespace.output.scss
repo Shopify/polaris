@@ -1,0 +1,117 @@
+.easing-simple-string-arg {
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: legacy-polaris-v8.easing('anticipate');
+  transition-timing-function: var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: legacy-polaris-v8.easing('excite');
+  transition-timing-function: var(--p-ease-in);
+  transition-timing-function: var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-simple-non-string-arg {
+  transition-timing-function: var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: legacy-polaris-v8.easing(anticipate);
+  transition-timing-function: var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: legacy-polaris-v8.easing(excite);
+  transition-timing-function: var(--p-ease-in);
+  transition-timing-function: var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition-timing-function: legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-shorthand-string-arg {
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing('anticipate');
+  transition: opacity 300ms var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing('excite');
+  transition: opacity 300ms var(--p-ease-in);
+  transition: opacity 300ms var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-shorthand-non-string-arg {
+  transition: opacity 300ms var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing(anticipate);
+  transition: opacity 300ms var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing(excite);
+  transition: opacity 300ms var(--p-ease-in);
+  transition: opacity 300ms var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-multiple-string-arg {
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing('anticipate'),
+    left 300ms legacy-polaris-v8.easing('anticipate');
+  transition: opacity 300ms var(--p-ease), left 300ms var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing('excite'),
+    left 300ms legacy-polaris-v8.easing('excite');
+  transition: opacity 300ms var(--p-ease-in), left 300ms var(--p-ease-in);
+  transition: opacity 300ms var(--p-ease-out), left 300ms var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing('overshoot'),
+    left 300ms legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-multiple-non-string-arg {
+  transition: opacity 300ms var(--p-ease), left 300ms var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The anticipate easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing(anticipate),
+    left 300ms legacy-polaris-v8.easing(anticipate);
+  transition: opacity 300ms var(--p-ease), left 300ms var(--p-ease);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The excite easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing(excite),
+    left 300ms legacy-polaris-v8.easing(excite);
+  transition: opacity 300ms var(--p-ease-in), left 300ms var(--p-ease-in);
+  transition: opacity 300ms var(--p-ease-out), left 300ms var(--p-ease-out);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  transition: opacity 300ms legacy-polaris-v8.easing(overshoot),
+    left 300ms legacy-polaris-v8.easing(overshoot);
+}
+
+$easingFunc: 'ease-in';
+
+.edges {
+  // Unknown values are flagged
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function 'foobar'.
+  transition-timing-function: legacy-polaris-v8.easing(foobar);
+  // Can only handle hard coded values
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: Unexpected easing function '$easingFunc'.
+  transition-timing-function: legacy-polaris-v8.easing($easingFunc);
+  // Value replacement with legacy easing function value
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // warning: The overshoot easing function is no longer available in Polaris. See https://polaris.shopify.com/tokens/motion for possible values.
+  // transition: opacity 300ms var(--p-ease), left 300ms legacy-polaris-v8.easing(overshoot);
+  transition: opacity 300ms legacy-polaris-v8.easing(base),
+    left 300ms legacy-polaris-v8.easing(overshoot);
+}
