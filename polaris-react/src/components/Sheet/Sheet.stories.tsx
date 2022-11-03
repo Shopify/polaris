@@ -468,10 +468,8 @@ export function WithSearchableListbox() {
                 marginBottom: 'var(--p-space-2)',
               }}
             >
-              <Text variant="bodyMd" color="subdued" as="span">
-                <Text variant="headingXs" as="h3">
-                  Action
-                </Text>
+              <Text as="h3" variant="headingXs" color="subdued">
+                Action
               </Text>
               <Button
                 accessibilityLabel="Cancel"
