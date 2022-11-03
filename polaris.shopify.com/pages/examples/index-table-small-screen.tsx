@@ -38,11 +38,9 @@ function SimpleSmallScreenIndexTableExample() {
         position={index}
       >
         <div style={{padding: '12px 16px'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text variant="bodyMd" fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
           <p>{orders}</p>
           <p>{amountSpent}</p>

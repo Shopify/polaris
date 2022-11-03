@@ -115,11 +115,9 @@ function SmallScreenIndexTableWithAllElementsExample() {
         position={index}
       >
         <div style={{padding: '.75rem 1rem'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
+          <Text variant="bodyMd" fontWeight="bold" as="p">
+            {name}
+          </Text>
           <p>{location}</p>
           <p>{orders}</p>
           <p>{amountSpent}</p>
