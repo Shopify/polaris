@@ -10,7 +10,7 @@ export interface MigrationOptions extends Options {
   relative: boolean;
 }
 
-export default function textReplaceComponents(
+export default function reactReplaceTextComponents(
   file: FileInfo,
   {jscodeshift: j}: API,
   options: MigrationOptions,

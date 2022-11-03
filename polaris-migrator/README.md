@@ -19,7 +19,7 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ### v10
 
-#### `replace-text-component`
+#### `react-replace-text-component`
 
 Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
 
@@ -31,10 +31,10 @@ Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-text-component <path>
+npx @shopify/polaris-migrator react-replace-text-component <path>
 ```
 
-#### `rename-component-prop`
+#### `react-rename-component-prop`
 
 A generic codemod to rename any component prop.
 
@@ -46,26 +46,7 @@ A generic codemod to rename any component prop.
 ```
 
 ```sh
-npx @shopify/polaris-migrator rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
-```
-
-### `replace-spacing-lengths`
-
-Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
-
-```diff
-- padding: 16px;
-+ padding: var(--p-space-4);
-
-- margin: 1rem;
-+ margin: var(--p-space-4);
-
-- gap: rem(16px);
-+ gap: var(--p-space-4);
-```
-
-```sh
-npx @shopify/polaris-migrator replace-spacing-lengths <path>
+npx @shopify/polaris-migrator react-rename-component-prop <path> --component=MyComponent --from=prop --to=newProp
 ```
 
 ### v9
@@ -74,36 +55,6 @@ For projects that use the [`@use` rule](https://sass-lang.com/documentation/at-r
 
 ```sh
 npx @shopify/polaris-migrator <scss-migration> <path> --namespace="legacy-polaris-v8"
-```
-
-### `scss-replace-color`
-
-Replace the legacy Sass `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
-
-```diff
-- color: color('ink');
-- background: color('white');
-+ color: var(--p-text);
-+ background: var(--p-surface);
-```
-
-```sh
-npx @shopify/polaris-migrator scss-replace-color <path>
-```
-
-### `scss-replace-spacing`
-
-Replace the legacy Sass `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
-
-```diff
-- padding: spacing();
-- margin: spacing(loose) spacing(tight);
-+ padding: var(--p-space-4);
-+ margin: var(--p-space-5) var(--p-space-2);
-```
-
-```sh
-npx @shopify/polaris-migrator scss-replace-spacing <path>
 ```
 
 ### `scss-replace-breakpoints`
@@ -117,6 +68,155 @@ Replace legacy static breakpoint mixins with the new Polaris [media query variab
 
 ```sh
 npx @shopify/polaris-migrator scss-replace-breakpoints <path>
+```
+
+### `scss-replace-border`
+
+Replace usage of the legacy SCSS `border()`) function in `border` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border: border();
++ border: var(--p-border-base);
+
+- border: border(divider);
++ border: var(--p-border-divider);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-border <path>
+```
+
+### `scss-replace-border-radius`
+
+Replace usage of the legacy SCSS `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+
+```diff
+- border-radius: border-radius();
++ border-radius: var(--p-border-radius-1);
+
+- border-radius: border-radius(large);
++ border-radius: var(--p-border-radius-large);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-border-radius <path>
+```
+
+### `scss-replace-border-width`
+
+Replace usage of the legacy SCSS `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
+
+```diff
+- border-width: border-width();
++ border-width: var(--p-border-width-1);
+
+- border-width: border-width(thick);
++ border-width: var(--p-border-width-2);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-border-width <path>
+```
+
+### `scss-replace-color`
+
+Replace the legacy SCSS `color()` function with the supported CSS custom property token equivalent (ex: `var(--p-surface)`). This will only replace a limited subset of mapped values. See the [color-maps.ts](https://github.com/Shopify/polaris/blob/main/polaris-migrator/src/migrations/replace-sass-color/color-maps.ts) for a full list of color mappings based on the CSS property.
+
+```diff
+- color: color('ink');
+- background: color('white');
++ color: var(--p-text);
++ background: var(--p-surface);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-color <path>
+```
+
+### `scss-replace-duration`
+
+Replace the legacy SCSS `duration()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+```diff
+- transition-duration: legacy-polaris-v8.duration('slow');
++ transition-duration: var(--p-duration-300);
+
+- transition: opacity legacy-polaris-v8.duration('slow') linear;
++ transition: opacity var(--p-duration-300) linear;
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-duration <path>
+```
+
+### `scss-replace-easing`
+
+Replace the legacy SCSS `easing()` function with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+
+```diff
+- transition-timing-function: legacy-polaris-v8.easing('in');
++ transition-timing-function: var(--p-ease-in);
+
+- transition: opacity 300ms legacy-polaris-v8.easing('in');
++ transition: opacity 300ms var(--p-ease-in);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-easing <path>
+```
+
+### `scss-replace-font-family`
+
+Replace legacy SCSS `font-family()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+
+```diff
+- font-family: font-family(monospace);
++ font-family: var(--p-font-family-mono);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-font-family <path>
+```
+
+### `scss-replace-font-size`
+
+Replace legacy SCSS `font-size()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+
+```diff
+- font-size: font-size(input, base);
++ font-size: var(--p-font-size-200);;
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-font-size <path>
+```
+
+### `scss-replace-line-height`
+
+Replace legacy SCSS `line-height()` function with the corresponding Polaris [font](https://polaris.shopify.com/tokens/font) token.
+
+```diff
+- line-height: line-height(caption, base);
++ font-family: var(--p-font-line-height-2);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-line-height <path>
+```
+
+### `scss-replace-spacing`
+
+Replace the legacy SCSS `spacing()` function with the supported CSS custom property token equivalent (ex: `var(--p-space-4)`).
+
+```diff
+- padding: spacing();
+- margin: spacing(loose) spacing(tight);
++ padding: var(--p-space-4);
++ margin: var(--p-space-5) var(--p-space-2);
+```
+
+```sh
+npx @shopify/polaris-migrator scss-replace-spacing <path>
 ```
 
 ### `scss-replace-text-emphasis`
@@ -133,98 +233,9 @@ Replace legacy static mixins with their corresponding declarations and CSS custo
 npx @shopify/polaris-migrator scss-replace-text-emphasis <path>
 ```
 
-### `styles-tokenize-fonts`
-
-Replace legacy Typography functions and hardcoded lengths with Polaris custom properties for `font-family`, `font-size`, `font-weight`, and `line-height` declarations.
-
-```diff
-- font-family: font-family(monospace);
-+ font-family: var(--p-font-family-mono);
-
-- font-size: font-size(input, base);
-+ font-size: var(--p-font-size-200);
-
-- font-weight: 400;
-+ font-weight: var(--p-font-weight-regular);
-
-- line-height: line-height(caption, base);
-+ font-family: var(--p-font-line-height-2);
-```
-
-```sh
-npx @shopify/polaris-migrator styles-tokenize-fonts <path>
-```
-
-### `styles-tokenize-shape`
-
-Replace usage of the legacy Sass `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
-
-```diff
-- border: 1px solid transparent;
-+ border: var(--p-border-width-1) solid transparent;
-
-- border-width: 0.0625rem;
-+ border-width: var(--p-border-width-1);
-
-- border-radius: 4px;
-+ border-radius: var(--p-border-radius-1);
-```
-
-```sh
-npx @shopify/polaris-migrator replace-border-declarations <path>
-```
-
-### `sass-replace-border`
-
-Replace usage of the legacy Sass `border()`) function in `border` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
-
-```diff
-- border: border();
-+ border: var(--p-border-base);
-
-- border: border(divider);
-+ border: var(--p-border-divider);
-```
-
-```sh
-npx @shopify/polaris-migrator sass-replace-border <path>
-```
-
-### `sass-replace-border-width`
-
-Replace usage of the legacy Sass `border-width()`) function in `border` and `border-width` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
-
-```diff
-- border-width: border-width();
-+ border-width: var(--p-border-width-1);
-
-- border-width: border-width(thick);
-+ border-width: var(--p-border-width-2);
-```
-
-```sh
-npx @shopify/polaris-migrator sass-replace-border-width <path>
-```
-
-### `sass-replace-border-radius`
-
-Replace usage of the legacy Sass `border-radius()`) function in `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) tokens.
-
-```diff
-- border-radius: border-radius();
-+ border-radius: var(--p-border-radius-1);
-
-- border-radius: border-radius(large);
-+ border-radius: var(--p-border-radius-large);
-```
-
-```sh
-npx @shopify/polaris-migrator sass-replace-border-radius <path>
-```
-
 ### `scss-replace-z-index`
 
-Replace the legacy Sass `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
+Replace the legacy SCSS `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-1)`).
 
 Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-1` will be replaced with a css variable declaration.
 This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
@@ -274,35 +285,83 @@ Be aware that this may also create additional code changes in your codebase, we 
 npx @shopify/polaris-migrator scss-replace-z-index <path>
 ```
 
-### `replace-sass-transition`
+### `styles-tokenize-font`
 
-Replace timings (`ms`, `s`) and legacy Sass functions (`duration()`,`easing()`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+Replace legacy static font values with Polaris custom properties for `font-size`, `font-weight`, and `line-height` declarations.
+
+```diff
+- font-size: 16px;
++ font-size: var(--p-font-size-200);
+
+- font-weight: 400;
++ font-weight: var(--p-font-weight-regular);
+
+- line-height: 20px;
++ font-family: var(--p-font-line-height-2);
+```
+
+```sh
+npx @shopify/polaris-migrator styles-tokenize-font <path>
+```
+
+### `styles-tokenize-motion`
+
+Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
 
 ```diff
 - transition-duration: 100ms;
 + transition-duration: var(--p-duration-100);
 
-- transition-duration: legacy-polaris-v8.duration('slow');
-+ transition-duration: var(--p-duration-300);
-
 - transition-timing-function: linear;
 + transition-timing-function: var(--p-linear);
 
-- transition-timing-function: legacy-polaris-v8.easing('in');
-+ transition-timing-function: var(--p-ease-in);
-
 - transition: opacity 100ms linear;
 + transition: opacity var(--p-duration-100) linear;
-
-- transition: opacity legacy-polaris-v8.duration('slow') linear;
-+ transition: opacity var(--p-duration-300) linear;
 
 - transition: opacity 100ms linear, left 100ms linear;
 + transition: opacity var(--p-duration-100) linear, left var(--p-duration-100) linear;
 ```
 
 ```sh
-npx @shopify/polaris-migrator replace-sass-transition <path>
+npx @shopify/polaris-migrator styles-tokenize-motion <path>
+```
+
+### `styles-tokenize-shape`
+
+Replace usage of the legacy SCSS `rem()` function and hard-coded lengths (`px`, `rem`) in `border`, `border-width`, and `border-radius` declarations with corresponding Polaris [shape](https://polaris.shopify.com/tokens/shape) token.
+
+```diff
+- border: 1px solid transparent;
++ border: var(--p-border-width-1) solid transparent;
+
+- border-width: 0.0625rem;
++ border-width: var(--p-border-width-1);
+
+- border-radius: 4px;
++ border-radius: var(--p-border-radius-1);
+```
+
+```sh
+npx @shopify/polaris-migrator replace-border-declarations <path>
+```
+
+### `styles-tokenize-space`
+
+Replace lengths and functions (`px`, `rem` and `rem()`) in spacing declarations (`padding`, `margin`, and `gap`) with the corresponding Polaris spacing token.
+
+```diff
+- padding: 16px;
++ padding: var(--p-space-4);
+
+- margin: 1rem;
++ margin: var(--p-space-4);
+
+- gap: rem(16px);
++ gap: var(--p-space-4);
+```
+
+```sh
+npx @shopify/polaris-migrator styles-tokenize-space <path>
 ```
 
 ## Creating Migrations

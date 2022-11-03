@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'react-component-rename-prop';
-const fixtures = ['react-component-rename-prop'];
+const migration = 'react-rename-component-prop';
+const fixtures = ['react-rename-component-prop'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
