@@ -9,7 +9,7 @@ export default {
 
 export function Default() {
   return (
-    <Box background="surface" padding="4">
+    <Box>
       <Icon source={PaintBrushMajor} color="base" />
     </Box>
   );
