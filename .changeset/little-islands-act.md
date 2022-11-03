@@ -3,5 +3,5 @@
 'polaris.shopify.com': patch
 ---
 
-Switched alignY prop to `alignBlock` on `Inline`
-Added more flex properties to `align` `Inline`
+Renamed `alignY` prop to `alignBlock` on `Inline`
+Added more flex properties to `align` on `Inline`
