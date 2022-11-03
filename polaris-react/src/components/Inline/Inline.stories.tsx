@@ -33,7 +33,7 @@ export function AlignYCenter() {
 
 export function AlignYTop() {
   return (
-    <Inline alignY="top" spacing="1'>
+    <Inline alignY="top">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -44,7 +44,7 @@ export function AlignYTop() {
 
 export function AlignYBottom() {
   return (
-    <Inline alignY="bottom" spacing="1'>
+    <Inline alignY="bottom" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -55,7 +55,7 @@ export function AlignYBottom() {
 
 export function AlignYBaseline() {
   return (
-    <Inline alignY="baseline" spacing="1'>
+    <Inline alignY="baseline" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -77,7 +77,7 @@ export function AlignStart() {
 
 export function AlignCenter() {
   return (
-    <Inline align="center">
+    <Inline align="center" alignY="center">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -88,7 +88,7 @@ export function AlignCenter() {
 
 export function AlignEnd() {
   return (
-    <Inline align="end">
+    <Inline align="end" alignY="center">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
