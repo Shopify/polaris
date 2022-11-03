@@ -44,7 +44,7 @@ export function AlignYTop() {
 
 export function AlignYBottom() {
   return (
-    <Inline alignY="bottom">
+    <Inline alignY="bottom" spacing="1'>
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
