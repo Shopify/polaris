@@ -76,5 +76,12 @@ export function replaceOther<NodeType = ASTNode>(
         insertJSXAttribute(j, element, 'visuallyHidden');
       }
     });
+
+    source
+      .find(j.Identifier)
+      .filter((path) => path.node.name === localElementName)
+      .forEach((path) => {
+        path.node.name = 'Text';
+      });
   });
 }

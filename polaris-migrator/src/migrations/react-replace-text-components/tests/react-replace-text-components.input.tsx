@@ -8,7 +8,12 @@ import {
   VisuallyHidden,
 } from '@shopify/polaris';
 
+const noop = (..._: any) => {};
+
 export function App() {
+  const textStyle = TextStyle;
+  noop(textStyle);
+
   return (
     <>
       <DisplayText size="extraLarge">Display text</DisplayText>

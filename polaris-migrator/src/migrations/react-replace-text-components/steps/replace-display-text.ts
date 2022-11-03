@@ -57,4 +57,11 @@ export function replaceDisplayText<NodeType = ASTNode>(
       insertJSXAttribute(j, element, 'as', 'p');
     }
   });
+
+  source
+    .find(j.Identifier)
+    .filter((path) => path.node.name === localElementName)
+    .forEach((path) => {
+      path.node.name = 'Text';
+    });
 }

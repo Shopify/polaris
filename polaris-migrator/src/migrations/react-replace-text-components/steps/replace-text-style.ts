@@ -113,4 +113,11 @@ export function replaceTextStyle<NodeType = ASTNode>(
       insertJSXAttribute(j, element, 'as', 'span');
     }
   });
+
+  source
+    .find(j.Identifier)
+    .filter((path) => path.node.name === localElementName)
+    .forEach((path) => {
+      path.node.name = 'Text';
+    });
 }
