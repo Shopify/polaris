@@ -198,7 +198,19 @@ $disabled-fade: 0.6;
 }
 
 .Text {
-  @include nav-item-text-attributes;
+  flex: 1 1 auto;
+  font-size: var(--p-font-size-200);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-2);
+  margin-top: calc(var(--p-space-2) + var(--p-space-05));
+  margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-100);
+    line-height: var(--p-font-line-height-2);
+    margin-top: var(--p-space-1);
+    margin-bottom: var(--p-space-1);
+  }
 }
 
 .SecondaryAction {
@@ -358,19 +370,25 @@ $disabled-fade: 0.6;
 }
 
 .SectionHeading {
-  @include text-style-subheading;
   text-transform: none; // Adding this intentionally to override the default subheading styling.
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
   padding-left: calc(var(--p-space-5) + var(--p-space-05));
 
-  .Text {
-    font-size: 13px;
-    color: var(--p-text-subdued);
+  > :first-child {
+    flex: 1 1 auto;
+    margin-top: calc(var(--p-space-2) + var(--p-space-05));
+    margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
+
+    @media #{$p-breakpoints-md-down} {
+      font-size: var(--p-font-size-100);
+      line-height: var(--p-font-line-height-2);
+    }
 
     @media #{$p-breakpoints-md-up} {
-      font-size: var(--p-font-size-75);
+      margin-top: var(--p-space-1);
+      margin-bottom: var(--p-space-1);
     }
   }
 
@@ -441,7 +459,7 @@ $disabled-fade: 0.6;
 
 .RollupToggle {
   @include text-emphasis-normal;
-  @include text-emphasis-subdued;
+  color: var(--p-text-subdued);
 
   &:hover {
     @include recolor-icon(

@@ -42,6 +42,7 @@ export function replaceTextStyle<NodeType = ASTNode>(
   });
 
   if (!sourcePaths) return;
+  if (!hasImportSpecifier(j, source, 'TextStyle', sourcePaths.from)) return;
 
   const localElementName =
     getImportSpecifierName(j, source, 'TextStyle', sourcePaths.from) ||

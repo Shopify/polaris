@@ -1,11 +1,11 @@
 import {
   TextField,
   IndexTable,
-  TextStyle,
   Card,
   Filters,
   Select,
   useIndexResourceState,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -115,7 +115,9 @@ function IndexTableWithAllElementsExample() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>

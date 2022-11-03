@@ -3,11 +3,12 @@ import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import type {ComplexAction} from '../../types';
-import {Image} from '../Image';
+import {Box} from '../Box';
 import {buttonFrom} from '../Button';
+import {Image} from '../Image';
 import {Stack} from '../Stack';
 import {TextContainer} from '../TextContainer';
-import {DisplayText} from '../DisplayText';
+import {Text} from '../Text';
 
 import styles from './EmptyState.scss';
 
@@ -75,23 +76,31 @@ export function EmptyState({
     : null;
 
   const footerContentMarkup = footerContent ? (
-    <div className={styles.FooterContent}>
-      <TextContainer>{footerContent}</TextContainer>
-    </div>
+    <Box paddingBlockStart="4">
+      <Text as="span" variant="bodyMd" color="subdued">
+        {footerContent}
+      </Text>
+    </Box>
   ) : null;
 
-  const headingSize = withinContentContainer ? 'small' : 'medium';
+  const headingSize = withinContentContainer ? 'headingLg' : 'headingXl';
 
   const primaryActionMarkup = action
     ? buttonFrom(action, {primary: true, size: 'medium'})
     : null;
 
   const headingMarkup = heading ? (
-    <DisplayText size={headingSize}>{heading}</DisplayText>
+    <Text variant={headingSize} as="p">
+      {heading}
+    </Text>
   ) : null;
 
   const childrenMarkup = children ? (
-    <div className={styles.Content}>{children}</div>
+    <div className={styles.Content}>
+      <Text as="span" variant="bodyMd" color="subdued">
+        {children}
+      </Text>
+    </div>
   ) : null;
 
   const textContentMarkup =

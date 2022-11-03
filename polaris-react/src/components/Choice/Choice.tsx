@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
+import {Text} from '../Text';
 
 import styles from './Choice.scss';
 
@@ -56,13 +57,19 @@ export function Choice({
       onMouseOut={onMouseOut}
     >
       <span className={styles.Control}>{children}</span>
-      <span className={styles.Label}>{label}</span>
+      <span className={styles.Label}>
+        <Text as="span" variant="bodyMd">
+          {label}
+        </Text>
+      </span>
     </label>
   );
 
   const helpTextMarkup = helpText ? (
     <div className={styles.HelpText} id={helpTextID(id)}>
-      {helpText}
+      <Text as="span" variant="bodyMd" color="subdued">
+        {helpText}
+      </Text>
     </div>
   ) : null;
 

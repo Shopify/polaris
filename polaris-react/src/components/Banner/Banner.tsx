@@ -19,7 +19,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Button} from '../Button';
-import {Heading} from '../Heading';
+import {Text} from '../Text';
 import {ButtonGroup} from '../ButtonGroup';
 import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
 import {UnstyledLink} from '../UnstyledLink';
@@ -85,7 +85,9 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
     headingID = `${id}Heading`;
     headingMarkup = (
       <div className={styles.Heading} id={headingID}>
-        <Heading element="p">{title}</Heading>
+        <Text as="p" variant="headingMd">
+          {title}
+        </Text>
       </div>
     );
   }

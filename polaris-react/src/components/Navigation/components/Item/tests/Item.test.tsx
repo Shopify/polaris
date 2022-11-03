@@ -108,14 +108,13 @@ describe('<Nav.Item />', () => {
       expect(item).toContainReactComponent(UnstyledLink);
     });
 
-    it('renders a small badge with new status if the prop is provided with a string', () => {
+    it('renders a badge with new status if the prop is provided with a string', () => {
       const item = mountWithNavigationProvider(
         <Item label="some label" badge="1" />,
       );
 
       expect(item).toContainReactComponent(Badge, {
         status: 'new',
-        size: 'small',
         children: '1',
       });
     });

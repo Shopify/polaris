@@ -5,7 +5,7 @@ import {
   Filters,
   Button,
   Avatar,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -103,9 +103,9 @@ function FiltersExample() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );

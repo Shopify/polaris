@@ -6,7 +6,13 @@
 
 html,
 body {
-  @include text-style-body;
+  font-size: var(--p-font-size-100);
+  line-height: var(--p-font-line-height-2);
+  font-weight: var(--p-font-weight-regular);
+
+  text-transform: initial;
+  letter-spacing: initial;
+
   @include text-emphasis-normal;
 }
 

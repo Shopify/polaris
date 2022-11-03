@@ -11,7 +11,7 @@ import {Sticky} from '../../Sticky';
 import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
 import type {IndexTableSortDirection} from '../IndexTable';
@@ -327,7 +327,10 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      expect(index).toContainReactComponent(VisuallyHidden, {children: title});
+      expect(index).toContainReactComponent(Text, {
+        children: title,
+        visuallyHidden: true,
+      });
     });
 
     it('renders a sticky last heading if `lastColumnSticky` prop is true and last heading is not hidden', () => {
@@ -376,7 +379,7 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
-      expect(index).toContainReactComponent(VisuallyHidden, {
+      expect(index).toContainReactComponent(Text, {
         children: title,
       });
     });

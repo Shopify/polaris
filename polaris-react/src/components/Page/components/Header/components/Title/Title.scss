@@ -3,12 +3,8 @@
 .Title {
   @include text-breakword;
   @include text-emphasis-strong;
-  font-size: var(--p-font-size-400);
-  line-height: var(--p-font-line-height-4);
-
-  @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-300);
-  }
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-3);
 }
 
 .TitleWithSubtitle {

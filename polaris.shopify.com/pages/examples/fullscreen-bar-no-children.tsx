@@ -1,4 +1,4 @@
-import {FullscreenBar, Button, DisplayText} from '@shopify/polaris';
+import {FullscreenBar, Button, Text} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -18,7 +18,9 @@ function FullscreenBarExample() {
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}
-        <DisplayText size="small">Page content</DisplayText>
+        <Text variant="headingLg" as="p">
+          Page content
+        </Text>
       </div>
     </div>
   );

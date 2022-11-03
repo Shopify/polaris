@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
-import {VisuallyHidden} from '../../../VisuallyHidden';
+import {Text} from '../../../Text';
 
 import styles from './SearchField.scss';
 
@@ -108,11 +108,11 @@ export function SearchField({
 
   return (
     <div className={className} onFocus={handleFocus} onBlur={handleBlur}>
-      <VisuallyHidden>
+      <Text variant="bodySm" as="span" visuallyHidden>
         <label htmlFor={searchId}>
           {i18n.translate('Polaris.TopBar.SearchField.search')}
         </label>
-      </VisuallyHidden>
+      </Text>
       <input
         id={searchId}
         className={styles.Input}

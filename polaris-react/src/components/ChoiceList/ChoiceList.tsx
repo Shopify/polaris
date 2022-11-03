@@ -6,6 +6,7 @@ import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
+import {Text} from '../Text';
 
 import styles from './ChoiceList.scss';
 
@@ -71,7 +72,11 @@ export function ChoiceList({
   );
 
   const titleMarkup = title ? (
-    <legend className={styles.Title}>{title}</legend>
+    <legend className={styles.Title}>
+      <Text as="span" variant="bodyMd">
+        {title}
+      </Text>
+    </legend>
   ) : null;
 
   const choicesMarkup = choices.map((choice) => {

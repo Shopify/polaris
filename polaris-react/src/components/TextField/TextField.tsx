@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -337,9 +337,9 @@ export function TextField({
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
-        <VisuallyHidden>
+        <Text variant="bodySm" as="span" visuallyHidden>
           {i18n.translate('Polaris.Common.clear')}
-        </VisuallyHidden>
+        </Text>
         <Icon source={CircleCancelMinor} color="base" />
       </button>
     ) : null;

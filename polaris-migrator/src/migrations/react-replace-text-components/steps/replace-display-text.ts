@@ -8,6 +8,7 @@ import {
 } from '../../../utilities/jsx';
 import {
   getImportSpecifierName,
+  hasImportSpecifier,
   normalizeImportSourcePaths,
   updateImports,
 } from '../../../utilities/imports';
@@ -35,6 +36,7 @@ export function replaceDisplayText<NodeType = ASTNode>(
   });
 
   if (!sourcePaths) return;
+  if (!hasImportSpecifier(j, source, 'DisplayText', sourcePaths.from)) return;
 
   const localElementName =
     getImportSpecifierName(j, source, 'DisplayText', sourcePaths.from) ||

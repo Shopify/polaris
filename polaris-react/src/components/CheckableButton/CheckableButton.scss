@@ -6,15 +6,18 @@ $button-vertical-padding: calc(
 );
 
 .CheckableButton {
-  @include text-style-button;
   @include recolor-icon(var(--p-icon-on-interactive));
+  font-size: var(--p-font-size-100);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-1);
+  text-transform: initial;
+  letter-spacing: initial;
   display: flex;
   align-items: center;
   min-height: 36px;
   min-width: 36px;
   margin: 0;
   padding: $button-vertical-padding var(--p-space-4);
-  line-height: 1;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
@@ -72,7 +75,7 @@ $button-vertical-padding: calc(
   }
 
   &.CheckableButton-selectMode {
-    @include text-emphasis-subdued;
+    color: var(--p-text-subdued);
     font-weight: var(--p-font-weight-medium);
   }
 

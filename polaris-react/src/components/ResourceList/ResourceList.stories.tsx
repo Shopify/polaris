@@ -11,7 +11,7 @@ import {
   ResourceItem,
   ResourceList,
   TextField,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -49,7 +49,9 @@ export function Default() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -155,7 +157,9 @@ export function WithSelectionAndNoBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -234,7 +238,9 @@ export function WithBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -314,7 +320,9 @@ export function WithLoadingState() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -353,7 +361,9 @@ export function WithTotalCount() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -420,7 +430,9 @@ export function WithSorting() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -472,7 +484,9 @@ export function WithAlternateTool() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -575,7 +589,9 @@ export function WithFiltering() {
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -686,7 +702,9 @@ export function WithACustomEmptySearchResultState() {
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -754,7 +772,9 @@ export function WithItemShortcutActions() {
               shortcutActions={shortcutActions}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -809,7 +829,9 @@ export function WithPersistentItemShortcutActions() {
               persistActions
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -917,7 +939,9 @@ export function WithMultiselect() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -1076,7 +1100,9 @@ export function WithAllOfItsElements() {
         persistActions
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>

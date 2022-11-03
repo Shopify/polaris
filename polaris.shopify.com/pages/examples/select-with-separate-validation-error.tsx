@@ -5,8 +5,8 @@ import {
   Select,
   InlineError,
   Card,
-  TextStyle,
   Link,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -61,12 +61,12 @@ function SeparateValidationErrorExample() {
 
     return (
       <span>
-        <TextStyle variation="negative">
+        <Text variant="bodyMd" color="critical" as="span">
           <p>
             {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
             <Link>Manage shipping</Link>
           </p>
-        </TextStyle>
+        </Text>
       </span>
     );
   }

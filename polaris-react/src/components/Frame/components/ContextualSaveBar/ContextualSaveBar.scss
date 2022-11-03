@@ -22,10 +22,6 @@
     pointer-events: none;
   }
 
-  .Message {
-    color: var(--p-text-on-dark);
-  }
-
   @media (forced-colors: active) {
     border: var(--p-border-width-1) solid transparent;
   }
@@ -68,12 +64,6 @@
 .fullWidth {
   max-width: none;
   padding: 0 var(--p-space-4);
-}
-
-.Message {
-  @include truncate;
-  @include text-style-heading;
-  @include text-emphasis-subdued;
 }
 
 .ActionContainer {

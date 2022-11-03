@@ -1,4 +1,4 @@
-import {Frame, Navigation, VisuallyHidden} from '@shopify/polaris';
+import {Frame, Navigation, Text} from '@shopify/polaris';
 import {HomeMinor, OrdersMinor, ProductsMinor} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -7,9 +7,9 @@ function NavigationExample() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <VisuallyHidden>
+        <Text variant="bodySm" as="span" visuallyHidden>
           <p id="label-id">Hidden label</p>
-        </VisuallyHidden>
+        </Text>
         <Navigation.Section
           items={[
             {

@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithVerticalAlignmentExample() {
   return (
     <AlphaStack spacing="16">
-      <Inline alignY="top">
+      <Inline blockAlign="top">
         <Placeholder width="106px" label="Top" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -14,7 +14,7 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline alignY="center">
+      <Inline blockAlign="center">
         <Placeholder width="106px" label="Center" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -22,7 +22,7 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline alignY="bottom">
+      <Inline blockAlign="bottom">
         <Placeholder width="106px" label="Bottom" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -30,7 +30,7 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline alignY="baseline">
+      <Inline blockAlign="baseline">
         <Placeholder width="106px" header={true} label="Baseline" />
         <Placeholder width="106px" padding="0" label="text" />
         <Placeholder width="106px" padding="0" label="text" />
@@ -58,7 +58,7 @@ const Placeholder = ({
         width: width,
       }}
     >
-      <Inline align="center" alignY="center">
+      <Inline align="center" blockAlign="center">
         <div
           style={{
             color: '#FFFFFF',
