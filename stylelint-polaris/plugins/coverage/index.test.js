@@ -47,8 +47,7 @@ testRule({
     {
       code: '@keyframes foo {}',
       description: 'Uses disallowed at-rule',
-      message:
-        'Unexpected at-rule "keyframes" (stylelint-polaris/coverage/motion)',
+      message: 'Unexpected at-rule "keyframes" (at-rule-disallowed-list)',
     },
     {
       code: `

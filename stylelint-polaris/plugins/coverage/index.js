@@ -1,6 +1,6 @@
 const stylelint = require('stylelint');
 
-const {isObject, isNumber} = require('../../utils');
+const {isObject, isNumber, isRegExp} = require('../../utils');
 
 const ruleName = 'stylelint-polaris/coverage';
 
@@ -9,6 +9,11 @@ const ruleName = 'stylelint-polaris/coverage';
  *   [category: string]: import('stylelint').ConfigRules
  * }} PrimaryOptions
  */
+
+// Setting `line` to an invalid line number forces the warning to be reported
+// and the `report({node})` option is used to display the location information:
+// https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
+const forceReport = {line: -1};
 
 module.exports = stylelint.createPlugin(
   ruleName,
@@ -25,6 +30,8 @@ module.exports = stylelint.createPlugin(
                 categoryRuleName,
                 categoryRuleSettings,
                 coverageRuleName: `${ruleName}/${categoryName}`,
+                coverageRuleSeverity:
+                  categoryRuleSettings?.[1]?.severity ?? 'error',
               }),
             ),
         );
@@ -37,20 +44,29 @@ module.exports = stylelint.createPlugin(
       if (!validOptions) return;
 
       for (const rule of rules) {
-        const {categoryRuleName, categoryRuleSettings, coverageRuleName} = rule;
+        const {
+          categoryRuleName,
+          categoryRuleSettings,
+          coverageRuleName,
+          coverageRuleSeverity,
+        } = rule;
 
         stylelint.utils.checkAgainstRule(
           {
             ruleName: categoryRuleName,
-            ruleSettings: categoryRuleSettings,
+            ruleSettings: normalizeRuleSettings(categoryRuleSettings),
             root,
+            result,
           },
           (warning) => {
             stylelint.utils.report({
               result,
-              node: warning.node,
               ruleName: coverageRuleName,
-              message: warning.text.replace(categoryRuleName, coverageRuleName),
+              severity: coverageRuleSeverity,
+              message: warning.text,
+              // If `warning.node` is NOT present, the warning is
+              // referring to a misconfigured rule
+              ...(warning.node ? {node: warning.node} : forceReport),
             });
           },
         );
@@ -88,11 +104,7 @@ module.exports = stylelint.createPlugin(
           node: disabledRange.comment,
           // Note: `stylelint-disable` comments (without next-line) appear to
           // be special cased in that they do not trigger warnings when reported.
-          // Setting `line` to an invalid line number forces the warning to be
-          // reported and the above comment `node` is used to display the
-          // location information:
-          // https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
-          line: -1,
+          ...forceReport,
         });
       }
     };
@@ -141,4 +153,22 @@ function validatePrimaryOptions(primaryOptions) {
   }
 
   return true;
+}
+
+/**
+ * @param {import('stylelint').ConfigRuleSettings} ruleSettings
+ */
+function normalizeRuleSettings(ruleSettings) {
+  if (
+    // Let `stylelint` normalize the rule settings
+    !Array.isArray(ruleSettings) ||
+    // Assume rule settings are already normalized
+    Array.isArray(ruleSettings[0]) ||
+    // Assume rule settings are already normalized
+    (isObject(ruleSettings[1]) && !isRegExp(ruleSettings[1]))
+  ) {
+    return ruleSettings;
+  }
+
+  return [ruleSettings];
 }
