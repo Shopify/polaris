@@ -61,11 +61,9 @@ function LayoutExample() {
                       media={media}
                       accessibilityLabel={`View details for ${name}`}
                     >
-                      <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
-                          {name}
-                        </Text>
-                      </h3>
+                      <Text variant="bodyMd" fontWeight="bold" as="h3">
+                        {name}
+                      </Text>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
                     </ResourceList.Item>
@@ -123,11 +121,9 @@ function LayoutExample() {
                       media={media}
                       accessibilityLabel={`View details for ${name}`}
                     >
-                      <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
-                          {name}
-                        </Text>
-                      </h3>
+                      <Text variant="bodyMd" fontWeight="bold" as="h3">
+                        {name}
+                      </Text>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
                     </ResourceList.Item>
@@ -185,11 +181,9 @@ function LayoutExample() {
                       media={media}
                       accessibilityLabel={`View details for ${name}`}
                     >
-                      <h3>
-                        <Text variant="bodyMd" fontWeight="bold" as="span">
-                          {name}
-                        </Text>
-                      </h3>
+                      <Text variant="bodyMd" fontWeight="bold" as="h3">
+                        {name}
+                      </Text>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
                     </ResourceList.Item>
