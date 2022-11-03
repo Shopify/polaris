@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Update `AlphaCard` component docs
+Updated `AlphaCard` component guidance and examples
