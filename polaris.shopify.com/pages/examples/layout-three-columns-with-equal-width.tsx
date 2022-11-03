@@ -2,9 +2,9 @@ import {
   Page,
   Layout,
   Card,
-  TextStyle,
   ResourceList,
   Thumbnail,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -16,7 +16,9 @@ function LayoutExample() {
         <Layout.Section oneThird>
           <Card title="Florida" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">455 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                455 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -60,7 +62,9 @@ function LayoutExample() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -74,7 +78,9 @@ function LayoutExample() {
         <Layout.Section oneThird>
           <Card title="Nevada" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">301 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                301 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -118,7 +124,9 @@ function LayoutExample() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -132,7 +140,9 @@ function LayoutExample() {
         <Layout.Section oneThird>
           <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
             <Card.Section>
-              <TextStyle variation="subdued">1931 units available</TextStyle>
+              <Text variant="bodyMd" color="subdued" as="span">
+                1931 units available
+              </Text>
             </Card.Section>
             <Card.Section title="Items">
               <ResourceList
@@ -176,7 +186,9 @@ function LayoutExample() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text variant="bodyMd" fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>

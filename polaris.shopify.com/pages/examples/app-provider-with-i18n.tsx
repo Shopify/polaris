@@ -4,7 +4,7 @@ import {
   Card,
   ResourceList,
   Avatar,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -54,7 +54,9 @@ function AppProviderI18NExample() {
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
                   <h3>
-                    <TextStyle variation="strong">{name}</TextStyle>
+                    <Text variant="bodyMd" fontWeight="bold" as="span">
+                      {name}
+                    </Text>
                   </h3>
                   <div>{location}</div>
                 </ResourceList.Item>
