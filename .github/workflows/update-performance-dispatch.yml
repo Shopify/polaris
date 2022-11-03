@@ -9,7 +9,7 @@ on:
 
 jobs:
   update-performance-dispatch:
-    runs-on: ubuntu-latest
+    runs-on: shopify-ubuntu-latest
     steps:
       - uses: actions/github-script@v6
         with:
