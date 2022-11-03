@@ -28,7 +28,7 @@ status:
 - <VisuallyHidden>
 -   <Heading>Title and description</Heading>
 - </VisuallyHidden>
-+ <Text visuallyHidden variant="bodySm" as="h2">Title and description</Text>
++ <Text visuallyHidden variant="headingMd" as="h2">Title and description</Text>
 ```
 
 ---
