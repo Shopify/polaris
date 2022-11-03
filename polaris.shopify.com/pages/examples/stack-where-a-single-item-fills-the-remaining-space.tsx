@@ -1,4 +1,4 @@
-import {Stack, Heading, Badge} from '@shopify/polaris';
+import {Stack, Badge, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,7 +6,9 @@ function StackExample() {
   return (
     <Stack>
       <Stack.Item fill>
-        <Heading>Order #1136</Heading>
+        <Text variant="headingMd" as="h2">
+          Order #1136
+        </Text>
       </Stack.Item>
       <Stack.Item>
         <Badge>Paid</Badge>

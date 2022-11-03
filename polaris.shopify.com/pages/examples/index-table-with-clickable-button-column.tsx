@@ -1,9 +1,9 @@
 import {
   IndexTable,
-  TextStyle,
   Card,
   Button,
   useIndexResourceState,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -49,7 +49,9 @@ function ClickThroughButtonIndexTableExample() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {name}
+            </Text>
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>

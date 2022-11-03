@@ -5,8 +5,7 @@ import {
   FormLayout,
   TextField,
   TextContainer,
-  TextStyle,
-  Heading,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -18,13 +17,13 @@ function LayoutExample() {
         <Layout.Section oneThird>
           <div style={{marginTop: 'var(--p-space-5)'}}>
             <TextContainer>
-              <Heading id="storeDetails">Store details</Heading>
-              <p>
-                <TextStyle variation="subdued">
-                  Shopify and your customers will use this information to
-                  contact you.
-                </TextStyle>
-              </p>
+              <Text id="storeDetails" variant="headingMd" as="h2">
+                Store details
+              </Text>
+              <Text variant="bodyMd" color="subdued" as="p">
+                Shopify and your customers will use this information to contact
+                you.
+              </Text>
             </TextContainer>
           </div>
         </Layout.Section>
