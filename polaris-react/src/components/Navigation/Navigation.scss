@@ -195,6 +195,7 @@ $disabled-fade: 0.6;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
+  margin: 0 var(--p-space-1);
 }
 
 .Text {
@@ -228,7 +229,6 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  margin-right: var(--p-space-1);
   padding: var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-1);
 

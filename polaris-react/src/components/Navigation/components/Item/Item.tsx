@@ -298,6 +298,7 @@ export function Item({
                 label={label}
                 matches={item === longestMatch}
                 onClick={onClick}
+                truncateText={truncateText}
               />
             );
           })}
