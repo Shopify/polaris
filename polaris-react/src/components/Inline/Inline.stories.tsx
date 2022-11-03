@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, Heading, Icon, Inline} from '@shopify/polaris';
-import {CapitalMajor} from '@shopify/polaris-icons';
+import {Box, Badge, Heading, Icon, Inline, Thumbnail} from '@shopify/polaris';
+import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
 
 export default {
   component: Inline,
@@ -13,7 +13,9 @@ export function Default() {
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
+      <Box>
+        <Icon source={CapitalMajor} color="primary" />
+      </Box>
     </Inline>
   );
 }
@@ -21,10 +23,10 @@ export function Default() {
 export function AlignYCenter() {
   return (
     <Inline alignY="center" spacing="1">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -32,10 +34,10 @@ export function AlignYCenter() {
 export function AlignYTop() {
   return (
     <Inline alignY="top">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -43,10 +45,10 @@ export function AlignYTop() {
 export function AlignYBottom() {
   return (
     <Inline alignY="bottom">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -54,21 +56,21 @@ export function AlignYBottom() {
 export function AlignYBaseline() {
   return (
     <Inline alignY="baseline">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
 
 export function AlignStart() {
   return (
-    <Inline align="start">
+    <Inline align="start" alignY="center">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -76,10 +78,10 @@ export function AlignStart() {
 export function AlignCenter() {
   return (
     <Inline align="center">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -87,10 +89,10 @@ export function AlignCenter() {
 export function AlignEnd() {
   return (
     <Inline align="end">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -98,10 +100,10 @@ export function AlignEnd() {
 export function AlignCenterAlignYCenter() {
   return (
     <Inline align="center" alignY="center">
+      <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
-      <Icon source={CapitalMajor} color="primary" />
     </Inline>
   );
 }
@@ -120,22 +122,6 @@ export function NonWrapping() {
 export function Spacing() {
   return (
     <Inline spacing="8">
-      <Badge>Paid</Badge>
-      <Badge>Fulfilled</Badge>
-    </Inline>
-  );
-}
-
-export function VerticalCentering() {
-  return (
-    <Inline alignY="center">
-      <Heading>
-        Order
-        <br />
-        #1136
-        <br />
-        was paid
-      </Heading>
       <Badge>Paid</Badge>
       <Badge>Fulfilled</Badge>
     </Inline>
