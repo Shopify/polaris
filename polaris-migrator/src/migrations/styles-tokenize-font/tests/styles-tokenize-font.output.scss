@@ -1,10 +1,3 @@
-.font-family {
-  font-family: sans-serif;
-  font-family: var(--p-font-family-sans);
-  font-family: var(--p-font-family-sans);
-  font-family: var(--p-font-family-mono);
-}
-
 .font-size {
   // LENGTHS
   font-size: var(--p-font-size-75);
@@ -19,24 +12,6 @@
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // font-size: var(--p-font-size-75) + 1px;
   font-size: 12px + 1px;
-
-  // FONT-SIZE FUNCTION
-  font-size: 0.8125rem;
-  font-size: 0.8125rem;
-  font-size: var(--p-font-size-75);
-  // Comment
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // font-size: font-size($invalid);
-  font-size: font-size($invalid);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // font-size: font-size(caption, $invalid);
-  font-size: font-size(caption, $invalid);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // font-size: font-size();
-  font-size: font-size();
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // font-size: font-size(caption, base, $too-many-args);
-  font-size: font-size(caption, base, $too-many-args);
 
   // REM FUNCTION
   font-size: var(--p-font-size-75);
@@ -102,25 +77,6 @@
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // line-height: 10px;
   line-height: 10px;
-
-  // LINE-HEIGHT FUNCTION
-  line-height: var(--p-font-line-height-2);
-  line-height: var(--p-font-line-height-2);
-  line-height: var(--p-font-line-height-1);
-  line-height: 2.25rem;
-  // Comment
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // line-height: line-height($invalid);
-  line-height: line-height($invalid);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // line-height: line-height(caption, $invalid);
-  line-height: line-height(caption, $invalid);
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // line-height: line-height();
-  line-height: line-height();
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // line-height: line-height(caption, base, $too-many-args);
-  line-height: line-height(caption, base, $too-many-args);
 
   // REM FUNCTION
   line-height: var(--p-font-line-height-1);

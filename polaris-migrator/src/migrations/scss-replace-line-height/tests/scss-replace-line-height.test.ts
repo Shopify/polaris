@@ -1,7 +1,7 @@
 import {check} from '../../../utilities/testUtils';
 
-const migration = 'scss-replace-font';
-const fixtures = ['scss-replace-font', 'with-namespace'];
+const migration = 'scss-replace-line-height';
+const fixtures = ['scss-replace-line-height', 'with-namespace'];
 
 for (const fixture of fixtures) {
   check(__dirname, {
