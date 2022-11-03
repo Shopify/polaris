@@ -37,7 +37,7 @@ status:
 
 ```diff
 - <TextStyle variation="strong">No supplier listed</TextStyle>
-+ <Text variant="bodyMd" as="span" fontWeight="semibold" >No supplier listed</Text>
++ <Text variant="bodyMd" as="span" fontWeight="bold">No supplier listed</Text>
 ```
 
 ### Positive
