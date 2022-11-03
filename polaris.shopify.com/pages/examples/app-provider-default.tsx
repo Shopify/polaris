@@ -53,11 +53,9 @@ function AppProviderExample() {
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
-                  <h3>
-                    <Text variant="bodyMd" fontWeight="bold" as="span">
-                      {name}
-                    </Text>
-                  </h3>
+                  <Text variant="bodyMd" fontWeight="bold" as="h3">
+                    {name}
+                  </Text>
                   <div>{location}</div>
                 </ResourceList.Item>
               );
