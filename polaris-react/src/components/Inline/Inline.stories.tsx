@@ -55,7 +55,7 @@ export function AlignYBottom() {
 
 export function AlignYBaseline() {
   return (
-    <Inline alignY="baseline">
+    <Inline alignY="baseline" spacing="1'>
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
