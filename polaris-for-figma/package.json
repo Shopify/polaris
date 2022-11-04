@@ -7,7 +7,6 @@
     "dev": "webpack --mode=development --watch",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
-    "lint:styles": "stylelint '**/*.{css,scss}'",
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {

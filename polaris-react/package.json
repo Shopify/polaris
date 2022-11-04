@@ -53,7 +53,6 @@
     "dev": "yarn run storybook",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
-    "lint:styles": "stylelint '**/*.{css,scss}'",
     "test": "jest",
     "clean": "rm -rf .turbo node_modules build build-internal",
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
