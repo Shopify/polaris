@@ -285,6 +285,22 @@ export function WithTruncationForVariousStates() {
               icon: HomeMinor,
             },
             {
+              url: '/path/to/place',
+              label: 'Lengthy label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
+              truncateText: true,
+              badge: 'Old',
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
               url: '/admin/products',
               label: 'Truncated secondary navigation items',
               icon: ProductsMinor,

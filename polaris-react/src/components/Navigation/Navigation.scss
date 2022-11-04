@@ -92,6 +92,14 @@ $disabled-fade: 0.6;
 .Item {
   @include nav-item-attributes;
   position: relative;
+
+  &:first-child {
+    margin-inline-start: var(--p-space-2);
+  }
+
+  &:last-child {
+    margin-inline-end: var(--p-space-2);
+  }
 }
 
 .Item-selected {
@@ -195,7 +203,6 @@ $disabled-fade: 0.6;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  margin: 0 var(--p-space-1);
 }
 
 .Text {
@@ -215,13 +222,12 @@ $disabled-fade: 0.6;
 }
 
 .Text-truncated {
-  width: calc(
-    $layout-width-nav-base -
-      (var(--pc-navigation-icon-size) + var(--p-space-4) * 6 + var(--p-space-1))
-  );
+  // stylelint-disable-next-line value-no-vendor-prefix
+  display: -webkit-box;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
 }
 
 .SecondaryAction {
@@ -230,6 +236,7 @@ $disabled-fade: 0.6;
   align-items: center;
   height: nav(mobile-height);
   padding: var(--p-space-1) var(--p-space-4);
+  margin-right: var(--p-space-1);
   border-radius: var(--p-border-radius-1);
 
   @media #{$p-breakpoints-md-up} {
