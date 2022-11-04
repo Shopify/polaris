@@ -1,5 +1,13 @@
 # Changelog
 
+## 6.5.0
+
+### Minor Changes
+
+- [#7548](https://github.com/Shopify/polaris/pull/7548) [`432bdd5fe`](https://github.com/Shopify/polaris/commit/432bdd5fe7f7c3e6c0e570b985b26debbf953433) Thanks [@anthonymenecola](https://github.com/anthonymenecola)! - add cancel major icon
+
+* [#7620](https://github.com/Shopify/polaris/pull/7620) [`35be8a003`](https://github.com/Shopify/polaris/commit/35be8a0035cfb50fc30bea2dbbf2718cd99fdb09) Thanks [@rdott](https://github.com/rdott)! - Added inactive location minor and major icons
+
 ## 6.4.0
 
 ### Minor Changes
