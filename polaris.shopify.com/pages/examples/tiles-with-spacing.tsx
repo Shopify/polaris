@@ -22,8 +22,8 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
       style={{
         background: '#7B47F1',
         padding: 'var(--p-space-2)',
-        height: height ?? undefined,
-        width: width ?? undefined,
+        height: height,
+        width: width,
       }}
     >
       <div

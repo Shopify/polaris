@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Updated `Tiles` component docs
+Updated `Tiles` component guidance and examples
