@@ -1,6 +1,6 @@
 const stylelint = require('stylelint');
 
-const {isObject, isNumber, isRegExp} = require('../../utils');
+const {isPlainObject, isNumber} = require('../../utils');
 
 const ruleName = 'stylelint-polaris/coverage';
 
@@ -146,10 +146,10 @@ function isUnclosedDisabledRange(disabledRange) {
 }
 
 function validatePrimaryOptions(primaryOptions) {
-  if (!isObject(primaryOptions)) return false;
+  if (!isPlainObject(primaryOptions)) return false;
 
   for (const categoryConfigRules of Object.values(primaryOptions)) {
-    if (!isObject(categoryConfigRules)) return false;
+    if (!isPlainObject(categoryConfigRules)) return false;
   }
 
   return true;
@@ -165,7 +165,7 @@ function normalizeRuleSettings(ruleSettings) {
     // Assume rule settings are already normalized
     Array.isArray(ruleSettings[0]) ||
     // Assume rule settings are already normalized
-    (isObject(ruleSettings[1]) && !isRegExp(ruleSettings[1]))
+    isPlainObject(ruleSettings[1])
   ) {
     return ruleSettings;
   }
