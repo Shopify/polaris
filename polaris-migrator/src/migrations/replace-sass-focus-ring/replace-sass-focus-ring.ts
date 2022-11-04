@@ -45,10 +45,7 @@ const plugin = (options: PluginOptions): Plugin => {
         },
       ];
     } else {
-      return [
-        {prop: 'outline-offset', value: borderWidthValue},
-        {prop: 'outline', value: 'var(--p-focusRing-focused)'},
-      ];
+      return [{prop: 'outline', value: 'var(--p-focusRing-focused)'}];
     }
   }
   interface PostCssDeclArgs {
