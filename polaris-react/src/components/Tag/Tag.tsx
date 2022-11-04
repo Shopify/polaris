@@ -137,21 +137,37 @@ export function Tag({
     </UnstyledButton>
   );
 
+  let element;
+
+  if (onClick) {
+    element = 'button';
+  } else if (url) {
+    element = 'a';
+  } else {
+    element = 'span';
+  }
+
   return (
-    <Inline>
+    <Inline blockAlign="stretch">
       <Box
-        as="span"
+        as={element}
         background="surface-neutral"
         maxWidth="100%"
-        minHeight="1.5rem"
         borderRadius="1"
+        minHeight="28px"
         color="text"
         paddingBlockEnd="0"
         paddingBlockStart="0"
         paddingInlineStart="2"
         paddingInlineEnd={onRemove ? '0' : '2'}
+        buttonProps={onClick}
       >
-        <Inline wrap={false} spacing="1" align="center">
+        <Inline
+          wrap={false}
+          spacing="1"
+          blockAlign="stretch"
+          align="space-evenly"
+        >
           {onClick ? clickable : tagContent}
           {removeButton}
         </Inline>

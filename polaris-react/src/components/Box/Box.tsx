@@ -5,10 +5,12 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
+import {UnstyledLink, UnstyledLinkProps} from '../UnstyledLink';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'a' | 'button';
 
 type Overflow = 'hidden' | 'scroll';
 
@@ -135,7 +137,7 @@ interface Spacing {
   inlineEnd: SpacingSpaceScale;
 }
 
-export interface BoxProps {
+export interface BoxProps extends UnstyledButtonProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
@@ -190,6 +192,7 @@ export interface BoxProps {
   width?: string;
   /** Elements to display inside box */
   children?: React.ReactNode;
+  buttonProps?: React.ComponentPropsWithoutRef<'button'>;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -301,8 +304,22 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
 
     const className = classNames(styles.Box);
 
+    let elementType;
+    // if `as` is an anchor or button we want to render UnstyledLink or UnstyledButton
+    switch (as) {
+      case 'a':
+        elementType = UnstyledLink;
+        break;
+      case 'button':
+        elementType = UnstyledButton;
+        break;
+      default:
+        elementType = as;
+        break;
+    }
+
     return createElement(
-      as,
+      elementType,
       {
         className,
         id,
