@@ -6,6 +6,21 @@ import {ScrollableContext} from '../context';
 import type {ScrollableProps} from '../Scrollable';
 
 describe('<Scrollable />', () => {
+  let rafSpy: jest.SpyInstance;
+
+  beforeAll(() => {
+    rafSpy = jest
+      .spyOn(window, 'requestAnimationFrame')
+      .mockImplementation((cb) => {
+        cb(Date.now());
+        return Math.random();
+      });
+  });
+
+  afterAll(() => {
+    rafSpy.mockRestore();
+  });
+
   it('mounts', () => {
     const scrollable = mountWithApp(<Scrollable />);
     expect(scrollable).toBeDefined();
