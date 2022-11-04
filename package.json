@@ -9,7 +9,6 @@
     "packages": [
       "polaris-cli",
       "polaris-tokens",
-      "polaris-for-figma",
       "polaris-for-vscode",
       "polaris-icons",
       "polaris-migrator",
