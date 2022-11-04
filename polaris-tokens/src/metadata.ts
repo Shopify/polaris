@@ -9,7 +9,7 @@ import {motion} from './token-groups/motion';
 import {shape} from './token-groups/shape';
 import {spacing} from './token-groups/spacing';
 import {zIndex} from './token-groups/zIndex';
-import {focusRing} from './token-groups/focusring';
+import {focusRing} from './token-groups/focusRing';
 
 export const metadata = createMetadata({
   breakpoints: tokensToRems(breakpoints),
