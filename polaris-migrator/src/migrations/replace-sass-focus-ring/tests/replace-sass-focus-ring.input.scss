@@ -11,7 +11,7 @@
 .withCustomBorderWidth {
   @include focus-ring($border-width: 2px);
   &:focus {
-    @include focus-ring($border-width: 2px, $style: 'focused');
+    @include focus-ring($border-width: 2px, $style: focused);
   }
 }
 

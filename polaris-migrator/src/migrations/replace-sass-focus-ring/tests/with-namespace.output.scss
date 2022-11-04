@@ -16,11 +16,20 @@
 }
 
 .withCustomBorderWidth {
-  outline-offset: var(--p-focusRing-offset-1);
-  outline: var(--p-focusRing-base);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // Custom border-width value detected, please ensure this is using the correct token value where appropriate.
+  // outline-offset: calc(var(--p-focusRing-offset-1) + 2px);
+  // outline: var(--p-focusRing-base);
+  @include legacy-polaris-v8.focus-ring($border-width: 2px);
   &:focus {
-    outline-offset: var(--p-focusRing-offset-1);
-    outline: var(--p-focusRing-focused);
+    // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+    // Custom border-width value detected, please ensure this is using the correct token value where appropriate.
+    // outline-offset: calc(var(--p-focusRing-offset-1) + 2px);
+    // outline: var(--p-focusRing-focused);
+    @include legacy-polaris-v8.focus-ring(
+      $border-width: 2px,
+      $style: 'focused'
+    );
   }
 }
 
@@ -30,12 +39,14 @@
   outline: var(--p-focusRing-base);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // Argument border-width is not of type word or string
-  // outline-offset: var(--p-focusRing-offset-1);
+  // Custom border-width value detected, please ensure this is using the correct token value where appropriate.
+  // outline-offset: calc(var(--p-focusRing-offset-1) + test());
   // outline: var(--p-focusRing-base);
   @include legacy-polaris-v8.focus-ring(base, test());
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
   // Argument border-width is not of type word or string
-  // outline-offset: var(--p-focusRing-offset-1);
+  // Custom border-width value detected, please ensure this is using the correct token value where appropriate.
+  // outline-offset: calc(var(--p-focusRing-offset-1) + 0 + 50px);
   // outline: var(--p-focusRing-focused);
   @include legacy-polaris-v8.focus-ring(base, 0 + 50px, focused);
   // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.

@@ -22,14 +22,22 @@ const plugin = (options: PluginOptions): Plugin => {
   // as a javascript function, such that the API remains the same
   // but the output is an array of arguments to pass into
   // `postcss.decl`
-  function focusRing({style}: {[key: string]: Node[]}) {
+  function focusRing({
+    style,
+    'border-width': borderWidth,
+  }: {
+    [key: string]: Node[];
+  }) {
     const styleValue = style?.length ? stringify(style).trim() : 'base';
+    const borderWidthValue = borderWidth?.length
+      ? `calc(var(--p-focusRing-offset-1) + ${stringify(borderWidth).trim()})`
+      : 'var(--p-focusRing-offset-1)';
 
     if (styleValue === 'base') {
       return [
         {
           prop: 'outline-offset',
-          value: 'var(--p-focusRing-offset-1)',
+          value: borderWidthValue,
         },
         {
           prop: 'outline',
@@ -38,7 +46,7 @@ const plugin = (options: PluginOptions): Plugin => {
       ];
     } else {
       return [
-        {prop: 'outline-offset', value: 'var(--p-focusRing-offset-1)'},
+        {prop: 'outline-offset', value: borderWidthValue},
         {prop: 'outline', value: 'var(--p-focusRing-focused)'},
       ];
     }
@@ -95,6 +103,11 @@ const plugin = (options: PluginOptions): Plugin => {
                 });
               }
             });
+            if (args['border-width'] && args['border-width'].length) {
+              reports.push({
+                message: `Custom border-width value detected, please ensure this is using the correct token value where appropriate.`,
+              });
+            }
             declVal = focusRing(args);
           } catch (err: any) {
             reports.push({
