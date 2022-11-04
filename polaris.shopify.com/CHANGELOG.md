@@ -1,5 +1,41 @@
 # polaris.shopify.com
 
+## 0.24.0
+
+### Minor Changes
+
+- [#7068](https://github.com/Shopify/polaris/pull/7068) [`ccdcea22e`](https://github.com/Shopify/polaris/commit/ccdcea22ede61858c47a5f4f5f4fde1727f19177) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` pages and removed examples
+
+* [#7609](https://github.com/Shopify/polaris/pull/7609) [`343865159`](https://github.com/Shopify/polaris/commit/3438651591579ca741b1d42f8f58141065c1ec75) Thanks [@sarahill](https://github.com/sarahill)! - Added new type style guidance and info to typography docs
+
+### Patch Changes
+
+- [#7634](https://github.com/Shopify/polaris/pull/7634) [`4db441756`](https://github.com/Shopify/polaris/commit/4db4417560a37f45aabb645073a442ee54e964e7) Thanks [@laurkim](https://github.com/laurkim)! - Replaced usage of typography components (`DisplayText`, `Heading`, `Subheading`, `Caption`, `VisuallyHidden`, `TextStyle`) with the new `Text` component
+
+* [#7604](https://github.com/Shopify/polaris/pull/7604) [`aa82c82ff`](https://github.com/Shopify/polaris/commit/aa82c82ff5ea65f16bd504940595f4697314fe45) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Inline` component doc vertical alignment example
+
+- [#7568](https://github.com/Shopify/polaris/pull/7568) [`ab0cf251f`](https://github.com/Shopify/polaris/commit/ab0cf251f020287e77ea369436a024852288e22b) Thanks [@chazdean](https://github.com/chazdean)! - Updated `AlphaCard` component guidance and examples
+
+* [#7633](https://github.com/Shopify/polaris/pull/7633) [`1364be7f1`](https://github.com/Shopify/polaris/commit/1364be7f1a9e3983c4ce2ed66a247c536c7b01c1) Thanks [@kyledurand](https://github.com/kyledurand)! - Renamed `alignY` prop to `alignBlock` on `Inline`
+  Added more flex properties to `align` on `Inline`
+
+- [#7527](https://github.com/Shopify/polaris/pull/7527) [`924e9e5cd`](https://github.com/Shopify/polaris/commit/924e9e5cd3c5ae19389fa2c8bff58c8331d37c7d) Thanks [@chazdean](https://github.com/chazdean)! - Update `Columns` component docs
+
+* [#7596](https://github.com/Shopify/polaris/pull/7596) [`749ee31ee`](https://github.com/Shopify/polaris/commit/749ee31ee172dcf8773d044ec0d4bb0425e26511) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed home promo image layout
+
+- [#7563](https://github.com/Shopify/polaris/pull/7563) [`a9051d678`](https://github.com/Shopify/polaris/commit/a9051d678f264ef38c8904ed8c997085db7a841f) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Inline` component docs and default prop values
+
+* [#7566](https://github.com/Shopify/polaris/pull/7566) [`567822218`](https://github.com/Shopify/polaris/commit/5678222189411bfe631ec659960b82b00d54c7c1) Thanks [@kyledurand](https://github.com/kyledurand)! - Bumped nextjs
+
+- [#7602](https://github.com/Shopify/polaris/pull/7602) [`9931ce0b4`](https://github.com/Shopify/polaris/commit/9931ce0b4a7a7f24895d236475c61f0727183172) Thanks [@kyledurand](https://github.com/kyledurand)! - Bumped nextjs to 13.0.1
+
+* [#7571](https://github.com/Shopify/polaris/pull/7571) [`4c5ccc8fa`](https://github.com/Shopify/polaris/commit/4c5ccc8fab6901d931f04dcca9836e0df6657200) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Bleed` component guidance and examples
+
+* Updated dependencies [[`b3e73ee04`](https://github.com/Shopify/polaris/commit/b3e73ee045ba5a90fbc930074b4e8255d079b0d5), [`20c8cad81`](https://github.com/Shopify/polaris/commit/20c8cad814725c29d50afc74dc447d3904e55811), [`79d92a820`](https://github.com/Shopify/polaris/commit/79d92a820864fea4f3f9c64930e820a826a1986e), [`db951f855`](https://github.com/Shopify/polaris/commit/db951f8555f4cfbd01306f617c11682ee441f381), [`432bdd5fe`](https://github.com/Shopify/polaris/commit/432bdd5fe7f7c3e6c0e570b985b26debbf953433), [`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a), [`ccdcea22e`](https://github.com/Shopify/polaris/commit/ccdcea22ede61858c47a5f4f5f4fde1727f19177), [`1364be7f1`](https://github.com/Shopify/polaris/commit/1364be7f1a9e3983c4ce2ed66a247c536c7b01c1), [`7a6fb7c1c`](https://github.com/Shopify/polaris/commit/7a6fb7c1c58ade9b7e53c3318cd635f1ca05c82e), [`9f8b651dd`](https://github.com/Shopify/polaris/commit/9f8b651dd694cf6c384d8580d6ad62d437e49c93), [`addd6bcdd`](https://github.com/Shopify/polaris/commit/addd6bcdd8735dc0cde9d5cd047912ed3568dc8f), [`f006509be`](https://github.com/Shopify/polaris/commit/f006509be03af57615464cab91267002e2ee7b15), [`a9051d678`](https://github.com/Shopify/polaris/commit/a9051d678f264ef38c8904ed8c997085db7a841f), [`3cb5377a6`](https://github.com/Shopify/polaris/commit/3cb5377a6da74778c382e71b1461baad667f1e46), [`35be8a003`](https://github.com/Shopify/polaris/commit/35be8a0035cfb50fc30bea2dbbf2718cd99fdb09)]:
+  - @shopify/polaris@10.11.0
+  - @shopify/polaris-icons@6.5.0
+  - @shopify/polaris-tokens@6.3.0
+
 ## 0.23.3
 
 ### Patch Changes

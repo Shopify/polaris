@@ -1,5 +1,45 @@
 # Changelog
 
+## 10.11.0
+
+### Minor Changes
+
+- [#7572](https://github.com/Shopify/polaris/pull/7572) [`20c8cad81`](https://github.com/Shopify/polaris/commit/20c8cad814725c29d50afc74dc447d3904e55811) Thanks [@laurkim](https://github.com/laurkim)! - Replaced usage of text components in component stories with `Text` component
+
+* [#7621](https://github.com/Shopify/polaris/pull/7621) [`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a) Thanks [@aveline](https://github.com/aveline)! - - Added border width prop to `Box`
+  - Exported color token subset alias types from tokens package and remove from `Box`
+
+- [#7068](https://github.com/Shopify/polaris/pull/7068) [`ccdcea22e`](https://github.com/Shopify/polaris/commit/ccdcea22ede61858c47a5f4f5f4fde1727f19177) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` components
+
+### Patch Changes
+
+- [#7644](https://github.com/Shopify/polaris/pull/7644) [`b3e73ee04`](https://github.com/Shopify/polaris/commit/b3e73ee045ba5a90fbc930074b4e8255d079b0d5) Thanks [@kyledurand](https://github.com/kyledurand)! - Added horizontal spacing defaults to `Bleed`
+
+* [#7530](https://github.com/Shopify/polaris/pull/7530) [`79d92a820`](https://github.com/Shopify/polaris/commit/79d92a820864fea4f3f9c64930e820a826a1986e) Thanks [@samrose3](https://github.com/samrose3)! - Replaced all typography components with the new `Text` component.
+  Added support for `text-inverse` color type on `Text`.
+  Removed references to the following mixins to use the new `Text` or tokens directly in classes: `text-style-body`, `text-style-heading`, `text-style-subheading`, `text-style-caption`, `text-style-button`, `text-style-button-large`, `text-emphasis-subdued`, `text-emphasis-strong`, `nav-item-text-attributes`.
+
+- [#7577](https://github.com/Shopify/polaris/pull/7577) [`db951f855`](https://github.com/Shopify/polaris/commit/db951f8555f4cfbd01306f617c11682ee441f381) Thanks [@RickyMarou](https://github.com/RickyMarou)! - Page component: display subtitle even when it's the only header prop set
+
+* [#7633](https://github.com/Shopify/polaris/pull/7633) [`1364be7f1`](https://github.com/Shopify/polaris/commit/1364be7f1a9e3983c4ce2ed66a247c536c7b01c1) Thanks [@kyledurand](https://github.com/kyledurand)! - Renamed `alignY` prop to `alignBlock` on `Inline`
+  Added more flex properties to `align` on `Inline`
+
+- [#7443](https://github.com/Shopify/polaris/pull/7443) [`7a6fb7c1c`](https://github.com/Shopify/polaris/commit/7a6fb7c1c58ade9b7e53c3318cd635f1ca05c82e) Thanks [@iAmNathanJ](https://github.com/iAmNathanJ)! - Improve performance of the Scrollable component with React 18
+
+* [#7625](https://github.com/Shopify/polaris/pull/7625) [`9f8b651dd`](https://github.com/Shopify/polaris/commit/9f8b651dd694cf6c384d8580d6ad62d437e49c93) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed wrap children with div from Inline component
+
+- [#7593](https://github.com/Shopify/polaris/pull/7593) [`addd6bcdd`](https://github.com/Shopify/polaris/commit/addd6bcdd8735dc0cde9d5cd047912ed3568dc8f) Thanks [@kyledurand](https://github.com/kyledurand)! - Improved comments across layout components, changed default spacing of Inline component to match AlphaStack
+
+* [#7600](https://github.com/Shopify/polaris/pull/7600) [`f006509be`](https://github.com/Shopify/polaris/commit/f006509be03af57615464cab91267002e2ee7b15) Thanks [@billycai](https://github.com/billycai)! - Add spacing between title and metadata for Page component
+
+- [#7563](https://github.com/Shopify/polaris/pull/7563) [`a9051d678`](https://github.com/Shopify/polaris/commit/a9051d678f264ef38c8904ed8c997085db7a841f) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Inline` component docs and default prop values
+
+* [#7635](https://github.com/Shopify/polaris/pull/7635) [`3cb5377a6`](https://github.com/Shopify/polaris/commit/3cb5377a6da74778c382e71b1461baad667f1e46) Thanks [@iAmNathanJ](https://github.com/iAmNathanJ)! - Fixed Scrollable component to match existing onScrolledToBottom logic
+
+* Updated dependencies [[`432bdd5fe`](https://github.com/Shopify/polaris/commit/432bdd5fe7f7c3e6c0e570b985b26debbf953433), [`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a), [`35be8a003`](https://github.com/Shopify/polaris/commit/35be8a0035cfb50fc30bea2dbbf2718cd99fdb09)]:
+  - @shopify/polaris-icons@6.5.0
+  - @shopify/polaris-tokens@6.3.0
+
 ## 10.10.1
 
 ### Patch Changes
