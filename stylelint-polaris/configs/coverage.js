@@ -331,6 +331,7 @@ module.exports = {
             /([\w-]+\.)?unstyled-list($|\()/,
             /([\w-]+\.)?range-thumb-selectors($|\()/,
             /([\w-]+\.)?range-track-selectors($|\()/,
+            /([\w-]+\.)?visually-hidden($|\()/,
           ],
         },
         'function-disallowed-list': [
@@ -340,9 +341,6 @@ module.exports = {
           /([\w-]+\.)?list-selected-indicator($|\()/,
           /([\w-]+\.)?state($|\()/,
         ],
-        'stylelint-polaris/at-rule-disallowed-list': {
-          include: [/([\w-]+\.)?visually-hidden($|\()/],
-        },
       },
     },
   },
