@@ -3,6 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Scrollable} from '../Scrollable';
 import {ScrollableContext} from '../context';
+import type {ScrollableProps} from '../Scrollable';
 
 describe('<Scrollable />', () => {
   it('mounts', () => {
@@ -70,5 +71,61 @@ describe('<Scrollable />', () => {
     expect(scrollArea.find('div')).toHaveReactProps({
       tabIndex: 0,
     });
+  });
+
+  it('calls onScrolledToBottom when scrolled to bottom', () => {
+    const onScrolledToBottom = jest.fn();
+
+    const scrollArea = mountWithApp(
+      <Scrollable
+        data-test-id="scroll-element"
+        onScrolledToBottom={onScrolledToBottom}
+      >
+        <p>Hello</p>
+      </Scrollable>,
+    );
+
+    const scrollNode = scrollArea.find('div', {
+      'data-test-id': 'scroll-element',
+    } as ScrollableProps)?.domNode!;
+
+    // defineProperty needed to assign values to readonly node properties
+    Object.defineProperty(scrollNode, 'clientHeight', {get: () => 0});
+    Object.defineProperty(scrollNode, 'scrollHeight', {get: () => 10});
+    Object.defineProperty(scrollNode, 'scrollTop', {get: () => 10});
+
+    scrollArea.act(() => {
+      scrollNode.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(onScrolledToBottom).toHaveBeenCalledTimes(1);
+  });
+
+  it(`doesn't call onScrolledToBottom when the scroll area is not overflowing`, () => {
+    const onScrolledToBottom = jest.fn();
+
+    const scrollArea = mountWithApp(
+      <Scrollable
+        data-test-id="scroll-element"
+        onScrolledToBottom={onScrolledToBottom}
+      >
+        <p>Hello</p>
+      </Scrollable>,
+    );
+
+    const scrollNode = scrollArea.find('div', {
+      'data-test-id': 'scroll-element',
+    } as ScrollableProps)?.domNode!;
+
+    // defineProperty needed to assign values to readonly node properties
+    Object.defineProperty(scrollNode, 'clientHeight', {get: () => 10});
+    Object.defineProperty(scrollNode, 'scrollHeight', {get: () => 10});
+    Object.defineProperty(scrollNode, 'scrollTop', {get: () => 10});
+
+    scrollArea.act(() => {
+      scrollNode.dispatchEvent(new Event('scroll'));
+    });
+
+    expect(onScrolledToBottom).not.toHaveBeenCalled();
   });
 });

@@ -6,3 +6,8 @@ import './matchers';
 afterEach(() => {
   destroyAll();
 });
+
+globalThis.requestAnimationFrame = (cb) => {
+  cb(Date.now());
+  return Math.random();
+};
