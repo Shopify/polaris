@@ -49,7 +49,7 @@ export const AlphaCard = ({
       background={background}
       padding={padding}
       shadow="card"
-      {...(hasBorderRadius && {borderRadius: defaultBorderRadius})}
+      borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
     >
       {children}
     </Box>

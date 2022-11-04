@@ -10,7 +10,9 @@ export interface BleedProps {
   children: React.ReactNode;
   /** Negative space around the element */
   spacing?: SpacingSpaceScale;
-  /** Negative horizontal space around the element */
+  /** Negative horizontal space around the element
+   * * @default '5'
+   */
   horizontal?: SpacingSpaceScale;
   /** Negative vertical space around the element */
   vertical?: SpacingSpaceScale;
@@ -26,7 +28,7 @@ export interface BleedProps {
 
 export const Bleed = ({
   spacing,
-  horizontal,
+  horizontal = '5',
   vertical,
   top,
   bottom,
