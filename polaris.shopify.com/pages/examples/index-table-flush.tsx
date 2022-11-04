@@ -1,9 +1,4 @@
-import {
-  IndexTable,
-  TextStyle,
-  Card,
-  useIndexResourceState,
-} from '@shopify/polaris';
+import {IndexTable, Card, useIndexResourceState, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -43,7 +38,9 @@ function SimpleFlushIndexTableExample() {
         position={index}
       >
         <IndexTable.Cell flush>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
         <IndexTable.Cell flush>{orders}</IndexTable.Cell>

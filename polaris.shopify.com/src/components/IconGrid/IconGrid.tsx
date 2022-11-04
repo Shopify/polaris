@@ -44,19 +44,16 @@ function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
           },
         }}
         scroll={false}
+        className={className(
+          styles.Icon,
+          activeIcon === id && styles.isSelected,
+        )}
+        id={icon.id}
+        {...searchAttributes}
       >
-        <a
-          className={className(
-            styles.Icon,
-            activeIcon === id && styles.isSelected,
-          )}
-          id={icon.id}
-          {...searchAttributes}
-        >
-          <SearchResultHighlight />
-          <Icon source={(polarisIcons as any)[id]} />
-          <p>{name}</p>
-        </a>
+        <SearchResultHighlight />
+        <Icon source={(polarisIcons as any)[id]} />
+        <p>{name}</p>
       </Link>
     </li>
   );

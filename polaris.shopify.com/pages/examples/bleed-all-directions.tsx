@@ -1,31 +1,41 @@
 import React from 'react';
-import {Bleed, Box, Text} from '@shopify/polaris';
+import {Bleed, Box, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-const styles = {
-  background: 'var(--p-background-selected)',
-  borderRadius: 'var(--p-border-radius-05)',
-  border: '1px solid var(--p-surface-dark)',
-  padding: 'var(--p-space-4)',
-  height: 'var(--p-space-12)',
-  opacity: 0.7,
-};
-
 function BleedAllDirectionsExample() {
   return (
-    <div style={{width: '100%'}}>
-      <Box background="surface" border="base" padding="4">
-        <Bleed spacing="6">
-          <div style={styles}>
-            <Text variant="bodySm" as="h3" alignment="center" fontWeight="bold">
-              All directions
-            </Text>
-          </div>
-        </Bleed>
-      </Box>
-    </div>
+    <Box background="surface" border="base" padding="4">
+      <Bleed spacing="4">
+        <Placeholder label="All directions" />
+      </Bleed>
+    </Box>
   );
 }
+
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        background: '#7B47F1',
+        padding: '14px var(--p-space-2)',
+        height: height,
+        width: width,
+      }}
+    >
+      <Inline align="center">
+        <div
+          style={{
+            color: '#FFFFFF',
+          }}
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="regular">
+            {label}
+          </Text>
+        </div>
+      </Inline>
+    </div>
+  );
+};
 
 export default withPolarisExample(BleedAllDirectionsExample);

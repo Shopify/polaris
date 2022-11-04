@@ -21,12 +21,12 @@ import {Banner, BannerHandles} from '../Banner';
 describe('<Banner />', () => {
   it('renders a title', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
-    expect(banner.find(Text)).toContainReactText('Banner title');
+    expect(banner.find(Text, {as: 'p'})).toContainReactText('Banner title');
   });
 
-  it('passes an h2 element to Heading', () => {
+  it('passes a p element to Text', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
-    expect(banner).toContainReactComponent(Text, {as: 'h2'});
+    expect(banner).toContainReactComponent(Text, {as: 'p'});
   });
 
   it('passes the provided icon source to Icon', () => {

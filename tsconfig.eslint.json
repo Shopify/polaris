@@ -8,7 +8,6 @@
   },
   "include": [
     // Paths to lint
-    "polaris-for-figma",
     "polaris-for-vscode",
     "polaris-migrator",
     "polaris-react",

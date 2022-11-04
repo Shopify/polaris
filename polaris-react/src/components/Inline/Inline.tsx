@@ -1,53 +1,55 @@
 import React from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {elementChildren} from '../../utilities/components';
-
 import styles from './Inline.scss';
 
-const AlignY = {
-  top: 'start',
-  center: 'center',
-  bottom: 'end',
-  baseline: 'baseline',
-};
-
-type Align = 'start' | 'center' | 'end';
+type Align =
+  | 'start'
+  | 'center'
+  | 'end'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly';
+type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 export interface InlineProps {
+  /** Adjust horizontal alignment of elements
+   * @default 'start'
+   */
+  align?: Align;
+  /** Adjust vertical alignment of elements
+   * @default 'center'
+   */
+  blockAlign?: BlockAlign;
+  /** The spacing between elements
+   * @default '4'
+   */
+  spacing?: SpacingSpaceScale;
+  /** Wrap stack elements to additional rows as needed on small screens
+   * @default true
+   */
+  wrap?: boolean;
   /** Elements to display inside stack */
   children?: React.ReactNode;
-  /** Wrap stack elements to additional rows as needed on small screens (Defaults to true) */
-  wrap?: boolean;
-  /** Adjust spacing between elements */
-  spacing?: SpacingSpaceScale;
-  /** Adjust vertical alignment of elements */
-  alignY?: keyof typeof AlignY;
-  /** Adjust horizontal alignment of elements */
-  align?: Align;
 }
 
 export const Inline = function Inline({
+  align = 'start',
+  blockAlign = 'center',
+  spacing = '4',
+  wrap = true,
   children,
-  spacing = '1',
-  align,
-  alignY,
-  wrap,
 }: InlineProps) {
   const style = {
     '--pc-inline-align': align,
-    '--pc-inline-align-y': alignY ? AlignY[alignY] : undefined,
+    '--pc-inline-block-align': blockAlign,
     '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
     '--pc-inline-spacing': `var(--p-space-${spacing})`,
   } as React.CSSProperties;
 
-  const itemMarkup = elementChildren(children).map((child, index) => {
-    return <div key={index}>{child}</div>;
-  });
-
   return (
     <div className={styles.Inline} style={style}>
-      {itemMarkup}
+      {children}
     </div>
   );
 };

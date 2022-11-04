@@ -1,0 +1,140 @@
+.easing {
+  transition-timing-function: linear;
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  transition-timing-function: linear(1);
+  transition-timing-function: ease;
+  transition-timing-function: ease-in;
+  transition-timing-function: ease-out;
+  transition-timing-function: ease-in-out;
+  transition-timing-function: cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  transition-timing-function: step-start;
+  transition-timing-function: step-end;
+  transition-timing-function: steps(1, jump-end);
+}
+
+.easing-shorthand {
+  transition: opacity 300ms linear;
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  transition: opacity 300ms linear(1);
+  transition: opacity 300ms ease;
+  transition: opacity 300ms ease-in;
+  transition: opacity 300ms ease-out;
+  transition: opacity 300ms ease-in-out;
+  transition: opacity 300ms cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  transition: opacity 300ms step-start;
+  transition: opacity 300ms step-end;
+  transition: opacity 300ms steps(1, jump-end);
+}
+
+.easing-multiple {
+  transition: opacity 300ms linear, left 300ms linear;
+  // See: https://w3c.github.io/csswg-drafts/css-easing/#typedef-linear-easing-function
+  transition: opacity 300ms linear(1), left 300ms linear(1);
+  transition: opacity 300ms ease, left 300ms ease;
+  transition: opacity 300ms ease-in, left 300ms ease-in;
+  transition: opacity 300ms ease-out, left 300ms ease-out;
+  transition: opacity 300ms ease-in-out, left 300ms ease-in-out;
+  transition: opacity 300ms cubic-bezier(0, 0, 1, 1),
+    left 300ms cubic-bezier(0, 0, 1, 1);
+  // See:https://w3c.github.io/csswg-drafts/css-easing/#typedef-step-easing-function
+  transition: opacity 300ms step-start, left 300ms step-start;
+  transition: opacity 300ms step-end, left 300ms step-start;
+  transition: opacity 300ms steps(1, jump-end), left 300ms steps(1, jump-end);
+}
+
+.duration {
+  transition-duration: 0;
+  transition-duration: 0ms;
+  transition-duration: 0s;
+  transition-duration: 50ms;
+  transition-duration: 0.05s;
+  transition-duration: 100ms;
+  transition-duration: 0.1s;
+  transition-duration: 150ms;
+  transition-duration: 0.15s;
+  transition-duration: 200ms;
+  transition-duration: 0.2s;
+  transition-duration: 250ms;
+  transition-duration: 0.25s;
+  transition-duration: 300ms;
+  transition-duration: 0.3s;
+  transition-duration: 350ms;
+  transition-duration: 0.35s;
+  transition-duration: 400ms;
+  transition-duration: 0.4s;
+  transition-duration: 450ms;
+  transition-duration: 0.45s;
+  transition-duration: 500ms;
+  transition-duration: 0.5s;
+  transition-duration: 5s;
+}
+
+.duration-shorthand {
+  transition: opacity 0 linear;
+  transition: opacity 0ms linear;
+  transition: opacity 0s linear;
+  transition: opacity 50ms linear;
+  transition: opacity 0.05s linear;
+  transition: opacity 100ms linear;
+  transition: opacity 0.1s linear;
+  transition: opacity 150ms linear;
+  transition: opacity 0.15s linear;
+  transition: opacity 200ms linear;
+  transition: opacity 0.2s linear;
+  transition: opacity 250ms linear;
+  transition: opacity 0.25s linear;
+  transition: opacity 300ms linear;
+  transition: opacity 0.3s linear;
+  transition: opacity 350ms linear;
+  transition: opacity 0.35s linear;
+  transition: opacity 400ms linear;
+  transition: opacity 0.4s linear;
+  transition: opacity 450ms linear;
+  transition: opacity 0.45s linear;
+  transition: opacity 500ms linear;
+  transition: opacity 0.5s linear;
+  transition: opacity 5s linear;
+}
+
+.duration-multiple {
+  transition: opacity 0 linear, left 0 linear;
+  transition: opacity 0ms linear, left 0ms linear;
+  transition: opacity 0s linear, left 0s linear;
+  transition: opacity 50ms linear, left 50ms linear;
+  transition: opacity 0.05s linear, left 0.05s linear;
+  transition: opacity 100ms linear, left 100ms linear;
+  transition: opacity 0.1s linear, left 0.1s linear;
+  transition: opacity 150ms linear, left 150ms linear;
+  transition: opacity 0.15s linear, left 0.15s linear;
+  transition: opacity 200ms linear, left 200ms linear;
+  transition: opacity 0.2s linear, left 0.2s linear;
+  transition: opacity 250ms linear, left 250ms linear;
+  transition: opacity 0.25s linear, left 0.25s linear;
+  transition: opacity 300ms linear, left 300ms linear;
+  transition: opacity 0.3s linear, left 0.3s linear;
+  transition: opacity 350ms linear, left 350ms linear;
+  transition: opacity 0.35s linear, left 0.35s linear;
+  transition: opacity 400ms linear, left 400ms linear;
+  transition: opacity 0.4s linear, left 0.4s linear;
+  transition: opacity 450ms linear, left 450ms linear;
+  transition: opacity 0.45s linear, left 0.45s linear;
+  transition: opacity 500ms linear, left 500ms linear;
+  transition: opacity 0.5s linear, left 0.5s linear;
+  transition: opacity 5s linear, left 5s linear;
+}
+
+.edges {
+  // Without an easing function
+  transition: fill 300ms;
+  // Duration comes after easing func
+  transition: opacity linear 0.5s;
+  // Duration + Delay
+  transition: opacity 400ms linear 300ms;
+  // Duration + Delay after easing func
+  transition: opacity linear 400ms 100ms;
+  // can't process variables
+  transition-timing-function: $foo;
+  transition: opacity $foo 0.5s;
+}

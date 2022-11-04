@@ -35,17 +35,15 @@ function GridItem({
   const searchAttributes = useGlobalSearchResult();
   return (
     <li className={styles.GridItem} {...searchAttributes}>
-      <Link href={url} passHref>
-        <a className={styles.Text}>
-          <SearchResultHighlight />
-          {renderPreview && (
-            <div className={styles.Preview}>{renderPreview()}</div>
-          )}
-          <h4>
-            {title} {status && <StatusBadge status={status} />}
-          </h4>
-          <p>{stripMarkdownLinks(description)}</p>
-        </a>
+      <Link href={url} className={styles.Text}>
+        <SearchResultHighlight />
+        {renderPreview && (
+          <div className={styles.Preview}>{renderPreview()}</div>
+        )}
+        <h4>
+          {title} {status && <StatusBadge status={status} />}
+        </h4>
+        <p>{stripMarkdownLinks(description)}</p>
       </Link>
       {deepLinks && (
         <ul className={styles.DeepLinks}>

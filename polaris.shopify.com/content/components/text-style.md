@@ -19,25 +19,55 @@ keywords:
   - decrease
   - input
   - fields
-examples:
-  - fileName: text-style-subdued.tsx
-    title: Subdued
-    description: Use to de-emphasize a piece of text that is less important to merchants than other nearby text. May also be used to indicate when normal content is absent, for example, “No supplier listed”. Don’t use only for aesthetic effect.
-  - fileName: text-style-strong.tsx
-    title: Strong
-    description: Use to mark text representing user input, or to emphasize the totals row in a price table.
-  - fileName: text-style-positive.tsx
-    title: Positive
-    description: Use in combination with a symbol showing an increasing value to indicate an upward trend.
-  - fileName: text-style-negative.tsx
-    title: Negative
-    description: Use in combination with a symbol showing a decreasing value to indicate a downward trend.
-  - fileName: text-style-warning.tsx
-    title: Warning
-    description: Use to denote something that needs attention, or that merchants need to take action on.
-  - fileName: text-style-code.tsx
-    title: Code
-    description: Use to display inline snippets of code or code-like text.
+status:
+  value: Deprecated
+  message: This component is no longer supported. Please use the Text component instead.
+---
+
+## Mapping to the Text component
+
+### Subdued
+
+```diff
+- <TextStyle variation="subdued">No supplier listed</TextStyle>
++ <Text variant="bodyMd" as="span" color="subdued">No supplier listed</Text>
+```
+
+### Strong
+
+```diff
+- <TextStyle variation="strong">No supplier listed</TextStyle>
++ <Text variant="bodyMd" as="span" fontWeight="bold">No supplier listed</Text>
+```
+
+### Positive
+
+```diff
+- <TextStyle variation="positive">No supplier listed</TextStyle>
++ <Text variant="bodyMd" as="span" color="success">No supplier listed</Text>
+```
+
+### Negative
+
+```diff
+- <TextStyle variation="negative">No supplier listed</TextStyle>
++ <Text variant="bodyMd" as="span" color="critical">No supplier listed</Text>
+```
+
+### Warning
+
+```diff
+- <TextStyle variation="warning">No supplier listed</TextStyle>
++ <Text variant="bodyMd" as="span" color="warning">No supplier listed</Text>
+```
+
+### Code
+
+```diff
+- <TextStyle variation="code">No supplier listed</TextStyle>
++ <Text variant="bodyMd" as="span"><InlineCode>No supplier listed</InlineCode></Text>
+```
+
 ---
 
 ## Best practices

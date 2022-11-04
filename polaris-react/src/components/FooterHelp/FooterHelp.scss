@@ -13,5 +13,10 @@
 }
 
 .Text {
-  @include text-style-input;
+  font-size: var(--p-font-size-100);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-2);
+  border: none;
+  text-transform: initial;
+  letter-spacing: initial;
 }

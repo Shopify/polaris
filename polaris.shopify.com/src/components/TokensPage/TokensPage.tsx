@@ -109,10 +109,11 @@ function TokensPage({tokenGroup}: Props) {
                 const isCurrent = router.asPath.endsWith(slugify(item.title));
                 return (
                   <li key={item.title}>
-                    <Link href={item.url} passHref>
-                      <a aria-current={isCurrent ? 'page' : undefined}>
-                        {item.title}
-                      </a>
+                    <Link
+                      href={item.url}
+                      aria-current={isCurrent ? 'page' : undefined}
+                    >
+                      {item.title}
                     </Link>
                   </li>
                 );

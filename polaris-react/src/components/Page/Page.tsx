@@ -33,6 +33,7 @@ export function Page({
 
   const hasHeaderContent =
     (rest.title != null && rest.title !== '') ||
+    (rest.subtitle != null && rest.subtitle !== '') ||
     rest.primaryAction != null ||
     (rest.secondaryActions != null &&
       ((isInterface(rest.secondaryActions) &&

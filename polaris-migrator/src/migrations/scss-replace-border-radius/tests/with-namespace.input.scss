@@ -1,0 +1,21 @@
+/* stylelint-disable */
+@use 'global-styles/legacy-polaris-v8';
+
+.border-radius {
+  /* Migrate */
+  border-radius: legacy-polaris-v8.border-radius();
+  border-radius: legacy-polaris-v8.border-radius(base);
+  border-radius: legacy-polaris-v8.border-radius(large);
+
+  /* Ignore */
+  border-radius: calc(legacy-polaris-v8.border-radius(base) * 2);
+  border-radius: calc(
+    legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px)
+  );
+
+  /* Comment */
+  border-radius: legacy-polaris-v8.border-radius(base) * 2;
+  border-radius: legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px);
+  border-top-right-radius: legacy-polaris-v8.border-radius() *
+    legacy-polaris-v8.rem(4px);
+}

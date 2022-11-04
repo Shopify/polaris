@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Badge, BadgeProps} from '../../../../../Badge';
 import {Button} from '../../../../../Button';
-import {Heading} from '../../../../../Heading';
+import {Text} from '../../../../../Text';
 import {Link} from '../../../../../Link';
 import {Popover} from '../../../../../Popover';
 import {Stack} from '../../../../../Stack';
@@ -37,10 +37,10 @@ export function Message({
       <Popover.Section>
         <Stack vertical spacing="tight">
           <TextContainer>
-            <Heading>
+            <Text variant="headingMd" as="h2">
               {title}
               {badgeMarkup}
-            </Heading>
+            </Text>
             <p>{description}</p>
           </TextContainer>
 

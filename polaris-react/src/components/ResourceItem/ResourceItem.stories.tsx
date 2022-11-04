@@ -1,12 +1,6 @@
 import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  Avatar,
-  Card,
-  ResourceItem,
-  ResourceList,
-  TextStyle,
-} from '@shopify/polaris';
+import {Avatar, Card, ResourceItem, ResourceList, Text} from '@shopify/polaris';
 
 export default {
   component: ResourceItem,
@@ -41,7 +35,9 @@ export function Default() {
               name={title}
             >
               <h3>
-                <TextStyle variation="strong">{title}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {title}
+                </Text>
               </h3>
               {authorMarkup}
             </ResourceItem>
@@ -86,7 +82,9 @@ export function WithMedia() {
               name={name}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -136,7 +134,9 @@ export function WithShortcutActions() {
               name={name}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -182,7 +182,9 @@ export function WithVerticalAlignment() {
               name={name}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
               <div>{lastOrder}</div>

@@ -13,7 +13,7 @@
 }
 
 .Term {
-  @include text-emphasis-strong;
+  font-weight: var(--p-font-weight-semibold);
   padding: var(--p-space-4) 0 var(--p-space-2);
 
   .spacingTight & {

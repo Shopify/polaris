@@ -2,10 +2,9 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
-import {DisplayText} from '../../DisplayText';
 import {Image} from '../../Image';
 import {Stack} from '../../Stack';
-import {TextContainer} from '../../TextContainer';
+import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
@@ -94,9 +93,7 @@ describe('<EmptyState />', () => {
         <EmptyState image={imgSrc}>{children}</EmptyState>,
       );
 
-      expect(emptyState.find(TextContainer)).toContainReactText(
-        expectedContent,
-      );
+      expect(emptyState.find(Text)).toContainReactText(expectedContent);
     });
   });
 
@@ -146,26 +143,26 @@ describe('<EmptyState />', () => {
   });
 
   describe('heading', () => {
-    it('passes the provided heading to DisplayText', () => {
+    it('passes the provided heading to Text', () => {
       const expectedHeading = 'Manage your inventory transfers';
       const emptyState = mountWithApp(
         <EmptyState heading={expectedHeading} image={imgSrc} />,
       );
-      const displayText = emptyState.find(DisplayText)!;
+      const text = emptyState.find(Text)!;
 
-      expect(displayText).toHaveReactProps({size: 'medium'});
-      expect(displayText).toContainReactText(expectedHeading);
+      expect(text).toHaveReactProps({variant: 'headingXl'});
+      expect(text).toContainReactText(expectedHeading);
     });
 
-    it('renders a small DisplayText when in a content context', () => {
+    it('renders a headingLg Text when in a content context', () => {
       const emptyStateInContentContext = mountWithApp(
         <WithinContentContext.Provider value>
           <EmptyState heading="Heading" image={imgSrc} />
         </WithinContentContext.Provider>,
       );
 
-      expect(emptyStateInContentContext).toContainReactComponent(DisplayText, {
-        size: 'small',
+      expect(emptyStateInContentContext).toContainReactComponent(Text, {
+        variant: 'headingLg',
       });
     });
   });
@@ -195,7 +192,7 @@ describe('<EmptyState />', () => {
       const emptyState = mountWithApp(
         <EmptyState footerContent={footerContentMarkup} image={imgSrc} />,
       );
-      expect(emptyState).toContainReactComponent(TextContainer, {
+      expect(emptyState).toContainReactComponent(Text, {
         children: footerContentMarkup,
       });
     });
@@ -203,7 +200,7 @@ describe('<EmptyState />', () => {
     it('does not create a footer when footerContent is not provided', () => {
       const emptyState = mountWithApp(<EmptyState image={imgSrc} />);
 
-      expect(emptyState).not.toContainReactComponent(TextContainer);
+      expect(emptyState).not.toContainReactComponent(Text);
     });
   });
 });

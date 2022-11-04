@@ -1,10 +1,4 @@
-import {
-  TopBar,
-  ActionList,
-  Icon,
-  VisuallyHidden,
-  Frame,
-} from '@shopify/polaris';
+import {TopBar, ActionList, Icon, Frame, Text} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -85,7 +79,9 @@ function TopBarExample() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <VisuallyHidden>Secondary menu</VisuallyHidden>
+          <Text variant="bodySm" as="span" visuallyHidden>
+            Secondary menu
+          </Text>
         </span>
       }
       open={isSecondaryMenuOpen}

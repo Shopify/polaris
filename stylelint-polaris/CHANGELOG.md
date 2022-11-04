@@ -1,5 +1,18 @@
 # Changelog
 
+## 4.4.0
+
+### Minor Changes
+
+- [#7551](https://github.com/Shopify/polaris/pull/7551) [`d7dc4436f`](https://github.com/Shopify/polaris/commit/d7dc4436f624989a60ad933c8f2a8ebf82e54f69) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add `stylelint-polaris/coverage` rule
+
+### Patch Changes
+
+- [#7589](https://github.com/Shopify/polaris/pull/7589) [`b7b0ef5a9`](https://github.com/Shopify/polaris/commit/b7b0ef5a913397259cac5f25e420d078088161fd) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Add constraints to `stylelint-polaris/coverage` disable comments
+
+- Updated dependencies [[`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a)]:
+  - @shopify/polaris-tokens@6.3.0
+
 ## 4.3.2
 
 ### Patch Changes

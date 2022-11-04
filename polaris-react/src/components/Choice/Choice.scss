@@ -59,7 +59,6 @@
 }
 
 .Label {
-  @include text-style-body;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -77,7 +76,5 @@
 }
 
 .HelpText {
-  @include text-style-body;
-  @include text-emphasis-subdued;
   margin-bottom: var(--p-space-1);
 }

@@ -3,11 +3,11 @@ import React from 'react';
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
+import {Text} from '../Text';
 import {SettingAction} from '../SettingAction';
 import {AlphaCard} from '../AlphaCard';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
-import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 
 export interface AccountConnectionProps {

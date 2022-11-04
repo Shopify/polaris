@@ -10,7 +10,7 @@ import {
   RangeSlider,
   ResourceList,
   TextField,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -187,9 +187,9 @@ export function WithAResourceList() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -498,9 +498,9 @@ export function WithChildrenContent() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -625,9 +625,9 @@ export function Disabled() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -771,9 +771,9 @@ export function SomeDisabled() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -899,9 +899,9 @@ export function WithoutClearButton() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -1092,9 +1092,9 @@ export function WithHelpText() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -1288,9 +1288,9 @@ export function WithQueryFieldHidden() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
@@ -1484,9 +1484,9 @@ export function WithQueryFieldDisabled() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );

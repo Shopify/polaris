@@ -1,0 +1,83 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.easing-simple-string-arg {
+  transition-timing-function: legacy-polaris-v8.easing('anticipate');
+  transition-timing-function: legacy-polaris-v8.easing('base');
+  transition-timing-function: legacy-polaris-v8.easing('excite');
+  transition-timing-function: legacy-polaris-v8.easing('in');
+  transition-timing-function: legacy-polaris-v8.easing('out');
+  transition-timing-function: legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-simple-non-string-arg {
+  transition-timing-function: legacy-polaris-v8.easing();
+  transition-timing-function: legacy-polaris-v8.easing(anticipate);
+  transition-timing-function: legacy-polaris-v8.easing(base);
+  transition-timing-function: legacy-polaris-v8.easing(excite);
+  transition-timing-function: legacy-polaris-v8.easing(in);
+  transition-timing-function: legacy-polaris-v8.easing(out);
+  transition-timing-function: legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-shorthand-string-arg {
+  transition: opacity 300ms legacy-polaris-v8.easing('anticipate');
+  transition: opacity 300ms legacy-polaris-v8.easing('base');
+  transition: opacity 300ms legacy-polaris-v8.easing('excite');
+  transition: opacity 300ms legacy-polaris-v8.easing('in');
+  transition: opacity 300ms legacy-polaris-v8.easing('out');
+  transition: opacity 300ms legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-shorthand-non-string-arg {
+  transition: opacity 300ms legacy-polaris-v8.easing();
+  transition: opacity 300ms legacy-polaris-v8.easing(anticipate);
+  transition: opacity 300ms legacy-polaris-v8.easing(base);
+  transition: opacity 300ms legacy-polaris-v8.easing(excite);
+  transition: opacity 300ms legacy-polaris-v8.easing(in);
+  transition: opacity 300ms legacy-polaris-v8.easing(out);
+  transition: opacity 300ms legacy-polaris-v8.easing(overshoot);
+}
+
+.easing-multiple-string-arg {
+  transition: opacity 300ms legacy-polaris-v8.easing('anticipate'),
+    left 300ms legacy-polaris-v8.easing('anticipate');
+  transition: opacity 300ms legacy-polaris-v8.easing('base'),
+    left 300ms legacy-polaris-v8.easing('base');
+  transition: opacity 300ms legacy-polaris-v8.easing('excite'),
+    left 300ms legacy-polaris-v8.easing('excite');
+  transition: opacity 300ms legacy-polaris-v8.easing('in'),
+    left 300ms legacy-polaris-v8.easing('in');
+  transition: opacity 300ms legacy-polaris-v8.easing('out'),
+    left 300ms legacy-polaris-v8.easing('out');
+  transition: opacity 300ms legacy-polaris-v8.easing('overshoot'),
+    left 300ms legacy-polaris-v8.easing('overshoot');
+}
+
+.easing-multiple-non-string-arg {
+  transition: opacity 300ms legacy-polaris-v8.easing(),
+    left 300ms legacy-polaris-v8.easing();
+  transition: opacity 300ms legacy-polaris-v8.easing(anticipate),
+    left 300ms legacy-polaris-v8.easing(anticipate);
+  transition: opacity 300ms legacy-polaris-v8.easing(base),
+    left 300ms legacy-polaris-v8.easing(base);
+  transition: opacity 300ms legacy-polaris-v8.easing(excite),
+    left 300ms legacy-polaris-v8.easing(excite);
+  transition: opacity 300ms legacy-polaris-v8.easing(in),
+    left 300ms legacy-polaris-v8.easing(in);
+  transition: opacity 300ms legacy-polaris-v8.easing(out),
+    left 300ms legacy-polaris-v8.easing(out);
+  transition: opacity 300ms legacy-polaris-v8.easing(overshoot),
+    left 300ms legacy-polaris-v8.easing(overshoot);
+}
+
+$easingFunc: 'ease-in';
+
+.edges {
+  // Unknown values are flagged
+  transition-timing-function: legacy-polaris-v8.easing(foobar);
+  // Can only handle hard coded values
+  transition-timing-function: legacy-polaris-v8.easing($easingFunc);
+  // Value replacement with legacy easing function value
+  transition: opacity 300ms legacy-polaris-v8.easing(base),
+    left 300ms legacy-polaris-v8.easing(overshoot);
+}

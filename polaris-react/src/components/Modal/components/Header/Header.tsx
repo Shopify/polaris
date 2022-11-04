@@ -16,17 +16,18 @@ export interface HeaderProps {
 }
 
 export function Header({id, titleHidden, children, onClose}: HeaderProps) {
-  const titleHiddenMarkup = (
-    <div className={styles.titleHidden}>
-      <Inline align="end">
-        <CloseButton titleHidden={titleHidden} onClick={onClose} />
-      </Inline>
+  return (
+    <div
+      className={titleHidden || !children ? styles.titleHidden : styles.Header}
+    >
+      <div id={id} className={styles.Title}>
+        <Text as="h2" variant="headingLg">
+          {children}
+        </Text>
+      </div>
+      <CloseButton titleHidden={titleHidden} onClick={onClose} />
     </div>
   );
-
-  if (titleHidden || !children) {
-    return titleHiddenMarkup;
-  }
 
   return (
     <Box

@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Card} from '../../Card';
-import {DisplayText} from '../../DisplayText';
+import {Text} from '../../Text';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
 import {SkeletonDisplayText} from '../../SkeletonDisplayText';
@@ -38,7 +38,7 @@ describe('<SkeletonPage />', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
-      expect(skeletonPage).not.toContainReactComponent(DisplayText);
+      expect(skeletonPage).not.toContainReactComponent(Text);
     });
 
     it('renders SkeletonTitle when a title not defined', () => {

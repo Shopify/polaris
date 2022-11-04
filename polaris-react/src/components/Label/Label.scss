@@ -9,7 +9,6 @@
 }
 
 .Text {
-  @include text-style-body;
   display: block;
   flex: 1 1 auto;
   color: currentColor;

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Frame, Navigation, VisuallyHidden} from '@shopify/polaris';
+import {Frame, Navigation, Text} from '@shopify/polaris';
 import {
   CirclePlusOutlineMinor,
   CustomersMajor,
@@ -468,9 +468,9 @@ export function WithAriaLabelledby() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <VisuallyHidden>
+        <Text variant="bodySm" as="span" visuallyHidden>
           <p id="label-id">Hidden label</p>
-        </VisuallyHidden>
+        </Text>
         <Navigation.Section
           items={[
             {
