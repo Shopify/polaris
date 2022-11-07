@@ -102,28 +102,18 @@ export function Tag({
     </UnstyledButton>
   ) : null;
 
-  // const tagContent =
-  //   url && !disabled ? (
-  //     <a
-  //       className={classNames(styles.Link, segmented && styles.segmented)}
-  //       href={url}
-  //     >
-  //       <span title={tagTitle} className={styles.LinkText}>
-  //         {children}
-  //       </span>
-  //     </a>
-  //   ) : (
-  //     <span title={tagTitle} className={styles.TagText}>
-  //       {children}
-  //     </span>
-  //   );
+  const tagContent =
+    url && !disabled ? (
+      <UnstyledLink url={url}>{tagText}</UnstyledLink>
+    ) : (
+      tagText
+    );
 
   return (
     <Inline blockAlign="stretch">
       <Box as="span" {...boxPropValues}>
         <Inline align="center" blockAlign="stretch">
-          {/* how do we handle truncating now that links are boxes? */}
-          <UnstyledLink url={url}>{tagText}</UnstyledLink>
+          {tagContent}
           {removeButton}
         </Inline>
       </Box>
