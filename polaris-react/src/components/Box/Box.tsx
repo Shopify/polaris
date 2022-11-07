@@ -14,7 +14,7 @@ import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'button' | 'a';
 
 type Overflow = 'hidden' | 'scroll';
 
@@ -191,9 +191,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingInlineEnd,
       shadow,
       width,
+      ...rest
     },
     ref,
   ) => {
+    const {href} = rest;
+    console.log(href);
     const borders = {
       blockEnd: borderBlockEnd,
       inlineStart: borderInlineStart,
@@ -299,6 +302,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         id,
         ref,
         style: sanitizeCustomProperties(style),
+        ...rest,
       },
       children,
     );

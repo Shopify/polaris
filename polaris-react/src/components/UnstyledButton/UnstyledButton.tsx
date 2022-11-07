@@ -4,19 +4,20 @@ import type {BaseButton} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import {useDisableClick} from '../../utilities/use-disable-interaction';
 import {UnstyledLink} from '../UnstyledLink';
+import {Box, BoxProps} from '../Box';
 
-export interface UnstyledButtonProps extends BaseButton {
+export interface UnstyledButtonProps extends BaseButton, BoxProps {
   /** The content to display inside the button */
   children?: React.ReactNode;
   /** A custom class name to apply styles to button */
-  className?: string;
-  [key: string]: any;
+  // className?: string;
+  // [key: string]: any;
 }
 
 export function UnstyledButton({
   id,
   children,
-  className,
+  // className,
   url,
   external,
   download,
@@ -44,7 +45,7 @@ export function UnstyledButton({
 
   const commonProps = {
     id,
-    className,
+    // className,
     'aria-label': accessibilityLabel,
   };
   const interactiveProps = {
@@ -64,6 +65,7 @@ export function UnstyledButton({
     buttonMarkup = disabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.
+      // ???? what ????
       <a {...commonProps}>{children}</a>
     ) : (
       <UnstyledLink
@@ -77,26 +79,27 @@ export function UnstyledButton({
       </UnstyledLink>
     );
   } else {
+    const buttonProps = {
+      ...interactiveProps,
+      ' aria-disabled': disabled,
+      type: submit ? 'submit' : 'button',
+      'aria-busy': loading ? true : undefined,
+      'aria-controls': ariaControls,
+      'aria-expanded': ariaExpanded,
+      'aria-describedby': ariaDescribedBy,
+      'aria-checked': ariaChecked,
+      'aria-pressed': pressed,
+      onKeyDown,
+      onKeyUp,
+      onKeyPress,
+      onClick: handleClick,
+      tabIndex: disabled ? -1 : undefined,
+      ...rest,
+    };
     buttonMarkup = (
-      <button
-        {...interactiveProps}
-        aria-disabled={disabled}
-        type={submit ? 'submit' : 'button'}
-        aria-busy={loading ? true : undefined}
-        aria-controls={ariaControls}
-        aria-expanded={ariaExpanded}
-        aria-describedby={ariaDescribedBy}
-        aria-checked={ariaChecked}
-        aria-pressed={pressed}
-        onKeyDown={onKeyDown}
-        onKeyUp={onKeyUp}
-        onKeyPress={onKeyPress}
-        onClick={handleClick}
-        tabIndex={disabled ? -1 : undefined}
-        {...rest}
-      >
+      <Box as="button" {...buttonProps}>
         {children}
-      </button>
+      </Box>
     );
   }
 

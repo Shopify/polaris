@@ -2,12 +2,14 @@ import React, {memo, forwardRef} from 'react';
 
 import {unstyled} from '../shared';
 import {useLink, LinkLikeComponentProps} from '../../utilities/link';
+import {Box, BoxProps} from '../Box';
 
 // The script in the styleguide that generates the Props Explorer data expects
 // that the interface defining the props is defined in this file, not imported
 // from elsewhere. This silly workaround ensures that the Props Explorer table
 // is generated correctly.
-export interface UnstyledLinkProps extends LinkLikeComponentProps {}
+export interface UnstyledLinkProps extends LinkLikeComponentProps, BoxProps {}
+// typescript????
 
 // Wrapping forwardRef in a memo gets a name set since
 // https://github.com/facebook/react/issues/16722
@@ -24,7 +26,14 @@ export const UnstyledLink = memo(
     const target = external ? '_blank' : undefined;
     const rel = external ? 'noopener noreferrer' : undefined;
     return (
-      <a target={target} {...rest} href={url} rel={rel} {...unstyled.props} />
+      <Box
+        as="a"
+        target={target}
+        {...rest}
+        href={url}
+        rel={rel}
+        {...unstyled.props}
+      />
     );
   }),
 );
