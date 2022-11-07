@@ -38,13 +38,9 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
     >
       <Columns columns={{xs: '1fr auto'}}>
         <Inline>
-          <Box id={id} paddingBlockStart="1">
-            <Box paddingBlockStart="05">
-              <Text as="h2" variant="headingLg" breakWord>
-                {children}
-              </Text>
-            </Box>
-          </Box>
+          <Text id={id} as="h2" variant="headingLg" breakWord>
+            {children}
+          </Text>
         </Inline>
         <Inline>
           <CloseButton titleHidden={titleHidden} onClick={onClose} />
