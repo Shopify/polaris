@@ -2,4 +2,4 @@
 'polaris.shopify.com': patch
 ---
 
-Updated `Box` component docs
+Updated `Box` component guidance and examples
