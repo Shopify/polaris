@@ -41,8 +41,8 @@ export function Footer({
       width="100%"
     >
       <Columns columns={{xs: '1fr auto'}}>
-        <Inline alignY="center">{children}</Inline>
-        <Inline align="end" alignY="center">
+        <Inline blockAlign="center">{children}</Inline>
+        <Inline align="end" blockAlign="center">
           {actions}
         </Inline>
       </Columns>
