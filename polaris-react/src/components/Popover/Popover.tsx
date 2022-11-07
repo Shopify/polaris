@@ -78,6 +78,11 @@ export interface PopoverProps {
   autofocusTarget?: PopoverAutofocusTarget;
   /** Prevents closing the popover when other overlays are clicked */
   preventCloseOnChildOverlayClick?: boolean;
+  /**
+   * Prevents page scrolling when the end of the scrollable Popover overlay content is reached - applied to Pane subcomponent
+   * @default false
+   */
+  captureOverscroll?: boolean;
 }
 
 export interface PopoverPublicAPI {
