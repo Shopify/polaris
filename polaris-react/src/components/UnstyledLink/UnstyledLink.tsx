@@ -29,10 +29,10 @@ export const UnstyledLink = memo(
       <Box
         as="a"
         target={target}
-        {...rest}
         href={url}
         rel={rel}
         {...unstyled.props}
+        {...rest}
       />
     );
   }),

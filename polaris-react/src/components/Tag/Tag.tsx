@@ -123,8 +123,7 @@ export function Tag({
       <Box as="span" {...boxPropValues}>
         <Inline align="center" blockAlign="stretch">
           {/* how do we handle truncating now that links are boxes? */}
-          {/* href is not getting passed to box as expected */}
-          <UnstyledLink href={url}>{tagText}</UnstyledLink>
+          <UnstyledLink url={url}>{tagText}</UnstyledLink>
           {removeButton}
         </Inline>
       </Box>
