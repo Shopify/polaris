@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Page, UnstyledButton} from '../src';
+import {Page} from '../src';
 
 export function Playground() {
   return (
