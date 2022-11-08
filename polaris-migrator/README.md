@@ -306,7 +306,7 @@ npx @shopify/polaris-migrator styles-tokenize-font <path>
 
 ### `styles-tokenize-motion`
 
-Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
+Replace timings (`ms`, `s`) in transition declarations (`transition`, `transition-duration`, `transition-delay`, and `transition-timing-function`) and animation declarations (`animation`, `animation-duration`, `animation-delay`, and `animation-timing-function`) with the corresponding Polaris [motion](https://polaris.shopify.com/tokens/motion) token.
 
 ```diff
 - transition-duration: 100ms;
@@ -320,6 +320,18 @@ Replace timings (`ms`, `s`) in transition declarations (`transition`, `transitio
 
 - transition: opacity 100ms linear, left 100ms linear;
 + transition: opacity var(--p-duration-100) linear, left var(--p-duration-100) linear;
+
+- animation-duration: 100ms;
++ animation-duration: var(--p-duration-100);
+
+- animation-timing-function: linear;
++ animation-timing-function: var(--p-linear);
+
+- animation: 100ms linear fadeIn;
++ animation: var(--p-duration-100) linear fadeIn;
+
+- animation: 100ms linear slideIn, 100ms linear slideIn;
++ animation: var(--p-duration-100) linear slideIn, var(--p-duration-100) linear slideIn;
 ```
 
 ```sh

@@ -78,10 +78,7 @@ export default createSassMigrator(
       });
     }
 
-    function mutateTransitionDurationValue(
-      node: Node,
-      decl: Declaration,
-    ): void {
+    function mutateDurationValue(node: Node, decl: Declaration): void {
       if (isPolarisVar(node)) {
         return;
       }
@@ -126,10 +123,7 @@ export default createSassMigrator(
       }
     }
 
-    function mutateTransitionFunctionValue(
-      node: Node,
-      decl: Declaration,
-    ): void {
+    function mutateFunctionValue(node: Node, decl: Declaration): void {
       if (isPolarisVar(node)) {
         return;
       }
@@ -181,12 +175,12 @@ export default createSassMigrator(
       }
     }
 
-    function mutateTransitionDelayValue(node: Node, decl: Declaration): void {
+    function mutateDelayValue(node: Node, decl: Declaration): void {
       // For now, we treat delays like durations
-      return mutateTransitionDurationValue(node, decl);
+      return mutateDurationValue(node, decl);
     }
 
-    function mutateTransitionShorthandValue(
+    function mutateShorthandValue(
       decl: Declaration,
       parsedValue: ParsedValue,
     ): void {
@@ -223,16 +217,16 @@ export default createSassMigrator(
             // This node could be either the property to animate, or an easing
             // function. We try mutate the easing function, but if not we assume
             // it's the property to animate and therefore do not leave a comment.
-            mutateTransitionFunctionValue(node, decl);
+            mutateFunctionValue(node, decl);
           }
         });
 
         if (timings[0]) {
-          mutateTransitionDurationValue(timings[0], decl);
+          mutateDurationValue(timings[0], decl);
         }
 
         if (timings[1]) {
-          mutateTransitionDelayValue(timings[1], decl);
+          mutateDelayValue(timings[1], decl);
         }
       });
     }
@@ -242,21 +236,39 @@ export default createSassMigrator(
         const handlers: {[key: string]: () => void} = {
           'transition-duration': () => {
             parsedValue.nodes.forEach((node) => {
-              mutateTransitionDurationValue(node, decl);
+              mutateDurationValue(node, decl);
             });
           },
           'transition-delay': () => {
             parsedValue.nodes.forEach((node) => {
-              mutateTransitionDelayValue(node, decl);
+              mutateDelayValue(node, decl);
             });
           },
           'transition-timing-function': () => {
             parsedValue.nodes.forEach((node) => {
-              mutateTransitionFunctionValue(node, decl);
+              mutateFunctionValue(node, decl);
             });
           },
           transition: () => {
-            mutateTransitionShorthandValue(decl, parsedValue);
+            mutateShorthandValue(decl, parsedValue);
+          },
+          'animation-duration': () => {
+            parsedValue.nodes.forEach((node) => {
+              mutateDurationValue(node, decl);
+            });
+          },
+          'animation-delay': () => {
+            parsedValue.nodes.forEach((node) => {
+              mutateDelayValue(node, decl);
+            });
+          },
+          'animation-timing-function': () => {
+            parsedValue.nodes.forEach((node) => {
+              mutateFunctionValue(node, decl);
+            });
+          },
+          animation: () => {
+            mutateShorthandValue(decl, parsedValue);
           },
         };
 

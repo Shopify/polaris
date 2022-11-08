@@ -195,7 +195,14 @@
     left var(--p-duration-5000) var(--p-linear);
 }
 
-.edges {
+.animation {
+  animation: var(--p-duration-300) var(--p-linear) fadeIn;
+  animation-duration: var(--p-duration-200);
+  animation-delay: var(--p-duration-200);
+  animation-timing-function: var(--p-ease);
+}
+
+.edge-cases {
   // Without an easing function
   transition: fill var(--p-duration-300);
   // Duration comes after easing func
