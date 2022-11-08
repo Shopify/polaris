@@ -35,9 +35,7 @@ module.exports = stylelint.createPlugin(
           categoryRuleSettings,
           categoryRuleSeverity: categoryRuleSettings?.[1]?.severity ?? 'error',
           categoryRuleFix:
-            !secondaryOptions?.disableFix &&
-            !categoryRuleSettings?.[1]?.disableFix &&
-            context.fix,
+            context.fix && !categoryRuleSettings?.[1]?.disableFix,
         });
       }
     }
