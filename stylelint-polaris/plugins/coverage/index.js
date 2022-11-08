@@ -19,31 +19,10 @@ module.exports = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primaryOptions */
   (primaryOptions) => {
-    const isPrimaryOptionsValid = validatePrimaryOptions(primaryOptions);
-
-    const rules = !isPrimaryOptionsValid
-      ? []
-      : Object.entries(primaryOptions).flatMap(
-          ([categoryName, categoryConfigRules]) =>
-            Object.entries(categoryConfigRules).map(
-              ([categoryRuleName, categoryRuleSettings]) => ({
-                categoryRuleName,
-                categoryRuleSettings,
-                coverageRuleName: `${ruleName}/${categoryName}`,
-                coverageRuleSeverity:
-                  categoryRuleSettings?.[1]?.severity ?? 'error',
-              }),
-            ),
-        );
-
     return (root, result) => {
-      const validOptions = stylelint.utils.validateOptions(result, ruleName, {
-        actual: isPrimaryOptionsValid,
-      });
+      if (!validateOptions(result, primaryOptions)) return;
 
-      if (!validOptions) return;
-
-      for (const rule of rules) {
+      for (const rule of getRules(primaryOptions)) {
         const {
           categoryRuleName,
           categoryRuleSettings,
@@ -112,6 +91,36 @@ module.exports = stylelint.createPlugin(
 );
 
 /**
+ * @param {PrimaryOptions} primaryOptions
+ */
+function getRules(primaryOptions) {
+  return !validatePrimaryOptions(primaryOptions)
+    ? []
+    : Object.entries(primaryOptions).flatMap(
+        ([categoryName, categoryConfigRules]) =>
+          Object.entries(categoryConfigRules).map(
+            ([categoryRuleName, categoryRuleSettings]) => ({
+              categoryRuleName,
+              categoryRuleSettings,
+              coverageRuleName: `${ruleName}/${categoryName}`,
+              coverageRuleSeverity:
+                categoryRuleSettings?.[1]?.severity ?? 'error',
+            }),
+          ),
+      );
+}
+
+/**
+ * @param {import('stylelint').PostcssResult} result
+ * @param {PrimaryOptions} primaryOptions
+ */
+function validateOptions(result, primaryOptions) {
+  return stylelint.utils.validateOptions(result, ruleName, {
+    actual: validatePrimaryOptions(primaryOptions),
+  });
+}
+
+/**
  * @param {number[]} disabledCoverageLines
  * @param {import('stylelint').DisabledRange} disabledRange
  */
@@ -172,3 +181,8 @@ function normalizeRuleSettings(ruleSettings) {
 
   return [ruleSettings];
 }
+
+module.exports.getRules = getRules;
+module.exports.validateOptions = validateOptions;
+module.exports.normalizeRuleSettings = normalizeRuleSettings;
+module.exports.ruleName = ruleName;

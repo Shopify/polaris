@@ -34,7 +34,9 @@
   "dependencies": {
     "postcss-value-parser": "^4.2.0",
     "postcss-media-query-parser": "^0.2.3",
-    "@shopify/polaris-tokens": "^6.2.1"
+    "@shopify/polaris-tokens": "^6.2.1",
+    "postcss": "^8.4.14",
+    "globby": "^11.1.0"
   },
   "peerDependencies": {
     "stylelint": "^14.1.0"
