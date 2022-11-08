@@ -6,6 +6,7 @@
  * @type {import('stylelint').Config}
  */
 module.exports = {
+  customSyntax: 'postcss-scss',
   plugins: [
     'stylelint-scss',
     '../plugins/at-rule-disallowed-list',

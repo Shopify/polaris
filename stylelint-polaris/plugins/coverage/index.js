@@ -20,25 +20,7 @@ module.exports = stylelint.createPlugin(
   /** @param {PrimaryOptions} primaryOptions */
   (primaryOptions, secondaryOptions, context) => {
     const isPrimaryOptionsValid = validatePrimaryOptions(primaryOptions);
-
-    const rules = [];
-
-    for (const [categoryName, categoryConfigRules] of Object.entries(
-      primaryOptions,
-    )) {
-      for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
-        categoryConfigRules,
-      )) {
-        rules.push({
-          coverageRuleName: `${ruleName}/${categoryName}`,
-          categoryRuleName,
-          categoryRuleSettings,
-          categoryRuleSeverity: categoryRuleSettings?.[1]?.severity,
-          categoryRuleFix:
-            context.fix && !categoryRuleSettings?.[1]?.disableFix,
-        });
-      }
-    }
+    const rules = getRules(primaryOptions, secondaryOptions, context);
 
     return (root, result) => {
       const validOptions = stylelint.utils.validateOptions(result, ruleName, {
@@ -121,6 +103,33 @@ module.exports = stylelint.createPlugin(
 );
 
 /**
+ * @param {PrimaryOptions} primaryOptions
+ * @param {Record<string, any>} secondaryOptions
+ * @param {import('stylelint').PluginContext} context
+ */
+function getRules(primaryOptions, secondaryOptions, context) {
+  const rules = [];
+
+  for (const [categoryName, categoryConfigRules] of Object.entries(
+    primaryOptions,
+  )) {
+    for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
+      categoryConfigRules,
+    )) {
+      rules.push({
+        coverageRuleName: `${ruleName}/${categoryName}`,
+        categoryRuleName,
+        categoryRuleSettings,
+        categoryRuleSeverity: categoryRuleSettings?.[1]?.severity,
+        categoryRuleFix: context.fix && !categoryRuleSettings?.[1]?.disableFix,
+      });
+    }
+  }
+
+  return rules;
+}
+
+/**
  * @param {number[]} disabledCoverageLines
  * @param {import('stylelint').DisabledRange} disabledRange
  */
@@ -181,3 +190,7 @@ function normalizeRuleSettings(ruleSettings) {
 
   return [ruleSettings];
 }
+
+module.exports.getRules = getRules;
+module.exports.normalizeRuleSettings = normalizeRuleSettings;
+module.exports.ruleName = ruleName;
