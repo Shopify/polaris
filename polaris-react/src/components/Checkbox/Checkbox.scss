@@ -1,16 +1,20 @@
 @import '../../styles/common';
 
 .Checkbox {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   margin: var(--p-choice-margin);
 }
 
 // stylelint-disable selector-max-specificity, selector-max-class
 .Input {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 
   &.keyFocused {
     + .Backdrop {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include focus-ring($style: 'focused');
     }
   }
@@ -19,6 +23,7 @@
   &:checked,
   &.Input-indeterminate {
     + .Backdrop {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include control-backdrop(active);
     }
 
@@ -32,6 +37,7 @@
 
   &:disabled {
     + .Backdrop {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include control-backdrop(disabled);
     }
   }
@@ -49,18 +55,28 @@
 // stylelint-enable selector-max-specificity, selector-max-class
 
 .Backdrop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include control-backdrop;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($border-width: var(--p-control-border-width));
 }
 
 .Icon {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-on-interactive));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 50%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 50%;
   transform-origin: 50% 50%;
   pointer-events: none;
@@ -78,10 +94,12 @@
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators
 .error {
   .Icon {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-on-critical));
   }
 
   .Backdrop {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include control-backdrop(error);
   }
 

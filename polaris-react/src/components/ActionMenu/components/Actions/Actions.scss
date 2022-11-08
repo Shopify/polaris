@@ -1,13 +1,18 @@
 @import '../../../../styles/common';
 
 .ActionsLayout {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: wrap;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 
   > * {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 0 0 auto;
   }
 }

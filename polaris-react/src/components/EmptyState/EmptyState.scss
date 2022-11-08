@@ -1,6 +1,7 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $within-page-detail-width: 336px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $detail-width: 400px;
 
 $stacking-order: (
@@ -22,13 +23,16 @@ $illustration-width: calc(100% + #{$left-offset} * 2);
 $illustration-width-cropped: calc(
   #{$illustration-width} + #{$right-offset} * 2
 );
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $centered-illustration-width: 226px;
 
 .EmptyState {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   margin: 0 auto;
   padding: var(--p-space-5) 0;
@@ -38,22 +42,30 @@ $centered-illustration-width: 226px;
 }
 
 .Section {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column-reverse;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
 
   @media #{$p-breakpoints-md-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: var(--p-space-5);
   }
 }
 
 .Details {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   text-align: center;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 
   @media #{$p-breakpoints-sm-up} {
@@ -63,16 +75,19 @@ $centered-illustration-width: 226px;
 
 .Image {
   margin: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: initial;
 }
 
 .ImageContainer,
 .DetailsContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
   padding: 0;
   margin: 0;
 
   @media #{$p-breakpoints-md-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex-basis: 50%;
   }
 }
@@ -83,16 +98,21 @@ $centered-illustration-width: 226px;
   padding-bottom: calc(3 * var(--p-space-5));
 
   .Section {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: unset;
     flex-direction: column-reverse;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     align-items: center;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: center;
   }
 
   .Details {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: flex;
     text-align: center;
     flex-direction: column;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     align-items: center;
 
     @media #{$p-breakpoints-sm-up} {
@@ -102,6 +122,7 @@ $centered-illustration-width: 226px;
 
   .Image {
     margin: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: initial;
   }
 
@@ -113,7 +134,9 @@ $centered-illustration-width: 226px;
 .imageContained {
   .Image {
     @media #{$p-breakpoints-md-up} {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       position: initial;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       width: 100%;
     }
   }

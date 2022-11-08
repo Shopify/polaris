@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
 .Caption {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-caption;
   margin: 0;
 }

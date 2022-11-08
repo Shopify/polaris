@@ -1,11 +1,15 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $sheet-desktop-width: 380px;
 
 .Sheet {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: fixed;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
   background-color: var(--p-surface);
   box-shadow: var(--p-shadow-modal);
@@ -15,7 +19,9 @@ $sheet-desktop-width: 380px;
   }
 
   @media #{$p-breakpoints-md-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: $sheet-desktop-width;
   }
 
@@ -25,15 +31,23 @@ $sheet-desktop-width: 380px;
 }
 
 .Container {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: fixed;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--p-z-11);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
 
   @media #{$p-breakpoints-md-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: auto;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: $sheet-desktop-width;
   }
 }

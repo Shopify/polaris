@@ -1,10 +1,13 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $primary-action-button-height: 36px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $primary-action-button-width: 100px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $skeleton-display-text-max-width: 120px;
 
 .Page {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include page-layout;
 }
 
@@ -17,10 +20,12 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include page-content-layout;
 }
 
 .Header {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include page-header-layout;
   padding-bottom: var(--p-space-2);
 }
@@ -33,29 +38,38 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .TitleAndPrimaryAction {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-start;
 }
 
 .TitleWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 0%;
 }
 
 .Title {
   font-weight: var(--p-font-weight-semibold);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   font-size: 24px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   line-height: 28px;
 
   @media #{$p-breakpoints-md-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     font-size: 20px;
   }
 }
 
 .SkeletonTitle {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   background-color: var(--p-surface-neutral);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
   max-width: $skeleton-display-text-max-width;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 28px;
 
   @media screen and (-ms-high-contrast: active) {
@@ -67,6 +81,7 @@ $skeleton-display-text-max-width: 120px;
   align-self: stretch;
 
   > * {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: $primary-action-button-height;
     min-width: $primary-action-button-width;
   }
@@ -74,16 +89,22 @@ $skeleton-display-text-max-width: 120px;
 
 .Actions {
   margin-top: var(--p-space-2);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: row-reverse;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .Action {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-height: control-slim-height();
   padding-right: var(--p-space-6);
   margin-top: calc(-1 * var(--p-space-1));
@@ -96,6 +117,7 @@ $skeleton-display-text-max-width: 120px;
 
   @media #{$p-breakpoints-lg-down} {
     &:not(:last-child) {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       display: none;
     }
   }

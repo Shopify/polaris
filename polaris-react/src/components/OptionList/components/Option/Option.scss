@@ -1,11 +1,14 @@
 @import '../../../../styles/common';
 @import '../../../../styles/shared/typography';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $min-height: control-height();
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $control-vertical-adjustment: 2px;
 
 .Option {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-height: $min-height;
   text-align: left;
@@ -20,11 +23,14 @@ $control-vertical-adjustment: 2px;
 }
 
 .SingleSelectOption {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
   text-align: left;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &.focused:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
@@ -48,12 +54,16 @@ $control-vertical-adjustment: 2px;
 
 .Label,
 .SingleSelectOption {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-start;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   cursor: pointer;
   border-radius: var(--p-border-radius-1);
   padding: var(--p-space-2);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-breakword;
 
   &:hover:not(.disabled) {
@@ -78,33 +88,43 @@ $control-vertical-adjustment: 2px;
 
 .Checkbox {
   box-sizing: border-box;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-shrink: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--p-choice-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--p-choice-size);
   margin-right: var(--p-space-2);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   margin-left: calc(-1 * var(--p-choice-margin));
 }
 
 .disabled {
   .Media {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-disabled));
   }
 }
 
 .Media {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
   padding: 0 var(--p-space-2);
 }
 
 .verticalAlignTop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-start;
 }
 
 .verticalAlignCenter {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .verticalAlignBottom {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-end;
 }

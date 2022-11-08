@@ -1,9 +1,12 @@
 @import '../../../../styles/common';
 
 .Footer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   align-self: flex-end;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-height: var(--p-space-16);
   padding: var(--p-space-4);
@@ -11,5 +14,6 @@
 }
 
 .FooterContent {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
 }

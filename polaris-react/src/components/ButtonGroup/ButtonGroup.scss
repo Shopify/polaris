@@ -1,8 +1,10 @@
 .ButtonGroup {
   --pc-button-group-item: 10;
   --pc-button-group-focused: 20;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: wrap;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   margin-top: calc(-1 * var(--p-space-2));
   margin-left: calc(-1 * var(--p-space-2));
@@ -24,13 +26,16 @@
 }
 
 .segmented {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: nowrap;
   margin-top: 0;
   margin-left: 0;
 
   .Item {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     z-index: var(--pc-button-group-item);
     margin-top: 0;
     margin-left: 0;
@@ -42,12 +47,14 @@
   }
 
   .Item-focused {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     z-index: var(--pc-button-group-focused);
   }
 }
 
 .fullWidth {
   .Item {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 1 auto;
   }
 }

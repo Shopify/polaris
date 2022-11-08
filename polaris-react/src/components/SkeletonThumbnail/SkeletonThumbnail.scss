@@ -1,12 +1,18 @@
 @import '../../styles/common';
 
 .SkeletonThumbnail {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-skeleton-thumbnail-extra-small-size: 24px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-skeleton-thumbnail-small-size: 40px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-skeleton-thumbnail-medium-size: 60px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-skeleton-thumbnail-large-size: 80px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   background-color: var(--p-surface-neutral);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
 
   @media screen and (-ms-high-contrast: active) {
@@ -15,21 +21,29 @@
 }
 
 .sizeExtraSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-skeleton-thumbnail-extra-small-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-skeleton-thumbnail-extra-small-size);
 }
 
 .sizeSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-skeleton-thumbnail-small-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-skeleton-thumbnail-small-size);
 }
 
 .sizeMedium {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-skeleton-thumbnail-medium-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-skeleton-thumbnail-medium-size);
 }
 
 .sizeLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-skeleton-thumbnail-large-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-skeleton-thumbnail-large-size);
 }

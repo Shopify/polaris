@@ -1,13 +1,16 @@
 @import '../../../../styles/common';
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1;
-
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-breakword;
 }
 
 .Media {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon), var(--p-icon-on-interactive));
   padding: 0 var(--p-space-2);
 }
@@ -17,5 +20,6 @@
 }
 
 .disabledMedia {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-disabled), var(--p-text-on-interactive));
 }

@@ -1,11 +1,17 @@
 @import '../../styles/common';
 
 .Thumbnail {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-thumbnail-extra-small-size: 24px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-thumbnail-small-size: 40px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-thumbnail-medium-size: 60px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-thumbnail-large-size: 80px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
   overflow: hidden;
   background: var(--p-surface);
@@ -16,24 +22,29 @@
 
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
     padding-bottom: 100%;
   }
 }
 
 .sizeExtraSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-thumbnail-extra-small-size);
 }
 
 .sizeSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-thumbnail-small-size);
 }
 
 .sizeMedium {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-thumbnail-medium-size);
 }
 
 .sizeLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-thumbnail-large-size);
 }
 
@@ -42,14 +53,20 @@
 }
 
 .Thumbnail > * {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
   margin: auto;
   max-width: 100%;
   max-height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(currentColor);
   color: var(--p-icon-subdued);
 }

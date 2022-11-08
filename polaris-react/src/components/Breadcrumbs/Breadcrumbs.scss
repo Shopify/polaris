@@ -1,12 +1,19 @@
 @import '../../styles/common';
 
 .Breadcrumb {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-height: control-height();
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-width: control-height();
   color: var(--p-text-subdued);
   text-decoration: none;
@@ -14,6 +21,7 @@
   padding: var(--p-space-05);
   border-radius: var(--p-border-radius-1);
   border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($border-width: 1px);
 
   &:hover {
@@ -30,6 +38,7 @@
     text-decoration: none;
 
     .Icon {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-icon-pressed));
     }
   }
@@ -39,19 +48,26 @@
   }
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include truncate;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .Icon {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-breadcrumbs-icon-size: 20px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-breadcrumbs-icon-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-breadcrumbs-icon-size);
   margin: calc(-0.5 * var(--pc-breadcrumbs-icon-size)) 0
     calc(-0.5 * var(--pc-breadcrumbs-icon-size)) calc(-1 * var(--p-space-2));

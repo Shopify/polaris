@@ -1,12 +1,15 @@
 @import '../../styles/common';
 
 .Choice {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-start;
   padding: var(--p-space-1) 0;
   cursor: pointer;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: inline-flex;
   }
 }
@@ -15,6 +18,7 @@
   padding: 0;
 
   > .Label {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include visually-hidden;
   }
 
@@ -41,19 +45,27 @@
 }
 
 .Control {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-choice-size: var(--p-choice-size);
 
   @media #{$p-breakpoints-md-down} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     --pc-choice-size: 22px;
   }
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: stretch;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-choice-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-choice-size);
   margin-right: var(--p-space-2);
 
   > * {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
   }
 }
@@ -67,9 +79,11 @@
 }
 
 .Descriptions {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-choice-size: var(--p-choice-size);
 
   @media #{$p-breakpoints-md-down} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     --pc-choice-size: 22px;
   }
   padding-left: calc(var(--p-space-2) + var(--pc-choice-size));

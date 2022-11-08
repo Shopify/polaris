@@ -1,8 +1,11 @@
 @import '../../styles/common';
 
 .Icon {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 20px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 20px;
   max-height: 100%;
   max-width: 100%;
@@ -14,23 +17,32 @@
 }
 
 .hasBackdrop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   margin: var(--p-space-1);
 
   &::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: calc(-1 * var(--p-space-1));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: calc(-1 * var(--p-space-1));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: calc(-1 * var(--p-space-1));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: calc(-1 * var(--p-space-1));
     border-radius: var(--p-border-radius-half);
   }
 }
 
 .colorBase {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
 
   &::before {
@@ -39,10 +51,12 @@
 }
 
 .colorSubdued {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-subdued));
 }
 
 .colorCritical {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-critical));
 
   &::before {
@@ -51,10 +65,12 @@
 }
 
 .colorInteractive {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-interactive));
 }
 
 .colorWarning {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-warning));
 
   &::before {
@@ -63,6 +79,7 @@
 }
 
 .colorHighlight {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-highlight));
 
   &::before {
@@ -71,6 +88,7 @@
 }
 
 .colorSuccess {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-success));
 
   &::before {
@@ -79,13 +97,17 @@
 }
 
 .colorPrimary {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-action-primary));
 }
 
 .Svg,
 .Img {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   max-width: 100%;
   max-height: 100%;

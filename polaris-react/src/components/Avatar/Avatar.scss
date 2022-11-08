@@ -1,9 +1,15 @@
 .Avatar {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-avatar-extra-small-size: 24px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-avatar-small-size: 32px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-avatar-medium-size: 40px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-avatar-large-size: 60px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
   overflow: hidden;
   min-width: var(--pc-avatar-extra-small-size);
@@ -18,6 +24,7 @@
 
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
     padding-bottom: 100%;
   }
@@ -54,18 +61,22 @@
 }
 
 .sizeExtraSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-avatar-extra-small-size);
 }
 
 .sizeSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-avatar-small-size);
 }
 
 .sizeMedium {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-avatar-medium-size);
 }
 
 .sizeLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-avatar-large-size);
 }
 
@@ -99,10 +110,15 @@
 }
 
 .Image {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 50%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 50%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
   border-radius: inherit;
   transform: translate(-50%, -50%);
@@ -110,17 +126,27 @@
 }
 
 .Initials {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
 }
 
 .Svg {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
 }

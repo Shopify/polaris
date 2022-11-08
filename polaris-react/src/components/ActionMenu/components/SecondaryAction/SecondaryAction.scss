@@ -5,6 +5,7 @@
   // stylelint-disable declaration-no-important
   a,
   button {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($border-width: 1px);
     background: transparent !important;
     box-shadow: none !important;
@@ -22,6 +23,7 @@
 
     @media #{$p-breakpoints-md-up} {
       border: none !important;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include focus-ring($border-width: 0);
     }
   }
@@ -29,6 +31,7 @@
   &.destructive {
     a,
     button {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-icon-critical));
       color: var(--p-interactive-critical);
 

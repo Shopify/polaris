@@ -8,6 +8,7 @@
     var(--p-hint-from-direct-light);
   --pc-scrollable-max-height: none;
   -webkit-overflow-scrolling: touch;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   max-height: var(--pc-scrollable-max-height);
   overflow-x: hidden;
@@ -15,6 +16,7 @@
 
   &:focus {
     outline: var(--p-border-width-2) solid var(--p-focused);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     outline-offset: 2px;
   }
 }

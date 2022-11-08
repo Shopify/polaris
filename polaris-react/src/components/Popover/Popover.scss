@@ -1,9 +1,13 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $arrow-size: 14px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $visible-portion-of-arrow: 5px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $content-max-height: 500px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $content-max-width: 400px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $vertical-motion-offset: -5px;
 
 .Popover {
@@ -59,6 +63,7 @@ $vertical-motion-offset: -5px;
 }
 
 .Wrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   overflow: hidden;
   background-color: var(--p-surface);
@@ -67,7 +72,9 @@ $vertical-motion-offset: -5px;
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column;
   border-radius: var(--p-border-radius-1);
@@ -89,6 +96,7 @@ $vertical-motion-offset: -5px;
 }
 
 .Pane {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 0%;
   max-width: 100%;
 
@@ -103,6 +111,7 @@ $vertical-motion-offset: -5px;
 
 .Pane-fixed {
   overflow: visible;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
 }
 
@@ -115,12 +124,13 @@ $vertical-motion-offset: -5px;
 }
 
 .FocusTracker {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 }
 
 .PopoverOverlay-hideOnPrint {
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }

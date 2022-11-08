@@ -1,10 +1,12 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $item-min-height: 16px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $item-min-width: 50px;
 $item-vertical-padding: $item-min-height * 0.5;
 
 .Tabs {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: wrap;
   margin: 0;
@@ -21,10 +23,12 @@ $item-vertical-padding: $item-min-height * 0.5;
   flex-wrap: nowrap;
 
   .TabContainer {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 1 100%;
   }
 
   .Title {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
     padding: var(--p-space-2) var(--p-space-4);
   }
@@ -32,22 +36,28 @@ $item-vertical-padding: $item-min-height * 0.5;
 
 .fillSpace {
   .TabContainer {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 1 auto;
   }
 }
 
 .TabContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   margin: 0;
   padding: 0;
 }
 
 .Tab {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
   color: var(--p-text-subdued);
   color: var(--p-text);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: var(--p-space-025);
@@ -63,6 +73,7 @@ $item-vertical-padding: $item-min-height * 0.5;
     text-decoration: none;
 
     .Title {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include text-emphasis-normal;
       background-color: transparent;
       // stylelint-disable-next-line selector-max-specificity
@@ -84,12 +95,14 @@ $item-vertical-padding: $item-min-height * 0.5;
 
   &:focus {
     .Title {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include text-emphasis-normal;
     }
 
     &:not(:active) {
       // stylelint-disable-next-line selector-max-specificity
       .Title {
+        // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
         @include focus-ring($style: 'focused');
       }
     }
@@ -101,6 +114,7 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .Tab-selected {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-emphasis-normal;
 
   &:focus .Title {
@@ -122,8 +136,10 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .Title {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
   border-radius: var(--p-border-radius-1);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
   padding: var(--p-space-2) var(--p-space-4);
   min-width: $item-min-width;
@@ -131,10 +147,15 @@ $item-vertical-padding: $item-min-height * 0.5;
 
   &::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: calc(-1 * var(--p-space-2));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--p-border-width-3);
     border-top-left-radius: var(--p-border-radius-1);
     border-top-right-radius: var(--p-border-radius-1);
@@ -142,10 +163,12 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .titleWithIcon {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .Panel {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
 
   &:focus {
@@ -154,6 +177,7 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .Panel-hidden {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 }
 
@@ -164,9 +188,13 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .Item {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-height: $item-min-height;
   padding: $item-vertical-padding var(--p-space-4);
@@ -189,6 +217,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   }
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
@@ -198,15 +227,19 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .DisclosureTab {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 }
 
 .DisclosureTab-visible {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .DisclosureActivator {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
   background-color: transparent;
   cursor: pointer;
@@ -216,10 +249,12 @@ $item-vertical-padding: $item-min-height * 0.5;
 
   &:hover,
   &:focus {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon));
   }
 
   &:focus .Title {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
@@ -230,7 +265,9 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .TabMeasurer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   visibility: hidden;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 0;
 }

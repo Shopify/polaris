@@ -1,16 +1,22 @@
 @import '../../styles/common';
 
 .FullscreenBar {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $top-bar-height;
   box-shadow: var(--p-shadow-top-bar);
   background-color: var(--p-surface);
 }
 
 .BackAction {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 1 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   padding-left: var(--p-space-3);
   padding-right: var(--p-space-3);

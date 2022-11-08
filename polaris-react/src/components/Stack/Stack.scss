@@ -1,7 +1,9 @@
 .Stack {
   --pc-stack-spacing: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: wrap;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: stretch;
   margin-top: calc(-1 * var(--pc-stack-spacing));
   margin-left: calc(-1 * var(--pc-stack-spacing));
@@ -42,51 +44,63 @@
 }
 
 .distributionLeading {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-start;
 }
 
 .distributionTrailing {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
 }
 
 .distributionCenter {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
 }
 
 .distributionEqualSpacing {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
 }
 
 .distributionFill > .Item {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 }
 
 .distributionFillEvenly > .Item {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 
   @supports (min-width: fit-content) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 0 0%;
     min-width: fit-content;
   }
 }
 
 .alignmentLeading {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-start;
 }
 
 .alignmentTrailing {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-end;
 }
 
 .alignmentCenter {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .alignmentFill {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: stretch;
 }
 
 .alignmentBaseline {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: baseline;
 }
 
@@ -100,10 +114,12 @@
 }
 
 .Item {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
   min-width: 0;
 }
 
 .Item-fill {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 }

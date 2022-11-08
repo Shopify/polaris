@@ -6,8 +6,10 @@
   word-break: break-word;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: flex;
     flex-wrap: wrap;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     align-items: flex-start;
   }
 }
@@ -21,6 +23,7 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 0 1 25%;
     padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
 
@@ -48,6 +51,7 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 1 51%;
     padding: var(--p-space-4) 0;
 

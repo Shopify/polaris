@@ -2,7 +2,9 @@
 
 .Button {
   --pc-button-slim-min-height: var(--p-font-line-height-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-button-large-min-height: 44px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-button-vertical-padding: calc(
     (36px - var(--p-font-line-height-2) - var(--p-space-05)) / 2
   );
@@ -18,17 +20,22 @@
           var(--p-space-05)
       ) / 2
   );
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-button-spinner-size: 20px;
   --pc-button-segment: 10;
   --pc-button-focused: 20;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-button-disclosure-icon-offset: -6px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include button-base;
 
   &.disabled {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include base-button-disabled;
   }
 
   &.connectedDisclosure {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     z-index: var(--pc-button-segment);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -39,6 +46,7 @@
     }
 
     &:focus {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       z-index: var(--pc-button-focused);
     }
   }
@@ -50,55 +58,71 @@
   line-height: var(--p-font-line-height-1);
   text-transform: initial;
   letter-spacing: initial;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-width: 1px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-height: 1px;
 
   .Button:not(.plain) & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
   }
 }
 
 .textAlignLeft {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-start;
   text-align: left;
 
   .Content {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: flex-start;
   }
 }
 
 .textAlignStart {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-start;
   text-align: start;
 
   .Content {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: flex-start;
   }
 }
 
 .textAlignCenter {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
   text-align: center;
 }
 
 .textAlignRight {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
   text-align: right;
 
   .Content {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: flex-end;
   }
 }
 
 .textAlignEnd {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
   text-align: end;
 
   .Content {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: flex-end;
   }
 }
@@ -130,8 +154,11 @@
 }
 
 .Spinner {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 50%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 50%;
   margin-top: calc(-1 * (var(--pc-button-spinner-size) / 2));
   margin-left: calc(-1 * (var(--pc-button-spinner-size) / 2));
@@ -139,9 +166,11 @@
 
 .primary,
 .destructive {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include button-filled;
 
   &.disabled {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-disabled));
     color: var(--p-text-disabled);
     box-shadow: none;
@@ -155,6 +184,7 @@
   --pc-button-color-hover: var(--p-action-primary-hovered);
   --pc-button-color-active: var(--p-action-primary-pressed);
   --pc-button-color-depressed: var(--p-action-primary-depressed);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-on-primary));
 
   &.disabled {
@@ -168,6 +198,7 @@
   --pc-button-color-hover: var(--p-action-critical-hovered);
   --pc-button-color-active: var(--p-action-critical-pressed);
   --pc-button-color-depressed: var(--p-action-critical-depressed);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon-on-critical));
 
   &.disabled {
@@ -176,6 +207,7 @@
 }
 
 .outline {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include button-outline(var(--p-border));
 
   &.disabled {
@@ -185,6 +217,7 @@
 }
 
 .destructive.outline {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include button-outline(var(--p-border-critical));
 }
 
@@ -194,6 +227,7 @@
 }
 
 .loading {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 
   &,
@@ -212,6 +246,7 @@
 // in this case.
 // stylelint-disable selector-max-specificity, selector-max-class
 .plain {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-interactive));
   margin: calc(-1 * var(--pc-button-vertical-padding))
     calc(-1 * var(--p-space-2));
@@ -224,11 +259,13 @@
 
   > .Content {
     font-weight: var(--p-font-weight-regular);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring;
   }
 
   &:hover,
   &:focus:not(.disabled) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-interactive-hovered));
     color: var(--p-interactive-hovered);
     background: transparent;
@@ -241,30 +278,37 @@
 
   &.pressed,
   &:active {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-interactive-pressed));
     color: var(--p-interactive-pressed);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include high-contrast-button-outline(none);
     background: transparent;
     box-shadow: none;
   }
 
   &:focus {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include no-focus-ring;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include high-contrast-button-outline(none);
 
     > .Content {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include high-contrast-button-outline;
     }
   }
 
   &:focus:not(:active) {
     > .Content {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include focus-ring($style: 'focused');
     }
   }
 
   &:active:not(.iconOnly) > .Content,
   &.pressed:not(.iconOnly) > .Content {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include plain-button-backdrop;
   }
 
@@ -283,6 +327,7 @@
   }
 
   &.destructive {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-interactive-critical));
     color: var(--p-interactive-critical);
 
@@ -311,36 +356,45 @@
   }
 
   &.iconOnly {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     margin: calc(-0.5 * (36px - var(--p-icon-size-medium)));
 
     &:hover {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-icon-hovered));
     }
 
     &:active,
     &.pressed {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-icon-pressed));
     }
 
     &.disabled {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-icon-disabled));
     }
   }
 
   &.destructive.iconOnly {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-action-critical));
 
     &:hover {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-action-critical-hovered));
     }
 
     &:active,
     &.pressed {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-action-critical-pressed));
     }
 
     &.disabled {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-action-critical-disabled));
     }
   }
@@ -353,6 +407,7 @@
 // stylelint-enable selector-max-specificity, selector-max-class
 
 .fullWidth {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include button-full-width;
 }
 
@@ -401,12 +456,14 @@
 .monochrome {
   &.outline,
   &.plain {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(currentColor);
     color: currentColor;
 
     &:hover,
     &:focus,
     &:active {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(currentColor);
       color: currentColor;
     }
@@ -414,7 +471,9 @@
     // stylelint-disable selector-max-class
     &.disabled {
       color: currentColor;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(currentColor);
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       opacity: 0.4;
     }
 
@@ -424,14 +483,17 @@
     }
 
     &.iconOnly {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(currentColor);
 
       &:focus,
       &:active {
+        // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
         @include recolor-icon(currentColor);
       }
 
       &.disabled {
+        // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
         @include recolor-icon(currentColor);
       }
     }
@@ -447,21 +509,29 @@
   }
 
   &.outline {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
     border-color: currentColor;
     // stylelint-disable selector-max-class
     box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($border-width: 2px);
 
     &::before {
       content: '';
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       position: absolute;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       top: 0;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       right: 0;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       bottom: 0;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       left: 0;
       background-color: currentColor;
       opacity: 0;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       z-index: 0;
     }
 
@@ -471,6 +541,7 @@
       color: currentColor;
 
       &::before {
+        // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
         opacity: 0.2;
       }
     }
@@ -482,12 +553,14 @@
       border-color: currentColor;
 
       &::before {
+        // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
         opacity: 0.07;
       }
     }
 
     &:focus {
       box-shadow: 0 0 0 var(--p-border-width-1) currentColor;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include focus-ring($style: 'focused');
     }
 
@@ -498,6 +571,7 @@
     &:hover,
     &:active {
       &::before {
+        // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
         opacity: 0.05;
       }
     }
@@ -507,18 +581,22 @@
 // stylelint-enable selector-max-specificity
 
 .ConnectedDisclosureWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .ConnectedDisclosure {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-button-segment);
   margin-left: calc(-1 * var(--p-space-025));
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
 
   &:focus,
   &:active {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     z-index: var(--pc-button-focused);
   }
 
@@ -579,6 +657,7 @@
 
 [data-buttongroup-full-width='true'] {
   .Button {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include button-full-width;
   }
 }

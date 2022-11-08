@@ -1,15 +1,19 @@
 @import '../../styles/common';
 
 .RadioButton {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   margin: var(--p-choice-margin);
 }
 
 .Input {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 
   // stylelint-disable-next-line selector-max-class
   &.keyFocused + .Backdrop {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
 
     // stylelint-disable-next-line selector-max-specificity, selector-max-class
@@ -42,19 +46,28 @@
 }
 
 .Backdrop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-icon-size-small: var(--p-icon-size-small);
 
   // ::before is the selected dot, ::after the focus-ring
 
   @media #{$p-breakpoints-md-down} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     --pc-icon-size-small: 10px;
   }
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border: var(--p-control-border-width) solid var(--p-border);
   border-radius: var(--p-border-radius-half);
   background-color: var(--p-surface);
@@ -62,13 +75,18 @@
 
   &::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 50%;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: 50%;
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.1);
     transform-origin: 50% 50%;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--pc-icon-size-small);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: var(--pc-icon-size-small);
     background-color: var(--p-interactive);
     border-radius: var(--p-border-radius-half);
@@ -79,7 +97,7 @@
       border: var(--p-border-width-5) solid transparent;
     }
   }
-
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($border-width: var(--p-control-border-width));
 
   &::after {

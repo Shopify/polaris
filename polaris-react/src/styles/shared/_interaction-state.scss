@@ -1,11 +1,17 @@
 @mixin list-selected-indicator {
   content: '';
   background-color: var(--p-interactive);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: calc(-1 * var(--p-space-2));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--p-border-width-3);
   border-top-right-radius: var(--p-border-radius-1);
   border-bottom-right-radius: var(--p-border-radius-1);

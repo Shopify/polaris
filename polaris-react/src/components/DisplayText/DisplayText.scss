@@ -5,17 +5,21 @@
 }
 
 .sizeSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-display-small;
 }
 
 .sizeMedium {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-display-medium;
 }
 
 .sizeLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-display-large;
 }
 
 .sizeExtraLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-display-x-large;
 }

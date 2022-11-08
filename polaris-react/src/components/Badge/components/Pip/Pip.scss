@@ -1,12 +1,16 @@
 .Pip {
   --pc-pip-size: var(--p-space-2);
   --pc-pip-color: var(--p-icon);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-block;
   color: var(--pc-pip-color);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-pip-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-pip-size);
   border: var(--p-border-width-2) solid var(--pc-pip-color);
   border-radius: var(--p-border-radius-half);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-shrink: 0;
 }
 
@@ -55,6 +59,7 @@
     // 100px is an arbitrarily large number so that you can't see the curvature
     // of the box shadow. y-offset is 2px larger than the spread to make it look
     // like it is half-way down the pip (which is 4px tall)
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     box-shadow: 0 -102px 0 -100px currentColor inset;
   }
 }
@@ -68,6 +73,7 @@
     background: none;
     // 100px is an arbitrarily large number so that you can't see the curvature
     // of the box shadow.
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     box-shadow: 0 0 0 100px currentColor inset;
   }
 }

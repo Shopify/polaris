@@ -1,8 +1,11 @@
 @import '../../styles/common';
 
 .MediaCard {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-flow: row wrap;
 
@@ -19,6 +22,7 @@
   overflow: hidden;
 
   &:not(.portrait) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex-basis: 40%;
 
     @media #{$p-breakpoints-md-up} {
@@ -28,6 +32,7 @@
     }
 
     &.sizeSmall {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       flex-basis: 33%;
     }
   }
@@ -39,21 +44,28 @@
 }
 
 .InfoContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 
   &:not(.portrait) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex-basis: 60%;
 
     &.sizeSmall {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       flex-basis: 67%;
     }
   }
 }
 
 .Popover {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--p-z-2);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: var(--p-space-4);
 }
 

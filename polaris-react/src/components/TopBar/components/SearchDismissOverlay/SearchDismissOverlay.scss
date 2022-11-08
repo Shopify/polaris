@@ -2,11 +2,17 @@
 @import '../../variables';
 
 .SearchDismissOverlay {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: fixed;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--p-z-7);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
 }
 

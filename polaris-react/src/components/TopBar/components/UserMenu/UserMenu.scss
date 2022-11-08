@@ -1,10 +1,12 @@
 @import '../../../../styles/common';
 
 .Details {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   max-width: 160px;
   margin-left: var(--p-space-2);
 
   @media #{$p-breakpoints-md-down} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }

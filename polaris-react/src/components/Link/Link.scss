@@ -2,6 +2,7 @@
 
 .Link {
   appearance: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline;
   text-align: inherit;
   padding: 0;
@@ -23,20 +24,28 @@
   }
 
   &:active {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
     color: var(--p-interactive-pressed);
 
     &::before {
       content: '';
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       position: absolute;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       z-index: -1;
       // this mimics the box model of the plain button backdrop
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       top: -2px;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       right: -5px;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       bottom: -2px;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       left: -5px;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       display: block;
-
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       border-radius: var(--p-border-radius-base);
     }
   }

@@ -6,5 +6,6 @@
 }
 
 .ScrollContainer::-webkit-scrollbar {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 }

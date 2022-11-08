@@ -1,10 +1,13 @@
 .Tabs {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   border-bottom: var(--p-border-divider);
 }
 
 .Tab {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   padding: calc(var(--p-space-5) + var(--p-space-05)) var(--p-space-4);
 
@@ -14,10 +17,15 @@
 
   &::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: -1px;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: var(--p-space-3);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: var(--p-space-3);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--p-border-width-3);
     border-top-left-radius: var(--p-border-radius-1);
     border-top-right-radius: var(--p-border-radius-1);
@@ -25,9 +33,11 @@
 }
 
 .Tab-short {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 80px;
 }
 
 .Tab-long {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100px;
 }

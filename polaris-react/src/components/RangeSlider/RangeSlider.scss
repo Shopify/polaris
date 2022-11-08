@@ -1,7 +1,9 @@
 .RangeSlider {
   --pc-range-slider-input: 10;
   --pc-range-slider-output: 20;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-range-slider-track-height: 4px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-range-slider-thumb-size: var(--p-range-slider-thumb-size-base);
   --pc-track-dashed-border-radius: var(--p-border-radius-1);
 }
@@ -9,8 +11,11 @@
 @mixin track-dashed {
   $dashedTrackColor: var(--p-border);
   content: '';
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-range-slider-track-height);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   background-image: linear-gradient(
     to right,

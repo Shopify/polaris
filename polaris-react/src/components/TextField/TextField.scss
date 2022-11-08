@@ -1,14 +1,19 @@
 @import '../../styles/common';
 
 $textfield-backdrop-offset: calc(-1 * var(--p-space-05));
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $spinner-icon-size: 12px;
 
 .TextField {
   --pc-text-field-contents: 20;
   --pc-text-field-backdrop: 10;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-input;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   color: var(--p-text);
   cursor: text;
@@ -41,6 +46,7 @@ $spinner-icon-size: 12px;
 
   // stylelint-disable-next-line selector-max-class, selector-max-combinators
   ~ .Backdrop {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 }
@@ -48,6 +54,7 @@ $spinner-icon-size: 12px;
 .error {
   .Input::placeholder {
     // This is the only place this color is used.
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     color: #9c9798;
   }
 
@@ -87,14 +94,21 @@ $spinner-icon-size: 12px;
   line-height: var(--p-font-line-height-2);
   text-transform: initial;
   letter-spacing: initial;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-contents);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 0%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-width: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-height: control-height();
   margin: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   padding: control-vertical-padding() var(--p-space-3);
   background: none;
   border: var(--p-border-transparent);
@@ -178,12 +192,19 @@ $spinner-icon-size: 12px;
 }
 
 .Backdrop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($border-width: 1px);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-backdrop);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
   background-color: var(--p-surface);
   border: var(--p-border-width-1) solid var(--p-border-subdued);
@@ -194,8 +215,11 @@ $spinner-icon-size: 12px;
 
 .Prefix,
 .Suffix {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-contents);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
   color: var(--p-text-subdued);
   user-select: none;
@@ -212,13 +236,17 @@ $spinner-icon-size: 12px;
 }
 
 .VerticalContent {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-contents);
   color: var(--p-text-subdued);
   padding: var(--p-space-2) var(--p-space-2) 0 var(--p-space-2);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   max-height: 140px;
   overflow: scroll;
   border: var(--p-border-transparent);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
 
   > .Input {
@@ -227,12 +255,14 @@ $spinner-icon-size: 12px;
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     max-height: 328px;
   }
 }
 
 .CharacterCount {
   color: var(--p-text-subdued);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-contents);
   margin: 0 var(--p-space-3) 0 var(--p-space-1);
   pointer-events: none;
@@ -241,17 +271,22 @@ $spinner-icon-size: 12px;
 
 .AlignFieldBottom {
   align-self: flex-end;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   padding-bottom: var(--p-space-2);
 }
 
 .ClearButton {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-contents);
   margin: 0 var(--p-space-3) 0 var(--p-space-1);
 
   &:focus:enabled {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
@@ -261,53 +296,72 @@ $spinner-icon-size: 12px;
 }
 
 .Spinner {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-text-field-spinner-offset-large: calc(
     var(--p-text-field-spinner-offset) + var(--p-border-width-1)
   );
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-text-field-contents);
   margin: var(--pc-text-field-spinner-offset-large);
   color: var(--p-icon);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   align-self: stretch;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 22px;
   cursor: pointer;
 }
 
 .SpinnerIcon {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $spinner-icon-size;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: $spinner-icon-size;
 }
 
 .Resizer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 0;
   visibility: hidden;
   overflow: hidden;
 }
 
 .DummyInput {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-input;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   padding: control-vertical-padding() var(--p-space-3);
 
   // We need the following properties in order to have long, unbroken
   // strings wrap in the same way they do in textareas.
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-breakword;
   white-space: pre-wrap;
 }
 
 .Segment {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-text-field-spinner-border-radius: calc(
     var(--p-border-radius-1) - var(--p-text-field-spinner-offset)
   );
   background: var(--p-surface-neutral);
   border-radius: var(--pc-text-field-spinner-border-radius);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 0%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   appearance: none;
   border: none;
@@ -322,6 +376,7 @@ $spinner-icon-size: 12px;
 
   &:first-child {
     border-top-right-radius: var(--pc-text-field-spinner-border-radius);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     margin-bottom: var(--p-text-field-spinner-offset);
   }
 

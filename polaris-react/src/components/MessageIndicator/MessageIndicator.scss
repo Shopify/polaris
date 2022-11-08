@@ -1,16 +1,25 @@
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $indicator-size: 12px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $indicator-position: -3px;
 
 .MessageIndicatorWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .MessageIndicator {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: 1;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: $indicator-position;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: $indicator-position;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: $indicator-size;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $indicator-size;
   border-radius: var(--p-border-radius-half);
   background-color: var(--p-icon-highlight);

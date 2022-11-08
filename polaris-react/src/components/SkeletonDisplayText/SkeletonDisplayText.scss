@@ -1,11 +1,13 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $skeleton-display-text-max-width: 120px;
 
 @mixin skeleton-display-text-height {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-skeleton-display-text-height);
 
   @media #{$p-breakpoints-md-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--pc-skeleton-display-text-height-not-condensed);
   }
 }
@@ -14,9 +16,10 @@ $skeleton-display-text-max-width: 120px;
   --pc-skeleton-display-text-height: var(--p-font-line-height-2);
   --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-2);
   max-width: $skeleton-display-text-max-width;
-
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   background-color: var(--p-surface-neutral);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
 
   @media screen and (-ms-high-contrast: active) {
@@ -43,7 +46,9 @@ $skeleton-display-text-max-width: 120px;
 }
 
 .sizeExtraLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-skeleton-display-text-height: 36px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-skeleton-display-text-height-not-condensed: 44px;
   @include skeleton-display-text-height;
 }

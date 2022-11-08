@@ -1,8 +1,10 @@
 @import '../../../../styles/common';
 @import '../../variables';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $icon-size: 20px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $input-height: 34px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $new-input-height: 36px;
 $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
@@ -11,12 +13,18 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   --pc-search-field-input: 2;
   --pc-search-field-icon: 3;
   --pc-search-field-action: 3;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--p-z-11);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   border: var(--p-border-transparent);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   max-width: $search-max-width;
 }
@@ -37,6 +45,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
 .Input:focus {
   ~ .Backdrop {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
@@ -45,6 +54,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   }
 
   ~ .Icon {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon));
   }
 }
@@ -55,14 +65,19 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
   }
 
   .Icon {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon));
   }
 }
 
 .Input {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-input;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-search-field-input);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $new-input-height;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   padding: 0 0 0 $search-icon-width;
   border: none;
@@ -85,21 +100,32 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 }
 
 .Icon {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-search-field-icon);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 50%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: var(--p-space-2);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $icon-size;
   pointer-events: none;
   transform: translateY(-50%);
 }
 
 .Clear {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($size: 'wide');
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-search-field-action);
   border: none;
   appearance: none;
@@ -108,15 +134,18 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 
   &:focus,
   &:hover {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-hovered));
     outline: none;
   }
 
   &:focus {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($size: 'wide', $style: 'focused');
   }
 
   &:active {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-pressed));
 
     &::after {
@@ -126,12 +155,19 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-4));
 }
 
 .Backdrop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-search-field-backdrop);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
   background-color: var(--p-surface-search-field);
   border-radius: var(--p-border-radius-1);

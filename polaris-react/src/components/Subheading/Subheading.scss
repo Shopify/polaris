@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
 .Subheading {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-subheading;
   margin: 0;
 

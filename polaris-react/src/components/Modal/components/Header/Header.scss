@@ -1,28 +1,40 @@
 @import '../../../../styles/common';
 
 .Header {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-start;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-shrink: 0;
   padding: var(--p-space-4) var(--p-space-5);
   border-bottom: var(--p-border-divider);
 }
 
 .titleHidden {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: 1;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
 
   .Title {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
 
 .Title {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-breakword;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1;
   margin-top: var(--p-space-1);
 }

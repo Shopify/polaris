@@ -1,6 +1,7 @@
 @import '../../../../styles/common';
 
 .ActionContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-mapped-actions-image-size: 20px;
   --pc-mapped-actions-item-min-height: var(--p-space-10);
   --pc-mapped-actions-item-vertical-padding: calc(
@@ -11,6 +12,7 @@
 
 [data-focused] {
   .Action {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-interactive));
 
     &.destructive {
@@ -20,8 +22,11 @@
 }
 
 .Action {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-height: var(--pc-mapped-actions-item-min-height);
   text-align: left;
@@ -40,20 +45,24 @@
   }
 
   &.selected {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-interactive));
     background-color: var(--p-surface-selected);
   }
 
   &:active {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-interactive));
     background-color: var(--p-surface-pressed);
   }
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
   &.destructive {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-critical));
     color: var(--p-interactive-critical);
 
@@ -75,24 +84,35 @@
     // stylelint-disable-next-line selector-max-class
     .Prefix,
     .Suffix {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include recolor-icon(var(--p-icon-disabled));
     }
   }
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .Prefix {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-mapped-actions-image-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-mapped-actions-image-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
 
   // We need the negative margin to ensure that the image does not set
@@ -104,15 +124,19 @@
 }
 
 .Suffix {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
   margin-left: var(--p-space-4);
 }
 
 .Text {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include layout-flex-fix;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 
   .ContentWrap {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include text-breakword;
   }
 }

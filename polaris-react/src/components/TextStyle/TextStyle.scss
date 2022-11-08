@@ -13,20 +13,29 @@
 }
 
 .variationCode {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   padding: 0 var(--p-space-1);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
   background-color: var(--p-surface-subdued);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-block;
   font-size: var(--p-font-size-200);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   box-shadow: inset 0 0 0 1px var(--p-border-subdued);
 
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: 100%;
     border: var(--p-border-width-1) solid transparent;
     pointer-events: none;
@@ -34,10 +43,12 @@
 }
 
 .variationStrong {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-emphasis-strong;
 }
 
 .variationSubdued {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-emphasis-subdued;
 
   @media print {

@@ -1,8 +1,12 @@
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $small-size: 20px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $large-size: 44px;
 
 @mixin spinnerSize($size) {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $size;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: $size;
 }
 

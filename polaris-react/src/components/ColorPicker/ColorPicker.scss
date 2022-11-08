@@ -9,28 +9,38 @@
 }
 
 .ColorPicker {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-color-picker-size: 160px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-color-picker-dragger-size: 18px;
   --pc-color-picker-z-index: 10;
   --pc-color-picker-adjustments: 20;
   --pc-color-picker-dragger: 30;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-color-picker-inner-shadow: inset 0 0 2px 0 var(--p-shadow-color-picker);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-color-picker-dragger-shadow: inset 0 1px 2px 0
       var(--p-shadow-color-picker-dragger),
     0 1px 2px 0 var(--p-shadow-color-picker-dragger);
   user-select: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .MainColor {
   @include checkers;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   overflow: hidden;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-color-picker-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-color-picker-size);
 
   .fullWidth & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: auto;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex-grow: 1;
   }
 
@@ -39,6 +49,7 @@
   cursor: pointer;
 
   .Dragger {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: calc(0.5 * var(--pc-color-picker-dragger-size));
     margin: 0;
     box-shadow: var(--pc-color-picker-dragger-shadow);
@@ -51,22 +62,31 @@
   &::after,
   &::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     z-index: var(--pc-color-picker-adjustments);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: 100%;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
     pointer-events: none;
     border-radius: var(--p-border-radius-1);
   }
 
   &::before {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     background: linear-gradient(to right, white, transparent);
   }
 
   &::after {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     background-image: linear-gradient(to top, black, transparent);
     box-shadow: var(--pc-color-picker-inner-shadow);
   }
@@ -77,11 +97,16 @@
 }
 
 .Dragger {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-color-picker-dragger);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: calc(0.5 * var(--pc-color-picker-dragger-size));
   transform: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-color-picker-dragger-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-color-picker-dragger-size);
   margin: 0 auto;
   will-change: transform;
@@ -91,8 +116,9 @@
   pointer-events: none;
   box-shadow: var(--pc-color-picker-dragger-shadow);
 }
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $green: rgb(0, 255, 0);
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $purple: rgb(255, 0, 255);
 $huepicker-padding: var(--pc-color-picker-dragger-size);
 $huepicker-bottom-padding-start: calc(
@@ -102,9 +128,12 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 
 .HuePicker,
 .AlphaPicker {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   overflow: hidden;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-color-picker-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--p-space-6);
   margin-left: var(--p-space-2);
   border-width: var(--p-border-radius-1);
@@ -112,12 +141,19 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
 
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     z-index: var(--pc-color-picker-adjustments);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: 100%;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
     pointer-events: none;
     border-radius: $vertical-picker-border-radius;
@@ -129,8 +165,8 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
   }
 }
 
-/* stylelint-disable color-named */
 .HuePicker {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   background-image: linear-gradient(
     to bottom,
     red var(--pc-color-picker-dragger-size),
@@ -142,24 +178,31 @@ $vertical-picker-border-radius: calc(var(--pc-color-picker-size) * 0.5);
     red $huepicker-bottom-padding-start
   );
 }
-/* stylelint-enable color-named */
 
 .AlphaPicker {
   @include checkers;
 }
 
 .ColorLayer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-color-picker-z-index);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   pointer-events: none;
 }
 
 .Slidable {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   cursor: pointer;
 }

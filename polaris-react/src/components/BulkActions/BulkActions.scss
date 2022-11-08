@@ -6,15 +6,20 @@ $bulk-actions-button-stacking-order: (
 );
 
 .Group {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-style-input;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   flex-wrap: wrap;
   opacity: 0;
 
   &.Group-measuring {
     transition: none;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: flex;
     opacity: 0;
   }
@@ -23,29 +28,35 @@ $bulk-actions-button-stacking-order: (
 .Group-entering,
 .Group-exiting {
   opacity: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .Group-entered {
   opacity: 1;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .Group-exited {
   opacity: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 }
 
 .Group-smallScreen {
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
 
 .Group-largeScreen {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: flex;
 
     &.Group-exiting {
@@ -54,12 +65,14 @@ $bulk-actions-button-stacking-order: (
 
     &.Group-exited {
       opacity: 0;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       display: none;
     }
   }
 }
 
 .ButtonGroupWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   max-width: 100%;
 
@@ -67,18 +80,23 @@ $bulk-actions-button-stacking-order: (
   @media #{$p-breakpoints-sm-down} {
     // stylelint-disable-next-line, selector-max-combinators, selector-max-type
     > div > div:first-child {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       flex: 1 1 auto;
     }
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: auto;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: flex-start;
     margin-right: var(--p-space-2);
   }
 
   .Group-measuring & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: auto;
   }
 }
@@ -88,10 +106,12 @@ $bulk-actions-button-stacking-order: (
 }
 
 .CheckableContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 0;
 }
 
 .disabled {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include base-button-disabled;
   cursor: default;
   pointer-events: none;

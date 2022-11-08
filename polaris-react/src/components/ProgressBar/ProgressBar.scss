@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
 @function progress-bar-height($height: base) {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   $base: 16px;
   $data: (
     small: $base * 0.5,
@@ -13,6 +14,7 @@
 
 .ProgressBar {
   overflow: hidden;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   background-color: var(--pc-progress-bar-background);
   border-radius: var(--p-border-radius-1);
@@ -23,14 +25,17 @@
 }
 
 .sizeSmall {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: progress-bar-height(small);
 }
 
 .sizeMedium {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: progress-bar-height();
 }
 
 .sizeLarge {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: progress-bar-height(large);
 }
 
@@ -55,6 +60,7 @@
 }
 
 .Indicator {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: inherit;
   background-color: var(--pc-progress-bar-indicator);
   transition: transform var(--pc-progress-bar-duration) var(--p-ease);
@@ -73,5 +79,6 @@
 
 .Progress,
 .Label {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 }

@@ -1,14 +1,19 @@
 @import '../../styles/common';
 
 .hidden > .LabelWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 }
 
 .LabelWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-breakword;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: wrap;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: baseline;
   margin-bottom: var(--p-space-1);
 }
@@ -18,10 +23,12 @@
 }
 
 .Error {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include text-breakword;
   margin-top: var(--p-space-1);
 }
 
 .Action {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
 }

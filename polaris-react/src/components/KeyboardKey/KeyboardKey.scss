@@ -1,11 +1,15 @@
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $key-base-height: 24px;
 
 .KeyboardKey {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $key-base-height;
   margin: 0 var(--p-space-05) var(--p-space-05);
   padding: 0 var(--p-space-1);
   background-color: var(--p-surface);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   box-shadow: 0 0 0 1px var(--p-border-subdued),
     0 var(--p-space-05) 0 0 var(--p-surface),
     0 var(--p-space-05) 0 1px var(--p-border-subdued);

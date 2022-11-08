@@ -2,11 +2,14 @@
 
 .TextOption {
   margin: var(--p-space-1) var(--p-space-2) 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1;
   border-radius: var(--p-border-radius-1);
   padding: var(--p-space-2) var(--p-space-2);
   cursor: pointer;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &.allowMultiple {
@@ -37,11 +40,17 @@
 
   &.selected::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: calc(-1 * var(--p-space-1));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: 100%;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: var(--p-border-radius-1);
     background-color: var(--p-interactive);
     border-top-right-radius: var(--p-border-radius-1);
@@ -70,6 +79,7 @@ li:first-of-type > .TextOption {
 // Focused by keyboard
 // stylelint-disable-next-line selector-max-specificity
 [data-focused]:not(:focus) .TextOption:not(.disabled) {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($style: 'focused') {
     // overriding the transition here prevents the flashing of an option's focus ring when focus is removed while scrolling the listbox with keyboard
     transition: box-shadow var(--p-duration-200) var(--p-ease-in);
@@ -77,7 +87,9 @@ li:first-of-type > .TextOption {
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 

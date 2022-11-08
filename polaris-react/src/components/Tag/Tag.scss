@@ -1,12 +1,16 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $height: 20px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $button-size: 20px;
 
 .Tag {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-flex;
   max-width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-height: 28px;
   padding: 0 var(--p-space-2);
   background-color: var(--p-surface-neutral);
@@ -14,6 +18,7 @@ $button-size: 20px;
   color: var(--p-text);
 
   &.disabled {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-disabled));
     transition: none;
     background: var(--p-surface-neutral-disabled);
@@ -21,22 +26,25 @@ $button-size: 20px;
   }
 
   &.clickable {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include unstyled-button;
     cursor: pointer;
     padding: var(--p-space-1) var(--p-space-2);
     background-color: var(--p-surface-neutral);
     outline: var(--p-border-width-1) solid transparent;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     font-size: 13px;
     line-height: var(--p-font-line-height-2);
 
     &:hover {
       background: var(--p-surface-neutral-hovered);
     }
-
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring;
     // stylelint-disable selector-max-specificity
 
     &:focus:not(:active) {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       @include focus-ring($style: 'focused');
     }
 
@@ -66,11 +74,13 @@ $button-size: 20px;
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     min-height: 24px;
   }
 }
 
 .TagText {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   font-size: 13px;
   line-height: var(--p-font-line-height-2);
   min-height: $height;
@@ -87,11 +97,17 @@ $button-size: 20px;
 }
 
 .Button {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include recolor-icon(var(--p-icon));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include unstyled-button;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-shrink: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $button-size;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: $button-size;
   margin: 0 var(--p-space-1);
   border-radius: var(--p-border-radius-half);
@@ -100,10 +116,11 @@ $button-size: 20px;
     background: var(--p-surface-neutral-hovered);
     outline: var(--p-border-width-1) solid transparent;
   }
-
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 
@@ -112,6 +129,7 @@ $button-size: 20px;
   }
 
   &:disabled {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include recolor-icon(var(--p-icon-disabled));
     cursor: default;
     pointer-events: none;
@@ -123,16 +141,20 @@ $button-size: 20px;
 }
 
 .Link {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-grid;
   color: var(--p-text);
   outline: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
   text-decoration: none;
   min-height: $height;
   padding: 0 var(--p-space-2);
 
   .LinkText {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include truncate;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     font-size: 13px;
     line-height: var(--p-font-line-height-2);
     padding-top: var(--p-space-1);
@@ -144,10 +166,11 @@ $button-size: 20px;
       padding-bottom: var(--p-space-05);
     }
   }
-
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
     text-decoration: underline;
   }

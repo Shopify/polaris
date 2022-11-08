@@ -11,27 +11,33 @@
   --pc-tile-gap-md: var(--pc-tile-gap-sm);
   --pc-tile-gap-lg: var(--pc-tile-gap-md);
   --pc-tile-gap-xl: var(--pc-tile-gap-lg);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: grid;
   gap: var(--pc-tile-gap-xs);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   grid-template-columns: var(--pc-tile-xs);
 
   @media #{$p-breakpoints-sm-up} {
     gap: var(--pc-tile-gap-sm);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     grid-template-columns: var(--pc-tile-sm);
   }
 
   @media #{$p-breakpoints-md-up} {
     gap: var(--pc-tile-gap-md);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     grid-template-columns: var(--pc-tile-md);
   }
 
   @media #{$p-breakpoints-lg-up} {
     gap: var(--pc-tile-gap-lg);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     grid-template-columns: var(--pc-tile-lg);
   }
 
   @media #{$p-breakpoints-xl-up} {
     gap: var(--pc-tile-gap-xl);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     grid-template-columns: var(--pc-tile-xl);
   }
 }

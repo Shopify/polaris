@@ -1,9 +1,12 @@
 @import '../src/styles/common';
 
 .ContextControl {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   padding: 0 var(--p-space-3);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $top-bar-height;
 }
 

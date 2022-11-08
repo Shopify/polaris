@@ -6,8 +6,10 @@
   --pc-stack-spacing-md: var(--pc-stack-spacing-sm);
   --pc-stack-spacing-lg: var(--pc-stack-spacing-md);
   --pc-stack-spacing-xl: var(--pc-stack-spacing-lg);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: var(--pc-stack-align);
   gap: var(--pc-stack-spacing-xs);
 
@@ -41,6 +43,7 @@
 
 .fullWidth {
   > * {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: 100%;
   }
 }

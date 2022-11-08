@@ -1,23 +1,33 @@
 @import '../../../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $expanded-height: 20px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $expanded-width: 36px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $condensed-height: 44px;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $condensed-width: 50px;
 
 .TableCellContentContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .Wrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .expanded {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: $expanded-width;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $expanded-height;
   padding-left: var(--p-space-4);
 }

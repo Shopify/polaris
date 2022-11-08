@@ -1,15 +1,21 @@
 .Indicator {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-indicator-size: 10px;
   --pc-indicator-base-position: calc(-1 * var(--p-space-1));
 
   &::before,
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: absolute;
     background-color: var(--p-border-highlight);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: var(--pc-indicator-base-position);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: var(--pc-indicator-base-position);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: var(--pc-indicator-size);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--pc-indicator-size);
     border-radius: var(--p-border-radius-half);
     border: calc(var(--pc-indicator-size) / 2) solid transparent;
@@ -17,12 +23,15 @@
 }
 
 .pulseIndicator::before {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: 1;
   animation: var(--p-keyframes-bounce) var(--p-duration-5000) ease infinite;
 }
 
 .pulseIndicator::after {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: var(--pc-indicator-base-position);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: var(--pc-indicator-base-position);
   animation: var(--p-keyframes-pulse) var(--p-duration-5000) ease infinite;
 }

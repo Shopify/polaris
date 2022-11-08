@@ -1,5 +1,5 @@
 @import '../../../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $item-min-height: 40px;
 
 .ListItem {
@@ -9,6 +9,7 @@ $item-min-height: 40px;
 
 .Loading {
   padding: var(--p-space-2) var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: grid;
   place-items: center;
 }

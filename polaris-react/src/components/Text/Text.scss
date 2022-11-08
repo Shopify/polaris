@@ -6,6 +6,7 @@
 }
 
 .block {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
 }
 
@@ -16,6 +17,7 @@
 }
 
 .visuallyHidden {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 }
 

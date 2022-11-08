@@ -1,34 +1,48 @@
 @import '../../styles/common';
 
 $list-filters-header-height: $top-bar-height;
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $list-filters-footer-height: 70px;
 
 .Filters {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .FiltersContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column;
 }
 
 .FiltersContainerHeader {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   padding: var(--p-space-4) var(--p-space-5);
   border-bottom: var(--p-border-divider);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $list-filters-header-height;
   box-sizing: border-box;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
 }
 
 .FiltersDesktopContainerContent {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: calc(
     100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
   );
@@ -36,47 +50,66 @@ $list-filters-footer-height: 70px;
 }
 
 .FiltersMobileContainerContent {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: calc(100% - #{$list-filters-header-height});
   padding: var(--p-space-2);
 }
 
 .FiltersContainerFooter {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   padding: var(--p-space-4) var(--p-space-5);
   border-top: var(--p-border-divider);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $list-filters-footer-height;
   box-sizing: border-box;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
 }
 
 .FiltersMobileContainerFooter {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   padding: var(--p-space-4) var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $list-filters-footer-height;
   box-sizing: border-box;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
 }
 
 .EmptyFooterState {
   border-top: var(--p-border-divider);
   padding-top: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
 }
 
 .FilterTriggerContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .FilterTrigger {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   margin: 0;
   padding: var(--p-space-4) var(--p-space-5);
@@ -85,6 +118,7 @@ $list-filters-footer-height: 70px;
   background: none;
   border: none;
   outline: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &:focus {
@@ -98,27 +132,34 @@ $list-filters-footer-height: 70px;
   }
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 }
 
 .FilterTriggerTitle {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   font-size: 15px;
   font-weight: var(--p-font-weight-semibold);
 }
 
 .AppliedFilterBadgeContainer {
   padding-top: var(--p-space-1);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 
   .open & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
 
 .FilterTriggerLabelContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
 }
 
@@ -126,19 +167,26 @@ $list-filters-footer-height: 70px;
   &::before,
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: var(--p-space-4);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: calc(100% - var(--p-space-8));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--p-space-025);
     background-color: var(--p-surface-subdued);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
   }
 
   &::before {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 0;
   }
 
   &::after {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: 0;
   }
 }
@@ -146,22 +194,30 @@ $list-filters-footer-height: 70px;
 .open.first {
   &::after {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: var(--p-space-4);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: calc(100% - var(--p-space-8));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--p-space-025);
     background-color: var(--p-surface-subdued);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
   }
 
   &::before {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
 
 .open ~ .open {
   &::before {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
@@ -169,22 +225,30 @@ $list-filters-footer-height: 70px;
 .open.last {
   &::before {
     content: '';
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     top: 0;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: var(--p-space-4);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     width: calc(100% - var(--p-space-8));
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     height: var(--p-space-025);
     background-color: var(--p-surface-subdued);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
   }
 
   &::after {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
 
 .open + .last {
   &::before {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
@@ -198,12 +262,19 @@ $list-filters-footer-height: 70px;
 }
 
 .Backdrop {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: fixed;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--p-z-10);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
   opacity: 0;
 }
@@ -213,6 +284,7 @@ $list-filters-footer-height: 70px;
 }
 
 .TagsContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   padding-top: var(--p-space-2);
   flex-wrap: wrap;

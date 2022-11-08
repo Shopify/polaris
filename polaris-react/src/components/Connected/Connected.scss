@@ -2,13 +2,18 @@
   --pc-connected-item: 10;
   --pc-connected-primary: 20;
   --pc-connected-focused: 30;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .Item {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-connected-item);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
 
   &:not(:first-child) {
@@ -20,10 +25,13 @@
 // way to remove the border radii on connected elements.
 // TextField.scss has a dependency due to this override.
 .Item-primary {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-connected-primary);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 }
 
 .Item-focused {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-connected-focused);
 }

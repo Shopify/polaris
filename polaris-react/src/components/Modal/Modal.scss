@@ -1,20 +1,25 @@
 @import '../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $small-width: 620px;
 
 .BodyWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-grow: 1;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
 }
 
 .Body {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
 }
 
 .IFrame {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: $small-width;
   max-width: 100vw;
   border: none;

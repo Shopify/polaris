@@ -16,17 +16,24 @@
 
 @mixin control-backdrop($style: base) {
   @if $style == base {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     border: var(--p-control-border-width) solid var(--p-border);
     background-color: var(--p-surface);
     border-radius: var(--p-border-radius-1);
 
     &::before {
       content: '';
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       position: absolute;
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       top: calc(-1 * var(--p-control-border-width));
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       right: calc(-1 * var(--p-control-border-width));
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       bottom: calc(-1 * var(--p-control-border-width));
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       left: calc(-1 * var(--p-control-border-width));
       border-radius: var(--p-border-radius-1);
       background-color: var(--p-interactive);

@@ -1,20 +1,25 @@
 @import '../../../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $action-menu-rollup-computed-width: 40px;
 
 .Header {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include page-header-layout;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .titleHidden {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include visually-hidden;
 }
 
 .TitleWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   grid-area: title;
   margin-top: var(--p-space-1);
   align-self: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 
   @media #{$p-breakpoints-sm-up} {
@@ -26,8 +31,11 @@ $action-menu-rollup-computed-width: 40px;
 /// Navigation
 
 .Navigation {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   margin-bottom: var(--p-space-1);
 
@@ -37,26 +45,31 @@ $action-menu-rollup-computed-width: 40px;
   }
 
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }
 
 .BreadcrumbWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   grid-area: breadcrumbs;
   max-width: 100%;
   margin-right: var(--p-space-4);
 
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }
 
 .PaginationWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
   margin-left: var(--p-space-1);
   line-height: 1;
@@ -75,18 +88,21 @@ $action-menu-rollup-computed-width: 40px;
   }
 
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }
 
 .AdditionalNavigationWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 0 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
 
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }
@@ -96,12 +112,15 @@ $action-menu-rollup-computed-width: 40px;
 
 .MainContent {
   .Header:not(.mobileView) & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: flex;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     align-items: center;
   }
 }
 
 .TitleActionMenuWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 
   .Header:not(.mobileView) & {
@@ -115,6 +134,7 @@ $action-menu-rollup-computed-width: 40px;
 }
 
 .PrimaryActionWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
   margin-top: 0;
   margin-left: var(--p-space-1);
@@ -124,16 +144,19 @@ $action-menu-rollup-computed-width: 40px;
   }
 
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }
 
 .Row {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
 
   &:first-child {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     min-height: 36px;
   }
 
@@ -151,18 +174,25 @@ $action-menu-rollup-computed-width: 40px;
 }
 
 .LeftAlign {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   align-content: flex-start;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .RightAlign {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   grid-area: actions;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   align-content: flex-end;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   align-self: flex-start;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
   margin-left: var(--p-space-4);
   // Necessary for flex to realize this container doesn't want to wrap
@@ -193,9 +223,13 @@ $action-menu-rollup-computed-width: 40px;
 }
 
 .Actions {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
   text-align: right;
 }
@@ -206,9 +240,12 @@ $action-menu-rollup-computed-width: 40px;
   }
 
   .Row {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: grid;
     gap: var(--p-space-2) var(--p-space-4);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     grid-template-columns: auto 1fr;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     grid-template-areas: 'breadcrumbs actions' 'title title';
 
     + .Row {

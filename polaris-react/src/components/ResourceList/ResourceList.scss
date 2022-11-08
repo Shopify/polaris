@@ -1,6 +1,6 @@
 @import '../../styles/common';
 @import './variables';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $item-wrapper-loading-height: 64px;
 $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})';
 
@@ -9,10 +9,15 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 @mixin resource-list-overlay {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
 }
 
@@ -29,8 +34,10 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .HeaderOuterWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
   background-color: var(--p-surface);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(header-outer-wrapper-stacking-order);
   overflow: hidden;
   border-top-left-radius: var(--p-border-radius-2);
@@ -47,6 +54,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .HeaderWrapper-overlay {
   @include resource-list-overlay;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(header-overlay-stacking-order);
   background-color: var(--p-overlay);
 }
@@ -56,9 +64,13 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .HeaderWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: flex-start;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-height: resource-list(header-min-height);
   padding: calc(var(--p-space-3) - var(--p-space-05)) var(--p-space-4);
@@ -74,10 +86,15 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .HeaderContentWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(content-wrapper-stacking-order);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: var(--p-space-3);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: var(--p-space-3);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   min-height: resource-list(header-content-min-height);
   opacity: 1;
@@ -88,7 +105,9 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     right: var(--p-space-4);
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: var(--p-space-4);
     align-self: flex-start;
   }
@@ -96,9 +115,13 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .SortWrapper,
 .AlternateToolWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 
   .HeaderWrapper-hasSelect & {
@@ -106,8 +129,11 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   }
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     position: relative;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     left: auto;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 0 1 auto;
     margin-left: var(--p-space-4);
 
@@ -120,6 +146,7 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .SortWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include layout-flex-fix;
 
   > * {
@@ -130,12 +157,14 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 .HeaderTitleWrapper {
   white-space: nowrap;
   text-overflow: ellipsis;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1;
   padding-left: var(--p-space-1);
   align-self: center;
 
   .HeaderWrapper-hasAlternateTool &,
   .HeaderWrapper-hasSort & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 
@@ -144,41 +173,53 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
     .HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasAlternateTool.HeaderWrapper-hasSelect &,
     .HeaderWrapper-hasSort.HeaderWrapper-hasSelect & {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       display: none;
     }
 
     .HeaderWrapper-hasAlternateTool &,
     .HeaderWrapper-hasSort & {
+      // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
       display: block;
     }
   }
 }
 
 .BulkActionsWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 0 1 auto;
     align-self: flex-start;
   }
 }
 
 .CheckableButtonWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
   }
 }
 
 .SelectButtonWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: none;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: none;
   }
 }
@@ -195,11 +236,14 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .ResourceListWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .ResourceList {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(list-stacking-order);
   margin: 0;
   padding: 0;
@@ -207,7 +251,9 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .ItemWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(list-stacking-order);
   overflow: hidden;
   max-width: 100%;
@@ -223,15 +269,21 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .SpinnerContainer {
   @include resource-list-overlay;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(spinner-stacking-order);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
 }
 
 .LoadingOverlay {
   @include resource-list-overlay;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: resource-list(overlay-stacking-order);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: center;
   background-color: var(--p-overlay);
 }

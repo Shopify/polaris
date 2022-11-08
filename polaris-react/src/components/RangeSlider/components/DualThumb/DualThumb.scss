@@ -1,33 +1,46 @@
 @import '../../../../styles/common';
 @import '../../RangeSlider';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $range-wrapper: 28px;
 
 .DualThumb {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .TrackWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   min-height: $range-wrapper;
   cursor: pointer;
 
   &.disabled {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     opacity: 0.8;
     cursor: not-allowed;
   }
 }
 
 .Track {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: 1;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-range-slider-track-height);
   border-radius: var(--pc-range-slider-thumb-size);
 
@@ -70,11 +83,16 @@ $range-wrapper: 28px;
 }
 
 .Thumbs {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($size: 'wide', $border-width: 1px);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-range-slider-input);
   padding: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: var(--pc-range-slider-thumb-size);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: var(--pc-range-slider-thumb-size);
   border-radius: var(--p-border-radius-half);
   border: var(--p-border-width-1) solid var(--p-interactive);
@@ -96,6 +114,7 @@ $range-wrapper: 28px;
   }
 
   &:focus {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
     outline: 0;
   }
@@ -108,23 +127,28 @@ $range-wrapper: 28px;
     );
   }
 }
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $range-output-size: 32px;
 
 .Prefix {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
   margin-right: var(--p-space-2);
 }
 
 .Suffix {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
   margin-left: var(--p-space-2);
 }
 
 .Output {
   --pc-range-slider-output-spacing: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-range-slider-output);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: var(--p-range-slider-thumb-size-active);
   opacity: 0;
   visibility: hidden;
@@ -135,10 +159,12 @@ $range-output-size: 32px;
   transform: translateX(calc(-50% + (var(--pc-range-slider-thumb-size) / 2)));
 
   .Thumbs:active + & {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     $range-thumb-size-difference: var(--p-range-slider-thumb-size-active) -
       var(--p-range-slider-thumb-size-base);
     opacity: 1;
     visibility: visible;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     bottom: calc(
       var(--p-range-slider-thumb-size-active) + #{$range-thumb-size-difference}
     );
@@ -146,13 +172,17 @@ $range-output-size: 32px;
 }
 
 .OutputBubble {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   padding: 0 var(--p-space-2);
   min-width: $range-output-size;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: $range-output-size;
   background-color: var(--p-surface);
   box-shadow: var(--p-shadow-popover);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
   transition-property: transform;
   transition-duration: var(--p-duration-150);
@@ -173,7 +203,9 @@ $range-output-size: 32px;
   // stylelint-enable selector-max-specificity, selector-max-combinators, selector-max-class
 
   > :first-child {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 1 auto;
     margin: auto;
   }

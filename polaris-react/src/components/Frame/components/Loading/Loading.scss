@@ -2,13 +2,16 @@
 
 .Loading {
   overflow: hidden;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 3px;
   background-color: var(--p-surface);
   opacity: 1;
 }
 
 .Level {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
   transform-origin: 0;
   background-color: var(--p-icon-success);

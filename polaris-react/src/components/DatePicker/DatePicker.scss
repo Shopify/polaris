@@ -2,10 +2,12 @@
 
 .DatePicker {
   --pc-date-picker-range-end-border-radius: var(--p-border-radius-6);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .MonthLayout {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-wrap: wrap;
   margin-top: calc(-1 * var(--p-space-4));
@@ -13,14 +15,17 @@
 }
 
 .MonthContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 230px;
   margin-top: var(--p-space-4);
   margin-left: var(--p-space-4);
   max-width: calc(100% - var(--p-space-4));
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   min-width: 230px;
 }
 
 .Month {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   table-layout: fixed;
   border-collapse: collapse;
@@ -33,6 +38,7 @@
 }
 
 .DayCell {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: (100% / 7);
   background: transparent;
   margin: 0;
@@ -45,8 +51,11 @@
 }
 
 .Day {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: block;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
   margin: 0;
   padding: var(--p-space-2);
@@ -64,10 +73,11 @@
     color: var(--p-text-on-interactive);
     outline: var(--p-border-width-1) solid transparent;
   }
-
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &:focus:not(:active) {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 }
@@ -130,11 +140,13 @@
   }
 
   &:focus {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include no-focus-ring;
   }
 }
 
 .EmptyDayCell {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: calc(100% / 7);
   margin: 0;
   padding: 0;
@@ -155,14 +167,20 @@
 }
 
 .Header {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: space-between;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
 }
 
 .Title {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
   margin-top: var(--p-space-05);
   padding-bottom: var(--p-space-1);

@@ -29,7 +29,7 @@
 .Section-hideOnPrint,
 .hideOnPrint {
   @media print {
-    // stylelint-disable-next-line declaration-no-important
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init, declaration-no-important
     display: none !important;
   }
 }
@@ -138,7 +138,9 @@
 }
 
 .Footer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   justify-content: flex-end;
   padding: 0 var(--p-space-4) var(--p-space-4);
 
@@ -147,6 +149,7 @@
   }
 
   &.LeftJustified {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     justify-content: flex-start;
   }
 

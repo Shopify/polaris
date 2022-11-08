@@ -7,11 +7,15 @@
 .ConnectedFilterControl {
   --pc-connceted-filter-control-item: 10;
   --pc-connceted-filter-control-focused: 20;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-grow: 1;
 
   .CenterContainer {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex: 1 1 auto;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     min-width: 100px;
   }
 
@@ -24,25 +28,35 @@
 }
 
 .Item {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-connceted-filter-control-item);
 }
 
 .Item-focused {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--pc-connceted-filter-control-focused);
 }
 
 .ProxyButtonContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: -1000px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: -1000px;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100%;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 0;
   visibility: hidden;
   overflow: hidden;
 
   > * {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex-shrink: 0;
   }
 }
@@ -53,14 +67,17 @@
 }
 
 .RightContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 
   .Item > div > button {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     margin-right: var(--p-button-group-item-spacing);
     border-radius: 0;
   }
 
   .Item {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     flex-shrink: 0;
   }
 
@@ -99,10 +116,12 @@
 }
 
 .Wrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
 }
 
 .AuxiliaryContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex-grow: 0;
 }
 // stylelint-enable selector-max-specificity

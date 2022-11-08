@@ -1,7 +1,9 @@
 .Badge {
   --pc-badge-horizontal-padding: var(--p-space-2);
   --pc-badge-vertical-padding: var(--p-space-05);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
   background-color: var(--p-surface-neutral);
@@ -58,7 +60,9 @@
 }
 
 .PipContainer {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: grid;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
   margin-left: calc(-1 * var(--p-space-05));
   margin-right: var(--p-space-1);

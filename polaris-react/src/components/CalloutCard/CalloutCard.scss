@@ -1,16 +1,22 @@
 @import '../../styles/common';
 
 .CalloutCard {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .Image {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 0 0 auto;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 100px;
 
   @media #{$p-breakpoints-sm-up} {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
     margin-left: var(--p-space-5);
   }
@@ -21,6 +27,7 @@
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   flex: 1 1 auto;
 }
 
@@ -33,15 +40,20 @@
 }
 
 .Container {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
 }
 
 .Dismiss {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: var(--p-space-4);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
 }
 
 .hasDismiss {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   padding-right: calc(var(--p-space-8) + var(--p-icon-size-small));
 }

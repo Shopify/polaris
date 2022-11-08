@@ -6,12 +6,16 @@
 @mixin visually-hidden {
   // Need to make sure we override any existing styles.
   // stylelint-disable declaration-no-important
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute !important;
   // Top position is required to prevent unexpected
   // scrolling with Sheet component
   // https://github.com/Shopify/polaris-react/pull/5208
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   top: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   width: 1px !important;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   height: 1px !important;
   margin: 0 !important;
   padding: 0 !important;

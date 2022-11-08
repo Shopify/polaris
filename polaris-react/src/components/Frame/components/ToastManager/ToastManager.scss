@@ -4,24 +4,34 @@
   // Sass does not allow arbitrary Sass function calls in custom properties.
   // They must be interpolated
   // See https://github.com/sass/libsass/issues/2585
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   --pc-toast-manager-translate-y-out: 150px;
   --pc-toast-manager-translate-y-in: 0;
 }
 
 .ToastManager {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: fixed;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   z-index: var(--p-z-12);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   right: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   left: 0;
   text-align: center;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   bottom: var(--pc-frame-global-ribbon-height);
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: flex;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   align-items: center;
 }
 
 .ToastWrapper {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: absolute;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: inline-flex;
   opacity: 0;
   transition: transform var(--p-duration-400) ease,

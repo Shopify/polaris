@@ -1,5 +1,5 @@
 @import '../../../../styles/common';
-
+// stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
 $content-max-width: 200px;
 
 .TooltipOverlay {
@@ -27,7 +27,9 @@ $content-max-width: 200px;
 }
 
 .Content {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   position: relative;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   border-radius: var(--p-border-radius-base);
   background-color: var(--p-surface);
   color: var(--p-text);
@@ -38,14 +40,17 @@ $content-max-width: 200px;
 
 [data-polaris-tooltip-activator] {
   outline: 0;
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring;
 
   &:focus-visible {
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     @include focus-ring($style: 'focused');
   }
 }
 
 // stylelint-disable-next-line selector-max-attribute
 [data-polaris-tooltip-activator][data-focus-visible-added] {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   @include focus-ring($style: 'focused');
 }

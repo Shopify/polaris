@@ -11,6 +11,7 @@
 
 // Stop children from being focused when fully closed
 .isFullyClosed {
+  // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
   display: none;
 }
 
@@ -19,6 +20,7 @@
     // stylelint-disable-next-line declaration-no-important
     max-height: none !important;
     overflow: visible;
+    // stylelint-disable-next-line -- polaris: generated comment during stylelint-polaris init
     display: block;
   }
 }
