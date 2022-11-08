@@ -6,22 +6,38 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BoxWithPaddingExample() {
   return (
     <AlphaStack>
-      <Box background="surface" borderRadius="2" padding="4" width="586px">
+      <Box background="surface-neutral-pressed" padding="4" width="586px">
         <Placeholder label="All side padding" childAlign="center" />
       </Box>
       <Inline spacing="4">
-        <Box background="surface" paddingInlineStart="4" width="284px">
+        <Box
+          background="surface-neutral-pressed"
+          paddingInlineStart="4"
+          width="284px"
+        >
           <Placeholder label="PaddingLeft" childAlign="start" />
         </Box>
-        <Box background="surface" paddingInlineEnd="4" width="284px">
+        <Box
+          background="surface-neutral-pressed"
+          paddingInlineEnd="4"
+          width="284px"
+        >
           <Placeholder label="PaddingRight" childAlign="end" />
         </Box>
       </Inline>
       <Inline spacing="4">
-        <Box background="surface" paddingBlockStart="4" width="284px">
+        <Box
+          background="surface-neutral-pressed"
+          paddingBlockStart="4"
+          width="284px"
+        >
           <Placeholder label="PaddingTop" childAlign="center" />
         </Box>
-        <Box background="surface" paddingBlockEnd="4" width="284px">
+        <Box
+          background="surface-neutral-pressed"
+          paddingBlockEnd="4"
+          width="284px"
+        >
           <Placeholder label="PaddingBottom" childAlign="center" />
         </Box>
       </Inline>
