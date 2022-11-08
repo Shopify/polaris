@@ -1,5 +1,5 @@
 diff --git a/node_modules/stylelint/lib/utils/checkAgainstRule.js b/node_modules/stylelint/lib/utils/checkAgainstRule.js
-index 83706c5..aac2f42 100644
+index 83706c5..feda9b8 100644
 --- a/node_modules/stylelint/lib/utils/checkAgainstRule.js
 +++ b/node_modules/stylelint/lib/utils/checkAgainstRule.js
 @@ -27,7 +27,9 @@ function checkAgainstRule(options, callback) {
@@ -13,6 +13,15 @@ index 83706c5..aac2f42 100644
  
  	if (!rule) throw new Error(`Rule '${options.ruleName}' does not exist`);
  
+@@ -44,7 +46,7 @@ function checkAgainstRule(options, callback) {
+ 	// @ts-expect-error - this error should not occur with PostCSS 8
+ 	const tmpPostcssResult = new Result();
+ 
+-	rule(settings[0], /** @type {O} */ (settings[1]), {})(options.root, tmpPostcssResult);
++	rule(settings[0], /** @type {O} */(settings[1]), {fix: options.fix})(options.root, tmpPostcssResult);
+ 
+ 	for (const warning of tmpPostcssResult.warnings()) callback(warning);
+ }
 diff --git a/node_modules/stylelint/lib/utils/report.js b/node_modules/stylelint/lib/utils/report.js
 index 02a3c3c..5573371 100644
 --- a/node_modules/stylelint/lib/utils/report.js

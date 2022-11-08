@@ -18,23 +18,29 @@ const forceReport = {line: -1};
 module.exports = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primaryOptions */
-  (primaryOptions) => {
+  (primaryOptions, secondaryOptions, context) => {
     const isPrimaryOptionsValid = validatePrimaryOptions(primaryOptions);
 
-    const rules = !isPrimaryOptionsValid
-      ? []
-      : Object.entries(primaryOptions).flatMap(
-          ([categoryName, categoryConfigRules]) =>
-            Object.entries(categoryConfigRules).map(
-              ([categoryRuleName, categoryRuleSettings]) => ({
-                categoryRuleName,
-                categoryRuleSettings,
-                coverageRuleName: `${ruleName}/${categoryName}`,
-                coverageRuleSeverity:
-                  categoryRuleSettings?.[1]?.severity ?? 'error',
-              }),
-            ),
-        );
+    const rules = [];
+
+    for (const [categoryName, categoryConfigRules] of Object.entries(
+      primaryOptions,
+    )) {
+      for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
+        categoryConfigRules,
+      )) {
+        rules.push({
+          coverageRuleName: `${ruleName}/${categoryName}`,
+          categoryRuleName,
+          categoryRuleSettings,
+          categoryRuleSeverity: categoryRuleSettings?.[1]?.severity ?? 'error',
+          categoryRuleFix:
+            !secondaryOptions?.disableFix &&
+            !categoryRuleSettings?.[1]?.disableFix &&
+            context.fix,
+        });
+      }
+    }
 
     return (root, result) => {
       const validOptions = stylelint.utils.validateOptions(result, ruleName, {
@@ -45,16 +51,18 @@ module.exports = stylelint.createPlugin(
 
       for (const rule of rules) {
         const {
+          coverageRuleName,
           categoryRuleName,
           categoryRuleSettings,
-          coverageRuleName,
-          coverageRuleSeverity,
+          categoryRuleSeverity,
+          categoryRuleFix,
         } = rule;
 
         stylelint.utils.checkAgainstRule(
           {
             ruleName: categoryRuleName,
             ruleSettings: normalizeRuleSettings(categoryRuleSettings),
+            fix: categoryRuleFix,
             root,
             result,
           },
@@ -62,7 +70,7 @@ module.exports = stylelint.createPlugin(
             stylelint.utils.report({
               result,
               ruleName: coverageRuleName,
-              severity: coverageRuleSeverity,
+              severity: categoryRuleSeverity,
               message: warning.text,
               // If `warning.node` is NOT present, the warning is
               // referring to a misconfigured rule
