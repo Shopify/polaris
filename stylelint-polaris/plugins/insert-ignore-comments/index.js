@@ -1,12 +1,19 @@
 const stylelint = require('stylelint');
 const postcss = require('postcss');
+<<<<<<< HEAD
 
+=======
+>>>>>>> be64c5787 (create script to add ignore comments above stylelint coverage failures)
 const {
   ruleName,
   getRules,
   validateOptions,
   normalizeRuleSettings,
 } = require('../coverage');
+<<<<<<< HEAD
+=======
+const {rules} = require('../../configs/coverage');
+>>>>>>> be64c5787 (create script to add ignore comments above stylelint coverage failures)
 
 const commentContext = 'generated comment during stylelint-polaris init';
 
