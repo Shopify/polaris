@@ -46,7 +46,7 @@ function MyApp({Component, pageProps}: AppProps) {
 
   const title = router.asPath.split('/').pop();
   const ogImagePath = `/api/og-image?title=${
-    router.asPath === '/' ? 'home' : title
+    router.asPath === '/' ? 'Home' : title?.replace(/-/g, ' ')
   }`;
 
   const isPolarisExample = router.asPath.startsWith('/examples');
