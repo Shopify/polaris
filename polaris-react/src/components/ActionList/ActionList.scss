@@ -7,10 +7,6 @@
   padding: 0;
 }
 
-.Section-withoutTitle:not(:first-child) {
-  border-top: var(--p-border-divider);
-}
-
 .Actions {
   outline: none;
   list-style: none;
@@ -19,14 +15,6 @@
   padding: var(--p-space-2);
 }
 
-.ActionList,
-.Section:first-child {
-  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
-  > .Section-withoutTitle .Actions {
-    border-top: none;
-    border-bottom: none;
-  }
-}
 
 .ActionList .Section {
   // stylelint-disable-next-line selector-max-class, selector-max-combinators

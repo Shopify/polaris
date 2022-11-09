@@ -1,11 +1,22 @@
 import React from 'react';
 
-import {Page} from '../src';
+import {Page, ActionList} from '../src';
 
 export function Playground() {
   return (
     <Page title="Playground">
-      {/* Add the code you want to test in here */}
+      <div style={{height: '250px', width: '140px', backgroundColor: `white`}}>
+        <ActionList
+          sections={[
+            {
+              items: [{content: 'Import file'}, {content: 'Export file'}],
+            },
+            {
+              items: [{content: 'Edit'}, {content: 'Delete'}],
+            },
+          ]}
+        />
+      </div>
     </Page>
   );
 }
