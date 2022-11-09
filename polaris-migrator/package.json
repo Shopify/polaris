@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-migrator",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Codemod transformations to help upgrade your Polaris codebase",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
