@@ -15,7 +15,7 @@ examples:
   - fileName: box-with-color.tsx
     title: Color
     description: >-
-      Background color of box and text color inside a box can be adjusted using the [Color tokens](http://localhost:3000/tokens/colors).
+      Background color of box and text color inside a box can be adjusted using the [Color tokens](https://polaris.shopify.com/tokens/colors).
   - fileName: box-with-border.tsx
     title: Border
     description: >-
@@ -27,11 +27,11 @@ examples:
   - fileName: box-with-padding.tsx
     title: Padding
     description: >-
-      Padding can be added to either all sides, left, right, top, and bottom, using the [Spacing tokens](http://localhost:3000/tokens/spacing).
+      Padding can be added to either all sides, left, right, top, and bottom, using the [Spacing tokens](https://polaris.shopify.com/tokens/spacing).
   - fileName: box-with-shadow.tsx
     title: Shadow
     description: >-
-      Shadow can be applied using the Shadow token. The base is --p-shadow-base.
+      Shadow can be applied using the Shadow token. The base is [--p-shadow-base](https://polaris.shopify.com/tokens/depth).
 ---
 
 ## Related components
