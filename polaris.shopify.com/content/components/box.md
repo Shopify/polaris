@@ -11,7 +11,7 @@ examples:
   - fileName: box-default.tsx
     title: Default
     description: >-
-      By default, box has no padding, borders, background, or shadows, and border radius is set to zero.
+      By default, box has no padding, borders, border radius, background, or shadows.
   - fileName: box-with-color.tsx
     title: Color
     description: >-
