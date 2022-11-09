@@ -93,9 +93,7 @@ $disabled-fade: 0.6;
   @include nav-item-attributes;
   position: relative;
 
-  &:first-child {
-    margin-inline-start: var(--p-space-2);
-  }
+  margin-inline-start: var(--p-space-2);
 
   &:last-child {
     margin-inline-end: var(--p-space-2);
