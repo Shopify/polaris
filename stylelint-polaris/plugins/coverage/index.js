@@ -33,7 +33,7 @@ module.exports = stylelint.createPlugin(
           coverageRuleName: `${ruleName}/${categoryName}`,
           categoryRuleName,
           categoryRuleSettings,
-          categoryRuleSeverity: categoryRuleSettings?.[1]?.severity ?? 'error',
+          categoryRuleSeverity: categoryRuleSettings?.[1]?.severity,
           categoryRuleFix:
             context.fix && !categoryRuleSettings?.[1]?.disableFix,
         });
@@ -68,8 +68,11 @@ module.exports = stylelint.createPlugin(
             stylelint.utils.report({
               result,
               ruleName: coverageRuleName,
-              severity: categoryRuleSeverity,
               message: warning.text,
+              severity:
+                categoryRuleSeverity ??
+                result.stylelint.config?.defaultSeverity ??
+                'error',
               // If `warning.node` is NOT present, the warning is
               // referring to a misconfigured rule
               ...(warning.node ? {node: warning.node} : forceReport),
