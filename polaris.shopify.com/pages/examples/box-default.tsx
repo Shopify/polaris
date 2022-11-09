@@ -3,9 +3,9 @@ import {Box, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function BoxWithBorderRadiusExample() {
+function BoxDefaultExample() {
   return (
-    <Box background="surface" borderRadius="2">
+    <Box>
       <Placeholder label="Content inside a box" />
     </Box>
   );
@@ -18,7 +18,6 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         background: '#7B47F1',
         height: height,
         width: width,
-        borderRadius: 'inherit',
       }}
     >
       <div
@@ -34,4 +33,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(BoxWithBorderRadiusExample);
+export default withPolarisExample(BoxDefaultExample);
