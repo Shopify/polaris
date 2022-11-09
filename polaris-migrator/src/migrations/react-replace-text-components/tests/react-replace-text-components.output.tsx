@@ -18,6 +18,9 @@ export function App() {
       <Text variant="headingXl" as="p">
         Display text
       </Text>
+      <Text variant="headingXl" as="p">
+        Display text
+      </Text>
       <Text variant="headingLg" as="p">
         Display text
       </Text>

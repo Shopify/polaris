@@ -19,6 +19,7 @@ export function App() {
       <DisplayText size="extraLarge">Display text</DisplayText>
       <DisplayText size="large">Display text</DisplayText>
       <DisplayText size="medium">Display text</DisplayText>
+      <DisplayText>Display text</DisplayText>
       <DisplayText size="small">Display text</DisplayText>
       <Heading element="h1">Heading</Heading>
       <Heading>Heading</Heading>
