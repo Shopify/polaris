@@ -6,40 +6,34 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BoxWithPaddingExample() {
   return (
     <AlphaStack>
-      <Box background="surface-neutral-pressed" padding="4" width="586px">
-        <Placeholder label="All side padding" childAlign="center" />
-      </Box>
+      <div style={{backgroundColor: '#986BFF'}}>
+        <Box padding="4" width="586px">
+          <Placeholder label="All side padding" childAlign="center" />
+        </Box>
+      </div>
       <Inline spacing="4">
-        <Box
-          background="surface-neutral-pressed"
-          paddingInlineStart="4"
-          width="284px"
-        >
-          <Placeholder label="PaddingLeft" childAlign="start" />
-        </Box>
-        <Box
-          background="surface-neutral-pressed"
-          paddingInlineEnd="4"
-          width="284px"
-        >
-          <Placeholder label="PaddingRight" childAlign="end" />
-        </Box>
+        <div style={{backgroundColor: '#986BFF'}}>
+          <Box paddingInlineStart="4" width="284px">
+            <Placeholder label="PaddingLeft" childAlign="start" />
+          </Box>
+        </div>
+        <div style={{backgroundColor: '#986BFF'}}>
+          <Box paddingInlineEnd="4" width="284px">
+            <Placeholder label="PaddingRight" childAlign="end" />
+          </Box>
+        </div>
       </Inline>
       <Inline spacing="4">
-        <Box
-          background="surface-neutral-pressed"
-          paddingBlockStart="4"
-          width="284px"
-        >
-          <Placeholder label="PaddingTop" childAlign="center" />
-        </Box>
-        <Box
-          background="surface-neutral-pressed"
-          paddingBlockEnd="4"
-          width="284px"
-        >
-          <Placeholder label="PaddingBottom" childAlign="center" />
-        </Box>
+        <div style={{backgroundColor: '#986BFF'}}>
+          <Box paddingBlockStart="4" width="284px">
+            <Placeholder label="PaddingTop" childAlign="center" />
+          </Box>
+        </div>
+        <div style={{backgroundColor: '#986BFF'}}>
+          <Box paddingBlockEnd="4" width="284px">
+            <Placeholder label="PaddingBottom" childAlign="center" />
+          </Box>
+        </div>
       </Inline>
     </AlphaStack>
   );
