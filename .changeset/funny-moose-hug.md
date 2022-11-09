@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Modify CalloutCard title prop to accept ReactNode type
+Update the `CalloutCard` `title` prop to accept a ReactNode type
