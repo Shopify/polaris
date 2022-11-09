@@ -21,6 +21,8 @@ const displayTextSizeMap = {
   extraLarge: 'heading4xl',
 };
 
+const defaultDisplayTextSize = 'medium';
+
 /**
  * Replace <DisplayText> with the <Text> component
  */
@@ -51,6 +53,11 @@ export function replaceDisplayText<NodeType = ASTNode>(
 
   source.findJSXElements(localElementName).forEach((element) => {
     replaceJSXElement(j, element, 'Text');
+
+    if (!hasJSXAttribute(j, element, 'size')) {
+      insertJSXAttribute(j, element, 'size', defaultDisplayTextSize);
+    }
+
     replaceJSXAttributes(j, element, 'size', 'variant', displayTextSizeMap);
 
     if (hasJSXAttribute(j, element, 'element')) {
