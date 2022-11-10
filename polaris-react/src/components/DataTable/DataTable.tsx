@@ -854,6 +854,8 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     const id = `totals-cell-${index}`;
     const {truncate = false, verticalAlign} = this.props;
 
+    const {columnContentTypes} = this.props;
+
     let content;
     let contentType;
 
@@ -862,7 +864,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
     }
 
     if (total !== '' && index > 0) {
-      contentType = 'numeric';
+      contentType = columnContentTypes[index];
       content = total;
     }
 
