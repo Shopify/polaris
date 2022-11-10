@@ -63,6 +63,13 @@ module.exports = {
           /([\w-]+\.)?duration/,
           /([\w-]+\.)?easing/,
         ],
+        'declaration-property-unit-disallowed-list': [
+          {
+            '/^animation/': ['px', 'rem', 'em'],
+            '/^transition/': ['px', 'rem', 'em'],
+          },
+          {severity: 'warning'},
+        ],
         'stylelint-polaris/at-rule-disallowed-list': {
           include: [/([\w-]+\.)?skeleton-shimmer($|\()/],
         },
@@ -81,6 +88,13 @@ module.exports = {
         'declaration-property-value-disallowed-list': {
           'font-weight': [/(\$.*|[0-9]+)/],
         },
+        'declaration-property-unit-disallowed-list': [
+          {
+            '/^font/': ['px', 'rem', 'em'],
+            'line-height': ['px', 'rem', 'em'],
+          },
+          {severity: 'warning'},
+        ],
         'function-disallowed-list': [
           /([\w-]+\.)?font-family/,
           /([\w-]+\.)?font-size/,
@@ -189,6 +203,7 @@ module.exports = {
           /--p-range-slider-thumb-size-base/,
           /--p-range-slider-thumb-size-active/,
           /--p-override-visible/,
+          /--p-override-loading-z-index/,
           /--p-icon-size/,
           /--p-choice-size/,
         ],
@@ -201,6 +216,14 @@ module.exports = {
           /([\w-]+\.)?rem/,
           /([\w-]+\.)?spacing/,
         ],
+        'declaration-property-unit-disallowed-list': [
+          {
+            '/^padding/': ['px', 'rem', 'em'],
+            '/^margin/': ['px', 'rem', 'em'],
+            '/^gap/': ['px', 'rem', 'em'],
+          },
+          {severity: 'warning'},
+        ],
         'stylelint-polaris/global-disallowed-list': [
           /\$polaris-spacing/,
           /\$spacing-data/,
@@ -212,6 +235,16 @@ module.exports = {
         ],
       },
       shape: {
+        'declaration-property-unit-disallowed-list': [
+          {
+            'border-width': ['px', 'rem', 'em'],
+            border: ['px', 'rem', 'em'],
+            'border-radius': ['px', 'rem', 'em'],
+            'outline-offset': ['px', 'rem', 'em'],
+            outline: ['px', 'rem', 'em'],
+          },
+          {severity: 'warning'},
+        ],
         'stylelint-polaris/at-rule-disallowed-list': {
           include: [
             /([\w-]+\.)?border-radius/,
@@ -257,15 +290,9 @@ module.exports = {
           /--p-popover-shadow/,
           /--p-modal-shadow/,
           /--p-top-bar-shadow/,
-          /--p-override-loading-z-index/,
         ],
       },
       conventions: {
-        'unit-disallowed-list': [
-          // TODO: Should 's' and 'ms' move to `motion`?
-          ['px', 'rem', 'em', 's', 'ms'],
-          {severity: 'warning'},
-        ],
         'stylelint-polaris/global-disallowed-list': [
           / \* \$/,
           // Legacy custom properties
