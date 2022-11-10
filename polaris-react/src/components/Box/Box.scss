@@ -1,4 +1,11 @@
+@import '../../styles/common';
+
 .Box {
+  @include responsive-props('box', 'padding', 'padding');
+  @include responsive-props('box', 'padding-block-end', 'padding-block-end', 'padding');
+  @include responsive-props('box', 'padding-block-start', 'padding-block-start', 'padding');
+  @include responsive-props('box', 'padding-inline-start', 'padding-inline-start', 'padding');
+  @include responsive-props('box', 'padding-inline-end', 'padding-inline-end', 'padding');
   --pc-box-shadow: initial;
   --pc-box-background: initial;
   --pc-box-border-radius: initial;
@@ -69,13 +76,6 @@
   max-width: var(--pc-box-max-width);
   overflow-x: var(--pc-box-overflow-x);
   overflow-y: var(--pc-box-overflow-y);
-  padding-block-end: var(--pc-box-padding-block-end, var(--pc-box-padding));
-  padding-inline-start: var(
-    --pc-box-padding-inline-start,
-    var(--pc-box-padding)
-  );
-  padding-inline-end: var(--pc-box-padding-inline-end, var(--pc-box-padding));
-  padding-block-start: var(--pc-box-padding-block-start, var(--pc-box-padding));
   width: var(--pc-box-width);
   -webkit-overflow-scrolling: touch;
 }
