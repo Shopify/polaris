@@ -5,6 +5,8 @@ import {
   replaceJSXElement,
   replaceJSXAttributes,
   insertJSXAttribute,
+  hasJSXSpreadAttribute,
+  insertJSXComment,
 } from '../../../utilities/jsx';
 import {
   hasImportSpecifier,
@@ -13,6 +15,7 @@ import {
   updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
+import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
 
 const components = {
   Heading: {
@@ -65,6 +68,10 @@ export function replaceOther<NodeType = ASTNode>(
     });
 
     source.findJSXElements(localElementName).forEach((element) => {
+      if (hasJSXSpreadAttribute(j, element)) {
+        insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      }
+
       replaceJSXElement(j, element, 'Text');
       insertJSXAttribute(j, element, 'variant', variant);
 
