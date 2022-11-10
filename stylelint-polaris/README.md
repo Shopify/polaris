@@ -1,6 +1,6 @@
-# Stylelint Polaris
+# @shopify/stylelint-polaris
 
-Collection of Stylelint configs and rules that promote Polaris Design System adoption and coverage
+A collection of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
 
 ## Installation
 
@@ -85,7 +85,7 @@ module.exports = {
 
 ### Add custom messages
 
-Custom messages are surfaced in the command line, CI, and supported editors along side the default `stylelint` rule messages. They are added to the root level config and aim to provide more meaning insight on rule violations and how to resolve them.
+Custom messages are surfaced in the command line, CI, and supported editors along side the default `stylelint` rule messages. They are added to the root level config and aim to provide more insight on how to resolve rule violations.
 
 In a majority of cases, the default rule messages are clear and concise. However, they don't always guide developers to a desired outcome. Thus, there are two mechanisms we suggest for improving and providing custom rule messages:
 
@@ -111,10 +111,10 @@ Example failure message:
 
 ```diff
 - Unexpected named color "red" (color-named)
-+ Unexpected named color "red" (color-named) Please use a Polaris color token: https://polaris.shopify.com/tokens/colors
++ Unexpected named color "red" (color-named) Please use a Polaris color token
 ```
 
-2. Add a custom `message` property in the [rule config's secondary options](https://stylelint.io/user-guide/configure/#message). This message is used in place of the default rule message.
+2. Add a custom `message` property in the [rule config's secondary options](https://stylelint.io/user-guide/configure/#message) if supported. This message will be used in place of the default rule message.
 
 ```js
 module.exports = {
@@ -138,8 +138,8 @@ module.exports = {
 Example failure message:
 
 ```diff
-- Unexpected named color "red" (color-named)
-+ Unexpected named color. Please refer to this specific page with guidance on how to resolve the failure
+- Unexpected named value "sticky" for property "position" (declaration-property-value-disallowed-list)
++ Unexpected named value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use the Polaris "Sticky" component
 ```
 
 ### Tophat `stylelint-polaris` updates in `polaris-react`
@@ -160,8 +160,344 @@ yarn build -- --filter=@shopify/polaris^...
 
 > Note: Remove the `^` character if you do want to build `@shopify/polaris`
 
-3. Run `stylelint` on `polaris-react`
+3. Run `stylelint` in `polaris-react`
+
+All files
 
 ```sh
-cd polaris-react && yarn lint:styles
+yarn turbo run lint:styles --filter=@shopify/polaris
+```
+
+Specific file
+
+```sh
+yarn run stylelint path/to/component.scss
+
+// yarn run stylelint polaris-react/src/components/TopBar/TopBar.scss
+```
+
+## Rules
+
+### Conventions
+
+#### unit-disallowed-list
+
+```diff
+- font-size: 12px;
+- line-height: 1.5rem
+- transition-duration: 200ms;
+```
+
+```diff
++ font-size: var(--p-font-size-75);
++ line-height: var(--p-font-line-height-3);
++ transition-duration: var(--p-duration-200);
+```
+
+### Colors
+
+#### color-named
+
+```diff
+- color: black;
+- fill: dimgray;
+```
+
+```diff
++ color: var(--p-text);
++ fill: var(--p-icon)
+```
+
+#### color-no-hex
+
+```diff
+- color: #202223;
+- fill: #5c5f62;
+```
+
+```diff
++ color: var(--p-text);
++ fill: var(--p-icon)
+```
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Font
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Shape
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Spacing
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Depth
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Motion
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Breakpoints
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/media-queries-allowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/at-rule-disallowed-list
+
+```diff
+
+```
+
+### Z-Index
+
+#### declaration-property-value-allowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/global-disallowed-list
+
+```diff
+
+```
+
+### Layout
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Legacy
+
+#### stylelint-polaris/at-rule-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/global-disallowed-list
+
+```diff
+
 ```
