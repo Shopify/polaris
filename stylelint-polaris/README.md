@@ -1,62 +1,38 @@
-# Stylelint Polaris (WIP)
+# Stylelint Polaris
 
-## Experimental package structure
+## Package structure
 
 ```
 stylelint-polaris/
-├─ plugins/
-│  ├─ custom-properties-allowed-list.js
-|  | # (Optional) Public facing plugins for advanced configurations
-|  | # (See advanced config example below)
-|  ├─ index.js
-|  |
-├─ configs/
-|  | # Common rules for `polaris-react` and Polaris consumers
-|  ├─ shared.js
-|  |
-|  | # Applied in `polaris-react` containing:
-|  | # - shared.js
-|  | # - specific `custom-properties-allowed-list` rules
-│  ├─ internal.js
-|
-| # Public facing config containing:
-| # - shared.js
-| # - specific `custom-properties-allowed-list` rules for Polaris consumers
-├─ index.js
+|-- plugins/
+|  |   # Custom plugin for categorizing built-in and custom rules
+|  |-- coverage.js
+|  |   # Additional custom rules
+|  |-- custom-properties-allowed-list.js
+|  |   # Plugins entry point
+|  |   # (See advanced config example below)
+|  |__ index.js
+|   # Main stylelint-polaris config
+|__ index.js
 ```
 
-### Polaris react usage
+### Usage
+
+### Basic
 
 ```json5
-// polaris-react/package.json
+// package.json
 {
   "stylelint": {
-    "extends": [
-      "@shopify/stylelint-polaris/configs/internal"
-    ]
+    "extends": ["@shopify/stylelint-polaris"]
   },
 };
 ```
 
-### Consumer usage
-
-#### Basic
-
-```json5
-// consumer/package.json
-{
-  "stylelint": {
-    "extends": [
-      "@shopify/stylelint-polaris"
-    ]
-  },
-};
-```
-
-#### Advanced
+### Advanced
 
 ```js
-// consumer/stylelintrc.js
+// .stylelintrc.js
 module.exports = {
   extends: ['@shopify/stylelint-polaris'],
   plugins: ['@shopify/stylelint-polaris/plugins'],
@@ -79,8 +55,16 @@ module.exports = {
 yarn install
 ```
 
-2. Run `stylelint` on `polaris-react`
+2. Build `@shopify/polaris` dependencies, but not `@shopify/polaris` itself
 
 ```sh
-yarn lint:stylelint
+yarn build -- --filter=@shopify/polaris^...
+```
+
+> Note: Remove the `^` character if you do want to build `@shopify/polaris`
+
+3. Run `stylelint` on `polaris-react`
+
+```sh
+cd polaris-react && yarn lint:styles
 ```
