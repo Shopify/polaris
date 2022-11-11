@@ -16,7 +16,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-function Layout({title, showTOC = true, editPageLinkPath, children}: Props) {
+function Page({title, showTOC = true, editPageLinkPath, children}: Props) {
   const [tocItems] = useTOC(children);
   const {asPath} = useRouter();
 
@@ -56,4 +56,4 @@ function Layout({title, showTOC = true, editPageLinkPath, children}: Props) {
   );
 }
 
-export default Layout;
+export default Page;
