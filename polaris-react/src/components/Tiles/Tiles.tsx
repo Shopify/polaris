@@ -1,24 +1,21 @@
 import React from 'react';
-import type {
-  BreakpointsAlias,
-  SpacingSpaceScale,
-} from '@shopify/polaris-tokens';
+import type {ResponsiveSpacingScale} from '@shopify/polaris-tokens';
 
 import styles from './Tiles.scss';
 
-type Columns = {
-  [Breakpoint in BreakpointsAlias]?: number | string;
-};
-
-type Gap = {
-  [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
-};
+interface Columns {
+  xs?: number | string;
+  sm?: number | string;
+  md?: number | string;
+  lg?: number | string;
+  xl?: number | string;
+}
 
 export interface TilesProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
   /** Adjust spacing between elements */
-  gap?: Gap;
+  gap?: ResponsiveSpacingScale;
   /** Adjust number of columns */
   columns?: Columns;
 }

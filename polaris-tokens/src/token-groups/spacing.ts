@@ -77,3 +77,11 @@ export const spacingSpaceScale = [
   '32',
 ] as const;
 export type SpacingSpaceScale = typeof spacingSpaceScale[number];
+
+export interface ResponsiveSpacingScale {
+  xs?: SpacingSpaceScale;
+  sm?: SpacingSpaceScale;
+  md?: SpacingSpaceScale;
+  lg?: SpacingSpaceScale;
+  xl?: SpacingSpaceScale;
+}

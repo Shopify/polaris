@@ -1,26 +1,23 @@
 import React from 'react';
-import type {
-  BreakpointsAlias,
-  SpacingSpaceScale,
-} from '@shopify/polaris-tokens';
+import type {ResponsiveSpacingScale} from '@shopify/polaris-tokens';
 
 import {sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
-type Columns = {
-  [Breakpoint in BreakpointsAlias]?: number | string;
-};
-
-type Spacing = {
-  [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
-};
+interface Columns {
+  xs?: number | string;
+  sm?: number | string;
+  md?: number | string;
+  lg?: number | string;
+  xl?: number | string;
+}
 
 export interface ColumnsProps {
   /** The spacing between columns
    * @default '4'
    */
-  spacing?: Spacing;
+  spacing?: ResponsiveSpacingScale;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */

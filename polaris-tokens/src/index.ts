@@ -59,6 +59,7 @@ export type {
   SpacingTokenGroup,
   SpacingTokenName,
   SpacingSpaceScale,
+  ResponsiveSpacingScale,
 } from './token-groups/spacing';
 
 export type {
