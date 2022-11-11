@@ -84,6 +84,7 @@ const catchAllTemplateExcludeList = [
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
+    !path.startsWith('/patterns') &&
     !catchAllTemplateExcludeList.includes(path)
   );
 }
