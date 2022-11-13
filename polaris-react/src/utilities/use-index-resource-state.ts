@@ -63,7 +63,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
         case SelectionType.Single:
           setSelectedResources((newSelectedResources) =>
             isSelecting
-              ? [...newSelectedResources, selection as string]
+              ? [selection as string]
               : newSelectedResources.filter((id) => id !== selection),
           );
           break;
