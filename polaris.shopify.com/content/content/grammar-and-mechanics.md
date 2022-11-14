@@ -536,7 +536,7 @@ Use an en dash without a space on either side for number ranges:
 - 5–10 products
 - October 15–31
 - 2005–2015
-- 25–100 lbs
+- 25–100 lb
 - \$0.00–\$49.99
 - 2:00 pm–3:00 pm
 
@@ -545,7 +545,7 @@ Use an en dash without a space on either side for number ranges:
 - 5 – 10 products
 - October 15 – 31
 - 2005 – 2015
-- 25 – 100lbs
+- 25 – 100 lb
 - \$0.00 – \$49.99
 - 2:00 pm – 3:00 pm
 
