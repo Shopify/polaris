@@ -6,8 +6,18 @@ import styles from './loading.module.scss';
 import Markdown from '../../../../../src/components/Markdown';
 import Button from '../../../../../src/components/Button';
 import {useRouter} from 'next/router';
+import {Parser} from 'acorn';
+import acornJsx from 'acorn-jsx';
+import {base as acornWalkBase, simple as simpleAcornWalker} from 'acorn-walk';
+import {extend as addJsxPropertiesToAcornWalk} from 'acorn-jsx-walk';
+import lzString from 'lz-string';
+
+addJsxPropertiesToAcornWalk(acornWalkBase);
 
 import SandboxContainer from '../../../../../src/components/SandboxContainer';
+
+// @ts-expect-error Sssssshhhhhhhhhh
+const jsxParser = Parser.extend(acornJsx());
 
 const codeExamples = [
   {
@@ -24,13 +34,16 @@ const codeExamples = [
   },
 ];
 
+type ComponentsCount = {[key: string]: number};
+
 export default function LoadingPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [codeExample, setCodeExample] = useState(codeExamples[0]);
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const router = useRouter();
-  const searchValue = useRef('');
+  const sandboxCode = useRef('');
+  const [componentsInCode, setComponentsInCode] = useState<ComponentsCount>();
 
   useEffect(() => {
     /**
@@ -39,15 +52,64 @@ export default function LoadingPage() {
      */
     const iframeUrlPoll = setInterval(() => {
       if (
-        iframeRef?.current?.contentWindow &&
-        iframeRef.current.contentWindow.location.search !== searchValue.current
+        typeof iframeRef?.current?.contentWindow?.location?.search != 'string'
       ) {
-        searchValue.current = iframeRef.current.contentWindow.location.search;
-        const iframeQueryObj = Object.fromEntries(
-          new URLSearchParams(searchValue.current),
-        );
+        return;
+      }
 
-        console.log(iframeQueryObj);
+      const oldCodeExample = sandboxCode.current;
+
+      try {
+        sandboxCode.current = JSON.parse(
+          lzString.decompressFromEncodedURIComponent(
+            Object.fromEntries(
+              new URLSearchParams(
+                iframeRef.current.contentWindow.location.search,
+              ),
+            ).code,
+          ) ?? '',
+        ).code;
+      } catch (error) {
+        console.warn('Unable to read code from sandbox');
+      }
+
+      if (sandboxCode.current != oldCodeExample) {
+        const components: ComponentsCount = {};
+
+        try {
+          const t0 = performance.now();
+          simpleAcornWalker(
+            jsxParser.parse(sandboxCode.current, {ecmaVersion: 'latest'}),
+            {
+              JSXElement(node) {
+                const {
+                  openingElement: {name: nameNode},
+                } = node as unknown as {
+                  openingElement: {name: any};
+                };
+                let name: string = '';
+                if (nameNode.type === 'JSXMemberExpression') {
+                  name = `${nameNode.object.name}.${nameNode.property.name}`;
+                } else if (nameNode.type === 'JSXIdentifier') {
+                  name = nameNode.name;
+                } else {
+                  // What do?
+                  console.log(nameNode);
+                }
+                if (name) {
+                  components[name] = components[name] ?? 0;
+                  components[name]++;
+                }
+              },
+            },
+          );
+          const t1 = performance.now();
+          console.log('Parsing took ', t1 - t0, 'ms');
+        } catch (error) {
+          console.warn('Unable to parse code from sandbox');
+        }
+
+        setComponentsInCode(components);
       }
     }, 200);
     return () => clearInterval(iframeUrlPoll);
@@ -135,6 +197,9 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                     width="100%"
                     height="100%"
                   />
+                  <code>
+                    <pre>{JSON.stringify(componentsInCode, null, 2)}</pre>
+                  </code>
                 </SandboxContainer>
               </Tab.Panel>
               <Tab.Panel>showcase</Tab.Panel>
