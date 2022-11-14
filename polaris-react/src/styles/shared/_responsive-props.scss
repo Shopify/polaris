@@ -51,7 +51,7 @@
       );
     }
   }
-  else {
+  @else {
     #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
 
     @media #{$p-breakpoints-sm-up} {
