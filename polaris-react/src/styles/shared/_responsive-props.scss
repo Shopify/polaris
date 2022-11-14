@@ -4,52 +4,70 @@
   $declartionProp,
   $shorthandFallback: null
 ) {
-  @if not $shorthandFallback {
-    --pc-#{$componentName}-#{$componentProp}-xs: initial;
-    --pc-#{$componentName}-#{$componentProp}-sm: var(
-      --pc-#{$componentName}-#{$componentProp}-xs
+  --pc-#{$componentName}-#{$componentProp}-xs: initial;
+  --pc-#{$componentName}-#{$componentProp}-sm: var(
+    --pc-#{$componentName}-#{$componentProp}-xs
+  );
+  --pc-#{$componentName}-#{$componentProp}-md: var(
+    --pc-#{$componentName}-#{$componentProp}-sm
+  );
+  --pc-#{$componentName}-#{$componentProp}-lg: var(
+    --pc-#{$componentName}-#{$componentProp}-md
+  );
+  --pc-#{$componentName}-#{$componentProp}-xl: var(
+    --pc-#{$componentName}-#{$componentProp}-lg
+  );
+  @if $shorthandFallback {
+    #{$declartionProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-xs,
+      var(--pc-#{$componentName}-#{$shorthandFallback}-xs)
     );
-    --pc-#{$componentName}-#{$componentProp}-md: var(
-      --pc-#{$componentName}-#{$componentProp}-sm
-    );
-    --pc-#{$componentName}-#{$componentProp}-lg: var(
-      --pc-#{$componentName}-#{$componentProp}-md
-    );
-    --pc-#{$componentName}-#{$componentProp}-xl: var(
-      --pc-#{$componentName}-#{$componentProp}-lg
-    );
-  } @else {
-    --pc-#{$componentName}-#{$componentProp}-xs: var(
-      --pc-#{$componentName}-#{$shorthandFallback}-xs
-    );
-    --pc-#{$componentName}-#{$componentProp}-sm: var(
-      --pc-#{$componentName}-#{$shorthandFallback}-sm
-    );
-    --pc-#{$componentName}-#{$componentProp}-md: var(
-      --pc-#{$componentName}-#{$shorthandFallback}-md
-    );
-    --pc-#{$componentName}-#{$componentProp}-lg: var(
-      --pc-#{$componentName}-#{$shorthandFallback}-lg
-    );
-    --pc-#{$componentName}-#{$componentProp}-xl: var(
-      --pc-#{$componentName}-#{$shorthandFallback}-xl
-    );
-  }
-  #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
 
-  @media #{$p-breakpoints-sm-up} {
-    #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-sm);
-  }
+    @media #{$p-breakpoints-sm-up} {
+      #{$declartionProp}: var(
+        --pc-#{$componentName}-#{$componentProp}-sm,
+        var(--pc-#{$componentName}-#{$shorthandFallback}-sm)
+      );
+    }
 
-  @media #{$p-breakpoints-md-up} {
-    #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-md);
-  }
+    @media #{$p-breakpoints-md-up} {
+      #{$declartionProp}: var(
+        --pc-#{$componentName}-#{$componentProp}-md,
+        var(--pc-#{$componentName}-#{$shorthandFallback}-md)
+      );
+    }
 
-  @media #{$p-breakpoints-lg-up} {
-    #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-lg);
-  }
+    @media #{$p-breakpoints-lg-up} {
+      #{$declartionProp}: var(
+        --pc-#{$componentName}-#{$componentProp}-lg,
+        var(--pc-#{$componentName}-#{$shorthandFallback}-lg)
+      );
+    }
 
-  @media #{$p-breakpoints-xl-up} {
-    #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xl);
+    @media #{$p-breakpoints-xl-up} {
+      #{$declartionProp}: var(
+        --pc-#{$componentName}-#{$componentProp}-xl,
+        var(--pc-#{$componentName}-#{$shorthandFallback}-xl)
+      );
+    }
+  }
+  else {
+    #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
+
+    @media #{$p-breakpoints-sm-up} {
+      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-sm);
+    }
+
+    @media #{$p-breakpoints-md-up} {
+      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-md);
+    }
+
+    @media #{$p-breakpoints-lg-up} {
+      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-lg);
+    }
+
+    @media #{$p-breakpoints-xl-up} {
+      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xl);
+    }
   }
 }
