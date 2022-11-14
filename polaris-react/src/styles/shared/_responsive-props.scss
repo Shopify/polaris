@@ -4,7 +4,7 @@
   $declartionProp,
   $shorthandFallback: null
 ) {
-  @if $shorthandFallback == null {
+  @if not $shorthandFallback {
     --pc-#{$componentName}-#{$componentProp}-xs: initial;
     --pc-#{$componentName}-#{$componentProp}-sm: var(
       --pc-#{$componentName}-#{$componentProp}-xs
@@ -35,7 +35,6 @@
       --pc-#{$componentName}-#{$shorthandFallback}-xl
     );
   }
-
   #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
 
   @media #{$p-breakpoints-sm-up} {
