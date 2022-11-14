@@ -126,13 +126,13 @@ const plugin = (options: PluginOptions): Plugin => {
 
         if (reports.length) {
           atRule.before([
-            createInlineComment(POLARIS_MIGRATOR_COMMENT, {prose: true}),
+            createInlineComment(POLARIS_MIGRATOR_COMMENT),
             ...reports.map((report) => {
-              return createInlineComment(report.message, {prose: true});
+              return createInlineComment(report.message);
             }),
             ...(postCSSdeclNodes.length
               ? postCSSdeclNodes.map((decl) =>
-                  createInlineComment(decl.toString()),
+                  createInlineComment(`${decl.toString()};`),
                 )
               : []),
           ]);
