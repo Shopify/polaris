@@ -21,5 +21,5 @@ examples:
 ## Related components
 
 - For more control over widths, spacing, and alignment, [use the Columns component](https://polaris.shopify.com/components/columns)
-- To lay out a set of smaller components horizontally, [use the Inline](https://polaris.shopify.com/components/inline) component
-- To lay out a set of smaller components vertically, [use the Alpha stack](https://polaris.shopify.com/components/alphastack) component
+- To lay out a set of smaller components horizontally, [use the Inline component](https://polaris.shopify.com/components/inline)
+- To lay out a set of smaller components vertically, [use the Alpha stack component](https://polaris.shopify.com/components/alphastack)
