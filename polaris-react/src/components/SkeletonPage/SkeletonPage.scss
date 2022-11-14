@@ -1,19 +1,7 @@
 @import '../../styles/common';
 
-$primary-action-button-height: 36px;
-$primary-action-button-width: 100px;
-$skeleton-display-text-max-width: 120px;
-
 .Page {
   @include page-layout;
-}
-
-.fullWidth {
-  max-width: none;
-}
-
-.narrowWidth {
-  max-width: $layout-width-primary-max;
 }
 
 .Content {
@@ -23,22 +11,6 @@ $skeleton-display-text-max-width: 120px;
 .Header {
   @include page-header-layout;
   padding-bottom: var(--p-space-2);
-}
-
-.BreadcrumbAction {
-  padding-top: var(--p-space-4);
-  padding-bottom: var(--p-space-4);
-  margin-top: calc(-1 * var(--p-space-1));
-  margin-bottom: calc(-1 * var(--p-space-1));
-}
-
-.TitleAndPrimaryAction {
-  display: flex;
-  align-items: flex-start;
-}
-
-.TitleWrapper {
-  flex: 1 1 0%;
 }
 
 .Title {
@@ -61,23 +33,6 @@ $skeleton-display-text-max-width: 120px;
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
   }
-}
-
-.PrimaryAction {
-  align-self: stretch;
-
-  > * {
-    height: $primary-action-button-height;
-    min-width: $primary-action-button-width;
-  }
-}
-
-.Actions {
-  margin-top: var(--p-space-2);
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .Action {
