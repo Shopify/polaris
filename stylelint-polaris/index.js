@@ -32,8 +32,7 @@ module.exports = {
       colors: {
         'color-named': 'never',
         'color-no-hex': true,
-        // TODO: Receiving an error that the rule doesn't exist
-        // 'scss/function-color-relative': true,
+        'scss/function-color-relative': true,
         'declaration-property-value-disallowed-list': {
           opacity: [/(?!0|1)\d$|^\d{2,}|^[1-9]+\.|^\d+\.\d+\.|^0\.\d{3,}/],
         },
