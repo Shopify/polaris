@@ -36,7 +36,7 @@ export function getResponsiveProps(
         [Breakpoint in BreakpointsAlias]?: string;
       },
 ) {
-  if (responsiveProp == null) return {};
+  if (!responsiveProp) return {};
 
   if (typeof responsiveProp === 'string') {
     return {
