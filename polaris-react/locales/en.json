@@ -161,7 +161,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Items",
-      "allItemsSelected": "All {itemsLength}+ {resourceNamePlural} are selected.",
+      "allItemsSelected": "All {resourceNamePlural} selected.",
       "selected": "{selectedItemsCount} selected",
       "a11yCheckboxDeselectAllSingle": "Deselect {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
@@ -176,7 +176,7 @@
       "selectAllLabel": "Select all {resourceNamePlural}",
       "selected": "{selectedItemsCount} selected",
       "undo": "Undo",
-      "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
+      "selectAllItems": "Select all {resourceNamePlural} in this store",
       "selectItem": "Select {resourceName}",
       "selectButtonText": "Select",
       "sortAccessibilityLabel": "sort {direction} by"

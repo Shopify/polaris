@@ -940,7 +940,6 @@ function IndexTableBase({
     const customActionText =
       paginatedSelectAllActionText ??
       i18n.translate('Polaris.IndexTable.selectAllItems', {
-        itemsLength: itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
       });
 

@@ -92,7 +92,6 @@ export function useBulkSelectionData({
 
     if (selectedItemsCount === SELECT_ALL_ITEMS) {
       return i18n.translate('Polaris.IndexProvider.allItemsSelected', {
-        itemsLength: itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
       });
     }
