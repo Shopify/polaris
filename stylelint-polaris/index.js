@@ -1,23 +1,6 @@
 const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 
-/**
- * Allowed Polaris token custom properties.
- *
- * @example ['--p-text', '--p-background']
- */
-const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
-
-/**
- * User defined custom property names.
- *
- * Determined by allowing any custom property that are not prefixed with:
- * `--p-`, `--pc-`, or '--polaris-version-`
- */
-const userDefinedCustomPropertyNames = /--(?!(p|pc|polaris-version)-).+/;
-
-/**
- * @type {import('stylelint').Config}
- */
+/** @type {import('stylelint').Config} */
 module.exports = {
   plugins: [
     'stylelint-scss',
@@ -280,22 +263,18 @@ module.exports = {
           ['px', 'rem', 'em', 's', 'ms'],
           {severity: 'warning'},
         ],
-        /**
-         * TODO: After consolidating internal and public configs, this rule
-         * would make more sense as a disallow list.
-         *
-         * Custom property constraints:
-         * - Allow any user defined custom properties
-         * - Allow `--p-*` Polaris custom properties as values
-         * - Disallow `--p-*` Polaris custom properties as property overrides
-         * - Disallow `--pc-*` Polaris component custom properties as values and property overrides
-         */
         'stylelint-polaris/custom-properties-allowed-list': {
-          allowedProperties: [userDefinedCustomPropertyNames],
+          // Allow any custom property not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
+          allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
           allowedValues: {
             '/.+/': [
-              ...polarisCustomPropertyNames,
-              userDefinedCustomPropertyNames,
+              // Note: Order is important.
+              // The first pattern validates `--p-*`
+              // custom properties are valid Polaris tokens
+              ...getCustomPropertyNames(tokens),
+              // and the second pattern flags unknown `--p-*` custom properties
+              // or usages of our "private" `--pc-*` custom properties
+              /--(?!(p|pc)-).+/,
             ],
           },
         },
