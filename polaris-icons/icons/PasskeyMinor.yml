@@ -1,0 +1,13 @@
+name: Passkey
+set: minor
+description: Used to represent a passkey
+keywords:
+  - passkey
+  - identity
+  - security
+authors:
+  - Ashley Allen
+version: 1
+date_added: 2022-11-15
+date_modified: 2022-11-15
+exclusive_use: Identity
