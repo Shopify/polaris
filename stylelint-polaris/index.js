@@ -278,10 +278,7 @@ const stylelintPolarisCoverageOptions = {
       },
       {severity: 'warning'},
     ],
-    'property-disallowed-list': [
-      ['text-shadow', 'drop-shadow'],
-      {severity: 'warning'},
-    ],
+    'property-disallowed-list': [['text-shadow'], {severity: 'warning'}],
     'stylelint-polaris/global-disallowed-list': [
       /\$shadows-data/,
       /\$fixed-element-stacking-order/,
