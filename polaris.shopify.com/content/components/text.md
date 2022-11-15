@@ -20,7 +20,7 @@ keywords:
   - bold
   - list
 status:
-  value: Alpha
+  value: Beta
   message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
   - fileName: text-heading.tsx

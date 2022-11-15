@@ -20,53 +20,9 @@ export function Default() {
   );
 }
 
-export function AlignYCenter() {
-  return (
-    <Inline alignY="center" spacing="1">
-      <Thumbnail source={ImageMajor} alt="example" />
-      <Badge>One</Badge>
-      <Badge>Two</Badge>
-      <Badge>Three</Badge>
-    </Inline>
-  );
-}
-
-export function AlignYTop() {
-  return (
-    <Inline alignY="top" spacing="1">
-      <Thumbnail source={ImageMajor} alt="example" />
-      <Badge>One</Badge>
-      <Badge>Two</Badge>
-      <Badge>Three</Badge>
-    </Inline>
-  );
-}
-
-export function AlignYBottom() {
-  return (
-    <Inline alignY="bottom" spacing="1">
-      <Thumbnail source={ImageMajor} alt="example" />
-      <Badge>One</Badge>
-      <Badge>Two</Badge>
-      <Badge>Three</Badge>
-    </Inline>
-  );
-}
-
-export function AlignYBaseline() {
-  return (
-    <Inline alignY="baseline" spacing="1">
-      <Thumbnail source={ImageMajor} alt="example" />
-      <Badge>One</Badge>
-      <Badge>Two</Badge>
-      <Badge>Three</Badge>
-    </Inline>
-  );
-}
-
 export function AlignStart() {
   return (
-    <Inline align="start" alignY="center" spacing="1">
+    <Inline align="start" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -77,7 +33,7 @@ export function AlignStart() {
 
 export function AlignCenter() {
   return (
-    <Inline align="center" alignY="center" spacing="1">
+    <Inline align="center" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -88,7 +44,7 @@ export function AlignCenter() {
 
 export function AlignEnd() {
   return (
-    <Inline align="end" alignY="center" spacing="1">
+    <Inline align="end" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -97,9 +53,94 @@ export function AlignEnd() {
   );
 }
 
-export function AlignCenterAlignYCenter() {
+export function AlignSpaceAround() {
   return (
-    <Inline align="center" alignY="center" spacing="1">
+    <Inline align="space-around" spacing="1">
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function AlignSpaceBetween() {
+  return (
+    <Inline align="space-between" spacing="1">
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function AlignSpaceEvenly() {
+  return (
+    <Inline align="space-evenly" spacing="1">
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function BlockAlignCenter() {
+  return (
+    <Inline blockAlign="center" spacing="1">
+      <Thumbnail source={ImageMajor} alt="example" />
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function BlockAlignStart() {
+  return (
+    <Inline blockAlign="start" spacing="1">
+      <Thumbnail source={ImageMajor} alt="example" />
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function BlockAlignEnd() {
+  return (
+    <Inline blockAlign="end" spacing="1">
+      <Thumbnail source={ImageMajor} alt="example" />
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function BlockAlignBaseline() {
+  return (
+    <Inline blockAlign="baseline" spacing="1">
+      <Thumbnail source={ImageMajor} alt="example" />
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function BlockAlignStrech() {
+  return (
+    <Inline blockAlign="stretch" spacing="1">
+      <Thumbnail source={ImageMajor} alt="example" />
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </Inline>
+  );
+}
+
+export function AlignCenterBlockAlignCenter() {
+  return (
+    <Inline align="center" blockAlign="center" spacing="1">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>

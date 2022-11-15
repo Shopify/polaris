@@ -1,10 +1,10 @@
 import {
-  TextStyle,
   Stack,
   Tag,
   Listbox,
   EmptySearchResult,
   Combobox,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -68,7 +68,9 @@ function MultiselectTagComboboxExample() {
       return (
         <p>
           {start}
-          <TextStyle variation="strong">{highlight}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {highlight}
+          </Text>
           {end}
         </p>
       );

@@ -1,0 +1,67 @@
+diff --git a/node_modules/stylelint/lib/utils/checkAgainstRule.js b/node_modules/stylelint/lib/utils/checkAgainstRule.js
+index 83706c5..feda9b8 100644
+--- a/node_modules/stylelint/lib/utils/checkAgainstRule.js
++++ b/node_modules/stylelint/lib/utils/checkAgainstRule.js
+@@ -27,7 +27,9 @@ function checkAgainstRule(options, callback) {
+ 
+ 	if (!options.ruleName) throw new Error("checkAgainstRule requires a 'ruleName' option");
+ 
+-	const rule = rules[options.ruleName];
++	const pluginFunction = options?.result?.stylelint?.config?.pluginFunctions?.[options.ruleName];
++
++	const rule = typeof pluginFunction === 'function' ? pluginFunction : rules[options.ruleName];
+ 
+ 	if (!rule) throw new Error(`Rule '${options.ruleName}' does not exist`);
+ 
+@@ -44,7 +46,7 @@ function checkAgainstRule(options, callback) {
+ 	// @ts-expect-error - this error should not occur with PostCSS 8
+ 	const tmpPostcssResult = new Result();
+ 
+-	rule(settings[0], /** @type {O} */ (settings[1]), {})(options.root, tmpPostcssResult);
++	rule(settings[0], /** @type {O} */(settings[1]), {fix: options.fix})(options.root, tmpPostcssResult);
+ 
+ 	for (const warning of tmpPostcssResult.warnings()) callback(warning);
+ }
+diff --git a/node_modules/stylelint/lib/utils/report.js b/node_modules/stylelint/lib/utils/report.js
+index 02a3c3c..5573371 100644
+--- a/node_modules/stylelint/lib/utils/report.js
++++ b/node_modules/stylelint/lib/utils/report.js
+@@ -15,7 +15,7 @@
+  * @type {typeof import('stylelint').utils.report}
+  */
+ module.exports = function report(problem) {
+-	const { ruleName, result, message, line, node, index, endIndex, word } = problem;
++	const { ruleName, result, message, line, node, index, endIndex, word, severity: customSeverity } = problem;
+ 
+ 	result.stylelint = result.stylelint || {
+ 		ruleSeverities: {},
+@@ -72,7 +72,7 @@ module.exports = function report(problem) {
+ 		}
+ 	}
+ 
+-	const severity = result.stylelint.ruleSeverities && result.stylelint.ruleSeverities[ruleName];
++	const severity = customSeverity || result.stylelint.ruleSeverities && result.stylelint.ruleSeverities[ruleName];
+ 
+ 	if (!result.stylelint.stylelintError && severity === 'error') {
+ 		result.stylelint.stylelintError = true;
+diff --git a/node_modules/stylelint/types/stylelint/index.d.ts b/node_modules/stylelint/types/stylelint/index.d.ts
+index b6ec792..fa1b3b9 100644
+--- a/node_modules/stylelint/types/stylelint/index.d.ts
++++ b/node_modules/stylelint/types/stylelint/index.d.ts
+@@ -362,6 +362,7 @@ declare module 'stylelint' {
+ 			};
+ 			word?: string;
+ 			line?: number;
++			severity?: Severity;
+ 		};
+ 
+ 		export type PublicApi = PostCSS.PluginCreator<PostcssPluginOptions> & {
+@@ -436,7 +437,7 @@ declare module 'stylelint' {
+ 				 * against a specific rule and do something with the warnings
+ 				 */
+ 				checkAgainstRule: <T, O extends Object>(
+-					options: { ruleName: string; ruleSettings: ConfigRuleSettings<T, O>; root: PostCSS.Root },
++					options: { ruleName: string; ruleSettings: ConfigRuleSettings<T, O>; root: PostCSS.Root, result?: PostcssResult },
+ 					callback: (warning: PostCSS.Warning) => void,
+ 				) => void;
+ 			};

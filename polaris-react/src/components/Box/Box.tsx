@@ -1,5 +1,11 @@
 import React, {createElement, forwardRef} from 'react';
 import type {
+  ColorsActionTokenAlias,
+  ColorsBackdropTokenAlias,
+  ColorsBackgroundTokenAlias,
+  ColorsOverlayTokenAlias,
+  ColorsSurfaceTokenAlias,
+  ShapeBorderWidthScale,
   DepthShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
@@ -11,72 +17,6 @@ import styles from './Box.scss';
 type Element = 'div' | 'span' | 'section';
 
 type Overflow = 'hidden' | 'scroll';
-
-export type BackgroundColorTokenScale =
-  | 'action-critical'
-  | 'action-critical-depressed'
-  | 'action-critical-disabled'
-  | 'action-critical-hovered'
-  | 'action-critical-pressed'
-  | 'action-primary'
-  | 'action-primary-depressed'
-  | 'action-primary-disabled'
-  | 'action-primary-hovered'
-  | 'action-primary-pressed'
-  | 'action-secondary'
-  | 'action-secondary-depressed'
-  | 'action-secondary-disabled'
-  | 'action-secondary-hovered'
-  | 'action-secondary-hovered-dark'
-  | 'action-secondary-pressed'
-  | 'action-secondary-pressed-dark'
-  | 'backdrop'
-  | 'background'
-  | 'background-hovered'
-  | 'background-pressed'
-  | 'background-selected'
-  | 'overlay'
-  | 'surface'
-  | 'surface-attention'
-  | 'surface-critical'
-  | 'surface-critical-subdued'
-  | 'surface-critical-subdued-depressed'
-  | 'surface-critical-subdued-hovered'
-  | 'surface-critical-subdued-pressed'
-  | 'surface-dark'
-  | 'surface-depressed'
-  | 'surface-disabled'
-  | 'surface-highlight'
-  | 'surface-highlight-subdued'
-  | 'surface-highlight-subdued-hovered'
-  | 'surface-highlight-subdued-pressed'
-  | 'surface-hovered'
-  | 'surface-hovered-dark'
-  | 'surface-neutral'
-  | 'surface-neutral-disabled'
-  | 'surface-neutral-hovered'
-  | 'surface-neutral-pressed'
-  | 'surface-neutral-subdued'
-  | 'surface-neutral-subdued-dark'
-  | 'surface-pressed'
-  | 'surface-pressed-dark'
-  | 'surface-primary-selected'
-  | 'surface-primary-selected-hovered'
-  | 'surface-primary-selected-pressed'
-  | 'surface-search-field'
-  | 'surface-search-field-dark'
-  | 'surface-selected'
-  | 'surface-selected-hovered'
-  | 'surface-selected-pressed'
-  | 'surface-subdued'
-  | 'surface-success'
-  | 'surface-success-subdued'
-  | 'surface-success-subdued-hovered'
-  | 'surface-success-subdued-pressed'
-  | 'surface-warning'
-  | 'surface-warning-subdued'
-  | 'surface-warning-subdued-hovered'
-  | 'surface-warning-subdued-pressed';
 
 export type ColorTokenScale =
   | 'text'
@@ -121,6 +61,13 @@ export type BorderRadiusTokenScale =
   | 'large'
   | 'half';
 
+export type BackgroundColors =
+  | ColorsBackdropTokenAlias
+  | ColorsBackgroundTokenAlias
+  | ColorsOverlayTokenAlias
+  | ColorsActionTokenAlias
+  | ColorsSurfaceTokenAlias;
+
 interface BorderRadius {
   startStart: BorderRadiusTokenScale;
   startEnd: BorderRadiusTokenScale;
@@ -135,11 +82,18 @@ interface Spacing {
   inlineEnd: SpacingSpaceScale;
 }
 
+interface BorderWidth {
+  blockStart: ShapeBorderWidthScale;
+  blockEnd: ShapeBorderWidthScale;
+  inlineStart: ShapeBorderWidthScale;
+  inlineEnd: ShapeBorderWidthScale;
+}
+
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
-  background?: BackgroundColorTokenScale;
+  background?: BackgroundColors;
   /** Border style */
   border?: BorderTokenAlias;
   /** Vertical end border style */
@@ -160,6 +114,16 @@ export interface BoxProps {
   borderRadiusStartStart?: BorderRadiusTokenScale;
   /** Verital start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
+  /** Border width */
+  borderWidth?: ShapeBorderWidthScale;
+  /** Vertical start border width */
+  borderBlockStartWidth?: ShapeBorderWidthScale;
+  /** Vertical end border width */
+  borderBlockEndWidth?: ShapeBorderWidthScale;
+  /** Horizontal start border width */
+  borderInlineStartWidth?: ShapeBorderWidthScale;
+  /** Horizontal end border width */
+  borderInlineEndWidth?: ShapeBorderWidthScale;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
@@ -202,6 +166,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStart,
       borderInlineEnd,
       borderBlockStart,
+      borderWidth,
+      borderBlockStartWidth,
+      borderBlockEndWidth,
+      borderInlineStartWidth,
+      borderInlineEndWidth,
       borderRadius,
       borderRadiusEndStart,
       borderRadiusEndEnd,
@@ -238,6 +207,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       startStart: borderRadiusStartStart,
       startEnd: borderRadiusStartEnd,
     } as BorderRadius;
+
+    const borderWidths = {
+      blockStart: borderBlockStartWidth,
+      blockEnd: borderBlockEndWidth,
+      inlineStart: borderInlineStartWidth,
+      inlineEnd: borderInlineEndWidth,
+    } as BorderWidth;
 
     const paddings = {
       blockEnd: paddingBlockEnd,
@@ -276,6 +252,21 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       '--pc-box-border-radius-start-end': borderRadiuses.startEnd
         ? `var(--p-border-radius-${borderRadiuses.startEnd})`
+        : undefined,
+      '--pc-box-border-width': borderWidth
+        ? `var(--p-border-width-${borderWidth})`
+        : undefined,
+      '--pc-box-border-block-start-width': borderWidths.blockStart
+        ? `var(--p-border-width-${borderWidths.blockStart})`
+        : undefined,
+      '--pc-box-border-block-end-width': borderWidths.blockEnd
+        ? `var(--p-border-width-${borderWidths.blockEnd})`
+        : undefined,
+      '--pc-box-border-inline-start-width': borderWidths.inlineStart
+        ? `var(--p-border-width-${borderWidths.inlineStart})`
+        : undefined,
+      '--pc-box-border-inline-end-width': borderWidths.inlineEnd
+        ? `var(--p-border-width-${borderWidths.inlineEnd})`
         : undefined,
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,

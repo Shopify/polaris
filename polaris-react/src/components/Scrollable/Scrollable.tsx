@@ -67,6 +67,7 @@ export function Scrollable({
 
     requestAnimationFrame(() => {
       const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
+      const canScroll = Boolean(scrollHeight > clientHeight);
       const isBelowTopOfScroll = Boolean(scrollTop > 0);
       const isAtBottomOfScroll = Boolean(
         scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
@@ -75,7 +76,7 @@ export function Scrollable({
       setTopShadow(isBelowTopOfScroll);
       setBottomShadow(!isAtBottomOfScroll);
 
-      if (isAtBottomOfScroll && onScrolledToBottom) {
+      if (canScroll && isAtBottomOfScroll && onScrolledToBottom) {
         onScrolledToBottom();
       }
     });

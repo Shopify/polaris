@@ -1,0 +1,14 @@
+name: InactiveLocation
+set: major
+description: Used to represent an inactive location.
+keywords:
+  - inactive location
+  - deactivated location
+  - location
+authors:
+  - Shanique Shields
+  - James Findlater
+version: 1
+date_added: 2022-11-02
+date_modified: 2022-11-02
+exclusive_use:

@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
-import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useUniqueId} from '../../utilities/unique-id';
@@ -16,6 +15,7 @@ import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
 import {Connected} from '../Connected';
 import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
+import {Text} from '../Text';
 
 import {Resizer, Spinner, SpinnerProps} from './components';
 import styles from './TextField.scss';
