@@ -1,10 +1,28 @@
-/* eslint-disable jest/no-export, jest/valid-title, @typescript-eslint/no-var-requires */
+/* eslint-disable jest/no-export, jest/valid-title */
 import fs from 'fs';
 import path from 'path';
 
+import jscodeshift, {FileInfo} from 'jscodeshift';
 import prettier from 'prettier';
 
-const applyTransform = require('jscodeshift/dist/testUtils').applyTransform;
+export default async function applyTransform(
+  transform: any,
+  input: FileInfo,
+  options?: {[option: string]: any},
+) {
+  // Handle ES6 modules using default export for the transform
+  const transformer = transform.default ? transform.default : transform;
+  const output = await transformer(
+    input,
+    {
+      jscodeshift: jscodeshift.withParser('tsx'),
+      stats: () => {},
+    },
+    options || {},
+  );
+
+  return (output || '').trim();
+}
 
 interface ParserExtensionMap {
   [key: string]: prettier.BuiltInParserName;
@@ -38,9 +56,11 @@ export function check(
       );
       // Assumes transform is one level up from tests directory
       const module = await import(path.join(dirName, '..', migration));
-      const output = applyTransform({...module, parser: 'tsx'}, options, {
-        source,
-      });
+      const output = await applyTransform(
+        {...module},
+        {source, path: inputPath},
+        options,
+      );
 
       // Format output and expected with prettier for white spaces and line breaks consistency
       expect(prettier.format(output, {parser})).toBe(
