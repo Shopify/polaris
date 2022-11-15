@@ -134,6 +134,13 @@ const stylelintPolarisCoverageOptions = {
       },
       {severity: 'warning'},
     ],
+    'declaration-property-unit-disallowed-list': [
+      {
+        '/^width/': ['px', 'rem', 'em'],
+        '/^height/': ['px', 'rem', 'em'],
+      },
+      {severity: 'warning'},
+    ],
     'property-disallowed-list': [
       [
         'position',
