@@ -139,7 +139,7 @@ const stylelintPolarisCoverageOptions = {
         '/^width/': ['px', 'rem', 'em'],
         '/^height/': ['px', 'rem', 'em'],
       },
-      {severity: 'warning'},
+      {severity: 'error'},
     ],
     'property-disallowed-list': [
       [
