@@ -1,13 +1,12 @@
 @import '../../../../styles/common';
 
 .ContextualSaveBar {
-  // Used to apply dark theme to action buttons
-  /* stylelint-disable stylelint-polaris/custom-properties-allowed-list */
+  /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */
   --p-surface: var(--p-surface-dark);
   --p-text: var(--p-text-on-dark);
   --p-action-secondary-hovered: var(--p-action-secondary-hovered-dark);
   --p-action-secondary-pressed: var(--p-action-secondary-pressed-dark);
-  /* stylelint-enable stylelint-polaris/custom-properties-allowed-list */
+  /* stylelint-enable */
   display: flex;
   height: $top-bar-height;
   background: var(--p-surface-dark);
