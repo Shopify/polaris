@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import {createUrl} from 'playroom';
 import {Tab} from '@headlessui/react';
 import Longform from '../../../Longform';
 import Page from '../../../Page';
@@ -8,27 +9,134 @@ import Button from '../../../../../src/components/Button';
 import {useRouter} from 'next/router';
 
 import SandboxContainer from '../../../../../src/components/SandboxContainer';
+import ComponentExamples from '../../../ComponentExamples';
+import Code from '../../../Code';
 
 const codeExamples = [
   {
     name: 'Index skeleton page',
-    code: 'N4Igxg9gJgpiBcIA8BlA1jANjALhAdgAoCGA5jAAQAOATgJYC2xNAngIJg50EB8AOvgoUkAGWIsIAVxz9BQ4WInSAdChidu%2BWfPlIAwsygUAzuq4EYUbTt3osuAgCFoLACowAHjgoB6azqQfAxorARthYKNTDQtQuXCkdy89AhxiOnwYGn9w4TtsPHwAETpjKkxxJO9jOgAvGABePhBjJkxMZt8chPyHfGcoN09vPzDcwKqU-DSMrO7hIMN5-UMTM01LeaFE4amZzOyx3LyMAoISsoqhrxM6xubW4nbO0fjx3sKB65GthcnU9IHZaLEI5QKKKQ4VTrXhHBTiSHQmKCaIEKDMFjLSK-FYhJHmLRwhL-aaAuZE96nPoXcqVYa3epNFptDogLoUnpUz4uKoUTCzYwNYAAJgAvuy3gkfCT9uTJboQVB8ZocZFlbD5QEPk4efT%2BZlBcAAIzi17HQJqtTI4HYim4qKSABGUEkmw5EUM6sJmt0MrJhx9Wq551KtO%2BDPuzKerIlxyD9m5g15%2BpghrFsbjE12ANmAfNiq9qs9VoJv222v6upuKbTppxBZLKrtirBPghKkbGu2bYR0lkgQrJHIPBAABoQDgABYwBiphAAbRAmAgYCeMHgMHwIAAuuOAO50KBT4wLgAsAE4AAzb0VAA',
+    code: `<SkeletonPage primaryAction>
+    <Layout>
+      <Layout.Section>
+        <Card sectioned>
+          <SkeletonBodyText />
+        </Card>
+        <Card sectioned>
+          <TextContainer>
+            <SkeletonDisplayText size="small" />
+            <SkeletonBodyText />
+          </TextContainer>
+        </Card>
+        <Card sectioned>
+          <TextContainer>
+            <SkeletonDisplayText size="small" />
+            <SkeletonBodyText />
+          </TextContainer>
+        </Card>
+      </Layout.Section>
+      <Layout.Section secondary>
+        <Card>
+          <Card.Section>
+            <TextContainer>
+              <SkeletonDisplayText size="small" />
+              <SkeletonBodyText lines={2} />
+            </TextContainer>
+          </Card.Section>
+          <Card.Section>
+            <SkeletonBodyText lines={1} />
+          </Card.Section>
+        </Card>
+        <Card subdued>
+          <Card.Section>
+            <TextContainer>
+              <SkeletonDisplayText size="small" />
+              <SkeletonBodyText lines={2} />
+            </TextContainer>
+          </Card.Section>
+          <Card.Section>
+            <SkeletonBodyText lines={2} />
+          </Card.Section>
+        </Card>
+      </Layout.Section>
+    </Layout>
+  </SkeletonPage>`,
   },
   {
     name: 'Detail view skeleton page',
-    code: 'N4Igxg9gJgpiBcIA8BlA1jANjALhAdgAoCGA5jAAQ4CWO2AvADoiEBO0ArmDgM7MUAHVtQC2xVgE8Agt2oEAfI3wUKSADLEJEDjkXKVqjVp0A6FDFkKlBg0gDC4qBR4WaBGFD02bqDNjz4AELQEgAqMAAeOBQA9F7eSDEOrJ7WCclOLpb4HlS0DMwAkmLkfCDx3qroWLgEwVBhkdFxaT5JjhW2Gc6ucjlONHQwTCAAauLUxPi8zJ0%2B1f51IeFRsXOq7SmdiUbaOGa9Vvoq6pp7B9k9kPhQ4hLr9o55QyMoxNg8FGAAFlM5mGV1icMhc3PggbYFrUgssmhRMNQcjx6MAAEwAXzWrQSmygoL6EMeKXxR0q8z80PqjVWCKRKIAjJiWsccSDzNkHriHt1BgUQAB5VikKbUABexDB-B4HAARlAOB5CWzDuDsZVfDUAlSVtFaTBkWimYTcSTVSyfMqOWqElCtbCaYj9SiMVjzbYTeywZyMtsYrtTJ6CWkdmcdHpEraCCRyPIQAAaEA4b4wET6hAAbRAmAgYHeMHgMHwIAAugmAO7UKBJngZgAsAE4AAzF9FAA',
+    code: `<SkeletonPage title="Products" primaryAction>
+    <Layout>
+      <Layout.Section>
+        <Card sectioned>
+          <SkeletonBodyText />
+        </Card>
+        <Card sectioned title="Images">
+          <SkeletonBodyText />
+        </Card>
+        <Card sectioned title="Variants">
+          <SkeletonBodyText />
+        </Card>
+      </Layout.Section>
+      <Layout.Section secondary>
+        <Card title="Sales channels">
+          <Card.Section>
+            <SkeletonBodyText lines={2} />
+          </Card.Section>
+          <Card.Section>
+            <SkeletonBodyText lines={1} />
+          </Card.Section>
+        </Card>
+        <Card title="Organization" subdued>
+          <Card.Section>
+            <SkeletonBodyText lines={2} />
+          </Card.Section>
+          <Card.Section>
+            <SkeletonBodyText lines={2} />
+          </Card.Section>
+        </Card>
+      </Layout.Section>
+    </Layout>
+  </SkeletonPage>`,
   },
   {
     name: 'Generic skeleton page',
-    code: 'N4IgLgFgpgtlDOIBcBtEAbA9gYwIbqiSgDsQBdAGhAHcBLAE0kVQBYBOABjIF8g',
+    code: '<div>Oopsies not a skeleton</div>',
   },
 ];
 
 export default function LoadingPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [codeExample, setCodeExample] = useState(codeExamples[0]);
-
+  const [iframeHeight, setIframeHeight] = useState('400px');
   const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleExampleLoad = () => {
+    let attempts = 0;
+
+    const waitForExampleContentToRender = setInterval(() => {
+      if (!iframeRef?.current) return;
+      const exampleIframeDOM = iframeRef.current?.contentDocument;
+      const exampleWrapper = exampleIframeDOM?.body;
+      console.log({height: exampleIframeDOM?.body.scrollHeight});
+
+      const iframePadding = 0;
+
+      if (exampleWrapper) {
+        const newHeight = `${iframePadding + exampleWrapper.scrollHeight}px`;
+        setIframeHeight(newHeight);
+        // setHTMLCode(formatHTML(exampleWrapper.innerHTML));
+        clearInterval(waitForExampleContentToRender);
+      }
+
+      attempts++;
+
+      if (attempts > 10) {
+        clearInterval(waitForExampleContentToRender);
+      }
+    }, 100);
+
+    return () => clearInterval(waitForExampleContentToRender);
+  };
+
   const router = useRouter();
   const searchValue = useRef('');
 
@@ -108,34 +216,47 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                 />
               </Tab.Panel>
               <Tab.Panel>
-                <SandboxContainer>
-                  <div className={styles.codeExampleButtons}>
-                    {codeExamples.map((example, index) => (
-                      <Button
-                        key={example.name}
-                        pill
-                        primary={codeExample.name === codeExamples[index].name}
-                        onClick={() => {
-                          setCodeExample(example);
-                        }}
-                      >
-                        {example.name}
-                      </Button>
-                    ))}
-                  </div>
-                  <iframe
-                    id="main"
-                    ref={iframeRef}
-                    style={{
-                      border: 0,
-                      padding: 0,
-                      margin: 0,
-                    }}
-                    src={`/playroom?code=${codeExample.code}`}
-                    width="100%"
-                    height="100%"
-                  />
-                </SandboxContainer>
+                {/* <ComponentExamples examples={pattern}/> */}
+                {/* REPLACE THESE TABS LATER */}
+                <div className={styles.codeExampleButtons}>
+                  {codeExamples.map((example, index) => (
+                    <Button
+                      key={example.name}
+                      pill
+                      primary={codeExample.name === codeExamples[index].name}
+                      onClick={() => {
+                        setCodeExample(example);
+                      }}
+                    >
+                      {example.name}
+                    </Button>
+                  ))}
+                </div>
+                <iframe
+                  id="pattern-iframe"
+                  ref={iframeRef}
+                  height={iframeHeight}
+                  onLoad={handleExampleLoad}
+                  style={{
+                    border: 0,
+                    padding: 0,
+                    margin: 0,
+                  }}
+                  src={`/playroom/preview/index.html${createUrl({
+                    code: codeExample.code,
+                    paramType: 'search',
+                  })}`}
+                  width="100%"
+                />
+                <Code
+                  code={[
+                    {
+                      title: 'React',
+                      code: codeExample.code,
+                    },
+                    // {title: 'HTML', code: htmlCode},
+                  ]}
+                />
               </Tab.Panel>
               <Tab.Panel>showcase</Tab.Panel>
             </Tab.Panels>
