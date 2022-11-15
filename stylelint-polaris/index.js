@@ -52,8 +52,8 @@ const stylelintPolarisCoverageOptions = {
     ],
     'declaration-property-unit-disallowed-list': [
       {
-        '/^animation/': ['px', 'rem', 'em'],
-        '/^transition/': ['px', 'rem', 'em'],
+        '/^animation/': ['ms', 's'],
+        '/^transition/': ['ms', 's'],
       },
       {severity: 'warning'},
     ],
