@@ -1,5 +1,17 @@
 # @shopify/polaris-migrator
 
+## 0.9.0
+
+### Minor Changes
+
+- [#7648](https://github.com/Shopify/polaris/pull/7648) [`c08780522`](https://github.com/Shopify/polaris/commit/c087805225c7c9cf625b821fdbca1f125f73f654) Thanks [@samrose3](https://github.com/samrose3)! - Added `animation` properties to tokenize motion migration
+
+### Patch Changes
+
+- [#7690](https://github.com/Shopify/polaris/pull/7690) [`2ce4d38a2`](https://github.com/Shopify/polaris/commit/2ce4d38a27e654fffb01603539cff52b941776e1) Thanks [@samrose3](https://github.com/samrose3)! - Ignore replacing type imports and warn when encountering unknown props for Text component migration
+
+* [#7679](https://github.com/Shopify/polaris/pull/7679) [`566dc20c2`](https://github.com/Shopify/polaris/commit/566dc20c2ca48d2e269fcc91f5693f872b464b55) Thanks [@isaacbowen](https://github.com/isaacbowen)! - Add the (missing) case for migrating DisplayText to Text when size is not specified
+
 ## 0.8.0
 
 ### Minor Changes
