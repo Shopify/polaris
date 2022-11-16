@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
+// eslint-disable-next-line import/no-deprecated
 import {Subheading} from '../Subheading';
 
 describe('<Subheading />', () => {

@@ -1,6 +1,6 @@
 ---
 title: Bleed
-description: Used to create a container that applies negative margins to allow content to extend into the surrounding layout.
+description: Applies negative margin to allow content to bleed out into the surrounding layout.
 category: Structure
 keywords:
   - layout
@@ -11,17 +11,21 @@ examples:
   - fileName: bleed-vertical.tsx
     title: Vertical
     description: >-
-      Use to set bleed vertically.
+      Content will bleed vertically into the surrounding layout using the vertical prop.
   - fileName: bleed-horizontal.tsx
     title: Horizontal
     description: >-
-      Use to set bleed horizontally.
+      Content will bleed horizontally into the surrounding layout using the horizontal prop.
   - fileName: bleed-specific-direction.tsx
     title: Specific direction
     description: >-
-      Use to set bleed in a specific direction
+      Content will bleed into the surrounding layout in a specific direction using the top, bottom, left, or right prop.
   - fileName: bleed-all-directions.tsx
     title: All directions
     description: >-
-      Use to set bleed in all directions
+      Content will bleed into the surrounding layout in all directions using the spacing prop.
 ---
+
+## Bleed values
+
+Content should never go beyond the edges of the parent container. Choose a bleed value that works within the containing layout.

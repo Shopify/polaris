@@ -23,19 +23,41 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
-examples:
-  - fileName: display-text-extra-large.tsx
-    title: Extra large
-    description: Use this size sparingly and never multiple times on the same page.
-  - fileName: display-text-large.tsx
-    title: Large
-    description: Use for display text that’s more important than the medium size, but less important than extra large.
-  - fileName: display-text-medium.tsx
-    title: Medium
-    description: Use for display text that’s more important than the small size, but less important than large.
-  - fileName: display-text-small.tsx
-    title: Small
-    description: Use for text that would otherwise use body text, but that needs to scale with other display text.
+status:
+  value: Deprecated
+  message: This component is no longer supported. Please use the Text component instead.
+---
+
+## Mapping to the Text component
+
+### Small
+
+```diff
+- <DisplayText size="small">Sales this year</DisplayText>
++ <Text variant="headingLg" as="p">Sales this year</Text>
+```
+
+### Medium
+
+```diff
+- <DisplayText size="medium">Sales this year</DisplayText>
++ <Text variant="headingXl" as="p">Sales this year</Text>
+```
+
+### Large
+
+```diff
+- <DisplayText size="large">Sales this year</DisplayText>
++ <Text variant="heading2xl" as="p">Sales this year</Text>
+```
+
+### Extra large
+
+```diff
+- <DisplayText size="extraLarge">Sales this year</DisplayText>
++ <Text variant="heading4xl" as="p">Sales this year</Text>
+```
+
 ---
 
 ## Best practices

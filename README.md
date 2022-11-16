@@ -14,12 +14,11 @@
 
 ## About this repo
 
-The shopify/polaris repository is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, Figma plugins and websites.
+The shopify/polaris repository is an [intergalactic](https://www.youtube.com/watch?v=qORYO0atB6g) monorepo made up of NPM packages, VSCode extensions, and websites.
 
 ```sh
 polaris/
 ├── documentation               # Documentation for working in the monorepo
-├── polaris-for-figma           # Figma plugin for Polaris
 ├── polaris-for-vscode          # VS Code extension for Polaris
 ├── polaris-icons               # Icons for Polaris
 ├── polaris-react               # Components for @shopify/polaris package

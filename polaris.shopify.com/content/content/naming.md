@@ -19,6 +19,8 @@ keywords:
   - trademarks
   - branded names
   - capitalized names
+  - abbreviation
+  - acronym
 ---
 
 ## Thoughtful naming

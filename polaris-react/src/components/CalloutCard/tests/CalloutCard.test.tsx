@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import {Badge} from '../../Badge';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import {CalloutCard} from '../CalloutCard';
@@ -32,9 +33,36 @@ describe('<CalloutCard />', () => {
     expect(calloutCard.find('p')).toContainReactText('Content');
   });
 
-  it('renders the title as an h2 element', () => {
+  it('renders plain string title as an h2 element', () => {
     const calloutCard = calloutCardMock();
     expect(calloutCard.find('h2')).toContainReactText('Title');
+  });
+
+  it('renders any valid react element as title', () => {
+    const titleContent = 'Checkout Settings';
+    const badgeContent = 'Badge';
+    const titleMarkup = (
+      <>
+        {titleContent}
+        <Badge>{badgeContent}</Badge>
+      </>
+    );
+
+    const calloutCard = mountWithApp(
+      <CalloutCard
+        title={titleMarkup}
+        illustration={illustration}
+        primaryAction={{
+          content: 'Customize checkout',
+          url: 'https://www.shopify.com',
+        }}
+      />,
+    );
+
+    expect(calloutCard).toContainReactText(titleContent);
+    expect(calloutCard).toContainReactComponent(Badge, {
+      children: badgeContent,
+    });
   });
 
   it('renders the illustration', () => {

@@ -19,7 +19,6 @@ The Shopify/polaris GitHub repository is structured as a monorepo, which means i
 <!-- prettier-ignore -->
 | `polaris` |     |
 | ---------- | --- |
-|`/polaris-for-figma` |Figma plugin for Polaris components|
 |`/polaris-for-vscode` |VS Code extension for Polaris Design Token autocompletion|
 |`/polaris-icons` |npm SVG icon library `@shopify/polaris-icons`|
 |`/polaris-react` |npm React component library `@shopify/polaris`|

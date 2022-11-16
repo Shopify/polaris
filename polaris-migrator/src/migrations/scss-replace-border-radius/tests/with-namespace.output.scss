@@ -1,0 +1,27 @@
+/* stylelint-disable */
+@use 'global-styles/legacy-polaris-v8';
+
+.border-radius {
+  /* Migrate */
+  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-base);
+  border-radius: var(--p-border-radius-large);
+
+  /* Ignore */
+  border-radius: calc(legacy-polaris-v8.border-radius(base) * 2);
+  border-radius: calc(
+    legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px)
+  );
+
+  /* Comment */
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: var(--p-border-radius-base) * 2;
+  border-radius: legacy-polaris-v8.border-radius(base) * 2;
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-radius: var(--p-border-radius-base) * legacy-polaris-v8.rem(1px);
+  border-radius: legacy-polaris-v8.border-radius() * legacy-polaris-v8.rem(1px);
+  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
+  // border-top-right-radius: var(--p-border-radius-base) * legacy-polaris-v8.rem(4px);
+  border-top-right-radius: legacy-polaris-v8.border-radius() *
+    legacy-polaris-v8.rem(4px);
+}
