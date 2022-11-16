@@ -34,6 +34,10 @@ interface Props {
   editPageLinkPath: string;
 }
 
+const iframePadding = 192;
+const exampleWrapper = exampleIframeDOM?.getElementById('polaris-example');
+iframePadding + exampleWrapper.offsetHeight;
+
 const Components = ({
   examples,
   description,
@@ -51,7 +55,21 @@ const Components = ({
     : undefined;
 
   const componentExamples = Boolean(examples.length) && (
-    <ComponentExamples examples={examples} />
+    <ComponentExamples
+      examples={examples}
+      extractRenderedHTML={(iframeDoc) =>
+        iframeDoc?.getElementById('polaris-example')?.innerHTML
+      }
+      calculateIFrameHeight={(iframeDoc: Document) =>
+        `${
+          iframePadding +
+            iframeDoc?.getElementById('polaris-example')?.offsetHeight ?? 0
+        }px`
+      }
+      getIFrameUrl={(example) =>
+        `/examples/${example.fileName.replace('.tsx', '')}`
+      }
+    />
   );
   const propsTable =
     type && status?.value !== 'Deprecated' ? (

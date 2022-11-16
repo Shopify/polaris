@@ -100,6 +100,28 @@ const codeExamples = [
   },
 ];
 
+const PlayroomButton = ({code}: Props) => {
+  const {code} = props;
+
+  const encodedCode = createUrl({
+    baseUrl: playroom.baseUrl,
+    code: getAppCode(code), //encodeURL(getAppCode(code));
+    themes: ['locale:en'],
+    paramType: 'search',
+  });
+
+  return (
+    <a
+      href={encodedCode}
+      className={styles.Link}
+      target="_blank"
+      rel="noreferrer"
+    >
+      Open in Playroom
+    </a>
+  );
+};
+
 export default function LoadingPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [codeExample, setCodeExample] = useState(codeExamples[0]);
