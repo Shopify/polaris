@@ -10,7 +10,12 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  ResponsiveProp,
+  classNames,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -41,6 +46,8 @@ export type BorderTokenAlias =
   | 'divider'
   | 'divider-on-dark'
   | 'transparent';
+
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
 
 interface Border {
   blockStart: BorderTokenAlias;
@@ -73,13 +80,6 @@ interface BorderRadius {
   startEnd: BorderRadiusTokenScale;
   endStart: BorderRadiusTokenScale;
   endEnd: BorderRadiusTokenScale;
-}
-
-interface Spacing {
-  blockStart: SpacingSpaceScale;
-  blockEnd: SpacingSpaceScale;
-  inlineStart: SpacingSpaceScale;
-  inlineEnd: SpacingSpaceScale;
 }
 
 interface BorderWidth {
@@ -139,15 +139,15 @@ export interface BoxProps {
   /** Clip vertical content of children */
   overflowY?: Overflow;
   /** Spacing around children */
-  padding?: SpacingSpaceScale;
+  padding?: Spacing;
   /** Vertical start spacing around children */
-  paddingBlockStart?: SpacingSpaceScale;
+  paddingBlockStart?: Spacing;
   /** Vertical end spacing around children */
-  paddingBlockEnd?: SpacingSpaceScale;
+  paddingBlockEnd?: Spacing;
   /** Horizontal start spacing around children */
-  paddingInlineStart?: SpacingSpaceScale;
+  paddingInlineStart?: Spacing;
   /** Horizontal end spacing around children */
-  paddingInlineEnd?: SpacingSpaceScale;
+  paddingInlineEnd?: Spacing;
   /** Shadow */
   shadow?: DepthShadowAlias;
   /** Set width of container */
@@ -215,13 +215,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       inlineEnd: borderInlineEndWidth,
     } as BorderWidth;
 
-    const paddings = {
-      blockEnd: paddingBlockEnd,
-      inlineStart: paddingInlineStart,
-      inlineEnd: paddingInlineEnd,
-      blockStart: paddingBlockStart,
-    } as Spacing;
-
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
@@ -273,19 +266,31 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-max-width': maxWidth,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
-      '--pc-box-padding': padding ? `var(--p-space-${padding})` : undefined,
-      '--pc-box-padding-block-end': paddings.blockEnd
-        ? `var(--p-space-${paddings.blockEnd})`
-        : undefined,
-      '--pc-box-padding-inline-start': paddings.inlineStart
-        ? `var(--p-space-${paddings.inlineStart})`
-        : undefined,
-      '--pc-box-padding-inline-end': paddings.inlineEnd
-        ? `var(--p-space-${paddings.inlineEnd})`
-        : undefined,
-      '--pc-box-padding-block-start': paddings.blockStart
-        ? `var(--p-space-${paddings.blockStart})`
-        : undefined,
+      ...getResponsiveProps('box', 'padding', 'space', padding),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-end',
+        'space',
+        paddingBlockEnd,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-start',
+        'space',
+        paddingBlockStart,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-start',
+        'space',
+        paddingInlineStart,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-end',
+        'space',
+        paddingInlineEnd,
+      ),
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
     } as React.CSSProperties;
