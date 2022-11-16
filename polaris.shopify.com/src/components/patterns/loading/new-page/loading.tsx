@@ -7,9 +7,6 @@ import styles from './loading.module.scss';
 import Markdown from '../../../../../src/components/Markdown';
 import Button from '../../../../../src/components/Button';
 import {useRouter} from 'next/router';
-
-import SandboxContainer from '../../../../../src/components/SandboxContainer';
-import ComponentExamples from '../../../ComponentExamples';
 import Code from '../../../Code';
 
 const codeExamples = [
@@ -116,8 +113,6 @@ export default function LoadingPage() {
       if (!iframeRef?.current) return;
       const exampleIframeDOM = iframeRef.current?.contentDocument;
       const exampleWrapper = exampleIframeDOM?.body;
-      console.log({height: exampleIframeDOM?.body.scrollHeight});
-
       const iframePadding = 0;
 
       if (exampleWrapper) {
