@@ -292,22 +292,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
 
     const className = classNames(styles.Box);
 
-    let elementType;
-    // if `as` is an anchor or button we want to render UnstyledLink or UnstyledButton
-    switch (as) {
-      case 'a':
-        elementType = UnstyledLink;
-        break;
-      case 'button':
-        elementType = UnstyledButton;
-        break;
-      default:
-        elementType = as;
-        break;
-    }
-
     return createElement(
-      elementType,
+      as,
       {
         className,
         id,
