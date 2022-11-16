@@ -3,7 +3,8 @@ import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../src/components/ComponentExamples';
-import type {ComponentExample} from '../../src/components/ComponentExamples';
+import componentExamplesStyles from '../../src/components/ComponentExamples/ComponentExamples.module.scss';
+import type {Example} from '../../src/components/ComponentExamples';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
 import Page from '../../src/components/Page';
@@ -14,11 +15,16 @@ import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
 import {getRelevantTypes} from '../../scripts/get-props/src/get-props';
+import CodesandboxButton from '../../src/components/CodesandboxButton';
 
 interface MarkdownData {
   frontMatter: any;
   description: string;
   readme: string;
+}
+
+interface ComponentExample extends Example {
+  fileName: string;
 }
 
 interface Props {
@@ -67,6 +73,7 @@ const Components = ({
       getIframeUrl={(example) =>
         `/examples/${example.fileName.replace('.tsx', '')}`
       }
+      renderActions={(example) => <CodesandboxButton code={example.code} />}
     />
   );
   const propsTable =

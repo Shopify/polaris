@@ -5,13 +5,12 @@ import Longform from '../../../Longform';
 import Page from '../../../Page';
 import styles from './loading.module.scss';
 import Markdown from '../../../../../src/components/Markdown';
-import Button from '../../../../../src/components/Button';
 import {useRouter} from 'next/router';
-import Code from '../../../Code';
+import ComponentExamples, {type Example} from '../../../ComponentExamples';
 
-const codeExamples = [
+const codeExamples: Example[] = [
   {
-    name: 'Index skeleton page',
+    title: 'Index skeleton page',
     code: `<SkeletonPage primaryAction>
     <Layout>
       <Layout.Section>
@@ -59,7 +58,7 @@ const codeExamples = [
   </SkeletonPage>`,
   },
   {
-    name: 'Detail view skeleton page',
+    title: 'Detail view skeleton page',
     code: `<SkeletonPage title="Products" primaryAction>
     <Layout>
       <Layout.Section>
@@ -95,32 +94,32 @@ const codeExamples = [
   </SkeletonPage>`,
   },
   {
-    name: 'Generic skeleton page',
+    title: 'Generic skeleton page',
     code: '<div>Oopsies not a skeleton</div>',
   },
 ];
 
-const PlayroomButton = ({code}: Props) => {
-  const {code} = props;
+// const PlayroomButton = ({code}: Props) => {
+//   const {code} = props;
 
-  const encodedCode = createUrl({
-    baseUrl: playroom.baseUrl,
-    code: getAppCode(code), //encodeURL(getAppCode(code));
-    themes: ['locale:en'],
-    paramType: 'search',
-  });
+//   const encodedCode = createUrl({
+//     baseUrl: playroom.baseUrl,
+//     code: getAppCode(code), //encodeURL(getAppCode(code));
+//     themes: ['locale:en'],
+//     paramType: 'search',
+//   });
 
-  return (
-    <a
-      href={encodedCode}
-      className={styles.Link}
-      target="_blank"
-      rel="noreferrer"
-    >
-      Open in Playroom
-    </a>
-  );
-};
+//   return (
+//     <a
+//       href={encodedCode}
+//       className={styles.Link}
+//       target="_blank"
+//       rel="noreferrer"
+//     >
+//       Open in Playroom
+//     </a>
+//   );
+// };
 
 export default function LoadingPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -233,46 +232,19 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                 />
               </Tab.Panel>
               <Tab.Panel>
-                {/* <ComponentExamples examples={pattern}/> */}
-                {/* REPLACE THESE TABS LATER */}
-                <div className={styles.codeExampleButtons}>
-                  {codeExamples.map((example, index) => (
-                    <Button
-                      key={example.name}
-                      pill
-                      primary={codeExample.name === codeExamples[index].name}
-                      onClick={() => {
-                        setCodeExample(example);
-                      }}
-                    >
-                      {example.name}
-                    </Button>
-                  ))}
-                </div>
-                <iframe
-                  id="pattern-iframe"
-                  ref={iframeRef}
-                  height={iframeHeight}
-                  onLoad={handleExampleLoad}
-                  style={{
-                    border: 0,
-                    padding: 0,
-                    margin: 0,
-                  }}
-                  src={`/playroom/preview/index.html${createUrl({
-                    code: codeExample.code,
-                    paramType: 'search',
-                  })}`}
-                  width="100%"
-                />
-                <Code
-                  code={[
-                    {
-                      title: 'React',
-                      code: codeExample.code,
-                    },
-                    // {title: 'HTML', code: htmlCode},
-                  ]}
+                <ComponentExamples
+                  examples={codeExamples}
+                  extractRenderedHTML={(iframeDoc) => iframeDoc.body.innerHTML}
+                  calculateIframeHeight={(iframeDoc) =>
+                    `${iframeDoc.body?.scrollHeight ?? 0}px`
+                  }
+                  getIframeUrl={(example) =>
+                    `/playroom/preview/index.html${createUrl({
+                      code: example.code,
+                      paramType: 'search',
+                    })}`
+                  }
+                  renderActions={() => 'I am an Action'}
                 />
               </Tab.Panel>
               <Tab.Panel>showcase</Tab.Panel>

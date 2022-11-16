@@ -8,20 +8,19 @@ import Markdown from '../Markdown';
 
 const exampleIframeId = 'example-iframe';
 
-export type ComponentExample = {
+export interface Example {
   code: string;
   description?: string;
-  fileName: string;
   title: string;
-};
+}
 
-interface Props {
-  examples: ComponentExample[];
+interface Props<T> {
+  examples: T[];
   // A valid css <size> applied to the iframe's .height attr
   calculateIframeHeight: (htmlDoc: Document) => string;
   extractRenderedHTML: (htmlDoc: Document) => string | undefined;
-  getIframeUrl: (example: ComponentExample) => string;
-  renderActions?: (example: ComponentExample) => React.ReactNode;
+  getIframeUrl: (example: T) => string;
+  renderActions: (example: T) => React.ReactNode;
 }
 
 // https://stackoverflow.com/a/60338028
@@ -44,11 +43,13 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-const ComponentExamples = ({
+const ComponentExamples = <T extends Example>({
   examples,
   calculateIframeHeight,
   extractRenderedHTML,
-}: Props) => {
+  getIframeUrl,
+  renderActions,
+}: Props<T>) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
 
@@ -96,9 +97,9 @@ const ComponentExamples = ({
     >
       <Tab.List>
         <div className={styles.ExamplesList} id="examples">
-          {examples.map((example) => {
+          {examples.map((example, i) => {
             return (
-              <Tab key={example.fileName}>
+              <Tab key={i}>
                 <span>{example.title}</span>
               </Tab>
             );
@@ -107,12 +108,12 @@ const ComponentExamples = ({
       </Tab.List>
 
       <Tab.Panels>
-        {examples.map(({fileName, description, code}) => {
-          // TODO: Prop for generating iframe url
-          const exampleUrl = `/examples/${fileName.replace('.tsx', '')}`;
+        {examples.map((example, i) => {
+          const exampleUrl = getIframeUrl(example);
+          const {code, description} = example;
 
           return (
-            <Tab.Panel key={fileName}>
+            <Tab.Panel key={i}>
               {description ? <Markdown text={description} /> : null}
               <div className={styles.ExampleFrame}>
                 <iframe
@@ -123,10 +124,7 @@ const ComponentExamples = ({
                 />
                 <div className={className(styles.Buttons, 'light-mode')}>
                   {/* TODO: prop for actions */ ''}
-                  <CodesandboxButton
-                    className={styles.CodesandboxButton}
-                    code={code}
-                  />
+                  {renderActions(example)}
                 </div>
               </div>
 

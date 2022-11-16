@@ -35,7 +35,7 @@ root.render(
 `;
 
 interface Props {
-  className: string;
+  className?: string;
   code: string;
 }
 

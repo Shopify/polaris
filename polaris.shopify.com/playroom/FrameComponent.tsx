@@ -1,8 +1,18 @@
-import React from "react";
-import { AppProvider } from "@shopify/polaris";
-import "@shopify/polaris/build/esm/styles.css";
-import enTranslations from "@shopify/polaris/locales/en.json";
+import React from 'react';
+import {AppProvider} from '@shopify/polaris';
+import '@shopify/polaris/build/esm/styles.css';
+import enTranslations from '@shopify/polaris/locales/en.json';
 
-export default function FrameComponent({ theme = enTranslations, children }: { theme: any; children: React.ReactNode }) {
-  return <AppProvider i18n={theme}>{children}</AppProvider>;
+export default function FrameComponent({
+  theme = enTranslations,
+  children,
+}: {
+  theme: any;
+  children: React.ReactNode;
+}) {
+  return (
+    <AppProvider i18n={theme}>
+      <div id="polaris-sandbox-wrapper">{children}</div>
+    </AppProvider>
+  );
 }
