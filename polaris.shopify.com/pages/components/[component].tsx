@@ -35,8 +35,6 @@ interface Props {
 }
 
 const iframePadding = 192;
-const exampleWrapper = exampleIframeDOM?.getElementById('polaris-example');
-iframePadding + exampleWrapper.offsetHeight;
 
 const Components = ({
   examples,
@@ -60,13 +58,13 @@ const Components = ({
       extractRenderedHTML={(iframeDoc) =>
         iframeDoc?.getElementById('polaris-example')?.innerHTML
       }
-      calculateIFrameHeight={(iframeDoc: Document) =>
+      calculateIframeHeight={(iframeDoc) =>
         `${
           iframePadding +
-            iframeDoc?.getElementById('polaris-example')?.offsetHeight ?? 0
+          (iframeDoc.getElementById('polaris-example')?.offsetHeight ?? 0)
         }px`
       }
-      getIFrameUrl={(example) =>
+      getIframeUrl={(example) =>
         `/examples/${example.fileName.replace('.tsx', '')}`
       }
     />
