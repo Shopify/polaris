@@ -1,0 +1,14 @@
+name: Time decay attribution model
+set: minor
+description: Used to represent the time decay marketing attribution model
+keywords:
+  - marketing
+  - attribution model
+  - time decay
+authors:
+  - Serene Chen
+  - Joe Thomas
+version: 1
+date_added: 2022-10-18
+date_modified: 2022-10-18
+exclusive_use:
