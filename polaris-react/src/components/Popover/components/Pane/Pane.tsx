@@ -17,16 +17,26 @@ export interface PaneProps {
   height?: string;
   /** Callback when the bottom of the popover is reached by mouse or keyboard  */
   onScrolledToBottom?(): void;
+  /**
+   * Prevents page scrolling when the end of the scrollable Popover content is reached
+   * @default false
+   */
+  captureOverscroll?: boolean;
 }
 
 export function Pane({
+  captureOverscroll = false,
   fixed,
   sectioned,
   children,
   height,
   onScrolledToBottom,
 }: PaneProps) {
-  const className = classNames(styles.Pane, fixed && styles['Pane-fixed']);
+  const className = classNames(
+    styles.Pane,
+    fixed && styles['Pane-fixed'],
+    captureOverscroll && styles['Pane-captureOverscroll'],
+  );
   const content = sectioned
     ? wrapWithComponent(children, Section, {})
     : children;

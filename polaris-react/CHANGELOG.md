@@ -1,5 +1,23 @@
 # Changelog
 
+## 10.12.0
+
+### Minor Changes
+
+- [#7684](https://github.com/Shopify/polaris/pull/7684) [`2e5f8348b`](https://github.com/Shopify/polaris/commit/2e5f8348bd8be1de0c8294453da8cfd918e1e034) Thanks [@ananyaneogi](https://github.com/ananyaneogi)! - Update the `CalloutCard` `title` prop to accept a ReactNode type
+
+* [#7588](https://github.com/Shopify/polaris/pull/7588) [`c1c8f73b0`](https://github.com/Shopify/polaris/commit/c1c8f73b0f0bc7ab1e2be1ad824a3aa2dded3326) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Added optional `captureOverscroll` prop to `Popover`
+
+- [#6986](https://github.com/Shopify/polaris/pull/6986) [`270887fcf`](https://github.com/Shopify/polaris/commit/270887fcfeff76ab7d70fb49c5f6b2637b5d20ba) Thanks [@danielle-dsouza](https://github.com/danielle-dsouza)! - Clicking on the modal backdrop triggers the pressed state of the modal's close button
+
+### Patch Changes
+
+- [#7693](https://github.com/Shopify/polaris/pull/7693) [`bdf6fd31d`](https://github.com/Shopify/polaris/commit/bdf6fd31dba47da980ce1c133d9adf61a39bdf12) Thanks [@philschoefer](https://github.com/philschoefer)! - Fixed a bug where `DataTable` summary row would not properly inherit type defined in `columnContentTypes` prop
+
+* [#7578](https://github.com/Shopify/polaris/pull/7578) [`217f2f8ed`](https://github.com/Shopify/polaris/commit/217f2f8edd6e0c8ced5d697739efd48a5fb78fb1) Thanks [@haskelash-shopify](https://github.com/haskelash-shopify)! - Hide bulk actions popup when all items are deselected.
+
+- [#7710](https://github.com/Shopify/polaris/pull/7710) [`6b915e01e`](https://github.com/Shopify/polaris/commit/6b915e01ea89a6213804e581478222c04579175d) Thanks [@laurkim](https://github.com/laurkim)! - Fixed visual spacing regressions on `ActionList` and `Modal.Header`
+
 ## 10.11.0
 
 ### Minor Changes

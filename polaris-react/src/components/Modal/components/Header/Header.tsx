@@ -11,11 +11,18 @@ import styles from './Header.scss';
 export interface HeaderProps {
   id: string;
   titleHidden: boolean;
+  closing: boolean;
   children?: React.ReactNode;
   onClose(): void;
 }
 
-export function Header({id, titleHidden, children, onClose}: HeaderProps) {
+export function Header({
+  id,
+  titleHidden,
+  closing,
+  children,
+  onClose,
+}: HeaderProps) {
   const titleHiddenMarkup = (
     <div className={styles.titleHidden}>
       <Inline align="end">
@@ -43,7 +50,11 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
           </Text>
         </Inline>
         <Inline>
-          <CloseButton titleHidden={titleHidden} onClick={onClose} />
+          <CloseButton
+            pressed={closing}
+            titleHidden={titleHidden}
+            onClick={onClose}
+          />
         </Inline>
       </Columns>
     </Box>

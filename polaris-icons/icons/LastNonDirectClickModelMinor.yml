@@ -1,0 +1,14 @@
+name: Last non-direct click attribution model
+set: minor
+description: Used to represent the last non-direct click marketing attribution model
+keywords:
+  - marketing
+  - attribution model
+  - last non-direct click
+authors:
+  - Serene Chen
+  - Joe Thomas
+version: 1
+date_added: 2022-10-18
+date_modified: 2022-10-18
+exclusive_use:

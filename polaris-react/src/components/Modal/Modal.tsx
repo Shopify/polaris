@@ -92,6 +92,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   fullScreen,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
+  const [closing, setClosing] = useState(false);
 
   const headerId = useUniqueId('modal-header');
   const activatorRef = useRef<HTMLDivElement>(null);
@@ -199,8 +200,14 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         small={small}
         limitHeight={limitHeight}
         fullScreen={fullScreen}
+        setClosing={setClosing}
       >
-        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
+        <Header
+          titleHidden={titleHidden}
+          id={headerId}
+          closing={closing}
+          onClose={onClose}
+        >
           {title}
         </Header>
         {bodyMarkup}
@@ -208,7 +215,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop onClick={onClose} />;
+    backdrop = <Backdrop setClosing={setClosing} onClick={onClose} />;
   }
 
   const animated = !instant;

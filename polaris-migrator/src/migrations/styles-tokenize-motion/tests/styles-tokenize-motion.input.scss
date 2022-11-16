@@ -125,7 +125,14 @@
   transition: opacity 5s linear, left 5s linear;
 }
 
-.edges {
+.animation {
+  animation: 300ms linear fadeIn;
+  animation-duration: 200ms;
+  animation-delay: 0.2s;
+  animation-timing-function: ease;
+}
+
+.edge-cases {
   // Without an easing function
   transition: fill 300ms;
   // Duration comes after easing func

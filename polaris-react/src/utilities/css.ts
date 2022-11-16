@@ -30,12 +30,14 @@ export function getResponsiveProps(
   componentName: string,
   componentProp: string,
   tokenSubgroup: string,
-  responsiveProp:
+  responsiveProp?:
     | string
     | {
         [Breakpoint in BreakpointsAlias]?: string;
       },
 ) {
+  if (!responsiveProp) return {};
+
   if (typeof responsiveProp === 'string') {
     return {
       [`--pc-${componentName}-${componentProp}-xs`]: `var(--p-${tokenSubgroup}-${responsiveProp})`,

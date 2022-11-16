@@ -79,7 +79,7 @@ describe('Box', () => {
 
     expect(box).toContainReactComponent('div', {
       style: {
-        '--pc-box-padding-inline-start': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
       } as React.CSSProperties,
     });
   });
@@ -93,9 +93,22 @@ describe('Box', () => {
 
     expect(box).toContainReactComponent('div', {
       style: {
-        '--pc-box-padding': 'var(--p-space-1)',
-        '--pc-box-padding-inline-start': 'var(--p-space-2)',
+        '--pc-box-padding-xs': 'var(--p-space-1)',
+        '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
       } as React.CSSProperties,
+    });
+  });
+
+  it('accepts padding based on breakpoints', () => {
+    const box = mountWithApp(
+      <Box padding={{xs: '2', md: '8'}}>{children}</Box>,
+    );
+
+    expect(box).toContainReactComponent('div', {
+      style: expect.objectContaining({
+        '--pc-box-padding-md': 'var(--p-space-8)',
+        '--pc-box-padding-xs': 'var(--p-space-2)',
+      }) as React.CSSProperties,
     });
   });
 });
