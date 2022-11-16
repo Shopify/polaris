@@ -3,7 +3,6 @@ import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../src/components/ComponentExamples';
-import componentExamplesStyles from '../../src/components/ComponentExamples/ComponentExamples.module.scss';
 import type {Example} from '../../src/components/ComponentExamples';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';

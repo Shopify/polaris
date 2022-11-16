@@ -46,7 +46,8 @@
     border-top: 1px solid rgba(0, 0, 0, 0.075);
     color: var(--text-link);
 
-    button {
+    button,
+    a {
       padding: 0.75rem 1rem;
     }
   }

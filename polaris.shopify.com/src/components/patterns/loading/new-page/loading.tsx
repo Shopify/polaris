@@ -1,12 +1,12 @@
-import {useEffect, useRef, useState} from 'react';
+import {useState} from 'react';
 import {createUrl} from 'playroom';
 import {Tab} from '@headlessui/react';
 import Longform from '../../../Longform';
 import Page from '../../../Page';
 import styles from './loading.module.scss';
 import Markdown from '../../../../../src/components/Markdown';
-import {useRouter} from 'next/router';
 import ComponentExamples, {type Example} from '../../../ComponentExamples';
+import {playroom} from '../../../../../constants';
 
 const codeExamples: Example[] = [
   {
@@ -99,86 +99,45 @@ const codeExamples: Example[] = [
   },
 ];
 
-// const PlayroomButton = ({code}: Props) => {
-//   const {code} = props;
+const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
-//   const encodedCode = createUrl({
-//     baseUrl: playroom.baseUrl,
-//     code: getAppCode(code), //encodeURL(getAppCode(code));
-//     themes: ['locale:en'],
-//     paramType: 'search',
-//   });
+const PlayroomButton = ({
+  code,
+  patternName,
+}: {
+  code: string;
+  patternName: string;
+}) => {
+  const encodedCode = createUrl({
+    baseUrl: playroom.baseUrl,
+    code: `// [Polaris Pattern] ${patternName}
+// Generated on ${getISOStringYear()} from ${window.location.href}
+${/* intentional blank line */ ''}
+${code}`,
+    // TODO: Is this correct?
+    themes: ['locale:en'],
+    paramType: 'search',
+  });
 
-//   return (
-//     <a
-//       href={encodedCode}
-//       className={styles.Link}
-//       target="_blank"
-//       rel="noreferrer"
-//     >
-//       Open in Playroom
-//     </a>
-//   );
-// };
+  return (
+    <a
+      href={encodedCode}
+      className={styles.Link}
+      target="_blank"
+      rel="noreferrer"
+    >
+      Open in Playroom
+    </a>
+  );
+};
 
 export default function LoadingPage() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [codeExample, setCodeExample] = useState(codeExamples[0]);
-  const [iframeHeight, setIframeHeight] = useState('400px');
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const handleExampleLoad = () => {
-    let attempts = 0;
-
-    const waitForExampleContentToRender = setInterval(() => {
-      if (!iframeRef?.current) return;
-      const exampleIframeDOM = iframeRef.current?.contentDocument;
-      const exampleWrapper = exampleIframeDOM?.body;
-      const iframePadding = 0;
-
-      if (exampleWrapper) {
-        const newHeight = `${iframePadding + exampleWrapper.scrollHeight}px`;
-        setIframeHeight(newHeight);
-        // setHTMLCode(formatHTML(exampleWrapper.innerHTML));
-        clearInterval(waitForExampleContentToRender);
-      }
-
-      attempts++;
-
-      if (attempts > 10) {
-        clearInterval(waitForExampleContentToRender);
-      }
-    }, 100);
-
-    return () => clearInterval(waitForExampleContentToRender);
-  };
-
-  const router = useRouter();
-  const searchValue = useRef('');
-
-  useEffect(() => {
-    /**
-     * We want to mirror the iframes url in the parent (aka browser) to support URL sharing.
-     * the iframes onload handler isn't invoked when the iframes url changes so we're polling here instead.
-     */
-    const iframeUrlPoll = setInterval(() => {
-      if (
-        iframeRef?.current?.contentWindow &&
-        iframeRef.current.contentWindow.location.search !== searchValue.current
-      ) {
-        searchValue.current = iframeRef.current.contentWindow.location.search;
-        const iframeQueryObj = Object.fromEntries(
-          new URLSearchParams(searchValue.current),
-        );
-
-        console.log(iframeQueryObj);
-      }
-    }, 200);
-    return () => clearInterval(iframeUrlPoll);
-  }, [router]);
+  const patternName = 'Navigating to a new page';
 
   return (
-    <Page title="Navigating to a new page">
+    <Page title={patternName}>
       <div>Status: Great</div>
       <a href="#">GitHub discussions</a>
       <Longform>
@@ -244,7 +203,12 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                       paramType: 'search',
                     })}`
                   }
-                  renderActions={() => 'I am an Action'}
+                  renderActions={(example) => (
+                    <PlayroomButton
+                      code={example.code}
+                      patternName={`${patternName} > ${example.title}`}
+                    />
+                  )}
                 />
               </Tab.Panel>
               <Tab.Panel>showcase</Tab.Panel>

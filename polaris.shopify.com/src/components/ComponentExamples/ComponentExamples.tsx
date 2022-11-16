@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import styles from './ComponentExamples.module.scss';
-import CodesandboxButton from '../CodesandboxButton';
 import Code from '../Code';
 import {Tab} from '@headlessui/react';
 import {className} from '../../utils/various';
@@ -123,7 +122,6 @@ const ComponentExamples = <T extends Example>({
                   id={exampleIframeId}
                 />
                 <div className={className(styles.Buttons, 'light-mode')}>
-                  {/* TODO: prop for actions */ ''}
                   {renderActions(example)}
                 </div>
               </div>
