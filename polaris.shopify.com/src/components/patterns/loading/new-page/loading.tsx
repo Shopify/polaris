@@ -12,86 +12,86 @@ const codeExamples: Example[] = [
   {
     title: 'Index skeleton page',
     code: `<SkeletonPage primaryAction>
-    <Layout>
-      <Layout.Section>
-        <Card sectioned>
+  <Layout>
+    <Layout.Section>
+      <Card sectioned>
+        <SkeletonBodyText />
+      </Card>
+      <Card sectioned>
+        <TextContainer>
+          <SkeletonDisplayText size="small" />
           <SkeletonBodyText />
-        </Card>
-        <Card sectioned>
+        </TextContainer>
+      </Card>
+      <Card sectioned>
+        <TextContainer>
+          <SkeletonDisplayText size="small" />
+          <SkeletonBodyText />
+        </TextContainer>
+      </Card>
+    </Layout.Section>
+    <Layout.Section secondary>
+      <Card>
+        <Card.Section>
           <TextContainer>
             <SkeletonDisplayText size="small" />
-            <SkeletonBodyText />
-          </TextContainer>
-        </Card>
-        <Card sectioned>
-          <TextContainer>
-            <SkeletonDisplayText size="small" />
-            <SkeletonBodyText />
-          </TextContainer>
-        </Card>
-      </Layout.Section>
-      <Layout.Section secondary>
-        <Card>
-          <Card.Section>
-            <TextContainer>
-              <SkeletonDisplayText size="small" />
-              <SkeletonBodyText lines={2} />
-            </TextContainer>
-          </Card.Section>
-          <Card.Section>
-            <SkeletonBodyText lines={1} />
-          </Card.Section>
-        </Card>
-        <Card subdued>
-          <Card.Section>
-            <TextContainer>
-              <SkeletonDisplayText size="small" />
-              <SkeletonBodyText lines={2} />
-            </TextContainer>
-          </Card.Section>
-          <Card.Section>
             <SkeletonBodyText lines={2} />
-          </Card.Section>
-        </Card>
-      </Layout.Section>
-    </Layout>
-  </SkeletonPage>`,
+          </TextContainer>
+        </Card.Section>
+        <Card.Section>
+          <SkeletonBodyText lines={1} />
+        </Card.Section>
+      </Card>
+      <Card subdued>
+        <Card.Section>
+          <TextContainer>
+            <SkeletonDisplayText size="small" />
+            <SkeletonBodyText lines={2} />
+          </TextContainer>
+        </Card.Section>
+        <Card.Section>
+          <SkeletonBodyText lines={2} />
+        </Card.Section>
+      </Card>
+    </Layout.Section>
+  </Layout>
+</SkeletonPage>`,
   },
   {
     title: 'Detail view skeleton page',
     code: `<SkeletonPage title="Products" primaryAction>
-    <Layout>
-      <Layout.Section>
-        <Card sectioned>
-          <SkeletonBodyText />
-        </Card>
-        <Card sectioned title="Images">
-          <SkeletonBodyText />
-        </Card>
-        <Card sectioned title="Variants">
-          <SkeletonBodyText />
-        </Card>
-      </Layout.Section>
-      <Layout.Section secondary>
-        <Card title="Sales channels">
-          <Card.Section>
-            <SkeletonBodyText lines={2} />
-          </Card.Section>
-          <Card.Section>
-            <SkeletonBodyText lines={1} />
-          </Card.Section>
-        </Card>
-        <Card title="Organization" subdued>
-          <Card.Section>
-            <SkeletonBodyText lines={2} />
-          </Card.Section>
-          <Card.Section>
-            <SkeletonBodyText lines={2} />
-          </Card.Section>
-        </Card>
-      </Layout.Section>
-    </Layout>
-  </SkeletonPage>`,
+  <Layout>
+    <Layout.Section>
+      <Card sectioned>
+        <SkeletonBodyText />
+      </Card>
+      <Card sectioned title="Images">
+        <SkeletonBodyText />
+      </Card>
+      <Card sectioned title="Variants">
+        <SkeletonBodyText />
+      </Card>
+    </Layout.Section>
+    <Layout.Section secondary>
+      <Card title="Sales channels">
+        <Card.Section>
+          <SkeletonBodyText lines={2} />
+        </Card.Section>
+        <Card.Section>
+          <SkeletonBodyText lines={1} />
+        </Card.Section>
+      </Card>
+      <Card title="Organization" subdued>
+        <Card.Section>
+          <SkeletonBodyText lines={2} />
+        </Card.Section>
+        <Card.Section>
+          <SkeletonBodyText lines={2} />
+        </Card.Section>
+      </Card>
+    </Layout.Section>
+  </Layout>
+</SkeletonPage>`,
   },
   {
     title: 'Generic skeleton page',
@@ -193,7 +193,10 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
               <Tab.Panel>
                 <ComponentExamples
                   examples={codeExamples}
-                  extractRenderedHTML={(iframeDoc) => iframeDoc.body.innerHTML}
+                  extractRenderedHTML={(iframeDoc) =>
+                    iframeDoc.getElementById('polaris-sandbox-wrapper')
+                      ?.innerHTML
+                  }
                   calculateIframeHeight={(iframeDoc) =>
                     `${iframeDoc.body?.scrollHeight ?? 0}px`
                   }
