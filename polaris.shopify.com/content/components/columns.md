@@ -6,16 +6,16 @@ keywords:
   - layout
 status:
   value: Alpha
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
+  message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
   - fileName: columns-default.tsx
     title: Default
     description: >-
       By default, there are 6 columns with 16px spacing between them.
-  - fileName: columns-with-varying-spacing.tsx
-    title: Spacing
+  - fileName: columns-with-varying-gap.tsx
+    title: Gap
     description: >-
-      Use the spacing prop to set the amount of space between columns.
+      Use the gap prop to set the amount of space between columns.
   - fileName: columns-with-fixed-widths.tsx
     title: Column width
     description: >-

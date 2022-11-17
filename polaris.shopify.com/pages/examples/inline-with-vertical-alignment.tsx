@@ -5,9 +5,9 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function InlineWithVerticalAlignmentExample() {
   return (
-    <AlphaStack spacing="16">
-      <Inline blockAlign="top">
-        <Placeholder width="106px" label="Top" />
+    <AlphaStack gap="16">
+      <Inline blockAlign="start">
+        <Placeholder width="106px" label="Start" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
@@ -22,8 +22,8 @@ function InlineWithVerticalAlignmentExample() {
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
       </Inline>
-      <Inline blockAlign="bottom">
-        <Placeholder width="106px" label="Bottom" />
+      <Inline blockAlign="end">
+        <Placeholder width="106px" label="End" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />
         <Placeholder width="106px" height="20px" />

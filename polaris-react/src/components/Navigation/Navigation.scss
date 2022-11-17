@@ -92,6 +92,12 @@ $disabled-fade: 0.6;
 .Item {
   @include nav-item-attributes;
   position: relative;
+
+  margin-inline-start: var(--p-space-2);
+
+  &:last-child {
+    margin-inline-end: var(--p-space-2);
+  }
 }
 
 .Item-selected {
@@ -213,13 +219,22 @@ $disabled-fade: 0.6;
   }
 }
 
+.Text-truncated {
+  // stylelint-disable-next-line value-no-vendor-prefix
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
 .SecondaryAction {
   @include recolor-icon($fill-color: var(--p-icon));
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  margin-right: var(--p-space-1);
   padding: var(--p-space-1) var(--p-space-4);
+  margin-right: var(--p-space-1);
   border-radius: var(--p-border-radius-1);
 
   @media #{$p-breakpoints-md-up} {

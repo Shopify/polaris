@@ -6,32 +6,32 @@
   --pc-columns-md: var(--pc-columns-sm);
   --pc-columns-lg: var(--pc-columns-md);
   --pc-columns-xl: var(--pc-columns-lg);
-  --pc-columns-space-xs: var(--p-space-4);
-  --pc-columns-space-sm: var(--pc-columns-space-xs);
-  --pc-columns-space-md: var(--pc-columns-space-sm);
-  --pc-columns-space-lg: var(--pc-columns-space-md);
-  --pc-columns-space-xl: var(--pc-columns-space-lg);
+  --pc-columns-gap-xs: var(--p-space-4);
+  --pc-columns-gap-sm: var(--pc-columns-gap-xs);
+  --pc-columns-gap-md: var(--pc-columns-gap-sm);
+  --pc-columns-gap-lg: var(--pc-columns-gap-md);
+  --pc-columns-gap-xl: var(--pc-columns-gap-lg);
   display: grid;
-  gap: var(--pc-columns-space-xs);
+  gap: var(--pc-columns-gap-xs);
   grid-template-columns: var(--pc-columns-xs);
 
   @media #{$p-breakpoints-sm-up} {
-    gap: var(--pc-columns-space-sm);
+    gap: var(--pc-columns-gap-sm);
     grid-template-columns: var(--pc-columns-sm);
   }
 
   @media #{$p-breakpoints-md-up} {
-    gap: var(--pc-columns-space-md);
+    gap: var(--pc-columns-gap-md);
     grid-template-columns: var(--pc-columns-md);
   }
 
   @media #{$p-breakpoints-lg-up} {
-    gap: var(--pc-columns-space-lg);
+    gap: var(--pc-columns-gap-lg);
     grid-template-columns: var(--pc-columns-lg);
   }
 
   @media #{$p-breakpoints-xl-up} {
-    gap: var(--pc-columns-space-xl);
+    gap: var(--pc-columns-gap-xl);
     grid-template-columns: var(--pc-columns-xl);
   }
 }

@@ -64,7 +64,7 @@ export function WithSpecificDirection() {
 export function WithAllDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed spacing="6">
+      <Bleed horizontal="6" vertical="6">
         <div style={styles} />
       </Bleed>
     </Box>

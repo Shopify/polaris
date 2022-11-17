@@ -3,10 +3,10 @@ import {AlphaStack, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function AlphaStackWithSpacingExample() {
+function AlphaStackWithGapExample() {
   return (
     <SpacingBackground width="320px">
-      <AlphaStack spacing="5">
+      <AlphaStack gap="5">
         <Placeholder width="320px" label="Stack child" />
         <Placeholder width="320px" />
         <Placeholder width="320px" />
@@ -61,4 +61,4 @@ const Placeholder = ({
   );
 };
 
-export default withPolarisExample(AlphaStackWithSpacingExample);
+export default withPolarisExample(AlphaStackWithGapExample);
