@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Spinner} from '../Spinner';
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 
 describe('<Spinner />', () => {
   describe('accessibilityLabel', () => {
@@ -10,7 +10,7 @@ describe('<Spinner />', () => {
       const spinner = mountWithApp(
         <Spinner accessibilityLabel="Content is loading" />,
       );
-      expect(spinner.find(VisuallyHidden)).toContainReactText(
+      expect(spinner.find(Text, {visuallyHidden: true})).toContainReactText(
         'Content is loading',
       );
     });

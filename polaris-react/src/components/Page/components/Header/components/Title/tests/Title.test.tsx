@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Badge} from '../../../../../../Badge';
-import {DisplayText} from '../../../../../../DisplayText';
+import {Text} from '../../../../../../Text';
 import {Title} from '../Title';
 
 describe('<Title />', () => {
@@ -20,7 +20,7 @@ describe('<Title />', () => {
 
     it('does not render a title when not defined', () => {
       const pageTitle = mountWithApp(<Title />);
-      expect(pageTitle).not.toContainReactComponent(DisplayText);
+      expect(pageTitle).not.toContainReactComponent(Text);
     });
   });
 

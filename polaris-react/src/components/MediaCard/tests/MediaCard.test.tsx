@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Heading} from '../../Heading';
+import {Text} from '../../Text';
 import {Popover} from '../../Popover';
 import {Button} from '../../Button';
 import {ActionList} from '../../ActionList';
@@ -20,11 +20,11 @@ const mockProps = {
 };
 
 describe('<MediaCard>', () => {
-  it('renders the title as a Heading', () => {
+  it('renders the title as a Text', () => {
     const title = 'Getting Started';
     const videoCard = mountWithApp(<MediaCard {...mockProps} title={title} />);
 
-    expect(videoCard).toContainReactComponent(Heading, {children: title});
+    expect(videoCard).toContainReactComponent(Text, {children: title});
   });
 
   it('title can have any valid react element', () => {

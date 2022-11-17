@@ -22,6 +22,13 @@ export interface DisplayTextProps {
   children?: React.ReactNode;
 }
 
+/**
+ * @deprecated The DisplayText component will be removed in the next
+ * major version. Use the Text component instead. See the
+ * Polaris component guide on how to use Text.
+ *
+ * https://polaris.shopify.com/components/text
+ */
 export function DisplayText({
   element: Element = 'p',
   children,
@@ -31,6 +38,13 @@ export function DisplayText({
     styles.DisplayText,
     size && styles[variationName('size', size)],
   );
+
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `DisplayText` component has been deprecated. Use the `Text` component instead. See the Polaris component guide on how to use `Text`. https://polaris.shopify.com/components/text',
+    );
+  }
 
   return <Element className={className}>{children}</Element>;
 }

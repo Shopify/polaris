@@ -28,7 +28,7 @@ Shopify provides [Figma community resources](https://www.figma.com/@Shopify) for
 
 ## Development resources
 
-The [Shopify/polaris GitHub repo](https://github.com/Shopify/polaris) is an open-source monorepo made up of NPM packages, VS Code extensions, Figma plugins, and this website. To get started, learn how to install and use the Polaris:
+The [Shopify/polaris GitHub repo](https://github.com/Shopify/polaris) is an open-source monorepo made up of NPM packages, VS Code extensions, and this website. To get started, learn how to install and use the Polaris:
 
 - [React components](https://github.com/Shopify/polaris/tree/main/polaris-react#using-the-react-components)
 - [Design tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens#installation)

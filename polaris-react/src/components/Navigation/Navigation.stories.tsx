@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Frame, Navigation, VisuallyHidden} from '@shopify/polaris';
+import {Frame, Navigation, Text} from '@shopify/polaris';
 import {
   CirclePlusOutlineMinor,
   CustomersMajor,
@@ -249,6 +249,83 @@ export function WithASecondaryActionForAnItem() {
   );
 }
 
+export function WithTruncationForVariousStates() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: '/path/to/place',
+              label: 'A very long label to ellipsize',
+              truncateText: true,
+              icon: OrdersMinor,
+              selected: false,
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
+              truncateText: true,
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy label with badge',
+              truncateText: true,
+              badge: 'Old',
+              icon: HomeMinor,
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
+              truncateText: true,
+              badge: 'Old',
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
+              url: '/admin/products',
+              label: 'Truncated secondary navigation items',
+              icon: ProductsMinor,
+              selected: true,
+              truncateText: true,
+              subNavigationItems: [
+                {
+                  url: '/admin/products/collections',
+                  disabled: false,
+                  label: 'Something longer than collections',
+                },
+                {
+                  url: '/admin/products/inventory',
+                  disabled: false,
+                  label: 'Inventoy',
+                },
+              ],
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
 export function WithSectionRollup() {
   return (
     <Frame>
@@ -468,9 +545,9 @@ export function WithAriaLabelledby() {
   return (
     <Frame>
       <Navigation location="/" ariaLabelledBy="label-id">
-        <VisuallyHidden>
+        <Text variant="bodySm" as="span" visuallyHidden>
           <p id="label-id">Hidden label</p>
-        </VisuallyHidden>
+        </Text>
         <Navigation.Section
           items={[
             {

@@ -14,10 +14,18 @@ keywords:
   - section headings
   - heading text
   - heading font
-examples:
-  - fileName: heading-default.tsx
-    title: Default
-    description: Use for the title of each top-level page section.
+status:
+  value: Deprecated
+  message: This component is no longer supported. Please use the Text component instead.
+---
+
+## Mapping to the Text component
+
+```diff
+- <Heading>Online store dashboard</Heading>
++ <Text variant="headingMd" as="h2">Online store dashboard</Text>
+```
+
 ---
 
 ## Best practices

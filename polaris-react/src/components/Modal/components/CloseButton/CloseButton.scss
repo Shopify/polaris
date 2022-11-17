@@ -13,7 +13,8 @@
     @include recolor-icon(var(--p-icon-hovered));
   }
 
-  &:active {
+  &:active,
+  &.pressed {
     background: var(--p-surface-pressed);
   }
 

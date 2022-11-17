@@ -7,6 +7,7 @@ import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
 import {Icon, IconProps} from '../../../Icon';
+import {Text} from '../../../Text';
 import {Item, ItemProps} from '../Item';
 import styles from '../../Navigation.scss';
 import {Tooltip, TooltipProps} from '../../../Tooltip';
@@ -100,7 +101,9 @@ export function Section({
 
   const sectionHeadingMarkup = title && (
     <li className={styles.SectionHeading}>
-      <span className={styles.Text}>{title}</span>
+      <Text as="span" variant="headingXs" color="subdued">
+        {title}
+      </Text>
       {actionMarkup}
     </li>
   );

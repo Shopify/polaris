@@ -536,7 +536,7 @@ Use an en dash without a space on either side for number ranges:
 - 5–10 products
 - October 15–31
 - 2005–2015
-- 25–100 lbs
+- 25–100 lb
 - \$0.00–\$49.99
 - 2:00 pm–3:00 pm
 
@@ -545,7 +545,7 @@ Use an en dash without a space on either side for number ranges:
 - 5 – 10 products
 - October 15 – 31
 - 2005 – 2015
-- 25 – 100lbs
+- 25 – 100 lb
 - \$0.00 – \$49.99
 - 2:00 pm – 3:00 pm
 
@@ -662,7 +662,7 @@ For pricing by measurement, don’t add a space before or after a slash.
 #### Don’t
 
 - \$100/ m
-- \$5/100g
+- \$5/ 100g
 
 <!-- end -->
 
@@ -688,32 +688,32 @@ This table shows the standard abbreviations for commonly-used units of measureme
 
 Use the imperial system for the United States, Liberia, and Myanmar, and use the metric system for all other countries.
 
-| Measurement          | System          | Unit          | Abbreviation |
-| -------------------- | --------------- | ------------- | ------------ |
-| **Area**             | Metric          | square meters | m²           |
-|                      | Imperial        | square feet   | sq ft        |
-| **Distance**         | Metric          | kilometers    | km           |
-|                      | Imperial        | miles         | mi           |
-| **Image resolution** | Universal       | pixels        | px           |
-|                      | megapixels      | MP            |              |
-|                      | pixels per inch | ppi           |              |
-|                      | dots per inch   | dpi           |              |
-| **Length**           | Metric          | centimeters   | cm           |
-|                      | meters          | m             |              |
-|                      | Imperial        | inches        | in           |
-|                      | feet            | ft            |              |
-|                      | yards           | yd            |              |
-| **Storage size**     | Universal       | kilobytes     | KB           |
-|                      | gigabytes       | GB            |              |
-|                      | terabytes       | TB            |              |
-| **Volume**           | Metric          | centimeters   | ml           |
-|                      | litres          | L             |              |
-|                      | Imperial        | fluid ounces  | fl oz        |
-|                      | gallons         | gal           |              |
-| **Weight**           | Metric          | grams         | g            |
-|                      | kilograms       | kg            |              |
-|                      | Imperial        | ounces        | oz           |
-|                      | pounds          | lb            |              |
+| Measurement          | System    | Unit            | Abbreviation |
+| -------------------- | --------- | --------------- | ------------ |
+| **Area**             | Metric    | square meters   | m²           |
+|                      | Imperial  | square feet     | sq ft        |
+| **Distance**         | Metric    | kilometers      | km           |
+|                      | Imperial  | miles           | mi           |
+| **Image resolution** | Universal | pixels          | px           |
+|                      | Universal | megapixels      | MP           |
+|                      | Universal | pixels per inch | ppi          |
+|                      | Universal | dots per inch   | dpi          |
+| **Length**           | Metric    | centimeters     | cm           |
+|                      | Metric    | meters          | m            |
+|                      | Imperial  | inches          | in           |
+|                      | Imperial  | feet            | ft           |
+|                      | Imperial  | yards           | yd           |
+| **Storage size**     | Universal | kilobytes       | KB           |
+|                      | Universal | gigabytes       | GB           |
+|                      | Universal | terabytes       | TB           |
+| **Volume**           | Metric    | milliliters     | ml           |
+|                      | Metric    | liters          | L            |
+|                      | Imperial  | fluid ounces    | fl oz        |
+|                      | Imperial  | gallons         | gal          |
+| **Weight**           | Metric    | grams           | g            |
+|                      | Metric    | kilograms       | kg           |
+|                      | Imperial  | ounces          | oz           |
+|                      | Imperial  | pounds          | lb           |
 
 ---
 

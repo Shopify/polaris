@@ -1,10 +1,4 @@
-import {
-  Card,
-  ResourceList,
-  Avatar,
-  ResourceItem,
-  TextStyle,
-} from '@shopify/polaris';
+import {Card, ResourceList, Avatar, ResourceItem, Text} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -78,9 +72,9 @@ function ResourceListWithBulkActionsExample() {
         media={media}
         accessibilityLabel={`View details for ${name}`}
       >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
+        <Text variant="bodyMd" fontWeight="bold" as="h3">
+          {name}
+        </Text>
         <div>{location}</div>
       </ResourceItem>
     );

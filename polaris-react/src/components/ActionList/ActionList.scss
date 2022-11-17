@@ -7,15 +7,19 @@
   padding: 0;
 }
 
-.Section-withoutTitle:not(:first-child) {
+.Section:not(:first-child) {
   border-top: var(--p-border-divider);
+
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
+  > .Section-withoutTitle .Actions {
+    padding-top: var(--p-space-2);
+  }
 }
 
 .Actions {
   outline: none;
   list-style: none;
   margin: 0;
-  border-top: var(--p-border-divider);
   padding: var(--p-space-2);
 }
 
@@ -24,16 +28,15 @@
   // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity
   > .Section-withoutTitle .Actions {
     border-top: none;
+    padding-top: var(--p-space-2);
   }
 }
 
-.Title {
-  @include text-style-subheading;
-  padding: var(--p-space-3) var(--p-space-4) var(--p-space-3) var(--p-space-4);
-}
-
-.Section:not(:first-child) .Title {
-  padding-top: var(--p-space-1);
+.ActionList .Section {
+  // stylelint-disable-next-line selector-max-class, selector-max-combinators
+  .Actions {
+    padding-top: 0;
+  }
 }
 
 .Item {

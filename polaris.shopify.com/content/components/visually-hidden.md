@@ -17,13 +17,20 @@ keywords:
   - accessibility
   - a11y
   - assistive technology
-examples:
-  - fileName: visually-hidden-default.tsx
-    title: Default
-    description: Always provide a heading for a major page section such as a card. In rare cases the heading is visually redundant and the meaning is conveyed by context. Rather than omit the heading, wrap the heading in the visually hidden component.
-  - fileName: visually-hidden-table-headers.tsx
-    title: Table headers
-    description: Whenever one or more table columns has no need for a visible header, hide the header content rather than omitting it. Note that due to browser quirks the visually hidden component must go inside each `<th>`.
+status:
+  value: Deprecated
+  message: This component is no longer supported. Please use the Text component instead.
+---
+
+## Mapping to the Text component
+
+```diff
+- <VisuallyHidden>
+-   <Heading>Title and description</Heading>
+- </VisuallyHidden>
++ <Text visuallyHidden variant="headingMd" as="h2">Title and description</Text>
+```
+
 ---
 
 ## Best practices

@@ -7,7 +7,7 @@ import {isInputFocused} from '../../utilities/is-input-focused';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {KeypressListener} from '../KeypressListener';
-import {TextStyle} from '../TextStyle';
+import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 
 interface AccessibilityLabels {
@@ -149,9 +149,13 @@ export function Pagination({
 
   const labelTextMarkup =
     hasNext && hasPrevious ? (
-      <TextStyle>{label}</TextStyle>
+      <Text variant="bodyMd" as="span">
+        {label}
+      </Text>
     ) : (
-      <TextStyle variation="subdued">{label}</TextStyle>
+      <Text variant="bodyMd" color="subdued" as="span">
+        {label}
+      </Text>
     );
 
   const labelMarkup = label ? (

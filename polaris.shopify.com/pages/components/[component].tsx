@@ -50,6 +50,14 @@ const Components = ({
       }
     : undefined;
 
+  const componentExamples = Boolean(examples.length) && (
+    <ComponentExamples examples={examples} />
+  );
+  const propsTable =
+    type && status?.value !== 'Deprecated' ? (
+      <PropsTable componentName={title} types={type} />
+    ) : null;
+
   return (
     <Page title={title} editPageLinkPath={editPageLinkPath}>
       <PageMeta title={title} description={description} />
@@ -57,10 +65,10 @@ const Components = ({
       <Longform>
         <Markdown text={description} />
         {typedStatus && <StatusBanner status={typedStatus} />}
-        <ComponentExamples examples={examples} />
+        {componentExamples}
       </Longform>
 
-      {type && <PropsTable types={type} componentName={title} />}
+      {propsTable}
 
       <Longform firstParagraphIsLede={false}>
         <Markdown text={readme.body} />

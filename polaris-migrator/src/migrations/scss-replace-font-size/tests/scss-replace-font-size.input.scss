@@ -1,0 +1,9 @@
+.font-size {
+  font-size: font-size(caption);
+  font-size: font-size(caption, base);
+  font-size: font-size(caption, large-screen);
+  // Comment
+  font-size: font-size($invalid);
+  font-size: font-size(caption, $invalid);
+  font-size: font-size();
+}

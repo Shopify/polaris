@@ -9,7 +9,7 @@ import {
   Select,
   Stack,
   TextField,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 
@@ -171,12 +171,12 @@ export function WithSeparateValidationError() {
 
     return (
       <span>
-        <TextStyle variation="negative">
+        <Text variant="bodyMd" color="critical" as="span">
           <p>
             {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
             <Link>Manage shipping</Link>
           </p>
-        </TextStyle>
+        </Text>
       </span>
     );
   }

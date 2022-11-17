@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Item} from '../Item';
-import {TextStyle} from '../../../../TextStyle';
+import {Text} from '../../../../Text';
 import {UnstyledLink} from '../../../../UnstyledLink';
 
 describe('<Item />', () => {
@@ -54,7 +54,7 @@ describe('<Item />', () => {
   it('renders helpText when the helpText prop is defined', () => {
     const helpText = 'Foo';
     const item = mountWithApp(<Item helpText={helpText} />);
-    expect(item.find(TextStyle)).toContainReactText(helpText);
+    expect(item.find(Text)).toContainReactText(helpText);
   });
 
   it('passes `accessibilityLabel` to `<button />`', () => {

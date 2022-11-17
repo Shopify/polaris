@@ -32,7 +32,7 @@ export function Default() {
   );
 }
 
-export function LargeSpacing() {
+export function LargeGap() {
   return (
     <Tiles columns={{xs: 2}} gap={{xs: '10'}}>
       {children}
