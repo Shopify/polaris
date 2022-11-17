@@ -1,6 +1,8 @@
 import {useState} from 'react';
 import {createUrl} from 'playroom';
 import {Tab} from '@headlessui/react';
+import {MaximizeMajor} from '@shopify/polaris-icons';
+import {Icon} from '@shopify/polaris';
 import Longform from '../../../Longform';
 import Page from '../../../Page';
 import styles from './loading.module.scss';
@@ -207,10 +209,22 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                     })}`
                   }
                   renderActions={(example) => (
-                    <PlayroomButton
-                      code={example.code}
-                      patternName={`${patternName} > ${example.title}`}
-                    />
+                    <>
+                      <PlayroomButton
+                        code={example.code}
+                        patternName={`${patternName} > ${example.title}`}
+                      />
+                      <a
+                        target="_blank"
+                        href={`/playroom/preview/index.html${createUrl({
+                          code: example.code,
+                          paramType: 'search',
+                        })}`}
+                        rel="noreferrer"
+                      >
+                        <Icon source={MaximizeMajor} />
+                      </a>
+                    </>
                   )}
                 />
               </Tab.Panel>
