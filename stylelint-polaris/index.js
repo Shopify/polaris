@@ -2,6 +2,7 @@ const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 
 /** @type {import('stylelint').Config} */
 module.exports = {
+  customSyntax: 'postcss-scss',
   plugins: [
     'stylelint-scss',
     './plugins/coverage',
