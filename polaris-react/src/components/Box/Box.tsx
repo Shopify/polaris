@@ -19,7 +19,7 @@ import {
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'legend';
 
 type Overflow = 'hidden' | 'scroll';
 
