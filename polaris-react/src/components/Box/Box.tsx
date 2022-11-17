@@ -20,8 +20,8 @@ import {
 import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section';
-
 type Overflow = 'hidden' | 'scroll';
+type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
 export type ColorTokenScale =
   | 'text'
@@ -155,7 +155,7 @@ export interface BoxProps {
   children?: React.ReactNode;
   // These could be moved to new layout component(s) in the future
   /** Position of the box */
-  position?: 'relative' | 'absolute' | 'fixed' | 'sticky';
+  position?: Position;
   top?: Spacing;
   right?: Spacing;
   bottom?: Spacing;
