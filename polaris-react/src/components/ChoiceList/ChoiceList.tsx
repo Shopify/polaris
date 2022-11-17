@@ -135,9 +135,9 @@ export function ChoiceList({
 
   return (
     <div className={className} id={finalName} aria-invalid={error != null}>
-      <AlphaStack as="fieldset" spacing={{xs: '4', md: '0'}} fullWidth>
+      <AlphaStack as="fieldset" gap={{xs: '4', md: '0'}} fullWidth>
         {titleMarkup}
-        <AlphaStack as="ul" spacing={{xs: '4', md: '0'}} fullWidth>
+        <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
           {choicesMarkup}
         </AlphaStack>
         {errorMarkup}
