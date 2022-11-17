@@ -1,30 +1,30 @@
 @import '../../styles/common';
 
 .AlphaStack {
-  --pc-stack-spacing-xs: var(--p-space-4);
-  --pc-stack-spacing-sm: var(--pc-stack-spacing-xs);
-  --pc-stack-spacing-md: var(--pc-stack-spacing-sm);
-  --pc-stack-spacing-lg: var(--pc-stack-spacing-md);
-  --pc-stack-spacing-xl: var(--pc-stack-spacing-lg);
+  --pc-stack-gap-xs: var(--p-space-4);
+  --pc-stack-gap-sm: var(--pc-stack-gap-xs);
+  --pc-stack-gap-md: var(--pc-stack-gap-sm);
+  --pc-stack-gap-lg: var(--pc-stack-gap-md);
+  --pc-stack-gap-xl: var(--pc-stack-gap-lg);
   display: flex;
   flex-direction: column;
   align-items: var(--pc-stack-align);
-  gap: var(--pc-stack-spacing-xs);
+  gap: var(--pc-stack-gap-xs);
 
   @media #{$p-breakpoints-sm-up} {
-    gap: var(--pc-stack-spacing-sm);
+    gap: var(--pc-stack-gap-sm);
   }
 
   @media #{$p-breakpoints-md-up} {
-    gap: var(--pc-stack-spacing-md);
+    gap: var(--pc-stack-gap-md);
   }
 
   @media #{$p-breakpoints-lg-up} {
-    gap: var(--pc-stack-spacing-lg);
+    gap: var(--pc-stack-gap-lg);
   }
 
   @media #{$p-breakpoints-xl-up} {
-    gap: var(--pc-stack-spacing-xl);
+    gap: var(--pc-stack-gap-xl);
   }
 
   > * {
