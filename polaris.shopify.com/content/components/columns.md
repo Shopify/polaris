@@ -12,10 +12,10 @@ examples:
     title: Default
     description: >-
       By default, there are 6 columns with 16px spacing between them.
-  - fileName: columns-with-varying-spacing.tsx
-    title: Spacing
+  - fileName: columns-with-varying-gap.tsx
+    title: Gap
     description: >-
-      Use the spacing prop to set the amount of space between columns.
+      Use the gap prop to set the amount of space between columns.
   - fileName: columns-with-fixed-widths.tsx
     title: Column width
     description: >-

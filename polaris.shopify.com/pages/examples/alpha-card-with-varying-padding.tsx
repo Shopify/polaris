@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AlphaCardExample() {
   return (
-    <AlphaStack spacing="4" fullWidth>
+    <AlphaStack gap="4" fullWidth>
       <AlphaCard>
         <Placeholder label="Content inside a card" />
       </AlphaCard>

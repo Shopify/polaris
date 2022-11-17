@@ -16,10 +16,10 @@ examples:
     title: Non-wrapping
     description: >-
       Use to create Inline where the children will not wrap to new rows on small screens.
-  - fileName: inline-with-spacing.tsx
-    title: Spacing
+  - fileName: inline-with-gap.tsx
+    title: Gap
     description: >-
-      Use to control spacing of items in inline in standard increments.
+      Use to control gaps around items in inline in standard increments.
   - fileName: inline-with-vertical-alignment.tsx
     title: Vertical alignment
     description: >-

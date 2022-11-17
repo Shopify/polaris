@@ -12,10 +12,10 @@ examples:
     title: Default
     description: >-
       By default, stack is left aligned and stacked items are spaced with 16px in between.
-  - fileName: alpha-stack-with-spacing.tsx
-    title: Spacing
+  - fileName: alpha-stack-with-gap.tsx
+    title: Gap
     description: >-
-      Spacing between stack child can be adjusted using the Space token.
+      Gaps between stack children can be adjusted using the Space token.
   - fileName: alpha-stack-with-full-width-children.tsx
     title: Full width
     description: >-

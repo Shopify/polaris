@@ -9,7 +9,7 @@ export default {
 export function Default() {
   return (
     <AlphaCard>
-      <AlphaStack spacing="5">
+      <AlphaStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
@@ -22,7 +22,7 @@ export function Default() {
 export function BackgroundSubdued() {
   return (
     <AlphaCard background="surface-subdued">
-      <AlphaStack spacing="5">
+      <AlphaStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
@@ -35,7 +35,7 @@ export function BackgroundSubdued() {
 export function BorderRadiusRoundedAbove() {
   return (
     <AlphaCard roundedAbove="sm">
-      <AlphaStack spacing="5">
+      <AlphaStack gap="5">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>

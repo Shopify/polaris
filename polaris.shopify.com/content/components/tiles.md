@@ -8,10 +8,10 @@ status:
   value: Alpha
   message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
-  - fileName: tiles-with-spacing.tsx
-    title: Spacing
+  - fileName: tiles-with-gap.tsx
+    title: Gap
     description: >-
-      Use the spacing prop to set the amount of space between tiles.
+      Use the gap prop to set the amount of space between tiles.
   - fileName: tiles-with-columns.tsx
     title: Columns
     description: >-
