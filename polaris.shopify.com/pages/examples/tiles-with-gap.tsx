@@ -3,7 +3,7 @@ import {Tiles, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function TilesWithSpacingExample() {
+function TilesWithGapExample() {
   return (
     <Tiles columns={{xs: 3}} gap={{xs: '4'}}>
       <Placeholder label="01" />
@@ -39,4 +39,4 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
   );
 };
 
-export default withPolarisExample(TilesWithSpacingExample);
+export default withPolarisExample(TilesWithGapExample);
