@@ -4,8 +4,8 @@ import {
   Badge,
   Button,
   ButtonGroup,
-  DisplayText,
   FullscreenBar,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -34,7 +34,9 @@ export function WithChildren() {
       >
         <Badge status="info">Draft</Badge>
         <div style={{marginLeft: '1rem', flexGrow: 1}}>
-          <DisplayText size="small">Page title</DisplayText>
+          <Text as="p" variant="headingLg">
+            Page title
+          </Text>
         </div>
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
@@ -53,7 +55,9 @@ export function WithChildren() {
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}
-        <DisplayText size="small">Page content</DisplayText>
+        <Text as="p" variant="headingLg">
+          Page content
+        </Text>
       </div>
     </div>
   );
@@ -75,7 +79,9 @@ export function NoChildren() {
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}
-        <DisplayText size="small">Page content</DisplayText>
+        <Text as="p" variant="headingLg">
+          Page content
+        </Text>
       </div>
     </div>
   );

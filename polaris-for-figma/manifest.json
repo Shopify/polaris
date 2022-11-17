@@ -1,8 +1,0 @@
-{
-  "api": "1.0.0",
-  "name": "Polaris for Figma",
-  "main": "dist/plugin.js",
-  "ui": "dist/index.html",
-  "id": "1104074391999425520",
-  "editorType": ["figma"]
-}

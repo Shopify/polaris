@@ -2,7 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {TagsWrapper} from '../TagsWrapper';
-import {VisuallyHidden} from '../../../../VisuallyHidden';
+import {Text} from '../../../../Text';
 
 const MockChild = () => <div />;
 
@@ -14,8 +14,10 @@ describe('<TagsWrapper />', () => {
       </TagsWrapper>,
     );
 
-    expect(tagsWrapper).toContainReactComponent(VisuallyHidden);
-    expect(tagsWrapper.find(VisuallyHidden)).toContainReactComponent(MockChild);
+    expect(tagsWrapper).toContainReactComponent(Text, {visuallyHidden: true});
+    expect(
+      tagsWrapper.find(Text, {visuallyHidden: true}),
+    ).toContainReactComponent(MockChild);
   });
 
   it('renders children directly when hidden is false', () => {
@@ -25,7 +27,9 @@ describe('<TagsWrapper />', () => {
       </TagsWrapper>,
     );
 
-    expect(tagsWrapper).not.toContainReactComponent(VisuallyHidden);
+    expect(tagsWrapper).not.toContainReactComponent(Text, {
+      visuallyHidden: true,
+    });
     expect(tagsWrapper).toContainReactComponent(MockChild);
   });
 });

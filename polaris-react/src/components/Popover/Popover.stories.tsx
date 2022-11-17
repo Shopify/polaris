@@ -13,11 +13,10 @@ import {
   TextField,
   Icon,
   Link,
-  Heading,
   AutoSelection,
   Scrollable,
   EmptySearchResult,
-  DisplayText,
+  Text,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -411,9 +410,9 @@ export function WithSearchableListbox() {
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
-        <DisplayText element="h1">
+        <Text as="h1" variant="headingXl">
           {segments[selectedSegmentIndex].label}
-        </DisplayText>
+        </Text>
       </Link>
     </div>
   );

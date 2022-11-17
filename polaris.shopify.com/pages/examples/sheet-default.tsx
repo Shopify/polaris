@@ -4,9 +4,9 @@ import {
   Page,
   Card,
   Sheet,
-  Heading,
   Scrollable,
   ChoiceList,
+  Text,
 } from '@shopify/polaris';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
@@ -106,7 +106,9 @@ function SheetExample() {
               width: '100%',
             }}
           >
-            <Heading>Manage sales channels</Heading>
+            <Text variant="headingMd" as="h2">
+              Manage sales channels
+            </Text>
             <Button
               accessibilityLabel="Cancel"
               icon={MobileCancelMajor}

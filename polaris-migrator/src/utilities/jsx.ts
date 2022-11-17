@@ -24,6 +24,15 @@ export function hasJSXAttribute(
   return getJSXAttributes(j, element, attributeName).length > 0;
 }
 
+export function hasJSXSpreadAttribute(
+  j: core.JSCodeshift,
+  element: ASTPath<any>,
+) {
+  return (
+    j(element).find(j.JSXOpeningElement).find(j.JSXSpreadAttribute).length > 0
+  );
+}
+
 export function removeJSXAttributes(
   j: core.JSCodeshift,
   element: ASTPath<any>,
@@ -120,4 +129,27 @@ export function renameProps(
   });
 
   return source;
+}
+
+export function insertJSXComment(
+  j: core.JSCodeshift,
+  element: ASTPath<any>,
+  comment: string,
+  position: 'before' | 'after' = 'before',
+) {
+  const commentContent = j.jsxEmptyExpression();
+  commentContent.comments = [j.commentBlock(` ${comment} `, false, true)];
+
+  const jsxComment = j.jsxExpressionContainer(commentContent);
+  const lineBreak = j.jsxText('\n');
+
+  if (position === 'before') {
+    element.insertBefore(jsxComment);
+    element.insertBefore(lineBreak);
+  }
+
+  if (position === 'after') {
+    element.insertAfter(lineBreak);
+    element.insertAfter(jsxComment);
+  }
 }

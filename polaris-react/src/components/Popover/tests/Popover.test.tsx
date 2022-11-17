@@ -5,8 +5,9 @@ import {Portal} from '../../Portal';
 import {PositionedOverlay} from '../../PositionedOverlay';
 import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
-import {PopoverOverlay} from '../components';
+import {Pane, PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
+import {TextContainer} from '../../TextContainer';
 
 describe('<Popover />', () => {
   const spy = jest.fn();
@@ -365,6 +366,64 @@ describe('<Popover />', () => {
         current: {
           forceUpdatePosition: expect.anything(),
         },
+      });
+    });
+  });
+
+  describe('captureOverscroll', () => {
+    const TestActivator = <button>Activator</button>;
+
+    const Children = () => (
+      <TextContainer>
+        <p>Text</p>
+      </TextContainer>
+    );
+
+    const defaultProps = {
+      active: true,
+      activator: TestActivator,
+      onClose: jest.fn(),
+    };
+
+    describe('when not passed', () => {
+      it('does not pass the prop as true to the Pane component', () => {
+        const popover = mountWithApp(
+          <Popover {...defaultProps}>
+            <Children />
+          </Popover>,
+        );
+
+        expect(popover).toContainReactComponent(Pane, {
+          captureOverscroll: undefined,
+        });
+      });
+    });
+
+    describe('when passed as true', () => {
+      it('passes the prop as true to the Pane component', () => {
+        const popover = mountWithApp(
+          <Popover {...defaultProps} captureOverscroll>
+            <Children />
+          </Popover>,
+        );
+
+        expect(popover).toContainReactComponent(Pane, {
+          captureOverscroll: true,
+        });
+      });
+    });
+
+    describe('when passed as false', () => {
+      it('passes the prop as false to the Pane component', () => {
+        const popover = mountWithApp(
+          <Popover {...defaultProps} captureOverscroll={false}>
+            <Children />
+          </Popover>,
+        );
+
+        expect(popover).toContainReactComponent(Pane, {
+          captureOverscroll: false,
+        });
       });
     });
   });

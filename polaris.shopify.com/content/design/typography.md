@@ -8,10 +8,6 @@ keywords:
 icon: TypeMajor
 ---
 
-By tying typographic styles to specific functions in the interface, we create a clear visual pattern for merchants to follow while they interact with our product.
-
----
-
 ![An illustration of letters constructed from lego blocks](/images/foundations/design/typography/text-featured@2x.png)
 
 ## Working with typography
@@ -78,41 +74,54 @@ Ambiguous spacing can cause confusion and make it hard to understand the content
 
 ## Font sizes
 
-We use the typographic scale to communicate visual hierarchy in text.
+All font sizes have a ratio of 1.2, known as the major third type scale. This means that each size is multiplied or divided by 1.2 from the previous size, starting with the base size, and rounded to a multiple of 4px.
+
+| Token             | px value | rem value |
+| ----------------- | -------- | --------- |
+| `p-font-size-700` | 40       | 2.5       |
+| `p-font-size-600` | 32       | 2         |
+| `p-font-size-500` | 28       | 1.75      |
+| `p-font-size-400` | 24       | 1.5       |
+| `p-font-size-300` | 20       | 1.25      |
+| `p-font-size-200` | 16       | 1         |
+| `p-font-size-100` | 14       | 0.875     |
+| `p-font-size-75`  | 12       | 0.75      |
 
 ---
 
-## Display styles
+## Type styles
 
-### PageHeading
+Polaris type styles are grouped into two categories: heading and body. Each has a default set of variants along with a set of options to allow for flexibility and a wide range of applications within the user interface. They use one scale, so they can be applied to any screen size.
 
-PageHeading is reserved for the title of a screen.
+### Body styles
 
-![An interface showing the title of a page before its contents](/images/foundations/design/typography/type-pageheading@2x.png)
+Body styles are used within components and blocks of text.
 
-### Display
+![An image showing how body styles are applied](/images/foundations/design/typography/text-body-example-01@2x.png)
 
-Display is for titling various interface elements, such as empty states and modals.
+### Heading styles
 
-![An empty state and a modal with large display headings](/images/foundations/design/typography/type-display@2x.png)
+Heading styles are used to create various levels of hierarchy on the page. These styles range in size and weight. Using a blend of the two can help distinguish content and guide merchants through the page.
 
-### Heading
+`headingXl` - `heading4xl` styles are typically used for numerals and key moments in the merchant’s journey. As the largest text on the screen, use these styles sparingly within a single page. These styles should draw the merchant’s attention to important key pieces of information.
 
-Heading should always be used for titles of top-level sections of a screen. If the sections of a screen are represented by cards, each card’s title should use the Heading style.
+![An image showing how heading styles are applied](/images/foundations/design/typography/text-heading-example-01@2x.png)
 
-![Two interface cards with headings](/images/foundations/design/typography/type-heading@2x.png)
+`headingXs` - `headingLg` styles are most commonly used for card, section, or page titles.
 
-### Subheading
+![An image showing how large heading styles are applied](/images/foundations/design/typography/text-heading-example-02@2x.png)
 
-If a top-level section of a screen has subsections, use the Subheading style for titling those subsections. Subheading should never appear as the first element in a card. Only use with titles (vs. sections of content).
+### Responsive styles
 
-![An interface card titled with a large heading text size followed by a smaller subheading](/images/foundations/design/typography/type-subheading@2x.png)
+Large heading styles, `headingLg` - `heading4xl`, are responsive and will change size at different breakpoints.
 
-### Caption
+Small heading styles, `headingXs` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.
 
-Caption is for providing details in places where content is compact and space is tight, like when it comes to data visualization.
+<video width="100%" height="auto" controls autoplay muted loop>
+  <source src="/images/foundations/design/typography/text-responsive.mp4" type="video/mp4">
+</video>
 
-![A line chart with small, caption-sized labels](/images/foundations/design/typography/type-caption@2x.png)
+![An image showing how heading styles change based on breakpoint](/images/foundations/design/typography/type-responsive-styles@2x.png)
 
 ---
 

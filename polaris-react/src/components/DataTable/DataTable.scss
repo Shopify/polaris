@@ -255,7 +255,7 @@
 }
 
 .Cell-total {
-  @include text-emphasis-strong;
+  font-weight: var(--p-font-weight-semibold);
   background: var(--p-surface-subdued);
   border-bottom: var(--p-border-divider);
 

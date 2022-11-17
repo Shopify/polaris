@@ -8,7 +8,7 @@ import {
   Stack,
   Tag,
   TextContainer,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -481,7 +481,9 @@ export function WithMultiSelectAndVerticalContent() {
       return (
         <p>
           {start}
-          <TextStyle variation="strong">{highlight}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {highlight}
+          </Text>
           {end}
         </p>
       );

@@ -1,82 +1,27 @@
 import React, {createElement, forwardRef} from 'react';
 import type {
+  ColorsActionTokenAlias,
+  ColorsBackdropTokenAlias,
+  ColorsBackgroundTokenAlias,
+  ColorsOverlayTokenAlias,
+  ColorsSurfaceTokenAlias,
+  ShapeBorderWidthScale,
   DepthShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  ResponsiveProp,
+  classNames,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
 
 import styles from './Box.scss';
 
 type Element = 'div' | 'span' | 'section';
 
 type Overflow = 'hidden' | 'scroll';
-
-export type BackgroundColorTokenScale =
-  | 'action-critical'
-  | 'action-critical-depressed'
-  | 'action-critical-disabled'
-  | 'action-critical-hovered'
-  | 'action-critical-pressed'
-  | 'action-primary'
-  | 'action-primary-depressed'
-  | 'action-primary-disabled'
-  | 'action-primary-hovered'
-  | 'action-primary-pressed'
-  | 'action-secondary'
-  | 'action-secondary-depressed'
-  | 'action-secondary-disabled'
-  | 'action-secondary-hovered'
-  | 'action-secondary-hovered-dark'
-  | 'action-secondary-pressed'
-  | 'action-secondary-pressed-dark'
-  | 'backdrop'
-  | 'background'
-  | 'background-hovered'
-  | 'background-pressed'
-  | 'background-selected'
-  | 'overlay'
-  | 'surface'
-  | 'surface-attention'
-  | 'surface-critical'
-  | 'surface-critical-subdued'
-  | 'surface-critical-subdued-depressed'
-  | 'surface-critical-subdued-hovered'
-  | 'surface-critical-subdued-pressed'
-  | 'surface-dark'
-  | 'surface-depressed'
-  | 'surface-disabled'
-  | 'surface-highlight'
-  | 'surface-highlight-subdued'
-  | 'surface-highlight-subdued-hovered'
-  | 'surface-highlight-subdued-pressed'
-  | 'surface-hovered'
-  | 'surface-hovered-dark'
-  | 'surface-neutral'
-  | 'surface-neutral-disabled'
-  | 'surface-neutral-hovered'
-  | 'surface-neutral-pressed'
-  | 'surface-neutral-subdued'
-  | 'surface-neutral-subdued-dark'
-  | 'surface-pressed'
-  | 'surface-pressed-dark'
-  | 'surface-primary-selected'
-  | 'surface-primary-selected-hovered'
-  | 'surface-primary-selected-pressed'
-  | 'surface-search-field'
-  | 'surface-search-field-dark'
-  | 'surface-selected'
-  | 'surface-selected-hovered'
-  | 'surface-selected-pressed'
-  | 'surface-subdued'
-  | 'surface-success'
-  | 'surface-success-subdued'
-  | 'surface-success-subdued-hovered'
-  | 'surface-success-subdued-pressed'
-  | 'surface-warning'
-  | 'surface-warning-subdued'
-  | 'surface-warning-subdued-hovered'
-  | 'surface-warning-subdued-pressed';
 
 export type ColorTokenScale =
   | 'text'
@@ -102,6 +47,8 @@ export type BorderTokenAlias =
   | 'divider-on-dark'
   | 'transparent';
 
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
+
 interface Border {
   blockStart: BorderTokenAlias;
   blockEnd: BorderTokenAlias;
@@ -121,6 +68,13 @@ export type BorderRadiusTokenScale =
   | 'large'
   | 'half';
 
+export type BackgroundColors =
+  | ColorsBackdropTokenAlias
+  | ColorsBackgroundTokenAlias
+  | ColorsOverlayTokenAlias
+  | ColorsActionTokenAlias
+  | ColorsSurfaceTokenAlias;
+
 interface BorderRadius {
   startStart: BorderRadiusTokenScale;
   startEnd: BorderRadiusTokenScale;
@@ -128,18 +82,18 @@ interface BorderRadius {
   endEnd: BorderRadiusTokenScale;
 }
 
-interface Spacing {
-  blockStart: SpacingSpaceScale;
-  blockEnd: SpacingSpaceScale;
-  inlineStart: SpacingSpaceScale;
-  inlineEnd: SpacingSpaceScale;
+interface BorderWidth {
+  blockStart: ShapeBorderWidthScale;
+  blockEnd: ShapeBorderWidthScale;
+  inlineStart: ShapeBorderWidthScale;
+  inlineEnd: ShapeBorderWidthScale;
 }
 
 export interface BoxProps {
   /** HTML Element type */
   as?: Element;
   /** Background color */
-  background?: BackgroundColorTokenScale;
+  background?: BackgroundColors;
   /** Border style */
   border?: BorderTokenAlias;
   /** Vertical end border style */
@@ -160,6 +114,16 @@ export interface BoxProps {
   borderRadiusStartStart?: BorderRadiusTokenScale;
   /** Verital start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
+  /** Border width */
+  borderWidth?: ShapeBorderWidthScale;
+  /** Vertical start border width */
+  borderBlockStartWidth?: ShapeBorderWidthScale;
+  /** Vertical end border width */
+  borderBlockEndWidth?: ShapeBorderWidthScale;
+  /** Horizontal start border width */
+  borderInlineStartWidth?: ShapeBorderWidthScale;
+  /** Horizontal end border width */
+  borderInlineEndWidth?: ShapeBorderWidthScale;
   /** Color of children */
   color?: ColorTokenScale;
   /** HTML id attribute */
@@ -175,15 +139,15 @@ export interface BoxProps {
   /** Clip vertical content of children */
   overflowY?: Overflow;
   /** Spacing around children */
-  padding?: SpacingSpaceScale;
+  padding?: Spacing;
   /** Vertical start spacing around children */
-  paddingBlockStart?: SpacingSpaceScale;
+  paddingBlockStart?: Spacing;
   /** Vertical end spacing around children */
-  paddingBlockEnd?: SpacingSpaceScale;
+  paddingBlockEnd?: Spacing;
   /** Horizontal start spacing around children */
-  paddingInlineStart?: SpacingSpaceScale;
+  paddingInlineStart?: Spacing;
   /** Horizontal end spacing around children */
-  paddingInlineEnd?: SpacingSpaceScale;
+  paddingInlineEnd?: Spacing;
   /** Shadow */
   shadow?: DepthShadowAlias;
   /** Set width of container */
@@ -202,6 +166,11 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStart,
       borderInlineEnd,
       borderBlockStart,
+      borderWidth,
+      borderBlockStartWidth,
+      borderBlockEndWidth,
+      borderInlineStartWidth,
+      borderInlineEndWidth,
       borderRadius,
       borderRadiusEndStart,
       borderRadiusEndEnd,
@@ -239,12 +208,12 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       startEnd: borderRadiusStartEnd,
     } as BorderRadius;
 
-    const paddings = {
-      blockEnd: paddingBlockEnd,
-      inlineStart: paddingInlineStart,
-      inlineEnd: paddingInlineEnd,
-      blockStart: paddingBlockStart,
-    } as Spacing;
+    const borderWidths = {
+      blockStart: borderBlockStartWidth,
+      blockEnd: borderBlockEndWidth,
+      inlineStart: borderInlineStartWidth,
+      inlineEnd: borderInlineEndWidth,
+    } as BorderWidth;
 
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
@@ -277,24 +246,51 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius-start-end': borderRadiuses.startEnd
         ? `var(--p-border-radius-${borderRadiuses.startEnd})`
         : undefined,
+      '--pc-box-border-width': borderWidth
+        ? `var(--p-border-width-${borderWidth})`
+        : undefined,
+      '--pc-box-border-block-start-width': borderWidths.blockStart
+        ? `var(--p-border-width-${borderWidths.blockStart})`
+        : undefined,
+      '--pc-box-border-block-end-width': borderWidths.blockEnd
+        ? `var(--p-border-width-${borderWidths.blockEnd})`
+        : undefined,
+      '--pc-box-border-inline-start-width': borderWidths.inlineStart
+        ? `var(--p-border-width-${borderWidths.inlineStart})`
+        : undefined,
+      '--pc-box-border-inline-end-width': borderWidths.inlineEnd
+        ? `var(--p-border-width-${borderWidths.inlineEnd})`
+        : undefined,
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
       '--pc-box-max-width': maxWidth,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
-      '--pc-box-padding': padding ? `var(--p-space-${padding})` : undefined,
-      '--pc-box-padding-block-end': paddings.blockEnd
-        ? `var(--p-space-${paddings.blockEnd})`
-        : undefined,
-      '--pc-box-padding-inline-start': paddings.inlineStart
-        ? `var(--p-space-${paddings.inlineStart})`
-        : undefined,
-      '--pc-box-padding-inline-end': paddings.inlineEnd
-        ? `var(--p-space-${paddings.inlineEnd})`
-        : undefined,
-      '--pc-box-padding-block-start': paddings.blockStart
-        ? `var(--p-space-${paddings.blockStart})`
-        : undefined,
+      ...getResponsiveProps('box', 'padding', 'space', padding),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-end',
+        'space',
+        paddingBlockEnd,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-start',
+        'space',
+        paddingBlockStart,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-start',
+        'space',
+        paddingInlineStart,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-end',
+        'space',
+        paddingInlineEnd,
+      ),
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
     } as React.CSSProperties;

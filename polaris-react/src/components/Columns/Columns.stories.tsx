@@ -32,7 +32,7 @@ export function ColumnsWithTemplateColumns() {
           md: '1fr 3fr auto 1fr',
           lg: '1fr 4fr auto 2fr 3fr auto',
         }}
-        spacing={{xs: '4'}}
+        gap={{xs: '4'}}
       >
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
@@ -50,7 +50,7 @@ export function ColumnsWithMixedPropTypes() {
     <Page fullWidth>
       <Columns
         columns={{xs: 2, sm: '2fr 1fr', md: '2fr 1fr 1fr', lg: 6}}
-        spacing={{xs: '2'}}
+        gap={{xs: '2'}}
       >
         <div style={{background: 'aquamarine'}}>one</div>
         <div style={{background: 'aquamarine'}}>two</div>
@@ -68,7 +68,7 @@ export function ColumnsWithVaryingGap() {
     <Page fullWidth>
       <Columns
         columns={{xs: 3}}
-        spacing={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}
+        gap={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}
       >
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
@@ -81,7 +81,7 @@ export function ColumnsWithVaryingGap() {
 export function ColumnsWithFreeAndFixedWidths() {
   return (
     <Page fullWidth>
-      <Columns columns={{xs: '1fr auto auto'}} spacing={{xs: '05'}}>
+      <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '05'}}>
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>
           <Button icon={ChevronLeftMinor} accessibilityLabel="Previous" />

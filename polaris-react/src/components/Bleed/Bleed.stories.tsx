@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Bleed, Box} from '@shopify/polaris';
+import {AlphaCard, Bleed, Box, Text} from '@shopify/polaris';
 
 export default {
   component: Bleed,
@@ -15,11 +15,19 @@ const styles = {
 
 export function Default() {
   return (
-    <Box background="surface" padding="4">
+    <AlphaCard>
+      <Text as="p" variant="bodySm">
+        Section 01
+      </Text>
       <Bleed>
-        <div style={styles} />
+        <Box paddingBlockStart="2" paddingBlockEnd="2">
+          <Box borderBlockStart="base" />
+        </Box>
       </Bleed>
-    </Box>
+      <Text as="p" variant="bodySm">
+        Section 02
+      </Text>
+    </AlphaCard>
   );
 }
 
@@ -56,7 +64,7 @@ export function WithSpecificDirection() {
 export function WithAllDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed spacing="6">
+      <Bleed horizontal="6" vertical="6">
         <div style={styles} />
       </Bleed>
     </Box>
