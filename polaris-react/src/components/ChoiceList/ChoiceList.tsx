@@ -7,6 +7,8 @@ import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
 import {Text} from '../Text';
+import {AlphaStack} from '../AlphaStack';
+import {Box} from '../Box';
 
 import styles from './ChoiceList.scss';
 
@@ -66,17 +68,14 @@ export function ChoiceList({
   const name = useUniqueId('ChoiceList', nameProp);
   const finalName = allowMultiple ? `${name}[]` : name;
 
-  const className = classNames(
-    styles.ChoiceList,
-    titleHidden && styles.titleHidden,
-  );
+  const className = classNames(titleHidden && styles.titleHidden);
 
   const titleMarkup = title ? (
-    <legend className={styles.Title}>
+    <Box as="legend" paddingBlockEnd={{xs: '5', md: '1'}}>
       <Text as="span" variant="bodyMd">
         {title}
       </Text>
-    </legend>
+    </Box>
   ) : null;
 
   const choicesMarkup = choices.map((choice) => {
@@ -101,11 +100,15 @@ export function ChoiceList({
       ? choice.renderChildren(isSelected)
       : null;
     const children = renderedChildren ? (
-      <div className={styles.ChoiceChildren}>{renderedChildren}</div>
+      <div className={styles.ChoiceChildren}>
+        <Box paddingBlockStart={{xs: '4', md: '0'}} paddingBlockEnd="2">
+          {renderedChildren}
+        </Box>
+      </div>
     ) : null;
 
     return (
-      <li key={value} className={styles.ChoiceItem}>
+      <li key={value}>
         <ControlComponent
           name={finalName}
           value={value}
@@ -125,17 +128,21 @@ export function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <div className={styles.ChoiceError}>
+    <Box paddingBlockStart={{xs: '0', md: '1'}} paddingBlockEnd="2">
       <InlineError message={error} fieldID={finalName} />
-    </div>
+    </Box>
   );
 
   return (
-    <fieldset className={className} id={finalName} aria-invalid={error != null}>
-      {titleMarkup}
-      <ul className={styles.Choices}>{choicesMarkup}</ul>
-      {errorMarkup}
-    </fieldset>
+    <div className={className} id={finalName} aria-invalid={error != null}>
+      <AlphaStack as="fieldset" spacing={{xs: '4', md: '0'}} fullWidth>
+        {titleMarkup}
+        <AlphaStack as="ul" spacing={{xs: '4', md: '0'}} fullWidth>
+          {choicesMarkup}
+        </AlphaStack>
+        {errorMarkup}
+      </AlphaStack>
+    </div>
   );
 }
 
