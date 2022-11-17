@@ -46,6 +46,7 @@ export const AlphaStack = ({
     styles.AlphaStack,
     fullWidth && styles.fullWidth,
     as === 'ul' && styles.listReset,
+    as === 'fieldset' && styles.fieldsetReset,
   );
 
   const style = {

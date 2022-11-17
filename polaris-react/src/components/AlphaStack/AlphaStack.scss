@@ -39,6 +39,12 @@
   padding-inline-start: 0;
 }
 
+.fieldsetReset {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .fullWidth {
   > * {
     width: 100%;
