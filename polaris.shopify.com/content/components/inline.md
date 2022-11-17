@@ -6,12 +6,12 @@ keywords:
   - layout
 status:
   value: Alpha
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
+  message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
   - fileName: inline-default.tsx
     title: Default
     description: >-
-     Items are vertically centered with 16px of space around them. They’ll wrap onto multiple lines when needed.
+      Items are vertically centered with 16px of space around them. They’ll wrap onto multiple lines when needed.
   - fileName: inline-with-non-wrapping.tsx
     title: Non-wrapping
     description: >-
