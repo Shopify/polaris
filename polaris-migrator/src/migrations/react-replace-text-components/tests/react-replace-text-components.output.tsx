@@ -44,7 +44,7 @@ export function App() {
       <Text variant="bodySm" as="p">
         Caption
       </Text>
-      <Text variant="bodyMd" fontWeight="bold" as="span">
+      <Text variant="bodyMd" fontWeight="semibold" as="span">
         Strong
       </Text>
       <Text variant="bodyMd" color="success" as="span">
