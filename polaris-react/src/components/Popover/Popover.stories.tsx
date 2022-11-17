@@ -542,6 +542,53 @@ export function WithSearchableListbox() {
   );
 }
 
+export function WithLoadingSmallerContent() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button
+      onClick={() => {
+        setLoading(true);
+        togglePopoverActive();
+        window.setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }}
+      disclosure
+    >
+      Show server data
+    </Button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        ariaHaspopup={false}
+        sectioned
+      >
+        {loading ? (
+          <div style={{height: '200px'}}>
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div>
+            <p>Small content from the server</p>
+          </div>
+        )}
+      </Popover>
+    </div>
+  );
+}
+
 const StopPropagation = ({children}: React.PropsWithChildren<any>) => {
   const stopEventPropagation = (event: React.MouseEvent | React.TouchEvent) => {
     event.stopPropagation();
