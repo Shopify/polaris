@@ -22,7 +22,7 @@ import type {MigrationOptions} from '../react-replace-text-components';
 import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
 
 const variationMap = {
-  strong: {fontWeight: 'bold'},
+  strong: {fontWeight: 'semibold'},
   subdued: {color: 'subdued'},
   positive: {color: 'success'},
   negative: {color: 'critical'},
