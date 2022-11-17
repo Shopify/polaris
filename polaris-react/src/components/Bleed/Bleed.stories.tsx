@@ -34,7 +34,7 @@ export function Default() {
 export function WithVerticalDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed vertical="6">
+      <Bleed horizontal="0" vertical="6">
         <div style={styles} />
       </Bleed>
     </Box>
@@ -54,7 +54,7 @@ export function WithHorizontalDirection() {
 export function WithSpecificDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed top="6">
+      <Bleed horizontal="0" top="6">
         <div style={styles} />
       </Bleed>
     </Box>
@@ -64,7 +64,7 @@ export function WithSpecificDirection() {
 export function WithAllDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed spacing="6">
+      <Bleed horizontal="6" vertical="6">
         <div style={styles} />
       </Bleed>
     </Box>
