@@ -93,8 +93,6 @@ export interface BoxProps {
   borderRadiusStartStart?: BorderRadiusTokenScale;
   /** Verital start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
-  /** Border color */
-  borderColor?: ColorTokenScale;
   /** Border width */
   borderWidth?: ShapeBorderWidthScale;
   /** Vertical start border width */
@@ -177,7 +175,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStart,
       borderInlineEnd,
       borderBlockStart,
-      borderColor,
       borderWidth,
       borderBlockStartWidth,
       borderBlockEndWidth,
@@ -244,9 +241,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       '--pc-box-border-radius-start-end': borderRadiusStartEnd
         ? `var(--p-border-radius-${borderRadiusStartEnd})`
-        : undefined,
-      '--pc-box-border-color': borderColor
-        ? `var(--p-${borderColor})`
         : undefined,
       '--pc-box-border-width': borderWidth
         ? `var(--p-border-width-${borderWidth})`
