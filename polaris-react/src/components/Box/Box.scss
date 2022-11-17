@@ -52,6 +52,10 @@
   --pc-box-padding-block-start: initial;
   --pc-box-width: initial;
   --pc-box-border-width: var(--p-border-width-1);
+  --pc-box-top: initial;
+  --pc-box-right: initial;
+  --pc-box-bottom: initial;
+  --pc-box-left: initial;
   background-color: var(--pc-box-background);
   box-shadow: var(--pc-box-shadow);
   border-radius: var(--pc-box-border-radius);
@@ -98,6 +102,10 @@
   overflow-x: var(--pc-box-overflow-x);
   overflow-y: var(--pc-box-overflow-y);
   width: var(--pc-box-width);
+  top: var(--pc-box-top);
+  right: var(--pc-box-right);
+  bottom: var(--pc-box-bottom);
+  left: var(--pc-box-left);
   -webkit-overflow-scrolling: touch;
 }
 

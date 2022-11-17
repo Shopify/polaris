@@ -156,10 +156,10 @@ export interface BoxProps {
   // These could be moved to new layout component(s) in the future
   /** Position of the box */
   position?: 'relative' | 'absolute' | 'fixed' | 'sticky';
-  top?: string;
-  right?: string;
-  bottom?: string;
-  left?: string;
+  top?: Spacing;
+  right?: Spacing;
+  bottom?: Spacing;
+  left?: Spacing;
   opacity?: string;
   visuallyHidden?: boolean;
   zIndex?: string;
@@ -290,10 +290,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
       position,
-      top,
-      right,
-      bottom,
-      left,
+      '--pc-box-top': top ? `var(--p-space-${top})` : undefined,
+      '--pc-box-right': right ? `var(--p-space-${right})` : undefined,
+      '--pc-box-bottom': bottom ? `var(--p-space-${bottom})` : undefined,
+      '--pc-box-left': left ? `var(--p-space-${left})` : undefined,
       zIndex,
       opacity,
     } as React.CSSProperties;
