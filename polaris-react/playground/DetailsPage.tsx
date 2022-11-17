@@ -19,7 +19,6 @@ import {
 import {
   ActionList,
   Badge,
-  Caption,
   Card,
   ContextualSaveBar,
   DropZone,
@@ -36,12 +35,12 @@ import {
   SkeletonDisplayText,
   SkeletonPage,
   Stack,
+  Text,
   TextContainer,
   TextField,
   Thumbnail,
   Toast,
   TopBar,
-  VisuallyHidden,
 } from '../src';
 
 import styles from './DetailsPage.scss';
@@ -451,7 +450,7 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <VisuallyHidden>
+    <Text as="span" variant="bodySm" visuallyHidden>
       <a
         href="#SkipToContent"
         id="SkipToContentTarget"
@@ -460,7 +459,7 @@ export function DetailsPage() {
       >
         Page content
       </a>
-    </VisuallyHidden>
+    </Text>
   );
 
   const [title, setTitle] = useState(
@@ -534,7 +533,10 @@ export function DetailsPage() {
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text as="p" variant="bodySm">
+              {file.size} bytes
+            </Text>
           </div>
         </Stack>
       ))}

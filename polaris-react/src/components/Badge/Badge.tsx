@@ -3,7 +3,7 @@ import React, {useContext} from 'react';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {WithinFilterContext} from '../../utilities/within-filter-context';
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
 
@@ -23,6 +23,7 @@ interface NonMutuallyExclusiveProps {
   /** Icon to display to the left of the badge’s content. */
   icon?: IconSource;
   /**
+   * @deprecated
    * Medium or small size.
    * @default 'medium'
    */
@@ -52,6 +53,7 @@ export function Badge({
     styles.Badge,
     status && styles[variationName('status', status)],
     icon && styles.icon,
+    // TODO: remove support for the size prop in the next major release
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     withinFilter && styles.withinFilter,
   );
@@ -61,7 +63,9 @@ export function Badge({
     : getDefaultAccessibilityLabel(i18n, progress, status);
 
   let accessibilityMarkup = Boolean(accessibilityLabel) && (
-    <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+    <Text variant="bodySm" as="span" visuallyHidden>
+      {accessibilityLabel}
+    </Text>
   );
 
   if (progress && !icon) {
@@ -84,7 +88,11 @@ export function Badge({
           <Icon source={icon} />
         </span>
       )}
-      {children && <span>{children}</span>}
+      {children && (
+        <Text as="span" variant="bodySm">
+          {children}
+        </Text>
+      )}
     </span>
   );
 }

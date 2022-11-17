@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {SettingToggle, TextStyle} from '@shopify/polaris';
+import {SettingToggle, Text} from '@shopify/polaris';
 
 export default {
   component: SettingToggle,
@@ -22,7 +22,11 @@ export function Default() {
       }}
       enabled={active}
     >
-      This setting is <TextStyle variation="strong">{textStatus}</TextStyle>.
+      This setting is{' '}
+      <Text variant="bodyMd" fontWeight="bold" as="span">
+        {textStatus}
+      </Text>
+      .
     </SettingToggle>
   );
 }

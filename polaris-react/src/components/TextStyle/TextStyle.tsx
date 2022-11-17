@@ -28,11 +28,26 @@ export interface TextStyleProps {
   children?: React.ReactNode;
 }
 
+/**
+ * @deprecated The TextStyle component will be removed in the next
+ * major version. Use the Text component instead. See the
+ * Polaris component guide on how to use Text.
+ *
+ * https://polaris.shopify.com/components/text
+ */
 export function TextStyle({variation, children}: TextStyleProps) {
   const className = classNames(
     variation && styles[variationName('variation', variation)],
     variation === VariationValue.Code && styles.code,
   );
+
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `TextStyle` component has been deprecated. Use the `Text` component instead. See the Polaris component guide on how to use `Text`. https://polaris.shopify.com/components/text',
+    );
+  }
+
   const Element = variationElement(variation);
 
   return <Element className={className}>{children}</Element>;

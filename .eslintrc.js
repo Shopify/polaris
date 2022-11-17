@@ -88,12 +88,6 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-for-figma/src/**/*.{ts,tsx}'],
-      rules: {
-        '@shopify/jsx-no-hardcoded-content': 'off',
-      },
-    },
-    {
       files: ['polaris-migrator/src/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',

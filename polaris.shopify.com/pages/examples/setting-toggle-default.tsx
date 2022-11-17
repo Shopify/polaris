@@ -1,4 +1,4 @@
-import {SettingToggle, TextStyle} from '@shopify/polaris';
+import {SettingToggle, Text} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -18,7 +18,11 @@ function SettingToggleExample() {
       }}
       enabled={active}
     >
-      This setting is <TextStyle variation="strong">{textStatus}</TextStyle>.
+      This setting is{' '}
+      <Text variant="bodyMd" fontWeight="bold" as="span">
+        {textStatus}
+      </Text>
+      .
     </SettingToggle>
   );
 }

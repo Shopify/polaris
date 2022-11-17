@@ -14,9 +14,6 @@
 }
 
 .HelpText {
-  @include text-style-body;
-  @include text-emphasis-subdued;
-  @include text-breakword;
   margin-top: var(--p-space-1);
 }
 

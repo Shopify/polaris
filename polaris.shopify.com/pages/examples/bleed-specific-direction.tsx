@@ -1,62 +1,58 @@
 import React from 'react';
-import {Bleed, Box, Text} from '@shopify/polaris';
+import {AlphaStack, Bleed, Box, Text, Inline} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-const styles = {
-  background: 'var(--p-background-selected)',
-  borderRadius: 'var(--p-border-radius-05)',
-  border: '1px solid var(--p-surface-dark)',
-  padding: 'var(--p-space-4)',
-  height: 'var(--p-space-12)',
-  opacity: 0.7,
-};
-
 function BleedSpecificDirectionExample() {
   return (
-    <div style={{width: '100%'}}>
-      <Box background="surface" border="base" padding="4">
-        <Bleed top="6">
-          <div style={styles}>
-            <Text variant="bodySm" as="h3" alignment="center" fontWeight="bold">
-              top
-            </Text>
-          </div>
+    <AlphaStack gap="6" fullWidth>
+      <Box background="surface" border="base" padding="5">
+        <Bleed top="5">
+          <Placeholder label="Top" />
         </Bleed>
       </Box>
-      <br />
-      <Box background="surface" border="base" padding="4">
-        <Bleed right="6">
-          <div style={styles}>
-            <Text variant="bodySm" as="h3" alignment="center" fontWeight="bold">
-              right
-            </Text>
-          </div>
+      <Box background="surface" border="base" padding="5">
+        <Bleed bottom="5">
+          <Placeholder label="Bottom" />
         </Bleed>
       </Box>
-      <br />
-      <Box background="surface" border="base" padding="4">
-        <Bleed left="6">
-          <div style={styles}>
-            <Text variant="bodySm" as="h3" alignment="center" fontWeight="bold">
-              left
-            </Text>
-          </div>
+      <Box background="surface" border="base" padding="5">
+        <Bleed left="5" right="0">
+          <Placeholder label="Left" />
         </Bleed>
       </Box>
-      <br />
-      <Box background="surface" border="base" padding="4">
-        <Bleed bottom="6">
-          <div style={styles}>
-            <Text variant="bodySm" as="h3" alignment="center" fontWeight="bold">
-              bottom
-            </Text>
-          </div>
+      <Box background="surface" border="base" padding="5">
+        <Bleed right="5" left="0">
+          <Placeholder label="Right" />
         </Bleed>
       </Box>
-      <br />
-    </div>
+    </AlphaStack>
   );
 }
+
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        background: '#7B47F1',
+        padding: '14px var(--p-space-2)',
+        height: height,
+        width: width,
+      }}
+    >
+      <Inline align="center">
+        <div
+          style={{
+            color: '#FFFFFF',
+          }}
+        >
+          <Text as="h2" variant="bodyMd" fontWeight="regular">
+            {label}
+          </Text>
+        </div>
+      </Inline>
+    </div>
+  );
+};
 
 export default withPolarisExample(BleedSpecificDirectionExample);

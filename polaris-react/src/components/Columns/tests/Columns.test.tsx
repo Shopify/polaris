@@ -15,12 +15,12 @@ describe('Columns', () => {
   });
 
   it('only renders custom properties that match the properties passed in', () => {
-    const columns = mountWithApp(<Columns spacing={{md: '1'}} />);
+    const columns = mountWithApp(<Columns gap={{md: '1'}} />);
 
     expect(columns).toContainReactComponent('div', {
       style: {
         '--pc-columns-xs': 'repeat(6, minmax(0, 1fr))',
-        '--pc-columns-space-md': 'var(--p-space-1)',
+        '--pc-columns-gap-md': 'var(--p-space-1)',
       } as React.CSSProperties,
     });
   });

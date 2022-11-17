@@ -3,6 +3,7 @@ import React, {useCallback} from 'react';
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
 import {Stack} from '../../../Stack';
+import {Text} from '../../../Text';
 import {classNames} from '../../../../utilities/css';
 import {ContextualSaveBarProps, useFrame} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
@@ -116,7 +117,9 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          <h2 className={styles.Message}>{message}</h2>
+          <Text as="h2" variant="headingMd" color="text-inverse" truncate>
+            {message}
+          </Text>
           <div className={styles.ActionContainer}>
             <Stack spacing="tight" wrap={false}>
               {secondaryMenu}

@@ -9,7 +9,7 @@ import {
   Link,
   Select,
   TextField,
-  TextStyle,
+  Text,
   useIndexResourceState,
 } from '@shopify/polaris';
 
@@ -53,7 +53,9 @@ export function Default() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -120,7 +122,9 @@ export function Flush() {
         position={index}
       >
         <IndexTable.Cell flush>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell flush>{location}</IndexTable.Cell>
         <IndexTable.Cell flush>{orders}</IndexTable.Cell>
@@ -188,7 +192,9 @@ export function SmallScreen() {
       >
         <div style={{padding: '12px 16px'}}>
           <p>
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {name}
+            </Text>
           </p>
           <p>{location}</p>
           <p>{orders}</p>
@@ -250,7 +256,9 @@ export function WithEmptyState() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -339,7 +347,9 @@ export function WithBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -455,7 +465,9 @@ export function WithMultiplePromotedBulkActions() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -545,7 +557,9 @@ export function WithBulkActionsAndSelectionAcrossPages() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -615,7 +629,9 @@ export function WithLoadingState() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -731,7 +747,9 @@ export function WithFiltering() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -839,7 +857,9 @@ export function WithRowStatus() {
         status={status}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -927,7 +947,9 @@ export function WithStickyLastColumn() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -1008,7 +1030,9 @@ export function WithRowNavigationLink() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {name}
+            </Text>
           </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -1081,7 +1105,9 @@ export function WithClickableButtonColumn() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {name}
+            </Text>
           </Button>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
@@ -1141,7 +1167,9 @@ export function WithoutCheckboxes() {
     ({id, name, location, orders, amountSpent}, index) => (
       <IndexTable.Row id={id} key={id} position={index}>
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -1274,7 +1302,9 @@ export function WithAllOfItsElements() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -1468,7 +1498,9 @@ export function WithSortableHeadings() {
         position={index}
       >
         <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </IndexTable.Cell>
         <IndexTable.Cell>{date}</IndexTable.Cell>
         <IndexTable.Cell>{orders}</IndexTable.Cell>
@@ -1619,7 +1651,9 @@ export function SmallScreenWithAllOfItsElements() {
       >
         <div style={{padding: '.75rem 1rem'}}>
           <p>
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {name}
+            </Text>
           </p>
           <p>{location}</p>
           <p>{orders}</p>

@@ -1,47 +1,37 @@
 import React from 'react';
-import {Box, Stack, Text} from '@shopify/polaris';
+import {Box, Text} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithBorderRadiusExample() {
   return (
-    <Stack vertical>
-      <Box
-        background="surface"
-        border="base"
-        borderRadius="2"
-        padding="5"
-        shadow="card"
-      >
-        <Text as="h2" variant="headingMd">
-          Box with uniform border radius
-        </Text>
-      </Box>
-      <Box
-        background="surface"
-        border="base"
-        borderRadiusEndStart="2"
-        borderRadiusEndEnd="2"
-        padding="5"
-        shadow="card"
-      >
-        <Text as="h2" variant="headingMd">
-          Box with bottom border radius
-        </Text>
-      </Box>
-      <Box
-        background="surface"
-        border="base"
-        borderRadius="base"
-        padding="5"
-        shadow="card"
-      >
-        <Text as="h2" variant="headingMd">
-          Box with border radius base
-        </Text>
-      </Box>
-    </Stack>
+    <Box background="surface" borderRadius="2">
+      <Placeholder label="Content inside a box" />
+    </Box>
   );
 }
+
+const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
+  return (
+    <div
+      style={{
+        background: '#7B47F1',
+        height: height,
+        width: width,
+        borderRadius: 'inherit',
+      }}
+    >
+      <div
+        style={{
+          color: '#FFFFFF',
+        }}
+      >
+        <Text as="h2" variant="bodyMd" fontWeight="medium">
+          {label}
+        </Text>
+      </div>
+    </div>
+  );
+};
 
 export default withPolarisExample(BoxWithBorderRadiusExample);

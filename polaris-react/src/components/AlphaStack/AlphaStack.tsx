@@ -14,19 +14,25 @@ type Align = 'start' | 'end' | 'center';
 
 type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
-type Spacing = ResponsiveProp<SpacingSpaceScale>;
+type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface AlphaStackProps {
-  /** HTML Element type */
+  /** HTML Element type
+   * @default 'div'
+   */
   as?: Element;
   /** Elements to display inside stack */
   children?: React.ReactNode;
-  /** Adjust vertical alignment of elements */
+  /** The vertical alignment of elements
+   * @default 'start'
+   */
   align?: Align;
   /** Toggle elements to be full width */
   fullWidth?: boolean;
-  /** Adjust spacing between elements */
-  spacing?: Spacing;
+  /** The spacing between elements
+   * @default '4'
+   */
+  gap?: Gap;
 }
 
 export const AlphaStack = ({
@@ -34,7 +40,7 @@ export const AlphaStack = ({
   children,
   align = 'start',
   fullWidth,
-  spacing = '4',
+  gap = '4',
 }: AlphaStackProps) => {
   const className = classNames(
     styles.AlphaStack,
@@ -44,7 +50,7 @@ export const AlphaStack = ({
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
-    ...getResponsiveProps('stack', 'spacing', 'space', spacing),
+    ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return createElement(

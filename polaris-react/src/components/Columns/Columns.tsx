@@ -12,13 +12,15 @@ type Columns = {
   [Breakpoint in BreakpointsAlias]?: number | string;
 };
 
-type Spacing = {
+type Gap = {
   [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
 };
 
 export interface ColumnsProps {
-  /** The space between columns */
-  spacing?: Spacing;
+  /** The spacing between columns
+   * @default '4'
+   */
+  gap?: Gap;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
@@ -27,28 +29,18 @@ export interface ColumnsProps {
   children?: React.ReactNode;
 }
 
-export function Columns({columns, children, spacing}: ColumnsProps) {
+export function Columns({columns, children, gap}: ColumnsProps) {
   const style = {
     '--pc-columns-xs': formatColumns(columns?.xs || 6),
     '--pc-columns-sm': formatColumns(columns?.sm),
     '--pc-columns-md': formatColumns(columns?.md),
     '--pc-columns-lg': formatColumns(columns?.lg),
     '--pc-columns-xl': formatColumns(columns?.xl),
-    '--pc-columns-space-xs': spacing?.xs
-      ? `var(--p-space-${spacing?.xs})`
-      : undefined,
-    '--pc-columns-space-sm': spacing?.sm
-      ? `var(--p-space-${spacing?.sm})`
-      : undefined,
-    '--pc-columns-space-md': spacing?.md
-      ? `var(--p-space-${spacing?.md})`
-      : undefined,
-    '--pc-columns-space-lg': spacing?.lg
-      ? `var(--p-space-${spacing?.lg})`
-      : undefined,
-    '--pc-columns-space-xl': spacing?.xl
-      ? `var(--p-space-${spacing?.xl})`
-      : undefined,
+    '--pc-columns-gap-xs': gap?.xs ? `var(--p-space-${gap?.xs})` : undefined,
+    '--pc-columns-gap-sm': gap?.sm ? `var(--p-space-${gap?.sm})` : undefined,
+    '--pc-columns-gap-md': gap?.md ? `var(--p-space-${gap?.md})` : undefined,
+    '--pc-columns-gap-lg': gap?.lg ? `var(--p-space-${gap?.lg})` : undefined,
+    '--pc-columns-gap-xl': gap?.xl ? `var(--p-space-${gap?.xl})` : undefined,
   } as React.CSSProperties;
 
   return (

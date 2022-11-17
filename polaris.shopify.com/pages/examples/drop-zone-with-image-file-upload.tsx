@@ -1,11 +1,4 @@
-import {
-  DropZone,
-  Stack,
-  Thumbnail,
-  Caption,
-  Banner,
-  List,
-} from '@shopify/polaris';
+import {DropZone, Stack, Thumbnail, Banner, List, Text} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -33,7 +26,10 @@ function DropZoneWithImageFileUpload() {
             source={window.URL.createObjectURL(file)}
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
         </Stack>
       ))}

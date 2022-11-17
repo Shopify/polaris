@@ -1,8 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Caption} from '../../../../Caption';
-import {TextStyle} from '../../../../TextStyle';
+import {Text} from '../../../../Text';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
 import {uploadArrow as uploadArrowImage} from '../../../images';
@@ -50,8 +49,7 @@ describe('<FileUpload />', () => {
       expect(fileUpload).not.toContainReactComponent('img', {
         src: uploadArrowImage,
       });
-      expect(fileUpload).not.toContainReactComponent(Caption);
-      expect(fileUpload).not.toContainReactComponent(TextStyle);
+      expect(fileUpload).not.toContainReactComponent(Text);
 
       expect(fileUpload).toContainReactComponent('div', {
         className: 'Action',
@@ -71,8 +69,7 @@ describe('<FileUpload />', () => {
     expect(fileUpload).not.toContainReactComponent('img', {
       src: uploadArrowImage,
     });
-    expect(fileUpload).not.toContainReactComponent(Caption);
-    expect(fileUpload).not.toContainReactComponent(TextStyle);
+    expect(fileUpload).not.toContainReactComponent(Text);
 
     expect(fileUpload).toContainReactComponent('div', {
       className: 'Action',
@@ -88,8 +85,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).not.toContainReactComponent(Caption);
-    expect(fileUpload).not.toContainReactComponent(TextStyle);
+    expect(fileUpload).not.toContainReactComponent(Text);
 
     expect(fileUpload).toContainReactComponentTimes('img', 1);
   });
@@ -117,8 +113,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).toContainReactComponent(Caption);
-    expect(fileUpload).toContainReactComponent(TextStyle);
+    expect(fileUpload).toContainReactComponent(Text);
     expect(fileUpload).toContainReactText('Hint');
   });
 

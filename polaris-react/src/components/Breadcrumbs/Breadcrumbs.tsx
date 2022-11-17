@@ -5,7 +5,7 @@ import {Icon} from '../Icon';
 import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 
 import styles from './Breadcrumbs.scss';
 
@@ -27,7 +27,9 @@ export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
       <span className={styles.Icon}>
         <Icon source={ArrowLeftMinor} />
       </span>
-      <VisuallyHidden>{content}</VisuallyHidden>
+      <Text variant="bodySm" as="span" visuallyHidden color="subdued">
+        {content}
+      </Text>
     </>
   );
 

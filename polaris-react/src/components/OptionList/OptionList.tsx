@@ -9,6 +9,8 @@ import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
+import {Box} from '../Box';
+import {Text} from '../Text';
 
 import {Option} from './components';
 import styles from './OptionList.scss';
@@ -90,8 +92,19 @@ export function OptionList({
 
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
+        const isFirstOption = sectionIndex === 0;
         const titleMarkup = title ? (
-          <p className={styles.Title}>{title}</p>
+          <Box
+            paddingBlockStart={isFirstOption ? '2' : '4'}
+            paddingInlineStart="2"
+            paddingBlockEnd="2"
+            paddingInlineEnd="2"
+            borderBlockStart={!isFirstOption ? 'divider' : undefined}
+          >
+            <Text as="p" variant="headingXs">
+              {title}
+            </Text>
+          </Box>
         ) : null;
         const optionsMarkup =
           options &&

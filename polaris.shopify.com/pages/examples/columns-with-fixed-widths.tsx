@@ -26,7 +26,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width ?? undefined,
       }}
     >
-      <Inline align="center" alignY="center">
+      <Inline align="center" blockAlign="center">
         <div
           style={{
             color: '#FFFFFF',

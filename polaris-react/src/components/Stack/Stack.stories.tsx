@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, Heading, Stack} from '@shopify/polaris';
+import {Badge, Text, Stack} from '@shopify/polaris';
 
 export default {
   component: Stack,
@@ -40,13 +40,13 @@ export function Spacing() {
 export function VerticalCentering() {
   return (
     <Stack alignment="center">
-      <Heading>
+      <Text variant="headingMd" as="h2">
         Order
         <br />
         #1136
         <br />
         was paid
-      </Heading>
+      </Text>
       <Badge>Paid</Badge>
       <Badge>Fulfilled</Badge>
     </Stack>
@@ -56,7 +56,9 @@ export function VerticalCentering() {
 export function FillAvailableSpaceProportionally() {
   return (
     <Stack distribution="fill">
-      <Heading>Order #1136</Heading>
+      <Text variant="headingMd" as="h2">
+        Order #1136
+      </Text>
       <Badge>Paid</Badge>
       <Badge>Fulfilled</Badge>
     </Stack>
@@ -66,7 +68,9 @@ export function FillAvailableSpaceProportionally() {
 export function WhereItemsFillSpaceEvenly() {
   return (
     <Stack distribution="fillEvenly">
-      <Heading>Order #1136</Heading>
+      <Text variant="headingMd" as="h2">
+        Order #1136
+      </Text>
       <Badge>Paid</Badge>
       <Badge>Fulfilled</Badge>
     </Stack>
@@ -77,7 +81,9 @@ export function WhereASingleItemFillsTheRemainingSpace() {
   return (
     <Stack>
       <Stack.Item fill>
-        <Heading>Order #1136</Heading>
+        <Text variant="headingMd" as="h2">
+          Order #1136
+        </Text>
       </Stack.Item>
       <Stack.Item>
         <Badge>Paid</Badge>

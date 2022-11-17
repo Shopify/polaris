@@ -128,9 +128,6 @@ export type {ComboboxProps} from './components/Combobox';
 export {Connected} from './components/Connected';
 export type {ConnectedProps} from './components/Connected';
 
-export {ContentBlock} from './components/ContentBlock';
-export type {ContentBlockProps} from './components/ContentBlock';
-
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
 

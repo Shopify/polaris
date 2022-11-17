@@ -1,5 +1,12 @@
 # Changelog
 
+## 6.3.0
+
+### Minor Changes
+
+- [#7621](https://github.com/Shopify/polaris/pull/7621) [`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a) Thanks [@aveline](https://github.com/aveline)! - - Added border width prop to `Box`
+  - Exported color token subset alias types from tokens package and remove from `Box`
+
 ## 6.2.1
 
 ### Patch Changes

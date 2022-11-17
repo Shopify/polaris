@@ -1,5 +1,42 @@
 # @shopify/polaris-migrator
 
+## 0.9.0
+
+### Minor Changes
+
+- [#7648](https://github.com/Shopify/polaris/pull/7648) [`c08780522`](https://github.com/Shopify/polaris/commit/c087805225c7c9cf625b821fdbca1f125f73f654) Thanks [@samrose3](https://github.com/samrose3)! - Added `animation` properties to tokenize motion migration
+
+### Patch Changes
+
+- [#7690](https://github.com/Shopify/polaris/pull/7690) [`2ce4d38a2`](https://github.com/Shopify/polaris/commit/2ce4d38a27e654fffb01603539cff52b941776e1) Thanks [@samrose3](https://github.com/samrose3)! - Ignore replacing type imports and warn when encountering unknown props for Text component migration
+
+* [#7679](https://github.com/Shopify/polaris/pull/7679) [`566dc20c2`](https://github.com/Shopify/polaris/commit/566dc20c2ca48d2e269fcc91f5693f872b464b55) Thanks [@isaacbowen](https://github.com/isaacbowen)! - Add the (missing) case for migrating DisplayText to Text when size is not specified
+
+## 0.8.0
+
+### Minor Changes
+
+- [#7403](https://github.com/Shopify/polaris/pull/7403) [`8859f5db5`](https://github.com/Shopify/polaris/commit/8859f5db505e06b3c99b0a87ad7e7801c3ce56c3) Thanks [@jesstelford](https://github.com/jesstelford)! - Introduce `migrate-motion` migration for migrating `transition`, `transition-duration`, and `transition-delay` usages of duration values.
+
+* [#7606](https://github.com/Shopify/polaris/pull/7606) [`cf7badbd1`](https://github.com/Shopify/polaris/commit/cf7badbd1b8a9fffe2971dec9807f0ccdefdc971) Thanks [@samrose3](https://github.com/samrose3)! - Renamed and split migrations based on scope and type (react, scss, and styles)
+
+- [#7543](https://github.com/Shopify/polaris/pull/7543) [`8c1989618`](https://github.com/Shopify/polaris/commit/8c1989618d8dcbf10c3dbe529fa40918c222ce7c) Thanks [@jesstelford](https://github.com/jesstelford)! - Expose utilities for SASS Migrations to leverage the Suggestion-on-partial-fix pattern
+
+* [#7529](https://github.com/Shopify/polaris/pull/7529) [`3652eb901`](https://github.com/Shopify/polaris/commit/3652eb901812b7418f1010d818c07e307a49d83b) Thanks [@samrose3](https://github.com/samrose3)! - Add relative option for replace-text-component migration
+
+- [#7532](https://github.com/Shopify/polaris/pull/7532) [`ba576498d`](https://github.com/Shopify/polaris/commit/ba576498d8fb19f01a523281389d038d42e79c3a) Thanks [@jesstelford](https://github.com/jesstelford)! - Expose the .report() method to SASS migrations for easier aggregation of discovered issues during a migration run.
+
+### Patch Changes
+
+- [#7606](https://github.com/Shopify/polaris/pull/7606) [`cf7badbd1`](https://github.com/Shopify/polaris/commit/cf7badbd1b8a9fffe2971dec9807f0ccdefdc971) Thanks [@samrose3](https://github.com/samrose3)! - Update `createInlineComment` to format text with RegExp
+
+* [#7606](https://github.com/Shopify/polaris/pull/7606) [`cf7badbd1`](https://github.com/Shopify/polaris/commit/cf7badbd1b8a9fffe2971dec9807f0ccdefdc971) Thanks [@samrose3](https://github.com/samrose3)! - Add support to replace Identifiers along with JSXIdentifiers for Text migration
+
+- [#7632](https://github.com/Shopify/polaris/pull/7632) [`1f2ec8bfe`](https://github.com/Shopify/polaris/commit/1f2ec8bfeba3250f6011efcf3832d022aff62990) Thanks [@samrose3](https://github.com/samrose3)! - Check for targeted component import before modifying in Text component migration
+
+- Updated dependencies [[`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a)]:
+  - @shopify/polaris-tokens@6.3.0
+
 ## 0.7.0
 
 ### Minor Changes

@@ -32,7 +32,7 @@ type Alignment = 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
-type Color = 'success' | 'critical' | 'warning' | 'subdued';
+type Color = 'success' | 'critical' | 'warning' | 'subdued' | 'text-inverse';
 
 const VariantFontWeightMapping: {[V in Variant]: FontWeight} = {
   headingXs: 'semibold',
