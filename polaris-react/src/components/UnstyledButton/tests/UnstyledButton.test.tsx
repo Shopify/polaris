@@ -213,6 +213,7 @@ describe('<Button />', () => {
       const button = mountWithApp(<UnstyledButton disabled />);
       expect(button).toContainReactComponent('button', {
         'aria-disabled': true,
+        disabled: true,
       });
     });
 
