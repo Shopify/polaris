@@ -1,6 +1,6 @@
 const stylelint = require('stylelint');
 
-const {isPlainObject, isNumber} = require('../../utils');
+const {isPlainObject} = require('../../utils');
 
 const ruleName = 'stylelint-polaris/coverage';
 
@@ -59,7 +59,7 @@ module.exports = stylelint.createPlugin(
         stylelint.utils.checkAgainstRule(
           {
             ruleName: categoryRuleName,
-            ruleSettings: normalizeRuleSettings(categoryRuleSettings),
+            ruleSettings: categoryRuleSettings,
             fix: categoryRuleFix,
             root,
             result,
@@ -80,79 +80,9 @@ module.exports = stylelint.createPlugin(
           },
         );
       }
-
-      const disabledCoverageWarnings =
-        result.stylelint.disabledWarnings?.filter((disabledWarning) =>
-          disabledWarning.rule.startsWith(ruleName),
-        );
-
-      if (!disabledCoverageWarnings?.length) return;
-
-      const disabledCoverageLines = Array.from(
-        new Set(disabledCoverageWarnings.map(({line}) => line)),
-      );
-
-      // Ensure all stylelint-polaris/coverage disable comments
-      // have a description prefixed with "polaris:"
-      for (const disabledRange of result.stylelint.disabledRanges.all) {
-        if (
-          !isDisabledCoverageRule(disabledCoverageLines, disabledRange) ||
-          disabledRange.description?.startsWith('polaris:')
-        ) {
-          continue;
-        }
-
-        const stylelintDisableText = disabledRange.comment.text
-          .split('--')[0]
-          .trim();
-
-        stylelint.utils.report({
-          message: `Expected /* ${stylelintDisableText} -- polaris: Reason for disabling */`,
-          ruleName,
-          result,
-          node: disabledRange.comment,
-          // Note: `stylelint-disable` comments (without next-line) appear to
-          // be special cased in that they do not trigger warnings when reported.
-          ...forceReport,
-        });
-      }
     };
   },
 );
-
-/**
- * @param {number[]} disabledCoverageLines
- * @param {import('stylelint').DisabledRange} disabledRange
- */
-function isDisabledCoverageRule(disabledCoverageLines, disabledRange) {
-  if (isUnclosedDisabledRange(disabledRange)) {
-    return disabledCoverageLines.some(
-      (disabledCoverageLine) => disabledCoverageLine >= disabledRange.start,
-    );
-  }
-
-  return disabledCoverageLines.some(
-    (coverageDisabledLine) =>
-      coverageDisabledLine >= disabledRange.start &&
-      coverageDisabledLine <= disabledRange.end,
-  );
-}
-
-/**
- * Checks if the `disabledRange` is an unclosed `stylelint-disable` comment
- * e.g. The `stylelint-disable` comment is NOT followed by `stylelint-enable`
- * @param {import('stylelint').DisabledRange} disabledRange
- */
-function isUnclosedDisabledRange(disabledRange) {
-  if (
-    !disabledRange.comment.text.startsWith('stylelint-disable-next-line') &&
-    !isNumber(disabledRange.end)
-  ) {
-    return true;
-  }
-
-  return false;
-}
 
 function validatePrimaryOptions(primaryOptions) {
   if (!isPlainObject(primaryOptions)) return false;
@@ -162,22 +92,4 @@ function validatePrimaryOptions(primaryOptions) {
   }
 
   return true;
-}
-
-/**
- * @param {import('stylelint').ConfigRuleSettings} ruleSettings
- */
-function normalizeRuleSettings(ruleSettings) {
-  if (
-    // Let `stylelint` normalize the rule settings
-    !Array.isArray(ruleSettings) ||
-    // Assume rule settings are already normalized
-    Array.isArray(ruleSettings[0]) ||
-    // Assume rule settings are already normalized
-    isPlainObject(ruleSettings[1])
-  ) {
-    return ruleSettings;
-  }
-
-  return [ruleSettings];
 }
