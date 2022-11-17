@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {createUrl} from 'playroom';
 import {Tab} from '@headlessui/react';
 import {MaximizeMajor} from '@shopify/polaris-icons';
-import {Icon} from '@shopify/polaris';
+import {Icon, Text} from '@shopify/polaris';
 import Longform from '../../../Longform';
 import Page from '../../../Page';
 import styles from './loading.module.scss';
@@ -222,6 +222,9 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                         })}`}
                         rel="noreferrer"
                       >
+                        <Text variant="bodySm" as="span" visuallyHidden>
+                          View fullscreen preview
+                        </Text>
                         <Icon source={MaximizeMajor} />
                       </a>
                     </>
