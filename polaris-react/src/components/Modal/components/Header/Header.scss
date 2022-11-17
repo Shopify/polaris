@@ -1,3 +1,13 @@
+@import '../../../../styles/common';
+
+.Header {
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+  padding: var(--p-space-4) var(--p-space-5);
+  border-bottom: var(--p-border-divider);
+}
+
 .titleHidden {
   position: absolute;
   right: 0;
