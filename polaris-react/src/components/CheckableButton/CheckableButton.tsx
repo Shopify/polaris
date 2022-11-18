@@ -14,12 +14,8 @@ export interface CheckableButtonProps {
   accessibilityLabel?: string;
   label?: string;
   selected?: boolean | 'indeterminate';
-  selectMode?: boolean;
-  plain?: boolean;
-  measuring?: boolean;
   disabled?: boolean;
   onToggleAll?(): void;
-  autoWidth?: boolean;
   ariaLive?: 'off' | 'assertive' | 'polite';
 }
 
@@ -28,22 +24,14 @@ export function CheckableButton({
   label = '',
   onToggleAll,
   selected,
-  selectMode,
-  plain,
-  measuring,
   disabled,
-  autoWidth,
   ariaLive,
 }: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
   const {registerCheckableButtons} = useContext(ResourceListContext);
 
-  let currentKey: CheckableButtonKey = 'plain';
-
-  if (autoWidth) {
-    currentKey = 'selectAll';
-  }
+  const currentKey: CheckableButtonKey = 'plain';
 
   useEffect(() => {
     if (checkBoxRef.current && registerCheckableButtons) {
@@ -51,19 +39,7 @@ export function CheckableButton({
     }
   }, [currentKey, registerCheckableButtons]);
 
-  const className = plain
-    ? classNames(
-        styles.CheckableButton,
-        styles['CheckableButton-plain'],
-        autoWidth && styles['CheckableButton-autoWidth'],
-      )
-    : classNames(
-        styles.CheckableButton,
-        selectMode && styles['CheckableButton-selectMode'],
-        selected && styles['CheckableButton-selected'],
-        measuring && styles['CheckableButton-measuring'],
-        autoWidth && styles['CheckableButton-autoWidth'],
-      );
+  const className = classNames(styles.CheckableButton);
 
   return (
     <div className={className} onClick={onToggleAll}>

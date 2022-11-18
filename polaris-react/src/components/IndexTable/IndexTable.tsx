@@ -153,7 +153,6 @@ function IndexTableBase({
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
   const [hideScrollContainer, setHideScrollContainer] =
     useState<boolean>(false);
-  const [smallScreen, setSmallScreen] = useState(isBreakpointsXS());
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -301,10 +300,6 @@ function IndexTableBase({
     handleCanScrollRight();
   }, [handleCanScrollRight]);
 
-  const handleIsSmallScreen = useCallback(() => {
-    setSmallScreen(isBreakpointsXS());
-  }, []);
-
   const [canFitStickyColumn, setCanFitStickyColumn] = useState(true);
 
   const handleCanFitStickyColumn = useCallback(() => {
@@ -355,13 +350,11 @@ function IndexTableBase({
     resizeTableHeadings();
     debounceResizeTableScrollbar();
     handleCanScrollRight();
-    handleIsSmallScreen();
     handleCanFitStickyColumn();
   }, [
     resizeTableHeadings,
     debounceResizeTableScrollbar,
     handleCanScrollRight,
-    handleIsSmallScreen,
     handleCanFitStickyColumn,
   ]);
 
@@ -549,26 +542,27 @@ function IndexTableBase({
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
 
-  const bulkActionsMarkup = shouldShowBulkActions ? (
-    <div
-      className={bulkActionClassNames}
-      data-condensed={condensed}
-      style={{
-        top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
-        width: bulkActionsMaxWidth,
-        left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
-      }}
-    >
-      <BulkActions
-        selectMode={selectMode}
-        promotedActions={promotedActions}
-        actions={actions}
-        onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
-        isSticky={isBulkActionsSticky}
-        width={bulkActionsMaxWidth}
-      />
-    </div>
-  ) : null;
+  const bulkActionsMarkup =
+    shouldShowBulkActions && !condensed ? (
+      <div
+        className={bulkActionClassNames}
+        data-condensed={condensed}
+        style={{
+          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+          width: bulkActionsMaxWidth,
+          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
+        }}
+      >
+        <BulkActions
+          selectMode={selectMode}
+          promotedActions={promotedActions}
+          actions={actions}
+          onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
+          isSticky={isBulkActionsSticky}
+          width={bulkActionsMaxWidth}
+        />
+      </div>
+    ) : null;
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
@@ -585,23 +579,23 @@ function IndexTableBase({
             isSticky && styles['StickyTableHeader-isSticky'],
           );
 
-          const selectAllActionsMarkup = shouldShowBulkActions ? (
-            <div className={selectAllActionsClassName}>
-              <SelectAllActions
-                label={i18n.translate('Polaris.IndexTable.selected', {
-                  selectedItemsCount: selectedItemsCountLabel,
-                })}
-                smallScreen={smallScreen}
-                accessibilityLabel={bulkActionsAccessibilityLabel}
-                selected={bulkSelectState}
-                selectMode={selectMode}
-                onToggleAll={handleTogglePage}
-                paginatedSelectAllText={paginatedSelectAllText}
-                paginatedSelectAllAction={paginatedSelectAllAction}
-              />
-              {loadingMarkup}
-            </div>
-          ) : null;
+          const selectAllActionsMarkup =
+            shouldShowBulkActions && !condensed ? (
+              <div className={selectAllActionsClassName}>
+                <SelectAllActions
+                  label={i18n.translate('Polaris.IndexTable.selected', {
+                    selectedItemsCount: selectedItemsCountLabel,
+                  })}
+                  accessibilityLabel={bulkActionsAccessibilityLabel}
+                  selected={bulkSelectState}
+                  selectMode={selectMode}
+                  onToggleAll={handleTogglePage}
+                  paginatedSelectAllText={paginatedSelectAllText}
+                  paginatedSelectAllAction={paginatedSelectAllAction}
+                />
+                {loadingMarkup}
+              </div>
+            ) : null;
 
           const stickyColumnHeaderClassNames = classNames(
             styles.StickyTableColumnHeader,

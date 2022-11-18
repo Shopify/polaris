@@ -14,8 +14,6 @@ type AriaLive = 'off' | 'assertive' | 'polite' | undefined;
 export interface SelectAllActionsProps {
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
-  /** Whether to render the small screen BulkActions or not */
-  smallScreen?: boolean;
   /** Label for the bulk actions */
   label?: string;
   /** State of the bulk actions checkbox */
@@ -34,7 +32,6 @@ export interface SelectAllActionsProps {
 
 export function SelectAllActions({
   accessibilityLabel,
-  smallScreen,
   label,
   selected,
   selectMode,
@@ -68,10 +65,8 @@ export function SelectAllActions({
     accessibilityLabel,
     label: hasTextAndAction ? paginatedSelectAllText : label,
     selected,
-    selectMode,
     onToggleAll,
     disabled,
-    autoWidth: true,
     ariaLive,
   };
   const markup = (
@@ -83,11 +78,7 @@ export function SelectAllActions({
         );
         return (
           <div className={wrapperClasses}>
-            {smallScreen ? (
-              <CheckableButton {...checkableButtonProps} />
-            ) : (
-              <CheckableButton {...checkableButtonProps} plain />
-            )}
+            <CheckableButton {...checkableButtonProps} />
             {paginatedSelectAllMarkup}
           </div>
         );

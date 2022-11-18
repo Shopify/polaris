@@ -528,15 +528,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       handleSelectMode(true);
     }
 
-    let checkbox: CheckboxHandles | undefined;
-
-    if (isBreakpointsXS()) {
-      checkbox = checkableButtons.get('selectAll');
-    } else if (newlySelectedItems.length === 0) {
-      checkbox = checkableButtons.get('plain');
-    } else {
-      checkbox = checkableButtons.get('selectAll');
-    }
+    const checkbox: CheckboxHandles | undefined = checkableButtons.get('plain');
 
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
@@ -559,7 +551,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         paginatedSelectAllAction={paginatedSelectAllAction()}
         paginatedSelectAllText={paginatedSelectAllText()}
         disabled={loading}
-        smallScreen={smallScreen}
       />
     </div>
   ) : null;
@@ -637,7 +628,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         accessibilityLabel={selectAllActionsAccessibilityLabel()}
         label={headerTitle()}
         onToggleAll={handleToggleAll}
-        plain
         disabled={loading}
       />
     </div>
