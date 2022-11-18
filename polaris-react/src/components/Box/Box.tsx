@@ -16,6 +16,7 @@ import {
   classNames,
   sanitizeCustomProperties,
 } from '../../utilities/css';
+import {getAriaAttributes} from '../../utilities/get-aria-attributes';
 
 import styles from './Box.scss';
 
@@ -68,7 +69,7 @@ export type BackgroundColors =
   | ColorsActionTokenAlias
   | ColorsSurfaceTokenAlias;
 
-export interface BoxProps {
+export interface BoxProps extends React.AriaAttributes {
   /** HTML Element type */
   as?: Element;
   /** Background color */
@@ -215,6 +216,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       left,
       zIndex,
       opacity,
+      ...restProps
     },
     ref,
   ) => {
@@ -310,6 +312,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       visuallyHidden && styles.visuallyHidden,
     );
 
+    const ariaAttrs = getAriaAttributes(restProps);
+
     return createElement(
       as,
       {
@@ -317,6 +321,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         id,
         ref,
         style: sanitizeCustomProperties(style),
+        ...ariaAttrs,
       },
       children,
     );
