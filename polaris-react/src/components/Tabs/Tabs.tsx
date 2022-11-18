@@ -152,7 +152,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     );
 
     return (
-      <div>
+      <div className={styles.PanelWrapper}>
         <div className={styles.Wrapper}>
           <TabMeasurer
             tabToFocus={tabToFocus}

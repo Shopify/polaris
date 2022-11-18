@@ -11,6 +11,7 @@ import {
   TextField,
   Text,
   useIndexResourceState,
+  Tabs,
 } from '@shopify/polaris';
 
 export default {
@@ -1727,4 +1728,104 @@ export function SmallScreenWithAllOfItsElements() {
       return value === '' || value == null;
     }
   }
+}
+
+export function WithTabs() {
+  const customers = [
+    {
+      id: '3411',
+      url: 'customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2561',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{orders}</IndexTable.Cell>
+        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  const [selected, setSelected] = useState(0);
+  const handleTabChange = useCallback(
+    (selectedTabIndex) => setSelected(selectedTabIndex),
+    [],
+  );
+  const tabs = [
+    {
+      id: 'all-customers-1',
+      content: 'All',
+      accessibilityLabel: 'All customers',
+      panelID: 'all-customers-content-1',
+    },
+    {
+      id: 'accepts-marketing-1',
+      content: 'Accepts marketing',
+      panelID: 'accepts-marketing-content-1',
+    },
+    {
+      id: 'repeat-customers-1',
+      content: 'Repeat customers',
+      panelID: 'repeat-customers-content-1',
+    },
+    {
+      id: 'prospects-1',
+      content: 'Prospects',
+      panelID: 'prospects-content-1',
+    },
+  ];
+
+  return (
+    <Card>
+      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+        <IndexTable
+          resourceName={resourceName}
+          itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
+          headings={[
+            {title: 'Name'},
+            {title: 'Location'},
+            {title: 'Order count'},
+            {title: 'Amount spent'},
+          ]}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </Tabs>
+    </Card>
+  );
 }

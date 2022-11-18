@@ -145,8 +145,13 @@ $item-vertical-padding: $item-min-height * 0.5;
   display: flex;
 }
 
+.PanelWrapper {
+  border-radius: inherit;
+}
+
 .Panel {
   display: block;
+  border-radius: inherit;
 
   &:focus {
     outline: none;
