@@ -111,4 +111,17 @@ describe('Box', () => {
       }) as React.CSSProperties,
     });
   });
+
+  it('renders the aria attributes that matches the aria attributes passed in', () => {
+    const box = mountWithApp(
+      <Box aria-required aria-describedby="test">
+        {children}
+      </Box>,
+    );
+
+    expect(box).toContainReactComponent('div', {
+      'aria-required': true,
+      'aria-describedby': 'test',
+    });
+  });
 });
