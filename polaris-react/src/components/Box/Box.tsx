@@ -150,7 +150,7 @@ export interface BoxProps {
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
   paddingInlineEnd?: Spacing;
-  /** Shadow color on box */
+  /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Width of container */
   width?: string;
