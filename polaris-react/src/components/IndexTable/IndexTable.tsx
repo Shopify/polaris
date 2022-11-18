@@ -559,8 +559,6 @@ function IndexTableBase({
         left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
       }}
     >
-      {loadingMarkup}
-
       <BulkActions
         selectMode={selectMode}
         promotedActions={promotedActions}
@@ -601,6 +599,7 @@ function IndexTableBase({
                 paginatedSelectAllText={paginatedSelectAllText}
                 paginatedSelectAllAction={paginatedSelectAllAction}
               />
+              {loadingMarkup}
             </div>
           ) : null;
 
