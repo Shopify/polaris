@@ -315,7 +315,9 @@ export function WithBulkActionsAndManyItems() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>

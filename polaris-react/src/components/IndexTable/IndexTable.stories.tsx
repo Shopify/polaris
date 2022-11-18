@@ -266,7 +266,9 @@ export function SmallScreenLoading() {
       >
         <div style={{padding: '12px 16px'}}>
           <p>
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {name}
+            </Text>
           </p>
           <p>{location}</p>
           <p>{orders}</p>
