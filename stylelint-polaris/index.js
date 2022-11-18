@@ -30,6 +30,8 @@ module.exports = {
     './plugins/custom-properties-allowed-list',
     './plugins/media-queries-allowed-list',
   ],
+  reportDescriptionlessDisables: true,
+  customSyntax: 'postcss-scss',
   rules: {
     /**
      * Custom property constraints:
