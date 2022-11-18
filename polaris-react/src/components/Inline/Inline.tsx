@@ -30,7 +30,7 @@ export interface InlineProps {
    * @default '4'
    * @example
    * gap='2'
-   * gap={{xs: '2', md: '4'}}
+   * gap={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
   gap?: Gap;
   /** Wrap stack elements to additional rows as needed on small screens

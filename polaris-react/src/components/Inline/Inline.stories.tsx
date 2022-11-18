@@ -186,3 +186,16 @@ export function Gap() {
     </AlphaStack>
   );
 }
+
+export function GapResponsive() {
+  return (
+    <AlphaStack>
+      <Inline gap={{xs: '2', md: '4'}}>
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+    </AlphaStack>
+  );
+}
