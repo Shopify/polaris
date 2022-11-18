@@ -15,7 +15,7 @@ type Align =
   | 'space-evenly';
 type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
-type Spacing = ResponsiveProp<SpacingSpaceScale>;
+type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface InlineProps {
   /** Adjust horizontal alignment of elements
