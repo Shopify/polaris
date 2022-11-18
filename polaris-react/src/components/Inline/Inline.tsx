@@ -18,7 +18,6 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface InlineProps {
-  /** Elements to display inside stack */
   children?: React.ReactNode;
   /** Horizontal alignment of children
    * @default 'start'

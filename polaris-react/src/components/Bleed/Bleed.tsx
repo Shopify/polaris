@@ -6,8 +6,7 @@ import {sanitizeCustomProperties} from '../../utilities/css';
 import styles from './Bleed.scss';
 
 export interface BleedProps {
-  /** Elements to display inside bleed */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** Negative horizontal space around children
    * @default '5'
    */

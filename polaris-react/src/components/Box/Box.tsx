@@ -69,12 +69,11 @@ export type BackgroundColors =
   | ColorsSurfaceTokenAlias;
 
 export interface BoxProps {
+  children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
    */
   as?: Element;
-  /** Elements to display inside box */
-  children?: React.ReactNode;
   /** Background color */
   background?: BackgroundColors;
   /** Border style */

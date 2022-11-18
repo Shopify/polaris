@@ -19,7 +19,6 @@ type Columns = {
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface ColumnsProps {
-  /** Elements to display inside columns */
   children?: React.ReactNode;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}

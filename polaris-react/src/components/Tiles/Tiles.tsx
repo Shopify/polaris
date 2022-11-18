@@ -15,8 +15,7 @@ type Gap = {
 };
 
 export interface TilesProps {
-  /** Elements to display inside tiles */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */

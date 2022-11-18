@@ -17,12 +17,11 @@ type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface AlphaStackProps {
+  children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
    */
   as?: Element;
-  /** Elements to display inside stack */
-  children?: React.ReactNode;
   /** Vertical alignment of children
    * @default 'start'
    */
