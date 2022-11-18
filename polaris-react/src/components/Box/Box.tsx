@@ -156,12 +156,19 @@ export interface BoxProps {
   // These could be moved to new layout component(s) in the future
   /** Position of the box */
   position?: Position;
+  /** Top position of the box */
   top?: Spacing;
+  /** Bottom position of the box */
   right?: Spacing;
+  /** Left position of the box */
   bottom?: Spacing;
+  /** Right position of the box */
   left?: Spacing;
+  /** Opcity of the box */
   opacity?: string;
+  /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
+  /** z-index of the box */
   zIndex?: string;
 }
 
