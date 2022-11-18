@@ -27,7 +27,7 @@ export interface AlphaStackProps {
    */
   align?: Align;
   /** Toggle children to be full width
-   * @default 'false'
+   * @default false
    */
   fullWidth?: boolean;
   /** The spacing between children
