@@ -6,6 +6,7 @@ import {
   sanitizeCustomProperties,
   getResponsiveProps,
 } from '../../utilities/css';
+import {getAriaAttributes} from '../../utilities/get-aria-attributes';
 import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
@@ -16,7 +17,7 @@ type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface AlphaStackProps {
+export interface AlphaStackProps extends React.AriaAttributes {
   /** HTML Element type
    * @default 'div'
    */
@@ -33,6 +34,8 @@ export interface AlphaStackProps {
    * @default '4'
    */
   gap?: Gap;
+  /** HTML id attribute */
+  id?: string;
 }
 
 export const AlphaStack = ({
@@ -41,6 +44,8 @@ export const AlphaStack = ({
   align = 'start',
   fullWidth,
   gap = '4',
+  id,
+  ...restProps
 }: AlphaStackProps) => {
   const className = classNames(
     styles.AlphaStack,
@@ -53,11 +58,14 @@ export const AlphaStack = ({
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
+  const ariaAttrs = getAriaAttributes(restProps);
+
   return createElement(
     as,
     {
       className,
       style: sanitizeCustomProperties(style),
+      ...ariaAttrs,
     },
     children,
   );
