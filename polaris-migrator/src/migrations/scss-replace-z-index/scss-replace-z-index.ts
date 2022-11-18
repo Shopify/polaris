@@ -64,7 +64,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         if (hasMoreThanOneArgument(node)) {
           // If there's more than one argument to the zIndex fn
           // We assume they're passing in a custom map
-          // In this case its unlikely this will resolve to a polaris token value
+          // In this case it's unlikely this will resolve to a polaris token value
           // transform legacy zIndex usage to map-get and move on.
 
           const [key, _, map] = node.nodes;

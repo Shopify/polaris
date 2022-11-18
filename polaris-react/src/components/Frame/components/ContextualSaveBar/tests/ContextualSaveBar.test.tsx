@@ -112,7 +112,7 @@ describe('<ContextualSaveBar />', () => {
         );
       });
 
-      it("sets the DiscardConfirmationModal `open` prop to false when it's `onCancel` handler is triggered", () => {
+      it('sets the DiscardConfirmationModal `open` prop to false when its `onCancel` handler is triggered', () => {
         const discardAction = {
           content: 'Discard',
           onAction: noop,
@@ -135,7 +135,7 @@ describe('<ContextualSaveBar />', () => {
         );
       });
 
-      it("calls the discardAction prop when it's `onDiscard` handler is triggered", () => {
+      it('calls the discardAction prop when its `onDiscard` handler is triggered', () => {
         const discardAction = {
           content: 'Discard',
           onAction: jest.fn(),
@@ -151,7 +151,7 @@ describe('<ContextualSaveBar />', () => {
         expect(discardAction.onAction).toHaveBeenCalled();
       });
 
-      it("sets the DiscardConfirmationModal `open` prop to false when it's `onDiscard` handler is triggered", () => {
+      it('sets the DiscardConfirmationModal `open` prop to false when its `onDiscard` handler is triggered', () => {
         const discardAction = {
           content: 'Discard',
           onAction: noop,

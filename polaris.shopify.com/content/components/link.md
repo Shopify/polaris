@@ -119,7 +119,7 @@ The Link component is underlined to give interactive elements a shape. This allo
 
 #### Don’t
 
-- Remove underlines when the user cannot determine it's interactivity
+- Remove underlines when the user cannot determine its interactivity
 
 ```jsx
 <Link removeUnderline>Learn more about Fraud Protect.</Link>

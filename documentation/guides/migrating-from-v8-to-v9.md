@@ -70,7 +70,7 @@ const App = (props) => (
 )
 ```
 
-The `CustomProperties` component will generate Polaris custom properties (`--p-*`) based on the `colorScheme` prop and make them accessible to all it's descendants.
+The `CustomProperties` component will generate Polaris custom properties (`--p-*`) based on the `colorScheme` prop and make them accessible to all its descendants.
 
 > Note: `colorScheme="inverse"` has been deprecated and requires authors to explicitly set `light` or `dark` values.
 
