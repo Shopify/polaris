@@ -6,21 +6,20 @@ import {sanitizeCustomProperties} from '../../utilities/css';
 import styles from './Bleed.scss';
 
 export interface BleedProps {
-  /** Elements to display inside tile */
-  children: React.ReactNode;
-  /** Negative horizontal space around the element
-   * * @default '5'
+  children?: React.ReactNode;
+  /** Negative horizontal space around children
+   * @default '5'
    */
   horizontal?: SpacingSpaceScale;
-  /** Negative vertical space around the element */
+  /** Negative vertical space around children */
   vertical?: SpacingSpaceScale;
-  /** Negative top space around the element */
+  /** Negative top space around children */
   top?: SpacingSpaceScale;
-  /** Negative bottom space around the element */
+  /** Negative bottom space around children */
   bottom?: SpacingSpaceScale;
-  /** Negative left space around the element */
+  /** Negative left space around children */
   left?: SpacingSpaceScale;
-  /** Negative right space around the element */
+  /** Negative right space around children */
   right?: SpacingSpaceScale;
 }
 
