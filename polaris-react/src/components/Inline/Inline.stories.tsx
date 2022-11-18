@@ -1,6 +1,13 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Badge, Icon, Inline, Thumbnail} from '@shopify/polaris';
+import {
+  Box,
+  Badge,
+  Icon,
+  Inline,
+  Thumbnail,
+  AlphaStack,
+} from '@shopify/polaris';
 import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -162,11 +169,33 @@ export function NonWrapping() {
 
 export function Gap() {
   return (
-    <Inline gap="8">
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
-    </Inline>
+    <AlphaStack>
+      <Inline gap="8">
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+
+      <Inline gap={{xs: '2', md: '4'}}>
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+    </AlphaStack>
+  );
+}
+
+export function GapResponsive() {
+  return (
+    <AlphaStack>
+      <Inline gap={{xs: '2', md: '4'}}>
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+    </AlphaStack>
   );
 }
