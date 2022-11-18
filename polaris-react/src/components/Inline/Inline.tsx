@@ -32,7 +32,7 @@ export interface InlineProps {
    * gap='2'
    * gap={{xs: '2', md: '4'}}
    */
-  gap?: Spacing;
+  gap?: Gap;
   /** Wrap stack elements to additional rows as needed on small screens
    * @default true
    */
