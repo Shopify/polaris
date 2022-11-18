@@ -17,9 +17,9 @@ export function Default() {
   );
 }
 
-export function Spacing() {
+export function Gap() {
   return (
-    <AlphaStack spacing="8">
+    <AlphaStack gap="8">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
@@ -61,9 +61,9 @@ export function FullWidthChildren() {
   );
 }
 
-export function ResponsiveSpacing() {
+export function ResponsiveGap() {
   return (
-    <AlphaStack spacing={{xs: '4', md: '10'}}>
+    <AlphaStack gap={{xs: '4', md: '10'}}>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>

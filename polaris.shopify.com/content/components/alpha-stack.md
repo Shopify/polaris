@@ -6,16 +6,16 @@ keywords:
   - layout
 status:
   value: Alpha
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
+  message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
   - fileName: alpha-stack-default.tsx
     title: Default
     description: >-
       By default, stack is left aligned and stacked items are spaced with 16px in between.
-  - fileName: alpha-stack-with-spacing.tsx
-    title: Spacing
+  - fileName: alpha-stack-with-gap.tsx
+    title: Gap
     description: >-
-      Spacing between stack child can be adjusted using the Space token.
+      Gaps between stack children can be adjusted using the Space token.
   - fileName: alpha-stack-with-full-width-children.tsx
     title: Full width
     description: >-
@@ -28,4 +28,4 @@ examples:
 
 ## Related components
 
-- To display elements horizontally, use [Inline](https://polaris.shopify.com/components/inline).
+- To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/inline).

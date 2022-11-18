@@ -4,7 +4,11 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
@@ -12,45 +16,32 @@ type Columns = {
   [Breakpoint in BreakpointsAlias]?: number | string;
 };
 
-type Spacing = {
-  [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
-};
+type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface ColumnsProps {
-  /** The spacing between columns
-   * @default '4'
-   */
-  spacing?: Spacing;
+  /** Elements to display inside columns */
+  children?: React.ReactNode;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
   columns?: Columns;
-  /** Elements to display inside columns */
-  children?: React.ReactNode;
+  /** The spacing between columns. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @default '4'
+   * @example
+   * gap='2'
+   * gap={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
+   */
+  gap?: Gap;
 }
 
-export function Columns({columns, children, spacing}: ColumnsProps) {
+export function Columns({children, columns, gap = '4'}: ColumnsProps) {
   const style = {
     '--pc-columns-xs': formatColumns(columns?.xs || 6),
     '--pc-columns-sm': formatColumns(columns?.sm),
     '--pc-columns-md': formatColumns(columns?.md),
     '--pc-columns-lg': formatColumns(columns?.lg),
     '--pc-columns-xl': formatColumns(columns?.xl),
-    '--pc-columns-space-xs': spacing?.xs
-      ? `var(--p-space-${spacing?.xs})`
-      : undefined,
-    '--pc-columns-space-sm': spacing?.sm
-      ? `var(--p-space-${spacing?.sm})`
-      : undefined,
-    '--pc-columns-space-md': spacing?.md
-      ? `var(--p-space-${spacing?.md})`
-      : undefined,
-    '--pc-columns-space-lg': spacing?.lg
-      ? `var(--p-space-${spacing?.lg})`
-      : undefined,
-    '--pc-columns-space-xl': spacing?.xl
-      ? `var(--p-space-${spacing?.xl})`
-      : undefined,
+    ...getResponsiveProps('columns', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return (

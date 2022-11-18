@@ -8,8 +8,6 @@ import styles from './Bleed.scss';
 export interface BleedProps {
   /** Elements to display inside tile */
   children: React.ReactNode;
-  /** Negative space around the element */
-  spacing?: SpacingSpaceScale;
   /** Negative horizontal space around the element
    * * @default '5'
    */
@@ -27,7 +25,6 @@ export interface BleedProps {
 }
 
 export const Bleed = ({
-  spacing,
   horizontal = '5',
   vertical,
   top,
@@ -55,8 +52,6 @@ export const Bleed = ({
       return directionValues.horizontal;
     } else if (!xAxis.includes(direction) && vertical) {
       return directionValues.vertical;
-    } else {
-      return spacing;
     }
   };
 

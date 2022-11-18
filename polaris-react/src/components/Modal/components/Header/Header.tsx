@@ -8,11 +8,18 @@ import styles from './Header.scss';
 export interface HeaderProps {
   id: string;
   titleHidden: boolean;
+  closing: boolean;
   children?: React.ReactNode;
   onClose(): void;
 }
 
-export function Header({id, titleHidden, children, onClose}: HeaderProps) {
+export function Header({
+  id,
+  titleHidden,
+  closing,
+  children,
+  onClose,
+}: HeaderProps) {
   return (
     <div
       className={titleHidden || !children ? styles.titleHidden : styles.Header}
@@ -22,7 +29,11 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
           {children}
         </Text>
       </div>
-      <CloseButton titleHidden={titleHidden} onClick={onClose} />
+      <CloseButton
+        pressed={closing}
+        titleHidden={titleHidden}
+        onClick={onClose}
+      />
     </div>
   );
 }

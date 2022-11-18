@@ -24,7 +24,7 @@ export interface InlineProps {
   /** The spacing between elements
    * @default '4'
    */
-  spacing?: SpacingSpaceScale;
+  gap?: SpacingSpaceScale;
   /** Wrap stack elements to additional rows as needed on small screens
    * @default true
    */
@@ -36,7 +36,7 @@ export interface InlineProps {
 export const Inline = function Inline({
   align = 'start',
   blockAlign = 'center',
-  spacing = '4',
+  gap = '4',
   wrap = true,
   children,
 }: InlineProps) {
@@ -44,7 +44,7 @@ export const Inline = function Inline({
     '--pc-inline-align': align,
     '--pc-inline-block-align': blockAlign,
     '--pc-inline-wrap': wrap ? 'wrap' : 'nowrap',
-    '--pc-inline-spacing': `var(--p-space-${spacing})`,
+    '--pc-inline-gap': `var(--p-space-${gap})`,
   } as React.CSSProperties;
 
   return (

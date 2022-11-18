@@ -1,5 +1,32 @@
 # polaris.shopify.com
 
+## 0.25.0
+
+### Minor Changes
+
+- [#7721](https://github.com/Shopify/polaris/pull/7721) [`f490f8e7c`](https://github.com/Shopify/polaris/commit/f490f8e7c0a222b4c3e6cd0c3b259e2e0f54396c) Thanks [@jjgali](https://github.com/jjgali)! - Updated and realigned values in Unit of measurement abbreviations table
+
+* [#7661](https://github.com/Shopify/polaris/pull/7661) [`e1a3c62d2`](https://github.com/Shopify/polaris/commit/e1a3c62d23d164462801c36f28164689534439ef) Thanks [@jjgali](https://github.com/jjgali)! - Added keywords to Naming page.
+
+- [#7712](https://github.com/Shopify/polaris/pull/7712) [`88e1d875f`](https://github.com/Shopify/polaris/commit/88e1d875f859081edbb0e64dc350dd2f65600d75) Thanks [@jjgali](https://github.com/jjgali)! - Fixed abbrevation for pounds from lbs to lb.
+
+### Patch Changes
+
+- [#7711](https://github.com/Shopify/polaris/pull/7711) [`3984f26b6`](https://github.com/Shopify/polaris/commit/3984f26b69b93bf621392e16e2d842619c4fbdd4) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated the related components copy in `AlphaStack`
+
+* [#7569](https://github.com/Shopify/polaris/pull/7569) [`ffe1e9230`](https://github.com/Shopify/polaris/commit/ffe1e923092df65906ed7aeb0944bdfb8cb2375b) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Tiles` component guidance and examples
+
+- [#7698](https://github.com/Shopify/polaris/pull/7698) [`f0e75bd0c`](https://github.com/Shopify/polaris/commit/f0e75bd0c88ef368c3137f71fa3afc4d851eb5d4) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated the Related components links in Columns
+
+* [#7713](https://github.com/Shopify/polaris/pull/7713) [`b649af84f`](https://github.com/Shopify/polaris/commit/b649af84f3c373b9f36bd99d3ab0462cfff4f32b) Thanks [@nayeobkim](https://github.com/nayeobkim)! - Updated the related components links in `Tiles`
+
+- [#7594](https://github.com/Shopify/polaris/pull/7594) [`faf3dc646`](https://github.com/Shopify/polaris/commit/faf3dc64682489c6feb8f802b29acd5ae7d5571b) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Box` component guidance and examples
+
+* [#7659](https://github.com/Shopify/polaris/pull/7659) [`d28259746`](https://github.com/Shopify/polaris/commit/d282597468aafd61bebc4b346c4ff11e9e214e25) Thanks [@kyledurand](https://github.com/kyledurand)! - Added global styles from deps instead of linking unpkg
+
+* Updated dependencies [[`bdf6fd31d`](https://github.com/Shopify/polaris/commit/bdf6fd31dba47da980ce1c133d9adf61a39bdf12), [`217f2f8ed`](https://github.com/Shopify/polaris/commit/217f2f8edd6e0c8ced5d697739efd48a5fb78fb1), [`2e5f8348b`](https://github.com/Shopify/polaris/commit/2e5f8348bd8be1de0c8294453da8cfd918e1e034), [`c1c8f73b0`](https://github.com/Shopify/polaris/commit/c1c8f73b0f0bc7ab1e2be1ad824a3aa2dded3326), [`270887fcf`](https://github.com/Shopify/polaris/commit/270887fcfeff76ab7d70fb49c5f6b2637b5d20ba), [`6b915e01e`](https://github.com/Shopify/polaris/commit/6b915e01ea89a6213804e581478222c04579175d)]:
+  - @shopify/polaris@10.12.0
+
 ## 0.24.0
 
 ### Minor Changes

@@ -8,11 +8,16 @@ import {Icon} from '../../../Icon';
 import styles from './CloseButton.scss';
 
 export interface CloseButtonProps {
+  pressed?: boolean;
   titleHidden?: boolean;
   onClick(): void;
 }
 
-export function CloseButton({titleHidden = false, onClick}: CloseButtonProps) {
+export function CloseButton({
+  pressed,
+  titleHidden = false,
+  onClick,
+}: CloseButtonProps) {
   const i18n = useI18n();
 
   return (
@@ -21,6 +26,7 @@ export function CloseButton({titleHidden = false, onClick}: CloseButtonProps) {
       className={classNames(
         styles.CloseButton,
         titleHidden && styles.titleHidden,
+        pressed && styles.pressed,
       )}
       aria-label={i18n.translate('Polaris.Common.close')}
     >
