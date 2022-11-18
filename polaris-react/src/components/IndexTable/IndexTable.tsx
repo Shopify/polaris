@@ -16,7 +16,6 @@ import {Stack} from '../Stack';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {Text} from '../Text';
-import {VisuallyHidden} from '../VisuallyHidden';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
 import {
