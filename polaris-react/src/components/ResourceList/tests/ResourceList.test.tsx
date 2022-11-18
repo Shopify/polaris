@@ -971,9 +971,7 @@ describe('<ResourceList />', () => {
             />,
           );
 
-          resourceList
-            .find(CheckableButton, {plain: true})!
-            .trigger('onToggleAll');
+          resourceList.find(CheckableButton)!.trigger('onToggleAll');
 
           const deselectAllCheckbox = resourceList
             .find(SelectAllActions)!
@@ -999,7 +997,7 @@ describe('<ResourceList />', () => {
             .trigger('onToggleAll');
 
           const selectAllCheckableCheckbox = resourceList
-            .findAll(CheckableButton, {plain: true})[0]!
+            .findAll(CheckableButton)[1]!
             .find('input', {type: 'checkbox'})!;
 
           expect(document.activeElement).toBe(

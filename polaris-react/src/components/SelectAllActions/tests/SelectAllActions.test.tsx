@@ -154,16 +154,6 @@ describe('<SelectAllActions />', () => {
           expect(cssTransitionComponent).toHaveReactProps({in: true});
         });
       });
-
-      it('is passed down to CheckableButton', () => {
-        const selectAllActions = mountWithApp(
-          <SelectAllActions {...selectAllActionProps} selectMode />,
-        );
-        const checkableButton = selectAllActions.findAll(CheckableButton);
-        checkableButton.forEach((checkableButtonComponent) => {
-          expect(checkableButtonComponent).toHaveReactProps({selectMode: true});
-        });
-      });
     });
 
     describe('disabled', () => {

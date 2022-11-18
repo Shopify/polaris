@@ -473,65 +473,6 @@ describe('<IndexTable>', () => {
         true,
       );
     });
-
-    it('passes smallScreen to bulk actions', () => {
-      const promotedActions = [{content: 'PromotedAction'}];
-
-      const indexTable = mountWithApp(
-        <IndexTable
-          {...defaultProps}
-          selectable
-          selectedItemsCount={1}
-          itemCount={2}
-          promotedBulkActions={promotedActions}
-        >
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      indexTable.find(SelectAllActions)!.trigger('onToggleAll');
-
-      expect(indexTable).toContainReactComponent(SelectAllActions, {
-        smallScreen: expect.any(Boolean),
-      });
-    });
-
-    it('passes an updated smallScreen value to bulk actions after resize', () => {
-      Object.defineProperty(window, 'innerWidth', {
-        value: 1000,
-      });
-
-      const promotedActions = [{content: 'PromotedAction'}];
-
-      const indexTable = mountWithApp(
-        <IndexTable
-          {...defaultProps}
-          selectable
-          selectedItemsCount={1}
-          itemCount={2}
-          promotedBulkActions={promotedActions}
-        >
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      indexTable.find(SelectAllActions)!.trigger('onToggleAll');
-
-      expect(indexTable).toContainReactComponent(SelectAllActions, {
-        smallScreen: false,
-      });
-
-      indexTable.act(() => {
-        Object.defineProperty(window, 'innerWidth', {
-          value: 300,
-        });
-        window.dispatchEvent(new Event('resize'));
-      });
-
-      expect(indexTable).toContainReactComponent(SelectAllActions, {
-        smallScreen: true,
-      });
-    });
   });
 
   describe('condensed', () => {
