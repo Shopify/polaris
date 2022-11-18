@@ -69,8 +69,12 @@ export type BackgroundColors =
   | ColorsSurfaceTokenAlias;
 
 export interface BoxProps {
-  /** HTML Element type */
+  /** HTML Element type
+   * @default 'div'
+   */
   as?: Element;
+  /** Elements to display inside box */
+  children?: React.ReactNode;
   /** Background color */
   background?: BackgroundColors;
   /** Border style */
@@ -91,7 +95,7 @@ export interface BoxProps {
   borderRadiusEndEnd?: BorderRadiusTokenScale;
   /** Vertical start horizontal start border radius */
   borderRadiusStartStart?: BorderRadiusTokenScale;
-  /** Verital start horizontal end border radius */
+  /** Vertical start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
   /** Border width */
   borderWidth?: ShapeBorderWidthScale;
@@ -147,12 +151,10 @@ export interface BoxProps {
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
   paddingInlineEnd?: Spacing;
-  /** Shadow */
+  /** Shadow color on box */
   shadow?: DepthShadowAlias;
   /** Width of container */
   width?: string;
-  /** Elements to display inside box */
-  children?: React.ReactNode;
   // These could be moved to new layout component(s) in the future
   /** Position of the box */
   position?: Position;

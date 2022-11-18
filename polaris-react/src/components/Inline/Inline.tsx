@@ -18,11 +18,13 @@ type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface InlineProps {
-  /** Adjust horizontal alignment of elements
+  /** Elements to display inside stack */
+  children?: React.ReactNode;
+  /** Horizontal alignment of children
    * @default 'start'
    */
   align?: Align;
-  /** Adjust vertical alignment of elements
+  /** Vertical alignment of children
    * @default 'center'
    */
   blockAlign?: BlockAlign;
@@ -37,8 +39,6 @@ export interface InlineProps {
    * @default true
    */
   wrap?: boolean;
-  /** Elements to display inside stack */
-  children?: React.ReactNode;
 }
 
 export const Inline = function Inline({

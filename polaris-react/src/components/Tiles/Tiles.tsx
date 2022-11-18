@@ -15,15 +15,20 @@ type Gap = {
 };
 
 export interface TilesProps {
-  /** Elements to display inside tile */
+  /** Elements to display inside tiles */
   children: React.ReactNode;
-  /** Adjust spacing between elements */
-  gap?: Gap;
-  /** Adjust number of columns */
+  /** The number of columns to display
+   * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
+   */
   columns?: Columns;
+  /** The spacing between children. Accepts an object of spacing tokens for different screen sizes.
+   * @default {xs: 4, sm: 4, md: 4, lg: 4, xl: 4}
+   * @example gap={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
+   */
+  gap?: Gap;
 }
 
-export const Tiles = ({children, gap, columns}: TilesProps) => {
+export const Tiles = ({children, columns, gap}: TilesProps) => {
   const style = {
     '--pc-tile-gap-xs': gap?.xs ? `var(--p-space-${gap?.xs})` : undefined,
     '--pc-tile-gap-sm': gap?.sm ? `var(--p-space-${gap?.sm})` : undefined,
