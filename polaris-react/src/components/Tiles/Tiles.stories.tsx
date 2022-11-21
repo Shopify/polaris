@@ -32,7 +32,7 @@ export function Default() {
   );
 }
 
-export function LargeGap() {
+export function WithLargeGap() {
   return (
     <Tiles columns={{xs: 2}} gap={{xs: '10'}}>
       {children}
@@ -40,7 +40,7 @@ export function LargeGap() {
   );
 }
 
-export function ManyColumns() {
+export function WithManyColumns() {
   const children = Array.from(Array(10)).map((ele, index) => (
     <div key={index} style={styles}>
       <Text as="h2" variant="headingMd">
