@@ -158,13 +158,13 @@ export interface BoxProps {
   /** Position of box */
   position?: Position;
   /** Top position of box */
-  top?: Spacing;
+  insetBlockStart?: Spacing;
   /** Bottom position of box */
-  right?: Spacing;
+  insetBlockEnd?: Spacing;
   /** Left position of box */
-  bottom?: Spacing;
+  insetInlineStart?: Spacing;
   /** Right position of box */
-  left?: Spacing;
+  insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
   /** Visually hide the contents (still announced by screenreader) */
@@ -210,10 +210,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       width,
       visuallyHidden,
       position,
-      top,
-      right,
-      bottom,
-      left,
+      insetBlockStart,
+      insetBlockEnd,
+      insetInlineStart,
+      insetInlineEnd,
       zIndex,
       opacity,
     },
@@ -298,10 +298,18 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
       position,
-      '--pc-box-top': top ? `var(--p-space-${top})` : undefined,
-      '--pc-box-right': right ? `var(--p-space-${right})` : undefined,
-      '--pc-box-bottom': bottom ? `var(--p-space-${bottom})` : undefined,
-      '--pc-box-left': left ? `var(--p-space-${left})` : undefined,
+      '--pc-box-inset-block-start': insetBlockStart
+        ? `var(--p-space-${insetBlockStart})`
+        : undefined,
+      '--pc-box-inset-block-end': insetBlockEnd
+        ? `var(--p-space-${insetBlockEnd})`
+        : undefined,
+      '--pc-box-inset-inline-start': insetInlineStart
+        ? `var(--p-space-${insetInlineStart})`
+        : undefined,
+      '--pc-box-inset-inline-end': insetInlineEnd
+        ? `var(--p-space-${insetInlineEnd})`
+        : undefined,
       zIndex,
       opacity,
     } as React.CSSProperties;
