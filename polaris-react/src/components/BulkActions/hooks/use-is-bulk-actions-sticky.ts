@@ -30,13 +30,12 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
       const maxWidth = box.width;
       const offsetLeft = box.left;
 
-      return {
-        offsetHeight,
-        offsetLeft,
-        maxWidth,
-      };
+      setBulkActionsAbsoluteOffset(offsetHeight);
+      setBulkActionsMaxWidth(maxWidth);
+      setBulkActionsOffsetLeft(offsetLeft);
     }
-    const {offsetHeight, offsetLeft, maxWidth} = computeTableDimensions();
+
+    computeTableDimensions();
 
     const debouncedComputeTableHeight = debounce(
       computeTableDimensions,
@@ -45,10 +44,6 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
         trailing: true,
       },
     );
-
-    setBulkActionsAbsoluteOffset(offsetHeight);
-    setBulkActionsMaxWidth(maxWidth);
-    setBulkActionsOffsetLeft(offsetLeft);
 
     window.addEventListener('resize', debouncedComputeTableHeight);
 
