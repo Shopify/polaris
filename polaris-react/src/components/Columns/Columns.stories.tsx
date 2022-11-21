@@ -7,7 +7,7 @@ export default {
   component: Columns,
 } as ComponentMeta<typeof Columns>;
 
-export function BasicColumns() {
+export function Default() {
   return (
     <Page fullWidth>
       <Columns>
@@ -22,7 +22,7 @@ export function BasicColumns() {
   );
 }
 
-export function ColumnsWithTemplateColumns() {
+export function WithTemplateColumns() {
   return (
     <Page fullWidth>
       <Columns
@@ -32,7 +32,6 @@ export function ColumnsWithTemplateColumns() {
           md: '1fr 3fr auto 1fr',
           lg: '1fr 4fr auto 2fr 3fr auto',
         }}
-        gap={{xs: '4'}}
       >
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
@@ -45,7 +44,7 @@ export function ColumnsWithTemplateColumns() {
   );
 }
 
-export function ColumnsWithMixedPropTypes() {
+export function WithMixedPropTypes() {
   return (
     <Page fullWidth>
       <Columns
@@ -63,12 +62,24 @@ export function ColumnsWithMixedPropTypes() {
   );
 }
 
-export function ColumnsWithVaryingGap() {
+export function WithGap() {
+  return (
+    <Page fullWidth>
+      <Columns columns={{xs: 3}} gap="5">
+        <div style={{background: 'aquamarine'}}>Column one</div>
+        <div style={{background: 'aquamarine'}}>Column two</div>
+        <div style={{background: 'aquamarine'}}>Column three</div>
+      </Columns>
+    </Page>
+  );
+}
+
+export function WithResponsiveGap() {
   return (
     <Page fullWidth>
       <Columns
         columns={{xs: 3}}
-        gap={{xs: '025', sm: '05', md: '1', lg: '2', xl: '4'}}
+        gap={{xs: '025', sm: '4', md: '6', lg: '8', xl: '10'}}
       >
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
@@ -78,7 +89,7 @@ export function ColumnsWithVaryingGap() {
   );
 }
 
-export function ColumnsWithFreeAndFixedWidths() {
+export function WithFreeAndFixedWidths() {
   return (
     <Page fullWidth>
       <Columns columns={{xs: '1fr auto auto'}} gap={{xs: '05'}}>

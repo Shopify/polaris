@@ -17,7 +17,7 @@ export function Default() {
   );
 }
 
-export function Gap() {
+export function WithGap() {
   return (
     <AlphaStack gap="8">
       <Badge>Paid</Badge>
@@ -28,7 +28,18 @@ export function Gap() {
   );
 }
 
-export function AlignCenter() {
+export function WithResponsiveGap() {
+  return (
+    <AlphaStack gap={{xs: '4', md: '10'}}>
+      <Badge>Paid</Badge>
+      <Badge>Processing</Badge>
+      <Badge>Fulfilled</Badge>
+      <Badge>Completed</Badge>
+    </AlphaStack>
+  );
+}
+
+export function WithAlignCenter() {
   return (
     <AlphaStack align="center">
       <Badge>Paid</Badge>
@@ -39,7 +50,7 @@ export function AlignCenter() {
   );
 }
 
-export function AlignEnd() {
+export function WithAlignEnd() {
   return (
     <AlphaStack align="end">
       <Badge>Paid</Badge>
@@ -50,20 +61,9 @@ export function AlignEnd() {
   );
 }
 
-export function FullWidthChildren() {
+export function WithFullWidthChildren() {
   return (
     <AlphaStack fullWidth>
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
-    </AlphaStack>
-  );
-}
-
-export function ResponsiveGap() {
-  return (
-    <AlphaStack gap={{xs: '4', md: '10'}}>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
