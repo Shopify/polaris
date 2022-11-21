@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaCard, Bleed, Box, Text} from '@shopify/polaris';
+import {AlphaCard, Bleed, Box, Stack, Text} from '@shopify/polaris';
 
 export default {
   component: Bleed,
@@ -16,17 +16,19 @@ const styles = {
 export function Default() {
   return (
     <AlphaCard>
-      <Text as="p" variant="bodySm">
-        Section 01
-      </Text>
+      <Box paddingBlockEnd="5">
+        <Text as="p" variant="bodySm">
+          Section 01
+        </Text>
+      </Box>
       <Bleed>
-        <Box paddingBlockStart="2" paddingBlockEnd="2">
-          <Box borderBlockStart="base" />
-        </Box>
+        <Box borderBlockStart="base" />
       </Bleed>
-      <Text as="p" variant="bodySm">
-        Section 02
-      </Text>
+      <Box paddingBlockStart="5">
+        <Text as="p" variant="bodySm">
+          Section 02
+        </Text>
+      </Box>
     </AlphaCard>
   );
 }
@@ -44,7 +46,7 @@ export function WithVerticalDirection() {
 export function WithHorizontalDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed horizontal="6">
+      <Bleed marginInline="6">
         <div style={styles} />
       </Bleed>
     </Box>
@@ -64,7 +66,7 @@ export function WithSpecificDirection() {
 export function WithAllDirection() {
   return (
     <Box background="surface" padding="4">
-      <Bleed horizontal="6" vertical="6">
+      <Bleed marginInline="6" marginBlock="6">
         <div style={styles} />
       </Bleed>
     </Box>
