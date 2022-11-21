@@ -76,9 +76,9 @@ export function AccountConnection({
   return (
     <AlphaCard>
       <SettingAction action={actionElement}>
-        <Inline spacing="4">
+        <Inline gap="4">
           {avatarMarkup}
-          <AlphaStack spacing="2">
+          <AlphaStack gap="2">
             {titleMarkup}
             {detailsMarkup}
           </AlphaStack>

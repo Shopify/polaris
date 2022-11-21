@@ -19,7 +19,7 @@ export function Default() {
   );
 }
 
-export function BackgroundSubdued() {
+export function WithBackgroundSubdued() {
   return (
     <AlphaCard background="surface-subdued">
       <AlphaStack gap="5">
@@ -32,7 +32,7 @@ export function BackgroundSubdued() {
   );
 }
 
-export function BorderRadiusRoundedAbove() {
+export function WithBorderRadiusRoundedAbove() {
   return (
     <AlphaCard roundedAbove="sm">
       <AlphaStack gap="5">

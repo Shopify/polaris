@@ -1,6 +1,8 @@
+@import '../../styles/common';
+
 .Inline {
+  @include responsive-props('inline', 'gap', 'gap');
   display: flex;
-  gap: var(--pc-inline-gap);
   flex-wrap: var(--pc-inline-wrap);
   align-items: var(--pc-inline-block-align);
   justify-content: var(--pc-inline-align);

@@ -15,7 +15,6 @@ type CardBackgroundColorTokenScale = Extract<
 >;
 
 export interface AlphaCardProps {
-  /** Elements to display inside card */
   children?: React.ReactNode;
   /** Background color
    * @default 'surface'
