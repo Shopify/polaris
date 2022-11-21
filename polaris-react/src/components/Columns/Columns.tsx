@@ -19,13 +19,12 @@ type Columns = {
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface ColumnsProps {
-  /** Elements to display inside columns */
   children?: React.ReactNode;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
   columns?: Columns;
-  /** The spacing between columns. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+  /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @default '4'
    * @example
    * gap='2'

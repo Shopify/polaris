@@ -1,6 +1,13 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Badge, Icon, Inline, Thumbnail} from '@shopify/polaris';
+import {
+  Box,
+  Badge,
+  Icon,
+  Inline,
+  Thumbnail,
+  AlphaStack,
+} from '@shopify/polaris';
 import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -20,7 +27,7 @@ export function Default() {
   );
 }
 
-export function AlignStart() {
+export function WithAlignStart() {
   return (
     <Inline align="start" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -31,7 +38,7 @@ export function AlignStart() {
   );
 }
 
-export function AlignCenter() {
+export function WithAlignCenter() {
   return (
     <Inline align="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -42,7 +49,7 @@ export function AlignCenter() {
   );
 }
 
-export function AlignEnd() {
+export function WithAlignEnd() {
   return (
     <Inline align="end" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -53,7 +60,7 @@ export function AlignEnd() {
   );
 }
 
-export function AlignSpaceAround() {
+export function WithAlignSpaceAround() {
   return (
     <Inline align="space-around" gap="1">
       <Badge>One</Badge>
@@ -63,7 +70,7 @@ export function AlignSpaceAround() {
   );
 }
 
-export function AlignSpaceBetween() {
+export function WithAlignSpaceBetween() {
   return (
     <Inline align="space-between" gap="1">
       <Badge>One</Badge>
@@ -73,7 +80,7 @@ export function AlignSpaceBetween() {
   );
 }
 
-export function AlignSpaceEvenly() {
+export function WithAlignSpaceEvenly() {
   return (
     <Inline align="space-evenly" gap="1">
       <Badge>One</Badge>
@@ -83,7 +90,7 @@ export function AlignSpaceEvenly() {
   );
 }
 
-export function BlockAlignCenter() {
+export function WithBlockAlignCenter() {
   return (
     <Inline blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -94,7 +101,7 @@ export function BlockAlignCenter() {
   );
 }
 
-export function BlockAlignStart() {
+export function WithBlockAlignStart() {
   return (
     <Inline blockAlign="start" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -105,7 +112,7 @@ export function BlockAlignStart() {
   );
 }
 
-export function BlockAlignEnd() {
+export function WithBlockAlignEnd() {
   return (
     <Inline blockAlign="end" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -116,7 +123,7 @@ export function BlockAlignEnd() {
   );
 }
 
-export function BlockAlignBaseline() {
+export function WithBlockAlignBaseline() {
   return (
     <Inline blockAlign="baseline" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -127,7 +134,7 @@ export function BlockAlignBaseline() {
   );
 }
 
-export function BlockAlignStrech() {
+export function WithBlockAlignStrech() {
   return (
     <Inline blockAlign="stretch" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -138,7 +145,7 @@ export function BlockAlignStrech() {
   );
 }
 
-export function AlignCenterBlockAlignCenter() {
+export function WithAlignCenterBlockAlignCenter() {
   return (
     <Inline align="center" blockAlign="center" gap="1">
       <Thumbnail source={ImageMajor} alt="example" />
@@ -149,7 +156,7 @@ export function AlignCenterBlockAlignCenter() {
   );
 }
 
-export function NonWrapping() {
+export function WithNonWrapping() {
   return (
     <Inline wrap={false} gap="1">
       <Badge>Paid</Badge>
@@ -160,13 +167,35 @@ export function NonWrapping() {
   );
 }
 
-export function Gap() {
+export function WithGap() {
   return (
-    <Inline gap="8">
-      <Badge>Paid</Badge>
-      <Badge>Processing</Badge>
-      <Badge>Fulfilled</Badge>
-      <Badge>Completed</Badge>
-    </Inline>
+    <AlphaStack>
+      <Inline gap="8">
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+
+      <Inline gap={{xs: '2', md: '4'}}>
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+    </AlphaStack>
+  );
+}
+
+export function WithResponsiveGap() {
+  return (
+    <AlphaStack>
+      <Inline gap={{xs: '2', md: '4'}}>
+        <Badge>Paid</Badge>
+        <Badge>Processing</Badge>
+        <Badge>Fulfilled</Badge>
+        <Badge>Completed</Badge>
+      </Inline>
+    </AlphaStack>
   );
 }

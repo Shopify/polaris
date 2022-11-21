@@ -69,7 +69,10 @@ export type BackgroundColors =
   | ColorsSurfaceTokenAlias;
 
 export interface BoxProps extends React.AriaAttributes {
-  /** HTML Element type */
+  children?: React.ReactNode;
+  /** HTML Element type
+   * @default 'div'
+   */
   as?: Element;
   /** Background color */
   background?: BackgroundColors;
@@ -91,7 +94,7 @@ export interface BoxProps extends React.AriaAttributes {
   borderRadiusEndEnd?: BorderRadiusTokenScale;
   /** Vertical start horizontal start border radius */
   borderRadiusStartStart?: BorderRadiusTokenScale;
-  /** Verital start horizontal end border radius */
+  /** Vertical start horizontal end border radius */
   borderRadiusStartEnd?: BorderRadiusTokenScale;
   /** Border width */
   borderWidth?: ShapeBorderWidthScale;
@@ -147,28 +150,26 @@ export interface BoxProps extends React.AriaAttributes {
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
   paddingInlineEnd?: Spacing;
-  /** Shadow */
+  /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Width of container */
   width?: string;
-  /** Elements to display inside box */
-  children?: React.ReactNode;
   // These could be moved to new layout component(s) in the future
-  /** Position of the box */
+  /** Position of box */
   position?: Position;
-  /** Top position of the box */
+  /** Top position of box */
   top?: Spacing;
-  /** Bottom position of the box */
+  /** Bottom position of box */
   right?: Spacing;
-  /** Left position of the box */
+  /** Left position of box */
   bottom?: Spacing;
-  /** Right position of the box */
+  /** Right position of box */
   left?: Spacing;
-  /** Opcity of the box */
+  /** Opacity of box */
   opacity?: string;
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
-  /** z-index of the box */
+  /** z-index of box */
   zIndex?: string;
 }
 
