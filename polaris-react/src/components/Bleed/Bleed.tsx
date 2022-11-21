@@ -10,67 +10,67 @@ export interface BleedProps {
   /** Negative horizontal space around children
    * @default '5'
    */
-  horizontal?: SpacingSpaceScale;
+  marginInline?: SpacingSpaceScale;
   /** Negative vertical space around children */
-  vertical?: SpacingSpaceScale;
+  marginBlock?: SpacingSpaceScale;
   /** Negative top space around children */
-  top?: SpacingSpaceScale;
+  marginBlockStart?: SpacingSpaceScale;
   /** Negative bottom space around children */
-  bottom?: SpacingSpaceScale;
+  marginBlockEnd?: SpacingSpaceScale;
   /** Negative left space around children */
-  left?: SpacingSpaceScale;
+  marginInlineStart?: SpacingSpaceScale;
   /** Negative right space around children */
-  right?: SpacingSpaceScale;
+  marginInlineEnd?: SpacingSpaceScale;
 }
 
 export const Bleed = ({
-  horizontal = '5',
-  vertical,
-  top,
-  bottom,
-  left,
-  right,
+  marginInline = '5',
+  marginBlock,
+  marginBlockStart,
+  marginBlockEnd,
+  marginInlineStart,
+  marginInlineEnd,
   children,
 }: BleedProps) => {
   const getNegativeMargins = (direction: string) => {
-    const xAxis = ['left', 'right'];
-    const yAxis = ['top', 'bottom'];
+    const xAxis = ['marginInlineStart', 'marginInlineEnd'];
+    const yAxis = ['marginBlockStart', 'marginBlockEnd'];
 
     const directionValues: {[key: string]: string | undefined} = {
-      top,
-      bottom,
-      left,
-      right,
-      horizontal,
-      vertical,
+      marginBlockStart,
+      marginBlockEnd,
+      marginInlineStart,
+      marginInlineEnd,
+      marginInline,
+      marginBlock,
     };
 
     if (directionValues[direction]) {
       return directionValues[direction];
-    } else if (!yAxis.includes(direction) && horizontal) {
-      return directionValues.horizontal;
-    } else if (!xAxis.includes(direction) && vertical) {
-      return directionValues.vertical;
+    } else if (xAxis.includes(direction) && marginInline) {
+      return directionValues.marginInline;
+    } else if (yAxis.includes(direction) && marginBlock) {
+      return directionValues.marginBlock;
     }
   };
 
-  const negativeTop = getNegativeMargins('top');
-  const negativeLeft = getNegativeMargins('left');
-  const negativeRight = getNegativeMargins('right');
-  const negativeBottom = getNegativeMargins('bottom');
+  const negativeMarginBlockStart = getNegativeMargins('marginBlockStart');
+  const negativeMarginBlockEnd = getNegativeMargins('marginBlockEnd');
+  const negativeMarginInlineStart = getNegativeMargins('marginInlineStart');
+  const negativeMarginInlineEnd = getNegativeMargins('marginInlineEnd');
 
   const style = {
-    '--pc-bleed-margin-bottom': negativeBottom
-      ? `var(--p-space-${negativeBottom})`
+    '--pc-bleed-margin-block-start': negativeMarginBlockStart
+      ? `var(--p-space-${negativeMarginBlockStart})`
       : undefined,
-    '--pc-bleed-margin-left': negativeLeft
-      ? `var(--p-space-${negativeLeft})`
+    '--pc-bleed-margin-block-end': negativeMarginBlockEnd
+      ? `var(--p-space-${negativeMarginBlockEnd})`
       : undefined,
-    '--pc-bleed-margin-right': negativeRight
-      ? `var(--p-space-${negativeRight})`
+    '--pc-bleed-margin-inline-start': negativeMarginInlineStart
+      ? `var(--p-space-${negativeMarginInlineStart})`
       : undefined,
-    '--pc-bleed-margin-top': negativeTop
-      ? `var(--p-space-${negativeTop})`
+    '--pc-bleed-margin-inline-end': negativeMarginInlineEnd
+      ? `var(--p-space-${negativeMarginInlineEnd})`
       : undefined,
   } as React.CSSProperties;
 
