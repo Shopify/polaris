@@ -28,6 +28,8 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
+const BUTTONS_NODE_ADDITIONAL_WIDTH = 32;
+
 export interface BulkActionsProps {
   /** List is in a selectable state */
   selectMode?: boolean;
@@ -101,7 +103,13 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       return 0;
     }
 
-    if (containerWidth >= this.bulkActionsWidth || measuring) {
+    const containerWidthMinusAdditionalWidth =
+      containerWidth - BUTTONS_NODE_ADDITIONAL_WIDTH;
+
+    if (
+      containerWidthMinusAdditionalWidth >= this.bulkActionsWidth ||
+      measuring
+    ) {
       return promotedActions.length;
     }
 
@@ -115,7 +123,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         this.bulkActionsWidth -
         totalWidth +
         this.addedMoreActionsWidthForMeasuring;
-      if (containerWidth >= widthWithRemovedAction) {
+      if (containerWidthMinusAdditionalWidth >= widthWithRemovedAction) {
         sufficientSpace = true;
       } else {
         counter--;
@@ -324,7 +332,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                 className={styles.ButtonGroupWrapper}
                 ref={this.setButtonsNode}
               >
-                {groupContent}
+                <div className={styles.ButtonGroupInner}>{groupContent}</div>
               </div>
             </div>
           );

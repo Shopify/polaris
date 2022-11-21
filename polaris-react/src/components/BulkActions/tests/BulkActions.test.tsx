@@ -35,6 +35,22 @@ const bulkActionProps: Props = {
 };
 
 describe('<BulkActions />', () => {
+  let getBoundingClientRectSpy: jest.SpyInstance;
+
+  beforeEach(() => {
+    getBoundingClientRectSpy = jest.spyOn(
+      Element.prototype,
+      'getBoundingClientRect',
+    );
+    setGetBoundingClientRect({
+      width: 32,
+    });
+  });
+
+  afterEach(() => {
+    getBoundingClientRectSpy.mockRestore();
+  });
+
   describe('actions', () => {
     it('indicator is passed to BulkActionButton when actions contain a new status for badge', () => {
       const bulkActions = mountWithApp(
@@ -336,4 +352,20 @@ describe('<BulkActions />', () => {
       expect(checkableButton).not.toBeNull();
     });
   });
+
+  function setGetBoundingClientRect({width}: {width: number}) {
+    getBoundingClientRectSpy.mockImplementation(() => {
+      return {
+        height: 0,
+        width,
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        x: 0,
+        y: 0,
+        toJSON() {},
+      };
+    });
+  }
 });
