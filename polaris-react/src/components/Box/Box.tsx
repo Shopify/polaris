@@ -68,7 +68,7 @@ export type BackgroundColors =
   | ColorsActionTokenAlias
   | ColorsSurfaceTokenAlias;
 
-export interface BoxProps {
+export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
@@ -216,6 +216,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       insetInlineEnd,
       zIndex,
       opacity,
+      ...restProps
     },
     ref,
   ) => {
@@ -326,6 +327,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         id,
         ref,
         style: sanitizeCustomProperties(style),
+        ...restProps,
       },
       children,
     );
