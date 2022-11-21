@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
 import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
@@ -68,10 +67,12 @@ export function ChoiceList({
   const name = useUniqueId('ChoiceList', nameProp);
   const finalName = allowMultiple ? `${name}[]` : name;
 
-  const className = classNames(titleHidden && styles.titleHidden);
-
   const titleMarkup = title ? (
-    <Box as="legend" paddingBlockEnd={{xs: '5', md: '1'}}>
+    <Box
+      as="legend"
+      paddingBlockEnd={{xs: '5', md: '1'}}
+      visuallyHidden={titleHidden}
+    >
       <Text as="span" variant="bodyMd">
         {title}
       </Text>
@@ -134,15 +135,19 @@ export function ChoiceList({
   );
 
   return (
-    <div className={className} id={finalName} aria-invalid={error != null}>
-      <AlphaStack as="fieldset" gap={{xs: '4', md: '0'}} fullWidth>
-        {titleMarkup}
-        <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
-          {choicesMarkup}
-        </AlphaStack>
-        {errorMarkup}
+    <AlphaStack
+      as="fieldset"
+      gap={{xs: '4', md: '0'}}
+      fullWidth
+      aria-invalid={error != null}
+      id={finalName}
+    >
+      {titleMarkup}
+      <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
+        {choicesMarkup}
       </AlphaStack>
-    </div>
+      {errorMarkup}
+    </AlphaStack>
   );
 }
 

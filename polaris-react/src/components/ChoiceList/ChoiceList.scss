@@ -1,9 +1,5 @@
 @import '../../styles/common';
 
-.titleHidden > .Title {
-  @include visually-hidden;
-}
-
 .ChoiceChildren {
   padding-left: calc(var(--p-space-2) + var(--p-choice-size));
 }
