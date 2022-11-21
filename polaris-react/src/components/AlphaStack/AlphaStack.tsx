@@ -6,7 +6,6 @@ import {
   sanitizeCustomProperties,
   getResponsiveProps,
 } from '../../utilities/css';
-import {getAriaAttributes} from '../../utilities/get-aria-attributes';
 import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './AlphaStack.scss';
@@ -58,14 +57,12 @@ export const AlphaStack = ({
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
-  const ariaAttrs = getAriaAttributes(restProps);
-
   return createElement(
     as,
     {
       className,
       style: sanitizeCustomProperties(style),
-      ...ariaAttrs,
+      ...restProps,
     },
     children,
   );

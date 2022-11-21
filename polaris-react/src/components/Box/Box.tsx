@@ -16,7 +16,6 @@ import {
   classNames,
   sanitizeCustomProperties,
 } from '../../utilities/css';
-import {getAriaAttributes} from '../../utilities/get-aria-attributes';
 
 import styles from './Box.scss';
 
@@ -312,8 +311,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       visuallyHidden && styles.visuallyHidden,
     );
 
-    const ariaAttrs = getAriaAttributes(restProps);
-
     return createElement(
       as,
       {
@@ -321,7 +318,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         id,
         ref,
         style: sanitizeCustomProperties(style),
-        ...ariaAttrs,
+        ...restProps,
       },
       children,
     );
