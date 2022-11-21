@@ -60,7 +60,7 @@ export function WithSpecificDirection() {
         Top
       </Text>
       <Box background="surface" padding="4">
-        <Bleed marginBlockStart="6">
+        <Bleed marginInline="4" marginBlockStart="6">
           <div style={styles} />
         </Bleed>
       </Box>
@@ -68,7 +68,7 @@ export function WithSpecificDirection() {
         Bottom
       </Text>
       <Box background="surface" padding="4">
-        <Bleed marginBlockEnd="6">
+        <Bleed marginInline="4" marginBlockEnd="6">
           <div style={styles} />
         </Bleed>
       </Box>
