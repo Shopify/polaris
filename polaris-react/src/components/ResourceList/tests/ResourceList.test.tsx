@@ -1,6 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
+// import {setMediaWidth} from 'tests/utilities/breakpoints';
 import {BulkActions} from '../../BulkActions';
 import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
@@ -45,6 +47,14 @@ const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
 const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   describe('renderItem', () => {
     it('renders list items', () => {
       const resourceList = mountWithApp(
@@ -340,7 +350,7 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      resourceList.find('div', {className: styles.Handle})!.trigger('onClick', {
+      resourceList.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -1059,13 +1069,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1084,13 +1094,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1128,13 +1138,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1160,13 +1170,13 @@ describe('<ResourceList />', () => {
       );
       // Sets {lastSelected: 0}
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.find('div', {id: 'handle'})!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
