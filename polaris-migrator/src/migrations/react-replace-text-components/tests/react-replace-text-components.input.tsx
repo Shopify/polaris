@@ -17,6 +17,8 @@ export function App() {
     variation: 'positive',
   };
 
+  const MyDisplayText = DisplayText;
+
   noop(textStyle);
 
   return (

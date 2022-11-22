@@ -153,3 +153,24 @@ export function insertJSXComment(
     element.insertAfter(jsxComment);
   }
 }
+
+export function insertCommentBefore(
+  j: core.JSCodeshift,
+  path: ASTPath<any>,
+  comment: string,
+) {
+  const content = ` ${comment} `;
+
+  path.value.comments = path.value.comments || [];
+
+  const exists = path.value.comments.find(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    (comment) => comment.value === content,
+  );
+
+  // Avoiding duplicates of the same comment
+  if (exists) return;
+
+  path.value.comments.push(j.commentBlock(content));
+}
