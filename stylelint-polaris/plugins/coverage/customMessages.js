@@ -19,7 +19,7 @@ module.exports = {
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params}} with a Polaris color token`,
+        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params} with a Polaris color token`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
@@ -104,13 +104,25 @@ module.exports = {
   },
   layout: {
     'declaration-property-value-disallowed-list': {
-      message: (prop, value) =>
-        `(declaration-property-value-disallowed-list) - Replace ${prop} value "${value}" with a Polaris layout component if possible`,
+      message: (prop, value) => {
+        const messageMap = {
+          display: `Replace use of "${prop}: ${value}" with a Polaris layout component if possible`,
+          top: `Replace "${prop}" value "${value}" with a px or rem length value`,
+          bottom: `Replace "${prop}" value "${value}" with a px or rem length value`,
+          left: `Replace "${prop}" value "${value}" with a px or rem length value`,
+          right: `Replace "${prop}" value "${value}" with a px or rem length value`,
+          width: `Replace "${prop}" value "${value}" with a px or rem length value`,
+          height: `Replace "${prop}" value "${value}" with a px or rem length value`,
+        };
+
+        return `(declaration-property-value-disallowed-list) - ${messageMap[prop]}`;
+      },
       args: ['prop', 'value'],
     },
     'property-disallowed-list': {
       message: (prop) =>
-        `(declaration-property-value-disallowed-list) - Replace ${prop} with a Polaris layout component if possible`,
+        `(property-disallowed-list) - Replace use of "${prop}" with a Polaris layout component if possible`,
+      args: ['prop'],
     },
     'function-disallowed-list': {
       message: (func) =>
@@ -179,20 +191,20 @@ module.exports = {
           '$border-width-data': 'Sass variable',
           '$borders-data': 'Sass variable',
           // Legacy custom properties
-          '--p-border-radius-base': 'CSS custom property',
-          '--p-border-radius-wide': 'CSS custom property',
-          '--p-border-radius-full': 'CSS custom property',
-          '--p-control-border-width': 'CSS custom property',
-          '--p-thin-border-subdued': 'CSS custom property',
-          '--p-banner-border-default': 'CSS custom property',
-          '--p-banner-border-success': 'CSS custom property',
-          '--p-banner-border-highlight': 'CSS custom property',
-          '--p-banner-border-warning': 'CSS custom property',
-          '--p-banner-border-critical': 'CSS custom property',
-          '--p-text-field-focus-ring-border-radius': 'CSS custom property',
-          '--p-text-field-focus-ring-offset': 'CSS custom property',
+          'var(--p-border-radius-base)': 'CSS custom property',
+          'var(--p-border-radius-wide)': 'CSS custom property',
+          'var(--p-border-radius-full)': 'CSS custom property',
+          'var(--p-control-border-width)': 'CSS custom property',
+          'var(--p-thin-border-subdued)': 'CSS custom property',
+          'var(--p-banner-border-default)': 'CSS custom property',
+          'var(--p-banner-border-success)': 'CSS custom property',
+          'var(--p-banner-border-highlight)': 'CSS custom property',
+          'var(--p-banner-border-warning)': 'CSS custom property',
+          'var(--p-banner-border-critical)': 'CSS custom property',
+          'var(--p-text-field-focus-ring-border-radius)': 'CSS custom property',
+          'var(--p-text-field-focus-ring-offset)': 'CSS custom property',
         };
-
+        legacyValueTypeMap[value];
         return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris shape token`;
       },
     },
@@ -224,9 +236,10 @@ module.exports = {
     },
   },
   'z-index': {
-    'declaration-property-value-disallowed-list': {
-      message: (property, value) =>
-        `(declaration-property-value-disallowed-list) - Replace ${property} value "${value}" with a Polaris z-index token`,
+    'declaration-property-value-allowed-list': {
+      message: (prop, value) =>
+        `(declaration-property-value-allowed-list) - Replace "${prop}" value "${value}" with a Polaris z-index token`,
+      args: ['prop', 'value'],
     },
     'function-disallowed-list': {
       message: (func) =>
@@ -239,7 +252,7 @@ module.exports = {
           '$fixed-element-stacking-order': 'Sass variable',
           '$global-elements': 'Sass variable',
           // Legacy custom properties
-          '--p-override-loading-z-index': 'CSS custom property',
+          'var(--p-override-loading-z-index)': 'CSS custom property',
         };
 
         return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris z-index token`;
