@@ -1,8 +1,12 @@
 import React from 'react';
 import type {TextStyleProps} from '@shopify/polaris';
-// polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-// import {Text, InlineCode} from '@shopify/polaris';
-import {DisplayText, Text, InlineCode} from '@shopify/polaris';
+import {
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: Text */
+  DisplayText,
+  Text,
+  InlineCode,
+} from '@shopify/polaris';
 
 const noop = (..._: any) => {};
 
@@ -14,7 +18,7 @@ export function App() {
 
   const MyDisplayText =
     /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-    /* Text */
+    /* Replace with: Text */
     DisplayText;
 
   noop(textStyle);
@@ -73,6 +77,7 @@ export function App() {
       <Text variant="bodySm" as="span" visuallyHidden>
         Hidden text
       </Text>
+      <MyDisplayText />
     </>
   );
 }

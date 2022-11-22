@@ -17,9 +17,14 @@ import {
 import {isKeyOf} from '../../../utilities/type-guards';
 import {
   getImportSpecifierName,
+  hasImportDeclaration,
   hasImportSpecifier,
+  hasImportSpecifiers,
+  insertImportDeclaration,
+  insertImportSpecifier,
   normalizeImportSourcePaths,
-  updateImports,
+  removeImportDeclaration,
+  removeImportSpecifier,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
 import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
@@ -120,12 +125,6 @@ export function replaceDisplayText<NodeType = ASTNode>(
 
     replaceJSXElement(j, element, 'Text');
 
-    if (!hasJSXAttribute(j, element, 'element')) {
-      insertJSXAttribute(j, element, 'as', elementValue);
-    } else {
-      replaceJSXAttributes(j, element, 'element', 'as', elementValue);
-    }
-
     if (!hasJSXAttribute(j, element, 'size')) {
       insertJSXAttribute(j, element, 'variant', displayTextSizeMap[sizeValue]);
     } else {
@@ -137,6 +136,12 @@ export function replaceDisplayText<NodeType = ASTNode>(
         displayTextSizeMap[sizeValue],
       );
     }
+
+    if (!hasJSXAttribute(j, element, 'element')) {
+      insertJSXAttribute(j, element, 'as', elementValue);
+    } else {
+      replaceJSXAttributes(j, element, 'element', 'as', elementValue);
+    }
   });
 
   source
@@ -144,15 +149,33 @@ export function replaceDisplayText<NodeType = ASTNode>(
     .filter((path) => path.node.name === localElementName)
     .forEach((path) => {
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
-      insertCommentBefore(j, path, 'Text');
+      insertCommentBefore(j, path, 'Replace with: Text');
       canRemoveDisplayTextImport = false;
     });
 
-  // TODO: Update imports after processing the file..
-  updateImports(j, source, {
-    fromSpecifier: 'DisplayText',
-    toSpecifier: 'Text',
-    fromSourcePath: sourcePaths.from,
-    toSourcePath: sourcePaths.to,
-  });
+  if (!hasImportDeclaration(j, source, sourcePaths.to)) {
+    insertImportDeclaration(
+      j,
+      source,
+      'Text',
+      sourcePaths.to,
+      sourcePaths.from,
+    );
+  }
+
+  if (
+    canInsertTextImport &&
+    !hasImportSpecifier(j, source, 'Text', sourcePaths.to)
+  ) {
+    insertImportSpecifier(j, source, 'Text', sourcePaths.to);
+  }
+
+  if (canRemoveDisplayTextImport) {
+    if (hasImportSpecifier(j, source, 'DisplayText', sourcePaths.from)) {
+      removeImportSpecifier(j, source, 'DisplayText', sourcePaths.from);
+    }
+    if (!hasImportSpecifiers(j, source, sourcePaths.from)) {
+      removeImportDeclaration(j, source, sourcePaths.from);
+    }
+  }
 }

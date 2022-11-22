@@ -40,6 +40,7 @@ export function App() {
       <TextStyle variation="code">Code</TextStyle>
       <TextStyle {...textStyleProps}>Positive</TextStyle>
       <VisuallyHidden>Hidden text</VisuallyHidden>
+      <MyDisplayText />
     </>
   );
 }
