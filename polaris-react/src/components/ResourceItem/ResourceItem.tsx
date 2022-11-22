@@ -3,16 +3,22 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
 import {ActionList} from '../ActionList';
+import {Bleed} from '../Bleed';
 import {Box} from '../Box';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
+import {Columns} from '../Columns';
 import {Inline, InlineProps} from '../Inline';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
-import type {ThumbnailProps} from '../Thumbnail';
 import type {DisableableAction} from '../../types';
+import type {ThumbnailProps} from '../Thumbnail';
+import {
+  useBreakpoints,
+  BreakpointsDirectionAlias,
+} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
 import {useI18n} from '../../utilities/i18n';
@@ -21,8 +27,6 @@ import {
   SELECT_ALL_ITEMS,
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
-import {Columns} from '../Columns';
-import {Bleed} from '../Bleed';
 
 import styles from './ResourceItem.scss';
 
@@ -72,8 +76,11 @@ interface PropsWithClick extends BaseProps {
 }
 
 export type ResourceItemProps = PropsWithUrl | PropsWithClick;
-
+type BreakpointsMatches = {
+  [DirectionAlias in BreakpointsDirectionAlias]: boolean;
+};
 interface PropsFromWrapper {
+  breakpoints?: BreakpointsMatches;
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
 }
@@ -155,14 +162,13 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       i18n,
       verticalAlignment,
       dataHref,
+      breakpoints,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
 
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
-
-    const mediaMarkup = media ? <Box>{media}</Box> : null;
 
     if (selectable) {
       const checkboxAccessibilityLabel =
@@ -198,11 +204,14 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (media || selectable) {
       ownedMarkup = (
         <Box
-          paddingBlockStart={!mediaMarkup ? '1' : undefined}
+          padding="0"
+          paddingInlineStart="0"
+          paddingInlineEnd="0"
+          paddingBlockStart={!media ? '1' : undefined}
           zIndex="var(--pc-resource-item-content-stacking-order)"
         >
           {handleMarkup}
-          {mediaMarkup}
+          {media}
         </Box>
       );
     }
@@ -227,15 +236,13 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (shortcutActions && !loading) {
       if (persistActions) {
-        actionsMarkup = (
+        actionsMarkup = breakpoints?.lgUp ? (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
-              {buttonsFrom(shortcutActions, {
-                plain: true,
-              })}
+              {buttonsFrom(shortcutActions, {plain: true})}
             </ButtonGroup>
           </div>
-        );
+        ) : null;
 
         const disclosureAccessibilityLabel = name
           ? i18n.translate('Polaris.ResourceList.Item.actionsDropdownLabel', {
@@ -243,25 +250,26 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             })
           : i18n.translate('Polaris.ResourceList.Item.actionsDropdown');
 
-        disclosureMarkup = (
-          <div className={styles.Disclosure} onClick={stopPropagation}>
-            <Popover
-              activator={
-                <Button
-                  accessibilityLabel={disclosureAccessibilityLabel}
-                  onClick={this.handleActionsClick}
-                  plain
-                  icon={HorizontalDotsMinor}
-                />
-              }
-              onClose={this.handleCloseRequest}
-              active={actionsMenuVisible}
-            >
-              <ActionList items={shortcutActions} />
-            </Popover>
-          </div>
-        );
-      } else {
+        disclosureMarkup =
+          !selectMode && breakpoints?.lgDown ? (
+            <div onClick={stopPropagation}>
+              <Popover
+                activator={
+                  <Button
+                    accessibilityLabel={disclosureAccessibilityLabel}
+                    onClick={this.handleActionsClick}
+                    plain
+                    icon={HorizontalDotsMinor}
+                  />
+                }
+                onClose={this.handleCloseRequest}
+                active={actionsMenuVisible}
+              >
+                <ActionList items={shortcutActions} />
+              </Popover>
+            </div>
+          ) : null;
+      } else if (breakpoints?.lgUp) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <Box position="absolute" insetBlockStart="4" insetInlineEnd="4">
@@ -474,9 +482,11 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 }
 
 export function ResourceItem(props: ResourceItemProps) {
+  const breakpoints = useBreakpoints();
   return (
     <BaseResourceItem
       {...props}
+      breakpoints={breakpoints}
       context={useContext(ResourceListContext)}
       i18n={useI18n()}
     />

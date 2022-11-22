@@ -17,31 +17,16 @@
   --pc-resource-item-offset: 40px;
   --pc-resource-item-clickable-stacking-order: 1;
   --pc-resource-item-content-stacking-order: 2;
-  position: relative;
   outline: none;
   cursor: pointer;
-
-  &:not(.persistActions) {
-    .Actions {
-      right: var(--p-space-4);
-    }
-  }
 
   &:hover {
     background-color: var(--p-surface-hovered);
 
-    &:not(.persistActions) {
-      // stylelint-disable-next-line selector-max-specificity
-      .Actions {
-        // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, max-nesting-depth
-        > * {
-          @include action-unhide;
-        }
-
-        // stylelint-disable-next-line max-nesting-depth
-        @media #{$p-breakpoints-lg-down} {
-          display: none;
-        }
+    .Actions {
+      /* stylelint-disable-next-line selector-max-combinators */
+      > * {
+        @include action-unhide;
       }
     }
   }
@@ -108,49 +93,6 @@
       @include action-unhide;
     }
   }
-
-  @media #{$p-breakpoints-lg-down} {
-    display: none;
-  }
-}
-
-.persistActions {
-  .Actions {
-    position: relative;
-    display: flex;
-    flex: 0 0 auto;
-    flex-basis: auto;
-    align-items: center;
-    margin-top: 0;
-    margin-left: var(--p-space-4);
-    pointer-events: initial;
-    height: 100%;
-
-    @media #{$p-breakpoints-lg-down} {
-      display: none;
-    }
-  }
-}
-
-.Disclosure {
-  position: relative;
-  top: calc(-1 * var(--p-space-3));
-  right: calc(-1 * var(--p-space-4));
-  display: none;
-  width: var(--pc-resource-item-disclosure-width);
-  min-height: var(--pc-resource-item-min-height);
-  pointer-events: initial;
-
-  .selectMode & {
-    display: none;
-  }
-
-  @media #{$p-breakpoints-lg-down} {
-    display: flex;
-    flex: 0 0 var(--pc-resource-item-disclosure-width);
-    justify-content: center;
-    align-items: center;
-  }
 }
 
 .selected {
@@ -166,7 +108,6 @@
 }
 
 .ListItem {
-  position: relative;
   @include focus-ring($border-width: -1px);
 
   .ListItem + & {
