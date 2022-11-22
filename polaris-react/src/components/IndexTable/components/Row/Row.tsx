@@ -8,7 +8,11 @@ import {
 } from '../../../../utilities/index-provider';
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
-import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
+import {
+  RowContext,
+  RowHoveredContext,
+  RowFocusedContext,
+} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
 
 type RowStatus = 'success' | 'subdued';
@@ -43,6 +47,11 @@ export const Row = memo(function Row({
     value: hovered,
     setTrue: setHoverIn,
     setFalse: setHoverOut,
+  } = useToggle(false);
+  const {
+    value: focused,
+    setTrue: setFocused,
+    setFalse: setBlurred,
   } = useToggle(false);
 
   const handleInteraction = useCallback(
@@ -146,17 +155,21 @@ export const Row = memo(function Row({
   return (
     <RowContext.Provider value={contextValue}>
       <RowHoveredContext.Provider value={hovered}>
-        <RowWrapper
-          key={id}
-          className={rowClassName}
-          onMouseEnter={setHoverIn}
-          onMouseLeave={setHoverOut}
-          onClick={handleRowClick}
-          ref={tableRowCallbackRef}
-        >
-          {checkboxMarkup}
-          {children}
-        </RowWrapper>
+        <RowFocusedContext.Provider value={focused}>
+          <RowWrapper
+            key={id}
+            className={rowClassName}
+            onMouseEnter={setHoverIn}
+            onMouseLeave={setHoverOut}
+            onClick={handleRowClick}
+            onFocus={setFocused}
+            onBlur={setBlurred}
+            ref={tableRowCallbackRef}
+          >
+            {checkboxMarkup}
+            {children}
+          </RowWrapper>
+        </RowFocusedContext.Provider>
       </RowHoveredContext.Provider>
     </RowContext.Provider>
   );

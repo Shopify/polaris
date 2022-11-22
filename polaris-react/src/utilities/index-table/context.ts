@@ -12,6 +12,8 @@ export const RowContext = createContext<RowContextType>({});
 
 export const RowHoveredContext = createContext<boolean | undefined>(undefined);
 
+export const RowFocusedContext = createContext<boolean | undefined>(undefined);
+
 export interface ScrollContextType {
   scrollableContainer: HTMLDivElement | null;
   canScrollLeft: boolean;

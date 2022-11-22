@@ -425,6 +425,7 @@ export {useEventListener} from './utilities/use-event-listener';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useRowHovered as useIndexTableRowHovered,
+  useRowFocused as useIndexTableRowFocused,
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';

@@ -1,10 +1,20 @@
 import {useContext} from 'react';
 
-import {RowContext, RowHoveredContext, ScrollContext} from './context';
+import {
+  RowContext,
+  RowHoveredContext,
+  RowFocusedContext,
+  ScrollContext,
+} from './context';
 
 export function useRowHovered() {
   const hovered = useContext(RowHoveredContext);
   return hovered;
+}
+
+export function useRowFocused() {
+  const focused = useContext(RowFocusedContext);
+  return focused;
 }
 
 export function useRowSelected() {
