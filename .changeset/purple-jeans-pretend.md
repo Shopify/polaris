@@ -3,4 +3,4 @@
 'polaris.shopify.com': minor
 ---
 
-Added support for responsive padding to `AlphaCard`
+Added support for responsive padding to `AlphaCard` and updated default padding to be responsive
