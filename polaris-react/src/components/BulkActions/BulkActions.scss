@@ -90,7 +90,6 @@ $bulk-actions-button-stacking-order: (
 
 .CheckableContainer {
   flex: 1 1 0;
-  // margin-left: -6px;
   margin-left: calc(-1 * (var(--p-space-05) + var(--p-space-1)));
 }
 

@@ -167,7 +167,6 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .CheckableButtonWrapper {
   display: none;
-  // margin-left: -2px;
   margin-left: calc(-1 * var(--p-space-05));
 
   @media #{$p-breakpoints-sm-up} {

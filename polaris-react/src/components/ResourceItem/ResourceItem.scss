@@ -98,13 +98,6 @@
 
 // Item actions
 .Actions {
-  // position: absolute;
-  // top: var(--p-space-4);
-  // right: var(--space-4);
-  // pointer-events: initial;
-  // height: 100%;
-  // max-height: 56px;
-
   > * {
     @include action-hide;
   }

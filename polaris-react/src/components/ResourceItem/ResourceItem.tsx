@@ -15,10 +15,6 @@ import type {ThumbnailProps} from '../Thumbnail';
 import type {DisableableAction} from '../../types';
 import {classNames} from '../../utilities/css';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
-import {
-  useBreakpoints,
-  BreakpointsDirectionAlias,
-} from '../../utilities/breakpoints';
 import {useI18n} from '../../utilities/i18n';
 import {
   ResourceListContext,
@@ -76,12 +72,8 @@ interface PropsWithClick extends BaseProps {
 }
 
 export type ResourceItemProps = PropsWithUrl | PropsWithClick;
-type BreakpointsMatches = {
-  [DirectionAlias in BreakpointsDirectionAlias]: boolean;
-};
 
 interface PropsFromWrapper {
-  breakpoints?: BreakpointsMatches;
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
 }
@@ -163,7 +155,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       i18n,
       verticalAlignment,
       dataHref,
-      breakpoints,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -179,7 +170,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
       handleMarkup = (
         <div onClick={this.handleLargerSelectionArea}>
-          <Bleed horizontal="2">
+          <Bleed marginInline="2">
             <Box
               paddingInlineStart="2"
               paddingInlineEnd="2"
@@ -273,7 +264,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       } else {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <Box position="absolute" top="4" right="4">
+            <Box position="absolute" insetBlockStart="4" insetInlineEnd="4">
               <ButtonGroup segmented>
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>
@@ -483,11 +474,9 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 }
 
 export function ResourceItem(props: ResourceItemProps) {
-  const breakpoints = useBreakpoints();
   return (
     <BaseResourceItem
       {...props}
-      breakpoints={breakpoints}
       context={useContext(ResourceListContext)}
       i18n={useI18n()}
     />
