@@ -24,7 +24,7 @@ export interface AlphaCardProps {
    */
   background?: CardBackgroundColorTokenScale;
   /** The spacing around the card
-   * @default '5'
+   * @default {xs: '4', sm: '5'}
    * @example
    * padding='4'
    * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
@@ -37,7 +37,7 @@ export interface AlphaCardProps {
 export const AlphaCard = ({
   children,
   background = 'surface',
-  padding = '5',
+  padding = {xs: '4', sm: '5'},
   roundedAbove,
 }: AlphaCardProps) => {
   const breakpoints = useBreakpoints();
