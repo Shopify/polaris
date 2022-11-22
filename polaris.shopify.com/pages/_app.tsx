@@ -49,6 +49,7 @@ function MyApp({Component, pageProps}: AppProps) {
   }.png`;
 
   const isPolarisExample = router.asPath.startsWith('/examples');
+  const isAppEmulator = router.asPath.startsWith('/app-emulator');
   const isPolarisSandbox = router.asPath.startsWith('/sandbox');
 
   useEffect(() => {
@@ -98,7 +99,7 @@ function MyApp({Component, pageProps}: AppProps) {
             !isPolarisExample && 'styles-for-site-but-not-polaris-examples',
           )}
         >
-          {isPolarisExample || isPolarisSandbox ? (
+          {isPolarisExample || isPolarisSandbox || isAppEmulator ? (
             <Component {...pageProps} />
           ) : (
             <Frame darkMode={darkMode}>

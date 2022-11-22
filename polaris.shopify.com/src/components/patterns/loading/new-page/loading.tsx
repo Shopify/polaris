@@ -14,6 +14,7 @@ const codeExamples: Example[] = [
   {
     title: 'Index skeleton page',
     code: `<SkeletonPage primaryAction>
+    <AppBridgeLoading/>
   <Layout>
     <Layout.Section>
       <Card sectioned>
@@ -203,7 +204,7 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                     `${iframeDoc.body?.scrollHeight ?? 0}px`
                   }
                   getIframeUrl={(example) =>
-                    `/playroom/preview/index.html${createUrl({
+                    `/app-emulator${createUrl({
                       code: example.code,
                       paramType: 'search',
                     })}`
@@ -216,7 +217,7 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                       />
                       <a
                         target="_blank"
-                        href={`/playroom/preview/index.html${createUrl({
+                        href={`/app-emulator${createUrl({
                           code: example.code,
                           paramType: 'search',
                         })}`}
@@ -230,6 +231,42 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                     </>
                   )}
                 />
+                <Text as="h2" variant="heading2xl">
+                  Usage Guidance
+                </Text>
+                <details className={styles.Accordion}>
+                  <summary>Common pattern tweaks</summary>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </details>
+                <details className={styles.Accordion}>
+                  <summary>Platform considerations</summary>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </details>
+                <details className={styles.Accordion}>
+                  <summary>Using App Bridge</summary>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </details>
               </Tab.Panel>
               <Tab.Panel>showcase</Tab.Panel>
             </Tab.Panels>

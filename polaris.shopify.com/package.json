@@ -21,6 +21,7 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
+    "@shopify/app-bridge-react": "^3.4.3",
     "@shopify/polaris": "^10.11.0",
     "@shopify/polaris-icons": "^6.5.0",
     "@shopify/polaris-tokens": "^6.3.0",

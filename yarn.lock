@@ -3185,6 +3185,21 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.2.0.tgz#8be36a1f66f3265389e90b5f9c9962146758f728"
   integrity sha512-sXo/qW2/pAcmT43VoRKOJbDOfV3cYpq3szSVfIThQXNt+E4DfKj361vaAt3c88U5tPUxzEswam7GW48PJqtKAg==
 
+"@shopify/app-bridge-react@^3.4.3":
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/@shopify/app-bridge-react/-/app-bridge-react-3.4.3.tgz#a264d9b268d2d46ca66500c6a745aa1f1b6722ae"
+  integrity sha512-vkgaevd3AnGuUVqBBbTPYHyLUd/3+XwVmth+RO8FnvXlSGhFdIjImnsXJ4mkIdXFaXVqSs1G3WkIbup2tyaH3w==
+  dependencies:
+    "@shopify/app-bridge" "^3.4.3"
+
+"@shopify/app-bridge@^3.4.3":
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/@shopify/app-bridge/-/app-bridge-3.4.3.tgz#b6442ebecfa1e72a4763afffd0b9f1609bf3d51c"
+  integrity sha512-V8RmcBZSAU0nUxM1ybeKZSMzMpLHGJZnsJSNSxlii/HaaIhAN1X9GEsuFqtGDG5VL89hVidgvUVpbBqrwlnt1Q==
+  dependencies:
+    base64url "^3.0.1"
+    web-vitals "^3.0.1"
+
 "@shopify/async@^3.1.5":
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/@shopify/async/-/async-3.1.5.tgz#fcb1253ed2f41f22f9ce2ca28dc667003f4a1a71"
@@ -6547,6 +6562,11 @@ base64-js@^1.0.2, base64-js@^1.3.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==
+
+base64url@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/base64url/-/base64url-3.0.1.tgz#6399d572e2bc3f90a9a8b22d5dbb0a32d33f788d"
+  integrity sha512-ir1UPr3dkwexU7FdV8qBBbNDRUhMmIekYMFZfi+C/sLNnRESKPl23nB9b2pltqfOQNnGzsDdId90AEtG5tCx4A==
 
 base@^0.11.1:
   version "0.11.2"
@@ -22250,6 +22270,11 @@ web-streams-polyfill@^3.0.3:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
   integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
+
+web-vitals@^3.0.1:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-3.1.0.tgz#a6f5156cb6c7fee562da46078540265ac2cd2d16"
+  integrity sha512-zCeQ+bOjWjJbXv5ZL0r8Py3XP2doCQMZXNKlBGfUjPAVZWokApdeF/kFlK1peuKlCt8sL9TFkKzyXE9/cmNJQA==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"

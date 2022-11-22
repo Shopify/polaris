@@ -51,7 +51,6 @@ const ComponentExamples = <T extends Example>({
 }: Props<T>) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
-
   const [iframeHeight, setIframeHeight] = useState('400px');
 
   const handleExampleLoad = () => {
