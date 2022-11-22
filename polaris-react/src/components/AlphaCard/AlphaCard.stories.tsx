@@ -53,7 +53,7 @@ export function WithBorderRadiusRoundedAbove() {
 
 export function WithResponsivePadding() {
   return (
-    <AlphaCard roundedAbove="sm">
+    <AlphaCard padding={{xs: '5', sm: '6', md: '8'}} roundedAbove="sm">
       <AlphaStack gap={{xs: '4', sm: '5'}}>
         <Text as="h3" variant="headingMd">
           Online store dashboard
