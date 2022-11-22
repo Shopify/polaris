@@ -79,13 +79,8 @@ module.exports = stylelint.createPlugin(
               (nodeProp) => warning?.node?.[nodeProp],
             );
             // Stylelint's VS Code extension only looks for custom messages and metadata on the `customMessages` and `ruleMetadata` properties of the stylelint postcss result, otherwise it uses the `messages` and `meta` values set on the built in stylelint rule functions.
-            result.stylelint.customMessages = {
-              [ruleName]: message(...messageArgs),
-            };
-
-            result.stylelint.ruleMetadata = {
-              [ruleName]: metadata,
-            };
+            result.stylelint.customMessages[ruleName] = message(...messageArgs);
+            result.stylelint.ruleMetadata[ruleName] = metadata;
 
             stylelint.utils.report({
               result,
