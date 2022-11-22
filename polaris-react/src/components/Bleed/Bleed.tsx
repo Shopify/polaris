@@ -1,26 +1,32 @@
 import React from 'react';
 import type {SpacingSpaceScale} from '@shopify/polaris-tokens';
 
-import {sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Bleed.scss';
+
+type Spacing = ResponsiveProp<SpacingSpaceScale>;
 
 export interface BleedProps {
   children?: React.ReactNode;
   /** Negative horizontal space around children
    * @default '5'
    */
-  marginInline?: SpacingSpaceScale;
+  marginInline?: Spacing;
   /** Negative vertical space around children */
-  marginBlock?: SpacingSpaceScale;
+  marginBlock?: Spacing;
   /** Negative top space around children */
-  marginBlockStart?: SpacingSpaceScale;
+  marginBlockStart?: Spacing;
   /** Negative bottom space around children */
-  marginBlockEnd?: SpacingSpaceScale;
+  marginBlockEnd?: Spacing;
   /** Negative left space around children */
-  marginInlineStart?: SpacingSpaceScale;
+  marginInlineStart?: Spacing;
   /** Negative right space around children */
-  marginInlineEnd?: SpacingSpaceScale;
+  marginInlineEnd?: Spacing;
 }
 
 export const Bleed = ({
@@ -36,7 +42,7 @@ export const Bleed = ({
     const xAxis = ['marginInlineStart', 'marginInlineEnd'];
     const yAxis = ['marginBlockStart', 'marginBlockEnd'];
 
-    const directionValues: {[key: string]: string | undefined} = {
+    const directionValues: {[key: string]: Spacing | undefined} = {
       marginBlockStart,
       marginBlockEnd,
       marginInlineStart,
@@ -60,18 +66,30 @@ export const Bleed = ({
   const negativeMarginInlineEnd = getNegativeMargins('marginInlineEnd');
 
   const style = {
-    '--pc-bleed-margin-block-start': negativeMarginBlockStart
-      ? `var(--p-space-${negativeMarginBlockStart})`
-      : undefined,
-    '--pc-bleed-margin-block-end': negativeMarginBlockEnd
-      ? `var(--p-space-${negativeMarginBlockEnd})`
-      : undefined,
-    '--pc-bleed-margin-inline-start': negativeMarginInlineStart
-      ? `var(--p-space-${negativeMarginInlineStart})`
-      : undefined,
-    '--pc-bleed-margin-inline-end': negativeMarginInlineEnd
-      ? `var(--p-space-${negativeMarginInlineEnd})`
-      : undefined,
+    ...getResponsiveProps(
+      'bleed',
+      'margin-block-start',
+      'space',
+      negativeMarginBlockStart,
+    ),
+    ...getResponsiveProps(
+      'bleed',
+      'margin-block-end',
+      'space',
+      negativeMarginBlockEnd,
+    ),
+    ...getResponsiveProps(
+      'bleed',
+      'margin-inline-start',
+      'space',
+      negativeMarginInlineStart,
+    ),
+    ...getResponsiveProps(
+      'bleed',
+      'margin-inline-end',
+      'space',
+      negativeMarginInlineEnd,
+    ),
   } as React.CSSProperties;
 
   return (
