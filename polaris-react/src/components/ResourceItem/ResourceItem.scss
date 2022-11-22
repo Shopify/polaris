@@ -1,19 +1,13 @@
 @import '../../styles/common';
 
 @mixin action-hide {
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(0, 0, 0, 0);
   overflow: hidden;
-  height: 1px;
 }
 
 @mixin action-unhide {
   clip: auto;
   overflow: visible;
-  height: 100%;
-}
-
-.CheckboxWrapper {
-  display: flex;
 }
 
 .ResourceItem {
@@ -39,7 +33,10 @@
     &:not(.persistActions) {
       // stylelint-disable-next-line selector-max-specificity
       .Actions {
-        @include action-unhide;
+        // stylelint-disable-next-line selector-max-specificity, selector-max-combinators, max-nesting-depth
+        > * {
+          @include action-unhide;
+        }
 
         // stylelint-disable-next-line max-nesting-depth
         @media #{$p-breakpoints-lg-down} {
@@ -82,67 +79,6 @@
   border: none;
 }
 
-// Item inner container
-.Container {
-  position: relative;
-  z-index: var(--pc-resource-item-content-stacking-order);
-  padding: var(--p-space-3) var(--p-space-4);
-  min-height: var(--pc-resource-item-min-height);
-  display: flex;
-  align-items: flex-start;
-
-  @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-3) var(--p-space-5);
-  }
-}
-
-.alignmentLeading {
-  align-items: flex-start;
-}
-
-.alignmentTrailing {
-  align-items: flex-end;
-}
-
-.alignmentCenter {
-  align-items: center;
-}
-
-.alignmentFill {
-  align-items: stretch;
-}
-
-.alignmentBaseline {
-  align-items: baseline;
-}
-
-.Owned {
-  display: flex;
-}
-
-.OwnedNoMedia {
-  padding-top: var(--p-space-1);
-}
-
-// Item handle
-.Handle {
-  width: 48px;
-  min-height: var(--pc-resource-item-min-height);
-  justify-content: center;
-  align-items: center;
-  margin: calc(-1 * var(--p-space-3)) var(--p-space-1)
-    calc(-1 * var(--p-space-3)) calc(-1 * var(--p-space-3));
-  display: flex;
-
-  @media #{$p-breakpoints-sm-down} {
-    visibility: hidden;
-
-    .selectMode & {
-      visibility: visible;
-    }
-  }
-}
-
 .selectable {
   width: calc(100% + var(--pc-resource-item-offset));
   transform: translateX(calc(-1 * var(--pc-resource-item-offset)));
@@ -160,32 +96,24 @@
   }
 }
 
-.Media {
-  flex: 0 0 auto;
-  margin-right: var(--p-space-5);
-  color: inherit;
-  text-decoration: none;
-}
-
-// Item content
-.Content {
-  @include layout-flex-fix;
-  flex: 1 1 auto;
-}
-
 // Item actions
 .Actions {
-  position: absolute;
-  top: 0;
-  display: flex;
-  pointer-events: initial;
-  height: 100%;
-  max-height: 56px;
+  // position: absolute;
+  // top: var(--p-space-4);
+  // right: var(--space-4);
+  // pointer-events: initial;
+  // height: 100%;
+  // max-height: 56px;
 
-  @include action-hide;
+  > * {
+    @include action-hide;
+  }
 
   .focused & {
-    @include action-unhide;
+    // stylelint-disable-next-line selector-max-combinators
+    > * {
+      @include action-unhide;
+    }
   }
 
   @media #{$p-breakpoints-lg-down} {
