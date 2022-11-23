@@ -350,7 +350,9 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      resourceList.findAll('div')[6]!.trigger('onClick', {
+      const resourceItem = resourceList.find(ResourceItem);
+
+      resourceItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
