@@ -174,7 +174,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
           <Icon source={iconName} color={iconColor} />
         </Box>
 
-        <Bleed horizontal="0" top="05">
+        <Bleed marginInline="0" marginBlockStart="05">
           {headingMarkup}
           {contentMarkup}
         </Bleed>

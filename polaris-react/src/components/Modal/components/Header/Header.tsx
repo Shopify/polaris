@@ -16,7 +16,13 @@ export interface HeaderProps {
   onClose(): void;
 }
 
-export function Header({id, titleHidden, children, onClose}: HeaderProps) {
+export function Header({
+  id,
+  children,
+  closing,
+  titleHidden,
+  onClose,
+}: HeaderProps) {
   const titleHiddenMarkup = (
     <div className={styles.titleHidden}>
       <Inline align="end">
@@ -44,7 +50,11 @@ export function Header({id, titleHidden, children, onClose}: HeaderProps) {
           </Text>
         </Inline>
         <Inline>
-          <CloseButton titleHidden={titleHidden} onClick={onClose} />
+          <CloseButton
+            pressed={closing}
+            titleHidden={titleHidden}
+            onClick={onClose}
+          />
         </Inline>
       </Columns>
     </Box>
