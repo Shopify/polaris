@@ -21,7 +21,7 @@ export default function FrameComponent({
       'PLAYROOM COMPONENT LOADED',
       'http://localhost:3000',
     );
-  }, []);
+  });
   return (
     <AppProvider i18n={theme}>
       <Provider config={config}>
