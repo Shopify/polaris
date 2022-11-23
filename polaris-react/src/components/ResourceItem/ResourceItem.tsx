@@ -3,7 +3,6 @@ import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
 import {ActionList} from '../ActionList';
-import {Bleed} from '../Bleed';
 import {Box} from '../Box';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
@@ -175,44 +174,36 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div onClick={this.handleLargerSelectionArea}>
-          <Bleed marginInline="2">
-            <Box
-              paddingInlineStart="2"
-              paddingInlineEnd="2"
-              minHeight="var(--pc-resource-item-min-height)"
-            >
-              <Inline align="center" blockAlign="center" gap="0">
-                <div onClick={stopPropagation}>
-                  <div onChange={this.handleLargerSelectionArea}>
-                    <Checkbox
-                      id={this.checkboxId}
-                      label={checkboxAccessibilityLabel}
-                      labelHidden
-                      checked={selected}
-                      disabled={loading}
-                    />
-                  </div>
-                </div>
-              </Inline>
-            </Box>
-          </Bleed>
-        </div>
+        <Box
+          zIndex="var(--pc-resource-item-content-stacking-order)"
+          paddingInlineStart="0"
+          paddingInlineEnd="0"
+          paddingBlockStart="1"
+          paddingBlockEnd="0"
+        >
+          <div onClick={this.handleLargerSelectionArea}>
+            <div onClick={stopPropagation}>
+              <div onChange={this.handleLargerSelectionArea}>
+                <Checkbox
+                  id={this.checkboxId}
+                  label={checkboxAccessibilityLabel}
+                  labelHidden
+                  checked={selected}
+                  disabled={loading}
+                />
+              </div>
+            </div>
+          </div>
+        </Box>
       );
     }
 
     if (media || selectable) {
       ownedMarkup = (
-        <Box
-          padding="0"
-          paddingInlineStart="0"
-          paddingInlineEnd="0"
-          paddingBlockStart={!media ? '1' : undefined}
-          zIndex="var(--pc-resource-item-content-stacking-order)"
-        >
+        <>
           {handleMarkup}
           {media}
-        </Box>
+        </>
       );
     }
 
@@ -293,7 +284,9 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       >
         <Columns columns={{xs: '1fr auto auto auto'}} gap="0">
           <Inline
-            blockAlign={getAlignment(verticalAlignment)}
+            blockAlign={
+              media && selectable ? 'center' : getAlignment(verticalAlignment)
+            }
             gap="5"
             wrap={false}
           >
