@@ -4,6 +4,7 @@ import isEqual from 'react-fast-compare';
 
 import {ActionList} from '../ActionList';
 import {Box} from '../Box';
+import {Bleed} from '../Bleed';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
@@ -174,27 +175,29 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <Box
-          zIndex="var(--pc-resource-item-content-stacking-order)"
-          paddingInlineStart="0"
-          paddingInlineEnd="0"
-          paddingBlockStart="1"
-          paddingBlockEnd="0"
-        >
-          <div onClick={this.handleLargerSelectionArea}>
-            <div onClick={stopPropagation}>
-              <div onChange={this.handleLargerSelectionArea}>
-                <Checkbox
-                  id={this.checkboxId}
-                  label={checkboxAccessibilityLabel}
-                  labelHidden
-                  checked={selected}
-                  disabled={loading}
-                />
+        <div onClick={this.handleLargerSelectionArea}>
+          <Bleed marginBlock="2" marginInline="3">
+            <Box
+              zIndex="var(--pc-resource-item-content-stacking-order)"
+              paddingInlineStart="3"
+              paddingInlineEnd="3"
+              paddingBlockStart="3"
+              paddingBlockEnd="2"
+            >
+              <div onClick={stopPropagation}>
+                <div onChange={this.handleLargerSelectionArea}>
+                  <Checkbox
+                    id={this.checkboxId}
+                    label={checkboxAccessibilityLabel}
+                    labelHidden
+                    checked={selected}
+                    disabled={loading}
+                  />
+                </div>
               </div>
-            </div>
-          </div>
-        </Box>
+            </Box>
+          </Bleed>
+        </div>
       );
     }
 
@@ -287,11 +290,18 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             blockAlign={
               media && selectable ? 'center' : getAlignment(verticalAlignment)
             }
-            gap="5"
+            gap="4"
             wrap={false}
           >
             {ownedMarkup}
-            <div>{children}</div>
+            <Box
+              width="100%"
+              padding="0"
+              paddingInlineStart="0"
+              paddingInlineEnd="0"
+            >
+              {children}
+            </Box>
           </Inline>
           {actionsMarkup}
           {disclosureMarkup}

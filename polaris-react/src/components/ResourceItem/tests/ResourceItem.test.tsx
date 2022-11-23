@@ -411,7 +411,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findAll('div')[6]!.trigger('onClick', {
+      wrapper.findAll('div')[5]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -426,7 +426,7 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.findAll('div')[6]!.trigger('onClick', {
+      wrapper.findAll('div')[5]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });

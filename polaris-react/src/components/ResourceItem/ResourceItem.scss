@@ -13,8 +13,7 @@
 .ResourceItem {
   --pc-resource-item-min-height: 44px;
   --pc-resource-item-disclosure-width: 48px;
-  // Offset equals handle width + handle margin-left + handle margin-right
-  --pc-resource-item-offset: 40px;
+  --pc-resource-item-offset: 38px;
   --pc-resource-item-clickable-stacking-order: 1;
   --pc-resource-item-content-stacking-order: 2;
   outline: none;
