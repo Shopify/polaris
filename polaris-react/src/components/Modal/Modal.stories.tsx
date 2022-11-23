@@ -7,6 +7,7 @@ import {
   DropZone,
   Modal,
   Stack,
+  Text,
   TextContainer,
   TextField,
 } from '@shopify/polaris';
@@ -42,11 +43,11 @@ export function Default() {
       >
         <Modal.Section>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -92,11 +93,11 @@ export function WithPrimaryAction() {
           <Stack vertical>
             <Stack.Item>
               <TextContainer>
-                <p>
+                <Text variant="bodyMd" as="span">
                   You can share this discount link with your customers via email
                   or social media. Your discount will be automatically applied
                   at checkout.
-                </p>
+                </Text>
               </TextContainer>
             </Stack.Item>
             <Stack.Item fill>
@@ -336,11 +337,11 @@ export function WithoutATitle() {
       >
         <Modal.Section titleHidden>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -372,9 +373,9 @@ export function WithScrollListener() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <p>
+              <Text variant="bodyMd" as="span">
                 Item <a href="#Content">#{index}</a>
-              </p>
+              </Text>
             </TextContainer>
           </Modal.Section>
         ))}
@@ -421,11 +422,11 @@ export function WithActivatorRef() {
       >
         <Modal.Section>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -468,11 +469,11 @@ export function WithoutAnActivatorProp() {
       >
         <Modal.Section>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
