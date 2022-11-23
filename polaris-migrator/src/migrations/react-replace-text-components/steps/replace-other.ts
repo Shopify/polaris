@@ -1,17 +1,27 @@
-import type {ASTNode, Collection, JSCodeshift} from 'jscodeshift';
+import type {
+  ASTNode,
+  Collection,
+  JSCodeshift,
+  JSXOpeningElement,
+} from 'jscodeshift';
 
 import {
   hasJSXAttribute,
-  replaceJSXElement,
-  replaceJSXAttributes,
   insertJSXAttribute,
-  hasJSXSpreadAttribute,
   insertJSXComment,
+  insertCommentBefore,
+  replaceJSXAttributes,
+  replaceJSXElement,
 } from '../../../utilities/jsx';
 import {
-  hasImportSpecifier,
   getImportSpecifierName,
+  hasImportDeclaration,
+  hasImportSpecifier,
+  hasImportSpecifiers,
+  insertImportDeclaration,
   normalizeImportSourcePaths,
+  removeImportDeclaration,
+  removeImportSpecifier,
   updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
@@ -44,11 +54,9 @@ export function replaceOther<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  const relative = options.relative;
-
   Object.entries(components).forEach(([componentName, {variant, as}]) => {
     const sourcePaths = normalizeImportSourcePaths(j, source, {
-      relative,
+      relative: options.relative,
       from: componentName,
       to: 'Text',
     });
@@ -60,17 +68,23 @@ export function replaceOther<NodeType = ASTNode>(
       getImportSpecifierName(j, source, componentName, sourcePaths.from) ||
       componentName;
 
-    updateImports(j, source, {
-      fromSpecifier: componentName,
-      toSpecifier: 'Text',
-      fromSourcePath: sourcePaths.from,
-      toSourcePath: sourcePaths.to,
-    });
+    let canInsertTextImport = false;
+    let canRemovePreviousComponentImport = true;
 
     source.findJSXElements(localElementName).forEach((element) => {
-      if (hasJSXSpreadAttribute(j, element)) {
+      const allAttributes =
+        (j(element).find(j.JSXOpeningElement).get().value as JSXOpeningElement)
+          .attributes ?? [];
+
+      if (
+        allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')
+      ) {
+        canRemovePreviousComponentImport = false;
         insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+        return;
       }
+
+      canInsertTextImport = true;
 
       replaceJSXElement(j, element, 'Text');
       insertJSXAttribute(j, element, 'variant', variant);
@@ -90,7 +104,40 @@ export function replaceOther<NodeType = ASTNode>(
       .find(j.Identifier)
       .filter((path) => path.node.name === localElementName)
       .forEach((path) => {
-        path.node.name = 'Text';
+        if (path.node.type !== 'Identifier') return;
+
+        canRemovePreviousComponentImport = false;
+
+        insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
+        insertCommentBefore(j, path, 'Replace with: Text');
       });
+
+    if (!hasImportDeclaration(j, source, sourcePaths.to)) {
+      insertImportDeclaration(
+        j,
+        source,
+        'Text',
+        sourcePaths.to,
+        sourcePaths.from,
+      );
+    }
+
+    if (canInsertTextImport) {
+      updateImports(j, source, {
+        fromSpecifier: componentName,
+        toSpecifier: 'Text',
+        fromSourcePath: sourcePaths.from,
+        toSourcePath: sourcePaths.to,
+      });
+    }
+
+    if (canRemovePreviousComponentImport) {
+      if (hasImportSpecifier(j, source, componentName, sourcePaths.from)) {
+        removeImportSpecifier(j, source, componentName, sourcePaths.from);
+      }
+      if (!hasImportSpecifiers(j, source, sourcePaths.from)) {
+        removeImportDeclaration(j, source, sourcePaths.from);
+      }
+    }
   });
 }
