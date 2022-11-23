@@ -25,8 +25,8 @@ describe('<Bleed />', () => {
 
     expect(bleed).toContainReactComponent('div', {
       style: {
-        '--pc-bleed-margin-inline-start': 'var(--p-space-5)',
-        '--pc-bleed-margin-inline-end': 'var(--p-space-5)',
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-5)',
+        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-5)',
       } as React.CSSProperties,
     });
   });
@@ -40,8 +40,8 @@ describe('<Bleed />', () => {
 
     expect(bleed).toContainReactComponent('div', {
       style: {
-        '--pc-bleed-margin-inline-start': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-end': 'var(--p-space-5)',
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
+        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-5)',
       } as React.CSSProperties,
     });
   });
@@ -55,11 +55,26 @@ describe('<Bleed />', () => {
 
     expect(bleed).toContainReactComponent('div', {
       style: {
-        '--pc-bleed-margin-block-start': 'var(--p-space-1)',
-        '--pc-bleed-margin-block-end': 'var(--p-space-1)',
-        '--pc-bleed-margin-inline-start': 'var(--p-space-2)',
-        '--pc-bleed-margin-inline-end': 'var(--p-space-3)',
+        '--pc-bleed-margin-block-start-xs': 'var(--p-space-1)',
+        '--pc-bleed-margin-block-end-xs': 'var(--p-space-1)',
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
+        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-3)',
       } as React.CSSProperties,
+    });
+  });
+
+  it('renders margin based on breakpoints', () => {
+    const bleed = mountWithApp(
+      <Bleed marginInlineStart={{xs: '2', md: '8'}}>
+        <Children />
+      </Bleed>,
+    );
+
+    expect(bleed).toContainReactComponent('div', {
+      style: expect.objectContaining({
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-2)',
+        '--pc-bleed-margin-inline-start-md': 'var(--p-space-8)',
+      }) as React.CSSProperties,
     });
   });
 });

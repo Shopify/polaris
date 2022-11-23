@@ -1,8 +1,56 @@
 @import '../../styles/common';
 
 .Bleed {
-  margin-block-start: calc(-1 * var(--pc-bleed-margin-block-start));
-  margin-block-end: calc(-1 * var(--pc-bleed-margin-block-end));
-  margin-inline-start: calc(-1 * var(--pc-bleed-margin-inline-start));
-  margin-inline-end: calc(-1 * var(--pc-bleed-margin-inline-end));
+  --pc-bleed-margin-block-start-xs: initial;
+  --pc-bleed-margin-block-start-sm: var(--pc-bleed-margin-block-start-xs);
+  --pc-bleed-margin-block-start-md: var(--pc-bleed-margin-block-start-sm);
+  --pc-bleed-margin-block-start-lg: var(--pc-bleed-margin-block-start-md);
+  --pc-bleed-margin-block-start-xl: var(--pc-bleed-margin-block-start-lg);
+  --pc-bleed-margin-block-end-xs: initial;
+  --pc-bleed-margin-block-end-sm: var(--pc-bleed-margin-block-end-xs);
+  --pc-bleed-margin-block-end-md: var(--pc-bleed-margin-block-end-sm);
+  --pc-bleed-margin-block-end-lg: var(--pc-bleed-margin-block-end-md);
+  --pc-bleed-margin-block-end-xl: var(--pc-bleed-margin-block-end-lg);
+  --pc-bleed-margin-inline-start-xs: initial;
+  --pc-bleed-margin-inline-start-sm: var(--pc-bleed-margin-inline-start-xs);
+  --pc-bleed-margin-inline-start-md: var(--pc-bleed-margin-inline-start-sm);
+  --pc-bleed-margin-inline-start-lg: var(--pc-bleed-margin-inline-start-md);
+  --pc-bleed-margin-inline-start-xl: var(--pc-bleed-margin-inline-start-lg);
+  --pc-bleed-margin-inline-end-xs: initial;
+  --pc-bleed-margin-inline-end-sm: var(--pc-bleed-margin-inline-end-xs);
+  --pc-bleed-margin-inline-end-md: var(--pc-bleed-margin-inline-end-sm);
+  --pc-bleed-margin-inline-end-lg: var(--pc-bleed-margin-inline-end-md);
+  --pc-bleed-margin-inline-end-xl: var(--pc-bleed-margin-inline-end-lg);
+  margin-block-start: calc(-1 * var(--pc-bleed-margin-block-start-xs));
+  margin-block-end: calc(-1 * var(--pc-bleed-margin-block-end-xs));
+  margin-inline-start: calc(-1 * var(--pc-bleed-margin-inline-start-xs));
+  margin-inline-end: calc(-1 * var(--pc-bleed-margin-inline-end-xs));
+
+  @media #{$p-breakpoints-sm-up} {
+    margin-block-start: calc(-1 * var(--pc-bleed-margin-block-start-sm));
+    margin-block-end: calc(-1 * var(--pc-bleed-margin-block-end-sm));
+    margin-inline-start: calc(-1 * var(--pc-bleed-margin-inline-start-sm));
+    margin-inline-end: calc(-1 * var(--pc-bleed-margin-inline-end-sm));
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    margin-block-start: calc(-1 * var(--pc-bleed-margin-block-start-md));
+    margin-block-end: calc(-1 * var(--pc-bleed-margin-block-end-md));
+    margin-inline-start: calc(-1 * var(--pc-bleed-margin-inline-start-md));
+    margin-inline-end: calc(-1 * var(--pc-bleed-margin-inline-end-md));
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    margin-block-start: calc(-1 * var(--pc-bleed-margin-block-start-lg));
+    margin-block-end: calc(-1 * var(--pc-bleed-margin-block-end-lg));
+    margin-inline-start: calc(-1 * var(--pc-bleed-margin-inline-start-lg));
+    margin-inline-end: calc(-1 * var(--pc-bleed-margin-inline-end-lg));
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    margin-block-start: calc(-1 * var(--pc-bleed-margin-block-start-xl));
+    margin-block-end: calc(-1 * var(--pc-bleed-margin-block-end-xl));
+    margin-inline-start: calc(-1 * var(--pc-bleed-margin-inline-start-xl));
+    margin-inline-end: calc(-1 * var(--pc-bleed-margin-inline-end-xl));
+  }
 }
