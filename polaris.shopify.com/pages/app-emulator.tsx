@@ -1,26 +1,25 @@
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
+import {GrowFrame} from '../src/components/ComponentExamples/ComponentExamples';
 
 export default function AppEmulator() {
   const {query} = useRouter();
   const stringifiedQuery = new URLSearchParams(
     query as Record<string, string>,
   ).toString();
-  const iframeSrc = `http://localhost:9000/preview/?${stringifiedQuery}`;
+  const iframeSrc = `/playroom/preview/?${stringifiedQuery}`;
   useEffect(() => {
-    const messageListener = (e) => {
-      console.log('Hello AM I BEING CALLED?', e);
+    const messageListener = (e: any) => {
+      console.log(e);
     };
-    console.log('ADDING EVENT LISTENER');
     window.parent.addEventListener('message', messageListener);
     return () => {
       return window.parent.removeEventListener('message', messageListener);
     };
   }, []);
-  console.log('RENDERING COMPONENT');
   return (
     <>
-      <iframe
+      <GrowFrame
         style={{
           display: 'block',
           resize: 'horizontal',
@@ -29,10 +28,15 @@ export default function AppEmulator() {
           maxWidth: '100%',
           minWidth: '375px',
         }}
-        onLoad={() => {
-          console.log('LOADED');
-        }}
+        defaultHeight="400px"
+        id="app-emulator-iframe"
         src={iframeSrc}
+        calculateIframeHeight={(iframeDoc) => {
+          return `${iframeDoc.body?.scrollHeight ?? 0}px`;
+        }}
+        extractRenderedHTML={(iframeDoc) => {
+          return iframeDoc.getElementById('polaris-sandbox-wrapper')?.innerHTML;
+        }}
       />
     </>
   );

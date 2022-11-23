@@ -42,6 +42,61 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
+interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
+  calculateIframeHeight: (htmlDoc: Document) => string;
+  extractRenderedHTML: (htmlDoc: Document) => string | undefined;
+  defaultHeight: string;
+  id: string;
+}
+
+export const GrowFrame = ({
+  id,
+  extractRenderedHTML,
+  calculateIframeHeight,
+  defaultHeight,
+  onLoad,
+  ...props
+}: GrowFrameProps) => {
+  const [iframeHeight, setIframeHeight] = useState(defaultHeight);
+  const handleExampleLoad = () => {
+    let attempts = 0;
+
+    const waitForExampleContentToRender = setInterval(() => {
+      const frameElement = document.getElementById(id) as HTMLIFrameElement;
+      const iframeDocument = frameElement?.contentDocument;
+      if (iframeDocument) {
+        const html = extractRenderedHTML(iframeDocument);
+
+        if (html) {
+          const newHeight = calculateIframeHeight(iframeDocument);
+          setIframeHeight(newHeight);
+          clearInterval(waitForExampleContentToRender);
+        }
+      }
+
+      attempts++;
+
+      if (attempts > 10) {
+        clearInterval(waitForExampleContentToRender);
+        console.warn('Unable to detect example iframe load completion.');
+      }
+    }, 100);
+
+    return () => clearInterval(waitForExampleContentToRender);
+  };
+  return (
+    <iframe
+      {...props}
+      height={iframeHeight}
+      id={id}
+      onLoad={(e) => {
+        onLoad?.(e);
+        handleExampleLoad();
+      }}
+    />
+  );
+};
+
 const ComponentExamples = <T extends Example>({
   examples,
   calculateIframeHeight,
@@ -51,7 +106,6 @@ const ComponentExamples = <T extends Example>({
 }: Props<T>) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
-  const [iframeHeight, setIframeHeight] = useState('400px');
 
   const handleExampleLoad = () => {
     let attempts = 0;
@@ -63,10 +117,7 @@ const ComponentExamples = <T extends Example>({
       const iframeDocument = exampleIframe?.contentDocument;
       if (iframeDocument) {
         const html = extractRenderedHTML(iframeDocument);
-
         if (html) {
-          const newHeight = calculateIframeHeight(iframeDocument);
-          setIframeHeight(newHeight);
           setHTMLCode(formatHTML(html));
           clearInterval(waitForExampleContentToRender);
         }
@@ -114,10 +165,12 @@ const ComponentExamples = <T extends Example>({
             <Tab.Panel key={i}>
               {description ? <Markdown text={description} /> : null}
               <div className={styles.ExampleFrame}>
-                <iframe
+                <GrowFrame
                   src={exampleUrl}
-                  height={iframeHeight}
-                  onLoad={handleExampleLoad}
+                  extractRenderedHTML={extractRenderedHTML}
+                  calculateIframeHeight={calculateIframeHeight}
+                  defaultHeight={'400px'}
+                  onLoad={handleExampleLoad()}
                   id={exampleIframeId}
                 />
                 <div className={className(styles.Buttons, 'light-mode')}>

@@ -63,6 +63,7 @@ const codeExamples: Example[] = [
   {
     title: 'Detail view skeleton page',
     code: `<SkeletonPage title="Products" primaryAction>
+    <ContextualSaveBar visible/>
   <Layout>
     <Layout.Section>
       <Card sectioned>
@@ -196,10 +197,9 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
               <Tab.Panel>
                 <ComponentExamples
                   examples={codeExamples}
-                  extractRenderedHTML={(iframeDoc) =>
-                    iframeDoc.getElementById('polaris-sandbox-wrapper')
-                      ?.innerHTML
-                  }
+                  extractRenderedHTML={(iframeDoc) => {
+                    return iframeDoc.body?.innerHTML;
+                  }}
                   calculateIframeHeight={(iframeDoc) =>
                     `${iframeDoc.body?.scrollHeight ?? 0}px`
                   }
