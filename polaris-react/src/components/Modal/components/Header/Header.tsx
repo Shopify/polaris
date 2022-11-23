@@ -6,8 +6,6 @@ import {Columns} from '../../../Columns';
 import {Inline} from '../../../Inline';
 import {Text} from '../../../Text';
 
-import styles from './Header.scss';
-
 export interface HeaderProps {
   id: string;
   titleHidden: boolean;
@@ -24,11 +22,11 @@ export function Header({
   onClose,
 }: HeaderProps) {
   const titleHiddenMarkup = (
-    <div className={styles.titleHidden}>
+    <Box position="absolute" insetInlineEnd="0" zIndex="1">
       <Inline align="end">
         <CloseButton titleHidden={titleHidden} onClick={onClose} />
       </Inline>
-    </div>
+    </Box>
   );
 
   if (titleHidden || !children) {
@@ -49,13 +47,11 @@ export function Header({
             {children}
           </Text>
         </Inline>
-        <Inline>
-          <CloseButton
-            pressed={closing}
-            titleHidden={titleHidden}
-            onClick={onClose}
-          />
-        </Inline>
+        <CloseButton
+          pressed={closing}
+          titleHidden={titleHidden}
+          onClick={onClose}
+        />
       </Columns>
     </Box>
   );
