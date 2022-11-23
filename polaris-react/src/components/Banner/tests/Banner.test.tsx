@@ -21,7 +21,9 @@ import {Banner, BannerHandles} from '../Banner';
 describe('<Banner />', () => {
   it('renders a title', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);
-    expect(banner.find(Text)).toContainReactText('Banner title');
+    expect(
+      banner.find(Text, {as: 'h2', variant: 'headingMd'}),
+    ).toContainReactText('Banner title');
   });
 
   it('passes an h2 element to Heading', () => {
