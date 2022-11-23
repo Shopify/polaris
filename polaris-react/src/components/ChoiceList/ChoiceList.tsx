@@ -8,6 +8,7 @@ import {InlineError, errorTextID} from '../InlineError';
 import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 import {Box} from '../Box';
+import {Bleed} from '../Bleed';
 
 import styles from './ChoiceList.scss';
 
@@ -107,23 +108,27 @@ export function ChoiceList({
         </Box>
       </div>
     ) : null;
-
     return (
       <li key={value}>
-        <ControlComponent
-          name={finalName}
-          value={value}
-          id={id}
-          label={label}
-          disabled={choiceDisabled || disabled}
-          checked={choiceIsSelected(choice, selected)}
-          helpText={helpText}
-          onChange={handleChange}
-          ariaDescribedBy={
-            error && describedByError ? errorTextID(finalName) : null
-          }
-        />
-        {children}
+        <Bleed
+          marginInline="0"
+          marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}
+        >
+          <ControlComponent
+            name={finalName}
+            value={value}
+            id={id}
+            label={label}
+            disabled={choiceDisabled || disabled}
+            checked={choiceIsSelected(choice, selected)}
+            helpText={helpText}
+            onChange={handleChange}
+            ariaDescribedBy={
+              error && describedByError ? errorTextID(finalName) : null
+            }
+          />
+          {children}
+        </Bleed>
       </li>
     );
   });
