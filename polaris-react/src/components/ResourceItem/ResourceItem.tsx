@@ -175,7 +175,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div id="handle" onClick={this.handleLargerSelectionArea}>
+        <div onClick={this.handleLargerSelectionArea}>
           <Bleed marginInline="2">
             <Box
               paddingInlineStart="2"
