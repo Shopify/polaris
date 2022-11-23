@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import {useRouter} from 'next/router';
 import {GrowFrame} from '../src/components/ComponentExamples/ComponentExamples';
 
@@ -8,12 +8,13 @@ export default function AppEmulator() {
     query as Record<string, string>,
   ).toString();
   const iframeSrc = `/playroom/preview/?${stringifiedQuery}`;
+  const frameRef = useRef<HTMLIFrameElement | null>(null);
   useEffect(() => {
     const messageListener = (e: any) => {
       // TODO filter so we only log messages from app-bridge;
-      // if (e.source === '') {
-      console.log(e);
-      // }
+      if (e.source?.frameElement === frameRef?.current) {
+        console.log(e);
+      }
     };
     // We listen in to window.top here
     // Because appbridge posts all messages to
@@ -28,6 +29,7 @@ export default function AppEmulator() {
   return (
     <>
       <GrowFrame
+        ref={frameRef}
         style={{
           display: 'block',
           resize: 'horizontal',

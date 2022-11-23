@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {ForwardedRef, forwardRef, useEffect, useState} from 'react';
 import styles from './ComponentExamples.module.scss';
 import Code from '../Code';
 import {Tab} from '@headlessui/react';
@@ -49,51 +49,59 @@ interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
   id: string;
 }
 
-export const GrowFrame = ({
-  id,
-  extractRenderedHTML,
-  calculateIframeHeight,
-  defaultHeight,
-  onLoad,
-  ...props
-}: GrowFrameProps) => {
-  const [iframeHeight, setIframeHeight] = useState(defaultHeight);
-  useEffect(() => {
-    const messageReceiver = (e: MessageEvent) => {
-      if (
-        typeof e.data === 'string' &&
-        e.data.includes('PLAYROOM COMPONENT LOADED') &&
-        !e.data.includes(id) &&
-        window.parent
-      ) {
-        const frameElement = document.getElementById(id) as HTMLIFrameElement;
-        const iframeDocument = frameElement?.contentDocument;
-        if (iframeDocument) {
-          const newHeight = calculateIframeHeight(iframeDocument);
-          setIframeHeight(newHeight);
+export const GrowFrame = forwardRef(
+  (
+    {
+      id,
+      extractRenderedHTML,
+      calculateIframeHeight,
+      defaultHeight,
+      onLoad,
+      ...props
+    }: GrowFrameProps,
+    ref: ForwardedRef<HTMLIFrameElement>,
+  ) => {
+    const [iframeHeight, setIframeHeight] = useState(defaultHeight);
+    useEffect(() => {
+      const messageReceiver = (e: MessageEvent) => {
+        if (
+          typeof e.data === 'string' &&
+          e.data.includes('PLAYROOM COMPONENT LOADED') &&
+          !e.data.includes(id) &&
+          window.parent
+        ) {
+          const frameElement = document.getElementById(id) as HTMLIFrameElement;
+          const iframeDocument = frameElement?.contentDocument;
+          if (iframeDocument) {
+            const newHeight = calculateIframeHeight(iframeDocument);
+            setIframeHeight(newHeight);
+          }
+          window.parent.postMessage(
+            `${id} PLAYROOM COMPONENT LOADED`,
+            'http://localhost:3000',
+          );
         }
-        window.parent.postMessage(
-          `${id} PLAYROOM COMPONENT LOADED`,
-          'http://localhost:3000',
-        );
-      }
-    };
-    window.addEventListener('message', messageReceiver);
-    return () => {
-      window.removeEventListener('message', messageReceiver);
-    };
-  }, []);
-  return (
-    <iframe
-      {...props}
-      height={iframeHeight}
-      id={id}
-      onLoad={(e) => {
-        onLoad?.(e);
-      }}
-    />
-  );
-};
+      };
+      window.addEventListener('message', messageReceiver);
+      return () => {
+        window.removeEventListener('message', messageReceiver);
+      };
+    }, []);
+    return (
+      <iframe
+        ref={ref}
+        {...props}
+        height={iframeHeight}
+        id={id}
+        onLoad={(e) => {
+          onLoad?.(e);
+        }}
+      />
+    );
+  },
+);
+
+GrowFrame.displayName = 'GrowFrame';
 
 const ComponentExamples = <T extends Example>({
   examples,
