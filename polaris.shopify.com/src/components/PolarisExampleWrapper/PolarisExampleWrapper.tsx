@@ -1,10 +1,16 @@
 import {AppProvider} from '@shopify/polaris';
 import translations from '@shopify/polaris/locales/en.json';
-import {ComponentType} from 'react';
+import {ComponentType, useEffect} from 'react';
 import styles from './PolarisExampleWrapper.module.scss';
 
 export const withPolarisExample = (Component: ComponentType) => {
   const PolarisHOC = (props: any) => {
+    useEffect(() => {
+      window.parent.postMessage(
+        'PLAYROOM COMPONENT LOADED',
+        'http://localhost:3000',
+      );
+    });
     return (
       <>
         <AppProvider i18n={translations}>
