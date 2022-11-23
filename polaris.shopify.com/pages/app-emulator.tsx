@@ -10,11 +10,19 @@ export default function AppEmulator() {
   const iframeSrc = `/playroom/preview/?${stringifiedQuery}`;
   useEffect(() => {
     const messageListener = (e: any) => {
+      // TODO filter so we only log messages from app-bridge;
+      // if (e.source === '') {
       console.log(e);
+      // }
     };
-    window.parent.addEventListener('message', messageListener);
+    // We listen in to window.top here
+    // Because appbridge posts all messages to
+    // window.top https://developer.mozilla.org/en-US/docs/Web/API/Window/top
+    // This app-emulator is itself an iframe inside of the polaris docs site
+    // this iFrame is not the top.
+    window.top!.addEventListener('message', messageListener);
     return () => {
-      return window.parent.removeEventListener('message', messageListener);
+      return window.top!.removeEventListener('message', messageListener);
     };
   }, []);
   return (

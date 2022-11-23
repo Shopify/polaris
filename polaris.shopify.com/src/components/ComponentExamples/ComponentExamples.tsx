@@ -58,32 +58,31 @@ export const GrowFrame = ({
   ...props
 }: GrowFrameProps) => {
   const [iframeHeight, setIframeHeight] = useState(defaultHeight);
-  const handleExampleLoad = () => {
-    let attempts = 0;
-
-    const waitForExampleContentToRender = setInterval(() => {
-      const frameElement = document.getElementById(id) as HTMLIFrameElement;
-      const iframeDocument = frameElement?.contentDocument;
-      if (iframeDocument) {
-        const html = extractRenderedHTML(iframeDocument);
-
-        if (html) {
+  useEffect(() => {
+    const messageReceiver = (e: MessageEvent) => {
+      if (
+        typeof e.data === 'string' &&
+        e.data.includes('PLAYROOM COMPONENT LOADED') &&
+        !e.data.includes(id) &&
+        window.parent
+      ) {
+        const frameElement = document.getElementById(id) as HTMLIFrameElement;
+        const iframeDocument = frameElement?.contentDocument;
+        if (iframeDocument) {
           const newHeight = calculateIframeHeight(iframeDocument);
           setIframeHeight(newHeight);
-          clearInterval(waitForExampleContentToRender);
         }
+        window.parent.postMessage(
+          `${id} PLAYROOM COMPONENT LOADED`,
+          'http://localhost:3000',
+        );
       }
-
-      attempts++;
-
-      if (attempts > 10) {
-        clearInterval(waitForExampleContentToRender);
-        console.warn('Unable to detect example iframe load completion.');
-      }
-    }, 100);
-
-    return () => clearInterval(waitForExampleContentToRender);
-  };
+    };
+    window.addEventListener('message', messageReceiver);
+    return () => {
+      window.removeEventListener('message', messageReceiver);
+    };
+  }, []);
   return (
     <iframe
       {...props}
@@ -91,7 +90,6 @@ export const GrowFrame = ({
       id={id}
       onLoad={(e) => {
         onLoad?.(e);
-        handleExampleLoad();
       }}
     />
   );

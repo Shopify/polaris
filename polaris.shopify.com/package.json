@@ -7,7 +7,7 @@
     "start": "next start",
     "dev": "run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
-    "dev:playroom": "playroom start",
+    "dev:playroom": "rm -rf ./public/playroom && playroom start",
     "dev:watch-md": "node scripts/watch-md.mjs",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",

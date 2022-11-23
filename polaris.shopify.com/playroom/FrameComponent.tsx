@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AppProvider} from '@shopify/polaris';
 import {Provider} from '@shopify/app-bridge-react';
 import '@shopify/polaris/build/esm/styles.css';
@@ -9,7 +9,6 @@ const config = {
   host: btoa(hostString.replace(/\//g, '_').replace(/\+/g, '-')),
   forceRedirect: true,
 };
-
 export default function FrameComponent({
   theme = enTranslations,
   children,
@@ -17,6 +16,12 @@ export default function FrameComponent({
   theme: any;
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    window.parent.postMessage(
+      'PLAYROOM COMPONENT LOADED',
+      'http://localhost:3000',
+    );
+  }, []);
   return (
     <AppProvider i18n={theme}>
       <Provider config={config}>
