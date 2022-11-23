@@ -1,9 +1,12 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
+import {Box} from '../Box';
+import {Inline} from '../Inline';
+import {Text} from '../Text';
+import {AlphaStack} from '../AlphaStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -31,19 +34,21 @@ export function SkeletonPage({
   breadcrumbs,
 }: SkeletonPageProps) {
   const i18n = useI18n();
-  const className = classNames(
-    styles.Page,
-    fullWidth && styles.fullWidth,
-    narrowWidth && styles.narrowWidth,
-  );
 
   const titleContent = title ? (
-    <h1 className={styles.Title}>{title}</h1>
+    <Text variant="headingXl" as="h1">
+      {title}
+    </Text>
   ) : (
-    <div className={styles.SkeletonTitle} />
+    <div className={styles.SkeletonTitle}>
+      <Box
+        background="surface-neutral"
+        minWidth="120px"
+        minHeight="28px"
+        borderRadius="base"
+      />
+    </div>
   );
-
-  const titleMarkup = <div className={styles.TitleWrapper}>{titleContent}</div>;
 
   const primaryActionMarkup = primaryAction ? (
     <div className={styles.PrimaryAction}>
@@ -52,25 +57,55 @@ export function SkeletonPage({
   ) : null;
 
   const breadcrumbMarkup = breadcrumbs ? (
-    <div className={styles.BreadcrumbAction} style={{width: 60}}>
+    <Box maxWidth="60px" paddingBlockStart="4" paddingBlockEnd="4">
       <SkeletonBodyText lines={1} />
-    </div>
+    </Box>
   ) : null;
 
+  const narrowWidthProps = narrowWidth
+    ? {
+        maxWidth: '662px',
+      }
+    : {};
+
+  const fullWidthProps = fullWidth
+    ? {
+        maxWidth: 'none',
+      }
+    : {};
+
   return (
-    <div
-      className={className}
-      role="status"
+    <Box
+      padding="0"
+      paddingInlineStart={{sm: '6'}}
+      paddingInlineEnd={{sm: '6'}}
+      maxWidth="998px"
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
+      {...narrowWidthProps}
+      {...fullWidthProps}
     >
-      <div className={styles.Header}>
-        {breadcrumbMarkup}
-        <div className={styles.TitleAndPrimaryAction}>
-          {titleMarkup}
-          {primaryActionMarkup}
-        </div>
-      </div>
-      <div className={styles.Content}>{children}</div>
-    </div>
+      <AlphaStack fullWidth gap="0">
+        <Box
+          padding={{xs: '4', md: '5'}}
+          paddingBlockEnd={{xs: '2', md: '5'}}
+          paddingInlineStart={{sm: '0'}}
+          paddingInlineEnd={{sm: '0'}}
+        >
+          {breadcrumbMarkup}
+          <Inline align="space-between" blockAlign="start">
+            {titleContent}
+            {primaryActionMarkup}
+          </Inline>
+        </Box>
+        <Box
+          paddingBlockStart={{xs: '2', md: '5'}}
+          paddingBlockEnd="2"
+          paddingInlineStart="0"
+          paddingInlineEnd="0"
+        >
+          {children}
+        </Box>
+      </AlphaStack>
+    </Box>
   );
 }
