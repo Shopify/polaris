@@ -313,7 +313,15 @@ describe('<Modal>', () => {
       );
 
       expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'titleHidden',
+        style: expect.objectContaining({
+          '--pc-box-inset-inline-end': 'var(--p-space-0)',
+          position: 'absolute',
+          zIndex: '1',
+        }) as React.CSSProperties,
+      });
+      expect(modal.find(Header)).not.toContainReactComponent(Text, {
+        as: 'h2',
+        variant: 'headingLg',
       });
       expect(modal.find(Header)).not.toContainReactComponent(Box);
     });

@@ -159,10 +159,15 @@ $disabled-fade: 0.6;
   margin-left: var(--p-space-2);
   display: inline-flex;
   margin-top: var(--p-space-2);
+  margin-right: var(--p-space-2);
 
   @media #{$p-breakpoints-md-up} {
     margin-top: var(--p-space-1);
   }
+}
+
+.ListItem-hasAction .Badge {
+  margin-right: 0;
 }
 
 .Icon {

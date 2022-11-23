@@ -6,9 +6,9 @@ export type MouseUpBlurHandler = (
 ) => void;
 
 const FOCUSABLE_SELECTOR =
-  'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]';
+  'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled):not([aria-disabled]):not([tabindex="-1"]),*[tabindex]';
 const KEYBOARD_FOCUSABLE_SELECTORS =
-  'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]:not([tabindex="-1"])';
+  'a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled):not([aria-disabled]):not([tabindex="-1"]),*[tabindex]:not([tabindex="-1"])';
 const MENUITEM_FOCUSABLE_SELECTORS =
   'a[role="menuitem"],frame[role="menuitem"],iframe[role="menuitem"],input[role="menuitem"]:not([type=hidden]):not(:disabled),select[role="menuitem"]:not(:disabled),textarea[role="menuitem"]:not(:disabled),button[role="menuitem"]:not(:disabled),*[tabindex]:not([tabindex="-1"])';
 export const handleMouseUpByBlurring: MouseUpBlurHandler = ({currentTarget}) =>
