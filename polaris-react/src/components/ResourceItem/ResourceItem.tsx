@@ -290,7 +290,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
         <Columns columns={{xs: '1fr auto'}} gap="0">
-          <Columns columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}>
+          <Columns
+            columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
+            gap="5"
+          >
             {ownedMarkup}
             <Box
               width="100%"
