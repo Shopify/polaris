@@ -7,11 +7,11 @@ import type {
 } from 'jscodeshift';
 
 import {
-  replaceJSXElement,
-  insertJSXAttribute,
-  removeJSXAttributes,
-  insertJSXComment,
   insertCommentBefore,
+  insertJSXAttribute,
+  insertJSXComment,
+  removeJSXAttributes,
+  replaceJSXElement,
 } from '../../../utilities/jsx';
 import {
   getImportSpecifierName,
@@ -55,6 +55,10 @@ export function replaceTextStyle<NodeType = ASTNode>(
   const localElementName =
     getImportSpecifierName(j, source, 'TextStyle', sourcePaths.from) ||
     'TextStyle';
+
+  const localElementTypeName =
+    getImportSpecifierName(j, source, 'TextStyleProps', sourcePaths.from) ||
+    'TextStyleProps';
 
   let canInsertTextImport = false;
   let canRemoveTextStyleImport = true;
@@ -128,14 +132,20 @@ export function replaceTextStyle<NodeType = ASTNode>(
 
   source
     .find(j.Identifier)
-    .filter((path) => path.node.name === localElementName)
+    .filter(
+      (path) =>
+        path.node.name === localElementName ||
+        path.node.name === localElementTypeName,
+    )
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
 
       canRemoveTextStyleImport = false;
-
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
-      insertCommentBefore(j, path, 'Replace with: Text');
+
+      if (path.node.name === localElementName) {
+        insertCommentBefore(j, path, 'Replace with: Text');
+      }
     });
 
   if (
