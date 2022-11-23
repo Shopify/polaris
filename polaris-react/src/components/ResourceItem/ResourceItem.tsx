@@ -203,10 +203,14 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <>
+        <Inline
+          blockAlign={
+            media && selectable ? 'center' : getAlignment(verticalAlignment)
+          }
+        >
           {handleMarkup}
           {media}
-        </>
+        </Inline>
       );
     }
 
@@ -285,14 +289,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         paddingInlineEnd={{xs: '4', sm: '5'}}
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <Columns columns={{xs: '1fr auto auto auto'}} gap="0">
-          <Inline
-            blockAlign={
-              media && selectable ? 'center' : getAlignment(verticalAlignment)
-            }
-            gap="4"
-            wrap={false}
-          >
+        <Columns columns={{xs: '1fr auto'}} gap="0">
+          <Columns columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}>
             {ownedMarkup}
             <Box
               width="100%"
@@ -302,7 +300,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             >
               {children}
             </Box>
-          </Inline>
+          </Columns>
           {actionsMarkup}
           {disclosureMarkup}
         </Columns>

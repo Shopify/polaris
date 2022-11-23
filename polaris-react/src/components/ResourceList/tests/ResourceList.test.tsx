@@ -352,7 +352,7 @@ describe('<ResourceList />', () => {
       );
       const resourceItem = resourceList.find(ResourceItem);
 
-      resourceItem!.findAll('div')[5]!.trigger('onClick', {
+      resourceItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -1071,13 +1071,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[5]!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[5]!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1096,13 +1096,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[5]!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[5]!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1140,13 +1140,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[5]!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[5]!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1172,13 +1172,13 @@ describe('<ResourceList />', () => {
       );
       // Sets {lastSelected: 0}
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.findAll('div')[5]!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.findAll('div')[5]!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
