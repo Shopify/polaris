@@ -323,7 +323,6 @@ describe('<Modal>', () => {
         as: 'h2',
         variant: 'headingLg',
       });
-      expect(modal.find(Header)).not.toContainReactComponent(Box);
     });
   });
 
