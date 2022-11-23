@@ -148,9 +148,12 @@ export function replaceDisplayText<NodeType = ASTNode>(
     .find(j.Identifier)
     .filter((path) => path.node.name === localElementName)
     .forEach((path) => {
+      if (path.node.type !== 'Identifier') return;
+
+      canRemoveDisplayTextImport = false;
+
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
       insertCommentBefore(j, path, 'Replace with: Text');
-      canRemoveDisplayTextImport = false;
     });
 
   if (!hasImportDeclaration(j, source, sourcePaths.to)) {

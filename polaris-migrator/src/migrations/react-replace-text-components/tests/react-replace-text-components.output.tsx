@@ -4,6 +4,9 @@ import {
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
   /* Replace with: Text */
   DisplayText,
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: Text */
+  TextStyle,
   Text,
   InlineCode,
 } from '@shopify/polaris';
@@ -11,7 +14,10 @@ import {
 const noop = (..._: any) => {};
 
 export function App() {
-  const textStyle = Text;
+  const textStyle =
+    /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+    /* Replace with: Text */
+    TextStyle;
   const textStyleProps: TextStyleProps = {
     variation: 'positive',
   };
@@ -55,25 +61,27 @@ export function App() {
       <Text variant="bodySm" as="p">
         Caption
       </Text>
-      <Text variant="bodyMd" fontWeight="semibold" as="span">
+      <Text variant="bodyMd" as="span" fontWeight="semibold">
         Strong
       </Text>
-      <Text variant="bodyMd" color="success" as="span">
+      <Text variant="bodyMd" as="span" color="success">
         Positive
       </Text>
-      <Text variant="bodyMd" color="critical" as="span">
+      <Text variant="bodyMd" as="span" color="critical">
         Negative
       </Text>
-      <Text variant="bodyMd" color="warning" as="span">
+      <Text variant="bodyMd" as="span" color="warning">
         Warning
       </Text>
       <Text variant="bodyMd" as="span">
         <InlineCode>Code</InlineCode>
       </Text>
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
-      <Text {...textStyleProps} variant="bodyMd" as="span">
-        Positive
-      </Text>
+      <TextStyle variation={Math.random() > 0.5 ? 'positive' : 'negative'}>
+        Code
+      </TextStyle>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
+      <TextStyle {...textStyleProps}>Positive</TextStyle>
       <Text variant="bodySm" as="span" visuallyHidden>
         Hidden text
       </Text>
