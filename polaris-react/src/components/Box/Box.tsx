@@ -22,6 +22,7 @@ import styles from './Box.scss';
 type Element = 'div' | 'span' | 'section';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
+type Role = 'status';
 
 export type ColorTokenScale =
   | 'text'
@@ -68,9 +69,7 @@ export type BackgroundColors =
   | ColorsActionTokenAlias
   | ColorsSurfaceTokenAlias;
 
-export interface BoxProps
-  extends React.AriaAttributes,
-    React.HTMLAttributes<HTMLElement> {
+export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
@@ -152,6 +151,8 @@ export interface BoxProps
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
   paddingInlineEnd?: Spacing;
+  /** role of box */
+  role?: Role;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Width of container */
@@ -208,6 +209,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingBlockEnd,
       paddingInlineStart,
       paddingInlineEnd,
+      role,
       shadow,
       width,
       visuallyHidden,
@@ -218,7 +220,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       insetInlineEnd,
       zIndex,
       opacity,
-      role,
       ...restProps
     },
     ref,
