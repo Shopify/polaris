@@ -3,7 +3,7 @@ import {mergeRefs} from 'react-merge-refs';
 
 interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
   defaultHeight: string;
-  onGrown?: () => void;
+  onContentLoad?: () => void;
 }
 
 const FRAME_ID = 'POLARIS_GROWFRAME';
@@ -13,7 +13,7 @@ export const updateGrowFrameHeight = (height: string) => {
 };
 const GrowFrame = forwardRef(
   (
-    {defaultHeight, onGrown, ...props}: GrowFrameProps,
+    {defaultHeight, onContentLoad, ...props}: GrowFrameProps,
     ref: ForwardedRef<HTMLIFrameElement>,
   ) => {
     const growFrameRef = useRef<HTMLIFrameElement | null>(null);
@@ -26,14 +26,14 @@ const GrowFrame = forwardRef(
         const {id, height} = e.data;
         if (id === FRAME_ID && typeof height === 'string') {
           setIframeHeight(height);
-          requestAnimationFrame(() => onGrown?.());
+          requestAnimationFrame(() => onContentLoad?.());
         }
       };
       window.addEventListener('message', messageReceiver);
       return () => {
         window.removeEventListener('message', messageReceiver);
       };
-    }, [onGrown]);
+    }, [onContentLoad]);
     return (
       <iframe
         ref={mergeRefs([growFrameRef, ref])}

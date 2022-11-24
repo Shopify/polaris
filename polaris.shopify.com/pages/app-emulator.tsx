@@ -40,7 +40,7 @@ export default function AppEmulator() {
         }}
         defaultHeight="400px"
         src={iframeSrc}
-        onGrown={() => {
+        onContentLoad={() => {
           updateGrowFrameHeight(`${document.body.scrollHeight}px`);
         }}
       />

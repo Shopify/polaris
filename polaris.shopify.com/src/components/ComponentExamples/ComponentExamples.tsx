@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import GrowFrame from '../GrowFrame';
 import styles from './ComponentExamples.module.scss';
 import Code from '../Code';
@@ -51,32 +51,16 @@ const ComponentExamples = <T extends Example>({
 }: Props<T>) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleExampleLoad = () => {
-    let attempts = 0;
-
-    const waitForExampleContentToRender = setInterval(() => {
-      if (typeof document !== 'undefined') {
-        const exampleIframe = document.getElementById(
-          exampleIframeId,
-        ) as HTMLIFrameElement;
-        const iframeDocument = exampleIframe?.contentDocument;
-        if (iframeDocument) {
-          const html = extractRenderedHTML(iframeDocument);
-          if (html) {
-            setHTMLCode(formatHTML(html));
-            clearInterval(waitForExampleContentToRender);
-          }
-        }
+    const iframeDocument = iframeRef.current?.contentDocument;
+    if (iframeDocument) {
+      const html = extractRenderedHTML(iframeDocument);
+      if (html) {
+        setHTMLCode(formatHTML(html));
       }
-      attempts++;
-      if (attempts > 10) {
-        clearInterval(waitForExampleContentToRender);
-        console.warn('Unable to detect example iframe load completion.');
-      }
-    }, 100);
-
-    return () => clearInterval(waitForExampleContentToRender);
+    }
   };
 
   useEffect(() => {
@@ -111,8 +95,9 @@ const ComponentExamples = <T extends Example>({
               {description ? <Markdown text={description} /> : null}
               <div className={styles.ExampleFrame}>
                 <GrowFrame
+                  ref={iframeRef}
                   defaultHeight={'400px'}
-                  onLoad={handleExampleLoad()}
+                  onContentLoad={handleExampleLoad}
                   src={exampleUrl}
                 />
                 <div className={className(styles.Buttons, 'light-mode')}>
