@@ -9,7 +9,6 @@ import {
   BulkActionButtonProps,
 } from '../components';
 import {BulkAction, BulkActions, BulkActionsProps} from '../BulkActions';
-import styles from '../BulkActions.scss';
 
 interface Props {
   bulkActions: BulkActionButtonProps['content'][];
@@ -321,17 +320,6 @@ describe('<BulkActions />', () => {
         bulkActions.find(BulkActionButton)?.trigger('onAction');
 
         expect(spy).toHaveBeenCalledTimes(1);
-      });
-    });
-
-    describe('className', () => {
-      it('renders with the Group className', () => {
-        const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} selectMode />,
-        );
-        expect(bulkActions).toContainReactComponent('div', {
-          className: expect.stringContaining(styles.Group),
-        });
       });
     });
   });

@@ -752,18 +752,17 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     registerCheckableButtons: handleCheckableButtonRegistration,
   };
 
+  const resourceListWrapperClasses = classNames(
+    styles.ResourceListWrapper,
+    Boolean(bulkActionsMarkup) &&
+      selectMode &&
+      styles.ResourceListWrapperWithBulkActions,
+  );
+
   return (
     <ResourceListContext.Provider value={context}>
       <EventListener event="resize" handler={handleResize} />
-      <div
-        className={classNames(
-          styles.ResourceListWrapper,
-          Boolean(bulkActionsMarkup) &&
-            selectMode &&
-            styles.ResourceListWrapperWithBulkActions,
-        )}
-        ref={tableMeasurerRef}
-      >
+      <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}

@@ -546,11 +546,14 @@ function IndexTableBase({
     shouldShowBulkActions && !condensed ? (
       <div
         className={bulkActionClassNames}
-        data-condensed={condensed}
         style={{
-          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+          insetBlockStart: isBulkActionsSticky
+            ? undefined
+            : bulkActionsAbsoluteOffset,
           width: bulkActionsMaxWidth,
-          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
+          insetInlineStart: isBulkActionsSticky
+            ? bulkActionsOffsetLeft
+            : undefined,
         }}
       >
         <BulkActions
