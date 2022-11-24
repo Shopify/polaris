@@ -13,8 +13,10 @@ import {playroom} from '../../../../../constants';
 const codeExamples: Example[] = [
   {
     title: 'Index skeleton page',
-    code: `<SkeletonPage primaryAction>
-    <AppBridgeLoading/>
+    code: `
+
+    <SkeletonPage primaryAction>
+    <AppBridgeLoading loading/>
   <Layout>
     <Layout.Section>
       <Card sectioned>

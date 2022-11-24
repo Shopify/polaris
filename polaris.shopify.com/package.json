@@ -21,11 +21,13 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
+    "@remote-ui/core": "^2.1.16",
+    "@shopify/app-bridge": "^3.4.3",
     "@shopify/app-bridge-react": "^3.4.3",
     "@shopify/polaris": "^10.11.0",
     "@shopify/polaris-icons": "^6.5.0",
     "@shopify/polaris-tokens": "^6.3.0",
-    "react-merge-refs": "ˆ2.0.1",
+    "@shopify/react-i18n": "^7.4.0",
     "codesandbox": "^2.2.3",
     "framer-motion": "^6.5.1",
     "fuse.js": "^6.5.3",
@@ -37,6 +39,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.2",
+    "react-merge-refs": "ˆ2.0.1",
     "remark-gfm": "^3.0.1",
     "use-dark-mode": "^2.3.1"
   },
