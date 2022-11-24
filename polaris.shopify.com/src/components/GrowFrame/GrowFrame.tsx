@@ -28,7 +28,6 @@ const GrowFrame = forwardRef(
         ) {
           return;
         }
-        debugger;
         const {id, height} = e.data;
         if (id === FRAME_ID && typeof height === 'string') {
           setIframeHeight(height);
