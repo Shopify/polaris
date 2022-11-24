@@ -295,14 +295,16 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             gap="5"
           >
             {ownedMarkup}
-            <Box
-              width="100%"
-              padding="0"
-              paddingInlineStart="0"
-              paddingInlineEnd="0"
-            >
-              {children}
-            </Box>
+            <Inline blockAlign={getAlignment(verticalAlignment)}>
+              <Box
+                width="100%"
+                padding="0"
+                paddingInlineStart="0"
+                paddingInlineEnd="0"
+              >
+                {children}
+              </Box>
+            </Inline>
           </Columns>
           {actionsMarkup}
           {disclosureMarkup}
