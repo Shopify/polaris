@@ -113,7 +113,7 @@ export function Item({
       className={className}
       disabled={disabled}
       aria-label={accessibilityLabel}
-      onClick={onAction}
+      onClick={onAction && (() => onAction())}
       onMouseUp={handleMouseUpByBlurring}
       role={role}
     >

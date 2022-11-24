@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import {Item} from '../Item';
 import {Box} from '../../../Box';
@@ -26,13 +26,14 @@ export function Section({
   actionRole,
   onActionAnyItem,
 }: SectionProps) {
+  const actionRef = useRef<HTMLLIElement>(null);
   const handleAction = (itemOnAction: ActionListItemDescriptor['onAction']) => {
     return () => {
       if (itemOnAction) {
-        itemOnAction();
+        itemOnAction(actionRef);
       }
       if (onActionAnyItem) {
-        onActionAnyItem();
+        onActionAnyItem(actionRef);
       }
     };
   };
@@ -42,6 +43,7 @@ export function Section({
         <li
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
+          ref={actionRef}
         >
           <Item
             content={content}
