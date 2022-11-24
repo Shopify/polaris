@@ -23,13 +23,37 @@ const initialState = {
   features: setFeaturesAvailable(Group.Loading, Group.Modal, Group.Navigation),
 };
 
-export default function AppEmulator() {
+// TODO: Attempted to replace this with an AppBridge <MainFrame> component, but
+// ran into some issues:
+// 1. <MainFrame> strips the `.search` from the frame URL which our "app"
+//    (Playroom preview) requires
+// 2. There's no callback for `onLoad` of a <MainFrame> which need to trigger
+//    the updateGrowFrameHeight() method so the docs site knows the height to
+//    allocate to rendering the App Bridge + iframe.
+// 3. The render tree looks approx like:
+//    <window>
+//      <body>
+//        <iframe id="live-preview-iframe">
+//          <iframe id="app-iframe" />
+//        </iframe>
+//      </body>
+//    </window>
+//    Within #app-iframe, the app-bridge code does window.top.postMessage(),
+//    meaning messages are sent all the way up to the <window>.
+//    However, within the #live-preview-iframe, the app-bridge-host code only
+//    listens to events on window.addEventListener (note: no `.top`!), meaning
+//    the #live-preview-iframe.
+//    So the place the events are being listened for, and the place they're
+//    being sent to are different. We attempted to forward events on to the
+//    correct window (see below), but couldn't get it to work.
+const TheFrame = () => {
   const {query} = useRouter();
   const stringifiedQuery = new URLSearchParams(
     query as Record<string, string>,
   ).toString();
   const iframeSrc = `/playroom/preview/?${stringifiedQuery}`;
   const frameRef = useRef<HTMLIFrameElement | null>(null);
+
   useEffect(() => {
     const messageListener = (e: any) => {
       // TODO filter so we only log messages from app-bridge;
@@ -51,31 +75,35 @@ export default function AppEmulator() {
     };
   }, []);
   return (
+    <GrowFrame
+      ref={frameRef}
+      id="app-iframe"
+      style={{
+        display: 'block',
+        resize: 'horizontal',
+        overflow: 'auto',
+        width: '100%',
+        maxWidth: '100%',
+        minWidth: '375px',
+      }}
+      defaultHeight="400px"
+      src={iframeSrc}
+      onContentLoad={() => {
+        updateGrowFrameHeight(`${document.body.scrollHeight}px`);
+      }}
+    />
+  );
+};
+
+export default function AppEmulator() {
+  return (
     <AppProvider i18n={enTranslations}>
       <Frame>
         <HostProvider
           config={config}
-          components={[Loading, Modal]}
+          components={[Loading, Modal, TheFrame]}
           initialState={initialState}
-        >
-          <GrowFrame
-            ref={frameRef}
-            id="app-iframe"
-            style={{
-              display: 'block',
-              resize: 'horizontal',
-              overflow: 'auto',
-              width: '100%',
-              maxWidth: '100%',
-              minWidth: '375px',
-            }}
-            defaultHeight="400px"
-            src={iframeSrc}
-            onContentLoad={() => {
-              updateGrowFrameHeight(`${document.body.scrollHeight}px`);
-            }}
-          />
-        </HostProvider>
+        ></HostProvider>
       </Frame>
     </AppProvider>
   );

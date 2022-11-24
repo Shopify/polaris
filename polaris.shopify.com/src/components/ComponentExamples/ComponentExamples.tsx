@@ -92,6 +92,7 @@ const ComponentExamples = <T extends Example>({
               <div className={styles.ExampleFrame}>
                 <GrowFrame
                   ref={iframeRef}
+                  id="live-preview-iframe"
                   defaultHeight={'192px'}
                   onContentLoad={handleExampleLoad}
                   src={exampleUrl}
