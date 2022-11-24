@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react';
 import {useRouter} from 'next/router';
-import {GrowFrame} from '../src/components/ComponentExamples/ComponentExamples';
+import GrowFrame, {updateGrowFrameHeight} from '../src/components/GrowFrame';
 
 export default function AppEmulator() {
   const {query} = useRouter();
@@ -39,13 +39,9 @@ export default function AppEmulator() {
           minWidth: '375px',
         }}
         defaultHeight="400px"
-        id="app-emulator-iframe"
         src={iframeSrc}
-        calculateIframeHeight={(iframeDoc) => {
-          return `${iframeDoc.body?.scrollHeight ?? 0}px`;
-        }}
-        extractRenderedHTML={(iframeDoc) => {
-          return iframeDoc.getElementById('polaris-sandbox-wrapper')?.innerHTML;
+        onGrown={() => {
+          updateGrowFrameHeight(`${document.body.scrollHeight}px`);
         }}
       />
     </>

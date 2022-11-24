@@ -1,4 +1,5 @@
-import {ForwardedRef, forwardRef, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
+import GrowFrame from '../GrowFrame';
 import styles from './ComponentExamples.module.scss';
 import Code from '../Code';
 import {Tab} from '@headlessui/react';
@@ -42,70 +43,8 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
-  calculateIframeHeight: (htmlDoc: Document) => string;
-  extractRenderedHTML: (htmlDoc: Document) => string | undefined;
-  defaultHeight: string;
-  id: string;
-}
-
-export const GrowFrame = forwardRef(
-  (
-    {
-      id,
-      extractRenderedHTML,
-      calculateIframeHeight,
-      defaultHeight,
-      onLoad,
-      ...props
-    }: GrowFrameProps,
-    ref: ForwardedRef<HTMLIFrameElement>,
-  ) => {
-    const [iframeHeight, setIframeHeight] = useState(defaultHeight);
-    useEffect(() => {
-      const messageReceiver = (e: MessageEvent) => {
-        if (
-          typeof e.data === 'string' &&
-          e.data.includes('PLAYROOM COMPONENT LOADED') &&
-          !e.data.includes(id) &&
-          window.parent
-        ) {
-          const frameElement = document.getElementById(id) as HTMLIFrameElement;
-          const iframeDocument = frameElement?.contentDocument;
-          if (iframeDocument) {
-            const newHeight = calculateIframeHeight(iframeDocument);
-            setIframeHeight(newHeight);
-          }
-          window.parent.postMessage(
-            `${id} PLAYROOM COMPONENT LOADED`,
-            'http://localhost:3000',
-          );
-        }
-      };
-      window.addEventListener('message', messageReceiver);
-      return () => {
-        window.removeEventListener('message', messageReceiver);
-      };
-    }, []);
-    return (
-      <iframe
-        ref={ref}
-        {...props}
-        height={iframeHeight}
-        id={id}
-        onLoad={(e) => {
-          onLoad?.(e);
-        }}
-      />
-    );
-  },
-);
-
-GrowFrame.displayName = 'GrowFrame';
-
 const ComponentExamples = <T extends Example>({
   examples,
-  calculateIframeHeight,
   extractRenderedHTML,
   getIframeUrl,
   renderActions,
@@ -117,20 +56,20 @@ const ComponentExamples = <T extends Example>({
     let attempts = 0;
 
     const waitForExampleContentToRender = setInterval(() => {
-      const exampleIframe = document.getElementById(
-        exampleIframeId,
-      ) as HTMLIFrameElement;
-      const iframeDocument = exampleIframe?.contentDocument;
-      if (iframeDocument) {
-        const html = extractRenderedHTML(iframeDocument);
-        if (html) {
-          setHTMLCode(formatHTML(html));
-          clearInterval(waitForExampleContentToRender);
+      if (typeof document !== 'undefined') {
+        const exampleIframe = document.getElementById(
+          exampleIframeId,
+        ) as HTMLIFrameElement;
+        const iframeDocument = exampleIframe?.contentDocument;
+        if (iframeDocument) {
+          const html = extractRenderedHTML(iframeDocument);
+          if (html) {
+            setHTMLCode(formatHTML(html));
+            clearInterval(waitForExampleContentToRender);
+          }
         }
       }
-
       attempts++;
-
       if (attempts > 10) {
         clearInterval(waitForExampleContentToRender);
         console.warn('Unable to detect example iframe load completion.');
@@ -172,12 +111,9 @@ const ComponentExamples = <T extends Example>({
               {description ? <Markdown text={description} /> : null}
               <div className={styles.ExampleFrame}>
                 <GrowFrame
-                  src={exampleUrl}
-                  extractRenderedHTML={extractRenderedHTML}
-                  calculateIframeHeight={calculateIframeHeight}
                   defaultHeight={'400px'}
                   onLoad={handleExampleLoad()}
-                  id={exampleIframeId}
+                  src={exampleUrl}
                 />
                 <div className={className(styles.Buttons, 'light-mode')}>
                   {renderActions(example)}

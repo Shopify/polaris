@@ -1,15 +1,15 @@
 import {AppProvider} from '@shopify/polaris';
 import translations from '@shopify/polaris/locales/en.json';
 import {ComponentType, useEffect} from 'react';
+
 import styles from './PolarisExampleWrapper.module.scss';
+import { updateGrowFrameHeight } from '../GrowFrame';
 
 export const withPolarisExample = (Component: ComponentType) => {
   const PolarisHOC = (props: any) => {
     useEffect(() => {
-      window.parent.postMessage(
-        'PLAYROOM COMPONENT LOADED',
-        'http://localhost:3000',
-      );
+      const height = (document.getElementById('polaris-example')?.offsetHeight ?? 0) + 192;
+      updateGrowFrameHeight(`${height}px`);
     });
     return (
       <>
