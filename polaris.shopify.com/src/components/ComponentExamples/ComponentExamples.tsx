@@ -6,8 +6,6 @@ import {Tab} from '@headlessui/react';
 import {className} from '../../utils/various';
 import Markdown from '../Markdown';
 
-const exampleIframeId = 'example-iframe';
-
 export interface Example {
   code: string;
   description?: string;
@@ -16,8 +14,6 @@ export interface Example {
 
 interface Props<T> {
   examples: T[];
-  // A valid css <size> applied to the iframe's .height attr
-  calculateIframeHeight: (htmlDoc: Document) => string;
   extractRenderedHTML: (htmlDoc: Document) => string | undefined;
   getIframeUrl: (example: T) => string;
   renderActions: (example: T) => React.ReactNode;
@@ -86,17 +82,17 @@ const ComponentExamples = <T extends Example>({
       </Tab.List>
 
       <Tab.Panels>
-        {examples.map((example, i) => {
+        {examples.map((example) => {
           const exampleUrl = getIframeUrl(example);
           const {code, description} = example;
 
           return (
-            <Tab.Panel key={i}>
+            <Tab.Panel key={exampleUrl}>
               {description ? <Markdown text={description} /> : null}
               <div className={styles.ExampleFrame}>
                 <GrowFrame
                   ref={iframeRef}
-                  defaultHeight={'400px'}
+                  defaultHeight={'192px'}
                   onContentLoad={handleExampleLoad}
                   src={exampleUrl}
                 />

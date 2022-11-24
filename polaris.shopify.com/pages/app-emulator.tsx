@@ -12,6 +12,8 @@ export default function AppEmulator() {
   useEffect(() => {
     const messageListener = (e: any) => {
       // TODO filter so we only log messages from app-bridge;
+      // NOTE: There are other postMessage events coming in (eg; from
+      // <GrowFrame>)
       if (e.source?.frameElement === frameRef?.current) {
         console.log(e);
       }
@@ -30,6 +32,7 @@ export default function AppEmulator() {
     <>
       <GrowFrame
         ref={frameRef}
+        id="app-iframe"
         style={{
           display: 'block',
           resize: 'horizontal',

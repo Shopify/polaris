@@ -21,8 +21,14 @@ const GrowFrame = forwardRef(
     // TODO: we'll need to make this reliable to address network delay.
     useEffect(() => {
       const messageReceiver = (e: MessageEvent) => {
-        if (e.source !== growFrameRef?.current?.contentWindow) return;
-        // debugger;
+        if (
+          e.source !== growFrameRef?.current?.contentWindow ||
+          !e.data ||
+          typeof e.data !== 'object'
+        ) {
+          return;
+        }
+        debugger;
         const {id, height} = e.data;
         if (id === FRAME_ID && typeof height === 'string') {
           setIframeHeight(height);

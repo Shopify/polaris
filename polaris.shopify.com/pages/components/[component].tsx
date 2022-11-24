@@ -39,8 +39,6 @@ interface Props {
   editPageLinkPath: string;
 }
 
-const iframePadding = 192;
-
 const Components = ({
   examples,
   description,
@@ -62,12 +60,6 @@ const Components = ({
       examples={examples}
       extractRenderedHTML={(iframeDoc) =>
         iframeDoc?.getElementById('polaris-example')?.innerHTML
-      }
-      calculateIframeHeight={(iframeDoc) =>
-        `${
-          iframePadding +
-          (iframeDoc.getElementById('polaris-example')?.offsetHeight ?? 0)
-        }px`
       }
       getIframeUrl={(example) =>
         `/examples/${example.fileName.replace('.tsx', '')}`

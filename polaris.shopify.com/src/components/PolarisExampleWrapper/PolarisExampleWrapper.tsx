@@ -3,12 +3,13 @@ import translations from '@shopify/polaris/locales/en.json';
 import {ComponentType, useEffect} from 'react';
 
 import styles from './PolarisExampleWrapper.module.scss';
-import { updateGrowFrameHeight } from '../GrowFrame';
+import {updateGrowFrameHeight} from '../GrowFrame';
 
 export const withPolarisExample = (Component: ComponentType) => {
   const PolarisHOC = (props: any) => {
     useEffect(() => {
-      const height = (document.getElementById('polaris-example')?.offsetHeight ?? 0) + 192;
+      const height =
+        (document.getElementById('polaris-example')?.offsetHeight ?? 0) + 192;
       updateGrowFrameHeight(`${height}px`);
     });
     return (

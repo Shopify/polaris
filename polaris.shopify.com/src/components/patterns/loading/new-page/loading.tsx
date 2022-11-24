@@ -198,11 +198,14 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                 <ComponentExamples
                   examples={codeExamples}
                   extractRenderedHTML={(iframeDoc) => {
-                    return iframeDoc.body?.innerHTML;
+                    return (
+                      iframeDoc?.getElementById(
+                        'app-iframe',
+                      ) as HTMLIFrameElement
+                    )?.contentDocument?.getElementById(
+                      'polaris-sandbox-wrapper',
+                    )?.innerHTML;
                   }}
-                  calculateIframeHeight={(iframeDoc) =>
-                    `${iframeDoc.body?.scrollHeight ?? 0}px`
-                  }
                   getIframeUrl={(example) =>
                     `/app-emulator${createUrl({
                       code: example.code,
