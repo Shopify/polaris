@@ -331,6 +331,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         id,
         ref,
         style: sanitizeCustomProperties(style),
+        role,
         ...restProps,
       },
       children,
