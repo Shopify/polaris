@@ -9,7 +9,7 @@ import styles from './SecondaryAction.scss';
 
 interface SecondaryAction extends ButtonProps {
   helpText?: React.ReactNode;
-  onAction?(): void;
+  onAction?(ref?: React.RefObject<HTMLElement>): void;
   getOffsetWidth?(width: number): void;
 }
 
@@ -30,7 +30,16 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
+    <Button
+      onClick={
+        onAction && secondaryActionsRef
+          ? () => {
+              onAction(secondaryActionsRef);
+            }
+          : onAction
+      }
+      {...rest}
+    >
       {children}
     </Button>
   );

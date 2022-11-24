@@ -103,7 +103,7 @@ export interface Action {
   /** Forces url to open in a new tab */
   external?: boolean;
   /** Callback when an action takes place */
-  onAction?(): void;
+  onAction?(ref?: React.RefObject<HTMLElement>): void;
   /** Callback when mouse enter */
   onMouseEnter?(): void;
   /** Callback when element is touched */
