@@ -151,7 +151,7 @@ export interface BoxProps extends React.AriaAttributes {
    */
   paddingInlineEnd?: Spacing;
   /** Aria role */
-  role?: Role;
+  role?: Extract<React.AriaRole, 'status'>;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Width of container */
