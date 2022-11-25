@@ -23,6 +23,7 @@
     "@headlessui/react": "^1.6.5",
     "@remote-ui/core": "^2.1.16",
     "@shopify/app-bridge": "^3.4.3",
+    "@shopify/app-bridge-host": "^3.4.3",
     "@shopify/app-bridge-react": "^3.4.3",
     "@shopify/polaris": "^10.11.0",
     "@shopify/polaris-icons": "^6.5.0",

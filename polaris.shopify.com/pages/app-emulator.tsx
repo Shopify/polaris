@@ -103,7 +103,7 @@ export default function AppEmulator() {
           config={config}
           components={[Loading, Modal, TheFrame]}
           initialState={initialState}
-        ></HostProvider>
+        />
       </Frame>
     </AppProvider>
   );
