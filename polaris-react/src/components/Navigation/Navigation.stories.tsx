@@ -2,11 +2,13 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Frame, Navigation, Text} from '@shopify/polaris';
 import {
+  CircleMinusOutlineMinor,
   CirclePlusOutlineMinor,
   CustomersMajor,
   CustomersMinor,
   HomeMajor,
   HomeMinor,
+  LogOutMinor,
   MarketingMinor,
   OnlineStoreMinor,
   OrdersMajor,
@@ -249,6 +251,78 @@ export function WithASecondaryActionForAnItem() {
   );
 }
 
+export function WithMultipleSecondaryActionsForAnItem() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: '/path/to/place',
+              label: 'Home',
+              icon: HomeMinor,
+            },
+            {
+              url: '/path/to/place',
+              label: 'Orders',
+              icon: OrdersMinor,
+              badge: '123',
+            },
+            {
+              url: '/path/to/place',
+              label: 'Products',
+              icon: ProductsMinor,
+              truncateText: true,
+              badge: '15',
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
+                  },
+                },
+                {
+                  url: '',
+                  accessibilityLabel: 'Remove a product',
+                  icon: CircleMinusOutlineMinor,
+                  onClick: () => {},
+                  tooltip: {
+                    content: 'Remove a product',
+                  },
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Marketing',
+              icon: MarketingMinor,
+              badge: '15',
+              selected: true,
+              secondaryActions: [
+                {
+                  url: '/path/to/place/view',
+                  accessibilityLabel: 'View campaign',
+                  icon: ViewMinor,
+                  tooltip: {
+                    content: 'View campaign',
+                  },
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Logout',
+              icon: LogOutMinor,
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
 export function WithTruncationForVariousStates() {
   return (
     <Frame>
@@ -421,12 +495,6 @@ export function WithVariousStatesAndSecondaryElements() {
                   label: 'New item',
                 },
               ],
-            },
-            {
-              url: '/path/to/place',
-              label: 'External link item',
-              icon: HomeMinor,
-              external: true,
             },
             {
               url: '/path/to/place',
