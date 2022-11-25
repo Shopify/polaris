@@ -19,7 +19,7 @@ import {
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'ul';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
@@ -321,6 +321,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const className = classNames(
       styles.Box,
       visuallyHidden && styles.visuallyHidden,
+      as === 'ul' && styles.listReset,
     );
 
     return createElement(

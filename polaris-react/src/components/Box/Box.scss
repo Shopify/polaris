@@ -112,3 +112,11 @@
 .visuallyHidden {
   @include visually-hidden;
 }
+
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  outline: none;
+  padding-inline-start: 0;
+}
