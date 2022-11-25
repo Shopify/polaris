@@ -150,6 +150,8 @@ export interface BoxProps extends React.AriaAttributes {
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
   paddingInlineEnd?: Spacing;
+  /** Aria role */
+  role?: Extract<React.AriaRole, 'status'>;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Width of container */
@@ -206,6 +208,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingBlockEnd,
       paddingInlineStart,
       paddingInlineEnd,
+      role,
       shadow,
       width,
       visuallyHidden,
@@ -327,6 +330,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         id,
         ref,
         style: sanitizeCustomProperties(style),
+        role,
         ...restProps,
       },
       children,
