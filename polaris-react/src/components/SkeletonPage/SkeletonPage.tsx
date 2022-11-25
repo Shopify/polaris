@@ -81,6 +81,7 @@ export function SkeletonPage({
       paddingInlineEnd={{sm: '6'}}
       maxWidth="998px"
       aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
+      role="status"
       {...narrowWidthProps}
       {...fullWidthProps}
     >
