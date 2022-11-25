@@ -22,7 +22,6 @@ import styles from './Box.scss';
 type Element = 'div' | 'span' | 'section';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
-type Role = 'status';
 
 export type ColorTokenScale =
   | 'text'
