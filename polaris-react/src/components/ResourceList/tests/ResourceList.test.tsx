@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
-// import {setMediaWidth} from 'tests/utilities/breakpoints';
 import {BulkActions} from '../../BulkActions';
 import {Button} from '../../Button';
 import {CheckableButton} from '../../CheckableButton';
