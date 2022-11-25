@@ -30,7 +30,8 @@ const GrowFrame = forwardRef(
         }
         const {id, height} = e.data;
         if (id === FRAME_ID && typeof height === 'string') {
-          setIframeHeight(height);
+          growFrameRef.current.height = height;
+          // setIframeHeight(height);
           requestAnimationFrame(() => onContentLoad?.());
         }
       };
@@ -43,7 +44,9 @@ const GrowFrame = forwardRef(
       <iframe
         ref={mergeRefs([growFrameRef, ref])}
         {...props}
+        style={{resize: 'none !important'}}
         height={iframeHeight}
+        width="100%"
       />
     );
   },
