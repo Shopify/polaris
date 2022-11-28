@@ -162,11 +162,20 @@ export function replaceTextStyle<NodeType = ASTNode>(
       }
     });
 
-  if (
-    canInsertTextImport &&
-    !hasImportSpecifier(j, source, 'Text', sourcePaths.to)
-  ) {
-    insertImportSpecifier(j, source, 'Text', sourcePaths.to);
+  if (canInsertTextImport) {
+    if (!hasImportSpecifier(j, source, 'Text', sourcePaths.to)) {
+      if (options.relative) {
+        insertImportDeclaration(
+          j,
+          source,
+          'Text',
+          sourcePaths.to,
+          sourcePaths.from,
+        );
+      } else {
+        insertImportSpecifier(j, source, 'Text', sourcePaths.to);
+      }
+    }
   }
 
   const inlineTextSourcePath = options.relative
