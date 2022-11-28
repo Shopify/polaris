@@ -75,38 +75,40 @@ export function SkeletonPage({
     : {};
 
   return (
-    <Box
-      padding="0"
-      paddingInlineStart={{sm: '6'}}
-      paddingInlineEnd={{sm: '6'}}
-      maxWidth="998px"
-      aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
-      role="status"
-      {...narrowWidthProps}
-      {...fullWidthProps}
-    >
-      <AlphaStack fullWidth gap="0">
-        <Box
-          padding={{xs: '4', md: '5'}}
-          paddingBlockEnd={{xs: '2', md: '5'}}
-          paddingInlineStart={{sm: '0'}}
-          paddingInlineEnd={{sm: '0'}}
-        >
-          {breadcrumbMarkup}
-          <Inline align="space-between" blockAlign="start">
-            {titleContent}
-            {primaryActionMarkup}
-          </Inline>
-        </Box>
-        <Box
-          paddingBlockStart={{xs: '2', md: '5'}}
-          paddingBlockEnd="2"
-          paddingInlineStart="0"
-          paddingInlineEnd="0"
-        >
-          {children}
-        </Box>
-      </AlphaStack>
-    </Box>
+    <AlphaStack align="center" fullWidth>
+      <Box
+        padding="0"
+        paddingInlineStart={{sm: '6'}}
+        paddingInlineEnd={{sm: '6'}}
+        maxWidth="998px"
+        aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
+        role="status"
+        {...narrowWidthProps}
+        {...fullWidthProps}
+      >
+        <AlphaStack gap="0" fullWidth>
+          <Box
+            padding={{xs: '4', md: '5'}}
+            paddingBlockEnd={{xs: '2', md: '5'}}
+            paddingInlineStart={{sm: '0'}}
+            paddingInlineEnd={{sm: '0'}}
+          >
+            {breadcrumbMarkup}
+            <Inline align="space-between" blockAlign="start">
+              {titleContent}
+              {primaryActionMarkup}
+            </Inline>
+          </Box>
+          <Box
+            paddingBlockStart={{xs: '2', md: '5'}}
+            paddingBlockEnd="2"
+            paddingInlineStart="0"
+            paddingInlineEnd="0"
+          >
+            {children}
+          </Box>
+        </AlphaStack>
+      </Box>
+    </AlphaStack>
   );
 }
