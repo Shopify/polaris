@@ -17,7 +17,6 @@ import {
 import {isKeyOf} from '../../../utilities/type-guards';
 import {
   getImportSpecifierName,
-  hasImportDeclaration,
   hasImportSpecifier,
   hasImportSpecifiers,
   insertImportDeclaration,
@@ -179,21 +178,20 @@ export function replaceDisplayText<NodeType = ASTNode>(
       }
     });
 
-  if (!hasImportDeclaration(j, source, sourcePaths.to)) {
-    insertImportDeclaration(
-      j,
-      source,
-      'Text',
-      sourcePaths.to,
-      sourcePaths.from,
-    );
-  }
-
-  if (
-    canInsertTextImport &&
-    !hasImportSpecifier(j, source, 'Text', sourcePaths.to)
-  ) {
-    insertImportSpecifier(j, source, 'Text', sourcePaths.to);
+  if (canInsertTextImport) {
+    if (!hasImportSpecifier(j, source, 'Text', sourcePaths.to)) {
+      if (options.relative) {
+        insertImportDeclaration(
+          j,
+          source,
+          'Text',
+          sourcePaths.to,
+          sourcePaths.from,
+        );
+      } else {
+        insertImportSpecifier(j, source, 'Text', sourcePaths.to);
+      }
+    }
   }
 
   if (canRemoveDisplayTextImport) {
