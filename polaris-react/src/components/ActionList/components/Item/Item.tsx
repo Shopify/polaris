@@ -10,6 +10,7 @@ import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {Inline} from '../../../Inline';
+import {Box} from '../../../Box';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -62,12 +63,12 @@ export function Item({
   const contentText = ellipsis && content ? `${content}…` : content;
 
   const contentMarkup = helpText ? (
-    <span className={styles.ContentBlock}>
-      <span className={styles.ContentBlockInner}>{contentText}</span>
+    <>
+      <Box>{contentText}</Box>
       <Text variant="bodyMd" color="subdued" as="span">
         {helpText}
       </Text>
-    </span>
+    </>
   ) : (
     contentText
   );
