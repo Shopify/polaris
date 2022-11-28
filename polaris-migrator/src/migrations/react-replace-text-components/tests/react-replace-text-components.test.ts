@@ -3,6 +3,10 @@ import {check} from '../../../utilities/testUtils';
 const migration = 'react-replace-text-components';
 const fixtures = [
   'react-replace-text-components',
+  'remove-imports-all',
+  'remove-imports-partial-identifier',
+  'remove-imports-partial-props-type',
+  'remove-imports-partial-props-invalid',
   'with-other-component-and-other-component-props',
   'with-text-style-props',
   'with-relative',
