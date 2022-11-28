@@ -7,12 +7,29 @@ const DEBOUNCE_PERIOD = 250;
 const PADDING_IN_SELECT_MODE = 100;
 
 export function useIsBulkActionsSticky(selectMode: boolean) {
+  const hasIOSupport =
+    typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
   const [isBulkActionsSticky, setIsSticky] = useState(false);
   const [bulkActionsAbsoluteOffset, setBulkActionsAbsoluteOffset] = useState(0);
   const [bulkActionsMaxWidth, setBulkActionsMaxWidth] = useState(0);
   const [bulkActionsOffsetLeft, setBulkActionsOffsetLeft] = useState(0);
   const bulkActionsIntersectionRef = useRef<HTMLDivElement>(null);
   const tableMeasurerRef = useRef<HTMLDivElement>(null);
+
+  const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry: IntersectionObserverEntry) => {
+      setIsSticky(!entry.isIntersecting);
+    });
+  };
+
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  };
+  const observerRef = useRef<IntersectionObserver | null>(
+    hasIOSupport ? new IntersectionObserver(handleIntersect, options) : null,
+  );
 
   useEffect(() => {
     function computeTableDimensions() {
@@ -52,22 +69,10 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
   }, [tableMeasurerRef, selectMode]);
 
   useEffect(() => {
-    const hasIOSupport = Boolean(window.IntersectionObserver);
-    if (!hasIOSupport) {
+    const observer = observerRef.current;
+    if (!observer) {
       return;
     }
-    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry: IntersectionObserverEntry) => {
-        setIsSticky(!entry.isIntersecting);
-      });
-    };
-
-    const options = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1,
-    };
-    const observer = new IntersectionObserver(handleIntersect, options);
 
     const node = bulkActionsIntersectionRef.current;
 
@@ -76,7 +81,7 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
     }
 
     return () => {
-      observer.disconnect();
+      observer?.disconnect();
     };
   }, [bulkActionsIntersectionRef]);
 

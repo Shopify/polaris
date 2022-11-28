@@ -1,12 +1,8 @@
-import React, {useContext, useRef, useEffect} from 'react';
+import React, {useRef, useImperativeHandle, forwardRef} from 'react';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {Checkbox} from '../Checkbox';
-import {
-  ResourceListContext,
-  CheckableButtonKey,
-} from '../../utilities/resource-list';
 
 import styles from './CheckableButton.scss';
 
@@ -16,28 +12,31 @@ export interface CheckableButtonProps {
   selected?: boolean | 'indeterminate';
   disabled?: boolean;
   onToggleAll?(): void;
-  ariaLive?: 'off' | 'assertive' | 'polite';
+  ariaLive?: 'off' | 'polite';
 }
 
-export function CheckableButton({
-  accessibilityLabel,
-  label = '',
-  onToggleAll,
-  selected,
-  disabled,
-  ariaLive,
-}: CheckableButtonProps) {
+export const CheckableButton = forwardRef(function CheckableButton(
+  {
+    accessibilityLabel,
+    label = '',
+    onToggleAll,
+    selected,
+    disabled,
+    ariaLive,
+  }: CheckableButtonProps,
+  ref,
+) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
-  const {registerCheckableButtons} = useContext(ResourceListContext);
+  function focus() {
+    checkBoxRef?.current?.focus();
+  }
 
-  const currentKey: CheckableButtonKey = 'plain';
-
-  useEffect(() => {
-    if (checkBoxRef.current && registerCheckableButtons) {
-      registerCheckableButtons(currentKey, checkBoxRef.current);
-    }
-  }, [currentKey, registerCheckableButtons]);
+  useImperativeHandle(ref, () => {
+    return {
+      focus,
+    };
+  });
 
   const className = classNames(styles.CheckableButton);
 
@@ -58,4 +57,4 @@ export function CheckableButton({
       </span>
     </div>
   );
-}
+});

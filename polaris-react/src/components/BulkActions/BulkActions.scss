@@ -17,6 +17,7 @@ $bulk-actions-button-stacking-order: (
   transition-property: transform, opacity;
   transform: translateY(120px);
   padding: 0 var(--p-space-4);
+  will-change: transform, opacity;
 
   &.Group-not-sticky {
     transform: none;

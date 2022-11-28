@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
@@ -9,7 +9,7 @@ import {CheckableButton} from '../CheckableButton';
 import styles from './SelectAllActions.scss';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
-type AriaLive = 'off' | 'assertive' | 'polite' | undefined;
+type AriaLive = 'off' | 'polite' | undefined;
 
 export interface SelectAllActionsProps {
   /** Visually hidden text for screen readers */
@@ -30,16 +30,19 @@ export interface SelectAllActionsProps {
   onToggleAll?(): void;
 }
 
-export function SelectAllActions({
-  accessibilityLabel,
-  label,
-  selected,
-  selectMode,
-  paginatedSelectAllText,
-  paginatedSelectAllAction,
-  disabled,
-  onToggleAll,
-}: SelectAllActionsProps) {
+export const SelectAllActions = forwardRef(function SelectAllActions(
+  {
+    accessibilityLabel,
+    label,
+    selected,
+    selectMode,
+    paginatedSelectAllText,
+    paginatedSelectAllAction,
+    disabled,
+    onToggleAll,
+  }: SelectAllActionsProps,
+  ref,
+) {
   const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
       className={styles.AllAction}
@@ -68,6 +71,7 @@ export function SelectAllActions({
     onToggleAll,
     disabled,
     ariaLive,
+    ref,
   };
   const markup = (
     <Transition timeout={0} in={selectMode} key="markup">
@@ -86,4 +90,4 @@ export function SelectAllActions({
     </Transition>
   );
   return markup;
-}
+});

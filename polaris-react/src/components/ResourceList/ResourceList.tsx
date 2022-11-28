@@ -11,7 +11,6 @@ import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {tokens, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
@@ -20,8 +19,6 @@ import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
-  CheckableButtonKey,
-  CheckableButtons,
   ResourceListContext,
   ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
@@ -161,10 +158,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     (x = 0) => x + 1,
     0,
   )[1];
-
-  const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
-    new Map(),
-  );
+  const checkableButtonRef = useRef<HTMLInputElement>(null);
 
   const {
     bulkActionsIntersectionRef,
@@ -445,15 +439,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     return items.slice(min, max + 1).map(resolveItemId);
   };
 
-  const handleCheckableButtonRegistration = (
-    key: CheckableButtonKey,
-    button: CheckboxHandles,
-  ) => {
-    if (!checkableButtons.get(key)) {
-      setCheckableButtons(new Map(checkableButtons).set(key, button));
-    }
-  };
-
   const handleSelectionChange = (
     selected: boolean,
     id: string,
@@ -528,15 +513,13 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       handleSelectMode(true);
     }
 
-    const checkbox: CheckboxHandles | undefined = checkableButtons.get('plain');
-
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
 
     // setTimeout ensures execution after the Transition on BulkActions
     setTimeout(() => {
-      checkbox && checkbox.focus();
+      checkableButtonRef?.current?.focus();
     }, 0);
   };
 
@@ -551,6 +534,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         paginatedSelectAllAction={paginatedSelectAllAction()}
         paginatedSelectAllText={paginatedSelectAllText()}
         disabled={loading}
+        ref={checkableButtonRef}
       />
     </div>
   ) : null;
@@ -629,6 +613,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         label={headerTitle()}
         onToggleAll={handleToggleAll}
         disabled={loading}
+        ref={checkableButtonRef}
       />
     </div>
   ) : null;
@@ -749,7 +734,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     resourceName,
     loading,
     onSelectionChange: handleSelectionChange,
-    registerCheckableButtons: handleCheckableButtonRegistration,
   };
 
   const resourceListWrapperClasses = classNames(

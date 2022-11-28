@@ -155,7 +155,6 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .BulkActionsWrapper {
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
-  visibility: visible;
   position: absolute;
   left: 0;
   width: 100%;
