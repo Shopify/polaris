@@ -5,7 +5,6 @@ import {SkeletonDisplayText} from '../SkeletonDisplayText';
 import {SkeletonBodyText} from '../SkeletonBodyText';
 import {Box} from '../Box';
 import {Inline} from '../Inline';
-import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 
 import styles from './SkeletonPage.scss';
