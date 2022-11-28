@@ -16,14 +16,12 @@ import {
 } from '../../../utilities/jsx';
 import {
   getImportSpecifierName,
-  hasImportDeclaration,
   hasImportSpecifier,
   hasImportSpecifiers,
-  insertImportDeclaration,
+  insertImportSpecifier,
   normalizeImportSourcePaths,
   removeImportDeclaration,
   removeImportSpecifier,
-  updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
 import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
@@ -72,15 +70,31 @@ export function replaceOther<NodeType = ASTNode>(
       });
 
       if (!sourcePaths) return;
-      if (!hasImportSpecifier(j, source, componentName, sourcePaths.from))
+      if (
+        !hasImportSpecifier(j, source, componentName, sourcePaths.from) &&
+        !hasImportSpecifier(
+          j,
+          source,
+          `${componentName}Props`,
+          sourcePaths.from,
+        )
+      ) {
         return;
+      }
 
       const localElementName =
         getImportSpecifierName(j, source, componentName, sourcePaths.from) ||
         componentName;
 
+      const localElementTypeName = getImportSpecifierName(
+        j,
+        source,
+        `${componentName}Props`,
+        sourcePaths.from,
+      );
+
       let canInsertTextImport = false;
-      let canRemoveComponentImport = true;
+      let canRemoveComponentImport = Boolean(!localElementTypeName);
 
       source.findJSXElements(localElementName).forEach((element) => {
         const allAttributes =
@@ -138,33 +152,32 @@ export function replaceOther<NodeType = ASTNode>(
 
       source
         .find(j.Identifier)
-        .filter((path) => path.node.name === localElementName)
+        .filter(
+          (path) =>
+            path.node.name === localElementName ||
+            path.node.name === localElementTypeName,
+        )
         .forEach((path) => {
           if (path.node.type !== 'Identifier') return;
 
-          canRemoveComponentImport = false;
+          if (path.parent.value.type !== 'ImportSpecifier') {
+            canRemoveComponentImport = false;
+          }
 
           insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
-          insertCommentBefore(j, path, 'Replace with: Text');
+
+          if (path.node.name === localElementName) {
+            insertCommentBefore(j, path, 'Replace with: Text');
+          } else {
+            insertCommentBefore(j, path, 'Replace with: TextProps');
+          }
         });
 
-      if (!hasImportDeclaration(j, source, sourcePaths.to)) {
-        insertImportDeclaration(
-          j,
-          source,
-          'Text',
-          sourcePaths.to,
-          sourcePaths.from,
-        );
-      }
-
-      if (canInsertTextImport) {
-        updateImports(j, source, {
-          fromSpecifier: componentName,
-          toSpecifier: 'Text',
-          fromSourcePath: sourcePaths.from,
-          toSourcePath: sourcePaths.to,
-        });
+      if (
+        canInsertTextImport &&
+        !hasImportSpecifier(j, source, 'Text', sourcePaths.to)
+      ) {
+        insertImportSpecifier(j, source, 'Text', sourcePaths.to);
       }
 
       if (canRemoveComponentImport) {
