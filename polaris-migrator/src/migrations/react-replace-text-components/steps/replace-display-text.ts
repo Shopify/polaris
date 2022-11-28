@@ -57,14 +57,26 @@ export function replaceDisplayText<NodeType = ASTNode>(
   });
 
   if (!sourcePaths) return;
-  if (!hasImportSpecifier(j, source, 'DisplayText', sourcePaths.from)) return;
+  if (
+    !hasImportSpecifier(j, source, 'DisplayText', sourcePaths.from) &&
+    !hasImportSpecifier(j, source, 'DisplayTextProps', sourcePaths.from)
+  ) {
+    return;
+  }
 
   const localElementName =
     getImportSpecifierName(j, source, 'DisplayText', sourcePaths.from) ||
     'DisplayText';
 
+  const localElementTypeName = getImportSpecifierName(
+    j,
+    source,
+    'DisplayTextProps',
+    sourcePaths.from,
+  );
+
   let canInsertTextImport = false;
-  let canRemoveDisplayTextImport = true;
+  let canRemoveDisplayTextImport = Boolean(!localElementTypeName);
 
   source.findJSXElements(localElementName).forEach((element) => {
     const allAttributes =
@@ -146,14 +158,25 @@ export function replaceDisplayText<NodeType = ASTNode>(
 
   source
     .find(j.Identifier)
-    .filter((path) => path.node.name === localElementName)
+    .filter(
+      (path) =>
+        path.node.name === localElementName ||
+        path.node.name === localElementTypeName,
+    )
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
 
-      canRemoveDisplayTextImport = false;
+      if (path.parent.value.type !== 'ImportSpecifier') {
+        canRemoveDisplayTextImport = false;
+      }
 
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
-      insertCommentBefore(j, path, 'Replace with: Text');
+
+      if (path.node.name === localElementName) {
+        insertCommentBefore(j, path, 'Replace with: Text');
+      } else {
+        insertCommentBefore(j, path, 'Replace with: TextProps');
+      }
     });
 
   if (!hasImportDeclaration(j, source, sourcePaths.to)) {
