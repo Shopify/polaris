@@ -1,6 +1,7 @@
 import React from 'react';
 import type {
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: TextProps */
   TextStyleProps,
 } from '@shopify/polaris';
 import {
@@ -22,6 +23,7 @@ export function App() {
     /* Replace with: Text */
     TextStyle;
   const textStyleProps: /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: TextProps */
   TextStyleProps = {
     variation: 'positive',
   };
