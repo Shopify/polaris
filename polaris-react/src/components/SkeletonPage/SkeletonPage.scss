@@ -3,6 +3,12 @@
 $primary-action-button-height: 36px;
 $primary-action-button-width: 100px;
 
+.Title {
+  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-4);
+}
+
 .SkeletonTitle {
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;

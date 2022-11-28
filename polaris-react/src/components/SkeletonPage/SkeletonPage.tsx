@@ -36,9 +36,7 @@ export function SkeletonPage({
   const i18n = useI18n();
 
   const titleContent = title ? (
-    <Text variant="headingXl" as="h1">
-      {title}
-    </Text>
+    <h1 className={styles.Title}>{title}</h1>
   ) : (
     <div className={styles.SkeletonTitle}>
       <Box
