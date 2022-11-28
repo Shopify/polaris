@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Card} from '../../Card';
-import {Text} from '../../Text';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
 import {SkeletonDisplayText} from '../../SkeletonDisplayText';
@@ -38,7 +37,7 @@ describe('<SkeletonPage />', () => {
     it('renders an h1 with the Title class when title is defined', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
 
-      expect(skeletonPage).toContainReactComponent(Text);
+      expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
       expect(skeletonPage).not.toContainReactComponent(Box, {
         background: 'surface-neutral',
       });
@@ -47,7 +46,9 @@ describe('<SkeletonPage />', () => {
     it('renders SkeletonTitle when a title not defined', () => {
       const skeletonPage = mountWithApp(<SkeletonPage />);
 
-      expect(skeletonPage).not.toContainReactComponent(Text);
+      expect(skeletonPage).not.toContainReactComponent('h1', {
+        className: 'Title',
+      });
       expect(skeletonPage).toContainReactComponent(Box, {
         background: 'surface-neutral',
       });
@@ -56,7 +57,9 @@ describe('<SkeletonPage />', () => {
     it('renders SkeletonTitle when title is an empty string', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="" />);
 
-      expect(skeletonPage).not.toContainReactComponent(Text);
+      expect(skeletonPage).not.toContainReactComponent('h1', {
+        className: 'Title',
+      });
       expect(skeletonPage).toContainReactComponent(Box, {
         background: 'surface-neutral',
       });
