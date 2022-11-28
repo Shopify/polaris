@@ -51,18 +51,26 @@ export function replaceTextStyle<NodeType = ASTNode>(
   });
 
   if (!sourcePaths) return;
-  if (!hasImportSpecifier(j, source, 'TextStyle', sourcePaths.from)) return;
+  if (
+    !hasImportSpecifier(j, source, 'TextStyle', sourcePaths.from) &&
+    !hasImportSpecifier(j, source, 'TextStyleProps', sourcePaths.from)
+  ) {
+    return;
+  }
 
   const localElementName =
     getImportSpecifierName(j, source, 'TextStyle', sourcePaths.from) ||
     'TextStyle';
 
-  const localElementTypeName =
-    getImportSpecifierName(j, source, 'TextStyleProps', sourcePaths.from) ||
-    'TextStyleProps';
+  const localElementTypeName = getImportSpecifierName(
+    j,
+    source,
+    'TextStyleProps',
+    sourcePaths.from,
+  );
 
   let canInsertTextImport = false;
-  let canRemoveTextStyleImport = true;
+  let canRemoveTextStyleImport = Boolean(!localElementTypeName);
   let canInsertInlineCodeImport = false;
 
   source.findJSXElements(localElementName).forEach((element) => {
@@ -141,11 +149,16 @@ export function replaceTextStyle<NodeType = ASTNode>(
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
 
-      canRemoveTextStyleImport = false;
+      if (path.parent.value.type !== 'ImportSpecifier') {
+        canRemoveTextStyleImport = false;
+      }
+
       insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
 
       if (path.node.name === localElementName) {
         insertCommentBefore(j, path, 'Replace with: Text');
+      } else {
+        insertCommentBefore(j, path, 'Replace with: TextProps');
       }
     });
 
