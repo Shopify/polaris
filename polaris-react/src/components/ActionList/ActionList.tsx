@@ -57,6 +57,7 @@ export function ActionList({
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}
         onActionAnyItem={onActionAnyItem}
+        isFirst={index === 0}
       />
     ) : null;
   });
