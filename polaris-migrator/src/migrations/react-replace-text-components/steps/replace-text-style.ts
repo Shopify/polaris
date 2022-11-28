@@ -17,6 +17,7 @@ import {
   getImportSpecifierName,
   hasImportSpecifier,
   hasImportSpecifiers,
+  insertImportDeclaration,
   insertImportSpecifier,
   normalizeImportSourcePaths,
   removeImportDeclaration,
@@ -155,11 +156,24 @@ export function replaceTextStyle<NodeType = ASTNode>(
     insertImportSpecifier(j, source, 'Text', sourcePaths.to);
   }
 
-  if (
-    canInsertInlineCodeImport &&
-    !hasImportSpecifier(j, source, 'InlineCode', sourcePaths.to)
-  ) {
-    insertImportSpecifier(j, source, 'InlineCode', sourcePaths.to);
+  const inlineTextSourcePath = options.relative
+    ? sourcePaths.from.replace('TextStyle', 'InlineCode')
+    : '@shopify/polaris';
+
+  if (canInsertInlineCodeImport) {
+    if (!hasImportSpecifier(j, source, 'InlineCode', inlineTextSourcePath)) {
+      if (options.relative) {
+        insertImportDeclaration(
+          j,
+          source,
+          'InlineCode',
+          inlineTextSourcePath,
+          sourcePaths.to,
+        );
+      } else {
+        insertImportSpecifier(j, source, 'InlineCode', inlineTextSourcePath);
+      }
+    }
   }
 
   if (canRemoveTextStyleImport) {
