@@ -19,7 +19,7 @@ import {
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section' | 'ul';
+type Element = 'div' | 'span' | 'section' | 'ul' | 'li';
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
@@ -151,9 +151,11 @@ export interface BoxProps extends React.AriaAttributes {
    */
   paddingInlineEnd?: Spacing;
   /** Aria role */
-  role?: Extract<React.AriaRole, 'status'>;
+  role?: Extract<React.AriaRole, 'status' | 'presentation' | 'menu'>;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
+  /** Set tab order */
+  tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
   /** Width of container */
   width?: string;
   // These could be moved to new layout component(s) in the future
@@ -210,6 +212,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       paddingInlineEnd,
       role,
       shadow,
+      tabIndex,
       width,
       visuallyHidden,
       position,
@@ -332,6 +335,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         ref,
         style: sanitizeCustomProperties(style),
         role,
+        tabIndex,
         ...restProps,
       },
       children,
