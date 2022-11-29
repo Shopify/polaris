@@ -80,7 +80,9 @@ export function Item({
   );
 
   const suffixMarkup = suffix && (
-    <span className={styles.Suffix}>{suffix}</span>
+    <Box paddingInlineStart="4">
+      <span className={styles.Suffix}>{suffix}</span>
+    </Box>
   );
 
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
