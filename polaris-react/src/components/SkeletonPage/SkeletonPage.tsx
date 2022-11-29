@@ -59,18 +59,6 @@ export function SkeletonPage({
     </Box>
   ) : null;
 
-  const narrowWidthProps = narrowWidth
-    ? {
-        maxWidth: '662px',
-      }
-    : {};
-
-  const fullWidthProps = fullWidth
-    ? {
-        maxWidth: 'none',
-      }
-    : {};
-
   return (
     <AlphaStack align="center" fullWidth>
       <Box
@@ -80,8 +68,12 @@ export function SkeletonPage({
         maxWidth="998px"
         aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
         role="status"
-        {...narrowWidthProps}
-        {...fullWidthProps}
+        {...(narrowWidth && {
+          maxWidth: '662px',
+        })}
+        {...(fullWidth && {
+          maxWidth: 'none',
+        })}
       >
         <AlphaStack gap="0" fullWidth>
           <Box
