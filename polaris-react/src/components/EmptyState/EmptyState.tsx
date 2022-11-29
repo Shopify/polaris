@@ -9,9 +9,9 @@ import {Image} from '../Image';
 import {TextContainer} from '../TextContainer';
 import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
+import {Inline} from '../Inline';
 
 import styles from './EmptyState.scss';
-import {Inline} from '../Inline';
 
 export interface EmptyStateProps {
   /** The empty state heading */
@@ -123,7 +123,7 @@ export function EmptyState({
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <Box maxWidth={fullWidth ? '100%' : ''}>
+      <Box maxWidth={{sm: '400px'}}>
         <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}

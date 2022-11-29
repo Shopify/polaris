@@ -115,7 +115,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Minimum width of container */
   minWidth?: string;
   /** Maximum width of container */
-  maxWidth?: string;
+  maxWidth?: ResponsiveProp<string>;
   /** Clip horizontal content of children */
   overflowX?: Overflow;
   /** Clip vertical content of children */
