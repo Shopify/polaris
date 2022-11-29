@@ -1,5 +1,13 @@
 @import '../../styles/common';
 
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  outline: none;
+  padding-inline-start: 0;
+}
+
 .Box {
   @include responsive-props('box', 'padding', 'padding');
   @include responsive-props(
@@ -111,12 +119,4 @@
 
 .visuallyHidden {
   @include visually-hidden;
-}
-
-.listReset {
-  list-style-type: none;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  outline: none;
-  padding-inline-start: 0;
 }
