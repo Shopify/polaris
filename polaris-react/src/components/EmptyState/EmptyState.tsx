@@ -3,14 +3,15 @@ import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import type {ComplexAction} from '../../types';
-import {Box} from '../Box';
+import {Box, BoxProps} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
-import {Stack} from '../Stack';
 import {TextContainer} from '../TextContainer';
 import {Text} from '../Text';
+import {AlphaStack} from '../AlphaStack';
 
 import styles from './EmptyState.scss';
+import {Inline} from '../Inline';
 
 export interface EmptyStateProps {
   /** The empty state heading */
@@ -59,7 +60,6 @@ export function EmptyState({
     <Image
       alt=""
       role="presentation"
-      className={styles.Image}
       source={largeImage}
       sourceSet={[
         {source: image, descriptor: '568w'},
@@ -68,7 +68,7 @@ export function EmptyState({
       sizes="(max-width: 568px) 60vw"
     />
   ) : (
-    <Image role="presentation" alt="" className={styles.Image} source={image} />
+    <Image role="presentation" alt="" source={image} />
   );
 
   const secondaryActionMarkup = secondaryAction
@@ -90,17 +90,17 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Text variant={headingSize} as="p">
+    <Text variant={headingSize} as="p" alignment="center">
       {heading}
     </Text>
   ) : null;
 
   const childrenMarkup = children ? (
-    <div className={styles.Content}>
-      <Text as="span" variant="bodyMd" color="subdued">
+    <Box paddingBlockEnd="2">
+      <Text as="span" variant="bodyMd" color="subdued" alignment="center">
         {children}
       </Text>
-    </div>
+    </Box>
   ) : null;
 
   const textContentMarkup =
@@ -113,26 +113,43 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <div className={styles.Actions}>
-        <Stack alignment="center" distribution="center" spacing="tight">
+      <Box paddingBlockStart="2">
+        <Inline align="center" gap="2">
           {secondaryActionMarkup}
           {primaryActionMarkup}
-        </Stack>
-      </div>
+        </Inline>
+      </Box>
     ) : null;
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <div className={styles.DetailsContainer}>
-        <div className={styles.Details}>
+      <Box maxWidth={fullWidth ? '100%' : ''}>
+        <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
-        </div>
-      </div>
-    ) : (
-      <div className={styles.DetailsContainer} />
-    );
+        </AlphaStack>
+      </Box>
+    ) : null;
+
+  const defaultBoxStyle: BoxProps = {
+    paddingInlineStart: '5',
+    paddingInlineEnd: '5',
+    paddingBlockStart: '5',
+    // get UX review 3.75em originally
+    paddingBlockEnd: '16',
+    // although is says $page-max-width
+  };
+
+  // new return
+  return (
+    <Box {...defaultBoxStyle}>
+      <AlphaStack align="center" gap="0">
+        {imageMarkup}
+        {detailsMarkup}
+      </AlphaStack>
+    </Box>
+  );
 
   return (
     <div className={className}>
