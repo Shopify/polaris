@@ -69,7 +69,7 @@ export function Section({
     </Box>
   ) : null;
 
-  let sectionRole;
+  let sectionRole: 'menu' | 'presentation' | undefined;
   switch (actionRole) {
     case 'option':
       sectionRole = 'presentation';
