@@ -154,8 +154,9 @@ export interface BoxProps extends React.AriaAttributes {
   role?: Extract<React.AriaRole, 'status' | 'presentation' | 'menu'>;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
-  /** Width of container */
+  /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
+  /** Width of container */
   width?: string;
   // These could be moved to new layout component(s) in the future
   /** Position of box */
