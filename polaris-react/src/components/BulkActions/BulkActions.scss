@@ -7,39 +7,11 @@ $bulk-actions-button-stacking-order: (
 
 .Group {
   @include text-style-input;
-  display: flex;
+  width: 100%;
+  display: none;
   align-items: center;
   flex-wrap: wrap;
   opacity: 0;
-  width: 100%;
-  justify-content: center;
-  transition: var(--p-duration-250) var(--p-ease-in);
-  transition-property: transform, opacity;
-  transform: translateY(120px);
-  padding: 0 var(--p-space-4);
-  will-change: transform, opacity;
-
-  &.Group-not-sticky {
-    transform: none;
-    opacity: 1;
-  }
-
-  &.Group-entering,
-  &.Group-exiting {
-    opacity: 0;
-    display: flex;
-  }
-
-  &.Group-entered {
-    opacity: 1;
-    display: flex;
-    transform: translateY(0);
-  }
-
-  &.Group-exited {
-    opacity: 0;
-    display: none;
-  }
 
   &.Group-measuring {
     transition: none;
@@ -48,14 +20,62 @@ $bulk-actions-button-stacking-order: (
   }
 }
 
+.Group-entering,
+.Group-exiting {
+  opacity: 0;
+  display: flex;
+}
+
+.Group-entered {
+  opacity: 1;
+  display: flex;
+}
+
+.Group-exited {
+  opacity: 0;
+  display: none;
+}
+
+.Group-smallScreen {
+  @media #{$p-breakpoints-sm-up} {
+    display: none;
+  }
+}
+
+.Group-largeScreen {
+  display: none;
+
+  @media #{$p-breakpoints-sm-up} {
+    display: flex;
+
+    &.Group-exiting {
+      transition: none;
+    }
+
+    &.Group-exited {
+      opacity: 0;
+      display: none;
+    }
+  }
+}
+
 .ButtonGroupWrapper {
-  width: auto;
-  justify-content: flex-start;
-  padding: var(--p-space-4);
-  background: var(--p-surface);
-  border-radius: var(--p-border-radius-2);
-  box-shadow: var(--p-shadow-popover);
+  width: 100%;
   max-width: 100%;
+
+  // We need the first item of button group on small screen to fill the space
+  @media #{$p-breakpoints-sm-down} {
+    // stylelint-disable-next-line, selector-max-combinators, selector-max-type
+    > div > div:first-child {
+      flex: 1 1 auto;
+    }
+  }
+
+  @media #{$p-breakpoints-sm-up} {
+    width: auto;
+    justify-content: flex-start;
+    margin-right: var(--p-space-2);
+  }
 
   .Group-measuring & {
     position: absolute;
@@ -67,8 +87,33 @@ $bulk-actions-button-stacking-order: (
   white-space: nowrap;
 }
 
+.CheckableContainer {
+  flex: 1 1 0;
+}
+
 .disabled {
   @include base-button-disabled;
   cursor: default;
   pointer-events: none;
+}
+
+.PaginatedSelectAll {
+  padding: var(--p-space-1) var(--p-space-0);
+}
+
+.Slide {
+  will-change: transform;
+  transform: translateY(0);
+  transition: transform var(--p-ease) var(--p-duration-200);
+}
+
+.Slide-appear,
+.Slide-enter,
+.Slide-exit {
+  transform: translateX(calc(-1 * var(--p-space-10)));
+}
+
+.Slide-appearing,
+.Slide-entering {
+  transform: translateY(0);
 }
