@@ -229,81 +229,6 @@ export function SmallScreen() {
   );
 }
 
-export function SmallScreenLoading() {
-  const customers = [
-    {
-      id: '3412',
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$2,400',
-    },
-    {
-      id: '2562',
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-  ];
-  const resourceName = {
-    singular: 'customer',
-    plural: 'customers',
-  };
-
-  const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
-
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <div style={{padding: '12px 16px'}}>
-          <p>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {name}
-            </Text>
-          </p>
-          <p>{location}</p>
-          <p>{orders}</p>
-          <p>{amountSpent}</p>
-        </div>
-      </IndexTable.Row>
-    ),
-  );
-
-  return (
-    <div style={{width: '430px'}}>
-      <Card>
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={customers.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          condensed
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-          loading
-        >
-          {rowMarkup}
-        </IndexTable>
-      </Card>
-    </div>
-  );
-}
-
 export function WithEmptyState() {
   const customers = [];
   const resourceName = {
@@ -576,17 +501,24 @@ export function WithMultiplePromotedBulkActions() {
 }
 
 export function WithBulkActionsAndSelectionAcrossPages() {
-  const customers = Array.from({length: 50}, (_, num) => {
-    return {
-      id: `${num}`,
-      url: '/customers/341',
+  const customers = [
+    {
+      id: '3414',
+      url: 'customers/341',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
-      amountSpent: '$24,00',
-    };
-  });
-
+      amountSpent: '$2,400',
+    },
+    {
+      id: '2564',
+      url: 'customers/256',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -637,29 +569,27 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   );
 
   return (
-    <div style={{padding: 'var(--p-space-4)'}}>
-      <Card>
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={customers.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          hasMoreItems
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {title: 'Order count'},
-            {title: 'Amount spent'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </Card>
-    </div>
+    <Card>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        hasMoreItems
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {title: 'Order count'},
+          {title: 'Amount spent'},
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
   );
 }
 

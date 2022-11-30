@@ -8,11 +8,11 @@ import {EmptySearchResult} from '../../EmptySearchResult';
 import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
 import {Sticky} from '../../Sticky';
+import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
-import {SelectAllActions} from '../../SelectAllActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
 import type {IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
@@ -31,16 +31,6 @@ jest.mock('../../../utilities/debounce', () => ({
   debounce: (callback: () => void) => () => {
     callback();
   },
-}));
-
-jest.mock('../../BulkActions', () => ({
-  ...jest.requireActual('../../BulkActions'),
-  useIsBulkActionsSticky: () => ({
-    bulkActionsIntersectionRef: null,
-    tableMeasurerRef: null,
-    isBulkActionsSticky: false,
-    bulkActionsAbsoluteOffset: 0,
-  }),
 }));
 
 const mockTableItems = [
@@ -395,7 +385,7 @@ describe('<IndexTable>', () => {
     });
   });
 
-  describe('SelectAllActions', () => {
+  describe('BulkActions', () => {
     const originalInnerWidth = window.innerWidth;
 
     afterEach(() => {
@@ -421,7 +411,7 @@ describe('<IndexTable>', () => {
       );
 
       index
-        .find(SelectAllActions)!
+        .find(BulkActions)!
         .triggerKeypath('paginatedSelectAllAction.onAction');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
@@ -447,7 +437,7 @@ describe('<IndexTable>', () => {
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-      expect(index.find(SelectAllActions)).toContainReactText(customString);
+      expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
     it('toggles all page resources when onToggleAll is triggered', () => {
@@ -466,12 +456,71 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(SelectAllActions)!.trigger('onToggleAll');
+      index.find(BulkActions)!.trigger('onToggleAll');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,
         true,
       );
+    });
+
+    it('passes smallScreen to bulk actions', () => {
+      const promotedActions = [{content: 'PromotedAction'}];
+
+      const indexTable = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={promotedActions}
+        >
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      indexTable.find(BulkActions)!.trigger('onToggleAll');
+
+      expect(indexTable).toContainReactComponent(BulkActions, {
+        smallScreen: expect.any(Boolean),
+      });
+    });
+
+    it('passes an updated smallScreen value to bulk actions after resize', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        value: 1000,
+      });
+
+      const promotedActions = [{content: 'PromotedAction'}];
+
+      const indexTable = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={promotedActions}
+        >
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      indexTable.find(BulkActions)!.trigger('onToggleAll');
+
+      expect(indexTable).toContainReactComponent(BulkActions, {
+        smallScreen: false,
+      });
+
+      indexTable.act(() => {
+        Object.defineProperty(window, 'innerWidth', {
+          value: 300,
+        });
+        window.dispatchEvent(new Event('resize'));
+      });
+
+      expect(indexTable).toContainReactComponent(BulkActions, {
+        smallScreen: true,
+      });
     });
   });
 
@@ -491,24 +540,30 @@ describe('<IndexTable>', () => {
       });
     });
 
-    it('does not render bulk actions', () => {
+    it('renders bulk actions when selectable', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      expect(index).not.toContainReactComponent(BulkActions);
+      index.find(Button, {children: 'Select'})?.trigger('onClick');
+
+      expect(index).toContainReactComponent(BulkActions, {
+        selectMode: true,
+      });
     });
 
-    it('does not render SelectAllActions', () => {
+    it('does not render a Select button when not selectable', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      expect(index).not.toContainReactComponent(SelectAllActions);
+      expect(index).not.toContainReactComponent(Button, {
+        children: 'Select',
+      });
     });
 
     it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
@@ -526,6 +581,19 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent(BulkActions, {
         onSelectModeToggle: undefined,
       });
+    });
+
+    it('toggles selectable state when the bulk action button is triggered', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      index.find(Button, {children: 'Select'})?.trigger('onClick');
+      index.find(BulkActions)?.trigger('onSelectModeToggle');
+
+      expect(index).not.toContainReactComponent(BulkActions);
     });
 
     it('renders sort markup', () => {
@@ -553,7 +621,20 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('ul');
     });
 
-    it('does not render bulk actions with bulkActions and promotedActions', () => {
+    it('leaves small screen select mode when going from condensed to regular', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      index.find(Button, {children: 'Select'})?.trigger('onClick');
+      index.setProps({condensed: false});
+
+      expect(index).not.toContainReactComponent(BulkActions);
+    });
+
+    it('does not render bulk actions with onSelectModeToggle unless items are selected', () => {
       Object.defineProperty(window, 'innerWidth', {
         value: 300,
       });
@@ -574,6 +655,21 @@ describe('<IndexTable>', () => {
       );
 
       expect(index).not.toContainReactComponent(BulkActions);
+
+      index.find(Sticky)!.find(Button)!.trigger('onClick');
+      expect(index).toContainReactComponent(BulkActions, {
+        actions: [],
+        promotedActions: [],
+      });
+
+      index.setProps({
+        selectedItemsCount: 2,
+      });
+
+      expect(index).toContainReactComponent(BulkActions, {
+        actions: bulkActions,
+        promotedActions,
+      });
     });
   });
 

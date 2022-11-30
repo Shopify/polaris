@@ -316,9 +316,6 @@ export {ScrollLock} from './components/ScrollLock';
 export {Select} from './components/Select';
 export type {SelectProps, SelectOption, SelectGroup} from './components/Select';
 
-export {SelectAllActions} from './components/SelectAllActions';
-export type {SelectAllActionsProps} from './components/SelectAllActions';
-
 export {SettingToggle} from './components/SettingToggle';
 export type {SettingToggleProps} from './components/SettingToggle';
 

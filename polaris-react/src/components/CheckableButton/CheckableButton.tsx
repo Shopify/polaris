@@ -1,8 +1,12 @@
-import React, {useRef, useImperativeHandle, forwardRef} from 'react';
+import React, {useContext, useRef, useEffect} from 'react';
 
 import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {Checkbox} from '../Checkbox';
+import {
+  ResourceListContext,
+  CheckableButtonKey,
+} from '../../utilities/resource-list';
 
 import styles from './CheckableButton.scss';
 
@@ -10,35 +14,51 @@ export interface CheckableButtonProps {
   accessibilityLabel?: string;
   label?: string;
   selected?: boolean | 'indeterminate';
+  selectMode?: boolean;
+  smallScreen?: boolean;
+  plain?: boolean;
+  measuring?: boolean;
   disabled?: boolean;
   onToggleAll?(): void;
-  ariaLive?: 'off' | 'polite';
 }
 
-export const CheckableButton = forwardRef(function CheckableButton(
-  {
-    accessibilityLabel,
-    label = '',
-    onToggleAll,
-    selected,
-    disabled,
-    ariaLive,
-  }: CheckableButtonProps,
-  ref,
-) {
+export function CheckableButton({
+  accessibilityLabel,
+  label = '',
+  onToggleAll,
+  selected,
+  selectMode,
+  plain,
+  measuring,
+  disabled,
+  smallScreen,
+}: CheckableButtonProps) {
   const checkBoxRef = useRef<CheckboxHandles>(null);
 
-  function focus() {
-    checkBoxRef?.current?.focus();
+  const {registerCheckableButtons} = useContext(ResourceListContext);
+
+  let currentKey: CheckableButtonKey = 'bulkLg';
+
+  if (plain) {
+    currentKey = 'plain';
+  } else if (smallScreen) {
+    currentKey = 'bulkSm';
   }
 
-  useImperativeHandle(ref, () => {
-    return {
-      focus,
-    };
-  });
+  useEffect(() => {
+    if (checkBoxRef.current && registerCheckableButtons) {
+      registerCheckableButtons(currentKey, checkBoxRef.current);
+    }
+  }, [currentKey, registerCheckableButtons]);
 
-  const className = classNames(styles.CheckableButton);
+  const className = plain
+    ? classNames(styles.CheckableButton, styles['CheckableButton-plain'])
+    : classNames(
+        styles.CheckableButton,
+        selectMode && styles['CheckableButton-selectMode'],
+        selected && styles['CheckableButton-selected'],
+        measuring && styles['CheckableButton-measuring'],
+      );
 
   return (
     <div className={className} onClick={onToggleAll}>
@@ -52,9 +72,7 @@ export const CheckableButton = forwardRef(function CheckableButton(
           ref={checkBoxRef}
         />
       </div>
-      <span className={styles.Label} aria-live={ariaLive}>
-        {label}
-      </span>
+      <span className={styles.Label}>{label}</span>
     </div>
   );
-});
+}
