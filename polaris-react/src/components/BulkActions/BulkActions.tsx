@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
-import {Transition} from 'react-transition-group';
+import {CSSTransition, Transition} from 'react-transition-group';
+import {motion} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -8,12 +9,15 @@ import {clamp} from '../../utilities/clamp';
 import type {
   BadgeAction,
   DisableableAction,
+  Action,
   ActionListSection,
   MenuGroupDescriptor,
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
+import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
+import {CheckableButton} from '../CheckableButton';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
@@ -28,25 +32,33 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
-const BUTTONS_NODE_ADDITIONAL_WIDTH = 32;
-
 export interface BulkActionsProps {
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** Whether to render the small screen BulkActions or not */
+  smallScreen?: boolean;
+  /** Label for the bulk actions */
+  label?: string;
+  /** State of the bulk actions checkbox */
+  selected?: boolean | 'indeterminate';
   /** List is in a selectable state */
   selectMode?: boolean;
   /** Actions that will be given more prominence */
   promotedActions?: (BulkAction | MenuGroupDescriptor)[];
   /** List of actions */
   actions?: (BulkAction | BulkActionListSection)[];
+  /** Text to select all across pages */
+  paginatedSelectAllText?: string;
+  /** Action for selecting all across pages */
+  paginatedSelectAllAction?: Action;
   /** Disables bulk actions */
   disabled?: boolean;
+  /** Callback when the select all checkbox is clicked */
+  onToggleAll?(): void;
   /** Callback when selectable state of list is changed */
   onSelectModeToggle?(selectMode: boolean): void;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  /** If the BulkActions is currently sticky in view */
-  isSticky?: boolean;
-  /** The width of the BulkActions */
-  width: number;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -54,29 +66,41 @@ type CombinedProps = BulkActionsProps & {
 };
 
 interface State {
-  popoverVisible: boolean;
+  smallScreenPopoverVisible: boolean;
+  largeScreenPopoverVisible: boolean;
   containerWidth: number;
   measuring: boolean;
 }
 
+const slideClasses = {
+  appear: classNames(styles.Slide, styles['Slide-appear']),
+  appearActive: classNames(styles.Slide, styles['Slide-appearing']),
+  enter: classNames(styles.Slide, styles['Slide-enter']),
+  enterActive: classNames(styles.Slide, styles['Slide-entering']),
+  exit: classNames(styles.Slide, styles['Slide-exit']),
+};
+
 class BulkActionsInner extends PureComponent<CombinedProps, State> {
   state: State = {
-    popoverVisible: false,
+    smallScreenPopoverVisible: false,
+    largeScreenPopoverVisible: false,
     containerWidth: 0,
     measuring: true,
   };
 
   private containerNode: HTMLElement | null = null;
-  private buttonsNode: HTMLElement | null = null;
+  private largeScreenButtonsNode: HTMLElement | null = null;
   private moreActionsNode: HTMLElement | null = null;
-  private groupNode = createRef<HTMLDivElement>();
+  private checkableWrapperNode = createRef<HTMLDivElement>();
+  private largeScreenGroupNode = createRef<HTMLDivElement>();
+  private smallScreenGroupNode = createRef<HTMLDivElement>();
   private promotedActionsWidths: number[] = [];
   private bulkActionsWidth = 0;
   private addedMoreActionsWidthForMeasuring = 0;
 
   private handleResize = debounce(
     () => {
-      const {popoverVisible} = this.state;
+      const {smallScreenPopoverVisible, largeScreenPopoverVisible} = this.state;
 
       if (this.containerNode) {
         const containerWidth = this.containerNode.getBoundingClientRect().width;
@@ -85,9 +109,10 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         }
       }
 
-      if (popoverVisible) {
+      if (smallScreenPopoverVisible || largeScreenPopoverVisible) {
         this.setState({
-          popoverVisible: false,
+          smallScreenPopoverVisible: false,
+          largeScreenPopoverVisible: false,
         });
       }
     },
@@ -103,13 +128,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       return 0;
     }
 
-    const containerWidthMinusAdditionalWidth =
-      containerWidth - BUTTONS_NODE_ADDITIONAL_WIDTH;
-
-    if (
-      containerWidthMinusAdditionalWidth >= this.bulkActionsWidth ||
-      measuring
-    ) {
+    if (containerWidth >= this.bulkActionsWidth || measuring) {
       return promotedActions.length;
     }
 
@@ -123,7 +142,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         this.bulkActionsWidth -
         totalWidth +
         this.addedMoreActionsWidthForMeasuring;
-      if (containerWidthMinusAdditionalWidth >= widthWithRemovedAction) {
+      if (containerWidth >= widthWithRemovedAction) {
         sufficientSpace = true;
       } else {
         counter--;
@@ -131,6 +150,14 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     }
 
     return clamp(counter, 0, promotedActions.length);
+  }
+
+  private hasActions() {
+    const {promotedActions, actions} = this.props;
+    return Boolean(
+      (promotedActions && promotedActions.length > 0) ||
+        (actions && actions.length > 0),
+    );
   }
 
   private actionSections(): BulkActionListSection[] | undefined {
@@ -185,8 +212,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         this.moreActionsNode.getBoundingClientRect().width;
     }
 
-    this.bulkActionsWidth = this.buttonsNode
-      ? this.buttonsNode.getBoundingClientRect().width -
+    this.bulkActionsWidth = this.largeScreenButtonsNode
+      ? this.largeScreenButtonsNode.getBoundingClientRect().width -
         this.addedMoreActionsWidthForMeasuring
       : 0;
 
@@ -200,8 +227,19 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
   render() {
-    const {selectMode, disabled, promotedActions, i18n, isSticky, width} =
-      this.props;
+    const {
+      selectMode,
+      accessibilityLabel,
+      label = '',
+      onToggleAll,
+      selected,
+      smallScreen,
+      disabled,
+      promotedActions,
+      paginatedSelectAllText = null,
+      paginatedSelectAllAction,
+      i18n,
+    } = this.props;
 
     const actionSections = this.actionSections();
 
@@ -218,10 +256,70 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       );
     }
 
-    const {popoverVisible, measuring} = this.state;
+    const {smallScreenPopoverVisible, largeScreenPopoverVisible, measuring} =
+      this.state;
+
+    const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
+      <Button
+        onClick={paginatedSelectAllAction.onAction}
+        plain
+        disabled={disabled}
+      >
+        {paginatedSelectAllAction.content}
+      </Button>
+    ) : null;
+
+    const paginatedSelectAllTextMarkup =
+      paginatedSelectAllText && paginatedSelectAllAction ? (
+        <span aria-live="polite">{paginatedSelectAllText}</span>
+      ) : (
+        paginatedSelectAllText
+      );
+
+    const paginatedSelectAllMarkup =
+      paginatedSelectAllActionMarkup || paginatedSelectAllTextMarkup ? (
+        <div className={styles.PaginatedSelectAll}>
+          {paginatedSelectAllTextMarkup} {paginatedSelectAllActionMarkup}
+        </div>
+      ) : null;
+
+    const cancelButton = (
+      <Button
+        onClick={this.setSelectMode.bind(this, false)}
+        disabled={disabled}
+      >
+        {i18n.translate('Polaris.Common.cancel')}
+      </Button>
+    );
 
     const numberOfPromotedActionsToRender =
       this.numberOfPromotedActionsToRender();
+
+    const allActionsPopover = this.hasActions() ? (
+      <div className={styles.Popover} ref={this.setMoreActionsNode}>
+        <Popover
+          active={smallScreenPopoverVisible && selectMode === true}
+          activator={
+            <BulkActionButton
+              disclosure
+              onAction={this.toggleSmallScreenPopover}
+              content={i18n.translate(
+                'Polaris.ResourceList.BulkActions.actionsActivatorLabel',
+              )}
+              disabled={disabled}
+              indicator={this.isNewBadgeInBadgeActions()}
+            />
+          }
+          onClose={this.toggleSmallScreenPopover}
+        >
+          <ActionList
+            items={promotedActions}
+            sections={actionSections}
+            onActionAnyItem={this.toggleSmallScreenPopover}
+          />
+        </Popover>
+      </div>
+    ) : null;
 
     const promotedActionsMarkup =
       promotedActions && numberOfPromotedActionsToRender > 0
@@ -274,73 +372,131 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       actionSections || rolledInPromotedActions.length > 0 || measuring ? (
         <div className={styles.Popover} ref={this.setMoreActionsNode}>
           <Popover
-            active={popoverVisible}
+            active={largeScreenPopoverVisible && selectMode === true}
             activator={
               <BulkActionButton
                 disclosure
-                onAction={this.togglePopover}
+                onAction={this.toggleLargeScreenPopover}
                 content={activatorLabel}
                 disabled={disabled}
                 indicator={this.isNewBadgeInBadgeActions()}
               />
             }
-            preferredAlignment="right"
-            onClose={this.togglePopover}
+            onClose={this.toggleLargeScreenPopover}
           >
             <ActionList
               sections={combinedActions}
-              onActionAnyItem={this.togglePopover}
+              onActionAnyItem={this.toggleLargeScreenPopover}
             />
           </Popover>
         </div>
       ) : null;
 
-    const groupContent =
+    const checkableButtonProps = {
+      accessibilityLabel,
+      label,
+      selected,
+      selectMode,
+      onToggleAll,
+      measuring,
+      disabled,
+    };
+
+    const smallScreenGroup = smallScreen ? (
+      <Transition
+        timeout={0}
+        in={selectMode}
+        key="smallGroup"
+        nodeRef={this.smallScreenGroupNode}
+      >
+        {(status: TransitionStatus) => {
+          const smallScreenGroupClassName = classNames(
+            styles.Group,
+            styles['Group-smallScreen'],
+            styles[`Group-${status}`],
+          );
+          return (
+            <div
+              className={smallScreenGroupClassName}
+              ref={this.smallScreenGroupNode}
+            >
+              <div className={styles.ButtonGroupWrapper}>
+                <ButtonGroup segmented>
+                  <CSSTransition
+                    nodeRef={this.checkableWrapperNode}
+                    in={selectMode}
+                    timeout={parseInt(motion['duration-200'], 10)}
+                    classNames={slideClasses}
+                    appear={!selectMode}
+                  >
+                    <div
+                      className={styles.CheckableContainer}
+                      ref={this.checkableWrapperNode}
+                    >
+                      <CheckableButton {...checkableButtonProps} smallScreen />
+                    </div>
+                  </CSSTransition>
+                  {allActionsPopover}
+                  {cancelButton}
+                </ButtonGroup>
+              </div>
+              {paginatedSelectAllMarkup}
+            </div>
+          );
+        }}
+      </Transition>
+    ) : null;
+
+    const largeGroupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <ButtonGroup>
+        <ButtonGroup segmented>
+          <CheckableButton {...checkableButtonProps} />
           {promotedActionsMarkup}
           {actionsPopover}
         </ButtonGroup>
-      ) : null;
+      ) : (
+        <CheckableButton {...checkableButtonProps} />
+      );
 
-    if (!groupContent) {
-      return null;
-    }
-
-    const group = (
+    const largeScreenGroup = smallScreen ? null : (
       <Transition
-        timeout={250}
+        timeout={0}
         in={selectMode}
-        key="group"
-        nodeRef={this.groupNode}
+        key="largeGroup"
+        nodeRef={this.largeScreenGroupNode}
       >
         {(status: TransitionStatus) => {
-          const groupClassName = classNames(
+          const largeScreenGroupClassName = classNames(
             styles.Group,
-            !isSticky && styles['Group-not-sticky'],
-            !measuring && isSticky && styles[`Group-${status}`],
+            styles['Group-largeScreen'],
+            !measuring && styles[`Group-${status}`],
             measuring && styles['Group-measuring'],
           );
           return (
             <div
-              className={groupClassName}
-              ref={this.groupNode}
-              style={{width}}
+              className={largeScreenGroupClassName}
+              ref={this.largeScreenGroupNode}
             >
               <EventListener event="resize" handler={this.handleResize} />
               <div
                 className={styles.ButtonGroupWrapper}
-                ref={this.setButtonsNode}
+                ref={this.setLargeScreenButtonsNode}
               >
-                <div className={styles.ButtonGroupInner}>{groupContent}</div>
+                {largeGroupContent}
               </div>
+              {paginatedSelectAllMarkup}
             </div>
           );
         }}
       </Transition>
     );
 
-    return <div ref={this.setContainerNode}>{group}</div>;
+    return (
+      <div ref={this.setContainerNode}>
+        {smallScreenGroup}
+        {largeScreenGroup}
+      </div>
+    );
   }
 
   private isNewBadgeInBadgeActions() {
@@ -356,8 +512,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     return false;
   }
 
-  private setButtonsNode = (node: HTMLElement | null) => {
-    this.buttonsNode = node;
+  private setLargeScreenButtonsNode = (node: HTMLElement | null) => {
+    this.largeScreenButtonsNode = node;
   };
 
   private setContainerNode = (node: HTMLElement | null) => {
@@ -368,13 +524,34 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
     this.moreActionsNode = node;
   };
 
-  private togglePopover = () => {
+  private setSelectMode = (val: boolean) => {
+    const {onSelectModeToggle} = this.props;
+    if (onSelectModeToggle) {
+      onSelectModeToggle(val);
+    }
+  };
+
+  private toggleSmallScreenPopover = () => {
     if (this.props.onMoreActionPopoverToggle) {
-      this.props.onMoreActionPopoverToggle(this.state.popoverVisible);
+      this.props.onMoreActionPopoverToggle(
+        this.state.smallScreenPopoverVisible,
+      );
     }
 
-    this.setState(({popoverVisible}) => ({
-      popoverVisible: !popoverVisible,
+    this.setState(({smallScreenPopoverVisible}) => ({
+      smallScreenPopoverVisible: !smallScreenPopoverVisible,
+    }));
+  };
+
+  private toggleLargeScreenPopover = () => {
+    if (this.props.onMoreActionPopoverToggle) {
+      this.props.onMoreActionPopoverToggle(
+        this.state.largeScreenPopoverVisible,
+      );
+    }
+
+    this.setState(({largeScreenPopoverVisible}) => ({
+      largeScreenPopoverVisible: !largeScreenPopoverVisible,
     }));
   };
 
