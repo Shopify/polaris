@@ -1,22 +1,27 @@
-# Stylelint Polaris
+# @shopify/stylelint-polaris
+
+Disallow CSS declarations that break conventions or lower Polaris coverage of colors, font, shape, spacing, depth, motion, z-index, breakpoints, and layout in your project.
+
+> Code is considered "covered" when it is using Polaris tokens and/or components without overriding or providing custom styles
 
 ## Package structure
 
 ```
 stylelint-polaris/
 |-- plugins/
-|  |   # Custom plugin for categorizing built-in and custom rules
-|  |-- coverage.js
-|  |   # Additional custom rules
-|  |-- custom-properties-allowed-list.js
-|  |   # Plugins entry point
-|  |   # (See advanced config example below)
-|  |__ index.js
-|   # Main stylelint-polaris config
+|  |   # Plugin for categorizing and reporting built-in and custom rules
+|  |-- coverage/
+|  |   # Custom rules
+|  |-- at-rule-disallowed-list/
+|  |-- custom-properties-allowed-list/
+|  |-- global-disallowed-list/
+|  |-- media-queries-allowed-list/
+|-- utils/
+|   # Config
 |__ index.js
 ```
 
-### Usage
+## Usage
 
 ### Basic
 
@@ -63,8 +68,344 @@ yarn build -- --filter=@shopify/polaris^...
 
 > Note: Remove the `^` character if you do want to build `@shopify/polaris`
 
-3. Run `stylelint` on `polaris-react`
+3. Run `stylelint` in `polaris-react`
+
+All files
 
 ```sh
-cd polaris-react && yarn lint:styles
+yarn turbo run lint:styles --filter=@shopify/polaris
+```
+
+Specific file
+
+```sh
+yarn run stylelint path/to/component.scss
+
+// yarn run stylelint polaris-react/src/components/TopBar/TopBar.scss
+```
+
+## Rules
+
+### Conventions
+
+#### unit-disallowed-list
+
+```diff
+- font-size: 12px;
+- line-height: 1.5rem
+- transition-duration: 200ms;
+```
+
+```diff
++ font-size: var(--p-font-size-75);
++ line-height: var(--p-font-line-height-3);
++ transition-duration: var(--p-duration-200);
+```
+
+### Colors
+
+#### color-named
+
+```diff
+- color: black;
+- fill: dimgray;
+```
+
+```diff
++ color: var(--p-text);
++ fill: var(--p-icon)
+```
+
+#### color-no-hex
+
+```diff
+- color: #202223;
+- fill: #5c5f62;
+```
+
+```diff
++ color: var(--p-text);
++ fill: var(--p-icon)
+```
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Font
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Shape
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Spacing
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Depth
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Motion
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Breakpoints
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/media-queries-allowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/at-rule-disallowed-list
+
+```diff
+
+```
+
+### Z-Index
+
+#### declaration-property-value-allowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/global-disallowed-list
+
+```diff
+
+```
+
+### Layout
+
+#### declaration-property-value-disallowed-list
+
+```diff
+
+```
+
+#### declaration-property-unit-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+
+```
+
+#### property-disallowed-list
+
+```diff
+
+```
+
+### Legacy
+
+#### stylelint-polaris/at-rule-disallowed-list
+
+```diff
+
+```
+
+#### function-disallowed-list
+
+```diff
+
+```
+
+#### stylelint-polaris/global-disallowed-list
+
+```diff
+
 ```
