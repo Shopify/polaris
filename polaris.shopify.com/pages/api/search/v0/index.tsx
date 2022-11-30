@@ -21,8 +21,12 @@ const pages: SiteJSON = siteJson;
 const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
 );
-const foundationSlugs = Object.keys(pages).filter((slug) =>
-  slug.startsWith('foundations/'),
+const foundationSlugs = Object.keys(pages).filter(
+  (slug) =>
+    slug.startsWith('foundations/') ||
+    slug.startsWith('design/') ||
+    slug.startsWith('content/') ||
+    slug.startsWith('patterns/'),
 );
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
@@ -32,8 +36,8 @@ const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   icons: 9,
 };
 
-const getSearchResults = (query: string) => {
-  if (query.length === 0) return [];
+const getSearchResults = (query?: string) => {
+  if (query == null || query?.length === 0) return [];
 
   let results: SearchResults = [];
 
@@ -108,13 +112,13 @@ const getSearchResults = (query: string) => {
   // Add foundations
   foundationSlugs.forEach((slug) => {
     const {title, icon = '', description = ''} = pages[slug].frontMatter;
-    const category = slug.split('/')[2];
+    const category = slug.split('/')[0].toLowerCase();
 
     results.push({
       id: slugify(`foundations ${title}`),
       category: 'foundations',
       score: 0,
-      url: slug,
+      url: `/${slug}`,
       meta: {
         foundations: {
           title,

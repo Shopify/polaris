@@ -2,57 +2,46 @@ import path from 'path';
 import globby from 'globby';
 import {existsSync, rmSync, mkdirSync, writeFileSync, readFileSync} from 'fs';
 import matter from 'gray-matter';
+import set from 'lodash.set';
 
 const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.json`;
 const navJsonFile = `${cacheDir}/nav.json`;
 
-const genNavJson = (data) => {
-  const nav = [];
+const genNavJson = (mardownFiles) => {
+  let nav = {};
 
-  data.forEach((md) => {
-    const {title, icon, description} = md.frontMatter;
+  mardownFiles.forEach((md) => {
+    const {
+      title,
+      navTitle,
+      icon,
+      description,
+      order,
+      newSection,
+      hideChildren,
+      color,
+      url,
+      status,
+    } = md.frontMatter;
     const {slug} = md;
-    let currentLevel = nav;
-    const slugChunks = slug.split('/');
 
-    slugChunks.forEach((chunk) => {
-      const existingParent = currentLevel.find(
-        (item) => item.slug.split('/').at(-1) === chunk,
-      );
+    const path = `children.${slug.replace(/\//g, '.children.')}`;
 
-      if (existingParent) {
-        currentLevel = existingParent.children;
-      } else {
-        const newItem = {
-          title,
-          slug: `/${slug}`,
-          children: [],
-          ...(icon && {icon}),
-          ...(description && {description}),
-        };
-
-        currentLevel.push(newItem);
-        currentLevel = newItem.children;
-      }
+    set(nav, path, {
+      title: navTitle || title,
+      icon,
+      description,
+      order,
+      slug: url || `/${slug}`,
+      newSection,
+      hideChildren,
+      color: color ? color.replace(/\\/g, '') : undefined,
+      status,
     });
   });
 
-  const formatNav = (navItems) => {
-    navItems.forEach((item) => {
-      let currentLevel = navItems;
-      if (item.children.length === 0) {
-        delete item.children;
-      } else {
-        currentLevel = item.children;
-        formatNav(currentLevel);
-      }
-    });
-
-    return JSON.stringify(navItems);
-  };
-
-  writeFileSync(navJsonFile, formatNav(nav), 'utf-8');
+  writeFileSync(navJsonFile, JSON.stringify(nav), 'utf-8');
 };
 
 const genSiteJson = (data) => {
@@ -64,26 +53,30 @@ const genSiteJson = (data) => {
 
 const getMdContent = (filePath) => {
   const fileContent = readFileSync(filePath, 'utf-8');
-  const {data, content} = matter(fileContent);
+  const {data} = matter(fileContent);
   const slug = filePath
     .replace(`${process.cwd()}/content/`, '')
-    .replace('/index.md', '');
+    .replace('/index.md', '')
+    .replace('.md', '');
 
   return {frontMatter: data, slug};
 };
 
 const genCacheJson = () => {
   if (!existsSync(cacheDir)) mkdirSync(cacheDir, {recursive: true});
-  const pathGlob = path.join(process.cwd(), 'content/**/*.md');
+  const pathGlob = [
+    path.join(process.cwd(), 'content/*.md'),
+    path.join(process.cwd(), 'content/**/*.md'),
+  ];
 
   const mdFiles = globby.sync(pathGlob);
 
-  const data = mdFiles
+  const mardownFiles = mdFiles
     .map((filePath) => getMdContent(filePath))
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  genSiteJson(data);
-  genNavJson(data);
+  genSiteJson(mardownFiles);
+  genNavJson(mardownFiles);
 
   console.log('✅ Generated .cache/nav.json and .cache/site.json');
 };

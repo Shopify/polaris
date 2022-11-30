@@ -5,6 +5,7 @@ import type {Icon as IconType} from '@shopify/polaris-icons/metadata';
 import Link from 'next/link';
 import Icon from '../Icon';
 import * as polarisIcons from '@shopify/polaris-icons';
+import SearchResultHighlight from '../SearchResultHighlight';
 
 interface IconGridProps {
   title?: string;
@@ -43,18 +44,16 @@ function IconGridItem({icon, activeIcon, query}: IconGridItemProps) {
           },
         }}
         scroll={false}
+        className={className(
+          styles.Icon,
+          activeIcon === id && styles.isSelected,
+        )}
+        id={icon.id}
+        {...searchAttributes}
       >
-        <a
-          className={className(
-            styles.Icon,
-            activeIcon === id && styles.isSelected,
-          )}
-          id={icon.id}
-          {...searchAttributes}
-        >
-          <Icon source={(polarisIcons as any)[id]} />
-          <p>{name}</p>
-        </a>
+        <SearchResultHighlight />
+        <Icon source={(polarisIcons as any)[id]} />
+        <p>{name}</p>
       </Link>
     </li>
   );

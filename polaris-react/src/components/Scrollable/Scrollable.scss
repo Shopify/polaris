@@ -10,6 +10,8 @@
   -webkit-overflow-scrolling: touch;
   position: relative;
   max-height: var(--pc-scrollable-max-height);
+  overflow-x: hidden;
+  overflow-y: hidden;
 
   &:focus {
     outline: var(--p-border-width-2) solid var(--p-focused);
@@ -23,10 +25,6 @@
 
 .vertical {
   overflow-y: auto;
-}
-
-.verticalHasScrolling {
-  overflow-y: scroll;
 }
 
 .hasTopShadow {

@@ -40,7 +40,6 @@
 }
 
 .Title {
-  @include text-style-body;
   display: block;
   margin: 0 0 var(--p-space-1);
   padding: 0;

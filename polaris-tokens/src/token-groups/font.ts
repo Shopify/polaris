@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const font = {
   'font-family-sans': {
     value:
@@ -65,3 +67,29 @@ export const font = {
     value: '48px',
   },
 };
+
+export type FontTokenGroup = TokenGroup<typeof font>;
+export type FontTokenName = keyof FontTokenGroup;
+
+export const fontSizeScale = [
+  '75',
+  '100',
+  '200',
+  '300',
+  '400',
+  '500',
+  '600',
+  '700',
+] as const;
+export type FontSizeScale = typeof fontSizeScale[number];
+
+export const fontLineHeightScale = ['1', '2', '3', '4', '5', '6', '7'] as const;
+export type FontLineHeightScale = typeof fontLineHeightScale[number];
+
+export const fontWeightAlias = [
+  'regular',
+  'medium',
+  'semibold',
+  'bold',
+] as const;
+export type FontWeightAlias = typeof fontWeightAlias[number];

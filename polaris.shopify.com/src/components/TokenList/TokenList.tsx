@@ -9,6 +9,7 @@ import {figmaColorNames} from '../../data/figmaColorNames';
 import Link from 'next/link';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import {ClipboardMinor} from '@shopify/polaris-icons';
+import SearchResultHighlight from '../SearchResultHighlight';
 
 interface ColumnsConfig {
   preview: boolean;
@@ -129,17 +130,20 @@ function TokenListItem({
         <tr
           key={name}
           className={className(styles.TokenListItem)}
-          {...searchAttributes}
           id={slugify(name)}
+          {...searchAttributes}
         >
           {columns.preview && (
             <td>
+              <SearchResultHighlight marginY="edge" />
               <TokenPreview name={name} value={value} />
               {isClickableSearchResult && (
-                <Link href={`/tokens/${category}#${searchAttributes?.id}`}>
-                  <a className={styles.ClickableItemLink} tabIndex={-1}>
-                    View token
-                  </a>
+                <Link
+                  href={`/tokens/${category}#${searchAttributes?.id}`}
+                  className={styles.ClickableItemLink}
+                  tabIndex={-1}
+                >
+                  View token
                 </Link>
               )}
             </td>

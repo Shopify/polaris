@@ -13,11 +13,7 @@ interface SecondaryProps {
 export function Secondary({id, children, expanded}: SecondaryProps) {
   const uid = useUniqueId('SecondaryNavigation');
   return (
-    <Collapsible
-      id={id || uid}
-      open={expanded}
-      transition={{duration: '0ms', timingFunction: 'linear'}}
-    >
+    <Collapsible id={id || uid} open={expanded} transition={false}>
       <ul className={styles.List}>{children}</ul>
     </Collapsible>
   );

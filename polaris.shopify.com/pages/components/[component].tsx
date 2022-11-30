@@ -6,10 +6,9 @@ import ComponentExamples from '../../src/components/ComponentExamples';
 import type {ComponentExample} from '../../src/components/ComponentExamples';
 import Longform from '../../src/components/Longform';
 import Markdown from '../../src/components/Markdown';
-import type {NavItem} from '../../src/components/Nav';
-import Layout from '../../src/components/Layout';
+import Page from '../../src/components/Page';
 import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {getComponentNav, toPascalCase} from '../../src/utils/various';
+import {toPascalCase} from '../../src/utils/various';
 import PageMeta from '../../src/components/PageMeta';
 import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
@@ -32,6 +31,7 @@ interface Props {
     header: string;
   };
   type: FilteredTypes;
+  editPageLinkPath: string;
 }
 
 const Components = ({
@@ -41,8 +41,8 @@ const Components = ({
   readme,
   status,
   type,
+  editPageLinkPath,
 }: Props) => {
-  const navItems: NavItem[] = getComponentNav();
   const typedStatus: Status | undefined = status
     ? {
         value: status.value.toLowerCase() as Status['value'],
@@ -50,22 +50,30 @@ const Components = ({
       }
     : undefined;
 
+  const componentExamples = Boolean(examples.length) && (
+    <ComponentExamples examples={examples} />
+  );
+  const propsTable =
+    type && status?.value !== 'Deprecated' ? (
+      <PropsTable componentName={title} types={type} />
+    ) : null;
+
   return (
-    <Layout width="narrow" navItems={navItems} title={title}>
+    <Page title={title} editPageLinkPath={editPageLinkPath}>
       <PageMeta title={title} description={description} />
 
       <Longform>
         <Markdown text={description} />
         {typedStatus && <StatusBanner status={typedStatus} />}
-        <ComponentExamples examples={examples} />
+        {componentExamples}
       </Longform>
 
-      {type && <PropsTable types={type} componentName={title} />}
+      {propsTable}
 
       <Longform firstParagraphIsLede={false}>
         <Markdown text={readme.body} />
       </Longform>
-    </Layout>
+    </Page>
   );
 };
 
@@ -74,10 +82,9 @@ export const getStaticProps: GetStaticProps<
   {component: string}
 > = async (context) => {
   const componentSlug = context.params?.component;
-  const mdFilePath = path.resolve(
-    process.cwd(),
-    `content/components/${componentSlug}/index.md`,
-  );
+  const relativeMdPath = `content/components/${componentSlug}.md`;
+  const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
+  const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
@@ -127,6 +134,7 @@ export const getStaticProps: GetStaticProps<
       description,
       readme,
       type,
+      editPageLinkPath,
     };
 
     return {props};
@@ -136,12 +144,13 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = path.resolve(process.cwd(), 'content/components/*/*.md');
-  const paths = globby.sync(globPath).map((fileName: string) => {
-    return fileName
-      .replace(`${process.cwd()}/content`, '')
-      .replace('/index.md', '');
-  });
+  const globPath = path.resolve(process.cwd(), 'content/components/*.md');
+  const paths = globby
+    .sync(globPath)
+    .filter((path) => !path.endsWith('index.md'))
+    .map((path) =>
+      path.replace(`${process.cwd()}/content`, '').replace('.md', ''),
+    );
 
   return {
     paths,

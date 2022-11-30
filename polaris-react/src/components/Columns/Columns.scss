@@ -1,0 +1,29 @@
+@import '../../styles/common';
+
+.Columns {
+  @include responsive-props('columns', 'gap', 'gap');
+
+  --pc-columns-xs: 6;
+  --pc-columns-sm: var(--pc-columns-xs);
+  --pc-columns-md: var(--pc-columns-sm);
+  --pc-columns-lg: var(--pc-columns-md);
+  --pc-columns-xl: var(--pc-columns-lg);
+  display: grid;
+  grid-template-columns: var(--pc-columns-xs);
+
+  @media #{$p-breakpoints-sm-up} {
+    grid-template-columns: var(--pc-columns-sm);
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    grid-template-columns: var(--pc-columns-md);
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    grid-template-columns: var(--pc-columns-lg);
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    grid-template-columns: var(--pc-columns-xl);
+  }
+}

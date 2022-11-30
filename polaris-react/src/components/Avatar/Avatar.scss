@@ -23,12 +23,30 @@
   }
 }
 
+.Text {
+  font-size: var(--p-font-size-300);
+  font-weight: var(--p-font-weight-regular);
+
+  &.long {
+    font-size: var(--p-font-size-100);
+  }
+}
+
 .shapeRound {
   border-radius: var(--p-border-radius-half);
 }
 
 .shapeSquare {
   border-radius: var(--p-border-radius-05);
+
+  .Text {
+    font-size: var(--p-font-size-200);
+    font-weight: var(--p-font-weight-semibold);
+  }
+
+  .long {
+    font-size: var(--p-font-size-75);
+  }
 }
 
 .hidden {

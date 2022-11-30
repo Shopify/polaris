@@ -3,9 +3,12 @@ import Head from 'next/head';
 import Script from 'next/script';
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
+import useDarkMode from 'use-dark-mode';
+import '@shopify/polaris/build/esm/styles.css';
 
+import {className} from '../src/utils/various';
+import Frame from '../src/components/Frame';
 import '../src/styles/globals.scss';
-import Page from '../src/components/Page';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
@@ -19,6 +22,12 @@ const noflash = `!function(){var b="darkMode",g="dark-mode",j="light-mode";funct
 function MyApp({Component, pageProps}: AppProps) {
   const router = useRouter();
   const isProd = process.env.NODE_ENV === 'production';
+  const darkMode = useDarkMode(false);
+
+  // We're using router.pathname here to check for a specific incoming route to render in a Fragment instead of
+  // the Page component. This will work fine for statically generated assets / pages
+  // Any SSR pages may break due to router sometimes being undefined on first render.
+  // see https://stackoverflow.com/questions/61040790/userouter-withrouter-receive-undefined-on-query-in-first-render
 
   useEffect(() => {
     if (!isProd) return;
@@ -38,6 +47,16 @@ function MyApp({Component, pageProps}: AppProps) {
   const ogImagePath = `/og-images${
     router.asPath === '/' ? '/home' : router.asPath
   }.png`;
+
+  const isPolarisExample = router.asPath.startsWith('/examples');
+  const isPolarisSandbox = router.asPath.startsWith('/sandbox');
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      'color-scheme',
+      darkMode.value ? 'dark' : 'light',
+    );
+  }, [darkMode.value]);
 
   return (
     <>
@@ -64,7 +83,7 @@ function MyApp({Component, pageProps}: AppProps) {
         </>
       ) : null}
 
-      <Page>
+      <>
         <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
         <Head>
@@ -73,8 +92,21 @@ function MyApp({Component, pageProps}: AppProps) {
           <meta property="og:image" content={ogImagePath} />
         </Head>
 
-        <Component {...pageProps} />
-      </Page>
+        <div
+          style={{background: isPolarisExample ? '#fafafa' : 'unset'}}
+          className={className(
+            !isPolarisExample && 'styles-for-site-but-not-polaris-examples',
+          )}
+        >
+          {isPolarisExample || isPolarisSandbox ? (
+            <Component {...pageProps} />
+          ) : (
+            <Frame darkMode={darkMode}>
+              <Component {...pageProps} />
+            </Frame>
+          )}
+        </div>
+      </>
     </>
   );
 }

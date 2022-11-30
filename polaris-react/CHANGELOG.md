@@ -1,5 +1,235 @@
 # Changelog
 
+## 10.12.0
+
+### Minor Changes
+
+- [#7684](https://github.com/Shopify/polaris/pull/7684) [`2e5f8348b`](https://github.com/Shopify/polaris/commit/2e5f8348bd8be1de0c8294453da8cfd918e1e034) Thanks [@ananyaneogi](https://github.com/ananyaneogi)! - Update the `CalloutCard` `title` prop to accept a ReactNode type
+
+* [#7588](https://github.com/Shopify/polaris/pull/7588) [`c1c8f73b0`](https://github.com/Shopify/polaris/commit/c1c8f73b0f0bc7ab1e2be1ad824a3aa2dded3326) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Added optional `captureOverscroll` prop to `Popover`
+
+- [#6986](https://github.com/Shopify/polaris/pull/6986) [`270887fcf`](https://github.com/Shopify/polaris/commit/270887fcfeff76ab7d70fb49c5f6b2637b5d20ba) Thanks [@danielle-dsouza](https://github.com/danielle-dsouza)! - Clicking on the modal backdrop triggers the pressed state of the modal's close button
+
+### Patch Changes
+
+- [#7693](https://github.com/Shopify/polaris/pull/7693) [`bdf6fd31d`](https://github.com/Shopify/polaris/commit/bdf6fd31dba47da980ce1c133d9adf61a39bdf12) Thanks [@philschoefer](https://github.com/philschoefer)! - Fixed a bug where `DataTable` summary row would not properly inherit type defined in `columnContentTypes` prop
+
+* [#7578](https://github.com/Shopify/polaris/pull/7578) [`217f2f8ed`](https://github.com/Shopify/polaris/commit/217f2f8edd6e0c8ced5d697739efd48a5fb78fb1) Thanks [@haskelash-shopify](https://github.com/haskelash-shopify)! - Hide bulk actions popup when all items are deselected.
+
+- [#7710](https://github.com/Shopify/polaris/pull/7710) [`6b915e01e`](https://github.com/Shopify/polaris/commit/6b915e01ea89a6213804e581478222c04579175d) Thanks [@laurkim](https://github.com/laurkim)! - Fixed visual spacing regressions on `ActionList` and `Modal.Header`
+
+## 10.11.0
+
+### Minor Changes
+
+- [#7572](https://github.com/Shopify/polaris/pull/7572) [`20c8cad81`](https://github.com/Shopify/polaris/commit/20c8cad814725c29d50afc74dc447d3904e55811) Thanks [@laurkim](https://github.com/laurkim)! - Replaced usage of text components in component stories with `Text` component
+
+* [#7621](https://github.com/Shopify/polaris/pull/7621) [`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a) Thanks [@aveline](https://github.com/aveline)! - - Added border width prop to `Box`
+  - Exported color token subset alias types from tokens package and remove from `Box`
+
+- [#7068](https://github.com/Shopify/polaris/pull/7068) [`ccdcea22e`](https://github.com/Shopify/polaris/commit/ccdcea22ede61858c47a5f4f5f4fde1727f19177) Thanks [@laurkim](https://github.com/laurkim)! - Deprecated `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` components
+
+### Patch Changes
+
+- [#7644](https://github.com/Shopify/polaris/pull/7644) [`b3e73ee04`](https://github.com/Shopify/polaris/commit/b3e73ee045ba5a90fbc930074b4e8255d079b0d5) Thanks [@kyledurand](https://github.com/kyledurand)! - Added horizontal spacing defaults to `Bleed`
+
+* [#7530](https://github.com/Shopify/polaris/pull/7530) [`79d92a820`](https://github.com/Shopify/polaris/commit/79d92a820864fea4f3f9c64930e820a826a1986e) Thanks [@samrose3](https://github.com/samrose3)! - Replaced all typography components with the new `Text` component.
+  Added support for `text-inverse` color type on `Text`.
+  Removed references to the following mixins to use the new `Text` or tokens directly in classes: `text-style-body`, `text-style-heading`, `text-style-subheading`, `text-style-caption`, `text-style-button`, `text-style-button-large`, `text-emphasis-subdued`, `text-emphasis-strong`, `nav-item-text-attributes`.
+
+- [#7577](https://github.com/Shopify/polaris/pull/7577) [`db951f855`](https://github.com/Shopify/polaris/commit/db951f8555f4cfbd01306f617c11682ee441f381) Thanks [@RickyMarou](https://github.com/RickyMarou)! - Page component: display subtitle even when it's the only header prop set
+
+* [#7633](https://github.com/Shopify/polaris/pull/7633) [`1364be7f1`](https://github.com/Shopify/polaris/commit/1364be7f1a9e3983c4ce2ed66a247c536c7b01c1) Thanks [@kyledurand](https://github.com/kyledurand)! - Renamed `alignY` prop to `alignBlock` on `Inline`
+  Added more flex properties to `align` on `Inline`
+
+- [#7443](https://github.com/Shopify/polaris/pull/7443) [`7a6fb7c1c`](https://github.com/Shopify/polaris/commit/7a6fb7c1c58ade9b7e53c3318cd635f1ca05c82e) Thanks [@iAmNathanJ](https://github.com/iAmNathanJ)! - Improve performance of the Scrollable component with React 18
+
+* [#7625](https://github.com/Shopify/polaris/pull/7625) [`9f8b651dd`](https://github.com/Shopify/polaris/commit/9f8b651dd694cf6c384d8580d6ad62d437e49c93) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed wrap children with div from Inline component
+
+- [#7593](https://github.com/Shopify/polaris/pull/7593) [`addd6bcdd`](https://github.com/Shopify/polaris/commit/addd6bcdd8735dc0cde9d5cd047912ed3568dc8f) Thanks [@kyledurand](https://github.com/kyledurand)! - Improved comments across layout components, changed default spacing of Inline component to match AlphaStack
+
+* [#7600](https://github.com/Shopify/polaris/pull/7600) [`f006509be`](https://github.com/Shopify/polaris/commit/f006509be03af57615464cab91267002e2ee7b15) Thanks [@billycai](https://github.com/billycai)! - Add spacing between title and metadata for Page component
+
+- [#7563](https://github.com/Shopify/polaris/pull/7563) [`a9051d678`](https://github.com/Shopify/polaris/commit/a9051d678f264ef38c8904ed8c997085db7a841f) Thanks [@chazdean](https://github.com/chazdean)! - Updated `Inline` component docs and default prop values
+
+* [#7635](https://github.com/Shopify/polaris/pull/7635) [`3cb5377a6`](https://github.com/Shopify/polaris/commit/3cb5377a6da74778c382e71b1461baad667f1e46) Thanks [@iAmNathanJ](https://github.com/iAmNathanJ)! - Fixed Scrollable component to match existing onScrolledToBottom logic
+
+* Updated dependencies [[`432bdd5fe`](https://github.com/Shopify/polaris/commit/432bdd5fe7f7c3e6c0e570b985b26debbf953433), [`6e9edd3b5`](https://github.com/Shopify/polaris/commit/6e9edd3b58875ced12d0f27772b825034d83bf6a), [`35be8a003`](https://github.com/Shopify/polaris/commit/35be8a0035cfb50fc30bea2dbbf2718cd99fdb09)]:
+  - @shopify/polaris-icons@6.5.0
+  - @shopify/polaris-tokens@6.3.0
+
+## 10.10.1
+
+### Patch Changes
+
+- [#7561](https://github.com/Shopify/polaris/pull/7561) [`fc78fcc48`](https://github.com/Shopify/polaris/commit/fc78fcc48d075db1240a17910ada9f61599e51fb) Thanks [@kyledurand](https://github.com/kyledurand)! - Fix typo in box property, remove PropsWithChildren
+
+## 10.10.0
+
+### Minor Changes
+
+- [#7538](https://github.com/Shopify/polaris/pull/7538) [`a595fa3ca`](https://github.com/Shopify/polaris/commit/a595fa3cad8756242ec8fba1bf125c1579a2a761) Thanks [@laurkim](https://github.com/laurkim)! - Added responsive styling to `Text` for `heading2xl`, `heading3xl`, and `heading4xl` variants
+
+* [#7546](https://github.com/Shopify/polaris/pull/7546) [`e5f84f0eb`](https://github.com/Shopify/polaris/commit/e5f84f0ebd4da3f02217ab049c3570224d0ab26b) Thanks [@laurkim](https://github.com/laurkim)! - Added responsive styling to the `Text` `headingXl` and `headingLg` variants
+
+### Patch Changes
+
+- [#7534](https://github.com/Shopify/polaris/pull/7534) [`e53f7901c`](https://github.com/Shopify/polaris/commit/e53f7901c23e86a255d8e051a38158645753472c) Thanks [@kyledurand](https://github.com/kyledurand)! - Update box to use logical properties, condense single value into single custom property
+
+## 10.9.1
+
+### Patch Changes
+
+- [#7533](https://github.com/Shopify/polaris/pull/7533) [`f6568c3c1`](https://github.com/Shopify/polaris/commit/f6568c3c1f82cda953213eae4ea1e7f06b3a101c) Thanks [@laurkim](https://github.com/laurkim)! - Fixed logic to trigger `TextField` focus on click when used with `Combobox`
+
+## 10.9.0
+
+### Minor Changes
+
+- [#7429](https://github.com/Shopify/polaris/pull/7429) [`e87330f5b`](https://github.com/Shopify/polaris/commit/e87330f5b8e94e8f11f21ec7e44cdab6a73796d4) Thanks [@aveline](https://github.com/aveline)! - Update `AlphaStack` to be polymorphic, add list reset styles and allow spacing to change based on breakpoint
+
+* [#7450](https://github.com/Shopify/polaris/pull/7450) [`74237ebc5`](https://github.com/Shopify/polaris/commit/74237ebc5b6d2be84fde128e6947e468d9cc2624) Thanks [@laurkim](https://github.com/laurkim)! - Added support for `minHeight` and `minWidth` on `Box`
+
+- [#7432](https://github.com/Shopify/polaris/pull/7432) [`85c022033`](https://github.com/Shopify/polaris/commit/85c02203356ac90af463c93bd054ec8932c8d82f) Thanks [@laurkim](https://github.com/laurkim)! - Added support for `overflowX`, `overflowY`, and `width` props to `Box`
+
+* [#7491](https://github.com/Shopify/polaris/pull/7491) [`a9eff60e1`](https://github.com/Shopify/polaris/commit/a9eff60e1ac1c9079123ae1951b300f8cfc07cd5) Thanks [@laurkim](https://github.com/laurkim)! - Added support for `section` element types to `Box`
+
+- [#7389](https://github.com/Shopify/polaris/pull/7389) [`4f184c658`](https://github.com/Shopify/polaris/commit/4f184c658e2bcbacde41bc32b17be3e10998aba7) Thanks [@aveline](https://github.com/aveline)! - Added `breakWord` prop to `Text`
+
+* [#7430](https://github.com/Shopify/polaris/pull/7430) [`87981ac01`](https://github.com/Shopify/polaris/commit/87981ac01055b913223bb16ca1db1a109419163f) Thanks [@aveline](https://github.com/aveline)! - Added `legend` as supported element for `Text` component
+
+- [#7438](https://github.com/Shopify/polaris/pull/7438) [`4b4411930`](https://github.com/Shopify/polaris/commit/4b4411930587535bb4bb85e4b8e2eca13949f8b6) Thanks [@aveline](https://github.com/aveline)! - Simplify `AlphaCard` by removing `hasBorderRadius` prop and `shadow` prop
+
+### Patch Changes
+
+- [#7405](https://github.com/Shopify/polaris/pull/7405) [`ea2615881`](https://github.com/Shopify/polaris/commit/ea2615881194c2b8d77df528a5b16bf9c9cad485) Thanks [@laurkim](https://github.com/laurkim)! - Fixed how optional `id` prop rendered in `Text`
+
+* [#7434](https://github.com/Shopify/polaris/pull/7434) [`62288755a`](https://github.com/Shopify/polaris/commit/62288755a3ab5301a4b78be38b92f4775bd188aa) Thanks [@laurkim](https://github.com/laurkim)! - Fixed reference to `width` custom property in `Box`
+
+- [#7396](https://github.com/Shopify/polaris/pull/7396) [`3be27bae8`](https://github.com/Shopify/polaris/commit/3be27bae839406e399d8e476d4d30b1f1791d96f) Thanks [@laurkim](https://github.com/laurkim)! - Updated alias and scale types in `Box` with type tests to check they exist in our token groups.
+  Updated `get-props` script to parse utility types with unions.
+
+* [#7435](https://github.com/Shopify/polaris/pull/7435) [`4097d539b`](https://github.com/Shopify/polaris/commit/4097d539bcfe61b404d2123190b3756f7968edfb) Thanks [@kyledurand](https://github.com/kyledurand)! - Cleaned up styles on Box
+
+- [#7410](https://github.com/Shopify/polaris/pull/7410) [`13546e344`](https://github.com/Shopify/polaris/commit/13546e3444bb75c3e6494503eb44adb32f5c5eb4) Thanks [@kyledurand](https://github.com/kyledurand)! - Apply default value to Columns
+
+* [#7483](https://github.com/Shopify/polaris/pull/7483) [`7a78e07bf`](https://github.com/Shopify/polaris/commit/7a78e07bf1abb271b1f6bbd10042c24b6caddd85) Thanks [@laurkim](https://github.com/laurkim)! - Fixed missing `children` prop in `Columns` prop type
+
+- [#7492](https://github.com/Shopify/polaris/pull/7492) [`612e02786`](https://github.com/Shopify/polaris/commit/612e02786692ad6dd7bb009f5b3fbd2ea64a2859) Thanks [@henryyi](https://github.com/henryyi)! - Only apply scroll-lock with scrollbar when body is scrollable
+
+* [#7481](https://github.com/Shopify/polaris/pull/7481) [`4f5f6cf50`](https://github.com/Shopify/polaris/commit/4f5f6cf5014096130d9baf8867110c089850df7b) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed horizontal scroll bug in Scrollable
+
+- [#7471](https://github.com/Shopify/polaris/pull/7471) [`2f16b2310`](https://github.com/Shopify/polaris/commit/2f16b23108d3c89a368f340a8022d121a7020ceb) Thanks [@kyledurand](https://github.com/kyledurand)! - Added viewport addon to storybook and matched values to our breakpoints
+
+* [#7433](https://github.com/Shopify/polaris/pull/7433) [`90487fd70`](https://github.com/Shopify/polaris/commit/90487fd7010966df8af768e6b1885dd00f630c2d) Thanks [@kellymiller-shop](https://github.com/kellymiller-shop)! - fixed heading offset on IndexTable
+
+- [#7453](https://github.com/Shopify/polaris/pull/7453) [`3191d13c0`](https://github.com/Shopify/polaris/commit/3191d13c09aa5136aaa56f574b884dc80e2dd3c9) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Fixed IndexTable not rendering bulk actions on resize
+
+* [#7395](https://github.com/Shopify/polaris/pull/7395) [`89fea23f7`](https://github.com/Shopify/polaris/commit/89fea23f79eca98f0662bcbc7d839db085cca9b5) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Fixed scrolling performance for IndexTable on safari
+
+- [#7442](https://github.com/Shopify/polaris/pull/7442) [`77057d5b6`](https://github.com/Shopify/polaris/commit/77057d5b682b6a5e30d13ebed67ceddecd5dde44) Thanks [@kyledurand](https://github.com/kyledurand)! - Fix SkeletonPage actions layout
+
+## 10.8.0
+
+### Minor Changes
+
+- [#7364](https://github.com/Shopify/polaris/pull/7364) [`e4b2c36d8`](https://github.com/Shopify/polaris/commit/e4b2c36d8ea8990c2f7e7229ad2529cc0391cf82) Thanks [@Bringer128](https://github.com/Bringer128)! - Deprecated Collapsible preventMeasuringOnChildrenUpdate.
+  Fixed bug where Collapsible would get stuck in animating state when duration is 0.
+  Add support for intentionally disabling the transition in Collapsible.
+
+### Patch Changes
+
+- [#7363](https://github.com/Shopify/polaris/pull/7363) [`8a6c323e2`](https://github.com/Shopify/polaris/commit/8a6c323e2965e4db82fe5e7a398d771f9f126a0e) Thanks [@aveline](https://github.com/aveline)! - Added `id` prop to `Text` and `Box`
+
+* [#7348](https://github.com/Shopify/polaris/pull/7348) [`ea2a45bbb`](https://github.com/Shopify/polaris/commit/ea2a45bbb9d706fc44100366c7e389f2d25abcf4) Thanks [@aveline](https://github.com/aveline)! - Added `setMediaWidth` breakpoints test utility
+
+- [#7388](https://github.com/Shopify/polaris/pull/7388) [`5bc885765`](https://github.com/Shopify/polaris/commit/5bc8857654475fe0006520d1d448170f7a51976b) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a re-render bug with Page Actions
+
+- Updated dependencies [[`c3f427c17`](https://github.com/Shopify/polaris/commit/c3f427c17d268f406618aaddb684ba12c3fa15d1)]:
+  - @shopify/polaris-tokens@6.2.1
+
+## 10.7.0
+
+### Minor Changes
+
+- [#6743](https://github.com/Shopify/polaris/pull/6743) [`8d440aa6b`](https://github.com/Shopify/polaris/commit/8d440aa6b93f8f4c957181b6167a79d6c6beea2d) Thanks [@ryanwilsonperkin](https://github.com/ryanwilsonperkin)! - Add support for React 18
+
+* [#7359](https://github.com/Shopify/polaris/pull/7359) [`6be4436d0`](https://github.com/Shopify/polaris/commit/6be4436d0fa2e37a0e93aad99a436d286f976051) Thanks [@clarkjennings](https://github.com/clarkjennings)! - - Updated font size for square `Avatar` with 3-letter initials
+
+## 10.6.0
+
+### Minor Changes
+
+- [#7360](https://github.com/Shopify/polaris/pull/7360) [`f7140123d`](https://github.com/Shopify/polaris/commit/f7140123dce74be7d79b2ae57bbfda2f96363980) Thanks [@mrcthms](https://github.com/mrcthms)! - Update `IndexTable` in sortable mode to fix visual bugs and include label Tooltips
+
+### Patch Changes
+
+- [#7361](https://github.com/Shopify/polaris/pull/7361) [`b1b576403`](https://github.com/Shopify/polaris/commit/b1b5764035c6f138e24ad42c9c033c7ca7369a93) Thanks [@kyledurand](https://github.com/kyledurand)! - Use state callback in page actions
+
+* [#7319](https://github.com/Shopify/polaris/pull/7319) [`4b95fdc64`](https://github.com/Shopify/polaris/commit/4b95fdc64b4d30a39333e09623d347735636e771) Thanks [@qt314](https://github.com/qt314)! - Update the `VideoThumbnail` play button user experience
+
+## 10.5.0
+
+### Minor Changes
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha `Inline` component
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `AlphaStack` component
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `Columns` component
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `Box` component
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `AlphaCard` component
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added `fullWidth` prop to `AlphaStack` and updated styleguide docs
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Added alpha `ContentBlock` component
+
+### Patch Changes
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Updated `AlphaCard` border radius to a boolean
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `Columns` spacing
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `background` prop on `AlphaCard` for consistency
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Rename `Tiles` component
+
+- [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `AlphaCard` `shadow` prop
+
+* [#7056](https://github.com/Shopify/polaris/pull/7056) [`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2) Thanks [@laurkim](https://github.com/laurkim)! - Refactored token types in primitive Layout components
+  Exposed `DepthShadowAlias` type
+
+- [#7291](https://github.com/Shopify/polaris/pull/7291) [`3941f5281`](https://github.com/Shopify/polaris/commit/3941f5281f8bf41ff09c3e6e0dedf49eb219310f) Thanks [@atesgoral](https://github.com/atesgoral)! - Improve default style class selection of `Avatar` by using the entire name instead of just the first letter
+
+* [#7332](https://github.com/Shopify/polaris/pull/7332) [`2ee5c5d74`](https://github.com/Shopify/polaris/commit/2ee5c5d741be739b5f00cda626852c3922aa07ff) Thanks [@mattkubej](https://github.com/mattkubej)! - `PopoverOverlay` closes focused `Popover` when pressing `Escape`
+
+* Updated dependencies [[`0be40aa94`](https://github.com/Shopify/polaris/commit/0be40aa94be8c95f96f0835b4df7f91f6da0b5c2)]:
+  - @shopify/polaris-tokens@6.2.0
+
+## 10.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`a7d9cad7a`](https://github.com/Shopify/polaris/commit/a7d9cad7aa24ea251e42be919cbfcae16676587f)]:
+  - @shopify/polaris-icons@6.4.0
+
+## 10.4.0
+
+### Minor Changes
+
+- [#7282](https://github.com/Shopify/polaris/pull/7282) [`b34ac1859`](https://github.com/Shopify/polaris/commit/b34ac185973cae94f8e68dc2fc621e3e4679dbaa) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Added `onClose` and `onOpen` callbacks to `Tooltip`
+
+### Patch Changes
+
+- [#7239](https://github.com/Shopify/polaris/pull/7239) [`8626d6a1b`](https://github.com/Shopify/polaris/commit/8626d6a1b8a2ab50e6aa6074037144d11819734b) Thanks [@BPScott](https://github.com/BPScott)! - Increase `$p-breakpoint-*-{down,only}` breakpoint max-width values by 0.01px so that they are representable in fewer digits of precision when expressed as `em`s. This ensures they are representable without rounding when using `node-sass`'s default precision. E.g. `$p-breakpoints-md-down`changes from `max-width: 47.996875em` to `max-width: 47.9975em`.
+
+* [#7122](https://github.com/Shopify/polaris/pull/7122) [`9b67d1533`](https://github.com/Shopify/polaris/commit/9b67d15332b1f45faa94f9d309ed6fd46f4419a1) Thanks [@sylvhama](https://github.com/sylvhama)! - Refactor IndexTable heading props to allow ReactNode as a title
+
+* Updated dependencies [[`3fd9f6415`](https://github.com/Shopify/polaris/commit/3fd9f6415c0d7e3721eb7462c6777d4816437345), [`8626d6a1b`](https://github.com/Shopify/polaris/commit/8626d6a1b8a2ab50e6aa6074037144d11819734b)]:
+  - @shopify/polaris-tokens@6.1.0
+
 ## 10.3.3
 
 ### Patch Changes

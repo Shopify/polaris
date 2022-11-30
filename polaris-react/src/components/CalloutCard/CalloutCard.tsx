@@ -7,7 +7,7 @@ import {Card} from '../Card';
 import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
-import {Heading} from '../Heading';
+import {Text} from '../Text';
 import {Image} from '../Image';
 
 import styles from './CalloutCard.scss';
@@ -16,7 +16,7 @@ export interface CalloutCardProps {
   /** The content to display inside the callout card. */
   children?: React.ReactNode;
   /** The title of the card */
-  title: string;
+  title: React.ReactNode;
   /** URL to the card illustration */
   illustration: string;
   /** Primary action for the card */
@@ -78,7 +78,9 @@ export function CalloutCard({
           <div className={styles.CalloutCard}>
             <div className={styles.Content}>
               <div className={styles.Title}>
-                <Heading>{title}</Heading>
+                <Text variant="headingMd" as="h2">
+                  {title}
+                </Text>
               </div>
               <TextContainer>{children}</TextContainer>
               <div className={styles.Buttons}>{buttonMarkup}</div>

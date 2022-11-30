@@ -6,7 +6,6 @@ import iconMetadata from '@shopify/polaris-icons/metadata';
 import type {Icon as IconType} from '@shopify/polaris-icons/metadata';
 import {useMedia} from '../../utils/hooks';
 import styles from './IconsPage.module.scss';
-import Container from '../Container';
 import IconGrid from '../IconGrid';
 import SearchField from '../SearchField';
 import {SearchMajor} from '@shopify/polaris-icons';
@@ -14,6 +13,7 @@ import Icon from '../Icon';
 import IconDetails from '../IconDetails';
 import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
+import Page from '../Page';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
@@ -65,7 +65,7 @@ function scrollToActiveIcon(activeIcon: string): void {
 
 function IconsPage() {
   const router = useRouter();
-  const useModal = useMedia('screen and (max-width: 850px)');
+  const useModal = useMedia('screen and (max-width: 1400px)');
   const [searchText, setSearchText] = useState('');
   const [minorIcons, setMinorIcons] = useState<IconType[]>([]);
   const [majorIcons, setMajorIcons] = useState<IconType[]>([]);
@@ -109,10 +109,8 @@ function IconsPage() {
   )}`;
 
   return (
-    <Container className={styles.IconsPage}>
+    <Page title="Icons" showTOC={false}>
       <PageMeta title={pageTitle} />
-
-      <h1>Icons</h1>
 
       <div className={className(!useModal && styles.PageLayout)}>
         <div className={styles.IconGrids}>
@@ -179,7 +177,7 @@ function IconsPage() {
           />
         )}
       </div>
-    </Container>
+    </Page>
   );
 }
 

@@ -9,7 +9,37 @@ export default {
 export function Default() {
   return (
     <Card title="Terms of service" sectioned>
-      <Scrollable shadow style={{height: '100px'}} focusable>
+      <Scrollable shadow style={{height: '200px'}} focusable>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
         <p>
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
@@ -30,10 +60,104 @@ export function Default() {
   );
 }
 
-export function ToChildComponent() {
+export function WithHorizonalScrollPrevention() {
+  return (
+    <Scrollable
+      shadow
+      style={{height: '100px', width: '200px'}}
+      horizontal={false}
+    >
+      <div>
+        <p>Last updated on: September 6, 2022</p>
+
+        <p>
+          Welcome to Shopify! By signing up for a Shopify Account (as defined in
+          Section 1) or by using any Shopify Services (as defined below), you
+          are agreeing to be bound by the following terms and conditions (the “
+          <strong>Terms of Service</strong>”).
+        </p>
+
+        <p>
+          As used in these Terms of Service, “<strong>we</strong>”, “
+          <strong>us</strong>”, “<strong>our</strong>” and “
+          <strong>Shopify</strong>” means the applicable Shopify Contracting
+          Party (as defined in Section 13 below), and “<strong>you</strong>”
+          means the Shopify User (if registering for or using a Shopify Service
+          as an individual), or the business employing the Shopify User (if
+          registering for or using a Shopify Service as a business) and any of
+          its affiliates.
+        </p>
+
+        <p>
+          Shopify provides a complete commerce platform that enables merchants
+          to unify their commerce activities. Among other features, this
+          platform includes a range of tools for merchants to build and
+          customize online stores, sell in multiple places (including web,
+          mobile, social media, online marketplaces and other online locations
+          (“<strong>Online Services</strong>”) and in person (“
+          <strong>POS Services</strong>”)), manage products, inventory,
+          payments, fulfillment, shipping, business operations, marketing and
+          advertising, and engage with existing and potential customers. Any
+          such service or services offered by Shopify are referred to in these
+          Terms of Services as the “<strong>Service(s)</strong>”. Any new
+          features or tools which are added to the current Services will also be
+          subject to the Terms of Service. You can review the current version of
+          the Terms of Service at any time at
+          <a href="https://www.shopify.com/legal/terms">
+            https://www.shopify.com/legal/terms
+          </a>
+          .
+        </p>
+
+        <p>
+          You must read, agree with and accept all of the terms and conditions
+          contained or expressly referenced in these Terms of Service, including
+          Shopify’s
+          <a href="https://www.shopify.com/legal/aup">Acceptable Use Policy</a>
+          (“<strong>AUP</strong>”) and
+          <a href="https://www.shopify.com/legal/privacy">Privacy Policy</a>,
+          and, if applicable, the
+          <a href="https://www.shopify.com/legal/eu-terms">
+            Supplementary Terms of Service for E.U. Merchants
+          </a>
+          (“<strong>EU Terms</strong>”), the Shopify
+          <a href="https://www.shopify.com/legal/api-terms">
+            API License and Terms of Use
+          </a>
+          (“<strong>API Terms</strong>”) and the Shopify
+          <a href="https://www.shopify.com/legal/dpa">
+            Data Processing Addendum
+          </a>
+          (“<strong>DPA</strong>”) before you may sign up for a Shopify Account
+          or use any Shopify Service. Additionally, if you offer goods or
+          services in relation to COVID-19, you must read, acknowledge and agree
+          to the
+          <a href="/legal/rules-of-engagement-covid19">
+            Rules of Engagement for Sale of COVID-19 Related Products
+          </a>
+          .
+        </p>
+
+        <p>
+          <strong>
+            Everyday language summaries are provided for convenience only and
+            appear in bold near each section, but these summaries are not
+            legally binding. Please read the Terms of Service, including any
+            document referred to in these Terms of Service, for the complete
+            picture of your legal requirements. By using Shopify or any Shopify
+            services, you are agreeing to these terms. Be sure to occasionally
+            check back for updates.
+          </strong>
+        </p>
+      </div>
+    </Scrollable>
+  );
+}
+
+export function ScrollToChildComponent() {
   return (
     <Card title="Terms of service" sectioned>
-      <Scrollable shadow style={{height: '100px'}}>
+      <Scrollable shadow style={{height: '200px'}}>
         <ol>
           <li>Account Terms</li>
         </ol>
@@ -82,9 +206,9 @@ export function ToChildComponent() {
         <ol>
           <li>Account Activation</li>
         </ol>
-        <Scrollable.ScrollTo>
-          <p>2.1 Shopify Account</p>
-        </Scrollable.ScrollTo>
+
+        <Scrollable.ScrollTo />
+        <strong>2.1 Shopify Account</strong>
 
         <p>
           Subject to section 2.1.2, the person signing up for the Service will
@@ -140,7 +264,7 @@ export function ToChildComponent() {
           Apple Pay Platform Web Merchant Terms and Conditions, as they may be
           amended by Apple from time to time. If Apple amends the Apple Pay
           Platform Web Merchant Terms and Conditions, the amended and restated
-          version will be posted here:{' '}
+          version will be posted here:
           <a href="https://www.shopify.com/legal/apple-pay">
             https://www.shopify.com/legal/apple-pay
           </a>
@@ -175,7 +299,7 @@ export function ToChildComponent() {
           the Google Payment API Terms of Service, as they may be amended by
           Google from time to time. If Google amends the Google Payment API
           Terms of Service, the amended and restated version will be posted
-          here:{' '}
+          here:
           <a href="https://payments.developers.google.com/terms/sellertos">
             https://payments.developers.google.com/terms/sellertos
           </a>
@@ -243,10 +367,10 @@ export function ToChildComponent() {
         <p>
           You acknowledge and agree that Shopify may amend these Terms of
           Service at any time by posting the relevant amended and restated Terms
-          of Service on Shopify’s website, available at{' '}
+          of Service on Shopify’s website, available at
           <a href="https://www.shopify.com/legal/terms">
             https://www.shopify.com/legal/terms
-          </a>{' '}
+          </a>
           and such amendments to the Terms of Service are effective as of the
           date of posting. Your continued use of the Services after the amended
           Terms of Service are posted to Shopify’s website constitutes your
@@ -273,7 +397,7 @@ export function ToChildComponent() {
           trademarks and/or variations and misspellings thereof.
         </p>
         <p>
-          Questions about the Terms of Service should be sent to{' '}
+          Questions about the Terms of Service should be sent to
           <a href="mailto:support@shopify.com">support@shopify.com</a>.
         </p>
         <p>
@@ -287,7 +411,7 @@ export function ToChildComponent() {
         <p>
           You acknowledge and agree that your use of the Service, including
           information transmitted to or stored by Shopify, is governed by its
-          privacy policy at{' '}
+          privacy policy at
           <a href="https://www.shopify.com/legal/privacy">
             https://www.shopify.com/legal/privacy
           </a>
@@ -297,10 +421,10 @@ export function ToChildComponent() {
           To the extent of any inconsistencies or conflicts between these
           English Terms of Service and Shopify’s Terms of Service available in
           another language, the most current English version of the Terms of
-          Service at{' '}
+          Service at
           <a href="https://www.shopify.com/legal/terms">
             https://www.shopify.com/legal/terms
-          </a>{' '}
+          </a>
           will prevail.
         </p>
         <p>Which means</p>
@@ -317,6 +441,118 @@ export function ToChildComponent() {
         <p>
           Your Materials may be transferred unencrypted and may be altered, but
           credit card information is always encrypted.
+        </p>
+      </Scrollable>
+    </Card>
+  );
+}
+
+export function WithScrollHint() {
+  return (
+    <Card title="Terms of service" sectioned>
+      <Scrollable hint shadow style={{height: '200px'}} focusable>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
+      </Scrollable>
+    </Card>
+  );
+}
+
+export function OnScrolledToBottom() {
+  return (
+    <Card title="Terms of service" sectioned>
+      <Scrollable
+        focusable
+        style={{height: '200px'}}
+        onScrolledToBottom={() => console.log('scrolled to bottom')}
+      >
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
+        </p>
+        <p>
+          By signing up for the Shopify service (“Service”) or any of the
+          services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
+          the following terms and conditions (“Terms of Service”). The Services
+          offered by Shopify under the Terms of Service include various products
+          and services to help you create and manage a retail store, whether an
+          online store (“Online Services”), a physical retail store (“POS
+          Services”), or both. Any new features or tools which are added to the
+          current Service shall be also subject to the Terms of Service. You can
+          review the current version of the Terms of Service at any time at
+          https://www.shopify.com/legal/terms. Shopify reserves the right to
+          update and change the Terms of Service by posting updates and changes
+          to the Shopify website. You are advised to check the Terms of Service
+          from time to time for any updates or changes that may impact you.
         </p>
       </Scrollable>
     </Card>

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonFrom} from '../../../Button';
-import {TextStyle} from '../../../TextStyle';
+import {Text} from '../../../Text';
 import {Tooltip} from '../../../Tooltip';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useI18n} from '../../../../utilities/i18n';
@@ -165,7 +165,9 @@ export function Header({
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <TextStyle variation="subdued">{additionalMetadata}</TextStyle>
+      <Text variant="bodyMd" color="subdued" as="span">
+        {additionalMetadata}
+      </Text>
     </div>
   ) : null;
 
@@ -233,7 +235,7 @@ function PrimaryActionMarkup({
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
 
-  let actionMarkup = primaryAction;
+  let actionMarkup: React.ReactNode;
   if (isInterface(primaryAction)) {
     const {primary: isPrimary, helpText} = primaryAction;
     const primary = isPrimary === undefined ? true : isPrimary;
@@ -249,6 +251,8 @@ function PrimaryActionMarkup({
     ) : (
       content
     );
+  } else {
+    actionMarkup = primaryAction;
   }
 
   return <div className={styles.PrimaryActionWrapper}>{actionMarkup}</div>;

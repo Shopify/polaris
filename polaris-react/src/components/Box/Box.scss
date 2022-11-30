@@ -1,0 +1,122 @@
+@import '../../styles/common';
+
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  outline: none;
+  padding-inline-start: 0;
+}
+
+.Box {
+  @include responsive-props('box', 'padding', 'padding');
+  @include responsive-props(
+    'box',
+    'padding-block-end',
+    'padding-block-end',
+    'padding'
+  );
+  @include responsive-props(
+    'box',
+    'padding-block-start',
+    'padding-block-start',
+    'padding'
+  );
+  @include responsive-props(
+    'box',
+    'padding-inline-start',
+    'padding-inline-start',
+    'padding'
+  );
+  @include responsive-props(
+    'box',
+    'padding-inline-end',
+    'padding-inline-end',
+    'padding'
+  );
+
+  --pc-box-shadow: initial;
+  --pc-box-background: initial;
+  --pc-box-border-radius: initial;
+  --pc-box-border-radius-end-start: initial;
+  --pc-box-border-radius-end-end: initial;
+  --pc-box-border-radius-start-start: initial;
+  --pc-box-border-radius-start-end: initial;
+  --pc-box-border: initial;
+  --pc-box-border-block-end: initial;
+  --pc-box-border-inline-start: initial;
+  --pc-box-border-inline-end: initial;
+  --pc-box-border-block-start: initial;
+  --pc-box-color: initial;
+  --pc-box-min-height: initial;
+  --pc-box-min-width: initial;
+  --pc-box-max-width: initial;
+  --pc-box-overflow-x: initial;
+  --pc-box-overflow-y: initial;
+  --pc-box-padding: initial;
+  --pc-box-padding-block-end: initial;
+  --pc-box-padding-inline-start: initial;
+  --pc-box-padding-inline-end: initial;
+  --pc-box-padding-block-start: initial;
+  --pc-box-width: initial;
+  --pc-box-border-width: var(--p-border-width-1);
+  --pc-box-inset-block-start: initial;
+  --pc-box-inset-block-end: initial;
+  --pc-box-inset-inline-start: initial;
+  --pc-box-inset-inline-end: initial;
+  inset-block-start: var(--pc-box-inset-block-start);
+  inset-block-end: var(--pc-box-inset-block-end);
+  inset-inline-start: var(--pc-box-inset-inline-start);
+  inset-inline-end: var(--pc-box-inset-inline-end);
+  background-color: var(--pc-box-background);
+  box-shadow: var(--pc-box-shadow);
+  border-radius: var(--pc-box-border-radius);
+  border-end-start-radius: var(
+    --pc-box-border-radius-end-start,
+    var(--pc-box-border-radius)
+  );
+  border-end-end-radius: var(
+    --pc-box-border-radius-end-end,
+    var(--pc-box-border-radius)
+  );
+  border-start-start-radius: var(
+    --pc-box-border-radius-start-start,
+    var(--pc-box-border-radius)
+  );
+  border-start-end-radius: var(
+    --pc-box-border-radius-start-end,
+    var(--pc-box-border-radius)
+  );
+  border-block-end: var(--pc-box-border-block-end, var(--pc-box-border));
+  border-inline-start: var(--pc-box-border-inline-start, var(--pc-box-border));
+  border-inline-end: var(--pc-box-border-inline-end, var(--pc-box-border));
+  border-block-start: var(--pc-box-border-block-start, var(--pc-box-border));
+  border-block-start-width: var(
+    --pc-box-border-block-start-width,
+    var(--pc-box-border-width)
+  );
+  border-block-end-width: var(
+    --pc-box-border-block-end-width,
+    var(--pc-box-border-width)
+  );
+  border-inline-start-width: var(
+    --pc-box-border-inline-start-width,
+    var(--pc-box-border-width)
+  );
+  border-inline-end-width: var(
+    --pc-box-border-inline-end-width,
+    var(--pc-box-border-width)
+  );
+  color: var(--pc-box-color);
+  min-height: var(--pc-box-min-height);
+  min-width: var(--pc-box-min-width);
+  max-width: var(--pc-box-max-width);
+  overflow-x: var(--pc-box-overflow-x);
+  overflow-y: var(--pc-box-overflow-y);
+  width: var(--pc-box-width);
+  -webkit-overflow-scrolling: touch;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
+}

@@ -2,7 +2,7 @@
 
 .IndexTable {
   --pc-index-table-translate-offset: 35px;
-  --pc-index-table-table-header-offset: 52px;
+  --pc-index-table-table-header-offset: 35px;
   --pc-index-table-cell: 1;
   --pc-index-table-sticky-cell: 31;
   --pc-index-table-scroll-bar: 35;
@@ -120,7 +120,7 @@ $loading-panel-height: 53px;
 .TableRow {
   background-color: var(--p-surface);
   cursor: pointer;
-  filter: drop-shadow(0 -1px 0 var(--p-divider));
+  border-top: var(--p-border-width-1) solid var(--p-divider);
 
   &.TableRow-unclickable {
     cursor: auto;
@@ -213,11 +213,12 @@ $loading-panel-height: 53px;
 }
 
 .TableHeadingSortButton {
+  position: static;
   background: none;
   padding: 0;
   border: 0;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--p-font-weight-medium);
@@ -235,11 +236,21 @@ $loading-panel-height: 53px;
 .TableHeadingSortIcon {
   order: 1;
   opacity: 0;
-  transition: var(--p-ease) var(--p-duration-150) opacity;
+  height: var(--p-space-5);
+  width: var(--p-space-5);
+  transition: opacity var(--p-duration-200) var(--p-ease-in)
+    var(--p-duration-100);
 }
 
 .TableHeadingSortIcon-visible {
   opacity: 1;
+}
+
+.TableHeadingSortSvg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .ColumnHeaderCheckboxWrapper {
@@ -387,6 +398,12 @@ $loading-panel-height: 53px;
     .TableCell:last-child {
       background-color: var(--p-surface-selected);
     }
+  }
+}
+
+.Table-sortable {
+  .TableHeading {
+    background-color: var(--p-surface-subdued);
   }
 }
 

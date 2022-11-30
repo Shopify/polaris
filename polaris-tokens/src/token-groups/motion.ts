@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const motion = {
   'duration-0': {
     value: '0ms',
@@ -65,3 +67,30 @@ export const motion = {
     value: '{ to { transform: rotate(1turn) } }',
   },
 };
+
+export type MotionTokenGroup = TokenGroup<typeof motion>;
+export type MotionTokenName = keyof MotionTokenGroup;
+
+export const motionDurationScale = [
+  '0',
+  '50',
+  '100',
+  '150',
+  '200',
+  '250',
+  '300',
+  '350',
+  '400',
+  '450',
+  '500',
+  '5000',
+] as const;
+export type MotionDurationScale = typeof motionDurationScale[number];
+
+export const motionKeyframesAlias = [
+  'bounce',
+  'fade-in',
+  'pulse',
+  'spin',
+] as const;
+export type MotionKeyframesAlias = typeof motionKeyframesAlias[number];

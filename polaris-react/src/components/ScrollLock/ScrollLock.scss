@@ -3,6 +3,10 @@
   margin: 0;
 
   // stylelint-disable selector-max-attribute
+  &[data-lock-scrolling-hidden] {
+    overflow-y: hidden;
+  }
+
   [data-lock-scrolling-wrapper] {
     overflow: hidden;
     height: 100%;

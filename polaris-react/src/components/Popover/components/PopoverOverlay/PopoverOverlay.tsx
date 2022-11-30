@@ -57,6 +57,7 @@ export interface PopoverOverlayProps {
   onClose(source: PopoverCloseSource): void;
   autofocusTarget?: PopoverAutofocusTarget;
   preventCloseOnChildOverlayClick?: boolean;
+  captureOverscroll?: boolean;
 }
 
 interface State {
@@ -65,6 +66,7 @@ interface State {
 
 export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   static contextType = PortalsManagerContext;
+  context!: React.ContextType<typeof PortalsManagerContext>;
 
   state: State = {
     transitionStatus: this.props.active
@@ -221,6 +223,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       fluidContent,
       hideOnPrint,
       autofocusTarget,
+      captureOverscroll,
     } = this.props;
 
     const className = classNames(
@@ -247,7 +250,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         style={contentStyles}
         ref={this.contentNode}
       >
-        {renderPopoverContent(children, {sectioned})}
+        {renderPopoverContent(children, {captureOverscroll, sectioned})}
       </div>
     );
 
@@ -281,7 +284,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     } = this;
     const composedPath = event.composedPath();
     const wasDescendant = preventCloseOnChildOverlayClick
-      ? wasPolarisPortalDescendant(composedPath, this.context.container)
+      ? wasPolarisPortalDescendant(composedPath, this.context!.container)
       : wasContentNodeDescendant(composedPath, contentNode);
     const isActivatorDescendant = nodeContainsDescendant(activator, target);
     if (
@@ -299,8 +302,19 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
     this.props.onClose(PopoverCloseSource.ScrollOut);
   };
 
-  private handleEscape = () => {
-    this.props.onClose(PopoverCloseSource.EscapeKeypress);
+  private handleEscape = (event: Event) => {
+    const target = event.target as HTMLElement;
+    const {
+      contentNode,
+      props: {activator},
+    } = this;
+    const composedPath = event.composedPath();
+    const wasDescendant = wasContentNodeDescendant(composedPath, contentNode);
+    const isActivatorDescendant = nodeContainsDescendant(activator, target);
+
+    if (wasDescendant || isActivatorDescendant) {
+      this.props.onClose(PopoverCloseSource.EscapeKeypress);
+    }
   };
 
   private handleFocusFirstItem = () => {
@@ -312,10 +326,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
   };
 }
 
-function renderPopoverContent(
-  children: React.ReactNode,
-  props?: Partial<PaneProps>,
-) {
+function renderPopoverContent(children: React.ReactNode, props: PaneProps) {
   const childrenArray = Children.toArray(children);
   if (isElementOfType(childrenArray[0], Pane)) {
     return childrenArray;

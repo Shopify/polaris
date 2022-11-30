@@ -6,14 +6,14 @@
   cursor: text;
   background: var(--surface);
   color: var(--text-strong);
-  box-shadow: var(--card-shadow);
+  border: var(--border);
 }
 
 .TopBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--border-color-light);
+  border-bottom: var(--border);
 }
 
 .Tabs {

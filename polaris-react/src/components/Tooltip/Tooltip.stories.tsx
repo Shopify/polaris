@@ -1,12 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  Button,
-  ButtonGroup,
-  TextField,
-  TextStyle,
-  Tooltip,
-} from '@shopify/polaris';
+import {Button, ButtonGroup, TextField, Text, Tooltip} from '@shopify/polaris';
 
 export default {
   component: Tooltip,
@@ -16,7 +10,9 @@ export function Default() {
   return (
     <div style={{padding: '75px 0'}}>
       <Tooltip active content="This order has shipping labels.">
-        <TextStyle variation="strong">Order #1001</TextStyle>
+        <Text variant="bodyMd" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
       </Tooltip>
     </div>
   );

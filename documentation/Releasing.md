@@ -22,15 +22,7 @@ To perform a release:
 1. Add a comment in your feature branch PR with the slash command "/snapit"
 2. This will trigger the `snapit.yml` workflow to create a new snapshot release
 
-> Note: Your feature branch PR should have **at least one** changeset. The snapshot release will only release packages with a pending changeset. More info on [adding a changeset](https://github.com/Shopify/polaris/blob/.github/CONTRIBUTING.md#adding-a-changeset).
-
-### [polaris-for-figma](/polaris-for-figma)
-
-You will need to have admin privileges in Figma to release the plugin.
-
-- Run the build step
-- In Figma navigate to the plugins menu
-- Click "Publish new release"
+> Note: Your feature branch PR should have **at least one** changeset. The snapshot release will only release packages with a pending changeset. More info on [adding a changeset](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#adding-a-changeset).
 
 ### [polaris-for-vscode](/polaris-for-vscode)
 

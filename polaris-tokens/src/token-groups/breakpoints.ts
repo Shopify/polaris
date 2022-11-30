@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const breakpoints = {
   'breakpoints-xs': {
     value: '0px',
@@ -25,3 +27,9 @@ export const breakpoints = {
       'Commonly used for sizing containers (e.g. max-width). See below for media query usage.',
   },
 };
+
+export type BreakpointsTokenGroup = TokenGroup<typeof breakpoints>;
+export type BreakpointsTokenName = keyof BreakpointsTokenGroup;
+
+export const breakpointsAlias = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+export type BreakpointsAlias = typeof breakpointsAlias[number];

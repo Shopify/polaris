@@ -3,6 +3,8 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Header} from '../Header';
 import {Section} from '../../Section';
+import {Box} from '../../../../Box';
+import {Text} from '../../../../Text';
 
 jest.mock('../../Section', () => ({
   ...jest.requireActual('../../Section'),
@@ -23,7 +25,12 @@ describe('Header', () => {
   it('renders string headers with standard styling', () => {
     const header = mountWithApp(<Header>Header</Header>);
 
-    expect(header).toContainReactComponent('div', {className: 'Header'});
+    expect(header).toContainReactComponent(Box);
+    expect(header.find(Box)).toContainReactComponent(Text, {
+      as: 'span',
+      variant: 'headingXs',
+      color: 'subdued',
+    });
   });
 
   it('renders headers without default wrapper when not type string', () => {
@@ -34,7 +41,7 @@ describe('Header', () => {
     );
 
     expect(header).toContainReactComponent('button');
-    expect(header).not.toContainReactComponent('div', {className: 'Header'});
+    expect(header).not.toContainReactComponent(Box);
   });
 
   it('renders an element with id from Section', () => {

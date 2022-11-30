@@ -4,7 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 import {Badge} from '../../../../Badge';
 import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
-import {Subheading} from '../../../../Subheading';
+import {Text} from '../../../../Text';
 import {Section} from '../Section';
 
 describe('<Card.Section />', () => {
@@ -25,10 +25,12 @@ describe('<Card.Section />', () => {
     expect(headerMarkup.find(Badge)).toContainReactText(badgeString);
   });
 
-  it('wraps plain string titles in a <Subheading />', () => {
+  it('wraps plain string titles in a <Text />', () => {
     const titleString = 'Online store';
     const card = mountWithApp(<Section title={titleString} />);
-    expect(card.find(Subheading)).toContainReactText(titleString);
+    expect(
+      card.find(Text, {variant: 'headingSm', as: 'h3'}),
+    ).toContainReactText(titleString);
   });
 
   describe('hideWhenPrinting prop', () => {

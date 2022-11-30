@@ -62,6 +62,7 @@ export interface ItemProps extends ItemURLDetails {
   onToggleExpandedState?(): void;
   expanded?: boolean;
   shouldResizeIcon?: boolean;
+  truncateText?: boolean;
 }
 
 enum MatchState {
@@ -92,6 +93,7 @@ export function Item({
   onToggleExpandedState,
   expanded,
   shouldResizeIcon,
+  truncateText,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -106,7 +108,7 @@ export function Item({
   }, [expanded, isNavigationCollapsed, onToggleExpandedState]);
 
   const handleKeyUp = useCallback(
-    (event) => {
+    (event: React.KeyboardEvent) => {
       if (event.keyCode === Key.Tab) {
         !keyFocused && setKeyFocused(true);
       }
@@ -144,16 +146,12 @@ export function Item({
   let badgeMarkup: ReactNode = null;
   if (isNew) {
     badgeMarkup = (
-      <Badge status="new" size="small">
+      <Badge status="new">
         {i18n.translate('Polaris.Badge.STATUS_LABELS.new')}
       </Badge>
     );
   } else if (typeof badge === 'string') {
-    badgeMarkup = (
-      <Badge status="new" size="small">
-        {badge}
-      </Badge>
-    );
+    badgeMarkup = <Badge status="new">{badge}</Badge>;
   } else {
     badgeMarkup = badge;
   }
@@ -166,7 +164,12 @@ export function Item({
   const itemContentMarkup = (
     <>
       {iconMarkup}
-      <span className={styles.Text}>
+      <span
+        className={classNames(
+          styles.Text,
+          truncateText && styles['Text-truncated'],
+        )}
+      >
         {label}
         {indicatorMarkup}
       </span>
@@ -295,6 +298,7 @@ export function Item({
                 label={label}
                 matches={item === longestMatch}
                 onClick={onClick}
+                truncateText={truncateText}
               />
             );
           })}

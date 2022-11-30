@@ -24,6 +24,15 @@ export function hasJSXAttribute(
   return getJSXAttributes(j, element, attributeName).length > 0;
 }
 
+export function hasJSXSpreadAttribute(
+  j: core.JSCodeshift,
+  element: ASTPath<any>,
+) {
+  return (
+    j(element).find(j.JSXOpeningElement).find(j.JSXSpreadAttribute).length > 0
+  );
+}
+
 export function removeJSXAttributes(
   j: core.JSCodeshift,
   element: ASTPath<any>,
@@ -102,19 +111,45 @@ export function replaceJSXElement(
 }
 
 export function renameProps(
-  j: core.JSCodeshift,
+  _j: core.JSCodeshift,
   source: Collection<any>,
   componentName: string,
   props: {[from: string]: string},
 ) {
-  return source
-    .findJSXElements(componentName)
-    .find(j.JSXOpeningElement)
-    .find(j.JSXAttribute)
-    .forEach(({node}) => {
-      const propName = node.name.name.toString();
-      if (Object.keys(props).includes(propName)) {
-        node.name.name = props[propName];
+  const fromProps = Object.keys(props);
+  const isFromProp = (prop: unknown): prop is keyof typeof props =>
+    fromProps.includes(prop as string);
+
+  source.findJSXElements(componentName)?.forEach((path) => {
+    path.node.openingElement.attributes?.forEach((node) => {
+      if (node.type === 'JSXAttribute' && isFromProp(node.name.name)) {
+        node.name.name = props[node.name.name];
       }
     });
+  });
+
+  return source;
+}
+
+export function insertJSXComment(
+  j: core.JSCodeshift,
+  element: ASTPath<any>,
+  comment: string,
+  position: 'before' | 'after' = 'before',
+) {
+  const commentContent = j.jsxEmptyExpression();
+  commentContent.comments = [j.commentBlock(` ${comment} `, false, true)];
+
+  const jsxComment = j.jsxExpressionContainer(commentContent);
+  const lineBreak = j.jsxText('\n');
+
+  if (position === 'before') {
+    element.insertBefore(jsxComment);
+    element.insertBefore(lineBreak);
+  }
+
+  if (position === 'after') {
+    element.insertAfter(lineBreak);
+    element.insertAfter(jsxComment);
+  }
 }

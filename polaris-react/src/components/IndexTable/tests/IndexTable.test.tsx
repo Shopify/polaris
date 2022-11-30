@@ -11,7 +11,7 @@ import {Sticky} from '../../Sticky';
 import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
 import type {IndexTableSortDirection} from '../IndexTable';
@@ -19,7 +19,7 @@ import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
-import {Icon} from '../../Icon';
+import {Tooltip} from '../../Tooltip';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -327,7 +327,10 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      expect(index).toContainReactComponent(VisuallyHidden, {children: title});
+      expect(index).toContainReactComponent(Text, {
+        children: title,
+        visuallyHidden: true,
+      });
     });
 
     it('renders a sticky last heading if `lastColumnSticky` prop is true and last heading is not hidden', () => {
@@ -376,13 +379,21 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
-      expect(index).toContainReactComponent(VisuallyHidden, {
+      expect(index).toContainReactComponent(Text, {
         children: title,
       });
     });
   });
 
   describe('BulkActions', () => {
+    const originalInnerWidth = window.innerWidth;
+
+    afterEach(() => {
+      Object.defineProperty(window, 'innerWidth', {
+        value: originalInnerWidth,
+      });
+    });
+
     it('toggles all resources selected when paginatedSelectionAllAction is triggered', () => {
       const onSelectionChangeSpy = jest.fn();
       const index = mountWithApp(
@@ -451,6 +462,65 @@ describe('<IndexTable>', () => {
         SelectionType.Page,
         true,
       );
+    });
+
+    it('passes smallScreen to bulk actions', () => {
+      const promotedActions = [{content: 'PromotedAction'}];
+
+      const indexTable = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={promotedActions}
+        >
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      indexTable.find(BulkActions)!.trigger('onToggleAll');
+
+      expect(indexTable).toContainReactComponent(BulkActions, {
+        smallScreen: expect.any(Boolean),
+      });
+    });
+
+    it('passes an updated smallScreen value to bulk actions after resize', () => {
+      Object.defineProperty(window, 'innerWidth', {
+        value: 1000,
+      });
+
+      const promotedActions = [{content: 'PromotedAction'}];
+
+      const indexTable = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          selectedItemsCount={1}
+          itemCount={2}
+          promotedBulkActions={promotedActions}
+        >
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
+
+      indexTable.find(BulkActions)!.trigger('onToggleAll');
+
+      expect(indexTable).toContainReactComponent(BulkActions, {
+        smallScreen: false,
+      });
+
+      indexTable.act(() => {
+        Object.defineProperty(window, 'innerWidth', {
+          value: 300,
+        });
+        window.dispatchEvent(new Event('resize'));
+      });
+
+      expect(indexTable).toContainReactComponent(BulkActions, {
+        smallScreen: true,
+      });
     });
   });
 
@@ -624,6 +694,10 @@ describe('<IndexTable>', () => {
       defaultSortDirection: 'descending',
       sortColumnIndex: 0,
       onSort: jest.fn(),
+      sortToggleLabels: {
+        0: {ascending: 'A-Z', descending: 'Z-A'},
+        2: {ascending: 'Newest', descending: 'Oldest'},
+      },
     };
 
     describe('sortable', () => {
@@ -675,9 +749,7 @@ describe('<IndexTable>', () => {
               ? SortAscendingMajor
               : SortDescendingMajor;
 
-          expect(index.findAll('th')[1]).toContainReactComponent(Icon, {
-            source,
-          });
+          expect(index.findAll('th')[1]).toContainReactComponent(source);
         },
       );
     });
@@ -699,9 +771,7 @@ describe('<IndexTable>', () => {
               ? SortAscendingMajor
               : SortDescendingMajor;
 
-          expect(index.findAll('th')[3]).toContainReactComponent(Icon, {
-            source,
-          });
+          expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
       );
     });
@@ -720,6 +790,55 @@ describe('<IndexTable>', () => {
         });
 
         expect(onSort).toHaveBeenCalledWith(0, 'descending');
+      });
+    });
+
+    describe('sortToggleLabels', () => {
+      it('renders the toggle label value for the selected index when ascending', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="ascending"
+            sortColumnIndex={0}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll(Tooltip)[0].prop('content')).toBe(
+          defaultSortingProps!.sortToggleLabels![0].ascending,
+        );
+      });
+
+      it('renders the toggle label value for the selected index when descending', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="descending"
+            sortColumnIndex={2}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll(Tooltip)[2].prop('content')).toBe(
+          defaultSortingProps!.sortToggleLabels![2].descending,
+        );
+      });
+
+      it('does not render the toggle label value for the selected index if not sortable', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            sortDirection="descending"
+            sortColumnIndex={1}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+        expect(index.findAll('th')[1]).toContainReactComponent(Tooltip);
+        expect(index.findAll('th')[2]).not.toContainReactComponent(Tooltip);
+        expect(index.findAll('th')[3]).toContainReactComponent(Tooltip);
       });
     });
   });

@@ -1,3 +1,5 @@
+import type {TokenGroup} from '../types';
+
 export const shape = {
   'border-radius-05': {
     value: '2px',
@@ -60,3 +62,23 @@ export const shape = {
     value: 'var(--p-border-width-1) solid var(--p-divider-dark)',
   },
 };
+
+export type ShapeTokenGroup = TokenGroup<typeof shape>;
+export type ShapeTokenName = keyof ShapeTokenGroup;
+
+export const shapeBorderRadiusScale = [
+  '05',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+] as const;
+export type ShapeBorderRadiusScale = typeof shapeBorderRadiusScale[number];
+
+export const shapeBorderRadiusAlias = ['base', 'large', 'half'] as const;
+export type ShapeBorderRadiusAlias = typeof shapeBorderRadiusAlias[number];
+
+export const shapeBorderWidthScale = ['1', '2', '3', '4', '5'] as const;
+export type ShapeBorderWidthScale = typeof shapeBorderWidthScale[number];

@@ -3,7 +3,7 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../Icon';
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 
 describe('<Icon />', () => {
   describe('accessibilityLabel', () => {
@@ -13,8 +13,9 @@ describe('<Icon />', () => {
         <Icon source="placeholder" accessibilityLabel={label} />,
       ).find('span');
 
-      expect(element).toContainReactComponent(VisuallyHidden, {
+      expect(element).toContainReactComponent(Text, {
         children: label,
+        visuallyHidden: true,
       });
     });
   });

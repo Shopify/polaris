@@ -23,7 +23,7 @@ The `package.json` engines. This should match the `.github/workflows/ci.yml` and
 The GitHub actions `.github/workflows/ci.yml` file. This should match the `package.json` and list all supported versions.
 
 ```yml
-node_version: ['14.17.0', '16.13.0']
+node-version: ['14.17.0', '16.13.0']
 ```
 
 The `dev.yml` file which creates a local development environment. This should match the `.nvmrc` file.

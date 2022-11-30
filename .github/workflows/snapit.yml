@@ -39,7 +39,7 @@ jobs:
                 repo: context.repo.repo,
                 pull_number: context.issue.number,
               })
-              
+
               // Pull request from fork
               if (context.payload.repository.full_name !== pullRequest.data.head.repo.full_name) {
                 const errorMessage = '`/snapit` is not supported on pull requests from forked repositories.'
@@ -58,7 +58,7 @@ jobs:
             }
 
       - name: Checkout default branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       # issue_comment requires us to checkout the branch
       # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
@@ -77,8 +77,17 @@ jobs:
             git checkout origin/main -- .changeset
           fi
 
+      - name: Free up space on GitHub image
+        run: |
+          # Based on the official advice:
+          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16.x
 

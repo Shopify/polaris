@@ -9,7 +9,7 @@ import {
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
 import {Scrollable} from '../../Scrollable';
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 import {Listbox, AutoSelection} from '../Listbox';
 import {ListboxContext} from '../../../utilities/listbox';
 
@@ -269,13 +269,17 @@ describe('<Listbox>', () => {
     it('render a visually hidden container', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
-      expect(listbox).toContainReactComponentTimes(VisuallyHidden, 1);
+      expect(listbox).toContainReactComponentTimes(Text, 1, {
+        visuallyHidden: true,
+      });
     });
 
     it('render an aria-live="polite" container', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
-      expect(listbox.find(VisuallyHidden)).toContainReactComponent('div', {
+      expect(
+        listbox.find(Text, {visuallyHidden: true}),
+      ).toContainReactComponent('div', {
         'aria-live': 'polite',
       });
     });
@@ -283,7 +287,7 @@ describe('<Listbox>', () => {
     it('renders an empty loading container by default', () => {
       const listbox = mountWithApp(<Listbox>Child</Listbox>);
 
-      expect(listbox.find(VisuallyHidden)).not.toContainReactText(
+      expect(listbox.find(Text, {visuallyHidden: true})).not.toContainReactText(
         loadingMessage,
       );
     });
@@ -295,7 +299,9 @@ describe('<Listbox>', () => {
         </Listbox>,
       );
 
-      expect(listbox.find(VisuallyHidden)).toContainReactText(loadingMessage);
+      expect(listbox.find(Text, {visuallyHidden: true})).toContainReactText(
+        loadingMessage,
+      );
     });
   });
 

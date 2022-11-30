@@ -2,16 +2,6 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-.IconsPage {
-  padding-top: var(--header-margin);
-  padding-bottom: var(--header-margin);
-
-  h1 {
-    @include heading-1;
-    margin-bottom: 1.5rem;
-  }
-}
-
 .PageLayout {
   display: grid;
   gap: 3rem;
@@ -30,12 +20,16 @@
   margin: auto;
   z-index: 3;
   overflow: auto;
+  z-index: 11;
+  border-radius: var(--border-radius-600);
+  overflow: auto;
 
   @media screen and (max-width: $breakpointMobile) {
     top: auto;
     bottom: 0;
     max-width: 100%;
     max-height: 80vh;
+    border-radius: 0;
   }
 }
 
@@ -46,7 +40,7 @@
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  z-index: 10;
 }
 
 .NoSearchResults {
@@ -76,7 +70,6 @@
 
   p {
     margin-top: 0.5rem;
-    font-size: var(--font-size-100);
     color: var(--text-subdued);
   }
 }
