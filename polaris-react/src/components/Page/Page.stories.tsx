@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Card,
+  Inline,
   Link,
   Page,
   PageActions,
@@ -43,6 +44,7 @@ export function Default() {
       actionGroups={[
         {
           title: 'Promote',
+          accessibilityLabel: 'Action group label',
           actions: [
             {
               content: 'Share on Facebook',
@@ -334,7 +336,7 @@ export function WithCustomPopover() {
   const [popoverPosition, setPopoverPosition] = useState({top: 0, right: 0});
   const {mdUp} = useBreakpoints();
 
-  const activator = <div style={{visibility: 'hidden'}}>I'm a button</div>;
+  const activator = <button aria-hidden style={{visibility: 'hidden'}} />;
 
   const customAboutAction = {
     content: 'About',
@@ -346,7 +348,7 @@ export function WithCustomPopover() {
 
       const {right, top, height} = ref.current.getBoundingClientRect();
       setPopoverPosition({
-        top: top + height,
+        top: Number(top) + Number(height),
         right: window.innerWidth - right,
       });
 
@@ -369,7 +371,7 @@ export function WithCustomPopover() {
       <Popover
         activator={activator}
         active={popoverVisible}
-        preferredAlignment={'right'}
+        preferredAlignment="right"
         onClose={() => setPopoverVisible(false)}
       >
         <Popover.Section>
@@ -385,9 +387,14 @@ export function WithCustomPopover() {
     <div style={{marginBottom: '20px'}}>
       <Bleed horizontal="4" vertical="4">
         <Box padding="4" background="surface">
-          <Text as="h6" variant="headingSm">
-            How to use this feature
-          </Text>
+          <Inline align="space-between">
+            <Text as="h6" variant="headingSm">
+              How to use this feature
+            </Text>
+            <Button onClick={() => setBannerVisible(false)} plain>
+              Close
+            </Button>
+          </Inline>
           <Link>Learn more</Link>
         </Box>
       </Bleed>
