@@ -77,7 +77,7 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="4">
-      <Text as="span" variant="bodyMd" color="subdued">
+      <Text as="span" variant="bodyMd" color="subdued" alignment="center">
         {footerContent}
       </Text>
     </Box>
@@ -113,7 +113,7 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <Box paddingBlockStart="2">
+      <Box>
         <Inline align="center" gap="2">
           {secondaryActionMarkup}
           {primaryActionMarkup}
