@@ -45,7 +45,7 @@ module.exports = stylelint.createPlugin(
             context.fix && !categoryRuleSettings?.[1]?.disableFix,
           categoryMessage:
             !categoryRuleSettings?.[1]?.message &&
-            categoryConfigRules[1]?.message,
+            normalizedCategoryConfigRules?.[1]?.message,
         });
       }
     }
