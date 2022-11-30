@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {ViewMinor} from '@shopify/polaris-icons';
 
 import {Connected} from '../../Connected';
 import {InlineError} from '../../InlineError';
@@ -115,7 +116,9 @@ describe('<TextField />', () => {
         </div>,
       );
 
-      textField.find(Spinner)!.domNode?.dispatchEvent(event);
+      textField.act(() => {
+        textField.find(Spinner)!.domNode?.dispatchEvent(event);
+      });
       expect(onClick).toHaveBeenCalled();
     });
 
@@ -1379,7 +1382,7 @@ describe('<TextField />', () => {
         />,
       );
       expect(textField).toContainReactComponent('button', {
-        className: 'ClearButton',
+        className: 'IconButton',
       });
     });
 
@@ -1396,7 +1399,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).not.toContainReactComponent('button', {
-        className: 'ClearButton',
+        className: 'IconButton',
       });
     });
 
@@ -1415,7 +1418,7 @@ describe('<TextField />', () => {
         />,
       );
 
-      textField.find('button', {className: 'ClearButton'})!.trigger('onClick');
+      textField.find('button', {className: 'IconButton'})!.trigger('onClick');
 
       expect(spy).toHaveBeenCalledWith('MyTextField');
     });
@@ -1433,7 +1436,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).not.toContainReactComponent('button', {
-        className: 'ClearButton',
+        className: 'IconButton',
       });
     });
 
@@ -1449,6 +1452,62 @@ describe('<TextField />', () => {
       );
       expect(textField).toContainReactComponent('div', {
         className: 'Backdrop Backdrop-connectedLeft Backdrop-connectedRight',
+      });
+    });
+  });
+
+  describe('iconButton', () => {
+    it('renders an icon button when true', () => {
+      const textField = mountWithApp(
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          onChange={noop}
+          type="text"
+          value="test value"
+          autoComplete="off"
+          iconButton={{icon: ViewMinor, accessibilityLabel: 'iconButton'}}
+        />,
+      );
+      expect(textField).toContainReactComponent('button', {
+        className: 'IconButton',
+      });
+    });
+
+    it('calls onIconButtonClicked() with an id when the icon button is clicked', () => {
+      const spy = jest.fn();
+      const textField = mountWithApp(
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          type="search"
+          onChange={noop}
+          onIconButtonClick={spy}
+          value="test value"
+          autoComplete="off"
+          iconButton={{icon: ViewMinor, accessibilityLabel: 'iconButton'}}
+        />,
+      );
+
+      textField.find('button', {className: 'IconButton'})!.trigger('onClick');
+
+      expect(spy).toHaveBeenCalledWith('MyTextField');
+    });
+
+    it('does not render an icon button by default', () => {
+      const textField = mountWithApp(
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          onChange={noop}
+          type="text"
+          value="test value"
+          autoComplete="off"
+        />,
+      );
+
+      expect(textField).not.toContainReactComponent('button', {
+        className: 'IconButton',
       });
     });
   });

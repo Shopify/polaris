@@ -11,7 +11,7 @@ import {
   Tag,
   TextField,
 } from '@shopify/polaris';
-import {DeleteMinor} from '@shopify/polaris-icons';
+import {DeleteMinor, ViewMinor, HideMinor} from '@shopify/polaris-icons';
 
 export default {
   component: TextField,
@@ -432,6 +432,35 @@ export function WithClearButton() {
   );
 }
 
+export function WithIconButton() {
+  const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
+  const [showing, setShowing] = useState(false);
+
+  const handleTextFieldChange = useCallback(
+    (value) => setTextFieldValue(value),
+    [],
+  );
+
+  const handleIconButtonClick = useCallback(
+    () => setShowing(!showing),
+    [showing],
+  );
+
+  return (
+    <TextField
+      label="Store name"
+      value={showing ? textFieldValue : '••••••'}
+      onChange={handleTextFieldChange}
+      iconButton={{
+        icon: showing ? HideMinor : ViewMinor,
+        accessibilityLabel: 'PIN',
+      }}
+      onIconButtonClick={handleIconButtonClick}
+      autoComplete="off"
+    />
+  );
+}
+
 export function WithMonospacedFont() {
   const [textFieldValue, setTextFieldValue] = useState('Jaded Pixel');
 
@@ -446,6 +475,7 @@ export function WithMonospacedFont() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       monospaced
+      autoComplete="off"
     />
   );
 }
@@ -464,6 +494,7 @@ export function WithValueSelectedOnFocus() {
       value={textFieldValue}
       onChange={handleTextFieldChange}
       selectTextOnFocus
+      autoComplete="off"
     />
   );
 }
@@ -572,6 +603,7 @@ export function WithInlineSuggestion() {
         value={value}
         onChange={handleChange}
         suggestion={suggestion}
+        autoComplete="off"
       />
     </div>
   );

@@ -90,6 +90,11 @@ interface NonMutuallyExclusiveProps {
   disabled?: boolean;
   /** Show a clear text button in the input */
   clearButton?: boolean;
+  /** Show an icon button within the input */
+  iconButton?: {
+    icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    accessibilityLabel: string;
+  } | null;
   /** Indicates whether or not the entire value should be selected on focus. */
   selectTextOnFocus?: boolean;
   /** An inline autocomplete suggestion containing the input value. The characters that complete the input value are selected for ease of deletion on input change or keypress of Backspace/Delete. The selected substring is visually highlighted with subdued styling. */
@@ -156,6 +161,8 @@ interface NonMutuallyExclusiveProps {
   monospaced?: boolean;
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
+  /** Callback fired when icon button is clicked */
+  onIconButtonClick?(id: string): void;
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
@@ -189,6 +196,7 @@ export function TextField({
   labelHidden,
   disabled,
   clearButton,
+  iconButton,
   readOnly,
   autoFocus,
   focused,
@@ -222,6 +230,7 @@ export function TextField({
   selectTextOnFocus,
   suggestion,
   onClearButtonClick,
+  onIconButtonClick,
   onChange,
   onFocus,
   onBlur,
@@ -333,7 +342,7 @@ export function TextField({
     clearButton && clearButtonVisible ? (
       <button
         type="button"
-        className={styles.ClearButton}
+        className={styles.IconButton}
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
@@ -343,6 +352,20 @@ export function TextField({
         <Icon source={CircleCancelMinor} color="base" />
       </button>
     ) : null;
+
+  const iconButtonMarkup = iconButton ? (
+    <button
+      type="button"
+      className={styles.IconButton}
+      onClick={handleIconButtonPress}
+      disabled={disabled}
+    >
+      <Text variant="bodySm" as="span" visuallyHidden>
+        {iconButton.accessibilityLabel}
+      </Text>
+      <Icon source={iconButton.icon} color="base" />
+    </button>
+  ) : null;
 
   const handleNumberChange = useCallback(
     (steps: number) => {
@@ -567,6 +590,7 @@ export function TextField({
           {suffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
+          {iconButtonMarkup}
           {spinnerMarkup}
           {backdropMarkup}
           {resizer}
@@ -624,6 +648,10 @@ export function TextField({
 
   function handleClearButtonPress() {
     onClearButtonClick && onClearButtonClick(id);
+  }
+
+  function handleIconButtonPress() {
+    onIconButtonClick && onIconButtonClick(id);
   }
 
   function handleKeyPress(event: React.KeyboardEvent) {

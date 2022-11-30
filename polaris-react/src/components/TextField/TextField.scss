@@ -245,7 +245,7 @@ $spinner-icon-size: 12px;
   padding-bottom: var(--p-space-2);
 }
 
-.ClearButton {
+.IconButton {
   @include focus-ring;
   @include unstyled-button;
   z-index: var(--pc-text-field-contents);

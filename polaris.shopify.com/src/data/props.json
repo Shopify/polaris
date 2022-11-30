@@ -9291,6 +9291,14 @@
         {
           "filePath": "polaris-react/src/components/TextField/TextField.tsx",
           "syntaxKind": "PropertySignature",
+          "name": "iconButton",
+          "value": "{icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>; accessibilityLabel: string;} | null",
+          "description": "Show an icon button within the input",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/TextField/TextField.tsx",
+          "syntaxKind": "PropertySignature",
           "name": "selectTextOnFocus",
           "value": "boolean",
           "description": "Indicates whether or not the entire value should be selected on focus.",
@@ -9549,6 +9557,14 @@
           "name": "onClearButtonClick",
           "value": "(id: string) => void",
           "description": "Callback fired when clear button is clicked",
+          "isOptional": true
+        },
+        {
+          "filePath": "polaris-react/src/components/TextField/TextField.tsx",
+          "syntaxKind": "MethodSignature",
+          "name": "onIconButtonClick",
+          "value": "(id: string) => void",
+          "description": "Callback fired when icon button is clicked",
           "isOptional": true
         },
         {
