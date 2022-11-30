@@ -93,6 +93,9 @@ examples:
   - fileName: text-field-with-clear-button.tsx
     title: With clear button
     description: Use to allow merchants to clear the content from a text field.
+  - fileName: text-field-with-icon-button.tsx
+    title: With icon button
+    description: Use to allow merchants to add an icon button inside a text field.
   - fileName: text-field-with-monospaced-font.tsx
     title: With monospaced font
     description: Use to apply a monospaced font to the TextField
