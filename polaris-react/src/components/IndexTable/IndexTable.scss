@@ -2,15 +2,19 @@
 
 .IndexTable {
   --pc-index-table-translate-offset: 35px;
-  --pc-index-table-table-header-offset: 35px;
+  --pc-index-table-table-header-offset: 36px;
   --pc-index-table-cell: 1;
   --pc-index-table-sticky-cell: 31;
   --pc-index-table-scroll-bar: 35;
   --pc-index-table-bulk-actions: 36;
   --pc-index-table-loading-panel: 37;
   position: relative;
-  overflow: hidden;
   border-radius: inherit;
+}
+
+.IndexTableWithBulkActions {
+  --pc-index-table-bulk-actions-offset: 100px;
+  padding-bottom: var(--pc-index-table-bulk-actions-offset);
 }
 
 .LoadingContainer-enter {
@@ -485,13 +489,35 @@ $loading-panel-height: 53px;
 
 .BulkActionsWrapper {
   visibility: visible;
+  position: absolute;
+  z-index: var(--pc-index-table-bulk-actions);
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--p-space-4);
+}
+
+.BulkActionsWrapperSticky {
+  position: fixed;
+  top: auto;
+  bottom: var(--p-space-4);
+}
+
+.SelectAllActionsWrapper {
+  visibility: visible;
   position: relative;
   z-index: var(--pc-index-table-bulk-actions);
   top: 0;
   left: 0;
   right: 0;
-  padding: var(--p-space-2);
+  padding: 0 var(--p-space-2) 0 calc(var(--p-space-2) + var(--p-space-05));
   background: var(--p-surface);
+
+  &.StickyTableHeader-condensed {
+    padding-top: calc(var(--p-space-2) + var(--p-space-05));
+  }
 }
 
 $scroll-bar-size: var(--p-space-2);

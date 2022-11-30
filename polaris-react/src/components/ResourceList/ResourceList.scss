@@ -32,7 +32,6 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   position: relative;
   background-color: var(--p-surface);
   z-index: resource-list(header-outer-wrapper-stacking-order);
-  overflow: hidden;
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
 
@@ -155,6 +154,28 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 }
 
 .BulkActionsWrapper {
+  z-index: resource-list(bulk-actions-wrapper-stacking-order);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--p-space-4);
+
+  @media #{$p-breakpoints-sm-up} {
+    flex: 0 1 auto;
+    align-self: flex-start;
+  }
+}
+
+.BulkActionsWrapperSticky {
+  position: fixed;
+  top: auto;
+  bottom: var(--p-space-4);
+}
+
+.SelectAllActionsWrapper {
   position: relative;
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
@@ -196,6 +217,11 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
 
 .ResourceListWrapper {
   position: relative;
+}
+
+.ResourceListWrapperWithBulkActions {
+  --pc-resource-list-bulk-actions-offset: 100px;
+  padding-bottom: var(--pc-resource-list-bulk-actions-offset);
 }
 
 .ResourceList {
