@@ -11,7 +11,6 @@ import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {tokens, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
@@ -20,8 +19,6 @@ import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
-  CheckableButtonKey,
-  CheckableButtons,
   ResourceListContext,
   ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
@@ -31,7 +28,12 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {
+  BulkActions,
+  BulkActionsProps,
+  useIsBulkActionsSticky,
+} from '../BulkActions';
+import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
 import styles from './ResourceList.scss';
@@ -156,10 +158,16 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     (x = 0) => x + 1,
     0,
   )[1];
+  const checkableButtonRef = useRef<HTMLInputElement>(null);
 
-  const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
-    new Map(),
-  );
+  const {
+    bulkActionsIntersectionRef,
+    tableMeasurerRef,
+    isBulkActionsSticky,
+    bulkActionsAbsoluteOffset,
+    bulkActionsMaxWidth,
+    bulkActionsOffsetLeft,
+  } = useIsBulkActionsSticky(selectMode);
 
   const defaultResourceName = useLazyRef(() => ({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
@@ -194,13 +202,14 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     {leading: true, trailing: true, maxWait: 50},
   );
 
-  const isSelectable = Boolean(
-    (promotedBulkActions && promotedBulkActions.length > 0) ||
-      (bulkActions && bulkActions.length > 0) ||
-      selectable,
-  );
+  const isSelectable =
+    Boolean(
+      (promotedBulkActions && promotedBulkActions.length > 0) ||
+        (bulkActions && bulkActions.length > 0) ||
+        selectable,
+    ) && !smallScreen;
 
-  const bulkSelectState = (): boolean | 'indeterminate' => {
+  const selectAllSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
       !selectedItems ||
@@ -244,7 +253,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     }
   };
 
-  const bulkActionsLabel = () => {
+  const selectAllActionsLabel = () => {
     const selectedItemsCount =
       selectedItems === SELECT_ALL_ITEMS
         ? `${items.length}+`
@@ -255,7 +264,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     });
   };
 
-  const bulkActionsAccessibilityLabel = () => {
+  const selectAllActionsAccessibilityLabel = () => {
     const selectedItemsCount = selectedItems.length;
     const totalItemsCount = items.length;
     const allSelected = selectedItemsCount === totalItemsCount;
@@ -430,15 +439,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     return items.slice(min, max + 1).map(resolveItemId);
   };
 
-  const handleCheckableButtonRegistration = (
-    key: CheckableButtonKey,
-    button: CheckboxHandles,
-  ) => {
-    if (!checkableButtons.get(key)) {
-      setCheckableButtons(new Map(checkableButtons).set(key, button));
-    }
-  };
-
   const handleSelectionChange = (
     selected: boolean,
     id: string,
@@ -513,44 +513,58 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
       handleSelectMode(true);
     }
 
-    let checkbox: CheckboxHandles | undefined;
-
-    if (isBreakpointsXS()) {
-      checkbox = checkableButtons.get('bulkSm');
-    } else if (newlySelectedItems.length === 0) {
-      checkbox = checkableButtons.get('plain');
-    } else {
-      checkbox = checkableButtons.get('bulkLg');
-    }
-
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
 
     // setTimeout ensures execution after the Transition on BulkActions
     setTimeout(() => {
-      checkbox && checkbox.focus();
+      checkableButtonRef?.current?.focus();
     }, 0);
   };
 
-  const bulkActionsMarkup = isSelectable ? (
-    <div className={styles.BulkActionsWrapper}>
-      <BulkActions
-        label={bulkActionsLabel()}
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
-        selected={bulkSelectState()}
+  const selectAllActionsMarkup = isSelectable ? (
+    <div className={styles.SelectAllActionsWrapper}>
+      <SelectAllActions
+        label={selectAllActionsLabel()}
+        accessibilityLabel={selectAllActionsAccessibilityLabel()}
+        selected={selectAllSelectState()}
         onToggleAll={handleToggleAll}
         selectMode={selectMode}
-        onSelectModeToggle={handleSelectMode}
-        promotedActions={promotedBulkActions}
         paginatedSelectAllAction={paginatedSelectAllAction()}
         paginatedSelectAllText={paginatedSelectAllText()}
-        actions={bulkActions}
         disabled={loading}
-        smallScreen={smallScreen}
+        ref={checkableButtonRef}
       />
     </div>
   ) : null;
+
+  const bulkActionClassNames = classNames(
+    styles.BulkActionsWrapper,
+    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
+  );
+
+  const bulkActionsMarkup =
+    isSelectable && selectMode ? (
+      <div
+        className={bulkActionClassNames}
+        style={{
+          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+          width: bulkActionsMaxWidth,
+          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
+        }}
+      >
+        <BulkActions
+          selectMode={selectMode}
+          onSelectModeToggle={handleSelectMode}
+          promotedActions={promotedBulkActions}
+          actions={bulkActions}
+          disabled={loading}
+          isSticky={isBulkActionsSticky}
+          width={bulkActionsMaxWidth}
+        />
+      </div>
+    ) : null;
 
   const filterControlMarkup = filterControl ? (
     <div className={styles.FiltersWrapper}>{filterControl}</div>
@@ -595,11 +609,11 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   const checkableButtonMarkup = isSelectable ? (
     <div className={styles.CheckableButtonWrapper}>
       <CheckableButton
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
+        accessibilityLabel={selectAllActionsAccessibilityLabel()}
         label={headerTitle()}
         onToggleAll={handleToggleAll}
-        plain
         disabled={loading}
+        ref={checkableButtonRef}
       />
     </div>
   ) : null;
@@ -640,7 +654,6 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
             );
             return (
               <div className={headerClassName}>
-                <EventListener event="resize" handler={handleResize} />
                 {headerWrapperOverlay}
                 <div className={styles.HeaderContentWrapper}>
                   {headerTitleMarkup}
@@ -649,11 +662,12 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
                   {sortingSelectMarkup}
                   {selectButtonMarkup}
                 </div>
-                {bulkActionsMarkup}
+                {selectAllActionsMarkup}
               </div>
             );
           }}
         </Sticky>
+        {bulkActionsMarkup}
       </div>
     );
 
@@ -720,12 +734,19 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     resourceName,
     loading,
     onSelectionChange: handleSelectionChange,
-    registerCheckableButtons: handleCheckableButtonRegistration,
   };
+
+  const resourceListWrapperClasses = classNames(
+    styles.ResourceListWrapper,
+    Boolean(bulkActionsMarkup) &&
+      selectMode &&
+      styles.ResourceListWrapperWithBulkActions,
+  );
 
   return (
     <ResourceListContext.Provider value={context}>
-      <div className={styles.ResourceListWrapper}>
+      <EventListener event="resize" handler={handleResize} />
+      <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
@@ -733,6 +754,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
       </div>
+      <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
 };

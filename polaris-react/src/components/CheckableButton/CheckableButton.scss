@@ -7,7 +7,8 @@ $button-vertical-padding: calc(
 
 .CheckableButton {
   @include recolor-icon(var(--p-icon-on-interactive));
-  font-size: var(--p-font-size-100);
+  color: var(--p-text);
+  font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-1);
   text-transform: initial;
@@ -17,70 +18,22 @@ $button-vertical-padding: calc(
   min-height: 36px;
   min-width: 36px;
   margin: 0;
-  padding: $button-vertical-padding var(--p-space-4);
+  padding: $button-vertical-padding var(--p-space-1) $button-vertical-padding
+    var(--p-space-4);
   cursor: pointer;
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-1);
-  width: 100%;
-  background: var(--p-surface);
-  box-shadow: var(--p-shadow-button);
-  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
-  border-top-color: var(--p-border-subdued);
-  border-bottom-color: var(--p-border-shadow-subdued);
+  border-radius: var(--p-border-radius-base);
+  width: auto;
 
-  [data-buttongroup-segmented='true'] & {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &:hover {
-    background: var(--p-action-secondary-hovered);
-  }
-
+  &:hover,
   &:active {
-    background: var(--p-action-secondary-pressed);
-  }
-
-  &.CheckableButton-measuring {
-    font-size: 15px;
-    font-weight: var(--p-font-weight-bold);
-
-    // simulates measuring with an additional digit (e.g. 00 instead of 0)
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 15px;
-    }
-  }
-
-  @media #{$p-breakpoints-sm-up} {
-    flex: 0 1 auto;
+    background: transparent;
   }
 
   &:focus {
     outline: none;
-  }
-
-  &.CheckableButton-plain {
-    border-radius: var(--p-border-radius-base);
-    box-shadow: none;
-    background: transparent;
-    border: none;
-
-    &:hover {
-      background: transparent;
-    }
-  }
-
-  &.CheckableButton-selectMode {
-    color: var(--p-text-subdued);
-    font-weight: var(--p-font-weight-medium);
-  }
-
-  &.CheckableButton-selected {
-    color: var(--p-text);
   }
 }
 
@@ -88,15 +41,9 @@ $button-vertical-padding: calc(
   pointer-events: none;
   height: var(--p-choice-size);
   width: var(--p-choice-size);
-  margin-left: calc(-1 * var(--p-space-2) - var(--p-control-border-width));
-}
-
-.CheckableButton-selectMode {
-  .Checkbox {
-    margin-left: calc(
-      -1 * var(--p-space-2) - var(--p-control-border-width) - var(--p-border-width-1)
-    );
-  }
+  margin-left: calc(
+    -1 * var(--p-space-2) - var(--p-control-border-width) - var(--p-border-width-1)
+  );
 }
 
 .Label {
