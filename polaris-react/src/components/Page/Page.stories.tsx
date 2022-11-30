@@ -1,6 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, Button, Card, Page, PageActions, Stack} from '@shopify/polaris';
+import {
+  Badge,
+  Bleed,
+  Box,
+  Button,
+  Card,
+  Link,
+  Page,
+  PageActions,
+  Popover,
+  Stack,
+  Text,
+  useBreakpoints,
+} from '@shopify/polaris';
 import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -30,7 +43,6 @@ export function Default() {
       actionGroups={[
         {
           title: 'Promote',
-          accessibilityLabel: 'Action group label',
           actions: [
             {
               content: 'Share on Facebook',
@@ -313,5 +325,98 @@ export function WithDivider() {
         <p>Credit card information</p>
       </Card>
     </Page>
+  );
+}
+
+export function WithCustomPopover() {
+  const [popoverVisible, setPopoverVisible] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(false);
+  const [popoverPosition, setPopoverPosition] = useState({top: 0, right: 0});
+  const {mdUp} = useBreakpoints();
+
+  const activator = <div style={{visibility: 'hidden'}}>I'm a button</div>;
+
+  const customAboutAction = {
+    content: 'About',
+    accessibilityLabel: 'Secondary action label',
+    onAction: (ref: React.RefObject<HTMLElement>) => {
+      if (!ref.current) {
+        return;
+      }
+
+      const {right, top, height} = ref.current.getBoundingClientRect();
+      setPopoverPosition({
+        top: top + height,
+        right: window.innerWidth - right,
+      });
+
+      if (mdUp) {
+        setPopoverVisible(!popoverVisible);
+      } else {
+        setBannerVisible(!bannerVisible);
+      }
+    },
+  };
+
+  const popover = (
+    <div
+      style={{
+        position: 'absolute',
+        top: popoverPosition.top,
+        right: popoverPosition.right,
+      }}
+    >
+      <Popover
+        activator={activator}
+        active={popoverVisible}
+        preferredAlignment={'right'}
+        onClose={() => setPopoverVisible(false)}
+      >
+        <Popover.Section>
+          <Text as="h6" variant="headingSm">
+            How to use this feature
+          </Text>
+          <Link>Learn more</Link>
+        </Popover.Section>
+      </Popover>
+    </div>
+  );
+  const educationalBanner = (
+    <div style={{marginBottom: '20px'}}>
+      <Bleed horizontal="4" vertical="4">
+        <Box padding="4" background="surface">
+          <Text as="h6" variant="headingSm">
+            How to use this feature
+          </Text>
+          <Link>Learn more</Link>
+        </Box>
+      </Bleed>
+    </div>
+  );
+  return (
+    <>
+      {bannerVisible && !mdUp && educationalBanner}
+      <Page
+        breadcrumbs={[{content: 'Products', url: '/products'}]}
+        title="Customer cohort analysis"
+        compactTitle
+        secondaryActions={[
+          {
+            content: 'Print',
+            onAction: () => console.log('Print on action'),
+          },
+          {
+            content: 'Export',
+            onAction: () => console.log('Export on action'),
+          },
+          customAboutAction,
+        ]}
+      >
+        <Card sectioned>
+          <p>Customer cohort chart</p>
+        </Card>
+        {popover}
+      </Page>
+    </>
   );
 }
