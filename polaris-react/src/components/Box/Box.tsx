@@ -271,9 +271,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         : undefined,
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
-      '--pc-box-max-width': maxWidth,
+      // '--pc-box-max-width': maxWidth,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
+      ...getResponsiveProps('box', 'max-width', 'size', maxWidth),
       ...getResponsiveProps('box', 'padding', 'space', padding),
       ...getResponsiveProps(
         'box',

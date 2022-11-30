@@ -26,6 +26,11 @@
     'padding-inline-end',
     'padding'
   );
+  @include responsive-props(
+    'box',
+    'max-width',
+    'max-width'
+  );
 
   --pc-box-shadow: initial;
   --pc-box-background: initial;
