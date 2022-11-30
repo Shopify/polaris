@@ -34,12 +34,6 @@ $nav-animation-variables: (
   text-decoration: none;
   text-align: left;
 
-  &:hover {
-    background: var(--p-background-hovered);
-    color: var(--p-text);
-    text-decoration: none;
-  }
-
   @include focus-ring;
 
   &.keyFocused {

@@ -92,18 +92,11 @@ $disabled-fade: 0.6;
 .Item {
   @include nav-item-attributes;
   position: relative;
-
-  margin-inline-start: var(--p-space-2);
-
-  &:last-child {
-    margin-inline-end: var(--p-space-2);
-  }
 }
 
 .Item-selected {
   font-weight: var(--p-font-weight-semibold);
   color: var(--p-text-primary);
-  background-color: var(--p-background-selected);
   outline: var(--p-border-width-1) solid transparent;
 
   &::before {
@@ -203,9 +196,24 @@ $disabled-fade: 0.6;
 }
 
 .ItemWrapper {
+  width: 100%;
+  padding: 0 var(--p-space-2);
+}
+
+.ItemInnerWrapper {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
+
+  &:hover {
+    background: var(--p-background-hovered);
+    color: var(--p-text);
+    text-decoration: none;
+  }
+}
+
+.ItemInnerWrapper-Selected {
+  background-color: var(--p-background-selected);
 }
 
 .Text {
@@ -238,8 +246,7 @@ $disabled-fade: 0.6;
   display: flex;
   align-items: center;
   height: nav(mobile-height);
-  padding: var(--p-space-1) var(--p-space-4);
-  margin-right: var(--p-space-1);
+  padding: var(--p-space-1) var(--p-space-3) var(--p-space-1) var(--p-space-4);
   border-radius: var(--p-border-radius-1);
 
   @media #{$p-breakpoints-md-up} {
