@@ -6,10 +6,10 @@ const config = {
   colors: [
     {
       'color-named': 'never',
+      'color-no-hex': [true, {message: 'Overridden category rule message'}],
     },
     {
-      message:
-        'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors',
+      message: 'Appended category rule message',
     },
   ],
   motion: {
@@ -35,10 +35,15 @@ testRule({
 
   reject: [
     {
+      code: '.class {color: #bad;}',
+      description: 'Overrides category rule warning text',
+      message: 'Overridden category rule message (color-no-hex)',
+    },
+    {
       code: '.class {color: red;}',
-      description: 'Appends custom category message to rule warning text',
+      description: 'Appends message to category rule warning text',
       message:
-        'Unexpected named color "red" (color-named) Please use a Polaris color token: https://polaris.shopify.com/tokens/colors',
+        'Unexpected named color "red" (color-named) Appended category rule message',
     },
     {
       code: '@keyframes foo {}',
