@@ -1,14 +1,9 @@
 import {Card, Tabs} from '@shopify/polaris';
-import {useState, useCallback} from 'react';
+import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TabsWithCustomDisclosureExample() {
   const [selected, setSelected] = useState(0);
-
-  const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
-  );
 
   const tabs = [
     {
@@ -39,7 +34,7 @@ function TabsWithCustomDisclosureExample() {
       <Tabs
         tabs={tabs}
         selected={selected}
-        onSelect={handleTabChange}
+        onSelect={setSelected}
         disclosureText="More views"
       >
         <Card.Section title={tabs[selected].content}>

@@ -1,14 +1,9 @@
 import {Card, Tabs} from '@shopify/polaris';
-import {useState, useCallback} from 'react';
+import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TabsExample() {
   const [selected, setSelected] = useState(0);
-
-  const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
-    [],
-  );
 
   const tabs = [
     {
@@ -36,7 +31,7 @@ function TabsExample() {
 
   return (
     <Card>
-      <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
+      <Tabs tabs={tabs} selected={selected} onSelect={setSelected}>
         <Card.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
         </Card.Section>
