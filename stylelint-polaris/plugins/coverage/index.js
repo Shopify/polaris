@@ -5,10 +5,13 @@ const {isPlainObject} = require('../../utils');
 const ruleName = 'stylelint-polaris/coverage';
 
 /**
- * @typedef {{
- *   [category: string]: import('stylelint').ConfigRules
- * }} PrimaryOptions
+ * @typedef {object} CategorySecondaryOptions
+ * @property {string} [message] - Message appended to each error in a given category
  */
+
+/** @typedef {stylelint.ConfigRules | [stylelint.ConfigRules, CategorySecondaryOptions?]} CategoryConfigRules */
+
+/** @typedef {{[category: string]: CategoryConfigRules}} PrimaryOptions */
 
 // Setting `line` to an invalid line number forces the warning to be reported
 // and the `report({node})` option is used to display the location information:
@@ -26,8 +29,12 @@ module.exports = stylelint.createPlugin(
     for (const [categoryName, categoryConfigRules] of Object.entries(
       primaryOptions,
     )) {
+      const normalizedCategoryConfigRules = Array.isArray(categoryConfigRules)
+        ? /** @type {CategoryConfigRules} */ (categoryConfigRules)
+        : [categoryConfigRules, {}];
+
       for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
-        categoryConfigRules,
+        normalizedCategoryConfigRules[0],
       )) {
         rules.push({
           coverageRuleName: `${ruleName}/${categoryName}`,
@@ -36,6 +43,7 @@ module.exports = stylelint.createPlugin(
           categoryRuleSeverity: categoryRuleSettings?.[1]?.severity,
           categoryRuleFix:
             context.fix && !categoryRuleSettings?.[1]?.disableFix,
+          categoryMessage: categoryConfigRules[1]?.message ?? '',
         });
       }
     }
@@ -54,6 +62,7 @@ module.exports = stylelint.createPlugin(
           categoryRuleSettings,
           categoryRuleSeverity,
           categoryRuleFix,
+          categoryMessage,
         } = rule;
 
         stylelint.utils.checkAgainstRule(
@@ -68,7 +77,9 @@ module.exports = stylelint.createPlugin(
             stylelint.utils.report({
               result,
               ruleName: coverageRuleName,
-              message: warning.text,
+              message: categoryMessage
+                ? `${warning.text} ${categoryMessage}`
+                : warning.text,
               severity:
                 categoryRuleSeverity ??
                 result.stylelint.config?.defaultSeverity ??
@@ -88,7 +99,16 @@ function validatePrimaryOptions(primaryOptions) {
   if (!isPlainObject(primaryOptions)) return false;
 
   for (const categoryConfigRules of Object.values(primaryOptions)) {
-    if (!isPlainObject(categoryConfigRules)) return false;
+    if (
+      !(
+        isPlainObject(categoryConfigRules) ||
+        (Array.isArray(categoryConfigRules) &&
+          categoryConfigRules.length === 2 &&
+          categoryConfigRules.every(isPlainObject))
+      )
+    ) {
+      return false;
+    }
   }
 
   return true;

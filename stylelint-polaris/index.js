@@ -2,47 +2,53 @@ const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 
 /** @type {import('./plugins/coverage').PrimaryOptions} */
 const stylelintPolarisCoverageOptions = {
-  colors: {
-    'color-named': 'never',
-    'color-no-hex': true,
-    'scss/function-color-relative': true,
-    'declaration-property-value-disallowed-list': {
-      opacity: [/(?!0|1)\d$|^\d{2,}|^[1-9]+\.|^\d+\.\d+\.|^0\.\d{3,}/],
-    },
-    'function-disallowed-list': [
-      // Include Sass namespace
-      // https://regex101.com/r/UdW0oV/1
-      'brightness',
-      'contrast',
-      'hue-rotate',
-      'hsl',
-      'hsla',
-      'invert',
-      'rgb',
-      'rgba',
-      'sepia',
-      /([\w-]+\.)?color-multiply/,
-      /([\w-]+\.)?color/,
-      /([\w-]+\.)?filter/,
-    ],
-    'stylelint-polaris/at-rule-disallowed-list': {
-      include: [
-        // mixins
-        /([\w-]+\.)?color-icon($|\()/,
-        /([\w-]+\.)?recolor-icon($|\()/,
-        /([\w-]+\.)?control-backdrop($|\()/,
-        /([\w-]+\.)?ms-high-contrast-color/,
+  colors: [
+    {
+      'color-named': 'never',
+      'color-no-hex': true,
+      'scss/function-color-relative': true,
+      'declaration-property-value-disallowed-list': {
+        opacity: [/(?!0|1)\d$|^\d{2,}|^[1-9]+\.|^\d+\.\d+\.|^0\.\d{3,}/],
+      },
+      'function-disallowed-list': [
+        // Include Sass namespace
+        // https://regex101.com/r/UdW0oV/1
+        'brightness',
+        'contrast',
+        'hue-rotate',
+        'hsl',
+        'hsla',
+        'invert',
+        'rgb',
+        'rgba',
+        'sepia',
+        /([\w-]+\.)?color-multiply/,
+        /([\w-]+\.)?color/,
+        /([\w-]+\.)?filter/,
+      ],
+      'stylelint-polaris/at-rule-disallowed-list': {
+        include: [
+          // mixins
+          /([\w-]+\.)?color-icon($|\()/,
+          /([\w-]+\.)?recolor-icon($|\()/,
+          /([\w-]+\.)?control-backdrop($|\()/,
+          /([\w-]+\.)?ms-high-contrast-color/,
+        ],
+      },
+      'stylelint-polaris/global-disallowed-list': [
+        /\$polaris-colors/,
+        /\$color-filter-palette-data/,
+        /\$color-palette-data/,
+        // Legacy custom properties
+        /--p-override-transparent/,
+        /--p-badge-mix-blend-mode/,
       ],
     },
-    'stylelint-polaris/global-disallowed-list': [
-      /\$polaris-colors/,
-      /\$color-filter-palette-data/,
-      /\$color-palette-data/,
-      // Legacy custom properties
-      /--p-override-transparent/,
-      /--p-badge-mix-blend-mode/,
-    ],
-  },
+    {
+      message:
+        'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors',
+    },
+  ],
   motion: {
     'at-rule-disallowed-list': ['keyframes'],
     'function-disallowed-list': [
