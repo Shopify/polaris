@@ -26,15 +26,32 @@ export function sanitizeCustomProperties(
   return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
 }
 
+export function getResponsiveValues(
+  componentName: string,
+  componentProp: string,
+  responsiveValues?: ResponsiveProp<string>,
+) {
+  if (!responsiveValues) return {};
+
+  if (typeof responsiveValues === 'string') {
+    return {
+      [`--pc-${componentName}-${componentProp}-xs`]: responsiveValues,
+    };
+  }
+
+  return Object.fromEntries(
+    Object.entries(responsiveValues).map(([breakpointAlias, value]) => [
+      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
+      value,
+    ]),
+  );
+}
+
 export function getResponsiveProps(
   componentName: string,
   componentProp: string,
   tokenSubgroup: string,
-  responsiveProp?:
-    | string
-    | {
-        [Breakpoint in BreakpointsAlias]?: string;
-      },
+  responsiveProp?: ResponsiveProp<string>,
 ) {
   if (!responsiveProp) return {};
 
