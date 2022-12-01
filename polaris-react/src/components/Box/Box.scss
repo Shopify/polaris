@@ -1,5 +1,13 @@
 @import '../../styles/common';
 
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  outline: none;
+  padding-inline-start: 0;
+}
+
 .Box {
   @include responsive-props('box', 'padding', 'padding');
   @include responsive-props(
@@ -26,11 +34,6 @@
     'padding-inline-end',
     'padding'
   );
-  // @include responsive-props(
-  //   'box',
-  //   'max-width',
-  //   'max-width'
-  // );
 
   --pc-box-shadow: initial;
   --pc-box-background: initial;
@@ -61,11 +64,6 @@
   --pc-box-inset-block-end: initial;
   --pc-box-inset-inline-start: initial;
   --pc-box-inset-inline-end: initial;
-  --pc-box-max-width-xs: initial;
-  --pc-box-max-width-sm: var(--pc-box-max-width-xs);
-  --pc-box-max-width-md: var(--pc-box-max-width-sm);
-  --pc-box-max-width-lg: var(--pc-box-max-width-md);
-  --pc-box-max-width-xl: var(--pc-box-max-width-lg);
   inset-block-start: var(--pc-box-inset-block-start);
   inset-block-end: var(--pc-box-inset-block-end);
   inset-inline-start: var(--pc-box-inset-inline-start);
@@ -112,37 +110,13 @@
   color: var(--pc-box-color);
   min-height: var(--pc-box-min-height);
   min-width: var(--pc-box-min-width);
-  max-width: var(--pc-box-max-width-xs);
+  max-width: var(--pc-box-max-width);
   overflow-x: var(--pc-box-overflow-x);
   overflow-y: var(--pc-box-overflow-y);
   width: var(--pc-box-width);
   -webkit-overflow-scrolling: touch;
-
-  @media #{$p-breakpoints-sm-up} {
-    max-width: var(--pc-box-max-width-sm);
-  }
-
-  @media #{$p-breakpoints-md-up} {
-    max-width: var(--pc-box-max-width-md);
-  }
-
-  @media #{$p-breakpoints-lg-up} {
-    max-width: var(--pc-box-max-width-lg);
-  }
-
-  @media #{$p-breakpoints-xl-up} {
-    max-width: var(--pc-box-max-width-xl);
-  }
 }
 
 .visuallyHidden {
   @include visually-hidden;
-}
-
-.listReset {
-  list-style-type: none;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  outline: none;
-  padding-inline-start: 0;
 }

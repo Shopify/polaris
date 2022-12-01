@@ -123,7 +123,7 @@ export function EmptyState({
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <Box maxWidth={{sm: '400px'}}>
+      <Box maxWidth='400px'>
         <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}
@@ -149,14 +149,5 @@ export function EmptyState({
         {detailsMarkup}
       </AlphaStack>
     </Box>
-  );
-
-  return (
-    <div className={className}>
-      <div className={styles.Section}>
-        {detailsMarkup}
-        <div className={styles.ImageContainer}>{imageMarkup}</div>
-      </div>
-    </div>
   );
 }
