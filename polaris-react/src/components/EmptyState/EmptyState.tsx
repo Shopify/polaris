@@ -49,11 +49,8 @@ export function EmptyState({
   footerContent,
 }: EmptyStateProps) {
   const withinContentContainer = useContext(WithinContentContext);
-  const className = classNames(
-    styles.EmptyState,
-    fullWidth && styles.fullWidth,
+  const imageContainedClass = classNames(
     imageContained && styles.imageContained,
-    withinContentContainer && styles.withinContentContainer,
   );
 
   const imageMarkup = largeImage ? (
@@ -61,6 +58,7 @@ export function EmptyState({
       alt=""
       role="presentation"
       source={largeImage}
+      className={imageContainedClass}
       sourceSet={[
         {source: image, descriptor: '568w'},
         {source: largeImage, descriptor: '1136w'},
@@ -123,7 +121,7 @@ export function EmptyState({
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <Box maxWidth="400px">
+      <Box maxWidth={fullWidth ? '100%' : '400px'}>
         <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}
@@ -136,16 +134,14 @@ export function EmptyState({
     paddingInlineStart: '5',
     paddingInlineEnd: '5',
     paddingBlockStart: '5',
-    // get UX review 3.75em originally
     paddingBlockEnd: '16',
-    // although is says $page-max-width
   };
 
   // new return
   return (
     <Box {...defaultBoxStyle}>
       <AlphaStack align="center" gap="0">
-        {imageMarkup}
+        <Box>{imageMarkup}</Box>
         {detailsMarkup}
       </AlphaStack>
     </Box>
