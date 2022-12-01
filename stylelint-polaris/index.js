@@ -1,4 +1,8 @@
-const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
+const {
+  getCustomPropertyNames,
+  createVar,
+  tokens,
+} = require('@shopify/polaris-tokens');
 
 /** @type {import('./plugins/coverage').PrimaryOptions} */
 const stylelintPolarisCoverageOptions = {
@@ -56,7 +60,6 @@ const stylelintPolarisCoverageOptions = {
         '/^animation/': ['ms', 's'],
         '/^transition/': ['ms', 's'],
       },
-      {severity: 'warning'},
     ],
     'stylelint-polaris/at-rule-disallowed-list': {
       include: [/([\w-]+\.)?skeleton-shimmer($|\()/],
@@ -73,7 +76,7 @@ const stylelintPolarisCoverageOptions = {
       /--p-duration-1-5-0/,
     ],
   },
-  font: {
+  typography: {
     'declaration-property-value-disallowed-list': {
       'font-weight': [/(\$.*|[0-9]+)/],
     },
@@ -82,7 +85,6 @@ const stylelintPolarisCoverageOptions = {
         '/^font/': ['px', 'rem', 'em'],
         'line-height': ['px', 'rem', 'em'],
       },
-      {severity: 'warning'},
     ],
     'function-disallowed-list': [
       /([\w-]+\.)?font-family/,
@@ -126,26 +128,18 @@ const stylelintPolarisCoverageOptions = {
   layout: {
     'declaration-property-value-disallowed-list': [
       {
-        display: ['grid', 'flex'],
-        position: ['sticky'],
         top: [/(?!var\(--p-).+$/],
         bottom: [/(?!var\(--p-).+$/],
         left: [/(?!var\(--p-).+$/],
         right: [/(?!var\(--p-).+$/],
-        width: [/(?!var\(--p-).+$/],
-        height: [/(?!var\(--p-).+$/],
+        '/^width/': [/(?!var\(--p-).+$/],
+        '/^height/': [/(?!var\(--p-).+$/],
       },
       {severity: 'warning'},
     ],
-    'declaration-property-unit-disallowed-list': [
-      {
-        '/^width/': ['px', 'rem', 'em'],
-        '/^height/': ['px', 'rem', 'em'],
-      },
-      {severity: 'error'},
-    ],
     'property-disallowed-list': [
       [
+        'position',
         'grid',
         'flex',
         'flex-grow',
@@ -164,6 +158,7 @@ const stylelintPolarisCoverageOptions = {
         'grid-template-rows',
         'grid-template-columns',
         'grid-area',
+        'display',
       ],
       {severity: 'warning'},
     ],
@@ -219,7 +214,6 @@ const stylelintPolarisCoverageOptions = {
         '/^margin/': ['px', 'rem', 'em'],
         '/^gap/': ['px', 'rem', 'em'],
       },
-      {severity: 'warning'},
     ],
     'stylelint-polaris/global-disallowed-list': [
       // Legacy mixin map-get data
@@ -241,7 +235,6 @@ const stylelintPolarisCoverageOptions = {
         'outline-offset': ['px', 'rem', 'em'],
         outline: ['px', 'rem', 'em'],
       },
-      {severity: 'warning'},
     ],
     'stylelint-polaris/at-rule-disallowed-list': {
       include: [
@@ -281,9 +274,8 @@ const stylelintPolarisCoverageOptions = {
       {
         'box-shadow': ['px', 'rem', 'em'],
       },
-      {severity: 'warning'},
     ],
-    'property-disallowed-list': [['text-shadow'], {severity: 'warning'}],
+    'property-disallowed-list': ['text-shadow'],
     'stylelint-polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$shadows-data/,
@@ -302,9 +294,8 @@ const stylelintPolarisCoverageOptions = {
   'z-index': {
     'declaration-property-value-allowed-list': [
       {
-        'z-index': [/--p-z-\b([1-9]|1[0-2])\b/],
+        'z-index': Object.keys(tokens.zIndex).map(createVar),
       },
-      {severity: 'warning'},
     ],
     'function-disallowed-list': [/([\w-]+\.)?z-index/],
     'stylelint-polaris/global-disallowed-list': [
@@ -331,6 +322,12 @@ const stylelintPolarisCoverageOptions = {
         ],
       },
     },
+    'stylelint-polaris/media-queries-allowed-list': {
+      // Allowed media types and media conditions
+      // https://www.w3.org/TR/mediaqueries-5/#media
+      allowedMediaTypes: ['print', 'screen'],
+      allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
+    },
   },
   breakpoints: {
     // Legacy functions
@@ -339,10 +336,6 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?layout-width/,
     ],
     'stylelint-polaris/media-queries-allowed-list': {
-      // Allowed media types and media conditions
-      // https://www.w3.org/TR/mediaqueries-5/#media
-      allowedMediaTypes: ['print', 'screen'],
-      allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
       allowedScssInterpolations: [
         // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
         /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
