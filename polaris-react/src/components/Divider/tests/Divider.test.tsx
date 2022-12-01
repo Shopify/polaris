@@ -5,9 +5,9 @@ import {Divider} from '../Divider';
 
 describe('<Divider />', () => {
   it('renders custom properties with default values', () => {
-    const columns = mountWithApp(<Divider />);
+    const divider = mountWithApp(<Divider />);
 
-    expect(columns).toContainReactComponent('hr', {
+    expect(divider).toContainReactComponent('hr', {
       style: {
         '--pc-divider-color': 'var(--p-border-divider)',
         '--pc-divider-width': 'var(--p-border-width-1)',
