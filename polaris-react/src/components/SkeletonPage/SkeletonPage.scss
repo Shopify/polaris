@@ -3,6 +3,11 @@
 $primary-action-button-height: 36px;
 $primary-action-button-width: 100px;
 
+:root {
+  --pc-skeleton-page-max-width: 998px;
+  --pc-skeleton-page-max-width-narrow: 662px;
+}
+
 .Title {
   font-weight: var(--p-font-weight-semibold);
   font-size: var(--p-font-size-300);

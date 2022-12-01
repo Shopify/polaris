@@ -69,10 +69,10 @@ export function SkeletonPage({
         aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
         role="status"
         {...(narrowWidth && {
-          maxWidth: '662px',
+          maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
         })}
         {...(fullWidth && {
-          maxWidth: 'none',
+          maxWidth: 'var(--pc-skeleton-page-max-width)',
         })}
       >
         <AlphaStack gap="0" fullWidth>
