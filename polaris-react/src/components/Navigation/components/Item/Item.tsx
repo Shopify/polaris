@@ -315,25 +315,32 @@ export function Item({
   return (
     <li className={className}>
       <div className={styles.ItemWrapper}>
-        <UnstyledLink
-          url={url}
-          className={itemClassName}
-          external={external}
-          tabIndex={tabIndex}
-          aria-disabled={disabled}
-          aria-label={accessibilityLabel}
-          onClick={getClickHandler(onClick)}
-          onKeyUp={handleKeyUp}
-          onBlur={handleBlur}
-          {...normalizeAriaAttributes(
-            secondaryNavigationId,
-            subNavigationItems.length > 0,
-            showExpanded,
+        <div
+          className={classNames(
+            styles.ItemInnerWrapper,
+            selected && canBeActive && styles['ItemInnerWrapper-Selected'],
           )}
         >
-          {itemContentMarkup}
-        </UnstyledLink>
-        {secondaryActionMarkup}
+          <UnstyledLink
+            url={url}
+            className={itemClassName}
+            external={external}
+            tabIndex={tabIndex}
+            aria-disabled={disabled}
+            aria-label={accessibilityLabel}
+            onClick={getClickHandler(onClick)}
+            onKeyUp={handleKeyUp}
+            onBlur={handleBlur}
+            {...normalizeAriaAttributes(
+              secondaryNavigationId,
+              subNavigationItems.length > 0,
+              showExpanded,
+            )}
+          >
+            {itemContentMarkup}
+          </UnstyledLink>
+          {secondaryActionMarkup}
+        </div>
       </div>
       {secondaryNavigationMarkup}
     </li>
