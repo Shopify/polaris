@@ -123,7 +123,7 @@ export function EmptyState({
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <Box maxWidth='400px'>
+      <Box maxWidth="400px">
         <AlphaStack align="center">
           {textContentMarkup}
           {actionsMarkup}
