@@ -3,31 +3,31 @@ import {Divider, Text, AlphaStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function DividerWithColorsExample() {
+function DividerWithBorderStylesExample() {
   return (
     <AlphaStack gap="5" fullWidth>
       <Text as="h1" variant="headingXs">
         Base
       </Text>
-      <Divider color="base" />
+      <Divider borderStyle="base" />
       <Text as="h1" variant="headingXs">
         Dark
       </Text>
-      <Divider color="dark" />
+      <Divider borderStyle="dark" />
       <Text as="h1" variant="headingXs">
         Divider
       </Text>
-      <Divider color="divider" />
+      <Divider borderStyle="divider" />
       <Text as="h1" variant="headingXs">
         Divider on dark
       </Text>
-      <Divider color="divider-on-dark" />
+      <Divider borderStyle="divider-on-dark" />
       <Text as="h1" variant="headingXs">
         Transparent
       </Text>
-      <Divider color="transparent" />
+      <Divider borderStyle="transparent" />
     </AlphaStack>
   );
 }
 
-export default withPolarisExample(DividerWithColorsExample);
+export default withPolarisExample(DividerWithBorderStylesExample);

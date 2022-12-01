@@ -10,41 +10,29 @@ export function Default() {
   return <Divider />;
 }
 
-export function WithColors() {
+export function WithBorderStyles() {
   return (
     <AlphaStack gap="5" fullWidth>
       <Text as="h1" variant="headingXs">
         Base
       </Text>
-      <Divider color="base" />
+      <Divider borderStyle="base" />
       <Text as="h1" variant="headingXs">
         Dark
       </Text>
-      <Divider color="dark" />
+      <Divider borderStyle="dark" />
       <Text as="h1" variant="headingXs">
         Divider
       </Text>
-      <Divider color="divider" />
+      <Divider borderStyle="divider" />
       <Text as="h1" variant="headingXs">
         Divider on dark
       </Text>
-      <Divider color="divider-on-dark" />
+      <Divider borderStyle="divider-on-dark" />
       <Text as="h1" variant="headingXs">
         Transparent
       </Text>
-      <Divider color="transparent" />
-    </AlphaStack>
-  );
-}
-
-export function WithWidth() {
-  return (
-    <AlphaStack gap="12" fullWidth>
-      <Divider width="1" />
-      <Divider width="2" />
-      <Divider width="3" />
-      <Divider width="4" />
-      <Divider width="5" />
+      <Divider borderStyle="transparent" />
     </AlphaStack>
   );
 }

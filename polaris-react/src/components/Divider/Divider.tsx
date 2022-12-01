@@ -1,5 +1,4 @@
 import React from 'react';
-import type {ShapeBorderWidthScale} from '@shopify/polaris-tokens';
 
 import styles from './Divider.scss';
 
@@ -11,16 +10,15 @@ export type BorderTokenAlias =
   | 'transparent';
 
 export interface DividerProps {
-  /** Divider color */
-  color?: BorderTokenAlias;
-  /** Divider width */
-  width?: ShapeBorderWidthScale;
+  /** Divider border style */
+  borderStyle?: BorderTokenAlias;
 }
 
-export const Divider = ({color = 'divider', width = '1'}: DividerProps) => {
+export const Divider = ({borderStyle = 'divider'}: DividerProps) => {
   const style = {
-    '--pc-divider-color': color ? `var(--p-border-${color})` : undefined,
-    '--pc-divider-width': width ? `var(--p-border-width-${width})` : undefined,
+    '--pc-divider-border-style': borderStyle
+      ? `var(--p-border-${borderStyle})`
+      : undefined,
   } as React.CSSProperties;
 
   return <hr className={styles.Divider} style={style} />;
