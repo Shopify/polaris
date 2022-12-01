@@ -4,48 +4,48 @@ import React, {
   useEffect,
   useRef,
   useCallback,
-} from 'react';
-import {CircleCancelMinor} from '@shopify/polaris-icons';
+} from "react";
+import { CircleCancelMinor } from "@shopify/polaris-icons";
 
-import {classNames, variationName} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
-import {useUniqueId} from '../../utilities/unique-id';
-import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
-import {Connected} from '../Connected';
-import {Error, Key} from '../../types';
-import {Icon} from '../Icon';
-import {Text} from '../Text';
+import { classNames, variationName } from "../../utilities/css";
+import { useI18n } from "../../utilities/i18n";
+import { useUniqueId } from "../../utilities/unique-id";
+import { useIsAfterInitialMount } from "../../utilities/use-is-after-initial-mount";
+import { Labelled, LabelledProps, helpTextID, labelID } from "../Labelled";
+import { Connected } from "../Connected";
+import { Error, Key } from "../../types";
+import { Icon } from "../Icon";
+import { Text } from "../Text";
 
-import {Resizer, Spinner, SpinnerProps} from './components';
-import styles from './TextField.scss';
+import { Resizer, Spinner, SpinnerProps } from "./components";
+import styles from "./TextField.scss";
 
 type Type =
-  | 'text'
-  | 'email'
-  | 'number'
-  | 'password'
-  | 'search'
-  | 'tel'
-  | 'url'
-  | 'date'
-  | 'datetime-local'
-  | 'month'
-  | 'time'
-  | 'week'
-  | 'currency';
+  | "text"
+  | "email"
+  | "number"
+  | "password"
+  | "search"
+  | "tel"
+  | "url"
+  | "date"
+  | "datetime-local"
+  | "month"
+  | "time"
+  | "week"
+  | "currency";
 
-type Alignment = 'left' | 'center' | 'right';
+type Alignment = "left" | "center" | "right";
 
 type InputMode =
-  | 'none'
-  | 'text'
-  | 'decimal'
-  | 'numeric'
-  | 'tel'
-  | 'search'
-  | 'email'
-  | 'url';
+  | "none"
+  | "text"
+  | "decimal"
+  | "numeric"
+  | "tel"
+  | "search"
+  | "email"
+  | "url";
 
 interface SelectSuggestion {
   suggestion?: string;
@@ -83,7 +83,7 @@ interface NonMutuallyExclusiveProps {
   /** Label for the input */
   label: React.ReactNode;
   /** Adds an action to the label */
-  labelAction?: LabelledProps['action'];
+  labelAction?: LabelledProps["action"];
   /** Visually hide the label */
   labelHidden?: boolean;
   /** Disable the input */
@@ -182,7 +182,7 @@ export function TextField({
   suffix,
   verticalContent,
   placeholder,
-  value = '',
+  value = "",
   helpText,
   label,
   labelAction,
@@ -196,7 +196,7 @@ export function TextField({
   error,
   connectedRight,
   connectedLeft,
-  type = 'text',
+  type = "text",
   name,
   id: idProp,
   role,
@@ -231,7 +231,7 @@ export function TextField({
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
 
-  const id = useUniqueId('TextField', idProp);
+  const id = useUniqueId("TextField", idProp);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -250,11 +250,11 @@ export function TextField({
   useEffect(() => {
     const input = inputRef.current;
     const isSupportedInputType =
-      type === 'text' ||
-      type === 'tel' ||
-      type === 'search' ||
-      type === 'url' ||
-      type === 'password';
+      type === "text" ||
+      type === "tel" ||
+      type === "search" ||
+      type === "url" ||
+      type === "password";
 
     if (!input || !isSupportedInputType || !suggestion) {
       return;
@@ -275,10 +275,10 @@ export function TextField({
     readOnly && styles.readOnly,
     error && styles.error,
     multiline && styles.multiline,
-    focus && styles.focus,
+    focus && styles.focus
   );
 
-  const inputType = type === 'currency' ? 'text' : type;
+  const inputType = type === "currency" ? "text" : type;
 
   const prefixMarkup = prefix ? (
     <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
@@ -296,17 +296,17 @@ export function TextField({
   if (showCharacterCount) {
     const characterCount = normalizedValue.length;
     const characterCountLabel = maxLength
-      ? i18n.translate('Polaris.TextField.characterCountWithMaxLength', {
+      ? i18n.translate("Polaris.TextField.characterCountWithMaxLength", {
           count: characterCount,
           limit: maxLength,
         })
-      : i18n.translate('Polaris.TextField.characterCount', {
+      : i18n.translate("Polaris.TextField.characterCount", {
           count: characterCount,
         });
 
     const characterCountClassName = classNames(
       styles.CharacterCount,
-      multiline && styles.AlignFieldBottom,
+      multiline && styles.AlignFieldBottom
     );
 
     const characterCountText = !maxLength
@@ -318,7 +318,7 @@ export function TextField({
         id={`${id}-CharacterCounter`}
         className={characterCountClassName}
         aria-label={characterCountLabel}
-        aria-live={focus ? 'polite' : 'off'}
+        aria-live={focus ? "polite" : "off"}
         aria-atomic="true"
         onClick={handleClickChild}
       >
@@ -327,7 +327,7 @@ export function TextField({
     );
   }
 
-  const clearButtonVisible = normalizedValue !== '';
+  const clearButtonVisible = normalizedValue !== "";
 
   const clearButtonMarkup =
     clearButton && clearButtonVisible ? (
@@ -338,7 +338,7 @@ export function TextField({
         disabled={disabled}
       >
         <Text variant="bodySm" as="span" visuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
+          {i18n.translate("Polaris.Common.clear")}
         </Text>
         <Icon source={CircleCancelMinor} color="base" />
       </button>
@@ -350,7 +350,7 @@ export function TextField({
         return;
       }
       // Returns the length of decimal places in a number
-      const dpl = (num: number) => (num.toString().split('.')[1] || []).length;
+      const dpl = (num: number) => (num.toString().split(".")[1] || []).length;
 
       const numericValue = value ? parseFloat(value) : 0;
       if (isNaN(numericValue)) {
@@ -363,19 +363,19 @@ export function TextField({
 
       const newValue = Math.min(
         Number(normalizedMax),
-        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
+        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin))
       );
 
       onChange(String(newValue.toFixed(decimalPlaces)), id);
     },
-    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value],
+    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value]
   );
 
   const handleButtonRelease = useCallback(() => {
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+  const handleButtonPress: SpinnerProps["onMouseDown"] = useCallback(
     (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
@@ -386,21 +386,21 @@ export function TextField({
         onChange(0);
         buttonPressTimer.current = window.setTimeout(
           onChangeInterval,
-          interval,
+          interval
         );
       };
 
       buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
 
-      document.addEventListener('mouseup', handleButtonRelease, {
+      document.addEventListener("mouseup", handleButtonRelease, {
         once: true,
       });
     },
-    [handleButtonRelease],
+    [handleButtonRelease]
   );
 
   const spinnerMarkup =
-    type === 'number' && step !== 0 && !disabled && !readOnly ? (
+    type === "number" && step !== 0 && !disabled && !readOnly ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
@@ -410,7 +410,7 @@ export function TextField({
       />
     ) : null;
 
-  const style = multiline && height ? {height, maxHeight} : null;
+  const style = multiline && height ? { height, maxHeight } : null;
 
   const handleExpandingResize = useCallback((height: number) => {
     setHeight(height);
@@ -421,7 +421,7 @@ export function TextField({
       <Resizer
         contents={normalizedValue || placeholder}
         currentHeight={height}
-        minimumLines={typeof multiline === 'number' ? multiline : 1}
+        minimumLines={typeof multiline === "number" ? multiline : 1}
         onHeightChange={handleExpandingResize}
       />
     ) : null;
@@ -455,15 +455,15 @@ export function TextField({
 
   const inputClassName = classNames(
     styles.Input,
-    align && styles[variationName('Input-align', align)],
-    suffix && styles['Input-suffixed'],
-    clearButton && styles['Input-hasClearButton'],
+    align && styles[variationName("Input-align", align)],
+    suffix && styles["Input-suffixed"],
+    clearButton && styles["Input-hasClearButton"],
     monospaced && styles.monospaced,
-    suggestion && styles.suggestion,
+    suggestion && styles.suggestion
   );
 
   const handleOnFocus = (
-    event: React.FocusEvent<HTMLElement> | React.MouseEvent<HTMLInputElement>,
+    event: React.FocusEvent<HTMLElement> | React.MouseEvent<HTMLInputElement>
   ) => {
     setFocus(true);
 
@@ -485,7 +485,7 @@ export function TextField({
     }
   };
 
-  const input = createElement(multiline ? 'textarea' : 'input', {
+  const input = createElement(multiline ? "textarea" : "input", {
     name,
     id,
     disabled,
@@ -508,15 +508,15 @@ export function TextField({
     inputMode,
     type: inputType,
     rows: getRows(multiline),
-    'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
-    'aria-labelledby': labelledBy.join(' '),
-    'aria-invalid': Boolean(error),
-    'aria-owns': ariaOwns,
-    'aria-activedescendant': ariaActiveDescendant,
-    'aria-autocomplete': ariaAutocomplete,
-    'aria-controls': ariaControls,
-    'aria-expanded': ariaExpanded,
-    'aria-required': requiredIndicator,
+    "aria-describedby": describedBy.length ? describedBy.join(" ") : undefined,
+    "aria-labelledby": labelledBy.join(" "),
+    "aria-invalid": Boolean(error),
+    "aria-owns": ariaOwns,
+    "aria-activedescendant": ariaActiveDescendant,
+    "aria-autocomplete": ariaAutocomplete,
+    "aria-controls": ariaControls,
+    "aria-expanded": ariaExpanded,
+    "aria-required": requiredIndicator,
     ...normalizeAriaMultiline(multiline),
     onFocus: handleOnFocus,
     onBlur: handleOnBlur,
@@ -544,8 +544,8 @@ export function TextField({
     <div
       className={classNames(
         styles.Backdrop,
-        connectedLeft && styles['Backdrop-connectedLeft'],
-        connectedRight && styles['Backdrop-connectedRight'],
+        connectedLeft && styles["Backdrop-connectedLeft"],
+        connectedRight && styles["Backdrop-connectedRight"]
       )}
     />
   );
@@ -580,13 +580,17 @@ export function TextField({
   }
 
   function handleClick(event: React.MouseEvent<HTMLInputElement>) {
-    const {target} = event;
+    if (disabled) {
+      return;
+    }
+
+    const { target } = event;
 
     // For TextFields used with Combobox, focus needs to be set again even
     // if the TextField is already focused to trigger the logic to open the
     // Combobox activator
-    const inputRefRole = inputRef?.current?.getAttribute('role');
-    if (target === inputRef.current && inputRefRole === 'combobox') {
+    const inputRefRole = inputRef?.current?.getAttribute("role");
+    if (target === inputRef.current && inputRefRole === "combobox") {
       inputRef.current?.focus();
       handleOnFocus(event);
       return;
@@ -627,9 +631,9 @@ export function TextField({
   }
 
   function handleKeyPress(event: React.KeyboardEvent) {
-    const {key, which} = event;
+    const { key, which } = event;
     const numbersSpec = /[\d.eE+-]$/;
-    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
+    if (type !== "number" || which === Key.Enter || numbersSpec.test(key)) {
       return;
     }
 
@@ -674,13 +678,13 @@ export function TextField({
 function getRows(multiline?: boolean | number) {
   if (!multiline) return undefined;
 
-  return typeof multiline === 'number' ? multiline : 1;
+  return typeof multiline === "number" ? multiline : 1;
 }
 
 function normalizeAriaMultiline(multiline?: boolean | number) {
   if (!multiline) return undefined;
 
   return Boolean(multiline) || multiline > 0
-    ? {'aria-multiline': true}
+    ? { "aria-multiline": true }
     : undefined;
 }
