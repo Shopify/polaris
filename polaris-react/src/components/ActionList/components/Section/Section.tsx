@@ -17,6 +17,7 @@ export interface SectionProps {
   actionRole?: 'option' | 'menuitem' | string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+  /** Whether it is the first in a group of sections */
   isFirst?: boolean;
 }
 
