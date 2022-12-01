@@ -1,64 +1,77 @@
 const stylelint = require('stylelint');
 
-// const {isPlainObject} = require('../../utils');
-
-const customMessages = require('./customMessages');
+const {isPlainObject} = require('../../utils');
 
 const coverageRuleName = 'stylelint-polaris/coverage';
 
+/* The stylelint-polaris/coverage rule is configured by categorizing Stylelint rules in order to enable reporting of problems by coverage category
+
+(e.g., Unexpected named color "blue" (color-named) Stylelint(stylelint-polaris/coverage/colors") */
+
 /**
- * @typedef {{
- *    [category: string]: import('stylelint').ConfigRules | [
- *      import('stylelint').ConfigRules,
- *      {
- *        defaultMessage: import('stylelint').RuleMessage,
- *        meta: import('stylelint').RuleMeta
- *      }
- *    ]
- * }} CategorizedRules
+ * @typedef {import('stylelint').ConfigRules} StylelintRules
  */
 
-// Setting `line` to an invalid line number forces the warning to be reported and the `report({node})` option is used to display the location information: https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
-const forceReport = {line: -1};
+/**
+ * @typedef {object} CategorySettings
+ * @property {string} [message] - Category message appended to the warning
+ * @property {import('stylelint').RuleMeta} [meta] - Category documentation URL hyperlinked to the reported rule in the VS Code diagnostic
+ */
+
+/**
+ * @typedef {{
+ *   [category: string]: StylelintRuleConfig | [
+ *     StylelintRuleConfig, CategorySettings
+ *   ]
+ * }} CategorizedRules
+ */
 
 module.exports = stylelint.createPlugin(
   coverageRuleName,
   /**
    * @param {CategorizedRules} categorizedRules - Configured Stylelint rules grouped by Polaris coverage category
    */
-  (categorizedRules, _, context) => {
-    // const isPrimaryOptionsValid = validatePrimaryOptions(categorizedRules);
+  (categorizedRules) => {
+    const isPrimaryOptionsValid = validatePrimaryOptions(categorizedRules);
 
-    const rules = [];
+    const coverageRules = [];
 
-    for (const [category, [primaryOptions, secondaryOptions]] of Object.entries(
-      categorizedRules,
-    )) {
+    for (const [category, categoryConfig] of Object.entries(categorizedRules)) {
+      const [stylelintRules, categorySettings] =
+        normalizeConfig(categoryConfig);
       for (const [stylelintRuleName, ruleSettings] of Object.entries(
-        primaryOptions,
+        stylelintRules,
       )) {
-        rules.push({
+        coverageRules.push({
           ruleName: `${coverageRuleName}/${category}`,
           stylelintRuleName,
           ruleSettings,
-          customMessage: customMessages[category][stylelintRuleName] || {
-            message: secondaryOptions.defaultMessage,
-          },
-          metadata: secondaryOptions.meta,
+          message: ruleSettings?.[1]?.message || categorySettings?.message,
+          metadata: categorySettings?.meta,
           severity: ruleSettings?.[1]?.severity,
-          fix: context.fix && !ruleSettings?.[1]?.disableFix,
+          fix: !ruleSettings?.[1]?.disableFix,
         });
       }
     }
 
     return (root, result) => {
-      for (const rule of rules) {
+      const validOptions = stylelint.utils.validateOptions(
+        result,
+        coverageRuleName,
+        {
+          actual: isPrimaryOptionsValid,
+        },
+      );
+
+      if (!validOptions) return;
+
+      for (const rule of coverageRules) {
         const {
           ruleName,
           stylelintRuleName,
           ruleSettings,
-          customMessage,
-          metadata,
+          message,
+          ruleMetadata,
           severity,
           fix,
         } = rule;
@@ -72,35 +85,15 @@ module.exports = stylelint.createPlugin(
             result,
           },
           (warning) => {
-            /* tl;dr: Instead of reporting all problems under a single "stylelint-polaris/coverage" rule, the coverage plugin reports problems by category (e.g., "stylelint-polaris/coverage/colors") and augments the Stylelint PostCSS `result` with category specific metadata and an actionable message before reporting.
+            // Setting `line` to an invalid line number forces the warning to be reported and the `report({node})` option is used to display the location information: https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
+            const forceReport = {line: -1};
 
-            Through its Plugin API, Stylelint supports creating custom rules complete with user defined messages and metadata. However, the API does not lend itself to the specificity that we want to give our users when indicating coverage problems out of the box.
-
-            Stylelint's VS Code extension renders either:
-              1) the `messages` and `meta` values set on the built-in stylelint rules _or_
-              2) the custom messages and metadata found on the `customMessages` and `ruleMetadata` properties of the Stylelint PostCSS `result`
-
-            The `customMessages` and `ruleMetadata` properties of the Stylelint PostCSS `result` are derived from the optional `messages` and `meta` properties that can be set on a plugin's rule function. The coverage plugin reports several rules instead of one single rule, as each coverage category is reported as a rule (e.g., stylelint-polaris/coverage/colors). This means we need to set the custom message and metatdata URL directly onto the `customMessages` and `ruleMetadata` properties of the `result` using the rule name set on the problem reported, so that Stylelint's VS Code extension and CLI are able to link the reported coverage problem with a custom message and metadata URL
-
-            **See the relevant lines of source code permalinked below for more context:
-
-            Stylelint `StylelintPostCSSResult` type => https://github.com/stylelint/stylelint/blob/11b3c1e5b446f39c9d90b9da55bd2353fe6d3210/types/stylelint/index.d.ts#L98)
-
-            Stylelint `report` utility => https://github.com/stylelint/stylelint/blob/2290f557cb028242d978b06465dc108aa04a0c3a/lib/utils/report.js#L113
-
-            Stylelint VS Code `warningToDiagnostic` function => https://github.com/stylelint/vscode-stylelint/blob/5b3b4f6b04f2eacbf7cacc7694025dbe96abd128/src/utils/stylelint/warning-to-diagnostic.ts#L44 */
-
-            const {message, args = ['value']} = customMessage;
-            const messageArgs = args.map(
-              (nodeProp) => warning?.node?.[nodeProp],
-            );
-
-            result.stylelint.customMessages[ruleName] = message(...messageArgs);
-            result.stylelint.ruleMetadata[ruleName] = metadata;
+            result.stylelint.ruleMetadata[ruleName] = ruleMetadata;
 
             stylelint.utils.report({
               result,
               ruleName,
+              message: `${warning.text} ${message ? ` - ${message}` : ''}`,
               severity:
                 severity ?? result.stylelint.config?.defaultSeverity ?? 'error',
               // If `warning.node` is NOT present, the warning is referring to a misconfigured rule
@@ -113,12 +106,16 @@ module.exports = stylelint.createPlugin(
   },
 );
 
-// function validatePrimaryOptions(primaryOptions) {
-//   if (!isPlainObject(primaryOptions)) return false;
+function normalizeConfig(config) {
+  return Array.isArray(config) ? config : [config, {}];
+}
 
-//   for (const [options] of Object.values(primaryOptions)) {
-//     if (!isPlainObject(options)) return false;
-//   }
+function validatePrimaryOptions(primaryOptions) {
+  if (!isPlainObject(primaryOptions)) return false;
 
-//   return true;
-// }
+  for (const categoryConfigRules of Object.values(primaryOptions)) {
+    if (!isPlainObject(categoryConfigRules)) return false;
+  }
+
+  return true;
+}
