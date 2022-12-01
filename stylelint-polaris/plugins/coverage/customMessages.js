@@ -2,24 +2,23 @@ module.exports = {
   colors: {
     'color-named': {
       message: (name) =>
-        `(color-named): Replace named color "${name}" with a Polaris color token`,
+        `Replace named color "${name}" with a Polaris color token`,
     },
     'color-no-hex': {
-      message: (hex) =>
-        `(color-no-hex): Replace hex code "${hex}" with a Polaris color token`,
+      message: (hex) => `Replace hex code "${hex}" with a Polaris color token`,
     },
     'declaration-property-value-disallowed-list': {
       message: (prop, value) =>
-        `(declaration-property-value-disallowed-list) - Replace ${prop} value "${value}" with a Polaris color token`,
+        `Replace ${prop} value "${value}" with a Polaris color token`,
       args: ['prop', 'value'],
     },
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list): Replace function "${func}" with a Polaris color token`,
+        `Replace function "${func}" with a Polaris color token`,
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params} with a Polaris color token`,
+        `Replace legacy Sass mixin "@${name} ${params} with a Polaris color token`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
@@ -41,15 +40,15 @@ module.exports = {
   motion: {
     'at-rule-disallowed-list': {
       message: (atRule) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "${atRule}" with a Polaris motion token`,
+        `Replace legacy Sass mixin "${atRule}" with a Polaris motion token`,
     },
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris motion token`,
+        `Replace legacy Sass function "${func}" with a Polaris motion token`,
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params}} with a Polaris motion token`,
+        `Replace legacy Sass mixin "@${name} ${params}} with a Polaris motion token`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
@@ -65,23 +64,23 @@ module.exports = {
           '--p-duration-1-5-0': 'CSS custom property',
         };
 
-        return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris motion token`;
+        return `Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris motion token`;
       },
     },
   },
   font: {
     'declaration-property-value-disallowed-list': {
       message: (prop, value) =>
-        `(declaration-property-value-disallowed-list) - Replace ${prop} value "${value}" with a Polaris font token`,
+        `Replace ${prop} value "${value}" with a Polaris font token`,
       args: ['prop', 'value'],
     },
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris font token`,
+        `Replace legacy Sass function "${func}" with a Polaris font token`,
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params}} with a Polaris font token`,
+        `Replace legacy Sass mixin "@${name} ${params}} with a Polaris font token`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
@@ -115,22 +114,22 @@ module.exports = {
           height: `Replace "${prop}" value "${value}" with a px or rem length value`,
         };
 
-        return `(declaration-property-value-disallowed-list) - ${messageMap[prop]}`;
+        return `${messageMap[prop]}`;
       },
       args: ['prop', 'value'],
     },
     'property-disallowed-list': {
       message: (prop) =>
-        `(property-disallowed-list) - Replace use of "${prop}" with a Polaris layout component if possible`,
+        `Replace use of "${prop}" with a Polaris layout component if possible`,
       args: ['prop'],
     },
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a px or rem length`,
+        `Replace legacy Sass function "${func}" with a px or rem length`,
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params}" with a Polaris component`,
+        `Replace legacy Sass mixin "@${name} ${params}" with a Polaris component`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
@@ -151,14 +150,14 @@ module.exports = {
           '--p-choice-size': 'CSS custom property',
         };
 
-        return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a px or rem length`;
+        return `Replace legacy ${legacyValueTypeMap[value]} "${value}" with a px or rem length`;
       },
     },
   },
   spacing: {
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris token`,
+        `Replace legacy Sass function "${func}" with a Polaris token`,
     },
     'stylelint-polaris/global-disallowed-list': {
       message: (value) => {
@@ -173,14 +172,14 @@ module.exports = {
           '--p-text-field-spinner-offset': 'CSS custom property',
         };
 
-        return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris spacing token`;
+        return `Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris spacing token`;
       },
     },
   },
   shape: {
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params}} with a Polaris shape token`,
+        `Replace legacy Sass mixin "@${name} ${params}} with a Polaris shape token`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
@@ -205,14 +204,14 @@ module.exports = {
           'var(--p-text-field-focus-ring-offset)': 'CSS custom property',
         };
         legacyValueTypeMap[value];
-        return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris shape token`;
+        return `Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris shape token`;
       },
     },
   },
   depth: {
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris depth token`,
+        `Replace legacy Sass function "${func}" with a Polaris depth token`,
     },
     'stylelint-polaris/global-disallowed-list': {
       message: (value) => {
@@ -231,19 +230,19 @@ module.exports = {
           '--p-top-bar-shadow': 'CSS custom property',
         };
 
-        return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris depth token`;
+        return `Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris depth token`;
       },
     },
   },
   'z-index': {
     'declaration-property-value-allowed-list': {
       message: (prop, value) =>
-        `(declaration-property-value-allowed-list) - Replace "${prop}" value "${value}" with a Polaris z-index token`,
+        `Replace "${prop}" value "${value}" with a Polaris z-index token`,
       args: ['prop', 'value'],
     },
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris z-index token`,
+        `Replace legacy Sass function "${func}" with a Polaris z-index token`,
     },
     'stylelint-polaris/global-disallowed-list': {
       message: (value) => {
@@ -255,46 +254,45 @@ module.exports = {
           'var(--p-override-loading-z-index)': 'CSS custom property',
         };
 
-        return `(global-disallowed-list) - Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris z-index token`;
+        return `Replace legacy ${legacyValueTypeMap[value]} "${value}" with a Polaris z-index token`;
       },
     },
   },
   conventions: {
     'unit-disallowed-list': {
       message: (unit) =>
-        `(unit-disallowed-list) - Replace hard-coded value ${
+        `Replace hard-coded value ${
           unit ? `"${unit}" ` : ''
         }with a Polaris token`,
     },
     'stylelint-polaris/custom-properties-allowed-list': {
-      message: (value) =>
-        `(custom-properties-allowed-list) - Unexpected CSS custom property ${value}`,
+      message: (value) => `Unexpected CSS custom property ${value}`,
     },
   },
   breakpoints: {
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris breakpoint token`,
+        `Replace legacy Sass function "${func}" with a Polaris breakpoint token`,
     },
     'stylelint-polaris/media-queries-allowed-list': {
       message: (name, params) =>
-        `(media-query-allowed-list) - Replace media query params "${params}" with a Polaris breakpoint token`,
+        `Replace media query params "${params}" with a Polaris breakpoint token`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Replace legacy Sass mixin "@${name} ${params}" with a Polaris breakpoint token`,
+        `Replace legacy Sass mixin "@${name} ${params}" with a Polaris breakpoint token`,
       args: ['name', 'params'],
     },
   },
   legacy: {
     'function-disallowed-list': {
       message: (func) =>
-        `(function-disallowed-list) - Replace legacy Sass function "${func}" with a Polaris token`,
+        `Replace legacy Sass function "${func}" with a Polaris token`,
     },
     'stylelint-polaris/at-rule-disallowed-list': {
       message: (name, params) =>
-        `(at-rule-disallowed-list) - Unexpected use of legacy Sass mixin "@${name} ${params}"`,
+        `Unexpected use of legacy Sass mixin "@${name} ${params}"`,
       args: ['name', 'params'],
     },
     'stylelint-polaris/global-disallowed-list': {
