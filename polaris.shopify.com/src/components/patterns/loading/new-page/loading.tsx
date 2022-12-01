@@ -164,10 +164,13 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-export default function LoadingPage() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const patternName = 'Navigating to a new page';
-  const [exampleIndex, setExampleIndex] = useState(0);
+const Example = ({
+  example,
+  patternName,
+}: {
+  example: PatternExample;
+  patternName: string;
+}) => {
   const [codeActive, toggleCode] = useState(false);
   const [htmlCode, setHTMLCode] = useState('');
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -183,6 +186,65 @@ export default function LoadingPage() {
       }
     }
   };
+  const exampleUrl = `/app-emulator${createUrl({
+    code: example.code,
+    paramType: 'search',
+  })}`;
+  const {code, description} = example;
+
+  return (
+    <Tab.Panel key={exampleUrl}>
+      {description ? <Markdown text={description} /> : null}
+      <ExampleWrapper
+        renderFrameActions={() => (
+          <>
+            <a
+              target="_blank"
+              href={`/app-emulator${createUrl({
+                code: example.code,
+                paramType: 'search',
+              })}`}
+              rel="noreferrer"
+            >
+              <Text variant="bodySm" as="span" visuallyHidden>
+                View fullscreen preview
+              </Text>
+              <Icon source={MaximizeMajor} />
+            </a>
+            <PlayroomButton
+              code={example.code}
+              patternName={`${patternName} > ${example.title}`}
+            />
+            <LinkButton onClick={() => toggleCode((codeActive) => !codeActive)}>
+              {codeActive ? 'Hide code' : 'Show code'}
+            </LinkButton>
+          </>
+        )}
+      >
+        <GrowFrame
+          ref={iframeRef}
+          id="live-preview-iframe"
+          defaultHeight={'192px'}
+          onContentLoad={handleExampleLoad}
+          src={exampleUrl}
+        />
+      </ExampleWrapper>
+      {codeActive ? (
+        <Code
+          code={[
+            {title: 'React', code: code.trim()},
+            {title: 'HTML', code: htmlCode},
+          ]}
+        />
+      ) : null}
+    </Tab.Panel>
+  );
+};
+
+export default function LoadingPage() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const patternName = 'Navigating to a new page';
+  const [exampleIndex, setExampleIndex] = useState(0);
   useEffect(() => {
     setExampleIndex(0);
   }, []);
@@ -260,69 +322,13 @@ Merchants typically have a specific goal in mind when navigating to a new page. 
                   </Tab.List>
 
                   <Tab.Panels>
-                    {codeExamples.map((example) => {
-                      const exampleUrl = `/app-emulator${createUrl({
-                        code: example.code,
-                        paramType: 'search',
-                      })}`;
-                      const {code, description} = example;
-
-                      return (
-                        <Tab.Panel key={exampleUrl}>
-                          {description ? <Markdown text={description} /> : null}
-                          <ExampleWrapper
-                            renderFrameActions={() => (
-                              <>
-                                <a
-                                  target="_blank"
-                                  href={`/app-emulator${createUrl({
-                                    code: example.code,
-                                    paramType: 'search',
-                                  })}`}
-                                  rel="noreferrer"
-                                >
-                                  <Text
-                                    variant="bodySm"
-                                    as="span"
-                                    visuallyHidden
-                                  >
-                                    View fullscreen preview
-                                  </Text>
-                                  <Icon source={MaximizeMajor} />
-                                </a>
-                                <PlayroomButton
-                                  code={example.code}
-                                  patternName={`${patternName} > ${example.title}`}
-                                />
-                                <LinkButton
-                                  onClick={() =>
-                                    toggleCode((codeActive) => !codeActive)
-                                  }
-                                >
-                                  {codeActive ? 'Hide code' : 'Show code'}
-                                </LinkButton>
-                              </>
-                            )}
-                          >
-                            <GrowFrame
-                              ref={iframeRef}
-                              id="live-preview-iframe"
-                              defaultHeight={'192px'}
-                              onContentLoad={handleExampleLoad}
-                              src={exampleUrl}
-                            />
-                          </ExampleWrapper>
-                          {codeActive ? (
-                            <Code
-                              code={[
-                                {title: 'React', code: code.trim()},
-                                {title: 'HTML', code: htmlCode},
-                              ]}
-                            />
-                          ) : null}
-                        </Tab.Panel>
-                      );
-                    })}
+                    {codeExamples.map((example, i) => (
+                      <Example
+                        key={i}
+                        example={example}
+                        patternName={patternName}
+                      />
+                    ))}
                   </Tab.Panels>
                 </Tab.Group>
                 <Text as="h2" variant="heading2xl">
