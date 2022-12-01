@@ -6,11 +6,10 @@ import {
 } from '../../utilities/focus';
 import {KeypressListener} from '../KeypressListener';
 import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
-import {classNames} from '../../utilities/css';
+import {Box} from '../Box';
 
 import {Section, Item} from './components';
 import type {ItemProps} from './components';
-import styles from './ActionList.scss';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -40,10 +39,7 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const className = classNames(styles.ActionList);
-
   const hasMultipleSections = finalSections.length > 1;
-  const Element = hasMultipleSections ? 'ul' : 'div';
   const elementRole =
     hasMultipleSections && actionRole === 'menuitem' ? 'menu' : undefined;
   const elementTabIndex =
@@ -57,6 +53,7 @@ export function ActionList({
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}
         onActionAnyItem={onActionAnyItem}
+        isFirst={index === 0}
       />
     ) : null;
   });
@@ -102,15 +99,15 @@ export function ActionList({
     ) : null;
 
   return (
-    <Element
+    <Box
+      as={hasMultipleSections ? 'ul' : 'div'}
       ref={actionListRef}
-      className={className}
       role={elementRole}
       tabIndex={elementTabIndex}
     >
       {listeners}
       {sectionMarkup}
-    </Element>
+    </Box>
   );
 }
 

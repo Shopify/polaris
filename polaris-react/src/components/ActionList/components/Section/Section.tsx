@@ -7,7 +7,6 @@ import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
-import styles from '../../ActionList.scss';
 
 export interface SectionProps {
   /** Section of action items */
@@ -18,11 +17,14 @@ export interface SectionProps {
   actionRole?: 'option' | 'menuitem' | string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+  /** Whether it is the first in a group of sections */
+  isFirst?: boolean;
 }
 
 export function Section({
   section,
   hasMultipleSections,
+  isFirst,
   actionRole,
   onActionAnyItem,
 }: SectionProps) {
@@ -55,8 +57,6 @@ export function Section({
     },
   );
 
-  const className = section.title ? undefined : styles['Section-withoutTitle'];
-
   const titleMarkup = section.title ? (
     <Box
       paddingBlockStart="4"
@@ -70,7 +70,7 @@ export function Section({
     </Box>
   ) : null;
 
-  let sectionRole;
+  let sectionRole: 'menu' | 'presentation' | undefined;
   switch (actionRole) {
     case 'option':
       sectionRole = 'presentation';
@@ -84,22 +84,29 @@ export function Section({
   }
 
   const sectionMarkup = (
-    <div className={className}>
+    <>
       {titleMarkup}
-      <ul
-        className={styles.Actions}
-        role={sectionRole}
+      <Box
+        as="ul"
+        padding="2"
+        {...(hasMultipleSections && {paddingBlockStart: '0'})}
+        {...(sectionRole && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
         {actionMarkup}
-      </ul>
-    </div>
+      </Box>
+    </>
   );
 
   return hasMultipleSections ? (
-    <li className={styles.Section} role="presentation">
+    <Box
+      as="li"
+      role="presentation"
+      {...(!isFirst && {borderBlockStart: 'divider'})}
+      {...(!section.title && {paddingBlockStart: '2'})}
+    >
       {sectionMarkup}
-    </li>
+    </Box>
   ) : (
     sectionMarkup
   );
