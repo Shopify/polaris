@@ -6,29 +6,33 @@ export default {
   component: Divider,
 } as ComponentMeta<typeof Divider>;
 
-export function Styles() {
+export function Default() {
+  return <Divider />;
+}
+
+export function WithColors() {
   return (
     <AlphaStack gap="5" fullWidth>
       <Text as="h1" variant="headingXs">
-        base
+        Base
       </Text>
-      <Divider border="base" />
+      <Divider color="base" />
       <Text as="h1" variant="headingXs">
-        dark
+        Dark
       </Text>
-      <Divider border="dark" />
+      <Divider color="dark" />
       <Text as="h1" variant="headingXs">
-        divider
+        Divider
       </Text>
-      <Divider border="divider" />
+      <Divider color="divider" />
       <Text as="h1" variant="headingXs">
-        divider on dark
+        Divider on dark
       </Text>
-      <Divider border="divider-on-dark" />
+      <Divider color="divider-on-dark" />
       <Text as="h1" variant="headingXs">
-        transparent
+        Transparent
       </Text>
-      <Divider border="transparent" />
+      <Divider color="transparent" />
     </AlphaStack>
   );
 }
@@ -36,11 +40,11 @@ export function Styles() {
 export function WithWidth() {
   return (
     <AlphaStack gap="12" fullWidth>
-      <Divider border="base" width="1" />
-      <Divider border="base" width="2" />
-      <Divider border="base" width="3" />
-      <Divider border="base" width="4" />
-      <Divider border="base" width="5" />
+      <Divider width="1" />
+      <Divider width="2" />
+      <Divider width="3" />
+      <Divider width="4" />
+      <Divider width="5" />
     </AlphaStack>
   );
 }
