@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState, useCallback} from 'react';
+import React, {useEffect, useRef, useState, useCallback} from 'react';
 import {createUrl} from 'playroom';
 import {Tab} from '@headlessui/react';
 import {MaximizeMajor} from '@shopify/polaris-icons';
@@ -92,10 +92,11 @@ const PlayroomButton = ({
   code: string;
   patternName: string;
 }) => {
+  const srcUrl = typeof window !== 'undefined' ? window.location.href : '';
   const encodedCode = createUrl({
     baseUrl: playroom.baseUrl,
     code: `// [Polaris Pattern] ${patternName}
-// Generated on ${getISOStringYear()} from ${window.location.href}
+// Generated on ${getISOStringYear()} from ${srcUrl}
 ${/* intentional blank line */ ''}
 ${code}`,
     // TODO: Is this correct?
@@ -166,14 +167,17 @@ const Example = ({
     paramType: 'search',
   })}`;
 
-  const onFrameToggle = useCallback((event) => {
-    setAdminFrameVisible(!!event.target.checked);
-    if (iframeRef.current?.contentWindow) {
-      iframeRef.current.contentWindow.postMessage({
-        setFrameVisible: !!event.target.checked,
-      });
-    }
-  }, []);
+  const onFrameToggle = useCallback(
+    (event: React.SyntheticEvent<HTMLInputElement>) => {
+      setAdminFrameVisible(!!event.currentTarget.checked);
+      if (iframeRef.current?.contentWindow) {
+        iframeRef.current.contentWindow.postMessage({
+          setFrameVisible: !!event.currentTarget.checked,
+        });
+      }
+    },
+    [],
+  );
 
   return (
     <Tab.Panel>

@@ -1,0 +1,42 @@
+.ExamplesList {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  button {
+    padding: 0.45rem 0.65rem;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    background: transparent;
+    box-shadow: var(--card-shadow);
+    border-radius: var(--border-radius-400);
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-500);
+    line-height: 1.33;
+    color: var(--text-strong);
+
+    &:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    &[aria-selected='true'] {
+      background: var(--search-highlight-color);
+      &:focus {
+        box-shadow: var(--focus-outline);
+      }
+    }
+  }
+}
+
+.Link {
+  font-size: var(--font-size-100);
+}
+
+.Accordion {
+  padding: 1rem 2rem;
+  border: 1px solid black;
+}

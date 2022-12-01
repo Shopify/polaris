@@ -5,7 +5,7 @@ export {
   Toast as AppBridgeToast,
   Modal as AppBridgeModal,
   ResourcePicker,
-  ContextualSaveBar,
-  TitleBar,
-  NavigationMenu,
+  ContextualSaveBar as AppBridgeContextualSaveBar,
+  TitleBar as AppBridgeTitleBar,
+  NavigationMenu as AppBridgeNavigationMenu,
 } from '@shopify/app-bridge-react';
