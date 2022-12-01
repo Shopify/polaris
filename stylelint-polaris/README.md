@@ -1,51 +1,40 @@
 # Stylelint Polaris
 
-## Package structure
+Collection of Stylelint configs and rules that promote Polaris Design System adoption and coverage.
 
-```
-stylelint-polaris/
-|-- plugins/
-|  |   # Custom plugin for categorizing built-in and custom rules
-|  |-- coverage.js
-|  |   # Additional custom rules
-|  |-- custom-properties-allowed-list.js
-|  |   # Plugins entry point
-|  |   # (See advanced config example below)
-|  |__ index.js
-|   # Main stylelint-polaris config
-|__ index.js
+## Installation
+
+```sh
+yarn -D @shopify/stylelint-polaris stylelint
 ```
 
-### Usage
+> Note: `stylelint-polaris` requires a peer dependency of `stylelint@>=14.15.0`
 
-### Basic
+## Usage
 
-```json5
-// package.json
+Extend `@shopify/stylelint-polaris` in your [Stylelint config](https://stylelint.io/user-guide/configure/). Example in `package.json`
+
+```json
 {
   "stylelint": {
     "extends": ["@shopify/stylelint-polaris"]
-  },
-};
+  }
+}
 ```
 
-### Advanced
+> IMPORTANT: To ensure maximum compliance please add `@shopify/stylelint-polaris` to the end of the `extends` array
 
-```js
-// .stylelintrc.js
-module.exports = {
-  extends: ['@shopify/stylelint-polaris'],
-  plugins: ['@shopify/stylelint-polaris/plugins'],
-  rules: {
-    'stylelint-polaris/custom-properties-allowed-list': {
-      // Extending the allowed Polaris custom properties
-      allowedProperties: [/--my-app-.+/],
-    },
-  },
-};
-```
+## Development
 
-## Local development - Polaris react
+### Add new rules
+
+### Build custom rules
+
+### Test custom rules
+
+### Add custom messages
+
+### Tophat `stylelint-polaris` updates in `polaris-react`
 
 > Open your terminal to the root of the `polaris` monorepo:
 
