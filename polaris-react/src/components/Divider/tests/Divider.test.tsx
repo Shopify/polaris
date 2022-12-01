@@ -6,7 +6,7 @@ import {Divider} from '../Divider';
 
 describe('<Divider />', () => {
   it('renders with style', () => {
-    const divider = mountWithApp(<Divider border="dark" />);
+    const divider = mountWithApp(<Divider color="dark" />);
 
     expect(divider).toContainReactComponent(Box, {
       borderBlockStart: 'dark',

@@ -8,7 +8,7 @@ status:
   value: Alpha
   message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
-  - fileName: divider-styles.tsx
+  - fileName: divider-with-colors.tsx
     title: Style
     description: Divider style can be adjusted using the [Shape tokens](https://polaris.shopify.com/tokens/shape).
   - fileName: divider-with-width.tsx

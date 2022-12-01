@@ -1,6 +1,6 @@
 ---
-'@shopify/polaris': patch
-'polaris.shopify.com': patch
+'@shopify/polaris': minor
+'polaris.shopify.com': minor
 ---
 
 Created `Divider` component with guidance and examples

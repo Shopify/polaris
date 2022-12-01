@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ShapeBorderWidthScale} from '@shopify/polaris-tokens';
 
-import {Box} from '../Box';
+import styles from './Divider.scss';
 
 export type BorderTokenAlias =
   | 'base'
@@ -11,18 +11,17 @@ export type BorderTokenAlias =
   | 'transparent';
 
 export interface DividerProps {
-  /** Divider style */
-  border?: BorderTokenAlias;
+  /** Divider color */
+  color?: BorderTokenAlias;
   /** Divider width */
   width?: ShapeBorderWidthScale;
 }
 
-export const Divider = ({border, width}: DividerProps) => {
-  return (
-    <Box
-      borderBlockStart={border}
-      borderBlockStartWidth={width}
-      borderBlockEnd="transparent"
-    />
-  );
+export const Divider = ({color = 'divider', width = '1'}: DividerProps) => {
+  const style = {
+    '--pc-divider-color': color ? `var(--p-border-${color})` : undefined,
+    '--pc-divider-width': width ? `var(--p-border-width-${width})` : undefined,
+  } as React.CSSProperties;
+
+  return <hr className={styles.Divider} style={style} />;
 };
