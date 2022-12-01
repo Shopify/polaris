@@ -1,4 +1,5 @@
 import {getParameters} from 'codesandbox/lib/api/define';
+import React from 'react';
 import styles from './CodesandboxButton.module.scss';
 
 const getAppCode = (code: string) => {
@@ -34,10 +35,10 @@ root.render(
 );
 `;
 
-interface Props {
+type Props = {
   className?: string;
   code: string;
-}
+};
 
 const CodesandboxButton = (props: Props) => {
   const {className, code} = props;

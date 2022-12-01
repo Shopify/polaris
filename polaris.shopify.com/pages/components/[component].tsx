@@ -14,7 +14,6 @@ import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
 import {getRelevantTypes} from '../../scripts/get-props/src/get-props';
-import CodesandboxButton from '../../src/components/CodesandboxButton';
 
 interface MarkdownData {
   frontMatter: any;
@@ -22,12 +21,8 @@ interface MarkdownData {
   readme: string;
 }
 
-interface ComponentExample extends Example {
-  fileName: string;
-}
-
 interface Props {
-  examples: ComponentExample[];
+  examples: Example[];
   status?: Status;
   title: string;
   description: string;
@@ -56,16 +51,7 @@ const Components = ({
     : undefined;
 
   const componentExamples = Boolean(examples.length) && (
-    <ComponentExamples
-      examples={examples}
-      extractRenderedHTML={(iframeDoc) =>
-        iframeDoc?.getElementById('polaris-example')?.innerHTML
-      }
-      getIframeUrl={(example) =>
-        `/examples/${example.fileName.replace('.tsx', '')}`
-      }
-      renderActions={(example) => <CodesandboxButton code={example.code} />}
-    />
+    <ComponentExamples examples={examples} />
   );
   const propsTable =
     type && status?.value !== 'Deprecated' ? (
@@ -110,7 +96,7 @@ export const getStaticProps: GetStaticProps<
     const readme = {description, body};
 
     const examples = (data?.frontMatter?.examples || []).map(
-      (example: ComponentExample) => {
+      (example: Example) => {
         const examplePath = path.resolve(
           process.cwd(),
           `pages/examples/${example.fileName}`,

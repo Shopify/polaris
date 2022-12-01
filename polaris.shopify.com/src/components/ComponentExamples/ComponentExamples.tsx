@@ -3,20 +3,19 @@ import GrowFrame from '../GrowFrame';
 import styles from './ComponentExamples.module.scss';
 import Code from '../Code';
 import {Tab} from '@headlessui/react';
-import {className} from '../../utils/various';
 import Markdown from '../Markdown';
+import ExampleWrapper from '../ExampleWrapper';
+import CodesandboxButton from '../CodesandboxButton';
 
 export interface Example {
   code: string;
   description?: string;
   title: string;
+  fileName: string;
 }
 
-interface Props<T> {
-  examples: T[];
-  extractRenderedHTML: (htmlDoc: Document) => string | undefined;
-  getIframeUrl: (example: T) => string;
-  renderActions: (example: T) => React.ReactNode;
+interface Props {
+  examples: Example[];
 }
 
 // https://stackoverflow.com/a/60338028
@@ -39,12 +38,7 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-const ComponentExamples = <T extends Example>({
-  examples,
-  extractRenderedHTML,
-  getIframeUrl,
-  renderActions,
-}: Props<T>) => {
+const ComponentExamples = ({examples}: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -52,7 +46,7 @@ const ComponentExamples = <T extends Example>({
   const handleExampleLoad = () => {
     const iframeDocument = iframeRef.current?.contentDocument;
     if (iframeDocument) {
-      const html = extractRenderedHTML(iframeDocument);
+      const html = iframeDocument?.getElementById('polaris-example')?.innerHTML;
       if (html) {
         setHTMLCode(formatHTML(html));
       }
@@ -83,13 +77,20 @@ const ComponentExamples = <T extends Example>({
 
       <Tab.Panels>
         {examples.map((example) => {
-          const exampleUrl = getIframeUrl(example);
+          const exampleUrl = `/examples/${example.fileName.replace(
+            '.tsx',
+            '',
+          )}`;
           const {code, description} = example;
 
           return (
             <Tab.Panel key={exampleUrl}>
               {description ? <Markdown text={description} /> : null}
-              <div className={styles.ExampleFrame}>
+              <ExampleWrapper
+                renderFrameActions={() => (
+                  <CodesandboxButton code={example.code} />
+                )}
+              >
                 <GrowFrame
                   ref={iframeRef}
                   id="live-preview-iframe"
@@ -97,11 +98,7 @@ const ComponentExamples = <T extends Example>({
                   onContentLoad={handleExampleLoad}
                   src={exampleUrl}
                 />
-                <div className={className(styles.Buttons, 'light-mode')}>
-                  {renderActions(example)}
-                </div>
-              </div>
-
+              </ExampleWrapper>
               <Code
                 code={[
                   {title: 'React', code: code.trim()},
