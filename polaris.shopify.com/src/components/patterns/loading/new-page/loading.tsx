@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState, useCallback} from 'react';
 import {createUrl} from 'playroom';
 import {Tab} from '@headlessui/react';
 import {MaximizeMajor} from '@shopify/polaris-icons';
@@ -17,14 +17,13 @@ type PatternExample = {
   title: string;
   code: string;
   description?: string;
+  supportsAppBridge?: boolean;
 };
 const codeExamples: PatternExample[] = [
   {
     title: 'Index skeleton page',
     code: `
-
-    <SkeletonPage primaryAction>
-    <AppBridgeLoading loading/>
+<SkeletonPage primaryAction>
   <Layout>
     <Layout.Section>
       <Card sectioned>
@@ -36,39 +35,10 @@ const codeExamples: PatternExample[] = [
           <SkeletonBodyText />
         </TextContainer>
       </Card>
-      <Card sectioned>
-        <TextContainer>
-          <SkeletonDisplayText size="small" />
-          <SkeletonBodyText />
-        </TextContainer>
-      </Card>
-    </Layout.Section>
-    <Layout.Section secondary>
-      <Card>
-        <Card.Section>
-          <TextContainer>
-            <SkeletonDisplayText size="small" />
-            <SkeletonBodyText lines={2} />
-          </TextContainer>
-        </Card.Section>
-        <Card.Section>
-          <SkeletonBodyText lines={1} />
-        </Card.Section>
-      </Card>
-      <Card subdued>
-        <Card.Section>
-          <TextContainer>
-            <SkeletonDisplayText size="small" />
-            <SkeletonBodyText lines={2} />
-          </TextContainer>
-        </Card.Section>
-        <Card.Section>
-          <SkeletonBodyText lines={2} />
-        </Card.Section>
-      </Card>
     </Layout.Section>
   </Layout>
 </SkeletonPage>`,
+    supportsAppBridge: true,
   },
   {
     title: 'Detail view skeleton page',
@@ -175,7 +145,7 @@ const Example = ({
   const [htmlCode, setHTMLCode] = useState('');
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const handleExampleLoad = () => {
+  const handleExampleLoad = useCallback(() => {
     const iframeDocument = iframeRef.current?.contentDocument;
     if (iframeDocument) {
       const html = (
@@ -185,27 +155,33 @@ const Example = ({
         setHTMLCode(formatHTML(html));
       }
     }
-  };
+  }, []);
+
+  const {code, description} = example;
+
+  const [isAdminFrameVisible, setAdminFrameVisible] = useState<boolean>(false);
+
   const exampleUrl = `/app-emulator${createUrl({
     code: example.code,
     paramType: 'search',
   })}`;
-  const {code, description} = example;
+
+  const onFrameToggle = useCallback((event) => {
+    setAdminFrameVisible(!!event.target.checked);
+    if (iframeRef.current?.contentWindow) {
+      iframeRef.current.contentWindow.postMessage({
+        setFrameVisible: !!event.target.checked,
+      });
+    }
+  }, []);
 
   return (
-    <Tab.Panel key={exampleUrl}>
+    <Tab.Panel>
       {description ? <Markdown text={description} /> : null}
       <ExampleWrapper
         renderFrameActions={() => (
           <>
-            <a
-              target="_blank"
-              href={`/app-emulator${createUrl({
-                code: example.code,
-                paramType: 'search',
-              })}`}
-              rel="noreferrer"
-            >
+            <a target="_blank" href={exampleUrl} rel="noreferrer">
               <Text variant="bodySm" as="span" visuallyHidden>
                 View fullscreen preview
               </Text>
@@ -218,6 +194,17 @@ const Example = ({
             <LinkButton onClick={() => toggleCode((codeActive) => !codeActive)}>
               {codeActive ? 'Hide code' : 'Show code'}
             </LinkButton>
+            {example.supportsAppBridge ? (
+              <label>
+                <input
+                  type="checkbox"
+                  className={styles.Checkbox}
+                  checked={isAdminFrameVisible}
+                  onChange={onFrameToggle}
+                />
+                Show Admin
+              </label>
+            ) : null}
           </>
         )}
       >
