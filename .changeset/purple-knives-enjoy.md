@@ -1,5 +1,5 @@
 ---
-'@shopify/stylelint-polaris': minor
+'@shopify/stylelint-polaris': major
 ---
 
-Categorize coverage rules
+Stylelint Polaris v5 release
