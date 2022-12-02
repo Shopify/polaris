@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.9.1
+
+### Patch Changes
+
+- [#7744](https://github.com/Shopify/polaris/pull/7744) [`28220456f`](https://github.com/Shopify/polaris/commit/28220456f67bb4e6e2df19ceb334635ca2d0f3a5) Thanks [@laurkim](https://github.com/laurkim)! - Fixed mapping for `TextStyle` `variation="strong"` to use `Text` `fontWeight="semibold"` instead of `fontWeight="bold"`
+
 ## 0.9.0
 
 ### Minor Changes

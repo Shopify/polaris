@@ -139,16 +139,20 @@ export function Section({
 
   const toggleRollup = rollup && items.length > rollup.after && (
     <div className={styles.ListItem} key="List Item">
-      <button
-        type="button"
-        className={toggleClassName}
-        onClick={toggleExpanded}
-        aria-label={ariaLabel}
-      >
-        <span className={styles.Icon}>
-          <Icon source={HorizontalDotsMinor} />
-        </span>
-      </button>
+      <div className={styles.ItemWrapper}>
+        <div className={styles.ItemInnerWrapper}>
+          <button
+            type="button"
+            className={toggleClassName}
+            onClick={toggleExpanded}
+            aria-label={ariaLabel}
+          >
+            <span className={styles.Icon}>
+              <Icon source={HorizontalDotsMinor} />
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 

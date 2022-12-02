@@ -15,7 +15,7 @@ export function Default() {
   );
 }
 
-export function BoxWithDarkBorder() {
+export function WithDarkBorder() {
   return (
     <Box background="surface" padding="4" border="dark">
       <Icon source={PaintBrushMajor} color="base" />
@@ -23,7 +23,7 @@ export function BoxWithDarkBorder() {
   );
 }
 
-export function BoxWithBorderRadius() {
+export function WithBorderRadius() {
   return (
     <Box background="surface" padding="4" borderRadius="2">
       <Icon source={PaintBrushMajor} color="highlight" />
@@ -31,7 +31,7 @@ export function BoxWithBorderRadius() {
   );
 }
 
-export function BoxWithResponsivePadding() {
+export function WithResponsivePadding() {
   return (
     <AlphaStack>
       <Box background="surface" padding={{xs: '2', sm: '8'}} border="dark">

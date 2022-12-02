@@ -1,5 +1,13 @@
 @import '../../styles/common';
 
+.listReset {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  outline: none;
+  padding-inline-start: 0;
+}
+
 .Box {
   @include responsive-props('box', 'padding', 'padding');
   @include responsive-props(
@@ -52,6 +60,14 @@
   --pc-box-padding-block-start: initial;
   --pc-box-width: initial;
   --pc-box-border-width: var(--p-border-width-1);
+  --pc-box-inset-block-start: initial;
+  --pc-box-inset-block-end: initial;
+  --pc-box-inset-inline-start: initial;
+  --pc-box-inset-inline-end: initial;
+  inset-block-start: var(--pc-box-inset-block-start);
+  inset-block-end: var(--pc-box-inset-block-end);
+  inset-inline-start: var(--pc-box-inset-inline-start);
+  inset-inline-end: var(--pc-box-inset-inline-end);
   background-color: var(--pc-box-background);
   box-shadow: var(--pc-box-shadow);
   border-radius: var(--pc-box-border-radius);
@@ -99,4 +115,8 @@
   overflow-y: var(--pc-box-overflow-y);
   width: var(--pc-box-width);
   -webkit-overflow-scrolling: touch;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
 }
