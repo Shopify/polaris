@@ -171,7 +171,6 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?icon-size($|\()/,
       /([\w-]+\.)?top-bar-height/,
       /([\w-]+\.)?z-index/,
-      /([\w-]+\.)?safe-area-for($|\()/,
     ],
     'stylelint-polaris/at-rule-disallowed-list': {
       include: [
