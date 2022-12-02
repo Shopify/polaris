@@ -66,7 +66,12 @@ export function EmptyState({
       sizes="(max-width: 568px) 60vw"
     />
   ) : (
-    <Image role="presentation" alt="" source={image} />
+    <Image
+      className={imageContainedClass}
+      role="presentation"
+      alt=""
+      source={image}
+    />
   );
 
   const secondaryActionMarkup = secondaryAction
