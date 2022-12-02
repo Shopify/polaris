@@ -1,6 +1,6 @@
 @import 'styles/common';
 
-$no-extra-newlines-above-this: 200px;
+$no-extra-newlines-above-this: 1rem;
 
 .BaseCase {
   padding: 1rem;
@@ -33,22 +33,29 @@ $no-extra-newlines-above-this: 200px;
 }
 
 .MultiLineAtRule {
-  @media screen and (min-width: $largebreakpoint),
-    (min-width: $smallbreakpoint) and #{legacy-polaris-v8.$p-breakpoints-md-down} {
-    grid-column: 1;
+  @media screen and (min-width: 1rem),
+    (min-width: 1rem) and #{1rem} {
+    grid-column: 1rem;
   }
 }
 
 .MultiLineDecl {
   margin-top: calc(
-    (var(--pc-range-slider-thumb-size) - var(--pc-range-slider-track-height)) *
-      -0.5
+    (1rem - 1rem + 1rem - 1rem + 1rem - 1rem + 1rem - 1rem + 1rem - 1rem) * -0.5
   );
 }
 
 .AnotherMultiLine {
   $vertical-padding: calc(
-    (36px - var(--p-font-line-height-2) - var(--p-space-05)) / 2
+    (1rem - 1rem + 1rem - 1rem + 1rem - 1rem + 1rem - 1rem + 1rem - 1rem) * -0.5
+  );
+}
+
+.AtRuleMultilineNoBlock {
+  @include safe-area-for(
+    left,
+    calc(1rem - 1rem + 1rem - 1rem + 1rem - 1rem),
+    left
   );
 }
 
@@ -57,4 +64,8 @@ $no-extra-newlines-above-this: 200px;
     // stylelint-disable-next-line declaration-no-important
     padding: var(--p-space-4) !important;
   }
+}
+
+a:unknown {
+  padding: var(--p-space-4);
 }
