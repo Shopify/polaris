@@ -7,7 +7,7 @@
   --pc-stack-gap-lg: var(--pc-stack-gap-md);
   --pc-stack-gap-xl: var(--pc-stack-gap-lg);
   display: flex;
-  flex-direction: column;
+  flex-direction: var(--pc-stack-order);
   align-items: var(--pc-stack-align);
   gap: var(--pc-stack-gap-xs);
 

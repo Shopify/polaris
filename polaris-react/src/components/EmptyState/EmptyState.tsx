@@ -3,10 +3,9 @@ import React, {useContext} from 'react';
 import {classNames} from '../../utilities/css';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import type {ComplexAction} from '../../types';
-import {Box, BoxProps} from '../Box';
+import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
-import {TextContainer} from '../TextContainer';
 import {Text} from '../Text';
 import {AlphaStack} from '../AlphaStack';
 import {Inline} from '../Inline';
@@ -93,13 +92,15 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Text variant={headingSize} as="p" alignment="center">
-      {heading}
-    </Text>
+    <Box paddingBlockEnd="4">
+      <Text variant={headingSize} as="p" alignment="center">
+        {heading}
+      </Text>
+    </Box>
   ) : null;
 
   const childrenMarkup = children ? (
-    <Box paddingBlockEnd="2">
+    <Box>
       <Text as="span" variant="bodyMd" color="subdued" alignment="center">
         {children}
       </Text>
@@ -108,10 +109,10 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <TextContainer>
+      <Box paddingBlockEnd="6">
         {headingMarkup}
         {childrenMarkup}
-      </TextContainer>
+      </Box>
     ) : null;
 
   const actionsMarkup =
@@ -127,7 +128,7 @@ export function EmptyState({
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
       <Box maxWidth={fullWidth ? '100%' : '400px'}>
-        <AlphaStack align="center">
+        <AlphaStack align="center" gap="0">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
@@ -135,19 +136,16 @@ export function EmptyState({
       </Box>
     ) : null;
 
-  const defaultBoxStyle: BoxProps = {
-    paddingInlineStart: '5',
-    paddingInlineEnd: '5',
-    paddingBlockStart: '5',
-    paddingBlockEnd: '16',
-  };
-
-  // new return
   return (
-    <Box {...defaultBoxStyle}>
-      <AlphaStack align="center" gap="0">
-        <Box>{imageMarkup}</Box>
+    <Box
+      paddingInlineStart="0"
+      paddingInlineEnd="0"
+      paddingBlockStart="5"
+      paddingBlockEnd="16"
+    >
+      <AlphaStack align="center" gap="0" reverseOrder={withinContentContainer}>
         {detailsMarkup}
+        <Box>{imageMarkup}</Box>
       </AlphaStack>
     </Box>
   );
