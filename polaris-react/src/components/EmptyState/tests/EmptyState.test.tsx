@@ -8,6 +8,7 @@ import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
 import {EmptyState} from '../EmptyState';
+import {Inline} from '../../Inline';
 
 describe('<EmptyState />', () => {
   let imgSrc =
@@ -50,14 +51,14 @@ describe('<EmptyState />', () => {
       });
     });
 
-    it('adds center distribution and tight spacing to Stack', () => {
+    it('adds center align and spacing-2 to Inline', () => {
       const emptyState = mountWithApp(
         <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
       );
 
-      expect(emptyState).toContainReactComponent(Stack, {
-        spacing: 'tight',
-        distribution: 'center',
+      expect(emptyState).toContainReactComponent(Inline, {
+        align: 'center',
+        gap: '2',
       });
     });
 
