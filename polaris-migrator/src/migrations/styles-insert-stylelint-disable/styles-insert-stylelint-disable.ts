@@ -1,6 +1,6 @@
 import os from 'os';
 
-import type {FileInfo} from 'jscodeshift';
+import type {API, FileInfo, Options} from 'jscodeshift';
 import postcss, {Node, Comment, Plugin, Root} from 'postcss';
 import stylelint, {StylelintPostcssResult} from 'stylelint';
 
@@ -11,7 +11,7 @@ const plugin = (): Plugin => {
   return {
     postcssPlugin: 'insert-stylelint-disable',
     Once(root, {result}) {
-      result.messages.forEach(({node, line, endLine}) => {
+      result.messages.forEach(({node}) => {
         // If a polaris ignore comment exists above the node already,
         // do nothing
         if (node.prev()?.text?.includes(polarisContextMsg)) {
@@ -21,7 +21,7 @@ const plugin = (): Plugin => {
         const isMultiline =
           crossPlatformNewlineRegExp.test(node.value) ||
           crossPlatformNewlineRegExp.test(node.text) ||
-          line < endLine;
+          crossPlatformNewlineRegExp.test(node.params);
 
         const commentText = `${
           isMultiline ? 'stylelint-disable' : 'stylelint-disable-next-line'
@@ -32,7 +32,8 @@ const plugin = (): Plugin => {
         node.before(comment);
 
         if (isMultiline) {
-          node.type === 'atrule' || node.type === 'rule'
+          (node.type === 'atrule' && node?.nodes?.length) ||
+          node.type === 'rule'
             ? node.prepend(createCommentNode('stylelint-enable'))
             : node.after(createCommentNode('stylelint-enable'));
         }
@@ -45,13 +46,15 @@ const plugin = (): Plugin => {
   };
 };
 
-export default async function stylesInsertStylelintDisable(file: FileInfo) {
+export default async function stylesInsertStylelintDisable(
+  file: FileInfo,
+  _: API,
+  options: Options,
+) {
   return postcss([
     stylelint({
       config: {
-        extends: ['@shopify/stylelint-polaris'],
-        // remove when stylelint-polaris v5 is released
-        reportDescriptionlessDisables: true,
+        extends: [options.config ?? '@shopify/stylelint-polaris'],
       },
     }) as Plugin,
     plugin(),
