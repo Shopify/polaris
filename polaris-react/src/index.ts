@@ -149,6 +149,9 @@ export type {DescriptionListProps} from './components/DescriptionList';
 export {DisplayText} from './components/DisplayText';
 export type {DisplayTextProps} from './components/DisplayText';
 
+export {Divider} from './components/Divider';
+export type {DividerProps} from './components/Divider';
+
 export {DropZone} from './components/DropZone';
 export type {DropZoneProps} from './components/DropZone';
 
