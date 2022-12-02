@@ -1,6 +1,6 @@
 # Stylelint Polaris
 
-Collection of Stylelint configs and rules that promote Polaris Design System adoption and coverage.
+Collection of Stylelint configs and rules that promote Polaris Design System adoption and coverage
 
 ## Installation
 
@@ -22,7 +22,7 @@ Extend `@shopify/stylelint-polaris` in your [Stylelint config](https://stylelint
 }
 ```
 
-> IMPORTANT: To ensure maximum compliance please add `@shopify/stylelint-polaris` to the end of the `extends` array
+> IMPORTANT: `@shopify/stylelint-polaris` must be added to the end of the `extends` array
 
 ### Run the linter
 
@@ -60,7 +60,7 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 1. Navigate to the root [`stylelint-polaris` config](index.js)
 1. Locate the `stylelint-polaris/coverage` options
 1. Identify the appropriate category for the new rule
-1. Insert the rule using standard Stylelint rule configurations
+1. Insert the rule using standard Stylelint [rule configurations](https://stylelint.io/user-guide/configure#rules)
 
 ```js
 module.exports = {
@@ -80,17 +80,67 @@ module.exports = {
 
 1. Refer to the [Writing plugins](https://stylelint.io/developer-guide/plugins) guide of the Stylelint documentation
 1. Create your rule in the [plugins](plugins) directory
-1. Validate your plugin with tests
+1. Validate your plugin with [tests](https://github.com/stylelint/jest-preset-stylelint#usage) (reference sibling plugins for examples)
 1. Refer to the [Add new rules](#add-new-rules) section to add your custom rule to the `stylelint-polaris` config
 
 ### Add custom messages
 
-Custom messages are surfaced in the command line, CI, and in supported editors along side the default `stylelint` rule messages. They are added to the root level config and aim to provide more meaning insight on rule violations and how to resolve them.
+Custom messages are surfaced in the command line, CI, and supported editors along side the default `stylelint` rule messages. They are added to the root level config and aim to provide more meaning insight on rule violations and how to resolve them.
 
 In a majority of cases, the default rule messages are clear and concise. However, they don't always guide developers to a desired outcome. Thus, there are two mechanisms we suggest for improving and providing custom rule messages:
 
-1. Add a generic `message` to the `stylelint-polaris/coverage` category config. This message is appended to the default rule message and we expect will cover most cases.
+1. Add a generic `message` to the secondary options of a given `stylelint-polaris/coverage` category. This message is appended to the default rule message and we expect will cover most cases.
+
+```js
+module.exports = {
+  rules: {
+    'stylelint-polaris/coverage': {
+      colors: [
+        {
+          'color-named': 'never'
+          'color-no-hex': true,
+        },
+        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors'},
+      ],
+    },
+  },
+}
+```
+
+Example failure message:
+
+```diff
+- Unexpected named color "red" (color-named)
++ Unexpected named color "red" (color-named) Please use a Polaris color token: https://polaris.shopify.com/tokens/colors
+```
+
 2. Add a custom `message` property in the [rule config's secondary options](https://stylelint.io/user-guide/configure/#message). This message is used in place of the default rule message.
+
+```js
+module.exports = {
+  rules: {
+    'stylelint-polaris/coverage': {
+      colors: [
+        {
+          'color-named': [
+            'never',
+            {message: 'Unexpected named color. Please refer to this specific page with guidance on how to resolve the failure' },
+          ]
+          'color-no-hex': true,
+        },
+        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors'},
+      ],
+    },
+  },
+}
+```
+
+Example failure message:
+
+```diff
+- Unexpected named color "red" (color-named)
++ Unexpected named color. Please refer to this specific page with guidance on how to resolve the failure
+```
 
 ### Tophat `stylelint-polaris` updates in `polaris-react`
 
