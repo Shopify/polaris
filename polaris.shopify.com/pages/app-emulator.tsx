@@ -158,6 +158,12 @@ export default function AppEmulator() {
     !!router.query.framed,
   );
 
+  useEffect(() => {
+    if (router.isReady) {
+      setAdminFrameVisible(!!router.query.framed);
+    }
+  }, [router.isReady, router.query?.framed]);
+
   // The parent window might instruct us to toggle the admin frame on or off
   useEffect(() => {
     const messageListener = (e: any) => {
@@ -237,9 +243,8 @@ export default function AppEmulator() {
       <I18nContext.Provider value={I18N_MANAGER}>
         <Frame {...frameProps}>
           <Page
-            {...(isAdminFrameVisible
-              ? {title: 'My App', divider: true, fullWidth: true}
-              : {})}
+            fullWidth
+            {...(isAdminFrameVisible ? {title: 'My App', divider: true} : {})}
           >
             <div
               style={
