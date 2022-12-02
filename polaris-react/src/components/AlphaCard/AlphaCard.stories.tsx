@@ -1,6 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {AlphaCard, AlphaStack, Bleed, Box, List, Text} from '@shopify/polaris';
+import {
+  AlphaCard,
+  AlphaStack,
+  Bleed,
+  Box,
+  Divider,
+  List,
+  Text,
+} from '@shopify/polaris';
 
 export default {
   component: AlphaCard,
@@ -81,9 +89,9 @@ export function WithSubduedSection() {
         </Box>
       </AlphaStack>
       <Bleed marginBlockEnd="5">
+        <Divider />
         <Box
           background="surface-subdued"
-          borderBlockStart="divider"
           borderRadiusEndStart="2"
           borderRadiusEndEnd="2"
           padding="5"

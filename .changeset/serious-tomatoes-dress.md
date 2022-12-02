@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Updated `Box` to accept role attribute
+Rebuilt `ActionList` to use layout primitives

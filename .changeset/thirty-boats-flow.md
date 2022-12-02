@@ -3,4 +3,4 @@
 'polaris.shopify.com': minor
 ---
 
-Removed `ContentBlock` and its examples in the style guide
+Created `Divider` component with guidance and examples
