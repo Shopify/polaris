@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
 import {Image} from '../../Image';
-import {Stack} from '../../Stack';
 import {Text} from '../../Text';
 import {UnstyledLink} from '../../UnstyledLink';
 import {WithinContentContext} from '../../../utilities/within-content-context';
