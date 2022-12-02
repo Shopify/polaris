@@ -21,12 +21,13 @@ const DEFAULT_LOCALE = 'en';
 const I18N_MANAGER = new I18nManager({locale: DEFAULT_LOCALE, country: 'US'});
 
 const config = {
-  apiKey: 'Client ID retrieved from the Partner Dashboard',
+  apiKey: 'PlayroomAppFakeID',
   appId: 'app id from GraphQL',
   handle: 'my-app-handle',
   shopId: 'shop id from GraphQL',
   url: 'http://localhost:3000/',
   name: 'app name',
+  forceRedirect: false,
 };
 
 const initialState = {

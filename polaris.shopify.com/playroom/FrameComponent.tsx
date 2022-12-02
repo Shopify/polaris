@@ -6,9 +6,9 @@ import enTranslations from '@shopify/polaris/locales/en.json';
 import {updateGrowFrameHeight} from '../src/components/GrowFrame';
 const hostString = 'localhost:3000';
 const config = {
-  apiKey: 'Client ID retrieved from the Partner Dashboard',
+  apiKey: 'PlayroomAppFakeID',
   host: btoa(hostString.replace(/\//g, '_').replace(/\+/g, '-')),
-  forceRedirect: true,
+  forceRedirect: false,
 };
 export default function FrameComponent({
   theme = enTranslations,
