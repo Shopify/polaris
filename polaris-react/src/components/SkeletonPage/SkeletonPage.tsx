@@ -72,7 +72,7 @@ export function SkeletonPage({
           maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
         })}
         {...(fullWidth && {
-          maxWidth: 'var(--pc-skeleton-page-max-width)',
+          maxWidth: 'none',
         })}
       >
         <AlphaStack gap="0" fullWidth>
