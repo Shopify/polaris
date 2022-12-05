@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, ButtonGroup} from '@shopify/polaris';
+import {CalendarMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Button,
@@ -102,7 +103,7 @@ export function Pressed() {
   );
 }
 
-export function PlainDisclosure() {
+export function WithPlainDisclosure() {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -118,7 +119,7 @@ export function PlainDisclosure() {
   );
 }
 
-export function RightAlignedDisclosure() {
+export function WithRightAlignedDisclosure() {
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -135,13 +136,25 @@ export function RightAlignedDisclosure() {
   );
 }
 
-export function SelectDisclosure() {
+export function WithSelectDisclosure() {
   return (
     <div style={{height: '100px'}}>
       <Button disclosure="select" onClick={() => console.log('Open Popover')}>
         Select options
       </Button>
     </div>
+  );
+}
+
+export function WithIcon() {
+  return <Button icon={CalendarMinor}>Choose date range</Button>;
+}
+
+export function WithIconAndDisclosure() {
+  return (
+    <Button icon={CalendarMinor} disclosure>
+      Choose date range
+    </Button>
   );
 }
 
