@@ -26,6 +26,10 @@
   @media #{$p-breakpoints-xl-up} {
     gap: var(--pc-stack-gap-xl);
   }
+
+  > * {
+    max-width: 100%;
+  }
 }
 
 .listReset {
