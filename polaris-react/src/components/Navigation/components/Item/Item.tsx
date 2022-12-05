@@ -5,6 +5,7 @@ import React, {
   MouseEvent,
   ReactNode,
   useCallback,
+  useRef,
 } from 'react';
 
 import {classNames} from '../../../../utilities/css';
@@ -100,6 +101,20 @@ export function Item({
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [keyFocused, setKeyFocused] = useState(false);
+  const itemRef = useRef<HTMLSpanElement>(null);
+  const [isOverflow, setIsOverflow] = useState(false);
+
+  // Make a hook for this behaviour and test it I guess?
+  // Could make it so it accepts markup and conditionally adds the tooltip to it?
+
+  // Maybe a way to do this with just callback ref instead of useEffect?
+
+  useEffect(() => {
+    const overflowText = itemRef.current;
+    if (overflowText) {
+      setIsOverflow(overflowText.scrollHeight > overflowText.clientHeight);
+    }
+  }, []);
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
@@ -161,18 +176,29 @@ export function Item({
       <div className={styles.Badge}>{badgeMarkup}</div>
     );
 
+  const labelMarkup = (
+    <span
+      className={classNames(
+        styles.Text,
+        truncateText && styles['Text-truncated'],
+      )}
+      ref={itemRef}
+    >
+      {label}
+      {indicatorMarkup}
+    </span>
+  );
+
   const itemContentMarkup = (
     <>
       {iconMarkup}
-      <span
-        className={classNames(
-          styles.Text,
-          truncateText && styles['Text-truncated'],
-        )}
-      >
-        {label}
-        {indicatorMarkup}
-      </span>
+      {isOverflow ? (
+        <Tooltip content={label} preferredPosition="above">
+          {labelMarkup}
+        </Tooltip>
+      ) : (
+        labelMarkup
+      )}
       {wrappedBadgeMarkup}
     </>
   );
@@ -315,32 +341,25 @@ export function Item({
   return (
     <li className={className}>
       <div className={styles.ItemWrapper}>
-        <div
-          className={classNames(
-            styles.ItemInnerWrapper,
-            selected && canBeActive && styles['ItemInnerWrapper-Selected'],
+        <UnstyledLink
+          url={url}
+          className={itemClassName}
+          external={external}
+          tabIndex={tabIndex}
+          aria-disabled={disabled}
+          aria-label={accessibilityLabel}
+          onClick={getClickHandler(onClick)}
+          onKeyUp={handleKeyUp}
+          onBlur={handleBlur}
+          {...normalizeAriaAttributes(
+            secondaryNavigationId,
+            subNavigationItems.length > 0,
+            showExpanded,
           )}
         >
-          <UnstyledLink
-            url={url}
-            className={itemClassName}
-            external={external}
-            tabIndex={tabIndex}
-            aria-disabled={disabled}
-            aria-label={accessibilityLabel}
-            onClick={getClickHandler(onClick)}
-            onKeyUp={handleKeyUp}
-            onBlur={handleBlur}
-            {...normalizeAriaAttributes(
-              secondaryNavigationId,
-              subNavigationItems.length > 0,
-              showExpanded,
-            )}
-          >
-            {itemContentMarkup}
-          </UnstyledLink>
-          {secondaryActionMarkup}
-        </div>
+          {itemContentMarkup}
+        </UnstyledLink>
+        {secondaryActionMarkup}
       </div>
       {secondaryNavigationMarkup}
     </li>
