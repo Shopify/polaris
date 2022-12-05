@@ -55,33 +55,4 @@ export function Header({
       </Columns>
     </Box>
   );
-
-  if (titleHidden || !children) {
-    return titleHiddenMarkup;
-  }
-
-  return (
-    <Box
-      paddingBlockStart="4"
-      paddingBlockEnd="4"
-      paddingInlineStart="5"
-      paddingInlineEnd="5"
-      borderBlockEnd="divider"
-    >
-      <Columns columns={{xs: '1fr auto'}}>
-        <Inline>
-          <Text id={id} as="h2" variant="headingLg" breakWord>
-            {children}
-          </Text>
-        </Inline>
-        <Inline>
-          <CloseButton
-            pressed={closing}
-            titleHidden={titleHidden}
-            onClick={onClose}
-          />
-        </Inline>
-      </Columns>
-    </Box>
-  );
 }
