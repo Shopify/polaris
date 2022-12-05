@@ -1,7 +1,7 @@
 @mixin responsive-props(
   $componentName,
   $componentProp,
-  $declartionProp,
+  $declarationProp,
   $shorthandFallback: null
 ) {
   --pc-#{$componentName}-#{$componentProp}-xs: initial;
@@ -18,55 +18,55 @@
     --pc-#{$componentName}-#{$componentProp}-lg
   );
   @if $shorthandFallback {
-    #{$declartionProp}: var(
+    #{$declarationProp}: var(
       --pc-#{$componentName}-#{$componentProp}-xs,
       var(--pc-#{$componentName}-#{$shorthandFallback}-xs)
     );
 
     @media #{$p-breakpoints-sm-up} {
-      #{$declartionProp}: var(
+      #{$declarationProp}: var(
         --pc-#{$componentName}-#{$componentProp}-sm,
         var(--pc-#{$componentName}-#{$shorthandFallback}-sm)
       );
     }
 
     @media #{$p-breakpoints-md-up} {
-      #{$declartionProp}: var(
+      #{$declarationProp}: var(
         --pc-#{$componentName}-#{$componentProp}-md,
         var(--pc-#{$componentName}-#{$shorthandFallback}-md)
       );
     }
 
     @media #{$p-breakpoints-lg-up} {
-      #{$declartionProp}: var(
+      #{$declarationProp}: var(
         --pc-#{$componentName}-#{$componentProp}-lg,
         var(--pc-#{$componentName}-#{$shorthandFallback}-lg)
       );
     }
 
     @media #{$p-breakpoints-xl-up} {
-      #{$declartionProp}: var(
+      #{$declarationProp}: var(
         --pc-#{$componentName}-#{$componentProp}-xl,
         var(--pc-#{$componentName}-#{$shorthandFallback}-xl)
       );
     }
   } @else {
-    #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
+    #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
 
     @media #{$p-breakpoints-sm-up} {
-      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-sm);
+      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-sm);
     }
 
     @media #{$p-breakpoints-md-up} {
-      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-md);
+      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-md);
     }
 
     @media #{$p-breakpoints-lg-up} {
-      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-lg);
+      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-lg);
     }
 
     @media #{$p-breakpoints-xl-up} {
-      #{$declartionProp}: var(--pc-#{$componentName}-#{$componentProp}-xl);
+      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xl);
     }
   }
 }
