@@ -322,7 +322,7 @@ const stylelintPolarisCoverageOptions = {
       },
     },
   },
-  mediaQueries: {
+  'media-queries': {
     'stylelint-polaris/media-queries-allowed-list': {
       // Allowed media types and media conditions
       // https://www.w3.org/TR/mediaqueries-5/#media
