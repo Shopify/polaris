@@ -100,11 +100,9 @@ export function EmptyState({
   ) : null;
 
   const childrenMarkup = children ? (
-    <Box>
-      <Text as="span" variant="bodyMd" color="subdued" alignment="center">
-        {children}
-      </Text>
-    </Box>
+    <Text as="span" variant="bodyMd" color="subdued" alignment="center">
+      {children}
+    </Text>
   ) : null;
 
   const textContentMarkup =
@@ -117,12 +115,10 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <Box>
-        <Inline align="center" gap="2">
-          {secondaryActionMarkup}
-          {primaryActionMarkup}
-        </Inline>
-      </Box>
+      <Inline align="center" gap="2">
+        {secondaryActionMarkup}
+        {primaryActionMarkup}
+      </Inline>
     ) : null;
 
   const detailsMarkup =
@@ -145,7 +141,7 @@ export function EmptyState({
     >
       <AlphaStack align="center" gap="0" reverseOrder={withinContentContainer}>
         {detailsMarkup}
-        <Box>{imageMarkup}</Box>
+        {imageMarkup}
       </AlphaStack>
     </Box>
   );
