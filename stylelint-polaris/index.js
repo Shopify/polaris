@@ -321,25 +321,23 @@ const stylelintPolarisCoverageOptions = {
         ],
       },
     },
+  },
+  mediaQueries: {
     'stylelint-polaris/media-queries-allowed-list': {
       // Allowed media types and media conditions
       // https://www.w3.org/TR/mediaqueries-5/#media
       allowedMediaTypes: ['print', 'screen'],
       allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
-    },
-  },
-  breakpoints: {
-    // Legacy functions
-    'function-disallowed-list': [
-      /([\w-]+\.)?breakpoint/,
-      /([\w-]+\.)?layout-width/,
-    ],
-    'stylelint-polaris/media-queries-allowed-list': {
       allowedScssInterpolations: [
         // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
         /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
       ],
     },
+    // Legacy functions
+    'function-disallowed-list': [
+      /([\w-]+\.)?breakpoint/,
+      /([\w-]+\.)?layout-width/,
+    ],
     // Legacy mixins
     'stylelint-polaris/at-rule-disallowed-list': {
       include: [
