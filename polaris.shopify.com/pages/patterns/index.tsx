@@ -1,13 +1,4 @@
-import FoundationsPage from '../../src/components/FoundationsPage';
-import {FoundationsProps} from '../../src/components/FoundationsPage/FoundationsPage';
-import {getStaticPropsForFoundations} from '../../src/utils/foundations';
+import {PatternsPage} from '../../src/components/PatternsPage';
 
-const SECTION = 'patterns';
-
-const FoundationsCategory = (props: FoundationsProps) => (
-  <FoundationsPage {...props} />
-);
-
-export const getStaticProps = getStaticPropsForFoundations(SECTION);
-
-export default FoundationsCategory;
+const PatternsIndex = () => <PatternsPage />;
+export default PatternsIndex;

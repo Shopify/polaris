@@ -1,0 +1,85 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.banner {
+  border-radius: var(--border-radius-700);
+  background-color: var(--surface-subdued);
+  box-shadow: 0px 1px 6px 0px rgba(31, 33, 36, 0.05),
+    0px 2px 4px 0px rgba(31, 33, 36, 0.1);
+  max-width: 600px;
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-6);
+  padding: var(--p-space-5) var(--p-space-6);
+  & > svg {
+    flex-shrink: 0;
+    fill: var(--p-icon-highlight);
+    /* Undo these overly perscriptive styles from Polaris Icons */
+    filter: none;
+    opacity: 1;
+  }
+  & > p {
+    font-weight: var(--font-weight-500);
+    color: var(--text-strong);
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  &[data-gap='0'] {
+    gap: var(--p-space-0);
+  }
+  &[data-gap='025'] {
+    gap: var(--p-space-025);
+  }
+  &[data-gap='05'] {
+    gap: var(--p-space-05);
+  }
+  &[data-gap='1'] {
+    gap: var(--p-space-1);
+  }
+  &[data-gap='2'] {
+    gap: var(--p-space-2);
+  }
+  &[data-gap='3'] {
+    gap: var(--p-space-3);
+  }
+  &[data-gap='4'] {
+    gap: var(--p-space-4);
+  }
+  &[data-gap='5'] {
+    gap: var(--p-space-5);
+  }
+  &[data-gap='6'] {
+    gap: var(--p-space-6);
+  }
+  &[data-gap='8'] {
+    gap: var(--p-space-8);
+  }
+  &[data-gap='10'] {
+    gap: var(--p-space-10);
+  }
+  &[data-gap='12'] {
+    gap: var(--p-space-12);
+  }
+  &[data-gap='16'] {
+    gap: var(--p-space-16);
+  }
+  &[data-gap='20'] {
+    gap: var(--p-space-20);
+  }
+  &[data-gap='24'] {
+    gap: var(--p-space-24);
+  }
+  &[data-gap='28'] {
+    gap: var(--p-space-28);
+  }
+  &[data-gap='32'] {
+    gap: var(--p-space-32);
+  }
+}
