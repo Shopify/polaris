@@ -4,6 +4,11 @@ import {Card, EmptyState, Link} from '@shopify/polaris';
 
 export default {
   component: EmptyState,
+  parameters: {
+    // Sets a delay for EmptyState because there is a slight layout shift
+    // when first rendered.
+    chromatic: {delay: 300},
+  },
 } as ComponentMeta<typeof EmptyState>;
 
 export function Default() {
