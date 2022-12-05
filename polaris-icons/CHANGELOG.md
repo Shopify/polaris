@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.7.0
+
+### Minor Changes
+
+- [#7816](https://github.com/Shopify/polaris/pull/7816) [`afe77e584`](https://github.com/Shopify/polaris/commit/afe77e5843f5b960574fe04433affc609d8687b1) Thanks [@allyshiasewdat](https://github.com/allyshiasewdat)! - Add returns major icon
+
 ## 6.6.0
 
 ### Minor Changes
