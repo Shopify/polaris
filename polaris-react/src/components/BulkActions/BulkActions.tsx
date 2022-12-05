@@ -28,7 +28,7 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
-const BUTTONS_NODE_ADDITIONAL_WIDTH = 32;
+const BUTTONS_NODE_ADDITIONAL_WIDTH = 40;
 
 export interface BulkActionsProps {
   /** List is in a selectable state */
