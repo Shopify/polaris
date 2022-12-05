@@ -96,6 +96,7 @@ export enum Breakpoints {
 export enum StatusName {
   Deprecated = 'Deprecated',
   Alpha = 'Alpha',
+  Beta = 'Beta',
   Information = 'Information',
   Warning = 'Warning',
 }
