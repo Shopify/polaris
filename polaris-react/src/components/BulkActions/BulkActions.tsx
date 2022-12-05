@@ -103,8 +103,10 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       return 0;
     }
 
-    const containerWidthMinusAdditionalWidth =
-      containerWidth - BUTTONS_NODE_ADDITIONAL_WIDTH;
+    const containerWidthMinusAdditionalWidth = Math.max(
+      0,
+      containerWidth - BUTTONS_NODE_ADDITIONAL_WIDTH,
+    );
 
     if (
       containerWidthMinusAdditionalWidth >= this.bulkActionsWidth ||

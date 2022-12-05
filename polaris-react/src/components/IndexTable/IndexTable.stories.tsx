@@ -600,6 +600,14 @@ export function WithBulkActionsAndSelectionAcrossPages() {
       content: 'Edit customers',
       onAction: () => console.log('Todo: implement bulk edit'),
     },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Rename customers',
+      onAction: () => console.log('Todo: implement bulk rename'),
+    },
   ];
   const bulkActions = [
     {
