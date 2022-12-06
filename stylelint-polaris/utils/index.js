@@ -230,6 +230,27 @@ function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
 
+/**
+ * Returns the arguments expected by Stylelint rules that support functional custom messages
+ * @param {string} ruleName The category's default message
+ * @param {import('postcss').Node} node The
+ * @returns {Parameters<import('stylelint').RuleMessageFunc> | undefined} An array of arguments for stylelint.report to invoke the functional message with
+ */
+function getMessageArgs(ruleName, node) {
+  if (!node) return undefined;
+
+  const stylelintRuleMessageArgs = {
+    'color-no-hex': [node.value],
+    'function-disallowed-list': [node.value],
+    'at-rule-disallowed-list': [node.atRule],
+    'property-disallowed-list': [node.prop],
+    'declaration-property-value-disallowed-list': [node.prop, node.value],
+    'declaration-property-unit-disallowed-list': [node.prop, node.value],
+  };
+
+  return stylelintRuleMessageArgs[ruleName];
+}
+
 module.exports.hasScssInterpolation = hasScssInterpolation;
 module.exports.isBoolean = isBoolean;
 module.exports.isCustomProperty = isCustomProperty;
@@ -243,3 +264,4 @@ module.exports.scssInterpolationExpression = scssInterpolationExpression;
 module.exports.scssInterpolationRegExp = scssInterpolationRegExp;
 module.exports.vendorPrefix = vendorPrefix;
 module.exports.vendorUnprefixed = vendorUnprefixed;
+module.exports.getMessageArgs = getMessageArgs;

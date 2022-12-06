@@ -1,6 +1,6 @@
 const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
 
-/** @type {import('./plugins/coverage').PrimaryOptions} */
+/** @type {import('./plugins/coverage').CategorizedRules} */
 const stylelintPolarisCoverageOptions = {
   colors: [
     {
@@ -45,8 +45,10 @@ const stylelintPolarisCoverageOptions = {
       ],
     },
     {
-      message:
-        'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors',
+      message: 'Use a Polaris color token',
+      meta: {
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/plugins/coverage/README.md#color',
+      },
     },
   ],
   motion: {
@@ -181,13 +183,13 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?icon-size($|\()/,
       /([\w-]+\.)?top-bar-height/,
       /([\w-]+\.)?z-index/,
-      /([\w-]+\.)?safe-area-for($|\()/,
     ],
     'stylelint-polaris/at-rule-disallowed-list': {
       include: [
         /([\w-]+\.)?hidden-when-printing($|\()/,
         /([\w-]+\.)?print-hidden($|\()/,
         /([\w-]+\.)?layout-flex-fix($|\()/,
+        /([\w-]+\.)?safe-area-for($|\()/,
         /([\w-]+\.)?skeleton-page-header-layout($|\()/,
         /([\w-]+\.)?skeleton-page-secondary-actions-layout($|\()/,
       ],

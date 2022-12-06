@@ -1,91 +1,114 @@
 const stylelint = require('stylelint');
 
-const {isPlainObject} = require('../../utils');
+const {isPlainObject, getMessageArgs} = require('../../utils');
 
-const ruleName = 'stylelint-polaris/coverage';
+const coverageRuleName = 'stylelint-polaris/coverage';
+
+/* The stylelint-polaris/coverage rule is configured by categorizing Stylelint rules in order to enable reporting of problems by coverage category
+(e.g., Unexpected named color "blue" (color-named) Please use a Polaris color token Stylelint(stylelint-polaris/coverage/colors") */
 
 /**
- * @typedef {object} CategorySecondaryOptions
- * @property {string} [message] - Message appended to each error in a given category
+ * @typedef {import('stylelint').ConfigRules} StylelintRuleConfig
  */
 
-/** @typedef {stylelint.ConfigRules | [stylelint.ConfigRules, CategorySecondaryOptions?]} CategoryConfigRules */
+/**
+ * @typedef {object} CategorySettings
+ * @property {import('stylelint').RuleMessage} [message] - Message appended to the warning if no custom message is set on a rule's secondary options
+ * @property {import('stylelint').RuleMeta} [meta] - Category documentation URL hyperlinked to the reported rule in the VS Code diagnostic
+ */
 
-/** @typedef {{[category: string]: CategoryConfigRules}} PrimaryOptions */
+/**
+ * @typedef {{
+ *   [category: string]: StylelintRuleConfig | [
+ *     StylelintRuleConfig, CategorySettings
+ *   ]
+ * }} CategorizedRules
+ */
 
 // Setting `line` to an invalid line number forces the warning to be reported
 // and the `report({node})` option is used to display the location information:
 // https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
 const forceReport = {line: -1};
+const defaultMeta = {
+  url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/plugins/coverage/README.md',
+};
 
 module.exports = stylelint.createPlugin(
-  ruleName,
-  /** @param {PrimaryOptions} primaryOptions */
-  (primaryOptions, secondaryOptions, context) => {
-    const isPrimaryOptionsValid = validatePrimaryOptions(primaryOptions);
+  coverageRuleName,
+  /**
+   * @param {CategorizedRules} categorizedRules - Configured Stylelint rules grouped by Polaris coverage category
+   */
+  (categorizedRules, _, context) => {
+    const isPrimaryOptionsValid = validatePrimaryOptions(categorizedRules);
+    const coverageRules = [];
 
-    const rules = [];
-
-    for (const [categoryName, categoryConfigRules] of Object.entries(
-      primaryOptions,
-    )) {
-      const normalizedCategoryConfigRules = Array.isArray(categoryConfigRules)
-        ? /** @type {CategoryConfigRules} */ (categoryConfigRules)
-        : [categoryConfigRules, {}];
-
-      for (const [categoryRuleName, categoryRuleSettings] of Object.entries(
-        normalizedCategoryConfigRules[0],
+    for (const [category, categoryConfig] of Object.entries(categorizedRules)) {
+      const [stylelintRules, categorySettings] =
+        normalizeConfig(categoryConfig);
+      for (const [stylelintRuleName, stylelintRuleConfig] of Object.entries(
+        stylelintRules,
       )) {
-        rules.push({
-          coverageRuleName: `${ruleName}/${categoryName}`,
-          categoryRuleName,
-          categoryRuleSettings,
-          categoryRuleSeverity: categoryRuleSettings?.[1]?.severity,
-          categoryRuleFix:
-            context.fix && !categoryRuleSettings?.[1]?.disableFix,
-          categoryMessage:
-            !categoryRuleSettings?.[1]?.message &&
-            normalizedCategoryConfigRules?.[1]?.message,
+        coverageRules.push({
+          ruleName: `${coverageRuleName}/${category}`,
+          stylelintRuleName,
+          ruleSettings: stylelintRuleConfig,
+          severity: stylelintRuleConfig?.[1]?.severity,
+          fix: context.fix && !stylelintRuleConfig?.[1]?.disableFix,
+          customMessage: stylelintRuleConfig?.[1]?.message,
+          appendedMessage: categorySettings?.message,
+          meta: categorySettings?.meta || defaultMeta,
         });
       }
     }
 
     return (root, result) => {
-      const validOptions = stylelint.utils.validateOptions(result, ruleName, {
-        actual: isPrimaryOptionsValid,
-      });
+      const validOptions = stylelint.utils.validateOptions(
+        result,
+        coverageRuleName,
+        {
+          actual: isPrimaryOptionsValid,
+        },
+      );
 
       if (!validOptions) return;
 
-      for (const rule of rules) {
+      for (const rule of coverageRules) {
         const {
-          coverageRuleName,
-          categoryRuleName,
-          categoryRuleSettings,
-          categoryRuleSeverity,
-          categoryRuleFix,
-          categoryMessage,
+          ruleName,
+          stylelintRuleName,
+          ruleSettings,
+          fix,
+          meta,
+          customMessage = '',
+          appendedMessage = '',
+          severity = result.stylelint.config?.defaultSeverity,
         } = rule;
 
         stylelint.utils.checkAgainstRule(
           {
-            ruleName: categoryRuleName,
-            ruleSettings: categoryRuleSettings,
-            fix: categoryRuleFix,
+            ruleName: stylelintRuleName,
+            ruleSettings,
+            fix,
             root,
             result,
           },
           (warning) => {
+            const defaultMessage = appendedMessage
+              ? `${warning.text} ${appendedMessage}`
+              : warning.text;
+
+            const messageArgs =
+              typeof customMessage === 'function'
+                ? getMessageArgs(stylelintRuleName, warning.node)
+                : undefined;
+
             stylelint.utils.report({
               result,
-              ruleName: coverageRuleName,
-              message: categoryMessage
-                ? `${warning.text} ${categoryMessage}`
-                : warning.text,
-              severity:
-                categoryRuleSeverity ??
-                result.stylelint.config?.defaultSeverity ??
-                'error',
+              ruleName,
+              meta,
+              messageArgs,
+              message: customMessage || defaultMessage,
+              severity: severity || 'error',
               // If `warning.node` is NOT present, the warning is
               // referring to a misconfigured rule
               ...(warning.node ? {node: warning.node} : forceReport),
@@ -96,6 +119,10 @@ module.exports = stylelint.createPlugin(
     };
   },
 );
+
+function normalizeConfig(config) {
+  return Array.isArray(config) ? config : [config, {}];
+}
 
 function validatePrimaryOptions(primaryOptions) {
   if (!isPlainObject(primaryOptions)) return false;
