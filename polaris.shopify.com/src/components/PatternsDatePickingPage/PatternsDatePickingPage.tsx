@@ -201,25 +201,6 @@ ${code}`,
   );
 };
 
-function formatHTML(html: string): string {
-  const tab = '  ';
-  let result = '';
-  let indent = '';
-
-  html.split(/>\s*</).forEach((element) => {
-    if (element.match(/^\/\w/)) {
-      indent = indent.substring(tab.length);
-    }
-    result += indent + '<' + element + '>\r\n';
-
-    if (element.match(/^<?\w[^>]*[^\/]$/) && !element.startsWith('input')) {
-      indent += tab;
-    }
-  });
-
-  return result.substring(1, result.length - 3);
-}
-
 const Example = ({
   example,
   patternName,
@@ -228,20 +209,6 @@ const Example = ({
   patternName: string;
 }) => {
   const [codeActive, toggleCode] = useState(false);
-  const [htmlCode, setHTMLCode] = useState('');
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  const handleExampleLoad = () => {
-    const iframeDocument = iframeRef.current?.contentDocument;
-    if (iframeDocument) {
-      const html = iframeDocument?.getElementById(
-        'polaris-sandbox-wrapper',
-      )?.innerHTML;
-      if (html) {
-        setHTMLCode(formatHTML(html));
-      }
-    }
-  };
 
   const exampleUrl = `/playroom/preview/index.html${createUrl({
     code: example.code,
@@ -272,20 +239,13 @@ const Example = ({
         )}
       >
         <GrowFrame
-          ref={iframeRef}
           id="live-preview-iframe"
           defaultHeight={'192px'}
-          onContentLoad={handleExampleLoad}
           src={exampleUrl}
         />
       </ExampleWrapper>
       {codeActive ? (
-        <Code
-          code={[
-            {title: 'React', code: code.trim()},
-            {title: 'HTML', code: htmlCode},
-          ]}
-        />
+        <Code code={[{title: 'React', code: code.trim()}]} />
       ) : null}
     </>
   );
