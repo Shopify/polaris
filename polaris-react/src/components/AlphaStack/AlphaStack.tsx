@@ -36,6 +36,8 @@ export interface AlphaStackProps extends React.AriaAttributes {
   gap?: Gap;
   /** HTML id attribute */
   id?: string;
+  /** Toggle order of child items */
+  reverseOrder?: boolean;
 }
 
 export const AlphaStack = ({
@@ -45,6 +47,7 @@ export const AlphaStack = ({
   fullWidth = false,
   gap = '4',
   id,
+  reverseOrder = false,
   ...restProps
 }: AlphaStackProps) => {
   const className = classNames(
@@ -55,6 +58,7 @@ export const AlphaStack = ({
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
+    '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
