@@ -3,6 +3,21 @@ const path = require('path');
 const {ruleName} = require('.');
 
 const config = {
+  colors: [
+    {
+      'color-named': 'never',
+      'color-no-hex': [true, {message: 'Overridden category rule message'}],
+      'function-disallowed-list': [
+        'rgb',
+        {
+          message: (func) => `Overridden category rule message "${func}"`,
+        },
+      ],
+    },
+    {
+      message: 'Appended category rule message',
+    },
+  ],
   motion: {
     'at-rule-disallowed-list': [['keyframes'], {severity: 'warning'}],
   },
@@ -25,6 +40,22 @@ testRule({
   ],
 
   reject: [
+    {
+      code: '.class {color: #bad;}',
+      description: 'Overrides appended category rule warning text (string)',
+      message: 'Overridden category rule message',
+    },
+    {
+      code: '.class {color: red;}',
+      description: 'Appends message to category rule warning text',
+      message:
+        'Unexpected named color "red" (color-named) Appended category rule message',
+    },
+    {
+      code: '.class {color: rgb(0, 256, 0);}',
+      description: 'Overrides appended category rule warning text (function)',
+      message: 'Overridden category rule message "rgb(0, 256, 0)"',
+    },
     {
       code: '@keyframes foo {}',
       description: 'Uses disallowed at-rule (built-in rule)',

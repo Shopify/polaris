@@ -250,7 +250,7 @@ yarn run stylelint path/to/component.scss
 
 ```
 
-### Font
+### Typography
 
 #### declaration-property-value-disallowed-list
 
@@ -410,7 +410,7 @@ yarn run stylelint path/to/component.scss
 
 ```
 
-### Breakpoints
+### Media queries
 
 #### function-disallowed-list
 
