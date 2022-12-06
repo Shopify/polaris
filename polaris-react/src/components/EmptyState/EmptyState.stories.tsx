@@ -7,7 +7,7 @@ export default {
   parameters: {
     // Sets a delay for EmptyState because there is a slight layout shift
     // when first rendered.
-    chromatic: {delay: 300},
+    chromatic: {delay: 1000},
   },
 } as ComponentMeta<typeof EmptyState>;
 
