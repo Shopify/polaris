@@ -1,3 +1,4 @@
-export default function IndexLayoutPage() {
-  return 'Hello from the index layout patterns page';
-}
+import {PatternIndexLayoutPage} from '../../src/components/PatternIndexLayoutPage';
+
+const Page = () => <PatternIndexLayoutPage />;
+export default Page;
