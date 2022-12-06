@@ -37,37 +37,52 @@ export function BoxWithResponsivePadding() {
       <Box background="surface" padding={{xs: '2', sm: '8'}} border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-      <Box
-        background="surface"
-        padding="2"
-        paddingBlockStart={{xs: '4', sm: '10'}}
-        border="dark"
-      >
+      <Box background="surface" padding={{xs: '4', sm: '10'}} border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
         background="surface"
-        padding="2"
-        paddingBlockEnd={{xs: '4', sm: '10'}}
+        padding={{
+          xs: '3',
+          sm: {inline: '4', block: '2'},
+          md: {inline: {start: '1', end: '5'}},
+          lg: '2',
+          xl: {block: {start: '10'}},
+        }}
         border="dark"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
-      <Box
-        background="surface"
-        padding="2"
-        paddingInlineStart={{xs: '4', sm: '10'}}
-        border="dark"
-      >
+      <Box background="surface" padding={{inline: '4'}} border="dark">
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box background="surface" padding="2" border="dark">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
         background="surface"
-        paddingInlineEnd={{xs: '4', sm: '10'}}
+        padding={{xs: {inline: {end: '4'}}}}
         border="dark"
       >
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
     </AlphaStack>
+  );
+}
+
+export function NestedBoxes() {
+  return (
+    <div style={{display: 'flex'}}>
+      <Box background="surface" padding="4" paddingInlineEnd="2" border="dark">
+        <Box
+          background="surface-critical"
+          padding="4"
+          paddingBlockStart="0"
+          border="dark"
+        >
+          <Icon source={PaintBrushMajor} color="base" />
+        </Box>
+      </Box>
+    </div>
   );
 }
