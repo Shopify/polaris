@@ -1,5 +1,20 @@
 # Changelog
 
+## 10.14.0
+
+### Minor Changes
+
+- [#7833](https://github.com/Shopify/polaris/pull/7833) [`e47595193`](https://github.com/Shopify/polaris/commit/e47595193aff5e3715cf26d97a2109a25ff69197) Thanks [@mrcthms](https://github.com/mrcthms)! - Separated BulkActions and SelectAllActions for new sticky bulk actions experience
+
+* [#7812](https://github.com/Shopify/polaris/pull/7812) [`e51d2c2d2`](https://github.com/Shopify/polaris/commit/e51d2c2d2f02eef5c2832c15a17fc0ddf6873aa6) Thanks [@chazdean](https://github.com/chazdean)! - Created `Divider` component with guidance and examples
+
+### Patch Changes
+
+- [#7763](https://github.com/Shopify/polaris/pull/7763) [`28529baaf`](https://github.com/Shopify/polaris/commit/28529baafb92664bb04f5fd7baf1cb07a9963ff2) Thanks [@n-filatov](https://github.com/n-filatov)! - Update the Toast component to a more compact layout
+
+- Updated dependencies [[`afe77e584`](https://github.com/Shopify/polaris/commit/afe77e5843f5b960574fe04433affc609d8687b1)]:
+  - @shopify/polaris-icons@6.7.0
+
 ## 10.13.0
 
 ### Minor Changes
