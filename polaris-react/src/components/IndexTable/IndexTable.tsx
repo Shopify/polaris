@@ -600,11 +600,6 @@ function IndexTableBase({
               </div>
             ) : null;
 
-          const stickyColumnHeaderClassNames = classNames(
-            styles.StickyTableColumnHeader,
-            hasMoreLeftColumns && styles['StickyTableColumnHeader-isScrolling'],
-          );
-
           const headerMarkup = condensed ? (
             <div
               className={classNames(
@@ -621,7 +616,7 @@ function IndexTableBase({
               ref={stickyHeaderWrapperElement}
             >
               {loadingMarkup}
-              <div className={stickyColumnHeaderClassNames}>
+              <div className={styles.StickyTableColumnHeader}>
                 {stickyColumnHeader}
               </div>
               <div

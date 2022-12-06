@@ -203,22 +203,6 @@ describe('<IndexTable>', () => {
       expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
     });
 
-    it('updates sticky table column header styles when scrolling right & hasMoreLeftColumns is false', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultProps} itemCount={1}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>,
-      );
-
-      const scrollContainer = index.find(ScrollContainer);
-      scrollContainer!.trigger('onScroll', true);
-
-      expect(index).toContainReactComponent('div', {
-        className:
-          'StickyTableColumnHeader StickyTableColumnHeader-isScrolling',
-      });
-    });
-
     it('updates sticky last column styles when scrolled right', () => {
       const index = mountWithApp(
         <IndexTable {...defaultProps} itemCount={1} lastColumnSticky>
