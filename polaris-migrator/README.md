@@ -33,7 +33,7 @@ padding: 1rem;
 npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 ```
 
-#### `react-replace-text-component`
+#### `react-replace-text-components`
 
 Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
 
