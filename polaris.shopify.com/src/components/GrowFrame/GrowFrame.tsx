@@ -1,4 +1,4 @@
-import {forwardRef, ForwardedRef, useRef, useEffect} from 'react';
+import {forwardRef, ForwardedRef, useRef, useEffect, useState} from 'react';
 import {mergeRefs} from 'react-merge-refs';
 
 interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
@@ -17,6 +17,7 @@ const GrowFrame = forwardRef(
     ref: ForwardedRef<HTMLIFrameElement>,
   ) => {
     const growFrameRef = useRef<HTMLIFrameElement | null>(null);
+    const [height, setHeight] = useState(defaultHeight);
     // TODO: we'll need to make this reliable to address network delay.
     useEffect(() => {
       const messageReceiver = (e: MessageEvent) => {
@@ -39,11 +40,7 @@ const GrowFrame = forwardRef(
       };
     }, [onContentLoad]);
     return (
-      <iframe
-        ref={mergeRefs([growFrameRef, ref])}
-        {...props}
-        height={defaultHeight}
-      />
+      <iframe ref={mergeRefs([growFrameRef, ref])} {...props} height={height} />
     );
   },
 );
