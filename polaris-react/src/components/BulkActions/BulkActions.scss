@@ -80,7 +80,7 @@ $bulk-actions-button-stacking-order: (
   pointer-events: auto;
 
   @media #{$p-breakpoints-sm-down} {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-type -- the first item of button group on small screen needs to fill the space
+    // stylelint-disable-next-line selector-max-combinators, selector-max-type -- update button spacing on small screens
     > div > div:first-child {
       flex: 1 1 auto;
     }
