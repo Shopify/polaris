@@ -1,0 +1,8 @@
+.Link {
+  font-size: var(--font-size-100);
+  color: var(--text-default);
+  &:hover,
+  &:focus {
+    color: var(--text-link);
+  }
+}
