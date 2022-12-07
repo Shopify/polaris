@@ -4,6 +4,7 @@ import StatusBadge from '../StatusBadge';
 import {StatusName} from '../../types';
 import Page from '../Page';
 import PageMeta from '../PageMeta';
+import {Table, TableHeader, TableRow} from '../Table';
 import {Heading} from '../Heading';
 import {Stack} from '../Stack';
 import {Lede} from '../Lede';
@@ -40,6 +41,14 @@ export const PatternIndexLayoutPage = () => (
             Known issues
           </Link>
         </p>
+      </Stack>
+      <Stack gap="4">
+        <Heading as="h2">When to use</Heading>
+        <Table>
+          <TableHeader>When merchants need to:</TableHeader>
+          <TableRow>Row1</TableRow>
+          <TableRow>Row2</TableRow>
+        </Table>
       </Stack>
     </Page>
   </>
