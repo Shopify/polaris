@@ -233,7 +233,7 @@ function isString(value) {
 /**
  * Returns the arguments expected by Stylelint rules that support functional custom messages
  * @param {string} ruleName The category's default message
- * @param {import('postcss').Node} node The
+ * @param {import('postcss').Node} node The node being reported as a problem
  * @returns {Parameters<import('stylelint').RuleMessageFunc> | undefined} An array of arguments for stylelint.report to invoke the functional message with
  */
 function getMessageArgs(ruleName, node) {
