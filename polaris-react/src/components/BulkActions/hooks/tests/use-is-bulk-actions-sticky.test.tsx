@@ -62,7 +62,7 @@ describe('useIsBulkActionsSticky', () => {
     it('returns the offset correctly when select mode is true', () => {
       const component = mountWithApp(<Component selectMode />);
       const result = component.findAll('span')[0]?.text();
-      expect(result).toBe('300');
+      expect(result).toBe('308');
     });
 
     it('returns the width value correctly', () => {

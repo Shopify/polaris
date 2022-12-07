@@ -307,21 +307,4 @@ describe('<BulkActions />', () => {
       });
     });
   });
-
-  describe('buttongroup', () => {
-    // Since we need to break our component model and reach into ButtonGroup to access the CheckableButton
-    // and ensure only the first element flex grows, we add this test to ensure the mark-up does not change
-    it('has the mark-up structure to target the CheckableButton', () => {
-      const bulkActions = mountWithApp(
-        <BulkActions {...bulkActionProps} selectMode />,
-      );
-
-      const checkableButton = bulkActions!
-        .find('div', {
-          className: 'ButtonGroupWrapper',
-        })!
-        .domNode!.querySelector('div > div.Item:first-child');
-      expect(checkableButton).not.toBeNull();
-    });
-  });
 });

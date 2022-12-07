@@ -741,9 +741,10 @@ function IndexTableBase({
     );
 
   const tableWrapperClassNames = classNames(
+    styles.IndexTableWrapper,
     Boolean(bulkActionsMarkup) &&
       selectMode &&
-      styles.IndexTableWithBulkActions,
+      styles.IndexTableWrapperWithBulkActions,
   );
 
   return (

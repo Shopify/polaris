@@ -429,6 +429,11 @@
     padding-right: var(--p-space-3);
   }
 
+  &.sizeSlim {
+    padding-left: var(--p-space-1);
+    padding-right: var(--p-space-1);
+  }
+
   .Icon:first-child {
     margin-left: 0;
   }
