@@ -93,6 +93,9 @@ module.exports = stylelint.createPlugin(
             result,
           },
           (warning) => {
+            // We insert the meta for the rules on the stylelint result, because the rules are reported with dynamic rule names instead of each category being its own plugin. See Stylelint issue for context: https://github.com/stylelint/stylelint/issues/6513
+            result.stylelint.ruleMetadata[ruleName] = meta;
+
             const defaultMessage = appendedMessage
               ? `${warning.text} ${appendedMessage}`
               : warning.text;
