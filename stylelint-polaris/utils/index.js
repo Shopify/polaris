@@ -242,7 +242,7 @@ function getMessageArgs(ruleName, node) {
   const stylelintRuleMessageArgs = {
     'color-no-hex': [node.value],
     'function-disallowed-list': [node.value],
-    'at-rule-disallowed-list': [node.atRule],
+    'at-rule-disallowed-list': [node.name, node.params],
     'property-disallowed-list': [node.prop],
     'declaration-property-value-disallowed-list': [node.prop, node.value],
     'declaration-property-unit-disallowed-list': [node.prop, node.value],
