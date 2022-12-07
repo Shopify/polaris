@@ -1,6 +1,6 @@
 # @shopify/stylelint-polaris
 
-A collection of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
+A configuration of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
 
 ## Installation
 
@@ -138,8 +138,8 @@ module.exports = {
 Example failure message:
 
 ```diff
-- Unexpected named value "sticky" for property "position" (declaration-property-value-disallowed-list)
-+ Unexpected named value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use the Polaris "Sticky" component
+- Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list)
++ Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use the Polaris "Sticky" component
 ```
 
 ### Tophat `stylelint-polaris` updates in `polaris-react`
