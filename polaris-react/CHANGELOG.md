@@ -1,5 +1,15 @@
 # Changelog
 
+## 10.15.0
+
+### Minor Changes
+
+- [#7842](https://github.com/Shopify/polaris/pull/7842) [`49ed527b2`](https://github.com/Shopify/polaris/commit/49ed527b28440df57dcd5e57e45f945912239c4a) Thanks [@yurm04](https://github.com/yurm04)! - Add flex-direction: column-reverse to AlphaStack
+
+### Patch Changes
+
+- [#7851](https://github.com/Shopify/polaris/pull/7851) [`b36f63183`](https://github.com/Shopify/polaris/commit/b36f6318318ebd7afa5441cefac613e5594a1481) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated shadow and placement of the BulkActions bar for greater visibility
+
 ## 10.14.0
 
 ### Minor Changes
