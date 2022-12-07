@@ -24,8 +24,8 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
 
   const options = {
     root: null,
-    rootMargin: '0px',
-    threshold: 1,
+    rootMargin: '-32px',
+    threshold: 0,
   };
   const observerRef = useRef<IntersectionObserver | null>(
     hasIOSupport ? new IntersectionObserver(handleIntersect, options) : null,

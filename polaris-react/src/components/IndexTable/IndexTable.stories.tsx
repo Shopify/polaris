@@ -645,7 +645,9 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   );
 
   return (
-    <div style={{padding: 'var(--p-space-4)'}}>
+    <div
+      style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
+    >
       <Card>
         <IndexTable
           resourceName={resourceName}

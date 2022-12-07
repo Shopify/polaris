@@ -65,7 +65,8 @@ $bulk-actions-button-stacking-order: (
   padding: var(--p-space-4);
   background: var(--p-surface);
   border-radius: var(--p-border-radius-2);
-  box-shadow: var(--p-shadow-popover);
+  box-shadow: var(--p-shadow-deep), var(--p-shadow-popover);
+  // box-shadow: var(--p-shadow-deep);
   max-width: 100%;
 
   .Group-measuring & {
