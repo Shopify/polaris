@@ -4,7 +4,7 @@ import {debounce} from '../../../utilities/debounce';
 
 const DEBOUNCE_PERIOD = 250;
 
-const PADDING_IN_SELECT_MODE = 100;
+const PADDING_IN_SELECT_MODE = 92;
 
 export function useIsBulkActionsSticky(selectMode: boolean) {
   const hasIOSupport =
