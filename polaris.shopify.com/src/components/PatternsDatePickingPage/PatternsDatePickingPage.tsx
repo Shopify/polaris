@@ -1,94 +1,58 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {createUrl} from 'playroom';
+import React, {useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
-import {MaximizeMajor} from '@shopify/polaris-icons';
-import {Icon, Stack, Text} from '@shopify/polaris';
+import {Stack, Text} from '@shopify/polaris';
+import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Longform from '../Longform';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
-import Markdown from '../Markdown';
-import {playroom} from '../../../constants';
-import GrowFrame from '../GrowFrame';
-import Code from '../Code';
-import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 
-type PatternExample = {
-  title: string;
-  code: string;
-  description?: string;
-  supportsAppBridge?: boolean;
-};
 const codeExamples: PatternExample[] = [
   {
-    title: 'with context',
+    title: 'Calendar with single date selector',
     code: `
+    const [{month, year}, setDate] = useState({month: 1, year: 2018});
+    const [selectedDates, setSelectedDates] = useState({
+      start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+      end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+    });
 
-    <Frame
-  navigation={<Navigation location="/"></Navigation>}
-  topBar={<TopBar />}
->
-  <ContextualSaveBar
-    message="Settings"
-    saveAction={{
-      content: "Save",
-      onAction: () => {},
-    }}
-    discardAction={{
-      content: "Discard",
-      onAction: () => {},
-    }}
-  />
-  <Page
-    divider
-    primaryAction={{ content: "View on your store", disabled: true }}
-    secondaryActions={[
-      {
-        content: "Duplicate",
-        accessibilityLabel: "Secondary action label",
-        onAction: () => alert("Duplicate action"),
-      },
-    ]}
-  >
-    <AlphaStack gap="16">
-      <Columns columns={{ xs: "1fr", sm: "2fr 5fr" }}>
-        <Box as="section">
-          <AlphaStack>
-            <Text as="h3" variant="headingMd">
-              InterJambs
-            </Text>
-            <Text as="p" variant="bodyMd">
-              Interjambs are the rounded protruding bits of your puzzlie piece
-            </Text>
-          </AlphaStack>
-        </Box>
-        <AlphaCard>
-          <AlphaStack fullWidth>
-            <TextField label="Interjamb style" />
-            <TextField label="Interjamb ratio" />
-          </AlphaStack>
-        </AlphaCard>
-      </Columns>
-      <Columns columns={{ xs: "1fr", sm: "2fr 5fr" }}>
-        <Box as="section">
-          <AlphaStack>
-            <Text as="h3" variant="headingMd">
-              Dimensions
-            </Text>
-            <Text as="p" variant="bodyMd">
-              Interjambs are the rounded protruding bits of your puzzlie piece
-            </Text>
-          </AlphaStack>
-        </Box>
-        <AlphaCard>
-          <AlphaStack fullWidth>
-            <TextField label="Horizontal" />
-            <TextField label="Interjamb ratio" />
-          </AlphaStack>
-        </AlphaCard>
-      </Columns>
-    </AlphaStack>
-  </Page>
-</Frame>`,
+    const handleMonthChange = useCallback(
+      (month, year) => setDate({month, year}),
+      [],
+    );
+
+    return (
+      <DatePicker
+        month={month}
+        year={year}
+        onChange={setSelectedDates}
+        onMonthChange={handleMonthChange}
+        selected={selectedDates}
+      />
+    );`,
+    snippetCode: `
+function DatePickerPattern () {
+  const [{month, year}, setDate] = useState({month: 1, year: 2018});
+  const [selectedDates, setSelectedDates] = useState({
+    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+  });
+
+  const handleMonthChange = useCallback(
+    (month, year) => setDate({month, year}),
+    [],
+  );
+
+  return (
+    <DatePicker
+      month={month}
+      year={year}
+      onChange={setSelectedDates}
+      onMonthChange={handleMonthChange}
+      selected={selectedDates}
+    />
+  );
+}`,
   },
   {
     title: 'Without Frame',
@@ -168,89 +132,6 @@ const codeExamples: PatternExample[] = [
   },
 ];
 
-const getISOStringYear = () => new Date().toISOString().split('T')[0];
-
-const PlayroomButton = ({
-  code,
-  patternName,
-}: {
-  code: string;
-  patternName: string;
-}) => {
-  const srcUrl = typeof window !== 'undefined' ? window.location.href : '';
-  const encodedCode = createUrl({
-    baseUrl: playroom.baseUrl,
-    code: `// [Polaris Pattern] ${patternName}
-// Generated on ${getISOStringYear()} from ${srcUrl}
-${/* intentional blank line */ ''}
-${code}`,
-    // TODO: Is this correct?
-    themes: ['locale:en'],
-    paramType: 'search',
-  });
-
-  return (
-    <a
-      href={encodedCode}
-      className={styles.Link}
-      target="_blank"
-      rel="noreferrer"
-    >
-      Open in Playroom
-    </a>
-  );
-};
-
-const Example = ({
-  example,
-  patternName,
-}: {
-  example: PatternExample;
-  patternName: string;
-}) => {
-  const [codeActive, toggleCode] = useState(false);
-
-  const exampleUrl = `/playroom/preview/index.html${createUrl({
-    code: example.code,
-    paramType: 'search',
-  })}`;
-  const {code, description} = example;
-
-  return (
-    <>
-      {description ? <Markdown text={description} /> : null}
-      <ExampleWrapper
-        renderFrameActions={() => (
-          <>
-            <a target="_blank" href={exampleUrl} rel="noreferrer">
-              <Text variant="bodySm" as="span" visuallyHidden>
-                View fullscreen preview
-              </Text>
-              <Icon source={MaximizeMajor} />
-            </a>
-            <PlayroomButton
-              code={example.code}
-              patternName={`${patternName} > ${example.title}`}
-            />
-            <LinkButton onClick={() => toggleCode((codeActive) => !codeActive)}>
-              {codeActive ? 'Hide code' : 'Show code'}
-            </LinkButton>
-          </>
-        )}
-      >
-        <GrowFrame
-          id="live-preview-iframe"
-          defaultHeight={'192px'}
-          src={exampleUrl}
-        />
-      </ExampleWrapper>
-      {codeActive ? (
-        <Code code={[{title: 'React', code: code.trim()}]} />
-      ) : null}
-    </>
-  );
-};
-
 export default function PatternsDatePickingPage() {
   const patternName = 'Date picking';
   const [exampleIndex, setExampleIndex] = useState(0);
@@ -292,7 +173,14 @@ export default function PatternsDatePickingPage() {
           <Tab.Panels>
             {codeExamples.map((example, i) => (
               <Tab.Panel key={i}>
-                <Example example={example} patternName={patternName} />
+                <PatternsExample
+                  example={example}
+                  patternName={patternName}
+                  relatedComponents={[
+                    {label: 'Button', url: '/components/button'},
+                    {label: 'TextFields', url: '/components/text-field'},
+                  ]}
+                />
               </Tab.Panel>
             ))}
           </Tab.Panels>
