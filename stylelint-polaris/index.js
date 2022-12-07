@@ -4,7 +4,11 @@ const {
   tokens,
 } = require('@shopify/polaris-tokens');
 
-/** @type {import('./plugins/coverage').CategorizedRules} */
+/**
+ * @type {import('./plugins/coverage').CategorizedRules} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
+
+(e.g., Unexpected named color "blue" (color-named) Please use a Polaris color token Stylelint(stylelint-polaris/coverage/colors")
+*/
 const stylelintPolarisCoverageOptions = {
   colors: [
     {

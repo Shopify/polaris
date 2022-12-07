@@ -4,9 +4,6 @@ const {isPlainObject, getMessageArgs} = require('../../utils');
 
 const coverageRuleName = 'polaris/coverage';
 
-/* The stylelint-polaris/coverage rule is configured by categorizing Stylelint rules in order to enable reporting of problems by coverage category
-(e.g., Unexpected named color "blue" (color-named) Please use a Polaris color token Stylelint(stylelint-polaris/coverage/colors") */
-
 /**
  * @typedef {import('stylelint').ConfigRules} StylelintRuleConfig
  */
