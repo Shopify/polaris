@@ -1,10 +1,12 @@
 import styles from './Lede.module.scss';
+import {Box, forwardRef} from '../Box';
 import {className as classNames} from '../../utils/various';
 
-export interface LedeProps extends React.PropsWithChildren {
-  className?: string;
-}
-
-export const Lede = ({className, ...props}: LedeProps) => (
-  <p className={classNames(styles.LedeParagraph, className)} {...props} />
-);
+export const Lede = forwardRef(({className, ...props}, ref) => (
+  <Box
+    ref={ref}
+    as="p"
+    className={classNames(styles.LedeParagraph, className)}
+    {...props}
+  />
+));
