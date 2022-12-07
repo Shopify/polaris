@@ -16,7 +16,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (invalidMedia) => `Invalid media query [${invalidMedia}].`,
+  rejected: (invalidMedia) => `Unexpected media query "${invalidMedia}"`,
 });
 
 /** @typedef {(string | RegExp)[]} AllowedPatterns */
