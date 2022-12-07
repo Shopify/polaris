@@ -13,7 +13,7 @@ import type {
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
-import {ButtonGroup} from '../ButtonGroup';
+import {Inline} from '../Inline';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
@@ -299,10 +299,10 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <ButtonGroup>
+        <Inline gap="3">
           {promotedActionsMarkup}
           {actionsPopover}
-        </ButtonGroup>
+        </Inline>
       ) : null;
 
     if (!groupContent) {
