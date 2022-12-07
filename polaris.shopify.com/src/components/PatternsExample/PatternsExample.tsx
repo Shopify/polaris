@@ -7,6 +7,7 @@ import Markdown from '../Markdown';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
+import InlinePill from '../InlinePill';
 
 export type PatternExample = {
   title: string;
@@ -122,14 +123,16 @@ const PatternsExample = ({
             return (
               <Fragment key={component.url}>
                 {' and '}
-                <a href={component.url}>{component.label}</a>
+                <InlinePill as="a" href={component.url}>
+                  {component.label}
+                </InlinePill>
               </Fragment>
             );
           }
           return (
-            <a key={component.url} href={component.url}>
+            <InlinePill as="a" key={component.url} href={component.url}>
               {component.label}
-            </a>
+            </InlinePill>
           );
         })}
         {relatedComponents.length > 1 ? ' components' : ' component'}
