@@ -1,14 +1,46 @@
+import Link from 'next/link';
+
+import StatusBadge from '../StatusBadge';
+import {StatusName} from '../../types';
 import Page from '../Page';
 import PageMeta from '../PageMeta';
+import {Heading} from '../Heading';
+import {Stack} from '../Stack';
+import {Lede} from '../Lede';
+import styles from './PatternIndexLayoutPage.module.scss';
 
-const description = '';
+const title = 'Date Picking';
+const description =
+  'Date picking lets merchants select a date or date range to help them analyze information to make decisions, or launch and publish.';
+const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/new?category=pattern-documentation&title=[${encodeURIComponent(
+  title,
+)}]`;
+const knownIssuesLink = `https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3APattern+${encodeURIComponent(
+  title,
+)}`;
 
 export const PatternIndexLayoutPage = () => (
   <>
-    <PageMeta title="Patterns" description={description} />
+    <PageMeta title={title} description={description} />
 
     <Page showTOC={false}>
-      <div>Hello from the index layout patterns page</div>
+      <Stack gap="4">
+        <Heading as="h1" className={styles.Heading}>
+          {title} <StatusBadge status={{value: StatusName.Beta, message: ''}} />
+        </Heading>
+        <Lede>{description}</Lede>
+        <p className={styles.InfoLine}>
+          Maintainer: Core Optimize •{' '}
+          <Link className={styles.InfoLineLink} href={newDiscussionLink}>
+            Discuss on GitHub
+          </Link>{' '}
+          •{' '}
+          <Link className={styles.InfoLineLink} href={knownIssuesLink}>
+            {' '}
+            Known issues
+          </Link>
+        </p>
+      </Stack>
     </Page>
   </>
 );
