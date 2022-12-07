@@ -34,6 +34,7 @@ module.exports = stylelint.createPlugin(
   coverageRuleName,
   /**
    * @param {CategorizedRules} categorizedRules - Configured Stylelint rules grouped by Polaris coverage category
+   * @param {import('stylelint').RuleContext} context
    */
   (categorizedRules, _, context) => {
     const isPrimaryOptionsValid = validatePrimaryOptions(categorizedRules);
