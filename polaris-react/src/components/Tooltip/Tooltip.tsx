@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef, useCallback} from 'react';
 
 import {Portal} from '../Portal';
-import {findFirstFocusableNode} from '../../utilities/focus';
+import {findFirstFocusableNode, handleMouseUpByBlurring} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 
@@ -132,19 +132,31 @@ export function Tooltip({
   function handleMouseEnter() {
     mouseEntered.current = true;
     onOpen?.();
-    handleFocus();
+    const TOOLTIP_ACTIVE_DELAY = 2000;
+    const tooltipTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    tooltipTimeoutRef.current = setTimeout(() => {
+      handleFocus();
+    }, TOOLTIP_ACTIVE_DELAY);
+   } , handleFocus();
   }
 
   function handleMouseLeave() {
     mouseEntered.current = false;
     onClose?.();
     handleBlur();
+    if (tooltipTimeoutRef.current) {
+      clearTimeout(tooltipTimeoutRef.current);
+    }
+    handleBlur());
+  }, [handleBlur]);
+
   }
 
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   function handleMouseEnterFix() {
     !mouseEntered.current && handleMouseEnter();
+
   }
 }
 
