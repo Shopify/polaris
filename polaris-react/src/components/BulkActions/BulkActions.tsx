@@ -311,7 +311,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const group = (
       <Transition
-        timeout={250}
+        timeout={100}
         in={selectMode}
         key="group"
         nodeRef={this.groupNode}
