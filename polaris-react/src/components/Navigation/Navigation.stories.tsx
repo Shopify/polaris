@@ -488,10 +488,30 @@ export function WithTruncationForVariousStates() {
             },
             {
               url: '/path/to/place',
+              label: 'Not truncated',
+              icon: OrdersMinor,
+              selected: false,
+            },
+            {
+              url: '/path/to/place',
               label: 'Lengthy label with secondary action',
               icon: OrdersMinor,
               selected: false,
               truncateText: true,
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy non-truncated label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
               secondaryAction: {
                 url: '/admin/orders/add',
                 accessibilityLabel: 'Add an order',
@@ -540,7 +560,6 @@ export function WithTruncationForVariousStates() {
                   url: '/admin/products/inventory',
                   disabled: false,
                   label: 'Inventoy',
-                  new: true,
                 },
               ],
             },
