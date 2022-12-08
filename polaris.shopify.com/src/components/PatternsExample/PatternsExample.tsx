@@ -30,8 +30,9 @@ const PlayroomButton = ({
     setEncodedUrl(
       createUrl({
         baseUrl: '/sandbox/',
-        code: `// [Polaris Pattern] ${patternName}
-  // Generated on ${getISOStringYear()} from ${window.location.href}
+        code: `
+{/* [Polaris Pattern] ${patternName} */}
+{/* Generated on ${getISOStringYear()} from ${window.location.href} */}
   ${/* intentional blank line */ ''}
   ${code}`.trim(),
         // TODO: Is this correct?

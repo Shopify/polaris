@@ -30,7 +30,7 @@ const GrowFrame = forwardRef(
         }
         const {id, height} = e.data;
         if (id === FRAME_ID && typeof height === 'string') {
-          growFrameRef.current.height = height;
+          setHeight(height);
           requestAnimationFrame(() => onContentLoad?.());
         }
       };
