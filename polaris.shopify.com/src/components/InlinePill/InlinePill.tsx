@@ -1,17 +1,10 @@
 import styles from './InlinePill.module.scss';
+import {Box, BoxProps} from '../Box';
 
-type Props<T extends React.ElementType> = {
-  as: T;
-  children: React.ReactNode;
-} & React.ComponentPropsWithoutRef<T>;
+export interface InlinePillProps extends BoxProps {}
 
-const InlinePill = <T extends React.ElementType>(props: Props<T>) => {
-  const {as: As = 'button', children, ...rest} = props as Props<T>;
-  return (
-    <As className={styles.InlinePill} {...rest}>
-      {children}
-    </As>
-  );
-};
+const InlinePill = ({as = 'button', className, ...rest}: InlinePillProps) => (
+  <Box as={as} className={[styles.InlinePill, className]} {...rest} />
+);
 
 export default InlinePill;

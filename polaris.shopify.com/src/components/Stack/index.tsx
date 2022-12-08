@@ -1,4 +1,3 @@
-import {className as classNames} from '../../utils/various';
 import {Box, BoxProps, forwardRef} from '../Box';
 import styles from './Stack.module.scss';
 
@@ -27,7 +26,7 @@ export const Stack = forwardRef(
   ({gap = '0', className, ...props}: StackProps, ref) => (
     <Box
       ref={ref}
-      className={classNames(styles.Stack, className)}
+      className={[styles.Stack, className]}
       style={{'--stack-gap-prop': `var(--p-space-${gap})`}}
       {...props}
     />
