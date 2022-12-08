@@ -19,7 +19,8 @@ import {
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section' | 'ul' | 'li';
+type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
+
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
