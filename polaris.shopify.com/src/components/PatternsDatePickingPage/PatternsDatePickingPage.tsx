@@ -10,39 +10,16 @@ const codeExamples: PatternExample[] = [
   {
     title: 'Calendar with single date selector',
     code: `
-    const [{month, year}, setDate] = useState({month: 1, year: 2018});
-    const [selectedDates, setSelectedDates] = useState({
-      start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-      end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-    });
-
-    const handleMonthChange = useCallback(
-      (month, year) => setDate({month, year}),
-      [],
-    );
-
-    return (
-      <DatePicker
-        month={month}
-        year={year}
-        onChange={setSelectedDates}
-        onMonthChange={handleMonthChange}
-        selected={selectedDates}
-      />
-    );`,
-    snippetCode: `
-function DatePickerPattern () {
+{(function DatePickerPattern () {
   const [{month, year}, setDate] = useState({month: 1, year: 2018});
   const [selectedDates, setSelectedDates] = useState({
     start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
     end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
   });
-
   const handleMonthChange = useCallback(
     (month, year) => setDate({month, year}),
     [],
   );
-
   return (
     <DatePicker
       month={month}
@@ -52,7 +29,43 @@ function DatePickerPattern () {
       selected={selectedDates}
     />
   );
-}`,
+})()}`,
+    context: `
+<div style={{
+  display: 'flex',
+  minHeight: '100vh',
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingLeft: '32px',
+  paddingRight: '32px',
+}}>
+  <div style={{ width: '100%' }}>
+    ____CODE____
+  </div>
+</div>
+`,
+    snippetCode: `
+function DatePickerPattern () {
+  const [{month, year}, setDate] = useState({month: 1, year: 2018});
+  const [selectedDates, setSelectedDates] = useState({
+    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+  });
+  const handleMonthChange = useCallback(
+    (month, year) => setDate({month, year}),
+    [],
+  );
+  return (
+    <DatePicker
+      month={month}
+      year={year}
+      onChange={setSelectedDates}
+      onMonthChange={handleMonthChange}
+      selected={selectedDates}
+    />
+  );
+}
+    `,
   },
   {
     title: 'Without Frame',
@@ -109,6 +122,18 @@ function DatePickerPattern () {
   },
   {
     title: 'Minimal',
+    context: `<div style={{
+      display: 'flex',
+      minHeight: '100vh',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingLeft: '32px',
+      paddingRight: '32px',
+    }}>
+      <div style={{ width: '100%' }}>
+        ____CODE____
+      </div>
+    </div>`,
     code: `
     <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
     <Box as="section">

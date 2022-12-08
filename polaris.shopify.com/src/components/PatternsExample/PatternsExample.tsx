@@ -12,6 +12,7 @@ import InlinePill from '../InlinePill';
 export type PatternExample = {
   title: string;
   code: string;
+  context?: string;
   snippetCode?: string;
   description?: string;
 };
@@ -33,7 +34,7 @@ const PlayroomButton = ({
         code: `// [Polaris Pattern] ${patternName}
   // Generated on ${getISOStringYear()} from ${window.location.href}
   ${/* intentional blank line */ ''}
-  ${code}`,
+  ${code}`.trim(),
         // TODO: Is this correct?
         themes: ['locale:en'],
         paramType: 'search',
@@ -68,11 +69,20 @@ const PatternsExample = ({
   relatedComponents: RelatedComponentDocumentation[];
 }) => {
   const [codeActive, toggleCode] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState('');
+  useEffect(() => {
+    function constructLivePreview(code: string, context?: string) {
+      const livePreviewCode = context
+        ? context.replace('____CODE____', code)
+        : code;
 
-  const exampleUrl = `/playroom/preview/index.html${createUrl({
-    code: example.code,
-    paramType: 'search',
-  })}`;
+      return `/playroom/preview/index.html${createUrl({
+        code: livePreviewCode,
+        paramType: 'search',
+      })}`;
+    }
+    setPreviewUrl(constructLivePreview(example.code, example.context));
+  }, [example.code, example.context]);
   const {code, description, snippetCode} = example;
 
   return (
@@ -100,7 +110,7 @@ const PatternsExample = ({
         <GrowFrame
           id="live-preview-iframe"
           defaultHeight={'400px'}
-          src={exampleUrl}
+          src={previewUrl}
         />
       </ExampleWrapper>
       {codeActive ? (

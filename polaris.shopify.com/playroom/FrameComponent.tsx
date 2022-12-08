@@ -15,25 +15,7 @@ export default function FrameComponent({
   });
   return (
     <AppProvider i18n={theme}>
-      <div
-        id="polaris-sandbox-wrapper"
-        style={{
-          display: 'flex',
-          minHeight: '100vh',
-          alignItems: 'center',
-          justifyContent: 'center',
-          paddingLeft: '32px',
-          paddingRight: '32px',
-        }}
-      >
-        <div
-          style={{
-            width: '100%',
-          }}
-        >
-          {children}
-        </div>
-      </div>
+      <div id="polaris-sandbox-wrapper">{children}</div>
     </AppProvider>
   );
 }
