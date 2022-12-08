@@ -1,3 +1,6 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
 .ExamplesList {
   --surface-pressed: rgba(241, 242, 243, 1);
   --border-subdued: rgba(201, 204, 207, 1);
@@ -31,6 +34,57 @@
       &:focus {
         box-shadow: var(--focus-outline);
       }
+    }
+  }
+}
+
+.MerchantGoal {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+  h2 {
+    margin-top: 0;
+  }
+  .ImageWrapper {
+    display: block;
+    flex: auto;
+    border: 1px solid #c9cccf;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    min-width: 60%;
+    max-width: 588px;
+    background: red;
+    aspect-ratio: 586/375;
+  }
+  ol {
+    margin: 0px;
+    list-style: none;
+    counter-reset: item;
+    padding-left: 16px;
+    li {
+      counter-increment: item;
+      margin-bottom: 5px;
+    }
+    li:before {
+      width: 24px;
+      height: 24px;
+      left: -16px;
+      content: counter(item);
+      background: #006a73;
+      font-weight: var(--font-weight-500);
+      line-height: 1.8;
+      color: #fff;
+      vertical-align: bottom;
+      text-align: center;
+      display: block;
+      border-radius: 100%;
+    }
+  }
+  @media screen and (max-width: $breakpointTablet) {
+    flex-direction: column;
+    .ImageWrapper {
+      min-width: 100%;
     }
   }
 }
