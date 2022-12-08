@@ -8,7 +8,7 @@ const config = {
   },
   legacy: {
     // Test case for calling `checkAgainstRule` with custom rules
-    'stylelint-polaris/global-disallowed-list': [/--p-legacy-var/],
+    'polaris/global-disallowed-list': [/--p-legacy-var/],
   },
 };
 
@@ -28,13 +28,12 @@ testRule({
     {
       code: '@keyframes foo {}',
       description: 'Uses disallowed at-rule (built-in rule)',
-      message: 'Unexpected at-rule "keyframes" (at-rule-disallowed-list)',
+      message: 'Unexpected at-rule "keyframes"',
     },
     {
       code: '.class {color: var(--p-legacy-var);}',
       description: 'Uses disallowed legacy variable (custom rule)',
-      message:
-        'Unexpected disallowed value "--p-legacy-var" (stylelint-polaris/global-disallowed-list)',
+      message: 'Unexpected disallowed value "--p-legacy-var"',
     },
   ],
 });
