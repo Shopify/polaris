@@ -3,7 +3,6 @@ import React from 'react';
 import {AlphaCard} from '../AlphaCard';
 import {AlphaStack} from '../AlphaStack';
 import {Avatar} from '../Avatar';
-import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Inline} from '../Inline';
 import {SettingAction} from '../SettingAction';
@@ -26,6 +25,10 @@ export interface AccountConnectionProps {
   /** Action for account connection */
   action?: Action;
 }
+
+const FakeBox = ({children}: {children: React.ReactNode}) => {
+  return <div style={{paddingBlockStart: 'var(--p-space-5)'}}>{children}</div>;
+};
 
 export function AccountConnection({
   connected = false,
@@ -61,7 +64,7 @@ export function AccountConnection({
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box paddingBlockStart="5">{termsOfService}</Box>
+    <FakeBox>{termsOfService}</FakeBox>
   ) : null;
 
   const actionElement = action
