@@ -29,7 +29,7 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?color/,
       /([\w-]+\.)?filter/,
     ],
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [
         // Legacy mixins
         /([\w-]+\.)?color-icon($|\()/,
@@ -38,7 +38,7 @@ const stylelintPolarisCoverageOptions = {
         /([\w-]+\.)?ms-high-contrast-color/,
       ],
     },
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$polaris-colors/,
       /\$color-filter-palette-data/,
@@ -61,10 +61,10 @@ const stylelintPolarisCoverageOptions = {
         '/^transition/': ['ms', 's'],
       },
     ],
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [/([\w-]+\.)?skeleton-shimmer($|\()/],
     },
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$duration-data/,
       /\$polaris-duration-map/,
@@ -91,7 +91,7 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?font-size/,
       /([\w-]+\.)?line-height/,
     ],
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [
         /([\w-]+\.)?truncate($|\()/,
         /([\w-]+\.)?text-breakword($|\()/,
@@ -111,7 +111,7 @@ const stylelintPolarisCoverageOptions = {
         /([\w-]+\.)?text-style-subheading($|\()/,
       ],
     },
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$typography-condensed/,
       /\$typography-condensed/,
@@ -172,7 +172,7 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?top-bar-height/,
       /([\w-]+\.)?z-index/,
     ],
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [
         /([\w-]+\.)?hidden-when-printing($|\()/,
         /([\w-]+\.)?print-hidden($|\()/,
@@ -182,7 +182,7 @@ const stylelintPolarisCoverageOptions = {
         /([\w-]+\.)?skeleton-page-secondary-actions-layout($|\()/,
       ],
     },
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$layout-width-data/,
       /\$navigation-width/,
@@ -214,7 +214,7 @@ const stylelintPolarisCoverageOptions = {
         '/^gap/': ['px', 'rem', 'em'],
       },
     ],
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$polaris-spacing/,
       /\$spacing-data/,
@@ -235,7 +235,7 @@ const stylelintPolarisCoverageOptions = {
         outline: ['px', 'rem', 'em'],
       },
     ],
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [
         /([\w-]+\.)?border-radius/,
         /([\w-]+\.)?border-width/,
@@ -247,7 +247,7 @@ const stylelintPolarisCoverageOptions = {
         /([\w-]+\.)?no-focus-ring($|\()/,
       ],
     },
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$border-radius-data/,
       /\$border-width-data/,
@@ -275,7 +275,7 @@ const stylelintPolarisCoverageOptions = {
       },
     ],
     'property-disallowed-list': ['text-shadow'],
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$shadows-data/,
       /\$fixed-element-stacking-order/,
@@ -297,7 +297,7 @@ const stylelintPolarisCoverageOptions = {
       },
     ],
     'function-disallowed-list': [/([\w-]+\.)?z-index/],
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy mixin map-get data
       /\$fixed-element-stacking-order/,
       /\$global-elements/,
@@ -306,7 +306,7 @@ const stylelintPolarisCoverageOptions = {
     ],
   },
   conventions: {
-    'stylelint-polaris/custom-properties-allowed-list': {
+    'polaris/custom-properties-allowed-list': {
       // Allow any custom property not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
       allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
       allowedValues: {
@@ -323,7 +323,7 @@ const stylelintPolarisCoverageOptions = {
     },
   },
   'media-queries': {
-    'stylelint-polaris/media-queries-allowed-list': {
+    'polaris/media-queries-allowed-list': {
       // Allowed media types and media conditions
       // https://www.w3.org/TR/mediaqueries-5/#media
       allowedMediaTypes: ['print', 'screen'],
@@ -339,7 +339,7 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?layout-width/,
     ],
     // Legacy mixins
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [
         /([\w-]+\.)?after-topbar-sheet($|\()/,
         /([\w-]+\.)?breakpoint-after($|\()/,
@@ -375,7 +375,7 @@ const stylelintPolarisCoverageOptions = {
   },
   legacy: {
     // Legacy mixins
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [
         /([\w-]+\.)?base-button-disabled($|\()/,
         /([\w-]+\.)?button-base($|\()/,
@@ -402,7 +402,7 @@ const stylelintPolarisCoverageOptions = {
       /([\w-]+\.)?available-names/,
       /([\w-]+\.)?map-extend/,
     ],
-    'stylelint-polaris/global-disallowed-list': [
+    'polaris/global-disallowed-list': [
       // Legacy variables
       / \* \$/,
       // Legacy custom properties
@@ -414,10 +414,6 @@ const stylelintPolarisCoverageOptions = {
   },
 };
 
-const stylelintPolarisCoverageCategories = Object.keys(
-  stylelintPolarisCoverageOptions,
-).join('|');
-
 /** @type {import('stylelint').Config} */
 module.exports = {
   customSyntax: 'postcss-scss',
@@ -425,11 +421,15 @@ module.exports = {
   reportInvalidScopeDisables: [
     true,
     {
-      except: [
-        new RegExp(
-          String.raw`^stylelint-polaris\/coverage\/(?:${stylelintPolarisCoverageCategories})$`,
-        ),
-      ],
+      // Report invalid scope disables for all rules except coverage rules
+      // Note: This doesn't affect the default Stylelint behavior/reporting
+      // and is only need because we dynamically create these rule names
+      except: Object.entries(stylelintPolarisCoverageOptions).flatMap(
+        ([categoryName, categoryConfigRules]) =>
+          Object.keys(categoryConfigRules).map(
+            (categoryRuleName) => `polaris/${categoryName}/${categoryRuleName}`,
+          ),
+      ),
     },
   ],
   plugins: [
@@ -441,6 +441,6 @@ module.exports = {
     './plugins/media-queries-allowed-list',
   ],
   rules: {
-    'stylelint-polaris/coverage': stylelintPolarisCoverageOptions,
+    'polaris/coverage': stylelintPolarisCoverageOptions,
   },
 };
