@@ -1,11 +1,12 @@
 const stylelint = require('stylelint');
 
-const {isPlainObject, getMessageArgs} = require('../../utils');
+const {isPlainObject} = require('../../utils');
 
 const coverageRuleName = 'polaris/coverage';
 
 /**
  * @typedef {import('stylelint').ConfigRules} StylelintRuleConfig
+ * @property {string} message - Message appended to the warning in place of the default category message
  */
 
 /**
@@ -27,7 +28,7 @@ const coverageRuleName = 'polaris/coverage';
 // https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
 const forceReport = {line: -1};
 const defaultMeta = {
-  url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/plugins/coverage/README.md',
+  url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/plugins/coverage/README.md#rules',
 };
 
 module.exports = stylelint.createPlugin(
@@ -46,14 +47,14 @@ module.exports = stylelint.createPlugin(
       for (const [stylelintRuleName, stylelintRuleConfig] of Object.entries(
         stylelintRules,
       )) {
-        rules.push({
-          ruleName: `polaris/${coverageRuleName}/${categoryName}`,
+        coverageRules.push({
+          ruleName: `polaris/${category}/${stylelintRuleName}`,
           stylelintRuleName,
           ruleSettings: stylelintRuleConfig,
           severity: stylelintRuleConfig?.[1]?.severity,
           fix: context.fix && !stylelintRuleConfig?.[1]?.disableFix,
-          customMessage: stylelintRuleConfig?.[1]?.message,
-          appendedMessage: categorySettings?.message,
+          appendedMessage:
+            stylelintRuleConfig?.[1]?.message || categorySettings?.message,
           meta: categorySettings?.meta || defaultMeta,
         });
       }
@@ -77,7 +78,6 @@ module.exports = stylelint.createPlugin(
           ruleSettings,
           fix,
           meta,
-          customMessage = '',
           appendedMessage = '',
           severity = result.stylelint.config?.defaultSeverity,
         } = rule;
@@ -98,21 +98,15 @@ module.exports = stylelint.createPlugin(
             // We insert the meta for the rules on the stylelint result, because the rules are reported with dynamic rule names instead of each category being its own plugin. See Stylelint issue for context: https://github.com/stylelint/stylelint/issues/6513
             result.stylelint.ruleMetadata[ruleName] = meta;
 
-            const defaultMessage = appendedMessage
+            const message = appendedMessage
               ? `${warningText} - ${appendedMessage}`
               : warningText;
-
-            const messageArgs =
-              typeof customMessage === 'function'
-                ? getMessageArgs(stylelintRuleName, warning.node)
-                : undefined;
 
             stylelint.utils.report({
               result,
               ruleName,
               meta,
-              messageArgs,
-              message: customMessage || defaultMessage,
+              message,
               severity: severity || 'error',
               // If `warning.node` is NOT present, the warning is
               // referring to a misconfigured rule

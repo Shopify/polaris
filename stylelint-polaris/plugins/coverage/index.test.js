@@ -6,16 +6,13 @@ const config = {
   colors: [
     {
       'color-named': 'never',
-      'color-no-hex': [true, {message: 'Overridden category rule message'}],
-      'function-disallowed-list': [
-        'rgb',
-        {
-          message: (func) => `Overridden category rule message "${func}"`,
-        },
+      'color-no-hex': [
+        true,
+        {message: 'Appended Stylelint rule config message'},
       ],
     },
     {
-      message: 'Appended category rule message',
+      message: 'Appended category rule config message',
     },
   ],
   motion: {
@@ -43,18 +40,14 @@ testRule({
     {
       code: '.class {color: #bad;}',
       description: 'Overrides appended category rule warning text (string)',
-      message: 'Overridden category rule message',
+      message:
+        'Unexpected hex color "#bad" - Appended Stylelint rule config message',
     },
     {
       code: '.class {color: red;}',
       description: 'Appends message to category rule warning text',
       message:
-        'Unexpected named color "red" (color-named) Appended category rule message',
-    },
-    {
-      code: '.class {color: rgb(0, 256, 0);}',
-      description: 'Overrides appended category rule warning text (function)',
-      message: 'Overridden category rule message "rgb(0, 256, 0)"',
+        'Unexpected named color "red" - Appended category rule config message',
     },
     {
       code: '@keyframes foo {}',

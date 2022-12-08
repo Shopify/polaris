@@ -21,7 +21,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
       : null;
 
     const invalidValueMessage = invalidValue
-      ? `Unexpected value "${invalidValue}" for custom property "${invalidProperty}"`
+      ? `Unexpected value "var(${invalidValue})" for property "${invalidProperty}"`
       : null;
 
     return [invalidPropertyMessage, invalidValueMessage]

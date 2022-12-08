@@ -1,6 +1,6 @@
-const {messages, ruleName} = require('.');
+const {ruleName} = require('.');
 
-const config = [[/rem\(/, /--p-button-font/]];
+const config = [[/\$font-size-data/, /--p-button-font/]];
 
 testRule({
   ruleName,
@@ -16,18 +16,20 @@ testRule({
 
   reject: [
     {
-      code: '.a { font-size: rem(20px); }',
+      code: '.a { font-size: $font-size-data; }',
       description: 'Uses something on the disallowed list',
-      message: messages.rejected('rem('),
+      message:
+        'Unexpected disallowed value "$font-size-data" (stylelint-polaris/global-disallowed-list)',
       line: 1,
       column: 17,
       endLine: 1,
-      endColumn: 21,
+      endColumn: 32,
     },
     {
       code: '.a { color: var(--p-button-font); }',
       description: 'Uses something on the disallowed list',
-      message: messages.rejected('--p-button-font'),
+      message:
+        'Unexpected disallowed value "--p-button-font" (stylelint-polaris/global-disallowed-list)',
       line: 1,
       column: 17,
       endLine: 1,
