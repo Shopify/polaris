@@ -3,6 +3,8 @@
  * UI), Haz (Reakit) and (fluentui)
  */
 import {forwardRef as forwardReactRef} from 'react';
+import {className as classNames} from '../../utils/various';
+import type {ClassName} from '../../utils/various';
 
 type OmitCommonProps<
   Target,
@@ -62,14 +64,25 @@ export function forwardRef<Props extends object, Component extends As>(
   >;
 }
 
-export interface BoxProps extends HTMLProps<'div'> {}
+export interface BoxProps extends Omit<HTMLProps<'div'>, 'className'> {
+  className?: ClassName;
+}
 
 /**
  * Box is the most abstract component on top of which other components are
  * built. It renders a `div` element by default, customisable via the `as` prop.
  */
-export const Box = forwardRef(({as: Tag = 'div', ...props}: BoxProps) => (
-  <Tag {...props} />
-));
+export const Box = forwardRef(
+  ({as: Tag = 'div', className, ...props}: BoxProps) => (
+    <Tag
+      {...(className
+        ? {
+            className: classNames(className),
+          }
+        : null)}
+      {...props}
+    />
+  ),
+);
 
 Box.displayName = 'Box';

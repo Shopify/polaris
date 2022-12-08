@@ -38,10 +38,14 @@ export const stripMarkdownLinks = (markdown: string): string => {
   });
 };
 
-export const className = (
-  ...classNames: (string | boolean | null | undefined)[]
-): string => {
-  return classNames.filter((className) => Boolean(className)).join(' ');
+type ValueOrArray<T> = T | ValueOrArray<T>[];
+type ClassName = ValueOrArray<string | boolean | null | undefined>;
+
+export const className = (...classNames: ClassName[]): string => {
+  return classNames
+    .filter((c) => Boolean(c))
+    .flatMap((c) => (Array.isArray(c) ? className(...c) : c))
+    .join(' ');
 };
 
 export const toPascalCase = (str: string): string =>
