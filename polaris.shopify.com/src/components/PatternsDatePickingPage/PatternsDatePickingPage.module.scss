@@ -1,4 +1,6 @@
 .ExamplesList {
+  --surface-pressed: rgba(241, 242, 243, 1);
+  --border-subdued: rgba(201, 204, 207, 1);
   margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -24,7 +26,8 @@
     }
 
     &[aria-selected='true'] {
-      background: var(--search-highlight-color);
+      background: var(--surface-pressed);
+      border: 1px solid var(--border-subdued);
       &:focus {
         box-shadow: var(--focus-outline);
       }

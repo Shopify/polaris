@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
 import {Stack, Text} from '@shopify/polaris';
+import {useRouter} from 'next/router';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Longform from '../Longform';
 import Page from '../Page';
@@ -9,6 +10,7 @@ import styles from './PatternsDatePickingPage.module.scss';
 const codeExamples: PatternExample[] = [
   {
     title: 'Calendar with single date selector',
+    slug: 'single-date-selector',
     code: `
 {(function DatePickerPattern () {
   const [{month, year}, setDate] = useState({month: 1, year: 2018});
@@ -69,6 +71,7 @@ function DatePickerPattern () {
   },
   {
     title: 'Without Frame',
+    slug: 'with-frame',
     code: ` <Page
     divider
     primaryAction={{ content: "View on your store", disabled: true }}
@@ -122,6 +125,7 @@ function DatePickerPattern () {
   },
   {
     title: 'Minimal',
+    slug: 'minimal',
     context: `<div style={{
       display: 'flex',
       minHeight: '100vh',
@@ -160,6 +164,27 @@ function DatePickerPattern () {
 export default function PatternsDatePickingPage() {
   const patternName = 'Date picking';
   const [exampleIndex, setExampleIndex] = useState(0);
+  const {query, replace, isReady} = useRouter();
+  const onTabChange = (index: number) => {
+    setExampleIndex(index);
+    replace(
+      {
+        query: {
+          ...query,
+          tab: codeExamples[index].slug,
+        },
+      },
+      undefined,
+      {shallow: true},
+    );
+  };
+
+  useEffect(() => {
+    if (query.tab && isReady) {
+      const index = codeExamples.findIndex((el) => el.slug === query.tab);
+      setExampleIndex(index);
+    }
+  }, [query.tab, isReady]);
 
   useEffect(() => {
     setExampleIndex(0);
@@ -181,7 +206,7 @@ export default function PatternsDatePickingPage() {
         <Tab.Group
           defaultIndex={0}
           selectedIndex={exampleIndex}
-          onChange={setExampleIndex}
+          onChange={onTabChange}
         >
           <Tab.List>
             <div className={styles.ExamplesList} id="examples">

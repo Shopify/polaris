@@ -12,6 +12,7 @@ import InlinePill from '../InlinePill';
 export type PatternExample = {
   title: string;
   code: string;
+  slug: string;
   context?: string;
   snippetCode?: string;
   description?: string;
