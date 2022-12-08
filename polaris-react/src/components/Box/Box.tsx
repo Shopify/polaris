@@ -284,12 +284,9 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         'space',
         paddingBlockEnd,
       ),
-      ...getResponsiveProps(
-        'box',
-        'padding-block-start',
-        'space',
-        paddingBlockStart,
-      ),
+      '--pc-box-padding-block-start-xs': paddingBlockStart
+        ? `var(--p-space-${paddingBlockStart})`
+        : undefined,
       ...getResponsiveProps(
         'box',
         'padding-inline-start',
