@@ -28,7 +28,7 @@ export function Default() {
     <AccountConnection
       accountName={accountName}
       connected={connected}
-      title="Hello world"
+      title="Hello"
       action={{
         content: buttonText,
         onAction: handleAction,

@@ -65,10 +65,6 @@ export function AccountConnection({
     </Text>
   ) : null;
 
-  const termsOfServiceMarkup = termsOfService ? (
-    <Box paddingBlockStart="5">{termsOfService}</Box>
-  ) : null;
-
   const actionElement = action
     ? buttonFrom(action, {primary: !connected})
     : null;
@@ -84,7 +80,7 @@ export function AccountConnection({
           </AlphaStack>
         </Inline>
       </SettingAction>
-      {termsOfServiceMarkup}
+      <Box paddingBlockStart="5">{termsOfService}</Box>
     </AlphaCard>
   );
 }
