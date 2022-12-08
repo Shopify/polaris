@@ -1,8 +1,6 @@
 import {Fragment, useEffect, useState} from 'react';
 import {createUrl} from 'playroom';
 import styles from './PatternsExample.module.scss';
-import {MaximizeMajor} from '@shopify/polaris-icons';
-import {Icon, Text} from '@shopify/polaris';
 import Markdown from '../Markdown';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
@@ -92,12 +90,6 @@ const PatternsExample = ({
       <ExampleWrapper
         renderFrameActions={() => (
           <Fragment>
-            <a target="_blank" href={exampleUrl} rel="noreferrer">
-              <Text variant="bodySm" as="span" visuallyHidden>
-                View fullscreen preview
-              </Text>
-              <Icon source={MaximizeMajor} />
-            </a>
             <PlayroomButton
               code={example.code}
               patternName={`${patternName} > ${example.title}`}
