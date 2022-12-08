@@ -8,9 +8,7 @@ import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import InlinePill from '../InlinePill';
 
 export type PatternExample = {
-  title: string;
   code: string;
-  slug: string;
   context?: string;
   snippetCode?: string;
   description?: string;
@@ -91,10 +89,7 @@ const PatternsExample = ({
       <ExampleWrapper
         renderFrameActions={() => (
           <Fragment>
-            <PlayroomButton
-              code={example.code}
-              patternName={`${patternName} > ${example.title}`}
-            />
+            <PlayroomButton code={example.code} patternName={patternName} />
             <LinkButton onClick={() => toggleCode((codeActive) => !codeActive)}>
               {codeActive ? 'Hide code' : 'Show code'}
             </LinkButton>
@@ -112,7 +107,7 @@ const PatternsExample = ({
           code={[
             {
               title: 'React',
-              code: snippetCode ? snippetCode.trim() : code.trim(),
+              code: snippetCode ? snippetCode.trim() : code?.trim(),
             },
           ]}
         />

@@ -6,127 +6,47 @@ import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Longform from '../Longform';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
-
-const codeExamples: PatternExample[] = [
-  {
+type Pattern = {
+  index: number;
+  title: string;
+  slug: string;
+  designDecisionListItems?: string[];
+  designDecisions?: {
+    listItems?: string[];
+    image?: boolean;
+  };
+  example: PatternExample;
+};
+const patternsIndex = ['single-date-selector', 'without-frame', 'minimal'];
+const patterns: Record<string, Pattern> = {
+  'single-date-selector': {
+    index: 0,
     title: 'Calendar with single date selector',
     slug: 'single-date-selector',
-    code: `
-{(function DatePickerPattern () {
-  const [{month, year}, setDate] = useState({month: 1, year: 2018});
-  const [selectedDates, setSelectedDates] = useState({
-    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-  });
-  const handleMonthChange = useCallback(
-    (month, year) => setDate({month, year}),
-    [],
-  );
-  return (
-    <DatePicker
-      month={month}
-      year={year}
-      onChange={setSelectedDates}
-      onMonthChange={handleMonthChange}
-      selected={selectedDates}
-    />
-  );
-})()}`,
-    context: `
-<div style={{
-  display: 'flex',
-  minHeight: '100vh',
-  alignItems: 'center',
-  justifyContent: 'center',
-  paddingLeft: '32px',
-  paddingRight: '32px',
-}}>
-  <div style={{ width: '100%' }}>
-    ____CODE____
-  </div>
-</div>
-`,
-    snippetCode: `
-function DatePickerPattern () {
-  const [{month, year}, setDate] = useState({month: 1, year: 2018});
-  const [selectedDates, setSelectedDates] = useState({
-    start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-    end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-  });
-  const handleMonthChange = useCallback(
-    (month, year) => setDate({month, year}),
-    [],
-  );
-  return (
-    <DatePicker
-      month={month}
-      year={year}
-      onChange={setSelectedDates}
-      onMonthChange={handleMonthChange}
-      selected={selectedDates}
-    />
-  );
-}
-    `,
-  },
-  {
-    title: 'Without Frame',
-    slug: 'with-frame',
-    code: ` <Page
-    divider
-    primaryAction={{ content: "View on your store", disabled: true }}
-    secondaryActions={[
-      {
-        content: "Duplicate",
-        accessibilityLabel: "Secondary action label",
-        onAction: () => alert("Duplicate action"),
-      },
-    ]}
-  >
-    <AlphaStack gap="16">
-      <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-        <Box as="section">
-          <AlphaStack>
-            <Text as="h3" variant="headingMd">
-              InterJambs
-            </Text>
-            <Text as="p" variant="bodyMd">
-              Interjambs are the rounded protruding bits of your puzzlie piece
-            </Text>
-          </AlphaStack>
-        </Box>
-        <AlphaCard>
-          <AlphaStack fullWidth>
-            <TextField label="Interjamb style" />
-            <TextField label="Interjamb ratio" />
-          </AlphaStack>
-        </AlphaCard>
-      </Columns>
-      <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-        <Box as="section">
-          <AlphaStack>
-            <Text as="h3" variant="headingMd">
-              Dimensions
-            </Text>
-            <Text as="p" variant="bodyMd">
-              Interjambs are the rounded protruding bits of your puzzlie piece
-            </Text>
-          </AlphaStack>
-        </Box>
-        <AlphaCard>
-          <AlphaStack fullWidth>
-            <TextField label="Horizontal" />
-            <TextField label="Interjamb ratio" />
-          </AlphaStack>
-        </AlphaCard>
-      </Columns>
-    </AlphaStack>
-  </Page>`,
-  },
-  {
-    title: 'Minimal',
-    slug: 'minimal',
-    context: `<div style={{
+    example: {
+      code: `
+    {(function DatePickerPattern () {
+      const [{month, year}, setDate] = useState({month: 1, year: 2018});
+      const [selectedDates, setSelectedDates] = useState({
+        start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+        end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+      });
+      const handleMonthChange = useCallback(
+        (month, year) => setDate({month, year}),
+        [],
+      );
+      return (
+        <DatePicker
+          month={month}
+          year={year}
+          onChange={setSelectedDates}
+          onMonthChange={handleMonthChange}
+          selected={selectedDates}
+        />
+      );
+    })()}`,
+      context: `
+    <div style={{
       display: 'flex',
       minHeight: '100vh',
       alignItems: 'center',
@@ -137,29 +57,129 @@ function DatePickerPattern () {
       <div style={{ width: '100%' }}>
         ____CODE____
       </div>
-    </div>`,
-    code: `
-    <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-    <Box as="section">
-      <AlphaStack>
-        <Text as="h3" variant="headingMd">
-          InterJambs
-        </Text>
-        <Text as="p" variant="bodyMd">
-          Interjambs are the rounded protruding bits of your puzzlie piece
-        </Text>
-      </AlphaStack>
-    </Box>
-    <AlphaCard>
-      <AlphaStack fullWidth>
-        <TextField label="Interjamb style" />
-        <TextField label="Interjamb ratio" />
-      </AlphaStack>
-    </AlphaCard>
-  </Columns>
+    </div>
     `,
+      snippetCode: `
+    function DatePickerPattern () {
+      const [{month, year}, setDate] = useState({month: 1, year: 2018});
+      const [selectedDates, setSelectedDates] = useState({
+        start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+        end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+      });
+      const handleMonthChange = useCallback(
+        (month, year) => setDate({month, year}),
+        [],
+      );
+      return (
+        <DatePicker
+          month={month}
+          year={year}
+          onChange={setSelectedDates}
+          onMonthChange={handleMonthChange}
+          selected={selectedDates}
+        />
+      );
+    }
+        `,
+    },
   },
-];
+  'without-frame': {
+    index: 1,
+    title: 'Without Frame',
+    slug: 'without-frame',
+    example: {
+      code: ` <Page
+      divider
+      primaryAction={{ content: "View on your store", disabled: true }}
+      secondaryActions={[
+        {
+          content: "Duplicate",
+          accessibilityLabel: "Secondary action label",
+          onAction: () => alert("Duplicate action"),
+        },
+      ]}
+    >
+      <AlphaStack gap="16">
+        <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
+          <Box as="section">
+            <AlphaStack>
+              <Text as="h3" variant="headingMd">
+                InterJambs
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Interjambs are the rounded protruding bits of your puzzlie piece
+              </Text>
+            </AlphaStack>
+          </Box>
+          <AlphaCard>
+            <AlphaStack fullWidth>
+              <TextField label="Interjamb style" />
+              <TextField label="Interjamb ratio" />
+            </AlphaStack>
+          </AlphaCard>
+        </Columns>
+        <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
+          <Box as="section">
+            <AlphaStack>
+              <Text as="h3" variant="headingMd">
+                Dimensions
+              </Text>
+              <Text as="p" variant="bodyMd">
+                Interjambs are the rounded protruding bits of your puzzlie piece
+              </Text>
+            </AlphaStack>
+          </Box>
+          <AlphaCard>
+            <AlphaStack fullWidth>
+              <TextField label="Horizontal" />
+              <TextField label="Interjamb ratio" />
+            </AlphaStack>
+          </AlphaCard>
+        </Columns>
+      </AlphaStack>
+    </Page>`,
+    },
+  },
+  minimal: {
+    index: 2,
+    title: 'Minimal',
+    slug: 'minimal',
+    example: {
+      context: `<div style={{
+        display: 'flex',
+        minHeight: '100vh',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingLeft: '32px',
+        paddingRight: '32px',
+      }}>
+        <div style={{ width: '100%' }}>
+          ____CODE____
+        </div>
+      </div>`,
+      code: `
+      <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
+      <Box as="section">
+        <AlphaStack>
+          <Text as="h3" variant="headingMd">
+            InterJambs
+          </Text>
+          <Text as="p" variant="bodyMd">
+            Interjambs are the rounded protruding bits of your puzzlie piece
+          </Text>
+        </AlphaStack>
+      </Box>
+      <AlphaCard>
+        <AlphaStack fullWidth>
+          <TextField label="Interjamb style" />
+          <TextField label="Interjamb ratio" />
+        </AlphaStack>
+      </AlphaCard>
+    </Columns>
+      `,
+    },
+  },
+};
 
 export default function PatternsDatePickingPage() {
   const patternName = 'Date picking';
@@ -171,7 +191,7 @@ export default function PatternsDatePickingPage() {
       {
         query: {
           ...query,
-          tab: codeExamples[index].slug,
+          tab: patternsIndex[index],
         },
       },
       undefined,
@@ -180,8 +200,12 @@ export default function PatternsDatePickingPage() {
   };
 
   useEffect(() => {
-    if (query.tab && isReady) {
-      const index = codeExamples.findIndex((el) => el.slug === query.tab);
+    // We don't expect query.tab to ever be an array of values
+    // However this is supported by the spec
+    // So we exclude this case in our check.
+    if (query.tab && typeof query.tab === 'string' && isReady) {
+      console.log(query.tab);
+      const index = patterns[query.tab as string]?.index;
       setExampleIndex(index);
     }
   }, [query.tab, isReady]);
@@ -210,79 +234,74 @@ export default function PatternsDatePickingPage() {
         >
           <Tab.List>
             <div className={styles.ExamplesList} id="examples">
-              {codeExamples.map((example, i) => {
-                return (
-                  <Tab key={i}>
-                    <span>{example.title}</span>
-                  </Tab>
-                );
-              })}
+              <Tab>
+                <span>{patterns['single-date-selector'].title}</span>
+              </Tab>
+              <Tab>
+                <span>{patterns['without-frame'].title}</span>
+              </Tab>
+              <Tab>
+                <span>{patterns['minimal'].title}</span>
+              </Tab>
             </div>
           </Tab.List>
 
           <Tab.Panels>
-            {codeExamples.map((example, i) => (
-              <Tab.Panel key={i}>
-                <PatternsExample
-                  example={example}
-                  patternName={patternName}
-                  relatedComponents={[
-                    {label: 'Button', url: '/components/button'},
-                    {label: 'TextFields', url: '/components/text-field'},
-                  ]}
-                />
-              </Tab.Panel>
-            ))}
+            <Tab.Panel>
+              <PatternsExample
+                example={patterns['single-date-selector'].example}
+                patternName={`${patternName} > ${patterns['single-date-selector'].title}`}
+                relatedComponents={[
+                  {label: 'Button', url: '/components/button'},
+                  {label: 'TextFields', url: '/components/text-field'},
+                ]}
+              />
+              <h2>Design decisions</h2>
+              <section className={styles.MerchantGoal}>
+                <div>
+                  <ol className={styles.MerchantGoalOL}>
+                    <li>
+                      {
+                        'The date range selector makes it easy to configure therange and clear what range is selected.'
+                      }
+                    </li>
+                    <li>
+                      {
+                        'The text inputs provide a convenient way to input dates with keyboard.'
+                      }
+                    </li>
+                    <li>
+                      {
+                        'The buttons in the footer let merchants review the selection and explicitly confirm or discard it.'
+                      }
+                    </li>
+                  </ol>
+                </div>
+                <div className={styles.ImageWrapper}></div>
+              </section>
+            </Tab.Panel>
+            <Tab.Panel>
+              <PatternsExample
+                example={patterns['without-frame'].example}
+                patternName={`${patternName} > ${patterns['without-frame'].title}`}
+                relatedComponents={[
+                  {label: 'Button', url: '/components/button'},
+                  {label: 'TextFields', url: '/components/text-field'},
+                ]}
+              />
+            </Tab.Panel>
+            <Tab.Panel>
+              <PatternsExample
+                example={patterns['minimal'].example}
+                patternName={`${patternName} > ${patterns['minimal'].title}`}
+                relatedComponents={[
+                  {label: 'Button', url: '/components/button'},
+                  {label: 'TextFields', url: '/components/text-field'},
+                ]}
+              />
+            </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
-        <h2>Merchant Goal</h2>
-        <p>
-          This layout has two columnns, with guidance to the left and settings
-          in cards to the right
-        </p>
-        <ol>
-          <li>
-            The left columns make it easy for merchants to glance the group
-            names and scan the page
-          </li>
-          <li>
-            When the desired group is found, merchants move their gaze to the
-            right and complete their task.
-          </li>
-        </ol>
-        <Text as="h2" variant="heading2xl">
-          Usage Guidance
-        </Text>
-        <details className={styles.Accordion}>
-          <summary>Common pattern tweaks</summary>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </details>
-        <details className={styles.Accordion}>
-          <summary>Platform considerations</summary>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </details>
-        <details className={styles.Accordion}>
-          <summary>Using App Bridge</summary>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </details>
       </Longform>
     </Page>
   );
