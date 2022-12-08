@@ -4,6 +4,9 @@ import {AccountConnection, Link} from '@shopify/polaris';
 
 export default {
   component: AccountConnection,
+  parameters: {
+    chromatic: {delay: 300},
+  },
 } as ComponentMeta<typeof AccountConnection>;
 
 export function Default() {
