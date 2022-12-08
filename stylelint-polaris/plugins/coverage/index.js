@@ -2,7 +2,7 @@ const stylelint = require('stylelint');
 
 const {isPlainObject} = require('../../utils');
 
-const ruleName = 'stylelint-polaris/coverage';
+const ruleName = 'polaris/coverage';
 
 /**
  * @typedef {{
@@ -30,7 +30,7 @@ module.exports = stylelint.createPlugin(
         categoryConfigRules,
       )) {
         rules.push({
-          coverageRuleName: `${ruleName}/${categoryName}`,
+          coverageRuleName: `polaris/${categoryName}/${categoryRuleName}`,
           categoryRuleName,
           categoryRuleSettings,
           categoryRuleSeverity: categoryRuleSettings?.[1]?.severity,
@@ -68,7 +68,7 @@ module.exports = stylelint.createPlugin(
             stylelint.utils.report({
               result,
               ruleName: coverageRuleName,
-              message: warning.text,
+              message: warning.text.replace(` (${categoryRuleName})`, ''),
               severity:
                 categoryRuleSeverity ??
                 result.stylelint.config?.defaultSeverity ??
