@@ -44,15 +44,12 @@ module.exports = stylelint.createPlugin(
     for (const [category, categoryConfig] of Object.entries(categorizedRules)) {
       const [stylelintRules, categorySettings] =
         normalizeConfig(categoryConfig);
+
       for (const [stylelintRuleName, stylelintRuleConfig] of Object.entries(
         stylelintRules,
       )) {
-        const ruleName = `polaris/${category}/${deNamespaceRuleName(
-          stylelintRuleName,
-        )}`;
-
         coverageRules.push({
-          ruleName,
+          ruleName: `polaris/${category}/${stylelintRuleName}`,
           stylelintRuleName,
           ruleSettings: stylelintRuleConfig,
           severity: stylelintRuleConfig?.[1]?.severity,

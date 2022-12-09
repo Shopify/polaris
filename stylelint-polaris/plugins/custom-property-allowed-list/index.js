@@ -17,7 +17,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
    */
   rejected: (prop, value, invalidProperty, invalidValue) => {
     const invalidPropertyMessage = invalidProperty
-      ? `Unexpected custom property "${invalidProperty}"`
+      ? `Unexpected custom property "${prop}"`
       : null;
 
     const invalidValueMessage = invalidValue
@@ -74,6 +74,7 @@ const {rule} = stylelint.createPlugin(
           allowedProperties,
           prop,
         );
+
         const invalidValues = validateCustomPropertyValues(
           allowedValues,
           prop,
