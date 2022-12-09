@@ -10,7 +10,7 @@ const {
   matchesStringOrRegExp,
 } = require('../../utils');
 
-const ruleName = 'polaris/media-queries-allowed-list';
+const ruleName = 'polaris/media-query-allowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**

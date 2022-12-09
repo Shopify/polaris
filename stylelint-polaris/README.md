@@ -65,7 +65,7 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 ```js
 module.exports = {
   rules: {
-    'stylelint-polaris/coverage': {
+    'polaris/coverage': {
       colors: {...}, // Standard Stylelint rules config
       layout: {...}, // Standard Stylelint rules config
       motion: {
@@ -94,7 +94,7 @@ In a majority of cases, the default rule messages are clear and concise. However
 ```js
 module.exports = {
   rules: {
-    'stylelint-polaris/coverage': {
+    'polaris/coverage': {
       colors: [
         {
           'color-named': 'never'
@@ -119,7 +119,7 @@ Example failure message:
 ```js
 module.exports = {
   rules: {
-    'stylelint-polaris/coverage': {
+    'polaris/coverage': {
       colors: [
         {
           'color-named': [

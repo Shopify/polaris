@@ -375,7 +375,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   conventions: [
     {
-      'polaris/custom-properties-allowed-list': {
+      'polaris/custom-property-allowed-list': {
         // Allow any custom property not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
         allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
         allowedValues: {
@@ -399,9 +399,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   'media-queries': [
     {
-      'polaris/media-queries-allowed-list': {
+      'polaris/media-query-allowed-list': {
         // Allowed media types and media conditions
-        // https://www.w3.org/TR/mediaqueries-5/#media
+        // https://www.w3.org/TR/mediaquery5/#media
         allowedMediaTypes: ['print', 'screen'],
         allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
         allowedScssInterpolations: [
@@ -527,8 +527,8 @@ module.exports = {
     './plugins/coverage',
     './plugins/global-disallowed-list',
     './plugins/at-rule-disallowed-list',
-    './plugins/custom-properties-allowed-list',
-    './plugins/media-queries-allowed-list',
+    './plugins/custom-property-allowed-list',
+    './plugins/media-query-allowed-list',
   ],
   rules: {
     'polaris/coverage': stylelintPolarisCoverageOptions,

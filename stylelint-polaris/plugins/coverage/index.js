@@ -47,8 +47,12 @@ module.exports = stylelint.createPlugin(
       for (const [stylelintRuleName, stylelintRuleConfig] of Object.entries(
         stylelintRules,
       )) {
+        const ruleName = `polaris/${category}/${deNamespaceRuleName(
+          stylelintRuleName,
+        )}`;
+
         coverageRules.push({
-          ruleName: `polaris/${category}/${stylelintRuleName}`,
+          ruleName,
           stylelintRuleName,
           ruleSettings: stylelintRuleConfig,
           severity: stylelintRuleConfig?.[1]?.severity,
@@ -118,6 +122,14 @@ module.exports = stylelint.createPlugin(
     };
   },
 );
+
+/** @typedef
+ * @param {string} ruleName
+ */
+
+function deNamespaceRuleName(ruleName) {
+  return ruleName.substring(ruleName.indexOf('/') + 1);
+}
 
 function normalizeConfig(config) {
   return Array.isArray(config) ? config : [config, {}];

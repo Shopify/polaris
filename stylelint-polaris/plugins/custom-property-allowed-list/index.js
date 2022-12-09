@@ -9,7 +9,7 @@ const {
   isString,
 } = require('../../utils');
 
-const ruleName = 'polaris/custom-properties-allowed-list';
+const ruleName = 'polaris/custom-property-allowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
