@@ -1,6 +1,6 @@
-# @shopify/stylelint-polaris
+# Stylelint Polaris
 
-A configuration of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
+Collection of Stylelint configs and rules that promote Polaris Design System adoption and coverage
 
 ## Installation
 
@@ -65,7 +65,7 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 ```js
 module.exports = {
   rules: {
-    'polaris/coverage': {
+    'stylelint-polaris/coverage': {
       colors: {...}, // Standard Stylelint rules config
       layout: {...}, // Standard Stylelint rules config
       motion: {
@@ -85,7 +85,7 @@ module.exports = {
 
 ### Add custom messages
 
-Custom messages are surfaced in the command line, CI, and supported editors along side the default `stylelint` rule messages. They are added to the root level config and aim to provide more insight on how to resolve rule violations.
+Custom messages are surfaced in the command line, CI, and supported editors along side the default `stylelint` rule messages. They are added to the root level config and aim to provide more meaning insight on rule violations and how to resolve them.
 
 In a majority of cases, the default rule messages are clear and concise. However, they don't always guide developers to a desired outcome. Thus, there are two mechanisms we suggest for improving and providing custom rule messages:
 
@@ -94,7 +94,7 @@ In a majority of cases, the default rule messages are clear and concise. However
 ```js
 module.exports = {
   rules: {
-    'polaris/coverage': {
+    'stylelint-polaris/coverage': {
       colors: [
         {
           'color-named': 'never'
@@ -111,15 +111,15 @@ Example failure message:
 
 ```diff
 - Unexpected named color "red" (color-named)
-+ Unexpected named color "red" (color-named) Please use a Polaris color token
++ Unexpected named color "red" (color-named) Please use a Polaris color token: https://polaris.shopify.com/tokens/colors
 ```
 
-2. Add a custom `message` property in the [rule config's secondary options](https://stylelint.io/user-guide/configure/#message) if supported. This message will be used in place of the default rule message.
+2. Add a custom `message` property in the [rule config's secondary options](https://stylelint.io/user-guide/configure/#message). This message is used in place of the default rule message.
 
 ```js
 module.exports = {
   rules: {
-    'polaris/coverage': {
+    'stylelint-polaris/coverage': {
       colors: [
         {
           'color-named': [
@@ -138,8 +138,8 @@ module.exports = {
 Example failure message:
 
 ```diff
-- Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list)
-+ Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use the Polaris "Sticky" component
+- Unexpected named color "red" (color-named)
++ Unexpected named color. Please refer to this specific page with guidance on how to resolve the failure
 ```
 
 ### Tophat `stylelint-polaris` updates in `polaris-react`
@@ -160,403 +160,8 @@ yarn build -- --filter=@shopify/polaris^...
 
 > Note: Remove the `^` character if you do want to build `@shopify/polaris`
 
-3. Run `stylelint` in `polaris-react`
-
-All files
+3. Run `stylelint` on `polaris-react`
 
 ```sh
-yarn turbo run lint:styles --filter=@shopify/polaris
-```
-
-Specific file
-
-```sh
-yarn run stylelint path/to/component.scss
-
-// yarn run stylelint polaris-react/src/components/TopBar/TopBar.scss
-```
-
-## Rules
-
-### Conventions
-
-Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.
-
-#### custom-property-allowed-list
-
-```diff
-root: {
-- --p-animation-name-drag-handle-pulse: osui_drag-handle-pulse;
-};
-```
-
-```diff
-root: {
-+ --osui_animation-name-drag-handle-pulse: osui_drag-handle-pulse;
-};
-```
-
-Flags declaration property values using `--p-*` that are not valid Polaris tokens.
-
-```diff
-- font-size: var(--p-fontsize-200);
-```
-
-```diff
-+ font-size: var(--p-font-size-200);
-```
-
-Flags declaration property values using private `--pc-*` tokens.
-
-```diff
-- background: var(--pc-button-color-depressed);
-
-```
-
-```diff
-+ background: var(--p-action-secondary-depressed);
-```
-
-### Colors
-
-#### color-named
-
-```diff
-- color: black;
-- fill: dimgray;
-```
-
-```diff
-+ color: var(--p-text);
-+ fill: var(--p-icon)
-```
-
-#### color-no-hex
-
-```diff
-- color: #202223;
-- fill: #5c5f62;
-```
-
-```diff
-+ color: var(--p-text);
-+ fill: var(--p-icon)
-```
-
-#### declaration-property-value-disallowed-list
-
-```diff
-- background: black;
-- opacity: 0.15;
-```
-
-```diff
-+ background: var(--p-hint-from-direct-light);
-```
-
-#### function-disallowed-list
-
-```diff
-- color: rgb(140, 145, 150);
-- background: color('hover')
-```
-
-```diff
-+ color: var(--p-text-disabled);
-+ background: var(--p-action-secondary-hovered-dark);
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-- fill: recolor-icon(--p-text-subdued);
-```
-
-```diff
-+ fill: var(--p-icon-subdued);
-```
-
-#### global-disallowed-list
-
-Disallows use of legacy custom properties.
-
-```diff
-- border: var(--p-override-transparent);
-```
-
-```diff
-+ border: transparent;
-```
-
-Disallows use of legacy mixin map data.
-
-```diff
-- @type map $filter-palette-data: $polaris-color-filters;
-```
-
-### Motion
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
-
-```diff
-- transition-duration: 200ms;
-```
-
-```diff
-+ transition-duration: var(--p-duration-200);
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### global-disallowed-list
-
-```diff
-
-```
-
-### Typography
-
-#### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
-
-```diff
-- font-size: 12px;
-- line-height: 1.5rem
-```
-
-```diff
-+ font-size: var(--p-font-size-75);
-+ line-height: var(--p-font-line-height-3);
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### property-disallowed-list
-
-```diff
-
-```
-
-### Shape
-
-#### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
-
-```diff
-- border-width: 2px;
-- border-radius: 0.5rem;
-```
-
-```diff
-+ border-width: var(--p-border-width-2);
-+ border-radius: var(--p-border-radius-2);
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### property-disallowed-list
-
-```diff
-
-```
-
-### Spacing
-
-#### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
-
-```diff
-- gap: 2px;
-- margin: 12px  0;
-```
-
-```diff
-+ gap: var(--p-space-05);
-+ margin: var(--p-space-3) 0;
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### property-disallowed-list
-
-```diff
-
-```
-
-### Depth
-
-#### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
-
-```diff
-- box-shadow: inset 0 0 0 1px var(--p-border-subdued);
-```
-
-```diff
-+ box-shadow: inset 0 0 0 var(--p-space-025) var(--p-border-subdued);
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### property-disallowed-list
-
-```diff
-
-```
-
-### Media queries
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### media-queries-allowed-list
-
-```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-### Z-Index
-
-#### declaration-property-value-allowed-list
-
-```diff
-
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### global-disallowed-list
-
-```diff
-
-```
-
-### Layout
-
-#### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### property-disallowed-list
-
-```diff
-
-```
-
-### Legacy
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### function-disallowed-list
-
-```diff
-
-```
-
-#### global-disallowed-list
-
-```diff
-
+cd polaris-react && yarn lint:styles
 ```
