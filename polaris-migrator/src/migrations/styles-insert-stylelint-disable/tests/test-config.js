@@ -5,7 +5,7 @@ module.exports = {
   rules: {
     'unit-disallowed-list': ['rem'],
     'selector-pseudo-class-no-unknown': true,
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       include: [/([\w-]+\.)?safe-area-for($|\()/],
     },
   },
