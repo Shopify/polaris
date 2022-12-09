@@ -99,6 +99,7 @@ module.exports = stylelint.createPlugin(
               ` (${stylelintRuleName})`,
               '',
             );
+
             // We insert the meta for the rules on the stylelint result, because the rules are reported with dynamic rule names instead of each category being its own plugin. See Stylelint issue for context: https://github.com/stylelint/stylelint/issues/6513
             result.stylelint.ruleMetadata[ruleName] = meta;
 
@@ -109,11 +110,9 @@ module.exports = stylelint.createPlugin(
             stylelint.utils.report({
               result,
               ruleName,
-              meta,
               message,
               severity: severity || 'error',
-              // If `warning.node` is NOT present, the warning is
-              // referring to a misconfigured rule
+              // If `warning.node` is NOT present, the warning is referring to a misconfigured rule
               ...(warning.node ? {node: warning.node} : forceReport),
             });
           },
@@ -135,16 +134,16 @@ function normalizeConfig(config) {
   return Array.isArray(config) ? config : [config, {}];
 }
 
-function validatePrimaryOptions(primaryOptions) {
-  if (!isPlainObject(primaryOptions)) return false;
+function validatePrimaryOptions(categorizedRules) {
+  if (!isPlainObject(categorizedRules)) return false;
 
-  for (const categoryConfigRules of Object.values(primaryOptions)) {
+  for (const categoryConfig of Object.values(categorizedRules)) {
     if (
       !(
-        isPlainObject(categoryConfigRules) ||
-        (Array.isArray(categoryConfigRules) &&
-          categoryConfigRules.length === 2 &&
-          categoryConfigRules.every(isPlainObject))
+        isPlainObject(categoryConfig) ||
+        (Array.isArray(categoryConfig) &&
+          categoryConfig.length === 2 &&
+          categoryConfig.every(isPlainObject))
       )
     ) {
       return false;

@@ -39,7 +39,6 @@ const stylelintPolarisCoverageOptions = {
           // Legacy mixins
           /([\w-]+\.)?color-icon($|\()/,
           /([\w-]+\.)?recolor-icon($|\()/,
-          /([\w-]+\.)?control-backdrop($|\()/,
           /([\w-]+\.)?ms-high-contrast-color/,
         ],
       },
@@ -62,7 +61,6 @@ const stylelintPolarisCoverageOptions = {
   ],
   motion: [
     {
-      'at-rule-disallowed-list': ['keyframes'],
       'function-disallowed-list': [
         /([\w-]+\.)?control-icon-transition/,
         /([\w-]+\.)?duration/,
@@ -74,6 +72,7 @@ const stylelintPolarisCoverageOptions = {
           '/^transition/': ['ms', 's'],
         },
       ],
+      'at-rule-disallowed-list': ['keyframes'],
       'polaris/at-rule-disallowed-list': {
         include: [/([\w-]+\.)?skeleton-shimmer($|\()/],
       },

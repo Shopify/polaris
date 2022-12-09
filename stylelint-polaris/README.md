@@ -180,18 +180,41 @@ yarn run stylelint path/to/component.scss
 
 ### Conventions
 
-#### unit-disallowed-list
+Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.
+
+#### custom-property-allowed-list
 
 ```diff
-- font-size: 12px;
-- line-height: 1.5rem
-- transition-duration: 200ms;
+root: {
+- --p-animation-name-drag-handle-pulse: osui_drag-handle-pulse;
+};
 ```
 
 ```diff
-+ font-size: var(--p-font-size-75);
-+ line-height: var(--p-font-line-height-3);
-+ transition-duration: var(--p-duration-200);
+root: {
++ --osui_animation-name-drag-handle-pulse: osui_drag-handle-pulse;
+};
+```
+
+Flags declaration property values using `--p-*` that are not valid Polaris tokens.
+
+```diff
+- font-size: var(--p-fontsize-200);
+```
+
+```diff
++ font-size: var(--p-font-size-200);
+```
+
+Flags declaration property values using private `--pc-*` tokens.
+
+```diff
+- background: var(--pc-button-color-depressed);
+
+```
+
+```diff
++ background: var(--p-action-secondary-depressed);
 ```
 
 ### Colors
@@ -223,19 +246,71 @@ yarn run stylelint path/to/component.scss
 #### declaration-property-value-disallowed-list
 
 ```diff
+- background: black;
+- opacity: 0.15;
+```
+
+```diff
++ background: var(--p-hint-from-direct-light);
+```
+
+#### function-disallowed-list
+
+```diff
+- color: rgb(140, 145, 150);
+- background: color('hover')
+```
+
+```diff
++ color: var(--p-text-disabled);
++ background: var(--p-action-secondary-hovered-dark);
+
+```
+
+#### at-rule-disallowed-list
+
+```diff
+- fill: recolor-icon(--p-text-subdued);
+```
+
+```diff
++ fill: var(--p-icon-subdued);
+```
+
+#### global-disallowed-list
+
+Disallows use of legacy custom properties.
+
+```diff
+- border: var(--p-override-transparent);
+```
+
+```diff
++ border: transparent;
+```
+
+Disallows use of legacy mixin map data.
+
+```diff
+- @type map $filter-palette-data: $polaris-color-filters;
+```
+
+### Motion
+
+#### function-disallowed-list
+
+```diff
 
 ```
 
 #### declaration-property-unit-disallowed-list
 
 ```diff
-
+- transition-duration: 200ms;
 ```
 
-#### function-disallowed-list
-
 ```diff
-
++ transition-duration: var(--p-duration-200);
 ```
 
 #### at-rule-disallowed-list
@@ -244,7 +319,7 @@ yarn run stylelint path/to/component.scss
 
 ```
 
-#### property-disallowed-list
+#### global-disallowed-list
 
 ```diff
 
@@ -261,7 +336,13 @@ yarn run stylelint path/to/component.scss
 #### declaration-property-unit-disallowed-list
 
 ```diff
+- font-size: 12px;
+- line-height: 1.5rem
+```
 
+```diff
++ font-size: var(--p-font-size-75);
++ line-height: var(--p-font-line-height-3);
 ```
 
 #### function-disallowed-list
@@ -293,7 +374,13 @@ yarn run stylelint path/to/component.scss
 #### declaration-property-unit-disallowed-list
 
 ```diff
+- border-width: 2px;
+- border-radius: 0.5rem;
+```
 
+```diff
++ border-width: var(--p-border-width-2);
++ border-radius: var(--p-border-radius-2);
 ```
 
 #### function-disallowed-list
@@ -325,7 +412,13 @@ yarn run stylelint path/to/component.scss
 #### declaration-property-unit-disallowed-list
 
 ```diff
+- gap: 2px;
+- margin: 12px  0;
+```
 
+```diff
++ gap: var(--p-space-05);
++ margin: var(--p-space-3) 0;
 ```
 
 #### function-disallowed-list
@@ -357,39 +450,11 @@ yarn run stylelint path/to/component.scss
 #### declaration-property-unit-disallowed-list
 
 ```diff
-
+- box-shadow: inset 0 0 0 1px var(--p-border-subdued);
 ```
 
-#### function-disallowed-list
-
 ```diff
-
-```
-
-#### at-rule-disallowed-list
-
-```diff
-
-```
-
-#### property-disallowed-list
-
-```diff
-
-```
-
-### Motion
-
-#### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
-
-```diff
-
++ box-shadow: inset 0 0 0 var(--p-space-025) var(--p-border-subdued);
 ```
 
 #### function-disallowed-list
@@ -418,13 +483,13 @@ yarn run stylelint path/to/component.scss
 
 ```
 
-#### stylelint-polaris/media-queries-allowed-list
+#### media-queries-allowed-list
 
 ```diff
 
 ```
 
-#### stylelint-polaris/at-rule-disallowed-list
+#### at-rule-disallowed-list
 
 ```diff
 
@@ -444,7 +509,7 @@ yarn run stylelint path/to/component.scss
 
 ```
 
-#### stylelint-polaris/global-disallowed-list
+#### global-disallowed-list
 
 ```diff
 
@@ -453,12 +518,6 @@ yarn run stylelint path/to/component.scss
 ### Layout
 
 #### declaration-property-value-disallowed-list
-
-```diff
-
-```
-
-#### declaration-property-unit-disallowed-list
 
 ```diff
 
@@ -484,7 +543,7 @@ yarn run stylelint path/to/component.scss
 
 ### Legacy
 
-#### stylelint-polaris/at-rule-disallowed-list
+#### at-rule-disallowed-list
 
 ```diff
 
@@ -496,7 +555,7 @@ yarn run stylelint path/to/component.scss
 
 ```
 
-#### stylelint-polaris/global-disallowed-list
+#### global-disallowed-list
 
 ```diff
 
