@@ -1,6 +1,6 @@
 /** @type {import('stylelint').Config} */
 module.exports = {
-  extends: [/*'@shopify/stylelint-plugin/prettier', */ './stylelint-polaris'],
+  extends: ['@shopify/stylelint-plugin/prettier', './stylelint-polaris'],
   // Disabling @shopify/stylelint-plugin/configs/core no-unknown-animations as stylelint is not aware of global Polaris keyframes
   // TODO: create custom plugin to ensure animation-names match Polaris keyframe names
   customSyntax: 'postcss-scss',

@@ -7,13 +7,13 @@ const {
 /**
  * @type {import('./plugins/coverage').CategorizedRules} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
-(e.g., Unexpected named color "blue" - Please use a Polaris color token Stylelint(stylelint-polaris/coverage/colors/color-named)")
+(e.g., Unexpected named color "blue" - Please use a Polaris color token Stylelint(polaris/colors/color-named)")
 */
 const stylelintPolarisCoverageOptions = {
   colors: [
     {
       'color-named': 'never',
-      'color-no-hex': [true, {message: 'Please use a Polaris color token'}],
+      'color-no-hex': true,
       'scss/function-color-relative': true,
       'declaration-property-value-disallowed-list': {
         opacity: [/(?!0|1)\d$|^\d{2,}|^[1-9]+\.|^\d+\.\d+\.|^0\.\d{3,}/],
