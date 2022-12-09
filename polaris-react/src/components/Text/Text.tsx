@@ -52,7 +52,7 @@ export interface TextProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
   /** The element type */
-  as: Element;
+  as?: Element;
   /** Prevent text from overflowing */
   breakWord?: boolean;
   /** Text to display */
@@ -66,7 +66,7 @@ export interface TextProps {
   /** Truncate text overflow with ellipsis */
   truncate?: boolean;
   /** Typographic style of text */
-  variant: Variant;
+  variant?: Variant;
   /** Visually hide the text */
   visuallyHidden?: boolean;
 }
@@ -80,7 +80,7 @@ export const Text = ({
   fontWeight,
   id,
   truncate = false,
-  variant,
+  variant = 'bodyMd',
   visuallyHidden = false,
 }: TextProps) => {
   const Component = as || (visuallyHidden ? 'span' : 'p');
