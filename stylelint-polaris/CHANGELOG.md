@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.0.0
+
+### Major Changes
+
+- [#7691](https://github.com/Shopify/polaris/pull/7691) [`38b2a00a6`](https://github.com/Shopify/polaris/commit/38b2a00a6aa0c95d5df777c7d51023a8193f8090) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Stylelint Polaris v5 release
+
 ## 4.4.0
 
 ### Minor Changes

@@ -249,6 +249,83 @@ export function WithASecondaryActionForAnItem() {
   );
 }
 
+export function WithTruncationForVariousStates() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: '/path/to/place',
+              label: 'A very long label to ellipsize',
+              truncateText: true,
+              icon: OrdersMinor,
+              selected: false,
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
+              truncateText: true,
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy label with badge',
+              truncateText: true,
+              badge: 'Old',
+              icon: HomeMinor,
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
+              truncateText: true,
+              badge: 'Old',
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
+              url: '/admin/products',
+              label: 'Truncated secondary navigation items',
+              icon: ProductsMinor,
+              selected: true,
+              truncateText: true,
+              subNavigationItems: [
+                {
+                  url: '/admin/products/collections',
+                  disabled: false,
+                  label: 'Something longer than collections',
+                },
+                {
+                  url: '/admin/products/inventory',
+                  disabled: false,
+                  label: 'Inventoy',
+                },
+              ],
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
 export function WithSectionRollup() {
   return (
     <Frame>
@@ -522,6 +599,98 @@ export function UsingMajorIcons() {
               url: '/path/to/place',
               label: 'Customers',
               icon: CustomersMajor,
+            },
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
+export function WithBadgeAndSecondaryAction() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {
+              url: '/path/to/place',
+              label: 'Home',
+              icon: HomeMinor,
+              secondaryAction: {
+                url: '/path/to/place/view',
+                accessibilityLabel: 'View your online store',
+                icon: ViewMinor,
+                tooltip: {
+                  content: 'View your online store',
+                },
+              },
+            },
+            {
+              url: '/path/to/place',
+              label: 'Orders',
+              icon: OrdersMinor,
+              badge: '15',
+              subNavigationItems: [
+                {
+                  url: '/admin/orders/collections',
+                  disabled: false,
+                  selected: false,
+                  label: 'Collections',
+                },
+                {
+                  url: '/admin/orders/inventory',
+                  disabled: false,
+                  label: 'Inventory',
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Marketing',
+              icon: MarketingMinor,
+              badge: '15',
+              secondaryAction: {
+                url: '/path/to/place/view',
+                accessibilityLabel: 'View your online store',
+                icon: ViewMinor,
+                tooltip: {
+                  content: 'View your online store',
+                },
+              },
+              subNavigationItems: [
+                {
+                  url: '/admin/analytics/collections',
+                  disabled: false,
+                  selected: false,
+                  label: 'Reports',
+                },
+                {
+                  url: '/admin/analytics/inventory',
+                  disabled: false,
+                  label: 'Live view',
+                },
+              ],
+            },
+            {
+              url: '/admin/products',
+              label: 'Products',
+              icon: ProductsMinor,
+              selected: true,
+              subNavigationItems: [
+                {
+                  url: '/?path=/story/all-components-navigation--navigation-with-multiple-secondary-navigations',
+                  disabled: false,
+                  selected: false,
+                  label: 'Collections',
+                },
+                {
+                  url: '/admin/products/inventory',
+                  disabled: false,
+                  selected: true,
+                  label: 'Inventory',
+                },
+              ],
             },
           ]}
         />

@@ -182,13 +182,24 @@ function isNumber(value) {
 }
 
 /**
- * Checks if the value is an object and not an array or null.
- * https://github.com/jonschlinkert/isobject/blob/15d5d58ea9fbc632dffd52917ac6791cd92251ab/index.js#L9
- * @param {unknown} value
+ * Checks if a value is a plain object.
+ *
+ * An object is plain if it's created by either {}, new Object(), or Object.create(null).
+ * https://github.com/sindresorhus/is-plain-obj/blob/68e8cc77bb1bbd0bf7d629d3574b6ca70289b2cc/index.js#L1
  */
-function isObject(value) {
+function isPlainObject(value) {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+
   return (
-    value != null && typeof value === 'object' && Array.isArray(value) === false
+    (prototype === null ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null) &&
+    !(Symbol.toStringTag in value) &&
+    !(Symbol.iterator in value)
   );
 }
 
@@ -223,7 +234,7 @@ module.exports.hasScssInterpolation = hasScssInterpolation;
 module.exports.isBoolean = isBoolean;
 module.exports.isCustomProperty = isCustomProperty;
 module.exports.isNumber = isNumber;
-module.exports.isObject = isObject;
+module.exports.isPlainObject = isPlainObject;
 module.exports.isRegExp = isRegExp;
 module.exports.isScssInterpolation = isScssInterpolation;
 module.exports.isString = isString;

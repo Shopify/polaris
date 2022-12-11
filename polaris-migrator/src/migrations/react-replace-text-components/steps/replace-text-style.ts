@@ -7,6 +7,8 @@ import {
   replaceJSXAttributes,
   insertJSXAttribute,
   removeJSXAttributes,
+  hasJSXSpreadAttribute,
+  insertJSXComment,
 } from '../../../utilities/jsx';
 import {
   insertImportSpecifier,
@@ -17,9 +19,10 @@ import {
   updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
+import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
 
 const variationMap = {
-  strong: {fontWeight: 'bold'},
+  strong: {fontWeight: 'semibold'},
   subdued: {color: 'subdued'},
   positive: {color: 'success'},
   negative: {color: 'critical'},
@@ -56,6 +59,10 @@ export function replaceTextStyle<NodeType = ASTNode>(
   });
 
   source.findJSXElements(localElementName).forEach((element) => {
+    if (hasJSXSpreadAttribute(j, element)) {
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+    }
+
     replaceJSXElement(j, element, 'Text');
     insertJSXAttribute(j, element, 'variant', 'bodyMd');
     getJSXAttributes(j, element, 'variation')

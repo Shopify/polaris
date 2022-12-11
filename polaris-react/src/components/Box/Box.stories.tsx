@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Icon} from '@shopify/polaris';
+import {AlphaStack, Box, Icon} from '@shopify/polaris';
 import {PaintBrushMajor} from '@shopify/polaris-icons';
 
 export default {
@@ -15,7 +15,7 @@ export function Default() {
   );
 }
 
-export function BoxWithDarkBorder() {
+export function WithDarkBorder() {
   return (
     <Box background="surface" padding="4" border="dark">
       <Icon source={PaintBrushMajor} color="base" />
@@ -23,10 +23,51 @@ export function BoxWithDarkBorder() {
   );
 }
 
-export function BoxWithBorderRadius() {
+export function WithBorderRadius() {
   return (
     <Box background="surface" padding="4" borderRadius="2">
       <Icon source={PaintBrushMajor} color="highlight" />
     </Box>
+  );
+}
+
+export function WithResponsivePadding() {
+  return (
+    <AlphaStack>
+      <Box background="surface" padding={{xs: '2', sm: '8'}} border="dark">
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="surface"
+        padding="2"
+        paddingBlockStart={{xs: '4', sm: '10'}}
+        border="dark"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="surface"
+        padding="2"
+        paddingBlockEnd={{xs: '4', sm: '10'}}
+        border="dark"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="surface"
+        padding="2"
+        paddingInlineStart={{xs: '4', sm: '10'}}
+        border="dark"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+      <Box
+        background="surface"
+        paddingInlineEnd={{xs: '4', sm: '10'}}
+        border="dark"
+      >
+        <Icon source={PaintBrushMajor} color="base" />
+      </Box>
+    </AlphaStack>
   );
 }

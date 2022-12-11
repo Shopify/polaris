@@ -1,5 +1,21 @@
 # Changelog
 
+## 6.7.0
+
+### Minor Changes
+
+- [#7816](https://github.com/Shopify/polaris/pull/7816) [`afe77e584`](https://github.com/Shopify/polaris/commit/afe77e5843f5b960574fe04433affc609d8687b1) Thanks [@allyshiasewdat](https://github.com/allyshiasewdat)! - Add returns major icon
+
+## 6.6.0
+
+### Minor Changes
+
+- [#7456](https://github.com/Shopify/polaris/pull/7456) [`3bc63f7f9`](https://github.com/Shopify/polaris/commit/3bc63f7f94f7d66155c0f071833a858756621b20) Thanks [@SereneChen-7](https://github.com/SereneChen-7)! - Add attribution model icons
+
+* [#7724](https://github.com/Shopify/polaris/pull/7724) [`d748c20ef`](https://github.com/Shopify/polaris/commit/d748c20ef54e7e07e519b4d94ac50ebefca04b99) Thanks [@jaychashop](https://github.com/jaychashop)! - Added passkey major and minor icons
+
+- [#7686](https://github.com/Shopify/polaris/pull/7686) [`6b989379e`](https://github.com/Shopify/polaris/commit/6b989379e82e5bcea973ff1b5c1b1e105ac90608) Thanks [@matyikriszta](https://github.com/matyikriszta)! - Update FormMajor icon
+
 ## 6.5.0
 
 ### Minor Changes

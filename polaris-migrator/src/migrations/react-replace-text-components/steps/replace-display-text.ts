@@ -2,9 +2,11 @@ import type {ASTNode, Collection, JSCodeshift} from 'jscodeshift';
 
 import {
   hasJSXAttribute,
+  hasJSXSpreadAttribute,
   replaceJSXElement,
   replaceJSXAttributes,
   insertJSXAttribute,
+  insertJSXComment,
 } from '../../../utilities/jsx';
 import {
   getImportSpecifierName,
@@ -13,6 +15,7 @@ import {
   updateImports,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
+import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
 
 const displayTextSizeMap = {
   small: 'headingLg',
@@ -20,6 +23,8 @@ const displayTextSizeMap = {
   large: 'heading2xl',
   extraLarge: 'heading4xl',
 };
+
+const defaultDisplayTextSize = 'medium';
 
 /**
  * Replace <DisplayText> with the <Text> component
@@ -50,7 +55,16 @@ export function replaceDisplayText<NodeType = ASTNode>(
   });
 
   source.findJSXElements(localElementName).forEach((element) => {
+    if (hasJSXSpreadAttribute(j, element)) {
+      insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+    }
+
     replaceJSXElement(j, element, 'Text');
+
+    if (!hasJSXAttribute(j, element, 'size')) {
+      insertJSXAttribute(j, element, 'size', defaultDisplayTextSize);
+    }
+
     replaceJSXAttributes(j, element, 'size', 'variant', displayTextSizeMap);
 
     if (hasJSXAttribute(j, element, 'element')) {

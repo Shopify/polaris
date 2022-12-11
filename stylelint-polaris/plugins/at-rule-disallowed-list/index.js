@@ -2,7 +2,7 @@ const stylelint = require('stylelint');
 
 const {matchesStringOrRegExp, isRegExp, isString} = require('../../utils');
 
-const ruleName = 'stylelint-polaris/at-rule-disallowed-list';
+const ruleName = 'polaris/at-rule-disallowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**

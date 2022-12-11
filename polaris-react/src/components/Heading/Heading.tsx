@@ -24,13 +24,6 @@ export interface HeadingProps {
  * https://polaris.shopify.com/components/text
  */
 export function Heading({element: Element = 'h2', children, id}: HeadingProps) {
-  if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `Heading` component has been deprecated. Use the `Text` component instead. See the Polaris component guide on how to use `Text`. https://polaris.shopify.com/components/text',
-    );
-  }
-
   return (
     <Element className={styles.Heading} id={id}>
       {children}

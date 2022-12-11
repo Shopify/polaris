@@ -62,6 +62,7 @@ export interface ItemProps extends ItemURLDetails {
   onToggleExpandedState?(): void;
   expanded?: boolean;
   shouldResizeIcon?: boolean;
+  truncateText?: boolean;
 }
 
 enum MatchState {
@@ -92,6 +93,7 @@ export function Item({
   onToggleExpandedState,
   expanded,
   shouldResizeIcon,
+  truncateText,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -162,7 +164,12 @@ export function Item({
   const itemContentMarkup = (
     <>
       {iconMarkup}
-      <span className={styles.Text}>
+      <span
+        className={classNames(
+          styles.Text,
+          truncateText && styles['Text-truncated'],
+        )}
+      >
         {label}
         {indicatorMarkup}
       </span>
@@ -291,6 +298,7 @@ export function Item({
                 label={label}
                 matches={item === longestMatch}
                 onClick={onClick}
+                truncateText={truncateText}
               />
             );
           })}
@@ -307,25 +315,32 @@ export function Item({
   return (
     <li className={className}>
       <div className={styles.ItemWrapper}>
-        <UnstyledLink
-          url={url}
-          className={itemClassName}
-          external={external}
-          tabIndex={tabIndex}
-          aria-disabled={disabled}
-          aria-label={accessibilityLabel}
-          onClick={getClickHandler(onClick)}
-          onKeyUp={handleKeyUp}
-          onBlur={handleBlur}
-          {...normalizeAriaAttributes(
-            secondaryNavigationId,
-            subNavigationItems.length > 0,
-            showExpanded,
+        <div
+          className={classNames(
+            styles.ItemInnerWrapper,
+            selected && canBeActive && styles['ItemInnerWrapper-Selected'],
           )}
         >
-          {itemContentMarkup}
-        </UnstyledLink>
-        {secondaryActionMarkup}
+          <UnstyledLink
+            url={url}
+            className={itemClassName}
+            external={external}
+            tabIndex={tabIndex}
+            aria-disabled={disabled}
+            aria-label={accessibilityLabel}
+            onClick={getClickHandler(onClick)}
+            onKeyUp={handleKeyUp}
+            onBlur={handleBlur}
+            {...normalizeAriaAttributes(
+              secondaryNavigationId,
+              subNavigationItems.length > 0,
+              showExpanded,
+            )}
+          >
+            {itemContentMarkup}
+          </UnstyledLink>
+          {secondaryActionMarkup}
+        </div>
       </div>
       {secondaryNavigationMarkup}
     </li>

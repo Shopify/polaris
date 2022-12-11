@@ -1,7 +1,9 @@
 import React, {useRef} from 'react';
+import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import type {DisableableAction} from '../../../../types';
 import {Button} from '../../../Button';
+import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import styles from '../../BulkActions.scss';
@@ -37,12 +39,17 @@ export function BulkActionButton({
       <Button
         external={external}
         url={url}
-        aria-label={accessibilityLabel}
+        aria-label={disclosure ? content : accessibilityLabel}
         onClick={onAction}
         disabled={disabled}
-        disclosure={disclosure}
+        size="slim"
+        icon={
+          disclosure ? (
+            <Icon source={HorizontalDotsMinor} color="base" />
+          ) : undefined
+        }
       >
-        {content}
+        {disclosure ? undefined : content}
       </Button>
       {indicator && <Indicator />}
     </div>

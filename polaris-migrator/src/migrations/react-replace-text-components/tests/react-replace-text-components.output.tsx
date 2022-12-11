@@ -1,10 +1,15 @@
 import React from 'react';
+import type {TextStyleProps} from '@shopify/polaris';
 import {Text, InlineCode} from '@shopify/polaris';
 
 const noop = (..._: any) => {};
 
 export function App() {
   const textStyle = Text;
+  const textStyleProps: TextStyleProps = {
+    variation: 'positive',
+  };
+
   noop(textStyle);
 
   return (
@@ -13,6 +18,9 @@ export function App() {
         Display text
       </Text>
       <Text variant="heading2xl" as="p">
+        Display text
+      </Text>
+      <Text variant="headingXl" as="p">
         Display text
       </Text>
       <Text variant="headingXl" as="p">
@@ -36,7 +44,7 @@ export function App() {
       <Text variant="bodySm" as="p">
         Caption
       </Text>
-      <Text variant="bodyMd" fontWeight="bold" as="span">
+      <Text variant="bodyMd" fontWeight="semibold" as="span">
         Strong
       </Text>
       <Text variant="bodyMd" color="success" as="span">
@@ -50,6 +58,10 @@ export function App() {
       </Text>
       <Text variant="bodyMd" as="span">
         <InlineCode>Code</InlineCode>
+      </Text>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
+      <Text {...textStyleProps} variant="bodyMd" as="span">
+        Positive
       </Text>
       <Text variant="bodySm" as="span" visuallyHidden>
         Hidden text
