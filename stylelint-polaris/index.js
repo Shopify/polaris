@@ -5,7 +5,7 @@ const {
 } = require('@shopify/polaris-tokens');
 
 /**
- * @type {import('./plugins/coverage').CategorizedRules} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
+ * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
 (e.g., Unexpected named color "blue" - Please use a Polaris color token Stylelint(polaris/colors/color-named)")
 */
@@ -55,7 +55,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris color token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#color',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#colors',
       },
     },
   ],
@@ -91,7 +91,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris motion token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#motion',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#motion',
       },
     },
   ],
@@ -148,7 +148,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris font token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#typography',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#typography',
       },
     },
   ],
@@ -230,7 +230,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris layout component',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#layout',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#layout',
       },
     },
   ],
@@ -264,12 +264,17 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris spacing token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#spacing',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#spacing',
       },
     },
   ],
   shape: [
     {
+      'function-disallowed-list': [
+        /([\w-]+\.)?border-radius/,
+        /([\w-]+\.)?border-width/,
+        /([\w-]+\.)?border/,
+      ],
       'declaration-property-unit-disallowed-list': [
         {
           'border-width': ['px', 'rem', 'em'],
@@ -281,9 +286,6 @@ const stylelintPolarisCoverageOptions = {
       ],
       'polaris/at-rule-disallowed-list': {
         include: [
-          /([\w-]+\.)?border-radius/,
-          /([\w-]+\.)?border-width/,
-          /([\w-]+\.)?border/,
           /([\w-]+\.)?high-contrast-border($|\()/,
           /([\w-]+\.)?high-contrast-button-outline($|\()/,
           /([\w-]+\.)?high-contrast-outline($|\()/,
@@ -314,7 +316,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris shape token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#shape',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#shape',
       },
     },
   ],
@@ -345,7 +347,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris depth token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#depth',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#depth',
       },
     },
   ],
@@ -368,7 +370,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris z-index token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#z-index',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#z-index',
       },
     },
   ],
@@ -391,6 +393,7 @@ const stylelintPolarisCoverageOptions = {
       },
     },
     {
+      message: 'Please use a Polaris token',
       meta: {
         url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#conventions',
       },
@@ -449,8 +452,9 @@ const stylelintPolarisCoverageOptions = {
       },
     },
     {
+      message: 'Please use a Polaris breakpoint token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#media-queries',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#media-queries',
       },
     },
   ],
@@ -497,7 +501,7 @@ const stylelintPolarisCoverageOptions = {
     {
       message: 'Please use a Polaris token',
       meta: {
-        url: 'https://github.com/Shopify/polaris/blob/main/stylelint-polaris/README.md#legacy',
+        url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#legacy',
       },
     },
   ],
