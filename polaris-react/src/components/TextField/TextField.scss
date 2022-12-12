@@ -203,9 +203,7 @@ $spinner-icon-size: 12px;
   left: 0;
   background-color: var(--p-surface);
   border: var(--p-border-width-1) solid var(--p-border-shadow);
-
-  // stylelint-disable-next-line -- hard coded to address accessbility issue https://github.com/Shopify/polaris/issues/7838
-  border-top-color: #888c91;
+  border-top-color: var(--p-border);
   border-radius: var(--p-border-radius-1);
   pointer-events: none;
 }
