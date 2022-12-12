@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
-import {Stack, Text} from '@shopify/polaris';
+import {Icon, Stack, Text} from '@shopify/polaris';
 import {useRouter} from 'next/router';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Longform from '../Longform';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
+import {CircleTickMajor} from '@shopify/polaris-icons';
 type Pattern = {
   index: number;
   title: string;
@@ -278,6 +279,50 @@ export default function PatternsDatePickingPage() {
                   </ol>
                 </div>
                 <div className={styles.ImageWrapper}></div>
+              </section>
+              <h2>Usage Guidelines</h2>
+              <section>
+                <ul className={styles.UsageGuidelinesWrapper}>
+                  <li className={styles.UsageGuidelinesEl}>
+                    <div className={styles.IconWrapper}>
+                      <Icon source={CircleTickMajor} color="success" />
+                    </div>
+                    <div className={styles.ImageWrapper} />
+                    <div className={styles.UsageGuidelineTxt}>
+                      <h3>Suggestion</h3>
+                      <p>
+                        Pin any relevant merchant-specific dates to the top of
+                        the option list
+                      </p>
+                    </div>
+                  </li>
+                  <li className={styles.UsageGuidelinesEl}>
+                    <div className={styles.IconWrapper}>
+                      <Icon source={CircleTickMajor} color="success" />
+                    </div>
+                    <div className={styles.ImageWrapper} />
+                    <div className={styles.UsageGuidelineTxt}>
+                      <h3>Polaris Standard</h3>
+                      <p>
+                        If a date cannot be selected, indicate it with the{' '}
+                        <a href="">disabled text color token</a>
+                      </p>
+                    </div>
+                  </li>
+                  <li className={styles.UsageGuidelinesEl}>
+                    <div className={styles.IconWrapper}>
+                      <Icon source={CircleTickMajor} color="success" />
+                    </div>
+                    <div className={styles.ImageWrapper} />
+                    <div className={styles.UsageGuidelineTxt}>
+                      <h3>Quality UX</h3>
+                      <p>
+                        If a merchant enters a nonexistent date, revert to the
+                        previously selected date
+                      </p>
+                    </div>
+                  </li>
+                </ul>
               </section>
             </Tab.Panel>
             <Tab.Panel>

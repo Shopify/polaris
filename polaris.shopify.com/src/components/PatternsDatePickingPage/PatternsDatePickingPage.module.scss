@@ -88,6 +88,42 @@
     }
   }
 }
+.UsageGuidelinesWrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  .UsageGuidelinesEl {
+    position: relative;
+    flex: 1;
+    list-style: none;
+    background-color: rgba(236, 246, 242, 1);
+    padding: 0;
+    margin: 0;
+    .IconWrapper {
+      position: absolute;
+      margin: 0;
+      top: -0.5rem;
+      left: 0;
+      right: 0;
+    }
+    .ImageWrapper {
+      display: block;
+      height: 150px;
+      // background: yellow;
+      width: 100%;
+    }
+    .UsageGuidelineTxt {
+      padding: 1rem;
+      h3 {
+        font-size: 1rem;
+        color: rgba(0, 89, 66, 1);
+      }
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+}
 
 .Accordion {
   padding: 1rem 2rem;
