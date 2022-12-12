@@ -1,11 +1,23 @@
 import React from 'react';
 
-import {Page} from '../src';
+import {Page, Button, TextField, Select, Card, Inline} from '../src';
 
 export function Playground() {
+  const options = [
+    {label: 'Today', value: 'today'},
+    {label: 'Yesterday', value: 'yesterday'},
+    {label: 'Last 7 days', value: 'lastWeek'},
+  ];
   return (
     <Page title="Playground">
-      {/* Add the code you want to test in here */}
+      <Card sectioned>
+        <Inline>
+          <TextField label="Store name" autoComplete="off" />
+          <Select label="Date range" options={options} />
+        </Inline>
+        <br />
+        <Button>Hello</Button>
+      </Card>
     </Page>
   );
 }
