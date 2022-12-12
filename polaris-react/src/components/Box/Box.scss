@@ -1,5 +1,36 @@
 @import '../../styles/common';
 
+$spacingValues :
+  025,
+  05,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  8,
+  10,
+  12,
+  16,
+  20,
+  24,
+  28,
+  32,
+;
+
+@mixin propertyClasses($componentProp, $styleDeclaration, $tokenFamily, $tokenValues) {
+  @each $tokenValue in $tokenValues {
+    .#{$componentProp}#{$tokenValue} {
+      #{$styleDeclaration}: var(--p-#{$tokenFamily}-#{$tokenValue});
+    }
+  }
+}
+
+@include propertyClasses(padding, padding, space, $spacingValues);
+
+@include propertyClasses(paddingBlockStart, padding-block-start, space, $spacingValues);
+
 .listReset {
   list-style-type: none;
   margin-block-start: 0;
@@ -9,31 +40,31 @@
 }
 
 .Box {
-  @include responsive-props('box', 'padding', 'padding');
-  @include responsive-props(
-    'box',
-    'padding-block-end',
-    'padding-block-end',
-    'padding'
-  );
-  @include responsive-props(
-    'box',
-    'padding-block-start',
-    'padding-block-start',
-    'padding'
-  );
-  @include responsive-props(
-    'box',
-    'padding-inline-start',
-    'padding-inline-start',
-    'padding'
-  );
-  @include responsive-props(
-    'box',
-    'padding-inline-end',
-    'padding-inline-end',
-    'padding'
-  );
+  // @include responsive-props('box', 'padding', 'padding');
+  // @include responsive-props(
+  //   'box',
+  //   'padding-block-end',
+  //   'padding-block-end',
+  //   'padding'
+  // );
+  // @include responsive-props(
+  //   'box',
+  //   'padding-block-start',
+  //   'padding-block-start',
+  //   'padding'
+  // );
+  // @include responsive-props(
+  //   'box',
+  //   'padding-inline-start',
+  //   'padding-inline-start',
+  //   'padding'
+  // );
+  // @include responsive-props(
+  //   'box',
+  //   'padding-inline-end',
+  //   'padding-inline-end',
+  //   'padding'
+  // );
 
   // stylelint-disable -- Polaris component custom properties
   --pc-box-shadow: initial;
@@ -54,7 +85,7 @@
   --pc-box-max-width: initial;
   --pc-box-overflow-x: initial;
   --pc-box-overflow-y: initial;
-  --pc-box-padding: initial;
+  // --pc-box-padding: initial;
   --pc-box-padding-block-end: initial;
   --pc-box-padding-inline-start: initial;
   --pc-box-padding-inline-end: initial;

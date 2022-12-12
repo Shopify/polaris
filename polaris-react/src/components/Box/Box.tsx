@@ -9,6 +9,7 @@ import type {
   DepthShadowAlias,
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
+import css from '@styled-system/css';
 
 import {
   getResponsiveProps,
@@ -278,19 +279,19 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-max-width': maxWidth,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
-      ...getResponsiveProps('box', 'padding', 'space', padding),
+      // ...getResponsiveProps('box', 'padding', 'space', padding),
       ...getResponsiveProps(
         'box',
         'padding-block-end',
         'space',
         paddingBlockEnd,
       ),
-      ...getResponsiveProps(
-        'box',
-        'padding-block-start',
-        'space',
-        paddingBlockStart,
-      ),
+      // ...getResponsiveProps(
+      //   'box',
+      //   'padding-block-start',
+      //   'space',
+      //   paddingBlockStart,
+      // ),
       ...getResponsiveProps(
         'box',
         'padding-inline-start',
@@ -322,10 +323,20 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       opacity,
     } as React.CSSProperties;
 
+    const paddingClasses = () => {
+      if (!padding) return null;
+
+      if (typeof padding === 'string') {
+        return styles[`padding${padding}`];
+      }
+    };
+
     const className = classNames(
       styles.Box,
       visuallyHidden && styles.visuallyHidden,
       as === 'ul' && styles.listReset,
+      padding && paddingClasses(),
+      paddingBlockStart && styles[`paddingBlockStart${paddingBlockStart}`],
     );
 
     return createElement(
