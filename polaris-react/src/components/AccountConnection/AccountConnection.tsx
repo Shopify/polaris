@@ -52,12 +52,7 @@ export function AccountConnection({
     />
   ) : null;
 
-  let titleMarkup: React.ReactNode = null;
-  if (title) {
-    titleMarkup = <>{title}</>;
-  } else if (accountName) {
-    titleMarkup = <>{accountName}</>;
-  }
+  const titleMarkup = title ? title : accountName;
 
   const detailsMarkup = details ? (
     <Text as="span" variant="bodyMd" color="subdued">
