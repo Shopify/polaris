@@ -7,7 +7,7 @@ import type {
 import React from 'react';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
-import type {ResponsiveProp} from '../../utilities/css';
+// import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 
 type CardBackgroundColorTokenScale = Extract<
@@ -15,7 +15,7 @@ type CardBackgroundColorTokenScale = Extract<
   'surface' | 'surface-subdued'
 >;
 
-type Spacing = ResponsiveProp<SpacingSpaceScale>;
+// type Spacing = ResponsiveProp<SpacingSpaceScale>;
 
 export interface AlphaCardProps {
   children?: React.ReactNode;
@@ -29,7 +29,7 @@ export interface AlphaCardProps {
    * padding='4'
    * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  padding?: Spacing;
+  padding?: SpacingSpaceScale;
   /** Border radius value above a set breakpoint */
   roundedAbove?: BreakpointsAlias;
 }
@@ -37,7 +37,7 @@ export interface AlphaCardProps {
 export const AlphaCard = ({
   children,
   background = 'surface',
-  padding = {xs: '4', sm: '5'},
+  padding = '5',
   roundedAbove,
 }: AlphaCardProps) => {
   const breakpoints = useBreakpoints();

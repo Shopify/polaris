@@ -69,11 +69,7 @@ export function ChoiceList({
   const finalName = allowMultiple ? `${name}[]` : name;
 
   const titleMarkup = title ? (
-    <Box
-      as="legend"
-      paddingBlockEnd={{xs: '5', md: '1'}}
-      visuallyHidden={titleHidden}
-    >
+    <Box as="legend" paddingBlockEnd="1" visuallyHidden={titleHidden}>
       <Text as="span" variant="bodyMd">
         {title}
       </Text>
@@ -103,7 +99,7 @@ export function ChoiceList({
       : null;
     const children = renderedChildren ? (
       <div className={styles.ChoiceChildren}>
-        <Box paddingBlockStart={{xs: '4', md: '0'}} paddingBlockEnd="2">
+        <Box paddingBlockStart="0" paddingBlockEnd="2">
           {renderedChildren}
         </Box>
       </div>
@@ -134,7 +130,7 @@ export function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <Box paddingBlockStart={{xs: '0', md: '1'}} paddingBlockEnd="2">
+    <Box paddingBlockStart="1" paddingBlockEnd="2">
       <InlineError message={error} fieldID={finalName} />
     </Box>
   );

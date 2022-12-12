@@ -10,12 +10,7 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {
-  getResponsiveProps,
-  ResponsiveProp,
-  classNames,
-  sanitizeCustomProperties,
-} from '../../utilities/css';
+import {classNames, sanitizeCustomProperties} from '../../utilities/css';
 
 import styles from './Box.scss';
 
@@ -48,8 +43,6 @@ export type BorderTokenAlias =
   | 'divider-on-dark'
   | 'transparent';
 
-type Spacing = ResponsiveProp<SpacingSpaceScale>;
-
 export type BorderRadiusTokenScale =
   | '05'
   | '1'
@@ -68,6 +61,13 @@ export type BackgroundColors =
   | ColorsOverlayTokenAlias
   | ColorsActionTokenAlias
   | ColorsSurfaceTokenAlias;
+
+interface Spacing {
+  blockStart: SpacingSpaceScale;
+  blockEnd: SpacingSpaceScale;
+  inlineStart: SpacingSpaceScale;
+  inlineEnd: SpacingSpaceScale;
+}
 
 export interface BoxProps extends React.AriaAttributes {
   children?: React.ReactNode;
@@ -126,31 +126,31 @@ export interface BoxProps extends React.AriaAttributes {
    * padding='4'
    * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  padding?: Spacing;
+  padding?: SpacingSpaceScale;
   /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingBlockStart='4'
    * paddingBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingBlockStart?: Spacing;
+  paddingBlockStart?: SpacingSpaceScale;
   /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingBlockEnd='4'
    * paddingBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingBlockEnd?: Spacing;
+  paddingBlockEnd?: SpacingSpaceScale;
   /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingInlineStart='4'
    * paddingInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingInlineStart?: Spacing;
+  paddingInlineStart?: SpacingSpaceScale;
   /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * paddingInlineEnd='4'
    * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
    */
-  paddingInlineEnd?: Spacing;
+  paddingInlineEnd?: SpacingSpaceScale;
   /** Aria role */
   role?: Extract<React.AriaRole, 'status' | 'presentation' | 'menu'>;
   /** Shadow on box */
@@ -163,13 +163,13 @@ export interface BoxProps extends React.AriaAttributes {
   /** Position of box */
   position?: Position;
   /** Top position of box */
-  insetBlockStart?: Spacing;
+  insetBlockStart?: SpacingSpaceScale;
   /** Bottom position of box */
-  insetBlockEnd?: Spacing;
+  insetBlockEnd?: SpacingSpaceScale;
   /** Left position of box */
-  insetInlineStart?: Spacing;
+  insetInlineStart?: SpacingSpaceScale;
   /** Right position of box */
-  insetInlineEnd?: Spacing;
+  insetInlineEnd?: SpacingSpaceScale;
   /** Opacity of box */
   opacity?: string;
   /** Visually hide the contents (still announced by screenreader) */
@@ -227,6 +227,13 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     },
     ref,
   ) => {
+    const paddings = {
+      blockEnd: paddingBlockEnd,
+      inlineStart: paddingInlineStart,
+      inlineEnd: paddingInlineEnd,
+      blockStart: paddingBlockStart,
+    } as Spacing;
+
     const style = {
       '--pc-box-color': color ? `var(--p-${color})` : undefined,
       '--pc-box-background': background ? `var(--p-${background})` : undefined,
@@ -278,31 +285,19 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-max-width': maxWidth,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
-      ...getResponsiveProps('box', 'padding', 'space', padding),
-      ...getResponsiveProps(
-        'box',
-        'padding-block-end',
-        'space',
-        paddingBlockEnd,
-      ),
-      ...getResponsiveProps(
-        'box',
-        'padding-block-start',
-        'space',
-        paddingBlockStart,
-      ),
-      ...getResponsiveProps(
-        'box',
-        'padding-inline-start',
-        'space',
-        paddingInlineStart,
-      ),
-      ...getResponsiveProps(
-        'box',
-        'padding-inline-end',
-        'space',
-        paddingInlineEnd,
-      ),
+      '--pc-box-padding': padding ? `var(--p-space-${padding})` : undefined,
+      '--pc-box-padding-block-end': paddings.blockEnd
+        ? `var(--p-space-${paddings.blockEnd})`
+        : undefined,
+      '--pc-box-padding-inline-start': paddings.inlineStart
+        ? `var(--p-space-${paddings.inlineStart})`
+        : undefined,
+      '--pc-box-padding-inline-end': paddings.inlineEnd
+        ? `var(--p-space-${paddings.inlineEnd})`
+        : undefined,
+      '--pc-box-padding-block-start': paddings.blockStart
+        ? `var(--p-space-${paddings.blockStart})`
+        : undefined,
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
       position,
