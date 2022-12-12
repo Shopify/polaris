@@ -1,13 +1,14 @@
+import {forwardRef} from 'react';
 import styles from './Heading.module.scss';
-import {Box, BoxProps, forwardRef} from '../Box';
+import {Box, type WithAsProp} from '../Box';
 
-export interface HeadingProps extends BoxProps {
+export interface HeadingProps {
   as?: 'h1' | 'h2' | 'h3' | 'h4';
   className?: string;
 }
 
-export const Heading = forwardRef(
-  ({as = 'h1', className, ...props}: HeadingProps, ref) => (
-    <Box ref={ref} as={as} className={[styles[as], className]} {...props} />
-  ),
-);
+export const Heading = forwardRef(({as = 'h1', className, ...props}, ref) => (
+  <Box ref={ref} as={as} className={[styles[as], className]} {...props} />
+)) as WithAsProp<HeadingProps, typeof Box, 'h1'>;
+
+Heading.displayName = 'Heading';

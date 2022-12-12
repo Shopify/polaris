@@ -1,10 +1,20 @@
 import styles from './InlinePill.module.scss';
-import {Box, BoxProps} from '../Box';
+import {forwardRef} from 'react';
+import {Box, type WithAsProp} from '../Box';
 
-export interface InlinePillProps extends BoxProps {}
+export interface InlinePillProps {}
 
-const InlinePill = ({as = 'button', className, ...rest}: InlinePillProps) => (
-  <Box as={as} className={[styles.InlinePill, className]} {...rest} />
-);
+const InlinePill = forwardRef(
+  ({as = 'button', className, ...props}, forwardedRef) => (
+    <Box
+      {...props}
+      as={as}
+      className={[styles.InlinePill, className]}
+      ref={forwardedRef}
+    />
+  ),
+) as WithAsProp<InlinePillProps, typeof Box, 'button'>;
+
+InlinePill.displayName = 'InlinePill';
 
 export default InlinePill;

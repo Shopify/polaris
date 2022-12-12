@@ -1,24 +1,27 @@
+import {forwardRef} from 'react';
 import styles from './Table.module.scss';
-import {Box, BoxProps, forwardRef} from '../Box';
+import {Box, type WithAsProp} from '../Box';
 
-export interface TableProps extends BoxProps {}
+export interface TableProps {}
 
-export const Table = forwardRef(({className, ...props}: TableProps, ref) => (
+export const Table = forwardRef(({className, ...props}, ref) => (
   <Box ref={ref} className={[styles.Table, className]} {...props} />
-));
+)) as WithAsProp<TableProps>;
 
-export interface TableHeaderProps extends BoxProps {}
+Table.displayName = 'Table';
 
-export const TableHeader = forwardRef(
-  ({className, ...props}: TableHeaderProps, ref) => (
-    <Box ref={ref} className={[styles.TableHeader, className]} {...props} />
-  ),
-);
+export interface TableHeaderProps {}
 
-export interface TableRowProps extends BoxProps {}
+export const TableHeader = forwardRef(({className, ...props}, ref) => (
+  <Box ref={ref} className={[styles.TableHeader, className]} {...props} />
+)) as WithAsProp<TableProps>;
 
-export const TableRow = forwardRef(
-  ({className, ...props}: TableRowProps, ref) => (
-    <Box ref={ref} className={[styles.TableRow, className]} {...props} />
-  ),
-);
+TableHeader.displayName = 'TableHeader';
+
+export interface TableRowProps {}
+
+export const TableRow = forwardRef(({className, ...props}, ref) => (
+  <Box ref={ref} className={[styles.TableRow, className]} {...props} />
+)) as WithAsProp<TableProps>;
+
+TableRow.displayName = 'TableRowProps';

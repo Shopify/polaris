@@ -1,11 +1,14 @@
+import {forwardRef} from 'react';
 import styles from './Lede.module.scss';
-import {Box, forwardRef} from '../Box';
+import {Box, type WithAsProp} from '../Box';
 
-export const Lede = forwardRef(({className, ...props}, ref) => (
+export const Lede = forwardRef(({as = 'p', className, ...props}, ref) => (
   <Box
     ref={ref}
-    as="p"
+    as={as}
     className={[styles.LedeParagraph, className]}
     {...props}
   />
-));
+)) as WithAsProp<{}, typeof Box, 'p'>;
+
+Lede.displayName = 'Lede';

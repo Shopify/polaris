@@ -39,7 +39,7 @@ export const stripMarkdownLinks = (markdown: string): string => {
 };
 
 type ValueOrArray<T> = T | ValueOrArray<T>[];
-type ClassName = ValueOrArray<string | boolean | null | undefined>;
+export type ClassName = ValueOrArray<string | boolean | null | undefined>;
 
 export const className = (...classNames: ClassName[]): string => {
   return classNames
