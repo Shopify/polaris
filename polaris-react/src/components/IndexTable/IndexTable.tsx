@@ -170,7 +170,12 @@ function IndexTableBase({
     bulkActionsAbsoluteOffset,
     bulkActionsMaxWidth,
     bulkActionsOffsetLeft,
+    computeTableDimensions,
   } = useIsBulkActionsSticky(selectMode);
+
+  useEffect(() => {
+    computeTableDimensions();
+  }, [computeTableDimensions, itemCount]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
