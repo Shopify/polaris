@@ -9,22 +9,22 @@ const {
   isString,
 } = require('../../utils');
 
-const ruleName = 'polaris/custom-properties-allowed-list';
+const ruleName = 'polaris/custom-property-allowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (invalidProperty, invalidValues) => {
+  rejected: (prop, value, invalidProperty, invalidValue) => {
     const invalidPropertyMessage = invalidProperty
-      ? `Unexpected custom property [${invalidProperty}].`
+      ? `Unexpected custom property "${prop}"`
       : null;
 
-    const invalidValuesMessage = invalidValues
-      ? `Invalid custom properties [${invalidValues}].`
+    const invalidValueMessage = invalidValue
+      ? `Unexpected value "var(${invalidValue})" for property "${prop}"`
       : null;
 
-    return [invalidPropertyMessage, invalidValuesMessage]
+    return [invalidPropertyMessage, invalidValueMessage]
       .filter(Boolean)
       .join(' ');
   },
@@ -74,6 +74,7 @@ const {rule} = stylelint.createPlugin(
           allowedProperties,
           prop,
         );
+
         const invalidValues = validateCustomPropertyValues(
           allowedValues,
           prop,
@@ -84,6 +85,8 @@ const {rule} = stylelint.createPlugin(
 
         stylelint.utils.report({
           message: messages.rejected(
+            prop,
+            value,
             /** @type {string} */ (invalidProperty),
             /** @type {string} */ (invalidValues?.join(', ')),
           ),

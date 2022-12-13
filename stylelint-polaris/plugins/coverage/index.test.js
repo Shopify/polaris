@@ -3,6 +3,18 @@ const path = require('path');
 const {ruleName} = require('.');
 
 const config = {
+  colors: [
+    {
+      'color-named': 'never',
+      'color-no-hex': [
+        true,
+        {message: 'Appended Stylelint rule config message'},
+      ],
+    },
+    {
+      message: 'Appended category rule config message',
+    },
+  ],
   motion: {
     'at-rule-disallowed-list': [['keyframes'], {severity: 'warning'}],
   },
@@ -25,6 +37,18 @@ testRule({
   ],
 
   reject: [
+    {
+      code: '.class {color: #bad;}',
+      description: 'Overrides appended category rule warning text (string)',
+      message:
+        'Unexpected hex color "#bad" - Appended Stylelint rule config message',
+    },
+    {
+      code: '.class {color: red;}',
+      description: 'Appends message to category rule warning text',
+      message:
+        'Unexpected named color "red" - Appended category rule config message',
+    },
     {
       code: '@keyframes foo {}',
       description: 'Uses disallowed at-rule (built-in rule)',

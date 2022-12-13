@@ -1,4 +1,4 @@
-## Allowed Custom Properties plugin
+## Custom property allowed list plugin
 
 The purpose of this plugin is to ensure that we're following our established conventions for Polaris custom properties, and only using custom properties that are generated Polaris tokens.
 
@@ -26,12 +26,12 @@ interface PrimaryOptions {
 }
 ```
 
-### How to configure:
+### How to configure
 
 ```js
 const stylelintConfig = {
   rules: {
-    'stylelint-polaris/custom-properties-allowed-list': {
+    'polaris/custom-property-allowed-list': {
       allowedProperties: ['/--pc-.+/'],
       allowedValues: {
         width: ['--p-space-0', '--p-space-1' /* etc... */],
@@ -75,10 +75,10 @@ e.x. output
 
 ```
 src/components/TextContainer/TextContainer.scss
-  4:3  ✖  Unexpected custom property [--p-text-container-spacing].        @shopify/custom-properties-allowed-list
-  6:5  ✖  Invalid custom properties [--p-text-container-spacing].         @shopify/custom-properties-allowed-list
- 15:3  ✖  Unexpected custom property [--p-text-container-spacing].        @shopify/custom-properties-allowed-list
- 19:3  ✖  Unexpected custom property [--p-text-container-spacing].        @shopify/custom-properties-allowed-list
+  4:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
+  6:5  ✖  Invalid custom properties [--p-text-container-spacing].         polaris/custom-property-allowed-list
+ 15:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
+ 19:3  ✖  Unexpected custom property [--p-text-container-spacing].        polaris/custom-property-allowed-list
 ```
 
 > Note: `--p-text-container-spacing` is not a valid Polaris custom property from [`tokens.ts`](../../../../src/tokens/tokens.ts). This custom property should use the local component prefix `--pc-` instead.
@@ -86,6 +86,6 @@ src/components/TextContainer/TextContainer.scss
 ## FUTURE
 
 - Think about how to keep polaris tokens in sync in both plugin and `polaris-react`
-  (e.g. If `@shopify/custom-properties-allowed-list` plugin is separated from `polaris-react`)
+  (e.g. If `@shopify/custom-property-allowed-list` plugin is separated from `polaris-react`)
   - Share token generator functions? (e.g. `getPolarisCustomProperty`)
 - Validate color-scheme tokens have the same key value pairs: https://github.com/Shopify/polaris-react/issues/4803
