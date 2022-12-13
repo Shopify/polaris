@@ -4,7 +4,7 @@ import StatusBadge from '../StatusBadge';
 import {StatusName} from '../../types';
 import Page from '../Page';
 import PageMeta from '../PageMeta';
-import {Table, TableHeader, TableRow} from '../Table';
+import {TableContainer, Table, TableCaption, Tr, Td} from '../Table';
 import {Heading} from '../Heading';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
@@ -47,11 +47,21 @@ export const PatternIndexLayoutPage = () => (
       </Stack>
       <Stack gap="4">
         <Heading as="h2">When to use</Heading>
-        <Table>
-          <TableHeader>When merchants need to:</TableHeader>
-          <TableRow>Row1</TableRow>
-          <TableRow>Row2</TableRow>
-        </Table>
+        <TableContainer>
+          <Table>
+            <TableCaption className={styles.WhenToUseCaption}>
+              When merchants need to:
+            </TableCaption>
+            <Tr>
+              <Td className={styles.UseCase}>Find and change app settings</Td>
+              <Td>This is a description of the use case.</Td>
+            </Tr>
+            <Tr>
+              <Td className={styles.UseCase}>Another merchant objective</Td>
+              <Td>This is a description of the use case.</Td>
+            </Tr>
+          </Table>
+        </TableContainer>
       </Stack>
     </Page>
   </>

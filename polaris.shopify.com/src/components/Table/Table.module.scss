@@ -1,43 +1,49 @@
 @import '../../styles/mixins.scss';
+/* Ensure the table doesn't break the page layout when too wide */
+.TableContainer {
+  display: block;
+  /* prefer horizontal scrolling over wrapping */
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* allow touch users to quickly scroll the table */
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+}
 
 .Table {
-  --props-table-background-color: rgba(0, 0, 0, 0.01);
+  --props-table-caption-side: top;
   --props-table-border-color: rgba(0, 0, 0, 0.075);
   @include dark-mode {
-    --props-table-background-color: rgba(255, 255, 255, 0.005);
     --props-table-border-color: rgba(255, 255, 255, 0.085);
   }
+  font-variant-numeric: lining-nums tabular-nums;
+  border-collapse: collapse;
+  width: 100%;
   border-radius: var(--border-radius-400);
   font-size: var(--font-size-200);
-  display: block;
-  transform-origin: 50% 0;
   border: 1px solid var(--props-table-border-color);
   overflow: hidden;
-  background: var(--surface);
 
-  .Table {
-    margin-top: 0.75rem;
-    margin-bottom: 0.25rem;
-    background: var(--props-table-background-color);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01);
+  .Td {
+    text-align: start;
+    padding: 1em;
   }
 
-  .TableHeader {
-    display: flex;
-    align-items: center;
+  .TableCaption {
+    caption-side: var(--props-table-caption-side);
     width: 100%;
     text-align: left;
     padding: 0.66em 1em;
     background: rgba(0, 0, 0, 0.02);
-
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
   }
 
-  .TableRow {
-    display: block;
-    padding: 1em 1em;
+  .Tr,
+  .TableCaption {
     border-bottom: 1px solid var(--props-table-border-color);
 
     &:last-child {
