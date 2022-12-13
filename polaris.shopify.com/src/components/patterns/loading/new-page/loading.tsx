@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useRouter} from 'next/router';
 import {createUrl} from 'playroom';
-import {Tab} from '@headlessui/react';
 import {MaximizeMajor} from '@shopify/polaris-icons';
 import {Icon, Text} from '@shopify/polaris';
 import Longform from '../../../Longform';
@@ -96,10 +96,17 @@ const PlayroomButton = ({
   code: string;
   patternName: string;
 }) => {
+  const router = useRouter();
+  const [href, setHref] = useState('/');
+  useEffect(() => {
+    if (router.isReady) {
+      setHref(router.asPath);
+    }
+  }, [router.asPath, router.isReady]);
   const encodedCode = createUrl({
     baseUrl: playroom.baseUrl,
     code: `// [Polaris Pattern] ${patternName}
-// Generated on ${getISOStringYear()} from ${window.location.href}
+// Generated on ${getISOStringYear()} from https://polaris.shopify.com${href}
 ${/* intentional blank line */ ''}
 ${code}`,
     // TODO: Is this correct?
@@ -120,8 +127,6 @@ ${code}`,
 };
 
 export default function LoadingPage() {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
   const patternName = 'Showing a Save Bar';
 
   return (
