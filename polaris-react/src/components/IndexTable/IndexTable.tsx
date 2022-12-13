@@ -170,7 +170,12 @@ function IndexTableBase({
     bulkActionsAbsoluteOffset,
     bulkActionsMaxWidth,
     bulkActionsOffsetLeft,
+    computeTableDimensions,
   } = useIsBulkActionsSticky(selectMode);
+
+  useEffect(() => {
+    computeTableDimensions();
+  }, [computeTableDimensions, itemCount]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
@@ -888,6 +893,7 @@ function IndexTableBase({
         <UnstyledButton
           onClick={() => handleSortHeadingClick(index, newDirection)}
           className={styles.TableHeadingSortButton}
+          tabIndex={selectMode ? -1 : 0}
         >
           {iconMarkup}
 
@@ -895,7 +901,7 @@ function IndexTableBase({
         </UnstyledButton>
       );
 
-      if (!sortToggleLabels) {
+      if (!sortToggleLabels || selectMode) {
         return sortMarkup;
       }
 
