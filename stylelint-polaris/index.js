@@ -334,7 +334,9 @@ const stylelintPolarisCoverageOptions = {
     {
       'declaration-property-value-allowed-list': [
         {
-          'z-index': Object.keys(tokens.zIndex).map(createVar),
+          'z-index': Object.keys(tokens.zIndex).map(
+            (token) => `var(${createVar(token)})`,
+          ),
         },
       ],
       'function-disallowed-list': [/([\w-]+\.)?z-index/],
