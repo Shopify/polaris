@@ -62,7 +62,7 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 1. Identify the appropriate category for the new rule
 1. Insert the rule using standard Stylelint [rule configurations](https://stylelint.io/user-guide/configure#rules)
 1. Add documentation for the rule with examples of code that will be reported as a problem and code that will fix the problem
-1. The title should be the category + the stylelint rule, for example `### colors/color-named`
+1. The title should be the category + the stylelint rule name, for example `### colors/color-named`
 
 ```js
 module.exports = {
@@ -180,11 +180,23 @@ yarn run stylelint path/to/component.scss
 
 ## Rules
 
-### [Conventions]()
+[Conventions](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#conventions) |
+[Colors](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#colors) |
+[Motion](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#motion) |
+[Typography](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#typography) |
+[Shape](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#shape) |
+[Spacing](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#shape) |
+[Depth](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#depth) |
+[Media queries](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#media-queries) |
+[Z-index](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#z-index) |
+[Layout](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#layout) |
+[Legacy](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md#legacy)
+
+### Conventions
 
 Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.
 
-#### custom-property-allowed-list
+#### conventions/custom-property-allowed-list
 
 ```diff
 root: {
@@ -221,7 +233,7 @@ Flags declaration property values using private `--pc-*` tokens.
 
 ### Colors
 
-#### color-named
+#### colors/color-named
 
 ```diff
 - color: black;
@@ -233,7 +245,7 @@ Flags declaration property values using private `--pc-*` tokens.
 + fill: var(--p-icon)
 ```
 
-#### color-no-hex
+#### colors/color-no-hex
 
 ```diff
 - color: #202223;
@@ -245,7 +257,7 @@ Flags declaration property values using private `--pc-*` tokens.
 + fill: var(--p-icon)
 ```
 
-#### declaration-property-value-disallowed-list
+#### colors/declaration-property-value-disallowed-list
 
 ```diff
 - background: black;
@@ -256,7 +268,7 @@ Flags declaration property values using private `--pc-*` tokens.
 + background: var(--p-hint-from-direct-light);
 ```
 
-#### function-disallowed-list
+#### colors/function-disallowed-list
 
 ```diff
 - color: rgb(140, 145, 150);
@@ -269,7 +281,7 @@ Flags declaration property values using private `--pc-*` tokens.
 
 ```
 
-#### at-rule-disallowed-list
+#### colors/at-rule-disallowed-list
 
 ```diff
 - fill: recolor-icon(--p-text-subdued);
@@ -279,7 +291,7 @@ Flags declaration property values using private `--pc-*` tokens.
 + fill: var(--p-icon-subdued);
 ```
 
-#### global-disallowed-list
+#### colors/global-disallowed-list
 
 Disallows use of legacy custom properties.
 
@@ -299,13 +311,13 @@ Disallows use of legacy mixin map data.
 
 ### Motion
 
-#### function-disallowed-list
+#### motion/function-disallowed-list
 
 ```diff
 
 ```
 
-#### declaration-property-unit-disallowed-list
+#### motion/declaration-property-unit-disallowed-list
 
 ```diff
 - transition-duration: 200ms;
@@ -315,13 +327,13 @@ Disallows use of legacy mixin map data.
 + transition-duration: var(--p-duration-200);
 ```
 
-#### at-rule-disallowed-list
+#### motion/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### global-disallowed-list
+#### motion/global-disallowed-list
 
 ```diff
 
@@ -329,13 +341,13 @@ Disallows use of legacy mixin map data.
 
 ### Typography
 
-#### declaration-property-value-disallowed-list
+#### typography/declaration-property-value-disallowed-list
 
 ```diff
 
 ```
 
-#### declaration-property-unit-disallowed-list
+#### typography/declaration-property-unit-disallowed-list
 
 ```diff
 - font-size: 12px;
@@ -347,19 +359,19 @@ Disallows use of legacy mixin map data.
 + line-height: var(--p-font-line-height-3);
 ```
 
-#### function-disallowed-list
+#### typography/function-disallowed-list
 
 ```diff
 
 ```
 
-#### at-rule-disallowed-list
+#### typography/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### property-disallowed-list
+#### typography/property-disallowed-list
 
 ```diff
 
@@ -367,13 +379,13 @@ Disallows use of legacy mixin map data.
 
 ### Shape
 
-#### declaration-property-value-disallowed-list
+#### shape/declaration-property-value-disallowed-list
 
 ```diff
 
 ```
 
-#### declaration-property-unit-disallowed-list
+#### shape/declaration-property-unit-disallowed-list
 
 ```diff
 - border-width: 2px;
@@ -385,19 +397,19 @@ Disallows use of legacy mixin map data.
 + border-radius: var(--p-border-radius-2);
 ```
 
-#### function-disallowed-list
+#### shape/function-disallowed-list
 
 ```diff
 
 ```
 
-#### at-rule-disallowed-list
+#### shape/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### property-disallowed-list
+#### shape/property-disallowed-list
 
 ```diff
 
@@ -405,13 +417,13 @@ Disallows use of legacy mixin map data.
 
 ### Spacing
 
-#### declaration-property-value-disallowed-list
+#### spacing/declaration-property-value-disallowed-list
 
 ```diff
 
 ```
 
-#### declaration-property-unit-disallowed-list
+#### spacing/declaration-property-unit-disallowed-list
 
 ```diff
 - gap: 2px;
@@ -423,19 +435,19 @@ Disallows use of legacy mixin map data.
 + margin: var(--p-space-3) 0;
 ```
 
-#### function-disallowed-list
+#### spacing/function-disallowed-list
 
 ```diff
 
 ```
 
-#### at-rule-disallowed-list
+#### spacing/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### property-disallowed-list
+#### spacing/property-disallowed-list
 
 ```diff
 
@@ -443,13 +455,13 @@ Disallows use of legacy mixin map data.
 
 ### Depth
 
-#### declaration-property-value-disallowed-list
+#### depth/declaration-property-value-disallowed-list
 
 ```diff
 
 ```
 
-#### declaration-property-unit-disallowed-list
+#### depth/declaration-property-unit-disallowed-list
 
 ```diff
 - box-shadow: inset 0 0 0 1px var(--p-border-subdued);
@@ -459,19 +471,19 @@ Disallows use of legacy mixin map data.
 + box-shadow: inset 0 0 0 var(--p-space-025) var(--p-border-subdued);
 ```
 
-#### function-disallowed-list
+#### depth/function-disallowed-list
 
 ```diff
 
 ```
 
-#### at-rule-disallowed-list
+#### depth/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### property-disallowed-list
+#### depth/property-disallowed-list
 
 ```diff
 
@@ -479,19 +491,19 @@ Disallows use of legacy mixin map data.
 
 ### Media queries
 
-#### function-disallowed-list
+#### media-queries/function-disallowed-list
 
 ```diff
 
 ```
 
-#### media-queries-allowed-list
+#### media-queries/media-queries-allowed-list
 
 ```diff
 
 ```
 
-#### at-rule-disallowed-list
+#### media-queries/at-rule-disallowed-list
 
 ```diff
 
@@ -499,19 +511,19 @@ Disallows use of legacy mixin map data.
 
 ### Z-Index
 
-#### declaration-property-value-allowed-list
+#### z-index/declaration-property-value-allowed-list
 
 ```diff
 
 ```
 
-#### function-disallowed-list
+#### z-index/function-disallowed-list
 
 ```diff
 
 ```
 
-#### global-disallowed-list
+#### z-index/global-disallowed-list
 
 ```diff
 
@@ -519,25 +531,25 @@ Disallows use of legacy mixin map data.
 
 ### Layout
 
-#### declaration-property-value-disallowed-list
+#### layout/declaration-property-value-disallowed-list
 
 ```diff
 
 ```
 
-#### function-disallowed-list
+#### layout/function-disallowed-list
 
 ```diff
 
 ```
 
-#### at-rule-disallowed-list
+#### layout/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### property-disallowed-list
+#### layout/property-disallowed-list
 
 ```diff
 
@@ -545,19 +557,19 @@ Disallows use of legacy mixin map data.
 
 ### Legacy
 
-#### at-rule-disallowed-list
+#### legacy/at-rule-disallowed-list
 
 ```diff
 
 ```
 
-#### function-disallowed-list
+#### legacy/function-disallowed-list
 
 ```diff
 
 ```
 
-#### global-disallowed-list
+#### legacy/global-disallowed-list
 
 ```diff
 
