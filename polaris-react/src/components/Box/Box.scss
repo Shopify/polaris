@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
-$spacingValues :
+
+$spacingValues:
   025,
   05,
   1,
@@ -19,17 +20,39 @@ $spacingValues :
   32,
 ;
 
-@mixin propertyClasses($componentProp, $styleDeclaration, $tokenFamily, $tokenValues) {
+$breakpointAliases: 'xs', 'sm', 'md', 'lg', 'xl';
+
+// these mixins would be extracted and used for any property with token values
+@mixin propertyClasses($componentProp, $styleDeclaration, $tokenGroup, $tokenValues, $breakpointAlias) {
   @each $tokenValue in $tokenValues {
-    .#{$componentProp}#{$tokenValue} {
-      #{$styleDeclaration}: var(--p-#{$tokenFamily}-#{$tokenValue});
+    .#{$componentProp}-#{$breakpointAlias}-#{$tokenValue} {
+      #{$styleDeclaration}: var(--p-#{$tokenGroup}-#{$tokenValue});
     }
   }
 }
 
-@include propertyClasses(padding, padding, space, $spacingValues);
+@mixin responsiveClasses($componentProps, $styleDeclaration, $tokenGroup, $tokenValues){
+  @include propertyClasses($componentProps, $styleDeclaration, $tokenGroup, $tokenValues, 'xs');
 
-@include propertyClasses(paddingBlockStart, padding-block-start, space, $spacingValues);
+  @media #{$p-breakpoints-sm-up} {
+    @include propertyClasses($componentProps, $styleDeclaration, $tokenGroup, $tokenValues, 'sm');
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    @include propertyClasses($componentProps, $styleDeclaration, $tokenGroup, $tokenValues, 'md');
+  }
+
+  @media #{$p-breakpoints-lg-up} {
+    @include propertyClasses($componentProps, $styleDeclaration, $tokenGroup, $tokenValues, 'lg');
+  }
+
+  @media #{$p-breakpoints-xl-up} {
+    @include propertyClasses($componentProps, $styleDeclaration, $tokenGroup, $tokenValues, 'xl');
+  }
+}
+
+// these could be generated globally and shared between components
+@include responsiveClasses(padding, padding, space, $spacingValues);
 
 .listReset {
   list-style-type: none;

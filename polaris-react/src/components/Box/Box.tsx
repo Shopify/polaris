@@ -323,20 +323,24 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       opacity,
     } as React.CSSProperties;
 
-    const paddingClasses = () => {
-      if (!padding) return null;
+    // this would be exracted to be used for any property
+    const responsiveClasses = () => {
+      if (!padding) return [];
 
       if (typeof padding === 'string') {
-        return styles[`padding${padding}`];
+        return [styles[`padding-xs-${padding}`]];
       }
+
+      return Object.entries(padding).map(
+        ([breakpoint, alias]) => styles[`padding-${breakpoint}-${alias}`],
+      );
     };
 
     const className = classNames(
       styles.Box,
       visuallyHidden && styles.visuallyHidden,
       as === 'ul' && styles.listReset,
-      padding && paddingClasses(),
-      paddingBlockStart && styles[`paddingBlockStart${paddingBlockStart}`],
+      ...responsiveClasses(),
     );
 
     return createElement(
