@@ -44,3 +44,37 @@ export function VisibleOnlyWithChildInteraction() {
     </div>
   );
 }
+
+export function WithHoverDelay() {
+  return (
+    <div style={{padding: '75px 0'}}>
+      <div style={{margin: '10px 0'}}>
+        <Tooltip content="This should appear right away.">
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            No delay
+          </Text>
+        </Tooltip>
+      </div>
+      <div style={{margin: '10px 0'}}>
+        <Tooltip hoverDelay={1000} content="This should appear after 1 second.">
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            1 second hover delay
+          </Text>
+        </Tooltip>
+      </div>
+      <div style={{margin: '10px 0'}}>
+        <Tooltip content="This should appear right away.">
+          <Button>No delay</Button>
+        </Tooltip>
+      </div>
+      <div style={{margin: '10px 0'}}>
+        <Tooltip
+          hoverDelay={2000}
+          content="This should appear after 2 seconds."
+        >
+          <Button>2 seconds hover delay</Button>
+        </Tooltip>
+      </div>
+    </div>
+  );
+}
