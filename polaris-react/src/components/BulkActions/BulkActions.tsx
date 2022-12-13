@@ -28,7 +28,7 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
-const BUTTONS_NODE_ADDITIONAL_WIDTH = 40;
+const BUTTONS_NODE_ADDITIONAL_WIDTH = 64;
 
 export interface BulkActionsProps {
   /** List is in a selectable state */
@@ -280,6 +280,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
             activator={
               <BulkActionButton
                 disclosure
+                showContentInButton={!promotedActionsMarkup}
                 onAction={this.togglePopover}
                 content={activatorLabel}
                 disabled={disabled}

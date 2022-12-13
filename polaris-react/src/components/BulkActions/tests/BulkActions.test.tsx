@@ -228,6 +228,8 @@ describe('<BulkActions />', () => {
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
         const bulkActionButtons = bulkActions.findAll(BulkActionButton);
         expect(bulkActionButtons).toHaveLength(4);
+        expect(bulkActionButtons[0].text()).toBe('button1');
+        expect(bulkActionButtons[1].text()).toBe('button2');
         const bulkActionMenus = bulkActions.findAll(BulkActionMenu);
         expect(bulkActionMenus).toHaveLength(2);
       });

@@ -24,6 +24,7 @@ export function BulkActionMenu({
         activator={
           <BulkActionButton
             disclosure
+            showContentInButton
             onAction={toggleMenuVisibility}
             content={title}
             indicator={isNewBadgeInBadgeActions}

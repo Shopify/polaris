@@ -12,6 +12,7 @@ export type BulkActionButtonProps = {
   disclosure?: boolean;
   indicator?: boolean;
   handleMeasurement?(width: number): void;
+  showContentInButton?: boolean;
 } & DisableableAction;
 
 export function BulkActionButton({
@@ -24,6 +25,7 @@ export function BulkActionButton({
   accessibilityLabel,
   disabled,
   indicator,
+  showContentInButton,
 }: BulkActionButtonProps) {
   const bulkActionButton = useRef<HTMLDivElement>(null);
 
@@ -34,22 +36,28 @@ export function BulkActionButton({
     }
   });
 
+  const buttonContent =
+    disclosure && !showContentInButton ? undefined : content;
+
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
       <Button
         external={external}
         url={url}
-        aria-label={disclosure ? content : accessibilityLabel}
+        accessibilityLabel={
+          disclosure && !showContentInButton ? content : accessibilityLabel
+        }
+        disclosure={disclosure && showContentInButton}
         onClick={onAction}
         disabled={disabled}
         size="slim"
         icon={
-          disclosure ? (
+          disclosure && !showContentInButton ? (
             <Icon source={HorizontalDotsMinor} color="base" />
           ) : undefined
         }
       >
-        {disclosure ? undefined : content}
+        {buttonContent}
       </Button>
       {indicator && <Indicator />}
     </div>
