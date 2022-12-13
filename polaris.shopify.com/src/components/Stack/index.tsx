@@ -28,7 +28,12 @@ export const Stack = forwardRef(
     <Box
       ref={ref}
       className={[styles.Stack, className]}
-      style={{'--stack-gap-prop': `var(--p-space-${gap})`, ...style}}
+      style={{
+        // @ts-expect-error The types for `style` don't support css vars for
+        // some reason
+        '--stack-gap-prop': `var(--p-space-${gap})`,
+        ...style,
+      }}
       {...props}
     />
   ),
@@ -44,7 +49,10 @@ export const Row = forwardRef(({className, wrap, style, ...props}, ref) => (
   <Stack
     ref={ref}
     className={[styles.Row, className]}
-    style={wrap && {'--row-wrap-prop': 'wrap', ...style}}
+    style={{
+      ...(wrap && {'--row-wrap-prop': 'wrap'}),
+      ...style,
+    }}
     {...props}
   />
 )) as WithAsProp<RowProps, typeof Stack>;
