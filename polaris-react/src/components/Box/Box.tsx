@@ -117,6 +117,10 @@ export interface BoxProps extends React.AriaAttributes {
   minWidth?: string;
   /** Maximum width of container */
   maxWidth?: string;
+  /** onDrag */
+  onDragStart?: React.DragEventHandler<HTMLElement>;
+  /** onClick */
+  onClick?: React.MouseEventHandler<HTMLElement>;
   /** Clip horizontal content of children */
   overflowX?: Overflow;
   /** Clip vertical content of children */
@@ -211,6 +215,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       minHeight,
       minWidth,
       maxWidth,
+      onDragStart,
+      onClick,
       overflowX,
       overflowY,
       outline,
@@ -347,6 +353,8 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
         style: sanitizeCustomProperties(style),
         role,
         tabIndex,
+        onClick,
+        onDragStart,
         ...restProps,
       },
       children,
