@@ -39,11 +39,6 @@ const coverageRuleName = 'polaris/coverage';
 // https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
 const forceReport = {line: -1};
 
-/** @type {import('stylelint').RuleMeta } - Default documentation URL if none is set in the category settings */
-const defaultMeta = {
-  url: 'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md',
-};
-
 module.exports = stylelint.createPlugin(
   coverageRuleName,
   /**
@@ -71,7 +66,7 @@ module.exports = stylelint.createPlugin(
           fix: context.fix && !stylelintRuleSettings?.[1]?.disableFix,
           appendedMessage:
             stylelintRuleSettings?.[1]?.message || categorySettings?.message,
-          meta: categorySettings?.meta || defaultMeta,
+          meta: getMeta(category, stylelintRuleName),
         });
       }
     }
@@ -133,6 +128,20 @@ module.exports = stylelint.createPlugin(
     };
   },
 );
+
+/**
+ * @param {string} category
+ * @param {string} stylelintRuleName
+ * @returns {import('stylelint').RuleMeta}
+ */
+function getMeta(category, stylelintRuleName) {
+  const baseMetaUrl =
+    'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md';
+
+  return {
+    url: `${baseMetaUrl}#${category}-${stylelintRuleName.replace('/', '-')}`,
+  };
+}
 
 /**
  * @param {PrimaryOptions} categoryConfigRules
