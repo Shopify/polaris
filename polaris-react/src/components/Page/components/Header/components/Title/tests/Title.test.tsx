@@ -18,6 +18,11 @@ describe('<Title />', () => {
       });
     });
 
+    it('renders a div with a custom title', () => {
+      const pageTitle = mountWithApp(<Title {...mockProps} title={<span />} />);
+      expect(pageTitle).toContainReactComponent('div');
+    });
+
     it('does not render a title when not defined', () => {
       const pageTitle = mountWithApp(<Title />);
       expect(pageTitle).not.toContainReactComponent(Text);

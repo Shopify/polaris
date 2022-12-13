@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
 
@@ -6,11 +6,11 @@ import styles from './Title.scss';
 
 export interface TitleProps {
   /** Page title, in large type */
-  title?: string;
+  title?: ReactNode;
   /** Page subtitle, in regular type*/
   subtitle?: string;
   /** Important and non-interactive status information shown immediately after the title. */
-  titleMetadata?: React.ReactNode;
+  titleMetadata?: ReactNode;
   /** Removes spacing between title and subtitle */
   compactTitle?: boolean;
 }
@@ -26,7 +26,10 @@ export function Title({
     subtitle && styles.TitleWithSubtitle,
   );
 
-  const titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
+  const TitleElement = typeof title === 'string' ? 'h1' : 'div';
+  const titleMarkup = title ? (
+    <TitleElement className={className}>{title}</TitleElement>
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>
