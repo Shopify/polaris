@@ -858,7 +858,7 @@ function IndexTableBase({
     } else {
       headingContent = heading.title;
     }
-    if (sortable?.[index]) {
+    if (sortable?.[index] && !selectMode) {
       const isCurrentlySorted = index === sortColumnIndex;
       const isAscending = sortDirection === 'ascending';
       let newDirection: IndexTableSortDirection = defaultSortDirection;
