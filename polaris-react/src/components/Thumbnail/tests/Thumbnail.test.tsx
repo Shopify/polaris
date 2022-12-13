@@ -12,8 +12,8 @@ describe('<Thumbnail />', () => {
     });
 
     it('creates an image tag when a string is provided', () => {
-      const thumbnail = mountWithApp(<Thumbnail alt="" source="abc.jpg" />);
-      expect(thumbnail).toContainReactComponent('img');
+      const thumbnail = mountWithApp(<Thumbnail alt="some alt text" source="abc.jpg" />);
+      expect(thumbnail).toContainReactComponent('img', {alt: 'some alt text'});
     });
   });
 
