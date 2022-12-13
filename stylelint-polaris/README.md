@@ -61,6 +61,8 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 1. Locate the `stylelint-polaris/coverage` options
 1. Identify the appropriate category for the new rule
 1. Insert the rule using standard Stylelint [rule configurations](https://stylelint.io/user-guide/configure#rules)
+1. Add documentation for the rule with examples of code that will be reported as a problem and code that will fix the problem
+1. The title should be the category + the stylelint rule, for example `### colors/color-named`
 
 ```js
 module.exports = {
@@ -178,7 +180,7 @@ yarn run stylelint path/to/component.scss
 
 ## Rules
 
-### Conventions
+### [Conventions]()
 
 Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.
 
