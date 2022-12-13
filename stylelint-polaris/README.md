@@ -194,15 +194,19 @@ yarn run stylelint path/to/component.scss
 
 ### Conventions
 
+#### conventions/custom-property-allowed-list
+
 Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.
 
-#### conventions/custom-property-allowed-list
+The following custom property definition is considered a problem:
 
 ```diff
 root: {
 - --p-animation-name-drag-handle-pulse: osui_drag-handle-pulse;
 };
 ```
+
+The following custom property definition is not considered a problem:
 
 ```diff
 root: {
@@ -212,9 +216,13 @@ root: {
 
 Flags declaration property values using `--p-*` that are not valid Polaris tokens.
 
+The following invalid token is considered a problem:
+
 ```diff
 - font-size: var(--p-fontsize-200);
 ```
+
+The following valid token is not considered a problem:
 
 ```diff
 + font-size: var(--p-font-size-200);
@@ -222,10 +230,13 @@ Flags declaration property values using `--p-*` that are not valid Polaris token
 
 Flags declaration property values using private `--pc-*` tokens.
 
+The following token value is considered a problem:
+
 ```diff
 - background: var(--pc-button-color-depressed);
-
 ```
+
+The following token value is not considered a problem:
 
 ```diff
 + background: var(--p-action-secondary-depressed);
