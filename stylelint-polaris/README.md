@@ -91,7 +91,7 @@ Custom messages are surfaced in the command line, CI, and supported editors alon
 
 In a majority of cases, the default rule messages are clear and concise. However, they don't always guide developers to a desired outcome. Thus, there are two mechanisms we suggest for improving and providing custom rule messages:
 
-1. Add a generic `message` to the secondary options of a given `stylelint-polaris/coverage` category. This message is appended to the default rule message and we expect will cover most cases.
+Set a generic custom message on the `message` property of the secondary options of a given `stylelint-polaris/coverage` category. This message is appended to the default rule message and we expect will cover most cases.
 
 ```js
 module.exports = {
@@ -116,31 +116,30 @@ Example failure message:
 + Unexpected named color "red" (color-named) Please use a Polaris color token
 ```
 
-2. Add a custom `message` property in the [rule config's secondary options](https://stylelint.io/user-guide/configure/#message) if supported. This message will be used in place of the default rule message.
+Set a custom message on the `message` property in the [Stylelint rule config's secondary options](https://stylelint.io/user-guide/configure/#message) if supported. This message is appended to the default rule message instead of the generic category message when provided.
 
 ```js
 module.exports = {
   rules: {
     'polaris/coverage': {
-      colors: [
+      layout: [
         {
-          'color-named': [
-            'never',
-            {message: 'Unexpected named color. Please refer to this specific page with guidance on how to resolve the failure' },
-          ]
-          'color-no-hex': true,
+          'property-disallowed-list': [
+            ['position'],
+            {message: 'Please use the Polaris "Sticky" component'},
+          ],
         },
-        {message: 'Please use a Polaris color token: https://polaris.shopify.com/tokens/colors'},
+        {message: 'Please use a Polaris layout component'},
       ],
     },
   },
-}
+};
 ```
 
 Example failure message:
 
 ```diff
-- Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list)
+- Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use a Polaris layout component
 + Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use the Polaris "Sticky" component
 ```
 
