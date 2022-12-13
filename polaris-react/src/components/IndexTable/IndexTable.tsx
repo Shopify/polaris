@@ -858,7 +858,7 @@ function IndexTableBase({
     } else {
       headingContent = heading.title;
     }
-    if (sortable?.[index] && !selectMode) {
+    if (sortable?.[index]) {
       const isCurrentlySorted = index === sortColumnIndex;
       const isAscending = sortDirection === 'ascending';
       let newDirection: IndexTableSortDirection = defaultSortDirection;
@@ -893,6 +893,7 @@ function IndexTableBase({
         <UnstyledButton
           onClick={() => handleSortHeadingClick(index, newDirection)}
           className={styles.TableHeadingSortButton}
+          tabIndex={selectMode ? -1 : 0}
         >
           {iconMarkup}
 
@@ -900,7 +901,7 @@ function IndexTableBase({
         </UnstyledButton>
       );
 
-      if (!sortToggleLabels) {
+      if (!sortToggleLabels || selectMode) {
         return sortMarkup;
       }
 
