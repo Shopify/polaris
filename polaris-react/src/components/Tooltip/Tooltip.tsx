@@ -14,6 +14,8 @@ export interface TooltipProps {
   content: React.ReactNode;
   /** Toggle whether the tooltip is visible */
   active?: boolean;
+  /** Delay in milliseconds while hovering over an element before the tooltip is visible */
+  hoverDelay?: number;
   /** Dismiss tooltip when not interacting with its children */
   dismissOnMouseOut?: TooltipOverlayProps['preventInteraction'];
   /**
@@ -39,6 +41,7 @@ export function Tooltip({
   content,
   dismissOnMouseOut,
   active: originalActive,
+  hoverDelay,
   preferredPosition = 'below',
   activatorWrapper = 'span',
   accessibilityLabel,
@@ -56,6 +59,7 @@ export function Tooltip({
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
+  const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -69,6 +73,14 @@ export function Tooltip({
     accessibilityNode.setAttribute('aria-describedby', id);
     accessibilityNode.setAttribute('data-polaris-tooltip-activator', 'true');
   }, [id, children]);
+
+  useEffect(() => {
+    return () => {
+      if (hoverDelayTimeout.current) {
+        clearTimeout(hoverDelayTimeout.current);
+      }
+    };
+  }, []);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
@@ -131,11 +143,23 @@ export function Tooltip({
 
   function handleMouseEnter() {
     mouseEntered.current = true;
-    onOpen?.();
-    handleFocus();
+    if (hoverDelay) {
+      hoverDelayTimeout.current = setTimeout(() => {
+        onOpen?.();
+        handleFocus();
+      }, hoverDelay);
+    } else {
+      onOpen?.();
+      handleFocus();
+    }
   }
 
   function handleMouseLeave() {
+    if (hoverDelayTimeout.current) {
+      clearTimeout(hoverDelayTimeout.current);
+      hoverDelayTimeout.current = null;
+    }
+
     mouseEntered.current = false;
     onClose?.();
     handleBlur();
