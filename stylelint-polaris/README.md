@@ -5,7 +5,7 @@ Collection of Stylelint configs and rules that promote Polaris Design System ado
 ## Installation
 
 ```sh
-yarn -D @shopify/stylelint-polaris stylelint
+yarn add -D @shopify/stylelint-polaris stylelint
 ```
 
 > Note: `stylelint-polaris` requires a peer dependency of `stylelint@>=14.15.0`
