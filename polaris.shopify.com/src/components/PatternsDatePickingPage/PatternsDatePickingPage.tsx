@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
@@ -314,7 +315,11 @@ export default function PatternsDatePickingPage() {
                   <Stack as="section" gap="4" className={styles.MerchantGoal}>
                     <Heading as="h2">How it helps merchants</Heading>
                     <div className={styles.ImageWrapper}>
-                      <img src="/images/patterns/pattern-purpose-date-picking-variant1.png" />
+                      <Image
+                        alt=""
+                        fill
+                        src="/images/patterns/single-list-cover-image.png"
+                      />
                     </div>
                     <div>
                       <ol className={styles.MerchantGoalOL}>
@@ -405,29 +410,20 @@ export default function PatternsDatePickingPage() {
                       <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
-                            {`For text inputs, display the contextual date so that the
-                        format is easily understood and familiar. On focus,
-                        present the date in the proper format to edit
-                        (YYYY-MM-DD)`}
-                          </p>
-                        </div>
-                        <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-variant-1a.png" />
-                        </div>
-                      </Row>
-                      <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
-                        <div className={styles.UsageGuidelineTxt}>
-                          <p>
                             Labels need to simply depict the task at hand.
                             Whether that be a start date, end date, start time
                             etc.
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-main-variant-2.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/single-list-usage-1.png"
+                          />
                         </div>
                       </Row>
-                      <Row className={styles.UsageGuidelinesEl} gap="4">
+                      <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             This pattern can be duplicated to allow users to add
@@ -435,7 +431,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-main-variant-3.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/single-list-usage-2.png"
+                          />
                         </div>
                       </Row>
                     </Stack>
@@ -450,7 +450,11 @@ export default function PatternsDatePickingPage() {
                   <Stack as="section" gap="4" className={styles.MerchantGoal}>
                     <Heading as="h2">How it helps merchants</Heading>
                     <div className={styles.ImageWrapper}>
-                      <img src="/images/patterns/pattern-purpose-date-picking-variant1.png" />
+                      <Image
+                        alt=""
+                        fill
+                        src="/images/patterns/date-range-cover-image.png"
+                      />
                     </div>
                     <div>
                       <ol className={styles.MerchantGoalOL}>
@@ -535,7 +539,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-variant-1a.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/date-range-usage-1.png"
+                          />
                         </div>
                       </Row>
                       <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
@@ -546,7 +554,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-main-variant-2.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/date-range-usage-2.png"
+                          />
                         </div>
                       </Row>
                       <Row className={styles.UsageGuidelinesEl} gap="4">
@@ -557,7 +569,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-main-variant-3.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/date-range-usage-3.png"
+                          />
                         </div>
                       </Row>
                     </Stack>
@@ -572,7 +588,11 @@ export default function PatternsDatePickingPage() {
                   <Stack as="section" gap="4" className={styles.MerchantGoal}>
                     <Heading as="h2">How it helps merchants</Heading>
                     <div className={styles.ImageWrapper}>
-                      <img src="/images/patterns/pattern-purpose-date-picking-variant1.png" />
+                      <Image
+                        alt=""
+                        fill
+                        src="/images/patterns/date-list-cover-image.png"
+                      />
                     </div>
                     <div>
                       <ol className={styles.MerchantGoalOL}>
@@ -631,7 +651,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-variant-1a.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/date-list-usage-1.png"
+                          />
                         </div>
                       </Row>
                       <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
@@ -643,7 +667,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-main-variant-2.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/date-list-usage-2.png"
+                          />
                         </div>
                       </Row>
                       <Row className={styles.UsageGuidelinesEl} gap="4">
@@ -655,7 +683,11 @@ export default function PatternsDatePickingPage() {
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
-                          <img src="/images/patterns/date-picking-usage-main-variant-3.png" />
+                          <Image
+                            alt=""
+                            fill
+                            src="/images/patterns/date-list-usage-3.png"
+                          />
                         </div>
                       </Row>
                     </Stack>

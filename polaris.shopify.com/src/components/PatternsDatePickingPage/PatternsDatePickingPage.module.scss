@@ -85,6 +85,7 @@
   gap: 1rem;
   .ImageWrapper {
     display: block;
+    position: relative;
     flex: auto;
     overflow: hidden;
     border: 1px solid #c9cccf;
@@ -141,6 +142,7 @@
     .ImageWrapper {
       aspect-ratio: 485/315;
       border-radius: 10px;
+      position: relative;
       background-color: rgba(250, 250, 250, 1);
       border: 1px solid #c9cccf;
       display: block;
