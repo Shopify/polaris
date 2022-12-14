@@ -1,74 +1,57 @@
-@mixin responsive-props(
-  $componentName,
-  $componentProp,
-  $declarationProp,
-  $shorthandFallback: null
-) {
+@mixin responsive-props($componentName, $componentProp, $declarationProp) {
   // stylelint-disable -- Polaris component custom properties
   --pc-#{$componentName}-#{$componentProp}-xs: initial;
-  --pc-#{$componentName}-#{$componentProp}-sm: var(
-    --pc-#{$componentName}-#{$componentProp}-xs
-  );
-  --pc-#{$componentName}-#{$componentProp}-md: var(
-    --pc-#{$componentName}-#{$componentProp}-sm
-  );
-  --pc-#{$componentName}-#{$componentProp}-lg: var(
-    --pc-#{$componentName}-#{$componentProp}-md
-  );
-  --pc-#{$componentName}-#{$componentProp}-xl: var(
-    --pc-#{$componentName}-#{$componentProp}-lg
-  );
-  @if $shorthandFallback {
+  --pc-#{$componentName}-#{$componentProp}-sm: initial;
+  --pc-#{$componentName}-#{$componentProp}-md: initial;
+  --pc-#{$componentName}-#{$componentProp}-lg: initial;
+  --pc-#{$componentName}-#{$componentProp}-xl: initial;
+
+  #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
+
+  @media #{$p-breakpoints-sm-up} {
     #{$declarationProp}: var(
-      --pc-#{$componentName}-#{$componentProp}-xs,
-      var(--pc-#{$componentName}-#{$shorthandFallback}-xs)
+      --pc-#{$componentName}-#{$componentProp}-sm,
+      var(--pc-#{$componentName}-#{$componentProp}-xs)
     );
+  }
 
-    @media #{$p-breakpoints-sm-up} {
-      #{$declarationProp}: var(
+  @media #{$p-breakpoints-md-up} {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-md,
+      var(
         --pc-#{$componentName}-#{$componentProp}-sm,
-        var(--pc-#{$componentName}-#{$shorthandFallback}-sm)
-      );
-    }
+        var(--pc-#{$componentName}-#{$componentProp}-xs)
+      )
+    );
+  }
 
-    @media #{$p-breakpoints-md-up} {
-      #{$declarationProp}: var(
+  @media #{$p-breakpoints-lg-up} {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-lg,
+      var(
         --pc-#{$componentName}-#{$componentProp}-md,
-        var(--pc-#{$componentName}-#{$shorthandFallback}-md)
-      );
-    }
+        var(
+          --pc-#{$componentName}-#{$componentProp}-sm,
+          var(--pc-#{$componentName}-#{$componentProp}-xs)
+        )
+      )
+    );
+  }
 
-    @media #{$p-breakpoints-lg-up} {
-      #{$declarationProp}: var(
+  @media #{$p-breakpoints-xl-up} {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-xl,
+      var(
         --pc-#{$componentName}-#{$componentProp}-lg,
-        var(--pc-#{$componentName}-#{$shorthandFallback}-lg)
-      );
-    }
-
-    @media #{$p-breakpoints-xl-up} {
-      #{$declarationProp}: var(
-        --pc-#{$componentName}-#{$componentProp}-xl,
-        var(--pc-#{$componentName}-#{$shorthandFallback}-xl)
-      );
-    }
-  } @else {
-    #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
-
-    @media #{$p-breakpoints-sm-up} {
-      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-sm);
-    }
-
-    @media #{$p-breakpoints-md-up} {
-      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-md);
-    }
-
-    @media #{$p-breakpoints-lg-up} {
-      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-lg);
-    }
-
-    @media #{$p-breakpoints-xl-up} {
-      #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xl);
-    }
+        var(
+          --pc-#{$componentName}-#{$componentProp}-md,
+          var(
+            --pc-#{$componentName}-#{$componentProp}-sm,
+            var(--pc-#{$componentName}-#{$componentProp}-xs)
+          )
+        )
+      )
+    );
   }
   // stylelint-enable
 }
