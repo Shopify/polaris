@@ -1,6 +1,30 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 @import '../../styles/fonts.scss';
+
+.Heading {
+  align-items: center;
+}
+
+.InfoLine {
+  color: var(--text-subdued);
+  .InfoLineLink {
+    color: inherit;
+    text-decoration: underline;
+    &:hover {
+      color: var(--text-link);
+    }
+  }
+}
+
+.WhenToUseCaption {
+  font-weight: var(--font-weight-500);
+}
+
+.UseCase {
+  font-weight: var(--font-weight-500);
+}
+
 .ExamplesList {
   --surface-pressed: rgba(241, 242, 243, 1);
   --border-subdued: rgba(201, 204, 207, 1);
@@ -43,9 +67,6 @@
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
-  h2 {
-    margin-top: 0;
-  }
   .ImageWrapper {
     display: block;
     flex: auto;
@@ -129,4 +150,28 @@
 
 .Checkbox {
   appearance: auto;
+}
+
+.Preview {
+  aspect-ratio: 16/9;
+  border-radius: var(--border-radius-600);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+  background: var(--p-surface-neutral-subdued);
+  padding: 0 9%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.PreviewInner {
+  flex-grow: 1;
+  aspect-ratio: inherit;
+  border: 1.4px var(--p-border-subdued);
+  border-radius: var(--border-radius-600);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  overflow: hidden;
+  background: var(--p-surface-subdued);
+  box-shadow: 0px 0px 3px 0px rgba(31, 33, 36, 0.24);
 }
