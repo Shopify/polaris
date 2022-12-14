@@ -190,8 +190,9 @@
   display: flex;
   align-items: flex-end;
   img {
+    width: 100%;
+    object-fit: cover;
     height: 100%;
-    object-fit: fill;
   }
 }
 
