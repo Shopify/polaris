@@ -77,7 +77,7 @@ export function VideoThumbnail({
   }
 
   const timeStampMarkup = videoLength ? (
-    <p className={styles.Timestamp}>
+    <div className={styles.Timestamp}>
       <Stack alignment="center" spacing="extraTight">
         <span className={styles.PlayIcon}>
           <Icon source={PlayMinor} />
@@ -90,7 +90,7 @@ export function VideoThumbnail({
           {secondsToTimestamp(videoLength)}
         </Text>
       </Stack>
-    </p>
+    </div>
   ) : null;
 
   let progressMarkup = null;
