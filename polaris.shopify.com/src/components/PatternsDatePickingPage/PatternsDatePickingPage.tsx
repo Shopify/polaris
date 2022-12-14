@@ -18,13 +18,15 @@ type Pattern = {
   };
   example: PatternExample;
 };
-const patternsIndex = ['single-date-selector', 'without-frame', 'minimal'];
+const patternsIndex = ['single-date-picker', 'date-range-picker', 'minimal'];
 const patterns: Record<string, Pattern> = {
-  'single-date-selector': {
+  'single-date-picker': {
     index: 0,
-    title: 'Calendar with single date selector',
-    slug: 'single-date-selector',
+    title: 'Single date picker',
+    slug: 'single-date-picker',
     example: {
+      description:
+        "The date range picker gives merchants multiple options for selecting a date range. The list has preset dates for efficient picking, and the inputs + calendar work together to verify the merchant's selection. The benefit is how the different options work together for flexilibity with complex date picking tasks.",
       code: `
     {(function DatePickerPattern () {
       const [{month, year}, setDate] = useState({month: 1, year: 2018});
@@ -84,11 +86,13 @@ const patterns: Record<string, Pattern> = {
         `,
     },
   },
-  'without-frame': {
+  'date-range-picker': {
     index: 1,
-    title: 'Without Frame',
-    slug: 'without-frame',
+    title: 'Date range picker',
+    slug: 'date-range-picker',
     example: {
+      description:
+        'The single date picker enables merchants to type a specific date or pick it from a calendar. Having a single input is useful when merchants need to confidently confirm a date without being overwhelmed by other picking options.',
       code: ` <Page
       divider
       primaryAction={{ content: "View on your store", disabled: true }}
@@ -216,7 +220,7 @@ export default function PatternsDatePickingPage() {
   }, []);
 
   return (
-    <Page title={patternName}>
+    <Page title={patternName} showTOC={false}>
       <Stack vertical>
         <Text as="p" variant="bodyLg">
           This layout pattern makes it easy for merchants to scan groups of
@@ -236,10 +240,10 @@ export default function PatternsDatePickingPage() {
           <Tab.List>
             <div className={styles.ExamplesList} id="examples">
               <Tab>
-                <span>{patterns['single-date-selector'].title}</span>
+                <span>{patterns['single-date-picker'].title}</span>
               </Tab>
               <Tab>
-                <span>{patterns['without-frame'].title}</span>
+                <span>{patterns['date-range-picker'].title}</span>
               </Tab>
               <Tab>
                 <span>{patterns['minimal'].title}</span>
@@ -250,75 +254,65 @@ export default function PatternsDatePickingPage() {
           <Tab.Panels>
             <Tab.Panel>
               <PatternsExample
-                example={patterns['single-date-selector'].example}
-                patternName={`${patternName} > ${patterns['single-date-selector'].title}`}
+                example={patterns['single-date-picker'].example}
+                patternName={`${patternName} > ${patterns['single-date-picker'].title}`}
                 relatedComponents={[
                   {label: 'Button', url: '/components/button'},
                   {label: 'TextFields', url: '/components/text-field'},
                 ]}
               />
-              <h2>Design decisions</h2>
+              <h2>
+                How the {`${patterns['single-date-picker'].title}`} helps
+                merchants
+              </h2>
               <section className={styles.MerchantGoal}>
                 <div>
                   <ol className={styles.MerchantGoalOL}>
                     <li>
-                      {
-                        'The date range selector makes it easy to configure therange and clear what range is selected.'
-                      }
+                      The text input gives merchants the option to use the
+                      keyboard to enter a date.
                     </li>
                     <li>
-                      {
-                        'The text inputs provide a convenient way to input dates with keyboard.'
-                      }
-                    </li>
-                    <li>
-                      {
-                        'The buttons in the footer let merchants review the selection and explicitly confirm or discard it.'
-                      }
+                      A single month calendar is previewed after selecting the
+                      date input to provide visual affordance of the single date
+                      picked. The calendar can then be used to select a new
+                      date.
                     </li>
                   </ol>
                 </div>
                 <div className={styles.ImageWrapper}></div>
               </section>
-              <h2>Usage Guidelines</h2>
+              <h2>
+                Useful to know about the {patterns['single-date-picker'].title}
+              </h2>
               <section>
                 <ul className={styles.UsageGuidelinesWrapper}>
                   <li className={styles.UsageGuidelinesEl}>
-                    <div className={styles.IconWrapper}>
-                      <Icon source={CircleTickMajor} color="success" />
-                    </div>
                     <div className={styles.ImageWrapper} />
                     <div className={styles.UsageGuidelineTxt}>
-                      <h3>Suggestion</h3>
                       <p>
-                        Pin any relevant merchant-specific dates to the top of
-                        the option list
+                        {`For text inputs, display the contextual date so that the
+                        format is easily understood and familiar. On focus,
+                        present the date in the proper format to edit
+                        (YYYY-MM-DD)`}
                       </p>
                     </div>
                   </li>
                   <li className={styles.UsageGuidelinesEl}>
-                    <div className={styles.IconWrapper}>
-                      <Icon source={CircleTickMajor} color="success" />
-                    </div>
                     <div className={styles.ImageWrapper} />
                     <div className={styles.UsageGuidelineTxt}>
-                      <h3>Polaris Standard</h3>
                       <p>
-                        If a date cannot be selected, indicate it with the{' '}
-                        <a href="">disabled text color token</a>
+                        Labels need to simply depict the task at hand. Whether
+                        that be a start date, end date, start time etc.
                       </p>
                     </div>
                   </li>
                   <li className={styles.UsageGuidelinesEl}>
-                    <div className={styles.IconWrapper}>
-                      <Icon source={CircleTickMajor} color="success" />
-                    </div>
                     <div className={styles.ImageWrapper} />
                     <div className={styles.UsageGuidelineTxt}>
-                      <h3>Quality UX</h3>
                       <p>
-                        If a merchant enters a nonexistent date, revert to the
-                        previously selected date
+                        This pattern can be duplicated to allow users to add an
+                        end date or time.
                       </p>
                     </div>
                   </li>
@@ -327,8 +321,8 @@ export default function PatternsDatePickingPage() {
             </Tab.Panel>
             <Tab.Panel>
               <PatternsExample
-                example={patterns['without-frame'].example}
-                patternName={`${patternName} > ${patterns['without-frame'].title}`}
+                example={patterns['date-range-picker'].example}
+                patternName={`${patternName} > ${patterns['date-range-picker'].title}`}
                 relatedComponents={[
                   {label: 'Button', url: '/components/button'},
                   {label: 'TextFields', url: '/components/text-field'},

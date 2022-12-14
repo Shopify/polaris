@@ -92,34 +92,31 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  flex-wrap: wrap;
   .UsageGuidelinesEl {
     position: relative;
-    flex: 1;
+    flex-shrink: 1;
+    flex-basis: 49%;
     list-style: none;
-    background-color: rgba(236, 246, 242, 1);
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #c9cccf;
     padding: 0;
+    overflow: hidden;
     margin: 0;
-    .IconWrapper {
-      position: absolute;
-      margin: 0;
-      top: -0.5rem;
-      left: 0;
-      right: 0;
-    }
     .ImageWrapper {
+      background-color: rgba(250, 250, 250, 1);
       display: block;
-      height: 150px;
+      height: 240px;
       // background: yellow;
       width: 100%;
     }
     .UsageGuidelineTxt {
       padding: 1rem;
-      h3 {
-        font-size: 1rem;
-        color: rgba(0, 89, 66, 1);
-      }
+      padding-top: 0.5rem;
       p {
         font-size: 0.875rem;
+        line-height: 1.125rem;
       }
     }
   }
