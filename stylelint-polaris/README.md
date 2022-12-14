@@ -523,64 +523,117 @@ Disallows use of legacy mixin map data.
 
 #### z-index/declaration-property-value-allowed-list
 
-```diff
+> Even though there might not be a z-index equivalent in [Polaris tokens](https://polaris.shopify.com/tokens/z-index), try and use the Polaris depth scale before creating your own custom one.
 
+```diff
+// Don't
+- z-index: 1;
+// Do
++ z-index: var(--p-z-1);
 ```
 
 #### z-index/function-disallowed-list
 
-```diff
+> Even though there might not be a z-index equivalent in [Polaris tokens](https://polaris.shopify.com/tokens/z-index), try and use the Polaris depth scale before creating your own custom one.
 
+```diff
+// Don't
+- z-index: z-index(content);
+// Do
++ z-index: var(--p-z-1);
 ```
 
 #### z-index/global-disallowed-list
 
-```diff
+> Even though there might not be a z-index equivalent in [Polaris tokens](https://polaris.shopify.com/tokens/z-index), try and use the Polaris depth scale before creating your own custom one.
 
+```diff
+// Don't
+- z-index(toast, $fixed-element-stacking-order);
+// Do
++ z-index: var(--p-z-1);
 ```
 
 ### Layout
 
 #### layout/declaration-property-value-disallowed-list
 
-```diff
+> There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
 
+```diff
+// Don't
+- width: 100%;
+// Do
++ <AlphaStack fullWidth />
 ```
 
 #### layout/function-disallowed-list
 
 ```diff
-
+// Don't
+- height: top-bar-height();
+// Do
++ height: 56px;
 ```
 
 #### layout/at-rule-disallowed-list
 
 ```diff
-
+// Don't
+- @include print-hidden;
+// Do
++ @media print {
++   display: none;
++ }
 ```
 
 #### layout/property-disallowed-list
 
-```diff
+> There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
 
+```diff
+// Don't
+- display: grid;
+// Do
++ <Grid />
+```
+
+#### layout/global-disallowed-list
+
+> If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
+
+```diff
+// Don't
+- height: var(--p-choice-size);
+// Do
++ <Checkbox />
 ```
 
 ### Legacy
 
 #### legacy/at-rule-disallowed-list
 
-```diff
+> If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
 
+```diff
+// Don't
+- @include unstyled-button;
+// Do
++ <Button plain />
 ```
 
 #### legacy/function-disallowed-list
 
 ```diff
-
+// Don't
+- @include available-names
 ```
 
 #### legacy/global-disallowed-list
 
 ```diff
-
+// Don't
+- left: -1 * $timeline-border-width;
+// Do
++ left: -1 * var(--p-space-1);
 ```
