@@ -7,7 +7,8 @@
   }
   display: block;
   /* prefer horizontal scrolling over wrapping */
-  white-space: nowrap;
+  // TODO: UNCOMMENT STYLES WHEN WE FIX DESKTOP VIEW ISSUE
+  // white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
   /* allow touch users to quickly scroll the table */
@@ -29,10 +30,12 @@
   .Td {
     text-align: start;
     padding: 1em;
+    word-break: break-word;
 
     &.Shrink {
-      width: 0;
-      white-space: nowrap;
+      // TODO: REMOVE TEMPORARY STYLES IN FAVOR OF SIMILAR LOGIC THAT ALSO SUPPORTS MOBILE TABLE VIEWING
+      width: 40%;
+      // white-space: nowrap;
     }
   }
 
