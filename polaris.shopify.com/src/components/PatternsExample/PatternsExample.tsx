@@ -11,7 +11,6 @@ export type PatternExample = {
   code: string;
   context?: string;
   snippetCode?: string;
-  description?: string;
 };
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
@@ -81,11 +80,34 @@ const PatternsExample = ({
     }
     setPreviewUrl(constructLivePreview(example.code, example.context));
   }, [example.code, example.context]);
-  const {code, description, snippetCode} = example;
+  const {code, snippetCode} = example;
 
   return (
     <Fragment>
-      {description ? <Markdown text={description} /> : null}
+      <p>
+        This pattern uses the{' '}
+        {relatedComponents.map((component, index) => {
+          if (
+            index === relatedComponents.length - 1 &&
+            relatedComponents.length > 1
+          ) {
+            return (
+              <Fragment key={component.url}>
+                {' and '}
+                <InlinePill as="a" href={component.url}>
+                  {component.label}
+                </InlinePill>
+              </Fragment>
+            );
+          }
+          return (
+            <InlinePill as="a" key={component.url} href={component.url}>
+              {component.label}
+            </InlinePill>
+          );
+        })}
+        {relatedComponents.length > 1 ? ' components' : ' component'}
+      </p>
       <ExampleWrapper
         renderFrameActions={() => (
           <Fragment>
@@ -112,30 +134,6 @@ const PatternsExample = ({
           ]}
         />
       ) : null}
-      <p>
-        This pattern uses the{' '}
-        {relatedComponents.map((component, index) => {
-          if (
-            index === relatedComponents.length - 1 &&
-            relatedComponents.length > 1
-          ) {
-            return (
-              <Fragment key={component.url}>
-                {' and '}
-                <InlinePill as="a" href={component.url}>
-                  {component.label}
-                </InlinePill>
-              </Fragment>
-            );
-          }
-          return (
-            <InlinePill as="a" key={component.url} href={component.url}>
-              {component.label}
-            </InlinePill>
-          );
-        })}
-        {relatedComponents.length > 1 ? ' components' : ' component'}
-      </p>
     </Fragment>
   );
 };
