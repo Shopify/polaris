@@ -12,7 +12,7 @@ import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 
 type Pattern = {
   index: number;
@@ -416,26 +416,26 @@ export default function PatternsDatePickingPage() {
             <Stack as="section" gap="4">
               <Heading as="h2">Related resources</Heading>
               <Grid>
-                <Grid.Item
+                <GridItem
                   title="App settings layout"
                   description="Makes it easy for merchants to scan and find setting groups."
                   url="/TODO"
                   renderPreview={() => <Preview />}
                   status={{value: StatusName.Beta, message: ''}}
                 />
-                <Grid.Item
+                <GridItem
                   title="Resource index layout"
                   description="Makes it easy for merchants to view and manage resources."
                   url="/TODO"
                   renderPreview={() => <Preview />}
                 />
-                <Grid.Item
+                <GridItem
                   title="Resource detail layout"
                   description="Makes it easy for merchants to create, view and edit resources."
                   url="/TODO"
                   renderPreview={() => <Preview />}
                 />
-                <Grid.Item
+                <GridItem
                   title="Date picking"
                   description="Makes it easy for merchants to select and input dates and date ranges."
                   url="/TODO"
