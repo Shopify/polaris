@@ -1,6 +1,10 @@
 @import '../../styles/mixins.scss';
 /* Ensure the table doesn't break the page layout when too wide */
 .TableContainer {
+  --props-table-border-color: #c9cccf;
+  @include dark-mode {
+    --props-table-border-color: white;
+  }
   display: block;
   /* prefer horizontal scrolling over wrapping */
   white-space: nowrap;
@@ -10,44 +14,43 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   max-width: 100%;
+  border-radius: var(--border-radius-400);
+  border: 1px solid var(--props-table-border-color);
 }
 
 .Table {
-  --props-table-caption-side: top;
-  --props-table-border-color: rgba(0, 0, 0, 0.075);
-  @include dark-mode {
-    --props-table-border-color: rgba(255, 255, 255, 0.085);
-  }
+  width: 100%;
   font-variant-numeric: lining-nums tabular-nums;
   border-collapse: collapse;
-  width: 100%;
-  border-radius: var(--border-radius-400);
+  border-spacing: 0;
   font-size: var(--font-size-200);
-  border: 1px solid var(--props-table-border-color);
   overflow: hidden;
 
   .Td {
     text-align: start;
     padding: 1em;
+
+    &.Shrink {
+      width: 0;
+      white-space: nowrap;
+    }
   }
 
   .TableCaption {
-    caption-side: var(--props-table-caption-side);
+    --props-table-caption-side: top;
+    caption-side: var(--props-table-caption-side, top);
     width: 100%;
     text-align: left;
     padding: 0.66em 1em;
     background: rgba(0, 0, 0, 0.02);
+    &[style*='--props-table-caption-side:top'] {
+      border-bottom: 1px solid var(--props-table-border-color);
+    }
+    &[style*='--props-table-caption-side:bottom'] {
+      border-top: 1px solid var(--props-table-border-color);
+    }
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
-    }
-  }
-
-  .Tr,
-  .TableCaption {
-    border-bottom: 1px solid var(--props-table-border-color);
-
-    &:last-child {
-      border-bottom: none;
     }
   }
 }

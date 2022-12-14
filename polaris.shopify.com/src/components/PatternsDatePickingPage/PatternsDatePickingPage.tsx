@@ -8,7 +8,7 @@ import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
-import {TableContainer, Table, TableCaption, Tr, Td} from '../Table';
+import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
@@ -331,18 +331,20 @@ export default function PatternsDatePickingPage() {
                         <TableCaption className={styles.WhenToUseCaption}>
                           When merchants need to:
                         </TableCaption>
-                        <Tr>
-                          <Td className={styles.UseCase}>
-                            Find and change app settings
-                          </Td>
-                          <Td>This is a description of the use case.</Td>
-                        </Tr>
-                        <Tr>
-                          <Td className={styles.UseCase}>
-                            Another merchant objective
-                          </Td>
-                          <Td>This is a description of the use case.</Td>
-                        </Tr>
+                        <Tbody>
+                          <Tr>
+                            <Td className={styles.UseCase} shrink>
+                              Find and change app settings
+                            </Td>
+                            <Td>This is a description of the use case.</Td>
+                          </Tr>
+                          <Tr>
+                            <Td className={styles.UseCase} shrink>
+                              Another merchant objective
+                            </Td>
+                            <Td>This is a description of the use case.</Td>
+                          </Tr>
+                        </Tbody>
                       </Table>
                     </TableContainer>
                   </Stack>
