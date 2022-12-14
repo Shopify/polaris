@@ -671,7 +671,7 @@ export default function PatternsDatePickingPage() {
             </Tab.Panels>
             <Stack as="section" gap="4">
               <Heading as="h2">Related resources</Heading>
-              <Grid>
+              <Grid gapX="4" gapY="6" itemMinWidth="24rem">
                 <GridItem
                   title="Date picker"
                   description="Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
