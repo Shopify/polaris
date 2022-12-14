@@ -1,7 +1,7 @@
 import Page from '../Page';
 import PageMeta from '../PageMeta';
 import Longform from '../Longform';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 import StatusBadge from '../StatusBadge';
 import {StatusName} from '../../types';
 import {FlagMajor} from '@shopify/polaris-icons';
@@ -42,26 +42,26 @@ export const PatternsPage = () => (
           </div>
         </div>
         <Grid>
-          <Grid.Item
+          <GridItem
             title="App settings layout"
             description="Makes it easy for merchants to scan and find setting groups."
             url="/TODO"
             renderPreview={() => <Preview />}
             status={{value: StatusName.Beta, message: ''}}
           />
-          <Grid.Item
+          <GridItem
             title="Resource index layout"
             description="Makes it easy for merchants to view and manage resources."
             url="/TODO"
             renderPreview={() => <Preview />}
           />
-          <Grid.Item
+          <GridItem
             title="Resource detail layout"
             description="Makes it easy for merchants to create, view and edit resources."
             url="/TODO"
             renderPreview={() => <Preview />}
           />
-          <Grid.Item
+          <GridItem
             title="Date picking"
             description="Makes it easy for merchants to select and input dates and date ranges."
             url="/TODO"

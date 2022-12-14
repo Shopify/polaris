@@ -12,7 +12,7 @@ import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
-import Grid from '../Grid';
+import {Grid, GridItem} from '../Grid';
 
 type Pattern = {
   index: number;
@@ -672,25 +672,25 @@ export default function PatternsDatePickingPage() {
             <Stack as="section" gap="4">
               <Heading as="h2">Related resources</Heading>
               <Grid>
-                <Grid.Item
+                <GridItem
                   title="Date picker"
                   description="Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
                   url="/components/date-picker"
                   renderPreview={() => <Preview />}
                 />
-                <Grid.Item
+                <GridItem
                   title="UTC is for everyone right?"
                   description="Programming with dates, times, and timezones is hard. But here's some help."
                   url="https://zachholman.com/talk/utc-is-enough-for-everyone-right"
                   renderPreview={() => <Preview />}
                 />
-                <Grid.Item
+                <GridItem
                   title="Grammar and mechanics"
                   description="This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify."
                   url="/content/grammar-and-mechanics#date"
                   renderPreview={() => <Preview />}
                 />
-                <Grid.Item
+                <GridItem
                   title="Actionable language"
                   description="Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions."
                   url="/content/actionable-language"
