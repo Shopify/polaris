@@ -139,7 +139,7 @@ function getMeta(category, stylelintRuleName) {
     'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md';
 
   return {
-    url: `${baseMetaUrl}#${category}-${stylelintRuleName.replace('/', '-')}`,
+    url: `${baseMetaUrl}#${category}${stylelintRuleName.replace('/', '-')}`,
   };
 }
 
