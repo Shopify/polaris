@@ -33,9 +33,8 @@
     word-break: break-word;
 
     &.Shrink {
-      // TODO: REMOVE TEMPORARY STYLES IN FAVOR OF SIMILAR LOGIC THAT ALSO SUPPORTS MOBILE TABLE VIEWING
-      width: 40%;
-      // white-space: nowrap;
+      width: 0;
+      white-space: nowrap;
     }
   }
 

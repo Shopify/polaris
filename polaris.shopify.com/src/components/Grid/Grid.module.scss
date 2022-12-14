@@ -3,9 +3,15 @@
 @import '../../styles/mixins.scss';
 
 .Grid {
+  --props-grid-item-min-width: 16rem;
+  --props-grid-gap-x: var(--props-grid-gap, 1rem);
+  --props-grid-gap-y: var(--props-grid-gap, 1.75rem);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
-  gap: 1.75rem 1rem;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--props-grid-item-min-width), 100%), 1fr)
+  );
+  gap: var(--props-grid-gap-y) var(--props-grid-gap-x);
 }
 
 .GridItem {
