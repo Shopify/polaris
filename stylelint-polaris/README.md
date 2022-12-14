@@ -229,59 +229,68 @@ Flags use of custom properties with the private Polaris `--pc` prefix.
 
 #### colors/color-named
 
-```diff
-- color: black;
-- fill: dimgray;
-```
+Disallows named colors.
 
 ```diff
+/* Don't */
+- color: black;
+- fill: dimgray;
+
+/* Do */
 + color: var(--p-text);
 + fill: var(--p-icon)
 ```
 
 #### colors/color-no-hex
 
-```diff
-- color: #202223;
-- fill: #5c5f62;
-```
+Disallows hex colors.
 
 ```diff
+/* Don't */
+- color: #202223;
+- fill: #5c5f62;
+
+/* Do */
 + color: var(--p-text);
 + fill: var(--p-icon)
 ```
 
 #### colors/declaration-property-value-disallowed-list
 
-```diff
-- background: black;
-- opacity: 0.15;
-```
+Disallows hard coded opacity values, with the exception of 0 and 1.
 
 ```diff
+/* Don't */
+- background: black;
+- opacity: 0.15;
+
+/* Do */
 + background: var(--p-hint-from-direct-light);
 ```
 
 #### colors/function-disallowed-list
 
+Disallows the use of CSS color functions and legacy Sass functions.
+
 ```diff
+/* Don't */
 - color: rgb(140, 145, 150);
 - background: color('hover')
-```
 
-```diff
+/* Do */
 + color: var(--p-text-disabled);
 + background: var(--p-action-secondary-hovered-dark);
-
 ```
 
 #### colors/at-rule-disallowed-list
 
-```diff
-- fill: recolor-icon(--p-text-subdued);
-```
+Disallows use of legacy Sass mixins.
 
 ```diff
+/* Don't */
+- fill: recolor-icon(--p-text-subdued);
+
+/* Do */
 + fill: var(--p-icon-subdued);
 ```
 
@@ -290,16 +299,17 @@ Flags use of custom properties with the private Polaris `--pc` prefix.
 Disallows use of legacy custom properties.
 
 ```diff
+/* Don't */
 - border: var(--p-override-transparent);
-```
 
-```diff
+/* Do */
 + border: transparent;
 ```
 
 Disallows use of legacy mixin map data.
 
 ```diff
+/* Don't */
 - @type map $filter-palette-data: $polaris-color-filters;
 ```
 
