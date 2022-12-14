@@ -8,6 +8,7 @@ import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
+import {className} from '../../utils/various';
 import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
@@ -207,10 +208,24 @@ const patterns: Record<string, Pattern> = {
   },
 };
 
-const Preview = () => {
+const Preview = ({
+  src,
+  renderInner = true,
+}: {
+  src: string;
+  renderInner?: boolean;
+}) => {
   return (
-    <div className={styles.Preview}>
-      <div className={styles.PreviewInner} />
+    <div
+      className={className([styles.Preview, !renderInner && styles.NoInner])}
+    >
+      {renderInner ? (
+        <div className={className(styles.PreviewInner)}>
+          <img src={src} />
+        </div>
+      ) : (
+        <img src={src} />
+      )}
     </div>
   );
 };
@@ -327,7 +342,9 @@ export default function PatternsDatePickingPage() {
                           </li>
                         </ol>
                       </div>
-                      <div className={styles.ImageWrapper}></div>
+                      <div className={styles.ImageWrapper}>
+                        <img src="/images/patterns/pattern-purpose-date-picking-variant1.png" />
+                      </div>
                     </div>
                   </Stack>
                   <Stack gap="4">
@@ -388,7 +405,9 @@ export default function PatternsDatePickingPage() {
                     </Heading>
                     <ul className={styles.UsageGuidelinesWrapper}>
                       <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-variant-1a.png" />
+                        </div>
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             {`For text inputs, display the contextual date so that the
@@ -399,7 +418,9 @@ export default function PatternsDatePickingPage() {
                         </div>
                       </li>
                       <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-main-variant-2.png" />
+                        </div>
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             Labels need to simply depict the task at hand.
@@ -409,7 +430,9 @@ export default function PatternsDatePickingPage() {
                         </div>
                       </li>
                       <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-main-variant-3.png" />
+                        </div>
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             This pattern can be duplicated to allow users to add
@@ -676,25 +699,35 @@ export default function PatternsDatePickingPage() {
                   title="Date picker"
                   description="Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify."
                   url="/components/date-picker"
-                  renderPreview={() => <Preview />}
+                  renderPreview={() => (
+                    <Preview
+                      renderInner={false}
+                      src="/images/components/date-picker.png"
+                    />
+                  )}
                 />
                 <GridItem
                   title="UTC is for everyone right?"
                   description="Programming with dates, times, and timezones is hard. But here's some help."
                   url="https://zachholman.com/talk/utc-is-enough-for-everyone-right"
-                  renderPreview={() => <Preview />}
+                  renderPreview={() => (
+                    <Preview
+                      renderInner={false}
+                      src="/images/patterns/UTC4e1.jpeg"
+                    />
+                  )}
                 />
                 <GridItem
                   title="Grammar and mechanics"
                   description="This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify."
                   url="/content/grammar-and-mechanics#date"
-                  renderPreview={() => <Preview />}
+                  renderPreview={() => <Preview src="" />}
                 />
                 <GridItem
                   title="Actionable language"
                   description="Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions."
                   url="/content/actionable-language"
-                  renderPreview={() => <Preview />}
+                  renderPreview={() => <Preview src="" />}
                 />
               </Grid>
             </Stack>
