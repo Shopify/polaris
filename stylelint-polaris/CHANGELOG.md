@@ -1,5 +1,19 @@
 # Changelog
 
+## 5.0.1
+
+### Patch Changes
+
+- [#7866](https://github.com/Shopify/polaris/pull/7866) [`4b96147b3`](https://github.com/Shopify/polaris/commit/4b96147b32a89a393e8b6c5f7df1442f875248a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `stylelint-polaris` to allow disabling specific coverage rules instead of entire categories
+
+* [#7906](https://github.com/Shopify/polaris/pull/7906) [`c8a294f51`](https://github.com/Shopify/polaris/commit/c8a294f51baae53b131a5f9014f6223fdf3ef5ee) Thanks [@qt314](https://github.com/qt314)! - Fixed config atRule and function regex to match whole word
+
+- [#7868](https://github.com/Shopify/polaris/pull/7868) [`6cd75fd9a`](https://github.com/Shopify/polaris/commit/6cd75fd9a089791a79fe8aa7e43f6b54add47a45) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Update `package.json` to define a single entry point
+
+* [#7696](https://github.com/Shopify/polaris/pull/7696) [`bdf04a289`](https://github.com/Shopify/polaris/commit/bdf04a289e7a5b4c1e4717f5e162d00ea87c807b) Thanks [@chloerice](https://github.com/chloerice)! - Implemented custom message configuration support for polaris/coverage plugin
+
+- [#7898](https://github.com/Shopify/polaris/pull/7898) [`9206b7b13`](https://github.com/Shopify/polaris/commit/9206b7b130cb4d5b0a6ec110693d8b45248f8dcf) Thanks [@qt314](https://github.com/qt314)! - Bug fix to wrap z-index 'declaration-property-value-allowed-list' token value with "var"
+
 ## 5.0.0
 
 ### Major Changes
