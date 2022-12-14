@@ -1,5 +1,25 @@
 # Changelog
 
+## 10.16.0
+
+### Minor Changes
+
+- [#7893](https://github.com/Shopify/polaris/pull/7893) [`9e617c4d9`](https://github.com/Shopify/polaris/commit/9e617c4d96bfe8324b12b3b82cbb0f8b392b2183) Thanks [@yurm04](https://github.com/yurm04)! - Updating TextField and Select border colors to be compliant with accessibility color contrast guidance
+
+* [#7910](https://github.com/Shopify/polaris/pull/7910) [`5a4faf821`](https://github.com/Shopify/polaris/commit/5a4faf8211da8ad53848265d9208e2828d249d58) Thanks [@henryyi](https://github.com/henryyi)! - Added support for hover delay before displaying tooltip
+
+### Patch Changes
+
+- [#7890](https://github.com/Shopify/polaris/pull/7890) [`53d836dc2`](https://github.com/Shopify/polaris/commit/53d836dc22740d1f5ff22e9a8d3ce5604418ebeb) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed display bug with `BulkActions` when content in the table changes at the same time the bulk actions bar is visible
+
+* [#7846](https://github.com/Shopify/polaris/pull/7846) [`65131df18`](https://github.com/Shopify/polaris/commit/65131df18033e2f218b5a5e61c4ed0123584fb71) Thanks [@qt314](https://github.com/qt314)! - - Changed border radius of `focus-ring` to use shape tokens instead of adding an extra `1px`
+  - Updated `TextField` placeholder text to not change to a custom color on error
+  - Delete an unused class in the `DataTable` and `IndexTable`
+  - Replace some `px` values with tokens
+  - Add some stylelint ignore context comments
+
+- [#7891](https://github.com/Shopify/polaris/pull/7891) [`ff82bdb18`](https://github.com/Shopify/polaris/commit/ff82bdb1877120d1d9711889869a5119e38e3924) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the colors of the borders of the buttons in the `BulkActions` component
+
 ## 10.15.0
 
 ### Minor Changes
