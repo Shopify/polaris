@@ -67,8 +67,11 @@
     &[aria-selected='true'] {
       background-color: var(--surface-pressed);
     }
-    &:hover {
+    &:hover,
+    &:focus,
+    &:focus-visible {
       background-color: rgba(241, 241, 241, 1);
+      box-shadow: none;
     }
   }
 }
