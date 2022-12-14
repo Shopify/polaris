@@ -318,29 +318,50 @@ Disallows use of legacy mixin map data.
 #### motion/function-disallowed-list
 
 ```diff
+/* Don't */
+- transition-duration: duration();
 
+/* Do */
++ transition-duration: var(--p-duration-200);
 ```
 
 #### motion/declaration-property-unit-disallowed-list
 
 ```diff
+/* Don't */
 - transition-duration: 200ms;
-```
 
-```diff
+/* Do */
 + transition-duration: var(--p-duration-200);
 ```
 
 #### motion/at-rule-disallowed-list
 
 ```diff
+/* Don't */
+- @keyframes fade-in {
+-  from {
+-    opacity: 0;
+-  }
+-  to {
+-    opacity: 1;
+-  }
+-}
 
+-animation: fade-in 200ms 1 forwards;
+
+/* Do */
++ animation: var(--p-keyframes-fade-in) var(--p-duration-200) 1 forwards;
 ```
 
 #### motion/global-disallowed-list
 
 ```diff
+/* Don't */
+- transition-duration: var(--p-duration-1-0-0);
 
+/* Do */
++ transition-duration: var(--p-duration-100);
 ```
 
 ### Typography
