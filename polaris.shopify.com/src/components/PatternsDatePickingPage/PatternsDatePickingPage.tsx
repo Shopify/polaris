@@ -444,55 +444,35 @@ export default function PatternsDatePickingPage() {
               </Tab.Panel>
               <Tab.Panel className={styles.Panel}>
                 <Stack gap="8">
-                  <Stack as="section" gap="4">
-                    <PatternsExample
-                      example={patterns['date-range'].example}
-                      patternName={`${title} > ${patterns['date-range'].title}`}
-                      relatedComponents={[
-                        {label: 'Button', url: '/components/button'},
-                        {label: 'TextFields', url: '/components/text-field'},
-                      ]}
-                    />
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h2">
-                      How the {`${patterns['date-range'].title}`} helps
-                      merchants
-                    </Heading>
-                    <div className={styles.MerchantGoal}>
-                      <div>
-                        <ol className={styles.MerchantGoalOL}>
-                          <li>
-                            The option list enables merchants to efficiently
-                            scroll and pick through a list of commonly used
-                            dates, like Today, Yesterday, or Last 7 days.
-                          </li>
-                          <li>
-                            The calendar provides a way for merchants to browse
-                            dates visually and customize their selection.
-                          </li>
-                          <li>
-                            {`The dual text input gives merchants the option to
-                            use the keyboard to enter dates if the calendar
-                            isn’t accessible or the efficient option, or when
-                            the pre-picks don't offer the selections the
-                            merchant wants. It’s usually used when merchants
-                            know exactly the dates they need. Example: it would
-                            be easier to type a date range that spans 2 years
-                            vs. browsing via the calendar.`}
-                          </li>
-                          <li>
-                            The footer provides the merchant with a moment to
-                            review their date selection before they confirm what
-                            they want to schedule, filter, or publish.
-                          </li>
-                        </ol>
-                      </div>
-                      <div className={styles.ImageWrapper}></div>
+                  {description ? (
+                    <p>{patterns['date-range'].description}</p>
+                  ) : null}
+                  <Stack as="section" gap="4" className={styles.MerchantGoal}>
+                    <Heading as="h2">How it helps merchants</Heading>
+                    <div className={styles.ImageWrapper}>
+                      <img src="/images/patterns/pattern-purpose-date-picking-variant1.png" />
                     </div>
-                  </Stack>
-                  <Stack gap="4">
-                    <Heading as="h2">When to use</Heading>
+                    <div>
+                      <ol className={styles.MerchantGoalOL}>
+                        <li>
+                          Providing multiple ways to select a date range gives
+                          merchants full flexibility. The list provides quick
+                          access to common options, the text input makes it
+                          easier to set large custom ranges, and the calendar is
+                          an intuitive way to set a more narrow scope.
+                        </li>
+                        <li>
+                          Displaying two months makes it easier for merchants to
+                          select date ranges that span across both.
+                        </li>
+                        <li>
+                          Selecting a date range may require multiple steps, so
+                          merchants prefer to explicitly confirm their
+                          selection, unlike the single date picker which closes
+                          on selection.
+                        </li>
+                      </ol>
+                    </div>
                     <TableContainer>
                       <Table>
                         <TableCaption className={styles.WhenToUseCaption}>
@@ -502,40 +482,24 @@ export default function PatternsDatePickingPage() {
                           <Tr>
                             <Td className={styles.UseCase} shrink>
                               Analyze trends and data
-                              <p>Found in: Analytics</p>
                             </Td>
                             <Td>
-                              Merchants need to efficiently view their business
-                              metrics so that they can learn and make decisions.
-                              To do this, they can use the single date picker to
-                              filter and frame data for certain time periods.
+                              When a merchant needs to view their business
+                              metrics so that they can learn and make decisions,
+                              they use the date range picker to frame data to
+                              certain time periods.
+                              <br />
+                              Found in: Analytics
                             </Td>
                           </Tr>
                           <Tr>
                             <Td className={styles.UseCase} shrink>
-                              Reviewing reports and forecasting
-                              <p>Found in: Reports</p>
+                              Schedule an event
                             </Td>
                             <Td>
-                              Merchants need to review reports from past dates
-                              to observe in-depth analytics. This pattern
-                              enables merchants to freely pick dates that will
-                              in turn populate data related to those dates on
-                              the page.
-                            </Td>
-                          </Tr>
-                          <Tr>
-                            <Td className={styles.UseCase} shrink>
-                              Viewing marketing campaign metrics
-                              <p>Found in: Marketing</p>
-                            </Td>
-                            <Td>
-                              A merchant needs to view traffic and conversion
-                              attributed to marketing campaigns. Filtering
-                              through all types of date ranges from the past is
-                              essential for this task. The date picking pattern
-                              allows merchants to visualize statistics related
-                              to there date selections.
+                              When a merchant needs to schedule an event that
+                              spans multiple days, a date range picker is
+                              necessary.
                             </Td>
                           </Tr>
                         </Tbody>
@@ -543,69 +507,82 @@ export default function PatternsDatePickingPage() {
                     </TableContainer>
                   </Stack>
                   <Stack as="section" gap="4">
-                    <Heading as="h2">
-                      Useful to know about the {patterns['date-range'].title}
-                    </Heading>
-                    <ul className={styles.UsageGuidelinesWrapper}>
-                      <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                    <Heading as="h2">Using this pattern</Heading>
+                    <PatternsExample
+                      example={patterns['date-range'].example}
+                      patternName={`${title} > ${patterns['date-range'].title}`}
+                      relatedComponents={[
+                        {label: 'Date picker', url: '/components/date-picker'},
+                        {label: 'Card', url: '/components/card'},
+                        {label: 'Action list', url: '/components/action-list'},
+                        {label: 'Text', url: '/components/text-field'},
+                      ]}
+                    />
+                  </Stack>
+
+                  <Stack as="section" gap="4">
+                    <Heading as="h2">Useful to know</Heading>
+                    <Stack
+                      as="ul"
+                      className={styles.UsageGuidelinesWrapper}
+                      gap="4"
+                    >
+                      <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
-                            In the button preview, set a default date range that
-                            is most likely to be used by a merchant.
+                            Pin any relevant, merchant-specific dates to the top
+                            of the option list.
                           </p>
                         </div>
-                      </li>
-                      <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-variant-1a.png" />
+                        </div>
+                      </Row>
+                      <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
-                            Single dates should be at the top of the list,
-                            followed by date ranges from smallest to largest
-                            ranges.
+                            If a date cannot be selected, indicate it with the{' '}
+                            <Link href="#">disabled text color token</Link>.
                           </p>
                         </div>
-                      </li>
-                    </ul>
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-main-variant-2.png" />
+                        </div>
+                      </Row>
+                      <Row className={styles.UsageGuidelinesEl} gap="4">
+                        <div className={styles.UsageGuidelineTxt}>
+                          <p>
+                            If a merchant enters a nonexistent date, revert to
+                            the previously selected date.
+                          </p>
+                        </div>
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-main-variant-3.png" />
+                        </div>
+                      </Row>
+                    </Stack>
                   </Stack>
                 </Stack>
               </Tab.Panel>
               <Tab.Panel className={styles.Panel}>
                 <Stack gap="8">
-                  <Stack as="section" gap="4">
-                    <PatternsExample
-                      example={patterns['date-list'].example}
-                      patternName={`${title} > ${patterns['date-list'].title}`}
-                      relatedComponents={[
-                        {label: 'Button', url: '/components/button'},
-                        {label: 'TextFields', url: '/components/text-field'},
-                      ]}
-                    />
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h2">
-                      How the {`${patterns['date-list'].title}`} helps merchants
-                    </Heading>
-                    <div className={styles.MerchantGoal}>
-                      <div>
-                        <ol className={styles.MerchantGoalOL}>
-                          <li>
-                            Button shows the current date selection that is
-                            being filtered triggering a popover with dates to
-                            pick from.
-                          </li>
-                          <li>
-                            The list date picker provides a list of dates to
-                            choose from within an option list component. Varying
-                            between single and ranges of dates
-                          </li>
-                        </ol>
-                      </div>
-                      <div className={styles.ImageWrapper}></div>
+                  {description ? (
+                    <p>{patterns['date-list'].description}</p>
+                  ) : null}
+                  <Stack as="section" gap="4" className={styles.MerchantGoal}>
+                    <Heading as="h2">How it helps merchants</Heading>
+                    <div className={styles.ImageWrapper}>
+                      <img src="/images/patterns/pattern-purpose-date-picking-variant1.png" />
                     </div>
-                  </Stack>
-                  <Stack gap="4">
-                    <Heading as="h2">When to use</Heading>
+                    <div>
+                      <ol className={styles.MerchantGoalOL}>
+                        <li>
+                          The date list provides merchants with suggested dates.
+                          This makes date picking simpler when useful dates are
+                          predictable and custom dates aren’t necessary.
+                        </li>
+                      </ol>
+                    </div>
                     <TableContainer>
                       <Table>
                         <TableCaption className={styles.WhenToUseCaption}>
@@ -614,45 +591,14 @@ export default function PatternsDatePickingPage() {
                         <Tbody>
                           <Tr>
                             <Td className={styles.UseCase} shrink>
-                              Selecting periodic intervals
-                              <p>Found in: Sales report</p>
+                              Select from templated dates
                             </Td>
                             <Td>
-                              Merchants can select specific date intervals to
-                              view sales data during that time period. This list
-                              can offer: Hourly, Daily, Weekly, Monthly, and By
-                              hour of the day as options to choose from.
-                            </Td>
-                          </Tr>
-                          <Tr>
-                            <Td className={styles.UseCase} shrink>
-                              Applying a date filter for customer segments
-                              <p>Found in: Customer segment</p>
-                            </Td>
-                            <Td>
-                              A merchant needs to create a customer segment to
-                              group customers according to how and why they buy.
-                              When creating a customer segment, a merchant at
-                              times needs to apply date filters for when a
-                              customer is first added, their first order date,
-                              abandoned checkout date etc. The list date picker
-                              pattern provides flexible uses for all types of
-                              listed date groupings.
-                            </Td>
-                          </Tr>
-                          <Tr>
-                            <Td className={styles.UseCase} shrink>
-                              Templated dates
-                              <p>Found in: Inbox / Overview</p>
-                            </Td>
-                            <Td>
-                              A merchant needs to simply view metrics related to
-                              the Shopify chat inbox. Conversions and response
-                              times are subject matters that are viewed from
-                              filtering dates. A templated list of dates is
-                              sufficient for this task because it is a task that
-                              does not require in-depth filtering of historical
-                              information.
+                              When a templated list of dates is sufficient for
+                              the merchant task, use the date list because it is
+                              a task that does not require in-depth filtering of
+                              historical information. Found in: Inbox app /
+                              Overview
                             </Td>
                           </Tr>
                         </Tbody>
@@ -660,21 +606,35 @@ export default function PatternsDatePickingPage() {
                     </TableContainer>
                   </Stack>
                   <Stack as="section" gap="4">
-                    <Heading as="h2">
-                      Useful to know about the {patterns['date-list'].title}
-                    </Heading>
-                    <ul className={styles.UsageGuidelinesWrapper}>
-                      <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                    <Heading as="h2">Using this pattern</Heading>
+                    <PatternsExample
+                      example={patterns['date-list'].example}
+                      patternName={`${title} > ${patterns['date-list'].title}`}
+                      relatedComponents={[
+                        {label: 'Action List', url: '/components/action-list'},
+                      ]}
+                    />
+                  </Stack>
+
+                  <Stack as="section" gap="4">
+                    <Heading as="h2">Useful to know</Heading>
+                    <Stack
+                      as="ul"
+                      className={styles.UsageGuidelinesWrapper}
+                      gap="4"
+                    >
+                      <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             In the button preview, set a default date range that
-                            is most likely to be used by a merchant.
+                            a merchant will most likely use.
                           </p>
                         </div>
-                      </li>
-                      <li className={styles.UsageGuidelinesEl}>
-                        <div className={styles.ImageWrapper} />
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-variant-1a.png" />
+                        </div>
+                      </Row>
+                      <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             Single dates should be at the top of the list,
@@ -682,8 +642,23 @@ export default function PatternsDatePickingPage() {
                             ranges.
                           </p>
                         </div>
-                      </li>
-                    </ul>
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-main-variant-2.png" />
+                        </div>
+                      </Row>
+                      <Row className={styles.UsageGuidelinesEl} gap="4">
+                        <div className={styles.UsageGuidelineTxt}>
+                          <p>
+                            A date list can be modified to serve unique
+                            situations, like providing suggested search queries
+                            in the customer segment editor.
+                          </p>
+                        </div>
+                        <div className={styles.ImageWrapper}>
+                          <img src="/images/patterns/date-picking-usage-main-variant-3.png" />
+                        </div>
+                      </Row>
+                    </Stack>
                   </Stack>
                 </Stack>
               </Tab.Panel>

@@ -101,9 +101,12 @@ const PatternsExample = ({
             );
           }
           return (
-            <InlinePill as="a" key={component.url} href={component.url}>
-              {component.label}
-            </InlinePill>
+            <Fragment key={component.url}>
+              {index > 0 ? ', ' : null}
+              <InlinePill as="a" key={component.url} href={component.url}>
+                {component.label}
+              </InlinePill>
+            </Fragment>
           );
         })}
         {relatedComponents.length > 1 ? ' components' : ' component'}

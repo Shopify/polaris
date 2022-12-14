@@ -92,7 +92,6 @@
     aspect-ratio: 361.9/180.9;
     border-radius: 10px;
     width: 100%;
-    // max-width: 588px;
     background: rgba(246, 246, 247, 1);
     > img {
       width: 100%;
@@ -115,10 +114,9 @@
       position: absolute;
       left: -2px;
       content: counter(item);
-      background-color: rgba(78, 82, 184, 1);
+      font-weight: 700;
+      color: rgba(153, 35, 247, 1);
       font-weight: var(--font-weight-500);
-      line-height: 1.8;
-      color: #fff;
       vertical-align: bottom;
       text-align: center;
       display: block;
