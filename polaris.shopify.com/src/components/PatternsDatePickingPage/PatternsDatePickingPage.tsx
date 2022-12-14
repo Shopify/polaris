@@ -340,7 +340,9 @@ export default function PatternsDatePickingPage() {
                         <Tbody>
                           <Tr>
                             <Td className={styles.UseCase} shrink>
-                              Set activation dates Found in: Discounts
+                              Set activation dates
+                              <br />
+                              Found in: Discounts
                             </Td>
                             <Td>
                               Merchants can set a start date for when a discount
@@ -352,8 +354,9 @@ export default function PatternsDatePickingPage() {
                           </Tr>
                           <Tr>
                             <Td className={styles.UseCase} shrink>
-                              Set visibility dates for a page Found in: Online
-                              store / add a page
+                              Set visibility dates for a page
+                              <br />
+                              Found in: Online store / add a page
                             </Td>
                             <Td>
                               A merchant needs to set a visibility date for a
@@ -367,8 +370,9 @@ export default function PatternsDatePickingPage() {
                           </Tr>
                           <Tr>
                             <Td className={styles.UseCase} shrink>
-                              Estimated arrival date Found in: Product /
-                              transfers
+                              Estimated arrival date
+                              <br />
+                              Found in: Product / transfers
                             </Td>
                             <Td>
                               A merchant needs to provide an estimated arrival
