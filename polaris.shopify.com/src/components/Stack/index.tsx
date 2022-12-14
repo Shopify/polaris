@@ -1,26 +1,10 @@
 import {forwardRef} from 'react';
+import {type SpacingSpaceScale} from '@shopify/polaris-tokens';
 import {Box, type WithAsProp} from '../Box';
 import styles from './Stack.module.scss';
 
 export interface StackProps {
-  gap?:
-    | '0'
-    | '025'
-    | '05'
-    | '1'
-    | '10'
-    | '12'
-    | '16'
-    | '2'
-    | '20'
-    | '24'
-    | '28'
-    | '3'
-    | '32'
-    | '4'
-    | '5'
-    | '6'
-    | '8';
+  gap?: SpacingSpaceScale;
 }
 
 export const Stack = forwardRef(
