@@ -273,169 +273,176 @@ export default function PatternsDatePickingPage() {
           selectedIndex={exampleIndex}
           onChange={onTabChange}
         >
-          <Tab.List>
-            <div className={styles.ExamplesList} id="examples">
-              <Tab>
-                <span>{patterns['single-date-picker'].title}</span>
-              </Tab>
-              <Tab>
-                <span>{patterns['date-range-picker'].title}</span>
-              </Tab>
-              <Tab>
-                <span>{patterns['minimal'].title}</span>
-              </Tab>
-            </div>
-          </Tab.List>
+          <div className={styles.TabGroup}>
+            <Tab.List>
+              <div className={styles.ExamplesList} id="examples">
+                <Tab>
+                  <span>{patterns['single-date-picker'].title}</span>
+                </Tab>
+                <Tab>
+                  <span>{patterns['date-range-picker'].title}</span>
+                </Tab>
+                <Tab>
+                  <span>{patterns['minimal'].title}</span>
+                </Tab>
+              </div>
+            </Tab.List>
 
-          <Tab.Panels>
-            <Tab.Panel>
-              <Stack gap="8">
+            <Tab.Panels>
+              <Tab.Panel className={styles.Panel}>
+                <Stack gap="8">
+                  <Stack as="section" gap="4">
+                    <PatternsExample
+                      example={patterns['single-date-picker'].example}
+                      patternName={`${title} > ${patterns['single-date-picker'].title}`}
+                      relatedComponents={[
+                        {label: 'Button', url: '/components/button'},
+                        {label: 'TextFields', url: '/components/text-field'},
+                      ]}
+                    />
+                  </Stack>
+                  <Stack as="section" gap="4">
+                    <Heading as="h2">
+                      How the {`${patterns['single-date-picker'].title}`} helps
+                      merchants
+                    </Heading>
+                    <div className={styles.MerchantGoal}>
+                      <div>
+                        <ol className={styles.MerchantGoalOL}>
+                          <li>
+                            The text input gives merchants the option to use the
+                            keyboard to enter a date.
+                          </li>
+                          <li>
+                            A single month calendar is previewed after selecting
+                            the date input to provide visual affordance of the
+                            single date picked. The calendar can then be used to
+                            select a new date.
+                          </li>
+                        </ol>
+                      </div>
+                      <div className={styles.ImageWrapper}></div>
+                    </div>
+                  </Stack>
+                  <Stack gap="4">
+                    <Heading as="h2">When to use</Heading>
+                    <TableContainer>
+                      <Table>
+                        <TableCaption className={styles.WhenToUseCaption}>
+                          When merchants need to:
+                        </TableCaption>
+                        <Tr>
+                          <Td className={styles.UseCase}>
+                            Find and change app settings
+                          </Td>
+                          <Td>This is a description of the use case.</Td>
+                        </Tr>
+                        <Tr>
+                          <Td className={styles.UseCase}>
+                            Another merchant objective
+                          </Td>
+                          <Td>This is a description of the use case.</Td>
+                        </Tr>
+                      </Table>
+                    </TableContainer>
+                  </Stack>
+                  <Stack as="section" gap="4">
+                    <Heading as="h2">
+                      Useful to know about the{' '}
+                      {patterns['single-date-picker'].title}
+                    </Heading>
+                    <ul className={styles.UsageGuidelinesWrapper}>
+                      <li className={styles.UsageGuidelinesEl}>
+                        <div className={styles.ImageWrapper} />
+                        <div className={styles.UsageGuidelineTxt}>
+                          <p>
+                            {`For text inputs, display the contextual date so that the
+                        format is easily understood and familiar. On focus,
+                        present the date in the proper format to edit
+                        (YYYY-MM-DD)`}
+                          </p>
+                        </div>
+                      </li>
+                      <li className={styles.UsageGuidelinesEl}>
+                        <div className={styles.ImageWrapper} />
+                        <div className={styles.UsageGuidelineTxt}>
+                          <p>
+                            Labels need to simply depict the task at hand.
+                            Whether that be a start date, end date, start time
+                            etc.
+                          </p>
+                        </div>
+                      </li>
+                      <li className={styles.UsageGuidelinesEl}>
+                        <div className={styles.ImageWrapper} />
+                        <div className={styles.UsageGuidelineTxt}>
+                          <p>
+                            This pattern can be duplicated to allow users to add
+                            an end date or time.
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                  </Stack>
+                </Stack>
+              </Tab.Panel>
+              <Tab.Panel className={styles.Panel}>
                 <Stack as="section" gap="4">
                   <PatternsExample
-                    example={patterns['single-date-picker'].example}
-                    patternName={`${title} > ${patterns['single-date-picker'].title}`}
+                    example={patterns['date-range-picker'].example}
+                    patternName={`${title} > ${patterns['date-range-picker'].title}`}
                     relatedComponents={[
                       {label: 'Button', url: '/components/button'},
                       {label: 'TextFields', url: '/components/text-field'},
                     ]}
                   />
                 </Stack>
+              </Tab.Panel>
+              <Tab.Panel className={styles.Panel}>
                 <Stack as="section" gap="4">
-                  <Heading as="h2">
-                    How the {`${patterns['single-date-picker'].title}`} helps
-                    merchants
-                  </Heading>
-                  <div className={styles.MerchantGoal}>
-                    <div>
-                      <ol className={styles.MerchantGoalOL}>
-                        <li>
-                          The text input gives merchants the option to use the
-                          keyboard to enter a date.
-                        </li>
-                        <li>
-                          A single month calendar is previewed after selecting
-                          the date input to provide visual affordance of the
-                          single date picked. The calendar can then be used to
-                          select a new date.
-                        </li>
-                      </ol>
-                    </div>
-                    <div className={styles.ImageWrapper}></div>
-                  </div>
+                  <PatternsExample
+                    example={patterns['minimal'].example}
+                    patternName={`${title} > ${patterns['minimal'].title}`}
+                    relatedComponents={[
+                      {label: 'Button', url: '/components/button'},
+                      {label: 'TextFields', url: '/components/text-field'},
+                    ]}
+                  />
                 </Stack>
-                <Stack gap="4">
-                  <Heading as="h2">When to use</Heading>
-                  <TableContainer>
-                    <Table>
-                      <TableCaption className={styles.WhenToUseCaption}>
-                        When merchants need to:
-                      </TableCaption>
-                      <Tr>
-                        <Td className={styles.UseCase}>
-                          Find and change app settings
-                        </Td>
-                        <Td>This is a description of the use case.</Td>
-                      </Tr>
-                      <Tr>
-                        <Td className={styles.UseCase}>
-                          Another merchant objective
-                        </Td>
-                        <Td>This is a description of the use case.</Td>
-                      </Tr>
-                    </Table>
-                  </TableContainer>
-                </Stack>
-                <Stack as="section" gap="4">
-                  <Heading as="h2">
-                    Useful to know about the{' '}
-                    {patterns['single-date-picker'].title}
-                  </Heading>
-                  <ul className={styles.UsageGuidelinesWrapper}>
-                    <li className={styles.UsageGuidelinesEl}>
-                      <div className={styles.ImageWrapper} />
-                      <div className={styles.UsageGuidelineTxt}>
-                        <p>
-                          {`For text inputs, display the contextual date so that the
-                        format is easily understood and familiar. On focus,
-                        present the date in the proper format to edit
-                        (YYYY-MM-DD)`}
-                        </p>
-                      </div>
-                    </li>
-                    <li className={styles.UsageGuidelinesEl}>
-                      <div className={styles.ImageWrapper} />
-                      <div className={styles.UsageGuidelineTxt}>
-                        <p>
-                          Labels need to simply depict the task at hand. Whether
-                          that be a start date, end date, start time etc.
-                        </p>
-                      </div>
-                    </li>
-                    <li className={styles.UsageGuidelinesEl}>
-                      <div className={styles.ImageWrapper} />
-                      <div className={styles.UsageGuidelineTxt}>
-                        <p>
-                          This pattern can be duplicated to allow users to add
-                          an end date or time.
-                        </p>
-                      </div>
-                    </li>
-                  </ul>
-                </Stack>
-                <Stack as="section" gap="4">
-                  <Heading as="h2">Related resources</Heading>
-                  <Grid>
-                    <Grid.Item
-                      title="App settings layout"
-                      description="Makes it easy for merchants to scan and find setting groups."
-                      url="/TODO"
-                      renderPreview={() => <Preview />}
-                      status={{value: StatusName.Beta, message: ''}}
-                    />
-                    <Grid.Item
-                      title="Resource index layout"
-                      description="Makes it easy for merchants to view and manage resources."
-                      url="/TODO"
-                      renderPreview={() => <Preview />}
-                    />
-                    <Grid.Item
-                      title="Resource detail layout"
-                      description="Makes it easy for merchants to create, view and edit resources."
-                      url="/TODO"
-                      renderPreview={() => <Preview />}
-                    />
-                    <Grid.Item
-                      title="Date picking"
-                      description="Makes it easy for merchants to select and input dates and date ranges."
-                      url="/TODO"
-                      renderPreview={() => <Preview />}
-                      status={{value: StatusName.Beta, message: ''}}
-                    />
-                  </Grid>
-                </Stack>
-              </Stack>
-            </Tab.Panel>
-            <Tab.Panel>
-              <PatternsExample
-                example={patterns['date-range-picker'].example}
-                patternName={`${title} > ${patterns['date-range-picker'].title}`}
-                relatedComponents={[
-                  {label: 'Button', url: '/components/button'},
-                  {label: 'TextFields', url: '/components/text-field'},
-                ]}
-              />
-            </Tab.Panel>
-            <Tab.Panel>
-              <PatternsExample
-                example={patterns['minimal'].example}
-                patternName={`${title} > ${patterns['minimal'].title}`}
-                relatedComponents={[
-                  {label: 'Button', url: '/components/button'},
-                  {label: 'TextFields', url: '/components/text-field'},
-                ]}
-              />
-            </Tab.Panel>
-          </Tab.Panels>
+              </Tab.Panel>
+            </Tab.Panels>
+            <Stack as="section" gap="4">
+              <Heading as="h2">Related resources</Heading>
+              <Grid>
+                <Grid.Item
+                  title="App settings layout"
+                  description="Makes it easy for merchants to scan and find setting groups."
+                  url="/TODO"
+                  renderPreview={() => <Preview />}
+                  status={{value: StatusName.Beta, message: ''}}
+                />
+                <Grid.Item
+                  title="Resource index layout"
+                  description="Makes it easy for merchants to view and manage resources."
+                  url="/TODO"
+                  renderPreview={() => <Preview />}
+                />
+                <Grid.Item
+                  title="Resource detail layout"
+                  description="Makes it easy for merchants to create, view and edit resources."
+                  url="/TODO"
+                  renderPreview={() => <Preview />}
+                />
+                <Grid.Item
+                  title="Date picking"
+                  description="Makes it easy for merchants to select and input dates and date ranges."
+                  url="/TODO"
+                  renderPreview={() => <Preview />}
+                  status={{value: StatusName.Beta, message: ''}}
+                />
+              </Grid>
+            </Stack>
+          </div>
         </Tab.Group>
       </Page>
     </>
