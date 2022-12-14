@@ -205,7 +205,7 @@ Allows definition of custom properties not using Polaris prefixes `--p-`, `--pc-
 + --osui_animation-name-drag-handle-pulse: osui_drag-handle-pulse;
 ```
 
-Flags use of custom properties with the Polaris `--p` prefix that are not valid tokens.
+Flags use of custom properties with the Polaris `--p` prefix that are not valid tokens. All tokens can be found in the [tokens](https://polaris.shopify.com/tokens/colors) section of the Polaris style guide.
 
 ```diff
 /* Don't */
@@ -215,7 +215,7 @@ Flags use of custom properties with the Polaris `--p` prefix that are not valid 
 + font-size: var(--p-font-size-200);
 ```
 
-Flags use of custom properties with the private Polaris `--pc` prefix.
+Flags use of custom properties with the private Polaris `--pc` prefix. Use the public [Polaris tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -229,7 +229,7 @@ Flags use of custom properties with the private Polaris `--pc` prefix.
 
 #### colors/color-named
 
-Disallows named colors.
+Disallows named colors. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -243,7 +243,7 @@ Disallows named colors.
 
 #### colors/color-no-hex
 
-Disallows hex colors.
+Disallows hex colors. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -257,7 +257,7 @@ Disallows hex colors.
 
 #### colors/declaration-property-value-disallowed-list
 
-Disallows hard coded opacity values, with the exception of 0 and 1.
+Disallows hard coded opacity values, with the exception of 0 and 1. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -270,7 +270,7 @@ Disallows hard coded opacity values, with the exception of 0 and 1.
 
 #### colors/function-disallowed-list
 
-Disallows the use of CSS color functions and legacy Sass functions.
+Disallows the use of CSS color functions and legacy Sass functions. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -284,7 +284,7 @@ Disallows the use of CSS color functions and legacy Sass functions.
 
 #### colors/at-rule-disallowed-list
 
-Disallows use of legacy Sass mixins.
+Disallows use of legacy Sass mixins. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -296,7 +296,7 @@ Disallows use of legacy Sass mixins.
 
 #### colors/global-disallowed-list
 
-Disallows use of legacy custom properties.
+Disallows use of legacy custom properties. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -306,7 +306,7 @@ Disallows use of legacy custom properties.
 + border: transparent;
 ```
 
-Disallows use of legacy mixin map data.
+Disallows use of legacy mixin map data. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -316,6 +316,8 @@ Disallows use of legacy mixin map data.
 ### Motion
 
 #### motion/function-disallowed-list
+
+Disallows use of legacy Sass motion functions. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
 
 ```diff
 /* Don't */
@@ -327,6 +329,8 @@ Disallows use of legacy mixin map data.
 
 #### motion/declaration-property-unit-disallowed-list
 
+Disallows use of hard-coded millisecond and second units. Use motion tokens instead. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
+
 ```diff
 /* Don't */
 - transition-duration: 200ms;
@@ -336,6 +340,8 @@ Disallows use of legacy mixin map data.
 ```
 
 #### motion/at-rule-disallowed-list
+
+Disallows use of legacy Sass motion mixins. Use motion tokens instead. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
 
 ```diff
 /* Don't */
@@ -355,6 +361,8 @@ Disallows use of legacy mixin map data.
 ```
 
 #### motion/global-disallowed-list
+
+Disallows use of legacy Polaris tokens. Use the current motion tokens instead. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
 
 ```diff
 /* Don't */
