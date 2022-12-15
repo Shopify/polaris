@@ -104,7 +104,6 @@ export default function PatternsDatePickingPage() {
           <Heading as="h1">
             <Row wrap gap="2" className={styles.Heading}>
               {title}{' '}
-              <StatusBadge status={{value: StatusName.Beta, message: ''}} />
             </Row>
           </Heading>
           <Lede>{description}</Lede>

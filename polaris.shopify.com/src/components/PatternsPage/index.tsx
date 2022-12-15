@@ -45,7 +45,6 @@ export const PatternsPage = () => (
                 src="/images/patterns/pattern-thumbnail-app-settings.png"
               />
             )}
-            status={{value: StatusName.Beta, message: ''}}
           />
           <GridItem
             title="Resource index layout"
