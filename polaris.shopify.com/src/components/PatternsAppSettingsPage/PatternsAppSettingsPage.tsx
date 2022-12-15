@@ -259,7 +259,7 @@ export default function PatternsDatePickingPage() {
                 renderPreview={() => (
                   <Preview
                     renderInner={false}
-                    src="/og-images/content/actionable-image.png"
+                    src="/og-images/content/actionable-language.png"
                   />
                 )}
               />
