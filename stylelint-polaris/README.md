@@ -489,7 +489,7 @@ Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index
 
 #### depth/global-disallowed-list
 
-Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 
 ```diff
 // Don't
@@ -511,7 +511,7 @@ Instead of using properties like `text-shadow`, make sure the text has proper co
 
 #### media-queries/function-disallowed-list
 
-Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
+Use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of legacy mixins/variables.
 
 ```diff
 // Don't
@@ -533,7 +533,7 @@ Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/t
 
 #### media-queries/at-rule-disallowed-list
 
-Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
+Use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of legacy mixins/variables.
 
 ```diff
 // Don't
@@ -557,7 +557,7 @@ Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-ind
 
 #### z-index/function-disallowed-list
 
-Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 
 ```diff
 // Don't
@@ -568,7 +568,7 @@ Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-ind
 
 #### z-index/global-disallowed-list
 
-Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 
 ```diff
 // Don't
@@ -602,6 +602,8 @@ Use hard coded pixel or rem values for `width` and `height` instead of legacy mi
 ```
 
 #### layout/at-rule-disallowed-list
+
+Instead of using a legacy mixin, try and use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. If what you need isn't possible, either use the mixin's contents or consider contributing to an existing Polaris component.
 
 ```diff
 // Don't
@@ -655,6 +657,8 @@ If [Polaris components](https://polaris.shopify.com/components) cannot be compos
 ```
 
 #### legacy/global-disallowed-list
+
+Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwise use hard coded pixel or rem values instead of legacy mixins/variables.
 
 ```diff
 // Don't
