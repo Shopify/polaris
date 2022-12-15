@@ -1,8 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import StatusBadge from '../StatusBadge';
-import {StatusName} from '../../types';
 import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
