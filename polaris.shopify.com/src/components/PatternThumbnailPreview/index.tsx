@@ -2,7 +2,7 @@ import Image from 'next/image';
 import {className} from '../../utils/various';
 import styles from './PatternThumbnailPreview.module.scss';
 const Preview = ({
-  src = '',
+  src,
   alt = '',
   renderInner = true,
 }: {
@@ -16,11 +16,11 @@ const Preview = ({
     >
       {renderInner ? (
         <div className={className(styles.PreviewInner)}>
-          <Image alt={alt} fill src={src} />
+          {src ? <Image alt={alt} fill src={src} /> : null}
         </div>
-      ) : (
+      ) : src ? (
         <Image alt={alt} fill src={src} />
-      )}
+      ) : null}
     </div>
   );
 };

@@ -35,6 +35,10 @@ const pattern: Pattern = {
   slug: 'app-settings',
   description: 'This enables merchants to select a date range.',
   example: {
+    context: `
+      <div style={{ paddingBottom: '2rem' }}>
+        ____CODE____
+      </div>`,
     code: ` <Page
       divider
       primaryAction={{ content: "View on your store", disabled: true }}
@@ -110,7 +114,7 @@ export default function PatternsDatePickingPage() {
             </Link>{' '}
           </p>
         </Stack>
-        <Stack gap="16">
+        <Stack gap="4">
           <Stack gap="8">
             <Stack as="section" gap="4" className={styles.MerchantGoal}>
               <Heading as="h2">How it helps merchants</Heading>
@@ -122,7 +126,7 @@ export default function PatternsDatePickingPage() {
                 />
               </div>
               <div>
-                <ol className={styles.MerchantGoalOL}>
+                <Stack gap="4" as="ol">
                   <li>
                     In the left column, glanceable labels and descriptions are
                     listed to make it easier for merchants to scan the page and
@@ -134,7 +138,7 @@ export default function PatternsDatePickingPage() {
                     been found, or to configure multiple settings that might
                     belong together.`}
                   </li>
-                </ol>
+                </Stack>
               </div>
               <TableContainer>
                 <Table>
@@ -171,7 +175,7 @@ export default function PatternsDatePickingPage() {
             </Stack>
 
             <Stack as="section" gap="4">
-              <Heading as="h2">Useful to know</Heading>
+              <Heading as="h3">Useful to know</Heading>
               <Stack as="ul" className={styles.UsageGuidelinesWrapper} gap="4">
                 <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                   <div className={styles.UsageGuidelineTxt}>
@@ -219,13 +223,23 @@ export default function PatternsDatePickingPage() {
                 title="Information architecture"
                 description="Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work."
                 url="/foundations/information-architecture"
-                renderPreview={() => <Preview renderInner={false} />}
+                renderPreview={() => (
+                  <Preview
+                    renderInner={false}
+                    src="/og-images/foundations/information-architecture.png"
+                  />
+                )}
               />
               <GridItem
                 title="Space"
                 description="Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping the content become more useful and understandable."
                 url="/design/space"
-                renderPreview={() => <Preview renderInner={false} />}
+                renderPreview={() => (
+                  <Preview
+                    renderInner={false}
+                    src="/og-images/design/space.png"
+                  />
+                )}
               />
               <GridItem
                 title="ADG Layout"
@@ -242,7 +256,12 @@ export default function PatternsDatePickingPage() {
                 title="Actionable language"
                 description="Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions."
                 url="/content/actionable-language"
-                renderPreview={() => <Preview src="" />}
+                renderPreview={() => (
+                  <Preview
+                    renderInner={false}
+                    src="/og-images/content/actionable-image.png"
+                  />
+                )}
               />
             </Grid>
           </Stack>

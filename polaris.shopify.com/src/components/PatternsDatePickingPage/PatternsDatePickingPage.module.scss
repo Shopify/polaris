@@ -22,10 +22,9 @@
 }
 .Panel {
   position: relative;
-  padding: 32px;
+  padding: 1rem;
   z-index: 10;
   background-color: rgba(250, 250, 250, 1);
-  padding-bottom: 64px;
   margin-top: -16px;
   border-radius: var(--border-radius-400);
 }
@@ -52,7 +51,7 @@
 
   button {
     z-index: 5;
-    padding: 0.45rem 0.65rem;
+    padding: 0.45rem 1rem;
     padding-bottom: 24px;
     text-align: left;
     display: flex;
@@ -107,7 +106,7 @@
     position: relative;
     li {
       counter-increment: item;
-      margin-bottom: 10px;
+      // margin-bottom: 10px;
     }
     li:before {
       width: 24px;

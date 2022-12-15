@@ -1,5 +1,6 @@
 import {Fragment, useEffect, useState} from 'react';
 import {createUrl} from 'playroom';
+import {Stack} from '../Stack';
 import styles from './PatternsExample.module.scss';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
@@ -110,32 +111,36 @@ const PatternsExample = ({
         })}
         {relatedComponents.length > 1 ? ' components' : ' component'}
       </p>
-      <ExampleWrapper
-        renderFrameActions={() => (
-          <Fragment>
-            <PlayroomButton code={example.code} patternName={patternName} />
-            <LinkButton onClick={() => toggleCode((codeActive) => !codeActive)}>
-              {codeActive ? 'Hide code' : 'Show code'}
-            </LinkButton>
-          </Fragment>
-        )}
-      >
-        <GrowFrame
-          id="live-preview-iframe"
-          defaultHeight={'400px'}
-          src={previewUrl}
-        />
-      </ExampleWrapper>
-      {codeActive ? (
-        <Code
-          code={[
-            {
-              title: 'React',
-              code: snippetCode ? snippetCode.trim() : code?.trim(),
-            },
-          ]}
-        />
-      ) : null}
+      <Stack gap="2">
+        <ExampleWrapper
+          renderFrameActions={() => (
+            <Fragment>
+              <PlayroomButton code={example.code} patternName={patternName} />
+              <LinkButton
+                onClick={() => toggleCode((codeActive) => !codeActive)}
+              >
+                {codeActive ? 'Hide code' : 'Show code'}
+              </LinkButton>
+            </Fragment>
+          )}
+        >
+          <GrowFrame
+            id="live-preview-iframe"
+            defaultHeight={'400px'}
+            src={previewUrl}
+          />
+        </ExampleWrapper>
+        {codeActive ? (
+          <Code
+            code={[
+              {
+                title: 'React',
+                code: snippetCode ? snippetCode.trim() : code?.trim(),
+              },
+            ]}
+          />
+        ) : null}
+      </Stack>
     </Fragment>
   );
 };

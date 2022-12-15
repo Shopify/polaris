@@ -107,52 +107,9 @@ const patterns: Record<string, Pattern> = {
     example: {
       code: ` <Page
       divider
-      primaryAction={{ content: "View on your store", disabled: true }}
-      secondaryActions={[
-        {
-          content: "Duplicate",
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Duplicate action"),
-        },
-      ]}
     >
       <AlphaStack gap="16">
-        <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-          <Box as="section">
-            <AlphaStack>
-              <Text as="h3" variant="headingMd">
-                InterJambs
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Interjambs are the rounded protruding bits of your puzzlie piece
-              </Text>
-            </AlphaStack>
-          </Box>
-          <AlphaCard>
-            <AlphaStack fullWidth>
-              <TextField label="Interjamb style" />
-              <TextField label="Interjamb ratio" />
-            </AlphaStack>
-          </AlphaCard>
-        </Columns>
-        <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-          <Box as="section">
-            <AlphaStack>
-              <Text as="h3" variant="headingMd">
-                Dimensions
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Interjambs are the rounded protruding bits of your puzzlie piece
-              </Text>
-            </AlphaStack>
-          </Box>
-          <AlphaCard>
-            <AlphaStack fullWidth>
-              <TextField label="Horizontal" />
-              <TextField label="Interjamb ratio" />
-            </AlphaStack>
-          </AlphaCard>
-        </Columns>
+        Coming Soon
       </AlphaStack>
     </Page>`,
     },
@@ -177,24 +134,13 @@ const patterns: Record<string, Pattern> = {
         </div>
       </div>`,
       code: `
-      <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-      <Box as="section">
-        <AlphaStack>
-          <Text as="h3" variant="headingMd">
-            InterJambs
-          </Text>
-          <Text as="p" variant="bodyMd">
-            Interjambs are the rounded protruding bits of your puzzlie piece
-          </Text>
-        </AlphaStack>
-      </Box>
-      <AlphaCard>
-        <AlphaStack fullWidth>
-          <TextField label="Interjamb style" />
-          <TextField label="Interjamb ratio" />
-        </AlphaStack>
-      </AlphaCard>
-    </Columns>
+      <Page
+      divider
+    >
+      <AlphaStack gap="16">
+        Coming Soon
+      </AlphaStack>
+    </Page>
       `,
     },
   },
@@ -289,7 +235,7 @@ export default function PatternsDatePickingPage() {
                       />
                     </div>
                     <div>
-                      <ol className={styles.MerchantGoalOL}>
+                      <Stack as="ol" gap="2">
                         <li>
                           The text input gives merchants the option to use the
                           keyboard to enter a date.
@@ -300,7 +246,7 @@ export default function PatternsDatePickingPage() {
                           single date picked. The calendar can then be used to
                           select a new date.
                         </li>
-                      </ol>
+                      </Stack>
                     </div>
                     <TableContainer>
                       <Table>
@@ -310,46 +256,22 @@ export default function PatternsDatePickingPage() {
                         <Tbody>
                           <Tr>
                             <Td className={styles.UseCase} shrink>
-                              Set activation dates
-                              <br />
-                              Found in: Discounts
+                              Schedule an event on a <br /> specific day
                             </Td>
                             <Td>
-                              Merchants can set a start date for when a discount
-                              becomes active. This pattern variant can be used
-                              along with the option to add a start time, and
-                              merchants can select a checkbox to add an end date
-                              and time using the same variant.
-                            </Td>
-                          </Tr>
-                          <Tr>
-                            <Td className={styles.UseCase} shrink>
-                              Set visibility dates for a page
-                              <br />
-                              Found in: Online store / add a page
-                            </Td>
-                            <Td>
-                              A merchant needs to set a visibility date for a
-                              new page that they have created for their online
-                              store. This simplified date picking pattern is
-                              useful for this task because only a single date is
-                              required to be inputted for a merchant job to be
-                              done, elimenating any unneccersary friction
-                              throughout the experience.
-                            </Td>
-                          </Tr>
-                          <Tr>
-                            <Td className={styles.UseCase} shrink>
-                              Estimated arrival date
+                              Some examples of this are setting a visibility
+                              date for a new online store page, or an estimated
+                              arrival date for a shipment.
                               <br />
                               Found in: Product / transfers
                             </Td>
-                            <Td>
-                              A merchant needs to provide an estimated arrival
-                              date for their shipment details. For this task
-                              only a single date is required from the merchant
-                              as a benchmark date for inventory transfers.
+                          </Tr>
+                          <Tr>
+                            <Td className={styles.UseCase} shrink>
+                              Input memorable dates to <br />
+                              forms
                             </Td>
+                            <Td>An example of this is entering a birthdate.</Td>
                           </Tr>
                         </Tbody>
                       </Table>
@@ -361,14 +283,14 @@ export default function PatternsDatePickingPage() {
                       example={patterns['single-date'].example}
                       patternName={`${title} > ${patterns['single-date'].title}`}
                       relatedComponents={[
-                        {label: 'Button', url: '/components/button'},
-                        {label: 'TextFields', url: '/components/text-field'},
+                        {label: 'Date picker', url: '/components/date-picker'},
+                        {label: 'Text', url: '/components/text-field'},
                       ]}
                     />
                   </Stack>
 
                   <Stack as="section" gap="4">
-                    <Heading as="h2">Useful to know</Heading>
+                    <Heading as="h3">Useful to know</Heading>
                     <Stack
                       as="ul"
                       className={styles.UsageGuidelinesWrapper}
@@ -424,7 +346,7 @@ export default function PatternsDatePickingPage() {
                       />
                     </div>
                     <div>
-                      <ol className={styles.MerchantGoalOL}>
+                      <Stack as="ol">
                         <li>
                           Providing multiple ways to select a date range gives
                           merchants full flexibility. The list provides quick
@@ -442,7 +364,7 @@ export default function PatternsDatePickingPage() {
                           selection, unlike the single date picker which closes
                           on selection.
                         </li>
-                      </ol>
+                      </Stack>
                     </div>
                     <TableContainer>
                       <Table>
@@ -492,7 +414,7 @@ export default function PatternsDatePickingPage() {
                   </Stack>
 
                   <Stack as="section" gap="4">
-                    <Heading as="h2">Useful to know</Heading>
+                    <Heading as="h3">Useful to know</Heading>
                     <Stack
                       as="ul"
                       className={styles.UsageGuidelinesWrapper}
@@ -517,7 +439,10 @@ export default function PatternsDatePickingPage() {
                         <div className={styles.UsageGuidelineTxt}>
                           <p>
                             If a date cannot be selected, indicate it with the{' '}
-                            <Link href="#">disabled text color token</Link>.
+                            <Link href="/tokens/colors">
+                              disabled text color token
+                            </Link>
+                            .
                           </p>
                         </div>
                         <div className={styles.ImageWrapper}>
@@ -562,13 +487,13 @@ export default function PatternsDatePickingPage() {
                       />
                     </div>
                     <div>
-                      <ol className={styles.MerchantGoalOL}>
+                      <Stack as="ol" gap="4">
                         <li>
                           The date list provides merchants with suggested dates.
                           This makes date picking simpler when useful dates are
                           predictable and custom dates aren’t necessary.
                         </li>
-                      </ol>
+                      </Stack>
                     </div>
                     <TableContainer>
                       <Table>
@@ -604,7 +529,7 @@ export default function PatternsDatePickingPage() {
                   </Stack>
 
                   <Stack as="section" gap="4">
-                    <Heading as="h2">Useful to know</Heading>
+                    <Heading as="h3">Useful to know</Heading>
                     <Stack
                       as="ul"
                       className={styles.UsageGuidelinesWrapper}
@@ -691,13 +616,23 @@ export default function PatternsDatePickingPage() {
                   title="Grammar and mechanics"
                   description="This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify."
                   url="/content/grammar-and-mechanics#date"
-                  renderPreview={() => <Preview src="" />}
+                  renderPreview={() => (
+                    <Preview
+                      renderInner={false}
+                      src="/og-images/content/grammar-and-mechanics.png"
+                    />
+                  )}
                 />
                 <GridItem
                   title="Actionable language"
                   description="Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions."
                   url="/content/actionable-language"
-                  renderPreview={() => <Preview src="" />}
+                  renderPreview={() => (
+                    <Preview
+                      renderInner={false}
+                      src="/og-images/content/actionable-language.png"
+                    />
+                  )}
                 />
               </Grid>
             </Stack>
