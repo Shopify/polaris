@@ -1,4 +1,4 @@
-## Media queries allowed list plugin
+## Media query allowed list plugin
 
 The purpose of this plugin is to ensure we're following our established conventions for Polaris breakpoints, and only using breakpoints aliases generated from Polaris tokens.
 
@@ -11,7 +11,7 @@ The purpose of this plugin is to ensure we're following our established conventi
 
 ## How to use
 
-### Options:
+### Options
 
 ```ts
 interface PrimaryOptions {
@@ -33,12 +33,12 @@ interface PrimaryOptions {
 }
 ```
 
-### How to configure:
+### How to configure
 
 ```js
 const stylelintConfig = {
   rules: {
-    'stylelint-polaris/media-queries-allowed-list': {
+    'polaris/media-query-allowed-list': {
       allowedMediaTypes: ['print'],
       allowedMediaFeatureNames: ['forced-colors', 'reduced-motion'],
       allowedScssInterpolations: [
@@ -80,6 +80,6 @@ e.x. output
 
 ```
 src/components/TextContainer/TextContainer.scss
-  4:3  ✖  Invalid media query [(min-width: 0px)].              @shopify/media-queries-allowed-list
-  6:5  ✖  Invalid media query [print and (min-width: 0px)].    @shopify/media-queries-allowed-list
+  4:3  ✖  Invalid media query [(min-width: 0px)].              polaris/media-query-allowed-list
+  6:5  ✖  Invalid media query [print and (min-width: 0px)].    polaris/media-query-allowed-list
 ```
