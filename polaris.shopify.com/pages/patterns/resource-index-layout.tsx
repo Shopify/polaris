@@ -1,4 +1,4 @@
-import {PatternIndexLayoutPage} from '../../src/components/PatternIndexLayoutPage';
-
-const Page = () => <PatternIndexLayoutPage />;
-export default Page;
+import Page from '../../src/components/Page';
+export default function IndexLayoutPage() {
+  return <Page>COMING SOON</Page>;
+}

@@ -1,5 +1,15 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/fonts.scss';
+.Header {
+  padding-bottom: 2rem;
+}
 .Heading {
   align-items: center;
+}
+
+.TabGroup {
+  isolation: isolate;
 }
 
 .InfoLine {
@@ -12,11 +22,155 @@
     }
   }
 }
+.Panel {
+  position: relative;
+  padding: 32px;
+  z-index: 10;
+  background-color: rgba(250, 250, 250, 1);
+  padding-bottom: 64px;
+  margin-top: -16px;
+  border-radius: var(--border-radius-400);
+}
 
 .WhenToUseCaption {
   font-weight: var(--font-weight-500);
 }
 
 .UseCase {
-  font-weight: var(--font-weight-500);
+  font-weight: var(--font-weight-700);
+}
+.RelatedResources {
+  padding-top: 32px;
+}
+
+.ExamplesList {
+  --surface-pressed: rgba(250, 250, 250, 1);
+  --border-subdued: rgba(201, 204, 207, 1);
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0.5rem;
+
+  button {
+    z-index: 5;
+    padding: 0.45rem 0.65rem;
+    padding-bottom: 24px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    background: transparent;
+    border-radius: var(--border-radius-400);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-500);
+    line-height: 1.33;
+    color: var(--text-strong);
+
+    &[aria-selected='true'] {
+      background-color: var(--surface-pressed);
+    }
+    &:hover,
+    &:focus,
+    &:focus-visible {
+      background-color: rgba(241, 241, 241, 1);
+      box-shadow: none;
+    }
+  }
+}
+
+.MerchantGoal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  .ImageWrapper {
+    display: block;
+    position: relative;
+    flex: auto;
+    overflow: hidden;
+    border: 1px solid #c9cccf;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
+    aspect-ratio: 361.9/180.9;
+    border-radius: 10px;
+    width: 100%;
+    background: rgba(246, 246, 247, 1);
+    > img {
+      width: 100%;
+      object-fit: fill;
+    }
+  }
+  ol {
+    margin: 0px;
+    list-style: none;
+    counter-reset: item;
+    padding-left: 32px;
+    position: relative;
+    li {
+      counter-increment: item;
+      margin-bottom: 10px;
+    }
+    li:before {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: -2px;
+      content: counter(item);
+      font-weight: 700;
+      color: rgba(153, 35, 247, 1);
+      font-weight: var(--font-weight-500);
+      vertical-align: bottom;
+      text-align: center;
+      display: block;
+      border-radius: 100%;
+    }
+  }
+  @media screen and (max-width: $breakpointTablet) {
+    flex-direction: column;
+    .ImageWrapper {
+      min-width: 100%;
+    }
+  }
+}
+.UsageGuidelinesWrapper {
+  .UsageGuidelinesEl {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+
+    .ImageWrapper {
+      aspect-ratio: 485/315;
+      border-radius: 10px;
+      position: relative;
+      background-color: rgba(250, 250, 250, 1);
+      border: 1px solid #c9cccf;
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .UsageGuidelineTxt {
+      flex-basis: 45%;
+      p {
+        font-size: 0.875rem;
+        line-height: 1.125rem;
+      }
+    }
+  }
+}
+
+.Accordion {
+  padding: 1rem 2rem;
+  border: 1px solid black;
+}
+
+.Checkbox {
+  appearance: auto;
 }

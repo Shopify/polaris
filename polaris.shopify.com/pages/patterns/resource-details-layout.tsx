@@ -1,3 +1,4 @@
+import Page from '../../src/components/Page';
 export default function DetailsLayoutPage() {
-  return 'Hello from the details layout patterns page';
+  return <Page>COMING SOON</Page>;
 }

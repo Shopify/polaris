@@ -1,68 +1,217 @@
+import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
-
 import StatusBadge from '../StatusBadge';
 import {StatusName} from '../../types';
-import Page from '../Page';
 import PageMeta from '../PageMeta';
-import {TableContainer, Table, TableCaption, Tr, Td} from '../Table';
-import {Heading} from '../Heading';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
+import {Heading} from '../Heading';
+import Preview from '../PatternThumbnailPreview';
+import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
+import PatternsExample, {type PatternExample} from '../PatternsExample';
+import Page from '../Page';
 import styles from './PatternIndexLayoutPage.module.scss';
+import {Grid, GridItem} from '../Grid';
 
-const title = 'Date Picking';
-const description =
-  'Date picking lets merchants select a date or date range to help them analyze information to make decisions, or launch and publish.';
-const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/new?category=pattern-documentation&title=[${encodeURIComponent(
-  title,
-)}]`;
-const knownIssuesLink = `https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3APattern+${encodeURIComponent(
-  title,
-)}`;
+type Pattern = {
+  index: number;
+  description?: string;
+  title: string;
+  slug: string;
+  designDecisionListItems?: string[];
+  designDecisions?: {
+    listItems?: string[];
+    image?: boolean;
+  };
+  example: PatternExample;
+};
+const title = 'Resource index layout';
 
-export const PatternIndexLayoutPage = () => (
-  <>
-    <PageMeta title={title} description={description} />
+const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/7852`;
+const pattern: Pattern = {
+  index: 0,
+  title: 'Resource index layout',
+  slug: 'resource-index-layout',
+  example: {
+    code: ` <Page
+      divider
+      primaryAction={{ content: "View on your store", disabled: true }}
+      secondaryActions={[
+        {
+          content: "Duplicate",
+          accessibilityLabel: "Secondary action label",
+          onAction: () => alert("Duplicate action"),
+        },
+      ]}
+    >
+      <AlphaStack gap="16">
+        COMING SOON
+      </AlphaStack>
+    </Page>`,
+  },
+};
 
-    <Page showTOC={false}>
-      <Stack gap="4">
-        <Heading as="h1">
-          <Row wrap gap="2" className={styles.Heading}>
-            {title}{' '}
-            <StatusBadge status={{value: StatusName.Beta, message: ''}} />
-          </Row>
-        </Heading>
-        <Lede>{description}</Lede>
-        <p className={styles.InfoLine}>
-          Maintainer: Core Optimize •{' '}
-          <Link className={styles.InfoLineLink} href={newDiscussionLink}>
-            Discuss on GitHub
-          </Link>{' '}
-          •{' '}
-          <Link className={styles.InfoLineLink} href={knownIssuesLink}>
-            {' '}
-            Known issues
-          </Link>
-        </p>
-      </Stack>
-      <Stack gap="4">
-        <Heading as="h2">When to use</Heading>
-        <TableContainer>
-          <Table>
-            <TableCaption className={styles.WhenToUseCaption}>
-              When merchants need to:
-            </TableCaption>
-            <Tr>
-              <Td className={styles.UseCase}>Find and change app settings</Td>
-              <Td>This is a description of the use case.</Td>
-            </Tr>
-            <Tr>
-              <Td className={styles.UseCase}>Another merchant objective</Td>
-              <Td>This is a description of the use case.</Td>
-            </Tr>
-          </Table>
-        </TableContainer>
-      </Stack>
-    </Page>
-  </>
-);
+export default function PatternsResourceIndexLayout() {
+  const description =
+    'Lets merchants easily overview, manage, and take action on resources.';
+  return (
+    <>
+      <PageMeta title={title} description={description} />
+
+      <Page showTOC={false}>
+        <Stack gap="4" className={styles.Header}>
+          <Heading as="h1">
+            <Row wrap gap="2" className={styles.Heading}>
+              {title}{' '}
+              <StatusBadge status={{value: StatusName.Beta, message: ''}} />
+            </Row>
+          </Heading>
+          <Lede>{description}</Lede>
+          <p className={styles.InfoLine}>
+            <Link className={styles.InfoLineLink} href={newDiscussionLink}>
+              Discuss on GitHub
+            </Link>{' '}
+          </p>
+        </Stack>
+        <Stack gap="16">
+          <Stack gap="8">
+            <Stack as="section" gap="4" className={styles.MerchantGoal}>
+              <Heading as="h2">How it helps merchants</Heading>
+              <div className={styles.ImageWrapper}>
+                <Image
+                  alt=""
+                  fill
+                  src="/images/patterns/resource-index-cover-image.png"
+                />
+              </div>
+              <div>
+                <ol className={styles.MerchantGoalOL}>
+                  <li>
+                    In the left column, glanceable labels and descriptions are
+                    listed to make it easier for merchants to scan the page and
+                    quickly find what they are looking for.
+                  </li>
+                  <li>
+                    {`In the right column, settings are grouped in cards to make
+                    it easier for merchants to configure a setting after it's
+                    been found, or to configure multiple settings that might
+                    belong together.`}
+                  </li>
+                </ol>
+              </div>
+              <TableContainer>
+                <Table>
+                  <TableCaption className={styles.WhenToUseCaption}>
+                    Use when merchants need to:
+                  </TableCaption>
+                  <Tbody>
+                    <Tr>
+                      <Td className={styles.UseCase} shrink>
+                        Find and change app settings
+                      </Td>
+                      <Td>
+                        This pattern is used specifically for finding and
+                        updating individual app settings within the Shopify
+                        admin.
+                      </Td>
+                    </Tr>
+                  </Tbody>
+                </Table>
+              </TableContainer>
+            </Stack>
+            <Stack as="section" gap="4">
+              <Heading as="h2">Using this pattern</Heading>
+              <PatternsExample
+                example={pattern.example}
+                patternName={`${title} > ${pattern.title}`}
+                relatedComponents={[
+                  {label: 'Page', url: '/components/page'},
+                  {label: 'Layout', url: '/components/layout'},
+                  {label: 'Card', url: '/components/card'},
+                  {label: 'FormLayout', url: '/components/form-layout'},
+                ]}
+              />
+            </Stack>
+
+            <Stack as="section" gap="4">
+              <Heading as="h2">Useful to know</Heading>
+              <Stack as="ul" className={styles.UsageGuidelinesWrapper} gap="4">
+                <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
+                  <div className={styles.UsageGuidelineTxt}>
+                    <p>{"Don't include a description unless it's helpful"}</p>
+                  </div>
+                  <div className={styles.ImageWrapper}>
+                    <Image
+                      alt=""
+                      fill
+                      src="/images/patterns/app-settings-usage-1.png"
+                    />
+                  </div>
+                </Row>
+                <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
+                  <div className={styles.UsageGuidelineTxt}>
+                    <p>Place grouped settings within cards</p>
+                  </div>
+                  <div className={styles.ImageWrapper}>
+                    <Image
+                      alt=""
+                      fill
+                      src="/images/patterns/app-settings-usage-2.png"
+                    />
+                  </div>
+                </Row>
+                <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
+                  <div className={styles.UsageGuidelineTxt}>
+                    <p>Stack all setting groups vertically on the page</p>
+                  </div>
+                  <div className={styles.ImageWrapper}>
+                    <Image
+                      alt=""
+                      fill
+                      src="/images/patterns/app-settings-usage-3.png"
+                    />
+                  </div>
+                </Row>
+              </Stack>
+            </Stack>
+          </Stack>
+          <Stack as="section" gap="4" className={styles.RelatedResources}>
+            <Heading as="h2">Related resources</Heading>
+            <Grid gapX="4" gapY="6" itemMinWidth="24rem">
+              <GridItem
+                title="Information architecture"
+                description="Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work."
+                url="/foundations/information-architecture"
+                renderPreview={() => <Preview renderInner={false} />}
+              />
+              <GridItem
+                title="Space"
+                description="Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping the content become more useful and understandable."
+                url="/design/space"
+                renderPreview={() => <Preview renderInner={false} />}
+              />
+              <GridItem
+                title="ADG Layout"
+                description="Layout design is the process of arranging visual elements such as text, images, and shapes on a page. Apps have a variety of available layouts. These layouts adapt the app body content to every screen size and device type. Selecting the proper layout for the task at hand will benefit the merchant’s experience when using your app."
+                url="https://shopify.dev/apps/design-guidelines/layout"
+                renderPreview={() => (
+                  <Preview
+                    renderInner={false}
+                    src="/images/patterns/adg-layout-thumbnail.webp"
+                  />
+                )}
+              />
+              <GridItem
+                title="Actionable language"
+                description="Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions."
+                url="/content/actionable-language"
+                renderPreview={() => <Preview src="" />}
+              />
+            </Grid>
+          </Stack>
+        </Stack>
+      </Page>
+    </>
+  );
+}
