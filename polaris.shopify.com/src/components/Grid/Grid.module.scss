@@ -37,6 +37,10 @@
   overflow: hidden;
   margin-bottom: 1rem;
   border-radius: var(--border-radius-600);
+
+  img {
+    display: block;
+  }
 }
 
 .DeepLinks {
