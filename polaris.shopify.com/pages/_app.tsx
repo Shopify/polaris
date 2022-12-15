@@ -4,7 +4,6 @@ import Script from 'next/script';
 import {useEffect} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
-import '@shopify/polaris/build/esm/styles.css';
 
 import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
