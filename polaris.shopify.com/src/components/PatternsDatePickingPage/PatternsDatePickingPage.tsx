@@ -9,7 +9,7 @@ import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
-import {className} from '../../utils/various';
+import Preview from '../PatternThumbnailPreview';
 import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
@@ -203,28 +203,6 @@ const patterns: Record<string, Pattern> = {
       `,
     },
   },
-};
-
-const Preview = ({
-  src,
-  renderInner = true,
-}: {
-  src: string;
-  renderInner?: boolean;
-}) => {
-  return (
-    <div
-      className={className([styles.Preview, !renderInner && styles.NoInner])}
-    >
-      {renderInner ? (
-        <div className={className(styles.PreviewInner)}>
-          <img src={src} />
-        </div>
-      ) : (
-        <img src={src} />
-      )}
-    </div>
-  );
 };
 
 export default function PatternsDatePickingPage() {

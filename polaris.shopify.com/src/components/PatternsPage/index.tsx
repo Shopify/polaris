@@ -7,17 +7,10 @@ import {StatusName} from '../../types';
 import {FlagMajor} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 import styles from './PatternsPage.module.scss';
+import Preview from '../PatternThumbnailPreview';
 
 const description =
   'Preferred solutions to common merchant goals in the admin.';
-
-const Preview = () => {
-  return (
-    <div className={styles.Preview}>
-      <div className={styles.PreviewInner} />
-    </div>
-  );
-};
 
 export const PatternsPage = () => (
   <>
@@ -45,27 +38,47 @@ export const PatternsPage = () => (
           <GridItem
             title="App settings layout"
             description="Makes it easy for merchants to scan and find setting groups."
-            url="/#TODO"
-            renderPreview={() => <Preview />}
+            url="/patterns/app-settings-layout"
+            renderPreview={() => (
+              <Preview
+                renderInner={false}
+                src="/images/patterns/pattern-thumbnail-app-settings.png"
+              />
+            )}
             status={{value: StatusName.Beta, message: ''}}
           />
           <GridItem
             title="Resource index layout"
             description="Makes it easy for merchants to view and manage resources."
-            url="/#TODO"
-            renderPreview={() => <Preview />}
+            url="/patterns/resource-index-layout"
+            renderPreview={() => (
+              <Preview
+                renderInner={false}
+                src="/images/patterns/pattern-thumbnail-resource-index.png"
+              />
+            )}
           />
           <GridItem
             title="Resource detail layout"
             description="Makes it easy for merchants to create, view and edit resources."
-            url="/#TODO"
-            renderPreview={() => <Preview />}
+            url="/patterns/resource-details-layout"
+            renderPreview={() => (
+              <Preview
+                renderInner={false}
+                src="/images/patterns/pattern-thumbnail-resource-details.png"
+              />
+            )}
           />
           <GridItem
             title="Date picking"
             description="Makes it easy for merchants to select and input dates and date ranges."
-            url="/#TODO"
-            renderPreview={() => <Preview />}
+            url="/patterns/date-picking"
+            renderPreview={() => (
+              <Preview
+                renderInner={false}
+                src="/images/patterns/pattern-thumbnail-date-picking.png"
+              />
+            )}
             status={{value: StatusName.Beta, message: ''}}
           />
         </Grid>
