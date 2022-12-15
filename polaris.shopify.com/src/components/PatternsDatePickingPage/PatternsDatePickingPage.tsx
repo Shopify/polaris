@@ -30,12 +30,7 @@ type Pattern = {
 };
 const title = 'Date picking';
 
-const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/new?category=pattern-documentation&title=[${encodeURIComponent(
-  title,
-)}]`;
-const knownIssuesLink = `https://github.com/Shopify/polaris/issues?q=is%3Aopen+is%3Aissue+label%3APattern+${encodeURIComponent(
-  title,
-)}`;
+const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/7852`;
 const patternsIndex = ['single-date', 'date-range', 'date-list'];
 const patterns: Record<string, Pattern> = {
   'single-date': {
@@ -253,14 +248,8 @@ export default function PatternsDatePickingPage() {
           </Heading>
           <Lede>{description}</Lede>
           <p className={styles.InfoLine}>
-            Maintainer: Core Optimize •{' '}
             <Link className={styles.InfoLineLink} href={newDiscussionLink}>
               Discuss on GitHub
-            </Link>{' '}
-            •{' '}
-            <Link className={styles.InfoLineLink} href={knownIssuesLink}>
-              {' '}
-              Known issues
             </Link>
           </p>
         </Stack>

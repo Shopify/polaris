@@ -2,11 +2,11 @@ import Image from 'next/image';
 import {className} from '../../utils/various';
 import styles from './PatternThumbnailPreview.module.scss';
 const Preview = ({
-  src,
+  src = '',
   alt = '',
   renderInner = true,
 }: {
-  src: string;
+  src?: string;
   alt?: string;
   renderInner?: boolean;
 }) => {
