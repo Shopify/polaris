@@ -78,7 +78,6 @@ const stylelintPolarisCoverageOptions = {
         /\$skeleton-shimmer-duration/,
         /\$easing-data/,
         // Legacy custom properties
-        /--p-range-slider-thumb-scale/,
         /--p-duration-1-0-0/,
         /--p-duration-1-5-0/,
       ],
@@ -187,12 +186,9 @@ const stylelintPolarisCoverageOptions = {
         'thumbnail-size',
         'icon-size',
         'top-bar-height',
-        'z-index',
       ].map(matchNameRegExp),
       'polaris/at-rule-disallowed-list': {
         include: [
-          'hidden-when-printing',
-          'print-hidden',
           'layout-flex-fix',
           'safe-area-for',
           'skeleton-page-header-layout',
@@ -210,8 +206,8 @@ const stylelintPolarisCoverageOptions = {
         // Legacy custom properties
         /--p-range-slider-thumb-size-base/,
         /--p-range-slider-thumb-size-active/,
+        /--p-range-slider-thumb-scale/,
         /--p-override-visible/,
-        /--p-override-loading-z-index/,
         /--p-icon-size/,
         /--p-choice-size/,
       ],
@@ -312,8 +308,6 @@ const stylelintPolarisCoverageOptions = {
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$shadows-data/,
-        /\$fixed-element-stacking-order/,
-        /\$global-elements/,
         // Legacy custom properties
         /--p-button-drop-shadow/,
         /--p-button-inner-shadow/,
@@ -419,7 +413,8 @@ const stylelintPolarisCoverageOptions = {
           'when-typography-condensed',
           'when-typography-not-condensed',
           'when-not-printing',
-          'when-printing',
+          'hidden-when-printing',
+          'print-hidden',
         ].map(matchNameRegExp),
       },
     },
