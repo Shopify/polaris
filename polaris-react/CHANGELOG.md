@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.16.1
+
+### Patch Changes
+
+- [#7904](https://github.com/Shopify/polaris/pull/7904) [`bdc62ebbb`](https://github.com/Shopify/polaris/commit/bdc62ebbbd3cc0e3beb9b8fed7dfb0a40261884b) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug where responsive props would inherit values on Box
+
+* [#7911](https://github.com/Shopify/polaris/pull/7911) [`b26408e2f`](https://github.com/Shopify/polaris/commit/b26408e2fd4ff8b0899edb683c8dd4780538a7c4) Thanks [@bencmilton](https://github.com/bencmilton)! - Fix validateDOMNesting warning in `VideoThumbnail`
+
 ## 10.16.0
 
 ### Minor Changes
