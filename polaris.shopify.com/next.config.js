@@ -1,12 +1,18 @@
+const path = require('path');
+
 /* eslint-disable require-await */
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // See: https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files
+  output: 'standalone',
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
   experimental: {
     scrollRestoration: true,
+    // this includes files from the monorepo base one directory up
+    outputFileTracingRoot: path.join(__dirname, '../'),
   },
   async rewrites() {
     return [

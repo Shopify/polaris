@@ -3,8 +3,8 @@
   "version": "0.28.5",
   "private": true,
   "scripts": {
-    "build": "yarn gen-assets && playroom build && next build",
-    "start": "next start",
+    "build": "yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
     "dev:playroom": "playroom start",
@@ -32,6 +32,7 @@
     "lodash.throttle": "^4.1.1",
     "next": "^13.0.6",
     "prismjs": "^1.27.0",
+    "sharp": "^0.31.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.2",
