@@ -465,65 +465,88 @@ Disallows use of legacy mixin map data.
 
 ### Depth
 
-#### depth/declaration-property-value-disallowed-list
-
-```diff
-
-```
-
 #### depth/declaration-property-unit-disallowed-list
 
-```diff
-- box-shadow: inset 0 0 0 1px var(--p-border-subdued);
-```
+Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
 ```diff
-+ box-shadow: inset 0 0 0 var(--p-space-025) var(--p-border-subdued);
+// Don't
+- box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+// Do
++ box-shadow: var(--p-shadow-card);
 ```
 
 #### depth/function-disallowed-list
 
-```diff
+Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
+```diff
+// Don't
+- filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+// Do
++ box-shadow: var(--p-shadow-base);
 ```
 
-#### depth/at-rule-disallowed-list
+#### depth/global-disallowed-list
+
+Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
 ```diff
-
+// Don't
+- box-shadow: var(--p-card-shadow);
+// Do
++ box-shadow: var(--p-shadow-card);
 ```
 
 #### depth/property-disallowed-list
 
-```diff
+Instead of using properties like `text-shadow`, make sure the text has proper contrast with the background so that it is readable without a shadow.
 
+```diff
+// Don't
+- text-shadow: 2px 2px #ff0000;
 ```
 
 ### Media queries
 
 #### media-queries/function-disallowed-list
 
-```diff
+Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
 
+```diff
+// Don't
+- @include breakpoint-after(layout-width(page-with-nav)) {}
+// Do
++ @media (min-width: var(--p-breakpoints-md)) {}
 ```
 
 #### media-queries/media-queries-allowed-list
 
-```diff
+Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
 
+```diff
+// Don't
+- @include @media #{$my-var} {}
+// Do
++ @include @media #{$p-breakpoints-sm-up} {}
 ```
 
 #### media-queries/at-rule-disallowed-list
 
-```diff
+Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
 
+```diff
+// Don't
+- @include breakpoint-before(layout-width(page-with-nav)) {}
+// Do
++ @media (max-width: var(--p-breakpoints-md)) {}
 ```
 
 ### Z-Index
 
 #### z-index/declaration-property-value-allowed-list
 
-> Even though there might not be a z-index equivalent in [Polaris tokens](https://polaris.shopify.com/tokens/z-index), try and use the Polaris depth scale before creating your own custom one.
+Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
 ```diff
 // Don't
@@ -534,7 +557,7 @@ Disallows use of legacy mixin map data.
 
 #### z-index/function-disallowed-list
 
-> Even though there might not be a z-index equivalent in [Polaris tokens](https://polaris.shopify.com/tokens/z-index), try and use the Polaris depth scale before creating your own custom one.
+Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
 ```diff
 // Don't
@@ -545,7 +568,7 @@ Disallows use of legacy mixin map data.
 
 #### z-index/global-disallowed-list
 
-> Even though there might not be a z-index equivalent in [Polaris tokens](https://polaris.shopify.com/tokens/z-index), try and use the Polaris depth scale before creating your own custom one.
+Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
 ```diff
 // Don't
@@ -558,16 +581,18 @@ Disallows use of legacy mixin map data.
 
 #### layout/declaration-property-value-disallowed-list
 
-> There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
+There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
 
 ```diff
 // Don't
 - width: 100%;
 // Do
-+ <AlphaStack fullWidth />
++ <Stack />
 ```
 
 #### layout/function-disallowed-list
+
+Use hard coded pixel or rem values for `width` and `height` instead of legacy mixins/variables or spacing tokens.
 
 ```diff
 // Don't
@@ -589,18 +614,18 @@ Disallows use of legacy mixin map data.
 
 #### layout/property-disallowed-list
 
-> There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
+There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
 
 ```diff
 // Don't
 - display: grid;
 // Do
-+ <Grid />
++ <Columns />
 ```
 
 #### layout/global-disallowed-list
 
-> If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
+If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
 
 ```diff
 // Don't
@@ -613,13 +638,13 @@ Disallows use of legacy mixin map data.
 
 #### legacy/at-rule-disallowed-list
 
-> If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
+If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
 
 ```diff
 // Don't
 - @include unstyled-button;
 // Do
-+ <Button plain />
++ <UnstyledButton />
 ```
 
 #### legacy/function-disallowed-list
@@ -635,5 +660,5 @@ Disallows use of legacy mixin map data.
 // Don't
 - left: -1 * $timeline-border-width;
 // Do
-+ left: -1 * var(--p-space-1);
++ left: calc(-1 * var(--p-space-1));
 ```
