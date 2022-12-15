@@ -45,26 +45,26 @@ export const PatternsPage = () => (
           <GridItem
             title="App settings layout"
             description="Makes it easy for merchants to scan and find setting groups."
-            url="/TODO"
+            url="/#TODO"
             renderPreview={() => <Preview />}
             status={{value: StatusName.Beta, message: ''}}
           />
           <GridItem
             title="Resource index layout"
             description="Makes it easy for merchants to view and manage resources."
-            url="/TODO"
+            url="/#TODO"
             renderPreview={() => <Preview />}
           />
           <GridItem
             title="Resource detail layout"
             description="Makes it easy for merchants to create, view and edit resources."
-            url="/TODO"
+            url="/#TODO"
             renderPreview={() => <Preview />}
           />
           <GridItem
             title="Date picking"
             description="Makes it easy for merchants to select and input dates and date ranges."
-            url="/TODO"
+            url="/#TODO"
             renderPreview={() => <Preview />}
             status={{value: StatusName.Beta, message: ''}}
           />

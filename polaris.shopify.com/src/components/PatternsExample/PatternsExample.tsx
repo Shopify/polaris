@@ -1,7 +1,6 @@
 import {Fragment, useEffect, useState} from 'react';
 import {createUrl} from 'playroom';
 import styles from './PatternsExample.module.scss';
-import Markdown from '../Markdown';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
