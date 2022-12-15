@@ -4,6 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import styles from '../../Tabs.scss';
 import {UnstyledLink} from '../../../UnstyledLink';
+import {Box} from '../../../Box';
 
 export interface ItemProps {
   id: string;
@@ -71,7 +72,7 @@ export class Item extends PureComponent<ItemProps, never> {
       </button>
     );
 
-    return <li>{markup}</li>;
+    return <Box as="li">{markup}</Box>;
   }
 
   private setFocusedNode = (node: HTMLElement | React.ReactElement | null) => {
