@@ -162,8 +162,10 @@ export default function PatternsDatePickingPage() {
                 example={pattern.example}
                 patternName={`${title} > ${pattern.title}`}
                 relatedComponents={[
-                  {label: 'Button', url: '/components/button'},
-                  {label: 'TextFields', url: '/components/text-field'},
+                  {label: 'Page', url: '/components/page'},
+                  {label: 'Layout', url: '/components/layout'},
+                  {label: 'Card', url: '/components/card'},
+                  {label: 'FormLayout', url: '/components/form-layout'},
                 ]}
               />
             </Stack>
