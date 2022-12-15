@@ -15,6 +15,7 @@ import {Filters, FiltersProps} from '../Filters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
 import * as focusUtils from '../../../utilities/focus';
 import styles from '../Filters.scss';
+import {Focus} from '../../Focus';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
 const MockChild = () => <div />;
@@ -722,6 +723,52 @@ describe('<Filters />', () => {
 
       expect(resourceFilters).not.toContainReactComponent('div', {
         id: 'FiltersHelpText',
+      });
+    });
+  });
+
+  describe('readyForFocus', () => {
+    it('unfocuses the filter when a filter is toggled', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
+
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
+
+      expect(
+        resourceFilters.find(Collapsible, {id: 'filterOneCollapsible'})!,
+      ).toContainReactComponent(Focus, {
+        disabled: true,
+      });
+    });
+
+    it('focuses the filter when Collapsible is opened', () => {
+      const resourceFilters = mountWithApp(<Filters {...mockProps} />);
+
+      resourceFilters
+        .find(Button, {children: 'More filters'})!
+        .trigger('onClick');
+
+      resourceFilters
+        .find('button', {id: 'filterOneToggleButton'})!
+        .trigger('onClick');
+
+      expect(
+        resourceFilters.find(Collapsible, {id: 'filterOneCollapsible'})!,
+      ).toContainReactComponent(Focus, {
+        disabled: true,
+      });
+
+      resourceFilters.find(Collapsible)!.trigger('onAnimationEnd');
+
+      expect(
+        resourceFilters.find(Collapsible, {id: 'filterOneCollapsible'})!,
+      ).toContainReactComponent(Focus, {
+        disabled: false,
       });
     });
   });

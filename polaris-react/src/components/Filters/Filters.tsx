@@ -208,7 +208,11 @@ class FiltersInner extends Component<CombinedProps, State> {
             </div>
             {appliedFilterBadgeMarkup}
           </button>
-          <Collapsible id={collapsibleID} open={filterIsOpen}>
+          <Collapsible
+            id={collapsibleID}
+            open={filterIsOpen}
+            onAnimationEnd={this.setReadyForFocus(true)}
+          >
             <div className={styles.FilterNodeContainer}>
               <Focus
                 disabled={!filterIsOpen || !readyForFocus || !open}
@@ -502,19 +506,11 @@ class FiltersInner extends Component<CombinedProps, State> {
     this.setState({readyForFocus: newState});
   };
 
-  private openFilter(key: string) {
-    this.setState({[`${key}${Suffix.Filter}`]: true});
-  }
-
-  private closeFilter(key: string) {
-    this.setState({[`${key}${Suffix.Filter}`]: false});
-  }
-
   private toggleFilter(key: string) {
     if (this.state[`${key}${Suffix.Filter}`] === true) {
-      this.closeFilter(key);
+      this.setState({readyForFocus: false, [`${key}${Suffix.Filter}`]: false});
     } else {
-      this.openFilter(key);
+      this.setState({readyForFocus: false, [`${key}${Suffix.Filter}`]: true});
     }
   }
 
