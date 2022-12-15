@@ -2,8 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-Add support for updating the Filters component's `readyForFocus` state
-
-- Introduce the `onAnimationEnd` prop to Collapsible
-- Set `readyForFocus` to true when expanding/collapsing a Collapsible in Filters
-- Set `readyForFocus` to false when the Collapsible animation ends in Filters
+- Added the `onAnimationEnd` prop to `Collapsible`
+- Fixed a bug in `Filters` where focus was moved to collapsed filter contents before the `Collapsible` animation ended
