@@ -16,6 +16,9 @@ examples:
   - fileName: list-numbered.tsx
     title: Numbered
     description: Use for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
+  - fileName: list-extra-tight.tsx
+    title: Extra Tight
+    description: Use when there is limited space for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
 ---
 
 ## Best practices
