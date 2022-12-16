@@ -10,6 +10,8 @@ import {TrapFocus} from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 
+type CSSTransitionProps = React.ComponentProps<typeof CSSTransition>;
+
 export interface DialogProps {
   labelledBy?: string;
   instant?: boolean;
@@ -117,7 +119,7 @@ const fadeUpClasses = {
   exitActive: classNames(styles.animateFadeUp, styles.exited),
 };
 
-function FadeUp({children, ...props}: any) {
+function FadeUp({children, ...props}: CSSTransitionProps) {
   return (
     <CSSTransition {...props} classNames={fadeUpClasses}>
       {children}
