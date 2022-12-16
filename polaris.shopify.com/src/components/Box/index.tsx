@@ -7,6 +7,8 @@ export interface BoxProps {
   className?: ClassName;
 }
 
+export type OwnProps<T> = Polymorphic.OwnProps<T>;
+
 type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
 
 /**
@@ -55,7 +57,7 @@ Box.displayName = 'Box';
  */
 export type WithAsProp<
   Props,
-  Forwardee extends typeof Box = typeof Box,
+  Forwardee = typeof Box,
   // Useful for customizing the intrinsic element, eg; 'div', 'button', etc.
   // Will infer the correct intrinsic element from a component which uses
   // WithAsProp.
@@ -69,5 +71,7 @@ export type WithAsProp<
     As extends keyof JSX.IntrinsicElements
     ? As
     : never,
-  Polymorphic.OwnProps<Forwardee> & Props
+  Forwardee extends Polymorphic.ForwardRefComponent<any, any>
+    ? Polymorphic.OwnProps<Forwardee> & Props
+    : Props
 >;
