@@ -6,13 +6,11 @@ const coverageRuleName = 'polaris/coverage';
 
 /**
  * @typedef {import('stylelint').ConfigRules} StylelintConfigRules
- * @property {string} message - Message appended to the warning in place of the default category message
  */
 
 /**
  * @typedef {object} CategorySettings
- * @property {import('stylelint').RuleMessage} [message] - Message appended to the warning if no custom message is set on a rule's secondary options
- * @property {(stylelintRuleName: string) => import('stylelint').RuleMeta} [meta] - Category documentation URL hyperlinked to the reported rule in the VS Code diagnostic
+ * @property {string} [message] - Message appended to the warning in place of the default category message
  */
 
 /**
