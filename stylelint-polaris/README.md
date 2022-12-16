@@ -484,40 +484,44 @@ Disallows use of legacy custom properties and Sass mixin data. Use the Polaris `
 
 ### Spacing
 
-#### spacing/declaration-property-value-disallowed-list
+#### spacing/function-disallowed-list
+
+Disallows use of legacy Sass spacing functions. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
 
 ```diff
+/* Don't */
+- margin: rem(12px);
+- padding: spacing(extra-tight);
 
+/* Do */
++ margin: var(--p-space-3);
++ padding:  var(--p-space-1);
 ```
 
 #### spacing/declaration-property-unit-disallowed-list
 
-```diff
-- gap: 2px;
-- margin: 12px  0;
-```
+Disallows use of hard-coded spacing values. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
 
 ```diff
+/* Don't */
+- gap: 2px;
+- margin: 12px  0;
+
+/* Do */
 + gap: var(--p-space-05);
 + margin: var(--p-space-3) 0;
 ```
 
-#### spacing/function-disallowed-list
+#### spacing/global-disallowed-list
+
+Disallows use of legacy custom properties and Sass mixin data. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
 
 ```diff
+/* Don't */
+- margin: var(--p-choice-margin);
 
-```
-
-#### spacing/at-rule-disallowed-list
-
-```diff
-
-```
-
-#### spacing/property-disallowed-list
-
-```diff
-
+/* Do */
++ margin: var(--p-space-025);
 ```
 
 ### Depth
