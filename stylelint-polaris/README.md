@@ -270,7 +270,7 @@ Disallows hard coded opacity values, with the exception of 0 and 1. Use Polaris 
 
 #### colors/function-disallowed-list
 
-Disallows the use of CSS color functions and legacy Sass functions. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
+Disallows the use of CSS color functions and legacy Sass color functions. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -284,7 +284,7 @@ Disallows the use of CSS color functions and legacy Sass functions. Use Polaris 
 
 #### colors/at-rule-disallowed-list
 
-Disallows use of legacy Sass mixins. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
+Disallows use of legacy Sass color mixins. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
@@ -296,21 +296,15 @@ Disallows use of legacy Sass mixins. Use Polaris [color tokens](https://polaris.
 
 #### colors/global-disallowed-list
 
-Disallows use of legacy custom properties. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
-
-```diff
-/* Don't */
-- border: var(--p-override-transparent);
-
-/* Do */
-+ border: transparent;
-```
-
-Disallows use of legacy mixin map data. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
+Disallows use of legacy color custom properties and Sass mixin data. Use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead.
 
 ```diff
 /* Don't */
 - @type map $filter-palette-data: $polaris-color-filters;
+- border: var(--p-override-transparent);
+
+/* Do */
++ border: transparent;
 ```
 
 ### Motion
@@ -329,7 +323,7 @@ Disallows use of legacy Sass motion functions. Use Polaris [motion tokens](https
 
 #### motion/declaration-property-unit-disallowed-list
 
-Disallows use of hard-coded millisecond and second units. Use motion tokens instead. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
+Disallows use of hard-coded millisecond (`ms`) and second (`s`) values on `transition` and `animation` properties. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
 
 ```diff
 /* Don't */
@@ -341,7 +335,7 @@ Disallows use of hard-coded millisecond and second units. Use motion tokens inst
 
 #### motion/at-rule-disallowed-list
 
-Disallows use of legacy Sass motion mixins. Use motion tokens instead. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
+Disallows use of CSS @keyframes. Use Polaris motion [components](https://polaris.shopify.com/components), such as `Collapsible`, or Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
 
 ```diff
 /* Don't */
@@ -362,7 +356,7 @@ Disallows use of legacy Sass motion mixins. Use motion tokens instead. Use Polar
 
 #### motion/global-disallowed-list
 
-Disallows use of legacy Polaris tokens. Use the current motion tokens instead. Use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
+Disallows use of legacy Polaris motion tokens. Use the current Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead.
 
 ```diff
 /* Don't */
@@ -376,7 +370,7 @@ Disallows use of legacy Polaris tokens. Use the current motion tokens instead. U
 
 #### typography/declaration-property-value-disallowed-list
 
-Disallows hard-coded `font-weight` values. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font-weight tokens](https://polaris.shopify.com/tokens/font) instead.
+Disallows hard-coded alphanumeric `font-weight` values. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font-weight tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
 /* Don't */
@@ -389,7 +383,7 @@ Disallows hard-coded `font-weight` values. Use the Polaris `Text` [component](ht
 
 #### typography/declaration-property-unit-disallowed-list
 
-Disallows hard-coded `font-size` and `line-height` property values. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
+Disallows hard-coded `px`, `em`, and `rem` values for `font-size` and `line-height` properties. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
 /* Don't */
@@ -403,7 +397,7 @@ Disallows hard-coded `font-size` and `line-height` property values. Use the Pola
 
 #### typography/function-disallowed-list
 
-Disallows use of legacy Sass functions. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
+Disallows use of legacy Sass typography functions. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
 /* Don't */
@@ -419,7 +413,7 @@ Disallows use of legacy Sass functions. Use the Polaris `Text` [component](https
 
 #### typography/at-rule-disallowed-list
 
-Disallows use of legacy Sass mixins. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
+Disallows use of legacy Sass typography mixins. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
 /* Don't */
@@ -434,7 +428,7 @@ Disallows use of legacy Sass mixins. Use the Polaris `Text` [component](https://
 
 #### typography/global-disallowed-list
 
-Disallows use of legacy custom properties and Sass mixin data. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
+Disallows use of legacy typography custom properties and Sass mixin data. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
 /* Don't */
@@ -500,7 +494,7 @@ Disallows use of legacy Sass spacing functions. Use Polaris layout [components](
 
 #### spacing/declaration-property-unit-disallowed-list
 
-Disallows use of hard-coded spacing values. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
+Disallows use of hard-coded `px`, `em`, and `rem` values on `gap`, `margin`, and `padding` properties. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
 
 ```diff
 /* Don't */
@@ -514,7 +508,7 @@ Disallows use of hard-coded spacing values. Use Polaris layout [components](http
 
 #### spacing/global-disallowed-list
 
-Disallows use of legacy custom properties and Sass mixin data. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
+Disallows use of legacy spacing custom properties and Sass mixin data. Use Polaris layout [components](https://polaris.shopify.com/components), such as `Stack`, or Polaris [spacing tokens](https://polaris.shopify.com/tokens/spacing) instead.
 
 ```diff
 /* Don't */
