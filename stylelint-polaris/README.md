@@ -376,38 +376,72 @@ Disallows use of legacy Polaris tokens. Use the current motion tokens instead. U
 
 #### typography/declaration-property-value-disallowed-list
 
-```diff
+Disallows hard-coded `font-weight` values. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font-weight tokens](https://polaris.shopify.com/tokens/font) instead.
 
+```diff
+/* Don't */
+- font-weight: bold;
+- font-weight: 700;
+
+/* Do */
++ font-weight: var(--p-font-weight-bold);
 ```
 
 #### typography/declaration-property-unit-disallowed-list
 
-```diff
-- font-size: 12px;
-- line-height: 1.5rem
-```
+Disallows hard-coded `font-size` and `line-height` property values. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
+/* Don't */
+- font-size: 12px;
+- line-height: 1.5rem
+
+/* Do */
 + font-size: var(--p-font-size-75);
 + line-height: var(--p-font-line-height-3);
 ```
 
 #### typography/function-disallowed-list
 
-```diff
+Disallows use of legacy Sass functions. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
+```diff
+/* Don't */
+- font-family: font-family(monospace)
+- font-size: font-size(caption);
+- line-height: line-height(base);
+
+/* Do */
++ font-family: var(--p-font-family-mono);
++ font-size: var(--p-font-size-75);
++ line-height: var(--p-font-line-height-3);
 ```
 
 #### typography/at-rule-disallowed-list
 
-```diff
+Disallows use of legacy Sass mixins. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
+```diff
+/* Don't */
+- @include text-style-body;
+- @include truncate;
+
+/* Do */
++ <Text truncate variant="bodySm" as="p">
++   {children}
++ </Text>
 ```
 
-#### typography/property-disallowed-list
+#### typography/global-disallowed-list
+
+Disallows use of legacy custom properties and Sass mixin data. Use the Polaris `Text` [component](https://polaris.shopify.com/components/text) or Polaris [font tokens](https://polaris.shopify.com/tokens/font) instead.
 
 ```diff
+/* Don't */
+- font: var(--p-button-font-weight);
 
+/* Do */
++ font: var(--p-font-weight-medium);
 ```
 
 ### Shape

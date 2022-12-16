@@ -101,12 +101,14 @@ const stylelintPolarisCoverageOptions = {
         },
       ],
       'function-disallowed-list': [
+        // Legacy Sass functions
         /([\w-]+\.)?font-family/,
         /([\w-]+\.)?font-size/,
         /([\w-]+\.)?line-height/,
       ],
       'polaris/at-rule-disallowed-list': {
         include: [
+          // Legacy Sass mixins
           /([\w-]+\.)?truncate($|\()/,
           /([\w-]+\.)?text-breakword($|\()/,
           /([\w-]+\.)?text-emphasis-normal($|\()/,
@@ -126,7 +128,7 @@ const stylelintPolarisCoverageOptions = {
         ],
       },
       'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
+        // Legacy Sass mixin map-get data
         /\$typography-condensed/,
         /\$typography-condensed/,
         /\$base-font-size/,
