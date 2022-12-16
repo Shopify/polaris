@@ -83,7 +83,7 @@ export class PositionedOverlay extends PureComponent<
   };
 
   private overlay: HTMLElement | null = null;
-  private scrollableContainer: HTMLElement | Document | null = null;
+  private scrollableContainers: (HTMLElement | Document)[] = [];
   private observer: MutationObserver;
 
   constructor(props: PositionedOverlayProps) {
@@ -93,23 +93,20 @@ export class PositionedOverlay extends PureComponent<
   }
 
   componentDidMount() {
-    this.scrollableContainer = Scrollable.forNode(this.props.activator);
-    if (this.scrollableContainer && !this.props.fixed) {
-      this.scrollableContainer.addEventListener(
-        'scroll',
-        this.handleMeasurement,
-      );
+    this.setScrollableContainers();
+
+    if (this.scrollableContainers.length && !this.props.fixed) {
+      this.registerScrollHandlers();
     }
+
     this.handleMeasurement();
   }
 
   componentWillUnmount() {
     this.observer.disconnect();
-    if (this.scrollableContainer && !this.props.fixed) {
-      this.scrollableContainer.removeEventListener(
-        'scroll',
-        this.handleMeasurement,
-      );
+
+    if (this.scrollableContainers.length && !this.props.fixed) {
+      this.unregisterScrollHandlers();
     }
   }
 
@@ -160,6 +157,10 @@ export class PositionedOverlay extends PureComponent<
     );
   }
 
+  get firstScrollableContainer(): HTMLElement | Document | null {
+    return this.scrollableContainers[0] ?? null;
+  }
+
   forceUpdatePosition() {
     // Wait a single animation frame before re-measuring.
     // Consumer's may also need to setup their own timers for
@@ -186,6 +187,37 @@ export class PositionedOverlay extends PureComponent<
     this.overlay = node;
   };
 
+  private setScrollableContainers = () => {
+    const containers: (HTMLElement | Document)[] = [];
+    let scrollableContainer = Scrollable.forNode(this.props.activator);
+
+    if (scrollableContainer) {
+      containers.push(scrollableContainer);
+
+      while (scrollableContainer?.parentElement) {
+        scrollableContainer = Scrollable.forNode(
+          scrollableContainer.parentElement,
+        );
+
+        containers.push(scrollableContainer);
+      }
+    }
+
+    this.scrollableContainers = containers;
+  };
+
+  private registerScrollHandlers = () => {
+    this.scrollableContainers.forEach((node) => {
+      node.addEventListener('scroll', this.handleMeasurement);
+    });
+  };
+
+  private unregisterScrollHandlers = () => {
+    this.scrollableContainers.forEach((node) => {
+      node.removeEventListener('scroll', this.handleMeasurement);
+    });
+  };
+
   private handleMeasurement = () => {
     const {lockPosition, top} = this.state;
 
@@ -201,7 +233,7 @@ export class PositionedOverlay extends PureComponent<
         measuring: true,
       }),
       () => {
-        if (this.overlay == null || this.scrollableContainer == null) {
+        if (this.overlay == null || this.firstScrollableContainer == null) {
           return;
         }
 
@@ -222,9 +254,9 @@ export class PositionedOverlay extends PureComponent<
         const activatorRect = getRectForNode(preferredActivator);
 
         const currentOverlayRect = getRectForNode(this.overlay);
-        const scrollableElement = isDocument(this.scrollableContainer)
+        const scrollableElement = isDocument(this.firstScrollableContainer)
           ? document.body
-          : this.scrollableContainer;
+          : this.firstScrollableContainer;
         const scrollableContainerRect = getRectForNode(scrollableElement);
 
         const overlayRect = fullWidth
