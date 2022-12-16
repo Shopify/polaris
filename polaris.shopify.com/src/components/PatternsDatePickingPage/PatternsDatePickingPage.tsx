@@ -48,7 +48,7 @@ type MultiVariantPattern = {
   type: 'multi-variant-pattern';
   title: string;
   githubDiscussionsLink: string;
-  variants: Record<string, PatternVariant>;
+  variants: PatternVariant[];
   relatedResources: {
     href: string;
     description: string;
@@ -110,8 +110,8 @@ const patterns: MultiVariantPattern = {
       },
     },
   ],
-  variants: {
-    'single-date': {
+  variants: [
+    {
       index: 0,
       title: 'Single date',
       slug: 'single-date',
@@ -218,7 +218,7 @@ const patterns: MultiVariantPattern = {
           `,
       },
     },
-    'date-range': {
+    {
       index: 1,
       title: 'Date range',
       slug: 'date-range',
@@ -285,7 +285,7 @@ const patterns: MultiVariantPattern = {
       </Page>`,
       },
     },
-    'date-list': {
+    {
       index: 2,
       title: 'Date list',
       slug: 'date-list',
@@ -360,7 +360,7 @@ const patterns: MultiVariantPattern = {
         `,
       },
     },
-  },
+  ],
 };
 
 export default function PatternsDatePickingPage() {
@@ -372,7 +372,7 @@ export default function PatternsDatePickingPage() {
       {
         query: {
           ...query,
-          tab: patternsIndex[index],
+          tab: patterns.variants[index].slug,
         },
       },
       undefined,
@@ -386,7 +386,9 @@ export default function PatternsDatePickingPage() {
     // So we exclude this case in our check.
     if (query.tab && typeof query.tab === 'string' && isReady) {
       console.log(query.tab);
-      const index = patterns.variants[query.tab as string]?.index;
+      const index = patterns.variants.findIndex(
+        (variant) => variant.slug === query.tab,
+      );
       setExampleIndex(index);
     }
   }, [query.tab, isReady]);
@@ -424,86 +426,78 @@ export default function PatternsDatePickingPage() {
           <div className={styles.TabGroup}>
             <Tab.List>
               <div className={styles.ExamplesList} id="examples">
-                <Tab>
-                  <span>{patterns.variants['single-date'].title}</span>
-                </Tab>
-                <Tab>
-                  <span>{patterns.variants['date-range'].title}</span>
-                </Tab>
-                <Tab>
-                  <span>{patterns.variants['date-list'].title}</span>
-                </Tab>
+                {patterns.variants.map((variant) => (
+                  <Tab key={`${variant.slug}-tab`}>
+                    <span>{variant.title}</span>
+                  </Tab>
+                ))}
               </div>
             </Tab.List>
 
             <Tab.Panels>
-              <Tab.Panel className={styles.Panel}>
-                <Stack gap="8">
-                  {description ? (
-                    <p>{patterns.variants['single-date'].description}</p>
-                  ) : null}
-                  <Stack as="section" gap="4" className={styles.MerchantGoal}>
-                    <Heading as="h2">How it helps merchants</Heading>
-                    <div className={styles.ImageWrapper}>
-                      <Image
-                        fill
-                        alt={
-                          patterns.variants['single-date'].howItHelps.image.alt
-                        }
-                        src={
-                          patterns.variants['single-date'].howItHelps.image.src
-                        }
-                      />
-                    </div>
-                    <div>
-                      <Stack as="ol" gap="2">
-                        {patterns.variants[
-                          'single-date'
-                        ].howItHelps.listItems.map((item, i) => {
-                          return <li key={i}>{item}</li>;
-                        })}
-                      </Stack>
-                    </div>
-                    <TableContainer>
-                      <Table>
-                        <TableCaption className={styles.WhenToUseCaption}>
-                          {patterns.variants['single-date'].usageTable.caption}
-                        </TableCaption>
-                        <Tbody>
-                          {patterns.variants['single-date'].usageTable.rows.map(
-                            (row, i) => (
+              {patterns.variants.map((variant) => (
+                <Tab.Panel
+                  key={`${variant.slug}-panel`}
+                  className={styles.Panel}
+                >
+                  <Stack gap="8">
+                    {description ? <p>{variant.description}</p> : null}
+                    <Stack as="section" gap="4" className={styles.MerchantGoal}>
+                      <Heading as="h2">How it helps merchants</Heading>
+                      <div className={styles.ImageWrapper}>
+                        <Image
+                          fill
+                          alt={variant.howItHelps.image.alt}
+                          src={variant.howItHelps.image.src}
+                        />
+                      </div>
+                      <div>
+                        <Stack as="ol" gap="2">
+                          {variant.howItHelps.listItems.map((item, i) => {
+                            return <li key={i}>{item}</li>;
+                          })}
+                        </Stack>
+                      </div>
+                      <TableContainer>
+                        <Table>
+                          <TableCaption className={styles.WhenToUseCaption}>
+                            {variant.usageTable.caption}
+                          </TableCaption>
+                          <Tbody>
+                            {variant.usageTable.rows.map((row, i) => (
                               <Tr key={`single-date-usageTable-${i}`}>
                                 <Td className={styles.UseCase} shrink>
                                   {row.merchantNeed}
                                 </Td>
                                 <Td>{row.example}</Td>
                               </Tr>
-                            ),
-                          )}
-                        </Tbody>
-                      </Table>
-                    </TableContainer>
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h2">Using this pattern</Heading>
-                    <PatternsExample
-                      example={patterns.variants['single-date'].example}
-                      patternName={`${title} > ${patterns.variants['single-date'].title}`}
-                      relatedComponents={[
-                        {label: 'Date picker', url: '/components/date-picker'},
-                        {label: 'Text', url: '/components/text-field'},
-                      ]}
-                    />
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h3">Useful to know</Heading>
-                    <Stack
-                      as="ul"
-                      className={styles.UsageGuidelinesWrapper}
-                      gap="4"
-                    >
-                      {patterns.variants['single-date'].usefulToKnow.map(
-                        (row, i) => (
+                            ))}
+                          </Tbody>
+                        </Table>
+                      </TableContainer>
+                    </Stack>
+                    <Stack as="section" gap="4">
+                      <Heading as="h2">Using this pattern</Heading>
+                      <PatternsExample
+                        example={variant.example}
+                        patternName={`${title} > ${variant.title}`}
+                        relatedComponents={[
+                          {
+                            label: 'Date picker',
+                            url: '/components/date-picker',
+                          },
+                          {label: 'Text', url: '/components/text-field'},
+                        ]}
+                      />
+                    </Stack>
+                    <Stack as="section" gap="4">
+                      <Heading as="h3">Useful to know</Heading>
+                      <Stack
+                        as="ul"
+                        className={styles.UsageGuidelinesWrapper}
+                        gap="4"
+                      >
+                        {variant.usefulToKnow.map((row, i) => (
                           <Row
                             as="li"
                             key={`single-date-useful-to-know-${i}`}
@@ -511,98 +505,7 @@ export default function PatternsDatePickingPage() {
                             gap="4"
                           >
                             <div className={styles.UsageGuidelineTxt}>
-                              <p>{row.description}</p>
-                            </div>
-                            <div className={styles.ImageWrapper}>
-                              <Image
-                                alt={row.image.alt}
-                                fill
-                                src={row.image.src}
-                              />
-                            </div>
-                          </Row>
-                        ),
-                      )}
-                    </Stack>
-                  </Stack>
-                </Stack>
-              </Tab.Panel>
-              <Tab.Panel className={styles.Panel}>
-                <Stack gap="8">
-                  {description ? (
-                    <p>{patterns.variants['date-range'].description}</p>
-                  ) : null}
-                  <Stack as="section" gap="4" className={styles.MerchantGoal}>
-                    <Heading as="h2">How it helps merchants</Heading>
-                    <div className={styles.ImageWrapper}>
-                      <Image
-                        alt={
-                          patterns.variants['date-range'].howItHelps.image.alt
-                        }
-                        fill
-                        src={
-                          patterns.variants['date-range'].howItHelps.image.src
-                        }
-                      />
-                    </div>
-                    <div>
-                      <Stack as="ol">
-                        {patterns.variants[
-                          'date-range'
-                        ].howItHelps.listItems.map((item, i) => (
-                          <li key={`date-range-how-it-helps-${i}`}>{item}</li>
-                        ))}
-                      </Stack>
-                    </div>
-                    <TableContainer>
-                      <Table>
-                        <TableCaption className={styles.WhenToUseCaption}>
-                          {patterns.variants['date-range'].usageTable.caption}
-                        </TableCaption>
-                        <Tbody>
-                          {patterns.variants['date-range'].usageTable.rows.map(
-                            (row, i) => (
-                              <Tr key={`date-picking-usage-table-row-${i}`}>
-                                <Td className={styles.UseCase} shrink>
-                                  {row.merchantNeed}
-                                </Td>
-                                <Td>{row.example}</Td>
-                              </Tr>
-                            ),
-                          )}
-                        </Tbody>
-                      </Table>
-                    </TableContainer>
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h2">Using this pattern</Heading>
-                    <PatternsExample
-                      example={patterns.variants['date-range'].example}
-                      patternName={`${title} > ${patterns.variants['date-range'].title}`}
-                      relatedComponents={[
-                        {label: 'Date picker', url: '/components/date-picker'},
-                        {label: 'Card', url: '/components/card'},
-                        {label: 'Action list', url: '/components/action-list'},
-                        {label: 'Text', url: '/components/text-field'},
-                      ]}
-                    />
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h3">Useful to know</Heading>
-                    <Stack
-                      as="ul"
-                      className={styles.UsageGuidelinesWrapper}
-                      gap="4"
-                    >
-                      {patterns.variants['date-range'].usefulToKnow.map(
-                        (row, i) => (
-                          <Row
-                            key={`date-range-useful-to-know-row-${i}`}
-                            as="li"
-                            className={styles.UsageGuidelinesEl}
-                            gap="4"
-                          >
-                            <div className={styles.UsageGuidelineTxt}>
+                              {/** We use the <Markdown/> component here as some of the usage guidelines contain inline links */}
                               <Markdown text={row.description} />
                             </div>
                             <div className={styles.ImageWrapper}>
@@ -613,103 +516,12 @@ export default function PatternsDatePickingPage() {
                               />
                             </div>
                           </Row>
-                        ),
-                      )}
-                    </Stack>
-                  </Stack>
-                </Stack>
-              </Tab.Panel>
-              <Tab.Panel className={styles.Panel}>
-                <Stack gap="8">
-                  {description ? (
-                    <p>{patterns.variants['date-list'].description}</p>
-                  ) : null}
-                  <Stack as="section" gap="4" className={styles.MerchantGoal}>
-                    <Heading as="h2">How it helps merchants</Heading>
-                    <div className={styles.ImageWrapper}>
-                      <Image
-                        alt={
-                          patterns.variants['date-list'].howItHelps.image.alt
-                        }
-                        fill
-                        src={
-                          patterns.variants['date-list'].howItHelps.image.src
-                        }
-                      />
-                    </div>
-                    <div>
-                      <Stack as="ol" gap="4">
-                        {patterns.variants[
-                          'date-list'
-                        ].howItHelps.listItems.map((listItem, i) => (
-                          <li key={`date-list-how-it-helps-list-item${i}`}>
-                            {listItem}
-                          </li>
                         ))}
                       </Stack>
-                    </div>
-                    <TableContainer>
-                      <Table>
-                        <TableCaption className={styles.WhenToUseCaption}>
-                          {patterns.variants['date-list'].usageTable.caption}
-                        </TableCaption>
-                        <Tbody>
-                          {patterns.variants['date-list'].usageTable.rows.map(
-                            (row, i) => (
-                              <Tr key={`date-list-usage-table-row-${i}`}>
-                                <Td className={styles.UseCase} shrink>
-                                  {row.merchantNeed}
-                                </Td>
-                                <Td>{row.example}</Td>
-                              </Tr>
-                            ),
-                          )}
-                        </Tbody>
-                      </Table>
-                    </TableContainer>
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h2">Using this pattern</Heading>
-                    <PatternsExample
-                      example={patterns.variants['date-list'].example}
-                      patternName={`${title} > ${patterns.variants['date-list'].title}`}
-                      relatedComponents={[
-                        {label: 'Action List', url: '/components/action-list'},
-                      ]}
-                    />
-                  </Stack>
-                  <Stack as="section" gap="4">
-                    <Heading as="h3">Useful to know</Heading>
-                    <Stack
-                      as="ul"
-                      className={styles.UsageGuidelinesWrapper}
-                      gap="4"
-                    >
-                      {patterns.variants['date-list'].usefulToKnow.map(
-                        (row, i) => (
-                          <Row
-                            key={`date-list-useful-to-know-row-${i}`}
-                            as="li"
-                            className={styles.UsageGuidelinesEl}
-                            gap="4"
-                          >
-                            <div className={styles.UsageGuidelineTxt}>
-                              <p>{row.description}</p>
-                            </div>
-                            <div className={styles.ImageWrapper}>
-                              <Image
-                                alt={row.image.alt}
-                                fill
-                                src={row.image.src}
-                              />
-                            </div>
-                          </Row>
-                        ),
-                      )}
                     </Stack>
                   </Stack>
-                </Stack>
-              </Tab.Panel>
+                </Tab.Panel>
+              ))}
             </Tab.Panels>
             <Stack as="section" gap="4" className={styles.RelatedResources}>
               <Heading as="h2">Related resources</Heading>
