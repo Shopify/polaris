@@ -465,122 +465,204 @@ Disallows use of legacy mixin map data.
 
 ### Depth
 
-#### depth/declaration-property-value-disallowed-list
-
-```diff
-
-```
-
 #### depth/declaration-property-unit-disallowed-list
 
-```diff
-- box-shadow: inset 0 0 0 1px var(--p-border-subdued);
-```
+Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
 ```diff
-+ box-shadow: inset 0 0 0 var(--p-space-025) var(--p-border-subdued);
+// Don't
+- box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+// Do
++ box-shadow: var(--p-shadow-card);
 ```
 
 #### depth/function-disallowed-list
 
-```diff
+Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
+```diff
+// Don't
+- filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+// Do
++ box-shadow: var(--p-shadow-base);
 ```
 
-#### depth/at-rule-disallowed-list
+#### depth/global-disallowed-list
+
+Use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 
 ```diff
-
+// Don't
+- box-shadow: var(--p-card-shadow);
+// Do
++ box-shadow: var(--p-shadow-card);
 ```
 
 #### depth/property-disallowed-list
 
-```diff
+Instead of using properties like `text-shadow`, make sure the text has proper contrast with the background so that it is readable without a shadow.
 
+```diff
+// Don't
+- text-shadow: 2px 2px #ff0000;
 ```
 
 ### Media queries
 
 #### media-queries/function-disallowed-list
 
-```diff
+Use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of legacy mixins/variables.
 
+```diff
+// Don't
+- @include breakpoint-after(layout-width(page-with-nav)) {}
+// Do
++ @media (min-width: var(--p-breakpoints-md)) {}
 ```
 
 #### media-queries/media-queries-allowed-list
 
-```diff
+Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
 
+```diff
+// Don't
+- @include @media #{$my-var} {}
+// Do
++ @include @media #{$p-breakpoints-sm-up} {}
 ```
 
 #### media-queries/at-rule-disallowed-list
 
-```diff
+Use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of legacy mixins/variables.
 
+```diff
+// Don't
+- @include breakpoint-before(layout-width(page-with-nav)) {}
+// Do
++ @media (max-width: var(--p-breakpoints-md)) {}
 ```
 
 ### Z-Index
 
 #### z-index/declaration-property-value-allowed-list
 
-```diff
+Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
 
+```diff
+// Don't
+- z-index: 1;
+// Do
++ z-index: var(--p-z-1);
 ```
 
 #### z-index/function-disallowed-list
 
-```diff
+Use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 
+```diff
+// Don't
+- z-index: z-index(content);
+// Do
++ z-index: var(--p-z-1);
 ```
 
 #### z-index/global-disallowed-list
 
-```diff
+Use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 
+```diff
+// Don't
+- z-index(toast, $fixed-element-stacking-order);
+// Do
++ z-index: var(--p-z-1);
 ```
 
 ### Layout
 
 #### layout/declaration-property-value-disallowed-list
 
-```diff
+There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
 
+```diff
+// Don't
+- width: 100%;
+// Do
++ <Stack />
 ```
 
 #### layout/function-disallowed-list
 
-```diff
+Use hard coded pixel or rem values for `width` and `height` instead of legacy mixins/variables or spacing tokens.
 
+```diff
+// Don't
+- height: top-bar-height();
+// Do
++ height: 56px;
 ```
 
 #### layout/at-rule-disallowed-list
 
-```diff
+Instead of using a legacy mixin, try and use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. If what you need isn't possible, either use the mixin's contents or consider contributing to an existing Polaris component.
 
+```diff
+// Don't
+- @include print-hidden;
+// Do
++ @media print {
++   display: none;
++ }
 ```
 
 #### layout/property-disallowed-list
 
-```diff
+There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
 
+```diff
+// Don't
+- display: grid;
+// Do
++ <Columns />
+```
+
+#### layout/global-disallowed-list
+
+If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
+
+```diff
+// Don't
+- height: var(--p-choice-size);
+// Do
++ <Checkbox />
 ```
 
 ### Legacy
 
 #### legacy/at-rule-disallowed-list
 
-```diff
+If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
 
+```diff
+// Don't
+- @include unstyled-button;
+// Do
++ <UnstyledButton />
 ```
 
 #### legacy/function-disallowed-list
 
 ```diff
-
+// Don't
+- @include available-names
 ```
 
 #### legacy/global-disallowed-list
 
-```diff
+Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwise use hard coded pixel or rem values instead of legacy mixins/variables.
 
+```diff
+// Don't
+- left: -1 * $timeline-border-width;
+// Do
++ left: calc(-1 * var(--p-space-1));
 ```
