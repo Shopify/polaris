@@ -60,11 +60,7 @@ type MultiVariantPattern = {
   }[];
 };
 
-const title = 'Date picking';
-
-const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/7852`;
-const patternsIndex = ['single-date', 'date-range', 'date-list'];
-const patterns: MultiVariantPattern = {
+const pattern: MultiVariantPattern = {
   type: 'multi-variant-pattern',
   title: 'Date picking',
   githubDiscussionsLink: `https://github.com/Shopify/polaris/discussions/7852`,
@@ -372,7 +368,7 @@ export default function PatternsDatePickingPage() {
       {
         query: {
           ...query,
-          tab: patterns.variants[index].slug,
+          tab: pattern.variants[index].slug,
         },
       },
       undefined,
@@ -386,7 +382,7 @@ export default function PatternsDatePickingPage() {
     // So we exclude this case in our check.
     if (query.tab && typeof query.tab === 'string' && isReady) {
       console.log(query.tab);
-      const index = patterns.variants.findIndex(
+      const index = pattern.variants.findIndex(
         (variant) => variant.slug === query.tab,
       );
       setExampleIndex(index);
@@ -401,19 +397,22 @@ export default function PatternsDatePickingPage() {
 
   return (
     <>
-      <PageMeta title={title} description={description} />
+      <PageMeta title={pattern.title} description={description} />
 
       <Page showTOC={false}>
         <Stack gap="4">
           <Heading as="h1">
             <Row wrap gap="2" className={styles.Heading}>
-              {title}{' '}
+              {pattern.title}{' '}
               <StatusBadge status={{value: StatusName.Beta, message: ''}} />
             </Row>
           </Heading>
           <Lede>{description}</Lede>
           <p className={styles.InfoLine}>
-            <Link className={styles.InfoLineLink} href={newDiscussionLink}>
+            <Link
+              className={styles.InfoLineLink}
+              href={pattern.githubDiscussionsLink}
+            >
               Discuss on GitHub
             </Link>
           </p>
@@ -426,7 +425,7 @@ export default function PatternsDatePickingPage() {
           <div className={styles.TabGroup}>
             <Tab.List>
               <div className={styles.ExamplesList} id="examples">
-                {patterns.variants.map((variant) => (
+                {pattern.variants.map((variant) => (
                   <Tab key={`${variant.slug}-tab`}>
                     <span>{variant.title}</span>
                   </Tab>
@@ -435,7 +434,7 @@ export default function PatternsDatePickingPage() {
             </Tab.List>
 
             <Tab.Panels>
-              {patterns.variants.map((variant) => (
+              {pattern.variants.map((variant) => (
                 <Tab.Panel
                   key={`${variant.slug}-panel`}
                   className={styles.Panel}
@@ -480,7 +479,7 @@ export default function PatternsDatePickingPage() {
                       <Heading as="h2">Using this pattern</Heading>
                       <PatternsExample
                         example={variant.example}
-                        patternName={`${title} > ${variant.title}`}
+                        patternName={`${pattern.title} > ${variant.title}`}
                         relatedComponents={[
                           {
                             label: 'Date picker',
@@ -526,7 +525,7 @@ export default function PatternsDatePickingPage() {
             <Stack as="section" gap="4" className={styles.RelatedResources}>
               <Heading as="h2">Related resources</Heading>
               <Grid gapX="4" gapY="6" itemMinWidth="24rem">
-                {patterns.relatedResources.map((resource, i) => (
+                {pattern.relatedResources.map((resource, i) => (
                   <GridItem
                     key={`date-picking-related-resource-${i}`}
                     title={resource.title}
