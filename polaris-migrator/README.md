@@ -33,7 +33,7 @@ padding: 1rem;
 npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 ```
 
-#### `react-replace-text-component`
+#### `react-replace-text-components`
 
 Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`, `TextStyle`, and `VisuallyHidden` with the new single `Text` component.
 
@@ -45,7 +45,7 @@ Replace legacy text components `DisplayText`, `Heading`, `Subheading`, `Caption`
 ```
 
 ```sh
-npx @shopify/polaris-migrator react-replace-text-component <path>
+npx @shopify/polaris-migrator react-replace-text-components <path>
 ```
 
 #### `react-rename-component-prop`
