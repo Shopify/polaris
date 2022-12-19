@@ -13,7 +13,6 @@ import {Box} from '../Box';
 import {Text} from '../Text';
 
 import {Option} from './components';
-import styles from './OptionList.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 
@@ -25,7 +24,7 @@ export interface OptionListProps {
   /** Collection of options to be listed */
   options?: OptionDescriptor[];
   /** Defines a specific role attribute for the list itself */
-  role?: 'listbox' | 'combobox' | string;
+  role?: 'listbox' | 'combobox';
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
@@ -130,24 +129,24 @@ export function OptionList({
           });
 
         return (
-          <li key={title || `noTitle-${sectionIndex}`}>
+          <Box
+            key={title || `noTitle-${sectionIndex}`}
+            as="li"
+            paddingBlockStart={isFirstOption ? undefined : '2'}
+          >
             {titleMarkup}
-            <ul
-              className={styles.Options}
-              id={`${id}-${sectionIndex}`}
-              role={role}
-            >
+            <Box as="ul" id={`${id}-${sectionIndex}`} role={role}>
               {optionsMarkup}
-            </ul>
-          </li>
+            </Box>
+          </Box>
         );
       })
     : null;
 
   return (
-    <ul className={styles.OptionList} role={role}>
+    <Box as="ul" role={role} padding="2">
       {optionsMarkup}
-    </ul>
+    </Box>
   );
 }
 
