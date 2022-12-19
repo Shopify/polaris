@@ -15,10 +15,6 @@
 }
 
 .Item {
-  &:last-child {
-    margin-bottom: 0;
-  }
-
   .List:first-child {
     margin-top: var(--p-space-2);
   }
@@ -28,4 +24,8 @@
   .Item {
     margin-bottom: var(--p-space-2);
   }
+}
+
+.Item:last-child {
+  margin-bottom: 0;
 }
