@@ -16,6 +16,7 @@ import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
 import {Grid, GridItem} from '../Grid';
 import Markdown from '../Markdown';
+
 type PatternVariant = {
   description?: string;
   title: string;
@@ -501,7 +502,7 @@ export default function PatternsDatePickingPage() {
                           >
                             <div className={styles.UsageGuidelineTxt}>
                               {/** We use the <Markdown/> component here as some of the usage guidelines contain inline links */}
-                              <Markdown text={row.description} />
+                              <Markdown>{row.description}</Markdown>
                             </div>
                             <div className={styles.ImageWrapper}>
                               <Image

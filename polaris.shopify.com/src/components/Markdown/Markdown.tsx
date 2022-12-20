@@ -6,10 +6,10 @@ import {slugify} from '../../utils/various';
 import Code from '../Code';
 
 interface Props {
-  text: string;
+  children: string;
 }
 
-function Markdown({text}: Props) {
+function Markdown({children: text}: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, {tablePipeAlign: true}]]}

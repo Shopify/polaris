@@ -28,8 +28,8 @@ const CatchAllTemplate: NextPage<Props> = ({
       <PageMeta title={title} description={description} />
 
       <Longform>
-        {description ? <Markdown text={description} /> : null}
-        <Markdown text={readme} />
+        {description ? <Markdown>{description}</Markdown> : null}
+        <Markdown>{readme}</Markdown>
       </Longform>
     </Page>
   );
