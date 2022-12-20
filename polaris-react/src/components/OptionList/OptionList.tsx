@@ -24,7 +24,7 @@ export interface OptionListProps {
   /** Collection of options to be listed */
   options?: OptionDescriptor[];
   /** Defines a specific role attribute for the list itself */
-  role?: 'listbox' | 'combobox';
+  role?: 'listbox' | 'combobox' | string;
   /** Defines a specific role attribute for each option in the list */
   optionRole?: string;
   /** Sections containing a header and related options */
@@ -144,6 +144,7 @@ export function OptionList({
     : null;
 
   return (
+    // @ts-expect-error OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11
     <Box as="ul" role={role} padding="2">
       {optionsMarkup}
     </Box>
