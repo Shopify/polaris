@@ -17,7 +17,6 @@ import styles from './PatternsDatePickingPage.module.scss';
 import {Grid, GridItem} from '../Grid';
 import Markdown from '../Markdown';
 type PatternVariant = {
-  index: number;
   description?: string;
   title: string;
   slug: string;
@@ -108,7 +107,6 @@ const pattern: MultiVariantPattern = {
   ],
   variants: [
     {
-      index: 0,
       title: 'Single date',
       slug: 'single-date',
       description:
@@ -215,7 +213,6 @@ const pattern: MultiVariantPattern = {
       },
     },
     {
-      index: 1,
       title: 'Date range',
       slug: 'date-range',
       description: 'This enables merchants to select a date range.',
@@ -282,7 +279,6 @@ const pattern: MultiVariantPattern = {
       },
     },
     {
-      index: 2,
       title: 'Date list',
       slug: 'date-list',
       description:
