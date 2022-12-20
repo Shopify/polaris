@@ -7,9 +7,10 @@ import Code from '../Code';
 
 interface Props {
   children: string;
+  components?: React.ComponentProps<typeof ReactMarkdown>['components'];
 }
 
-function Markdown({children: text}: Props) {
+function Markdown({children: text, components}: Props) {
   return (
     <ReactMarkdown
       remarkPlugins={[[remarkGfm, {tablePipeAlign: true}]]}
@@ -43,6 +44,7 @@ function Markdown({children: text}: Props) {
             <table>{children}</table>
           </div>
         ),
+        ...components,
       }}
     >
       {text}
