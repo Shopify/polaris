@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, ButtonGroup} from '@shopify/polaris';
+import {CalendarMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Button,
@@ -142,6 +143,18 @@ export function SelectDisclosure() {
         Select options
       </Button>
     </div>
+  );
+}
+
+export function WithIcon() {
+  return <Button icon={CalendarMinor}>Choose date range</Button>;
+}
+
+export function WithIconAndDisclosure() {
+  return (
+    <Button icon={CalendarMinor} disclosure>
+      Choose date range
+    </Button>
   );
 }
 
