@@ -151,7 +151,10 @@ export interface BoxProps extends React.AriaAttributes {
    */
   paddingInlineEnd?: Spacing;
   /** Aria role */
-  role?: Extract<React.AriaRole, 'status' | 'presentation' | 'menu'>;
+  role?: Extract<
+    React.AriaRole,
+    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
+  >;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Set tab order */

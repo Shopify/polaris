@@ -148,6 +148,7 @@ function IndexTableBase({
   const scrollableContainerElement = useRef<HTMLDivElement>(null);
   const tableElement = useRef<HTMLTableElement>(null);
   const condensedListElement = useRef<HTMLUListElement>(null);
+  const loadingElement = useRef<HTMLDivElement>(null);
 
   const [tableInitialized, setTableInitialized] = useState(false);
   const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
@@ -512,10 +513,11 @@ function IndexTableBase({
       in={loading}
       classNames={loadingTransitionClassNames}
       timeout={parseInt(motion['duration-100'], 10)}
+      nodeRef={loadingElement}
       appear
       unmountOnExit
     >
-      <div className={styles.LoadingPanel}>
+      <div className={styles.LoadingPanel} ref={loadingElement}>
         <div className={styles.LoadingPanelRow}>
           <Spinner size="small" />
           <span className={styles.LoadingPanelText}>
