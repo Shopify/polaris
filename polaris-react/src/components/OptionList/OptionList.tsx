@@ -144,7 +144,8 @@ export function OptionList({
     : null;
 
   return (
-    // @ts-expect-error OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11
     <Box as="ul" role={role} padding="2">
       {optionsMarkup}
     </Box>
