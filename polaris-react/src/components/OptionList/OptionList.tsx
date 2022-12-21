@@ -9,7 +9,7 @@ import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
-import {Box} from '../Box';
+import {Box, BoxProps} from '../Box';
 import {Text} from '../Text';
 import {Bleed} from '../Bleed';
 
@@ -137,9 +137,11 @@ export function OptionList({
           >
             {titleMarkup}
             <Bleed marginBlockStart={title ? undefined : '05'} marginInline="0">
-              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-              {/* @ts-ignore OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11 */}
-              <Box as="ul" id={`${id}-${sectionIndex}`} role={role}>
+              <Box
+                as="ul"
+                id={`${id}-${sectionIndex}`}
+                role={role as BoxProps['role']}
+              >
                 {optionsMarkup}
               </Box>
             </Bleed>
@@ -149,9 +151,7 @@ export function OptionList({
     : null;
 
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11
-    <Box as="ul" role={role} padding="2">
+    <Box as="ul" role={role as BoxProps['role']} padding="2">
       {optionsMarkup}
     </Box>
   );
