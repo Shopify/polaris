@@ -22,10 +22,14 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default 'div'
    */
   as?: Element;
-  /** Vertical alignment of children
+  /** Horizontal alignment of children
    * @default 'start'
    */
   align?: Align;
+  /** Vertical alignment of children
+   * @default 'start'
+   */
+  blockAlign?: Align;
   /** Toggle children to be full width
    * @default false
    */
@@ -44,6 +48,7 @@ export const AlphaStack = ({
   as = 'div',
   children,
   align = 'start',
+  blockAlign = 'start',
   fullWidth = false,
   gap = '4',
   id,
@@ -58,6 +63,7 @@ export const AlphaStack = ({
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
+    '--pc-stack-block-align': blockAlign ? `${blockAlign}` : '',
     '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
