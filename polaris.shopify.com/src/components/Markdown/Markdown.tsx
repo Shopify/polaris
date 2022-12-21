@@ -8,13 +8,23 @@ import Code from '../Code';
 interface Props {
   children: string;
   components?: React.ComponentProps<typeof ReactMarkdown>['components'];
+  remarkPlugins?: React.ComponentProps<typeof ReactMarkdown>['remarkPlugins'];
+  rehypePlugins?: React.ComponentProps<typeof ReactMarkdown>['rehypePlugins'];
 }
 
-function Markdown({children: text, components}: Props) {
+function Markdown({
+  children: text,
+  components,
+  remarkPlugins,
+  rehypePlugins,
+}: Props) {
   return (
     <ReactMarkdown
-      remarkPlugins={[[remarkGfm, {tablePipeAlign: true}]]}
-      rehypePlugins={[rehypeRaw]}
+      remarkPlugins={[
+        [remarkGfm, {tablePipeAlign: true}],
+        ...(remarkPlugins ?? []),
+      ]}
+      rehypePlugins={[rehypeRaw, ...(rehypePlugins ?? [])]}
       components={{
         h1: ({children}) => {
           return <h1>{children}</h1>;

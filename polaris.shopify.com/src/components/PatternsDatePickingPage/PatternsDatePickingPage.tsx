@@ -17,24 +17,17 @@ import styles from './PatternsDatePickingPage.module.scss';
 import {Grid, GridItem} from '../Grid';
 import Markdown from '../Markdown';
 
+import remarkUnwrapImages from 'remark-unwrap-images';
+import remarkDirective from 'remark-directive';
+import remarkDirectiveRehype from 'remark-directive-rehype';
+
+type MarkdownString = string;
+
 type PatternVariant = {
   description?: string;
   title: string;
   slug: string;
-  howItHelps: {
-    listItems: string[];
-    image: {
-      src: string;
-      alt: string;
-    };
-  };
-  usageTable: {
-    caption: string;
-    rows: {
-      merchantNeed: string;
-      example: string;
-    }[];
-  };
+  howItHelps: MarkdownString;
   usefulToKnow: {
     description: string;
     image: {
@@ -59,6 +52,16 @@ type MultiVariantPattern = {
     };
   }[];
 };
+
+// @ts-expect-error Can't extract the special types out of react-markdown for
+// some reason.
+const isEmptyTr = ({node}) =>
+  !Array.isArray(node.children) ||
+  node.children.every(
+    // @ts-expect-error Can't extract the special types out of react-markdown
+    // for some reason.
+    (child) => !Array.isArray(child.children) || child.children.length === 0,
+  );
 
 const pattern: MultiVariantPattern = {
   type: 'multi-variant-pattern',
@@ -112,29 +115,16 @@ const pattern: MultiVariantPattern = {
       slug: 'single-date',
       description:
         'This enables merchants to type a specific date or pick it from a calendar.',
-      howItHelps: {
-        listItems: [
-          'The text input gives merchants the option to use the keyboard to enter a date.',
-          'A single month calendar is previewed after selecting the date input to provide visual affordance of the single date picked. The calendar can then be used to select a new date.',
-        ],
-        image: {
-          src: '/images/patterns/single-list-cover-image.png',
-          alt: '',
-        },
-      },
-      usageTable: {
-        caption: 'Use when merchants need to:',
-        rows: [
-          {
-            merchantNeed: `Schedule an event on a specific day`,
-            example: `Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers`,
-          },
-          {
-            merchantNeed: `Input memorable dates to forms`,
-            example: `An example of this is entering a birthdate.`,
-          },
-        ],
-      },
+      howItHelps: `![A labeled diagram of an active input field displaying a calendar beneath it. The input field is labeled "1". The calendar is labeled "2".](/images/patterns/single-list-cover-image.png)
+
+1. The text input gives merchants the option to use the keyboard to enter a date.',
+2. A single month calendar is previewed after selecting the date input to provide visual affordance of the single date picked. The calendar can then be used to select a new date.
+
+| | |
+|-|-|
+|Schedule an event on a specific day|Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers|
+|Input memorable dates to forms|An example of this is entering a birthdate.|
+:caption[Use when merchants need to:]{side=top}`,
       usefulToKnow: [
         {
           description:
@@ -217,32 +207,17 @@ const pattern: MultiVariantPattern = {
       title: 'Date range',
       slug: 'date-range',
       description: 'This enables merchants to select a date range.',
-      howItHelps: {
-        image: {
-          alt: '',
-          src: '/images/patterns/date-range-cover-image.png',
-        },
-        listItems: [
-          'Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.',
-          'Displaying two months makes it easier for merchants to select date ranges that span across both.',
-          'Selecting a date range may require multiple steps, so merchants prefer to explicitly confirm their selection, unlike the single date picker which closes on selection.',
-        ],
-      },
-      usageTable: {
-        caption: 'Use when merchants need to:',
-        rows: [
-          {
-            merchantNeed: 'Analyze trends and data',
-            example:
-              'When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics',
-          },
-          {
-            merchantNeed: 'Schedule an event',
-            example:
-              'When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.',
-          },
-        ],
-      },
+      howItHelps: `![](/images/patterns/date-range-cover-image.png)
+
+1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.',
+2. Displaying two months makes it easier for merchants to select date ranges that span across both.',
+3. Selecting a date range may require multiple steps, so merchants prefer to explicitly confirm their selection, unlike the single date picker which closes on selection.
+
+| | |
+|-|-|
+|Analyze trends and data|When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics|
+|Schedule an event|When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.|
+:caption[Use when merchants need to:]{side=top}`,
       usefulToKnow: [
         {
           description:
@@ -284,25 +259,14 @@ const pattern: MultiVariantPattern = {
       slug: 'date-list',
       description:
         'This enables merchants to select a date or a date range from a list of preset dates.',
-      howItHelps: {
-        listItems: [
-          'The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.',
-        ],
-        image: {
-          alt: '',
-          src: '/images/patterns/date-list-cover-image.png',
-        },
-      },
-      usageTable: {
-        caption: 'Use when merchants need to:',
-        rows: [
-          {
-            merchantNeed: 'Select from templated dates',
-            example:
-              'When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview',
-          },
-        ],
-      },
+      howItHelps: `![](/images/patterns/date-list-cover-image.png)
+
+1. The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.
+
+| | |
+|-|-|
+|Select from templated dates|When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview|
+:caption[Use when merchants need to:]{side=top}`,
       usefulToKnow: [
         {
           description:
@@ -355,6 +319,47 @@ const pattern: MultiVariantPattern = {
     },
   ],
 };
+
+const HowItHelps = ({children}: {children: string}) => (
+  <Markdown
+    remarkPlugins={[remarkUnwrapImages, remarkDirective, remarkDirectiveRehype]}
+    components={{
+      img: ({src, alt, ...props}) =>
+        src ? (
+          <div className={styles.ImageWrapper}>
+            {/*
+            // @ts-expect-error src types mismatch */}
+            <Image fill src={src} alt={alt ?? ''} {...props} />
+          </div>
+        ) : null,
+      ol: (props) => <Stack as="ol" gap="2" {...props} />,
+      li: (props) => <li {...props} />,
+      table: ({children}) => (
+        <TableContainer>
+          <Table className={styles.UsageTable}>{children}</Table>
+        </TableContainer>
+      ),
+      tbody: (props) => <Tbody {...props} />,
+      // We don't use theads here
+      thead: () => null,
+      // remark-directive is inserting extra, blank trs for some reason
+      tr: (props) => (isEmptyTr(props) ? null : <Tr {...props} />),
+      // @ts-expect-error Something inside react-markdown is incorrectly typing
+      // the `onCopy` callback as accepting a `table` event. Different react
+      // versions perhaps?
+      td: (props) => <Td {...props} />,
+      // @ts-expect-error react-markdown doesn't know about the extra data
+      // remark-directive is returning for us
+      caption: ({children, side}) => (
+        <TableCaption className={styles.WhenToUseCaption} side={side}>
+          {children}
+        </TableCaption>
+      ),
+    }}
+  >
+    {children}
+  </Markdown>
+);
 
 export default function PatternsDatePickingPage() {
   const [exampleIndex, setExampleIndex] = useState(0);
@@ -440,37 +445,7 @@ export default function PatternsDatePickingPage() {
                     {description ? <p>{variant.description}</p> : null}
                     <Stack as="section" gap="4" className={styles.MerchantGoal}>
                       <Heading as="h2">How it helps merchants</Heading>
-                      <div className={styles.ImageWrapper}>
-                        <Image
-                          fill
-                          alt={variant.howItHelps.image.alt}
-                          src={variant.howItHelps.image.src}
-                        />
-                      </div>
-                      <div>
-                        <Stack as="ol" gap="2">
-                          {variant.howItHelps.listItems.map((item, i) => {
-                            return <li key={i}>{item}</li>;
-                          })}
-                        </Stack>
-                      </div>
-                      <TableContainer>
-                        <Table>
-                          <TableCaption className={styles.WhenToUseCaption}>
-                            {variant.usageTable.caption}
-                          </TableCaption>
-                          <Tbody>
-                            {variant.usageTable.rows.map((row, i) => (
-                              <Tr key={`single-date-usageTable-${i}`}>
-                                <Td className={styles.UseCase} shrink>
-                                  {row.merchantNeed}
-                                </Td>
-                                <Td>{row.example}</Td>
-                              </Tr>
-                            ))}
-                          </Tbody>
-                        </Table>
-                      </TableContainer>
+                      <HowItHelps>{variant.howItHelps}</HowItHelps>
                     </Stack>
                     <Stack as="section" gap="4">
                       <Heading as="h2">Using this pattern</Heading>
