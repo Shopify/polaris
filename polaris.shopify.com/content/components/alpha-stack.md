@@ -15,15 +15,15 @@ examples:
   - fileName: alpha-stack-with-gap.tsx
     title: Gap
     description: >-
-      Gaps between stack children can be adjusted using the Space token.
+      Gaps between children can be adjusted using the Space token.
   - fileName: alpha-stack-with-full-width-children.tsx
     title: Full width
     description: >-
-      Use a boolean to make Stack full width.
+      Use a boolean to make children full width.
   - fileName: alpha-stack-with-align.tsx
     title: Alignment
     description: >-
-      Use to vertically align Stack.
+      Use to horizontally align children.
 ---
 
 ## Related components
