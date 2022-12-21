@@ -182,13 +182,24 @@ function isNumber(value) {
 }
 
 /**
- * Checks if the value is an object and not an array or null.
- * https://github.com/jonschlinkert/isobject/blob/15d5d58ea9fbc632dffd52917ac6791cd92251ab/index.js#L9
- * @param {unknown} value
+ * Checks if a value is a plain object.
+ *
+ * An object is plain if it's created by either {}, new Object(), or Object.create(null).
+ * https://github.com/sindresorhus/is-plain-obj/blob/68e8cc77bb1bbd0bf7d629d3574b6ca70289b2cc/index.js#L1
  */
-function isObject(value) {
+function isPlainObject(value) {
+  if (typeof value !== 'object' || value === null) {
+    return false;
+  }
+
+  const prototype = Object.getPrototypeOf(value);
+
   return (
-    value != null && typeof value === 'object' && Array.isArray(value) === false
+    (prototype === null ||
+      prototype === Object.prototype ||
+      Object.getPrototypeOf(prototype) === null) &&
+    !(Symbol.toStringTag in value) &&
+    !(Symbol.iterator in value)
   );
 }
 
@@ -219,11 +230,32 @@ function isString(value) {
   return typeof value === 'string' || value instanceof String;
 }
 
+/**
+ * Returns the arguments expected by Stylelint rules that support functional custom messages
+ * @param {string} ruleName The category's default message
+ * @param {import('postcss').Node} node The node being reported as a problem
+ * @returns {Parameters<import('stylelint').RuleMessageFunc> | undefined} An array of arguments for stylelint.report to invoke the functional message with
+ */
+function getMessageArgs(ruleName, node) {
+  if (!node) return undefined;
+
+  const stylelintRuleMessageArgs = {
+    'color-no-hex': [node.value],
+    'function-disallowed-list': [node.value],
+    'at-rule-disallowed-list': [node.name, node.params],
+    'property-disallowed-list': [node.prop],
+    'declaration-property-value-disallowed-list': [node.prop, node.value],
+    'declaration-property-unit-disallowed-list': [node.prop, node.value],
+  };
+
+  return stylelintRuleMessageArgs[ruleName];
+}
+
 module.exports.hasScssInterpolation = hasScssInterpolation;
 module.exports.isBoolean = isBoolean;
 module.exports.isCustomProperty = isCustomProperty;
 module.exports.isNumber = isNumber;
-module.exports.isObject = isObject;
+module.exports.isPlainObject = isPlainObject;
 module.exports.isRegExp = isRegExp;
 module.exports.isScssInterpolation = isScssInterpolation;
 module.exports.isString = isString;
@@ -232,3 +264,4 @@ module.exports.scssInterpolationExpression = scssInterpolationExpression;
 module.exports.scssInterpolationRegExp = scssInterpolationRegExp;
 module.exports.vendorPrefix = vendorPrefix;
 module.exports.vendorUnprefixed = vendorUnprefixed;
+module.exports.getMessageArgs = getMessageArgs;

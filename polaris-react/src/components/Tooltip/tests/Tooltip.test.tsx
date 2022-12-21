@@ -238,6 +238,52 @@ describe('<Tooltip />', () => {
       accessibilityLabel,
     });
   });
+
+  describe('with hoverDelay', () => {
+    it('renders on mouseOver after specified hoverDelay', () => {
+      jest.useFakeTimers();
+
+      const tooltip = mountWithApp(
+        <Tooltip hoverDelay={2000} content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+
+      tooltip.act(() => jest.advanceTimersByTime(1999));
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+
+      tooltip.act(() => jest.advanceTimersByTime(1));
+
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
+
+      jest.useRealTimers();
+    });
+
+    it('does not render on mouseOver if mouseLeave occurs before hoverDelay ellapses', () => {
+      jest.useFakeTimers();
+
+      const tooltip = mountWithApp(
+        <Tooltip hoverDelay={2000} content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      tooltip.act(() => jest.advanceTimersByTime(500));
+
+      findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+      tooltip.act(() => jest.advanceTimersByTime(2000));
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+
+      jest.useRealTimers();
+    });
+  });
 });
 
 function findWrapperComponent(tooltip: any) {

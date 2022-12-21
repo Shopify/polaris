@@ -1,5 +1,31 @@
 # @shopify/polaris-migrator
 
+## 0.10.1
+
+### Patch Changes
+
+- Updated dependencies [[`4b96147b3`](https://github.com/Shopify/polaris/commit/4b96147b32a89a393e8b6c5f7df1442f875248a0), [`c8a294f51`](https://github.com/Shopify/polaris/commit/c8a294f51baae53b131a5f9014f6223fdf3ef5ee), [`6cd75fd9a`](https://github.com/Shopify/polaris/commit/6cd75fd9a089791a79fe8aa7e43f6b54add47a45), [`bdf04a289`](https://github.com/Shopify/polaris/commit/bdf04a289e7a5b4c1e4717f5e162d00ea87c807b), [`9206b7b13`](https://github.com/Shopify/polaris/commit/9206b7b130cb4d5b0a6ec110693d8b45248f8dcf)]:
+  - @shopify/stylelint-polaris@5.0.1
+
+## 0.10.0
+
+### Minor Changes
+
+- [#7726](https://github.com/Shopify/polaris/pull/7726) [`22c4107b3`](https://github.com/Shopify/polaris/commit/22c4107b3c369eb68da31980d208c09b3fc4ba37) Thanks [@qt314](https://github.com/qt314)! - Added migration to insert disable comments for @shopify/stylelint-polaris
+
+### Patch Changes
+
+- [#7836](https://github.com/Shopify/polaris/pull/7836) [`77736370e`](https://github.com/Shopify/polaris/commit/77736370eeddde18a2c11da102b88646f2263d99) Thanks [@qt314](https://github.com/qt314)! - Decouple polaris migrator test from stylelint config so it's easier to maintain
+
+- Updated dependencies [[`38b2a00a6`](https://github.com/Shopify/polaris/commit/38b2a00a6aa0c95d5df777c7d51023a8193f8090)]:
+  - @shopify/stylelint-polaris@5.0.0
+
+## 0.9.1
+
+### Patch Changes
+
+- [#7744](https://github.com/Shopify/polaris/pull/7744) [`28220456f`](https://github.com/Shopify/polaris/commit/28220456f67bb4e6e2df19ceb334635ca2d0f3a5) Thanks [@laurkim](https://github.com/laurkim)! - Fixed mapping for `TextStyle` `variation="strong"` to use `Text` `fontWeight="semibold"` instead of `fontWeight="bold"`
+
 ## 0.9.0
 
 ### Minor Changes

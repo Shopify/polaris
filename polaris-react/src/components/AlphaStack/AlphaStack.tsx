@@ -16,31 +16,39 @@ type Element = 'div' | 'ul' | 'ol' | 'fieldset';
 
 type Gap = ResponsiveProp<SpacingSpaceScale>;
 
-export interface AlphaStackProps {
+export interface AlphaStackProps extends React.AriaAttributes {
+  children?: React.ReactNode;
   /** HTML Element type
    * @default 'div'
    */
   as?: Element;
-  /** Elements to display inside stack */
-  children?: React.ReactNode;
-  /** The vertical alignment of elements
+  /** Vertical alignment of children
    * @default 'start'
    */
   align?: Align;
-  /** Toggle elements to be full width */
+  /** Toggle children to be full width
+   * @default false
+   */
   fullWidth?: boolean;
-  /** The spacing between elements
+  /** The spacing between children
    * @default '4'
    */
   gap?: Gap;
+  /** HTML id attribute */
+  id?: string;
+  /** Toggle order of child items */
+  reverseOrder?: boolean;
 }
 
 export const AlphaStack = ({
   as = 'div',
   children,
   align = 'start',
-  fullWidth,
+  fullWidth = false,
   gap = '4',
+  id,
+  reverseOrder = false,
+  ...restProps
 }: AlphaStackProps) => {
   const className = classNames(
     styles.AlphaStack,
@@ -50,6 +58,7 @@ export const AlphaStack = ({
 
   const style = {
     '--pc-stack-align': align ? `${align}` : '',
+    '--pc-stack-order': reverseOrder ? 'column-reverse' : 'column',
     ...getResponsiveProps('stack', 'gap', 'space', gap),
   } as React.CSSProperties;
 
@@ -58,6 +67,7 @@ export const AlphaStack = ({
     {
       className,
       style: sanitizeCustomProperties(style),
+      ...restProps,
     },
     children,
   );

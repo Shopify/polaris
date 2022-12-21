@@ -4,7 +4,11 @@ import type {
   SpacingSpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Columns.scss';
 
@@ -12,35 +16,31 @@ type Columns = {
   [Breakpoint in BreakpointsAlias]?: number | string;
 };
 
-type Gap = {
-  [Breakpoint in BreakpointsAlias]?: SpacingSpaceScale;
-};
+type Gap = ResponsiveProp<SpacingSpaceScale>;
 
 export interface ColumnsProps {
-  /** The spacing between columns
-   * @default '4'
-   */
-  gap?: Gap;
+  children?: React.ReactNode;
   /** The number of columns to display
    * @default {xs: 6, sm: 6, md: 6, lg: 6, xl: 6}
    */
   columns?: Columns;
-  /** Elements to display inside columns */
-  children?: React.ReactNode;
+  /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @default '4'
+   * @example
+   * gap='2'
+   * gap={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
+   */
+  gap?: Gap;
 }
 
-export function Columns({columns, children, gap}: ColumnsProps) {
+export function Columns({children, columns, gap = '4'}: ColumnsProps) {
   const style = {
     '--pc-columns-xs': formatColumns(columns?.xs || 6),
     '--pc-columns-sm': formatColumns(columns?.sm),
     '--pc-columns-md': formatColumns(columns?.md),
     '--pc-columns-lg': formatColumns(columns?.lg),
     '--pc-columns-xl': formatColumns(columns?.xl),
-    '--pc-columns-gap-xs': gap?.xs ? `var(--p-space-${gap?.xs})` : undefined,
-    '--pc-columns-gap-sm': gap?.sm ? `var(--p-space-${gap?.sm})` : undefined,
-    '--pc-columns-gap-md': gap?.md ? `var(--p-space-${gap?.md})` : undefined,
-    '--pc-columns-gap-lg': gap?.lg ? `var(--p-space-${gap?.lg})` : undefined,
-    '--pc-columns-gap-xl': gap?.xl ? `var(--p-space-${gap?.xl})` : undefined,
+    ...getResponsiveProps('columns', 'gap', 'space', gap),
   } as React.CSSProperties;
 
   return (

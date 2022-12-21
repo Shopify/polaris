@@ -79,7 +79,7 @@
     "rollup": "^2.70.2",
     "rollup-plugin-node-externals": "^4.0.0",
     "size-limit": "^5.0.3",
-    "stylelint": "^14.1.0",
+    "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",
     "turbo": "^1.2.8",
     "typescript": "^4.6.3"
@@ -89,7 +89,7 @@
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "216 kB"
+      "limit": "220 kB"
     },
     {
       "name": "polaris-react-esm",

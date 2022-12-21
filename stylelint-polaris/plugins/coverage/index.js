@@ -1,143 +1,172 @@
 const stylelint = require('stylelint');
 
-const {isObject, isNumber} = require('../../utils');
+const {isPlainObject} = require('../../utils');
 
-const ruleName = 'stylelint-polaris/coverage';
+const coverageRuleName = 'polaris/coverage';
+
+/**
+ * @typedef {import('stylelint').ConfigRules} StylelintConfigRules
+ * @property {string} message - Message appended to the warning in place of the default category message
+ */
+
+/**
+ * @typedef {object} CategorySettings
+ * @property {import('stylelint').RuleMessage} [message] - Message appended to the warning if no custom message is set on a rule's secondary options
+ * @property {(stylelintRuleName: string) => import('stylelint').RuleMeta} [meta] - Category documentation URL hyperlinked to the reported rule in the VS Code diagnostic
+ */
 
 /**
  * @typedef {{
- *   [category: string]: import('stylelint').ConfigRules
- * }} PrimaryOptions
+ *   [category: string]: StylelintConfigRules | [
+ *     StylelintConfigRules, CategorySettings
+ *   ]
+ * }} PrimaryOptions - Configured Stylelint rules grouped by Polaris coverage category
  */
 
-module.exports = stylelint.createPlugin(
-  ruleName,
-  /** @param {PrimaryOptions} primaryOptions */
-  (primaryOptions) => {
-    const isPrimaryOptionsValid = validatePrimaryOptions(primaryOptions);
+/**
+ * @typedef {object} CoverageRule
+ * @property { string } ruleName - The dynamic coverage rule name
+ * @property { string } stylelintRuleName - The Stylelint rule name
+ * @property { import('stylelint').ConfigRuleSettings } ruleSettings - The Stylelint rule settings
+ * @property { import('stylelint').RuleSeverity } [severity] - The severity of the rule
+ * @property { boolean } fix - Whether the rule should be autofixed
+ * @property { string } [appendedMessage] - Message appended to the warning text
+ * @property { (stylelintRuleName: string) => import('stylelint').RuleMeta } [meta] - Category documentation URL hyperlinked to the reported rule in the VS Code diagnostic
+ */
 
-    const rules = !isPrimaryOptionsValid
-      ? []
-      : Object.entries(primaryOptions).flatMap(
-          ([categoryName, categoryConfigRules]) =>
-            Object.entries(categoryConfigRules).map(
-              ([categoryRuleName, categoryRuleSettings]) => ({
-                categoryRuleName,
-                categoryRuleSettings,
-                coverageRuleName: `${ruleName}/${categoryName}`,
-              }),
-            ),
-        );
+// Setting `line` to an invalid line number forces the warning to be reported
+// and the `report({node})` option is used to display the location information:
+// https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
+const forceReport = {line: -1};
+
+module.exports = stylelint.createPlugin(
+  coverageRuleName,
+  /**
+   * @param {PrimaryOptions} categorizedRules
+   * @param {import('stylelint').RuleContext} context
+   */
+  (categorizedRules, _, context) => {
+    const isPrimaryOptionsValid = validatePrimaryOptions(categorizedRules);
+
+    /** @type {CoverageRule[]} */
+    const coverageRules = [];
+
+    for (const [category, categoryConfig] of Object.entries(categorizedRules)) {
+      const [stylelintRules, categorySettings] =
+        normalizeConfig(categoryConfig);
+
+      for (const [stylelintRuleName, stylelintRuleSettings] of Object.entries(
+        stylelintRules,
+      )) {
+        coverageRules.push({
+          ruleName: `polaris/${category}/${stylelintRuleName}`,
+          stylelintRuleName,
+          ruleSettings: stylelintRuleSettings,
+          severity: stylelintRuleSettings?.[1]?.severity,
+          fix: context.fix && !stylelintRuleSettings?.[1]?.disableFix,
+          appendedMessage:
+            stylelintRuleSettings?.[1]?.message || categorySettings?.message,
+          meta: getMeta(category, stylelintRuleName),
+        });
+      }
+    }
 
     return (root, result) => {
-      const validOptions = stylelint.utils.validateOptions(result, ruleName, {
-        actual: isPrimaryOptionsValid,
-      });
+      const validOptions = stylelint.utils.validateOptions(
+        result,
+        coverageRuleName,
+        {
+          actual: isPrimaryOptionsValid,
+        },
+      );
 
       if (!validOptions) return;
 
-      for (const rule of rules) {
-        const {categoryRuleName, categoryRuleSettings, coverageRuleName} = rule;
+      for (const rule of coverageRules) {
+        const {
+          ruleName,
+          stylelintRuleName,
+          ruleSettings,
+          fix,
+          meta,
+          appendedMessage = '',
+          severity = result.stylelint.config?.defaultSeverity,
+        } = rule;
 
         stylelint.utils.checkAgainstRule(
           {
-            ruleName: categoryRuleName,
-            ruleSettings: categoryRuleSettings,
+            ruleName: stylelintRuleName,
+            ruleSettings,
+            fix,
             root,
+            result,
           },
           (warning) => {
+            const warningText = warning.text.replace(
+              ` (${stylelintRuleName})`,
+              '',
+            );
+
+            // We insert the meta for the rules on the stylelint result, because the rules are reported with dynamic rule names instead of each category being its own plugin. See Stylelint issue for context: https://github.com/stylelint/stylelint/issues/6513
+            result.stylelint.ruleMetadata[ruleName] = meta;
+
+            const message = appendedMessage
+              ? `${warningText} - ${appendedMessage}`
+              : warningText;
+
             stylelint.utils.report({
               result,
-              node: warning.node,
-              ruleName: coverageRuleName,
-              message: warning.text.replace(categoryRuleName, coverageRuleName),
+              ruleName,
+              message,
+              severity: severity || 'error',
+              // If `warning.node` is NOT present, the warning is referring to a misconfigured rule
+              ...(warning.node ? {node: warning.node} : forceReport),
             });
           },
         );
-      }
-
-      const disabledCoverageWarnings =
-        result.stylelint.disabledWarnings?.filter((disabledWarning) =>
-          disabledWarning.rule.startsWith(ruleName),
-        );
-
-      if (!disabledCoverageWarnings?.length) return;
-
-      const disabledCoverageLines = Array.from(
-        new Set(disabledCoverageWarnings.map(({line}) => line)),
-      );
-
-      // Ensure all stylelint-polaris/coverage disable comments
-      // have a description prefixed with "polaris:"
-      for (const disabledRange of result.stylelint.disabledRanges.all) {
-        if (
-          !isDisabledCoverageRule(disabledCoverageLines, disabledRange) ||
-          disabledRange.description?.startsWith('polaris:')
-        ) {
-          continue;
-        }
-
-        const stylelintDisableText = disabledRange.comment.text
-          .split('--')[0]
-          .trim();
-
-        stylelint.utils.report({
-          message: `Expected /* ${stylelintDisableText} -- polaris: Reason for disabling */`,
-          ruleName,
-          result,
-          node: disabledRange.comment,
-          // Note: `stylelint-disable` comments (without next-line) appear to
-          // be special cased in that they do not trigger warnings when reported.
-          // Setting `line` to an invalid line number forces the warning to be
-          // reported and the above comment `node` is used to display the
-          // location information:
-          // https://github.com/stylelint/stylelint/blob/57cbcd4eb0ee809006a1e3d2ccfe73af48744ad5/lib/utils/report.js#L49-L52
-          line: -1,
-        });
       }
     };
   },
 );
 
 /**
- * @param {number[]} disabledCoverageLines
- * @param {import('stylelint').DisabledRange} disabledRange
+ * @param {string} category
+ * @param {string} stylelintRuleName
+ * @returns {import('stylelint').RuleMeta}
  */
-function isDisabledCoverageRule(disabledCoverageLines, disabledRange) {
-  if (isUnclosedDisabledRange(disabledRange)) {
-    return disabledCoverageLines.some(
-      (disabledCoverageLine) => disabledCoverageLine >= disabledRange.start,
-    );
-  }
+function getMeta(category, stylelintRuleName) {
+  const baseMetaUrl =
+    'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md';
 
-  return disabledCoverageLines.some(
-    (coverageDisabledLine) =>
-      coverageDisabledLine >= disabledRange.start &&
-      coverageDisabledLine <= disabledRange.end,
-  );
+  return {
+    url: `${baseMetaUrl}#${category}-${stylelintRuleName.replace('/', '-')}`,
+  };
 }
 
 /**
- * Checks if the `disabledRange` is an unclosed `stylelint-disable` comment
- * e.g. The `stylelint-disable` comment is NOT followed by `stylelint-enable`
- * @param {import('stylelint').DisabledRange} disabledRange
+ * @param {PrimaryOptions} categoryConfigRules
+ * @returns {[StylelintConfigRules, CategorySettings]}
  */
-function isUnclosedDisabledRange(disabledRange) {
-  if (
-    !disabledRange.comment.text.startsWith('stylelint-disable-next-line') &&
-    !isNumber(disabledRange.end)
-  ) {
-    return true;
-  }
-
-  return false;
+function normalizeConfig(categoryConfigRules) {
+  return Array.isArray(categoryConfigRules)
+    ? categoryConfigRules
+    : [categoryConfigRules, {}];
 }
 
-function validatePrimaryOptions(primaryOptions) {
-  if (!isObject(primaryOptions)) return false;
+function validatePrimaryOptions(categorizedRules) {
+  if (!isPlainObject(categorizedRules)) return false;
 
-  for (const categoryConfigRules of Object.values(primaryOptions)) {
-    if (!isObject(categoryConfigRules)) return false;
+  for (const categoryConfig of Object.values(categorizedRules)) {
+    if (
+      !(
+        isPlainObject(categoryConfig) ||
+        (Array.isArray(categoryConfig) &&
+          categoryConfig.length === 2 &&
+          categoryConfig.every(isPlainObject))
+      )
+    ) {
+      return false;
+    }
   }
 
   return true;

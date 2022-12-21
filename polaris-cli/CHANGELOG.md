@@ -1,5 +1,30 @@
 # @shopify/plugin-polaris
 
+## 0.0.22
+
+## 0.0.21
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @shopify/polaris-migrator@0.10.1
+
+## 0.0.20
+
+## 0.0.19
+
+### Patch Changes
+
+- Updated dependencies [[`22c4107b3`](https://github.com/Shopify/polaris/commit/22c4107b3c369eb68da31980d208c09b3fc4ba37), [`77736370e`](https://github.com/Shopify/polaris/commit/77736370eeddde18a2c11da102b88646f2263d99)]:
+  - @shopify/polaris-migrator@0.10.0
+
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies [[`28220456f`](https://github.com/Shopify/polaris/commit/28220456f67bb4e6e2df19ceb334635ca2d0f3a5)]:
+  - @shopify/polaris-migrator@0.9.1
+
 ## 0.0.17
 
 ### Patch Changes

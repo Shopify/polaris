@@ -2,7 +2,7 @@ const stylelint = require('stylelint');
 
 const {isRegExp, isString, matchesStringOrRegExp} = require('../../utils');
 
-const ruleName = 'stylelint-polaris/global-disallowed-list';
+const ruleName = 'polaris/global-disallowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   rejected: (value) => `Unexpected disallowed value "${value}"`,
