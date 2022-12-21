@@ -37,7 +37,6 @@ export function Collapsible({
   expandOnPrint,
   open,
   transition = true,
-  preventMeasuringOnChildrenUpdate: _preventMeasuringOnChildrenUpdate,
   children,
   onAnimationEnd,
 }: CollapsibleProps) {
