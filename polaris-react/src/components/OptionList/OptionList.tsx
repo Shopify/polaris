@@ -11,6 +11,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Box} from '../Box';
 import {Text} from '../Text';
+import {Bleed} from '../Bleed';
 
 import {Option} from './components';
 
@@ -135,11 +136,13 @@ export function OptionList({
             paddingBlockStart={isFirstOption ? undefined : '2'}
           >
             {titleMarkup}
-            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-            {/* @ts-ignore OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11 */}
-            <Box as="ul" id={`${id}-${sectionIndex}`} role={role}>
-              {optionsMarkup}
-            </Box>
+            <Bleed marginBlockStart={title ? undefined : '05'} marginInline="0">
+              {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+              {/* @ts-ignore OptionList allows string as role but Box doesn't. @TODO: remove string from OptionList in v11 */}
+              <Box as="ul" id={`${id}-${sectionIndex}`} role={role}>
+                {optionsMarkup}
+              </Box>
+            </Bleed>
           </Box>
         );
       })
