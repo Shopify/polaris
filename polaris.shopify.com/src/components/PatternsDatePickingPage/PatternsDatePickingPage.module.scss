@@ -30,11 +30,7 @@
 }
 
 .UsageTable {
-  .WhenToUseCaption {
-    font-weight: var(--font-weight-500);
-  }
   td:first-child {
-    font-weight: var(--font-weight-700);
     width: 0;
     white-space: nowrap;
   }
@@ -134,35 +130,25 @@
     }
   }
 }
-.UsageGuidelinesWrapper {
-  .UsageGuidelinesEl {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin: 0;
+.UsageGuidelinesGrid {
+  display: grid;
+  gap: var(--p-space-4);
+  grid-template-columns: 31% 1fr;
 
-    .ImageWrapper {
-      aspect-ratio: 485/315;
-      border-radius: 10px;
-      position: relative;
-      background-color: rgba(250, 250, 250, 1);
-      border: 1px solid #c9cccf;
-      display: block;
-      overflow: hidden;
-      width: 100%;
-      > img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    .UsageGuidelineTxt {
-      flex-basis: 45%;
-      p {
-        font-size: 0.875rem;
-        line-height: 1.125rem;
-      }
+  .UsageGuidelinesRow {
+    display: contents;
+  }
+
+  .ImageWrapper {
+    aspect-ratio: 485/315;
+    border-radius: 10px;
+    position: relative;
+    background-color: rgba(250, 250, 250, 1);
+    border: 1px solid #c9cccf;
+    display: block;
+    overflow: hidden;
+    > img {
+      object-fit: cover;
     }
   }
 }

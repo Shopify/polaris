@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,6 +7,7 @@ import StatusBadge from '../StatusBadge';
 import {StatusName} from '../../types';
 import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
+import {Box} from '../Box';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
 import Preview from '../PatternThumbnailPreview';
@@ -28,13 +29,7 @@ type PatternVariant = {
   title: string;
   slug: string;
   howItHelps: MarkdownString;
-  usefulToKnow: {
-    description: string;
-    image: {
-      src: string;
-      alt: string;
-    };
-  }[];
+  usefulToKnow: MarkdownString;
   example: PatternExample;
 };
 type MultiVariantPattern = {
@@ -122,27 +117,15 @@ const pattern: MultiVariantPattern = {
 
 | | |
 |-|-|
-|Schedule an event on a specific day|Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers|
-|Input memorable dates to forms|An example of this is entering a birthdate.|
-:caption[Use when merchants need to:]{side=top}`,
-      usefulToKnow: [
-        {
-          description:
-            'Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.',
-          image: {
-            alt: '',
-            src: '/images/patterns/single-list-usage-1.png',
-          },
-        },
-        {
-          description:
-            'This pattern can be duplicated to allow users to add an end date or time.',
-          image: {
-            alt: '',
-            src: '/images/patterns/single-list-usage-2.png',
-          },
-        },
-      ],
+|**Schedule an event on a specific day**|Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers|
+|**Input memorable dates to forms**|An example of this is entering a birthdate.|
+:caption[**Use when merchants need to:**]{side=top}`,
+      usefulToKnow: `
+| | |
+|-|-|
+|Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.|![](/images/patterns/single-list-usage-1.png)|
+|This pattern can be duplicated to allow users to add an end date or time.|![](/images/patterns/single-list-usage-2.png)|
+`,
       example: {
         code: `
       {(function DatePickerPattern () {
@@ -215,35 +198,16 @@ const pattern: MultiVariantPattern = {
 
 | | |
 |-|-|
-|Analyze trends and data|When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics|
-|Schedule an event|When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.|
-:caption[Use when merchants need to:]{side=top}`,
-      usefulToKnow: [
-        {
-          description:
-            'Pin any relevant, merchant-specific dates to the top of the option list.',
-          image: {
-            alt: '',
-            src: '/images/patterns/date-range-usage-1.png',
-          },
-        },
-        {
-          description:
-            'If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)',
-          image: {
-            alt: '',
-            src: '/images/patterns/date-range-usage-2.png',
-          },
-        },
-        {
-          description:
-            'If a merchant enters a nonexistent date, revert to the previously selected date.',
-          image: {
-            alt: '',
-            src: '/images/patterns/date-range-usage-3.png',
-          },
-        },
-      ],
+|**Analyze trends and data**|When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics|
+|**Schedule an event**|When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.|
+:caption[**Use when merchants need to:**]{side=top}`,
+      usefulToKnow: `
+| | |
+|-|-|
+|Pin any relevant, merchant-specific dates to the top of the option list.|![](/images/patterns/date-range-usage-1.png)|
+|If a date cannot be selected, indicate it with the [disabled text color token](/tokens/colors)|![](/images/patterns/date-range-usage-2.png)|
+|If a merchant enters a nonexistent date, revert to the previously selected date.|![](/images/patterns/date-range-usage-3.png)|
+`,
       example: {
         code: ` <Page
         divider
@@ -265,34 +229,15 @@ const pattern: MultiVariantPattern = {
 
 | | |
 |-|-|
-|Select from templated dates|When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview|
-:caption[Use when merchants need to:]{side=top}`,
-      usefulToKnow: [
-        {
-          description:
-            'In the button preview, set a default date range that a merchant will most likely use.',
-          image: {
-            alt: '',
-            src: '/images/patterns/date-list-usage-1.png',
-          },
-        },
-        {
-          description:
-            'Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.',
-          image: {
-            alt: '',
-            src: '/images/patterns/date-list-usage-2.png',
-          },
-        },
-        {
-          description:
-            'A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.',
-          image: {
-            alt: '',
-            src: '/images/patterns/date-list-usage-3.png',
-          },
-        },
-      ],
+|**Select from templated dates**|When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview|
+:caption[**Use when merchants need to:**]{side=top}`,
+      usefulToKnow: `
+| | |
+|-|-|
+|In the button preview, set a default date range that a merchant will most likely use.|![](/images/patterns/date-list-usage-1.png)|
+|Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.|![](Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.)|
+|A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.|![](/images/patterns/date-list-usage-3.png)|
+`,
       example: {
         context: `<div style={{
           display: 'flex',
@@ -324,12 +269,10 @@ const HowItHelps = ({children}: {children: string}) => (
   <Markdown
     remarkPlugins={[remarkUnwrapImages, remarkDirective, remarkDirectiveRehype]}
     components={{
-      img: ({src, alt, ...props}) =>
+      img: ({src, alt}) =>
         src ? (
           <div className={styles.ImageWrapper}>
-            {/*
-            // @ts-expect-error src types mismatch */}
-            <Image fill src={src} alt={alt ?? ''} {...props} />
+            <Image fill src={src} alt={alt ?? ''} />
           </div>
         ) : null,
       ol: (props) => <Stack as="ol" gap="2" {...props} />,
@@ -351,9 +294,60 @@ const HowItHelps = ({children}: {children: string}) => (
       // @ts-expect-error react-markdown doesn't know about the extra data
       // remark-directive is returning for us
       caption: ({children, side}) => (
-        <TableCaption className={styles.WhenToUseCaption} side={side}>
+        <TableCaption side={side}>{children}</TableCaption>
+      ),
+      strong: ({children}) => (
+        <Box as="strong" style={{fontWeight: 'var(--font-weight-700)'}}>
           {children}
-        </TableCaption>
+        </Box>
+      ),
+    }}
+  >
+    {children}
+  </Markdown>
+);
+
+const UsefulToKnow = ({children}: {children: string}) => (
+  <Markdown
+    remarkPlugins={[remarkUnwrapImages, remarkDirective, remarkDirectiveRehype]}
+    components={{
+      img: ({src, alt}) =>
+        src ? (
+          <div className={styles.ImageWrapper}>
+            <Image fill src={src} alt={alt ?? ''} />
+          </div>
+        ) : null,
+      ol: (props) => <Stack as="ol" gap="2" {...props} />,
+      li: (props) => <li {...props} />,
+      // We're using table as a handy shortcut for rendering a CSS grid
+      // But that grid is actually rendered as an unordered list of items!
+      // Should probably just be MDX at this point...
+      table: ({children}) => (
+        <Box as="ul" className={styles.UsageGuidelinesGrid}>
+          {children}
+        </Box>
+      ),
+      // don't need this extra wrapping element, so pass it through
+      tbody: ({children}) => <Fragment>{children}</Fragment>,
+      // We don't use theads here
+      thead: () => null,
+      tr: (props) =>
+        // remark-directive is inserting extra, blank trs for some reason
+        isEmptyTr(props) ? null : (
+          <Box as="li" className={styles.UsageGuidelinesRow}>
+            {props.children}
+          </Box>
+        ),
+      td: ({children, node}) =>
+        node?.children?.[0].type === 'text' ? (
+          <p>{children}</p>
+        ) : (
+          <Fragment>{children}</Fragment>
+        ),
+      strong: ({children}) => (
+        <Box as="strong" style={{fontWeight: 'var(--font-weight-700)'}}>
+          {children}
+        </Box>
       ),
     }}
   >
@@ -463,32 +457,7 @@ export default function PatternsDatePickingPage() {
                     </Stack>
                     <Stack as="section" gap="4">
                       <Heading as="h3">Useful to know</Heading>
-                      <Stack
-                        as="ul"
-                        className={styles.UsageGuidelinesWrapper}
-                        gap="4"
-                      >
-                        {variant.usefulToKnow.map((row, i) => (
-                          <Row
-                            as="li"
-                            key={`single-date-useful-to-know-${i}`}
-                            className={styles.UsageGuidelinesEl}
-                            gap="4"
-                          >
-                            <div className={styles.UsageGuidelineTxt}>
-                              {/** We use the <Markdown/> component here as some of the usage guidelines contain inline links */}
-                              <Markdown>{row.description}</Markdown>
-                            </div>
-                            <div className={styles.ImageWrapper}>
-                              <Image
-                                alt={row.image.alt}
-                                fill
-                                src={row.image.src}
-                              />
-                            </div>
-                          </Row>
-                        ))}
-                      </Stack>
+                      <UsefulToKnow>{variant.usefulToKnow}</UsefulToKnow>
                     </Stack>
                   </Stack>
                 </Tab.Panel>
