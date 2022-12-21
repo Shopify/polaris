@@ -74,10 +74,6 @@ $breakpoints-empty-search-results-height-up: '(min-height: #{breakpoint(600px)})
   min-height: resource-list(header-min-height);
   padding: calc(var(--p-space-3) - var(--p-space-05)) var(--p-space-5);
   background-color: var(--p-surface);
-
-  @media #{$p-breakpoints-sm-up} {
-    flex-direction: row;
-  }
 }
 
 .HeaderWrapper-isSticky {
