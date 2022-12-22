@@ -14,6 +14,7 @@ export interface Example extends FrontMatter {
 export interface FrontMatter {
   title: string;
   category?: string;
+  url?: string;
   description?: string;
   examples?: Example[];
   icon?: string;
@@ -22,6 +23,10 @@ export interface FrontMatter {
     value: string;
     message: string;
   };
+}
+
+export interface PatternFrontMatter extends FrontMatter {
+  previewImg: string;
 }
 
 export type MarkdownFile = {

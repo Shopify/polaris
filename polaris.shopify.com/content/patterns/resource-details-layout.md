@@ -1,5 +1,7 @@
 ---
 title: Resource Details layout
-order: 10
+description: Makes it easy for merchants to create, view and edit resources.
 url: /patterns/resource-details-layout
+previewImg: /images/patterns/pattern-thumbnail-resource-details.png
+order: 10
 ---
