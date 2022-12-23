@@ -1,21 +1,28 @@
+import {forwardRef} from 'react';
+import {Box, type WithAsProp} from '../Box';
 import styles from './ExampleWrapper.module.scss';
-import {className} from '../../utils/various';
+
 type Props = {
   children: React.ReactNode;
   renderFrameActions: () => React.ReactNode;
 };
-const ExampleWrapper: React.ComponentType<Props> = ({
-  children,
-  renderFrameActions,
-}) => {
-  return (
-    <div className={styles.ExampleFrame}>
+
+const ExampleWrapper = forwardRef(
+  ({as = 'div', className, children, renderFrameActions, ...props}, ref) => (
+    <Box
+      ref={ref}
+      as={as}
+      className={[styles.ExampleFrame, className]}
+      {...props}
+    >
       {children}
-      <div className={className(styles.Buttons, 'light-mode')}>
+      <Box className={[styles.Buttons, 'light-mode']}>
         {renderFrameActions()}
-      </div>
-    </div>
-  );
-};
+      </Box>
+    </Box>
+  ),
+) as WithAsProp<Props, typeof Box, 'div'>;
+
+ExampleWrapper.displayName = 'ExampleWrapper';
 
 export default ExampleWrapper;
