@@ -111,7 +111,7 @@ const PatternsExample = ({
         })}
         {relatedComponents.length > 1 ? ' components' : ' component'}
       </p>
-      <Stack gap="2">
+      <Stack gap="2" className={styles.SpecificityBuster}>
         <ExampleWrapper
           className={styles.ExampleWrapper}
           renderFrameActions={() => (

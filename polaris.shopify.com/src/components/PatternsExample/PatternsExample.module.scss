@@ -6,8 +6,9 @@
     color: var(--text-link);
   }
 }
-
-.ExampleWrapper {
-  box-shadow: none;
-  border: 1px solid var(--p-border-subdued);
+.SpecificityBuster {
+  .ExampleWrapper {
+    box-shadow: none;
+    border: 1px solid var(--p-border-subdued);
+  }
 }
