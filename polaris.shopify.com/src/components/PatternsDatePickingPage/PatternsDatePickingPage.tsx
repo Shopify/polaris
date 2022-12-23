@@ -112,8 +112,8 @@ const pattern: MultiVariantPattern = {
         'This enables merchants to type a specific date or pick it from a calendar.',
       howItHelps: `![A labeled diagram of an active input field displaying a calendar beneath it. The input field is labeled "1". The calendar is labeled "2".](/images/patterns/single-list-cover-image.png)
 
-1. The text input gives merchants the option to use the keyboard to enter a date.',
-2. A single month calendar is previewed after selecting the date input to provide visual affordance of the single date picked. The calendar can then be used to select a new date.
+1. The text input gives merchants the option to use the keyboard to enter a date.
+2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
 
 | | |
 |-|-|
@@ -192,8 +192,8 @@ const pattern: MultiVariantPattern = {
       description: 'This enables merchants to select a date range.',
       howItHelps: `![](/images/patterns/date-range-cover-image.png)
 
-1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.',
-2. Displaying two months makes it easier for merchants to select date ranges that span across both.',
+1. Providing multiple ways to select a date range gives merchants full flexibility. The list provides quick access to common options, the text input makes it easier to set large custom ranges, and the calendar is an intuitive way to set a more narrow scope.
+2. Displaying two months makes it easier for merchants to select date ranges that span across both.
 3. Selecting a date range may require multiple steps, so merchants prefer to explicitly confirm their selection, unlike the single date picker which closes on selection.
 
 | | |
@@ -388,7 +388,7 @@ export default function PatternsDatePickingPage() {
     }
   }, [query.tab, isReady]);
   const description =
-    'This layout pattern makes it easy for merchants to scan groups of settings and make desired changes';
+    'Lets merchants select a date or date range to help them filter information or objects and schedule events or actions.';
 
   useEffect(() => {
     setExampleIndex(0);
