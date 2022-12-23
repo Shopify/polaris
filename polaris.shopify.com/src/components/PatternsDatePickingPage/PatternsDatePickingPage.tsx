@@ -398,98 +398,104 @@ export default function PatternsDatePickingPage() {
     <>
       <PageMeta title={pattern.title} description={description} />
 
-      <Page showTOC={false}>
-        <Stack gap="4">
-          <Heading as="h1">
-            <Row wrap gap="2" className={styles.Heading}>
-              {pattern.title}{' '}
-              {isBeta ? (
-                <StatusBadge status={{value: StatusName.Beta, message: ''}} />
-              ) : null}
-            </Row>
-          </Heading>
-          <Lede>{description}</Lede>
-          <p className={styles.InfoLine}>
-            <Link
-              className={styles.InfoLineLink}
-              href={pattern.githubDiscussionsLink}
-            >
-              Discuss on GitHub
-            </Link>
-          </p>
-        </Stack>
-        <Tab.Group
-          defaultIndex={0}
-          selectedIndex={exampleIndex}
-          onChange={onTabChange}
-        >
-          <div className={styles.TabGroup}>
-            <Tab.List>
-              <div className={styles.ExamplesList} id="examples">
-                {pattern.variants.map((variant) => (
-                  <Tab key={`${variant.slug}-tab`}>
-                    <span>{variant.title}</span>
-                  </Tab>
-                ))}
-              </div>
-            </Tab.List>
+      <Page showTOC={true}>
+        <Stack gap="8">
+          <Stack gap="4">
+            <Heading as="h1">
+              <Row wrap gap="2" className={styles.Heading}>
+                {pattern.title}{' '}
+                {isBeta ? (
+                  <StatusBadge status={{value: StatusName.Beta, message: ''}} />
+                ) : null}
+              </Row>
+            </Heading>
+            <Lede>{description}</Lede>
+            <p className={styles.InfoLine}>
+              <Link
+                className={styles.InfoLineLink}
+                href={pattern.githubDiscussionsLink}
+              >
+                Discuss on GitHub
+              </Link>
+            </p>
+          </Stack>
+          <Tab.Group
+            defaultIndex={0}
+            selectedIndex={exampleIndex}
+            onChange={onTabChange}
+          >
+            <div className={styles.TabGroup} data-selected={exampleIndex}>
+              <Tab.List>
+                <div className={styles.ExamplesList} id="examples">
+                  {pattern.variants.map((variant) => (
+                    <Tab key={`${variant.slug}-tab`}>
+                      <span>{variant.title}</span>
+                    </Tab>
+                  ))}
+                </div>
+              </Tab.List>
 
-            <Tab.Panels>
-              {pattern.variants.map((variant) => (
-                <Tab.Panel
-                  key={`${variant.slug}-panel`}
-                  className={styles.Panel}
-                >
-                  <Stack gap="8">
-                    {description ? <p>{variant.description}</p> : null}
-                    <Stack as="section" gap="4" className={styles.MerchantGoal}>
-                      <Heading as="h2">How it helps merchants</Heading>
-                      <HowItHelps>{variant.howItHelps}</HowItHelps>
+              <Tab.Panels>
+                {pattern.variants.map((variant) => (
+                  <Tab.Panel
+                    key={`${variant.slug}-panel`}
+                    className={styles.Panel}
+                  >
+                    <Stack gap="8">
+                      {description ? <p>{variant.description}</p> : null}
+                      <Stack
+                        as="section"
+                        gap="4"
+                        className={styles.MerchantGoal}
+                      >
+                        <Heading as="h2">How it helps merchants</Heading>
+                        <HowItHelps>{variant.howItHelps}</HowItHelps>
+                      </Stack>
+                      <Stack as="section" gap="4">
+                        <Heading as="h2">Using this pattern</Heading>
+                        <PatternsExample
+                          example={variant.example}
+                          patternName={`${pattern.title} > ${variant.title}`}
+                          relatedComponents={[
+                            {
+                              label: 'Date picker',
+                              url: '/components/date-picker',
+                            },
+                            {label: 'Text', url: '/components/text-field'},
+                          ]}
+                        />
+                      </Stack>
+                      <Stack as="section" gap="4">
+                        <Heading as="h3">Useful to know</Heading>
+                        <UsefulToKnow>{variant.usefulToKnow}</UsefulToKnow>
+                      </Stack>
                     </Stack>
-                    <Stack as="section" gap="4">
-                      <Heading as="h2">Using this pattern</Heading>
-                      <PatternsExample
-                        example={variant.example}
-                        patternName={`${pattern.title} > ${variant.title}`}
-                        relatedComponents={[
-                          {
-                            label: 'Date picker',
-                            url: '/components/date-picker',
-                          },
-                          {label: 'Text', url: '/components/text-field'},
-                        ]}
-                      />
-                    </Stack>
-                    <Stack as="section" gap="4">
-                      <Heading as="h3">Useful to know</Heading>
-                      <UsefulToKnow>{variant.usefulToKnow}</UsefulToKnow>
-                    </Stack>
-                  </Stack>
-                </Tab.Panel>
-              ))}
-            </Tab.Panels>
-            <Stack as="section" gap="4" className={styles.RelatedResources}>
-              <Heading as="h2">Related resources</Heading>
-              <Grid gapX="4" gapY="6" itemMinWidth="24rem">
-                {pattern.relatedResources.map((resource, i) => (
-                  <GridItem
-                    key={`date-picking-related-resource-${i}`}
-                    title={resource.title}
-                    description={resource.description}
-                    url={resource.href}
-                    renderPreview={() => (
-                      <Preview
-                        renderInner={false}
-                        alt={resource.image.alt}
-                        src={resource.image.src}
-                      />
-                    )}
-                  />
+                  </Tab.Panel>
                 ))}
-              </Grid>
-            </Stack>
-          </div>
-        </Tab.Group>
+              </Tab.Panels>
+            </div>
+          </Tab.Group>
+          <Stack as="section" gap="4">
+            <Heading as="h2">Related resources</Heading>
+            <Grid gapX="4" gapY="6" itemMinWidth="24rem">
+              {pattern.relatedResources.map((resource, i) => (
+                <GridItem
+                  key={`date-picking-related-resource-${i}`}
+                  title={resource.title}
+                  description={resource.description}
+                  url={resource.href}
+                  renderPreview={() => (
+                    <Preview
+                      renderInner={false}
+                      alt={resource.image.alt}
+                      src={resource.image.src}
+                    />
+                  )}
+                />
+              ))}
+            </Grid>
+          </Stack>
+        </Stack>
       </Page>
     </>
   );
