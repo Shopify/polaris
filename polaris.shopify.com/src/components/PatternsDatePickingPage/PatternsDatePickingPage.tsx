@@ -235,7 +235,7 @@ const pattern: MultiVariantPattern = {
 | | |
 |-|-|
 |In the button preview, set a default date range that a merchant will most likely use.|![](/images/patterns/date-list-usage-1.png)|
-|Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.|![](Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.)|
+|Single dates should be at the top of the list, followed by date ranges from smallest to largest ranges.|![](/images/patterns/date-list-usage-2.png)|
 |A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.|![](/images/patterns/date-list-usage-3.png)|
 `,
       example: {
@@ -480,7 +480,9 @@ export default function PatternsDatePickingPage() {
                         />
                       </Stack>
                       <Stack as="section" gap="4">
-                        <Heading as="h3" className={styles.UsefulHeading}>Useful to know</Heading>
+                        <Heading as="h3" className={styles.UsefulHeading}>
+                          Useful to know
+                        </Heading>
                         <UsefulToKnow>{variant.usefulToKnow}</UsefulToKnow>
                       </Stack>
                     </Stack>
