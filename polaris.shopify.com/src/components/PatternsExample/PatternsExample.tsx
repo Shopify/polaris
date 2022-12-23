@@ -113,6 +113,7 @@ const PatternsExample = ({
       </p>
       <Stack gap="2">
         <ExampleWrapper
+          className={styles.ExampleWrapper}
           renderFrameActions={() => (
             <Fragment>
               <PlayroomButton code={example.code} patternName={patternName} />
