@@ -480,7 +480,7 @@ export default function PatternsDatePickingPage() {
                         />
                       </Stack>
                       <Stack as="section" gap="4">
-                        <Heading as="h3">Useful to know</Heading>
+                        <Heading as="h3" className={styles.UsefulHeading}>Useful to know</Heading>
                         <UsefulToKnow>{variant.usefulToKnow}</UsefulToKnow>
                       </Stack>
                     </Stack>
