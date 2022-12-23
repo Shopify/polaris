@@ -179,10 +179,8 @@
 
   .ImageWrapper {
     aspect-ratio: 485/315;
-    border-radius: 10px;
     position: relative;
-    background-color: rgba(250, 250, 250, 1);
-    border: 1px solid #c9cccf;
+    background: var(--p-surface-depressed);
     display: block;
     overflow: hidden;
     > img {
