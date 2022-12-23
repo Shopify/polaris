@@ -355,6 +355,9 @@ const UsefulToKnow = ({children}: {children: string}) => (
   </Markdown>
 );
 
+// TODO: Pull this from the markdown file
+const isBeta = false;
+
 export default function PatternsDatePickingPage() {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
@@ -400,7 +403,9 @@ export default function PatternsDatePickingPage() {
           <Heading as="h1">
             <Row wrap gap="2" className={styles.Heading}>
               {pattern.title}{' '}
-              <StatusBadge status={{value: StatusName.Beta, message: ''}} />
+              {isBeta ? (
+                <StatusBadge status={{value: StatusName.Beta, message: ''}} />
+              ) : null}
             </Row>
           </Heading>
           <Lede>{description}</Lede>
