@@ -493,7 +493,7 @@ export default function PatternsDatePickingPage() {
           </Tab.Group>
           <Stack as="section" gap="4">
             <Heading as="h2">Related resources</Heading>
-            <Grid gapX="4" gapY="6" itemMinWidth="24rem">
+            <Grid gapX="4" gapY="6" itemMinWidth="16rem">
               {pattern.relatedResources.map((resource, i) => (
                 <GridItem
                   key={`date-picking-related-resource-${i}`}
