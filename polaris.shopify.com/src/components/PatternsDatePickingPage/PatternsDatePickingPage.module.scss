@@ -35,6 +35,10 @@
     // border radius there when that tab is selected
     border-top-left-radius: 0;
   }
+
+  .VariantDescription {
+    font-size: var(--font-size-400);
+  }
 }
 
 .UsageTable {

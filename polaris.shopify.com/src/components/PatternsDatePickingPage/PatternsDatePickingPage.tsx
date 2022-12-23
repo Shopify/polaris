@@ -442,7 +442,21 @@ export default function PatternsDatePickingPage() {
                     className={styles.Panel}
                   >
                     <Stack gap="8">
-                      {description ? <p>{variant.description}</p> : null}
+                      {variant.description ? (
+                        <Markdown
+                          components={{
+                            p: (props) => (
+                              <Box
+                                as="p"
+                                className={styles.VariantDescription}
+                                {...props}
+                              />
+                            ),
+                          }}
+                        >
+                          {variant.description}
+                        </Markdown>
+                      ) : null}
                       <Stack
                         as="section"
                         gap="4"
