@@ -2,4 +2,4 @@
 '@shopify/stylelint-polaris': patch
 ---
 
-Explore RegExp pattern for addressing out of memory issue
+Use RegExp pattern to exclude invalid scope reports and address memory issues
