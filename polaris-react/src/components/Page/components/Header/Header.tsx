@@ -102,7 +102,9 @@ export function Header({
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
       <div className={styles.BreadcrumbWrapper}>
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </Box>
       </div>
     ) : null;
 
@@ -115,7 +117,7 @@ export function Header({
 
   const additionalNavigationMarkup = additionalNavigation ? (
     <div className={styles.AdditionalNavigationWrapper}>
-      {additionalNavigation}
+      <Box printHidden>{additionalNavigation}</Box>
     </div>
   ) : null;
 
@@ -236,7 +238,7 @@ export function Header({
         </ConditionalRender>
         <ConditionalRender condition={[slot5, slot6].some(notNull)}>
           <div className={styles.Row}>
-            <div className={styles.LeftAlign}>{slot5}</div>
+            <Inline>{slot5}</Inline>
             <ConditionalRender condition={slot6 != null}>
               <div className={styles.RightAlign}>{slot6}</div>
             </ConditionalRender>
