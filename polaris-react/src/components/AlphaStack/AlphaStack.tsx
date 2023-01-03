@@ -22,7 +22,7 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default 'div'
    */
   as?: Element;
-  /** Vertical alignment of children
+  /** Horizontal alignment of children
    * @default 'start'
    */
   align?: Align;

@@ -23,7 +23,7 @@ examples:
   - fileName: alpha-stack-with-align.tsx
     title: Alignment
     description: >-
-      Use to vertically align Stack.
+      Use to horizontally align Stack.
 ---
 
 ## Related components
