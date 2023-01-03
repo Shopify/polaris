@@ -477,12 +477,7 @@ module.exports = {
       // Report invalid scope disables for all rules except coverage rules
       // Note: This doesn't affect the default Stylelint behavior/reporting
       // and is only need because we dynamically create these rule names
-      except: Object.entries(stylelintPolarisCoverageOptions).flatMap(
-        ([categoryName, categoryConfigRules]) =>
-          Object.keys(categoryConfigRules).map(
-            (categoryRuleName) => `polaris/${categoryName}/${categoryRuleName}`,
-          ),
-      ),
+      except: /^polaris\/.+?\/.+$/,
     },
   ],
   plugins: [
