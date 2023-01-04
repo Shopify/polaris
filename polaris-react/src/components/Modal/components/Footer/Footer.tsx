@@ -4,7 +4,6 @@ import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Box} from '../../../Box';
-import {Columns} from '../../../Columns';
 import {Inline} from '../../../Inline';
 
 export interface FooterProps {
@@ -40,12 +39,12 @@ export function Footer({
       padding="4"
       width="100%"
     >
-      <Columns columns={{xs: '1fr auto'}}>
+      <Inline align="space-between">
         <Inline blockAlign="center">{children}</Inline>
         <Inline align="end" blockAlign="center">
           {actions}
         </Inline>
-      </Columns>
+      </Inline>
     </Box>
   );
 }
