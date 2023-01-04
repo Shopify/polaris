@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.17.1
+
+### Patch Changes
+
+- [#7982](https://github.com/Shopify/polaris/pull/7982) [`31ae3c056`](https://github.com/Shopify/polaris/commit/31ae3c056e2b71b0cdd624354dceb6d409383ad6) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a layout issue with Modal footer
+
 ## 10.17.0
 
 ### Minor Changes
