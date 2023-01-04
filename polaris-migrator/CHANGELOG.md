@@ -1,5 +1,14 @@
 # @shopify/polaris-migrator
 
+## 0.10.2
+
+### Patch Changes
+
+- [#7979](https://github.com/Shopify/polaris/pull/7979) [`bfb537780`](https://github.com/Shopify/polaris/commit/bfb5377802f0d8e28c9cfafa9924f1849bcc0cce) Thanks [@samrose3](https://github.com/samrose3)! - Early exit if target function isn't present for the scss-replace-duration and scss-replace-easing migrations
+
+- Updated dependencies [[`af0ceb8c6`](https://github.com/Shopify/polaris/commit/af0ceb8c6fae30c6aaa45bf89eef660ea45fd78e), [`e7712e7a5`](https://github.com/Shopify/polaris/commit/e7712e7a57fddac939e65510fb257ac82442faa4)]:
+  - @shopify/stylelint-polaris@5.0.2
+
 ## 0.10.1
 
 ### Patch Changes
