@@ -111,14 +111,16 @@ export function Header({
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
-        <Pagination {...pagination} />
+        <Box printHidden>
+          <Pagination {...pagination} />
+        </Box>
       </div>
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <div className={styles.AdditionalNavigationWrapper}>
+    <Inline align="end">
       <Box printHidden>{additionalNavigation}</Box>
-    </div>
+    </Inline>
   ) : null;
 
   const pageTitleMarkup = (
@@ -276,7 +278,11 @@ function PrimaryActionMarkup({
     actionMarkup = primaryAction;
   }
 
-  return <div className={styles.PrimaryActionWrapper}>{actionMarkup}</div>;
+  return (
+    <div className={styles.PrimaryActionWrapper}>
+      <Box printHidden>{actionMarkup}</Box>
+    </div>
+  );
 }
 
 function shouldShowIconOnly(
