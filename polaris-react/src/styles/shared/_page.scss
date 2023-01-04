@@ -38,6 +38,19 @@ $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
   }
 }
 
+@mixin page-header-layout {
+  padding: var(--p-space-4);
+
+  @media #{$p-breakpoints-sm-up} {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    padding: var(--p-space-5) 0;
+  }
+}
+
 @mixin page-header-has-navigation {
   padding-top: var(--p-space-4);
 }

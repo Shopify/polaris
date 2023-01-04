@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Rebuilt page header with layout components
+Rebuilt Page Header with layout components

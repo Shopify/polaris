@@ -329,7 +329,6 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
 
     const className = classNames(
       styles.Box,
-      printHidden && styles.printHidden,
       visuallyHidden && styles.visuallyHidden,
       printHidden && styles.printHidden,
       as === 'ul' && styles.listReset,
