@@ -103,9 +103,7 @@ export function ChoiceList({
       : null;
     const children = renderedChildren ? (
       <div className={styles.ChoiceChildren}>
-        <Box paddingBlockStart={{xs: '4', md: '0'}} paddingBlockEnd="2">
-          {renderedChildren}
-        </Box>
+        <Box paddingBlockStart={{xs: '4', md: '0'}}>{renderedChildren}</Box>
       </div>
     ) : null;
     return (

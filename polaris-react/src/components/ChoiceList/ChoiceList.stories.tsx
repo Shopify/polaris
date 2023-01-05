@@ -102,8 +102,8 @@ export function WithChildrenContent() {
     <ChoiceList
       title="Discount minimum requirements"
       choices={[
-        {label: 'None', value: 'none'},
-        {label: 'Minimum purchase', value: 'minimum_purchase'},
+        {label: 'None', value: 'none', renderChildren},
+        {label: 'Minimum purchase', value: 'minimum_purchase', renderChildren},
         {
           label: 'Minimum quantity',
           value: 'minimum_quantity',
