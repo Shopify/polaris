@@ -26,7 +26,6 @@ const {rule} = stylelint.createPlugin(
 
           if (
             warning.node.type === 'decl' &&
-            warning.node.prop === 'font-weight' &&
             warning.node.parent.type === 'atrule' &&
             warning.node.parent.name === 'font-face'
           ) {
@@ -34,10 +33,10 @@ const {rule} = stylelint.createPlugin(
           }
 
           stylelint.utils.report({
-            message: warning.text,
             ruleName,
             result,
             node: warning.node,
+            message: warning.text,
           });
         },
       );
