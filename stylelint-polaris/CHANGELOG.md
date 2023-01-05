@@ -1,5 +1,13 @@
 # Changelog
 
+## 5.0.2
+
+### Patch Changes
+
+- [#7954](https://github.com/Shopify/polaris/pull/7954) [`af0ceb8c6`](https://github.com/Shopify/polaris/commit/af0ceb8c6fae30c6aaa45bf89eef660ea45fd78e) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Use RegExp pattern to exclude reporting invalid scope disables and address memory issues
+
+* [#7919](https://github.com/Shopify/polaris/pull/7919) [`e7712e7a5`](https://github.com/Shopify/polaris/commit/e7712e7a57fddac939e65510fb257ac82442faa4) Thanks [@qt314](https://github.com/qt314)! - Deduped converage rules that were in multiple categories
+
 ## 5.0.1
 
 ### Patch Changes

@@ -19,7 +19,8 @@ import {
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section' | 'ul' | 'li';
+type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
+
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
@@ -174,6 +175,8 @@ export interface BoxProps extends React.AriaAttributes {
   insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
+  /** Visually hide the contents during print */
+  printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
   /** z-index of box */
@@ -217,6 +220,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       shadow,
       tabIndex,
       width,
+      printHidden,
       visuallyHidden,
       position,
       insetBlockStart,
@@ -326,6 +330,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const className = classNames(
       styles.Box,
       visuallyHidden && styles.visuallyHidden,
+      printHidden && styles.printHidden,
       as === 'ul' && styles.listReset,
     );
 

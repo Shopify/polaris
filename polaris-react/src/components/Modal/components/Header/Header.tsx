@@ -1,9 +1,10 @@
 import React from 'react';
 
-import {Text} from '../../../Text';
+import {Box} from '../../../Box';
 import {CloseButton} from '../CloseButton';
-
-import styles from './Header.scss';
+import {Columns} from '../../../Columns';
+import {Inline} from '../../../Inline';
+import {Text} from '../../../Text';
 
 export interface HeaderProps {
   id: string;
@@ -15,25 +16,43 @@ export interface HeaderProps {
 
 export function Header({
   id,
-  titleHidden,
-  closing,
   children,
+  closing,
+  titleHidden,
   onClose,
 }: HeaderProps) {
+  const titleHiddenMarkup = (
+    <Box position="absolute" insetInlineEnd="0" zIndex="1">
+      <Inline align="end">
+        <CloseButton titleHidden={titleHidden} onClick={onClose} />
+      </Inline>
+    </Box>
+  );
+
+  if (titleHidden || !children) {
+    return titleHiddenMarkup;
+  }
+
   return (
-    <div
-      className={titleHidden || !children ? styles.titleHidden : styles.Header}
+    <Box
+      paddingBlockStart="4"
+      paddingBlockEnd="4"
+      paddingInlineStart="5"
+      paddingInlineEnd="5"
+      borderBlockEnd="divider"
     >
-      <div id={id} className={styles.Title}>
-        <Text as="h2" variant="headingLg">
-          {children}
-        </Text>
-      </div>
-      <CloseButton
-        pressed={closing}
-        titleHidden={titleHidden}
-        onClick={onClose}
-      />
-    </div>
+      <Columns columns={{xs: '1fr auto'}}>
+        <Inline>
+          <Text id={id} as="h2" variant="headingLg" breakWord>
+            {children}
+          </Text>
+        </Inline>
+        <CloseButton
+          pressed={closing}
+          titleHidden={titleHidden}
+          onClick={onClose}
+        />
+      </Columns>
+    </Box>
   );
 }
