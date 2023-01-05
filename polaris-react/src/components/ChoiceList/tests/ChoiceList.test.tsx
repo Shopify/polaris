@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+import {Bleed} from '../../Bleed';
 import {Checkbox} from '../../Checkbox';
 import {InlineError} from '../../InlineError';
 import {RadioButton} from '../../RadioButton';
@@ -241,10 +242,14 @@ describe('<ChoiceList />', () => {
           />,
         );
 
+        const listItemWithChildren =
+          choiceElements.findAll('li')[indexWithChildren];
+        const listItemBleedChild = listItemWithChildren
+          .find(Bleed)
+          ?.find('div');
+
         expect(renderChildrenSpy).toHaveBeenCalled();
-        expect(
-          choiceElements.findAll('li')[indexWithChildren],
-        ).not.toContainReactComponent('div');
+        expect(listItemBleedChild).not.toContainReactComponent('div');
       });
     });
 

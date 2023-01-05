@@ -3,9 +3,8 @@ import React from 'react';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
-import {Stack} from '../../../Stack';
-
-import styles from './Footer.scss';
+import {Box} from '../../../Box';
+import {Inline} from '../../../Inline';
 
 export interface FooterProps {
   /** Primary action */
@@ -34,13 +33,18 @@ export function Footer({
     ) : null;
 
   return (
-    <div className={styles.Footer}>
-      <div className={styles.FooterContent}>
-        <Stack alignment="center">
-          <Stack.Item fill>{children}</Stack.Item>
+    <Box
+      borderBlockStart="divider"
+      minHeight="var(--p-space-16)"
+      padding="4"
+      width="100%"
+    >
+      <Inline align="space-between">
+        <Inline blockAlign="center">{children}</Inline>
+        <Inline align="end" blockAlign="center">
           {actions}
-        </Stack>
-      </div>
-    </div>
+        </Inline>
+      </Inline>
+    </Box>
   );
 }

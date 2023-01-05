@@ -7,6 +7,7 @@ import {
   createSassMigrator,
   setNodeValue,
   StopWalkingFunctionNodes,
+  hasSassFunction,
 } from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
@@ -28,6 +29,8 @@ export default createSassMigrator(
     return (root) => {
       methods.walkDecls(root, (decl) => {
         const parsedValue = valueParser(decl.value);
+
+        if (!hasSassFunction(namespacedEasing, parsedValue)) return;
 
         parsedValue.walk((node) => {
           if (isNumericOperator(node)) {

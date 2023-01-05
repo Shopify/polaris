@@ -22,7 +22,7 @@ export interface AlphaStackProps extends React.AriaAttributes {
    * @default 'div'
    */
   as?: Element;
-  /** Vertical alignment of children
+  /** Horizontal alignment of children
    * @default 'start'
    */
   align?: Align;
@@ -54,6 +54,7 @@ export const AlphaStack = ({
     styles.AlphaStack,
     fullWidth && styles.fullWidth,
     as === 'ul' && styles.listReset,
+    as === 'fieldset' && styles.fieldsetReset,
   );
 
   const style = {
