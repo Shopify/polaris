@@ -22,8 +22,6 @@ export interface CollapsibleProps {
    * @default transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}
    */
   transition?: boolean | Transition;
-  /** @deprecated Re-measuring is no longer necessary on children update **/
-  preventMeasuringOnChildrenUpdate?: boolean;
   /** Callback when the animation completes. */
   onAnimationEnd?(): void;
   /** The content to display inside the collapsible. */
