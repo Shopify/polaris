@@ -1,5 +1,11 @@
 const stylelint = require('stylelint');
 
+const {
+  isRegExp,
+  isString,
+  validateObjectWithArrayProps,
+} = require('../../utils');
+
 const ruleName = 'polaris/declaration-property-value-disallowed-list';
 
 /**
@@ -17,6 +23,13 @@ const {rule} = stylelint.createPlugin(
   /** @param {PrimaryOptions} primary */
   (primary) => {
     return (root, result) => {
+      const validOptions = stylelint.utils.validateOptions(result, ruleName, {
+        actual: primary,
+        possible: [validateObjectWithArrayProps(isString, isRegExp)],
+      });
+
+      if (!validOptions) return;
+
       stylelint.utils.checkAgainstRule(
         {
           ruleName: 'declaration-property-value-disallowed-list',
@@ -24,9 +37,6 @@ const {rule} = stylelint.createPlugin(
           root,
         },
         (warning) => {
-          // Ignore invalid options as they are already surfaced by Stylelint
-          if (warning.stylelintType === 'invalidOption') return;
-
           if (
             warning.node.type === 'decl' &&
             warning.node.parent.type === 'atrule' &&
