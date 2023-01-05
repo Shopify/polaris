@@ -1,7 +1,6 @@
 const stylelint = require('stylelint');
 
-const ruleName =
-  'polaris/typography-declaration-property-value-disallowed-list';
+const ruleName = 'polaris/declaration-property-value-disallowed-list';
 
 /**
  * @typedef {{
@@ -9,6 +8,10 @@ const ruleName =
  * }} PrimaryOptions
  */
 
+/**
+ * Wrapper for the Stylelint `declaration-property-value-disallowed-list` rule
+ * that ignores failures in `@font-face` at-rules.
+ */
 const {rule} = stylelint.createPlugin(
   ruleName,
   /** @param {PrimaryOptions} primary */
