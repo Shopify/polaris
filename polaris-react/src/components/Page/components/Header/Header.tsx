@@ -47,8 +47,8 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  /** Breadcrumb link */
+  breadcrumb?: BreadcrumbsProps['breadcrumb'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -74,7 +74,7 @@ export function Header({
   primaryAction,
   pagination,
   additionalNavigation,
-  breadcrumbs = [],
+  breadcrumb,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -97,12 +97,11 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup =
-    breadcrumbs.length > 0 ? (
-      <div className={styles.BreadcrumbWrapper}>
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </div>
-    ) : null;
+  const breadcrumbMarkup = breadcrumb ? (
+    <div className={styles.BreadcrumbWrapper}>
+      <Breadcrumbs breadcrumb={breadcrumb} />
+    </div>
+  ) : null;
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
@@ -178,7 +177,7 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
-    !breadcrumbs.length && styles.noBreadcrumbs,
+    !breadcrumb && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );
