@@ -1,5 +1,5 @@
 import type {FileInfo, API, Options} from 'jscodeshift';
-import postcss, {Plugin} from 'postcss';
+import postcss, {Plugin, AtRule} from 'postcss';
 import valueParser from 'postcss-value-parser';
 import {toPx} from '@shopify/polaris-tokens';
 
@@ -40,6 +40,14 @@ const plugin = (options: PluginOptions = {}): Plugin => {
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
+
+      if (
+        decl.parent &&
+        decl.parent.type === 'atrule' &&
+        (decl.parent as AtRule).name === 'font-face'
+      ) {
+        return;
+      }
 
       const handlers = {
         'font-size': handleFontSize,
