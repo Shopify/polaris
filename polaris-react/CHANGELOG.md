@@ -1,5 +1,19 @@
 # Changelog
 
+## 10.18.0
+
+### Minor Changes
+
+- [#7992](https://github.com/Shopify/polaris/pull/7992) [`e8f74f4cd`](https://github.com/Shopify/polaris/commit/e8f74f4cdfd2b73c459aac0cd8b52bc66d812b8a) Thanks [@aveline](https://github.com/aveline)! - Added support for `outline` to `Box`
+
+### Patch Changes
+
+- [#7988](https://github.com/Shopify/polaris/pull/7988) [`382784f4e`](https://github.com/Shopify/polaris/commit/382784f4e2547d89d5970ade0de67196408494e7) Thanks [@kyledurand](https://github.com/kyledurand)! - Reduced spacing on ChoiceList children
+
+* [#7899](https://github.com/Shopify/polaris/pull/7899) [`930f077eb`](https://github.com/Shopify/polaris/commit/930f077eb0ec3c20a51d240b57f150b5502aa7c5) Thanks [@jeradg](https://github.com/jeradg)! - Fixed a bug where Tooltips nested in Scrollable containers sometimes don't update their positions correctly
+
+- [#7831](https://github.com/Shopify/polaris/pull/7831) [`47487ee0c`](https://github.com/Shopify/polaris/commit/47487ee0cfddb6e7306095959d6eea6b5c9c0132) Thanks [@acmertz](https://github.com/acmertz)! - Updated the focus helper functions to no longer treat buttons with `aria-disabled="true"` and `tabindex="-1" (but no`disabled` attribute) as focusable.
+
 ## 10.17.1
 
 ### Patch Changes
