@@ -88,7 +88,7 @@ const stylelintPolarisCoverageOptions = {
   ],
   typography: [
     {
-      'declaration-property-value-disallowed-list': {
+      'polaris/declaration-property-value-disallowed-list': {
         'font-weight': [/(\$.*|[0-9]+)/],
       },
       'declaration-property-unit-disallowed-list': [
@@ -487,6 +487,7 @@ module.exports = {
     './plugins/at-rule-disallowed-list',
     './plugins/custom-property-allowed-list',
     './plugins/media-query-allowed-list',
+    './plugins/declaration-property-value-disallowed-list',
   ],
   rules: {
     'polaris/coverage': stylelintPolarisCoverageOptions,
