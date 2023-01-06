@@ -22,6 +22,7 @@ import {
   PortalsContainerElement,
   PortalsManagerContext,
 } from '../../../../utilities/portals';
+import {Box} from '../../../Box';
 
 export enum PopoverCloseSource {
   Click,
@@ -265,7 +266,16 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
           tabIndex={0}
           onFocus={this.handleFocusFirstItem}
         />
-        <div className={styles.Wrapper}>{content}</div>
+        <Box
+          position="relative"
+          overflowX="hidden"
+          overflowY="hidden"
+          background="surface"
+          borderRadius="2"
+          outline="transparent"
+        >
+          {content}
+        </Box>
         <div
           className={styles.FocusTracker}
           // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
