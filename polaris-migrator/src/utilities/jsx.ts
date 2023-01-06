@@ -1,4 +1,4 @@
-import core, {ASTPath, Collection} from 'jscodeshift';
+import core, {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
 
 export function getJSXAttributes(
   j: core.JSCodeshift,
@@ -35,10 +35,21 @@ export function hasJSXSpreadAttribute(
 
 export function removeJSXAttributes(
   j: core.JSCodeshift,
-  element: ASTPath<any>,
+  element: ASTPath<JSXElement>,
   attributeName: string,
 ) {
-  return getJSXAttributes(j, element, attributeName).remove();
+  const jsxAttributes = element.value.attributes?.filter(
+    (attr) => attr.type === 'JSXAttribute' && attr.name.name === attributeName,
+  );
+
+  if (!jsxAttributes) return;
+
+  jsxAttributes.forEach((attr) => {
+    const jsxAttribute = attr as JSXAttribute;
+
+    jsxAttribute.name.name = '';
+    jsxAttribute.value = null;
+  });
 }
 
 export function insertJSXAttribute(

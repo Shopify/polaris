@@ -38,6 +38,9 @@ export function App() {
       <TextStyle variation="negative">Negative</TextStyle>
       <TextStyle variation="warning">Warning</TextStyle>
       <TextStyle variation="code">Code</TextStyle>
+      <TextStyle>
+        <TextStyle variation="code">Code</TextStyle>
+      </TextStyle>
       <TextStyle variation={Math.random() > 0.5 ? 'positive' : 'negative'}>
         Code
       </TextStyle>

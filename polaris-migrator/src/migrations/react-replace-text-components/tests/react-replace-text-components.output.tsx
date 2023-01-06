@@ -82,6 +82,11 @@ export function App() {
       <Text variant="bodyMd" as="span">
         <InlineCode>Code</InlineCode>
       </Text>
+      <Text variant="bodyMd" as="span">
+        <Text variant="bodyMd" as="span">
+          <InlineCode>Code</InlineCode>
+        </Text>
+      </Text>
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
       <TextStyle variation={Math.random() > 0.5 ? 'positive' : 'negative'}>
         Code
