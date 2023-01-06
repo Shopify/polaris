@@ -107,8 +107,6 @@ $vertical-motion-offset: -5px;
 }
 
 .Section {
-  padding: var(--p-space-4);
-
   + .Section {
     border-top: var(--p-border-divider);
   }
