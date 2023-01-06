@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-glints': minor
+'polaris-glints': minor
 'polaris.shopify.com': minor
 ---
 

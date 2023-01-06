@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-glints': minor
+'polaris-glints': minor
 ---
 
 Added `printHidden` prop to `Box`

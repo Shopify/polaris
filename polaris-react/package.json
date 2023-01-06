@@ -1,5 +1,5 @@
 {
-  "name": "@shopify/polaris-glints",
+  "name": "polaris-glints",
   "description": "Shopify’s admin product component library",
   "version": "10.17.1",
   "private": false,
