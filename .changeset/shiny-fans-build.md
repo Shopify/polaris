@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': minor
+'@shopify/polaris-glints': minor
 ---
 
 - Added the `onAnimationEnd` prop to `Collapsible`
