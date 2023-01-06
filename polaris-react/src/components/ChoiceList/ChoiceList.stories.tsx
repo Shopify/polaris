@@ -26,7 +26,7 @@ export function Default() {
 }
 
 export function WithError() {
-  const [selected, setSelected] = useState('hidden');
+  const [selected, setSelected] = useState(['hidden']);
 
   const handleChange = useCallback((value) => setSelected(value), []);
 
@@ -103,11 +103,14 @@ export function WithChildrenContent() {
       title="Discount minimum requirements"
       choices={[
         {label: 'None', value: 'none'},
-        {label: 'Minimum purchase', value: 'minimum_purchase'},
+        {
+          label: 'Minimum purchase',
+          value: 'minimum_purchase',
+          renderChildren,
+        },
         {
           label: 'Minimum quantity',
           value: 'minimum_quantity',
-          renderChildren,
         },
       ]}
       selected={selected}
@@ -147,7 +150,11 @@ export function WithDynamicChildrenContent() {
         title="Discount minimum requirements"
         choices={[
           {label: 'None', value: 'none'},
-          {label: 'Minimum purchase', value: 'minimum_purchase'},
+          {
+            label: 'Minimum purchase',
+            value: 'minimum_purchase',
+            renderChildren,
+          },
           {
             label: 'Minimum quantity',
             value: 'minimum_quantity',
