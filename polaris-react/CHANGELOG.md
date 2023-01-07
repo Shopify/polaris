@@ -1,5 +1,24 @@
 # Changelog
 
+## 10.18.0
+
+### Minor Changes
+
+- [#7978](https://github.com/Shopify/polaris/pull/7978) [`fb0ed38`](https://github.com/Shopify/polaris/commit/fb0ed38059b6e207f195084670bf826bb9201781) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `printHidden` prop to `Box`
+
+* [#7963](https://github.com/Shopify/polaris/pull/7963) [`f94cf14`](https://github.com/Shopify/polaris/commit/f94cf149693eb7f1860eacda8c38cc5f5039dffe) Thanks [@aveline](https://github.com/aveline)! - Updated `AlphaStack` docs for `align` prop
+
+- [#7915](https://github.com/Shopify/polaris/pull/7915) [`81fd3fd`](https://github.com/Shopify/polaris/commit/81fd3fd5b64c3ddf418601f448c0aec11163db35) Thanks [@melaniedamilig](https://github.com/melaniedamilig)! - - Added the `onAnimationEnd` prop to `Collapsible`
+  - Fixed a bug in `Filters` where focus was moved to collapsed filter contents before the `Collapsible` animation ended
+
+* [#7956](https://github.com/Shopify/polaris/pull/7956) [`30cdd2e`](https://github.com/Shopify/polaris/commit/30cdd2e236b2482625a3913938f89a31e4cd91dc) Thanks [@aveline](https://github.com/aveline)! - Updated `Box` allowable aria roles
+
+- [#7939](https://github.com/Shopify/polaris/pull/7939) [`8b31e39`](https://github.com/Shopify/polaris/commit/8b31e3983ef0f9d86f193779892335512e2f73fd) Thanks [@acidio](https://github.com/acidio)! - Added support for `spacing` prop to List component allowing for a more compact list
+
+### Patch Changes
+
+- [#7925](https://github.com/Shopify/polaris/pull/7925) [`4e33e1c`](https://github.com/Shopify/polaris/commit/4e33e1cedc2e13ff134c8ae28f6c5636511849ec) Thanks [@jas7457](https://github.com/jas7457)! - Updated `IndexTable` and `ProgressBar` to no longer log errors about deprecated `React.findDOMNode`
+
 ## 10.16.1
 
 ### Patch Changes

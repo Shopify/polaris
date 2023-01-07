@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.27.3",
+  "version": "0.28.0",
   "private": true,
   "scripts": {
     "build": "yarn gen-assets && playroom build && next build",

@@ -1,5 +1,15 @@
 # polaris.shopify.com
 
+## 0.28.0
+
+### Minor Changes
+
+- [#7963](https://github.com/Shopify/polaris/pull/7963) [`f94cf14`](https://github.com/Shopify/polaris/commit/f94cf149693eb7f1860eacda8c38cc5f5039dffe) Thanks [@aveline](https://github.com/aveline)! - Updated `AlphaStack` docs for `align` prop
+
+### Patch Changes
+
+- [#7921](https://github.com/Shopify/polaris/pull/7921) [`5025305`](https://github.com/Shopify/polaris/commit/502530597c8cc2890fd4977d3cd28f9ad1917ebc) Thanks [@martenbjork](https://github.com/martenbjork)! - Fixed border radius of component images in the overview page.
+
 ## 0.27.3
 
 ### Patch Changes
