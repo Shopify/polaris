@@ -34,7 +34,7 @@ export function hasJSXSpreadAttribute(
 }
 
 export function removeJSXAttributes(
-  j: core.JSCodeshift,
+  _j: core.JSCodeshift,
   element: ASTPath<JSXElement>,
   attributeName: string,
 ) {
