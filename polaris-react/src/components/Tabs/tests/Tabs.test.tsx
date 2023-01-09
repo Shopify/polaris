@@ -213,6 +213,23 @@ describe('<Tabs />', () => {
         );
       });
     });
+
+    it('allows disabling one or more tabs', () => {
+      const tabs: TabsProps['tabs'] = [
+        {content: 'Tab 1', id: 'tab-1'},
+        {content: 'Tab 2', id: 'tab-2', disabled: true},
+      ];
+
+      const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
+      const ul = wrapper.find('ul')!;
+
+      expect(ul.find(Tab, {id: 'tab-1'})!).not.toHaveReactProps({
+        disabled: true,
+      });
+      expect(ul.find(Tab, {id: 'tab-2'})!).toHaveReactProps({
+        disabled: true,
+      });
+    });
   });
 
   describe('selected', () => {

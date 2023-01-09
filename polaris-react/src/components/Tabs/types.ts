@@ -9,4 +9,6 @@ export interface TabDescriptor {
   panelID?: string;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /** Whether or not the tab is disabled */
+  disabled?: boolean;
 }

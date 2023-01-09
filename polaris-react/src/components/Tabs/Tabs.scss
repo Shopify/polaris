@@ -110,6 +110,15 @@ $item-vertical-padding: $item-min-height * 0.5;
   &:visited {
     color: inherit;
   }
+
+  &:disabled {
+    cursor: default;
+
+    .Title {
+      cursor: default;
+      color: var(--p-text-disabled);
+    }
+  }
 }
 
 .Tab-selected {

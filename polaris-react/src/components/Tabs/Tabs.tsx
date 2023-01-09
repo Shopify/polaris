@@ -241,6 +241,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
         panelID={children ? tabPanelID : undefined}
         accessibilityLabel={tab.accessibilityLabel}
         url={tab.url}
+        disabled={tab.disabled}
       >
         <Text as="span" variant="bodyMd">
           {tab.content}

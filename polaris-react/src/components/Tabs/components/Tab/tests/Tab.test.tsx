@@ -91,6 +91,20 @@ describe('<Tab />', () => {
     });
   });
 
+  describe('disabled', () => {
+    it('contains a disabled button when disabled prop present', () => {
+      const tab = mountWithApp(
+        <Tab id="my-tab" disabled>
+          Tab
+        </Tab>,
+      );
+
+      expect(tab).toContainReactComponent('button', {
+        disabled: true,
+      });
+    });
+  });
+
   describe('accessibilityLabel()', () => {
     it('uses the label for aria-label', () => {
       const label = 'Tab contents';

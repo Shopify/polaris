@@ -18,6 +18,7 @@ export interface TabProps {
   url?: string;
   measuring?: boolean;
   accessibilityLabel?: string;
+  disabled?: boolean;
   onClick?(id: string): void;
 }
 
@@ -32,6 +33,7 @@ export function Tab({
   panelID,
   measuring,
   accessibilityLabel,
+  disabled,
 }: TabProps) {
   const wasSelected = useRef(selected);
   const panelFocused = useRef(false);
@@ -113,6 +115,7 @@ export function Tab({
       aria-controls={panelID}
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
+      disabled={disabled}
     >
       <span className={styles.Title}>{children}</span>
     </button>
