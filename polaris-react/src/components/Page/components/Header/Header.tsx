@@ -24,6 +24,8 @@ import {Pagination, PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
+import {Box} from '../../../Box';
+import {Inline} from '../../../Inline';
 
 import {Title, TitleProps} from './components';
 import styles from './Header.scss';
@@ -100,31 +102,26 @@ export function Header({
   const breadcrumbMarkup =
     breadcrumbs.length > 0 ? (
       <div className={styles.BreadcrumbWrapper}>
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </Box>
       </div>
     ) : null;
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
-        <Pagination {...pagination} />
+        <Box printHidden>
+          <Pagination {...pagination} />
+        </Box>
       </div>
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <div className={styles.AdditionalNavigationWrapper}>
-      {additionalNavigation}
-    </div>
+    <Inline align="end">
+      <Box printHidden>{additionalNavigation}</Box>
+    </Inline>
   ) : null;
-
-  const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
-      <div className={styles.Navigation}>
-        {breadcrumbMarkup}
-        {additionalNavigationMarkup}
-        {paginationMarkup}
-      </div>
-    ) : null;
 
   const pageTitleMarkup = (
     <div className={styles.TitleWrapper}>
@@ -163,6 +160,23 @@ export function Header({
     actionMenuMarkup = <>{secondaryActions}</>;
   }
 
+  const navigationMarkup =
+    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
+      <Box
+        printHidden
+        paddingBlockEnd="1"
+        paddingInlineEnd={
+          actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
+        }
+      >
+        <Inline align="space-between" blockAlign="center">
+          {breadcrumbMarkup}
+          {additionalNavigationMarkup}
+          {paginationMarkup}
+        </Inline>
+      </Box>
+    ) : null;
+
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
       <Text variant="bodyMd" color="subdued" as="span">
@@ -172,9 +186,7 @@ export function Header({
   ) : null;
 
   const headerClassNames = classNames(
-    styles.Header,
     isSingleRow && styles.isSingleRow,
-    titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
@@ -196,35 +208,46 @@ export function Header({
   });
 
   return (
-    <div className={headerClassNames}>
-      <ConditionalRender condition={[slot1, slot2, slot3, slot4].some(notNull)}>
-        <div className={styles.Row}>
-          {slot1}
-          {slot2}
-          <ConditionalRender condition={[slot3, slot4].some(notNull)}>
-            <div className={styles.RightAlign}>
-              <ConditionalWrapper
-                condition={[slot3, slot4].every(notNull)}
-                wrapper={(children) => (
-                  <div className={styles.Actions}>{children}</div>
-                )}
-              >
-                {slot3}
-                {slot4}
-              </ConditionalWrapper>
-            </div>
-          </ConditionalRender>
-        </div>
-      </ConditionalRender>
-      <ConditionalRender condition={[slot5, slot6].some(notNull)}>
-        <div className={styles.Row}>
-          <div className={styles.LeftAlign}>{slot5}</div>
-          <ConditionalRender condition={slot6 != null}>
-            <div className={styles.RightAlign}>{slot6}</div>
-          </ConditionalRender>
-        </div>
-      </ConditionalRender>
-    </div>
+    <Box
+      position="relative"
+      paddingBlockStart={{xs: '4', md: '5'}}
+      paddingBlockEnd={{xs: '4', md: '5'}}
+      paddingInlineStart={{xs: '4', sm: '0'}}
+      paddingInlineEnd={{xs: '4', sm: '0'}}
+      visuallyHidden={titleHidden}
+    >
+      <div className={headerClassNames}>
+        <ConditionalRender
+          condition={[slot1, slot2, slot3, slot4].some(notNull)}
+        >
+          <div className={styles.Row}>
+            {slot1}
+            {slot2}
+            <ConditionalRender condition={[slot3, slot4].some(notNull)}>
+              <div className={styles.RightAlign}>
+                <ConditionalWrapper
+                  condition={[slot3, slot4].every(notNull)}
+                  wrapper={(children) => (
+                    <div className={styles.Actions}>{children}</div>
+                  )}
+                >
+                  {slot3}
+                  {slot4}
+                </ConditionalWrapper>
+              </div>
+            </ConditionalRender>
+          </div>
+        </ConditionalRender>
+        <ConditionalRender condition={[slot5, slot6].some(notNull)}>
+          <div className={styles.Row}>
+            <Inline>{slot5}</Inline>
+            <ConditionalRender condition={slot6 != null}>
+              <div className={styles.RightAlign}>{slot6}</div>
+            </ConditionalRender>
+          </div>
+        </ConditionalRender>
+      </div>
+    </Box>
   );
 }
 
@@ -255,7 +278,11 @@ function PrimaryActionMarkup({
     actionMarkup = primaryAction;
   }
 
-  return <div className={styles.PrimaryActionWrapper}>{actionMarkup}</div>;
+  return (
+    <div className={styles.PrimaryActionWrapper}>
+      <Box printHidden>{actionMarkup}</Box>
+    </div>
+  );
 }
 
 function shouldShowIconOnly(
