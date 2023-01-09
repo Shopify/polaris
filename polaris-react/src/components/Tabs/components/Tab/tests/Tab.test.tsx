@@ -92,7 +92,7 @@ describe('<Tab />', () => {
   });
 
   describe('disabled', () => {
-    it('contains a disabled button when disabled prop present', () => {
+    it('contains button with a Tab-disabled style when disabled prop present', () => {
       const tab = mountWithApp(
         <Tab id="my-tab" disabled>
           Tab
@@ -100,7 +100,7 @@ describe('<Tab />', () => {
       );
 
       expect(tab).toContainReactComponent('button', {
-        disabled: true,
+        className: 'Tab Tab-disabled',
       });
     });
   });

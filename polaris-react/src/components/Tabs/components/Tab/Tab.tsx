@@ -71,7 +71,11 @@ export function Tab({
 
   const handleClick = onClick && onClick.bind(null, id);
 
-  const className = classNames(styles.Tab, selected && styles['Tab-selected']);
+  const className = classNames(
+    styles.Tab,
+    selected && styles['Tab-selected'],
+    disabled && styles['Tab-disabled'],
+  );
 
   let tabIndex: 0 | -1;
 
@@ -115,7 +119,6 @@ export function Tab({
       aria-controls={panelID}
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
-      disabled={disabled}
     >
       <span className={styles.Title}>{children}</span>
     </button>
