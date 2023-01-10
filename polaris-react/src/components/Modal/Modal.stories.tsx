@@ -1,10 +1,13 @@
 import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  Banner,
   Button,
   Checkbox,
   ChoiceList,
   DropZone,
+  Form,
+  FormLayout,
   Modal,
   Stack,
   Text,
@@ -478,5 +481,72 @@ export function WithoutAnActivatorProp() {
         </Modal.Section>
       </Modal>
     </div>
+  );
+}
+
+export function WithLongContent() {
+  return (
+    <Modal
+      title="Long form modal"
+      open
+      onClose={() => {}}
+      sectioned
+      primaryAction={{content: 'Save'}}
+    >
+      <Banner title="Heyo" />
+      <Form onSubmit={() => {}}>
+        <FormLayout>
+          <FormLayout.Group>
+            <TextField label="URL" type="url" autoComplete="url" />
+            <TextField label="URL" type="url" autoComplete="url" />
+            <TextField label="URL" type="url" autoComplete="url" />
+          </FormLayout.Group>
+        </FormLayout>
+        <FormLayout>
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+        </FormLayout>
+      </Form>
+    </Modal>
+  );
+}
+
+export function WithLongContentNoScroll() {
+  return (
+    <Modal
+      title="Long form modal"
+      open
+      onClose={() => {}}
+      sectioned
+      noScroll
+      primaryAction={{content: 'Save'}}
+    >
+      <Banner title="Heyo" />
+      <Form onSubmit={() => {}}>
+        <FormLayout>
+          <FormLayout.Group>
+            <TextField label="URL" type="url" autoComplete="url" />
+            <TextField label="URL" type="url" autoComplete="url" />
+            <TextField label="URL" type="url" autoComplete="url" />
+          </FormLayout.Group>
+        </FormLayout>
+        <FormLayout>
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+          <TextField label="URL" type="url" autoComplete="url" />
+        </FormLayout>
+      </Form>
+    </Modal>
   );
 }
