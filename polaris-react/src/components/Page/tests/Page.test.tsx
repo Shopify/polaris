@@ -234,26 +234,24 @@ describe('<Page />', () => {
   });
 
   describe('breadcrumbs', () => {
-    const breadcrumbs = [
-      {
-        content: 'Products',
-        onAction: noop,
-      },
-    ];
+    const breadcrumb = {
+      content: 'Products',
+      onAction: noop,
+    };
 
     it('renders a <Header /> when defined', () => {
       const page = mountWithApp(
-        <Page {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Page {...mockProps} breadcrumb={breadcrumb} />,
       );
       expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
       const page = mountWithApp(
-        <Page {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Page {...mockProps} breadcrumb={breadcrumb} />,
       );
       expect(page).toContainReactComponent(Header, {
-        breadcrumbs,
+        breadcrumb,
       });
     });
   });

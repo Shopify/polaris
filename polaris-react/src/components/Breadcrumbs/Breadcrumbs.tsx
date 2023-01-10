@@ -10,16 +10,11 @@ import {Text} from '../Text';
 import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
-  /** Collection of breadcrumbs */
-  breadcrumbs: (CallbackAction | LinkAction)[];
+  /** Breadcrumb link */
+  breadcrumb: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
-  const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
-  if (breadcrumb == null) {
-    return null;
-  }
-
+export function Breadcrumbs({breadcrumb}: BreadcrumbsProps) {
   const {content} = breadcrumb;
 
   const contentMarkup = (
