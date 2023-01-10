@@ -167,7 +167,12 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
     bulkActionsAbsoluteOffset,
     bulkActionsMaxWidth,
     bulkActionsOffsetLeft,
+    computeTableDimensions,
   } = useIsBulkActionsSticky(selectMode);
+
+  useEffect(() => {
+    computeTableDimensions();
+  }, [computeTableDimensions, items.length]);
 
   const defaultResourceName = useLazyRef(() => ({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),

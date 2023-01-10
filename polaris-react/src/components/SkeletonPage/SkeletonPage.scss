@@ -4,8 +4,10 @@ $primary-action-button-height: 36px;
 $primary-action-button-width: 100px;
 
 :root {
+  // stylelint-disable -- use custom properties to set max width based on props
   --pc-skeleton-page-max-width: 998px;
   --pc-skeleton-page-max-width-narrow: 662px;
+  // stylelint-enable
 }
 
 .Title {

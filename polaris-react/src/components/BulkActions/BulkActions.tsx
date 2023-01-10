@@ -13,7 +13,7 @@ import type {
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
-import {ButtonGroup} from '../ButtonGroup';
+import {Inline} from '../Inline';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
@@ -28,7 +28,7 @@ type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
 const MAX_PROMOTED_ACTIONS = 2;
 
-const BUTTONS_NODE_ADDITIONAL_WIDTH = 40;
+const BUTTONS_NODE_ADDITIONAL_WIDTH = 64;
 
 export interface BulkActionsProps {
   /** List is in a selectable state */
@@ -280,6 +280,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
             activator={
               <BulkActionButton
                 disclosure
+                showContentInButton={!promotedActionsMarkup}
                 onAction={this.togglePopover}
                 content={activatorLabel}
                 disabled={disabled}
@@ -299,10 +300,10 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <ButtonGroup>
+        <Inline gap="3">
           {promotedActionsMarkup}
           {actionsPopover}
-        </ButtonGroup>
+        </Inline>
       ) : null;
 
     if (!groupContent) {
@@ -311,7 +312,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const group = (
       <Transition
-        timeout={250}
+        timeout={100}
         in={selectMode}
         key="group"
         nodeRef={this.groupNode}

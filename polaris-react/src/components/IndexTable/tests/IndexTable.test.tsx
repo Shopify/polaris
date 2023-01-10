@@ -11,7 +11,7 @@ import {Sticky} from '../../Sticky';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
-import {BulkActions} from '../../BulkActions';
+import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {IndexTable, IndexTableProps} from '../IndexTable';
 import type {IndexTableSortDirection} from '../IndexTable';
@@ -35,13 +35,17 @@ jest.mock('../../../utilities/debounce', () => ({
 
 jest.mock('../../BulkActions', () => ({
   ...jest.requireActual('../../BulkActions'),
-  useIsBulkActionsSticky: () => ({
-    bulkActionsIntersectionRef: null,
-    tableMeasurerRef: null,
-    isBulkActionsSticky: false,
-    bulkActionsAbsoluteOffset: 0,
-  }),
+  useIsBulkActionsSticky: jest.fn(),
 }));
+
+function mockUseIsBulkActionsSticky(
+  args: ReturnType<typeof useIsBulkActionsSticky>,
+) {
+  const useIsBulkActionsSticky: jest.Mock =
+    jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
+
+  useIsBulkActionsSticky.mockReturnValue(args);
+}
 
 const mockTableItems = [
   {
@@ -94,6 +98,15 @@ describe('<IndexTable>', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
+    mockUseIsBulkActionsSticky({
+      bulkActionsIntersectionRef: {current: null},
+      tableMeasurerRef: {current: null},
+      isBulkActionsSticky: false,
+      bulkActionsAbsoluteOffset: 0,
+      bulkActionsMaxWidth: 0,
+      bulkActionsOffsetLeft: 0,
+      computeTableDimensions: jest.fn(),
+    });
   });
 
   it('renders an <EmptySearchResult /> if no items are passed', () => {
@@ -201,22 +214,6 @@ describe('<IndexTable>', () => {
         stickyHeaderElement.domNode!.scrollLeft;
 
       expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
-    });
-
-    it('updates sticky table column header styles when scrolling right & hasMoreLeftColumns is false', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultProps} itemCount={1}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>,
-      );
-
-      const scrollContainer = index.find(ScrollContainer);
-      scrollContainer!.trigger('onScroll', true);
-
-      expect(index).toContainReactComponent('div', {
-        className:
-          'StickyTableColumnHeader StickyTableColumnHeader-isScrolling',
-      });
     });
 
     it('updates sticky last column styles when scrolled right', () => {
@@ -744,6 +741,31 @@ describe('<IndexTable>', () => {
         expect(index.findAll('th')[2]).not.toContainReactComponent(Tooltip);
         expect(index.findAll('th')[3]).toContainReactComponent(Tooltip);
       });
+    });
+  });
+
+  describe('computeTableDimensions', () => {
+    it('invokes the computeTableDimensions callback when the number of items changes', () => {
+      const computeTableDimensions = jest.fn();
+      mockUseIsBulkActionsSticky({
+        bulkActionsIntersectionRef: {current: null},
+        tableMeasurerRef: {current: null},
+        isBulkActionsSticky: false,
+        bulkActionsAbsoluteOffset: 0,
+        bulkActionsMaxWidth: 0,
+        bulkActionsOffsetLeft: 0,
+        computeTableDimensions,
+      });
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
+
+      index.setProps({itemCount: 60});
+
+      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
     });
   });
 });

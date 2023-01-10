@@ -228,6 +228,8 @@ describe('<BulkActions />', () => {
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
         const bulkActionButtons = bulkActions.findAll(BulkActionButton);
         expect(bulkActionButtons).toHaveLength(4);
+        expect(bulkActionButtons[0].text()).toBe('button1');
+        expect(bulkActionButtons[1].text()).toBe('button2');
         const bulkActionMenus = bulkActions.findAll(BulkActionMenu);
         expect(bulkActionMenus).toHaveLength(2);
       });
@@ -305,23 +307,6 @@ describe('<BulkActions />', () => {
 
         expect(spy).toHaveBeenCalledTimes(1);
       });
-    });
-  });
-
-  describe('buttongroup', () => {
-    // Since we need to break our component model and reach into ButtonGroup to access the CheckableButton
-    // and ensure only the first element flex grows, we add this test to ensure the mark-up does not change
-    it('has the mark-up structure to target the CheckableButton', () => {
-      const bulkActions = mountWithApp(
-        <BulkActions {...bulkActionProps} selectMode />,
-      );
-
-      const checkableButton = bulkActions!
-        .find('div', {
-          className: 'ButtonGroupWrapper',
-        })!
-        .domNode!.querySelector('div > div.Item:first-child');
-      expect(checkableButton).not.toBeNull();
     });
   });
 });

@@ -1,10 +1,10 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState, useCallback} from 'react';
 
 import {debounce} from '../../../utilities/debounce';
 
 const DEBOUNCE_PERIOD = 250;
 
-const PADDING_IN_SELECT_MODE = 100;
+const PADDING_IN_SELECT_MODE = 92;
 
 export function useIsBulkActionsSticky(selectMode: boolean) {
   const hasIOSupport =
@@ -24,34 +24,34 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
 
   const options = {
     root: null,
-    rootMargin: '0px',
-    threshold: 1,
+    rootMargin: '-12px',
+    threshold: 0,
   };
   const observerRef = useRef<IntersectionObserver | null>(
     hasIOSupport ? new IntersectionObserver(handleIntersect, options) : null,
   );
 
-  useEffect(() => {
-    function computeTableDimensions() {
-      const node = tableMeasurerRef.current;
-      if (!node) {
-        return {
-          maxWidth: 0,
-          offsetHeight: 0,
-          offsetLeft: 0,
-        };
-      }
-      const box = node.getBoundingClientRect();
-      const paddingHeight = selectMode ? PADDING_IN_SELECT_MODE : 0;
-      const offsetHeight = box.height - paddingHeight;
-      const maxWidth = box.width;
-      const offsetLeft = box.left;
-
-      setBulkActionsAbsoluteOffset(offsetHeight);
-      setBulkActionsMaxWidth(maxWidth);
-      setBulkActionsOffsetLeft(offsetLeft);
+  const computeTableDimensions = useCallback(() => {
+    const node = tableMeasurerRef.current;
+    if (!node) {
+      return {
+        maxWidth: 0,
+        offsetHeight: 0,
+        offsetLeft: 0,
+      };
     }
+    const box = node.getBoundingClientRect();
+    const paddingHeight = selectMode ? PADDING_IN_SELECT_MODE : 0;
+    const offsetHeight = box.height - paddingHeight;
+    const maxWidth = box.width;
+    const offsetLeft = box.left;
 
+    setBulkActionsAbsoluteOffset(offsetHeight);
+    setBulkActionsMaxWidth(maxWidth);
+    setBulkActionsOffsetLeft(offsetLeft);
+  }, [selectMode]);
+
+  useEffect(() => {
     computeTableDimensions();
 
     const debouncedComputeTableHeight = debounce(
@@ -66,7 +66,7 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
 
     return () =>
       window.removeEventListener('resize', debouncedComputeTableHeight);
-  }, [tableMeasurerRef, selectMode]);
+  }, [computeTableDimensions]);
 
   useEffect(() => {
     const observer = observerRef.current;
@@ -92,5 +92,6 @@ export function useIsBulkActionsSticky(selectMode: boolean) {
     bulkActionsAbsoluteOffset,
     bulkActionsMaxWidth,
     bulkActionsOffsetLeft,
+    computeTableDimensions,
   };
 }

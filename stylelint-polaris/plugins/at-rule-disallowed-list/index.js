@@ -2,16 +2,16 @@ const stylelint = require('stylelint');
 
 const {matchesStringOrRegExp, isRegExp, isString} = require('../../utils');
 
-const ruleName = 'stylelint-polaris/at-rule-disallowed-list';
+const ruleName = 'polaris/at-rule-disallowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (atRuleName, atRuleId, disallowedPattern) => {
-    return `Invalid @${atRuleName} rule${
-      atRuleId ? ` [${atRuleId}].` : ''
-    } Disallowed pattern [${disallowedPattern}]`;
+  rejected: (atRuleName, atRuleParams) => {
+    return `Unexpected @${atRuleName} rule${
+      atRuleParams ? ` "${atRuleParams}"` : ''
+    }`;
   },
 });
 
@@ -51,18 +51,12 @@ const {rule} = stylelint.createPlugin(
 
         if (!found || !found.length) return;
 
-        found.forEach((disallowedPattern) => {
+        found.forEach(() => {
           stylelint.utils.report({
             ruleName,
             result,
             node: atRule,
-            message: messages.rejected(
-              atRuleName,
-              atRuleId,
-              isString(disallowedPattern)
-                ? disallowedPattern
-                : disallowedPattern.source,
-            ),
+            message: messages.rejected(atRuleName, atRuleId),
           });
         });
       });

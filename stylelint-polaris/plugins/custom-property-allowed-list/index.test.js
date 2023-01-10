@@ -78,7 +78,7 @@ testRule({
       code: '.a { --p-test: red; }',
       description:
         'Defining custom-properties that start with --p- is disallowed',
-      message: messages.rejected('--p-test'),
+      message: messages.rejected('--p-test', 'red', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -88,7 +88,7 @@ testRule({
       code: '.a { --pc-test: red; }',
       description:
         'Defining custom-properties that start with --pc- is disallowed',
-      message: messages.rejected('--pc-test'),
+      message: messages.rejected('--pc-test', 'red', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -98,7 +98,12 @@ testRule({
       code: '.a { color: var(--p-unknown); }',
       description:
         'Using --p- prefixed tokens that do not exist in polaris-tokens is disallowed',
-      message: messages.rejected(undefined, '--p-unknown'),
+      message: messages.rejected(
+        'color',
+        'var(--p-unknown)',
+        false,
+        '--p-unknown',
+      ),
       line: 1,
       column: 6,
       endLine: 1,
@@ -107,7 +112,7 @@ testRule({
     {
       code: '.a { color: var(--pc-test); }',
       description: 'Using --pc- prefixed tokens is disallowed',
-      message: messages.rejected(undefined, '--pc-test'),
+      message: messages.rejected('color', 'var(--pc-test)', false, '--pc-test'),
       line: 1,
       column: 6,
       endLine: 1,
@@ -139,7 +144,7 @@ testRule({
       code: '.a { --p-test: red; }',
       description:
         'Defining custom-properties that start with --p- is disallowed',
-      message: messages.rejected('--p-test'),
+      message: messages.rejected('--p-test', 'red', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -149,7 +154,7 @@ testRule({
       code: '.a { --test: red; }',
       description:
         "Defining custom-properties that don't start with --p- or --pc- is disallowed",
-      message: messages.rejected('--test'),
+      message: messages.rejected('--test', 'red', true, undefined),
       line: 1,
       column: 6,
       endLine: 1,
@@ -158,7 +163,7 @@ testRule({
     {
       code: '.a { color: var(--test); }',
       description: 'Using other custom-properties',
-      message: messages.rejected(undefined, '--test'),
+      message: messages.rejected('color', 'var(--test)', false, '--test'),
       line: 1,
       column: 6,
       endLine: 1,

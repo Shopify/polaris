@@ -170,7 +170,12 @@ function IndexTableBase({
     bulkActionsAbsoluteOffset,
     bulkActionsMaxWidth,
     bulkActionsOffsetLeft,
+    computeTableDimensions,
   } = useIsBulkActionsSticky(selectMode);
+
+  useEffect(() => {
+    computeTableDimensions();
+  }, [computeTableDimensions, itemCount]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
@@ -600,11 +605,6 @@ function IndexTableBase({
               </div>
             ) : null;
 
-          const stickyColumnHeaderClassNames = classNames(
-            styles.StickyTableColumnHeader,
-            hasMoreLeftColumns && styles['StickyTableColumnHeader-isScrolling'],
-          );
-
           const headerMarkup = condensed ? (
             <div
               className={classNames(
@@ -621,7 +621,7 @@ function IndexTableBase({
               ref={stickyHeaderWrapperElement}
             >
               {loadingMarkup}
-              <div className={stickyColumnHeaderClassNames}>
+              <div className={styles.StickyTableColumnHeader}>
                 {stickyColumnHeader}
               </div>
               <div
@@ -741,9 +741,10 @@ function IndexTableBase({
     );
 
   const tableWrapperClassNames = classNames(
+    styles.IndexTableWrapper,
     Boolean(bulkActionsMarkup) &&
       selectMode &&
-      styles.IndexTableWithBulkActions,
+      styles.IndexTableWrapperWithBulkActions,
   );
 
   return (
@@ -892,6 +893,7 @@ function IndexTableBase({
         <UnstyledButton
           onClick={() => handleSortHeadingClick(index, newDirection)}
           className={styles.TableHeadingSortButton}
+          tabIndex={selectMode ? -1 : 0}
         >
           {iconMarkup}
 
@@ -899,7 +901,7 @@ function IndexTableBase({
         </UnstyledButton>
       );
 
-      if (!sortToggleLabels) {
+      if (!sortToggleLabels || selectMode) {
         return sortMarkup;
       }
 

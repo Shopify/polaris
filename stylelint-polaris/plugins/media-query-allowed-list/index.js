@@ -10,13 +10,13 @@ const {
   matchesStringOrRegExp,
 } = require('../../utils');
 
-const ruleName = 'stylelint-polaris/media-queries-allowed-list';
+const ruleName = 'polaris/media-query-allowed-list';
 
 const messages = stylelint.utils.ruleMessages(ruleName, {
   /**
    * @type {stylelint.RuleMessageFunc}
    */
-  rejected: (invalidMedia) => `Invalid media query [${invalidMedia}].`,
+  rejected: (invalidMedia) => `Unexpected media query "${invalidMedia}"`,
 });
 
 /** @typedef {(string | RegExp)[]} AllowedPatterns */
