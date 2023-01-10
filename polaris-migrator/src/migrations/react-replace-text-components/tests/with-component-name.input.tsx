@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React from 'react';
-
-import {DisplayText} from '../DisplayText';
-import {Heading} from '../Heading';
-import {Subheading} from '../Subheading';
-import {Caption} from '../Caption';
-import {TextStyle} from '../TextStyle';
-import {VisuallyHidden} from '../VisuallyHidden';
+import {
+  DisplayText,
+  Caption,
+  Heading,
+  Subheading,
+  TextStyle,
+  VisuallyHidden,
+} from '@shopify/polaris';
 
 export function App() {
   return (
