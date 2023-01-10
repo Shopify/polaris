@@ -34,7 +34,7 @@ const components = {
     variant: 'bodySm',
     as: 'span',
   },
-} as const;
+};
 
 /**
  * Replace <Heading>, <Subheading>, <Caption>, and <VisuallyHidden> with the <Text> component
@@ -45,8 +45,16 @@ export function replaceOther<NodeType = ASTNode>(
   options: MigrationOptions,
 ) {
   const relative = options.relative;
+  const componentName = options.componentName;
 
-  Object.entries(components).forEach(([componentName, {variant, as}]) => {
+  const replaceOtherComponent = (
+    j: JSCodeshift,
+    source: Collection<NodeType>,
+    componentName: string,
+    relative: boolean,
+  ) => {
+    const {variant, as} = (components as any)[componentName];
+
     const sourcePaths = normalizeImportSourcePaths(j, source, {
       relative,
       from: componentName,
@@ -92,5 +100,21 @@ export function replaceOther<NodeType = ASTNode>(
       .forEach((path) => {
         path.node.name = 'Text';
       });
-  });
+  };
+
+  if (componentName) {
+    if (!Object.keys(components).includes(componentName)) {
+      throw new Error(
+        `Unsupported component: ${componentName} not supported: ${Object.keys(
+          components,
+        ).join(' ')}`,
+      );
+    }
+
+    replaceOtherComponent(j, source, componentName, relative);
+  } else {
+    Object.keys(components).forEach((componentName) =>
+      replaceOtherComponent(j, source, componentName, relative),
+    );
+  }
 }

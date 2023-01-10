@@ -8,6 +8,7 @@ import {replaceTextStyle} from './steps/replace-text-style';
 
 export interface MigrationOptions extends Options {
   relative: boolean;
+  componentName?: string;
 }
 
 export default function reactReplaceTextComponents(

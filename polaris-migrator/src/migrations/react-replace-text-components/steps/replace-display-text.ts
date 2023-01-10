@@ -34,6 +34,10 @@ export function replaceDisplayText<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
+  if (options.componentName && options.componentName !== 'DisplayText') {
+    return;
+  }
+
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative: options.relative,
     from: 'DisplayText',
