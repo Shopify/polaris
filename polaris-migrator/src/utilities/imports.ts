@@ -8,7 +8,6 @@ export function hasImportDeclaration(
   return Boolean(
     source
       .find(j.ImportDeclaration)
-      .filter((path) => path.node.importKind !== 'type')
       .filter((path) => path.node.source.value === sourcePath).length,
   );
 }

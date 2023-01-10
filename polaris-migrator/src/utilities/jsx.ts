@@ -1,4 +1,4 @@
-import core, {ASTPath, Collection} from 'jscodeshift';
+import core, {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
 
 export function getJSXAttributes(
   j: core.JSCodeshift,
@@ -34,11 +34,22 @@ export function hasJSXSpreadAttribute(
 }
 
 export function removeJSXAttributes(
-  j: core.JSCodeshift,
-  element: ASTPath<any>,
+  _j: core.JSCodeshift,
+  element: ASTPath<JSXElement>,
   attributeName: string,
 ) {
-  return getJSXAttributes(j, element, attributeName).remove();
+  const jsxAttributes = element.value.attributes?.filter(
+    (attr) => attr.type === 'JSXAttribute' && attr.name.name === attributeName,
+  );
+
+  if (!jsxAttributes) return;
+
+  jsxAttributes.forEach((attr) => {
+    const jsxAttribute = attr as JSXAttribute;
+
+    jsxAttribute.name.name = '';
+    jsxAttribute.value = null;
+  });
 }
 
 export function insertJSXAttribute(
@@ -152,4 +163,25 @@ export function insertJSXComment(
     element.insertAfter(lineBreak);
     element.insertAfter(jsxComment);
   }
+}
+
+export function insertCommentBefore(
+  j: core.JSCodeshift,
+  path: ASTPath<any>,
+  comment: string,
+) {
+  const content = ` ${comment} `;
+
+  path.value.comments = path.value.comments || [];
+
+  const exists = path.value.comments.find(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    (comment) => comment.value === content,
+  );
+
+  // Avoiding duplicates of the same comment
+  if (exists) return;
+
+  path.value.comments.push(j.commentBlock(content));
 }
