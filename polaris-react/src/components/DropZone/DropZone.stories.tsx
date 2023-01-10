@@ -7,7 +7,7 @@ import {
   DropZone,
   List,
   Page,
-  Stack,
+  AlphaStack,
   Thumbnail,
 } from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
@@ -30,9 +30,9 @@ export function Default() {
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <div style={{padding: '0'}}>
-      <Stack vertical>
+      <AlphaStack>
         {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
+          <AlphaStack align="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -49,9 +49,9 @@ export function Default() {
                 {file.size} bytes
               </Text>
             </div>
-          </Stack>
+          </AlphaStack>
         ))}
-      </Stack>
+      </AlphaStack>
     </div>
   );
 
@@ -86,9 +86,9 @@ export function WithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <AlphaStack>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <AlphaStack align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -101,9 +101,9 @@ export function WithImageFileUpload() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </AlphaStack>
       ))}
-    </Stack>
+    </AlphaStack>
   );
 
   const errorMessage = hasError && (
@@ -122,13 +122,13 @@ export function WithImageFileUpload() {
   );
 
   return (
-    <Stack vertical>
+    <AlphaStack fullWidth>
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
         {fileUpload}
       </DropZone>
-    </Stack>
+    </AlphaStack>
   );
 }
 
@@ -145,7 +145,7 @@ export function WithSingleFileUpload() {
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (
-    <Stack>
+    <AlphaStack>
       <Thumbnail
         size="small"
         alt={file.name}
@@ -162,7 +162,7 @@ export function WithSingleFileUpload() {
           {file.size} bytes
         </Text>
       </div>
-    </Stack>
+    </AlphaStack>
   );
 
   return (
@@ -185,9 +185,9 @@ export function WithDropOnPage() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <AlphaStack>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <AlphaStack align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -204,9 +204,9 @@ export function WithDropOnPage() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </AlphaStack>
       ))}
-    </Stack>
+    </AlphaStack>
   );
 
   const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
@@ -247,9 +247,9 @@ export function AcceptsOnlySVGFiles() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <AlphaStack>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <AlphaStack align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -262,9 +262,9 @@ export function AcceptsOnlySVGFiles() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </AlphaStack>
       ))}
-    </Stack>
+    </AlphaStack>
   );
 
   const errorMessage = hasError && (
@@ -283,7 +283,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   return (
-    <Stack vertical>
+    <AlphaStack fullWidth>
       {errorMessage}
       <DropZone
         accept="image/svg+xml"
@@ -293,7 +293,7 @@ export function AcceptsOnlySVGFiles() {
       >
         {uploadedFiles}
       </DropZone>
-    </Stack>
+    </AlphaStack>
   );
 }
 
@@ -310,9 +310,9 @@ export function Nested() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <AlphaStack>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <AlphaStack align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -329,9 +329,9 @@ export function Nested() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </AlphaStack>
       ))}
-    </Stack>
+    </AlphaStack>
   );
 
   return (
@@ -382,9 +382,9 @@ export function WithCustomFileUploadText() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <AlphaStack>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <AlphaStack align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -401,9 +401,9 @@ export function WithCustomFileUploadText() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </AlphaStack>
       ))}
-    </Stack>
+    </AlphaStack>
   );
 
   return (
@@ -431,9 +431,9 @@ export function WithCustomFileDialogTrigger() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <AlphaStack>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <AlphaStack align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -450,9 +450,9 @@ export function WithCustomFileDialogTrigger() {
               {file.size} bytes
             </Text>
           </div>
-        </Stack>
+        </AlphaStack>
       ))}
-    </Stack>
+    </AlphaStack>
   );
 
   return (
