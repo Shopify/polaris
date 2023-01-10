@@ -3,12 +3,12 @@ import type {API, FileInfo, Options} from 'jscodeshift';
 import {hasImportDeclaration} from '../../utilities/imports';
 
 import {replaceDisplayText} from './steps/replace-display-text';
-import {replaceOther} from './steps/replace-other';
+import {replaceOther, components} from './steps/replace-other';
 import {replaceTextStyle} from './steps/replace-text-style';
 
 export interface MigrationOptions extends Options {
   relative: boolean;
-  componentName?: string;
+  componentName?: keyof typeof components | 'DisplayText' | 'TextStyle';
 }
 
 export default function reactReplaceTextComponents(

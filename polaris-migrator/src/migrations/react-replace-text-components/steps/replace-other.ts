@@ -26,8 +26,9 @@ import {
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
 import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
+import {isKeyOf} from '../../../utilities/type-guards';
 
-const components = {
+export const components = {
   Heading: {
     validElements: new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']),
     defaultElement: 'h2',
@@ -57,12 +58,11 @@ const components = {
 function replaceOtherComponent(
   j: JSCodeshift,
   source: Collection,
-  componentName: string,
+  componentName: keyof typeof components,
   relative: boolean,
 ) {
-  const {variant, as, validElements, defaultElement} = (components as any)[
-    componentName
-  ];
+  const {variant, as, validElements, defaultElement} =
+    components[componentName];
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative,
     from: componentName,
@@ -198,10 +198,7 @@ export function replaceOther<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  if (
-    options.componentName &&
-    Object.keys(components).includes(options.componentName)
-  ) {
+  if (options.componentName && !isKeyOf(components, options.componentName)) {
     throw new Error(`Unsupported component name: ${options.componentName}`);
   }
 
@@ -209,7 +206,12 @@ export function replaceOther<NodeType = ASTNode>(
     replaceOtherComponent(j, source, options.componentName, options.relative);
   } else {
     Object.keys(components).forEach((componentName) =>
-      replaceOtherComponent(j, source, componentName, options.relative),
+      replaceOtherComponent(
+        j,
+        source,
+        componentName as keyof typeof components,
+        options.relative,
+      ),
     );
   }
 }
