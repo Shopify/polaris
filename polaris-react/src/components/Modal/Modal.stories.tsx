@@ -6,7 +6,6 @@ import {
   Checkbox,
   ChoiceList,
   DropZone,
-  Form,
   FormLayout,
   Modal,
   Stack,
@@ -490,29 +489,44 @@ export function WithLongContent() {
       title="Long form modal"
       open
       onClose={() => {}}
-      sectioned
       primaryAction={{content: 'Save'}}
     >
-      <Banner title="Heyo" />
-      <Form onSubmit={() => {}}>
+      <Modal.Section>
+        <Banner title="Payment details" />
+      </Modal.Section>
+      <Modal.Section>
         <FormLayout>
           <FormLayout.Group>
-            <TextField label="URL" type="url" autoComplete="url" />
-            <TextField label="URL" type="url" autoComplete="url" />
-            <TextField label="URL" type="url" autoComplete="url" />
+            <TextField label="Payment method type" autoComplete="off" />
+            <TextField label="Card number" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Expires" autoComplete="off" />
+            <TextField label="CVV" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Country/region" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="First name" autoComplete="off" />
+            <TextField label="Last name" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Address" autoComplete="off" />
+            <TextField label="Apartment, suite, etc." autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="City" autoComplete="off" />
+            <TextField label="Province" autoComplete="off" />
+            <TextField label="Postal code" autoComplete="off" />
           </FormLayout.Group>
         </FormLayout>
-        <FormLayout>
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-        </FormLayout>
-      </Form>
+      </Modal.Section>
     </Modal>
   );
 }
@@ -527,26 +541,42 @@ export function WithLongContentNoScroll() {
       noScroll
       primaryAction={{content: 'Save'}}
     >
-      <Banner title="Heyo" />
-      <Form onSubmit={() => {}}>
+      <Modal.Section>
+        <Banner title="Payment details" />
+      </Modal.Section>
+      <Modal.Section>
         <FormLayout>
           <FormLayout.Group>
-            <TextField label="URL" type="url" autoComplete="url" />
-            <TextField label="URL" type="url" autoComplete="url" />
-            <TextField label="URL" type="url" autoComplete="url" />
+            <TextField label="Payment method type" autoComplete="off" />
+            <TextField label="Card number" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Expires" autoComplete="off" />
+            <TextField label="CVV" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Country/region" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="First name" autoComplete="off" />
+            <TextField label="Last name" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Address" autoComplete="off" />
+            <TextField label="Apartment, suite, etc." autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="City" autoComplete="off" />
+            <TextField label="Province" autoComplete="off" />
+            <TextField label="Postal code" autoComplete="off" />
           </FormLayout.Group>
         </FormLayout>
-        <FormLayout>
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-          <TextField label="URL" type="url" autoComplete="url" />
-        </FormLayout>
-      </Form>
+      </Modal.Section>
     </Modal>
   );
 }
