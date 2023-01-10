@@ -175,6 +175,8 @@ export interface BoxProps extends React.AriaAttributes {
   insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
+  /** Outline style */
+  outline?: BorderTokenAlias;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
@@ -211,6 +213,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
+      outline,
       padding,
       paddingBlockStart,
       paddingBlockEnd,
@@ -282,6 +285,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
       '--pc-box-max-width': maxWidth,
+      '--pc-box-outline': outline ? `var(--p-border-${outline})` : undefined,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
       ...getResponsiveProps(

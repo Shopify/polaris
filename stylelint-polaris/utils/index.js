@@ -231,6 +231,34 @@ function isString(value) {
 }
 
 /**
+ * Check whether the variable is an object and all its properties are one or more values
+ * that satisfy the specified validator(s):
+ *
+ * @example
+ * ignoreProperties = {
+ *   value1: ["item11", "item12", "item13"],
+ *   value2: "item2",
+ * };
+ * validateObjectWithArrayProps(isString)(ignoreProperties);
+ * //=> true
+ *
+ * @typedef {(value: unknown) => boolean} Validator
+ * @param {...Validator} validators
+ * @returns {Validator}
+ */
+function validateObjectWithArrayProps(...validators) {
+  return (value) => {
+    if (!isPlainObject(value)) {
+      return false;
+    }
+
+    return Object.values(value)
+      .flat()
+      .every((item) => validators.some((validator) => validator(item)));
+  };
+}
+
+/**
  * Returns the arguments expected by Stylelint rules that support functional custom messages
  * @param {string} ruleName The category's default message
  * @param {import('postcss').Node} node The node being reported as a problem
@@ -259,6 +287,7 @@ module.exports.isPlainObject = isPlainObject;
 module.exports.isRegExp = isRegExp;
 module.exports.isScssInterpolation = isScssInterpolation;
 module.exports.isString = isString;
+module.exports.validateObjectWithArrayProps = validateObjectWithArrayProps;
 module.exports.matchesStringOrRegExp = matchesStringOrRegExp;
 module.exports.scssInterpolationExpression = scssInterpolationExpression;
 module.exports.scssInterpolationRegExp = scssInterpolationRegExp;
