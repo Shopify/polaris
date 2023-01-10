@@ -1,25 +1,31 @@
-import type {ASTNode, Collection, JSCodeshift} from 'jscodeshift';
+import type {
+  ASTNode,
+  Collection,
+  JSCodeshift,
+  JSXAttribute,
+  JSXOpeningElement,
+} from 'jscodeshift';
 
 import {
-  hasJSXAttribute,
-  getJSXAttributes,
-  replaceJSXElement,
-  replaceJSXAttributes,
+  insertCommentBefore,
   insertJSXAttribute,
-  removeJSXAttributes,
-  hasJSXSpreadAttribute,
   insertJSXComment,
+  removeJSXAttributes,
+  replaceJSXElement,
 } from '../../../utilities/jsx';
 import {
-  insertImportSpecifier,
   getImportSpecifierName,
   hasImportSpecifier,
+  hasImportSpecifiers,
   insertImportDeclaration,
+  insertImportSpecifier,
   normalizeImportSourcePaths,
-  updateImports,
+  removeImportDeclaration,
+  removeImportSpecifier,
 } from '../../../utilities/imports';
 import type {MigrationOptions} from '../react-replace-text-components';
 import {POLARIS_MIGRATOR_COMMENT} from '../../../constants';
+import {isKeyOf} from '../../../utilities/type-guards';
 
 const variationMap = {
   strong: {fontWeight: 'semibold'},
@@ -45,87 +51,159 @@ export function replaceTextStyle<NodeType = ASTNode>(
   });
 
   if (!sourcePaths) return;
-  if (!hasImportSpecifier(j, source, 'TextStyle', sourcePaths.from)) return;
+  if (
+    !hasImportSpecifier(j, source, 'TextStyle', sourcePaths.from) &&
+    !hasImportSpecifier(j, source, 'TextStyleProps', sourcePaths.from)
+  ) {
+    return;
+  }
 
   const localElementName =
     getImportSpecifierName(j, source, 'TextStyle', sourcePaths.from) ||
     'TextStyle';
 
-  updateImports(j, source, {
-    fromSpecifier: 'TextStyle',
-    toSpecifier: 'Text',
-    fromSourcePath: sourcePaths.from,
-    toSourcePath: sourcePaths.to,
-  });
+  const localElementTypeName = getImportSpecifierName(
+    j,
+    source,
+    'TextStyleProps',
+    sourcePaths.from,
+  );
+
+  let canInsertTextImport = false;
+  let canRemoveTextStyleImport = Boolean(!localElementTypeName);
+  let canInsertInlineCodeImport = false;
 
   source.findJSXElements(localElementName).forEach((element) => {
-    if (hasJSXSpreadAttribute(j, element)) {
+    const allAttributes =
+      (j(element).find(j.JSXOpeningElement).get().value as JSXOpeningElement)
+        .attributes ?? [];
+
+    if (allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')) {
+      canRemoveTextStyleImport = false;
       insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+      return;
     }
+
+    const jsxAttributes = allAttributes as JSXAttribute[];
+
+    const variationAttribute = jsxAttributes.find(
+      (attribute) => attribute.name.name === 'variation',
+    );
+
+    let variationValue: keyof typeof variationMap | undefined;
+
+    if (variationAttribute) {
+      const variationAttributeValue = variationAttribute.value;
+
+      if (
+        variationAttributeValue?.type === 'StringLiteral' &&
+        isKeyOf(variationMap, variationAttributeValue.value)
+      ) {
+        variationValue = variationAttributeValue.value;
+      } else {
+        canRemoveTextStyleImport = false;
+        insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+        return;
+      }
+    }
+
+    canInsertTextImport = true;
 
     replaceJSXElement(j, element, 'Text');
     insertJSXAttribute(j, element, 'variant', 'bodyMd');
-    getJSXAttributes(j, element, 'variation')
-      .find(j.StringLiteral)
-      .forEach((literal) => {
-        const currentValue = literal.node.value as keyof typeof variationMap;
-        if (currentValue === 'code') {
-          const inlineTextSourcePath = options.relative
-            ? sourcePaths.from.replace('TextStyle', 'InlineCode')
-            : '@shopify/polaris';
-
-          if (
-            !hasImportSpecifier(j, source, 'InlineCode', inlineTextSourcePath)
-          ) {
-            if (options.relative) {
-              insertImportDeclaration(
-                j,
-                source,
-                'InlineCode',
-                inlineTextSourcePath,
-                sourcePaths.to,
-              );
-            } else {
-              insertImportSpecifier(
-                j,
-                source,
-                'InlineCode',
-                inlineTextSourcePath,
-              );
-            }
-          }
-
-          const InlineCode = j.jsxElement(
-            j.jsxOpeningElement(j.jsxIdentifier('InlineCode')),
-            j.jsxClosingElement(j.jsxIdentifier('InlineCode')),
-            element.node.children,
-          );
-          element.replace(
-            j.jsxElement(
-              element.node.openingElement,
-              element.node.closingElement,
-              [InlineCode],
-            ),
-          );
-        } else {
-          const newAttributes = variationMap[currentValue];
-          Object.entries(newAttributes).forEach(([name, value]) => {
-            insertJSXAttribute(j, element, name, value);
-          });
-        }
-      });
+    insertJSXAttribute(j, element, 'as', 'span');
     removeJSXAttributes(j, element, 'variation');
-    if (hasJSXAttribute(j, element, 'element')) {
-      replaceJSXAttributes(j, element, 'element', 'as');
-    } else {
-      insertJSXAttribute(j, element, 'as', 'span');
+
+    if (typeof variationValue === 'undefined') return;
+
+    if (variationValue === 'code') {
+      canInsertInlineCodeImport = true;
+
+      const InlineCode = j.jsxElement(
+        j.jsxOpeningElement(j.jsxIdentifier('InlineCode')),
+        j.jsxClosingElement(j.jsxIdentifier('InlineCode')),
+        element.node.children,
+      );
+
+      element.replace(
+        j.jsxElement(element.node.openingElement, element.node.closingElement, [
+          InlineCode,
+        ]),
+      );
+
+      return;
     }
+
+    Object.entries(variationMap[variationValue]).forEach(([name, value]) => {
+      insertJSXAttribute(j, element, name, value);
+    });
   });
 
   source
     .find(j.Identifier)
-    .filter((path) => path.node.name === localElementName)
+    .filter(
+      (path) =>
+        path.node.name === localElementName ||
+        path.node.name === localElementTypeName,
+    )
     .forEach((path) => {
-      path.node.name = 'Text';
+      if (path.node.type !== 'Identifier') return;
+
+      if (path.parent.value.type !== 'ImportSpecifier') {
+        canRemoveTextStyleImport = false;
+      }
+
+      insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
+
+      if (path.node.name === localElementName) {
+        insertCommentBefore(j, path, 'Replace with: Text');
+      } else {
+        insertCommentBefore(j, path, 'Replace with: TextProps');
+      }
     });
+
+  if (canInsertTextImport) {
+    if (!hasImportSpecifier(j, source, 'Text', sourcePaths.to)) {
+      if (options.relative) {
+        insertImportDeclaration(
+          j,
+          source,
+          'Text',
+          sourcePaths.to,
+          sourcePaths.from,
+        );
+      } else {
+        insertImportSpecifier(j, source, 'Text', sourcePaths.to);
+      }
+    }
+  }
+
+  const inlineTextSourcePath = options.relative
+    ? sourcePaths.from.replace('TextStyle', 'InlineCode')
+    : '@shopify/polaris';
+
+  if (canInsertInlineCodeImport) {
+    if (!hasImportSpecifier(j, source, 'InlineCode', inlineTextSourcePath)) {
+      if (options.relative) {
+        insertImportDeclaration(
+          j,
+          source,
+          'InlineCode',
+          inlineTextSourcePath,
+          sourcePaths.to,
+        );
+      } else {
+        insertImportSpecifier(j, source, 'InlineCode', inlineTextSourcePath);
+      }
+    }
+  }
+
+  if (canRemoveTextStyleImport) {
+    if (hasImportSpecifier(j, source, 'TextStyle', sourcePaths.from)) {
+      removeImportSpecifier(j, source, 'TextStyle', sourcePaths.from);
+    }
+    if (!hasImportSpecifiers(j, source, sourcePaths.from)) {
+      removeImportDeclaration(j, source, sourcePaths.from);
+    }
+  }
 }

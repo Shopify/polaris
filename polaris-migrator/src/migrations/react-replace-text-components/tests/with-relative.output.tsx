@@ -1,12 +1,19 @@
 // @ts-nocheck
 import React from 'react';
 
+import {
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: Text */
+  DisplayText,
+} from '../DisplayText';
 import {Text} from '../Text';
 import {InlineCode} from '../InlineCode';
 
 export function App() {
   return (
     <>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
+      <DisplayText size="invalid">Display text</DisplayText>
       <Text variant="heading4xl" as="p">
         Display text
       </Text>
@@ -34,16 +41,16 @@ export function App() {
       <Text variant="bodySm" as="p">
         Caption
       </Text>
-      <Text variant="bodyMd" fontWeight="semibold" as="span">
+      <Text variant="bodyMd" as="span" fontWeight="semibold">
         Strong
       </Text>
-      <Text variant="bodyMd" color="success" as="span">
+      <Text variant="bodyMd" as="span" color="success">
         Positive
       </Text>
-      <Text variant="bodyMd" color="critical" as="span">
+      <Text variant="bodyMd" as="span" color="critical">
         Negative
       </Text>
-      <Text variant="bodyMd" color="warning" as="span">
+      <Text variant="bodyMd" as="span" color="warning">
         Warning
       </Text>
       <Text variant="bodyMd" as="span">
