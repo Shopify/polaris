@@ -98,7 +98,7 @@ export function Header({
     !actionGroups.length;
 
   const breadcrumbMarkup =
-    breadcrumbs.length > 0 ? (
+    (breadcrumbs instanceof Array && breadcrumbs.length > 0) || breadcrumbs ? (
       <div className={styles.BreadcrumbWrapper}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
@@ -178,7 +178,7 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
-    !breadcrumbs.length && styles.noBreadcrumbs,
+    !breadcrumbMarkup && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );

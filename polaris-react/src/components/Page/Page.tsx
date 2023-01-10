@@ -40,7 +40,10 @@ export function Page({
         rest.secondaryActions.length > 0) ||
         isReactElement(rest.secondaryActions))) ||
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
-    (rest.breadcrumbs != null && rest.breadcrumbs.length > 0);
+    (rest.breadcrumbs != null &&
+      rest.breadcrumbs instanceof Array &&
+      rest.breadcrumbs.length > 0) ||
+    rest.breadcrumbs != null;
 
   const contentClassName = classNames(
     !hasHeaderContent && styles.Content,
