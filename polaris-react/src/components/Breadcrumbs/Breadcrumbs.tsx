@@ -15,10 +15,9 @@ export interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
-  const breadcrumb =
-    breadcrumbs instanceof Array
-      ? breadcrumbs[breadcrumbs.length - 1]
-      : breadcrumbs;
+  const breadcrumb = Array.isArray(breadcrumbs)
+    ? breadcrumbs[breadcrumbs.length - 1]
+    : breadcrumbs;
   if (breadcrumb == null) {
     return null;
   }
