@@ -55,11 +55,6 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: '/components/:category/:slug',
-        destination: '/components/:slug',
-        permanent: false,
-      },
-      {
         source: '/foundations/foundations/:slug',
         destination: '/foundations/:slug',
         permanent: false,

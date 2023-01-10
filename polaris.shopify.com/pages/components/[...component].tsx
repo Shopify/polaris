@@ -79,10 +79,11 @@ const Components = ({
 
 export const getStaticProps: GetStaticProps<
   Props,
-  {component: string}
+  {component: string[]}
 > = async (context) => {
-  const componentSlug = context.params?.component;
+  const componentSlug = context.params?.component.join('/');
   const relativeMdPath = `content/components/${componentSlug}.md`;
+
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
 
@@ -144,7 +145,7 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = path.resolve(process.cwd(), 'content/components/*.md');
+  const globPath = path.resolve(process.cwd(), 'content/components/**/*.md');
   const paths = globby
     .sync(globPath)
     .filter((path) => !path.endsWith('index.md'))
