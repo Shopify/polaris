@@ -44,9 +44,6 @@ export function replaceOther<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  const relative = options.relative;
-  const componentName = options.componentName;
-
   const replaceOtherComponent = (
     j: JSCodeshift,
     source: Collection<NodeType>,
@@ -102,19 +99,18 @@ export function replaceOther<NodeType = ASTNode>(
       });
   };
 
-  if (componentName) {
-    if (!Object.keys(components).includes(componentName)) {
-      throw new Error(
-        `Unsupported component: ${componentName} not supported: ${Object.keys(
-          components,
-        ).join(' ')}`,
-      );
-    }
-
-    replaceOtherComponent(j, source, componentName, relative);
-  } else {
-    Object.keys(components).forEach((componentName) =>
-      replaceOtherComponent(j, source, componentName, relative),
-    );
+  if (
+    options.componentNames &&
+    options.componentNames.some(
+      (component) => !Object.keys(components).includes(component),
+    )
+  ) {
+    throw new Error(`Unsupported component name: ${options.componentNames}`);
   }
+
+  const componentNames = options.componentNames || Object.keys(components);
+
+  componentNames.forEach((componentName) =>
+    replaceOtherComponent(j, source, componentName, options.relative),
+  );
 }

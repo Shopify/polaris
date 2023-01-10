@@ -38,7 +38,7 @@ export function replaceTextStyle<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  if (options.componentName && options.componentName !== 'TextStyle') {
+  if (options.componentNames && !options.componentNames.includes('TextStyle')) {
     return;
   }
 
