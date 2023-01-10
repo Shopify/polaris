@@ -99,18 +99,15 @@ export function replaceOther<NodeType = ASTNode>(
       });
   };
 
-  if (
-    options.componentNames &&
-    options.componentNames.some(
-      (component) => !Object.keys(components).includes(component),
-    )
-  ) {
-    throw new Error(`Unsupported component name: ${options.componentNames}`);
+  if (options.componentName) {
+    if (Object.keys(components).includes(options.componentName)) {
+      throw new Error(`Unsupported component name: ${options.componentName}`);
+    }
+
+    replaceOtherComponent(j, source, options.componentName, options.relative);
+  } else {
+    Object.keys(components).forEach((componentName) =>
+      replaceOtherComponent(j, source, componentName, options.relative),
+    );
   }
-
-  const componentNames = options.componentNames || Object.keys(components);
-
-  componentNames.forEach((componentName) =>
-    replaceOtherComponent(j, source, componentName, options.relative),
-  );
 }

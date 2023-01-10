@@ -8,7 +8,7 @@ import {replaceTextStyle} from './steps/replace-text-style';
 
 export interface MigrationOptions extends Options {
   relative: boolean;
-  componentNames?: string[];
+  componentName?: string;
 }
 
 export default function reactReplaceTextComponents(
@@ -25,9 +25,19 @@ export default function reactReplaceTextComponents(
     return file.source;
   }
 
-  replaceDisplayText(j, source, options);
-  replaceOther(j, source, options);
-  replaceTextStyle(j, source, options);
+  if (options.componentName) {
+    if (options.componentName === 'DisplayText') {
+      replaceDisplayText(j, source, options);
+    } else if (options.componentName === 'TextStyle') {
+      replaceTextStyle(j, source, options);
+    } else {
+      replaceOther(j, source, options);
+    }
+  } else {
+    replaceDisplayText(j, source, options);
+    replaceOther(j, source, options);
+    replaceTextStyle(j, source, options);
+  }
 
   return source.toSource();
 }

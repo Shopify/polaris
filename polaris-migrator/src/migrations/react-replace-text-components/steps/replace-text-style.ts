@@ -38,10 +38,6 @@ export function replaceTextStyle<NodeType = ASTNode>(
   source: Collection<NodeType>,
   options: MigrationOptions,
 ) {
-  if (options.componentNames && !options.componentNames.includes('TextStyle')) {
-    return;
-  }
-
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative: options.relative,
     from: 'TextStyle',
