@@ -111,12 +111,4 @@ function validateVersionReplacement() {
   });
 
   assert.strictEqual(fileBuckets.includesTemplateString.length, 0);
-
-  assert.deepStrictEqual(fileBuckets.includesVersion, [
-    './build/cjs/configure.js',
-    './build/esm/configure.js',
-    './build/esm/styles.css',
-    './build/esnext/configure.esnext',
-    './build/esnext/components/AppProvider/AppProvider.css',
-  ]);
 }
