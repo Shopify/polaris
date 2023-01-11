@@ -5,7 +5,7 @@ import {getStaticPropsForFoundations} from '../src/utils/foundations';
 const SECTION = 'tools';
 
 const FoundationsCategory = (props: FoundationsProps) => (
-  <FoundationsPage showTOC {...props} />
+  <FoundationsPage {...props} />
 );
 
 export const getStaticProps = getStaticPropsForFoundations(SECTION);

@@ -10,7 +10,6 @@ export interface FoundationsProps {
   title: string;
   description: string;
   items: Item[];
-  showTOC?: boolean;
 }
 
 interface Item extends GridItemProps {
@@ -18,17 +17,12 @@ interface Item extends GridItemProps {
   icon: string;
 }
 
-function FoundationsPage({
-  title,
-  description,
-  items,
-  showTOC = false,
-}: FoundationsProps) {
+function FoundationsPage({title, description, items}: FoundationsProps) {
   return (
     <div className={styles.FoundationsPage}>
       <PageMeta description={description} />
 
-      <Page showTOC={showTOC}>
+      <Page showTOC={false}>
         <Longform>
           <h1>{title}</h1>
           <p>{description}</p>

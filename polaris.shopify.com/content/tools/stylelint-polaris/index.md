@@ -193,3 +193,17 @@ yarn run stylelint path/to/component.scss
 
 // yarn run stylelint polaris-react/src/components/TopBar/TopBar.scss
 ```
+
+## Rules
+
+[Conventions](/tools/stylelint-polaris/conventions) |
+[Colors](/tools/stylelint-polaris/colors) |
+[Motion](/tools/stylelint-polaris/motion) |
+[Typography](/tools/stylelint-polaris/typography) |
+[Shape](/tools/stylelint-polaris/shape) |
+[Spacing](/tools/stylelint-polaris/shape) |
+[Depth](/tools/stylelint-polaris/depth) |
+[Media queries](/tools/stylelint-polaris/media-queries) |
+[Z-index](/tools/stylelint-polaris/z-index) |
+[Layout](/tools/stylelint-polaris/layout) |
+[Legacy](/tools/stylelint-polaris/conventions)
