@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.1.0
+
+### Minor Changes
+
+- [#7993](https://github.com/Shopify/polaris/pull/7993) [`128f147d1`](https://github.com/Shopify/polaris/commit/128f147d19354adbb24c48443e7c47ff6dd06c74) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Created `polaris/declaration-property-value-disallowed-list` rule to ignore failures in `@font-face` at-rules
+
+### Patch Changes
+
+- [#8006](https://github.com/Shopify/polaris/pull/8006) [`6404b1638`](https://github.com/Shopify/polaris/commit/6404b163897fecfcdef853c5ed0f4e25a1334df0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Temporarily disabled `border-radius-base` error
+
 ## 5.0.2
 
 ### Patch Changes
