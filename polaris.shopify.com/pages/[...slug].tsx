@@ -77,6 +77,7 @@ const catchAllTemplateExcludeList = [
   '/design',
   '/content',
   '/patterns',
+  '/tooling',
   '/tokens',
   '/sandbox',
 ];
