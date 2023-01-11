@@ -13,6 +13,7 @@ import {Badge} from '../../../Badge';
 import {Icon, IconProps} from '../../../Icon';
 import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
+import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
@@ -21,6 +22,8 @@ import styles from '../../Navigation.scss';
 import {Tooltip, TooltipProps} from '../../../Tooltip';
 
 import {Secondary} from './components';
+
+export const MAX_SECONDARY_ACTIONS = 2;
 
 interface ItemURLDetails {
   url?: string;
@@ -40,12 +43,14 @@ export interface SubNavigationItem extends ItemURLDetails {
 }
 
 interface SecondaryAction {
-  url: string;
   accessibilityLabel: string;
   icon: IconProps['source'];
+  url?: string;
   onClick?(): void;
   tooltip?: TooltipProps;
 }
+
+type SecondaryActions = [SecondaryAction] | [SecondaryAction, SecondaryAction];
 
 export interface ItemProps extends ItemURLDetails {
   icon?: IconProps['source'];
@@ -57,7 +62,9 @@ export interface ItemProps extends ItemURLDetails {
   exactMatch?: boolean;
   new?: boolean;
   subNavigationItems?: SubNavigationItem[];
+  /** @deprecated Use secondaryActions instead. */
   secondaryAction?: SecondaryAction;
+  secondaryActions?: SecondaryActions;
   onClick?(): void;
   onToggleExpandedState?(): void;
   expanded?: boolean;
@@ -79,6 +86,7 @@ export function Item({
   label,
   subNavigationItems = [],
   secondaryAction,
+  secondaryActions,
   disabled,
   onClick,
   accessibilityLabel,
@@ -203,29 +211,38 @@ export function Item({
     );
   }
 
-  const secondaryActionLinkMarkup = secondaryAction && (
-    <UnstyledLink
-      external
-      url={secondaryAction.url}
-      className={styles.SecondaryAction}
-      tabIndex={tabIndex}
-      aria-disabled={disabled}
-      aria-label={secondaryAction.accessibilityLabel}
-      onClick={secondaryAction.onClick}
-    >
-      <Icon source={secondaryAction.icon} />
-    </UnstyledLink>
-  );
+  if (secondaryAction && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `secondaryAction` prop on the `Navigation.Item` has been deprecated. Use `secondaryActions` instead.',
+    );
+  }
 
-  const secondaryActionMarkup =
-    secondaryAction &&
-    (secondaryAction.tooltip ? (
-      <Tooltip {...secondaryAction.tooltip}>
-        {secondaryActionLinkMarkup}
-      </Tooltip>
-    ) : (
-      secondaryActionLinkMarkup
-    ));
+  const actions = secondaryActions || (secondaryAction && [secondaryAction]);
+
+  if (actions && actions.length > MAX_SECONDARY_ACTIONS) {
+    actions.length = MAX_SECONDARY_ACTIONS;
+
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `secondaryActions must have a maximum of ${MAX_SECONDARY_ACTIONS} actions. Only the first ${MAX_SECONDARY_ACTIONS} actions will be rendered.`,
+      );
+    }
+  }
+
+  const secondaryActionMarkup = actions?.length ? (
+    <div className={styles.SecondaryActions}>
+      {actions.map((action) => (
+        <ItemSecondaryAction
+          key={action.accessibilityLabel}
+          {...action}
+          tabIndex={tabIndex}
+          disabled={disabled}
+        />
+      ))}
+    </div>
+  ) : null;
 
   const matchState = matchStateForItem(
     {url, matches, exactMatch, matchPaths, excludePaths},
@@ -309,7 +326,7 @@ export function Item({
 
   const className = classNames(
     styles.ListItem,
-    secondaryAction && styles['ListItem-hasAction'],
+    Boolean(actions && actions.length) && styles['ListItem-hasAction'],
   );
 
   return (
@@ -374,6 +391,47 @@ export function Item({
       }
     };
   }
+}
+
+interface ItemSecondaryActionProps extends SecondaryAction {
+  tabIndex: number;
+  disabled?: boolean;
+}
+
+export function ItemSecondaryAction({
+  url,
+  icon,
+  accessibilityLabel,
+  tooltip,
+  onClick,
+  disabled,
+  tabIndex,
+}: ItemSecondaryActionProps) {
+  const markup = url ? (
+    <UnstyledLink
+      external
+      url={url}
+      className={styles.SecondaryAction}
+      tabIndex={tabIndex}
+      aria-disabled={disabled}
+      aria-label={accessibilityLabel}
+      onClick={onClick}
+    >
+      <Icon source={icon} />
+    </UnstyledLink>
+  ) : (
+    <UnstyledButton
+      className={styles.SecondaryAction}
+      tabIndex={tabIndex}
+      disabled={disabled}
+      accessibilityLabel={accessibilityLabel}
+      onClick={onClick}
+    >
+      <Icon source={icon} />
+    </UnstyledButton>
+  );
+
+  return tooltip ? <Tooltip {...tooltip}> {markup} </Tooltip> : markup;
 }
 
 export function isNavigationItemActive(
