@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Fix Badge component "new" status styling
+Fixed Badge component "new" status styling
