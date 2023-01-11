@@ -38,9 +38,9 @@ export function OutlineWithSegmentedButtons() {
 export function NoWrapButtons() {
   return (
     <ButtonGroup noWrap>
-      <Button>Bold</Button>
-      <Button>Italic</Button>
-      <Button>Underline</Button>
+      <Button>Final</Button>
+      <Button>Tertiary</Button>
+      <Button>Secondary</Button>
       <Button primary>Primary</Button>
     </ButtonGroup>
   );
