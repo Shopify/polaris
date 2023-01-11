@@ -1,7 +1,7 @@
 import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Tab} from '@headlessui/react';
 import {useState} from 'react';
-import Prism from 'prismjs';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 
 import {useCopyToClipboard} from '../../utils/hooks';
 import Icon from '../Icon';
@@ -13,10 +13,12 @@ interface Props {
     | {
         title: string;
         code: string;
+        className?: string;
       }
     | {
         title: string;
         code: string;
+        className?: string;
       }[];
 }
 
@@ -41,9 +43,9 @@ function Code({code}: Props) {
           </div>
 
           <Tab.Panels>
-            {code.map(({title, code}) => (
+            {code.map(({title, code, className}) => (
               <Tab.Panel key={title}>
-                <HighlightedCode code={code} />
+                <HighlightedCode code={code} className={className} />
               </Tab.Panel>
             ))}
           </Tab.Panels>
@@ -56,27 +58,29 @@ function Code({code}: Props) {
             </div>
             <CopyButton code={code.code} />
           </div>
-          <HighlightedCode code={code.code} />
+          <HighlightedCode code={code.code} className={code.className} />
         </>
       )}
     </div>
   );
 }
 
-function HighlightedCode({code}: {code: string}) {
+function HighlightedCode({
+  code,
+  className,
+}: {
+  code: string;
+  className?: string;
+}) {
+  const match = /language-(\w+)/.exec(className || '');
   return (
-    <pre>
-      <code
-        className={styles.ActualCode}
-        dangerouslySetInnerHTML={{
-          __html: Prism.highlight(
-            code,
-            Prism.languages.javascript,
-            'javascript',
-          ),
-        }}
-      ></code>
-    </pre>
+    <SyntaxHighlighter
+      children={String(code).replace(/\n$/, '')}
+      language={match?.at(1) || 'javascript'}
+      codeTagProps={{className: styles.ActualCode}}
+      useInlineStyles={false}
+      wrapLongLines
+    />
   );
 }
 
