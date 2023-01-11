@@ -1,12 +1,12 @@
 {
   "name": "polaris-glints",
-  "description": "Shopify’s admin product component library",
+  "description": "Glints forked polaris react",
   "version": "10.18.0",
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
-  "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://polaris.shopify.com/components",
-  "repository": "https://github.com/Shopify/polaris",
+  "author": "Glints",
+  "homepage": "http://aries.glints.design",
+  "repository": "https://github.com/glints-dev/polaris",
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
