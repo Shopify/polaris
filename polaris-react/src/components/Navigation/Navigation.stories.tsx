@@ -13,6 +13,7 @@ import {
   OnlineStoreMinor,
   OrdersMajor,
   OrdersMinor,
+  PlusMinor,
   ProductsMajor,
   ProductsMinor,
   ViewMinor,
@@ -272,8 +273,123 @@ export function WithMultipleSecondaryActionsForAnItem() {
               url: '/path/to/place',
               label: 'Products',
               icon: ProductsMinor,
+              badge: '2',
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
+                  },
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Long multi-line label',
+              icon: PlusMinor,
+              badge: '125',
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
+                  },
+                },
+                {
+                  accessibilityLabel: 'Remove a product',
+                  icon: CircleMinusOutlineMinor,
+                  onClick: () => {},
+                  tooltip: {
+                    content: 'Remove a product',
+                  },
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Long truncated single-line text label',
+              icon: PlusMinor,
               truncateText: true,
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
+                  },
+                },
+                {
+                  accessibilityLabel: 'Remove a product',
+                  icon: CircleMinusOutlineMinor,
+                  onClick: () => {
+                    console.log('plus clicked');
+                  },
+                  tooltip: {
+                    content: 'Remove a product',
+                  },
+                },
+              ],
+              subNavigationItems: [
+                {
+                  url: '/path/to/place/index',
+                  disabled: false,
+                  label: 'New item',
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Floating actions on multi-line text label',
+              icon: PlusMinor,
               badge: '15',
+              selected: true,
+              displayActionsOnHover: true,
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
+                  },
+                },
+                {
+                  accessibilityLabel: 'Remove a product',
+                  icon: CircleMinusOutlineMinor,
+                  onClick: () => {
+                    console.log('minor clicked');
+                  },
+                  tooltip: {
+                    content: 'Remove a product',
+                  },
+                },
+              ],
+              subNavigationItems: [
+                {
+                  url: '/admin/products/collections',
+                  disabled: false,
+                  selected: false,
+                  label: 'Collections',
+                },
+                {
+                  url: '/admin/products/inventory',
+                  disabled: false,
+                  label: 'Inventory',
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'Floating actions on truncated single-line text label',
+              icon: PlusMinor,
+              badge: '15',
+              truncateText: true,
+              displayActionsOnHover: true,
               secondaryActions: [
                 {
                   url: '/admin/products/add',
@@ -290,6 +406,40 @@ export function WithMultipleSecondaryActionsForAnItem() {
                   onClick: () => {},
                   tooltip: {
                     content: 'Remove a product',
+                  },
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'One floating action on multi-line text label',
+              icon: PlusMinor,
+              displayActionsOnHover: true,
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
+                  },
+                },
+              ],
+            },
+            {
+              url: '/path/to/place',
+              label: 'One floating action on truncated single-line text label',
+              icon: PlusMinor,
+              badge: '15',
+              truncateText: true,
+              displayActionsOnHover: true,
+              secondaryActions: [
+                {
+                  url: '/admin/products/add',
+                  accessibilityLabel: 'Add a product',
+                  icon: CirclePlusOutlineMinor,
+                  tooltip: {
+                    content: 'Add a product',
                   },
                 },
               ],
@@ -390,6 +540,7 @@ export function WithTruncationForVariousStates() {
                   url: '/admin/products/inventory',
                   disabled: false,
                   label: 'Inventoy',
+                  new: true,
                 },
               ],
             },

@@ -65,6 +65,7 @@ export interface ItemProps extends ItemURLDetails {
   /** @deprecated Use secondaryActions instead. */
   secondaryAction?: SecondaryAction;
   secondaryActions?: SecondaryActions;
+  displayActionsOnHover?: boolean;
   onClick?(): void;
   onToggleExpandedState?(): void;
   expanded?: boolean;
@@ -87,6 +88,7 @@ export function Item({
   subNavigationItems = [],
   secondaryAction,
   secondaryActions,
+  displayActionsOnHover,
   disabled,
   onClick,
   accessibilityLabel,
@@ -169,20 +171,16 @@ export function Item({
       <div className={styles.Badge}>{badgeMarkup}</div>
     );
 
-  const itemContentMarkup = (
-    <>
-      {iconMarkup}
-      <span
-        className={classNames(
-          styles.Text,
-          truncateText && styles['Text-truncated'],
-        )}
-      >
-        {label}
-        {indicatorMarkup}
-      </span>
-      {wrappedBadgeMarkup}
-    </>
+  const labelMarkup = (
+    <span
+      className={classNames(
+        styles.Text,
+        truncateText && styles['Text-truncated'],
+      )}
+    >
+      {label}
+      {indicatorMarkup}
+    </span>
   );
 
   if (url == null) {
@@ -205,7 +203,9 @@ export function Item({
           onKeyUp={handleKeyUp}
           onBlur={handleBlur}
         >
-          {itemContentMarkup}
+          {iconMarkup}
+          {labelMarkup}
+          {wrappedBadgeMarkup}
         </button>
       </li>
     );
@@ -232,7 +232,7 @@ export function Item({
   }
 
   const secondaryActionMarkup = actions?.length ? (
-    <div className={styles.SecondaryActions}>
+    <span className={styles.SecondaryActions}>
       {actions.map((action) => (
         <ItemSecondaryAction
           key={action.accessibilityLabel}
@@ -241,8 +241,20 @@ export function Item({
           disabled={disabled}
         />
       ))}
-    </div>
+    </span>
   ) : null;
+
+  const itemContentMarkup = (
+    <>
+      {iconMarkup}
+      {labelMarkup}
+      {secondaryActionMarkup ? null : wrappedBadgeMarkup}
+    </>
+  );
+
+  const outerContentMarkup = (
+    <>{secondaryActionMarkup ? wrappedBadgeMarkup : null}</>
+  );
 
   const matchState = matchStateForItem(
     {url, matches, exactMatch, matchPaths, excludePaths},
@@ -278,6 +290,27 @@ export function Item({
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
     keyFocused && styles.keyFocused,
+  );
+
+  const itemLinkMarkup = (
+    <UnstyledLink
+      url={url}
+      className={itemClassName}
+      external={external}
+      tabIndex={tabIndex}
+      aria-disabled={disabled}
+      aria-label={accessibilityLabel}
+      onClick={getClickHandler(onClick)}
+      onKeyUp={handleKeyUp}
+      onBlur={handleBlur}
+      {...normalizeAriaAttributes(
+        secondaryNavigationId,
+        subNavigationItems.length > 0,
+        showExpanded,
+      )}
+    >
+      {itemContentMarkup}
+    </UnstyledLink>
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -335,28 +368,25 @@ export function Item({
         <div
           className={classNames(
             styles.ItemInnerWrapper,
-            selected && canBeActive && styles['ItemInnerWrapper-Selected'],
+            selected && canBeActive && styles['ItemInnerWrapper-selected'],
+            displayActionsOnHover &&
+              styles['ItemInnerWrapper-display-actions-on-hover'],
           )}
         >
-          <UnstyledLink
-            url={url}
-            className={itemClassName}
-            external={external}
-            tabIndex={tabIndex}
-            aria-disabled={disabled}
-            aria-label={accessibilityLabel}
-            onClick={getClickHandler(onClick)}
-            onKeyUp={handleKeyUp}
-            onBlur={handleBlur}
-            {...normalizeAriaAttributes(
-              secondaryNavigationId,
-              subNavigationItems.length > 0,
-              showExpanded,
-            )}
-          >
-            {itemContentMarkup}
-          </UnstyledLink>
-          {secondaryActionMarkup}
+          {displayActionsOnHover &&
+          secondaryActionMarkup &&
+          wrappedBadgeMarkup ? (
+            <span className={styles.ItemWithFloatingActions}>
+              {itemLinkMarkup}
+              {secondaryActionMarkup}
+            </span>
+          ) : (
+            <>
+              {itemLinkMarkup}
+              {secondaryActionMarkup}
+            </>
+          )}
+          {outerContentMarkup}
         </div>
       </div>
       {secondaryNavigationMarkup}
