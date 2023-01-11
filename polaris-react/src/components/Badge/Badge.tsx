@@ -11,7 +11,6 @@ import styles from './Badge.scss';
 import type {Progress, Size, Status} from './types';
 import {Pip} from './components';
 import {getDefaultAccessibilityLabel} from './utils';
-import {StatusActiveMajor} from '@shopify/polaris-icons';
 
 const DEFAULT_SIZE: Size = 'medium';
 interface NonMutuallyExclusiveProps {
