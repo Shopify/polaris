@@ -533,14 +533,19 @@ Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index
 
 #### depth/function-disallowed-list
 
-Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Use [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of custom shadows. {insert why depth is important to merchant {wayfinding, or...}.
 
 ```diff
-// Don't
-- filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 // Do
 + box-shadow: var(--p-shadow-base);
+
+// Don't
+- filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 ```
+
+If you've found that merchants benefit from an additional layer of visual hierarchy not represented in the current depth tokens, we'd love to learn more.
+
+Contribute a [feature proposal issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or pull request in [GitHub](https://github.com/Shopify/polaris) to share context and implement a proposed improvement or addition to Polaris. Start a GitHub [discussion](https://github.com/Shopify/polaris/discussions/6750) if community collaboration is needed to find a solution.
 
 #### depth/global-disallowed-list
 
