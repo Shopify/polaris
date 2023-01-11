@@ -1,5 +1,11 @@
 # Changelog
 
+## 10.19.0
+
+### Minor Changes
+
+- [`79863c0`](https://github.com/Shopify/polaris/commit/79863c052adcf9998f7c1a1a7a103eede2bc8174) Thanks [@ninariccimarie](https://github.com/ninariccimarie)! - update package details and include polaris-tokens on release
+
 ## 10.18.0
 
 ### Minor Changes
