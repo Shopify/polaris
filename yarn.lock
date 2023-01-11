@@ -3357,6 +3357,19 @@
     "@shopify/cli-kit" "3.10.1"
     "@shopify/ngrok" "^4.3.2"
 
+"@shopify/polaris@^10.16.1":
+  version "10.18.0"
+  resolved "https://registry.yarnpkg.com/@shopify/polaris/-/polaris-10.18.0.tgz#18c25b5017fcecb953ded623106ff940260b983e"
+  integrity sha512-bh60DT0dIOqG2X/mQ1dO8JXYP9SiDuq1wSHU1EJ2119qiNT3d1H/Oradh2xZ/L9mVx7sXaFDvKp32kAE8RaRdw==
+  dependencies:
+    "@shopify/polaris-icons" "^6.7.0"
+    "@shopify/polaris-tokens" "^6.3.0"
+    "@types/react" "^18.0.15"
+    "@types/react-dom" "^18.0.6"
+    "@types/react-transition-group" "^4.4.2"
+    react-fast-compare "^3.2.0"
+    react-transition-group "^4.4.2"
+
 "@shopify/postcss-plugin@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/postcss-plugin/-/postcss-plugin-5.0.1.tgz#2926cc11ef5ca456b8ac6586810c0f284136fc17"
