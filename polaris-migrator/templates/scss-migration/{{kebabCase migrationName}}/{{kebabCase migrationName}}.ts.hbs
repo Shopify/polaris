@@ -1,55 +1,21 @@
-import valueParser from 'postcss-value-parser';
-
-import {
-  isSassFunction,
-  StopWalkingFunctionNodes,
-  createSassMigrator,
-} from '../../utilities/sass';
-import type {PolarisMigrator} from '../../utilities/sass';
-
-const {{camelCase migrationName}}: PolarisMigrator = (
-  _,
-  // options will be passed in from cli / config.
-  {methods /* , options */},
-  // Use context.fix to change behaviour based on if the user has passed the
-  // `--fix` flag (always true for `polaris-migrator` CLI).
-  context,
-) => {
-  return (root) => {
-    methods.walkDecls(root, (decl) => {
-      // Using the parsedValue allows easy detection of individual functions and
-      // properties. Particularly useful when dealing with shorthand
-      // declarations such as `border`, `padding`, etc.
-      const parsedValue = valueParser(decl.value);
-      parsedValue.walk((node) => {
-        if (isSassFunction('hello', node)) {
-          if (context.fix) {
-            // When fixing, we mutate the node directly.
-            node.value = 'world';
-          } else {
-            // When not fixing, emit a report which will be aggregated and shown
-            // to the user once all migrations are run.
-            methods.report({
-              node: decl,
-              severity: 'error',
-              message:
-                'Method hello() is no longer supported. Please migrate to world().',
-            });
-          }
-
-          // We do not want to recursively walk the function's arguments.
-          return StopWalkingFunctionNodes;
-        }
-      });
-
-      if (context.fix) {
-        decl.value = parsedValue.toString();
-      }
-    });
-  };
-};
-
-export default createSassMigrator(
-  '{{kebabCase migrationName}}',
-  {{camelCase migrationName}}
+import valueParser from 'postcss-value-parser'; import { isSassFunction,
+StopWalkingFunctionNodes, createSassMigrator, } from '../../utilities/sass';
+import type {PolarisMigrator} from '../../utilities/sass'; const
+{{camelCase migrationName}}: PolarisMigrator = ( _, // options will be passed in
+from cli / config. {methods /* , options */}, // Use context.fix to change
+behaviour based on if the user has passed the // `--fix` flag (always true for
+`polaris-migrator` CLI). context, ) => { return (root) => {
+methods.walkDecls(root, (decl) => { // Using the parsedValue allows easy
+detection of individual functions and // properties. Particularly useful when
+dealing with shorthand // declarations such as `border`, `padding`, etc. const
+parsedValue = valueParser(decl.value); parsedValue.walk((node) => { if
+(isSassFunction('hello', node)) { if (context.fix) { // When fixing, we mutate
+the node directly. node.value = 'world'; } else { // When not fixing, emit a
+report which will be aggregated and shown // to the user once all migrations are
+run. methods.report({ node: decl, severity: 'error', message: 'Method hello() is
+no longer supported. Please migrate to world().', }); } // We do not want to
+recursively walk the function's arguments. return StopWalkingFunctionNodes; }
+}); if (context.fix) { decl.value = parsedValue.toString(); } }); }; }; export
+default createSassMigrator( '{{kebabCase migrationName}}',
+{{camelCase migrationName}}
 );

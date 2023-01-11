@@ -34,3 +34,14 @@ export function OutlineWithSegmentedButtons() {
     </ButtonGroup>
   );
 }
+
+export function NoWrapButtons() {
+  return (
+    <ButtonGroup noWrap>
+      <Button>Bold</Button>
+      <Button>Italic</Button>
+      <Button>Underline</Button>
+      <Button primary>Primary</Button>
+    </ButtonGroup>
+  );
+}

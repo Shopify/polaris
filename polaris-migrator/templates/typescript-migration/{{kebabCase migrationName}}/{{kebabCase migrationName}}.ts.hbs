@@ -1,18 +1,6 @@
-import type {API, FileInfo} from 'jscodeshift';
-
-export default function {{camelCase migrationName}}(
-  fileInfo: FileInfo,
-  {jscodeshift: j}: API,
-) {
-  const source = j(fileInfo.source);
-
-  source.findJSXElements('div').forEach((element) => {
-    element.replace(
-      j.jsxElement(element.node.openingElement, element.node.closingElement, [
-        j.stringLiteral('world'),
-      ]),
-    );
-  });
-
-  return source.toSource();
-}
+import type {API, FileInfo} from 'jscodeshift'; export default function
+{{camelCase migrationName}}( fileInfo: FileInfo, {jscodeshift: j}: API, ) {
+const source = j(fileInfo.source);
+source.findJSXElements('div').forEach((element) => { element.replace(
+j.jsxElement(element.node.openingElement, element.node.closingElement, [
+j.stringLiteral('world'), ]), ); }); return source.toSource(); }
