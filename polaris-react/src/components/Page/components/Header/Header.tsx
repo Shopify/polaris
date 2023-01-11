@@ -74,7 +74,7 @@ export function Header({
   primaryAction,
   pagination,
   additionalNavigation,
-  breadcrumbs = [],
+  breadcrumbs,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,

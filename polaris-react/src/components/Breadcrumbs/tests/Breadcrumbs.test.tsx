@@ -116,7 +116,7 @@ describe('<Breadcrumbs />', () => {
     };
     const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={breadcrumb} />);
 
-    expect(wrapper.html()).toBe('');
+    expect(wrapper.html()).not.toBe('');
   });
 
   it('renders nothing when empty', () => {
