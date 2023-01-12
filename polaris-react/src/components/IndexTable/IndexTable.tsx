@@ -915,7 +915,9 @@ function IndexTableBase({
 
       return (
         <Tooltip content={tooltipContent}>
-          <div className={styles.TableHeadingSortWrapper}>{sortMarkup}</div>
+          <div className={styles.TableHeadingSortTooltipContainer}>
+            <div className={styles.TableHeadingSortWrapper}>{sortMarkup}</div>
+          </div>
         </Tooltip>
       );
     }
