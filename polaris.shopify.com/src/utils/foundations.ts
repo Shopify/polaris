@@ -21,7 +21,6 @@ export const getStaticPropsForFoundations = (category: string) => {
     const globPath = [
       path.resolve(process.cwd(), `content/${category}/*.md`),
       path.resolve(process.cwd(), `content/${category}/**/index.md`),
-      path.resolve(process.cwd(), `content/${category}/**/**/*.md`),
     ];
 
     const itemPaths = globby
