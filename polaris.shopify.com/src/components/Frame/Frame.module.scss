@@ -125,6 +125,7 @@ $breakpointNav: $breakpointTablet;
 
           > a {
             color: var(--text);
+            white-space: normal;
           }
 
           &.isCurrent > a {
