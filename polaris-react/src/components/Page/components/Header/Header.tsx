@@ -98,7 +98,8 @@ export function Header({
     !actionGroups.length;
 
   const breadcrumbMarkup =
-    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) || breadcrumbs ? (
+    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
+    (!Array.isArray(breadcrumbs) && breadcrumbs) ? (
       <div className={styles.BreadcrumbWrapper}>
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
