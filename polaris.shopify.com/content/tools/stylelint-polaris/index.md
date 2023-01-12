@@ -2,7 +2,7 @@
 title: Stylelint Polaris
 description: A configuration of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
 icon: WandMajor
-hideChildren: true
+collapseChildren: true
 keywords:
   - stylelint
   - dev tools
