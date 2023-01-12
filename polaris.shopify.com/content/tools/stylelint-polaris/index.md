@@ -2,12 +2,19 @@
 title: Stylelint Polaris
 description: A configuration of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
 icon: WandMajor
+collapseChildren: true
 keywords:
   - stylelint
   - dev tools
+  - developer tools
   - tools
+  - tooling
   - development
   - plugin
+  - rules
+  - linter
+  - linting
+  - css
 ---
 
 ## Installation
@@ -188,18 +195,6 @@ yarn run stylelint path/to/component.scss
 ```
 
 ## Rules
-
-[Conventions](#conventions) |
-[Colors](#colors) |
-[Motion](#motion) |
-[Typography](#typography) |
-[Shape](#shape) |
-[Spacing](#shape) |
-[Depth](#depth) |
-[Media queries](#media-queries) |
-[Z-index](#z-index) |
-[Layout](#layout) |
-[Legacy](#legacy)
 
 ### Conventions
 
@@ -449,9 +444,17 @@ Disallows use of legacy mixin map data.
 
 ### Depth
 
+_{Insert why depth consistency impacts merchant [wayfinding, etc]}_
+
+Have you found that merchants benefit from {an additional layer of visual hierarchy that's not in the depth tokens? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:
+
+- Starting a [discussion](https://github.com/Shopify/polaris/discussions/6750) to collaborate with the community to find a solution
+- Submitting a [feature proposal issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) to share context on your suggestion
+- Drafting a [pull request](https://github.com/Shopify/polaris/pulls) with your proposed improvement or addition
+
 #### depth/declaration-property-unit-disallowed-list
 
-Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of custom shadows.
 
 ```diff
 // Don't
@@ -462,7 +465,7 @@ Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index
 
 #### depth/function-disallowed-list
 
-Try to use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of custom shadows.
 
 ```diff
 // Don't
