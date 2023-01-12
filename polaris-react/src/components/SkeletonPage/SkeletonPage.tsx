@@ -88,9 +88,7 @@ export function SkeletonPage({
               {primaryActionMarkup}
             </Inline>
           </Box>
-          <Box paddingBlockEnd="2" paddingInlineStart="0" paddingInlineEnd="0">
-            {children}
-          </Box>
+          <Box paddingBlockEnd="2">{children}</Box>
         </AlphaStack>
       </Box>
     </AlphaStack>
