@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.0.0
+
+### Major Changes
+
+- [`422cd30`](https://github.com/Shopify/polaris/commit/422cd3003657a5a2887eb308e74518690ef22c78) Thanks [@marthayaputra](https://github.com/marthayaputra)! - remove app-provider deps frm popover
+
 ## 10.19.0
 
 ### Minor Changes
