@@ -1,0 +1,5 @@
+---
+title: Deprecated
+---
+
+Something something
