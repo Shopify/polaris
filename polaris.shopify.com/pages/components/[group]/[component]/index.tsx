@@ -2,18 +2,18 @@ import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
 import type {GetStaticPaths, GetStaticProps} from 'next';
-import ComponentExamples from '../../src/components/ComponentExamples';
-import type {ComponentExample} from '../../src/components/ComponentExamples';
-import Longform from '../../src/components/Longform';
-import Markdown from '../../src/components/Markdown';
-import Page from '../../src/components/Page';
-import {parseMarkdown} from '../../src/utils/markdown.mjs';
-import {toPascalCase} from '../../src/utils/various';
-import PageMeta from '../../src/components/PageMeta';
-import {Status, FilteredTypes, AllTypes} from '../../src/types';
-import StatusBanner from '../../src/components/StatusBanner';
-import PropsTable from '../../src/components/PropsTable';
-import {getRelevantTypes} from '../../scripts/get-props/src/get-props';
+import ComponentExamples from '../../../../src/components/ComponentExamples';
+import type {ComponentExample} from '../../../../src/components/ComponentExamples';
+import Longform from '../../../../src/components/Longform';
+import Markdown from '../../../../src/components/Markdown';
+import Page from '../../../../src/components/Page';
+import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
+import {toPascalCase} from '../../../../src/utils/various';
+import PageMeta from '../../../../src/components/PageMeta';
+import {Status, FilteredTypes, AllTypes} from '../../../../src/types';
+import StatusBanner from '../../../../src/components/StatusBanner';
+import PropsTable from '../../../../src/components/PropsTable';
+import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 
 interface MarkdownData {
   frontMatter: any;
@@ -79,10 +79,11 @@ const Components = ({
 
 export const getStaticProps: GetStaticProps<
   Props,
-  {component: string[]}
+  {component: string; group: string}
 > = async (context) => {
-  const componentSlug = context.params?.component.join('/');
-  const relativeMdPath = `content/components/${componentSlug}.md`;
+  console.log(context);
+  const componentSlug = context.params?.component;
+  const relativeMdPath = `content/components/${context.params?.group}/${componentSlug}.md`;
 
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
