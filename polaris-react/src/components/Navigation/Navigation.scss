@@ -183,6 +183,7 @@ $disabled-fade: 0.6;
   display: inline-flex;
   // stylelint-disable-next-line -- ensures badges are the same height as the text
   height: var(--p-font-line-height-2);
+  color: var(--p-text);
   margin-top: calc(var(--p-space-2) + var(--p-space-05));
   margin-right: var(--p-space-4);
 
