@@ -20,6 +20,7 @@ const genNavJson = (mardownFiles) => {
       order,
       newSection,
       hideChildren,
+      collapseChildren,
       color,
       url,
       status,
@@ -36,6 +37,7 @@ const genNavJson = (mardownFiles) => {
       slug: url || `/${slug}`,
       newSection,
       hideChildren,
+      collapseChildren,
       color: color ? color.replace(/\\/g, '') : undefined,
       status,
     });
