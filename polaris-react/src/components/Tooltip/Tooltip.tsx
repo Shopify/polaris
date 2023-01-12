@@ -1,4 +1,8 @@
 import React, {useEffect, useState, useRef, useCallback} from 'react';
+import type {
+  ShapeBorderRadiusScale,
+  SpacingSpaceScale,
+} from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
@@ -6,6 +10,10 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
+
+export type Width = 'default' | 'wide';
+export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
+export type BorderRadius = Extract<ShapeBorderRadiusScale, '1' | '2'>;
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
@@ -30,6 +38,21 @@ export interface TooltipProps {
   activatorWrapper?: string;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
+  /**
+   * Width of content
+   * @default 'default'
+   */
+  width?: Width;
+  /**
+   * Padding of content
+   * @default 'default'
+   */
+  padding?: Padding;
+  /**
+   * Border radius of the tooltip
+   * @default '1'
+   */
+  borderRadius?: BorderRadius;
   /* Callback fired when the tooltip is activated */
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
@@ -45,6 +68,9 @@ export function Tooltip({
   preferredPosition = 'below',
   activatorWrapper = 'span',
   accessibilityLabel,
+  width = 'default',
+  padding = 'default',
+  borderRadius = '1',
   onOpen,
   onClose,
 }: TooltipProps) {
@@ -101,6 +127,9 @@ export function Tooltip({
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
         preventInteraction={dismissOnMouseOut}
+        width={width}
+        padding={padding}
+        borderRadius={borderRadius}
       >
         {content}
       </TooltipOverlay>

@@ -7,6 +7,7 @@ import {
   PositionedOverlay,
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
+import type {Width, Padding, BorderRadius} from '../../Tooltip';
 
 import styles from './TooltipOverlay.scss';
 
@@ -18,6 +19,9 @@ export interface TooltipOverlayProps {
   children?: React.ReactNode;
   activator: HTMLElement;
   accessibilityLabel?: string;
+  width?: Width;
+  padding?: Padding;
+  borderRadius?: BorderRadius;
   onClose(): void;
 }
 
@@ -29,6 +33,9 @@ export function TooltipOverlay({
   id,
   children,
   accessibilityLabel,
+  width,
+  padding,
+  borderRadius,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -54,15 +61,27 @@ export function TooltipOverlay({
       positioning === 'above' && styles.positionedAbove,
     );
 
+    const contentClassName = classNames(styles.Content, width && styles[width]);
+
     const contentStyles = measuring ? undefined : {minHeight: desiredHeight};
 
+    const style = {
+      '--pc-tooltip-border-radius': borderRadius
+        ? `var(--p-border-radius-${borderRadius})`
+        : undefined,
+      '--pc-tooltip-padding':
+        padding && padding === 'default'
+          ? 'var(--p-space-1) var(--p-space-2)'
+          : `var(--p-space-${padding})`,
+    } as React.CSSProperties;
+
     return (
-      <div className={containerClassName} {...layer.props}>
+      <div style={style} className={containerClassName} {...layer.props}>
         <div
           id={id}
           role="tooltip"
-          className={styles.Content}
-          style={contentStyles}
+          className={contentClassName}
+          style={{...contentStyles, ...style}}
           aria-label={
             accessibilityLabel
               ? i18n.translate('Polaris.TooltipOverlay.accessibilityLabel', {

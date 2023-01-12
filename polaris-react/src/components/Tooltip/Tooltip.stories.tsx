@@ -1,6 +1,15 @@
 import React from 'react';
+import {QuestionMarkMinor} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup, TextField, Text, Tooltip} from '@shopify/polaris';
+import {
+  Button,
+  ButtonGroup,
+  Icon,
+  Stack,
+  TextField,
+  Text,
+  Tooltip,
+} from '@shopify/polaris';
 
 export default {
   component: Tooltip,
@@ -8,13 +17,130 @@ export default {
 
 export function Default() {
   return (
-    <div style={{padding: '75px 0'}}>
-      <Tooltip active content="This order has shipping labels.">
-        <Text variant="bodyMd" fontWeight="bold" as="span">
-          Order #1001
-        </Text>
+    <Tooltip active content="This order has shipping labels.">
+      <Text variant="bodyLg" fontWeight="bold" as="span">
+        Order #1001
+      </Text>
+    </Tooltip>
+  );
+}
+
+export function Width() {
+  return (
+    <Stack spacing="extraLoose" distribution="fill">
+      <Tooltip active content="This content has the default width">
+        <Stack spacing="extraTight">
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            Tooltip with
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            default
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            content width
+          </Text>
+          <Icon source={QuestionMarkMinor} color="base" />
+        </Stack>
       </Tooltip>
-    </div>
+
+      <Tooltip active content="This content has the wide width" width="wide">
+        <Stack spacing="extraTight">
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            Tooltip with
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            wide
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            content width
+          </Text>
+          <Icon source={QuestionMarkMinor} color="base" />
+        </Stack>
+      </Tooltip>
+    </Stack>
+  );
+}
+
+export function Padding() {
+  return (
+    <Stack spacing="extraLoose" distribution="fill">
+      <Tooltip active content="This content has default padding">
+        <Stack spacing="extraTight">
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            Tooltip with
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            default
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            content padding
+          </Text>
+          <Icon source={QuestionMarkMinor} color="base" />
+        </Stack>
+      </Tooltip>
+
+      <Tooltip
+        active
+        content="This content has padding of 4 (space-4 / 16px)"
+        padding="4"
+      >
+        <Stack spacing="extraTight">
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            Tooltip with
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            4
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            content padding
+          </Text>
+          <Icon source={QuestionMarkMinor} color="base" />
+        </Stack>
+      </Tooltip>
+    </Stack>
+  );
+}
+
+export function BorderRadius() {
+  return (
+    <Stack spacing="extraLoose" distribution="fill">
+      <Tooltip
+        active
+        content="This content has the default (radius-1) border radius"
+      >
+        <Stack spacing="extraTight">
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            Tooltip with
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            default
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            border radius
+          </Text>
+          <Icon source={QuestionMarkMinor} color="base" />
+        </Stack>
+      </Tooltip>
+
+      <Tooltip
+        active
+        content="This content has a border radius of 2 (radius-2)"
+        borderRadius="2"
+      >
+        <Stack spacing="extraTight">
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            Tooltip with
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="bold" as="span" color="success">
+            2
+          </Text>{' '}
+          <Text variant="bodyLg" fontWeight="medium" as="span">
+            border radius
+          </Text>
+          <Icon source={QuestionMarkMinor} color="base" />
+        </Stack>
+      </Tooltip>
+    </Stack>
   );
 }
 
@@ -47,34 +173,48 @@ export function VisibleOnlyWithChildInteraction() {
 
 export function WithHoverDelay() {
   return (
-    <div style={{padding: '75px 0'}}>
-      <div style={{margin: '10px 0'}}>
-        <Tooltip content="This should appear right away.">
-          <Text variant="bodyMd" fontWeight="bold" as="span">
-            No delay
-          </Text>
-        </Tooltip>
-      </div>
-      <div style={{margin: '10px 0'}}>
-        <Tooltip hoverDelay={1000} content="This should appear after 1 second.">
-          <Text variant="bodyMd" fontWeight="bold" as="span">
-            1 second hover delay
-          </Text>
-        </Tooltip>
-      </div>
-      <div style={{margin: '10px 0'}}>
-        <Tooltip content="This should appear right away.">
-          <Button>No delay</Button>
-        </Tooltip>
-      </div>
-      <div style={{margin: '10px 0'}}>
-        <Tooltip
-          hoverDelay={2000}
-          content="This should appear after 2 seconds."
-        >
-          <Button>2 seconds hover delay</Button>
-        </Tooltip>
-      </div>
-    </div>
+    <Stack vertical>
+      <Stack vertical>
+        <Text variant="headingMd" fontWeight="bold" as="h1">
+          TEXT EXAMPLE
+        </Text>
+        <Stack>
+          <Tooltip content="This should appear right away.">
+            <Text variant="bodyMd" fontWeight="semibold" as="span">
+              No delay
+            </Text>
+          </Tooltip>
+        </Stack>
+        <Stack>
+          <Tooltip
+            hoverDelay={1000}
+            content="This should appear after 1 second."
+          >
+            <Text variant="bodyMd" fontWeight="semibold" as="span">
+              1 second hover delay
+            </Text>
+          </Tooltip>
+        </Stack>
+      </Stack>
+
+      <Stack vertical>
+        <Text variant="headingMd" fontWeight="bold" as="h1">
+          BUTTON EXAMPLE
+        </Text>
+        <Stack>
+          <Tooltip content="This should appear right away.">
+            <Button>No delay</Button>
+          </Tooltip>
+        </Stack>
+        <Stack>
+          <Tooltip
+            hoverDelay={2000}
+            content="This should appear after 2 seconds."
+          >
+            <Button>2 seconds hover delay</Button>
+          </Tooltip>
+        </Stack>
+      </Stack>
+    </Stack>
   );
 }
