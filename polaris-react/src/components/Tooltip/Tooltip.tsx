@@ -11,6 +11,8 @@ import {useToggle} from '../../utilities/use-toggle';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
+import styles from './Tooltip.scss';
+
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
 export type BorderRadius = Extract<ShapeBorderRadiusScale, '1' | '2'>;
@@ -150,6 +152,7 @@ export function Tooltip({
       onMouseOver={handleMouseEnterFix}
       ref={setActivator}
       onKeyUp={handleKeyUp}
+      className={styles.TooltipContainer}
     >
       {children}
       {portal}
