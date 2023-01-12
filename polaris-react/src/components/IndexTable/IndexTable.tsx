@@ -914,8 +914,8 @@ function IndexTableBase({
       const tooltipContent = sortToggleLabels[index][tooltipDirection];
 
       return (
-        <Tooltip content={tooltipContent} activatorWrapper="div">
-          {sortMarkup}
+        <Tooltip content={tooltipContent}>
+          <div className={styles.TableHeadingSortWrapper}>{sortMarkup}</div>
         </Tooltip>
       );
     }
