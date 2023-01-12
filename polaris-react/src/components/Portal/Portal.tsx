@@ -1,8 +1,6 @@
 import React, {useEffect} from 'react';
 import {createPortal} from 'react-dom';
-
-import {usePortalsManager} from '../../utilities/portals';
-import {useUniqueId} from '../../utilities/unique-id';
+import {nanoid} from 'nanoid';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -15,9 +13,13 @@ export function Portal({
   idPrefix = '',
   onPortalCreated = noop,
 }: PortalProps) {
-  const {container} = usePortalsManager();
-
-  const uniqueId = useUniqueId('portal');
+  const container = document.getElementById('glints-portal-container');
+  if (!container) {
+    throw new Error(
+      'No element with id `glints-portal-container` found, please add it outside where the root app is rendered',
+    );
+  }
+  const uniqueId = `portal-${nanoid()}`;
   const portalId = idPrefix !== '' ? `${idPrefix}-${uniqueId}` : uniqueId;
 
   useEffect(() => {

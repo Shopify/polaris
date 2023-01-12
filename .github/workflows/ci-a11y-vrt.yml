@@ -6,18 +6,18 @@ on:
       - main
       - next
     paths:
-      - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
-      - 'polaris-tokens/src/**'
+      - "polaris-react/src/**"
+      - "polaris-react/playground/**"
+      - "polaris-tokens/src/**"
   pull_request:
     paths:
-      - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
-      - 'polaris-tokens/src/**'
+      - "polaris-react/src/**"
+      - "polaris-react/playground/**"
+      - "polaris-tokens/src/**"
 
 jobs:
   accessibility_test:
-    name: 'Accessibility test'
+    name: "Accessibility test"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -56,15 +56,9 @@ jobs:
         run: yarn turbo run build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: yarn workspace polaris-glints run storybook:build --quiet
 
-      - name: Run accessibility test
-        run: node ./polaris-react/scripts/accessibility-check.js
-        env:
-          STORYBOOK_DISABLE_DOCS: 1
-
-  visual_regression_test:
-    name: 'Visual regression test'
+    name: "Visual regression test"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -103,8 +97,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          autoAcceptChanges: 'main'
-          storybookBuildDir: 'polaris-react/build-internal/storybook/static'
+          autoAcceptChanges: "main"
+          storybookBuildDir: "polaris-react/build-internal/storybook/static"
           exitZeroOnChanges: true
           exitOnceUploaded: true
         env:

@@ -8,6 +8,7 @@ import React, {
   useState,
 } from 'react';
 import type {AriaAttributes} from 'react';
+import {nanoid} from 'nanoid';
 
 import {
   findFirstFocusableNodeIncludingDisabled,
@@ -15,7 +16,6 @@ import {
 } from '../../utilities/focus';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
-import {useUniqueId} from '../../utilities/unique-id';
 
 import {
   PopoverCloseSource,
@@ -117,7 +117,7 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
     const activatorContainer = useRef<HTMLElement>(null);
 
     const WrapperComponent: any = activatorWrapper;
-    const id = useUniqueId('popover');
+    const id = `popover-${nanoid()}`;
 
     function forceUpdatePosition() {
       overlayRef.current?.forceUpdatePosition();
