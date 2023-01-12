@@ -9,8 +9,8 @@ const {select, selectAll} = require('hast-util-select');
 const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 
 const configPerSet = new Map([
-  ['Major', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
-  ['Minor', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
+  ['Major', {viewbox: '0 0 20 20', colors: ['currentColor', 'currentColor']}],
+  ['Minor', {viewbox: '0 0 20 20', colors: ['currentColor', 'currentColor']}],
 ]);
 
 const allIconFiles = globby
