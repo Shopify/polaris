@@ -1,7 +1,6 @@
 ---
-title: Conventions
-description: Stylelint Polaris convention rules
-icon: WandMajor
+title: Convention rules
+description: Coming soon...
 keywords:
   - stylelint
   - dev tools
