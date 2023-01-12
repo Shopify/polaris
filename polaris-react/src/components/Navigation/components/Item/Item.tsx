@@ -206,20 +206,29 @@ export function Item({
 
     return (
       <li className={styles.ListItem}>
-        <button
-          type="button"
-          className={className}
-          disabled={disabled}
-          aria-disabled={disabled}
-          aria-label={accessibilityLabel}
-          onClick={getClickHandler(onClick)}
-          onKeyUp={handleKeyUp}
-          onBlur={handleBlur}
-        >
-          {iconMarkup}
-          {itemLabelMarkup}
-          {wrappedBadgeMarkup}
-        </button>
+        <div className={styles.ItemWrapper}>
+          <div
+            className={classNames(
+              styles.ItemInnerWrapper,
+              disabled && styles.ItemInnerDisabled,
+            )}
+          >
+            <button
+              type="button"
+              className={className}
+              disabled={disabled}
+              aria-disabled={disabled}
+              aria-label={accessibilityLabel}
+              onClick={getClickHandler(onClick)}
+              onKeyUp={handleKeyUp}
+              onBlur={handleBlur}
+            >
+              {iconMarkup}
+              {itemLabelMarkup}
+              {wrappedBadgeMarkup}
+            </button>
+          </div>
+        </div>
       </li>
     );
   }
@@ -398,6 +407,7 @@ export function Item({
             selected && canBeActive && styles['ItemInnerWrapper-selected'],
             displayActionsOnHover &&
               styles['ItemInnerWrapper-display-actions-on-hover'],
+            disabled && styles.ItemInnerDisabled,
           )}
         >
           {displayActionsOnHover &&

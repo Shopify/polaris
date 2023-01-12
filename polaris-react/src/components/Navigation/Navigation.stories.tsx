@@ -53,6 +53,24 @@ export function Default() {
   );
 }
 
+export function DisabledItemsWithoutUrls() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {icon: HomeMinor, label: 'Home', disabled: true},
+            {icon: OrdersMinor, label: 'Orders', disabled: true},
+            {icon: ProductsMinor, label: 'Products', disabled: true},
+            {icon: CustomersMinor, label: 'Customers', disabled: true},
+            {icon: MarketingMinor, label: 'Marketing', disabled: true},
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
 export function WithMultipleSecondaryNavigations() {
   return (
     <Frame>
