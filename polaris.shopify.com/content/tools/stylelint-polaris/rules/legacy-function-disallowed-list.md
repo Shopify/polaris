@@ -13,7 +13,7 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - legacy
 ---
 
 ```diff

@@ -13,8 +13,10 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - media queries
 ---
+
+Please use Polaris [breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
 
 Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
 

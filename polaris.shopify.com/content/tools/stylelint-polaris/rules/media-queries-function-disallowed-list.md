@@ -18,7 +18,6 @@ keywords:
 
 Please use Polaris [breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
 
-
 Use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of legacy mixins/variables.
 
 ```diff

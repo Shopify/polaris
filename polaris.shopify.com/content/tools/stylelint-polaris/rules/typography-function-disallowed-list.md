@@ -13,8 +13,10 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - typography
 ---
+
+Please use the [text component](https://polaris.shopify.com/components/text) or [font tokens](https://polaris.shopify.com/tokens/font) instead of custom styles so that typography is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that typography are in sync with updates from the design system.
 
 ```diff
 

@@ -16,7 +16,6 @@ keywords:
   - legacy
 ---
 
-
 If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
 
 ```diff

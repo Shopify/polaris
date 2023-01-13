@@ -13,8 +13,10 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - layout
 ---
+
+Please use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
 
 Instead of using a legacy mixin, try and use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. If what you need isn't possible, either use the mixin's contents or consider contributing to an existing Polaris component.
 

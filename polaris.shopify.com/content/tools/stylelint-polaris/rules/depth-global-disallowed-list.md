@@ -13,8 +13,10 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - depth
 ---
+
+Please use Polaris [depth tokens](https://polaris.shopify.com/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth are in sync with updates from the design system.
 
 Use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
 

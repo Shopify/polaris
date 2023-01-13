@@ -13,7 +13,7 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - legacy
 ---
 
 Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwise use hard coded pixel or rem values instead of legacy mixins/variables.
@@ -25,6 +25,7 @@ Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwis
 + left: calc(-1 * var(--p-space-1));
 ```
 
+#
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:
 
 - Starting a [discussion](https://github.com/Shopify/polaris/discussions/6750) to collaborate with the community to find a solution

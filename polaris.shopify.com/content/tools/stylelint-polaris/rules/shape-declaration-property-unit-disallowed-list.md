@@ -13,8 +13,10 @@ keywords:
   - linter
   - linting
   - css
-  - 
+  - shape
 ---
+
+Please use Polaris [shape tokens](https://polaris.shopify.com/tokens/shape) instead of custom styles so that shape is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that shape are in sync with updates from the design system.
 
 ```diff
 // Don't

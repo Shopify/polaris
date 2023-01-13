@@ -18,7 +18,6 @@ keywords:
 
 Please use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
 
-
 ```diff
 
 ```
