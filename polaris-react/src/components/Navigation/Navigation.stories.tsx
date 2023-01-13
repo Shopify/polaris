@@ -719,7 +719,6 @@ export function WithVariousStatesAndSecondaryElements() {
                 {
                   url: '/admin/products',
                   disabled: false,
-                  selected: true,
                   label: 'Selected sub item',
                 },
                 {
