@@ -221,7 +221,11 @@ export function WithHoverDelay() {
 
 export function ActivatorAsDiv() {
   return (
-    <Tooltip active content="This tooltip is rendered as a div" activatorWrapper='div'>
+    <Tooltip
+      active
+      content="This tooltip is rendered as a div"
+      activatorWrapper="div"
+    >
       <Text variant="bodyLg" fontWeight="bold" as="span">
         Order #1001
       </Text>
