@@ -41,7 +41,7 @@ export function SkeletonPage({
       <Box
         background="surface-neutral"
         minWidth="120px"
-        minHeight="28px"
+        minHeight="24px"
         borderRadius="base"
       />
     </div>
@@ -77,25 +77,18 @@ export function SkeletonPage({
       >
         <AlphaStack gap="0" fullWidth>
           <Box
-            padding={{xs: '4', md: '5'}}
-            paddingBlockEnd={{xs: '2', md: '5'}}
-            paddingInlineStart={{sm: '0'}}
-            paddingInlineEnd={{sm: '0'}}
+            paddingBlockStart={{xs: '4', md: '5'}}
+            paddingBlockEnd={{xs: '4', md: '5'}}
+            paddingInlineStart={{xs: '4', sm: '0'}}
+            paddingInlineEnd={{xs: '4', sm: '0'}}
           >
             {breadcrumbMarkup}
-            <Inline align="space-between" blockAlign="start">
+            <Inline align="space-between" blockAlign="center">
               {titleContent}
               {primaryActionMarkup}
             </Inline>
           </Box>
-          <Box
-            paddingBlockStart={{xs: '2', md: '5'}}
-            paddingBlockEnd="2"
-            paddingInlineStart="0"
-            paddingInlineEnd="0"
-          >
-            {children}
-          </Box>
+          <Box paddingBlockEnd="2">{children}</Box>
         </AlphaStack>
       </Box>
     </AlphaStack>
