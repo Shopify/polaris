@@ -218,20 +218,14 @@ function NavItem({
             const navAriaId = `nav-${id}`;
             const segments = asPath.slice(1).split('/');
             const keyAndLevelMatchUrl = !!(segments[level] === key);
-            const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
-            const isCurrent = removeParams(asPath) === child.slug;
-
-            const currentInChildren = Object.values(child.children || []).some(
-              (c) => c.slug === removeParams(asPath),
-            );
-            const autoExpanded =
-              keyAndLevelMatchUrl &&
-              (!child.collapseChildren || currentInChildren);
             const manuallyExpandedStatus = manuallyExpandedSections[key];
             const isExpanded =
               manuallyExpandedStatus === undefined
-                ? autoExpanded
+                ? keyAndLevelMatchUrl
                 : manuallyExpandedStatus;
+
+            const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
+            const isCurrent = removeParams(asPath) === child.slug;
 
             return (
               <li

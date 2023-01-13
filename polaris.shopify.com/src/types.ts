@@ -144,7 +144,7 @@ export interface NavJSON {
   };
 }
 
-export interface NavItem extends NavJSON {
+export interface NavItem {
   title?: string;
   description?: string;
   slug?: string;
@@ -152,7 +152,7 @@ export interface NavItem extends NavJSON {
   icon?: string;
   color?: string;
   hideChildren?: false;
-  collapseChildren?: false;
   newSection?: true;
   status?: Status;
+  children?: NavJSON;
 }
