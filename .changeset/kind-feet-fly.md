@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixed Safari bug with resizing popover pane
+Fixed `Popover.Pane` not resizing when its content changes in Safari
