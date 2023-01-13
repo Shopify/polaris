@@ -8,7 +8,6 @@ import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
-
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 
 import styles from './Tooltip.scss';
