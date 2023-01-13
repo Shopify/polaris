@@ -9,7 +9,7 @@ keywords:
   - shadows
 ---
 
-Use a [Polaris depth token](https://polaris.shopify.com/tokens/depth) instead of a custom box-shadow.
+Use a [Polaris depth token](https://polaris.shopify.com/tokens/depth) instead of a custom box-shadow so that visual depth is consistent throughout the admin. This helps merchants have a coherent user experience. Using the depth tokens will also ensure that your feature can benefit from future design language updates automatically.
 
 ```diff
 // Do
