@@ -1,6 +1,6 @@
 ---
 title: motion/declaration-property-unit-disallowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

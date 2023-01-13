@@ -1,6 +1,6 @@
 ---
 title: typography/property-disallowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

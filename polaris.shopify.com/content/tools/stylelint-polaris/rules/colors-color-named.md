@@ -1,6 +1,6 @@
 ---
 title: colors/color-named
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

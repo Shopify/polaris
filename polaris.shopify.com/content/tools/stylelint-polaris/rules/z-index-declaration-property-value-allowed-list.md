@@ -1,6 +1,6 @@
 ---
 title: z-index/declaration-property-value-allowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools
