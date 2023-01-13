@@ -1,12 +1,11 @@
 import {GetStaticPaths} from 'next';
 
-export default function GroupPage() {
-  return <div>Group page</div>;
+export default function GroupPage(props: any) {
+  return <div>{capitalize(props.group.replace(/-/g, ' '))}</div>;
 }
 export async function getStaticProps(context: any) {
-  console.log({context});
   return {
-    props: {post: {}},
+    props: {group: context.params.group},
   };
 }
 
@@ -38,3 +37,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     fallback: false,
   };
 };
+
+export function capitalize(word = '') {
+  const wordLower = word.toLowerCase();
+  return wordLower.charAt(0).toUpperCase() + wordLower.slice(1);
+}
