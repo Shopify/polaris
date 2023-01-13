@@ -1,6 +1,6 @@
 ---
 title: media-queries/function-disallowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

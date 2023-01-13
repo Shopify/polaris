@@ -1,6 +1,6 @@
 ---
 title: typography/declaration-property-value-disallowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

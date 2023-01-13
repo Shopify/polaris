@@ -1,6 +1,6 @@
 ---
 title: layout/global-disallowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

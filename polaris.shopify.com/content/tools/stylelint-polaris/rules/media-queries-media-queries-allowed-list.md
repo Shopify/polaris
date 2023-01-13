@@ -1,6 +1,6 @@
 ---
 title: media-queries/media-queries-allowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

@@ -1,6 +1,6 @@
 ---
 title: layout/at-rule-disallowed-list
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

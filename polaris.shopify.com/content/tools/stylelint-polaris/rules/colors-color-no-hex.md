@@ -1,6 +1,6 @@
 ---
 title: colors/color-no-hex
-description: 
+description: TODO
 keywords:
   - stylelint
   - dev tools

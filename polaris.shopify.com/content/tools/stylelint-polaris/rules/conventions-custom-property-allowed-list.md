@@ -1,6 +1,6 @@
 ---
 title: conventions/custom-property-allowed-list
-description:
+description: TODO
 keywords:
   - stylelint
   - dev tools
