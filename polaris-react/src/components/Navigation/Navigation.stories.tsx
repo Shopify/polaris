@@ -53,6 +53,24 @@ export function Default() {
   );
 }
 
+export function DisabledItemsWithoutUrls() {
+  return (
+    <Frame>
+      <Navigation location="/">
+        <Navigation.Section
+          items={[
+            {icon: HomeMinor, label: 'Home', disabled: true},
+            {icon: OrdersMinor, label: 'Orders', disabled: true},
+            {icon: ProductsMinor, label: 'Products', disabled: true},
+            {icon: CustomersMinor, label: 'Customers', disabled: true},
+            {icon: MarketingMinor, label: 'Marketing', disabled: true},
+          ]}
+        />
+      </Navigation>
+    </Frame>
+  );
+}
+
 export function WithMultipleSecondaryNavigations() {
   return (
     <Frame>
@@ -488,10 +506,30 @@ export function WithTruncationForVariousStates() {
             },
             {
               url: '/path/to/place',
+              label: 'Not truncated',
+              icon: OrdersMinor,
+              selected: false,
+            },
+            {
+              url: '/path/to/place',
               label: 'Lengthy label with secondary action',
               icon: OrdersMinor,
               selected: false,
               truncateText: true,
+              secondaryAction: {
+                url: '/admin/orders/add',
+                accessibilityLabel: 'Add an order',
+                icon: CirclePlusOutlineMinor,
+                tooltip: {
+                  content: 'Add a lengthy order',
+                },
+              },
+            },
+            {
+              url: '/path/to/place',
+              label: 'Lengthy non-truncated label with secondary action',
+              icon: OrdersMinor,
+              selected: false,
               secondaryAction: {
                 url: '/admin/orders/add',
                 accessibilityLabel: 'Add an order',
@@ -540,7 +578,6 @@ export function WithTruncationForVariousStates() {
                   url: '/admin/products/inventory',
                   disabled: false,
                   label: 'Inventoy',
-                  new: true,
                 },
               ],
             },

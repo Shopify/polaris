@@ -5,6 +5,8 @@ import React, {
   MouseEvent,
   ReactNode,
   useCallback,
+  useRef,
+  useLayoutEffect,
 } from 'react';
 
 import {classNames} from '../../../../utilities/css';
@@ -24,6 +26,7 @@ import {Tooltip, TooltipProps} from '../../../Tooltip';
 import {Secondary} from './components';
 
 export const MAX_SECONDARY_ACTIONS = 2;
+const TOOLTIP_HOVER_DELAY = 1000;
 
 interface ItemURLDetails {
   url?: string;
@@ -110,12 +113,21 @@ export function Item({
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [keyFocused, setKeyFocused] = useState(false);
+  const navTextRef = useRef<HTMLSpanElement>(null);
+  const [isTruncated, setIsTruncated] = useState(false);
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
       onToggleExpandedState?.();
     }
   }, [expanded, isNavigationCollapsed, onToggleExpandedState]);
+
+  useLayoutEffect(() => {
+    const navTextNode = navTextRef.current;
+    if (truncateText && navTextNode) {
+      setIsTruncated(navTextNode.scrollHeight > navTextNode.clientHeight);
+    }
+  }, [truncateText]);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
@@ -171,12 +183,13 @@ export function Item({
       <div className={styles.Badge}>{badgeMarkup}</div>
     );
 
-  const labelMarkup = (
+  const itemLabelMarkup = (
     <span
       className={classNames(
         styles.Text,
         truncateText && styles['Text-truncated'],
       )}
+      ref={navTextRef}
     >
       {label}
       {indicatorMarkup}
@@ -193,20 +206,29 @@ export function Item({
 
     return (
       <li className={styles.ListItem}>
-        <button
-          type="button"
-          className={className}
-          disabled={disabled}
-          aria-disabled={disabled}
-          aria-label={accessibilityLabel}
-          onClick={getClickHandler(onClick)}
-          onKeyUp={handleKeyUp}
-          onBlur={handleBlur}
-        >
-          {iconMarkup}
-          {labelMarkup}
-          {wrappedBadgeMarkup}
-        </button>
+        <div className={styles.ItemWrapper}>
+          <div
+            className={classNames(
+              styles.ItemInnerWrapper,
+              disabled && styles.ItemInnerDisabled,
+            )}
+          >
+            <button
+              type="button"
+              className={className}
+              disabled={disabled}
+              aria-disabled={disabled}
+              aria-label={accessibilityLabel}
+              onClick={getClickHandler(onClick)}
+              onKeyUp={handleKeyUp}
+              onBlur={handleBlur}
+            >
+              {iconMarkup}
+              {itemLabelMarkup}
+              {wrappedBadgeMarkup}
+            </button>
+          </div>
+        </div>
       </li>
     );
   }
@@ -247,7 +269,7 @@ export function Item({
   const itemContentMarkup = (
     <>
       {iconMarkup}
-      {labelMarkup}
+      {itemLabelMarkup}
       {secondaryActionMarkup ? null : wrappedBadgeMarkup}
     </>
   );
@@ -290,27 +312,6 @@ export function Item({
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
     keyFocused && styles.keyFocused,
-  );
-
-  const itemLinkMarkup = (
-    <UnstyledLink
-      url={url}
-      className={itemClassName}
-      external={external}
-      tabIndex={tabIndex}
-      aria-disabled={disabled}
-      aria-label={accessibilityLabel}
-      onClick={getClickHandler(onClick)}
-      onKeyUp={handleKeyUp}
-      onBlur={handleBlur}
-      {...normalizeAriaAttributes(
-        secondaryNavigationId,
-        subNavigationItems.length > 0,
-        showExpanded,
-      )}
-    >
-      {itemContentMarkup}
-    </UnstyledLink>
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -362,6 +363,41 @@ export function Item({
     Boolean(actions && actions.length) && styles['ListItem-hasAction'],
   );
 
+  const itemLinkMarkup = () => {
+    const linkMarkup = (
+      <UnstyledLink
+        url={url}
+        className={itemClassName}
+        external={external}
+        tabIndex={tabIndex}
+        aria-disabled={disabled}
+        aria-label={accessibilityLabel}
+        onClick={getClickHandler(onClick)}
+        onKeyUp={handleKeyUp}
+        onBlur={handleBlur}
+        {...normalizeAriaAttributes(
+          secondaryNavigationId,
+          subNavigationItems.length > 0,
+          showExpanded,
+        )}
+      >
+        {itemContentMarkup}
+      </UnstyledLink>
+    );
+
+    return isTruncated ? (
+      <Tooltip
+        hoverDelay={TOOLTIP_HOVER_DELAY}
+        content={label}
+        preferredPosition="above"
+      >
+        {linkMarkup}
+      </Tooltip>
+    ) : (
+      linkMarkup
+    );
+  };
+
   return (
     <li className={className}>
       <div className={styles.ItemWrapper}>
@@ -371,18 +407,19 @@ export function Item({
             selected && canBeActive && styles['ItemInnerWrapper-selected'],
             displayActionsOnHover &&
               styles['ItemInnerWrapper-display-actions-on-hover'],
+            disabled && styles.ItemInnerDisabled,
           )}
         >
           {displayActionsOnHover &&
           secondaryActionMarkup &&
           wrappedBadgeMarkup ? (
             <span className={styles.ItemWithFloatingActions}>
-              {itemLinkMarkup}
+              {itemLinkMarkup()}
               {secondaryActionMarkup}
             </span>
           ) : (
             <>
-              {itemLinkMarkup}
+              {itemLinkMarkup()}
               {secondaryActionMarkup}
             </>
           )}

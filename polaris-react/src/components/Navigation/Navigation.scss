@@ -166,7 +166,6 @@ $disabled-fade: 0.6;
 
 .Item-disabled {
   color: var(--p-text-disabled);
-  pointer-events: none;
   opacity: $disabled-fade;
 
   .Icon {
@@ -243,6 +242,10 @@ $disabled-fade: 0.6;
     background: var(--p-background-hovered);
     color: var(--p-text);
     text-decoration: none;
+  }
+
+  &.ItemInnerDisabled {
+    pointer-events: none;
   }
 }
 
