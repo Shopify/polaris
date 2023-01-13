@@ -1,82 +1,87 @@
 ---
 title: Rules
-description: Stylelint Polaris rules that promote adoption and track coverage of the Polaris design system in consuming apps.
+description: There are over 40 rules configured in Stylelint Polaris to help you avoid errors and follow stylistic and non-stylistic conventions while building for the Shopify admin.
 hideChildren: true
+keywords: rules
+  stylelint rules
+  css rules
 ---
-
-## Conventions
-
-- [conventions/custom-property-allowed-list](/tools/stylelint-polaris/rules/conventions-custom-property-allowed-list): TODO
 
 ## Colors
 
-- [colors/color-named](/tools/stylelint-polaris/rules/colors-color-named): TODO
-- [colors/color-no-hex](/tools/stylelint-polaris/rules/colors-color-no-hex): TODO
-- [colors/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/colors-declaration-property-value-disallowed-list): TODO
-- [colors/function-disallowed-list](/tools/stylelint-polaris/rules/colors-function-disallowed-list): TODO
-- [colors/at-rule-disallowed-list](/tools/stylelint-polaris/rules/colors-at-rule-disallowed-list): TODO
-- [colors/global-disallowed-list](/tools/stylelint-polaris/rules/colors-global-disallowed-list): TODO
+- [colors/color-named](/tools/stylelint-polaris/rules/colors-color-named): Disallows named colors
+- [colors/color-no-hex](/tools/stylelint-polaris/rules/colors-color-no-hex): Disallows hex colors
+- [colors/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/colors-declaration-property-value-disallowed-list): Disallows custom decimal opacity values
+- [colors/function-disallowed-list](/tools/stylelint-polaris/rules/colors-function-disallowed-list): Disallows allows use of built in and legacy color functions
+- [colors/at-rule-disallowed-list](/tools/stylelint-polaris/rules/colors-at-rule-disallowed-list): Disallows use of legacy color mixins
+- [colors/global-disallowed-list](/tools/stylelint-polaris/rules/colors-global-disallowed-list): Disallows use of legacy color custom properties and mixin map data
 
 ## Motion
 
-- [motion/function-disallowed-list](/tools/stylelint-polaris/rules/motion-function-disallowed-list): TODO
-- [motion/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/motion-declaration-property-unit-disallowed-list): TODO
-- [motion/at-rule-disallowed-list](/tools/stylelint-polaris/rules/motion-at-rule-disallowed-list): TODO
-- [motion/global-disallowed-list](/tools/stylelint-polaris/rules/motion-global-disallowed-list): TODO
+- [motion/function-disallowed-list](/tools/stylelint-polaris/rules/motion-function-disallowed-list): Disallows use of legacy Sass motion functions
+- [motion/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/motion-declaration-property-unit-disallowed-list): Disallows use of hard-coded millisecond `ms` and second `s` values on transition and animation properties
+- [motion/at-rule-disallowed-list](/tools/stylelint-polaris/rules/motion-at-rule-disallowed-list): Disallows use of CSS @keyframes
+- [motion/global-disallowed-list](/tools/stylelint-polaris/rules/motion-global-disallowed-list): Disallows use of legacy Polaris motion tokens
 
 ## Typography
 
-- [typography/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/typography-declaration-property-value-disallowed-list): TODO
-- [typography/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/typography-declaration-property-unit-disallowed-list): TODO
-- [typography/function-disallowed-list](/tools/stylelint-polaris/rules/typography-function-disallowed-list): TODO
-- [typography/at-rule-disallowed-list](/tools/stylelint-polaris/rules/typography-at-rule-disallowed-list): TODO
-- [typography/property-disallowed-list](/tools/stylelint-polaris/rules/typography-property-disallowed-list): TODO
-
-## Shape
-
-- [shape/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/shape-declaration-property-value-disallowed-list): TODO
-- [shape/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/shape-declaration-property-unit-disallowed-list): TODO
-- [shape/function-disallowed-list](/tools/stylelint-polaris/rules/shape-function-disallowed-list): TODO
-- [shape/at-rule-disallowed-list](/tools/stylelint-polaris/rules/shape-at-rule-disallowed-list): TODO
-- [shape/property-disallowed-list](/tools/stylelint-polaris/rules/shape-property-disallowed-list): TODO
-
-## Spacing
-
-- [spacing/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/spacing-declaration-property-value-disallowed-list): TODO
-- [spacing/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list): TODO
-- [spacing/function-disallowed-list](/tools/stylelint-polaris/rules/spacing-function-disallowed-list): TODO
-- [spacing/at-rule-disallowed-list](/tools/stylelint-polaris/rules/spacing-at-rule-disallowed-list): TODO
-- [spacing/property-disallowed-list](/tools/stylelint-polaris/rules/spacing-property-disallowed-list): TODO
-
-## Depth
-
-- [depth/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/depth-declaration-property-unit-disallowed-list): Disallows box-shadow declarations with hard coded px, rem, or em units
-- [depth/function-disallowed-list](/tools/stylelint-polaris/rules/depth-function-disallowed-list): TODO
-- [depth/global-disallowed-list](/tools/stylelint-polaris/rules/depth-global-disallowed-list): TODO
-- [depth/property-disallowed-list](/tools/stylelint-polaris/rules/depth-property-disallowed-list): TODO
-
-## Media queries
-
-- [media-queries/function-disallowed-list](/tools/stylelint-polaris/rules/media-queries-function-disallowed-list): TODO
-- [media-queries/media-queries-allowed-list](/tools/stylelint-polaris/rules/media-queries-media-queries-allowed-list): TODO
-- [media-queries/at-rule-disallowed-list](/tools/stylelint-polaris/rules/media-queries-at-rule-disallowed-list): TODO
-
-## Z-index
-
-- [z-index/declaration-property-value-allowed-list](/tools/stylelint-polaris/rules/z-index-declaration-property-value-allowed-list): TODO
-- [z-index/function-disallowed-list](/tools/stylelint-polaris/rules/z-index-function-disallowed-list): TODO
-- [z-index/global-disallowed-list](/tools/stylelint-polaris/rules/z-index-global-disallowed-list): TODO
+- [typography/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/typography-declaration-property-value-disallowed-list): Disallows hard-coded alphanumeric font-weight values
+- [typography/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/typography-declaration-property-unit-disallowed-list): Disallows hard-coded `px`, `em`, and `rem` values for font-size and line-height properties
+- [typography/function-disallowed-list](/tools/stylelint-polaris/rules/typography-function-disallowed-list): Disallows use of legacy Sass typography functions
+- [typography/at-rule-disallowed-list](/tools/stylelint-polaris/rules/typography-at-rule-disallowed-list): Disallows use of legacy Sass typography mixins
+- [typography/property-disallowed-list](/tools/stylelint-polaris/rules/typography-property-disallowed-list): Disallows use of legacy typography custom properties and Sass mixin data
 
 ## Layout
 
-- [layout/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/layout-declaration-property-value-disallowed-list): TODO
-- [layout/function-disallowed-list](/tools/stylelint-polaris/rules/layout-function-disallowed-list): TODO
-- [layout/at-rule-disallowed-list](/tools/stylelint-polaris/rules/layout-at-rule-disallowed-list): TODO
-- [layout/property-disallowed-list](/tools/stylelint-polaris/rules/layout-property-disallowed-list): TODO
-- [layout/global-disallowed-list](/tools/stylelint-polaris/rules/layout-global-disallowed-list): TODO
+- [layout/declaration-property-value-disallowed-list](/tools/stylelint-polaris/rules/layout-declaration-property-value-disallowed-list): Disallows declaration of positioning and dimension property values with Polaris tokens
+- [layout/function-disallowed-list](/tools/stylelint-polaris/rules/layout-function-disallowed-list): Disallows use of internal Sass layout functions
+- [layout/at-rule-disallowed-list](/tools/stylelint-polaris/rules/layout-at-rule-disallowed-list): Disallows use of legacy Sass mixins
+- [layout/property-disallowed-list](/tools/stylelint-polaris/rules/layout-property-disallowed-list): Disallows declarations of layout properties
+- [layout/global-disallowed-list](/tools/stylelint-polaris/rules/layout-global-disallowed-list): Disallows use of legacy custom properties and Sass mixin map data
+
+## Spacing
+
+- [spacing/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list): Disallows use of hard-coded px, em, and rem values on gap, margin, and padding properties
+- [spacing/function-disallowed-list](/tools/stylelint-polaris/rules/spacing-function-disallowed-list): Disallows use of legacy Sass spacing functions
+- [spacing/global-disallowed-list](/tools/stylelint-polaris/rules/spacing-property-disallowed-list): Disallows use of legacy spacing custom properties and Sass mixin data
+
+## Shape
+
+- [shape/function-disallowed-list](/tools/stylelint-polaris/rules/shape-function-disallowed-list): Disallows use of legacy Sass border functions
+- [shape/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/shape-declaration-property-unit-disallowed-list): Disallows hard-coded `px`, `em`, and `rem` units in border property values
+- [shape/at-rule-disallowed-list](/tools/stylelint-polaris/rules/shape-at-rule-disallowed-list): Disallows use of legacy Sass border mixins
+- [shape/property-disallowed-list](/tools/stylelint-polaris/rules/shape-global-disallowed-list): Disallows use of legacy border custom properties and Sass mixin map data
+
+## Depth
+
+- [depth/function-disallowed-list](/tools/stylelint-polaris/rules/depth-function-disallowed-list): Disallows use of built-in and legacy shadow functions
+- [depth/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/depth-declaration-property-unit-disallowed-list): Disallows box-shadow declarations with hard coded px, rem, or em units
+- [depth/global-disallowed-list](/tools/stylelint-polaris/rules/depth-global-disallowed-list): Disallows use of legacy shadow custom properties and Sass mixin data
+
+## Z-Index
+
+- [z-index/declaration-property-value-allowed-list](/tools/stylelint-polaris/rules/z-index-declaration-property-value-allowed-list): Disallows declaration of `z-index` values that are not Polaris z-index tokens
+- [z-index/function-disallowed-list](/tools/stylelint-polaris/rules/z-index-function-disallowed-list): Disallows use of the legacy z-index Sass function
+- [z-index/global-disallowed-list](/tools/stylelint-polaris/rules/z-index-global-disallowed-list): Disallows the use of legacy z-index custom properties and Sass mixin data
+
+## Conventions
+
+- [conventions/custom-property-allowed-list](/tools/stylelint-polaris/rules/conventions-custom-property-allowed-list):
+  - Allows definition of custom properties not using Polaris prefixes
+  - Flags declaration property values that are not valid Polaris tokens
+  - Flags declaration property values using private tokens
+
+## Media queries
+
+- [media-queries/media-queries-allowed-list](/tools/stylelint-polaris/rules/media-queries-media-queries-allowed-list):
+  - Allows declaration of `print` and `screen` `@media` queries
+  - Allows `@media` queries for `forced-colors` and `ms-high-contrast` features
+  - Allows `@media` queries using Polaris breakpoints
+- [media-queries/function-disallowed-list](/tools/stylelint-polaris/rules/media-queries-function-disallowed-list): Disallows use of legacy breakpoint sass functions
+- [media-queries/at-rule-disallowed-list](/tools/stylelint-polaris/rules/media-queries-at-rule-disallowed-list): Disallows use of legacy breakpoint Sass mixins
 
 ## Legacy
 
-- [legacy/at-rule-disallowed-list](/tools/stylelint-polaris/rules/legacy-at-rule-disallowed-list): TODO
-- [legacy/function-disallowed-list](/tools/stylelint-polaris/rules/legacy-function-disallowed-list): TODO
-- [legacy/global-disallowed-list](/tools/stylelint-polaris/rules/legacy-global-disallowed-list): TODO
+- [legacy/at-rule-disallowed-list](/tools/stylelint-polaris/rules/legacy-at-rule-disallowed-list): Disallows use pf legacy Sass mixins
+- [legacy/function-disallowed-list](/tools/stylelint-polaris/rules/legacy-function-disallowed-list): Disallows use off legacy Sass functions
+- [legacy/global-disallowed-list](/tools/stylelint-polaris/rules/legacy-global-disallowed-list): Disallows use of legacy custom properties and Sass mixin map data
