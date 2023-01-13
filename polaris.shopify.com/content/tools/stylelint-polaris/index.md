@@ -222,8 +222,6 @@ Flags declaration property values using `--p-*` that are not valid Polaris token
 
 Flags declaration property values using private `--pc-*` tokens.
 
-The following token value is considered a problem:
-
 ```diff
 // Don't
 - background: var(--pc-button-color-depressed);
