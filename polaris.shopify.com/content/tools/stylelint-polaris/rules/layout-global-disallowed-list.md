@@ -1,30 +1,19 @@
 ---
 title: layout/global-disallowed-list
-description: TODO
+description: Disallows use of legacy custom properties and Sass mixin map data
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - layout
+  - layout rules
 ---
 
-Please use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
-
-If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
+Try to use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
 
 ```diff
-// Don't
-- height: var(--p-choice-size);
 // Do
 + <Checkbox />
+// Don't
+- height: var(--p-choice-size);
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

@@ -1,30 +1,21 @@
 ---
 title: typography/declaration-property-unit-disallowed-list
-description: TODO
+description: Disallows hard-coded `px`, `em`, and `rem` values for font-size and line-height properties
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - typography
+  - typography rules
 ---
 
-Please use the [text component](https://polaris.shopify.com/components/text) or [font tokens](https://polaris.shopify.com/tokens/font) instead of custom styles so that typography is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that typography are in sync with updates from the design system.
+Try to use the [text component](https://polaris.shopify.com/components/text) or [font tokens](https://polaris.shopify.com/tokens/font) instead of custom styles so that typography is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that typography are in sync with updates from the design system.
 
 ```diff
-// Don't
-- font-size: 12px;
-- line-height: 1.5rem
 // Do
 + font-size: var(--p-font-size-75);
 + line-height: var(--p-font-line-height-3);
+// Don't
+- font-size: 12px;
+- line-height: 1.5rem
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

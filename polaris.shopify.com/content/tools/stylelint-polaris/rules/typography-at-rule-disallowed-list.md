@@ -1,22 +1,13 @@
 ---
 title: typography/at-rule-disallowed-list
-description: TODO
+description: Disallows use of legacy Sass typography mixins
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - typography
+  - typography rules
 ---
 
-Please use the [text component](https://polaris.shopify.com/components/text) or [font tokens](https://polaris.shopify.com/tokens/font) instead of custom styles so that typography is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that typography are in sync with updates from the design system.
+Try to use the [text component](https://polaris.shopify.com/components/text) or [font tokens](https://polaris.shopify.com/tokens/font) instead of custom styles so that typography is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that typography are in sync with updates from the design system.
 
 ```diff
 

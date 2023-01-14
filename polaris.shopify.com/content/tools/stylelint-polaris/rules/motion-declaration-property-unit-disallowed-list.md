@@ -1,28 +1,19 @@
 ---
 title: motion/declaration-property-unit-disallowed-list
-description: TODO
+description: Disallows use of hard-coded millisecond `ms` and second `s` values on transition and animation properties
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - motion
+  - motion rules
 ---
 
-Please use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead of custom styles so that motion is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that motion are in sync with updates from the design system.
+Try to use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead of custom styles so that motion is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that motion are in sync with updates from the design system.
 
 ```diff
-// Don't
-- transition-duration: 200ms;
 // Do
 + transition-duration: var(--p-duration-200);
+// Don't
+- transition-duration: 200ms;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

@@ -1,30 +1,21 @@
 ---
 title: layout/function-disallowed-list
-description: TODO
+description: Disallows use of internal Sass layout functions
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - layout
+  - layout rules
 ---
 
-Please use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
+Try to use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
 
 Use hard coded pixel or rem values for `width` and `height` instead of legacy mixins/variables or spacing tokens.
 
 ```diff
-// Don't
-- height: top-bar-height();
 // Do
 + height: 56px;
+// Don't
+- height: top-bar-height();
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

@@ -1,30 +1,19 @@
 ---
 title: media-queries/at-rule-disallowed-list
-description: TODO
+description: Disallows use of legacy breakpoint Sass mixins
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - media queries
+  - media queries rules
 ---
 
-Please use Polaris [breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
-
-Use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of legacy mixins/variables.
+Try to use Polaris [breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
 
 ```diff
-// Don't
-- @include breakpoint-before(layout-width(page-with-nav)) {}
 // Do
 + @media (max-width: var(--p-breakpoints-md)) {}
+// Don't
+- @include breakpoint-before(layout-width(page-with-nav)) {}
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

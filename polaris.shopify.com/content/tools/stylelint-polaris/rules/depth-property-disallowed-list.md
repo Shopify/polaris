@@ -1,22 +1,13 @@
 ---
 title: depth/property-disallowed-list
-description: TODO
+description: undefined
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - depth
+  - depth rules
 ---
 
-Please use Polaris [depth tokens](https://polaris.shopify.com/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth are in sync with updates from the design system.
+Try to use Polaris [depth tokens](https://polaris.shopify.com/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth are in sync with updates from the design system.
 
 Instead of using properties like `text-shadow`, make sure the text has proper contrast with the background so that it is readable without a shadow.
 

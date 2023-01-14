@@ -1,22 +1,13 @@
 ---
 title: shape/function-disallowed-list
-description: TODO
+description: Disallows use of legacy Sass border functions
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - shape
+  - shape rules
 ---
 
-Please use Polaris [shape tokens](https://polaris.shopify.com/tokens/shape) instead of custom styles so that shape is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that shape are in sync with updates from the design system.
+Try to use Polaris [shape tokens](https://polaris.shopify.com/tokens/shape) instead of custom styles so that shape is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that shape are in sync with updates from the design system.
 
 ```diff
 

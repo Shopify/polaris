@@ -75,6 +75,7 @@ function HighlightedCode({
   const match = /language-(\w+)/.exec(className || '');
   return (
     <SyntaxHighlighter
+      // eslint-disable-next-line react/no-children-prop
       children={String(code).replace(/\n$/, '')}
       language={match?.at(1) || 'javascript'}
       codeTagProps={{className: styles.ActualCode}}

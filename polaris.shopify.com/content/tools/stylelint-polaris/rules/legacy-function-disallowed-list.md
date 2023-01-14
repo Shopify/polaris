@@ -1,20 +1,13 @@
 ---
 title: legacy/function-disallowed-list
-description: TODO
+description: Disallows use off legacy Sass functions
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - legacy
+  - legacy rules
 ---
+
+Try to use Polaris [components](https://polaris.shopify.com/components) or [tokens](https://polaris.shopify.com/tokens) instead of custom styles so that legacy is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that legacy are in sync with updates from the design system.
 
 ```diff
 // Don't

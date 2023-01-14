@@ -1,28 +1,21 @@
 ---
 title: legacy/global-disallowed-list
-description: TODO
+description: Disallows use of legacy custom properties and Sass mixin map data
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - legacy
+  - legacy rules
 ---
+
+Try to use Polaris [components](https://polaris.shopify.com/components) or [tokens](https://polaris.shopify.com/tokens) instead of custom styles so that legacy is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that legacy are in sync with updates from the design system.
 
 Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwise use hard coded pixel or rem values instead of legacy mixins/variables.
 
 ```diff
-// Don't
-- left: -1 * $timeline-border-width;
 // Do
 + left: calc(-1 * var(--p-space-1));
+// Don't
+- left: -1 * $timeline-border-width;
 ```
 
 #

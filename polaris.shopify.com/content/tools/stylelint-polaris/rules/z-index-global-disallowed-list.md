@@ -1,30 +1,19 @@
 ---
 title: z-index/global-disallowed-list
-description: TODO
+description: Disallows the use of legacy z-index custom properties and Sass mixin data
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - z-index
+  - z-index rules
 ---
 
-Please use Polaris [z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of custom styles so that z-index is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that z-index are in sync with updates from the design system.
-
-Use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of legacy mixins/variables.
+Try to use Polaris [z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of custom styles so that z-index is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that z-index are in sync with updates from the design system.
 
 ```diff
-// Don't
-- z-index(toast, $fixed-element-stacking-order);
 // Do
 + z-index: var(--p-z-1);
+// Don't
+- z-index(toast, $fixed-element-stacking-order);
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

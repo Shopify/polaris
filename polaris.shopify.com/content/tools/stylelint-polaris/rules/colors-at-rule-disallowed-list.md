@@ -1,28 +1,19 @@
 ---
 title: colors/at-rule-disallowed-list
-description: TODO
+description: Disallows use of legacy color mixins
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - colors
+  - colors rules
 ---
 
-Please use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
+Try to use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
 
 ```diff
-// Don't
-- fill: recolor-icon(--p-text-subdued);
 // Do
 + fill: var(--p-icon-subdued);
+// Don't
+- fill: recolor-icon(--p-text-subdued);
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

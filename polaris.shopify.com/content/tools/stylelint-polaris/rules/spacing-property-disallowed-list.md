@@ -1,22 +1,13 @@
 ---
 title: spacing/property-disallowed-list
-description: TODO
+description: undefined
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - spacing
+  - spacing rules
 ---
 
-Please use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
+Try to use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
 
 ```diff
 

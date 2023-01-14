@@ -1,28 +1,19 @@
 ---
 title: legacy/at-rule-disallowed-list
-description: TODO
+description: Disallows use pf legacy Sass mixins
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - legacy
+  - legacy rules
 ---
 
-If [Polaris components](https://polaris.shopify.com/components) cannot be composed to create the styles you need, consider contributing to an existing Polaris component before creating custom styles.
+Try to use Polaris [components](https://polaris.shopify.com/components) or [tokens](https://polaris.shopify.com/tokens) instead of custom styles so that legacy is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that legacy are in sync with updates from the design system.
 
 ```diff
-// Don't
-- @include unstyled-button;
 // Do
 + <UnstyledButton />
+// Don't
+- @include unstyled-button;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

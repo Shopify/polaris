@@ -1,30 +1,21 @@
 ---
 title: spacing/declaration-property-unit-disallowed-list
-description: TODO
+description: Disallows use of hard-coded px, em, and rem values on gap, margin, and padding properties
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - spacing
+  - spacing rules
 ---
 
-Please use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
+Try to use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
 
 ```diff
-// Don't
-- gap: 2px;
-- margin: 12px  0;
 // Do
 + gap: var(--p-space-05);
 + margin: var(--p-space-3) 0;
+// Don't
+- gap: 2px;
+- margin: 12px  0;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

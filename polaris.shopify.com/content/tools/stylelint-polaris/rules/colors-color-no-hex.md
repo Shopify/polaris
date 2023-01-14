@@ -1,30 +1,21 @@
 ---
 title: colors/color-no-hex
-description: TODO
+description: Disallows hex colors
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - colors
+  - colors rules
 ---
 
-Please use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
+Try to use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
 
 ```diff
-// Don't
-- color: #202223;
-- fill: #5c5f62;
 // Do
 + color: var(--p-text);
 + fill: var(--p-icon)
+// Don't
+- color: #202223;
+- fill: #5c5f62;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

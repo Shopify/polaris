@@ -1,30 +1,19 @@
 ---
 title: layout/declaration-property-value-disallowed-list
-description: TODO
+description: Disallows declaration of positioning and dimension property values with Polaris tokens
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - layout
+  - layout rules
 ---
 
-Please use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
-
-There are many ways to use [Polaris components](https://polaris.shopify.com/components) to compose desired layouts. Please explore the layout components before writing custom styles.
+Try to use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
 
 ```diff
-// Don't
-- width: 100%;
 // Do
 + <Stack />
+// Don't
+- width: 100%;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

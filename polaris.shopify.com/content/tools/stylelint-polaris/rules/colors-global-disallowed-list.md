@@ -1,30 +1,21 @@
 ---
 title: colors/global-disallowed-list
-description: TODO
+description: Disallows use of legacy color custom properties and mixin map data
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - colors
+  - colors rules
 ---
 
-Please use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
+Try to use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
 
 Disallows use of legacy custom properties.
 
 ```diff
-// Don't
-- border: var(--p-override-transparent);
 // Do
 + border: transparent;
+// Don't
+- border: var(--p-override-transparent);
 ```
 
 Disallows use of legacy mixin map data.

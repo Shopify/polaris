@@ -1,30 +1,19 @@
 ---
 title: depth/function-disallowed-list
-description: TODO
+description: Disallows use of built-in and legacy shadow functions
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - depth
+  - depth rules
 ---
 
-Please use Polaris [depth tokens](https://polaris.shopify.com/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth are in sync with updates from the design system.
-
-Use the [Polaris depth tokens](https://polaris.shopify.com/tokens/z-index) instead of custom shadows.
+Try to use Polaris [depth tokens](https://polaris.shopify.com/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth are in sync with updates from the design system.
 
 ```diff
-// Don't
-- filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 // Do
 + box-shadow: var(--p-shadow-base);
+// Don't
+- filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

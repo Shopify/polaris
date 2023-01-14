@@ -1,30 +1,19 @@
 ---
 title: media-queries/media-queries-allowed-list
-description: TODO
+description: Allows declaration of `print` and `screen` `@media` queries, allows `@media` queries for `forced-colors` and `ms-high-contrast` features, allows `@media` queries using Polaris breakpoints
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - media queries
+  - media queries rules
 ---
 
-Please use Polaris [breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
-
-Try to use the [Polaris breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) before creating your own custom styles.
+Try to use Polaris [breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
 
 ```diff
-// Don't
-- @include @media #{$my-var} {}
 // Do
 + @include @media #{$p-breakpoints-sm-up} {}
+// Don't
+- @include @media #{$my-var} {}
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

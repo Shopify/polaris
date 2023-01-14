@@ -1,30 +1,21 @@
 ---
 title: colors/function-disallowed-list
-description: TODO
+description: Disallows allows use of built in and legacy color functions
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - colors
+  - colors rules
 ---
 
-Please use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
+Try to use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
 
 ```diff
-// Don't
-- color: rgb(140, 145, 150);
-- background: color('hover');
 // Do
 + color: var(--p-text-disabled);
 + background: var(--p-action-secondary-hovered-dark);
+// Don't
+- color: rgb(140, 145, 150);
+- background: color('hover');
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

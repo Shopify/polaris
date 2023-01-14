@@ -1,30 +1,19 @@
 ---
 title: z-index/declaration-property-value-allowed-list
-description: TODO
+description: Disallows declaration of `z-index` values that are not Polaris z-index tokens
 keywords:
   - stylelint
-  - dev tools
-  - developer tools
-  - tools
-  - tooling
-  - development
-  - plugin
-  - rules
-  - linter
-  - linting
-  - css
   - z-index
+  - z-index rules
 ---
 
-Please use Polaris [z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of custom styles so that z-index is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that z-index are in sync with updates from the design system.
-
-Try to use the [Polaris z-index tokens](https://polaris.shopify.com/tokens/z-index) before creating your own custom styles.
+Try to use Polaris [z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of custom styles so that z-index is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that z-index are in sync with updates from the design system.
 
 ```diff
-// Don't
-- z-index: 1;
 // Do
 + z-index: var(--p-z-1);
+// Don't
+- z-index: 1;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:
