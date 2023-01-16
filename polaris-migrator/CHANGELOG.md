@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.11.0
+
+### Minor Changes
+
+- [#8009](https://github.com/Shopify/polaris/pull/8009) [`64d57de02`](https://github.com/Shopify/polaris/commit/64d57de0277ff39fd54746f48d11b9841e62e32b) Thanks [@alex-page](https://github.com/alex-page)! - Added componentName option to react-replace-text-components migration
+
 ## 0.10.3
 
 ### Patch Changes
