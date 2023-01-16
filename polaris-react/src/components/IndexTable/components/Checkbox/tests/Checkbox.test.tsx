@@ -226,6 +226,7 @@ const defaultIndexProps: IndexTableProps = {
   itemCount: 1,
   selectedItemsCount: 0,
   onSelectionChange: () => {},
+  emptySearchTitle: 'empty',
 };
 const defaultRowProps = {
   id: defaultId,

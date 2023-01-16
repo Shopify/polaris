@@ -6,7 +6,6 @@ import {
   SelectionType,
   useIndexSelectionChange,
 } from '../../../../utilities/index-provider';
-import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import styles from '../../IndexTable.scss';
@@ -24,6 +23,7 @@ export interface RowProps {
   disabled?: boolean;
   onNavigation?(id: string): void;
   onClick?(): void;
+  checkbox?: React.ReactNode;
 }
 
 export const Row = memo(function Row({
@@ -36,6 +36,7 @@ export const Row = memo(function Row({
   disabled,
   onNavigation,
   onClick,
+  checkbox,
 }: RowProps) {
   const {selectable, selectMode, condensed} = useIndexRow();
   const onSelectionChange = useIndexSelectionChange();
@@ -141,7 +142,7 @@ export const Row = memo(function Row({
 
   const RowWrapper = condensed ? 'li' : 'tr';
 
-  const checkboxMarkup = selectable ? <Checkbox /> : null;
+  const checkboxMarkup = selectable ? <td>{checkbox}</td> : null;
 
   return (
     <RowContext.Provider value={contextValue}>
@@ -154,8 +155,10 @@ export const Row = memo(function Row({
           onClick={handleRowClick}
           ref={tableRowCallbackRef}
         >
-          {checkboxMarkup}
-          {children}
+          <>
+            {checkboxMarkup}
+            {children}
+          </>
         </RowWrapper>
       </RowHoveredContext.Provider>
     </RowContext.Provider>

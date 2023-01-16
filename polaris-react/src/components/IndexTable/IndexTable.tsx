@@ -1,23 +1,17 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {tokens, toPx, motion} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
-import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
-import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {SelectAllActions} from '../SelectAllActions';
 import {Stack} from '../Stack';
-import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {Text} from '../Text';
-import {Tooltip} from '../Tooltip';
-import {UnstyledButton} from '../UnstyledButton';
 import {
   BulkActions,
   BulkActionsProps,
@@ -96,6 +90,14 @@ export interface IndexTableBaseProps {
   /** Optional dictionary of sort toggle labels for each sortable column, with ascending and descending label,
    * with the key as the index of the column */
   sortToggleLabels?: IndexTableSortToggleLabels;
+  loadingLabel?: string;
+  selectedLabel?: string;
+  emptySearchTitle: string;
+  emptySearchDescription?: string;
+  selectAllLabel?: string;
+  onboardingBadgeText?: string;
+  undoText?: string;
+  checkbox?: React.ReactNode;
 }
 
 export interface TableHeadingRect {
@@ -121,12 +123,19 @@ function IndexTableBase({
   sortColumnIndex,
   onSort,
   sortToggleLabels,
+  loadingLabel,
+  selectedLabel,
+  emptySearchTitle,
+  emptySearchDescription,
+  selectAllLabel,
+  onboardingBadgeText,
+  undoText,
+  checkbox,
   ...restProps
 }: IndexTableBaseProps) {
   const {
     loading,
     bulkSelectState,
-    resourceName,
     bulkActionsAccessibilityLabel,
     selectMode,
     selectable = restProps.selectable,
@@ -137,8 +146,6 @@ function IndexTableBase({
     condensed,
   } = useIndexValue();
   const handleSelectionChange = useIndexSelectionChange();
-  const i18n = useI18n();
-
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
     useToggle(false);
 
@@ -151,9 +158,6 @@ function IndexTableBase({
   const loadingElement = useRef<HTMLDivElement>(null);
 
   const [tableInitialized, setTableInitialized] = useState(false);
-  const [stickyWrapper, setStickyWrapper] = useState<HTMLElement | null>(null);
-  const [hideScrollContainer, setHideScrollContainer] =
-    useState<boolean>(false);
 
   const tableHeadings = useRef<HTMLElement[]>([]);
   const stickyTableHeadings = useRef<HTMLElement[]>([]);
@@ -161,7 +165,6 @@ function IndexTableBase({
   const firstStickyHeaderElement = useRef<HTMLDivElement>(null);
   const stickyHeaderElement = useRef<HTMLDivElement>(null);
   const scrollBarElement = useRef<HTMLDivElement>(null);
-  const scrollContainerElement = useRef<HTMLDivElement>(null);
   const scrollingWithBar = useRef(false);
   const scrollingContainer = useRef(false);
   const {
@@ -263,11 +266,6 @@ function IndexTableBase({
       scrollBarElement.current.style.setProperty(
         '--pc-index-table-scroll-bar-content-width',
         `${tableElement.current.offsetWidth - SCROLL_BAR_PADDING}px`,
-      );
-
-      setHideScrollContainer(
-        scrollContainerElement.current?.offsetWidth ===
-          tableElement.current?.offsetWidth,
       );
     }
   }, [tableInitialized]);
@@ -394,19 +392,6 @@ function IndexTableBase({
     [hasMoreLeftColumns, toggleHasMoreLeftColumns],
   );
 
-  const handleScrollBarScroll = useCallback(() => {
-    if (!scrollableContainerElement.current || !scrollBarElement.current) {
-      return;
-    }
-
-    if (!scrollingContainer.current) {
-      scrollingWithBar.current = true;
-      scrollableContainerElement.current.scrollLeft =
-        scrollBarElement.current.scrollLeft;
-    }
-    scrollingContainer.current = false;
-  }, []);
-
   useEffect(() => {
     tableHeadings.current = getTableHeadingsBySelector(
       tableElement.current,
@@ -426,9 +411,6 @@ function IndexTableBase({
 
   useEffect(() => {
     resizeTableScrollBar();
-    setStickyWrapper(
-      condensed ? condensedListElement.current : tableElement.current,
-    );
   }, [tableInitialized, resizeTableScrollBar, condensed]);
 
   const hasBulkActions = Boolean(
@@ -464,13 +446,13 @@ function IndexTableBase({
             className={styles.FirstStickyHeaderElement}
             ref={firstStickyHeaderElement}
           >
-            {renderCheckboxContent()}
+            {checkbox}
           </div>
         )}
 
         {selectable && (
           <div className={styles['StickyTableHeading-second-scrolling']}>
-            {renderHeadingContent(headings[0], 0)}
+            {renderHeadingContent(headings[0])}
           </div>
         )}
 
@@ -479,7 +461,7 @@ function IndexTableBase({
             className={styles.FirstStickyHeaderElement}
             ref={firstStickyHeaderElement}
           >
-            {renderHeadingContent(headings[0], 0)}
+            {renderHeadingContent(headings[0])}
           </div>
         )}
       </Stack>
@@ -520,14 +502,7 @@ function IndexTableBase({
       <div className={styles.LoadingPanel} ref={loadingElement}>
         <div className={styles.LoadingPanelRow}>
           <Spinner size="small" />
-          <span className={styles.LoadingPanelText}>
-            {i18n.translate(
-              'Polaris.IndexTable.resourceLoadingAccessibilityLabel',
-              {
-                resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-              },
-            )}
-          </span>
+          <span className={styles.LoadingPanelText}>{loadingLabel}</span>
         </div>
       </div>
     </CSSTransition>
@@ -574,103 +549,62 @@ function IndexTableBase({
       </div>
     ) : null;
 
-  const stickyHeaderMarkup = (
-    <div className={stickyTableClassNames} role="presentation">
-      <Sticky boundingElement={stickyWrapper}>
-        {(isSticky: boolean) => {
-          const stickyHeaderClassNames = classNames(
-            styles.StickyTableHeader,
-            isSticky && styles['StickyTableHeader-isSticky'],
-          );
-
-          const selectAllActionsClassName = classNames(
+  const stickyHeaderMarkup = () => {
+    const selectAllActionsMarkup =
+      shouldShowBulkActions && !condensed ? (
+        <div
+          className={classNames(
             styles.SelectAllActionsWrapper,
             condensed && styles['StickyTableHeader-condensed'],
-            isSticky && styles['StickyTableHeader-isSticky'],
-          );
-
-          const selectAllActionsMarkup =
-            shouldShowBulkActions && !condensed ? (
-              <div className={selectAllActionsClassName}>
-                <SelectAllActions
-                  label={i18n.translate('Polaris.IndexTable.selected', {
-                    selectedItemsCount: selectedItemsCountLabel,
-                  })}
-                  accessibilityLabel={bulkActionsAccessibilityLabel}
-                  selected={bulkSelectState}
-                  selectMode={selectMode}
-                  onToggleAll={handleTogglePage}
-                  paginatedSelectAllText={paginatedSelectAllText}
-                  paginatedSelectAllAction={paginatedSelectAllAction}
-                />
-                {loadingMarkup}
-              </div>
-            ) : null;
-
-          const headerMarkup = condensed ? (
-            <div
-              className={classNames(
-                styles.HeaderWrapper,
-                (!selectable || condensed) && styles.unselectable,
-              )}
-            >
-              {loadingMarkup}
-              {sort}
-            </div>
-          ) : (
-            <div
-              className={stickyHeaderClassNames}
-              ref={stickyHeaderWrapperElement}
-            >
-              {loadingMarkup}
-              <div className={styles.StickyTableColumnHeader}>
-                {stickyColumnHeader}
-              </div>
-              <div
-                className={styles.StickyTableHeadings}
-                ref={stickyHeaderElement}
-              >
-                {stickyHeadingsMarkup}
-              </div>
-            </div>
-          );
-
-          const stickyContent = selectAllActionsMarkup ?? headerMarkup;
-
-          return stickyContent;
-        }}
-      </Sticky>
-      {bulkActionsMarkup}
-    </div>
-  );
-
-  const scrollBarWrapperClassNames = classNames(
-    styles.ScrollBarContainer,
-    condensed && styles.scrollBarContainerCondensed,
-    hideScrollContainer && styles.scrollBarContainerHidden,
-  );
-
-  const scrollBarClassNames = classNames(
-    tableElement.current && tableInitialized && styles.ScrollBarContent,
-  );
-
-  const scrollBarMarkup =
-    itemCount > 0 ? (
-      <AfterInitialMount onMount={resizeTableScrollBar}>
-        <div
-          className={scrollBarWrapperClassNames}
-          ref={scrollContainerElement}
+          )}
         >
-          <div
-            onScroll={handleScrollBarScroll}
-            className={styles.ScrollBar}
-            ref={scrollBarElement}
-          >
-            <div className={scrollBarClassNames} />
-          </div>
+          <SelectAllActions
+            label={`${selectedItemsCountLabel} ${selectedLabel}`}
+            accessibilityLabel={bulkActionsAccessibilityLabel}
+            selected={bulkSelectState}
+            selectMode={selectMode}
+            onToggleAll={handleTogglePage}
+            paginatedSelectAllText={paginatedSelectAllText}
+            paginatedSelectAllAction={paginatedSelectAllAction}
+          />
+          {loadingMarkup}
         </div>
-      </AfterInitialMount>
-    ) : null;
+      ) : null;
+
+    const headerMarkup = condensed ? (
+      <div
+        className={classNames(
+          styles.HeaderWrapper,
+          (!selectable || condensed) && styles.unselectable,
+        )}
+      >
+        {loadingMarkup}
+        {sort}
+      </div>
+    ) : (
+      <div
+        className={classNames(styles.StickyTableHeader)}
+        ref={stickyHeaderWrapperElement}
+      >
+        {loadingMarkup}
+        <div className={styles.StickyTableColumnHeader}>
+          {stickyColumnHeader}
+        </div>
+        <div className={styles.StickyTableHeadings} ref={stickyHeaderElement}>
+          {stickyHeadingsMarkup}
+        </div>
+      </div>
+    );
+
+    const stickyContent = selectAllActionsMarkup ?? headerMarkup;
+
+    return (
+      <div className={stickyTableClassNames} role="presentation">
+        {stickyContent}
+        {bulkActionsMarkup}
+      </div>
+    );
+  };
 
   const isSortable = sortable?.some((value) => value);
 
@@ -693,10 +627,8 @@ function IndexTableBase({
     emptyState
   ) : (
     <EmptySearchResult
-      title={i18n.translate('Polaris.IndexTable.emptySearchTitle', {
-        resourceNamePlural: resourceName.plural,
-      })}
-      description={i18n.translate('Polaris.IndexTable.emptySearchDescription')}
+      title={emptySearchTitle}
+      description={emptySearchDescription}
       withIllustration
     />
   );
@@ -704,7 +636,7 @@ function IndexTableBase({
   const sharedMarkup = (
     <>
       <EventListener event="resize" handler={handleResize} />
-      <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
+      <AfterInitialMount>{stickyHeaderMarkup()}</AfterInitialMount>
     </>
   );
 
@@ -758,7 +690,6 @@ function IndexTableBase({
         </div>
         <div ref={bulkActionsIntersectionRef} />
       </div>
-      {scrollBarMarkup}
     </>
   );
 
@@ -790,7 +721,7 @@ function IndexTableBase({
         data-index-table-heading
         style={stickyPositioningStyle}
       >
-        {renderHeadingContent(heading, index)}
+        {renderHeadingContent(heading)}
       </th>
     );
 
@@ -810,45 +741,21 @@ function IndexTableBase({
         key={`${heading}-${index}`}
         data-index-table-heading
       >
-        {renderCheckboxContent()}
+        <div className={styles.ColumnHeaderCheckboxWrapper}>{checkbox}</div>
       </th>
     );
 
     return [checkboxContent, headingContent];
   }
 
-  function renderCheckboxContent() {
-    return (
-      <div className={styles.ColumnHeaderCheckboxWrapper}>
-        <PolarisCheckbox
-          label={i18n.translate('Polaris.IndexTable.selectAllLabel', {
-            resourceNamePlural: resourceName.plural,
-          })}
-          labelHidden
-          onChange={handleSelectPage}
-          checked={bulkSelectState}
-        />
-      </div>
-    );
-  }
-
-  function handleSortHeadingClick(
-    index: number,
-    direction: IndexTableSortDirection,
-  ) {
-    onSort?.(index, direction);
-  }
-
-  function renderHeadingContent(heading: IndexTableHeading, index: number) {
+  function renderHeadingContent(heading: IndexTableHeading) {
     let headingContent;
 
     if (heading.new) {
       headingContent = (
         <Stack wrap={false} alignment="center">
           <span>{heading.title}</span>
-          <Badge status="new">
-            {i18n.translate('Polaris.IndexTable.onboardingBadgeText')}
-          </Badge>
+          <Badge status="new">{onboardingBadgeText}</Badge>
         </Stack>
       );
     } else if (heading.hidden) {
@@ -860,66 +767,7 @@ function IndexTableBase({
     } else {
       headingContent = heading.title;
     }
-    if (sortable?.[index]) {
-      const isCurrentlySorted = index === sortColumnIndex;
-      const isAscending = sortDirection === 'ascending';
-      let newDirection: IndexTableSortDirection = defaultSortDirection;
-      let SourceComponent =
-        defaultSortDirection === 'ascending'
-          ? SortAscendingMajor
-          : SortDescendingMajor;
-      if (isCurrentlySorted) {
-        newDirection = isAscending ? 'descending' : 'ascending';
-        SourceComponent =
-          sortDirection === 'ascending'
-            ? SortAscendingMajor
-            : SortDescendingMajor;
-      }
-
-      const iconMarkup = (
-        <span
-          className={classNames(
-            styles.TableHeadingSortIcon,
-            isCurrentlySorted && styles['TableHeadingSortIcon-visible'],
-          )}
-        >
-          <SourceComponent
-            focusable="false"
-            aria-hidden="true"
-            className={styles.TableHeadingSortSvg}
-          />
-        </span>
-      );
-
-      const sortMarkup = (
-        <UnstyledButton
-          onClick={() => handleSortHeadingClick(index, newDirection)}
-          className={styles.TableHeadingSortButton}
-          tabIndex={selectMode ? -1 : 0}
-        >
-          {iconMarkup}
-
-          {headingContent}
-        </UnstyledButton>
-      );
-
-      if (!sortToggleLabels || selectMode) {
-        return sortMarkup;
-      }
-
-      const tooltipDirection = isCurrentlySorted
-        ? sortDirection!
-        : defaultSortDirection;
-
-      const tooltipContent = sortToggleLabels[index][tooltipDirection];
-
-      return <Tooltip content={tooltipContent}>{sortMarkup}</Tooltip>;
-    }
     return headingContent;
-  }
-
-  function handleSelectPage(checked: boolean) {
-    handleSelectionChange(SelectionType.Page, checked);
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
@@ -929,7 +777,7 @@ function IndexTableBase({
         ? {minWidth: tableHeadingRects.current[position].offsetWidth}
         : undefined;
 
-    const headingContent = renderHeadingContent(heading, index);
+    const headingContent = renderHeadingContent(heading);
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
       index === 0 && styles['StickyTableHeading-second'],
@@ -953,17 +801,10 @@ function IndexTableBase({
       return;
     }
 
-    const customActionText =
-      paginatedSelectAllActionText ??
-      i18n.translate('Polaris.IndexTable.selectAllItems', {
-        itemsLength: itemCount,
-        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-      });
+    const customActionText = paginatedSelectAllActionText;
 
     const actionText =
-      selectedItemsCount === SELECT_ALL_ITEMS
-        ? i18n.translate('Polaris.IndexTable.undo')
-        : customActionText;
+      selectedItemsCount === SELECT_ALL_ITEMS ? undoText : customActionText;
 
     return {
       content: actionText,

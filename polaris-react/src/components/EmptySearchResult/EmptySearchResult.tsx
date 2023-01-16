@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {useI18n} from '../../utilities/i18n';
 import {Text} from '../Text';
 import {Image} from '../Image';
 import {Stack} from '../Stack';
@@ -18,8 +17,7 @@ export function EmptySearchResult({
   description,
   withIllustration,
 }: EmptySearchResultProps) {
-  const i18n = useI18n();
-  const altText = i18n.translate('Polaris.EmptySearchResult.altText');
+  const altText = 'Empty search results';
 
   const descriptionMarkup = description ? <p>{description}</p> : null;
 

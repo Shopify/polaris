@@ -1,7 +1,5 @@
 import {useContext, useRef, useCallback} from 'react';
 
-import {useI18n} from '../i18n';
-
 import {
   SELECT_ALL_ITEMS,
   SelectionType,
@@ -46,14 +44,12 @@ export function useBulkSelectionData({
   hasMoreItems,
   resourceName: passedResourceName,
 }: BulkSelectionDataOptions) {
-  const i18n = useI18n();
-
   const selectable = Boolean(selectedItemsCount);
   const selectMode = selectedItemsCount === 'All' || selectedItemsCount > 0;
 
   const defaultResourceName = {
-    singular: i18n.translate('Polaris.IndexProvider.defaultItemSingular'),
-    plural: i18n.translate('Polaris.IndexProvider.defaultItemPlural'),
+    singular: 'Item',
+    plural: 'Items',
   };
 
   const resourceName = passedResourceName
@@ -91,10 +87,7 @@ export function useBulkSelectionData({
     }
 
     if (selectedItemsCount === SELECT_ALL_ITEMS) {
-      return i18n.translate('Polaris.IndexProvider.allItemsSelected', {
-        itemsLength: itemCount,
-        resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
-      });
+      return `All ${itemCount}+ ${resourceName.plural.toLocaleLowerCase()} are selected.`;
     }
   }
 
@@ -104,9 +97,7 @@ export function useBulkSelectionData({
         ? `${itemCount}+`
         : selectedItemsCount;
 
-    return i18n.translate('Polaris.IndexProvider.selected', {
-      selectedItemsCount: selectedItemsCountLabel,
-    });
+    return `${selectedItemsCountLabel} selected.`;
   }
 
   function getBulkActionsAccessibilityLabel() {
@@ -114,35 +105,13 @@ export function useBulkSelectionData({
     const allSelected = selectedItemsCount === totalItemsCount;
 
     if (totalItemsCount === 1 && allSelected) {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxDeselectAllSingle',
-        {
-          resourceNameSingular: resourceName.singular,
-        },
-      );
+      return `Deselect ${resourceName.singular}`;
     } else if (totalItemsCount === 1) {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxSelectAllSingle',
-        {
-          resourceNameSingular: resourceName.singular,
-        },
-      );
+      return `Select ${resourceName.singular}`;
     } else if (allSelected) {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxDeselectAllMultiple',
-        {
-          itemsLength: itemCount,
-          resourceNamePlural: resourceName.plural,
-        },
-      );
+      return `Deselect all ${itemCount} ${resourceName.plural}`;
     } else {
-      return i18n.translate(
-        'Polaris.IndexProvider.a11yCheckboxSelectAllMultiple',
-        {
-          itemsLength: itemCount,
-          resourceNamePlural: resourceName.plural,
-        },
-      );
+      return `Select all ${itemCount} ${resourceName.plural}`;
     }
   }
 }

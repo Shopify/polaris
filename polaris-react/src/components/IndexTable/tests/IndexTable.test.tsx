@@ -93,6 +93,7 @@ describe('<IndexTable>', () => {
     itemCount: 0,
     selectedItemsCount: 0,
     headings: mockTableHeadings,
+    emptySearchTitle: 'empty',
   };
 
   beforeEach(() => {
@@ -478,6 +479,7 @@ describe('<IndexTable>', () => {
       itemCount: mockTableItems.length,
       selectedItemsCount: 0,
       onSelectionChange: () => {},
+      emptySearchTitle: 'empty',
     };
 
     const width = window.innerWidth;

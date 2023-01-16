@@ -208,7 +208,7 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
-export {IndexTable} from './components/IndexTable';
+export {IndexTable, Row, Cell} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
@@ -350,9 +350,6 @@ export type {SpinnerProps} from './components/Spinner';
 
 export {Stack} from './components/Stack';
 export type {StackProps} from './components/Stack';
-
-export {Sticky} from './components/Sticky';
-export type {StickyProps} from './components/Sticky';
 
 export {Subheading} from './components/Subheading';
 export type {SubheadingProps} from './components/Subheading';
