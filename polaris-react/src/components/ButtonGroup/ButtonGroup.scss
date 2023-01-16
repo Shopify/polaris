@@ -90,3 +90,8 @@
     margin-left: var(--p-space-5);
   }
 }
+
+.noWrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
