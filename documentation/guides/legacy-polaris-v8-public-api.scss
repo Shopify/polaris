@@ -1347,7 +1347,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     @include high-contrast-outline;
   }
 
-  &:focus {
+  &:focus-visible {
     box-shadow: var(--p-shadow-button);
     outline: 0;
 
@@ -1438,7 +1438,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     background: var(--p-surface-hovered);
   }
 
-  &:focus {
+  &:focus-visible {
     border: border-width() solid var(--p-border);
     box-shadow: none;
     @include focus-ring($style: 'focused');
@@ -1480,7 +1480,7 @@ $nav-min-window: em(layout-width(page-with-nav));
       background: var(--p-surface-critical-subdued);
     }
 
-    &:focus {
+    &:focus-visible {
       border: border-width('base') solid var(--p-border-critical);
       @include focus-ring($style: 'focused');
     }
