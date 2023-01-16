@@ -7,7 +7,7 @@ keywords:
   - z-index rules
 ---
 
-Try to use Polaris [z-index tokens](https://polaris.shopify.com/tokens/z-index) instead of custom styles so that z-index is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that z-index are in sync with updates from the design system.
+Try to use Polaris [z-index tokens](/tokens/z-index) instead of custom styles so that z-index is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that z-index is in sync with updates from the design system.
 
 ```diff
 // Do

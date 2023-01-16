@@ -1,16 +1,19 @@
 ---
-title: spacing/at-rule-disallowed-list
-description: undefined
+title: typography/global-disallowed-list
+description: Disallows use of legacy Polaris typography tokens and mixin map data
 keywords:
   - stylelint
-  - spacing
-  - spacing rules
+  - typography
+  - typography rules
 ---
 
-Try to use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
+Try to use the [text component](/components/text) or [font tokens](/tokens/font) instead of custom styles so that typography is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that typography is in sync with updates from the design system.
 
 ```diff
-
+// Do
++ font-size: var(--p-font-size-200);
+// Don't
+- font-size: $base-font-size;
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

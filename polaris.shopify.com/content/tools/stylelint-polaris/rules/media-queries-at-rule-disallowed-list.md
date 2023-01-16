@@ -7,7 +7,7 @@ keywords:
   - media queries rules
 ---
 
-Try to use Polaris [breakpoint sass variables](https://polaris.shopify.com/tokens/breakpoints#sass-variables) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
+Try to use Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables) instead of custom styles so that media queries are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that media queries are in sync with updates from the design system.
 
 ```diff
 // Do

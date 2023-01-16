@@ -1,16 +1,19 @@
 ---
-title: spacing/property-disallowed-list
-description: undefined
+title: spacing/global-disallowed-list
+description: Disallows use of legacy spacing custom properties and Sass mixin data
 keywords:
   - stylelint
   - spacing
   - spacing rules
 ---
 
-Try to use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
+Try to use Polaris [spacking tokens](/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing is in sync with updates from the design system.
 
 ```diff
-
+// Do
++ margin-bottom: var(--p-space-1);
+// Don't
+- margin-bottom: var(--p-text-field-spinner-offset);
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

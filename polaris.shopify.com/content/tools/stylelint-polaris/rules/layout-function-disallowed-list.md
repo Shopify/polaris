@@ -7,7 +7,7 @@ keywords:
   - layout rules
 ---
 
-Try to use Polaris [layout components](https://polaris.shopify.com/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout are in sync with updates from the design system.
+Try to use Polaris [layout components](/components) instead of custom styles so that layout is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that layout is in sync with updates from the design system.
 
 Use hard coded pixel or rem values for `width` and `height` instead of legacy mixins/variables or spacing tokens.
 

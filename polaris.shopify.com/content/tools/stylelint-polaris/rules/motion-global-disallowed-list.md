@@ -7,10 +7,13 @@ keywords:
   - motion rules
 ---
 
-Try to use Polaris [motion tokens](https://polaris.shopify.com/tokens/motion) instead of custom styles so that motion is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that motion are in sync with updates from the design system.
+Try to use Polaris [motion tokens](/tokens/motion) instead of custom styles so that motion is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that motion is in sync with updates from the design system.
 
 ```diff
-
+// Do
++ transition: var(--p-duration-100) var(--p-ease);
+// Don't
+- transition: var(--p-duration-1-0-0) var(--p-ease);
 ```
 
 Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:

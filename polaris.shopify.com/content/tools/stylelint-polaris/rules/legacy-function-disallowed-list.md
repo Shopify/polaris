@@ -7,7 +7,7 @@ keywords:
   - legacy rules
 ---
 
-Try to use Polaris [components](https://polaris.shopify.com/components) or [tokens](https://polaris.shopify.com/tokens) instead of custom styles so that legacy is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that legacy are in sync with updates from the design system.
+Try to use Polaris [components](/components) or [tokens](/tokens) instead of custom styles so that legacy is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that legacy is in sync with updates from the design system.
 
 ```diff
 // Don't

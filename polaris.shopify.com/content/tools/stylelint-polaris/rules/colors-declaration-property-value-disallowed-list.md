@@ -7,7 +7,7 @@ keywords:
   - colors rules
 ---
 
-Try to use Polaris [color tokens](https://polaris.shopify.com/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
+Try to use Polaris [color tokens](/tokens/colors) instead of custom styles so that colors are consistent across the Admin. This helps merchants have a coherent user experience and also ensures that colors are in sync with updates from the design system.
 
 ```diff
 // Do

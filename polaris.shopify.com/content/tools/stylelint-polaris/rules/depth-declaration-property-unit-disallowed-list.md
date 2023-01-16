@@ -7,7 +7,7 @@ keywords:
   - depth rules
 ---
 
-Try to use Polaris [depth tokens](https://polaris.shopify.com/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth are in sync with updates from the design system.
+Try to use Polaris [depth tokens](/tokens/depth) instead of custom styles so that depth is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that depth is in sync with updates from the design system.
 
 ```diff
 // Do

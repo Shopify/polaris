@@ -7,7 +7,7 @@ keywords:
   - spacing rules
 ---
 
-Try to use Polaris [spacking tokens](https://polaris.shopify.com/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing are in sync with updates from the design system.
+Try to use Polaris [spacking tokens](/tokens/spacing) instead of custom styles so that spacing is consistent across the Admin. This helps merchants have a coherent user experience and also ensures that spacing is in sync with updates from the design system.
 
 ```diff
 // Do
