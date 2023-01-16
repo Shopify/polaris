@@ -8,6 +8,10 @@ keywords:
   - css rules
 ---
 
+## Conventions
+
+- [conventions/custom-property-allowed-list](/tools/stylelint-polaris/rules/conventions-custom-property-allowed-list): Allows definition of custom properties not using Polaris prefixes, flags declaration property values that are not valid Polaris tokens, flags declaration property values using private tokens
+
 ## Colors
 
 - [colors/color-named](/tools/stylelint-polaris/rules/colors-color-named): Disallows named colors
@@ -30,7 +34,39 @@ keywords:
 - [typography/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/typography-declaration-property-unit-disallowed-list): Disallows hard-coded `px`, `em`, and `rem` values for font-size and line-height properties
 - [typography/function-disallowed-list](/tools/stylelint-polaris/rules/typography-function-disallowed-list): Disallows use of legacy Sass typography functions
 - [typography/at-rule-disallowed-list](/tools/stylelint-polaris/rules/typography-at-rule-disallowed-list): Disallows use of legacy Sass typography mixins
-- [typography/property-disallowed-list](/tools/stylelint-polaris/rules/typography-property-disallowed-list): Disallows use of legacy typography custom properties and Sass mixin data
+- [typography/global-disallowed-list](/tools/stylelint-polaris/rules/typography-global-disallowed-list): Disallows use of legacy Polaris typography tokens and mixin map data
+
+## Shape
+
+- [shape/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/shape-declaration-property-unit-disallowed-list): Disallows hard-coded `px`, `em`, and `rem` units in border property values
+- [shape/function-disallowed-list](/tools/stylelint-polaris/rules/shape-function-disallowed-list): Disallows use of legacy Sass border functions
+- [shape/at-rule-disallowed-list](/tools/stylelint-polaris/rules/shape-at-rule-disallowed-list): Disallows use of legacy Sass border mixins
+- [shape/global-disallowed-list](/tools/stylelint-polaris/rules/shape-global-disallowed-list): Disallows use of legacy Polaris shape tokens and mixin map data
+
+## Spacing
+
+- [spacing/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list): Disallows use of hard-coded px, em, and rem values on gap, margin, and padding properties
+- [spacing/function-disallowed-list](/tools/stylelint-polaris/rules/spacing-function-disallowed-list): Disallows use of legacy Sass spacing functions
+- [spacing/global-disallowed-list](/tools/stylelint-polaris/rules/spacing-global-disallowed-list): Disallows use of legacy spacing custom properties and Sass mixin data
+
+## Depth
+
+- [depth/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/depth-declaration-property-unit-disallowed-list): Disallows box-shadow declarations with hard coded px, rem, or em units
+- [depth/function-disallowed-list](/tools/stylelint-polaris/rules/depth-function-disallowed-list): Disallows use of built-in and legacy shadow functions
+- [depth/global-disallowed-list](/tools/stylelint-polaris/rules/depth-global-disallowed-list): Disallows use of legacy shadow custom properties and Sass mixin data
+- [depth/property-disallowed-list](/tools/stylelint-polaris/rules/depth-property-disallowed-list): Disallows text shadow property
+
+## Media-queries
+
+- [media-queries/function-disallowed-list](/tools/stylelint-polaris/rules/media-queries-function-disallowed-list): Disallows use of legacy breakpoint sass functions
+- [media-queries/media-queries-allowed-list](/tools/stylelint-polaris/rules/media-queries-media-queries-allowed-list): Allows declaration of `print` and `screen` `@media` queries, allows `@media` queries for `forced-colors` and `ms-high-contrast` features, allows `@media` queries using Polaris breakpoints
+- [media-queries/at-rule-disallowed-list](/tools/stylelint-polaris/rules/media-queries-at-rule-disallowed-list): Disallows use of legacy breakpoint Sass mixins
+
+## Z-index
+
+- [z-index/declaration-property-value-allowed-list](/tools/stylelint-polaris/rules/z-index-declaration-property-value-allowed-list): Disallows declaration of `z-index` values that are not Polaris z-index tokens
+- [z-index/function-disallowed-list](/tools/stylelint-polaris/rules/z-index-function-disallowed-list): Disallows use of the legacy z-index Sass function
+- [z-index/global-disallowed-list](/tools/stylelint-polaris/rules/z-index-global-disallowed-list): Disallows the use of legacy z-index custom properties and Sass mixin data
 
 ## Layout
 
@@ -39,47 +75,6 @@ keywords:
 - [layout/at-rule-disallowed-list](/tools/stylelint-polaris/rules/layout-at-rule-disallowed-list): Disallows use of legacy Sass mixins
 - [layout/property-disallowed-list](/tools/stylelint-polaris/rules/layout-property-disallowed-list): Disallows declarations of layout properties
 - [layout/global-disallowed-list](/tools/stylelint-polaris/rules/layout-global-disallowed-list): Disallows use of legacy custom properties and Sass mixin map data
-
-## Spacing
-
-- [spacing/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list): Disallows use of hard-coded px, em, and rem values on gap, margin, and padding properties
-- [spacing/function-disallowed-list](/tools/stylelint-polaris/rules/spacing-function-disallowed-list): Disallows use of legacy Sass spacing functions
-- [spacing/global-disallowed-list](/tools/stylelint-polaris/rules/spacing-property-disallowed-list): Disallows use of legacy spacing custom properties and Sass mixin data
-
-## Shape
-
-- [shape/function-disallowed-list](/tools/stylelint-polaris/rules/shape-function-disallowed-list): Disallows use of legacy Sass border functions
-- [shape/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/shape-declaration-property-unit-disallowed-list): Disallows hard-coded `px`, `em`, and `rem` units in border property values
-- [shape/at-rule-disallowed-list](/tools/stylelint-polaris/rules/shape-at-rule-disallowed-list): Disallows use of legacy Sass border mixins
-- [shape/property-disallowed-list](/tools/stylelint-polaris/rules/shape-global-disallowed-list): Disallows use of legacy border custom properties and Sass mixin map data
-
-## Depth
-
-- [depth/function-disallowed-list](/tools/stylelint-polaris/rules/depth-function-disallowed-list): Disallows use of built-in and legacy shadow functions
-- [depth/declaration-property-unit-disallowed-list](/tools/stylelint-polaris/rules/depth-declaration-property-unit-disallowed-list): Disallows box-shadow declarations with hard coded px, rem, or em units
-- [depth/global-disallowed-list](/tools/stylelint-polaris/rules/depth-global-disallowed-list): Disallows use of legacy shadow custom properties and Sass mixin data
-
-## Z-Index
-
-- [z-index/declaration-property-value-allowed-list](/tools/stylelint-polaris/rules/z-index-declaration-property-value-allowed-list): Disallows declaration of `z-index` values that are not Polaris z-index tokens
-- [z-index/function-disallowed-list](/tools/stylelint-polaris/rules/z-index-function-disallowed-list): Disallows use of the legacy z-index Sass function
-- [z-index/global-disallowed-list](/tools/stylelint-polaris/rules/z-index-global-disallowed-list): Disallows the use of legacy z-index custom properties and Sass mixin data
-
-## Conventions
-
-- [conventions/custom-property-allowed-list](/tools/stylelint-polaris/rules/conventions-custom-property-allowed-list):
-  - Allows definition of custom properties not using Polaris prefixes
-  - Flags declaration property values that are not valid Polaris tokens
-  - Flags declaration property values using private tokens
-
-## Media queries
-
-- [media-queries/media-queries-allowed-list](/tools/stylelint-polaris/rules/media-queries-media-queries-allowed-list):
-  - Allows declaration of `print` and `screen` `@media` queries
-  - Allows `@media` queries for `forced-colors` and `ms-high-contrast` features
-  - Allows `@media` queries using Polaris breakpoints
-- [media-queries/function-disallowed-list](/tools/stylelint-polaris/rules/media-queries-function-disallowed-list): Disallows use of legacy breakpoint sass functions
-- [media-queries/at-rule-disallowed-list](/tools/stylelint-polaris/rules/media-queries-at-rule-disallowed-list): Disallows use of legacy breakpoint Sass mixins
 
 ## Legacy
 
