@@ -27,6 +27,7 @@ const defaultIndexTableProps: IndexTableProps = {
   itemCount: 1,
   selectedItemsCount: 0,
   onSelectionChange: () => {},
+  emptySearchTitle: 'empty',
 };
 
 describe('<Row />', () => {

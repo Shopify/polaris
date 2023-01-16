@@ -2,14 +2,23 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
-import {IndexTable, IndexTableProps} from '../../../components/IndexTable';
-import {useRowHovered} from '../hooks';
+import {
+  IndexTable,
+  IndexTableProps,
+  ScrollContainer,
+} from '../../../components/IndexTable';
+import {useContainerScroll} from '../hooks';
 
-function Component() {
-  const hovered = useRowHovered();
-  const content = hovered ? 'In' : 'Out';
+function Component({condensed}: {condensed?: boolean}) {
+  const {scrollableContainer, canScrollLeft, canScrollRight} =
+    useContainerScroll();
+  const container = scrollableContainer ? 'ref' : 'null';
+  const left = canScrollLeft ? 'can scroll left' : 'cannot scroll left';
+  const right = canScrollRight ? 'can scroll right' : 'cannot scroll right';
 
-  return <td>{content}</td>;
+  const content = `${container} ${left} and ${right}`;
+
+  return condensed ? <span>{content}</span> : <td>{content}</td>;
 }
 
 const defaultIndexTableProps: IndexTableProps = {
@@ -17,34 +26,75 @@ const defaultIndexTableProps: IndexTableProps = {
   selectedItemsCount: 0,
   onSelectionChange: () => {},
   headings: [{title: 'Heading one'}, {title: 'Heading two'}],
+  emptySearchTitle: 'empty',
 };
 
-describe('useRowHovered', () => {
-  it('returns true when the Row is hovered', () => {
-    const component = mountWithApp(
-      <IndexTable {...defaultIndexTableProps}>
-        <IndexTable.Row id="id" selected position={1}>
-          <Component />
-        </IndexTable.Row>
-      </IndexTable>,
-    );
+describe('useContainerScroll', () => {
+  describe('scrollableContainer', () => {
+    it('returns a null container ref when the table is condensed', () => {
+      const wrapper = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed>
+          <IndexTable.Row id="id" selected position={1}>
+            <Component condensed />
+          </IndexTable.Row>
+        </IndexTable>,
+      );
 
-    component.findAll('tr')[1]!.trigger('onMouseEnter');
+      expect(wrapper).toContainReactText('null');
+    });
 
-    expect(component).toContainReactText('In');
+    it('returns a container element ref when the table is not condensed', () => {
+      const wrapper = mountWithApp(
+        <IndexTable {...defaultIndexTableProps}>
+          <IndexTable.Row id="id" selected position={1}>
+            <Component condensed={false} />
+          </IndexTable.Row>
+        </IndexTable>,
+      );
+
+      expect(wrapper).toContainReactText('ref');
+    });
+
+    it('returns a container element ref when the table is scrolled', () => {
+      const wrapper = mountWithApp(
+        <IndexTable {...defaultIndexTableProps}>
+          <IndexTable.Row id="id" selected position={1}>
+            <Component />
+          </IndexTable.Row>
+        </IndexTable>,
+      );
+
+      wrapper.find(ScrollContainer)!.trigger('onScroll', true);
+
+      expect(wrapper).toContainReactText('ref');
+    });
   });
 
-  it('returns false when the Row is not hovered', () => {
-    const component = mountWithApp(
-      <IndexTable {...defaultIndexTableProps}>
-        <IndexTable.Row id="id" selected position={1}>
-          <Component />
-        </IndexTable.Row>
-      </IndexTable>,
-    );
+  describe('canScrollLeft', () => {
+    it('returns canScrollLeft as false by default', () => {
+      const wrapper = mountWithApp(
+        <IndexTable {...defaultIndexTableProps}>
+          <IndexTable.Row id="id" selected position={1}>
+            <Component />
+          </IndexTable.Row>
+        </IndexTable>,
+      );
 
-    component.findAll('tr')[1]!.trigger('onMouseLeave');
+      expect(wrapper).toContainReactText('cannot scroll left');
+    });
+  });
 
-    expect(component).toContainReactText('Out');
+  describe('canScrollRight', () => {
+    it('returns canScrollRight as false by default', () => {
+      const wrapper = mountWithApp(
+        <IndexTable {...defaultIndexTableProps}>
+          <IndexTable.Row id="id" selected position={1}>
+            <Component />
+          </IndexTable.Row>
+        </IndexTable>,
+      );
+
+      expect(wrapper).toContainReactText('cannot scroll right');
+    });
   });
 });

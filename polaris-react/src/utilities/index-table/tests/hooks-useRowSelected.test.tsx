@@ -17,6 +17,7 @@ const defaultIndexTableProps: IndexTableProps = {
   selectedItemsCount: 0,
   onSelectionChange: () => {},
   headings: [{title: 'Heading one'}, {title: 'Heading two'}],
+  emptySearchTitle: 'empty',
 };
 
 describe('useRowHovered', () => {
