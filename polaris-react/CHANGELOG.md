@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.0
+
+### Major Changes
+
+- [`5c98628`](https://github.com/Shopify/polaris/commit/5c98628fcae23545f7c8026ef7404315f4493a4f) Thanks [@ninariccimarie](https://github.com/ninariccimarie)! - remove AppProvider dependencies for IndexTable
+
 ## 11.0.0
 
 ### Major Changes
