@@ -361,6 +361,7 @@ const isBeta = false;
 export default function PatternsDatePickingPage() {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
+  const [showCode, toggleCode] = useState(false);
   const onTabChange = (index: number) => {
     setExampleIndex(index);
     replace(
@@ -469,6 +470,10 @@ export default function PatternsDatePickingPage() {
                         <Heading as="h2">Using this pattern</Heading>
                         <PatternsExample
                           example={variant.example}
+                          showCode={showCode}
+                          onCodeToggle={() =>
+                            toggleCode((showCode) => !showCode)
+                          }
                           patternName={`${pattern.title} > ${variant.title}`}
                           relatedComponents={[
                             {

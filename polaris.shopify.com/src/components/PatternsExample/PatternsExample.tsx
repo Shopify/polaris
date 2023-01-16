@@ -60,12 +60,24 @@ const PatternsExample = ({
   example,
   patternName,
   relatedComponents,
+  showCode,
+  onCodeToggle,
 }: {
   example: PatternExample;
   patternName: string;
+  showCode?: boolean;
   relatedComponents: RelatedComponentDocumentation[];
+  onCodeToggle?: () => void;
 }) => {
+  const isControlled = typeof showCode === 'undefined';
   const [codeActive, toggleCode] = useState(false);
+  const showCodeValue = isControlled ? codeActive : showCode;
+  const handleCodeToggle = () => {
+    if (onCodeToggle) onCodeToggle();
+    if (isControlled) {
+      toggleCode((codeActive) => !codeActive);
+    }
+  };
   const [previewUrl, setPreviewUrl] = useState('');
   useEffect(() => {
     function constructLivePreview(code: string, context?: string) {
@@ -117,10 +129,8 @@ const PatternsExample = ({
           renderFrameActions={() => (
             <Fragment>
               <PlayroomButton code={example.code} patternName={patternName} />
-              <LinkButton
-                onClick={() => toggleCode((codeActive) => !codeActive)}
-              >
-                {codeActive ? 'Hide code' : 'Show code'}
+              <LinkButton onClick={handleCodeToggle}>
+                {showCodeValue ? 'Hide code' : 'Show code'}
               </LinkButton>
             </Fragment>
           )}
@@ -131,7 +141,7 @@ const PatternsExample = ({
             src={previewUrl}
           />
         </ExampleWrapper>
-        {codeActive ? (
+        {showCodeValue ? (
           <Code
             code={[
               {
