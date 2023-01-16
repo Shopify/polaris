@@ -1,13 +1,49 @@
+import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
+import {parseMarkdown} from '../../../src/utils/markdown.mjs';
 
-export default function GroupPage(props: any) {
-  return <div>{capitalize(props.group.replace(/-/g, ' '))}</div>;
+interface FrontMatter {
+  title: string;
+  description: string;
 }
-export async function getStaticProps(context: any) {
-  return {
-    props: {group: context.params.group},
-  };
+
+interface Props {
+  group: string;
+  frontMatter: FrontMatter;
+  readme: string;
+}
+
+export default function GroupPage({frontMatter, readme}: Props) {
+  return (
+    <div>
+      <p>title: {frontMatter.title}</p>
+      <p>description: {frontMatter.description}</p>
+      <p>readme: {readme}</p>
+    </div>
+  );
+}
+export async function getStaticProps(context: {params: {group: string}}) {
+  const relativeMdPath = `content/components/${context.params?.group}/index.md`;
+  const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
+
+  if (fs.existsSync(mdFilePath)) {
+    const componentMarkdown = fs.readFileSync(
+      `content/components/${context.params.group}/index.md`,
+      'utf-8',
+    );
+
+    const {frontMatter, readme} = parseMarkdown(componentMarkdown);
+
+    return {
+      props: {
+        frontMatter,
+        readme,
+      },
+    };
+  } else {
+    return {notFound: true};
+  }
 }
 
 export const getStaticPaths = async () => {
@@ -25,8 +61,3 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
-
-export function capitalize(word = '') {
-  const wordLower = word.toLowerCase();
-  return wordLower.charAt(0).toUpperCase() + wordLower.slice(1);
-}
