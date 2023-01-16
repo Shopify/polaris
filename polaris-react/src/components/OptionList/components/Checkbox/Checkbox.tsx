@@ -32,9 +32,7 @@ export function Checkbox({
 
   const className = classNames(styles.Checkbox, active && styles.active);
 
-  const inputClassName = classNames(
-    styles.Input,
-  );
+  const inputClassName = classNames(styles.Input);
 
   return (
     <div className={className}>

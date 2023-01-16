@@ -77,9 +77,7 @@ export function RadioButton({
     ? describedBy.join(' ')
     : undefined;
 
-  const inputClassName = classNames(
-    styles.Input,
-  );
+  const inputClassName = classNames(styles.Input);
 
   const backdropClassName = classNames(
     styles.Backdrop,
