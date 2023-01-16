@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
@@ -51,7 +51,6 @@ export function RadioButton({
   const id = useUniqueId('RadioButton', idProp);
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);
-  const [keyFocused, setKeyFocused] = useState(false);
 
   const {
     value: mouseOver,
@@ -59,13 +58,8 @@ export function RadioButton({
     setFalse: handleMouseOut,
   } = useToggle(false);
 
-  const handleKeyUp = () => {
-    !keyFocused && setKeyFocused(true);
-  };
-
   const handleBlur = () => {
     onBlur && onBlur();
-    setKeyFocused(false);
   };
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
@@ -85,7 +79,6 @@ export function RadioButton({
 
   const inputClassName = classNames(
     styles.Input,
-    keyFocused && styles.keyFocused,
   );
 
   const backdropClassName = classNames(
@@ -114,7 +107,6 @@ export function RadioButton({
           className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
-          onKeyUp={handleKeyUp}
           onBlur={handleBlur}
           aria-describedby={ariaDescribedBy}
           ref={inputNode}

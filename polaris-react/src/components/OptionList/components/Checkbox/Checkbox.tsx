@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {TickSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
@@ -29,21 +29,11 @@ export function Checkbox({
   role,
 }: CheckboxProps) {
   const id = useUniqueId('Checkbox', idProp);
-  const [keyFocused, setKeyFocused] = useState(false);
 
   const className = classNames(styles.Checkbox, active && styles.active);
 
-  const handleBlur = () => {
-    setKeyFocused(false);
-  };
-
-  const handleKeyUp = () => {
-    !keyFocused && setKeyFocused(true);
-  };
-
   const inputClassName = classNames(
     styles.Input,
-    keyFocused && styles.keyFocused,
   );
 
   return (
@@ -58,8 +48,6 @@ export function Checkbox({
         className={inputClassName}
         aria-checked={checked}
         onChange={onChange}
-        onBlur={handleBlur}
-        onKeyUp={handleKeyUp}
         role={role}
       />
       <div className={styles.Backdrop} />
