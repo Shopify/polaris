@@ -1,4 +1,5 @@
-import {GetStaticPaths} from 'next';
+import globby from 'globby';
+import path from 'path';
 
 export default function GroupPage(props: any) {
   return <div>{capitalize(props.group.replace(/-/g, ' '))}</div>;
@@ -9,31 +10,18 @@ export async function getStaticProps(context: any) {
   };
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  // const globPath = path.resolve(process.cwd(), 'content/components/**/*.md');
-  // const paths = globby
-  //   .sync(globPath)
-  //   .filter((path) => !path.endsWith('index.md'))
-  //   .map((path) =>
-  //     path.replace(`${process.cwd()}/content`, '').replace('.md', ''),
-  //   );
+export const getStaticPaths = async () => {
+  const globPath = path.resolve(process.cwd(), 'content/components/**/*.md');
+  const paths = globby
+    .sync(globPath)
+    .map((path) => path.replace(`${process.cwd()}/content`, ''));
+
+  const sections = paths.map((path) => path.split('/')[2]);
 
   return {
-    // paths: ['abc', 'def'],
-    paths: [
-      {params: {group: 'actions'}},
-      {params: {group: 'deprecated'}},
-      {params: {group: 'feedback-indicators'}},
-      {params: {group: 'images-and-icons'}},
-      {params: {group: 'layout-and-structure'}},
-      {params: {group: 'lists'}},
-      {params: {group: 'navigation'}},
-      {params: {group: 'overlays'}},
-      {params: {group: 'seelction-and-input'}},
-      {params: {group: 'tables'}},
-      {params: {group: 'typography'}},
-      {params: {group: 'utilities'}},
-    ],
+    paths: sections
+      .filter((section, index) => sections.indexOf(section) === index)
+      .map((section) => ({params: {group: section}})),
     fallback: false,
   };
 };
