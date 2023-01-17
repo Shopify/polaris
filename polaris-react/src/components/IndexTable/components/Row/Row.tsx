@@ -142,7 +142,9 @@ export const Row = memo(function Row({
 
   const RowWrapper = condensed ? 'li' : 'tr';
 
-  const checkboxMarkup = selectable ? <td>{checkbox}</td> : null;
+  const checkboxMarkup = selectable ? (
+    <td className="Polaris-IndexTable__TableCell">{checkbox}</td>
+  ) : null;
 
   return (
     <RowContext.Provider value={contextValue}>

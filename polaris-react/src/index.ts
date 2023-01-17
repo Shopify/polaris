@@ -430,6 +430,7 @@ export {
   useRowHovered as useIndexTableRowHovered,
   useRowSelected as useIndexTableRowSelected,
   useContainerScroll as useIndexTableContainerScroll,
+  RowContext as IndexTableRowContext,
 } from './utilities/index-table';
 export {
   SELECT_ALL_ITEMS as INDEX_TABLE_SELECT_ALL_ITEMS,
