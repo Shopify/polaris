@@ -85,11 +85,12 @@
       border: var(--p-border-divider);
       border-bottom: 0;
     }
+    &:hover {
+      background-color: rgba(241, 241, 241, 1);
+    }
 
-    &:hover,
     &:focus,
     &:focus-visible {
-      background-color: rgba(241, 241, 241, 1);
       box-shadow: none;
       border: var(--p-border-divider);
       border-bottom: 0;
