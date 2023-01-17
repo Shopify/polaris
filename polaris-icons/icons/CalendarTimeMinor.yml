@@ -1,0 +1,17 @@
+name: Calendar time
+set: minor
+description: Used to denote the action of opening a date picker with time
+keywords:
+  - calendar
+  - date
+  - time
+  - month
+  - year
+  - day
+authors:
+  - Sai Nihas
+  - Leina Leung
+date_added: 2023-01-12
+date_modified: 2023-01-12
+version: 1
+exclusive_use:
