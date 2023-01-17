@@ -88,7 +88,7 @@ function getPageContent(title: string, readme: MarkdownFile['readme']) {
     '',
     '## Ignore failure',
     '',
-    `In the scenerio where styles are intentionally designed to diverge and it isn't viable to contribute back to Polaris, you can [ignore the failing rule](https://stylelint.io/user-guide/ignore-code/#within-files). Make sure to provide context as to why you are writing custom styles with a disable description.`,
+    `If styles are intentionally designed to diverge from Polaris and it isn't viable to contribute back to the design system, you can [ignore the failing rule](https://stylelint.io/user-guide/ignore-code/#within-files). Make sure to provide context as to why you are writing custom styles with a disable description.`,
     '',
     '```',
     '// stylelint-disable-next-line -- why custom styles are being used instead of Polaris',
