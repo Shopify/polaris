@@ -48,7 +48,6 @@ export async function migrate(
       extensions: 'tsx,ts,jsx,js',
       parser: 'tsx',
       verbose: 2,
-      runInBand: true,
       silent: false,
       stdin: false,
       ...options,

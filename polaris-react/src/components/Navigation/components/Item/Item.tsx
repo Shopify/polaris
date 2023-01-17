@@ -5,6 +5,8 @@ import React, {
   MouseEvent,
   ReactNode,
   useCallback,
+  useRef,
+  useLayoutEffect,
 } from 'react';
 
 import {classNames} from '../../../../utilities/css';
@@ -13,6 +15,7 @@ import {Badge} from '../../../Badge';
 import {Icon, IconProps} from '../../../Icon';
 import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
+import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
@@ -21,6 +24,9 @@ import styles from '../../Navigation.scss';
 import {Tooltip, TooltipProps} from '../../../Tooltip';
 
 import {Secondary} from './components';
+
+export const MAX_SECONDARY_ACTIONS = 2;
+const TOOLTIP_HOVER_DELAY = 1000;
 
 interface ItemURLDetails {
   url?: string;
@@ -40,12 +46,14 @@ export interface SubNavigationItem extends ItemURLDetails {
 }
 
 interface SecondaryAction {
-  url: string;
   accessibilityLabel: string;
   icon: IconProps['source'];
+  url?: string;
   onClick?(): void;
   tooltip?: TooltipProps;
 }
+
+type SecondaryActions = [SecondaryAction] | [SecondaryAction, SecondaryAction];
 
 export interface ItemProps extends ItemURLDetails {
   icon?: IconProps['source'];
@@ -57,7 +65,10 @@ export interface ItemProps extends ItemURLDetails {
   exactMatch?: boolean;
   new?: boolean;
   subNavigationItems?: SubNavigationItem[];
+  /** @deprecated Use secondaryActions instead. */
   secondaryAction?: SecondaryAction;
+  secondaryActions?: SecondaryActions;
+  displayActionsOnHover?: boolean;
   onClick?(): void;
   onToggleExpandedState?(): void;
   expanded?: boolean;
@@ -79,6 +90,8 @@ export function Item({
   label,
   subNavigationItems = [],
   secondaryAction,
+  secondaryActions,
+  displayActionsOnHover,
   disabled,
   onClick,
   accessibilityLabel,
@@ -100,12 +113,21 @@ export function Item({
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
   const [keyFocused, setKeyFocused] = useState(false);
+  const navTextRef = useRef<HTMLSpanElement>(null);
+  const [isTruncated, setIsTruncated] = useState(false);
 
   useEffect(() => {
     if (!isNavigationCollapsed && expanded) {
       onToggleExpandedState?.();
     }
   }, [expanded, isNavigationCollapsed, onToggleExpandedState]);
+
+  useLayoutEffect(() => {
+    const navTextNode = navTextRef.current;
+    if (truncateText && navTextNode) {
+      setIsTruncated(navTextNode.scrollHeight > navTextNode.clientHeight);
+    }
+  }, [truncateText]);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
@@ -161,20 +183,17 @@ export function Item({
       <div className={styles.Badge}>{badgeMarkup}</div>
     );
 
-  const itemContentMarkup = (
-    <>
-      {iconMarkup}
-      <span
-        className={classNames(
-          styles.Text,
-          truncateText && styles['Text-truncated'],
-        )}
-      >
-        {label}
-        {indicatorMarkup}
-      </span>
-      {wrappedBadgeMarkup}
-    </>
+  const itemLabelMarkup = (
+    <span
+      className={classNames(
+        styles.Text,
+        truncateText && styles['Text-truncated'],
+      )}
+      ref={navTextRef}
+    >
+      {label}
+      {indicatorMarkup}
+    </span>
   );
 
   if (url == null) {
@@ -187,45 +206,77 @@ export function Item({
 
     return (
       <li className={styles.ListItem}>
-        <button
-          type="button"
-          className={className}
-          disabled={disabled}
-          aria-disabled={disabled}
-          aria-label={accessibilityLabel}
-          onClick={getClickHandler(onClick)}
-          onKeyUp={handleKeyUp}
-          onBlur={handleBlur}
-        >
-          {itemContentMarkup}
-        </button>
+        <div className={styles.ItemWrapper}>
+          <div
+            className={classNames(
+              styles.ItemInnerWrapper,
+              disabled && styles.ItemInnerDisabled,
+            )}
+          >
+            <button
+              type="button"
+              className={className}
+              disabled={disabled}
+              aria-disabled={disabled}
+              aria-label={accessibilityLabel}
+              onClick={getClickHandler(onClick)}
+              onKeyUp={handleKeyUp}
+              onBlur={handleBlur}
+            >
+              {iconMarkup}
+              {itemLabelMarkup}
+              {wrappedBadgeMarkup}
+            </button>
+          </div>
+        </div>
       </li>
     );
   }
 
-  const secondaryActionLinkMarkup = secondaryAction && (
-    <UnstyledLink
-      external
-      url={secondaryAction.url}
-      className={styles.SecondaryAction}
-      tabIndex={tabIndex}
-      aria-disabled={disabled}
-      aria-label={secondaryAction.accessibilityLabel}
-      onClick={secondaryAction.onClick}
-    >
-      <Icon source={secondaryAction.icon} />
-    </UnstyledLink>
+  if (secondaryAction && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `secondaryAction` prop on the `Navigation.Item` has been deprecated. Use `secondaryActions` instead.',
+    );
+  }
+
+  const actions = secondaryActions || (secondaryAction && [secondaryAction]);
+
+  if (actions && actions.length > MAX_SECONDARY_ACTIONS) {
+    actions.length = MAX_SECONDARY_ACTIONS;
+
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.warn(
+        `secondaryActions must have a maximum of ${MAX_SECONDARY_ACTIONS} actions. Only the first ${MAX_SECONDARY_ACTIONS} actions will be rendered.`,
+      );
+    }
+  }
+
+  const secondaryActionMarkup = actions?.length ? (
+    <span className={styles.SecondaryActions}>
+      {actions.map((action) => (
+        <ItemSecondaryAction
+          key={action.accessibilityLabel}
+          {...action}
+          tabIndex={tabIndex}
+          disabled={disabled}
+        />
+      ))}
+    </span>
+  ) : null;
+
+  const itemContentMarkup = (
+    <>
+      {iconMarkup}
+      {itemLabelMarkup}
+      {secondaryActionMarkup ? null : wrappedBadgeMarkup}
+    </>
   );
 
-  const secondaryActionMarkup =
-    secondaryAction &&
-    (secondaryAction.tooltip ? (
-      <Tooltip {...secondaryAction.tooltip}>
-        {secondaryActionLinkMarkup}
-      </Tooltip>
-    ) : (
-      secondaryActionLinkMarkup
-    ));
+  const outerContentMarkup = (
+    <>{secondaryActionMarkup ? wrappedBadgeMarkup : null}</>
+  );
 
   const matchState = matchStateForItem(
     {url, matches, exactMatch, matchPaths, excludePaths},
@@ -309,8 +360,43 @@ export function Item({
 
   const className = classNames(
     styles.ListItem,
-    secondaryAction && styles['ListItem-hasAction'],
+    Boolean(actions && actions.length) && styles['ListItem-hasAction'],
   );
+
+  const itemLinkMarkup = () => {
+    const linkMarkup = (
+      <UnstyledLink
+        url={url}
+        className={itemClassName}
+        external={external}
+        tabIndex={tabIndex}
+        aria-disabled={disabled}
+        aria-label={accessibilityLabel}
+        onClick={getClickHandler(onClick)}
+        onKeyUp={handleKeyUp}
+        onBlur={handleBlur}
+        {...normalizeAriaAttributes(
+          secondaryNavigationId,
+          subNavigationItems.length > 0,
+          showExpanded,
+        )}
+      >
+        {itemContentMarkup}
+      </UnstyledLink>
+    );
+
+    return isTruncated ? (
+      <Tooltip
+        hoverDelay={TOOLTIP_HOVER_DELAY}
+        content={label}
+        preferredPosition="above"
+      >
+        {linkMarkup}
+      </Tooltip>
+    ) : (
+      linkMarkup
+    );
+  };
 
   return (
     <li className={className}>
@@ -318,28 +404,26 @@ export function Item({
         <div
           className={classNames(
             styles.ItemInnerWrapper,
-            selected && canBeActive && styles['ItemInnerWrapper-Selected'],
+            selected && canBeActive && styles['ItemInnerWrapper-selected'],
+            displayActionsOnHover &&
+              styles['ItemInnerWrapper-display-actions-on-hover'],
+            disabled && styles.ItemInnerDisabled,
           )}
         >
-          <UnstyledLink
-            url={url}
-            className={itemClassName}
-            external={external}
-            tabIndex={tabIndex}
-            aria-disabled={disabled}
-            aria-label={accessibilityLabel}
-            onClick={getClickHandler(onClick)}
-            onKeyUp={handleKeyUp}
-            onBlur={handleBlur}
-            {...normalizeAriaAttributes(
-              secondaryNavigationId,
-              subNavigationItems.length > 0,
-              showExpanded,
-            )}
-          >
-            {itemContentMarkup}
-          </UnstyledLink>
-          {secondaryActionMarkup}
+          {displayActionsOnHover &&
+          secondaryActionMarkup &&
+          wrappedBadgeMarkup ? (
+            <span className={styles.ItemWithFloatingActions}>
+              {itemLinkMarkup()}
+              {secondaryActionMarkup}
+            </span>
+          ) : (
+            <>
+              {itemLinkMarkup()}
+              {secondaryActionMarkup}
+            </>
+          )}
+          {outerContentMarkup}
         </div>
       </div>
       {secondaryNavigationMarkup}
@@ -374,6 +458,47 @@ export function Item({
       }
     };
   }
+}
+
+interface ItemSecondaryActionProps extends SecondaryAction {
+  tabIndex: number;
+  disabled?: boolean;
+}
+
+export function ItemSecondaryAction({
+  url,
+  icon,
+  accessibilityLabel,
+  tooltip,
+  onClick,
+  disabled,
+  tabIndex,
+}: ItemSecondaryActionProps) {
+  const markup = url ? (
+    <UnstyledLink
+      external
+      url={url}
+      className={styles.SecondaryAction}
+      tabIndex={tabIndex}
+      aria-disabled={disabled}
+      aria-label={accessibilityLabel}
+      onClick={onClick}
+    >
+      <Icon source={icon} />
+    </UnstyledLink>
+  ) : (
+    <UnstyledButton
+      className={styles.SecondaryAction}
+      tabIndex={tabIndex}
+      disabled={disabled}
+      accessibilityLabel={accessibilityLabel}
+      onClick={onClick}
+    >
+      <Icon source={icon} />
+    </UnstyledButton>
+  );
+
+  return tooltip ? <Tooltip {...tooltip}> {markup} </Tooltip> : markup;
 }
 
 export function isNavigationItemActive(

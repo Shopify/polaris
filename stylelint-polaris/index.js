@@ -278,7 +278,7 @@ const stylelintPolarisCoverageOptions = {
         /\$border-width-data/,
         /\$borders-data/,
         // Legacy custom properties
-        /--p-border-radius-base/,
+        // /--p-border-radius-base/,
         /--p-border-radius-wide/,
         /--p-border-radius-full/,
         /--p-control-border-width/,

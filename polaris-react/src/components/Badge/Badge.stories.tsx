@@ -34,6 +34,10 @@ export function Critical() {
   return <Badge status="critical">Action required</Badge>;
 }
 
+export function New() {
+  return <Badge status="new">Fulfilled</Badge>;
+}
+
 export function Incomplete() {
   return (
     <Badge progress="incomplete" status="attention">
