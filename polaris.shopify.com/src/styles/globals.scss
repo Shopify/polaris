@@ -365,3 +365,38 @@ button {
     }
   }
 }
+
+.components-grid {
+  display: grid;
+  gap: var(--p-space-4);
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 490px) {
+  .components-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1040px) {
+  .components-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.tip-banner {
+  padding: var(--p-space-4) var(--p-space-6);
+  background: var(--p-surface-highlight-subdued);
+  border-radius: var(--p-border-radius-2);
+  color: #00565e !important;
+}
+
+.tip-banner__header {
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-2);
+}
+
+.tip-banner__header h4 {
+  margin: 0 !important;
+}

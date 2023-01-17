@@ -8,15 +8,7 @@ All layouts and spacing should be handled using layout primitives. This keeps ou
 
 Polaris provides a set of flexible layout primitives: `Box`, `Card`, `Inline`, `Stack`, `Columns`, `Tiles`, and `Bleed`. When paired together, the primitives can be used to create a wide range of layouts that vary in complexity. Understanding these components is an essential part of building with Polaris.
 
-<style>
-.grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(3, 1fr);
-}
-</style>
-
-<div class="grid">
+<div class="components-grid">
   <div>
     <img src="/images/components/layout-and-structure/box.png" alt="" />
     <p>Box</p>
@@ -44,6 +36,12 @@ Polaris provides a set of flexible layout primitives: `Box`, `Card`, `Inline`, `
   </div>
 </div>
 
+<!-- tip -->
+
+Layout primitives allow you to specify values for different screen sizes. Check out the layout primitives for information on how responsive props apply to each component.
+
+<!-- end -->
+
 #### Responsive design
 
 The layout primitives allow you to specify values for different screen sizes.
@@ -54,7 +52,7 @@ Check out the layout primitives for information on how responsive props apply to
 
 Layout compositions are built with layout primitives. Use these components to build common layouts in the admin with the help of sensible defaults.
 
-<div class="grid">
+<div class="components-grid">
   <div>
     <img src="/images/components/layout-and-structure/card.png" alt="" />
     <p>Card</p>
@@ -86,8 +84,12 @@ Layout compositions are built with layout primitives. Use these components to bu
 
 **Layout patterns** are designed with merchant goals in mind. If we understand what the merchant is trying to do, we can arrange content in a way that helps them do that. Are they comparing sets of data to learn about their store’s performance? Or editing the details of a product? Each experience may need a different layout.
 
+<!-- TODO: Get link -->
+
 [Learn about layout patterns ->]()
 
 **Space** is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping the content become more useful and understandable.
+
+<!-- TODO: Get link -->
 
 [Learn about designing with space ->]()
