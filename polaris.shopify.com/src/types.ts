@@ -155,4 +155,5 @@ export interface NavItem {
   newSection?: true;
   status?: Status;
   children?: NavJSON;
+  expanded?: boolean;
 }

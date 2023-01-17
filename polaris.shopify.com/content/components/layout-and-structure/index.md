@@ -2,6 +2,7 @@
 title: Layout and structure
 description: >-
   Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. Learn how to use Polaris layout primitives to build a wide range of layouts.
+expanded: true
 ---
 
 All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
