@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.1
+
+### Patch Changes
+
+- [`406269f`](https://github.com/Shopify/polaris/commit/406269f9b0fd7f3e008b930eb383f607efcc2a46) Thanks [@ninariccimarie](https://github.com/ninariccimarie)! - update index table styles
+
 ## 12.0.0
 
 ### Major Changes
