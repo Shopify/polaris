@@ -126,16 +126,6 @@ function main() {
 }
 
 function getContent(ruleName, category, ruleContent) {
-  const resourceLink = getCategoryResourceLink(category);
-  const categoryIs = `${category} ${category.slice(-1) === 's' ? 'are' : 'is'}`;
-  const resourceText =
-    resourceLink && resourceLink !== ''
-      ? [
-          '',
-          `Use ${resourceLink} instead of custom styles so that ${categoryIs} consistent across the Admin. This helps merchants have a coherent user experience and also ensures that ${categoryIs} in sync with updates from the design system.`,
-        ]
-      : [];
-
   const template = [
     '---',
     `title: ${ruleName}`,
@@ -145,46 +135,10 @@ function getContent(ruleName, category, ruleContent) {
     `  - ${category}`,
     `  - ${category} rules`,
     '---',
-    ...resourceText,
     ...ruleContent,
-    '## Contribute',
-    '',
-    `Have you found that merchants benefit from styles or components that aren't in Polaris? We'd love to learn more. You can jumpstart a contribution to Polaris in GitHub by:`,
-    '',
-    '- Starting a [discussion](https://github.com/Shopify/polaris/discussions/6750) to collaborate with the community to find a solution',
-    '- Submitting a [feature proposal issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) to share context on your suggestion',
-    '- Drafting a [pull request](https://github.com/Shopify/polaris/pulls) with your proposed improvement or addition',
-    '',
-    '## Ignore failure',
-    '',
-    `In the scenerio where styles are intentionally designed to diverge and it isn't viable to contribute back to Polaris, you can [ignore the failing rule](https://stylelint.io/user-guide/ignore-code/#within-files). Make sure to provide context as to why you are writing custom styles with a disable description.`,
-    '',
-    '```',
-    '// stylelint-disable-next-line -- why custom styles are being used instead of Polaris',
-    '```',
-    '',
   ];
 
   return template.join('\n');
-}
-
-function getCategoryResourceLink(category) {
-  const resourceLinks = {
-    conventions: '',
-    colors: 'Polaris [color tokens](/tokens/colors)',
-    motion: 'Polaris [motion tokens](/tokens/motion)',
-    typography:
-      'the [text component](/components/text) or [font tokens](/tokens/font)',
-    shape: 'Polaris [shape tokens](/tokens/shape)',
-    spacing: 'Polaris [spacking tokens](/tokens/spacing)',
-    depth: 'Polaris [depth tokens](/tokens/depth)',
-    'media queries':
-      'Polaris [breakpoint sass variables](/tokens/breakpoints#sass-variables)',
-    'z-index': 'Polaris [z-index tokens](/tokens/z-index)',
-    layout: 'Polaris [layout components](/components)',
-    legacy: 'Polaris [components](/components) or [tokens](/tokens)',
-  };
-  return resourceLinks[category];
 }
 
 function getIndexContent() {

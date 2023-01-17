@@ -85,6 +85,7 @@ const catchAllTemplateExcludeList = [
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
+    !path.includes('/tools/stylelint-polaris/rules/') &&
     !catchAllTemplateExcludeList.includes(path)
   );
 }

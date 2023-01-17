@@ -72,10 +72,6 @@ keywords:
 - [layout/property-disallowed-list](/tools/stylelint-polaris/rules/layout-property-disallowed-list): Disallows declarations of layout properties
 - [layout/global-disallowed-list](/tools/stylelint-polaris/rules/layout-global-disallowed-list): Disallows use of legacy custom properties and Sass mixin map data
 
-## Conventions
-
-- [conventions/custom-property-allowed-list](/tools/stylelint-polaris/rules/conventions-custom-property-allowed-list): Allows definition of custom properties not using Polaris prefixes, flags declaration property values that are not valid Polaris tokens, flags declaration property values using private tokens
-
 ## Legacy
 
 - [legacy/at-rule-disallowed-list](/tools/stylelint-polaris/rules/legacy-at-rule-disallowed-list): Disallows use pf legacy Sass mixins
