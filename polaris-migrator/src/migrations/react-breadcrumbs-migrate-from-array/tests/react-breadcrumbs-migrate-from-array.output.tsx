@@ -8,7 +8,14 @@ export function App() {
       <Page breadcrumbs={{url: '/testing', content: 'Breadcrumb'}}>
         testing
       </Page>
-      <Page breadcrumbs={[]}>testing</Page>
+      <Page
+        breadcrumbs={
+          /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+          []
+        }
+      >
+        testing
+      </Page>
     </>
   );
 }
