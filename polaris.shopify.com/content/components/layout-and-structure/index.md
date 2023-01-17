@@ -3,6 +3,7 @@ title: Layout and structure
 description: >-
   Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. Learn how to use Polaris layout primitives to build a wide range of layouts.
 expanded: true
+order: 2
 ---
 
 All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
@@ -11,27 +12,27 @@ Polaris provides a set of flexible layout primitives: `Box`, `Card`, `Inline`, `
 
 <div class="components-grid">
   <div>
-    <img src="/images/components/layout-and-structure/box.png" alt="" />
+    <img src="/images/components/layout-and-structure/box-preview.png" alt="" />
     <p>Box</p>
     <p>Use for custom layouts and containers.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/stack.png" alt="" />
+    <img src="/images/components/layout-and-structure/stack-preview.png" alt="" />
     <p>Stack</p>
     <p>Use to display children vertically. Based on css flexbox.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/inline.png" alt="" />
+    <img src="/images/components/layout-and-structure/inline-preview.png" alt="" />
     <p>Inline</p>
     <p>Use to display children horizontally in a row. Based on css flexbox.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/columns.png" alt="" />
+    <img src="/images/components/layout-and-structure/columns-preview.png" alt="" />
     <p>Columns</p>
     <p>Use to layout content horizontally across a specified number of columns. Based on css grid.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/bleed.png" alt="" />
+    <img src="/images/components/layout-and-structure/bleed-preview.png" alt="" />
     <p>Bleed</p>
     <p>Use to apply negative margin to children to pull them into the surrounding layout.</p>
   </div>
@@ -55,27 +56,27 @@ Layout compositions are built with layout primitives. Use these components to bu
 
 <div class="components-grid">
   <div>
-    <img src="/images/components/layout-and-structure/card.png" alt="" />
+    <img src="/images/components/layout-and-structure/card-preview.png" alt="" />
     <p>Card</p>
     <p>Use to display items in a container with pre-defined styles applied.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/callout-card.png" alt="" />
+    <img src="/images/components/layout-and-structure/callout-card-preview.png" alt="" />
     <p>Callout card</p>
     <p>Use to encourage merchants to take an action related to a new feature or opportunity.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/media-card.png" alt="" />
+    <img src="/images/components/layout-and-structure/media-card-preview.png" alt="" />
     <p>Media card</p>
     <p>Use to present visual information to merchants in a consistent way.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/empty-state.png" alt="" />
+    <img src="/images/components/layout-and-structure/empty-state-preview.png" alt="" />
     <p>Empty state</p>
     <p>Use to provide guidance to merchants when a list, table, or chart has no items to show.</p>
   </div>
   <div>
-    <img src="/images/components/layout-and-structure/page.png" alt="" />
+    <img src="/images/components/layout-and-structure/page-preview.png" alt="" />
     <p>Page</p>
     <p>Use to build the outer wrapper of a page, including the page title and associated actions.</p>
   </div>
