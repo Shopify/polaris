@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState, useRef} from 'react';
 import {Tab} from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -362,6 +362,7 @@ export default function PatternsDatePickingPage() {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
   const [showCode, toggleCode] = useState(false);
+  const tabListRef = useRef<HTMLDivElement | null>(null);
   const onTabChange = (index: number) => {
     setExampleIndex(index);
     replace(
@@ -426,10 +427,20 @@ export default function PatternsDatePickingPage() {
             onChange={onTabChange}
           >
             <div className={styles.TabGroup} data-selected={exampleIndex}>
-              <Tab.List>
+              <Tab.List ref={tabListRef}>
                 <div className={styles.ExamplesList} id="examples">
                   {pattern.variants.map((variant) => (
-                    <Tab key={`${variant.slug}-tab`}>
+                    <Tab
+                      key={`${variant.slug}-tab`}
+                      onFocus={() => {
+                        if (!tabListRef.current) return;
+                        tabListRef.current.scrollIntoView({
+                          block: 'end',
+                          inline: 'nearest',
+                          behavior: 'smooth',
+                        });
+                      }}
+                    >
                       <span>{variant.title}</span>
                     </Tab>
                   ))}
