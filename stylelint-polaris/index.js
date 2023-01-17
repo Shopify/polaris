@@ -218,13 +218,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   spacing: [
     {
-      'function-disallowed-list': [
-        'control-vertical-padding',
-        'em',
-        'px',
-        'rem',
-        'spacing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^padding/': ['px', 'rem', 'em'],

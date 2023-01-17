@@ -59,7 +59,10 @@ module.exports = stylelint.createPlugin(
         stylelintRules,
       )) {
         coverageRules.push({
-          ruleName: `polaris/${category}/${stylelintRuleName}`,
+          ruleName: `polaris/${category}/${stylelintRuleName.replace(
+            'polaris/',
+            '',
+          )}`,
           stylelintRuleName,
           ruleSettings: stylelintRuleSettings,
           severity: stylelintRuleSettings?.[1]?.severity,
