@@ -11,13 +11,11 @@ import styles from './Breadcrumbs.scss';
 
 export interface BreadcrumbsProps {
   /** Collection of breadcrumbs */
-  breadcrumbs: (CallbackAction | LinkAction) | (CallbackAction | LinkAction)[];
+  breadcrumbs: (CallbackAction | LinkAction)[];
 }
 
 export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
-  const breadcrumb = Array.isArray(breadcrumbs)
-    ? breadcrumbs[breadcrumbs.length - 1]
-    : breadcrumbs;
+  const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
   if (breadcrumb == null) {
     return null;
   }
