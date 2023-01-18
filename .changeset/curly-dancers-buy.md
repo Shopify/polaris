@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-icons': major
+'@shopify/polaris-icons': minor
 ---
 
-added file minor icon
+Added file minor icon
