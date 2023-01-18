@@ -435,5 +435,6 @@ export {
 export {
   SELECT_ALL_ITEMS as INDEX_TABLE_SELECT_ALL_ITEMS,
   SelectionType as IndexTableSelectionType,
+  useIndexSelectionChange as useIndexTableIndexSelectionChange,
 } from './utilities/index-provider';
 export {useBreakpoints} from './utilities/breakpoints';
