@@ -334,7 +334,6 @@ export default function PatternsDatePickingPage() {
     // However this is supported by the spec
     // So we exclude this case in our check.
     if (query.tab && typeof query.tab === 'string' && isReady) {
-      console.log(query.tab);
       const index = pattern.variants.findIndex(
         (variant) => variant.slug === query.tab,
       );

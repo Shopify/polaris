@@ -30,8 +30,8 @@ const title = 'App settings';
 const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/7852`;
 const pattern: Pattern = {
   index: 0,
-  title: 'App settings',
-  slug: 'app-settings',
+  title: 'App settings layout',
+  slug: 'app-settings-layout',
   description: 'This enables merchants to select a date range.',
   relatedResources: `* See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
 * See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
@@ -102,7 +102,7 @@ export default function PatternsDatePickingPage() {
     <>
       <PageMeta title={title} description={description} />
 
-      <Page showTOC={false}>
+      <Page showTOC>
         <Stack gap="4" className={styles.Header}>
           <Heading as="h1">
             <Row wrap gap="2" className={styles.Heading}>
@@ -119,7 +119,9 @@ export default function PatternsDatePickingPage() {
         <Stack gap="4">
           <Stack gap="8">
             <Stack as="section" gap="4" className={styles.MerchantGoal}>
-              <Heading as="h2">How it helps merchants</Heading>
+              <Heading as="h2" id="how-it-helps-merchants">
+                How it helps merchants
+              </Heading>
               <div className={styles.ImageWrapper}>
                 <Image
                   alt=""
@@ -163,7 +165,9 @@ export default function PatternsDatePickingPage() {
               </TableContainer>
             </Stack>
             <Stack as="section" gap="4">
-              <Heading as="h2">Using this pattern</Heading>
+              <Heading as="h2" id="using-this-pattern">
+                Using this pattern
+              </Heading>
               <PatternsExample
                 example={pattern.example}
                 patternName={`${title} > ${pattern.title}`}
@@ -177,7 +181,9 @@ export default function PatternsDatePickingPage() {
             </Stack>
 
             <Stack as="section" gap="4">
-              <Heading as="h3">Useful to know</Heading>
+              <Heading as="h3" id="useful-to-know">
+                Useful to know
+              </Heading>
               <Stack as="ul" className={styles.UsageGuidelinesWrapper} gap="4">
                 <Row as="li" className={styles.UsageGuidelinesEl} gap="4">
                   <div className={styles.UsageGuidelineTxt}>
