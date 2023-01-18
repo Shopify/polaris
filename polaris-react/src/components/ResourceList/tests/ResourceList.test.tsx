@@ -260,6 +260,22 @@ describe('<ResourceList />', () => {
       expect(headerTitleWrapper).toContainReactText('Loading items');
     });
 
+    it('prints the headerContent when provided', () => {
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsNoID}
+          renderItem={renderItem}
+          headerContent="Customer data shown"
+          showHeader
+        />,
+      );
+
+      const headerTitleWrapper = resourceList.find('div', {
+        className: styles.HeaderTitleWrapper,
+      });
+      expect(headerTitleWrapper).toContainReactText('Customer data shown');
+    });
+
     it('prints number of items shown when totalItemsCount is not provided', () => {
       const resourceList = mountWithApp(
         <ResourceList

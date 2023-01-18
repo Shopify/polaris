@@ -453,6 +453,51 @@ export function WithTotalCount() {
   );
 }
 
+export function WithHeaderContent() {
+  return (
+    <Card>
+      <ResourceList
+        headerContent="Customer details shown below"
+        items={[
+          {
+            id: 105,
+            url: 'customers/341',
+            name: 'Mae Jemison',
+            location: 'Decatur, USA',
+          },
+          {
+            id: 205,
+            url: 'customers/256',
+            name: 'Ellen Ochoa',
+            location: 'Los Angeles, USA',
+          },
+        ]}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="medium" name={name} />;
+
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+        showHeader
+      />
+    </Card>
+  );
+}
+
 export function WithSorting() {
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
 
