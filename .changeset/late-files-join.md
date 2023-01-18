@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Add optional zIndexOverride prop to the Tooltip
+Added an optional `zIndexOverride` prop to `Tooltip`
