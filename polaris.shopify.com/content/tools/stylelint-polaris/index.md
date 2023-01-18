@@ -72,7 +72,7 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 
 ## Rules
 
-There are over 40 rules configured in Stylelint Polaris to help you avoid errors and follow stylistic and non-stylistic conventions while building for the Shopify admin.
+There are over 40 rules configured in Stylelint Polaris to help you avoid errors and follow stylistic and non-stylistic conventions while building for the Shopify admin. These rules help us measure the Polaris design system's coverage in the Shopify admin code base using the following categories:
 
 - [Colors](/tools/stylelint-polaris/rules#colors)
 - [Conventions](/tools/stylelint-polaris/rules#conventions)
