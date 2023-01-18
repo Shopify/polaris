@@ -148,7 +148,8 @@
 }
 .UsageGuidelinesGrid {
   display: grid;
-  gap: var(--p-space-4);
+  column-gap: var(--p-space-4);
+  row-gap: var(--p-space-8);
 
   --txt-column-width: 35%;
   /*
@@ -189,6 +190,13 @@
     > img {
       object-fit: cover;
     }
+  }
+}
+
+.UsefulToKnow {
+  .ImageWrapper {
+    border-radius: var(--border-radius-400);
+    border: 1px solid #c9cccf;
   }
 }
 

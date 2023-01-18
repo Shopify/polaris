@@ -426,11 +426,15 @@ export default function PatternsDatePickingPage() {
                         gap="4"
                         className={styles.MerchantGoal}
                       >
-                        <Heading as="h2">How it helps merchants</Heading>
+                        <Heading as="h2" id="how-it-helps-merchants">
+                          How it helps merchants
+                        </Heading>
                         <HowItHelps>{variant.howItHelps}</HowItHelps>
                       </Stack>
                       <Stack as="section" gap="4">
-                        <Heading as="h2">Using this pattern</Heading>
+                        <Heading as="h2" id="using-this-pattern">
+                          Using this pattern
+                        </Heading>
                         <PatternsExample
                           example={variant.example}
                           showCode={showCode}
@@ -447,8 +451,16 @@ export default function PatternsDatePickingPage() {
                           ]}
                         />
                       </Stack>
-                      <Stack as="section" gap="4">
-                        <Heading as="h3" className={styles.UsefulHeading}>
+                      <Stack
+                        as="section"
+                        gap="4"
+                        className={styles.UsefulToKnow}
+                      >
+                        <Heading
+                          as="h3"
+                          className={styles.UsefulHeading}
+                          id="useful-to-know"
+                        >
                           Useful to know
                         </Heading>
                         <UsefulToKnow>{variant.usefulToKnow}</UsefulToKnow>
