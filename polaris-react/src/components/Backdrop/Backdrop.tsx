@@ -1,4 +1,4 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React from 'react';
 
 import {classNames} from '../../utilities/css';
 import {ScrollLock} from '../ScrollLock';
@@ -10,31 +10,16 @@ export interface BackdropProps {
   transparent?: boolean;
   onClick?(): void;
   onTouchStart?(): void;
-  setClosing?: Dispatch<SetStateAction<boolean>>;
 }
 
 export function Backdrop(props: BackdropProps) {
-  const {onClick, onTouchStart, belowNavigation, transparent, setClosing} =
-    props;
+  const {onClick, onTouchStart, belowNavigation, transparent} = props;
 
   const className = classNames(
     styles.Backdrop,
     belowNavigation && styles.belowNavigation,
     transparent && styles.transparent,
   );
-
-  const handleMouseDown = () => {
-    if (setClosing) {
-      setClosing(true);
-    }
-  };
-
-  const handleMouseUp = () => {
-    if (setClosing && onClick) {
-      setClosing(false);
-      onClick();
-    }
-  };
 
   return (
     <>
@@ -43,8 +28,6 @@ export function Backdrop(props: BackdropProps) {
         className={className}
         onClick={onClick}
         onTouchStart={onTouchStart}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
       />
     </>
   );
