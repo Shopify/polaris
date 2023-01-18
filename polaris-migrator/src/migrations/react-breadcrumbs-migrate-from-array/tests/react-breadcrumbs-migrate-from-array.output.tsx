@@ -2,6 +2,7 @@ import React from 'react';
 import {Page} from '@shopify/polaris';
 
 export function App() {
+  const breadcrumbs = [{url: '/testing', content: 'Breadcrumb'}];
   return (
     <>
       <Page breadcrumbs={{url: '/testing', content: 'Breadcrumb'}}>hello</Page>
@@ -12,6 +13,8 @@ export function App() {
         testing
       </Page>
       <Page>testing</Page>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. In this case, you will need to update the breadcrumbs variable to be a single object instead of an array as arrays have been deprecated. */}
+      <Page breadcrumbs={breadcrumbs}>testing</Page>
     </>
   );
 }
