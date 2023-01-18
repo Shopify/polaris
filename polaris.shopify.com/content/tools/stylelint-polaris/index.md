@@ -74,7 +74,17 @@ npx @shopify/polaris-migrator styles-insert-stylelint-disable <path>
 
 There are over 40 rules configured in Stylelint Polaris to help you avoid errors and follow stylistic and non-stylistic conventions while building for the Shopify admin.
 
-[List of Stylelint Polaris rules](/tools/stylelint-polaris/rules)
+- [Colors](/tools/stylelint-polaris/rules#colors)
+- [Conventions](/tools/stylelint-polaris/rules#conventions)
+- [Depth](/tools/stylelint-polaris/rules#depth)
+- [Layout](/tools/stylelint-polaris/rules#layout)
+- [Legacy](/tools/stylelint-polaris/rules#legacy)
+- [Media queries](/tools/stylelint-polaris/rules#media-queries)
+- [Motion](/tools/stylelint-polaris/rules#motion)
+- [Shape](/tools/stylelint-polaris/rules#shape)
+- [Spacing](/tools/stylelint-polaris/rules#spacing)
+- [Typography](/tools/stylelint-polaris/rules#typography)
+- [Z-index](/tools/stylelint-polaris/rules#z-index)
 
 ## Development
 
