@@ -109,6 +109,16 @@ describe('<Breadcrumbs />', () => {
     });
   });
 
+  it('renders when not passed an array', () => {
+    const breadcrumb: LinkAction = {
+      content: 'Products',
+      url: 'https://www.shopify.com',
+    };
+    const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={breadcrumb} />);
+
+    expect(wrapper.html()).not.toBe('');
+  });
+
   it('renders nothing when empty', () => {
     const wrapper = mountWithApp(<Breadcrumbs breadcrumbs={[]} />);
 

@@ -2,7 +2,6 @@ import React, {
   forwardRef,
   useRef,
   useImperativeHandle,
-  useState,
   useContext,
 } from 'react';
 import {MinusMinor, TickSmallMinor} from '@shopify/polaris-icons';
@@ -13,7 +12,7 @@ import {useUniqueId} from '../../utilities/unique-id';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
-import {Error, CheckboxHandles, Key} from '../../types';
+import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
@@ -76,7 +75,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       setTrue: handleMouseOver,
       setFalse: handleMouseOut,
     } = useToggle(false);
-    const [keyFocused, setKeyFocused] = useState(false);
     const isWithinListbox = useContext(WithinListboxContext);
 
     useImperativeHandle(ref, () => ({
@@ -89,15 +87,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
 
     const handleBlur = () => {
       onBlur && onBlur();
-      setKeyFocused(false);
-    };
-
-    const handleKeyUp = (event: React.KeyboardEvent) => {
-      const {keyCode} = event;
-
-      if (keyCode === Key.Space || keyCode === Key.Tab) {
-        !keyFocused && setKeyFocused(true);
-      }
     };
 
     const handleOnClick = () => {
@@ -142,7 +131,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
-      keyFocused && styles.keyFocused,
     );
 
     return (
@@ -170,7 +158,6 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
             onChange={noop}
             onClick={handleOnClick}
             onFocus={onFocus}
-            onKeyUp={handleKeyUp}
             aria-invalid={error != null}
             aria-controls={ariaControls}
             aria-describedby={ariaDescribedBy}

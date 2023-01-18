@@ -62,6 +62,24 @@ describe('<Header />', () => {
         breadcrumbs,
       });
     });
+
+    it('renders breadcrumb markup if not an array', () => {
+      const breadcrumb: LinkAction = {
+        content: 'Products',
+        url: 'https://www.google.com',
+      };
+      const header = mountWithApp(
+        <Header {...mockProps} breadcrumbs={breadcrumb} />,
+      );
+      expect(header).toContainReactComponent(Breadcrumbs, {
+        breadcrumbs: breadcrumb,
+      });
+    });
+
+    it('does not render breadcrumb markup if no breadcrumbs', () => {
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).not.toContainReactComponent(Breadcrumbs);
+    });
   });
 
   describe('primaryAction', () => {
