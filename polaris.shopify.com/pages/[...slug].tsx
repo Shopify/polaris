@@ -77,6 +77,7 @@ const catchAllTemplateExcludeList = [
   '/design',
   '/content',
   '/patterns',
+  '/tools',
   '/tokens',
   '/sandbox',
 ];
@@ -84,6 +85,7 @@ const catchAllTemplateExcludeList = [
 function fileShouldNotBeRenderedWithCatchAllTemplate(path: string): boolean {
   return (
     !path.startsWith('/components') &&
+    !path.includes('/tools/stylelint-polaris/rules') &&
     !catchAllTemplateExcludeList.includes(path)
   );
 }
@@ -92,6 +94,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const globPath = [
     path.resolve(process.cwd(), 'content/*.md'),
     path.resolve(process.cwd(), 'content/**/*.md'),
+    path.resolve(process.cwd(), 'content/**/**/*.md'),
   ];
   const paths = globby
     .sync(globPath)
