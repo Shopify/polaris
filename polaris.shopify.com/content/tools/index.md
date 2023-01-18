@@ -1,6 +1,6 @@
 ---
 title: Tools
-description: Extensions, plugins, and other tools to help you use Polaris to build Admin experiences.
+description: Extensions, plugins, and other tools to help build with Polaris.
 icon: ToolsMajor
 order: 11
 ---

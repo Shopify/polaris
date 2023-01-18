@@ -1,6 +1,6 @@
 ---
 title: spacing/global-disallowed-list
-description: Disallows use of legacy spacing custom properties and Sass mixin data
+description: Disallows use of legacy spacing custom properties and Sass mixin data.
 keywords:
   - stylelint
   - spacing

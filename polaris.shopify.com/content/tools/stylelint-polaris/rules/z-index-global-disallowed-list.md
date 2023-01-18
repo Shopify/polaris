@@ -1,6 +1,6 @@
 ---
 title: z-index/global-disallowed-list
-description: Disallows the use of legacy z-index custom properties and Sass mixin data
+description: Disallows the use of legacy z-index custom properties and Sass mixin data.
 keywords:
   - stylelint
   - z-index

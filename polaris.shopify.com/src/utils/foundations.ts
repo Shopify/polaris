@@ -35,12 +35,20 @@ export const getStaticPropsForFoundations = (category: string) => {
         if (fs.existsSync(markdownFilePath)) {
           const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
           const {frontMatter, readme}: MarkdownFile = parseMarkdown(markdown);
-          const {title, description, order, icon} = frontMatter;
+          const {
+            title,
+            description,
+            order,
+            icon,
+            url: frontMatterUrl,
+          } = frontMatter;
 
-          const url = markdownFilePath
-            .replace(`${process.cwd()}/content`, '')
-            .replace('/index', '')
-            .replace(/\.md$/, '');
+          const url =
+            frontMatterUrl ??
+            markdownFilePath
+              .replace(`${process.cwd()}/content`, '')
+              .replace('/index', '')
+              .replace(/\.md$/, '');
 
           const headings = (readme.match(/\n## [^\n]+/gi) || []).map(
             (heading) => heading.replace(/^\n## /, '').trim(),

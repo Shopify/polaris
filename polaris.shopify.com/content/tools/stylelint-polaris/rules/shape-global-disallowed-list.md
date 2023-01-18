@@ -1,6 +1,6 @@
 ---
 title: shape/global-disallowed-list
-description: Disallows use of legacy Polaris shape tokens and mixin map data
+description: Disallows use of legacy Polaris shape tokens and mixin map data.
 keywords:
   - stylelint
   - shape

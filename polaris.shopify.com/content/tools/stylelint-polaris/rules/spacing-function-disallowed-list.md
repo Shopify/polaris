@@ -1,6 +1,6 @@
 ---
 title: spacing/function-disallowed-list
-description: Disallows use of legacy Sass spacing functions
+description: Disallows use of legacy Sass spacing functions.
 keywords:
   - stylelint
   - spacing

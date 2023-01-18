@@ -1,6 +1,6 @@
 ---
 title: legacy/global-disallowed-list
-description: Disallows use of legacy custom properties and Sass mixin map data
+description: Disallows use of legacy custom properties and Sass mixin map data.
 keywords:
   - stylelint
   - legacy

@@ -1,6 +1,6 @@
 ---
 title: shape/function-disallowed-list
-description: Disallows use of legacy Sass border functions
+description: Disallows use of legacy Sass border functions.
 keywords:
   - stylelint
   - shape

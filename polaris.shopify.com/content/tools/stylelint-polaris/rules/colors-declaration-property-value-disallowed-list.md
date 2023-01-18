@@ -1,6 +1,6 @@
 ---
 title: colors/declaration-property-value-disallowed-list
-description: Disallows custom decimal opacity values
+description: Disallows custom decimal opacity values.
 keywords:
   - stylelint
   - colors

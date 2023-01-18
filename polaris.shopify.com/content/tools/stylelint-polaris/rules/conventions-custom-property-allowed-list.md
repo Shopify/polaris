@@ -1,6 +1,6 @@
 ---
 title: conventions/custom-property-allowed-list
-description: Allows definition of custom properties not using Polaris prefixes, flags declaration property values that are not valid Polaris tokens, flags declaration property values using private tokens
+description: Allows definition of custom properties not using Polaris prefixes, flags declaration property values that are not valid Polaris tokens, flags declaration property values using private tokens.
 keywords:
   - stylelint
   - conventions

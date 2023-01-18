@@ -1,6 +1,6 @@
 ---
 title: z-index/declaration-property-value-allowed-list
-description: Disallows declaration of `z-index` values that are not Polaris z-index tokens
+description: Disallows declaration of `z-index` values that are not Polaris z-index tokens.
 keywords:
   - stylelint
   - z-index

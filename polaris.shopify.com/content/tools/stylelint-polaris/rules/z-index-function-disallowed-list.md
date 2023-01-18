@@ -1,6 +1,6 @@
 ---
 title: z-index/function-disallowed-list
-description: Disallows use of the legacy z-index Sass function
+description: Disallows use of the legacy z-index Sass function.
 keywords:
   - stylelint
   - z-index

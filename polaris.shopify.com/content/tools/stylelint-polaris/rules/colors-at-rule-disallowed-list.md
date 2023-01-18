@@ -1,6 +1,6 @@
 ---
 title: colors/at-rule-disallowed-list
-description: Disallows use of legacy color mixins
+description: Disallows use of legacy color mixins.
 keywords:
   - stylelint
   - colors

@@ -1,6 +1,6 @@
 ---
 title: media-queries/at-rule-disallowed-list
-description: Disallows use of legacy breakpoint Sass mixins
+description: Disallows use of legacy breakpoint Sass mixins.
 keywords:
   - stylelint
   - media queries
