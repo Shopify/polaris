@@ -3,6 +3,7 @@ import {Page} from '@shopify/polaris';
 
 export function App() {
   const breadcrumbs = [{url: '/testing', content: 'Breadcrumb'}];
+  const getBreadcrumbs = () => [{url: '/testing', content: 'Breadcrumb'}];
   return (
     <>
       <Page breadcrumbs={[{url: '/testing', content: 'Breadcrumb'}]}>
@@ -21,6 +22,7 @@ export function App() {
       </Page>
       <Page breadcrumbs={[]}>testing</Page>
       <Page breadcrumbs={breadcrumbs}>testing</Page>
+      <Page breadcrumbs={getBreadcrumbs()}>testing</Page>
     </>
   );
 }
