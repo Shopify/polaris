@@ -42,7 +42,7 @@ const pattern: Pattern = {
       <div style={{ paddingBottom: '2rem' }}>
         ____CODE____
       </div>`,
-    code: ` <Page
+    code: `<Page
       divider
       primaryAction={{ content: "View on your store", disabled: true }}
       secondaryActions={[

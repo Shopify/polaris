@@ -1,4 +1,6 @@
 import {Fragment, useEffect, useState} from 'react';
+import {format} from 'prettier/standalone';
+import babel from 'prettier/parser-babel';
 import {createUrl} from 'playroom';
 import {Stack} from '../Stack';
 import styles from './PatternsExample.module.scss';
@@ -78,6 +80,22 @@ const PatternsExample = ({
       toggleCode((codeActive) => !codeActive);
     }
   };
+  const formatCodeSnippet = (code: string) => {
+    const prettifiedCode = format(code, {
+      parser: 'babel',
+      plugins: [babel],
+    });
+
+    // We trim and call a custom replace here
+    // Because prettier appends a semi-colon at the end of the detected JSX phrase for some reason.
+    // TODO: Validate whether or not we can solve this at a config level. (i.e. disable the rule)
+    return prettifiedCode.trim().replace(/[;$]/g, (match, __, string) => {
+      if (string.indexOf(match) === string.length - 1) {
+        return '';
+      }
+      return match;
+    });
+  };
   const [previewUrl, setPreviewUrl] = useState('');
   useEffect(() => {
     function constructLivePreview(code: string, context?: string) {
@@ -146,7 +164,7 @@ const PatternsExample = ({
             code={[
               {
                 title: 'React',
-                code: snippetCode ? snippetCode.trim() : code?.trim(),
+                code: formatCodeSnippet(snippetCode ? snippetCode : code),
               },
             ]}
           />
