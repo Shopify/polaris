@@ -7,6 +7,14 @@ export function App() {
       <Page breadcrumbs={[{url: '/testing', content: 'Breadcrumb'}]}>
         hello
       </Page>
+      <Page
+        breadcrumbs={[
+          {url: '/testing', content: 'Breadcrumb'},
+          {url: '/testing2', content: 'Breadcrumb2'},
+        ]}
+      >
+        hello
+      </Page>
       <Page breadcrumbs={{url: '/testing', content: 'Breadcrumb'}}>
         testing
       </Page>

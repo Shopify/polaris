@@ -1,7 +1,6 @@
 import type {API, FileInfo} from 'jscodeshift';
 
-import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-import {insertCommentBefore} from '../../utilities/jsx';
+import {removeJSXAttributes} from '../../utilities/jsx';
 
 export default function reactBreadcrumbsMigrateFromArray(
   fileInfo: FileInfo,
@@ -24,24 +23,21 @@ export default function reactBreadcrumbsMigrateFromArray(
       },
     })
     .find(j.ArrayExpression)
-    .filter((nodePath) => {
-      const arrayOfBreadcrumbs = nodePath.node.elements;
-
-      if (arrayOfBreadcrumbs.length === 0) {
-        if (arrayOfBreadcrumbs.length === 0) {
-          insertCommentBefore(j, nodePath, POLARIS_MIGRATOR_COMMENT);
-        }
-        return false;
-      } else {
-        return true;
-      }
-    })
     .replaceWith((nodePath) => {
       const arrayOfBreadcrumbs = nodePath.node.elements;
 
-      if (arrayOfBreadcrumbs[0]?.type !== 'ObjectExpression') return;
+      if (arrayOfBreadcrumbs.length === 0) {
+        removeJSXAttributes(
+          j,
+          nodePath.parentPath.parentPath.parentPath.parentPath,
+          'breadcrumbs',
+        );
+        return;
+      }
 
-      return j.template.expression`${arrayOfBreadcrumbs[0]}`;
+      if (arrayOfBreadcrumbs.at(-1)?.type !== 'ObjectExpression') return;
+
+      return j.template.expression`${arrayOfBreadcrumbs.at(-1)}`;
     });
 
   return source.toSource();
