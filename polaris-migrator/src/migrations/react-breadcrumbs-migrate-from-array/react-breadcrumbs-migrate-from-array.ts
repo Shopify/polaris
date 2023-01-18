@@ -60,47 +60,29 @@ export default function reactBreadcrumbsMigrateFromArray(
       },
       value: {
         type: 'JSXExpressionContainer',
-        expression: {
-          type: 'Identifier',
-        },
       },
     })
-    .forEach((nodePath) => {
-      const hasVariable = j(nodePath).find(j.Identifier).length > 0;
-
-      if (hasVariable) {
+    .find(j.JSXExpressionContainer)
+    .filter((nodePath) => {
+      if (nodePath.node.expression.type === 'Identifier') {
         insertJSXComment(
           j,
           j(nodePath).find(j.Identifier).closest(j.JSXElement).paths()[0],
           `${POLARIS_MIGRATOR_COMMENT} In this case, you will need to update the breadcrumbs variable to be a single object instead of an array as arrays have been deprecated.`,
         );
+        return false;
       }
-    });
 
-  source
-    .findJSXElements('Page')
-    .find(j.JSXAttribute, {
-      name: {
-        type: 'JSXIdentifier',
-        name: 'breadcrumbs',
-      },
-      value: {
-        type: 'JSXExpressionContainer',
-        expression: {
-          type: 'CallExpression',
-        },
-      },
-    })
-    .forEach((nodePath) => {
-      const hasVariable = j(nodePath).find(j.CallExpression).length > 0;
-
-      if (hasVariable) {
+      if (nodePath.node.expression.type === 'CallExpression') {
         insertJSXComment(
           j,
           j(nodePath).find(j.Identifier).closest(j.JSXElement).paths()[0],
           `${POLARIS_MIGRATOR_COMMENT} In this case, you will need to update the breadcrumbs variable to be a single object instead of an array as arrays have been deprecated.`,
         );
+        return false;
       }
+
+      return true;
     });
 
   return source.toSource();
