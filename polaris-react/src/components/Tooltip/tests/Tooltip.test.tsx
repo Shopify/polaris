@@ -239,6 +239,18 @@ describe('<Tooltip />', () => {
     });
   });
 
+  it("passes 'zIndexOverride' to TooltipOverlay", () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="Inner content" zIndexOverride={100}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      zIndexOverride: 100,
+    });
+  });
+
   describe('width', () => {
     it('renders content with the default width', () => {
       const tooltip = mountWithApp(
