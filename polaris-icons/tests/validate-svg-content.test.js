@@ -21,16 +21,20 @@ const allIconFiles = globby
 
     const iconSource = fs.readFileSync(absoluteIconPath, 'utf-8');
 
-    const {viewbox, colors} = configPerSet.get([set].filter(Boolean).join('_'));
-
+    const svg = configPerSet.get([set].filter(Boolean).join('_'));
+    if (svg == null) {
+      throw new Error(
+        `SVG config not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
+      );
+    }
     return {
       iconPath: path.relative(path.join(__dirname, '..'), absoluteIconPath),
       iconSource,
       iconAst: unified()
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
-      expectedViewbox: viewbox,
-      expectedFillColors: colors,
+      expectedViewbox: svg.viewbox,
+      expectedFillColors: svg.colors,
     };
   });
 

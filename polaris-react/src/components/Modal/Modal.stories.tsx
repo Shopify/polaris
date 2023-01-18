@@ -537,7 +537,6 @@ export function WithLongContentNoScroll() {
       title="Long form modal"
       open
       onClose={() => {}}
-      sectioned
       noScroll
       primaryAction={{content: 'Save'}}
     >

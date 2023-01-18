@@ -8,8 +8,10 @@ import {Portal} from '../Portal';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
+import {classNames} from '../../utilities/css';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
+import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
@@ -136,6 +138,10 @@ export function Tooltip({
     </Portal>
   ) : null;
 
+  const wrapperClassNames = classNames(
+    activatorWrapper === 'div' && styles.TooltipContainer,
+  );
+
   return (
     <WrapperComponent
       onFocus={() => {
@@ -150,6 +156,7 @@ export function Tooltip({
       onMouseOver={handleMouseEnterFix}
       ref={setActivator}
       onKeyUp={handleKeyUp}
+      className={wrapperClassNames}
     >
       {children}
       {portal}
