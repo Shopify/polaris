@@ -25,8 +25,6 @@ type Pattern = {
   example: PatternExample;
 };
 
-const title = 'App settings';
-
 const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/7852`;
 const pattern: Pattern = {
   index: 0,
@@ -100,13 +98,13 @@ export default function PatternsDatePickingPage() {
     'Lets merchants easily scan many groups of settings and find the ones they want to change.';
   return (
     <>
-      <PageMeta title={title} description={description} />
+      <PageMeta title={pattern.title} description={pattern.description} />
 
       <Page showTOC>
         <Stack gap="4" className={styles.Header}>
           <Heading as="h1">
             <Row wrap gap="2" className={styles.Heading}>
-              {title}{' '}
+              {pattern.title}{' '}
             </Row>
           </Heading>
           <Lede>{description}</Lede>
@@ -170,7 +168,7 @@ export default function PatternsDatePickingPage() {
               </Heading>
               <PatternsExample
                 example={pattern.example}
-                patternName={`${title} > ${pattern.title}`}
+                patternName={pattern.title}
                 relatedComponents={[
                   {label: 'Page', url: '/components/page'},
                   {label: 'Layout', url: '/components/layout'},
