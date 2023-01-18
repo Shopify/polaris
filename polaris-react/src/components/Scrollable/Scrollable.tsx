@@ -49,6 +49,7 @@ export function Scrollable({
   onScrolledToBottom,
   ...rest
 }: ScrollableProps) {
+  console.log('<Scrollable /> local');
   const [topShadow, setTopShadow] = useState(false);
   const [bottomShadow, setBottomShadow] = useState(false);
   const stickyManager = useLazyRef(() => new StickyManager());

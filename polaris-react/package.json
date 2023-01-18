@@ -51,6 +51,7 @@
     "build:js": "rollup -c",
     "build:validate": "node scripts/build-validate.js",
     "dev": "yarn run storybook",
+    "dev:publish": "rollup -c && npx yalc publish --push && rollup -cw --watch.onEnd=\"npx yalc push\"",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
@@ -68,7 +69,8 @@
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
     "react-fast-compare": "^3.2.0",
-    "react-transition-group": "^4.4.2"
+    "react-transition-group": "^4.4.2",
+    "rollup": "^3.10.0"
   },
   "peerDependencies": {
     "react": "^16.14.0 || ^17.0.0 || ^18.0.0",

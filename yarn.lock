@@ -19296,6 +19296,13 @@ rollup@^2.70.2:
   optionalDependencies:
     fsevents "~2.3.2"
 
+rollup@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.10.0.tgz#6eb19196d8b3b375ca651cb78261faac48e24cd6"
+  integrity sha512-JmRYz44NjC1MjVF2VKxc0M1a97vn+cDxeqWmnwyAF4FvpjK8YFdHpaqvQB+3IxCvX05vJxKZkoMDU8TShhmJVA==
+  optionalDependencies:
+    fsevents "~2.3.2"
+
 rtl-css-js@^1.14.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/rtl-css-js/-/rtl-css-js-1.16.0.tgz#e8d682982441aadb63cabcb2f7385f3fb78ff26e"
