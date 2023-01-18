@@ -5,16 +5,16 @@ import PageMeta from '../PageMeta';
 import {Stack, Row} from '../Stack';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
-import Preview from '../PatternThumbnailPreview';
 import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternsAppSettingsPage.module.scss';
-import {Grid, GridItem} from '../Grid';
-
+import PatternsRelatedResources from '../PatternsRelatedResources';
+type MarkdownString = string;
 type Pattern = {
   index: number;
   description?: string;
+  relatedResources: MarkdownString;
   title: string;
   slug: string;
   designDecisionListItems?: string[];
@@ -24,6 +24,7 @@ type Pattern = {
   };
   example: PatternExample;
 };
+
 const title = 'App settings';
 
 const newDiscussionLink = `https://github.com/Shopify/polaris/discussions/7852`;
@@ -32,6 +33,10 @@ const pattern: Pattern = {
   title: 'App settings',
   slug: 'app-settings',
   description: 'This enables merchants to select a date range.',
+  relatedResources: `* See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
+* See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
+* Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
+* Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
     context: `
       <div style={{ paddingBottom: '2rem' }}>
@@ -213,55 +218,9 @@ export default function PatternsDatePickingPage() {
               </Stack>
             </Stack>
           </Stack>
-          <Stack as="section" gap="4" className={styles.RelatedResources}>
-            <Heading as="h2">Related resources</Heading>
-            <Grid gapX="4" gapY="6" itemMinWidth="24rem">
-              <GridItem
-                title="Information architecture"
-                description="Everything we create at Shopify has an underlying foundation of information architecture. If you’re a designer, a content strategist, or a UX developer, you’re already doing IA work."
-                url="/foundations/information-architecture"
-                renderPreview={() => (
-                  <Preview
-                    renderInner={false}
-                    src="/og-images/foundations/information-architecture.png"
-                  />
-                )}
-              />
-              <GridItem
-                title="Space"
-                description="Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping the content become more useful and understandable."
-                url="/design/space"
-                renderPreview={() => (
-                  <Preview
-                    renderInner={false}
-                    src="/og-images/design/space.png"
-                  />
-                )}
-              />
-              <GridItem
-                title="ADG Layout"
-                description="Layout design is the process of arranging visual elements such as text, images, and shapes on a page. Apps have a variety of available layouts. These layouts adapt the app body content to every screen size and device type. Selecting the proper layout for the task at hand will benefit the merchant’s experience when using your app."
-                url="https://shopify.dev/apps/design-guidelines/layout"
-                renderPreview={() => (
-                  <Preview
-                    renderInner={false}
-                    src="/images/patterns/adg-layout-thumbnail.webp"
-                  />
-                )}
-              />
-              <GridItem
-                title="Actionable language"
-                description="Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions."
-                url="/content/actionable-language"
-                renderPreview={() => (
-                  <Preview
-                    renderInner={false}
-                    src="/og-images/content/actionable-language.png"
-                  />
-                )}
-              />
-            </Grid>
-          </Stack>
+          <PatternsRelatedResources>
+            {pattern.relatedResources}
+          </PatternsRelatedResources>
         </Stack>
       </Page>
     </>

@@ -10,17 +10,16 @@ import {Stack, Row} from '../Stack';
 import {Box} from '../Box';
 import {Lede} from '../Lede';
 import {Heading} from '../Heading';
-import Preview from '../PatternThumbnailPreview';
 import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample, {type PatternExample} from '../PatternsExample';
 import Page from '../Page';
 import styles from './PatternsDatePickingPage.module.scss';
-import {Grid, GridItem} from '../Grid';
 import Markdown from '../Markdown';
 
 import remarkUnwrapImages from 'remark-unwrap-images';
 import remarkDirective from 'remark-directive';
 import remarkDirectiveRehype from 'remark-directive-rehype';
+import PatternsRelatedResources from '../PatternsRelatedResources';
 
 type MarkdownString = string;
 
@@ -37,15 +36,7 @@ type MultiVariantPattern = {
   title: string;
   githubDiscussionsLink: string;
   variants: PatternVariant[];
-  relatedResources: {
-    href: string;
-    description: string;
-    title: string;
-    image: {
-      alt: string;
-      src: string;
-    };
-  }[];
+  relatedResources: MarkdownString;
 };
 
 // @ts-expect-error Can't extract the special types out of react-markdown for
@@ -62,48 +53,9 @@ const pattern: MultiVariantPattern = {
   type: 'multi-variant-pattern',
   title: 'Date picking',
   githubDiscussionsLink: `https://github.com/Shopify/polaris/discussions/7852`,
-  relatedResources: [
-    {
-      title: 'Date picker',
-      description:
-        'Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.',
-      href: '/components/date-picker',
-      image: {
-        alt: '',
-        src: '/images/components/date-picker.png',
-      },
-    },
-    {
-      title: 'UTC is for everyone right?',
-      description:
-        "Programming with dates, times, and timezones is hard. But here's some help.",
-      href: 'https://zachholman.com/talk/utc-is-enough-for-everyone-right',
-      image: {
-        alt: '',
-        src: '/images/patterns/UTC4e1.jpeg',
-      },
-    },
-    {
-      title: 'Grammar and mechanics',
-      description:
-        'This guide is to help designers, developers, recruiters, UX-ers, product managers, support advisors, or anyone who writes public-facing text for Shopify.',
-      href: '/content/grammar-and-mechanics#date',
-      image: {
-        alt: '',
-        src: '/og-images/content/grammar-and-mechanics.png',
-      },
-    },
-    {
-      title: 'Actionable language',
-      description:
-        'Merchants use Shopify to get things done. Content should be written and structured to help them understand and take the most important actions.',
-      href: '/content/actionable-language',
-      image: {
-        alt: '',
-        src: '/og-images/content/actionable-language.png',
-      },
-    },
-  ],
+  relatedResources: `* Programming timezones can be finicky. Get great tips in the article [UTC is for everyone right](https://zachholman.com/talk/utc-is-enough-for-everyone-right)?
+* Learn about date formatting in the [Grammar and mechanics](/content/grammar-and-mechanics#date) guidelines.
+* See how to craft effective button labels in the [Actionable language](/content/actionable-language) guidelines.`,
   variants: [
     {
       title: 'Single date',
@@ -507,26 +459,9 @@ export default function PatternsDatePickingPage() {
               </Tab.Panels>
             </div>
           </Tab.Group>
-          <Stack as="section" gap="4">
-            <Heading as="h2">Related resources</Heading>
-            <Grid gapX="4" gapY="6" itemMinWidth="16rem">
-              {pattern.relatedResources.map((resource, i) => (
-                <GridItem
-                  key={`date-picking-related-resource-${i}`}
-                  title={resource.title}
-                  description={resource.description}
-                  url={resource.href}
-                  renderPreview={() => (
-                    <Preview
-                      renderInner={false}
-                      alt={resource.image.alt}
-                      src={resource.image.src}
-                    />
-                  )}
-                />
-              ))}
-            </Grid>
-          </Stack>
+          <PatternsRelatedResources>
+            {pattern.relatedResources}
+          </PatternsRelatedResources>
         </Stack>
       </Page>
     </>
