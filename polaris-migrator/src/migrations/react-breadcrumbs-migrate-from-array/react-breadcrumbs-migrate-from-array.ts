@@ -22,44 +22,6 @@ export default function reactBreadcrumbsMigrateFromArray(
       },
       value: {
         type: 'JSXExpressionContainer',
-        expression: {
-          type: 'ArrayExpression',
-        },
-      },
-    })
-    .find(j.ArrayExpression)
-    .replaceWith((nodePath) => {
-      const arrayOfBreadcrumbs = nodePath.node.elements;
-
-      if (arrayOfBreadcrumbs.length === 0) {
-        removeJSXAttributes(
-          j,
-          nodePath.parentPath.parentPath.parentPath.parentPath,
-          'breadcrumbs',
-        );
-        return;
-      }
-
-      if (
-        arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]?.type !==
-        'ObjectExpression'
-      )
-        return;
-
-      return j.template.expression`${
-        arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]
-      }`;
-    });
-
-  source
-    .findJSXElements('Page')
-    .find(j.JSXAttribute, {
-      name: {
-        type: 'JSXIdentifier',
-        name: 'breadcrumbs',
-      },
-      value: {
-        type: 'JSXExpressionContainer',
       },
     })
     .find(j.JSXExpressionContainer)
@@ -83,6 +45,29 @@ export default function reactBreadcrumbsMigrateFromArray(
       }
 
       return true;
+    })
+    .find(j.ArrayExpression)
+    .replaceWith((nodePath) => {
+      const arrayOfBreadcrumbs = nodePath.node.elements;
+
+      if (arrayOfBreadcrumbs.length === 0) {
+        removeJSXAttributes(
+          j,
+          nodePath.parentPath.parentPath.parentPath.parentPath,
+          'breadcrumbs',
+        );
+        return;
+      }
+
+      if (
+        arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]?.type !==
+        'ObjectExpression'
+      )
+        return;
+
+      return j.template.expression`${
+        arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]
+      }`;
     });
 
   return source.toSource();
