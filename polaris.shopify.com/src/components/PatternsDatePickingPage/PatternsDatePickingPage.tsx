@@ -499,7 +499,11 @@ export default function PatternsDatePickingPage() {
                           ]}
                         />
                       </Stack>
-                      <Stack as="section" gap="4">
+                      <Stack
+                        as="section"
+                        gap="4"
+                        className={styles.UsefulToKnow}
+                      >
                         <Heading
                           as="h3"
                           className={styles.UsefulHeading}
