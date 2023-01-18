@@ -55,6 +55,8 @@ export interface TooltipProps {
    * @default '1'
    */
   borderRadius?: BorderRadius;
+  /** Override on the default z-index of 400 */
+  zIndexOverride?: number;
   /* Callback fired when the tooltip is activated */
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
@@ -73,6 +75,7 @@ export function Tooltip({
   width = 'default',
   padding = 'default',
   borderRadius = '1',
+  zIndexOverride,
   onOpen,
   onClose,
 }: TooltipProps) {
@@ -132,6 +135,7 @@ export function Tooltip({
         width={width}
         padding={padding}
         borderRadius={borderRadius}
+        zIndexOverride={zIndexOverride}
       >
         {content}
       </TooltipOverlay>
