@@ -35,9 +35,15 @@ export default function reactBreadcrumbsMigrateFromArray(
         return;
       }
 
-      if (arrayOfBreadcrumbs.at(-1)?.type !== 'ObjectExpression') return;
+      if (
+        arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]?.type !==
+        'ObjectExpression'
+      )
+        return;
 
-      return j.template.expression`${arrayOfBreadcrumbs.at(-1)}`;
+      return j.template.expression`${
+        arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]
+      }`;
     });
 
   return source.toSource();
