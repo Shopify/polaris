@@ -53,9 +53,9 @@ const pattern: Pattern = {
         },
       ]}
     >
-      <AlphaStack gap="16">
+      <AlphaStack gap="16" align="center">
         <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-          <Box as="section">
+          <Box as="section" paddingInlineStart={{ xs: 4, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
             <AlphaStack>
               <Text as="h3" variant="headingMd">
                 InterJambs
@@ -65,7 +65,7 @@ const pattern: Pattern = {
               </Text>
             </AlphaStack>
           </Box>
-          <AlphaCard>
+          <AlphaCard roundedAbove="sm">
             <AlphaStack fullWidth>
               <TextField label="Interjamb style" />
               <TextField label="Interjamb ratio" />
@@ -73,7 +73,7 @@ const pattern: Pattern = {
           </AlphaCard>
         </Columns>
         <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-          <Box as="section">
+        <Box as="section" paddingInlineStart={{ xs: 2, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
             <AlphaStack>
               <Text as="h3" variant="headingMd">
                 Dimensions
@@ -83,7 +83,7 @@ const pattern: Pattern = {
               </Text>
             </AlphaStack>
           </Box>
-          <AlphaCard>
+          <AlphaCard roundedAbove="sm">
             <AlphaStack fullWidth>
               <TextField label="Horizontal" />
               <TextField label="Interjamb ratio" />
