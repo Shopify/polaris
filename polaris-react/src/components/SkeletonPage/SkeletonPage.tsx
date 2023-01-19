@@ -41,7 +41,7 @@ export function SkeletonPage({
       <Box
         background="surface-neutral"
         minWidth="120px"
-        minHeight="24px"
+        minHeight="28px"
         borderRadius="base"
       />
     </div>
@@ -84,7 +84,9 @@ export function SkeletonPage({
           >
             {breadcrumbMarkup}
             <Inline align="space-between" blockAlign="center">
-              {titleContent}
+              <Box paddingBlockStart="1" paddingBlockEnd="1">
+                {titleContent}
+              </Box>
               {primaryActionMarkup}
             </Inline>
           </Box>
