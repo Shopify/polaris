@@ -1,7 +1,7 @@
 import type {API, FileInfo} from 'jscodeshift';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-import {insertJSXComment, removeJSXAttributes} from '../../utilities/jsx';
+import {insertCommentBefore, removeJSXAttributes} from '../../utilities/jsx';
 
 export default function reactUpdatePageBreadcrumbs(
   fileInfo: FileInfo,
@@ -23,18 +23,17 @@ export default function reactUpdatePageBreadcrumbs(
     .find(j.JSXExpressionContainer)
     .filter((nodePath) => {
       if (nodePath.node.expression.type === 'Identifier') {
-        insertJSXComment(
+        insertCommentBefore(
           j,
-          j(nodePath).find(j.Identifier).closest(j.JSXElement).paths()[0],
+          j(nodePath).find(j.Identifier).paths()[0],
           `${POLARIS_MIGRATOR_COMMENT} In this case, you will need to update the breadcrumbs variable to be a single object instead of an array as arrays have been deprecated.`,
         );
-        return false;
       }
 
       if (nodePath.node.expression.type === 'CallExpression') {
-        insertJSXComment(
+        insertCommentBefore(
           j,
-          j(nodePath).find(j.Identifier).closest(j.JSXElement).paths()[0],
+          j(nodePath).find(j.Identifier).paths()[0],
           `${POLARIS_MIGRATOR_COMMENT} In this case, you will need to update the breadcrumbs variable to be a single object instead of an array as arrays have been deprecated.`,
         );
         return false;
