@@ -270,7 +270,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       } else if (breakpoints?.lgUp) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <Box position="absolute" insetBlockStart="4" insetInlineEnd="4">
+            <Box position="absolute" insetBlockStart="4" insetInlineEnd="5">
               <ButtonGroup segmented>
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>
