@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps<
   const componentSlug = context.params?.component;
   const relativeMdPath = `content/components/${componentSlug}.md`;
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
-  const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
+  const editPageLinkPath = `/polaris.shopify.com/${relativeMdPath}`;
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
