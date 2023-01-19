@@ -13,28 +13,28 @@ Polaris provides a set of flexible layout primitives: `Box`, `Card`, `Inline`, `
 <div class="components-grid">
   <div>
     <img src="/images/components/layout-and-structure/box-preview.png" alt="" />
-    <p>Box</p>
-    <p>Use for custom layouts and containers.</p>
+    <p class="components-grid__title">Box</p>
+    <span>Use for custom layouts and containers.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/stack-preview.png" alt="" />
-    <p>Stack</p>
-    <p>Use to display children vertically. Based on css flexbox.</p>
+    <p class="components-grid__title">Stack</p>
+    <span>Use to display children vertically. Based on css flexbox.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/inline-preview.png" alt="" />
-    <p>Inline</p>
-    <p>Use to display children horizontally in a row. Based on css flexbox.</p>
+    <p class="components-grid__title">Inline</p>
+    <span>Use to display children horizontally in a row. Based on css flexbox.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/columns-preview.png" alt="" />
-    <p>Columns</p>
-    <p>Use to layout content horizontally across a specified number of columns. Based on css grid.</p>
+    <p class="components-grid__title">Columns</p>
+    <span>Use to layout content horizontally across a specified number of columns. Based on css grid.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/bleed-preview.png" alt="" />
-    <p>Bleed</p>
-    <p>Use to apply negative margin to children to pull them into the surrounding layout.</p>
+    <p class="components-grid__title">Bleed</p>
+    <span>Use to apply negative margin to children to pull them into the surrounding layout.</span>
   </div>
 </div>
 
@@ -44,12 +44,6 @@ Layout primitives allow you to specify values for different screen sizes. Check 
 
 <!-- end -->
 
-#### Responsive design
-
-The layout primitives allow you to specify values for different screen sizes.
-For example, if you were using the `Columns` component, you may want to set a single column on `xs` and `sm` breakpoints and three columns at `md` and above.
-Check out the layout primitives for information on how responsive props apply to each component.
-
 ### Layout compositions
 
 Layout compositions are built with layout primitives. Use these components to build common layouts in the admin with the help of sensible defaults.
@@ -57,28 +51,28 @@ Layout compositions are built with layout primitives. Use these components to bu
 <div class="components-grid">
   <div>
     <img src="/images/components/layout-and-structure/card-preview.png" alt="" />
-    <p>Card</p>
-    <p>Use to display items in a container with pre-defined styles applied.</p>
+    <p class="components-grid__title">Card</p>
+    <span>Use to display items in a container with pre-defined styles applied.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/callout-card-preview.png" alt="" />
-    <p>Callout card</p>
-    <p>Use to encourage merchants to take an action related to a new feature or opportunity.</p>
+    <p class="components-grid__title">Callout card</p>
+    <span>Use to encourage merchants to take an action related to a new feature or opportunity.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/media-card-preview.png" alt="" />
-    <p>Media card</p>
-    <p>Use to present visual information to merchants in a consistent way.</p>
+    <p class="components-grid__title">Media card</p>
+    <span>Use to present visual information to merchants in a consistent way.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/empty-state-preview.png" alt="" />
-    <p>Empty state</p>
-    <p>Use to provide guidance to merchants when a list, table, or chart has no items to show.</p>
+    <p class="components-grid__title">Empty state</p>
+    <span>Use to provide guidance to merchants when a list, table, or chart has no items to show.</span>
   </div>
   <div>
     <img src="/images/components/layout-and-structure/page-preview.png" alt="" />
-    <p>Page</p>
-    <p>Use to build the outer wrapper of a page, including the page title and associated actions.</p>
+    <p class="components-grid__title">Page</p>
+    <span>Use to build the outer wrapper of a page, including the page title and associated actions.</span>
   </div>
 </div>
 

@@ -384,11 +384,21 @@ button {
   }
 }
 
+.components-grid__title {
+  font-weight: var(--p-font-weight-semibold);
+  line-height: var(--p-font-line-height-3);
+  margin: 0 !important;
+  margin-bottom: var(--p-space-1) !important;
+  color: #4e52b8;
+}
+
 .tip-banner {
   padding: var(--p-space-4) var(--p-space-6);
   background: var(--p-surface-highlight-subdued);
   border-radius: var(--p-border-radius-2);
   color: #00565e !important;
+  margin: var(--p-space-6) 0;
+  margin-bottom: var(--p-space-16);
 }
 
 .tip-banner__header {
