@@ -17,31 +17,15 @@ function NavigationExample() {
           items={[
             {
               url: '/path/to/place',
-              label: 'Label long enough to ellipsize most likely',
+              label: 'One Stop Ramen Order Application Premium',
               truncateText: true,
-              icon: OrdersMinor,
-              selected: false,
-            },
-            {
-              url: '/path/to/place',
-              label: 'Not truncated',
-              icon: OrdersMinor,
-              selected: false,
-            },
-            {
-              url: '/path/to/place',
-              label: 'Lengthy label with secondary action',
               icon: MarketingMinor,
               selected: false,
-              truncateText: true,
-              secondaryAction: {
-                url: '/admin/orders/add',
-                accessibilityLabel: 'Add a ramen to your order',
-                icon: CirclePlusOutlineMinor,
-                tooltip: {
-                  content: 'Add a ramen to your order',
-                },
-              },
+            },
+            {
+              url: '/path/to/place',
+              label: 'Products',
+              icon: ProductsMinor,
             },
             {
               url: '/path/to/place',
@@ -53,30 +37,7 @@ function NavigationExample() {
                 accessibilityLabel: 'Add an order',
                 icon: CirclePlusOutlineMinor,
                 tooltip: {
-                  content: 'Add a lengthy order',
-                },
-              },
-            },
-            {
-              url: '/path/to/place',
-              label: 'Old lengthy label that is badged',
-              truncateText: true,
-              badge: 'Old',
-              icon: HomeMinor,
-            },
-            {
-              url: '/path/to/place',
-              label: 'Badged with an action while being lengthy',
-              icon: OrdersMinor,
-              selected: false,
-              truncateText: true,
-              badge: 'Old',
-              secondaryAction: {
-                url: '/admin/orders/add',
-                accessibilityLabel: 'Add a hug if possible',
-                icon: CirclePlusOutlineMinor,
-                tooltip: {
-                  content: 'Add a hug if possible',
+                  content: 'Add a garlic ramen to your order',
                 },
               },
             },
