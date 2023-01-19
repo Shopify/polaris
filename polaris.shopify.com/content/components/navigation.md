@@ -36,6 +36,9 @@ examples:
   - fileName: navigation-with-various-states-and-secondary-elements.tsx
     title: With various states and secondary elements
     description: This example showcases the many elements that can compose a navigation, especially useful for testing purposes.
+  - fileName: navigation-with-truncation-for-various-states.tsx
+    title: With truncation active for various states
+    description: This example showcases how elements are displayed with the truncateTest prop as true for various states.
   - fileName: navigation-with-aria-labelledby.tsx
     title: With aria-labelledby
     description: This example shows how to add an aria-labelledby to add a hidden label to the `nav` element.
@@ -153,6 +156,7 @@ The content of the navigation component consists of navigation items. Each item 
 | subNavigationItems | [SubNavigationItem[]](#sub-navigation-item) | A collection of navigation items rendered as nested secondary navigation items                                                                          |
 | secondaryAction    | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
 | onClick()          | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
+| truncateText       | boolean                                     | A boolean property to allow text that exceeds the width of the navigation item to be truncated with ellipsis                                            |
 
 ### SubNavigationItem
 
