@@ -1,13 +1,9 @@
 import type {API, FileInfo} from 'jscodeshift';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-import {
-  insertCommentBefore,
-  insertJSXComment,
-  removeJSXAttributes,
-} from '../../utilities/jsx';
+import {insertJSXComment, removeJSXAttributes} from '../../utilities/jsx';
 
-export default function reactBreadcrumbsMigrateFromArray(
+export default function reactUpdatePageBreadcrumbs(
   fileInfo: FileInfo,
   {jscodeshift: j}: API,
 ) {
