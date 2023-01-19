@@ -11,10 +11,11 @@ export interface SpinnerProps {
   onClick?(event: React.MouseEvent): void;
   onMouseDown(onChange: HandleStepFn): void;
   onMouseUp(): void;
+  onBlur(event: React.FocusEvent): void;
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  function Spinner({onChange, onClick, onMouseDown, onMouseUp}, ref) {
+  function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
     function handleStep(step: number) {
       return () => onChange(step);
     }
@@ -35,6 +36,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onClick={handleStep(1)}
           onMouseDown={handleMouseDown(handleStep(1))}
           onMouseUp={onMouseUp}
+          onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
             <Icon source={CaretUpMinor} />
@@ -47,6 +49,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onClick={handleStep(-1)}
           onMouseDown={handleMouseDown(handleStep(-1))}
           onMouseUp={onMouseUp}
+          onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
             <Icon source={CaretDownMinor} />
