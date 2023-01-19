@@ -80,6 +80,15 @@ describe('<Resizer />', () => {
         '&lt;div&gt;&amp;<br>Contents&lt;/div&gt;<br></div>';
       expect(resizer)!.toContainReactHtml(expectedEncodedContents);
     });
+
+    it('recognizes commas', () => {
+      const contents = `Contents, contents`;
+      const resizer = mountWithApp(
+        <Resizer {...mockProps} contents={contents} />,
+      );
+      const expectedEncodedContents = 'Contents, contents';
+      expect(resizer)!.toContainReactHtml(expectedEncodedContents);
+    });
   });
 
   describe('minimumLines', () => {
