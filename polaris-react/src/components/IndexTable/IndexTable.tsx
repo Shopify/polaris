@@ -62,6 +62,12 @@ interface IndexTableSortToggleLabels {
   [key: number]: IndexTableSortToggleLabel;
 }
 
+interface IndexTableHeadingCheckbox {
+  label?: string;
+  onChange?: (checked: boolean) => unknown;
+  checked?: boolean | 'indeterminate';
+}
+
 export interface IndexTableBaseProps {
   headings: NonEmptyArray<IndexTableHeading>;
   promotedBulkActions?: BulkActionsProps['promotedActions'];
@@ -97,7 +103,7 @@ export interface IndexTableBaseProps {
   selectAllLabel?: string;
   onboardingBadgeText?: string;
   undoText?: string;
-  checkbox?: React.ReactNode;
+  checkbox?: (props: IndexTableHeadingCheckbox) => React.ReactNode;
 }
 
 export interface TableHeadingRect {
@@ -189,6 +195,10 @@ function IndexTableBase({
     },
     [tableInitialized],
   );
+
+  const handleSelectPage = (checked: boolean) => {
+    handleSelectionChange(SelectionType.Page, checked);
+  };
 
   const handleSelectAllItemsInStore = useCallback(() => {
     handleSelectionChange(
@@ -446,7 +456,7 @@ function IndexTableBase({
             className={styles.FirstStickyHeaderElement}
             ref={firstStickyHeaderElement}
           >
-            {checkbox}
+            {renderCheckboxContent()}
           </div>
         )}
 
@@ -741,11 +751,23 @@ function IndexTableBase({
         key={`${heading}-${index}`}
         data-index-table-heading
       >
-        <div className={styles.ColumnHeaderCheckboxWrapper}>{checkbox}</div>
+        {renderCheckboxContent()}
       </th>
     );
 
     return [checkboxContent, headingContent];
+  }
+
+  function renderCheckboxContent() {
+    return (
+      <div className={styles.ColumnHeaderCheckboxWrapper}>
+        {checkbox?.({
+          label: selectAllLabel,
+          onChange: handleSelectPage,
+          checked: bulkSelectState,
+        })}
+      </div>
+    );
   }
 
   function renderHeadingContent(heading: IndexTableHeading) {
