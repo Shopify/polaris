@@ -22,6 +22,7 @@ export interface TooltipOverlayProps {
   width?: Width;
   padding?: Padding;
   borderRadius?: BorderRadius;
+  zIndexOverride?: number;
   onClose(): void;
 }
 
@@ -36,6 +37,7 @@ export function TooltipOverlay({
   width,
   padding,
   borderRadius,
+  zIndexOverride,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -45,6 +47,7 @@ export function TooltipOverlay({
       preferredPosition={preferredPosition}
       preventInteraction={preventInteraction}
       render={renderTooltip}
+      zIndexOverride={zIndexOverride}
     />
   ) : null;
 

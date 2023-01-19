@@ -161,6 +161,17 @@ html {
     .comment {
       color: var(--code-comment);
     }
+    .inserted {
+      background: var(--code-inserted-highlight);
+      color: var(--code-inserted);
+    }
+    .deleted {
+      background: var(--code-deleted-highlight);
+      color: var(--code-deleted);
+    }
+    .prefix {
+      font-weight: 900;
+    }
   }
 }
 
@@ -212,6 +223,10 @@ body,
   --code-property: var(--code-keyword);
   --code-selector: var(--code-keyword);
   --code-comment: #3d2fe8;
+  --code-inserted: var(--code-keyword);
+  --code-deleted: var(--code-boolean);
+  --code-inserted-highlight: #e5ffef;
+  --code-deleted-highlight: #fff3f8;
 }
 
 .dark-mode {
@@ -245,6 +260,10 @@ body,
   --code-property: var(--code-keyword);
   --code-selector: var(--code-keyword);
   --code-comment: #897fff;
+  --code-inserted: var(--code-keyword);
+  --code-deleted: #ffb7d1;
+  --code-inserted-highlight: var(--surface-information);
+  --code-deleted-highlight: var(--surface-warning);
 }
 
 video {

@@ -136,10 +136,10 @@ module.exports = stylelint.createPlugin(
  */
 function getMeta(category, stylelintRuleName) {
   const baseMetaUrl =
-    'https://github.com/Shopify/polaris/tree/main/stylelint-polaris/README.md';
+    'https://polaris.shopify.com/tools/stylelint-polaris/rules';
 
   return {
-    url: `${baseMetaUrl}#${category}-${stylelintRuleName.replace('/', '-')}`,
+    url: `${baseMetaUrl}/${category}-${stylelintRuleName.replace('/', '-')}`,
   };
 }
 
