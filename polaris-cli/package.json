@@ -1,6 +1,6 @@
 {
   "name": "@shopify/plugin-polaris",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Commands for building Shopify Apps with Polaris",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
