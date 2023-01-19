@@ -17,7 +17,7 @@ function NavigationExample() {
           items={[
             {
               url: '/path/to/place',
-              label: 'Label long enough to ellipsize',
+              label: 'Label long enough to ellipsize most likely',
               truncateText: true,
               icon: OrdersMinor,
               selected: false,
@@ -82,7 +82,7 @@ function NavigationExample() {
             },
             {
               url: '/admin/products',
-              label: 'Truncated secondary navigation items',
+              label: 'Truncated secondary navigation item on truncated label',
               icon: ProductsMinor,
               selected: true,
               truncateText: true,
@@ -90,7 +90,7 @@ function NavigationExample() {
                 {
                   url: '/admin/products/collections',
                   disabled: false,
-                  label: 'Something longer than Inventory',
+                  label: 'Something longer than inventory so it can be truncated',
                 },
                 {
                   url: '/admin/products/inventory',
