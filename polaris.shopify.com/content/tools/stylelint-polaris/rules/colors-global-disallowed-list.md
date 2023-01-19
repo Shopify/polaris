@@ -1,6 +1,6 @@
 ---
 title: colors/global-disallowed-list
-description: Disallows use of legacy color custom properties and mixin map data
+description: Disallows use of legacy color custom properties and mixin map data.
 keywords:
   - stylelint
   - colors

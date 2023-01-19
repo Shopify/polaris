@@ -1,6 +1,6 @@
 ---
 title: depth/function-disallowed-list
-description: Disallows use of built-in and legacy shadow functions
+description: Disallows use of built-in and legacy shadow functions.
 keywords:
   - stylelint
   - depth

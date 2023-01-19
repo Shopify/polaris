@@ -1,6 +1,6 @@
 ---
 title: motion/at-rule-disallowed-list
-description: Disallows use of CSS @keyframes
+description: Disallows use of CSS @keyframes.
 keywords:
   - stylelint
   - motion

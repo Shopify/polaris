@@ -1,7 +1,8 @@
 ---
 title: Polaris for VS Code
-description: Official VS Code extension for building with the Shopify Polaris Design System
+description: Official VS Code extension for building with the Shopify Polaris design system.
 icon: HintMajor
+order: 1
 ---
 
 ![Demo of Polaris for VS Code tokens autocomplete](https://github.com/Shopify/polaris/blob/main/polaris-for-vscode/docs/polaris-for-vscode-preview.gif?raw=true)

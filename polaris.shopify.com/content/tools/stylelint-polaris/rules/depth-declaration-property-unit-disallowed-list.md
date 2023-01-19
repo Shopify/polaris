@@ -1,6 +1,6 @@
 ---
 title: depth/declaration-property-unit-disallowed-list
-description: Disallows box-shadow declarations with hard coded px, rem, or em units
+description: Disallows box-shadow declarations with hard coded px, rem, or em units.
 keywords:
   - stylelint
   - depth

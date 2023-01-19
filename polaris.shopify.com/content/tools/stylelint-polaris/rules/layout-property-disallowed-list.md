@@ -1,6 +1,6 @@
 ---
 title: layout/property-disallowed-list
-description: Disallows declarations of layout properties
+description: Disallows declarations of layout properties.
 keywords:
   - stylelint
   - layout

@@ -1,6 +1,6 @@
 ---
 title: colors/color-no-hex
-description: Disallows hex colors
+description: Disallows hex colors.
 keywords:
   - stylelint
   - colors

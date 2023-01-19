@@ -1,6 +1,6 @@
 ---
 title: depth/property-disallowed-list
-description: Disallows text shadow property
+description: Disallows text shadow property.
 keywords:
   - stylelint
   - depth

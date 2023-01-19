@@ -1,6 +1,6 @@
 ---
 title: depth/global-disallowed-list
-description: Disallows use of legacy shadow custom properties and Sass mixin data
+description: Disallows use of legacy shadow custom properties and Sass mixin data.
 keywords:
   - stylelint
   - depth
