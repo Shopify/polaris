@@ -57,13 +57,14 @@
 .ExamplesList {
   --surface-pressed: rgba(250, 250, 250, 1);
   --border-subdued: rgba(201, 204, 207, 1);
+
   display: flex;
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1rem;
+  z-index: 5;
 
   button {
-    z-index: 5;
     padding: 0.5rem 1rem;
     text-align: left;
     display: flex;
@@ -94,6 +95,24 @@
       box-shadow: none;
       border: var(--p-border-divider);
       border-bottom: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $breakpointMobile) {
+  .TabGroup {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  .Panel {
+    padding: 1.5rem;
+  }
+  .ExamplesList {
+    position: sticky;
+    top: 60px;
+    background-color: white;
+    button:first-of-type {
+      padding-left: 1.5rem;
     }
   }
 }
@@ -207,4 +226,43 @@
 
 .Checkbox {
   appearance: auto;
+}
+
+.CustomTable {
+  --props-table-border-color: #c9cccf;
+  border: 1px solid var(--props-table-border-color);
+  @include dark-mode {
+    --props-table-border-color: white;
+  }
+  border-radius: var(--border-radius-400);
+
+  h3 {
+    background: rgba(0, 0, 0, 0.02);
+    padding: 0.66rem 1rem;
+    margin: 0;
+  }
+  .DefinitionList {
+    display: grid;
+    @include dark-mode {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    border-top: 1px solid var(--props-table-border-color);
+    grid-template-columns: fit-content(35%) 1fr;
+    padding: 1rem;
+    gap: 1rem;
+    font-size: var(--font-size-200);
+    @media screen and (max-width: $breakpointDesktopSmall) {
+      grid-template-columns: 1fr;
+    }
+    @media screen and (max-width: $breakpointTablet) {
+      grid-template-columns: fit-content(30%) 1fr;
+    }
+    @media screen and (max-width: $breakpointMobile) {
+      grid-template-columns: 1fr;
+    }
+    dt {
+    }
+    dd {
+    }
+  }
 }

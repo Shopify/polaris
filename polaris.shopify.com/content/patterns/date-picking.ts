@@ -17,11 +17,17 @@ const pattern: MultiVariantPattern = {
 1. The text input gives merchants the option to use the keyboard to enter a date.
 2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
 
-| | |
-|-|-|
-|**Schedule an event on a specific day**|Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers|
-|**Input memorable dates to forms**|An example of this is entering a birthdate.|
-:caption[**Use when merchants need to:**]{side=top}`,
+:::customtable
+
+### **Use when merchants need to:**
+
+**Schedule an event on a specific day**
+:   Some examples of this are setting a visibility date for a new online store page, or an estimated arrival date for a shipment. Found in: Product / transfers
+
+**Input memorable dates to forms**
+:   An example of this is entering a birthdate.
+
+:::`,
       usefulToKnow: `
 | | |
 |-|-|
@@ -98,11 +104,17 @@ const pattern: MultiVariantPattern = {
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
 3. Selecting a date range may require multiple steps, so merchants prefer to explicitly confirm their selection, unlike the single date picker which closes on selection.
 
-| | |
-|-|-|
-|**Analyze trends and data**|When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics|
-|**Schedule an event**|When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.|
-:caption[**Use when merchants need to:**]{side=top}`,
+:::customtable
+
+### **Use when merchants need to**
+
+**Analyze trends and data**
+:   When a merchant needs to view their business metrics so that they can learn and make decisions, they use the date range picker to frame data to certain time periods. Found in: Analytics
+
+**Schedule an event**
+:   When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.
+
+:::`,
       usefulToKnow: `
 | | |
 |-|-|
@@ -129,10 +141,14 @@ const pattern: MultiVariantPattern = {
 
 1. The date list provides merchants with suggested dates. This makes date picking simpler when useful dates are predictable and custom dates aren’t necessary.
 
-| | |
-|-|-|
-|**Select from templated dates**|When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview|
-:caption[**Use when merchants need to:**]{side=top}`,
+:::customtable
+
+### **Use when merchants need to**
+
+**Select from templated dates**
+:   When a templated list of dates is sufficient for the merchant task, use the date list because it is a task that does not require in-depth filtering of historical information. Found in: Inbox app / Overview
+
+:::`,
       usefulToKnow: `
 | | |
 |-|-|

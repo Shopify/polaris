@@ -1,9 +1,15 @@
 @import '../../styles/variables.scss';
 .ExampleFrame {
   background: #ffffff;
-  border-radius: var(--border-radius-600);
+
   overflow: hidden;
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 1px 2px rgba(0, 0, 0, 0.15);
+
+  @media screen and (max-width: $breakpointMobile) {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    border-radius: 0;
+  }
 
   .Buttons {
     display: flex;

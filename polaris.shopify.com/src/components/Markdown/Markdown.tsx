@@ -10,6 +10,9 @@ interface Props {
   components?: React.ComponentProps<typeof ReactMarkdown>['components'];
   remarkPlugins?: React.ComponentProps<typeof ReactMarkdown>['remarkPlugins'];
   rehypePlugins?: React.ComponentProps<typeof ReactMarkdown>['rehypePlugins'];
+  remarkRehypeOptions?: React.ComponentProps<
+    typeof ReactMarkdown
+  >['remarkRehypeOptions'];
 }
 
 function Markdown({
@@ -17,6 +20,7 @@ function Markdown({
   components,
   remarkPlugins,
   rehypePlugins,
+  remarkRehypeOptions,
 }: Props) {
   return (
     <ReactMarkdown
@@ -25,6 +29,7 @@ function Markdown({
         ...(remarkPlugins ?? []),
       ]}
       rehypePlugins={[rehypeRaw, ...(rehypePlugins ?? [])]}
+      remarkRehypeOptions={remarkRehypeOptions}
       components={{
         h1: ({children}) => {
           return <h1>{children}</h1>;
