@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.0.0
+
+### Major Changes
+
+- [`8e51956`](https://github.com/Shopify/polaris/commit/8e519563be68d254a5739dca8cfea3ec6e39418e) Thanks [@ninariccimarie](https://github.com/ninariccimarie)! - IndexTable selecting heading and row
+
 ## 12.0.1
 
 ### Patch Changes
