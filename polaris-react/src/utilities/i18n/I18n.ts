@@ -9,6 +9,7 @@ interface TranslationDictionary {
 
 export class I18n {
   private locale?: string;
+  private pluralRules: Intl.PluralRules;
   private translation: TranslationDictionary = {};
 
   /**
@@ -19,6 +20,11 @@ export class I18n {
     locale?: string,
   ) {
     this.locale = locale;
+
+    // Default to English plural rules for backwards compatibility
+    // for callers that don't pass a locale
+    this.pluralRules = new Intl.PluralRules(this.locale || 'en');
+
     // slice the array to make a shallow copy of it, so we don't accidentally
     // modify the original translation array
     this.translation = Array.isArray(translation)
@@ -30,7 +36,19 @@ export class I18n {
     id: string,
     replacements?: {[key: string]: string | number},
   ): string {
-    const text: string = get(this.translation, id, '');
+    const parent: string | object = get(this.translation, id, '');
+    let text: string;
+
+    if (
+      typeof parent === 'object' &&
+      replacements &&
+      replacements.count !== undefined
+    ) {
+      const pluralKey = this.pluralRules.select(replacements.count as number);
+      text = get(parent, `${pluralKey}`, '') || get(parent, `other`, '');
+    } else {
+      text = parent as string;
+    }
 
     if (!text) {
       return '';

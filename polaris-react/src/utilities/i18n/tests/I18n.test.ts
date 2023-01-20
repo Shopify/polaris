@@ -30,6 +30,51 @@ describe('I18n.translate', () => {
     expect(translations[0].two).toBe('deux');
   });
 
+  it('defaults to using English pluralization rules (for backwards compatibility)', () => {
+    const i18n = new I18n({
+      plurals: {one: '{count} (one)', other: '{count} (other)'},
+    });
+    expect(i18n.translate('plurals', {count: 0})).toBe('0 (other)');
+    expect(i18n.translate('plurals', {count: 1})).toBe('1 (one)');
+    expect(i18n.translate('plurals', {count: 2})).toBe('2 (other)');
+  });
+
+  it('falls back to using `other` plural key if the proper one is missing', () => {
+    const i18n = new I18n({plurals: {other: '{count} (other)'}}, 'en');
+    expect(i18n.translate('plurals', {count: 0})).toBe('0 (other)');
+    expect(i18n.translate('plurals', {count: 1})).toBe('1 (other)');
+    expect(i18n.translate('plurals', {count: 2})).toBe('2 (other)');
+  });
+
+  it('works when count is used but it is not a pluralization context', () => {
+    const i18n = new I18n({foo: 'bar {count}'}, 'en');
+    expect(i18n.translate('foo', {count: 0})).toBe('bar 0');
+  });
+
+  it('uses the pluralization rules for zh-Hant-TW locale', () => {
+    const i18n = new I18n({plurals: {other: '{count} (other)'}}, 'zh-Hant-TW');
+    expect(i18n.translate('plurals', {count: 0})).toBe('0 (other)');
+    expect(i18n.translate('plurals', {count: 1})).toBe('1 (other)');
+    expect(i18n.translate('plurals', {count: 2})).toBe('2 (other)');
+  });
+
+  it('uses the pluralization rules for fr locale', () => {
+    const i18n = new I18n(
+      {
+        plurals: {
+          many: '{count} (many)',
+          one: '{count} (one)',
+          other: '{count} (other)',
+        },
+      },
+      'fr',
+    );
+    expect(i18n.translate('plurals', {count: 0})).toBe('0 (one)');
+    expect(i18n.translate('plurals', {count: 1})).toBe('1 (one)');
+    expect(i18n.translate('plurals', {count: 2})).toBe('2 (other)');
+    expect(i18n.translate('plurals', {count: 1000000})).toBe('1000000 (many)');
+  });
+
   it('uses replacements', () => {
     const i18n = new I18n({key: 'foo {string} {number}'});
     expect(i18n.translate('key', {string: 'bar', number: 3})).toBe('foo bar 3');
