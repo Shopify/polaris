@@ -55,6 +55,8 @@ export function TooltipOverlay({
     />
   ) : null;
 
+  console.log('instance', instant);
+
   return markup;
 
   function renderTooltip(
@@ -65,12 +67,11 @@ export function TooltipOverlay({
     const containerClassName = classNames(
       styles.TooltipOverlay,
       measuring && styles.measuring,
+      !measuring && styles.measured,
       instant && mode === 'icon' && styles.instant,
       mode === 'icon' && styles.hasMode,
       positioning === 'above' && styles.positionedAbove,
     );
-
-    console.log(containerClassName);
 
     const contentClassName = classNames(styles.Content, width && styles[width]);
 
