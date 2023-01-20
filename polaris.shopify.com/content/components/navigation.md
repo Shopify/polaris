@@ -62,6 +62,7 @@ The navigation component should:
 - Use a major icon for item actions.
 - Use a minor icon for secondary actions.
 - Use the provided navigation section component to group navigation items.
+- Not use the [New badge](/patterns/new-badge) in navigation items.
 
 ---
 
