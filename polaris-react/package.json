@@ -67,7 +67,7 @@
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
-    "nanoid": "^4.0.0",
+    "nanoid": "3.3.4",
     "react-fast-compare": "^3.2.0",
     "react-transition-group": "^4.4.2"
   },
