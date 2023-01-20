@@ -1,10 +1,10 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.28.5",
+  "version": "0.29.0",
   "private": true,
   "scripts": {
-    "build": "yarn gen-assets && playroom build && next build",
-    "start": "next start",
+    "build": "yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
     "dev:playroom": "playroom start",
@@ -21,9 +21,10 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "^10.21.0",
-    "@shopify/polaris-icons": "^6.7.0",
+    "@shopify/polaris": "^10.22.0",
+    "@shopify/polaris-icons": "^6.8.0",
     "@shopify/polaris-tokens": "^6.3.0",
+    "@types/react-syntax-highlighter": "^15.5.6",
     "codesandbox": "^2.2.3",
     "framer-motion": "^6.5.1",
     "fuse.js": "^6.5.3",
@@ -32,9 +33,11 @@
     "lodash.throttle": "^4.1.1",
     "next": "^13.0.6",
     "prismjs": "^1.27.0",
+    "sharp": "^0.31.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.2",
+    "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1",
     "use-dark-mode": "^2.3.1"
   },

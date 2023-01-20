@@ -4,7 +4,6 @@ import React, {
   useState,
   MouseEvent,
   ReactNode,
-  useCallback,
   useRef,
   useLayoutEffect,
 } from 'react';
@@ -13,7 +12,6 @@ import {classNames} from '../../../../utilities/css';
 import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon, IconProps} from '../../../Icon';
-import {Key} from '../../../../types';
 import {Indicator} from '../../../Indicator';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
@@ -112,7 +110,6 @@ export function Item({
   const {isNavigationCollapsed} = useMediaQuery();
   const secondaryNavigationId = useUniqueId('SecondaryNavigation');
   const {location, onNavigationDismiss} = useContext(NavigationContext);
-  const [keyFocused, setKeyFocused] = useState(false);
   const navTextRef = useRef<HTMLSpanElement>(null);
   const [isTruncated, setIsTruncated] = useState(false);
 
@@ -128,19 +125,6 @@ export function Item({
       setIsTruncated(navTextNode.scrollHeight > navTextNode.clientHeight);
     }
   }, [truncateText]);
-
-  const handleKeyUp = useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.keyCode === Key.Tab) {
-        !keyFocused && setKeyFocused(true);
-      }
-    },
-    [keyFocused],
-  );
-
-  const handleBlur = useCallback(() => {
-    keyFocused && setKeyFocused(false);
-  }, [keyFocused]);
 
   const tabIndex = disabled ? -1 : 0;
 
@@ -200,7 +184,6 @@ export function Item({
     const className = classNames(
       styles.Item,
       disabled && styles['Item-disabled'],
-      keyFocused && styles.keyFocused,
       selectedOverride && styles['Item-selected'],
     );
 
@@ -220,8 +203,6 @@ export function Item({
               aria-disabled={disabled}
               aria-label={accessibilityLabel}
               onClick={getClickHandler(onClick)}
-              onKeyUp={handleKeyUp}
-              onBlur={handleBlur}
             >
               {iconMarkup}
               {itemLabelMarkup}
@@ -311,7 +292,6 @@ export function Item({
     selected && canBeActive && styles['Item-selected'],
     showExpanded && styles.subNavigationActive,
     childIsActive && styles['Item-child-active'],
-    keyFocused && styles.keyFocused,
   );
 
   let secondaryNavigationMarkup: ReactNode = null;
@@ -373,8 +353,6 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
-        onKeyUp={handleKeyUp}
-        onBlur={handleBlur}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,

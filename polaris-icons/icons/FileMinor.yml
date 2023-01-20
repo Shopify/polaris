@@ -1,0 +1,13 @@
+name: File
+set: minor
+description: Used to denote a file such as images, video, pdfs, etc.
+keywords:
+  - file
+  - images
+  - video
+authors:
+  - Leina Leung
+date_added: 2023-01-17
+date_modified: 2023-01-17
+version: 1
+exclusive_use:

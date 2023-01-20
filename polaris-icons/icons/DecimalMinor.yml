@@ -1,0 +1,12 @@
+name: Decimal
+set: minor
+description: Used to denote a decimal number
+keywords:
+  - decimal
+  - number
+authors:
+  - Leina Leung
+date_added: 2023-01-12
+date_modified: 2023-01-12
+version: 1
+exclusive_use:

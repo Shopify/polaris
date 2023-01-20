@@ -1,5 +1,22 @@
 # Changelog
 
+## 10.22.0
+
+### Minor Changes
+
+- [#8054](https://github.com/Shopify/polaris/pull/8054) [`c44c96c6b`](https://github.com/Shopify/polaris/commit/c44c96c6b455d0a474f9ffb346f45b312e0a66bb) Thanks [@mrcthms](https://github.com/mrcthms)! - Update focus states to be present on :focus-visible rather than :focus
+
+### Patch Changes
+
+- [#8080](https://github.com/Shopify/polaris/pull/8080) [`1c926b9da`](https://github.com/Shopify/polaris/commit/1c926b9dae3531393d51439d5391f1c4bae97bb3) Thanks [@LauraAubin](https://github.com/LauraAubin)! - Added an optional `zIndexOverride` prop to `Tooltip`
+
+* [#8077](https://github.com/Shopify/polaris/pull/8077) [`dc2ed0a5c`](https://github.com/Shopify/polaris/commit/dc2ed0a5c98db41610ec249cbef8be8f414ad32f) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed data attribute css from legacy polyfill
+
+- [#8040](https://github.com/Shopify/polaris/pull/8040) [`ba6b04c79`](https://github.com/Shopify/polaris/commit/ba6b04c79844abc26654a4251e37734eb7897780) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed modal footer vertical alignment when noScroll is true
+
+- Updated dependencies [[`dca31f2a0`](https://github.com/Shopify/polaris/commit/dca31f2a00737c77a96d26da1535cad83e5af0b0), [`56b757036`](https://github.com/Shopify/polaris/commit/56b75703622a8abc987cac8b87dcd7b53c16e508), [`f67e2997e`](https://github.com/Shopify/polaris/commit/f67e2997ef6f5ea026ec076fe480bb7924620f34), [`68acc4593`](https://github.com/Shopify/polaris/commit/68acc45939e64239be2d9d1a854db096e3620556), [`d5da4778c`](https://github.com/Shopify/polaris/commit/d5da4778c73179b5f1606f3a8b029b9c4a3b818c), [`1aeed2414`](https://github.com/Shopify/polaris/commit/1aeed2414b8be48e7c3009663fbd407bd40aa3c9)]:
+  - @shopify/polaris-icons@6.8.0
+
 ## 10.21.0
 
 ### Minor Changes
