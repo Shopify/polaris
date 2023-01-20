@@ -7,7 +7,7 @@ import {
   PositionedOverlay,
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
-import type {Width, Padding, BorderRadius} from '../../Tooltip';
+import type {Width, Padding, BorderRadius, TooltipMode} from '../../Tooltip';
 
 import styles from './TooltipOverlay.scss';
 
@@ -24,6 +24,8 @@ export interface TooltipOverlayProps {
   borderRadius?: BorderRadius;
   zIndexOverride?: number;
   onClose(): void;
+  instant?: boolean;
+  mode?: TooltipMode;
 }
 
 export function TooltipOverlay({
@@ -38,6 +40,8 @@ export function TooltipOverlay({
   padding,
   borderRadius,
   zIndexOverride,
+  instant,
+  mode,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -61,8 +65,12 @@ export function TooltipOverlay({
     const containerClassName = classNames(
       styles.TooltipOverlay,
       measuring && styles.measuring,
+      instant && mode === 'icon' && styles.instant,
+      mode === 'icon' && styles.hasMode,
       positioning === 'above' && styles.positionedAbove,
     );
+
+    console.log(containerClassName);
 
     const contentClassName = classNames(styles.Content, width && styles[width]);
 

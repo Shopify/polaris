@@ -10,11 +10,11 @@ export interface EphemeralPresenceManagerProps {
 type Context = NonNullable<ContextType<typeof EphemeralPresenceManagerContext>>;
 
 type PresenceList = {
-  [key in EphemeralPresenceKey]: boolean;
+  [key in EphemeralPresenceKey]: number;
 };
 
 const defaultState = {
-  tooltip: false,
+  tooltip: 0,
 };
 
 export function EphemeralPresenceManager({
@@ -24,10 +24,9 @@ export function EphemeralPresenceManager({
 
   const addPresence = useCallback<Context['addPresence']>(
     (key: EphemeralPresenceKey) => {
-      console.log('adding presence', key);
       setPresenceList((prevList) => ({
         ...prevList,
-        [key]: true,
+        [key]: prevList[key] + 1,
       }));
     },
     [],
@@ -37,7 +36,7 @@ export function EphemeralPresenceManager({
     (key: EphemeralPresenceKey) => {
       setPresenceList((prevList) => ({
         ...prevList,
-        [key]: false,
+        [key]: prevList[key] - 1,
       }));
     },
     [],

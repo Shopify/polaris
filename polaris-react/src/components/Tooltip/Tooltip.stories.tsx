@@ -9,6 +9,7 @@ import {
   TextField,
   Text,
   Tooltip,
+  Box,
 } from '@shopify/polaris';
 
 export default {
@@ -235,18 +236,40 @@ export function ActivatorAsDiv() {
 
 export function IconTooltips() {
   return (
-    <Stack>
-      <Tooltip mode="icon" content="Bold">
-        <Text variant="bodyMd" fontWeight="semibold" as="span">
-          1 second hover delay
-        </Text>
-      </Tooltip>
-      <Tooltip mode="icon" content="Italic">
-        <Text variant="bodyMd" fontWeight="semibold" as="span">
-          1 second hover delay
-        </Text>
-      </Tooltip>
-    </Stack>
+    <Box padding="16">
+      <Stack>
+        <ButtonGroup segmented fullWidth>
+          <Tooltip content="Bold" mode="icon">
+            <Button>B</Button>
+          </Tooltip>
+          <Tooltip content="Italic" mode="icon">
+            <Button>I</Button>
+          </Tooltip>
+          <Tooltip content="Underline" mode="icon">
+            <Button>U</Button>
+          </Tooltip>
+          <Tooltip content="Strikethrough" mode="icon">
+            <Button>S</Button>
+          </Tooltip>
+          <Tooltip content="Bold" preferredPosition="above" mode="icon">
+            <Button>B</Button>
+          </Tooltip>
+          <Tooltip content="Italic" preferredPosition="above" mode="icon">
+            <Button>I</Button>
+          </Tooltip>
+          <Tooltip content="Underline" preferredPosition="above" mode="icon">
+            <Button>U</Button>
+          </Tooltip>
+          <Tooltip
+            content="Strikethrough"
+            preferredPosition="above"
+            mode="icon"
+          >
+            <Button>S</Button>
+          </Tooltip>
+        </ButtonGroup>
+      </Stack>
+    </Box>
   );
 }
 
