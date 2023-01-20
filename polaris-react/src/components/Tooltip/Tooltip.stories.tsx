@@ -239,31 +239,47 @@ export function IconTooltips() {
     <Box padding="16">
       <Stack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip content="Bold" mode="icon">
+          <Tooltip content="Bold" mode="icon" keyboardShortcut="⌘B">
             <Button>B</Button>
           </Tooltip>
-          <Tooltip content="Italic" mode="icon">
+          <Tooltip content="Italic" mode="icon" keyboardShortcut="⌘I">
             <Button>I</Button>
           </Tooltip>
-          <Tooltip content="Underline" mode="icon">
+          <Tooltip content="Underline" mode="icon" keyboardShortcut="⌘U">
             <Button>U</Button>
           </Tooltip>
-          <Tooltip content="Strikethrough" mode="icon">
+          <Tooltip content="Strikethrough" mode="icon" keyboardShortcut="⌘S">
             <Button>S</Button>
           </Tooltip>
-          <Tooltip content="Bold" preferredPosition="above" mode="icon">
+          <Tooltip
+            content="Bold"
+            preferredPosition="above"
+            mode="icon"
+            keyboardShortcut="⌘B"
+          >
             <Button>B</Button>
           </Tooltip>
-          <Tooltip content="Italic" preferredPosition="above" mode="icon">
+          <Tooltip
+            content="Italic"
+            preferredPosition="above"
+            mode="icon"
+            keyboardShortcut="⌘U"
+          >
             <Button>I</Button>
           </Tooltip>
-          <Tooltip content="Underline" preferredPosition="above" mode="icon">
+          <Tooltip
+            content="Underline"
+            preferredPosition="above"
+            mode="icon"
+            keyboardShortcut="⌘U"
+          >
             <Button>U</Button>
           </Tooltip>
           <Tooltip
             content="Strikethrough"
             preferredPosition="above"
             mode="icon"
+            keyboardShortcut="⌘S"
           >
             <Button>S</Button>
           </Tooltip>

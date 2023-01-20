@@ -94,6 +94,7 @@ export function Tooltip({
   persistOnClick,
   onOpen,
   onClose,
+  keyboardShortcut,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {
@@ -167,42 +168,6 @@ export function Tooltip({
 
   const isATooltipCurrentlyVisible = presenceList.tooltip > 1;
 
-  // if (mode === 'icon') {
-  //   return (
-  //     <IconTooltip
-  //       activatorWrapper={activatorWrapper}
-  //       id={id}
-  //       preferredPosition={preferredPosition}
-  //       activator={activatorNode}
-  //       active={active}
-  //       accessibilityLabel={accessibilityLabel}
-  //       onClose={noop}
-  //       preventInteraction={dismissOnMouseOut}
-  //       width={width}
-  //       padding={padding}
-  //       borderRadius={borderRadius}
-  //       zIndexOverride={zIndexOverride}
-  //       content={content}
-  //       onFocus={() => {
-  //         handleOpen?.();
-  //         handleFocus();
-  //       }}
-  //       onBlur={() => {
-  //         handleClose?.();
-  //         handleBlur();
-  //       }}
-  //       onMouseLeave={handleMouseLeave}
-  //       onMouseOver={handleMouseEnterFix}
-  //       ref={setActivator}
-  //       onKeyUp={handleKeyUp}
-  //       className={wrapperClassNames}
-  //       instant={isATooltipCurrentlyVisible}
-  //     >
-  //       {children}
-  //     </IconTooltip>
-  //   );
-  // }
-
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
       <TooltipOverlay
@@ -219,6 +184,7 @@ export function Tooltip({
         zIndexOverride={zIndexOverride}
         instant={!shouldAnimate}
         mode={mode}
+        keyboardShortcut={keyboardShortcut}
       >
         {content}
       </TooltipOverlay>

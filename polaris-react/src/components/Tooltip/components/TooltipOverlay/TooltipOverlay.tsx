@@ -10,6 +10,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius, TooltipMode} from '../../Tooltip';
 
 import styles from './TooltipOverlay.scss';
+import {Text} from '../../../Text';
 
 export interface TooltipOverlayProps {
   id: string;
@@ -26,6 +27,7 @@ export interface TooltipOverlayProps {
   onClose(): void;
   instant?: boolean;
   mode?: TooltipMode;
+  keyboardShortcut?: string;
 }
 
 export function TooltipOverlay({
@@ -42,6 +44,7 @@ export function TooltipOverlay({
   zIndexOverride,
   instant,
   mode,
+  keyboardShortcut,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -54,8 +57,6 @@ export function TooltipOverlay({
       zIndexOverride={zIndexOverride}
     />
   ) : null;
-
-  console.log('instance', instant);
 
   return markup;
 
@@ -103,6 +104,11 @@ export function TooltipOverlay({
           }
         >
           {children}
+          {keyboardShortcut ? (
+            <Text as="span" variant="bodyMd" color="subdued">
+              {` ${keyboardShortcut}`}
+            </Text>
+          ) : null}
         </div>
       </div>
     );
