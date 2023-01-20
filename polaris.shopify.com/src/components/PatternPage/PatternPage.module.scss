@@ -65,6 +65,7 @@
   z-index: 5;
 
   button {
+    z-index: 5;
     padding: 0.5rem 1rem;
     text-align: left;
     display: flex;
@@ -101,18 +102,18 @@
 
 @media screen and (max-width: $breakpointMobile) {
   .TabGroup {
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
   }
   .Panel {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
   .ExamplesList {
     position: sticky;
     top: 60px;
     background-color: white;
     button:first-of-type {
-      padding-left: 1.5rem;
+      padding-left: 1.25rem;
     }
   }
 }
@@ -176,7 +177,7 @@
    * The second (img) column should never be bigger than 30rem.
    * The first (text) column should never shrink below 35% of the container.
    * The first (text) column should grow to fill the remaining space (1fr).
-   * The second (img) column should never shrink below */
+   * The second (img) column should never shrink below 20rem. */
   grid-template-columns:
     minmax(
       // Give this column a minimum width (thin container)
@@ -195,6 +196,11 @@
       // Maximum width (wide container) - avoids gigantic images
       30rem
     );
+
+  @media screen and (max-width: $breakpointMobile) {
+    grid-template-columns: 1fr;
+    row-gap: var(--p-space-4);
+  }
 
   .UsageGuidelinesRow {
     display: contents;
@@ -259,10 +265,6 @@
     }
     @media screen and (max-width: $breakpointMobile) {
       grid-template-columns: 1fr;
-    }
-    dt {
-    }
-    dd {
     }
   }
 }
