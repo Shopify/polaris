@@ -111,7 +111,11 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
       {action.loading
         ? spinnerMarkup
         : unstyledButtonFrom(action, {
-            className: `${styles.Button} ${styles.PrimaryAction}`,
+            className: classNames(
+              styles.Button,
+              styles.PrimaryAction,
+              action.disabled && styles.disabled,
+            ),
           })}
     </Box>
   ) : null;

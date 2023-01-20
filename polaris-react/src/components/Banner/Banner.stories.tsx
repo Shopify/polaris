@@ -108,6 +108,51 @@ export function Critical() {
   );
 }
 
+export function DisabledPrimaryAction() {
+  return (
+    <>
+      <Banner
+        title="USPS has updated their rates"
+        action={{content: 'Update rates', url: '', disabled: true}}
+        secondaryAction={{content: 'Learn more'}}
+        status="info"
+        onDismiss={() => {}}
+      >
+        <p>Make sure you know how these changes affect your store.</p>
+      </Banner>
+      <Banner
+        title="Your shipping label is ready to print."
+        status="success"
+        action={{content: 'Print label', disabled: true}}
+        onDismiss={() => {}}
+      />
+      <Banner
+        title="Before you can purchase a shipping label, this change needs to be made:"
+        action={{content: 'Edit address', disabled: true}}
+        status="warning"
+      >
+        <List>
+          <List.Item>
+            The name of the city you’re shipping to has characters that aren’t
+            allowed. City name can only include spaces and hyphens.
+          </List.Item>
+        </List>
+      </Banner>
+      <Banner
+        title="High risk of fraud detected"
+        action={{content: 'Review risk analysis', disabled: true}}
+        status="critical"
+      >
+        <p>
+          Before fulfilling this order or capturing payment, please{' '}
+          <Link url="">review the Risk Analysis</Link> and determine if this
+          order is fraudulent.
+        </p>
+      </Banner>
+    </>
+  );
+}
+
 export function InAModal() {
   const [active, setActive] = useState(false);
 
