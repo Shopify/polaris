@@ -52,6 +52,7 @@ interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
 interface IndexTableHeadingTitleNode extends IndexTableHeadingBase {
   title: React.ReactNode;
   id: string;
+  headingIcon?: React.ReactNode;
 }
 
 export type IndexTableHeading =
@@ -891,20 +892,36 @@ function IndexTableBase({
         </span>
       );
 
-      const sortMarkup = (
+      const iconButton = (
         <UnstyledButton
           onClick={() => handleSortHeadingClick(index, newDirection)}
           className={styles.TableHeadingSortButton}
           tabIndex={selectMode ? -1 : 0}
         >
           {iconMarkup}
+        </UnstyledButton>
+      );
 
+      const headingButton = (
+        <UnstyledButton
+          onClick={() => handleSortHeadingClick(index, newDirection)}
+          className={styles.TableHeadingSortButton}
+          tabIndex={selectMode ? -1 : 0}
+        >
           {headingContent}
         </UnstyledButton>
       );
 
+      const headingIcon = 'headingIcon' in heading ? heading.headingIcon : null;
+
       if (!sortToggleLabels || selectMode) {
-        return sortMarkup;
+        return (
+          <Stack spacing="none" wrap={false} alignment="center">
+            {headingButton}
+            {headingIcon}
+            {iconButton}
+          </Stack>
+        );
       }
 
       const tooltipDirection = isCurrentlySorted
@@ -914,9 +931,15 @@ function IndexTableBase({
       const tooltipContent = sortToggleLabels[index][tooltipDirection];
 
       return (
-        <Tooltip content={tooltipContent} activatorWrapper="div">
-          {sortMarkup}
-        </Tooltip>
+        <Stack spacing="none" wrap={false} alignment="center">
+          <Tooltip content={tooltipContent} activatorWrapper="div">
+            {headingButton}
+          </Tooltip>
+          {headingIcon}
+          <Tooltip content={tooltipContent} activatorWrapper="div">
+            {iconButton}
+          </Tooltip>
+        </Stack>
       );
     }
     return headingContent;
