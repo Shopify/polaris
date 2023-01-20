@@ -338,7 +338,7 @@ export default function PatternsDatePickingPage() {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
   const [showCode, toggleCode] = useState(false);
-  const tabListRef = useRef<HTMLDivElement | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
   const onTabChange = (index: number) => {
     setExampleIndex(index);
     replace(
@@ -376,7 +376,11 @@ export default function PatternsDatePickingPage() {
       <PageMeta title={pattern.title} description={description} />
 
       <Page showTOC={true}>
-        <Stack gap="8">
+        {/*
+          We set the scrollRef here, because this is the top most element on the page,
+          scrolling to this will ensure that the tabs are always in view in desktop and on mobile
+        */}
+        <Stack gap="8" ref={scrollRef}>
           <Stack gap="4">
             <Heading as="h1">
               <Row wrap gap="2" className={styles.Heading}>
@@ -402,19 +406,15 @@ export default function PatternsDatePickingPage() {
             onChange={onTabChange}
           >
             <div className={styles.TabGroup} data-selected={exampleIndex}>
-              <Tab.List
-                className={styles.ExamplesList}
-                id="examples"
-                ref={tabListRef}
-              >
+              <Tab.List className={styles.ExamplesList} id="examples">
                 {pattern.variants.map((variant) => (
                   <Tab
                     key={`${variant.slug}-tab`}
                     className={styles.Tab}
                     onFocus={() => {
-                      if (!tabListRef.current) return;
-                      tabListRef.current.scrollIntoView({
-                        block: 'end',
+                      if (!scrollRef.current) return;
+                      scrollRef.current.scrollIntoView({
+                        block: 'start',
                         inline: 'nearest',
                         behavior: 'smooth',
                       });
