@@ -8,12 +8,17 @@ interface TranslationDictionary {
 }
 
 export class I18n {
+  private locale?: string;
   private translation: TranslationDictionary = {};
 
   /**
    * @param translation A locale object or array of locale objects that overrides default translations. If specifying an array then your desired language dictionary should come first, followed by your fallback language dictionaries
    */
-  constructor(translation: TranslationDictionary | TranslationDictionary[]) {
+  constructor(
+    translation: TranslationDictionary | TranslationDictionary[],
+    locale?: string,
+  ) {
+    this.locale = locale;
     // slice the array to make a shallow copy of it, so we don't accidentally
     // modify the original translation array
     this.translation = Array.isArray(translation)
