@@ -914,7 +914,11 @@ function IndexTableBase({
       const tooltipContent = sortToggleLabels[index][tooltipDirection];
 
       return (
-        <Tooltip content={tooltipContent} activatorWrapper="div">
+        <Tooltip
+          content={tooltipContent}
+          activatorWrapper="div"
+          dismissOnMouseOut
+        >
           {sortMarkup}
         </Tooltip>
       );
