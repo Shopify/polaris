@@ -233,6 +233,23 @@ export function ActivatorAsDiv() {
   );
 }
 
+export function IconTooltips() {
+  return (
+    <Stack>
+      <Tooltip mode="icon" content="Bold">
+        <Text variant="bodyMd" fontWeight="semibold" as="span">
+          1 second hover delay
+        </Text>
+      </Tooltip>
+      <Tooltip mode="icon" content="Italic">
+        <Text variant="bodyMd" fontWeight="semibold" as="span">
+          1 second hover delay
+        </Text>
+      </Tooltip>
+    </Stack>
+  );
+}
+
 export function HasUnderline() {
   return (
     <Tooltip active content="This tooltip has an underline" hasUnderline>

@@ -5,19 +5,24 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
+import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 
-import {TooltipOverlay, TooltipOverlayProps} from './components';
+import {TooltipOverlay, TooltipOverlayProps, IconTooltip} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
 export type BorderRadius = Extract<ShapeBorderRadiusScale, '1' | '2'>;
 
+export type TooltipMode = 'icon';
+
 export interface TooltipProps {
+  /** Dictates how the Tooltip behaves */
+  mode?: TooltipMode;
   /** The element that will activate to tooltip */
   children?: React.ReactNode;
   /** The content to display within the tooltip */
@@ -67,7 +72,10 @@ export interface TooltipProps {
   onClose?(): void;
 }
 
+const HOVER_OUT_TIMEOUT = 300;
+
 export function Tooltip({
+  mode,
   children,
   content,
   dismissOnMouseOut,
@@ -97,11 +105,14 @@ export function Tooltip({
   );
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const {presenceList, addPresence, removePresence} =
+    useEphemeralPresenceManager();
 
   const id = useUniqueId('TooltipContent');
   const activatorContainer = useRef<HTMLElement>(null);
   const mouseEntered = useRef(false);
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
+  const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -121,13 +132,28 @@ export function Tooltip({
       if (hoverDelayTimeout.current) {
         clearTimeout(hoverDelayTimeout.current);
       }
+      if (hoverOutTimeout.current) {
+        clearTimeout(hoverOutTimeout.current);
+      }
     };
   }, []);
+
+  const handleOpen = useCallback(() => {
+    onOpen?.();
+    addPresence('tooltip');
+  }, [addPresence]);
+
+  const handleClose = useCallback(() => {
+    onClose?.();
+    hoverOutTimeout.current = setTimeout(() => {
+      removePresence('tooltip');
+    }, HOVER_OUT_TIMEOUT);
+  }, [removePresence]);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
       if (event.key !== 'Escape') return;
-      onClose?.();
+      handleClose?.();
       handleBlur();
       persistOnClick && togglePersisting();
     },
@@ -162,11 +188,11 @@ export function Tooltip({
   return (
     <WrapperComponent
       onFocus={() => {
-        onOpen?.();
+        handleOpen?.();
         handleFocus();
       }}
       onBlur={() => {
-        onClose?.();
+        handleClose?.();
         handleBlur();
         persistOnClick && togglePersisting();
       }}
@@ -200,11 +226,11 @@ export function Tooltip({
     mouseEntered.current = true;
     if (hoverDelay) {
       hoverDelayTimeout.current = setTimeout(() => {
-        onOpen?.();
+        handleOpen?.();
         handleFocus();
       }, hoverDelay);
     } else {
-      onOpen?.();
+      handleOpen?.();
       handleFocus();
     }
   }
@@ -216,7 +242,7 @@ export function Tooltip({
     }
 
     mouseEntered.current = false;
-    onClose?.();
+    handleClose?.();
 
     if (!persist) {
       handleBlur();
