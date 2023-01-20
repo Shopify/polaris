@@ -225,6 +225,7 @@ export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   index?: number;
 }
 
+/** Plannig to add new propery activatorRef here */
 export interface MenuGroupDescriptor extends BadgeAction {
   /** Menu group title */
   title: string;
