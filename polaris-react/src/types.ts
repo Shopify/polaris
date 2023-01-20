@@ -1,3 +1,4 @@
+import type {RefObject} from 'react';
 import type React from 'react';
 
 /* eslint-disable @shopify/strict-component-boundaries */
@@ -223,9 +224,10 @@ export interface ComplexAction
 export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
+  /** Ref to activator */
+  activatorRef?: RefObject<HTMLDivElement | HTMLButtonElement>;
 }
 
-/** Plannig to add new propery activatorRef here */
 export interface MenuGroupDescriptor extends BadgeAction {
   /** Menu group title */
   title: string;
