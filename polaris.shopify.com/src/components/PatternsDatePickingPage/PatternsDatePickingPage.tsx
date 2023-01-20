@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState, useRef} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {Tab} from '@headlessui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -338,7 +338,6 @@ export default function PatternsDatePickingPage() {
   const [exampleIndex, setExampleIndex] = useState(0);
   const {query, replace, isReady} = useRouter();
   const [showCode, toggleCode] = useState(false);
-  const scrollRef = useRef<HTMLDivElement | null>(null);
   const onTabChange = (index: number) => {
     setExampleIndex(index);
     replace(
@@ -380,7 +379,7 @@ export default function PatternsDatePickingPage() {
           We set the scrollRef here, because this is the top most element on the page,
           scrolling to this will ensure that the tabs are always in view in desktop and on mobile
         */}
-        <Stack gap="8" ref={scrollRef}>
+        <Stack gap="8">
           <Stack gap="4">
             <Heading as="h1">
               <Row wrap gap="2" className={styles.Heading}>
@@ -412,8 +411,8 @@ export default function PatternsDatePickingPage() {
                     key={`${variant.slug}-tab`}
                     className={styles.Tab}
                     onFocus={() => {
-                      if (!scrollRef.current) return;
-                      scrollRef.current.scrollIntoView({
+                      if (typeof document === 'undefined') return;
+                      document.body.scrollIntoView({
                         block: 'start',
                         inline: 'nearest',
                         behavior: 'smooth',
