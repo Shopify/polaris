@@ -70,12 +70,21 @@ function convertGroupToSection({
   title,
   actions,
   disabled,
+  sections = [],
 }: MenuGroupDescriptor): ActionListSection {
   return {
     title,
-    items: actions.map((action) => ({
-      ...action,
-      disabled: disabled || action.disabled,
-    })),
+    items: actions
+      .map((action) => ({
+        ...action,
+        disabled: disabled || action.disabled,
+      }))
+      .concat(
+        sections.map((section: ActionListSection) => ({
+          ...section.items,
+          disabled,
+        })),
+      )
+      .flat(),
   };
 }

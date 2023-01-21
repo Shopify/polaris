@@ -202,6 +202,8 @@ export interface ActionListItemDescriptor
   active?: boolean;
   /** Defines a role for the action */
   role?: string;
+  /** Diabled */
+  disabled?: boolean;
 }
 
 export interface ActionListSection {
@@ -230,6 +232,8 @@ export interface MenuGroupDescriptor extends BadgeAction {
   title: string;
   /** List of actions */
   actions: ActionListItemDescriptor[];
+  /** List of sections */
+  sections?: ActionListSection[];
   /** Icon to display */
   icon?: IconableAction['icon'];
   /** Action details */
