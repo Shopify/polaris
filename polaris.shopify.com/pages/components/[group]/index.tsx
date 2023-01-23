@@ -1,15 +1,13 @@
-import {Text} from '@shopify/polaris';
 import fs from 'fs';
 import globby from 'globby';
-import Image from 'next/image';
-import Link from 'next/link';
 import path from 'path';
+import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
 import Grid from '../../../src/components/Grid';
-
-import Markdown from '../../../src/components/Markdown';
 import Page from '../../../src/components/Page';
+import Markdown from '../../../src/components/Markdown';
 import TipBanner from '../../../src/components/TipBanner/TipBanner';
 import {parseMarkdown} from '../../../src/utils/markdown.mjs';
+import {stripMarkdownLinks} from '../../../src/utils/various';
 
 interface Group {
   title: string;
@@ -50,27 +48,16 @@ export default function GroupPage({
       <Grid condensed>
         {components.split(', ').map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
-          const componentDescription = componentDescriptions[componentSlug];
-          const imageSource = `/images/components/${group}/${componentSlug}.png`;
-
           return (
-            <Link
+            <Grid.Item
               key={component}
-              href={`/components/${group}/${componentSlug}`}
-            >
-              <Image
-                src={imageSource}
-                width={700}
-                height={400}
-                style={{width: '100%', height: 'auto'}}
-                alt=""
-              />
-
-              <Text as="h4" variant="headingSm">
-                {component}
-              </Text>
-              <p>{componentDescription}</p>
-            </Link>
+              title={component}
+              description={stripMarkdownLinks(
+                componentDescriptions[componentSlug],
+              )}
+              url={`/components/${group}/${componentSlug}`}
+              renderPreview={() => <ComponentThumbnail title={component} />}
+            />
           );
         })}
       </Grid>
@@ -81,22 +68,14 @@ export default function GroupPage({
   const componentsFromPaths = (
     <Grid condensed>
       {componentPaths.map((component) => {
-        const componentDescription = componentDescriptions[component];
-        const imageSource = `/images/components/${group}/${component}.png`;
         return (
-          <Link key={component} href={`/components/${group}/${component}`}>
-            <Image
-              src={imageSource}
-              width={700}
-              height={400}
-              style={{width: '100%', height: 'auto'}}
-              alt=""
-            />
-            <Text as="h4" variant="headingSm">
-              {capitalize(component.replace(/-/g, ' '))}
-            </Text>
-            <p>{componentDescription}</p>
-          </Link>
+          <Grid.Item
+            key={component}
+            title={capitalize(component.replace(/-/g, ' '))}
+            description={stripMarkdownLinks(componentDescriptions[component])}
+            url={`/components/${group}/${component}`}
+            renderPreview={() => <ComponentThumbnail title={component} />}
+          />
         );
       })}
     </Grid>
@@ -183,7 +162,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export function capitalize(word = '') {
+function capitalize(word = '') {
   const wordLower = word.toLowerCase();
   return wordLower.charAt(0).toUpperCase() + wordLower.slice(1);
 }
