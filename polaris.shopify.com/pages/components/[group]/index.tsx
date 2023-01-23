@@ -2,6 +2,7 @@ import {Text} from '@shopify/polaris';
 import fs from 'fs';
 import globby from 'globby';
 import Image from 'next/image';
+import Link from 'next/link';
 import path from 'path';
 import Grid from '../../../src/components/Grid';
 
@@ -53,7 +54,10 @@ export default function GroupPage({
           const imageSource = `/images/components/${group}/${componentSlug}.png`;
 
           return (
-            <div key={component}>
+            <Link
+              key={component}
+              href={`/components/${group}/${componentSlug}`}
+            >
               <Image
                 src={imageSource}
                 width={700}
@@ -66,7 +70,7 @@ export default function GroupPage({
                 {component}
               </Text>
               <p>{componentDescription}</p>
-            </div>
+            </Link>
           );
         })}
       </Grid>
@@ -80,7 +84,7 @@ export default function GroupPage({
         const componentDescription = componentDescriptions[component];
         const imageSource = `/images/components/${group}/${component}.png`;
         return (
-          <div key={component}>
+          <Link key={component} href={`/components/${group}/${component}`}>
             <Image
               src={imageSource}
               width={700}
@@ -92,7 +96,7 @@ export default function GroupPage({
               {capitalize(component.replace(/-/g, ' '))}
             </Text>
             <p>{componentDescription}</p>
-          </div>
+          </Link>
         );
       })}
     </Grid>
