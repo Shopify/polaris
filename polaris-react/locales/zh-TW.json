@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} 個字元",
-      "characterCountWithMaxLength": "已使用 {count} 個字元，上限為 {limit} 個字元"
+      "characterCountWithMaxLength": "已使用 {characterCount} 個字元，上限為 {limit} 個字元"
     },
     "TopBar": {
       "toggleMenuLabel": "切換選單",

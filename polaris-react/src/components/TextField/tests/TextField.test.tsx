@@ -641,17 +641,18 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(
-        textField.find('div', {
-          id: 'MyField-CharacterCounter',
-        }),
-      ).toContainReactText('4');
+      const div = textField.find('div', {
+        id: 'MyField-CharacterCounter',
+      });
+
+      expect(div).toContainReactText('4');
+      expect(div!.props).toHaveProperty('aria-label', '4 characters');
     });
 
     it('displays remaining characters as fraction in input field with maxLength', () => {
       const textField = mountWithApp(
         <TextField
-          value="test"
+          value="T"
           maxLength={10}
           showCharacterCount
           label="TextField"
@@ -661,11 +662,15 @@ describe('<TextField />', () => {
         />,
       );
 
-      expect(
-        textField.find('div', {
-          id: 'MyField-CharacterCounter',
-        }),
-      ).toContainReactText('4/10');
+      const div = textField.find('div', {
+        id: 'MyField-CharacterCounter',
+      });
+
+      expect(div).toContainReactText('1/10');
+      expect(div!.props).toHaveProperty(
+        'aria-label',
+        '1 of 10 characters used',
+      );
     });
 
     it('announces updated character count only when input field is in focus', () => {

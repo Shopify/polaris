@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "Počet znaků: {count}",
-      "characterCountWithMaxLength": "Použité znaky: {count} z {limit}"
+      "characterCountWithMaxLength": "Použité znaky: {characterCount} z {limit}"
     },
     "TopBar": {
       "toggleMenuLabel": "Přepnout nabídku",

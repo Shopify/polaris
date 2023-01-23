@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count}자",
-      "characterCountWithMaxLength": "{count}/{limit}자 입력함"
+      "characterCountWithMaxLength": "{characterCount}/{limit}자 입력함"
     },
     "TopBar": {
       "toggleMenuLabel": "토글 메뉴",

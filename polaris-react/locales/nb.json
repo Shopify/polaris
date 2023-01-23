@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} tegn",
-      "characterCountWithMaxLength": "{count} av {limit} tegn brukt"
+      "characterCountWithMaxLength": "{characterCount} av {limit} tegn brukt"
     },
     "TopBar": {
       "toggleMenuLabel": "Aktiver/deaktiver meny",

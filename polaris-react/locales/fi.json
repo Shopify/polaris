@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} merkkiä",
-      "characterCountWithMaxLength": "{count}/{limit} merkkiä käytetty"
+      "characterCountWithMaxLength": "{characterCount}/{limit} merkkiä käytetty"
     },
     "TopBar": {
       "toggleMenuLabel": "Valikon vaihto",

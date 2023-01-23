@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count}文字",
-      "characterCountWithMaxLength": "{limit}中{count}の文字を使用"
+      "characterCountWithMaxLength": "{limit}中{characterCount}の文字を使用"
     },
     "TopBar": {
       "toggleMenuLabel": "メニューを切り替える",

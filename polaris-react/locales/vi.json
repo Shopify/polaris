@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} ký tự",
-      "characterCountWithMaxLength": "Đã sử dụng {count}/{limit} ký tự"
+      "characterCountWithMaxLength": "Đã sử dụng {characterCount}/{limit} ký tự"
     },
     "TopBar": {
       "toggleMenuLabel": "Bật/tắt menu",

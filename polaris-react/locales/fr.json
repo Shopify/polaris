@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} caractères",
-      "characterCountWithMaxLength": "{count} sur {limit} caractères utilisés"
+      "characterCountWithMaxLength": "{characterCount} sur {limit} caractères utilisés"
     },
     "TopBar": {
       "toggleMenuLabel": "Activer le menu",

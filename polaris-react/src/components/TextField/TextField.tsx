@@ -297,7 +297,8 @@ export function TextField({
     const characterCount = normalizedValue.length;
     const characterCountLabel = maxLength
       ? i18n.translate('Polaris.TextField.characterCountWithMaxLength', {
-          count: characterCount,
+          characterCount,
+          count: maxLength,
           limit: maxLength,
         })
       : i18n.translate('Polaris.TextField.characterCount', {

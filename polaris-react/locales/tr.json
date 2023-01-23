@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} karakter",
-      "characterCountWithMaxLength": "{count}/{limit} karakter kullanıldı"
+      "characterCountWithMaxLength": "{characterCount}/{limit} karakter kullanıldı"
     },
     "TopBar": {
       "toggleMenuLabel": "Menüyü aç/kapat",

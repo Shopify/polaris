@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} 个字符",
-      "characterCountWithMaxLength": "已使用 {count}/{limit} 个字符"
+      "characterCountWithMaxLength": "已使用 {characterCount}/{limit} 个字符"
     },
     "TopBar": {
       "toggleMenuLabel": "切换菜单",

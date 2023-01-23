@@ -208,7 +208,7 @@
     },
     "TextField": {
       "characterCount": "{count} อักขระ",
-      "characterCountWithMaxLength": "ใช้อักขระไปแล้ว {count} จาก {limit}"
+      "characterCountWithMaxLength": "ใช้อักขระไปแล้ว {characterCount} จาก {limit}"
     },
     "TopBar": {
       "toggleMenuLabel": "เมนูเปิด/ปิด",

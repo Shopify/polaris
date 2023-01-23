@@ -242,8 +242,14 @@
       "ariaLabel": "Remove {children}"
     },
     "TextField": {
-      "characterCount": "{count} characters",
-      "characterCountWithMaxLength": "{count} of {limit} characters used"
+      "characterCount": {
+        "one": "{count} character",
+        "other": "{count} characters"
+      },
+      "characterCountWithMaxLength": {
+        "one": "{characterCount} of {limit} character used",
+        "other": "{characterCount} of {limit} characters used"
+      }
     },
     "TooltipOverlay": {
       "accessibilityLabel": "Tooltip: {label}"
