@@ -49,8 +49,10 @@ export interface HeaderProps extends TitleProps {
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** Collection of breadcrumbs */
+  /** @deprecated Collection of breadcrumbs */
   breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  /** A breadcrumb link */
+  breadcrumb?: BreadcrumbsProps['breadcrumb'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
@@ -77,6 +79,7 @@ export function Header({
   pagination,
   additionalNavigation,
   breadcrumbs,
+  breadcrumb,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -90,6 +93,10 @@ export function Header({
     console.warn(
       'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
     );
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `breadcrumbs` prop on Page is deprecated and will be removed in the next major version. Please replace with the singular `breadcrumb`.',
+    );
   }
 
   const isSingleRow =
@@ -99,15 +106,32 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup =
-    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
-    (!Array.isArray(breadcrumbs) && breadcrumbs) ? (
-      <div className={styles.BreadcrumbWrapper}>
-        <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
-          <Breadcrumbs breadcrumbs={breadcrumbs} />
-        </Box>
-      </div>
-    ) : null;
+  const breadcrumbMarkup = () => {
+    if (breadcrumb) {
+      return (
+        <div className={styles.BreadcrumbWrapper}>
+          <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+            <Breadcrumbs breadcrumb={breadcrumb} />
+          </Box>
+        </div>
+      );
+    }
+
+    if (
+      (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
+      (!Array.isArray(breadcrumbs) && breadcrumbs)
+    ) {
+      return (
+        <div className={styles.BreadcrumbWrapper}>
+          <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
+          </Box>
+        </div>
+      );
+    }
+
+    return null;
+  };
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
@@ -326,7 +350,7 @@ function determineLayout({
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
   additionalNavigationMarkup: MaybeJSX;
-  breadcrumbMarkup: MaybeJSX;
+  breadcrumbMarkup: () => MaybeJSX;
   isNavigationCollapsed: boolean;
   pageTitleMarkup: JSX.Element;
   paginationMarkup: MaybeJSX;
