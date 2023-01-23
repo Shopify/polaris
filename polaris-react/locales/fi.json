@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "Valitse {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Poista valinta kaikista {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Valitse kaikki {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} tuote",
-      "ariaLivePlural": "{itemsLength} tuotetta",
       "Item": {
         "actionsDropdownLabel": "Kohdetta {accessibilityLabel} koskevat toimenpiteet",
         "actionsDropdown": "Toiminnat-pudotusvalikko",

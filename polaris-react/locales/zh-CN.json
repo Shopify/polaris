@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 个 {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} 个项",
-      "ariaLivePlural": "{itemsLength} 个项",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} 的操作",
         "actionsDropdown": "操作下拉菜单",

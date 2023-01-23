@@ -186,8 +186,6 @@
       "a11yCheckboxSelectAllSingle": "Chọn {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Bỏ chọn tất cả {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Chọn tất cả {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} mặt hàng",
-      "ariaLivePlural": "{itemsLength} mặt hàng",
       "Item": {
         "actionsDropdownLabel": "Thao tác đối với {accessibilityLabel}",
         "actionsDropdown": "Menu thả xuống các thao tác",

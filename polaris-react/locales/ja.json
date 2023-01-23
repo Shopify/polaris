@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular}を選択する",
       "a11yCheckboxDeselectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}の選択を解除する",
       "a11yCheckboxSelectAllMultiple": "すべての{itemsLength}の{resourceNamePlural}を選択する",
-      "ariaLiveSingular": "アイテム数: {itemsLength}",
-      "ariaLivePlural": "アイテム数: {itemsLength}",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel}のアクション",
         "actionsDropdown": "アクションドロップダウン",

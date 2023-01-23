@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "Seleccionar {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Deseleccionar {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Seleccionar {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} artículo",
-      "ariaLivePlural": "{itemsLength} artículos",
       "Item": {
         "actionsDropdownLabel": "Acciones para {accessibilityLabel}",
         "actionsDropdown": "Menú desplegable de acciones",
