@@ -217,7 +217,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       </Dialog>
     );
 
-    backdrop = <Backdrop onClick={onClose} />;
+    backdrop = <Backdrop setClosing={setClosing} onClick={onClose} />;
   }
 
   const animated = !instant;
