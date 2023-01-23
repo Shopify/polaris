@@ -1,7 +1,11 @@
 import type {API, FileInfo} from 'jscodeshift';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../constants';
-import {insertCommentBefore, removeJSXAttributes} from '../../utilities/jsx';
+import {
+  insertCommentBefore,
+  removeJSXAttributes,
+  replaceJSXAttributes,
+} from '../../utilities/jsx';
 
 export default function reactUpdatePageBreadcrumbs(
   fileInfo: FileInfo,
@@ -23,6 +27,13 @@ export default function reactUpdatePageBreadcrumbs(
     .find(j.JSXExpressionContainer)
     .filter((nodePath) => {
       if (nodePath.node.expression.type === 'Identifier') {
+        replaceJSXAttributes(
+          j,
+          j(nodePath).closest(j.JSXElement).paths()[0],
+          'breadcrumbs',
+          'breadcrumb',
+        );
+
         insertCommentBefore(
           j,
           j(nodePath).find(j.Identifier).paths()[0],
@@ -31,12 +42,27 @@ export default function reactUpdatePageBreadcrumbs(
       }
 
       if (nodePath.node.expression.type === 'CallExpression') {
+        replaceJSXAttributes(
+          j,
+          j(nodePath).closest(j.JSXElement).paths()[0],
+          'breadcrumbs',
+          'breadcrumb',
+        );
         insertCommentBefore(
           j,
           j(nodePath).find(j.Identifier).paths()[0],
           `${POLARIS_MIGRATOR_COMMENT} In this case, you will need to update the breadcrumbs variable to be a single object instead of an array as arrays have been deprecated.`,
         );
         return false;
+      }
+
+      if (nodePath.node.expression.type === 'ObjectExpression') {
+        replaceJSXAttributes(
+          j,
+          j(nodePath).closest(j.JSXElement).paths()[0],
+          'breadcrumbs',
+          'breadcrumb',
+        );
       }
 
       return true;
@@ -60,6 +86,12 @@ export default function reactUpdatePageBreadcrumbs(
       )
         return;
 
+      replaceJSXAttributes(
+        j,
+        j(nodePath).closest(j.JSXElement).paths()[0],
+        'breadcrumbs',
+        'breadcrumb',
+      );
       return j.template.expression`${
         arrayOfBreadcrumbs[arrayOfBreadcrumbs.length - 1]
       }`;
