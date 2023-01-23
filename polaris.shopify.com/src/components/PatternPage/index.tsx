@@ -1,2 +1,4 @@
-import PatternPage from './PatternPage';
-export default PatternPage;
+import SingleVariantPatternPage from './SingleVariantPatternPage';
+import MultiVariantPatternPage from './MultiVariantPatternPage';
+
+export {SingleVariantPatternPage, MultiVariantPatternPage};

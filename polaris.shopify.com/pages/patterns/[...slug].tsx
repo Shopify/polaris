@@ -4,11 +4,18 @@ import path from 'path';
 import globby from 'globby';
 import matter from 'gray-matter';
 
-import PatternsDatePickingPage from '../../src/components/PatternPage';
-import {MultiVariantPattern, PatternFrontMatter} from '../../src/types';
+import {
+  MultiVariantPatternPage,
+  SingleVariantPatternPage,
+} from '../../src/components/PatternPage';
+import {
+  MultiVariantPattern,
+  PatternFrontMatter,
+  SingleVariantPattern,
+} from '../../src/types';
 
 interface Props extends PatternFrontMatter {
-  pattern: MultiVariantPattern;
+  pattern: MultiVariantPattern | SingleVariantPattern;
 }
 
 const readFrontMatter = (filePath: string): {[key: string]: any} => {
@@ -79,8 +86,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-const PatternPage: NextPage<Props> = (props: Props) => {
-  return <PatternsDatePickingPage {...props} />;
+const PatternsPage: NextPage<Props> = (props: Props) => {
+  if ((props.pattern as MultiVariantPattern).variants) {
+    return (
+      <MultiVariantPatternPage
+        {...props}
+        pattern={props.pattern as MultiVariantPattern}
+      />
+    );
+  }
+  return (
+    <SingleVariantPatternPage
+      {...props}
+      pattern={props.pattern as SingleVariantPattern}
+    />
+  );
 };
 
-export default PatternPage;
+export default PatternsPage;
