@@ -2,7 +2,8 @@ import type {SingleVariantPattern} from '../../src/types';
 
 const pattern: SingleVariantPattern = {
   title: 'App settings layout',
-  description: 'This enables merchants to select a date range.',
+  description:
+    'Lets merchants easily scan many groups of settings and find the ones they want to change.',
   howItHelps: `![A labeled diagram of an app settings page layout. The left column is labeled "1" it contains glanceable labels and descriptions. The right column is labeled "2" and contains a list of cards.](/images/patterns/app-settings-cover-image.png)
 
   1. In the left column, glanceable labels and descriptions are listed to make it easier for merchants to scan the page and quickly find what they are looking for.
@@ -17,7 +18,7 @@ const pattern: SingleVariantPattern = {
   |-|-|
   |Don't include a description unless it's helpful.|![](/images/patterns/app-settings-usage-1.png)|
   |Place grouped settings within cards.|![](/images/patterns/app-settings-usage-2.png)|
-  |Stack all setting groups vertically on the page|![](/images/patterns/app-settings-usage-2.png)|`,
+  |Stack all setting groups vertically on the page.|![](/images/patterns/app-settings-usage-2.png)|`,
   relatedResources: `* See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
 * See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
