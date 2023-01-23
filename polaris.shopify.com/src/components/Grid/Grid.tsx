@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import {stripMarkdownLinks} from '../../utils/various';
+import {className, stripMarkdownLinks} from '../../utils/various';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import styles from './Grid.module.scss';
 import SearchResultHighlight from '../SearchResultHighlight';
@@ -8,11 +8,16 @@ import {Status} from '../../types';
 import StatusBadge from '../StatusBadge';
 
 export interface Props {
+  condensed?: boolean;
   children: React.ReactNode;
 }
 
-function Grid({children}: Props) {
-  return <ul className={styles.Grid}>{children}</ul>;
+function Grid({children, condensed}: Props) {
+  return (
+    <ul className={className(styles.Grid, condensed && styles.condensed)}>
+      {children}
+    </ul>
+  );
 }
 
 export interface GridItemProps {
