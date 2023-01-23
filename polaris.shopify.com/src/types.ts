@@ -1,5 +1,22 @@
 import {MetadataProperties} from '@shopify/polaris-tokens';
 import {Icon} from '@shopify/polaris-icons/metadata';
+import {type PatternExample} from './components/PatternsExample';
+
+export type MarkdownString = string;
+
+export type PatternVariant = {
+  description?: string;
+  title: string;
+  slug: string;
+  howItHelps: MarkdownString;
+  usefulToKnow: MarkdownString;
+  example: PatternExample;
+};
+
+export type MultiVariantPattern = {
+  variants: PatternVariant[];
+  relatedResources: MarkdownString;
+};
 
 export interface SiteJSON {
   [key: string]: {
@@ -26,7 +43,10 @@ export interface FrontMatter {
 }
 
 export interface PatternFrontMatter extends FrontMatter {
-  previewImg: string;
+  previewImg?: string;
+  order?: number;
+  githubDiscussionsLink?: string;
+  contentFile: string;
 }
 
 export type MarkdownFile = {
