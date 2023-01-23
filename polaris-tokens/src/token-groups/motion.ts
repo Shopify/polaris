@@ -14,7 +14,13 @@ export type MotionDurationScale =
   | '500'
   | '5000';
 
-export type MotionKeyframesAlias = 'bounce' | 'fade-in' | 'pulse' | 'spin';
+export type MotionKeyframesAlias =
+  | 'bounce'
+  | 'fade-in'
+  | 'pulse'
+  | 'spin'
+  | 'appear-above'
+  | 'appear-below';
 
 type MotionTimingFunctionAlias =
   | 'ease'
@@ -107,5 +113,13 @@ export const motion: {
   },
   'keyframes-spin': {
     value: '{ to { transform: rotate(1turn) } }',
+  },
+  'keyframes-appear-above': {
+    value:
+      'from { transform: translateY(calc(var(--p-space-1) * -1)); opacity: 0; } to { transform: none; opacity: 1; }',
+  },
+  'keyframes-appear-below': {
+    value:
+      'from { transform: translateY(var(--p-space-1)); opacity: 0; } to { transform: none; opacity: 1; }',
   },
 };
