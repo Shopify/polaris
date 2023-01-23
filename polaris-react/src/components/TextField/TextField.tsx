@@ -17,7 +17,7 @@ import {Error, Key} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 
-import {Resizer, Spinner, SpinnerProps} from './components';
+import {Resizer, Stepper, StepperProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
@@ -239,7 +239,7 @@ export function TextField({
   const suffixRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
-  const spinnerRef = useRef<HTMLDivElement>(null);
+  const stepperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const input = multiline ? textAreaRef.current : inputRef.current;
@@ -375,7 +375,7 @@ export function TextField({
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+  const handleButtonPress: StepperProps['onMouseDown'] = useCallback(
     (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
@@ -399,14 +399,14 @@ export function TextField({
     [handleButtonRelease],
   );
 
-  const spinnerMarkup =
+  const stepperMarkup =
     type === 'number' && step !== 0 && !disabled && !readOnly ? (
-      <Spinner
+      <Stepper
         onClick={handleClickChild}
         onChange={handleNumberChange}
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
-        ref={spinnerRef}
+        ref={stepperRef}
         onBlur={handleOnBlur}
       />
     ) : null;
@@ -560,7 +560,7 @@ export function TextField({
           {suffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
-          {spinnerMarkup}
+          {stepperMarkup}
           {backdropMarkup}
           {resizer}
         </div>
@@ -589,7 +589,7 @@ export function TextField({
       isPrefixOrSuffix(target) ||
       isVerticalContent(target) ||
       isInput(target) ||
-      isSpinner(target) ||
+      isStepper(target) ||
       focus
     ) {
       return;
@@ -599,7 +599,7 @@ export function TextField({
   }
 
   function handleClickChild(event: React.MouseEvent) {
-    if (!isSpinner(event.target) && !isInput(event.target)) {
+    if (!isStepper(event.target) && !isInput(event.target)) {
       event.stopPropagation();
     }
 
@@ -654,11 +654,11 @@ export function TextField({
     );
   }
 
-  function isSpinner(target: Element | EventTarget) {
+  function isStepper(target: Element | EventTarget) {
     return (
       target instanceof Element &&
-      spinnerRef.current &&
-      spinnerRef.current.contains(target)
+      stepperRef.current &&
+      stepperRef.current.contains(target)
     );
   }
 
