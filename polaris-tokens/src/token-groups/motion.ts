@@ -116,10 +116,10 @@ export const motion: {
   },
   'keyframes-appear-above': {
     value:
-      'from { transform: translateY(calc(var(--p-space-1) * -1)); opacity: 0; } to { transform: none; opacity: 1; }',
+      '{ from { transform: translateY(calc(var(--p-space-1) * -1)); opacity: 0; } to { transform: none; opacity: 1; } }',
   },
   'keyframes-appear-below': {
     value:
-      'from { transform: translateY(var(--p-space-1)); opacity: 0; } to { transform: none; opacity: 1; }',
+      '{ from { transform: translateY(var(--p-space-1)); opacity: 0; } to { transform: none; opacity: 1; } }',
   },
 };

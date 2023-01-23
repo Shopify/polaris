@@ -239,7 +239,12 @@ export function IconTooltips() {
     <Box padding="16">
       <Stack>
         <ButtonGroup segmented fullWidth>
-          <Tooltip content="Bold" mode="icon" keyboardShortcut="⌘B">
+          <Tooltip
+            content="Bold"
+            mode="icon"
+            keyboardShortcut="⌘B"
+            activatorWrapper="div"
+          >
             <Button>B</Button>
           </Tooltip>
           <Tooltip content="Italic" mode="icon" keyboardShortcut="⌘I">
