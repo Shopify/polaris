@@ -298,6 +298,9 @@ $disabled-fade: 0.6;
 .ItemWithFloatingActions {
   // stylelint-disable-next-line -- required for absolute positioning of actions
   position: relative;
+  // stylelint-disable-next-line -- position actions to to the right of label
+  display: flex;
+  flex-wrap: nowrap;
 
   .SecondaryActions {
     margin-right: 0;
