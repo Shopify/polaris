@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Changed onClick focus for stepper from `setFocus(true)` to `input.focus()` to allow `onBlur` to be called.
+Added `onBlur` prop to numerical steppers (`Spinner` component of `TextField`) to remove multi focus issue in `TextField`.
