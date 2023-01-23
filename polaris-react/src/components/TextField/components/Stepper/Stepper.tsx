@@ -6,7 +6,7 @@ import styles from '../../TextField.scss';
 
 type HandleStepFn = (step: number) => void;
 
-export interface SpinnerProps {
+export interface StepperProps {
   onChange: HandleStepFn;
   onClick?(event: React.MouseEvent): void;
   onMouseDown(onChange: HandleStepFn): void;
@@ -14,8 +14,8 @@ export interface SpinnerProps {
   onBlur(event: React.FocusEvent): void;
 }
 
-export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
+export const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
+  function Stepper({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
     function handleStep(step: number) {
       return () => onChange(step);
     }
@@ -28,7 +28,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     }
 
     return (
-      <div className={styles.Spinner} onClick={onClick} aria-hidden ref={ref}>
+      <div className={styles.Stepper} onClick={onClick} aria-hidden ref={ref}>
         <div
           role="button"
           className={styles.Segment}
@@ -38,7 +38,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onMouseUp={onMouseUp}
           onBlur={onBlur}
         >
-          <div className={styles.SpinnerIcon}>
+          <div className={styles.StepperIcon}>
             <Icon source={CaretUpMinor} />
           </div>
         </div>
@@ -51,7 +51,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onMouseUp={onMouseUp}
           onBlur={onBlur}
         >
-          <div className={styles.SpinnerIcon}>
+          <div className={styles.StepperIcon}>
             <Icon source={CaretDownMinor} />
           </div>
         </div>

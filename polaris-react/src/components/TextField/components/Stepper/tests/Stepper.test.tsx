@@ -1,9 +1,9 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Spinner} from '../Spinner';
+import {Stepper} from '../Stepper';
 
-describe('<Spinner />', () => {
+describe('<Stepper />', () => {
   const defaultProps = {
     onChange: noop,
     onMouseDown: noop,
@@ -14,11 +14,11 @@ describe('<Spinner />', () => {
   describe('onChange', () => {
     it('adds a change callback', () => {
       const spy = jest.fn();
-      const spinner = mountWithApp(
-        <Spinner {...defaultProps} onChange={spy} />,
+      const stepper = mountWithApp(
+        <Stepper {...defaultProps} onChange={spy} />,
       );
 
-      spinner.find('div', {role: 'button'})!.trigger('onClick');
+      stepper.find('div', {role: 'button'})!.trigger('onClick');
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
@@ -26,8 +26,8 @@ describe('<Spinner />', () => {
   describe('onClick', () => {
     it('adds a click callback', () => {
       const spy = jest.fn();
-      const spinner = mountWithApp(<Spinner {...defaultProps} onClick={spy} />);
-      spinner.find('div', {className: 'Spinner'})!.trigger('onClick');
+      const stepper = mountWithApp(<Stepper {...defaultProps} onClick={spy} />);
+      stepper.find('div', {className: 'Stepper'})!.trigger('onClick');
       expect(spy).toHaveBeenCalledTimes(1);
     });
   });
@@ -38,15 +38,15 @@ describe('<Spinner />', () => {
         callback();
       });
       const changeSpy = jest.fn();
-      const spinner = mountWithApp(
-        <Spinner
+      const stepper = mountWithApp(
+        <Stepper
           {...defaultProps}
           onChange={changeSpy}
           onMouseDown={mouseDownSpy}
         />,
       );
 
-      spinner
+      stepper
         .find('div', {role: 'button'})!
         .trigger('onMouseDown', {button: 0});
 
@@ -59,15 +59,15 @@ describe('<Spinner />', () => {
         callback();
       });
       const changeSpy = jest.fn();
-      const spinner = mountWithApp(
-        <Spinner
+      const stepper = mountWithApp(
+        <Stepper
           {...defaultProps}
           onChange={changeSpy}
           onMouseDown={mouseDownSpy}
         />,
       );
 
-      spinner
+      stepper
         .find('div', {role: 'button'})!
         .trigger('onMouseDown', {button: 1});
 
@@ -79,11 +79,11 @@ describe('<Spinner />', () => {
   describe('onMouseUp', () => {
     it('adds a mouse up callback', () => {
       const spy = jest.fn();
-      const spinner = mountWithApp(
-        <Spinner {...defaultProps} onMouseUp={spy} />,
+      const stepper = mountWithApp(
+        <Stepper {...defaultProps} onMouseDown={noop} onMouseUp={spy} />,
       );
 
-      spinner.find('div', {role: 'button'})!.trigger('onMouseUp');
+      stepper.find('div', {role: 'button'})!.trigger('onMouseUp');
 
       expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -92,10 +92,10 @@ describe('<Spinner />', () => {
   describe('onBlur()', () => {
     it('is called when the stepper is blurred', () => {
       const onBlurSpy = jest.fn();
-      const spinner = mountWithApp(
-        <Spinner {...defaultProps} onBlur={onBlurSpy} />,
+      const stepper = mountWithApp(
+        <Stepper {...defaultProps} onBlur={onBlurSpy} />,
       );
-      spinner.find('div', {role: 'button'})!.trigger('onBlur');
+      stepper.find('div', {role: 'button'})!.trigger('onBlur');
       expect(onBlurSpy).toHaveBeenCalledTimes(1);
     });
   });
