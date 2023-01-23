@@ -27,6 +27,9 @@ examples:
   - fileName: navigation-with-a-secondary-action-for-an-item.tsx
     title: With a secondary action for an item
     description: Use to add a different action for an item than the main action, like to view or add something.
+  - fileName: navigation-with-multiple-secondary-actions.tsx
+    title: With multiple secondary actions
+    description: Used to add one or two secondary actions to the navigation item.
   - fileName: navigation-with-section-rollup.tsx
     title: With section rollup
     description: Use to show a limited number of items in a section with an option to expand the remaining items.
@@ -36,6 +39,9 @@ examples:
   - fileName: navigation-with-various-states-and-secondary-elements.tsx
     title: With various states and secondary elements
     description: This example showcases the many elements that can compose a navigation, especially useful for testing purposes.
+  - fileName: navigation-with-truncation-for-various-states.tsx
+    title: With truncation active for various states
+    description: This example showcases how elements are displayed with the truncateText prop as true for various states.
   - fileName: navigation-with-aria-labelledby.tsx
     title: With aria-labelledby
     description: This example shows how to add an aria-labelledby to add a hidden label to the `nav` element.
@@ -136,24 +142,27 @@ The content of the navigation component consists of navigation items. Each item 
 
 #### Item properties
 
-| Prop               | Type                                        | Description                                                                                                                                             |
-| ------------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url                | string                                      | A location for the navigation item to navigate to when clicked                                                                                          |
-| matches            | boolean                                     | A boolean property indicating whether the navigation item should respond to a closely matching location property                                        |
-| exactMatch         | boolean                                     | A boolean property indicating whether the navigation item should respond to an exactly matching location property                                       |
-| matchPaths         | string[]                                    | A string property providing a collection of additional paths for the navigation item to respond to                                                      |
-| excludePaths       | string[]                                    | A string property providing an explicit collection of paths the navigation item should not respond to                                                   |
-| icon               | IconProps['source']                         | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
-| badge              | string \| null                              | A string property allowing content to be displayed in a badge next to the navigation item                                                               |
-| label              | string                                      | A string property allowing content to be displayed as link text in the navigation item                                                                  |
-| disabled           | boolean                                     | A boolean property indicating whether the navigation item is disabled                                                                                   |
-| new                | boolean                                     | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop)              |
-| accessibilityLabel | string                                      | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
-| selected           | boolean                                     | A boolean property indicating whether the navigation item is the currently-selected item                                                                |
-| shouldResizeIcon   | boolean                                     | Will allow for major icons to be displayed at the same size as minor icons                                                                              |
-| subNavigationItems | [SubNavigationItem[]](#sub-navigation-item) | A collection of navigation items rendered as nested secondary navigation items                                                                          |
-| secondaryAction    | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
-| onClick()          | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
+| Prop                  | Type                                        | Description                                                                                                                                             |
+| --------------------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url                   | string                                      | A location for the navigation item to navigate to when clicked                                                                                          |
+| matches               | boolean                                     | A boolean property indicating whether the navigation item should respond to a closely matching location property                                        |
+| exactMatch            | boolean                                     | A boolean property indicating whether the navigation item should respond to an exactly matching location property                                       |
+| matchPaths            | string[]                                    | A string property providing a collection of additional paths for the navigation item to respond to                                                      |
+| excludePaths          | string[]                                    | A string property providing an explicit collection of paths the navigation item should not respond to                                                   |
+| icon                  | IconProps['source']                         | An icon to be displayed next to the navigation. Please prefer minor icons here. If a major icon has to be used, set the `shouldResizeIcon` prop to true |
+| badge                 | string \| null                              | A string property allowing content to be displayed in a badge next to the navigation item                                                               |
+| label                 | string                                      | A string property allowing content to be displayed as link text in the navigation item                                                                  |
+| disabled              | boolean                                     | A boolean property indicating whether the navigation item is disabled                                                                                   |
+| new                   | boolean                                     | Indicate whether the navigation item is new by adding an indicator dot to the parent and badge to the item (overwritten by the badge prop)              |
+| accessibilityLabel    | string                                      | A visually hidden label for screen readers to understand the content of a navigation item                                                               |
+| selected              | boolean                                     | A boolean property indicating whether the navigation item is the currently-selected item                                                                |
+| shouldResizeIcon      | boolean                                     | Will allow for major icons to be displayed at the same size as minor icons                                                                              |
+| subNavigationItems    | [SubNavigationItem[]](#sub-navigation-item) | A collection of navigation items rendered as nested secondary navigation items                                                                          |
+| secondaryAction       | [SecondaryAction](#secondary-action)        | Renders an icon-only action as a supplementary action next to a navigation item                                                                         |
+| secondaryActions      | [SecondaryAction[]](#secondary-action)      | Renders one or two icon-only actions as supplementary actions next to a navigation item                                                                 |
+| onClick()             | function                                    | A callback function to handle clicking on a navigation item                                                                                             |
+| truncateText          | boolean                                     | A boolean property to allow text that exceeds the width of the navigation item to be truncated with ellipsis                                            |
+| displayActionsOnHover | boolean                                     | A boolean to only display secondary actions when being the nabigation item is hovered (Only on desktop)                                                 |
 
 ### SubNavigationItem
 
