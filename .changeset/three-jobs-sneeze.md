@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-icons': patch
+'@shopify/polaris-icons': minor
 ---
 
-Added new enter icon (updated svg file)
+Added EnterMajor icon
