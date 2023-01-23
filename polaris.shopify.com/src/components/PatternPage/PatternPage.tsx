@@ -13,7 +13,7 @@ import {Heading} from '../Heading';
 import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
 import PatternsExample from '../PatternsExample';
 import Page from '../Page';
-import styles from './PatternsDatePickingPage.module.scss';
+import styles from './PatternPage.module.scss';
 import Markdown from '../Markdown';
 
 import remarkUnwrapImages from 'remark-unwrap-images';

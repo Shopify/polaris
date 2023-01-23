@@ -4,7 +4,7 @@ import path from 'path';
 import globby from 'globby';
 import matter from 'gray-matter';
 
-import PatternsDatePickingPage from '../../src/components/PatternsDatePickingPage';
+import PatternsDatePickingPage from '../../src/components/PatternPage';
 import {MultiVariantPattern, PatternFrontMatter} from '../../src/types';
 
 interface Props extends PatternFrontMatter {
