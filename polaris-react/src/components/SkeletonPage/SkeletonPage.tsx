@@ -60,7 +60,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <AlphaStack align="center" fullWidth>
+    <div>
       <Box
         padding="0"
         paddingInlineStart={{sm: '6'}}
@@ -93,6 +93,6 @@ export function SkeletonPage({
           <Box paddingBlockEnd="2">{children}</Box>
         </AlphaStack>
       </Box>
-    </AlphaStack>
+    </div>
   );
 }
