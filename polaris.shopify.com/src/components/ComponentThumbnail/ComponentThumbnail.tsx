@@ -3,9 +3,10 @@ import {slugify} from '../../utils/various';
 
 interface Props {
   title: string;
+  group: string;
 }
 
-function ComponentThumbnail({title}: Props) {
+function ComponentThumbnail({title, group}: Props) {
   return (
     <div
       style={{
@@ -13,7 +14,7 @@ function ComponentThumbnail({title}: Props) {
       }}
     >
       <Image
-        src={`/images/components/${slugify(title)}.png`}
+        src={`/images/components/${group}/${slugify(title)}.png`}
         style={{width: '100%', height: 'auto'}}
         width={266}
         height={140}
