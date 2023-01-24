@@ -11,9 +11,9 @@ $primary-action-button-width: 100px;
 }
 
 .parent {
-  > * {
-    margin: auto;
-  }
+  // stylelint-disable -- use custom properties to set max width based on props
+  max-width: var(--pc-skeleton-page-max-width);
+  margin: 0 auto;
 }
 
 .Title {
