@@ -225,7 +225,7 @@ export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
   /** Ref to activator */
-  activatorRef?: RefObject<HTMLDivElement | HTMLButtonElement>;
+  ref?: RefObject<HTMLElement | null>;
 }
 
 export interface MenuGroupDescriptor extends BadgeAction {
