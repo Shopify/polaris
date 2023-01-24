@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "Välj {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Avmarkera alla {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Markera alla {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} artikel",
-      "ariaLivePlural": "{itemsLength} artiklar",
       "Item": {
         "actionsDropdownLabel": "Åtgärder för {accessibilityLabel}",
         "actionsDropdown": "Åtgärdsmeny",

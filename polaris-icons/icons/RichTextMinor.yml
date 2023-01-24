@@ -1,0 +1,14 @@
+name: Rich text
+set: minor
+description: Used to denote rich text
+keywords:
+  - rich text
+  - RTE
+  - rich text editor
+authors:
+  - Leina Leung
+  - Sai Nihas
+date_added: 2023-01-12
+date_modified: 2023-01-12
+version: 1
+exclusive_use:

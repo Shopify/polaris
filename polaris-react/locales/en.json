@@ -221,8 +221,6 @@
       "a11yCheckboxSelectAllSingle": "Select {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Deselect all {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Select all {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} item",
-      "ariaLivePlural": "{itemsLength} items",
       "Item": {
         "actionsDropdownLabel": "Actions for {accessibilityLabel}",
         "actionsDropdown": "Actions dropdown",

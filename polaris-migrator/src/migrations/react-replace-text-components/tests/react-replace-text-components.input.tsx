@@ -17,6 +17,8 @@ export function App() {
     variation: 'positive',
   };
 
+  const MyDisplayText = DisplayText;
+
   noop(textStyle);
 
   return (
@@ -36,8 +38,15 @@ export function App() {
       <TextStyle variation="negative">Negative</TextStyle>
       <TextStyle variation="warning">Warning</TextStyle>
       <TextStyle variation="code">Code</TextStyle>
+      <TextStyle>
+        <TextStyle variation="code">Code</TextStyle>
+      </TextStyle>
+      <TextStyle variation={Math.random() > 0.5 ? 'positive' : 'negative'}>
+        Code
+      </TextStyle>
       <TextStyle {...textStyleProps}>Positive</TextStyle>
       <VisuallyHidden>Hidden text</VisuallyHidden>
+      <MyDisplayText />
     </>
   );
 }

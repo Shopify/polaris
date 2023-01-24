@@ -17,6 +17,8 @@ export interface ButtonGroupProps {
   fullWidth?: boolean;
   /** Remove top left and right border radius */
   connectedTop?: boolean;
+  /** Prevent buttons in button group from wrapping to next line */
+  noWrap?: boolean;
   /** Button components */
   children?: React.ReactNode;
 }
@@ -27,12 +29,14 @@ export function ButtonGroup({
   segmented,
   fullWidth,
   connectedTop,
+  noWrap,
 }: ButtonGroupProps) {
   const className = classNames(
     styles.ButtonGroup,
     spacing && styles[spacing],
     segmented && styles.segmented,
     fullWidth && styles.fullWidth,
+    noWrap && styles.noWrap,
   );
 
   const contents = elementChildren(children).map((child, index) => (
@@ -45,6 +49,7 @@ export function ButtonGroup({
       data-buttongroup-segmented={segmented}
       data-buttongroup-connected-top={connectedTop}
       data-buttongroup-full-width={fullWidth}
+      data-buttongroup-no-wrap={noWrap}
     >
       {contents}
     </div>

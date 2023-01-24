@@ -45,7 +45,7 @@ export interface SheetProps {
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
 }
 
-/** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
+/** @deprecated Use Modal instead or avoid modal patterns all together. */
 export function Sheet({
   children,
   open,

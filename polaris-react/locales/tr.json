@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
       "a11yCheckboxDeselectAllMultiple": "Şunların tümünün seçimini kaldır: {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Şunların tümünü seç: {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} ürün",
-      "ariaLivePlural": "{itemsLength} ürün",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} ile ilgili işlemler",
         "actionsDropdown": "İşlemler açılır listesi",

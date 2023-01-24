@@ -76,7 +76,7 @@ export function Header({
   primaryAction,
   pagination,
   additionalNavigation,
-  breadcrumbs = [],
+  breadcrumbs,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -100,7 +100,8 @@ export function Header({
     !actionGroups.length;
 
   const breadcrumbMarkup =
-    breadcrumbs.length > 0 ? (
+    (Array.isArray(breadcrumbs) && breadcrumbs.length > 0) ||
+    (!Array.isArray(breadcrumbs) && breadcrumbs) ? (
       <div className={styles.BreadcrumbWrapper}>
         <Box maxWidth="100%" paddingInlineEnd="4" printHidden>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
@@ -190,7 +191,7 @@ export function Header({
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
-    !breadcrumbs.length && styles.noBreadcrumbs,
+    !breadcrumbMarkup && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );

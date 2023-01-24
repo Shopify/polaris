@@ -218,13 +218,9 @@ const stylelintPolarisCoverageOptions = {
   ],
   spacing: [
     {
-      'function-disallowed-list': [
-        'control-vertical-padding',
-        'em',
-        'px',
-        'rem',
-        'spacing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^padding/': ['px', 'rem', 'em'],
@@ -278,7 +274,7 @@ const stylelintPolarisCoverageOptions = {
         /\$border-width-data/,
         /\$borders-data/,
         // Legacy custom properties
-        /--p-border-radius-base/,
+        // /--p-border-radius-base/,
         /--p-border-radius-wide/,
         /--p-border-radius-full/,
         /--p-control-border-width/,
@@ -448,9 +444,13 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       // Legacy functions
-      'function-disallowed-list': ['available-names', 'map-extend'].map(
-        matchNameRegExp,
-      ),
+      'function-disallowed-list': [
+        'available-names',
+        'map-extend',
+        'em',
+        'px',
+        'rem',
+      ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,

@@ -1,0 +1,14 @@
+name: Content
+set: Minor
+description: Used to represent content.
+keywords:
+  - content
+  - files
+  - metaobjects
+authors:
+  - Sai Nihas
+  - Rusty Baylis
+version: 1
+date_added: 2023-01-23
+date_modified: 2023-01-23
+exclusive_use:

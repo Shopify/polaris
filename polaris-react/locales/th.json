@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "เลือก {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "ยกเลิกการเลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
       "a11yCheckboxSelectAllMultiple": "เลือก {resourceNamePlural} ทั้ง {itemsLength} รายการ",
-      "ariaLiveSingular": "{itemsLength} รายการ",
-      "ariaLivePlural": "{itemsLength} รายการ",
       "Item": {
         "actionsDropdownLabel": "การดำเนินการสำหรับ {accessibilityLabel}",
         "actionsDropdown": "เมนูดรอปดาวน์ของการดำเนินการ",

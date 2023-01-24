@@ -913,7 +913,15 @@ function IndexTableBase({
 
       const tooltipContent = sortToggleLabels[index][tooltipDirection];
 
-      return <Tooltip content={tooltipContent}>{sortMarkup}</Tooltip>;
+      return (
+        <Tooltip
+          content={tooltipContent}
+          activatorWrapper="div"
+          dismissOnMouseOut
+        >
+          {sortMarkup}
+        </Tooltip>
+      );
     }
     return headingContent;
   }

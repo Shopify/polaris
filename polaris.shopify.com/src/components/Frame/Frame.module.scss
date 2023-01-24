@@ -116,6 +116,23 @@ $breakpointNav: $breakpointTablet;
           }
         }
       }
+
+      > ul > li > ul > li {
+        > .NavItem {
+          font-size: var(--font-size-200);
+          letter-spacing: var(--letter-spacing-300);
+          padding-left: 3rem;
+
+          > a {
+            color: var(--text);
+            white-space: normal;
+          }
+
+          &.isCurrent > a {
+            color: var(--primary);
+          }
+        }
+      }
     }
   }
 

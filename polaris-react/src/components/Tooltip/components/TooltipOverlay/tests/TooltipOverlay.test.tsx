@@ -35,4 +35,21 @@ describe('<TooltipOverlay />', () => {
       'aria-label': accessibilityLabel,
     });
   });
+
+  it('is set to value of zIndexOverride prop if given', () => {
+    const activator = document.createElement('button');
+    const tooltipOverlay = mountWithApp(
+      <TooltipOverlay
+        {...defaultProps}
+        activator={activator}
+        zIndexOverride={100}
+      >
+        Content
+      </TooltipOverlay>,
+    );
+
+    expect(tooltipOverlay).toContainReactComponent('div', {
+      style: expect.objectContaining({zIndex: 100}),
+    });
+  });
 });

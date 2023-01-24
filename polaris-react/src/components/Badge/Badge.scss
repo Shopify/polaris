@@ -11,6 +11,7 @@
   padding: var(--pc-badge-vertical-padding) var(--pc-badge-horizontal-padding);
   background-color: var(--p-surface-neutral);
   border-radius: var(--p-border-radius-5);
+  color: var(--p-text);
 
   @media print {
     border: solid var(--p-border-width-1) var(--p-border);
@@ -19,32 +20,25 @@
 
 .statusSuccess {
   background-color: var(--p-surface-success);
-  color: var(--p-text);
 }
 
 .statusInfo {
   background-color: var(--p-surface-highlight);
-  color: var(--p-text);
 }
 
 .statusAttention {
   background-color: var(--p-surface-attention);
-  color: var(--p-text);
 }
 
 .statusWarning {
   background-color: var(--p-surface-warning);
-  color: var(--p-text);
 }
 
 .statusCritical {
   background-color: var(--p-surface-critical);
-  color: var(--p-text);
 }
 
 .statusNew {
-  color: var(--p-text);
-  font-weight: var(--p-font-weight-medium);
   border: none;
 }
 

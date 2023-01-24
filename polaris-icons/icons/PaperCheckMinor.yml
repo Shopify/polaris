@@ -1,0 +1,11 @@
+name: PaperCheck
+set: minor
+description: Used to represent a paper check payment method.
+keywords:
+  - payment method
+authors:
+  - Kathleen Robertson
+version: 1
+date_added: 2023-01-19
+date_modified: 2023-01-19
+exclusive_use:
