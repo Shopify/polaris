@@ -1,5 +1,26 @@
 # Changelog
 
+## 10.23.0
+
+### Minor Changes
+
+- [#8134](https://github.com/Shopify/polaris/pull/8134) [`8d80691b5`](https://github.com/Shopify/polaris/commit/8d80691b534918e82ea43f3627f25dce9376a3dc) Thanks [@mrcthms](https://github.com/mrcthms)! - Removed the focus ring from `Listbox` options
+
+### Patch Changes
+
+- [#8093](https://github.com/Shopify/polaris/pull/8093) [`60dd5a0c5`](https://github.com/Shopify/polaris/commit/60dd5a0c5a2a6d59c3a2b4a46bc1cdf2ca02e6f9) Thanks [@highfieldjames](https://github.com/highfieldjames)! - Added `borderRadius` style to `TooltipOverlay`
+
+* [#8090](https://github.com/Shopify/polaris/pull/8090) [`bdcc291a4`](https://github.com/Shopify/polaris/commit/bdcc291a426900cc5fe4a516f2543b50f65baf55) Thanks [@emmanueletti](https://github.com/emmanueletti)! - Replaced mouse up and down events on Backdrop with onClick to close Modal
+
+- [#8131](https://github.com/Shopify/polaris/pull/8131) [`6096c3492`](https://github.com/Shopify/polaris/commit/6096c34929aa47f7616294d5bf7e4326804cd866) Thanks [@henryyi](https://github.com/henryyi)! - Fixed Navigation item secondaryActions alignment in mobile when floating actions are enabled
+
+* [#8114](https://github.com/Shopify/polaris/pull/8114) [`e6aa9c801`](https://github.com/Shopify/polaris/commit/e6aa9c80129fb6d365ebdc395e93637dd988c68d) Thanks [@highfieldjames](https://github.com/highfieldjames)! - Dismiss index table tooltip on mouse out
+
+- [#8091](https://github.com/Shopify/polaris/pull/8091) [`23ee70d13`](https://github.com/Shopify/polaris/commit/23ee70d13e2afcf8a8b14fffd4bf7c25e3380b82) Thanks [@ginabak](https://github.com/ginabak)! - Added `onBlur` prop to numerical steppers (`Spinner` component of `TextField`) to remove multi focus issue in `TextField`.
+
+- Updated dependencies [[`b998ca007`](https://github.com/Shopify/polaris/commit/b998ca00736c5cf1a7772a1ee0acc9f3f4a2748e), [`94988bc26`](https://github.com/Shopify/polaris/commit/94988bc260b0c4f371a8c1f22a0a3fd5e11fee45), [`f74e8ffcc`](https://github.com/Shopify/polaris/commit/f74e8ffcc4d0864212e53e28e7bb02f3b224ba33)]:
+  - @shopify/polaris-icons@6.9.0
+
 ## 10.22.0
 
 ### Minor Changes
