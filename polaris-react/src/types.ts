@@ -224,7 +224,7 @@ export interface ComplexAction
 export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
-  /** Ref to activator */
+  /** Reference to access DOM node */
   ref?: RefObject<HTMLElement | null>;
 }
 
