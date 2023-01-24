@@ -51,6 +51,9 @@ export default function GroupPage({
       <Grid condensed>
         {components.split(', ').map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
+          const url = group
+            ? `/components/${group}/${componentSlug}`
+            : `/components/${componentSlug}`;
           return (
             <Grid.Item
               key={component}
@@ -58,7 +61,7 @@ export default function GroupPage({
               description={stripMarkdownLinks(
                 componentDescriptions[componentSlug],
               )}
-              url={`/components/${group}/${componentSlug}`}
+              url={url}
               renderPreview={() => (
                 <ComponentThumbnail title={component} group={group} />
               )}
@@ -73,12 +76,15 @@ export default function GroupPage({
   const componentsFromPaths = (
     <Grid condensed>
       {componentPaths.map((component) => {
+        const url = group
+          ? `/components/${group}/${component}`
+          : `/components/${component}`;
         return (
           <Grid.Item
             key={component}
             title={capitalize(component.replace(/-/g, ' '))}
             description={stripMarkdownLinks(componentDescriptions[component])}
-            url={`/components/${group}/${component}`}
+            url={url}
             renderPreview={() => (
               <ComponentThumbnail title={component} group={group} />
             )}

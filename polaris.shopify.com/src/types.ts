@@ -52,6 +52,7 @@ export interface SearchResult {
       title: string;
       description: string;
       status?: Status;
+      group?: string;
     };
     foundations: {
       title: string;
