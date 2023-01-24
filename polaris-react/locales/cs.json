@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
       "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})",
-      "ariaLiveSingular": "{itemsLength} položka",
-      "ariaLivePlural": "{itemsLength} polož.",
       "Item": {
         "actionsDropdownLabel": "Akce pro: {accessibilityLabel}",
         "actionsDropdown": "Rozevírací nabídka akcí",
