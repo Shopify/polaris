@@ -4,10 +4,9 @@ description: Used to represent a clipboard, usually accompanying a copy action.
 keywords:
   - clipboard
   - copy
-  - paste
 authors:
-  - José Torre
-version: 2
+  - Adam Whitcroft
+version: 1
 date_added: 2019-03-15
-date_modified: 2023-01-24
+date_modified: 2019-03-15
 exclusive_use:
