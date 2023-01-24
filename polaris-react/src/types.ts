@@ -1,4 +1,5 @@
 import type React from 'react';
+import type {RefObject} from 'react';
 
 /* eslint-disable @shopify/strict-component-boundaries */
 import type {AvatarProps} from './components/Avatar';
@@ -223,6 +224,8 @@ export interface ComplexAction
 export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
+  /** Reference to access DOM node */
+  ref?: RefObject<HTMLElement | null>;
 }
 
 export interface MenuGroupDescriptor extends BadgeAction {
