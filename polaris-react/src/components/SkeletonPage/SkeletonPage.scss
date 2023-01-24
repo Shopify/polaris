@@ -10,6 +10,12 @@ $primary-action-button-width: 100px;
   // stylelint-enable
 }
 
+.parent {
+  > * {
+    margin: auto;
+  }
+}
+
 .Title {
   font-weight: var(--p-font-weight-semibold);
   font-size: var(--p-font-size-300);

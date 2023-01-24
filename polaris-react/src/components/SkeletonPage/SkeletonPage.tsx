@@ -60,7 +60,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <div>
+    <div className={styles.parent}>
       <Box
         padding="0"
         paddingInlineStart={{sm: '6'}}
