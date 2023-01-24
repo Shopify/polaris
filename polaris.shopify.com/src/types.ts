@@ -13,6 +13,8 @@ export type PatternVariant = {
   example: PatternExample;
 };
 
+export type Pattern = SingleVariantPattern | MultiVariantPattern;
+
 export type SingleVariantPattern = {
   title: string;
   description?: string;
@@ -24,6 +26,7 @@ export type SingleVariantPattern = {
 
 export type MultiVariantPattern = {
   variants: PatternVariant[];
+  description?: string;
   relatedResources: MarkdownString;
 };
 

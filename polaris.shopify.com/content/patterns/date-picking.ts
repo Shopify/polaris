@@ -4,6 +4,8 @@ const pattern: MultiVariantPattern = {
   relatedResources: `* Programming timezones can be finicky. Get great tips in the article [UTC is for everyone right](https://zachholman.com/talk/utc-is-enough-for-everyone-right)?
 * Learn about date formatting in the [Grammar and mechanics](/content/grammar-and-mechanics#date) guidelines.
 * See how to craft effective button labels in the [Actionable language](/content/actionable-language) guidelines.`,
+  description:
+    'Lets merchants select a date or date range to help them filter information or objects and schedule events or actions.',
   variants: [
     {
       title: 'Single date',
