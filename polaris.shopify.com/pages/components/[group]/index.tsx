@@ -1,6 +1,7 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
+import {Text} from '@shopify/polaris';
 import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
 import Grid from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
@@ -43,7 +44,9 @@ export default function GroupPage({
 
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
-      <h4>{title}</h4>
+      <Text as="h4" variant="headingMd">
+        {title}
+      </Text>
       <p>{description}</p>
       <Grid condensed>
         {components.split(', ').map((component) => {
@@ -56,7 +59,9 @@ export default function GroupPage({
                 componentDescriptions[componentSlug],
               )}
               url={`/components/${group}/${componentSlug}`}
-              renderPreview={() => <ComponentThumbnail title={component} />}
+              renderPreview={() => (
+                <ComponentThumbnail title={component} group={group} />
+              )}
             />
           );
         })}
@@ -74,7 +79,9 @@ export default function GroupPage({
             title={capitalize(component.replace(/-/g, ' '))}
             description={stripMarkdownLinks(componentDescriptions[component])}
             url={`/components/${group}/${component}`}
-            renderPreview={() => <ComponentThumbnail title={component} />}
+            renderPreview={() => (
+              <ComponentThumbnail title={component} group={group} />
+            )}
           />
         );
       })}
