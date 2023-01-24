@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Removed the focus ring from the Listbox options
+Removed the focus ring from `Listbox` options
