@@ -1,7 +1,7 @@
 ---
 title: Inline
 description: Use to arrange items in a horizontal row with equal spacing around them. Items wrap onto multiple lines when needed.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
 status:

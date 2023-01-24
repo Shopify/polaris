@@ -1,7 +1,7 @@
 ---
 title: Text container
 description: A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
-category: Titles and text
+category: Deprecated
 releasedIn: 1.9.0
 keywords:
   - spacing

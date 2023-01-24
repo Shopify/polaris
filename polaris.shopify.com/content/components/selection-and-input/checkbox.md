@@ -1,7 +1,7 @@
 ---
 title: Checkbox
 description: Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
-category: Forms
+category: Selection and input
 keywords:
   - accept
   - decline

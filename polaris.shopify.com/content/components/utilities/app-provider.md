@@ -1,7 +1,7 @@
 ---
 title: App provider
 description: App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
-category: Structure
+category: Utilities
 keywords:
   - app
   - provider

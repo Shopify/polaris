@@ -1,7 +1,7 @@
 ---
 title: Filters
 description: Filters is a composite component that filters the items of a list or table.
-category: Lists and tables
+category: Selection and input
 keywords:
   - filters
   - filtering

@@ -1,7 +1,7 @@
 ---
 title: Card
 description: Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
-category: Structure
+category: Deprecated
 keywords:
   - layout
   - container

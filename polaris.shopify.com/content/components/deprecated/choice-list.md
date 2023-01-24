@@ -1,7 +1,7 @@
 ---
 title: Choice list
 description: A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
-category: Forms
+category: Deprecated
 keywords:
   - ChoiceList
   - form

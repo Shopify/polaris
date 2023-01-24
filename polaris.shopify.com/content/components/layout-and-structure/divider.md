@@ -1,7 +1,7 @@
 ---
 title: Divider
 description: Use to separate or group content
-category: Structure
+category: Layout and structure
 keywords:
   - layout
 status:

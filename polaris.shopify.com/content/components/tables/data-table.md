@@ -1,7 +1,7 @@
 ---
 title: Data table
 description: Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
-category: Lists and tables
+category: Tables
 keywords:
   - DataTable
   - data

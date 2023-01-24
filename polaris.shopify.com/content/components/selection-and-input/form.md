@@ -1,7 +1,7 @@
 ---
 title: Form
 description: A wrapper component that handles the submission of forms.
-category: Forms
+category: Selection and input
 keywords:
   - form
   - forms

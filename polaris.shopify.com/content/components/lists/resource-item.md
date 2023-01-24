@@ -1,7 +1,7 @@
 ---
 title: Resource item
 description: Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object’s detail page.
-category: Lists and tables
+category: Lists
 keywords:
   - ResourceItem
   - resource item

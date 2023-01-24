@@ -1,7 +1,7 @@
 ---
 title: Select
 description: Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
-category: Forms
+category: Selection and input
 keywords:
   - on off
   - switch

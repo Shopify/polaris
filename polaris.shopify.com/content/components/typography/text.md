@@ -1,7 +1,7 @@
 ---
 title: Text
 description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
-category: Titles and text
+category: Typography
 keywords:
   - titles
   - text

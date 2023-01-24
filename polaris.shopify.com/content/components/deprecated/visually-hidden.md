@@ -1,7 +1,7 @@
 ---
 title: Visually hidden
 description: Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden.
-category: Titles and text
+category: Deprecated
 keywords:
   - VisuallyHidden
   - screen readers

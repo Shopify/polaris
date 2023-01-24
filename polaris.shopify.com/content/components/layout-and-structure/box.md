@@ -1,7 +1,7 @@
 ---
 title: Box
 description: Box is the most primitive layout component. It’s a way to access Polaris design tokens.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
 status:

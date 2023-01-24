@@ -1,7 +1,7 @@
 ---
 title: Alpha card
 description: Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
   - container

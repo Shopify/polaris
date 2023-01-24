@@ -1,7 +1,7 @@
 ---
 title: Listbox
 description: A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
-category: Lists and tables
+category: Lists
 keywords:
   - list
   - listbox

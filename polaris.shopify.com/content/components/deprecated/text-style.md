@@ -1,7 +1,7 @@
 ---
 title: Text style
 description: Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
-category: Titles and text
+category: Deprecated
 keywords:
   - TextStyle
   - typographic

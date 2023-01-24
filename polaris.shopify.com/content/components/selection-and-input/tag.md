@@ -1,7 +1,7 @@
 ---
 title: Tag
 description: Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
-category: Forms
+category: Selection and input
 keywords:
   - indicator
   - label

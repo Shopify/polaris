@@ -1,7 +1,7 @@
 ---
 title: Range slider
 description: A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
-category: Forms
+category: Selection and input
 keywords:
   - RangeSlider
   - input

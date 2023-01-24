@@ -1,7 +1,7 @@
 ---
 title: Drop zone
 description: The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
-category: Actions
+category: Selection and input
 keywords:
   - upload
   - image upload

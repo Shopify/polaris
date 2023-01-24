@@ -1,7 +1,7 @@
 ---
 title: Description list
 description: Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.
-category: Lists and tables
+category: Lists
 keywords:
   - DescriptionList
   - glossary

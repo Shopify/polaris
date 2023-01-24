@@ -1,7 +1,7 @@
 ---
 title: Page actions
 description: Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
-category: Structure
+category: Actions
 keywords:
   - PageActions
   - bottom of page actions

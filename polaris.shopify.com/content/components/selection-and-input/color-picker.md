@@ -1,7 +1,7 @@
 ---
 title: Color picker
 description: The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop.
-category: Forms
+category: Selection and input
 keywords:
   - ColorPicker
   - HuePicker

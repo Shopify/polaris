@@ -1,7 +1,7 @@
 ---
 title: Alpha stack
 description: Use to display elements vertically with items placed directly below the preceding item.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
 status:

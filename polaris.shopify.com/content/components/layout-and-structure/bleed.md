@@ -1,7 +1,7 @@
 ---
 title: Bleed
 description: Applies negative margin to allow content to bleed out into the surrounding layout.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
 status:

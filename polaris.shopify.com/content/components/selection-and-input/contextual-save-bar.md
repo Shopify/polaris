@@ -1,7 +1,7 @@
 ---
 title: Contextual save bar
 description: The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
-category: Forms
+category: Selection and input
 keywords:
   - form
   - forms

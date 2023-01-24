@@ -1,7 +1,7 @@
 ---
 title: Display text
 description: Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding.
-category: Titles and text
+category: Deprecated
 keywords:
   - DisplayText
   - announcement text

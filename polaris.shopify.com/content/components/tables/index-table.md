@@ -1,7 +1,7 @@
 ---
 title: Index table
 description: An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
-category: Lists and tables
+category: Tables
 keywords:
   - ResourceList
   - index

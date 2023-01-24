@@ -1,7 +1,7 @@
 ---
 title: Sheet
 description: A sheet is a large container that enters from the edge of the screen when triggered by the merchant. It’s used to provide merchants with actions and information contextual to the page. It doesn’t interrupt their flow like a modal.
-category: Overlays
+category: Deprecated
 keywords:
   - sheet
   - modal

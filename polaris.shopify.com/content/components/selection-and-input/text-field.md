@@ -1,7 +1,7 @@
 ---
 title: Text field
 description: A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
-category: Forms
+category: Selection and input
 keywords:
   - TextField
   - input

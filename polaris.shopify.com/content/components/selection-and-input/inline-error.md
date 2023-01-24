@@ -1,7 +1,7 @@
 ---
 title: Inline error
 description: Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
-category: Forms
+category: Selection and input
 keywords:
   - InlineError
   - error message

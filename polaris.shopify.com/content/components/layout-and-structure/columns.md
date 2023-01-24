@@ -1,7 +1,7 @@
 ---
 title: Columns
 description: Displays content horizontally in one or more columns with equal spacing between.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
 status:

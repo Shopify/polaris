@@ -1,7 +1,7 @@
 ---
 title: Frame
 description: The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components.
-category: Structure
+category: Utilities
 keywords:
   - navigation
   - nav

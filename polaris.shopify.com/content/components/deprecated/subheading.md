@@ -1,7 +1,7 @@
 ---
 title: Subheading
 description: Subheadings are used for the title of any sub-sections in top-level page sections.
-category: Titles and text
+category: Deprecated
 keywords:
   - title bar
   - top-level
