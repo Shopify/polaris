@@ -32,13 +32,14 @@
     "lodash.get": "^4.4.2",
     "lodash.throttle": "^4.1.1",
     "next": "^13.0.6",
+    "openai": "^3.1.0",
     "prismjs": "^1.27.0",
-    "sharp": "^0.31.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.2",
     "react-syntax-highlighter": "^15.5.0",
     "remark-gfm": "^3.0.1",
+    "sharp": "^0.31.2",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
