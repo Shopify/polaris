@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixed BulkActions causing IndexTable & ResourceList to ignore pointer events
+Fixed `BulkActions` causing `IndexTable` & `ResourceList` to ignore pointer events
