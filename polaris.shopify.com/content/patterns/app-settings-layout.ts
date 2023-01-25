@@ -9,10 +9,15 @@ const pattern: SingleVariantPattern = {
   1. In the left column, glanceable labels and descriptions are listed to make it easier for merchants to scan the page and quickly find what they are looking for.
   2. In the right column, settings are grouped in cards to make it easier for merchants to configure a setting after it's been found, or to configure multiple settings that might belong together.
 
-  | | |
-  |-|-|
-  |**Find and change app settings**|This pattern is used specifically for finding and updating individual app settings within the Shopify admin.|
-  :caption[**Use when merchants need to:**]{side=top}`,
+  :::customtable
+
+  ### **Use when merchants need to**
+
+  **Find and change app settings**
+  :   This pattern is used specifically for finding and updating individual app settings within the Shopify admin.|
+
+  :::
+  `,
   usefulToKnow: `
   | | |
   |-|-|
