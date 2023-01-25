@@ -70,3 +70,6 @@ export const toPascalCase = (str: string): string =>
 
 export const uppercaseFirst = (str: string): string =>
   str.charAt(0).toUpperCase() + str.slice(1);
+
+export const deslugify = (str: string): string =>
+  uppercaseFirst(str.replace(/-+/g, ' '));

@@ -1,6 +1,4 @@
-import type {SingleVariantPattern} from '../../src/types';
-
-const pattern: SingleVariantPattern = {
+const pattern = {
   title: 'Resource details layout',
   description: 'Lets merchants create, view, and edit resource objects.',
   howItHelps: `![Product details page](/images/patterns/resource-detail-cover-image.png)

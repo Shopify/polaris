@@ -1,6 +1,4 @@
-import type {SingleVariantPattern} from '../../src/types';
-
-const pattern: SingleVariantPattern = {
+const pattern = {
   title: 'App settings layout',
   description: 'Lets merchants scan and find groups of settings in apps.',
   howItHelps: `![App settings page with two columns](/images/patterns/app-settings-cover-image.png)
