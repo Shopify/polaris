@@ -9,10 +9,15 @@ import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import InlinePill from '../InlinePill';
 
+type RelatedComponent = {
+  label: string;
+  url: string;
+};
 export type PatternExample = {
   code: string;
   context?: string;
   snippetCode?: string;
+  relatedComponents: RelatedComponent[];
 };
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
@@ -53,22 +58,15 @@ const PlayroomButton = ({
   );
 };
 
-type RelatedComponentDocumentation = {
-  label: string;
-  url: string;
-};
-
 const PatternsExample = ({
   example,
   patternName,
-  relatedComponents,
   showCode,
   onCodeToggle,
 }: {
   example: PatternExample;
   patternName: string;
   showCode?: boolean;
-  relatedComponents: RelatedComponentDocumentation[];
   onCodeToggle?: () => void;
 }) => {
   const isControlled = typeof showCode === 'undefined';
@@ -116,10 +114,10 @@ const PatternsExample = ({
     <Fragment>
       <p>
         This pattern uses the{' '}
-        {relatedComponents.map((component, index) => {
+        {example.relatedComponents.map((component, index) => {
           if (
-            index === relatedComponents.length - 1 &&
-            relatedComponents.length > 1
+            index === example.relatedComponents.length - 1 &&
+            example.relatedComponents.length > 1
           ) {
             return (
               <Fragment key={component.url}>
@@ -139,7 +137,7 @@ const PatternsExample = ({
             </Fragment>
           );
         })}
-        {relatedComponents.length > 1 ? ' components' : ' component'}
+        {example.relatedComponents.length > 1 ? ' components' : ' component'}
       </p>
       <Stack gap="2" className={styles.SpecificityBuster}>
         <ExampleWrapper
