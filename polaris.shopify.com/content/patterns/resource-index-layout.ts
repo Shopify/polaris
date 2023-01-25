@@ -42,44 +42,7 @@ const pattern: SingleVariantPattern = {
         },
       ]}
     >
-      <AlphaStack gap="16" align="center">
-        <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-          <Box as="section" paddingInlineStart={{ xs: 4, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
-            <AlphaStack>
-              <Text as="h3" variant="headingMd">
-                InterJambs
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Interjambs are the rounded protruding bits of your puzzlie piece
-              </Text>
-            </AlphaStack>
-          </Box>
-          <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth>
-              <TextField label="Interjamb style" />
-              <TextField label="Interjamb ratio" />
-            </AlphaStack>
-          </AlphaCard>
-        </Columns>
-        <Columns columns={{ xs: "1fr", md: "2fr 5fr" }}>
-        <Box as="section" paddingInlineStart={{ xs: 2, sm: 0 }} paddingInlineEnd={{ xs: 2, sm: 0 }}>
-            <AlphaStack>
-              <Text as="h3" variant="headingMd">
-                Dimensions
-              </Text>
-              <Text as="p" variant="bodyMd">
-                Interjambs are the rounded protruding bits of your puzzlie piece
-              </Text>
-            </AlphaStack>
-          </Box>
-          <AlphaCard roundedAbove="sm">
-            <AlphaStack fullWidth>
-              <TextField label="Horizontal" />
-              <TextField label="Interjamb ratio" />
-            </AlphaStack>
-          </AlphaCard>
-        </Columns>
-      </AlphaStack>
+     <AlphaCard>Coming Soon</AlphaCard>
     </Page>`,
   },
 };
