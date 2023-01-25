@@ -35,6 +35,13 @@ const pattern: MultiVariantPattern = {
 |This pattern can be duplicated to allow users to add an end date or time.|![](/images/patterns/single-list-usage-2.png)|
 `,
       example: {
+        relatedComponents: [
+          {
+            label: 'Date picker',
+            url: '/components/date-picker',
+          },
+          {label: 'Text field', url: '/components/text-field'},
+        ],
         code: `
       {(function DatePickerPattern () {
         const [{month, year}, setDate] = useState({month: 1, year: 2018});
@@ -123,6 +130,14 @@ const pattern: MultiVariantPattern = {
 |If a merchant enters a nonexistent date, revert to the previously selected date.|![](/images/patterns/date-range-usage-3.png)|
 `,
       example: {
+        relatedComponents: [
+          {
+            label: 'Date picker',
+            url: '/components/date-picker',
+          },
+          {label: 'Option list', url: '/components/option-list'},
+          {label: 'Text field', url: '/components/text-field'},
+        ],
         code: ` <Page
         divider
       >
@@ -157,6 +172,14 @@ const pattern: MultiVariantPattern = {
 |A date list can be modified to serve unique situations, like providing suggested search queries in the customer segment editor.|![](/images/patterns/date-list-usage-3.png)|
 `,
       example: {
+        relatedComponents: [
+          {
+            label: 'Date picker',
+            url: '/components/date-picker',
+          },
+          {label: 'OptionList', url: '/components/option-list'},
+          {label: 'Text field', url: '/components/text-field'},
+        ],
         context: `<div style={{
           display: 'flex',
           minHeight: '100vh',

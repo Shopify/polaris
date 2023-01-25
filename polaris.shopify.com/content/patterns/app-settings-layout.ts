@@ -24,6 +24,12 @@ const pattern: SingleVariantPattern = {
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
   example: {
+    relatedComponents: [
+      {label: 'AlphaStack', url: '/components/alpha-stack'},
+      {label: 'AlphaCard', url: '/components/alpha-card'},
+      {label: 'Columns', url: '/components/columns'},
+      {label: 'Box', url: '/components/box'},
+    ],
     context: `
       <div style={{ paddingBottom: '2rem' }}>
         ____CODE____

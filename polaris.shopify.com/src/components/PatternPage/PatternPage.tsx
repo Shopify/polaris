@@ -155,13 +155,6 @@ function PatternPageContent({
           showCode={showCode}
           onCodeToggle={onCodeToggle}
           patternName={patternName}
-          relatedComponents={[
-            {
-              label: 'Date picker',
-              url: '/components/date-picker',
-            },
-            {label: 'Text', url: '/components/text-field'},
-          ]}
         />
       </Stack>
       <Stack as="section" gap="4" className={styles.UsefulToKnow}>
