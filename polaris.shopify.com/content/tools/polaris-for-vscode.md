@@ -5,7 +5,10 @@ icon: HintMajor
 order: 1
 ---
 
-![Demo of Polaris for VS Code tokens autocomplete](https://github.com/Shopify/polaris/blob/main/polaris-for-vscode/docs/polaris-for-vscode-preview.gif?raw=true)
+<picture>
+  <source srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <img srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.gif" alt="Demo of Polaris for VS Code tokens autocomplete">
+</picture>
 
 ## Features
 
