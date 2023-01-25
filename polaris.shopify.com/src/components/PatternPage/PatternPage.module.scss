@@ -105,11 +105,13 @@
   gap: 1rem;
   .ImageWrapper {
     display: block;
+    border: 1px solid var(--p-border-subdued);
     position: relative;
     flex: auto;
     overflow: hidden;
     aspect-ratio: 361.9/180.9;
     width: 100%;
+    border-radius: 0.25rem;
     background: var(--p-surface-depressed);
     > img {
       width: 100%;
