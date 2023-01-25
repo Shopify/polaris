@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': patch
 ---
 
-Update clipboard icon
+Updated clipboard icon
