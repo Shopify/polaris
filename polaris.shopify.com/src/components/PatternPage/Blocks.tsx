@@ -3,12 +3,14 @@ import React, {Fragment} from 'react';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import remarkDirective from 'remark-directive';
 import remarkDirectiveRehype from 'remark-directive-rehype';
+import {
+  remarkDefinitionList,
+  defListHastHandlers,
+} from 'remark-definition-list';
 import Image from 'next/image';
 import Markdown from '../Markdown';
 import {Stack} from '../Stack';
 import {Box} from '../Box';
-import {TableContainer, Table, Tbody, TableCaption, Tr, Td} from '../Table';
-
 // @ts-expect-error Can't extract the special types out of react-markdown for
 // some reason.
 const isEmptyTr = ({node}) =>
@@ -21,7 +23,14 @@ const isEmptyTr = ({node}) =>
 
 export const HowItHelps = ({children}: {children: string}) => (
   <Markdown
-    remarkPlugins={[remarkUnwrapImages, remarkDirective, remarkDirectiveRehype]}
+    remarkPlugins={[
+      remarkUnwrapImages,
+      remarkDefinitionList,
+      remarkDirective,
+      remarkDirectiveRehype,
+    ]}
+    // @ts-expect-error incompatible type to remark-rehype in remark-definition-list package.
+    remarkRehypeOptions={{handlers: defListHastHandlers}}
     components={{
       img: ({src, alt}) =>
         src ? (
@@ -31,25 +40,17 @@ export const HowItHelps = ({children}: {children: string}) => (
         ) : null,
       ol: (props) => <Stack as="ol" gap="2" {...props} />,
       li: (props) => <li {...props} />,
-      table: ({children}) => (
-        <TableContainer>
-          <Table className={styles.UsageTable}>{children}</Table>
-        </TableContainer>
+      dl: (props) => (
+        <Box as="dl" className={styles.DefinitionList}>
+          {props.children}
+        </Box>
       ),
-      tbody: (props) => <Tbody {...props} />,
-      // We don't use theads here
-      thead: () => null,
-      // remark-directive is inserting extra, blank trs for some reason
-      tr: (props) => (isEmptyTr(props) ? null : <Tr {...props} />),
-      // @ts-expect-error Something inside react-markdown is incorrectly typing
-      // the `onCopy` callback as accepting a `table` event. Different react
-      // versions perhaps?
-      td: (props) => <Td {...props} />,
+      dt: (props) => <dt>{props.children}</dt>,
+      dd: (props) => <dd>{props.children}</dd>,
       // @ts-expect-error react-markdown doesn't know about the extra data
-      // remark-directive is returning for us
-      caption: ({children, side}) => (
-        <TableCaption side={side}>{children}</TableCaption>
-      ),
+      customtable: ({children, ...props}) => {
+        return <div className={styles.CustomTable}>{children}</div>;
+      },
       strong: ({children}) => (
         <Box as="strong" style={{fontWeight: 'var(--font-weight-700)'}}>
           {children}

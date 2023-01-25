@@ -76,24 +76,26 @@ function PatternTabs({pattern, children}: PatternTabsProps) {
       onChange={onTabChange}
     >
       <div className={styles.TabGroup} data-selected={exampleIndex}>
-        <Tab.List ref={tabListRef}>
-          <div className={styles.ExamplesList} id="examples">
-            {pattern.variants.map((variant) => (
-              <Tab
-                key={`${variant.slug}-tab`}
-                onFocus={() => {
-                  if (!tabListRef.current) return;
-                  tabListRef.current.scrollIntoView({
-                    block: 'end',
-                    inline: 'nearest',
-                    behavior: 'smooth',
-                  });
-                }}
-              >
-                <span>{variant.title}</span>
-              </Tab>
-            ))}
-          </div>
+        <Tab.List
+          ref={tabListRef}
+          className={styles.ExamplesList}
+          id="examples"
+        >
+          {pattern.variants.map((variant) => (
+            <Tab
+              key={`${variant.slug}-tab`}
+              onFocus={() => {
+                if (!tabListRef.current) return;
+                tabListRef.current.scrollIntoView({
+                  block: 'end',
+                  inline: 'nearest',
+                  behavior: 'smooth',
+                });
+              }}
+            >
+              <span>{variant.title}</span>
+            </Tab>
+          ))}
         </Tab.List>
         <Tab.Panels>
           {pattern.variants.map((variant) => {
