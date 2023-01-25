@@ -39,8 +39,6 @@
     "react-markdown": "^8.0.2",
     "react-merge-refs": "^2.0.1",
     "remark-definition-list": "^1.2.0",
-    "remark-directive": "^2.0.1",
-    "remark-directive-rehype": "^0.4.2",
     "remark-gfm": "^3.0.1",
     "remark-unwrap-images": "^3.0.1",
     "use-dark-mode": "^2.3.1"

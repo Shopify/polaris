@@ -2,8 +2,25 @@ import ReactMarkdown from 'react-markdown';
 import React from 'react';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+import {visit} from 'unist-util-visit';
+import type {Plugin} from 'unified';
 import {slugify} from '../../utils/various';
 import Code from '../Code';
+
+// rehype-raw will strip the non-HTML-standard `meta` field from the node when
+// converting the parsed markdown to HTML, so we have to capture it in a
+// different property which wont be stripped out.
+function codeMetaAsDataAttribute(): Plugin {
+  return (tree) => {
+    visit(tree, 'code', (node) => {
+      if (node.meta) {
+        const data = node.data || (node.data = {});
+        const props = data.hProperties || (data.hProperties = {});
+        props.meta = node.meta;
+      }
+    });
+  };
+}
 
 interface Props {
   children: string;
@@ -26,6 +43,7 @@ function Markdown({
     <ReactMarkdown
       remarkPlugins={[
         [remarkGfm, {tablePipeAlign: true}],
+        codeMetaAsDataAttribute,
         ...(remarkPlugins ?? []),
       ]}
       rehypePlugins={[rehypeRaw, ...(rehypePlugins ?? [])]}

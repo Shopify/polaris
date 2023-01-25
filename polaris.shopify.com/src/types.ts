@@ -58,7 +58,12 @@ export interface PatternFrontMatter extends FrontMatter {
   previewImg?: string;
   order?: number;
   githubDiscussionsLink?: string;
-  contentFile: string;
+  variants?: string[];
+}
+
+export interface PatternVariantFontMatter {
+  title?: string;
+  slug?: string;
 }
 
 export type MarkdownFile = {

@@ -7,17 +7,10 @@ import styles from './PatternsExample.module.scss';
 import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
-import InlinePill from '../InlinePill';
 
-type RelatedComponent = {
-  label: string;
-  url: string;
-};
 export type PatternExample = {
   code: string;
   context?: string;
-  snippetCode?: string;
-  relatedComponents: RelatedComponent[];
 };
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
@@ -34,11 +27,10 @@ const PlayroomButton = ({
     setEncodedUrl(
       createUrl({
         baseUrl: '/sandbox/',
-        code: `
-{/* [Polaris Pattern] ${patternName} */}
+        code: `{/* [Polaris Pattern] ${patternName} */}
 {/* Generated on ${getISOStringYear()} from ${window.location.href} */}
-  ${/* intentional blank line */ ''}
-  ${code}`.trim(),
+${/* intentional blank line */ ''}
+${code}`.trim(),
         // TODO: Is this correct?
         themes: ['locale:en'],
         paramType: 'search',
@@ -94,81 +86,50 @@ const PatternsExample = ({
       return match;
     });
   };
-  const [previewUrl, setPreviewUrl] = useState('');
-  useEffect(() => {
-    function constructLivePreview(code: string, context?: string) {
-      const livePreviewCode = context
-        ? context.replace('____CODE____', code)
-        : code;
 
-      return `/playroom/preview/index.html${createUrl({
-        code: livePreviewCode,
-        paramType: 'search',
-      })}`;
-    }
-    setPreviewUrl(constructLivePreview(example.code, example.context));
-  }, [example.code, example.context]);
-  const {code, snippetCode} = example;
+  const formattedCode = formatCodeSnippet(example.code);
+
+  const livePreviewCode = example.context
+    ? example.context.replace('____CODE____', formattedCode)
+    : example.code;
+
+  console.log({livePreviewCode});
+
+  const previewUrl = `/playroom/preview/index.html${createUrl({
+    code: livePreviewCode,
+    paramType: 'search',
+  })}`;
 
   return (
-    <Fragment>
-      <p>
-        This pattern uses the{' '}
-        {example.relatedComponents.map((component, index) => {
-          if (
-            index === example.relatedComponents.length - 1 &&
-            example.relatedComponents.length > 1
-          ) {
-            return (
-              <Fragment key={component.url}>
-                {' and '}
-                <InlinePill as="a" href={component.url}>
-                  {component.label}
-                </InlinePill>
-              </Fragment>
-            );
-          }
-          return (
-            <Fragment key={component.url}>
-              {index > 0 ? ', ' : null}
-              <InlinePill as="a" key={component.url} href={component.url}>
-                {component.label}
-              </InlinePill>
-            </Fragment>
-          );
-        })}
-        {example.relatedComponents.length > 1 ? ' components' : ' component'}
-      </p>
-      <Stack gap="2" className={styles.SpecificityBuster}>
-        <ExampleWrapper
-          className={styles.ExampleWrapper}
-          renderFrameActions={() => (
-            <Fragment>
-              <PlayroomButton code={example.code} patternName={patternName} />
-              <LinkButton onClick={handleCodeToggle}>
-                {showCodeValue ? 'Hide code' : 'Show code'}
-              </LinkButton>
-            </Fragment>
-          )}
-        >
-          <GrowFrame
-            id="live-preview-iframe"
-            defaultHeight={'400px'}
-            src={previewUrl}
-          />
-        </ExampleWrapper>
-        {showCodeValue ? (
-          <Code
-            code={[
-              {
-                title: 'React',
-                code: formatCodeSnippet(snippetCode ? snippetCode : code),
-              },
-            ]}
-          />
-        ) : null}
-      </Stack>
-    </Fragment>
+    <Stack gap="2" className={styles.SpecificityBuster}>
+      <ExampleWrapper
+        className={styles.ExampleWrapper}
+        renderFrameActions={() => (
+          <Fragment>
+            <PlayroomButton code={formattedCode} patternName={patternName} />
+            <LinkButton onClick={handleCodeToggle}>
+              {showCodeValue ? 'Hide code' : 'Show code'}
+            </LinkButton>
+          </Fragment>
+        )}
+      >
+        <GrowFrame
+          id="live-preview-iframe"
+          defaultHeight={'400px'}
+          src={previewUrl}
+        />
+      </ExampleWrapper>
+      {showCodeValue ? (
+        <Code
+          code={[
+            {
+              title: 'React',
+              code: formattedCode,
+            },
+          ]}
+        />
+      ) : null}
+    </Stack>
   );
 };
 

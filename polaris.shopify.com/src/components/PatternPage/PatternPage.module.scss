@@ -22,6 +22,7 @@
     }
   }
 }
+
 .Panel {
   position: relative;
   padding: 1rem;
@@ -37,8 +38,11 @@
     // border radius there when that tab is selected
     border-top-left-radius: 0;
   }
+}
 
-  .VariantDescription {
+.Variant {
+  & > p:first-child {
+    // The first paragrah when it exists should be bigger
     font-size: var(--font-size-400);
   }
 }
@@ -118,11 +122,7 @@
   }
 }
 
-.MerchantGoal {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
+.HowItHelps {
   .ImageWrapper {
     display: block;
     border: 1px solid var(--p-border-subdued);
@@ -139,26 +139,18 @@
     }
   }
   ol {
-    margin: 0px;
     list-style: none;
     counter-reset: item;
-    padding-left: 32px;
-    position: relative;
     li {
       counter-increment: item;
-    }
-    li:before {
-      width: 24px;
-      height: 24px;
-      position: absolute;
-      left: -2px;
-      content: counter(item);
-      font-weight: 700;
-      color: rgba(153, 35, 247, 1);
-      vertical-align: bottom;
-      text-align: center;
-      display: block;
-      border-radius: 100%;
+      &::before {
+        width: 24px;
+        height: 24px;
+        content: counter(item);
+        font-weight: 700;
+        color: rgba(153, 35, 247, 1);
+        text-align: center;
+      }
     }
   }
   @media screen and (max-width: $breakpointTablet) {
@@ -168,6 +160,7 @@
     }
   }
 }
+
 .UsageGuidelinesGrid {
   display: grid;
   column-gap: var(--p-space-4);
@@ -236,7 +229,7 @@
   appearance: auto;
 }
 
-.CustomTable {
+.DefinitionTable {
   --props-table-border-color: #c9cccf;
   border: 1px solid var(--props-table-border-color);
   @include dark-mode {
@@ -244,13 +237,21 @@
   }
   border-radius: var(--border-radius-400);
 
-  h3 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     background: rgba(0, 0, 0, 0.02);
     padding: 0.66rem 1rem;
     margin: 0;
+    font-size: inherit;
+    font-weight: normal;
   }
+
   .DefinitionList {
     display: grid;
+    background: rgb(255, 255, 255);
     @include dark-mode {
       background: rgba(255, 255, 255, 0.05);
     }
@@ -258,7 +259,6 @@
     grid-template-columns: fit-content(35%) 1fr;
     padding: 1rem;
     gap: 1rem;
-    font-size: var(--font-size-200);
     @media screen and (max-width: $breakpointDesktopSmall) {
       grid-template-columns: 1fr;
     }
@@ -267,6 +267,39 @@
     }
     @media screen and (max-width: $breakpointMobile) {
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+.List {
+  list-style: none;
+  margin: 0;
+  position: relative;
+  li {
+    &::before {
+      width: 24px;
+      height: 24px;
+      font-weight: 700;
+      text-align: center;
+    }
+  }
+}
+
+.UnorderedList {
+  li {
+    &::before {
+      content: '\2022';
+    }
+  }
+}
+
+.OrderedList {
+  counter-reset: item;
+  li {
+    counter-increment: item;
+    &::before {
+      content: counter(item);
+      color: rgba(153, 35, 247, 1);
     }
   }
 }
