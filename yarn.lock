@@ -18673,7 +18673,7 @@ react-markdown@^8.0.2:
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-react-merge-refs@ˆ2.0.1:
+react-merge-refs@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-merge-refs/-/react-merge-refs-2.0.1.tgz#a1f8c2dadefa635333e9b91ec59f30b65228b006"
   integrity sha512-pywF6oouJWuqL26xV3OruRSIqai31R9SdJX/I3gP2q8jLxUnA1IwXcLW8werUHLZOrp4N7YOeQNZrh/BKrHI4A==
@@ -19111,7 +19111,7 @@ relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-remark-definition-list@ˆ1.2.0:
+remark-definition-list@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/remark-definition-list/-/remark-definition-list-1.2.0.tgz#eac83239870e9228de9c1a6da7a23b61d7decd97"
   integrity sha512-qc1x5JT/rria8LWbBx8EI5NYElpnf2jA7oaOM2tzqpMAZ2bLd7ejgrQ8AH6JV5oUqf+DeBR37TQzPx+iZO/DIA==
