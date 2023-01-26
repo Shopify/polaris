@@ -1,4 +1,4 @@
-import {AlphaStack, Icon, Inline} from '@shopify/polaris';
+import {AlphaStack, Icon, Inline, Text} from '@shopify/polaris';
 import {InfoMinor} from '@shopify/polaris-icons';
 import styles from './TipBanner.module.scss';
 
@@ -15,7 +15,9 @@ function TipBanner({title, message}: Props) {
           <div>
             <Icon source={InfoMinor} color="highlight" />
           </div>
-          <p className={styles.Title}>{title}</p>
+          <Text as="h4" variant="headingMd">
+            {title}
+          </Text>
         </Inline>
         <p>{message}</p>
       </AlphaStack>

@@ -10,6 +10,7 @@ import {parseMarkdown} from '../../../src/utils/markdown.mjs';
 import {stripMarkdownLinks} from '../../../src/utils/various';
 import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
+import Markdown from '../../../src/components/Markdown';
 
 interface Group {
   title?: string;
@@ -22,6 +23,7 @@ interface FrontMatter {
   title?: string;
   description?: string;
   groups?: Group[];
+  relatedResources?: string[];
 }
 
 interface Props {
@@ -40,11 +42,11 @@ export default function GroupPage({
   componentDescriptions,
 }: Props) {
   const groups = frontMatter?.groups;
-
+  const relatedResources = frontMatter?.relatedResources;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
       <AlphaStack>
-        <Text as="h5" variant="headingLg">
+        <Text as="h4" variant="headingLg">
           {title}
         </Text>
         <p>{description}</p>
@@ -97,17 +99,40 @@ export default function GroupPage({
     </Grid>
   );
 
+  const relatedResourcesMarkup = relatedResources
+    ? relatedResources && (
+        <AlphaStack>
+          <Text as="h4" variant="headingLg">
+            Related Resources
+          </Text>
+          <ul>
+            {relatedResources.map((resource) => (
+              <li
+                key={resource}
+                style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
+              >
+                <Markdown text={resource} />
+              </li>
+            ))}
+          </ul>
+        </AlphaStack>
+      )
+    : null;
+
   return (
     <Page title={frontMatter?.title}>
       <PageMeta
         title={frontMatter?.title}
         description={frontMatter?.description}
       />
-      <AlphaStack>
-        <Longform firstParagraphIsLede>
-          <p>{frontMatter?.description}</p>
-        </Longform>
-        {groupsMarkup || componentsFromPaths}
+      <AlphaStack gap="16">
+        <AlphaStack>
+          <Longform firstParagraphIsLede>
+            <p>{frontMatter?.description}</p>
+          </Longform>
+          {groupsMarkup || componentsFromPaths}
+        </AlphaStack>
+        {relatedResourcesMarkup}
       </AlphaStack>
     </Page>
   );

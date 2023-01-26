@@ -26,6 +26,7 @@ const genNavJson = (mardownFiles) => {
       expanded,
       groups,
       componentDescriptions,
+      relatedResources,
     } = md.frontMatter;
     const {slug} = md;
 
@@ -44,6 +45,7 @@ const genNavJson = (mardownFiles) => {
       expanded,
       groups,
       componentDescriptions,
+      relatedResources,
     });
   });
 

@@ -15,4 +15,6 @@ groups:
     description: >-
       Layout compositions are built with layout primitives. Use these components to build common layouts in the admin with the help of sensible defaults.
     components: Alpha card, Callout card, Media card, Empty state, Page
+relatedResources:
+  - Check out the Polaris [Space](https://polaris.shopify.com/design/space) guidelines to understand how to apply the Polaris spacing scale.
 ---
