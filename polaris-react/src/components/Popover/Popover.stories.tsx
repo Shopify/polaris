@@ -25,15 +25,29 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 export function WithActionList() {
-  const [popoverActive, setPopoverActive] = useState(true);
+  // const [popoverActive, setPopoverActive] = useState(true);
+  const [activePopover, setActivePopover] = useState(null);
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+  const togglePopoverActive = useCallback((popover, isClosing) => {
+    const ap = isClosing ? null : popover;
+    setActivePopover(ap);
+  }, []);
 
   const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
+    <Button
+      id="button-1"
+      onClick={() => togglePopoverActive('popover1', false)}
+      disclosure
+    >
+      More actions
+    </Button>
+  );
+  const activator2 = (
+    <Button
+      id="button-2"
+      onClick={() => togglePopoverActive('popover2', false)}
+      disclosure
+    >
       More actions
     </Button>
   );
@@ -41,10 +55,21 @@ export function WithActionList() {
   return (
     <div style={{height: '250px'}}>
       <Popover
-        active={popoverActive}
+        active={activePopover === 'popover1'}
         activator={activator}
         autofocusTarget="first-node"
-        onClose={togglePopoverActive}
+        onClose={() => togglePopoverActive('popover1', true)}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={[{content: 'Import'}, {content: 'Export'}]}
+        />
+      </Popover>
+      <Popover
+        active={activePopover === 'popover2'}
+        activator={activator2}
+        autofocusTarget="first-node"
+        onClose={() => togglePopoverActive('popover2', true)}
       >
         <ActionList
           actionRole="menuitem"
