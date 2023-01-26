@@ -40,7 +40,7 @@ A combobox is made up of the following:
 1. **TextField**: A text input that activates a popover displaying a list of options. As merchants type in the text field, the list of options is filtered by the input value. Options replace or add to the input value when selected.
 2. **Popover**: An overlay containing a list of options.
 3. **Listbox**: A list of options to filter and select or deselect.
-4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/listbox) to learn how to compose it with various content.
+4. **Listbox.Option**: The individual options to select or deselect. Check out the [listbox component documentation](https://polaris.shopify.com/components/lists/listbox) to learn how to compose it with various content.
 
 ---
 
@@ -57,7 +57,7 @@ The `Combobox` component should:
 
 ## Content guidelines
 
-The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/text-field) for text fields.
+The input field for `Combobox` should follow the [content guidelines](https://polaris.shopify.com/components/selection-and-input/text-field) for text fields.
 
 ---
 
@@ -90,8 +90,8 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/text-field)
-- For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/listbox)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/selection-and-input/text-field)
+- For a list of selectable options not linked to an input field, [use the list box component](https://polaris.shopify.com/components/lists/listbox)
 
 ---
 
@@ -99,7 +99,7 @@ The tag multi-select input enables merchants to efficiently add or remove tags f
 
 ### Structure
 
-The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/listbox) component to be used.
+The `Combobox` component is based on the [ARIA 1.2 combobox pattern](https://www.w3.org/TR/wai-aria-practices-1.1/#combobox). It is a combination of a single-line `TextField` and a `Popover`. The current implementation expects a [`Listbox`](https://polaris.shopify.com/components/lists/listbox) component to be used.
 
 The `Combobox` popover displays below the text field or other control by default so it is easy for merchants to discover and use. However, you can change the position with the `preferredPosition` prop.
 

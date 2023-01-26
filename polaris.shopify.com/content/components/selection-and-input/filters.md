@@ -37,7 +37,7 @@ Merchants use filters to:
 - filter by typing into a text field
 - filter by selecting filters or promoted filters
 
-The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
+The way that merchants interact with filters depends on the components that you decide to incorporate. In its simplest form, filters includes a text field and a set of filters, which can be displayed in different ways. For example, you could show promoted filters and a More button that opens a [sheet](https://polaris.shopify.com/components/deprecated/sheet) containing more filters. What the filters are and how they’re exposed to merchants is flexible.
 
 ---
 
@@ -45,10 +45,10 @@ The way that merchants interact with filters depends on the components that you 
 
 The filters component relies on the accessibility features of multiple other components:
 
-- [Text field](https://polaris.shopify.com/components/text-field)
-- [Button](https://polaris.shopify.com/components/button)
-- [Popover](https://polaris.shopify.com/components/popover)
-- [Sheet](https://polaris.shopify.com/components/sheet)
+- [Text field](https://polaris.shopify.com/components/selection-and-input/text-field)
+- [Button](https://polaris.shopify.com/components/actions/button)
+- [Popover](https://polaris.shopify.com/components/overlays/popover)
+- [Sheet](https://polaris.shopify.com/components/deprecated/sheet)
 - [Collapsible](https://polaris.shopify.com/components/collapsible)
 
 ### Maintain accessibility with custom features

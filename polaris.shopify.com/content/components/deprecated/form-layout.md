@@ -95,4 +95,4 @@ Help text provides extra guidance to people filling out a form field. This text 
 
 ## Related components
 
-- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/layout)
+- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/layout-and-structure/layout)

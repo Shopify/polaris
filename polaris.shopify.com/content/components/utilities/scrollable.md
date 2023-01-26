@@ -34,7 +34,7 @@ Scrollable containers should:
 
 ## Content guidelines
 
-Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/card#content-guidelines) for cards.
+Scrollable containers are cards with scrolling functionality, and should follow the [content guidelines](https://polaris.shopify.com/components/layout-and-structure/alpha-card#content-guidelines) for cards.
 
 ---
 

@@ -27,7 +27,7 @@ examples:
 
 ## Anatomy
 
-![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/listbox/listbox-anatomy.png)
+![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/lists/listbox/listbox-anatomy.png)
 
 A listbox can be composed of:
 

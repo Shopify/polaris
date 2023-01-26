@@ -22,7 +22,7 @@ examples:
 Skeleton body text component should:
 
 - Be used with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) when page content loads all at once. Together, these components give merchants an indication of what the page layout will be once loaded.
-- Be used on its own, inside any content container component (like a [card](https://polaris.shopify.com/components/card)), and when content loads after the main page load.
+- Be used on its own, inside any content container component (like a [card](https://polaris.shopify.com/components/layout-and-structure/alpha-card)), and when content loads after the main page load.
 - Try to match the number of lines to the content being loaded so it gives an accurate representation.
 
 ---
@@ -38,12 +38,12 @@ Show static content that never changes on a page and use skeleton loading for dy
 #### Do
 
 Use skeleton body text for dynamic content.
-![Image showing skeleton body text for dynamic content](/images/components/skeleton-body-text/do-use-skeleton-body-for-dynamic-content@2x.png)
+![Image showing skeleton body text for dynamic content](/images/components/feedback-indicators/skeleton-body-text/do-use-skeleton-body-for-dynamic-content@2x.png)
 
 #### Don’t
 
 Use skeleton body text for static content or use placeholder content for dynamic content.
-![Image showing skeleton body text for static content](/images/components/skeleton-body-text/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text@2x.png)
+![Image showing skeleton body text for static content](/images/components/feedback-indicators/skeleton-body-text/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text@2x.png)
 
 <!-- end -->
 

@@ -136,5 +136,5 @@ A text field component that is tailor-made for a search use-case.
 - To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/frame) component.
 - To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/navigation) component.
 - To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/toast) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
 - To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/loading) component.

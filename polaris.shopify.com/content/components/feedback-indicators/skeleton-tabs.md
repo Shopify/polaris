@@ -25,4 +25,4 @@ Skeleton tabs component should:
 
 ## Related components
 
-- Use this component with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) to represent the content of a page before it’s loaded.
+- Use this component with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.

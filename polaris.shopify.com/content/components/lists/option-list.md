@@ -31,7 +31,7 @@ examples:
 
 The option list component should:
 
-- Be placed on its own inside a container. Usually the container behaves like a menu, as it does with [popover](https://polaris.shopify.com/components/popover). Don’t place other components within the same container.
+- Be placed on its own inside a container. Usually the container behaves like a menu, as it does with [popover](https://polaris.shopify.com/components/overlays/popover). Don’t place other components within the same container.
 - Not be used when a [select component](https://polaris.shopify.com/components/select) will do.
 
 ---
@@ -71,7 +71,7 @@ Each item in an option list should be clear and descriptive.
 
 Items in an option list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users.
 
-Controls in simple option lists are [buttons](https://polaris.shopify.com/components/button), and controls in multiple option lists are [checkboxes](https://polaris.shopify.com/components/checkbox).
+Controls in simple option lists are [buttons](https://polaris.shopify.com/components/actions/button), and controls in multiple option lists are [checkboxes](https://polaris.shopify.com/components/checkbox).
 
 If you customize the option list, you can provide ARIA roles that fit the context. These roles must be valid according to the [W3C ARIA specification](https://www.w3.org/TR/wai-aria-1.1/) to be conveyed correctly to screen reader users.
 

@@ -75,4 +75,4 @@ For example, if the setting toggle is on, the button should say “Deactivate”
 The setting toggle component is implemented as an HTML `<button>` with the `switch` [ARIA role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/switch_role).
 The components passed as children will automatically be wrapped in a label element describing the `<button>`. Enabling and disabling the SettingToggle with update the `aria-checked` attribute to `"true"` or `"false"`.
 
-To learn more about button accessibility, see the [button component](https://polaris.shopify.com/components/button).
+To learn more about button accessibility, see the [button component](https://polaris.shopify.com/components/actions/button).

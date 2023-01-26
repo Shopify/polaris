@@ -63,5 +63,5 @@ Show skeleton display text for dynamic page titles.
 
 ## Related components
 
-- Use this component with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/skeleton-body-text) to represent the content of a page before it’s loaded.
+- Use this component with [Skeleton page](https://polaris.shopify.com/components/skeleton-page) and [Skeleton body text](https://polaris.shopify.com/components/feedback-indicators/skeleton-body-text) to represent the content of a page before it’s loaded.
 - When giving feedback for in-context operations, use [Progress bar](https://polaris.shopify.com/components/progress-bar) or [Spinner](https://polaris.shopify.com/components/spinner) component.

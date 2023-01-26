@@ -1,14 +1,15 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
-import {Text} from '@shopify/polaris';
-import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
+import {AlphaStack, Text} from '@shopify/polaris';
 import Grid from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
-import Markdown from '../../../src/components/Markdown';
 import TipBanner from '../../../src/components/TipBanner/TipBanner';
+import ComponentThumbnail from '../../../src/components/ComponentThumbnail';
 import {parseMarkdown} from '../../../src/utils/markdown.mjs';
 import {stripMarkdownLinks} from '../../../src/utils/various';
+import PageMeta from '../../../src/components/PageMeta';
+import Longform from '../../../src/components/Longform';
 
 interface Group {
   title?: string;
@@ -42,10 +43,12 @@ export default function GroupPage({
 
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
-      <Text as="h4" variant="headingMd">
-        {title}
-      </Text>
-      <p>{description}</p>
+      <AlphaStack>
+        <Text as="h5" variant="headingLg">
+          {title}
+        </Text>
+        <p>{description}</p>
+      </AlphaStack>
       <Grid condensed>
         {components?.split(', ').map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
@@ -96,31 +99,37 @@ export default function GroupPage({
 
   return (
     <Page title={frontMatter?.title}>
-      {groupsMarkup || componentsFromPaths}
-      <Markdown text={frontMatter?.description || ''} />
+      <PageMeta
+        title={frontMatter?.title}
+        description={frontMatter?.description}
+      />
+      <AlphaStack>
+        <Longform firstParagraphIsLede>
+          <p>{frontMatter?.description}</p>
+        </Longform>
+        {groupsMarkup || componentsFromPaths}
+      </AlphaStack>
     </Page>
   );
 }
 
 export async function getStaticProps(context: {params: {group: string}}) {
+  const {group} = context.params;
   const globPath = path.resolve(
     process.cwd(),
-    `content/components/${context.params.group}/*.md`,
+    `content/components/${group}/*.md`,
   );
   const components = globby
     .sync(globPath)
     .map((path) =>
       path
-        .replace(
-          `${process.cwd()}/content/components/${context.params.group}/`,
-          '',
-        )
+        .replace(`${process.cwd()}/content/components/${group}/`, '')
         .replace('.md', ''),
     )
     .filter((component) => component !== 'index');
 
   const componentDescriptions = components.map((component) => {
-    const componentRelativePath = `content/components/${context.params.group}/${component}.md`;
+    const componentRelativePath = `content/components/${group}/${component}.md`;
     const componentPath = path.resolve(process.cwd(), componentRelativePath);
     const componentContent = fs.readFileSync(componentPath, 'utf8');
     const {
@@ -132,13 +141,13 @@ export async function getStaticProps(context: {params: {group: string}}) {
     return fs.existsSync(componentPath) ? [component, description] : [];
   });
 
-  const relativeMdPath = `content/components/${context.params?.group}/index.md`;
+  const relativeMdPath = `content/components/${group}/index.md`;
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
 
   if (fs.existsSync(mdFilePath)) {
     const componentMarkdown = fs.readFileSync(
-      `content/components/${context.params.group}/index.md`,
+      `content/components/${group}/index.md`,
       'utf-8',
     );
 
@@ -146,7 +155,7 @@ export async function getStaticProps(context: {params: {group: string}}) {
 
     return {
       props: {
-        group: context.params.group,
+        group,
         frontMatter,
         readme,
         editPageLinkPath,
@@ -165,12 +174,15 @@ export const getStaticPaths = async () => {
     .sync(globPath)
     .map((path) => path.replace(`${process.cwd()}/content`, ''));
 
-  const sections = paths.map((path) => path.split('/')[2]);
+  const groups = paths.map((path) => path.split('/')[2]);
 
   return {
-    paths: sections
-      .filter((section, index) => sections.indexOf(section) === index)
-      .map((section) => ({params: {group: section}})),
+    paths: groups
+      .filter(
+        (group, index) =>
+          groups.indexOf(group) === index && group !== 'index.md',
+      )
+      .map((group) => ({params: {group}})),
     fallback: false,
   };
 };

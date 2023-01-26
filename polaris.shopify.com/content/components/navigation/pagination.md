@@ -52,8 +52,8 @@ iOS and Android pagination should:
 
 ## Related components
 
-- To see how pagination is used on a page, see the [page component](https://polaris.shopify.com/components/page)
-- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/page-actions)
+- To see how pagination is used on a page, see the [page component](https://polaris.shopify.com/components/layout-and-structure/page)
+- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/actions/page-actions)
 - The [resource list component](https://polaris.shopify.com/components/resource-list) is often combined with pagination to handle long lists of resources such as orders or customers
-- To create stand-alone navigational links or calls to action, use the [button component](https://polaris.shopify.com/components/button)
+- To create stand-alone navigational links or calls to action, use the [button component](https://polaris.shopify.com/components/actions/button)
 - To embed actions or pathways to more information within a sentence, use the [link component](https://polaris.shopify.com/components/link)

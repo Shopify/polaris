@@ -67,10 +67,10 @@ The stack component will treat multiple elements wrapped in a stack item compone
 
 ## Related components
 
-- To create the large-scale structure of pages, [use the layout component](https://polaris.shopify.com/components/layout)
+- To create the large-scale structure of pages, [use the layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
 
 ---
 
 ## Accessibility
 
-The stack component is for alignment only and doesn’t provide any structural information for assistive technologies. To convey relationships between specific items, consider using the [list component](https://polaris.shopify.com/components/list).
+The stack component is for alignment only and doesn’t provide any structural information for assistive technologies. To convey relationships between specific items, consider using the [list component](https://polaris.shopify.com/components/lists/list).

@@ -41,8 +41,8 @@ Tags should:
 
 ## Related components
 
-- To show the status of an object, [use the badge component](https://polaris.shopify.com/components/badge)
-- To add and remove tags, [use the text field component](https://polaris.shopify.com/components/text-field)
+- To show the status of an object, [use the badge component](https://polaris.shopify.com/components/feedback-indicators/badge)
+- To add and remove tags, [use the text field component](https://polaris.shopify.com/components/selection-and-input/text-field)
 
 ---
 

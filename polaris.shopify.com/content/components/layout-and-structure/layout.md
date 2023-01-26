@@ -59,7 +59,7 @@ The content that appears in the layout component comes from cards and annotated 
 
 ### Cards
 
-Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/card#content-guidelines).
+Content from cards should follow the content guidelines for [cards](https://polaris.shopify.com/components/layout-and-structure/alpha-card#content-guidelines).
 
 ### Annotated section titles
 
@@ -80,6 +80,6 @@ Annotated section descriptions should:
 
 ## Related components
 
-- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/card)
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/stack)
+- To visually group content in a layout section, [use the card component](https://polaris.shopify.com/components/layout-and-structure/alpha-card)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack)
 - To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)

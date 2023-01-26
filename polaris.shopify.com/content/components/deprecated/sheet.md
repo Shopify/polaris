@@ -60,5 +60,5 @@ The sheet component is best used in cases where the merchant needs to see elemen
 
 ## Related components
 
-- To offer an action before merchants can go to the next step in the flow, use the [modal component](https://polaris.shopify.com/components/modal)
-- To present a small amount of content or a menu of actions in a non-blocking overlay, use the [popover component](https://polaris.shopify.com/components/popover)
+- To offer an action before merchants can go to the next step in the flow, use the [modal component](https://polaris.shopify.com/components/overlays/modal)
+- To present a small amount of content or a menu of actions in a non-blocking overlay, use the [popover component](https://polaris.shopify.com/components/overlays/popover)

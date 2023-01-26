@@ -136,7 +136,7 @@ Secondary actions are used for less important actions such as “Learn more” o
 ## Related components
 
 - To learn more about illustrations for empty states, [read the illustration guidelines](https://polaris.shopify.com/design/illustrations)
-- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout)
+- To create page-level layout, [use the layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
 - To highlight a Shopify feature, [use the callout card component](https://polaris.shopify.com/components/callout-card)
 
 ---

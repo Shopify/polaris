@@ -1,6 +1,6 @@
 ---
 title: Action list
-description: Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/popover) to create a dropdown menu or to let merchants select from a list of options.
+description: Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
 category: Lists
 keywords:
   - ActionList
@@ -97,14 +97,14 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 ## Related components
 
-- To combine more than one button in a single layout, [use the button group component](https://polaris.shopify.com/components/button-group)
-- To display a list of related content, [use the list component](https://polaris.shopify.com/components/list)
+- To combine more than one button in a single layout, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
+- To display a list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)
 
 ---
 
 ## Accessibility
 
-Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](https://polaris.shopify.com/components/button).
+Items in an action list are organized as list items (`<li>`) in an unordered list (`<ul>`) and are conveyed as a group of related elements to assistive technology users. Each item is implemented as a [button](https://polaris.shopify.com/components/actions/button).
 
 ### Keyboard support
 

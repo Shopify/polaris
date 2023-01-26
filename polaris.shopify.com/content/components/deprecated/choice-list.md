@@ -139,7 +139,7 @@ If your list contains helper text, only the description below the list item shou
 
 - To present a long list of radio buttons or when space is constrained, [use the select component](https://polaris.shopify.com/components/select)
 - To build a group of radio buttons or checkboxes with a custom layout, use the [radio button component](https://polaris.shopify.com/components/radio-button) or [checkbox component](https://polaris.shopify.com/components/checkbox)
-- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/list)
+- To display a simple, non-interactive list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)
 
 ---
 

@@ -88,4 +88,4 @@ Resource items should:
 
 ## Related components
 
-To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/list).
+To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists/list).

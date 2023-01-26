@@ -155,6 +155,6 @@ Add a menu item
 
 ## Related components
 
-- To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/layout)
-- To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/pagination)
-- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/page-actions)
+- To lay out the content within a page, use the [layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
+- To add pagination within the context of a list or other page content, use the [pagination component](https://polaris.shopify.com/components/navigation/pagination)
+- To add primary and secondary calls to action at the bottom of a page, see the [page actions component](https://polaris.shopify.com/components/actions/page-actions)

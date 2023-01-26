@@ -94,7 +94,7 @@ You agree to the Terms of Service
 
 - To present a list of options where merchants can only make a single choice, [use the radio button component](https://polaris.shopify.com/components/radio-button)
 - To display a list of related content, [use the choice list component](https://polaris.shopify.com/components/choice-list)
-- To create an ungrouped list, [use the content list component](https://polaris.shopify.com/components/list)
+- To create an ungrouped list, [use the content list component](https://polaris.shopify.com/components/lists/list)
 
 ---
 

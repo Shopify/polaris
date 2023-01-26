@@ -113,7 +113,7 @@ Buttons should follow the content guidelines for [buttons](https://polaris.shopi
 
 ## Related components
 
-- To combine or lay out multiple buttons, [use the button group component](https://polaris.shopify.com/components/button-group)
+- To combine or lay out multiple buttons, [use the button group component](https://polaris.shopify.com/components/actions/button-group)
 - For navigational actions that appear within or directly following a sentence, use the [link component](https://polaris.shopify.com/components/link)
 
 ---

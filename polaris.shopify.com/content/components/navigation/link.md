@@ -94,7 +94,7 @@ The link component should follow the content guidelines for [links](https://pola
 
 ## Related components
 
-- For actions that don’t appear within or directly following a sentence, use the [button component](https://polaris.shopify.com/components/button)
+- For actions that don’t appear within or directly following a sentence, use the [button component](https://polaris.shopify.com/components/actions/button)
 
 ---
 
@@ -129,7 +129,7 @@ The Link component is underlined to give interactive elements a shape. This allo
 
 ### Submitting data
 
-Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](https://polaris.shopify.com/components/button) instead.
+Merchants generally expect links to navigate, and not to submit data or take action. If you need a component that doesn’t have a URL associated with it, then use the [button component](https://polaris.shopify.com/components/actions/button) instead.
 
 ### Labeling
 

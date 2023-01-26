@@ -210,4 +210,4 @@ An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
 
 - To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/resource-list)
 - To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/data-table)
-- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/list)
+- To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)

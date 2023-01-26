@@ -228,7 +228,7 @@ To buy a shipping label, you must enter the total weight of your shipment, inclu
 ## Related components
 
 - To inform merchants about a new feature or opportunity, [use callout cards](https://polaris.shopify.com/components/callout-card)
-- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/card)
+- To group similar concepts together in the interface, [use a card](https://polaris.shopify.com/components/layout-and-structure/alpha-card)
 
 ---
 

@@ -88,4 +88,4 @@ Every item in a list should:
 
 The list component outputs list items (`<li>`) inside a list wrapper (`<ul>` for bullet lists or `<ol>` for numbered lists). By default, list items are conveyed as a group of related elements to assistive technology users.
 
-To group items for layout only, consider using the [stack component](https://polaris.shopify.com/components/stack).
+To group items for layout only, consider using the [stack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack).

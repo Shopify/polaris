@@ -50,13 +50,13 @@ The autocomplete component should:
 
 ## Content guidelines
 
-The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/text-field) for text fields.
+The input field for autocomplete should follow the [content guidelines](https://polaris.shopify.com/components/selection-and-input/text-field) for text fields.
 
 ---
 
 ## Related components
 
-- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/text-field)
+- For an input field without suggested options, [use the text field component](https://polaris.shopify.com/components/selection-and-input/text-field)
 - For a list of selectable options not linked to an input field, [use the option list component](https://polaris.shopify.com/components/option-list)
 - For a text field that triggers a popover, [use the combo box component](https://polaris.shopify.com/components/combobox)
 

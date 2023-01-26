@@ -33,5 +33,5 @@ examples:
 
 ## Related components
 
-- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/stack)
+- To lay out a set of smaller components in a row, [use the stack component](https://polaris.shopify.com/components/layout-and-structure/alpha-stack)
 - To lay out form fields, [use the form layout component](https://polaris.shopify.com/components/form-layout)
