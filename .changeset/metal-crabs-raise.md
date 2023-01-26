@@ -1,5 +1,5 @@
 ---
-'polaris.shopify.com': patch
+'polaris.shopify.com': minor
 ---
 
-Grouped component examples by type
+Grouped component navigation by type
