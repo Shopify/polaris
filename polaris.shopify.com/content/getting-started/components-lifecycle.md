@@ -51,7 +51,7 @@ Ready for wider adoption, encouraged for most cases. Breaking changes are possib
 - Used multiple times in production (Shopify admin).
 - Meets all [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements for our use cases.
 - Usage guidelines and documentation covers common use cases.
-- Has been reviewed and tested in production by designers and developers.
+- Reviewed and tested in production by designers and developers.
 - Figma components available in the Polaris Components file.
 
 ### What to expect during beta
