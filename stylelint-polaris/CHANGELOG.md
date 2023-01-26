@@ -1,5 +1,15 @@
 # Changelog
 
+## 5.1.2
+
+### Patch Changes
+
+- [#8167](https://github.com/Shopify/polaris/pull/8167) [`07669075a`](https://github.com/Shopify/polaris/commit/07669075a3ea9c0aeac3bf9ff645df1a6f2938b5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Temporarily disable layout category
+
+* [#8162](https://github.com/Shopify/polaris/pull/8162) [`74a75a473`](https://github.com/Shopify/polaris/commit/74a75a4731b3f67d408ccb985708d6056819d4f8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Allow SCSS namespaces with Polaris breakpoints
+
+- [#8168](https://github.com/Shopify/polaris/pull/8168) [`f8f9eecd5`](https://github.com/Shopify/polaris/commit/f8f9eecd5abe900581efa5032d5f4ee80228e4d4) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Ignored needless disables for layout category and added meta URL to error message
+
 ## 5.1.1
 
 ### Patch Changes

@@ -1,5 +1,34 @@
 # Changelog
 
+## 10.24.0
+
+### Minor Changes
+
+- [#8083](https://github.com/Shopify/polaris/pull/8083) [`18991daf1`](https://github.com/Shopify/polaris/commit/18991daf16362fa4e0bef6a11c3e9040baa7dd95) Thanks [@krithikajanakiraman](https://github.com/krithikajanakiraman)! - Adding an oprtional headerContent prop to ResourceList
+
+* [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt `ActionList` to use layout primitives
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Refactored `SkeletonPage` to use primitive Layout components
+  Removed `max-width` on children in `AlphaStack`
+  Added `narrowWidth` and `fullWidth` examples to `AlphaStack` stories
+
+### Patch Changes
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Updated `SkeletonPage` title and body layout
+
+* [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Refactored `SkeletonPage` title layout
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Fixed `ResourceList` header alignment
+
+* [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt `ResourceItem` with layout components
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Fixed IndexTable checkbox alignment
+
+* [#8099](https://github.com/Shopify/polaris/pull/8099) [`a3605c855`](https://github.com/Shopify/polaris/commit/a3605c855ae4b83653450dbbbb362fdbf6136bb7) Thanks [@AndrewMusgrave](https://github.com/AndrewMusgrave)! - Fixed `BulkActions` causing `IndexTable` & `ResourceList` to ignore pointer events
+
+* Updated dependencies [[`a0c6e467b`](https://github.com/Shopify/polaris/commit/a0c6e467b71be484e708d4c06d4172e3890b5a15), [`0ca0b7899`](https://github.com/Shopify/polaris/commit/0ca0b7899d480ca7bf87e7dfca24bc5721b0775c)]:
+  - @shopify/polaris-icons@6.10.0
+
 ## 10.23.0
 
 ### Minor Changes
