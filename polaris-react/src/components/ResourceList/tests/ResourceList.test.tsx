@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {BulkActions, useIsBulkActionsSticky} from '../../BulkActions';
 import {SelectAllActions} from '../../SelectAllActions';
@@ -68,6 +69,14 @@ describe('<ResourceList />', () => {
     bulkActionsMaxWidth: 0,
     bulkActionsOffsetLeft: 0,
     computeTableDimensions: jest.fn(),
+  });
+
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
   });
 
   describe('renderItem', () => {
@@ -395,7 +404,9 @@ describe('<ResourceList />', () => {
           onSelectionChange={onSelectionChange}
         />,
       );
-      resourceList.find('div', {className: styles.Handle})!.trigger('onClick', {
+      const resourceItem = resourceList.find(ResourceItem);
+
+      resourceItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -1077,13 +1088,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1102,13 +1113,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1146,13 +1157,13 @@ describe('<ResourceList />', () => {
         />,
       );
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
@@ -1178,13 +1189,13 @@ describe('<ResourceList />', () => {
       );
       // Sets {lastSelected: 0}
       const firstItem = resourceList.find(ResourceItem);
-      firstItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      firstItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
       const allItems = resourceList.findAll(ResourceItem);
       const lastItem = allItems[allItems.length - 1];
-      lastItem!.find('div', {className: styles.Handle})!.trigger('onClick', {
+      lastItem!.findAll('div')[6]!.trigger('onClick', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: true},
       });
