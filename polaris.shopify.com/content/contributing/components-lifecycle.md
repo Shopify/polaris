@@ -22,7 +22,7 @@ Have a question, feedback or suggestion? You can [create an issue](https://githu
 
 The component is a work in progress and ready for exploratory usage, with breaking changes expected. During this stage, we’re being critical about understanding the purpose of the component and what problem it’s trying to solve. If the purpose is unclear, we may decide not to move forward with the component and it could be removed without warning.
 
-### Requirements
+### Requirements for alpha
 
 - Has a clear purpose and rationale for why it belongs in Polaris.
 - Uses Polaris [tokens](https://polaris.shopify.com/tokens) with no references to any hard-coded static values.
@@ -32,7 +32,7 @@ The component is a work in progress and ready for exploratory usage, with breaki
 - Documentation includes examples in Storybook.
 - The component has 100% test coverage.
 
-### What to expect
+### What to expect during alpha
 
 - Usage is being evaluated, and may not progress to Beta. Evaluation includes any necessary research and data that supports why the component belongs in Polaris.
 - Components could be changed completely, or removed from the system.
@@ -46,7 +46,7 @@ The component moves to beta once there’s a clear understanding of the problem 
 
 Ready for wider adoption, encouraged for most cases. Breaking changes are possible in minor version updates.
 
-### Requirements
+### Requirements for beta
 
 - Used multiple times in production (Shopify admin).
 - Meets all [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements for our use cases.
@@ -54,7 +54,7 @@ Ready for wider adoption, encouraged for most cases. Breaking changes are possib
 - Has been reviewed and tested in production by designers and developers.
 - Figma components available in the Polaris Components file.
 
-### What to expect
+### What to expect during beta
 
 - Work is being done to move to Stable.
 - Manual and automated migration guidance is being worked on.
@@ -63,7 +63,7 @@ Ready for wider adoption, encouraged for most cases. Breaking changes are possib
 
 The component is bug free and works in most if not all environments. It’s ready for full adoption, with long-term support expected.
 
-### Requirements
+### Requirements for stable
 
 - The API is stable, with no breaking changes until the next major release (if necessary).
 - Usability testing and feedback has been gathered on UX and DX.
@@ -76,7 +76,7 @@ The component is bug free and works in most if not all environments. It’s read
 
 The component will be removed and should be avoided.
 
-### Requirements
+### Requirements for deprecation
 
 - Documentation exists for the deprecation and includes any alternative components.
 - The component includes deprecation warnings when used.
