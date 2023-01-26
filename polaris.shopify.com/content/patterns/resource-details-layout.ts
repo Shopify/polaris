@@ -4,7 +4,7 @@ const pattern: SingleVariantPattern = {
   title: 'Resource detail layout',
   description:
     'Lets merchants effectively create, view, and edit any resource object.',
-  howItHelps: `![A labeled diagram of an app settings page layout. The left column is labeled "1" it contains glanceable labels and descriptions. The right column is labeled "2" and contains a list of cards.](/images/patterns/resource-index-cover-image.png)
+  howItHelps: `![A labeled diagram of a resource detail layout.](/images/patterns/resource-index-cover-image.png)
 
 1. The page header provides easy access to actions and navigation. It spans the full width of the page to show merchants that these actions represent the page as a whole.
 2. The main content is split in two columns, primary content to the left and secondary content to the right. The primary content occupies two thirds of the page to give more space to what’s most important most of the time.
@@ -30,8 +30,7 @@ const pattern: SingleVariantPattern = {
   |Put information that defines the resource object in the primary column.|![](/images/patterns/resource-index-pattern-usage-2.png)|,
   |Put supporting information such as status, metadata, and summaries in the secondary column.|![](/images/patterns/resource-index-pattern-usage-2.png)|
   |Arrange content in order of importance.|![](/images/patterns/resource-index-pattern-usage-2.png)|`,
-  relatedResources: `* The [Resource detail layout](/patterns/resource-details-layout) pattern is a complement to the resource index layout pattern.
-* Use the [Empty state component](/components/empty-state) when the resource index is empty.
+  relatedResources: `* The [Resource index layout](/patterns/resource-index-layout) pattern is a complement to the resource detail layout pattern.
 * Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) the app design guidelines.
 * Check out the Polaris [Spacing](/design/space) guidelines to understand Polaris grid and spacing scale.`,
