@@ -23,7 +23,7 @@ const pattern: SingleVariantPattern = {
   |-|-|
   |Don't include a description unless it's helpful.|![](/images/patterns/app-settings-usage-1.png)|
   |Place grouped settings within cards.|![](/images/patterns/app-settings-usage-2.png)|
-  |Stack all setting groups vertically on the page.|![](/images/patterns/app-settings-usage-2.png)|`,
+  |Stack all setting groups vertically on the page.|![](/images/patterns/app-settings-usage-3.png)|`,
   relatedResources: `* See another two-column layout in use in the [Resource detail layout](/patterns/resource-details-layout) pattern.
 * See a single-column layout in use in the [Resource index layout](/patterns/resource-index-layout) pattern.
 * Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
