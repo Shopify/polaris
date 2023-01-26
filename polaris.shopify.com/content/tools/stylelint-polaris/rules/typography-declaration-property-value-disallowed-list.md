@@ -1,6 +1,6 @@
 ---
 title: typography/declaration-property-value-disallowed-list
-description: Disallows hard-coded alphanumeric font-weight values
+description: Disallows hard-coded alphanumeric font-weight values.
 keywords:
   - stylelint
   - typography

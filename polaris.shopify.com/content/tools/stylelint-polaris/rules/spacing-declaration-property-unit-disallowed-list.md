@@ -1,6 +1,6 @@
 ---
 title: spacing/declaration-property-unit-disallowed-list
-description: Disallows use of hard-coded px, em, and rem values on gap, margin, and padding properties
+description: Disallows use of hard-coded px, em, and rem values on gap, margin, and padding properties.
 keywords:
   - stylelint
   - spacing

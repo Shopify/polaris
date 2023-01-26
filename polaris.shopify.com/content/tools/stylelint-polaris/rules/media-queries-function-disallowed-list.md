@@ -1,6 +1,6 @@
 ---
 title: media-queries/function-disallowed-list
-description: Disallows use of legacy breakpoint sass functions
+description: Disallows use of legacy breakpoint sass functions.
 keywords:
   - stylelint
   - media queries

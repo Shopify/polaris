@@ -1,6 +1,6 @@
 ---
 title: layout/declaration-property-value-disallowed-list
-description: Disallows declaration of positioning and dimension property values with Polaris tokens
+description: Disallows declaration of positioning and dimension property values with Polaris tokens.
 keywords:
   - stylelint
   - layout

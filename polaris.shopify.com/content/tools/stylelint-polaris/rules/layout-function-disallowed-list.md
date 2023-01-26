@@ -1,6 +1,6 @@
 ---
 title: layout/function-disallowed-list
-description: Disallows use of internal Sass layout functions
+description: Disallows use of internal Sass layout functions.
 keywords:
   - stylelint
   - layout

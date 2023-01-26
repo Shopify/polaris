@@ -1,6 +1,6 @@
 ---
 title: colors/function-disallowed-list
-description: Disallows allows use of built in and legacy color functions
+description: Disallows allows use of built in and legacy color functions.
 keywords:
   - stylelint
   - colors

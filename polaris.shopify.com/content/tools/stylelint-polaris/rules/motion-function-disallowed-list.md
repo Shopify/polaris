@@ -1,6 +1,6 @@
 ---
 title: motion/function-disallowed-list
-description: Disallows use of legacy Sass motion functions
+description: Disallows use of legacy Sass motion functions.
 keywords:
   - stylelint
   - motion

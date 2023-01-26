@@ -1,6 +1,6 @@
 ---
 title: layout/at-rule-disallowed-list
-description: Disallows use of legacy Sass mixins
+description: Disallows use of legacy Sass mixins.
 keywords:
   - stylelint
   - layout

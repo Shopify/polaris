@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Wybierz wszystkie {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} pozycja",
-      "ariaLivePlural": "{itemsLength} pozycje(-i)",
       "Item": {
         "actionsDropdownLabel": "Czynności dla {accessibilityLabel}",
         "actionsDropdown": "Lista rozwijana czynności",

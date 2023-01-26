@@ -1,6 +1,6 @@
 ---
 title: motion/global-disallowed-list
-description: Disallows use of legacy Polaris motion tokens
+description: Disallows use of legacy Polaris motion tokens.
 keywords:
   - stylelint
   - motion

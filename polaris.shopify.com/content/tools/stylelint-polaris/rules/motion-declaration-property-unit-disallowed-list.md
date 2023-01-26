@@ -1,6 +1,6 @@
 ---
 title: motion/declaration-property-unit-disallowed-list
-description: Disallows use of hard-coded millisecond `ms` and second `s` values on transition and animation properties
+description: Disallows use of hard-coded millisecond `ms` and second `s` values on transition and animation properties.
 keywords:
   - stylelint
   - motion

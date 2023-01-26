@@ -1,6 +1,6 @@
 ---
 title: typography/function-disallowed-list
-description: Disallows use of legacy Sass typography functions
+description: Disallows use of legacy Sass typography functions.
 keywords:
   - stylelint
   - typography

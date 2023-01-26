@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} 선택",
       "a11yCheckboxDeselectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택 취소",
       "a11yCheckboxSelectAllMultiple": "길이가 {itemsLength}인 모든 {resourceNamePlural} 선택",
-      "ariaLiveSingular": "{itemsLength}개 품목",
-      "ariaLivePlural": "{itemsLength}개 품목",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel}에 대한 작업",
         "actionsDropdown": "작업 드롭다운",

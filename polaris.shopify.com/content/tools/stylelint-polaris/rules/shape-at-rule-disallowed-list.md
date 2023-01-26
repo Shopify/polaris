@@ -1,6 +1,6 @@
 ---
 title: shape/at-rule-disallowed-list
-description: Disallows use of legacy Sass border mixins
+description: Disallows use of legacy Sass border mixins.
 keywords:
   - stylelint
   - shape

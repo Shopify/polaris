@@ -1,6 +1,6 @@
 ---
 title: typography/declaration-property-unit-disallowed-list
-description: Disallows hard-coded `px`, `em`, and `rem` values for font-size and line-height properties
+description: Disallows hard-coded `px`, `em`, and `rem` values for font-size and line-height properties.
 keywords:
   - stylelint
   - typography

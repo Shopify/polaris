@@ -105,6 +105,8 @@ export interface ResourceListProps<TItemType = any> {
   sortOptions?: SelectOption[];
   /** ReactNode to display instead of the sort control */
   alternateTool?: React.ReactNode;
+  /** Custom header text displayed above the list instead of the resource count. */
+  headerContent?: string;
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
@@ -136,6 +138,7 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
   selectable,
   hasMoreItems,
   loading,
+  headerContent,
   showHeader,
   totalItemsCount,
   sortValue,
@@ -250,6 +253,8 @@ export const ResourceList: ResourceListType = function ResourceList<TItemType>({
         totalItemsCount,
         resource,
       });
+    } else if (headerContent) {
+      return headerContent;
     } else {
       return i18n.translate('Polaris.ResourceList.showing', {
         itemsCount,

@@ -1,8 +1,9 @@
 ---
 title: Stylelint Polaris
-description: A configuration of Stylelint rules that promote adoption and track coverage of the Polaris design system in consuming apps.
+description: A configuration of Stylelint rules that promote adoption of the Polaris design system in consuming apps.
 icon: WandMajor
 collapseChildren: true
+order: 3
 keywords:
   - stylelint
   - dev tools
@@ -16,6 +17,13 @@ keywords:
   - linting
   - css
 ---
+
+[<img src="https://img.shields.io/npm/v/@shopify/stylelint-polaris.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/stylelint-polaris/)
+
+<picture>
+  <source srcset="/images/tools/stylelint-polaris/stylelint-demo.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <img srcset="/images/tools/stylelint-polaris/stylelint-demo.gif" alt="Demo of Stylelint Polaris">
+</picture>
 
 ## Installation
 
@@ -176,7 +184,7 @@ Example failure message:
 + Unexpected value "sticky" for property "position" (declaration-property-value-disallowed-list) Please use the Polaris "Sticky" component
 ```
 
-### Tophat `stylelint-polaris` updates in `polaris-react`
+### Test `stylelint-polaris` updates in `polaris-react`
 
 > Open your terminal to the root of the `polaris` monorepo:
 

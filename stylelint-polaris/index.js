@@ -140,91 +140,87 @@ const stylelintPolarisCoverageOptions = {
       message: 'Please use a Polaris font token or typography component',
     },
   ],
-  layout: [
-    {
-      'declaration-property-value-disallowed-list': [
-        {
-          top: [/(?!var\(--p-).+$/],
-          bottom: [/(?!var\(--p-).+$/],
-          left: [/(?!var\(--p-).+$/],
-          right: [/(?!var\(--p-).+$/],
-          '/^width/': [/(?!var\(--p-).+$/],
-          '/^height/': [/(?!var\(--p-).+$/],
-        },
-        {severity: 'warning'},
-      ],
-      'property-disallowed-list': [
-        [
-          'position',
-          'grid',
-          'flex',
-          'flex-grow',
-          'flex-shrink',
-          'flex-basis',
-          'justify-content',
-          'align-items',
-          'grid-row',
-          'grid-row-start',
-          'grid-row-end',
-          'grid-column',
-          'grid-column-start',
-          'grid-column-end',
-          'grid-template',
-          'grid-template-areas',
-          'grid-template-rows',
-          'grid-template-columns',
-          'grid-area',
-          'display',
-        ],
-        {severity: 'warning'},
-      ],
-      'function-disallowed-list': [
-        'nav-min-window-corrected',
-        'control-height',
-        'control-slim-height',
-        'mobile-nav-width',
-        'thumbnail-size',
-        'icon-size',
-        'top-bar-height',
-      ].map(matchNameRegExp),
-      'polaris/at-rule-disallowed-list': {
-        include: [
-          'layout-flex-fix',
-          'safe-area-for',
-          'skeleton-page-header-layout',
-          'skeleton-page-secondary-actions-layout',
-        ].map(matchNameRegExp),
-      },
-      'polaris/global-disallowed-list': [
-        // Legacy mixin map-get data
-        /\$layout-width-data/,
-        /\$navigation-width/,
-        /\$small-thumbnail-size/,
-        /\$large-thumbnail-size/,
-        /\$medium-thumbnail-size/,
-        /\$thumbnail-sizes/,
-        // Legacy custom properties
-        /--p-range-slider-thumb-size-base/,
-        /--p-range-slider-thumb-size-active/,
-        /--p-range-slider-thumb-scale/,
-        /--p-override-visible/,
-        /--p-icon-size/,
-        /--p-choice-size/,
-      ],
-    },
-    {
-      message: 'Please use a Polaris layout component',
-    },
-  ],
+  // layout: [
+  //   {
+  //     'declaration-property-value-disallowed-list': [
+  //       {
+  //         top: [/(?!var\(--p-).+$/],
+  //         bottom: [/(?!var\(--p-).+$/],
+  //         left: [/(?!var\(--p-).+$/],
+  //         right: [/(?!var\(--p-).+$/],
+  //         '/^width/': [/(?!var\(--p-).+$/],
+  //         '/^height/': [/(?!var\(--p-).+$/],
+  //       },
+  //       {severity: 'warning'},
+  //     ],
+  //     'property-disallowed-list': [
+  //       [
+  //         'position',
+  //         'grid',
+  //         'flex',
+  //         'flex-grow',
+  //         'flex-shrink',
+  //         'flex-basis',
+  //         'justify-content',
+  //         'align-items',
+  //         'grid-row',
+  //         'grid-row-start',
+  //         'grid-row-end',
+  //         'grid-column',
+  //         'grid-column-start',
+  //         'grid-column-end',
+  //         'grid-template',
+  //         'grid-template-areas',
+  //         'grid-template-rows',
+  //         'grid-template-columns',
+  //         'grid-area',
+  //         'display',
+  //       ],
+  //       {severity: 'warning'},
+  //     ],
+  //     'function-disallowed-list': [
+  //       'nav-min-window-corrected',
+  //       'control-height',
+  //       'control-slim-height',
+  //       'mobile-nav-width',
+  //       'thumbnail-size',
+  //       'icon-size',
+  //       'top-bar-height',
+  //     ].map(matchNameRegExp),
+  //     'polaris/at-rule-disallowed-list': {
+  //       include: [
+  //         'layout-flex-fix',
+  //         'safe-area-for',
+  //         'skeleton-page-header-layout',
+  //         'skeleton-page-secondary-actions-layout',
+  //       ].map(matchNameRegExp),
+  //     },
+  //     'polaris/global-disallowed-list': [
+  //       // Legacy mixin map-get data
+  //       /\$layout-width-data/,
+  //       /\$navigation-width/,
+  //       /\$small-thumbnail-size/,
+  //       /\$large-thumbnail-size/,
+  //       /\$medium-thumbnail-size/,
+  //       /\$thumbnail-sizes/,
+  //       // Legacy custom properties
+  //       /--p-range-slider-thumb-size-base/,
+  //       /--p-range-slider-thumb-size-active/,
+  //       /--p-range-slider-thumb-scale/,
+  //       /--p-override-visible/,
+  //       /--p-icon-size/,
+  //       /--p-choice-size/,
+  //     ],
+  //   },
+  //   {
+  //     message: 'Please use a Polaris layout component',
+  //   },
+  // ],
   spacing: [
     {
-      'function-disallowed-list': [
-        'control-vertical-padding',
-        'em',
-        'px',
-        'rem',
-        'spacing',
-      ].map(matchNameRegExp),
+      'function-disallowed-list': ['control-vertical-padding', 'spacing'].map(
+        matchNameRegExp,
+      ),
       'declaration-property-unit-disallowed-list': [
         {
           '/^padding/': ['px', 'rem', 'em'],
@@ -375,7 +371,9 @@ const stylelintPolarisCoverageOptions = {
         allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
-          /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+          matchNameRegExp(
+            String.raw`\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)`,
+          ),
         ],
       },
       // Legacy functions
@@ -448,9 +446,13 @@ const stylelintPolarisCoverageOptions = {
         ].map(matchNameRegExp),
       },
       // Legacy functions
-      'function-disallowed-list': ['available-names', 'map-extend'].map(
-        matchNameRegExp,
-      ),
+      'function-disallowed-list': [
+        'available-names',
+        'map-extend',
+        'em',
+        'px',
+        'rem',
+      ].map(matchNameRegExp),
       'polaris/global-disallowed-list': [
         // Legacy variables
         / \* \$/,

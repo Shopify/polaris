@@ -7,6 +7,8 @@
   margin: var(--pc-tooltip-overlay-offset) var(--p-space-4) var(--p-space-4);
   opacity: 1;
   box-shadow: var(--p-shadow-popover);
+  // stylelint-disable-next-line -- Polaris component custom properties
+  border-radius: var(--pc-tooltip-border-radius);
   pointer-events: none;
   will-change: opacity, left, top;
   transition: opacity var(--p-duration-200) var(--p-ease-in)

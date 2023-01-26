@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.1
+
+### Patch Changes
+
+- [#8097](https://github.com/Shopify/polaris/pull/8097) [`cd150396b`](https://github.com/Shopify/polaris/commit/cd150396b11f1a0abf6d4419c5c594dfdae3185d) Thanks [@qt314](https://github.com/qt314)! - Fix incorrect unit function categorization
+
 ## 5.1.0
 
 ### Minor Changes

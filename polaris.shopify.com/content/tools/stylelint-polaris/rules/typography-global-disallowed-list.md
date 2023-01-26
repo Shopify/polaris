@@ -1,6 +1,6 @@
 ---
 title: typography/global-disallowed-list
-description: Disallows use of legacy Polaris typography tokens and mixin map data
+description: Disallows use of legacy Polaris typography tokens and mixin map data.
 keywords:
   - stylelint
   - typography

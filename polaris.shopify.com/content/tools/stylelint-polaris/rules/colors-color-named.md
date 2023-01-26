@@ -1,6 +1,6 @@
 ---
 title: colors/color-named
-description: Disallows named colors
+description: Disallows named colors.
 keywords:
   - stylelint
   - colors
