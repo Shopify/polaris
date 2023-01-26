@@ -11,24 +11,23 @@ import {parseMarkdown} from '../../../src/utils/markdown.mjs';
 import {stripMarkdownLinks} from '../../../src/utils/various';
 
 interface Group {
-  title: string;
-  description: string;
-  components: string;
-  tip: string;
+  title?: string;
+  description?: string;
+  components?: string;
+  tip?: string;
 }
 
 interface FrontMatter {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   groups?: Group[];
 }
 
 interface Props {
-  group: string;
-  frontMatter: FrontMatter;
-  editPageLinkPath: string;
-  components: string[];
-  componentDescriptions: {
+  group?: string;
+  frontMatter?: FrontMatter;
+  components?: string[];
+  componentDescriptions?: {
     [key: string]: string;
   };
 }
@@ -37,10 +36,9 @@ export default function GroupPage({
   group,
   components: componentPaths,
   frontMatter,
-  editPageLinkPath,
   componentDescriptions,
 }: Props) {
-  const {groups} = frontMatter;
+  const groups = frontMatter?.groups;
 
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
@@ -49,7 +47,7 @@ export default function GroupPage({
       </Text>
       <p>{description}</p>
       <Grid condensed>
-        {components.split(', ').map((component) => {
+        {components?.split(', ').map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
           const url = group
             ? `/components/${group}/${componentSlug}`
@@ -59,7 +57,7 @@ export default function GroupPage({
               key={component}
               title={component}
               description={stripMarkdownLinks(
-                componentDescriptions[componentSlug],
+                componentDescriptions?.[componentSlug] || '',
               )}
               url={url}
               renderPreview={() => (
@@ -69,13 +67,13 @@ export default function GroupPage({
           );
         })}
       </Grid>
-      <TipBanner title="Tip" message={tip} />
+      {tip && <TipBanner title="Tip" message={tip} />}
     </>
   ));
 
   const componentsFromPaths = (
     <Grid condensed>
-      {componentPaths.map((component) => {
+      {componentPaths?.map((component) => {
         const url = group
           ? `/components/${group}/${component}`
           : `/components/${component}`;
@@ -83,7 +81,9 @@ export default function GroupPage({
           <Grid.Item
             key={component}
             title={capitalize(component.replace(/-/g, ' '))}
-            description={stripMarkdownLinks(componentDescriptions[component])}
+            description={stripMarkdownLinks(
+              componentDescriptions?.[component] || '',
+            )}
             url={url}
             renderPreview={() => (
               <ComponentThumbnail title={component} group={group} />
@@ -95,9 +95,9 @@ export default function GroupPage({
   );
 
   return (
-    <Page title={frontMatter.title} editPageLinkPath={editPageLinkPath}>
+    <Page title={frontMatter?.title}>
       {groupsMarkup || componentsFromPaths}
-      <Markdown text={frontMatter.description} />
+      <Markdown text={frontMatter?.description || ''} />
     </Page>
   );
 }

@@ -81,9 +81,9 @@ export const getStaticProps: GetStaticProps<
   Props,
   {component: string; group: string}
 > = async (context) => {
-  console.log(context);
   const componentSlug = context.params?.component;
-  const relativeMdPath = `content/components/${context.params?.group}/${componentSlug}.md`;
+  const groupSlug = context.params?.group;
+  const relativeMdPath = `content/components/${groupSlug}/${componentSlug}.md`;
 
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;

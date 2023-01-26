@@ -22,8 +22,8 @@ function Grid({children, condensed}: Props) {
 
 export interface GridItemProps {
   title: string;
-  description: string;
   url: string;
+  description?: string;
   deepLinks?: {url: string; text: string}[];
   renderPreview?: () => React.ReactNode;
   status?: Status;
@@ -48,7 +48,7 @@ function GridItem({
         <h4>
           {title} {status && <StatusBadge status={status} />}
         </h4>
-        <p>{stripMarkdownLinks(description)}</p>
+        {description && <p>{stripMarkdownLinks(description)}</p>}
       </Link>
       {deepLinks && (
         <ul className={styles.DeepLinks}>
