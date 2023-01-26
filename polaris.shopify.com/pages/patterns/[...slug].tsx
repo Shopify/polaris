@@ -71,7 +71,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     .sync(path.resolve(process.cwd(), 'content/patterns/*.md'))
     .map(readFrontMatter)
     .map(({url} = {}) => url)
-    .filter((url) => url !== '/patterns/resource-details-layout');
+    .filter((url) => url !== '/patterns/resource-details-layout'); // TODO remove this once we have a working resource-details-layout.ts file
 
   return {
     paths,
