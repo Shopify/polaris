@@ -25,18 +25,18 @@ The component is a work in progress and ready for exploratory usage, with breaki
 ### Requirements for alpha
 
 - Has a clear purpose and rationale for why it belongs in Polaris
-- Uses Polaris [tokens](https://polaris.shopify.com/tokens) with no references to any hard-coded static values.
-- Designed with responsiveness in mind and can adapt across [breakpoints](https://polaris.shopify.com/tokens/breakpoints).
+- Uses Polaris [tokens](https://polaris.shopify.com/tokens) with no references to any hard-coded static values
+- Designed with responsiveness in mind and can adapt across [breakpoints](https://polaris.shopify.com/tokens/breakpoints)
 - Meets known [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements like: contrast, interactive states, touch target size, etc.
-- In progress documentation exists that includes the list of props with some examples.
-- Documentation includes examples in Storybook.
-- The component has 100% test coverage.
+- In progress documentation exists that includes the list of props with some examples
+- Documentation includes examples in Storybook
+- The component has 100% test coverage
 
 ### What to expect during alpha
 
 - Usage is being evaluated, and may not progress to beta. Evaluation includes any necessary research and data that supports why the component belongs in Polaris.
-- Components could be changed completely, or removed from the system.
-- Feedback is highly recommended and encouraged. [Create an issue](https://github.com/Shopify/polaris/issues/new)
+- Components could be changed completely, or removed from the system
+- Feedback is highly recommended and encouraged, [Create an issue](https://github.com/Shopify/polaris/issues/new)
 
 ---
 
@@ -48,16 +48,16 @@ Ready for wider adoption, encouraged for most cases. Breaking changes are possib
 
 ### Requirements for beta
 
-- Used multiple times in production (Shopify admin).
-- Meets all [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements for our use cases.
-- Usage guidelines and documentation covers common use cases.
-- Reviewed and tested in production by designers and developers.
-- Figma components available in the Polaris Components file.
+- Used multiple times in production (Shopify admin)
+- Meets all [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements for our use cases
+- Usage guidelines and documentation covers common use cases
+- Reviewed and tested in production by designers and developers
+- Figma components available in the Polaris Components file
 
 ### What to expect during beta
 
-- Work is being done to move to Stable.
-- Manual and automated migration guidance is being worked on.
+- Work is being done to move to Stable
+- Manual and automated migration guidance is being worked on
 
 ## Stable
 
@@ -65,10 +65,10 @@ The component is bug free and works in most, if not all, environments. It’s re
 
 ### Requirements for stable
 
-- The API is stable, with no breaking changes until the next major release (if necessary).
-- Usability testing and feedback has been gathered on UX and DX.
-- Documentation exists for component props, variants, accessibility guidelines, and usage.
-- Manual and automated migration documentation exists.
+- The API is stable, with no breaking changes until the next major release (if necessary)
+- Usability testing and feedback has been gathered on UX and DX
+- Documentation exists for component props, variants, accessibility guidelines, and usage
+- Manual and automated migration documentation exists
 
 ---
 
@@ -78,7 +78,7 @@ The component will be removed and should be avoided.
 
 ### Requirements for deprecation
 
-- Documentation exists for the deprecation and includes any alternative components.
-- The component includes deprecation warnings when used.
-- The removal date has been announced and is at least one month away from the release date of the package that removes the component.
-- Manual and automated migration paths are documented and have been available for at least one month.
+- Documentation exists for the deprecation and includes any alternative components
+- The component includes deprecation warnings when used
+- The removal date has been announced and is at least one month away from the release date of the package that removes the component
+- Manual and automated migration paths are documented and have been available for at least one month
