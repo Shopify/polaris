@@ -14,7 +14,7 @@ order: 1
 
 ### Feedback and suggestions
 
-Have a question, feedback or suggestion? You can [create an issue](https://github.com/Shopify/polaris/issues/new) during any stage of a component’s lifecycle.
+Have feedback, a question, or suggestion? [Create an issue](https://github.com/Shopify/polaris/issues/new) during any stage of a component’s lifecycle.
 
 ---
 
