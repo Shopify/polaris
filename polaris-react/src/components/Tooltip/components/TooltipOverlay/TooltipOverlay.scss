@@ -30,12 +30,13 @@
 }
 
 .measured.hasMode:not(.instant) {
+  animation: var(--p-keyframes-appear-below) var(--p-duration-200)
+    var(--p-ease-in) var(--p-duration-100) 1 both;
+}
+
+.measured.hasMode.positionedAbove:not(.instant) {
   animation: var(--p-keyframes-appear-above) var(--p-duration-200)
     var(--p-ease-in) var(--p-duration-100) 1 both;
-
-  &.positionedAbove {
-    animation-name: var(--p-keyframes-appear-below);
-  }
 }
 
 .hasMode {
@@ -61,10 +62,6 @@
       border-color: var(--p-surface) transparent transparent transparent;
     }
   }
-}
-
-.measuring {
-  opacity: 0;
 }
 
 .positionedAbove {

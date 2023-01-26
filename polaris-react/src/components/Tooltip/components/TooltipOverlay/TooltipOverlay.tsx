@@ -8,9 +8,10 @@ import {
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius, TooltipMode} from '../../Tooltip';
+import {Text} from '../../../Text';
+import {Inline} from '../../../Inline';
 
 import styles from './TooltipOverlay.scss';
-import {Text} from '../../../Text';
 
 export interface TooltipOverlayProps {
   id: string;
@@ -103,12 +104,14 @@ export function TooltipOverlay({
               : undefined
           }
         >
-          {children}
-          {keyboardShortcut ? (
-            <Text as="span" variant="bodyMd" color="subdued">
-              {` ${keyboardShortcut}`}
-            </Text>
-          ) : null}
+          <Inline gap="2">
+            {children}
+            {keyboardShortcut ? (
+              <Text as="span" variant="bodyMd" color="subdued">
+                {keyboardShortcut}
+              </Text>
+            ) : null}
+          </Inline>
         </div>
       </div>
     );

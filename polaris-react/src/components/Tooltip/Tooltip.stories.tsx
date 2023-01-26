@@ -243,48 +243,28 @@ export function IconTooltips() {
         </Text>
         <Stack>
           <ButtonGroup segmented fullWidth>
-            <Tooltip
-              content="Bold"
-              keyboardShortcut="⌘B"
-              activatorWrapper="div"
-            >
+            <Tooltip content="Bold">
               <Button>B</Button>
             </Tooltip>
-            <Tooltip content="Italic" keyboardShortcut="⌘I">
+            <Tooltip content="Italic">
               <Button>I</Button>
             </Tooltip>
-            <Tooltip content="Underline" keyboardShortcut="⌘U">
+            <Tooltip content="Underline">
               <Button>U</Button>
             </Tooltip>
-            <Tooltip content="Strikethrough" keyboardShortcut="⌘S">
+            <Tooltip content="Strikethrough">
               <Button>S</Button>
             </Tooltip>
-            <Tooltip
-              content="Bold"
-              preferredPosition="above"
-              keyboardShortcut="⌘B"
-            >
+            <Tooltip content="Bold" preferredPosition="above">
               <Button>B</Button>
             </Tooltip>
-            <Tooltip
-              content="Italic"
-              preferredPosition="above"
-              keyboardShortcut="⌘U"
-            >
+            <Tooltip content="Italic" preferredPosition="above">
               <Button>I</Button>
             </Tooltip>
-            <Tooltip
-              content="Underline"
-              preferredPosition="above"
-              keyboardShortcut="⌘U"
-            >
+            <Tooltip content="Underline" preferredPosition="above">
               <Button>U</Button>
             </Tooltip>
-            <Tooltip
-              content="Strikethrough"
-              preferredPosition="above"
-              keyboardShortcut="⌘S"
-            >
+            <Tooltip content="Strikethrough" preferredPosition="above">
               <Button>S</Button>
             </Tooltip>
           </ButtonGroup>
