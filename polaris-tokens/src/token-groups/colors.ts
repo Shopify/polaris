@@ -576,6 +576,75 @@ export const colors = {
   'surface-attention': {
     value: 'rgba(255, 234, 138, 1)',
   },
+  'surface-magic': {
+    value: 'rgba(233, 217, 252, 1)',
+    description: 'For use as background color of Shopify Magic components',
+  },
+  'surface-magic-subdued': {
+    value: 'rgba(246, 240, 253, 1)',
+    description:
+      'For use as subdued background color of Shopify Magic components',
+  },
+  'surface-magic-subdued-hoverd': {
+    value: 'rgba(238, 223, 255, 1)',
+    description: 'Hover state for magic subdued',
+  },
+  'surface-magic-subdued-pressed': {
+    value: 'rgba(230, 209, 255, 1)',
+    description: 'Pressed state for magic subdued',
+  },
+  'surface-magic-subdued-depressed': {
+    value: 'rgba(212, 175, 255, 1)',
+    description: 'Pressed state for magic subdued',
+  },
+  'text-magic': {
+    value: 'rgba(55, 0, 133, 1)',
+    description: 'For use as text color for Shopify Magic elements.',
+  },
+  'text-on-magic': {
+    value: 'rgba(246, 240, 253, 1)',
+    description: 'For use as text color on Shopify Magic elements.',
+  },
+  'icon-magic': {
+    value: 'rgba(156, 106, 222, 1)',
+    description: 'For use as icon color on Shopify Magic elements.',
+  },
+  'icon-on-magic': {
+    value: 'rgba(246, 240, 253, 1)',
+    description: 'For use as icon color on Shopify Magic elements.',
+  },
+  'border-magic': {
+    value: 'rgba(156,106,222, 1)',
+    description: 'For use as border color for Shopify Magic.',
+  },
+  'border-magic-subdued': {
+    value: 'rgba(200, 172, 237, 1)',
+    description: 'For use as subdued borders for Shopify Magic.',
+  },
+  'border-magic-disabled': {
+    value: 'rgba(220, 202, 243, 1)',
+    description: 'For use as disabled borders for Shopify Magic.',
+  },
+  'action-magic': {
+    value: 'rgba(156, 106, 222, 1)',
+    description: 'Action color for Shopify Magic.',
+  },
+  'action-magic-hovered': {
+    value: 'rgba(113, 78, 163, 1)',
+    description: 'Hover state for for Shopify Magic actions.',
+  },
+  'action-magic-pressed': {
+    value: 'rgba(80, 36, 143, 1)',
+    description: 'Pressed state for Shopify Magic actions.',
+  },
+  'action-magic-depressed': {
+    value: 'rgba(30, 0, 81, 1)',
+    description: 'Depressed state for Shopify Magic actions.',
+  },
+  'action-magic-disabled': {
+    value: 'rgba(231, 231, 231, 1)',
+    description: 'Disabled state for Shopify Magic actions.',
+  },
   'decorative-one-icon': {
     value: 'rgba(126, 87, 0, 1)',
     description:
