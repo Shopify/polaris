@@ -12,65 +12,73 @@ keywords:
 order: 11
 ---
 
-**Feedback and suggestions.** Have a question, feedback or suggestion? You can create an issue during any stage of a component’s lifecycle.
+### Feedback and suggestions
+
+Have a question, feedback or suggestion? You can [create an issue](https://github.com/Shopify/polaris/issues/new) during any stage of a component’s lifecycle.
 
 ---
 
 ## Alpha
 
-Ready for exploratory usage, with breaking changes expected. We may decide not to move forward with the component and it could be deprecated without warning.
+The component is a work in progress and ready for exploratory usage, with breaking changes expected. During this stage, we’re being critical about understanding the purpose of the component and what problem it’s trying to solve. If the purpose is unclear, we may decide not to move forward with the component and it could be removed without warning.
 
-**Requirements**
+### Requirements
 
-- Uses Polaris tokens with no references to any hard-coded static values.
-- Designed with responsiveness in mind and can adapt across breakpoints.
-- Meets most accessibility requirements.
+- Has a clear purpose and rationale for why it belongs in Polaris.
+- Uses Polaris [tokens](https://polaris.shopify.com/tokens) with no references to any hard-coded static values.
+- Designed with responsiveness in mind and can adapt across [breakpoints](https://polaris.shopify.com/tokens/breakpoints).
+- Meets known [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements like: contrast, interactive states, touch target size, etc.
 - In progress documentation exists that includes the list of props with some examples.
 - Documentation includes examples in Storybook.
 - The component has 100% test coverage.
 
-**What to expect**
+### What to expect
 
-- Usage is being evaluated, and may not progress to Beta.
+- Usage is being evaluated, and may not progress to Beta. Evaluation includes any necessary research and data that supports why the component belongs in Polaris.
 - Components could be changed completely, or removed from the system.
-- Feedback is highly recommended and encouraged. Create an issue.
+- Feedback is highly recommended and encouraged. [Create an issue](https://github.com/Shopify/polaris/issues/new)
 
 ---
 
 ## Beta
 
-Ready for wider usage, encouraged for most cases. Breaking changes are possible.
+The component moves to beta once there’s a clear understanding of the problem and we’re confident in the solution. The focus of this stage is all about testing in enough environments to make sure the component is bug free.
 
-**Requirements**
+Ready for wider adoption, encouraged for most cases. Breaking changes are possible in minor version updates.
+
+### Requirements
 
 - Used multiple times in production (Shopify admin).
-- Meets all accessibility requirements for our use cases.
+- Meets all [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements for our use cases.
 - Usage guidelines and documentation covers common use cases.
 - Has been reviewed and tested in production by designers and developers.
 - Figma components available in the Polaris Components file.
 
-**What to expect**
+### What to expect
 
 - Work is being done to move to Stable.
+- Manual and automated migration guidance is being worked on.
 
 ## Stable
 
-Ready for full adoption, with long-term support expected.
+The component is bug free and works in most if not all environments. It’s ready for full adoption, with long-term support expected.
 
-**Requirements**
+### Requirements
 
 - The API is stable, with no breaking changes until the next major release (if necessary).
 - Usability testing and feedback has been gathered on UX and DX.
 - Documentation exists for component props, variants, accessibility guidelines, and usage.
+- Manual and automated migration documentation exists.
 
 ---
 
 ## Deprecated
 
-The component will likely be removed in the next major release and usage is discouraged.
+The component will be removed and should be avoided.
 
-**Requirements**
+### Requirements
 
 - Documentation exists for the deprecation and includes any alternative components.
 - The component includes deprecation warnings when used.
-- Manual and automated migration documentation exists.
+- The removal date has been announced and is at least one month away from the release date of the package that removes the component.
+- Manual and automated migration paths are documented and have been available for at least one month.
