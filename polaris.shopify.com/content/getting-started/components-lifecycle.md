@@ -34,7 +34,7 @@ The component is a work in progress and ready for exploratory usage, with breaki
 
 ### What to expect during alpha
 
-- Usage is being evaluated, and may not progress to Beta. Evaluation includes any necessary research and data that supports why the component belongs in Polaris.
+- Usage is being evaluated, and may not progress to beta. Evaluation includes any necessary research and data that supports why the component belongs in Polaris.
 - Components could be changed completely, or removed from the system.
 - Feedback is highly recommended and encouraged. [Create an issue](https://github.com/Shopify/polaris/issues/new)
 
