@@ -13,13 +13,23 @@
   pointer-events: none;
   will-change: opacity, left, top, transform;
   transform: none;
+  transition: opacity var(--p-duration-200) var(--p-ease-in)
+    var(--p-duration-100);
 
   @media screen and (-ms-high-contrast: active) {
     border: var(--p-border-width-2) solid windowText;
   }
 }
 
-.measured:not(.instant) {
+.hasMode {
+  transition: none;
+}
+
+.measuring {
+  opacity: 0;
+}
+
+.measured.hasMode:not(.instant) {
   animation: var(--p-keyframes-appear-above) var(--p-duration-200)
     var(--p-ease-in) var(--p-duration-100) 1 both;
 
