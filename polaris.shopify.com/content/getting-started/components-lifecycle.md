@@ -24,7 +24,7 @@ The component is a work in progress and ready for exploratory usage, with breaki
 
 ### Requirements for alpha
 
-- Has a clear purpose and rationale for why it belongs in Polaris.
+- Has a clear purpose and rationale for why it belongs in Polaris
 - Uses Polaris [tokens](https://polaris.shopify.com/tokens) with no references to any hard-coded static values.
 - Designed with responsiveness in mind and can adapt across [breakpoints](https://polaris.shopify.com/tokens/breakpoints).
 - Meets known [accessibility](https://polaris.shopify.com/foundations/accessibility) requirements like: contrast, interactive states, touch target size, etc.
