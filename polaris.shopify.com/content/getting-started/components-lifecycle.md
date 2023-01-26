@@ -61,7 +61,7 @@ Ready for wider adoption, encouraged for most cases. Breaking changes are possib
 
 ## Stable
 
-The component is bug free and works in most if not all environments. It’s ready for full adoption, with long-term support expected.
+The component is bug free and works in most, if not all, environments. It’s ready for full adoption, with long-term support expected.
 
 ### Requirements for stable
 
