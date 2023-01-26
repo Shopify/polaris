@@ -22,9 +22,9 @@ const pattern: SingleVariantPattern = {
   usefulToKnow: `
   | | |
   |-|-|
-  |Use the resource type as page title.|![](/images/patterns/resource-index-pattern-usage-1.png)|
-  |Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.|![](/images/patterns/resource-index-pattern-usage-2.png)|
-  |Set the page width to normal if the index doesn’t need full width.|![](/images/patterns/resource-index-pattern-usage-2.png)|`,
+  |Use the resource type as page title.|![](/images/patterns/resource-index-usage-1.png)|
+  |Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.|![](/images/patterns/resource-index-usage-2.png)|
+  |Set the page width to normal if the index doesn’t need full width.|![](/images/patterns/resource-index-usage-3.png)|`,
   relatedResources: `* The [Resource detail layout](/patterns/resource-details-layout) pattern is a complement to the resource index layout pattern.
 * Use the [Empty state component](/components/empty-state) when the resource index is empty.
 * Learn about the meaning of “resources” on the [Resource list](/components/resource-list) component page
