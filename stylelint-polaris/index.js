@@ -371,7 +371,9 @@ const stylelintPolarisCoverageOptions = {
         allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
         allowedScssInterpolations: [
           // TODO: Add utility to @shopify/polaris-tokens to getMediaConditionNames
-          /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+          matchNameRegExp(
+            String.raw`\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)`,
+          ),
         ],
       },
       // Legacy functions
