@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fix popover activator focus on esc
+Fixed focus not returning to the `Popover` `activator` on keypress of Escape
