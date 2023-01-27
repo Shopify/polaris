@@ -913,14 +913,43 @@ function IndexTableBase({
 
       const tooltipContent = sortToggleLabels[index][tooltipDirection];
 
+      // return (
+      //   <Tooltip
+      //     content={tooltipContent}
+      //     activatorWrapper="div"
+      //     dismissOnMouseOut
+      //   >
+      //     {sortMarkup}
+      //   </Tooltip>
+      // );
+
       return (
-        <Tooltip
-          content={tooltipContent}
-          activatorWrapper="div"
-          dismissOnMouseOut
-        >
-          {sortMarkup}
-        </Tooltip>
+        <div>
+          <UnstyledButton
+            onClick={() => handleSortHeadingClick(index, newDirection)}
+            className={styles.TableHeadingSortButton}
+            tabIndex={selectMode ? -1 : 0}
+          >
+            {/* <Stack wrap={false}> */}
+            <Tooltip
+              content="I am a message describing the header"
+              // activatorWrapper="div"
+              dismissOnMouseOut
+              // zIndexOverride={-1}
+            >
+              <div>{headingContent}</div>
+            </Tooltip>
+
+            <Tooltip
+              content={tooltipContent}
+              activatorWrapper="div"
+              dismissOnMouseOut
+            >
+              {iconMarkup}
+            </Tooltip>
+            {/* </Stack> */}
+          </UnstyledButton>
+        </div>
       );
     }
     return headingContent;
