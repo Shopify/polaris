@@ -15,7 +15,7 @@ import Markdown from '../../../src/components/Markdown';
 interface Group {
   title?: string;
   description?: string;
-  components?: string;
+  components?: string[];
   tip?: string;
 }
 
@@ -52,7 +52,7 @@ export default function GroupPage({
         <p>{description}</p>
       </AlphaStack>
       <Grid condensed>
-        {components?.split(', ').map((component) => {
+        {components?.map((component) => {
           const componentSlug = component.replace(/ /g, '-').toLowerCase();
           const url = group
             ? `/components/${group}/${componentSlug}`
