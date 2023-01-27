@@ -19,9 +19,6 @@ keywords:
   - semibold
   - bold
   - list
-status:
-  value: Beta
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 examples:
   - fileName: text-heading.tsx
     title: Heading
