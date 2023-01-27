@@ -247,12 +247,12 @@ describe('<Page />', () => {
     });
 
     it('renders a <Header /> when defined not as an array', () => {
-      const breadcrumbs = {
+      const breadcrumb = {
         content: 'Products',
         onAction: noop,
       };
       const page = mountWithApp(
-        <Page {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Page {...mockProps} breadcrumb={breadcrumb} />,
       );
       expect(page).toContainReactComponent(Header);
     });

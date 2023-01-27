@@ -67,10 +67,10 @@ describe('<Header />', () => {
         url: 'https://www.google.com',
       };
       const header = mountWithApp(
-        <Header {...mockProps} breadcrumbs={breadcrumb} />,
+        <Header {...mockProps} breadcrumb={breadcrumb} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
-        breadcrumbs: breadcrumb,
+        breadcrumb,
       });
     });
 
