@@ -25,12 +25,11 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 export function WithActionList() {
-  // const [popoverActive, setPopoverActive] = useState(true);
   const [activePopover, setActivePopover] = useState(null);
 
   const togglePopoverActive = useCallback((popover, isClosing) => {
-    const ap = isClosing ? null : popover;
-    setActivePopover(ap);
+    const currentPopover = isClosing ? null : popover;
+    setActivePopover(currentPopover);
   }, []);
 
   const activator = (
