@@ -578,52 +578,52 @@ export const colors = {
   },
   'surface-magic': {
     value: 'rgba(233, 217, 252, 1)',
-    description: 'For use as background color of Shopify Magic components',
+    description: 'For use as background color of Shopify Magic components.',
   },
   'surface-magic-subdued': {
     value: 'rgba(246, 240, 253, 1)',
     description:
-      'For use as subdued background color of Shopify Magic components',
+      'For use as subdued background color of Shopify Magic components.',
   },
   'surface-magic-subdued-hoverd': {
     value: 'rgba(238, 223, 255, 1)',
-    description: 'Hover state for magic subdued',
+    description: 'Hover state for subdued Shopify Magic surfaces.',
   },
   'surface-magic-subdued-pressed': {
     value: 'rgba(230, 209, 255, 1)',
-    description: 'Pressed state for magic subdued',
+    description: 'Pressed state for subdued Shopify Magic surfaces.',
   },
   'surface-magic-subdued-depressed': {
     value: 'rgba(212, 175, 255, 1)',
-    description: 'Pressed state for magic subdued',
+    description: 'Pressed state for subdued Shopify Magic surfaces.',
   },
   'text-magic': {
     value: 'rgba(55, 0, 133, 1)',
-    description: 'For use as text color for Shopify Magic elements.',
+    description: 'Text color for Shopify Magic elements.',
   },
   'text-on-magic': {
     value: 'rgba(246, 240, 253, 1)',
-    description: 'For use as text color on Shopify Magic elements.',
+    description: 'Text color on Shopify Magic elements.',
   },
   'icon-magic': {
     value: 'rgba(156, 106, 222, 1)',
-    description: 'For use as icon color on Shopify Magic elements.',
+    description: 'Icon color on Shopify Magic elements.',
   },
   'icon-on-magic': {
     value: 'rgba(246, 240, 253, 1)',
-    description: 'For use as icon color on Shopify Magic elements.',
+    description: 'Icon color on Shopify Magic elements.',
   },
   'border-magic': {
     value: 'rgba(156,106,222, 1)',
-    description: 'For use as border color for Shopify Magic.',
+    description: 'Border color for Shopify Magic elements.',
   },
   'border-magic-subdued': {
     value: 'rgba(200, 172, 237, 1)',
-    description: 'For use as subdued borders for Shopify Magic.',
+    description: 'For subdued borders on Shopify Magic elements.',
   },
   'border-magic-disabled': {
     value: 'rgba(220, 202, 243, 1)',
-    description: 'For use as disabled borders for Shopify Magic.',
+    description: 'For disabled borders on Shopify Magic elements.',
   },
   'action-magic': {
     value: 'rgba(156, 106, 222, 1)',
