@@ -7,7 +7,9 @@ import {
   PositionedOverlay,
 } from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
+
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
+import type {PreferredAlignment} from '../../../PositionedOverlay/utilities/math';
 
 import styles from './TooltipOverlay.scss';
 
@@ -24,6 +26,7 @@ export interface TooltipOverlayProps {
   borderRadius?: BorderRadius;
   zIndexOverride?: number;
   onClose(): void;
+  preferredAlignment?: PreferredAlignment;
 }
 
 export function TooltipOverlay({
@@ -38,6 +41,7 @@ export function TooltipOverlay({
   padding,
   borderRadius,
   zIndexOverride,
+  preferredAlignment,
 }: TooltipOverlayProps) {
   const i18n = useI18n();
   const markup = active ? (
@@ -46,6 +50,7 @@ export function TooltipOverlay({
       activator={activator}
       preferredPosition={preferredPosition}
       preventInteraction={preventInteraction}
+      preferredAlignment={preferredAlignment}
       render={renderTooltip}
       zIndexOverride={zIndexOverride}
     />

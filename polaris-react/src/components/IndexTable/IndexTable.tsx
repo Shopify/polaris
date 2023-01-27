@@ -936,6 +936,8 @@ function IndexTableBase({
               // activatorWrapper="div"
               dismissOnMouseOut
               // zIndexOverride={-1}
+              hasUnderline
+              preferredAlignment="right"
             >
               <div>{headingContent}</div>
             </Tooltip>
@@ -944,6 +946,7 @@ function IndexTableBase({
               content={tooltipContent}
               activatorWrapper="div"
               dismissOnMouseOut
+              preferredAlignment="left"
             >
               {iconMarkup}
             </Tooltip>

@@ -9,6 +9,7 @@ import {findFirstFocusableNode} from '../../utilities/focus';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
+import type {PreferredAlignment} from '../PositionedOverlay/utilities/math';
 
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
@@ -61,6 +62,8 @@ export interface TooltipProps {
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
   onClose?(): void;
+  hasUnderline?: boolean;
+  preferredAlignment?: PreferredAlignment;
 }
 
 export function Tooltip({
@@ -78,6 +81,8 @@ export function Tooltip({
   zIndexOverride,
   onOpen,
   onClose,
+  hasUnderline,
+  preferredAlignment,
 }: TooltipProps) {
   const WrapperComponent: any = activatorWrapper;
   const {
@@ -127,6 +132,7 @@ export function Tooltip({
       <TooltipOverlay
         id={id}
         preferredPosition={preferredPosition}
+        preferredAlignment={preferredAlignment}
         activator={activatorNode}
         active={active}
         accessibilityLabel={accessibilityLabel}
@@ -144,6 +150,7 @@ export function Tooltip({
 
   const wrapperClassNames = classNames(
     activatorWrapper === 'div' && styles.TooltipContainer,
+    hasUnderline && styles.HasUnderline,
   );
 
   return (
