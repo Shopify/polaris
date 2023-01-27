@@ -8,11 +8,12 @@ import type {MediaQueryContext} from '../../../../../utilities/media-query';
 import {Badge} from '../../../../Badge';
 import {Icon} from '../../../../Icon';
 import {Indicator} from '../../../../Indicator';
+import {UnstyledButton} from '../../../../UnstyledButton';
 import {UnstyledLink} from '../../../../UnstyledLink';
 import {NavigationContext} from '../../../context';
-import {Item, ItemProps} from '../Item';
+import {Item, ItemSecondaryAction, MAX_SECONDARY_ACTIONS} from '../Item';
+import type {ItemProps} from '../Item';
 import {Secondary} from '../components';
-import {Key} from '../../../../../types';
 import {Tooltip} from '../../../../Tooltip';
 
 describe('<Nav.Item />', () => {
@@ -185,6 +186,49 @@ describe('<Nav.Item />', () => {
       });
     });
 
+    it('renders an UnstyledButton if url is not specified', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryAction={{
+            icon: PlusMinor,
+            accessibilityLabel: 'label',
+          }}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledButton, {
+        accessibilityLabel: 'label',
+      });
+    });
+
+    it('renders an UnstyledButton with onClick handler if provided', () => {
+      const handler = () => {};
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryAction={{
+            icon: PlusMinor,
+            onClick: handler,
+            accessibilityLabel: 'label',
+          }}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledButton, {
+        accessibilityLabel: 'label',
+        onClick: handler,
+      });
+    });
+
     it('shows a tooltip for the secondary action if specified', () => {
       const item = mountWithNavigationProvider(
         <Item
@@ -207,6 +251,192 @@ describe('<Nav.Item />', () => {
       expect(item).toContainReactComponent(Tooltip, {
         content: 'This is tooltip text',
       });
+    });
+  });
+
+  describe('with secondaryActions', () => {
+    it('renders an UnstyledLink with props delegated', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={[
+            {
+              url: 'bar',
+              icon: PlusMinor,
+              accessibilityLabel: 'label',
+            },
+          ]}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'bar',
+        'aria-label': 'label',
+      });
+    });
+
+    it('renders an UnstyledLink with onClick handler if provided', () => {
+      const handler = () => {};
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={[
+            {
+              url: 'bar',
+              icon: PlusMinor,
+              onClick: handler,
+              accessibilityLabel: 'label',
+            },
+          ]}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'bar',
+        'aria-label': 'label',
+        onClick: handler,
+      });
+    });
+
+    it('renders an UnstyledButton if url is not specified', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={[
+            {
+              icon: PlusMinor,
+              accessibilityLabel: 'label',
+            },
+          ]}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledButton, {
+        accessibilityLabel: 'label',
+      });
+    });
+
+    it('renders an UnstyledButton with onClick handler if provided', () => {
+      const handler = () => {};
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={[
+            {
+              icon: PlusMinor,
+              onClick: handler,
+              accessibilityLabel: 'label',
+            },
+          ]}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledButton, {
+        accessibilityLabel: 'label',
+        onClick: handler,
+      });
+    });
+
+    it('shows a tooltip for the secondary actions if specified', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={[
+            {
+              url: 'bar',
+              icon: PlusMinor,
+              accessibilityLabel: 'label',
+              tooltip: {
+                content: 'This is tooltip text',
+              },
+            },
+          ]}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(Tooltip, {
+        content: 'This is tooltip text',
+      });
+    });
+
+    it('renders multiple actions', () => {
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={[
+            {
+              url: 'bar',
+              icon: PlusMinor,
+              accessibilityLabel: 'bar label',
+            },
+            {
+              url: 'baz',
+              icon: PlusMinor,
+              accessibilityLabel: 'baz label',
+            },
+          ]}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'bar',
+        'aria-label': 'bar label',
+      });
+
+      expect(item).toContainReactComponent(UnstyledLink, {
+        url: 'baz',
+        'aria-label': 'baz label',
+      });
+    });
+
+    it(`only renders up to ${MAX_SECONDARY_ACTIONS} actions`, () => {
+      expect(MAX_SECONDARY_ACTIONS).toBeGreaterThan(1);
+
+      const secondaryActions: any = Array.from({
+        length: MAX_SECONDARY_ACTIONS + 1,
+      }).map((_, index) => ({
+        url: `url-${index}`,
+        icon: PlusMinor,
+        accessibilityLabel: `label ${index}`,
+      }));
+
+      const item = mountWithNavigationProvider(
+        <Item
+          label="some label"
+          url="foo"
+          secondaryActions={secondaryActions}
+        />,
+        {
+          location: 'bar',
+        },
+      );
+
+      const actionLinks = item.findAll(ItemSecondaryAction);
+      expect(actionLinks).toHaveLength(MAX_SECONDARY_ACTIONS);
     });
   });
 
@@ -661,48 +891,6 @@ describe('<Nav.Item />', () => {
           },
         });
         expect(onToggleExpandedState).toHaveBeenCalledTimes(1);
-      });
-    });
-  });
-
-  describe('keyFocused', () => {
-    it('adds and removes a class to button when item was tabbed into focus and then blurred', () => {
-      const item = mountWithNavigationProvider(
-        <Item label="some label" disabled={false} />,
-      );
-
-      const event = {
-        keyCode: Key.Tab,
-      };
-
-      item.find('button')!.trigger('onKeyUp', event);
-      expect(item).toContainReactComponent('button', {
-        className: 'Item keyFocused',
-      });
-
-      item.find('button')!.trigger('onBlur');
-      expect(item).toContainReactComponent('button', {
-        className: 'Item',
-      });
-    });
-
-    it('adds and removes a class to a link when item was tabbed into focus and then blurred', () => {
-      const item = mountWithNavigationProvider(
-        <Item label="some label" disabled={false} url="https://shopify.com" />,
-      );
-
-      const event = {
-        keyCode: Key.Tab,
-      };
-
-      item.find('a')!.trigger('onKeyUp', event);
-      expect(item).toContainReactComponent('a', {
-        className: 'Item keyFocused',
-      });
-
-      item.find('a')!.trigger('onBlur');
-      expect(item).toContainReactComponent('a', {
-        className: 'Item',
       });
     });
   });

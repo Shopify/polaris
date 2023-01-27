@@ -1,0 +1,14 @@
+name: Page Reference
+set: minor
+description: Used to represent pages referenced on other resources
+keywords:
+  - page
+  - reference
+  - metafields
+authors:
+  - Sai Nihas
+  - Leina Leung
+version: 1
+date_added: 2023-01-12
+date_modified: 2023-01-12
+exclusive_use:

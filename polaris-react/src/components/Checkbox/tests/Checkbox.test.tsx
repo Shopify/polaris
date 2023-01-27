@@ -1,7 +1,6 @@
 import React, {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Key} from '../../../types';
 import {Checkbox} from '../Checkbox';
 
 describe('<Checkbox />', () => {
@@ -273,31 +272,6 @@ describe('<Checkbox />', () => {
 
       expect(checkBox).toContainReactComponent('span', {
         className: 'Backdrop',
-      });
-    });
-  });
-
-  describe('Focus className', () => {
-    it('on keyUp adds a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox label="Checkbox" />);
-
-      checkbox.find('input')!.trigger('onKeyUp', {
-        keyCode: Key.Space,
-      });
-
-      expect(checkbox).toContainReactComponent('input', {
-        className: 'Input keyFocused',
-      });
-    });
-
-    it('on change does not add a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox label="Checkbox" />);
-      const checkboxInput = checkbox.find('input');
-      checkboxInput!.trigger('onChange', {
-        currentTarget: checkboxInput!.domNode as HTMLInputElement,
-      });
-      expect(checkbox).not.toContainReactComponent('input', {
-        className: 'Input keyFocused',
       });
     });
   });

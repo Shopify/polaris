@@ -26,7 +26,7 @@
     ]
   },
   "scripts": {
-    "build": "turbo run build",
+    "build": "turbo run build --filter=!polaris.shopify.com && turbo run build --filter=polaris.shopify.com",
     "dev": "turbo run dev --filter=@shopify/polaris... --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
@@ -89,7 +89,7 @@
     {
       "name": "polaris-react-cjs",
       "path": "polaris-react/build/cjs/index.js",
-      "limit": "220 kB"
+      "limit": "225 kB"
     },
     {
       "name": "polaris-react-esm",

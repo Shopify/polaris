@@ -1,0 +1,17 @@
+name: Diamond alert
+set: minor
+description: Used to alert merchants of a critical error.
+keywords:
+  - alert
+  - attention
+  - critical
+  - diamond
+  - error
+  - exclamation
+  - bang
+authors:
+  - Jesse Bennett-Chamberlain
+version: 1
+date_added: 2023-01-16
+date_modified: 2023-01-16
+exclusive_use:

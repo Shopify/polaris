@@ -32,11 +32,13 @@ function Markdown({text}: Props) {
             return <h3>{children}</h3>;
           }
         },
-        code: ({inline, children}) =>
+        code: ({inline, children, className}) =>
           inline ? (
             <code>{children}</code>
           ) : (
-            <Code code={{title: 'Example', code: children.toString()}} />
+            <Code
+              code={{className, title: 'Example', code: children.toString()}}
+            />
           ),
         table: ({children}) => (
           <div className="table-wrapper">

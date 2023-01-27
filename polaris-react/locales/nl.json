@@ -183,8 +183,6 @@
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
       "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
       "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} selecteren",
-      "ariaLiveSingular": "{itemsLength} artikel",
-      "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
         "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
         "actionsDropdown": "Acties vervolgkeuzelijst",

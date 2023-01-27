@@ -1,0 +1,18 @@
+name: Magic
+set: major
+description: Concept     | Used to represent AI-assisted features.
+keywords:
+  - Magic
+  - AI
+  - Artificial Intelligence
+  - ML
+  - Machine Learning
+  - Generative
+  - Sparkle
+  - Stars
+authors:
+  - David Goligorsky
+version: 1
+date_added: 2023-01-12
+date_modified: YYYY-MM-DD
+exclusive_use: For use related to feature using machine learning / artificial intelligence.

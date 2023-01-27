@@ -1,5 +1,36 @@
 # @shopify/polaris-migrator
 
+## 0.11.2
+
+### Patch Changes
+
+- Updated dependencies [[`07669075a`](https://github.com/Shopify/polaris/commit/07669075a3ea9c0aeac3bf9ff645df1a6f2938b5), [`74a75a473`](https://github.com/Shopify/polaris/commit/74a75a4731b3f67d408ccb985708d6056819d4f8), [`f8f9eecd5`](https://github.com/Shopify/polaris/commit/f8f9eecd5abe900581efa5032d5f4ee80228e4d4)]:
+  - @shopify/stylelint-polaris@5.1.2
+
+## 0.11.1
+
+### Patch Changes
+
+- Updated dependencies [[`cd150396b`](https://github.com/Shopify/polaris/commit/cd150396b11f1a0abf6d4419c5c594dfdae3185d)]:
+  - @shopify/stylelint-polaris@5.1.1
+
+## 0.11.0
+
+### Minor Changes
+
+- [#8009](https://github.com/Shopify/polaris/pull/8009) [`64d57de02`](https://github.com/Shopify/polaris/commit/64d57de0277ff39fd54746f48d11b9841e62e32b) Thanks [@alex-page](https://github.com/alex-page)! - Added componentName option to react-replace-text-components migration
+
+## 0.10.3
+
+### Patch Changes
+
+- [#7997](https://github.com/Shopify/polaris/pull/7997) [`fad3809ef`](https://github.com/Shopify/polaris/commit/fad3809ef39054b125c661f9b1bf6397b2b89fd0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `styles-tokenize-font` to ignore `@font-face` at-rules
+
+* [#7783](https://github.com/Shopify/polaris/pull/7783) [`56b0bc2dc`](https://github.com/Shopify/polaris/commit/56b0bc2dc414a085e935c3975a74410e7df530f1) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improve robustness of the `react-replace-text-components` migration
+
+* Updated dependencies [[`6404b1638`](https://github.com/Shopify/polaris/commit/6404b163897fecfcdef853c5ed0f4e25a1334df0), [`128f147d1`](https://github.com/Shopify/polaris/commit/128f147d19354adbb24c48443e7c47ff6dd06c74)]:
+  - @shopify/stylelint-polaris@5.1.0
+
 ## 0.10.2
 
 ### Patch Changes
