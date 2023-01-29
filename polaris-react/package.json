@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
+  "engines": {
+    "node": "^16.16.0 || ^18.13.0"
+  },
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"

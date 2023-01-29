@@ -6,6 +6,9 @@
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://polaris.shopify.com",
   "repository": "https://github.com/Shopify/polaris",
+  "engines": {
+    "node": "^16.16.0 || ^18.13.0"
+  },
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
