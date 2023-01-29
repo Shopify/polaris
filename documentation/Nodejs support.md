@@ -16,14 +16,14 @@ The `package.json` engines. This should match the `.github/workflows/ci.yml` and
 
 ```json
 "engines": {
-  "node": "^14.17.0 || ^16.13.0"
+  "node": "^14.18.0 || ^16.13.0"
 },
 ```
 
 The GitHub actions `.github/workflows/ci.yml` file. This should match the `package.json` and list all supported versions.
 
 ```yml
-node-version: ['14.17.0', '16.13.0']
+node-version: ['14.18.0', '16.13.0']
 ```
 
 The `dev.yml` file which creates a local development environment. This should match the `.nvmrc` file.
@@ -43,11 +43,11 @@ The `shipit.yml` files. This should point towards the GitHub Actions the package
 ```yml
 ci:
   require:
-    - 'Validate with Node v14.17.0'
+    - 'Validate with Node v14.18.0'
     - 'Validate with Node v16.13.0'
 
 merge:
   require:
-    - 'Validate with Node v14.17.0'
+    - 'Validate with Node v14.18.0'
     - 'Validate with Node v16.13.0'
 ```
