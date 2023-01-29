@@ -23,7 +23,7 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18.13.0
           cache: yarn
       - uses: andresz1/size-limit-action@v1.7.0
         with:

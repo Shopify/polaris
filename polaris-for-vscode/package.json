@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@shopify/polaris-tokens": "^6.3.0",
-    "@types/node": "14.x",
+    "@types/node": "^18.11.18",
     "@types/vscode": "^1.64.0",
     "@vscode/test-electron": "^2.1.2",
     "globby": "^11.1.0",

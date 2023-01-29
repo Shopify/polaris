@@ -23,9 +23,9 @@ jobs:
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - uses: actions/setup-node@v3
-        name: Use Node.js 16.x
+        name: Use Node.js 18.13.0
         with:
-          node-version: 16
+          node-version: 18.13.0
           cache: yarn
 
       - name: Install dependencies

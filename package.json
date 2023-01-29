@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^14.17.0 || ^16.13.0"
+    "node": "^16.16.0 || ^18.13.0"
   },
   "workspaces": {
     "packages": [

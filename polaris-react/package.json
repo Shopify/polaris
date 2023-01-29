@@ -78,7 +78,7 @@
     "@babel/core": "^7.15.0",
     "@babel/node": "^7.14.9",
     "@changesets/get-release-plan": "^3.0.13",
-    "@shopify/browserslist-config": "^3.0.0",
+    "@shopify/browserslist-config": "0.0.0-snapshot-20230129203453",
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-testing": "^4.1.0",
@@ -118,15 +118,5 @@
     "shx": "^0.3.2",
     "svgo": "^2.8.0",
     "webpack": "5"
-  },
-  "browserslist": [
-    "last 3 chrome versions",
-    "last 3 firefox versions",
-    "last 3 opera versions",
-    "last 3 edge versions",
-    "last 3 safari versions",
-    "last 3 chromeandroid versions",
-    "last 1 firefoxandroid versions",
-    "ios >= 13.4"
-  ]
+  }
 }

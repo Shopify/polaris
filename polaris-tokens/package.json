@@ -29,7 +29,7 @@
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
   },
   "devDependencies": {
-    "@shopify/browserslist-config": "^3.0.0"
+    "@shopify/browserslist-config": "0.0.0-snapshot-20230129203453"
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
