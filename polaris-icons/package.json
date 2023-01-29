@@ -13,6 +13,9 @@
       ]
     }
   },
+  "engines": {
+    "node": "^16.16.0 || ^18.13.0"
+  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
