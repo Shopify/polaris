@@ -52,4 +52,4 @@ merge:
     - 'Validate with Node v18.13.0'
 ```
 
-The `rollup.config.mjs` for some projects. This should match the minimum supported version.
+The `rollup.config.mjs` for some monorepo packages. This should match the minimum supported version.
