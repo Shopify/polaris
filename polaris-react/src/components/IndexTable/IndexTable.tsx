@@ -920,6 +920,7 @@ function IndexTableBase({
             content={tooltipContent}
             activatorWrapper="div"
             dismissOnMouseOut
+            preferredPosition="above"
           >
             {sortMarkup}
           </Tooltip>
@@ -937,7 +938,8 @@ function IndexTableBase({
               content={heading.sortableMessage}
               dismissOnMouseOut
               hasUnderline
-              preferredAlignment="right"
+              preferredAlignment="center"
+              preferredPosition="above"
               // width="wide"
               // padding="4"
             >
@@ -948,7 +950,8 @@ function IndexTableBase({
               content={tooltipContent}
               activatorWrapper="div"
               dismissOnMouseOut
-              preferredAlignment="left"
+              preferredAlignment="center"
+              preferredPosition="above"
             >
               {iconMarkup}
             </Tooltip>
