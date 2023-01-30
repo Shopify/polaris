@@ -248,6 +248,83 @@ export function WithBulkActions() {
   }
 }
 
+export function WithBulkActionsAndManyItems() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const items = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '/customers/341',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$24,00',
+    };
+  });
+
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  return (
+    <Card>
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        promotedBulkActions={promotedBulkActions}
+        bulkActions={bulkActions}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="medium" name={name} />;
+
+    return (
+      <ResourceItem
+        id={id}
+        url={url}
+        media={media}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </h3>
+        <div>{location}</div>
+      </ResourceItem>
+    );
+  }
+}
+
 export function WithLoadingState() {
   const [selectedItems, setSelectedItems] = useState([]);
 
@@ -371,6 +448,51 @@ export function WithTotalCount() {
         }}
         showHeader
         totalItemsCount={50}
+      />
+    </Card>
+  );
+}
+
+export function WithHeaderContent() {
+  return (
+    <Card>
+      <ResourceList
+        headerContent="Customer details shown below"
+        items={[
+          {
+            id: 105,
+            url: 'customers/341',
+            name: 'Mae Jemison',
+            location: 'Decatur, USA',
+          },
+          {
+            id: 205,
+            url: 'customers/256',
+            name: 'Ellen Ochoa',
+            location: 'Los Angeles, USA',
+          },
+        ]}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="medium" name={name} />;
+
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text variant="bodyMd" fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+        showHeader
       />
     </Card>
   );

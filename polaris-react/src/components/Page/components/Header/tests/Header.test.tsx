@@ -47,20 +47,36 @@ describe('<Header />', () => {
   });
 
   describe('breadcrumbs', () => {
-    const breadcrumbs: LinkAction[] = [
-      {
-        content: 'Products',
-        url: 'https://www.google.com',
-      },
-    ];
+    const breadcrumb: LinkAction = {
+      content: 'Products',
+      url: 'https://www.google.com',
+    };
 
     it('get passed into Breadcrumbs', () => {
       const header = mountWithApp(
-        <Header {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Header {...mockProps} breadcrumb={breadcrumb} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
-        breadcrumbs,
+        breadcrumb,
       });
+    });
+
+    it('renders breadcrumb markup if not an array', () => {
+      const breadcrumb: LinkAction = {
+        content: 'Products',
+        url: 'https://www.google.com',
+      };
+      const header = mountWithApp(
+        <Header {...mockProps} breadcrumb={breadcrumb} />,
+      );
+      expect(header).toContainReactComponent(Breadcrumbs, {
+        breadcrumb,
+      });
+    });
+
+    it('does not render breadcrumb markup if no breadcrumbs', () => {
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).not.toContainReactComponent(Breadcrumbs);
     });
   });
 
@@ -291,12 +307,10 @@ describe('<Header />', () => {
     {content: 'mock content 2'},
   ];
 
-  const breadcrumbs: LinkAction[] = [
-    {
-      content: 'Products',
-      url: 'https://www.google.com',
-    },
-  ];
+  const breadcrumb: LinkAction = {
+    content: 'Products',
+    url: 'https://www.google.com',
+  };
 
   it('does not render primary and secondary action wrapper divs', () => {
     const header = mountWithApp(
@@ -341,7 +355,7 @@ describe('<Header />', () => {
 
   it('renders a default mobile layout', () => {
     const header = mountWithApp(
-      <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
+      <Header title="mmmmmmmmm" breadcrumb={breadcrumb} />,
       {
         mediaQuery: {isNavigationCollapsed: true},
       },

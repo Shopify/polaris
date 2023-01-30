@@ -9,6 +9,8 @@ import {Badge} from '../../../Badge';
 import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
+import {Inline} from '../../../Inline';
+import {Box} from '../../../Box';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -61,12 +63,12 @@ export function Item({
   const contentText = ellipsis && content ? `${content}…` : content;
 
   const contentMarkup = helpText ? (
-    <span className={styles.ContentBlock}>
-      <span className={styles.ContentBlockInner}>{contentText}</span>
+    <>
+      <Box>{contentText}</Box>
       <Text variant="bodyMd" color="subdued" as="span">
         {helpText}
       </Text>
-    </span>
+    </>
   ) : (
     contentText
   );
@@ -78,18 +80,20 @@ export function Item({
   );
 
   const suffixMarkup = suffix && (
-    <span className={styles.Suffix}>{suffix}</span>
+    <Box paddingInlineStart="4">
+      <span className={styles.Suffix}>{suffix}</span>
+    </Box>
   );
 
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <span className={styles.Content}>
+    <Inline blockAlign="center" gap="0">
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}
-    </span>
+    </Inline>
   );
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;

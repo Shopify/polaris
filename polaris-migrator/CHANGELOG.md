@@ -1,5 +1,71 @@
 # @shopify/polaris-migrator
 
+## 0.11.2
+
+### Patch Changes
+
+- Updated dependencies [[`07669075a`](https://github.com/Shopify/polaris/commit/07669075a3ea9c0aeac3bf9ff645df1a6f2938b5), [`74a75a473`](https://github.com/Shopify/polaris/commit/74a75a4731b3f67d408ccb985708d6056819d4f8), [`f8f9eecd5`](https://github.com/Shopify/polaris/commit/f8f9eecd5abe900581efa5032d5f4ee80228e4d4)]:
+  - @shopify/stylelint-polaris@5.1.2
+
+## 0.11.1
+
+### Patch Changes
+
+- Updated dependencies [[`cd150396b`](https://github.com/Shopify/polaris/commit/cd150396b11f1a0abf6d4419c5c594dfdae3185d)]:
+  - @shopify/stylelint-polaris@5.1.1
+
+## 0.11.0
+
+### Minor Changes
+
+- [#8009](https://github.com/Shopify/polaris/pull/8009) [`64d57de02`](https://github.com/Shopify/polaris/commit/64d57de0277ff39fd54746f48d11b9841e62e32b) Thanks [@alex-page](https://github.com/alex-page)! - Added componentName option to react-replace-text-components migration
+
+## 0.10.3
+
+### Patch Changes
+
+- [#7997](https://github.com/Shopify/polaris/pull/7997) [`fad3809ef`](https://github.com/Shopify/polaris/commit/fad3809ef39054b125c661f9b1bf6397b2b89fd0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `styles-tokenize-font` to ignore `@font-face` at-rules
+
+* [#7783](https://github.com/Shopify/polaris/pull/7783) [`56b0bc2dc`](https://github.com/Shopify/polaris/commit/56b0bc2dc414a085e935c3975a74410e7df530f1) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Improve robustness of the `react-replace-text-components` migration
+
+* Updated dependencies [[`6404b1638`](https://github.com/Shopify/polaris/commit/6404b163897fecfcdef853c5ed0f4e25a1334df0), [`128f147d1`](https://github.com/Shopify/polaris/commit/128f147d19354adbb24c48443e7c47ff6dd06c74)]:
+  - @shopify/stylelint-polaris@5.1.0
+
+## 0.10.2
+
+### Patch Changes
+
+- [#7979](https://github.com/Shopify/polaris/pull/7979) [`bfb537780`](https://github.com/Shopify/polaris/commit/bfb5377802f0d8e28c9cfafa9924f1849bcc0cce) Thanks [@samrose3](https://github.com/samrose3)! - Early exit if target function isn't present for the scss-replace-duration and scss-replace-easing migrations
+
+- Updated dependencies [[`af0ceb8c6`](https://github.com/Shopify/polaris/commit/af0ceb8c6fae30c6aaa45bf89eef660ea45fd78e), [`e7712e7a5`](https://github.com/Shopify/polaris/commit/e7712e7a57fddac939e65510fb257ac82442faa4)]:
+  - @shopify/stylelint-polaris@5.0.2
+
+## 0.10.1
+
+### Patch Changes
+
+- Updated dependencies [[`4b96147b3`](https://github.com/Shopify/polaris/commit/4b96147b32a89a393e8b6c5f7df1442f875248a0), [`c8a294f51`](https://github.com/Shopify/polaris/commit/c8a294f51baae53b131a5f9014f6223fdf3ef5ee), [`6cd75fd9a`](https://github.com/Shopify/polaris/commit/6cd75fd9a089791a79fe8aa7e43f6b54add47a45), [`bdf04a289`](https://github.com/Shopify/polaris/commit/bdf04a289e7a5b4c1e4717f5e162d00ea87c807b), [`9206b7b13`](https://github.com/Shopify/polaris/commit/9206b7b130cb4d5b0a6ec110693d8b45248f8dcf)]:
+  - @shopify/stylelint-polaris@5.0.1
+
+## 0.10.0
+
+### Minor Changes
+
+- [#7726](https://github.com/Shopify/polaris/pull/7726) [`22c4107b3`](https://github.com/Shopify/polaris/commit/22c4107b3c369eb68da31980d208c09b3fc4ba37) Thanks [@qt314](https://github.com/qt314)! - Added migration to insert disable comments for @shopify/stylelint-polaris
+
+### Patch Changes
+
+- [#7836](https://github.com/Shopify/polaris/pull/7836) [`77736370e`](https://github.com/Shopify/polaris/commit/77736370eeddde18a2c11da102b88646f2263d99) Thanks [@qt314](https://github.com/qt314)! - Decouple polaris migrator test from stylelint config so it's easier to maintain
+
+- Updated dependencies [[`38b2a00a6`](https://github.com/Shopify/polaris/commit/38b2a00a6aa0c95d5df777c7d51023a8193f8090)]:
+  - @shopify/stylelint-polaris@5.0.0
+
+## 0.9.1
+
+### Patch Changes
+
+- [#7744](https://github.com/Shopify/polaris/pull/7744) [`28220456f`](https://github.com/Shopify/polaris/commit/28220456f67bb4e6e2df19ceb334635ca2d0f3a5) Thanks [@laurkim](https://github.com/laurkim)! - Fixed mapping for `TextStyle` `variation="strong"` to use `Text` `fontWeight="semibold"` instead of `fontWeight="bold"`
+
 ## 0.9.0
 
 ### Minor Changes

@@ -1,12 +1,14 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
 import {useUniqueId} from '../../utilities/unique-id';
 import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
 import {Text} from '../Text';
+import {AlphaStack} from '../AlphaStack';
+import {Box} from '../Box';
+import {Bleed} from '../Bleed';
 
 import styles from './ChoiceList.scss';
 
@@ -66,17 +68,16 @@ export function ChoiceList({
   const name = useUniqueId('ChoiceList', nameProp);
   const finalName = allowMultiple ? `${name}[]` : name;
 
-  const className = classNames(
-    styles.ChoiceList,
-    titleHidden && styles.titleHidden,
-  );
-
   const titleMarkup = title ? (
-    <legend className={styles.Title}>
+    <Box
+      as="legend"
+      paddingBlockEnd={{xs: '5', md: '1'}}
+      visuallyHidden={titleHidden}
+    >
       <Text as="span" variant="bodyMd">
         {title}
       </Text>
-    </legend>
+    </Box>
   ) : null;
 
   const choicesMarkup = choices.map((choice) => {
@@ -101,41 +102,55 @@ export function ChoiceList({
       ? choice.renderChildren(isSelected)
       : null;
     const children = renderedChildren ? (
-      <div className={styles.ChoiceChildren}>{renderedChildren}</div>
+      <div className={styles.ChoiceChildren}>
+        <Box paddingBlockStart={{xs: '4', md: '0'}}>{renderedChildren}</Box>
+      </div>
     ) : null;
-
     return (
-      <li key={value} className={styles.ChoiceItem}>
-        <ControlComponent
-          name={finalName}
-          value={value}
-          id={id}
-          label={label}
-          disabled={choiceDisabled || disabled}
-          checked={choiceIsSelected(choice, selected)}
-          helpText={helpText}
-          onChange={handleChange}
-          ariaDescribedBy={
-            error && describedByError ? errorTextID(finalName) : null
-          }
-        />
-        {children}
+      <li key={value}>
+        <Bleed
+          marginInline="0"
+          marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}
+        >
+          <ControlComponent
+            name={finalName}
+            value={value}
+            id={id}
+            label={label}
+            disabled={choiceDisabled || disabled}
+            checked={choiceIsSelected(choice, selected)}
+            helpText={helpText}
+            onChange={handleChange}
+            ariaDescribedBy={
+              error && describedByError ? errorTextID(finalName) : null
+            }
+          />
+          {children}
+        </Bleed>
       </li>
     );
   });
 
   const errorMarkup = error && (
-    <div className={styles.ChoiceError}>
+    <Box paddingBlockStart={{xs: '0', md: '1'}} paddingBlockEnd="2">
       <InlineError message={error} fieldID={finalName} />
-    </div>
+    </Box>
   );
 
   return (
-    <fieldset className={className} id={finalName} aria-invalid={error != null}>
+    <AlphaStack
+      as="fieldset"
+      gap={{xs: '4', md: '0'}}
+      fullWidth
+      aria-invalid={error != null}
+      id={finalName}
+    >
       {titleMarkup}
-      <ul className={styles.Choices}>{choicesMarkup}</ul>
+      <AlphaStack as="ul" gap={{xs: '4', md: '0'}} fullWidth>
+        {choicesMarkup}
+      </AlphaStack>
       {errorMarkup}
-    </fieldset>
+    </AlphaStack>
   );
 }
 

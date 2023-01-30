@@ -7,22 +7,22 @@ function BleedSpecificDirectionExample() {
   return (
     <AlphaStack gap="6" fullWidth>
       <Box background="surface" border="base" padding="5">
-        <Bleed top="5">
+        <Bleed marginBlockStart="5">
           <Placeholder label="Top" />
         </Bleed>
       </Box>
       <Box background="surface" border="base" padding="5">
-        <Bleed bottom="5">
+        <Bleed marginBlockEnd="5">
           <Placeholder label="Bottom" />
         </Bleed>
       </Box>
       <Box background="surface" border="base" padding="5">
-        <Bleed left="5" right="0">
+        <Bleed marginInlineStart="5" marginInlineEnd="0">
           <Placeholder label="Left" />
         </Bleed>
       </Box>
       <Box background="surface" border="base" padding="5">
-        <Bleed right="5" left="0">
+        <Bleed marginInlineEnd="5" marginInlineStart="0">
           <Placeholder label="Right" />
         </Bleed>
       </Box>

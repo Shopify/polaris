@@ -96,9 +96,6 @@ export type {ButtonGroupProps} from './components/ButtonGroup';
 export {CalloutCard} from './components/CalloutCard';
 export type {CalloutCardProps} from './components/CalloutCard';
 
-export {Caption} from './components/Caption';
-export type {CaptionProps} from './components/Caption';
-
 export {Card} from './components/Card';
 export type {
   CardProps,
@@ -146,8 +143,8 @@ export type {DatePickerProps, Range} from './components/DatePicker';
 export {DescriptionList} from './components/DescriptionList';
 export type {DescriptionListProps} from './components/DescriptionList';
 
-export {DisplayText} from './components/DisplayText';
-export type {DisplayTextProps} from './components/DisplayText';
+export {Divider} from './components/Divider';
+export type {DividerProps} from './components/Divider';
 
 export {DropZone} from './components/DropZone';
 export type {DropZoneProps} from './components/DropZone';
@@ -195,9 +192,6 @@ export type {FullscreenBarProps} from './components/FullscreenBar';
 
 export {Grid} from './components/Grid';
 export type {GridProps, CellProps as GridCellProps} from './components/Grid';
-
-export {Heading} from './components/Heading';
-export type {HeadingProps} from './components/Heading';
 
 export {Icon} from './components/Icon';
 export type {IconProps} from './components/Icon';
@@ -313,6 +307,9 @@ export {ScrollLock} from './components/ScrollLock';
 export {Select} from './components/Select';
 export type {SelectProps, SelectOption, SelectGroup} from './components/Select';
 
+export {SelectAllActions} from './components/SelectAllActions';
+export type {SelectAllActionsProps} from './components/SelectAllActions';
+
 export {SettingToggle} from './components/SettingToggle';
 export type {SettingToggleProps} from './components/SettingToggle';
 
@@ -345,9 +342,6 @@ export type {StackProps} from './components/Stack';
 export {Sticky} from './components/Sticky';
 export type {StickyProps} from './components/Sticky';
 
-export {Subheading} from './components/Subheading';
-export type {SubheadingProps} from './components/Subheading';
-
 export {Tabs} from './components/Tabs';
 export type {TabsProps} from './components/Tabs';
 
@@ -363,14 +357,8 @@ export type {TextContainerProps} from './components/TextContainer';
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 
-export {TextStyle} from './components/TextStyle';
-export type {TextStyleProps} from './components/TextStyle';
-
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
-
-export {Tiles} from './components/Tiles';
-export type {TilesProps} from './components/Tiles';
 
 export {Toast} from './components/Toast';
 export type {ToastProps} from './components/Toast';
@@ -394,9 +382,6 @@ export {UnstyledLink} from './components/UnstyledLink';
 export type {UnstyledLinkProps} from './components/UnstyledLink';
 
 export {VideoThumbnail} from './components/VideoThumbnail';
-
-export {VisuallyHidden} from './components/VisuallyHidden';
-export type {VisuallyHiddenProps} from './components/VisuallyHidden';
 
 export type {
   RGBColor,

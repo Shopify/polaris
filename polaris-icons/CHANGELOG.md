@@ -1,5 +1,59 @@
 # Changelog
 
+## 6.10.0
+
+### Minor Changes
+
+- [#8150](https://github.com/Shopify/polaris/pull/8150) [`a0c6e467b`](https://github.com/Shopify/polaris/commit/a0c6e467b71be484e708d4c06d4172e3890b5a15) Thanks [@leileu](https://github.com/leileu)! - Adding two metaobject icons: Metaobject and Metaobject Reference.
+
+### Patch Changes
+
+- [#8148](https://github.com/Shopify/polaris/pull/8148) [`0ca0b7899`](https://github.com/Shopify/polaris/commit/0ca0b7899d480ca7bf87e7dfca24bc5721b0775c) Thanks [@zecarlostorre](https://github.com/zecarlostorre)! - Updated clipboard icon
+
+## 6.9.0
+
+### Minor Changes
+
+- [#8139](https://github.com/Shopify/polaris/pull/8139) [`b998ca007`](https://github.com/Shopify/polaris/commit/b998ca00736c5cf1a7772a1ee0acc9f3f4a2748e) Thanks [@leileu](https://github.com/leileu)! - Adding content minor icon for left nav in admin
+
+* [#8094](https://github.com/Shopify/polaris/pull/8094) [`94988bc26`](https://github.com/Shopify/polaris/commit/94988bc260b0c4f371a8c1f22a0a3fd5e11fee45) Thanks [@Tamas-Kisss](https://github.com/Tamas-Kisss)! - Added major and minor icon for Papercheck
+
+- [#8121](https://github.com/Shopify/polaris/pull/8121) [`f74e8ffcc`](https://github.com/Shopify/polaris/commit/f74e8ffcc4d0864212e53e28e7bb02f3b224ba33) Thanks [@zecarlostorre](https://github.com/zecarlostorre)! - Added EnterMajor icon
+
+## 6.8.0
+
+### Minor Changes
+
+- [#8049](https://github.com/Shopify/polaris/pull/8049) [`dca31f2a0`](https://github.com/Shopify/polaris/commit/dca31f2a00737c77a96d26da1535cad83e5af0b0) Thanks [@leileu](https://github.com/leileu)! - Added 8 minor icons for metafields
+
+* [#8069](https://github.com/Shopify/polaris/pull/8069) [`f67e2997e`](https://github.com/Shopify/polaris/commit/f67e2997ef6f5ea026ec076fe480bb7924620f34) Thanks [@leileu](https://github.com/leileu)! - Added file minor icon
+
+- [#8063](https://github.com/Shopify/polaris/pull/8063) [`d5da4778c`](https://github.com/Shopify/polaris/commit/d5da4778c73179b5f1606f3a8b029b9c4a3b818c) Thanks [@eric-blue](https://github.com/eric-blue)! - Added minor icon for diamond_alert
+
+* [#8037](https://github.com/Shopify/polaris/pull/8037) [`1aeed2414`](https://github.com/Shopify/polaris/commit/1aeed2414b8be48e7c3009663fbd407bd40aa3c9) Thanks [@dGoligorsky](https://github.com/dGoligorsky)! - Added major and minor icon for Magic
+
+### Patch Changes
+
+- [#8085](https://github.com/Shopify/polaris/pull/8085) [`56b757036`](https://github.com/Shopify/polaris/commit/56b75703622a8abc987cac8b87dcd7b53c16e508) Thanks [@sarahill](https://github.com/sarahill)! - Added icon name for magic major and minor
+
+* [#8066](https://github.com/Shopify/polaris/pull/8066) [`68acc4593`](https://github.com/Shopify/polaris/commit/68acc45939e64239be2d9d1a854db096e3620556) Thanks [@kyledurand](https://github.com/kyledurand)! - Added better error documentation on icon validation
+
+## 6.7.0
+
+### Minor Changes
+
+- [#7816](https://github.com/Shopify/polaris/pull/7816) [`afe77e584`](https://github.com/Shopify/polaris/commit/afe77e5843f5b960574fe04433affc609d8687b1) Thanks [@allyshiasewdat](https://github.com/allyshiasewdat)! - Add returns major icon
+
+## 6.6.0
+
+### Minor Changes
+
+- [#7456](https://github.com/Shopify/polaris/pull/7456) [`3bc63f7f9`](https://github.com/Shopify/polaris/commit/3bc63f7f94f7d66155c0f071833a858756621b20) Thanks [@SereneChen-7](https://github.com/SereneChen-7)! - Add attribution model icons
+
+* [#7724](https://github.com/Shopify/polaris/pull/7724) [`d748c20ef`](https://github.com/Shopify/polaris/commit/d748c20ef54e7e07e519b4d94ac50ebefca04b99) Thanks [@jaychashop](https://github.com/jaychashop)! - Added passkey major and minor icons
+
+- [#7686](https://github.com/Shopify/polaris/pull/7686) [`6b989379e`](https://github.com/Shopify/polaris/commit/6b989379e82e5bcea973ff1b5c1b1e105ac90608) Thanks [@matyikriszta](https://github.com/matyikriszta)! - Update FormMajor icon
+
 ## 6.5.0
 
 ### Minor Changes

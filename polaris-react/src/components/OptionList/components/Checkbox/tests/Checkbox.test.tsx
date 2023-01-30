@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Key} from '../../../../../types';
 import {Checkbox, CheckboxProps} from '../Checkbox';
 
 describe('<Checkbox />', () => {
@@ -30,47 +29,6 @@ describe('<Checkbox />', () => {
     input!.trigger('onChange');
 
     expect(spy).toHaveBeenCalledTimes(1);
-  });
-
-  describe('Focus className', () => {
-    it('on keyUp adds a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox onChange={noop} />);
-
-      const event = {
-        keyCode: Key.Space,
-      };
-      checkbox.find('input')!.trigger('onKeyUp', event);
-      expect(checkbox).toContainReactComponent('input', {
-        className: 'Input keyFocused',
-      });
-    });
-
-    it('removes the keyFocused class on blur', () => {
-      const checkbox = mountWithApp(<Checkbox onChange={noop} />);
-
-      const event = {
-        keyCode: Key.Space,
-      };
-
-      checkbox.find('input')!.trigger('onKeyUp', event);
-      checkbox.find('input')!.trigger('onBlur');
-
-      expect(checkbox).toContainReactComponent('input', {
-        className: 'Input',
-      });
-    });
-
-    it('on change does not add a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox onChange={noop} />);
-      const checkboxInput = checkbox.find('input');
-      checkboxInput!.trigger('onChange', {
-        currentTarget: checkboxInput!.domNode as HTMLInputElement,
-      });
-
-      expect(checkbox).not.toContainReactComponent('input', {
-        className: 'Input keyFocused',
-      });
-    });
   });
 });
 

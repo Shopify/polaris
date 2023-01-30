@@ -1,14 +1,37 @@
 import React from 'react';
-import type {TextStyleProps} from '@shopify/polaris';
-import {Text, InlineCode} from '@shopify/polaris';
+import type {
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: TextProps */
+  TextStyleProps,
+} from '@shopify/polaris';
+import {
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: Text */
+  DisplayText,
+  /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: Text */
+  TextStyle,
+  Text,
+  InlineCode,
+} from '@shopify/polaris';
 
 const noop = (..._: any) => {};
 
 export function App() {
-  const textStyle = Text;
-  const textStyleProps: TextStyleProps = {
+  const textStyle =
+    /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+    /* Replace with: Text */
+    TextStyle;
+  const textStyleProps: /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+  /* Replace with: TextProps */
+  TextStyleProps = {
     variation: 'positive',
   };
+
+  const MyDisplayText =
+    /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+    /* Replace with: Text */
+    DisplayText;
 
   noop(textStyle);
 
@@ -44,28 +67,36 @@ export function App() {
       <Text variant="bodySm" as="p">
         Caption
       </Text>
-      <Text variant="bodyMd" fontWeight="semibold" as="span">
+      <Text variant="bodyMd" as="span" fontWeight="semibold">
         Strong
       </Text>
-      <Text variant="bodyMd" color="success" as="span">
+      <Text variant="bodyMd" as="span" color="success">
         Positive
       </Text>
-      <Text variant="bodyMd" color="critical" as="span">
+      <Text variant="bodyMd" as="span" color="critical">
         Negative
       </Text>
-      <Text variant="bodyMd" color="warning" as="span">
+      <Text variant="bodyMd" as="span" color="warning">
         Warning
       </Text>
       <Text variant="bodyMd" as="span">
         <InlineCode>Code</InlineCode>
       </Text>
-      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
-      <Text {...textStyleProps} variant="bodyMd" as="span">
-        Positive
+      <Text variant="bodyMd" as="span">
+        <Text variant="bodyMd" as="span">
+          <InlineCode>Code</InlineCode>
+        </Text>
       </Text>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
+      <TextStyle variation={Math.random() > 0.5 ? 'positive' : 'negative'}>
+        Code
+      </TextStyle>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
+      <TextStyle {...textStyleProps}>Positive</TextStyle>
       <Text variant="bodySm" as="span" visuallyHidden>
         Hidden text
       </Text>
+      <MyDisplayText />
     </>
   );
 }

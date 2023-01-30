@@ -222,6 +222,11 @@ export default [
         interop,
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
+        manualChunks: (id) => {
+          if (id.startsWith(iconBasePath)) {
+            return id.replace(iconBasePath, 'icons/');
+          }
+        },
       },
       {
         dir: 'dist',
@@ -229,17 +234,14 @@ export default [
         interop,
         entryFileNames: '[name].mjs',
         chunkFileNames: '[name].mjs',
+        manualChunks: (id) => {
+          if (id.startsWith(iconBasePath)) {
+            return id.replace(iconBasePath, 'icons/');
+          }
+        },
       },
     ],
-    manualChunks: (id) => {
-      // Generate distinct chunks for each icon
-      // This allows consuming apps to split up the icons into multiple subchunks
-      // containing a few icons each instead of always having to put every icon
-      // into a single shared chunk
-      if (id.startsWith(iconBasePath)) {
-        return id.replace(iconBasePath, 'icons/');
-      }
-    },
+
     external: ['react'],
     onwarn: (warning, warn) => {
       // Unresolved imports means Rollup couldn't find an import, possibly because

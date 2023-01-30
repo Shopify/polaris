@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';
 
@@ -45,6 +45,7 @@ export function ProgressBar({
   ariaLabelledBy,
 }: ProgressBarProps) {
   const i18n = useI18n();
+  const indicatorRef = useRef<HTMLDivElement>(null);
 
   const className = classNames(
     styles.ProgressBar,
@@ -78,12 +79,14 @@ export function ProgressBar({
         in
         appear
         timeout={parseInt(progressBarDuration, 10)}
+        nodeRef={indicatorRef}
         classNames={{
           appearActive: styles.IndicatorAppearActive,
           appearDone: styles.IndicatorAppearDone,
         }}
       >
         <div
+          ref={indicatorRef}
           className={styles.Indicator}
           style={
             {

@@ -89,7 +89,11 @@ export function Badge({
         </span>
       )}
       {children && (
-        <Text as="span" variant="bodySm">
+        <Text
+          as="span"
+          variant="bodySm"
+          fontWeight={status === 'new' ? 'medium' : undefined}
+        >
           {children}
         </Text>
       )}

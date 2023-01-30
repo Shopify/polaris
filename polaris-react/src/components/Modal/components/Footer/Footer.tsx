@@ -2,10 +2,8 @@ import React from 'react';
 
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import {ButtonGroup} from '../../../ButtonGroup';
-import {Stack} from '../../../Stack';
-
-import styles from './Footer.scss';
+import {Box} from '../../../Box';
+import {Inline} from '../../../Inline';
 
 export interface FooterProps {
   /** Primary action */
@@ -27,20 +25,25 @@ export function Footer({
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <ButtonGroup>
+      <Inline gap="2">
         {secondaryActionButtons}
         {primaryActionButton}
-      </ButtonGroup>
+      </Inline>
     ) : null;
 
   return (
-    <div className={styles.Footer}>
-      <div className={styles.FooterContent}>
-        <Stack alignment="center">
-          <Stack.Item fill>{children}</Stack.Item>
+    <Inline blockAlign="center">
+      <Box
+        borderBlockStart="divider"
+        minHeight="var(--p-space-16)"
+        padding="4"
+        width="100%"
+      >
+        <Inline blockAlign="center" align="space-between">
+          <Box>{children}</Box>
           {actions}
-        </Stack>
-      </div>
-    </div>
+        </Inline>
+      </Box>
+    </Inline>
   );
 }

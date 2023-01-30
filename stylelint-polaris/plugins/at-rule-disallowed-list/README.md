@@ -4,7 +4,7 @@ The purpose of this plugin is to disallow usages of the defined at-rules.
 
 ## How to use
 
-### Options:
+### Options
 
 ```ts
 interface PrimaryOptions {
@@ -16,12 +16,12 @@ interface PrimaryOptions {
 }
 ```
 
-### How to configure:
+### How to configure
 
 ```js
 const stylelintConfig = {
   rules: {
-    'stylelint-polaris/at-rule-disallowed-list': {
+    'polaris/at-rule-disallowed-list': {
       // Using a RegExp ensures we disallow `@mixin id` and `@mixin id()`
       // https://regex101.com/r/PJYwuP/1
       mixin: [/^disallowed-mixin($|\()/],
@@ -31,7 +31,7 @@ const stylelintConfig = {
 };
 ```
 
-### How to run:
+### How to run
 
 All files:
 

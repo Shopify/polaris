@@ -23,9 +23,9 @@ examples:
   - fileName: alpha-stack-with-align.tsx
     title: Alignment
     description: >-
-      Use to vertically align Stack.
+      Use to horizontally align Stack.
 ---
 
 ## Related components
 
-- To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/inline).
+- To display elements horizontally, [use the Inline component](https://polaris.shopify.com/components/inline)

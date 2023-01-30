@@ -93,9 +93,7 @@ function HomePage({}: Props) {
                 Autocompletion for Polaris tokens, right inside your favorite
                 code editor
               </p>
-              <Link href="https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode">
-                Install
-              </Link>
+              <Link href="/tools/polaris-for-vscode">Install</Link>
             </div>
             <div className={styles.Image}>
               {useMotion ? (

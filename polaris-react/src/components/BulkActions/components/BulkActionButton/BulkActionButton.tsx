@@ -1,7 +1,9 @@
 import React, {useRef} from 'react';
+import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import type {DisableableAction} from '../../../../types';
 import {Button} from '../../../Button';
+import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import styles from '../../BulkActions.scss';
@@ -10,6 +12,7 @@ export type BulkActionButtonProps = {
   disclosure?: boolean;
   indicator?: boolean;
   handleMeasurement?(width: number): void;
+  showContentInButton?: boolean;
 } & DisableableAction;
 
 export function BulkActionButton({
@@ -22,6 +25,7 @@ export function BulkActionButton({
   accessibilityLabel,
   disabled,
   indicator,
+  showContentInButton,
 }: BulkActionButtonProps) {
   const bulkActionButton = useRef<HTMLDivElement>(null);
 
@@ -32,17 +36,28 @@ export function BulkActionButton({
     }
   });
 
+  const buttonContent =
+    disclosure && !showContentInButton ? undefined : content;
+
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
       <Button
         external={external}
         url={url}
-        aria-label={accessibilityLabel}
+        accessibilityLabel={
+          disclosure && !showContentInButton ? content : accessibilityLabel
+        }
+        disclosure={disclosure && showContentInButton}
         onClick={onAction}
         disabled={disabled}
-        disclosure={disclosure}
+        size="slim"
+        icon={
+          disclosure && !showContentInButton ? (
+            <Icon source={HorizontalDotsMinor} color="base" />
+          ) : undefined
+        }
       >
-        {content}
+        {buttonContent}
       </Button>
       {indicator && <Indicator />}
     </div>

@@ -36,4 +36,4 @@ examples:
 
 ## Related components
 
-- For more specific use cases, [use the Card](https://polaris.shopify.com/components/card) component.
+- For more specific use cases, [use the Card component](https://polaris.shopify.com/components/card)

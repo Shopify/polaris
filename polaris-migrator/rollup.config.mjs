@@ -21,14 +21,14 @@ export default {
   output: [
     {
       format: /** @type {const} */ ('cjs'),
-      entryFileNames: '[name][assetExtname].js',
+      entryFileNames: '[name].js',
       dir: path.dirname(pkg.main),
       preserveModules: true,
       exports: 'auto',
     },
     {
       format: /** @type {const} */ ('esm'),
-      entryFileNames: '[name][assetExtname].mjs',
+      entryFileNames: '[name].mjs',
       dir: path.dirname(pkg.module),
       preserveModules: true,
     },
@@ -45,7 +45,7 @@ export default {
       include: ['src/**/*'],
       babelHelpers: 'bundled',
       envName: 'production',
-      targets: 'node 14.13',
+      targets: 'node 16.16.0',
     }),
     json({compact: true}),
   ],

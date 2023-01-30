@@ -11,6 +11,7 @@ import {VisuallyHidden} from '../VisuallyHidden';
 export function App() {
   return (
     <>
+      <DisplayText size="invalid">Display text</DisplayText>
       <DisplayText size="extraLarge">Display text</DisplayText>
       <DisplayText size="large">Display text</DisplayText>
       <DisplayText size="medium">Display text</DisplayText>
