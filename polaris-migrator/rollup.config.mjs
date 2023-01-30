@@ -45,7 +45,7 @@ export default {
       include: ['src/**/*'],
       babelHelpers: 'bundled',
       envName: 'production',
-      targets: 'node 16.16.0',
+      targets: 'node 16.13.0',
     }),
     json({compact: true}),
   ],
