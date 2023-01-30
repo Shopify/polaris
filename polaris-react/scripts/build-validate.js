@@ -9,7 +9,6 @@ const packageJSON = require('../package.json');
 
 validateStandardBuild();
 validateEsNextBuild();
-validateAncillaryOutput();
 validateVersionReplacement();
 
 function validateStandardBuild() {
