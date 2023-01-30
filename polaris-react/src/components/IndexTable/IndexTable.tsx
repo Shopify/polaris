@@ -942,6 +942,7 @@ function IndexTableBase({
               preferredPosition="above"
               width="wide"
               padding="4"
+              borderRadius="2"
             >
               <div>{headingContent}</div>
             </Tooltip>
