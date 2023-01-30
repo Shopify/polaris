@@ -43,7 +43,7 @@ interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
-  sortableMessage?: string;
+  sortableMessage?: React.ReactNode;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
