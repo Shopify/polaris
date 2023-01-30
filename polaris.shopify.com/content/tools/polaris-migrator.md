@@ -25,6 +25,30 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ## Migrations
 
+### v11
+
+### `scss-replace-z-index`
+
+Replace the legacy SCSS `z-index()` function with the supported CSS custom property token equivalent (ex: `var(--p-z-index-1)`).
+
+Any invocations of `z-index()` that correspond to a z-index design-token i.e. `--p-z-index-1` will be replaced with a css variable declaration.
+This includes invocations to the `$fixed-element-stacking-order` sass map i.e. `z-index(modal, $fixed-element-stacking-order)`.
+
+```diff
+- .decl-1 {
+-   z-index: z-index(content);
+- }
+- .decl-2 {
+-   z-index: z-index(modal, $fixed-element-stacking-order)
+- }
++ decl-1 {
++   z-index: var(--p-z-index-1);
++ }
++ .decl-2 {
++   z-index: var(--p-z-index-11)
++ }
+```
+
 ### v10
 
 #### `styles-insert-stylelint-disable`
