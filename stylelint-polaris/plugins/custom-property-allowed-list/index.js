@@ -93,6 +93,7 @@ const {rule} = stylelint.createPlugin(
           node: decl,
           result,
           ruleName,
+          word: decl.prop,
         });
       });
     };
