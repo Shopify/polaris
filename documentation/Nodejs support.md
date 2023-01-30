@@ -51,3 +51,5 @@ merge:
     - 'Validate with Node v16.13.0'
     - 'Validate with Node v18.12.0'
 ```
+
+The `rollup.config.mjs` for some monorepo packages. This should match the minimum supported version.

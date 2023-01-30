@@ -78,8 +78,6 @@
     "react-dom": "^16.14.0 || ^17.0.0 || ^18.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/node": "^7.14.9",
     "@changesets/get-release-plan": "^3.0.13",
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
@@ -92,12 +90,9 @@
     "@storybook/builder-webpack5": "^6.5.12",
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/react": "^6.5.12",
-    "@types/node": "^16.11.11",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "ajv-cli": "^5.0.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-loader": "^8.1.0",
     "change-case": "^3.1.0",
     "chromatic": "^6.5.4",
     "core-js": "^3.6.5",
