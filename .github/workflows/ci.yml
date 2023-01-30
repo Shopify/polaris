@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['14.17.0', '16.13.0']
+        node-version: ['16.16.0', '18.13.0']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3

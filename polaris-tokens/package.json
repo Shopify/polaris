@@ -5,6 +5,9 @@
   "main": "dist/cjs/build/index.js",
   "module": "dist/esm/build/index.mjs",
   "types": "dist/types/build/index.d.ts",
+  "engines": {
+    "node": "^16.16.0 || ^18.13.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/types/build/index.d.ts",
