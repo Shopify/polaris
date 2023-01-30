@@ -81,12 +81,6 @@ function validateEsNextBuild() {
   assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
 }
 
-function validateAncillaryOutput() {
-  assert.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
-  // Downleveled for consumers on older TypeScript versions
-  assert.ok(fs.existsSync('./build/ts/3.4/src/index.d.ts'));
-}
-
 function validateVersionReplacement() {
   const files = globby.sync('./build/**/*.{js,mjs,esnext,css}');
 
