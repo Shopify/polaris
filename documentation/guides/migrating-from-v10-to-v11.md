@@ -4,10 +4,15 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Table of Contents
 
+- [Node support](#node-support)
 - [Components](#components)
   - [Removed deprecated Collapsible argument](#removed-deprecated-collapsible-argument)
   - [Removed KonamiCode component](#removed-konamicode-component)
 - [Tokens](#tokens)
+
+## Node support
+
+NodeJS version 14 is no longer supported. NodeJS 18 is recommended and 16 is the minimum supported version.
 
 ## Components
 

@@ -13,6 +13,9 @@
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
   },
+  "engines": {
+    "node": "^16.16.0 || ^18.13.0"
+  },
   "files": [
     "index.js",
     "configs/",

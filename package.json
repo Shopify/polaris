@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^14.18.0 || ^16.13.0"
+    "node": "^16.16.0 || ^18.13.0"
   },
   "workspaces": {
     "packages": [
@@ -67,6 +67,7 @@
     "@shopify/typescript-configs": "^5.1.0",
     "@size-limit/preset-small-lib": "^5.0.3",
     "@types/jest": "^27.5.1",
+    "@types/node": "^18.11.18",
     "babel-loader": "^9.1.2",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",
