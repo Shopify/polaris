@@ -939,7 +939,7 @@ function IndexTableBase({
               hasUnderline
               preferredAlignment="right"
               // width="wide"
-              padding="4"
+              // padding="4"
             >
               <div>{headingContent}</div>
             </Tooltip>
