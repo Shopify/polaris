@@ -43,6 +43,7 @@ interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
+  sortableMessage?: string;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -913,15 +914,17 @@ function IndexTableBase({
 
       const tooltipContent = sortToggleLabels[index][tooltipDirection];
 
-      // return (
-      //   <Tooltip
-      //     content={tooltipContent}
-      //     activatorWrapper="div"
-      //     dismissOnMouseOut
-      //   >
-      //     {sortMarkup}
-      //   </Tooltip>
-      // );
+      if (!heading.sortableMessage) {
+        return (
+          <Tooltip
+            content={tooltipContent}
+            activatorWrapper="div"
+            dismissOnMouseOut
+          >
+            {sortMarkup}
+          </Tooltip>
+        );
+      }
 
       return (
         <div>
@@ -930,12 +933,9 @@ function IndexTableBase({
             className={styles.TableHeadingSortButton}
             tabIndex={selectMode ? -1 : 0}
           >
-            {/* <Stack wrap={false}> */}
             <Tooltip
-              content="I am a message describing the header"
-              // activatorWrapper="div"
+              content={heading.sortableMessage}
               dismissOnMouseOut
-              // zIndexOverride={-1}
               hasUnderline
               preferredAlignment="right"
             >
@@ -950,7 +950,6 @@ function IndexTableBase({
             >
               {iconMarkup}
             </Tooltip>
-            {/* </Stack> */}
           </UnstyledButton>
         </div>
       );
