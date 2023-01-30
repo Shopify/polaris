@@ -15,7 +15,11 @@ import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
-export type Padding = 'default' | Extract<SpacingSpaceScale, '4'>;
+export type Padding =
+  | 'default'
+  | Extract<SpacingSpaceScale, '4'>
+  | Extract<SpacingSpaceScale, '3'>
+  | Extract<SpacingSpaceScale, '2'>;
 export type BorderRadius = Extract<ShapeBorderRadiusScale, '1' | '2'>;
 
 export interface TooltipProps {
