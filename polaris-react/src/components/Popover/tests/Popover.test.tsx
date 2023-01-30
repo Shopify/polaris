@@ -5,7 +5,7 @@ import {Portal} from '../../Portal';
 import {PositionedOverlay} from '../../PositionedOverlay';
 import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
-import {Pane, PopoverOverlay} from '../components';
+import {Pane, PopoverCloseSource, PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
 import {TextContainer} from '../../TextContainer';
 
@@ -273,23 +273,56 @@ describe('<Popover />', () => {
     expect(onCloseSpy).not.toHaveBeenCalled();
   });
 
-  it('focuses the next available element when the popover is closed', () => {
-    const id = 'focus-target';
+  it('focuses the next available element when the popover is closed using the tab key', () => {
+    const activatorId = 'focus-target';
+    const nextFocusedId = 'focus-target2';
     function PopoverTest() {
       return (
         <>
           <div>
-            <Popover active activator={<div />} onClose={noop} />
+            <Popover
+              active
+              activator={<button id={activatorId} />}
+              onClose={noop}
+            />
           </div>
-          <button id={id} />
+          <button id={nextFocusedId} />
         </>
       );
     }
 
     const popover = mountWithApp(<PopoverTest />);
+    popover
+      .find(PopoverOverlay)
+      ?.trigger('onClose', PopoverCloseSource.FocusOut);
+    const focusTarget = popover.find('button', {id: nextFocusedId})!.domNode;
 
-    popover.find(PopoverOverlay)!.trigger('onClose', 1);
-    const focusTarget = popover.find('button', {id})!.domNode;
+    expect(document.activeElement).toBe(focusTarget);
+  });
+
+  it('focuses the initial element that activated the popover when the popover is closed using the esc key', () => {
+    const activatorId = 'focus-target';
+    const nextFocusedId = 'focus-target2';
+    function PopoverTest() {
+      return (
+        <>
+          <div>
+            <Popover
+              active
+              activator={<button id={activatorId} />}
+              onClose={noop}
+            />
+          </div>
+          <button id={nextFocusedId} />
+        </>
+      );
+    }
+
+    const popover = mountWithApp(<PopoverTest />);
+    popover
+      .find(PopoverOverlay)
+      ?.trigger('onClose', PopoverCloseSource.EscapeKeypress);
+    const focusTarget = popover.find('button', {id: activatorId})!.domNode;
 
     expect(document.activeElement).toBe(focusTarget);
   });
