@@ -45,9 +45,8 @@
     }
   },
   "scripts": {
-    "build": "run-s build:types build:types-downlevel build:js build:validate",
+    "build": "run-s build:types build:js build:validate",
     "build:types": "tsc -b",
-    "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
     "build:js": "rollup -c",
     "build:validate": "node scripts/build-validate.js",
     "dev": "yarn run storybook",
