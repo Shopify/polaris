@@ -49,6 +49,6 @@ const plugin = (): Plugin => {
 
 const zeroValuesMap = {
   '--p-shadow-transparent': '0 0 0 0 transparent',
-  '--p-duration-0': '0ms',
+  '--p-duration-0': '0',
   '--p-space-0': '0',
 };
