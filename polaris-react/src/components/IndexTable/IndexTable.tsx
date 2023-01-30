@@ -938,6 +938,8 @@ function IndexTableBase({
               dismissOnMouseOut
               hasUnderline
               preferredAlignment="right"
+              width="wide"
+              padding="4"
             >
               <div>{headingContent}</div>
             </Tooltip>
