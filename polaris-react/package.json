@@ -90,7 +90,6 @@
     "@storybook/builder-webpack5": "^6.5.12",
     "@storybook/manager-webpack5": "^6.5.12",
     "@storybook/react": "^6.5.12",
-    "@types/node": "^16.11.11",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "ajv-cli": "^5.0.0",

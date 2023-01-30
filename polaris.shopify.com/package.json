@@ -50,7 +50,6 @@
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.throttle": "^4.1.7",
     "@types/marked": "^4.0.3",
-    "@types/node": "17.0.21",
     "@types/prismjs": "^1.26.0",
     "@types/react": "18.0.15",
     "babel-plugin-preval": "^5.1.0",
