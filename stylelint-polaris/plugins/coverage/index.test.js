@@ -41,23 +41,25 @@ testRule({
       code: '.class {color: #bad;}',
       description: 'Overrides appended category rule warning text (string)',
       message:
-        'Unexpected hex color "#bad" - Appended Stylelint rule config message',
+        'Unexpected hex color "#bad" - Appended Stylelint rule config message - https://polaris.shopify.com/tools/stylelint-polaris/rules/colors-color-no-hex',
     },
     {
       code: '.class {color: red;}',
       description: 'Appends message to category rule warning text',
       message:
-        'Unexpected named color "red" - Appended category rule config message',
+        'Unexpected named color "red" - Appended category rule config message - https://polaris.shopify.com/tools/stylelint-polaris/rules/colors-color-named',
     },
     {
       code: '@keyframes foo {}',
       description: 'Uses disallowed at-rule (built-in rule)',
-      message: 'Unexpected at-rule "keyframes"',
+      message:
+        'Unexpected at-rule "keyframes" - https://polaris.shopify.com/tools/stylelint-polaris/rules/motion-at-rule-disallowed-list',
     },
     {
       code: '.class {color: var(--p-legacy-var);}',
       description: 'Uses disallowed legacy variable (custom rule)',
-      message: 'Unexpected disallowed value "--p-legacy-var"',
+      message:
+        'Unexpected disallowed value "--p-legacy-var" - https://polaris.shopify.com/tools/stylelint-polaris/rules/legacy-polaris-global-disallowed-list',
     },
   ],
 });

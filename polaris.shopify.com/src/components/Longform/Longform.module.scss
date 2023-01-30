@@ -212,8 +212,9 @@
   :global {
     .table-wrapper {
       overflow: auto;
-      max-width: calc(100vw - 1.25rem);
+      max-width: calc(100vw - 2.5rem);
       width: 100%;
+      overflow-wrap: normal;
     }
   }
 }

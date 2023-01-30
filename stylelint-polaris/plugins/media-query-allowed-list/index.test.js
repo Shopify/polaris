@@ -1,12 +1,20 @@
 const {messages, ruleName} = require('.');
 
+function matchNameRegExp(name) {
+  // Using `^` to match the start of a string since postcss normalizes name properties
+  // https://regex101.com/r/3tzvIW/1
+  return new RegExp(String.raw`^([\w-]+\.)?(?<![\w-])${name}(?![\w-])`);
+}
+
 // Allowed media types and media conditions
 // https://www.w3.org/TR/mediaqueries-5/#media
 const config = {
   allowedMediaTypes: ['print'],
   allowedMediaFeatureNames: ['forced-colors', '-ms-high-contrast'],
   allowedScssInterpolations: [
-    /^\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)$/,
+    matchNameRegExp(
+      String.raw`\$p-breakpoints-(xs|sm|md|lg|xl)-(up|down|only)`,
+    ),
   ],
 };
 
@@ -19,6 +27,10 @@ testRule({
     {
       code: '@media #{$p-breakpoints-sm-up} {}',
       description: 'Uses allowed Polaris breakpoints alias',
+    },
+    {
+      code: '@media #{common.$p-breakpoints-sm-up} {}',
+      description: 'Uses allowed Polaris breakpoints alias with namespace',
     },
     {
       code: '@media print {}',

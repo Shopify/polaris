@@ -88,6 +88,10 @@ function ruleListMarkdown(): string {
     }
   });
 
+  // Temporary removal of layout rules until it is re-enabled
+  // https://github.com/Shopify/polaris/issues/8188
+  delete content['Layout'];
+
   const ruleList: string[] = Object.keys(content).reduce(
     (prev: string[], key: string) => [...prev, ...content[key]],
     [],

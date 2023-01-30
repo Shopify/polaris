@@ -1,5 +1,25 @@
 # Changelog
 
+## 6.10.0
+
+### Minor Changes
+
+- [#8150](https://github.com/Shopify/polaris/pull/8150) [`a0c6e467b`](https://github.com/Shopify/polaris/commit/a0c6e467b71be484e708d4c06d4172e3890b5a15) Thanks [@leileu](https://github.com/leileu)! - Adding two metaobject icons: Metaobject and Metaobject Reference.
+
+### Patch Changes
+
+- [#8148](https://github.com/Shopify/polaris/pull/8148) [`0ca0b7899`](https://github.com/Shopify/polaris/commit/0ca0b7899d480ca7bf87e7dfca24bc5721b0775c) Thanks [@zecarlostorre](https://github.com/zecarlostorre)! - Updated clipboard icon
+
+## 6.9.0
+
+### Minor Changes
+
+- [#8139](https://github.com/Shopify/polaris/pull/8139) [`b998ca007`](https://github.com/Shopify/polaris/commit/b998ca00736c5cf1a7772a1ee0acc9f3f4a2748e) Thanks [@leileu](https://github.com/leileu)! - Adding content minor icon for left nav in admin
+
+* [#8094](https://github.com/Shopify/polaris/pull/8094) [`94988bc26`](https://github.com/Shopify/polaris/commit/94988bc260b0c4f371a8c1f22a0a3fd5e11fee45) Thanks [@Tamas-Kisss](https://github.com/Tamas-Kisss)! - Added major and minor icon for Papercheck
+
+- [#8121](https://github.com/Shopify/polaris/pull/8121) [`f74e8ffcc`](https://github.com/Shopify/polaris/commit/f74e8ffcc4d0864212e53e28e7bb02f3b224ba33) Thanks [@zecarlostorre](https://github.com/zecarlostorre)! - Added EnterMajor icon
+
 ## 6.8.0
 
 ### Minor Changes
