@@ -941,7 +941,7 @@ function IndexTableBase({
               // preferredAlignment="center"
               preferredPosition="above"
               // width="wide"
-              padding="2"
+              padding="4"
             >
               <div>{headingContent}</div>
             </Tooltip>
