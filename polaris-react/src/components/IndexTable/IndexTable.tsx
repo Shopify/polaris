@@ -940,7 +940,7 @@ function IndexTableBase({
               hasUnderline
               // preferredAlignment="center"
               preferredPosition="above"
-              // width="wide"
+              width="wide"
               padding="4"
             >
               <div>{headingContent}</div>
