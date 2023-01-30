@@ -24,6 +24,6 @@ We've removed the following deprecated prop from the Collapsible component:
 
 ### Removed KonamiCode component
 
-??
+We are removing low usage components from Polaris. We love fun but we also want to ensure we are shipping exactly what our users need. If you want to use this in your project feel free to copy the [component sourcecode](https://github.com/Shopify/polaris/blob/%40shopify/polaris%4010.24.0/polaris-react/src/components/KonamiCode/KonamiCode.tsx).
 
 ## Tokens
