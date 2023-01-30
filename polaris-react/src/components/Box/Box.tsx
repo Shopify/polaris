@@ -39,7 +39,9 @@ export type ColorTokenScale =
   | 'text-subdued'
   | 'text-subdued-on-dark'
   | 'text-success'
-  | 'text-warning';
+  | 'text-warning'
+  | 'text-magic'
+  | 'text-on-magic';
 
 export type BorderTokenAlias =
   | 'base'

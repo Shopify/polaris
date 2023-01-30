@@ -585,7 +585,7 @@ export const colors = {
     description:
       'For use as subdued background color of Shopify Magic components.',
   },
-  'surface-magic-subdued-hoverd': {
+  'surface-magic-subdued-hovered': {
     value: 'rgba(238, 223, 255, 1)',
     description: 'Hover state for subdued Shopify Magic surfaces.',
   },
@@ -747,6 +747,11 @@ export const colorsActionTokenAlias = [
   'action-secondary-hovered-dark',
   'action-secondary-pressed',
   'action-secondary-pressed-dark',
+  'action-magic',
+  'action-magic-hovered',
+  'action-magic-pressed',
+  'action-magic-depressed',
+  'action-magic-disabled',
 ] as const;
 export type ColorsActionTokenAlias = typeof colorsActionTokenAlias[number];
 
@@ -792,6 +797,11 @@ export const colorsSurfaceTokenAlias = [
   'surface-warning-subdued',
   'surface-warning-subdued-hovered',
   'surface-warning-subdued-pressed',
+  'surface-magic',
+  'surface-magic-subdued',
+  'surface-magic-subdued-hovered',
+  'surface-magic-subdued-pressed',
+  'surface-magic-subdued-depressed',
 ] as const;
 export type ColorsSurfaceTokenAlias = typeof colorsSurfaceTokenAlias[number];
 
@@ -820,5 +830,8 @@ export const colorsBorderTokenAlias = [
   'border-highlight-subdued',
   'border-success',
   'border-success-subdued',
+  'border-magic',
+  'border-magic-subdued',
+  'border-magic-disabled',
 ] as const;
 export type ColorsBorderTokenAlias = typeof colorsBorderTokenAlias[number];
