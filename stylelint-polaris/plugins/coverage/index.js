@@ -111,8 +111,8 @@ module.exports = stylelint.createPlugin(
             result.stylelint.ruleMetadata[ruleName] = meta;
 
             const message = appendedMessage
-              ? `${warningText} - ${appendedMessage}`
-              : warningText;
+              ? `${warningText} - ${appendedMessage} - ${meta.url}`
+              : `${warningText} - ${meta.url}`;
 
             stylelint.utils.report({
               result,

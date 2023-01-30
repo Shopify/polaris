@@ -1,5 +1,33 @@
 # polaris.shopify.com
 
+## 0.30.1
+
+### Patch Changes
+
+- [#8123](https://github.com/Shopify/polaris/pull/8123) [`3bb6c03d3`](https://github.com/Shopify/polaris/commit/3bb6c03d3ae1c03cbf4b592cba89949b3ccb3bfd) Thanks [@marlowpayne](https://github.com/marlowpayne)! - Improve readability of markdown tables by wrapping on words
+
+* [#8045](https://github.com/Shopify/polaris/pull/8045) [`b3ee45c47`](https://github.com/Shopify/polaris/commit/b3ee45c47629e1b139ebb8c6dabad21d6935735b) Thanks [@sarahill](https://github.com/sarahill)! - Added component lifecycle page to polaris.shopify.com
+
+- [#7821](https://github.com/Shopify/polaris/pull/7821) [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt `ActionList` to use layout primitives
+
+- Updated dependencies [[`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`18991daf1`](https://github.com/Shopify/polaris/commit/18991daf16362fa4e0bef6a11c3e9040baa7dd95), [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`a0941743a`](https://github.com/Shopify/polaris/commit/a0941743a38c439e1f8d2ffd61584a6c1d18e5e3), [`a0c6e467b`](https://github.com/Shopify/polaris/commit/a0c6e467b71be484e708d4c06d4172e3890b5a15), [`a3605c855`](https://github.com/Shopify/polaris/commit/a3605c855ae4b83653450dbbbb362fdbf6136bb7), [`0ca0b7899`](https://github.com/Shopify/polaris/commit/0ca0b7899d480ca7bf87e7dfca24bc5721b0775c)]:
+  - @shopify/polaris@10.24.0
+  - @shopify/polaris-icons@6.10.0
+
+## 0.30.0
+
+### Minor Changes
+
+- [#8110](https://github.com/Shopify/polaris/pull/8110) [`5db7778e4`](https://github.com/Shopify/polaris/commit/5db7778e4cb8e662defd1c1da69e216e36ae42a2) Thanks [@yurm04](https://github.com/yurm04)! - Added New badge pattern guidance for the primary nav
+
+### Patch Changes
+
+- [#8107](https://github.com/Shopify/polaris/pull/8107) [`fc30bbd32`](https://github.com/Shopify/polaris/commit/fc30bbd32137da10e2b5892179250de48bbdbcbf) Thanks [@Rmnlly](https://github.com/Rmnlly)! - Adding examples for truncateText and multiple secondary actions and updating props on the documentation site
+
+- Updated dependencies [[`b998ca007`](https://github.com/Shopify/polaris/commit/b998ca00736c5cf1a7772a1ee0acc9f3f4a2748e), [`60dd5a0c5`](https://github.com/Shopify/polaris/commit/60dd5a0c5a2a6d59c3a2b4a46bc1cdf2ca02e6f9), [`bdcc291a4`](https://github.com/Shopify/polaris/commit/bdcc291a426900cc5fe4a516f2543b50f65baf55), [`6096c3492`](https://github.com/Shopify/polaris/commit/6096c34929aa47f7616294d5bf7e4326804cd866), [`94988bc26`](https://github.com/Shopify/polaris/commit/94988bc260b0c4f371a8c1f22a0a3fd5e11fee45), [`e6aa9c801`](https://github.com/Shopify/polaris/commit/e6aa9c80129fb6d365ebdc395e93637dd988c68d), [`8d80691b5`](https://github.com/Shopify/polaris/commit/8d80691b534918e82ea43f3627f25dce9376a3dc), [`f74e8ffcc`](https://github.com/Shopify/polaris/commit/f74e8ffcc4d0864212e53e28e7bb02f3b224ba33), [`23ee70d13`](https://github.com/Shopify/polaris/commit/23ee70d13e2afcf8a8b14fffd4bf7c25e3380b82)]:
+  - @shopify/polaris-icons@6.9.0
+  - @shopify/polaris@10.23.0
+
 ## 0.29.0
 
 ### Minor Changes
