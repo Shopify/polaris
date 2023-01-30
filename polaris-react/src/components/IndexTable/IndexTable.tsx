@@ -938,7 +938,7 @@ function IndexTableBase({
               dismissOnMouseOut
               hasUnderline
               preferredAlignment="right"
-              width="wide"
+              // width="wide"
               padding="4"
             >
               <div>{headingContent}</div>
