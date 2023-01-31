@@ -6,7 +6,7 @@ keywords:
   - layout
 status:
   value: Alpha
-  message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution. To learn more please read our [Component lifecycle resource](/getting-started/components-lifecycle).
+  message: This component and its documentation is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution. To learn more please read about our [component lifecycle](/getting-started/components-lifecycle).
 examples:
   - fileName: alpha-stack-default.tsx
     title: Default
