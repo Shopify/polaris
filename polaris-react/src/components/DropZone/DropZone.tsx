@@ -470,7 +470,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
                   color: 'critical',
                 })}
               >
-                <div className={styles.overlayContainer}>{text}</div>
+                {text}
               </Text>
             )}
           </AlphaStack>
