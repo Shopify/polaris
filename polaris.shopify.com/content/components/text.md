@@ -21,7 +21,7 @@ keywords:
   - list
 status:
   value: Beta
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution. To learn more please read about our [components lifecycle](/getting-started/components-lifecycle).
+  message: This component is ready for wider adoption, usage is encouraged for most cases. Breaking changes are possible in minor version updates. To learn more please read about our [component lifecycle](/getting-started/components-lifecycle)
 examples:
   - fileName: text-heading.tsx
     title: Heading
