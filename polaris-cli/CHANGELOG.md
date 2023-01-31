@@ -1,4 +1,4 @@
-# @shopify/plugin-polaris
+# @shopify/polaris-cli
 
 ## 0.0.31
 

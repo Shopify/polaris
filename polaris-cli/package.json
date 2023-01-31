@@ -1,10 +1,10 @@
 {
-  "name": "@shopify/plugin-polaris",
+  "name": "@shopify/polaris-cli",
   "version": "0.0.31",
   "description": "Commands for building Shopify Apps with Polaris",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
-  "homepage": "https://polaris.shopify.com",
+  "homepage": "https://polaris.shopify.com/tools/cli",
   "repository": "https://github.com/Shopify/polaris",
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
