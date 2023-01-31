@@ -158,23 +158,19 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
         let size = 'large';
         let height = 'var(--pc-dropzone-min-height-large)';
-        let overlayHeight = 'var(--pc-dropzone-overlay-min-height-large)';
 
         const width = node.current.getBoundingClientRect().width;
 
         if (width < 100) {
           size = 'small';
           height = 'var(--pc-dropzone-min-height-small)';
-          overlayHeight = 'var(--pc-dropzone-overlay-min-height-small)';
         } else if (width < 160) {
           size = 'medium';
           height = 'var(--pc-dropzone-min-height-medium)';
-          overlayHeight = 'var(--pc-dropzone-overlay-min-height-medium)';
         }
 
         setSize(size);
         setHeight(height);
-        setOverlayHeight(overlayHeight);
         measuring && setMeasuring(false);
       },
       50,
@@ -192,9 +188,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   } = useToggle(false);
   const [size, setSize] = useState('large');
   const [height, setHeight] = useState('var(--pc-dropzone-min-height-large)');
-  const [overlayHeight, setOverlayHeight] = useState(
-    'var(--pc-dropzone-overlay-min-height-large)',
-  );
 
   const [measuring, setMeasuring] = useState(true);
 
@@ -404,19 +397,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         action={labelAction}
         labelHidden={labelHiddenValue}
       >
-        <Box
-          ref={node}
-          aria-disabled={disabled}
-          background="surface"
-          borderRadius="1"
-          position="relative"
-          {...(!variableHeight && {
-            minHeight: height,
-          })}
-          {...(outline && {
-            padding: '0',
-          })}
-        >
+        <Box ref={node} aria-disabled={disabled} position="relative">
           <div
             className={classes}
             onClick={handleClick}
@@ -449,32 +430,21 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   ) {
     return (
       <div className={styles.Overlay}>
-        <Box
-          background={
-            internalError || error
-              ? 'surface-critical-subdued'
-              : 'surface-selected'
-          }
-          minHeight={overlayHeight}
-          padding={size === 'small' ? '3' : '4'}
-          borderRadius="large"
-        >
-          <AlphaStack gap="2" align="center">
-            {size === 'small' && <Icon source={icon} color={color} />}
-            {(size === 'medium' || size === 'large') && (
-              <Text
-                variant="bodySm"
-                as="p"
-                fontWeight="bold"
-                {...((internalError || error) && {
-                  color: 'critical',
-                })}
-              >
-                {text}
-              </Text>
-            )}
-          </AlphaStack>
-        </Box>
+        <AlphaStack gap="2" align="center">
+          {size === 'small' && <Icon source={icon} color={color} />}
+          {(size === 'medium' || size === 'large') && (
+            <Text
+              variant="bodySm"
+              as="p"
+              fontWeight="bold"
+              {...((internalError || error) && {
+                color: 'critical',
+              })}
+            >
+              {text}
+            </Text>
+          )}
+        </AlphaStack>
       </div>
     );
   }
