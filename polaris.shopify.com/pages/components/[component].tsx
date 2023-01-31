@@ -14,7 +14,6 @@ import {Status, FilteredTypes, AllTypes} from '../../src/types';
 import StatusBanner from '../../src/components/StatusBanner';
 import PropsTable from '../../src/components/PropsTable';
 import {getRelevantTypes} from '../../scripts/get-props/src/get-props';
-import {url} from 'inspector';
 
 interface MarkdownData {
   frontMatter: any;
