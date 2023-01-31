@@ -166,7 +166,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         }
 
         setSize(size);
-        setHeight(height);
         measuring && setMeasuring(false);
       },
       50,
@@ -183,8 +182,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     setFalse: handleBlur,
   } = useToggle(false);
   const [size, setSize] = useState('large');
-  const [height, setHeight] = useState('var(--pc-dropzone-min-height-large)');
-
   const [measuring, setMeasuring] = useState(true);
 
   const i18n = useI18n();
