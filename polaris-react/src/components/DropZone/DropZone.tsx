@@ -157,15 +157,24 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         }
 
         let size = 'large';
+        let height = 'var(--pc-dropzone-min-height-large)';
+        let overlayHeight = 'var(--pc-dropzone-overlay-min-height-large)';
+
         const width = node.current.getBoundingClientRect().width;
 
         if (width < 100) {
           size = 'small';
+          height = 'var(--pc-dropzone-min-height-small)';
+          overlayHeight = 'var(--pc-dropzone-overlay-min-height-small)';
         } else if (width < 160) {
           size = 'medium';
+          height = 'var(--pc-dropzone-min-height-medium)';
+          overlayHeight = 'var(--pc-dropzone-overlay-min-height-medium)';
         }
 
         setSize(size);
+        setHeight(height);
+        setOverlayHeight(overlayHeight);
         measuring && setMeasuring(false);
       },
       50,
@@ -182,6 +191,11 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     setFalse: handleBlur,
   } = useToggle(false);
   const [size, setSize] = useState('large');
+  const [height, setHeight] = useState('var(--pc-dropzone-min-height-large)');
+  const [overlayHeight, setOverlayHeight] = useState(
+    'var(--pc-dropzone-overlay-min-height-large)',
+  );
+
   const [measuring, setMeasuring] = useState(true);
 
   const i18n = useI18n();
@@ -355,7 +369,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
     (internalError || error) && styles.hasError,
-    !variableHeight && styles[variationName('size', size)],
     measuring && styles.measuring,
   );
 
@@ -394,13 +407,21 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         <Box
           ref={node}
           aria-disabled={disabled}
-          onClick={handleClick}
-          onDragStart={stopEvent}
           background="surface"
           borderRadius="1"
           position="relative"
+          {...(!variableHeight && {
+            minHeight: height,
+          })}
+          {...(outline && {
+            padding: '0',
+          })}
         >
-          <div className={classes}>
+          <div
+            className={classes}
+            onClick={handleClick}
+            onDragStart={stopEvent}
+          >
             {dragOverlay}
             {dragErrorOverlay}
             <Text variant="bodySm" as="span" visuallyHidden>
@@ -410,7 +431,11 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
                 onFileDialogClose={onFileDialogClose}
               />
             </Text>
-            <div className={styles.Container}>{children}</div>
+            <div className={styles.Container}>
+              <Box minHeight={height} width="100%">
+                {children}
+              </Box>
+            </div>
           </div>
         </Box>
       </Labelled>
@@ -424,14 +449,32 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   ) {
     return (
       <div className={styles.Overlay}>
-        <AlphaStack gap="2">
-          {size === 'small' && <Icon source={icon} color={color} />}
-          {(size === 'medium' || size === 'large') && (
-            <Text variant="bodySm" as="p" fontWeight="bold">
-              {text}
-            </Text>
-          )}
-        </AlphaStack>
+        <Box
+          background={
+            internalError || error
+              ? 'surface-critical-subdued'
+              : 'surface-selected'
+          }
+          minHeight={overlayHeight}
+          padding={size === 'small' ? '3' : '4'}
+          borderRadius="large"
+        >
+          <AlphaStack gap="2" align="center">
+            {size === 'small' && <Icon source={icon} color={color} />}
+            {(size === 'medium' || size === 'large') && (
+              <Text
+                variant="bodySm"
+                as="p"
+                fontWeight="bold"
+                {...((internalError || error) && {
+                  color: 'critical',
+                })}
+              >
+                <div className={styles.overlayContainer}>{text}</div>
+              </Text>
+            )}
+          </AlphaStack>
+        </Box>
       </div>
     );
   }

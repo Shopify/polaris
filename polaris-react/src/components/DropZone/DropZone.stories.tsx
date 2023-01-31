@@ -9,6 +9,7 @@ import {
   Page,
   AlphaStack,
   Thumbnail,
+  Inline,
 } from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 
@@ -32,7 +33,7 @@ export function Default() {
     <div style={{padding: '0'}}>
       <AlphaStack>
         {files.map((file, index) => (
-          <AlphaStack align="center" key={index}>
+          <Inline align="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -49,7 +50,7 @@ export function Default() {
                 {file.size} bytes
               </Text>
             </div>
-          </AlphaStack>
+          </Inline>
         ))}
       </AlphaStack>
     </div>
@@ -88,7 +89,7 @@ export function WithImageFileUpload() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack>
       {files.map((file, index) => (
-        <AlphaStack align="center" key={index}>
+        <Inline align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -101,7 +102,7 @@ export function WithImageFileUpload() {
               {file.size} bytes
             </Text>
           </div>
-        </AlphaStack>
+        </Inline>
       ))}
     </AlphaStack>
   );
@@ -145,7 +146,7 @@ export function WithSingleFileUpload() {
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (
-    <AlphaStack>
+    <Inline>
       <Thumbnail
         size="small"
         alt={file.name}
@@ -162,7 +163,7 @@ export function WithSingleFileUpload() {
           {file.size} bytes
         </Text>
       </div>
-    </AlphaStack>
+    </Inline>
   );
 
   return (
@@ -187,7 +188,7 @@ export function WithDropOnPage() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack>
       {files.map((file, index) => (
-        <AlphaStack align="center" key={index}>
+        <Inline align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -204,7 +205,7 @@ export function WithDropOnPage() {
               {file.size} bytes
             </Text>
           </div>
-        </AlphaStack>
+        </Inline>
       ))}
     </AlphaStack>
   );
@@ -249,7 +250,7 @@ export function AcceptsOnlySVGFiles() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack>
       {files.map((file, index) => (
-        <AlphaStack align="center" key={index}>
+        <Inline align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -262,7 +263,7 @@ export function AcceptsOnlySVGFiles() {
               {file.size} bytes
             </Text>
           </div>
-        </AlphaStack>
+        </Inline>
       ))}
     </AlphaStack>
   );
@@ -312,7 +313,7 @@ export function Nested() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack>
       {files.map((file, index) => (
-        <AlphaStack align="center" key={index}>
+        <Inline align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -329,7 +330,7 @@ export function Nested() {
               {file.size} bytes
             </Text>
           </div>
-        </AlphaStack>
+        </Inline>
       ))}
     </AlphaStack>
   );
@@ -384,7 +385,7 @@ export function WithCustomFileUploadText() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack>
       {files.map((file, index) => (
-        <AlphaStack align="center" key={index}>
+        <Inline align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -401,7 +402,7 @@ export function WithCustomFileUploadText() {
               {file.size} bytes
             </Text>
           </div>
-        </AlphaStack>
+        </Inline>
       ))}
     </AlphaStack>
   );
@@ -433,7 +434,7 @@ export function WithCustomFileDialogTrigger() {
   const uploadedFiles = files.length > 0 && (
     <AlphaStack>
       {files.map((file, index) => (
-        <AlphaStack align="center" key={index}>
+        <Inline align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -450,7 +451,7 @@ export function WithCustomFileDialogTrigger() {
               {file.size} bytes
             </Text>
           </div>
-        </AlphaStack>
+        </Inline>
       ))}
     </AlphaStack>
   );
