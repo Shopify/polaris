@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.30.2",
+  "version": "0.31.0",
   "private": true,
   "scripts": {
     "build": "yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
@@ -21,7 +21,7 @@
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
-    "@shopify/polaris": "^10.24.1",
+    "@shopify/polaris": "^10.24.2",
     "@shopify/polaris-icons": "^6.11.0",
     "@shopify/polaris-tokens": "^6.3.0",
     "@types/react-syntax-highlighter": "^15.5.6",
