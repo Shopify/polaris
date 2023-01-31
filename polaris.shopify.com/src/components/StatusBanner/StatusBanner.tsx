@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {Status} from '../../types';
 import {uppercaseFirst} from '../../utils/various';
 import styles from './StatusBanner.module.scss';
