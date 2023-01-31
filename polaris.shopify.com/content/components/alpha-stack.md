@@ -6,7 +6,7 @@ keywords:
   - layout
 status:
   value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycle](/getting-started/components-lifecycle).
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
 examples:
   - fileName: alpha-stack-default.tsx
     title: Default

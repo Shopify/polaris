@@ -15,7 +15,7 @@ keywords:
   - css grid
 status:
   value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycle](/getting-started/components-lifecycle).
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [Component lifecycle](/getting-started/components-lifecycle).
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
