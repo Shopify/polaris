@@ -33,6 +33,7 @@
     "generate": "plop"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.20.2",
     "@shopify/polaris-tokens": "^6.3.0",
     "@shopify/stylelint-polaris": "^5.1.2",
     "chalk": "^4.1.0",
