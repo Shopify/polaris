@@ -28,12 +28,22 @@
 .measured.hasMode:not(.instant) {
   animation: var(--p-keyframes-appear-below) var(--p-duration-200)
     var(--p-ease-in) var(--p-duration-100) 1 both;
+
+  // stylelint-disable-next-line -- Not a breakpoint
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
 }
 
 // stylelint-disable-next-line selector-max-specificity, selector-max-class -- Required for the differing animation
 .measured.hasMode.positionedAbove:not(.instant) {
   animation: var(--p-keyframes-appear-above) var(--p-duration-200)
     var(--p-ease-in) var(--p-duration-100) 1 both;
+
+  // stylelint-disable-next-line -- Not a breakpoint
+  @media (prefers-reduced-motion) {
+    animation: none;
+  }
 }
 
 .hasMode {
