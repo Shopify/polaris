@@ -4,6 +4,9 @@ export type EphemeralPresenceKey = 'tooltip';
 
 export interface EphemeralPresenceManagerContextType {
   presenceList: {
+    [key in EphemeralPresenceKey]: boolean;
+  };
+  presenceCounter: {
     [key in EphemeralPresenceKey]: number;
   };
   addPresence: (key: EphemeralPresenceKey) => void;

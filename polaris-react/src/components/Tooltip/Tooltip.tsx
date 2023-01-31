@@ -143,10 +143,10 @@ export function Tooltip({
   }, []);
 
   const handleOpen = useCallback(() => {
-    setShouldAnimate(presenceList.tooltip === 0);
+    setShouldAnimate(!presenceList.tooltip);
     onOpen?.();
     addPresence('tooltip');
-  }, [addPresence, presenceList.tooltip]);
+  }, [addPresence, presenceList.tooltip, onOpen]);
 
   const handleClose = useCallback(() => {
     onClose?.();
@@ -154,7 +154,7 @@ export function Tooltip({
     hoverOutTimeout.current = setTimeout(() => {
       removePresence('tooltip');
     }, HOVER_OUT_TIMEOUT);
-  }, [removePresence]);
+  }, [removePresence, onClose]);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
@@ -163,10 +163,8 @@ export function Tooltip({
       handleBlur();
       persistOnClick && togglePersisting();
     },
-    [handleBlur, onClose, persistOnClick, togglePersisting],
+    [handleBlur, handleClose, persistOnClick, togglePersisting],
   );
-
-  const isATooltipCurrentlyVisible = presenceList.tooltip > 1;
 
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
@@ -235,7 +233,7 @@ export function Tooltip({
 
   function handleMouseEnter() {
     mouseEntered.current = true;
-    if (hoverDelay && !isATooltipCurrentlyVisible) {
+    if (hoverDelay && !presenceList.tooltip) {
       hoverDelayTimeout.current = setTimeout(() => {
         handleOpen?.();
         handleFocus();

@@ -10,6 +10,10 @@ export interface EphemeralPresenceManagerProps {
 type Context = NonNullable<ContextType<typeof EphemeralPresenceManagerContext>>;
 
 type PresenceList = {
+  [key in EphemeralPresenceKey]: boolean;
+};
+
+type PresenceCounter = {
   [key in EphemeralPresenceKey]: number;
 };
 
@@ -20,11 +24,12 @@ const defaultState = {
 export function EphemeralPresenceManager({
   children,
 }: EphemeralPresenceManagerProps) {
-  const [presenceList, setPresenceList] = useState<PresenceList>(defaultState);
+  const [presenceCounter, setPresenceCounter] =
+    useState<PresenceCounter>(defaultState);
 
   const addPresence = useCallback<Context['addPresence']>(
     (key: EphemeralPresenceKey) => {
-      setPresenceList((prevList) => ({
+      setPresenceCounter((prevList) => ({
         ...prevList,
         [key]: prevList[key] + 1,
       }));
@@ -34,7 +39,7 @@ export function EphemeralPresenceManager({
 
   const removePresence = useCallback<Context['removePresence']>(
     (key: EphemeralPresenceKey) => {
-      setPresenceList((prevList) => ({
+      setPresenceCounter((prevList) => ({
         ...prevList,
         [key]: prevList[key] - 1,
       }));
@@ -43,8 +48,22 @@ export function EphemeralPresenceManager({
   );
 
   const value = useMemo(
-    () => ({presenceList, addPresence, removePresence}),
-    [presenceList, addPresence, removePresence],
+    () => ({
+      presenceList: Object.entries(presenceCounter).reduce(
+        (previousValue, currentValue) => {
+          const [key, value] = currentValue;
+          return {
+            ...previousValue,
+            [key]: value >= 1,
+          };
+        },
+        {} as PresenceList,
+      ),
+      presenceCounter,
+      addPresence,
+      removePresence,
+    }),
+    [addPresence, removePresence, presenceCounter],
   );
 
   return (

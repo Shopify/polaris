@@ -21,10 +21,6 @@
   }
 }
 
-.hasMode {
-  transition: none;
-}
-
 .measuring {
   opacity: 0;
 }
@@ -34,6 +30,7 @@
     var(--p-ease-in) var(--p-duration-100) 1 both;
 }
 
+// stylelint-disable-next-line selector-max-specificity, selector-max-class -- Required for the differing animation
 .measured.hasMode.positionedAbove:not(.instant) {
   animation: var(--p-keyframes-appear-above) var(--p-duration-200)
     var(--p-ease-in) var(--p-duration-100) 1 both;
@@ -42,13 +39,19 @@
 .hasMode {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-tooltip-overlay-offset: var(--p-space-3);
+  transition: none;
 
   &::after {
     content: '';
+    // stylelint-disable-next-line -- No Polaris layout component offers this
     position: absolute;
+    // stylelint-disable-next-line -- No Polaris layout component offers this
     top: calc(var(--p-space-4) * -1);
+    // stylelint-disable-next-line -- No Polaris layout component offers this
     left: calc(50% - var(--p-space-2));
+    // stylelint-disable-next-line -- No Polaris layout component offers this
     height: 0;
+    // stylelint-disable-next-line -- No Polaris layout component offers this
     width: 0;
     border-width: var(--p-space-2);
     border-style: solid;
@@ -57,7 +60,9 @@
 
   &.positionedAbove {
     &::after {
+      // stylelint-disable-next-line -- No Polaris layout component offers this
       top: auto;
+      // stylelint-disable-next-line -- No Polaris layout component offers this
       bottom: calc(var(--p-space-4) * -1);
       border-color: var(--p-surface) transparent transparent transparent;
     }
