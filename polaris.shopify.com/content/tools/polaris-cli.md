@@ -2,7 +2,7 @@
 title: Polaris CLI
 description: Commands for building Shopify Apps with Polaris.
 icon: CodeMajor
-order: 5
+order: 2
 keywords:
   - cli
   - shopify cli
@@ -22,7 +22,7 @@ shopify polaris migrate <migration> <path>
 - `migration` - name of migration
 - `path` - files or directory to perform migration
 
-The following is a complete example CLI command using `npm`:
+The following is a complete CLI command example using `npm`:
 
 ```
 npm run shopify polaris migrate react-replace-text-component '/src/components/**/*.tsx'
