@@ -3,7 +3,7 @@ import {Card as PolarisCard} from '@shopify/polaris';
 
 const MyCard = PolarisCard;
 const Card = () => null;
-const CardLegacy = () => null;
+const LegacyCard = () => null;
 
 export function App() {
   return (
@@ -11,7 +11,7 @@ export function App() {
       <PolarisCard>hello</PolarisCard>
       <MyCard>hello</MyCard>
       <Card>local</Card>
-      <CardLegacy>legacy</CardLegacy>
+      <LegacyCard>legacy</LegacyCard>
     </>
   );
 }

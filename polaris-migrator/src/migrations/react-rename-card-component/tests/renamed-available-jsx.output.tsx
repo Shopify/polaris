@@ -3,7 +3,7 @@ import {Card as PolarisCard} from '@shopify/polaris';
 
 const MyCard = PolarisCard;
 const Card = () => null;
-const CardLegacy = () => null;
+const LegacyCard = () => null;
 
 export function App() {
   return (
@@ -12,7 +12,7 @@ export function App() {
       <MyCard>hello</MyCard>
       <Card>local</Card>
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
-      <CardLegacy>legacy</CardLegacy>
+      <LegacyCard>legacy</LegacyCard>
     </>
   );
 }

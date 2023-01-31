@@ -39,7 +39,7 @@ export default function reactRenameComponent(
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative: options.relative,
     from: 'Card',
-    to: 'CardLegacy',
+    to: 'LegacyCard',
   });
 
   if (!sourcePaths) return;
@@ -55,20 +55,20 @@ export default function reactRenameComponent(
   let hasExistingJsx = false;
   let hasExistingIdentifier = false;
 
-  // If local `CardLegacy` is already used in the file, exit
-  source.findJSXElements('CardLegacy').forEach((element) => {
+  // If local `LegacyCard` is already used in the file, exit
+  source.findJSXElements('LegacyCard').forEach((element) => {
     insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
     hasExistingJsx = true;
   });
 
   if (hasExistingJsx) return source.toSource();
 
-  // If `CardLegacy` is already used as an identifier, exit
+  // If `LegacyCard` is already used as an identifier, exit
   source
     .find(j.Identifier)
     .filter(
       (path) =>
-        path.node.name === 'CardLegacy' || path.node.name === 'CardLegacyProps',
+        path.node.name === 'LegacyCard' || path.node.name === 'LegacyCardProps',
     )
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
@@ -89,12 +89,12 @@ export default function reactRenameComponent(
     sourcePaths.from,
   );
 
-  // Find all JSX elements that are named `Card` and replace them with `CardLegacy`
+  // Find all JSX elements that are named `Card` and replace them with `LegacyCard`
   source.findJSXElements(localElementName).forEach((element) => {
-    replaceJSXElement(j, element, 'CardLegacy');
+    replaceJSXElement(j, element, 'LegacyCard');
   });
 
-  // Find all references to the `Card` component and replace them with `CardLegacy`
+  // Find all references to the `Card` component and replace them with `LegacyCard`
   source
     .find(j.Identifier)
     .filter(
@@ -106,25 +106,25 @@ export default function reactRenameComponent(
       if (path.node.type !== 'Identifier') return;
 
       if (path.node.name === localElementName) {
-        path.node.name = 'CardLegacy';
+        path.node.name = 'LegacyCard';
       }
 
       if (path.node.name === localElementTypeName) {
-        path.node.name = 'CardLegacyProps';
+        path.node.name = 'LegacyCardProps';
       }
     });
 
-  if (!hasImportSpecifier(j, source, 'CardLegacy', sourcePaths.to)) {
+  if (!hasImportSpecifier(j, source, 'LegacyCard', sourcePaths.to)) {
     if (options.relative) {
       insertImportDeclaration(
         j,
         source,
-        'CardLegacy',
+        'LegacyCard',
         sourcePaths.to,
         sourcePaths.from,
       );
     } else {
-      insertImportSpecifier(j, source, 'CardLegacy', sourcePaths.to);
+      insertImportSpecifier(j, source, 'LegacyCard', sourcePaths.to);
     }
   }
 

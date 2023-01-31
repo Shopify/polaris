@@ -1,12 +1,12 @@
 import React from 'react';
-import {CardLegacy} from '@shopify/polaris';
+import {LegacyCard} from '@shopify/polaris';
 
-const MyCard = CardLegacy;
+const MyCard = LegacyCard;
 
 export function App() {
   return (
     <>
-      <CardLegacy>hello</CardLegacy>
+      <LegacyCard>hello</LegacyCard>
       <MyCard>hello</MyCard>
     </>
   );

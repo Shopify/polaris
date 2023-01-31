@@ -1,6 +1,6 @@
 import React from 'react';
-import {CardLegacy} from '@shopify/polaris';
+import {LegacyCard} from '@shopify/polaris';
 
 export function App() {
-  return <CardLegacy>hello</CardLegacy>;
+  return <LegacyCard>hello</LegacyCard>;
 }
