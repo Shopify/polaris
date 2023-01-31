@@ -11,7 +11,7 @@ import React, {
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {debounce} from '../../utilities/debounce';
-import {classNames, variationName} from '../../utilities/css';
+import {classNames} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
