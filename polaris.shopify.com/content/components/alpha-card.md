@@ -22,7 +22,7 @@ keywords:
   - call out
 status:
   value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [components lifecycle](/getting-started/components-lifecycle).
+  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycle](/getting-started/components-lifecycle).
 examples:
   - fileName: alpha-card-default.tsx
     title: Default
