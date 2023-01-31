@@ -103,6 +103,8 @@ export enum StatusName {
 export type Status = {
   value: StatusName;
   message: string;
+  linkText?: string;
+  url?: string;
 };
 
 export interface QuickGuideRow {
