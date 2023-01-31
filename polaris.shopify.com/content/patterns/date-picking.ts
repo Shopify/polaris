@@ -43,62 +43,221 @@ const pattern: MultiVariantPattern = {
           {label: 'Text field', url: '/components/text-field'},
         ],
         code: `
-      {(function DatePickerPattern () {
-        const [{month, year}, setDate] = useState({month: 1, year: 2018});
-        const [selectedDates, setSelectedDates] = useState({
-          start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-          end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-        });
-        const handleMonthChange = useCallback(
-          (month, year) => setDate({month, year}),
-          [],
-        );
-        return (
-          <DatePicker
-            month={month}
-            year={year}
-            onChange={setSelectedDates}
-            onMonthChange={handleMonthChange}
-            selected={selectedDates}
-          />
-        );
-      })()}`,
+        {(function DatePickerExample() {
+          function nodeContainsDescendant(rootNode, descendant) {
+            if (rootNode === descendant) {
+              return true;
+            }
+            let parent = descendant.parentNode;
+            while (parent != null) {
+              if (parent === rootNode) {
+                return true;
+              }
+              parent = parent.parentNode;
+            }
+            return false;
+          }
+          const [visible, setVisible] = useState(false);
+          const [selectedDate, setSelectedDate] = useState(new Date());
+          const [{ month, year }, setDate] = useState({
+            month: selectedDate.getMonth(),
+            year: selectedDate.getFullYear()
+          });
+          const formattedValue = selectedDate.toLocaleDateString();
+          const datePickerRef = useRef(null);
+          function isNodeWithinPopover(node) {
+            return datePickerRef?.current
+              ? nodeContainsDescendant(datePickerRef.current, node)
+              : false;
+          }
+          function handleInputValueChange() {
+            console.log("handleInputValueChange");
+          }
+          function handleInputBlur({ relatedTarget }) {
+            const isRelatedTargetWithinPopover =
+              relatedTarget != null && isNodeWithinPopover(relatedTarget);
+            // If focus moves from the TextField to the Popover
+            // we don't want to close the popover
+            if (isRelatedTargetWithinPopover) {
+              return;
+            }
+            setVisible(false);
+          }
+          function handleMonthChange(month, year) {
+            setDate({ month, year });
+          }
+          function handleDateSelection({ end: newSelectedDate }) {
+            setSelectedDate(newSelectedDate);
+            setVisible(false);
+          }
+          useEffect(() => {
+            if (selectedDate) {
+              setDate({
+                month: selectedDate.getMonth(),
+                year: selectedDate.getFullYear()
+              });
+            }
+          }, [selectedDate]);
+          return (
+              <Popover
+                active={visible}
+                autofocusTarget="none"
+                preferredAlignment="center"
+                preferInputActivator={false}
+                fullWidth
+                active
+                preferredPosition="below"
+                activator={
+                  <TextField
+                    role="combobox"
+                    label={"Start date"}
+                    prefix={<Icon source={CalendarMinor} />}
+                    value={formattedValue}
+                    onFocus={() => setVisible(true)}
+                    onChange={handleInputValueChange}
+                    onBlur={handleInputBlur}
+                    autoComplete="off"
+                  />
+                }
+              >
+              <Box padding={1}>
+                  <DatePicker
+                    month={month}
+                    year={year}
+                    selected={selectedDate}
+                    onMonthChange={handleMonthChange}
+                    onChange={handleDateSelection}
+                  />
+              </Box>
+              </Popover>
+          );
+        })()}
+`,
         context: `
       <div style={{
         display: 'flex',
         minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
+        width: "500px",
+        paddingTop: "64px",
         paddingLeft: '32px',
         paddingRight: '32px',
       }}>
-        <div style={{ width: '100%' }}>
-          ____CODE____
-        </div>
+
+            ____CODE____
+
       </div>
       `,
         snippetCode: `
-      function DatePickerPattern () {
-        const [{month, year}, setDate] = useState({month: 1, year: 2018});
-        const [selectedDates, setSelectedDates] = useState({
-          start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-          end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-        });
-        const handleMonthChange = useCallback(
-          (month, year) => setDate({month, year}),
-          [],
-        );
-        return (
-          <DatePicker
-            month={month}
-            year={year}
-            onChange={setSelectedDates}
-            onMonthChange={handleMonthChange}
-            selected={selectedDates}
-          />
-        );
-      }
-          `,
+        import {
+          AlphaStack,
+          AlphaCard,
+          DatePicker,
+          Icon,
+          Popover,
+          TextField
+        } from "@shopify/polaris";
+        import { CalendarMinor } from "@shopify/polaris-icons";
+        import { useEffect, useRef, useState } from "react";
+
+        function DatePickerExample() {
+          function nodeContainsDescendant(rootNode, descendant) {
+            if (rootNode === descendant) {
+              return true;
+            }
+            let parent = descendant.parentNode;
+            while (parent != null) {
+              if (parent === rootNode) {
+                return true;
+              }
+              parent = parent.parentNode;
+            }
+            return false;
+          }
+          const [visible, setVisible] = useState(false);
+          const [selectedDate, setSelectedDate] = useState(new Date());
+          const [{ month, year }, setDate] = useState({
+            month: selectedDate.getMonth(),
+            year: selectedDate.getFullYear()
+          });
+          const formattedValue = selectedDate.toLocaleDateString();
+          const datePickerRef = useRef(null);
+
+          function isNodeWithinPopover(node) {
+            return datePickerRef?.current
+              ? nodeContainsDescendant(datePickerRef.current, node)
+              : false;
+          }
+
+          function handleInputValueChange() {
+            console.log("handleInputValueChange");
+          }
+
+          function handleInputBlur({ relatedTarget }) {
+            const isRelatedTargetWithinPopover =
+              relatedTarget != null && isNodeWithinPopover(relatedTarget);
+            // If focus moves from the TextField to the Popover
+            // we don't want to close the popover
+            if (isRelatedTargetWithinPopover) {
+              return;
+            }
+            setVisible(false);
+          }
+
+          function handleMonthChange(month, year) {
+            setDate({ month, year });
+          }
+
+          function handleDateSelection({ end: newSelectedDate }) {
+            setSelectedDate(newSelectedDate);
+            setVisible(false);
+          }
+
+          useEffect(() => {
+            if (selectedDate) {
+              setDate({
+                month: selectedDate.getMonth(),
+                year: selectedDate.getFullYear()
+              });
+            }
+          }, [selectedDate]);
+
+          return (
+            <AlphaStack align="center">
+              <Popover
+                active={visible}
+                autofocusTarget="none"
+                preferredAlignment="left"
+                preferredPosition="below"
+                activator={
+                  <TextField
+                    role="combobox"
+                    label={"Enter date"}
+                    labelHidden
+                    prefix={<Icon source={CalendarMinor} />}
+                    value={formattedValue}
+                    onFocus={() => setVisible(true)}
+                    onChange={handleInputValueChange}
+                    onBlur={handleInputBlur}
+                    autoComplete="off"
+                  />
+                }
+              >
+                <AlphaCard ref={datePickerRef}>
+                  <DatePicker
+                    month={month}
+                    year={year}
+                    selected={selectedDate}
+                    onMonthChange={handleMonthChange}
+                    onChange={handleDateSelection}
+                  />
+                </AlphaCard>
+              </Popover>
+            </AlphaStack>
+          );
+        }
+
+        export default DatePickerExample;
+        `,
       },
     },
     {
@@ -192,15 +351,140 @@ const pattern: MultiVariantPattern = {
             ____CODE____
           </div>
         </div>`,
-        code: `
-        <Page
-        divider
+        snippetCode: `
+import { Button, OptionList, Popover } from "@shopify/polaris";
+import { CalendarMinor } from "@shopify/polaris-icons";
+import { useState } from "react";
+
+const ranges = [
+  {
+    title: "No Date",
+    alias: "no-date",
+    period: null
+  },
+  {
+    title: "Today",
+    alias: "today",
+    period: {
+      since: "today",
+      until: "today"
+    }
+  },
+  {
+    title: "Yesterday",
+    alias: "yesterday",
+    period: {
+      since: "yesterday",
+      until: "yesterday"
+    }
+  },
+  {
+    title: "Last 7 days",
+    alias: "last7days",
+    period: {
+      since: "-7d",
+      until: "-1d"
+    }
+  }
+];
+
+function DateList() {
+  const [selected, setSelected] = useState(ranges[0]);
+  const [popoverActive, setPopoverActive] = useState(false);
+
+  return (
+    <>
+      <Popover
+        activator={
+          <Button
+            onClick={() => setPopoverActive(!popoverActive)}
+            icon={CalendarMinor}
+          >
+            {selected.title}
+          </Button>
+        }
+        active={popoverActive}
+        onClose={() => {}}
       >
-        <AlphaStack gap="16">
-          Coming Soon
-        </AlphaStack>
-      </Page>
+        <OptionList
+          options={ranges.map((range) => ({
+            value: range.alias,
+            label: range.title
+          }))}
+          selected={selected.alias}
+          onChange={(value) => {
+            setSelected(ranges.find((range) => range.alias === value[0]));
+            setPopoverActive(false);
+          }}
+        />
+      </Popover>
+    </>
+  );
+}
+
+export default DateList;
         `,
+        code: `
+{(function DateListPattern () {
+  const ranges = [{
+      title: "No Date",
+      alias: "no-date",
+      period: null
+    },
+    {
+      title: "Today",
+      alias: "today",
+      period: {
+        since: "today",
+        until: "today"
+      }
+    },
+    {
+      title: "Yesterday",
+      alias: "yesterday",
+      period: {
+        since: "yesterday",
+        until: "yesterday"
+      }
+    },
+    {
+      title: "Last 7 days",
+      alias: "last7days",
+      period: {
+        since: "-7d",
+        until: "-1d"
+      }
+    }
+  ];
+  const [selected, setSelected] = useState(ranges[0]);
+  const [popoverActive, setPopoverActive] = useState(false);
+  return (
+    <Popover
+      activator={
+        <Button
+          onClick={() => setPopoverActive(!popoverActive)}
+          icon={CalendarMinor}
+        >
+          {selected.title}
+        </Button>
+      }
+      active={popoverActive}
+      onClose={() => {}}
+    >
+      <OptionList
+        options={ranges.map((range) => ({
+          value: range.alias,
+          label: range.title
+        }))}
+        selected={selected.alias}
+        onChange={(value) => {
+          setSelected(ranges.find((range) => range.alias === value[0]));
+          setPopoverActive(false);
+        }}
+      />
+    </Popover>);
+})()}
+`,
       },
     },
   ],
