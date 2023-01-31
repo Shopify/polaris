@@ -47,8 +47,6 @@ const Components = ({
     ? {
         value: status.value.toLowerCase() as Status['value'],
         message: status.message,
-        linkText: status?.linkText,
-        url: status?.url,
       }
     : undefined;
 
