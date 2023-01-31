@@ -219,12 +219,15 @@ export interface ComplexAction
     IconableAction,
     OutlineableAction,
     LoadableAction,
-    PlainAction {}
+    PlainAction {
+  /** Reference to access DOM node */
+  activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
+}
 
 export interface MenuActionDescriptor extends ComplexAction, TooltipAction {
   /** Zero-indexed numerical position. Overrides the action's order in the menu */
   index?: number;
-  /** Reference to access DOM node */
+  /** Reference to access DOM node. TODO: maybe we can remove it from here */
   activatorRef?: LegacyRef<HTMLSpanElement> | undefined;
 }
 

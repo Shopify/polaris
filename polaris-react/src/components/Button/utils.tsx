@@ -30,8 +30,10 @@ export function buttonFrom(
   key?: any,
 ) {
   return (
-    <Button key={key} onClick={onAction} {...action} {...overrides}>
-      {content}
-    </Button>
+    <span ref={action?.activatorRef}>
+      <Button key={key} onClick={onAction} {...action} {...overrides}>
+        {content}
+      </Button>
+    </span>
   );
 }
