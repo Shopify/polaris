@@ -1,5 +1,13 @@
 # Changelog
 
+## 10.24.2
+
+### Patch Changes
+
+- [#8209](https://github.com/Shopify/polaris/pull/8209) [`d1a332963`](https://github.com/Shopify/polaris/commit/d1a3329634a1f4cd02f0d97b8239bbedad7cf889) Thanks [@aveline](https://github.com/aveline)! - Updated `Bleed` to take up full width of container
+
+* [#8224](https://github.com/Shopify/polaris/pull/8224) [`e30d1f51b`](https://github.com/Shopify/polaris/commit/e30d1f51b205c6875c0e712291081d836e851d97) Thanks [@peterlazzarino](https://github.com/peterlazzarino)! - Repair styling for Checkbox when indeterminate and disabled
+
 ## 10.24.1
 
 ### Patch Changes

@@ -1,5 +1,16 @@
 # polaris.shopify.com
 
+## 0.31.0
+
+### Minor Changes
+
+- [#8223](https://github.com/Shopify/polaris/pull/8223) [`de7987c42`](https://github.com/Shopify/polaris/commit/de7987c426174b73d67e54eacf197da9490c76ec) Thanks [@samrose3](https://github.com/samrose3)! - Renamed Polaris CLI package and add docs to website
+
+### Patch Changes
+
+- Updated dependencies [[`d1a332963`](https://github.com/Shopify/polaris/commit/d1a3329634a1f4cd02f0d97b8239bbedad7cf889), [`e30d1f51b`](https://github.com/Shopify/polaris/commit/e30d1f51b205c6875c0e712291081d836e851d97)]:
+  - @shopify/polaris@10.24.2
+
 ## 0.30.2
 
 ### Patch Changes
