@@ -3,4 +3,4 @@
 'polaris.shopify.com': minor
 ---
 
-Rename Polaris CLI package and add docs to website
+Renamed Polaris CLI package and add docs to website
