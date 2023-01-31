@@ -8,7 +8,7 @@ interface Props {
   status: Status;
 }
 
-function StatusBanner({status: {value, message, linkText, url}}: Props) {
+function StatusBanner({status: {value, message}}: Props) {
   return (
     <div className={styles.StatusBanner} data-value={value.toLowerCase()}>
       <h2>{uppercaseFirst(value)}</h2>
