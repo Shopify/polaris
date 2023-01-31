@@ -19,7 +19,7 @@ Codemod transformations to help upgrade your Polaris codebase.
 shopify polaris migrate <migration> <path>
 ```
 
-- `migration` - name of migration, see available migrations on the docs site below.
+- `migration` - name of migration
 - `path` - files or directory to perform migration
 
 #### Flags
