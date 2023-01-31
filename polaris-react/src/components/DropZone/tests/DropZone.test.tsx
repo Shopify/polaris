@@ -253,13 +253,11 @@ describe('<DropZone />', () => {
         <DropZone label="My DropZone label" onClick={spy} />,
       );
 
-      const element = dropZone.find('div', {
-        'aria-disabled': false,
-      });
-
-      if (element) {
-        element.find('div')?.trigger('onClick');
-      }
+      dropZone
+        .find('div', {
+          'aria-disabled': false,
+        })
+        ?.trigger('onClick');
 
       expect(spy).toHaveBeenCalled();
     });
@@ -285,14 +283,7 @@ describe('<DropZone />', () => {
       const fileInput = dropZone.find('input')!.domNode;
 
       const spy = jest.spyOn(fileInput as HTMLElement, 'click');
-
-      const element = dropZone.find('div', {
-        'aria-disabled': false,
-      });
-
-      if (element) {
-        element.find('div')!.trigger('onClick');
-      }
+      dropZone.find('div', {'aria-disabled': false})!.trigger('onClick');
 
       expect(spy).toHaveBeenCalled();
     });

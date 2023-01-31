@@ -11,7 +11,7 @@ import React, {
 import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {debounce} from '../../utilities/debounce';
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {capitalize} from '../../utilities/capitalize';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
@@ -21,7 +21,6 @@ import {isServer} from '../../utilities/target';
 import {useUniqueId} from '../../utilities/unique-id';
 import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 import {useToggle} from '../../utilities/use-toggle';
-import {Box} from '../Box';
 import {AlphaStack} from '../AlphaStack';
 
 import {FileUpload} from './components';
@@ -157,16 +156,13 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         }
 
         let size = 'large';
-        let height = 'var(--pc-dropzone-min-height-large)';
 
         const width = node.current.getBoundingClientRect().width;
 
         if (width < 100) {
           size = 'small';
-          height = 'var(--pc-dropzone-min-height-small)';
         } else if (width < 160) {
           size = 'medium';
-          height = 'var(--pc-dropzone-min-height-medium)';
         }
 
         setSize(size);
@@ -362,6 +358,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
     (internalError || error) && styles.hasError,
+    !variableHeight && styles[variationName('size', size)],
     measuring && styles.measuring,
   );
 
@@ -397,28 +394,24 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         action={labelAction}
         labelHidden={labelHiddenValue}
       >
-        <Box ref={node} aria-disabled={disabled} position="relative">
-          <div
-            className={classes}
-            onClick={handleClick}
-            onDragStart={stopEvent}
-          >
-            {dragOverlay}
-            {dragErrorOverlay}
-            <Text variant="bodySm" as="span" visuallyHidden>
-              <DropZoneInput
-                {...inputAttributes}
-                openFileDialog={openFileDialog}
-                onFileDialogClose={onFileDialogClose}
-              />
-            </Text>
-            <div className={styles.Container}>
-              <Box minHeight={height} width="100%">
-                {children}
-              </Box>
-            </div>
-          </div>
-        </Box>
+        <div
+          ref={node}
+          className={classes}
+          aria-disabled={disabled}
+          onClick={handleClick}
+          onDragStart={stopEvent}
+        >
+          {dragOverlay}
+          {dragErrorOverlay}
+          <Text variant="bodySm" as="span" visuallyHidden>
+            <DropZoneInput
+              {...inputAttributes}
+              openFileDialog={openFileDialog}
+              onFileDialogClose={onFileDialogClose}
+            />
+          </Text>
+          <div className={styles.Container}>{children}</div>
+        </div>
       </Labelled>
     </DropZoneContext.Provider>
   );
