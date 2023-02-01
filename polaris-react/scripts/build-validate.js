@@ -9,6 +9,7 @@ const packageJSON = require('../package.json');
 
 validateStandardBuild();
 validateEsNextBuild();
+validateAncillaryOutput();
 validateVersionReplacement();
 
 function validateStandardBuild() {
@@ -78,6 +79,10 @@ function validateEsNextBuild() {
   assert.ok(jsContent.includes("import './Avatar.css';"));
   assert.ok(jsContent.includes('"Avatar": "Polaris-Avatar_z763p"'));
   assert.ok(jsContent.includes('"hidden": "Polaris-Avatar--hidden_riqie"'));
+}
+
+function validateAncillaryOutput() {
+  assert.ok(fs.existsSync('./build/ts/src/index.d.ts'));
 }
 
 function validateVersionReplacement() {

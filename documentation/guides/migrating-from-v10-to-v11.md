@@ -14,7 +14,11 @@ Polaris v11.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 NodeJS version 14 is no longer supported. NodeJS 18 is recommended and 16 is the minimum supported version.
 
-## Legacy TypeScript support
+## TypeScript
+
+Built types in `@shopify/polaris` have moved from `build/ts/latest` to `build/ts`.
+
+**Legacy TypeScript Support**
 
 Polaris no longer supports multiple versions of TypeScript with downlevel-dts. Polaris only builds one set of types based on the current version of TypeScript in the project.
 
