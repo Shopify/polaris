@@ -31,9 +31,6 @@
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
   },
-  "devDependencies": {
-    "@shopify/browserslist-config": "^3.0.0"
-  },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://polaris.shopify.com",
@@ -46,7 +43,15 @@
     "@shopify:registry": "https://registry.npmjs.org"
   },
   "browserslist": [
-    "extends @shopify/browserslist-config"
+    "last 3 chrome versions",
+    "last 3 firefox versions",
+    "last 3 opera versions",
+    "last 3 edge versions",
+    "last 3 safari versions",
+    "last 3 chromeandroid versions",
+    "last 1 firefoxandroid versions",
+    "ios >= 13.4",
+    "node 16.13.0"
   ],
   "files": [
     "dist"

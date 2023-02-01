@@ -34,7 +34,7 @@ function generateConfig({output, targets, stylesConfig}) {
         // we want to override
         envName: 'production',
         // @ts-expect-error targets is a valid babel option but @types/babel__core doesn't know that yet
-        targets,
+        ...(targets && {targets}),
       }),
       replace({
         '{{POLARIS_VERSION}}': pkg.version,
@@ -54,7 +54,6 @@ function generateConfig({output, targets, stylesConfig}) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
-    targets: 'extends @shopify/browserslist-config, node 16.13.0',
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',

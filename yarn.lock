@@ -3323,11 +3323,6 @@
     babel-plugin-react-test-id "^1.0.2"
     babel-plugin-transform-inline-environment-variables "^0.4.3"
 
-"@shopify/browserslist-config@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@shopify/browserslist-config/-/browserslist-config-3.0.0.tgz#fedfef0dedc97155a60432c152eff50df88e13d2"
-  integrity sha512-NzZTZ8EEG6xmM1ApSsQFDqW6C5CmByNhXyLxwWjVX08GzHxkhMc10MSY7WGvTCzd1lQuZEp8Ko/jOCBTQQsEGg==
-
 "@shopify/cli-kit@3.10.1":
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/@shopify/cli-kit/-/cli-kit-3.10.1.tgz#deaf0ead4989ad4d7645a00b7f4b9cbeb8052993"
@@ -7395,20 +7390,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001332:
-  version "1.0.30001334"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001334.tgz#892e9965b35285033fc2b8a8eff499fe02f13d8b"
-  integrity sha512-kbaCEBRRVSoeNs74sCuq92MJyGrMtjWVfhltoHUCW4t4pXFvGjUBrfo47weBRViHkiV3eBYyIsfl956NtHGazw==
-
-caniuse-lite@^1.0.30001400:
-  version "1.0.30001418"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001418.tgz#5f459215192a024c99e3e3a53aac310fc7cf24e6"
-  integrity sha512-oIs7+JL3K9JRQ3jPZjlH6qyYDp+nBTCais7hjh0s+fuBwufc7uZ7hPYMXrDOJhV360KGMTcczMRObk0/iMqZRg==
-
-caniuse-lite@^1.0.30001406:
-  version "1.0.30001426"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001426.tgz#58da20446ccd0cb1dfebd11d2350c907ee7c2eaa"
-  integrity sha512-n7cosrHLl8AWt0wwZw/PJZgUg3lV0gk9LMI7ikGJwhyhgsd2Nb65vKvmSexCqq/J7rbH3mFG6yZZiPR5dLPW5A==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001406:
+  version "1.0.30001449"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001449.tgz"
+  integrity sha512-CPB+UL9XMT/Av+pJxCKGhdx+yg1hzplvFJQlJ2n68PyQGMz9L/E2zCyLdOL8uasbouTUgnPl+y0tccI/se+BEw==
 
 capital-case@^1.0.4:
   version "1.0.4"
