@@ -156,7 +156,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         }
 
         let size = 'large';
-
         const width = node.current.getBoundingClientRect().width;
 
         if (width < 100) {
