@@ -17,15 +17,6 @@ const compilerOptions = {
   module: ts.ModuleKind.CommonJS,
 };
 
-const deprecatedComponents = [
-  'DisplayText',
-  'Heading',
-  'Subheading',
-  'Caption',
-  'TextStyle',
-  'VisuallyHidden',
-];
-
 export function normalizePath(path: string): string {
   let normalizedPath = path;
   if (normalizedPath.startsWith('.')) {
@@ -319,12 +310,9 @@ export function getRelevantTypes(
   ast: AllTypes,
   name: string,
   filePath: string,
+  status: string,
 ): FilteredTypes {
-  if (
-    deprecatedComponents.some((deprecatedComponent) =>
-      filePath.includes(`/${deprecatedComponent}.tsx`),
-    )
-  ) {
+  if (status === 'Deprecated') {
     return {};
   }
 
