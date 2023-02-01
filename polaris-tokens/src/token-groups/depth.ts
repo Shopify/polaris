@@ -11,6 +11,9 @@ export const depth = {
     value:
       '0 0 0 1px rgba(63, 63, 68, 0.05), 0 1px 3px 0 rgba(63, 63, 68, 0.15)',
   },
+  'shadow-medium': {
+    value: '0 2px 16px rgba(33, 43, 54, 0.08)',
+  },
   'shadow-deep': {
     value: '0 0 0 1px rgba(6, 44, 82, 0.1), 0 2px 16px rgba(33, 43, 54, 0.08)',
   },
@@ -49,6 +52,7 @@ export const depthShadowAlias = [
   'base',
   'transparent',
   'faint',
+  'medium',
   'deep',
   'button',
   'top-bar',
