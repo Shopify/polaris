@@ -423,14 +423,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
         <AlphaStack gap="2" align="center">
           {size === 'small' && <Icon source={icon} color={color} />}
           {(size === 'medium' || size === 'large') && (
-            <Text
-              variant="bodySm"
-              as="p"
-              fontWeight="bold"
-              {...((internalError || error) && {
-                color: 'critical',
-              })}
-            >
+            <Text variant="bodySm" as="p" fontWeight="bold">
               {text}
             </Text>
           )}
