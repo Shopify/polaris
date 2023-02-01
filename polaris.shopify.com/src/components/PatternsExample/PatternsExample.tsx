@@ -89,7 +89,10 @@ const PatternsExample = ({
     // TODO: Validate whether or not we can solve this at a config level. (i.e. disable the rule)
 
     return prettifiedCode.trim().replace(/[;$]/g, (match, offset, string) => {
-      if (offset === string.length - 1) {
+      if (
+        offset === string.length - 1 ||
+        string.lastIndexOf(match) === offset
+      ) {
         return '';
       }
       return match;
@@ -101,9 +104,9 @@ const PatternsExample = ({
       const livePreviewCode = context
         ? context.replace('____CODE____', code)
         : code;
-
       return `/playroom/preview/index.html${createUrl({
         code: formatCodeSnippet(livePreviewCode),
+        themes: ['locale:en'],
         paramType: 'search',
       })}`;
     }
