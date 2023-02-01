@@ -31,7 +31,11 @@ export const PatternsPage = () => (
             <Icon source={FlagMajor} width={20} height={20} />
             <p>
               We are making changes to the patterns section. Expect changes to
-              happen here and join the discussion to make it better.
+              happen here and{' '}
+              <a href="https://github.com/Shopify/polaris/discussions/8218">
+                join the discussion
+              </a>{' '}
+              to make it better.
             </p>
           </div>
         </div>

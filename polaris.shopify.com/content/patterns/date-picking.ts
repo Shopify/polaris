@@ -36,69 +36,193 @@ const pattern: MultiVariantPattern = {
 `,
       example: {
         relatedComponents: [
+          {label: 'Alpha Card', url: '/components/alpha-card'},
           {
             label: 'Date picker',
             url: '/components/date-picker',
           },
+          {label: 'Popover', url: '/components/popover'},
           {label: 'Text field', url: '/components/text-field'},
         ],
         code: `
-      {(function DatePickerPattern () {
-        const [{month, year}, setDate] = useState({month: 1, year: 2018});
-        const [selectedDates, setSelectedDates] = useState({
-          start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-          end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-        });
-        const handleMonthChange = useCallback(
-          (month, year) => setDate({month, year}),
-          [],
-        );
-        return (
-          <DatePicker
-            month={month}
-            year={year}
-            onChange={setSelectedDates}
-            onMonthChange={handleMonthChange}
-            selected={selectedDates}
-          />
-        );
-      })()}`,
+        {(function DatePickerExample() {
+          function nodeContainsDescendant(rootNode, descendant) {
+            if (rootNode === descendant) {
+              return true;
+            }
+            let parent = descendant.parentNode;
+            while (parent != null) {
+              if (parent === rootNode) {
+                return true;
+              }
+              parent = parent.parentNode;
+            }
+            return false;
+          }
+          const [visible, setVisible] = useState(false);
+          const [selectedDate, setSelectedDate] = useState(new Date());
+          const [{ month, year }, setDate] = useState({
+            month: selectedDate.getMonth(),
+            year: selectedDate.getFullYear()
+          });
+          const formattedValue = selectedDate.toLocaleDateString();
+          const datePickerRef = useRef(null);
+          function isNodeWithinPopover(node) {
+            return datePickerRef?.current
+              ? nodeContainsDescendant(datePickerRef.current, node)
+              : false;
+          }
+          function handleInputValueChange() {
+            console.log("handleInputValueChange");
+          }
+          function handleOnClose({ relatedTarget }) {
+            setVisible(false);
+          }
+          function handleMonthChange(month, year) {
+            setDate({ month, year });
+          }
+          function handleDateSelection({ end: newSelectedDate }) {
+            setSelectedDate(newSelectedDate);
+            setVisible(false);
+          }
+          useEffect(() => {
+            if (selectedDate) {
+              setDate({
+                month: selectedDate.getMonth(),
+                year: selectedDate.getFullYear()
+              });
+            }
+          }, [selectedDate]);
+          return (
+              <Popover
+                active={visible}
+                autofocusTarget="none"
+                preferredAlignment="left"
+                fullWidth
+                preferInputActivator={false}
+                preferredPosition="below"
+                preventCloseOnChildOverlayClick
+                onClose={handleOnClose}
+                activator={
+                  <TextField
+                    role="combobox"
+                    label={"Start date"}
+                    prefix={<Icon source={CalendarMinor} />}
+                    value={formattedValue}
+                    onFocus={() => setVisible(true)}
+                    onChange={handleInputValueChange}
+                    autoComplete="off"
+                  />
+                }
+              >
+                <AlphaCard ref={datePickerRef}>
+                  <DatePicker
+                    month={month}
+                    year={year}
+                    selected={selectedDate}
+                    onMonthChange={handleMonthChange}
+                    onChange={handleDateSelection}
+                  />
+                </AlphaCard>
+              </Popover>
+          );
+        })()}
+`,
         context: `
-      <div style={{
-        display: 'flex',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingLeft: '32px',
-        paddingRight: '32px',
-      }}>
-        <div style={{ width: '100%' }}>
-          ____CODE____
+        <div style={{
+          display: 'block',
+          margin: '0 auto',
+          width: "276px",
+          minHeight: '100vh',
+          paddingTop: "2rem",
+        }}>
+            ____CODE____
         </div>
-      </div>
       `,
         snippetCode: `
-      function DatePickerPattern () {
-        const [{month, year}, setDate] = useState({month: 1, year: 2018});
-        const [selectedDates, setSelectedDates] = useState({
-          start: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-          end: new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
-        });
-        const handleMonthChange = useCallback(
-          (month, year) => setDate({month, year}),
-          [],
-        );
-        return (
-          <DatePicker
-            month={month}
-            year={year}
-            onChange={setSelectedDates}
-            onMonthChange={handleMonthChange}
-            selected={selectedDates}
-          />
-        );
-      }
-          `,
+        function SingleDatePicker() {
+          function nodeContainsDescendant(rootNode, descendant) {
+            if (rootNode === descendant) {
+              return true;
+            }
+            let parent = descendant.parentNode;
+            while (parent != null) {
+              if (parent === rootNode) {
+                return true;
+              }
+              parent = parent.parentNode;
+            }
+            return false;
+          }
+          const [visible, setVisible] = useState(false);
+          const [selectedDate, setSelectedDate] = useState(new Date());
+          const [{ month, year }, setDate] = useState({
+            month: selectedDate.getMonth(),
+            year: selectedDate.getFullYear()
+          });
+          const formattedValue = selectedDate.toLocaleDateString();
+          const datePickerRef = useRef(null);
+          function isNodeWithinPopover(node) {
+            return datePickerRef?.current
+              ? nodeContainsDescendant(datePickerRef.current, node)
+              : false;
+          }
+          function handleInputValueChange() {
+            console.log("handleInputValueChange");
+          }
+          function handleOnClose({ relatedTarget }) {
+            setVisible(false);
+          }
+          function handleMonthChange(month, year) {
+            setDate({ month, year });
+          }
+          function handleDateSelection({ end: newSelectedDate }) {
+            setSelectedDate(newSelectedDate);
+            setVisible(false);
+          }
+          useEffect(() => {
+            if (selectedDate) {
+              setDate({
+                month: selectedDate.getMonth(),
+                year: selectedDate.getFullYear()
+              });
+            }
+          }, [selectedDate]);
+          return (
+              <Popover
+                active={visible}
+                autofocusTarget="none"
+                preferredAlignment="left"
+                fullWidth
+                preferInputActivator={false}
+                preferredPosition="below"
+                preventCloseOnChildOverlayClick
+                onClose={handleOnClose}
+                activator={
+                  <TextField
+                    role="combobox"
+                    label={"Start date"}
+                    prefix={<Icon source={CalendarMinor} />}
+                    value={formattedValue}
+                    onFocus={() => setVisible(true)}
+                    onChange={handleInputValueChange}
+                    autoComplete="off"
+                  />
+                }
+              >
+                <AlphaCard ref={datePickerRef}>
+                  <DatePicker
+                    month={month}
+                    year={year}
+                    selected={selectedDate}
+                    onMonthChange={handleMonthChange}
+                    onChange={handleDateSelection}
+                  />
+                </AlphaCard>
+              </Popover>
+          );
+        }
+        `,
       },
     },
     {
@@ -131,20 +255,573 @@ const pattern: MultiVariantPattern = {
 `,
       example: {
         relatedComponents: [
+          {label: 'Alpha stack', url: '/components/alpha-stack'},
+          {label: 'Box', url: '/components/box'},
+          {label: 'Button', url: '/components/button'},
+          {label: 'Columns', url: '/components/columns'},
           {
             label: 'Date picker',
             url: '/components/date-picker',
           },
+          {label: 'Inline', url: '/components/inline'},
           {label: 'Option list', url: '/components/option-list'},
+          {label: 'Popover', url: '/components/popover'},
           {label: 'Text field', url: '/components/text-field'},
         ],
-        code: ` <Page
-        divider
-      >
-        <AlphaStack gap="16">
-          Coming Soon
-        </AlphaStack>
-      </Page>`,
+        snippetCode: `
+        function DateRangePicker() {
+          const today = new Date(new Date().setHours(0, 0, 0, 0));
+          const yesterday = new Date(
+            new Date(new Date().setDate(today.getDate() - 1)).setHours(0, 0, 0, 0)
+          );
+          const ranges = [
+            {
+              title: "Today",
+              alias: "today",
+              period: {
+                since: today,
+                until: today,
+              },
+            },
+            {
+              title: "Yesterday",
+              alias: "yesterday",
+              period: {
+                since: yesterday,
+                until: yesterday,
+              },
+            },
+            {
+              title: "Last 7 days",
+              alias: "last7days",
+              period: {
+                since: new Date(
+                  new Date(new Date().setDate(today.getDate() - 7)).setHours(
+                    0,
+                    0,
+                    0,
+                    0
+                  )
+                ),
+                until: yesterday,
+              },
+            },
+          ];
+          const [popoverActive, setPopoverActive] = useState(false);
+          const [activeDateRange, setActiveDateRange] = useState(ranges[0]);
+          const [inputValues, setInputValues] = useState({});
+          const [{ month, year }, setDate] = useState({
+            month: activeDateRange.period.since.getMonth(),
+            year: activeDateRange.period.since.getFullYear(),
+          });
+          const datePickerRef = useRef(null);
+          const VALID_YYYY_MM_DD_DATE_REGEX = /^\\d{4}-\\d{1,2}-\\d{1,2}$/;
+          function isDate(date) {
+            return !isNaN(new Date(date).getDate());
+          }
+          function isValidYearMonthDayDateString(date) {
+            return VALID_YYYY_MM_DD_DATE_REGEX.test(date) && isDate(date);
+          }
+          function isValidDate(date) {
+            return date.length === 10 && isValidYearMonthDayDateString(date);
+          }
+          function parseYearMonthDayDateString(input) {
+            // Date-only strings (e.g. "1970-01-01") are treated as UTC, not local time
+            // when using new Date()
+            // We need to split year, month, day to pass into new Date() separately
+            // to get a localized Date
+            const [year, month, day] = input.split("-");
+            return new Date(Number(year), Number(month) - 1, Number(day));
+          }
+          function formatDateToYearMonthDayDateString(date) {
+            const year = String(date.getFullYear());
+            let month = String(date.getMonth() + 1);
+            let day = String(date.getDate());
+            if (month.length < 2) {
+              month = String(month).padStart(2, "0");
+            }
+            if (day.length < 2) {
+              day = String(day).padStart(2, "0");
+            }
+            return [year, month, day].join("-");
+          }
+          function formatDate(date) {
+            return formatDateToYearMonthDayDateString(date);
+          }
+          function nodeContainsDescendant(rootNode, descendant) {
+            if (rootNode === descendant) {
+              return true;
+            }
+            let parent = descendant.parentNode;
+            while (parent != null) {
+              if (parent === rootNode) {
+                return true;
+              }
+              parent = parent.parentNode;
+            }
+            return false;
+          }
+          function isNodeWithinPopover(node) {
+            return datePickerRef?.current
+              ? nodeContainsDescendant(datePickerRef.current, node)
+              : false;
+          }
+          function handleStartInputValueChange(value) {
+            setInputValues((prevState) => {
+              return { ...prevState, since: value };
+            });
+            console.log("handleStartInputValueChange, validDate", value);
+            if (isValidDate(value)) {
+              const newSince = parseYearMonthDayDateString(value);
+              setActiveDateRange((prevState) => {
+                const newPeriod =
+                  prevState.period && newSince <= prevState.period.until
+                    ? { since: newSince, until: prevState.period.until }
+                    : { since: newSince, until: newSince };
+                return {
+                  ...prevState,
+                  period: newPeriod,
+                };
+              });
+            }
+          }
+          function handleEndInputValueChange(value) {
+            setInputValues((prevState) => ({ ...prevState, until: value }));
+            if (isValidDate(value)) {
+              const newUntil = parseYearMonthDayDateString(value);
+              setActiveDateRange((prevState) => {
+                const newPeriod =
+                  prevState.period && newUntil >= prevState.period.since
+                    ? { since: prevState.period.since, until: newUntil }
+                    : { since: newUntil, until: newUntil };
+                return {
+                  ...prevState,
+                  period: newPeriod,
+                };
+              });
+            }
+          }
+          function handleInputBlur({ relatedTarget }) {
+            const isRelatedTargetWithinPopover =
+              relatedTarget != null && isNodeWithinPopover(relatedTarget);
+            // If focus moves from the TextField to the Popover
+            // we don't want to close the popover
+            if (isRelatedTargetWithinPopover) {
+              return;
+            }
+            setPopoverActive(false);
+          }
+          function handleMonthChange(month, year) {
+            setDate({ month, year });
+          }
+          function handleCalendarChange({ start, end }) {
+            const newDateRange = ranges.find((range) => {
+              return (
+                range.period.since.valueOf() === start.valueOf() &&
+                range.period.until.valueOf() === end.valueOf()
+              );
+            }) || {
+              alias: "custom",
+              title: "Custom",
+              period: {
+                since: start,
+                until: end,
+              },
+            };
+            setActiveDateRange(newDateRange);
+          }
+          function apply() {
+            setPopoverActive(false);
+          }
+          function cancel() {
+            setPopoverActive(false);
+          }
+          useEffect(() => {
+            if (activeDateRange) {
+              setDate({
+                month: activeDateRange.period.since.getMonth(),
+                year: activeDateRange.period.since.getFullYear(),
+              });
+              setInputValues({
+                since: formatDate(activeDateRange.period.since),
+                until: formatDate(activeDateRange.period.until),
+              });
+            }
+          }, [activeDateRange]);
+          const buttonValue =
+            activeDateRange.title === "Custom"
+              ? \`\${activeDateRange.period.since.toDateString()} -
+        \${activeDateRange.period.until.toDateString()}\`
+              : activeDateRange.title;
+          return (
+            <Popover
+            active={popoverActive}
+            autofocusTarget="none"
+            preferredAlignment="left"
+            preferredPosition="below"
+            fluidContent
+            fullHeight
+            activator={
+              <Button
+                icon={CalendarMinor}
+                onClick={() => setPopoverActive(!popoverActive)}
+              >
+                {buttonValue}
+              </Button>
+            }
+            onClose={() => setPopoverActive(false)}
+          >
+            <AlphaStack fullWidth>
+              <Columns columns={{ xs: "1fr", md: "1fr 4fr" }} ref={datePickerRef}>
+                <OptionList
+                  options={ranges.map((range) => ({
+                    value: range.alias,
+                    label: range.title,
+                  }))}
+                  selected={activeDateRange.alias}
+                  onChange={(value) => {
+                    setActiveDateRange(
+                      ranges.find((range) => range.alias === value[0])
+                    );
+                  }}
+                />
+                <Box padding={{ sm: 2, md: 8 }}>
+                  <AlphaStack fullWidth>
+                    <Inline>
+                      <div style={{ flexGrow: 1 }}>
+                        <TextField
+                          role="combobox"
+                          label={"Since"}
+                          labelHidden
+                          prefix={<Icon source={CalendarMinor} />}
+                          value={inputValues.since}
+                          onChange={handleStartInputValueChange}
+                          onBlur={handleInputBlur}
+                          autoComplete="off"
+                        />
+                      </div>
+                      <Icon source={ArrowRightMinor} />
+                      <div style={{ flexGrow: 1 }}>
+                        <TextField
+                          role="combobox"
+                          label={"Until"}
+                          labelHidden
+                          prefix={<Icon source={CalendarMinor} />}
+                          value={inputValues.until}
+                          onChange={handleEndInputValueChange}
+                          onBlur={handleInputBlur}
+                          autoComplete="off"
+                        />
+                      </div>
+                    </Inline>
+                    <div>
+                      <DatePicker
+                        month={month}
+                        year={year}
+                        selected={{
+                          start: activeDateRange.period.since,
+                          end: activeDateRange.period.until,
+                        }}
+                        onMonthChange={handleMonthChange}
+                        onChange={handleCalendarChange}
+                        multiMonth
+                        allowRange
+                      />
+                    </div>
+                  </AlphaStack>
+                </Box>
+              </Columns>
+              <Inline align="end">
+                <Button onClick={cancel}>Cancel</Button>
+                <Button primary onClick={apply}>
+                  Apply
+                </Button>
+              </Inline>
+            </AlphaStack>
+          </Popover>
+          );
+        }
+        `,
+        context: `<div style={{
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          paddingTop: "2rem"
+        }}>
+        ____CODE____
+        </div>`,
+        code: `
+        {(function DateRangePicker() {
+          const today = new Date(new Date().setHours(0, 0, 0, 0));
+          const yesterday = new Date(
+            new Date(new Date().setDate(today.getDate() - 1)).setHours(0, 0, 0, 0)
+          );
+          const ranges = [
+            {
+              title: "Today",
+              alias: "today",
+              period: {
+                since: today,
+                until: today,
+              },
+            },
+            {
+              title: "Yesterday",
+              alias: "yesterday",
+              period: {
+                since: yesterday,
+                until: yesterday,
+              },
+            },
+            {
+              title: "Last 7 days",
+              alias: "last7days",
+              period: {
+                since: new Date(
+                  new Date(new Date().setDate(today.getDate() - 7)).setHours(
+                    0,
+                    0,
+                    0,
+                    0
+                  )
+                ),
+                until: yesterday,
+              },
+            },
+          ];
+          const [popoverActive, setPopoverActive] = useState(false);
+          const [activeDateRange, setActiveDateRange] = useState(ranges[0]);
+          const [inputValues, setInputValues] = useState({});
+          const [{ month, year }, setDate] = useState({
+            month: activeDateRange.period.since.getMonth(),
+            year: activeDateRange.period.since.getFullYear(),
+          });
+          const datePickerRef = useRef(null);
+          const VALID_YYYY_MM_DD_DATE_REGEX = /^\\d{4}-\\d{1,2}-\\d{1,2}$/;
+          function isDate(date) {
+            return !isNaN(new Date(date).getDate());
+          }
+          function isValidYearMonthDayDateString(date) {
+            return VALID_YYYY_MM_DD_DATE_REGEX.test(date) && isDate(date);
+          }
+          function isValidDate(date) {
+            return date.length === 10 && isValidYearMonthDayDateString(date);
+          }
+          function parseYearMonthDayDateString(input) {
+            // Date-only strings (e.g. "1970-01-01") are treated as UTC, not local time
+            // when using new Date()
+            // We need to split year, month, day to pass into new Date() separately
+            // to get a localized Date
+            const [year, month, day] = input.split("-");
+            return new Date(Number(year), Number(month) - 1, Number(day));
+          }
+          function formatDateToYearMonthDayDateString(date) {
+            const year = String(date.getFullYear());
+            let month = String(date.getMonth() + 1);
+            let day = String(date.getDate());
+            if (month.length < 2) {
+              month = String(month).padStart(2, "0");
+            }
+            if (day.length < 2) {
+              day = String(day).padStart(2, "0");
+            }
+            return [year, month, day].join("-");
+          }
+          function formatDate(date) {
+            return formatDateToYearMonthDayDateString(date);
+          }
+          function nodeContainsDescendant(rootNode, descendant) {
+            if (rootNode === descendant) {
+              return true;
+            }
+            let parent = descendant.parentNode;
+            while (parent != null) {
+              if (parent === rootNode) {
+                return true;
+              }
+              parent = parent.parentNode;
+            }
+            return false;
+          }
+          function isNodeWithinPopover(node) {
+            return datePickerRef?.current
+              ? nodeContainsDescendant(datePickerRef.current, node)
+              : false;
+          }
+          function handleStartInputValueChange(value) {
+            setInputValues((prevState) => {
+              return { ...prevState, since: value };
+            });
+            console.log("handleStartInputValueChange, validDate", value);
+            if (isValidDate(value)) {
+              const newSince = parseYearMonthDayDateString(value);
+              setActiveDateRange((prevState) => {
+                const newPeriod =
+                  prevState.period && newSince <= prevState.period.until
+                    ? { since: newSince, until: prevState.period.until }
+                    : { since: newSince, until: newSince };
+                return {
+                  ...prevState,
+                  period: newPeriod,
+                };
+              });
+            }
+          }
+          function handleEndInputValueChange(value) {
+            setInputValues((prevState) => ({ ...prevState, until: value }));
+            if (isValidDate(value)) {
+              const newUntil = parseYearMonthDayDateString(value);
+              setActiveDateRange((prevState) => {
+                const newPeriod =
+                  prevState.period && newUntil >= prevState.period.since
+                    ? { since: prevState.period.since, until: newUntil }
+                    : { since: newUntil, until: newUntil };
+                return {
+                  ...prevState,
+                  period: newPeriod,
+                };
+              });
+            }
+          }
+          function handleInputBlur({ relatedTarget }) {
+            const isRelatedTargetWithinPopover =
+              relatedTarget != null && isNodeWithinPopover(relatedTarget);
+            // If focus moves from the TextField to the Popover
+            // we don't want to close the popover
+            if (isRelatedTargetWithinPopover) {
+              return;
+            }
+            setPopoverActive(false);
+          }
+          function handleMonthChange(month, year) {
+            setDate({ month, year });
+          }
+          function handleCalendarChange({ start, end }) {
+            const newDateRange = ranges.find((range) => {
+              return (
+                range.period.since.valueOf() === start.valueOf() &&
+                range.period.until.valueOf() === end.valueOf()
+              );
+            }) || {
+              alias: "custom",
+              title: "Custom",
+              period: {
+                since: start,
+                until: end,
+              },
+            };
+            setActiveDateRange(newDateRange);
+          }
+          function apply() {
+            setPopoverActive(false);
+          }
+          function cancel() {
+            setPopoverActive(false);
+          }
+          useEffect(() => {
+            if (activeDateRange) {
+              setDate({
+                month: activeDateRange.period.since.getMonth(),
+                year: activeDateRange.period.since.getFullYear(),
+              });
+              setInputValues({
+                since: formatDate(activeDateRange.period.since),
+                until: formatDate(activeDateRange.period.until),
+              });
+            }
+          }, [activeDateRange]);
+          const buttonValue =
+            activeDateRange.title === "Custom"
+              ? \`\${activeDateRange.period.since.toDateString()} -
+        \${activeDateRange.period.until.toDateString()}\`
+              : activeDateRange.title;
+          return (
+            <Popover
+            active={popoverActive}
+            autofocusTarget="none"
+            preferredAlignment="left"
+            preferredPosition="below"
+            fluidContent
+            fullHeight
+            activator={
+              <Button
+                icon={CalendarMinor}
+                onClick={() => setPopoverActive(!popoverActive)}
+              >
+                {buttonValue}
+              </Button>
+            }
+            onClose={() => setPopoverActive(false)}
+          >
+            <AlphaStack fullWidth>
+              <Columns columns={{ xs: "1fr", md: "1fr 4fr" }} ref={datePickerRef}>
+                <OptionList
+                  options={ranges.map((range) => ({
+                    value: range.alias,
+                    label: range.title,
+                  }))}
+                  selected={activeDateRange.alias}
+                  onChange={(value) => {
+                    setActiveDateRange(
+                      ranges.find((range) => range.alias === value[0])
+                    );
+                  }}
+                />
+                <Box padding={{ sm: 2, md: 8 }}>
+                  <AlphaStack fullWidth>
+                    <Inline>
+                      <div style={{ flexGrow: 1 }}>
+                        <TextField
+                          role="combobox"
+                          label={"Since"}
+                          labelHidden
+                          prefix={<Icon source={CalendarMinor} />}
+                          value={inputValues.since}
+                          onChange={handleStartInputValueChange}
+                          onBlur={handleInputBlur}
+                          autoComplete="off"
+                        />
+                      </div>
+                      <Icon source={ArrowRightMinor} />
+                      <div style={{ flexGrow: 1 }}>
+                        <TextField
+                          role="combobox"
+                          label={"Until"}
+                          labelHidden
+                          prefix={<Icon source={CalendarMinor} />}
+                          value={inputValues.until}
+                          onChange={handleEndInputValueChange}
+                          onBlur={handleInputBlur}
+                          autoComplete="off"
+                        />
+                      </div>
+                    </Inline>
+                    <div>
+                      <DatePicker
+                        month={month}
+                        year={year}
+                        selected={{
+                          start: activeDateRange.period.since,
+                          end: activeDateRange.period.until,
+                        }}
+                        onMonthChange={handleMonthChange}
+                        onChange={handleCalendarChange}
+                        multiMonth
+                        allowRange
+                      />
+                    </div>
+                  </AlphaStack>
+                </Box>
+              </Columns>
+              <Inline align="end">
+                <Button onClick={cancel}>Cancel</Button>
+                <Button primary onClick={apply}>
+                  Apply
+                </Button>
+              </Inline>
+            </AlphaStack>
+          </Popover>
+          );
+        })()}`,
       },
     },
     {
@@ -173,34 +850,151 @@ const pattern: MultiVariantPattern = {
 `,
       example: {
         relatedComponents: [
+          {label: 'Button', url: '/components/button'},
+          {label: 'Option list', url: '/components/option-list'},
           {
-            label: 'Date picker',
-            url: '/components/date-picker',
+            label: 'Popover',
+            url: '/components/popover',
           },
-          {label: 'OptionList', url: '/components/option-list'},
-          {label: 'Text field', url: '/components/text-field'},
         ],
         context: `<div style={{
           display: 'flex',
+          paddingTop: "2rem",
+          flexDirection: 'column',
           minHeight: '100vh',
           alignItems: 'center',
-          justifyContent: 'center',
-          paddingLeft: '32px',
-          paddingRight: '32px',
+          justifyContent: 'start',
         }}>
-          <div style={{ width: '100%' }}>
             ____CODE____
-          </div>
         </div>`,
-        code: `
-        <Page
-        divider
-      >
-        <AlphaStack gap="16">
-          Coming Soon
-        </AlphaStack>
-      </Page>
+        snippetCode: `
+        function DateListPicker () {
+          const ranges = [{
+              title: "No Date",
+              alias: "no-date",
+              period: null
+            },
+            {
+              title: "Today",
+              alias: "today",
+              period: {
+                since: "today",
+                until: "today"
+              }
+            },
+            {
+              title: "Yesterday",
+              alias: "yesterday",
+              period: {
+                since: "yesterday",
+                until: "yesterday"
+              }
+            },
+            {
+              title: "Last 7 days",
+              alias: "last7days",
+              period: {
+                since: "-7d",
+                until: "-1d"
+              }
+            }
+          ];
+          const [selected, setSelected] = useState(ranges[0]);
+          const [popoverActive, setPopoverActive] = useState(false);
+          return (
+            <Popover
+              autofocusTarget="none"
+              preferredAlignment="left"
+              preferInputActivator={false}
+              preferredPosition="below"
+              activator={
+                <Button
+                  onClick={() => setPopoverActive(!popoverActive)}
+                  icon={CalendarMinor}
+                >
+                  {selected.title}
+                </Button>
+              }
+              active={popoverActive}
+            >
+              <OptionList
+                options={ranges.map((range) => ({
+                  value: range.alias,
+                  label: range.title
+                }))}
+                selected={selected.alias}
+                onChange={(value) => {
+                  setSelected(ranges.find((range) => range.alias === value[0]));
+                  setPopoverActive(false);
+                }}
+              />
+          </Popover>
+        )}
         `,
+        code: `
+{(function DateListPicker () {
+  const ranges = [{
+      title: "No Date",
+      alias: "no-date",
+      period: null
+    },
+    {
+      title: "Today",
+      alias: "today",
+      period: {
+        since: "today",
+        until: "today"
+      }
+    },
+    {
+      title: "Yesterday",
+      alias: "yesterday",
+      period: {
+        since: "yesterday",
+        until: "yesterday"
+      }
+    },
+    {
+      title: "Last 7 days",
+      alias: "last7days",
+      period: {
+        since: "-7d",
+        until: "-1d"
+      }
+    }
+  ];
+  const [selected, setSelected] = useState(ranges[0]);
+  const [popoverActive, setPopoverActive] = useState(false);
+  return (
+    <Popover
+      autofocusTarget="none"
+      preferredAlignment="left"
+      preferInputActivator={false}
+      preferredPosition="below"
+      activator={
+        <Button
+          onClick={() => setPopoverActive(!popoverActive)}
+          icon={CalendarMinor}
+        >
+          {selected.title}
+        </Button>
+      }
+      active={popoverActive}
+    >
+      <OptionList
+        options={ranges.map((range) => ({
+          value: range.alias,
+          label: range.title
+        }))}
+        selected={selected.alias}
+        onChange={(value) => {
+          setSelected(ranges.find((range) => range.alias === value[0]));
+          setPopoverActive(false);
+        }}
+      />
+  </Popover>
+)})()}
+`,
       },
     },
   ],

@@ -87,8 +87,12 @@ const PatternsExample = ({
     // We trim and call a custom replace here
     // Because prettier appends a semi-colon at the end of the detected JSX phrase for some reason.
     // TODO: Validate whether or not we can solve this at a config level. (i.e. disable the rule)
-    return prettifiedCode.trim().replace(/[;$]/g, (match, __, string) => {
-      if (string.indexOf(match) === string.length - 1) {
+
+    return prettifiedCode.trim().replace(/[;$]/g, (match, offset, string) => {
+      if (
+        offset === string.length - 1 ||
+        string.lastIndexOf(match) === offset
+      ) {
         return '';
       }
       return match;
@@ -100,9 +104,9 @@ const PatternsExample = ({
       const livePreviewCode = context
         ? context.replace('____CODE____', code)
         : code;
-
       return `/playroom/preview/index.html${createUrl({
-        code: livePreviewCode,
+        code: formatCodeSnippet(livePreviewCode),
+        themes: ['locale:en'],
         paramType: 'search',
       })}`;
     }

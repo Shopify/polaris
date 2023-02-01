@@ -5,6 +5,6 @@ url: /patterns/date-picking
 previewImg: /images/patterns/pattern-thumbnail-date-picking.png
 status: {value: 'Beta', message: ''}
 order: 10
-githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/7852
+githubDiscussionsLink: https://github.com/Shopify/polaris/discussions/7853
 contentFile: 'date-picking.ts'
 ---
