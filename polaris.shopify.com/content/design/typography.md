@@ -123,6 +123,10 @@ Small heading styles, `headingXs` - `headingMd`, and body styles will remain the
 
 ![An image showing how heading styles change based on breakpoint](/images/foundations/design/typography/type-responsive-styles@2x.png)
 
+### Uppercase styles
+
+The design language no longer supports uppercase typography. We recommend using the [Text component](/components/text) to apply visual hierarchy. Work with your team to determine a type style that works best for your use case.
+
 ---
 
 ## Font stack
