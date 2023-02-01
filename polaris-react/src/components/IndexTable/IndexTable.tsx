@@ -940,7 +940,7 @@ function IndexTableBase({
               hasUnderline
               // preferredAlignment="center"
               preferredPosition="above"
-              width="wide"
+              width="extraWide"
               padding="4"
               borderRadius="2"
             >

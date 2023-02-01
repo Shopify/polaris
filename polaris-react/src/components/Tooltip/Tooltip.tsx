@@ -14,7 +14,7 @@ import type {PreferredAlignment} from '../PositionedOverlay';
 import {TooltipOverlay, TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
-export type Width = 'default' | 'wide';
+export type Width = 'default' | 'wide' | 'extraWide';
 export type Padding =
   | 'default'
   | Extract<SpacingSpaceScale, '4'>
