@@ -94,51 +94,44 @@ const pattern: MultiVariantPattern = {
             }
           }, [selectedDate]);
           return (
-              <Popover
-                active={visible}
-                autofocusTarget="none"
-                preferredAlignment="left"
-                fullWidth
-                preferInputActivator={false}
-                preferredPosition="below"
-                preventCloseOnChildOverlayClick
-                onClose={handleOnClose}
-                activator={
-                  <TextField
-                    role="combobox"
-                    label={"Start date"}
-                    prefix={<Icon source={CalendarMinor} />}
-                    value={formattedValue}
-                    onFocus={() => setVisible(true)}
-                    onChange={handleInputValueChange}
-                    autoComplete="off"
-                  />
-                }
-              >
-                <AlphaCard ref={datePickerRef}>
-                  <DatePicker
-                    month={month}
-                    year={year}
-                    selected={selectedDate}
-                    onMonthChange={handleMonthChange}
-                    onChange={handleDateSelection}
-                  />
-                </AlphaCard>
-              </Popover>
+            <AlphaStack align="center">
+              <Box minWidth="276px" padding={{ xs: 2 }}>
+                <Popover
+                  active={visible}
+                  autofocusTarget="none"
+                  preferredAlignment="left"
+                  fullWidth
+                  preferInputActivator={false}
+                  preferredPosition="below"
+                  preventCloseOnChildOverlayClick
+                  onClose={handleOnClose}
+                  activator={
+                    <TextField
+                      role="combobox"
+                      label={"Start date"}
+                      prefix={<Icon source={CalendarMinor} />}
+                      value={formattedValue}
+                      onFocus={() => setVisible(true)}
+                      onChange={handleInputValueChange}
+                      autoComplete="off"
+                    />
+                  }
+                >
+                  <AlphaCard ref={datePickerRef}>
+                    <DatePicker
+                      month={month}
+                      year={year}
+                      selected={selectedDate}
+                      onMonthChange={handleMonthChange}
+                      onChange={handleDateSelection}
+                    />
+                  </AlphaCard>
+                </Popover>
+              </Box>
+            </AlphaStack>
           );
         })()}
 `,
-        context: `
-        <div style={{
-          display: 'block',
-          margin: '0 auto',
-          width: "276px",
-          minHeight: '100vh',
-          paddingTop: "2rem",
-        }}>
-            ____CODE____
-        </div>
-      `,
         snippetCode: `
         function SingleDatePicker() {
           function nodeContainsDescendant(rootNode, descendant) {
@@ -189,37 +182,41 @@ const pattern: MultiVariantPattern = {
             }
           }, [selectedDate]);
           return (
-              <Popover
-                active={visible}
-                autofocusTarget="none"
-                preferredAlignment="left"
-                fullWidth
-                preferInputActivator={false}
-                preferredPosition="below"
-                preventCloseOnChildOverlayClick
-                onClose={handleOnClose}
-                activator={
-                  <TextField
-                    role="combobox"
-                    label={"Start date"}
-                    prefix={<Icon source={CalendarMinor} />}
-                    value={formattedValue}
-                    onFocus={() => setVisible(true)}
-                    onChange={handleInputValueChange}
-                    autoComplete="off"
-                  />
-                }
-              >
-                <AlphaCard ref={datePickerRef}>
-                  <DatePicker
-                    month={month}
-                    year={year}
-                    selected={selectedDate}
-                    onMonthChange={handleMonthChange}
-                    onChange={handleDateSelection}
-                  />
-                </AlphaCard>
-              </Popover>
+            <AlphaStack align="center">
+              <Box minWidth="276px" padding={{ xs: 2 }}>
+                <Popover
+                  active={visible}
+                  autofocusTarget="none"
+                  preferredAlignment="left"
+                  fullWidth
+                  preferInputActivator={false}
+                  preferredPosition="below"
+                  preventCloseOnChildOverlayClick
+                  onClose={handleOnClose}
+                  activator={
+                    <TextField
+                      role="combobox"
+                      label={"Start date"}
+                      prefix={<Icon source={CalendarMinor} />}
+                      value={formattedValue}
+                      onFocus={() => setVisible(true)}
+                      onChange={handleInputValueChange}
+                      autoComplete="off"
+                    />
+                  }
+                >
+                  <AlphaCard ref={datePickerRef}>
+                    <DatePicker
+                      month={month}
+                      year={year}
+                      selected={selectedDate}
+                      onMonthChange={handleMonthChange}
+                      onChange={handleDateSelection}
+                    />
+                  </AlphaCard>
+                </Popover>
+              </Box>
+            </AlphaStack>
           );
         }
         `,
