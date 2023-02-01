@@ -14,7 +14,7 @@ const pattern: SingleVariantPattern = {
   ### **Use when merchants need to**
 
   **Find and change app settings**
-  :   This pattern is used specifically for finding and updating individual app settings within the Shopify admin.|
+  :   This pattern is used specifically for finding and updating individual app settings within the Shopify admin.
 
   :::
   `,
