@@ -89,9 +89,28 @@ export default function reactRenameComponent(
     sourcePaths.from,
   );
 
-  // Find all JSX elements that are named `Card` and replace them with `LegacyCard`
-  source.findJSXElements(localElementName).forEach((element) => {
-    replaceJSXElement(j, element, 'LegacyCard');
+  // Find all JSX elements and compound elements that are named `Card` and
+  // replace them with `LegacyCard`
+  source.find(j.JSXElement).forEach((element) => {
+    if (
+      element.node.openingElement.name.type === 'JSXIdentifier' &&
+      element.node.openingElement.name.name === localElementName
+    ) {
+      replaceJSXElement(j, element, 'LegacyCard');
+      return;
+    }
+
+    if (
+      element.node.openingElement.name.type === 'JSXMemberExpression' &&
+      element.node.openingElement.name.object.type === 'JSXIdentifier' &&
+      element.node.openingElement.name.object.name === localElementName &&
+      element.node.closingElement?.name.type === 'JSXMemberExpression' &&
+      element.node.closingElement?.name.object.type === 'JSXIdentifier' &&
+      element.node.closingElement?.name.object.name === localElementName
+    ) {
+      element.node.openingElement.name.object.name = 'LegacyCard';
+      element.node.closingElement.name.object.name = 'LegacyCard';
+    }
   });
 
   // Find all references to the `Card` component and replace them with `LegacyCard`
@@ -105,7 +124,10 @@ export default function reactRenameComponent(
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
 
-      if (path.node.name === localElementName) {
+      if (
+        path.node.name === localElementName &&
+        path.parent.value.type !== 'MemberExpression'
+      ) {
         path.node.name = 'LegacyCard';
       }
 
