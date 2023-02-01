@@ -249,6 +249,9 @@ export type {
   LegacyCardSubsectionProps,
 } from './components/LegacyCard';
 
+export {LegacyStack} from './components/LegacyStack';
+export type {LegacyStackProps} from './components/LegacyStack';
+
 export {Link} from './components/Link';
 export type {LinkProps} from './components/Link';
 
