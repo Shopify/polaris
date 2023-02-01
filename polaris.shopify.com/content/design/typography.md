@@ -125,7 +125,7 @@ Small heading styles, `headingXs` - `headingMd`, and body styles will remain the
 
 ### Uppercase styles
 
-The design language no longer supports uppercase typography. We recommend using the [Text component](/components/text) to apply visual hierarchy. Work with your team to determine with type style works best for your use case.
+The design language no longer supports uppercase typography. We recommend using the [Text component](/components/text) to apply visual hierarchy. Work with your team to determine a type style that works best for your use case.
 
 ---
 
