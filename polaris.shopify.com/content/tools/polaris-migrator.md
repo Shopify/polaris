@@ -2,7 +2,7 @@
 title: Polaris Migrator
 description: Codemod transformations to help upgrade your Polaris codebase.
 icon: ReplaceMajor
-order: 2
+order: 3
 ---
 
 [<img src="https://img.shields.io/npm/v/@shopify/polaris-migrator.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/polaris-migrator)

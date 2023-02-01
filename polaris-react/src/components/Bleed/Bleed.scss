@@ -1,6 +1,7 @@
 @import '../../styles/common';
 
 .Bleed {
+  min-width: 100%;
   // stylelint-disable -- Polaris component custom properties
   --pc-bleed-margin-block-start-xs: initial;
   --pc-bleed-margin-block-start-sm: var(--pc-bleed-margin-block-start-xs);
