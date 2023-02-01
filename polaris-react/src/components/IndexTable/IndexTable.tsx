@@ -34,6 +34,7 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
+import type {Width} from '../Tooltip';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -44,6 +45,7 @@ interface IndexTableHeadingBase {
   new?: boolean;
   hidden?: boolean;
   sortableMessage?: React.ReactNode;
+  sortableMessageWidth?: Width;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -940,7 +942,7 @@ function IndexTableBase({
               hasUnderline
               // preferredAlignment="center"
               preferredPosition="above"
-              width="extraWide"
+              width={heading.sortableMessageWidth ?? 'wide'}
               padding="4"
               borderRadius="2"
             >
