@@ -2,7 +2,7 @@ import type {FileInfo, API, Options} from 'jscodeshift';
 import postcss, {Plugin} from 'postcss';
 import valueParser from 'postcss-value-parser';
 
-import {getFunctionArgs} from '../../utilities/sass';
+import {getFunctionArgs, isSassFunction} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 
 export default function scssReplaceColorTokens(
@@ -32,28 +32,19 @@ function plugin(_options: PluginOptions = {}): Plugin {
       const parsed = valueParser(decl.value);
 
       parsed.walk((node) => {
-        if (node.type !== 'function' || node.value !== 'var') return;
+        if (!isSassFunction('var', node)) return;
 
-        const args = getFunctionArgs(node);
+        for (const argNode of node.nodes) {
+          if (
+            argNode.type !== 'word' ||
+            !argNode.value.startsWith('--p-') ||
+            !isKeyOf(replacementMap, argNode.value)
+          ) {
+            continue;
+          }
 
-        const polarisCustomPropertyIndex = args.findIndex((arg) =>
-          arg.startsWith('--p-'),
-        );
-
-        const polarisCustomProperty = args[polarisCustomPropertyIndex];
-
-        if (!isKeyOf(replacementMap, polarisCustomProperty)) return;
-
-        args[polarisCustomPropertyIndex] =
-          replacementMap[polarisCustomProperty];
-
-        node.nodes = [
-          {
-            ...node.nodes[0],
-            type: 'word',
-            value: args.join(', '),
-          },
-        ];
+          argNode.value = replacementMap[argNode.value];
+        }
       });
 
       decl.value = parsed.toString();
