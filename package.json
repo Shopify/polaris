@@ -69,7 +69,6 @@
     "@types/jest": "^27.5.1",
     "@types/node": "^18.11.18",
     "babel-loader": "^9.1.2",
-    "downlevel-dts": "^0.6.0",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",
     "jest": "^27.5.1",
