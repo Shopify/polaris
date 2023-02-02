@@ -43,6 +43,7 @@ export default {
       extensions,
       rootMode: 'upward',
       include: ['src/**/*'],
+      babelHelpers: 'bundled',
       envName: 'production',
       targets: 'node 14.13',
     }),
