@@ -1,9 +1,23 @@
-.my-class {
+.shadow {
+  // --p-shadow-transparent
   box-shadow: var(--p-shadow-transparent);
+  box-shadow: inset var(--p-shadow-transparent);
+  box-shadow: var(--p-shadow-transparent), inset 16px 8px hotpink;
+  box-shadow: inset 16px 8px hotpink, var(--p-shadow-transparent);
+}
 
+.duration {
+  // --p-duration-0
   transition-duration: var(--p-duration-0);
-  margin: var(--p-space-0);
-  gap: var(--p-space-0);
+  transition-duration: var(--p-duration-0), 2s;
+  transition-duration: 2s, var(--p-duration-0);
+}
 
+.space {
+  // --p-space-0
+  margin: var(--p-space-0);
+  margin: var(--p-space-025);
   padding: var(--p-space-1) var(--p-space-0);
+  padding: var(--p-space-5) var(--p-space-5) var(--p-space-0) var(--p-space-5);
+  gap: var(--p-space-0);
 }
