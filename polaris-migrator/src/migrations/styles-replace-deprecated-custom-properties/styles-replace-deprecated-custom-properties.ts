@@ -3,17 +3,9 @@ import postcss, {Plugin} from 'postcss';
 import valueParser, {Node} from 'postcss-value-parser';
 
 import {isKeyOf} from '../../utilities/type-guards';
-import {
-  getFunctionArgs,
-  isPolarisVar,
-  isSassFunction,
-} from '../../utilities/sass';
+import {isSassFunction} from '../../utilities/sass';
 
-export default function scssReplaceZeroValues(
-  fileInfo: FileInfo,
-  _: API,
-  methods: any,
-) {
+export default function scssReplaceZeroValues(fileInfo: FileInfo, _: API) {
   return postcss(plugin()).process(fileInfo.source, {
     syntax: require('postcss-scss'),
   }).css;
@@ -28,53 +20,31 @@ const plugin = (): Plugin => {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
 
-      let needsFix = false;
       const parsedValue = valueParser(decl.value);
 
       parsedValue.walk((node: Node) => {
-        if (isSassFunction('var', node)) {
-          const args = getFunctionArgs(node);
+        if (!isSassFunction('var', node)) return;
 
-          if (args.length !== 1) {
-            // methods.report({
-            //   node: decl,
-            //   severity: 'error',
-            //   message: `More than 1 argument, got ${args.length}`,
-            // });
-            return;
+        for (const argNode of node.nodes) {
+          if (argNode.type !== 'word' || !argNode.value.startsWith('--p-')) {
+            continue;
           }
 
-          if (
-            isPolarisVar(node) &&
-            (isKeyOf(deprecatedValuesMap, node.nodes?.[0]?.value) ||
-              isKeyOf(deprecatedTokenMap, node.nodes?.[0]?.value))
-          ) {
-            needsFix = true;
+          if (isKeyOf(deprecatedTokenMap, argNode.value)) {
+            argNode.value = deprecatedTokenMap[argNode.value];
+            continue;
+          }
 
-            if (isKeyOf(deprecatedTokenMap, node.nodes?.[0]?.value)) {
-              node.nodes = [
-                {
-                  type: 'word',
-                  value: deprecatedTokenMap[node.nodes?.[0]?.value],
-                  sourceIndex: node.nodes[0]?.sourceIndex ?? 0,
-                  sourceEndIndex:
-                    deprecatedTokenMap[node.nodes?.[0]?.value].length,
-                },
-              ];
-            }
-
-            if (isKeyOf(deprecatedValuesMap, node.nodes?.[0]?.value)) {
-              // @ts-expect-error - Reassign the type to word
-              node.type = 'word';
-              node.value = deprecatedValuesMap[node.nodes?.[0]?.value];
-            }
+          if (isKeyOf(deprecatedValuesMap, argNode.value)) {
+            // @ts-expect-error - Reassign the type to word
+            node.type = 'word';
+            node.value = deprecatedValuesMap[argNode.value];
+            break;
           }
         }
       });
 
-      if (needsFix) {
-        decl.value = parsedValue.toString();
-      }
+      decl.value = parsedValue.toString();
 
       // @ts-expect-error - Mark the declaration as processed
       decl[processed] = true;

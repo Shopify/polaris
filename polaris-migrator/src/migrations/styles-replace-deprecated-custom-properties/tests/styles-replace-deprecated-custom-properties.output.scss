@@ -1,26 +1,13 @@
-.shadow {
-  // --p-shadow-transparent
+.values {
   box-shadow: 0 0 0 0 transparent;
-  // polaris-migrator: Unable to migrate the following expression. Please upgrade manually.
-  // error: More than 1 argument, got 2
-  box-shadow: var(--p-shadow-transparent, 0);
-  box-shadow: inset 0 0 0 0 transparent;
-  box-shadow: 0 0 0 0 transparent, inset 16px 8px hotpink;
+  box-shadow: var(--p-text, 0 0 0 0 transparent);
+  box-shadow: 0 0 0 0 transparent;
   box-shadow: inset 16px 8px hotpink, 0 0 0 0 transparent;
-}
-
-.duration {
-  // --p-duration-0
-  transition-duration: 0;
-  transition-duration: 0, 2s;
-  transition-duration: 2s, 0;
-}
-
-.space {
-  // --p-space-0
-  margin: 0;
-  margin: var(--p-space-025);
   padding: var(--p-space-1) 0;
-  padding: var(--p-space-5) var(--p-space-5) 0 var(--p-space-5);
-  gap: 0;
+}
+
+.tokens {
+  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-text, var(--p-border-radius-1));
+  border-radius: var(--p-border-radius-1, var(--p-text));
 }
