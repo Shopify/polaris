@@ -48,6 +48,7 @@ export function SkeletonPage({
 
   const primaryActionMarkup = primaryAction ? (
     <Box
+      id="SkeletonPage-PrimaryAction"
       borderRadius="1"
       background="surface-neutral"
       minHeight="2.25rem"
