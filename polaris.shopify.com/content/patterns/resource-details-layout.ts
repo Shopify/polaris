@@ -137,7 +137,7 @@ const pattern: SingleVariantPattern = {
           </Columns>
         </Page>
       );
-    })`,
+    }`,
     context: `
       <div style={{ paddingBottom: '2rem' }}>
         ____CODE____
