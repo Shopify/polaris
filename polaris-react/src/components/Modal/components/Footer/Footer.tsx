@@ -25,11 +25,20 @@ export function Footer({
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <Inline gap="2">
+      <Inline align="end" gap="2">
         {secondaryActionButtons}
         {primaryActionButton}
       </Inline>
     ) : null;
+
+  const childMarkup = children ? (
+    <Inline blockAlign="center" align="space-between">
+      <Box width="100%">{children}</Box>
+      {actions}
+    </Inline>
+  ) : (
+    actions
+  );
 
   return (
     <Inline blockAlign="center">
@@ -39,10 +48,7 @@ export function Footer({
         padding="4"
         width="100%"
       >
-        <Inline blockAlign="center" align="space-between">
-          <Box>{children}</Box>
-          {actions}
-        </Inline>
+        {childMarkup}
       </Box>
     </Inline>
   );
