@@ -15,7 +15,7 @@ const processed = Symbol('processed');
 
 const plugin = (): Plugin => {
   return {
-    postcssPlugin: 'scss-replace-zero-values',
+    postcssPlugin: 'styles-replace-deprecated-custom-properties',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed]) return;
