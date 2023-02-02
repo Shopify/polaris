@@ -54,7 +54,7 @@ function generateConfig({output, targets, stylesConfig}) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
-    targets: 'extends @shopify/browserslist-config, node 16.19.0',
+    targets: 'extends @shopify/browserslist-config, node 16.17.0',
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',
