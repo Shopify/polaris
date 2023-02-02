@@ -28,7 +28,7 @@
   },
   "engine-strict": true,
   "engines": {
-    "node": "^16.13.0 || >=18.12.0"
+    "node": "^16.17.0 || >=18.12.0"
   },
   "os": [
     "darwin",
