@@ -39,18 +39,10 @@
   "main": "build/cjs/index.js",
   "module": "build/esm/index.js",
   "esnext": "build/esnext/index.esnext",
-  "types": "build/ts/latest/src/index.d.ts",
-  "typesVersions": {
-    "<4.0": {
-      "build/types/latest/*": [
-        "build/ts/3.4/*"
-      ]
-    }
-  },
+  "types": "build/ts/src/index.d.ts",
   "scripts": {
-    "build": "run-s build:types build:types-downlevel build:js build:validate",
+    "build": "run-s build:types build:js build:validate",
     "build:types": "tsc -b",
-    "build:types-downlevel": "downlevel-dts './build/ts/latest' './build/ts/3.4'",
     "build:js": "rollup -c",
     "build:validate": "node scripts/build-validate.js",
     "dev": "yarn run storybook",

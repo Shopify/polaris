@@ -30,7 +30,7 @@ export function merge<TSource1, TSource2, TSource3, TSource4, TSource5>(
   let final = {};
 
   for (const obj of objs) {
-    final = mergeRecursively(final, obj);
+    final = mergeRecursively(final, obj as any);
   }
 
   return final;
