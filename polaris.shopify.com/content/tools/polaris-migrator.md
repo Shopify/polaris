@@ -8,7 +8,7 @@ order: 2
 [<img src="https://img.shields.io/npm/v/@shopify/polaris-migrator.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style="width: 95px" />](https://www.npmjs.com/package/@shopify/polaris-migrator)
 
 <picture>
-  <source srcset="/images/tools/polaris-migrator/polaris-migrator-demo.png" media="(prefers-reduced-motion: reduce)"></source> 
+  <source srcset="/images/tools/polaris-migrator/polaris-migrator-demo.png" media="(prefers-reduced-motion: reduce)"></source>
   <img srcset="/images/tools/polaris-migrator/polaris-migrator-demo.gif" alt="Demo of Polaris migrator">
 </picture>
 
@@ -24,6 +24,23 @@ npx @shopify/polaris-migrator <migration> <path>
 - `--print` Prints the changed output for comparison
 
 ## Migrations
+
+### v11
+
+#### `styles-replace-deprecated-custom-properties`
+
+Replace deprecated CSS custom properties with corresponding replacement values (either a different Polaris custom property or a static value).
+
+```diff
++ // example
+- // example
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator styles-replace-deprecated-custom-properties <path>
+```
 
 ### v10
 
