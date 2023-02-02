@@ -54,7 +54,7 @@ function generateConfig({output, targets, stylesConfig}) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
-    targets: 'extends @shopify/browserslist-config, node 12.20',
+    targets: 'extends @shopify/browserslist-config, node 16.13.0',
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',
@@ -69,14 +69,14 @@ export default [
         format: 'cjs',
         dir: path.dirname(pkg.main),
         preserveModules: true,
-        entryFileNames: '[name][assetExtname].js',
+        entryFileNames: '[name].js',
         exports: 'named',
       },
       {
         format: 'esm',
         dir: path.dirname(pkg.module),
         preserveModules: true,
-        entryFileNames: '[name][assetExtname].js',
+        entryFileNames: '[name].js',
       },
     ],
   }),
@@ -95,7 +95,7 @@ export default [
         format: 'esm',
         dir: path.dirname(pkg.esnext),
         preserveModules: true,
-        entryFileNames: '[name][assetExtname].esnext',
+        entryFileNames: '[name].esnext',
       },
     ],
   }),
