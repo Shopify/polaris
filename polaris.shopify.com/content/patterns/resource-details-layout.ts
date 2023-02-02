@@ -37,35 +37,195 @@ const pattern: SingleVariantPattern = {
   example: {
     relatedComponents: [
       {
+        label: 'AlphaCard',
+        url: '/components/alpha-card',
+      },
+      {
+        label: 'AlphaStack',
+        url: '/components/alpha-stack',
+      },
+      {
+        label: 'Columns',
+        url: '/components/columns',
+      },
+      {
         label: 'Page',
         url: '/components/page',
       },
-      {
-        label: 'Layout',
-        url: '/components/layout',
-      },
-      {
-        label: 'Card',
-        url: '/components/card',
-      },
     ],
+    snippetCode: `
+    function ResourceDetailsLayout() {
+      const SkeletonLabel = (props) => {
+        return (
+          <Box
+            background="surface-neutral"
+            minHeight="1rem"
+            maxWidth="5rem"
+            borderRadius="base"
+            {...props}
+          />
+        );
+      };
+      return (
+        <Page
+          breadcrumbs={[{ content: "Products", url: "/products" }]}
+          title="Product"
+          actionGroups={[
+            {
+              title: "More actions",
+              accessibilityLabel: "More actions",
+              actions: [
+                {
+                  content: "Share on Mastodon",
+                  accessibilityLabel: "Individual action label",
+                  onAction: () => alert("Share on Mastodon action"),
+                },
+              ],
+            },
+          ]}
+          pagination={{
+            hasPrevious: true,
+            hasNext: true,
+          }}
+        >
+          <Columns columns={{ xs: 1, md: "2fr 1fr" }}>
+            <AlphaStack fullWidth>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonLabel />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <SkeletonLabel maxWidth="8rem" />
+                  <Box border="divider" borderRadius="base" minHeight="20rem" />
+                </AlphaStack>
+              </AlphaCard>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonDisplayText size="small" />
+                  <Columns columns={{ xs: 1, md: 2 }}>
+                    <Box border="divider" borderRadius="base" minHeight="10rem" />
+                    <Box border="divider" borderRadius="base" minHeight="10rem" />
+                  </Columns>
+                </AlphaStack>
+              </AlphaCard>
+            </AlphaStack>
+            <AlphaStack fullWidth>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonDisplayText size="small" />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <Box>
+                    <Bleed marginInline={{ xs: 4, sm: 5 }}>
+                      <Divider borderStyle="divider" />
+                    </Bleed>
+                  </Box>
+                  <SkeletonLabel />
+                  <Divider borderStyle="divider" />
+                  <SkeletonBodyText />
+                </AlphaStack>
+              </AlphaCard>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonLabel />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <SkeletonLabel maxWidth="4rem" />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <SkeletonLabel />
+                  <SkeletonBodyText />
+                </AlphaStack>
+              </AlphaCard>
+            </AlphaStack>
+          </Columns>
+        </Page>
+      );
+    })`,
     context: `
       <div style={{ paddingBottom: '2rem' }}>
         ____CODE____
       </div>`,
-    code: `<Page
-      divider
-      primaryAction={{ content: "View on your store", disabled: true }}
-      secondaryActions={[
-        {
-          content: "Duplicate",
-          accessibilityLabel: "Secondary action label",
-          onAction: () => alert("Duplicate action"),
-        },
-      ]}
-    >
-      <AlphaCard>Coming Soon</AlphaCard>
-    </Page>`,
+    code: `{(function ResourceDetailsLayout() {
+      const SkeletonLabel = (props) => {
+        return (
+          <Box
+            background="surface-neutral"
+            minHeight="1rem"
+            maxWidth="5rem"
+            borderRadius="base"
+            {...props}
+          />
+        );
+      };
+      return (
+        <Page
+          breadcrumbs={[{ content: "Products", url: "/products" }]}
+          title="Product"
+          actionGroups={[
+            {
+              title: "More actions",
+              accessibilityLabel: "More actions",
+              actions: [
+                {
+                  content: "Share on Mastodon",
+                  accessibilityLabel: "Individual action label",
+                  onAction: () => alert("Share on Mastodon action"),
+                },
+              ],
+            },
+          ]}
+          pagination={{
+            hasPrevious: true,
+            hasNext: true,
+          }}
+        >
+          <Columns columns={{ xs: 1, md: "2fr 1fr" }}>
+            <AlphaStack fullWidth>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonLabel />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <SkeletonLabel maxWidth="8rem" />
+                  <Box border="divider" borderRadius="base" minHeight="20rem" />
+                </AlphaStack>
+              </AlphaCard>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonDisplayText size="small" />
+                  <Columns columns={{ xs: 1, md: 2 }}>
+                    <Box border="divider" borderRadius="base" minHeight="10rem" />
+                    <Box border="divider" borderRadius="base" minHeight="10rem" />
+                  </Columns>
+                </AlphaStack>
+              </AlphaCard>
+            </AlphaStack>
+            <AlphaStack fullWidth>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonDisplayText size="small" />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <Box>
+                    <Bleed marginInline={{ xs: 4, sm: 5 }}>
+                      <Divider borderStyle="divider" />
+                    </Bleed>
+                  </Box>
+                  <SkeletonLabel />
+                  <Divider borderStyle="divider" />
+                  <SkeletonBodyText />
+                </AlphaStack>
+              </AlphaCard>
+              <AlphaCard roundedAbove="sm">
+                <AlphaStack fullWidth>
+                  <SkeletonLabel />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <SkeletonLabel maxWidth="4rem" />
+                  <Box border="divider" borderRadius="base" minHeight="2rem" />
+                  <SkeletonLabel />
+                  <SkeletonBodyText />
+                </AlphaStack>
+              </AlphaCard>
+            </AlphaStack>
+          </Columns>
+        </Page>
+      );
+    })()}`,
   },
 };
 
