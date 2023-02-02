@@ -42,7 +42,8 @@
     }
   }
 
-  &:disabled:checked {
+  &:disabled:checked,
+  &:disabled.Input-indeterminate {
     + .Backdrop {
       background: var(--p-border-disabled);
 

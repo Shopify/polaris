@@ -1,5 +1,11 @@
 # Changelog
 
+## 5.1.3
+
+### Patch Changes
+
+- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@qt314](https://github.com/qt314)! - Re-enable non layout component related layout rules
+
 ## 5.1.2
 
 ### Patch Changes
