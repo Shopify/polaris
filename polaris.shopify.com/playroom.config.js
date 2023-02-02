@@ -66,5 +66,5 @@ module.exports = {
       ],
     },
   }),
-  iframeSandbox: 'allow-scripts',
+  iframeSandbox: 'allow-scripts allow-same-origin',
 };
