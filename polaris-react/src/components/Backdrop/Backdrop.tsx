@@ -30,8 +30,11 @@ export function Backdrop(props: BackdropProps) {
   };
 
   const handleClick = () => {
-    if (setClosing && onClick) {
+    if (setClosing) {
       setClosing(false);
+    }
+
+    if (onClick) {
       onClick();
     }
   };
