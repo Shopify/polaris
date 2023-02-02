@@ -24,6 +24,8 @@ export interface CollapsibleProps {
   transition?: boolean | Transition;
   /** @deprecated Re-measuring is no longer necessary on children update **/
   preventMeasuringOnChildrenUpdate?: boolean;
+  /** Callback when the animation completes. */
+  onAnimationEnd?(): void;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
@@ -37,6 +39,7 @@ export function Collapsible({
   transition = true,
   preventMeasuringOnChildrenUpdate: _preventMeasuringOnChildrenUpdate,
   children,
+  onAnimationEnd,
 }: CollapsibleProps) {
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(open);
@@ -73,9 +76,10 @@ export function Collapsible({
       if (target === collapsibleContainer.current) {
         setAnimationState('idle');
         setIsOpen(open);
+        onAnimationEnd && onAnimationEnd();
       }
     },
-    [open],
+    [onAnimationEnd, open],
   );
 
   const startAnimation = useCallback(() => {

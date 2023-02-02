@@ -1,5 +1,65 @@
 # Changelog
 
+## 5.1.3
+
+### Patch Changes
+
+- [#8208](https://github.com/Shopify/polaris/pull/8208) [`69d27dbf6`](https://github.com/Shopify/polaris/commit/69d27dbf63d360a7cb3722fa8cd16e605288b3b9) Thanks [@qt314](https://github.com/qt314)! - Re-enable non layout component related layout rules
+
+## 5.1.2
+
+### Patch Changes
+
+- [#8167](https://github.com/Shopify/polaris/pull/8167) [`07669075a`](https://github.com/Shopify/polaris/commit/07669075a3ea9c0aeac3bf9ff645df1a6f2938b5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Temporarily disable layout category
+
+* [#8162](https://github.com/Shopify/polaris/pull/8162) [`74a75a473`](https://github.com/Shopify/polaris/commit/74a75a4731b3f67d408ccb985708d6056819d4f8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Allow SCSS namespaces with Polaris breakpoints
+
+- [#8168](https://github.com/Shopify/polaris/pull/8168) [`f8f9eecd5`](https://github.com/Shopify/polaris/commit/f8f9eecd5abe900581efa5032d5f4ee80228e4d4) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Ignored needless disables for layout category and added meta URL to error message
+
+## 5.1.1
+
+### Patch Changes
+
+- [#8097](https://github.com/Shopify/polaris/pull/8097) [`cd150396b`](https://github.com/Shopify/polaris/commit/cd150396b11f1a0abf6d4419c5c594dfdae3185d) Thanks [@qt314](https://github.com/qt314)! - Fix incorrect unit function categorization
+
+## 5.1.0
+
+### Minor Changes
+
+- [#7993](https://github.com/Shopify/polaris/pull/7993) [`128f147d1`](https://github.com/Shopify/polaris/commit/128f147d19354adbb24c48443e7c47ff6dd06c74) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Created `polaris/declaration-property-value-disallowed-list` rule to ignore failures in `@font-face` at-rules
+
+### Patch Changes
+
+- [#8006](https://github.com/Shopify/polaris/pull/8006) [`6404b1638`](https://github.com/Shopify/polaris/commit/6404b163897fecfcdef853c5ed0f4e25a1334df0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Temporarily disabled `border-radius-base` error
+
+## 5.0.2
+
+### Patch Changes
+
+- [#7954](https://github.com/Shopify/polaris/pull/7954) [`af0ceb8c6`](https://github.com/Shopify/polaris/commit/af0ceb8c6fae30c6aaa45bf89eef660ea45fd78e) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Use RegExp pattern to exclude reporting invalid scope disables and address memory issues
+
+* [#7919](https://github.com/Shopify/polaris/pull/7919) [`e7712e7a5`](https://github.com/Shopify/polaris/commit/e7712e7a57fddac939e65510fb257ac82442faa4) Thanks [@qt314](https://github.com/qt314)! - Deduped converage rules that were in multiple categories
+
+## 5.0.1
+
+### Patch Changes
+
+- [#7866](https://github.com/Shopify/polaris/pull/7866) [`4b96147b3`](https://github.com/Shopify/polaris/commit/4b96147b32a89a393e8b6c5f7df1442f875248a0) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `stylelint-polaris` to allow disabling specific coverage rules instead of entire categories
+
+* [#7906](https://github.com/Shopify/polaris/pull/7906) [`c8a294f51`](https://github.com/Shopify/polaris/commit/c8a294f51baae53b131a5f9014f6223fdf3ef5ee) Thanks [@qt314](https://github.com/qt314)! - Fixed config atRule and function regex to match whole word
+
+- [#7868](https://github.com/Shopify/polaris/pull/7868) [`6cd75fd9a`](https://github.com/Shopify/polaris/commit/6cd75fd9a089791a79fe8aa7e43f6b54add47a45) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Update `package.json` to define a single entry point
+
+* [#7696](https://github.com/Shopify/polaris/pull/7696) [`bdf04a289`](https://github.com/Shopify/polaris/commit/bdf04a289e7a5b4c1e4717f5e162d00ea87c807b) Thanks [@chloerice](https://github.com/chloerice)! - Implemented custom message configuration support for polaris/coverage plugin
+
+- [#7898](https://github.com/Shopify/polaris/pull/7898) [`9206b7b13`](https://github.com/Shopify/polaris/commit/9206b7b130cb4d5b0a6ec110693d8b45248f8dcf) Thanks [@qt314](https://github.com/qt314)! - Bug fix to wrap z-index 'declaration-property-value-allowed-list' token value with "var"
+
+## 5.0.0
+
+### Major Changes
+
+- [#7691](https://github.com/Shopify/polaris/pull/7691) [`38b2a00a6`](https://github.com/Shopify/polaris/commit/38b2a00a6aa0c95d5df777c7d51023a8193f8090) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Stylelint Polaris v5 release
+
 ## 4.4.0
 
 ### Minor Changes

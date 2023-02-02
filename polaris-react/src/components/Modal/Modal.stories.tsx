@@ -1,12 +1,15 @@
 import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  Banner,
   Button,
   Checkbox,
   ChoiceList,
   DropZone,
+  FormLayout,
   Modal,
   Stack,
+  Text,
   TextContainer,
   TextField,
 } from '@shopify/polaris';
@@ -42,11 +45,11 @@ export function Default() {
       >
         <Modal.Section>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -92,11 +95,11 @@ export function WithPrimaryAction() {
           <Stack vertical>
             <Stack.Item>
               <TextContainer>
-                <p>
+                <Text variant="bodyMd" as="span">
                   You can share this discount link with your customers via email
                   or social media. Your discount will be automatically applied
                   at checkout.
-                </p>
+                </Text>
               </TextContainer>
             </Stack.Item>
             <Stack.Item fill>
@@ -336,11 +339,11 @@ export function WithoutATitle() {
       >
         <Modal.Section titleHidden>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -372,9 +375,9 @@ export function WithScrollListener() {
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
             <TextContainer>
-              <p>
+              <Text variant="bodyMd" as="span">
                 Item <a href="#Content">#{index}</a>
-              </p>
+              </Text>
             </TextContainer>
           </Modal.Section>
         ))}
@@ -421,11 +424,11 @@ export function WithActivatorRef() {
       >
         <Modal.Section>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -468,14 +471,111 @@ export function WithoutAnActivatorProp() {
       >
         <Modal.Section>
           <TextContainer>
-            <p>
+            <Text variant="bodyMd" as="span">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
     </div>
+  );
+}
+
+export function WithLongContent() {
+  return (
+    <Modal
+      title="Long form modal"
+      open
+      onClose={() => {}}
+      primaryAction={{content: 'Save'}}
+    >
+      <Modal.Section>
+        <Banner title="Payment details" />
+      </Modal.Section>
+      <Modal.Section>
+        <FormLayout>
+          <FormLayout.Group>
+            <TextField label="Payment method type" autoComplete="off" />
+            <TextField label="Card number" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Expires" autoComplete="off" />
+            <TextField label="CVV" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Country/region" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="First name" autoComplete="off" />
+            <TextField label="Last name" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Address" autoComplete="off" />
+            <TextField label="Apartment, suite, etc." autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="City" autoComplete="off" />
+            <TextField label="Province" autoComplete="off" />
+            <TextField label="Postal code" autoComplete="off" />
+          </FormLayout.Group>
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
+  );
+}
+
+export function WithLongContentNoScroll() {
+  return (
+    <Modal
+      title="Long form modal"
+      open
+      onClose={() => {}}
+      noScroll
+      primaryAction={{content: 'Save'}}
+    >
+      <Modal.Section>
+        <Banner title="Payment details" />
+      </Modal.Section>
+      <Modal.Section>
+        <FormLayout>
+          <FormLayout.Group>
+            <TextField label="Payment method type" autoComplete="off" />
+            <TextField label="Card number" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Expires" autoComplete="off" />
+            <TextField label="CVV" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Country/region" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="First name" autoComplete="off" />
+            <TextField label="Last name" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Address" autoComplete="off" />
+            <TextField label="Apartment, suite, etc." autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="City" autoComplete="off" />
+            <TextField label="Province" autoComplete="off" />
+            <TextField label="Postal code" autoComplete="off" />
+          </FormLayout.Group>
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
   );
 }

@@ -24,7 +24,15 @@ The New badge should be used on features that have all of these 3 characteristic
 - It’s creating new value for merchants (not just an improved way of doing something they are already doing)
 - It’s worth distracting our merchants from their current workflow to inform them about a whole new part of Shopify
 
+Example:
+- To signify an entirely new page in the Settings nav
+
+Note: Using the New badge in the Settings nav to draw attention to a new feature must be reviewed and approved by UX management on a case by case basis.
+
 Consider how the admin would look if it was cluttered with New badges or features of varying importance—overusing the badge creates unnecessary distraction and lessens its impact.
+
+### When not to use the New badge
+- Should never be used in the primary [navigation](/components/navigation) menu of the Shopify admin
 
 ## How long to use the New badge
 

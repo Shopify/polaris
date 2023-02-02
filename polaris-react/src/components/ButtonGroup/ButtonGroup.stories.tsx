@@ -34,3 +34,43 @@ export function OutlineWithSegmentedButtons() {
     </ButtonGroup>
   );
 }
+
+export function NoWrapButtons() {
+  return (
+    <>
+      <p>Default</p>
+      <div
+        style={{
+          width: '300px',
+          border: '2px solid blue',
+          padding: '10px',
+          overflowX: 'scroll',
+        }}
+      >
+        <ButtonGroup>
+          <Button>Fourth</Button>
+          <Button>Third</Button>
+          <Button>Second</Button>
+          <Button primary>First</Button>
+        </ButtonGroup>
+      </div>
+      <br />
+      <p>With noWrap</p>
+      <div
+        style={{
+          width: '300px',
+          border: '2px solid blue',
+          padding: '10px',
+          overflowX: 'scroll',
+        }}
+      >
+        <ButtonGroup noWrap>
+          <Button>Fourth</Button>
+          <Button>Third</Button>
+          <Button>Second</Button>
+          <Button primary>First</Button>
+        </ButtonGroup>
+      </div>
+    </>
+  );
+}

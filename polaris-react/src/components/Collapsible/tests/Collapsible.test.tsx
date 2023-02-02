@@ -232,6 +232,21 @@ describe('<Collapsible />', () => {
       });
     });
 
+    it('calls onAnimationEnd when provided', () => {
+      const onAnimationEnd = jest.fn();
+      const collapsible = mountWithApp<CollapsibleProps>(
+        <Collapsible id="test-collapsible" open onAnimationEnd={onAnimationEnd}>
+          content
+        </Collapsible>,
+      );
+
+      collapsible.setProps({open: false});
+
+      fireTransitionEnd(collapsible);
+
+      expect(onAnimationEnd).toHaveBeenCalledTimes(1);
+    });
+
     it('does not complete opening transition if onTransitionEnd fires on a different target', () => {
       const id = 'test-collapsible';
       const collapsible = mountWithApp<CollapsibleProps>(

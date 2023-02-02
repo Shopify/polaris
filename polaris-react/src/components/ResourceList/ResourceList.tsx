@@ -10,7 +10,6 @@ import {EnableSelectionMinor} from '@shopify/polaris-icons';
 import {tokens, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
-import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
@@ -19,8 +18,6 @@ import {EventListener} from '../EventListener';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
-  CheckableButtonKey,
-  CheckableButtons,
   ResourceListContext,
   ResourceListSelectedItems,
   SELECT_ALL_ITEMS,
@@ -30,7 +27,12 @@ import {EmptySearchResult} from '../EmptySearchResult';
 import {useI18n} from '../../utilities/i18n';
 import {ResourceItem} from '../ResourceItem';
 import {useLazyRef} from '../../utilities/use-lazy-ref';
-import {BulkActions, BulkActionsProps} from '../BulkActions';
+import {
+  BulkActions,
+  BulkActionsProps,
+  useIsBulkActionsSticky,
+} from '../BulkActions';
+import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 
 import styles from './ResourceList.scss';
@@ -106,6 +108,8 @@ export interface ResourceListProps<
   sortOptions?: SelectOption[];
   /** ReactNode to display instead of the sort control */
   alternateTool?: React.ReactNode;
+  /** Custom header text displayed above the list instead of the resource count. */
+  headerContent?: string;
   /** Callback when sort option is changed */
   onSortChange?(selected: string, id: string): void;
   /** Callback when selection is changed */
@@ -131,6 +135,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   selectable,
   hasMoreItems,
   loading,
+  headerContent,
   showHeader,
   totalItemsCount,
   sortValue,
@@ -153,10 +158,21 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     (x = 0) => x + 1,
     0,
   )[1];
+  const checkableButtonRef = useRef<HTMLInputElement>(null);
 
-  const [checkableButtons, setCheckableButtons] = useState<CheckableButtons>(
-    new Map(),
-  );
+  const {
+    bulkActionsIntersectionRef,
+    tableMeasurerRef,
+    isBulkActionsSticky,
+    bulkActionsAbsoluteOffset,
+    bulkActionsMaxWidth,
+    bulkActionsOffsetLeft,
+    computeTableDimensions,
+  } = useIsBulkActionsSticky(selectMode);
+
+  useEffect(() => {
+    computeTableDimensions();
+  }, [computeTableDimensions, items.length]);
 
   const defaultResourceName = useLazyRef(() => ({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
@@ -191,13 +207,14 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     {leading: true, trailing: true, maxWait: 50},
   );
 
-  const isSelectable = Boolean(
-    (promotedBulkActions && promotedBulkActions.length > 0) ||
-      (bulkActions && bulkActions.length > 0) ||
-      selectable,
-  );
+  const isSelectable =
+    Boolean(
+      (promotedBulkActions && promotedBulkActions.length > 0) ||
+        (bulkActions && bulkActions.length > 0) ||
+        selectable,
+    ) && !smallScreen;
 
-  const bulkSelectState = (): boolean | 'indeterminate' => {
+  const selectAllSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
       !selectedItems ||
@@ -233,6 +250,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         totalItemsCount,
         resource,
       });
+    } else if (headerContent) {
+      return headerContent;
     } else {
       return i18n.translate('Polaris.ResourceList.showing', {
         itemsCount,
@@ -241,7 +260,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     }
   };
 
-  const bulkActionsLabel = () => {
+  const selectAllActionsLabel = () => {
     const selectedItemsCount =
       selectedItems === SELECT_ALL_ITEMS
         ? `${items.length}+`
@@ -252,7 +271,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     });
   };
 
-  const bulkActionsAccessibilityLabel = () => {
+  const selectAllActionsAccessibilityLabel = () => {
     const selectedItemsCount = selectedItems.length;
     const totalItemsCount = items.length;
     const allSelected = selectedItemsCount === totalItemsCount;
@@ -427,15 +446,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     return items.slice(min, max + 1).map(resolveItemId);
   };
 
-  const handleCheckableButtonRegistration = (
-    key: CheckableButtonKey,
-    button: CheckboxHandles,
-  ) => {
-    if (!checkableButtons.get(key)) {
-      setCheckableButtons(new Map(checkableButtons).set(key, button));
-    }
-  };
-
   const handleSelectionChange = (
     selected: boolean,
     id: string,
@@ -510,44 +520,58 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       handleSelectMode(true);
     }
 
-    let checkbox: CheckboxHandles | undefined;
-
-    if (isBreakpointsXS()) {
-      checkbox = checkableButtons.get('bulkSm');
-    } else if (newlySelectedItems.length === 0) {
-      checkbox = checkableButtons.get('plain');
-    } else {
-      checkbox = checkableButtons.get('bulkLg');
-    }
-
     if (onSelectionChange) {
       onSelectionChange(newlySelectedItems);
     }
 
     // setTimeout ensures execution after the Transition on BulkActions
     setTimeout(() => {
-      checkbox && checkbox.focus();
+      checkableButtonRef?.current?.focus();
     }, 0);
   };
 
-  const bulkActionsMarkup = isSelectable ? (
-    <div className={styles.BulkActionsWrapper}>
-      <BulkActions
-        label={bulkActionsLabel()}
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
-        selected={bulkSelectState()}
+  const selectAllActionsMarkup = isSelectable ? (
+    <div className={styles.SelectAllActionsWrapper}>
+      <SelectAllActions
+        label={selectAllActionsLabel()}
+        accessibilityLabel={selectAllActionsAccessibilityLabel()}
+        selected={selectAllSelectState()}
         onToggleAll={handleToggleAll}
         selectMode={selectMode}
-        onSelectModeToggle={handleSelectMode}
-        promotedActions={promotedBulkActions}
         paginatedSelectAllAction={paginatedSelectAllAction()}
         paginatedSelectAllText={paginatedSelectAllText()}
-        actions={bulkActions}
         disabled={loading}
-        smallScreen={smallScreen}
+        ref={checkableButtonRef}
       />
     </div>
   ) : null;
+
+  const bulkActionClassNames = classNames(
+    styles.BulkActionsWrapper,
+    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
+  );
+
+  const bulkActionsMarkup =
+    isSelectable && selectMode ? (
+      <div
+        className={bulkActionClassNames}
+        style={{
+          top: isBulkActionsSticky ? undefined : bulkActionsAbsoluteOffset,
+          width: bulkActionsMaxWidth,
+          left: isBulkActionsSticky ? bulkActionsOffsetLeft : undefined,
+        }}
+      >
+        <BulkActions
+          selectMode={selectMode}
+          onSelectModeToggle={handleSelectMode}
+          promotedActions={promotedBulkActions}
+          actions={bulkActions}
+          disabled={loading}
+          isSticky={isBulkActionsSticky}
+          width={bulkActionsMaxWidth}
+        />
+      </div>
+    ) : null;
 
   const filterControlMarkup = filterControl ? (
     <div className={styles.FiltersWrapper}>{filterControl}</div>
@@ -592,11 +616,11 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const checkableButtonMarkup = isSelectable ? (
     <div className={styles.CheckableButtonWrapper}>
       <CheckableButton
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
+        accessibilityLabel={selectAllActionsAccessibilityLabel()}
         label={headerTitle()}
         onToggleAll={handleToggleAll}
-        plain
         disabled={loading}
+        ref={checkableButtonRef}
       />
     </div>
   ) : null;
@@ -637,7 +661,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
             );
             return (
               <div className={headerClassName}>
-                <EventListener event="resize" handler={handleResize} />
                 {headerWrapperOverlay}
                 <div className={styles.HeaderContentWrapper}>
                   {headerTitleMarkup}
@@ -646,11 +669,12 @@ export function ResourceList<TItemType extends ResourceListItemData>({
                   {sortingSelectMarkup}
                   {selectButtonMarkup}
                 </div>
-                {bulkActionsMarkup}
+                {selectAllActionsMarkup}
               </div>
             );
           }}
         </Sticky>
+        {bulkActionsMarkup}
       </div>
     );
 
@@ -717,12 +741,19 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     resourceName,
     loading,
     onSelectionChange: handleSelectionChange,
-    registerCheckableButtons: handleCheckableButtonRegistration,
   };
+
+  const resourceListWrapperClasses = classNames(
+    styles.ResourceListWrapper,
+    Boolean(bulkActionsMarkup) &&
+      selectMode &&
+      styles.ResourceListWrapperWithBulkActions,
+  );
 
   return (
     <ResourceListContext.Provider value={context}>
-      <div className={styles.ResourceListWrapper}>
+      <EventListener event="resize" handler={handleResize} />
+      <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
         {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
@@ -730,6 +761,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
       </div>
+      <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
 }

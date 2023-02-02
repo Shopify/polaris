@@ -29,7 +29,7 @@ export function Backdrop(props: BackdropProps) {
     }
   };
 
-  const handleMouseUp = () => {
+  const handleClick = () => {
     if (setClosing && onClick) {
       setClosing(false);
       onClick();
@@ -41,10 +41,9 @@ export function Backdrop(props: BackdropProps) {
       <ScrollLock />
       <div
         className={className}
-        onClick={onClick}
+        onClick={handleClick}
         onTouchStart={onTouchStart}
         onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
       />
     </>
   );

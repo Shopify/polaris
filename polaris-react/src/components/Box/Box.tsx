@@ -19,7 +19,8 @@ import {
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section' | 'ul' | 'li';
+type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
+
 type Overflow = 'hidden' | 'scroll';
 type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
@@ -151,7 +152,10 @@ export interface BoxProps extends React.AriaAttributes {
    */
   paddingInlineEnd?: Spacing;
   /** Aria role */
-  role?: Extract<React.AriaRole, 'status' | 'presentation' | 'menu'>;
+  role?: Extract<
+    React.AriaRole,
+    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
+  >;
   /** Shadow on box */
   shadow?: DepthShadowAlias;
   /** Set tab order */
@@ -171,6 +175,10 @@ export interface BoxProps extends React.AriaAttributes {
   insetInlineEnd?: Spacing;
   /** Opacity of box */
   opacity?: string;
+  /** Outline style */
+  outline?: BorderTokenAlias;
+  /** Visually hide the contents during print */
+  printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
   /** z-index of box */
@@ -205,6 +213,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
+      outline,
       padding,
       paddingBlockStart,
       paddingBlockEnd,
@@ -214,6 +223,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       shadow,
       tabIndex,
       width,
+      printHidden,
       visuallyHidden,
       position,
       insetBlockStart,
@@ -275,32 +285,32 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-min-height': minHeight,
       '--pc-box-min-width': minWidth,
       '--pc-box-max-width': maxWidth,
+      '--pc-box-outline': outline ? `var(--p-border-${outline})` : undefined,
       '--pc-box-overflow-x': overflowX,
       '--pc-box-overflow-y': overflowY,
-      ...getResponsiveProps('box', 'padding', 'space', padding),
       ...getResponsiveProps(
         'box',
         'padding-block-end',
         'space',
-        paddingBlockEnd,
+        paddingBlockEnd || padding,
       ),
       ...getResponsiveProps(
         'box',
         'padding-block-start',
         'space',
-        paddingBlockStart,
+        paddingBlockStart || padding,
       ),
       ...getResponsiveProps(
         'box',
         'padding-inline-start',
         'space',
-        paddingInlineStart,
+        paddingInlineStart || padding,
       ),
       ...getResponsiveProps(
         'box',
         'padding-inline-end',
         'space',
-        paddingInlineEnd,
+        paddingInlineEnd || padding,
       ),
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
       '--pc-box-width': width,
@@ -324,6 +334,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     const className = classNames(
       styles.Box,
       visuallyHidden && styles.visuallyHidden,
+      printHidden && styles.printHidden,
       as === 'ul' && styles.listReset,
     );
 

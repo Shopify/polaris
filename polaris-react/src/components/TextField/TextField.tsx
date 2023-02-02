@@ -407,6 +407,7 @@ export function TextField({
         onMouseDown={handleButtonPress}
         onMouseUp={handleButtonRelease}
         ref={spinnerRef}
+        onBlur={handleOnBlur}
       />
     ) : null;
 
@@ -474,14 +475,6 @@ export function TextField({
 
     if (onFocus) {
       onFocus(event as React.FocusEvent<HTMLInputElement>);
-    }
-  };
-
-  const handleOnBlur = (event: React.FocusEvent) => {
-    setFocus(false);
-
-    if (onBlur) {
-      onBlur(event);
     }
   };
 
@@ -634,6 +627,14 @@ export function TextField({
     }
 
     event.preventDefault();
+  }
+
+  function handleOnBlur(event: React.FocusEvent) {
+    setFocus(false);
+
+    if (onBlur) {
+      onBlur(event);
+    }
   }
 
   function isInput(target: HTMLElement | EventTarget) {

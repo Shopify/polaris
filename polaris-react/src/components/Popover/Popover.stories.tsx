@@ -25,15 +25,28 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 export function WithActionList() {
-  const [popoverActive, setPopoverActive] = useState(true);
+  const [activePopover, setActivePopover] = useState(null);
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
-  );
+  const togglePopoverActive = useCallback((popover, isClosing) => {
+    const currentPopover = isClosing ? null : popover;
+    setActivePopover(currentPopover);
+  }, []);
 
   const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
+    <Button
+      id="button-1"
+      onClick={() => togglePopoverActive('popover1', false)}
+      disclosure
+    >
+      More actions
+    </Button>
+  );
+  const activator2 = (
+    <Button
+      id="button-2"
+      onClick={() => togglePopoverActive('popover2', false)}
+      disclosure
+    >
       More actions
     </Button>
   );
@@ -41,10 +54,21 @@ export function WithActionList() {
   return (
     <div style={{height: '250px'}}>
       <Popover
-        active={popoverActive}
+        active={activePopover === 'popover1'}
         activator={activator}
         autofocusTarget="first-node"
-        onClose={togglePopoverActive}
+        onClose={() => togglePopoverActive('popover1', true)}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={[{content: 'Import'}, {content: 'Export'}]}
+        />
+      </Popover>
+      <Popover
+        active={activePopover === 'popover2'}
+        activator={activator2}
+        autofocusTarget="first-node"
+        onClose={() => togglePopoverActive('popover2', true)}
       >
         <ActionList
           actionRole="menuitem"
@@ -537,6 +561,53 @@ export function WithSearchableListbox() {
             </Scrollable>
           </div>
         </Popover.Pane>
+      </Popover>
+    </div>
+  );
+}
+
+export function WithLoadingSmallerContent() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button
+      onClick={() => {
+        setLoading(true);
+        togglePopoverActive();
+        window.setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }}
+      disclosure
+    >
+      Show server data
+    </Button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        ariaHaspopup={false}
+        sectioned
+      >
+        {loading ? (
+          <div style={{height: '200px'}}>
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div>
+            <p>Small content from the server</p>
+          </div>
+        )}
       </Popover>
     </div>
   );

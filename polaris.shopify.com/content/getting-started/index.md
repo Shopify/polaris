@@ -32,7 +32,7 @@ The [Shopify/polaris GitHub repo](https://github.com/Shopify/polaris) is an open
 
 - [React components](https://github.com/Shopify/polaris/tree/main/polaris-react#using-the-react-components)
 - [Design tokens](https://github.com/Shopify/polaris/tree/main/polaris-tokens#installation)
-- [VS Code extension](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode)
+- [VS Code extension](/tools/polaris-for-vscode)
 
 ## Tutorials
 

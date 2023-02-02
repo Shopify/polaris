@@ -10,6 +10,8 @@ import {TrapFocus} from '../../../TrapFocus';
 
 import styles from './Dialog.scss';
 
+type CSSTransitionProps = React.ComponentProps<typeof CSSTransition>;
+
 export interface DialogProps {
   labelledBy?: string;
   instant?: boolean;
@@ -88,6 +90,7 @@ export function Dialog({
           <div
             role="dialog"
             aria-modal
+            aria-label={labelledBy}
             aria-labelledby={labelledBy}
             tabIndex={-1}
             className={styles.Dialog}
@@ -117,7 +120,7 @@ const fadeUpClasses = {
   exitActive: classNames(styles.animateFadeUp, styles.exited),
 };
 
-function FadeUp({children, ...props}: any) {
+function FadeUp({children, ...props}: CSSTransitionProps) {
   return (
     <CSSTransition {...props} classNames={fadeUpClasses}>
       {children}

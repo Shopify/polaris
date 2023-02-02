@@ -28,6 +28,9 @@ function Frame({darkMode, children}: Props) {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const {asPath} = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => setIsMounted(true), []);
 
   useEffect(() => {
     const mainContent = document.querySelector('#main');
@@ -120,13 +123,15 @@ function Frame({darkMode, children}: Props) {
           Polaris
         </Link>
 
-        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
-          {darkMode.value ? (
-            <div className={styles.LightModeIcon}>💡</div>
-          ) : (
-            <div className={styles.DarkModeIcon}>🌙</div>
-          )}
-        </button>
+        {isMounted && (
+          <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+            {darkMode.value ? (
+              <span className={styles.LightModeIcon}>💡</span>
+            ) : (
+              <span className={styles.DarkModeIcon}>🌙</span>
+            )}
+          </button>
+        )}
 
         <GlobalSearch />
       </div>
