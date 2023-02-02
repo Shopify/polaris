@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Added identical z-index tokens with new naming
+Added new z-index tokens that will be the default in version 7 of polaris-tokens
