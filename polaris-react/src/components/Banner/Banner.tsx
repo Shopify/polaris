@@ -26,8 +26,6 @@ import {Icon, IconProps} from '../Icon';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {Text} from '../Text';
 import {Box} from '../Box';
-import {Bleed} from '../Bleed';
-import {Inline} from '../Inline';
 
 import styles from './Banner.scss';
 
