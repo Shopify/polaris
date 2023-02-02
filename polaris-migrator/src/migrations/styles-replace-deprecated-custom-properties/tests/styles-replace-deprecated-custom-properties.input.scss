@@ -1,6 +1,7 @@
 .shadow {
   // --p-shadow-transparent
   box-shadow: var(--p-shadow-transparent);
+  box-shadow: var(--p-shadow-transparent, 0);
   box-shadow: inset var(--p-shadow-transparent);
   box-shadow: var(--p-shadow-transparent), inset 16px 8px hotpink;
   box-shadow: inset 16px 8px hotpink, var(--p-shadow-transparent);
