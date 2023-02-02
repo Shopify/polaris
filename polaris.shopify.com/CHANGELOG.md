@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.31.1
+
+### Patch Changes
+
+- [#8235](https://github.com/Shopify/polaris/pull/8235) [`5fbe75461`](https://github.com/Shopify/polaris/commit/5fbe75461499eb84940fd8b668bdd56c7a7e3073) Thanks [@laurkim](https://github.com/laurkim)! - Updated Patterns/Typography copy to include suggestions for uppercase typography styles
+
+- Updated dependencies [[`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`17fa970db`](https://github.com/Shopify/polaris/commit/17fa970db66213fe659ee231e750f7054a72dc97)]:
+  - @shopify/polaris@10.25.0
+
 ## 0.31.0
 
 ### Minor Changes
