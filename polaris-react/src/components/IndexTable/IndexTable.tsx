@@ -962,6 +962,21 @@ function IndexTableBase({
         </div>
       );
     }
+    if (heading.sortableMessage) {
+      return (
+        <Tooltip
+          content={heading.sortableMessage}
+          dismissOnMouseOut
+          preferredPosition="above"
+          width={heading.sortableMessageWidth ?? 'wide'}
+          padding="4"
+          borderRadius="2"
+          hasUnderline
+        >
+          <span style={{cursor: 'pointer'}}>{headingContent}</span>
+        </Tooltip>
+      );
+    }
     return headingContent;
   }
 
