@@ -1,0 +1,13 @@
+# Temporary file to alert team members on the layout foundations project of changes to Card and Stack.
+
+/polaris-react/src/components/Card/                          @laurkim @aveline
+/polaris-react/src/components/LegacyCard/                    @laurkim @aveline
+
+/polaris-react/src/components/Stack/                         @laurkim @aveline
+/polaris-react/src/components/LegacyStackStack/              @laurkim @aveline
+
+/polaris.shopify.com/content/components/card.md              @laurkim @aveline
+/polaris.shopify.com/content/components/legacy-card.md       @laurkim @aveline
+
+/polaris.shopify.com/content/components/stack.md             @laurkim @aveline
+/polaris.shopify.com/content/components/legacy-stack.md      @laurkim @aveline
