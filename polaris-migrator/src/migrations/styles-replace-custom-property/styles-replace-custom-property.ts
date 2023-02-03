@@ -8,16 +8,6 @@ import {isSassFunction} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 import {matchesStringOrRegExp} from '../../utilities/matchesStringOrRegExp';
 
-export default function stylesReplaceCustomProperty(
-  file: FileInfo,
-  _: API,
-  options: Options,
-) {
-  return postcss(plugin(options)).process(file.source, {
-    syntax: require('postcss-scss'),
-  }).css;
-}
-
 interface ReplacementMap {
   [tokenName: string]: string;
 }
@@ -31,6 +21,17 @@ interface PluginOptions extends Options {
   from?: string;
   to?: string;
   maps?: string;
+  replacementMaps?: ReplacementMaps;
+}
+
+export default function stylesReplaceCustomProperty(
+  file: FileInfo,
+  _: API,
+  options: PluginOptions,
+) {
+  return postcss(plugin(options)).process(file.source, {
+    syntax: require('postcss-scss'),
+  }).css;
 }
 
 const processed = Symbol('processed');
@@ -52,6 +53,8 @@ function plugin(options: PluginOptions = {}): Plugin {
         [options.from]: options.to,
       },
     };
+  } else if (options.replacementMaps) {
+    replacementMaps = options.replacementMaps;
   }
 
   if (!replacementMaps) {
