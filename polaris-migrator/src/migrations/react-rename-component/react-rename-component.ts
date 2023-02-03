@@ -20,6 +20,10 @@ import {
 
 export interface MigrationOptions extends Options {
   relative: boolean;
+  renameFrom: string;
+  renameTo: string;
+  renamePropsFrom: string;
+  renamePropsTo: string;
 }
 
 export default function reactRenameComponent(
@@ -38,16 +42,17 @@ export default function reactRenameComponent(
 
   const sourcePaths = normalizeImportSourcePaths(j, source, {
     relative: options.relative,
-    from: 'Card',
-    to: 'LegacyCard',
+    from: options.renameFrom,
+    to: options.renameTo,
   });
 
   if (!sourcePaths) return;
 
   // If the Card component is not imported, exit
+
   if (
-    !hasImportSpecifier(j, source, 'Card', sourcePaths.from) &&
-    !hasImportSpecifier(j, source, 'CardProps', sourcePaths.from)
+    !hasImportSpecifier(j, source, options.renameFrom, sourcePaths.from) &&
+    !hasImportSpecifier(j, source, options.renamePropsFrom, sourcePaths.from)
   ) {
     return fileInfo.source;
   }
@@ -56,7 +61,7 @@ export default function reactRenameComponent(
   let hasExistingIdentifier = false;
 
   // If local `LegacyCard` is already used in the file, exit
-  source.findJSXElements('LegacyCard').forEach((element) => {
+  source.findJSXElements(options.renameTo).forEach((element) => {
     insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
     hasExistingJsx = true;
   });
@@ -68,7 +73,8 @@ export default function reactRenameComponent(
     .find(j.Identifier)
     .filter(
       (path) =>
-        path.node.name === 'LegacyCard' || path.node.name === 'LegacyCardProps',
+        path.node.name === options.renameTo ||
+        path.node.name === options.renamePropsTo,
     )
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;
@@ -80,12 +86,13 @@ export default function reactRenameComponent(
   if (hasExistingIdentifier) return source.toSource();
 
   const localElementName =
-    getImportSpecifierName(j, source, 'Card', sourcePaths.from) || 'Card';
+    getImportSpecifierName(j, source, options.renameFrom, sourcePaths.from) ||
+    options.renameFrom;
 
   const localElementTypeName = getImportSpecifierName(
     j,
     source,
-    'CardProps',
+    options.renamePropsFrom,
     sourcePaths.from,
   );
 
@@ -96,7 +103,7 @@ export default function reactRenameComponent(
       element.node.openingElement.name.type === 'JSXIdentifier' &&
       element.node.openingElement.name.name === localElementName
     ) {
-      replaceJSXElement(j, element, 'LegacyCard');
+      replaceJSXElement(j, element, options.renameTo);
       return;
     }
 
@@ -108,8 +115,8 @@ export default function reactRenameComponent(
       element.node.closingElement?.name.object.type === 'JSXIdentifier' &&
       element.node.closingElement?.name.object.name === localElementName
     ) {
-      element.node.openingElement.name.object.name = 'LegacyCard';
-      element.node.closingElement.name.object.name = 'LegacyCard';
+      element.node.openingElement.name.object.name = options.renameTo;
+      element.node.closingElement.name.object.name = options.renameTo;
     }
   });
 
@@ -128,31 +135,31 @@ export default function reactRenameComponent(
         path.node.name === localElementName &&
         path.parent.value.type !== 'MemberExpression'
       ) {
-        path.node.name = 'LegacyCard';
+        path.node.name = options.renameTo;
       }
 
       if (path.node.name === localElementTypeName) {
-        path.node.name = 'LegacyCardProps';
+        path.node.name = options.renamePropsTo;
       }
     });
 
-  if (!hasImportSpecifier(j, source, 'LegacyCard', sourcePaths.to)) {
+  if (!hasImportSpecifier(j, source, options.renameTo, sourcePaths.to)) {
     if (options.relative) {
       insertImportDeclaration(
         j,
         source,
-        'LegacyCard',
+        options.renameTo,
         sourcePaths.to,
         sourcePaths.from,
       );
     } else {
-      insertImportSpecifier(j, source, 'LegacyCard', sourcePaths.to);
+      insertImportSpecifier(j, source, options.renameTo, sourcePaths.to);
     }
   }
 
   // Remove the `Card` import
-  if (hasImportSpecifier(j, source, 'Card', sourcePaths.from)) {
-    removeImportSpecifier(j, source, 'Card', sourcePaths.from);
+  if (hasImportSpecifier(j, source, options.renameFrom, sourcePaths.from)) {
+    removeImportSpecifier(j, source, options.renameFrom, sourcePaths.from);
   }
 
   // Remove the `CardProps` import
