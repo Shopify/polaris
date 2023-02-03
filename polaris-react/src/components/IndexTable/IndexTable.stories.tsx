@@ -11,6 +11,7 @@ import {
   TextField,
   Text,
   useIndexResourceState,
+  TextContainer,
 } from '@shopify/polaris';
 
 export default {
@@ -1428,9 +1429,16 @@ export function WithAllOfItsElements() {
         promotedBulkActions={promotedBulkActions}
         lastColumnSticky
         headings={[
-          {title: 'Name'},
+          {
+            title: 'Name',
+            sortableMessage: 'Sortable message but not a sortable column',
+            sortableMessageWidth: 'extraWide',
+          },
           {title: 'Location'},
-          {title: 'Order count'},
+          {
+            title: 'Order count',
+            sortableMessage: 'Sortable message but not a sortable column',
+          },
           {title: 'Amount spent', hidden: false},
         ]}
       >
@@ -1593,6 +1601,27 @@ export function WithSortableHeadings() {
     ),
   );
 
+  const onHandMessage = (
+    <TextContainer>
+      <p>The total amount of inventory at a location.</p>
+      <p>
+        This is the sum of items that are{' '}
+        <Text variant="bodyMd" as="span" fontWeight="bold">
+          available
+        </Text>{' '}
+        to sell,{' '}
+        <Text variant="bodyMd" as="span" fontWeight="bold">
+          committed
+        </Text>{' '}
+        to unfulfilled orders, and{' '}
+        <Text variant="bodyMd" as="span" fontWeight="bold">
+          unavailable
+        </Text>{' '}
+        due to draft orders or apps.
+      </p>
+    </TextContainer>
+  );
+
   return (
     <Card>
       <IndexTable
@@ -1603,7 +1632,11 @@ export function WithSortableHeadings() {
         }
         onSelectionChange={handleSelectionChange}
         headings={[
-          {title: 'Name'},
+          {
+            title: 'Name',
+            sortableMessage: onHandMessage,
+            sortableMessageWidth: 'extraWide',
+          },
           {title: 'Date'},
           {title: 'Order count'},
           {title: 'Amount spent'},
