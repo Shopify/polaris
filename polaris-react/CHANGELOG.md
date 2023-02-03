@@ -1,5 +1,23 @@
 # Changelog
 
+## 10.26.0
+
+### Minor Changes
+
+- [#8240](https://github.com/Shopify/polaris/pull/8240) [`31abdab37`](https://github.com/Shopify/polaris/commit/31abdab377fb0c6ceb79d6aa0cd46d730b100447) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyStack` component
+
+* [#8238](https://github.com/Shopify/polaris/pull/8238) [`bb8b551d4`](https://github.com/Shopify/polaris/commit/bb8b551d44b021584bb113c023f481c91207229a) Thanks [@laurkim](https://github.com/laurkim)! - Added `LegacyCard` component
+
+### Patch Changes
+
+- [#8256](https://github.com/Shopify/polaris/pull/8256) [`43776be71`](https://github.com/Shopify/polaris/commit/43776be71635454192aa3985a5f364f84177ddeb) Thanks [@aveline](https://github.com/aveline)! - - Fixed `Bleed` width behavior
+  - Fixed `Banner` content width
+
+* [#8244](https://github.com/Shopify/polaris/pull/8244) [`0ee432500`](https://github.com/Shopify/polaris/commit/0ee43250031ddaa03ffab06ae24197c91c2328d9) Thanks [@samrose3](https://github.com/samrose3)! - Disallow text-transform property in Stylelint Polaris
+
+* Updated dependencies [[`1b1394d32`](https://github.com/Shopify/polaris/commit/1b1394d32ecb122bcb77b6cb38b6106631ff8afd)]:
+  - @shopify/polaris-tokens@6.4.0
+
 ## 10.25.0
 
 ### Minor Changes
