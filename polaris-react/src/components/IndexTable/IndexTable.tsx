@@ -946,7 +946,7 @@ function IndexTableBase({
               padding="4"
               borderRadius="2"
             > */}
-            <div>{headingContent}</div>
+            {headingContent}
             {/* </Tooltip> */}
 
             <Tooltip
