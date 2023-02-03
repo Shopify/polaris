@@ -30,6 +30,12 @@ const fixtures = [
       maps: 'src/migrations/styles-replace-custom-property/tests/replacement-maps-regexp',
     },
   },
+  {
+    name: 'with-replacementMaps-option',
+    options: {
+      replacementMaps: {color: {'--p-text': '--p-color-text'}},
+    },
+  },
 ];
 
 for (const fixture of fixtures) {

@@ -1,0 +1,11 @@
+.basic {
+  color: var(--p-color-text);
+}
+
+.with-fallback-var {
+  color: var(--p-color-text, var(--p-color-text));
+}
+
+.with-fallback-value {
+  color: var(--p-color-text, #000);
+}
