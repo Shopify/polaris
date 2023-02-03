@@ -1,5 +1,33 @@
 # polaris.shopify.com
 
+## 0.31.1
+
+### Patch Changes
+
+- [#8235](https://github.com/Shopify/polaris/pull/8235) [`5fbe75461`](https://github.com/Shopify/polaris/commit/5fbe75461499eb84940fd8b668bdd56c7a7e3073) Thanks [@laurkim](https://github.com/laurkim)! - Updated Patterns/Typography copy to include suggestions for uppercase typography styles
+
+- Updated dependencies [[`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b), [`17fa970db`](https://github.com/Shopify/polaris/commit/17fa970db66213fe659ee231e750f7054a72dc97)]:
+  - @shopify/polaris@10.25.0
+
+## 0.31.0
+
+### Minor Changes
+
+- [#8223](https://github.com/Shopify/polaris/pull/8223) [`de7987c42`](https://github.com/Shopify/polaris/commit/de7987c426174b73d67e54eacf197da9490c76ec) Thanks [@samrose3](https://github.com/samrose3)! - Renamed Polaris CLI package and add docs to website
+
+### Patch Changes
+
+- Updated dependencies [[`d1a332963`](https://github.com/Shopify/polaris/commit/d1a3329634a1f4cd02f0d97b8239bbedad7cf889), [`e30d1f51b`](https://github.com/Shopify/polaris/commit/e30d1f51b205c6875c0e712291081d836e851d97)]:
+  - @shopify/polaris@10.24.2
+
+## 0.30.2
+
+### Patch Changes
+
+- Updated dependencies [[`ec0e2f671`](https://github.com/Shopify/polaris/commit/ec0e2f671487e167ee43326372ad2367b3e7f4a6), [`977e70a84`](https://github.com/Shopify/polaris/commit/977e70a847cdc446c28c2b06dc771e5970aa0f4f)]:
+  - @shopify/polaris@10.24.1
+  - @shopify/polaris-icons@6.11.0
+
 ## 0.30.1
 
 ### Patch Changes

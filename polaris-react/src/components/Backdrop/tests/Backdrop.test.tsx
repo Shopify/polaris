@@ -7,9 +7,16 @@ describe('<Backdrop />', () => {
   describe('onClick()', () => {
     it('is called when the backdrop is clicked', () => {
       const spy = jest.fn();
-      const backdrop = mountWithApp(
-        <Backdrop onClick={spy} setClosing={() => {}} />,
-      );
+      const backdrop = mountWithApp(<Backdrop onClick={spy} />);
+      backdrop.find('div')!.trigger('onClick');
+      expect(spy).toHaveBeenCalled();
+    });
+  });
+
+  describe('setClosing()', () => {
+    it('is called when the backdrop is clicked', () => {
+      const spy = jest.fn();
+      const backdrop = mountWithApp(<Backdrop setClosing={spy} />);
       backdrop.find('div')!.trigger('onClick');
       expect(spy).toHaveBeenCalled();
     });

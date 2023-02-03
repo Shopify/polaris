@@ -1,5 +1,40 @@
 # Changelog
 
+## 10.25.0
+
+### Minor Changes
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Tabs` component to use layout primitives
+
+* [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `OptionList` to use new layout primitives
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Updated `Popover` to use new layout primitives
+
+### Patch Changes
+
+- [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Remove unused class in Page Header
+
+* [#7950](https://github.com/Shopify/polaris/pull/7950) [`286c63a84`](https://github.com/Shopify/polaris/commit/286c63a8402873f02cdbd9e469169531ee03111b) Thanks [@laurkim](https://github.com/laurkim)! - Rebuilt Page Header with layout components
+
+- [#8237](https://github.com/Shopify/polaris/pull/8237) [`17fa970db`](https://github.com/Shopify/polaris/commit/17fa970db66213fe659ee231e750f7054a72dc97) Thanks [@loic-d](https://github.com/loic-d)! - Fixed Backdrop onClick callback when setClosing is missing
+
+## 10.24.2
+
+### Patch Changes
+
+- [#8209](https://github.com/Shopify/polaris/pull/8209) [`d1a332963`](https://github.com/Shopify/polaris/commit/d1a3329634a1f4cd02f0d97b8239bbedad7cf889) Thanks [@aveline](https://github.com/aveline)! - Updated `Bleed` to take up full width of container
+
+* [#8224](https://github.com/Shopify/polaris/pull/8224) [`e30d1f51b`](https://github.com/Shopify/polaris/commit/e30d1f51b205c6875c0e712291081d836e851d97) Thanks [@peterlazzarino](https://github.com/peterlazzarino)! - Repair styling for Checkbox when indeterminate and disabled
+
+## 10.24.1
+
+### Patch Changes
+
+- [#8166](https://github.com/Shopify/polaris/pull/8166) [`ec0e2f671`](https://github.com/Shopify/polaris/commit/ec0e2f671487e167ee43326372ad2367b3e7f4a6) Thanks [@rjur11](https://github.com/rjur11)! - Fixed focus not returning to the `Popover` `activator` on keypress of Escape
+
+- Updated dependencies [[`977e70a84`](https://github.com/Shopify/polaris/commit/977e70a847cdc446c28c2b06dc771e5970aa0f4f)]:
+  - @shopify/polaris-icons@6.11.0
+
 ## 10.24.0
 
 ### Minor Changes

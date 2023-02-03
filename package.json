@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "^16.13.0 || >=18.12.0"
+    "node": "^16.17.0 || >=18.12.0"
   },
   "workspaces": {
     "packages": [
@@ -69,7 +69,6 @@
     "@types/jest": "^27.5.1",
     "@types/node": "^18.11.18",
     "babel-loader": "^9.1.2",
-    "downlevel-dts": "^0.6.0",
     "eslint": "^8.3.0",
     "execa": "^5.0.0",
     "jest": "^27.5.1",
@@ -85,7 +84,7 @@
     "stylelint": "^14.15.0",
     "ts-node": "^10.7.0",
     "turbo": "^1.2.8",
-    "typescript": "^4.6.3"
+    "typescript": "^4.9.3"
   },
   "prettier": "@shopify/prettier-config",
   "size-limit": [
