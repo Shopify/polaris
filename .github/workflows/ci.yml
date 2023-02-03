@@ -59,3 +59,6 @@ jobs:
 
       - name: Test
         run: yarn test
+
+      - name: Size limit
+        run: yarn size-limit
