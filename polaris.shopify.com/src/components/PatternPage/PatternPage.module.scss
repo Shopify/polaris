@@ -8,7 +8,7 @@
 
 .TabGroup {
   --tab-background: var(--p-surface-subdued);
-  --tab-background-pressed: var(--p-surface-pressed);
+  --tab-background-pressed: rgba(250, 250, 250, 1);
   --tab-border: 1px solid #c9cccf;
   @include dark-mode {
     --tab-background: #18181d;
@@ -64,7 +64,6 @@
 }
 
 .ExamplesList {
-  --surface-pressed: rgba(250, 250, 250, 1);
   --border-subdued: rgba(201, 204, 207, 1);
 
   display: flex;
