@@ -10,7 +10,6 @@ export const colorBackgroundTokenAlias = [
   'bg-app',
   'bg-app-hover',
   'bg-app-selected',
-  'bg-backdrop',
   'bg-caution',
   'bg-caution-strong',
   'bg-caution-subdued',
@@ -44,7 +43,6 @@ export const colorBackgroundTokenAlias = [
   'bg-inverse',
   'bg-inverse-active',
   'bg-inverse-hover',
-  'bg-overlay',
   'bg-primary',
   'bg-primary-active',
   'bg-primary-hover',
@@ -159,10 +157,6 @@ export type ColorTokenGroup = {
 export const color: {
   [TokenName in ColorTokenName as `color-${TokenName}`]: MetadataProperties;
 } = {
-  'color-bg-backdrop': {
-    value: 'rgba(0, 0, 0, 0.5)',
-    description: '',
-  },
   'color-bg-inverse': {
     value: palettes.gray[900],
     description: '',
@@ -241,10 +235,6 @@ export const color: {
   },
   'color-bg': {
     value: palettes.gray[50],
-    description: '',
-  },
-  'color-bg-overlay': {
-    value: 'rgba(255, 255, 255, 0.5)',
     description: '',
   },
   'color-bg-primary-active': {
