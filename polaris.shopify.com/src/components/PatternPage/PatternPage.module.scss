@@ -256,13 +256,14 @@
   --props-table-border-color: #c9cccf;
   --props-table-heading-background: rgba(0, 0, 0, 0.02);
   --props-table-content-background: inherit;
-  border: 1px solid var(--props-table-border-color);
   @include dark-mode {
     --props-table-border-color: rgba(55, 55, 55, 1);
     --props-table-heading-background: rgba(30, 30, 35, 1);
     --props-table-content-background: rgba(22, 22, 25, 1);
   }
+  border: 1px solid var(--props-table-border-color);
   border-radius: var(--border-radius-400);
+  background: var(--props-table-content-background);
 
   h3 {
     background: var(--props-table-heading-background);
@@ -275,7 +276,7 @@
     dt {
       color: var(--text-strong);
     }
-    background: var(--props-table-content-background);
+
     border-top: 1px solid var(--props-table-border-color);
     grid-template-columns: fit-content(35%) 1fr;
     padding: 1rem;
