@@ -1,13 +1,3 @@
-/**
- * Example usage:
- * npx polaris-migrator scss-replace-custom-property \
- *   --decl="color" --from="--p-text" --to="--p-color-text" "src/*.scss"
- *
- * Example usage:
- * npx polaris-migrator scss-replace-custom-property \
- *   --maps="my-replacement-maps" \
- *   "src/*.scss"
- */
 import * as path from 'node:path';
 
 import type {FileInfo, API, Options} from 'jscodeshift';
@@ -18,7 +8,7 @@ import {isSassFunction} from '../../utilities/sass';
 import {isKeyOf} from '../../utilities/type-guards';
 import {matchesStringOrRegExp} from '../../utilities/matchesStringOrRegExp';
 
-export default function scssReplaceCustomProperty(
+export default function stylesReplaceCustomProperty(
   file: FileInfo,
   _: API,
   options: Options,
@@ -71,7 +61,7 @@ function plugin(options: PluginOptions = {}): Plugin {
   const replacementMapsKeys = Object.keys(replacementMaps);
 
   return {
-    postcssPlugin: 'scss-replace-custom-property',
+    postcssPlugin: 'styles-replace-custom-property',
     Declaration(decl) {
       // @ts-expect-error - Skip if processed so we don't process it again
       if (decl[processed] || !replacementMaps) return;
