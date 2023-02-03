@@ -1,0 +1,17 @@
+.basic {
+  animation-duration: var(--p-motion-duration-200);
+  animation-delay: var(--p-motion-duration-200);
+}
+
+.with-fallback-var {
+  animation-duration: var(
+    --p-motion-duration-200,
+    var(--p-motion-duration-200)
+  );
+  animation-delay: var(--p-motion-duration-200, var(--p-motion-duration-200));
+}
+
+.with-fallback-value {
+  animation-duration: var(--p-motion-duration-200, 200ms);
+  animation-delay: var(--p-motion-duration-200, 200ms);
+}
