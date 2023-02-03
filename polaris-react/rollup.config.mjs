@@ -33,8 +33,7 @@ function generateConfig({output, targets, stylesConfig}) {
         // Options that may be present on the `babelConfig` object but
         // we want to override
         envName: 'production',
-        // @ts-expect-error targets is a valid babel option but @types/babel__core doesn't know that yet
-        ...(targets && {targets}),
+        targets,
       }),
       replace({
         '{{POLARIS_VERSION}}': pkg.version,
@@ -54,6 +53,7 @@ function generateConfig({output, targets, stylesConfig}) {
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
+    targets: {},
     stylesConfig: {
       mode: 'standalone',
       output: 'styles.css',
