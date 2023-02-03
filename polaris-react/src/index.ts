@@ -241,6 +241,14 @@ export type {LabelledProps} from './components/Labelled';
 export {Layout} from './components/Layout';
 export type {LayoutProps} from './components/Layout';
 
+export {LegacyCard} from './components/LegacyCard';
+export type {
+  LegacyCardProps,
+  LegacyCardSectionProps,
+  LegacyCardHeaderProps,
+  LegacyCardSubsectionProps,
+} from './components/LegacyCard';
+
 export {Link} from './components/Link';
 export type {LinkProps} from './components/Link';
 
