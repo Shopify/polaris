@@ -936,7 +936,7 @@ function IndexTableBase({
             className={styles.TableHeadingSortButton}
             tabIndex={selectMode ? -1 : 0}
           >
-            <Tooltip
+            {/* <Tooltip
               content={heading.sortableMessage}
               dismissOnMouseOut
               hasUnderline
@@ -945,9 +945,9 @@ function IndexTableBase({
               width={heading.sortableMessageWidth ?? 'wide'}
               padding="4"
               borderRadius="2"
-            >
-              <div>{headingContent}</div>
-            </Tooltip>
+            > */}
+            <div>{headingContent}</div>
+            {/* </Tooltip> */}
 
             <Tooltip
               content={tooltipContent}
