@@ -44,7 +44,7 @@ function plugin(options: PluginOptions = {}): Plugin {
   }
 
   if (options.maps) {
-    const mapsPath = path.join(process.cwd(), options.maps);
+    const mapsPath = path.resolve(process.cwd(), options.maps);
 
     replacementMaps = require(mapsPath)!.default;
   } else if (options.from && options.to) {
