@@ -930,7 +930,7 @@ function IndexTableBase({
       }
 
       return (
-        // <div>
+        <div style={{display: 'flex', flexWrap: 'nowrap'}}>
           <UnstyledButton
             onClick={() => handleSortHeadingClick(index, newDirection)}
             className={styles.TableHeadingSortButton}
@@ -959,7 +959,7 @@ function IndexTableBase({
               {iconMarkup}
             </Tooltip>
           </UnstyledButton>
-        // </div>
+        </div>
       );
     }
     if (heading.sortableMessage) {
