@@ -57,6 +57,8 @@ export interface TooltipProps {
   borderRadius?: BorderRadius;
   /** Override on the default z-index of 400 */
   zIndexOverride?: number;
+  /** Whether to render a dotted underline underneath the tooltip's activator */
+  hasUnderline?: boolean;
   /* Callback fired when the tooltip is activated */
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
@@ -76,6 +78,7 @@ export function Tooltip({
   padding = 'default',
   borderRadius = '1',
   zIndexOverride,
+  hasUnderline,
   onOpen,
   onClose,
 }: TooltipProps) {
@@ -144,6 +147,7 @@ export function Tooltip({
 
   const wrapperClassNames = classNames(
     activatorWrapper === 'div' && styles.TooltipContainer,
+    hasUnderline && styles.HasUnderline,
   );
 
   return (

@@ -34,6 +34,7 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
+import type {Width} from '../Tooltip';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -43,6 +44,8 @@ interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
+  tooltipContent?: React.ReactNode;
+  tooltipWidth?: Width;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -842,6 +845,12 @@ function IndexTableBase({
   function renderHeadingContent(heading: IndexTableHeading, index: number) {
     let headingContent;
 
+    const defaultTooltipProps = {
+      width: heading.tooltipWidth ?? 'default',
+      activatorWrapper: 'div',
+      dismissOnMouseOut: true,
+    };
+
     if (heading.new) {
       headingContent = (
         <Stack wrap={false} alignment="center">
@@ -911,18 +920,57 @@ function IndexTableBase({
         ? sortDirection!
         : defaultSortDirection;
 
-      const tooltipContent = sortToggleLabels[index][tooltipDirection];
+      const sortTooltipContent = sortToggleLabels[index][tooltipDirection];
+
+      if (!heading.tooltipContent) {
+        return (
+          <Tooltip {...defaultTooltipProps} content={sortTooltipContent}>
+            {sortMarkup}
+          </Tooltip>
+        );
+      }
 
       return (
+        <div className={styles.SortableTableHeadingWithCustomMarkup}>
+          <UnstyledButton
+            onClick={() => handleSortHeadingClick(index, newDirection)}
+            className={styles.TableHeadingSortButton}
+            tabIndex={selectMode ? -1 : 0}
+          >
+            <span className={styles.TableHeadingMouseCursor}>
+              {heading.tooltipContent}
+            </span>
+
+            <Tooltip
+              {...defaultTooltipProps}
+              content={sortTooltipContent}
+              preferredPosition="above"
+            >
+              {iconMarkup}
+            </Tooltip>
+          </UnstyledButton>
+        </div>
+      );
+    }
+
+    if (heading.tooltipContent && typeof heading.tooltipContent === 'string') {
+      return (
         <Tooltip
-          content={tooltipContent}
-          activatorWrapper="div"
-          dismissOnMouseOut
+          {...defaultTooltipProps}
+          content={heading.tooltipContent}
+          padding="4"
+          borderRadius="2"
+          activatorWrapper="span"
+          preferredPosition="above"
+          hasUnderline
         >
-          {sortMarkup}
+          <span className={styles.TableHeadingMouseCursor}>
+            {headingContent}
+          </span>
         </Tooltip>
       );
     }
+
     return headingContent;
   }
 
