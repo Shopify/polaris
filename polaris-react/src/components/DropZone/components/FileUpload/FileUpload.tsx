@@ -2,12 +2,12 @@ import React, {useContext} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
-import {Stack} from '../../../Stack';
 import {Text} from '../../../Text';
 import {uploadArrow} from '../../images';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
+import {AlphaStack} from '../../../AlphaStack';
 
 import styles from './FileUpload.scss';
 
@@ -55,18 +55,18 @@ export function FileUpload(props: FileUploadProps) {
   switch (size) {
     case 'large':
       viewMarkup = (
-        <Stack vertical spacing="tight">
+        <AlphaStack align="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
-        </Stack>
+        </AlphaStack>
       );
       break;
     case 'medium':
       viewMarkup = (
-        <Stack vertical spacing="tight">
+        <AlphaStack align="center" gap="2">
           {actionMarkup}
           {actionHintMarkup}
-        </Stack>
+        </AlphaStack>
       );
       break;
     case 'small':
