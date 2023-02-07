@@ -49,7 +49,7 @@ interface IndexTableHeadingBase {
   flush?: boolean;
   new?: boolean;
   hidden?: boolean;
-  tooltipContent?: React.ReactNode;
+  tooltipContent?: string;
   tooltipWidth?: Width;
   tooltipPersistsOnClick?: boolean;
 }
@@ -864,7 +864,6 @@ function IndexTableBase({
       borderRadius: '2' as BorderRadius,
       content: heading.tooltipContent,
       preferredPosition: 'above' as TooltipOverlayProps['preferredPosition'],
-      hasUnderline: true,
     };
 
     if (heading.new) {
@@ -922,16 +921,26 @@ function IndexTableBase({
         tabIndex: selectMode ? -1 : 0,
       };
 
+      const underlinePlaceholder = classNames(
+        sortToggleLabels &&
+          selectMode &&
+          heading.tooltipContent &&
+          styles.TableHeadingTooltipUnderlinePlaceholder,
+      );
+
       const sortMarkup = (
         <UnstyledButton {...defaultSortButtonProps}>
           {iconMarkup}
-
-          {headingContent}
+          <span className={underlinePlaceholder}>{headingContent}</span>
         </UnstyledButton>
       );
 
       if (!sortToggleLabels || selectMode) {
-        return sortMarkup;
+        return (
+          <div className={styles.SortableTableHeadingWithCustomMarkup}>
+            {sortMarkup}
+          </div>
+        );
       }
 
       const tooltipDirection = isCurrentlySorted
@@ -950,40 +959,23 @@ function IndexTableBase({
       }
 
       if (heading.tooltipContent) {
-        const sortIconWithTooltip = (
-          <Tooltip
-            {...defaultTooltipProps}
-            content={sortTooltipContent}
-            preferredPosition="above"
-          >
-            {iconMarkup}
-          </Tooltip>
-        );
-
-        if (typeof heading.tooltipContent === 'string') {
-          return (
-            // Header text and sort icon have separate tooltips
-            <div className={styles.SortableTableHeadingWithCustomMarkup}>
-              <UnstyledButton {...defaultSortButtonProps}>
-                <Tooltip {...defaultHeaderTooltipProps}>
-                  <span>{headingContent}</span>
-                </Tooltip>
-
-                {sortIconWithTooltip}
-              </UnstyledButton>
-            </div>
-          );
-        }
-
         return (
           // Sort icon has tooltip and header node is custom
           <div className={styles.SortableTableHeadingWithCustomMarkup}>
             <UnstyledButton {...defaultSortButtonProps}>
-              <span className={styles.SortableTableHeaderWrapper}>
-                {heading.tooltipContent}
-              </span>
+              <Tooltip {...defaultHeaderTooltipProps}>
+                <span className={styles.TableHeadingUnderline}>
+                  {headingContent}
+                </span>
+              </Tooltip>
 
-              {sortIconWithTooltip}
+              <Tooltip
+                {...defaultTooltipProps}
+                content={sortTooltipContent}
+                preferredPosition="above"
+              >
+                {iconMarkup}
+              </Tooltip>
             </UnstyledButton>
           </div>
         );
@@ -994,7 +986,14 @@ function IndexTableBase({
       return (
         // Non-sortable header with tooltip
         <Tooltip {...defaultHeaderTooltipProps} activatorWrapper="span">
-          <span>{headingContent}</span>
+          <span
+            className={classNames(
+              styles.TableHeadingUnderline,
+              styles.SortableTableHeaderWrapper,
+            )}
+          >
+            {headingContent}
+          </span>
         </Tooltip>
       );
     }

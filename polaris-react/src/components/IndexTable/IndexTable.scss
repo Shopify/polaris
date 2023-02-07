@@ -281,6 +281,14 @@ $loading-panel-height: 53px;
     var(--p-duration-100);
 }
 
+.TableHeadingUnderline {
+  border-bottom: var(--p-border-width-2) dotted var(--p-border-subdued);
+}
+
+.TableHeadingTooltipUnderlinePlaceholder {
+  border-bottom: var(--p-border-width-2) dotted transparent;
+}
+
 .TableHeadingSortIcon-visible {
   opacity: 1;
 }

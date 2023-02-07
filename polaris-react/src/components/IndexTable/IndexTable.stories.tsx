@@ -1762,20 +1762,6 @@ export function WithSortableCustomHeadings() {
     ),
   );
 
-  const nameTooltip = (
-    <Tooltip
-      content="I am a wide tooltip describing the Name column"
-      width="wide"
-      padding="4"
-      borderRadius="2"
-      hasUnderline
-    >
-      <Text variant="bodySm" as="span" fontWeight="medium">
-        Name
-      </Text>
-    </Tooltip>
-  );
-
   return (
     <Card>
       <IndexTable
@@ -1786,12 +1772,17 @@ export function WithSortableCustomHeadings() {
         }
         onSelectionChange={handleSelectionChange}
         headings={[
-          {title: 'Name', tooltipContent: nameTooltip},
+          {
+            title: 'Name',
+            tooltipContent: 'I am a wide tooltip describing the Name column',
+            tooltipWidth: 'wide',
+          },
           {title: 'Date', tooltipContent: 'I am the Date tooltip'},
           {title: 'Order count'},
           {
             title: 'Amount spent',
-            tooltipContent: 'I am a wide Amount spent tooltip',
+            tooltipContent:
+              'I am a wide Amount spent tooltip that stays when clicked',
             tooltipWidth: 'wide',
           },
           {title: 'Location'},
