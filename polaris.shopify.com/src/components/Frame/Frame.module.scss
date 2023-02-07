@@ -83,7 +83,7 @@ $breakpointNav: $breakpointTablet;
         }
 
         + ul > li:last-child {
-          padding-bottom: 0.5rem;
+          padding-bottom: 1rem;
         }
 
         > a {
@@ -108,7 +108,7 @@ $breakpointNav: $breakpointTablet;
           padding-left: 2.25rem;
 
           > a {
-            color: var(--text);
+            color: var(--text-strong);
           }
 
           &.isCurrent > a {
