@@ -1,7 +1,7 @@
 ---
 title: LegacyStack
 description: This is the legacy version of the Stack component which is in the process of being updated to a more flexible and composable API. Use to lay out a horizontal row of components or to achieve no-fuss vertical centering. A stack is made of flexible items that wrap each of the stack’s children. Options provide control of the wrapping, spacing, and relative size of the items in the stack.
-category: Structure
+category: Layout and structure
 keywords:
   - rows
   - vertical centering

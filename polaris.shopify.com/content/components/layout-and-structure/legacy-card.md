@@ -1,7 +1,7 @@
 ---
 title: LegacyCard
 description: This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
-category: Structure
+category: Layout and structure
 keywords:
   - layout
   - container
