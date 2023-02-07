@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
-import {Inline} from '../../../Inline';
+// import {Inline} from '../../../Inline';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
@@ -74,11 +74,12 @@ export function Toast({
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <Inline blockAlign="center">
+
+      <div className={`${styles.Inline} ${styles.ToastText}`}>
         <Text as="span" variant="bodyMd" fontWeight="medium">
           {content}
         </Text>
-      </Inline>
+      </div>
       {actionMarkup}
       {dismissMarkup}
     </div>

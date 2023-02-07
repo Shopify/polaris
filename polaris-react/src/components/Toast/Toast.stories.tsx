@@ -71,7 +71,11 @@ export function WithCustomDuration() {
   const toggleActive = useCallback(() => setActive((active) => !active), []);
 
   const toastMarkup = active ? (
-    <Toast content="Message sent" onDismiss={toggleActive} duration={4500} />
+    <Toast
+      content="Message sent lorem ipsum dolor sit amet "
+      onDismiss={toggleActive}
+      duration={10000000}
+    />
   ) : null;
 
   return (
