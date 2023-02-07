@@ -900,12 +900,14 @@ function IndexTableBase({
         </span>
       );
 
+      const defaultSortButtonProps = {
+        onClick: () => handleSortHeadingClick(index, newDirection),
+        className: styles.TableHeadingSortButton,
+        tabIndex: selectMode ? -1 : 0,
+      };
+
       const sortMarkup = (
-        <UnstyledButton
-          onClick={() => handleSortHeadingClick(index, newDirection)}
-          className={styles.TableHeadingSortButton}
-          tabIndex={selectMode ? -1 : 0}
-        >
+        <UnstyledButton {...defaultSortButtonProps}>
           {iconMarkup}
 
           {headingContent}
@@ -932,12 +934,8 @@ function IndexTableBase({
 
       return (
         <div className={styles.SortableTableHeadingWithCustomMarkup}>
-          <UnstyledButton
-            onClick={() => handleSortHeadingClick(index, newDirection)}
-            className={styles.TableHeadingSortButton}
-            tabIndex={selectMode ? -1 : 0}
-          >
-            <span className={styles.TableHeadingMouseCursor}>
+          <UnstyledButton {...defaultSortButtonProps}>
+            <span className={styles.SortableTableHeaderWrapper}>
               {heading.tooltipContent}
             </span>
 
@@ -953,7 +951,7 @@ function IndexTableBase({
       );
     }
 
-    if (heading.tooltipContent && typeof heading.tooltipContent === 'string') {
+    if (heading.tooltipContent) {
       return (
         <Tooltip
           {...defaultTooltipProps}
@@ -964,9 +962,7 @@ function IndexTableBase({
           preferredPosition="above"
           hasUnderline
         >
-          <span className={styles.TableHeadingMouseCursor}>
-            {headingContent}
-          </span>
+          {headingContent}
         </Tooltip>
       );
     }

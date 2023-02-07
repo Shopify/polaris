@@ -59,6 +59,8 @@ export interface TooltipProps {
   zIndexOverride?: number;
   /** Whether to render a dotted underline underneath the tooltip's activator */
   hasUnderline?: boolean;
+  /** Whether the tooltip's content remains open after clicking the activator */
+  persistOnClick?: boolean;
   /* Callback fired when the tooltip is activated */
   onOpen?(): void;
   /* Callback fired when the tooltip is dismissed */
@@ -79,6 +81,7 @@ export function Tooltip({
   borderRadius = '1',
   zIndexOverride,
   hasUnderline,
+  persistOnClick,
   onOpen,
   onClose,
 }: TooltipProps) {
@@ -88,6 +91,11 @@ export function Tooltip({
     setTrue: handleFocus,
     setFalse: handleBlur,
   } = useToggle(Boolean(originalActive));
+
+  const {value: persist, toggle: togglePersisting} = useToggle(
+    Boolean(originalActive) && Boolean(persistOnClick),
+  );
+
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
   const id = useUniqueId('TooltipContent');
@@ -162,6 +170,7 @@ export function Tooltip({
       }}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
+      onMouseDown={persistOnClick && togglePersisting}
       ref={setActivator}
       onKeyUp={handleKeyUp}
       className={wrapperClassNames}
@@ -206,7 +215,10 @@ export function Tooltip({
 
     mouseEntered.current = false;
     onClose?.();
-    handleBlur();
+
+    if (!persist) {
+      handleBlur();
+    }
   }
 
   // https://github.com/facebook/react/issues/10109
