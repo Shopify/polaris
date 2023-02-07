@@ -70,6 +70,9 @@ function GlobalSearch() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentResultIndex, setCurrentResultIndex] = useState(0);
+
+  const [prompt, setPrompt] = useState('');
+
   const router = useRouter();
 
   let resultsInRenderedOrder: SearchResults = [];
@@ -106,7 +109,20 @@ function GlobalSearch() {
     scrollToTop();
   }, 400);
 
-  useEffect(throttledSearch, [searchTerm, throttledSearch]);
+  // useEffect(throttledSearch, [searchTerm, throttledSearch]);
+
+  useEffect(() => {
+    const fetchAnswers = async () => {
+      fetch(`/api/prompts?p=${encodeURIComponent(prompt)}`)
+        .then((data) => data.json())
+        .then((json) => {
+          const {data} = json;
+          console.log(data);
+        });
+    };
+
+    if (prompt) fetchAnswers();
+  }, [prompt]);
 
   useEffect(() => scrollIntoView(), [currentResultIndex]);
 
@@ -182,6 +198,7 @@ function GlobalSearch() {
                   type="search"
                   value={searchTerm}
                   onChange={(evt) => setSearchTerm(evt.target.value)}
+                  onBlur={(evt) => setPrompt(evt.target.value)}
                   role="combobox"
                   aria-controls="search-results"
                   aria-expanded={searchResultsCount > 0}
