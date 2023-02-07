@@ -1,7 +1,7 @@
 ---
 title: Grid
 description: Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
-category: Deprecated
+category: Layout and structure
 keywords:
   - one column
   - two column
