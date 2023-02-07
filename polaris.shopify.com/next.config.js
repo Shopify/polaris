@@ -125,27 +125,27 @@ module.exports = nextConfig;
 const actions = [
   {
     source: '/components/account-connection',
-    destination: '/components/actrions/account-connection',
+    destination: '/components/actions/account-connection',
     permanent: false,
   },
   {
     source: '/components/button-group',
-    destination: '/components/actrions/button-group',
+    destination: '/components/actions/button-group',
     permanent: false,
   },
   {
     source: '/components/button',
-    destination: '/components/actrions/button',
+    destination: '/components/actions/button',
     permanent: false,
   },
   {
     source: '/components/page-actions',
-    destination: '/components/actrions/page-actions',
+    destination: '/components/actions/page-actions',
     permanent: false,
   },
   {
     source: '/components/setting-toggle',
-    destination: '/components/actrions/setting-toggle',
+    destination: '/components/actions/setting-toggle',
     permanent: false,
   },
 ];
