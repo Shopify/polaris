@@ -43,23 +43,27 @@ $Backdrop-opacity: 0.88;
   width: 10px;
   height: 100%;
   margin-right: 10px;
-
-  &.success {
-    background-color: var(--p-border-success);
-  }
-
-  &.error {
-    background-color: var(--p-border-error);
-  }
-
-  &.info {
-    background-color: rgba(44, 110, 203, 1);
-  }
-
-  &.warning {
-    background-color: var(--p-border-warning);
-  }
 }
+
+.SuccessIndicator {
+  background-color: var(--p-border-success);
+}
+
+.ErrorIndicator {
+  background-color: var(--p-border-error);
+}
+
+.InfoIndicator {
+  background-color: rgba(44, 110, 203, 1);
+}
+
+.WarningIndicator {
+  background-color: var(--p-border-warning);
+}
+
+// .ToastStatusIndicator.info {
+//   background-color: rgba(44, 110, 203, 1);
+// }
 
 // .error {
 //   background: var(--p-action-critical);

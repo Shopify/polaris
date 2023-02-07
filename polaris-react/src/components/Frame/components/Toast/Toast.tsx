@@ -56,6 +56,25 @@ export function Toast({
     toastType = type;
   }
 
+  let toastIndicatorClass;
+  switch (toastType) {
+    case 'success':
+      toastIndicatorClass = styles.SuccessIndicator;
+      break;
+    case 'error':
+      toastIndicatorClass = styles.ErrorIndicator;
+      break;
+    case 'warning':
+      toastIndicatorClass = styles.WarningIndicator;
+      break;
+    case 'info':
+      toastIndicatorClass = styles.InfoIndicator;
+      break;
+    default:
+      toastIndicatorClass = styles.InfoIndicator;
+      break;
+  }
+
   const dismissMarkup = (
     <button type="button" className={styles.CloseButton} onClick={onDismiss}>
       <Icon source={CancelSmallMinor} />
@@ -81,7 +100,9 @@ export function Toast({
   return (
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-      <div className={`${styles.ToastStatusIndicator} ${toastType}`} />
+      <div
+        className={`${styles.ToastStatusIndicator} ${toastIndicatorClass}`}
+      />
       <div className={styles.ToastContent}>
         {leadingIconMarkup}
         <div className={`${styles.ToastText}`}>
