@@ -26,13 +26,14 @@ export const ToastManager = memo(function ToastManager({
     toastMessages.forEach((_, index) => {
       const currentToast = toastNodes[index];
       if (!currentToast.current) return;
-      targetInPos += currentToast.current.clientHeight;
+      targetInPos += currentToast.current.clientWidth;
+      console.log(targetInPos);
       currentToast.current.style.setProperty(
-        '--pc-toast-manager-translate-y-in',
+        '--pc-toast-manager-translate-x-in',
         `-${targetInPos}px`,
       );
       currentToast.current.style.setProperty(
-        '--pc-toast-manager-translate-y-out',
+        '--pc-toast-manager-translate-x-out',
         `${-targetInPos + 150}px`,
       );
     });
