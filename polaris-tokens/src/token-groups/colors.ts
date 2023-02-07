@@ -358,7 +358,7 @@ export const colors = {
   'border-critical': {
     value: 'rgba(253, 87, 73, 1)',
     description:
-      'For use as a border on critical components such as an outline on interactive elements in an error state.',
+      'For use as a border on critical components such as an outline on interactive elements in an  state.',
   },
   'border-critical-subdued': {
     value: 'rgba(224, 179, 178, 1)',

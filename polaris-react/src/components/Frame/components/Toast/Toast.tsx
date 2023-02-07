@@ -1,5 +1,11 @@
 import React, {useEffect} from 'react';
-import {CancelSmallMinor, AlertMinor} from '@shopify/polaris-icons';
+import {
+  CancelSmallMinor,
+  AlertMinor,
+  CircleTickMinor,
+  InfoMinor,
+  RiskMinor,
+} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
@@ -57,22 +63,28 @@ export function Toast({
   }
 
   let toastIndicatorClass;
+  let iconSource;
+  let iconClass;
   switch (toastType) {
     case 'success':
       toastIndicatorClass = styles.SuccessIndicator;
+      iconClass = styles.LeadingIconSuccess;
+      iconSource = CircleTickMinor;
       break;
     case 'error':
       toastIndicatorClass = styles.ErrorIndicator;
+      iconClass = styles.LeadingIconError;
+      iconSource = AlertMinor;
       break;
     case 'warning':
       toastIndicatorClass = styles.WarningIndicator;
-      break;
-    case 'info':
-      toastIndicatorClass = styles.InfoIndicator;
+      iconSource = RiskMinor;
+      iconClass = styles.LeadingIconWarning;
       break;
     default:
       toastIndicatorClass = styles.InfoIndicator;
-      break;
+      iconClass = styles.LeadingIconInfo;
+      iconSource = InfoMinor;
   }
 
   const dismissMarkup = (
@@ -89,12 +101,11 @@ export function Toast({
     </div>
   ) : null;
 
-  const leadingIconMarkup = error ? (
-    <div className={styles.LeadingIcon}>
-      <Icon source={AlertMinor} color="base" />
+  const leadingIconMarkup = (
+    <div className={`${styles.LeadingIcon} ${iconClass}`}>
+      <Icon source={iconSource} color="base" />
     </div>
-  ) : null;
-
+  );
   const className = classNames(styles.Toast, error && styles.error);
 
   return (

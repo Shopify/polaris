@@ -27,6 +27,98 @@ export function Default() {
   );
 }
 
+export function Warning() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast content="Message not sent" onDismiss={toggleActive} type="warning" />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function Info() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      content="Transfer will take about 2-3 days"
+      onDismiss={toggleActive}
+      type="info"
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function Success() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      content="Transfer will take about 2-3 days"
+      onDismiss={toggleActive}
+      type="success"
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function Error() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast content="Server error" error onDismiss={toggleActive} type="error" />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Toast example">
+          <Button onClick={toggleActive}>Show Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
 export function MultipleMessages() {
   const [activeOne, setActiveOne] = useState(false);
   const [activeTwo, setActiveTwo] = useState(false);
@@ -105,27 +197,6 @@ export function WithAction() {
       duration={10000}
       onDismiss={toggleActive}
     />
-  ) : null;
-
-  return (
-    <div style={{height: '250px'}}>
-      <Frame>
-        <Page title="Toast example">
-          <Button onClick={toggleActive}>Show Toast</Button>
-          {toastMarkup}
-        </Page>
-      </Frame>
-    </div>
-  );
-}
-
-export function Error() {
-  const [active, setActive] = useState(false);
-
-  const toggleActive = useCallback(() => setActive((active) => !active), []);
-
-  const toastMarkup = active ? (
-    <Toast content="Server error" error onDismiss={toggleActive} />
   ) : null;
 
   return (
