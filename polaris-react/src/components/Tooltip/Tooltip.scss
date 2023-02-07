@@ -2,3 +2,7 @@
   // stylelint-disable-next-line -- The rule "property-disallowed-list" is not applicable since there does not exist a layout component that only sets the display property
   display: flex;
 }
+
+.HasUnderline {
+  border-bottom: var(--p-border-width-2) dotted var(--p-border-subdued);
+}
