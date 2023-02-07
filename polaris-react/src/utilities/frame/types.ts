@@ -67,6 +67,7 @@ export interface ToastProps {
   onDismiss(): void;
   /** Adds an action next to the message */
   action?: Action;
+  type?: 'success' | 'info' | 'warning' | 'error';
 }
 
 export interface ToastID {

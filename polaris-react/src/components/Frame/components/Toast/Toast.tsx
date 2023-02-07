@@ -24,6 +24,7 @@ export function Toast({
   duration,
   error,
   action,
+  type,
 }: ToastProps) {
   useEffect(() => {
     let timeoutDuration = duration || DEFAULT_TOAST_DURATION;
@@ -47,6 +48,13 @@ export function Toast({
       clearTimeout(timer);
     };
   }, [action, duration, onDismiss]);
+
+  let toastType = 'info';
+  if (error) {
+    toastType = 'error';
+  } else if (type) {
+    toastType = type;
+  }
 
   const dismissMarkup = (
     <button type="button" className={styles.CloseButton} onClick={onDismiss}>
@@ -73,15 +81,17 @@ export function Toast({
   return (
     <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
-      {leadingIconMarkup}
-
-      <div className={`${styles.Inline} ${styles.ToastText}`}>
-        <Text as="span" variant="bodyMd" fontWeight="medium">
-          {content}
-        </Text>
+      <div className={`${styles.ToastStatusIndicator} ${toastType}`} />
+      <div className={styles.ToastContent}>
+        {leadingIconMarkup}
+        <div className={`${styles.ToastText}`}>
+          <Text as="span" variant="bodyMd" fontWeight="medium">
+            {content}
+          </Text>
+        </div>
+        {actionMarkup}
+        {dismissMarkup}
       </div>
-      {actionMarkup}
-      {dismissMarkup}
     </div>
   );
 }
