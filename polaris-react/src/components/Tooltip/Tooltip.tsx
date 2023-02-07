@@ -129,6 +129,7 @@ export function Tooltip({
       if (event.key !== 'Escape') return;
       onClose?.();
       handleBlur();
+      persistOnClick && togglePersisting();
     },
     [handleBlur, onClose],
   );
@@ -167,6 +168,7 @@ export function Tooltip({
       onBlur={() => {
         onClose?.();
         handleBlur();
+        persistOnClick && togglePersisting();
       }}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
