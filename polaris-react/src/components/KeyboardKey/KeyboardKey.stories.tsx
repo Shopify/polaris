@@ -7,5 +7,21 @@ export default {
 } as ComponentMeta<typeof KeyboardKey>;
 
 export function Default() {
-  return <KeyboardKey>Ctrl</KeyboardKey>;
+  return (
+    <div>
+      <div>
+        <p>Current:</p>
+        <KeyboardKey>⌘</KeyboardKey>
+      </div>
+      <div>
+        <p>Proposed default:</p>
+        <KeyboardKey color="dark">⌘</KeyboardKey>
+      </div>
+
+      <div>
+        <p>Proposed small:</p>
+        <KeyboardKey variant="small">⌘</KeyboardKey>
+      </div>
+    </div>
+  );
 }
