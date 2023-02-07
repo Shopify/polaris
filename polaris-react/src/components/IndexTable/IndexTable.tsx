@@ -34,7 +34,12 @@ import {
 import {AfterInitialMount} from '../AfterInitialMount';
 import {IndexProvider} from '../IndexProvider';
 import type {NonEmptyArray} from '../../types';
-import type {Width} from '../Tooltip';
+import type {
+  BorderRadius,
+  Padding,
+  Width,
+  TooltipOverlayProps,
+} from '../Tooltip';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -46,6 +51,7 @@ interface IndexTableHeadingBase {
   hidden?: boolean;
   tooltipContent?: React.ReactNode;
   tooltipWidth?: Width;
+  tooltipPersistsOnClick?: boolean;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -849,6 +855,16 @@ function IndexTableBase({
       width: heading.tooltipWidth ?? 'default',
       activatorWrapper: 'div',
       dismissOnMouseOut: true,
+      persistOnClick: heading.tooltipPersistsOnClick,
+    };
+
+    const defaultHeaderTooltipProps = {
+      ...defaultTooltipProps,
+      padding: '4' as Padding,
+      borderRadius: '2' as BorderRadius,
+      content: heading.tooltipContent,
+      preferredPosition: 'above' as TooltipOverlayProps['preferredPosition'],
+      hasUnderline: true,
     };
 
     if (heading.new) {
@@ -926,43 +942,59 @@ function IndexTableBase({
 
       if (!heading.tooltipContent) {
         return (
+          // Regular header with sort icon and sort direction tooltip
           <Tooltip {...defaultTooltipProps} content={sortTooltipContent}>
             {sortMarkup}
           </Tooltip>
         );
       }
 
-      return (
-        <div className={styles.SortableTableHeadingWithCustomMarkup}>
-          <UnstyledButton {...defaultSortButtonProps}>
-            <span className={styles.SortableTableHeaderWrapper}>
-              {heading.tooltipContent}
-            </span>
+      if (heading.tooltipContent) {
+        const sortIconWithTooltip = (
+          <Tooltip
+            {...defaultTooltipProps}
+            content={sortTooltipContent}
+            preferredPosition="above"
+          >
+            {iconMarkup}
+          </Tooltip>
+        );
 
-            <Tooltip
-              {...defaultTooltipProps}
-              content={sortTooltipContent}
-              preferredPosition="above"
-            >
-              {iconMarkup}
-            </Tooltip>
-          </UnstyledButton>
-        </div>
-      );
+        if (typeof heading.tooltipContent === 'string') {
+          return (
+            // Header text and sort icon have separate tooltips
+            <div className={styles.SortableTableHeadingWithCustomMarkup}>
+              <UnstyledButton {...defaultSortButtonProps}>
+                <Tooltip {...defaultHeaderTooltipProps}>
+                  <span>{headingContent}</span>
+                </Tooltip>
+
+                {sortIconWithTooltip}
+              </UnstyledButton>
+            </div>
+          );
+        }
+
+        return (
+          // Sort icon has tooltip and header node is custom
+          <div className={styles.SortableTableHeadingWithCustomMarkup}>
+            <UnstyledButton {...defaultSortButtonProps}>
+              <span className={styles.SortableTableHeaderWrapper}>
+                {heading.tooltipContent}
+              </span>
+
+              {sortIconWithTooltip}
+            </UnstyledButton>
+          </div>
+        );
+      }
     }
 
     if (heading.tooltipContent) {
       return (
-        <Tooltip
-          {...defaultTooltipProps}
-          content={heading.tooltipContent}
-          padding="4"
-          borderRadius="2"
-          activatorWrapper="span"
-          preferredPosition="above"
-          hasUnderline
-        >
-          {headingContent}
+        // Non-sortable header with tooltip
+        <Tooltip {...defaultHeaderTooltipProps} activatorWrapper="span">
+          <span>{headingContent}</span>
         </Tooltip>
       );
     }

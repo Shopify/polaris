@@ -1765,7 +1765,6 @@ export function WithSortableCustomHeadings() {
   const nameTooltip = (
     <Tooltip
       content="I am a wide tooltip describing the Name column"
-      activatorWrapper="div"
       width="wide"
       padding="4"
       borderRadius="2"
@@ -1788,9 +1787,13 @@ export function WithSortableCustomHeadings() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name', tooltipContent: nameTooltip},
-          {title: 'Date'},
+          {title: 'Date', tooltipContent: 'I am the Date tooltip'},
           {title: 'Order count'},
-          {title: 'Amount spent'},
+          {
+            title: 'Amount spent',
+            tooltipContent: 'I am a wide Amount spent tooltip',
+            tooltipWidth: 'wide',
+          },
           {title: 'Location'},
           {title: 'Fulfillment status'},
           {title: 'Payment status'},
@@ -1868,8 +1871,10 @@ export function WithCustomTooltips() {
         headings={[
           {
             title: 'Name',
-            tooltipContent: 'I am a wide tooltip describing the Name column',
+            tooltipContent:
+              'I am a wide tooltip describing the Name column and I also stay when clicked',
             tooltipWidth: 'wide',
+            tooltipPersistsOnClick: true,
           },
           {
             title: 'Location',
