@@ -131,7 +131,7 @@ export function Tooltip({
       handleBlur();
       persistOnClick && togglePersisting();
     },
-    [handleBlur, onClose],
+    [handleBlur, onClose, persistOnClick, togglePersisting],
   );
 
   const portal = activatorNode ? (

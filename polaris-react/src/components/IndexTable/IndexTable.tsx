@@ -921,17 +921,19 @@ function IndexTableBase({
         tabIndex: selectMode ? -1 : 0,
       };
 
-      const underlinePlaceholder = classNames(
-        sortToggleLabels &&
-          selectMode &&
-          heading.tooltipContent &&
-          styles.TableHeadingTooltipUnderlinePlaceholder,
-      );
-
       const sortMarkup = (
         <UnstyledButton {...defaultSortButtonProps}>
           {iconMarkup}
-          <span className={underlinePlaceholder}>{headingContent}</span>
+          <span
+            className={classNames(
+              sortToggleLabels &&
+                selectMode &&
+                heading.tooltipContent &&
+                styles.TableHeadingTooltipUnderlinePlaceholder,
+            )}
+          >
+            {headingContent}
+          </span>
         </UnstyledButton>
       );
 
@@ -960,7 +962,7 @@ function IndexTableBase({
 
       if (heading.tooltipContent) {
         return (
-          // Sort icon has tooltip and header node is custom
+          // Header text and sort icon have separate tooltips
           <div className={styles.SortableTableHeadingWithCustomMarkup}>
             <UnstyledButton {...defaultSortButtonProps}>
               <Tooltip {...defaultHeaderTooltipProps}>

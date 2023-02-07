@@ -2,4 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-Add support for Tooltips with an underline & persisting on click, as well as custom IndexTable header tooltip content and width
+1. Added persist on click and underline to Tooltip.
+2. Added IndexTable header props to support Tooltip content, width, and persist on click.
