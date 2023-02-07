@@ -5,7 +5,10 @@
   background: var(--surface-subdued);
   border-radius: var(--border-radius-400);
 
-  &[data-value='alpha'],
+  &[data-value='alpha'] {
+    background: var(--surface-attention);
+  }
+
   &[data-value='warning'],
   &[data-value='deprecated'] {
     background: var(--surface-warning);
