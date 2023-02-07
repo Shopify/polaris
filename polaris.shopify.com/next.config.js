@@ -361,6 +361,16 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/legacy-card',
+    destination: '/components/layout-and-structure/legacy-card',
+    permanent: false,
+  },
+  {
+    source: '/components/legacy-stack',
+    destination: '/components/layout-and-structure/legacy-stack',
+    permanent: false,
+  },
+  {
     source: '/components/media-card',
     destination: '/components/layout-and-structure/media-card',
     permanent: false,
